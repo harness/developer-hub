@@ -31,11 +31,9 @@ interface ShareLinkValue {
   value: string;
 }
 const SearchResultBox = forwardRef<HTMLDivElement, SearchResultBoxProps>(
-  ({ open, engine, searchValue }, ref) => {
-    const [shareLinkValues, setShareLinkValues] = useState<ShareLinkValue[]>([
-      { facetId: 'commonsource', value: 'Developer Hub' },
-    ]);
+  ({ open, engine }, ref) => {
     const [copyUrl, setCopyUrl] = useState('');
+    const [clicked, setClicked] = useState(false);
     const [showFacet, setShowFacet] = useState(false);
     const [categorynameFacetController, setCategorynameFacetController] =
       useState<any>(null);
@@ -104,6 +102,29 @@ const SearchResultBox = forwardRef<HTMLDivElement, SearchResultBoxProps>(
     }, []);
 
     useEffect(() => {
+      function extractSelectedFacets(data) {
+        const result = [];
+
+        for (const key in data) {
+          if (
+            data[key].request &&
+            Array.isArray(data[key].request.currentValues)
+          ) {
+            const facetId = data[key].request.facetId;
+
+            data[key].request.currentValues.forEach((item) => {
+              if (item.state === 'selected') {
+                result.push({
+                  facetId: facetId,
+                  value: item.value,
+                });
+              }
+            });
+          }
+        }
+        return result;
+      }
+
       function generateQueryString(data: ShareLinkValue[]) {
         const grouped = data.reduce((acc, { facetId, value }) => {
           if (!acc[facetId]) {
@@ -117,37 +138,34 @@ const SearchResultBox = forwardRef<HTMLDivElement, SearchResultBoxProps>(
           .map(([facetId, values]) => {
             const encodedValues = values
               .map((value) => encodeURIComponent(value))
-              .join(','); // Join values with commas
+              .join(',');
             return `f-${facetId}=${encodedValues}`;
           })
           .join('&');
 
         return queryString;
       }
-      const queryString = generateQueryString(shareLinkValues);
-      const rootUrl = window.location.href.split('/').slice(0, 3).join('/');
-      const fullUrl = `${rootUrl}?q=${encodeURIComponent(
-        searchValue
-      )}&${queryString}`;
-      // console.log(fullUrl);
-      setCopyUrl(fullUrl);
-    }, [shareLinkValues]);
+
+      setTimeout(() => {
+        const shareLinkValues = extractSelectedFacets(engine.state.facetSet);
+        // console.log(shareLinkValues);
+
+        const queryString = generateQueryString(shareLinkValues);
+        const rootUrl = window.location.href.split('/').slice(0, 3).join('/');
+        const fullUrl = `${rootUrl}?q=${encodeURIComponent(
+          engine.state.query.q
+        )}&${queryString}`;
+
+        setCopyUrl(fullUrl);
+      }, 3000);
+
+    }, [clicked, open]);
 
     function toggleShowFacet() {
       setShowFacet(!showFacet);
     }
-
-    function updateShareLinkValues(facetId: string, value: string) {
-      setShareLinkValues((prev) => {
-        const isPresent = prev.findIndex((item) => item.value === value);
-        console.log({ isPresent });
-
-        if (isPresent !== -1) {
-          return prev.filter((item) => item.value !== value);
-        } else {
-          return [...prev, { facetId: facetId, value: value }];
-        }
-      });
+    function toggleClicked() {
+      setClicked(!clicked);
     }
     return (
       <>
@@ -157,17 +175,17 @@ const SearchResultBox = forwardRef<HTMLDivElement, SearchResultBoxProps>(
               <Facet
                 title="Source"
                 controller={commonsourceFacetController}
-                updateShareLinkValues={updateShareLinkValues}
+                toggleClicked={toggleClicked}
               />
               <Facet
                 title="Content Type"
                 controller={categorynameFacetController}
-                updateShareLinkValues={updateShareLinkValues}
+                toggleClicked={toggleClicked}
               />
               <Facet
                 title="Module"
                 controller={commonmoduleFacetController}
-                updateShareLinkValues={updateShareLinkValues}
+                toggleClicked={toggleClicked}
               />
             </div>
             <div className={styles.right}>
@@ -179,17 +197,17 @@ const SearchResultBox = forwardRef<HTMLDivElement, SearchResultBoxProps>(
                   <Facet
                     title="Source"
                     controller={commonsourceFacetController}
-                    updateShareLinkValues={updateShareLinkValues}
+                    toggleClicked={toggleClicked}
                   />
                   <Facet
                     title="Content Type"
                     controller={categorynameFacetController}
-                    updateShareLinkValues={updateShareLinkValues}
+                    toggleClicked={toggleClicked}
                   />
                   <Facet
                     title="Module"
                     controller={commonmoduleFacetController}
-                    updateShareLinkValues={updateShareLinkValues}
+                    toggleClicked={toggleClicked}
                   />
                 </div>
               )}
