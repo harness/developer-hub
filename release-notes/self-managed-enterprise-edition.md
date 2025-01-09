@@ -251,15 +251,35 @@ Starting with version 0.24.0, you can verify the integrity and origin of the cha
      gpg --export-secret-keys >~/.gnupg/secring.gpg
      ```
 
-  4. **Download the Helm Chart and Provenance File**: Download the Helm chart and its corresponding provenance file from the GitHub releases page.
+  4. **Verify the Helm Chart**:
+    Helm charts can be verified by downloading the chart or pulling from Helm repo
+    
+      **a.** Download the Helm chart and its corresponding provenance file from the [GitHub releases page](https://github.com/harness/helm-charts/releases/tag/harness-0.24.0)(*.tgz and *.tgz.prov under Assets).
+
+        ```bash
+          helm verify harness-0.24.0.tgz
+        ```
       
-      eg: https://github.com/harness/helm-charts/releases/tag/harness-0.24.0 (*.tgz and *.tgz.prov under Assets)
+      **b.** Using a Helm repository to download and verify:
+    
+        ```bash
+          # Add Helm repository
+          helm repo add harness https://harness.github.io/helm-charts/
 
-  5. **Verify the Helm Chart**: Use the helm verify command to ensure the chart is signed correctly and its integrity is intact.
+          # Update Helm repository
+          helm repo update
 
-      ```bash 
-     helm verify harness-0.24.0.tgz
-     ```
+          # Pull Chart and Verify with chart version
+          helm pull --verify harness/harness --version=0.24.0
+        ```
+
+      **c.** The successful verification of a Helm chart would appear as follows:
+        
+        ```bash
+          Signed by: Harness Inc. (Main key for Helm chart signing) <secops@harness.io>
+          Using Key With Fingerprint: 6117ED4CA5F4605DBF4353F41F6E943934E6D138
+          Chart Hash Verified: sha256:a1af3a0b8b54050070e15953c1c964a595720be2640c59fb2df947c259d18247
+        ```
 
 #### Additional Information
 
