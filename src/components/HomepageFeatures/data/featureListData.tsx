@@ -94,7 +94,7 @@ export const featureList: CardItem[] = [
     module: MODULES.idp,
     icon: "img/icon_idp.svg",
     description: <>A home for developers to create, manage, and explore software.</>,
-    link: "docs/category/get-started-with-idp",
+    link: "docs/internal-developer-portal/get-started",
   },
   {
     title: "Set up Cloud Development Environments",
