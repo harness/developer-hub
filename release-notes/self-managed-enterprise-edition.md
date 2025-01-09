@@ -220,7 +220,7 @@ To fix this issue, follow these steps
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
 
-### Harness Helm chart provenance
+### Harness Helm Chart Provenance
 
 :::info 
 
