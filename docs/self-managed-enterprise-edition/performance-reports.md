@@ -96,7 +96,7 @@ Pipelines : 3500
 Stages per pipeline : 1  
 Delegates : 15 (1cpu/4gi)  
 Trigger type : webhook  
-Test class : [CI_PIPELINE_WEBHOOK_RUN](../locust_tasks/ci_pipeline_webhook_run.py)
+Test class : `CI_PIPELINE_WEBHOOK_RUN`
 
 > Result : **PASS**  
 Avg Execution Time: **5min 50sec**
@@ -188,7 +188,7 @@ Pipelines : 3300
 Stages per pipeline : 1  
 Delegates : 15 (1cpu/4gi)  
 Trigger type : webhook  
-Test class : [CI_PIPELINE_WEBHOOK_RUN](../locust_tasks/ci_pipeline_webhook_run.py)
+Test class : `CI_PIPELINE_WEBHOOK_RUN`
 
 > Result : **PASS**  
 Avg Execution Time: **6min 31sec**
@@ -206,7 +206,7 @@ Projects : 1
 Pipelines : 2500  
 Stages per pipeline : 1   
 Delegates : 70 (1cpu/4gi)  
-Test class : [CD_PIPELINE_WEBHOOK_RUN](../locust_tasks/cd_pipeline_webhook_run.py)
+Test class : `CD_PIPELINE_WEBHOOK_RUN`
 
 > Result : **PASS**  
 Avg Execution Time: **5min 52sec**
