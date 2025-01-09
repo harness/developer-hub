@@ -16,6 +16,13 @@ const QuerySummaryAndSort = (props) => {
   const [summaryState, setSummaryState] = useState<QuerySummaryState>(
     summaryController.state
   );
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCopied(false);
+    },10000);
+  }, [copied]);
   useEffect(() => {
     const unsubscribe = summaryController.subscribe(() => {
       setSummaryState(summaryController.state);
@@ -65,6 +72,7 @@ const QuerySummaryAndSort = (props) => {
     }
   }
   function handleShareClick() {
+    setCopied(true);
     const input = document.createElement('input');
     input.value = props.copyUrl;
     document.body.appendChild(input);
@@ -87,7 +95,12 @@ const QuerySummaryAndSort = (props) => {
             <b>{summaryState.durationInSeconds}</b> seconds
           </p>
         </div>
-        <Tooltip placement="top" overlay="Share this result. Click to copy">
+        <Tooltip
+          placement="top"
+          overlay={
+            !copied ? 'Share this result. Click to copy' : 'Link copied !'
+          }
+        >
           <button onClick={handleShareClick}>
             <i className="fa-solid fa-share-nodes"></i>
           </button>

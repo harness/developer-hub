@@ -41,11 +41,21 @@ async function InitializeCoveo() {
 
   const engine = buildSearchEngine({
     configuration: {
-      organizationId: tokenData?.orgId || '',
-      accessToken: tokenData?.token || '',
-      organizationEndpoints: getOrganizationEndpoints(tokenData?.orgId || ''),
+      organizationId: 'harnessproductionp9tivsqy',
+      accessToken:
+        'eyJhbGciOiJIUzI1NiJ9.eyJzZWFyY2hIdWIiOiJXZWJzaXRlU2VhcmNoIiwidjgiOnRydWUsInRva2VuSWQiOiJzYWFhcmVkeDc0aHlzeGZqNnJ3d2Jxa250dSIsIm9yZ2FuaXphdGlvbiI6Imhhcm5lc3Nwcm9kdWN0aW9ucDl0aXZzcXkiLCJ1c2VySWRzIjpbeyJ0eXBlIjoiVXNlciIsIm5hbWUiOiJndWVzdCIsInByb3ZpZGVyIjoiRW1haWwgU2VjdXJpdHkgUHJvdmlkZXIifV0sInJvbGVzIjpbInF1ZXJ5RXhlY3V0b3IiXSwiaXNzIjoiU2VhcmNoQXBpIiwiZXhwIjoxNzM2NDc2OTUzLCJpYXQiOjE3MzY0MzM3NTN9.nFkGtTxQpAkDzTCQtP-ddZr72CZurrLIpEg58ats6wo',
+      organizationEndpoints: getOrganizationEndpoints(
+        'harnessproductionp9tivsqy'
+      ),
     },
   });
+  // const engine = buildSearchEngine({
+  //   configuration: {
+  //     organizationId: tokenData?.orgId || '',
+  //     accessToken: tokenData?.token || '',
+  //     organizationEndpoints: getOrganizationEndpoints(tokenData?.orgId || ''),
+  //   },
+  // });
 
   return engine;
 }

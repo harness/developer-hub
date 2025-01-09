@@ -5,10 +5,10 @@ import styles from './styles.module.scss';
 interface FacetProps {
   controller: FacetController;
   title: string;
-  updateShareLinkValues: (facetId: string, value: string) => void;
+  toggleClicked: () => void;
 }
 const Facet: React.FC<FacetProps> = (props) => {
-  const { controller, updateShareLinkValues } = props;
+  const { controller, toggleClicked } = props;
   const [state, setState] = useState(controller.state);
   const [open, setOpen] = useState(true);
   useEffect(() => {
@@ -112,7 +112,7 @@ const Facet: React.FC<FacetProps> = (props) => {
                 checked={controller.isValueSelected(value)}
                 onChange={() => {
                   controller.toggleSelect(value);
-                  updateShareLinkValues(controller.state.facetId, value.value);
+                  toggleClicked();
                 }}
                 disabled={state.isLoading}
               />
