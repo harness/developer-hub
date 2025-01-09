@@ -163,7 +163,7 @@ curl -X GET --url "API_URL"
 
 :::note
 
-This endpoint is not authorized by default.
+This endpoint does not have authorization enforcement by default.
 
 Currently, authorization enforcement for this endpoint is behind the feature flag `CDS_AUTH_CHECK_IN_WEBHOOK_DETAILS_ENDPOINTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
