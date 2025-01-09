@@ -9,6 +9,7 @@ import {
 } from '@coveo/headless';
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
+import Tooltip from 'rc-tooltip';
 
 const QuerySummaryAndSort = (props) => {
   const { summaryController, sortController } = props;
@@ -63,19 +64,34 @@ const QuerySummaryAndSort = (props) => {
         console.log('Error');
     }
   }
-
+  function handleShareClick() {
+    const input = document.createElement('input');
+    input.value = props.copyUrl;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    document.body.removeChild(input);
+  }
   return (
     <div className={styles.QuerySummaryAndSort}>
       <div className={styles.summary}>
-        <p>
-          Results{' '}
-          <b>
-            {summaryState.firstResult} - {summaryState.lastResult}
-          </b>{' '}
-          of <b>{summaryState.total}</b> for{' '}
-          <strong>{summaryState.query}</strong> in{' '}
-          <b>{summaryState.durationInSeconds}</b> seconds
-        </p>
+        <div>
+          {' '}
+          <p>
+            Results{' '}
+            <b>
+              {summaryState.firstResult} - {summaryState.lastResult}
+            </b>{' '}
+            of <b>{summaryState.total}</b> for{' '}
+            <strong>{summaryState.query}</strong> in{' '}
+            <b>{summaryState.durationInSeconds}</b> seconds
+          </p>
+        </div>
+        <Tooltip placement="top" overlay="Share this result. Click to copy">
+          <button onClick={handleShareClick}>
+            <i className="fa-solid fa-share-nodes"></i>
+          </button>
+        </Tooltip>
       </div>
       <div className={styles.sort}>
         <button

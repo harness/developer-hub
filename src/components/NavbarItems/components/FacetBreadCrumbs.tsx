@@ -22,14 +22,14 @@ export default function FacetBreadcrumbs(props) {
     <>
       <div className={styles.FacetBreadCrumbs}>
         <div>
-          {state.facetBreadcrumbs.map((breadcrumb) => (
-            <div>
+          {state.facetBreadcrumbs.map((breadcrumb, index) => (
+            <div key={index}>
               <p className={styles.field}>
                 {mapBreadCrumbField[breadcrumb.field]}:{' '}
               </p>
               <div className={styles.FacetBreadCrumbsValues}>
-                {breadcrumb.values.map((value) => (
-                  <p onClick={() => value.deselect()}>
+                {breadcrumb.values.map((value, i) => (
+                  <p key={i} onClick={() => value.deselect()}>
                     {value.value.value} <i className="fa-solid fa-xmark"></i>
                   </p>
                 ))}

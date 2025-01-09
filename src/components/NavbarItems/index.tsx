@@ -6,6 +6,7 @@ import SearchResultBox from './components/SearhResultBox';
 const CoveoSearch = () => {
   const searchBoxRef = useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
   const [searchBoxController, setSearchBoxController] = useState<any>(null);
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -26,6 +27,7 @@ const CoveoSearch = () => {
   const handleSearch = (searchValue: string) => {
     if (searchValue.trim().length > 0) {
       setOpen(true);
+      setSearchValue(searchValue);
     }
   };
   const [engine, setEngine] = useState<any>(null);
@@ -40,12 +42,16 @@ const CoveoSearch = () => {
   }, []);
 
   if (!searchBoxController) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
   return (
     <div>
-      <SearchBox controller={searchBoxController} onSearch={handleSearch} />
-      <SearchResultBox ref={searchBoxRef} open={open} engine={engine} />
+      <SearchBox
+        controller={searchBoxController}
+        onSearch={handleSearch}
+        
+      />
+      <SearchResultBox ref={searchBoxRef} open={open} engine={engine} searchValue={searchValue}/>
     </div>
   );
 };
