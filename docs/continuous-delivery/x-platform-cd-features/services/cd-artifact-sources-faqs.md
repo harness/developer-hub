@@ -6,6 +6,16 @@ Harness supports all of the common repos.
 
 See [Connect to an artifact repo](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
 
+### How is Last Successful Deployment Tag different from Post-Production Rollback?
+
+**Last Successful Deployment Tag** `<+lastSuccessfulDeployed.tag>` focuses on deploying the most recent artifact that was successfully deployed.
+
+**Post-Production Rollback**, on the other hand, is designed to revert the application to a previous stable version in production after a deployment issue is detected. It’s a recovery mechanism to restore a previous known good state.
+
+**Usecase**
+- Use Last Successful Deployment when you want to deploy the same version that was last known to work without introducing a new artifact. It’s particularly useful for consistent deployments during iterative updates.
+- Use Post-Production Rollback when a newly deployed artifact causes issues or breaks functionality, and you need to return the application to a stable, previously deployed state.
+
 ### How do I list Github Tags for custom artifact when the curl returns a json array without any root element?
 
 We cannot provide an array directly to the custom artifact. It needs a root element to parse the json response.

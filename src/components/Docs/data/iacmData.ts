@@ -91,7 +91,7 @@ export const docsCards: CardSections = [
         title: "Drift Detection",
         module: MODULES.iacm,
         description: "Learn how to detect and get notified on drift.",
-        link: "/docs/infra-as-code-management/pipelines/operations/drift-detection",
+        link: "/docs/infra-as-code-management/use-iacm/drift-detection",
       },
       {
         title: "Workspace Permissions and Access Control",

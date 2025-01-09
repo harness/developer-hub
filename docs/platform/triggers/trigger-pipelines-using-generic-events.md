@@ -1,6 +1,6 @@
 ---
-title: Generic Webhook triggers
-description: This topic provides settings information to setup a generic webhook triggers
+title: EventRelay Generic Webhook triggers
+description: This topic provides information on configuring EventRelay generic webhook triggers
 ---
 
 Trigger Pipelines Using Artifact Changes from Any Third-Party Repository
