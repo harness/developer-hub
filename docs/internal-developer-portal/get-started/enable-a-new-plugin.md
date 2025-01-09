@@ -6,8 +6,6 @@ redirect_from:
   - /docs/internal-developer-portal/getting-started/enable-a-new-plugin
 ---
 
-<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
-
 ## Introduction
 
 Plugins are often used to show additional metadata about a software component on the software catalog. For example, plugins show information about CI/CD pipelines, alerts, incidents, and project status. [Read More](https://developer.harness.io/docs/internal-developer-portal/plugins/overview)

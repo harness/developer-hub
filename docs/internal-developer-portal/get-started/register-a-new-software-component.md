@@ -6,8 +6,6 @@ redirect_from:
   - /docs/internal-developer-portal/getting-started/register-a-new-software-component
 ---
 
-<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
-
 Let's start with adding your software components to IDP. You can do so by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.
 
 <DocVideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />

@@ -6,8 +6,6 @@ redirect_from:
   - /docs/internal-developer-portal/scorecards/scorecard-quickstart
 ---
 
-<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
-
 ## Introduction
 
 With your [catalog populated with software components](/docs/internal-developer-portal/get-started/register-a-new-software-component) and [plugins enabled](/docs/internal-developer-portal/get-started/enable-a-new-plugin), it's time to create a scorecard. Using the [catalog datasource](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#catalog), you can monitor the existence of essential root fields and integrations defined through annotations in the catalog-info.yaml metadata. Tracking this information within the catalog helps to enforce organizational engineering standards.

@@ -4,8 +4,6 @@ description: Learn how you can enable the TechDocs plugin to show your Markdown 
 sidebar_position: 6
 ---
 
-<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
-
 Now that you have [added your Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component) to the catalog, it's time to include documentation. By default, the **Docs** tab in the catalog does not display documentation for new components. This tutorial will show you how to quickly publish Markdown documentation to the **Docs** tab.
 
 ![](static/docs-empty.png)

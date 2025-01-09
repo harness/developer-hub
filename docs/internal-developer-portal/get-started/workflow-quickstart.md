@@ -5,8 +5,6 @@ sidebar_position: 7
 sidebar_label: Getting Started with Workflows
 ---
 
-<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
-
 ## Introduction
 
 This quickstart tutorial will guide you through setting up a Workflow in IDP to automate GitHub repository onboarding for users. While this tutorial uses GitHub as the git provider, the same steps can be applied to other git providers as well.

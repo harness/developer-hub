@@ -3,11 +3,9 @@
   "collapsible": "true",
   "collapsed": "true",
   "position": 10,
-  "link": {
-    "type": "generated-index",
+  "customProps": {
     "title": "Get started with Harness Internal Developer Portal",
     "description": "Understand how to enable IDP module and get started by adding software components to your catalog, configure plugins, and create workflows."
   }
 }
-
 
