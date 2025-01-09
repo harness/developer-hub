@@ -30,7 +30,188 @@ Concurrent CD executions involve fetching Docker artifacts from external reposit
 
 Harness publishes performance test reports with each release. Select a report below to view report details.
 
+### 2025 reports
+
+<details>
+<summary>January 08, 2025</summary>
+
+This document details information about following :
+
+1. Test Environment and resource configuration
+2. Test scenario and results
+
+### [Environment](#)
+- GKE (Kubernetes Server Version) : 1.30.x
+
+### [Database](#)
+- Mongo Atlas M60
+
+### [Redis](#)
+- GCP Memory Store (11 GB)
+
+### [Harness Services](#)
+
+[Helm chart](https://github.com/harness/helm-charts/releases/tag/harness-0.23.0) 
+:::info
+- **The below performance tests results are obtained using Managed MongoDB and Managed Redis (as mentioned above).**  
+- **The default SMP Helm Chart includes in-cluster MongoDB and Redis Sentinel, so performance results may vary accordingly.**
+:::
+
+| Service Name             | Replicas | CPU (per replica) | Memory (per replica) |    Version     |
+|--------------------------|:--------:|:-----------------:|:--------------------:|:--------------:|
+| access-control           |    4     |         1         |          5           | harness-0.23.0 |
+| ci-manager               |    4     |         3         |          6           | harness-0.23.0 |
+| pipeline-service         |    8     |         4         |          10          | harness-0.23.0 |
+| manager                  |    7     |         3         |          12          | harness-0.23.0 |
+| log-service              |    4     |         3         |          12          | harness-0.23.0 |
+| ng-manager               |    6     |         2         |          6           | harness-0.23.0 |
+| scm                      |    2     |        0.5        |          1           | harness-0.23.0 |
+| gateway                  |    5     |         1         |          4           | harness-0.23.0 |
+| default-backend          |    1     |        0.1        |         0.2          | harness-0.23.0 |
+| nginx-ingress-controller |    1     |         5         |          10          | harness-0.23.0 |
+| change-data-capture      |    1     |         4         |          6           | harness-0.23.0 |
+| next-gen-ui              |    2     |        0.5        |         0.5          | harness-0.23.0 |
+| ng-auth-ui               |    2     |        0.1        |         0.1          | harness-0.23.0 |
+| platform-service         |    2     |        0.5        |          3           | harness-0.23.0 |
+| template-service         |    2     |         1         |          8           | harness-0.23.0 |
+| sto-core                 |    4     |        0.5        |         1.5          | harness-0.23.0 |
+| sto-manager              |    2     |         3         |          6           | harness-0.23.0 |
+| ui                       |    3     |        0.1        |         0.5          | harness-0.23.0 |
+| policy-mgmt              |    3     |        0.3        |          1           | harness-0.23.0 |
+| timescaledb              |    2     |         1         |          2           | harness-0.23.0 |
+| ng-dashboard-aggregator  |    2     |       0.25        |          2           | harness-0.23.0 |
+
+#### Override file : https://github.com/harness/helm-charts/blob/main/src/harness/override-perf.yaml
+
+### [Test Scenarios](#)
+  
+#### [ >  3500 concurrent CI Executions [INLINE]](#)
+Each CI pipeline would 
+- initialise a k8s pod and git clone repo  
+- run 5 parallel steps (100 sec sleep)
+- run template with 2 parallel steps (140sec sleep)
+
+Projects : 1  
+Pipelines : 3500  
+Stages per pipeline : 1  
+Delegates : 15 (1cpu/4gi)  
+Trigger type : webhook  
+Test class : `CI_PIPELINE_WEBHOOK_RUN`
+
+> Result : **PASS**  
+Avg Execution Time: **5min 50sec**
+  
+#### [ >  2700 concurrent CD Executions [INLINE]](#)
+Each CD pipeline would 
+- fetch docker artifact from AWS ECR repo
+- run following steps in order:
+   - Canary deploy
+   - Canary delete
+   - Rolling deploy
+   - K8s Delete
+
+Projects : 1  
+Pipelines : 2700  
+Stages per pipeline : 1   
+Delegates : 80 (1cpu/4gi)  
+Test class : [CD_PIPELINE_WEBHOOK_RUN](../locust_tasks/cd_pipeline_webhook_run.py)
+
+> Result : **PASS**  
+Avg Execution Time: **5min 55sec**
+
+</details>
+
 ### 2024 reports
+
+<details>
+<summary>August 28,2024</summary>
+
+This report details information about the following:
+
+1. Test environment and resource configuration
+2. Test scenario and results
+
+### [Environment](#)
+- GKE (Kubernetes Server Version) : 1.29.x
+
+### [Database](#)
+- Mongo Atlas M60
+
+### [Redis](#)
+- GCP Memory Store (11 GB)
+
+### [Harness Services](#)
+
+[Helm chart](https://github.com/harness/helm-charts/releases/tag/harness-0.19.0) 
+
+:::note
+- **The below performance tests results are obtained using Managed MongoDB and Managed Redis (as mentioned above).**  
+- **The default SMP Helm Chart includes in-cluster MongoDB and Redis Sentinel, so performance results may vary accordingly.**
+:::
+
+| Service Name             | Replicas | CPU (per replica) | Memory (per replica) |    Version     |
+|--------------------------|:--------:|:-----------------:|:--------------------:|:--------------:|
+| access-control           |    4     |         1         |          5           | harness-0.19.0 |
+| ci-manager               |    4     |         3         |          6           | harness-0.19.0 |
+| pipeline-service         |    8     |         4         |          10          | harness-0.19.0 |
+| manager                  |    7     |         3         |          12          | harness-0.19.0 |
+| log-service              |    3     |         3         |          12          | harness-0.19.0 |
+| ng-manager               |    6     |         2         |          6           | harness-0.19.0 |
+| scm                      |    2     |        0.5        |          1           | harness-0.19.0 |
+| gateway                  |    5     |         1         |          4           | harness-0.19.0 |
+| default-backend          |    1     |        0.1        |         0.2          | harness-0.19.0 |
+| nginx-ingress-controller |    1     |         5         |          10          | harness-0.19.0 |
+| change-data-capture      |    1     |         4         |          6           | harness-0.19.0 |
+| next-gen-ui              |    2     |        0.5        |         0.5          | harness-0.19.0 |
+| ng-auth-ui               |    2     |        0.1        |         0.1          | harness-0.19.0 |
+| platform-service         |    2     |        0.5        |          3           | harness-0.19.0 |
+| template-service         |    2     |         1         |          8           | harness-0.19.0 |
+| sto-core                 |    4     |        0.5        |         1.5          | harness-0.19.0 |
+| sto-manager              |    2     |         3         |          6           | harness-0.19.0 |
+| ui                       |    3     |        0.1        |         0.5          | harness-0.19.0 |
+| policy-mgmt              |    3     |        0.3        |          1           | harness-0.19.0 |
+| timescaledb              |    2     |         1         |          2           | harness-0.19.0 |
+| ng-dashboard-aggregator  |    2     |       0.25        |          2           | harness-0.19.0 |
+
+#### Override file : https://github.com/harness/helm-charts/blob/main/src/harness/override-perf.yaml
+
+### [Test Scenarios](#)
+  
+#### [ >  3300 concurrent CI Executions [INLINE]](#)
+Each CI pipeline would 
+- initialise a k8s pod and git clone repo  
+- run 5 parallel steps (100 sec sleep)
+- run template with 2 parallel steps (140sec sleep)
+
+Projects : 1  
+Pipelines : 3300  
+Stages per pipeline : 1  
+Delegates : 15 (1cpu/4gi)  
+Trigger type : webhook  
+Test class : `CI_PIPELINE_WEBHOOK_RUN`
+
+> Result : **PASS**  
+Avg Execution Time: **6min 31sec**
+  
+#### [ >  2500 concurrent CD Executions [INLINE]](#)
+Each CD pipeline would 
+- fetch docker artifact from AWS ECR repo
+- run following steps in order:
+   - Canary deploy
+   - Canary delete
+   - Rolling deploy
+   - K8s Delete
+
+Projects : 1  
+Pipelines : 2500  
+Stages per pipeline : 1   
+Delegates : 70 (1cpu/4gi)  
+Test class : `CD_PIPELINE_WEBHOOK_RUN`
+
+> Result : **PASS**  
+Avg Execution Time: **5min 52sec**
+
+</details>
 
 <details>
 <summary>July 8, 2024</summary>
