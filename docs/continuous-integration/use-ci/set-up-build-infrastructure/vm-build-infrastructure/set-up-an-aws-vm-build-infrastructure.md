@@ -13,13 +13,19 @@ import TabItem from '@theme/TabItem';
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
+:::warning
+
+This feature will be deprecated on May 1, 2025 and replaced with an improved VM cluster manager. If you have any questions, please contact your account representative or [Harness Support](mailto:support@harness.io).
+
+:::
+
+This topic describes how to use AWS VMs as Harness CI build infrastructure. To do this, you will create an Ubuntu VM and install a Harness Delegate and Drone VM Runner on it. The runner creates VMs dynamically in response to CI build requests. You can also configure the runner to hibernate AWS Linux and Windows VMs when they aren't needed.
+
 :::note
 
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
-
-This topic describes how to use AWS VMs as Harness CI build infrastructure. To do this, you will create an Ubuntu VM and install a Harness Delegate and Drone VM Runner on it. The runner creates VMs dynamically in response to CI build requests. You can also configure the runner to hibernate AWS Linux and Windows VMs when they aren't needed.
 
 This is one of several CI build infrastructure options. For example, you can also [set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
@@ -31,15 +37,15 @@ The following diagram illustrates a CI build farm using AWS VMs. The [Harness De
 
 This is an advanced configuration. Before beginning, you should be familiar with:
 
-* Using the AWS EC2 console and interacting with AWS VMs.
-* [Harness key concepts](/docs/platform/get-started/key-concepts.md)
-* [CI pipeline creation](../../prep-ci-pipeline-components.md)
-* [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
-* Drone VM Runners and pools:
-  * [Drone documentation - VM runner overview](https://docs.drone.io/runner/vm/overview/)
-  * [Drone documentation - Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/)
-  * [Drone documentation - Amazon drivers](https://docs.drone.io/runner/vm/drivers/amazon/)
-  * [GitHub repository - Drone runner AWS](https://github.com/drone-runners/drone-runner-aws)
+- Using the AWS EC2 console and interacting with AWS VMs.
+- [Harness key concepts](/docs/platform/get-started/key-concepts.md)
+- [CI pipeline creation](../../prep-ci-pipeline-components.md)
+- [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
+- Drone VM Runners and pools:
+  - [Drone documentation - VM runner overview](https://docs.drone.io/runner/vm/overview/)
+  - [Drone documentation - Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/)
+  - [Drone documentation - Amazon drivers](https://docs.drone.io/runner/vm/drivers/amazon/)
+  - [GitHub repository - Drone runner AWS](https://github.com/drone-runners/drone-runner-aws)
 
 :::
 
@@ -110,13 +116,13 @@ You may need to add the runner spec to the delegate definition:
 1. Append the following to the end of the `docker-compose.yaml` file:
 
    ```yaml
-   drone-runner-aws:  
-       restart: unless-stopped  
+   drone-runner-aws:
+       restart: unless-stopped
        image: drone/drone-runner-aws
-       network_mode: "host" 
-       volumes:  
-        - /runner:/runner  
-       entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
+       network_mode: "host"
+       volumes:
+        - /runner:/runner
+       entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]
        working_dir: /runner
    ```
 
@@ -170,7 +176,7 @@ instances:
       iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXXXX
       network:
         security_groups:
-        - sg-XXXXXXXXXXX
+          - sg-XXXXXXXXXXX
   - name: windows-ci-pool ## The settings nested below this define the Windows pool.
     default: true
     type: amazon
@@ -190,68 +196,68 @@ instances:
       hibernate: true
       network:
         security_groups:
-        - sg-XXXXXXXXXXXXXX
+          - sg-XXXXXXXXXXXXXX
 ```
 
 ### Pool settings reference
 
 You can configure the following settings in your `pool.yml` file. You can also learn more in the Drone documentation for the [Pool File](https://docs.drone.io/runner/vm/configuration/pool/) and [Amazon drivers](https://docs.drone.io/runner/vm/drivers/amazon/).
 
-| Setting | Type | Example | Description |
-| ------- | ---- | ------- | ----------- |
-| `name` | String | `name: windows_pool` | Unique identifier of the pool. You will need to specify this pool name in Harness when you [set up the CI stage build infrastructure](#specify-build-infrastructure). |
-| `pool` | Integer | `pool: 1` | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner. |
-| `limit` | Integer | `limit: 3` | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize. |
-| `platform` | Key-value pairs, strings | Go to [platform example](#platform-example). | Specify VM platform operating system (`os: linux` or `os: windows`). `arch` and `variant` are optional. `os_name: amazon-linux` is required for AL2 AMIs. The default configuration is `os: linux` and `arch: amd64`. |
-| `spec` | Key-value pairs, various | Go to [Example pool.yml](#example-poolyml) and the examples in the following rows. | Configure settings for the build VMs and AWS instance. Contains a series of individual and mapped settings, including `account`, `tags`, `ami`, `size`, `hibernate`, `iam_profile_arn`, `network`, `user_data`, `user_data_path`, and `disk`. Details about these settings are provided below. |
-| `account` | Key-value pairs, strings | Go to [account example](#account-example). | AWS account configuration, including region and access key authentication.<br/><ul><li>`region`: AWS region. To minimize latency, use the same region as the delegate VM.</li><li>`availability_zone`: AWS region availability zone. To minimize latency, use the same availability zone as the delegate VM.</li><li>`access_key_id`: The AWS access key for authentication. If using an IAM role, this is the access key associated with the IAM role.</li><li>`access_key_secret`: The secret associated with the specified `access_key_id`.</li><li>`key_pair_name`: The key pair name specified when you set up the EC2 instance. Don't include `.pem`. </li></ul> |
-| `tags` | Key-vale pairs, strings | Go to [tags example](#tags-example). | Optional tags to apply to the instance. |
-| `ami` | String | `ami: ami-092f63f22143765a3` | The AMI ID. You can use the same AMI as your EC2 instance or [search for AMIs](https://cloud-images.ubuntu.com/locator/ec2/) in your Availability Zone for supported models (Ubuntu, AWS Linux, Windows 2019+). AMI IDs differ by Availability Zone. |
-| `size` | String | `size: t3.large` | The AMI size, such as `t2.nano`, `t2.micro`, `m4.large`, and so on. Make sure the size is large enough to handle your builds. |
-| `hibernate` | Boolean | `hibernate: true` | When set to `true` (which is the default), VMs hibernate after startup. When `false`, VMs are always in a running state. This option is supported for AWS Linux and Windows VMs. Hibernation for Ubuntu VMs is not currently supported. For more information, go to the AWS documentation on [hibernating on-demand Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html). |
-| `iam_profile_arn` | String | `iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXX` | If using IAM roles, this is the instance profile ARN of the IAM role to apply to the build instances. |
-| `network` | Key-value pairs, various | Go to [network example](#network-example). | AWS network information, including security groups. For more information on these attributes, go to the AWS documentation on [creating security groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#create-a-base-security-group).<br/><ul><li>`security_groups`: List of security group IDs as strings.</li><li>`vpc`: If using VPC, this is the VPC ID as an integer.</li><li>`vpc_security_groups`: If using VPC, this is a list of VPC security group IDs as strings.</li><li>`private_ip`: Boolean.</li><li>`subnet_id`: The subnet ID as a string.</li></ul> |
-| `user_data` or `user_data_path` | Key-value pairs, strings | Go to [user data example](#user-data-example). | Define custom user data to apply to the instance. Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) either directly in `user_data` or as a path to a file in `user_data_path`. |
-| `disk` | Key-value pairs, various | Go to [disk example](#disk-example). | Optional AWS block information.<br/><ul><li>`size`: Integer, size in GB.</li><li>`type`: `gp2`, `io1`, or `standard`.</li><li>`iops`: If `type: io1`, then `iops: iops`.</li></ul> |
+| Setting                         | Type                     | Example                                                                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ------------------------------- | ------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                          | String                   | `name: windows_pool`                                                               | Unique identifier of the pool. You will need to specify this pool name in Harness when you [set up the CI stage build infrastructure](#specify-build-infrastructure).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `pool`                          | Integer                  | `pool: 1`                                                                          | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `limit`                         | Integer                  | `limit: 3`                                                                         | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize.                                                                                                                                                                                                                                                                             |
+| `platform`                      | Key-value pairs, strings | Go to [platform example](#platform-example).                                       | Specify VM platform operating system (`os: linux` or `os: windows`). `arch` and `variant` are optional. `os_name: amazon-linux` is required for AL2 AMIs. The default configuration is `os: linux` and `arch: amd64`.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `spec`                          | Key-value pairs, various | Go to [Example pool.yml](#example-poolyml) and the examples in the following rows. | Configure settings for the build VMs and AWS instance. Contains a series of individual and mapped settings, including `account`, `tags`, `ami`, `size`, `hibernate`, `iam_profile_arn`, `network`, `user_data`, `user_data_path`, and `disk`. Details about these settings are provided below.                                                                                                                                                                                                                                                                                                                                                                         |
+| `account`                       | Key-value pairs, strings | Go to [account example](#account-example).                                         | AWS account configuration, including region and access key authentication.<br/><ul><li>`region`: AWS region. To minimize latency, use the same region as the delegate VM.</li><li>`availability_zone`: AWS region availability zone. To minimize latency, use the same availability zone as the delegate VM.</li><li>`access_key_id`: The AWS access key for authentication. If using an IAM role, this is the access key associated with the IAM role.</li><li>`access_key_secret`: The secret associated with the specified `access_key_id`.</li><li>`key_pair_name`: The key pair name specified when you set up the EC2 instance. Don't include `.pem`. </li></ul> |
+| `tags`                          | Key-vale pairs, strings  | Go to [tags example](#tags-example).                                               | Optional tags to apply to the instance.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `ami`                           | String                   | `ami: ami-092f63f22143765a3`                                                       | The AMI ID. You can use the same AMI as your EC2 instance or [search for AMIs](https://cloud-images.ubuntu.com/locator/ec2/) in your Availability Zone for supported models (Ubuntu, AWS Linux, Windows 2019+). AMI IDs differ by Availability Zone.                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `size`                          | String                   | `size: t3.large`                                                                   | The AMI size, such as `t2.nano`, `t2.micro`, `m4.large`, and so on. Make sure the size is large enough to handle your builds.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `hibernate`                     | Boolean                  | `hibernate: true`                                                                  | When set to `true` (which is the default), VMs hibernate after startup. When `false`, VMs are always in a running state. This option is supported for AWS Linux and Windows VMs. Hibernation for Ubuntu VMs is not currently supported. For more information, go to the AWS documentation on [hibernating on-demand Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html).                                                                                                                                                                                                                                                              |
+| `iam_profile_arn`               | String                   | `iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXX`                          | If using IAM roles, this is the instance profile ARN of the IAM role to apply to the build instances.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `network`                       | Key-value pairs, various | Go to [network example](#network-example).                                         | AWS network information, including security groups. For more information on these attributes, go to the AWS documentation on [creating security groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#create-a-base-security-group).<br/><ul><li>`security_groups`: List of security group IDs as strings.</li><li>`vpc`: If using VPC, this is the VPC ID as an integer.</li><li>`vpc_security_groups`: If using VPC, this is a list of VPC security group IDs as strings.</li><li>`private_ip`: Boolean.</li><li>`subnet_id`: The subnet ID as a string.</li></ul>                                                              |
+| `user_data` or `user_data_path` | Key-value pairs, strings | Go to [user data example](#user-data-example).                                     | Define custom user data to apply to the instance. Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) either directly in `user_data` or as a path to a file in `user_data_path`.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `disk`                          | Key-value pairs, various | Go to [disk example](#disk-example).                                               | Optional AWS block information.<br/><ul><li>`size`: Integer, size in GB.</li><li>`type`: `gp2`, `io1`, or `standard`.</li><li>`iops`: If `type: io1`, then `iops: iops`.</li></ul>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 #### platform example
 
 ```yaml
-    instance:
-      platform:
-        os: linux
-        arch: amd64
-        version:
-        os_name: amazon-linux
+instance:
+  platform:
+    os: linux
+    arch: amd64
+    version:
+    os_name: amazon-linux
 ```
 
 #### account example
 
 ```yaml
-      account:
-        region: us-east-2
-        availability_zone: us-east-2c
-        access_key_id: XXXXX
-        access_key_secret: XXXXX
-        key_pair_name: XXXXX
+account:
+  region: us-east-2
+  availability_zone: us-east-2c
+  access_key_id: XXXXX
+  access_key_secret: XXXXX
+  key_pair_name: XXXXX
 ```
 
 #### tags example
 
 ```yaml
-      tags:
-        owner: USER
-        ttl: '-1'
+tags:
+  owner: USER
+  ttl: "-1"
 ```
 
 #### network example
 
 ```yaml
-      network:
-        private_ip: true
-        subnet_id: subnet-XXXXXXXXXX
-        security_groups:
-          - sg-XXXXXXXXXXXXXX
+network:
+  private_ip: true
+  subnet_id: subnet-XXXXXXXXXX
+  security_groups:
+    - sg-XXXXXXXXXXXXXX
 ```
 
 #### user data example
@@ -259,48 +265,48 @@ You can configure the following settings in your `pool.yml` file. You can also l
 Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) in either `user_data_path` or `user_data`.
 
 ```yaml
-      user_data_path: /path/to/custom/user-data.yml
+user_data_path: /path/to/custom/user-data.yml
 ```
 
 ```yaml
-      user_data: |
-        #cloud-config
-        apt:
-          sources:
-            docker.list:
-              source: deb [arch={{ .Architecture }}] https://download.docker.com/linux/ubuntu $RELEASE stable
-              keyid: KEY_TO_IMPORT
-        packages:
-        - wget
-        - docker-ce
-        write_files:
-        - path: {{ .CaCertPath }}
-          permissions: '0600'
-          encoding: b64
-          content: {{ .CACert | base64  }}
-        - path: {{ .CertPath }}
-          permissions: '0600'
-          encoding: b64
-          content: {{ .TLSCert | base64 }}
-        - path: {{ .KeyPath }}
-          permissions: '0600'
-          encoding: b64
-          content: {{ .TLSKey | base64 }}
-        runcmd:
-        - 'wget "{{ .LiteEnginePath }}/lite-engine-{{ .Platform }}-{{ .Architecture }}" -O /usr/bin/lite-engine'
-        - 'chmod 777 /usr/bin/lite-engine'
-        - 'touch /root/.env'
-        - 'touch /tmp/some_directory'
-        - '/usr/bin/lite-engine server --env-file /root/.env > /var/log/lite-engine.log 2>&1 &'
+user_data: |
+  #cloud-config
+  apt:
+    sources:
+      docker.list:
+        source: deb [arch={{ .Architecture }}] https://download.docker.com/linux/ubuntu $RELEASE stable
+        keyid: KEY_TO_IMPORT
+  packages:
+  - wget
+  - docker-ce
+  write_files:
+  - path: {{ .CaCertPath }}
+    permissions: '0600'
+    encoding: b64
+    content: {{ .CACert | base64  }}
+  - path: {{ .CertPath }}
+    permissions: '0600'
+    encoding: b64
+    content: {{ .TLSCert | base64 }}
+  - path: {{ .KeyPath }}
+    permissions: '0600'
+    encoding: b64
+    content: {{ .TLSKey | base64 }}
+  runcmd:
+  - 'wget "{{ .LiteEnginePath }}/lite-engine-{{ .Platform }}-{{ .Architecture }}" -O /usr/bin/lite-engine'
+  - 'chmod 777 /usr/bin/lite-engine'
+  - 'touch /root/.env'
+  - 'touch /tmp/some_directory'
+  - '/usr/bin/lite-engine server --env-file /root/.env > /var/log/lite-engine.log 2>&1 &'
 ```
 
 #### disk example
 
 ```yaml
-      disk:
-        size: 16
-        type: io1
-        iops: iops
+disk:
+  size: 16
+  type: io1
+  iops: iops
 ```
 
 ## Start the runner
@@ -366,11 +372,11 @@ For more information about delegates and delegate installation, go to [Delegate 
 
 1. Verify that the delegate and runner containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
 
-	 ```
-	 docker ps
-	 docker logs DELEGATE_CONTAINER_ID
-	 docker logs RUNNER_CONTAINER_ID
-	 ```
+   ```
+   docker ps
+   docker logs DELEGATE_CONTAINER_ID
+   docker logs RUNNER_CONTAINER_ID
+   ```
 
 2. In the Harness UI, verify that the delegate appears in the delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
 
@@ -397,7 +403,6 @@ Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build in
 
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 ```yaml
     - stage:
@@ -461,13 +466,13 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-managed VM build infrastructures, including:
 
-* [Build VM creation fails with no default VPC](/kb/continuous-integration/continuous-integration-faqs/#aws-build-vm-creation-fails-with-no-default-vpc)
-* [AWS VM builds stuck at the initialize step on health check](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-builds-stuck-at-the-initialize-step-on-health-check)
-* [Delegate connected but builds fail](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-delegate-connected-but-builds-fail)
-* [Use internal or custom AMIs](/kb/continuous-integration/continuous-integration-faqs/#use-internal-or-custom-amis-with-self-managed-aws-vm-build-infrastructure)
-* [Where can I find self-managed VM lite engine and cloud init output logs?](/kb/continuous-integration/continuous-integration-faqs/#where-can-i-find-logs-for-self-managed-aws-vm-lite-engine-and-cloud-init-output)
-* [Can I use the same build VM for multiple CI stages?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-the-same-build-vm-for-multiple-ci-stages)
-* [Why are build VMs running when there are no active builds?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-vms-running-when-there-are-no-active-builds)
-* [How do I specify the disk size for a Windows instance in pool.yml?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
-* [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
-* [Can I limit memory and CPU for Run Tests steps running on self-managed VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)
+- [Build VM creation fails with no default VPC](/kb/continuous-integration/continuous-integration-faqs/#aws-build-vm-creation-fails-with-no-default-vpc)
+- [AWS VM builds stuck at the initialize step on health check](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-builds-stuck-at-the-initialize-step-on-health-check)
+- [Delegate connected but builds fail](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-delegate-connected-but-builds-fail)
+- [Use internal or custom AMIs](/kb/continuous-integration/continuous-integration-faqs/#use-internal-or-custom-amis-with-self-managed-aws-vm-build-infrastructure)
+- [Where can I find self-managed VM lite engine and cloud init output logs?](/kb/continuous-integration/continuous-integration-faqs/#where-can-i-find-logs-for-self-managed-aws-vm-lite-engine-and-cloud-init-output)
+- [Can I use the same build VM for multiple CI stages?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-the-same-build-vm-for-multiple-ci-stages)
+- [Why are build VMs running when there are no active builds?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-vms-running-when-there-are-no-active-builds)
+- [How do I specify the disk size for a Windows instance in pool.yml?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
+- [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
+- [Can I limit memory and CPU for Run Tests steps running on self-managed VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)
