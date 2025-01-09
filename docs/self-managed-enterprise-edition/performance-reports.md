@@ -114,7 +114,7 @@ Projects : 1
 Pipelines : 2700  
 Stages per pipeline : 1   
 Delegates : 80 (1cpu/4gi)  
-Test class : [CD_PIPELINE_WEBHOOK_RUN](../locust_tasks/cd_pipeline_webhook_run.py)
+Test class : `CD_PIPELINE_WEBHOOK_RUN`
 
 > Result : **PASS**  
 Avg Execution Time: **5min 55sec**
