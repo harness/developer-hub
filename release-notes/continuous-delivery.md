@@ -45,6 +45,36 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## January 2025
+
+#### New Features and enhancements
+
+- You can now bypass primary artifact validation by enabling the Disable Artifact Validation checkbox in a service. This skips artifact validation during pipeline execution, including in propagated stages. This feature applies only to primary artifacts. This feature is behind the feature flag `CDS_ARTIFACT_DISABLE_VALIDATION`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-101173)
+- You can now add environments created at the Project and Organization levels to the environment groups. Currently, the Cross Scope Environment Groups feature is behind the feature flag CDS_CROSS_SCOPED_ENV_GROUPS. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-103127)
+- You can now reference secret in expression for input variables in TAS command step. (CDS-100322, ZD-69107, ZD-69226)
+- The Post-Prod Rollback API has been enhanced to simplify the rollback process by reducing the number of required parameters. The new version of the API allows you to trigger a rollback using just Environment Id, Infrastructure Id, Service Id, and Artifact, making it easier for users to invoke the rollback without dealing with complex identifiers like `instanceKey` and `infraMappingId`. (CDS-97775)
+- Harness now provides detailed log information for pods and container during the Wait For Steady State step in Kubernetes deployments, helping you troubleshoot deployment issues by providing real-time insights into pod statuses. Currently, this feature is behind the feature flag `CDS_K8S_DETAILED_POD_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-99009)
+
+
+#### Fixed Issue
+
+- Fixed an issue where pipelines could start execution without valid stages, resulting in unexpected behavior and execution graph failures. Execution is now blocked if no valid stage is present in the pipeline. (PIPE-24086, ZD-74528)
+- Fixed an issue where the console log search would not function correctly after switching steps in a pipeline execution. The search functionality now continues seamlessly across steps, ensuring a smooth user experience. (PIPE-23990, ZD-74681)
+- Fixed an issue where changes in GitHub, such as subsequent commits to newly created branches, were not propagating into Harness. (PIPE-23576, ZD-73720, ZD-74770)
+- Fixed an issue where user's pipeline execution stalled. (PIPE-22375, ZD-71138)
+- Fixed tooltip in UI to show CD consumes 1 Service License for every 2000 pipeline executions of custom stages. (CDS-105411, ZD-75543)
+- Fixed an issue where Nexus3 triggers only fetched 50 tags. The issue is resolved, and now all tags will be fetched. (CDS-105392, ZD-75467)
+- Fixed an issue fetching clusters on change of GCP Connector in infrastructure. (CDS-105365, ZD-74674)
+- Fixed the pipeline stage name resolution issue that caused artifact identifier expressions to fail, resulting in intermittent pipeline failures with the error: "Invalid request: No artifact source exists with the identifier null inside service." (CDS-105306, ZD-75216)
+- Fixed an issue where secrets were exposed in logs during the execution of TAS Rolling Deploy Step in case of step failure. (CDS-105184, ZD-75003)
+- Fixed an issue where AWS load balancer dropdown was not getting populated when using a blue-green deployment step in a template. (CDS-105168, ZD-73560)
+- Fixed an issue in the Fetch Helm Chart Metadata process for Helm charts, which failed during parallel stage deployments with the error: **Unable to fetch files for filePath `[charts/spark-support/Chart.yaml]` for Branch: stable.** The logic now ensures proper delegate selection during the manifest step, preventing failures due to resource constraints or incorrect delegate assignment. (CDS-105137, ZD-74836)
+- Fixed an issue where users were unable to perform rollbacks in certain cases due to the swapping of OrgID and ProjectID in the API call. (CDS-105087, ZD-74833)
+- Fixed an issue where users encountered a "signal is aborted without a reason" notification while selecting a service in the deployment pipeline. This error occurred due to overlapping API calls made in quick succession, leading to the prior request being aborted. (CDS-105011, ZD-74651)
+- Fixed an issue where additional strings were incorrectly appended to the values file path during runtime when entered as allowed values, causing parsing errors and deployment failures. (CDS-104787, ZD-74331)
+- Fixed an issue where connector references for Bitbucket were still appearing in the "referenced by" list after updating pipelines or resources to GitHub. Connector references are now correctly removed once they are no longer in use. (CDS-104715, ZD-74243)
+- Fixed an issue where GCP OIDC connections failed when isolated to a specific project/org in Harness. The connection now establishes successfully with the correct configuration during the test connection flow. (CDS-104975, ZD-74230)
+
 ## December
 
 ### Gitops Version 1.22.0, Gitops Agent Version 0.83.0
