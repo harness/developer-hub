@@ -41,6 +41,12 @@
       margin: 0;
       padding: 0;
     }
+    .highlighted {
+      background-color: var(--gray-100);
+      &:focus {
+        outline: none !important;
+      }
+    }
   }
   .searchBox {
     display: flex;
