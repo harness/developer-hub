@@ -65,8 +65,8 @@ export const FmeData: Horizon = {
       },
       {
         tag: [{ value: "SDK" }],
-        title: "Thin client SDKs for JavaScript and mobile",
-        description: "No rules are stored client-side. Instead, these thin clients utilize a cloud service for evaluation.",
+        title: "Remote evaluation client-side SDKs",
+        description: "No rules are exposed to client-side. Instead, these thin clients utilize a secure cloud service for flag evaluations.",
       },
       {
         tag: [{ value: "SDK" }],
