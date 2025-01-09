@@ -3,8 +3,6 @@ title: Pre-Installed Extensions in Gitspace
 description: Learn more about how you can setup pre-installed extensions for your Gitspaces with "devcontainer.json".
 sidebar_position: 6
 sidebar_label: Pre-installed Extensions
-redirect_from:
-  - /docs/open-source/gitspaces/develop-in-gitspaces/extensions.md
 ---
 
 This guide explains how to configure your Gitspace to automatically install extensions during setup. Let’s dive into the details.

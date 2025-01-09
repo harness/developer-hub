@@ -3,8 +3,6 @@ title: Port Forwarding
 description: Learn how to forward ports in your Gitspaces. 
 sidebar_position: 2
 sidebar_label: Port Forwarding
-redirect_from:
-  - /docs/open-source/gitspaces/develop-in-gitspaces/forward-ports.md
 ---
 
 This guide provides a detailed walkthrough on how to configure Port Forwarding in Gitspaces, enabling you to run and test applications on your local machine.

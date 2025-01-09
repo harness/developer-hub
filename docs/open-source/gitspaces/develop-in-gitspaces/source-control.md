@@ -2,7 +2,6 @@
 title: Using Source Control in your Gitspaces
 sidebar_position: 1
 description: Understand how to use source control in your Gitspaces. 
-redirect_from: /docs/open-source/gitspaces/develop-in-gitspaces/pull-request
 sidebar_label: Source Control
 ---
 
