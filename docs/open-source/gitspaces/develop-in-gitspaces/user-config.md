@@ -3,8 +3,6 @@ title: Configuring containerUser and remoteUser in Gitspace
 description: Learn more about how you can configure "containerUser" and "remoteUser" in your Gitspace.
 sidebar_position: 5
 sidebar_label: User Configuration
-redirect_from:
-  - /docs/open-source/gitspaces/develop-in-gitspaces/user-config.md
 ---
 
 This guide explains how to set up ```containerUser``` and ```remoteUser``` in your Gitspace using the properties in the ```devcontainer.json``` schema.

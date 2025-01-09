@@ -3,8 +3,6 @@ title: Configuring Gitspace with runArgs
 description: Get started with using the runArgs property to configure your Gitspace. 
 sidebar_position: 4
 sidebar_label: runArgs Configuration
-redirect_from:
-  - /docs/open-source/gitspaces/develop-in-gitspaces/runArgs.md
 ---
 
 This guide explains how to use the **```runArgs```** property in the ```devcontainer.json``` schema to configure your Gitspace.

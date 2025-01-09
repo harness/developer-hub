@@ -3,8 +3,6 @@ title: Gitspace Configuration
 description: Learn more about the underlying configuration of a Gitspace. 
 sidebar_position: 2
 sidebar_label: Gitspace Configuration
-redirect_from:
-  - /docs/open-source/gitspaces/get-started/gitspace-configuration.md
 ---
 
 This guide will walk you through the Gitspace configuration in detail. 
