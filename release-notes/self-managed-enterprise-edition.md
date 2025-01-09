@@ -222,7 +222,7 @@ By doing this, you ensure that the same lookerMasterKey is used during upgrades,
 
 :::info Harness Helm Chart Provenance
 
-Harness Helm charts are now signed to ensure they are secure and trustworthy. Click [here](../release-notes/helm-chart-provenance.md) to learn more. 
+Harness Helm charts are now signed to ensure they are secure and trustworthy. Click [here](../docs/self-managed-enterprise-edition/install/helm-chart-provenance.md) to learn more. 
 
 :::
 
