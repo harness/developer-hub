@@ -116,6 +116,16 @@ If you exit from the script (`exit 0`), Harness does not populate the output var
 
 :::
 
+You can access a secret configured in the **Secrets Manager** using an expression. For example, `<+secrets.getValue('SECRET_NAME')>`.
+
+You can also configure variables of type Secret as output variables. When an output variable is configured as a secret, its value is encrypted. 
+
+![](static/tanzu-secrets-output-variable.png)
+
+The encrypted secret is decrypted and made available for use in the script. However, the script's output will not display the secret, even if the secret is explicitly passed to the output stream.
+
+![](static/output-variable-logs.png)
+
 ### Using manifests in your scripts
 
 In order to use defined manifests in the Service in Tanzu command script you have to use a special expression `${service.manifest}`
