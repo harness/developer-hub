@@ -226,7 +226,7 @@ By doing this, you ensure that the same lookerMasterKey is used during upgrades,
 
 Harness Helm charts are now signed to ensure they are secure and trustworthy.
 
-You can verify the integrity and origin of the charts using GPG keys with Helm's provenance feature.
+Starting with version 0.24.0, you can verify the integrity and origin of the charts using GPG keys with Helm's provenance feature.
 
 #### How to Verify Signed Helm Charts
   
