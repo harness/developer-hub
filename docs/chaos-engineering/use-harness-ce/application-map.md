@@ -63,10 +63,11 @@ You can [create](#create-application-map), [edit](#edit-application-map), and [d
     ![](./static/app-maps/save-nw-5.png)
 
 :::info note
-To view chaos-enabled experiment map, navigate to **Chaos** module and select **Application Maps**.
+- To view chaos-enabled experiment map, navigate to **Chaos** module and select **Application Maps**.
 
     ![](./static/app-maps/create-nw-1.png)
 
+- To list an experiment as a part of an application map, specify the tag `applicationmap=<application map identity>` in the experiment.
 :::
 
 ### Edit application map
