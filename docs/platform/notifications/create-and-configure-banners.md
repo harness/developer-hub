@@ -6,24 +6,25 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note[ The Banners feature is currently gated by the feature flag `PL_CUSTOM_BANNERS`, which must be enabled to access this functionality.]
+:::note
+
+ The Banners feature is currently gated by the feature flag `PL_CUSTOM_BANNERS`, which must be enabled to access this functionality.
+
 :::
 
 ## Overview
 
-The banners, lets admins or users with the right permissions share important messages, like maintenance schedules or downtime, with everyone. These banners appear at the top of the Harness UI and are visible to all users across different areas when active.
+The banners, lets admins or users with the right permissions share important messages, like maintenance schedules or downtime, with everyone. These banners appear at the top of the Harness UI and are visible to all users across different areas when active.Account administrators, who have appropriate access can manage the banner type, message and optional call-to-action (CTA)s. 
 
-![custom-banners-intro](static/custom-banners-overview.gif)
+![banners-overview](static/banners-overview.png)
 
-Account administrators, who have appropriate access can manage the banner type, message and optional call-to-action (CTA)s. **A maximum of 5 banners can be active at a time**. 
+**A maximum of 5 banners can be active at a time**. 
 
 ## Getting Started with Banners
 
 To get started with banners in Harness, you can choose from different banner types—informational, high, medium, and low severity—and add a title, message, and optional CTAs (maximum 2). Additionally, you can enable, disable and customize as needed.
 
 ***Reference to Create, Customize, Publish Banners.***
-
-![create-customize-publish-banners](static/create-banners.gif)
 
 ### Create a banner
 
@@ -34,6 +35,8 @@ To create a banner in Harness, you need a role with create banner [permissions](
  3. Click **New Banner**.
  4. Enter a **Banner Name**.
  5. Click **Continue** to proceed with the **Customize Banner** step.  
+
+ ![create-customize-publish-banners](static/create-banners.gif)
 
  ### Customize Your Banner
 
