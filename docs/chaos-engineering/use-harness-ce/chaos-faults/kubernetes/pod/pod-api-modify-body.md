@@ -17,6 +17,8 @@ Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api 
 
 ![Pod API Modify Body](./static/images/pod-api-modify-body.png)
 
+[This](https://youtu.be/Dbr_KwfTxps?si=6uWUShJuht7LoY5r) video provides a step-by-step walkthrough of the execution process for the Pod API Modify Body experiment.
+
 ## Use cases
 Pod API modify body:
 - It can be used for API testing, by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.

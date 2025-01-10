@@ -16,6 +16,8 @@ Pod API block is a Kubernetes pod-level chaos fault that blocks the API requests
 
 ![Pod API Block](./static/images/pod-api-block.png)
 
+[This](https://youtu.be/Cg5gbfFrJQs?si=3CDCr5kZ1TweWuSo) video provides a step-by-step walkthrough of the execution process for the Pod API Block experiment.
+
 ## Use cases
 Pod API block:
 - Validates how well your system can handle disruptions in API services for a specific pod.

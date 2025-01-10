@@ -14,9 +14,7 @@ This can help identify performance bottlenecks, test the system's ability to han
 
 ![Pod IO Latency](./static/images/pod-io-latency.png)
 
-For a video tutorial, go to [pod IO error](https://youtu.be/HI7sk7I13WU) that walks through the execution of the experiment.
-
-[This](https://youtu.be/HI7sk7I13WU) video walks through the execution of the pod IO latency experiment.
+[This](https://youtu.be/HI7sk7I13WU) video provides a step-by-step walkthrough of the execution process for the Pod IO Latency experiment.
 
 ## Use cases
 Pod IO latency:

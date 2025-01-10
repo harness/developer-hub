@@ -11,9 +11,7 @@ Time chaos is a Kubernetes pod-level fault that introduces controlled time offse
 
 ![Time Chaos](./static/images/time-chaos.png)
 
-
-For a video tutorial, go to [time chaos](https://youtu.be/9S_wnY1rLfs) that walks through the execution of the experiment.
-
+[This](https://youtu.be/9S_wnY1rLfs) video provides a step-by-step walkthrough of the execution process for the Time Chaos experiment.
 
 ## Use cases
 Time Chaos:

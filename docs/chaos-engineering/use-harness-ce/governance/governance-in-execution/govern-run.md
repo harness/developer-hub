@@ -6,7 +6,7 @@ description: This topic describes how you can configure rules and conditions for
 
 This topic describes how you can configure **ChaosGuard** to enforce security policies during chaos experiments execution. An additional layer of security that is executed before running a chaos experiment is [ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/).
 
-To watch a video on configuring the rules and conditions in ChaosGuard, go to [ChaosGuard- rules and conditions](https://youtu.be/cHFiBvQPCLU).
+[This](https://youtu.be/cHFiBvQPCLU) video provides a walkthrough of configuring the rules and conditions in ChaosGuard.
 
 ## Prerequisites
 
