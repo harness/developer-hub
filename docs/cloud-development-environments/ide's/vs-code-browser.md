@@ -13,7 +13,7 @@ Harness CDE is now available in public beta. To enable it on your account, conta
 
 :::
 
-Harness CDE provides seamless support to connect and access your Gitspaces remotely within your browser via VS Code. This 
+Harness CDE provides seamless support to connect and access your Gitspaces remotely within your browser via VS Code. 
 
 This guide will take you through the steps required to access a Gitspace in your VS Code Browser:
 
@@ -22,7 +22,7 @@ Please ensure that while creating one, you choose “VS Code Browser” as the s
 
 ![](./static/vs-code-browser.png)
 
-2. After the Gitspace is created, click “Open VS Code Onliner” from the Harness UI. 
+2. After the Gitspace is created, click “Open VS Code Online” from the Harness UI. 
 
 ![](./static/vs-code-browser-2.png)
 
