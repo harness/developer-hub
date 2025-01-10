@@ -39,7 +39,7 @@ gpg --export-secret-keys >~/.gnupg/secring.gpg
 Helm charts can be verified by downloading the chart or pulling it from the Helm repository.
 
 #### a. Verify Downloaded Chart
-Download the Helm chart and its corresponding provenance file from the GitHub releases page (`*.tgz` and `*.tgz.prov` under Assets).
+Download the Helm chart and its corresponding provenance file from the **[GitHub releases page](https://github.com/harness/helm-charts/releases/tag/harness-0.24.0)** (`*.tgz` and `*.tgz.prov` under Assets).
 
 ```bash
 helm verify harness-0.24.0.tgz
