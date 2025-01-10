@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2024-10-08T10:00
+date: 2025-01-10T10:00
 sidebar_position: 10
 ---
 
@@ -20,6 +20,25 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+## January 2025
+
+### Version 1.60
+
+<!-- 2025-01-06 -->
+
+#### Fixed issues
+
+- Resolved an issue where CI build steps could execute out of order or be duplicated in rare cases due to preexisting files in the workspace. Introduced a marker file mechanism to ensure sequential execution. This change is behind the feature flag `CI_ADDON_RETRY_MARKER_FILE`. (CI-14705, ZD-71193, ZD-71443, ZD-74544)
+- Addressed an issue where the "Allow Privilege Escalation" flag in the Infrastructure configuration was incorrectly included in the YAML, even when disabled. Enhanced error messaging now notifies users of incorrect Kubernetes flag settings during pipeline execution. (CI-14740, ZD-71175)
+- Resolved an issue in Kubernetes pipelines where large commit messages caused the pipeline to fail with the error: "Request entity too large: limit is 3145728." Commit message length is now properly limited to prevent this error. (CI-15276, ZD-73618)
+- Resolved an issue where blank optional fields in templates for ACR steps defaulted to a "null" string, causing failures. This issue was specific to accounts using the Kaniko plugin. The fields now correctly default to being skipped if left blank. (CI-15431, ZD-71473)
+- Resolved an issue where Bitbucket connectivity in Harness Cloud failed when using Secure Connect on macOS. (CI-15432, ZD-74614)
+
+#### Harness images updates
+
+| **Image**        | **Change**                         | **Previous version** | **New Version** |
+| ---------------- | ---------------------------------- | -------------------- | --------------- |
+| `plugins/docker` | Addressed security vulnerabilities | 20.18.5              | 20.18.6         |
 
 ## December 2024
 
@@ -40,47 +59,47 @@ If you have any questions or need assistance with the whitelisting process, plea
 :::
 
 ### Version 1.58
+
 <!-- 2024-12-09 -->
 
-
 #### New features and enhancements
+
 - Expanded Cache Intelligence functionality to include support for VB and F# with .NET (CI-14396).
-- Added ability to set `topologySpreadConstraint` in 'Pod Spec Overlay' field for k8s build pods from the UI editor. This was previously available in YAML editor only (CI-14169). 
+- Added ability to set `topologySpreadConstraint` in 'Pod Spec Overlay' field for k8s build pods from the UI editor. This was previously available in YAML editor only (CI-14169).
 - Tests related output variables are now available when publishing test reports through 'Run' and 'Test' steps, capturing the number of total tests, skipped tests, failed tests, etc. This is currently available when enabling the `CI_ENABLE_TEST_SUMMARY_AS_OUTPUTS` feature flag. Supported with Kubernetes infrastructure. (CI-15281)
 
-
-To enable feature flags, please contact [Harness Support](mailto:support@harness.io). 
+To enable feature flags, please contact [Harness Support](mailto:support@harness.io).
 
 #### Fixed issues
+
 - Resolved an issue where Python script execution in Harness pipelines failed with vague error messages when an output variable was configured but not assigned a value. Updated error messages to explicitly identify the unset variable, improving clarity and user experience. (CI-14053, ZD-69167)
 - Fixed an issue where Docker build arguments defined as comma-separated strings (e.g., a1,a2,a3) were incorrectly parsed (CI-14845).
 - Addressed an issue where Docker Layer Caching in 'Build and Push' steps failed with the error: "error while bootstrapping buildx builder" when running on Kubernetes. (CI-15228, ZD-73397)
 
 #### Harness images updates
 
-| **Image** | **Change**  | **Previous version** | **New Version** 
-|-------------------------------|-----------------|-------------|------------------|
-| `harness/ci-addon` | Add support for exposing test report summary with output variables | 1.16.61 | 1.16.66
-| `harness/ci-lite-engine` | Add support for exposing test report summary with output variables | 1.16.61 | 1.16.66
-| `plugins/buildx` | Update buildx version to include buildkit in image | 1.1.20 | 1.1.24
-| `plugins/cache` | update cache intelligence plugin tags. updated tag fixes windows restore bug and adds support for vb .net and f# .net | 1.8.0 | 1.9.0
-
+| **Image**                | **Change**                                                                                                            | **Previous version** | **New Version** |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`       | Add support for exposing test report summary with output variables                                                    | 1.16.61              | 1.16.66         |
+| `harness/ci-lite-engine` | Add support for exposing test report summary with output variables                                                    | 1.16.61              | 1.16.66         |
+| `plugins/buildx`         | Update buildx version to include buildkit in image                                                                    | 1.1.20               | 1.1.24          |
+| `plugins/cache`          | update cache intelligence plugin tags. updated tag fixes windows restore bug and adds support for vb .net and f# .net | 1.8.0                | 1.9.0           |
 
 ### Version 1.57
+
 <!-- 2024-12-02 -->
-- Resolved an issue with ECR image links in the artifacts tab for the "Build and Push to ECR" step by adding the missing "/_" separator, ensuring correct functionality. (CI-15089, ZD-72329).
+
+- Resolved an issue with ECR image links in the artifacts tab for the "Build and Push to ECR" step by adding the missing "/\_" separator, ensuring correct functionality. (CI-15089, ZD-72329).
 - Resolved an issue where OPA enforcement in CI stages didn't work properly in the Self-Managed Enterprise Edition (CI-14840, ZD-70943).
-
-
 
 ## November 2024
 
-
-
 ### Version 1.56
+
 <!-- 2024-11-25 -->
 
 #### Fixed issues
+
 - Resolved an issue to ensure proper functionality for "Upload Artifact to S3" and "Save/Restore Cache to S3" steps when used with AWS connector configured with an External ID (CI-14214, ZD-69360).
 - Fixed an issue where the DRONE_REPO_OWNER built-in environment variable pointed to the wrong owner when the CI pipeline was triggered by a tag event. A new feature flag (CI_DRONE_REPO_OWNER) has been introduced to ensure DRONE_REPO_OWNER is correctly extracted from the repository URL (CI-14468).
 - The volume size field, in CI stage Kubernetes infrastructure settings, has been updated to support expressions, improving user experience and functionality (CI-14043, ZD-69169).
@@ -92,47 +111,51 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 
 #### Harness images updates
 
-| **Image** | **Change**  | **Previous version** | **New Version** 
-|-------------------------------|-----------------|-------------|------------------|
-| `plugins/s3` | Added PLUGIN_USER_ROLE_EXTERNAL_ID to pass external ID for the secondary role when required | 1.4.3 | 1.5.0
-| `plugins/gcs ` | Go and alpine version upgrade to 1.22.7 and 3.20 respectively  | 1.6.0 | 1.6.1
-| `drone-buildx` | Go and docker version upgrade to 1.22.7 and 27.3.1-dind respectively| 1.1.19 | 1.1.20
-
+| **Image**      | **Change**                                                                                  | **Previous version** | **New Version** |
+| -------------- | ------------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `plugins/s3`   | Added PLUGIN_USER_ROLE_EXTERNAL_ID to pass external ID for the secondary role when required | 1.4.3                | 1.5.0           |
+| `plugins/gcs ` | Go and alpine version upgrade to 1.22.7 and 3.20 respectively                               | 1.6.0                | 1.6.1           |
+| `drone-buildx` | Go and docker version upgrade to 1.22.7 and 27.3.1-dind respectively                        | 1.1.19               | 1.1.20          |
 
 ### Version 1.54
+
 <!-- 2024-11-11 -->
 
 #### New features and enhancements
-- [Build Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence) now supports self-hosted builds in Kubernetes. Customer that run builds on Kubernetes can now configure S3-compatible bucket for Build Intelligence caching. Authentication through AWS/GCP connector is currently supported with OIDC or Access Key/Secret Key.only. *Note*: This feature requires the following feature flags to be enabled: `CI_CACHE_ENABLED`, `CI_ENABLE_BUILD_CACHE_K8` and `PL_GCP_OIDC_AUTHENTICATION` for GCP or  `CDS_AWS_OIDC_AUTHENTICATION` for AWS. 
-- Secure Connect is now supported with JFrog Artifactory connector (CI-15004). 
-- Support for Docker Build Secrets in "Build and Push" Steps - You can now configure Docker build secrets in the Build and Push step using YAML. This feature allows specifying secrets via `envDockerSecrets` and/or `fileDockerSecrets` field, applicable when running build-and-push steps using Buildx (not Kaniko). Note that using Buildx in Kubernetes build infrastructure requires privileged access.  
-*Note*: This feature requires the feature flag `CI_USE_BUILDX_ON_K8` to be enabled when running builds in Kubernetes.
-- Added support for increasing execution log size limit from 5mb to 25mb, when running builds in Kubernetes. This feature requires the feature flag `CI_INCREASE_LOG_LIMIT` to be enabled, and is supported on Kubernetes build infrastructure only (PIPE-22885). 
 
-To enable feature flags, please contact [Harness Support](mailto:support@harness.io). 
+- [Build Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence) now supports self-hosted builds in Kubernetes. Customer that run builds on Kubernetes can now configure S3-compatible bucket for Build Intelligence caching. Authentication through AWS/GCP connector is currently supported with OIDC or Access Key/Secret Key.only. _Note_: This feature requires the following feature flags to be enabled: `CI_CACHE_ENABLED`, `CI_ENABLE_BUILD_CACHE_K8` and `PL_GCP_OIDC_AUTHENTICATION` for GCP or `CDS_AWS_OIDC_AUTHENTICATION` for AWS.
+- Secure Connect is now supported with JFrog Artifactory connector (CI-15004).
+- Support for Docker Build Secrets in "Build and Push" Steps - You can now configure Docker build secrets in the Build and Push step using YAML. This feature allows specifying secrets via `envDockerSecrets` and/or `fileDockerSecrets` field, applicable when running build-and-push steps using Buildx (not Kaniko). Note that using Buildx in Kubernetes build infrastructure requires privileged access.  
+  _Note_: This feature requires the feature flag `CI_USE_BUILDX_ON_K8` to be enabled when running builds in Kubernetes.
+- Added support for increasing execution log size limit from 5mb to 25mb, when running builds in Kubernetes. This feature requires the feature flag `CI_INCREASE_LOG_LIMIT` to be enabled, and is supported on Kubernetes build infrastructure only (PIPE-22885).
+
+To enable feature flags, please contact [Harness Support](mailto:support@harness.io).
 
 #### Fixed issues
+
 - Improved secret error debugging for pipeline variables - when referencing a non-existent secret in a pipeline variable, the error message now provides actionable details to help debug, rather than a generic exception (CI-15013)
 
 #### Harness images updates
 
-| **Image** | **Change**  | **Previous version** | **New Version** 
-|-------------------------------|-----------------|-------------|------------------|
-| `drone/buildx` | Revert base64 support added to handle secrets with special characters | 1.1.16 | 1.1.19
-| `harness/ci-addon` | Log Service - ability to increase limit for logs in K8S | 1.59 | 1.61
-| `harness/ci-lite-engine` | Log Service - ability to increase limit for logs in K8S | 1.591.59 | 1.611.61
-
+| **Image**                | **Change**                                                            | **Previous version** | **New Version** |
+| ------------------------ | --------------------------------------------------------------------- | -------------------- | --------------- |
+| `drone/buildx`           | Revert base64 support added to handle secrets with special characters | 1.1.16               | 1.1.19          |
+| `harness/ci-addon`       | Log Service - ability to increase limit for logs in K8S               | 1.59                 | 1.61            |
+| `harness/ci-lite-engine` | Log Service - ability to increase limit for logs in K8S               | 1.591.59             | 1.611.61        |
 
 ### Version 1.53
+
 <!-- 2024-11-04 -->
 
 #### New features and enhancements
-- Self-Hosted Cache Intelligence and Docker Layer Caching Enhancements - This release introduces enhancements for self-hosted builds, allowing seamless configuration of S3-compatible caching with AWS or GCP connectors using OIDC for authentication These options are behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` (for Docker layer caching) and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED` (for Cache Intelligence). 
+
+- Self-Hosted Cache Intelligence and Docker Layer Caching Enhancements - This release introduces enhancements for self-hosted builds, allowing seamless configuration of S3-compatible caching with AWS or GCP connectors using OIDC for authentication These options are behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` (for Docker layer caching) and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED` (for Cache Intelligence).
 - OIDC, previously available only for Harness Cloud, is now supported for self-hosted builds running on Kubernetes, enhancing security and simplifying authentication. OIDC is currently behind feature flags `PL_GCP_OIDC_AUTHENTICATION` for GCP and `CDS_AWS_OIDC_AUTHENTICATION` for AWS
 
-To enable feature flags, please contact [Harness Support](mailto:support@harness.io). 
+To enable feature flags, please contact [Harness Support](mailto:support@harness.io).
 
 #### Fixed issues
+
 - Storing secrets in custom secret managers is now supported for cache intelligence in the self-hosted flow. (CI-14719, ZD-71881)
 - Fixed an issue where bitbucket tag builds with tags containing slashes were causing errors in execution due to `<+codebase.commitSha>` returning null. Harness now correctly supports tags with slashes for bitbucket and git builds, ensuring SHA values are properly referenced. (CI-14706, ZD-70972)
 - Addressed an issue where pipelines failed at the clone codebase step on Windows infrastructure when using the GitHub SSH connector and cloning using LFS. (CI-14592, ZD-70570, ZD-71715)
@@ -140,12 +163,11 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 
 #### Harness images updates
 
-| **Image** | **Change**  | **Previous version** | **New Version** 
-|-------------------------------|-----------------|-------------|------------------|
-| `harness/drone-git` |  Fixed an issue when using the GitHub SSH connector on Windows and cloning while fetching LFS files (CI-14592) | 1.61 | 1.62
-| `harness/ci-addon` | Improved "Copy to Clipboard" functionality for pipeline output logs (CI-14200)| 1.16.58 | 1.16.59 
-| `plugin/artifactory` | Added support for Secure Connect (CI-14921)| 1.7.0 | 1.7.1
-
+| **Image**            | **Change**                                                                                                    | **Previous version** | **New Version** |
+| -------------------- | ------------------------------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `harness/drone-git`  | Fixed an issue when using the GitHub SSH connector on Windows and cloning while fetching LFS files (CI-14592) | 1.61                 | 1.62            |
+| `harness/ci-addon`   | Improved "Copy to Clipboard" functionality for pipeline output logs (CI-14200)                                | 1.16.58              | 1.16.59         |
+| `plugin/artifactory` | Added support for Secure Connect (CI-14921)                                                                   | 1.7.0                | 1.7.1           |
 
 ## October 2024
 
@@ -155,29 +177,27 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 
 #### New features and enhancements
 
-- Harness CI now supports **Hardware Acceleration** with nested virtualization on Linux runners with AMD architecture. This enhancement accelerates Android emulation, enabling faster and more efficient Android test execution within virtualized CI environments. See [documentation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#hardware-acceleration) for more information. 
-- Introduced a new plugin, `plugins/test-analysis` to support managing flaky tests by introducing a quarantine mechanism. This helps teams to reduce false positives in CI by isolating non-critical, known flaky test failures. By using a quarantine list, the plugin prevents disruptions caused by unreliable tests, allowing teams to focus on true failures and improve test suite reliability without unnecessary pipeline failures.  See [plugin README](https://github.com/harness-community/parse-test-reports/blob/main/README.md) for more information (CI-13605).
-- Added support for setting display name, which will appear for URLs published in the Artifacts tab, when using the plugin `plugins/artifact-metadata-publisher`. See [documentation](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab/#file_urls) for more information (CI-12176). 
+- Harness CI now supports **Hardware Acceleration** with nested virtualization on Linux runners with AMD architecture. This enhancement accelerates Android emulation, enabling faster and more efficient Android test execution within virtualized CI environments. See [documentation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#hardware-acceleration) for more information.
+- Introduced a new plugin, `plugins/test-analysis` to support managing flaky tests by introducing a quarantine mechanism. This helps teams to reduce false positives in CI by isolating non-critical, known flaky test failures. By using a quarantine list, the plugin prevents disruptions caused by unreliable tests, allowing teams to focus on true failures and improve test suite reliability without unnecessary pipeline failures. See [plugin README](https://github.com/harness-community/parse-test-reports/blob/main/README.md) for more information (CI-13605).
+- Added support for setting display name, which will appear for URLs published in the Artifacts tab, when using the plugin `plugins/artifact-metadata-publisher`. See [documentation](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab/#file_urls) for more information (CI-12176).
 
 #### Fixed issues
 
--  Resolved an issue where excessive logging of the "sanitizeStreamLogs: sanitizing lines" message was flooding the engine and add-on logs. Additionally, a monitoring log line that was previously removed, impacting customer monitoring, has been restored. (CI-14640, ZD-71067)
+- Resolved an issue where excessive logging of the "sanitizeStreamLogs: sanitizing lines" message was flooding the engine and add-on logs. Additionally, a monitoring log line that was previously removed, impacting customer monitoring, has been restored. (CI-14640, ZD-71067)
 - Resolved an issue where sessions were initiated without credential information. The update ensures sessions are now created with the correct credentials, enabling cross-account authentication (CI-14134, ZD-69447)
 
 #### Harness images updates
 
-| **Image** | **Change**  | **Previous version** | **New Version** 
-|-------------------------------|-----------------|-------------|------------------|
-| `harness/ci-addon` | Updated base image and go version, addressing security vulnerabilities (CI-14173) | 1.16.57 | 1.16.58 
-| `harness/ci-addon` | Removed a log line in lite-engine that was breaking a customer's monitoring process (CI-14735)| 1.16.58 | 1.16.58 
-| `harness/ci-lite-engine` | Updated base image and go version, addressing security vulnerabilities (CI-14173) | 1.16.57 | 1.16.58 
-| `harness/ci-lite-engine` | Removed a log line in lite-engine that was breaking a customer's monitoring process (CI-14735)| 1.16.56 | 1.16.57 
-| `harness/drone-git` | Updated the base image, addressing security vulnerabilities | 1.6.0 | 1.6.1 
-| `plugins/artifact-metadata-publisher` | Added support for setting display name, which will appear for URLs published in the Artifacts tab (CI-12176) | 1.0.0 | 2.0.0 
-| `plugins/s3` | Updated session creation to include credential information, allowing for successful cross-account authentication. (CI-14134, ZD-69447) | 1.4.1 | 1.4.3
-| `drone-kaniko` | Added support for AWS OIDC in kaniko-ecr (CI-14242)| 1.10.1 | 1.10.2
-
-
+| **Image**                             | **Change**                                                                                                                             | **Previous version** | **New Version** |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`                    | Updated base image and go version, addressing security vulnerabilities (CI-14173)                                                      | 1.16.57              | 1.16.58         |
+| `harness/ci-addon`                    | Removed a log line in lite-engine that was breaking a customer's monitoring process (CI-14735)                                         | 1.16.58              | 1.16.58         |
+| `harness/ci-lite-engine`              | Updated base image and go version, addressing security vulnerabilities (CI-14173)                                                      | 1.16.57              | 1.16.58         |
+| `harness/ci-lite-engine`              | Removed a log line in lite-engine that was breaking a customer's monitoring process (CI-14735)                                         | 1.16.56              | 1.16.57         |
+| `harness/drone-git`                   | Updated the base image, addressing security vulnerabilities                                                                            | 1.6.0                | 1.6.1           |
+| `plugins/artifact-metadata-publisher` | Added support for setting display name, which will appear for URLs published in the Artifacts tab (CI-12176)                           | 1.0.0                | 2.0.0           |
+| `plugins/s3`                          | Updated session creation to include credential information, allowing for successful cross-account authentication. (CI-14134, ZD-69447) | 1.4.1                | 1.4.3           |
+| `drone-kaniko`                        | Added support for AWS OIDC in kaniko-ecr (CI-14242)                                                                                    | 1.10.1               | 1.10.2          |
 
 ### Version 1.50
 
@@ -185,7 +205,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 
 #### Fixed issues
 
-- Resolved an issue in the build input settings that occurred during manual build runs. When selecting the Pull Request option under build type, the focus would occasionally shift to the Tags option instead. This issue has been fixed to ensure proper selection. (CI-14571, ZD-70841) 
+- Resolved an issue in the build input settings that occurred during manual build runs. When selecting the Pull Request option under build type, the focus would occasionally shift to the Tags option instead. This issue has been fixed to ensure proper selection. (CI-14571, ZD-70841)
 
 - Fixed an issue on the CI Execution Summary page where branch and tag names were being truncated in some cases. The layout has been updated to display the text correctly. (CI-14539)
 
@@ -231,7 +251,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 
 #### New features and enhancements
 
-- Added support for setting Topology Spread Constraints to Kubernetes build pods. A new property, `podSpecOverlay`, has been introduced in the Kubernetes infrastructure properties within the CI stage, allowing users to apply additional settings to the build pod. Currently, this field supports specifying `topologySpreadConstraint`, with plans to extend support for additional configurations in the future. This feature requires using delegate version  24.09.83900 or higher (CI-14033)
+- Added support for setting Topology Spread Constraints to Kubernetes build pods. A new property, `podSpecOverlay`, has been introduced in the Kubernetes infrastructure properties within the CI stage, allowing users to apply additional settings to the build pod. Currently, this field supports specifying `topologySpreadConstraint`, with plans to extend support for additional configurations in the future. This feature requires using delegate version 24.09.83900 or higher (CI-14033)
 
 - Added the ability to exclude connectors from the preflight check. This can be configured in the connector YAML by setting the property `ignoreTestConnection` to `true`. If the user sets this flag as `true` along with the feature flag `CI_IGNORE_TEST_CONNECTION` enabled, no matter the configuration, the connection test will always be marked as **Successful**. The feature is gated behind the feature flag `CI_IGNORE_TEST_CONNECTION`. (CI-13806, ZD-65275,65643)
 
