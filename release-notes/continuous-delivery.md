@@ -47,6 +47,8 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## January 2025
 
+### Version 1.71.2
+
 #### New Features and enhancements
 
 - You can now bypass primary artifact validation by enabling the Disable Artifact Validation checkbox in a service. This skips artifact validation during pipeline execution, including in propagated stages. This feature applies only to primary artifacts. This feature is behind the feature flag `CDS_ARTIFACT_DISABLE_VALIDATION`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-101173)
@@ -55,8 +57,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - The Post-Prod Rollback API has been enhanced to simplify the rollback process by reducing the number of required parameters. The new version of the API allows you to trigger a rollback using just Environment Id, Infrastructure Id, Service Id, and Artifact, making it easier for users to invoke the rollback without dealing with complex identifiers like `instanceKey` and `infraMappingId`. (CDS-97775)
 - Harness now provides detailed log information for pods and container during the Wait For Steady State step in Kubernetes deployments, helping you troubleshoot deployment issues by providing real-time insights into pod statuses. Currently, this feature is behind the feature flag `CDS_K8S_DETAILED_POD_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-99009)
 - `shouldSendTriggerPayload` flag is added in the `eventHistory` API to allow users to exclude the payload from the response, improving performance and preventing issues with large payloads. (PIPE-24223, ZD-75049)
-
-
 
 #### Fixed Issues
 
