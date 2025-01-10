@@ -41,10 +41,9 @@ To add a Jira Create step, do the following:
 
 The fields that are required are determined by your definitions that are set in the project and issue in Jira.
 
-::: 
-Fields and Security
+:::Info Fields and Security
 - Fields for a particular Issue Type must be modifiable in order to be added and set via Harness' Jira connector.  For example, if the Requester Field cannot be edited, or has permission restrictions, then customers can expect an error message when setting the field.  For example, `Fields {Reporter} are invalid for the provided jira issue type`
-- Customers looking to set Requesters and Assignees must make sure they take into account Atlassian's settings and permissions to allow Assignees or Reporters to be searchable.  If all other fields can be set, but no users can be listed, please refer to the following information from Atlassian: https://confluence.atlassian.com/jirakb/cannot-find-users-in-assignee-or-reporter-fields-779158856.html
+- Customers looking to set Requesters and Assignees must make sure they take into account Atlassian's settings and permissions to allow Assignees or Reporters to be searchable.  If all other fields can be set, but no users can be listed, [please refer to the following information from Atlassian] (https://confluence.atlassian.com/jirakb/cannot-find-users-in-assignee-or-reporter-fields-779158856.html)
 :::
 
 
