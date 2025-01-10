@@ -34,7 +34,9 @@ This action currently supports [IDP Stage](https://developer.harness.io/docs/int
 
 :::
 
-This Worfklow action requires **variables of type pipeline, stage or step** as input along with the **pipeline url**(for pipelines using [Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview) make sure your URL includes `branch` and `repoName` e.g., `https://app.harness.io/ng/account/accountID/module/idp/orgs/orgID/projects/projectID/pipelines/pipelineID?repoName=repo-name&branch=branch`), and then trigger the pipeline based in the `inputset` obtained from the user. 
+This Worfklow action requires **variables of type pipeline, stage or step** as input along with the **pipeline url**, and then trigger the pipeline based in the `inputset` obtained from the user. 
+
+> Note: For pipelines using [Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview) make sure your URL includes `branch` and `repoName` e.g., `https://app.harness.io/ng/account/accountID/module/idp/orgs/orgID/projects/projectID/pipelines/pipelineID?repoName=repo-name&branch=branch`
 
 ```YAML
 ...
@@ -48,7 +50,7 @@ steps:
       inputset:
           project_name: ${{ parameters.project_name }}
           github_repo: ${{ parameters.github_repo }}
-          cloud_provider: ${{ parameters.provider }}
+          pipeline.variables.cloud_provider: ${{ parameters.provider }}
           db: ${{ parameters.db }}
           cache: ${{ parameters.cache }}
       apikey: ${{ parameters.token }}
@@ -93,11 +95,17 @@ inputset:
   pipeline.variables.project_name: ${{ parameters.project_name }}
   pipeline.stages.originalStageID.variables.github_repo: ${{ parameters.github_repo }}
 ```
-To obtain these references, simply copy the variable path from the Harness Pipeline Studio UI.
+To obtain these references, simply copy the variable path from the Harness Pipeline Studio UI and remove the special characters `<+` and `>`.
+
+> Note: **This is the only way to reference stage variables and pipelines using templates with variables under `inputset`. Without the fully qualified path, the input will not be valid.**
 
 ![](./static/stage-variable.png)
 
-> Note: **This is the only way to reference stage and step variables under `inputset`, without the fully qualified path, the input isn't valid.**
+| Variables under `inputset`                                                 | What's Supported                                                                |
+|----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| Variable name (`variable_name`)                                      | Supported with Pipelines Variables for IDP stage, custom stage and Codebase Disabled build stage along Pipelines **not** containing any templates.  |
+| Variable name with Fully Qualified Path (`pipeline.variables.variable_name`) | Supported with Pipelines Variables for all supported stages and Pipelines containing any templates.      |
+
 
 :::info 
 
