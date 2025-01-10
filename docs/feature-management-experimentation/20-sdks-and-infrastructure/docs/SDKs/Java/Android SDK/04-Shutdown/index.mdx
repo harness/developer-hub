@@ -12,9 +12,7 @@ import {
   Shutdown,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
-import ShutdownFactory from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_050_ShutdownFactory.mdx";
-
-import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
+import FactoryDestroy from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_050_codeFactoryDestroy.mdx";
 
 export const toc = [];
 
@@ -23,7 +21,7 @@ export const Result = SDKDocsBuilder(
     [
       Shutdown,
       {
-        example: <ShutdownFactory />,
+        codeFactoryDestroy: <FactoryDestroy />,
       },
     ],
   ],

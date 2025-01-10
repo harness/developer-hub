@@ -1,0 +1,90 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+var sdk = splitio({
+  core: {
+    authorizationKey: 'localhost',
+    key: 'CUSTOMER_ID'
+  },
+  features: {
+    'reporting_v2': 'on', // example with just a string value for the treatment
+    'billing_updates': { treatment: 'visa', config: '{ "color": "blue" }' }, // example of a defined config
+    'show_status_bar': { treatment: 'off', config: null } // example of a null config
+  },
+  scheduler: {
+    offlineRefreshRate: 15 // 15 sec
+  }
+});
+
+var client = sdk.client();
+
+// The following code will be evaluated once the engine finishes the initialization
+client.on(client.Event.SDK_READY, function() {
+  // The sentence below will return 'on'
+  var t1 = client.getTreatment('reporting_v2')
+  // The sentence below will return an object with the structure of: {treatment:'visa',config:'{ "color":"blue" }'}
+  var t2 = client.getTreatmentWithConfig('billing_updates')
+  // The sentence below will return 'control' because that feature does not exist
+  var t3 = client.getTreatmentWithConfig('navigation_bar_changes')
+});
+
+// The following code will be evaluated only if using the LocalStorage option as storage type. 
+// The only difference with the production mode is that the event is always emitted in localhost mode, 
+// since the SDK can evaluate using the features provided by your `features` config object.
+client.on(client.Event.SDK_READY_FROM_CACHE, function() {
+  // The sentence below will return 'on'
+  var t1 = client.getTreatment('reporting_v2') 
+});
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+const sdk: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'localhost',
+    key: 'CUSTOMER_ID'
+  },
+  features: {
+    'reporting_v2': 'on', // example with just a string value for the treatment
+    'billing_updates': { treatment: 'visa', config: '{ "color": "blue"}' } // example of a defined config
+    'show_status_bar': { treatment: 'off', config: null } // example of a null config
+  },
+  scheduler: {
+    offlineRefreshRate: 15 // 15 sec
+  }
+});
+
+const client: SplitIO.IBrowserClient = sdk.client();
+
+// The following code will be evaluated once the engine finishes the initialization
+client.on(client.Event.SDK_READY, () => {
+  // The sentence below will return 'on'
+  const t1: SplitIO.Treatment = client.getTreatment('reporting_v2');
+  // The sentence below will return an object with the structure of: {treatment:'visa',config:'{ "color":"blue" }'
+  const t2: SplitIO.Treatment = client.getTreatmentWithConfig('billing_updates');
+  // The sentence below will return 'control' because that feature does not exist
+  const t3: SplitIO.Treatment = client.getTreatmentWithConfig('navigation_bar_changes');
+});
+
+// The following code will be evaluated only if using the LocalStorage option as storage type. 
+// The only difference with the production mode is that the event is always emitted in localhost mode, 
+// since the SDK can evaluate using the features provided by your `features` config object.
+client.on(client.Event.SDK_READY_FROM_CACHE, () => {
+  // The sentence below will return 'on'
+  const t1: SplitIO.Treatment = client.getTreatment('reporting_v2') 
+});
+```
+
+  </TabItem>
+</Tabs>

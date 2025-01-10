@@ -1,0 +1,58 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+the SDK configuration has a parameter called `impressionListener` where an implementation of `ImpressionListener` can be added.
+
+Example of a custom impression listener:
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+function logImpression(impressionData) {
+  // do something with the impression data.
+}
+ 
+var factory = SplitFactory({ 
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  impressionListener: {
+    logImpression: logImpression
+  }
+});
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+class MyImprListener implements SplitIO.IImpressionListener {
+  logImpression(impressionData: SplitIO.ImpressionData) {
+    // do something with impressionData
+  }
+}
+ 
+const factory: SplitIO.IBrowserSDK = SplitFactory({ 
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  impressionListener: {
+    logImpression: new MyImprListener()
+  }
+});
+```
+
+  </TabItem>
+</Tabs>
+
+An impression listener is called asynchronously from the corresponding evaluation, but is almost immediate. 
+
+Even though the SDK does not fail, if there is an exception in the listener, do not block the call stack.

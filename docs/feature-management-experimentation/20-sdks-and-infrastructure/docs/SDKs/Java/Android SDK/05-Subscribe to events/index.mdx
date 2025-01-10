@@ -12,10 +12,8 @@ import {
   SdkEvents,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
-import SdkEventsSubscribe          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_060_SdkEventsSubscribe.mdx";
-import SdkEventsPost               from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_061_SdkEventsPost.mdx";
-
-import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
+import SplitEventTask from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_060_codeSplitEventTask.mdx";
+import ClientOnEvent  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_060_codeClientOnEvent.mdx";
 
 export const toc = [];
 
@@ -24,8 +22,8 @@ export const Result = SDKDocsBuilder(
     [
       SdkEvents,
       {
-        example:      <SdkEventsSubscribe />,
-        exPostEvents: <SdkEventsPost />,
+        codeSplitEventTask: <SplitEventTask />,
+        codeClientOnEvent:  <ClientOnEvent />,
       },
     ],
   ],

@@ -1,0 +1,41 @@
+---
+title: ""
+sidebar_label: Advanced use cases
+description: Use an external impression listener, multiple SDK clients, user consent, and certificate pinning.
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  AdvancedUseCases,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
+
+import Impression         from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_111_codeImpression.mdx";
+import ImpressionListener from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_111_codeImpressionListener.mdx";
+
+import MultipleClientsNotes from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_112_notes.mdx";
+import SplitFactoryClient   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_112_codeSplitFactoryClient.mdx";
+
+import GetUserConsent      from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_113_codeGetUserConsent.mdx";
+
+export const toc = [];
+
+export const Result = SDKDocsBuilder(
+  [
+    [
+      AdvancedUseCases,
+      {
+        codeImpression:         <Impression />,
+        codeImpressionListener: <ImpressionListener />,
+        notes:                  <MultipleClientsNotes />,
+        codeSplitFactoryClient: <SplitFactoryClient />,
+        codeGetUserConsent: <GetUserConsent />,
+      },
+    ],
+  ],
+  toc
+);
+
+<>{Result}</>

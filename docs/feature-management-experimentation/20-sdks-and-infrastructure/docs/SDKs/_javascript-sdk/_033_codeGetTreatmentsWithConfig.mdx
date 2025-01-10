@@ -1,0 +1,60 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+// Getting treatments by feature flag names
+var featureFlagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
+ 
+var treatmentResults = client.getTreatmentsWithConfig(featureFlagNames);
+
+// Getting treatments by set
+treatmentResults = client.getTreatmentsWithConfigByFlagSet('frontend');
+
+// Getting treatments for the union of multiple sets
+var flagSets = ['frontend', 'client_side'];
+treatmentResults = client.getTreatmentsWithConfigByFlagSets(flagSets);
+
+// treatmentResults will have the following form: 
+// {
+//   FEATURE_FLAG_NAME_1: {treatment: 'on',
+//                  config: "{ 'color' : 'red'}}",
+//   FEATURE_FLAG_NAME_2: {treatment: 'v2',
+//                  config: "{ 'copy' : 'better copy'}}",
+// }
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+// Getting treatments by feature flag names
+const featureFlagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
+ 
+let treatmentResults: SplitIO.TreatmentsWithConfig = client.getTreatmentsWithConfig(featureFlagNames);
+
+// Getting treatments by set
+treatmentResults = client.getTreatmentsWithConfigByFlagSet('frontend');
+
+// Getting treatments for the union of multiple sets
+const flagSets = ['frontend', 'client_side'];
+treatmentResults = client.getTreatmentsWithConfigByFlagSets(flagSets);
+
+// treatmentResults will have the following form: 
+// {
+//   FEATURE_FLAG_NAME_1: {treatment: 'on',
+//                  config: "{ 'color' : 'red'}}",
+//   FEATURE_FLAG_NAME_2: {treatment: 'v2',
+//                  config: "{ 'copy' : 'better copy'}}",
+// }
+```
+
+  </TabItem>
+</Tabs>

@@ -1,0 +1,9 @@
+The impression listener implementation **must** define the `logImpression` method and it receives data in the following schema.
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- | 
+| impression | Object | Impression object that has the feature, key, treatment, label, etc. |
+| attributes | Object | A map of attributes passed to `getTreatment`/`getTreatments` (if any). |
+| sdkLanguageVersion | String| The version of the SDK. In this case the language is `javascript` plus the version currently running. |
+
+There are two additional keys on this object, `ip` and `hostname`. They are not used on the browser.

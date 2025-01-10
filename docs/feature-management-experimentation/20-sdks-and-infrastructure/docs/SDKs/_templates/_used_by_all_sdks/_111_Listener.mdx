@@ -2,22 +2,5 @@
 
 Split SDKs send impression data back to Split servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*.
 
-The SDK sends the generated impressions to the impression listener right away. Because of this, be careful while implementing handling logic to avoid blocking the main thread. Generally speaking, you should create a separate thread to handle incoming impressions. Refer to the snippet below:
-
-<>{props.example}</>
-
-In regards with the data available here, refer to the `Impression` objects interface and information about each field below:
-
-<>{props.impression}</>
-
-| **Name** | **Type** | **Description** |
-| --- | --- | --- | 
-| key | String | Key which is evaluated. |
-| bucketingKey | String | Key which is used for bucketing, if provided. |
-| split | String | Feature flag which is evaluated. |
-| treatment | String | Treatment that is returned. |
-| time | Long | Timestamp of when the impression is generated. |
-| appliedRule | String | Targeting rule in the definition that matched resulting in the treatment being returned. |
-| changeNumber | Long | Date and time of the last change to the targeting rule that the SDK used when it served the treatment. It is important to understand when a change made to a feature flag is picked up by the SDKs and whether one of the SDK instances is not picking up changes. |
-| attributes | Map\<String, Object\> | A map of attributes passed to `getTreatment`/`getTreatments`, if any. |
-| previousTime | Long | If SDK is deduping and a matching impression is seen before on the lifetime of the instance this is its timestamp. |
+<>{props.codeImpressionListener}</>
+<>{props.codeImpression}</>

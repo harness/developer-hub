@@ -1,0 +1,76 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+To enable SDK logging in the browser, open your DevTools console and type the following:
+
+```javascript title="Enable logging from browser console"
+// Acceptable values are 'DEBUG', 'INFO', 'WARN', 'ERROR' and 'NONE'
+// Other acceptable values are 'on', 'enable' and 'enabled', which are equivalent to 'DEBUG' log level
+localStorage.splitio_debug = 'on' <enter>
+```
+
+Reload the browser to start seeing the logs.
+
+Beginning with v9.2.0 of the SDK, you can also enable the logging via SDK settings and programmatically by calling the Logger API.
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Logger API (JavaScript)', value: 'javascript'},
+    {label: 'Logger API (TypeScript)', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+var SplitFactory = require('@splitsoftware/splitio').SplitFactory;
+ 
+var sdk = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: true // Debug boolean option can be passed on settings
+  // It takes precedence over the localStorage flag.
+});
+ 
+// Or you can use the Logger API which two methods, enable and disable.
+// Calling this methods will have an immediate effect.
+sdk.Logger.enable();
+sdk.Logger.disable();
+
+// You can also set the log level programatically after v10.4.0
+// Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
+// 'DEBUG' is equivalent to `enable` method.
+// 'NONE' is equivalent to `disable` method.
+sdk.Logger.setLogLevel('WARN');
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+import { SplitFactory } from '@splitsoftware/splitio';
+ 
+const sdk: SplitIO.IBrowserSDK = SplitFactory({ 
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: true // Debug boolean option can be passed on settings.
+  // It takes precedence over the localStorage flag.
+});
+
+// Or you can use the Logger API which two methods, enable and disable.
+// Calling this methods will have an immediate effect.
+sdk.Logger.enable();
+sdk.Logger.disable();
+
+// You can also set the log level programatically after v10.4.0
+// Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
+// 'DEBUG' is equivalent to `enable` method.
+// 'NONE' is equivalent to `disable` method.
+sdk.Logger.setLogLevel('WARN');
+```
+
+  </TabItem>
+</Tabs>

@@ -1,0 +1,32 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+The `getTreatmentWithConfig` method returns the `TreatmentResult` object:
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+var TreatmentResult = {
+  String treatment;
+  String config; // or null if there is no config for the treatment
+}
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+type TreatmentResult = {
+  treatment: string,
+  config: string | null
+};
+```
+
+  </TabItem>
+</Tabs>

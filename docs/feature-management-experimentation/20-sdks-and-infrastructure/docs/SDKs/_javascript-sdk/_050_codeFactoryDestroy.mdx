@@ -1,0 +1,46 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+// You can just destroy and remove the variable reference and move on:
+user_client.destroy();
+user_client = null;
+ 
+// destroy() returns a promise, so if you want to, for example,
+// navigate to another page without losing impressions, you 
+// can do that once the promise resolves.
+user_client.destroy().then(function() {
+  user_client = null;
+
+  document.location.replace('another_page');
+});
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript
+// You can just destroy and remove the variable reference and move on:
+user_client.destroy();
+user_client = null;
+ 
+// destroy() returns a promise, so if you want to, for example,
+// navigate to another page without losing impressions, you 
+// can do that once the promise resolves.
+user_client.destroy().then(function() {
+  user_client = null;
+
+  document.location.replace('another_page');
+});
+```
+
+  </TabItem>
+</Tabs>

@@ -1,0 +1,44 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+var treatmentResult = client.getTreatmentWithConfig('FEATURE_FLAG_NAME', attributes);
+var configs = JSON.parse(treatmentResult.config);
+var treatment = treatmentResult.treatment;
+ 
+if (treatment === 'on') {
+  // insert on code here and use configs here as necessary
+} else if (treatment === 'off') {
+  // insert off code here and use configs here as necessary
+} else {
+  // insert control code here
+}
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+const treatmentResult: SplitIO.TreatmentWithConfig = client.getTreatmentWithConfig('FEATURE_FLAG_NAME', attributes);
+const configs = JSON.parse(treatmentResult.config);
+const treatment = treatmentResult.treatment;
+
+if (treatment === 'on') {
+  // insert on code here and use configs here as necessary
+} else if (treatment === 'off') {
+  // insert off code here and use configs here as necessary
+} else {
+  // insert control code here
+}
+```
+
+  </TabItem>
+</Tabs>

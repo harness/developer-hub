@@ -7,14 +7,8 @@ When the SDK retrieves (or updates the local copy of) a rollout plan (feature fl
 * `SDK_READY_TIMED_OUT `. This event fires if there is no cached version of your rollout plan in disk cache, and the SDK could not fully download the data from Harness servers within the time specified by the `ready` setting of the `SplitClientConfig` object. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished.  This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in the FME (Split) user interface.
 
-An event is an extension of the `SplitEventTask`:
+<>{props.codeSplitEventTask}</>
 
-<>{props.example}</>
+Example of listening for each event:
 
-You can use the `onPostExecution` method to execute some long-running tasks in the background after an event is fired.
-
-The `onPostExecutionView` method is invoked on the UI thread after the `onPostExecution` method completes.
-
-Example using `onPostExecution` and `onPostExecutionView`:
-
-<>{props.exPostEvents}</>
+<>{props.codeClientOnEvent}</>

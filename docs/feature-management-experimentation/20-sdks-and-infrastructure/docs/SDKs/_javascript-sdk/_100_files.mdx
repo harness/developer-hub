@@ -1,0 +1,59 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+As shown above, you define the feature flags you want to use in the `features` object map. All `getTreatment` calls for a feature flag now only return the one treatment (and config, if defined) that you have defined in the map.
+
+Note that you can define in the `features` object a feature flag name and its treatment directly or use a map to define both a treatment and a dynamic configuration.
+
+If you define just a string as the value for a feature flag name, any config returned by our SDKs are always null. If you use a map, we return the specified treatment and the specified config (which can also be null).
+
+Any feature that is not provided in the `features` object returns the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK was asked to evaluate them.
+
+You can use the additional configuration parameters below when instantiating the SDK in localhost mode.
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| scheduler.offlineRefreshRate | The refresh interval for the mocked features treatments. | 15 |
+| features | A fixed mapping of which treatment to show for our mocked features. | \{\} <br />By default we have no mocked features. |
+
+You can then change the feature flags as necessary for your testing, by mutating the properties of the `features` object you've provided. The SDK simulates polling for changes every `offlineRefreshRate` seconds, and will emit an `SDK_UPDATE` event if the mocked features have changed.
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+// The SDK keeps a reference to the `features` object map, so you can mutate the object as follows to emit SDK_UPDATE events:
+config.features['reporting_v2'] = 'off'; // update reporting_v2
+config.features['reporting_v3'] = 'off'; // add reporting_v3
+delete config.features['reporting_v2']; // delete reporting_v2
+
+// In case you need to update the whole mock object, you can replace the internal reference from the factory:
+factory.settings.features = { 'reporting_v3': 'off' };
+
+// But don't do it on the passed configuration, as the SDK will not reference the new object:
+config.features = { 'reporting_v3': 'off' }; // Will not emit SDK_UPDATE
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript
+// The SDK keeps a reference to the `features` object map, so you can mutate the object as follows to emit SDK_UPDATE events:
+config.features['reporting_v2'] = 'off'; // update reporting_v2
+config.features['reporting_v3'] = 'off'; // add reporting_v3
+delete config.features['reporting_v2']; // delete reporting_v2
+
+// In case you need to update the whole mock object, you can replace the internal reference from the factory:
+factory.settings.features = { 'reporting_v3': 'off' };
+
+// But don't do it on the passed configuration, as the SDK will not reference the new object:
+config.features = { 'reporting_v3': 'off' }; // Will not emit SDK_UPDATE
+```
+
+  </TabItem>
+</Tabs>

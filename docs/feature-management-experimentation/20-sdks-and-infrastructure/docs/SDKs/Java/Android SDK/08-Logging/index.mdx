@@ -12,10 +12,9 @@ import {
   Logging,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
-import LoggingDebug                from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_080_LoggingDebug.mdx";
-import LoggingOutput               from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_081_LoggingOutput.mdx";
-
-import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
+import Log    from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_080_codeLog.mdx";
+import Output from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_080_outputLog.mdx";
+import Notes  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_080_notes.mdx";
 
 export const toc = [];
 
@@ -24,8 +23,9 @@ export const Result = SDKDocsBuilder(
     [
       Logging,
       {
-        example: <LoggingDebug />,
-        output:  <LoggingOutput />,
+        codeLog:   <Log  />,
+        outputLog: <Output />,
+        notes:     <Notes   />,
       },
     ],
   ],

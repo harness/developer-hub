@@ -16,11 +16,13 @@ import {
   UseTheSdk,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
-import Introduction    from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_000_Introduction.mdx";
-import LanguageSupport from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_001_LanguageSupport.mdx";
-import Import          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_002_Import.mdx";
-import Instantiate     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_003_Instantiate.mdx";
-import GetTreatment    from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_010_GetTreatment.mdx";
+import Introduction from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_000_introduction.mdx";
+import Language     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_000_language.mdx";
+import Import       from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_000_codeImport.mdx";
+import Instantiate  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_000_codeInstantiate.mdx";
+
+import GetTreatment from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_010_codeGetTreatment.mdx";
+import UseNotes     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_010_notes.mdx";
 
 import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
 
@@ -37,20 +39,21 @@ export const Result = SDKDocsBuilder(
     [ 
       GetStarted, 
       {
-        sdkType:       "Android",
-        sdkKeyType:    "client-side",
-        repo:          "https://github.com/splitio/android-client",
-        introduction:  <Introduction />,
-        language:      <LanguageSupport />,
-        import:        <Import />,
-        instantiate:   <Instantiate />,
-        sdkKeyDetails: <ClientSdkKeyDetails />,
+        sdkName:         "Android",
+        sdkKeyType:      "client-side",
+        repo:            "https://github.com/splitio/android-client",
+        introduction:    <Introduction />,
+        language:        <Language />,
+        codeImport:      <Import />,
+        codeInstantiate: <Instantiate />,
+        sdkKeyDetails:   <ClientSdkKeyDetails />,
       },
     ],
     [
       UseTheSdk,
       {
-        example: <GetTreatment />,
+        codeGetTreatment: <GetTreatment />,
+        notes:            <UseNotes />,
       },
     ],
   ],

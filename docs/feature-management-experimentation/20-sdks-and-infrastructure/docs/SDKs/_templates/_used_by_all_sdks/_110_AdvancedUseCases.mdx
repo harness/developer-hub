@@ -8,9 +8,15 @@ import CertificatePinning from "./_114_CertificatePinning.mdx";
 This section describes advanced use cases and features provided by the SDK.
 
 <Listener 
-  example   ={ props.listener  }
-  impression={ props.listenerImpression } />
+  codeImpression        ={ props.codeImpression  }
+  codeImpressionListener={ props.codeImpressionListener } />
 
-<MultipleSdkClients example={ props.multipleClients    } />
-<UserConsent        example={ props.userConsent        } />
-<CertificatePinning example={ props.certificatePinning } />
+<MultipleSdkClients codeSplitFactoryClient={ props.codeSplitFactoryClient } />
+
+<UserConsent codeGetUserConsent={ props.codeGetUserConsent } />
+
+<div style={{ display: props.codeCertificatePinningConfiguration ? "block" : "none" }}>
+
+  <CertificatePinning codeCertificatePinningConfiguration={ props.codeCertificatePinningConfiguration } />
+
+</div>

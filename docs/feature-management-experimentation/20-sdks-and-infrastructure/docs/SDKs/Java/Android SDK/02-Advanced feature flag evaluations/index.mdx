@@ -12,14 +12,16 @@ import {
   AdvancedFeatureFlagEvaluations,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
-import UserAttributesCreate        from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_031_UserAttributesCreate.mdx";
-import UserAttributesBind          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_031_UserAttributesBind.mdx";
-import UserAttributesExample       from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_031_UserAttributesExample.mdx";
-import MultipleTreatments          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_032_MultipleTreatments.mdx";
-import TreatmentWithConfigSingle   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_033_TreatmentWithConfigSingle.mdx";
-import TreatmentWithConfigMultiple from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_033_TreatmentWithConfigMultiple.mdx";
+import GetTreatmentAttributes     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_031_codeGetTreatmentAttributes.mdx";
+import NotesPersistentAttributes  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_031_notesPersistentAttributesEnabled.mdx";
+import AttributesManagerInterface from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_031_codeAttributesManagerInterface.mdx";
+import ClientSetAttribute         from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_031_codeClientSetAttribute.mdx";
 
-import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
+import GetTreatments              from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_032_codeGetTreatments.mdx";
+
+import TreatmentResult            from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_033_codeTreatmentResult.mdx";
+import GetTreatmentWithConfig     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_033_codeGetTreatmentWithConfig.mdx";
+import GetTreatmentsWithConfig    from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_033_codeGetTreatmentsWithConfig.mdx";
 
 export const toc = [];
 
@@ -28,12 +30,14 @@ export const Result = SDKDocsBuilder(
     [
       AdvancedFeatureFlagEvaluations,
       {
-        userAttributesCreate:  <UserAttributesCreate />,
-        userAttributesBind:    <UserAttributesBind />,
-        userAttributesExample: <UserAttributesExample />,
-        multipleTreatments: <MultipleTreatments />,
-        treatmentWithConfigSingle:   <TreatmentWithConfigSingle />,
-        treatmentWithConfigMultiple: <TreatmentWithConfigMultiple />,
+        codeGetTreatmentAttributes:       <GetTreatmentAttributes />,
+        notesPersistentAttributesEnabled: <NotesPersistentAttributes />,
+        codeAttributesManagerInterface:   <AttributesManagerInterface />,
+        codeClientSetAttribute:           <ClientSetAttribute />,
+        codeGetTreatments: <GetTreatments />,
+        codeTreatmentResult:      <TreatmentResult />,
+        codeTreatmentWithConfig:  <GetTreatmentWithConfig />,
+        codeTreatmentsWithConfig: <GetTreatmentsWithConfig />,
       },
     ],
   ],

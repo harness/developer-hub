@@ -1,0 +1,64 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript title="User consent: Initial config, getter and setter"
+var factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  // Overwrites the initial consent status of the factory instance, which is 'GRANTED' by default.
+  // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
+  // so the SDK will locally track data but not send it to Split cloud until consent is changed to 'GRANTED'.
+  userConsent: 'UNKNOWN'
+});
+
+// `getStatus` method returns the current consent status.
+factory.UserConsent.getStatus() === factory.UserConsent.Status.UNKNOWN;
+
+// `setStatus` method lets you update the factory consent status at any time.
+// Pass `true` for 'GRANTED' and `false` for 'DECLINED'.
+factory.UserConsent.setStatus(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Split cloud.
+factory.UserConsent.getStatus() === factory.UserConsent.Status.GRANTED;
+
+factory.UserConsent.setStatus(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Split cloud.
+factory.UserConsent.getStatus() === factory.UserConsent.Status.DECLINED;
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript title="User consent: Initial config, getter and setter"
+var factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  // Overwrites the initial consent status of the factory instance, which is 'GRANTED' by default.
+  // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
+  // so the SDK will locally track data but not send it to Split cloud until consent is changed to 'GRANTED'.
+  userConsent: 'UNKNOWN'
+});
+
+// `getStatus` method returns the current consent status.
+factory.UserConsent.getStatus() === factory.UserConsent.Status.UNKNOWN;
+
+// `setStatus` method lets you update the factory consent status at any time.
+// Pass `true` for 'GRANTED' and `false` for 'DECLINED'.
+factory.UserConsent.setStatus(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Split cloud.
+factory.UserConsent.getStatus() === factory.UserConsent.Status.GRANTED;
+
+factory.UserConsent.setStatus(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Split cloud.
+factory.UserConsent.getStatus() === factory.UserConsent.Status.DECLINED;
+```
+
+  </TabItem>
+</Tabs>

@@ -1,0 +1,44 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+client.on(client.Event.SDK_READY, function() {
+  var treatment = client.getTreatment('FEATURE_FLAG_NAME');
+ 
+  if (treatment == "on") {
+      // insert code here to show on treatment
+  } else if (treatment == "off") {
+      // insert code here to show off treatment
+  } else {
+      // insert your control treatment code here
+  }
+});
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+client.on(client.Event.SDK_READY, function() {
+  const treatment: SplitIO.Treatment = client.getTreatment('FEATURE_FLAG_NAME');
+ 
+  if (treatment == "on") {
+      // insert code here to show on treatment
+  } else if (treatment == "off") {
+      // insert code here to show off treatment
+  } else {
+      // insert your control treatment code here
+  }
+});
+```
+
+  </TabItem>
+</Tabs>

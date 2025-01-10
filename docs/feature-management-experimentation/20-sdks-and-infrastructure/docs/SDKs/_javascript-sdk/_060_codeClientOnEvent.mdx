@@ -1,0 +1,88 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+function whenReady() {
+  var treatment = client.getTreatment('FEATURE_FLAG_NAME');
+ 
+  if (treatment === 'on') {
+    // insert on code
+  } else if (treatment === 'off') {
+    // insert off code
+  } else {
+    // insert control code (usually the same as default treatment)
+  }
+}
+ 
+// the client is ready to evaluate treatments according to the latest flag definitions
+client.once(client.Event.SDK_READY, whenReady);
+ 
+client.once(client.Event.SDK_READY_TIMED_OUT, function () {
+  // this callback will be called after the amount of time defined by startup.readyTimeout if and only if the client
+  // is not ready in that time. You can still call getTreatment() 
+  // but it could return CONTROL.
+});
+ 
+client.on(client.Event.SDK_UPDATE, function () {
+  // fired each time the client state changes. 
+  // For example, when a feature flag or segment changes.
+  console.log('The SDK has been updated!');
+});
+
+// This event only fires using the LocalStorage option and if there's Split data stored in the browser.
+client.once(client.Event.SDK_READY_FROM_CACHE, function () {
+  // Fired after the SDK could confirm the presence of the Split data.
+  // This event fires really quickly, since there's no actual fetching of information.
+  // Keep in mind that data might be stale, this is NOT a replacement of SDK_READY.
+});
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript
+function whenReady() {
+  const treatment: SplitIO.Treatment = client.getTreatment('FEATURE_FLAG_NAME');
+ 
+  if (treatment === 'on') {
+    // insert on code
+  } else if (treatment === 'off') {
+    // insert off code
+  } else {
+    // insert control code (usually the same as default treatment)
+  }
+}
+ 
+// the client is ready for start making evaluations with your data
+client.once(client.Event.SDK_READY, whenReady);
+ 
+client.once(client.Event.SDK_READY_TIMED_OUT, () => {
+  // this callback is called after 1.5 seconds if and only if the client
+  // is not ready for that time. You can still call getTreatment() 
+  // but it could return CONTROL.
+});
+ 
+client.on(client.Event.SDK_UPDATE, () => {
+  // fired each time the client state change. 
+  // For example, when a feature flag or segment changes.
+  console.log('The SDK has been updated!');
+});
+
+// This event only fires using the LocalStorage option and if there's Split data stored in the browser.
+client.once(client.Event.SDK_READY_FROM_CACHE, function () {
+  // Fired after the SDK could confirm the presence of the Split data.
+  // This event fires really quickly, since there's no actual fetching of information.
+  // Keep in mind that data might be stale, this is NOT a replacement of SDK_READY.
+});
+```
+
+  </TabItem>
+</Tabs>

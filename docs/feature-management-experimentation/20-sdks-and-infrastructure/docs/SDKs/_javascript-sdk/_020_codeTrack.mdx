@@ -1,0 +1,56 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+// If you have only passed the key to the SDK
+var queued = client.track('TRAFFIC_TYPE', 'EVENT_TYPE', eventValue, { properties });
+// Example with both a value and properties
+var properties = {package : "premium", admin : true, discount : 50};
+var queued = client.track('user', 'page_load_time', 83.334, properties);
+
+// Example with only properties
+var properties = {package : "premium", admin : true, discount : 50};
+var queued = client.track('user', 'page_load_time', null, properties);
+
+// Example with both a value and properties
+var properties = {package : "premium", admin : true, discount : 50};
+var queued = client.track('user', 'page_load_time', 83.334, properties);
+
+// Example with only properties
+var properties = {package : "premium", admin : true, discount : 50};
+var queued = client.track('user', 'page_load_time', null, properties);
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript
+// If you have only passed the key to the SDK
+const queued: boolean = client.track('TRAFFIC_TYPE', 'EVENT_TYPE', eventValue, , { properties });
+// Example with both a value and properties
+const properties = {package : "premium", admin : true, discount : 50};
+const queued = client.track('user', 'page_load_time', 83.334, properties);
+
+// Example with only properties
+const properties = {package : "premium", admin : true, discount : 50};
+const queued = client.track('user', 'page_load_time', null, properties);
+
+// Example with both a value and properties
+const properties = {package : "premium", admin : true, discount : 50};
+const queued = client.track('user', 'page_load_time', 83.334, properties);
+
+// Example with only properties
+const properties = {package : "premium", admin : true, discount : 50};
+const queued = client.track('user', 'page_load_time', null, properties);
+```
+
+  </TabItem>
+</Tabs>

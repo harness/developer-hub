@@ -12,9 +12,9 @@ import {
   Localhost,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
-import LocalhostMode from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_100_LocalhostMode.mdx";
-
-import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
+import LocalhostMode from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_100_codeLocalhostMode.mdx";
+import Files         from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_100_files.mdx";
+import Notes         from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_100_notes.mdx";
 
 export const toc = [];
 
@@ -23,7 +23,9 @@ export const Result = SDKDocsBuilder(
     [
       Localhost,
       {
-        example: <LocalhostMode />,
+        codeLocalHostMode: <LocalhostMode />,
+        files: <Files />,
+        notes: <Notes />,
       },
     ],
   ],

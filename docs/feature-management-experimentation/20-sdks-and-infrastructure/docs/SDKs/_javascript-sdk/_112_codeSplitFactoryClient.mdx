@@ -1,0 +1,79 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+var factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'CUSTOMER_ACCOUNT_ID',
+    // Instantiate the sdk once and provide the ID for one of the
+    // traffic types that you plan to release to. It doesn't
+    // matter which you pick to start off with.
+  },
+});
+ 
+// now when you call factory.client(), the sdk will create a client
+// using the Account ID you passed in during the factory creation.
+var account_client = factory.client();
+ 
+// to create another client for a User traffic type instead,
+// just pass in a User ID to the factory.client() method.
+// This is only valid after at least one client has been initialized.
+var user_client = factory.client('CUSTOMER_USER_ID'); 
+ 
+// check treatment for user-poll and CUSTOMER_USER_ID
+var user_poll_treatment = user_client.getTreatment('user-poll');
+ 
+// check treatment for account-permissioning and CUSTOMER_ACCOUNT_ID
+var account_permissioning_treatment = account_client.getTreatment('account-permissioning');
+ 
+// track events for user traffic type
+user_client.track('user', 'PAGELOAD', 7.86);
+ 
+// or track events for account traffic type
+account_client.track('account', 'ACCOUNT_CREATED');
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+const sdk: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'CUSTOMER_ACCOUNT_ID' 
+    // instantiate the sdk once and provide the ID for one of the
+    // traffic types that you plan to release to. It doesn't
+    // matter which you pick to start off with. 
+  },
+});
+ 
+// now when you call sdk.client(), the sdk will create a client
+// using the Account ID you passed in during the factory creation.
+const account_client: SplitIO.IBrowserClient = factory.client();
+ 
+// to create another client for a User instead, just pass in a
+// User ID to the sdk.client() method. This is only valid after 
+// at least one client has been initialized.
+const user_client: SplitIO.IBrowserClient =
+  factory.client('CUSTOMER_USER_ID'); 
+ 
+// check treatment for user-poll and CUSTOMER_USER_ID
+const user_poll_treatment: SplitIO.Treatment =
+  user_client.getTreatment('user-poll');
+ 
+// check treatment for account-permissioning and CUSTOMER_ACCOUNT_ID
+const account_permissioning_treatment: SplitIO.Treatment =
+  account_client.getTreatment('account-permissioning');
+```
+
+  </TabItem>
+</Tabs>

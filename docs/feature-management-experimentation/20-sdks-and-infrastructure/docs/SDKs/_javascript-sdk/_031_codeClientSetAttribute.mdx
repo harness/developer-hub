@@ -1,0 +1,74 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+var attributes = {
+  registered_date: new Date('YYYY-MM-DDTHH:mm:ss.sssZ').getTime(),
+  plan_type: 'growth',
+  deal_size: 10000,
+  paying_customer: true,
+  permissions: ["read", "write"]
+};
+
+// set attributes returns true unless there is an issue storing it
+var result = client.setAttributes(attributes);
+
+// set one attribute and returns true unless there is an issue storing it
+var result = client.setAttribute('paying_customer', false);
+
+// Get an attribute
+var plan_type = client.getAttribute('plan_type');
+
+// Get all attributes
+var stored_attributes = client.getAttributes();
+
+// Remove an attribute
+var result = client.removeAttribute('permissions');
+
+// Remove all attributes
+var result = client.clearAttributes();
+
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript
+var attributes = {
+  registered_date: new Date('YYYY-MM-DDTHH:mm:ss.sssZ').getTime(),
+  plan_type: 'growth',
+  deal_size: 10000,
+  paying_customer: true,
+  permissions: ["read", "write"]
+};
+
+// set attributes returns true unless there is an issue storing it
+var result = client.setAttributes(attributes);
+
+// set one attribute and returns true unless there is an issue storing it
+var result = client.setAttribute('paying_customer', false);
+
+// Get an attribute
+var plan_type = client.getAttribute('plan_type');
+
+// Get all attributes
+var stored_attributes = client.getAttributes();
+
+// Remove an attribute
+var result = client.removeAttribute('permissions');
+
+// Remove all attributes
+var result = client.clearAttributes();
+
+```
+
+  </TabItem>
+</Tabs>

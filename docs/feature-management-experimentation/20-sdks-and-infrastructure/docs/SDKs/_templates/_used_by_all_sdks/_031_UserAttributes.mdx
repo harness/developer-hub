@@ -14,11 +14,13 @@ The `getTreatment` method supports the following types of attributes:
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the feature flag targeting rules (defined in the FME/Split user interface) to decide which treatment is assigned to this key.
 
-<>{props.create}</>
+<>{props.codeGetTreatmentAttributes}</>
 
 ### Binding attributes to the client
 
-Attributes can be bound to the client at any time during the SDK lifecycle. These attributes are stored in memory and used in every evaluation to avoid the need for keeping the attribute set accessible throughout the whole app. These attributes can be cached into the persistent memory cache of the SDK making them available for future sessions, as well as part of the `SDK_READY_FROM_CACHE` flow by setting the `persistentAttributesEnabled` to `true`.
+Attributes can optionally be bound to the SDK client at any time during the SDK lifecycle. These attributes are stored in memory and used in every evaluation to avoid the need for keeping the attribute set accessible throughout the whole app.
+
+<>{props.notesPersistentAttributesEnabled}</>
 
 When `getTreatment` is called, the attributes provided (if any) at evaluation time are combined with the ones already loaded into the SDK memory. The attributes passed to `getTreatment` at function execution time take precedence, allowing you to override or hide cached attributes for specific feature flag evaluations.
 
@@ -30,10 +32,8 @@ An attribute should be one of the following types:
 
 The SDK validates attributes before storing them. If there are invalid or missing values, the methods return `false` and do not update any stored attribute value.
 
-The SDK `client` uses the `AttributesManager` methods:
+<>{props.codeAttributesManagerInterface}</>
 
-<>{props.bind}</>
+Example of binding attributes to the SDK client:
 
-Refer to the example below to see how to use these methods:
-
-<>{props.example}</>
+<>{props.codeClientSetAttribute}</>

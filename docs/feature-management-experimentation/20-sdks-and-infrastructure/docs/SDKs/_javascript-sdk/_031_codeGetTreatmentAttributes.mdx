@@ -1,0 +1,64 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+var attributes = {
+  // date attributes are handled as `millis since epoch`
+  registered_date: new Date('YYYY-MM-DDTHH:mm:ss.sssZ').getTime(),
+  // this string will be compared against a list called `plan_type`
+  plan_type: 'growth',
+  // this number will be compared against a const value called `deal_size`
+  deal_size: 10000,
+  // this boolean will be compared against a const value called `paying_customer`
+  paying_customer: true,
+  // this array will be compared against a set called `permissions`
+  permissions: ["read", "write"]
+};
+ 
+var treatment = client.getTreatment('FEATURE_FLAG_NAME', attributes);
+ 
+if (treatment === 'on') {
+  // insert on code here
+} else if (treatment === 'off') {
+  // insert off code here
+} else {
+  // insert control code here
+}
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+const attributes: SplitIO.Attributes = {
+  // date attributes are handled as `millis since epoch`
+  registered_date: new Date('YYYY-MM-DDTHH:mm:ss.sssZ').getTime(),
+  // this string will be compared against a list called `plan_type`
+  plan_type: 'growth',
+  // this number will be compared against a const value called `deal_size`
+  deal_size: 10000,
+  // this array will be compared against a set called `permissions`
+  permissions: [‘read’, ‘write’]
+};
+ 
+const treatment: SplitIO.Treatment = client.getTreatment('FEATURE_FLAG_NAME', attributes);
+ 
+if (treatment === 'on') {
+  // insert on code here
+} else if (treatment === 'off') {
+  // insert off code here
+} else {
+  // insert control code here
+}
+```
+
+  </TabItem>
+</Tabs>

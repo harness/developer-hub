@@ -2,7 +2,7 @@
 
 It is good practice to call the `destroy()` method before your app shuts down or is destroyed. This method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions and events.
 
-<>{props.example}</>
+<>{props.codeFactoryDestroy}</>
 
 After `destroy()` is called, `client.getTreatment()` will return `"CONTROL"` and the `manager` methods will return an empty list.
 

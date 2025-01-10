@@ -12,13 +12,14 @@ import {
   AdvancedUseCases,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
-import Listener           from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_111_Listener.mdx";
-import ListenerImpression from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_111_ListenerImpression.mdx";
-import MultipleSdkClients from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_112_MultipleSdkClients.mdx";
-import UserConsent        from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_113_UserConsent.mdx";
-import CertificatePinning from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_114_CertificatePinning.mdx";
+import Impression         from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_111_codeImpression.mdx";
+import ImpressionListener from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_111_codeImpressionListener.mdx";
 
-import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
+import SplitFactoryClient from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_112_codeSplitFactoryClient.mdx";
+
+import GetUserConsen      from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_113_codeGetUserConsent.mdx";
+
+import CertificatePinning from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_114_codeCertificatePinningConfiguration.mdx";
 
 export const toc = [];
 
@@ -27,11 +28,11 @@ export const Result = SDKDocsBuilder(
     [
       AdvancedUseCases,
       {
-        listener:           <Listener />,
-        listenerImpression: <ListenerImpression />,
-        multipleClients:    <MultipleSdkClients />,
-        userConsent:        <UserConsent />,
-        certificatePinning: <CertificatePinning />,
+        codeImpression:         <Impression />,
+        codeImpressionListener: <ImpressionListener />,
+        codeSplitFactoryClient: <SplitFactoryClient />,
+        codeGetUserConsent: <GetUserConsen />,
+        codeCertificatePinningConfiguration: <CertificatePinning />,
       },
     ],
   ],

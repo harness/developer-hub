@@ -1,6 +1,10 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
+The SDK sends the generated impressions to the impression listener right away. Because of this, be careful while implementing handling logic to avoid blocking the main thread. Generally speaking, you should create a separate thread to handle incoming impressions.
+
+Example of a custom impression listener:
+
 <Tabs
   groupId="android-sdk-lang-choice"
   values={[
@@ -30,6 +34,7 @@ class MyImpressionListener implements ImpressionListener {
     }
 }
 ```
+
   </TabItem>
   <TabItem value="kotlin">
 

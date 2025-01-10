@@ -1,0 +1,54 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+// Getting treatments by feature flag names
+var flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
+var treatments = client.getTreatments(flagNames);
+
+// Getting treatments by set
+treatments = client.getTreatmentsByFlagSet('frontend');
+
+// Getting treatments for the union of multiple sets
+var flagSets = ['frontend', 'client_side'];
+treatments = client.getTreatmentsByFlagSets(flagSets);
+
+// treatments have the following form:
+// {
+//   FEATURE_FLAG_NAME_1: 'on',
+//   FEATURE_FLAG_NAME_2: 'visa'
+// }
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+// Getting treatments by feature flag names
+const flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
+let treatments: SplitIO.Treatments = client.getTreatments(flagNames);
+
+// Getting treatments by set
+treatments = client.getTreatmentsByFlagSet('frontend');
+
+// Getting treatments for the union of multiple sets
+const flagSets = ['frontend', 'client_side'];
+treatments = client.getTreatmentsByFlagSets(flagSets);
+
+// treatments have the following form:
+// {
+//   FEATURE_FLAG_NAME_1: 'on',
+//   FEATURE_FLAG_NAME_2: 'visa'
+// }
+```
+
+  </TabItem>
+</Tabs>

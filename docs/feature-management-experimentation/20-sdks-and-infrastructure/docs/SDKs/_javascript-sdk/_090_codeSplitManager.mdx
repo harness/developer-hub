@@ -1,0 +1,62 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+/**
+ * Returns the feature flag registered within the SDK that matches this name.
+ *
+ * @return SplitView or null.
+ */
+var splitView = manager.split('name-of-feature-flag');
+ 
+/**
+ * Retrieves all the feature flags that are currently registered within the SDK.
+ *
+ * returns a List of SplitViews.
+ */
+var splitViewsList = manager.splits();
+ 
+/** 
+ * Returns the names of all features flags registered within the SDK.
+ *
+ * @return a List of Strings of the features' names.
+ */
+var splitNamesList = manager.names();
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript
+/**
+ * Returns the feature flag registered within the SDK that matches this name.
+ *
+ * @return SplitView or null.
+ */
+const splitView: SplitIO.SplitView = manager.split('name-of-feature-flag');
+ 
+/**
+ * Retrieves all the feature flags that are currently registered within the SDK.
+ *
+ * returns a List of SplitViews.
+ */
+const splitViewsList: SplitIO.SplitViews = manager.splits();
+ 
+/** 
+ * Returns the names of all features flags registered within the SDK.
+ *
+ * @return a List of Strings of the features' names.
+ */
+const splitNamesList: SplitIO.SplitNames = manager.names();
+```
+
+  </TabItem>
+</Tabs>

@@ -5,12 +5,13 @@ import TreatmentWithConfig from "./_033_TreatmentWithConfig.mdx";
 ## Advanced feature flag evaluations: {#advanced-feature-flag-evaluations}
 
 <UserAttributes
-  create ={ props.userAttributesCreate }
-  bind   ={ props.userAttributesBind   }
-  example={ props.userAttributesBind   } />
+  codeGetTreatmentAttributes     = { props.codeGetTreatmentAttributes     }
+  codeAttributesManagerInterface = { props.codeAttributesManagerInterface }
+  codeClientSetAttribute         = { props.codeClientSetAttribute    } />
 
-<MultipleTreatments example={ props.multipleTreatments } />
+<MultipleTreatments codeGetTreatments={ props.codeGetTreatments } />
 
 <TreatmentWithConfig
-  single  ={ props.treatmentWithConfigSingle   }
-  multiple={ props.treatmentWithConfigMultiple } />
+  codeTreatmentResult      = { props.codeTreatmentResult }
+  codeTreatmentWithConfig  = { props.codeTreatmentWithConfig   }
+  codeTreatmentsWithConfig = { props.codeTreatmentsWithConfig } />

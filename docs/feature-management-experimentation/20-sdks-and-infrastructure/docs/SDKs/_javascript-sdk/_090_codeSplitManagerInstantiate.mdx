@@ -1,0 +1,56 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+var factory = SplitFactory({ 
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    // the key can be the logged in
+    // user id, or the account id that 
+    // the logged in user belongs to. 
+    // The type of customer (user, account, custom)
+    // is chosen during Split's sign-up process.
+    key: 'key'
+  }
+});
+ 
+var manager = factory.manager();
+
+manager.once(manager.Event.SDK_READY, function() {
+  // Once it's ready, use the manager
+});
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+const factory: SplitIO.IBrowserSDK = SplitFactory({ 
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    // the key can be the logged in
+    // user id, or the account id that 
+    // the logged in user belongs to. 
+    // The type of customer (user, account, custom)
+    // is chosen during Split's sign-up process.
+    key: 'key'
+  }
+});
+ 
+const manager: SplitIO.IManager = factory.manager();
+
+manager.once(manager.Event.SDK_READY, function() {
+  // Once it's ready, use the manager
+});
+```
+
+  </TabItem>
+</Tabs>

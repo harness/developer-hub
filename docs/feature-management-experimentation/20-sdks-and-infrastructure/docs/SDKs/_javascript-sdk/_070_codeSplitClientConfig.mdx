@@ -1,0 +1,90 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+var sdk = SplitFactory({
+  startup: {
+    requestTimeoutBeforeReady:     5, // 5 sec
+    retriesOnFailureBeforeReady:   1, // 1 sec
+    readyTimeout:                 10, // 10 sec
+    eventsFirstPushWindow:        10  // 10 sec
+  },
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'USER_ID'
+  },
+  scheduler: {
+    featuresRefreshRate:      5, // 5 sec 
+    segmentsRefreshRate:     60, // 60 sec 
+    impressionsRefreshRate: 300, // 300 sec
+    impressionsQueueSize: 30000, // 30000 items
+    eventsPushRate:          60, // 60 sec
+    eventsQueueSize:        500, // 500 items
+    telemetryRefreshRate:  3600  // 1 hour
+  },
+  sync: {
+    splitFilters: [{
+      type: 'bySet',
+      values: ['frontend']
+    }],
+    impressionsMode: 'NONE'
+  },
+  storage: {
+    type: 'LOCALSTORAGE',
+    prefix: 'MYPREFIX'
+  },
+  streamingEnabled: true,
+  debug: false
+});
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+const sdk: SplitIO.IBrowserSDK = SplitFactory({
+  startup: {
+    requestTimeoutBeforeReady:     5, // 5 sec
+    retriesOnFailureBeforeReady:   1, // 1 sec
+    readyTimeout:                 10, // 10 sec
+    eventsFirstPushWindow:        10  // 10 sec
+  },
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'USER_ID'
+  },
+  scheduler: {
+    featuresRefreshRate:      5, // 5 sec 
+    segmentsRefreshRate:     60, // 60 sec 
+    impressionsRefreshRate: 300, // 300 sec
+    impressionsQueueSize: 30000, // 30000 items
+    eventsPushRate:          60, // 60 sec
+    eventsQueueSize:        500, // 500 items
+    telemetryRefreshRate:  3600  // 1 hour
+  },
+  sync: {
+    splitFilters: [{
+      type: 'bySet',
+      values: ['frontend']
+    }],
+    impressionsMode: 'NONE'
+  },
+  storage: {
+    type: 'LOCALSTORAGE',
+    prefix: 'MYPREFIX'
+  },
+  streamingEnabled: true,
+  debug: false
+});
+```
+
+  </TabItem>
+</Tabs>
