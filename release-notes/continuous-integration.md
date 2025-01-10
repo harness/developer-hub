@@ -29,17 +29,16 @@ These release notes describe recent changes to Harness Continuous Integration.
 #### Fixed issues
 
 - Resolved an issue where CI build steps could execute out of order or be duplicated in rare cases due to preexisting files in the workspace. Introduced a marker file mechanism to ensure sequential execution. This change is behind the feature flag `CI_ADDON_RETRY_MARKER_FILE`. (CI-14705, ZD-71193, ZD-71443, ZD-74544)
-- Addressed an issue where the "Allow Privilege Escalation" flag in the Infrastructure configuration was incorrectly included in the YAML, even when disabled. Enhanced error messaging now notifies users of incorrect Kubernetes flag settings during pipeline execution. Users will need to manually correct the YAML. (CI-14740, ZD-71175)
-- Resolved an issue where error metadata was not properly propagated, causing incomplete error summaries in the platform. The fix ensures error messages are accurately captured and displayed, improving debugging and troubleshooting. (CI-14829)
+- Addressed an issue where the "Allow Privilege Escalation" flag in the Infrastructure configuration was incorrectly included in the YAML, even when disabled. Enhanced error messaging now notifies users of incorrect Kubernetes flag settings during pipeline execution. (CI-14740, ZD-71175)
 - Resolved an issue in Kubernetes pipelines where large commit messages caused the pipeline to fail with the error: "Request entity too large: limit is 3145728." Commit message length is now properly limited to prevent this error. (CI-15276, ZD-73618)
 - Resolved an issue where blank optional fields in templates for ACR steps defaulted to a "null" string, causing failures. This issue was specific to accounts using the Kaniko plugin. The fields now correctly default to being skipped if left blank. (CI-15431, ZD-71473)
 - Resolved an issue where Bitbucket connectivity in Harness Cloud failed when using Secure Connect on macOS. (CI-15432, ZD-74614)
 
 #### Harness images updates
 
-| **Image**        | **Change**                 | **Previous version** | **New Version** |
-| ---------------- | -------------------------- | -------------------- | --------------- |
-| `plugins/docker` | Latest vulnerability fixes | 20.18.5              | 20.18.6         |
+| **Image**        | **Change**                         | **Previous version** | **New Version** |
+| ---------------- | ---------------------------------- | -------------------- | --------------- |
+| `plugins/docker` | Addressed security vulnerabilities | 20.18.5              | 20.18.6         |
 
 ## December 2024
 
