@@ -75,7 +75,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - **Previously**, users encountered a "signal is aborted without a reason" notification while selecting a service in the deployment pipeline due to overlapping API calls made in quick succession. This issue is **fixed**, and the error no longer occurs. (**CDS-105011, ZD-74651**)
 - **Previously**, additional strings were incorrectly appended to the values file path during runtime when entered as allowed values, causing parsing errors and deployment failures. This issue is **fixed**, and values are now parsed correctly. (**CDS-104787, ZD-74331**)
 - **Previously**, connector references for Bitbucket were still appearing in the "referenced by" list after updating pipelines or resources to GitHub. This issue is **fixed**, and references are now removed correctly. (**CDS-104715, ZD-74243**)
-- **Previously**, GCP OIDC connections failed when isolated to a specific project/org in Harness. This issue is **fixed**, and the connection now establishes successfully with the correct configuration during the test connection flow. (**CDS-104975, ZD-74230**)
+- **Previously**, GCP OIDC connections failed when isolated to a specific project/org in Harness. This issue is **fixed**, and the connection now establishes successfully with the correct configuration during the test connection flow. Additionally, the connection test is supported for Platform as well (**CDS-104975, ZD-74230**)
 - **Previously**, pipelines using triggers with input sets did not correctly apply the values provided. This issue is **fixed**, and the pipeline execution now uses the correct value from the specified input set. (**PIPE-24088, ZD-74889**)
 - **Previously**, GitX auto-creation did not function as expected when YAML files were added to GitHub repositories. This issue is **fixed**, and entities are now created as expected. (**PIPE-22712, ZD-71904**)
 - **Previously**, trigger event history was not being saved for scheduled triggers. This issue is **fixed**, and event history is now saved correctly. (**PIPE-24190, ZD-75384**)
@@ -93,6 +93,10 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - **Previously**, pipelines were failing during deployment to multiple environments due to missing infrastructure definitions, with no proper validation or error message. This issue is **fixed**, and missing infrastructure definitions are properly validated. (**CDS-CDS-104586, ZD-73964**)
 - **Previously**, Helm deployments failed during rollback due to missing or invalid revision numbers in Helm history, resulting in errors like NumberFormatException: For input string: "". This issue is **fixed**, and rollbacks now proceed without errors. (**CDS-103746, ZD-72898**)
 - **Previously**, original Auto Scaling Group (ASG) tags were removed when selecting the "Base ASG" option in Infrastructure setup, causing permission errors during the creation of new launch templates. This issue is **fixed**, and ASG tags are preserved correctly. (**CDS-103081**)
+- **Previously**, using a containerized step group nested within a normal step group caused pipeline execution to fail with a `NullPointerException: Cannot invoke "java.util.List.size()" because "ports" is null.` This issue is fixed, and pipelines with nested containerized step groups now execute successfully without errors. (**CDS-105395, ZD-74949**)
+- **Previously**, during load testing, customers faced issues with the delegate thread pool size being too small, leading to failures when executing pipelines concurrently. Additionally, some delegates reported errors due to missing CF CLI versions, and 503 errors occurred due to proxy configuration issues. This issue is fixed by increasing the delegate thread pool size and improving the detection mechanism for CF CLI installations. Customers should now experience more stable pipeline executions, even with larger concurrent loads. (**CDS-103868**)
+- **Previously**, some pipelines faced issues with black-screening after approximately 6 hours, despite an increase in the log-service duration from 5 hours to 10 hours. This was due to large log files (over 20k lines) causing disruptions. The issue also involved a discrepancy between the log-service's stream duration and the expected limits, affecting log processing during longer executions. This issue is now fixed by extending the log-service duration to 10 hours and improving the handling of log limits at the account level.(**PIPE-24058, ZD-73735**)
+
 
 ## December
 
@@ -139,6 +143,7 @@ For example, `account.agentId` for Account-level agents, `org.agentId` for Organ
 - User was not able to provide timeout for Service Now approval step as Input. This issue is fixed now. (PIPE-23742, ZD-73247)
 - When using blue green deployment step in a template, AWS load balancer dropdown was not getting populated. This issue is fixed now. (CDS-104478, ZD-73560)
 - Previously, the Shell Script Provisioner step for PDC infrastructure failed when using runtime inputs for `hostAttributes`. This issue is fixed now. (CDS-104659)
+- Previously, users faced an issue with ASG deployment when using dynamic target infrastructure provisioning. This issue is fixed now. (CDS-103872)
 
 ## November
 
