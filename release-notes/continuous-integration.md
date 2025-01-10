@@ -26,19 +26,14 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 <!-- 2025-01-06 -->
 
-#### New features and enhancements
-
-- Added support for selecting cloud machine size and enabling nested virtualization for CI stages. These options are now available under Advanced Settings for cloud infrastructure configurations. (CI-15160)
-
 #### Fixed issues
 
 - Resolved an issue in EKS-based pipelines where CI build steps could execute out of order or be duplicated, causing intermittent failures during the Run step due to pre-existing files. Introduced a marker file mechanism to ensure sequential execution. This change is behind the feature flag `CI_ADDON_RETRY_MARKER_FILE`. (CI-14705, ZD-71193, ZD-71443, ZD-74544)
 - Addressed an issue where the "Allow Privilege Escalation" flag in the Infrastructure configuration was incorrectly included in the YAML, even when disabled. Enhanced error messaging now notifies users of incorrect Kubernetes flag settings during pipeline execution. Users will need to manually correct the YAML. (CI-14740, ZD-71175)
-- Resolved an issue where error metadata was not properly propagated, causing incomplete error summaries in the platform. The fix ensures error messages are accurately captured and displayed, improving debugging and troubleshooting. This functionality is gated under the feature flag `CI_ENABLE_ERROR_MESSAGE`. (CI-14829)
+- Resolved an issue where error metadata was not properly propagated, causing incomplete error summaries in the platform. The fix ensures error messages are accurately captured and displayed, improving debugging and troubleshooting. (CI-14829)
 - Resolved an issue in Kubernetes pipelines where large commit messages caused the pipeline to fail with the error: "Request entity too large: limit is 3145728." Commit message length is now properly limited to prevent this error. (CI-15276, ZD-73618)
 - Resolved an issue where blank optional fields in templates for ACR steps defaulted to a "null" string, causing failures. This issue was specific to accounts using the Kaniko plugin. The fields now correctly default to being skipped if left blank. (CI-15431, ZD-71473)
-- Resolved an issue where Bitbucket connectivity in Harness Cloud failed due to proxyUrl being exposed in ConnectorDTOs, which caused the Secure Connect clone task to fail. The proxyUrl has been removed for security reasons, and CI will now separately fetch proxy details during the codebase clone task. (CI-15432, ZD-74614)
-- Fixed an issue where Hosted CI builds were over reporting credits due to init step failures. Credits are now only reported if the init step is successful. (CI-15528, CI-15531)
+- Resolved an issue where Bitbucket connectivity in Harness Cloud failed when using Secure Connect on macOS. (CI-15432, ZD-74614)
 
 ## December 2024
 
@@ -84,6 +79,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 | `harness/ci-lite-engine` | Add support for exposing test report summary with output variables                                                    | 1.16.61              | 1.16.66         |
 | `plugins/buildx`         | Update buildx version to include buildkit in image                                                                    | 1.1.20               | 1.1.24          |
 | `plugins/cache`          | update cache intelligence plugin tags. updated tag fixes windows restore bug and adds support for vb .net and f# .net | 1.8.0                | 1.9.0           |
+| `plugins/docker`         | Latest vulnerability fixes                                                                                            | 20.18.5              | 20.18.6         |
 
 ### Version 1.57
 
