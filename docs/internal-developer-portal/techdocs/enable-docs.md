@@ -20,9 +20,10 @@ Docs in Harness IDP is powered by [TechDocs Backstage Plugin](https://backstage.
 
 :::
 
-<Tabs>
-<TabItem value="Docs Available in the Root of Source Folder ">
+<Tabs queryString="enable-docs-location">
+<TabItem value="docs-available-in-root" label="Docs Available in the Root of Source Folder" queryString="enable-docs-location">
 
+### Docs Available in the Root of Source Folder \{#docs-available-in-the-root-of-source-folder}
 
 To add documentation:
 
@@ -117,10 +118,16 @@ If, for example, you wanted to keep a lean root directory, you could place your 
 :::
 
 </TabItem>
-<TabItem value="Docs Available in Some Other Location">
+<TabItem value="docs-not-in-root" label="Docs Available in Some Other Location">
 
-In situations where your TechDocs source content is managed and stored in a location completely separate from your `catalog-info.yaml`, you can instead specify a URL location reference, the exact value of which will vary based on the source code hosting provider. Notice that instead of the `dir:` prefix, the `url:` prefix is used instead. For example:
+### Docs Available in Some Other Location \{#docs-available-in-some-other-location}
 
+In situations where your TechDocs source content is managed and stored in a location completely separate from your `catalog-info.yaml`, you can instead specify a URL location reference, the exact value of which will vary based on the source code hosting provider. Notice that instead of the `dir:` prefix, the `url:` prefix is used instead. Make sure the specified path contains the `mkdocs.yml` file. For example:
+
+- Harness Code Repository:
+    - Repository at account scope: `url:https://app.harness.io/ng/account/account_id/module/code/repos/repo_name`
+    - Repository at organization scope: `url:https://app.harness.io/ng/account/account_id/module/code/orgs/org_id/repos/repo_name` 
+    - Repository at project scope: `url:https://app.harness.io/ng/account/account_id/module/code/orgs/org_id/projects/project_id/repos/repo_name`
 - GitHub: `url:https://githubhost.com/org/repo/tree/<branch_name>`
 - GitLab: `url:https://gitlabhost.com/org/repo/tree/<branch_name>`
 - Bitbucket: `url:https://bitbuckethost.com/project/repo/src/<branch_name>`
