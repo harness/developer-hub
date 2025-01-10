@@ -101,7 +101,6 @@ To obtain these references, simply copy the variable path from the Harness Pipel
 
 ![](./static/stage-variable.png)
 
-
 | Variables under `inputset`                                                 | What's Supported                                                                |
 |----------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | Variable name (`variable_name`)                                      | Supported with Pipelines Variables for IDP stage, custom stage and Codebase Disabled build stage along Pipelines **not** containing any templates.  |
