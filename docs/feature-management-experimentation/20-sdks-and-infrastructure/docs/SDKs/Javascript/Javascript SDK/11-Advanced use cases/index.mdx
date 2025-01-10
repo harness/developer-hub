@@ -1,5 +1,5 @@
 ---
-title: ""
+title: Advanced use cases
 sidebar_label: Advanced use cases
 description: Use an external impression listener, multiple SDK clients, user consent, and certificate pinning.
 ---
@@ -9,7 +9,9 @@ import {
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
 
 import {
-  AdvancedUseCases,
+  Listener,
+  MultipleSdkClients,
+  UserConsent,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
 import Impression         from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_111_codeImpression.mdx";
@@ -24,13 +26,23 @@ export const toc = [];
 
 export const Result = SDKDocsBuilder(
   [
-    [
-      AdvancedUseCases,
-      {
+    [ 
+      Listener, 
+      { 
         codeImpression:         <Impression />,
         codeImpressionListener: <ImpressionListener />,
+      }, 
+    ],
+    [ 
+      MultipleSdkClients, 
+      {
         notes:                  <MultipleClientsNotes />,
         codeSplitFactoryClient: <SplitFactoryClient />,
+      },
+    ],
+    [
+      UserConsent,
+      {
         codeGetUserConsent: <GetUserConsent />,
       },
     ],
