@@ -9,7 +9,9 @@ import {
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
 
 import {
-  AdvancedFeatureFlagEvaluations,
+  UserAttributes,
+  MultipleTreatments,
+  TreatmentWithConfig,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
 import GetTreatmentAttributes     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_031_codeGetTreatmentAttributes.mdx";
@@ -28,13 +30,23 @@ export const toc = [];
 export const Result = SDKDocsBuilder(
   [
     [
-      AdvancedFeatureFlagEvaluations,
+      UserAttributes,
       {
         codeGetTreatmentAttributes:       <GetTreatmentAttributes />,
         notesPersistentAttributesEnabled: <NotesPersistentAttributes />,
         codeAttributesManagerInterface:   <AttributesManagerInterface />,
         codeClientSetAttribute:           <ClientSetAttribute />,
+      },
+    ],
+    [
+      MultipleTreatments,
+      {
         codeGetTreatments: <GetTreatments />,
+      },
+    ],
+    [
+      TreatmentWithConfig,
+      {
         codeTreatmentResult:      <TreatmentResult />,
         codeTreatmentWithConfig:  <GetTreatmentWithConfig />,
         codeTreatmentsWithConfig: <GetTreatmentsWithConfig />,
