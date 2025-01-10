@@ -77,6 +77,45 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## January 2025
+### Version 1.71.x <!-- January 10, 2025-->
+#### Fixed issues
+
+- On the RoleDetailsPage, permissions are now sorted alphabetically to enhance ease of discovery and navigation, replacing the previous random order. (PL-59350)
+
+- Fixed the pagination response for the User Group List API. The User Groups GET API now correctly returns the total pages and page count. [Learn more](https://apidocs.harness.io/tag/User-Group#operation/getUserGroupList) (PL-59214)
+
+- Fixed an issue where navigating via URL to view a specific file loaded the correct line initially but later displayed an incorrect line number. The file and line number now remain consistent. (PL-59002)
+
+- Added ng-manager virtual service routes in the chart to support GitX webhook APIs at both org and project levels. (PL-58990)
+
+- Fixed an issue where the 'Apply' button remained enabled and caused an error when clicked, even with no changes to assignments. The 'Apply' button is now correctly disabled when there are no changes.(PL-58782)
+
+- Updated the text input to accept only the domain instead of the full email. Placeholder changed from 'Eg: abc@harness.io' to 'Eg: harness.io'.(PL-57883)
+
+- Added search functionality to the Dashboard's Resource Groups modal for improved navigation. (PL-57783)
+
+#### New features and enhancements
+
+- "Added a feature on the delegate list page to allow customers to easily differentiate polling mode delegates. This feature is available behind the flag `PL_SHOW_IF_POLLING_MODE_DELEGATE`." (PL-58853)
+
+- Support has been added to configure either 'Force Delete without recovery' or a 'Recovery Window' when creating or updating the AWS Secret Manager Connector. These settings will be used in the delete secret request and work as follows:
+
+  1. **Force Delete without recovery**: When enabled, the request to AWS will immediately delete the secret without recovery options.
+  2. **Recovery Window (in days)** (optional): If set, the deletion request will be made to AWS with the specified recovery window. The secret will be deleted in Harness but can still be recovered in AWS Secret Manager within the recovery window. (PL-58225)
+
+- All delegates in CG will now start disconnecting for customers who are not using CG. (PL-59298)
+
+- Added support for expressions (webhook url,custom header value, etc) in the values of webhook headers in the Centralized Notification System. (PL-58248)
+
+- Minio image has been updated to version 2024.9.22-debian-12-r1. (PL-59170)
+
+- Updated the TimescaleDB chart to use pg13.16-ts2.15.3-oss to reduce vulnerabilities. (PL-58116)
+
+- Upgraded the `org.asynchttpclient_async-http-client` to version 3.0.1. (PL-59246)
+
+- Upgraded the delegate base image from `ubi8-minimal:8.10` to `ubi9-minimal:9.4`. (PL-58376)
+
 ## December 2024
 ### Version 1.69.x<!-- December 12, 2024 -->
 #### Fixed issues
