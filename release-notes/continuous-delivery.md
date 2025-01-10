@@ -45,6 +45,59 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## January 2025
+
+### Version 1.71.2
+
+#### New Features and enhancements
+
+- You can now bypass primary artifact validation by enabling the Disable Artifact Validation checkbox in a service. This skips artifact validation during pipeline execution, including in propagated stages. This feature applies only to primary artifacts. This feature is behind the feature flag `CDS_ARTIFACT_DISABLE_VALIDATION`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-101173)
+- You can now add environments created at the Project and Organization levels to the environment groups. Currently, the Cross Scope Environment Groups feature is behind the feature flag CDS_CROSS_SCOPED_ENV_GROUPS. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-103127)
+- You can now reference secret in expression for input variables in TAS command step. (CDS-100322, ZD-69107, ZD-69226)
+- The Post-Prod Rollback API has been enhanced to simplify the rollback process by reducing the number of required parameters. The new version of the API allows you to trigger a rollback using just Environment Id, Infrastructure Id, Service Id, and Artifact, making it easier for users to invoke the rollback without dealing with complex identifiers like `instanceKey` and `infraMappingId`. (CDS-97775)
+- Harness now provides detailed log information for pods and container during the Wait For Steady State step in Kubernetes deployments, helping you troubleshoot deployment issues by providing real-time insights into pod statuses. Currently, this feature is behind the feature flag `CDS_K8S_DETAILED_POD_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-99009)
+- `shouldSendTriggerPayload` flag is added in the `eventHistory` API to allow users to exclude the payload from the response, improving performance and preventing issues with large payloads. (PIPE-24223, ZD-75049)
+
+#### Fixed Issues
+
+- **Previously**, pipelines could start execution without valid stages, resulting in unexpected behavior and execution graph failures. This issue is **fixed**, and execution is now blocked if no valid stage is present in the pipeline. (**PIPE-24086, ZD-74528**)
+- **Previously**, the console log search would not function correctly after switching steps in a pipeline execution. The issue is **fixed**, and the search functionality now continues seamlessly across steps, ensuring a smooth user experience. (**PIPE-23990, ZD-74681**)
+- **Previously**, changes in GitHub, such as subsequent commits to newly created branches, were not propagating into Harness. This issue is **fixed**, and changes now propagate correctly. (**PIPE-23576, ZD-73720, ZD-74770**)
+- **Previously**, user pipeline execution would stall. This issue is **fixed**. (**PIPE-22375, ZD-71138**)
+- **Previously**, the tooltip in the UI did not display that CD consumes 1 Service License for every 2000 pipeline executions of custom stages. The issue is **fixed**, and the tooltip now displays the correct information. (**CDS-105411, ZD-75543**)
+- **Previously**, Nexus3 triggers only fetched 50 tags. This issue is **fixed**, and now all tags will be fetched. (**CDS-105392, ZD-75467**)
+- **Previously**, fetching clusters on a change of GCP Connector in infrastructure failed. This issue is **fixed**, and clusters now fetch correctly. (**CDS-105365, ZD-74674**)
+- **Previously**, the pipeline stage name resolution issue caused artifact identifier expressions to fail, resulting in intermittent pipeline failures with the error: "Invalid request: No artifact source exists with the identifier null inside service." This issue is **fixed**. (**CDS-105306, ZD-75216**)
+- **Previously**, secrets were exposed in logs during the execution of TAS Rolling Deploy Step in case of step failure. This issue is **fixed**, and secrets are no longer exposed. (**CDS-105184, ZD-75003**)
+- **Previously**, the AWS load balancer dropdown was not populated when using a blue-green deployment step in a template. This issue is **fixed**, and the dropdown now populates correctly. (**CDS-105168, ZD-73560**)
+- **Previously**, the Fetch Helm Chart Metadata process for Helm charts failed during parallel stage deployments with the error: **Unable to fetch files for filePath `[charts/spark-support/Chart.yaml]` for Branch: stable.** This issue is **fixed**, and proper delegate selection during the manifest step is ensured. (**CDS-105137, ZD-74836**)
+- **Previously**, users were unable to perform rollbacks in certain cases due to the swapping of OrgID and ProjectID in the API call. This issue is **fixed**, and rollbacks now work as expected. (**CDS-105087, ZD-74833**)
+- **Previously**, users encountered a "signal is aborted without a reason" notification while selecting a service in the deployment pipeline due to overlapping API calls made in quick succession. This issue is **fixed**, and the error no longer occurs. (**CDS-105011, ZD-74651**)
+- **Previously**, additional strings were incorrectly appended to the values file path during runtime when entered as allowed values, causing parsing errors and deployment failures. This issue is **fixed**, and values are now parsed correctly. (**CDS-104787, ZD-74331**)
+- **Previously**, connector references for Bitbucket were still appearing in the "referenced by" list after updating pipelines or resources to GitHub. This issue is **fixed**, and references are now removed correctly. (**CDS-104715, ZD-74243**)
+- **Previously**, GCP OIDC connections failed when isolated to a specific project/org in Harness. This issue is **fixed**, and the connection now establishes successfully with the correct configuration during the test connection flow. Additionally, the connection test is supported for Platform as well (**CDS-104975, ZD-74230**)
+- **Previously**, pipelines using triggers with input sets did not correctly apply the values provided. This issue is **fixed**, and the pipeline execution now uses the correct value from the specified input set. (**PIPE-24088, ZD-74889**)
+- **Previously**, GitX auto-creation did not function as expected when YAML files were added to GitHub repositories. This issue is **fixed**, and entities are now created as expected. (**PIPE-22712, ZD-71904**)
+- **Previously**, trigger event history was not being saved for scheduled triggers. This issue is **fixed**, and event history is now saved correctly. (**PIPE-24190, ZD-75384**)
+- **Previously**, the "References/Referenced By" list did not show the complete list of connectors and secrets being used. This issue is **fixed**, and the list now shows the full set of references. (**PIPE-23709, ZD-74015**)
+- **Previously**, when creating a new ASG from the base ASG, the Dimensions were not updated while inheriting the Scaling Policy properties. This issue is **fixed**, and the new ASG name is properly passed and scaling policies are updated. (**CDS-105225, ZD-74995**)
+- **Previously**, GitOps steps ignored step, stage, and pipeline delegate selectors, failing to follow the delegate precedence outlined in the documentation. This issue is **fixed**, and GitOps steps now respect the correct delegate precedence. (See more on delegate precedence [here](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#delegate-selector-priority)). (**CDS-105143, ZD-74401**)
+- **Previously**, editing a connector with the `CDS_DISABLE_CONNECTOR_PT_CREATION` feature flag enabled would reset the Perpetual Task unexpectedly. This issue is **fixed**, and the Heartbeat Perpetual Task is properly deleted during connector edits. (**CDS-104552, ZD-73947**)
+- **Previously**, the default pull policy for add-on images under Account > Pipeline Settings was incorrectly set to Always. This issue is **fixed**, and the default is now null, allowing Kubernetes to determine the pull mechanism. (**CDS-101797, ZD-70029**)
+- **Previously**, a race condition during pipeline rollback with parallel steps could cause a duplicate key exception. This issue is **fixed**, and race conditions are now properly handled, resolving class cast exceptions. (**PIPE-23275, ZD-73233**)
+- **Previously**, execution inputs in chained pipelines would intermittently fail to display, leaving the pipeline in a "Waiting State." This issue is **fixed**, and inputs now display correctly. (**PIPE-22998, ZD-72739**)
+- **Previously**, users were unable to extract the logs.zip file after downloading from pipeline execution on Windows machines. This issue is **fixed**, and users can now extract the logs.zip file. (**PIPE-20446, ZD-66561**)
+- **Previously**, Azure slot deployments failed with a conflict error: "The 'Preparing zip package' operation conflicts with the pending 'Performing continuous deployment' operation." This issue is **fixed**, and deployments now proceed without conflict. (**CDS-104813, ZD-74163**)
+- **Previously**, connectivity errors (e.g., delegate failing to connect due to invalid host configuration or firewall issues) were misclassified as "Unknown Errors." This issue is **fixed**, and connectivity errors are now properly categorized, ensuring that failure strategies execute as intended. (**CDS-104747, ZD-74235**)
+- **Previously**, pipelines were intermittently failing with the error message in the helm deployment step: "Error occurred while performing this operation." This issue is **fixed**, and deployments now proceed without errors. (**CDS-104710, ZD-74154**)
+- **Previously**, pipelines were failing during deployment to multiple environments due to missing infrastructure definitions, with no proper validation or error message. This issue is **fixed**, and missing infrastructure definitions are properly validated. (**CDS-CDS-104586, ZD-73964**)
+- **Previously**, Helm deployments failed during rollback due to missing or invalid revision numbers in Helm history, resulting in errors like NumberFormatException: For input string: "". This issue is **fixed**, and rollbacks now proceed without errors. (**CDS-103746, ZD-72898**)
+- **Previously**, original Auto Scaling Group (ASG) tags were removed when selecting the "Base ASG" option in Infrastructure setup, causing permission errors during the creation of new launch templates. This issue is **fixed**, and ASG tags are preserved correctly. (**CDS-103081**)
+- **Previously**, using a containerized step group nested within a normal step group caused pipeline execution to fail with a `NullPointerException: Cannot invoke "java.util.List.size()" because "ports" is null.` This issue is fixed, and pipelines with nested containerized step groups now execute successfully without errors. (**CDS-105395, ZD-74949**)
+- **Previously**, during load testing, customers faced issues with the delegate thread pool size being too small, leading to failures when executing pipelines concurrently. Additionally, some delegates reported errors due to missing CF CLI versions, and 503 errors occurred due to proxy configuration issues. This issue is fixed by increasing the delegate thread pool size and improving the detection mechanism for CF CLI installations. Customers should now experience more stable pipeline executions, even with larger concurrent loads. (**CDS-103868**)
+- **Previously**, some pipelines faced issues with black-screening after approximately 6 hours, despite an increase in the log-service duration from 5 hours to 10 hours. This was due to large log files (over 20k lines) causing disruptions. The issue also involved a discrepancy between the log-service's stream duration and the expected limits, affecting log processing during longer executions. This issue is now fixed by extending the log-service duration to 10 hours and improving the handling of log limits at the account level.(**PIPE-24058, ZD-73735**)
+
+
 ## December
 
 ### Gitops Version 1.22.0, Gitops Agent Version 0.83.0
@@ -90,6 +143,7 @@ For example, `account.agentId` for Account-level agents, `org.agentId` for Organ
 - User was not able to provide timeout for Service Now approval step as Input. This issue is fixed now. (PIPE-23742, ZD-73247)
 - When using blue green deployment step in a template, AWS load balancer dropdown was not getting populated. This issue is fixed now. (CDS-104478, ZD-73560)
 - Previously, the Shell Script Provisioner step for PDC infrastructure failed when using runtime inputs for `hostAttributes`. This issue is fixed now. (CDS-104659)
+- Previously, users faced an issue with ASG deployment when using dynamic target infrastructure provisioning. This issue is fixed now. (CDS-103872)
 
 ## November
 
