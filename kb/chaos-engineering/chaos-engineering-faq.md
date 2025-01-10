@@ -217,8 +217,8 @@ No, the existing infrastructures will continue to function as usual, but HCE rec
 
 ## Application Maps
 
-#### How to list experiments as a part of Application Map?
-To list an experiment as a part of an [application map](/docs/chaos-engineering/use-harness-ce/application-map), specify the tag `applicationmap=<application map identity>` while creating the experiment.
+#### How to manually associate experiments as a part of Application Map?
+To manually associate the experiment as a part of an application map, list the experiment as a part of an [application map](/docs/chaos-engineering/use-harness-ce/application-map), specify the tag `applicationmap=<application map identity>` while creating the experiment.
 
 ## Security
 
