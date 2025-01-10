@@ -74,6 +74,7 @@ To export variables from the script to other steps in the stage, you use the **O
 The following variable types are supported:
 
 - String
+- Secret
 
 Output variables are passed from the the script output to the Harness pipeline and can be referenced in subsequent steps and settings using expressions.
 
