@@ -189,6 +189,8 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### Fixed issues
 
+- CPU utilization increased due to continuously executing clean up tasks. This issue has been fixed by adding a sleep operation that runs after every remove operation and optimizes overall CPU performance. (CHAOS-5709)
+
 - Fixed an issue where an experiment in the `Error` state would not finish, and be in a state of infinite run timestamp. (CHAOS-5577)
 
 ### Version 1.39.11
