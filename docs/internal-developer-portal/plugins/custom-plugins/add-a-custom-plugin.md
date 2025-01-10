@@ -237,7 +237,7 @@ When a request is made to `https://idp.harness.io/{ACCOUNT_ID}/idp/api/proxy/git
 
 :::info
 
-Once you enable the PLugin it will approximately take around 30 minutes for the plugin to be enabled as we rebuild the IDP image with your plugin. 
+Once you enable the Plugin it will approximately take around 30 minutes for the plugin to be enabled as we rebuild the IDP image with your plugin. 
 
 :::
 

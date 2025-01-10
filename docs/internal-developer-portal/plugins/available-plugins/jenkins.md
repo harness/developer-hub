@@ -68,7 +68,7 @@ To configure the plugin for a service in the software catalog, set the following
 ```yaml
 metadata:
   annotations:
-  jenkins.io/github-folder: "folder-name/project-name"
+    jenkins.io/github-folder: "folder-name/project-name"
 ```
 
 ## Support
