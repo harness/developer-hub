@@ -31,7 +31,7 @@ A GameDay typically involves the following steps:
 2. Observe the impact of the failure,
 3. Discuss the technical outcomes.
 
-To watch a video on GameDay, go to [GameDay](https://youtu.be/X-4Ripb4e2c) that describes how you can schedule a GameDay execution.
+[This](https://youtu.be/X-4Ripb4e2c) video provides a step-by-step walkthrough of GameDay execution.
 
 :::tip
 GameDays help decide the type of failure the system would undergo based on the nature of the chaos experiments present within GameDay. Hence, HCE strongly recommends you begin with easy use cases with minimal blast radius, such as breaking one container, degrading one instance, and making one availability zone unavailable. Later, you can delve into more complex failures, such as failing an entire service or affecting a large percentage of requests.
