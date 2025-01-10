@@ -9,7 +9,7 @@ sidebar_position: 12
 
 Harness Helm charts are now signed to ensure they are secure and trustworthy. 
 
-Starting with version [0.24.0](../release-notes/self-managed-enterprise-edition.md), you can verify the integrity and origin of the charts using GPG keys with Helm's provenance feature.
+Starting with version [0.24.0](/release-notes/self-managed-enterprise-edition), you can verify the integrity and origin of the charts using GPG keys with Helm's provenance feature.
 
 ## How to Verify Signed Helm Charts
 
