@@ -47,6 +47,12 @@ This is an advanced configuration. Before beginning, you should be familiar with
 
 These are the requirements to configure the AWS EC2 instance. This instance is the primary VM where you will host your Harness Delegate and runner.
 
+:::important
+
+AWS Spot instances, of any kind, are not supported to use as Harness build infrastructure. 
+
+:::
+
 ### Configure authentication for the EC2 instance
 
 The recommended authentication method is an [IAM role](https://console.aws.amazon.com/iamv2/home#/users) with an access key and secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)). You can use an access key and secret without an IAM role, but this is not recommended for security reasons.
@@ -456,6 +462,14 @@ By default, delegate selectors aren't applied to delegate-related CI codebase ta
 With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
 
 </details>
+
+## AWS Fargate Limitations
+
+If you are running builds on AWS Fargate, please be aware of the following limitations.
+
+### Docker delegate on AWS ECS Fargate backed instace
+
+When operating ECS delegates on AWS Fargate, it's critical to note that AWS Fargate will terminate the delegate if the tasks running on the delegate exceed the infrastructure's specified limits. This is a limitation inherent in using infrastructure not owned by the customer. Harness Delegate cannot circumvent this restriction. However, ECS delegates operating on an EC2 instance do not have this issue. To avoid this limitation, consider using Kubernetes delegates where the infrastructure and associated YAML definitions address these issues.
 
 ## Troubleshoot AWS VM build infrastructure
 
