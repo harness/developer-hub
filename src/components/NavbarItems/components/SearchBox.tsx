@@ -20,7 +20,6 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
     const params = new URLSearchParams(url.search);
     const query = params.get('q');
     if (query) {
-      console.log(query);
       controller.updateText(query);
       controller.submit();
       props.onSearch(query);

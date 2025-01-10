@@ -21,7 +21,7 @@ const QuerySummaryAndSort = (props) => {
   useEffect(() => {
     setTimeout(() => {
       setCopied(false);
-    },10000);
+    }, 10000);
   }, [copied]);
   useEffect(() => {
     const unsubscribe = summaryController.subscribe(() => {
@@ -95,16 +95,17 @@ const QuerySummaryAndSort = (props) => {
             <b>{summaryState.durationInSeconds}</b> seconds
           </p>
         </div>
-        <Tooltip
-          placement="top"
-          overlay={
+        <span
+          className="tool"
+          hover-tooltip={
             !copied ? 'Share this result. Click to copy' : 'Link copied !'
           }
+          tooltip-position="top"
         >
           <button onClick={handleShareClick}>
             <i className="fa-solid fa-share-nodes"></i>
           </button>
-        </Tooltip>
+        </span>
       </div>
       <div className={styles.sort}>
         <button
