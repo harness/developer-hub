@@ -22,6 +22,19 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## January 2025
+
+### Version 1.122.1
+
+<!-- 2025-01-10 -->
+
+#### New Features and Enhancements  
+- Enhanced the Veracode step in STO to use an existing Veracode application with the Target name specified during the step configuration. If no matching application exists, the step creates a new one. (STO-8359)
+
+#### Fixed Issues 
+- Fixed an issue where Trivy scans failed if no vulnerabilities were found but secrets were detected; the scan now passes successfully, reporting detected secrets with no vulnerabilities (STO-8404, ZD-75298).
+- Fixed an issue that prevented the creation of a new Veracode Sandbox from the STO Veracode step (STO-8377, ZD-72535).
+
 ## December 2024
 
 ### Version 1.120.4
