@@ -7,7 +7,7 @@ description: Get started
 
 Welcome to the Internal Developer Portal (IDP)! This **Get Started with IDP** section will guide you through the key steps to get started with the IDP and make the most of its capabilities.
 
-![](./static/get%20started%20flow.png)
+<DocImage path={require('./static/get-started-flow.png')} width="60%" height="40%" title="Click to view full size image" />
 
 #### 1. [Enable the Module](./enabling-module)
 The first step to getting started with the IDP is enabling the module in your Harness Account. Currently, this module is enabled on request.
@@ -27,6 +27,6 @@ Now that software components are registered and plugins are enabled. Learn how t
 #### 6. [Enable Documentation for Your Component](./enable-docs)
 Learn how to enable and manage documentation for your components directly within the IDP.
 
-#### 7. [Getting Started with Workflows](./workflow-quickstart)
+#### 7. [Get Started with Workflows](./workflow-quickstart)
 Workflows can be used to automate and manage processes within your organization. Learn how to create, configure, and execute workflows.
 

@@ -17,19 +17,30 @@ Docs in Harness IDP is powered by [TechDocs Backstage Plugin](https://backstage.
 
 :::
 
-<Tabs>
-<TabItem value="Docs Available in the Root of Source Folder ">
+<Tabs queryString="enable-docs-location">
+<TabItem value="docs-available-in-root" label="Docs Available in the Root of Source Folder" queryString="enable-docs-location">
 
+### Docs Available in the Root of Source Folder \{#docs-available-in-the-root-of-source-folder}
 
 To add documentation:
 
 1. Create a `docs` directory next to where you have `catalog-info.yaml`.
-2. Inside the `docs` directory, create a `index.md` file with the following contents.
+
+The directory tree must look something like this:
+
+```sh
+├── catalog-info.yaml
+└── docs
+    └── index.md
+```
+
+2. Inside the `docs` directory, create an `index.md` file with the following content.
 
 ```
 # Welcome!
 
-This is a basic example of documentation. It is intended to showcase some of the features that TechDocs provides out of the box.
+This is a basic example of documentation. It is intended to showcase some of the
+features that TechDocs provides out of the box.
 
 ## Basic Markdown
 
@@ -74,25 +85,10 @@ topics outlined in this example table:
 
 TechDocs uses MkDocs as the static site generator. Visit https://www.mkdocs.org for more information about MkDocs.
 ```
-3. Now add a `mkdocs.yaml` next to where you have the `catalog-info.yaml`, `mkdocs.yml` file is a sibling of `catalog-info.yaml`
 
-Here's the content for `mkdocs.yaml`:
+3. Edit the `catalog-info.yaml` and add the TechDocs annotation.
 
-```YAML
-site_name: 'Example Documentation'
-repo_url: https://github.com/your_org/your_repo
-edit_uri: url to your index.md
-
-nav:
-  - Home: index.md
-
-plugins:
-  - techdocs-core
-```
-
-4. Edit the `catalog-info.yaml` and add the TechDocs annotation.
-
-5. In the `metadata.annotations` field, add `backstage.io/techdocs-ref: dir:.`.
+4. In the `metadata.annotations` field, add `backstage.io/techdocs-ref: dir:.`.
 
 ![](static/techdocs-ref.png)
 
@@ -100,38 +96,19 @@ plugins:
 When you see`dir:.`, you can translate it to mean:
 
 - That the documentation source code lives in the same location as the `catalog-info.yaml` file.
-- That, in particular, the `mkdocs.yml` file is a sibling of `catalog-info.yaml` (meaning, it is in the same directory)
-- And that all the source content of the documentation would be available if one were to download the directory containing those two files (as well as all subdirectories).
-
-The directory tree of the entity would look something like this:
-
-```sh
-├── catalog-info.yaml
-├── mkdocs.yml
-└── docs
-    └── index.md
-```
-
-If, for example, you wanted to keep a lean root directory, you could place your `mkdocs.yml` file in a subdirectory and update the `backstage.io/techdocs-ref` annotation value accordingly, e.g. to `dir:./sub-folder:`
-
-```sh
-├── catalog-info.yaml
-└── sub-folder
-    ├── mkdocs.yml
-    └── docs
-        └── index.md
-```
-:::warning
-
- Please note `dir:../.` does not work in the above use case due to security reasons.
-
-:::
+- That, in particular, the `docs` folder is a sibling of `catalog-info.yaml` (meaning, it is in the same directory)
 
 </TabItem>
-<TabItem value="Docs Available in Some Other Location">
+<TabItem value="docs-not-in-root" label="Docs Available in Some Other Location">
 
-In situations where your TechDocs source content is managed and stored in a location completely separate from your `catalog-info.yaml`, you can instead specify a URL location reference, the exact value of which will vary based on the source code hosting provider. Notice that instead of the `dir:` prefix, the `url:` prefix is used instead. For example:
+### Docs Available in Some Other Location \{#docs-available-in-some-other-location}
 
+In situations where your TechDocs source content is managed and stored in a location completely separate from your `catalog-info.yaml`, you can instead specify a URL location reference, the exact value of which will vary based on the source code hosting provider. Notice that instead of the `dir:` prefix, the `url:` prefix is used instead. Make sure the specified path contains the `mkdocs.yml` file. For example:
+
+- Harness Code Repository:
+    - Repository at account scope: `url:https://app.harness.io/ng/account/account_id/module/code/repos/repo_name`
+    - Repository at organization scope: `url:https://app.harness.io/ng/account/account_id/module/code/orgs/org_id/repos/repo_name` 
+    - Repository at project scope: `url:https://app.harness.io/ng/account/account_id/module/code/orgs/org_id/projects/project_id/repos/repo_name`
 - GitHub: `url:https://githubhost.com/org/repo/tree/<branch_name>`
 - GitLab: `url:https://gitlabhost.com/org/repo/tree/<branch_name>`
 - Bitbucket: `url:https://bitbuckethost.com/project/repo/src/<branch_name>`
@@ -163,4 +140,3 @@ metadata:
 6. Navigate to the **Docs** tab to review the documentation, which should become available shortly. 
 
 ![](static/docs-rendered.png)
-
