@@ -62,6 +62,7 @@ The following CI/CD pipeline providers are integrated using [Pipeline Triggers](
 * GCR
 * Amazon ECR
 * Microsoft ACR
+* GAR
 
 ### SBOM Generation Tools
 
@@ -85,7 +86,7 @@ You can achieve SLSA Build Level 1, Level 2 and Level 3 using Harness SCS. Refer
 
 ### Attestation/Provenance Generation & Verification Tools
 
-* [Sigstore Cosign with built-in in-toto attestations](https://docs.sigstore.dev/verifying/attestation/)
+* [Sigstore Cosign with built-in in-toto attestations](https://docs.sigstore.dev/cosign/verifying/attestation/)
 
 ### Policy Enforcement Attributes
 
