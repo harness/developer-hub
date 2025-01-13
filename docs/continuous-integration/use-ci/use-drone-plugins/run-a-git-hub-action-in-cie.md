@@ -10,7 +10,6 @@ helpdocs_is_published: true
 canonical_url: https://www.harness.io/blog/github-actions
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -18,8 +17,8 @@ import TabItem from '@theme/TabItem';
 
 There are two ways you can run GitHub Actions in Harness CI pipelines:
 
-* If you are using Harness Cloud build infrastructure, use the [built-in GitHub Action step](./ci-github-action-step.md).
-* For all other build infrastructures, use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step. When your pipeline runs, the GitHub Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
+- If you are using Harness Cloud build infrastructure, use the [built-in GitHub Action step](./ci-github-action-step.md).
+- For all other build infrastructures, use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step. When your pipeline runs, the GitHub Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
 
 This topic explains how to use the GitHub Actions Drone plugin in a Plugin step.
 
@@ -39,11 +38,11 @@ You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage]
 
 Use **Settings** to specify the GitHub Action you want to use and to pass variables and attributes required by the Action and the Drone Plugin. You must specify `uses` and `with`. You can use `env` to specify environment variables, such as GitHub tokens to access [private Action repos](#private-action-repos).
 
-| Key | Description | Value format | Value example |
-| - | - | - | - |
-| `uses` | Required. Specify the Action's repo, along with a branch or tag.| `[repo]@[tag]` | `actions/setup-go@v3` |
-| `with` | Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself. | `key: value` | `go-version: '>=1.17.0'` or `{path: pom.xml, destination: cie-demo-pipeline/github-action, credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>}` |
-| `env` | Conditionally required. Specify a map of environment variables to pass to the Action. Required for [Private Action repos](#private-action-repos), [Duplicate Actions](#duplicate-actions), [Actions requiring a defined working directory](#actions-requiring-a-defined-working-directory), or if otherwise noted in the Action's usage specifications.  | `key: value` | `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` |
+| Key    | Description                                                                                                                                                                                                                                                                                                                                             | Value format   | Value example                                                                                                                                      |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `uses` | Required. Specify the Action's repo, along with a branch or tag.                                                                                                                                                                                                                                                                                        | `[repo]@[tag]` | `actions/setup-go@v3`                                                                                                                              |
+| `with` | Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself.                                                                                                                                                                                                                                                  | `key: value`   | `go-version: '>=1.17.0'` or `{path: pom.xml, destination: cie-demo-pipeline/github-action, credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>}` |
+| `env`  | Conditionally required. Specify a map of environment variables to pass to the Action. Required for [Private Action repos](#private-action-repos), [Duplicate Actions](#duplicate-actions), [Actions requiring a defined working directory](#actions-requiring-a-defined-working-directory), or if otherwise noted in the Action's usage specifications. | `key: value`   | `GITHUB_TOKEN: <+secrets.getValue("github_pat")>`                                                                                                  |
 
 :::tip
 
@@ -51,64 +50,58 @@ You can use variable expressions for these values. For example, `credentials: <+
 
 :::
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual editor example">
 
-
 ![A configured Plugin step with Settings variables.](./static/run-a-git-hub-action-in-cie-03.png)
-
 
 </TabItem>
   <TabItem value="YAML" label="YAML example" default>
 
-
 ```yaml
-              - step:
-                 identifier: gcsuploader
-                 name: gcsuploader
-                 type: Plugin
-                 spec:
-                   connectorRef: YOUR_DOCKER_CONNECTOR_ID
-                   image: plugins/github-actions
-                   privileged: true
-                   settings:
-                     uses: google-github-actions/upload-cloud-storage@main # Specify the GitHub Action you want to use.
-                     with: # Specify Action settings
-                       path: pom.xml
-                       destination: cie-demo-pipeline/github-action
-                       credentials: <+stage.variables.GCP_SECRET_KEY_BASE64> ## This example uses a stage variable to store a secret.
+- step:
+    identifier: gcsuploader
+    name: gcsuploader
+    type: Plugin
+    spec:
+      connectorRef: YOUR_DOCKER_CONNECTOR_ID
+      image: plugins/github-actions
+      privileged: true
+      settings:
+        uses: google-github-actions/upload-cloud-storage@main # Specify the GitHub Action you want to use.
+        with: # Specify Action settings
+          path: pom.xml
+          destination: cie-demo-pipeline/github-action
+          credentials: <+stage.variables.GCP_SECRET_KEY_BASE64> ## This example uses a stage variable to store a secret.
 ```
-
 
 </TabItem>
 </Tabs>
-
 
 ### Private Action repos
 
 If you want to use an Action that is in a private repository, you must add a `GITHUB_TOKEN` environment variable to the **Plugin** step's `settings.env`. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call it.
 
-* Key: `GItHUB_TOKEN`
-* Value: `<+secrets.getValue("YOUR_TOKEN_SECRET")>`
+- Key: `GItHUB_TOKEN`
+- Value: `<+secrets.getValue("YOUR_TOKEN_SECRET")>`
 
 Here's an example of the YAML for a `Plugin` step using an Action in a private repo:
 
 ```yaml
-              - step:
-                 type: Plugin
-                 name: private action
-                 identifier: private_action
-                 spec:
-                   connectorRef: dockerhub
-                   image: plugins/github-actions
-                   privileged: true
-                   settings:
-                     uses: myorg/private-action-step@v1
-                     with:
-                       path: pom.xml
-                     env:
-                       GITHUB_TOKEN: <+secrets.getValue("github_pat")>
+- step:
+    type: Plugin
+    name: private action
+    identifier: private_action
+    spec:
+      connectorRef: dockerhub
+      image: plugins/github-actions
+      privileged: true
+      settings:
+        uses: myorg/private-action-step@v1
+        with:
+          path: pom.xml
+        env:
+          GITHUB_TOKEN: <+secrets.getValue("github_pat")>
 ```
 
 ### Duplicate Actions
@@ -155,6 +148,42 @@ In this example, two parallel `Plugin` steps run the same GitHub Action. Each st
                            XDG_CACHE_HOME: /home/ubuntu/.cache2
 ```
 
+### Output Variables from GitHub Actions Drone plugin Step
+
+When using GitHub Actions Drone Plugin step in Harness CI, it is now possible to output variables from steps in your workflow. This feature allows seamless passing of values between steps, enabling complex pipelines and dynamic workflows without the limitations previously associated with self-hosted infrastructure.
+
+Here's an example pipeline that demonstrates how to use GitHub Actions Drone Plugin step in Harness CI to output variables and reference them in subsequent steps:
+
+```YAML
+          execution:
+            steps:
+              - step:
+                  identifier: gha_plugin
+                  type: Plugin
+                  name: gha_plugin
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/github-actions:0.0.4
+                    settings:
+                      uses: Ompragash/maths-action@main
+                      with:
+                        input1: "15"
+                        input2: "25"
+                    imagePullPolicy: Always
+              - step:
+                  identifier: Run_1
+                  type: Run
+                  name: Run_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: alpine
+                    shell: Sh
+                    command: |-
+                      echo <+execution.steps.gha_plugin.output.outputVariables.sum>
+                      echo <+execution.steps.gha_plugin.output.outputVariables.product>
+                      echo <+execution.steps.gha_plugin.output.outputVariables.message>
+```
+
 ### Actions requiring a defined working directory
 
 Some GitHub Actions need to run on the cloned [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase). The GitHub Action plugin doesn't automatically set a working directory.
@@ -162,21 +191,21 @@ Some GitHub Actions need to run on the cloned [codebase](/docs/continuous-integr
 If this is required by the Action you want to run, and the Action offers a working directory parameter, then you need to specify the working directory as `/harness`. For example:
 
 ```yaml
-              - step:
-                  type: Plugin
-                  name: Action docker publish image
-                  identifier: Action_docker_publish_image
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: plugins/github-actions
-                    privileged: true
-                    settings:
-                      uses: elgohr/Publish-Docker-Github-Action@v4
-                      with:
-                        name: dockerhub/publish-docker-image
-                        username: ${{ secrets.DOCKER_USERNAME }}
-                        password: ${{ secrets.DOCKER_PASSWORD }}
-                        workdir: /harness
+- step:
+    type: Plugin
+    name: Action docker publish image
+    identifier: Action_docker_publish_image
+    spec:
+      connectorRef: account.harnessImage
+      image: plugins/github-actions
+      privileged: true
+      settings:
+        uses: elgohr/Publish-Docker-Github-Action@v4
+        with:
+          name: dockerhub/publish-docker-image
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          workdir: /harness
 ```
 
 If the Action ingests the working directory as an environment variable, place it under `env`.
@@ -257,6 +286,6 @@ When you run the pipeline, you can observe the GitHub Action plugin logs in the 
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issue related to plugins and integrations, including GitHub Actions. For example:
 
-* [Can't connect to Docker daemon](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-cant-connect-to-docker-daemon)
-* [Not a git repository (or any of the parent directories)](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-fails-with-not-a-git-repository-or-any-of-the-parent-directories)
-* [PATH variable overwritten in parallel GitHub Action steps](/kb/continuous-integration/continuous-integration-faqs/#why-is-the-path-variable-overwritten-in-parallel-github-actions-steps)
+- [Can't connect to Docker daemon](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-cant-connect-to-docker-daemon)
+- [Not a git repository (or any of the parent directories)](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-fails-with-not-a-git-repository-or-any-of-the-parent-directories)
+- [PATH variable overwritten in parallel GitHub Action steps](/kb/continuous-integration/continuous-integration-faqs/#why-is-the-path-variable-overwritten-in-parallel-github-actions-steps)
