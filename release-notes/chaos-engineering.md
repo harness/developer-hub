@@ -20,25 +20,38 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
-## December 2024
+## January 2025
 
-### Version 1.50.3
+### Version 1.52.3
 
-#### New features and enhancements
+- **New videos**: [Pod Network Rate Limit](https://youtu.be/01efVOyFGl8?si=FQKWhVgdUJ0889fj), [Pod API Modify Header](https://youtu.be/sIkUxtnQY_o?si=ApWs_Opx2x27SkLj), [Pod IO Attribute Override](https://youtu.be/chk5K754J_4?si=pmzAgnpmHJC0f3Oz), [Pod API Block](https://youtu.be/Cg5gbfFrJQs?si=KueFmRJ6k8Ji4kbS), [Pod API Modify Body](https://youtu.be/Dbr_KwfTxps?si=-aHOmAr5onrFq6Zy). Adds a [playlist](https://www.youtube.com/playlist?list=PLXsYHFsLmqf0fgHoZANmwGB1tSQka5kDV) with Kubernetes Pod Chaos experiments.
+
+#### Fixed issues
+
+- Fixed the issue where fault templates were not working without enabling the feature flag associated with it. (CHAOS-7210)
+
+- Fixed the issue where automatic experiment creation was unable to create multiple experiments in **Maximum mode**. (CHAOS-7214)
+
+## Previous releases
+
+<details>
+<summary>2024 releases </summary>
+
+#### December 2024, Version 1.50.3
+
+##### New features and enhancements
 
 - Adds support for [configuring image registries at multiple scopes](/docs/chaos-engineering/use-harness-ce/image-registry#why-use-a-custom-image-registry), such as Project, Account, Organization, and Infrastructure levels. These settings can be automatically inherited by lower levels, but if the "override allowed" option is enabled at the parent level, lower levels can modify or override these configurations. It is behind the feature flag `CHAOS_IMAGEREGISTRY_DEV`. (CHAOS-6570)
 
-#### Fixed issues
+##### Fixed issues
 
 - Fixed an issue where ChaosGuard was not evaluating correctly after adding support for environments. (CHAOS-7075)
 
 - Fixed an issue where the Pod API modify header fault failed to function as expected when the header value was set to '/'. (CHAOS-7063)
 
-## November 2024
+#### November 2024, Version 1.49.1
 
-### Version 1.49.1
-
-#### New features and enhancements
+##### New features and enhancements
 
 - Extends ChaosGuard conditions for node-level chaos experiments. (CHAOS-6788)
 
@@ -53,21 +66,21 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Adds local and UTC times in the cron schedule next run. (CHAOS-6974)
 
-#### Fixed issues
+##### Fixed issues
 
 - Fixed the cron experiment execution that was not working with Linux and Windows infrastructure (CHAOS-7044)
 
 - Fixed the issue of **Visual** and **YAML** tabs overlapping while trying to toggle between them in the **Condition Editor** in ChaosGuard. (CHAOS-7026)
 
-### Version 1.48.0
+#### November 2024, Version 1.48.0
 
-#### New features and enhancements
+##### New features and enhancements
 
 - Adds a pre-check to the Windows global blackhole experiment to verify if the firewall is enabled for the target Windows VM. If not, the `ENABLE_FIREWALL` tunable is set, which, by default, enables the firewall. (CHAOS-6848)
 
 - Introduces the Windows disk fill chaos experiment, supported by Windows chaos infrastructure. (CHAOS-6842)
 
-#### Fixed issues
+##### Fixed issues
 
 - Fixed the input mechanism for specifying multiple zones for CLB AZ down chaos fault, now allowing comma-separated values for multiple inputs. (CHAOS-6909)
 
@@ -83,11 +96,9 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Fixed the issue where two continuous command probes with a short polling duration could not execute in Linux infrastructure. (CHAOS-5461)
 
-## October 2024
+#### October 2024, Version 1.47.0
 
-### Version 1.47.0
-
-#### New features and enhancements
+##### New features and enhancements
 
 - Adds support to explicitly define the log watcher sidecar for chaos experiment manifest that use Harness Delegate. (CHAOS-6703)
 
@@ -101,7 +112,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Adds the functionality to block all inbound rules for Windows global blackhole chaos. (CHAOS-6603)
 
-#### Fixed issues
+##### Fixed issues
 
 - Fixed an issue where the list of infrastructure supported by Harness Delegate showed deleted infrastructure. (CHAOS-6742)
 
@@ -111,11 +122,9 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Fixed the issue where the experiment schedule type was not being updated when it was changed from non-cron to cron type. (CHAOS-6822)
 
-## September 2024
+#### September 2024, Version 1.45.5
 
-### Version 1.45.5
-
-#### Fixed issues
+##### Fixed issues
 
 - Fixed the issue where chaos infrastructure created with the help of a sandbox showed "Supported by a Harness Delegate". (CHAOS-6501)
 
@@ -123,23 +132,19 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Fixed the issue of discrepancy between the number of probes in the UI and backend. (CHAOS-6528)
 
-## August 2024
+#### August 2024, Version 1.44.3
 
-### Version 1.44.3
-
-#### New features and enhancements
+##### New features and enhancements
 
 - Enables the global blackhole chaos to block inbound traffic. (CHAOS-6381)
 
-#### Fixed issues
+##### Fixed issues
 
 - CPU utilization increased due to continuously executing clean up tasks. This issue has been fixed by adding a sleep operation that runs after every "remove" operation and optimizes overall CPU performance. (CHAOS-5709)
 
-## July 2024
+#### July 2024, Version 1.43.3
 
-### Version 1.43.3
-
-#### New features and enhancements
+##### New features and enhancements
 
 - Crictl binary is upgraded from 1.29.0 to 1.31.0 to fix 3 vulnerabilities. (CHAOS-6357)
 
@@ -149,7 +154,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Adds **Probe Properties** tab on the UI in ChaosHub to show details about the probe selected. (CHAOS-6132)
 
-#### Fixed issues
+##### Fixed issues
 
 - Fixed issue where GameDay was not available to users at the project level but was available at the account/organization level who had administrator access. (CHAOS-6349)
 
@@ -165,15 +170,15 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Fixed an incorrect syntax in the `kubectl watch` command in the UI. (CHAOS-5968)
 
-### Version 1.41.1
+#### July 2024, Version 1.41.1
 
-#### Fixed issues
+##### Fixed issues
 
 - Fixed the error associated with upgrading a chaos infrastructure by providing relevant permissions for the upgrade agent in the execution plane (user host/cluster). (CHAOS-5980)
 
-### Version 1.40.1
+#### July 2024, Version 1.40.1
 
-#### New features and enhancements
+##### New features and enhancements
 
 - Adds a new Kubernetes pod fault, [pod IO mistake](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-io-mistake) that causes files to read or write an incorrect value. (CHAOS-5916)
 
@@ -187,13 +192,13 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Converts the default health check probes to `type:inline` from `type:source` for Kubernetes infrastructure to improve the execution speed of chaos experiments. (CHAOS-4348)
 
-#### Fixed issues
+##### Fixed issues
 
 - Fixed an issue where an experiment in the `Error` state would not finish, and be in a state of infinite run timestamp. (CHAOS-5577)
 
-### Version 1.39.11
+#### July 2024, Version 1.39.11
 
-#### Fixed issues
+##### Fixed issues
 
 - Fixed an issue wherein trying to add a pre-defined experiment in Windows infrastructure was unsuccessful. (CHAOS-5863)
 
@@ -201,11 +206,9 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Fixed an issue where the **Linux restart** chaos fault could not parse string values. (CHAOS-5616)
 
-## May 2024
+#### May 2024, Version 1.38.7
 
-### Version 1.38.7
-
-#### New features and enhancements
+##### New features and enhancements
 
 - This release provides support to install chaos infrastructure using Delegates, and this is known as DDCI (Delegate-Driven Chaos Infrastructure). (CHAOS-2017)
 
@@ -238,7 +241,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
     - Adding all the overrides to the chaos engine.
     - Enhancing the list filter, compatible only with the new experiment template. (CHAOS-5122)
 
-#### Fixed issues
+##### Fixed issues
 
 - Fixed an issue where the compatibility check was enabled for other infrastructure types too. The overview form now preserves the state while switching between different infrastructures. (CHAOS-5614)
 
@@ -252,19 +255,19 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Fixed an issue where the [pod IO stress](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-io-stress) experiment incorrectly applied stress on the helper pod instead of the target container. (CHAOS-5416)
 
-### Version 1.37.0
+#### May 2024, Version 1.37.0
 
-#### New features and enhancements
+##### New features and enhancements
 
 - This release introduces the DynamoDB replication pause experiments powered by AWS FIS. These experiments improve the configuration, execution, and monitoring capabilities of the application. (CHAOS-5002)
 
-#### Fixed issues
+##### Fixed issues
 
 - Fixed an issue where the command probe multiple source probes were overridden. (CHAOS-5308)
 
-### Version 1.36.5
+#### May 2024, Version 1.36.5
 
-#### Fixed issues
+##### Fixed issues
 
 - Fixed an issue where accounts that started with an underscore could not execute a Linux chaos experiment. (CHAOS-5185)
 
@@ -274,15 +277,13 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Fixed an issue in the UI where chaos experiments with the toggle option to enable (or disable) cloud secret was enabled automatically after saving the experiment. (CHAOS-4987)
 
-## April 2024
+#### April 2024, Version 1.35.1
 
-### Version 1.35.1
-
-#### New features and enhancements
+##### New features and enhancements
 
 * The node drain chaos experiment now supports selecting multiple target nodes in sequence(serial or parallel). (CHAOS-2187)
 
-#### Fixed issues
+##### Fixed issues
 
 * Linux command probes in "source" mode was failing due to a module mismatch. This is fixed now. (CHAOS-4952)
 
@@ -292,9 +293,9 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * If syntax errors were identified in a manifest after uploading it, user had to refresh the page and re-upload the YAML. This is fixed now, and users can edit the YAML without refreshing it. (CHAOS-4905)
 
-### Version 1.34.5
+#### April 2024, Version 1.34.5
 
-#### New features and enhancements
+##### New features and enhancements
 
 * Adds 32-bit Windows support for Windows chaos infrastructure. (CHAOS-4792)
 
@@ -310,7 +311,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Updates ensure smooth operation of the pod API chaos and pod HTTP chaos faults in case the target pod restarts. (CHAOS-4187)
 
-#### Fixed issues
+##### Fixed issues
 
 * Resilience probes were not available for Windows experiments. This is fixed. (CHAOS-4786)
 
@@ -322,17 +323,15 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * When you provide a source port for the Linux network loss experiment, all the ports on the VM were targeted. This is fixed. (CHAOS-4591)
 
-## March 2024
+#### March 2024, Version 1.33.1
 
-### Version 1.33.1
-
-#### New features and enhancements
+##### New features and enhancements
 
 * The Windows blackhole chaos experiment supports graceful abort functionality, thereby providing better control and flexibility while performing the experiment. (CHAOS-4582)
 
-### Version 1.32.1
+#### March 2024, Version 1.32.1
 
-#### New features and enhancements
+##### New features and enhancements
 
 * Adds `listInfrasWithExperimentStats` API to fetch the experiment statistics for the requested chaos infrastructure. The API takes a list of infrastructure IDs (infraIDs) and returns the associated experiment and experiment run count. The `listInfras` API is deprecated. (CHAOS-4417)
 
@@ -345,27 +344,23 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Adds Helm support to install chaos infrastructure. (CHAOS-3327)
 
-#### Fixed issues
+##### Fixed issues
 
 * When a chaos experiment was cloned and the probe configuration of the cloned experiment was modified, the changes to the probe configuration were not reflected in the experiment. This issue is resolved. (CHAOS-4249)
 
-## February 2024
+#### February 2024, Version 1.31.2
 
-### Version 1.31.2
-
-#### New features and enhancements
+##### New features and enhancements
 
 * This release adds API support to install and upgrade chaos infrastructure using Helm. (CHAOS-2998)
 
-#### Fixed issues
+##### Fixed issues
 
 * Disabling a Linux resilience probe removed all chaos faults associated with the chaos experiment. It has been fixed. Now, you can bulk enable and disable a Kubernetes and a Linux infrastructure's resilience probe. (CHAOS-3849)
 
-## January 2024
+#### January 2024, Version 1.30.0
 
-### Version 1.30.0
-
-#### New features and enhancements
+##### New features and enhancements
 
 * Appropriate environment variables are added at relevant places to ensure that the self-managed platform (SMP) can be used with feature flags (FF). (CHAOS-3865)
 
@@ -373,17 +368,17 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * This release adds wildcard support for all entities in the [chaosguard conditons](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/#condition). (CHAOS-3254)
 
-#### Fixed issues
+##### Fixed issues
 
 * Chaos hub icons were not visible when the hub name consisted of the '/' character. This is fixed so that a user can't create a hub with the '/' character. (CHAOS-3753)
 
-### Version 1.29.0
+#### January 2024, Version 1.29.0
 
-#### New features and enhancements
+##### New features and enhancements
 
 * Improves the error messages and logs returned to the client in the API to save chaos experiments. (CHAOS-3607)
 
-#### Fixed issues
+##### Fixed issues
 
 * Linux chaos infrastructure (LCI) installer wasn't executing the script with sudo privileges, which resulted in *Failed to install linux-chaos-infrastructure* error. This issue is now resolved. (CHAOS-3724)
 
@@ -391,9 +386,9 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * LCI process would get killed due to a lack of memory (OOM) when a high amount of memory was specified during a memory stress fault. This issue is now resolved so that the likeliness of OOM kills during limited memory availability is reduced. (CHAOS-3469)
 
-### Version 1.28.1
+#### January 2024, Version 1.28.1
 
-#### New features and enhancements
+##### New features and enhancements
 
 * Adds optimisation to utilise memory efficiently, reduce latency, and enhance server performance. (CHAOS-3581)
 
@@ -409,7 +404,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Adds support for bulk-disable (disable enabled CRON schedules selected by user) and bulk-enable (enable disabled CRON schedules selected by user) CRON-scheduled experiments, with a limit of 20 experiments for every operation. (CHAOS-3174)
 
-#### Fixed issues
+##### Fixed issues
 
 * After selecting an experiment, when a user tried to select an active infrastructure for the experiment, the page would throw an error. This is fixed. (CHAOS-3585)
 
@@ -417,8 +412,8 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * When multiple faults are executed in parallel, faults that transitioned into an "errored" state would not reflect in the logs, whereas faults in **success** state reflected in the logs with an "errored" status. This is fixed. (CHAOS-3363)
 
+</details>
 
-## Previous releases
 
 <details>
 <summary>2023 releases</summary>
