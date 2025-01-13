@@ -1,6 +1,6 @@
 ---
-title: Verifying the Artifact in SCS
-sidebar_label: Verifying the Artifact
+title: Verifying the Artifact
+sidebar_label: Verify the Artifact
 description: Artifact Verification
 sidebar_position: 1
 ---
@@ -10,17 +10,17 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-In a secure software supply chain, verifying the integrity and authenticity of artifacts is as crucial as signing them. After an artifact is signed, it is essential to confirm that it remains untampered with and was signed by a trusted source. The Artifact Verification process allows you to validate that a signed artifact has not been altered and is authentic,ensuring that it meets security standards before deployment
+After signing the artifact in the [Artifact Signing step](http://localhost:3000/docs/software-supply-chain-assurance/artifact/artifact-signing#artifact-signing-process-in-scs), it’s crucial to verify that it hasn’t been tampered with and was signed by a trusted source. The Artifact Verification process enables you to validate the integrity and authenticity of the signed artifact before it’s deployed.
 
 ## Artifact Verification in SCS
 
-The artifact verification step ensures the authenticity of the signed artifact. It requires the public key to perform the verification. If the public key matches the signed artifact, it confirms that the artifact is intact, secure, and originates from a trusted source, providing assurance of its integrity and authenticity.
+The artifact verification step ensures the authenticity of the signed artifact. It requires the public key to perform the verification. If the public key matches the signed artifact, it confirms that the artifact is intact, secure, and originates from a trusted source.
 
 
 ## Artifact Verification Step Configuration
 
 
-The Artifact Verifying step ensures the integrity of the signed artifact by comparing its original signature with a new one generated from the artifact. If the two match, it confirms the artifact is unchanged, safe, and comes from a trusted source.
+The Artifact Verification step validate the signature of a signed artifact to ensure its authenticity and integrity, confirming that it was signed by a trusted entity.
 
 Configuration Steps:
 
@@ -113,17 +113,19 @@ import CosignVerificationOptions from '/docs/software-supply-chain-assurance/sha
 <CosignVerificationOptions />
 
 
-<DocImage path={require('./static/artifact-verifying.png')} width="70%" height="10%" />
+<DocImage path={require('./static/artifact-verifyying.png')} width="50%" height="50%" />
 
 ## View Verified Artifacts
 
-Once the artifact is signed and verified, you will be able to see a section for Artifact Integrity Verification under the Overview section inside the Artifact Metadata.
+Once the artifact is signed and verified, you will be able to see the Artifact Integrity Verification status from the ["Artifacts Overview"](http://localhost:3000/docs/software-supply-chain-assurance/artifact-view#artifact-overview) tab.
 
 Events for both success and failure are displayed in the chain of custody with a link to the step execution.
 
-* If the signed artifact is successfully verified using the public key, the verification status is displayed as successful, along with a link to the corresponding public Rekor log entry.
+* If the signed artifact is successfully verified using the public key, the verification status is displayed as successful, along with a link to the corresponding Rekor log entry.
 
 * If the public key does not match the signed artifact, a failure state is shown along with a link to the failed step. The failure reason will indicate that the signatures do not match, suggesting the possibility of artifact compromise.
+
+<DocImage path={require('./static/artifact-ovverview.png')} width="100%" height="100%" />
 
 <details>
 <summary>Example Pipeline for Verifying the Artifact</summary>
@@ -144,7 +146,7 @@ This example **Build** stage has three steps:
 - **Artifact Verification**: Verify the signed artifact using the corresponding public key to confirm its source and integrity.
 
 
-<DocImage path={require('./static/sample-pipeline.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/pipeline.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 </TabItem>
