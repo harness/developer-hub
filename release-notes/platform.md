@@ -91,7 +91,7 @@ The following deprecated API endpoints are longer supported:
 
 - Fixed an issue where the 'Apply' button remained enabled and caused an error when clicked, even with no changes to assignments. The 'Apply' button is now correctly disabled when there are no changes. (PL-58782)
 
-- Updated the text input to accept only the domain instead of the full email. Placeholder changed from 'Eg: abc@harness.io' to 'Eg: harness.io'.(PL-57883)
+- Updated the text input to accept only the domain instead of the full email. Placeholder changed from 'Eg: abc@harness.io' to 'Eg: harness.io'. (PL-57883)
 
 - Added search functionality to the Dashboard's Resource Groups modal for improved navigation. (PL-57783)
 
