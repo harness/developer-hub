@@ -8,7 +8,7 @@ Recommendations help kickstart your journey with governance. Essentially, Harnes
 
 ## Governance Recommendation Health
 
-Harness CCM now provides users the ability to monitor Governance Recommendations through the new Optimization tab in the Governance module. 
+Harness CCM now provides users the ability to monitor Governance Recommendations through the new Recommendations Insights tab in the Governance module. 
 
 This enhancement offers clear visibility into the evaluation status of each rule and provides detailed insights about the cloud account (connector) and region involved in generating the recommendations.
 
@@ -45,6 +45,25 @@ The UI displays a detailed error message to assist in resolving the issue quickl
 ## Recommendations
 
 Listed below are the custodian policies which are used to generate recommendations that Harness offers for GCP. Along with each policy, you can also find their respective descriptions, the logic behind savings computation and the permissions required to generate or apply these recommendations.
+
+### Granular Recommendations
+
+Cloud Asset Governance provides valuable recommendations, but when it comes to operationalizing them at scale, it might become challenging. With Granular Recommendations, Governance recommendations will now be generated at the individual resource level, ensuring greater granularity and actionable insights for both custom and out-of-the-box (OOTB) recommendations. This enhancement simplifies implementation and tracking, enabling customers to address governance issues more effectively at scale.
+
+#### Enabling Granular Recommendations
+
+ <iframe 
+     src="https://app.tango.us/app/embed/25a843d3-c733-4459-99f5-69558757865c" 
+     title="Enabling Granular Governance Recommendations in Cloud Cost Management" 
+     style={{minHeight:'640px'}}
+     width="100%" 
+     height="100%" 
+     referrerpolicy="strict-origin-when-cross-origin" 
+     frameborder="0" 
+     webkitallowfullscreen="webkitallowfullscreen" 
+     mozallowfullscreen="mozallowfullscreen" 
+     allowfullscreen="allowfullscreen"></iframe>
+
 
 ### Recommendation: delete-gcp-idle-compute-images
 **Description:** Delete GCP recommended idle images

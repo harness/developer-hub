@@ -9,7 +9,7 @@ Recommendations help kickstart your journey with governance. Essentially, Harnes
 
 ## Governance Recommendation Health
 
-Harness CCM now provides users the ability to monitor Governance Recommendations through the new Optimization tab in the Governance module. 
+Harness CCM now provides users the ability to monitor Governance Recommendations through the new Recommendations Insights tab in the Governance module. 
 
 This enhancement offers clear visibility into the evaluation status of each rule and provides detailed insights about the cloud account (connector) and region involved in generating the recommendations.
 
