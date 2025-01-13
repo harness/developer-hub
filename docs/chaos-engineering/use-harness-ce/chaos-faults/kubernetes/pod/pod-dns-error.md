@@ -101,8 +101,8 @@ permissions:
       </tr>
       <tr>
         <td> TRANSACTION_PERCENTAGE </td>
-        <td> Percentage of the dns queries to be affected. </td>
-        <td> It supports values in range (0,100]. It targets all requests if not provided. For more information, go to <a href="#trasaction-percentage">transaction percentage </a>.</td>
+        <td> Percentage of the DNS queries to be affected. </td>
+        <td> It supports values in range (0,100]. It targets all requests if not provided. For more information, go to <a href="#transaction-percentage">transaction percentage </a>.</td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
@@ -233,7 +233,7 @@ spec:
 
 ### Transaction Percentage
 
-The percentage of dns queries to be affected, with supported values in the range (0, 100]. If not specified, it targets all queries. Tune it by using the `TRANSACTION_PERCENTAGE` environment variable.
+The percentage of DNS queries that should be affected, with supported values in the range (0, 100]. If not specified, the fault targets all queries. Tune it by using the `TRANSACTION_PERCENTAGE` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
