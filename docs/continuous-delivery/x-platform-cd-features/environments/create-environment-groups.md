@@ -16,7 +16,9 @@ Environment groups are simple a way to group environments so you can assign perm
 
 :::note
 
-You can only add environments in the same scope (Harness project, org, account) as the environment group. For example, if the environment group is configured at the project level, only environments in the project level can be configured for the group.
+By default, you can only add environments in the same scope (Harness project, org, account) as the environment group. For example, if the environment group is configured at the project level, only environments in the project level can be configured for the group.
+
+You can also add environments created at the Account and Organization levels to the Environment Group. For more details, see [Cross Scope Environment Groups](/docs/continuous-delivery/x-platform-cd-features/environments/create-environment-groups#cross-scope-environment-groups)
 
 :::
 
@@ -42,7 +44,7 @@ environmentGroup:
 
 ## Cross Scope Environment Groups
 
-You can also add environments created at the Project and Organization levels to the environment groups.
+You can also add environments created at the Account and Organization levels to the **Environment Group**.
 
 :::note
 Currently, the Cross Scope Environment Groups feature is behind the feature flag `CDS_CROSS_SCOPED_ENV_GROUPS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -51,7 +53,7 @@ Currently, the Cross Scope Environment Groups feature is behind the feature flag
 1. From your Project Settings, select **Environments**.
 2. Select **Environment Groups** at the top-right corner of the page.
 3. Click **New Environment Group**.
-4. Enter a name for the environment group. All the environments created at the **Project**, **Organization**, and **Account** levels will be displayed under the respective tabs. Select the environments needed in your environment group and click **Submit**.
+4. Enter a name for the environment group. All the environments created at the **Project**, **Organization**, and **Account** levels will be displayed under the respective tabs. Select the environments needed in your Environment Group and click **Submit**.
 
 ![Cross Scope Environment Groups](./static/cross_scoped_env_groups.png)
 
@@ -80,7 +82,7 @@ environmentGroup:
 Under `envIdentifiers`,
 - The environments associated with the **Project** level do not have a prefix.
 - The environments associated with the **Organization level** are prefixed with `org.`
-- The environments associated with the Account level are prefixed with `account.`
+- The environments associated with the **Account** level are prefixed with `account.`
 
 ## Using environment groups
 
