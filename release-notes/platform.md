@@ -78,7 +78,7 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## January 2025
-### Version 1.71.x <!-- January 10, 2025-->
+### Version 1.71.x <!-- January 13, 2025-->
 #### Fixed issues
 
 - On the RoleDetailsPage, permissions are now sorted alphabetically to enhance ease of discovery and navigation, replacing the previous random order. (PL-59350)
