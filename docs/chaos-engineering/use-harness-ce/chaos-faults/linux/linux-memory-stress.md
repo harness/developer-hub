@@ -85,6 +85,11 @@ spec:
 
 The `memory` input variable specifies the amount of memory to be filled.
 
+:::tip
+- The `stress-ng` package attempts to utilize a percentage of the available free memory using each stressor process.
+- Harness recommends setting the number of workers to be equal to or greater than the total number of logical CPU cores.
+:::
+
 The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-memory-stress/memory.yaml yaml)
