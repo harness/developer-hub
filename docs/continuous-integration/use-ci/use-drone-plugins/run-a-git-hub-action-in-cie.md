@@ -148,9 +148,9 @@ In this example, two parallel `Plugin` steps run the same GitHub Action. Each st
                            XDG_CACHE_HOME: /home/ubuntu/.cache2
 ```
 
-### Output Variables from GitHub Actions Drone plugin Step
+### Output Variables from GitHub Actions Drone Plugin Step
 
-When using GitHub Actions Drone Plugin step in Harness CI, it is now possible to output variables from steps in your workflow. This feature allows seamless passing of values between steps, enabling complex pipelines and dynamic workflows without the limitations previously associated with self-hosted infrastructure.
+When using GitHub Actions Drone Plugin step in Harness CI, it is now possible to output variables from steps in your workflow. This feature allows seamless passing of values between steps, enabling complex pipelines and dynamic workflows.
 
 Here's an example pipeline that demonstrates how to use GitHub Actions Drone Plugin step in Harness CI to output variables and reference them in subsequent steps:
 
