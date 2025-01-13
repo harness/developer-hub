@@ -7,7 +7,7 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "Repo Security Posture Management for GitHub",
-        description: "Identify misconfigs in source code repositories based on industry standards such as CIS and OWASP Top 10 CI/CD Security Risks. Also, includes support for SBOM generation and security tests such as SAST, SCA, and secrets scanning.",
+        description: "Identify misconfigurations in source code repositories based on industry standards such as CIS and OWASP Top 10 CI/CD Security Risks. Also, includes support for SBOM generation and security tests such as SAST, SCA, and secrets scanning.",
       },
       {
         tag: [],
@@ -17,7 +17,7 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "CI/CD Security Posture Management for GitHub Workflows & Harness Pipelines",
-        description: "Perform static analysis in Github workflows and Harness pipelines to detect risky actions and misconfigurations.",
+        description: "Perform static analysis in GitHub workflows and Harness pipelines to detect risky actions and misconfigurations.",
       },
       {
         tag: [],
@@ -37,7 +37,7 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "Repo Security Posture Management for Harness Code",
-        description: "Identify misconfigs in source code repositories based on industry standards such as CIS and OWASP Top 10 CI/CD Risk. Also, includes support for SBOM generation and security tests such as SAST, SCA, and secrets scanning.",
+        description: "Identify misconfigurations in source code repositories based on industry standards such as CIS and OWASP Top 10 CI/CD Risk. Also, includes support for SBOM generation and security tests such as SAST, SCA, and secrets scanning.",
       },
       
       {
@@ -58,12 +58,12 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "SLSA Policies",
-        description: "Out of the box policies to ensure compliance with Level 1, Level 2 and Level 3 requirements.",
+        description: "Out of the box policies to ensure compliance with Level 1, Level 2, and Level 3 requirements.",
       },
       {
         tag: [],
         title: "Licensing Policies",
-        description: "Out of the box open source policies to check for non compliant licenses in dependencies.",
+        description: "Out of the box open source policies to check for non-compliant licenses in dependencies.",
       },
       {
         tag: [],
@@ -73,7 +73,7 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "Bulk Onboarding",
-        description: "Allow users to bulk onboard github repos across org and accounts via API",
+        description: "Allow users to bulk onboard GitHub repos across org and accounts via API",
       },
     ],
   },
@@ -138,12 +138,12 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "Remediation Tracker",
-        description: "Assign vulnerabilities & compliance issues to developers using remediation tracker to track across different types of target (Artifact, CI/CD, Repos).",
+        description: "Assign vulnerabilities & compliance issues to developers using remediation tracker to track across different types of targets (Artifact, CI/CD, Repos).",
       },
       {
         tag: [],
         title: "SBOM Scoring in Drift Detection",
-        description: "View risk scores on dependencies that get added or removed between artifact drifts which contain vulnerabilities, have invalid licenses or are unmaintained.",
+        description: "View risk scores on dependencies that get added or removed between artifact drifts which contain vulnerabilities, have invalid licenses, or are unmaintained.",
       },
     ],
   },
