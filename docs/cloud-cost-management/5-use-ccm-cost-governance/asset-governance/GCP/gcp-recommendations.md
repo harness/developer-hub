@@ -64,6 +64,11 @@ Cloud Asset Governance provides valuable recommendations, but when it comes to o
      mozallowfullscreen="mozallowfullscreen" 
      allowfullscreen="allowfullscreen"></iframe>
 
+Owing to this, now, while adding a recommendation to Ignore List, users have the option to specify the scope at which the users want to ignore the recommendation. The scope can be either Rule-level, Project-level or Resource-level.
+
+  <DocImage path={require('../static/gcp_granular
+  .png')} width="90%" height="90%" title="Click to view full size image" />
+
 
 ### Recommendation: delete-gcp-idle-compute-images
 **Description:** Delete GCP recommended idle images
