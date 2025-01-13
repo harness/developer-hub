@@ -39,11 +39,7 @@ export const SscaData: Horizon = {
         title: "Repo Security Posture Management for Harness Code",
         description: "Identify misconfigs in source code repositories based on industry standards such as CIS and OWASP Top 10 CI/CD Risk. Also, includes support for SBOM generation and security tests such as SAST, SCA, and secrets scanning.",
       },
-      {
-        tag: [],
-        title: "Artifact Chain of Custody V2",
-        description: "Enhanced audit trail that seamlessly integrates all pipeline events at an account level, spanning from source code to deployment.",
-      },
+      
       {
         tag: [],
         title: "SBOM & SLSA support with GitHub Actions",
@@ -53,6 +49,11 @@ export const SscaData: Horizon = {
         tag: [],
         title: "Artifact Signing and Verification",
         description: "Ensure built artifact is not tampered before deployment.",
+      },
+      {
+        tag: [],
+        title: "SBOM API Support",
+        description: "Enable SBOM download APIs for repos and artifacts.",
       },
       {
         tag: [],
@@ -81,6 +82,11 @@ export const SscaData: Horizon = {
     feature: [
       {
         tag: [],
+        title: "Artifact Chain of Custody V2",
+        description: "Enhanced audit trail that seamlessly integrates all pipeline events at an account level, spanning from source code to deployment.",
+      },     
+      {
+        tag: [],
         title: "OSS Top 10 Risks",
         description: "Visibility into open source risks across built artifacts using SBOMs.",
       },
@@ -103,11 +109,6 @@ export const SscaData: Horizon = {
         tag: [],
         title: "CI/CD Security for Jenkins",
         description: "Perform static analysis to detect risks and misconfigurations in Jenkins pipelines.",
-      },
-      {
-        tag: [],
-        title: "SBOM API Support",
-        description: "Enable SBOM download APIs for repos and artifacts.",
       },
       {
         tag: [],
