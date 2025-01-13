@@ -14,11 +14,6 @@ export const FmeData: Horizon = {
         title: "Flag impressions toggle",
         description: "Disable the flow of impressions for individual flags.",
       },
-      {
-        tag: [{ value: "Measurement" }],
-        title: "Rum agents sampling",
-        description: "Control the number of events that are auto-captured by the Split Suite and RUM agents.",
-      },
     ],
   },
   Next: {
