@@ -239,7 +239,7 @@ Next, try using Harness [Continuous Integration](/docs/continuous-integration/ge
 
 ## Detailed diagnostics for K8s Deployment
 
-Harness now provides detailed log information for pods and container during the Wait For Steady State step in Kubernetes deployments, helping you troubleshoot deployment issues by providing real-time insights into pod statuses.
+Harness provides detailed log information for pods and container during the Wait For Steady State step in Kubernetes deployments, helping you troubleshoot deployment issues by providing real-time insights into pod statuses.
 
 :::note
 
@@ -247,7 +247,7 @@ Currently, this feature is behind the feature flag `CDS_K8S_DETAILED_POD_LOGS`. 
 
 :::
 
-These logs include detailed information from status.condition, status.containerStatuses, and status.initContainerStatuses during the Wait For Steady State step.
+These logs include detailed information from `status.condition`, `status.containerStatuses`, and `status.initContainerStatuses` during the Wait For Steady State step.
 
 **Key Details**:
 - Logs are polled every 30 seconds. If the task completes in less than 30 seconds, no logs will be displayed.
