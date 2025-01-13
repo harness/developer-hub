@@ -163,7 +163,7 @@ Here's an example pipeline that demonstrates how to use GitHub Actions Drone Plu
                   name: gha_plugin
                   spec:
                     connectorRef: account.harnessImage
-                    image: plugins/github-actions:0.0.4
+                    image: plugins/github-actions:1.0.0
                     settings:
                       uses: Ompragash/maths-action@main
                       with:
