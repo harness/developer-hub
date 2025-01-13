@@ -1,0 +1,82 @@
+name: MarkDown and image filename validation
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+      - '**/*.jpg'
+      - '**/*.png'
+      - '**/*.jpeg'
+      - '**/*.svg'
+
+jobs:
+  kebab-case-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Check filenames for kebab case
+        run: |
+          Red='\033[0;31m'          # Red
+          Green='\033[0;32m'        # Green
+          Yellow='\033[0;33m'       # Yellow
+          Blue='\033[0;34m'         # Blue
+          Reset='\033[0m'           # Reset
+          echo -e "${Blue} Checking all changed Markdown files ..."
+          changed_files=$(git diff --name-only HEAD^1 HEAD | grep -E '\.(md|jpg|png|jpeg|svg)$')
+          if [ -z "$changed_files" ]; then
+            echo -e "${Green} No changed files in this PR.${Reset}"
+            exit 0
+          fi
+          x=1
+          echo -e "${Blue} Changed static files are :${Reset}"
+          echo "$changed_files" | while read -r file; do
+              dir=$(dirname "$file")
+              base=$(basename "$file")
+              parent_folder=$(basename "$dir")
+              if [ "$parent_folder" = "." ]; then
+                  parent_folder="root"
+              fi
+              combined_info="$parent_folder/$base"  # Treat folder name as part of the file name
+              echo -e "${Yellow} $x. $combined_info${Reset}"
+              x=$((x + 1))
+          done
+          # Find invalid filenames
+          invalid_kebab_case=$(echo "$changed_files" | grep -vE '^([a-z0-9]+(-[a-z0-9]+)*)(/([a-z0-9]+(-[a-z0-9]+)*))*\.(md|jpg|png|jpeg|svg)$' || true)
+          # Check for  filenames that are not in kebab case
+          if [ -n "$invalid_kebab_case" ]; then
+            echo -e "${Blue} The following paths are not in kebab case:${Reset}"
+            x=1
+            echo "$invalid_kebab_case" | while read -r file; do
+              echo -e "${Red}$x. $file${Reset}"
+              x=$((x + 1))
+            done
+            failure_flag=1
+          else
+            echo -e "${Green} All changed filenames are  in kebab case."
+          fi
+          changed_files=$(git diff --name-only HEAD^1 HEAD | grep -E '\.(md|jpg|png|jpeg|svg)$')
+          long_files=$(echo "$changed_files" | awk 'length > 100')
+          # Check for  filenames that are not long
+           if [ -n "$long_files" ]; then
+            echo -e "${Blue} The following  filenames exceed 100 characters:${Reset}"
+             x=1
+            echo "$long_files$" | while read -r file; do
+              echo -e "${Red}$x. $long_files${Reset}"
+              x=$((x + 1))
+            done
+            failure_flag=1
+           else
+            echo -e "${Green} All changed filenames are  of valid length.${Reset}"
+          fi
+          if [ "$failure_flag" -eq 0 ]; then
+            echo -e "${Green} All changed  filenames passed validation.${Reset}"
+            exit 0
+          else
+            echo -e "${Red} The check has failed.${Reset}"
+            exit 1
+          fi
