@@ -2,7 +2,6 @@
 title: Get started with IDP
 sidebar_position: 1
 sidebar_label: Get Started with IDP
-description: Get started
 ---
 
 Welcome to the Internal Developer Portal (IDP)! This **Get Started with IDP** section will guide you through the key steps to get started with the IDP and make the most of its capabilities.

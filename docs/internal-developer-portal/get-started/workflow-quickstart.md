@@ -2,7 +2,7 @@
 title: Get Started with Workflows
 description: Learn about creating new workflows to facilitate the GitHub Onboarding.
 sidebar_position: 7
-sidebar_label: Getting Started with Workflows
+sidebar_label: Get Started with Workflows
 ---
 
 ## Introduction

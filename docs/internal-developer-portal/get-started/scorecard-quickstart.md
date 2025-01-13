@@ -4,6 +4,7 @@ description: Learn how to create Scorecards to assess and track the readiness of
 sidebar_position: 5
 redirect_from:
   - /docs/internal-developer-portal/scorecards/scorecard-quickstart
+sidebar_label: Get Started with Scorecards
 ---
 
 ## Introduction

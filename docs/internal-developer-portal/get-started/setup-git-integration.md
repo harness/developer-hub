@@ -22,12 +22,12 @@ This document describes the steps a Harness Account Admin can take to set up the
 
 ## Getting Started
 
-1. User lands on IDP module by navigating from sidebar after logging into their Harness account.
+1. You land on the IDP module by navigating from the sidebar after logging into your Harness account. We strongly recommend users to follow the onboarding guide selecting the **Get Started**, for a seamless onboarding resulting in a catalog with software components.
+
+1. You can access the IDP module by clicking on it in the sidebar after logging into your Harness account. To set up your catalog easily, we strongly recommend usersclick **Get Started** and follow the onboarding guide. 
 
 ![](static/option1.png)
 ![](static/option2.png)
-
-2. We strongly recommend users to follow the onboarding guide selecting the **Get Started**, for a seamless onboarding resulting in a catalog with software components. 
 
 
 ## Connector Setup
@@ -53,8 +53,6 @@ The following set of git providers are supported:
 - Only HTTP mode is supported for all the git providers. SSH connection type is not supported.
 
     In IDP, API calls to git providers are used to fetch YAML data, retrieve the last commit SHA, and detect new changes. Since SSH authentication is only suitable for cloning repositories and cannot be used for these API calls, the primary git connector for IDP's git integration must support API requests, making HTTP the only supported option.
-
-- Make sure to enable API access while configuring the connector for the IDP catalog setup.
 
 :::
 
@@ -102,40 +100,30 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="Connector">
 <TabItem value="harness-code-repo" label="Harness Code Repository">
 
-:::warning
-
-#### Limitations
-
-Currently, we only support [repositories](https://developer.harness.io/docs/code-repository/config-repos/create-repo#create-a-repository) created at **project** [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes), the support for account and organization level repositories will be available in upcoming releases. 
-
-:::
-
-1. **We don't allow to create a new connector for Harness Code Repository.**
+- **We don't allow to create a new connector for Harness Code Repository.**
 
 </TabItem>
-<TabItem value="azure-connector" label="AzureRepository">
+<TabItem value="azure-connector" label="Azure Repository">
 
 ### Azure Repository \{#azure-repository}
 
-1. Select **Azure Repo** icon followed by **Create or Select a Connector**.
-2. From the dropdown under **Select Azure Repo Connector** and either select an already present connector or create **+New Connector**.
-3. [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). You can also add multiple organizations as different connectors and use them together.
-4. After the connection test runs, select Finish to save the connector.
-
+- Select **Azure Repo** icon followed by **Create or Select a Connector**.
+- From the dropdown under **Select Azure Repo Connector** and either select an already present connector or create **+New Connector**.
+- [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). You can also add multiple organizations as different connectors and use them together.
+- After the connection test runs, select Finish to save the connector.
 
 </TabItem>
 <TabItem value="bitbucket-connector" label="Bitbucket">
 
 ### Bitbucket \{#bitbucket}
 
-1. Select **Bitbucket** icon followed by **Create or Select a Connector**.
-2. From the dropdown under **Select Bitbucket Connector** and either select an already present connector or create **+New Connector**.
-3. Configure the [Bitbucket connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference).
+- Select **Bitbucket** icon followed by **Create or Select a Connector**.
+- From the dropdown under **Select Bitbucket Connector** and either select an already present connector or create **+New Connector**.
+- Configure the [Bitbucket connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference).
 
 :::info
 
-Same secret can't be configured for both **Password & Personal Access token** as backstage makes use of API token to fetch data.
-Create a secret with token and configure in the Personal Access token field. [Reference for creating token](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html)
+Same secret can't be configured for both **Password & Personal Access token** as backstage makes use of API token to fetch data.Create a secret with token and configure in the Personal Access token field. [Reference for creating token](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html)
 
 ![](./static/bitbucket-connector.png)
 
@@ -143,17 +131,17 @@ For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. For e
 
 :::
 
-4. After the connection test runs, select **Finish** to save the connector.
+- After the connection test runs, select **Finish** to save the connector.
 
 </TabItem>
 <TabItem value="github-connector" label="GitHub">
 
 ### GitHub \{#github}
 
-1. Select **GitHub** icon followed by **Create or Select a Connector**.
-2. From the dropdown under **Select GitHub Connector** either select an already present connector or create **+New Connector**.
-3. Configure the [GitHub connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference). You can configure connectors for both `github.com` and `GitHub Enterprise` and use them at once to fetch `catalog-info.yaml` from both the sources at same time.
-4. After the connection test runs, select **Finish** to save the connector.
+- Select **GitHub** icon followed by **Create or Select a Connector**.
+- From the dropdown under **Select GitHub Connector** either select an already present connector or create **+New Connector**.
+- Configure the [GitHub connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference). You can configure connectors for both `github.com` and `GitHub Enterprise` and use them at once to fetch `catalog-info.yaml` from both the sources at same time.
+- After the connection test runs, select **Finish** to save the connector.
 
 :::warning
 
@@ -168,10 +156,10 @@ More instructions on [using GitHub app in GitHub connector](https://developer.ha
 
 ### GitLab \{#gitlab}
 
-1. Select **GitLab** icon followed by **Create or Select a Connector**.
-2. From the dropdown under **Select GitLab Connector** either select an already present connector or create **+New Connector**.
-3. Configure the [GitLab connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference). You can configure connectors for both `gitlab.com` and `GitLab on-prem` and use them at once to fetch `catalog-info.yaml` from both the sources at same time.
-4. After the connection test runs, select **Finish** to save the connector.
+- Select **GitLab** icon followed by **Create or Select a Connector**.
+- From the dropdown under **Select GitLab Connector** either select an already present connector or create **+New Connector**.
+- Configure the [GitLab connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference). You can configure connectors for both `gitlab.com` and `GitLab on-prem` and use them at once to fetch `catalog-info.yaml` from both the sources at same time.
+- After the connection test runs, select **Finish** to save the connector.
 
 </TabItem>
 </Tabs>
@@ -182,9 +170,17 @@ The scope is tied to URL format `https://gitprovider.com/org-name`, so all the G
 
 :::
 
-6. Once the connectors are created, you can see all the git providers configured for IDP. 
+- Once the connectors are created, you can see all the git providers configured for IDP. 
 
 ![](static/connector-final-setup.png)
+
+:::warning
+
+Make sure to enable API access while configuring the connector for the IDP catalog setup.
+
+![](./static/enable-api-access.png)
+
+::::
 
 ## Onboard Services
 
@@ -192,14 +188,10 @@ Users will now have option to onboard existing Harness services into IDP, or sta
 
 ![](static/select-onboarding-path.png)
 
-### Onboard Services Post Getting Started
-
-- You can add new services to the IDP after the initial onboarding flow. Simply navigate to **Admin**, select **Get Started**, and you’ll find the Onboard Service Wizard available for use.
-
-![](./static/get-started-admin.png)
-
 <Tabs queryString="Import Harness Services">
 <TabItem value="import-harness-services" label="Import Harness Services">
+
+### Import Harness Services
 
 - User will be shown the list of services in their account. It will be defined in terms of IDP entity i.e Harness organization is a domain, Harness project is a system and Harness service is a component in the IDP world. This list includes services at all scopes.
 
@@ -268,6 +260,8 @@ https://github.com/user-name/onboarding-test
 
 </TabItem>
 <TabItem value="sample-service" label="Start with Sample Service">
+
+### Start with Sample Service
 
 - User will be shown a demo service metadata in the form of the `catalog-info.yaml`.
 
@@ -348,6 +342,12 @@ https://github.com/user-name/onboarding-test
 ![](static/catalog.png)
 
 - Post onboarding, users can import any number of entities into Harness IDP using the [register component flow](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component). This flow expects you to provide the complete URL where the entity definition is stored.
+
+### Onboard Services Post Getting Started
+
+- You can add new services to the IDP after the initial onboarding flow. Simply navigate to **Admin**, select **Get Started**, and you’ll find the Onboard Service Wizard available for use.
+
+![](./static/get-started-admin.png)
 
 **Recommendations**
 
