@@ -35,23 +35,29 @@ const CoveoSearch = () => {
     async function Initialize() {
       const engine = await InitializeCoveo();
       setEngine(engine);
-      const SearchBoxController = buildSearchBox(engine);
-      setSearchBoxController(SearchBoxController);
+      if (engine) {
+        const SearchBoxController = buildSearchBox(engine);
+        setSearchBoxController(SearchBoxController);
+      }
     }
     Initialize();
   }, []);
 
+  if (!engine) {
+    return <></>;
+  }
   if (!searchBoxController) {
     return <div></div>;
   }
   return (
     <div>
-      <SearchBox
-        controller={searchBoxController}
-        onSearch={handleSearch}
-        
+      <SearchBox controller={searchBoxController} onSearch={handleSearch} />
+      <SearchResultBox
+        ref={searchBoxRef}
+        open={open}
+        engine={engine}
+        searchValue={searchValue}
       />
-      <SearchResultBox ref={searchBoxRef} open={open} engine={engine} searchValue={searchValue}/>
     </div>
   );
 };
