@@ -89,6 +89,11 @@ permissions:
         <td> Default: 100 %. For more information, go to <a href="#network-packet-loss">network packet loss</a>. </td>
       </tr>
       <tr>
+        <td> CORRELATION </td>
+        <td> Degree of dependency between consecutive packets </td>
+        <td> It should be in range of (0,100]. For more information, go to <a href="#correlation">correlation</a>.</td>
+      </tr>
+      <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster. </td>
         <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime</a>. </td>
@@ -186,6 +191,38 @@ spec:
         - name: TOTAL_CHAOS_DURATION
           value: '60'
 ```
+
+### Correlation
+
+Degree of dependency between consecutive packets. Tune it by using the `CORRELATION` environment variable.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/pod-network-loss/correlation.yaml yaml)
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-network-loss
+    spec:
+      components:
+        env:
+        - name: CORRELATION
+          value: '100' #in percentage
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
+```
+
 ### Destination IPs and destination hosts
 
 Default IPs and hosts whose traffic is interrupted because of the network faults. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
