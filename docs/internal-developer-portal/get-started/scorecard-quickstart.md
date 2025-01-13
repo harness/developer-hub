@@ -84,6 +84,8 @@ Make sure you have the [IDP Admin](https://developer.harness.io/docs/internal-de
 
 ## Create a Custom Check  
 
+Now that the scorecard has been created, let’s update it by adding a Custom Check to track Jira configurations. Custom checks are user-defined checks that can be created in addition to the default checks provided. These are built using the available [data sources](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources) and data points.
+
 1. Go to **Scorecards** under **Admin**.
 2. Select **Create Custom Check** under **Checks**. 
 
@@ -98,7 +100,7 @@ Make sure you have the [IDP Admin](https://developer.harness.io/docs/internal-de
 
 ![](./static/jira-custom-check.png)
 
-### Edit the Scorecard with Custom Check
+### Update the Scorecard with Custom Check
 
 Let's edit the previously created catalog readiness scorecard to add the custom check we created above along with the already added default checks. 
 
