@@ -45,6 +45,29 @@ The UI displays a detailed error message to assist in resolving the issue quickl
 ## Recommendations 
 
 Listed below are the custodian policies which are used to generate recommendations that Harness offers for AWS. Along with each policy, you can also find their respective descriptions, the logic behind savings computation and the permissions required to generate or apply these recommendations.
+### Granular Recommendations
+
+Cloud Asset Governance provides valuable recommendations, but when it comes to operationalizing them at scale, it might become challenging. With Granular Recommendations, Governance recommendations will now be generated at the individual resource level, ensuring greater granularity and actionable insights for both custom and out-of-the-box (OOTB) recommendations. This enhancement simplifies implementation and tracking, enabling customers to address governance issues more effectively at scale.
+
+#### Enabling Granular Recommendations
+
+ <iframe 
+     src="https://app.tango.us/app/embed/25a843d3-c733-4459-99f5-69558757865c" 
+     title="Enabling Granular Governance Recommendations in Cloud Cost Management" 
+     style={{minHeight:'640px'}}
+     width="100%" 
+     height="100%" 
+     referrerpolicy="strict-origin-when-cross-origin" 
+     frameborder="0" 
+     webkitallowfullscreen="webkitallowfullscreen" 
+     mozallowfullscreen="mozallowfullscreen" 
+     allowfullscreen="allowfullscreen"></iframe>
+
+Owing to this, now, while adding a recommendation to Ignore List, users have the option to specify the scope at which the users want to ignore the recommendation. The scope can be either Rule-level, Account-level or Region-level.
+
+  <DocImage path={require('../static/aws_granular
+  .png')} width="90%" height="90%" title="Click to view full size image" />
+
 
 ### Recommendation: delete-unattached-ebs
 **Description:** Delete all ebs volumes which are unattached
