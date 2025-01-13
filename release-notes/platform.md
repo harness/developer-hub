@@ -89,7 +89,7 @@ The following deprecated API endpoints are longer supported:
 
 - Added ng-manager virtual service routes in the chart to support GitX webhook APIs at both org and project levels. (PL-58990)
 
-- Fixed an issue where the 'Apply' button remained enabled and caused an error when clicked, even with no changes to assignments. The 'Apply' button is now correctly disabled when there are no changes.(PL-58782)
+- Fixed an issue where the 'Apply' button remained enabled and caused an error when clicked, even with no changes to assignments. The 'Apply' button is now correctly disabled when there are no changes. (PL-58782)
 
 - Updated the text input to accept only the domain instead of the full email. Placeholder changed from 'Eg: abc@harness.io' to 'Eg: harness.io'.(PL-57883)
 
