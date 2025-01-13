@@ -27,7 +27,15 @@ Docs in Harness IDP is powered by [TechDocs Backstage Plugin](https://backstage.
 
 To add documentation:
 
-1. Create a `docs` directory next to where you have `catalog-info.yaml`.
+1. Create a `docs` directory next to where you have `catalog-info.yaml`. The directory tree would look something like this:
+
+```sh
+├── catalog-info.yaml
+├── mkdocs.yml
+└── docs
+    └── index.md
+```
+
 2. Inside the `docs` directory, create a `index.md` file with the following contents.
 
 ```
@@ -79,10 +87,25 @@ topics outlined in this example table:
 
 TechDocs uses MkDocs as the static site generator. Visit https://www.mkdocs.org for more information about MkDocs.
 ```
+3. Now add an `mkdocs.yaml` next to where you have the `catalog-info.yaml`, `mkdocs.yml` file is a sibling of `catalog-info.yaml`
 
-3. Edit the `catalog-info.yaml` and add the TechDocs annotation.
+Here's the content for `mkdocs.yaml`:
 
-4. In the `metadata.annotations` field, add `backstage.io/techdocs-ref: dir:.`.
+```YAML
+site_name: 'Example Documentation'
+repo_url: https://github.com/your_org/your_repo
+edit_uri: url to your index.md
+
+nav:
+  - Home: index.md
+
+plugins:
+  - techdocs-core
+```
+
+4. Edit the `catalog-info.yaml` and add the TechDocs annotation.
+
+5. In the `metadata.annotations` field, add `backstage.io/techdocs-ref: dir:.`.
 
 ![](static/techdocs-ref.png)
 
@@ -128,6 +151,15 @@ In situations where your TechDocs source content is managed and stored in a loca
     - Repository at account scope: `url:https://app.harness.io/ng/account/account_id/module/code/repos/repo_name`
     - Repository at organization scope: `url:https://app.harness.io/ng/account/account_id/module/code/orgs/org_id/repos/repo_name` 
     - Repository at project scope: `url:https://app.harness.io/ng/account/account_id/module/code/orgs/org_id/projects/project_id/repos/repo_name`
+
+:::info
+
+If your account uses a vanity hostname in the URL, such as `company_name.harness.io`, make sure you update it to the hostname used for the HCR integration (e.g., `app.harness.io`, `app3.harness.io`, etc.) when adding the URL to the annotation. To verify the correct hostname, navigate to **Admin** -> **Git Integrations**.
+
+![](./static/check-host-name.png)
+
+:::
+
 - GitHub: `url:https://githubhost.com/org/repo/tree/<branch_name>`
 - GitLab: `url:https://gitlabhost.com/org/repo/tree/<branch_name>`
 - Bitbucket: `url:https://bitbuckethost.com/project/repo/src/<branch_name>`
