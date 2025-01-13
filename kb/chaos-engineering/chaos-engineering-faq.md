@@ -215,6 +215,11 @@ No, the existing infrastructures will continue to function as usual, but HCE rec
 #### Is there a way to upgrade the older experiment to the new format?
 - Yes, you can manually edit the experiment manifest or create a new experiment from the UI. Older experiments will continue to work because of backward compatibility.
 
+## Application Maps
+
+#### How to manually associate experiments as a part of Application Map?
+To manually associate the experiment as a part of an application map, list the experiment as a part of an [application map](/docs/chaos-engineering/use-harness-ce/application-map), specify the tag `applicationmap=<application map identity>` while creating the experiment.
+
 ## Security
 
 #### What are the identity providers supported by Harness Chaos for user authentication?
