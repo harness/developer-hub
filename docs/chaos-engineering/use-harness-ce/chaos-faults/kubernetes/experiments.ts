@@ -227,7 +227,19 @@ export const experiments: ExperimentDetails[] = [
     name: "Pod JVM trigger gc",
     description:"Pod JVM trigger gc triggers the garbage collector for a Java process executing in a Kubernetes pod. This causes unused (or out of scope) objects and variables to be garbage collected and recycled, thereby freeing up memory space.",
     tags: ["pod", "jvm"],
-    category: "kubernetes",  
+    category: "kubernetes",
+  },
+  {
+    name: "Pod JVM SQL Exception",
+    description:"Pod JVM SQL Exception injects exception in sql queries for a Java application executing in a Kubernetes pod",
+    tags: ["pod", "jvm", "sql", "exception"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod JVM SQL Latency",
+    description:"Pod JVM SQL Latency injects latency in sql queries for a Java application executing in a Kubernetes pod",
+    tags: ["pod", "jvm", "sql", "latency"],
+    category: "kubernetes",
   },
   {
     name: "Pod memory hog exec",
