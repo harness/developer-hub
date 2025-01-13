@@ -10,7 +10,7 @@ The **Overview** page offers a consolidated summary of your organization's gover
 ## Asset Governance Overview 
 Here is an in-depth explanation of the Overview page and the information it displays for the users:
 
-  <DocImage path={require('./static/AG7.png')} width="120%" height="120%" title="Click to view full size image" />
+  <DocImage path={require('./static/AG8.png')} width="120%" height="120%" title="Click to view full size image" />
 
   - **Total Evaluations** — The total number of evaluations performed to date.
   - **Total Active Enforcements** — The total number of active enforcements created to date.
