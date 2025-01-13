@@ -6,11 +6,6 @@ export const FmeData: Horizon = {
     feature: [
       {
         tag: [{ value: "Targeting" }],
-        title: "Large segments",
-        description: "New segment type enabling large-scale audience targeting up to 1M keys.",
-      },
-      {
-        tag: [{ value: "Targeting" }],
         title: "Flag impressions toggle",
         description: "Disable the flow of impressions for individual flags.",
       },
@@ -73,6 +68,11 @@ export const FmeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Targeting" }],
+        title: "Large segments",
+        description: "New segment type enabling large-scale audience targeting up to 1M keys. Even higher limits available by request.",
+      },
       {
         tag: [{ value: "Targeting" }],
         title: "SemVer attribute dictionary support",
