@@ -4,10 +4,10 @@ description: Scan your targets without the need of scan tool licenses and config
 sidebar_label: Built-in scanners
 sidebar_position: 14
 redirect_from:
-  - /docs/security-testing-orchestration/sto-techref-category/built-in/sast
-  - /docs/security-testing-orchestration/sto-techref-category/built-in/sca
-  - /docs/security-testing-orchestration/sto-techref-category/built-in/secrets
-  - /docs/security-testing-orchestration/sto-techref-category/built-in/containers
+  - /docs/security-testing-orchestration/sto-techref-category/built-in-scanners
+  - /docs/security-testing-orchestration/sto-techref-category/built-in-scanners
+  - /docs/security-testing-orchestration/sto-techref-category/built-in-scanners
+  - /docs/security-testing-orchestration/sto-techref-category/built-in-scanners
   - /security-testing-orchestration/sto-techref-category/built-in/dast
   - /docs/security-testing-orchestration/sto-techref-category/built-in/iac
 ---
