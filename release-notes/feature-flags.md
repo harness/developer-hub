@@ -24,8 +24,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Version 1.4.3
 
 **Fixed Issues**:
- -  Following from 1.4.2, we are still investigating an edge case in the SDK, where very large projects can generate invalid metric events shortly after the SDK has initialised. This patch includes possible fixes for this issue. (FFM-12192)
- -  Resolves an issue where Segmentation faults can occur on Ruby 3.4 and above. (FFM-12192)
+- Resolves an issue where Segmentation faults can occur on Ruby 3.4 and above. (FFM-12192)
 
 #### Version 1.4.2
 
