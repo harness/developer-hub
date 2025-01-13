@@ -36,13 +36,13 @@ export const MOBILE_STORAGE_PREFIX                       = () => <> If set, the 
 export const SCHEDULER_EVENTS_PUSH_RATE                  = () => <> Time (seconds) interval for the SDK to send events to Harness servers. </>;
 export const SCHEDULER_EVENTS_QUEUE_SIZE                 = () => <> Maximum number of events to queue. When the queue is full, the SDK flushes events and
                                                                     resets a timer. </>;
-export const SCHEDULER_FEATURES_REFRESH_RATE             = () => <> Time (seconds) interval for the SDK to polls Harness servers for changes to feature
+export const SCHEDULER_FEATURES_REFRESH_RATE             = () => <> Time (seconds) interval for the SDK to poll Harness servers for changes to feature
                                                                     flags. </>;
 export const SCHEDULER_IMPRESSIONS_REFRESH_RATE          = () => <> Time (seconds) interval for the SDK to send impressions to Harness servers. </>;
 export const SCHEDULER_IMPRESSIONS_QUEUE_SIZE            = () => <> Maximum number of impressions (decisioning events) to queue. When the queue is full, the
                                                                     SDK flushes impressions and resets a timer. </>;
 export const SCHEDULER_PERSISTENT_CACHE_ENABLED          = () => <> The SDK polls Split servers for changes to segments at this rate (in seconds). </>;
-export const SCHEDULER_SEGMENTS_REFRESH_RATE             = () => <> Time (seconds) interval for the SDK to polls Harness servers for changes to
+export const SCHEDULER_SEGMENTS_REFRESH_RATE             = () => <> Time (seconds) interval for the SDK to poll Harness servers for changes to
                                                                     segments. </>;
 export const SCHEDULER_TELEMETRY_REFRESH_RATE            = () => <> Time (seconds) interval for the SDK to send diagnostic data to Harness servers. </>;
 export const STARTUP_EVENTS_FIRST_PUSH_WINDOW            = () => <> Time (seconds) for the first push of events after SDK initialization. </>;
