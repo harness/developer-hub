@@ -100,7 +100,7 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="Connector">
 <TabItem value="harness-code-repo" label="Harness Code Repository">
 
-- **We don't allow to create a new connector for Harness Code Repository.**
+- **We do not allow the creation of new connectors for Harness Code Repository.**
 
 </TabItem>
 <TabItem value="azure-connector" label="Azure Repository">
