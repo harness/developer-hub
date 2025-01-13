@@ -54,26 +54,27 @@ When you hardcode the artifact in your manifests, any artifacts added to your Ha
 Configuring dependent fields, such as the artifact tag, as runtime inputs when the primary artifact is set as an expression is supported in YAML only and is not supported through the UI.
 :::
 
-### Skip Artifact Validation for the Stage
+### Skip Artifact Consumption for the Stage
 
 :::note
-Currently, the disable artifact validation feature is behind the feature flag `CDS_ARTIFACT_DISABLE_VALIDATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, the disable artifact consumption check feature is behind the feature flag `CDS_ARTIFACT_DISABLE_VALIDATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-You can bypass artifact validation for a service by selecting the **Skip Validation for the Stage** checkbox. When this option is enabled, the pipeline treats the service as though it does not have an artifact, skipping the artifact validation process entirely.
+You can bypass artifact consumption checks for a service by selecting the **Disable artifact in this stage** checkbox. When this option is enabled, the pipeline treats the service as though it does not have an artifact, skipping the artifact consumption check process entirely.
 
 ![](static/disable-artifact.png)
 
 This feature works for:
  - **Primary Artifacts:** Applies to both single and multiple primary artifact services. If multiple primary artifacts are used, the checkbox applies to all primary artifacts.
-- **Sidecar Artifacts**: Artifact validation is also skipped for sidecar artifacts when this checkbox is enabled.
+- **Sidecar Artifacts**: Artifact consumption check is also skipped for sidecar artifacts when this checkbox is enabled.
 
 Additionally, this logic applies when the same service is propagated to subsequent stages:
- - If you enable **Skip Validation for the Stage** for a particular service in one stage and propagate that service to another stage, artifact validation will also be skipped in the propagated stage.
- - If the **Skip Validation for the Stage** option is enabled, and the artifact or artifact tag is configured as runtime inputs, the pipeline will not prompt for the artifact or artifact tag during execution.
+ - If you enable **Disable artifact in this stage** for a particular service in one stage and propagate that service to another stage, artifact consumption check will also be skipped in the propagated stage.
+ - If the **Disable artifact in this stage** checkbox is enabled, and the artifact or artifact tag is configured as runtime inputs, the pipeline will not prompt for the artifact or artifact tag during execution.
 
 :::warning
-If you enable the **Skip Validation for the Stage** option and any of the steps in the pipeline execution depend on the artifacts specified in the service, those steps are expected to fail. Ensure that no steps rely on the artifact if you choose to enable this setting.
+
+If the **Disable artifact in this stage** checkbox is enabled, any steps in the stage that require an artifact are likely to fail. Ensure that no steps in the stage depend on an artifact
 :::
 
 ## Docker
