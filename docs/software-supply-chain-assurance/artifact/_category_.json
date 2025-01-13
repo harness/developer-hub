@@ -1,0 +1,11 @@
+{
+    "label":"Artifact",
+    "position": 40,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Signing and Verifying the Artifact in SCS"
+    }
+ }
