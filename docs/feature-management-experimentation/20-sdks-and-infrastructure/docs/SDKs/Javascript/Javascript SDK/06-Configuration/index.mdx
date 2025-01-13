@@ -9,9 +9,10 @@ import {
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
 
 import {
-  Configure,
+  Configuration,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
+import ConfigTable       from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_060_tableConfiguration.mdx";
 import SplitClientConfig from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_060_codeSplitClientConfig.mdx";
 
 export const toc = [];
@@ -19,8 +20,9 @@ export const toc = [];
 export const Result = SDKDocsBuilder(
   [
     [
-      Configure,
+      Configuration,
       {
+        tableConfiguration: <ConfigTable />,
         codeSplitClientConfig: <SplitClientConfig />,
       },
     ],

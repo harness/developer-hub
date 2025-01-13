@@ -1,0 +1,31 @@
+import * as DESCRIPTIONS from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/constants/Configuration.jsx"
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| backgroundSyncWhenBatteryNotLow | { DESCRIPTIONS.MOBILE_BACKGROUND_SYNC_WHEN_BATTERY_NOT_LOW() } |                `true` |
+| backgroundSyncWhenWifiOnly      | { DESCRIPTIONS.MOBILE_BACKGROUND_SYNC_WHEN_WIFI_ONLY()       } |               `false` |
+| certificatePinningConfiguration | { DESCRIPTIONS.MOBILE_CERTIFICATE_PINNING_CONFIGURATION()    } |                `null` |
+| connectionTimeout               | { DESCRIPTIONS.CONNECTION_TIMEOUT()                          } |                 10000 |
+| disableLabels                   | { DESCRIPTIONS.CORE_LABELS_DISABLED()                        } |                `true` |
+| encryptionEnabled               | { DESCRIPTIONS.MOBILE_STORAGE_ENCRYPTION_ENABLED()           } |               `false` |
+| eventFlushInterval              | { DESCRIPTIONS.SCHEDULER_EVENTS_PUSH_RATE()                  } |                  1800 |
+| eventsPerPush                   | { DESCRIPTIONS.MOBILE_EVENTS_PER_PUSH()                      } |                  2000 |
+| eventsQueueSize                 | { DESCRIPTIONS.SCHEDULER_EVENTS_QUEUE_SIZE()                 } |                 10000 |
+| featuresRefreshRate             | { DESCRIPTIONS.SCHEDULER_FEATURES_REFRESH_RATE()             } |                  3600 |
+| impressionsMode                 | { DESCRIPTIONS.SYNC_IMPRESSIONS_MODE()                       } |           `OPTIMIZED` |
+| impressionsQueueSize            | { DESCRIPTIONS.SCHEDULER_IMPRESSIONS_QUEUE_SIZE()            } |                 30000 |
+| logLevel                        | { DESCRIPTIONS.ANDROID_LOG_LEVEL()                           } |                `NONE` |
+| persistentAttributesEnabled     | { DESCRIPTIONS.MOBILE_PERSISTENT_ATTRIBUTES_ENABLED()        } |               `false` |
+| prefix                          | { DESCRIPTIONS.MOBILE_STORAGE_PREFIX()                       } |                `null` |
+| proxyHost                       | { DESCRIPTIONS.MOBILE_PROXY_HOST()                           } |                `null` |
+| readTimeout                     | { DESCRIPTIONS.MOBILE_READ_TIMEOUT()                         } |                 10000 |
+| ready                           | { DESCRIPTIONS.STARTUP_READY_TIMEOUT()                       } |          -1 (not set) |
+| segmentsRefreshRate             | { DESCRIPTIONS.SCHEDULER_SEGMENTS_REFRESH_RATE()             } |                  1800 |
+| streamingEnabled                | { DESCRIPTIONS.STREAMING_ENABLED()                           } |                `true` |
+| syncConfig                      | { DESCRIPTIONS.SYNC_CONFIG()                                 } |                `null` |
+| syncEnabled                     | { DESCRIPTIONS.SYNC_ENABLED()                                } |                `true` |
+| synchronizeInBackground         | { DESCRIPTIONS.MOBILE_BACKGROUND_SYNC_ENABLED()              } |               `false` |
+| synchronizeInBackgroundPeriod   | { DESCRIPTIONS.MOBILE_BACKGROUND_SYNC_ENABLED()              } |                    15 |
+| telemetryRefreshRate            | { DESCRIPTIONS.SCHEDULER_TELEMETRY_REFRESH_RATE()            } | 3600 seconds (1 hour) |
+| trafficType                     | { DESCRIPTIONS.SCHEDULER_TELEMETRY_REFRESH_RATE()            } |               not set |
+| userConsent                     | { DESCRIPTIONS.USER_CONSENT()                                } |             `GRANTED` |

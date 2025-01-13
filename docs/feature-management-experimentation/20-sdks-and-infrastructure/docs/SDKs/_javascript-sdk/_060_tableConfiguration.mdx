@@ -1,0 +1,25 @@
+import * as DESCRIPTIONS from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/constants/Configuration.jsx"
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| core.labelsEnabled                     | { DESCRIPTIONS.CORE_LABELS_DISABLED()                      } |                `true` |
+| startup.readyTimeout                   | { DESCRIPTIONS.STARTUP_READY_TIMEOUT()                     } |                    10 |
+| startup.requestTimeoutBeforeReady      | { DESCRIPTIONS.STARTUP_REQUEST_TIMEOUT_BEFORE_READY()      } |                     5 |
+| startup.retriesOnFailureBeforeReady    | { DESCRIPTIONS.STARTUP_RETRIES_ON_FAILURES_BEFORE_READY()  } |                     1 |
+| startup.eventsFirstPushWindow          | { DESCRIPTIONS.STARTUP_EVENTS_FIRST_PUSH_WINDOW()          } |                    10 |
+| scheduler.featuresRefreshRate          | { DESCRIPTIONS.SCHEDULER_FEATURES_REFRESH_RATE()           } |                    60 |
+| scheduler.impressionsRefreshRate       | { DESCRIPTIONS.SCHEDULER_IMPRESSIONS_REFRESH_RATE()        } |                    60 |
+| scheduler.segmentsRefreshRate          | { DESCRIPTIONS.SCHEDULER_SEGMENTS_REFRESH_RATE()           } |                   300 |
+| scheduler.impressionsQueueSize         | { DESCRIPTIONS.SCHEDULER_IMPRESSIONS_QUEUE_SIZE()          } |                 30000 |
+| scheduler.eventsPushRate               | { DESCRIPTIONS.SCHEDULER_EVENTS_PUSH_RATE()                } |                    60 |
+| scheduler.eventsQueueSize              | { DESCRIPTIONS.SCHEDULER_EVENTS_QUEUE_SIZE()               } |                   500 |
+| scheduler.telemetryRefreshRate         | { DESCRIPTIONS.SCHEDULER_TELEMETRY_REFRESH_RATE()          } | 3600 seconds (1 hour) |
+| sync.splitFilters                      | { DESCRIPTIONS.SYNC_SPLIT_FILTERS()                        } |                    [] |
+| sync.impressionsMode                   | { DESCRIPTIONS.SYNC_IMPRESSIONS_MODE()                     } |           `OPTIMIZED` |
+| sync.enabled                           | { DESCRIPTIONS.SYNC_ENABLED()                              } |                `true` |
+| sync.requestOptions.getHeaderOverrides | { DESCRIPTIONS.SYNC_REQUEST_OPTIONS_GET_HEADER_OVERRIDES() } |           `undefined` |
+| storage.type                           | { DESCRIPTIONS.STORAGE_TYPE()                              } |              `MEMORY` |
+| storage.prefix                         | { DESCRIPTIONS.WEB_STORAGE_PREFIX()                        } |           `'SPLITIO'` |
+| debug                                  | { DESCRIPTIONS.WEB_LOG_LEVEL()                             } |               `false` |
+| streamingEnabled                       | { DESCRIPTIONS.STREAMING_ENABLED()                         } |                `true` |
+| userConsent                            | { DESCRIPTIONS.USER_CONSENT()                              } |             `GRANTED` |
