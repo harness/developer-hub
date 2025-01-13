@@ -1,0 +1,12 @@
+```swift title="Swift"
+client?.destroy()
+```
+Also, this method has a completion closure which can be used to run some code after destroy was executed. For instance, the following snippet waits until destroy has finished to continue execution:
+
+```swift title="Swift"
+let semaphore = DispatchSemaphore(value: 0)
+client?.destroy(completion: {
+    _ = semaphore.signal()
+})
+semaphore.wait()
+```

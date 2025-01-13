@@ -1,0 +1,22 @@
+```swift title="Swift"
+import Split
+
+// Your Split SDK Key
+let sdkKey: String = "YOUR_SDK_KEY"
+
+//User Key
+// key represents your internal user id, or the account id that 
+// the user belongs to. 
+// This could also be a UUID you generate for anonymous users.
+let key: Key = Key(matchingKey: "key")
+
+//Split Configuration
+let config = SplitClientConfig()
+
+//Split Factory
+let builder = DefaultSplitFactoryBuilder()
+let factory = builder.setApiKey(sdkKey).setKey(key).setConfig(config).build()
+
+//Split Client
+let client = factory?.client
+```

@@ -1,0 +1,28 @@
+import * as DESCRIPTIONS from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/constants/Configuration.jsx"
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| certificatePinningConfig        | { DESCRIPTIONS.MOBILE_CERTIFICATE_PINNING_CONFIGURATION()                                    } |                `null` |
+| connectionTimeout               | { DESCRIPTIONS.CONNECTION_TIMEOUT()                                                          } |                 10000 |
+| encryptionEnabled               | { DESCRIPTIONS.MOBILE_STORAGE_ENCRYPTION_ENABLED()                                           } |               `false` |
+| eventsFirstPushWindow           | { DESCRIPTIONS.STARTUP_EVENTS_FIRST_PUSH_WINDOW()                                            } |                    10 |
+| eventsPushRate                  | { DESCRIPTIONS.SCHEDULER_EVENTS_PUSH_RATE()       } <br /> { DESCRIPTIONS.EVENTS_INFO_RUM()  } |                  1800 |
+| eventsPerPush                   | { DESCRIPTIONS.MOBILE_EVENTS_PER_PUSH()                                                      } |                  2000 |
+| eventsQueueSize                 | { DESCRIPTIONS.SCHEDULER_EVENTS_QUEUE_SIZE()                                                 } |                 10000 |
+| featuresRefreshRate             | { DESCRIPTIONS.SCHEDULER_FEATURES_REFRESH_RATE()                                             } |         3600 (1 hour) |
+| httpsAuthenticator              | { DESCRIPTIONS.HTTPS_AUTHENTICATOR()                                                         } |                 `nil` |
+| impressionsMode                 | { DESCRIPTIONS.SYNC_IMPRESSIONS_MODE()                                                       } |           `OPTIMIZED` |
+| impressionsQueueSize            | { DESCRIPTIONS.SCHEDULER_IMPRESSIONS_QUEUE_SIZE() } <br /> { DESCRIPTIONS.IMPRESSIONS_INFO() } |                 30000 |
+| impressionsRefreshRate          | { DESCRIPTIONS.SCHEDULER_IMPRESSIONS_REFRESH_RATE()                                          } |     1800 (30 minutes) |
+| logLevel                        | { DESCRIPTIONS.IOS_LOG_LEVEL()                                                               } |                `NONE` |
+| offlineRefreshRate              | { DESCRIPTIONS.SCHEDULER_LOCALHOST_REFRESH_RATE()                                            } |              -1 (off) |
+| persistentAttributesEnabled     | { DESCRIPTIONS.MOBILE_PERSISTENT_ATTRIBUTES_ENABLED()                                        } |               `false` |
+| prefix                          | { DESCRIPTIONS.MOBILE_STORAGE_PREFIX()                                                       } |                `null` |
+| sdkReadyTimeout                 | { DESCRIPTIONS.STARTUP_READY_TIMEOUT()                                                       } |          -1 (not set) |
+| segmentsRefreshRate             | { DESCRIPTIONS.SCHEDULER_SEGMENTS_REFRESH_RATE()                                             } |     1800 (30 minutes) |
+| streamingEnabled                | { DESCRIPTIONS.STREAMING_ENABLED()                                                           } |                `true` |
+| sync                            | { DESCRIPTIONS.SYNC_CONFIG()                                                                 } |                `null` |
+| synchronizeInBackground         | { DESCRIPTIONS.MOBILE_BACKGROUND_SYNC_ENABLED()                                              } |               `false` |
+| telemetryRefreshRate            | { DESCRIPTIONS.SCHEDULER_TELEMETRY_REFRESH_RATE()                                            } | 3600 seconds (1 hour) |
+| trafficType                     | { DESCRIPTIONS.SCHEDULER_TELEMETRY_REFRESH_RATE()                                            } |               not set |
+| userConsent                     | { DESCRIPTIONS.USER_CONSENT()                                                                } |             `GRANTED` |

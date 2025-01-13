@@ -1,0 +1,21 @@
+```swift title="Swift"
+var attributes: [String:Any] = [:]
+
+attributes["plan_type"] = "growth"
+attributes["registered_date"] = Date().timeIntervalSince1970
+attributes["deal_size"] = 1000
+attributes["paying_customer"] = true
+let perms: [String] = ["read", "write"];
+attributes["permissions"] = perms
+
+// See client initialization above
+let treatment = client?.getTreatment("FEATURE_FLAG_NAME", attributes: attributes)
+
+if treatment == "on" {
+    // insert code here to show on treatment
+} else if treatment == "off" {
+    // insert code here to show off treatment
+} else {
+    // insert your control treatment code here
+}
+```

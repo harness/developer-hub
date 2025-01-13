@@ -1,0 +1,33 @@
+---
+title: Configuration
+sidebar_label: Configuration
+description: Optimize SDK performance in your environment by fine-tuning SDK config settings.
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Configuration,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
+
+import ConfigTable       from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_ios-sdk/_060_tableConfiguration.mdx";
+import SplitClientConfig from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_ios-sdk/_060_codeSplitClientConfig.mdx";
+
+export const toc = [];
+
+export const Result = SDKDocsBuilder(
+  [
+    [
+      Configuration,
+      {
+        tableConfiguration: <ConfigTable />,
+        codeSplitClientConfig: <SplitClientConfig />,
+      },
+    ],
+  ],
+  toc
+);
+
+<>{Result}</>

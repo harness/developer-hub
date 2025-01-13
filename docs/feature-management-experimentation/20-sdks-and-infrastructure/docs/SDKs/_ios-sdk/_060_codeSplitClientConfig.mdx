@@ -1,0 +1,26 @@
+```swift title="Swift"
+import Split
+
+// Your Split SDK key
+let sdkKey: String = "YOUR_SDK_KEY"
+
+//User Key
+let key: Key = Key(matchingKey: "key")
+
+//Split Configuration
+let config = SplitClientConfig()
+config.impressionRefreshRate = 30
+config.isDebugModeEnabled = false
+let syncConfig = SyncConfig.builder()
+                    .addSplitFilter(SplitFilter.bySet(["frontend"]))
+                    .build()
+config.sync = syncConfig
+
+//Split Factory
+let builder = DefaultSplitFactoryBuilder()
+let factory =
+builder.setApiKey(sdkKey).setKey(key).setConfig(config).build()
+
+//Split Client
+let client = factory?.client
+```

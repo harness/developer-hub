@@ -1,0 +1,23 @@
+```swift title="Swift"
+/**
+ * Retrieves the feature flags that are currently registered with the
+ * SDK.
+ *
+ * @return an array of SplitView or empty.
+ */
+var splits: [SplitView] { get }
+
+/**
+ * Returns the names of feature flags registered with the SDK.
+ *
+ * @return an array of String (feature flag names) or empty
+ */
+var splitNames: [String] { get }
+
+/**
+ * Returns the feature flag registered with the SDK of this name.
+ *
+ * @return SplitView or nil
+ */
+func split(featureName: String) -> SplitView?
+```

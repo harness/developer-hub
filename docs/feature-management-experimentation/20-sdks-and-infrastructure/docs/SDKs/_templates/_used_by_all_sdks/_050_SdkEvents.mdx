@@ -1,5 +1,3 @@
-## Subscribe to events {#subscribe-to-events}
-
 When the SDK retrieves (or updates the local copy of) a rollout plan (feature flag and segment definitions) from Harness servers, the SDK will fire the following events:
 
 * `SDK_READY_FROM_CACHE`. This event fires once the SDK is ready to evaluate treatments using a locally cached version of your rollout plan from a previous session (which might be stale). If there is data in the cache, this event fires almost immediately, since access to the cache is fast; otherwise, it doesn't fire.
@@ -9,6 +7,6 @@ When the SDK retrieves (or updates the local copy of) a rollout plan (feature fl
 
 <>{props.codeSplitEventTask}</>
 
-Example of listening for each event:
+The syntax to listen for events:
 
 <>{props.codeClientOnEvent}</>

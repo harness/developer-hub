@@ -1,0 +1,29 @@
+```swift title="Swift"
+// Create factory
+let key = Key(matchingKey: "anonymous_user")
+let config = SplitClientConfig()
+let factory = DefaultSplitFactoryBuilder().setApiKey(authorizationKey)
+    .setKey(key)
+    .setConfig(config).build()
+
+// Now when you call factory.client, the SDK will create a client
+// using the anonymous_user key
+// you passed in during the factory creation
+let anonymousClient = factory.client
+
+// To create another client for a user instead, pass in a User ID
+let userClient = factory.client(matchingKey: "user_id")
+
+// Add events handler for each client to be notified when SDK is ready
+anonymousClient.on(event: SplitEvent.sdkReady, execute: {
+  // anonymousClient is ready to evaluate
+  // Check treatment for anonymous users
+  let accountPermissioningTreatment = anonymousClient.getTreatment("some_feature_flag")
+})
+
+userClient.on(event: SplitEvent.sdkReady, execute: {
+  // userClient is ready to evaluate
+  // Check treatment for the feature flag and user_id
+  let userPollTreatment = userClient.getTreatment("some_feature_flag")
+})
+```

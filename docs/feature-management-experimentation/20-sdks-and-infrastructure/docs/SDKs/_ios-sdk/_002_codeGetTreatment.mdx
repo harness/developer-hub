@@ -1,0 +1,50 @@
+```swift title="Swift"
+client?.on(event: SplitEvent.sdkReady) {
+  // Evaluate feature flag in Split
+  let treatment = client?.getTreatment("FEATURE_FLAG_NAME")
+
+  if treatment == "on" {
+      // insert code here to show on treatment
+  } else if treatment == "off" {
+      // insert code here to show off treatment
+  } else {
+      // insert your control treatment code here
+  }
+}
+client?.on(event: SplitEvent.sdkReadyTimedOut) {
+  //handle for timeouts here
+  print("SDK time out")
+}
+```
+
+Also, a `SDK_READY_FROM_CACHE` event fires when the SDK has loaded data from cache. After this event fires, the SDK is ready to evaluate feature flags using locally cached feature flag and segment definitions.
+
+```swift title="Swift"
+client?.on(event: SplitEvent.sdkReadyFromCache) {
+  // Evaluate feature flag in Split
+  let treatment = client?.getTreatment("FEATURE_FLAG_NAME")
+
+  if treatment == "on" {
+      // insert code here to show on treatment
+  } else if treatment == "off" {
+      // insert code here to show off treatment
+  } else {
+      // insert your control treatment code here
+  }
+}
+```
+
+Starting from version 2.24.5, it is possible to configure the handler to run in a background thread or specify a custom queue.
+
+```swift title="Swift (Running in the background)"
+client?.on(event: SplitEvent.sdkReadyFromCache, runInBackground: true) {
+  // Handler code
+}
+```
+
+```swift title="Swift (Custom Queue)"
+let customQueue = DispatchQueue(label: "custom-queue")
+client?.on(event: SplitEvent.sdkReadyFromCache, queue: customQueue) {
+  // Handler code
+}
+```

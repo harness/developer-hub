@@ -1,0 +1,9 @@
+```swift title="Swift"
+let apiKey: String = "YOUR_API_KEY"
+let key: Key = Key(matchingKey: "key")
+let config = SplitClientConfig()
+let builder = DefaultSplitFactoryBuilder()
+let factory =
+builder.setApiKey(apiKey).setKey(key).setConfig(config).build()
+let manager = factory?.manager
+```

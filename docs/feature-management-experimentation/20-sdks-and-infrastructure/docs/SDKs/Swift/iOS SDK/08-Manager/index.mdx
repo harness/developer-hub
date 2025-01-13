@@ -1,0 +1,35 @@
+---
+title: Manager
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Manager,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
+
+import SplitManagerInstantiate from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_ios-sdk/_080_codeSplitManagerInstantiate.mdx";
+import SplitManager            from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_ios-sdk/_080_codeSplitManager.mdx";
+import SplitView               from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_ios-sdk/_080_codeSplitView.mdx";
+
+export const toc = [];
+
+export const Result = SDKDocsBuilder(
+  [
+    [
+      Manager,
+      {
+        codeSplitManagerInstantiate: <SplitManagerInstantiate />,
+        codeSplitManager:            <SplitManager />,
+        codeSplitView:               <SplitView />,
+      },
+    ],
+  ],
+  toc
+);
+
+<>{Result}</>

@@ -1,0 +1,25 @@
+`Impression` object interface:
+
+```swift title="Swift"
+  feature: String?
+  keyName: String?
+  treatment: String?
+  time: Int64?
+  changeNumber: Int64?
+  label: String?
+  bucketingKey: String?
+  attributes: [String: Any]?
+```
+
+Type and description of each `Impression` object field:
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- | 
+| keyName | String? | Key which is evaluated. |
+| bucketingKey | String? | Key which is used for bucketing, if provided. |
+| feature | String? | Feature flag which is evaluated. |
+| treatment | String? | Treatment that is returned. |
+| time/timestamp | Int64?/NSNumber? | Timestamp of when the impression is generated. |
+| label | String? | Targeting rule in the definition that matched resulting in the treatment being returned. |
+| changeNumber/changeNum | Int64?/NSNumber? | Date and time of the last change to the targeting rule that the SDK used when it served the treatment. It is important to understand when a change made to a feature flag got picked up by the SDKs and whether one of the SDK instances is not picking up changes. |
+| attributes | [String: Any]? | A map of attributes passed to `getTreatment`/`getTreatments`, if any. |

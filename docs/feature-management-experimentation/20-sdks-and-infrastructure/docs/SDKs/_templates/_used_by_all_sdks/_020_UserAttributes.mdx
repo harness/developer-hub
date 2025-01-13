@@ -6,11 +6,7 @@ User attributes are also called Traffic type attributes and custom attributes. I
 
 The `getTreatment` method supports the following types of attributes:
 
-* **Strings:** Use type String.
-* **Numbers:** Use type `java.lang.Long` or `java.lang.Integer`.
-* **Dates:** Express the value in `milliseconds since epoch`. In Java, `milliseconds since epoch` is of type `java.lang.Long`. For example, the value for the `registered_date` attribute below is `System.currentTimeInMillis()`, which is a long.
-* **Booleans:** Use type `java.lang.boolean`.
-* **Sets:** Use type `java.util.Collection`.
+<>{props.attributeTypes}</>
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the feature flag targeting rules (defined in the FME/Split user interface) to decide which treatment is assigned to this key.
 

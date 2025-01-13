@@ -1,8 +1,6 @@
-## Localhost mode {#localhost-mode}
-
 For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, you can start the Split SDK in **localhost** mode (a.k.a. off-the-grid mode). In this mode, the SDK neither polls nor updates Harness servers. Instead, it uses an in-memory data structure to determine what feature flag treatments to return for any given user ID. 
 
-To use the SDK in localhost mode, replace the SDK Key with `localhost`, as shown in the example below:
+To use the SDK in localhost mode, replace the SDK Key with `localhost`, as shown in the example:
 
 <>{props.codeLocalHostMode}</>
 <>{props.files}</>

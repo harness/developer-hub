@@ -1,0 +1,17 @@
+The SDK sends the generated impressions to the impression handler (listener) right away. As a result, be careful while implementing handling logic to avoid blocking the main thread. Generally speaking, you should create a separate thread to handle incoming impressions. Refer to the snippet below.
+
+```swift title="Swift"
+let config = SplitClientConfig()
+config.impressionListener = { impression in
+        // Do some work on main thread
+        DispatchQueue.global().async {
+            // Do some async work (use this most of the time!)
+        }
+}  
+
+let key: Key = Key(matchingKey: "key")
+let builder = DefaultSplitFactoryBuilder()
+let factory =
+builder.setApiKey(apiKey).setKey(key).setConfig(config).build()
+let client = factory?.client
+```

@@ -1,0 +1,74 @@
+Since version 2.1.0, the iOS SDK supports a new type of localhost feature flag definition file using the YAML format. This new format allows the user to map different keys to different treatments within a single feature flag, and add configurations to them. This file must be included into the project bundle and it is used as an initial file. It is copied to the cache folder, then it can be edited while app is running to simulate feature flag changes. When no file is added to the app bundle, an error occurs. The file periodically reloads. This period can be updated through the offlineRefreshRate config. Also, the refresh process can be turned off by setting this config to -1.
+
+The new format is a list of single-key maps (one per mapping feature_flag-keys-config), defined as follows:
+
+```yaml title="YAML"
+- my_feature:
+    treatment: "on"
+    keys: "key"
+    config: "{\"desc\" : \"this applies only to ON treatment\"}"
+- some_other_feature:
+    treatment: "off"
+- my_feature:
+    treatment: "off"
+- other_feature:
+    treatment: "off"
+    keys: ["key_1", "key_2"]
+    config: "{\"desc\" : \"this overrides multiple keys and returns off treatment for those keys\"}"
+```
+
+In the example above, we have four entries:
+ * The first entry defines that for feature flag `my_feature`, the key `key` returns the treatment `on` and the `on` treatment is tied to the configuration `{"desc" : "this applies only to ON treatment"}`.
+ * The second entry defines that the feature flag `some_other_feature` will always return the `off` treatment and no configuration.
+ * The third entry defines that `my_feature` always returns `off` for all keys that don't match another entry. In this case, any key other than `key`.
+ * The fourth entry shows how an example to override a treatment for a set of keys.
+
+You can set the name of the Split localhost YAML file within cache folder as shown in the example below:
+
+```swift title="Swift"
+// Split SDK key must be "localhost"
+let apiKey: String = "localhost"
+let key: Key = Key(matchingKey: "key")
+let config = SplitClientConfig()
+config.splitFile = "localhost.yaml"
+let builder = DefaultSplitFactoryBuilder()
+self.factory =
+builder.setApiKey("localhost").setKey(key).setConfig(config).build()
+```
+
+If SplitClientConfig.splitFile is not set, Split SDK maintains backward compatibility by trying to load the legacy file (.splits), now deprecated. In this mode, the SDK loads a local file called *localhost.splits* which has the following line format:
+
+FEATURE_FLAG_NAME TREATMENT
+
+Additionally, you can include comments to the file starting a line with the # character.
+
+**Example:** A sample *localhost.splits* file
+
+```bash
+ # This line is a comment
+ # Following line has feature flag = FEATURE_ONE and treatment = ON
+ FEATURE_ONE ON
+ FEATURE_TWO OFF
+ # Previous line has feature flag = FEATURE_TWO, treatment = OFF
+```
+
+Starting from version 2.24.2, it is possible to update feature flag definitions programmatically by using the Localhost factory's `updateLocalhost` method, as shown below.
+
+```swift title="Swift"
+// Split SDK key must be "localhost"
+let apiKey: String = "localhost"
+let key: Key = Key(matchingKey: "key")
+let config = SplitClientConfig()
+let builder = DefaultSplitFactoryBuilder()
+self.factory = builder.setApiKey("localhost").setKey(key).setConfig(config).build()
+
+// SplitLocalhostDataSource protocol declares the updating methods
+if guard let datasource = self.factory as? SplitLocalhostDataSource else { return }
+
+// Yalm file content
+datasource.updateLocalhost(yaml: yaml_content)
+
+// Split file content
+datasource.updateLocalhost(splits: splits_content)
+
+```

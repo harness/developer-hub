@@ -1,0 +1,34 @@
+```swift title="Swift"
+// Event without a value
+let resp = client?.track(trafficType: "TRAFFIC_TYPE", eventType: "EVENT-TYPE")
+// Example
+let resp = client?.track(trafficType: "user", eventType: "page_load_time")
+
+// If you would like to associate a value to an event
+let resp = client?.track(trafficType: "TRAFFIC_TYPE", eventType: "EVENT-TYPE", value: VALUE)
+// Example
+let resp = client?.track(trafficType: "user", eventType: "page_load_time", value: 83.334)
+
+// If you would like to associate just properties to an event
+let resp = client?.track(trafficType: "TRAFFIC_TYPE", eventType: "EVENT-TYPE", properties: PROPERTIES)
+// Example
+let properties: [String:Any] = ["package": "premium", "discount": 50, "admin": true]
+let resp = client?.track(trafficType: "user", eventType: "page_load_time", properties: properties)
+
+// If you would like to send an event but you've already defined the traffic type in the config of the client
+let resp = client?.track(eventType: "EVENT-TYPE")
+// Example
+let resp = client?.track(eventType: "page_load_time")
+
+// If you would like to associate a value to an event and you've already defined the traffic type in the config of the client
+let resp = client.track(eventType: "EVENT-TYPE", value: VALUE)
+// Example
+let resp = client?.track(eventType: "page_load_time", value: 83.334)
+
+// If you would like to associate properties to an event and you've already defined the traffic type in the config of the client
+let resp = client.track(eventType: "EVENT-TYPE", properties: PROPERTIES)
+// Example
+let properties: [String:Any] = ["package": "premium", "discount": 50, "admin": true]
+let resp = client?.track(eventType: "page_load_time", proerties: properties)
+
+```

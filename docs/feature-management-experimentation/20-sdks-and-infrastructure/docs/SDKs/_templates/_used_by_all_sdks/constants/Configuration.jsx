@@ -13,6 +13,11 @@ export const IMPRESSIONS_INFO                            = () => <> Impressions 
                                                                     experiments. </>;
 export const EVENTS_INFO                                 = ({rum}) => <> Events may be captured using the <code>track</code> method{rum}. </>;
 export const EVENTS_INFO_RUM                             = () => EVENTS_INFO({ rum: ' or client-side RUM agent' });
+export const HTTPS_AUTHENTICATOR                         = () => <> If set, used by the SDK to authenticate network requests. Value must be an implementation
+                                                                    of <code>SplitHttpAuthenticator</code>. </>;
+export const IOS_LOG_LEVEL                               = () => <> Enables logging according to the level specified. Possible values: <code>NONE</code>,&nbsp;
+                                                                    <code>VERBOSE</code>, <code>DEBUG</code>, <code>INFO</code>, <code>WARNING</code>,&nbsp;
+                                                                    and <code>ERROR</code>. </>;
 export const MOBILE_BACKGROUND_SYNC_ENABLED              = () => <> Allow synchronization when app is in the background. </>;
 export const MOBILE_BACKGROUND_SYNC_PERIOD               = () => <> Time (minutes) interval for background synchronization to sync feature flag and 
                                                                     segment definitions. Minimum possible value is 15. </>;
@@ -41,6 +46,9 @@ export const SCHEDULER_FEATURES_REFRESH_RATE             = () => <> Time (second
 export const SCHEDULER_IMPRESSIONS_REFRESH_RATE          = () => <> Time (seconds) interval for the SDK to send impressions to Harness servers. </>;
 export const SCHEDULER_IMPRESSIONS_QUEUE_SIZE            = () => <> Maximum number of impressions (decisioning events) to queue. When the queue is full, the
                                                                     SDK flushes impressions and resets a timer. </>;
+export const SCHEDULER_LOCALHOST_REFRESH_RATE            = () => <> In localhost mode, time (seconds) interval to sync feature flags and segments (mocked
+                                                                    data from a file). Setting this configuration parameter to -1 turns off synchronization
+                                                                    in localhost mode. </>;
 export const SCHEDULER_PERSISTENT_CACHE_ENABLED          = () => <> The SDK polls Split servers for changes to segments at this rate (in seconds). </>;
 export const SCHEDULER_SEGMENTS_REFRESH_RATE             = () => <> Time (seconds) interval for the SDK to poll Harness servers for changes to
                                                                     segments. </>;

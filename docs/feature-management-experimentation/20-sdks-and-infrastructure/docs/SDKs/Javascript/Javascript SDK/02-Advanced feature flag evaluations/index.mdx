@@ -1,5 +1,5 @@
 ---
-title: ""
+title: Advanced feature flag evaluations
 sidebar_label: Advanced feature flag evaluations
 description: Set user attributes, evaluate multiple treatments, and retrieve treatment config data.
 ---
@@ -14,6 +14,7 @@ import {
   TreatmentWithConfig,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
+import AttributeTypes             from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_020_attributeTypes.mdx";
 import GetTreatmentAttributes     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_020_codeGetTreatmentAttributes.mdx";
 import NotesPersistentAttributes  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_020_notesPersistentAttributesEnabled.mdx";
 import AttributesManagerInterface from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_020_codeAttributesManagerInterface.mdx";
@@ -32,6 +33,7 @@ export const Result = SDKDocsBuilder(
     [
       UserAttributes,
       {
+        attributeTypes:                   <AttributeTypes />,
         codeGetTreatmentAttributes:       <GetTreatmentAttributes />,
         notesPersistentAttributesEnabled: <NotesPersistentAttributes />,
         codeAttributesManagerInterface:   <AttributesManagerInterface />,

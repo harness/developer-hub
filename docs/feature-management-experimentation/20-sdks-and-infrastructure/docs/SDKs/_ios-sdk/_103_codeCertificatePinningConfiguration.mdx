@@ -1,0 +1,22 @@
+```swift title="Swift"
+// Define pins for certificate pinning
+let certBuilder = CertificatePinningConfig.builder()
+
+// Provide a base 64 SHA-256 hash
+certBuilder.addPin(host: "www.example1.com", hashKey: "sha256/7HIpactkIAq2Y49orFOOQKurWxmmSFZhBCoQYcRhJ3Y=")
+
+// Provide a certificate file name. This file has to be added to the bundle.
+certBuilder.addPin(host: "www.example2.com", certificateName: "certificate.der")
+
+// Set a failure handler
+certBuilder.certificatePinningConfig { host in
+  print("Failed validation for host \(host)")
+}
+
+// Set the CertificatePinningConfig property for the Split client configuration
+let config = SplitClientConfig()
+config.certificatePinningConfig = certBuilder.build()
+// you can add other configuration properties here
+
+...
+```

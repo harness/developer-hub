@@ -1,0 +1,19 @@
+```swift title="Swift"
+// Split SDK key must be "localhost"
+let apiKey: String = "localhost"
+let key: Key = Key(matchingKey: "key")
+let config = SplitClientConfig()
+let builder = DefaultSplitFactoryBuilder()
+self.factory = builder.setApiKey("localhost").setKey(key).setConfig(config).build()
+
+// SplitLocalhostDataSource protocol declares the updating methods
+if guard let datasource = self.factory as? SplitLocalhostDataSource else { return }
+
+// Yalm file content
+datasource.updateLocalhost(yaml: yaml_content)
+
+// Split file content
+datasource.updateLocalhost(splits: splits_content)
+```
+
+Starting from version 2.24.2, it is possible to update feature flag definitions programmatically by using the Localhost factory's `updateLocalhost` method.

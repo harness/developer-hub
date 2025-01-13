@@ -1,0 +1,25 @@
+```swift title="Swift"
+// Prepare a Map with several attributes
+var attributes: [String:Any] = [:]
+attributes["plan_type"] = "growth"
+attributes["registered_date"] = Date().timeIntervalSince1970
+attributes["deal_size"] = 1000
+
+// Now set these on the client
+let result = client.setAttributes(attributes)
+
+// Set one attribute
+let result = client.setAttribute(name: "registered_date", value: Date().timeIntervalSince1970)
+
+// Get an attribute
+let result = client.getAttribute(name: "registered_date")
+
+// Get all attributes
+let result = client.getAttributes()
+
+// Remove an attribute
+let result = client.removeAttribute(name: "deal_size")
+
+// Remove all attributes
+let result = client.clearAttributes()
+```
