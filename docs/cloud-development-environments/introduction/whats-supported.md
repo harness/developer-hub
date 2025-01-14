@@ -3,8 +3,6 @@ title: What's supported in Harness Gitspaces
 description: Lists the Git providers, IDE integrations and compute types supported in Harness CDE.
 sidebar_label: What's Supported
 sidebar_position: 1
-redirect_from:
-  - /docs/cloud-development-environments/introduction/whats-supported
 ---
 
 :::info
