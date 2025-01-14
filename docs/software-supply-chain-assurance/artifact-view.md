@@ -28,7 +28,7 @@ The landing page of the Artifacts section provides a comprehensive list of all a
 * **Environments**: The environments where the artifact has been deployed with the count. 
 * **Vulnerabilities**: The vulnerabilities identified in the most recent scan of the digest. 
 
-<DocImage path={require('./static/artifacts-section/artifact-level-1.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/artifacts-overview-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 #### Search and filter options
@@ -48,7 +48,7 @@ When you select an artifact, you can view the list of all its digests. For each 
 * **Vulnerabilities:** The count of vulnerabilities categorized by severity: Critical, High, Medium, and Low.
 
 
-<DocImage path={require('./static/artifacts-section/artifact-level-2.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/artifacts-digest.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 #### Search and filter options:

@@ -9,7 +9,7 @@ Harness requires gathering data from all relevant entities to perform security s
 :::note
 Currently, Harness supports only Code Repositories, and specifically GitHub. In the near future, Harness will add support for other entities.
 :::
-<DocImage path={require('./static/integrations.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/integrations-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 To find all the integrations, navigate to the “Integrations” section within the SCS module. From here, you can perform various operations, including:
 
