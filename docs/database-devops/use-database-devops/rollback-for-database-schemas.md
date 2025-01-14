@@ -7,11 +7,31 @@ sidebar_position: 4
 
 This topic describes how Harness Database DevOps implements automated rollback to maintain the stability and integrity of your database schema workloads. 
 
-## Accelerate Innovation Velocity
+## What are tags? 
 
-Harness DB DevOps is a powerful tool that helps accelerate innovation velocity, particularly in the context of managing and evolving database schemas. By using DB DevOps, development teams can introduce new features, improve existing ones, and deploy updates more rapidly and safely. 
+A tag is a marker or label assigned to a specific point in a database's migration history. Harness recommends creating a change every time you deploy a changeset to a database so that you always have a rollback point for future changes.
 
-By integrating DB DevOps into your development workflow, teams can accelerate their innovation velocity by automating and streamlining database schema changes. DB DevOps reduces the friction associated with database updates, allowing teams to focus on delivering new features and improvements faster and with greater confidence. This, in turn, enhances the overall agility of the development process, enabling organizations to stay competitive and responsive to market demands.
+### Rollback A Database Schema 
+
+To rollback a database schema, this action refers to rolling back changes you've made to your database based on a specified tag of your creation. 
+
+Here is how you can rollback a database within Harness Database DevOps: 
+
+ 1. In Harness, go to the **Database DevOps** module and select your **Project**. 
+ 2. Determine the tag you want to roll back to. This tag represents a specific state of the database schema that you want to revert to after applying changes. 
+ 3. Select the **Pipelines** tab on the side menu, and open the pipeline in your Harness Database DevOps interface where the rollback will be executed. 
+ 4. In the configuration for the rollback step, you will need to provide the following details:
+    -  **Schema Name**: Specify the name of the database schema that you want to roll back.
+    - **Instance Name**: Indicate the database instance where the rollback will take place. This is typically defined by a JDBC URL, user, and password.
+    - **Rollback Tag**: Enter the name of the tag to which you want to roll back the schema.
+ 5. Run the pipeline with the configured rollback step.
+ 6. Keep an eye on the execution logs to ensure that the rollback is successful. The logs will provide information about the actions taken 
+  during the rollback.
+ 7. After the rollback is complete, verify that the database schema has been reverted to the desired state. This may involve checking the schema structure and ensuring that any changes made after the specified tag have been undone.
+
+:::info
+You can refer to the Harness documentation detailing how to [Add a Liquibase command step](/docs/database-devops/use-database-devops/add-liquibase-command-step.md)
+:::
 
 ## Built in failure strategies including rollback
 
@@ -49,7 +69,8 @@ In some cases, you might need to roll back changes that were successfully applie
 
 For these scenarios, Harness DB DevOps provides a 'Rollback Schema' pipeline step. This step can be configured in your pipeline to roll back to a particular tag, allowing you to revert your database schema to a known good state.
 
-### What are tags? 
+## Accelerate Innovation Velocity
 
-A tag is a marker or label assigned to a specific point in a database's migration history. Harness recommends creating a change every time you deploy a changeset to a database so that you always have a rollback point for future changes.
+Harness DB DevOps is a powerful tool that helps accelerate innovation velocity, particularly in the context of managing and evolving database schemas. By using DB DevOps, development teams can introduce new features, improve existing ones, and deploy updates more rapidly and safely. 
 
+By integrating DB DevOps into your development workflow, teams can accelerate their innovation velocity by automating and streamlining database schema changes. DB DevOps reduces the friction associated with database updates, allowing teams to focus on delivering new features and improvements faster and with greater confidence. This, in turn, enhances the overall agility of the development process, enabling organizations to stay competitive and responsive to market demands.
