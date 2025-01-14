@@ -1,0 +1,61 @@
+---
+title: Advanced feature flag evaluations
+sidebar_label: Advanced feature flag evaluations
+description: Set user attributes, evaluate multiple treatments, and retrieve treatment config data.
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  UserAttributes,
+  MultipleTreatments,
+  TreatmentWithConfig,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
+
+import AttributeTypes             from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_020_attributeTypes.mdx";
+import GetTreatmentAttributes     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_020_codeGetTreatmentAttributes.mdx";
+import NotesPersistentAttributes  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_020_notesPersistentAttributesEnabled.mdx";
+import AttributesManagerInterface from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_020_codeAttributesManagerInterface.mdx";
+import ClientSetAttribute         from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_020_codeClientSetAttribute.mdx";
+
+import GetTreatments              from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_021_codeGetTreatments.mdx";
+
+import TreatmentResult            from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_022_codeTreatmentResult.mdx";
+import GetTreatmentWithConfig     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_022_codeGetTreatmentWithConfig.mdx";
+import GetTreatmentsWithConfig    from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_022_codeGetTreatmentsWithConfig.mdx";
+
+export const toc = [];
+
+export const Result = SDKDocsBuilder(
+  [
+    [
+      UserAttributes,
+      {
+        attributeTypes:                   <AttributeTypes />,
+        codeGetTreatmentAttributes:       <GetTreatmentAttributes />,
+        notesPersistentAttributesEnabled: <NotesPersistentAttributes />,
+        codeAttributesManagerInterface:   <AttributesManagerInterface />,
+        codeClientSetAttribute:           <ClientSetAttribute />,
+      },
+    ],
+    [
+      MultipleTreatments,
+      {
+        codeGetTreatments: <GetTreatments />,
+      },
+    ],
+    [
+      TreatmentWithConfig,
+      {
+        codeTreatmentResult:      <TreatmentResult />,
+        codeTreatmentWithConfig:  <GetTreatmentWithConfig />,
+        codeTreatmentsWithConfig: <GetTreatmentsWithConfig />,
+      },
+    ],
+  ],
+  toc
+);
+
+<>{Result}</>

@@ -1,0 +1,76 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript', value: 'javascript'},
+    {label: 'Typescript', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+var sdk = SplitFactory({
+  startup: {
+    readyTimeout:            10, // 10 sec
+    eventsFirstPushWindow:   10  // 10 sec
+  },
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'YOUR_KEY'
+  },
+  scheduler: {
+    featuresRefreshRate:      5, // 5 sec
+    segmentsRefreshRate:     60, // 60 sec
+    impressionsRefreshRate: 300, // 300 sec
+    impressionsQueueSize: 30000, // 30000 items
+    eventsPushRate:          60, // 60 sec
+    eventsQueueSize:        500, // 500 items
+    telemetryRefreshRate:  3600  // 1 hour
+  },
+  sync: {
+    splitFilters: [{
+      type: 'bySet',
+      values: ['frontend']
+    }],
+    impressionsMode: 'OPTIMIZED'
+  },
+  debug: false
+});
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+const sdk: SplitIO.IBrowserSDK = SplitFactory({
+  startup: {
+    readyTimeout:            10, // 10 sec
+    eventsFirstPushWindow:   10  // 10 sec
+  },
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'YOUR_KEY'
+  },
+  scheduler: {
+    featuresRefreshRate:      5, // 5 sec
+    segmentsRefreshRate:     60, // 60 sec
+    impressionsRefreshRate: 300, // 300 sec
+    impressionsQueueSize: 30000, // 30000 items
+    eventsPushRate:          60, // 60 sec
+    eventsQueueSize:        500, // 500 items
+    telemetryRefreshRate:  3600  // 1 hour
+  },
+  sync: {
+    splitFilters: [{
+      type: 'bySet',
+      values: ['frontend']
+    }],
+    impressionsMode: 'OPTIMIZED'
+  },
+  debug: false
+});
+```
+
+  </TabItem>
+</Tabs>

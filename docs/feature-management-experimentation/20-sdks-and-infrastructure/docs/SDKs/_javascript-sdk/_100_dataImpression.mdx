@@ -1,0 +1,14 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+The SDK configuration has a parameter called `impressionListener` where an implementation of `ImpressionListener` can be added. The implementation must define the `logImpression` method.
+
+Data recieved by the impression listener:
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- | 
+| impression | Object | Impression object that has the feature, key, treatment, label, etc. |
+| attributes | Object | A map of attributes passed to `getTreatment`/`getTreatments` (if any). |
+| sdkLanguageVersion | String | The version of the SDK. In this case the language is { window.location.pathname.includes("Javascript%20SDK") ? "'javascript'" : "'browserjs'" } plus the version currently running. |
+
+There are two additional keys on this object, `ip` and `hostname`. They are not used on the client side.

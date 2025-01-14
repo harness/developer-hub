@@ -1,0 +1,153 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+To reduce application build size, the logger is divided into four levels (from high to low): `DebugLogger`, `InfoLogger`, `WarnLogger`, and `ErrorLogger`. Higher log levels write the lower level messages (e.g., `DebugLogger` writes all log messages).
+
+To enable descriptive SDK logging, you need to plug in a logger instance as shown below:
+
+```javascript title="Enable logging from browser console"
+// Acceptable values are 'DEBUG', 'INFO', 'WARN', 'ERROR' and 'NONE'
+// Other acceptable values are 'on', 'enable' and 'enabled', which are equivalent to 'DEBUG' log level
+localStorage.splitio_debug = 'on' <enter>
+```
+
+Reload the browser to start seeing the logs.
+
+Beginning with v9.2.0 of the SDK, you can also enable the logging via SDK settings and programmatically by calling the Logger API.
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Logger instance (JavaScript)', value: 'javascript'},
+    {label: 'Logger instance (TypeScript)', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+var splitio = require('@splitsoftware/splitio-browserjs');
+
+var sdk = splitio.SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: splitio.DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
+});
+```
+
+```typescript title="UMD build"
+var sdk = splitio.SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: splitio.DebugLogger() // Only the full UMD bundle includes `DebugLogger`, `InfoLogger`, `WarnLogger` and `ErrorLogger` modules in the `splitio` namespace.
+});
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-browserjs';
+
+const sdk: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
+});
+```
+
+```typescript title="UMD build"
+var sdk = splitio.SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: splitio.DebugLogger() // Only the full UMD bundle includes `DebugLogger`, `InfoLogger`, `WarnLogger` and `ErrorLogger` modules in the `splitio` namespace.
+});
+```
+
+  </TabItem>
+</Tabs>
+
+You can also enable the SDK logging via a boolean or log level value as `debug` settings, and change it dynamically by calling the SDK Logger API. However, in any case where the proper logger instance is not plugged in, instead of a human readable message, you'll get a code and optionally some params for the log itself. While these logs would be enough for the Split support team, if you find yourself in a scenario where you need to parse this information, you can check the constant files in our javascript-commons repository (where you have tags per version if needed) under the [logger folder](https://github.com/splitio/javascript-commons/blob/master/src/logger/).
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Logger API (JavaScript)', value: 'javascript'},
+    {label: 'Logger API (TypeScript)', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+var splitio = require('@splitsoftware/splitio-browserjs');
+
+var sdk = splitio.SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: true // other options are 'ERROR', 'WARN', 'INFO' and 'DEBUG
+});
+
+// Or you can use the Logger API methods which have an immediate effect.
+sdk.Logger.setLogLevel('WARN'); // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'
+sdk.Logger.enable(); // equivalent to `setLogLevel('DEBUG')`
+sdk.Logger.disable(); // equivalent to `setLogLevel('NONE')`
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+import { SplitFactory } from '@splitsoftware/splitio-browserjs';
+
+const sdk: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: true // other options are 'ERROR', 'WARN', 'INFO' and 'DEBUG
+});
+
+// Or you can use the Logger API methods which have an immediate effect.
+sdk.Logger.setLogLevel('WARN'); // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'
+sdk.Logger.enable(); // equivalent to `setLogLevel('DEBUG')`
+sdk.Logger.disable(); // equivalent to `setLogLevel('NONE')`
+```
+
+  </TabItem>
+</Tabs>
+
+SDK logging can also be globally enabled via a localStorage value by opening your DevTools console and typing the following:
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Logger API (JavaScript)', value: 'javascript'},
+    {label: 'Logger API (TypeScript)', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript title="Enable logging from browser console"
+// Acceptable values are 'DEBUG', 'INFO', 'WARN', 'ERROR' and 'NONE'
+// Other acceptable values are 'on', 'enable' and 'enabled', which are equivalent to 'DEBUG' log level
+localStorage.splitio_debug = 'on' <enter>
+
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript title="Enable logging from browser console"
+// Acceptable values are 'DEBUG', 'INFO', 'WARN', 'ERROR' and 'NONE'
+// Other acceptable values are 'on', 'enable' and 'enabled', which are equivalent to 'DEBUG' log level
+localStorage.splitio_debug = 'on' <enter>
+```
+
+  </TabItem>
+</Tabs>

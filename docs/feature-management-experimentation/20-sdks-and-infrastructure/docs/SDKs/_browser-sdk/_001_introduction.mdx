@@ -1,0 +1,13 @@
+JavaScript Browser SDK is built on top of our Javascript SDK core modules but optimized for web browsers.
+
+The library exports a `slim` (default) and a `full` entry point in UMD, CommonJS, and ES module formats, which allows you to import and use the SDK. The `slim` entry point has less features by default, resulting in a smaller footprint. At the moment, the `full` entry point only differs from the `slim` entry point by including a [Fetch API polyfill](#language-support), but more features might be added in the future.
+
+Both entry points share the same pluggable API that you can use to include more functionality optionally and keep your bundle leaner.
+
+:::info[Migrating from Browser SDK v0.x to Browser SDK v1.x]
+Refer to this [migration guide](https://github.com/splitio/javascript-browser-client/blob/development/MIGRATION-GUIDE.md) for complete information on updating to v1.x.
+:::
+
+:::info[Migrating JavaScript SDK to JavaScript Browser SDK]
+Refer to the [**Browser SDK migration guide**](https://help.split.io/hc/en-us/articles/360059966112-Browser-SDK-Migration-Guide) if you are already using our [JavaScript SDK](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK) and want to migrate to JavaScript Browser SDK to take advantage of ES modules tree-shaking in your Web application project.
+:::

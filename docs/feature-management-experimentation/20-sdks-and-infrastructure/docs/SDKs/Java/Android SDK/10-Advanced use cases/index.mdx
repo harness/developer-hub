@@ -15,10 +15,11 @@ import {
   CertificatePinning,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
-import Impression                      from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_100_codeImpression.mdx";
-import ImpressionListener              from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_100_codeImpressionListener.mdx";
+import DataImpression          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_100_dataImpression.mdx";
+import Impression              from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_100_codeImpression.mdx";
+import UseImpressionListener   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_100_codeUseImpressionListener.mdx";
+import NotesImpressionListener from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_100_notes.mdx";
 
-import MultipleClientsNotes            from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_101_notes.mdx";
 import SplitFactoryClient              from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_101_codeSplitFactoryClient.mdx";
 
 import GetUserConsent                  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_102_codeGetUserConsent.mdx";
@@ -32,14 +33,15 @@ export const Result = SDKDocsBuilder(
     [ 
       Listener, 
       { 
-        codeImpression:         <Impression />,
-        codeImpressionListener: <ImpressionListener />,
+        dataImpression:            <DataImpression />,
+        codeImpression:            <Impression />,
+        codeUseImpressionListener: <UseImpressionListener />,
+        notesImpressionListener:   <NotesImpressionListener />,
       }, 
     ],
     [ 
       MultipleSdkClients, 
       {
-        notes:                  <MultipleClientsNotes />,
         codeSplitFactoryClient: <SplitFactoryClient />,
       },
     ],

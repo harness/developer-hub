@@ -103,5 +103,9 @@ export const USER_CONSENT                                = () => <> User consent
                                                                     <a href="../Advanced%20use%20cases/#user-consent">User consent</a> for details. </>;
 export const WEB_LOG_LEVEL                               = () => <> Boolean flag, string log level, or logger instance for activating SDK logs. See&nbsp;
                                                                     <a href='../Logging'>Logging</a> for details. </>;
+export const WEB_STORAGE                                 = () => <> Pluggable storage instance to be used by the SDK as a complement to in memory storage.
+                                                                    Currently supported value is <code>InLocalStorage</code>. See&nbsp;
+                                                                    <a href="#configure-localstorage-cache-for-the-sdk">Configure LocalStorage cache for the SDK</a>&nbsp;
+                                                                    for details. </>;
 export const WEB_STORAGE_PREFIX                          = () => <> An optional prefix for your data to avoid collisions. This prefix is prepended to the
                                                                     existing <code>'SPLITIO'</code> localStorage prefix. </>;

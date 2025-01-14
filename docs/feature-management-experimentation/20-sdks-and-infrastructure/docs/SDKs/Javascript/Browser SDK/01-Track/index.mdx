@@ -1,0 +1,31 @@
+---
+title: Track
+sidebar_label: Track
+description: Track metric events to ensure the safety of your rollouts or run experiments.
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Track,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
+
+import TrackMetricEvents from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_browser-sdk/_010_codeTrack.mdx";
+
+export const toc = [];
+
+export const Result = SDKDocsBuilder(
+  [
+    [
+      Track,
+      {
+        codeTrack: <TrackMetricEvents />,
+      },
+    ],
+  ],
+  toc
+);
+
+<>{Result}</>

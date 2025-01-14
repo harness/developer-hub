@@ -1,0 +1,35 @@
+---
+title: Localhost mode
+sidebar_label: Localhost mode
+description: Develop and test without an internet connection. Read flag and segment definitions from a file.
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Localhost,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
+
+import LocalhostMode from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_browser-sdk/_090_codeLocalhostMode.mdx";
+import Files         from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_090_files.mdx";
+import Notes         from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_browser-sdk/_090_notes.mdx";
+
+export const toc = [];
+
+export const Result = SDKDocsBuilder(
+  [
+    [
+      Localhost,
+      {
+        codeLocalHostMode: <LocalhostMode />,
+        files: <Files />,
+        notes: <Notes />,
+      },
+    ],
+  ],
+  toc
+);
+
+<>{Result}</>

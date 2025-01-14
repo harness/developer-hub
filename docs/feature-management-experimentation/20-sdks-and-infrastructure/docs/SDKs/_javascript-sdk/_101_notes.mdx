@@ -1,5 +1,0 @@
-Each JavaScript SDK client is tied to one specific customer and traffic type at a time (for example, `user`, `account`, `organization`). This enhances performance and reduces data cached within the SDK.
-
-Split supports the ability to release based on multiple traffic types. With traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, refer to [Traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) for more information.
-
-If you need to roll out features by different traffic types, instantiate multiple SDK clients, one for each traffic type. For example, you may want to roll out the feature `user-poll` by `users` and the feature `account-permissioning` by `accounts`.

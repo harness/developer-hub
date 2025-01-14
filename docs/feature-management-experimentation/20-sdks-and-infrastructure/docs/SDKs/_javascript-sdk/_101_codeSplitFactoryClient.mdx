@@ -34,7 +34,7 @@ var user_poll_treatment = user_client.getTreatment('user-poll');
  
 // check treatment for account-permissioning and CUSTOMER_ACCOUNT_ID
 var account_permissioning_treatment = account_client.getTreatment('account-permissioning');
- 
+
 // track events for user traffic type
 user_client.track('user', 'PAGELOAD', 7.86);
  
@@ -73,6 +73,12 @@ const user_poll_treatment: SplitIO.Treatment =
 // check treatment for account-permissioning and CUSTOMER_ACCOUNT_ID
 const account_permissioning_treatment: SplitIO.Treatment =
   account_client.getTreatment('account-permissioning');
+
+// track events for user traffic type
+user_client.track('user', 'PAGELOAD', 7.86);
+ 
+// or track events for account traffic type
+account_client.track('account', 'ACCOUNT_CREATED');
 ```
 
   </TabItem>

@@ -1,0 +1,5 @@
+The JavaScript Browser SDK supports all major browsers. While the library was built to support ES5 syntax, it depends on native support for ES6 `Promise`, `Map` and `Set` objects, and therefore, you need to **polyfill** them if they are not available in your target browsers.
+
+You must polyfill Fetch Web API if it is not available in your target browsers and you are importing the SDK from the slim entry point. For more information, refer to the [Import the SDK into your project](#1-import-the-sdk-into-your-project) section of this guide. The `full` entry point doesn't require it.
+
+If you're looking for possible polyfill options, check [es6-promise](https://github.com/stefanpenner/es6-promise), [es6-map](https://github.com/medikoo/es6-map) and [es6-set](https://github.com/medikoo/es6-set) for Promise, Map and Set polyfills respectively. For Fetch Web API, we recommend the lightweight [unfetch](https://unpkg.com/unfetch@latest/polyfill/index.js) or [whatwg-fetch](https://cdn.jsdelivr.net/npm/whatwg-fetch@latest/dist/fetch.umd.min.js).
