@@ -18,7 +18,8 @@ JetBrains Gateway is a lightweight desktop application that enables you to work 
 
 ## Recommended Gitspace Configuration
 :::info
-The following Gitspace requirements are optional but highly recommended for the best and most efficient experience when using Gitspaces in **IntelliJ IDEA**.:::
+The following Gitspace requirements are optional but highly recommended for the best and most efficient experience when using Gitspaces in **IntelliJ IDEA**.
+:::
 
 ### Recommended Requirements
 To ensure optimal performance while connecting to your Gitspace in IntelliJ IDEA, your Gitspace should meet the following specifications:
