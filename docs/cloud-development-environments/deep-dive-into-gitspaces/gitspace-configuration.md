@@ -3,8 +3,6 @@ title: Understanding the Gitspace Configuration
 description: Learn more about the underlying configuration of a Gitspace. 
 sidebar_position: 1
 sidebar_label: Gitspace Configuration
-redirect_from:
-  - /docs/cloud-development-environments/deep-dive-into-gitspaces/gitspace-configuration
 ---
 
 :::info

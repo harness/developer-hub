@@ -172,6 +172,12 @@ import { MODULES } from "@site/src/constants";
           description: "Connect to your Gitspaces within VS Code Desktop",
           link: "/docs/cloud-development-environments/ide's/vs-code-desktop",
         },
+        {
+          title: "IntelliJ IDEA",
+          module: MODULES.cde,
+          description: "Connect to your Gitspaces within IntelliJ IDEA",
+          link: "/docs/cloud-development-environments/ide's/intellij",
+        },
       ],
     },
     {

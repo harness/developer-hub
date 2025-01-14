@@ -3,8 +3,6 @@ title: VS Code Desktop
 description: Connect to your Gitspaces in your VS Code Desktop
 sidebar_position: 2
 sidebar_label: VS Code Desktop
-redirect_from:
-  - /docs/cloud-development-environments/ide's/vs-code-desktop
 ---
 
 :::info

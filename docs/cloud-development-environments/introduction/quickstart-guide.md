@@ -3,8 +3,6 @@ title: Quickstart Guide
 description: Get Started with Harness CDE (Gitspaces)
 sidebar_position: 2
 sidebar_label: Quickstart Guide
-redirect_from:
-  - /docs/cloud-development-environments/introduction/getting-started-with-cde.md
 ---
 
 :::info

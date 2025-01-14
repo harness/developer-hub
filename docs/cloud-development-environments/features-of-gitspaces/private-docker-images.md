@@ -3,8 +3,6 @@ title: Using Private Docker Images for Gitspaces
 description: Learn more about how you can pull and use private docker images for your Gitspaces. 
 sidebar_position: 2
 sidebar_label: Private Docker Images
-redirect_from:
-  - /docs/cloud-development-environments/features-of-gitspaces/private-docker-images.md
 ---
 
 This guide explains how to pull **private Docker images** for your Gitspaces. Currently, we support **Docker Registry** (OCI container registry), **JFrog Artifactory** and **Amazon ECR** for this use case (more connectors coming soon). Let’s go through the steps required to use private Docker images from these connectors to run your Gitspaces.

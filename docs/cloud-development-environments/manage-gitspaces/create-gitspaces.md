@@ -3,8 +3,6 @@ title: Create a Gitspace
 description: Learn how to create a new Gitspace
 sidebar_position: 1
 sidebar_label: Create a Gitspace
-redirect_from:
-  - /docs/cloud-development-environments/manage-gitspaces/create-gitspaces
 ---
 
 Follow the instructions below to create a Gitspace:
