@@ -16,7 +16,8 @@ Upon the completion of your pipeline execution, the outcomes derived from the SC
 * Check the SLSA verification status.
 
 
-![Pipeline execution Supply Chain tab](./static/pipeline-execution-artifacts-tab-.png "pipeline-execution-artifacts-tab")
+
+![Pipeline Execution Results](./static/pipeine-execution-results.png)
 
 
 ## View SBOM and Drift analysis

@@ -16,7 +16,7 @@ To onboard your CI/CD pipelines, refer to the [Get Started](./get-started) guide
 
 Navigate to the **CI/CD** section in Harness SCS to view a complete list of onboarded pipelines. This page displays all pipelines across integrations, providing an overview of their risk and compliance status, both collectively and individually.
 
-<DocImage path={require('./static/cicdspm-home.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/cicd-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 By selecting a pipeline from the **CI/CD** page, you can view all the details organized into different tabs.
 
