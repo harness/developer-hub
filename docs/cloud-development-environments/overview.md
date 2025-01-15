@@ -37,7 +37,7 @@ CDEs eliminate these challenges with characteristics like:
 
 - *Flexible*: Each Gitspace can be spun up with a custom hardware configuration, so you can get bigger machines for resource-intensive applications and smaller machines for trivial ones. 
 
-## Use Cases of CDE
+## Use Cases
 - *Faster Onboarding*: Developers can start coding on day 1 with a single click! This is not just for new developers joining an organization, but also for those switching teams or projects internally. 
 
 - *Higher developer productivity & satisfaction*: CDEs eliminate toil! Developers no longer spend time on frustrating and thankless tasks such as trying to reproduce environment specific issues or reconfiguring their local machines. 

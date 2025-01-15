@@ -34,9 +34,9 @@ This topic describes the HCE platform requires to execute chaos experiments.
 </tr>
 <tr>
 	<th> Access requirements for advanced chaos experiments </th>
-	<td><ul><li>Chaos ServiceAccount: [consolidated serviceaccount for advanced pod and node chaos]</li>
-<li>Container Runtime privileges: [recommended psp for advanced chaos]</li>
-<li>Refer to Chaos Experiment Flow for Microservice Targets section in the architecture doc for more details on need for the privileges</li></ul></td>
+	<td><ul><li>Chaos ServiceAccount: <a href="https://hce-docs.github.io/platform-wise-chaos-info/TKGi/Kubernetes/advanced-pod-and-node-chaos-access-requirements.html"> consolidated serviceaccount for advanced pod and node chaos </a> </li>
+<li>Container Runtime privileges: <a href="https://github.com/hce-docs/platform-wise-chaos-info/blob/main/TKGi/Kubernetes/recommended-psp-for-advanced-pod-chaos.yaml"> recommended PSP for advanced chaos </a> </li>
+<li>To understand the need for the privileges, refer to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/classification#pod-faults-microservices-based-faults"> chaos experiment flow for microservice-based targets. </a> </li></ul></td>
 </tr>
 <tr>
 		<th> Chaos deployment and architecture details </th>
