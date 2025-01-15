@@ -17,7 +17,7 @@ Check out this video to get started with the Harness Gitspaces VS Code Extension
 
 <iframe width="500" height="275" src="https://www.youtube.com/embed/8rwKZNszOpI?si=KjREEG_HGN8-YyrD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## Pre-requisites 
+## Pre-Requisites 
 Before starting out, ensure that you have the following:
 1. VS Code Desktop installed [(Install VS Code Desktop)](https://code.visualstudio.com/download)
 2. Gitspaces VS Code extension installed (Refer to the steps below)
