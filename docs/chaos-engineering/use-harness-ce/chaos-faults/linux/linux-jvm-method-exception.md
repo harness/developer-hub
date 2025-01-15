@@ -59,6 +59,10 @@ JVM method exception:
   </tr>
 </table>
 
+:::tip
+If multiple Java processes on the same machine are subjected to JVM chaos, whether simultaneously or not, each process must use a unique Byteman port.
+:::
+
 ### Optional tunables
 <table>
   <tr>
