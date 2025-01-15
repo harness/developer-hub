@@ -24,7 +24,7 @@ Here is an in-depth explanation of the Overview page and the information it disp
   - **Savings Breakdown** — A granular graph that shows savings breakdown across different cloud providers and resources. You can see savings broken down by:
     - **Cloud Provider**:  This shows total cost savings for each cloud provider.
     - **Resource Type**: This shows total cost savings by resource type .
-  - **Evaluations Trend** - This graph shows evaluations performed per day in the selected timeframe. If timeframe is selected for more than 2 months, the evaluations are shown per month in the selected timeframe.
+  - **Evaluations Trend** - This graph shows evaluations performed per day in the selected timeframe. If timeframe is selected for more than 2 months, the evaluations are shown per month in the selected timeframe. Also, evaluations alongwith their status i.e. "Success", "Partial Success" and "Failed" are shown.
   - **Recommendations** - Governance Overview displays a list of all recommendations that can help optimize the cloud assets and minimize cloud costs. Governance Overview highlights the total potential savings that can be achieved if all recommendations are applied.
   
     Additional to this, for each recommendation, Harness shows more details like:
@@ -47,14 +47,15 @@ You can see a list of all recommendations offered by Harness for each Cloud prov
 - [Asset Governance recommendations for Azure](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/Azure/azure-recommendations)
 - [Asset Governance recommendations for GCP](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/GCP/gcp-recommendations)
 
-### Custom Recommendations
+### Custom Recommendations and Recommendation Insights
 
 Harness CCM's Cloud Asset Governance provides recommendations out of the box for management of cloud resources. Harness CCM now offers the ability to customize these recommendations.
 
 Custom recommendations allow users to create personalized policies that integrate with the existing CCM recommendation engine.
-These custom recommendations not only show up in the recommendation section but also leverage features like the Ignore list, state management, and ticketing integration.
-  <DocImage path={require('./static/create-custom.png')} width="120%" height="120%" title="Click to view full size image" />
-  <DocImage path={require('./static/custom-tab.png')} width="120%" height="120%" title="Click to view full size image" />
+These custom recommendations not only show up in the recommendation section but also leverage features like the Ignore list, state management, and ticketing integration. 
+By clicking on the new "Custom Recommendations" tab, users can view all recommendations and their insights and these recommendations can be filtered on the basis of where they are "By Harness" or "Custom".
+
+  <DocImage path={require('./static/custom_rec.png')} width="120%" height="120%" title="Click to view full size image" />
   
 :::note
 - Currently, per account, a maximum of 10 custom recommendations can be created.
