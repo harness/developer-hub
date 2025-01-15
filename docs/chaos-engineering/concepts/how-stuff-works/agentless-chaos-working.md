@@ -27,6 +27,7 @@ Described below is how the control plane interacts with the agent-based model:
         - **Fault Execution**: The control plane sends instructions to the agent, specifying the type of fault to inject and the target system.
         - **Logs and Results**: The agent collects logs and telemetry from the target system and sends them back to the control plane.
 
+The diagram has been described [here](/docs/chaos-engineering/concepts/explore-architecture#agentless-model).
 
 ## Agentless Chaos Execution Model
 To mitigate the issues associated with the [agent-based chaos model](#agent-based-chaos-execution-model), Harness Chaos Engineering introduces **Centralized Execution Plane**, which is the **agentless** model. 
@@ -39,6 +40,7 @@ It has the following characteristics:
 - Helps initiate chaos against multiple target systems (or clusters) by launching just-in-time, transient chaos runners that reside with the application containers for the period of fault execution. 
 - Routes all external traffic to the chaos control plane through a dedicated network node/jump cluster, so that the application clusters can be opened to the external world.
 
+The diagram has been described [here](/docs/chaos-engineering/concepts/explore-architecture#agent-based-model).
 
 ### Interaction with the Control Plane
 
