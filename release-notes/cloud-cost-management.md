@@ -17,6 +17,18 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 
 :::
+## January 2025
+
+### Version 1.38.3
+
+#### New features and enhancements
+
+- Granular Governance Recommendations: We have introduced granular governance recommendations, providing greater detail and actionable insights at the individual resource level. This enhancement improves operational scalability by offering more targeted recommendations for both custom and out-of-the-box (OOTB) rules. Users can now specify the scope when adding recommendations to the Ignore List, with options for Rule-level, Subscription-level, or Resource-level exclusions. [CCM-20482]
+  
+- New Table View in Output Terminal of Evaluations: The output terminal for evaluations in Asset Governance now includes a new table view, with an option to flatten the table for easier analysis. This update enhances the visibility of governance evaluations and allows users to better manage large sets of data. [CCM-20448]
+
+- Recommendations Insights Tab: Harness CCM now offers a new Recommendations Insights tab in the Governance module, providing users with clear visibility into the evaluation status of each rule. This feature includes detailed insights into the cloud account (connector) and region associated with the recommendations. The tab also supports troubleshooting by displaying information on why recommendations may fail, be ignored, or succeed, enabling users to take immediate corrective actions when necessary.
+
 
 ## December 2024
 
