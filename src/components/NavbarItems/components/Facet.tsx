@@ -5,24 +5,68 @@ import styles from './styles.module.scss';
 interface FacetProps {
   controller: FacetController;
   title: string;
+  toggleClicked: () => void;
 }
 const Facet: React.FC<FacetProps> = (props) => {
-  const { controller } = props;
+  const { controller, toggleClicked } = props;
   const [state, setState] = useState(controller.state);
   const [open, setOpen] = useState(true);
   useEffect(() => {
     const unsubscribe = controller.subscribe(() => {
       setState(controller.state);
     });
+
     return () => {
       unsubscribe();
     };
   }, []);
 
   useEffect(() => {
-    if (controller.state.facetId == 'commonsource') {
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    const QueryCommonmodule = params.get('f-commonmodule');
+    const QueryCommonsource = params.get('f-commonsource');
+    const QueryCategoryname = params.get('f-categoryname');
+    if (QueryCommonmodule && controller.state.facetId == 'commonmodule') {
+      const values = QueryCommonmodule.split(',');
+      values.forEach((value) => {
+        controller.toggleSelect({
+          numberOfResults: 0,
+          state: 'selected',
+          value: value,
+        });
+      });
+    }
+    if (QueryCommonsource && controller.state.facetId == 'commonsource') {
+      const values = QueryCommonsource.split(',');
+      values.forEach((value) => {
+        controller.toggleSelect({
+          numberOfResults: 0,
+          state: 'selected',
+          value: value,
+        });
+      });
+    }
+    if (QueryCategoryname && controller.state.facetId == 'categoryname') {
+      const values = QueryCategoryname.split(',');
+      values.forEach((value) => {
+        controller.toggleSelect({
+          numberOfResults: 0,
+          state: 'selected',
+          value: value,
+        });
+      });
+    }
+    if (
+      !QueryCategoryname &&
+      !QueryCommonsource &&
+      !QueryCommonmodule &&
+      controller.state.facetId == 'commonsource'
+    ) {
+      console.log('no url facets');
+
       controller.toggleSelect({
-        numberOfResults: 3279,
+        numberOfResults: 0,
         state: 'selected',
         value: 'Developer Hub',
       });
@@ -46,6 +90,7 @@ const Facet: React.FC<FacetProps> = (props) => {
   const showLess = () => {
     controller.showLessValues();
   };
+
   return (
     <div className={styles.facet}>
       <div className={styles.facetTop} onClick={handleClick}>
@@ -65,7 +110,10 @@ const Facet: React.FC<FacetProps> = (props) => {
               <input
                 type="checkbox"
                 checked={controller.isValueSelected(value)}
-                onChange={() => controller.toggleSelect(value)}
+                onChange={() => {
+                  controller.toggleSelect(value);
+                  toggleClicked();
+                }}
                 disabled={state.isLoading}
               />
               <div>

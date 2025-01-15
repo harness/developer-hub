@@ -24,10 +24,16 @@ import styles from './styles.module.scss';
 interface SearchResultBoxProps {
   open: boolean;
   engine: any;
+  searchValue: string;
 }
-
+interface ShareLinkValue {
+  facetId: string;
+  value: string;
+}
 const SearchResultBox = forwardRef<HTMLDivElement, SearchResultBoxProps>(
   ({ open, engine }, ref) => {
+    const [copyUrl, setCopyUrl] = useState('');
+    const [clicked, setClicked] = useState(false);
     const [showFacet, setShowFacet] = useState(false);
     const [categorynameFacetController, setCategorynameFacetController] =
       useState<any>(null);
@@ -43,6 +49,7 @@ const SearchResultBox = forwardRef<HTMLDivElement, SearchResultBoxProps>(
     const [pagerController, setPagerController] = useState<any>(null);
     const [resultsPerPageController, setResultsPerPageController] =
       useState<any>(null);
+
     useEffect(() => {
       async function Initialize() {
         const categorynameFacetController = buildFacet(engine, {
@@ -93,20 +100,93 @@ const SearchResultBox = forwardRef<HTMLDivElement, SearchResultBoxProps>(
       }
       Initialize();
     }, []);
+
+    useEffect(() => {
+      function extractSelectedFacets(data) {
+        const result = [];
+
+        for (const key in data) {
+          if (
+            data[key].request &&
+            Array.isArray(data[key].request.currentValues)
+          ) {
+            const facetId = data[key].request.facetId;
+
+            data[key].request.currentValues.forEach((item) => {
+              if (item.state === 'selected') {
+                result.push({
+                  facetId: facetId,
+                  value: item.value,
+                });
+              }
+            });
+          }
+        }
+        return result;
+      }
+
+      function generateQueryString(data: ShareLinkValue[]) {
+        const grouped = data.reduce((acc, { facetId, value }) => {
+          if (!acc[facetId]) {
+            acc[facetId] = [];
+          }
+          acc[facetId].push(value);
+          return acc;
+        }, {} as Record<string, string[]>);
+
+        const queryString = Object.entries(grouped)
+          .map(([facetId, values]) => {
+            const encodedValues = values
+              .map((value) => encodeURIComponent(value))
+              .join(',');
+            return `f-${facetId}=${encodedValues}`;
+          })
+          .join('&');
+
+        return queryString;
+      }
+
+      setTimeout(() => {
+        const shareLinkValues = extractSelectedFacets(engine.state.facetSet);
+        // console.log(shareLinkValues);
+
+        const queryString = generateQueryString(shareLinkValues);
+        const rootUrl = window.location.href.split('/').slice(0, 3).join('/');
+        const fullUrl = `${rootUrl}?q=${encodeURIComponent(
+          engine.state.query.q
+        )}&${queryString}`;
+
+        setCopyUrl(fullUrl);
+      }, 3000);
+
+    }, [clicked, open]);
+
     function toggleShowFacet() {
       setShowFacet(!showFacet);
+    }
+    function toggleClicked() {
+      setClicked(!clicked);
     }
     return (
       <>
         {open && (
           <div ref={ref} className={styles.SearchResultBox}>
             <div className={styles.left}>
-              <Facet title="Source" controller={commonsourceFacetController} />
+              <Facet
+                title="Source"
+                controller={commonsourceFacetController}
+                toggleClicked={toggleClicked}
+              />
               <Facet
                 title="Content Type"
                 controller={categorynameFacetController}
+                toggleClicked={toggleClicked}
               />
-              <Facet title="Module" controller={commonmoduleFacetController} />
+              <Facet
+                title="Module"
+                controller={commonmoduleFacetController}
+                toggleClicked={toggleClicked}
+              />
             </div>
             <div className={styles.right}>
               <button className={styles.filterBtn} onClick={toggleShowFacet}>
@@ -117,20 +197,24 @@ const SearchResultBox = forwardRef<HTMLDivElement, SearchResultBoxProps>(
                   <Facet
                     title="Source"
                     controller={commonsourceFacetController}
+                    toggleClicked={toggleClicked}
                   />
                   <Facet
                     title="Content Type"
                     controller={categorynameFacetController}
+                    toggleClicked={toggleClicked}
                   />
                   <Facet
                     title="Module"
                     controller={commonmoduleFacetController}
+                    toggleClicked={toggleClicked}
                   />
                 </div>
               )}
 
               <FacetBreadcrumbs controller={facetBreadCrumbsController} />
               <QuerySummaryAndSort
+                copyUrl={copyUrl}
                 summaryController={summaryController}
                 sortController={sortController}
               />

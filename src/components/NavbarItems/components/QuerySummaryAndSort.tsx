@@ -9,12 +9,20 @@ import {
 } from '@coveo/headless';
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
+import Tooltip from 'rc-tooltip';
 
 const QuerySummaryAndSort = (props) => {
   const { summaryController, sortController } = props;
   const [summaryState, setSummaryState] = useState<QuerySummaryState>(
     summaryController.state
   );
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCopied(false);
+    }, 10000);
+  }, [copied]);
   useEffect(() => {
     const unsubscribe = summaryController.subscribe(() => {
       setSummaryState(summaryController.state);
@@ -63,19 +71,41 @@ const QuerySummaryAndSort = (props) => {
         console.log('Error');
     }
   }
-
+  function handleShareClick() {
+    setCopied(true);
+    const input = document.createElement('input');
+    input.value = props.copyUrl;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    document.body.removeChild(input);
+  }
   return (
     <div className={styles.QuerySummaryAndSort}>
       <div className={styles.summary}>
-        <p>
-          Results{' '}
-          <b>
-            {summaryState.firstResult} - {summaryState.lastResult}
-          </b>{' '}
-          of <b>{summaryState.total}</b> for{' '}
-          <strong>{summaryState.query}</strong> in{' '}
-          <b>{summaryState.durationInSeconds}</b> seconds
-        </p>
+        <div>
+          {' '}
+          <p>
+            Results{' '}
+            <b>
+              {summaryState.firstResult} - {summaryState.lastResult}
+            </b>{' '}
+            of <b>{summaryState.total}</b> for{' '}
+            <strong>{summaryState.query}</strong> in{' '}
+            <b>{summaryState.durationInSeconds}</b> seconds
+          </p>
+        </div>
+        <span
+          className="tool"
+          hover-tooltip={
+            !copied ? 'Share this result. Click to copy' : 'Link copied !'
+          }
+          tooltip-position="top"
+        >
+          <button onClick={handleShareClick}>
+            <i className="fa-solid fa-share-nodes"></i>
+          </button>
+        </span>
       </div>
       <div className={styles.sort}>
         <button

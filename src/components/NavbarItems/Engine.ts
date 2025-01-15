@@ -39,15 +39,19 @@ async function InitializeCoveo() {
     tokenData = await getCoveoToken();
   }
 
-  const engine = buildSearchEngine({
-    configuration: {
-      organizationId: tokenData?.orgId || '',
-      accessToken: tokenData?.token || '',
-      organizationEndpoints: getOrganizationEndpoints(tokenData?.orgId || ''),
-    },
-  });
+  try {
+    const engine = buildSearchEngine({
+      configuration: {
+        organizationId: tokenData?.orgId || '',
+        accessToken: tokenData?.token || '',
+        organizationEndpoints: getOrganizationEndpoints(tokenData?.orgId || ''),
+      },
+    });
 
-  return engine;
+    return engine;
+  } catch (error) {
+    return null;
+  }
 }
 
 export default InitializeCoveo;

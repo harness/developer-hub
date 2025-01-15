@@ -944,7 +944,7 @@ figure p {
   border-radius: 4px;
   padding: 10px;
   color: #ffffff;
-  z-index: 1;
+  z-index: 100;
 }
 
 [hover-tooltip]:hover::after {
@@ -960,7 +960,7 @@ figure p {
   border-color: var(--tooltip-bg-color) transparent transparent transparent;
   border-width: var(--caret-height) var(--caret-width) 0;
   animation: fade-in 300ms ease;
-  z-index: 1;
+  z-index: 100;
 }
 
 [hover-tooltip][tooltip-position='bottom']:hover::before {
