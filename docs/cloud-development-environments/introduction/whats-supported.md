@@ -39,7 +39,7 @@ We are working on support for [IntelliJ IDEA](https://www.jetbrains.com/idea/) a
 
 :::info
 
-To use VS Code Desktop, you need to [install and configure](/docs/cloud-development-environments/ide's/vs-code-desktop) the Gitspaces extension.  
+To use VS Code Desktop, you need to [install and configure](/docs/cloud-development-environments/ides/vs-code-desktop) the Gitspaces extension.  
 :::
 
 ## Artifact Repository Connectors

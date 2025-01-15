@@ -32,7 +32,7 @@ Please ensure that the CDE module is enabled in your Harness account before you 
     - Enter your repository’s branch name.
     - Choose your preferred IDE:
         - VS Code Browser
-        - VS Code Desktop (This requires the Harness Gitspaces VS Code Desktop extension, [follow this guide to set this up](/docs/cloud-development-environments/ide's/vs-code-desktop.md)).
+        - VS Code Desktop (This requires the Harness Gitspaces VS Code Desktop extension, [follow this guide to set this up](/docs/cloud-development-environments/ides/vs-code-desktop.md)).
     - Select your region and machine type.
     
         <img width="600" alt="quickstart-2" src="https://github.com/user-attachments/assets/bb6fdb75-4270-43b7-9f77-72a32fad4bc0" />
