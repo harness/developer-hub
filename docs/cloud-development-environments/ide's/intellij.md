@@ -14,7 +14,7 @@ With **IntelliJ IDEA** support, Harness CDE enables seamless and efficient remot
 
 This guide provides a step-by-step walkthrough to help you use IntelliJ IDEA with your Gitspaces. Let’s get started!
 
-![](./static/intellij%20main.png)
+![](./static/intellij-main.png)
 
 ## Pre-Requisites
 ### Install JetBrains Gateway
