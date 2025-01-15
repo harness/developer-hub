@@ -26,10 +26,10 @@ factory.UserConsent.getStatus() === factory.UserConsent.Status.UNKNOWN;
 
 // `setStatus` method lets you update the factory consent status at any time.
 // Pass `true` for 'GRANTED' and `false` for 'DECLINED'.
-factory.UserConsent.setStatus(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Split cloud.
+factory.UserConsent.setStatus(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Harness servers.
 factory.UserConsent.getStatus() === factory.UserConsent.Status.GRANTED;
 
-factory.UserConsent.setStatus(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Split cloud.
+factory.UserConsent.setStatus(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Harness servers.
 factory.UserConsent.getStatus() === factory.UserConsent.Status.DECLINED;
 ```
 
@@ -53,10 +53,10 @@ factory.UserConsent.getStatus() === factory.UserConsent.Status.UNKNOWN;
 
 // `setStatus` method lets you update the factory consent status at any time.
 // Pass `true` for 'GRANTED' and `false` for 'DECLINED'.
-factory.UserConsent.setStatus(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Split cloud.
+factory.UserConsent.setStatus(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Harness servers.
 factory.UserConsent.getStatus() === factory.UserConsent.Status.GRANTED;
 
-factory.UserConsent.setStatus(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Split cloud.
+factory.UserConsent.setStatus(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Harness servers.
 factory.UserConsent.getStatus() === factory.UserConsent.Status.DECLINED;
 ```
 

@@ -1,0 +1,59 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<!-- span>{ window.location.pathname.includes("Java") ? "java" : "kotlin" }</span -->
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Javascript (using CommonJS)', value: 'javascript'},
+    {label: 'Typescript (using ES modules)', value: 'typescript'},
+  ]} defaultValue={ window.location.pathname.includes("Typescript") ? "typescript" : "javascript" }>
+  <TabItem value="javascript">
+
+```javascript
+var SplitFactory = require('@splitsoftware/splitio-react-native').SplitFactory;
+ 
+// Instantiate the SDK
+var factory = SplitFactory({ 
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    // key represents your internal user id, or the account id that 
+    // the user belongs to. 
+    // This could also be a cookie you generate for anonymous users
+    key: 'key'
+  }
+});
+ 
+// And get the client instance you'll use
+var client = factory.client();
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+import { SplitFactory } from '@splitsoftware/splitio-react-native';
+ 
+// Instantiate the SDK
+const factory: SplitIO.IBrowserSDK = SplitFactory({ 
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    // key represents your internal user id, or the account id that 
+    // the user belongs to. 
+    // This could also be a cookie you generate for anonymous users
+    key: 'key'
+  }
+});
+ 
+// And get the client instance you'll use
+const client: SplitIO.IBrowserClient = factory.client();
+```
+
+:::info[Notice for TypeScript]
+With the SDK package on NPM, you get the SplitIO namespace, which contains useful types and interfaces for you to use.
+
+Feel free to dive into the declaration files if IntelliSense is not enough.
+:::
+  </TabItem>
+</Tabs>

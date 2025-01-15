@@ -1,18 +1,6 @@
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-## Configuring LocalStorage cache for the SDK
-
-To use the pluggable `InLocalStorage` option of the SDK and be able to cache flags for subsequent loads in the same browser, you need to pass it to the SDK config on its `storage` option.
-
-This `InLocalStorage` function accepts an optional object with options described below:
-
-| **Configuration** | **Description** | **Default value** |
-| --- | --- | --- |
-| prefix | An optional prefix for your data, to avoid collisions. | `SPLITIO` |
-
-These pluggable caches are always available on NPM, but if using the CDN you need the full bundle. Refer to the [Import the SDK into your project](#1-import-the-sdk-into-your-project) section for more information.
-
 <Tabs
   groupId="javascript-sdk-lang-choice"
   values={[
