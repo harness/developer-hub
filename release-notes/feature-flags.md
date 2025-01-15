@@ -21,6 +21,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Ruby Server SDK
 
+#### Version 1.4.5
+
+**Fixed Issues**:
+ Following from 1.4.3, we are still investigating an edge case in the SDK, where segmentation faults can occur when the SDK aggregates and sends metrics at the end of an interval:
+ - Evaluation metrics now use String keys, instead of class based keys. (FFM-12192)
+
 #### Version 1.4.4 
 
 **Fixed Issues**:
