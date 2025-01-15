@@ -1,6 +1,6 @@
 ---
 title: mTLS Support via Delegates
-description: How to set up mTLS support thru a delegate
+description: How to set up mTLS support through a delegate
 # sidebar_position: 40
 ---
 
