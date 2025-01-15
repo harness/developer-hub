@@ -115,4 +115,4 @@ A user will only be allowed to execute rollbacks on any instance if they possess
 
 ## Rollback using API
 
-You can roll back deployments programmatically using Harness APIs. To learn more, visit the [Harness API Documentation](https://apidocs.harness.io/tag/Rollback#operation/checkIfInstanceCanBeRolledBack).
+You can roll back deployments programmatically using Harness APIs. To learn more, visit the [Harness API Documentation](https://apidocs.harness.io/tag/Rollback).
