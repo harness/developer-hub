@@ -27,7 +27,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
 - New Table View in Output Terminal of Evaluations: The output terminal for evaluations in Asset Governance now includes a new table view, with an option to flatten the table for easier analysis. This update enhances the visibility of governance evaluations and allows users to better manage large sets of data. [CCM-20448]
 
-- Recommendations Insights Tab: Harness CCM now offers a new Recommendations Insights tab in the Governance module, providing users with clear visibility into the evaluation status of each rule. This feature includes detailed insights into the cloud account (connector) and region associated with the recommendations. The tab also supports troubleshooting by displaying information on why recommendations may fail, be ignored, or succeed, enabling users to take immediate corrective actions when necessary.
+- Recommendations Insights Tab: Harness CCM now offers a new Recommendations Insights tab in the Asset Governance module, providing users with clear visibility into the evaluation status of each rule. This feature includes detailed insights into the cloud account and region associated with the recommendations. The tab also supports troubleshooting by displaying information on why recommendations may fail, be ignored, or succeed, enabling users to take immediate corrective actions when necessary.
+
+- Extended Idle Time for AutoStopping Rules: The AutoStopping idle time limit in the UI has been extended to allow users to set up to 24 hours (1440 minutes). [CCM-20484]
+
+- Overlapping Schedules for AutoStopping Rules: Users can now define multiple fixed schedules within an AutoStopping rule, with support for overlapping schedules. To determine the final resulting schedule at any given time, users can set the priority order of the schedules using drag-and-drop functionality. [CCM-19196]
 
 
 ## December 2024
