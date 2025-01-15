@@ -4,8 +4,13 @@ sidebar_position: 3
 description: Connect to your Gitspaces within IntelliJ IDEA.
 sidebar_label: IntelliJ IDEA
 ---
+:::info
 
-With **IntelliJ IDEA** support, Harness CDE enables seamless remote development in your Gitspaces using the IntelliJ IDEA IDE. This integration leverages **[JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/)** to establish a direct remote connection with IntelliJ IDEA, eliminating the need for any prior setup.
+Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io
+
+:::
+
+With **IntelliJ IDEA** support, Harness CDE enables seamless and efficient remote development in your Gitspaces with your IDE. This integration leverages **[JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/)** to establish a direct remote connection with IntelliJ IDEA, eliminating the need for any prior setup.
 
 This guide provides a step-by-step walkthrough to help you use IntelliJ IDEA with your Gitspaces. Let’s get started!
 
@@ -30,10 +35,11 @@ To ensure optimal performance while connecting to your Gitspace in IntelliJ IDEA
 - **Storage**: At least **10 GB** of available disk space.
 
 :::warning
-If your Gitspace does not meet the recommended requirements, the following warning may appear during your IntelliJsetup. You can choose to create a new Gitspace that adheres to the recommended specifications or proceed with your existing configuration.
-:::
+If your Gitspace does not meet the recommended requirements, the following warning may appear during your IntelliJ setup. You can choose to create a new Gitspace that adheres to the recommended specifications or proceed with your existing configuration.
 
 <img width="436" alt="warning intellij" src="https://github.com/user-attachments/assets/4749c388-58d1-4917-84b2-ab5384b4d050" />
+:::
+
 
 #### Configuring your Gitspace
 To meet the recommended specifications, select the **"Large"** machine type while configuring your Gitspace in the Harness UI. This option provides:  
@@ -44,7 +50,7 @@ To meet the recommended specifications, select the **"Large"** machine type whil
 <img width="600" alt="gitspace requirements " src="https://github.com/user-attachments/assets/f295d7f4-c1ba-4822-a5b4-7aa3da7b6a10" />
 
 ## Getting started with IntelliJ IDEA
-You can follow the following steps to get started with IntelliJ and start using IntelliJ for your Gitspaces:
+Follow these steps to get started with integrating IntelliJ IDEA into your Gitspaces workflow:  
 ### Create a Gitspace
 1. Navigate to the **Harness UI** and [create a new Gitspace](/docs/cloud-development-environments/introduction/quickstart-guide) for your project repository.
 2. Select **"IntelliJ"** as the IDE during Gitspace creation.
@@ -74,7 +80,7 @@ You will be redirected to **JetBrains Gateway**, where you will be prompted to c
 <img width="700" alt="connect to ssh" src="https://github.com/user-attachments/assets/0626be74-7da8-42a0-8853-7c810cb4d972" />
 
 :::warning
-In case your Gitspace does not meet the recommended requirements, you may receive the following warning during the above setup. You can either upgrade your Gitspace to align with the recommended specifications or continue with your current configuration.
+In case your Gitspace does not meet the recommended requirements, you may receive the following warning during the above setup. You can either create a new Gitspace to align with the recommended specifications or continue with your current configuration.
 
 <img width="436" alt="warning intellij" src="https://github.com/user-attachments/assets/4749c388-58d1-4917-84b2-ab5384b4d050" />
 

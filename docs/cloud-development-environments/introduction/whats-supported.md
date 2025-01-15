@@ -33,6 +33,7 @@ You can choose your preferred IDE for development, we currently support the foll
 
 1. [VS Code Desktop](https://code.visualstudio.com/) (>=v1.81.0)
 2. [VS Code Browser](https://code.visualstudio.com/docs/editor/vscode-web)
+3. [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
 We are working on support for [IntelliJ IDEA](https://www.jetbrains.com/idea/) and other popular IDEs, so stay tuned.
 
@@ -60,8 +61,8 @@ We're working on adding more regions, as well as more flexible hosting models fo
 
 Currently supported machine types are:
 
-1. **Standard:** 2 core CPU 8GB Ram and 30GB Disk Size
+1. **Standard:** 2 core CPU, 8GB Ram and 30GB Disk Size
 
-2. **Large:** 4 core CPU 32GB Ram and 30 GB Disk Size 
+2. **Large:** 4 core CPU, 32GB Ram and 30 GB Disk Size 
 
 If you're looking for larger machines, please let us know, and we can discuss custom configurations to meet your needs (cde-interest@harness.io).
