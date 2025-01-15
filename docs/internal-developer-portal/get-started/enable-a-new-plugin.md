@@ -12,7 +12,7 @@ Plugins are often used to show additional metadata about a software component in
 
 Now that you have [populated your Catalog with Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component), you can use plugins to extend the functionality of Harness IDP and to customize IDP to suit your needs. This document provides step-by-step instructions on how to enable a plugin in Harness IDP.
 
-## Prerequisites
+## Pre-requisites
 
 Before you enable a new plugin, ensure that the following prerequisites are met:
 
@@ -39,7 +39,7 @@ Once you have selected the desired plugin type, follow the documented instructio
 
 To enable a plugin, follow these steps:
 
-1. Log on to Harness, and then select **Developer Portal** > **Admin** > **Plugins**. 
+1. Log in to Harness, and then select **Developer Portal** > **Admin** > **Plugins**. 
 All administrative configurations, such as plugins, layouts, connectors, configurations, and access control are provided on the **Admin** page, and require the users to have the **Harness Account Admin** role or the **IDP Admin** role. The **Plugins** page showcases a collection of curated plugins categorized as enabled and disabled plugins.
 
 ![](static/final-plugin-page.gif)
@@ -66,13 +66,19 @@ The **Plugin details** page is displayed. The page provides information such as 
 
 8. To return to the **Plugins** page, select **Back**.
 
-9. (Optional) The [layout management](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/catalog) is handled by-default once you enable the plugin. In-case you want to modify the elements that are exported from the plugin according to your need you can **edit the layout** for **Service** by going to **Admin** -> **Layout** -> **Catalog Entities**. The elements might include cards, tabs, and pages.
+:::info
+
+The [layout management](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/catalog) is handled by-default once you enable the plugin. In-case you want to modify the elements that are exported from the plugin according to your need you can **edit the layout** for **Service** by going to **Admin** -> **Layout** -> **Catalog Entities**. The elements might include cards, tabs, and pages.
 
 For instance, if the [PagerDuty](http://localhost:3001/docs/internal-developer-portal/plugins/available-plugins/pagerduty) plugin exports one tab, in order to be displayed in your catalog entity, the layout is updated with elements as displayed below.
 
 ![](static/layout-snippet.png)
 
-10. Once you've enabled the plugin, you need to add the corresponding `annotations` in your `catalog-info.yaml` file.
+:::
+
+### Update the `catalog.info.yaml`
+
+1. Once you've enabled the plugin, you need to add the corresponding `annotations` in your `catalog-info.yaml` file.
 
 ```YAML
 apiVersion: backstage.io/v1alpha1

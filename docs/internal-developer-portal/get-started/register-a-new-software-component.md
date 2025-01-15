@@ -1,19 +1,23 @@
 ---
-title: Add a new software component to the catalog
-description: Learn how you can add a new software component to the IDP software catalog.
+title: Get Started with Catalog
+description: Learn how you can add a new software component to the IDP catalog.
 sidebar_position: 3
 redirect_from:
   - /docs/internal-developer-portal/getting-started/register-a-new-software-component
-sidebar_label: Add a new Software Component to the Catalog
+sidebar_label: Get Started with Catalog
 ---
 
-Let's start with adding your software components to IDP. You can do so by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.
+## Introduction
+
+In Harness IDP, software components represent entities within your organization's ecosystem, such as services, libraries, APIs, or other resources. These components are defined in a `catalog-info.yaml` file, which describes their metadata, ownership, relationships, and lifecycle.
+
+Let's start by adding your software components to IDP. To do this, create a `catalog-info.yaml` file in your Git repository and register its URL to add the component to your catalog.
 
 <DocVideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
 
 ## Create a new catalog-info.yaml
 
-1. If you want to register an existing software component, navigate to its repository and create a `catalog-info.yaml`. In-case of a mono-repo, the `catalog-info.yaml` needs to created at the root of the directory. The file can technically live anywhere (for example, `.harness/catalog-info.yaml`). You can use the following YAML code:
+1. To add a software component, you need to create a `catalog-info.yam` file in its repository. In the case of a mono-repo, this file should be created at the root of the repository. While the file can technically reside anywhere (e.g., `.harness/catalog-info.yaml`), placing it in a standard location ensures consistency. You can use the following YAML code as a template:
 
 ```YAML
 apiVersion: backstage.io/v1alpha1
@@ -46,7 +50,7 @@ Following are the key fields that you must update:
 
 ## Register the software component
 
-3. In the left navigation, select **Register**.
+1. Next, navigate to your Harness IDP module, and from the left navigation menu, select **Register**.
 
 ![](./static/register-url.png)
 
@@ -57,21 +61,21 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="Git-Provider">
 <TabItem value="other-git-provider" label="Other Git Providers">
 
-4. Enter the URL to your new `catalog-info.yaml`.
+2. Enter the URL to your new `catalog-info.yaml`.
 
 ![](static/url-on-register-page.png)
 
 </TabItem>
 <TabItem value="harness-code-repo-enabled" label="Harness Code Repository">
 
-4. Copy the URL for `catalog-info.yaml` and paste it on the field to Register the component. 
+2. Copy the URL for `catalog-info.yaml` and paste it on the field to Register the component. 
 
 ![](./static/register-software-component-hcr.gif)
 
 </TabItem>
 </Tabs>
 
-5. Select **Import**.
+3. Select **Import**.
 
 ![](static/finished-state.png)
 
@@ -82,12 +86,14 @@ The new component will be available in your catalog.
 
 ## Delete/Unregister Software Components
 
-1. Navigate to the **Catalog** page, and select **Component** under Kind, here we are deregistering a template
+// Update the images 
+
+1. Navigate to the Catalog page and select Component under Kind. Here, we will deregister the software component registered above.
 
 ![](./static/catalog-navigation.png)
 
-2. Select the Workflow Name you want to Unregister.
-3. Now on the Workflow overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+2. Select the component name you want to Unregister from the list
+3. Now on the component overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
 
 ![](./static/unregister-entity.png)
 
@@ -95,7 +101,7 @@ The new component will be available in your catalog.
 
 ![](./static/Unregister-location.png)
 
-5. This will delete the Workflow.
+5. This will delete the software component.
 
 ## Troubleshooting 
 
@@ -110,44 +116,3 @@ If, after registering an entity, you're unable to find the same in your catalog,
 In case of a `InputError`, check for `missingProperty` details and add the required property to your `catalog-info.yaml`.
 
 ![](./static/invalid-schema.png)
-
-## Extended Reading
-
-### Register multiple software components together
-
-We can register multiple `catalog-info.yaml` in the following ways.
-
-1. Use the [service onboarding scripts](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-scripts), to onboard multiple software components together. 
-
-**We recommend using only the service onboarding scripts if you want to register multiple components together, as the methods suggested below cannot register multiple components at scale.**
-
-2. If all your `catalog-info.yaml` are in the root of the same repo you can add the extensions in the target, as shown in the example below, and it will register all the components.
-
-```YAML
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
-  name: example-all
-  description: A collection of all Backstage example entities, except users, groups, and templates
-spec:
-  targets:
-    - ./all-apis.yaml
-    - ./all-components.yaml
-```
-
-3. If the `catalog-info.yaml` is scattered across repos, and you want to register them together then mention the absolute path in the git provider. Please make sure the **connector** you have created has **account level permissions** and all the repos mentioned under targets are under that **same account**.
-
-```YAML
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
-  name: food-delivery
-  description: A collection of all example entities, except users, groups, and templates
-spec:
-  targets:
-    - https://github.com/account-name/location-service/blob/main/catalog-info.yaml
-    - https://github.com/account-name/member-service/blob/main/catalog-info.yaml
-    - https://github.com/account-name/delivery-service/blob/main/catalog-info.yaml
-    - https://github.com/account-name/order-service/blob/main/catalog-info.yaml
-    - https://github.com/account-name/menu-service/blob/main/catalog-info.yaml
-```

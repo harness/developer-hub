@@ -11,9 +11,26 @@ sidebar_label: Get Started with Scorecards
 
 With your [catalog populated with software components](/docs/internal-developer-portal/get-started/register-a-new-software-component) and [plugins enabled](/docs/internal-developer-portal/get-started/enable-a-new-plugin), it's time to create a scorecard. Using the [catalog datasource](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#catalog), you can monitor the existence of essential root fields and integrations defined through annotations in the catalog-info.yaml metadata. Tracking this information within the catalog helps to enforce organizational engineering standards.
 
-#### Register a Software Component
+## Create a catalog readiness Scorecard
 
-1. Register a software component following the steps mentioned [here](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component), if you already have software components registered in your catalog you can move directly to creating a Scorecard. Here's an example of `catalog-info.yaml` we will be using for this tutorial.
+The Catalog Readiness Scorecard evaluates the completeness and quality of metadata for software components within the catalog. It helps teams ensure that their components adhere to best practices, meet organizational standards, and provide the necessary information for discoverability, integration, and automation.
+
+Key aspects of the Catalog Readiness Scorecard:
+
+1. Metadata Completeness:
+The scorecard assesses if required fields like `name`, `owner` and `annotations` are present in the component's `catalog-info.yaml`. These fields enable proper categorization and ownership tracking.
+
+2. Custom Checks:
+Organizations can define custom criteria for readiness, such as ensuring the presence of specific annotations (e.g., Jira Plugin annotations for integration) or required relationships (e.g., linked APIs or documentation).
+
+### Pre-requisite
+
+1. Make sure you have the [IDP Admin](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or [IDP Platform Engineer](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#2-idp-platform-engineer) role assigned to you with permissions to view, create and edit [scorecards](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-scorecards)
+
+2. Register a software component following the steps mentioned [here](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component), if you already have software components registered in your catalog you can move directly to creating a Scorecard. Here's an example of `catalog-info.yaml` we will be using for this tutorial.
+
+<details>
+<summary>Example YAML</summary>
 
 ```YAML
 #Example
@@ -53,12 +70,7 @@ spec:
   lifecycle: experimental
   owner: idp-dev
 ```
-
-## Create a catalog readiness Scorecard
-
-### Pre-requisite
-
-Make sure you have the [IDP Admin](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or [IDP Platform Engineer](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#2-idp-platform-engineer) role assigned to you with permissions to view, create and edit [scorecards](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-scorecards)
+</details>
 
 ### Create Scorecard
 
@@ -85,7 +97,7 @@ Make sure you have the [IDP Admin](https://developer.harness.io/docs/internal-de
 
 ## Create a Custom Check  
 
-Now that the scorecard has been created, let’s update it by adding a Custom Check to track Jira configurations. Custom checks are user-defined checks that can be created in addition to the default checks provided. These are built using the available [data sources](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources) and data points.
+Now that the scorecard has been created, let’s update it by adding a Custom Check to track Jira configurations (whether the Jira Plugin annotation exists or not). Custom checks are user-defined checks that can be created in addition to the default checks provided. These are built using the available [data sources](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources) and data points.
 
 1. Go to **Scorecards** under **Admin**.
 2. Select **Create Custom Check** under **Checks**. 

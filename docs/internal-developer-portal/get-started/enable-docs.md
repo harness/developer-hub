@@ -5,7 +5,9 @@ sidebar_position: 6
 sidebar_label: Enable Documentation for your Component
 ---
 
-Now that you have [added your Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component) to the catalog, it's time to include documentation. By default, the **Docs** tab in the catalog does not display documentation for new components. This tutorial will show you how to quickly publish Markdown documentation to the **Docs** tab.
+## Introduction
+
+Now that you have [added your software components](/docs/internal-developer-portal/get-started/register-a-new-software-component) to the catalog, [enabled plugins](/docs/internal-developer-portal/get-started/enable-a-new-plugin) and [created a scorecard](/docs/internal-developer-portal/get-started/scorecard-quickstart) it's time to include documentation. By default, the **Docs** tab in the catalog does not display documentation for new components. This tutorial will show you how to quickly publish Markdown documentation to the **Docs** tab.
 
 ![](static/docs-empty.png)
 
@@ -17,6 +19,11 @@ import TabItem from '@theme/TabItem';
 Docs in Harness IDP is powered by [TechDocs Backstage Plugin](https://backstage.io/docs/features/techdocs/) and which currently is using MkDocs to generate the documentation from source, so the files have to be in Markdown format with a `mkdocs.yml` file present in the path provided. 
 
 :::
+
+There are two ways to add documentation for your component in Backstage TechDocs:
+
+1. By adding the documentation in the same directory as the software component's source code. (Docs Available in the Root of Source Folder)
+2. By adding the documentation in a separate `docs` directory, distinct from the software component's source code directory. (Docs Available in Some Other Location)
 
 <Tabs queryString="enable-docs-location">
 <TabItem value="docs-available-in-root" label="Docs Available in the Root of Source Folder" queryString="enable-docs-location">

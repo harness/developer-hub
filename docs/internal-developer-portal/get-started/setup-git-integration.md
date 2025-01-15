@@ -343,7 +343,7 @@ https://github.com/user-name/onboarding-test
 
 - Post onboarding, users can import any number of entities into Harness IDP using the [register component flow](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component). This flow expects you to provide the complete URL where the entity definition is stored.
 
-### Onboard Services Post Getting Started
+## Onboard Services Post Getting Started
 
 - You can add new services to the IDP after the initial onboarding flow. Simply navigate to **Admin**, select **Get Started**, and you’ll find the Onboard Service Wizard available for use.
 
@@ -353,6 +353,3 @@ https://github.com/user-name/onboarding-test
 
 If you're using GitHub connector, you can go with App based authentication which provides higher number of API requests in an hour window for your catalog to be in sync with the latest updates without resulting in rate limit error. Read more about [GitHub Apps](https://docs.github.com/en/apps/creating-github-apps/setting-up-a-github-app/rate-limits-for-github-apps)
 
-## Next steps
-
-Check out the [Getting Started with Software Catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component) to onboard more software components to IDP. 
