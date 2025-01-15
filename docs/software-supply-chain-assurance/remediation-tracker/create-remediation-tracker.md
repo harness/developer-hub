@@ -19,10 +19,8 @@ Before creating a remediation tracker, it is crucial to ensure that your deploym
 Creating the remediation tracker can be done in a few clicks:
 
 
-
-1. Navigate to the Supply Chain Security module within the project
-2. Select 'Remediation Tracker' from the available options.
-3. Click '+ New Remediation Tracker'.
+1. Select ‘Remediation Tracker’ from the left-side panel in the dashboard.
+2. Click ‘+ New Remediation Tracker’ at the top-right corner.
 
 
 ![create remediation tracker](./static/create-remediation-tracker.png "create remediation tracker")
