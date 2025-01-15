@@ -21,6 +21,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Ruby Server SDK
 
+#### Version 1.4.4 
+
+**Fixed Issues**:
+ Following from 1.4.3, we are still investigating an edge case in the SDK, where segmentation faults can occur when the SDK aggregates and sends metrics at the end of an interval:
+ - Replaces `concurrent-ruby/ConcurrentMap` with our own thread safe hash implementation. 
+ - Fixed race condition if the optional `timeout_ms` argument is provided to `wait_for_initialization` and the SDK times out and initializes at the same time which could cause undefined behaviour for the lifetime of the SDK. (FFM-12192)
+
+ We have fixed some behaviour around default variations being returned:
+ - Default variations are returned immediately:
+  - if the SDK is not initialized or still initializing. This avoids potentially incomplete evaluations caused by partial cache data.
+  - if a flag cannot be found and logs a warning.
+  - if a requested variation does not match the flag type, the SDK now returns the default variation and logs a warning. (FFM-12192)
+
 #### Version 1.4.3
 
 **Fixed Issues**:
