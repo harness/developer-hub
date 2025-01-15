@@ -35,7 +35,7 @@ You can choose your preferred IDE for development, we currently support the foll
 2. [VS Code Browser](https://code.visualstudio.com/docs/editor/vscode-web)
 3. [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-We are working on support for [IntelliJ IDEA](https://www.jetbrains.com/idea/) and other popular IDEs, so stay tuned.
+We are working on support for other popular JetBrains IDEs, so stay tuned.
 
 :::info
 
