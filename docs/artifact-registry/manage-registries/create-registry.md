@@ -44,7 +44,7 @@ An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that
     - Enter the **ECR Remote Registy URL**
 
     :::info AWS ECR info
-    This will in your AWS Elastic Container Registry (ECR) repositories, e.g. `https://{region}.console.aws.amazon.com/ecr/repositories/{public-or-private}/{repo-id}/{repo-name}?region={region}`    
+    This will in be your AWS Elastic Container Registry (ECR) repositories, e.g. `https://{region}.console.aws.amazon.com/ecr/repositories/{public-or-private}/{repo-id}/{repo-name}?region={region}`    
     :::
     </TabItem>
     <TabItem value="Helm" label="Helm">
