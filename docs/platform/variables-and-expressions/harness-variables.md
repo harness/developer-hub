@@ -217,6 +217,12 @@ Additionally, variable values (after evaluation) are limited to 256 KB. Expressi
 
 :::
 
+:::note
+
+In Harness NG pipelines, undefined variables in expressions will cause a pipeline execution error. Unlike FirstGen pipelines, where undefined variables default to `null`, NG requires explicit handling of undefined variables.
+
+:::
+
 ## Expression manipulation
 
 In addition to standard evaluation, expressions can be evaluated and manipulated with Java string methods, JSON parsing, JEXL, interpolation, concatenation, and more.
