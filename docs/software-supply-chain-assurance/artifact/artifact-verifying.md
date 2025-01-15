@@ -17,12 +17,21 @@ After signing the artifact in the [Artifact Signing step](http://localhost:3000/
 The artifact verification step ensures the authenticity of the signed artifact. It requires the public key to perform the verification. If the public key matches the signed artifact, it confirms that the artifact is intact, secure, and originates from a trusted source.
 
 
+
 ## Artifact Verification Step Configuration
 
 
 The Artifact Verification step validate the signature of a signed artifact to ensure its authenticity and integrity, confirming that it was signed by a trusted entity.
 
 Configuration Steps:
+
+:::note
+
+* In the Build and Security stage you can add the Artifact Verification step.
+
+* Artifact Verification for the Deploy stage is coming soon 
+
+:::
 
 * **Name**: Provide a name for the verification step.
 

@@ -32,11 +32,7 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 
 ## Artifact Signing Step Configuration
 
-The Artifact Signing step enables you to sign your artifacts and optionally to push the signature as a `.sig` file to the same container registry.
-
-* In the Build and Security stage you can add the Artifact Signing step.
-
-* Artifact Signing for the Deploy stage is coming soon 
+The Artifact Signing step allows you to sign your artifacts and, optionally, push the signature as a `.sig` file to the same container registry.
 
 Follow the instructions below to configure the Artifact Signing step.
 
@@ -46,15 +42,14 @@ Follow the instructions below to configure the Artifact Signing step.
 
 * **Container Registry**: Choose the Docker registry connector configured for your DockerHub container registry.
 
-* **Image:** Enter the name of your image, example `my-docker-org/repo-name`.
+* **Image**: Enter the name of your image with tag, such as `my-docker-org/repo-name:tag`.
 
 <Tabs>
   <TabItem value="dockerhub" label="DockerHub" default>
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image, example `my-docker-org/repo-name`.
-
+* **Image:** Enter the name of your image, example `my-docker-org/repo-name:tag`
 </TabItem>
 
 <TabItem value="ecr" label="ECR" default>
@@ -127,10 +122,9 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 <DocImage path={require('./static/artifact-signnning.png')} width="50%" height="50%" />
 
 
-* By default, the “Attach signature to Artifact registry” is unchecked which means the signature will not be uploaded to the artifact registry.
+**Attach Signature to Artifact Registry** (Optional):
 
-
-* Checking this option will add the signature as a `.sig` file to the registry.
+* By default, the “Attach signature to Artifact registry” is unchecked which means the signature will not be uploaded to the artifact registry.Checking this option will push the signature as a .sig file to the registry.
 
 ## View Signed Artifacts
 
