@@ -112,3 +112,7 @@ To perform a Post-Deployment Rollback, the user must have the following permissi
 2. Environment **Rollback** permission.
 
 A user will only be allowed to execute rollbacks on any instance if they possess these two permissions for the pipeline and environment through which the deployment occurred. Otherwise, they will see the following message when attempting to click Rollback.
+
+## Rollback using API
+
+You can roll back deployments programmatically using Harness APIs. To learn more, visit the [Harness API Documentation](https://apidocs.harness.io/tag/Rollback#operation/checkIfInstanceCanBeRolledBack).
