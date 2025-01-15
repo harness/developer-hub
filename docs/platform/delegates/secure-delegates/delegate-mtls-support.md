@@ -1,6 +1,6 @@
 ---
-title: Delegate mTLS support
-description: How to set up mTLS support
+title: mTLS Support via Delegates
+description: How to set up mTLS support thru a delegate
 # sidebar_position: 40
 ---
 
@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 mTLS is part of the TLS protocol, which allows the server to verify the authenticity of the client. To achieve that, the client has to provide a client certificate during the TLS handshake, which is verified by the server using a previously configured CA certificate.
 
-Due to security reasons, every customer must create their own CA certificate and signed client certificates, and Harness hosts a dedicated mTLS endpoint (subdomain) for every account that has mTLS enabled.
+Due to security reasons, every customer must create their own CA certificate and signed client certificates, and Harness hosts a dedicated mTLS endpoint (e.g. `customer1.agent.harness.io`) for every account that has mTLS enabled.
 
 Harness supports the following mTLS modes:
 
@@ -27,6 +27,12 @@ Harness does not create or distribute the CA and client certificates that are us
 
 :::warning Important note
 Project-level certificates are not supported for mTLS delegates.
+
+:::
+
+:::info
+
+Only one certificate is supported per account. This means you cannot have multiple project level certs. 
 
 :::
 
@@ -81,7 +87,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
    You provide the `client.crt` and `client.key` to the delegate YAML when you install the delegate.
    :::
 
-5. After you create the certificates, provide the public cert of the CA certificate and a desired unique subdomain to Harness support.
+5. After you create the certificates, provide the public cert of the CA certificate and a desired unique subdomain to Harness support. For example a unique subdomain might be `customer1.agent.harness.io`.
 
    :::info note
    After this, Harness will perform the steps to enable the mTLS.
@@ -120,7 +126,17 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
 
       2. Under `spec.template.spec.containers[0].env`, update the value for `LOG_STREAMING_SERVICE_URL` to `https://<subdomain>.agent.harness.io/log-service/`.
 
-      3. Under `spec.template.spec.containers[0].env`, add the following YAML.
+      3. Under `spec.template.spec.containers[0.env]`, update the value for `TI_SERVICE_URL` to `https://<subdomain>.agent.harness.io/ti-service/`. 
+      
+      :::note
+
+      If you don't want to update the service URLs (`LOG_STREAMING_SERVICE_URL` or `TI_SERVICE_URL`), please enable the feature flag `CI_OVERRIDE_SERVICE_URLS` by contacting [Harness Support](mailto:support@harness.io).
+
+      Additionally, enable this feature flag if you wish to use this feature with STO and SCS steps. 
+
+      :::
+
+      4. Under `spec.template.spec.containers[0].env`, add the following YAML.
 
           ```yaml
                   - name: DELEGATE_CLIENT_CERTIFICATE_PATH
@@ -129,7 +145,7 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
                     value: "/etc/mtls/client.key"
           ```
 
-      4. Under `spec.template.spec.containers`, add the following YAML.
+      5. Under `spec.template.spec.containers`, add the following YAML.
 
           ```yaml
                   volumeMounts:
@@ -138,7 +154,7 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
                       readOnly: true
           ```
 
-      5. Under `spec.template.spec`, add the following YAML.
+      6. Under `spec.template.spec`, add the following YAML.
 
           ```yaml
                 volumes:
