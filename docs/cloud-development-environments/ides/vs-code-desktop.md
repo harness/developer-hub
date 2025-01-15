@@ -32,15 +32,15 @@ To install the Gitspaces VS Code extension, here’s what you need to do:
 
 2. Search for [“Harness Gitspaces VS Code Extension”](https://marketplace.visualstudio.com/items?itemName=harness-inc.gitspaces). You can install and configure the Gitspaces VS Code extension to use it on your VS Code Desktop App(>=v1.81.0). (“Harness OSS Gitspaces” is our open source extension)
 
-    ![](./static/vscode'1.png)
+    ![](./static/vscode-1.png)
 
 3. Once it appears, just click Install.
 
-    ![](./static/vscode'2.png)
+    ![](./static/vscode-2.png)
 
 4. You can also configure the base URL by navigating to the Settings tab and updating the Host URL.
 
-    ![](./static/vscode'3.png)
+    ![](./static/vscode-3.png)
     
 
 
