@@ -17,13 +17,13 @@ Harness CDE supports several Git providers and IDE's to help you with your devel
 
 You can create Gitspaces for the following repository types:
 
-1. [Harness Code Repo](https://developer.harness.io/docs/code-repository) public and private repositories
+1. [Harness Code Repo](https://developer.harness.io/docs/code-repository) - public and private repositories
 
-2. [GitHub Cloud](https://github.com/) public and private repositories
+2. [GitHub Cloud](https://github.com/) - public and private repositories
 
-3. [GitLab Cloud](https://gitlab.com/) public and private repositories
+3. [GitLab Cloud](https://gitlab.com/) - public and private repositories
 
-3. [Bitbucket Cloud](https://bitbucket.org/) public and private repositories
+3. [Bitbucket Cloud](https://bitbucket.org/) - public and private repositories
 
 4. Any public Git repository 
 
