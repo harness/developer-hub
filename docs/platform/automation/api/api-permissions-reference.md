@@ -273,6 +273,14 @@ The following permissions allow an API key to manage pipelines. They are availab
 * Delete pipelines: `core_pipeline_delete`
 * Run pipelines: `core_pipeline_execute`
 
+## Input Sets
+
+The following permissions allow an API key to manage Input Sets. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+
+* View input sets: `core_inputsets_view`
+* Create/edit input sets: `core_inputsets_edit`
+* Delete input sets: `core_inputsets_delete`
+
 ## Projects
 
 The following permissions allow an API key to manage projects. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
