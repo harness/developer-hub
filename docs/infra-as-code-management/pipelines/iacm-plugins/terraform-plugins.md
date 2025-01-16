@@ -61,7 +61,7 @@ The `plan-refresh-only` command focuses on updating the state file to mirror rea
 - **State Refresh**: Updates the state file with the current infrastructure status.
 
 :::tip use case
-In scenarios where drift is detected, but there are unreviewed changes pending in your configuration code, the `plan-refresh-only` step is ideal. It refreshes the state to reconcile drift without applying any pending code updates, ensuring only the manual changes are addressed. Go to [Drift Detection](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/drift-detection/#handle-drift) to see a specific example.
+In scenarios where drift is detected, but there are unreviewed changes pending in your configuration code, the `plan-refresh-only` step is ideal. It refreshes the state to reconcile drift without applying any pending code updates, ensuring only the manual changes are addressed. Go to [Drift Detection](https://developer.harness.io/docs/infra-as-code-management/use-iacm/drift-detection/#handle-drift) to see a specific example.
 :::
 
 ### Apply - Refresh Only

@@ -38,7 +38,9 @@ Harness supports the following:
 
 - For Google Cloud Functions 2nd gen, Harness does not support [Google Cloud Source Repository](https://cloud.google.com/functions/docs/deploy#from-source-repo) at this time. Only Google Cloud Storage is supported.
 - For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
-- We support OpenID Connect (OIDC) authentication in Google Cloud Functions, enabling seamless integration with OIDC-compliant identity providers for enhanced security and user management.
+
+
+We support OpenID Connect (OIDC) authentication in Google Cloud Functions, enabling seamless integration with OIDC-compliant identity providers for enhanced security and user management.
 
 To configure OIDC authentication in GCP, navigate to account/project settings.
 

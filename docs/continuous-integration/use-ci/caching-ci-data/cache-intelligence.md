@@ -15,7 +15,8 @@ With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integr
 You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 :::note
-Cache intelligence for self-managed build infrastructure is an early access feature and is behind the feature flag `CI_ENABLE_CACHE_INTEL_SELF_HOSTED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Cache Intelligence is now Generally Available (GA). 
+If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 :::
 
 
@@ -52,11 +53,7 @@ When you use Cache Intelligence with [Harness CI Cloud](/docs/continuous-integra
 
 All pipelines in the account use the same cache storage, and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime.
 
-The cache storage limit depends on your subscription plan type:
-
-* Free: 2 GB
-* Team: 5 GB
-* Enterprise: 10 GB
+The cache storage limit depends on your subscription plan type. Please visit [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#usage-limits) page to learn more about usage limits.
 
 Harness doesn't limit the number of caches you can store, but, once you reach your storage limit, Harness continues to save new caches by automatically evicting old caches.
 

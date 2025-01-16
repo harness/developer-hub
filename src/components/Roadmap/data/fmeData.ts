@@ -6,18 +6,8 @@ export const FmeData: Horizon = {
     feature: [
       {
         tag: [{ value: "Targeting" }],
-        title: "Large segments",
-        description: "New segment type enabling large-scale audience targeting up to 1M keys.",
-      },
-      {
-        tag: [{ value: "Targeting" }],
         title: "Flag impressions toggle",
         description: "Disable the flow of impressions for individual flags.",
-      },
-      {
-        tag: [{ value: "Measurement" }],
-        title: "Rum agents sampling",
-        description: "Control the number of events that are auto-captured by the Split Suite and RUM agents.",
       },
     ],
   },
@@ -65,8 +55,8 @@ export const FmeData: Horizon = {
       },
       {
         tag: [{ value: "SDK" }],
-        title: "Thin client SDKs for JavaScript and mobile",
-        description: "No rules are stored client-side. Instead, these thin clients utilize a cloud service for evaluation.",
+        title: "Remote evaluation client-side SDKs",
+        description: "No rules are exposed to client-side. Instead, these thin clients utilize a secure cloud service for flag evaluations.",
       },
       {
         tag: [{ value: "SDK" }],
@@ -78,6 +68,11 @@ export const FmeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Targeting" }],
+        title: "Large segments",
+        description: "New segment type enabling large-scale audience targeting up to 1M keys. Even higher limits available by request.",
+      },
       {
         tag: [{ value: "Targeting" }],
         title: "SemVer attribute dictionary support",

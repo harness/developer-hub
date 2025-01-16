@@ -54,6 +54,31 @@ When you hardcode the artifact in your manifests, any artifacts added to your Ha
 Configuring dependent fields, such as the artifact tag, as runtime inputs when the primary artifact is set as an expression is supported in YAML only and is not supported through the UI.
 :::
 
+### Skip Artifact Consumption for the Stage
+
+:::note
+Currently, the disable artifact consumption check feature is behind the feature flag `CDS_ARTIFACT_DISABLE_VALIDATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can bypass artifact consumption checks for a service in a **Deploy** stage by selecting the **Disable artifact in this stage** checkbox. When this option is enabled, the pipeline treats the service without artifact configuration, skips the artifact consumption check process.
+
+![](static/disable-artifact.png)
+
+This feature works for:
+ - **Primary Artifacts:** Applies to both single and multiple primary artifact services. If multiple primary artifacts are used, the checkbox applies to all primary artifacts.
+- **Sidecar Artifacts**: Artifact consumption check is also skipped for sidecar artifacts when this checkbox is enabled.
+
+Additionally, this logic applies when the same service is propagated to subsequent stages:
+ - If you enable **Disable artifact in this stage** for a particular service in one stage and propagate that service to another stage, artifact consumption check will also be skipped in the propagated stage.
+ - If the **Disable artifact in this stage** checkbox is enabled, and the artifact or artifact tag is configured as runtime inputs, the pipeline will not prompt for the artifact or artifact tag during execution.
+
+    ![](static/disable-artifact-2.png)
+
+:::warning
+
+If the **Disable artifact in this stage** checkbox is enabled, any steps in the stage that require an artifact are likely to fail. Ensure that no steps in the stage depend on an artifact
+:::
+
 ## Docker
 
 ### Use artifacts in any Docker registry
@@ -3172,10 +3197,10 @@ The following table lists how many artifact versions Harness displays in its UI 
 | Google Container Registry        | No Limit      | Lexical (descending)                                                                                   |
 | AWS ECR                          | No Limit      | Lexical (descending)                                                                                   |
 | Azure Container Registry         | 500           | Lexical (descending)                                                                                   |
-| Google Artifact Registry(Docker) | 2,147,483,647 | Descending order of created at.                                                                                   |
+| Google Artifact Registry(Docker) | 2,147,483,647 | Descending order of last modified                                                                                   |
 | Artifactory(Docker)              | No Limit      | Lexical (descending)                                                                                   |
-| Artifactory(Generic)             | 10000         | Descending order of created at.                                                                        |
-| Github Packages                  | No Limit      | Descending order of created at.                                                                        |
+| Artifactory(Generic)             | 10000         | Descending order of created                                                                         |
+| Github Packages                  | No Limit      | Descending order of created                                                                         |
 | Nexus3(Docker)                   | 50      | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
 | Nexus3(non-Docker)               | 2,147,483,647 | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
 | Nexus2                           | No Limit      | Lexical (descending)                                                                                   |

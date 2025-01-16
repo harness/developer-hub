@@ -52,7 +52,7 @@ MkDocs can automatically generate navigation based on folder and file structures
 
 :::info
 
-Even with auto-generated navigation, you can include an `mkdocs.yml` file. In this case, you **cannot** define a `nav` section for custom navigation, but you can still specify other configurations like `site_name` and plugins.
+Even with auto-generated navigation, you can include a `mkdocs.yml` file. In this case, you **cannot** define a `nav` section for custom navigation, but you can still specify other configurations like `site_name` and plugins.
 
 :::
 
