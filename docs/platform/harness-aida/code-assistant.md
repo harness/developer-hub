@@ -59,7 +59,7 @@ You can see a list of shortcut keys by clicing on `...` at the top of your chat 
 Harness AI Code Assistant indexes all of the code in your current workspace when VS Code launches. This semantic index makes the entire codebase available as context your chat session. By defualt, the chat assistant uses the context of the current file to provide relevant suggestions and answers. You can reference the entire codebase by clicking cmd + enter when entering your prompt. Alternatively, you can reference the entire codebase with `@codebase` in your prompt. 
 
 You can refresh the codebase index by clicking on `...` at the top of your chat window
-![Codebase Index](./static/ca_index.png.png)
+![Codebase Index](./static/ca_index.png)
 
 ### Adding References
  You can enhance the assistant's capabilities by adding references to specific files or libraries that are relevant to your query to get a more specific response. In order to add references, simply type `@' in the chat window and a pop-up will appear allowing you to select the files or libraries you want to reference.
