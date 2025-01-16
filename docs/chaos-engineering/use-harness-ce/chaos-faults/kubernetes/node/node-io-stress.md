@@ -96,17 +96,17 @@ permissions:
       <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
         <td> Specify the size as a percentage of free space on the file system.</td>
-        <td> Default: 10 %. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/vmware-io-stress/#filesystem-utilization-percentage">file system utilization percentage.</a> </td>
+        <td> Default: 10 %. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-io-stress/#filesystem-utilization-percentage">file system utilization percentage.</a> </td>
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size of the files used per worker (in GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> and <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. </td>
-        <td>If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> takes precedence. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-io-stress#filesystem-utilization-bytes"> file system utilization bytes.</a></td>
+        <td>If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> takes precedence. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/VMware-io-stress#filesystem-utilization-bytes"> file system utilization bytes.</a></td>
       </tr>
       <tr>
         <td> CPU </td>
         <td> Number of cores of the CPU that will be used. </td>
-        <td> Default: 1. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/vmware-cpu-hog/#cpu_cores"> CPU cores.</a></td>
+        <td> Default: 1. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-cpu-hog/#cpu_cores"> CPU cores.</a></td>
       </tr>
       <tr>
         <td> NUMBER_OF_WORKERS </td>
