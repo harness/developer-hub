@@ -9,7 +9,7 @@ redirect_from:
 
 VMware process kill kills the target processes that are running as a part of a Linux OS based VMware VM. The services that are disrupted might be running in the VMware VM, and this fault kills their underlying processes or threads. It helps determine the resilience of an application (or process) running on the VMware VMs.
 
-![VMware Process kill](./static/images/vmware-process-kill.png)
+![VMware Process kill](../static/images/vmware-process-kill.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -109,7 +109,7 @@ It specifies the target process Ids running on a particular VM. Tune it by using
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/vmware-process-kill/VMware-process-kill.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-process-kill/VMware-process-kill.yaml yaml)
 ```yaml
 # Process kill in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1

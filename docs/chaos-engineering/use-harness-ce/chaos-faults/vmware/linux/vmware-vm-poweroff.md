@@ -1,31 +1,30 @@
 ---
-id: vmware-disk-loss
-title: VMware disk loss
+id: vmware-vm-power-off
+title: VMware VM power off
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-disk-loss
-- /docs/chaos-engineering/chaos-faults/vmware/vmware-disk-loss
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-vm-power-off
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vm-poweroff
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-vm-power-off
 ---
 
-VMware disk loss detaches the disks that are attached to a Linux OS based VMware VM.
+VMware VM power off stops (or powers off) the VMware VMs for a specific duration. After the duration, the VMs are back to original state. It checks the performance of the application running on the VMware VMs.
 
-![VMware Disk Loss](./static/images/vmware-disk-loss.png)
+![VMware VM Power off](../static/images/vmware-vm-poweroff.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
 
 ## Use cases
-
-- VMware disk loss determines the resilience of an application to the unplanned scaling of K8s pods.
+VMware VM power off:
+- Determines the resilience of an application to random power failures.
+- Determines how efficiently an application recovers and restarts the services.
 
 ### Prerequisites
-- Kubernetes > 1.16 is required to execute this fault.
+- Kubernetes >= 1.17 is required to execute this fault.
+- Appropriate vCenter permissions should be provided to start and stop the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
-- The target disks should be attached to the VM.
-- Execution plane should be connected to vCenter and host vCenter on port 443.
-- VMware tool should be installed on the target VM with remote execution enabled.
-- Appropriate vCenter permissions should be provided to access the hosts and the VMs.
-- Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -39,8 +38,10 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
+:::
 
 ### Mandatory tunables
+
    <table>
       <tr>
         <th> Tunable </th>
@@ -50,12 +51,7 @@ stringData:
       <tr>
         <td> APP_VM_MOIDS </td>
         <td> MOIDs of the VMware instance. After you open the VM in VCenter WebClient, you can find the MOID in the address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. </td>
-        <td> For example, <code>vm-5365</code>. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-vm-power-off#stoppoweroff-the-vm-by-moid"> MOIDs of the VMware instance.</a></td>
-      </tr>
-      <tr>
-        <td> VIRTUAL_DISK_NAMES </td>
-        <td> Name of the target disks provided as comma-separated values. </td>
-        <td> For example, <code>disk-1.vmdk,disk-2.vmdk</code>. For more information, go to <a href="#virtual-disk-names"> virtual disk names. </a></td>
+        <td> For example, <code>vm-5365</code>. For more information, go to <a href="#stoppoweroff-the-vm-by-moid"> stop VM based on MOID. </a></td>
       </tr>
     </table>
 
@@ -69,7 +65,7 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
         <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
@@ -79,13 +75,13 @@ stringData:
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple instances. </td>
+       <td> Sequence of chaos execution for multiple instances. </td>
         <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds).</td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
       <tr>
       <td>DEFAULT_HEALTH_CHECK</td>
@@ -94,14 +90,16 @@ stringData:
       </tr>
     </table>
 
-### Virtual disk names
-It specifies the name of the target disks attached to a particular VM. Tune it by using the `VIRTUAL_DISK_NAMES` environment variable.
+
+### Stop/Poweroff the VM by MOID
+
+It contains the MOID of the VM instance. Tune it by using the `APP_VM_MOIDS` environment variable.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/vmware-disk-loss/vm-disk-loss-diskname.yaml yaml)
+[embedmd]:# (../static/manifests/vm-poweroff/app-vm-moid.yaml yaml)
 ```yaml
-# Disk loss in the VMware VM
+# power-off the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -110,14 +108,13 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: VMware-disk-loss
+  - name: vm-poweroff
     spec:
       components:
         env:
-        # Name of the VM
+        # MOID of the VM
         - name: APP_VM_MOIDS
-          value: 'vm-2055'
-        # Name of target disk
-        - name: VIRTUAL_DISK_NAMES
-          value: 'disk-1.vmdk'
+          value: 'vm-53,vm-65'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
 ```

@@ -13,7 +13,7 @@ VMware HTTP modify response injects HTTP chaos by modifying the status code, bod
 - It modifies the headers of the requests and the responses of the service. This helps test the service's resilience towards incorrect or incomplete headers.
 
 
-![VMware HTTP Modify Response](./static/images/vmware-http-modify-response.png)
+![VMware HTTP Modify Response](../static/images/vmware-http-modify-response.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -176,7 +176,7 @@ It defines the port of the target service. Tune it by using the `TARGET_SERVICE_
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/http-modify-response/target-service-port.yaml yaml)
+[embedmd]:# (../static/manifests/http-modify-response/target-service-port.yaml yaml)
 ```yaml
 ## provide the port of the targeted service
 apiVersion: litmuschaos.io/v1alpha1
@@ -200,7 +200,7 @@ spec:
 
 It specifies the status code of the response that is to be modified. Tune it by using the `HTTP_CHAOS_TYPE` environment variable that is provided as the `status_code`.
 
-[embedmd]:# (./static/manifests/http-modify-response/status-code.yaml yaml)
+[embedmd]:# (../static/manifests/http-modify-response/status-code.yaml yaml)
 ```yaml
 ## provide the headers as a map
 apiVersion: litmuschaos.io/v1alpha1
@@ -239,7 +239,7 @@ spec:
 
 It specifies the response header that is to be modified. Tune it by using the `HTTP_CHAOS_TYPE` environment variable that is provided as the `header`.
 
-[embedmd]:# (./static/manifests/http-modify-response/response-headers.yaml yaml)
+[embedmd]:# (../static/manifests/http-modify-response/response-headers.yaml yaml)
 ```yaml
 ## provide the headers as a map
 apiVersion: litmuschaos.io/v1alpha1
@@ -273,7 +273,7 @@ spec:
 
 It specifies the request header that is to be modified. Tune it by using the `HTTP_CHAOS_TYPE` environment variable that is provided as the `header`.
 
-[embedmd]:# (./static/manifests/http-modify-response/response-headers.yaml yaml)
+[embedmd]:# (../static/manifests/http-modify-response/response-headers.yaml yaml)
 ```yaml
 ## provide the headers as a map
 apiVersion: litmuschaos.io/v1alpha1
@@ -307,7 +307,7 @@ spec:
 
 It specifies the response body that is to be modified. Tune it by using the `HTTP_CHAOS_TYPE` environment variable that is provided as the `body`.
 
-[embedmd]:# (./static/manifests/http-modify-response/response-body.yaml yaml)
+[embedmd]:# (../static/manifests/http-modify-response/response-body.yaml yaml)
 ```yaml
 ## provide the headers as a map
 apiVersion: litmuschaos.io/v1alpha1
@@ -339,7 +339,7 @@ It specifies the port where the proxy server listens for requests. Tune it by us
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/http-modify-response/proxy-port.yaml yaml)
+[embedmd]:# (../static/manifests/http-modify-response/proxy-port.yaml yaml)
 ```yaml
 # provide the port for proxy server
 apiVersion: litmuschaos.io/v1alpha1
@@ -368,7 +368,7 @@ It specifies the toxicity value added to the HTTP request. Toxicity value define
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/http-modify-response/toxicity.yaml yaml)
+[embedmd]:# (../static/manifests/http-modify-response/toxicity.yaml yaml)
 ```yaml
 ## provide the toxicity
 apiVersion: litmuschaos.io/v1alpha1
@@ -399,7 +399,7 @@ It specifies the network interface used for the proxy. Tune it by using the `NET
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/http-modify-response/network-interface.yaml yaml)
+[embedmd]:# (../static/manifests/http-modify-response/network-interface.yaml yaml)
 ```yaml
 ## provide the network interface for proxy
 apiVersion: litmuschaos.io/v1alpha1
