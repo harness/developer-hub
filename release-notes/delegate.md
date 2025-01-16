@@ -89,6 +89,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## January 2025
 
+### Version 24.12.84708 <!-- January 16, 2025 -->
+
+#### Hotfix
+
+- Add support for Incomplete Responses from New Relic during verify step execution. (CDS-105146)
+
 ### Version 25.01.84800 <!-- January 10, 2025 -->
 
 #### New features and improvements
