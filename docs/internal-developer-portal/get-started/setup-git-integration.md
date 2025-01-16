@@ -8,9 +8,9 @@ redirect_from:
 ---
 
 ## Introduction
-This document describes the steps a Harness Account Admin can take to set up the IDP module. Presently, the module needs to be enabled on request. [Read more](./enabling-module.md).
+This document outlines the steps a Harness Account Admin can follow to set up the IDP module, including configuring Git integration.. Presently, the module needs to be enabled on request. [Read more](./enabling-module.md).
 
-## Prerequisites
+## Pre-requisites
 
 - IDP must be provisioned for the given account.
 
@@ -24,11 +24,10 @@ This document describes the steps a Harness Account Admin can take to set up the
 
 1. You land on the IDP module by navigating from the sidebar after logging into your Harness account. We strongly recommend users to follow the onboarding guide selecting the **Get Started**, for a seamless onboarding resulting in a catalog with software components.
 
-1. You can access the IDP module by clicking on it in the sidebar after logging into your Harness account. To set up your catalog easily, we strongly recommend usersclick **Get Started** and follow the onboarding guide. 
-
 ![](static/option1.png)
 ![](static/option2.png)
 
+2. Now that you're on the onboarding wizard, let's get started with setting up Git connectors to onboard the software components.
 
 ## Connector Setup
 

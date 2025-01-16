@@ -86,11 +86,9 @@ The new component will be available in your catalog.
 
 ## Delete/Unregister Software Components
 
-// Update the images 
-
 1. Navigate to the Catalog page and select Component under Kind. Here, we will deregister the software component registered above.
 
-![](./static/catalog-navigation.png)
+![](./static/navigate-componenet-new.png)
 
 2. Select the component name you want to Unregister from the list
 3. Now on the component overview page, click on the 3 dots on top right corner and select **Unregister Entity**.

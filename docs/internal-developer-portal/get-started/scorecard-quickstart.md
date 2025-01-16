@@ -87,9 +87,10 @@ spec:
 
 3. For **Filter catalog entities for which the scorecard is evaluated** select the kind as **Component** and type **all**
 
-4. Now Publish the **Scorecard**. 
+4. Now Publish the **Scorecard**. Once a scorecard is published, it is listed on the Scorecards Overview page, which provides an aggregated view of all scorecards that are either enabled or in draft for the account.
 
 ![](./static/catalog-readiness-0.png)
+![](./static/scorecards-aggregate.png)
 
 5. Go to your catalog and check for your software component you'll find the scores for catalog readiness. 
 
