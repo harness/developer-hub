@@ -2,6 +2,7 @@
 title: Artifact Registry and Continuous Integrations
 description: Deep dive into the native integrations between the Artifact Registry and the Continuous Integration module.
 sidebar_position: 20
+sidebar_label: Continuous Integrations
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -41,7 +42,7 @@ To do so, follow these steps:
 
 ## Add a Run or Plugin Step to Your CI Pipeline
 
-Artifacts can be referenced in your CI pipeline using Run or Plugin steps, allowing you to execute commands or apply additional parameters. Specify the artifact’s image name and version to run built-in commands as well as any additional commands configured in your step.
+Seamlessly reference artifacts stored in Harness Artifact Registry within your CI Run and Plugin steps. This functionality eliminates the need for an external connector, providing a streamlined and user-friendly experience, while enabling efficient and simplified workflows.
 
 <Tabs>
 <TabItem value="Interactive guide">
