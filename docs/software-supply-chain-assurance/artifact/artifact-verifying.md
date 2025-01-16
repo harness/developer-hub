@@ -23,30 +23,20 @@ The artifact verification step ensures the authenticity of the signed artifact. 
 
 The Artifact Verification step validate the signature of a signed artifact to ensure its authenticity and integrity, confirming that it was signed by a trusted entity.
 
+Follow the instructions below to configure the Artifact Verification step.
+
 Configuration Steps:
-
-:::note
-
-* In the Build and Security stage you can add the Artifact Verification step.
-
-* Artifact Verification for the Deploy stage is coming soon 
-
-:::
 
 * **Name**: Provide a name for the verification step.
 
 * **Artifact Source**: Select the source container registry (e.g., DockerHub, ACR, GCR, ECR, etc.).
-
-* **Container Registry**: Choose the Docker registry connector configured for your DockerHub container registry.
-
-* **Image**: Enter the name of your image (e.g., my-docker-org/repo-name).
 
 <Tabs>
   <TabItem value="dockerhub" label="DockerHub" default>
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image, example `my-docker-org/repo-name`.
+* **Image:** Enter the name of your image, example `my-docker-org/repo-name:tag` or you can use the digest `my-docker-org/repo-name@sha256:<digest>`
 
 </TabItem>
 
@@ -96,7 +86,7 @@ Configuration Steps:
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image, example `repository-name/image`.
+* **Image**: Enter the name of your image, example repository-name/image.
 
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
@@ -126,41 +116,37 @@ import CosignVerificationOptions from '/docs/software-supply-chain-assurance/sha
 
 ## View Verified Artifacts
 
-Once the artifact is signed and verified, you will be able to see the Artifact Integrity Verification status from the ["Artifacts Overview"](http://localhost:3000/docs/software-supply-chain-assurance/artifact-view#artifact-overview) tab.
+Once the artifact is signed and verified, you will be able to see the Artifact Integrity Verification status from the [Artifacts Overview](http://localhost:3000/docs/software-supply-chain-assurance/artifact-view#artifact-overview) tab.
 
-Events for both success and failure are displayed in the chain of custody with a link to the step execution.
 
-* If the signed artifact is successfully verified using the public key, the verification status is displayed as successful, along with a link to the corresponding Rekor log entry.
+* If the signed artifact is successfully verified using the public key, the verification status is displayed as Passed, along with a link to the corresponding Rekor log entry.
 
-* If the public key does not match the signed artifact, a failure state is shown along with a link to the failed step. The failure reason will indicate that the signatures do not match, suggesting the possibility of artifact compromise.
+* If the public key does not match the signed artifact, the verification status is displayed as failed suggesting the possibility of artifact compromise.
 
 <DocImage path={require('./static/artifact-ovverview.png')} width="100%" height="100%" />
 
-<details>
-<summary>Example Pipeline for Verifying the Artifact</summary>
 
-This example demonstrate how you could set up Build stage to verify the artifact
 
-Artifact Verification step for the deployment stage is coming soon!
+## Example Pipeline For Artifact Verification
 
-<Tabs>
-<TabItem value="build" label="Build stage" default>
+This example demonstrates how to implement artifact Verification in the Build stage of the pipeline.
+
+
+:::note
+
+At present, Harness does not support artifact verification in the deployment stage, However this is part of our roadmap.
+
+:::
+
 
 This example **Build** stage has three steps:
 
 - **Build and Push an Image to Docker Registry**: Build the image and push it to a Docker registry (e.g., DockerHub, ACR, GCR, etc.).
 
-- **Artifact Signing**: Sign the artifact with a private key and password to ensure its authenticity and integrity.
+- **Artifact Signing**: Sign the artifact with a private key pair to ensure its authenticity and integrity.
 
 - **Artifact Verification**: Verify the signed artifact using the corresponding public key to confirm its source and integrity.
 
 
-<DocImage path={require('./static/pipeline.png')} width="60%" height="60%" title="Click to view full size image" />
-
-
-</TabItem>
-
-</Tabs>
-
-</details>
+<DocImage path={require('./static/sample-pipeline.png')} width="100%" height="100%" />
 
