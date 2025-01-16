@@ -12,13 +12,12 @@ import CosignKeyGeneration from '/docs/software-supply-chain-assurance/shared/ge
 
 Protect your software supply chain by safeguarding your artifacts from being compromised. Attackers may attempt to inject malicious code into your artifacts, aiming to tamper with your software supply chain. One of the primary goals of attackers is to get you to deploy compromised (or "poisoned") artifacts into your environments. In the worst-case scenario, your deployments could become a distribution channel for these poisoned artifacts, putting your customers and users at risk.
 
-As artifacts pass through multiple stages in the software lifecycle, ensuring they remain secure and unaltered is critical. Artifact signing provides a reliable way to guarantee that the artifact built at one stage is the exact same artifact consumed or deployed at the next, with no chance of compromise. This process builds trust, ensures integrity, and strengthens the security of your software supply chain.
+As artifacts pass through multiple stages in the software lifecycle, ensuring they remain secure and untampered is critical. Artifact signing provides a reliable way to guarantee that the artifact built at one stage is the exact same artifact consumed or deployed at the next, with no chance of compromise. This process builds trust, ensures integrity, and strengthens the security of your software supply chain.
 
 
 ## Artifact Signing Process in SCS
 
-
-In the Artifact Signing step, the artifacts are signed using [Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with a private key and password. Later, the same key is used to verify the signature, and the signed artifact is pushed to the same container registry. This ensures the integrity and authenticity of the artifact throughout the software supply chain.
+In the Artifact Signing step, artifacts are pulled from the container registry and signed using [Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with a private key pair. The signed artifacts are then pushed back to the same container registry, ensuring the integrity and authenticity of the artifact throughout the software supply chain
 
 <DocImage path={require('./static/artifact-signing-excali.png')} width="100%" height="20%" />
 
@@ -40,16 +39,14 @@ Follow the instructions below to configure the Artifact Signing step.
 
 * **Artifact Source**: Select the source container registry (e.g., DockerHub, ACR, GCR, ECR, etc.).
 
-* **Container Registry**: Choose the Docker registry connector configured for your DockerHub container registry.
-
-* **Image**: Enter the name of your image with tag, such as `my-docker-org/repo-name:tag`.
 
 <Tabs>
   <TabItem value="dockerhub" label="DockerHub" default>
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image, example `my-docker-org/repo-name:tag`
+* **Image:** Enter the name of your image, example `my-docker-org/repo-name:tag` or you can use the digest `my-docker-org/repo-name@sha256:<digest>`
+
 </TabItem>
 
 <TabItem value="ecr" label="ECR" default>
@@ -122,16 +119,14 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 <DocImage path={require('./static/artifact-signnning.png')} width="50%" height="50%" />
 
 
-**Attach Signature to Artifact Registry** (Optional):
-
-* By default, the “Attach signature to Artifact registry” is unchecked which means the signature will not be uploaded to the artifact registry.Checking this option will push the signature as a .sig file to the registry.
+**Attach Signature to Artifact Registry** (Optional): By default, the “Attach signature to Artifact registry” is unchecked which means the signature will not be uploaded to the artifact registry and checking this option will push the signature as a .sig file to the registry.
 
 ## View Signed Artifacts
 
 
-You can easily access the signed artifact details from the ["Artifacts Overview"](http://localhost:3000/docs/software-supply-chain-assurance/artifact-view#artifact-overview) tab. This section will display the signature along with information about the person who signed the artifact. Additionally, you can verify the signing details in the Chain of Custody, where a new entry is logged for every artifact signing event. This entry includes a link to the execution results and rekor log entries, allowing you to track the signing activity and cross-check the details.
+You can easily access the signed artifact details from the [Artifacts Overview](http://localhost:3000/docs/software-supply-chain-assurance/artifact-view#artifact-overview) tab. This section will display the signature along with the person who signed the artifact. Additionally you can also verify the artifact signing details in the Chain of Custody, where a new entry is logged every time you sign an artifact. This entry includes a link to the execution results and rekor log entry, allowing you to track the signing activity and cross-check the details.
 
-<DocImage path={require('./static/artifact-overview.png')} width="100%" height="100%" />
+<DocImage path={require('./static/artifact-overvieww-tab.png')} width="100%" height="100%" />
 
 
 
@@ -142,36 +137,25 @@ You are allowed to re-sign the same image multiple times, with each new signing 
 
 ## Example Pipeline For Artifact Signing
 
-This example demonstrates how you can configure and implement artifact signing and verification within a pipeline.
-
-<details>
-<summary>Example Pipeline for Signing the Artifact</summary>
-
-This example demonstrate how you could set up Build stage to sign the artifact
+This example demonstrates how to implement artifact signing in the Build stage of the pipeline.
 
 
-Artifact signing step for the deployment stage is coming soon!
+:::note
 
-<Tabs>
-<TabItem value="build" label="Build stage" default>
+At present, Harness does not support artifact signing in the deployment stage, However this is part of our roadmap.
 
-This example **Build** stage has three steps:
+:::
+
+
+This example **Build** stage has two steps:
 
 - **Build and Push an Image to Docker Registry**: Build the image and push it to a Docker registry (e.g., DockerHub, ACR, GCR, etc.).
 
-- **Artifact Signing**: Sign the artifact with a private key and password to ensure its authenticity and integrity.
-
-- **Artifact Verification**: Verify the signed artifact using the corresponding public key to confirm its source and integrity.
+- **Artifact Signing**: Sign the artifact with a private key pair to ensure its authenticity and integrity.
 
 
-<DocImage path={require('./static/pipeline.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/artifact-signing-pipeline.png')} width="100%" height="100%" title="Click to view full size image" />
 
-
-</TabItem>
-
-</Tabs>
-
-</details>
 
 ## Verify Artifact Signing
 
