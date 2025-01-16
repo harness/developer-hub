@@ -22,9 +22,13 @@ To watch a video on configuring the rules and conditions in ChaosGuard, go to [C
 
 	![new-condition](./static/exec/new-condition.png)
 
-3. Provide a name, a description (optional), and tags (optional). Specify the infrastructure. Click **Save**.
+3. Provide a name, a description (optional), and tags (optional). Specify the infrastructure. If you select either **Linux** or **Windows**, click **Save**.
 
-	![edit-condition](./static/exec/edit-condition.png)
+	![infrastructure options](./static/exec/infra-options.png)
+
+	3a. If you select **Kubernetes**, you can select one of **Harness Infrastructures** (or Harness Delegate) or **Dedicated Chaos Infrastructure**. Click **Save**.
+
+		![edit-condition](./static/exec/edit-condition.png)
 
 This gives you 3 ways to define a condition from the **Condition Editor**:
 - [YAML manifest](#define-constraints-using-yaml)
