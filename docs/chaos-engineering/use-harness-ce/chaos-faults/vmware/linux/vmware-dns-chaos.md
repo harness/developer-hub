@@ -8,7 +8,7 @@ redirect_from:
 VMware DNS chaos causes DNS errors in the VMware VMs which results in the DNS server being unavailable or malfunctioning for a specific duration. It checks the performance of the application (or process) running on the VMware VMs.
 
 
-![VMware DNS Chaos](../static/images/vmware-dns-chaos.png)
+![VMware DNS Chaos](./static/images/vmware-dns-chaos.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -159,7 +159,7 @@ It specifies the DNS port where DNS chaos is injected. Tune it by using the `POR
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-dns-chaos/vmware-dns-port.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-port.yaml yaml)
 ```yaml
 # induces DNS chaos on the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -190,7 +190,7 @@ It specifies the list of the target host names into which DNS chaos is injected.
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-dns-chaos/vmware-dns-target-hostnames.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-target-hostnames.yaml yaml)
 ```yaml
 # induces DNS chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1
@@ -223,7 +223,7 @@ It specifies whether the DNS query should exactly match the targets or can be a 
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-dns-chaos/vmware-dns-match-scheme.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-match-scheme.yaml yaml)
 ```yaml
 # induces DNS chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1
@@ -256,7 +256,7 @@ It specifies the custom upstream server to which the intercepted DNS requests ar
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-dns-chaos/vmware-dns-upstream-server.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-upstream-server.yaml yaml)
 ```yaml
 # induces DNS chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1

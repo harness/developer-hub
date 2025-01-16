@@ -8,7 +8,7 @@ redirect_from:
 
 VMware Windows memory hog applies stress on the Memory resources on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs.
 
-![VMware Windows Memory Hog](../static/images/vmware-windows-memory-hog.png)
+![VMware Windows Memory Hog](./static/images/vmware-windows-memory-hog.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -118,7 +118,7 @@ The `MEMORY_CONSUMPTION` environment variable applies stress on the target Windo
 
 Use the following example to specify Memory consumption:
 
-[embedmd]:# (../static/manifests/vmware-windows-memory-hog/vm-memory-hog-consumption.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-memory-hog/vm-memory-hog-consumption.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -145,7 +145,7 @@ The `MEMORY_PERCENTAGE` environment variable applies stress on the target Window
 
 Use the following example to specify Memory percentage:
 
-[embedmd]:# (../static/manifests/vmware-windows-memory-hog/vm-memory-hog-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-memory-hog/vm-memory-hog-percentage.yaml yaml)
 
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1

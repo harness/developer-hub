@@ -9,7 +9,7 @@ redirect_from:
 
 VMware VM power off stops (or powers off) the VMware VMs for a specific duration. After the duration, the VMs are back to original state. It checks the performance of the application running on the VMware VMs.
 
-![VMware VM Power off](../static/images/vmware-vm-poweroff.png)
+![VMware VM Power off](./static/images/vmware-vm-poweroff.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -97,7 +97,7 @@ It contains the MOID of the VM instance. Tune it by using the `APP_VM_MOIDS` env
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vm-poweroff/app-vm-moid.yaml yaml)
+[embedmd]:# (./static/manifests/vm-poweroff/app-vm-moid.yaml yaml)
 ```yaml
 # power-off the VMware VM
 apiVersion: litmuschaos.io/v1alpha1

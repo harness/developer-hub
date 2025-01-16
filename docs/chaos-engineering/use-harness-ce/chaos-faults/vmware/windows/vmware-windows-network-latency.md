@@ -8,7 +8,7 @@ redirect_from:
 
 VMware Windows network latency simulates a network latency scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under network latency conditions.
 
-![VMware Windows Network Latency](../static/images/vmware-windows-network-latency.png)
+![VMware Windows Network Latency](./static/images/vmware-windows-network-latency.png)
 
 ## Use cases
 VMware Windows network latency:
@@ -123,7 +123,7 @@ The `DESTINATION_HOSTS` environment variable specifies the destination hosts to 
 
 Use the following example to specify destination hosts:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-latency/vm-network-latency-destination-hosts.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-latency/vm-network-latency-destination-hosts.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -151,7 +151,7 @@ The `DESTINATION_IPS` environment variable specifies the destination IPs to indu
 
 Use the following example to specify destination IPs:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-latency/vm-network-latency-destination-ips.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-latency/vm-network-latency-destination-ips.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -179,7 +179,7 @@ The `NETWORK_LATENCY` environment variable specifies the amount of latency to in
 
 Use the following example to specify network latency:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-latency/vm-network-latency.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-latency/vm-network-latency.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -207,7 +207,7 @@ The `PATH_OF_CLUMSY` environment variable specifies the path of the Clumsy tool 
 
 Use the following example to specify the path of Clumsy:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-latency/vm-network-latency-path-of-clumsy.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-latency/vm-network-latency-path-of-clumsy.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine

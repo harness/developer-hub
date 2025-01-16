@@ -9,7 +9,7 @@ VMware HTTP latency injects HTTP response latency into the service of a specific
 - This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 - It helps determine the application's resilience to lossy (or flaky) HTTP responses.
 
-![VMware HTTP Latency](../static/images/vmware-http-latency.png)
+![VMware HTTP Latency](./static/images/vmware-http-latency.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -136,7 +136,7 @@ It specifies the port of the target service. Tune it by using the `TARGET_SERVIC
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/http-latency/target-service-port.yaml yaml)
+[embedmd]:# (./static/manifests/http-latency/target-service-port.yaml yaml)
 ```yaml
 ## provide the port of the targeted service
 apiVersion: litmuschaos.io/v1alpha1
@@ -162,7 +162,7 @@ It specifies the port where the proxy server listens for requests. Tune it by us
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/http-latency/proxy-port.yaml yaml)
+[embedmd]:# (./static/manifests/http-latency/proxy-port.yaml yaml)
 ```yaml
 # provide the port for proxy server
 apiVersion: litmuschaos.io/v1alpha1
@@ -191,7 +191,7 @@ It specifies the latency value added to the HTTP request. Tune it by using the `
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/http-latency/latency.yaml yaml)
+[embedmd]:# (./static/manifests/http-latency/latency.yaml yaml)
 ```yaml
 ## provide the latency value
 apiVersion: litmuschaos.io/v1alpha1
@@ -220,7 +220,7 @@ It specifies the toxicity value added to the HTTP request. Toxicity value define
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/http-latency/toxicity.yaml yaml)
+[embedmd]:# (./static/manifests/http-latency/toxicity.yaml yaml)
 ```yaml
 ## provide the toxicity
 apiVersion: litmuschaos.io/v1alpha1
@@ -251,7 +251,7 @@ It specifies the network interface to be used for the proxy. Tune it by using th
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/http-latency/network-interface.yaml yaml)
+[embedmd]:# (./static/manifests/http-latency/network-interface.yaml yaml)
 ```yaml
 ## provide the network interface for proxy
 apiVersion: litmuschaos.io/v1alpha1

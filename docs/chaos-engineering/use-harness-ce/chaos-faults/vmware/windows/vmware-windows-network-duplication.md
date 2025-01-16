@@ -8,7 +8,7 @@ redirect_from:
 
 VMware Windows network duplication simulates a network duplication scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under network duplication conditions.
 
-![VMware Windows Network Duplication](../static/images/vmware-windows-network-duplication.png)
+![VMware Windows Network Duplication](./static/images/vmware-windows-network-duplication.png)
 
 ## Use cases
 VMware Windows network duplication:
@@ -122,7 +122,7 @@ The `DESTINATION_HOSTS` environment variable specifies the destination hosts to 
 
 Use the following example to specify destination hosts:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-duplication/vm-network-duplication-destination-hosts.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-duplication/vm-network-duplication-destination-hosts.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -150,7 +150,7 @@ The `DESTINATION_IPS` environment variable specifies the destination IPs to dupl
 
 Use the following example to specify destination IPs:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-duplication/vm-network-duplication-destination-ips.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-duplication/vm-network-duplication-destination-ips.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -178,7 +178,7 @@ The `NETWORK_PACKET_DUPLICATION_PERCENTAGE` environment variable specifies the p
 
 Use the following example to specify network packet duplication percentage:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-duplication/vm-network-duplication-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-duplication/vm-network-duplication-percentage.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -205,7 +205,7 @@ The `PATH_OF_CLUMSY` environment variable specifies the path of the Clumsy tool 
 
 Use the following example to specify the path of Clumsy:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-duplication/vm-network-duplication-path-of-clumsy.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-duplication/vm-network-duplication-path-of-clumsy.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine

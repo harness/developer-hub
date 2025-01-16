@@ -9,7 +9,7 @@ VMware host reboot reboots a VMware host that is attached to the Vcenter.
 - It helps determine the VMware infrastructure resilience when the host reboots.
 - It also measures the infrastructure resilience in case of an high availability (HA) cluster.
 
-![VMware Host Reboot](../static/images/vmware-host-reboot.png)
+![VMware Host Reboot](./static/images/vmware-host-reboot.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -91,7 +91,7 @@ It reboots a vCenter host.
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-host-reboot/host-reboot.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-host-reboot/host-reboot.yaml yaml)
 ```yaml
 # vCenter host reboot
 apiVersion: litmuschaos.io/v1alpha1
@@ -120,7 +120,7 @@ It specifies whether to reboot a vCenter host which is a part of a high availabi
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-host-reboot/ha-host-reboot.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-host-reboot/ha-host-reboot.yaml yaml)
 ```yaml
 # vCenter HA cluster host reboot
 apiVersion: litmuschaos.io/v1alpha1

@@ -4,11 +4,12 @@ title: VMware CPU hog
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-cpu-hog
 - /docs/chaos-engineering/chaos-faults/vmware/vmware-cpu-hog
+- /docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/vmware-cpu-hog
 ---
 
 VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
-![VMware Cpu Hog](../static/images/vmware-cpu-hog.png)
+![VMware Cpu Hog](./static/images/vmware-cpu-hog.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -118,7 +119,7 @@ It specifies the number of CPU cores of the target VM on which stress is applied
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-cpu-hog/vm-cpu-hog-core.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-core.yaml yaml)
 ```yaml
 # CPU hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -146,7 +147,7 @@ It specifies the load exerted on each VM CPU core (in percentage). Tune it by us
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-cpu-hog/vm-cpu-hog-load.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-load.yaml yaml)
 ```yaml
 # CPU hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1

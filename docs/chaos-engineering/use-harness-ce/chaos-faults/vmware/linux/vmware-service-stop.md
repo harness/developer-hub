@@ -8,7 +8,7 @@ redirect_from:
 ---
 VMware service stop stops the target system services running on a Linux OS based VMware VM. It determines the performance and resilience of the application (or service) running on the VMware VMs.
 
-![VMware ServiceStop](../static/images/vmware-service-stop.png)
+![VMware ServiceStop](./static/images/vmware-service-stop.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -116,7 +116,7 @@ It specifies whether the target service has the ability to self-heal. It is self
 
 Use the following example to tune this:
 
-[embedmd]:# (../static/manifests/vmware-service-stop/vmware-service-stop-self-healing.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-service-stop/vmware-service-stop-self-healing.yaml yaml)
 ```yaml
 # Service Stop in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -147,7 +147,7 @@ It specifies the name of the target service running on a particular VM. Tune it 
 
 Use the following example to tune this:
 
-[embedmd]:# (../static/manifests/vmware-service-stop/vmware-service-stop.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-service-stop/vmware-service-stop.yaml yaml)
 ```yaml
 # Service Stop in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1

@@ -8,7 +8,7 @@ redirect_from:
 
 VMware Windows time chaos simulates a time skew scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under time skew conditions.
 
-![VMware Windows Time Chaos](../static/images/vmware-windows-time-chaos.png)
+![VMware Windows Time Chaos](./static/images/vmware-windows-time-chaos.png)
 
 ## Use cases
 VMware Windows time chaos:
@@ -105,7 +105,7 @@ The `OFFSET` environment variable specifies the time offset to induce in the tar
 
 Use the following example to specify time offset:
 
-[embedmd]:# (../static/manifests/vmware-windows-time-chaos/vm-time-chaos-offset.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-time-chaos/vm-time-chaos-offset.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine

@@ -8,7 +8,7 @@ redirect_from:
 
 VMware Windows network loss simulates a network loss scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under network loss conditions.
 
-![VMware Windows Network Loss](../static/images/vmware-windows-network-loss.png)
+![VMware Windows Network Loss](./static/images/vmware-windows-network-loss.png)
 
 ## Use cases
 VMware Windows network loss:
@@ -122,7 +122,7 @@ The `DESTINATION_HOSTS` environment variable specifies the destination hosts to 
 
 Use the following example to specify destination hosts:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-loss/vm-network-loss-destination-hosts.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-loss/vm-network-loss-destination-hosts.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -150,7 +150,7 @@ The `DESTINATION_IPS` environment variable specifies the destination IPs to indu
 
 Use the following example to specify destination IPs:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-loss/vm-network-loss-destination-ips.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-loss/vm-network-loss-destination-ips.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -178,7 +178,7 @@ The `NETWORK_PACKET_LOSS_PERCENTAGE` environment variable specifies the percenta
 
 Use the following example to specify network packet loss percentage:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-loss/vm-network-loss-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-loss/vm-network-loss-percentage.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -206,7 +206,7 @@ The `PATH_OF_CLUMSY` environment variable specifies the path of the Clumsy tool 
 
 Use the following example to specify the path of Clumsy:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-loss/vm-network-loss-path-of-clumsy.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-loss/vm-network-loss-path-of-clumsy.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
