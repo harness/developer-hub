@@ -113,10 +113,10 @@ static/  @rohanmaharjan100 @wei-harness
 /kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit @umamukkara
 
 # Incident Response Docs
-/docs/incident-response/ @SmritiSatya @sagarkrsd @naveen-harness
-/release-notes/incident-response.md  @SmritiSatya @sagarkrsd @naveen-harness
-/src/components/Roadmap/data/irData.ts @SmritiSatya @sagarkrsd @naveen-harness
-/src/components/Docs/data/incidentResponseData* @SmritiSatya @sagarkrsd @naveen-harness
+/docs/incident-response/ @SmritiSatya 
+/release-notes/incident-response.md  @SmritiSatya
+/src/components/Roadmap/data/irData.ts @SmritiSatya 
+/src/components/Docs/data/incidentResponseData* @SmritiSatya
 
 # Platform Docs
 /docs/platform/ @pratmit @krishi0408 @GokulBansal0 @abhishekharness @ivikramsahu

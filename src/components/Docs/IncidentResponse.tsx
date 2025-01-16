@@ -15,11 +15,11 @@ export default function CE() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src={`${baseUrl}img/icon-ir.svg`} />
+            <img src={`${baseUrl}img/icon_ce.svg`} />
             <h1>Incident Response (BETA) </h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/docs/incident-response/faq">
+            <Link href="/kb/incident-response">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
@@ -45,7 +45,7 @@ export default function CE() {
                 className={styles.illustration}
                 src={
                   colorMode === "light"
-                    ? `${baseUrl}img/ir-landing-page.svg`
+                    ? `${baseUrl}img/ce.svg`
                     : `${baseUrl}img/CE_Landing_Page_dark_mode.svg`
                 }
               />

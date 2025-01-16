@@ -11,6 +11,7 @@ export enum MODULES {
   srm = 'srm',
   ce = 'ce',
   ir = 'ir'
+  ir = 'ir'
   sei = 'sei',
   cet = 'cet',
   ssca = 'ssca',
@@ -39,6 +40,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.srm]: 'Service Reliability Management',
     [MODULES.ce]: 'Chaos Engineering',
     [MODULES.ir]: 'Incident Response',
+    [MODULES.ir]: 'Incident Response',
     [MODULES.sei]: 'Software Engineering Insights',
     [MODULES.cet]: 'Continuous Error Tracking',
     [MODULES.ssca]: 'Supply Chain Security',
@@ -64,7 +66,7 @@ export const MODULE_ICON = {
     [MODULES.sto]: 'img/icon_sto.svg',
     [MODULES.srm]: 'img/icon_srm.svg',
     [MODULES.ce]: 'img/icon_ce.svg',
-    [MODULES.ir]: 'img/icon-ir.svg',
+    [MODULES.ir]: 'img/icon_ce.svg',
     [MODULES.sei]: 'img/icon_sei.svg',
     [MODULES.cet]: 'img/icon_cet.svg',
     [MODULES.ssca]: 'img/icon_ssca.svg',

@@ -6,7 +6,3 @@ sidebar_position: 2
 ---
 
 This page describes supported platforms and technologies for Harness Incident Response.
-
-Learn more about our solution [here](https://www.harness.io/products/incident-response).
-
-Click [here](https://www.harness.io/demo/harness-incident-response-early-access) to gain early access to Incident Response.
