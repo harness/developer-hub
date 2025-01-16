@@ -786,6 +786,21 @@ Lambda delete event source mapping removes the event source mapping from an AWS 
 
 <FaultDetailsCard category="aws">
 
+### Lambda function layer detach
+
+Lambda function layer detach is an AWS fault that detaches the Lambda layer associated with the function, thereby causing dependency-related issues or breaking the Lambda function that relies on the layer's content.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Debug runtime errors caused by a specific library in the layer.
+- Tests how the Lambda function behaves without the dependencies provided by the layer, thereby identifying the unnecessary dependencies and reduce the layer's footprint.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### Lambda delete function concurrency
 
 Lambda delete function concurrency deletes the Lambda function's reserved concurrency, thereby ensuring that the function has adequate unreserved concurrency to run.

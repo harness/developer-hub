@@ -151,9 +151,9 @@ Currently, macOS platforms for Harness Cloud are behind a feature flag with limi
 ### Using Resource Classes
 You can use the yaml editor to change the cloud machine size. 
 
-:::info
-
-Currently, specifying machine size is behind the feature flag CI_ENABLE_RESOURCE_CLASSES. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
+:::note
+Resource Classes support is now Generally Available (GA). 
+If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 :::
 
 To select a resource class size, please set the desired size as value for `size` property in the CI stge cloud infrastructure runtime configuration. For example: 

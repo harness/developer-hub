@@ -74,6 +74,7 @@ To export variables from the script to other steps in the stage, you use the **O
 The following variable types are supported:
 
 - String
+- Secret
 
 Output variables are passed from the the script output to the Harness pipeline and can be referenced in subsequent steps and settings using expressions.
 
@@ -115,6 +116,16 @@ To find the expression to reference your output variables, you can begin typing 
 If you exit from the script (`exit 0`), Harness does not populate the output variables because the step has exited.
 
 :::
+
+You can access a secret configured in the **Secrets Manager** using an expression. For example, `<+secrets.getValue('SECRET_NAME')>`.
+
+You can also configure variables of type Secret as output variables. When an output variable is configured as a secret, its value is encrypted. 
+
+![](static/tanzu-secrets-output-variable.png)
+
+The encrypted secret is decrypted and made available for use in the script. However, the script's output will not display the secret, even if the secret is explicitly passed to the output stream.
+
+![](static/output-variable-logs.png)
 
 ### Using manifests in your scripts
 

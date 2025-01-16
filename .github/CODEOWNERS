@@ -50,12 +50,12 @@ static/  @rohanmaharjan100 @wei-harness
 # data/*.ts @global-data-file-owners
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
-/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness
-/src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av
-/src/components/Docs/data/continuousDeliveryData*  @krishi0408 @SushrutHarness @vishal-av
+/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta
+/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta
+/src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
+/src/components/Docs/data/continuousDeliveryData*  @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
 # FirstGen CD Docs
-/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av
+/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
 # CD FAQs
 /docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @vishal-av
 # GitEx FAQs
@@ -105,12 +105,12 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness
 
 # Chaos Docs
-/docs/chaos-engineering/ @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9
+/docs/chaos-engineering/ @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara
 /release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya @Jonsy13
 /src/components/Roadmap/data/ceData.ts @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
 /src/components/Docs/data/chaosEngineeringData* @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
 # Chaos FAQs
-/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit
+/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit @umamukkara
 
 # Incident Response Docs
 /docs/incident-response/ @SmritiSatya 
