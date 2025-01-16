@@ -1,19 +1,19 @@
 ---
-id: vmware-windows-network-loss
-title: VMware Windows network loss
+id: vmware-windows-network-corruption
+title: VMware Windows network corruption
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-network-loss
-- /docs/chaos-engineering/chaos-faults/vmware/vmware-windows-network-loss
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-network-corruption
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-windows-network-corruption
 ---
 
-VMware Windows network loss simulates a network loss scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under network loss conditions.
+VMware Windows network corruption simulates a network corruption scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under network corruption conditions.
 
-![VMware Windows Network Loss](./static/images/vmware-windows-network-loss.png)
+![VMware Windows Network Corruption](../static/images/vmware-windows-network-corruption.png)
 
 ## Use cases
-VMware Windows network loss:
-- Determines the resilience of an application when a network loss scenario is simulated on a VMware Windows virtual machine.
-- Simulates the situation of network loss for processes running on the application, which degrades their performance.
+VMware Windows network corruption:
+- Determines the resilience of an application when a network corruption scenario is simulated on a VMware Windows virtual machine.
+- Simulates the situation of network corruption on the application, which degrades their performance.
 - Helps verify the application's ability to handle network failures and its failover mechanisms.
 
 ### Prerequisites
@@ -76,18 +76,18 @@ stringData:
       </tr>
       <tr>
         <td> DESTINATION_HOSTS </td>
-        <td> Comma-separated list of destination hosts to induce loss. </td>
+        <td> Comma-separated list of destination hosts to corrupt. </td>
         <td> For example, <code>github.com,harness.io</code>. For more information, go to <a href="#destination-hosts"> destination hosts. </a></td>
       </tr>
       <tr>
         <td> DESTINATION_IPS </td>
-        <td> Comma-separated list of destination IPs to induce loss. </td>
+        <td> Comma-separated list of destination IPs to corrupt. </td>
         <td> For example, <code>10.0.0.1,10.0.0.2</code>. For more information, go to <a href="#destination-ips"> destination IPs. </a></td>
       </tr>
       <tr>
-        <td> NETWORK_PACKET_LOSS_PERCENTAGE </td>
-        <td> Percentage of network packets to lose. </td>
-        <td> Default: 100. For more information, go to <a href="#network-packet-loss-percentage"> network packet loss percentage. </a></td>
+        <td> NETWORK_PACKET_CORRUPTION_PERCENTAGE </td>
+        <td> Percentage of network packets to corrupt. </td>
+        <td> Default: 100. For more information, go to <a href="#network-packet-corruption-percentage"> network packet corruption percentage. </a></td>
       </tr>
       <tr>
         <td> PATH_OF_CLUMSY </td>
@@ -118,11 +118,11 @@ stringData:
 
 ### Destination hosts
 
-The `DESTINATION_HOSTS` environment variable specifies the destination hosts to induce loss on the target Windows VM.
+The `DESTINATION_HOSTS` environment variable specifies the destination hosts to corrupt on the target Windows VM.
 
 Use the following example to specify destination hosts:
 
-[embedmd]:# (./static/manifests/vmware-windows-network-loss/vm-network-loss-destination-hosts.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-windows-network-corruption/vm-network-corruption-destination-hosts.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -132,25 +132,25 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-windows-network-loss
+  - name: vmware-windows-network-corruption
     spec:
       components:
         env:
         # Name of the VM
         - name: VM_NAME
           value: 'test-vm-01'
-       # Destination hosts to induce loss
+       # Destination hosts to corrupt
         - name: DESTINATION_HOSTS
           value: 'github.com'
 ```
 
 ### Destination IPs
 
-The `DESTINATION_IPS` environment variable specifies the destination IPs to induce loss on the target Windows VM.
+The `DESTINATION_IPS` environment variable specifies the destination IPs to corrupt on the target Windows VM.
 
 Use the following example to specify destination IPs:
 
-[embedmd]:# (./static/manifests/vmware-windows-network-loss/vm-network-loss-destination-ips.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-windows-network-corruption/vm-network-corruption-destination-ips.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -160,25 +160,25 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-windows-network-loss
+  - name: vmware-windows-network-corruption
     spec:
       components:
         env:
         # Name of the VM
         - name: VM_NAME
           value: 'test-vm-01'
-       # Destination IPs to induce loss
+       # Destination IPs to corrupt
         - name: DESTINATION_IPS
           value: '10.0.0.1,10.0.0.2'
 ```
 
-### Network packet loss percentage
+### Network packet corruption percentage
 
-The `NETWORK_PACKET_LOSS_PERCENTAGE` environment variable specifies the percentage of network packets to lose.
+The `NETWORK_PACKET_CORRUPTION_PERCENTAGE` environment variable specifies the percentage of network packets to corrupt.
 
-Use the following example to specify network packet loss percentage:
+Use the following example to specify network packet corruption percentage:
 
-[embedmd]:# (./static/manifests/vmware-windows-network-loss/vm-network-loss-percentage.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-windows-network-corruption/vm-network-corruption-percentage.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -188,15 +188,15 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-windows-network-loss
+  - name: vmware-windows-network-corruption
     spec:
       components:
         env:
         # Name of the VM
         - name: VM_NAME
           value: 'test-vm-01'
-       # Percentage of network packets to lose
-        - name: NETWORK_PACKET_LOSS_PERCENTAGE
+       # Percentage of network packets to corrupt
+        - name: NETWORK_PACKET_CORRUPTION_PERCENTAGE
           value: '100'
 ```
 
@@ -206,7 +206,7 @@ The `PATH_OF_CLUMSY` environment variable specifies the path of the Clumsy tool 
 
 Use the following example to specify the path of Clumsy:
 
-[embedmd]:# (./static/manifests/vmware-windows-network-loss/vm-network-loss-path-of-clumsy.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-windows-network-corruption/vm-network-corruption-path-of-clumsy.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -216,7 +216,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-windows-network-loss
+  - name: vmware-windows-network-corruption
     spec:
       components:
         env:

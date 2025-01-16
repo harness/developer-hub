@@ -1,20 +1,20 @@
 ---
-id: vmware-windows-time-chaos
-title: VMware Windows time chaos
+id: vmware-windows-service-stop
+title: VMware Windows service stop
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-time-chaos
-- /docs/chaos-engineering/chaos-faults/vmware/vmware-windows-time-chaos
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-service-stop
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-windows-service-stop
 ---
 
-VMware Windows time chaos simulates a time skew scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under time skew conditions.
+VMware Windows service stop simulates a service stop scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under service stop conditions.
 
-![VMware Windows Time Chaos](./static/images/vmware-windows-time-chaos.png)
+![VMware Windows Service Stop](../static/images/vmware-windows-service-stop.png)
 
 ## Use cases
-VMware Windows time chaos:
-- Determines the resilience of an application when a time skew scenario is simulated on a VMware Windows virtual machine.
-- Simulates the situation of time skew for processes running on the application, which degrades their performance.
-- Helps verify the application's ability to handle time failures and its failover mechanisms.
+VMware Windows service stop:
+- Determines the resilience of an application when a service stop scenario is simulated on a VMware Windows virtual machine.
+- Simulates the situation of service stop for services running on the application, which degrades their performance.
+- Helps verify the application's ability to handle service failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
@@ -22,11 +22,10 @@ VMware Windows time chaos:
 - VMware tool should be installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
-- Kubernetes secret has to be created that has the vCenter credentials in the `CHAOS_NAMESPACE`.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`.
 - Run the fault with a user possessing admin rights, preferably the built-in Administrator, to guarantee permissions for memory stress testing. [See how to enable the built-in Administrator in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
 
 - VM credentials can be passed as secrets or as a chaos engine environment variable.
-
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -63,9 +62,15 @@ stringData:
           <td> User password for the target VM. </td>
           <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
+      <tr>
+        <td> SERVICE_NAMES </td>
+        <td> Comma separated list of service names to stop. </td>
+        <td> For example, <code>service1,service2</code>. For more information, go to <a href="#service-names"> service names. </a> </td>
+      </tr>
     </table>
 
 ### Optional tunables
+
    <table>
       <tr>
         <th> Tunable </th>
@@ -73,9 +78,14 @@ stringData:
         <th> Notes </th>
       </tr>
       <tr>
-        <td> OFFSET </td>
-        <td> Time offset to induce in the VM. </td>
-        <td> For example, <code>+24h</code>. For more information, go to <a href="#offset"> offset.</a></td>
+        <td> FORCE </td>
+        <td> If set to "enable", the service will be forcefully stopped. </td>
+        <td> Default: enable. For more information, go to <a href="#force"> force. </a></td>
+      </tr>
+      <tr>
+        <td> SELF_HEALING_SERVICE </td>
+        <td> If set to "enable", the service will be restarted after chaos injection. </td>
+        <td> Default: disable. For more information, go to <a href="#self-healing-service"> self-healing service. </a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
@@ -99,13 +109,13 @@ stringData:
       </tr>
     </table>
 
-### Offset
+### Service names
 
-The `OFFSET` environment variable specifies the time offset to induce in the target Windows VM.
+The `SERVICE_NAMES` environment variable specifies the service names to stop on the target Windows VM.
 
-Use the following example to specify time offset:
+Use the following example to specify service names:
 
-[embedmd]:# (./static/manifests/vmware-windows-time-chaos/vm-time-chaos-offset.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-windows-service-stop/vm-service-stop-names.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -115,14 +125,70 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-windows-time-chaos
+  - name: vmware-windows-service-stop
     spec:
       components:
         env:
         # Name of the VM
         - name: VM_NAME
           value: 'test-vm-01'
-       # Time offset to induce
-        - name: OFFSET
-          value: '+24h'
+       # Service names to stop
+        - name: SERVICE_NAMES
+          value: 'service1,service2'
+```
+
+### Force
+
+The `FORCE` environment variable specifies whether the service should be forcefully stopped.
+
+Use the following example to enable forceful stopping:
+
+[embedmd]:# (../static/manifests/vmware-windows-service-stop/vm-service-stop-force.yaml yaml)
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-windows-service-stop
+    spec:
+      components:
+        env:
+        # Name of the VM
+        - name: VM_NAME
+          value: 'test-vm-01'
+       # Enable forceful stopping
+        - name: FORCE
+          value: 'enable'
+```
+
+### Self-healing service
+
+The `SELF_HEALING_SERVICE` environment variable specifies whether the service should be restarted after chaos injection.
+
+Use the following example to enable self healing service:
+
+[embedmd]:# (../static/manifests/vmware-windows-service-stop/vm-service-stop-self-healing.yaml yaml)
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-windows-service-stop
+    spec:
+      components:
+        env:
+        # Name of the VM
+        - name: VM_NAME
+          value: 'test-vm-01'
+       # Enable self healing service
+        - name: SELF_HEALING_SERVICE
+          value: 'enable'
 ```

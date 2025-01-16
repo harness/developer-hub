@@ -1,15 +1,18 @@
 ---
-id: vmware-http-latency
-title: VMware HTTP latency
+id: vmware-http-reset-peer
+title: VMware HTTP reset peer
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-http-latency
-- /docs/chaos-engineering/chaos-faults/vmware/vmware-http-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-http-reset-peer
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-http-reset-peer
 ---
-VMware HTTP latency injects HTTP response latency into the service of a specific port.
-- This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
-- It helps determine the application's resilience to lossy (or flaky) HTTP responses.
 
-![VMware HTTP Latency](./static/images/vmware-http-latency.png)
+VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP requests by resetting the TCP connection for the requests.
+- The service whose port is affected is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It tests the application's resilience to lossy (or flaky) HTTP connections.
+
+
+![VMware HTTP Reset Peer](../static/images/vmware-http-reset-peer.png)
+
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -17,10 +20,10 @@ HCE doesn't support injecting VMWare Windows faults on Bare metal server.
 
 ## Use cases
 
-- VMware HTTP latency determines the resilience of an application to HTTP latency.
-- It determines how the system recovers or fetches the responses when there is a delay in accessing the service.
-- It simulates latency to specific API services for (or from) a given microservice.
-- It also simulates a slow response on specific third party (or dependent) components (or services).
+- VMware HTTP reset peer determines the resilience of an application to unexpected halts in the outgoing HTTP requests.
+- It determines how quickly and efficiently an application recovers from these unexpected halts.
+- It simulates premature connection loss, such as firewall issues, between microservices by verifying connection timeouts.
+- It simulates connection resets due to resource limitations on the server side, such as running out of memory, killing processes, or overloading the server due to high amounts of traffic.
 
 ### Prerequisites
 - Kubernetes >= 1.17 is required to execute this fault.
@@ -41,7 +44,8 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### Mandatory tunables 
+### Mandatory tunables
+
    <table>
         <tr>
             <th> Tunable </th>
@@ -50,33 +54,34 @@ stringData:
         </tr>
         <tr>
             <td> VM_NAME </td>
-            <td> Name of the VMware VM.</td>
-            <td> For example, test-vm. </td>
+            <td> Name of the VMware VM. </td>
+            <td> For example, <code>test-vm</code>. </td>
         </tr>
-        <tr>
+       <tr>
             <td> VM_USER_NAME </td>
             <td> Username with sudo privileges.</td>
-            <td> For example, vm-user. </td>
+            <td> For example, <code>vm-user</code>. </td>
         </tr>
         <tr>
             <td> VM_PASSWORD </td>
             <td> User password. </td>
-            <td> For example, 1234. </td>
+            <td> For example, <code>1234</code>. </td>
         </tr>
         <tr>
-            <td> LATENCY </td>
-            <td> Delay added to the request (in milliseconds).</td>
-            <td> For example, 1000ms. For more information, go to <a href="#latency"> latency.</a></td>
+            <td> RESET_TIMEOUT  </td>
+            <td> It specifies the duration after which the connect is reset. </td>
+            <td> Defaults to 0. For more information, go to <a href="#reset-timeout"> reset timeout.</a></td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
-            <td> Service port to target. </td>
+            <td> Service port to target </td>
             <td> Defaults to port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
         </tr>
     </table>
 
 ### Optional tunables
-  <table>
+
+   <table>
         <tr>
             <th> Tunable </th>
             <th> Description </th>
@@ -90,7 +95,7 @@ stringData:
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+            <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
@@ -98,29 +103,29 @@ stringData:
         <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
-        <td> RAMP_TIME </td>
+            <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+            <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependency to run the fault </td>
-            <td> If the dependency already exists, you can turn it off. Its default value is 'True'. </td>
+            <td> Specify whether you wish to install the dependency to run the experiment. </td>
+            <td> Defaults to true. If the dependency already exists, you can turn it off. </td>
         </tr>
         <tr>
-            <td> PROXY_PORT </td>
+            <td> PROXY_PORT  </td>
             <td> Port where the proxy listens for requests.</td>
             <td> Defaults to 20000. For more information, go to <a href="#proxy-port"> proxy port.</a></td>
         </tr>
         <tr>
             <td> TOXICITY </td>
-            <td> Percentage of HTTP requests affected. </td>
+            <td> Percentage of HTTP requests that are affected. </td>
             <td> Defaults to 100. For more information, go to <a href="#toxicity"> toxicity.</a></td>
         </tr>
         <tr>
-          <td> NETWORK_INTERFACE </td>
+          <td> NETWORK_INTERFACE  </td>
           <td> Network interface used for the proxy. </td>
-          <td> Defaults to eth0. For more information, go to <a href="#network-interface"> network interface. </a></td>
+          <td> Defaults to eth0. For more information, go to <a href="#network-interface"> network interface.</a></td>
         </tr>
         <tr>
       <td>DEFAULT_HEALTH_CHECK</td>
@@ -136,7 +141,7 @@ It specifies the port of the target service. Tune it by using the `TARGET_SERVIC
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/http-latency/target-service-port.yaml yaml)
+[embedmd]:# (../static/manifests/http-reset-peer/target-service-port.yaml yaml)
 ```yaml
 ## provide the port of the targeted service
 apiVersion: litmuschaos.io/v1alpha1
@@ -147,7 +152,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: VMware-http-latency
+  - name: VMware-http-reset-peer
     spec:
       components:
         env:
@@ -156,13 +161,13 @@ spec:
           value: "80"
 ```
 
-### Proxy Port
+### Proxy port
 
-It specifies the port where the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
+It specifies the port where proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/http-latency/proxy-port.yaml yaml)
+[embedmd]:# (../static/manifests/http-reset-peer/proxy-port.yaml yaml)
 ```yaml
 # provide the port for proxy server
 apiVersion: litmuschaos.io/v1alpha1
@@ -173,7 +178,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: VMware-http-latency
+  - name: VMware-http-reset-peer
     spec:
       components:
         env:
@@ -185,15 +190,15 @@ spec:
           value: "80"
 ```
 
-### Latency
+### Reset timeout
 
-It specifies the latency value added to the HTTP request. Tune it by using the `LATENCY` environment variable.
+It specifies the reset timeout value that is added to the HTTP request. Tune it by using the `RESET_TIMEOUT` environment variable.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/http-latency/latency.yaml yaml)
+[embedmd]:# (../static/manifests/http-reset-peer/reset-timeout.yaml yaml)
 ```yaml
-## provide the latency value
+## provide the reset timeout value
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -202,12 +207,12 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: VMware-http-latency
+  - name: VMware-http-reset-peer
     spec:
       components:
         env:
-        # provide the latency value
-        - name: LATENCY
+        # reset timeout specifies after how much duration to reset the connection
+        - name: RESET_TIMEOUT #in ms
           value: '2000'
         # provide the port of the targeted service
         - name: TARGET_SERVICE_PORT
@@ -216,11 +221,11 @@ spec:
 
 ### Toxicity
 
-It specifies the toxicity value added to the HTTP request. Toxicity value defines the percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
+It specifies the toxicity value, that is, the percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/http-latency/toxicity.yaml yaml)
+[embedmd]:# (../static/manifests/http-reset-peer/toxicity.yaml yaml)
 ```yaml
 ## provide the toxicity
 apiVersion: litmuschaos.io/v1alpha1
@@ -231,7 +236,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: VMware-http-latency
+  - name: VMware-http-reset-peer
     spec:
       components:
         env:
@@ -247,11 +252,11 @@ spec:
 
 ### Network interface
 
-It specifies the network interface to be used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
+It specifies the network interface that is used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/http-latency/network-interface.yaml yaml)
+[embedmd]:# (../static/manifests/http-reset-peer/network-interface.yaml yaml)
 ```yaml
 ## provide the network interface for proxy
 apiVersion: litmuschaos.io/v1alpha1
@@ -262,7 +267,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: VMware-http-latency
+  - name: VMware-http-reset-peer
     spec:
       components:
         env:

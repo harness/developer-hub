@@ -1,30 +1,37 @@
 ---
-id: vmware-service-stop
-title: VMware service stop
+id: vmware-memory-hog
+title: VMware memory hog
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-service-stop
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/service-stop
-- /docs/chaos-engineering/chaos-faults/vmware/vmware-service-stop
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-memory-hog
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-memory-hog
 ---
-VMware service stop stops the target system services running on a Linux OS based VMware VM. It determines the performance and resilience of the application (or service) running on the VMware VMs.
 
-![VMware ServiceStop](./static/images/vmware-service-stop.png)
+VMware memory hog fault consumes excessive memory resources on Linux OS based VMware VMs. It determines the performance of the application running on the VMware VMs. This fault allocates and maps a specific amount of virtual address space and keeps rewriting to that same memory space for the chaos duration before un-mapping it.
+
+![VMware Memory Hog](../static/images/vmware-memory-hog.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
 
 ## Use cases
-VMware service stop:
-- Determines the resilience of an application to random halts.
-- Determines how efficiently an application recovers and restarts the services.
+
+- VMware memory hog determines the resilience of an application to unexpected consumption of excessive memory by application resources.
+- It simulates the situation of memory leaks in the deployment of microservices.
+- It simulates application slowness due to memory starvation.
+- It also simulates noisy neighbour problems due to hogging.
+- It verifies pod priority and QoS setting for eviction purposes.
+- It also verifies application restarts on OOM (out of memory) kills.
+
+:::tip
+The mapped memory space is unmapped only after the chaos duration; the same memory space is used to write data into memory in an iterative manner. This way, constant memory is consumed throughout the fault duration.
+:::
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443.
 - The VM should be in a healthy state before and after injecting chaos.
 - VMware tool should be installed on the target VM with remote execution enabled.
-- The target processes should exist within the VM.
 - Appropriate vCenter permissions should be provided to access the hosts and the VMs.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
@@ -51,7 +58,7 @@ stringData:
       </tr>
       <tr>
         <td> VM_NAME </td>
-        <td> Name of the VM where the target processes reside. </td>
+        <td> Name of the target VM. </td>
         <td> For example, <code>ubuntu-vm-1</code>. </td>
       </tr>
       <tr>
@@ -64,12 +71,8 @@ stringData:
           <td> User password for the target VM. </td>
           <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
-      <tr>
-        <td> SERVICE_NAMES </td>
-        <td> Name of the target service. </td>
-        <td> For example, <code>nginx</code>. For more information, go to <a href="#service-name"> service name.</a></td>
-      </tr>
     </table>
+
 
 ### Optional tunables
 
@@ -79,10 +82,20 @@ stringData:
         <th> Description </th>
         <th> Notes </th>
       </tr>
+     <tr>
+        <td> MEMORY_CONSUMPTION_MEBIBYTES </td>
+        <td> Amount of memory consumed by VMware VMs (in MiB). </td>
+        <td> For example, <code>4024</code>. For more information, go to <a href="#memory-consumption-in-mebibytes"> memory consumption in mebibytes. </a></td>
+      </tr>
       <tr>
-        <td> SELF_HEALING_SERVICES </td>
-        <td> Set to <code>enable</code> if the target service is self-healing. </td>
-        <td> Defaults to <code>disable</code>. For more information, go to <a href="#self-healing-services"> self-healing services.</a></td>
+        <td> MEMORY_CONSUMPTION_PERCENTAGE </td>
+        <td> Amount of total memory to be consumed (in percentage). </td>
+        <td> Default to 100. For more information, go to <a href="#memory-consumption-in-percentage"> memory consumption in percentage. </a></td>
+      </tr>
+      <tr>
+        <td> NUMBER_OF_WORKERS </td>
+        <td> Number of workers used to run the stress process. </td>
+        <td> Defaults to 4. For more information, go to <a href="#workers-for-stress"> workers for stress. </a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
@@ -111,14 +124,14 @@ stringData:
       </tr>
     </table>
 
-### Self-healing services
-It specifies whether the target service has the ability to self-heal. It is self-healing if it is set to `enable`. Its default value is `disable`. Tune it by using the `SELF_HEALING_SERVICES` environment variable.
+### Memory consumption in percentage
+It specifies the memory consumed by the target VM (in percentage). Tune it by using the `MEMORY_CONSUMPTION_PERCENTAGE` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/vmware-service-stop/vmware-service-stop-self-healing.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-memory-hog/vm-memory-hog-mem-consumption-perc.yaml yaml)
 ```yaml
-# Service Stop in the VMware VM
+# Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -127,29 +140,26 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: VMware-service-stop
+    - name: VMware-memory-hog
       spec:
         components:
           env:
             # Name of the VM
             - name: VM_NAME
               value: 'test-vm-01'
-            # Name of service
-            - name: SERVICE_NAME
-              value: 'nginx'
-            # Self-heling ability
-            - name: SELF_HEALING_SERVICES
-              value: 'enable'
+            # memory consumption value
+            - name: MEMORY_CONSUMPTION_PERCENTAGE
+              value: '50'
 ```
 
-### Service name
-It specifies the name of the target service running on a particular VM. Tune it by using the `SERVICE_NAME` environment variable.
+### Memory consumption in mebibytes
+It specifies the memory consumed by the target VM in mebi bytes (MiB). Tune it by using the `MEMORY_CONSUMPTION_MEBIBYTES` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/vmware-service-stop/vmware-service-stop.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-memory-hog/vm-memory-hog-memory-consumption.yaml yaml)
 ```yaml
-# Service Stop in the VMware VM
+# Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -158,14 +168,42 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: VMware-service-stop
+    - name: VMware-memory-hog
       spec:
         components:
           env:
             # Name of the VM
             - name: VM_NAME
               value: 'test-vm-01'
-            # Name of service
-            - name: SERVICE_NAME
-              value: 'nginx'
+            # memory consumption value
+            - name: MEMORY_CONSUMPTION_MEBIBYTES
+              value: '500'
+```
+
+### Workers for stress
+It specifies the worker's count for stress. Tune it by using the `NUMBER_OF_WORKERS` environment variable.
+
+Use the following example to tune it:
+
+[embedmd]:# (../static/manifests/vmware-memory-hog/vm-memory-hog-worker.yaml yaml)
+```yaml
+# Memory hog in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: VMware-memory-hog
+      spec:
+        components:
+          env:
+            # Name of the VM
+            - name: VM_NAME
+              value: 'test-vm-01'
+            # Number of workers for stress
+            - name: NUMBER_OF_WORKERS
+              value: '4'
 ```

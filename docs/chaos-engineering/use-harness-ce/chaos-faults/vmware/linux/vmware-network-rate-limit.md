@@ -7,7 +7,7 @@ redirect_from:
 ---
 VMware network rate limit fault injects network rate limit from the VMware VM(s) into the application (or service). This results in flaky access to the application. It checks the performance of the application (or process) running on the VMware VM(s).
 
-![VMware Network Rate Limit](./static/images/vmware-network-rate-limit.png)
+![VMware Network Rate Limit](../static/images/vmware-network-rate-limit.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -180,7 +180,7 @@ Network bandwidth injected to the VM. Tune it by using the `NETWORK_BANDWIDTH` e
 
 Following YAML snippet illustrates the use of this input variable.
 
-[embedmd]:# (./static/manifests/vmware-network-rate-limit/network-bandwidth.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-network-rate-limit/network-bandwidth.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -210,7 +210,7 @@ Size of bucket, in bytes. It is the maximum number of bytes for which tokens can
 
 Following YAML snippet illustrates the use of this input variable.
 
-[embedmd]:# (./static/manifests/vmware-network-rate-limit/burst.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-network-rate-limit/burst.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -242,7 +242,7 @@ Limit on the number of bytes that can be queued while waiting for tokens to beco
 
 Following YAML snippet illustrates the use of this input variable.
 
-[embedmd]:# (./static/manifests/vmware-network-rate-limit/limit.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-network-rate-limit/limit.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -279,7 +279,7 @@ The IPs/hosts that interrupt traffic by default. Tune it by using the `DESTINATI
 
 Following YAML snippet illustrates the use of this input variable.
 
-[embedmd]:# (./static/manifests/vmware-network-rate-limit/destination-host-and-ip.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-network-rate-limit/destination-host-and-ip.yaml yaml)
 ```yaml
 ## it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
@@ -314,7 +314,7 @@ Name of the ethernet interface that shapes the traffic. Tune it by using the `NE
 
 Following YAML snippet illustrates the use of this input variable.
 
-[embedmd]:# (./static/manifests/vmware-network-rate-limit/network-interface.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-network-rate-limit/network-interface.yaml yaml)
 ```yaml
 ## it injects the chaos for the egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1

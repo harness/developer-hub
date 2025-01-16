@@ -1,30 +1,27 @@
 ---
-id: vmware-network-latency
-title: VMware network latency
+id: vmware-network-loss
+title: VMware network loss
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-network-latency
-- /docs/chaos-engineering/chaos-faults/vmware/vmware-network-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-network-loss
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-network-loss
 ---
-VMware network latency injects network packet latency from the VMware VM(s) into the application (or service).
-- It results in flaky access to the application.
-- It causes network degradation without the VM being marked as unhealthy (or unworthy) of traffic.
-- It checks the performance of the application (or process) running on the VMware VM(s).
+VMware network loss injects network packet loss from the VMware VM(s) into the application (or service). This results in flaky access to the application. It checks the performance of the application (or process) running on the VMware VM(s).
 
-![VMware Network Latency](./static/images/vmware-network-latency.png)
+![VMware Network Loss](../static/images/vmware-network-loss.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
 
 ## Use cases
-VMware network latency:
+VMware network loss:
 - Simulates issues within the VM network (or microservice) communication across services in different hosts.
 - Determines the impact of degradation while accessing a microservice.
 - Limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses, if the VM stalls or gets corrupted while waiting endlessly for a packet.
-- Simulates a consistently slow network connection between microservices, for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network.
-- Simulates jittery connection with transient latency spikes between microservices.
-- Simulates slow response on specific third party (or dependent) components (or services).
-- Simulates degraded data-plane of service-mesh infrastructure.
+- Simulates degraded network with varied percentages of dropped packets between microservices.
+- Simulates loss of access to specific third party (or dependent) services (or components).
+- Simulates blackhole against traffic to a given availability zone, that is, failure simulation of availability zones.
+- Simulates network partitions (split-brain) between peer replicas for a stateful application.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
@@ -85,32 +82,27 @@ stringData:
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+        <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
-        <td> NETWORK_LATENCY </td>
-        <td> Delay (in milliseconds). Provide numeric value only.</td>
-        <td> Defaults to 2000 ms. For more information, go to <a href="#network-packet-latency"> network packet latency.</a></td>
-      </tr>
-      <tr>
-        <td> JITTER </td>
-        <td> Network jitter (in milliseconds). Provide numeric value only.</td>
-        <td> Defaults to 0. For more information, go to <a href="#run-with-jitter"> run with jitter.</a></td>
+        <td> NETWORK_PACKET_LOSS_PERCENTAGE </td>
+        <td> Packets lost during transmission (in percent).</td>
+        <td> Default: 100%. For more information, go to <a href="#network-packet-loss"> network packet loss. </a></td>
       </tr>
       <tr>
         <td> DESTINATION_IPS </td>
         <td> IP addresses of the services or pods whose accessibility you want to affect. You can also specify a CIDR block. </td>
-        <td> Comma-separated IPs (or CIDRs) can be provided. If it has not been provided, network chaos is induced on all IPs (or destinations). For more information, go to <a href="#run-with-destination-ips-and-destination-hosts"> run with destination IPs. </a></td>
+        <td> Comma-separated IPs (or CIDRs) can be provided. If it has not been provided, network chaos is induced on all IPs (or destinations). For more information, go to <a href="#run-with-destination-ips-and-destination-hosts"> run with destination IPs.</a></td>
       </tr>
       <tr>
         <td> DESTINATION_HOSTS </td>
         <td> DNS names (or FQDN names) of the services whose accessibility is affected. </td>
         <td> If it has not been provided, network chaos is induced on all IPs (or destinations). For more information, go to <a href="#run-with-destination-ips-and-destination-hosts"> run with destination hosts. </a></td>
       </tr>
-      <tr>
+       <tr>
         <td> SOURCE_PORTS </td>
-        <td> Comma-separated ports of the target application whose accessibility is impacted. If not provided, network chaos is induced on all ports. For example, <code>5000,8080</code>. </td>
-        <td> Alternatively, the source ports to be exempted from the chaos can be provided by prepending a <code>!</code> to the list of ports. For example, <code>!5000,8080</code>. For more information, go to <a href="#source-and-destination-ports"> source ports. </a></td>
+        <td> Comma-separated ports of the target application, the accessibility to which is impacted. If not provided, it will induce network chaos for all ports. For Example: <code>5000,8080</code> </td>
+        <td> Alternatively, the source ports that should be exempted from the chaos can also be provided by prepending a <code>!</code> before the list of ports. For example: <code>!5000,8080</code>. For more information, go to <a href="#source-and-destination-ports"> source ports. </a></td>
       </tr>
       <tr>
         <td> DESTINATION_PORTS </td>
@@ -167,13 +159,13 @@ stringData:
 If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
 :::
 
-### Network packet latency
+### Network packet loss
 
-Network packet latency injected into the VM. Tune it by using the `NETWORK_LATENCY` environment variable.
+Network packet loss (in percentage) injected to the VM. Tune it by using the `NETWORK_PACKET_LOSS_PERCENTAGE` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/vmware-network-latency/network-latency.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-network-loss/network-packet-loss-percentage.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -183,46 +175,13 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: VMware-network-latency
+  - name: VMware-network-loss
     spec:
       components:
         env:
-        # network packet latency
-        - name: NETWORK_LATENCY
-          value: '2000'
-        - name: VM_NAME
-          value: 'vm-1,vm-2'
-        - name: VM_USER_NAME
-          value: 'ubuntu,debian'
-        - name: VM_PASSWORD
-          value: '123,123'
-```
-
-### Run with jitter
-
-Parameter that introduces network delay variation (in milliseconds). Tune it by using the `JITTER` environment variable. Its default value is 0.
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]:# (./static/manifests/vmware-network-latency/network-latency-with-jitter.yaml yaml)
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: VMware-engine
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: VMware-network-latency
-    spec:
-      components:
-        env:
-        # value of the network latency jitter (in ms)
-        - name: JITTER
-          value: '200'
-        - name: NETWORK_LATENCY
-          value: '2000'
+        # network packet loss percentage
+        - name: NETWORK_PACKET_LOSS_PERCENTAGE
+          value: '100'
         - name: VM_NAME
           value: 'vm-1,vm-2'
         - name: VM_USER_NAME
@@ -233,14 +192,14 @@ spec:
 
 ### Run with destination IPs and destination hosts
 
-IPs/hosts that interrupt traffic by default. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
+IPs or hosts that interrupt traffic by default. Tune them by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
 
 `DESTINATION_IPS`: IP addresses of the services or the CIDR blocks (range of IPs) whose accessibility is impacted.
 `DESTINATION_HOSTS`: DNS names of the services whose accessibility is impacted.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/vmware-network-latency/destination-host-and-ip.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-network-loss/destination-host-and-ip.yaml yaml)
 ```yaml
 ## it injects the chaos for the ingress/egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
@@ -251,7 +210,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: VMware-network-latency
+  - name: VMware-network-loss
     spec:
       components:
         env:
@@ -271,14 +230,14 @@ spec:
 
 ### Source and destination ports
 
-By default, the network experiments disrupt traffic for all the source and destination ports. Tune the interruption of specific port(s) using the `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables, respectively.
+By default, the network experiments disrupt traffic for all the source and destination ports. Interrupt the specific port(s) using the `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables, respectively.
 
 - `SOURCE_PORTS`: Ports of the target application whose accessibility is impacted.
 - `DESTINATION_PORTS`: Ports of the destination services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/vmware-network-latency/source-and-destination-ports.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-network-loss/source-and-destination-ports.yaml yaml)
 ```yaml
 # it inject the chaos for the ingress/egress traffic for specific ports
 apiVersion: litmuschaos.io/v1alpha1
@@ -290,7 +249,7 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-network-latency
+  - name: vmware-network-loss
     spec:
       components:
         env:
@@ -306,15 +265,14 @@ spec:
 
 ### Ignore source and destination ports
 
-By default, the network experiments disrupt traffic for all the source and destination ports. Ignore specific port(s) using the `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables, respectively.
+By default, the network experiments disrupt traffic for all the source and destination ports. Ignore the specific ports using the `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables, respectively.
 
 - `SOURCE_PORTS`: Source ports that are not subject to chaos as comma-separated values preceded by `!`.
-
 - `DESTINATION_PORTS`: Destination ports that are not subject to chaos as comma-separated values preceded by `!`.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/vmware-network-latency/ignore-source-and-destination-ports.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-network-loss/ignore-source-and-destination-ports.yaml yaml)
 ```yaml
 # ignore the source and destination ports
 apiVersion: litmuschaos.io/v1alpha1
@@ -326,7 +284,7 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-network-latency
+  - name: vmware-network-loss
     spec:
       components:
         env:
@@ -346,7 +304,7 @@ Name of the ethernet interface that shapes the traffic. Tune it by using the `NE
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/vmware-network-latency/network-interface.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-network-loss/network-interface.yaml yaml)
 ```yaml
 ## it injects the chaos for the ingress/egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
@@ -357,7 +315,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: VMware-network-latency
+  - name: VMware-network-loss
     spec:
       components:
         env:

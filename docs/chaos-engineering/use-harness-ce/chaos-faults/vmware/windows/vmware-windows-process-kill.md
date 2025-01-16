@@ -1,20 +1,20 @@
 ---
-id: vmware-windows-service-stop
-title: VMware Windows service stop
+id: vmware-windows-process-kill
+title: VMware Windows process kill
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-service-stop
-- /docs/chaos-engineering/chaos-faults/vmware/vmware-windows-service-stop
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-process-kill
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-windows-process-kill
 ---
 
-VMware Windows service stop simulates a service stop scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under service stop conditions.
+VMware Windows process kill simulates a process kill scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under process kill conditions.
 
-![VMware Windows Service Stop](./static/images/vmware-windows-service-stop.png)
+![VMware Windows Process Kill](../static/images/vmware-windows-process-kill.png)
 
 ## Use cases
-VMware Windows service stop:
-- Determines the resilience of an application when a service stop scenario is simulated on a VMware Windows virtual machine.
-- Simulates the situation of service stop for services running on the application, which degrades their performance.
-- Helps verify the application's ability to handle service failures and its failover mechanisms.
+VMware Windows process kill:
+- Determines the resilience of an application when a process kill scenario is simulated on a VMware Windows virtual machine.
+- Simulates the situation of process kill for processes running on the application, which degrades their performance.
+- Helps verify the application's ability to handle process failures and its failover mechanisms.
 
 ### Prerequisites
 - Kubernetes > 1.16 is required to execute this fault.
@@ -26,6 +26,7 @@ VMware Windows service stop:
 - Run the fault with a user possessing admin rights, preferably the built-in Administrator, to guarantee permissions for memory stress testing. [See how to enable the built-in Administrator in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
 
 - VM credentials can be passed as secrets or as a chaos engine environment variable.
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -62,11 +63,6 @@ stringData:
           <td> User password for the target VM. </td>
           <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
       </tr>
-      <tr>
-        <td> SERVICE_NAMES </td>
-        <td> Comma separated list of service names to stop. </td>
-        <td> For example, <code>service1,service2</code>. For more information, go to <a href="#service-names"> service names. </a> </td>
-      </tr>
     </table>
 
 ### Optional tunables
@@ -78,14 +74,19 @@ stringData:
         <th> Notes </th>
       </tr>
       <tr>
-        <td> FORCE </td>
-        <td> If set to "enable", the service will be forcefully stopped. </td>
-        <td> Default: enable. For more information, go to <a href="#force"> force. </a></td>
+        <td> PROCESS_IDS </td>
+        <td> Comma-separated list of process IDs to kill. </td>
+        <td> For example, <code>1234,5678</code>. For more information, go to <a href="#process-ids"> process IDs. </a> </td>
       </tr>
       <tr>
-        <td> SELF_HEALING_SERVICE </td>
-        <td> If set to "enable", the service will be restarted after chaos injection. </td>
-        <td> Default: disable. For more information, go to <a href="#self-healing-service"> self-healing service. </a></td>
+        <td> FORCE </td>
+        <td> If set to "enable", the process will be forcefully killed. </td>
+        <td> Default: disable. For more information, go to <a href="#force"> force. </a></td>
+      </tr>
+      <tr>
+        <td> PROCESS_NAMES </td>
+        <td> Comma separated list of process names to kill. </td>
+        <td> For example, <code>chrome,firefox</code>. For more information, go to <a href="#process-names"> process names. </a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
@@ -100,7 +101,7 @@ stringData:
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Default: parallel. Supports serial and parallel sequence. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Default: parallel. Supports serial and parallel sequence. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a> </td>
       </tr>
       <tr>
       <td>DEFAULT_HEALTH_CHECK</td>
@@ -109,13 +110,13 @@ stringData:
       </tr>
     </table>
 
-### Service names
+### Process IDs
 
-The `SERVICE_NAMES` environment variable specifies the service names to stop on the target Windows VM.
+The `PROCESS_IDS` environment variable specifies the process IDs to kill on the target Windows VM.
 
-Use the following example to specify service names:
+Use the following example to specify process IDs:
 
-[embedmd]:# (./static/manifests/vmware-windows-service-stop/vm-service-stop-names.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-windows-process-kill/vm-process-kill-ids.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -125,25 +126,25 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-windows-service-stop
+  - name: vmware-windows-process-kill
     spec:
       components:
         env:
         # Name of the VM
         - name: VM_NAME
           value: 'test-vm-01'
-       # Service names to stop
-        - name: SERVICE_NAMES
-          value: 'service1,service2'
+       # Process IDs to kill
+        - name: PROCESS_IDS
+          value: '1234,5678'
 ```
 
 ### Force
 
-The `FORCE` environment variable specifies whether the service should be forcefully stopped.
+The `FORCE` environment variable specifies whether the process should be forcefully killed.
 
-Use the following example to enable forceful stopping:
+Use the following example to enable forceful killing:
 
-[embedmd]:# (./static/manifests/vmware-windows-service-stop/vm-service-stop-force.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-windows-process-kill/vm-process-kill-force.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -153,25 +154,25 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-windows-service-stop
+  - name: vmware-windows-process-kill
     spec:
       components:
         env:
         # Name of the VM
         - name: VM_NAME
           value: 'test-vm-01'
-       # Enable forceful stopping
+       # Enable forceful killing
         - name: FORCE
           value: 'enable'
 ```
 
-### Self-healing service
+### Process names
 
-The `SELF_HEALING_SERVICE` environment variable specifies whether the service should be restarted after chaos injection.
+The `PROCESS_NAMES` environment variable specifies the process names to kill on the target Windows VM.
 
-Use the following example to enable self healing service:
+Use the following example to specify process names:
 
-[embedmd]:# (./static/manifests/vmware-windows-service-stop/vm-service-stop-self-healing.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-windows-process-kill/vm-process-kill-names.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -181,14 +182,14 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-windows-service-stop
+  - name: vmware-windows-process-kill
     spec:
       components:
         env:
         # Name of the VM
         - name: VM_NAME
           value: 'test-vm-01'
-       # Enable self healing service
-        - name: SELF_HEALING_SERVICE
-          value: 'enable'
+       # Process names to kill
+        - name: PROCESS_NAMES
+          value: 'chrome,firefox'
 ```

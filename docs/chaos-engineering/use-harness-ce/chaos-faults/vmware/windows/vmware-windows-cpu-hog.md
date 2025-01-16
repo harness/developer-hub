@@ -8,7 +8,7 @@ redirect_from:
 
 VMware Windows CPU hog applies stress on the CPU resources on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs.
 
-![VMware Windows Cpu Hog](./static/images/vmware-windows-cpu-hog.png)
+![VMware Windows Cpu Hog](../static/images/vmware-windows-cpu-hog.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -110,7 +110,7 @@ The `CPU_CORE` environment variable applies stress on the target Windows VM for 
 
 Use the following example to specify CPU cores:
 
-[embedmd]:# (./static/manifests/vmware-windows-cpu-hog/vm-cpu-hog-core.yaml yaml)
+[embedmd]:# (../static/manifests/vmware-windows-cpu-hog/vm-cpu-hog-core.yaml yaml)
 ```yaml
 # CPU hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1

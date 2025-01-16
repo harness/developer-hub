@@ -1,0 +1,13 @@
+{
+  "position": 2,
+  "label": "VMware - ESX host",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"VMware - ESX host"
+  },
+  "customProps": {
+    "description": "VMware faults executed on ESX host"
+  }
+}
