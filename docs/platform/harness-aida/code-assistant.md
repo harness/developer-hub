@@ -77,7 +77,8 @@ To open the config.json file for Harness AI Code Assistant click on the gear ico
 
 In each "models" array entry for "Harness" add requestOptions.caBundlePath like this:
 
-```{
+```
+{
   "models": [
     {
       "title": "Harness",
@@ -88,7 +89,8 @@ In each "models" array entry for "Harness" add requestOptions.caBundlePath like 
     }
   ],
   ...
-}```
+}
+```
 
 You may also set requestOptions.caBundlePath to an array of paths to multiple certificates.
 
