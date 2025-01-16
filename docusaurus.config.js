@@ -160,6 +160,10 @@ async function config() {
                   to: 'docs/chaos-engineering',
                 },
                 {
+                  label: 'Incident Response',
+                  to: 'docs/incident-response',
+                },
+                {
                   label: 'Service Reliability Management',
                   to: 'docs/service-reliability-management',
                 },
@@ -361,6 +365,10 @@ async function config() {
                 {
                   label: 'Chaos Engineering',
                   to: 'https://harness.io/products/chaos-engineering',
+                },
+                {
+                  label: 'Incident Response',
+                  to: 'https://harness.io/products/incident-response',
                 },
                 {
                   label: 'Service Reliability Management',

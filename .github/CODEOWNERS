@@ -112,6 +112,12 @@ static/  @rohanmaharjan100 @wei-harness
 # Chaos FAQs
 /kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit
 
+# Incident Response Docs
+/docs/incident-response/ @SmritiSatya 
+/release-notes/incident-response.md  @SmritiSatya
+/src/components/Roadmap/data/irData.ts @SmritiSatya 
+/src/components/Docs/data/incidentResponseData* @SmritiSatya
+
 # Platform Docs
 /docs/platform/ @pratmit @krishi0408 @GokulBansal0 @abhishekharness @ivikramsahu
 /release-notes/delegate.md @pratmit @abhishekharness @anshul-harness @ivikramsahu
