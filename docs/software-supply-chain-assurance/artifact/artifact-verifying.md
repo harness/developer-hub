@@ -20,8 +20,7 @@ The artifact verification step ensures the authenticity of the signed artifact b
 
 ## Artifact Verification step configuration
 
-
-The Artifact Verification step pulls the `.sig` file from the artifact registry and verifies it with the corresponding public key, confirming that it was signed by a trusted entity.
+The Artifact Verification step pulls the `.sig` file from the artifact registry and verifies it with the corresponding public key. In the artifact signing step, if you chosen not to push the `.sig` file to the registry, then for the artifact verification `.sig` file will instead be pulled from the Harness database . This process ensures that the artifact was signed by a trusted entity, thereby confirming its integrity and authenticity.
 
 Follow the instructions below to configure the Artifact Verification step.
 
