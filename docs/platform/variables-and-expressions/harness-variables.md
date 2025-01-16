@@ -219,7 +219,7 @@ Additionally, variable values (after evaluation) are limited to 256 KB. Expressi
 
 :::note
 
-In Harness NG pipelines, undefined variables in expressions will cause a pipeline execution error, unlike FirstGen pipelines, where undefined variables default to `null`. NG pipelines requires explicit handling of undefined variables.
+In Harness NG pipelines, undefined variables in expressions will cause a pipeline execution error, unlike FirstGen pipelines, where undefined variables default to `null`. NG pipelines require explicit handling of undefined variables.
 
 :::
 
