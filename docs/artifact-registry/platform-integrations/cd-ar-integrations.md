@@ -2,6 +2,7 @@
 title: Artifact Registry and Continuous Delivery
 description: Deep dive into the native integrations between the Artifact Registry and Continuous Delivery module.
 sidebar_position: 10
+sidebar_label: Continuous Delivery
 ---
 
 Learn how to use Artifact Registry with the Continuous Delivery (CD) module. 
