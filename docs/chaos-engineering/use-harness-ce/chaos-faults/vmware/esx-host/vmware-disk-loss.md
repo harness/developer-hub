@@ -50,7 +50,7 @@ stringData:
       <tr>
         <td> APP_VM_MOIDS </td>
         <td> MOIDs of the VMware instance. After you open the VM in VCenter WebClient, you can find the MOID in the address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. </td>
-        <td> For example, <code>vm-5365</code>. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/VMware-vm-power-off#stoppoweroff-the-vm-by-moid"> MOIDs of the VMware instance.</a></td>
+        <td> For example, <code>vm-5365</code>. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/VMware-vm-power-off#stoppoweroff-the-vm-by-moid"> MOIDs of the VMware instance.</a></td>
       </tr>
       <tr>
         <td> VIRTUAL_DISK_NAMES </td>
