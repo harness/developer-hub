@@ -23,25 +23,18 @@ Creating the remediation tracker can be done in a few clicks:
 2. Click ‘+ New Remediation Tracker’ at the top-right corner.
 
 
-![create remediation tracker](./static/create-remediation-tracker.png "create remediation tracker")
+![create remediation tracker](./static/create-remediation.png "create remediation tracker")
 
 
-4. Fill in the required details.
-
-
-
-
-![Form to crate remediation tracker](./static/form-to-create-remediation-tracker.png "Form to crate remediation tracker")
-
-
+4. Configure the following details.
 
 
 * **CVE Number**: A CVE (Common Vulnerabilities and Exposures) number serves as a unique identifier assigned to a specific security vulnerability. Managed by MITRE, CVE numbers facilitate standardized tracking and referencing of vulnerabilities, you can explore [MITRE](https://cve.mitre.org/) or the [National Vulnerability Database (NVD)](https://nvd.nist.gov/) to learn more. 
 
     The 'Retrieve Information' button aids in fetching vulnerability data from the NVD database and automatically populates the Severity and Description fields. These fields are also editable for further customization. 
 
-* **Component Name***: The name of the vulnerable component. This serves as the key identifier to enumerate all the artifacts utilizing the component.
-* **Severity***: The level of impact the vulnerability can have on your system. It can be set to
+* **Component Name**: The name of the vulnerable component. This serves as the key identifier to enumerate all the artifacts utilizing the component.
+* **Severity**: The level of impact the vulnerability can have on your system. It can be set to
     * Critical
     * High
     * Medium
@@ -64,7 +57,7 @@ Here’s a detailed view of populating all the fields with sample data.
 
 
 
-![Form with populated fields](./static/form-with-populated-fields.png "Form with populated fields")
+<DocImage path={require('./static/remediation-form.png')} width="60%" height="30%" title="Click to view full size image" />
 
 
 Click on 'Confirm' to create the tracker, which will then be added to a remediation tracker list.
@@ -72,7 +65,7 @@ Click on 'Confirm' to create the tracker, which will then be added to a remediat
 Each tracker in the list will present the provided details succinctly for quick and easy reference. Additionally, the status of the tracker will automatically be set to 'In-Progress' as it identifies the relevant artifacts.
 
 
-![List tracker](./static/list-tracker.png "List tracker")
+![List tracker](./static/tracker-tab.png "List tracker")
 
 
 
@@ -81,7 +74,7 @@ Each tracker in the list will present the provided details succinctly for quick 
 By clicking on the tracker, you can access a list of all artifacts that utilize the specified component and do not meet the remediation conditions. The following is an example of how the artifacts listing page appears for the sample 'log4j' remediation tracker.
 
 
-![List all artifacts](./static/list-all-artifacts.png "List all the artifacts")
+![List all artifacts](./static/artifacts-effected.png "List all the artifacts")
 
 
 
@@ -93,7 +86,7 @@ When all the artifacts are listed, you can click on any artifact to see a detail
 ## 
 
 
-![List all the deployments and environments](./static/list-all-deployments.png "List all the deployments and environments")
+![List all the deployments and environments](./static/remediation-deployments.png "List all the deployments and environments")
 
 
 

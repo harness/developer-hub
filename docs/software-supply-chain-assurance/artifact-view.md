@@ -59,7 +59,7 @@ You can search for a specific digest or apply filters based on dependencies, lic
 ## Artifact Overview
 
 
-<DocImage path={require('./static/artifacts-section/artifact-overview.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/artifact-overvview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 When you select an artifact’s digest, you can view a complete overview. This tab provides general information about the artifact and summarizes the following aspects concisely:
@@ -120,7 +120,7 @@ The Deployments tab enables you to track the active deployments of your artifact
 * **Triggered By:** Details about the deployment trigger.
 
 
-<DocImage path={require('./static/artifacts-section/artifact-deployments.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/artifacts-deployments.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 #### Search and filter options
@@ -132,6 +132,6 @@ You can search for an environment or apply filters based on environment type and
 
 The Vulnerabilities tab presents the scan results performed on the artifact, consolidating findings from various scanning tools. This view categorizes all identified vulnerabilities by severity and allows filtering based on scanners and other details. The security scanning is facilitated by the Harness STO (Security Testing Orchestration) module.
 
-<DocImage path={require('./static/artifacts-section/artifact-vulnerabilities.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/artifacts-vulnerabilities.png')} width="100%" height="100%" title="Click to view full size image" />
 
 Refer to [view security test results](https://developer.harness.io/docs/category/view-security-test-results) in Harness STO documentation for more detailed information about the view and navigation.
