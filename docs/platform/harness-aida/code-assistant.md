@@ -25,7 +25,7 @@ Harness AI code assistant is currently available as an extension for Visual Stud
 
 ### Authentication
 After installing the extension, you will need to login to your Harness account within the IDE to enable the Harness models. You can  trigger the authentication flow by clicking on the Harness icon at the bottom right corner of your IDE and selecting 'Harness login' from the dropdown menu.
-![How to log in to Harnsss models](./static/ca-login.png)
+![How to log in to Harnsss models](./static/ca_login.png)
 
 Once you click the login button, you will be redirected to the Harness login page to enter your credentials.
 ![An example of AIDA code autocompletion](./static/login.png)
