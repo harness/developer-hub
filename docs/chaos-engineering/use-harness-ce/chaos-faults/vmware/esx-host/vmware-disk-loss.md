@@ -8,7 +8,7 @@ redirect_from:
 
 VMware disk loss detaches the disks that are attached to a Linux OS based VMware VM.
 
-![VMware Disk Loss](../static/images/vmware-disk-loss.png)
+![VMware Disk Loss](./static/images/vmware-disk-loss.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -99,7 +99,7 @@ It specifies the name of the target disks attached to a particular VM. Tune it b
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-disk-loss/vm-disk-loss-diskname.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-disk-loss/vm-disk-loss-diskname.yaml yaml)
 ```yaml
 # Disk loss in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1

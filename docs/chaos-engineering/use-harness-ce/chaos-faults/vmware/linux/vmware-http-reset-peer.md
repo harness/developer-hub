@@ -11,7 +11,7 @@ VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP req
 - It tests the application's resilience to lossy (or flaky) HTTP connections.
 
 
-![VMware HTTP Reset Peer](../static/images/vmware-http-reset-peer.png)
+![VMware HTTP Reset Peer](./static/images/vmware-http-reset-peer.png)
 
 
 :::info note
@@ -141,7 +141,7 @@ It specifies the port of the target service. Tune it by using the `TARGET_SERVIC
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/http-reset-peer/target-service-port.yaml yaml)
+[embedmd]:# (./static/manifests/http-reset-peer/target-service-port.yaml yaml)
 ```yaml
 ## provide the port of the targeted service
 apiVersion: litmuschaos.io/v1alpha1
@@ -167,7 +167,7 @@ It specifies the port where proxy server listens for requests. Tune it by using 
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/http-reset-peer/proxy-port.yaml yaml)
+[embedmd]:# (./static/manifests/http-reset-peer/proxy-port.yaml yaml)
 ```yaml
 # provide the port for proxy server
 apiVersion: litmuschaos.io/v1alpha1
@@ -196,7 +196,7 @@ It specifies the reset timeout value that is added to the HTTP request. Tune it 
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/http-reset-peer/reset-timeout.yaml yaml)
+[embedmd]:# (./static/manifests/http-reset-peer/reset-timeout.yaml yaml)
 ```yaml
 ## provide the reset timeout value
 apiVersion: litmuschaos.io/v1alpha1
@@ -225,7 +225,7 @@ It specifies the toxicity value, that is, the percentage of the total number of 
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/http-reset-peer/toxicity.yaml yaml)
+[embedmd]:# (./static/manifests/http-reset-peer/toxicity.yaml yaml)
 ```yaml
 ## provide the toxicity
 apiVersion: litmuschaos.io/v1alpha1
@@ -256,7 +256,7 @@ It specifies the network interface that is used for the proxy. Tune it by using 
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/http-reset-peer/network-interface.yaml yaml)
+[embedmd]:# (./static/manifests/http-reset-peer/network-interface.yaml yaml)
 ```yaml
 ## provide the network interface for proxy
 apiVersion: litmuschaos.io/v1alpha1

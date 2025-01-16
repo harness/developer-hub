@@ -8,7 +8,7 @@ redirect_from:
 
 VMware Windows process kill simulates a process kill scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under process kill conditions.
 
-![VMware Windows Process Kill](../static/images/vmware-windows-process-kill.png)
+![VMware Windows Process Kill](./static/images/vmware-windows-process-kill.png)
 
 ## Use cases
 VMware Windows process kill:
@@ -116,7 +116,7 @@ The `PROCESS_IDS` environment variable specifies the process IDs to kill on the 
 
 Use the following example to specify process IDs:
 
-[embedmd]:# (../static/manifests/vmware-windows-process-kill/vm-process-kill-ids.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-process-kill/vm-process-kill-ids.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -144,7 +144,7 @@ The `FORCE` environment variable specifies whether the process should be forcefu
 
 Use the following example to enable forceful killing:
 
-[embedmd]:# (../static/manifests/vmware-windows-process-kill/vm-process-kill-force.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-process-kill/vm-process-kill-force.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -172,7 +172,7 @@ The `PROCESS_NAMES` environment variable specifies the process names to kill on 
 
 Use the following example to specify process names:
 
-[embedmd]:# (../static/manifests/vmware-windows-process-kill/vm-process-kill-names.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-process-kill/vm-process-kill-names.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine

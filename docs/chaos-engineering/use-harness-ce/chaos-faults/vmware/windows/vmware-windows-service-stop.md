@@ -8,7 +8,7 @@ redirect_from:
 
 VMware Windows service stop simulates a service stop scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under service stop conditions.
 
-![VMware Windows Service Stop](../static/images/vmware-windows-service-stop.png)
+![VMware Windows Service Stop](./static/images/vmware-windows-service-stop.png)
 
 ## Use cases
 VMware Windows service stop:
@@ -115,7 +115,7 @@ The `SERVICE_NAMES` environment variable specifies the service names to stop on 
 
 Use the following example to specify service names:
 
-[embedmd]:# (../static/manifests/vmware-windows-service-stop/vm-service-stop-names.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-service-stop/vm-service-stop-names.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -143,7 +143,7 @@ The `FORCE` environment variable specifies whether the service should be forcefu
 
 Use the following example to enable forceful stopping:
 
-[embedmd]:# (../static/manifests/vmware-windows-service-stop/vm-service-stop-force.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-service-stop/vm-service-stop-force.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -171,7 +171,7 @@ The `SELF_HEALING_SERVICE` environment variable specifies whether the service sh
 
 Use the following example to enable self healing service:
 
-[embedmd]:# (../static/manifests/vmware-windows-service-stop/vm-service-stop-self-healing.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-service-stop/vm-service-stop-self-healing.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine

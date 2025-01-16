@@ -8,7 +8,7 @@ redirect_from:
 
 VMware IO stress causes disk stress on the target VMware VMs. It aims to verify the resilience of applications that share this disk resource with the VM.
 
-![VMware IO Stress](../static/images/vmware-io-stress.png)
+![VMware IO Stress](./static/images/vmware-io-stress.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -136,7 +136,7 @@ It specifies the size as a percentage of free space on the file system. Tune it 
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-percentage.yaml yaml)
 ```yaml
 # io-stress in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -164,7 +164,7 @@ It specifies the amount of free space on the file system in gigabytes(GB). Tune 
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-bytes.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-bytes.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -190,7 +190,7 @@ It specifies the location that points to the volume mount path used in I/O stres
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-io-stress/vm-io-stress-filesystem-mount-path.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-mount-path.yaml yaml)
 ```yaml
 # io-stress in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -219,7 +219,7 @@ spec:
 It specifies the worker's count for stress. Tune it by using the `NUMBER_OF_WORKERS` environment variable.
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-io-stress/vm-io-stress-filesystem-worker.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-worker.yaml yaml)
 ```yaml
 # io-stress in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1

@@ -8,7 +8,7 @@ redirect_from:
 
 VMware Windows blackhole chaos simulates a network blackhole scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under network blackhole conditions.
 
-![VMware Windows Blackhole Chaos](../static/images/vmware-windows-blackhole-chaos.png)
+![VMware Windows Blackhole Chaos](./static/images/vmware-windows-blackhole-chaos.png)
 
 
 :::info note
@@ -114,7 +114,7 @@ The `DESTINATION_HOSTS` environment variable specifies the destination hosts to 
 
 Use the following example to specify destination hosts:
 
-[embedmd]:# (../static/manifests/vmware-windows-blackhole-chaos/vm-blackhole-chaos-destination-hosts.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-blackhole-chaos/vm-blackhole-chaos-destination-hosts.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -141,7 +141,7 @@ The `IP_ADDRESSES` environment variable specifies the IP addresses to block on t
 
 Use the following example to specify IP addresses:
 
-[embedmd]:# (../static/manifests/vmware-windows-blackhole-chaos/vm-blackhole-chaos-ip-addresses.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-blackhole-chaos/vm-blackhole-chaos-ip-addresses.yaml yaml)
 
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1

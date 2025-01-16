@@ -8,7 +8,7 @@ redirect_from:
 
 VMware memory hog fault consumes excessive memory resources on Linux OS based VMware VMs. It determines the performance of the application running on the VMware VMs. This fault allocates and maps a specific amount of virtual address space and keeps rewriting to that same memory space for the chaos duration before un-mapping it.
 
-![VMware Memory Hog](../static/images/vmware-memory-hog.png)
+![VMware Memory Hog](./static/images/vmware-memory-hog.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -129,7 +129,7 @@ It specifies the memory consumed by the target VM (in percentage). Tune it by us
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-memory-hog/vm-memory-hog-mem-consumption-perc.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-mem-consumption-perc.yaml yaml)
 ```yaml
 # Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -157,7 +157,7 @@ It specifies the memory consumed by the target VM in mebi bytes (MiB). Tune it b
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-memory-hog/vm-memory-hog-memory-consumption.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-memory-consumption.yaml yaml)
 ```yaml
 # Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
@@ -185,7 +185,7 @@ It specifies the worker's count for stress. Tune it by using the `NUMBER_OF_WORK
 
 Use the following example to tune it:
 
-[embedmd]:# (../static/manifests/vmware-memory-hog/vm-memory-hog-worker.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-worker.yaml yaml)
 ```yaml
 # Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1

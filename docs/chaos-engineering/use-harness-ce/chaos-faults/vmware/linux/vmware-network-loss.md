@@ -7,7 +7,7 @@ redirect_from:
 ---
 VMware network loss injects network packet loss from the VMware VM(s) into the application (or service). This results in flaky access to the application. It checks the performance of the application (or process) running on the VMware VM(s).
 
-![VMware Network Loss](../static/images/vmware-network-loss.png)
+![VMware Network Loss](./static/images/vmware-network-loss.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -165,7 +165,7 @@ Network packet loss (in percentage) injected to the VM. Tune it by using the `NE
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (../static/manifests/vmware-network-loss/network-packet-loss-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-loss/network-packet-loss-percentage.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -199,7 +199,7 @@ IPs or hosts that interrupt traffic by default. Tune them by using the `DESTINAT
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (../static/manifests/vmware-network-loss/destination-host-and-ip.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-loss/destination-host-and-ip.yaml yaml)
 ```yaml
 ## it injects the chaos for the ingress/egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
@@ -237,7 +237,7 @@ By default, the network experiments disrupt traffic for all the source and desti
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (../static/manifests/vmware-network-loss/source-and-destination-ports.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-loss/source-and-destination-ports.yaml yaml)
 ```yaml
 # it inject the chaos for the ingress/egress traffic for specific ports
 apiVersion: litmuschaos.io/v1alpha1
@@ -272,7 +272,7 @@ By default, the network experiments disrupt traffic for all the source and desti
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (../static/manifests/vmware-network-loss/ignore-source-and-destination-ports.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-loss/ignore-source-and-destination-ports.yaml yaml)
 ```yaml
 # ignore the source and destination ports
 apiVersion: litmuschaos.io/v1alpha1
@@ -304,7 +304,7 @@ Name of the ethernet interface that shapes the traffic. Tune it by using the `NE
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (../static/manifests/vmware-network-loss/network-interface.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-loss/network-interface.yaml yaml)
 ```yaml
 ## it injects the chaos for the ingress/egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1

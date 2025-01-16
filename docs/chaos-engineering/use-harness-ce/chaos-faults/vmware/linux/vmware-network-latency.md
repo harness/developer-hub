@@ -10,7 +10,7 @@ VMware network latency injects network packet latency from the VMware VM(s) into
 - It causes network degradation without the VM being marked as unhealthy (or unworthy) of traffic.
 - It checks the performance of the application (or process) running on the VMware VM(s).
 
-![VMware Network Latency](../static/images/vmware-network-latency.png)
+![VMware Network Latency](./static/images/vmware-network-latency.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -173,7 +173,7 @@ Network packet latency injected into the VM. Tune it by using the `NETWORK_LATEN
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (../static/manifests/vmware-network-latency/network-latency.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-latency/network-latency.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -204,7 +204,7 @@ Parameter that introduces network delay variation (in milliseconds). Tune it by 
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (../static/manifests/vmware-network-latency/network-latency-with-jitter.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-latency/network-latency-with-jitter.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -240,7 +240,7 @@ IPs/hosts that interrupt traffic by default. Tune it by using the `DESTINATION_I
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (../static/manifests/vmware-network-latency/destination-host-and-ip.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-latency/destination-host-and-ip.yaml yaml)
 ```yaml
 ## it injects the chaos for the ingress/egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1
@@ -278,7 +278,7 @@ By default, the network experiments disrupt traffic for all the source and desti
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (../static/manifests/vmware-network-latency/source-and-destination-ports.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-latency/source-and-destination-ports.yaml yaml)
 ```yaml
 # it inject the chaos for the ingress/egress traffic for specific ports
 apiVersion: litmuschaos.io/v1alpha1
@@ -314,7 +314,7 @@ By default, the network experiments disrupt traffic for all the source and desti
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (../static/manifests/vmware-network-latency/ignore-source-and-destination-ports.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-latency/ignore-source-and-destination-ports.yaml yaml)
 ```yaml
 # ignore the source and destination ports
 apiVersion: litmuschaos.io/v1alpha1
@@ -346,7 +346,7 @@ Name of the ethernet interface that shapes the traffic. Tune it by using the `NE
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (../static/manifests/vmware-network-latency/network-interface.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-network-latency/network-interface.yaml yaml)
 ```yaml
 ## it injects the chaos for the ingress/egress traffic for specific ips/hosts
 apiVersion: litmuschaos.io/v1alpha1

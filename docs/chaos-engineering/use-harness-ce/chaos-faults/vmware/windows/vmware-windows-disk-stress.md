@@ -8,7 +8,7 @@ redirect_from:
 
 VMware Windows disk stress applies stress on the disk resources on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under disk stress conditions.
 
-![VMware Windows Disk Stress](../static/images/vmware-windows-disk-stress.png)
+![VMware Windows Disk Stress](./static/images/vmware-windows-disk-stress.png)
 
 :::info note
 HCE doesn't support injecting VMWare Windows faults on Bare metal server.
@@ -135,7 +135,7 @@ The `MEMORY_CONSUMPTION` environment variable applies stress on the target Windo
 
 Use the following example to specify Memory consumption:
 
-[embedmd]:# (../static/manifests/vmware-windows-disk-stress/vm-disk-stress-memory-consumption.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-disk-stress/vm-disk-stress-memory-consumption.yaml yaml)
 
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
@@ -164,7 +164,7 @@ The `BLOCK_SIZE_IN_KILOBYTES` environment variable specifies the block size for 
 
 Use the following example to specify block size:
 
-[embedmd]:# (../static/manifests/vmware-windows-disk-stress/vm-disk-stress-block-size.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-disk-stress/vm-disk-stress-block-size.yaml yaml)
 
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
@@ -193,7 +193,7 @@ The `WRITE_PERCENTAGE` environment variable specifies the percentage of total di
 
 Use the following example to specify write percentage:
 
-[embedmd]:# (../static/manifests/vmware-windows-disk-stress/vm-disk-stress-write-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-disk-stress/vm-disk-stress-write-percentage.yaml yaml)
 
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
@@ -222,7 +222,7 @@ The `NUMBER_OF_WORKERS` environment variable specifies the number of workers inv
 
 Use the following example to specify the number of workers:
 
-[embedmd]:# (../static/manifests/vmware-windows-disk-stress/vm-disk-stress-number-of-workers.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-disk-stress/vm-disk-stress-number-of-workers.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -250,7 +250,7 @@ The `DISK_PATH` environment variable specifies the path of disk to apply stress.
 
 Use the following example to specify the disk path:
 
-[embedmd]:# (../static/manifests/vmware-windows-disk-stress/vm-disk-stress-disk-path.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-disk-stress/vm-disk-stress-disk-path.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -278,7 +278,7 @@ The `PATH_OF_DISKSPD` environment variable specifies the path of the Diskspd too
 
 Use the following example to specify the path of Diskspd:
 
-[embedmd]:# (../static/manifests/vmware-windows-disk-stress/vm-disk-stress-path-of-diskspd.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-disk-stress/vm-disk-stress-path-of-diskspd.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine

@@ -8,7 +8,7 @@ redirect_from:
 
 VMware Windows network corruption simulates a network corruption scenario on Windows OS based VMware VM. It checks the performance of the application running on the VMware Windows VMs under network corruption conditions.
 
-![VMware Windows Network Corruption](../static/images/vmware-windows-network-corruption.png)
+![VMware Windows Network Corruption](./static/images/vmware-windows-network-corruption.png)
 
 ## Use cases
 VMware Windows network corruption:
@@ -122,7 +122,7 @@ The `DESTINATION_HOSTS` environment variable specifies the destination hosts to 
 
 Use the following example to specify destination hosts:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-corruption/vm-network-corruption-destination-hosts.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-corruption/vm-network-corruption-destination-hosts.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -150,7 +150,7 @@ The `DESTINATION_IPS` environment variable specifies the destination IPs to corr
 
 Use the following example to specify destination IPs:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-corruption/vm-network-corruption-destination-ips.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-corruption/vm-network-corruption-destination-ips.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -178,7 +178,7 @@ The `NETWORK_PACKET_CORRUPTION_PERCENTAGE` environment variable specifies the pe
 
 Use the following example to specify network packet corruption percentage:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-corruption/vm-network-corruption-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-corruption/vm-network-corruption-percentage.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
@@ -206,7 +206,7 @@ The `PATH_OF_CLUMSY` environment variable specifies the path of the Clumsy tool 
 
 Use the following example to specify the path of Clumsy:
 
-[embedmd]:# (../static/manifests/vmware-windows-network-corruption/vm-network-corruption-path-of-clumsy.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-windows-network-corruption/vm-network-corruption-path-of-clumsy.yaml yaml)
 ```yaml
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
