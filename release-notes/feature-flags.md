@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-01-15T08:09:25
+date: 2025-01-16T08:09:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -11,11 +11,30 @@ sidebar_position: 11
 
 Review the notes below for details about recent changes to Harness Feature Flags (FF). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
+<!-- 
+
+Follow this template to sort your release notes into the correct headline:
+**Fixed Issues**:
+ - <type text> (FFM-*ticket number the release note is in relation to*)
+**New features and enhancements**:
+ - <type text> (FFM-*ticket number*)
+**Bug fixes**: 
+- <type text> (FFM-*ticket number*) 
+
+-->
+
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: January 15, 2025
+#### Last updated: January 16, 2025
+
+## December 2024
+
+### Android Client SDK
+
+**New features and enhancements**:
+ - Remove unused `org.threeten:threetenbpdependency`. (FFM-12237)
 
 ## November 2024
 
