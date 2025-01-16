@@ -32,7 +32,7 @@ Project-level certificates are not supported for mTLS delegates.
 
 :::info
 
-Only one certificate is supported per account. This means you cannot have multiple project level certs. 
+Only one certificate is supported per account. This means you cannot have multiple project/organization level certs. 
 
 :::
 
@@ -87,7 +87,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
    You provide the `client.crt` and `client.key` to the delegate YAML when you install the delegate.
    :::
 
-5. After you create the certificates, provide the public cert of the CA certificate and a desired unique subdomain to Harness support. For example a unique subdomain might be `customer1.agent.harness.io`.
+5. After you create the certificates, provide the public cert of the CA certificate and a desired unique subdomain to Harness support. For example, if you give `customer1` to Harness Support your full domain name will be `customer1.agent.harness.io`.
 
    :::info note
    After this, Harness will perform the steps to enable the mTLS.
@@ -130,7 +130,7 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
       
       :::note
 
-      If you don't want to update the service URLs (`LOG_STREAMING_SERVICE_URL` or `TI_SERVICE_URL`), please enable the feature flag `CI_OVERRIDE_SERVICE_URLS` by contacting [Harness Support](mailto:support@harness.io).
+      If you don't want to update the service URLs (`LOG_STREAMING_SERVICE_URL` or `TI_SERVICE_URL`), please enable the feature flag [`CI_OVERRIDE_SERVICE_URLS`](/docs/continuous-integration/ci-supported-platforms#harness-ci-early-access-features) by contacting [Harness Support](mailto:support@harness.io).
 
       Additionally, enable this feature flag if you wish to use this feature with STO and SCS steps. 
 
