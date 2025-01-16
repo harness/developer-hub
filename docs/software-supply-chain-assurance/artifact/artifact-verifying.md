@@ -10,22 +10,20 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-After signing the artifact in the [Artifact Signing step](http://localhost:3000/docs/software-supply-chain-assurance/artifact/artifact-signing#artifact-signing-process-in-scs), it’s crucial to verify that it hasn’t been tampered with and was signed by a trusted source. The Artifact Verification process enables you to validate the integrity and authenticity of the signed artifact before it’s deployed.
+After you sign the artifact using the [Artifact Signing step](http://localhost:3000/docs/software-supply-chain-assurance/artifact/artifact-signing#artifact-signing-process-in-scs), it’s crucial to verify that the artifact has not been tampered and was signed by a trusted source. The Artifact Verification process enables you to validate the integrity and authenticity of the signed artifact before it’s deployed.
 
 ## Artifact Verification in SCS
 
-The artifact verification step ensures the authenticity of the signed artifact. It requires the public key to perform the verification. If the public key matches the signed artifact, it confirms that the artifact is intact, secure, and originates from a trusted source.
+The artifact verification step ensures the authenticity of the signed artifact by validating it with the corresponding public key. If the public key matches the signed artifact it confirms that the artifact is intact, secure, and originates from a trusted source.
+
+<DocImage path={require('./static/artifact-verification-excali.png')} width="80%" height="60%" />
+
+## Artifact Verification step configuration
 
 
-
-## Artifact Verification Step Configuration
-
-
-The Artifact Verification step validate the signature of a signed artifact to ensure its authenticity and integrity, confirming that it was signed by a trusted entity.
+The Artifact Verification step pulls the `.sig` file from the artifact registry and verifies it with the corresponding public key, confirming that it was signed by a trusted entity.
 
 Follow the instructions below to configure the Artifact Verification step.
-
-Configuration Steps:
 
 * **Name**: Provide a name for the verification step.
 
@@ -36,7 +34,7 @@ Configuration Steps:
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image, example `my-docker-org/repo-name:tag` or you can use the digest `my-docker-org/repo-name@sha256:<digest>`
+* **Image:** Enter the name of your image using a tag or digest, example `my-docker-org/repo-name:tag` or you can use the digest `my-docker-org/repo-name@sha256:<digest>`
 
 </TabItem>
 
@@ -101,7 +99,7 @@ Configuration Steps:
 
 :::note
 
-The Image name for both the artifact signing and verification steps must be the same.
+The image used for the artifact verification step must be the same as the image used for the artifact signing step
 
 :::
 
@@ -121,9 +119,9 @@ Once the artifact is signed and verified, you will be able to see the Artifact I
 
 * If the signed artifact is successfully verified using the public key, the verification status is displayed as Passed, along with a link to the corresponding Rekor log entry.
 
-* If the public key does not match the signed artifact, the verification status is displayed as failed suggesting the possibility of artifact compromise.
+* If the verification fails, the status is displayed as Failed.
 
-<DocImage path={require('./static/artifact-ovverview.png')} width="100%" height="100%" />
+<DocImage path={require('./static/artifact-verification-data.png')} width="100%" height="100%" />
 
 
 
@@ -141,12 +139,110 @@ At present, Harness does not support artifact verification in the deployment sta
 
 This example **Build** stage has three steps:
 
-- **Build and Push an Image to Docker Registry**: Build the image and push it to a Docker registry (e.g., DockerHub, ACR, GCR, etc.).
+- **Build and Push an Image to Docker Registry**: This step pulls the code, build the image and push it to a Docker registry (e.g., DockerHub, ACR, GCR, etc.).
 
-- **Artifact Signing**: Sign the artifact with a private key pair to ensure its authenticity and integrity.
+
+
+- **Artifact Signing**: Pulls the artifact from the registry and signs it with a private key pair and pushes the .sig file back to the artifact registry.
+
 
 - **Artifact Verification**: Verify the signed artifact using the corresponding public key to confirm its source and integrity.
 
 
 <DocImage path={require('./static/sample-pipeline.png')} width="100%" height="100%" />
 
+
+To replicate the Artifact Verification step you can use the below sample pipeline YAML
+
+<details>
+
+<summary>
+Sample Pipeline YAML
+</summary>
+
+```
+pipeline:
+  name: ArtifactVerification
+  identifier: ArtifactVerification
+  tags: {}
+  projectIdentifier: Harness
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: Harnessgithub
+        build: <+input>
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+          buildIntelligence:
+            enabled: true
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: lavakushDockerhub
+                    repo: lavakush07/easy-buggy-app
+                    tags:
+                      - v5
+                    caching: true
+              - step:
+                  type: SscaArtifactSigning
+                  name: Artifact Signing_1
+                  identifier: ArtifactSigning_1
+                  spec:
+                    source:
+                      type: docker
+                      spec:
+                        connector: lavakushDockerhub
+                        image: lavakush07/easy-buggy-app:v5
+                    signing:
+                      type: cosign
+                      spec:
+                        private_key: account.Cosign_Private_Key
+                        password: account.Cosign_Password
+                    uploadSignature:
+                      upload: true
+              - step:
+                  type: SscaArtifactVerification
+                  name: Artifact Verification_1
+                  identifier: ArtifactVerification_1
+                  spec:
+                    source:
+                      type: docker
+                      spec:
+                        connector: lavakushDockerhub
+                        image: lavakush07/easy-buggy-app:v5
+                    verifySign:
+                      type: cosign
+                      spec:
+                        public_key: account.Cosign_Public_Key
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.harness_kubernetes_connector
+              namespace: artifactsigning
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+        variables:
+          - name: LOG_LEVEL
+            type: String
+            description: ""
+            required: false
+            value: TRACE
+
+
+
+```
+</details>
