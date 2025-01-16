@@ -16,12 +16,16 @@ sidebar_label: Module registry
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+:::tip pending release
+IaCM Module Registry is currently pending release and will be available soon!
+:::
  
-With Harness module registry, you can speed up and simplify your infrastructure management by reusing pre-built modules. This helps you avoid reinventing the wheel every time you need to set up common components, such as virtual machines, databases, or networks.
+The Harness IaCM Module Registry is a centralized repository where you can publish and manage versions of pre-built infrastructure modules. These modules, which include components like virtual machines, databases, and networks, can be reused by different teams, streamlining infrastructure management and ensuring consistency across projects.
 
 ### Prerequisites
 Before you begin configuring module registry, ensure that you have:
-- Access to your OpenTofu or Terraform environment via [Harness connectors](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-connectors).
+- Access to your OpenTofu or Legacy Terraform environment via [Harness connectors](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-connectors).
 
 :::tip delegate version
 If you are using Harness to connect to your code repository, you can continue without further action.

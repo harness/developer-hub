@@ -39,13 +39,24 @@ An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that
     - Enter the proxy <b>Source</b>. Either <b>Docker Hub</b> or a <b>Custom</b> source.
     - If it's a custom source, enter the Docker <b>Remote Registry URL</b>. 
     </TabItem>
+    <TabItem value="ECR" label="ECR">
+    - Select the **AWS ECR** source
+    - Enter the **ECR Remote Registy URL**
 
+    :::info AWS ECR info
+    This will in be your AWS Elastic Container Registry (ECR) repositories, e.g. `https://{region}.console.aws.amazon.com/ecr/repositories/{public-or-private}/{repo-id}/{repo-name}?region={region}`    
+    :::
+    </TabItem>
     <TabItem value="Helm" label="Helm">
     Enter the Helm <b>Remote Registry URL</b>.
     </TabItem>
     </Tabs>
+    ---
 
 1. Choose your **Authentication** method.
-1. Select **Create Upstream Proxy**.
+:::note public vs private authentication
+Select `Access Key and Secret Key` for private sources and `Anonymous (No credentials required)` for public sources.
+:::
 
+1. Select **Create Upstream Proxy**.
 After you've created your upstream proxy you will need to set it in a registry. To learn how to do so, go to [Set an upstream proxy](/docs/artifact-registry/manage-registries/configure-registry#set-an-upstream-proxy).

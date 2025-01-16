@@ -47,7 +47,7 @@ To use VS Code Desktop, you need to [install and configure](/docs/cloud-developm
 To pull your private Docker images, you need to connect Harness to your Artifact Repository by adding a repository connector. Currently, we support the following connectors:
 
 1. [JFrog Artifactory](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference)
-2. [Docker Registry](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
+2. [Docker Registry](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) (any Docker V2 compliant registry)
 3. [Amazon ECR](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-aws-connector)
 
 ## Regions Available​

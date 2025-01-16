@@ -17,7 +17,10 @@ Pod API modify header is a Kubernetes pod-level chaos fault that overrides the h
 
 ![Pod API Modify Header](./static/images/pod-api-modify-header.png)
 
+[This](https://youtu.be/sIkUxtnQY_o?si=LfwHi2rI559xyRr4) video provides a step-by-step walkthrough of the execution process for the Pod API Modify Header experiment.
+
 ## Use cases
+
 Pod API modify header:
 - Simulate different authentication states or test the behavior of your application when using invalid or expired credentials.
 - This fault can be utilized to validate the caching behavior of your API or client applications. By overriding cache-related headers, such as the "Cache-Control" or "ETag" headers, you can simulate cache validation scenarios.

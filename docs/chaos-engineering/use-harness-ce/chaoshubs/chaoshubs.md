@@ -16,7 +16,7 @@ You can add ChaosHub using a Git service provider such as GitHub, where ChaosHub
 
 HCE provides a default Enterprise ChaosHub that includes a wide array of experiments and faults out of the box. You can also add your own custom ChaosHubs to maintain and share private scenarios and faults within your organization.
 
-For a video tutorial, go to [HCE- ChaosHub](https://youtu.be/b4ggnJcZrcM).
+[This](https://youtu.be/b4ggnJcZrcM) video provides a step-by-step walkthrough of using a ChaosHub.
 
 ### Permissions required
 

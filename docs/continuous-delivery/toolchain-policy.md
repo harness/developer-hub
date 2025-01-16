@@ -21,17 +21,17 @@ Harness will test integration updates against the corresponding and impacted dep
 
 Below is a table that shows the current state of our integrations, demonstrating our commitment to updating them to the latest versions:
 
-| Connector   | Integration         | Supported Version | Latest Version | Upgrade Cycle |
+| Connector   | Integration         | Supported Version | Latest Version | Upgrade Cycle  |
 |-------------|----------------------|-------------------|----------------|---------------|
 | Kubernetes  | Kubernetes           | 1.27.4            | 1.30.3         | Quarterly     |
 | Helm        | Helm                 | 3.8.x             | 3.14.x         | Quarterly     |
 | Tanzu       | Tanzu                | cf cli v7         | cf cli v8      | Quarterly     |
 | Terraform   | NaN                  | 1.3.5             | 1.9.4          | Quarterly     |
 | Terragrunt  | NaN                  | 0.40.x            | 0.66.4         | Quarterly     |
-| NaN         | Serverless.com       | 3.x               | 4.x            | Quarterly     |
+| Serverless  |[Serverless.com plugin](https://hub.docker.com/r/harness/serverless-plugin/tags)| 3.x               | 4.x            | Quarterly     |
 | Jenkins     | Jenkins Build Step   | 2.440             | 2.471          | Quarterly     |
 | NaN         | ArgoCD               | 2.8.x             | 2.12.x         | Quarterly     |
-| AWS         | AWS SAM              | 1.84.0            | 1.121.0        | Quarterly     |
+| AWS         | [AWS SAM Plugin](https://hub.docker.com/r/harness/aws-sam-plugin/tags)| 1.84.0| 1.121.0        | Quarterly     |
 
 
 ### Kubernetes Maintenance FAQ

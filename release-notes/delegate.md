@@ -87,6 +87,22 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## January 2025
+
+### Version 24.12.84708 <!-- January 16, 2025 -->
+
+#### Hotfix
+
+- Add support for Incomplete Responses from New Relic during verify step execution. (CDS-105146)
+
+### Version 25.01.84800 <!-- January 10, 2025 -->
+
+#### New features and improvements
+
+- Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4` (PL-58376)
+
+- Added a new metric on the delegate side to track the number of times the delegate WebSocket reconnects. This metric, `io_harness_custom_metric_delegate_reconnected_total`, can be used to set alerts for frequent reconnections, helping identify potential issues with the delegate and enabling you to seek further assistance from Harness if needed. (PL-48535)
+
 ## December 2024
 
 ### Version 24.11.84503 <!-- December 18, 2024 -->

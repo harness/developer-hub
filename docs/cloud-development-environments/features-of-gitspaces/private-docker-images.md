@@ -21,7 +21,7 @@ To pull your private Docker images, you need to connect Harness to your Artifact
 2. [**Docker Registry**](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference): You can also configure **Docker Registry** as a connector to access private Docker images. Refer to this guide on [adding a Docker registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo#add-a-docker-registry).
 
 :::info
-Please note that the Docker Connector is platform-agnostic and can be used to connect to any Docker container registry.
+Please note that the Docker Connector is platform-agnostic and can be used to connect to any Docker V2 compliant registry.
 :::
 
 3. [**Amazon ECR**](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference): You can integrate **Amazon ECR** with Harness by adding an Amazon ECR connector. You can easily configure the required roles and policies, create the connector, and  configure your credentials by following the steps in [this guide](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-aws-connector). 
@@ -81,6 +81,8 @@ Here’s what you need to add to your ```devcontainer.json``` file:
   | [**Amazon ECR**](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-aws-connector) | "Aws" |
 
 - The `identifier` field should include the connector identifier, adjusted based on its scope level.
+- We also provide **Nexus** support for private Docker images using the same Docker Registry connector.
+
 
 :::info 
 Currently, you can use only one connector per Gitspace to pull images from a private Repository.

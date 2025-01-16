@@ -5,11 +5,11 @@ description: View and manage the standards and associated rules supported by Har
 sidebar_position: 2
 ---
 
-The **Rule Definitions** section offers a complete list of all the standards and associated rules supported by Harness SCS. These rules are applied to various entity types, and the overall compliance posture is presented in the Compliance section of SCS. To learn more about managing the compliance status, refer to the document [Manage Compliance Posture](./manage-compliance-posture)
+The **Rule Definitions** section offers a complete list of all the standards and associated rules supported by Harness SCS. These rules are applied to various target types, and the overall compliance posture is presented in the Compliance section of SCS. To learn more about managing the compliance status, refer to the document [Manage Compliance Posture](./manage-compliance-posture)
 
-<DocImage path={require('./static/rule-definations.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/compliance-rule-definitions.png')} width="100%" height="100%" title="Click to view full size image" />
 
-The page offers details about the rule, including its description, severity (defined by Harness), the standard with the rule ID to which it belongs, and the entity type to which it applies (e.g., code repository, artifact, CI/CD).
+The page offers details about the rule, including its description, severity (defined by Harness), the standard with the rule ID to which it belongs, and the target type to which it applies (e.g., code repository, artifact, CI/CD).
 
 You can apply filters specific to standards to view the rules associated with those standards and use the search function to find specific rules.
 
@@ -29,7 +29,7 @@ Harness supports the following standards.
 
 ### CIS Benchmarks
 
-The following CIS v1.0 rules are supported by Harness for the evaluations, and Harness will continue to add more rules across different entity types. For more detailed information, refer to the official [CIS documentation](https://www.cisecurity.org/benchmark/software-supply-chain-security) 
+The following CIS v1.0 rules are supported by Harness for the evaluations, and Harness will continue to add more rules across different target types. For more detailed information, refer to the official [CIS documentation](https://www.cisecurity.org/benchmark/software-supply-chain-security) 
 
 <details>
 <summary>CIS Benchmarks</summary>
@@ -94,7 +94,7 @@ The following CIS v1.0 rules are supported by Harness for the evaluations, and H
 </details>
 
 ### OWASP Top 10 CI/CD Security Risks
-The following rules are supported by Harness to perform evaluations, and Harness will continue to add more rules across different entity types. For more detailed information, refer to the official [OWASP documentation](https://owasp.org/www-project-top-10-ci-cd-security-risks/).
+The following rules are supported by Harness to perform evaluations, and Harness will continue to add more rules across different target types. For more detailed information, refer to the official [OWASP documentation](https://owasp.org/www-project-top-10-ci-cd-security-risks/).
 
 <details>
 <summary>OWASP Top 10 CI/CD Security Risks</summary>
