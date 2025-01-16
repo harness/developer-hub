@@ -112,31 +112,34 @@ When setting up your AWS Secrets Manager in Harness, you can choose one of the f
   #### General Settings for All Credential Types
 
   1. Use **"put-secret-value"** Action to update secret value:  
-     By default, Harness uses the `UpdateSecret` action to update secret values, which requires the `secretsmanager:UpdateSecret` permission for AWS Secrets Manager. Enable this option to use the `PutSecretValue` action instead, requiring the `secretsmanager:PutSecretValue` permission.
+     
+     - By default, Harness uses the `UpdateSecret` action to update secret values, which requires the `secretsmanager:UpdateSecret` permission for AWS Secrets Manager. Enable this option to use the `PutSecretValue` action instead, requiring the `secretsmanager:PutSecretValue` permission.
    
-    :::note
-      This item requires Harness Delegate version **24.11.84500**. For more details about the Harness Delegate feature, please refer to the **[release notes](https://developer.harness.io/release-notes/delegate#version-241184500)**.
-    :::
+   
+      :::note
+        This item requires Harness Delegate version **24.11.84500**. For more details about the Harness Delegate feature, please refer to the **[release notes](https://developer.harness.io/release-notes/delegate#version-241184500)**.
+      :::
 
   2. Use as **Default Secrets Manager**:  
-      Enable this option to set this Secrets Manager the default for all secret operations within your Harness account.
+      
+      - Enable this option to set this Secrets Manager the default for all secret operations within your Harness account.
 
   3. **Force delete without recovery**:
 
-    - Force Delete Without Recovery: Enabling this option ensures that when a secret in AWS Secrets Manager is deleted, it will be permanently removed without any recovery window. The secret is deleted immediately, and recovery is not possible.
+      - Force Delete Without Recovery: Enabling this option ensures that when a secret in AWS Secrets Manager is deleted, it will be permanently removed without any recovery window. The secret is deleted immediately, and recovery is not possible.
 
-    - Recovery Window in Days (Optional): When specified, a delete request is made to AWS with the provided recovery window. Although the secret is deleted in Harness, it can be recovered in AWS Secrets Manager within the specified window. The recovery window can range from 7 to 30 days, with 30 days being the default if not specified.
+      - Recovery Window in Days (Optional): When specified, a delete request is made to AWS with the provided recovery window. Although the secret is deleted in Harness, it can be recovered in AWS Secrets Manager within the specified window. The recovery window can range from 7 to 30 days, with 30 days being the default if not specified.
 
-      ![force-delete-without-recovery](../static/force-delete-without-recovery.png)
-        
-      :::warning Important Note
-      <details>
-        <summary>Force Delete without Recovery</summary>
-          - If a user attempts to create the same secret (as an inline secret) again in Harness, an exception will be thrown.  
-          - Additionally, **Force Delete Without Recovery** cannot be enabled when a recovery window value is provided.        
-            ![aws-encryted-text](../static/aws-encryted-text.png)
-      </details>
-      :::
+        ![force-delete-without-recovery](../static/force-delete-without-recovery.png)
+          
+        :::warning Important Note
+        <details>
+          <summary>Force Delete without Recovery</summary>
+            - If a user attempts to create the same secret (as an inline secret) again in Harness, an exception will be thrown.  
+            - Additionally, **Force Delete Without Recovery** cannot be enabled when a recovery window value is provided.        
+              ![aws-encryted-text](../static/aws-encryted-text.png)
+        </details>
+        :::
 
     #### Credential Types 
   
