@@ -12,7 +12,8 @@ import {
   Track,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
 
-import TrackMetricEvents from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_010_codeTrack.mdx";
+import TrackDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_react-sdk/_010_details.mdx";
+import TrackMetricEvents from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_react-sdk/_010_codeTrack.mdx";
 
 export const toc = [];
 
@@ -21,6 +22,7 @@ export const Result = SDKDocsBuilder(
     [
       Track,
       {
+        details: <TrackDetails />,
         codeTrack: <TrackMetricEvents />,
       },
     ],

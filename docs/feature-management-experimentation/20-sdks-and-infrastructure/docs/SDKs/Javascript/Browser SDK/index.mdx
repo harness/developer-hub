@@ -19,7 +19,7 @@ import {
 import Introduction from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_browser-sdk/_001_introduction.mdx";
 import Language     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_browser-sdk/_001_language.mdx";
 import Import       from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_browser-sdk/_001_codeImport.mdx";
-import Instantiate  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_browser-sdk/_001_codeInstantiate.mdx";
+import Initiate     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_browser-sdk/_001_codeInitiate.mdx";
 
 import GetTreatment from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_002_codeGetTreatment.mdx";
 import UseNotes     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_browser-sdk/_002_notes.mdx";
@@ -33,7 +33,7 @@ export const Result = SDKDocsBuilder(
     [ 
       Repository, 
       { 
-        repo: "https://github.com/splitio/javascript-client",
+        repo: "https://github.com/splitio/javascript-browser-client",
       }, 
     ],
     [ 
@@ -41,11 +41,11 @@ export const Result = SDKDocsBuilder(
       {
         sdkName:         "Browser",
         sdkKeyType:      "client-side",
-        repo:            "https://github.com/splitio/javascript-client",
+        repo:            "https://github.com/splitio/javascript-browser-client",
         introduction:    <Introduction />,
         language:        <Language />,
         codeImport:      <Import />,
-        codeInstantiate: <Instantiate />,
+        codeInitiate: <Initiate />,
         sdkKeyDetails:   <ClientSdkKeyDetails />,
       },
     ],

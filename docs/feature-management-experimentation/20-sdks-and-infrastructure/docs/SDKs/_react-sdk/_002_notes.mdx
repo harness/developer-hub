@@ -1,0 +1,80 @@
+The treatments property/value returned by this library has the following shape:
+
+```typescript
+type TreatmentWithConfig = {
+  treatment: string,
+  config: string | null
+};
+
+type TreatmentsWithConfig = {
+  [featureName: string]: TreatmentWithConfig
+};
+```
+
+As you can see from the object structure, the config will be a stringified version of the configuration JSON defined in the Split user interface. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
+
+In some instances, you may want to evaluate treatments for multiple feature flags at once using flag sets. In that case, you can use the `useSplitTreatments` hook with the `flagSets` property rather than the `names` property. Like `names`, the `flagSets` property is an array of strings, each one corresponding to a different flag set name.
+
+```javascript title="Flag sets with useSplitTreatments hook"
+import { useSplitTreatments } from '@splitsoftware/splitio-react';
+import MyComponentV1 from './MyComponentV1';
+import MyComponentV2 from './MyComponentV2';
+
+const flagSets = ['frontend', 'client_side'];
+const featureName = 'FEATURE_FLAG_NAME';
+
+function renderContent(treatmentWithConfig, props) {
+  const { treatment, config } = treatmentWithConfig;
+
+  if (treatment === 'on') return (<MyComponentV2 config={config} {...props} />);
+
+  return (<MyComponentV1 config={config} {...props} />);
+}
+
+function MyComponentToggle (props) {
+
+  const { treatments, isReady } = useSplitTreatments({ flagSets: flagSets });
+
+  return isReady ?
+    // If your flag sets are not properly configured, `treatments` might be an empty object
+    // or it might not contain the feature flags you expect.
+    renderContent(treatments[featureName] || { treatment: 'control' }, props) : 
+    <Spinner />;
+}
+
+export default MyComponentToggle;
+```
+
+```javascript title="Flag sets with SplitTreatments component (deprecated)"
+import { SplitTreatments } from '@splitsoftware/splitio-react';
+import MyComponentV1 from './MyComponentV1';
+import MyComponentV2 from './MyComponentV2';
+
+const flagSets = ['frontend', 'client_side'];
+const featureName = 'FEATURE_FLAG_NAME';
+
+export default class MyComponentToggle extends React.Component {
+
+  renderContent(treatmentWithConfig) {
+    const { treatment, config } = treatmentWithConfig;
+
+    if (treatment === 'on') return (<MyComponentV2 config={config} {...this.props} />);
+
+    return (<MyComponentV1 config={config} {...this.props} />);
+  }
+
+  render() {
+    return (
+      <SplitTreatments flagSets={flagSets} >
+        {({ treatments, isReady }) => {
+          return isReady ?
+            // If your flag sets are not properly configured, `treatments` might be an empty object
+            // or it might not contain the feature flags you expect.
+            this.renderContent(treatments[featureName] || { treatment: 'control' }) :
+            <Spinner />;
+        }}
+      </SplitTreatments>
+    );
+  }
+}
+```

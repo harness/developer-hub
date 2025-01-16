@@ -27,9 +27,9 @@ The Split SDKs support two synchronization mechanisms, **streaming** (default an
 
 - For React Native bare projects, you need to *link* the native modules of the package.
 
-If using React Native 0.59 or below, run `react-native link @splitsoftware/splitio-react-native`
+  If using React Native 0.59 or below, run `react-native link @splitsoftware/splitio-react-native`
 
-If using React Native 0.60+, the [autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) is available and you don't need to run `react-native link`, but you still need to install the pods if developing for iOS, with the command `npx pod-install ios`.
+  If using React Native 0.60+, the [autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) is available and you don't need to run `react-native link`, but you still need to install the pods if developing for iOS, with the command `npx pod-install ios`.
 
 - For Expo managed projects, Split SDK native modules cannot be used, but you can still support streaming by *polyfilling* the global EventSource constructor:
 
@@ -39,7 +39,7 @@ Install an EventSource implementation such as [react-native-event-source](https:
 expo install react-native-event-source
 ```
 
-Polyfill the global EventSource constructor, for example, by including the following in your project entrypoint file (e.g., `App.jsx`): 
+Polyfill the global EventSource constructor, for example, by including the following in your project entrypoint file (e.g. `App.jsx`): 
 
 ```javascript
 import RNEventSource from 'react-native-event-source';

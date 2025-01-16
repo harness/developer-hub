@@ -1,0 +1,64 @@
+Remember:
+- Follow [React Hook rules](https://react.dev/reference/rules/rules-of-hooks) when using the `useTrack` or `useSplitClient` hooks, i.e., they must be invoked at the top level of your component or in custom hooks.
+- The `client.track` method doesn't require the client to be ready, but it implies a side effect. Therefore, it should be invoked [outside the component render phase](https://react.dev/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render), such as in a `useEffect` hook or an event handler.
+
+Example using `useTrack` hook:
+
+```javascript title="useTrack hook"
+import { useTrack } from '@splitsoftware/splitio-react';
+
+function MyComponent() {
+  // With the useTrack hook you can get access to the regular .track() method of the default client.
+  const track = useTrack();
+
+  // If you need to track events for a different key or just want to make sure you're tracking for the right key.
+  const otherTrack = useTrack('key');
+
+  // Here's what the track function signature looks like:
+  // track(trafficType: string, eventType: string, value?: number, properties?: Properties): boolean;
+
+  // Track events into an effect or an event handler to make sure they're not tracked on every render.
+  useEffect(() => {
+    // Now you can track your events by passing at least the traffic type and the event type.
+    let queued = track('user', 'logged_in');
+
+    // Example with both a value and properties
+    const properties = { package : "premium", admin : true, discount : 50 };
+    queued = track('user', 'page_load_time', 83.334, properties);
+
+    // If the event doesn't have a value but do have properties, skip the value by passing it null.
+    queued = track('user', 'logged_in', null, properties);
+  }, []);
+
+  return <button onClick={() => track('user', 'login_click')}>Login</button>
+}
+```
+
+Example using `useSplitClient` hook:
+
+```javascript title="useSplitClient hook"
+import { useTrack } from '@splitsoftware/splitio-react';
+
+function MyComponent() {
+  // With the useSplitClient hook you can get access to the default client and its .track() method
+  const defaultClient = useSplitClient().client;
+
+  // If you need to track events for a different key or just want to make sure you're tracking for the right key
+  const otherClient = useSplitClient({ splitKey: 'key' });
+
+  // Track events into an effect or an event handler to make sure they're not tracked on every render.
+  useEffect(() => {
+    // Now you can track your events by passing at least the traffic type and the event type.
+    let queued: boolean = client.track('user', 'logged_in');
+
+    // Example with both a value and properties
+    const properties: SplitIO.Properties = { package : "premium", admin : true, discount : 50 };
+    queued = client.track('user', 'page_load_time', 83.334, properties);
+
+    // If the event doesn't have a value but does have properties, skip the value by passing it null.
+    queued = client.track('user', 'logged_in', null, properties);
+  }, []);
+
+  return <button onClick={() => client.track('user', 'login_click')}>Login</button>
+}
+```

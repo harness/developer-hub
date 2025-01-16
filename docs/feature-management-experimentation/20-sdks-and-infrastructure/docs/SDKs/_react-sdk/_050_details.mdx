@@ -1,0 +1,17 @@
+While you could potentially access the JavaScript SDK client from the Split context and track this yourself, this is not trivial. The `useSplitClient` and `useSplitTreatments` hooks accept four optional boolean parameters to trigger the re-render of the component. If the parameters are set to `true` (which is the default), the component re-renders when an `SDK_READY`, `SDK_READY_FROM_CACHE`, `SDK_UPDATE` or `SDK_READY_TIMED_OUT` event fires, and you can take action if you desire to do so.
+
+* For `SDK_READY`, you can set the `updateOnSdkReady` parameter.
+* For `SDK_READY_FROM_CACHE`, you can set the `updateOnSdkReadyFromCache` parameter. 
+* For `SDK_READY_TIMED_OUT`, you can set the `updateOnSdkTimedout` parameter.
+* For `SDK_UPDATE`, you can set the `updateOnSdkUpdate` parameter.
+The default value for all these parameters is `true`.
+
+The `useSplitClient` and `useSplitTreatments` hooks return the SDK client and treatment evaluations respectively, together with a set of **status properties** to conditionally render the component.
+
+These properties consist of the following:
+
+- `isReady`: a boolean indicating if the `SDK_READY` event was triggered.
+- `isReadyFromCache`: a boolean indicating if the `SDK_READY_FROM_CACHE` event was triggered.
+- `hasTimedout`: a boolean indicating if the `SDK_READY_TIMED_OUT` event was triggered.
+- `isTimedout`: a boolean indicating if the `SDK_READY_TIMED_OUT` event was triggered and the SDK is not ready to be consumed. Formally, `isTimedout` is equivalent to `hasTimeout && !isReady`.
+- `lastUpdate`: timestamp of the last listened event.

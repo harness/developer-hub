@@ -1,0 +1,171 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Jest test with Enzyme', value: 'enzyme'},
+    {label: 'Jest test with React Testing Library', value: 'reacttestinglibrary'},
+    {label: 'Jest test with React Test Renderer', value: 'reacttestrenderer'},
+  ]} >
+  <TabItem value="enzyme">
+
+```javascript
+import React from 'react';
+// Enzyme testing utility: https://www.npmjs.com/package/enzyme
+import { mount } from 'enzyme';
+import { SplitFactoryProvider, useSplitTreatments } from '@splitsoftware/splitio-react';
+
+const config = {
+  core: {
+    authorizationKey: 'localhost',
+    key: 'user_id'
+  },
+  features: {
+    'reporting_v2': 'on', // example with just a string value for the treatment
+    'billing_updates': { treatment: 'visa', config: '{ "color": "blue" }' }, // example of a defined config
+    'show_status_bar': { treatment: 'off', config: null } // example of a null config
+  }
+};
+
+const MyComponent = () => {
+  const { isReady, treatments } = useSplitTreatments({ names=['reporting_v2'] });
+
+  return <div>{`${isReady ? 'SDK ready.' : 'SDK not ready.'} Feature flag reporting_v2 is ${treatments['reporting_v2'].treatment}`}</div>;
+}
+
+const MyApp = () => {
+  return (
+    <SplitFactoryProvider config={config} >
+      <MyComponent />
+    </SplitFactoryProvider>
+  );
+};
+
+describe('MyApp', () => {
+  test('renders the correct treatment', (done) => {
+    const wrapper = mount(<MyApp/>);
+
+    // On the initial rendered output, the SDK is not ready. So treatment values are control.
+    expect(wrapper.html().includes('SDK not ready. Feature flag reporting_v2 is control')).toBeTruthy();
+
+    // In localhost mode, the SDK is ready and the component re-rendered with the mocked treatment on next event-loop tick.
+    // So we call `wrapper.update()` in a timeout callback to re-render the component.
+    setTimeout(() => {
+      wrapper.update();
+      expect(wrapper.html().includes('SDK ready. Feature flag reporting_v2 is on')).toBeTruthy();
+
+      done();
+    }, 0);
+  });
+});
+```
+
+  </TabItem>
+  <TabItem value="reacttestinglibrary">
+
+```javascript
+import React from "react";
+// React testing library: https://www.npmjs.com/package/@testing-library/react
+import { render, waitFor } from "@testing-library/react";
+import { SplitFactoryProvider, useSplitTreatments } from "@splitsoftware/splitio-react";
+
+const config = {
+  core: {
+    authorizationKey: 'localhost',
+    key: 'user_id'
+  },
+  features: {
+    'reporting_v2': 'on', // example with just a string value for the treatment
+    'billing_updates': { treatment: 'visa', config: '{ "color": "blue" }' }, // example of a defined config
+    'show_status_bar': { treatment: 'off', config: null } // example of a null config
+  }
+};
+
+const MyComponent = () => {
+  const { isReady, treatments } = useSplitTreatments({ names=['reporting_v2'] });
+
+  return <div>{`${isReady ? 'SDK ready.' : 'SDK not ready.'} Feature flag reporting_v2 is ${treatments['reporting_v2'].treatment}`}</div>;
+}
+
+const MyApp = () => {
+  return (
+    <SplitFactoryProvider config={config} >
+      <MyComponent />
+    </SplitFactoryProvider>
+  );
+};
+
+describe('MyApp', () => {
+  test('renders the correct treatment', async () => {
+    const { getByText, findByText } = render(<MyApp/>);
+
+    // On the initial rendered output, the SDK is not ready. So treatment values are control.
+    expect(getByText('SDK not ready. Feature flag reporting_v2 is control')).toBeTruthy();
+
+    // In localhost mode, the SDK is ready and the component re-rendered with the mocked treatment on next event-loop tick.
+    // So we use `findByText` to wait for the component to update.
+    expect(await findByText('SDK ready. Feature flag reporting_v2 is on')).toBeTruthy();
+
+    // `waitFor` (https://testing-library.com/docs/dom-testing-library/api-async/#waitfor) can also be used:
+    expect(await waitFor(() => getByText('SDK ready. Feature flag reporting_v2 is on')));
+  });
+});
+```
+
+  </TabItem>
+  <TabItem value="reacttestrenderer">
+
+```javascript
+import React from 'react';
+// React Test Renderer: https://reactjs.org/docs/test-renderer.html
+import { create } from 'react-test-renderer';
+import { SplitFactoryProvider, useSplitTreatments } from '@splitsoftware/splitio-react';
+
+const config = {
+  core: {
+    authorizationKey: 'localhost',
+    key: 'user_id'
+  },
+  features: {
+    'reporting_v2': 'on', // example with just a string value for the treatment
+    'billing_updates': { treatment: 'visa', config: '{ "color": "blue" }' }, // example of a defined config
+    'show_status_bar': { treatment: 'off', config: null } // example of a null config
+  }
+};
+
+const MyComponent = () => {
+  const { isReady, treatments } = useSplitTreatments({ names=['reporting_v2'] });
+
+  return <div>{`${isReady ? 'SDK ready.' : 'SDK not ready.'} Feature flag reporting_v2 is ${treatments['reporting_v2'].treatment}`}</div>;
+}
+
+const MyApp = () => {
+  return (
+    <SplitFactoryProvider config={config} >
+      <MyComponent />
+    </SplitFactoryProvider>
+  );
+};
+
+describe('MyApp', () => {
+  test('renders the correct treatment', (done) => {
+    const root = create(<MyApp/>);
+
+    // On the initial rendered output, the SDK is not ready. So treatment values are control.
+    expect(root.toJSON().children[0]).toEqual('SDK not ready. Feature flag reporting_v2 is control');
+
+    // In localhost mode, the SDK is ready and the component re-rendered with the mocked treatment on next event-loop tick.
+    // So we call `root.update` in a timeout callback to re-render the component.
+    setTimeout(() => {
+      root.update(<MyApp/>);
+      expect(root.toJSON().children[0]).toEqual('SDK ready. Feature flag reporting_v2 is on');
+
+      done();
+    }, 0);
+  });
+});
+```
+
+  </TabItem>
+</Tabs>
