@@ -11,7 +11,7 @@ If a HCE release is not backward compatible, upgrade your chaos infrastructure t
 
 :::warning
 - If you don't upgrade your infrastructure for these types of releases, chaos experiments may fail.
-- Checkout this [video tutorial to upgrade your chaos infrastructure to 1.38.x or higher](https://youtu.be/fAnsGqkcdkc).
+- [This video](https://youtu.be/fAnsGqkcdkc) tutorial provides a step-by-step walkthrough to upgrade your chaos infrastructure to 1.38.x or higher].
 :::
 
 These are the high-level steps to upgrade your chaos infrastructure, explained in detail later:
