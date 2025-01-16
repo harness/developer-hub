@@ -168,3 +168,13 @@ You can delete an AutoStopping rule from the Summary of Rules Page or from the d
 
    ![](./static/autostopping-dashboard-49.png)
 
+
+### Overlapping Schedules
+
+
+Harness AutoStopping Rules now support overlapping schedules, offering enhanced flexibility for resource management. Users can define multiple fixed schedules within a single AutoStopping rule, even if they overlap. The resulting schedule is determined based on a customizable priority order, which can be adjusted using a drag-and-drop interface.  
+
+Overlapping schedules are particularly useful for organizations with teams operating in different time zones or for scenarios where temporary overrides, such as maintenance windows, need to be added to an existing schedule. By prioritizing schedules, users can ensure that the most critical rules are applied at the right time without modifying or deleting existing configurations.  
+
+<DocImage path={require('./static/overlapping_schedules1.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/overlapping_schedules2.png')} width="90%" height="90%" title="Click to view full size image" />
