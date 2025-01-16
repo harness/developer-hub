@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-12-19T10:00
+date: 2025-01-16T10:00
 sidebar_position: 5
 ---
 
@@ -30,7 +30,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Fixed the issue where fault templates were not working without enabling the feature flag associated with it. (CHAOS-7210)
 
-- Fixed the issue where automatic experiment creation was unable to create multiple experiments in **Maximum mode**. (CHAOS-7214)
+- Fixed the issue where automatic experiment creation was unable to create the required number of experiments in **Advanced/Maximum** mode. (CHAOS-7214)
 
 ## Previous releases
 
