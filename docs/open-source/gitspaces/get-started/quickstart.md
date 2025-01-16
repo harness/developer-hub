@@ -1,7 +1,7 @@
 ---
 title: Quickstart Guide
 description: Get started with Harness Open Source Gitspaces with a few simple steps.
-sidebar_position: 3
+sidebar_position: 1
 sidebar_label: Quickstart
 ---
 

@@ -37,6 +37,20 @@ This fault helps determine how resilient an application is when stress is applie
 
 <FaultDetailsCard category="windows">
 
+### Windows Disk stress
+
+Windows disk stress injects disk stress into a Windows OS based VM, by consuming and exhausting the disk resources on the target Windows machine.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Simulates a lack of disk for processes running on the application, causing performance degradation and system slowdowns.
+- Simulates slow application traffic or resource exhaustion, leading to degradation in the performance of processes on the machine.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="windows">
+
 <!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
 
 ### Windows memory stress
@@ -123,6 +137,21 @@ Windows network loss causes network packet loss on Windows VM for the target hos
 - Simulates loss of access to specific third party (or dependent) services (or components).
 - Simulates blackhole against traffic to a given availability zone, that is, failure simulation of availability zones.
 - Simulates network partitions (split-brain) between peer replicas for a stateful application.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="windows">
+
+### Windows Process Kill
+
+Windows process kill kills the target processes that are running as a part of a Windows OS based VM. The services that are disrupted might be running in the VM, and this fault kills their underlying processes or threads. 
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- It helps determine the resilience of an application (or process) running on the Windows VMs.
+- Induces process kill using the process IDs and process name on the target Windows machines.
+- Simulates loss of processes, leading to degradation in the performance of application on the machine.
 </Accordion>
 
 </FaultDetailsCard>

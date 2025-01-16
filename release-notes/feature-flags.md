@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-11-13T08:09:25
+date: 2025-01-15T08:09:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,11 +15,35 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: November 13, 2024
+#### Last updated: January 15, 2025
 
 ## November 2024
 
 ### Ruby Server SDK
+
+#### Version 1.4.5
+
+**Fixed Issues**:
+ Following from 1.4.3, we are still investigating an edge case in the SDK, where segmentation faults can occur when the SDK aggregates and sends metrics at the end of an interval:
+ - Evaluation metrics now use String keys, instead of class based keys. (FFM-12192)
+
+#### Version 1.4.4 
+
+**Fixed Issues**:
+ Following from 1.4.3, we are still investigating an edge case in the SDK, where segmentation faults can occur when the SDK aggregates and sends metrics at the end of an interval:
+ - Replaces `concurrent-ruby/ConcurrentMap` with our own thread safe hash implementation. 
+ - Fixed race condition if the optional `timeout_ms` argument is provided to `wait_for_initialization` and the SDK times out and initializes at the same time which could cause undefined behaviour for the lifetime of the SDK. (FFM-12192)
+
+ We have fixed some behaviour around default variations being returned:
+ - Default variations are returned immediately:
+  - if the SDK is not initialized or still initializing. This avoids potentially incomplete evaluations caused by partial cache data.
+  - if a flag cannot be found and logs a warning.
+  - if a requested variation does not match the flag type, the SDK now returns the default variation and logs a warning. (FFM-12192)
+
+#### Version 1.4.3
+
+**Fixed Issues**:
+- Resolves an issue where Segmentation faults can occur on Ruby 3.4 and above. (FFM-12192)
 
 #### Version 1.4.2
 
@@ -27,6 +51,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Following from 1.4.1, we are still investigating an edge case in the SDK, where very large projects can generate 
  invalid metric events shortly after the SDK has initialised. This patch includes possible fixes for this issue. 
  (FFM-12192)
+
+#### Version 1.4.1
+
+**Fixed Issues**:
+ - Skips processing invalid metrics if they are detected. We are currently investigating an edge case in the SDK, where very large projects can generate 
+ invalid metric events shortly after the SDK has initialised. This patch release ensures these invalid metrics events are skipped, and a warning is logged 
+ if the SDK encounters them. The impact of flag evaluation metrics will not include any events that have been skipped. (FFM-12192)
 
 ## October 2024
 

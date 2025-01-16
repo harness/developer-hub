@@ -608,9 +608,9 @@ async function config() {
       path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
     ],
     clientModules: [
-      path.join(__dirname, '/client_module/searchBar'),
-      path.join(__dirname, '/client_module/iframeEmbed'),
-      path.join(__dirname, '/client_module/chatbot'),
+      path.join(__dirname, '/client-modules/searchBar'),
+      path.join(__dirname, '/client-modules/iframeEmbed'),
+      path.join(__dirname, '/client-modules/chatbot'),
     ],
     stylesheets: [
       {

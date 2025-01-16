@@ -100,9 +100,17 @@ When you're done, infrastructure will look something like this:
 
 ![](static/azure-functions-6.png)
 
+:::info note
+In the deploy steps under Container Configuration, specify the appropriate image based on your container registry:
+
+1. [ECR Image for azure function plugin](https://gallery.ecr.aws/harness/harness/azure-function-plugin)
+2. [Docker Image for azure function plugin](https://hubgw.docker.com/r/harnessdev/azure-function-plugin)
+
+:::
+
 ## Azure function Deploy
 
-In the execution tab of the pipeline stage, select *Add Step** and select **Azure function Deploy**.
+In the execution tab of the pipeline stage, select **Add Step** and select **Azure function Deploy**.
 
 Currently Azure function deployment supports basic and custom deployment strategy.
 
@@ -111,7 +119,7 @@ The Azure function Deploy step has the following settings:
  * **Name:** Enter a name for the step.
  * **Timeout:** Enter a minimum of **10m**. The slot deployment relies on Azure and can take time.
  * **Azure Connector**: Specify the connector that connects to the azure infrastructure.
- * **Image**: Specify the artifact image you want to deploy.
+ * **Image**: Specify the artifact image you want to run. 
  * **Function app**: Specify the Azure Container to be used.
  * **Deployment Slot:** Enter the name of the Source slot for the deployment. This slot is where Harness deploys the new Azure Function version. Make sure the slot you enter is running.
 
@@ -149,3 +157,9 @@ Additionally you can have optional configurations such as
 * **Limit CPU:** Sets a limit on the CPU usage for the function or container, ensuring the function does not consume excessive resources.
 
 ![](static/azure-functions-7.png)
+
+## Azure Function Deployment Sample 
+
+To see an example of how to deploy Azure Functions using Harness, visit the [Harness Community Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/azure-function-deployment).
+
+This repository provides a ready-to-use sample application and the necessary configuration files to help you get started quickly.
