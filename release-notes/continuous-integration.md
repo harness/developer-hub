@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-01-10T10:00
+date: 2025-01-17T10:00
 sidebar_position: 10
 ---
 
@@ -21,6 +21,22 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## January 2025
+
+### Version 1.61
+
+<!-- 2025-01-13 -->
+
+#### New features and enhancements
+
+- Added support for mTLS for CI Build stages using Kubernetes infrastructure. This requires using the [latest delegate with mTLS enabled](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support/). (CI-14888)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `plugins/drone-git`      | Updated dependencies to address vulnerabilities | 1.6.3                | 1.6.4           |
+| `plugins/ci-addon`       | Minor updates and improvements                  | 1.16.69              | 1.16.71         |
+| `plugins/ci-lite-engine` | Minor updates and improvements                  | 1.16.69              | 1.16.71         |
 
 ### Version 1.60
 
