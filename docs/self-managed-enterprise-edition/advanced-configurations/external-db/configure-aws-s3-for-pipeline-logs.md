@@ -134,7 +134,6 @@ stringData:
 
 Harness allows you to store logs in AWS S3 via the AWS S3 client. To set this up, you need the S3 Access Key, S3 Secret Key, Endpoint, Region, and Bucket Name. First, create a Kubernetes secret with your AWS access and secret keys for the bucket.
 
-If direct bucket access is not possible, you can use the private access endpoint:
 
 ```yaml
 platform:
