@@ -79,7 +79,7 @@ This topic assumes you have a Harness Project set up. If not, refer to [Create O
 You can add a connector from any module in your Project in Project SETUP, or in your Organization, or Account Resources.
 
 1. Select one of the following settings: **Project**, **Organization**, or **Account**.
-2. Navigate to **X-level Resources**.
+2. Navigate to **(Account/Organization/Project)-level Resources**.
 3. Click on **Connectors**.
 4. Click on **New Connectors**.
 5. Scroll down and check for **Secret Manager**.
