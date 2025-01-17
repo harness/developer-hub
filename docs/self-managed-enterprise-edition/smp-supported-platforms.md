@@ -5,12 +5,6 @@ sidebar_label: What's supported
 sidebar_position: 1
 ---
 
-:::warning
-
-Harness ended support of KOTS-based installations and upgrades as of **December 1, 2023**. Harness customer support will no longer take any incoming questions on KOTs.
-
-:::
-
 import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';
 
 <Smp />
@@ -26,7 +20,7 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 * [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported)
 * [Service Reliability Management](/docs/service-reliability-management/srm-whats-supported)
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
+For details on the supported features of other Harness modules and the overall Harness Platform, visit [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
 ## Production environment deployment infrastructure
 
@@ -44,12 +38,9 @@ import Infra2 from '/docs/self-managed-enterprise-edition/shared/dev-env-infra.m
 * Istio supported version: 1.15.3 to 1.24.2
 * NGINX supported version: v1.3.0
 
-### RBAC requirements
-
-The following permissions are required:
-* Deploy Helm
-* Add roles
-* Add/edit secrets
+:::note Admin Access required for Kubernetes
+Ensure you have admin access to Kubernetes before proceeding with the installation.
+:::
 
 ### License requirements
 * Contact [Harness Support](mailto:support@harness.io) for license information.

@@ -11,7 +11,9 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness Self-Managed Enterprise Edition brings a robust and flexible software delivery platform to organizations seeking control over their deployment infrastructure. This topic describes user profiles and reference architectures, outlining the key components and best practices for implementing Harness Self-Managed Enterprise Edition. Organizations can optimize their software delivery platform with these architectures, ensuring reliability, scalability, and consistent software deployments.
+Harness Self-Managed Enterprise Edition brings a robust and flexible software delivery platform to organizations seeking control over their deployment infrastructure. This topic describes user profiles and reference architectures, outlining the key components and best practices for implementing Harness Self-Managed Enterprise Edition. 
+
+Organizations can optimize their software delivery platform with these architectures, ensuring reliability, scalability, and consistent software deployments.
 
 ## User profiles
 
@@ -48,45 +50,70 @@ Override files are available in the Harness [Helm chart repo](https://github.com
 
 You can use the following commands to upgrade/install via Helm for each profile. For complete Helm installation instructions, go to [Install using Helm](/docs/self-managed-enterprise-edition/install/install-using-helm).
 
-##### Demo
 
+### Demo
+<Tabs>
+<TabItem value="Demo install" label="Install">
+  
    ```
    helm install my-release harness/harness-prod -n <namespace> -f your-override.yaml -f override-demo.yaml
    ```
-
+</TabItem>
+<TabItem value="Demo Upgrade" label="Upgrade">
+  
    ```
    helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-demo.yaml
    ```
+</TabItem>
+</Tabs>
 
-##### Small
+### Small
+<Tabs>
+<TabItem value="small install" label="Install">
+  
+  ```
+    helm install my-release harness/harness-prod -n <namespace> -f your-override -f override-small.yaml
+  ```
+</TabItem>
+<TabItem value="Small Upgrade" label="Upgrade">
+  
+  ```
+   helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-demo.yaml
+  ```
+</TabItem>
+</Tabs>
 
-```
-helm install my-release harness/harness-prod -n <namespace> -f your-override -f override-small.yaml
-```
+### Medium
+<Tabs>
+<TabItem value="small install" label="Install">
 
-```
-helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-small.yaml
-```
+  ```
+  helm install my-release harness/harness-prod -n <namespace> -f your-override -f override-medium.yaml
+  ```
+</TabItem>
+<TabItem value="Small Upgrade" label="Upgrade">
+  
+  ```
+    helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-medium.yaml
+  ```
+</TabItem>
+</Tabs>
 
-#### Medium
+### Large
+<Tabs>
+<TabItem value="small install" label="Install">
 
-```
-helm install my-release harness/harness-prod -n <namespace> -f your-override -f override-medium.yaml
-```
+  ```
+    helm install my-release harness/harness-prod -n <namespace> -f your-override -f override-large.yaml
+  ```
+</TabItem>
+<TabItem value="Small Upgrade" label="Upgrade">
 
-```
-helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-medium.yaml
-```
-
-##### Large
-
-```
-helm install my-release harness/harness-prod -n <namespace> -f your-override -f override-large.yaml
-```
-
-```
-helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-large.yaml
-```
+  ```
+    helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-large.yaml
+  ```
+</TabItem>
+</Tabs>
 
 ## Customer reference architectures
 
@@ -108,69 +135,66 @@ Recognizing that each organization has unique requirements, this reference archi
 
 ![](./static/smp-ref-arch-dt.png)
 
-<Tabs>
+<details>
+  <summary>
+    Demo mode
+  </summary>
+  The demo mode reference architecture is designed for demonstration and learning purposes and includes an in-cluster database, but doesn't include backup and restore.
+</details>
 
-  <TabItem value="Demo mode" label="Demo mode">
+<details>
+  <summary>
+    Prod 1 replica mode w/in-cluster DB and Backup and Restore
+  </summary>
+  Prod 1 replica mode w/in-cluster DB and Backup and Restore is designed for organizations that use Harness Self-Managed Enterprise Edition in production but do not require HA.
+</details>
 
-The demo mode reference architecture is designed for demonstration and learning purposes and includes an in-cluster database, but doesn't include backup and restore.
+<details>
+  <summary>
+    Prod 3 replica mode w/in-cluster DB and Backup and Restore
+  </summary>
+  Prod 3 replica mode w/in-cluster DB and Backup and Restore is designed for organizations that:
 
-</TabItem>
-  <TabItem value="Prod 1 replica mode w/in-cluster DB and Backup and Restore" label="Prod 1 replica mode w/in-cluster DB and Backup and Restore">
+    - Use Harness Self-Managed Enterprise Edition in production
+    - Require HA
+    - Do not have the ability to manage external DBs
+</details>
 
-Prod 1 replica mode w/in-cluster DB and Backup and Restore is designed for organizations that use Harness Self-Managed Enterprise Edition in production but do not require HA.
+<details>
+  <summary>
+    Prod 3 replica mode w/self-managed external DB
+  </summary>
+    Prod 3 replica mode w/self-managed external DB is designed for organizations that:
 
-</TabItem>
-  <TabItem value="Prod 3 replica mode w/in-cluster DB and Backup and Restore" label="Prod 3 replica mode w/in-cluster DB and Backup and Restore">
+    - Use Harness Self-Managed Enterprise Edition in production
+    - Require HA
+    - Have the need and ability to manage external DBs
 
-Prod 3 replica mode w/in-cluster DB and Backup and Restore is designed for organizations that:
+    ## Database options
 
-- Use Harness Self-Managed Enterprise Edition in production
-- Require HA
-- Do not have the ability to manage external DBs
+    You can configure any of the following external databases with Harness Self-Managed Enterprise Edition:
 
-</TabItem>
-  <TabItem value="Prod 3 replica mode w/self-managed external DB" label="Prod 3 replica mode w/self-managed external DB">
+    - [Cloud-based MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-mongodb-database)
+    - [Self-managed MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb)
+    - [Self-managed PostgreSQL](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database)
+    - [Self-managed Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database)
+    - [Self-managed TimescaleDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb)
+</details>
 
-Prod 3 replica mode w/self-managed external DB is designed for organizations that:
+<details>
+  <summary>
+    Disaster recovery w/warm standby
+  </summary>
+    Disaster recovery w/warm standby is designed for organizations that:
 
-- Use Harness Self-Managed Enterprise Edition in production
-- Require HA
-- Have the need and ability to manage external DBs
+    - Use Harness Self-Managed Enterprise Edition in production
+    - Require HA
+    - Have the expertise to manage external DBs
+    - Require self-managed external DBs
+    - Require DR when a Kubernetes cluster or cloud region fails
 
-## Database options
-
-You can configure any of the following external databases with Harness Self-Managed Enterprise Edition:
-
-- [Cloud-based MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-mongodb-database)
-- [Self-managed MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb)
-- [Self-managed PostgreSQL](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database)
-- [Self-managed Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database)
-- [Self-managed TimescaleDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb)
-
-</TabItem>
-  <TabItem value="Prod 3 replica mode w/external cloud-based DBs" label="Prod 3 replica mode w/external cloud-based DBs">
-
-Prod 3 replica mode w/external cloud-based DBs is designed for organizations that:
-
-- Use Harness Self-Managed Enterprise Edition in production
-- Require HA
-- Don't need self-managed external DBs.
-
-</TabItem>
-  <TabItem value="Disaster recovery w/warm standby" label="Disaster recovery w/warm standby">
-
-Disaster recovery w/warm standby is designed for organizations that:
-
-- Use Harness Self-Managed Enterprise Edition in production
-- Require HA
-- Have the expertise to manage external DBs
-- Require self-managed external DBs
-- Require DR when a Kubernetes cluster or cloud region fails
-
-For more information, go to [Set up disaster recovery](/docs/self-managed-enterprise-edition/advanced-configurations/set-up-disaster-recovery).
-
-</TabItem>
-</Tabs>
+    For more information, refer [Set up disaster recovery](/docs/self-managed-enterprise-edition/advanced-configurations/set-up-disaster-recovery).
+</details>
 
 ## Benefits of the reference architectures
 
