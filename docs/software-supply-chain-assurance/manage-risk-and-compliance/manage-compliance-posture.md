@@ -21,7 +21,7 @@ Currently Harness supports Code Repositories, and CI/CD. Please refer to the [Us
 
 The Summery tab provides comprehensive details of evaluations conducted across all entity types of the software supply chain. This tab offers details about:
 
-<DocImage path={require('./static/compliance-summery-tab.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/scs-compliance-overview-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
 * **Evaluation Breakdown**: A summary of rules passing versus failing. 
 * **Failure by Severity**: Displays the number of failures categorized by severity levels: critical, high, medium, and low. 
@@ -54,6 +54,6 @@ Upon clicking a rule in the Rules tab, you will see a list of all the entities i
 
 Clicking on an item will bring up the latest evaluation details. Alternatively, you can click on an icon from the evaluation history to view specific evaluation details. The information includes the time of evaluation, the reason for failure (if failed), and the remediation information to address the issues.
 
-<DocImage path={require('./static/compliance-rules-impacted-entity-details.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/scs-compliance-sideview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 

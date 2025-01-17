@@ -35,19 +35,20 @@ Each category contributes to an overall score reflecting the SBOM's quality, com
 You can view the scores of all generated SBOMs from the **Artifacts view**. Additionally, the score of an SBOMs generated from a specific pipeline execution can be found in the **Supply Chain** tab within the pipeline execution window.
 
 ### Artifact view in SCS
-Go to SCS module, and navigate to [Artifacts](../artifact-view.md) section.
-You can view the score alongside the SBOM under the SBOM column.
 
-!["SBOM Score from Artifacts view"](./static/sbom-score-artifact-view.png)
+Click on the [Artifacts](../artifact-view.md) section in the left-hand panel which lists all the artifacts. Choose any one of the artifacts,to access a detailed list of all associated digests of the artifact.You can view the corresponding score alongside the SBOM (Software Bill of Materials) in the SBOM column
+
+!["SBOM Score from Artifacts view"](./static/sbom-score-view.png)
+
 
 By clicking on the score, you see the complete breakdown of scores in various categories. You can expand each category to see the score of individual items
 
-!["SBOM Score details"](./static/sbom-score-details.png)
+!["SBOM Score details"](./static/sbom-scorecard.png)
 
 ### Supply Chain Tab 
 The scores of the SBOM for a specific pipeline execution can be found in the **Supply Chain** tab within the pipeline execution window.
 
-!["SBOM Score from Supply Chain Tab"](./static/sbom-score-ssca-tab.png)
+!["SBOM Score from Supply Chain Tab"](./static/sbom-score.png)
 
 ## Score Interpretation
 
