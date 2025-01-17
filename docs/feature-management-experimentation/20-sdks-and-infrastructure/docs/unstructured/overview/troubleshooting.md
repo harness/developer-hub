@@ -1,3 +1,13 @@
+---
+title: SDK troubleshooting
+sidebar_label: FME SDK troubleshooting
+helpdocs_is_private: true
+helpdocs_is_published: false
+---
+
+<p>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025918571-Troubleshooting </button>
+</p>
 
 Our SDKs have a standardized interface for inputs to every method. If you have issues getting up and running with any of our SDKs or aren't getting the expected return from any method or to the Split user interface, you can find a detailed view of the types of validation that our SDK performs for each method below.
 
@@ -204,8 +214,8 @@ SDK will log the warning: “no ready parameter has been set - incorrect control
 ###(JS SDK only) Log warning if there are no proper callbacks for either the event or the ready promise. 
 SDK will log the warning: “No listeners for SDK Readiness detected. Incorrect control treatments could be logged if you call getTreatment while the SDK is not yet ready”
 
-### (JS SDK only) If the readiness events are subscribed to) AFTER the SDK is ready:
-SDK will log the warning: “A listener was added for {event name} on the SDK, which has already fired and won’t be emitted again. The callback won’t be executed.”
+### (JS SDK only) If the readiness events are subscribed to AFTER the SDK is ready:
+SDK will log the warning: “A listener was added for \{event name\} on the SDK, which has already fired and won’t be emitted again. The callback won’t be executed.”
 
 # GetTreatments Method Validation
 

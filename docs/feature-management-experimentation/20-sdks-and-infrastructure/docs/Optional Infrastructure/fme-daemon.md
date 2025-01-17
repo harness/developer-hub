@@ -1,6 +1,6 @@
 ---
 title: FME Daemon
-sidebar_label: Split Daemon
+sidebar_label: FME Daemon
 description: IPC interface (via Unix sockets) for caching FME feature flag definitions
 ---
 
