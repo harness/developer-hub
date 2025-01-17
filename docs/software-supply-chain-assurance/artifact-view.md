@@ -59,7 +59,7 @@ You can search for a specific digest or apply filters based on dependencies, lic
 ## Artifact Overview
 
 
-<DocImage path={require('./static/artifact-overvview.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/scs-fullview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 When you select an artifact’s digest, you can view a complete overview. This tab provides general information about the artifact and summarizes the following aspects concisely:
@@ -81,7 +81,7 @@ Each entry in the Chain of Custody contains relevant details about the artifact'
 - **Where**: The stage where the event occurred.  
 - **Why**: The purpose of the action, often linked to pipeline execution data.
 
-<DocImage path={require('./static/artifacts-section/artifact-chain-of-custody.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/scs-chainofcustody.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ## SBOM Tab
 
@@ -95,7 +95,7 @@ The SBOM tab presents details of all the dependencies within the artifact, inclu
 * **PURL:** Package URL.
 * **Supplier:** Source of the dependency.
 
-<DocImage path={require('./static/artifacts-section/artifact-sbom.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/scs-sbomtab.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 For more information about the levels of image dependencies, refer to the "[Label Components from Image](https://developer.harness.io/docs/software-supply-chain-assurance/label-components-from-image)" documentation.
