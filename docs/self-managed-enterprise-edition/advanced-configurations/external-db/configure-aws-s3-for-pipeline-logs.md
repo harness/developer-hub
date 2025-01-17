@@ -1,7 +1,7 @@
 ---
-title: Support for AWS S3 to Store Pipeline Logs
+title: Configure AWS S3 to Store Pipeline Logs
 description: Learn how to use AWS S3 to store pipeline logs securely in Harness.
-sidebar_label: Configuring AWS S3 to Store Pipeline Logs in Harness
+sidebar_label: Configure AWS S3 to Store Pipeline Logs in Harness
 sidebar_position: 31
 ---
 
