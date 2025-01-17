@@ -28,9 +28,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### New features and enhancements
 
-- Added support for mTLS for Kubernetes infrastructure in self-hosted VM runners. This enhancement ensures secure communication between runners and the Harness platform. (CI-14888)
-
-For more details, refer to the documentation: [Delegate mTLS support](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support/).
+- Added support for mTLS for CI Build stages using Kubernetes infrastructure. This requires using the [latest delegate with mTLS enabled](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support/). (CI-14888)
 
 #### Harness images updates
 
