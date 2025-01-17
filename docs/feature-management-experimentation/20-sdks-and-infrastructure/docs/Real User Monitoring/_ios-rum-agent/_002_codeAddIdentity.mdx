@@ -1,0 +1,18 @@
+The RUM Agent provides methods to manage Identities, as shown below.
+
+```Swift
+// add one Identity
+SplitRum.addIdentity(key: "my_user", trafficType: "user")
+
+// add multiple Identities
+SplitRum.add(identities: [
+            SplitIdentity(key: "user_key1", trafficType: "user"),
+            SplitIdentity(key: "user_key2", trafficType: "user")
+            ])
+
+// remove one Identity
+SplitRum.removeIdentity(key: "my_user", trafficType: "user")
+
+// remove all Identities
+SplitRum.removeIdentities()
+```

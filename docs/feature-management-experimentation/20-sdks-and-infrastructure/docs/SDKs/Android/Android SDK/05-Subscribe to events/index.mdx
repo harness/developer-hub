@@ -4,6 +4,30 @@ sidebar_label: Subscribe to SDK events
 description: Improve UX by listening for SDK ready and update events.
 ---
 
-import SubscribeToEvents from '../../../Java/Android SDK/05-Subscribe to events/index.mdx';
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
 
-<SubscribeToEvents />
+import {
+  SdkEvents,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
+
+import SplitEventTask from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_050_codeSplitEventTask.mdx";
+import ClientOnEvent  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_050_codeClientOnEvent.mdx";
+
+export const toc = [];
+
+export const Result = SDKDocsBuilder(
+  [
+    [
+      SdkEvents,
+      {
+        codeSplitEventTask: <SplitEventTask />,
+        codeClientOnEvent:  <ClientOnEvent />,
+      },
+    ],
+  ],
+  toc
+);
+
+<>{Result}</>

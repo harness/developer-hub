@@ -1,0 +1,11 @@
+Registering a custom event collector:
+
+```javascript
+SplitRumAgent.register(({ track }) => {
+  track({
+    eventTypeId: 'event_type_id',
+    value: 100, // optional value
+    properties: { 'property_name': 'property_value' } // optional properties
+  })
+});
+```

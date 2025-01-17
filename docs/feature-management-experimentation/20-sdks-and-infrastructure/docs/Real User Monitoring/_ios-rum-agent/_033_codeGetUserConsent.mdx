@@ -1,0 +1,25 @@
+```swift title="User consent: Initial config, getter and setter"
+  // Overwrites the initial consent status of the factory instance, which is 'GRANTED' by default.
+  // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
+  let cfg = SplitRumConfig().userConsent(.unknown)
+
+  // so the Agent locally tracks data but not send it to Split cloud until consent is changed to 'GRANTED'.
+  try? SplitRum.setup(apiKey: apiKey, config: config)
+
+  // Changed User Consent status to 'GRANTED'. Data will be sent to Split cloud.
+  SplitRum.setUserConsent(enabled: true);
+  // Changed User Consent status to 'DECLINED'. Data will not be sent to Split cloud.
+  SplitRum.setUserConsent(enabled: false);
+
+  // The 'getUserConsent' method returns User Consent status.
+  // We expose the constants for customer checks and tracking.
+  if (SplitRum.userConsent == UserConsent.declined) {
+      print("USER CONSENT DECLINED");
+  }
+  if (SplitRum.userConsent == UserConsent.granted) {
+      print("USER CONSENT GRANTED");
+  }
+  if (SplitRum.userConsent == UserConsent.unknown) {
+      print("USER CONSENT UNKNOWN");
+  }
+```

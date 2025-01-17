@@ -1,0 +1,5 @@
+| **Event type ID** | **Description** | **Has value?** | **Has properties?** |
+| --- | --- | --- | --- |
+| error | Any JavaScript unhandled error and promise rejection | No | ```{ message: string, stack: string }``` |
+| page.load.time | Time in milliseconds elapsed until the document is fully loaded and parsed. It is equivalent to the time until the [load event](https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event) is fired. | Yes | No |
+| time.to.dom.interactive | Time in milliseconds until the document is ready and before the full page load time. If this time is high, it usually implies that the critical rendering path is complex and that the download of resources will start later. Related to the [domInteractive](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming/domInteractive) property. | Yes | No |

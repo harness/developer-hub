@@ -1,65 +1,9 @@
 ---
 title: FME Android SDK
 sidebar_label: Android SDK
-description: Android developer reference for working with FME
+description: Java developer reference for working with FME on Android
 ---
 
-import DocCardList from '@theme/DocCardList';
+import AndroidSdk from '../../Android/Android SDK/index.mdx';
 
-import {
-  SDKDocsBuilder
-} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
-
-import {
-  Repository,
-  GetStarted,
-  UseTheSdk,
-} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
-
-import Introduction from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_001_introduction.mdx";
-import Language     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_001_language.mdx";
-import Import       from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_001_codeImport.mdx";
-import Initiate     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_001_codeInitiate.mdx";
-
-import GetTreatment from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_002_codeGetTreatment.mdx";
-import UseNotes     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_002_notes.mdx";
-
-import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
-
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
-  [
-    [ 
-      Repository, 
-      { 
-        repo: "https://github.com/splitio/android-client",
-      }, 
-    ],
-    [ 
-      GetStarted, 
-      {
-        sdkName:         "Android",
-        sdkKeyType:      "client-side",
-        repo:            "https://github.com/splitio/android-client",
-        introduction:    <Introduction />,
-        language:        <Language />,
-        codeImport:      <Import />,
-        codeInitiate: <Initiate />,
-        sdkKeyDetails:   <ClientSdkKeyDetails />,
-      },
-    ],
-    [
-      UseTheSdk,
-      {
-        codeGetTreatment: <GetTreatment />,
-        notes:            <UseNotes />,
-      },
-    ],
-  ],
-  toc
-);
-
-<>{Result}</>
-
-<DocCardList />
+<AndroidSdk />

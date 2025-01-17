@@ -1,0 +1,12 @@
+Custom properties can be also added to a tracked event by using the various methods for managing them.
+
+```swift
+// add a single property
+SplitRum.setProperty(name: "property_name", value: "property_value")
+
+// add multiple properties
+SplitRum.set(properties: ["property_name_1": "property_value_1", "property_name_2": "property_value_2"])
+
+// remove property
+func remove(property: "property_name")
+```

@@ -1,0 +1,23 @@
+Log level can be configured using the `SplitRumAgent-Info.plist` file or programmatically. Values specified programmatically will override any of the same values specified in the configuration file.
+
+Configuration using the manifest file:
+
+```xml title="AndroidManifest.xml configuration"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>apiKey</key>
+	<string>YOUR_SDK_KEY</string>
+  <key>logLevel</key>
+	<string>DEBUG</string>
+</dict>
+</plist>
+```
+
+Configuration specified programatically:
+
+```swift
+let config = SplitRumConfig().logLevel(.verbose)
+SplitRum.setup(apiKey: "YOUR_SDK_KEY", config: config)
+```

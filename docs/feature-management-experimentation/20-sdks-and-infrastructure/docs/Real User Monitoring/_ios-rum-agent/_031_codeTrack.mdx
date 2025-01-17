@@ -1,0 +1,14 @@
+```swift
+// Examples
+// Track event for an identity``
+let result = SplitRum.track(eventType: "event_type_id",
+                            userKey: "user",
+                            trafficType: "traffic_type",
+                            value: 100.0,
+                            properties: ["property_name_1": "value1", "property_name_2": "value2"])
+
+// Track event with value and properties
+let result = SplitRum.track(eventType: "event_type_id",
+                            value: 0.1,
+                            properties: ["property_name_1": "value1", "property_name_2": "value2"])
+```
