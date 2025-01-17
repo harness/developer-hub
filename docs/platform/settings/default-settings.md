@@ -11,6 +11,8 @@ helpdocs_is_published: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::note Any changes to the settings may take up to a minute to reflect.
+:::
 The Harness Default Settings are broadly scoped configurations that apply to your entire account, an entire organization in your account, or a specific project. These settings control configurations for certain Harness Platform features and high-level module settings.
 
 To manage default settings at the account, org, or project scope, you need **view** and **edit** permissions for Default Settings at the corresponding scope.
