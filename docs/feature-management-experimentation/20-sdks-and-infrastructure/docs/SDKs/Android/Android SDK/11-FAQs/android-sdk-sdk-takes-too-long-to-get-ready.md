@@ -22,7 +22,7 @@ If the version of Android SDK used is 2.4.2 or below, the issue can manifest sin
 
 ## Solution
 
-Upgrade Android SDK to latest build to fix this issue,
+Upgrade Android SDK to latest build to fix this issue.
 
 To prevent your app from waiting indefinitely on Split SDK in case there is an issue with the network, you can listen to SDK_READY_TIMED_OUT with a specific timeout you can set. This will allow your code to move on and not continue to wait on Split SDK.
 

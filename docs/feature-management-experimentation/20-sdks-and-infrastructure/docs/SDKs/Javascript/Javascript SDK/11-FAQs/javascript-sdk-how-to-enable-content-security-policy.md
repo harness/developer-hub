@@ -1,9 +1,12 @@
 ---
-title: "JavaScript SDK: How to enable Content Security Policy (CSP) to work with JavaScript SDK"
-sidebar_label: "JavaScript SDK: How to enable Content Security Policy (CSP) to work with JavaScript SDK"
+title: How to enable Content Security Policy (CSP) to work with JavaScript SDK?
+sidebar_label: How to enable Content Security Policy (CSP) to work with JavaScript SDK?
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: ""
 ---
+
+<!-- applies to JavaScript SDK -->
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360033200812-JavaScript-SDK-How-to-enable-Content-Security-Policy-CSP-to-work-with-JavaScript-SDK </button>
@@ -11,7 +14,7 @@ helpdocs_is_published: true
 
 ## Question
 
-Is it possible to enable SCP (Content Security Policy) on a site that uses Split JavaScript SDK?
+Is it possible to enable SCP (Content Security Policy) on a site that uses JavaScript SDK?
 
 ## Answer
 

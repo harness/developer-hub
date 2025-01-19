@@ -1,15 +1,20 @@
 ---
-title: "Running bundle using React Native and JavaScript SDK causes an error. Bundling failed: Error: Unable to resolve module `util`"
-sidebar_label: "Running bundle using React Native and JavaScript SDK causes an error. Bundling failed: Error: Unable to resolve module `util`"
+title: Error running bundle using React Native and JavaScript SDK
+sidebar_label: Error running bundle using React Native and JavaScript SDK
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: ""
 ---
+
+<!-- applies to JavaScript SDK -->
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025154551-Running-bundle-using-React-Native-and-JavaScript-SDK-causes-an-error-Bundling-failed-Error-Unable-to-resolve-module-util </button>
 </p>
 
 ## Issue
+
+Running bundle using React Native and JavaScript SDK causes an error. Bundling failed: Error: Unable to resolve module \`util\`.
 
 ### Build environment
 
@@ -18,7 +23,12 @@ react-native: 0.55.0
 
 ### Steps to reproduce
 
-When running the bundle, following error occurrs: bundling failed: Error: Unable to resolve module `util` from `D:\\project\node_modules\@splitsoftware\splitio\lib\utils\logger\LoggerFactory.js: Module util does not exist in the Haste module map`
+When running the bundle, following error occurrs: 
+```
+bundling failed: Error: Unable to resolve module `util` from
+ `D:\\project\node_modules\@splitsoftware\splitio\lib\utils\logger\LoggerFactory.js:
+ Module util does not exist in the Haste module map`
+```
 
 ## Answer
 

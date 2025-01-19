@@ -6,7 +6,7 @@ helpdocs_is_published: true
 description: ""
 ---
 
-<!-- applies to Android, iOS, Javascript SDK -->
+<!-- applies to Android, iOS, JavaScript SDK -->
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360028923531-Mobile-SDK-when-using-client-on-method-the-code-block-never-called </button>
@@ -14,7 +14,7 @@ description: ""
 
 ## Issue
 
-Using Javascript browser-side, Android or iOS SDKs, and implementing the code below, the code block never gets executed which indicates SDK_READY event never fires.
+Using JavaScript browser-side, Android or iOS SDKs, and implementing the code below, the code block never gets executed which indicates SDK_READY event never fires.
 
 ```javascript
 client.on(SplitEvent.SDK_READY, new SplitEventTask() {
@@ -40,7 +40,7 @@ import TabItem from "@theme/TabItem";
   values={[
     {label: 'Android SDK', value: 'android'},
     {label: 'iOS SDK', value: 'ios'},
-    {label: 'Javascript browser-side', value: 'browser'},
+    {label: 'JavaScript browser-side', value: 'browser'},
   ]} defaultValue={ window.location.pathname.includes("Android%20SDK") ? "android" : window.location.pathname.includes("iOS%20SDK") ? "ios" : "browser" }>
   <TabItem value="android">
 

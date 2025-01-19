@@ -1,9 +1,12 @@
 ---
-title: "JavaScript SDK: How to deploy JavaScript SDK to a Wordpress site?"
-sidebar_label: "JavaScript SDK: How to deploy JavaScript SDK to a Wordpress site?"
+title: "How to use JavaScript SDK within a Wordpress site?"
+sidebar_label: "How to use JavaScript SDK within a Wordpress site?"
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: ""
 ---
+
+<!-- applies to JavaScript SDK -->
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044738692-How-to-deploy-JavaScript-SDK-to-a-Wordpress-site </button>
@@ -11,7 +14,7 @@ helpdocs_is_published: true
 
 ## Question
 
-How to deploy JavaScript SDK code in a Wordpress site?
+How to use JavaScript SDK within a page on a Wordpress site?
 
 ## Answer
 

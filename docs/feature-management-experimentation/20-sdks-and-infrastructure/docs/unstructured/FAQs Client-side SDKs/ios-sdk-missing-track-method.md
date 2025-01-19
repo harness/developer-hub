@@ -3,7 +3,10 @@ title: Is the iOS SDK Split library missing the track method?
 sidebar_label: Is the iOS SDK Split library missing the track method?
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: ""
 ---
+
+<!-- applies to iOS SDK -->
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360015671051-Is-the-iOS-SDK-Split-library-missing-the-track-method </button>
@@ -11,7 +14,7 @@ helpdocs_is_published: true
 
 ## Issue
 
-Using Split iOS SDK in Xcode project, when trying to use track method, build error "Value of type 'SplitClientProtocol' has no member 'track'.
+Using Split iOS SDK in Xcode project, when trying to use track method, build error "Value of type 'SplitClientProtocol' has no member 'track'."
 
 ![](https://help.split.io/hc/article_attachments/360010664231/Screen_Shot_2018-09-04_at_9.36.57_AM.png)
 
