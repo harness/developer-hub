@@ -1,9 +1,12 @@
 ---
-title: "Android SDK: Calling client.Destory does not post impressions"
-sidebar_label: "Android SDK: Calling client.Destory does not post impressions"
+title: "Calling client.Destory does not post impressions"
+sidebar_label: "Calling client.Destory does not post impressions"
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: ""
 ---
+
+<!-- applies to Anddroid SDK -->
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360049698832-Calling-client-Destory-does-not-post-impressions-in-Android-SDK </button>
@@ -11,13 +14,13 @@ helpdocs_is_published: true
 
 ## Issue
 
-When using Android SDK in an app, before the app exits, calling client.Destroy() is suppose to clear the SDK cache and post all impressions; however, the cached impressions are not showing up Live tail tab in Split user interface.
+When using Android SDK in an app, before the app exits, calling `client.Destroy()` is suppose to clear the SDK cache and post all impressions; however, the cached impressions are not showing up Live tail tab in Split user interface.
 
 ## Root Cause
 
 The `client.Destory()` will post any cached impressions, however, if the app shutdown its process before or during the post request, the request will fail and no impressions are posted to Split cloud.
 
-## Answer
+## Solution
 
 To resolve the issue, there are two options:
 

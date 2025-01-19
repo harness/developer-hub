@@ -1,9 +1,12 @@
 ---
-title: "Android, iOS, and Javascript SDK: When using client.on method, the code block never called"
-sidebar_label: "Android, iOS, and Javascript SDK: When using client.on method, the code block never called"
+title: "The client.on event handler is never called"
+sidebar_label: "The client.on event handler is never called"
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: ""
 ---
+
+<!-- applies to Android, iOS, Javascript SDK -->
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360028923531-Mobile-SDK-when-using-client-on-method-the-code-block-never-called </button>

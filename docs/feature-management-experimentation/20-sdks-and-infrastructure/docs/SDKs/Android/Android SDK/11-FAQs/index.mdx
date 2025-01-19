@@ -2,28 +2,47 @@
 title: Android SDK FAQs
 sidebar_label: FAQs
 ---
-import {
-  SDKDocsBuilder
-} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
 
-import {
-  FAQs,
-} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
+import DocCardList from '@theme/DocCardList';
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 
-import AndroidFaqs from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_android-sdk/_110_androidFaqs.mdx";
+Explore Android SDK frequently asked questions by clicking the tiles below.
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+<DocCardList items={
   [
-    [
-      FAQs,
-      {
-        faqs: <AndroidFaqs />,
-      },
-    ],
-  ],
-  toc
-);
-
-<>{Result}</>
+    { 
+      type:'link', href:'../../../Android/Android%20SDK/FAQs/android-ios-javascript-sdk-the-client-on-event-handler-is-never-called',
+      label:'The client.on event handler is never called', 
+    },
+    { 
+      type:'link', 
+      href:'../../../Android/Android%20SDK/FAQs/android-sdk-calling-client-destroy-does-not-post-impressions', 
+      label:'Calling client.Destory does not post impressions', 
+    },
+    { 
+      type:'link', 
+      href:'../../../Android/Android%20SDK/FAQs/android-sdk-does-the-sdk-use-sharedpreferences', 
+      label:'Does the SDK use SharedPreferences to store the Split cache?', 
+    },
+    { 
+      type:'link', 
+      href:'../../../Android/Android%20SDK/FAQs/android-sdk-error-duplicate-class-finalizablereferencequeue', 
+      label:'Error: Duplicate class FinalizableReferenceQueue$DirectLoader', 
+    },
+    { 
+      type:'link', 
+      href:'../../../Android/Android%20SDK/FAQs/android-sdk-http-exception-chain-validation-failed', 
+      label:'HTTP Exception: Chain validation failed', 
+    },
+    { 
+      type:'link', 
+      href:'../../../Android/Android%20SDK/FAQs/android-sdk-in-kotlin-the-sdk-always-returns-the-control-treatment', 
+      label:'In Kotlin, the SDK always returns the control treatment', 
+    },
+    { 
+      type:'link', 
+      href:'../../../Android/Android%20SDK/FAQs/android-sdk-sdk-takes-too-long-to-get-ready', 
+      label:'SDK takes too long to get ready', 
+    },
+  ]
+}/>

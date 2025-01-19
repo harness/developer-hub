@@ -1,9 +1,12 @@
 ---
-title: "Android SDK: SDK takes too long to get ready"
-sidebar_label: "Android SDK: SDK takes too long to get ready"
+title: "SDK takes too long to get ready"
+sidebar_label: "SDK takes too long to get ready"
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: ""
 ---
+
+<!-- applies to Android SDK -->
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360043275471-Android-SDK-SDK-takes-too-long-to-get-ready </button>
