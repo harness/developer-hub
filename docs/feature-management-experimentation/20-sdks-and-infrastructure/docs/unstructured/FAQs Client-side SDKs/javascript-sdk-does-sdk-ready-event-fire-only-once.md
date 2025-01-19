@@ -1,12 +1,12 @@
 ---
-title: "Javascript SDK: Does SDK_READY event fire only once?"
-sidebar_label: "Javascript SDK: Does SDK_READY event fire only once?"
+title: "JavaScript SDK: Does SDK_READY event fire only once?"
+sidebar_label: "JavaScript SDK: Does SDK_READY event fire only once?"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360053286091-Javascript-SDK-Does-SDK-READY-event-fire-only-once </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360053286091-JavaScript-SDK-Does-SDK-READY-event-fire-only-once </button>
 </p>
 
 ## Problem

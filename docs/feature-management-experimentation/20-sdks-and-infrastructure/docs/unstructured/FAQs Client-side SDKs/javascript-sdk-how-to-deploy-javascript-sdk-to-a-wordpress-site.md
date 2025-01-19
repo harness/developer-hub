@@ -1,23 +1,23 @@
 ---
-title: "Javascript SDK: How to deploy Javascript SDK to a Wordpress site?"
-sidebar_label: "Javascript SDK: How to deploy Javascript SDK to a Wordpress site?"
+title: "JavaScript SDK: How to deploy JavaScript SDK to a Wordpress site?"
+sidebar_label: "JavaScript SDK: How to deploy JavaScript SDK to a Wordpress site?"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044738692-How-to-deploy-Javascript-SDK-to-a-Wordpress-site </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044738692-How-to-deploy-JavaScript-SDK-to-a-Wordpress-site </button>
 </p>
 
 ## Question
 
-How to deploy Javascript SDK code in a Wordpress site?
+How to deploy JavaScript SDK code in a Wordpress site?
 
 ## Answer
 
-The steps below explain how to use Javascript SDK in a blank page within a Wordpress site
+The steps below explain how to use JavaScript SDK in a blank page within a Wordpress site
 
-1. First step is to install Header and Footer Scripts plugin. While this is not required, it is a good practice to load the Javascript SDK library within the page header.
+1. First step is to install Header and Footer Scripts plugin. While this is not required, it is a good practice to load the JavaScript SDK library within the page header.
 
 ![](https://help.split.io/hc/article_attachments/360060037831/Screen_Shot_2020-06-18_at_11.25.35_AM.png)
 
@@ -37,7 +37,7 @@ The steps below explain how to use Javascript SDK in a blank page within a Wordp
 
 ![](https://help.split.io/hc/article_attachments/360059871812/Screen_Shot_2020-06-18_at_11.54.52_AM.png)
 
-5. The Custom HTML block allows any HTML elements, including Javascript, copy and paste the code below inside it, make sure to replace the API KEY with a valid key, set the User key and feature flag name as well.
+5. The Custom HTML block allows any HTML elements, including JavaScript, copy and paste the code below inside it, make sure to replace the API KEY with a valid key, set the User key and feature flag name as well.
 
 ```javascript
 <p id="sdk"></p>

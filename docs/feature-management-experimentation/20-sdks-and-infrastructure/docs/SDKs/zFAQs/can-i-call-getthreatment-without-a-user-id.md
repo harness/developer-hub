@@ -1,8 +1,9 @@
 ---
-title: Is it possible to call getTreatment() function without passing a user id?
-sidebar_label: Is it possible to call getTreatment() function without passing a user id?
+title: Can I call getTreatment() without a user id?
+sidebar_label: Can I call getTreatment() without a user id?
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: ""
 ---
 
 <p>

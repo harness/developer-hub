@@ -1,6 +1,6 @@
 ---
 title: FME iOS Suite
 sidebar_label: iOS Suite
-description: iOS developer reference for working with FME and Real User Metrics (RUM)
+description: iOS developer reference to achieve the full power of FME for iOS
 ---
 Coming soon.

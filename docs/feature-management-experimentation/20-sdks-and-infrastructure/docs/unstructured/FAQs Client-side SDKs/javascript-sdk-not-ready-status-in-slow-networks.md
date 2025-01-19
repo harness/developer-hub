@@ -1,12 +1,12 @@
 ---
-title: Why does the Javascript SDK return Not Ready status in Slow Networks?
-sidebar_label: Why does the Javascript SDK return Not Ready status in Slow Networks?
+title: Why does the JavaScript SDK return Not Ready status in Slow Networks?
+sidebar_label: Why does the JavaScript SDK return Not Ready status in Slow Networks?
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360012551371-Why-does-the-Javascript-SDK-return-Not-Ready-status-in-Slow-Networkslit.io/hc/en-us/articles/360020863412-General-SDK-Always-getting-control-treatments </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360012551371-Why-does-the-JavaScript-SDK-return-Not-Ready-status-in-Slow-Networkslit.io/hc/en-us/articles/360020863412-General-SDK-Always-getting-control-treatments </button>
 </p>
 
 ## Issue
@@ -26,7 +26,7 @@ As explained in https://docs.split.io/docs/javascript-sdk-overview under Configu
 Follow the steps below to implement the solution:
 
 1. Find out how long it takes the browser to fetch the Split configuration under slow Network, Chrome Dev tools can be used to simulate 3G Network.
-2. Make sure to enable the Java SDK console debug logging by running the following command in the browser Javascript console:
+2. Make sure to enable the Java SDK console debug logging by running the following command in the browser JavaScript console:
   ```
 localStorage.splitio_debug = 'on'
 ```

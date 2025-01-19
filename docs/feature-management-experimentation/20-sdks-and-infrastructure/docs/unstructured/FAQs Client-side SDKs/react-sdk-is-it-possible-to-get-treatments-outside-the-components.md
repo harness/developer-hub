@@ -11,11 +11,11 @@ helpdocs_is_published: true
 
 ## Question
 
-Using the React SDK, is it possible to get Split treatments through Javascript code in addition to using the SDK React components? 
+Using the React SDK, is it possible to get Split treatments through JavaScript code in addition to using the SDK React components? 
 
 ## Answer
 
-Yes, it is possible. The React SDK is created on top of the same Javascript SKD core, so it supports all the objects and functions provided in it.
+Yes, it is possible. The React SDK is created on top of the same JavaScript SKD core, so it supports all the objects and functions provided in it.
 
 The code below can be used to get treatment using the same factory object created initially:
 ```javascript

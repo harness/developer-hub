@@ -11,21 +11,18 @@ helpdocs_is_published: true
 
 ## Issue
 
-Split SDK never gets ready, regardless of how much the ready timeout value.
+An SDK never gets ready, regardless of how much the ready timeout configuration value.
 
 ## Root Cause
 
 There are several possible root causes for this issue:
 
-* If the SDK used is a server side type (Python, Ruby, GO, PHP, NodeJS or Java), and the API key used is Client-side type. The Split cloud service is expecting a specific call for Segment information which is different for Client-side vs Server-side API keys.
-* Verify if there are large Segments in Split environment. Segments that contain tens of thousands of records will require a long time to be downloaded to the SDK cache.
-* Verify network connection to sdk.split.io is fast. Use the command below to verify:
-```
-curl sdk.split.io -s -o /dev/null -w  "%{time_starttransfer}\n"
-```
-The command will return the time it took the GET command to get a response.
+* A server side SDK (Python, Ruby, GO, PHP, NodeJS, and Java) is incorrectly configured with a client-side API key. The Split cloud service is expecting a specific call for Segment information which is different for client-side vs server-side API keys.
+* There is a Segment containing a very large number of user IDs in the Split environment. Segments that contain tens of thousands of records will require a long time to be downloaded to the SDK cache.
+* A slow network connection to sdk.split.io.
 
 ## Answer
 
 * Make sure to use the correct API key.
-* Avoid using very large segments.
+* Avoid using Segments with a very large number of user IDs.
+* Verify your connection speed using the command `curl sdk.split.io -s -o /dev/null -w  "%{time_starttransfer}\n"`. The command will return the response time for the GET command.

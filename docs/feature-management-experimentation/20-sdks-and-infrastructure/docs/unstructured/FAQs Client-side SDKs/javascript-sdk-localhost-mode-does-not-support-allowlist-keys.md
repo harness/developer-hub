@@ -1,6 +1,6 @@
 ---
-title: "Javascript SDK: localhost mode does not support Allowlist keys"
-sidebar_label: "Javascript SDK: localhost mode does not support Allowlist keys"
+title: "JavaScript SDK: localhost mode does not support Allowlist keys"
+sidebar_label: "JavaScript SDK: localhost mode does not support Allowlist keys"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 ## Question
 
-Javascript, React, Redux, and Browser SDKs use features config parameter to set the feature flags and treatments names, however, it does not support adding Allowlist keys in the property.
+JavaScript, React, Redux, and Browser SDKs use features config parameter to set the feature flags and treatments names, however, it does not support adding Allowlist keys in the property.
 
 How can we mimic allowing keys to get certain treatments similar to the yaml file structure used for  Server side SDKs?
 

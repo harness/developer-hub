@@ -17,4 +17,4 @@ React SDK doc states it works only on client side (browser). Is there a way to u
 
 As stated, the React SDK supports only Browser side. In React development, to run the SDK on server side, we have to use the NodeJS SDK.
 
-One of the popular libraries for SSR is using Next.js library. The example in this [Knowledge Base](https://help.split.io/hc/en-us/articles/360043277911-Javascript-SDK-Example-using-Next-js-) shows both SDK rendering in browser and server modes, browser side uses React SDK and server side uses Node SDK. In reality, there is no need to have both rendering modes in one app, the example is simply showing how to use both types of rendering.
+One of the popular libraries for SSR is using Next.js library. The example in this [Knowledge Base](https://help.split.io/hc/en-us/articles/360043277911-JavaScript-SDK-Example-using-Next-js-) shows both SDK rendering in browser and server modes, browser side uses React SDK and server side uses Node SDK. In reality, there is no need to have both rendering modes in one app, the example is simply showing how to use both types of rendering.

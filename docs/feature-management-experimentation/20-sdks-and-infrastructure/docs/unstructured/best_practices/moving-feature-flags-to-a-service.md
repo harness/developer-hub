@@ -12,7 +12,7 @@ helpdocs_is_published: true
 
 ## Using a Service for Feature flags
 
-Split lets you roll out features and experiment with a target group of customers across the full web stack: from deep in the backend to client-facing Javascript and mobile.
+Split lets you roll out features and experiment with a target group of customers across the full web stack: from deep in the backend to client-facing JavaScript and mobile.
 
 Feature flagging in mobile can be particularly advantageous. For example, consider what happens when a critical bug appears in a newly-released mobile feature: due to App Store approval delay, a fix can’t be delivered to customers in minutes; not to mention, you can't force customers to update their apps.
 

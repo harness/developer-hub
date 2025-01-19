@@ -1,8 +1,9 @@
 ---
-title: Is it possible to use Postman to calculate a treatment for a given feature flag?
-sidebar_label: Is it possible to use Postman to calculate a treatment for a given feature flag?
+title: Can I use Postman to evaluate a feature flag?
+sidebar_label: Can I use Postman to evaluate a feature flag?
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: ""
 ---
 
 <p>

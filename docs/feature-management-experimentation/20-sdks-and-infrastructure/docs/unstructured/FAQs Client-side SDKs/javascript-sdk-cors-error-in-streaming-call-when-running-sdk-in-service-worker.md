@@ -1,17 +1,17 @@
 ---
-title: "Javascript SDK: CORS Error in streaming call when running SDK in Service Worker"
-sidebar_label: "Javascript SDK: CORS Error in streaming call when running SDK in Service Worker"
+title: "JavaScript SDK: CORS Error in streaming call when running SDK in Service Worker"
+sidebar_label: "JavaScript SDK: CORS Error in streaming call when running SDK in Service Worker"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4415278732429-Javascript-SDK-CORS-Error-in-streaming-call-when-running-SDK-in-Service-Worker </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4415278732429-JavaScript-SDK-CORS-Error-in-streaming-call-when-running-SDK-in-Service-Worker </button>
 </p>
 
 ## Issue
 
-When running the Javascript SDK inside Service Worker, the SDK Streaming http call to streaming.split.io is blocked by CORS browser policy as shown below:
+When running the JavaScript SDK inside Service Worker, the SDK Streaming http call to streaming.split.io is blocked by CORS browser policy as shown below:
 
 ![](https://help.split.io/hc/article_attachments/4415274038285)
 

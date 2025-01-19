@@ -17,7 +17,7 @@ How to deploy NodeJS SDK code in AWS Lambda service?
 
 Prerequisites:
 
-1. We will use similar code to the Javascript SDK example code in this [KB Link](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/Javascript-SDK). Go ahead and download the example and make sure it runs successfully.
+1. We will use similar code to the JavaScript SDK example code in this [KB Link](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/JavaScript-SDK). Go ahead and download the example and make sure it runs successfully.
 2. AWS Lambda supports Node 10.x as of writing this article, make sure to use that version.
 
 Follow these steps to run NodeJS SDK as a Lambda Function:

@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 ## Question
 
-The Split mobile (iOS and Android) and Javascript browser SDKs download a local cache and store it in a file system. Does the cache have an expire date or TTL?
+The Split mobile (iOS and Android) and JavaScript browser SDKs download a local cache and store it in a file system. Does the cache have an expire date or TTL?
 
 ## Answer
 

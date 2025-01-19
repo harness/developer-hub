@@ -19,7 +19,7 @@ React SDK allows multiple client objects using the same Factory instance. It is 
 
 With the release of React SDK v1.2.0 this can be done properly via the SplitClient component or useClient hook.
 
-Using the Javascript SDK:
+Using the JavaScript SDK:
 
 ```javascript
 /* On initial load of a client-side application /
