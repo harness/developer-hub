@@ -70,6 +70,7 @@ When you select an artifact’s digest, you can view a complete overview. This t
 * **SBOM Policy Violations:** Lists the SBOM policy violations for both allow-list and deny-list categories.
 * **Vulnerabilities:** Provides a summary of vulnerabilities found from the security scan, categorized by severity: critical, high, medium, and low.
 * **SLSA:** Shows the status of SLSA verification (passed/failed). You can also download the SLSA provenance from here.
+* **Artifact Signing and Verification:** Displays the artifact signing details and verification results, along with a link to view the logs.
 
 ### Chain of Custody
 The Chain of Custody provides a comprehensive and immutable record of an artifact's lifecycle throughout the software supply chain. It captures every significant event during the artifact's journey, allowing detailed traceability. These logs include events from stages such as **Build** (Harness CI), **Deploy**, and **Security** (actions from the Harness **STO** and **SCS** modules).
