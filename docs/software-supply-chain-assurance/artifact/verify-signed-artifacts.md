@@ -1,7 +1,8 @@
 ---
-title: Verifying the Artifact
+title: Verify the Signed Artifacts
 sidebar_label: Verify the Artifact
-description: Artifact Verification
+description: Verify the artifacts that are signed using the Artifact Signing step
+
 sidebar_position: 1
 ---
 
@@ -10,17 +11,29 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-After you sign the artifact using the [Artifact Signing step](http://localhost:3000/docs/software-supply-chain-assurance/artifact/artifact-signing#artifact-signing-process-in-scs), it’s crucial to verify that the artifact has not been tampered and was signed by a trusted source. The Artifact Verification process enables you to validate the integrity and authenticity of the signed artifact before it’s deployed.
+After you sign the artifact using the [Artifact Signing step](/docs/software-supply-chain-assurance/artifact/sign-artifacts), it’s crucial to verify that the artifact has not been tampered and was signed by a trusted source. The Artifact Verification process enables you to validate the integrity and authenticity of the signed artifact before it’s deployed.
+
+:::note 
+Currently, this feature is behind the feature flag `SSCA_ARTIFACT_SIGNING`. Contact Harness Support to enable the feature.
+:::
 
 ## Artifact Verification in SCS
 
 The artifact verification step ensures the authenticity of the signed artifact by validating it with the corresponding public key. If the public key matches the signed artifact it confirms that the artifact is intact, secure, and originates from a trusted source.
 
-<DocImage path={require('./static/artifact-verification-excali.png')} width="80%" height="60%" />
+<DocImage path={require('./static/excali-verify.png')} width="80%" height="60%" />
 
 ## Artifact Verification step configuration
 
 The Artifact Verification step pulls the `.sig` file from the artifact registry and verifies it with the corresponding public key. In the artifact signing step, if you chosen not to push the `.sig` file to the registry, then for the artifact verification `.sig` file will instead be pulled from the Harness database . This process ensures that the artifact was signed by a trusted entity, thereby confirming its integrity and authenticity.
+
+You can search for **Artifact Verification** and add it to either the **Build** or **Security** stage of a Harness pipeline
+
+:::note
+
+At present, Harness does not support artifact verification in the deployment stage, However this is part of our roadmap.
+
+:::
 
 Follow the instructions below to configure the Artifact Verification step.
 
@@ -98,7 +111,7 @@ Follow the instructions below to configure the Artifact Verification step.
 
 :::note
 
-The image used for the artifact verification step must be the same as the image used for the artifact signing step
+Ensure that you use the same image that was used for artifact signing in the Artifact Signing step.
 
 :::
 
@@ -113,10 +126,10 @@ import CosignVerificationOptions from '/docs/software-supply-chain-assurance/sha
 
 ## View Verified Artifacts
 
-Once the artifact is signed and verified, you will be able to see the Artifact Integrity Verification status from the [Artifacts Overview](http://localhost:3000/docs/software-supply-chain-assurance/artifact-view#artifact-overview) tab.
+Once the artifact is signed and verified, you will be able to see the Artifact Integrity Verification status from the [Artifacts Overview](/docs/software-supply-chain-assurance/artifact-view#artifact-overview) tab.
 
 
-* If the signed artifact is successfully verified using the public key, the verification status is displayed as Passed, along with a link to the corresponding Rekor log entry.
+* If the signed artifact is successfully verified using the public key, the verification status is displayed as Passed, along with the links to the corresponding Rekor log entry and the execution results.
 
 * If the verification fails, the status is displayed as Failed.
 
@@ -129,23 +142,16 @@ Once the artifact is signed and verified, you will be able to see the Artifact I
 This example demonstrates how to implement artifact Verification in the Build stage of the pipeline.
 
 
-:::note
-
-At present, Harness does not support artifact verification in the deployment stage, However this is part of our roadmap.
-
-:::
-
-
 This example **Build** stage has three steps:
 
-- **Build and Push an Image to Docker Registry**: This step pulls the code, build the image and push it to a Docker registry (e.g., DockerHub, ACR, GCR, etc.).
+- **Build and Push an Image to Docker Registry**: This step builds the cloned codebase and pushes the image to the container registry (DockerHub, ACR, GCR, etc.).
 
 
 
-- **Artifact Signing**: Pulls the artifact from the registry and signs it with a private key pair and pushes the .sig file back to the artifact registry.
+- **Artifact Signing**: Pulls the artifact from the registry and signs it with a private key pair and pushes the `.sig` file back to the artifact registry.
 
 
-- **Artifact Verification**: Verify the signed artifact using the corresponding public key to confirm its source and integrity.
+- **Artifact Verification**: Verifies the signed artifact using the corresponding public key to confirm its source and integrity.
 
 
 <DocImage path={require('./static/sample-pipeline.png')} width="100%" height="100%" />
@@ -230,7 +236,7 @@ pipeline:
             type: KubernetesDirect
             spec:
               connectorRef: account.harness_kubernetes_connector
-              namespace: artifactsigning
+              namespace: artifactverification
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux

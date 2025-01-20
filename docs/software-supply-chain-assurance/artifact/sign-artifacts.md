@@ -1,7 +1,7 @@
 ---
-title: Signing the Artifact
+title: Sign Artifacts with Harness SCS
 sidebar_label: Sign the Artifact
-description: Artifact Signing
+description: Sign your artifacts using Harness SCS
 sidebar_position: 1
 ---
 
@@ -15,11 +15,15 @@ Protect your software supply chain by safeguarding your artifacts from being com
 As artifacts pass through multiple stages in the software lifecycle, ensuring they remain secure and untampered is critical. Artifact signing provides a reliable way to guarantee that the artifact built at one stage is the exact same artifact consumed or deployed at the next, with no chance of compromise. This process builds trust, ensures integrity, and strengthens the security of your software supply chain.
 
 
-## Artifact Signing Process in SCS
+:::note 
+Currently, this feature is behind the feature flag `SSCA_ARTIFACT_SIGNING`. Contact Harness Support to enable the feature.
+:::
 
-In the Artifact Signing step, artifact is pulled from the container registry and it is digitally signed using [Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with a private key pair. After you sign the artifact the `.sig` file is then pushed back to the same container registry, ensuring the integrity and authenticity of the artifact throughout the software supply chain.
+## Artifact Signing process in SCS
 
-<DocImage path={require('./static/artifact-signing-excaliview.png')} width="80%" height="50%" />
+The Artifact Signing step retrieves the artifact from the container registry, signs it using [Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with a private key from a key pair, and generates a signature file `.sig`. Once the signature is successfully generated, it is pushed back to the same container registry alongside the artifact. This signature file is essential for verifying the artifact's integrity and authenticity. For more details on artifact verification, refer to the [Artifact Verification documentation](/docs/software-supply-chain-assurance/artifact//verify-signed-artifacts.md)
+
+<DocImage path={require('./static/excali-sign.png')} width="70%" height="60%" />
 
 <!-- ## Requirements
 
@@ -31,7 +35,15 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 
 ## Artifact Signing step configuration
 
-The Artifact Signing step enables you to sign your artifacts and optionally you can push the signature as a `.sig` file to the same artifact registry from which it was pulled.
+The Artifact Signing step allows you to sign your artifacts and optionally push the generated signature file `.sig` to the same artifact registry from which the artifact was retrieved.
+
+You can search for **Artifact Signing** and add it to either the **Build** or **Security** stage of a Harness pipeline
+
+:::note
+
+At present, Harness does not support artifact signing in the deployment stage, However this is part of our roadmap.
+
+:::
 
 Follow the instructions below to configure the Artifact Signing step.
 
@@ -119,12 +131,11 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 <DocImage path={require('./static/artifact-signnning.png')} width="50%" height="50%" />
 
 
-**Attach Signature to Artifact Registry** (Optional): By default, this option is unchecked which means the signature will not be uploaded to the artifact registry and checking this option will push the signature as a .sig file to the registry.
+**Attach Signature to Artifact Registry** (Optional): By default, this option is unchecked which means the signature will not be uploaded to the artifact registry and checking this option will push the signature as a `.sig` file to the artifact registry.
 
 ## View Signed Artifacts
 
-
-You can easily access the signed artifact details from the [Artifacts Overview](http://localhost:3000/docs/software-supply-chain-assurance/artifact-view#artifact-overview) tab.This section shows the signature and who signed the artifact. Additionally you can also verify the artifact signing details in the Chain of Custody, where a new entry is logged every time you sign an artifact. This entry includes a link to the execution results and rekor log entry, allowing you to track the signing activity and cross-check the details.
+You can easily access the signed artifact details from the [Artifacts Overview](/docs/software-supply-chain-assurance/artifact-view#artifact-overview) tab.This section shows the signature and who signed the artifact.Additionally, you can also find the artifact signing as an event in the Chain of Custody, where a new entry is logged every time you sign an artifact.This entry includes a link to the execution results and rekor log entry, allowing you to track the signing activity and cross-check the details.
 
 <DocImage path={require('./static/artifact-signing-data.png')} width="100%" height="100%" />
 
@@ -140,20 +151,13 @@ You are allowed to re-sign the same image multiple times, with each new signing 
 This example demonstrates how to implement artifact signing in the Build stage of the pipeline.
 
 
-:::note
-
-At present, Harness does not support artifact signing in the deployment stage, However this is part of our roadmap.
-
-:::
-
-
 This example **Build** stage has two steps:
 
-- **Build and Push an Image to Docker Registry**: This process pulls the code, build the image and push it to a Docker registry (e.g., DockerHub, ACR, GCR, etc.).
+- **Build and Push an Image to Docker Registry**: This step builds the cloned codebase and pushes the image to the container registry (DockerHub, ACR, GCR, etc.).
 
 
 
-- **Artifact Signing**: Pulls the artifact from the registry and signs it with a private key pair and pushes the .sig file back to the artifact registry.
+- **Artifact Signing**: Pulls the artifact from the registry and signs it with a private key pair and pushes the `.sig` file back to the artifact registry.
 
 
 <DocImage path={require('./static/artifact-signing-pipeline.png')} width="80%" height="60%" title="Click to view full size image" />
@@ -167,7 +171,7 @@ To replicate the Artifact Signing step you can use the below sample pipeline YAM
 ```
 pipeline:
   name: Artifact Signing
-  identifier: Artifact Signing
+  identifier: ArtifactSigning
   tags: {}
   projectIdentifier: Harness
   orgIdentifier: default
@@ -241,4 +245,4 @@ pipeline:
 
 ## Verify Artifact Signing
 
-You can verify the signed artifacts using the Artifact verification step. Refer to [configure your pipeline to verify the artifact Signing](./artifact-verifying)
+You can verify the signed artifacts using the Artifact verification step. Refer to [configure your pipeline to verify the artifact Signing](/docs/software-supply-chain-assurance/artifact/verify-signed-artifacts.md)
