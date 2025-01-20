@@ -24,8 +24,8 @@ SBOM Drift for images can be generated in two ways:
 
 * Automatically compare the newly generated SBOM with a pre-existing baseline or the latest artifact tag
 
-<docimage path={require('../static/SBOM-Drift-Step-Option.png')} />
 
+<DocImage path={require('../static/sbom-drift-step-option.png')} width="90%" height="60%" title="Click to view full size image" />
 
 To set any artifact version as baseline, go to artifact view and click on three dots on the artifact version that you want to set as baseline for generating drift.
 
@@ -39,13 +39,12 @@ To set any artifact version as baseline, go to artifact view and click on three 
 
 Click on “Initiate Drift Analysis” in the three dots menu on the artifact version  
 
-<docimage path={require('../static/Initiate-Drift-Analysis.png')} />
-
+<DocImage path={require('../static/initiate-drift-analysis.png')} width="90%" height="60%" title="Click to view full size image" />
 
 Select the 2nd tag of the same artifact and confirm to see the drift
 
-<docimage path={require('../static/SBOM-Drift-Select-Second-Tag.png')} />
 
+<DocImage path={require('../static/sbom-drift-select-second-tag.png')} width="90%" height="60%" title="Click to view full size image" />
 
 ### For Repositories
 
@@ -70,11 +69,13 @@ You can view the generated SBOM Drift on the UI. There are two views
 
 **Component drift view:**
 
-<docimage path={require('../static/Drift-Component-View.png')} />
+
+<DocImage path={require('../static/drift-component-view.png')} width="90%" height="60%" title="Click to view full size image" />
 
 **License drift view:**
 
-<docimage path={require('../static/Drift-License-View.png')} />
+
+<DocImage path={require('../static/drift-license-view.png')} width="90%" height="60%" title="Click to view full size image" />
  
 
  

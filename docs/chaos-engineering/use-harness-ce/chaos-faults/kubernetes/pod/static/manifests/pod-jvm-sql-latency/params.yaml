@@ -1,0 +1,29 @@
+kind: KubernetesChaosExperiment
+apiVersion: litmuschaos.io/v1alpha1
+metadata:
+  name: pod-jvm-sql-latency
+  namespace: hce
+spec:
+  tasks:
+    - definition:
+        chaos:
+          env:
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
+            # provide the sql table name
+            - name: TABLE
+              value: "product"
+            # provide the sql operation name
+            # it supports select, insert, update, delete, replace types
+            - name: SQL_OPERATION
+              value: "select"
+            # name of the data access framework
+            # it supports MYSQL5, MYSQL8, HIBERNATE types
+            - name: SQL_DATA_ACCESS_FRAMEWORK
+              value: "MYSQL8"
+            # provide the latency in ms
+            - name: SQL_LATENCY
+              value: "2000" #in ms
+            # provide the transaction percentage
+            - name: TRANSACTION_PERCENTAGE
+              value: "50"

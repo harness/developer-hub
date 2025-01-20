@@ -190,7 +190,7 @@ To set a fail-fast threshold, follow these steps:
 
 3. In the **Action** field, select what the CV should do when applying the rule. Let's select **Fail Immediately**.
 
-4. In the **Criteria** field, choose **Percentage Deviation**, and from the greater than select **1**. This sets a threshold for memory usage beyond which the system or application is considered to be in a problematic state, and action should be taken.
+4. In the **Criteria** field, choose **Percentage Deviation**, and from the greater than select **1**. This sets a threshold for memory usage beyond which the system or application is considered to be in a problematic state, and action should be taken.  Please note that when using **Percentage Deviation**, to observe results using [Normalized Views](https://developer.harness.io/docs/continuous-delivery/verify/cv-results/interpret-metric-results/#filter-metric-summary).
 
 ![Configure threshold](./static/cv-simple-cv-select-failfast-threshold.png)
 

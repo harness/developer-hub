@@ -81,10 +81,10 @@ If you're migrating to Harness SEI from Propelo standalone application, review t
 | <a href="/docs/software-engineering-insights/insights/sei-insights#manage-insights-associations">Manage Insight association</a> | Associate or Disassociate Insights with collections | [Click here](/docs/software-engineering-insights/insights/sei-insights#manage-insights-associations) |
 | <a href="/docs/software-engineering-insights/insights/sei-insights#view-insights">View Insight</a> | View existing Insights | [Click here](/docs/software-engineering-insights/insights/sei-insights#view-insights) |
 | <a href="/docs/software-engineering-insights/insights/sei-insights#explore-data">Explore Insight data</a> | Derive value out of the widget data on the Insights | [Click here](/docs/software-engineering-insights/insights/sei-insights#explore-data) |
-| <a href="/docs/software-engineering-insights/insights/dora-insight">Create DORA Insight</a> | Learn how to create a DORA Insight using various DORA widgets | [Click here](/docs/software-engineering-insights/insights/dora-insight) |
-| <a href="/docs/software-engineering-insights/insights/trellis-insight">Create Trellis Insight</a> | Learn how to create a Trellis Insight using various Trellis widgets | [Click here](/docs/software-engineering-insights/insights/trellis-insight) |
-| <a href="/docs/software-engineering-insights/insights/sprint-metrics-insight">Create Sprints Insight</a> | Learn how to create a Sprints Insight using various sprint metric widgets | [Click here](/docs/software-engineering-insights/insights/sprint-metrics-insight) |
-| <a href="/docs/software-engineering-insights/insights/developer-insight">Create Developer Insight</a> | Learn how to create a Developer Insight using SCM metric widgets | [Click here](/docs/software-engineering-insights/insights/developer-insight) |
+| <a href="/docs/software-engineering-insights/insights/insight-tutorials/dora-insight">Create DORA Insight</a> | Learn how to create a DORA Insight using various DORA widgets | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/dora-insight) |
+| <a href="/docs/software-engineering-insights/insights/insight-tutorials/trellis-insight">Create Trellis Insight</a> | Learn how to create a Trellis Insight using various Trellis widgets | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/trellis-insight) |
+| <a href="/docs/software-engineering-insights/insights/insight-tutorials/agile-insights">Create Sprints Insight</a> | Learn how to create a Sprints Insight using various sprint metric widgets | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/agile-insights) |
+| <a href="/docs/software-engineering-insights/insights/insight-tutorials/developer-insight">Create Developer Insight</a> | Learn how to create a Developer Insight using SCM metric widgets | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/developer-insight) |
 
 ### <a href="#phase-7-role-based-access-control"> Phase 7: Role-Based Access Control </a>
 
@@ -269,10 +269,10 @@ Review the following resources to learn more about creating and managing Insight
 
 ### Tutorials
 
-* [DORA Insight](/docs/software-engineering-insights/insights/dora-insight)
-* [Trellis Scores Insight](/docs/software-engineering-insights/insights/trellis-insight)
-* [Developer Insight](/docs/software-engineering-insights/insights/developer-insight)
-* [Sprints Insight](/docs/software-engineering-insights/insights/sprint-metrics-insight)
+* [DORA Insight](/docs/software-engineering-insights/insights/insight-tutorials/dora-insight)
+* [Trellis Scores Insight](/docs/software-engineering-insights/insights/insight-tutorials/trellis-insight)
+* [Developer Insight](/docs/software-engineering-insights/insights/insight-tutorials/developer-insight)
+* [Sprints Insight](/docs/software-engineering-insights/insights/insight-tutorials/agile-insights)
 
 ## Phase 7: Role-Based Access Control
 
@@ -313,7 +313,7 @@ Find the list of demos for the latest Harness SEI features.
 | Project Level Settings on Harness SEI |<a href="https://youtu.be/Jbza13xRnMU?si=80HvIXvaqE9Uf7hD">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/) |
 | Business Alignment |<a href="https://youtu.be/f3fLqermTGo?si=bqY_sfda1QzxJWQj">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports) |
 | Trellis Scores - Reimagined - BETA |<a href="https://youtu.be/KsdTv3z2BkA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/early-access/profiles/sei-trellis-factors) |
-| DORA Metrics Explained |<a href="https://youtu.be/443Zhm_bAqs?si=8WdhRC0Kp_X7KZKz">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/dora-insight) |
-| Dev Insight Explained |<a href="https://youtu.be/Jibzk-KF7PA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/developer-insight) |
-| Sprints Insight Explained |<a href="https://youtu.be/OPhoRbRuZCU?si=TcgUlFs06Uf906ZH">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/sprint-metrics-insight) |
+| DORA Metrics Explained |<a href="https://youtu.be/443Zhm_bAqs?si=8WdhRC0Kp_X7KZKz">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/dora-insight) |
+| Dev Insight Explained |<a href="https://youtu.be/Jibzk-KF7PA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/developer-insight) |
+| Sprints Insight Explained |<a href="https://youtu.be/OPhoRbRuZCU?si=TcgUlFs06Uf906ZH">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/agile-insights) |
 | Collections Walkthrough |<a href="https://www.youtube.com/embed/3sD8K-ratYM?si=oIu9wAkNQOOA0p7J">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections) |
