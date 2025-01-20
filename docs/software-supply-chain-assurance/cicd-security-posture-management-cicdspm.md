@@ -52,11 +52,8 @@ By clicking on a specific evaluation status, you can access detailed information
 <DocImage path={require('./static/cicd-sidetab.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ## Plugins Tab​
-<<<<<<< HEAD
+
 The Plugins tab provides a list of all plugins used in the pipeline. The tab name may vary based on the integration type. For instance, with GitHub, it will be labeled Actions.
-=======
-The Plugin tab provides a list of all plugins used in the pipeline. The tab name may vary based on the integration. For instance, with GitHub, it will be labeled Actions.
->>>>>>> 8c8b5c8463ecb459f8f32d784acd5369a43be5dd
 
 <DocImage path={require('./static/cicd-actions.png')} width="100%" height="100%" title="Click to view full size image" />
 
