@@ -85,7 +85,7 @@ Linux JVM modify return:
 </table>
 
 :::tip
-If multiple Java processes on the same machine are subjected to JVM chaos, whether simultaneously or not, each process must use a unique Byteman port.
+If multiple Java processes on the same machine are subject to JVM chaos, whether simultaneously or not, each process must use a unique Byteman port.
 :::
 
 ### Class name
