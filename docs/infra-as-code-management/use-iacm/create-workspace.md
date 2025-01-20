@@ -57,7 +57,7 @@ To create a new workspace, follow these steps:
    ![Workspace variables](static/workspace-variables.png)
 
 ## Clone a workspace
-Harness support workspace cloning for quick setup of new workspaces with the same or similar configuration as existing workspaces.
+Harness supports workspace cloning for quick setup of new workspaces with the same or similar configuration as existing workspaces.
 
 <Tabs>
 <TabItem value="Interactive guide">
