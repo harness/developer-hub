@@ -36,7 +36,8 @@ You can view the scores of all generated SBOMs from the **Artifacts view**. Addi
 
 ### Artifact view in SCS
 
-Click on the [Artifacts](../artifact-view.md) section in the left-hand panel which lists all the artifacts. Choose any one of the artifacts,to access a detailed list of all associated digests of the artifact.You can view the corresponding score alongside the SBOM (Software Bill of Materials) in the SBOM column
+Click on the [Artifacts](/docs/software-supply-chain-assurance/artifact-view.md) section in the left-hand panel which lists all the artifacts. Select any of the artifact,to access a detailed list of all associated digests of the artifact. In the SBOM column, you'll be able to view the corresponding score alongside the SBOM for that digest.
+
 
 !["SBOM Score from Artifacts view"](./static/sbom-score-view.png)
 
