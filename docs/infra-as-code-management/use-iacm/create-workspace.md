@@ -86,4 +86,4 @@ Harness support workspace cloning for quick setup of new workspaces with the sam
 </TabItem>
 </Tabs>
 
-Go to [provision workspace](docs/infra-as-code-management/use-iacm/provision-wrkspace.md) to learn how to provision workspaces.
+Go to [provision workspace](https://developer.harness.io/docs/infra-as-code-management/use-iacm/provision-workspace) to learn how to provision workspaces.
