@@ -57,7 +57,7 @@ Here’s a detailed view of populating all the fields with sample data.
 
 
 
-<DocImage path={require('./static/remediation-form.png')} width="60%" height="30%" title="Click to view full size image" />
+<DocImage path={require('./static/remediation-form.png')} width="50%" height="20%" title="Click to view full size image" />
 
 
 Click on 'Confirm' to create the tracker, which will then be added to a remediation tracker list.
@@ -65,16 +65,16 @@ Click on 'Confirm' to create the tracker, which will then be added to a remediat
 Each tracker in the list will present the provided details succinctly for quick and easy reference. Additionally, the status of the tracker will automatically be set to 'In-Progress' as it identifies the relevant artifacts.
 
 
-![List tracker](./static/tracker-tab.png "List tracker")
 
-
+<DocImage path={require('./static/tracker-tab.png')} width="100%" height="80%" />
 
 ## Viewing the affected artifacts
 
 By clicking on the tracker, you can access a list of all artifacts that utilize the specified component and do not meet the remediation conditions. The following is an example of how the artifacts listing page appears for the sample 'log4j' remediation tracker.
 
 
-![List all artifacts](./static/artifacts-effected.png "List all the artifacts")
+
+<DocImage path={require('./static/artifacts-effected.png')} width="100%" height="80%" />
 
 
 
@@ -83,10 +83,7 @@ By clicking on the tracker, you can access a list of all artifacts that utilize 
 When all the artifacts are listed, you can click on any artifact to see a detailed list of its deployments and environments. This view also includes the specific pipeline used for deployment and displays the tag of the artifact and the component version utilized in each deployment. Here’s how it appears:
 
 
-## 
-
-
-![List all the deployments and environments](./static/remediation-deployments.png "List all the deployments and environments")
+<DocImage path={require('./static/remediation-deployments.png')} width="100%" height="80%" />
 
 
 
@@ -94,8 +91,7 @@ When all the artifacts are listed, you can click on any artifact to see a detail
 
 While the tracker lists all artifacts and includes them in the remediation process by default, it also offers the flexibility to exclude any artifact. To do this, click on the ellipses (…) in the list and select 'Exclude Artifact from Remediation.' This action will permanently remove the artifact from the process.
 
-
-![Exclude an artifact](./static/exclude-an-artifact.png "Exclude an artifact")
+<DocImage path={require('./static/exclude-an-artifact.png')} width="100%" height="80%" />
 
 :::info
 
@@ -107,9 +103,7 @@ It's important to note that once an artifact is excluded, it cannot be re-added 
 
 In the tracker, you can easily create Jira tickets for individual artifacts. Simply click the 'Create Ticket' button located to the right of the artifact list item. This will open options to configure the ticket details, with the artifact details automatically populating the Jira ticket creation fields. Similarly, you can create tickets at the tracker level by clicking the 'Create Ticket' button at the top right corner of the screen. However, before proceeding, ensure that your Jira account is connected to Harness using the Harness Jira connector. For more information on this, you can refer to the [Connect to Jira document](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-jira/).  
 
-
-
-![Create ticket in Jira](./static/create-ticket-in-jira.png "Create ticket in Jira")
+<DocImage path={require('./static/create-ticket-in-jira.png')} width="100%" height="80%" />
 
 
 :::info
