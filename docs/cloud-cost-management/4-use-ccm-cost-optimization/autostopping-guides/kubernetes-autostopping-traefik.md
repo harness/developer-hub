@@ -61,7 +61,7 @@ After applying the YAML, an AutoStopping Rule is created in your cluster for ser
 This header sends the AutoStoppingRule header to all the associated ingress routes.
 
 ```yaml
-apiVersion: traefik.containo.us/v1alpha1
+apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: test-rule-header
@@ -70,6 +70,8 @@ spec:
     customRequestHeaders:
       AutoStoppingRule: default-test-rule
 ```
+
+The `AutoStoppingRule` header should be set to a value following the pattern `<namespace>-<rule>` which can be found from the metadata of the `AutoStoppingRule` you created above.
 
 ## Change IngressRoute
 
@@ -109,7 +111,7 @@ middlewares:
 Your ingressRoute should be similar to the following:
 
 ```yaml
-apiVersion: traefik.containo.us/v1alpha1
+apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   annotations:

@@ -78,9 +78,15 @@ export const IdpData: Horizon = {
           { value: "Workflows" },
           { value: "Platform" },
         ],
-        title: "Introduce Project/Org Scopes",
+        title: "Introduce Project/Org Scopes to Catalog",
         description:
           "Introduce Project/Org Hierarchy in the Catalog to allow granular Access Control on IDP Catalog entities as well as Workflows on those levels. Entities can be created at 3 different scopes (Project, Org, Account) and can be shared with other Users and Groups using Harness Platform RBAC.",
+      },
+      {
+        tag: [{ value: "Scorecards" }],
+        title: "Project/Org filters in account level Scorecards",
+        description:
+          "Ability to filter the scope of a Scorecard using Project/Org scopes. The Scorecard lives at account level.",
       },
       {
         tag: [{ value: "Catalog" }],
@@ -88,6 +94,42 @@ export const IdpData: Horizon = {
         description:
           "Services deployed using Harness CD will auto-magically appear in IDP and will be easier to manage for end-users.",
       },
+      {
+        tag: [{ value: "Catalog" }, { value: "Platform" }],
+        title: "Git Sync for IDP 2.0 YAMLs",
+        description:
+          "Ability to store Catalog YAML definitions in Git Repositories using Git Sync (in IDP 2.0)",
+      },
+      {
+        tag: [{ value: "Workflows" }],
+        title: "Enhanced Single Workflow Execution View",
+        description:
+          "More intuitive UI, easier to see status of the pipeline and see logs.",
+      },
+    ],
+  },
+
+  /**
+   *
+   * LATER
+   *
+   */
+
+  Later: {
+    description: "Q2 2025+, May 2025 & beyond",
+    feature: [
+      {
+        tag: [{ value: "Scorecards" }],
+        title: "Scorecards created at Project/Org scopes",
+        description:
+          "Ability for Scorecards and Checks to be created at a Project or at a Org scope.",
+      },
+      {
+        tag: [{ value: "Workflows" }],
+        title: "Workflow Input Sets",
+        description: "Create and Share input sets for Workflows",
+      },
+
       {
         tag: [{ value: "Catalog" }],
         title: "Flexible Catalog Table",
@@ -101,22 +143,10 @@ export const IdpData: Horizon = {
           "Enhance the workflows execution history page to add support for filters like executions per workflow, my executions, outputs, download as CSV, etc.",
       },
       {
-        tag: [{ value: "Workflows" }],
-        title: "Enhanced Single Workflow Execution View",
-        description:
-          "More intuitive UI, easier to see status of the pipeline and see logs.",
-      },
-      {
         tag: [{ value: "Plugins" }],
         title: "UI driven plugin configuration for Components",
         description:
           "Provide user-friendly UI for developers to configure core plugins for their components easily e.g. CI/CD, JIRA, GitHub, IaCM, CCM, Kubernetes, PagerDuty, Grafana, etc.",
-      },
-      {
-        tag: [{ value: "Scorecards" }],
-        title: "Project/Org Hierarchy in Scorecards",
-        description:
-          "Introduce Project/Org Hierarchy when creating Scorecards and Checks.",
       },
       {
         tag: [{ value: "Catalog" }],
@@ -136,18 +166,6 @@ export const IdpData: Horizon = {
         description:
           "Integrate with Harness SEI to show developers their team's DORA metrics and Productivity Insights in IDP Homepage.",
       },
-    ],
-  },
-
-  /**
-   *
-   * LATER
-   *
-   */
-
-  Later: {
-    description: "Q2 2025+, May 2025 & beyond",
-    feature: [
       {
         tag: [{ value: "Plugins" }],
         title: "Re-work Kubernetes plugin",

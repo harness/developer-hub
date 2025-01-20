@@ -1,0 +1,19 @@
+apiVersion: litmuchaos.io/v1alpha1
+kind: MachineFault
+metadata:
+  name: windows-process-kill
+  labels:
+    name: process-kill
+spec:
+  infraType: windows
+  env:
+    - name: PROCESS_IDS
+      value: ""
+    - name: PROCESS_NAMES
+      value: ""
+    - name: FORCE
+      value: "disable"
+    - name: DURATION
+      value: "30s"
+    - name: RAMP_TIME
+      value: ""

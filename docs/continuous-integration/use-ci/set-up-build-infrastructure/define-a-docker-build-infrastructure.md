@@ -108,7 +108,7 @@ The Harness Docker Runner service performs the build work. The delegate needs th
 4. Start the runner binary, for example:
 
    ```
-   sudo ./harness-docker-runner-linux-arm64 server
+   sudo -E ./harness-docker-runner-linux-arm64 server
    ```
 
 ### Define build infrastructure
@@ -176,7 +176,7 @@ For more information about delegates and delegate installation, go to [Delegate 
 The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
 
 1. Download a [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases) corresponding to your build farm's OS and architecture.
-2. (Optional) To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`:
+2. (Optional) To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source;path/to/destination`:
 
    ```
    export CI_MOUNT_VOLUMES="path/to/local/cert;/etc/ssl/certs/ca-certificates.crt,path/to/local/cert2;/etc/ssl/certs/cacerts.pem"
@@ -197,7 +197,7 @@ The Harness Docker Runner service performs the build work. The delegate needs th
 4. Start the runner binary, for example:
 
    ```
-   ./harness-docker-runner-darwin-amd64 server
+   sudo -E ./harness-docker-runner-darwin-amd64 server
    ```
 
 5. If [macOS Gatekeeper](https://support.apple.com/en-us/HT202491) stops the installation because it can't check for malicious software, you need to modify **Security & Privacy** settings to allow this app to run.
@@ -304,7 +304,7 @@ Install the Harness Docker Runner on the Windows machine that you specified in t
 
 1. Download the Windows [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases) on the Windows machine where you want to run the Harness Docker Runner. This should be the Windows machine that you specified in the delegate's `RUNNER_URL`.
 2. Use PowerShell to run these commands. Open a terminal with Administrator privileges.
-3. (Optional) To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
+3. (Optional) To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source;path/to/destination`, for example:
 
    ```
    $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
