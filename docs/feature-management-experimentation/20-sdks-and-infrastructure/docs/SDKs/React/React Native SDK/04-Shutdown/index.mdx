@@ -4,6 +4,30 @@ sidebar_label: Shutdown
 description: Gracefully stop background threads, clear caches, close connections, and flush data.
 ---
 
-import Shutdown from '../../../JavaScript/React Native SDK/04-Shutdown/index.mdx';
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
 
-<Shutdown />
+import {
+  Shutdown,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_templates/_used_by_all_sdks/index.mdx";
+
+import Notes          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_react-native-sdk/_040_notes.mdx";
+import FactoryDestroy from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/SDKs/_javascript-sdk/_040_codeFactoryDestroy.mdx";
+
+export const toc = [];
+
+export const Result = SDKDocsBuilder(
+  [
+    [
+      Shutdown,
+      {
+        notes: <Notes />,
+        codeFactoryDestroy: <FactoryDestroy />,
+      },
+    ],
+  ],
+  toc
+);
+
+<>{Result}</>

@@ -1,9 +1,11 @@
 ---
-title: "React SDK: Lazy initialization of Split client"
-sidebar_label: "React SDK: Lazy initialization of Split client"
+title: "How to handle the lazy initialization of Split client?"
+sidebar_label: "How to handle the lazy initialization of Split client?"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+<!-- applies to React SDK -->
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360046771911-React-SDK-Lazy-initialization-of-Split-client </button>
@@ -11,7 +13,7 @@ helpdocs_is_published: true
 
 ## Question
 
-When using React app, on initial load of a client-side application the Split key is not always directly available. The React SDK will initialize SplitFactory and useClient on the initial render, which means that with the current setup we have to initiate the Split client with a key that might not exist yet.
+When using React app, on initial load of a client-side application the Split key is not always directly available. The React SDK will initialize SplitFactory and useClient on the initial render, which means that with the current setup we have to initiate the Split client with a key that might not exist yet. How to handle the initial render?
 
 ## Answer
 

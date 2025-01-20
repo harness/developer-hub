@@ -1,12 +1,14 @@
-# FME Synchronizer Runbook
+---
+title: Runbook doe FME Synchronizer
+sidebar_label: Runbook for FME Synchronizer
+helpdocs_is_private: false
+helpdocs_is_published: true
+sidebar_position: 2
+---
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360018343391-Split-Synchronizer-runbook <br /> ✘ image still hosted on help.split.io </button>
 </p>
-
-:::note[Split Synchronizer renamed to FME Synchronizer]
-To keep docs and branding consistent, we are renaming Split Synchronizer to FME Synchronizer. FME stands for Feature Management & Experimentation. That's what we do and that hasn't changed. 🙂
-:::
 
 This article includes best practices for running a FME Synchronizer v5.0.0. By default, Split’s SDKs keep segment and feature flag data synchronized as users navigate across disparate systems, treatments and conditions. However, some languages don’t have a native capability to keep a shared local cache of this data to properly serve treatments.
 

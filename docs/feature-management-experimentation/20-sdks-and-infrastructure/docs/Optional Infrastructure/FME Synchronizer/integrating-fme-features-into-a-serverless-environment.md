@@ -1,8 +1,9 @@
 ---
-title: "Blog: Best practices for integrating Split feature flags into a serverless environment"
-sidebar_label: "Blog: Best practices for integrating Split feature flags into a serverless environment"
+title: "Article: Integrating FME feature flags into a serverless environment"
+sidebar_label: "Article: Integrating FME feature flags into a serverless environment"
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 7
 ---
 
 <p>

@@ -1,6 +1,6 @@
 ---
-title: Moving Feature Flags to a Service
-sidebar_label: Moving Feature Flags to a Service
+title: "Article: Moving Feature Flags to a Service"
+sidebar_label: "Article: Moving Feature Flags to a Service"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -8,7 +8,6 @@ helpdocs_is_published: true
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025281872-Moving-Feature-Flags-to-a-Service </button>
 </p>
-
 
 ## Using a Service for Feature flags
 

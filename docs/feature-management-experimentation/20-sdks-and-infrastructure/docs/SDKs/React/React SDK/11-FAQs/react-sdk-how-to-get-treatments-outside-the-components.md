@@ -1,9 +1,11 @@
 ---
-title: "React SDK: Is it possible to get treatments outside the Components?"
-sidebar_label: "React SDK: Is it possible to get treatments outside the Components?"
+title: "How to get treatments outside of Components?"
+sidebar_label: "How to get treatments outside of Components?"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+<!-- applies to React SDK -->
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020863412-General-SDK-Always-getting-control-treatments </button>
