@@ -1,32 +1,44 @@
 ---
-title: Verifying the Artifact
-sidebar_label: Verify the Artifact
-description: Artifact Verification
+title: Sign Artifacts with Harness SCS
+sidebar_label: Sign the Artifact
+description: Sign your artifacts using Harness SCS
 sidebar_position: 1
 ---
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+import CosignKeyGeneration from '/docs/software-supply-chain-assurance/shared/generate-cosign-key-pair.md';
 
-After you sign the artifact using the [Artifact Signing step](http://localhost:3000/docs/software-supply-chain-assurance/artifact/artifact-signing#artifact-signing-process-in-scs), it’s crucial to verify that the artifact has not been tampered and was signed by a trusted source. The Artifact Verification process enables you to validate the integrity and authenticity of the signed artifact before it’s deployed.
+Protect your software supply chain by safeguarding your artifacts from being compromised. Attackers may attempt to inject malicious code into your artifacts, aiming to tamper with your software supply chain. One of the primary goals of attackers is to get you to deploy compromised (or "poisoned") artifacts into your environments. In the worst-case scenario, your deployments could become a distribution channel for these poisoned artifacts, putting your customers and users at risk.
 
-## Artifact Verification in SCS
+As artifacts pass through multiple stages in the software lifecycle, ensuring they remain secure and untampered is critical. Artifact signing provides a reliable way to guarantee that the artifact built at one stage is the exact same artifact consumed or deployed at the next, with no chance of compromise. This process builds trust, ensures integrity, and strengthens the security of your software supply chain.
 
-The artifact verification step ensures the authenticity of the signed artifact by validating it with the corresponding public key. If the public key matches the signed artifact it confirms that the artifact is intact, secure, and originates from a trusted source.
 
-<DocImage path={require('./static/artifact-verification-excali.png')} width="80%" height="60%" />
+## Artifact Signing process in SCS
 
-## Artifact Verification step configuration
+The Artifact Signing step retrieves the artifact from the container registry, signs it using [Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with a private key from a key pair, and generates a signature file `.sig`. Once the signature is successfully generated, it is pushed back to the same container registry alongside the artifact. This signature file is essential for verifying the artifact's integrity and authenticity. For more details on artifact verification, refer to the [Artifact Verification documentation](/docs/software-supply-chain-assurance/artifact//verify-signed-artifacts.md)
 
-The Artifact Verification step pulls the `.sig` file from the artifact registry and verifies it with the corresponding public key. In the artifact signing step, if you chosen not to push the `.sig` file to the registry, then for the artifact verification `.sig` file will instead be pulled from the Harness database . This process ensures that the artifact was signed by a trusted entity, thereby confirming its integrity and authenticity.
+<DocImage path={require('./static/excali-sign.png')} width="80%" height="50%" />
 
-Follow the instructions below to configure the Artifact Verification step.
+<!-- ## Requirements
 
-* **Name**: Provide a name for the verification step.
+### Generate the keys for Artifact Signing
+
+import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shared/generate-cosign-artifact.md';
+
+<GenerateKeysPrerequisite /> -->
+
+## Artifact Signing step configuration
+
+The Artifact Signing step allows you to sign your artifacts and optionally push the generated signature file `.sig` to the same artifact registry from which the artifact was retrieved.
+
+Follow the instructions below to configure the Artifact Signing step.
+
+* **Name**: Provide a name for the signing step.
 
 * **Artifact Source**: Select the source container registry (e.g., DockerHub, ACR, GCR, ECR, etc.).
+
 
 <Tabs>
   <TabItem value="dockerhub" label="DockerHub" default>
@@ -83,7 +95,7 @@ Follow the instructions below to configure the Artifact Verification step.
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
 
-* **Image:**: Enter the name of your image using tag or digest, example `repository-name/image:tag` or you can use digest `repository-name/image:digest`
+* **Image:**: Enter the name of your image using tag or digest, example `repository-name/image:tag` or you can use digest `repository-name/image:digest`.
 
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
@@ -96,73 +108,65 @@ Follow the instructions below to configure the Artifact Verification step.
 
 </Tabs>
 
-:::note
+You can securely sign the artifacts using **Cosign** or **Cosign with Secret Manager**
 
-The image used for the artifact verification step must be the same as the image used for the artifact signing step
+import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shared/generate-cosign-artifact.md';
 
-:::
-
-You can verify the signed artifact with **Cosign** or **Cosign with Secret Manager**
-
-import CosignVerificationOptions from '/docs/software-supply-chain-assurance/shared/cosign-verification-options.md';
-
-<CosignVerificationOptions />
-
-
-<DocImage path={require('./static/artifact-verifyying.png')} width="50%" height="50%" />
-
-## View Verified Artifacts
-
-Once the artifact is signed and verified, you will be able to see the Artifact Integrity Verification status from the [Artifacts Overview](http://localhost:3000/docs/software-supply-chain-assurance/artifact-view#artifact-overview) tab.
-
-
-* If the signed artifact is successfully verified using the public key, the verification status is displayed as Passed, along with a link to the corresponding Rekor log entry.
-
-* If the verification fails, the status is displayed as Failed.
-
-<DocImage path={require('./static/artifact-verification-data.png')} width="100%" height="100%" />
+<GenerateKeysPrerequisite />
 
 
 
-## Example Pipeline For Artifact Verification
+<DocImage path={require('./static/artifact-signnning.png')} width="50%" height="50%" />
 
-This example demonstrates how to implement artifact Verification in the Build stage of the pipeline.
+
+**Attach Signature to Artifact Registry** (Optional): By default, this option is unchecked which means the signature will not be uploaded to the artifact registry and checking this option will push the signature as a `.sig` file to the artifact registry.
+
+## View Signed Artifacts
+
+You can easily access the signed artifact details from the [Artifacts Overview](/docs/software-supply-chain-assurance/artifact-view#artifact-overview) tab.This section shows the signature and who signed the artifact.Additionally, you can also find the artifact signing as an event in the Chain of Custody, where a new entry is logged every time you sign an artifact.This entry includes a link to the execution results and rekor log entry, allowing you to track the signing activity and cross-check the details.
+
+<DocImage path={require('./static/artifact-signing-data.png')} width="100%" height="100%" />
+
+
 
 
 :::note
+You are allowed to re-sign the same image multiple times, with each new signing overwriting the previous one. The Artifacts Overview tab will always display the most up-to-date signing details, reflecting the latest signature information for the artifact.
+:::
 
-At present, Harness does not support artifact verification in the deployment stage, However this is part of our roadmap.
+## Example Pipeline For Artifact Signing
+
+This example demonstrates how to implement artifact signing in the Build stage of the pipeline.
+
+
+:::note
+
+At present, Harness does not support artifact signing in the deployment stage, However this is part of our roadmap.
 
 :::
 
 
-This example **Build** stage has three steps:
+This example **Build** stage has two steps:
 
-- **Build and Push an Image to Docker Registry**: This step pulls the code, build the image and push it to a Docker registry (e.g., DockerHub, ACR, GCR, etc.).
-
-
-
-- **Artifact Signing**: Pulls the artifact from the registry and signs it with a private key pair and pushes the .sig file back to the artifact registry.
+- **Build and Push an Image to Docker Registry**: This step builds the cloned codebase and pushes the image to the container registry (DockerHub, ACR, GCR, etc.).
 
 
-- **Artifact Verification**: Verify the signed artifact using the corresponding public key to confirm its source and integrity.
+
+- **Artifact Signing**: Pulls the artifact from the registry and signs it with a private key pair and pushes the `.sig` file back to the artifact registry.
 
 
-<DocImage path={require('./static/sample-pipeline.png')} width="100%" height="100%" />
+<DocImage path={require('./static/artifact-signing-pipeline.png')} width="80%" height="60%" title="Click to view full size image" />
 
-
-To replicate the Artifact Verification step you can use the below sample pipeline YAML
+To replicate the Artifact Signing step you can use the below sample pipeline YAML
 
 <details>
 
-<summary>
-Sample Pipeline YAML
-</summary>
+<summary> Sample Pipeline YAML </summary>
 
 ```
 pipeline:
-  name: ArtifactVerification
-  identifier: ArtifactVerification
+  name: Artifact Signing
+  identifier: Artifact Signing
   tags: {}
   projectIdentifier: Harness
   orgIdentifier: default
@@ -212,25 +216,11 @@ pipeline:
                         password: account.Cosign_Password
                     uploadSignature:
                       upload: true
-              - step:
-                  type: SscaArtifactVerification
-                  name: Artifact Verification_1
-                  identifier: ArtifactVerification_1
-                  spec:
-                    source:
-                      type: docker
-                      spec:
-                        connector: lavakushDockerhub
-                        image: lavakush07/easy-buggy-app:v5
-                    verifySign:
-                      type: cosign
-                      spec:
-                        public_key: account.Cosign_Public_Key
           infrastructure:
             type: KubernetesDirect
             spec:
               connectorRef: account.harness_kubernetes_connector
-              namespace: artifactsigning
+              namespace: artifact-signing
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
@@ -242,6 +232,12 @@ pipeline:
             value: TRACE
 
 
-
 ```
+
+
 </details>
+
+
+## Verify Artifact Signing
+
+You can verify the signed artifacts using the Artifact verification step. Refer to [configure your pipeline to verify the artifact Signing](/docs/software-supply-chain-assurance/artifact/verify-signed-artifacts.md)
