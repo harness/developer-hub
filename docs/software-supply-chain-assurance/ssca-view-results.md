@@ -48,7 +48,7 @@ Under the **SLSA Provenance** section, you can download your SLSA provenance and
 ![SLSA provenance and verification](./static/scs-slsa-verification.png "SLSA provenance and verification")
 
 
-## View Artifact verification status
+## View Signed Artifact verification status
 
 Under the **Artifact Integrity Verififcation section**, you can find the status of the **Artifact verification step** and the link to view the logs. The overview section presents a cumulative count of all Success and failure cases.
 

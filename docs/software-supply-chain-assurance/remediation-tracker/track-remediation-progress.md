@@ -28,17 +28,17 @@ The remediation tracker operates with two stages: 'In-progress' and 'Done'. Upon
 For every artifact listed, the tracker offers a status overview, displaying the number of deployments that need attention, marked as 'Pending,' and those that have been patched, labeled as 'Remediated.' When a patch is applied, the tracker uses the predefined conditions set at its creation to assess the artifacts and update their status. If your artifact meets the specified conditions, it is categorized as 'Remediated.' Conversely, if it fails to meet these conditions, it is classified under the 'Pending' category. The change in deployment status will be regularly updated each time you open the tracker.
 
 
-![Tracking your Patch status](./static/track-your-patch-status.png "Tracking your Patch status")
+![Tracking your Patch status](./static/remediation-deploy.png "Tracking your Patch status")
 
 ### Tracking the new deployments
 The tracker is capable of identifying any new deployments using the affected artifact. It signals these updates by adding a 'new' marker to the artifact listing and showing the number of new deployments. This marker is key for keeping track of deployments that occur after the tracker's implementation.
 
-![Tracking new deployments](./static/track-new-deployments.png "Tracking new deployments")
+![Tracking new deployments](./static/newartifact.png "Tracking new deployments")
 
 ### Tracking the overall Remediation progress
 
 
-![alt_tTracking the overall Remediation progressext](./static/overall-remediation-progress.png "Tracking the overall Remediation progress")
+![alt_tTracking the overall Remediation progressext](./static/scs-envs.png "Tracking the overall Remediation progress")
 
 
 While you can view the status of each individual artifact, the Remediation Progress section within the tracker provides a comprehensive overview of the overall status. It includes the total number of impacted artifacts and environments. Importantly, it displays the active status of both production and pre-production environments that require patching, providing a clear picture of what is necessary for a complete and successful remediation.
@@ -46,10 +46,10 @@ While you can view the status of each individual artifact, the Remediation Progr
 
 ## Completing the Remediation
 
-As outlined in the initial section of this document, your remediation tracker will automatically reach completion once all artifacts are successfully patched, at which point the status of the tracker is automatically set to 'Done.' Additionally, the tracker provides the option to manually close it by clicking on the 'Mark as remediated' button found in the overview section. While manual closure is possible, it is recommended to allow the tracker to close automatically, ensuring that all artifacts are remediated.
+As outlined in the initial section of this document, your remediation tracker will automatically reach completion once all artifacts are successfully patched, at which point the status of the tracker is automatically set to 'Done.' Additionally, the tracker provides the option to manually close it by clicking on the 'Mark as done' button found in the overview section. While manual closure is possible, it is recommended to allow the tracker to close automatically, ensuring that all artifacts are remediated.
 
 
-![Completing the Remediation](./static/close-tracker.png "Completing the Remediation")
+![Completing the Remediation](./static/close-remediation.png "Completing the Remediation")
 
 :::info
 The states of all artifacts and their deployments remain accessible in the tracker until closure, and it’s important to note that once the tracker is closed, it cannot be reopened.

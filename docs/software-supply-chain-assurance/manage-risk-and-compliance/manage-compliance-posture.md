@@ -49,7 +49,7 @@ Users can view rules filtered by standards and apply an additional filter specif
 
 Upon clicking a rule in the Rules tab, you will see a list of all the entities impacted by the evaluation. This page provides information about the rule, its description, evaluation history and general remediation steps to address any failures.
 
-<DocImage path={require('./static/compliance-rules-impacted-entity.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/risk-evaluations.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 Clicking on an item will bring up the latest evaluation details. Alternatively, you can click on an icon from the evaluation history to view specific evaluation details. The information includes the time of evaluation, the reason for failure (if failed), and the remediation information to address the issues.

@@ -46,7 +46,7 @@ By clicking on the score, you see the complete breakdown of scores in various ca
 !["SBOM Score details"](./static/sbom-scorecard.png)
 
 ### Supply Chain Tab 
-The scores of the SBOM for a specific pipeline execution can be found in the **Supply Chain** tab within the pipeline execution window.
+The SBOM score for a specific pipeline execution can be found in the **Supply Chain** tab within the pipeline execution window.
 
 !["SBOM Score from Supply Chain Tab"](./static/sbom-score.png)
 
