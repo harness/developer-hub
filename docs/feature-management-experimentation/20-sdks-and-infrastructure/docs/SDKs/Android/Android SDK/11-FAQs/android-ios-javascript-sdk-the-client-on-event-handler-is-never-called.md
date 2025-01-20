@@ -41,7 +41,7 @@ import TabItem from "@theme/TabItem";
     {label: 'Android SDK', value: 'android'},
     {label: 'iOS SDK', value: 'ios'},
     {label: 'JavaScript browser-side', value: 'browser'},
-  ]} defaultValue={ window.location.pathname.includes("Android%20SDK") ? "android" : window.location.pathname.includes("iOS%20SDK") ? "ios" : "browser" }>
+  ]}>
   <TabItem value="android">
 
 In the Android wrapper class below, we are using a static variable to indicate the SDK is ready, this will work if you have only one instance of the wrapper class.
@@ -90,7 +90,6 @@ class SplitWrapper {
     }
 }
 ```
-
 
   </TabItem>
   <TabItem value="browser">

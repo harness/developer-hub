@@ -18,18 +18,12 @@ All FME SDKs support connecting to Split Proxy. What are the updates needed for 
 1. Make sure to obtain the Split Proxy URL 
 2. Refer to each SDK section below for the Configuration parameters needed, set the URL parameters to the full URL of the proxy location.
 
-<Tabs
-  values={[
-    {label: 'JavaScript SDK', value: 'javascript'},
-    {label: 'iOS SDK', value: 'ios'},
-    {label: 'Android SDK', value: 'android'},
-    {label: 'Java SDK', value: 'java'},
-    {label: 'Ruby SDK', value: 'ruby'},
-    {label: 'Python SDK', value: 'python'},
-    {label: 'iOS SDK', value: 'ios'},
-    {label: '.NET SDK', value: 'csharp'},
-  ]}>
-  <TabItem value='javascript'>
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem label='JavaScript SDK' value='javascript'>
+
 ```javascript
 core: { ... },
 urls: {
@@ -38,8 +32,10 @@ urls: {
     auth: 'https://ProxyServerName:Port/api',
 },
 ```
+
   </TabItem>
-  <TabItem value="ios">
+  <TabItem label='iOS SDK' value="ios">
+
 ```swift
 let endpoints: ServiceEndpoints = ServiceEndpoints.builder()
     .set(sdkEndpoint: "http://ProxyServerName:Port/api")
@@ -51,8 +47,10 @@ let endpoints: ServiceEndpoints = ServiceEndpoints.builder()
 let config = SplitClientConfig()
 config.serviceEndpoints = endpoints
 ```
+
   </TabItem>
-  <TabItem value="android">
+  <TabItem label='Andriod SDK' value="android">
+
 ```java
 final ServiceEndpoints serviceEndpoints = ServiceEndpoints.builder()
     .apiEndpoint("http://ProxyServerName:Port/api")
@@ -66,8 +64,10 @@ SplitClientConfig config = SplitClientConfig.builder()
     .serviceEndpoints(serviceEndpoints)
     .build();
 ```
+
   </TabItem>
-  <TabItem value="java">
+  <TabItem label='Java SDK' value="java">
+
 ```java
 SplitClientConfig config = SplitClientConfig.builder()
     .endpoint("http://ProxyServerName:Port", "http://ProxyServerName:Port")
@@ -75,8 +75,10 @@ SplitClientConfig config = SplitClientConfig.builder()
     .telemetryURL("http://ProxyServerName:Port")
     .build();
 ```
+
   </TabItem>
-  <TabItem value="ruby">
+  <TabItem label='Ruby SDK' value="ruby">
+
 ```ruby
 options = {
     base_uri: "http://ProxyServerName:Port/api"
@@ -86,24 +88,32 @@ options = {
     streaming_service_url: 'http://ProxyServerName:Port/api'
 }
 ```
+
   </TabItem>
-  <TabItem value="python">
+  <TabItem label='Python SDK' value="python">
+
 ```python
 config = {}
 factory = get_factory('YOUR_API_KEY', config=config, sdk_api_base_url = 'http://ProxyServerName:Port/api', events_api_base_url = 'http://ProxyServerName:Port/api')
-GO SDK
+```
 
+  </TabItem>
+  <TabItem label='Go SDK' value="go">
+
+```golang
 cfg := conf.Default()
 cfg.Advanced.AuthServiceURL = "http://ProxyServerName:Port/api"
 cfg.Advanced.SdkURL = "http://ProxyServerName:Port/api"
 cfg.Advanced.EventsURL = "http://ProxyServerName:Port/api"
 cfg.Advanced.TelemetryServiceURL = "http://ProxyServerName:Port/api"
 ```
+
   </TabItem>
-  <TabItem value="csharp">
+  <TabItem label='.NET SDK' value="csharp">
+
 ```csharp
 var config = new ConfigurationOptions
-{
+{}
     Endpoint = "http://ProxyServerName:Port",
     EventsEndpoint = "http://ProxyServerName:Port",
     AuthServiceURL = "http://ProxyServerName:Port/api/v2/auth",",
@@ -111,5 +121,6 @@ var config = new ConfigurationOptions
     TelemetryServiceURL = "http://ProxyServerName:Port/api/v1"
 };
 ```
+
   </TabItem>
 </Tabs>
