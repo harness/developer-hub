@@ -8,7 +8,7 @@ sidebar_label: Secure Software Delivery
 Learn how to use Artifact Registry with the secure software delivery modules including [Security Testing Orchestration](https://developer.harness.io/docs/security-testing-orchestration) and [Supply Chain Security](https://developer.harness.io/docs/software-supply-chain-assurance). 
 
 ## Secure Software Delivery
-Seamlessly reference artifacts stored in Harness Artifact Registry within your STO or SCS (also referred to as Software Support Chain Assurance or SSCS) pipeline steps. This functionality eliminates the need for an external connector, providing a streamlined and user-friendly experience while enabling efficient and simplified workflows.
+Seamlessly reference artifacts stored in Harness Artifact Registry within your STO or SCS (also referred to as Software Support Chain Assurance or SSCA) pipeline steps. This functionality eliminates the need for an external connector, providing a streamlined and user-friendly experience while enabling efficient and simplified workflows.
 
 :::tip example scs stage
 Examples of SCS stages can be a **Software Bill of Materials (SBOM)** or **Supply Chain Levels for Software Artifacts (SLSA)**.
