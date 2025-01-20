@@ -171,7 +171,7 @@ To replicate the Artifact Signing step you can use the below sample pipeline YAM
 ```
 pipeline:
   name: Artifact Signing
-  identifier: Artifact Signing
+  identifier: ArtifactSigning
   tags: {}
   projectIdentifier: Harness
   orgIdentifier: default
