@@ -4,7 +4,6 @@ sidebar_label: FME SDK overview
 helpdocs_is_private: true
 helpdocs_is_published: false
 id: sdk-overview
-slug: ../../../../sdks-and-infrastructure/
 ---
 
 <p>
