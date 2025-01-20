@@ -29,7 +29,7 @@ Here are the list of built-in scanners available for specific scan types. To lea
           Static Application Security Testing(SAST)
       </td>
       <td>
-            [Sempgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)
+            [Sempgrep v1.102.0](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)
       </td>
    </tr>
    <tr>
@@ -37,8 +37,8 @@ Here are the list of built-in scanners available for specific scan types. To lea
           Software Composition Analysis(SCA)
       </td>
       <td>
-          [OWASP Dependency Check](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference),
-          [OSV](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference)
+          [OWASP Dependency Check v12.0.0](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference),
+          [OSV v1](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference)
       </td>
    </tr>
    <tr>
@@ -46,7 +46,7 @@ Here are the list of built-in scanners available for specific scan types. To lea
             Secret Detection
       </td>
       <td>
-            [Gitleaks](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)
+            [Gitleaks v8.22.1](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)
       </td>
    </tr>
       <tr>
@@ -54,8 +54,8 @@ Here are the list of built-in scanners available for specific scan types. To lea
           Container Scanning
       </td>
       <td>
-          [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference),
-          [Anchor Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference)
+          [Aqua Trivy v0.58](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference),
+          [Anchor Grype v0.86.1](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference)
       </td>
    </tr>
    <tr>
@@ -63,7 +63,7 @@ Here are the list of built-in scanners available for specific scan types. To lea
             Dynamic Application Security Testing(DAST)
       </td>
       <td>
-            [Zed Attack Proxy(ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference)
+            [Zed Attack Proxy(ZAP) v2.16.0](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference)
       </td>
    </tr>
       <tr>
@@ -71,7 +71,7 @@ Here are the list of built-in scanners available for specific scan types. To lea
             Infrastructure as Code(IaC)
       </td>
       <td>
-            [Checkov](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/checkov-iac-scan)
+            [Checkov v3.2.352](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/checkov-iac-scan)
       </td>
    </tr>
 </table>
