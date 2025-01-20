@@ -31,13 +31,13 @@ For additional information or to start into reference docs, explore our help cen
 
 Want to watch step by step videos?  Explore all our video content [here](https://help.split.io/hc/en-us/articles/360025949151-Split-Videos).
 
-# Getting started
+## Getting started
 
-## Create an account / join an account 
+### Create an account / join an account 
 
 We assume you’ve created an account already, but if not, sign up [here](https://www.split.io/signup/).  If your team has an account, an admin can invite you from the users page in admin settings.  
 
-## Understand accounts and projects
+### Understand accounts and projects
 
 When you sign up you are sent a link to create an account. We utilize your company name as the account name. This can be changed later in your account's admin settings.  
 
@@ -47,7 +47,7 @@ Projects allow you to separately manage your feature flags and experiments acros
 
 Learn more about [projects](https://help.split.io/hc/en-us/articles/360023534451).
 
-## Understand environments, traffic types, and API keys
+### Understand environments, traffic types, and API keys
 
 Environments allow you to manage your feature flags throughout your development lifecycle — from local development to staging and production. When you first create your account, your project is provided with two environments. These two environments are named staging and production, and can be re-named. Learn more about [environments](https://help.split.io/hc/en-us/articles/360019915771).
 

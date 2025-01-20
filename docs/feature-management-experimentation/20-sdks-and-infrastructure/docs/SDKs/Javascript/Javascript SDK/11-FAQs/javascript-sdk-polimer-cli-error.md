@@ -15,7 +15,7 @@ description: ""
 
 ## Issue
 
-Error building JavaScript SDK using polymer-cli: \"ENOENT: no such file or directory\"
+Error building JavaScript SDK using polymer-cli: \"ENOENT: no such file or directory\".
 
 ### Build environment
 

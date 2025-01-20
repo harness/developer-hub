@@ -13,7 +13,7 @@ import Link from "@docusaurus/Link";
 
 See the following below quickstart guides that take advantage of Split Suite (or RUM agents) and the default events they track in order to quickly get you up and running with IFID.  If you don’t want to or can’t use them, you can always send events to Split other ways - via SDK’s track methods, API calls, or integrations as documented [here](https://help.split.io/hc/en-us/articles/360020585772-Events). 
 
-## Rollout of new feature on the Web
+## Rollout a new feature on the Web
 
 When rolling out a new feature on your site, you’ll want to track how that affects the performance metrics on your site. Google researchers have provided a package that they call [web-vitals](https://github.com/GoogleChrome/web-vitals) that measures what are considered to be the most important and vital metrics to measure performance as seen by users browsing or visiting a website. 
 
@@ -37,7 +37,7 @@ Once the events start flowing from the RUM agent, [some metrics](https://help.sp
  
 With the above steps you get Split’s powerful statistical computation engine watching your back to ensure that you are alerted to any degradation of the automatic metric across any of your percentage based rollouts of features. 
 
-## Rollout of a new feature on Android or iOS
+## Rollout a new feature on Android or iOS
 
 On mobile devices, Split Suite can be used to track crashes, errors, and unresponsive moments of your application, among other things. Of course you can also track custom events. 
 
@@ -55,7 +55,7 @@ Once the events start flowing from the RUM agent, some [metrics for iOS](https:/
 
 With the above steps you get Split’s powerful statistical computation engine watching your back to ensure that you are alerted to any degradation of the automatic metric across any of your percentage based rollouts of features. 
 
-## Rollout of new feature on Server
+## Rollout a new feature on Server
 
 While the Split Suites today only exist for client side code, this does not mean that you cannot get value from them if you are rolling out server side code. Features that are focused on server side components of your technology stack still can and likely will affect the experience of your users. Installing the Suite or RUM agents in your app will allow you to keep track of these and, in concert with Split’s alerting mechanisms, will alert you if any metrics show an unacceptable degradation of user experience, allowing you to rollback or kill the feature within Split. 
 

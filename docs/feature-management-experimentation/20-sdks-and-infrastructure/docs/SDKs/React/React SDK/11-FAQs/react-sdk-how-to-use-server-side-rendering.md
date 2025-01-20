@@ -1,6 +1,6 @@
 ---
-title: "React SDK: How to use server-side rendering?"
-sidebar_label: "React SDK: How to use server-side rendering?"
+title: "How to use the SDK for server-side rendering?"
+sidebar_label: "How to use the SDK for server-side rendering?"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

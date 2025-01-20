@@ -1,6 +1,6 @@
 ---
-title: "React SDK: Error building app with webpack \"Entrypoint undefined = ng/index.html\""
-sidebar_label: "React SDK: Error building app with webpack \"Entrypoint undefined = ng/index.html\""
+title: "Error building React app with webpack: Entrypoint undefined"
+sidebar_label: "Error building React app with webpack: Entrypoint undefined"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

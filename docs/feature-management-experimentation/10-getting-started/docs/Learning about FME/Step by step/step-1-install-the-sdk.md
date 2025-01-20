@@ -15,7 +15,7 @@ Our SDKs are designed to live at the application layer of your application and p
 * Serve as a decision engine for your application
 * Automatically capture what variants of your features your customers are served
 
-# Decision engine
+## Decision engine
 
 When you set up rules for your feature flags and experiments to be targeted to subsets of your customer base in Split (e.g., run a 50/50 test of a new home page on customers in New York), our SDKs automatically download down these rules and maintain a local copy of them on your machines. From there, our SDKs then take care of keeping themselves up to date by periodically checking for any changes to the rules that are made in the Split user interface.
 
@@ -44,6 +44,6 @@ Split SDKs are for specific languages or use cases. To choose the best SDK for y
 * [Redux SDK](https://help.split.io/hc/en-us/articles/360038851551-Redux-SDK)
 * [Ruby SDK](https://help.split.io/hc/en-us/articles/360020673251)
 
-# Capturing what your customer was served
+## Capturing what your customer was served
 
 Each time our SDK makes a decision of what your customer should be served, it automatically takes that information and queues it up on your machines. The SDK then takes care of all the work in passing this information up to Split in the background without ever slowing down your application. By capturing this information, you can easily understand what customers are being served and set the basis for being able to properly measure your experiments.

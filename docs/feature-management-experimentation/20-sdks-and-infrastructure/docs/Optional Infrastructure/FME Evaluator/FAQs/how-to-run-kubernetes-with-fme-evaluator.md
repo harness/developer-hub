@@ -1,6 +1,7 @@
 ---
 title: How to run Kubernetes with FME Evaluator
 sidebar_label: How to run Kubernetes with FME Evaluator
+sidebar_position: 5
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

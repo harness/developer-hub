@@ -3,6 +3,7 @@ title: SDK validation checklist
 sidebar_label: FME SDK validation checklist
 helpdocs_is_private: false
 helpdocs_is_published: true
+slug: ../../SDKs/validation-checklist
 ---
 
 <p>

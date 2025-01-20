@@ -3,6 +3,8 @@ title: SDK overview
 sidebar_label: FME SDK overview
 helpdocs_is_private: true
 helpdocs_is_published: false
+id: sdk-overview
+slug: ../../../../sdks-and-infrastructure/
 ---
 
 <p>
@@ -18,7 +20,7 @@ When you integrate Split SDKs, consider the following to make sure that you have
 * **Determine which SDK language**. Split supports serveral SDKs across various languages. With Split, you can use multiple SDKs if your product is comprised of applications written in multiple languages.
 * **Determine if you need to use the Split Synchronizer & Proxy**. By default, Split's SDKs keep segment and feature flag definitions synchronized as users navigate across disparate systems, treatments, and conditions. However, some languages do not have a native capability to keep a shared local cache of this data to properly serve treatments. For these cases, we built the Split Synchronizer. To learn more, refer to the [Split Synchronizer and Proxy guide](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer-proxy).
 
-# Streaming architecture overview
+## Streaming architecture overview
 
 Split's SDKs were built to be scalable, reliable, fast, independent, and secure.
 
@@ -27,7 +29,7 @@ Split's SDKs were built to be scalable, reliable, fast, independent, and secure.
 * **Independent with no Split dependency**. Split ships the evaluation engine to each SDK creating a weak dependency with Split's backend and increasing both speed and reliability. There are no network calls to Split to decide a user's treatment.
 * **Secure with no PII required**. No customer data needs to be sent through the cloud to Split. Use customer data in your feature flag evaluations without exposing this data to third parties.
 
-# Streaming versus polling
+## Streaming versus polling
 
 Split updates can be streamed to Split's SDKs sub second or retrieved on configurable polling intervals.
 
@@ -66,7 +68,7 @@ Streaming is currently supported for the below SDKs with the minimum version sho
 * Python: 8.3.0
 :::
 
-# SDK types
+## SDK types
 
 Our supported SDKs fall into two categories:
 
@@ -75,7 +77,7 @@ Our supported SDKs fall into two categories:
 | Client-side | <ul><li> Designed to be used by a single traffic type in the browser, mobile device, or mobile application </li><li> Intended to be used in a potentially less secure environment </li><li> This includes Split's JavaScript, iOS, and Android SDKs </li></ul>  | 
 | Server-side | <ul><li> Designed to work for multiple traffic types, like users or customers (many of them per SDK) as opposed to client-side that are bound to one (typically a single user or account in session) </li><li> Intended to be used in a secure environment, such as your infrastructure </li></ul> |
 
-# Security considerations
+## Security considerations
 
 Client- and server-side SDKs have different security considerations:
  
@@ -84,7 +86,7 @@ Client- and server-side SDKs have different security considerations:
 | Client-side | <ul><li> These SDKs run on the browser or in a mobile device, they can be compromised by users unpacking a mobile app or use the browser's developer tools to inspect the page </li><li>Client-side SDK APIs are more restricted in regards to what information they can access because it's a less secure environment. <br />For example, client-side SDKs uses a specific endpoint (/mySegments) which only returns a list of segments in which the key used during instantiation is included. This provides for a much smaller amount of data, allowing for a smaller memory footprint in memory constrained environments of the browser and mobile apps </li></ul>| 
 | Server-side | <ul><li> These SDKs operate within your own infrastructure making them not accessible by end users </li><li>When targeting by private or sensitive data on the server-side, this information won't leave your infrastructure, keeping your sensitive data under your control </li></ul>|
 
-# API keys
+## API keys
 
 Typically, you need one API key per Split environment, and additionally, you may want to issue extra API keys per microservice of your product using Split for better security isolation. You must identify which type of SDK you're using to ensure you select the appropriate API key type.
  
@@ -96,7 +98,7 @@ Within Split, the following three types of keys each provide different levels of
 | Client-side | <ul><li> Configure client-side SDKs to use the client-side api key </li><li> Grants access to fetch featuer flags and segments for the provided key within the provided API key's environment </li></ul>|
 | Admin | <ul><li> Use for access to Split's developer admin API </li><li> This key provides broader access to multiple environments unlike the other API keys that are scoped to a specific environment </li><li> Do not share this API key with your customers </li><li> If you accidentally expose your admin API key, you can revoke it in the API keys tab in Admin settings </li></ul>|
 
-# Supported SDKs
+## Supported SDKs
 
 Using Split involves using one of our SDKs. The Split team builds and maintains these SDKs for some of the most popular language libraries and are available under open source licenses. Go to our GitHub repository for more information.
 
@@ -120,21 +122,21 @@ Using Split involves using one of our SDKs. The Split team builds and maintains 
 | Python | server-side | [Docs](https://help.split.io/hc/en-us/articles/360020359652-Python-SDK) & [GitHub](https://github.com/splitio/python-client) | 
 | Ruby | server-side | [Docs](https://help.split.io/hc/en-us/articles/360020673251-Ruby-SDK) & [GitHub](https://github.com/splitio/ruby-client) | 
 
-# Evaluator service
+## Evaluator service
 
 For languages with no native SDK support, Split offers the Split Evaluator, a small service capable of evaluating all available features for a given customer via a REST endpoint. This service is available as a Docker container for ease of installation and is compatible with popular framework like Kubernetes when it comes to supporting standard health checks to achieve reliable uptimes. Learn more about the [Split evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator).
 
-# Synchronizer service
+## Synchronizer service
 
 By default, Split's SDKs keep segment and feature flag definitions synchronized in an in-memory cache for speed at evaluating feature flags. However, some languages do not have a native capability to keep a shared local cache of this data to properly serve treatments. For these cases, we built Split Synchronizer to maintain an external cache like Redis. To learn more, read about [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer).
 
-# Proxy service
+## Proxy service
 
 Split Proxy enables you to deploy a service in your own infrastructure that behaves like Split's servers and is used by both server-side and client-side SDKs to synchronize the flags without directly connecting to Split's backend.
 
 This tool reduces connection latencies between the SDKs and the Split server, and can be used when a single connection is required from a private network to the outside for security reasons. To learn more, read about [Split Proxy](https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy).
 
-# Supported agents
+## Supported agents
 
 Split's real user monitoring (RUM) agents collect detailed information about your users' experience when they visit your application. This information is used to analyze site impact, measure the degradation of performance metrics in relation to feature flag changes and alert the owner of the feature flag about such degradation.
 

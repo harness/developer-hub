@@ -7,8 +7,4 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import SDKDataFlowImage from './SDKDataFlowImage.js';
-
-<SDKDataFlowImage />
-
 Coming soon.

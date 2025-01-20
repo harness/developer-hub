@@ -1,6 +1,6 @@
 ---
-title: "Does SDK_READY event fire only once?"
-sidebar_label: "Does SDK_READY event fire only once?"
+title: "Does the SDK_READY event fire only once?"
+sidebar_label: "Does the SDK_READY event fire only once?"
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: ""
