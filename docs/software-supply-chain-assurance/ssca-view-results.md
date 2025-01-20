@@ -14,12 +14,12 @@ Upon the completion of your pipeline execution, the outcomes derived from the SC
 * View SBOM Policy violations
 * Download your SLSA Provenance
 * Check the SLSA verification status
-* Check the Artifact verification status
+* Check the Signed Artifact verification status
 
 
 
-![Pipeline Execution Results](./static/pipeine-execution-results.png)
 
+<DocImage path={require('./static/execution-results.png')} width="100%" height="80%" />
 
 ## View SBOM and Drift analysis
 
@@ -50,6 +50,6 @@ Under the **SLSA Provenance** section, you can download your SLSA provenance and
 
 ## View Signed Artifact verification status
 
-Under the **Artifact Integrity Verififcation section**, you can find the status of the **Artifact verification step** and the link to view the logs. The overview section presents a cumulative count of all Success and failure cases.
+Under the **Artifact Integrity Verification section**, you can find the status of the **Artifact verification step** and the link to view the logs. The overview section presents a cumulative count of all Success and failure cases.
 
 ![Artifact Verification](./static/scs-verification-tab.png "Artifact verification")
