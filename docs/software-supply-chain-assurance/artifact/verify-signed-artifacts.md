@@ -13,6 +13,10 @@ import TabItem from '@theme/TabItem';
 
 After you sign the artifact using the [Artifact Signing step](/docs/software-supply-chain-assurance/artifact/sign-artifacts), it’s crucial to verify that the artifact has not been tampered and was signed by a trusted source. The Artifact Verification process enables you to validate the integrity and authenticity of the signed artifact before it’s deployed.
 
+:::note 
+Currently, this feature is behind the feature flag `SSCA_ARTIFACT_SIGNING`. Contact Harness Support to enable the feature.
+:::
+
 ## Artifact Verification in SCS
 
 The artifact verification step ensures the authenticity of the signed artifact by validating it with the corresponding public key. If the public key matches the signed artifact it confirms that the artifact is intact, secure, and originates from a trusted source.
@@ -22,6 +26,14 @@ The artifact verification step ensures the authenticity of the signed artifact b
 ## Artifact Verification step configuration
 
 The Artifact Verification step pulls the `.sig` file from the artifact registry and verifies it with the corresponding public key. In the artifact signing step, if you chosen not to push the `.sig` file to the registry, then for the artifact verification `.sig` file will instead be pulled from the Harness database . This process ensures that the artifact was signed by a trusted entity, thereby confirming its integrity and authenticity.
+
+You can search for **Artifact Verification** and add it to either the **Build** or **Security** stage of a Harness pipeline
+
+:::note
+
+At present, Harness does not support artifact verification in the deployment stage, However this is part of our roadmap.
+
+:::
 
 Follow the instructions below to configure the Artifact Verification step.
 
@@ -128,13 +140,6 @@ Once the artifact is signed and verified, you will be able to see the Artifact I
 ## Example Pipeline For Artifact Verification
 
 This example demonstrates how to implement artifact Verification in the Build stage of the pipeline.
-
-
-:::note
-
-At present, Harness does not support artifact verification in the deployment stage, However this is part of our roadmap.
-
-:::
 
 
 This example **Build** stage has three steps:

@@ -15,11 +15,15 @@ Protect your software supply chain by safeguarding your artifacts from being com
 As artifacts pass through multiple stages in the software lifecycle, ensuring they remain secure and untampered is critical. Artifact signing provides a reliable way to guarantee that the artifact built at one stage is the exact same artifact consumed or deployed at the next, with no chance of compromise. This process builds trust, ensures integrity, and strengthens the security of your software supply chain.
 
 
+:::note 
+Currently, this feature is behind the feature flag `SSCA_ARTIFACT_SIGNING`. Contact Harness Support to enable the feature.
+:::
+
 ## Artifact Signing process in SCS
 
 The Artifact Signing step retrieves the artifact from the container registry, signs it using [Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with a private key from a key pair, and generates a signature file `.sig`. Once the signature is successfully generated, it is pushed back to the same container registry alongside the artifact. This signature file is essential for verifying the artifact's integrity and authenticity. For more details on artifact verification, refer to the [Artifact Verification documentation](/docs/software-supply-chain-assurance/artifact//verify-signed-artifacts.md)
 
-<DocImage path={require('./static/excali-sign.png')} width="80%" height="50%" />
+<DocImage path={require('./static/excali-sign.png')} width="70%" height="60%" />
 
 <!-- ## Requirements
 
@@ -32,6 +36,14 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 ## Artifact Signing step configuration
 
 The Artifact Signing step allows you to sign your artifacts and optionally push the generated signature file `.sig` to the same artifact registry from which the artifact was retrieved.
+
+You can search for **Artifact Signing** and add it to either the **Build** or **Security** stage of a Harness pipeline
+
+:::note
+
+At present, Harness does not support artifact signing in the deployment stage, However this is part of our roadmap.
+
+:::
 
 Follow the instructions below to configure the Artifact Signing step.
 
@@ -137,13 +149,6 @@ You are allowed to re-sign the same image multiple times, with each new signing 
 ## Example Pipeline For Artifact Signing
 
 This example demonstrates how to implement artifact signing in the Build stage of the pipeline.
-
-
-:::note
-
-At present, Harness does not support artifact signing in the deployment stage, However this is part of our roadmap.
-
-:::
 
 
 This example **Build** stage has two steps:
