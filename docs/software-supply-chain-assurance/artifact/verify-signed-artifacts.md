@@ -1,5 +1,5 @@
 ---
-title: Verifying the Signed Artifacts
+title: Verify the Signed Artifacts
 sidebar_label: Verify the Artifact
 description: Verify the artifacts that are signed using the Artifact Signing step
 
