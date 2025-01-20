@@ -65,8 +65,7 @@ Cloud Asset Governance provides valuable recommendations, but when it comes to o
 
 Owing to this, now, while adding a recommendation to Ignore List, users have the option to specify the scope at which the users want to ignore the recommendation. The scope can be either Rule-level, Account-level or Region-level.
 
-  <DocImage path={require('../static/aws_granular
-  .png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/aws_granular.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
 ### Recommendation: delete-unattached-ebs

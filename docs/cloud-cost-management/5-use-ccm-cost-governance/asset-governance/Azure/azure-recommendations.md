@@ -67,8 +67,7 @@ Cloud Asset Governance provides valuable recommendations, but when it comes to o
 
 Owing to this, now, while adding a recommendation to Ignore List, users have the option to specify the scope at which the users want to ignore the recommendation. The scope can be either Rule-level, Subscription-level or Resource-level.
 
-  <DocImage path={require('../static/azure_granular
-  .png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/azure_granular.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ### Recommendation: delete-low-utilised-cosmodb
 **Description:** Delete low utilised CosmosDB based on total requests in last 72 hours.
