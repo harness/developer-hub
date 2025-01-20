@@ -155,6 +155,10 @@ platform:
 
 ### Copying Data from Minio to AWS S3
 
+:::warning NOTE
+If a pipeline is running during the copy command, its logs will not be transferred to S3. As a result, the execution logs for those pipelines will be lost during the transition. To ensure accuracy, Harness recommends applying a freeze window during this transition.
+:::
+
 To transfer data from Minio to S3, execute the following commands inside the Minio pod:
 
 ```bash
