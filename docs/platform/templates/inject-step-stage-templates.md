@@ -260,9 +260,7 @@ If you will check the compiled YAML it will show the steps input as empty and th
 1. Insert block can not be output of any step, it has to be provided.
 2. Nested insert blocks are not allowed.
 3. In the step group template, insert step cannot be added.
-4. Avoid adding insert stages in parallel, as failures and retries in the pipeline will cause functionality to fail.
-5. Only service, environment, and infrastructure definitions can be propagated within an insert block; they cannot be propagated outside the insert block for other stages that are not part of it.
-6. The insert step functionality will not work within a containerized step group.
+4. Only service, environment, and infrastructure definitions can be propagated within an insert block; they cannot be propagated outside the insert block for other stages that are not part of it.
 :::
 
 ## Expressions
