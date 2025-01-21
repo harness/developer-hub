@@ -22,6 +22,16 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## January 2025
 
+### Version 1.53.1
+
+#### New features and enhancements
+
+- Upgrades all Go Services to use Go 1.23 to address the vulnerabilities.(CHAOS-7324)
+
+- Upgrades all the third-party binaries like `kubectl`, `crictl` and `gcloud` to the latest versions to resolve the vulnerabilities. (CHAOS-7322)
+
+- Introduces support for specifying **Transaction Percentage** in DNS chaos faults. (CHAOS-7244)
+
 ### Version 1.52.3
 
 - **New videos**: [Pod Network Rate Limit](https://youtu.be/01efVOyFGl8?si=FQKWhVgdUJ0889fj), [Pod API Modify Header](https://youtu.be/sIkUxtnQY_o?si=ApWs_Opx2x27SkLj), [Pod IO Attribute Override](https://youtu.be/chk5K754J_4?si=pmzAgnpmHJC0f3Oz), [Pod API Block](https://youtu.be/Cg5gbfFrJQs?si=KueFmRJ6k8Ji4kbS), [Pod API Modify Body](https://youtu.be/Dbr_KwfTxps?si=-aHOmAr5onrFq6Zy). Adds a [playlist](https://www.youtube.com/playlist?list=PLXsYHFsLmqf0fgHoZANmwGB1tSQka5kDV) with Kubernetes Pod Chaos experiments.
