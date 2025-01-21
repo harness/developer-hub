@@ -263,6 +263,10 @@ If you will check the compiled YAML it will show the steps input as empty and th
 4. Only service, environment, and infrastructure definitions can be propagated within an insert block; they cannot be propagated outside the insert block for other stages that are not part of it.
 :::
 
+## Demo Video
+
+<DocVideo src="https://www.loom.com/share/ed66e2ec3d344fae80dd6016da511b43?sid=ed73d80d-697b-46de-810d-7e9f09fb1c4d" />
+
 ## Expressions
 
 If we intend to utilize expressions for the properties within the insert, it will be necessary to specify the complete path for each one.
