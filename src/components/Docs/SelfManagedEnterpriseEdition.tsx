@@ -39,8 +39,14 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Harness Self-Managed Enterprise Edition is a comprehensive, on-premise solution for continuous software delivery. It empowers developers and DevOps teams to deliver software quickly, securely, reliably, and cost-effectively, while maintaining governance compliance to meet organizational goals.  <br></br><br></br>
-            Harness releases the Self-Managed Enterprise Edition monthly, with periodic hotfixes as needed.
+              Harness Self-Managed Enterprise Edition is an end-to-end solution
+              for continuous, self-managed delivery. It is designed to assist
+              developers and DevOps teams in delivering software with maximum
+              speed, quality, security, reliability, and resilience at the
+              lowest possible cost. It helps you stay within the governance
+              boundaries required to achieve organizational objectives. 
+              Harness releases Self-Managed Enterprise Edition on a monthly basis. 
+              Additionally, periodic hot-fixes are released as needed.
             </p>
             <div className={styles.illustrationContainer}>
               <img
