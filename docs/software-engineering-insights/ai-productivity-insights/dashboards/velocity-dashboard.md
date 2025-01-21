@@ -35,7 +35,7 @@ The Velocity Score is derived from the weighted average of the following five me
 
 The five metrics listed above play a key role in determining a team’s overall velocity score. Each metric reflects a different aspect of productivity, and their combined insights help measure the overall impact of AI tools on the development process.
 
-## PR Lead Time
+## PR lead time
 
 This metric measures the average time for a Pull Request from creation to merge.
 Shorter lead times indicate more efficient workflows, enabling teams to deliver code faster and minimize bottlenecks. For example, teams using AI tools is expected to experience significantly reduced lead times, reflecting the enhanced productivity and support provided by AI-powered coding assistants.
@@ -76,7 +76,7 @@ $$
 \text{Average PR Lead Time} = \frac{15\, \text{days}}{3\, \text{weeks}} = 5\, \text{days per week}
 $$
 
-## Average Number of Commits per Developer
+## Average number of commits
 
 The Average Number of Commits per Developer metric measures the average number of code commits made by each developer during a specific period. This metric provides insight into team engagement and development activity over time.
 
@@ -84,7 +84,7 @@ The Velocity Dashboard presents this metric using trend lines that compare the c
 
 ![](../static/pr-lead-time.png)
 
-### Scoring & Calculation
+### Scoring & calculation
 
 This metric is derived using the following formula:
 
@@ -96,14 +96,6 @@ Where:
 
 * **Total Number of Commits in the Week**: The sum of all commits made by the cohort during the week.
 * **Number of Developers in the Cohort**: The total number of active developers in the cohort during the same week.
-
-## Average Commits per Week per Developer (Overall)
-
-This metric provides a broader view of commit activity across multiple weeks:
-
-### Scoring & calculation
-
-The calculation is:
 
 $$
 \text{Average Commits (Overall)} = \frac{\sum \left( \text{Average Commits for Each Week} \right)}{\text{Number of Weeks}}
@@ -119,3 +111,40 @@ Where:
 A higher commit frequency often indicates a more active and engaged development team. Stable or increasing trends suggest consistent productivity and effective workflows. Teams using AI tools may show variations in commit patterns, as AI-assisted coding can lead to more consolidated or optimized commits.
 
 However, the focus should not solely be on the number of commits. Consistency and the context of the commits, such as their impact on the codebase and alignment with sprint goals, are equally important.
+
+## Average number of PRs
+
+This metric measures the productivity of developers by calculating the average number of pull requests (PRs) created by each developer in a cohort during a specific time period. This metric is designed to track trends and compare productivity across cohorts where developers are using a coding assistant versus those who are not.
+
+### Scoring & calculation
+
+This metric is calculated on a weekly basis and aggregated over the total number of weeks for comparative analysis.
+
+```math
+\text{Average PRs per Week} = \frac{\text{Total Number of PRs in Week}}{\text{Number of Developers in Cohort}}
+```
+
+where
+
+* Total Number of PRs: Total pull requests submitted by the cohort in a given week.
+* Number of Developers: Count of active developers in the cohort during the period.
+
+### How to interpret
+
+#### Comparison between AI vs Non AI assistants
+
+* If developers using AI code assistants have a higher average number of PRs per week, this suggests that AI-assisted coding helps improve developer efficiency.
+* If developers without AI assistants have a higher PR rate, it may indicate that:
+  * The AI-generated code requires more review and iteration.
+  * Developers using AI assistants are working on more complex tasks, leading to fewer but larger PRs.
+
+#### Productivity trends over time
+
+* If the gap between AI-assisted and non-AI-assisted developers is increasing, it may suggest that AI tools are becoming more effective over time.
+* A converging trend may indicate that AI assistance is helpful but does not drastically change the overall number of PRs per developer.
+
+#### Impact of AI on PR quality
+
+More PRs does not always mean better productivity—factors such as PR size, review times, and merge rates should also be considered.
+If AI-assisted developers submit fewer but higher-quality PRs, it could mean that AI is helping streamline workflows but reducing unnecessary or fragmented PRs.
+
