@@ -139,14 +139,14 @@ For detailed instructions on setting up the survey, refer to the **Developer Exp
 </TabItem>
 </Tabs>
 
-### Step 5: Add Participants and Build Cohorts
+### Step 5: Add Participants and build cohorts
 
 Group participants into the following categories:  
 
 * **Using AI Tools:** Developers actively using AI tools like GitHub Copilot or Harness AI Code Assistant.
 * **Not Using AI Tools:** Developers not using any AI assistance tools.
 
-#### Upload Cohort Details
+#### Upload cohort details
 
 Use a CSV to upload participant information such as name and email. Use the provided template if you are unsure about formatting.
 Note that email is optional and if provided the email will be used to send out the survey in the respective emails.
@@ -164,7 +164,7 @@ Click **Create Report** once ready.
 
 ![](./static/sa-qa-step9.png)
 
-### Step 7: Send the Survey
+### Step 7: Send the survey
 
 Distribute the survey using the following methods:  
 
