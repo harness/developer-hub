@@ -5,7 +5,7 @@ sidebar_position: 7
 ---
 
 :::info note
-Currently this feature is behind the feature flag `PIE_FLEXIBLE_TEMPLATES`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+Currently this feature is behind the feature flag `PIE_FLEXIBLE_TEMPLATES` and `PIE_FLEXIBLE_TEMPLATES_PHASE2`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
 :::
 
 Insert blocks provide a way to customize pipelines without affecting the main template. 
@@ -13,7 +13,7 @@ Insert blocks provide a way to customize pipelines without affecting the main te
 Steps and stages included in the insert block will behave the same as normal steps and stages in the pipeline.
 
 :::info note
-Insert block is only supported for CD, Custom and Approval Stages.
+Insert block is supported for CI, CD, Custom and Approval Stages.
 :::
 
 ## Pros of Using Insert blocks in a template
@@ -28,51 +28,24 @@ Now, let's dive into who can add insert block in the pipeline and stage template
 **Template editors** will be able to add insert stage block in the pipeline template at any position between a stage.
 
 
-![](./static/inject_stage_example.png)
+![](./static/insert_template_block.png)
 
 Sample YAML of a pipeline template with insert stage block will look like:
 
 ```yaml
 template:
-  name: pipeline_insert_template
-  identifier: pipeline_insert_template
+  name: pipeline_1
+  identifier: pipeline_1
   versionLabel: v2
   type: Pipeline
-  projectIdentifier: Insert_block
+  projectIdentifier: Krishika_test_autocreation
   orgIdentifier: default
   tags: {}
   spec:
     stages:
       - stage:
-          name: cust_1
-          identifier: cust_1
-          description: ""
-          type: Custom
-          spec:
-            execution:
-              steps:
-                - step:
-                    type: ShellScript
-                    name: ShellScript_1
-                    identifier: ShellScript_1
-                    spec:
-                      shell: Bash
-                      executionTarget: {}
-                      source:
-                        type: Inline
-                        spec:
-                          script: echo hello
-                      environmentVariables: []
-                      outputVariables: []
-                    timeout: 10m
-      - insert:
-          identifier: insertStages1
-          name: insertStages1
-          stages: <+input>
-          tags: {}
-      - stage:
-          name: cust_2
-          identifier: cust_2
+          name: custom_2
+          identifier: custom_2
           description: ""
           type: Custom
           spec:
@@ -92,28 +65,44 @@ template:
                       environmentVariables: []
                       outputVariables: []
                     timeout: 10m
-      - insert:
-          identifier: insertStages2
-          name: insertStages1
-          stages: <+input>
           tags: {}
+      - insert:
+          name: insert_2
+          identifier: insert_2
+          stages: <+input>
+      - stage:
+          name: stage_3
+          identifier: stage_3
+          tags: {}
+          template:
+            templateRef: stage_1
+            versionLabel: v2
+            templateInputs:
+              type: Custom
+              spec:
+                execution:
+                  steps:
+                    - parallel:
+                        - insert:
+                            identifier: insert_1
+                            steps: <+input>
 ```
 
 ## Insert step block in Stage Template
 
 Similarly, as a Template Editor you can add a insert step block in the stage template at any position between a step. 
 
-![](./static/inject_step_example.png)
+![](./static/insert_template_stage_block.png)
 
 Sample YAML of a stage template with an insert step block will look like:-
 
 ```yaml
 template:
-  name: stage_insert_template
-  identifier: stage_insert_template
+  name: stage_1
+  identifier: stage_1
   versionLabel: v2
   type: Stage
-  projectIdentifier: Insert_block
+  projectIdentifier: Krishika_test_autocreation
   orgIdentifier: default
   tags: {}
   spec:
@@ -121,42 +110,26 @@ template:
     spec:
       execution:
         steps:
-          - step:
-              type: ShellScript
-              name: ShellScript_1
-              identifier: ShellScript_1
-              spec:
-                shell: Bash
-                executionTarget: {}
-                source:
-                  type: Inline
+          - parallel:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
                   spec:
-                    script: echo hello
-                environmentVariables: []
-                outputVariables: []
-              timeout: 10m
-          - insert:
-              identifier: insertSteps1
-              name: insertSteps1
-              steps: <+input>
-          - step:
-              type: ShellScript
-              name: ShellScript_2
-              identifier: ShellScript_2
-              spec:
-                shell: Bash
-                executionTarget: {}
-                source:
-                  type: Inline
-                  spec:
-                    script: echo hello_2
-                environmentVariables: []
-                outputVariables: []
-              timeout: 10m
-          - insert:
-              identifier: insertSteps2
-              name: insertSteps2
-              steps: <+input>
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |
+                          echo hello
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+              - insert:
+                  name: insert_1
+                  identifier: insert_1
+                  steps: <+input>
 ```
 
 This allows you, as the template editor, to maintain control over the template, ensuring its integrity is preserved. 
@@ -259,7 +232,7 @@ pipeline:
   stages:
     - stage:
         name: stage_1
-        identifier: stagd_1
+        identifier: stage_1
         tags: {}
         template:
           templateRef: stage_insert_template
@@ -286,6 +259,10 @@ If you will check the compiled YAML it will show the steps input as empty and th
 :::info note
 1. Insert block can not be output of any step, it has to be provided.
 2. Nested insert blocks are not allowed.
+3. In the step group template, insert step cannot be added.
+4. Avoid adding insert stages in parallel, as failures and retries in the pipeline will cause functionality to fail.
+5. Only service, environment, and infrastructure definitions can be propagated within an insert block; they cannot be propagated outside the insert block for other stages that are not part of it.
+6. The insert step functionality will not work within a containerized step group.
 :::
 
 ## Expressions
