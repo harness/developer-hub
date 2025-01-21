@@ -536,7 +536,7 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 | GitOps Agent version | Packaged Argo CD version | Supported Argo CD versions                    | Redis version       |
 | -------------------- | ------------------------ | --------------------------------------------- | ------------------- |
-| 0.84.2               | v2.13.2                  | v2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14, 2.13.2 | redis:7.2.4-alpine  |
+| 0.84.2               | v2.13.2                  | v2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14, 2.13.2 | redis:7.4.1-alpine  |
 | 0.83.0               | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  |
 | 0.82.0               | RELEASE BURNED           | RELEASE BURNED                                | RELEASE BURNED      |
 | 0.78.0 - 0.81.0      | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  |
