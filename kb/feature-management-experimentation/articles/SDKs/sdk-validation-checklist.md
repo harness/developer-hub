@@ -20,7 +20,7 @@ These areas each reflect best practices that come from our own experience at Spl
 
 You can use or adapt them to your needs. The primary objectives are to ensure resource optimization, maximum application responsiveness, appropriate security enforcements, and proactive issue detection in your project, team, organization, or company source code working with the Split SDK.
 
-# All SDKs
+## All SDKs
 
 The following validation considerations are relevant for all of Split’s SDKs. 
 
@@ -46,7 +46,7 @@ The following validation considerations are relevant for all of Split’s SDKs.
 
 * **Evaluate if you can take advantage of Flag Sets**   You can use Split Flag sets for limiting the flags downloaded by an SDK. [Flag Sets](https://help.split.io/hc/en-us/articles/22256278916621-Using-flag-sets-to-boost-SDK-performance) allow you to control from Split's UI which flags are downloaded by an SDK. This means you can ensure that only the flags needed for a frontend SDK or a backend SDK are downloaded. This reduces the time for the SDK to get ready while also saving memory and bandwidth. 
 
-# Browser SDKs (including Angular, React, etc.)
+## Browser SDKs (including Angular, React, etc.)
 
 The following items are specific to browser-based SDKs. 
 
@@ -58,13 +58,13 @@ The following items are specific to browser-based SDKs.
 
 * **Evaluate if you can take advantage of lazy loading.** The SDK factory must have the customer key at initialization time. This key might not be available initially though, especially if the key is provided from another tool (e.g., Segment or mParticle). Using the Lazy init allows you to initialize the SDK by passing a dummy key, then create a new client from the same factory object when the actual customer key is obtained.
 
-# Mobile SDKs 
+## Mobile SDKs 
 
 The following items are specific to the mobile SDKs. 
 
 * **Ensure that the SDK background syncing is enabled if desired.** Mobile SDKs have the synchronizeInBackground configuration setting that allows them to synchronize to the Split cloud while in the background. By default, this is disabled.
 
-# All Client-side SDKs (including iOS, React, JS, etc.)
+## All Client-side SDKs (including iOS, React, JS, etc.)
 
 The following items are specific to all client-side SDKs. This includes mobile- and browser-based SDKs. 
 
@@ -81,7 +81,7 @@ The following items are specific to all client-side SDKs. This includes mobile- 
 
   For experimentation, it is desired to have the results up to date. It is recommended to set the parameter scheduler.impressionsRefreshRate to a value less than the average time the user stays on the app.
 
-# Server-side SDKs (Python, Node, Java, etc.)
+## Server-side SDKs (Python, Node, Java, etc.)
 
 The following items are specific to server-side SDKs. 
 

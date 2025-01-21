@@ -35,7 +35,7 @@ Want to watch step by step videos?  Explore all our video content [here](https:/
 
 ### Create an account / join an account 
 
-We assume you’ve created an account already, but if not, sign up [here](https://www.split.io/signup/).  If your team has an account, an admin can invite you from the users page in admin settings.  
+If you haven't created an account already, you can create one for free [here](https://www.split.io/signup/).  If your team has an account, an admin can invite you from the users page in admin settings.  
 
 ### Understand accounts and projects
 
