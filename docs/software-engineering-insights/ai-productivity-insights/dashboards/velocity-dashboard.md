@@ -14,6 +14,8 @@ The AI Insights velocity dashboard presents a side-by-side comparison of velocit
 * **Commit Frequency:** Tracks how often developers commit code. Higher commit frequency suggests an active development cycle, enabling incremental progress and quicker identification of issues.
 * **Code Volume:** Evaluates the amount of code added, modified, or removed. Monitoring code volume helps understand workload distribution and identify trends in development activity.
 
+![](../static/ai-velocity-overview.png)
+
 ## Velocity boost
 
 The Velocity Boost represents the percentage change in the overall velocity score when comparing teams using AI coding assistants versus those who aren't. This metric helps quantify the productivity improvement AI tools bring to your development process.
@@ -40,6 +42,8 @@ Shorter lead times indicate more efficient workflows, enabling teams to deliver 
 
 The widget displays the current averages for both the cohorts i.e. teams using AI tools compared to those not using them. 
 It also includes trend lines that show daily changes in lead time over the specified time period, in terms of number of days taken to complete a PR.
+
+![](../static/avg-number-commits.png)
 
 ### Scoring & calculation
 
@@ -77,6 +81,8 @@ $$
 The Average Number of Commits per Developer metric measures the average number of code commits made by each developer during a specific period. This metric provides insight into team engagement and development activity over time.
 
 The Velocity Dashboard presents this metric using trend lines that compare the commit activity of teams using AI coding assistants versus those who are not. The Y-axis displays the volume of commits, allowing you to track patterns and fluctuations in activity across the monitored period.
+
+![](../static/pr-lead-time.png)
 
 ### Scoring & Calculation
 
