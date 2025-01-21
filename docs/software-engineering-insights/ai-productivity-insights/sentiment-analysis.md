@@ -49,7 +49,7 @@ Choose the AI coding tool that your team is using.
 
 ![](./static/sa-step4.png)
 
-### Step 3: Set up the Survey
+### Step 3: Set up the survey
 
 Set up the survey to collect feedback based on selected categories.  
 
@@ -64,7 +64,7 @@ Set up the survey to collect feedback based on selected categories.
 
 ![](./static/sa-step5.png)
 
-### Step 4: Select Categories for Analysis
+### Step 4: Select categories for analysis
 
 Categories are various aspects of sentiment analysis such as Impact, Efficiency, Productivity etc. Each category has a set of default questions that will be sent out as part of the survey.
 
@@ -82,14 +82,14 @@ For detailed instructions on setting up the survey, refer to the **Developer Exp
 
 ![](./static/sa-step6.png)
 
-### Step 5: Add Participants and Build Cohorts
+### Step 5: Add participants and build cohorts
 
 Group participants into the following categories:  
 
 * **Using AI Tools:** Developers actively using AI tools like GitHub Copilot or Harness AI Code Assistant.
 * **Not Using AI Tools:** Developers not using any AI assistance tools.
 
-#### Upload Cohort Details
+#### Upload cohort details
 
 Use a CSV to upload participant information such as name and email. Use the provided template if you are unsure about formatting.
 Note that email is optional and if provided the email will be used to send out the survey in the respective emails.
@@ -107,7 +107,7 @@ Click **Create Report** once ready.
 
 ![](./static/sa-step8.png)
 
-### Step 7: Send the Survey
+### Step 7: Send the survey
 
 Distribute the survey using the following methods:  
 
