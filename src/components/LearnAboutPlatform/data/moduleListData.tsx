@@ -78,7 +78,7 @@ export const moduleList: CardItem[] = [
   {
     title: "Incident Response",
     module: MODULES.ir,
-    icon: "img/icon_ce.svg",
+    // icon: "img/icon_ce.svg",
     description: <>Revolutionize incident management by focusing on proactive issue prevention and accelerated resolution.</>,
     link: "docs/incident-response",
   },
