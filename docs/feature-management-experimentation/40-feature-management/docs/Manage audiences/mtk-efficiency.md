@@ -6,6 +6,7 @@ helpdocs_is_published: true
 ---
 
 import Link from "@docusaurus/Link";
+import MTK from "@site/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/mtk.md";
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/26978089134349-MTK-Usage-and-Comparing-Counts </button>
@@ -15,9 +16,9 @@ Split has a wide variety of support for sending impressions data that it collect
 
 ## What is an MTK?
 
-Split tracks usage for our customers based upon what are called MTKs. MTK stands for **Monthly Tracked Keys**. For a more detailed description see our page on [Account Usage Data](https://help.split.io/hc/en-us/articles/360034159232-Account-usage-data#usage-data). When counting anonymous users, the MTK count may be inflated due to any of the circumstances described below.
+<MTK />
 
-If a user with the key “John” sees three different feature flags within a month, "John" would be counted as a single MTK. If “John” sees the same feature flag 100 times within a month, "John" would still be counted as a single MTK. If John also has an anonymous cookie id “ABC-123,” and that ID is evaluated with Split, then that is an additional MTK because it is a different key value. If "ABC-123" continues to have impressions, that is still just one additional MTK, for a total of two. Now if "John" clears his cookies, or visits as an anonymous user from a different device, then that would be an additional key used by the SDK, and as a result, an additional (third) MTK.
+ When counting anonymous users, the MTK count may be inflated due to any of the circumstances described below.
 
 ## What can affect the MTK count?
 

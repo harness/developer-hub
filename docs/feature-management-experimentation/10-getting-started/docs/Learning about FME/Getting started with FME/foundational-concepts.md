@@ -94,9 +94,6 @@ Targeting rules for each feature flag are created at the environment level. For 
 A segment is a list of users or unique keys for targeting purposes. Segments are created at the environment level. Refer to the [Segments](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) guide for more information.
 
 ## Traffic type
-Targeting decisions are made on a per-user or per unique key basis, but what are the available types of unique keys you intend to target? These are your traffic types, and you can define up to ten unique key types at the project level.
-
-For feature flags that make decisions or observe metrics at the userId level, the traffic type should be user. If decisions and observations are based on account membership (to facilitate all users for a particular customer being treated the same, for instance), the traffic type should be account. Other common types are anonymous and device, but you have total flexibility in employing different traffic types. Refer to the [Traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) guide for more information.
 
 ## Tag
 Use tags to organize and filter feature flags, segments, and metrics across the Split user interface. Because they allow you to filter items in lists, they are a great way to filter by team, epic, layer of system (front-end vs back-end), or any other. Refer to the [Tags](https://help.split.io/hc/en-us/articles/360020839151-Tags) guide for more information on how to use them.
