@@ -388,6 +388,7 @@ Update the `cdk.json` file to define a custom build command that includes depend
 "output": "cdk.out",
 "build": "npm install --verbose && npx projen bundle"
 }
+```
 :::
 
 ### Output variable expressions
