@@ -81,8 +81,8 @@ export const StoData: Horizon = {
       },
       {
         tag: [{ value: "EPSS" }],
-        title: "Exploit Protection Scoring System (EPSS) - Phase 1",
-        description: "The EPSS framework will help customers prioritize vulnerabilities faster in conjunction with other attributes such as CVSS score and severity.",
+        title: "Exploit Protection Scoring System (EPSS)",
+        description: "Provide EPSS score additional to CVSS score for better vulnerability prioritization.",
       },
       {
         tag: [{ value: "Data Handling" }],
@@ -90,24 +90,9 @@ export const StoData: Horizon = {
         description: "Allows deletion of unwanted targets/artifacts vulnerability data to reduce noise.",
       },
       {
-        tag: [{ value: "EPSS" }],
-        title: "Exploit Protection Scoring System (EPSS)",
-        description: "The EPSS framework will help customers prioritize vulnerabilities faster in conjunction with other attributes such as CVSS score and severity.",
-      },
-      {
-        tag: [{ value: "Visibility" }],
-        title: "Target View",
-        description: "Segregate the existing Test Target view into 4 tabs - Code Repository, Artifacts (aka container images), Instances, Configurations for better visibility. This will provide an ability to drill down into target specific vulnerabilities outside the pipeline view and analyze target security posture trend over time across different pipeline scans.",
-      }
-      {
         tag: [{ value: "Platform" }, { value: "Cross Module" }],
         title: "Combine Artifacts with SCS",
         description: "Provides granular vulnerability data for an artifact/target, in addition to the current pipeline view.",
-      },
-      {
-        tag: [{ value: "Onboarding" }],
-        title: "Get Started",
-        description: "A new Get Started workflow to onboard third-party integrations - Github Actions, Jenkins, GitLab.",
       },
       {
         tag: [{ value: "Onboarding" }],
@@ -158,7 +143,7 @@ export const StoData: Horizon = {
         tag: [{ value: "Pipeline, Artifact Scanning" }],
         title: "Local Tar/Archive Scan",
         description: "Scan local tar bundles and Docker/OCI archives directly in pipelines.",
-      }, 
+      } 
     ],
   },
 };
