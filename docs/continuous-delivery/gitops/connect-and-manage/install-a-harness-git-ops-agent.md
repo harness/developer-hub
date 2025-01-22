@@ -534,17 +534,18 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 ### What version of GitOps Agent supports what version of Repo server and Redis cache?
 
-| GitOps Agent version | Packaged Argo CD version | Supported Argo CD versions                    | Redis version       |
-| -------------------- | ------------------------ | --------------------------------------------- | ------------------- |
-| 0.84.2               | v2.13.2                  | v2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14, 2.13.2 | redis:7.4.1-alpine  |
-| 0.83.0               | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  |
-| 0.82.0               | RELEASE BURNED           | RELEASE BURNED                                | RELEASE BURNED      |
-| 0.78.0 - 0.81.0      | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  |
-| 0.77.0               | v2.10.10                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10          | redis:7.2.4-alpine  |
-| 0.67.0 - 0.76.0      | v2.9.4                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0, 2.9.3, 2.9.4  | redis:7.0.11-alpine |
-| 0.66.0               | v2.9.3                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0, 2.9.3         | redis:7.0.11-alpine |
-| 0.64.0 - 0.65.0      | v2.9.0                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0,               | redis:7.0.11-alpine |
-| 0.60.0 - 0.63.0      | v2.8.2                   | v2.3.5, v2.7.2, v.2.7.8, v2.8.2               | redis:7.0.11-alpine |
+
+| GitOps Agent version | Packaged Argo CD version | Supported Argo CD versions                    | Redis version       | Haproxy version |
+| -------------------- | ------------------------ | --------------------------------------------- | ------------------- | --------------- |
+| 0.84.2               | v2.13.2                  | 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14, 2.13.2 | redis:7.4.1-alpine  | 2.9.4-alpine    |
+| 0.83.0               | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  | 2.6.14-alpine   |
+| 0.82.0               | RELEASE BURNED           | RELEASE BURNED                                | RELEASE BURNED      | N/A             |
+| 0.78.0 - 0.81.0      | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  | N/A             |
+| 0.77.0               | v2.10.10                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10          | redis:7.2.4-alpine  | N/A             |
+| 0.67.0 - 0.76.0      | v2.9.4                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0, 2.9.3, 2.9.4  | redis:7.0.11-alpine | N/A             |
+| 0.66.0               | v2.9.3                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0, 2.9.3         | redis:7.0.11-alpine | N/A             |
+| 0.64.0 - 0.65.0      | v2.9.0                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0,               | redis:7.0.11-alpine | N/A             |
+| 0.60.0 - 0.63.0      | v2.8.2                   | v2.3.5, v2.7.2, v.2.7.8, v2.8.2               | redis:7.0.11-alpine | N/A             |
 
 The supported Argo CD versions listed above are what Harness has verified. However, any patch version should work for each minor version listed. For example, the GitOps agent version `0.78.0` should support the Argo CD version of `2.10.0`, but this is not verified by Harness. 
 
