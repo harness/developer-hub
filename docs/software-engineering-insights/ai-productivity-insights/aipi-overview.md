@@ -42,6 +42,8 @@ By combining both qualitative data and sentiment analysis, organizations can gai
 Cohorts help in comparing AI adoption within teams. Each report includes two cohorts: one representing AI tool users and the other representing non-users.
 The AI productivity insights compare these cohorts to measure key metrics and determine the productivity improvements AI tools bring to the team.
 
+![](./static/co-horts.png)
+
 ## See also
 
 * Measure sentiment analysis
