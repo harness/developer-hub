@@ -66,20 +66,7 @@ In the [Dynamic configuration](https://help.split.io/hc/en-us/articles/360026943
 
 # Setting up targeting
 
-Targeting defines how your feature flag will be evaluated for a given user ID (user key). You can add inidividual user IDs to your targeting rules.
-
-:::tip[Tip: Think outside the box for User IDs]
-You can target customers or users based on their user ID (user key). When evaluating a feature flag, you can use any string as a user ID.
-
-Here are a few examples:
-- annonymous user ID
-- logged in user ID
-- account number
-
-Be mindful of using random user IDs, as [overuse of random IDs](https://help.split.io/hc/en-us/articles/26978089134349-MTK-Usage-and-Comparing-Counts#use-of-unstable-ids) can increase your MTK count (and [costs](https://help.split.io/hc/en-us/articles/360034159232-Account-usage-data)) unnecessarily.
-:::
-
-Targeting rules have a limit of 500 user IDs, so we suggest creating a [segment](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) if you need to target a large number of user IDs.
+Targeting defines how your feature flag will be evaluated for a given [**user ID**](@site/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/user-ids.md) (user key). You can add inidividual user IDs to your targeting rules. Targeting rules have a limit of 500 user IDs, so we suggest [creating a segment](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) if you need to target a large number of user IDs.
 
 To set up targeting, you can use the Individual targets area and/or the Targeting rules area. Both are described below.
 

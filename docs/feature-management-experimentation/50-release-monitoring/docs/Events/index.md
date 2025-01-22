@@ -6,6 +6,7 @@ helpdocs_is_published: true
 ---
 
 import Link from "@docusaurus/Link";
+import EventsInfo from "@site/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/events.md";
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020585772-Events <br /> ✘ images still hosted on help.split.io </button>
@@ -15,14 +16,7 @@ import Link from "@docusaurus/Link";
 Split’s Integration Advisors are here to help with standing up your event integration pipelines. Contact your Customer Success Manager to set up a meeting and explore options.
 :::
 
-To power your analytics and experimentation, you need to send events to Split. This enables you to measure the impact of your features on customer behavior, user experience, or application performance. Event data can be sent to Split in any of the following ways:
-
-* Install Split's [RUM agent](https://help.split.io/hc/en-us/sections/12619161404685-Client-side-Agents) or [Split Suite](https://help.split.io/hc/en-us/sections/22701959913229-Client-side-Suites)
-* Call Split's SDK track method
-* Post a JSON body to Split's [`events` API](https://docs.split.io/reference/events-overview)
-* Split integrations with [Segment](https://help.split.io/hc/en-us/articles/360020742532-Segment), [mParticle](https://help.split.io/hc/en-us/articles/360038306272-mParticle-), [Sentry](https://help.split.io/hc/en-us/articles/360029879431-Sentry), [Amazon S3](https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3), or [Google Analytics](https://help.split.io/hc/en-us/articles/360040838752-Google-Analytics)
-
-The API and integration routes allow you to ingest event data from existing sources (i.e. take advantage of telemetry from existing instrumentation or analytics). The Split Suite and RUM Agents will automatically collect event data when installed in a client side application. Use the `track` method if you want to explicitly add instrumentation code to your application to record events.
+<EventsInfo />
 
 Events received by Split can then be aggregated to produce metrics. To learn more, review the [Metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) guide.
 
