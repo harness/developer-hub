@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2025-01-16T10:00
+date: 2025-01-22T10:00
 sidebar_position: 5
 ---
 
@@ -21,6 +21,16 @@ The release notes describe recent changes to Harness Chaos Engineering.
 :::
 
 ## January 2025
+
+### Version 1.53.1
+
+#### New features and enhancements
+
+- Upgrades all Go Services to use Go 1.23 to address the vulnerabilities.(CHAOS-7324)
+
+- Upgrades all the third-party binaries like `kubectl`, `crictl` and `gcloud` to the latest versions to resolve the vulnerabilities. (CHAOS-7322)
+
+- Introduces support for specifying **Transaction Percentage** in DNS chaos faults. (CHAOS-7244)
 
 ### Version 1.52.3
 
