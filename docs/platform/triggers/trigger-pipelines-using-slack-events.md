@@ -1,6 +1,6 @@
 ---
-title: Slack Webhook triggers
-description: This topic provides settings information to setup a slack webhook trigger
+title: EventRelay Slack Webhook triggers
+description: This topic provides information on configuring EventRelay slack webhook triggers
 ---
 Trigger Pipelines Using Slack Events
 
@@ -11,7 +11,7 @@ Triggers enable event-driven CI/CD and support practices like building and/or de
 
 :::important note
 
-Currently this feature is behing the Feature Flag `CDS_EVENT_BRIDGE_WEBHOOK`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+Currently this feature is behing the Feature Flag `CDS_EVENT_BRIDGE_WEBHOOK` and `CD_TRIGGERS_REFACTOR`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
 
 :::
 

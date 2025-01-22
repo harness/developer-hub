@@ -3,8 +3,6 @@ title: Authentication
 description: Learn how to configure a Git provider for authentication
 sidebar_position: 1
 sidebar_label: Authentication
-redirect_from:
-  - /docs/cloud-development-environments/features-of-gitspaces/authentication
 ---
 
 Gitspaces allow you to configure your preferred Git provider for seamless development. This integration enables you to create a Gitspace directly from your project repository (public or private) hosted on your chosen Git provider.

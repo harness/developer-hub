@@ -34,10 +34,16 @@ import { MODULES } from "@site/src/constants";
           link: "/docs/cloud-development-environments/introduction/whats-supported",
         },
         {
-          title: "Getting Started with Gitspaces",
+          title: "Quickstart Guide",
           module: MODULES.cde,
           description: "Get started by setting up and configuring your Gitspaces.",
-          link: "/docs/cloud-development-environments/introduction/getting-started-with-cde",
+          link: "/docs/cloud-development-environments/introduction/quickstart-guide",
+        },
+        {
+          title: "Quickstart Tutorial",
+          module: MODULES.cde,
+          description: "A detailed step-by-step tutorial to get started with Gitspaces. ",
+          link: "/docs/cloud-development-environments/introduction/quickstart-tutorial",
         },
         {
           title: "Beta Plan Usage",
@@ -158,13 +164,19 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.cde,
           description:
             "Connect to your Gitspaces within VS Code Browser",
-          link: "/docs/cloud-development-environments/ide's/vs-code-browser",
+          link: "/docs/cloud-development-environments/ides/vs-code-browser",
         },
         {
           title: "VS Code Desktop",
           module: MODULES.cde,
           description: "Connect to your Gitspaces within VS Code Desktop",
-          link: "/docs/cloud-development-environments/ide's/vs-code-desktop",
+          link: "/docs/cloud-development-environments/ides/vs-code-desktop",
+        },
+        {
+          title: "IntelliJ IDEA",
+          module: MODULES.cde,
+          description: "Connect to your Gitspaces within IntelliJ IDEA",
+          link: "/docs/cloud-development-environments/ides/intellij",
         },
       ],
     },

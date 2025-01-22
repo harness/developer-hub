@@ -366,21 +366,6 @@ VMware Windows network loss injects network packet loss on Windows OS based VMwa
 
 <FaultDetailsCard category="vmware">
 
-### VMware Windows service stop
-
-VMware Windows service stop stops a specified service on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- This fault helps determine how resilient an application is when a specific service is stopped on a VMware virtual machine.
-
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="vmware">
-
 ### VMware Windows process kill
 
 VMware Windows process kill kills a specified process on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
@@ -389,6 +374,21 @@ VMware Windows process kill kills a specified process on Windows OS based VMware
 <summary>Use cases</summary>
 
 - This fault helps determine how resilient an application is when a specific process is killed on a VMware virtual machine.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="vmware">
+
+### VMware Windows service stop
+
+VMware Windows service stop stops a specified service on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- This fault helps determine how resilient an application is when a specific service is stopped on a VMware virtual machine.
 
 </Accordion>
 

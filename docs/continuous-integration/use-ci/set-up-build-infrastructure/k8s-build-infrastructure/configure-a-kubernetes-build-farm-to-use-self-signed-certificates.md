@@ -24,6 +24,12 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
 :::
 
+:::warning
+
+Custom certificates or self-signed certificates are only supported for linux nodes in a Kubernetes cluster. For Windows, directly mounting the certificate to the destination path will not work. 
+
+:::
+
 ## Enable self-signed certificates
 
 1. Create a Kubernetes secret or config map with the required certificates in the same namespace used by the Harness Delegate. For example:

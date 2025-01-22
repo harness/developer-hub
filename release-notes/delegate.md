@@ -87,7 +87,38 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## January 2025
+
+### Version 24.12.84708 <!-- January 16, 2025 -->
+
+#### Hotfix
+
+- Add support for Incomplete Responses from New Relic during verify step execution. (CDS-105146)
+
+### Version 25.01.84800 <!-- January 10, 2025 -->
+
+#### New features and improvements
+
+- Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4` (PL-58376)
+
+- Added a new metric on the delegate side to track the number of times the delegate WebSocket reconnects. This metric, `io_harness_custom_metric_delegate_reconnected_total`, can be used to set alerts for frequent reconnections, helping identify potential issues with the delegate and enabling you to seek further assistance from Harness if needed. (PL-48535)
+
 ## December 2024
+
+### Version 24.11.84503 <!-- December 18, 2024 -->
+
+#### Fixed issues
+- Fixed an issue that prevented users from retrieving secrets from the HashiCorp Vault when the path contained special characters. The solution involved enhancing support for **"dots"** in dynamic secret reference expressions, ensuring seamless retrieval of such secrets.
+(PL-58771, ZD-73710, ZD-73724)
+
+#### New features and improvements
+- Updated ```“org.bouncycastle:bcpkix-jdk18on”``` to version 1.78 and removed ```“org.bouncycastle:bcprov-jdk15on”``` (version 1.70) from the Delegate. (PL-58474)
+
+### Version 24.11.84311 <!--  December 16, 2024 -->
+
+#### Hotfix
+
+- Previously, when there was deployment failure in TAS Rolling deployment, secrets were printed in the delgate logs. This issue has now been fixed. (CDS-105208)
 
 ### Version 24.11.84310 <!--  December 4, 2024 -->
 

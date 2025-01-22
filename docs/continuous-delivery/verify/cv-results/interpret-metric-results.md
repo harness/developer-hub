@@ -105,6 +105,8 @@ Any metric marked as "Throughput" is not analyzed during the verification proces
 
 You can customize the metrics summary view using the following filters:
 
+<DocImage path={require('./static/filters.png')} />
+
 - **Group**: When configuring the health source, you have the flexibility to group a set of metrics together, such as a transaction group. Using the **Group** filter, you can filter the results based on these predefined metric groups. For health sources such as Appdynamics, New Relic, and Dynatrace, metrics are automatically grouped based on transactions, making all transactions available in the dropdown filter.
 
 - **Nodes**: Using this filter, you can narrow down the results by selecting a specific "Canary" or "After" node, depending on the type of deployment.
@@ -113,9 +115,7 @@ You can customize the metrics summary view using the following filters:
 
 - **Raw** and **Normalized**: Use the **Normalized** filter option to view the metric data in a standardized form used by ML analysis. The system performs a normalization process for ML analysis by converting three adjacent minutes of metric data into a single data point.  
   Use the **Raw** filter option to see the metric data exactly as provided by the source, without any modifications.
-
-<DocImage path={require('./static/filters.png')} />
-
+  ![Normalized Data](static/normalizeddata.png)
 
 ## Metric details graph
 

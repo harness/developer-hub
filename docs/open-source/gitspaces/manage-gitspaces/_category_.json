@@ -1,6 +1,7 @@
 {
     "label": "Manage Gitspaces",
-    "position": 3,
+    "description": "Understand how to create, start/stop, delete Gitspaces.",
+    "position": 5,
     "link": {
       "type": "generated-index"
     }

@@ -21,6 +21,39 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## January 2025
+
+### Version 1.122.1
+
+<!-- 2025-01-10 -->
+
+#### New Features and Enhancements  
+- Enhanced the Veracode step in STO to use an existing Veracode application with the Target name specified during the step configuration. If no matching application exists, the step creates a new one. (STO-8359)
+
+#### Fixed Issues 
+- Fixed an issue where Trivy scans failed if no vulnerabilities were found but secrets were detected; the scan now passes successfully, reporting detected secrets with no vulnerabilities (STO-8404, ZD-75298).
+- Fixed an issue that prevented the creation of a new Veracode Sandbox from the STO Veracode step (STO-8377, ZD-72535).
+
+## December 2024
+
+### Version 1.120.4
+
+<!-- 2024-12-13 -->
+
+#### New Features and Enhancements  
+- Veracode step is now available as an SCA scanner (STO-8275).  
+- Improved logic in the Checkmarx scanner to handle empty scan reports (STO-8282).  
+- Extended support for SonarQube external policies to work with SonarQube server version 10 (STO-8251).
+
+#### Fixed Issues  
+- Fixed an issue where SonarQube step execution failed if the title referenced a null character (STO-8329, ZD-74246, ZD-74368).  
+- Fixed a Snyk Code scan issue that caused failures when no results were found; the scan will now complete successfully (STO-8294, ZD-71796).  
+- Resolved misclassification of issues as new when scanning the same target multiple times with the same scanner (STO-8169).  
+- Fixed a configuration issue in some Harness production environments that prevented STO steps from running in IaCM stages (STO-8291, ZD-73770).  
+- Fixed a scan failure that occurred when all commit SHA characters were numbers (STO-8367, ZD-74690).  
+- Fixed an issue where repository details could not be fetched when raising a pull request from Harness AI remediation suggestions (STO-8351).
+
 ## November 2024
 
 ### Version 1.117.2

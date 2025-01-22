@@ -3,8 +3,6 @@ title: Environment Variables
 description: Learn how to define environment variables for your development.
 sidebar_position: 3
 sidebar_label: Environment Variables
-redirect_from:
-  - /docs/cloud-development-environments/features-of-gitspaces/env-variables
 ---
 
 This guide walks you through the steps required to set environment variables for your containers without altering the container images. This feature allows you to manage application configurations and customize development environments to suit your specific requirements.

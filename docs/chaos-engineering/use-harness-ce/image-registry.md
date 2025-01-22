@@ -25,7 +25,8 @@ A custom image registry allows for storing container images securely, restrictin
 
 Follow the steps below to use [custom values](#custom-values-for-image-registry) or [default values](#default-values-for-image-registry) of the image registry in your chaos experiment.
 
-To watch a video on configuring image registry, go to [image registry](https://youtu.be/jpSd1nGf8s0).
+
+[This](https://youtu.be/jpSd1nGf8s0) video provides a step-by-step walkthrough of configuring the Image Registry.
 
 ### Why use a Custom Image Registry?
 
@@ -33,6 +34,10 @@ When the image you need to use for your chaos experiment is private, and the cha
 This way, you will have better control, and security when working with private images.
 
 Depending on whether you use DDCR (Delegate Driven Chaos Runner) or dedicated chaos infrastructure, image registry settings is configured from **account**/**organization**/**project**/**infrastructure** settings or from the UI, respectively.
+
+:::info note
+This feature is behind the feature flag `CHAOS_IMAGEREGISTRY_DEV`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 <Tabs>
 <TabItem value = "Harness Delegate / DDCR">

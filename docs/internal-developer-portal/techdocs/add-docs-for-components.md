@@ -10,7 +10,7 @@ The purpose of this how-to guide is to walk you through how to add the required 
 
 Prerequisites:
 
-- An existing software template including a template.yaml together with a skeleton folder including at least a catalog-info.yaml.
+- An existing software template including a workflow.yaml together with a skeleton folder including at least a catalog-info.yaml.
 
 1. Update your component's entity description by adding the following lines to the `catalog-info.yaml` in your skeleton folder.
 

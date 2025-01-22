@@ -8,9 +8,9 @@ redirect_from:
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic service onboarding pipeline that uses a software template and provisions a application templated by cookiecutter for a developer. After you create the software template, developers can choose the template on the **Workflow** page and enter details such as a name for the application and the path to their Git repository. The service onboarding pipeline creates a new repository and adds a `catalog-info.yaml` to it and registers it back into your software catalog all using the new **Developer Portal** stage. 
+This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic service onboarding pipeline that uses a Workflow and provisions an application templated by cookiecutter for a developer. After you create the Workflow, developers can choose the Workflow on the **Workflows Overview** page and enter details such as a name for the application and the path to their Git repository. The service onboarding pipeline creates a new repository and adds a `catalog-info.yaml` to it and registers it back into your software catalog all using the new **Developer Portal** stage. 
 
-Users (developers) must perform a sequence of tasks to create the application. First, they interact with a software template. A software template is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboards the new service. Usually the pipeline fetches a cookiecutter template code, creates a new repository, and interacts with third-party providers such as cloud providers, Jira, and Slack.
+Users (developers) must perform a sequence of tasks to create the application. First, they interact with a workflow. A workflow is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboards the new service. Usually the pipeline fetches a cookiecutter template code, creates a new repository, and interacts with third-party providers such as cloud providers, Jira, and Slack.
 
 ## Prerequisites
 
@@ -186,9 +186,9 @@ Software Templates currently support pipelines that are comprised only of [IDP S
 
 :::
 
-## Create a Software Template
+## Create a Workflow
 
-Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.
+Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. Create a `workflow.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP Workflows.
 
 [Source](https://github.com/harness-community/idp-samples/blob/main/tutorial-self-service-flow-template.yaml)
 
@@ -198,7 +198,7 @@ kind: Template
 metadata:
   name: new-service
   title: Create a new service
-  description: A template to create a new service
+  description: A Workflow to create a new service
   tags:
     - nextjs
     - react
@@ -287,7 +287,7 @@ Replace the `YOUR PIPELINE URL HERE` with the pipeline URL that you created.
 
 ![](./static/copy-pipeline-url.png)
 
-This YAML code is governed by Backstage. You can change the name and description of the software template. The template has the following parts:
+This YAML code is governed by Backstage. You can change the name and description of the Workflow. The Workflow has the following parts:
 
 1. Input from the user
 2. Execution of pipeline
@@ -295,13 +295,13 @@ This YAML code is governed by Backstage. You can change the name and description
 ![](./static/template-new-1.png)
 ![](./static/template-new-2.png)
 
-Let's take a look at the inputs that the template expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in `properties` are the unique IDs of fields (for example, `github_repo` and `project_name`). If you recall, they are the pipeline variables that we set as runtime inputs earlier. This is what we want the developer to enter when creating their new application.
+Let's take a look at the inputs that the Workflow expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in `properties` are the unique IDs of fields (for example, `github_repo` and `project_name`). If you recall, they are the pipeline variables that we set as runtime inputs earlier. This is what we want the developer to enter when creating their new application.
 
 The YAML definition includes fields such as cloud provider and database choice. They are for demonstration purposes only and are not used in this tutorial.
 
 ### Authenticating the Request to the Pipeline
 
-The Software Template contains a single action which is designed to trigger the pipeline you created via an API call. Since the API call requires authentication, Harness has created a custom component to authenticate based of the logged-in user's credentials.
+The Workflow contains a single action which is designed to trigger the pipeline you created via an API call. Since the API call requires authentication, Harness has created a custom component to authenticate based of the logged-in user's credentials.
 
 The following YAML snippet under `spec.parameters.properties` automatically creates a token field without exposing it to the end user.
 
@@ -328,19 +328,19 @@ That token is then used as part of `steps` as `apikey`
         apikey: ${{ parameters.token }}
 ```
 
-### Register the Template in IDP
+### Register the Workflow in IDP
 
-Use the URL to the `template.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
 
-## Use the Software Template via Self Service Workflows
+## Use the Self Service Workflows
 
-Now navigate to the **Workflows** page in IDP. You will see the newly created template appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization!
+Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization!
 
 ## Additional Information
 
-### Conditional Inputs in Templates
+### Conditional Inputs in Workflows
 
-1. One Of: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
+1. One Of: Helps you create a dropdown in the workflow, where only one of all the options available could be selected. 
 
 ```YAML
 dependencies:
@@ -356,7 +356,7 @@ dependencies:
               - java8
               - java11
 ```
-2. All Of: Helps you create a dropdown in the template, where only all the options available could be selected.
+2. All Of: Helps you create a dropdown in the workflow, where only all the options available could be selected.
 
 ```YAML
 type: object
@@ -411,7 +411,7 @@ anyOf:
 
 For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
 
-### Upload a File in a Template
+### Upload a File in a Workflow
 
 There are 3 types of file upload. 
 
@@ -444,7 +444,7 @@ properties:
 
 Harness Pipelines variables can only be 3 types, string, number and secrets, in case you want to add multiple strings and comma separated values you need to [join](https://mozilla.github.io/nunjucks/templating.html#join) them and send as single input parameters. 
 
-In the following template I want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the inputset for pipeline. 
+In the following workflow I want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the inputset for pipeline. 
 As you could see in the example below under `inputset`, `exampleVar` takes input as `${{ parameters.exampleVar.join(',') }}`. 
 
 ```YAML
@@ -477,7 +477,7 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
         apikey: ${{ parameters.token }}
 ```
 
-### Unregister/Delete Template
+### Unregister/Delete Workflow
 
 1. Navigate to the **Catalog** page, and select **Template** under Kind.
 

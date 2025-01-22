@@ -35,6 +35,7 @@ export default async (req: Request, context: Context): Promise<Response> => {
   }
 
   const postData = {
+    validFor: 43200000, //valid for 12 hrs
     userIds: [
       {
         name: 'guest',

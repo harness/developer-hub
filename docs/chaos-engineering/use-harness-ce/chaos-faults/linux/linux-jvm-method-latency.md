@@ -86,6 +86,10 @@ Linux JVM method latency:
   </tr>
 </table>
 
+:::tip
+If multiple Java processes on the same machine are subject to JVM chaos, whether simultaneously or not, each process must use a unique Byteman port.
+:::
+
 ### Class name
 
 The `class` input variable targets the class name where the exception is present. Specify it in the format `packageName.className`.

@@ -17,8 +17,37 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 
 :::
+## January 2025
+
+### Version 1.38.3
+
+#### New features and enhancements
+
+- Granular Governance Recommendations: We have introduced granular governance recommendations, providing greater detail and actionable insights at the individual resource level. This enhancement improves operational scalability by offering more targeted recommendations for both custom and out-of-the-box (OOTB) rules. Users can now specify the scope when adding recommendations to the Ignore List, with options for Rule-level, Subscription-level, or Resource-level exclusions. [CCM-20482]
+  
+- New Table View in Output Terminal of Evaluations: The output terminal for evaluations in Asset Governance now includes a new table view, with an option to flatten the table for easier analysis. This update enhances the visibility of governance evaluations and allows users to better manage large sets of data. [CCM-20448]
+
+- Recommendations Insights Tab: Harness CCM now offers a new Recommendations Insights tab in the Asset Governance module, providing users with clear visibility into the evaluation status of each rule. This feature includes detailed insights into the cloud account and region associated with the recommendations. The tab also supports troubleshooting by displaying information on why recommendations may fail, be ignored, or succeed, enabling users to take immediate corrective actions when necessary.
+
+- Extended Idle Time for AutoStopping Rules: The AutoStopping idle time limit in the UI has been extended to allow users to set up to 24 hours (1440 minutes). [CCM-20484]
+
+- Overlapping Schedules for AutoStopping Rules: Users can now define multiple fixed schedules within an AutoStopping rule, with support for overlapping schedules. To determine the final resulting schedule at any given time, users can set the priority order of the schedules using drag-and-drop functionality. [CCM-19196]
+
 
 ## December 2024
+
+### Version 1.36.1
+
+#### New features and enhancements
+
+- "Hibernate" Option in AutoStopping Flow: We have introduced the "Hibernate" option for Azure VMs and EC2 instances in the AutoStopping flow, enabling enhanced control over resource state management. [CCM-19907]
+- Azure Inventory Metric Data Update: Inventory metric data is now fetched for all Azure VMs that are not in a deleted state, extending beyond just running VMs. [CCM-19960]
+- Budget Amount History in Drilldown Chart: The budget drilldown chart now accurately preserves the history of budget amount changes, improving visibility into budget adjustments. [CCM-19494]
+
+#### Fixed Issues
+
+- Evaluation List Resource Count Checkbox Persistence: The Resource Count checkbox on the Evaluation List page now retains its previous value correctly after a page refresh in Asset Governance. [CCM-20264]
+- GCP Missing Current Daily Costs: We have handled the new `invoice.publisher_type` column in the GCP Billing export to ensure costs now appear correctly in Perspectives. [CCM-20214]
 
 ### Version 1.35.6
 

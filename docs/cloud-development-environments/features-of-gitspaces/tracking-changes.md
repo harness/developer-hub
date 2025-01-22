@@ -3,8 +3,6 @@ title: Tracking Changes
 description: Learn how to track all Gitspace changes from Harness UI.
 sidebar_position: 5
 sidebar_label: Tracking Changes
-redirect_from:
-  - /docs/cloud-development-environments/features-of-gitspaces/tracking-changes
 ---
 
 :::info

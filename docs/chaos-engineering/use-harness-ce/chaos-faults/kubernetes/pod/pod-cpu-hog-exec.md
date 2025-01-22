@@ -100,12 +100,12 @@ permissions:
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pods affected percentage </a> </td>
+        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pods affected percentage </a> </td>
       </tr>
       <tr>
         <td> CHAOS_INJECT_COMMAND </td>
         <td> Command to inject CPU chaos. </td>
-        <td> Default: <code>md5sum /dev/zero</code>. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog-exec#chaos-inject-and-kill-commands">chaos inject command</a></td>
+        <td> Default: <code>md5sum /dev/zero</code>. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-cpu-hog-exec#chaos-inject-and-kill-commands">chaos inject command</a></td>
       </tr>
       <tr>
         <td> CHAOS_KILL_COMMAND </td>

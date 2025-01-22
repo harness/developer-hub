@@ -22,6 +22,10 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| CDS_ARTIFACT_DISABLE_VALIDATION | Enables users to bypass primary and sidecar artifact consumption checks in the service of a **Deploy** stage. For more information, go to Harness [Skip Artifact Consumption for the Stage](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#skip-artifact-consumption-for-the-stage). **This feature is in Limited GA**  |
+| CDS_CROSS_SCOPED_ENV_GROUPS | Enables users to add environments created at Account and Orgainsation level to Environment Groups. For more information, go to Harness [Cross Scope Environment Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environment-groups#cross-scope-environment-groups). **This feature is in Limited GA** |
+| CDS_K8S_DETAILED_POD_LOGS | Enables users to view detailed logs of **Wait For Steady State** step in Kubernetes deployments. For more information, go to Harness [Detailed diagnostics for K8s Deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart#detailed-diagnostics-for-k8s-deployment). **This feature is in Limited GA** |
+| CDS_SERVICE_OVERRIDES_2_0_YAML_V2_SUPPORT | Ensures that overrides from environment configuration YAML are ignored when Override V2 is enabled. <b> This feature is in Limited GA. </b> |
 | CDS_GOOGLE_CLOUD_RUN | Allows users to deploy artifacts to Google Cloud Run. <b> This feature is in Limited GA. </b> |
 | CDS_AZURE_FUNCTION | Allows users to deploy Azure Functions through Harness. <b> This feature is in Limited GA. </b> |
 | CDS_SVC_ENV_DASHBOARD_FOR_ACCOUNT_AND_ORG_LEVEL | Allows users to do Post-Deployment Rollback for services at both the Account and Organisation levels. <b> This feature is in Limited GA. </b> |
@@ -37,7 +41,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CDS_PIPELINE_ABORT_RBAC_PERMISSION | Enables users to control Abort permission separately from other pipeline execute functions. <b> This Feature is in Beta. </b> |
 | CDS_REMOVE_CONNECTOR_HEARTBEAT | Enables users to set Pre Flight Check as the default for pipeline execution. <b> This feature is in Limited GA. </b>|
 | PL_GCP_OIDC_AUTHENTICATION | Enables user to configure custom attributes for OIDC with the GCP connector. <b> This feature is in Limited GA. </b> |
-| CDS_EVENT_BRIDGE_WEBHOOK | Enables users to trigger pipelines in real time using the newly introduced EventBridge webhooks, which can be configured with Git, Slack, or generic options (such as Nexus artifacts). <b> This feature is in Limited GA. </b> |
+| CDS_EVENT_BRIDGE_WEBHOOK and CD_TRIGGERS_REFACTOR| Enables users to trigger pipelines in real time using the newly introduced EventBridge webhooks, which can be configured with Git, Slack, or generic options (such as Nexus artifacts). <b> This feature is in Limited GA. </b> |
 | PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT | Enables users to upload files as a runtime input during execution of a pipeline using **File Upload** step. <b> This feature is in Limited GA. </b>|
 | CDS_ENCODE_API_REQUESTS | Enables users to fetch an artifact version from Nexus during deployment. <b> This feature is in Limited GA. </b>|
 | CDS_EMAIL_USE_DEFAULT_FORMATTING | Enables user to send HTML content in the email body in the **Email Step**. <b> This feature is in Limited GA. </b> |
