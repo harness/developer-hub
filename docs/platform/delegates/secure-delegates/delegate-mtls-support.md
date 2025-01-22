@@ -112,21 +112,6 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
 
   To enable mTLS on a Kubernetes delegate, you have to create a secret and update the delegate YAML. For an example Kubernetes manifest, go to [Sample Kubernetes manifest](https://github.com/harness/delegate-kubernetes-manifest/blob/main/harness-delegate.yaml).
 
-  :::important
-
-  In order to use mTLS on a Kubernetes delegate, you will need to ensure you have these minimum required versions:
-
-  | Service          | Minimum Version Required |
-  |------------------|--------------------------|
-  | log-service      | 1.17.3                   |
-  | pipeline-service | 1.108.10                 |
-  | ng-manager       | 1.69.11                  |
-  | ci-manager       | 1.57.6                   |
-  | agent-gateway    | 1.1.0                    |
-  | delegate         | 24.11.84306              |
-
-  :::
-
   1. From the same folder where you have your `client.crt` and `client.key` files, run the following command to create the secret.
 
       ```
