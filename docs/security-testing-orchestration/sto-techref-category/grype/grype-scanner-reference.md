@@ -235,6 +235,18 @@ import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+## Configure Anchore Grype as a Built-in Scanner  
+
+The Anchore Grype scanner is available as a [built-in scanner](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
+
+1. Search for **Container** in the step palette or navigate to the **Built-in Scanners** section and select the **Container** step.
+2. Select **Anchore Grype** from the list of scanners.  
+3. Expand the **Additional CLI Flags** section if you want to configure optional CLI flags.
+4. Configure the **Container Information** by setting the [Type](#type-1) and [Image](#container-image).
+5. Click **Add Scanner** to save the configuration.  
+
+The scanner will automatically use the free version, detect scan targets, and can be further configured by clicking on the step whenever needed.
+
 ## Proxy settings
 
 import ProxySettings from '../shared/proxy-settings.md';
