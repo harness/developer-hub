@@ -130,7 +130,7 @@ const sidebars = {
         // SCS
         {
           type: "link",
-          href: "/docs/software-supply-chain-assurance",
+          href: "/docs/supply-chain-security",
           label: "Supply Chain Security",
           className: "sidebar-ssca",
 
