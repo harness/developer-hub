@@ -151,7 +151,7 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/softwareSupplyChainAssuranceData.tsx @sunilgupta-harness @tejakummarikuntla @pranay-harness
 
 # IACM Docs
-/docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez @urischeiner
+/docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez
 /src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
 /src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness
 
@@ -184,8 +184,8 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/ai-qa-assistant/ 
 
 # Artifact Registry Docs
-/docs/artifact-registry/ @SushrutHarness @shankaranandh @shivagowda @richardblack-Harness
-/src/components/Docs/data/artifactRegistryData.ts @SushrutHarness @shankaranandh @shivagowda @richardblack-Harness
+/docs/artifact-registry/ @shankaranandh @shivagowda @richardblack-Harness
+/src/components/Docs/data/artifactRegistryData.ts @shankaranandh @shivagowda @richardblack-Harness
 
 #FME Docs
 /src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
