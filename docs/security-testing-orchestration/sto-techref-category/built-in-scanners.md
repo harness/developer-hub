@@ -14,9 +14,9 @@ redirect_from:
 
 Built-in scanners in STO refer to a selection of [supported scanners](/docs/security-testing-orchestration/whats-supported) that are pre-configured to work seamlessly without requiring additional setup or licensing. These scanners leverage free or open-source versions of the tools, allowing you to perform scans without the need of buying commercial scanner licenses.
 
-Avoiding detailed configurations and paid license requirements, the built-in scanners in STO can be used for free, with STO automatically handling the configuration for a quick setup. This feature is especially beneficial for teams looking to integrate security scanning into their workflows quickly and cost-effectively. In doing so, STO eliminates the need for detailed setup and ensures that users can start scanning immediately.
+Avoiding detailed configurations and paid license requirements, the built-in scanners in STO can be used for free, with STO automatically handling the configuration for a quick setup. However, please note that while the scanners themselves are free, Harness executions will still incur billing charges. This feature is especially beneficial for teams looking to integrate security scanning into their workflows quickly and cost-effectively. In doing so, STO eliminates the need for detailed setup and ensures that users can start scanning immediately.
 
-Here are the list of built-in scanners available for specific scan types. To learn how to configure, refer to [Setup Built-in scanner](#setup-a-built-in-scanner) section.
+Here are the list of built-in scanners available for specific scan types. To learn how to configure, you can click on the scanner name in the below table or refer to [Setup Built-in scanner](#setup-a-built-in-scanner) section.
 
 
 <table>
@@ -29,7 +29,7 @@ Here are the list of built-in scanners available for specific scan types. To lea
           Static Application Security Testing(SAST)
       </td>
       <td>
-            [Sempgrep v1.102.0](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)
+            [Sempgrep v1.102.0](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#configure-semgrep-as-a-built-in-scanner)
       </td>
    </tr>
    <tr>
@@ -37,8 +37,8 @@ Here are the list of built-in scanners available for specific scan types. To lea
           Software Composition Analysis(SCA)
       </td>
       <td>
-          [OWASP Dependency Check v12.0.0](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference),
-          [OSV v1](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference)
+          [OWASP Dependency Check v12.0.0](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference#configure-owasp-dependency-check-as-a-built-in-scanner),
+          [OSV v1](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference#configure-osv-as-a-built-in-scanner)
       </td>
    </tr>
    <tr>
@@ -46,7 +46,7 @@ Here are the list of built-in scanners available for specific scan types. To lea
             Secret Detection
       </td>
       <td>
-            [Gitleaks v8.22.1](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)
+            [Gitleaks v8.22.1](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference#configure-gitleaks-as-a-built-in-scanner)
       </td>
    </tr>
       <tr>
@@ -54,8 +54,8 @@ Here are the list of built-in scanners available for specific scan types. To lea
           Container Scanning
       </td>
       <td>
-          [Aqua Trivy v0.58](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference),
-          [Anchor Grype v0.86.1](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference)
+          [Aqua Trivy v0.58](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#configure-aqua-trivy-as-a-built-in-scanner),
+          [Anchor Grype v0.86.1](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference#configure-anchore-grype-as-a-built-in-scanner)
       </td>
    </tr>
    <tr>
@@ -63,7 +63,7 @@ Here are the list of built-in scanners available for specific scan types. To lea
             Dynamic Application Security Testing(DAST)
       </td>
       <td>
-            [Zed Attack Proxy(ZAP) v2.16.0](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference)
+            [Zed Attack Proxy(ZAP) v2.16.0](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#configure-zap-as-a-built-in-scanner)
       </td>
    </tr>
       <tr>
@@ -71,7 +71,7 @@ Here are the list of built-in scanners available for specific scan types. To lea
             Infrastructure as Code(IaC)
       </td>
       <td>
-            [Checkov v3.2.352](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/checkov-iac-scan)
+            [Checkov v3.2.352](/docs/security-testing-orchestration/sto-techref-category/checkov-iac-scan#configure-checkov-as-a-built-in-scanner)
       </td>
    </tr>
 </table>
