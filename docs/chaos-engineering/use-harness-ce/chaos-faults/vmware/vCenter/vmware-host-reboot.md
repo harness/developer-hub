@@ -12,7 +12,7 @@ VMware host reboot reboots a VMware host that is attached to the Vcenter.
 ![VMware Host Reboot](./static/images/vmware-host-reboot.png)
 
 :::info note
-HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+Harness CE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
 
 ## Use cases

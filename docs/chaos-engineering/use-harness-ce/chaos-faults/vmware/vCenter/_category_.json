@@ -1,13 +1,13 @@
 {
   "position": 2,
-  "label": "VMware - ESX host",
+  "label": "VMware - vCenter",
   "collapsible": true,
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"VMware - ESX host"
+      "title":"VMware - vCenter "
   },
   "customProps": {
-    "description": "VMware faults executed on ESX host"
+    "description": "VMware faults executed on vCenter"
   }
 }

@@ -12,7 +12,7 @@ VMware VM power off stops (or powers off) the VMware VMs for a specific duration
 ![VMware VM Power off](./static/images/vmware-vm-poweroff.png)
 
 :::info note
-HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+Harness CE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
 
 ## Use cases
