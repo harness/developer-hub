@@ -5,6 +5,7 @@ redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-vm-power-off
 - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vm-poweroff
 - /docs/chaos-engineering/chaos-faults/vmware/vmware-vm-power-off
+- /docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/vmware-vm-power-off
 ---
 
 VMware VM power off stops (or powers off) the VMware VMs for a specific duration. After the duration, the VMs are back to original state. It checks the performance of the application running on the VMware VMs.

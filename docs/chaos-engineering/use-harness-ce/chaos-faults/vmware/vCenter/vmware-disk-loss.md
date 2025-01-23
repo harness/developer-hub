@@ -4,6 +4,7 @@ title: VMware disk loss
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-disk-loss
 - /docs/chaos-engineering/chaos-faults/vmware/vmware-disk-loss
+- /docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/vmware-disk-loss
 ---
 
 VMware disk loss detaches the disks that are attached to a Linux OS based VMware VM.
@@ -11,7 +12,7 @@ VMware disk loss detaches the disks that are attached to a Linux OS based VMware
 ![VMware Disk Loss](./static/images/vmware-disk-loss.png)
 
 :::info note
-HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+Harness CE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
 
 ## Use cases
@@ -50,7 +51,7 @@ stringData:
       <tr>
         <td> APP_VM_MOIDS </td>
         <td> MOIDs of the VMware instance. After you open the VM in VCenter WebClient, you can find the MOID in the address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. </td>
-        <td> For example, <code>vm-5365</code>. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/VMware-vm-power-off#stoppoweroff-the-vm-by-moid"> MOIDs of the VMware instance.</a></td>
+        <td> For example, <code>vm-5365</code>. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/vCenter/VMware-vm-power-off#stoppoweroff-the-vm-by-moid"> MOIDs of the VMware instance.</a></td>
       </tr>
       <tr>
         <td> VIRTUAL_DISK_NAMES </td>

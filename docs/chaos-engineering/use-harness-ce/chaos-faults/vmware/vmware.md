@@ -37,7 +37,7 @@ This fault helps determine how resilient an application is when stress is applie
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware" subCategory="esx-host">
+<FaultDetailsCard category="vmware" subCategory="vCenter">
 
 <!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
 
@@ -66,7 +66,7 @@ This fault causes DNS errors on the target VMs which results in unavailability (
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware" subCategory="esx-host">
+<FaultDetailsCard category="vmware" subCategory="vCenter">
 
 ### VMware host reboot
 
@@ -235,7 +235,7 @@ This fault helps determine how resilient an application is to random halts. It d
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware" subCategory="linux">
+<FaultDetailsCard category="vmware" subCategory="vCenter">
 
 ### VMware VM power off
 
