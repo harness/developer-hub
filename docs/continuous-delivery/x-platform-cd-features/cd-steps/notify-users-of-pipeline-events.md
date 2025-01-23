@@ -525,6 +525,36 @@ The above JSON is for a specific stage, If you choose all stages three times the
 
 </Tabs>
 
+## Datadog notifications
+
+The Datadog Notifications in Harness allows you to send pipeline event notifications directly to your Datadog monitoring system using the Events API. 
+
+This integration helps you keep track of important pipeline updates within your existing monitoring workflows.
+
+### Prerequisites
+  
+  - API Key for your Datadog account. 
+    - You can generate one from the API Keys section under `Profile -> Organization Settings -> API Keys` in Datadog.
+
+### Configuration
+
+  - Give name to your datadog notification
+
+  - Select Pipeline Events as per your requirements.
+
+  - Select Channel type as `Datadog(/v1/eventsAPI)` in Notification Method.
+
+    ![datadog-selection](./static/datadog-notification-1.png)
+
+  - Provide the URL and API key after selecting `Datadog(v1/eventsAPI)`.
+
+    ![datadog-API-and-URL](./static/datadog-api-conf.png)
+
+  - (Optional) Add headers if needed.
+
+  - Test and complete the setup.
+
+For details, see Datadog's documentation on [event integrations (v1)](https://docs.datadoghq.com/api/latest/events/) 
 
 ## Notify Slack channels in user groups
 
