@@ -11,7 +11,7 @@ import { MODULES } from "@site/src/constants"
   export const docsCards: CardSections = [
     {
       name: "Getting started",
-      description: "<Optional description could go here>",
+      description: "",
       list: [
         {
           title: "Getting started",
@@ -39,8 +39,7 @@ import { MODULES } from "@site/src/constants"
 
     {
       name: "FME Features",
-      description:
-        "<Optional description>",
+      description: "",
       list: [
         {
           title: "Feature management",
@@ -68,8 +67,7 @@ import { MODULES } from "@site/src/constants"
 
     {
       name: "Integrate FME",
-      description:
-        "",
+      description: "",
       list: [
         {
           title: "Integrate & Automate",

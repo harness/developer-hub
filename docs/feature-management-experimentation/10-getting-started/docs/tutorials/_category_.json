@@ -1,12 +1,7 @@
 {
-    "label": "Tutorials [preview]",
-    "position": 18,
-    "collapsible": "true",
-    "collapsed": "true",
+    "label": "Tutorials",
+    "collapsible": true,
+    "collapsed": true,
     "className": "red",
-    "link": {
-        "type": "generated-index",
-        "title": "FME Tutorials [preview: planned for Q2 or Q3]",
-        "description": "These guides and tutorials help you get started with FME or explore advanced use cases."
-    },
+    "position": 17
 }
