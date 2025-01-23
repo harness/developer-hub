@@ -472,9 +472,19 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 If you are running builds on AWS Fargate, please be aware of the following limitations.
 
-### Docker delegate on AWS ECS Fargate backed instace
+### Docker delegate on AWS ECS Fargate backed instance
 
 When operating ECS delegates on AWS Fargate, it's critical to note that AWS Fargate will terminate the delegate if the tasks running on the delegate exceed the infrastructure's specified limits. This is a limitation inherent in using infrastructure not owned by the customer. Harness Delegate cannot circumvent this restriction. However, ECS delegates operating on an EC2 instance do not have this issue. To avoid this limitation, consider using Kubernetes delegates where the infrastructure and associated YAML definitions address these issues.
+
+### Docker in Docker does not work with AWS Fargate
+
+AWS Fargate doesn't support the use of privileged containers. Privileged mode is required for DinD, thus, you cannot use DinD with AWS Fargate.
+
+### AWS Fargate does not support IAM roles
+
+Amazon requires the Amazon EKS Pod execution role to run pods on the AWS Fargate infrastructure. For more information, go to [Amazon EKS Pod execution IAM role](https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html) in the AWS documentation.
+
+If you deploy pods to Fargate nodes in an EKS cluster, and your nodes needs IAM credentials, you must configure IRSA in your AWS EKS configuration (and then select the Use IRSA option for your connector credentials in Harness). This is due to [Fargate limitations](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html#:~:text=The%20Amazon%20EC2%20instance%20metadata%20service%20(IMDS)%20isn%27t%20available%20to%20Pods%20that%20are%20deployed%20to%20Fargate%20nodes.).
 
 ## Troubleshoot AWS VM build infrastructure
 
