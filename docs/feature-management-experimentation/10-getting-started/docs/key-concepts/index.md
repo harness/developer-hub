@@ -1,6 +1,6 @@
 ---
-title: Key Concepts
-sidebar_label: Key Concepts
+title: Key concepts
+sidebar_label: Key concepts
 sidebar_position: 13
 helpdocs_is_private: false
 helpdocs_is_published: true

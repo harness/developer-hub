@@ -1,0 +1,37 @@
+---
+title: API keys
+sidebar_label: API keys
+helpdocs_is_private: false
+helpdocs_is_published: true
+---
+import OutboundSvg from "../../../_templates/OutboundLink.mdx";
+import FindAPIKeys from "../../../_templates/_find-sdk-api-key.mdx";
+
+<p>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360006854852-Frontend-and-backend-API-key-usage </button>
+</p>
+
+API keys are confidential GUID strings that authorize communciation with Harness servers.
+
+**Admin API keys** are used for requests to our public <a href="https://docs.split.io">FME HTTP API<OutboundSvg /></a> endpoints.
+
+:::info
+<FindAPIKeys keyType='Admin API keys and SDK API keys' is='are' />
+:::
+
+**SDK API keys** are used to download the [FME payload](./fme-payload.md) and to send [impressions](./impressions.md) and [events](./events.md) needed by FME to calculate monitoring and experimentation data.
+
+In practice, you need only one client-side and one server-side API key for each environment. When a new environment is created in Harness, FME automatically creates one key of each type for the new FME environment.
+
+There is nothing wrong with having multiple keys of the same type for the same environment, but there is no real reason to do so. FME does not track which API key is used.
+
+:::tip[Choose the correct type of SDK API key]
+* A client-side SDK (JavaScript, iOS, Android) should be initialized with a **client-side API key**.
+* A server-side SDK (Go, Java, .NET, Node.js, etc.) should be initialized with a **server-side API key**.
+:::
+
+<!-- todo: update segment endpoint details below -->
+
+:::note[Note for developers]
+The main difference between the access provided to client-side SDKs using a **client-side API key** and server-side SDKs using a **server-side API** key is the **segment information** that is retrieved. The client-side SDKs hit the endpoint `/mySegments`, which only returns the segments containing the ID used to initialize the SDK. The server-side SDKs call `/segmentChanges`, which downloads the entire contents of every segment in the environment. This way, the server-side SDKs can compute treatments for any possible ID, while the client-side SDKs minimize space overhead for browsers and mobile devices by only downloading the segment information needed to process getTreatment calls for the ID specified during initialization.
+:::
