@@ -24,6 +24,17 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## January 2025
 
+### Version v1.124.3
+
+<!-- 2025-01-23 -->
+
+#### New Features and Enhancements  
+- Prisma Cloud step in STO now automatically pulls the appropriate CLI version to match the user’s version (STO-5300).  
+- Custom Ingestion scanner results now display both the scanner details and scanning results (STO-8352).  
+- Fixed an issue where adding an additional route to the Domain field in the Checkmarx step would not properly process the URL (STO-5669).
+
+## January 2025
+
 ### Version 1.122.1
 
 <!-- 2025-01-10 -->
