@@ -154,7 +154,7 @@ The productivity boost metric measures the change in performance between two gro
 Productivity boost is calculated using the following formula:
 
 ```ssh
-Productivity boos = Productivity score of cohort A / Productivity score of cohort B - 1
+Productivity boost = Productivity score of cohort A / Productivity score of cohort B - 1
 ```
 
 where
