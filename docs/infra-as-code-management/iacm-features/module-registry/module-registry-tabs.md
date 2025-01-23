@@ -30,7 +30,7 @@ Once your have registered your *tf* modules, Harness automatically parses the me
 This document walks through each tab of a registered module, explaining its data, settings, and usage to help you configure and manage your module effectively.
 
 :::note information source
-The Module Registry compiles information from various files when a repository adheres to the standard module structure. Each tab's content is derived from different files, depending on the repository's file structure.
+The Module Registry compiles information from various files when a repository adheres to the standard module structure. 
 :::
 
 ### Readme
