@@ -16,6 +16,10 @@ sidebar_label: Workspace templates
 
 import Tabs from '@theme/Tabs';  
 import TabItem from '@theme/TabItem';  
+
+:::warning pending release
+IaCM Workspace templates are currently pending release and will be available soon!
+:::
  
 With workspace templates, you can standardize workspace configurations across your projects by predefining essential variables, configuration settings, and other workspace options. This helps streamline workspace setup, ensuring consistency and reducing manual configuration efforts. 
 

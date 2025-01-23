@@ -3,8 +3,6 @@ title: Understanding the Gitspace Lifecycle
 description: Understand the stages in the life of a Gitspace.
 sidebar_position: 2
 sidebar_label: Gitspace Lifecycle
-redirect_from:
-  - /docs/cloud-development-environments/deep-dive-into-gitspaces/lifecycle-of-gitspaces
 ---
 
 :::info
