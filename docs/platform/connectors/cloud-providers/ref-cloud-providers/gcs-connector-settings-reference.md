@@ -118,14 +118,6 @@ Select this option to allow the connector to inherit its authentication credenti
 
 Currently, this feature is behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-Additionally, the OIDC connectivity mode is not compatible with Google Cloud Functions. You can't deploy Google Cloud Functions with OIDC-enabled GCP connectors.
-
-:::
-
-:::warning
-
-If you are using OIDC for your connection, you will not be able to connect to GCP through the Harness Platform. Please connect through a Harness Delegate.
-
 :::
 
 Select the **Connect through Harness Delegate for OIDC** option to allow Harness Delegate to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials. This option requires Harness Delegate version 24.03.82603 or later.

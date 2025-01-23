@@ -226,6 +226,12 @@ To fix this issue, follow these steps
 By doing this, you ensure that the same lookerMasterKey is used during upgrades, avoiding encryption issues.
 :::
 
+:::info Harness Helm Chart Provenance
+
+Harness Helm charts are now signed to ensure they are secure and trustworthy. Click [here](../docs/self-managed-enterprise-edition/install/helm-chart-provenance) to learn more. 
+
+:::
+
 ## Jan 07, 2025, Version 0.24.0
 
 This release includes the following Harness module and component versions.

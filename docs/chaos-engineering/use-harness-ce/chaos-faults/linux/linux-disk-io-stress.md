@@ -12,6 +12,12 @@ import FaultPermissions from './shared/fault-permissions.md'
 
 Linux disk IO stress applies stress on the disk of the target Linux machines over I/O operations for a specific duration.
 
+It aims to consume the I/O bandwidth by performing frequent writes and reads to and from the disk, respectively. Consequently, the size of the file created for this operation changes frequently. 
+
+:::tip
+To understand the impact of the fault, check the available I/O bandwidth before and during chaos.
+:::
+
 ![Linux disk IO stress](./static/images/linux-disk-io-stress.png)
 
 ## Use cases

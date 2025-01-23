@@ -487,3 +487,138 @@ policies:
     - ```redshift:DescribeClusterSnapshots```
 
 ---
+
+### Recommendation: delete-empty-dynamodb-tables
+
+**Description:** Delete DyanmoDB tables which are empty
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: delete-empty-dynamodb-tables
+    resource: dynamodb-table
+    description: |
+      Delete DyanmoDB tables which are empty
+    filters:
+      - TableSizeBytes: 0
+    actions:
+      - delete
+```
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+---
+
+### Recommendation: delete-stale-log-group
+
+**Description:** Delete stale cloud watch log groups
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: delete-stale-log-group
+    resource: log-group
+    description: |
+      Delete stale cloud watch log groups
+    filters:
+      - type: last-write
+        days: 60
+    actions:
+      - delete
+```
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+---
+
+### Recommendation: delete-stale-rds-snapshots
+
+**Description:** Delete all stale(older than 28 days) RDS snapshots
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: delete-stale-rds-snapshots
+    resource: rds-snapshot
+    description: |
+      Delete all stale(older than 28 days) RDS snapshots
+    filters:
+      - type: age
+        days: 28
+        op: ge
+    actions:
+      - delete
+```
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+---
+
+### Recommendation: delete-unencrypted-firehose
+
+**Description:**  Delete Firehose which are not encrypted
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: delete-unencrypted-firehose
+    resource: firehose
+    description: |
+      Delete Firehose which are not encrypted
+    filters:
+      - KmsMasterKeyId: absent
+    actions:
+      - type: delete
+```
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+---
+
+### Recommendation: delete-unencrypted-sqs
+
+**Description:**  Delete SQS which are not encrypted
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: delete-unencrypted-sqs
+    resource: sqs
+    description: |
+      Delete SQS which are not encrypted
+    filters:
+      - KmsMasterKeyId: absent
+    actions:
+      - type: delete
+```
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+---
+
+### Recommendation: delete-unused-nat-gateways
+
+**Description:** Delete unused NAT Gateways based on no associated traffic in past 7 days.
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: delete-unused-nat-gateways
+    resource: nat-gateway
+    description: |
+      Delete unused NAT Gateways based on no associated traffic in past 7 days.
+    filters:
+      - type: metrics
+        name: BytesOutToDestination
+        statistics: Sum
+        period: 86400
+        days: 7
+        value: 0
+        op: eq
+    actions:
+      - type: delete
+```
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+---
