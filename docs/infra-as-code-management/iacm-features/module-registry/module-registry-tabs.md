@@ -22,24 +22,22 @@ IaCM Module Registry is currently pending release and will be available soon! [L
 :::
 
 ## Prerequisites
-- A registered infrastructure module, to register a new module, go to [Register a module](https://developer.harness.io/docs/infra-as-code-management/iacm-features/module-registry#register-a-module)
+- A registered *tf* modules, to register a new module, go to [Register a module](https://developer.harness.io/docs/infra-as-code-management/iacm-features/module-registry#register-a-module)
 
-Once your have registered an infrastructure module, Harness automatically parses the metadata from your connected repository, so your module information is readily available for re-use. 
+Once your have registered your *tf* modules, Harness automatically parses the metadata from your connected repository, so your module information is readily available for re-use. 
 
 ## Registered module tabs
 This document walks through each tab of a registered module, explaining its data, settings, and usage to help you configure and manage your module effectively.
 
 :::note information source
-The information populated in the Harness Module Registry comprises the metadata stored in the connected code repository and is therefore controlled by the module authors.
-
-Each tab has information populated from different files and can be determined by the repositories file structure.
+The Module Registry compiles information from various files when a repository adheres to the standard module structure. 
 :::
 
 ### Readme
 The Readme tabs directly reflects and renders the `README.md` file in your modules connected repository.
 
 ### Instructions
-The Instructions tab provides a code snippet that you can copy and integrate into your Terraform code. This allows you to seamlessly incorporate the infrastructure defined in your module into your environment once the code is applied.
+The Instructions tab provides a code snippet that you can copy and integrate into your Tofu/Terraform code. This allows you to seamlessly incorporate the infrastructure defined in your module into your environment once the code is applied.
 
 ![Registered module instructions](./static/registered-module-instructions.png)
 
@@ -92,7 +90,7 @@ The dependencies tab is populated by your `versions.tf` file.
 ```
 
 ### Resources
-Resources are found in your `main.tf` file with a list of resources to be applied when you [run your provision pipelines](https://developer.harness.io/docs/infra-as-code-management/use-iacm/provision-workspace). For example:
+Resources are defined within your Tofu/Terraform configuration files, which can be named according to your preference, though a common example is `main.tf`. These resources are applied when you [run your provision pipelines](https://developer.harness.io/docs/infra-as-code-management/use-iacm/provision-workspace). For example:
 
 ```hcl
     resource "aws_instance" "example" {
@@ -106,7 +104,7 @@ Resources are found in your `main.tf` file with a list of resources to be applie
 ```
 
 ### Submodules
-A main module is gathered from your `main.tf` file and submodules are gathered from a `modules` directory within your repository.
+The metadata of the submodules is extracted from your `modules` folder.
 
 **Use cases:**
 
