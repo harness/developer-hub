@@ -118,6 +118,6 @@ Harness provides the following troubleshooting features to help you diagnose syn
 - **View Webhook Events**: in the Git information on your Harness entity, you can select **View Webhook Events** and see each event and payload for that entity.
   
   ![picture 2](static/73011f2a1eb78aaef5b0cbe0fc162bdaf451ef49b934020e7e97c3bb4cb0075d.png)  
-- You can view the audit trail for webhooks that were created, deleted, or when webhook was enabled or disabled.
+- You can view the [audit trail](/docs/platform/governance/audit-trail/audit-trail.md) for webhooks that were created, deleted, or when webhook was enabled or disabled.
 
 ![](./static/audit_bidir.png)
