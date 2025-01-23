@@ -47,6 +47,21 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## January 2025
 
+### Version 1.73.x
+
+#### New features and enhancements
+
+- Users can now enforce OPA policy on Service, Environment, Infrastructure Definitions and Overrides.  Currently, this feature is behind the feature flag `CDS_OPA_CD_ENTITIES_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-101677, ZD-57706)
+- Users can now add input variables in the Email step. (CDS-101651, ZD-66735,67864)
+
+#### Fixed Issues
+
+- Previously, When the `CDS_SPECIFY_INFRASTRUCTURES` feature flag was enabled, customers using environment groups faced an issue where infrastructure options were scoped incorrectly to the project level instead of the account level. This prevented users from selecting the correct infrastructures for deployment. The issue is fixed now. (CDS-105822,ZD-76254)
+- Previously, DeployToAll option for cluster was showing empty string instead of true which is a default value. The issue is fixed now. (CDS-103296)
+- Previously, deployment was timing out and was failing without any logs getting showed. The issue is fixed now. (PIPE-24324, ZD-74851,75772,75937)
+- Previously, CV phase failed intermittently due to an issue with handling incomplete responses from external API calls (e.g., New Relic). This issue was particularly observed when certain metric values (e.g., average values) were missing in the response from New Relic APIs, causing the entire verification phase to fail. The issue is fixed now. (CDS-105226, ZD-74901,74902,75694)
+- Previously, the artifact download step in pipelines was failing during the initialization stage due to improper sanitization of environment variables containing special characters like backslashes (`\`) and dollar signs (`$`). This caused XML parsing errors in the pywinrm library used for command execution over WinRM. The issue is fixed now. This fix is behind feature flag `CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS_NG`. Please contact [Harness Support](mailto:support@harness.io) to enable the feature. This feature flag disables ANSI C quoting for environment variables. (CDS-105139, ZD-74886)
+
 ### Version 1.72.3
 
 #### Fixed Issues
