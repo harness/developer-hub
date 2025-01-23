@@ -17,8 +17,8 @@ sidebar_label: Module registry
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::tip pending release
-IaCM Module Registry is currently pending release and will be available soon!
+:::warning pending release
+IaCM Module Registry is currently pending release and will be available soon! [Learn more](https://www.harness.io/blog/harness-iacm-module-registry).
 :::
  
 The Harness IaCM Module Registry is a centralized repository where you can publish and manage versions of pre-built infrastructure modules. These modules, which include components like virtual machines, databases, and networks, can be reused by different teams, streamlining infrastructure management and ensuring consistency across projects.
