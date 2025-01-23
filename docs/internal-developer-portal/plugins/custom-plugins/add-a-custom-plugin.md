@@ -10,6 +10,8 @@ sidebar_position: 2
 
 This feature is in **BETA** and is available behind the feature flag `IDP_ENABLE_CUSTOM_PLUGINS`. If you want to try out this feature, please reach out to the IDP team. We would love to work with you and take feedback.
 
+This feature is currently **not available in the EU region clusters**. 
+
 :::
 
 <DocVideo src="https://www.youtube.com/embed/6ab9xQY7kSE?si=zbG2ZUnZZQNJrlfS"/>
