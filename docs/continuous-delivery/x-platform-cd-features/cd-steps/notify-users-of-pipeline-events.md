@@ -542,7 +542,7 @@ This integration helps you keep track of important pipeline updates within your 
 
   - Select Pipeline Events as per your requirements.
 
-  - Select Channel type as `Datadog(/v1/eventsAPI)` in Notification Method.
+  - Select Channel type as `Datadog(/v1/events API)` in Notification Method.
 
     ![datadog-selection](./static/datadog-notification-1.png)
 
