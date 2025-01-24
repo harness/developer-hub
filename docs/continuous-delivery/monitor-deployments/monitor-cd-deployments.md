@@ -197,7 +197,7 @@ Currently, there are two built-in CD Dashboads: **Deployments** and **Services**
 
 To view these dashboards, in Harness, click **Dashboards**.
 
-![](../cd-dashboards/static/monitor-cd-deployments-21.png)
+![](./static/monitor-cd-deployments-21.png)
 
 In **Dashboards**, click **Deployments** or **By Harness**.
 
