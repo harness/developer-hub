@@ -52,9 +52,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 #### New features and enhancements
 
 - Users can now enforce OPA policy on Service, Environment, Infrastructure Definitions and Overrides.  Currently, this feature is behind the feature flag `CDS_OPA_CD_ENTITIES_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-101677, ZD-57706**)
+
 - Users can now add input variables in the Email step. (**CDS-101651, ZD-66735,67864**)
 
-- Admin users can now hide unsubscribed modules from the sidebar, ensuring only subscribed modules are visible to team members. This helps streamline the user experience and prevents access to steps or features from unsubscribed modules. Visit Account Settings to manage module visibility for your Org. Currently, this feature is behind the feature flag `CDS_NAV_MODULE_VISIBILITY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.(**PIPE-20641, ZD-53621,66260**)
+#### Breaking Changes
+
+- Admin users can now hide unsubscribed modules from the sidebar, ensuring only subscribed modules are visible to team members. This helps streamline the user experience and prevents access to steps or features from unsubscribed modules. Visit Account Settings to manage module visibility for your Org. Currently, this feature is behind the feature flag `CDS_NAV_MODULE_VISIBILITY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-20641, ZD-53621,66260**)
 
 #### Fixed Issues
 
