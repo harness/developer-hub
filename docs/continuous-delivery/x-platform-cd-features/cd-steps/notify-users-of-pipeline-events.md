@@ -539,6 +539,7 @@ This integration helps you keep track of important pipeline updates within your 
 ### Prerequisites
   
   - API Key for your [Datadog account](https://app.datadoghq.com/organization-settings/api-keys). 
+  
     - You can generate one from the API Keys section under `Profile -> Organization Settings -> API Keys` in Datadog.
 
 ### Configuration
@@ -553,7 +554,9 @@ This integration helps you keep track of important pipeline updates within your 
 
   - Provide the Datadog URL and API key.
 
-    ![datadog-API-and-URL](./static/datadog-api-conf.png)
+    - Please provide the Datadog URL followed by `/api/v1/events` eg. `https://app.datadoghq.com/api/v1/events/`
+
+      ![datadog-API-and-URL](./static/datadog-api-conf.png)
 
   - (Optional) Add headers if needed.
 
