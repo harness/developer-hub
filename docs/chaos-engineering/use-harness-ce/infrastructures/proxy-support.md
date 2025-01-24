@@ -10,9 +10,9 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This topic describes when an agent proxy is required, how you can install it, and configure DDCR and discovery agent proxy settings.
+This topic describes when Harness Network Proxy (HNP) is required, how you can install it, and configure DDCR and discovery HNP settings.
 
-When you have a restricted network, and you don't want to expose all the infrastructure of your application to the public, and when you want all the outbound connections to go from a single place, you can use your own proxy or an agent proxy.
+When you have a restricted network and when you want all the outbound connections to go from a single node/cluster, you can use your own proxy or Harness Network Proxy (HNP).
 
 The diagram below describes how the **Discovery Agent** and **Chaos Runner** communicate with Harness Control Plane.
 
@@ -23,7 +23,7 @@ The diagram above describes the following:
 - If your cluster has connectivity with the Harness portal (Harness Control Plane in the diagram), you won't need any proxy.
 - If your cluster does not have connectivity with the Harness portal (Harness Control Plane in the diagram), then such requests goes through the proxy.
     - In case you already have a proxy set up, you can [provide the URL of the proxy in the UI](/docs/chaos-engineering/use-harness-ce/infrastructures/proxy-support#delegate-driven-chaos-runner-ddcr).
-    - In case you don't have a proxy set up, you can [install](#installation) chaos agent proxy.
+    - In case you don't have a proxy set up, you can [install](#installation) HNP.
 
 :::tip
 Chaos runner supports token-based authentication with the Harness Platform. If you want to add another authentication on top of Harness authentication, you can [enable mTLS](/docs/chaos-engineering/use-harness-ce/infrastructures/mtls-support) for the account.
@@ -31,7 +31,7 @@ Chaos runner supports token-based authentication with the Harness Platform. If y
 
 ## Installation
 
-You can install agent proxy with or without using mTLS. Below are sample configurations for both of them.
+You can install HNP with or without using mTLS. Below are sample configurations for both of them.
 
 <Tabs>
 <TabItem value="Without mTLS">
@@ -76,7 +76,7 @@ agent-proxy:
 </TabItem>
 </Tabs>
 
-You can execute the below Helm command to install agent proxy.
+You can execute the below Helm command to install HNP.
 
 ```bash
 helm repo add harness-chaos https://harness.github.io/chaos-infra-helm-chart
