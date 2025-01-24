@@ -55,7 +55,7 @@ These are the requirements to configure the AWS EC2 instance. This instance is t
 
 :::important
 
-AWS Spot instances, of any kind, are not supported to use as Harness build infrastructure. 
+AWS Spot instances, of any kind, are not supported to use as self-managed build infrastructure.
 
 :::
 
