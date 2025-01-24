@@ -546,7 +546,7 @@ This integration helps you keep track of important pipeline updates within your 
 
     ![datadog-selection](./static/datadog-notification-1.png)
 
-  - Provide the URL and API key after selecting `Datadog(v1/eventsAPI)`.
+  - Provide the Datadog URL and API key.
 
     ![datadog-API-and-URL](./static/datadog-api-conf.png)
 
