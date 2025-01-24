@@ -538,7 +538,7 @@ This integration helps you keep track of important pipeline updates within your 
 
 ### Configuration
 
-  - Give name to your datadog notification
+  - Give a name to your Datadog notification channel.
 
   - Select Pipeline Events as per your requirements.
 
