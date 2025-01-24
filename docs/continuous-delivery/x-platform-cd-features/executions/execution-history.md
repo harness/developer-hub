@@ -208,8 +208,19 @@ curl --location 'https://app.harness.io/gateway/pipeline/api/pipelines/execution
 --header 'Content-Type: application/json' \
 --data '{"filterType":"PipelineExecution","myDeployments":false,"timeRange":{"timeRangeFilterType":"LAST_30_DAYS"},"moduleProperties":{"ci":{},"cd":{}}}'
 ```
-Result Limitations: Due to the underlying technical implementation, the API can retrieve a maximum of 10,000 pipeline executions per query. If the result exceeds this limit, you will encounter an error.
+**Result Limitations:**
 
-Solution: Apply additional filters, such as Status, time range, to narrow down the result set and reduce the number of executions listed.
+Due to the underlying technical implementation, the API cannot retrieve records beyond the 10,000th execution, even if the page size is increased. If the results exceed this limit, an error will be encountered.
 
-Refer to the [API docs](https://apidocs.harness.io/tag/Pipeline-Execution-Details/#operation/getListOfExecutionsOutline).
+If this limitation is encountered, an error message will appear. Below is an example screenshot of the error message to help you identify the issue:
+
+![](./static/error_api_execution.png)
+
+**Solution:**
+
+To avoid encountering this limitation:
+
+Apply additional filters, such as Status and Time Range, to narrow down the result set and reduce the number of executions listed.
+Refer to the [Pipeline Execution API](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getListOfExecutions) for more details.
+As an alternate, you can use the [Pipeline Execution Outline API](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getListOfExecutionsOutline).
+
