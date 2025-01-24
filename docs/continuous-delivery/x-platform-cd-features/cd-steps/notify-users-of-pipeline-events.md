@@ -532,15 +532,13 @@ The Datadog notifications feature is currently gated by the feature flag `PIPE_D
 :::
 
 
-The Datadog Notifications in Harness allows you to send pipeline event notifications directly to your Datadog monitoring system using the Events API. 
+The Datadog Notifications in Harness allows you to send pipeline event notifications directly to your Datadog monitoring system using the [Events API (v1)](https://docs.datadoghq.com/api/latest/events/). 
 
 This integration helps you keep track of important pipeline updates within your existing monitoring workflows.
 
 ### Prerequisites
   
-  - API Key for your [Datadog account](https://app.datadoghq.com/organization-settings/api-keys). 
-  
-    - You can generate one from the API Keys section under `Profile -> Organization Settings -> API Keys` in Datadog.
+  - API Key for your Datadog account: You can create one in Datadog by going to **Profile → Organization Settings → API Keys** or directly via the [API Keys page](https://app.datadoghq.com/organization-settings/api-keys).
 
 ### Configuration
 
