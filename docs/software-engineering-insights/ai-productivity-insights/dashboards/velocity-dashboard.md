@@ -6,13 +6,13 @@ sidebar_label: Velocity
 
 ---
 
-The AI Insights velocity dashboard presents a side-by-side comparison of velocity between teams using AI and those not using AI. It provides a detailed view of your development team’s speed and efficiency, helping you track progress across key metrics such as PR Lead Time, commit frequency, and code volume.
+This dashboard shows a clear comparison of how fast teams work with AI versus without AI. Think of it as a speedometer for your dev team — it helps you track progress across key metrics such as PR lead time, commit frequency, and code volume.
 
 ### Velocity metrics
 
-* **PR Lead Time:** Measures the time taken from opening a pull request to merging it. A shorter PR lead time indicates faster code review and integration, leading to quicker feature delivery and fewer bottlenecks.
-* **Commit Frequency:** Tracks how often developers commit code. Higher commit frequency suggests an active development cycle, enabling incremental progress and quicker identification of issues.
-* **Code Volume:** Evaluates the amount of code added, modified, or removed. Monitoring code volume helps understand workload distribution and identify trends in development activity.
+* **PR lead time:** Measures the time taken from opening a pull request to merging it. A shorter PR lead time indicates faster code review and integration, leading to quicker feature delivery and fewer bottlenecks.
+* **Commit frequency:** Tracks how often developers commit code. Higher commit frequency suggests an active development cycle, enabling incremental progress and quicker identification of issues.
+* **Code volume:** Evaluates the amount of code added, modified, or removed. Monitoring code volume helps understand workload distribution and identify trends in development activity.
 
 ![](../static/ai-velocity-overview.png)
 
@@ -27,13 +27,15 @@ Velocity Boost is calculated by comparing the average velocity scores between tw
 
 The Velocity Score is derived from the weighted average of the following five metrics:
 
-* PR Lead Time
-* Average Commits
-* Average PRs Created
-* Average PRs Merged
-* Average New Lines
+* PR lead time
+* Average commits
+* Average PRs created
+* Average PRs merged
+* Average new lines
 
 The five metrics listed above play a key role in determining a team’s overall velocity score. Each metric reflects a different aspect of productivity, and their combined insights help measure the overall impact of AI tools on the development process.
+
+![](../static/velocity-boost.png)
 
 ## PR lead time
 
@@ -47,23 +49,43 @@ It also includes trend lines that show daily changes in lead time over the speci
 
 ### Scoring & calculation
 
-For each cohort (e.g., teams using AI tools versus those not using AI tools), PR Lead Time is calculated by averaging the time taken for all PRs merged within a specific time period. 
+For each cohort (e.g., teams using AI tools versus those not using AI tools), PR lead time is calculated by averaging the time taken for all PRs merged within a specific time period. 
 
 The formula for calculating the **Average PR lead time** in this case follows these steps:
 
 If calculating the **average PR lead time per week**, the formula is:
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+   <TabItem value = "text" label = "Formula explanation" default>
+
+```ssh
+Average PR lead time per week = Sum (PR lead time per week) / Number of weeks in the selected time period
+```
+
+* **PR lead time per week** = The average lead time for all PRs merged within a specific week.  
+* **Number of weeks in the selected time period** = The count of complete weeks within the selected period.
+
+</TabItem>
+
+<TabItem value = "math" label = "Mathematical representation">
+
 $$
-\text{Average PR Lead Time per Week} = \frac{\sum (\text{PR Lead Time per Week})}{\text{Number of Weeks in the selected time period}}
+\text{Average PR lead time per Week} = \frac{\sum (\text{PR lead time per Week})}{\text{Number of Weeks in the selected time period}}
 $$
   
 * **PR lead time per week** = The average lead time for all PRs merged within a specific week.  
 * **Number of weeks in the selected time period** = The count of complete weeks within the selected period.
 
+</TabItem>
+</Tabs>
+
 **Example Calculation (Weekly):**  
 Given the following weekly data:
 
-| Week  | PRs Merged | PR Lead Time (Avg per Week) |
+| Week  | PRs Merged | PR lead time (Avg per Week) |
 |-------|------------|----------------------------|
 | Week 4 (Jan 22-28) | 3          | 4 days                         |
 | Week 5 (Jan 29-5)  | 4          | 5 days                         |
@@ -75,7 +97,7 @@ The average PR lead time is calculated as:
 Average PR lead time = 15 days / 3 weeks = 5 days per week
 ```
 
-### How to interpret
+### How to derive value
 
 #### Comparison between AI vs Non-AI Assistants
 
@@ -106,6 +128,27 @@ The velocity dashboard presents this metric using trend lines that compare the c
 
 This metric is derived using the following formula:
 
+<Tabs>
+   <TabItem value = "text" label = "Formula explanation" default>
+
+```ssh
+Average Commits (Weekly) = Total Number of Commits in the Week / Number of Developers in the Cohort
+```
+
+* **Total number of commits in the week**: The sum of all commits made by the cohort during the week.
+* **Number of developers in the cohort**: The total number of active developers in the cohort during the same week.
+
+```ssh
+Average Commits (Overall) = Sum (Average Commits for Each Week) / Number of Weeks
+```
+
+* **Sum of average commits for each week**: The total of weekly averages calculated for each week.
+* **Number of weeks**: The total number of weeks in the selected period.
+
+</TabItem>
+
+<TabItem value = "math" label = "Mathematical representation">
+
 $$
 \text{Average Commits (Weekly)} = \frac{\text{Total Number of Commits in the Week}}{\text{Number of Developers in the Cohort}}
 $$
@@ -120,7 +163,10 @@ $$
 * **Sum of average commits for each week**: The total of weekly averages calculated for each week.
 * **Number of weeks**: The total number of weeks in the selected period.
 
-### How to interpret
+</TabItem>
+</Tabs>
+
+### How to derive value
 
 A higher commit frequency often indicates a more active and engaged development team. Stable or increasing trends suggest consistent productivity and effective workflows. Teams using AI tools may show variations in commit patterns, as AI-assisted coding can lead to more consolidated or optimized commits.
 
@@ -130,18 +176,37 @@ However, the focus should not solely be on the number of commits. Consistency an
 
 This metric measures the productivity of developers by calculating the average number of pull requests (PRs) created by each developer in a cohort during a specific time period. This metric helps you analyze developer efficiency by tracking how frequently developers are submitting code changes for review. By comparing PR trends across cohorts — those using AI coding assistants versus those who are not — organizations can evaluate whether AI tools contribute to increased code submissions, faster development cycles, and improved collaboration.
 
+![](../static/avg-number-of-prs.png)
+
 ### Scoring & calculation
 
 This metric is calculated on a weekly basis and aggregated over the total number of weeks for comparative analysis.
+
+<Tabs>
+   <TabItem value = "text" label = "Formula explanation" default>
+
+```ssh
+Average PRs per Week = Total Number of PRs in Week / Number of Developers in Cohort
+```
+
+* **Total number of PRs:** Total pull requests submitted by the cohort in a given week.
+* **Number of developers:** Count of active developers in the cohort during the period.
+
+</TabItem>
+
+<TabItem value = "math" label = "Mathematical representation">
 
 ```math
 \text{Average PRs per Week} = \frac{\text{Total Number of PRs in Week}}{\text{Number of Developers in Cohort}}
 ```
 
-* Total number of PRs: Total pull requests submitted by the cohort in a given week.
-* Number of developers: Count of active developers in the cohort during the period.
+* **Total number of PRs:** Total pull requests submitted by the cohort in a given week.
+* **Number of developers:** Count of active developers in the cohort during the period.
 
-### How to interpret
+</TabItem>
+</Tabs>
+
+### How to derive value
 
 #### Comparison between AI vs Non AI assistants
 
@@ -164,21 +229,49 @@ If AI-assisted developers submit fewer but higher - quality PRs, it could mean t
 
 This metric measures the average number of pull request (PR) merges per developer for each cohort over a specific time period. It helps track how frequently code changes are merged into the main codebase, reflecting the team's ability to review and integrate changes.
 
+![](../static/avg-number-of-merges.png)
+
 ### Scoring & calculation
 
-#### Average number of merges (per developer in cohort per week)
+<Tabs>
+   <TabItem value="text" label="Formula explanation" default>
+
+```ssh
+Average Merges per Week per Developer = Total Number of PR Merges in Week / Number of Developers in Cohort
+```
+
+* **Total number of PR merges in week:** The total pull requests merged by the cohort in a given week.
+* **Number of developers in cohort** The count of active developers in the cohort during the period.
+
+```ssh
+Average Merges per Week per Developer (Overall) = Sum (Average Merges for Each Week) / Number of Weeks
+```
+
+* **Sum of average merges for each week:** The total of weekly averages calculated for each week.
+* **Number of weeks:** The total number of weeks in the selected period.
+
+</TabItem>
+
+<TabItem value="math" label="Mathematical representation">
 
 ```math
 \text{Average Merges per Week per Developer} = \frac{\text{Total Number of PR Merges in Week}}{\text{Number of Developers in Cohort}}
 ```
 
-#### Average merges per week per developer (Overall)
+* **Total number of PR merges in week:** The total pull requests merged by the cohort in a given week.
+* **Number of developers in cohort** The count of active developers in the cohort during the period.
 
 $$
 \text{Average Merges per Week per Developer (Overall)} = \frac{\sum \left( \text{Average Merges for Each Week} \right)}{\text{Number of Weeks}}
 $$
 
-### How to interpret
+* **Sum of average merges for each week:** The total of weekly averages of PR merges calculated for each week.
+* **Number of weeks:** The total number of weeks in the selected period.
+
+</TabItem>
+</Tabs>
+
+### How to derive value
 
 #### Comparison between AI vs Non AI assistants
 
@@ -193,21 +286,49 @@ A higher number of merges typically indicates an efficient workflow, but it's im
 
 This metric measures the average number of new lines of code added to the codebase by each developer in a cohort over a specific period. It tracks the volume of new code being written by the team, indicating how much new functionality or changes are being contributed to the codebase.
 
+![](../static/avg-number-of-new-lines.png)
+
 ### Scoring & calculation
 
-#### Average number of new lines (per developer in cohort per week)
+<Tabs>
+   <TabItem value="text" label="Formula explanation" default>
 
 ```ssh
-Average new lines per week per developer = Number of developers in cohort / Total number of new lines in week
+Average new lines per week per developer = Total Number of New Lines in Week / Number of Developers in Cohort
 ```
 
-#### Average new lines per week per developer
+* **Total number of new lines in week:** The total lines of code added by the cohort in a given week.
+* **Number of developers in cohort:** The count of active developers in the cohort during the period.
 
 ```ssh
-(Sum of average new lines for each week) / (Number of weeks)
+Average new lines per week per developer (Overall) = Sum (Average New Lines for Each Week) / Number of Weeks
 ```
 
-### How to interpret
+* **Sum of average new lines for each week:** The total of weekly averages of new lines added for each week.
+* **Number of weeks:** The total number of weeks in the selected period.
+
+</TabItem>
+
+<TabItem value="math" label="Mathematical representation">
+
+$$
+\text{Average New Lines per Week per Developer} = \frac{\text{Total Number of New Lines in Week}}{\text{Number of Developers in Cohort}}
+$$
+
+* **Total number of new lines in week:** The total lines of code added by the cohort in a given week.
+* **Number of developers in cohort:** The count of active developers in the cohort during the period.
+
+$$
+\text{Average New Lines per Week per Developer (Overall)} = \frac{\sum \left( \text{Average New Lines for Each Week} \right)}{\text{Number of Weeks}}
+$$
+
+* **Sum of average new lines for each week:** The total of weekly averages of new lines added for each week.
+* **Number of weeks:** The total number of weeks in the selected period.
+
+</TabItem>
+</Tabs>
+
+### How to derive value
 
 #### Comparison between AI vs Non-AI assistants
 

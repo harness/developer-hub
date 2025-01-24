@@ -134,8 +134,6 @@ Configure categories to reflect your priorities. Assign a total weight of 100% a
 | Quality       | e.g., 20%     | Examines code and workflow quality improvements.        |
 | Satisfaction  | e.g., 20%     | Measures developer happiness with AI tools.             |
 
-For detailed instructions on setting up the survey, refer to the **Developer Experience Survey** guide.  
-
 </TabItem>
 </Tabs>
 
@@ -158,7 +156,7 @@ Note that email is optional and if provided the email will be used to send out t
 Before proceeding, check the following:  
 
 * Ensure the selected categories and questions are correct.  
-* Participants can be distributed across groups without strict requirements.  
+* Participants are distributed across groups without strict requirements.  
 
 Click **Create Report** once ready.  
 
