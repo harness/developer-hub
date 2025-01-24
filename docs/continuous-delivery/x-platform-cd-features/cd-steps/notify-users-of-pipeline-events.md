@@ -562,7 +562,7 @@ This integration helps you keep track of important pipeline updates within your 
 
   - Test and complete the setup.
 
-For details, check Datadog's documentation on [Events API (v1)](https://docs.datadoghq.com/api/latest/events/) 
+For details, check Datadog's documentation on [Events API (v1)](https://docs.datadoghq.com/api/latest/events/).
 
 ## Notify Slack channels in user groups
 
