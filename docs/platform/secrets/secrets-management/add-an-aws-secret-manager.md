@@ -43,7 +43,7 @@ The AWS account you use for the AWS Secret Manager must have the following polic
 }
 ```
 
-These policies allow you to list secrets, enabling you to add the secret manager and reference secrets, but they do not permit reading secret values.
+These policies let you list secrets which will allow you to add the secret manager and refer to secrets, but it will not let you read secrets values.
 
 The following policy list enables Harness to perform all the secrets operations you might need:
 
