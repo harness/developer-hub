@@ -63,10 +63,10 @@ static/  @rohanmaharjan100 @wei-harness
 
 
 # Continuous Integration Docs
-/docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed @SushrutHarness
-/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed
-/src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed
-/src/components/Docs/data/continuousIntegrationData.ts @nofarblue @rustd @dewan-ahmed
+/docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
+/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
+/src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
+/src/components/Docs/data/continuousIntegrationData.ts @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
 
 # CODE Docs
 /docs/code-repository/ @pwolf-harness @hitesharinga @dewan-ahmed
