@@ -55,7 +55,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Users can now add input variables in the Email step. (**CDS-101651, ZD-66735,67864**)
 
-- Users can now fetch attributes from JSON files marked as secrets and have them masked in the pipeline execution page outputs and execution logs by setting the output variable type to `secret`. (CDS-103225, ZD-103225)
+- Users can now fetch attributes from JSON files marked as secrets and have them masked in the pipeline execution page outputs and execution logs by setting the output variable type to `secret`. (**CDS-103225, ZD-103225**)
 
 #### Breaking Changes
 
