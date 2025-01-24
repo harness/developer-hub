@@ -16,7 +16,7 @@ This approach focuses on gathering sentiment insights about the developer experi
 
 Use sentiment analysis in the following situations:
 
-* **Early stages of AI tool adoption:** When your team is just starting to use AI tools and you want to gauge how developers are responding to them.
+* **Early stages of AI tool adoption:** When your team is just starting to use AI tools and you want to analyze how developers are responding to them.
 * **Quick feedback loops:** When you need to quickly assess how AI tools are impacting your developers' experience and performance.
 * **Lightweight assessments:** When you prefer a simple, quick way to evaluate how developers perceive the AI tools, rather than detailed, time-consuming studies.
 
@@ -42,7 +42,7 @@ Choose the AI coding tool that your team is using.
 
 ### Step 2: Configure the report settings
 
-* Give the report a name.  
+* Give the report a name (e.g., "Q1 2025 Copilot Impact Analysis").
 * Define what you want to measure:  
   * **AI vs Non-AI Teams:** Compare performance between teams that use AI tools and those that do not. This analysis helps identify the tangible benefits AI tools bring to the development process.
   * Note that the support for assessing how the performance of the same team changes over a specified time period, such as before and after implementing an AI tool is currently not available but will be added in the future.
@@ -72,13 +72,11 @@ Configure categories to reflect your priorities. Assign a total weight of 100% a
 
 | **Category**   | **Weightage** | **Purpose**                                             |
 |---------------|--------------|---------------------------------------------------------|
-| Efficiency    | e.g., 20%     | Measures the impact of AI on task streamlining.         |
-| Innovation    | e.g., 20%     | Evaluates how AI fosters creativity and solutions.      |
+| Efficiency    | e.g., 20%     | Measure time saved on repetitive tasks.	         |
+| Innovation    | e.g., 20%     | Analyze creativity in problem-solving.	      |
 | Productivity  | e.g., 20%     | Assesses overall work output with AI tools.             |
-| Quality       | e.g., 20%     | Examines code and workflow quality improvements.        |
+| Quality       | e.g., 20%     | Evaluate code robustness and error reduction.	        |
 | Satisfaction  | e.g., 20%     | Measures developer happiness with AI tools.             |
-
-For detailed instructions on setting up the survey, refer to the **Developer Experience Survey** guide.  
 
 ![](./static/sa-step6.png)
 
@@ -101,7 +99,7 @@ Note that email is optional and if provided the email will be used to send out t
 Before proceeding, check the following:  
 
 * Ensure the selected categories and questions are correct.  
-* Participants can be distributed across groups without strict requirements.  
+* Participants are distributed across groups without strict requirements.  
 
 Click **Create Report** once ready.  
 

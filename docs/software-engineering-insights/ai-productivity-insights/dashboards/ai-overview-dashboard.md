@@ -31,8 +31,8 @@ Imagine you're looking at a real-time snapshot of your development team. The ove
 * **Productivity comparison: Compare productivity scores between:**
   * Cohort A: Developers working traditionally (without AI).
   * Cohort B: Developers using AI tools like AI code assistants such as Google Gemini, GitHub Copilot etc
-* **Detailed productivity scores:** View category-wise scores ([Velocity](#velocity), [Quality](#velocity), and Sentiment) for each cohort. These scores provide insight into how AI tools influence different aspects of your team's performance.
-* **Economic impact:** Helps you estimate the [Potential Economic Value (PEV)](#potential-economic-value-pev) of adopting AI tools across your organization, based on observed productivity boosts.
+* **Detailed productivity scores:** View category-wise scores ([Velocity](#velocity), [Quality](#velocity), and [Experience](#experience)) for each cohort. These scores provide insight into how AI tools influence different aspects of your team's performance.
+* **Economic impact:** Helps you estimate the [Potential Economic Benefit (PEB)](#potential-economic-benefit-peb) of adopting AI tools across your organization, based on observed productivity boosts.
 
 ### What you can derive from AI Insights
 
@@ -47,6 +47,8 @@ The Productivity Score is a composite measure that reflects the performance of a
 * **Velocity:** Measures delivery speed through metrics like PR Lead Time, Number of Commits etc
 * **Quality:** Evaluates the rework and refactor percentages in your codebase.
 * **Sentiment:** Captures team feedback through survey results.
+
+![](../static/productivity-scores.png)
 
 ## Productivity scores calculation
 
@@ -129,9 +131,33 @@ Each metric (like PR lead time or Average number of PRs) has a range of possible
 | **99**      | The highest acceptable value in the defined range. (maximum threshold)      |
 | **100**     | The best possible value, meaning the metric is even better than the best value you’ve set. |
 
+### Scoring example
+
 For example: In this case the PR lead time range has a defined range from 9 days (worst case) to 4 days (best case), and the current value is 6 days.
 
 To determine the score, the system calculates how far the current value is within the defined range. The closer the value is to the best case (4 days), the higher the score. The system uses linear function to calculate this score.
+
+```ssh
+Worst Acceptable Value (Minimum Threshold): 9 days
+(Indicates poor performance - PRs take too long to merge)
+
+Best Acceptable Value (Maximum Threshold): 4 days
+(Indicates excellent performance - PRs merge quickly)
+
+Actual PR Lead Time: 6 days
+
+Total Range = Worst Value - Best Value  
+            = 9 days - 4 days  
+            = 5 days  
+
+Improvement Over Worst Case = Worst Value - Actual Value  
+                            = 9 days - 6 days  
+                            = 3 days  
+
+Score = (Improvement Over Worst Case / Total Range) × 100  
+      = (3 days / 5 days) × 100  
+      = 60  
+```
 
 ### Overall productivity score
 
@@ -162,19 +188,29 @@ where
 * Cohort A: The baseline group (e.g., developers not using AI tools).
 * Cohort B: The test group (e.g., developers using AI tools like an AI code assistant).
 
-A **positive productivity boost** indicates an improvement in performance, while zero suggests a decline. If the boost is zero, the **Potential Economic Value (PEV)** will be set to **$0**, implying no economic gain from AI implementation.
+#### Interpretation
 
-## Potential Economic Value (PEV)
+* Greater than 0: Positive impact from AI tools.
+* Productivity boost is 0: No measurable impact.
+* Lesser than 0: Performance decline; investigate tool adoption barriers.
 
-The **Potential Economic Value (PEV)** represents the potential dollar amount saved by increasing developer productivity through AI tool adoption. It helps you estimate the economic benefits of rolling out AI code assistants across your entire organization based on productivity gains.
+A **positive productivity boost** indicates an improvement in performance, while zero suggests a decline. If the boost is zero, the **Potential Economic Benefit (PEB)** will be set to **$0**, implying no economic gain from AI implementation.
 
-### How is PEV determined?
+![](../static/productivity-boost.png)
 
-PEV is determined by the productivity boost observed in Cohort B (AI-enabled team) compared to Cohort A (non-AI team). The formula assumes that the productivity gain leads to cost savings by reducing the time developers spend on tasks.
+## Potential Economic Benefit (PEB)
 
-**​​Minimum Value of PEV:**
+The **Potential Economic Benefit** represents the potential dollar amount saved by increasing developer productivity through AI tool adoption. It helps you estimate the economic benefits of rolling out AI code assistants across your entire organization based on productivity gains.
 
-The minimum value of PEV is $0. If the productivity boost is negative i.e. zero, there is no economic value generated, and the system will set the PEV to zero, indicating no cost-saving benefits from AI tools.
+![](../static/peb.png)
+
+### How is PEB determined?
+
+PEB is determined by the productivity boost observed in Cohort B (AI-enabled team) compared to Cohort A (non-AI team). The formula assumes that the productivity gain leads to cost savings by reducing the time developers spend on tasks.
+
+**​​Minimum Value of PEB:**
+
+The minimum value of PEB is $0. If the productivity boost is negative i.e. zero, there is no economic value generated, and the system will set the PEB to zero, indicating no cost-saving benefits from AI tools.
 
 ## Category widgets
 
@@ -190,6 +226,8 @@ The **Velocity** widget provides a comparative analysis of key engineering produ
 
 The **Velocity score** is a composite measure that reflects the team’s ability to deliver software efficiently. Higher scores indicate faster software delivery, while lower scores may highlight inefficiencies in processes.
 
+![](../static/overview-velocity.png)
+
 #### How to derive value
 
 By analyzing the Velocity widget, you can:
@@ -200,9 +238,9 @@ By analyzing the Velocity widget, you can:
 
 Understanding a combination of metrics is key. For example, an increase in new lines of code without a corresponding rise in merges might signal inefficiencies in the review process.
 
-#### How to drill down
+#### Detailed view
 
-Selecting **"View Details"** provides a granular breakdown of each metric's contribution to the overall Velocity score. This view helps teams:
+Selecting [**View Details**](/docs/software-engineering-insights/ai-productivity-insights/dashboards/velocity-dashboard) provides a granular breakdown of each metric's contribution to the overall Velocity score. This view helps teams:
 
 * Pinpoint stages causing delays in PR cycles.  
 * Determine which development activities contribute most to velocity gains.
@@ -217,6 +255,8 @@ The **Quality** widget provides a side-by-side comparison of key code quality me
 
 These metrics are visualized using a radar chart, allowing for easy identification of quality trends across teams.
 
+![](../static/overview-quality.png)
+
 #### How to derive value
 
 The Quality widget helps in:
@@ -227,10 +267,36 @@ The Quality widget helps in:
 
 Considering both rework and refactor together gives a more accurate picture—while low rework suggests stability, a lack of refactoring could lead to technical debt.
 
-#### How to drill down
+#### Detailed view
 
 Clicking **View Details** provides a deeper analysis of how individual metrics influence the overall Quality score. Engineering teams can:
 
 * Examine historical trends to track improvements or regressions in quality.  
 * Identify specific teams or projects that may require intervention.  
 * Gain insights into how development practices are evolving over time.
+
+### Experience
+
+The **Experience** widget provides a side-by-side comparison of key developer experience metrics between teams using **Coding Assistant vs. not using Coding Assistant**. The categories are configured while setting up the report. The feedback received from the survey is visualized using a radar chart, allowing teams to analyze the distribution of feedback across experience categories. The data is derived by normalizing responses from developer experience surveys.
+
+![](../static/overview-experience.png)
+
+#### How to derive value
+
+The Experience widget helps in:
+
+* **Understand AI adoption impact:** Higher satisfaction and productivity scores indicate positive reception and tangible benefits of AI-assisted development.
+* **Benchmarking across teams:** Compare results across different teams or projects to understand where AI integration has the most significant impact.
+
+#### Detailed view
+
+Click on **View Details** to view the Developer Experience dashboard that provides a deeper analysis of how each of the individual DevEx categories influence the overall Experience score.
+
+* If teams using AI tools report lower satisfaction or quality scores, deeper analysis can uncover issues such as irrelevant suggestions, cognitive load, or inefficiencies in AI adoption.
+* Understanding score differences between AI and non-AI teams helps pinpoint areas where AI features are underutilized, leading to better onboarding and enablement initiatives.
+
+
+
+
+
+
