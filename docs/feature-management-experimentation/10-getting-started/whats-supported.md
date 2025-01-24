@@ -53,15 +53,15 @@ import TabItem from '@theme/TabItem';
 
 | **Features** | Programming languages | Track events | Automatic metrics | Localhost mode | Flush | Multiple SDK clients | User consent |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **Android Suite** | Java/Kotlin | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Android SDK Suite** | Java/Kotlin | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **Android SDK** | Java/Kotlin |  ✅  | ✅  | ✅  | ✅  | ✅ | ✅ |
 | **Android RUM Agent** |  Java/Kotlin | ✅  | ✅ | ✅ | ✅ | | ✅ |
 | **Angular utilities** | Javascript?/Typescript | ✅  | ✅  | ✅  | ✅ | | ✅ |
 | **Browser SDK** | Javascript/Typescript | ✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **Flutter plugin** | Flutter/Elixir | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **iOS Suite** | Swift | ✅ |  | ✅ | ✅ | ✅ | ✅ |
+| **iOS SDK Suite** | Swift | ✅ |  | ✅ | ✅ | ✅ | ✅ |
 | **iOS SDK** | Swift | ✅ | | | | | |
-| **iOS Suite** | Swift | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **iOS SDK Suite** | Swift | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **iOS RUM Agent** | Swift | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **JavaScript SDK** | Javascript/Typescript | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 

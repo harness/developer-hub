@@ -17,7 +17,7 @@ See the following below quickstart guides that take advantage of Split Suite (or
 
 When rolling out a new feature on your site, you’ll want to track how that affects the performance metrics on your site. Google researchers have provided a package that they call [web-vitals](https://github.com/GoogleChrome/web-vitals) that measures what are considered to be the most important and vital metrics to measure performance as seen by users browsing or visiting a website. 
 
-Split’s Browser Suite includes the web vitals package to allow you to track and monitor these metrics. You can also track additional [custom events](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-agent#custom-events).
+Split’s Browser SDK Suite includes the web vitals package to allow you to track and monitor these metrics. You can also track additional [custom events](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-agent#custom-events).
 
 Split recommends using the npm package, which allows you to customize the events tracked and register additional collectors. 
 

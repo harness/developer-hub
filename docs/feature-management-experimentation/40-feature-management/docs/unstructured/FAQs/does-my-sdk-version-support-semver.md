@@ -26,9 +26,9 @@ Please refer to the following table to check that your Split SDK version or opti
 | **SDK or Infra** | **Version that supports SemVer** |
 | --- | --- |
 | **Client-side Suites** | |
-| Android Suite | 1.2.0 and later |
-| Browser Suite | 1.4.0 and later |
-| iOS Suite | 1.2.0 and later |
+| Android SDK Suite | 1.2.0 and later |
+| Browser SDK Suite | 1.4.0 and later |
+| iOS SDK Suite | 1.2.0 and later |
 | **Client-side SDKs** | |
 | Android SDK | 4.1.0 and later |
 | Angular SDK | 3.0.0 and later |
