@@ -20,21 +20,22 @@ This series walks you through creating your first feature flag, using an FME SDK
 * [Step 3: Send event data](./tutorials/step-3-send-event-data.md)
 * [Step 4: Create a metric, monitor and measure impact](./tutorials/step-1-create-feature-flag-and-target-users.md)
 
-You can also follow the SDK Setup and Event Ingestion **Quickstart wizard** in Split. Navigate to `https://app.split.io/org/[your-account-id]/ws/[your-project-id]/help/guides/sdk`.
+You can also follow the SDK Setup and Event Ingestion **Quickstart wizard** in FME UI. Click **Help** in the left navigation menu, and click on one of the quickstart guides.
 
 ![A screenshot of the Quickstart guides in Split UI](./static/fme-quickstart.png)
 
-## Maturity Curve
+## FME Features
 
-Feature flags form the basis of the platform, driving the risk out of continuous delivery and streamlining the development process. Flags allow you to assess application stability before customers are exposed to a feature, and a framework for Agile teams to release faster with less risk, including a kill switch to shut down a feature within seconds.  
+### Feature flags
+[Feature flags](/docs/feature-management-experimentation/40-feature-management/index.md) turn on and off features to specific users or segments. You can tailor access to beta testers and early adopters based on individual IDs, attributes, dependencies, or percentages. Gradually target users little by little to limit the blast radius of your releases.
 
-Functional and performance issues are mission critical concerns for any application.  Key engineering metrics such as API response and page load time can be impacted by each feature. Split correlates relevant engineering KPIs back to the feature changes that are impacting them. While granular user targeting supports robust phased rollout plans.
+### Release monitoring
+[Release monitoring](/docs/feature-management-experimentation/50-release-monitoring/index.md) detects the impact of each feature on system performance and user behavior, starting with the earliest stage of a gradual rollout. With detection and triage done at the flag level, you can ship more often and with greater confidence.
 
-So, you can release faster, but what does it matter if you are not releasing value? Experimentation provides development teams with a direct link to the customer for unprecedented feedback. Split’s real-time analytics engine measures the impact of feature changes on business outcomes.  
+![](./static/feature-impact-detection.gif)
 
-As we move up the maturity curve, teams can quickly iterate and refine functionality to deliver innovation faster and increase time to value.
-
-![](https://help.split.io/hc/article_attachments/360027443431/mceclip0.png)
+### Experimentation
+[Experimentation](/docs/feature-management-experimentation/60-experimentation/index.md) centralizes notifications for metric impacts, review periods, and change requests, empowering your team with actionable data to make rapid, precise, data-driven decisions.
 
 ## Harness platform
 

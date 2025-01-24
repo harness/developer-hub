@@ -37,12 +37,6 @@ Our stateless architecture scales to millions of users with no degradation in pe
 
 Some resources to get started with FME:
 
-* What's supported?
-* Onboarding guide
-* Key concepts
-* What's supported?
-* 
-* [Step 1: Install the SDK](https://help.split.io/hc/en-us/articles/360025334751-Step-1-Install-the-SDK)
-* [Step 2: Create a feature flag and target users](https://help.split.io/hc/en-us/articles/360025334851-Step-2-Create-a-split-and-target-users)
-* [Step 3: Send event data](https://help.split.io/hc/en-us/articles/360025335031-Step-3-Send-event-data)
-* [Step 4: Create a metric, monitor and measure the impact](https://help.split.io/hc/en-us/articles/360025335091-Step-4-Create-a-metric-and-measure-impact)
+* [What's supported?](./../whats-supported.md)
+* [Onboarding guide](./onboarding-guide.md)
+* [Key concepts](./key-concepts/)
