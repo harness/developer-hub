@@ -161,7 +161,8 @@ The users from the Propelo platform will be automatically associated with the ro
 The Base URL for all SEI services is updated based on the specific production environment. 
 
 * **Base URL (PROD2):** `https://app.harness.io/gratis/sei/api/`
-* **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`   
+* **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`
+* **BASE URL (EU):** `https://accounts.eu.harness.io/sei/api/`
 
 For steps on using these APIs, go to [Harness SEI API Guide](/docs/software-engineering-insights/sei-technical-reference/sei-api-reference/sei-api-guide).
 
