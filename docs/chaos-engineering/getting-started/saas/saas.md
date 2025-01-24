@@ -30,9 +30,11 @@ The diagram below describes the high-level steps to inject chaos into your appli
 
 ### Step 2: Create a project
 
-2. Create a new project or ask your administrator to add you to an existing project. [Sign up](https://app.harness.io) or log in to your account, and access the **Chaos Engineering** module.
+2. [Sign up](https://app.harness.io) or log in to your account, and access the **Chaos Engineering** module. Create a new project or ask your administrator to add you to an existing project.
 
 ### Step 3: Create an environment
+
+You can follow the interctive guide or the step-by-step guide to create your environment.
 
 <Tabs>
 <TabItem value="Interactive Guide">
@@ -101,7 +103,7 @@ The **Cluster-wide access** installation mode allows you to target resources acr
 
 ### Step 5: Create observability infrastructure
 
-Once you are all ready to target your Kubernetes resources, execute the simplest fault, [**Pod Delete**](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-delete) on your application. The **pod delete** chaos fault deletes the pods of a deployment, StatefulSet, DaemonSet, etc, to validate the resiliency of a microservice application.
+Once you are all ready to target your Kubernetes resources, execute the simplest fault, [**Pod Delete**](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-delete) on your application. This fault deletes the pods of a deployment, StatefulSet, DaemonSet, etc, to validate the resiliency of a microservice application.
 
 6. Run the following commands to set the target application microservices and observability infrastructure (optional), including Grafana, Prometheus, and a BlackBox exporter. Installing the observability infrastructure (optional) provides a dashboard that helps validate the health of the constituent application microservices in real-time.
 
@@ -221,7 +223,7 @@ Under probe details, you can see that the URL is `http://cartservice.hce.svc.clu
 
 ### Step 8: Observing chaos execution
 
-20. To execute the chaos experiment, click **Save**, and then **Run**. This schedules an experiment run. You can see the logs of the experiment in the **Experiment Builder** tab.
+To execute the chaos experiment, click **Save**, and then **Run**. This schedules an experiment run. You can see the logs of the experiment in the **Experiment Builder** tab.
 
 	![Run and save](./static/first-chaos/run-n-save.png)
 
