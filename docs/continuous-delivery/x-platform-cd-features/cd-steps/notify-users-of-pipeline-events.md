@@ -528,7 +528,7 @@ The above JSON is for a specific stage, If you choose all stages three times the
 ## Datadog notifications
 
 :::note
-The Datadog notifications feature is currently gated by the feature flag `PIPE_DATADOG_NOTIFICATIONS`, which must be enabled to access this functionality.
+Currently, the Datadog notifications feature is behind the feature flag `PIPE_DATADOG_NOTIFICATIONS`. Please, contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 
