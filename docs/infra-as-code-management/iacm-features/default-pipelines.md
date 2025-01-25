@@ -11,7 +11,7 @@ IaCM Default Pipelines offer a streamlined approach to provisioning, destroying,
 
 In addition, as some workspaces may require specialized pipelines, you can overwrite the defaults at the workspace level. This will not disrupt any other workspace using the project level defaults.
 
-:::warning danger zone
+:::danger danger zone
 A pipeline containing the `destroy` command will remove all saved infrastructure managed by your Harness workspace.
 :::
 

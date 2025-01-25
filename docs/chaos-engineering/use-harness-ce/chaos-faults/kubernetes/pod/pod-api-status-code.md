@@ -16,7 +16,7 @@ Pod API status code is a Kubernetes pod-level chaos fault that change the API re
 
 ![Pod API Status Code](./static/images/pod-api-status-code.png)
 
-For a video tutorial, go to [pod API status code](https://youtu.be/h_lnNCG-j2o) that walks through the execution of the experiment.
+[This](https://youtu.be/h_lnNCG-j2o) video provides a step-by-step walkthrough of the execution process for the Pod API Status Code experiment.
 
 ## Use cases
 Pod API status code:

@@ -113,7 +113,7 @@ With this configuration, the step generates the SLSA Provenance and stores it in
 
 ### Attest SLSA Provenance
 
-To configure attestation, along with the [above configuration](#slsa-generation-step-configuration) you should enable the **SLSA Attestation** checkbox in the **SLSA Generation** step. This requires a key pair generated using **Cosign**.
+To configure attestation, along with the [above configuration](#slsa-generation-step-configuration) you should enable the **SLSA Attestation** checkbox in the **SLSA Generation** step. This requires a key pair generated using **Cosign**. To understand the attestation process please refer to [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
 
 You can perform the attestation with **Cosign** or **Cosign with Secret Manager**
 
@@ -121,6 +121,25 @@ import CosignAttestationOptions from '/docs/software-supply-chain-assurance/shar
 
 <CosignAttestationOptions />
 
+Here’s an example of what the signed attestation would look like
+
+```
+
+{
+  "payloadType": "application/vnd.in-toto+json",
+  "payload": "CJTUERYUmVmLVBhY2thZ2UtZGViLXpsaWIxZy1mOTFhODZjZjhhYjJhZTY3XCIsXCJyZWxhdGlvbnNoaXBUeXBlXCI6XCJDT05UQUlOU1wifSx7XCJzcGR4RWxlbWVudE",
+  "signatures": [
+    {
+      "keyid": "dEdLda4DzZYoQgNCgW",
+      "sig": "MEUCIFoNt/ELa4DzZYoQgNCgW++AaCbYv4eOu0FloUFfAiEA6EJQ31P0ROEbLhDpUhMdMAzkqlBSCMFPDk1cyR1s6h8="
+    }
+  ]
+}
+
+```
+
+Additionally, you can perform Base64 decoding on the payload data to view your SLSA Provenance.
+For verifying the SLSA attestation, please refer to [Verify SLSA](/docs/software-supply-chain-assurance/slsa/verify-slsa) documentation.
 
 ## SLSA Generation step configuration with Build and Push step
 When using the Harness CI **Build and Push** step for the image-building process, you can configure the **SLSA Generation** step to generate and attest to the Provenance. Follow the [SLSA Generation step configuration](#slsa-generation-step-configuration), for the **Artifact Digest** field, you can use [Harness Expressions](/docs/platform/variables-and-expressions/harness-variables/) to dynamically populate the digest of the image built during the **Build and Push** step.  

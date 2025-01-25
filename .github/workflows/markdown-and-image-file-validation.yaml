@@ -1,12 +1,14 @@
 name: MarkDown and image filename validation
+
 on:
-  pull_request:
+  pull_request: # Trigger on PR events
     paths:
       - '**/*.md'
       - '**/*.jpg'
       - '**/*.png'
       - '**/*.jpeg'
       - '**/*.svg'
+
 jobs:
   kebab-case-check:
     runs-on: ubuntu-latest
@@ -28,12 +30,13 @@ jobs:
 
           changed_files=$(git diff --name-only HEAD^1 HEAD | grep -E '\.(md|jpg|png|jpeg|svg)$' | grep -E '^(docs|kb|community|roadmap|static|university|release-notes)/')
 
+
           if [ -z "$changed_files" ]; then
-            echo -e "${Green} No changed files in this PR.${Reset}"
+            echo -e "${Green} No changed Markdown files in this PR.${Reset}"
             exit 0
           fi
           x=1
-          echo -e "${Blue} Changed static files are :${Reset}"
+          echo -e "${Blue} Changed Markdown files are :.${Reset}"
           echo "$changed_files" | while read -r file; do
               dir=$(dirname "$file")
               base=$(basename "$file")
@@ -44,14 +47,16 @@ jobs:
               combined_info="$parent_folder/$base"  
           # Treat folder name as part of the file name
               echo -e "${Yellow} $x. $combined_info${Reset}"
+
               x=$((x + 1))
           done
            failure_flag=0
           # Find invalid filenames
           invalid_kebab_case=$(echo "$changed_files" | grep -vE '^([a-z0-9]+(-[a-z0-9]+)*)(/([a-z0-9]+(-[a-z0-9]+)*))*\.(md|jpg|png|jpeg|svg)$' || true)
           # Check for filenames that are not in kebab case
+
           if [ -n "$invalid_kebab_case" ]; then
-            echo -e "${Blue} The following paths are not in kebab case:${Reset}"
+            echo -e "${Blue} The following Markdown filenames are not in kebab case:${Reset}"
             x=1
             echo "$invalid_kebab_case" | while read -r file; do
               echo -e "${Red}$x. $file${Reset}"
@@ -59,7 +64,7 @@ jobs:
             done
             failure_flag=1
           else
-            echo -e "${Green} All changed filenames are  in kebab case."
+            echo -e "${Green} All changed Markdown filenames are  in kebab case."
           fi
           changed_files=$(git diff --name-only HEAD^1 HEAD | grep -E '\.(md|jpg|png|jpeg|svg)$')
           long_files=$(echo "$changed_files" | awk 'length > 100')
@@ -77,6 +82,7 @@ jobs:
           fi
           if [ "$failure_flag" -eq 0 ]; then
             echo -e "${Green} All changed filenames passed validation.${Reset}"
+
             exit 0
           else
             echo -e "${Red} The check has failed.${Reset}"
