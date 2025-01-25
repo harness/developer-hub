@@ -1,47 +1,58 @@
-name: MarkDown filename validation
+name: MarkDown and Image Filename Validation
 
 on:
-  pull_request: # Trigger on PR events
+  pull_request:
     paths:
-      - '**/*.md' # Trigger only when .md files are changed
+      - '**/*.md'
+      - '**/*.jpg'
+      - '**/*.png'
+      - '**/*.jpeg'
+      - '**/*.svg'
 
 jobs:
   kebab-case-check:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
 
-      - name: Check filenames for kebab case
+      - name: Validate filenames
         run: |
-          Red='\033[0;31m'          # Red
-          Green='\033[0;32m'        # Green
-          Yellow='\033[0;33m'       # Yellow
-          Blue='\033[0;34m'         # Blue
-          Reset='\033[0m'           # Reset
-          echo  -e "${Blue} Checking all changed Markdown files ..."
-          changed_files=$(git diff --name-only  HEAD^1 HEAD | xargs -n1 basename  | grep '\.md$')
+          # Define color codes for output
+          Red='\033[0;31m'
+          Green='\033[0;32m'
+          Yellow='\033[0;33m'
+          Blue='\033[0;34m'
+          Reset='\033[0m'
+
+          echo -e "${Blue}Checking all changed Markdown and image files...${Reset}"
+
+          # Initialize failure flag
+          failure_flag=0
+
+          # Get changed files and filter only relevant ones
+          changed_files=$(git diff --name-only HEAD^1 HEAD | grep -E '\.(md|jpg|png|jpeg|svg)$' | grep -E '^(docs|kb|community|roadmap|static|university|release-notes)/')
+
           if [ -z "$changed_files" ]; then
-            echo -e "${Green} No changed Markdown files in this PR.${Reset}"
+            echo -e "${Green}No relevant files were changed in this PR.${Reset}"
             exit 0
           fi
+
+          # List changed files
+          echo -e "${Blue}Changed files:${Reset}"
           x=1
-          echo -e "${Blue} Changed Markdown files are :.${Reset}"
           echo "$changed_files" | while read -r file; do
-              echo -e "${Yellow} $x. $file${Reset}"
-              x=$((x + 1))
+            echo -e "${Yellow}$x. $file${Reset}"
+            x=$((x + 1))
           done
-          # Find invalid filenames
-          invalid_kebab_case=$(echo "$changed_files" | grep -vE '^[a-z0-9]+(-[a-z0-9]+)*\.md$' || true)
-          # Find long filenames
-          long_files=$(echo "$changed_files" | awk 'length > 100')
-          failure_flag=0
-          # Check for Markdown filenames that are not in kebab case
+
+          # Check for invalid kebab-case filenames
+          invalid_kebab_case=$(echo "$changed_files" | grep -vE '^([a-z0-9]+(-[a-z0-9]+)*)(/([a-z0-9]+(-[a-z0-9]+)*))*\.(md|jpg|png|jpeg|svg)$' || true)
+
           if [ -n "$invalid_kebab_case" ]; then
-            echo -e "${Blue} The following Markdown filenames are not in kebab case:${Reset}"
+            echo -e "${Red}The following filenames are not in kebab-case:${Reset}"
             x=1
             echo "$invalid_kebab_case" | while read -r file; do
               echo -e "${Red}$x. $file${Reset}"
@@ -49,24 +60,32 @@ jobs:
             done
             failure_flag=1
           else
-            echo -e "${Green} All changed Markdown filenames are  in kebab case."
+            echo -e "${Green}All filenames are in kebab-case.${Reset}"
           fi
-          # Check for Markdown filenames that are not long
-           if [ -n "$long_files" ]; then
-            echo -e "${Blue} The following Markdown filenames exceed 100 characters:${Reset}"
-             x=1
-            echo "$long_files$" | while read -r file; do
-              echo -e "${Red}$x. $long_files${Reset}"
+
+          # Get changed files and filter only relevant ones
+          changed_files_for_length_check=$(git diff --name-only HEAD^1 HEAD | grep -E '\.(md|jpg|png|jpeg|svg)$' | grep -E '^(docs|kb|community|roadmap|static|university|release-notes)/' | xargs -n1 basename)
+
+          # Check for filenames exceeding 100 characters
+          long_files=$(echo "$changed_files_for_length_check" | awk 'length($0) > 100')
+
+          if [ -n "$long_files" ]; then
+            echo -e "${Red}The following filenames exceed 100 characters:${Reset}"
+            x=1
+            echo "$long_files" | while read -r file; do
+              echo -e "${Red}$x. $file${Reset}"
               x=$((x + 1))
             done
             failure_flag=1
-           else
-            echo -e "${Green} All changed Markdown filenames are  of valid length.${Reset}"
+          else
+            echo -e "${Green}All filenames are of valid length.${Reset}"
           fi
+
+          # Exit with appropriate status
           if [ "$failure_flag" -eq 0 ]; then
-            echo -e "${Green} All changed Markdown filenames passed validation.${Reset}"
+            echo -e "${Green}All validations passed.${Reset}"
             exit 0
           else
-            echo -e "${Red} The check has failed.${Reset}"
+            echo -e "${Red}Validation failed.${Reset}"
             exit 1
           fi
