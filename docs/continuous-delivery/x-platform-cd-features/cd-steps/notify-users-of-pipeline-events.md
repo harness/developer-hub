@@ -538,7 +538,9 @@ This integration helps you keep track of important pipeline updates within your 
 
 ### Prerequisites
   
-  - API Key for your Datadog account: You can create one in Datadog by going to **Profile → Organization Settings → API Keys** or directly via the [API Keys page](https://app.datadoghq.com/organization-settings/api-keys).
+  - **API Key for your Datadog account**: Generate an API key in Datadog by navigating to **Profile → Organization Settings → API Keys** or directly via the [API Keys page](https://app.datadoghq.com/organization-settings/api-keys).
+    
+  - **Datadog URL**: The specific Datadog instance URL for your account (e.g., `https://app.datadoghq.com` or your region-specific endpoint).
 
 ### Configuration
 
