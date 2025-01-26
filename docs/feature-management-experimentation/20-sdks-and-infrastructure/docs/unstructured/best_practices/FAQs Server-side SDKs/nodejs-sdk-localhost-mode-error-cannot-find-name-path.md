@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 ## Issue
 
-Using Node.js SDK, when trying to run the code below in Typescript file using Localhost mode: 
+Using Node.js SDK, when trying to run the code below in TypeScript file using Localhost mode: 
 ```javascript
 var factory = SplitFactory({
     core: {
@@ -31,7 +31,7 @@ Cannot find name 'path'
 
 ## Root cause
 
-This is a node issue. Typescript needs typings for any module, except if that module is not written in typescript. 
+This is a node issue. TypeScript needs typings for any module, except if that module is not written in typescript. 
 
 ## Answer
 

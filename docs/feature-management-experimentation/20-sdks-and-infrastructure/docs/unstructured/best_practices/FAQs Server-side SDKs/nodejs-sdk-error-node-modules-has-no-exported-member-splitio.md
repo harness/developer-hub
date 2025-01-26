@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 ## Issue
 
-Using Node.js SDK, when trying to import SplitIO as a namespace in Typescript:
+Using Node.js SDK, when trying to import SplitIO as a namespace in TypeScript:
 ```javascript
 import { SplitIo } from '@splitsoftware/splitio';
 ```
