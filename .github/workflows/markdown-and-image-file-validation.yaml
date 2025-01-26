@@ -26,7 +26,11 @@ jobs:
           Reset='\033[0m'           # Reset
           echo -e "${Blue} Checking all changed Markdown files ..."
 
-          # get static files and ignore .github folder and other special markdown files
+# initialize flag to check failure in validation 
+           failure_flag=0
+
+## Kebab case check start
+        # get static files and ignore .github folder and other special markdown files
 
           changed_files=$(git diff --name-only HEAD^1 HEAD | grep -E '\.(md|jpg|png|jpeg|svg)$' | grep -E '^(docs|kb|community|roadmap|static|university|release-notes)/')
 
@@ -44,16 +48,15 @@ jobs:
               if [ "$parent_folder" = "." ]; then
                   parent_folder="root"
               fi
+         # Treat folder name as part of the file name
               combined_info="$parent_folder/$base"  
-          # Treat folder name as part of the file name
               echo -e "${Yellow} $x. $combined_info${Reset}"
-
               x=$((x + 1))
           done
-           failure_flag=0
-          # Find invalid filenames
+      
+        # Find invalid filenames
           invalid_kebab_case=$(echo "$changed_files" | grep -vE '^([a-z0-9]+(-[a-z0-9]+)*)(/([a-z0-9]+(-[a-z0-9]+)*))*\.(md|jpg|png|jpeg|svg)$' || true)
-          # Check for filenames that are not in kebab case
+        # Check for filenames that are not in kebab case
 
           if [ -n "$invalid_kebab_case" ]; then
             echo -e "${Blue} The following Markdown filenames are not in kebab case:${Reset}"
@@ -66,7 +69,11 @@ jobs:
           else
             echo -e "${Green} All changed Markdown filenames are  in kebab case."
           fi
-          changed_files=$(git diff --name-only HEAD^1 HEAD | grep -E '\.(md|jpg|png|jpeg|svg)$')
+ ## Kebab case check end
+
+ ## file name length check start
+          changed_files=$(git diff --name-only HEAD^1 HEAD | grep -E '\.(md|jpg|png|jpeg|svg)$' | grep -E '^(docs|kb|community|roadmap|static|university|release-notes)/')
+
           long_files=$(echo "$changed_files" | awk 'length > 100')
           # Check for filenames that are not long
            if [ -n "$long_files" ]; then
@@ -88,3 +95,5 @@ jobs:
             echo -e "${Red} The check has failed.${Reset}"
             exit 1
           fi
+
+ ## file name length check end
