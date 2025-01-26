@@ -6,6 +6,8 @@ sidebar_position: 19
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+import "./static/_scrolling-table.css";
+
 
 # FME features
 
@@ -67,6 +69,83 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
   <TabItem value="server-side" label="Server-side SDKs">
+
+
+<div style={{ overflowX: 'scroll', marginLeft: '0'}}>
+
+  <table style={{border: '1px solid rgb(96, 103, 112)'}}>
+    <thead>
+      <tr>
+        <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Features</th>
+        <th>Go SDK</th>
+        <th>Java SDK</th>
+        <th>.NET SDK</th>
+        <th>Node.js SDK</th>
+        <th>PHP SDK</th>
+        <th>PHP Thin Client SDK</th>
+        <th>Python SDK</th>
+        <th>Ruby SDK</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Language(s)</th>
+        <td>Golang</td>
+        <td>Java/Kotlin</td>
+        <td>C#/F#</td>
+        <td>JavaScript/Typescript</td>
+        <td>PHP</td>
+        <td>PHP</td>
+        <td>Python</td>
+        <td>Ruby/Ruby + Rails</td>
+      </tr>
+      <tr>
+        <th class='solidBgColor' style={{position: 'sticky', left:'0'}}></th>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+      </tr>
+      <tr>
+        <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Track events</th>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+      </tr>
+      <tr>
+        <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>5</th>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td >QWERTYUIOPASDFGHJKLZXCVBNM</td>
+      </tr>
+      <tr>
+        <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Automatic metrics</th>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+        <td>QWERTYUIOPASDFGHJKLZXCVBNM</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 | **Features** | **Go SDK** | **Java SDK** | **.NET SDK** | **Node.js SDK** | **PHP SDK** | PHP Thin Client SDK | **Python SDK** | **Ruby SDK** |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |

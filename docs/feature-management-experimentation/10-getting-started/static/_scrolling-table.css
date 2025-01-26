@@ -1,0 +1,7 @@
+html[data-theme='light'] table tr th.solidBgColor {
+  background: #f5f5f5;
+}
+
+html[data-theme='dark'] table tr th.solidBgColor {
+  background: #131313;
+}

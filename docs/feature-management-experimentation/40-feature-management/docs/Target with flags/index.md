@@ -23,7 +23,7 @@ This article provides an overview of creating a feature flag definition for a gi
 
 # Create a feature flag
 
-On the [Create a feature flag]((https://help.split.io/hc/en-us/articles/9058495582349-Create-a-feature-flag) pane, create a feature flag by filling in metadata useful to your team.
+On the [Create a feature flag](https://help.split.io/hc/en-us/articles/9058495582349-Create-a-feature-flag) pane, create a feature flag by filling in metadata useful to your team.
 
 # Initiate your feature flag definition for a given environment
 
@@ -66,7 +66,7 @@ In the [Dynamic configuration](https://help.split.io/hc/en-us/articles/360026943
 
 # Setting up targeting
 
-Targeting defines how your feature flag will be evaluated for a given [**user ID**](@site/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/user-ids.md) (user key). You can add inidividual user IDs to your targeting rules. Targeting rules have a limit of 500 user IDs, so we suggest [creating a segment](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) if you need to target a large number of user IDs.
+Targeting defines how your feature flag will be evaluated for a given [**user ID**](docs/feature-management-experimentation/10-getting-started/docs/key-concepts/user-ids.md) (user key). You can add inidividual user IDs to your targeting rules. Targeting rules have a limit of 500 user IDs, so we suggest [creating a segment](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) if you need to target a large number of user IDs.
 
 To set up targeting, you can use the Individual targets area and/or the Targeting rules area. Both are described below.
 

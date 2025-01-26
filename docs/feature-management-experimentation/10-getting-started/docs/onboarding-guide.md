@@ -32,7 +32,7 @@ You can also follow the SDK Setup and Event Ingestion **Quickstart wizard** in F
 ### Release monitoring
 [Release monitoring](/docs/feature-management-experimentation/50-release-monitoring/index.md) detects the impact of each feature on system performance and user behavior, starting with the earliest stage of a gradual rollout. With detection and triage done at the flag level, you can ship more often and with greater confidence.
 
-![](./static/feature-impact-detection.gif)
+
 
 ### Experimentation
 [Experimentation](/docs/feature-management-experimentation/60-experimentation/index.md) centralizes notifications for metric impacts, review periods, and change requests, empowering your team with actionable data to make rapid, precise, data-driven decisions.
