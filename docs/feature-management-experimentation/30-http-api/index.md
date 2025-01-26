@@ -10,6 +10,7 @@ helpdocs_is_published: true
 import Link from "@docusaurus/Link";
 
 import FmePreviewAdmonition from "@site/docs/feature-management-experimentation/_templates/_fme-preview-admonition.mdx";
+import OutboundSvg from "@site/docs/feature-management-experimentation/_templates/OutboundLink.mdx";
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/12622773861901-Admin-API </button>
@@ -19,7 +20,7 @@ import FmePreviewAdmonition from "@site/docs/feature-management-experimentation/
 
 ## FME HTTP API
 
-Admin API
+See our <a href="https://docs.split.io">Admin API<OutboundSvg /></a> documentation.
 
 ### Overview
 

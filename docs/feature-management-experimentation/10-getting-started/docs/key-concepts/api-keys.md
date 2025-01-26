@@ -4,8 +4,8 @@ sidebar_label: API keys
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-import OutboundSvg from "../../../_templates/OutboundLink.mdx";
-import FindAPIKeys from "../../../_templates/_find-sdk-api-key.mdx";
+import OutboundSvg from "@site/docs/feature-management-experimentation/_templates/OutboundLink.mdx";
+import FindAPIKeys from "@site/docs/feature-management-experimentation/_templates/_find-sdk-api-key.mdx";
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360006854852-Frontend-and-backend-API-key-usage </button>

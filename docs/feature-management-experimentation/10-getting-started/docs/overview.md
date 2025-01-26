@@ -29,9 +29,13 @@ Our stateless architecture scales to millions of users with no degradation in pe
 
 The platform is backed by a patented Attribution Engine that joins feature flag data with performance and behavioral data, empowering teams to speed up releases, mitigate risk, and maximize business outcomes for every application change.
 
+![](./static/attribution-engine.png)
+
 ### Instant feature impact detection
 
 Split pairs feature flags with performance and behavior data. From page load times to errors and shopping cart values, Split immediately calculates the impact of new features on every metric of every rollout. With pinpoint precision, FME helps you quickly catch issues that affect your application, far surpassing the precision of APM tools, and leading you to quick actionable data that drive your decisions and customer satisfaction.
+
+![](./static/feature-impact-detection.gif)
 
 ## Get started with FME
 

@@ -49,7 +49,8 @@
     "rehype-katex": "7",
     "remark-math": "6",
     "sass": "^1.81.0",
-    "update-notifier": "^7.2.0"
+    "update-notifier": "^7.2.0",
+    "node": "18.20.5"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.6.2",
@@ -73,5 +74,20 @@
   },
   "engines": {
     "node": ">=18.0"
-  }
+  },
+  "description": "![Code](static/img/icon_code_s.svg) ![CI](static/img/icon_ci_s.svg) ![CD](static/img/icon_cd_s.svg) ![IACM](static/img/icon_iacm_s.svg) ![CE](static/img/icon_ce_s.svg) ![SRM](static/img/icon_srm_s.svg) ![FF](static/img/icon_ff_s.svg) ![CCM](static/img/icon_ccm_s.svg) ![STO](static/img/icon_sto_s.svg) ![SSCA](static/img/icon_ssca_s.svg) ![SEI](static/img/icon_sei_s.svg) ![IDP](static/img/icon_idp_s.svg) ![CDE](static/img/icon_cloud_development_environments_s.svg) ![DBDO](static/img/icon_dbdevops_s.svg) ![AR](static/img/icon_artifact_registry_s.svg) ![Armory](static/img/icon_armory_s.svg)",
+  "main": ".eslintrc.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harness/developer-hub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/harness/developer-hub/issues"
+  },
+  "homepage": "https://github.com/harness/developer-hub#readme"
 }
