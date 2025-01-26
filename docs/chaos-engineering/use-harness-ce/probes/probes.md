@@ -35,7 +35,7 @@ Depending on the type of probe, probes can:
 - Validate your error budget (SLO probe),
 - Connect with the APM tool and assert metrics (Datadog probe).
 
-For a video tutorial, go to [HCE- Resilience Probes](https://youtu.be/b4ggnJcZrcM).
+[This](https://youtu.be/b4ggnJcZrcM) video provides a step-by-step walkthrough of creating a Resilience Probe.
 
 ### Declarative hypothesis
 

@@ -3,8 +3,6 @@ title: VS Code Desktop
 description: Connect to your Gitspaces in your VS Code Desktop
 sidebar_position: 2
 sidebar_label: VS Code Desktop
-redirect_from:
-  - /docs/cloud-development-environments/ide's/vs-code-desktop
 ---
 
 :::info
@@ -19,7 +17,7 @@ Check out this video to get started with the Harness Gitspaces VS Code Extension
 
 <iframe width="500" height="275" src="https://www.youtube.com/embed/8rwKZNszOpI?si=KjREEG_HGN8-YyrD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## Pre-requisites 
+## Pre-Requisites 
 Before starting out, ensure that you have the following:
 1. VS Code Desktop installed [(Install VS Code Desktop)](https://code.visualstudio.com/download)
 2. Gitspaces VS Code extension installed (Refer to the steps below)
@@ -34,15 +32,15 @@ To install the Gitspaces VS Code extension, here’s what you need to do:
 
 2. Search for [“Harness Gitspaces VS Code Extension”](https://marketplace.visualstudio.com/items?itemName=harness-inc.gitspaces). You can install and configure the Gitspaces VS Code extension to use it on your VS Code Desktop App(>=v1.81.0). (“Harness OSS Gitspaces” is our open source extension)
 
-    ![](./static/vscode'1.png)
+    ![](./static/vscode-1.png)
 
 3. Once it appears, just click Install.
 
-    ![](./static/vscode'2.png)
+    ![](./static/vscode-2.png)
 
 4. You can also configure the base URL by navigating to the Settings tab and updating the Host URL.
 
-    ![](./static/vscode'3.png)
+    ![](./static/vscode-3.png)
     
 
 

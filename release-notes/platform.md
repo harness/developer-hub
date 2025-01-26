@@ -78,6 +78,26 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## January 2025
+
+### Version 1.72.x <!-- January , 2025-->
+#### Fixed issues
+
+- Enabled support for AIDA settings at the organization level. (PL-59525)
+
+- Improved the user experience on the Settings page across all three scopes (Account, Organization, and Project) by sorting the cards for accessing specific settings or resources in alphabetical order. Previously, these cards appeared in random order, making it difficult to locate specific settings as their number increased over time. The alphabetical arrangement now ensures easier and quicker access. (PL-59352)
+
+- Previously, when creating or updating a resource group with resources containing invalid identifiers, the system would remove the invalid resources and update the rest of the resource group. Now, an error message will be displayed, specifying the invalid identifiers. (PL-58961)
+
+#### New features and enhancements
+
+- Improved the revoked token flow by removing the self-destruct operation for revoked tokens. (PL-58728)
+
+- Upgraded JRE to version 17.0.13_11 in the delegate image. (PL-59512)
+
+- The disconnected delegates list in the selection log now displays only eligible but disconnected delegates, filtering out non-eligible ones. (PL-56301)
+
+- Updated the NGINX controller image from version 1.3.0 to 1.11.2 to address and eliminate all critical and high vulnerabilities. (PL-56529)
+
 ### Version 1.71.x <!-- January 13, 2025-->
 #### Fixed issues
 

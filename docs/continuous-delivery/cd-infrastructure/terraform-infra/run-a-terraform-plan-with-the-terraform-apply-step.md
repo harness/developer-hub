@@ -535,6 +535,10 @@ Here's an example of decrypted Terraform JSON output:
 }
 ```
 
+**Handling Sensitive Terraform Outputs**
+
+To extract specific values from the encrypted Terraform output, users can use tools like jq to parse and retrieve individual values from the JSON output.
+
 ## Skip state storage
 
 The following feature requires a minimum Harness Delegate version of 812xx.

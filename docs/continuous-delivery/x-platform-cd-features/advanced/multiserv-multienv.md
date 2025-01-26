@@ -489,5 +489,6 @@ By default, Harness uses numerical indices for the matrix naming strategy. Enabl
 * Reconciliation for Harness services, environments, and infrastructure definitions is not supported for deployments using multiple services, environments, or infrastructures, respectively.
 * You cannot propagate multi environments between stages
 * When using stage variables with multi environments, the expression used for a particular stage changes. For example, if the expression for a stage without multi environment is `<+pipeline.stages.sampleStage.variables.resourceNamePrefix>`, for multi environment, expression path changes and gets updated based on the iteration number of stage like this, `<+pipeline.stages.sampleStage_1.variables.resourceNamePrefix>`.
+* Runtime inputs for service overrides are not supported when using multi-service configuration.
 
 

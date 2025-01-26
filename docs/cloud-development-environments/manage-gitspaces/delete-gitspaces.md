@@ -3,8 +3,6 @@ title: Delete a Gitspace
 description: Learn how to delete an existing Gitspace
 sidebar_position: 2
 sidebar_label: Delete a Gitspace
-redirect_from:
-  - /docs/cloud-development-environments/manage-gitspaces/delete-gitspaces
 ---
 
 Deleting a Gitspace is an irreversible action since deleted Gitspace cannot be restored.  

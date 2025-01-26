@@ -14,6 +14,9 @@ This fault should be used as a sanity test for validating your application's fai
 
 ![Pod IO Attribute Override](./static/images/pod-io-attribute-override.png)
 
+[This](https://youtu.be/chk5K754J_4?si=df_2bEG6yXKtjGEl) video provides a step-by-step walkthrough of the execution process for the Pod IO Attribute Override experiment.
+
+
 ## Use cases
 Pod IO attribute override:
 - Tests whether your application is able to detect and respond to unexpected changes in file attributes, which can help you ensure that your system remains compliant and secure.

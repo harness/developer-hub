@@ -34,6 +34,10 @@ The following steps aren't supported on Windows platforms on Kubernetes cluster 
 
 If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../manage-dependencies/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure; **however, Windows doesn't support privileged mode.** If you need to run Docker commands, you must use another build infrastructure, such as [Harness Cloud](../use-harness-cloud-build-infrastructure.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), where you can run Docker commands directly on the host.
 
+### Custom and self-signed certificates aren't supported
+
+Custom certificates or self-signed certificates are only supported for linux nodes in a Kubernetes cluster. For Windows, directly mounting the certificate to the destination path will not work. 
+
 ## Configure cluster and build infrastructure
 
 1. Set up your cluster with both Linux and Windows node pools. Linux is required for running the Delegate.

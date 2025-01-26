@@ -11,7 +11,10 @@ Pod network rate limit is a Kubernetes pod-level chaos fault that generates Traf
 
 ![Pod Network Rate Limit](./static/images/pod-network-rate-limit.png)
 
+[This](https://youtu.be/01efVOyFGl8?si=414-AX6yVn2GqfON) video provides a step-by-step walkthrough of the execution process for the Pod Network Rate Limit experiment.
+
 ## Use cases
+
 Pod network rate limit:
 - Assess how well applications and services perform under constrained network bandwidth, helping identify potential bottlenecks and weaknesses.
 - Ensure that critical services receive the necessary network bandwidth allocation while non-essential services are appropriately limited to maintain overall system stability.
