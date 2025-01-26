@@ -20,7 +20,9 @@ This series walks you through creating your first feature flag, using an FME SDK
 * [Step 3: Send event data](./tutorials/step-3-send-event-data.md)
 * [Step 4: Create a metric, monitor and measure impact](./tutorials/step-1-create-feature-flag-and-target-users.md)
 
-You can also follow the SDK Setup and Event Ingestion **Quickstart wizard** in FME UI. Click **Help** in the left navigation menu, and click on one of the quickstart guides.
+## Quickstart wizard
+
+You can also follow the SDK Setup and Event Ingestion **Quickstart wizard** in FME UI. Click **Help** in the left navigation menu, and click on one of the quickstarts.
 
 ![A screenshot of the Quickstart guides in Split UI](./static/fme-quickstart.png)
 

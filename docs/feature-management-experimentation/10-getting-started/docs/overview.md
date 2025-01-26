@@ -15,14 +15,6 @@ Harness Feature Management & Experimentation (FME) combines capabilities for fea
 
 ![](./static/overview.png)
 
-### Attribution engine
-
-The platform is backed by a patented Attribution Engine that joins feature flag data with performance and behavioral data, empowering teams to speed up releases, mitigate risk, and maximize business outcomes for every application change.
-
-### Instant feature impact detection
-
-Split pairs feature flags with performance and behavior data. From page load times to errors and shopping cart values, Split immediately calculates the impact of new features on every metric of every rollout. With pinpoint precision, FME helps you quickly catch issues that affect your application, far surpassing the precision of APM tools, and leading you to quick actionable data that drive your decisions and customer satisfaction
-
 ### Architected for Performance, Security, and Resilience
 
 Split is built on a global feature flag and data processing architecture that serves 50 billion daily feature flags to over 2 billion end users around the globe.
@@ -32,6 +24,14 @@ Split is built on a global feature flag and data processing architecture that se
 * **Resilience:** Our SaaS app, data platform, and API span multiple data centers. Plus, our SDKs cache locally to handle any network interruptions.
 
 Our stateless architecture scales to millions of users with no degradation in performance. Our SDKs reside in your frontend, backend, and mobile apps where they make feature flags and targeting decisions locally, without the need to send private user data outside your app for evaluation.
+
+### Attribution engine
+
+The platform is backed by a patented Attribution Engine that joins feature flag data with performance and behavioral data, empowering teams to speed up releases, mitigate risk, and maximize business outcomes for every application change.
+
+### Instant feature impact detection
+
+Split pairs feature flags with performance and behavior data. From page load times to errors and shopping cart values, Split immediately calculates the impact of new features on every metric of every rollout. With pinpoint precision, FME helps you quickly catch issues that affect your application, far surpassing the precision of APM tools, and leading you to quick actionable data that drive your decisions and customer satisfaction.
 
 ## Get started with FME
 

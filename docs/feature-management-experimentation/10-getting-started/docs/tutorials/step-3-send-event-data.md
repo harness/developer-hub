@@ -11,8 +11,6 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025335031-Step-3-Send-event-data <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-# Send event data
-
 Measure the impact of your feature rollout on your customer experience by sending Split event data and calculating metrics based on those events. Events allow you to record any actions your users perform and experiences your users encounter, such as response times or errors.
 
 Event data can be sent to Split in one of four ways:

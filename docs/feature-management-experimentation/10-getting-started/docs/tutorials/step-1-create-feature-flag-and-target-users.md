@@ -13,11 +13,13 @@ import Link from "@docusaurus/Link";
 
 You can create a feature flag in three steps:
 
-* Set your feature flag name
-* Add your feature flag to an environment
-* Decide who sees what version of your flag
+1. Set your feature flag name and meta information
+2. Add your feature flag to an environment
+3. Decide who sees what variant of your feature flag
 
-## Step 1: Set your feature flag name and information
+These steps are outlined below in more detail below, with links you can use to walk you through each task.
+
+### 1. Set your feature flag name and meta information
 
 To create your first feature flag, click **Feature flags** in the left navigation and click the **Create feature flag** button. From there enter the flag name.
 
@@ -27,13 +29,13 @@ Owners, tags, and the description make it easy to sort, filter, and locate the f
 
 Learn more about [creating a feature flag](https://help.split.io/hc/en-us/articles/360020523792).
 
-## Step 2: Add your feature flag to an environment
+### 2. Add your feature flag to an environment
 
 o configure your feature flag for a particular environment, select the environment and click the Initiate environment button. You can create and define targeting rules, including treatments.
 
-## Step 3: Decide who sees what version of your feature flag
+### 3. Decide who sees what variant of your feature flag
 
-Treatments are the different variants or versions of your feature flag that you serve to your users. When you click the Initiate environment button, the Definition tab for a particular flag appears. Use this tab to assign your treatments. We default the treatment names to on and off for each new feature flag but you can edit these names and add additional treatments. The default treatment selected in the treatments section will be served to everyone if the feature flag is killed and to all traffic not exposed to a flag. Learn more about the [default treatment](https://help.split.io/hc/en-us/articles/360020527672-Set-the-default-treatment).
+Treatments are the different variant of your feature flag that you serve to your users. When you click the Initiate environment button, the Definition tab for a particular flag appears. Use this tab to assign your treatments. We default the treatment names to on and off for each new feature flag but you can edit these names and add additional treatments. The default treatment selected in the treatments section will be served to everyone if the feature flag is killed and to all traffic not exposed to a flag. Learn more about the [default treatment](https://help.split.io/hc/en-us/articles/360020527672-Set-the-default-treatment).
 
 After your treatments are set up and the default treatment is chosen, you can set individual targets, limit exposure, and set targeting rules to explicitly assign treatments or set targets based on dependencies or demographic data as attributes.
 

@@ -1,5 +1,5 @@
 ---
-title: What's supported
+title: What's supported by Harness FME
 description: Platforms and technologies supported by FME
 sidebar_label: What's supported
 sidebar_position: 1
@@ -8,10 +8,9 @@ helpdocs_is_published: true
 ---
 import "./static/_scrolling-table.css";
 
-
 ## FME module features
 
-Feature Management & Experimentation supports the following features.
+Feature Management & Experimentation (FME) supports the following features.
 
 | **Features** | | **Description** |
 | --- | --- | --- |
@@ -38,7 +37,7 @@ Feature Management & Experimentation supports the following features.
 
 ## FME SDK supported features
 
-Feature Management & Experimentation works with client-side server-side SDKs, built for popular programming languages. If you are looking for a language that is not shown below, consider using [Split Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator).
+Harness FME works with client-side server-side SDKs, built for popular programming languages. If you are looking for a language that is not shown below, consider using [FME Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator).
 
 Scroll left to see the feature list for all SDKs.
 
