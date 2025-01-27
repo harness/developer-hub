@@ -8,7 +8,7 @@ const Feedback = () => {
 
   return (
     <>
-      <BrowserOnly fallback={<div>Loading...</div>}>
+      <BrowserOnly fallback={<div></div>}>
         {() => {
           const handleClick = () => {
             /*
