@@ -215,6 +215,10 @@ If we render it using `<+json.format(<+pipeline.stages.Functors.spec.execution.s
 
 :::
 
+### Fetching and Masking Attributes from JSON Secrets
+
+Users can now fetch attributes from JSON files marked as secrets and have them masked in the pipeline execution page outputs and execution logs by setting the output variable type to secret. The following functors are supported for this feature: `select()`, `list()`, and `object()`.
+
 ## XML Functor
 
 The [XPath](https://developer.mozilla.org/en-US/docs/Web/XPath) functor has one method: `xml.select()`.
