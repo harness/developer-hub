@@ -52,13 +52,12 @@
     "update-notifier": "^7.2.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.7.0",
-    "@docusaurus/tsconfig": "^3.7.0",
-    "@docusaurus/types": "^3.7.0",
+    "@docusaurus/module-type-aliases": "^3.6.2",
+    "@docusaurus/tsconfig": "^3.6.2",
     "dictionary-en": "^4.0.0",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.5.4"
   },
   "browserslist": {
     "production": [
