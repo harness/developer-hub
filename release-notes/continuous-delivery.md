@@ -57,7 +57,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Previously, repository creation was failing when using repository credentials template that contained uppercase letters. Due to a normalization error, there was a credential url mismatch. This issue has been resolved. Repository creation now works with repo credential templates with uppercase letters. (**CDS-105622, ZD-75760**)
 - Previously, the metrics server in the GitOps agent did not initialize correctly when the metrics service is enabled. The issue has been resolved. Now, the correct value for `GITOPS_AGENT_METRICS_PORT` will be set when metrics are enabled. Users should update gitops-helm chart to `1.1.16` (or `1.3.5` for `gitops-helm-byoa`) to ensure that the metrics server works correctly. (**CDS-105241**)
 
-### Version 1.73.5
+### Version 1.73.6
 
 #### New features and enhancements
 

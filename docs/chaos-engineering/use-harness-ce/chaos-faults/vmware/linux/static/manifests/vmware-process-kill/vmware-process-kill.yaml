@@ -1,0 +1,19 @@
+# Process kill in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: VMware-process-kill
+      spec:
+        components:
+          env:
+            # Name of the VM
+            - name: VM_NAME
+              value: 'test-vm-01'
+            # List of Process IDs
+            - name: PROCESS_IDS
+              value: '8688,4678'

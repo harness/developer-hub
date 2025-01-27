@@ -1,0 +1,19 @@
+# io-stress in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-io-stress
+    spec:
+      components:
+        env:
+        # Name of the VM
+        - name: VM_NAME
+          value: 'test-vm-01'
+        # percentage of free space of file system, need to be stressed
+        - name: FILESYSTEM_UTILIZATION_PERCENTAGE
+          value: '10'

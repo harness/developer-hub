@@ -1,0 +1,19 @@
+# CPU hog in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-cpu-hog
+    spec:
+      components:
+        env:
+        # Name of the VM
+        - name: VM_NAME
+          value: 'test-vm-01'
+        # CPU load in percentage for the stress
+        - name: CPU_LOAD
+          value: '100'
