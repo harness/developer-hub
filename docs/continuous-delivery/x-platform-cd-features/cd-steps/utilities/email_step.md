@@ -67,7 +67,8 @@ For more information on runtime inputs and expressions, go to [fixed values, run
 
 The **Body** is a string field. You can enter in text and Harness expressions. Harness will resolve the expressions before sending the email.
 
-You can use HTML formatting in **Body**.
+- You can use HTML formatting in **Body**, such as `<br>` tags, for line breaks in the email body.
+- If the `CDS_EMAIL_USE_DEFAULT_FORMATTING` feature flag is enabled, new lines will not be auto-detected. Instead, you must explicitly define new lines using `<br>` tags or similar HTML formatting.
 
 For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
