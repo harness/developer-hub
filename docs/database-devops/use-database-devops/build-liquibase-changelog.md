@@ -41,11 +41,12 @@ To point Liquibase at a directory of SQL files, you'll need to create a top-leve
                path: "path/to/your/sql/file2.sql"
     ```
 
- 3. Use the command line to run Liquibase against your changelog file. 
+ 3. Within Harness Database DevOps, select the *DB Schemas** option. 
+ 4. Select the three dots on the right hand side of the database schema that you will be amending. A pop up menu should appear. 
+ 5. Under the **Path to Schema File**, enter the path to the changelog you created. 
+ 6. Click **Save**. 
 
-    ```bash
-    liquibase --changelogFile=changelog.xml update
-    ```
+    ![The pop up window to edit the Database Schema in DB DevOps](./static/edit_database_schema_popup1.png)
 
 ### What is a changeset?
 
