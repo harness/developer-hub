@@ -21,6 +21,7 @@ By combining multiple budgets into budget groups, you can establish correlations
   ![](./static/create-budget-group.gif)
 
 
+
 Perform the following steps to create a budget group:
 
 1. In your Harness application, go to **Cloud Costs**, and select **Budgets**.
