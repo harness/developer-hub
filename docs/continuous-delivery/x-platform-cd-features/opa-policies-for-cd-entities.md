@@ -58,8 +58,8 @@ deny["denied"] {
 }
 ```
 
-- This policy denies actions if the service type is Kubernetes.
-- It also denies actions if the service name starts with Kubernetes_service.
+- This policy denies actions if the service type is `Kubernetes`.
+- It also denies actions if the service name starts with `Kubernetes_service`.
 
 </details>
 
@@ -80,8 +80,53 @@ deny {
 }
 ```
 
-- This policy denies actions if the environment type is PreProduction.
-- It also denies actions if there is a variable named variable.
+- This policy denies actions if the environment type is `PreProduction`.
+- It also denies actions if there is a variable named `variable`.
+
+</details>
+
+<details>
+<summary>Example: Infrastructure Definition Policy</summary>
+
+**Infrastructure Definition Policies Example**
+
+```rego
+package abc
+
+deny["denied"]{
+  input.infrastructureEntity.infrastructureDefinition.projectIdentifier == "k8s-Infrastructure"
+  input.infrastructureEntity.infrastructureDefinition.deploymentType == "Kubernetes"
+}
+```
+
+The policy denies an action if both of the following conditions are met:
+- The projectIdentifier of the infrastructureEntity is equal to `k8s-Infrastructure`.
+- The deploymentType of the infrastructureEntity is `Kubernetes`.
+
+</details>
+
+<details>
+<summary>Example: Overrides Policy</summary>
+
+**Overrides Policies Example**
+
+```rego
+package abc
+
+deny["String variable type not allowed"]{
+  input.overrideEntity.overrides.variables[i].type == "String"
+}
+
+deny["Variables have to be required"]{
+  input.overrideEntity.overrides.variables[i].required == false
+}
+```
+
+The policy denies an action if either of the following conditions is met:
+- A variable in the overrideEntity.overrides.variables array has its type set to `String`.
+- A variable in the overrideEntity.overrides.variables array has its required field set to `false`.
+
+
 
 </details>
 
@@ -117,4 +162,4 @@ For example, you have a policy that does not allow the creation of a Kubernetes 
 
 ## Limitation:
 
-The policy is applicable on **ON SAVE**. If the entity is already created, the policy wont be enforce during the deployment.
+The policy is applicable on **ON SAVE**. If the entity is already created, the policy will not be enforced during the deployment.
