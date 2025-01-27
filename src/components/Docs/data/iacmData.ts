@@ -85,7 +85,7 @@ export const docsCards: CardSections = [
         title: "Using OPA Policies with IaCM",
         module: MODULES.iacm,
         description: "Learn how to use OPA to add security and governance to your IaCM pipeline.",
-        link: "/docs/infra-as-code-management/project-setup/opa-workspace",
+        link: "/docs/infra-as-code-management/policies-governance/opa-workspace",
       },
       {
         title: "Drift Detection",
