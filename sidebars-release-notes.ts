@@ -1,8 +1,5 @@
-// @ts-check
-
-/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
-
-const sidebars = {
+import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+const sidebars: SidebarsConfig = {
   releaseNotes: [
     // Release Notes Parent
     {
@@ -211,4 +208,4 @@ const sidebars = {
   ],
 };
 
-module.exports = sidebars;
+export default sidebars;
