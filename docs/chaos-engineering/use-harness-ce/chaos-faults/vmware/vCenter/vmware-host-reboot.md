@@ -4,6 +4,7 @@ title: VMware host reboot
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-host-reboot
 - /docs/chaos-engineering/chaos-faults/vmware/vmware-host-reboot
+- /docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/vmware-host-reboot
 ---
 VMware host reboot reboots a VMware host that is attached to the Vcenter.
 - It helps determine the VMware infrastructure resilience when the host reboots.
@@ -12,7 +13,7 @@ VMware host reboot reboots a VMware host that is attached to the Vcenter.
 ![VMware Host Reboot](./static/images/vmware-host-reboot.png)
 
 :::info note
-HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+Harness CE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
 
 ## Use cases

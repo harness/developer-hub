@@ -22,7 +22,7 @@ VMware faults disrupt the resources running on a VMware cluster. Depending on th
 
 <ExperimentListSection experiments={experiments} />
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="linux">
 
 <!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
 
@@ -37,7 +37,7 @@ This fault helps determine how resilient an application is when stress is applie
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="vCenter">
 
 <!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
 
@@ -52,7 +52,7 @@ This fault helps determine how resilient an application is to the unplanned scal
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="linux">
 
 ### VMware DNS chaos
 
@@ -66,7 +66,7 @@ This fault causes DNS errors on the target VMs which results in unavailability (
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="vCenter">
 
 ### VMware host reboot
 
@@ -81,7 +81,7 @@ This fault has a high blast radius due to which all the VMs under the target hos
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="linux">
 
 ### VMware HTTP latency
 
@@ -95,7 +95,7 @@ This fault helps determine how resilient an application is to HTTP latency. It h
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="linux">
 
 ### VMware HTTP modify response
 
@@ -111,7 +111,7 @@ This fault helps determine how resilient an application is when the status code 
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="linux">
 
 ### VMware HTTP reset peer
 
@@ -126,7 +126,7 @@ This fault helps determine how resilient an application is when outgoing HTTP re
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="linux">
 
 ### VMware IO stress
 
@@ -139,7 +139,7 @@ This fault helps determine how resilient an application is to unexpected spikes 
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="linux">
 
 ### VMware memory hog
 
@@ -153,7 +153,7 @@ This fault helps determine how resilient an application is when excessive memory
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="linux">
 
 ### VMware network latency
 
@@ -169,7 +169,7 @@ The VM may stall (or get corrupted) while waiting endlessly for a packet. The fa
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="linux">
 
 ### VMware network loss
 
@@ -184,7 +184,7 @@ The VM may stall (or get corrupted) while waiting endlessly for a packet. The fa
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="linux">
 
 ### VMware network rate limit
 
@@ -207,7 +207,7 @@ VMware network rate limit fault injects network rate limit from the VMware VM(s)
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="linux">
 
 ### VMware process kill
 
@@ -221,7 +221,7 @@ This fault disrupts critical processes running within the application, such as d
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="linux">
 
 ### VMware service stop
 
@@ -235,7 +235,7 @@ This fault helps determine how resilient an application is to random halts. It d
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="vCenter">
 
 ### VMware VM power off
 
@@ -250,7 +250,7 @@ This fault helps determine how resilient an application is to random power failu
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="windows">
 
 ### VMware Windows blackhole chaos
 
@@ -263,7 +263,7 @@ This fault helps determine how resilient an application is when network access t
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="windows">
 
 ### VMware Windows CPU hog
 
@@ -276,7 +276,7 @@ This fault helps determine how resilient an application is when stress is applie
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="windows">
 
 ### VMware Windows disk stress
 
@@ -289,7 +289,7 @@ This fault helps determine how resilient an application is when the disk space i
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="windows">
 
 ### VMware Windows memory hog
 
@@ -304,7 +304,7 @@ VMware Windows memory hog applies stress on the memory resources on Windows OS b
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="windows">
 
 ### VMware Windows network corruption
 
@@ -319,7 +319,7 @@ VMware Windows network corruption corrupts network packets on Windows OS based V
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="windows">
 
 ### VMware Windows network duplication
 
@@ -334,7 +334,7 @@ VMware Windows network duplication duplicates network packets on Windows OS base
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="windows">
 
 ### VMware Windows network latency
 
@@ -349,7 +349,7 @@ VMware Windows network latency injects network latency on Windows OS based VMwar
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="windows">
 
 ### VMware Windows network loss
 
@@ -364,7 +364,7 @@ VMware Windows network loss injects network packet loss on Windows OS based VMwa
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="windows">
 
 ### VMware Windows process kill
 
@@ -379,7 +379,7 @@ VMware Windows process kill kills a specified process on Windows OS based VMware
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="windows">
 
 ### VMware Windows service stop
 
@@ -394,7 +394,7 @@ VMware Windows service stop stops a specified service on Windows OS based VMware
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="vmware">
+<FaultDetailsCard category="vmware" subCategory="windows">
 
 ### VMware Windows time chaos
 

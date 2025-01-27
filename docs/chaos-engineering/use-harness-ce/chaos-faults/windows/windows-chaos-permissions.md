@@ -18,51 +18,41 @@ This section outlines the permissions required for installing the Windows infras
 <tr>
     <th> Chaos agent deployment model </th>
     <td><b>Native Chaos Agent on Each VM (systemd service within target Windows machine) </b></td>
-	<th> Centralized chaos agent on Kubernetes (leverage VMware tools to inject chaos processes inside the guest VM) </th>
 </tr>
 <tr>
     <th> Connectivity requirements from agent </th>
     <td><ul><li>Outbound over port 443 to Harness from VM. </li>
 	<li> Outbound to application health endpoints (ones which will be used for resilience validation) from VM </li></ul></td>
-	<td> <ul><li>Outbound over port 443 to Harness from Kubernetes cluster</li>
-	<li>Outbound over 443 to vCenter from Kubernetes cluster</li>
-	<li>Outbound to application health endpoints (ones which will be used for resilience validation) from kubernetes cluster. </li></ul></td>
 </tr>
 <tr>
     <th> Connectivity requirements from VM/cluster/app </th>
     <td> <ul><li>Application and chaos agent co-exist on the same VM. </li></ul></td>
-	<td> <ul><li>Inbound over port 443 on ESX Host (from Kubernetes chaos agent).</li></ul> </td>
 </tr>
 <tr>
 	<th> Access requirements for agent install </th>
 	<td><ul><li> Install agent as an administrator user. </li></ul></td>
-    <td><ul><li>Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements"> these </a> permissions. </li></ul></td>
 </tr>
 
 <tr>
 	<th> Access requirements for basic chaos experiments </th>
 	<td><ul><li> Run experiments with non-administrator user. </li></ul> </td>
-	<td> <ul> <li>vCenter user should be mapped to a predefined <a href="https://hce-docs.github.io/platform-wise-chaos-info/VMware/vcenter-based-chaos-user-access-requirements.md"> chaos </a> role </li>
-	<li> VMware tools should be setup on the VM </li>
-	<li>Remote command injection can be performed with non-administrator user</li></ul></td>
 </tr>
 <tr>
 	<th> Access requirements for advanced chaos experiments </th>
 	<td><ul><li> Run experiments with administrator user </li></ul></td>
-	<td> <ul> <li>vCenter user should be mapped to a predefined <a href="https://hce-docs.github.io/platform-wise-chaos-info/VMware/vcenter-based-chaos-user-access-requirements.md"> chaos </a> role </li>
-	<li> VMware tools should be setup on the VM </li>
-	<li>Remote command injection can be performed with administrator user</li></ul></td>
 </tr>
 <tr>
 		<th> Supported chaos faults	</th>
 		<td><ul><li><a href="https://github.com/hce-docs/platform-wise-chaos-info/blob/main/VMware/WindowsOS/basic-faults-supported-by-native-windows-infra-running-as-non-administrator.md">Basic faults with non-administrator </a></li>
 		<li> <a href="https://github.com/hce-docs/platform-wise-chaos-info/blob/main/VMware/WindowsOS/all-supported-faults-by-native-windows-infra-running-as-administrator.md"> Basic and advanced faults with administrator </a></li></ul></td>
-		<td> <ul><li> <a href="https://github.com/hce-docs/platform-wise-chaos-info/blob/main/VMware/WindowsOS/basic-faults-supported-by-kubernetes-infra-performing-remote-command-injection-with-non-administrator-user.md">Basic faults via remote command injection with non-administrator user </a></li>
-<li> <a href="https://github.com/hce-docs/platform-wise-chaos-info/blob/main/VMware/WindowsOS/all-supported-faults-by-kubernetes-infra-performing-remote-command-injection-with-administrator.md"> Basic and advanced faults via remote command injection with administrator </a></li></ul></td>
 </tr>
 </table>
 
-## Security consideration
+## Security considerations
+
+The table below describes the security considerations, that is, the component, its requirement in the scope of the experiment and how the component is used.
+
+For example, the first entry can be interpreted as follows: The **Installation script** component is required for **Service Management*** which **helps create and manage a service that needs admin permissions to interact with the Service Control Manager**. 
 
 <table border="1">
     <tr>

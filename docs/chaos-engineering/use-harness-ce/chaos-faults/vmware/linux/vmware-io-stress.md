@@ -101,7 +101,7 @@ stringData:
       <tr>
         <td> CPU_CORES </td>
         <td> Number of CPU cores that are subject to CPU stress.</td>
-        <td> Defaults to 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/vmware-cpu-hog/#cpu_cores"> CPU cores. </a></td>
+        <td> Defaults to 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-cpu-hog/#cpu_cores"> CPU cores. </a></td>
         </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
