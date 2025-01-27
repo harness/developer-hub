@@ -95,7 +95,7 @@ Kubernetes AutoStopping support is fully available for the following ingress con
 
 ```yaml
 allow-snippet-annotations: true
-annotation-risk-level: Critical
+annotations-risk-level: Critical
 ```
 
 1. Expose your application by creating an ingress rule. Apply the following YAML to the cluster.
