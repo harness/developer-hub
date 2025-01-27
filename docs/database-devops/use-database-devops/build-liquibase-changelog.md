@@ -46,7 +46,9 @@ To point Liquibase at a directory of SQL files, you'll need to create a top-leve
  5. Under the **Path to Schema File**, enter the path to the changelog you created. 
  6. Click **Save**. 
 
-    ![The pop up window to edit the Database Schema in DB DevOps](./static/edit_database_schema_popup1.png)
+
+    ![The pop up window to edit the Database Schema in DB DevOps](./static/edit-database-schema-popup1.png)
+
 
 ### What is a changeset?
 
