@@ -8,7 +8,7 @@ This topic describes the settings for the Email step available in Continuous Del
 
 The Email step lets you easily send emails to users and teams during a pipeline execution.
 
-![picture 1](./static/866775ef02f7cb3dc6394be155cba8ff7d8a041f7511f09203afc4c3e2cdc85a.png)
+![picture 1](./static/email-step.png)
 
 The Email step has the following features:
 
@@ -18,6 +18,7 @@ The Email step has the following features:
 - You can use this step as a [step template](/docs/platform/templates/run-step-template-quickstart) or as part of a [stage template](/docs/platform/templates/add-a-stage-template).
 - You can manage this step's configuration via [Harness Git Experience](/docs/platform/git-experience/git-experience-overview).
 - You can send emails to Harness users and users outside of Harness using the SMTP server in your Harness
+- Use input variables in the email step to customize the subject, body, and recipient list dynamically based on pipeline variables and context.
 
 ## Visual summary
 
@@ -71,6 +72,16 @@ The **Body** is a string field. You can enter in text and Harness expressions. H
 - If the `CDS_EMAIL_USE_DEFAULT_FORMATTING` feature flag is enabled, new lines will not be auto-detected. Instead, you must explicitly define new lines using `<br>` tags or similar HTML formatting.
 
 For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
+
+## Using Input Variables
+
+You can use input variables in the Email Step to customize the subject, body, and recipient list with dynamic values from your pipeline.
+
+- **Subject**: Personalize the subject line using placeholders like `${pipeline.buildNumber}` or `${deployment.status}`.
+- **Body**: Insert dynamic content in the email body using pipeline variables.
+- **Recipients**: Define the recipient list dynamically with pipeline variables, such as sending emails to team members based on environment or role.
+
+You can use both predefined and custom pipeline variables in your emails. The Email Step also supports condition-based customization, allowing you to modify the email content based on pipeline states like success, failure, or approval.
 
 ## Sending emails to non-Harness users
 
