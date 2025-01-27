@@ -161,6 +161,14 @@ export const moduleIconAndColor = {
       color: '--mod-ce-300',
     },
   },
+  'Incident Response': {
+    iconUrl: 'https://developer.harness.io/img/icon_ir.svg',
+    colors: {
+      border: '--mod-ce-200',
+      backgroundColor: '--mod-ce-100',
+      color: '--mod-ce-300',
+    },
+  },
   'AI Code Assistant': {
     iconUrl:
       'https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/666730eaefeed82bad545d10_Subtract.svg',

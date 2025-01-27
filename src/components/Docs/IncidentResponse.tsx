@@ -15,7 +15,7 @@ export default function CE() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img src={`${baseUrl}img/icon_ce.svg`} />
+            <img src={`${baseUrl}img/icon_ir.svg`} />
             <h1>Incident Response (BETA) </h1>
           </div>
           <div className={styles.btnContainer}>
