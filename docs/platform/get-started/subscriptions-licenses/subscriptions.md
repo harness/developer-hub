@@ -182,6 +182,18 @@ You can view and manage your Harness module subscriptions in your Harness **Acco
 
 <Cloud />
 
+## Developer 360 modules subscriptions
+
+For Developer 360 module subscriptions, you can view your subscription details on the Subscriptions page. In your Harness account, go to Account Settings, then select Subscriptions.
+
+On the Subscriptions page, select the Developer 360 modules.
+
+![dev-360-subs](../static/dev-360.png)
+
+Licenses are now based on developers. Customers can directly assign user groups or service accounts to the respective module through this new subscription page. This is an honor system, where customers report licensed user groups and service accounts. There is no enforcement mechanism; even if no users are assigned, modules will remain accessible to all users in the system.
+
+![dev-360-1-subs](../static/dev-360-1.png)
+
 ## Manage subscriptions
 
 <Manage />
