@@ -44,7 +44,7 @@ export const featureList: CardItem[] = [
     module: MODULES.iacm,
     icon: "img/icon_iacm.svg",
     description: <>Manage your infrastructure with ease.</>,
-    link: "/docs/infra-as-code-management",
+    link: "docs/infra-as-code-management/get-started/onboarding-guide",
   },
   {
     title: "Release Faster with Feature Flags",
