@@ -16,4 +16,4 @@ Running in your app, the FME SDK client pulls your [rollout plans](docs/feature-
 
 Use the left sidebar to navigate to the FME SDK tailored to your coding language and tech stack.
 
-See also the [Supported features](docs/feature-management-experimentation/getting-started/whats-supported#fme-sdk-supported-features) matrix for your quick reference.
+For a quick overview of the features supported by each SDK go to [Supported features](/docs/feature-management-experimentation/getting-started/whats-supported#fme-sdk-supported-features). You will find a detailed matrix with embedded links.
