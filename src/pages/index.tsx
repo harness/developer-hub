@@ -13,36 +13,40 @@ import Feedback from '@site/src/components/Feedback';
 import styles from './index.module.scss';
 
 import { useColorMode } from '@docusaurus/theme-common';
-function HomepageHeader() {
+
+function HomePageAnimation() {
   const { colorMode } = useColorMode();
-  const { siteConfig } = useDocusaurusContext();
   return (
     <BrowserOnly fallback={<div></div>}>
       {() => {
         const Lottie = require('lottie-react').default;
 
         return (
-          <div style={{ position: 'relative' }}>
-            <header className={clsx('container', styles.heroBanner)}>
-              <div className={styles.heroContainer}>
-                <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
-                <p className={styles.heroSubTitle}>{siteConfig.tagline}</p>
-              </div>
-            </header>
-            <div className={styles.heroImg}>
-              <Lottie
-                animationData={
-                  colorMode === 'dark'
-                    ? allModuleAnimationDark
-                    : allModuleAnimation
-                }
-                loop={true}
-              />
-            </div>
-          </div>
+          <Lottie
+            animationData={
+              colorMode === 'dark' ? allModuleAnimationDark : allModuleAnimation
+            }
+            loop={true}
+          />
         );
       }}
     </BrowserOnly>
+  );
+}
+function HomepageHeader() {
+  const { siteConfig } = useDocusaurusContext();
+  return (
+    <div style={{ position: 'relative' }}>
+      <header className={clsx('container', styles.heroBanner)}>
+        <div className={styles.heroContainer}>
+          <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
+          <p className={styles.heroSubTitle}>{siteConfig.tagline}</p>
+        </div>
+      </header>
+      <div className={styles.heroImg}>
+        <HomePageAnimation />
+      </div>
+    </div>
   );
 }
 
