@@ -90,7 +90,7 @@ The following deprecated API endpoints are longer supported:
 
 - Accounts with a FREE license will no longer be able to configure SAML authentication. (PL-59708)
 
-- Added the Banners feature for users to display important messages across the UI. This feature is available behind the feature flag PL_CUSTOM_BANNERS. (PL-43420)
+- Added the Banners feature for users to display important messages across the UI. This feature is available behind the feature flag `PL_CUSTOM_BANNERS`. (PL-43420)
 
 ### Version 1.72.x <!-- January 20, 2025-->
 #### Fixed issues
