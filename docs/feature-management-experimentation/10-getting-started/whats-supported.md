@@ -103,7 +103,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20SDK/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20SDK/#basic-use)</td>
             <td>✘</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/JavaScript%20SDK/#basic-use)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20SDK/#basic-use)</td>
@@ -121,7 +121,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20SDK/Advanced%20feature%20flag%20evaluations/#get-treatments-with-configurations)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20SDK/Advanced%20feature%20flag%20evaluations/#get-treatments-with-configurations)</td>
             <td>✘</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/JavaScript%20SDK/Advanced%20feature%20flag%20evaluations/#get-treatments-with-configurations)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20SDK/#example-of-getting-feature-flag-treatments-with-configurations)</td>
@@ -139,7 +139,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20SDK/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20SDK/#basic-use)</td>
             <td>✘</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/JavaScript%20SDK/#basic-use)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20SDK/#basic-use)</td>
@@ -157,7 +157,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20SDK/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20SDK/#basic-use)</td>
             <td>✘</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/JavaScript%20SDK/#basic-use)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20SDK/#basic-use)</td>
@@ -175,7 +175,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20SDK/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20SDK/#basic-use)</td>
             <td>✘</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/JavaScript%20SDK/#basic-use)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20SDK/#basic-use)</td>
@@ -193,7 +193,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20SDK/Advanced%20feature%20flag%20evaluations/#user-attributes)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20SDK/Advanced%20feature%20flag%20evaluations/#user-attributes)</td>
             <td>✘</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/JavaScript%20SDK/Advanced%20feature%20flag%20evaluations/#user-attributes)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20SDK/Advanced%20feature%20flag%20evaluations/#user-attributes)</td>
@@ -229,8 +229,8 @@ import TabItem from '@theme/TabItem';
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/Browser%20RUM%20Agent/Advanced%20use%20cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20SDK/Track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20RUM%20Agent/Advanced%20use%20cases/#custom-events)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20SDK/Track/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20RUM%20Agent/Advanced%20use%20cases/#custom-events)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/JavaScript%20SDK/Track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20SDK/Track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20Native%20SDK/Track/)</td>
@@ -247,8 +247,8 @@ import TabItem from '@theme/TabItem';
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/Browser%20RUM%20Agent/Advanced%20use%20cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20SDK/Track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20RUM%20Agent/Advanced%20use%20cases/#custom-events)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20SDK/Track/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20RUM%20Agent/Advanced%20use%20cases/#custom-events)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/JavaScript%20SDK/Track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20SDK/Track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20Native%20SDK/Track/)</td>
@@ -265,8 +265,8 @@ import TabItem from '@theme/TabItem';
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/Browser%20RUM%20Agent/Advanced%20use%20cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20SDK/Track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20RUM%20Agent/Advanced%20use%20cases/#custom-events)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20SDK/Track/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20RUM%20Agent/Advanced%20use%20cases/#custom-events)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/JavaScript%20SDK/Track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20SDK/Track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20Native%20SDK/Track/)</td>
@@ -284,7 +284,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✅</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20RUM%20Agent/#automatic-metric-creation)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20RUM%20Agent/#automatic-metric-creation)</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
@@ -301,7 +301,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20SDK/Localhost%20mode/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20SDK/Localhost%20mode/)</td>
             <td>✘</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/JavaScript%20SDK/Localhost%20mode/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20SDK/Localhost%20mode/)</td>
@@ -319,7 +319,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✘</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20SDK/Flush/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20SDK/Flush/)</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
@@ -337,7 +337,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20SDK/Advanced%20use%20cases/#custom-impression-listener)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20SDK/Advanced%20use%20cases/#custom-impression-listener)</td>
             <td>✘</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/JavaScript/JavaScript%20SDK/Advanced%20use%20cases/#custom-impression-listener)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/React/React%20SDK/Advanced%20use%20cases/#custom-impression-listener)</td>
@@ -373,7 +373,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✘</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/iOS/iOS%20SDK/Advanced%20use%20cases/#certificate-pinning)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/SDKs/IOS/iOS%20SDK/Advanced%20use%20cases/#certificate-pinning)</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
