@@ -31,7 +31,17 @@ Chaos runner supports token-based authentication with the Harness Platform. If y
 
 ## Installation
 
-You can install HNP with or without using mTLS. Below are sample configurations for both of them.
+To install HNP, execute the below Helm command.
+
+```bash
+helm repo add harness-chaos https://harness.github.io/chaos-infra-helm-chart
+```
+
+```bash
+helm upgrade --install chaos-agent-proxy harness-chaos/chaos-infra -n hce -f override.yaml
+```
+
+You can install HNP with or without using mTLS. Described below are sample configurations for both of them.
 
 <Tabs>
 <TabItem value="Without mTLS">
@@ -76,17 +86,7 @@ agent-proxy:
 </TabItem>
 </Tabs>
 
-You can execute the below Helm command to install HNP.
-
-```bash
-helm repo add harness-chaos https://harness.github.io/chaos-infra-helm-chart
-```
-
-```bash
-helm upgrade --install chaos-agent-proxy harness-chaos/chaos-infra -n hce -f override.yaml
-```
-
-## Delegate-Driven Chaos Runner (DDCR)
+## HNP Configuration for Delegate-Driven Chaos Runner (DDCR)
 You can enable proxy settings in DDCR that enables you to restrict all the outbound traffic to go through the proxy.
 
 DDCR supports standard proxy variables `HTTP_PROXY` , `HTTPS_PROXY`, and `NO_PROXY`.
@@ -99,7 +99,7 @@ Instead, you can also provide `PROXY_URL` setting that is used to communicate wi
 
     ![](./static/delegate/mtls.png)
 
-## Discovery Agent
+## HNP Configuration for Discovery Agent
 
 You can enable proxy settings in Discovery Agent that enables you to restrict all the outbound traffic to go through the proxy.
 
