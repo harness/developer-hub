@@ -617,18 +617,17 @@ These strategies can be configured in the **Advanced Configuration** section of 
 ### Behavior of Failure Strategies
 
 - **Fallback to Stage-Level Strategy**:  
-  If no failure strategy is set at the service or environment level, the pipeline will fall back to the failure strategy defined at the stage level. However, this fallback only works if the stage-level strategy is within the subset of allowed failure strategies for the service or environment level. Failure strategies at the service/environment level are completely independent of step-level failure strategies.
+  If no failure strategy is set at the service or environment level, the pipeline will fall back to the failure strategy defined at the stage level. However, this fallback only works if the stage-level strategy is within the subset of allowed failure strategies for the service or environment level. 
+  
+  Failure strategies at the service/environment level are completely independent of step-level failure strategies.
 
 - **Flexibility Over Propagation**:  
   When propagating services and environments across stages, failure strategies are not propagated. Instead, users are given the flexibility to define a specific failure strategy for each stage, ensuring tailored configurations.
 
 ### Limitations
 
-- Failure strategies defined at the service/environment level can only override stage-level failure strategies and do not affect step-level failure strategies.
-
 - **Excluded Strategies for Environment Failures**:  
   Strategies such as **Manual Intervention**, **Ignore Failure**, **Mark as Success**, and **Proceed with Default Values** are not supported as they are not applicable to environment failures.
 
 - **Excluded Strategies for Service Failures**:  
   Strategies such as **Manual Intervention**, **Ignore Failure**, **Mark as Success**, and **Proceed with Default Values** are not supported as they are not applicable to service failures.
-
