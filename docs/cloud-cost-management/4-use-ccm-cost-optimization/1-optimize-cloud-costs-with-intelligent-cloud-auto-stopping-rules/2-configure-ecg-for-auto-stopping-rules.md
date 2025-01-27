@@ -45,11 +45,12 @@ You can configure either metrics or process watcher for your rule.
 ECG is supported only for Unix-like machines. To install the agent,
 
 1. Download the ECG file from the S3 link:  
-[https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/ecg_1.2.0_linux_amd64.zip](https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/ecg_1.2.0_linux_amd64.zip)
 
-```
-wget https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/ecg_1.2.0_linux_amd64.zip
-```
+- Windows : [https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/ecg_1.1.1_windows_amd64.zip](https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/ecg_1.1.1_windows_amd64.zip)
+
+
+- Linux : [https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/ecg_1.1.1_linux_amd64.zip](https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/ecg_1.1.1_linux_amd64.zip)
+
 
 2. Unzip the file and navigate into the resulting folder
 
@@ -111,21 +112,24 @@ And your threshold for resource useage is 50% CPU and 1G memory.
 The following example shows how to configure `ecg` with the above details:
 
 ```
-# Configuration file for the ECG agent  
-  
-accountID = "abcdSmUISimoRrJL6NL12w"  
-ruleHostName = "fluent-katydid-c6p67ucpv2dpsb76i66g.schedules-ce-dev.lightwingtest.com"  
-  
-# For process based heartbeats configure the below section.  
-  
-[process]  
-condition = "trainmodel.py"  
-  
-# For metrics based heartbeats configure the below section.  
-  
-#[metrics]  
-#cpu = "50"  
-#memory = "1Gb"
+# Configuration file for ecg agent
+
+ruleHostName = ""
+accountID = ""
+apiURL = "https://app.harness.io/gateway/lw/api"
+# Uncomment and edit the following based on your need.
+# For metrics based heartbeats configure the below section.
+# A heart beat will be sent when the metrics is greater than or equal to the configured threshold
+#[metrics]
+#cpu = "40"
+#memory = "5Gb"
+
+# For process based heartbeats configure the below section.
+# A heart beat will be sent when a process with matching condition is found
+# [process]
+# condition = "vim*"
+# [user_session]
+# watch = true
 ```
 
 #### Step 3: Restart the ECG Process
