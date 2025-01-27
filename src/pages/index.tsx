@@ -17,7 +17,7 @@ function HomepageHeader() {
   const { colorMode } = useColorMode();
   const { siteConfig } = useDocusaurusContext();
   return (
-    <BrowserOnly fallback={<div>Loading...</div>}>
+    <BrowserOnly fallback={<div></div>}>
       {() => {
         const Lottie = require('lottie-react').default;
 
