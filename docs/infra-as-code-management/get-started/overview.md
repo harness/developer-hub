@@ -29,7 +29,7 @@ For a more detailed demo, check out the [IaCM overview video](https://youtu.be/I
 Infrastructure as Code (IaC) is the ability to define cloud resources as code, allowing for repeatable infrastructure configuration. Examples of IaC tools include HashiCorp Terraform and Amazon CloudFormation.
 
 ### Workspace
-Your workspace is a container for your infrastructure resources, integrating IaC code, variables, cloud provider connections, state files, and workflows. [Go to the workspace guide](#) to learn more.
+Your workspace is a container for your infrastructure resources, integrating IaC code, variables, cloud provider connections, state files, and workflows. [Go to the create workspace guide](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#create-a-workspace) to learn more.
 
 ### Operations
 Operations are actions taken to manage and maintain your infrastructure using IaC tools.
