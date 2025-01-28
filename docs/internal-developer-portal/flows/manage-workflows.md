@@ -1,6 +1,6 @@
 ---
 title: Managing Workflows
-description: 
+description: Managing workflows
 sidebar_position: 3
 sidebar_label: Managing Workflows
 ---
@@ -37,6 +37,35 @@ You can delete your workflow as well:
 
 ### Executing Workflows
 You can launch workflows directly from the **“Workflows”** page in Harness IDP. Users will be prompted to provide input details via the configured frontend, and the workflow will execute accordingly.
+
+### Setting the owner of a Workflow
+
+It's a good practice to set an Owner of a Workflow so that developers can reach out to them if they have any questions or are stuck. The [spec.owner](https://developer.harness.io/docs/internal-developer-portal/catalog/how-to-create-idp-yaml#spec-owner) field can be set to a **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. You can also write the owner in plain text such as `team@mycompany.net` or `Infra Team`.
+
+A simple `workflow.yaml` definition might look something like this:
+
+```YAML {4}
+...
+# these are the steps which are rendered in the frontend with the form input
+spec:
+  owner: debabrata.panigrahi@harness.io
+  type: service
+  parameters:
+    - title: Service Details
+      properties:
+        owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+        # This field is hidden but needed to authenticate the request to trigger the pipeline
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
 
 
 

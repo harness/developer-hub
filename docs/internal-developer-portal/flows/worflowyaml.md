@@ -1,6 +1,6 @@
 ---
 title: Understanding workflow.yaml
-description: 
+description: Understanding workflow.yaml
 sidebar_position: 2
 sidebar_label: Workflow YAML
 ---

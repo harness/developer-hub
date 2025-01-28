@@ -1,6 +1,6 @@
 ---
 title: Setting Up the Backend with Harness Pipeline
-description: 
+description: Setting Up the Backend with Harness Pipeline
 sidebar_position: 3
 sidebar_label: Configuring Harness Pipelines
 ---
@@ -182,7 +182,7 @@ For more details, refer to the [Git Clone Documentation](https://git-scm.com/doc
 </Tabs>
 
 #### 2. Cookiecutter
-abcdef 
+The Cookiecutter step is used to take inputs for the cookiecutter template.
 
 ## Example Pipeline
 <Tabs>
