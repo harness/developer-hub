@@ -13,7 +13,7 @@ helpdocs_is_published: true
 
 Data flows from Harness to your running application by using FME SDK clients. Feature flags you define in Harness are consumed in your app. Flag evaluation information and metrics events are sent back to Harness to power feature flag monitoring and experimentation.
 
-![](./static/data_flow.png)
+![](./static/data-flow.png)
 
 The FME team builds and maintains FME SDKs for some of the most popular language libraries and are available under open source licenses. Follow the GitHub links for more information.
 
