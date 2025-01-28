@@ -679,7 +679,6 @@ const sidebars = {
     },
     "infra-as-code-management/get-started/overview",
     "infra-as-code-management/get-started/onboarding-guide",
-    "infra-as-code-management/get-started/key-concepts",
     {
       type: "html",
       value: "Use IaCM",

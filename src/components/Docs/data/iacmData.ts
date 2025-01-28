@@ -22,17 +22,11 @@ export const docsCards: CardSections = [
         link: "/docs/infra-as-code-management/get-started/onboarding-guide",
       },
       {
-        title: "Overview",
+        title: "Overview & key concepts",
         module: MODULES.iacm,
         description: "Learn about Harness Infrastructure as Code Management.",
         link: "/docs/infra-as-code-management/get-started/overview",
       },
-      {
-        title: "Key Concepts",
-        module: MODULES.iacm,
-        description: "Learn the key terms and concepts related to Infrastructure as Code Management.",
-        link: "/docs/infra-as-code-management/get-started/key-concepts",
-      }
     ]
   },
   {
@@ -43,13 +37,13 @@ export const docsCards: CardSections = [
         title: "Create a Workspace",
         module: MODULES.iacm,
         description: "Learn how to create a workspace",
-        link: "/docs/infra-as-code-management/use-iacm/create-workspace",
+        link: "/docs/infra-as-code-management/workspaces/create-workspace",
       },
       {
         title: "Provision and destroy workspaces",
         description: "Learn how to provision and destroy workspaces.",
         module: MODULES.iacm,
-        link: "/docs/infra-as-code-management/use-iacm/provision-workspace",
+        link: "/docs/infra-as-code-management/workspaces/provision-workspace",
       },
       {
         title: "Review workspace resources, states, and execution history",
@@ -67,13 +61,13 @@ export const docsCards: CardSections = [
         title: "Approval Step",
         module: MODULES.iacm,
         description: "Learn how to use the approval step to review resource changes before applying them.",
-        link: "/docs/infra-as-code-management/use-iacm/approval-step",
+        link: "/docs/infra-as-code-management/pipelines/operations/approval-step",
       },
       {
         title: "PR Automation",
         module: MODULES.iacm,
         description: "Learn how to set up a PR pipeline for infrastructure changes.",
-        link: "/docs/infra-as-code-management/use-iacm/pr-automation",
+        link: "/docs/infra-as-code-management/pipelines/operations/pr-automation",
       },
       {
         title: "Cost Estimation",
@@ -91,7 +85,7 @@ export const docsCards: CardSections = [
         title: "Drift Detection",
         module: MODULES.iacm,
         description: "Learn how to detect and get notified on drift.",
-        link: "/docs/infra-as-code-management/use-iacm/drift-detection",
+        link: "/docs/infra-as-code-management/pipelines/operations/drift-detection",
       },
       {
         title: "Workspace Permissions and Access Control",
