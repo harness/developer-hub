@@ -4,6 +4,10 @@ description: Setting Up the Backend with Harness Pipeline
 sidebar_position: 3
 sidebar_label: Configuring Harness Pipelines
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Self-service workflows in Harness IDP are powered by **Harness Pipelines**. Each workflow’s backend is configured using Actions and Harness Pipelines. Below is a detailed guide to setting this up in Harness IDP.
 
 ## Harness Pipelines: Backend Orchestration
