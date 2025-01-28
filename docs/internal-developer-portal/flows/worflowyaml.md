@@ -27,7 +27,7 @@ The frontend of Harness IDP workflows is customizable to accept different types 
 You can configure the frontend using the ```spec.parameters``` field in your YAML configuration. 
 
 **Example Syntax**:
-```
+```YAML
 spec:
   owner: backstage/techdocs-core
   type: service
@@ -53,7 +53,7 @@ The backend of Harness IDP workflows includes a library of steps and actions to 
 You can configure the backend using the spec.steps field in your YAML configuration. 
 
 **Example Syntax**:
-```
+```YAML
 steps:
   - id: trigger
     name: Creating your react app
@@ -76,7 +76,7 @@ steps:
 After backend execution, each step can produce output variables, which can be displayed in the frontend. These outputs can include links to newly created resources like Git repositories, documentation pages, or CI/CD pipelines.
 
 **Example Syntax**:
-```
+```YAML
 links:
   - title: "Repository Link"
     url: "${{ steps['repo-create'].output.repoUrl }}"
@@ -86,7 +86,7 @@ links:
 
 ## Example of ```workflow.yaml```
 Here's an example of a single-page workflow:
-```
+```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 # some metadata about the Workflow itself

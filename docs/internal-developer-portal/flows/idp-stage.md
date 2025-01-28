@@ -1,15 +1,8 @@
 ---
-title: IDP Stage
+title: IDP Stage Execution Steps
 description: Overview of IDP stage and the steps associated with it
 sidebar_position: 4
 ---
-
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-
-## Introduction
 
 The self-service flow in IDP is powered by the Harness Pipelines. A stage is a part of a pipeline that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
 
@@ -29,85 +22,61 @@ This functionality is limited to the modules and settings that you have access t
 
 :::
 
-
-## How to Add the Developer Portal Stage
-
-<Tabs>
-<TabItem value="Present Nav" label="Present Nav" default>
-
-1. Go to **Projects** and Select your project and create a new pipeline. 
-
-![](./static/old-nav.png)
-
-
-</TabItem>
-  <TabItem value="New Nav" label="New Nav">
-
-1. Go to **Pipelines** under **Admin** from side nav and **Create a Pipeline**. 
-
-![](./static/n-p-snav.png)
-
-
-</TabItem>
-</Tabs>
-
-
-2. Add a Name for your Pipeline and select **Inline** as pipeline storage options.
-
-![](./static/inline.png)
-
-3. Now **Select Stage Type** as **Developer Portal** and add a [name for your stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#stage-names) to **Set Up Stage**.
-
-![](./static/dev-portal-stage-selection.png)
-
-![](./static/set-up-stage.png)
-
-## Infrastructure
-
-4. Under **Infrastructure** tab, Harness recommends [Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#use-harness-cloud), but you can also use a [Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure), [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) or [self-managed AWS/GCP/Azure VM](/docs/category/set-up-vm-build-infrastructures) build infrastructure.
-
-![](./static/infrastructure.png)
-
-## Pipeline Variables
-
-5. Before adding the execution steps we need to create some **[pipeline variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable/)** with [runtime inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) which we will be using as **[expression inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions)** in various steps under execution. 
-
-6. To add pipeline variables go to the right nav of your page and select **Variables** icon.
-
-7. Under **Custom Variables** select **+Add Variable**.
-
-8. Add a name to the variable and select the input type as **Runtime**.
-
-
-![](./static/add-pipeline-variable.png)
-
-To use the pipeline variable select the input type as **Expressions** and follow the [JEXL format](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable/#reference-variables-in-a-pipeline) to add the variable. 
-
-![](./static/add-repo-details.png)
-
 ## Execution Steps
 
-9. Now add the steps under the **Execution Tab**. The following is the list of suggested steps to be used in the execution.
+### 1. Git Clone 
+*(Ignore this step if your repository containing the cookiecutter template is public)*
 
-![](./static/idp-stage.png)
+Add a Git Clone step to clone a repository into the Developer Portal stage's workspace. By cloning the repository, you gain access to the necessary code, scripts, or configurations, enabling various actions.
 
-### 1. Add the Git Clone step (Ignore this step if your repository containing cookiecutter template is public)
-
-Add a Git Clone step to clone a repository into the Developer Portal stage's workspace.
-
-By cloning the repository, you gain access to the necessary code, scripts, or configurations, enabling you to perform various actions.
-
-The Git Clone step uses a containerized step group. For more information, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md).
+The Git Clone step uses a containerized step group. For more information, refer to [Containerize Step Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/).
 
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
-![](./static/git-clone.png)
+1. In your Developer Portal stage, under Execution, select Add Step.
+2. Select Git Clone.
+3. Configure the step using the settings described below. 
 
+**Configuration Settings**
 
-1. In your Developer Portal stage, in **Execution**, select **Add Step**.
-2. Select **Git Clone**.
-3. Configure the steps using the settings described below.
+1. **Select Git Provider**: You can choose **Third-party Git Provider** if your code is not hosted in the Harness Code Repository.
+
+2. **Connector**: You can select a connector for the source control provider hosting the code repository that you want to clone.
+
+:::info
+- The connection type ``ssh`` is currently not supported for Connectors.
+- For credentials, only Username and Password types are supported.
+:::
+
+You can refer to the following resources for more information on creating code repo connectors:
+- Azure Repos: [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
+- Bitbucket: [Bitbucket Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+- GitHub: [GitHub Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+- GitLab: [GitLab Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+- Other Git Providers: 
+    - [Git Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
+    - [Connect to an AWS CodeCommit Repo](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo)
+
+3. **Repository Name**:
+- If the connector's URL Type is set to **Repository**, the Repository Name is automatically populated based on the connector's configuration.
+- If the connector's URL Type is set to **Account**, you must manually specify the repository name to clone into the stage workspace.
+
+4. **Build Type, Branch Name, and Tag Name**:
+For Build Type, choose:
+- Git Branch to clone code from a specific branch.
+- Git Tag to clone code from a specific commit tag.
+Based on your selection, specify the Branch Name or Tag Name.
+
+:::info
+You can use fixed values, runtime inputs, or variable expressions for branch and tag names. For instance, you can enter <+input> for the branch or tag name to specify them at runtime.
+:::
+
+5. **Clone Directory** (Optional): You can specify the target path in the stage workspace where the repository should be cloned.
+
+6. **Depth**: You should specify the number of commits to fetch when cloning the repository. 
+The default depth is 0, which fetches all commits from the specified branch.
+For more details, refer to the [Git Clone Documentation](https://git-scm.com/docs/git-clone).
 
 </TabItem>
 <TabItem value="YAML" label="YAML">
@@ -128,62 +97,6 @@ The Git Clone step uses a containerized step group. For more information, go to 
 
 </TabItem>
 </Tabs>
-
-#### Select Git Provider
-
-Select the Git Provider as **Third-party Git Provider** in case you don't have your code in [**Harness Code Repository**](https://developer.harness.io/docs/code-repository/) 
-
-
-#### Connector
-
-:::info
-
-Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
-
-![](./static/details-git-conector.png)
-![](./static/creds-git-connector.png)
-
-::: 
-
-Select a connector for the source control provider hosting the code repository that you want the step to clone.
-
-The following topics provide more information about creating code repo connectors:
-
-* Azure Repos: [Connect to Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
-* Bitbucket: [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-* GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-* GitLab: [GitLab Connector Settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-* Other Git providers:
-  * [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
-  * [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
-
-#### Repository Name
-
-If the connector's [URL Type](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference#url-type) is **Repository**, then **Repository Name** is automatically populated based on the repository defined in the connector's configuration.
-
-If the connector's URL Type is **Account**, then you must specify the name of the code repository that you want to clone into the stage workspace.
-
-#### Build Type, Branch Name, and Tag Name
-
-For **Build Type**, select **Git Branch** if you want the step to clone code from a specific branch within the repository, or select **Git Tag** if you want the step to clone code from a specific commit tag. Based on your selection, specify a **Branch Name** or **Tag Name**.
-
-:::tip
-
-You can use [fixed values, runtime input, or variable expressions](/docs/platform/variables-and-expressions/runtime-inputs/) for the branch and tag names. For example, you can enter `<+input>` for the branch or tag name to supply a branch or tag name at runtime.
-
-:::
-
-#### Clone directory
-
-An optional target path in the stage workspace where you want to clone the repo.
-
-#### Depth
-
-The number of commits to fetch when the step clones the repo.
-
-The default depth is `0`, which fetches all commits from the relevant branch.
-
-For more information, go to the [git clone documentation](https://git-scm.com/docs/git-clone).
 
 ### 2. Cookiecutter
 
