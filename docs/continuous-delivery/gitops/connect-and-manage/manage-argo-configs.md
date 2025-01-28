@@ -147,6 +147,13 @@ spec:
     server: '*'
   sourceRepos:
   - '*'
+  # SourceNamespaces defines the namespaces application resources are allowed to be created in
+  sourceNamespaces:
+  - x
+  - y 
+  - z
+  # PermitOnlyProjectScopedClusters determines whether destinations can only reference clusters which are project-scoped
+  permitOnlyProjectScopedClusters: true
 ```
 :::note Format of the Harness account ID
 A Harness account ID is a MongoDB document ID that could start with an underscore (`_`). This ID is not a valid Kubernetes label according to the [syntax and character set](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set) documentation for Kubernetes labels. Therefore, Harness GitOps creates a hash of the account ID. The hash is of the form `b.<harness-account-id>.e`.
@@ -197,6 +204,15 @@ spec:
     repoURL: https://github.com/argoproj/argocd-example-apps.git  # Can point to either a Helm chart repo or a git repo.
     targetRevision: master  # For Helm, this refers to the chart version.
     path: guestbook  # This has no meaning for Helm charts pulled directly from a Helm repo instead of git.
+    helm: 
+        # Ignore locally missing valueFiles when installing Helm chart. Defaults to false
+        ignoreMissingValueFiles: true
+        # Skip custom resource definition installation if chart contains custom resource definitions. Defaults to false
+        skipCrds: true
+        # Skip schema validation if chart contains JSON schema validation. Defaults to false
+        skipSchemaValidation: true
+        # SkipTests skips test manifest installation step (Helm's --skip-tests).
+        skipTests: true
   
   # Sources field specifies the list of sources for the application
   sources:
