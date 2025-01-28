@@ -5,7 +5,7 @@ sidebar_label: SBOM Drift Detection
 sidebar_position: 34
 ---
 
-Harness SCS's SBOM Drift Detection feature is designed for detectin g changes in Software Bill of Materials (SBOM) over a period of time. It provides a detailed analysis of the addition or removal of components and licenses, facilitating better management and oversight of software artifacts.
+Harness SCS's SBOM Drift Detection feature is designed for detecting changes in Software Bill of Materials (SBOM) over a period of time. It provides a detailed analysis of the addition or removal of components and licenses, facilitating better management and oversight of software artifacts.
 
 ## Key Features of SBOM Drift
 
