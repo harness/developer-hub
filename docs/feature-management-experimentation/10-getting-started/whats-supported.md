@@ -56,164 +56,164 @@ import TabItem from '@theme/TabItem';
         <thead>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0', minWidth:'15em'}}>Features</th>
-            <th>[Android SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-suite)</th>
-            <th>      [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk)</th>
-            <th>[Android RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-rum-agent/)</th>
-            <th>[Angular utilities](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/angular2/angular-utilities)</th>
-            <th>[Browser SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-suite)</th>
-            <th>      [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/)</th>
-            <th>[Browser RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-rum-agent/)</th>
-            <th>   [Flutter plugin](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/flutter2/flutter-plugin)</th>
-            <th>    [iOS SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-suite)</th>
-            <th>          [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/)</th>
-            <th>    [iOS RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-rum-agent/)</th>
-            <th>   [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/)</th>
-            <th>        [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-sdk/)</th>
-            <th> [React Native SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-native-sdk/)</th>
-            <th>        [Redux SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/redux2/redux-sdk)</th>
+            <th>[Android SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-suite)</th>
+            <th>      [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk)</th>
+            <th>[Android RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-rum-agent/)</th>
+            <th>[Angular utilities](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/angular/angular-utilities)</th>
+            <th>[Browser SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-suite)</th>
+            <th>      [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/)</th>
+            <th>[Browser RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/)</th>
+            <th>   [Flutter plugin](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/flutter/flutter-plugin)</th>
+            <th>    [iOS SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-suite)</th>
+            <th>          [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/)</th>
+            <th>    [iOS RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-rum-agent/)</th>
+            <th>   [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/)</th>
+            <th>        [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/)</th>
+            <th> [React Native SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/)</th>
+            <th>        [Redux SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/redux/redux-sdk)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Language(s)</th>
-            <td>[Java](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/java2/android-suite)/[Kotlin](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/kotlin2/android-suite)</td>
-            <td>[Java](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/java2/android-sdk/)/[Kotlin](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/kotlin2/android-sdk/)</td>
-            <td>[Java](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/java2/android-rum-agent/)/[Kotlin](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/kotlin2/android-rum-agent/)</td>
-            <td>[TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/typescript2/angular-utilities)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-suite)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-suite)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/typescript2/browser-sdk/)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-rum-agent/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/typescript2/browser-rum-agent/)</td>
-            <td>[Dart](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/dart2/flutter-plugin)/[Flutter](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/flutter2/flutter-plugin)</td>
-            <td>[Swift](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/swift2/ios-suite)</td>
-            <td>[Swift](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/swift2/ios-sdk/)</td>
-            <td>[Swift](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/swift2/ios-rum-agent/)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/typescript2/javascript-sdk/)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/react-sdk/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/typescript2/react-sdk/)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/react-native-sdk/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/typescript2/react-native-sdk/)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/redux-sdk)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/typescript2/redux-sdk)</td>
+            <td>[Java](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/java/android-suite)/[Kotlin](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/kotlin/android-suite)</td>
+            <td>[Java](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/java/android-sdk/)/[Kotlin](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/kotlin/android-sdk/)</td>
+            <td>[Java](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/java/android-rum-agent/)/[Kotlin](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/kotlin/android-rum-agent/)</td>
+            <td>[TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/angular-utilities)</td>
+            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-suite)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-suite)</td>
+            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/browser-sdk/)</td>
+            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/browser-rum-agent/)</td>
+            <td>[Dart](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/dart/flutter-plugin)/[Flutter](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/flutter/flutter-plugin)</td>
+            <td>[Swift](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/swift/ios-suite)</td>
+            <td>[Swift](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/swift/ios-sdk/)</td>
+            <td>[Swift](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/swift/ios-rum-agent/)</td>
+            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/javascript-sdk/)</td>
+            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/react-sdk/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/react-sdk/)</td>
+            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/react-native-sdk/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/react-native-sdk/)</td>
+            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/redux-sdk)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/redux-sdk)</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Feature flag evaluation</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/#basic-use)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/#basic-use)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/#basic-use)</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-native-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/#basic-use)</td>
             <td>✅</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Dynamic config (for feature flag treatments)</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-sdk/#example-of-getting-feature-flag-treatments-with-configurations)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-native-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/#example-of-getting-feature-flag-treatments-with-configurations)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
             <td>✅</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>User ID targeting</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/#basic-use)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/#basic-use)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/#basic-use)</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-native-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/#basic-use)</td>
             <td>✅</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Segment targeting</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/#basic-use)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/#basic-use)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/#basic-use)</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-native-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/#basic-use)</td>
             <td>✅</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Large Segment targeting</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/#basic-use)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/#basic-use)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/#basic-use)</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-native-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/#basic-use)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/#basic-use)</td>
             <td>✅</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Custom attributes targeting</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-native-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
             <td>✅</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Flag sets</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/configuration2/#syncconfig)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/configuration2/#syncconfig)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/configuration2/#splitfilters)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/configuration2/#splitfilters)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/configuration2/#sync)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/configuration2/#sync)</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/configuration2/#syncsplitfilters)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/configuration2/#syncsplitfilters)</td>
             <td>✅</td>
             <td>✅</td>
             <td>✅</td>
@@ -221,70 +221,70 @@ import TabItem from '@theme/TabItem';
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Experiments</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/track2/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/real-user-monitoring/android-rum-agent/advanced-use-cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-rum-agent/advanced-use-cases/#custom-events)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/advanced-use-cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-native-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-rum-agent/advanced-use-cases/#custom-events)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/track2/)</td>
             <td>✅</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Event tracking</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/track2/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/real-user-monitoring/android-rum-agent/advanced-use-cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-rum-agent/advanced-use-cases/#custom-events)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/advanced-use-cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-native-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-rum-agent/advanced-use-cases/#custom-events)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/track2/)</td>
             <td>✅</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Custom event properties</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/track2/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/real-user-monitoring/android-rum-agent/advanced-use-cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-rum-agent/advanced-use-cases/#custom-events)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/advanced-use-cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-native-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-rum-agent/advanced-use-cases/#custom-events)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/track2/)</td>
             <td>✅</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Automatic metrics</th>
             <td>✅</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-rum-agent/#automatic-metric-creation)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-rum-agent/#automatic-metric-creation)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-rum-agent/#automatic-metric-creation)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/#automatic-metric-creation)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-rum-agent/#automatic-metric-creation)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-rum-agent/#automatic-metric-creation)</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
@@ -293,25 +293,25 @@ import TabItem from '@theme/TabItem';
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Localhost mode</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/localhost-mode/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/localhost-mode/)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/localhost-mode/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/localhost-mode/)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/localhost-mode/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/localhost-mode/)</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/localhost-mode/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-sdk/localhost-mode/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-native-sdk/localhost-mode/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/localhost-mode/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/localhost-mode/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/localhost-mode/)</td>
             <td>✅</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Flush</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/flush2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/flush2/)</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
@@ -319,7 +319,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✘</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/flush2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/flush2/)</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
@@ -329,19 +329,19 @@ import TabItem from '@theme/TabItem';
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>External impression listener (for data montoring integrations)</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/advanced-use-cases/#custom-impression-listener)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/advanced-use-cases/#custom-impression-listener)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/advanced-use-cases/#custom-impression-listener)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/advanced-use-cases/#custom-impression-listener)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/advanced-use-cases/#custom-impression-listener)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/advanced-use-cases/#custom-impression-listener)</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/advanced-use-cases/#custom-impression-listener)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-sdk/advanced-use-cases/#custom-impression-listener)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-native-sdk/advanced-use-cases/#custom-impression-listener)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/advanced-use-cases/#custom-impression-listener)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/advanced-use-cases/#custom-impression-listener)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/advanced-use-cases/#custom-impression-listener)</td>
             <td>✅</td>
           </tr>
           <tr>
@@ -351,21 +351,21 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✘</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/browser-sdk/configuration2/#headeroverrides)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/configuration2/#headeroverrides)</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/javascript2/javascript-sdk/configuration2/#headeroverrides)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-sdk/configuration2/#headeroverrides)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/react2/react-native-sdk/configuration2/#headeroverrides)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/configuration2/#headeroverrides)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/configuration2/#headeroverrides)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/configuration2/#headeroverrides)</td>
             <td>✘</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Certificate pinning</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/android2/android-sdk/advanced-use-cases/#certificate-pinning)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/advanced-use-cases/#certificate-pinning)</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
@@ -373,7 +373,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✘</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks2/ios2/ios-sdk/advanced-use-cases/#certificate-pinning)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/advanced-use-cases/#certificate-pinning)</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>

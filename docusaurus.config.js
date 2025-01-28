@@ -577,7 +577,7 @@ async function config() {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/harness/developer-hub/tree/main', // /tree/main/packages/create-docusaurus/templates/shared/
           // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
-          exclude: ['**/shared/**', '**/static/**', '**/_templates/**', '**/docs/sdks2/_*/*', '**/docs/real-user-monitoring/_*/*'],
+          exclude: ['**/shared/**', '**/static/**', '**/_templates/**', '**/docs/sdks/_*/*', '**/docs/real-user-monitoring/_*/*'],
           routeBasePath: 'docs', //CHANGE HERE
           remarkPlugins: [
             [
