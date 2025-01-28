@@ -19,21 +19,21 @@ import {
               module: MODULES.ssca,
               description:
                 "Start using Harness SCS.",
-              link: "/docs/software-supply-chain-assurance/get-started/onboarding-guide",
+              link: "/docs/supply-chain-security/get-started/onboarding-guide",
             },
             {
               title: "SCS overview",
               module: MODULES.ssca,
               description:
                 "Learn how the Harness Supply Chain Security module addresses software supply chain security challenges.",
-              link: "/docs/software-supply-chain-assurance/get-started/overview",
+              link: "/docs/supply-chain-security/get-started/overview",
             },
             {
               title: "SCS key concepts",
               module: MODULES.ssca,
               description:
                 "Learn key concepts for SCS, such as SBOM, SLSA, remediation, prevention, and policy enforcement.",
-              link: "/docs/software-supply-chain-assurance/get-started/key-concepts",
+              link: "/docs/supply-chain-security/get-started/key-concepts",
             },
 
           ],
@@ -49,7 +49,7 @@ import {
               module: MODULES.ssca,
               description:
                 "Generate, manage, and analyze SBOM for software artifacts.",
-              link: "/docs/software-supply-chain-assurance/sbom/generate-sbom",
+              link: "/docs/supply-chain-security/sbom/generate-sbom",
             },
             {
                 title: "Enforce SBOM policies",
