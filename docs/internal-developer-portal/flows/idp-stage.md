@@ -69,7 +69,7 @@ For Build Type, choose:
 Based on your selection, specify the Branch Name or Tag Name.
 
 :::info
-You can use fixed values, runtime inputs, or variable expressions for branch and tag names. For instance, you can enter <+input> for the branch or tag name to specify them at runtime.
+You can use fixed values, runtime inputs, or variable expressions for branch and tag names. For instance, you can enter input for the branch or tag name to specify them at runtime.
 :::
 
 5. **Clone Directory** (Optional): You can specify the target path in the stage workspace where the repository should be cloned.
