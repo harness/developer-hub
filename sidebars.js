@@ -670,8 +670,7 @@ const sidebars = {
           "Get started with Harness Infrastructure as Code Management",
       },
       collapsed: true,
-      items: ["infra-as-code-management/whats-supported"]
-    },
+      items: [
     {
       type: "html",
       value: "New to IaCM?",
@@ -753,8 +752,11 @@ const sidebars = {
       value: "IaCM Resources",
       className: "horizontal-bar",
     },
+    "infra-as-code-management/whats-supported",
     "infra-as-code-management/iacm-security",
     "infra-as-code-management/faq",
+    ],
+  },
     // Release Notes
     {
       type: "link",
