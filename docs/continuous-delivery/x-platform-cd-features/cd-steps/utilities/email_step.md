@@ -126,4 +126,3 @@ Currently, Harness is unable to check whether the emails sent using the Email st
 If you are encountering issues with email delivery, please open a Harness support ticket.
 
 If you are using a custom email provider (as described in [Add SMTP configuration](/docs/platform/notifications/add-smtp-configuration/)) Harness will not have access to your emails. Please check your email provider and server log to determine the cause of the error.
-
