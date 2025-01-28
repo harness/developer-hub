@@ -8,7 +8,7 @@ redirect_from:
 
 Welcome to the Internal Developer Portal (IDP)! This **Get Started with IDP** section will guide you through the key steps to get started with the IDP and make the most of its capabilities.
 
-<DocImage path={require('./static/get-started-flow.png')} width="60%" height="40%" title="Click to view full size image" />
+<DocImage path={require('./static/get-started-flow.png')} width="80%" height="40%" title="Click to view full size image" />
 
 #### 1. [Enable the Module](./enabling-module)
 The first step to getting started with the IDP is enabling the module in your Harness Account. Currently, this module is enabled on request.
