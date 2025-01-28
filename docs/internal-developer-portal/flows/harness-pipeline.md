@@ -35,11 +35,7 @@ To create a Harness Pipeline using the IDP Stage, follow these steps:
 1. In your Harness IDP, go to **Admin -> Select Project**.
 2. Now start with **Create a Pipeline**.
 
-![](./static/navigate-pipeline.gif)
-
 3. Add a **Name**, select the type as **Inline** and **Continue**.
-
-![](static/name-pipeline.png)
 
 4. Now **Select Stage Type** as **Developer Portal** and add a [name for your stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#stage-names) to **Set Up Stage**.
 
@@ -107,82 +103,7 @@ spec:
 ```
 
 ### Execution Steps (IDP Stage)
-#### 1. Git Clone 
-*(Ignore this step if your repository containing the cookiecutter template is public)*
-
-Add a Git Clone step to clone a repository into the Developer Portal stage's workspace. By cloning the repository, you gain access to the necessary code, scripts, or configurations, enabling various actions.
-
-The Git Clone step uses a containerized step group. For more information, refer to [Containerize Step Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/).
-
-<Tabs>
-<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
-
-1. In your Developer Portal stage, under Execution, select Add Step.
-2. Select Git Clone.
-3. Configure the step using the settings described below. 
-
-**Configuration Settings**
-
-1. **Select Git Provider**: You can choose **Third-party Git Provider** if your code is not hosted in the Harness Code Repository.
-
-2. **Connector**: You can select a connector for the source control provider hosting the code repository that you want to clone.
-
-:::info
-- The connection type ``ssh`` is currently not supported for Connectors.
-- For credentials, only Username and Password types are supported.
-:::
-
-You can refer to the following resources for more information on creating code repo connectors:
-- Azure Repos: [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
-- Bitbucket: [Bitbucket Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-- GitHub: [GitHub Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-- GitLab: [GitLab Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-- Other Git Providers: 
-    - [Git Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
-    - [Connect to an AWS CodeCommit Repo](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo)
-
-3. **Repository Name**:
-- If the connector's URL Type is set to **Repository**, the Repository Name is automatically populated based on the connector's configuration.
-- If the connector's URL Type is set to **Account**, you must manually specify the repository name to clone into the stage workspace.
-
-4. **Build Type, Branch Name, and Tag Name**:
-For Build Type, choose:
-- Git Branch to clone code from a specific branch.
-- Git Tag to clone code from a specific commit tag.
-Based on your selection, specify the Branch Name or Tag Name.
-
-:::info
-You can use fixed values, runtime inputs, or variable expressions for branch and tag names. For instance, you can enter ```input``` for the branch or tag name to specify them at runtime.
-:::
-
-5. **Clone Directory** (Optional): You can specify the target path in the stage workspace where the repository should be cloned.
-
-6. **Depth**: You should specify the number of commits to fetch when cloning the repository. 
-The default depth is 0, which fetches all commits from the specified branch.
-For more details, refer to the [Git Clone Documentation](https://git-scm.com/docs/git-clone).
-
-</TabItem>
-<TabItem value="YAML" label="YAML">
-
-```YAML
-- step:
-   type: GitClone
-   name: GitClone_1
-   identifier: GitClone_1
-   spec:
-     connectorRef: account.GitConnectorBzGN8G1COj
-     repoName: myrepo
-     build:
-       type: branch
-       spec:
-         branch: main
-```
-
-</TabItem>
-</Tabs>
-
-#### 2. Cookiecutter
-The Cookiecutter step is used to take inputs for the cookiecutter template.
+There are various execution steps which can be added as a part of IDP stage. You can learn more about the detailed descriptions here.
 
 ## Example Pipeline
 <Tabs>
