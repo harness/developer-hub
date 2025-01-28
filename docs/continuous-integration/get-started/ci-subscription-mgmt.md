@@ -33,7 +33,7 @@ To view and manage your Harness CI subscription in your Harness Account
 
 Harness Continuous Integration module is using the Developer 360 subscription model. [Learn more Developer license model](/docs/platform/get-started/subscriptions-licenses/subscriptions/).
 
-<DocImage path={require('/docs/continuous-integration/get-started/static/ci_user_license_overview.png')} />
+<DocImage path={require('/docs/continuous-integration/get-started/static/ci-user-license-overview.png')} />
 
 ### Cloud Credits
 
@@ -44,7 +44,7 @@ The Cloud Credits View in Harness provides a comprehensive overview of your clou
 [Learn more about Harness Cloud billing](/docs/continuous-integration/get-started/ci-subscription-mgmt#harness-cloud-billing-and-cloud-credits).
 
 
-<DocImage path={require('/docs/continuous-integration/get-started/static/credits_usage_new_v2.png')} />
+<DocImage path={require('/docs/continuous-integration/get-started/static/credits-usage-new-v2.png')} />
 
 
 
