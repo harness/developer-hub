@@ -45,7 +45,7 @@ export default function CE() {
                 className={styles.illustration}
                 src={
                   colorMode === "light"
-                    ? `${baseUrl}img/ir_landing_page.svg`
+                    ? `${baseUrl}img/ir-landing-page.svg`
                     : `${baseUrl}img/CE_Landing_Page_dark_mode.svg`
                 }
               />
