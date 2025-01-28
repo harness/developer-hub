@@ -26,11 +26,13 @@ Policies can be created at the account, organization, and project levels, this g
 
 ### Creating an SBOM Policy
 
-Navigate to "Account Settings," proceed to "Policies," and select "Policies" from the options in the top right corner. Then, click on the "+New Policy" button.
+1. Navigate to Account Settings > Security and Governance > Policies within your Harness Account, and select "Policies" from the options in the top right corner. Then, click on the "+New Policy" button.
 
-In the policy creation window, name the policy "SBOM allow and deny List" and click "Create."
+2. In the policy creation window, name the policy "SBOM allow and deny List" and click "Create."
 
-You can then browse the library of sample policies by searching for "sbom" and select the appropriate option according to your needs.
+![SBOM policy create step](./static/som-policy-create.png)
+
+3. You can then browse the library of sample policies by searching for "sbom" and select the appropriate option according to your needs.
 
 
 ![SBOM Sample policies]( ./static/sample-policies-sbom.png "SBOM Sample policies")
@@ -55,7 +57,7 @@ To create an SBOM Policy Set, follow these steps:
 
 
 
-1. Click on “Account Settings” and navigate to “Policies.”
+1. Navigate to Account Settings > Security and Governance > Policies within your Harness Account, and select "Policies"
 2. Select “Policy Sets” from the options in the top right corner, then click on the “+New Policy Set” button.
 3. Name the policy set and choose “SBOM” for the “Entity Type that this policy set applies to” field.
 
