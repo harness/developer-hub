@@ -203,17 +203,17 @@ import TabItem from '@theme/TabItem';
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Flag sets</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/configuration2/#syncconfig)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/configuration/#syncconfig)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/configuration2/#splitfilters)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/configuration/#splitfilters)</td>
             <td>✘</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/configuration2/#sync)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/configuration/#sync)</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/configuration2/#syncsplitfilters)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/configuration/#syncsplitfilters)</td>
             <td>✅</td>
             <td>✅</td>
             <td>✅</td>
@@ -221,55 +221,55 @@ import TabItem from '@theme/TabItem';
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Experiments</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/real-user-monitoring/android-rum-agent/advanced-use-cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/advanced-use-cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/track/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/track/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/track/)</td>
             <td>✅</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Event tracking</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/real-user-monitoring/android-rum-agent/advanced-use-cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/advanced-use-cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/track/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/track/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/track/)</td>
             <td>✅</td>
           </tr>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Custom event properties</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/real-user-monitoring/android-rum-agent/advanced-use-cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/advanced-use-cases/#custom-events)</td>
             <td>✅</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/track/)</td>
             <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/track2/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/track2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/track/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/track/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/track/)</td>
             <td>✅</td>
           </tr>
           <tr>
@@ -351,15 +351,15 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✘</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/configuration2/#headeroverrides)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/configuration/#headeroverrides)</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/configuration2/#headeroverrides)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/configuration2/#headeroverrides)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/configuration2/#headeroverrides)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/configuration/#headeroverrides)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/configuration/#headeroverrides)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/configuration/#headeroverrides)</td>
             <td>✘</td>
           </tr>
           <tr>

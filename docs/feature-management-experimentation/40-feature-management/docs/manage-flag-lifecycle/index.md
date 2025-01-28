@@ -58,7 +58,7 @@ import Link from "@docusaurus/Link";
 ## When to Retire a feature flag
 
 <p>
-  <span class="il">Now that you have feature flags in production, what are the indicators you might establish for when to retire a flag.</span>
+  <span class="il">Now that you have feature flags in production, what are the indicators you might establish for when to retire a flag?</span>
 </p>
 <ul>
   <li>
@@ -74,30 +74,6 @@ import Link from "@docusaurus/Link";
     out to everyone or removed from code = eligible for retirement
   </li>
 </ul>
-<p>
-  To surface the feature flags that fall into the first two criteria, within the
-  Environments tab in your Split dashboard you have the option to filter by;
-</p>
-<ul>
-  <li>Active feature flags</li>
-  <li>Killed feature flags</li>
-  <li>
-    Feature flags that have received traffic in the last 7 days
-  </li>
-  <li>
-    Feature flags that have received no traffic in the last 7 days
-  </li>
-  <li>Feature flags that have seen no traffic at all</li>
-  <li>
-    Feature flags that have been modified in the last 7 days
-  </li>
-  <li>
-    Feature flags that have not been modified in the last 30 days
-  </li>
-</ul>
-<p>
-  <img src="https://help.split.io/hc/article_attachments/30833457109645" alt="feature_flag_lifecycle_management.png" />
-</p>
 
 ## For Consistency
 

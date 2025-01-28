@@ -1,6 +1,6 @@
 ---
-title: Moving between accounts
-sidebar_label: Moving between accounts
+title: Migrating between organizations or workspaces
+sidebar_label: Migrating between organizations or workspaces
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -8,7 +8,7 @@ helpdocs_is_published: true
 import Link from "@docusaurus/Link";
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360046816411-Logging-into-the-Help-Center <br /> ✘ images still hosted on help.split.io </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/27102223383053-Migrating-between-organizations-or-workspaces <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 # Migrating between organizations or workspaces
