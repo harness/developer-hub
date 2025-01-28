@@ -86,6 +86,90 @@ links:
 
 ## Example of ```workflow.yaml```
 Here's an example of a single-page workflow:
+```
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+# some metadata about the Workflow itself
+metadata:
+  name: react-app
+  title: Create a new service
+  description: A Workflow to create a new service
+  tags:
+    - nextjs
+    - react
+    - javascript
+# these are the steps which are rendered in the frontend with the form input
+spec:
+  owner: d.p@harness.io
+  type: service
+  parameters:
+    - title: Service Details
+      required:
+        - project_name
+        - template_type
+        - public_template_url
+        - repository_type
+        - repository_description
+        - repository_default_branch
+        - direct_push_branch
+        - slack_id
+      properties:
+        # This field is hidden but needed to authenticate the request to trigger the pipeline
+        # DO NOT Remove this field.
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+        projectId:
+            title: Project Identifier
+            description: Harness Project Identifier
+            type: string
+            ui:field: HarnessProjectPicker
+        template_type:
+          title: Type of the Template
+          type: string
+          description: Type of the Template
+        public_template_url:
+          title: Give a Public template URL
+          type: string
+          description: Give a Public Cookiecutter Template
+        repository_type:
+          type: string
+          title: Repository Type
+          enum:
+            - public
+            - private
+          default: Public
+        repository_description:
+          type: string
+          title: Add a description to your repo
+          description: Auto-generated using Self-Service-Flow of Harness-IDP
+        owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+  #steps that are executed in series in the Workflow backend
+  steps:
+    - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/account_id/module/idp/orgs/org_id/projects/project_id/pipelines/pipeline_id/pipeline-studio/?storeType=INLINE"
+        inputset:
+          project_name: ${{ parameters.project_name }}
+          template_type: ${{ parameters.template_type }}
+          public_template_url: ${{ parameters.public_template_url }}
+        apikey: ${{ parameters.token }}
+  # some outputs which are saved along with the job for use in the frontend
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+```
 
 
 ## Syntax Essentials
