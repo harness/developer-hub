@@ -27,11 +27,11 @@ When executed, the pipeline will fail if drift is detected, and you will be able
 **In the Workspace** When drift is detected, the resources will go into a "Drifted" mode 
 Under the "Resources" tab, you will be able to see which resources are in drift
 
-![Resources](static/Workspace-drift.png) 
+![Resources](static/workspace-drift.png) 
 
 Clicking on each resource will highlight which attribute drifted
 
-![Resources](static/Workspace-drift-attributes.png) 
+![Resources](static/workspace-drift-attributes.png) 
 
 ## Drift detection during resource provisioning 
 Harness IaCM can also detect drift during a provisioning operation. If during execution, IaCM identifies drift, the drift information will be populated in the Approval step and "Resources" Tab
