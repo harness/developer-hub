@@ -311,7 +311,7 @@ import TabItem from '@theme/TabItem';
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Flush</th>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/flush2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/flush/)</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
@@ -319,7 +319,7 @@ import TabItem from '@theme/TabItem';
             <td>✘</td>
             <td>✘</td>
             <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/flush2/)</td>
+            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/flush/)</td>
             <td>✘</td>
             <td>✘</td>
             <td>✘</td>
