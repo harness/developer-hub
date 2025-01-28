@@ -3,6 +3,7 @@ title: "Article: Moving Feature Flags to a Service"
 sidebar_label: "Article: Moving Feature Flags to a Service"
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 2
 ---
 
 <p>
