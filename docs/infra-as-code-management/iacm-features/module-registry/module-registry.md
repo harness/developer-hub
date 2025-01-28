@@ -2,7 +2,7 @@
 title: Module Registry
 description: Learn how to register a module in Harness IaCM
 sidebar_position: 10
-sidebar_label: Module registry
+sidebar_label: Register modules
 ---
 
 <CTABanner
