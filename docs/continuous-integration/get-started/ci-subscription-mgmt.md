@@ -29,7 +29,7 @@ To view and manage your Harness CI subscription in your Harness Account
 
 ### Continuous Integration License
 
-####  Developer 360 subscriptions
+####  Developer 360 subscription
 
 Harness Continuous Integration module is using the Developer 360 subscription model. [Learn more Developer license model](/docs/platform/get-started/subscriptions-licenses/subscriptions/).
 
