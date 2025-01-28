@@ -162,7 +162,7 @@ export const moduleIconAndColor = {
     },
   },
   'Incident Response': {
-    iconUrl: 'https://developer.harness.io/img/icon_ir.svg',
+    iconUrl: 'https://developer.harness.io/img/icon-ir.svg',
     colors: {
       border: '--mod-ce-200',
       backgroundColor: '--mod-ce-100',
