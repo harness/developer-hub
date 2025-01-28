@@ -18,7 +18,8 @@ public class SplitView {
     public long changeNumber;
     public Map<String, String> configs;
     public String defaultTreatment;
-    public List<String> sets;
+    public List<String> sets;    
+    public boolean impressionsDisabled;
 }
 ```
 
@@ -34,6 +35,7 @@ class SplitView(
     var changeNumber: Long
     var defaultTreatment: String?
     var sets: List<String>
+    var impressionsDisabled: Boolean
 )
 ```
 
