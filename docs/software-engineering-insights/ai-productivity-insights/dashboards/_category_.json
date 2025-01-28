@@ -1,0 +1,11 @@
+{
+    "label":"Dashboards & analytics",
+    "position": 22,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Dashboards & analytics"
+    }
+ }
