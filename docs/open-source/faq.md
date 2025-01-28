@@ -42,7 +42,7 @@ Yes, you can override the default cloning task image by ensuring the desired ima
 
 ### How can I handle SSL errors when using the default clone task?
 
-If you encounter SSL errors, you can bypass them by setting clone.insecure=true. However, if you prefer not to disable SSL, you can configure your Docker environment to trust the necessary certificates.
+If you encounter SSL errors, you can bypass them by setting `clone.insecure=true`. However, if you prefer not to disable SSL, you can configure your Docker environment to trust the necessary certificates.
 
 
 ## Pipeline fails with /bin/sh: no such file or directory error
