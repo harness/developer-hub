@@ -11,7 +11,7 @@ With Harness Security Testing Orchestration (STO), you can easily perform SAST u
 
 ## Setup SAST scanning with Harness STO
 
-You can use any of the integrated scanners that perform SAST scanning, or you can leverage the Harness STO [Built-in Scanner workflow](/docs/security-testing-orchestration/sto-techref-category/built-in). The Built-in Scanner step enables you to set up scans without requiring paid licenses or complex configurations. Currently, the Built-in Scanner uses Semgrep, and adding it via the SAST step automatically integrates [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) into your pipeline with everything configured. To learn more about using the Built-in Scanner, refer to this documentation. Alternatively, you can follow the specific integration guides linked below for detailed configuration steps.
+You can use any of the integrated scanners that perform SAST scanning, or you can leverage the Harness STO [Built-in Scanner workflow](/docs/category/built-in-scan-steps). The Built-in Scanner step enables you to set up scans without requiring paid licenses or complex configurations. Currently, the Built-in Scanner uses Semgrep, and adding it via the SAST step automatically integrates [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) into your pipeline with everything configured. To learn more about using the Built-in Scanner, refer to this documentation. Alternatively, you can follow the specific integration guides linked below for detailed configuration steps.
 
 <DocVideo src="https://youtu.be/qFnS6X4d5Ro?si=2s1oTw2f8q-mzrkx" />
 
