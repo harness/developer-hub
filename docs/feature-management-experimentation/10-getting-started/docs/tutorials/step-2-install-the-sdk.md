@@ -29,7 +29,7 @@ Split SDKs are for specific languages or use cases. To choose the best SDK for y
 * [Browser SDK Suite](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite)
 * [Browser SDK](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK)
 * [Flutter plugin](https://help.split.io/hc/en-us/articles/8096158017165-Flutter-plugin)
-* [GO SDK](https://help.split.io/hc/en-us/articles/360020093652)
+* [Go SDK](https://help.split.io/hc/en-us/articles/360020093652)
 * [iOS SDK Suite](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite)
 * [iOS SDK](https://help.split.io/hc/en-us/articles/360020401491)
 * [Java SDK](https://help.split.io/hc/en-us/articles/360020405151)

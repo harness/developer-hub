@@ -1,7 +1,6 @@
 ---
-title: HTTP API
-sidebar_label: HTTP API
-description: HTTP API description.
+title: Split API
+sidebar_label: Split API
 sidebar_position: 80
 helpdocs_is_private: false
 helpdocs_is_published: true
@@ -18,26 +17,24 @@ import OutboundSvg from "@site/docs/feature-management-experimentation/_template
 
 <FmePreviewAdmonition ApiInfoHighlight="infoHighlight" />
 
-## FME HTTP API
-
-See our <a href="https://docs.split.io">Admin API<OutboundSvg /></a> documentation.
+:::note
+**Split API** is also called **Split Admin API** and **Admin API**. 
+:::
 
 ### Overview
 
-You can use the Split Admin API to:
+You can use the Admin API to:
 - push data into Split
 - get data out of Split
 - build custom integrations
 - build on top of the Split platform
 
-### Admin API specifications
+### Specifications
 
-The [Split Admin API](https://docs.split.io/reference/introduction) documentation provides specifications for all public API endpoints, along with details on [authentication](https://docs.split.io/reference/authentication) and [rate limiting](https://docs.split.io/reference/rate-limiting). You can also find a link to the [postman collection containing all Split Admin API endpoints](https://docs.split.io/reference/postman).
+The [Admin API](https://docs.split.io/reference/introduction) documentation provides specifications for all public API endpoints, along with details on [authentication](https://docs.split.io/reference/authentication) and [rate limiting](https://docs.split.io/reference/rate-limiting). You can also find a link to the [postman collection containing all Admin API endpoints](https://docs.split.io/reference/postman).
 
-### Admin API wrappers
+### Wrappers
 
-Admin API wrappers are available for Java, Node, PHP, Python, and Ruby. Learn more in the [Admin API wrappers](https://help.split.io/hc/en-us/sections/12618854150157-Admin-API-Wrappers) section of the Help Center.
+You can use the [Python Library Wrapper for Split API](./docs/fme-api-wrappers/python-library-wrapper-for-fme-api/python-library-wrapper-for-fme-api.md) to work with standalone Split. This library is maintained by the Harness FME team.
 
-### Admin API examples
-
-Working examples that call the Split Admin API to accomplish typical tasks are available in the [Admin API examples](https://help.split.io/hc/en-us/sections/360004020552-Admin-API-Examples) section of the Help Center.
+See also [Split API FAQs](./docs/zfaqs).

@@ -17,11 +17,11 @@ import FmePreviewAdmonition from "@site/docs/feature-management-experimentation/
 
 <FmePreviewAdmonition ApiInfoHighlight="infoHighlight" />
 
-Split integrates across a number categories including messaging, monitoring, issue management, customer data platforms and analytics. The Split developer community has contributed a number of integrations, bringing data from your feature delivery platform into the tools your team uses to enhance collaboration, making all tools flag aware. If you're not seeing a tool you need to be connected to Split, we encourage you to leverage Split’s API and SDK functionality to connect with the tools your team uses. If you need help leveraging Split’s SDK or API, contact [support@split.io](mailto:support@split.io).
+Harness FME integrates across a number categories including messaging, monitoring, issue management, customer data platforms and analytics. The Split developer community has contributed a number of integrations, bringing data from your feature delivery platform into the tools your team uses to enhance collaboration, making all tools flag aware. If you're not seeing a tool you need to be connected to Harness FME, we encourage you to leverage FME HTTP API and SDK functionality to connect with the tools your team uses. If you need help leveraging an FME SDK or FME HTTP API, contact [support@split.io](mailto:support@split.io).
 
-# Split-supported
+# Harness FME supported
 
-You can utilize Split-supported workflow integrations to send feature flag changes to the tools your team uses. Split supports the following integrations:
+You can utilize Harness FME supported workflow integrations to send feature flag changes to the tools your team uses. FME supports the following integrations:
 
 * [AppDynamics](https://help.split.io/hc/en-us/articles/360020898371-AppDynamics)
 * [Azure DevOps](https://help.split.io/hc/en-us/articles/4408032964493-Azure-DevOps)
@@ -37,7 +37,7 @@ You can utilize Split-supported workflow integrations to send feature flag chang
 * [VS Code extension](https://help.split.io/hc/en-us/articles/10731776599309-VSCode-extension)
 * [Webhook - audit log](https://help.split.io/hc/en-us/articles/360020957991-Webhook-audit-log)
  
-You can utilize Split-supported data source integrations to  send event data to Split to power experiments that measure feature impact on metrics defined by your customer data. You can also utilize Split-supported data export integrations to send impression data to the tools your team uses to enrich your data warehouse, product analytics solutions, or CRM tools. Split supports the following integrations:
+You can utilize Harness FME supported data source integrations to  send event data to FME to power experiments that measure feature impact on metrics defined by your customer data. You can also utilize Harness FME supported data export integrations to send impression data to the tools your team uses to enrich your data warehouse, product analytics solutions, or CRM tools. Harness FME supports the following integrations:
 
 * [Amazon S3](https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3)
 * [Amplitude](https://help.split.io/hc/en-us/articles/360046658932-Amplitude)
@@ -50,13 +50,13 @@ You can utilize Split-supported data source integrations to  send event data to 
 * [Vercel](https://help.split.io/hc/en-us/articles/16469873148173)
 * [Webhook - impressions](https://help.split.io/hc/en-us/articles/360020700232-Webhook-impressions)
 
-You can utilize Split-supported integrations to send admin changes to the tools your team uses. Split supports the following integration:
+You can utilize Harness FME supported integrations to send admin changes to the tools your team uses. Harness FME supports the following integration:
 
 * [Webhook - admin audit logs](https://help.split.io/hc/en-us/articles/360051384832-Webhook-admin-audit-logs)
 
-# Community-supported
+# Community supported
 
-Leverage Split’s API and SDK functionality to connect Split with the tools your team uses. Below are a few of the community-supported ways you can integrate Split with the tools your team uses. Already built out your own integration or want to request an integration, contact [support@split.io](emailto:support@split.io).  We’d like to feature your work to the entire Split developer community.
+Leverage FME HTTP API and SDK functionality to connect Harness FME with the tools your team uses. Below are a few of the community-supported ways you can integrate FME with the tools your team uses. Already built out your own integration or want to request an integration, contact [support@split.io](emailto:support@split.io).  We’d like to feature your work to the entire Harness developer community.
 
 * [Bugsnag](https://help.split.io/hc/en-us/articles/5709939011085)
 * [Dynatrace](https://help.split.io/hc/en-us/articles/360059673711)

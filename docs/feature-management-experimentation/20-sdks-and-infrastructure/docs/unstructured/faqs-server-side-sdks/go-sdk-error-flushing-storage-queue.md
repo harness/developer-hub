@@ -1,6 +1,6 @@
 ---
-title: GO SDK Error flushing storage queue couldn't send message to task SubmitImpressions
-sidebar_label: GO SDK Error flushing storage queue couldn't send message to task SubmitImpressions
+title: Go SDK Error flushing storage queue couldn't send message to task SubmitImpressions
+sidebar_label: Go SDK Error flushing storage queue couldn't send message to task SubmitImpressions
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 ## Issue
 
-Using GO SDK, by default a thread will flush all current stored impressions in its cache every 30 seconds. However, there is a limit to the impression queued in the SDK's cache. If the queue is full, event IMPRESSIONS_FULL is fired and the SDK will attempt to post the impressions to clear the cache. When the process tries to flush all impressions, the error is logged:
+Using Go SDK, by default a thread will flush all current stored impressions in its cache every 30 seconds. However, there is a limit to the impression queued in the SDK's cache. If the queue is full, event IMPRESSIONS_FULL is fired and the SDK will attempt to post the impressions to clear the cache. When the process tries to flush all impressions, the error is logged:
 ```
 Error flushing storage queue couldn't send message to task SubmitImpressions
 ```

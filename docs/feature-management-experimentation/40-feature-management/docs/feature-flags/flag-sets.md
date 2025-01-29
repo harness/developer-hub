@@ -36,7 +36,7 @@ To use flag sets you need to:
    All SDKs and the Split Evaluator support flag sets. To find out how to use flag sets in your code, look through the documentation for the language of your project:
 
     * Android [docs](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#flag-sets) 
-    * GO [docs](https://help.split.io/hc/en-us/articles/360020093652#flag-sets) 
+    * Go [docs](https://help.split.io/hc/en-us/articles/360020093652#flag-sets) 
     * iOS [docs](https://help.split.io/hc/en-us/articles/360020401491#flag-sets)
     * Java [docs](https://help.split.io/hc/en-us/articles/360020405151#flag-sets)
     * JavaScript [docs](https://help.split.io/hc/en-us/articles/360020448791#flag-sets)

@@ -17,7 +17,7 @@ Currently, the SDKs supported by this versions are:
 Ruby 6.0.0
 PHP 6.0.0
 Node.js 10.6.0
-GO 3.0.0
+Go 3.0.0
 Python 7.0.0
 .NET 4.0.0
 Java 4.4.0
@@ -36,7 +36,7 @@ The Split Synchronizer works with most of the languages that Split supports.
 * [.NET SDK](https://help.split.io/hc/en-us/articles/360020240172)
 * [Node.js SDK](https://help.split.io/hc/en-us/articles/360020564931)
 * [Ruby SDK](https://help.split.io/hc/en-us/articles/360020673251)
-* [GO SDK](https://help.split.io/hc/en-us/articles/360020093652)
+* [Go SDK](https://help.split.io/hc/en-us/articles/360020093652)
 * [Java SDK](https://help.split.io/hc/en-us/articles/360020405151)
 
 If you are looking for a language that is not listed here, contact the support team at [support@split.io](mailto:support@split.io) to discuss your options.

@@ -66,7 +66,7 @@ The Split platform stringifies the entered JSON and provides it as a string to e
 
 To find out how to use the configurationsin your code, look through the documentation for the language for your project:
 * Android [docs](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#get-treatments-with-configurations) 
-* GO [docs](https://help.split.io/hc/en-us/articles/360020093652#get-treatments-with-configurations) 
+* Go [docs](https://help.split.io/hc/en-us/articles/360020093652#get-treatments-with-configurations) 
 * iOS [docs](https://help.split.io/hc/en-us/articles/360020401491#get-treatments-with-configurations)
 * Java [docs](https://help.split.io/hc/en-us/articles/360020405151#get-treatments-with-configurations)
 * JavaScript [docs](https://help.split.io/hc/en-us/articles/360020448791#get-treatments-with-configurations)

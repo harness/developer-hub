@@ -842,7 +842,7 @@ const sidebars = {
         //"feature-management-experimentation/http-api/index",
         {
           type: "category",
-          label: "HTTP API",
+          label: "Split API",
           link: {
             type: 'doc', 
             id: 'feature-management-experimentation/http-api/index',
@@ -941,7 +941,7 @@ const sidebars = {
           type: "link",
           label: "Release Notes",
           className: "sidebar-Release_Notes",
-          href: "/release-notes/feature-flags",
+          href: "https://www.split.io/releases/",
           customProps: {
             description: "Learn about recent changes to Harness products.",
           },
@@ -953,7 +953,7 @@ const sidebars = {
           className: "sidebar-roadmap",
           href: "/roadmap/#fme",
           customProps: {
-            description: "Learn about recent changes to Harness products.",
+            description: "Learn about upcoming changes to Harness products.",
           },
         },
       /*],

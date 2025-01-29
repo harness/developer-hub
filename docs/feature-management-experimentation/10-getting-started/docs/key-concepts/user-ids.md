@@ -17,7 +17,7 @@ SDKs evaluate feature flags for a given user ID at runtime. An SDK will call the
 You can target customers or users based on their user ID (user key). When evaluating a feature flag, you can use any string as a user ID.
 
 Here are a few examples:
-- annonymous user ID
+- anonymous user ID
 - logged in user ID
 - account number
 - device ID

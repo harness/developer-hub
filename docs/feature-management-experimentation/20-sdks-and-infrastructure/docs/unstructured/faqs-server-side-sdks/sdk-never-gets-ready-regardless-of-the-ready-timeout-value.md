@@ -17,7 +17,7 @@ An SDK never gets ready, regardless of how much the ready timeout configuration 
 
 There are several possible root causes for this issue:
 
-* A server side SDK (Python, Ruby, GO, PHP, NodeJS, and Java) is incorrectly configured with a client-side API key. The Split cloud service is expecting a specific call for Segment information which is different for client-side vs server-side API keys.
+* A server side SDK (Python, Ruby, Go, PHP, NodeJS, and Java) is incorrectly configured with a client-side API key. The Split cloud service is expecting a specific call for Segment information which is different for client-side vs server-side API keys.
 * There is a Segment containing a very large number of user IDs in the Split environment. Segments that contain tens of thousands of records will require a long time to be downloaded to the SDK cache.
 * A slow network connection to sdk.split.io.
 
