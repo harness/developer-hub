@@ -25,6 +25,6 @@ If the scanner you use for Container Scanning is not listed, you can explore add
 
 ## Next steps  
 
-import ScanTypeNextSteps from '/docs/security-testing-orchestration/sto-techref-category/shared/_next-steps-for-scan-types.md';
+import ScanTypeNextSteps from '/docs/security-testing-orchestration/sto-techref-category/shared/next-steps-for-scan-types.md';
 
 <ScanTypeNextSteps />

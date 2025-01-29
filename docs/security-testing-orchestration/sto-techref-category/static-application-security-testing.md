@@ -31,12 +31,12 @@ Below is the list of supported SAST scanners in Harness STO:
 10. **[Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference)**  
 11. **[SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference)**
 12. **[Veracode](/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference)**
-13. **[Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference)**
+13. **[Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz)**
 
 If the scanner you use for SAST scanning is not listed, you can explore additional [scanners](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) that are compatible with the [Custom Scan step](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference).
 
 ## Next steps  
 
-import ScanTypeNextSteps from '/docs/security-testing-orchestration/sto-techref-category/shared/_next-steps-for-scan-types.md';
+import ScanTypeNextSteps from '/docs/security-testing-orchestration/sto-techref-category/shared/next-steps-for-scan-types.md';
 
 <ScanTypeNextSteps />

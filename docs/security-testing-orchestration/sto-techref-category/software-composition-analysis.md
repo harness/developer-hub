@@ -29,6 +29,6 @@ If the scanner you use for SAST scanning is not listed, you can explore addition
 
 ## Next steps  
 
-import ScanTypeNextSteps from '/docs/security-testing-orchestration/sto-techref-category/shared/_next-steps-for-scan-types.md';
+import ScanTypeNextSteps from '/docs/security-testing-orchestration/sto-techref-category/shared/next-steps-for-scan-types.md';
 
 <ScanTypeNextSteps />
