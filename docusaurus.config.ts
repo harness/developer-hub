@@ -154,12 +154,7 @@ const config: Config = {
             {
               label: 'Internal Developer Portal',
               to: 'docs/internal-developer-portal',
-            },
-            {
-              label: 'Internal Developer Portal Adoption',
-              to: '/docs/internal-developer-portal/adoption/',
-              hideable: true
-            },            
+            },           
             {
               label: 'Cloud Development Environments',
               to: 'docs/cloud-development-environments',
