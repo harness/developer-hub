@@ -18,7 +18,6 @@ Here're some of the advantages of using a Patch step in your Kubernetes deployme
 
 ## Prerequisites
 
-- This feature is currently behind the feature flag, `CDS_K8S_PATCH_STEP_NG`. Contact [Harness support](mailto:support@harness.io) to enable it.
 - This feature requires Harness Delegate version 24.04.82804 or later.
 
 ## Limitations
