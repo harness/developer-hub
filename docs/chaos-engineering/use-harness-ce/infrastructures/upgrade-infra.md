@@ -146,10 +146,11 @@ Execute the commands given below irrespective of the platform (SaaS or SMP).
 	/etc/linux-chaos-infrastructure/uninstall.sh
 	```
 
-For SaaS, execute the commands in the VM where your infrastructure is installed.
 
 <Tabs>
 <TabItem value="SaaS">
+
+For SaaS, execute the commands in the VM where your infrastructure is installed.
 
 - After executing the commands mentioned earlier, go to the next steps.
 
