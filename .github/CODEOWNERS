@@ -112,6 +112,12 @@ static/  @rohanmaharjan100 @wei-harness
 # Chaos FAQs
 /kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit @umamukkara
 
+# Incident Response Docs
+/docs/incident-response/ @SmritiSatya @sagarkrsd @naveen-harness
+/release-notes/chaos-engineering.md @SmritiSatya @sagarkrsd @naveen-harness
+/src/components/Roadmap/data/ceData.ts @krishi0408 @SmritiSatya @sagarkrsd @naveen-harness @vishal-av @SushrutHarness
+/src/components/Docs/data/chaosEngineeringData* @krishi0408 @SmritiSatya @sagarkrsd @naveen-harness @vishal-av @SushrutHarness
+
 # Platform Docs
 /docs/platform/ @pratmit @krishi0408 @GokulBansal0 @abhishekharness @ivikramsahu
 /release-notes/delegate.md @pratmit @abhishekharness @anshul-harness @ivikramsahu

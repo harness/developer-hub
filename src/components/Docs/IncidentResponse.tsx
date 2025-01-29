@@ -1,0 +1,62 @@
+import React from "react";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Link from "@docusaurus/Link";
+import clsx from "clsx";
+import styles from "./styles.module.scss";
+import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
+// Define the cards in "***Data.ts"
+import { docsCards} from "./data/incidentResponseData";
+import { useColorMode } from "@docusaurus/theme-common";
+export default function CE() {
+  const { colorMode } = useColorMode();
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+  return (
+    <div className="container">
+      <div className={styles.topSection}>
+        <div className={styles.spaceBetween}>
+          <div className={styles.moduleTitle}>
+            <img src={`${baseUrl}img/icon-ir.svg`} />
+            <h1>Incident Response (BETA) </h1>
+          </div>
+          <div className={styles.btnContainer}>
+            <Link href="/docs/incident-response/faq">
+              <button className={styles.btn}>
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_tutorials.svg`} />
+                Knowledge Base
+              </button>
+            </Link>
+            <Link href="/release-notes/incident-response">
+              <button className={styles.btn}>
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_release_notes.svg`} />
+                Release Notes
+              </button>
+            </Link>
+          </div>
+        </div>
+        <div className={styles.spaceBetween}>
+          <div className={styles.content}>
+            <p>
+              Harness Incident Response (IR) is a cutting-edge module that revolutionizes incident management by focusing on proactive issue prevention and accelerated resolution. A key differentiator is its ability to correlate change events from disparate sources, such as CI/CD pipelines, Feature Flags, 3rd Party changes, and deployments, providing unparalleled context for incident attribution. Harness IR automates prioritization and response orchestration while integrating seamlessly with existing tools like ServiceNow, Slack, and monitoring systems. Real-time visibility into service health, error budgets, and associated changes empower teams to resolve incidents faster, minimize downtime, and drive operational excellence.
+            </p>
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === "light"
+                    ? `${baseUrl}img/ce.svg`
+                    : `${baseUrl}img/CE_Landing_Page_dark_mode.svg`
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <TutorialCards data={docsCards} sectionClass={styles.subSection} />
+      <div className={styles.subSection}>
+      </div>
+    </div>
+    // </Layout>
+  );
+}
