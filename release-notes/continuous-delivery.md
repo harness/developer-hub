@@ -47,6 +47,19 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## January 2025
 
+### Version 1.74.x
+
+#### Fixed Issues
+
+- **Previously**, the AWS load balancer dropdown was not populated when using a blue-green deployment step during multi env deployment. This issue is fixed, and the dropdown now populates correctly. (**CDS-106002, ZD-73560**)
+- **Previously**, users were not able to re-run pipeline that had gitops deploy stage. The issue is fixed now. (**CDS-105968, ZD-76321**)
+- **Previously**, the timeout for refresh GitOps app call was timing out sporadically for some customers, and there was no way to adjust the timeout. The refresh API can take a long time in some cases. We have made the timeout configurable. SMP customers can set `GITOPS_RESOURCE_CLIENT_CONNECT_TIMEOUT_SECONDS` and `GITOPS_RESOURCE_CLIENT_READ_TIMEOUT_SECONDS` in ng manager's override to set the timeout. (**CDS-105967, ZD-76481**)
+- **Previously**, pipelines using docker delegates were failing due to too many open connection errors. The issue is fixed now. 
+(**PIPE-24724, ZD-73732**)
+- Before executing any step, the system evaluates whether the step needs to run based on its "when conditions." If no "when conditions" are specified, the system automatically evaluates `<+stage.CurrentStatus>`. This behavior led to unintended step skipping due to a race condition when failure strategies were triggered with a slight delay. The issue is fixed now. This fix is behind the feature flag `FF_PIE_SET_ADVISORS_PROCESSED`. Please contact [Harness Support](mailto:support@harness.io) to enable the feature.(**PIPE-24525, ZD-76102,76909,76959**)
+- Previously, when selecting the lowest scope webhook to process file changes in the autocreation flow, the system did not validate whether the chosen webhook's scope matched the project associated with the new autocreation entity. As a result a project-level webhook from a different project could be mistakenly selected leading to scope mismatches in downstream processes, causing failures in entity creation. The issue is fixed now. (**PIPE-24303, ZD-76145**)
+
+
 ### Version 1.73.6
 
 #### New features and enhancements
