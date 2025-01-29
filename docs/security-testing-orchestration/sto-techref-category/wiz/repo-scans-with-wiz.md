@@ -313,7 +313,7 @@ import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
 ## View Wiz policy failures
 
-import WizPolicyFailureResults from '../shared/_wiz-policy-failure-results.md';
+import WizPolicyFailureResults from '../shared/wiz-policy-failure-results.md';
 
 <WizPolicyFailureResults />
 
