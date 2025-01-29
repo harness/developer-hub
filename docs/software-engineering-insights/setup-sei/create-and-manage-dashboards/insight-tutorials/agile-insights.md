@@ -153,7 +153,7 @@ To add the **Issues Report** widget to Insights:
    5. Select the date format.
 8. Select **Next: Place Widget**, place the widget on the Insight, and then save the layout.
 
-To configure the widget for various other use cases, go to [Issues Report Use Cases](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports).
+To configure the widget for various other use cases, go to [Issues Report Use Cases](/docs/software-engineering-insights/analytics-and-reporting/efficiency/issues-reports).
 
 ### Issue Resolution Time Report
 
@@ -170,7 +170,7 @@ To add the **Issue Resolution Time Report** widget to Insights:
 5. On the **Settings** tab, you can select the **Issue Management System** to use for this report. Available options are based on your configured SEI integrations. You can also select how you want to sort X-axis data, such as ascending or descending, and choose the maximum number of unique values to show on the X-axis.
 6. Select **Next: Place Widget**, place the widget on the Insight, and then save the layout.
 
-To configure the widget for various other use cases, go to [Issue Resolution Time Report Use Cases](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports).
+To configure the widget for various other use cases, go to [Issue Resolution Time Report Use Cases](/docs/software-engineering-insights/analytics-and-reporting/efficiency/issues-reports).
 
 ### Sprint Metrics Single Stat
 

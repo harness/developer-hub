@@ -1742,5 +1742,5 @@ While configuring the DORA profile, you may encounter some common issues. Below 
 
 After setting up the DORA profile, proceed to create the DORA Insight using the available DORA widgets. These widgets enable you to visualize and monitor key DORA metrics, providing actionable insights into your team’s performance.
 
-* [Configure & add the DORA widgets](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/)
+* [Configure & add the DORA widgets](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/)
 * [Create & manage the DORA Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight)

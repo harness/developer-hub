@@ -331,7 +331,7 @@ This release introduces enhanced SEI Diagnostics for monitoring SCM integration 
 
 <DocVideo src="https://www.youtube.com/embed/Z_RDkXFxvK4?si=1K_aFQvEoQJX7DYe" />
 
-**New Docs:** [SEI Diagnostics](/docs/software-engineering-insights/sei-diagnostics), [SEI API Guide](/docs/software-engineering-insights/sei-technical-reference/sei-api-reference/sei-api-guide), [Subscriptions and Licenses](/docs/software-engineering-insights/get-started/sei-subscription-and-licensing)
+**New Docs:** [SEI Diagnostics](/docs/software-engineering-insights/sei-diagnostics), [SEI API Guide](/docs/software-engineering-insights/sei-administration/sei-api-reference/sei-api-guide), [Subscriptions and Licenses](/docs/software-engineering-insights/get-started/sei-subscription-and-licensing)
 
 #### Generally Available
 
@@ -451,7 +451,7 @@ We have added new and improved API documentation for the SEI services now availa
 Over the coming weeks, we will be moving away from the current static API documentation and referring to the new site ([apidocs.harness.io](https://apidocs.harness.io)). As always let us know any feedback you might have.
 
 * **Blogs:** [Announcing the ServiceNow integration for Harness SEI](https://www.harness.io/blog/announcing-the-servicenow-integration-for-harness-sei), [Engineering Metrics That Matter to Your Bottom Line](https://www.harness.io/blog/engineering-metrics-that-matter-to-your-bottom-line)
-* **New Docs:** [Delete an integration](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview#delete-an-integration), [Configure a DORA profile using the ServiceNow integration](/docs/software-engineering-insights/early-access/metrics-reports/mttr-incident-recovery#define-the-dora-profile-for-measuring-incident-recovery-time), [SEI API Reference Overview](/docs/software-engineering-insights/sei-technical-reference/sei-api-reference/sei-api-guide)
+* **New Docs:** [Delete an integration](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview#delete-an-integration), [Configure a DORA profile using the ServiceNow integration](/docs/software-engineering-insights/early-access/metrics-reports/mttr-incident-recovery#define-the-dora-profile-for-measuring-incident-recovery-time), [SEI API Reference Overview](/docs/software-engineering-insights/sei-administration/sei-api-reference/sei-api-guide)
 
 #### Early access features
 
@@ -849,7 +849,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 
 #### New features and enhancements
 
-* Added the support to enable the addition of stages based on **Jira Status** categories as a filter in the **Velocity Lead Time type Workflow profile** setting. As a result, all the statuses that fall under each category will belong to a particular stage. This feature can be linked to the [Lead Time in Stages report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports#lead-time-by-time-spent-in-stages-report) and the [Jira releases report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports#configure-the-jira-releases-report). (SEI-5040) (SEI-5108)
+* Added the support to enable the addition of stages based on **Jira Status** categories as a filter in the **Velocity Lead Time type Workflow profile** setting. As a result, all the statuses that fall under each category will belong to a particular stage. This feature can be linked to the [Lead Time in Stages report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time#lead-time-by-time-spent-in-stages-report) and the [Jira releases report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/issues-reports#configure-the-jira-releases-report). (SEI-5040) (SEI-5108)
 * Improved the calculation logic for the average field across various **Single Stat reports**. Now the field is calculated based on the configured/selected calendar date. (SEI-5072)
 * In the **SCM PRs Single Stat report**, we have added the support to select any time range by using the calendar component to view the PRs based on the selected metric. (SEI-5073)
 * Added the support for a **New Propel node** that gets the data for a GitHub team (repositories and its members) from GitHub. (SEI-5136)

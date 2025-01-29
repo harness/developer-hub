@@ -40,7 +40,7 @@ A DORA Profile defines thresholds for these metrics based on your organizationâ€
 #### What's next
 
 * [Create & manage the DORA profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile)
-* [Add & configure the DORA widgets](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/)
+* [Add & configure the DORA widgets](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/)
 
 ### Velocity Lead Time profile
 
@@ -54,7 +54,7 @@ It is important to maintain proper hygiene across all stages of the workflow to 
 #### What's next
 
 * [Create a Velocity Lead Time profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/velocity-profile)
-* [Add & configure the lead time widgets](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports)
+* [Add & configure the lead time widgets](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time)
 
 ### DORA vs Velocity profile
 
@@ -71,5 +71,5 @@ The primary difference between the two profiles lies in their scope. DORA profil
 
 * [Create & manage the DORA profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile)
 * [Create & manage the Velocity profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/velocity-profile)
-* [Add & configure the DORA widgets](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/)
-* [Add & configure the Lead Time widgets (Velocity profile based)](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports)
+* [Add & configure the DORA widgets](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/)
+* [Add & configure the Lead Time widgets (Velocity profile based)](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time)

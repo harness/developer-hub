@@ -137,7 +137,7 @@ To add the **Lead Time for Changes** widget to Insights:
 5. Under the **Settings** tab, specify the relevant **Workflow profile**.
 6. Select **Next: Place Widget**, place the widget on the Insight and then select **Save Layout**.
 
-For information about other Lead Time reports, go to [Lead time reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports).
+For information about other Lead Time reports, go to [Lead time reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time).
 
 ### Change Failure Rate report
 

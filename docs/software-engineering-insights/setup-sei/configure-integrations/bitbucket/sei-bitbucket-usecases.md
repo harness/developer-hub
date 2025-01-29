@@ -14,22 +14,22 @@ This topic includes use cases for some of the most popular widgets used to measu
 
 ### Measure Trellis Scores
 
-[Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/sei-trellis-scores-overview) are a proprietary productivity metric developed by SEI to provide a holistic view of team and individual performance in software development. These scores are derived from a combination of key performance factors, including [Code Quality](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/sei-trellis-scores-overview#quality), [Code Volume](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/sei-trellis-scores-overview#volume), [Speed](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/sei-trellis-scores-overview#speed), [Impact](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/sei-trellis-scores-overview#impact), [Proficiency](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/sei-trellis-scores-overview#proficiency), and [Collaboration](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/sei-trellis-scores-overview#leadership-and-collaboration).
+[Trellis Scores](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/sei-trellis-scores-overview) are a proprietary productivity metric developed by SEI to provide a holistic view of team and individual performance in software development. These scores are derived from a combination of key performance factors, including [Code Quality](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/sei-trellis-scores-overview#quality), [Code Volume](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/sei-trellis-scores-overview#volume), [Speed](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/sei-trellis-scores-overview#speed), [Impact](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/sei-trellis-scores-overview#impact), [Proficiency](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/sei-trellis-scores-overview#proficiency), and [Collaboration](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/sei-trellis-scores-overview#leadership-and-collaboration).
 
 Using Bitbucket data, the Trellis widgets help measure essential metrics across these factors, such as Rework, Coding Days, Lines of Code, Cycle Time, and more. Follow the resources below to set up a Trellis profile and use the Trellis widgets for viewing insights into your engineering team’s performance.
 
 * [Create Trellis profile](/docs/software-engineering-insights/setup-sei/sei-profiles/trellis-profile)
-* [Trellis Score widget](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/trellis-score-reports#trellis-score-report)
-* [Trellis Scores by Collection widget](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/trellis-score-reports#trellis-score-by-collection)
-* [Individual Raw Stats widget](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/trellis-score-reports#individual-raw-stats)
-* [Individual Raw Stats by Collection widget](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/trellis-score-reports#raw-stats-by-collection)
+* [Trellis Score widget](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports#trellis-score-report)
+* [Trellis Scores by Collection widget](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports#trellis-score-by-collection)
+* [Individual Raw Stats widget](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports#individual-raw-stats)
+* [Individual Raw Stats by Collection widget](/docs/software-engineering-insights/analytics-and-reporting/productivity/trellis-scores/trellis-score-reports#raw-stats-by-collection)
 
 ### Measure DORA
 
 For teams working on DevOps, DORA metrics like Lead Time for Changes and Mean Time to Restore (MTTR) are important. If your team uses Bitbucket as the SCM, the widgets below can help identify delays in delivery or recovery from issues.
 
-* [Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/#lead-time-for-changes)
-* [Mean Time to Restore](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/#mean-time-to-restore-mttr)
+* [Lead Time for Changes](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/#lead-time-for-changes)
+* [Mean Time to Restore](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/#mean-time-to-restore-mttr)
 
 
 ### Developer contributions

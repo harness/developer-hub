@@ -1,7 +1,7 @@
 ---
 title: Connect with SonarCloud
 description: Integrate SEI with Sonar Cloud
-sidebar_position: 200
+sidebar_position: 10
 sidebar_label: Connect with Sonar Cloud
 ---
 

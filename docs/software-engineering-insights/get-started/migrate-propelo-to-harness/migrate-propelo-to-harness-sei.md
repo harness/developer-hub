@@ -164,7 +164,7 @@ The Base URL for all SEI services is updated based on the specific production en
 * **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`
 * **BASE URL (EU):** `https://accounts.eu.harness.io/sei/api/`
 
-For steps on using these APIs, go to [Harness SEI API Guide](/docs/software-engineering-insights/sei-technical-reference/sei-api-reference/sei-api-guide).
+For steps on using these APIs, go to [Harness SEI API Guide](/docs/software-engineering-insights/sei-administration/sei-api-reference/sei-api-guide).
 
 ## Deprecated Features
 

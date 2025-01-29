@@ -1,7 +1,7 @@
 ---
 title: Connect with SonarQube Server
 description: Integrate SEI with SonarQube Server
-sidebar_position: 200
+sidebar_position: 15
 sidebar_label: Connect with SonarQube Server
 ---
 
