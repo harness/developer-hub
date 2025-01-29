@@ -15,6 +15,10 @@ Currently this feature is behing the Feature Flag `CDS_EVENT_BRIDGE_WEBHOOK` and
 
 :::
 
+### Visual Summary
+
+<DocVideo src="https://youtu.be/L8xl6T7bMCs?si=J0BWnbaBKCQ0qoyN" />
+
 ## Add a trigger to a pipeline
 
 First, let’s configure a Generic webhook to create a trigger.
