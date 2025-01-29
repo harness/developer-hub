@@ -14,19 +14,6 @@ Harness CI offers a [Build and push to Docker](/docs/continuous-integration/use-
 
 <Tabs>
 <TabItem value="Interactive guide">
-<iframe
-    src="https://app.tango.us/app/embed/7892f010-0f5b-4acd-8ad3-9de5426ba386 "
-    title="Build and Push Docker Images with Harness Artifact Registry"
-    style={{ minHeight: '640px' }}
-    width="100%"
-    height="100%"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    webkitallowfullscreen="true"
-    mozallowfullscreen="true"
-    allowfullscreen="true">
-</iframe>
-
 <DocVideo src="https://app.tango.us/app/embed/7892f010-0f5b-4acd-8ad3-9de5426ba386" title="Build and Push Docker Images with Harness Artifact Registry" />
 </TabItem>
 <TabItem value="Step-by-step">
