@@ -2048,3 +2048,10 @@ steps:
       - command: echo "Step 2 - Test2 on <+matrix.Test2>"
 ```
 This configuration defines a matrix with dimensions Test1 and Test2, each listing specific server instances. The steps section outlines actions to be executed on each combination of servers.
+
+### How can I control the number of services deployed concurrently in a multi-service deployment?
+
+Controlling the number of concurrently deployed services in a multi-service deployment requires configuring multiple stages with multi-service deployments.  Batching is not supported within a single multi-service deployment.
+
+### How can a user utilize a step template with a script to run across multiple hosts in parallel?
+Users migrating from Cloudbees can create multiple infrastructures with host names set as override variables. When selecting multiple infrastructures during execution, the pipeline runs the stage for each selected infrastructure.
