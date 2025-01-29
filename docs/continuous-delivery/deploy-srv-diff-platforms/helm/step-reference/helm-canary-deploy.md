@@ -10,8 +10,6 @@ The Helm Canary Deploy step deploys using a canary based strategy. To learn more
 
 :::note
 
-Currently, this feature is behind the feature flag `CDS_HELM_CANARY_STRATEGY`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
-
 Harness Delegate version 84300 or later is required for this feature.
 
 :::

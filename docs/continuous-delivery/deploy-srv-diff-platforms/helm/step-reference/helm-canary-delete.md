@@ -8,8 +8,6 @@ This topic describes the configuration and settings for the Helm Canary Delete s
 
 :::note
 
-Currently, this feature is behind the feature flag `CDS_HELM_CANARY_STRATEGY`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
-
 Harness Delegate version 84300 or later is required for this feature.
 
 :::
