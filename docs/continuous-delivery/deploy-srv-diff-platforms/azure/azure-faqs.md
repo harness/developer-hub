@@ -166,3 +166,6 @@ You can use a shell script to perform health checks after slot deployment.
 ### How to pass Application Settings and Connection Strings for Azure App Service Configuration?
 
 You can pass those in Harness Service under App Services Configuration.
+
+### How to deploy a Java Spring Boot application to Azure Web Apps using Azure Artifacts?
+Azure Web Apps does not directly support JAR files as deployable artifacts. The pipeline should be modified to use a supported deployment method, such as WAR files or containers.
