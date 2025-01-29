@@ -20,7 +20,7 @@ You can scan your container images with [Anchore Enterprise](https://docs.anchor
 
 - You must use the Anchore v2 API and Anchore Enterprise Server v5.0 or higher to run orchestration and extraction scans.
 
-- When you're deploying an Anchore Enterprise server, expose port 8228. This is the port that Harness uses to communicate with the server.
+When you deploy an Anchore Enterprise server, expose port 8228. Harness uses this port to communicate with the server.
 
 ### All data ingestion methods are supported
 
