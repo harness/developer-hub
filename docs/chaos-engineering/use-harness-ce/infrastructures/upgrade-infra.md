@@ -128,7 +128,10 @@ Based on the scope of installation, you have to execute the commands.
 
 You can upgrade Linux infrastructure in two ways depending on the platform (SaaS or SMP). They are described below.
 
-Execute the commands given below irrespective of the platform (SaaS or SMP).
+<Tabs>
+<TabItem value="SaaS">
+
+For SaaS, execute the commands in the VM where your infrastructure is installed.
 
 - Execute the following commands to fetch the `INFRA_ID` and the `ACCESS_KEY`.
 
@@ -146,14 +149,6 @@ Execute the commands given below irrespective of the platform (SaaS or SMP).
 	/etc/linux-chaos-infrastructure/uninstall.sh
 	```
 
-
-<Tabs>
-<TabItem value="SaaS">
-
-For SaaS, execute the commands in the VM where your infrastructure is installed.
-
-- After executing the commands mentioned earlier, go to the next steps.
-
 - You can find the URL (which is a binary required for installation) to upgrade the Linux infrastructure by navigating to your account, and accessing the Linux infrastructure from the UI. Execute this command with the `INFRA_ID` and the `ACCESS_KEY` that you got by executing the first command.
 
 	```yaml
@@ -163,9 +158,23 @@ For SaaS, execute the commands in the VM where your infrastructure is installed.
 </TabItem>
 
 <TabItem value="SMP">
-- After executing the commands mentioned earlier, go to the next steps.
 - Raise a [Harness support](https://support.harness.io) ticket to get the `offline-linux-installer` tarball.
 - Copy and extract the offline installer to your target VM and `cd` (navigate) to the extracted directory.
+- Execute the following commands to fetch the `INFRA_ID` and the `ACCESS_KEY`.
+
+	```yaml
+	INFRA_ID=$(sed -n 's/^infraID: "\(.*\)"/\1/p' /etc/linux-chaos-infrastructure/config.yaml)
+	```
+
+	```yaml
+	ACCESS_KEY=$(sed -n 's/^accessKey: "\(.*\)"/\1/p' /etc/linux-chaos-infrastructure/config.yaml)
+	```
+
+- Execute the below command to uninstall the existing infrastructure.
+
+	```yaml
+	/etc/linux-chaos-infrastructure/uninstall.sh
+	```
 
 :::tip
 To upgrade the infrastructure in an air-gapped environment, assuming you have downloaded the Linux infrastructure, execute the following command:
