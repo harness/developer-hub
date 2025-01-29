@@ -182,8 +182,8 @@ Here, `chaos-delegate` refers to the name of the service account in the Delegate
       - delete
       - get
       - list
-    - apiGroups:
-      - apps
+    - apiGroups: #(Prerequisite: Metrics server should be installed on the cluster. This is required if you are running a custom script in command (CMD) source probe to get the CPU and memory metrics for pods and nodes)
+      - metrics.k8s.io
       resources:
       - deployments
       - replicasets
@@ -607,7 +607,7 @@ To discover the resources and run chaos, use the permissions (described below) i
       - delete
       - get
       - list
-    - apiGroups:
+    - apiGroups: #(Prerequisite: Metrics server should be installed on the cluster. This is required if you are running a custom script in command (CMD) source probe to get the CPU and memory metrics for pods and nodes)
       - metrics.k8s.io
       resources:
       - pods
