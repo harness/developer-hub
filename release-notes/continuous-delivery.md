@@ -60,6 +60,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Previously, when selecting the lowest scope webhook to process file changes in the autocreation flow, the system did not validate whether the chosen webhook's scope matched the project associated with the new autocreation entity. As a result a project-level webhook from a different project could be mistakenly selected leading to scope mismatches in downstream processes, causing failures in entity creation. The issue is fixed now. (**PIPE-24303, ZD-76145**)
 - Previously, when navigating to the execution history of a remote pipeline from Pipeline Studio, the default behavior is to display the execution history of the pipeline corresponding to the branch selected in the Pipeline Studio. However, the filter for this was not visible due to a mismatch in the filter names. The issue is fixed now. (**PIPE-24603, ZD-76312**)
 - Previously, input field was not getting displayed for Service Override when configured with multiple manifests. The issue is fixed now. (**CDS-105935, ZD-76332**)
+- Improved the console output for the GitOps Sync step. (**CDS-101630**)
 
 ### Version 1.73.6
 
