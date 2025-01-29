@@ -256,7 +256,7 @@ Complete the widget settings and select **Next: Place Widget**, place the widget
 * **SCM Change Volume to CI/CD Jobs Single Stat:** Report a single stat related to the frequency or volume of deployed code changes.
 * **Code Volume Vs. Deployment Report**
 
-For more information about CI/CD job reports, go to [CI/CD job reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports).
+For more information about CI/CD job reports, go to [CI/CD job reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights).
 
 ## SCM Issues reports​
 

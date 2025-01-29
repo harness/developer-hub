@@ -29,17 +29,17 @@ The Harness CI/CD integration can be used to configure the Workflow profile for 
 
 Use these widgets to track the frequency of job and pipeline executions and observe success or failure trends over time. Tracking CI/CD job counts can help identify periods of high activity, recurring failures, and any anomalies in job runs.
 
-* [CICD Job Count widget](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-job-count-report)
-* [CICD Job Count Trend widget](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-job-count-trend-report)
-* [CICD Jobs Count Single Stat](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-jobs-count-single-stat)
+* [CICD Job Count widget](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-job-count-report)
+* [CICD Job Count Trend widget](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-job-count-trend-report)
+* [CICD Jobs Count Single Stat](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-jobs-count-single-stat)
 
 ### Job/pipeline duration
 
 Analyzing job duration can help to optimize build times and streamline CI/CD workflows. Duration widgets provide insights into the time taken for jobs to run, allowing teams to pinpoint jobs that could benefit from optimization.
 
-* [CI/CD Job Duration Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-job-duration-report)
-* [CI/CD Job Duration Single Stat](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-job-duration-single-stat)
-* [CI/CD Job Duration Trend Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-job-duration-trend-report)
+* [CI/CD Job Duration Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-job-duration-report)
+* [CI/CD Job Duration Single Stat](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-job-duration-single-stat)
+* [CI/CD Job Duration Trend Report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-job-duration-trend-report)
 
 :::info
 

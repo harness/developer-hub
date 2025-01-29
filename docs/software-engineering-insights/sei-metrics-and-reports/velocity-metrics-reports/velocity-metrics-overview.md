@@ -32,7 +32,7 @@ There are many velocity metrics, and some overlap with other metrics categories.
 
 For information about reports you can use to analyze velocity metrics, go to:
 
-* [CI/CD job reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports)
+* [CI/CD job reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights)
 * [Issues reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports)
 * [Lead time reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports)
 * [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports)

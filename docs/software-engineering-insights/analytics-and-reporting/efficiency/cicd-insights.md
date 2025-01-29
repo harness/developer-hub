@@ -1,5 +1,5 @@
 ---
-title: CI/CD job reports
+title: CI/CD insights
 description: These widgets show metrics related to CI/CD jobs.
 sidebar_position: 30
 ---
@@ -25,10 +25,10 @@ A **Job** in SEI is defined as a single run or execution of the pipeline which i
 
 Use the CI/CD Job Count reports to understand how often your CI/CD jobs run and whether they succeed or fail. You can analyze CI/CD job counts over a specific period, and shed light on the trends and patterns observed during that time.
 
-* [CICD Job Count report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-job-count-report)
-* [CICD Pipeline Jobs Count report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-pipeline-jobs-count-report)
-* [CICD Job Count Trend report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-job-count-trend-report)
-* [CICD Jobs Count Single Stat](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-jobs-count-single-stat)
+* [CICD Job Count report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-job-count-report)
+* [CICD Pipeline Jobs Count report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-pipeline-jobs-count-report)
+* [CICD Job Count Trend report](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-job-count-trend-report)
+* [CICD Jobs Count Single Stat](/docs/software-engineering-insights/analytics-and-reporting/efficiency/cicd-insights#cicd-jobs-count-single-stat)
 
 ### CICD Job Count Report
 
@@ -50,7 +50,7 @@ This report displays the Daily, weekly, and monthly trends for CI/CD job runs. T
 
 This widget displays the **Job Count** as a **numeric value** but does not support drill-down. The data is represented as a **Single stat**.
 
-![](./static/cicd-jobs-count.png)
+![](../static/cicd-jobs-count.png)
 
 When you add a CI/CD Job Count report to an Insight, the **Job End Date** filter is set to a relative time frame by default. The widget is ready to use with the default configuration or you can modify it. For some useful configuration options, go to [CI/CD Reports Use Cases](#configure-cicd-job-reports).
 
@@ -69,8 +69,6 @@ This report displays a single job duration stat. It displays the median or avera
 ### CI/CD Job Duration Trend Report
 
 This report provides information regarding the trend of job execution duration over time (Daily, weekly, and monthly trends in job duration) including minimum, median, and maximum values. The data is represented as a Line graph.
-
-![](./static/cicd-job-duration.png)
 
 ## Job or Pipeline Config Change reports
 
@@ -96,7 +94,7 @@ This report displays the trend of job configuration changes over time (Daily, we
 
 Pipeline job reports are functionally identical to [job count reports](#job-count-reports) and [job duration reports](#job-duration-reports). However, pipeline job reports present heatmap visualizations by default, whereas job count and duration reports present bar charts.
 
-<!-- ![](../static/velocity-cicd-job-count-comparison.png) -->
+<!-- ![](.../static/velocity-cicd-job-count-comparison.png) -->
 
 <DocImage path={require('../static/velocity-cicd-job-count-comparison.png')} />
 
