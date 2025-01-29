@@ -4,7 +4,6 @@
 User-Agent: *
 Allow: /
 Disallow: /docs/first-gen/
-Disallow: /docs/internal-developer-portal/adoption/
 
 User-agent: coveobot
 Allow: /
