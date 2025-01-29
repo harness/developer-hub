@@ -19,7 +19,7 @@ A service account is required in the Delegate YAML when Delegate is installed in
 
 In case the Delegate is deployed in a **centralized infrastructure** (and connected to the target cluster), service account is not required in the Delegate YAML because the Kubernetes connectors already have the role permissions, and Delegate only orchestrates the tasks.
 
-## Distributed Delegate installed on Target Cluster
+## Dedicated Delegate installed on Target Cluster
 
 By default, Delegate uses the **cluster admin** role. To limit the permissions for the Delegate, follow the steps below.
 
