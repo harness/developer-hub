@@ -126,12 +126,9 @@ Based on the scope of installation, you have to execute the commands.
 
 ## Upgrade Linux infrastructure
 
-You can upgrade Linux infrastructure in two ways depending on the platform (SMP or SaaS). They are described below.
+You can upgrade Linux infrastructure in two ways depending on the platform (SaaS or SMP). They are described below.
 
-For SaaS, execute the commands in the VM where your infrastructure is installed.
-
-<Tabs>
-<TabItem value="SaaS">
+Execute the commands given below irrespective of the platform (SaaS or SMP).
 
 - Execute the following commands to fetch the `INFRA_ID` and the `ACCESS_KEY`.
 
@@ -149,6 +146,13 @@ For SaaS, execute the commands in the VM where your infrastructure is installed.
 	/etc/linux-chaos-infrastructure/uninstall.sh
 	```
 
+For SaaS, execute the commands in the VM where your infrastructure is installed.
+
+<Tabs>
+<TabItem value="SaaS">
+
+- After executing the commands mentioned earlier, go to the next steps.
+
 - You can find the URL (which is a binary required for installation) to upgrade the Linux infrastructure by navigating to your account, and accessing the Linux infrastructure from the UI. Execute this command with the `INFRA_ID` and the `ACCESS_KEY` that you got by executing the first command.
 
 	```yaml
@@ -158,8 +162,9 @@ For SaaS, execute the commands in the VM where your infrastructure is installed.
 </TabItem>
 
 <TabItem value="SMP">
-- Raise a [Harness support](https://support.harness.io) ticket to upgrade SMP Linux infrastructure.
-- Get an offline installer that you can run in your environment.
+- After executing the commands mentioned earlier, go to the next steps.
+- Raise a [Harness support](https://support.harness.io) ticket to get the `offline-linux-installer` tarball.
+- Copy and extract the offline installer to your target VM and `cd` (navigate) to the extracted directory.
 
 :::tip
 To upgrade the infrastructure in an air-gapped environment, assuming you have downloaded the Linux infrastructure, execute the following command:
