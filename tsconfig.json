@@ -7,6 +7,6 @@
     "jsx": "react",
     "baseUrl": ".",
     "types": ["docusaurus-plugin-sass"]
-
-  }
+  },
+  "exclude": [".docusaurus", "build"]
 }
