@@ -257,3 +257,14 @@ import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+## Configure ZAP as a Built-in Scanner  
+
+The ZAP scanner is available as a built-in scanner in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
+
+1. Search for **DAST** in the step palette or navigate to the **Built-in Scanners** section and select the **DAST** step.
+2. Select **Aqua Trivy** from the list of scanners.  
+3. Expand the **Additional CLI Flags** section if you want to configure optional CLI flags.
+4. Configure the **Domain Information** by setting the [Domain](#domain).
+5. Click **Add Scanner** to save the configuration.  
+
+The scanner will automatically use the free version, detect scan targets, and can be further configured by clicking on the step whenever needed.
