@@ -58,7 +58,8 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 (**PIPE-24724, ZD-73732**)
 - Before executing any step, the system evaluates whether the step needs to run based on its `when` conditions. If no `when` conditions are specified, the system automatically evaluates `<+stage.CurrentStatus>`. This behavior led to unintended step skipping due to a race condition when failure strategies were triggered with a slight delay. The issue is fixed now. This fix is behind the feature flag `FF_PIE_SET_ADVISORS_PROCESSED`. Please contact [Harness Support](mailto:support@harness.io) to enable the feature.(**PIPE-24525, ZD-76102,76909,76959**)
 - Previously, when selecting the lowest scope webhook to process file changes in the autocreation flow, the system did not validate whether the chosen webhook's scope matched the project associated with the new autocreation entity. As a result a project-level webhook from a different project could be mistakenly selected leading to scope mismatches in downstream processes, causing failures in entity creation. The issue is fixed now. (**PIPE-24303, ZD-76145**)
-
+- Previously, when navigating to the execution history of a remote pipeline from Pipeline Studio, the default behavior is to display the execution history of the pipeline corresponding to the branch selected in the Pipeline Studio. However, the filter for this was not visible due to a mismatch in the filter names. The issue is fixed now. (**PIPE-24603, ZD-76312**)
+- Previously, input field was not getting displayed for Service Override when configured with multiple manifests. The issue is fixed now. (**CDS-105935, ZD-76332**)
 
 ### Version 1.73.6
 
