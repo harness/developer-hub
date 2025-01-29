@@ -1,3 +1,8 @@
+---
+title: Performance Considerations
+description: Learn how to improve perfomance with your Argo deployments
+sidebar_position: 70
+---
 
 Argo CD is a powerful tool for managing continuous deployments in Kubernetes environments. However, as deployments scale, users may encounter performance challenges, particularly with the **Application Controller** and **Repository Server** components. Understanding these common issues is crucial for maintaining optimal performance. 
 Scaling issues can arise due to high resource consumption, slow application refresh rates, and challenges with monorepos. Many issues have been resolved with newer version of ArgoCD so it is recommended to keep the ArgoCD version up to date.
