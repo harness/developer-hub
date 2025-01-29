@@ -206,7 +206,7 @@ For more information, go to [Service Account Tokens](https://kubernetes.io/docs/
 
 ### Option: JWT/OIDC Auth
 
-JWT/OIDC authentication allows you to authenticate with HashiCorp Vault and easily use a Vault token in just a few steps.  
+JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JWT token in just a few steps.
 
 ### Steps to enable Vault authentication:  
 
@@ -218,14 +218,12 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault and easi
 
 2. **Configure the JWT authentication method**:  
    
-   - Set the OIDC discovery URL or manually specify the JWT issuer. These should match the URLs generated via Zrok for publishing the OpenID configuration and RSA public key.  
-   - Define a `default_role`, which maps policies to the token when no role is provided at login.  
+   - Set the OIDC discovery URL or manually specify the JWT issuer with `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID/>`. Harness exposes endpoints with discovery url for publishing the OpenID configuration and RSA public key.  
 
    ```  
    vault write auth/harness/jwt/config   
        oidc_discovery_url="<OIDC_DISCOVERY>"   
-       bound_issuer="<BOUND_ISSUER>"   
-       default_role="default"  
+       bound_issuer="<BOUND_ISSUER>"     
    ```  
 
    ![jwt-conf](../static/JWT-configure.png)    
