@@ -1,11 +1,12 @@
 {
-    "label":"Administration",
-    "position": 80,
-    "collapsible":"true",
-    "collapsed":"true",
-    "className":"default",
-    "link":{
-       "type":"generated-index",
-       "title":"Administration"
-    }
+   "label": "Administration",
+   "position": 80,
+   "collapsible": "true",
+   "collapsed": "true",
+   "className": "default",
+   "link": {
+     "type": "generated-index",
+     "title": "Administration"
+   }
  }
+ 

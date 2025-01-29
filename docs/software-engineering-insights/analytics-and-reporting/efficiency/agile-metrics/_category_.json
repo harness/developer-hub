@@ -1,11 +1,12 @@
 {
-    "label":"Agile metrics",
-    "position": 15,
-    "collapsible":"true",
-    "collapsed":"true",
-    "className":"default",
-    "link":{
-       "type":"generated-index",
-       "title":"Agile metrics"
-    }
+   "label": "Agile metrics",
+   "position": 15,
+   "collapsible": "true",
+   "collapsed": "true",
+   "className": "default",
+   "link": {
+     "type": "generated-index",
+     "title": "Agile metrics"
+   }
  }
+ 
