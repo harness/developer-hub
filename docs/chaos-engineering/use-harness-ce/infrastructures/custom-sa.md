@@ -120,101 +120,109 @@ Here, `chaos-delegate` refers to the name of the service account in the Delegate
 6. Create a cluster role that will be used later to onboard application namespaces.
 
     ```yaml
-    apiVersion: rbac.authorization.k8s.io/v1
-    kind: ClusterRole
-    metadata:
-      name: chaos-clusterrole
-    rules:
-    # Discovery permissions
-    - apiGroups:
-      - apps
-      resources:
-      - deployments
-      - replicasets
-      - daemonsets
-      - statefulsets
-      verbs:
-      - watch
-      - list
-      - get
-    - apiGroups:
-      - ""
-      resources:
-      - pods
-      - replicationcontrollers
-      - services
-      - statefulsets
-      - nodes                 #(nodes and namespaces permission is required to create automatic network experiments)
-      - namespaces
-      verbs:
-      - watch
-      - list
-      - get
-    - apiGroups:
-      - batch
-      resources:
-      - jobs
-      - cronjobs
-      verbs:
-      - watch
-      - list
-      - get
-    # Chaos permissions
-    - apiGroups:
-      - ""
-      resources:
-      - pods
-      verbs:
-      - create
-      - delete
-      - get
-      - list
-      - patch
-      - update
-      - watch
-      - deletecollection
-    - apiGroups:
-      - networking.k8s.io
-      resources:
-      - networkpolicies
-      verbs:
-      - create
-      - delete
-      - get
-      - list
-    - apiGroups: #(Prerequisite: Metrics server should be installed on the cluster. This is required if you are running a custom script in command (CMD) source probe to get the CPU and memory metrics for pods and nodes)
-      - metrics.k8s.io
-      resources:
-      - deployments
-      - replicasets
-      - daemonsets
-      - statefulsets
-      verbs:
-      - list
-      - get
-      - update
-    - apiGroups:
-      - ""
-      resources:
-      - replicationcontrollers
-      - services
-      verbs:
-      - get
-      - list
-    - apiGroups:
-      - apps.openshift.io
-      resources:
-      - deploymentconfigs
-      verbs:
-      - list
-      - get
-    - apiGroups:
-      - argoproj.io
-      resources:
-      - rollouts
-      verbs:
-      - list
-      - get
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      metadata:
+        name: chaos-clusterrole
+      rules:
+      # Discovery permissions
+      - apiGroups:
+        - apps
+        resources:
+        - deployments
+        - replicasets
+        - daemonsets
+        - statefulsets
+        verbs:
+        - watch
+        - list
+        - get
+      - apiGroups:
+        - ""
+        resources:
+        - pods
+        - replicationcontrollers
+        - services
+        - statefulsets
+        - nodes                 #(nodes and namespaces permission is required to create automatic network experiments)
+        - namespaces
+        verbs:
+        - watch
+        - list
+        - get
+      - apiGroups:
+        - batch
+        resources:
+        - jobs
+        - cronjobs
+        verbs:
+        - watch
+        - list
+        - get
+      # Chaos permissions
+      - apiGroups:
+        - ""
+        resources:
+        - pods
+        verbs:
+        - create
+        - delete
+        - get
+        - list
+        - patch
+        - update
+        - watch
+        - deletecollection
+      - apiGroups:
+        - networking.k8s.io
+        resources:
+        - networkpolicies
+        verbs:
+        - create
+        - delete
+        - get
+        - list
+      - apiGroups:    #(Prerequisite: Metrics server should be installed on the cluster. This is required if your are running a custom script in command (CMD) source probe to get CPU and memory metrics for pods and nodes.)
+        - metrics.k8s.io
+        resources:
+        - pods
+        - nodes
+        verbs:
+        - get
+        - list
+      - apiGroups:
+        - apps
+        resources:
+        - deployments
+        - replicasets
+        - daemonsets
+        - statefulsets
+        verbs:
+        - list
+        - get
+        - update
+      - apiGroups:
+        - ""
+        resources:
+        - replicationcontrollers
+        - services
+        verbs:
+        - get
+        - list
+      - apiGroups:
+        - apps.openshift.io
+        resources:
+        - deploymentconfigs
+        verbs:
+        - list
+        - get
+      - apiGroups:
+        - argoproj.io
+        resources:
+        - rollouts
+        verbs:
+        - list
+        - get
     ```
 
 7. If you wish to provide access to all namespaces, create a cluster role binding.
@@ -545,108 +553,109 @@ Also ensure the following are fulfilled:
 To discover the resources and run chaos, use the permissions (described below) in each namespace.
 
     ```yaml
-    apiVersion: rbac.authorization.k8s.io/v1
-    kind: ClusterRole
-    metadata:
-      name: chaos-clusterrole
-    rules:
-    # Discovery permissions
-    - apiGroups:
-      - apps
-      resources:
-      - deployments
-      - replicasets
-      - daemonsets
-      - statefulsets
-      verbs:
-      - watch
-      - list
-      - get
-    - apiGroups:
-      - ""
-      resources:
-      - pods
-      - replicationcontrollers
-      - services
-      - statefulsets
-      - nodes
-      - namespaces     #(nodes and namespace permissions are required to autocreate network experiments)
-      verbs:
-      - watch
-      - list
-      - get
-    - apiGroups:
-      - batch
-      resources:
-      - jobs
-      - cronjobs
-      verbs:
-      - watch
-      - list
-      - get
-    # Chaos permissions
-    - apiGroups:
-      - ""
-      resources:
-      - pods
-      verbs:
-      - create
-      - delete
-      - get
-      - list
-      - patch
-      - update
-      - watch
-      - deletecollection
-    - apiGroups:
-      - networking.k8s.io
-      resources:
-      - networkpolicies
-      verbs:
-      - create
-      - delete
-      - get
-      - list
-    - apiGroups: #(Prerequisite: Metrics server should be installed on the cluster. This is required if you are running a custom script in command (CMD) source probe to get the CPU and memory metrics for pods and nodes)
-      - metrics.k8s.io
-      resources:
-      - pods
-      verbs:
-      - get
-      - list
-    - apiGroups:
-      - apps
-      resources:
-      - deployments
-      - replicasets
-      - daemonsets
-      - statefulsets
-      verbs:
-      - list
-      - get
-      - update
-    - apiGroups:
-      - ""
-      resources:
-      - replicationcontrollers
-      - services
-      verbs:
-      - get
-      - list
-    - apiGroups:
-      - apps.openshift.io
-      resources:
-      - deploymentconfigs
-      verbs:
-      - list
-      - get
-    - apiGroups:
-      - argoproj.io
-      resources:
-      - rollouts
-      verbs:
-      - list
-      - get
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      metadata:
+        name: chaos-clusterrole
+      rules:
+      # Discovery permissions
+      - apiGroups:
+        - apps
+        resources:
+        - deployments
+        - replicasets
+        - daemonsets
+        - statefulsets
+        verbs:
+        - watch
+        - list
+        - get
+      - apiGroups:
+        - ""
+        resources:
+        - pods
+        - replicationcontrollers
+        - services
+        - statefulsets
+        - nodes
+        - namespaces     #(nodes and namespace permissions are required to autocreate network experiments)
+        verbs:
+        - watch
+        - list
+        - get
+      - apiGroups:
+        - batch
+        resources:
+        - jobs
+        - cronjobs
+        verbs:
+        - watch
+        - list
+        - get
+      # Chaos permissions
+      - apiGroups:
+        - ""
+        resources:
+        - pods
+        verbs:
+        - create
+        - delete
+        - get
+        - list
+        - patch
+        - update
+        - watch
+        - deletecollection
+      - apiGroups:
+        - networking.k8s.io
+        resources:
+        - networkpolicies
+        verbs:
+        - create
+        - delete
+        - get
+        - list
+      - apiGroups:    #(Prerequisite: Metrics server should be installed on the cluster. This is required if your are running a custom script in command (CMD) source probe to get the CPU and memory metrics for pods and nodes.)
+        - metrics.k8s.io
+        resources:
+        - pods
+        - nodes
+        verbs:
+        - get
+        - list
+      - apiGroups:
+        - apps
+        resources:
+        - deployments
+        - replicasets
+        - daemonsets
+        - statefulsets
+        verbs:
+        - list
+        - get
+        - update
+      - apiGroups:
+        - ""
+        resources:
+        - replicationcontrollers
+        - services
+        verbs:
+        - get
+        - list
+      - apiGroups:
+        - apps.openshift.io
+        resources:
+        - deploymentconfigs
+        verbs:
+        - list
+        - get
+      - apiGroups:
+        - argoproj.io
+        resources:
+        - rollouts
+        verbs:
+        - list
+        - get
     ``` 
 
 4. You can onboard a namespace by creating a role binding in the application namespace (Onboarding `app1` namespace).
