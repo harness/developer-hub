@@ -21,16 +21,16 @@ Lead Time is calculated by combining Issue Management, SCM, and relevant CI/CD t
 
 ## Workflow profiles for lead time
 
-Lead time is based on time spent in stages defined in a [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview).
+Lead time is based on time spent in stages defined in a [Workflow profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview).
 
-For example, the default configuration for a [PR-based Workflow profile]/docs/software-engineering-insights/sei-profiles/workflow-profiles/velocity-profile#create-velocity-profiles) has four stages:
+For example, the default configuration for a [PR-based Workflow profile]/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/velocity-profile#create-velocity-profiles) has four stages:
 
 * PR creation time.
 * Time to Comment.
 * Approval time.
 * Merge time.
 
-Similarly, the default configuration for a [Ticket-based Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/velocity-profile#configuration-examples) has five stages:
+Similarly, the default configuration for a [Ticket-based Workflow profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/velocity-profile#configuration-examples) has five stages:
 
 * Lead time to First Commit.
 * PR Creation time.
@@ -49,7 +49,7 @@ You can configure grading thresholds (good, acceptable, and slow) for each stage
 
 You can modify Workflow profile stages and grades according to your team's SDLC process. If your Workflow profile includes stages across issue management, SCM, and CI/CD, make sure the same event is not tracked in multiple tools, such as *Deploy to Production* in Jira and a *CI/CD Deploy* stage.
 
-For more information about modifying Workflow profiles and configuring stages for lead time calculation, go to [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/velocity-profile).
+For more information about modifying Workflow profiles and configuring stages for lead time calculation, go to [Workflow profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/velocity-profile).
 
 ### Development Stages
 
@@ -224,7 +224,7 @@ Lead time is based on the stages configured in the [Workflow profile](#workflow-
 
 #### Step 1: Configure the Workflow profile settings
 
-When configuring the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview) for this report, make sure you only track issues in Issue Management. To do this:
+When configuring the [Workflow profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview) for this report, make sure you only track issues in Issue Management. To do this:
 
 * Make sure the **Start Event** is `Ticket Created`.
 * Disable the **Development (SCM) Stages**.
@@ -263,7 +263,7 @@ Complete the widget settings and select **Next: Place Widget**, place the widget
 
 This report by default shows the **Average** of the **Total Lead Time** for all issues from your **Issue Management Platform**. You can also configure this report to show the **Median**, **90th percentile**, or **95th percentile**, instead of the **Average Time**.
 
-Lead time is calculated based on the **Stages** configured in the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview).
+Lead time is calculated based on the **Stages** configured in the [Workflow profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview).
 
 The time displayed on a stage is based on when an issue enters a given stage and when it leaves that stage. Overall lead time for all issues is based on all issues that have passed through the defined stages. To learn more, go to [Lead Time Calculations](#).
 
@@ -316,7 +316,7 @@ Select the metric that you want to display on the widget stages. You can select 
 
 #### Step 4: Configure the Settings
 
-* Select the [Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview) that you want to use for this widget. Available options are based on the configured [Workflow Profiles](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview) in the SEI account.
+* Select the [Workflow Profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview) that you want to use for this widget. Available options are based on the configured [Workflow Profiles](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview) in the SEI account.
 * Select how you want to apply the filters in the widget. You can either choose to **Apply Filters Only For The Initial Node** or **Apply Filters To All Nodes**.
 
 #### Step 5: Save the widget
@@ -365,7 +365,7 @@ Lead time is based on the stages configured in the [Workflow profile](#workflow-
 
 #### Step 1: Configure the Workflow profile settings
 
-When configuring the [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview) for this report, make sure:
+When configuring the [Workflow profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview) for this report, make sure:
 
 * The Start Event is `Ticket Created`. This ensures that lead time tracking starts in the **Issue  Management Platform**.
 * Configure stages for **Issue Management** and other tools you want to track, such as **SCM** and **CI/CD**.
@@ -374,7 +374,7 @@ When configuring the [Workflow profile](/docs/software-engineering-insights/sei-
 
 #### Step 2: Add the widget
 
-* Go to the [Insight](/docs/software-engineering-insights/insights/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Go to the [Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
 * Choose the **Issue Lead Time by Stage report** widget.
 
 The following settings are available to configure this report:
@@ -383,7 +383,7 @@ The following settings are available to configure this report:
 
 This report requires that you set the `Issues Resolved In` filter because only issues that have completed the entire issue management workflow are considered in the lead time calculation.
 
-You can add additional filters to the widget to define what type of issues or PRs should be considered in the lead time calculation. Filters are associated with the report, and they persist even if you change [collections associated with Insights](/docs/software-engineering-insights/insights/sei-insights#manage-insights-associations). When configuring widgets or modifying Insight associations. widgets may break or gain/lose data when associations change.
+You can add additional filters to the widget to define what type of issues or PRs should be considered in the lead time calculation. Filters are associated with the report, and they persist even if you change [collections associated with Insights](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights#manage-insights-associations). When configuring widgets or modifying Insight associations. widgets may break or gain/lose data when associations change.
 
 #### Step 4: Add Filters at the Collection scope if needed
 

@@ -29,7 +29,7 @@ To configure the **Issue Hygiene report**, follow these steps:
 
 #### Step 1: Add the widget
 
-* Go to the [Insight](/docs/software-engineering-insights/insights/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Go to the [Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
 * Choose the **Issues Report** widget.
 
 The following settings are available to configure the Issues Report:
@@ -165,7 +165,7 @@ The **Issue Resolution Time Report** can help answer questions like:
 
 To configure the **Issue Resolution Time report**, follow these steps:
 
-* Go to the [Insight](/docs/software-engineering-insights/insights/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Go to the [Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
 * Choose the **Issue Resolution Time report** widget.
 
 #### Step 2: Configure the Filters on the widget
@@ -302,7 +302,7 @@ To configure the **Jira Releases report**, follow these steps:
 
 #### Step 1: Add the report
 
-* Go to the [Insight](/docs/software-engineering-insights/insights/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Go to the [Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
 * Choose the **Jira Releases report** widget.
 
 #### Step 2: Configure the Filters for the widget
@@ -399,7 +399,7 @@ To configure the **Issue Bounce report**, follow these steps:
 
 #### Step 1: Add the widget
 
-* Go to the [Insight](/docs/software-engineering-insights/insights/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Go to the [Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
 * Choose the **Issue Bounce report** widget.
 
 #### Step 2: Configure the Filters for the widget
@@ -452,7 +452,7 @@ To configure the **Issue Bounce report**, follow these steps:
 
 #### Step 1: Add the widget
 
-* Go to the [Insight](/docs/software-engineering-insights/insights/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
+* Go to the [Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights) where you want to add the widget, Select **Settings**, and then **Add Widget**.
 * Choose the **Issue Hops Report** widget.
 
 #### Step 2: Configure the Filters for the widget

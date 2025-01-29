@@ -10,7 +10,7 @@ sidebar_label: Overview
 
 DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, and Time to Restore (MTTR).
 
-With SEI, you can use [DORA Metrics Insights](/docs/software-engineering-insights/insights/sei-insights/#dora-metrics) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
+With SEI, you can use [DORA Metrics Insights](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights/#dora-metrics) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
 
 Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/sei-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
 
@@ -21,8 +21,8 @@ Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/ca
 | <a href="/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics">Key Concepts in DORA metrics</a> | Learn about the basic concepts of DORA Metrics on Harness SEI | [Click here](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics) |
 | <a href="#engineering-team-use-cases-for-measuring-dora-metrics">Engineering Team Use Cases for Measuring DORA Metrics</a> | Learn how engineering teams can utilize DORA metrics | [Click here](#engineering-team-use-cases-for-measuring-dora-metrics) |
 | <a href="#dora-under-the-hood">DORA under-the-hood</a> | Learn how Harness SEI correlates data across different tools and services | [Click here](#dora-under-the-hood) |
-| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview">Create DORA Profile</a> | Learn how you can create a workflow profile to measure the DORA Metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview) |
-| <a href="/docs/software-engineering-insights/insights/insight-tutorials/dora-insight">Create DORA Insight</a> | Step by Step guide to create a DORA Insight | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/dora-insight) |
+| <a href="/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview">Create DORA Profile</a> | Learn how you can create a workflow profile to measure the DORA Metrics | [Click here](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/workflow-profile-overview) |
+| <a href="/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight">Create DORA Insight</a> | Step by Step guide to create a DORA Insight | [Click here](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight) |
 | <a href="/docs/category/dora-calculations">DORA Metrics Calculation</a> | How are the different DORA metrics calculated on Harness SEI | [Click here](/docs/category/dora-calculations) |
 | <a href="#best-practices--recommendations">Best Practices & Recommendations for measuring DORA Metrics</a> | Recommendations to improve your DORA Metrics reporting | [Click here](#best-practices--recommendations) |
 | <a href="#roadmap">DORA Roadmap</a> | List of enhancements and improvements for DORA Metrics | [Click here](#roadmap) |
@@ -153,10 +153,10 @@ SEI can connect to one or more CI/CD integrations. The jobs and executions are n
 
 The correlation between CI & CD execution is built on generated artifacts (by CI execution) and consumed artifacts (by CD execution). At this time, only container image-type artifacts are supported.
 
-You can set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions. To learn more, go to [Github Actions integration](/docs/software-engineering-insights/sei-integrations/github%20actions/sei-github-actions#ingest-artifacts-and-environment-variable-data).
+You can set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions. To learn more, go to [Github Actions integration](/docs/software-engineering-insights/setup-sei/configure-integrations/github%20actions/sei-github-actions#ingest-artifacts-and-environment-variable-data).
 
 :::info
-SEI currently supports only [HarnessNG integration](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd) as the CD tool for configuring stages in the Lead Time workflow.
+SEI currently supports only [HarnessNG integration](/docs/software-engineering-insights/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd) as the CD tool for configuring stages in the Lead Time workflow.
 :::
 
 ### Commits we fetch
@@ -184,12 +184,12 @@ To learn more, go to [SCM Commits Calculation on Harness SEI](/docs/software-eng
 
 A **DORA Insight** can essentially be defined as a dashboard with a combination of reports i.e. widgets displaying essential information on various DORA metrics such as [DORA Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#lead-time-for-changes), [Deployment Frequency](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#deployment-frequency) etc configured on the profile level related to your developer's activity.
 
-DORA Reports are available for configuration only of you already have an associated profile [DORA profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/dora-profile) (i.e. DORA type Workflow Profile) configuration associated with the **Collection** under which the **Insight** is created. 
+DORA Reports are available for configuration only of you already have an associated profile [DORA profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile) (i.e. DORA type Workflow Profile) configuration associated with the **Collection** under which the **Insight** is created. 
 
 Review the following resources to learn more about defining and managing DORA Profiles and DORA Insight on Harness SEI:
 
-* [Configure and Manage a DORA Profile]/docs/software-engineering-insights/sei-profiles/workflow-profiles/dora-profile)
-* [Create and Manage a DORA Insight](/docs/software-engineering-insights/insights/insight-tutorials/dora-insight)
+* [Configure and Manage a DORA Profile]/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile)
+* [Create and Manage a DORA Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight)
 
 ## Best Practices & Recommendations
 
@@ -240,13 +240,13 @@ While DORA metrics provide valuable insights, it's important to consider some li
 ### DORA Reports
 
 * Currently, the ability to associate a DORA profile with a Collection is disabled if the collection lacks the necessary integration. This is an enhancement under consideration for the future Roadmap where support will be added for enabling the association of any Collection with the DORA profile, regardless of existing integration.
-* Existing [Propels](/docs/software-engineering-insights/sei-propels-scripts/propels-overview) in some cases do not accurately reflect trends for the DORA metrics after the profile is customized or modified. This is an enhancement under consideration for the future Roadmap where support will be added to implement the ability to add trend graphs across various timeframes within DORA widgets which would provide valuable insights into changes over time and the effectiveness of implemented improvements.
+* Existing [Propels](/docs/software-engineering-insights/setup-sei/sei-propels-scripts/propels-overview) in some cases do not accurately reflect trends for the DORA metrics after the profile is customized or modified. This is an enhancement under consideration for the future Roadmap where support will be added to implement the ability to add trend graphs across various timeframes within DORA widgets which would provide valuable insights into changes over time and the effectiveness of implemented improvements.
 
 ### DORA Calculation Requirements
 
 #### Artifact Information Unavailability for Jenkins
 
-Due to the limitations of the [Jenkins Harness SEI plugin](/docs/software-engineering-insights/sei-integrations/jenkins/jenkins-plugin), if there is no artifact information available, the calculation of CI/CD Lead Time cannot be performed accurately since artifact generation and deployment times are essential for these metrics.
+Due to the limitations of the [Jenkins Harness SEI plugin](/docs/software-engineering-insights/setup-sei/configure-integrations/jenkins/jenkins-plugin), if there is no artifact information available, the calculation of CI/CD Lead Time cannot be performed accurately since artifact generation and deployment times are essential for these metrics.
 
 #### CI/CD Job Configuration for Jenkins
 
@@ -283,30 +283,30 @@ When there are several stages within the CI and CD pipelines (such as Unit Test,
 
 The following Issue Management Platforms are supported for calculating the DORA metrics on Harness SEI:
 
-  * [JIRA](/docs/software-engineering-insights/sei-integrations/jira/sei-jira-integration)
-  * [Azure Boards](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops)
+  * [JIRA](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration)
+  * [Azure Boards](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)
 
 #### Source Code Manager
 
 The following SCM Platforms are supported for calculating the DORA metrics on Harness SEI:
 
-  * [GitHub](/docs/software-engineering-insights/sei-integrations/github/sei-github-integration)
-  * [BitBucket](/docs/software-engineering-insights/sei-integrations/bitbucket/sei-bitbucket-cloud)
-  * [GitLab](/docs/software-engineering-insights/sei-integrations/gitlab/sei-integration-gitlab)
-  * [Azure Repos](/docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops)
+  * [GitHub](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration)
+  * [BitBucket](/docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-bitbucket-cloud)
+  * [GitLab](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab)
+  * [Azure Repos](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)
 
 #### CI and CD Platforms
 
 The following Issue Management Platforms are supported for calculating the DORA metrics on Harness SEI:
 
-  * [Jenkins (via Harness SEI Plugin or WebHooks)](/docs/software-engineering-insights/sei-integrations/jenkins/jenkins-plugin)
+  * [Jenkins (via Harness SEI Plugin or WebHooks)](/docs/software-engineering-insights/setup-sei/configure-integrations/jenkins/jenkins-plugin)
     * If integrated using the Plugin, combined CI/CD Lead Time will be obtained.
     * If integrated using Webhooks, CI and CD Lead Time will be obtained separately.
-  * [Harness NG](/docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd)
+  * [Harness NG](/docs/software-engineering-insights/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd)
     * By Default, the ability to split CI and CD is available
-  * [GitHub Actions](/docs/software-engineering-insights/sei-integrations/github%20actions/sei-github-actions)
+  * [GitHub Actions](/docs/software-engineering-insights/setup-sei/configure-integrations/github%20actions/sei-github-actions)
     * By Default, the ability to split CI and CD is available
-  * [Custom CICD](/docs/software-engineering-insights/sei-integrations/custom-cicd/sei-custom-cicd-integration)
+  * [Custom CICD](/docs/software-engineering-insights/setup-sei/configure-integrations/custom-cicd/sei-custom-cicd-integration)
     * Integration can be set up by using your own custom implementation through webhooks.
 
 To learn more about all the supported integrations on SEI, go to [What's Supported](/docs/software-engineering-insights/sei-supported-platforms)

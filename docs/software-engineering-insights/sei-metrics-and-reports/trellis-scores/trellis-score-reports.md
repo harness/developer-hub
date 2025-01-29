@@ -7,9 +7,9 @@ sidebar_position: 70
 Trellis Score reports provide valuable insights into developer performance and facilitate data-driven decision-making. Add these widgets to your Insights to analyze Trellis Scores.
 
 * [**Trellis Score report:**](#trellis-score-report) Trellis Scores by developer.
-* [**Trellis Scores by Collection:**](#trellis-score-by-collection) Trellis Scores organized by [Collection](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
+* [**Trellis Scores by Collection:**](#trellis-score-by-collection) Trellis Scores organized by [Collection](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections).
 * [**Individual Raw Stats:**](#individual-raw-stats) A table of base values that contribute to Trellis Scores.
-* [**Raw Stats by Collection:**](#raw-stats-by-collection) Base values organized by [Collection](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
+* [**Raw Stats by Collection:**](#raw-stats-by-collection) Base values organized by [Collection](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections).
 
 ## Trellis Score report
 
@@ -24,7 +24,7 @@ The Trellis Score report calculates and displays the Trellis Scores by individua
 * **Proficiency:** Proficiency measures how many projects are currently being worked on. It is based on two metrics: Technical breadth and repo breadth.
 * **Leadership and Collaboration:** Leadership and collaboration measures developer teamwork and contribution to peer reviews.
 
-The factors and weight associated with the Trellis Score are essentially defined at the profile level. To learn more, go to [Trellis Profile](/docs/software-engineering-insights/sei-profiles/trellis-profile).
+The factors and weight associated with the Trellis Score are essentially defined at the profile level. To learn more, go to [Trellis Profile](/docs/software-engineering-insights/setup-sei/sei-profiles/trellis-profile).
 
 ![](./static/trellis-report.png)
 
@@ -41,7 +41,7 @@ To add the **Trellis Score report** widget to the Insight:
 
 Define the **Time Interval** for the data to be displayed in the widget
 
-The **Factors** and their associated **Weights** associated with the **Trellis Score** are defined at the **Profile level**. You can adjust the weight given to each factor in the associated [Trellis Profile](/docs/software-engineering-insights/sei-profiles/trellis-profile), which acts as the single source of truth for your Trellis Score calculations.
+The **Factors** and their associated **Weights** associated with the **Trellis Score** are defined at the **Profile level**. You can adjust the weight given to each factor in the associated [Trellis Profile](/docs/software-engineering-insights/setup-sei/sei-profiles/trellis-profile), which acts as the single source of truth for your Trellis Score calculations.
 
 #### Step 3: Save the widget
 

@@ -26,11 +26,11 @@ SEI also helps your teams drive continuous improvement by leveraging best practi
 
 To start using SEI, configure the following:
 
-* [Collections](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview)
-* [Integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview)
-* [Contributors](/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors)
+* [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview)
+* [Integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview)
+* [Contributors](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-contributors)
 * [Projects](/docs/platform/organizations-and-projects/projects-and-organizations)
-* [Collections](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview)
+* [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview)
 * [Profiles](/docs/category/profiles)
 * [Insights](../insights/sei-insights.md)
 * [Metrics and reports](/docs/category/metrics-and-reports)

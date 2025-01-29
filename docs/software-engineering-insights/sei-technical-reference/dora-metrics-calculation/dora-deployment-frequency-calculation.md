@@ -26,7 +26,7 @@ The Deployment Frequency formula depends on whether you are tracking issue
 management, SCM, or CI/CD. The following factors can contribute to Deployment
 Frequency calculations:
 
-* The [SEI integration](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview) chosen in the Workflow profile.
+* The [SEI integration](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview) chosen in the Workflow profile.
 * For Issue Management Platforms, SEI counts the Number of issues deployed.
 * For SCM SEI integrations, SEI counts the number of PRs deployed.
 * For CI/CD SEI integrations, SEI counts the number of jobs deployed

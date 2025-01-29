@@ -11,7 +11,7 @@ Use CI/CD job reports to analyze metrics and trends related to CI/CD job runs. T
 * **Adoption rates:** Gain a deeper understanding of the adoption rate of CI/CD practices across different teams or departments, which helps identify areas of success and potential improvement.
 * **Pipeline performance analysis:** By tracking job counts over time, you can analyze a pipeline's performance. Changes in the job count, such as an increase in queued jobs or a decrease in completed jobs, can provide insights into the pipeline's efficiency, resource utilization, or potential issues affecting its execution.
 
-These widgets can be configured based on various CI/CD attributes, such as pipelines, projects, and statuses, depending on your CI/CD [integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview).
+These widgets can be configured based on various CI/CD attributes, such as pipelines, projects, and statuses, depending on your CI/CD [integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview).
 
 ## What is a Pipeline?
 

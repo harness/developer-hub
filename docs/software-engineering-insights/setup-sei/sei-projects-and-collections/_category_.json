@@ -1,0 +1,11 @@
+{
+   "label":"Projects and collections",
+   "position": 25,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"default",
+   "link":{
+      "type":"generated-index",
+      "title":"Projects and collections"
+   }
+}
