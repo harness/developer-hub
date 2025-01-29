@@ -204,6 +204,95 @@ In **Service Account Token Path** enter the JSON Web Token (JWT) path. This is t
 
 For more information, go to [Service Account Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens) in the Kubernetes documentation.
 
+### Option: JWT/OIDC Auth
+
+JWT/OIDC authentication allows you to authenticate with HashiCorp Vault and easily use a Vault token in just a few steps.  
+
+### Steps to enable Vault authentication:  
+
+1. **Enable the JWT authentication method** on the `harness/jwt` path:  
+   
+   ```  
+   vault auth enable -path=harness/jwt jwt  
+   ```  
+
+2. **Configure the JWT authentication method**:  
+   
+   - Set the OIDC discovery URL or manually specify the JWT issuer. These should match the URLs generated via Zrok for publishing the OpenID configuration and RSA public key.  
+   - Define a `default_role`, which maps policies to the token when no role is provided at login.  
+
+   ```  
+   vault write auth/harness/jwt/config   
+       oidc_discovery_url="<OIDC_DISCOVERY>"   
+       bound_issuer="<BOUND_ISSUER>"   
+       default_role="default"  
+   ```  
+
+   ![jwt-conf](../static/JWT-configure.png)    
+
+
+3. **Verify JWT Configuration**:  
+   
+   After setting the OIDC discovery URL or manually specifying the JWT issuer, you can verify the configuration by running the following command:
+   ```  
+   curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/config
+   ```  
+   This will return the current configuration, showing details like `bound_issuer`, `oidc_discovery_url`, and other settings.
+
+4. **Create a Role for JWT Authentication**:  
+   
+   Create a role that maps JWT claims to Vault policies. Define this role in a file, such as `role-config.json`. Here's an example of how to configure it:
+
+   - **bound_audiences**: Set this to the audience (`aud`) in the JWT claims, matching the JWT authentication mount path (`harness/jwt`).
+   - **bound_claims**: Specify the claims you want to validate (e.g., `sub`, `iss`, `account_id`).
+   - **policies**: Define the policies associated with the client token.
+   - **ttl**: Set the time-to-live for the generated token.
+
+   Example `role-config.json`:
+   ```json
+   {
+     "bound_audiences": ["<CUSTOM_MOUNT_PATH>"],
+     "user_claim": "sub",
+     "bound_claims": {
+       "sub": "<YOUR_ACCOUNT_ID>",
+       "iss": "<SAME_AS_OIDC_DISCOVERY_URL>",
+       "account_id": "<YOUR_ACCOUNT_ID>"
+     },
+     "policies": ["<YOUR_POLICIES>"],
+     "ttl": "1h",
+     "max_ttl": "4h",
+     "role_type": "jwt"
+   }
+   ```
+
+5. **Apply the Role Configuration**:  
+   
+   Use the following command to create the role in Vault:
+   ```  
+   curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" --request POST --data @role-config.json http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/my-test-role
+   ```  
+
+6. **Verify the Role**:  
+   
+   To ensure that the role was created successfully, run the following command:
+   ```  
+   curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/my-test-role
+   ```  
+   This will return the details of the created role, confirming it is properly configured for JWT authentication.
+
+You can now use the client token to perform operations in Vault, according to the policies bound to the token.
+
+7. **Verify Secret Creation using client token**
+
+  ```
+   curl   --header "X-Vault-Token: hvs.<CLIENT_TOKEN>"   --request POST   --data @secret.json   http://<VAULT_DOMAIN_IP>/v1/secret/data/my-secret
+  ```
+
+8. **Check and Configure in Harness**
+
+  ![hashicorp](../static/harshicorp.gif)
+
+
 ### Step 2: Select Secret Engine and Version
 
 Once you have entered the required fields, you can choose to **Fetch Engines** or **Manually Configure Engine**.
