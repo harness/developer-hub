@@ -1,22 +1,27 @@
 ---
-title: Understanding workflow.yaml
+title: Understanding Worfklow YAML
 description: Understanding workflow.yaml
 sidebar_position: 2
 sidebar_label: Workflow YAML
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Workflows are stored in the Software Catalog under the kind **“Template”.** You can create and configure your own workflows in Harness IDP using a YAML file typically named **```workflow.yaml```.** This YAML file acts as the single source of truth, describing the workflow and its metadata. Below is an overview of its configuration.
 
-## What is ```workflow.yaml```?
+## What is  ```workflow.yaml```?
 A workflow is defined through a YAML configuration file, usually named ```workflow.yaml```, which contains all the workflow’s metadata. This file resides in the root directory of the source code repository in your connected Git provider.
 
 The syntax and guidelines for writing this YAML configuration file are governed by Backstage. Learn more about the [backstage guidelines](https://backstage.io/docs/features/software-templates/writing-templates/#specparameters---formstep--formstep) here.
 
-## Components of ```workflow.yaml```
+## Components of  ```workflow.yaml```
 The ```workflow.yaml``` has three main components:
 1. **Frontend**: Configures the input fields required for the workflow.
 2. **Backend**: Configures the actions to be triggered and the orchestration pipelines to be executed.
 3. **Outputs**: Configures output variables to be used after backend execution.
+
+![](./static/workflows-mindmap.png)
 
 These components work together to facilitate workflow execution. Let’s dive deeper into each.
 
@@ -25,6 +30,9 @@ The frontend of Harness IDP workflows is customizable to accept different types 
 
 #### How to define the Workflow Frontend?
 You can configure the frontend using the ```spec.parameters``` field in your YAML configuration. 
+
+<Tabs>
+<TabItem value="YAML" label="YAML" default>
 
 **Example Syntax**:
 ```YAML
@@ -46,11 +54,45 @@ spec:
           default: Chuck
 ```
 
+</TabItem>
+<TabItem value="Template Playground" label="Template Playground">
+
+![](./static/idp-stage.png)
+
+
+</TabItem>
+</Tabs>
+
+**Parameter Types**
+
+A workflow definition can accept a wide range of input types, including:
+- **String**: Simple text fields used for names, IDs, or environment types.
+- **Integer**: Numeric inputs used for values like quotas or age limits.
+- **Array**: Useful for handling multiple inputs, such as a list of dependencies or services.
+- **Object**: Enables complex data structures, allowing nested fields for detailed configurations.
+
+**User Interaction and Validation**
+
+Here are some ways you can configure your workflow's frontend to enhance user interaction and validation:
+- **UI Widgets for User Input:**
+Inputs can include interactive UI components that simplify user interaction. For example, a string input can use ``ui:field: OwnerPicker`` to let users select User Groups from a dropdown list.
+
+- **Default Values:**
+You can set default values for parameters to guide users toward commonly used inputs, streamlining the onboarding process and improving user experience.
+
+- **Field Dependency:**
+Input fields can be made dynamic using ``anyOf`` or ``allOf``, making certain fields appear only based on previous user selections. For instance, selecting a "production" environment could reveal additional fields for production-specific configurations.
+
+- **Required Fields:**
+Workflows allow developers to enforce mandatory fields to ensure critical data is collected. For example, fields like age or owner can be marked as required to prevent missing essential information during onboarding.
+
+Learn more about the different input types and use cases here. 
+
 ### Workflow Backend
 The backend of Harness IDP workflows includes a library of steps and actions to define the workflow logic. These steps are core execution units used to trigger actions and orchestration pipelines. Input details from the frontend are passed to the backend for task execution.
 
 #### How to define the Workflow Backend?
-You can configure the backend using the spec.steps field in your YAML configuration. 
+You can configure the backend using the ```spec.steps``` field in your YAML configuration. 
 
 **Example Syntax**:
 ```YAML
@@ -71,6 +113,11 @@ steps:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
+
+**Supported Actions**
+
+**Harness Pipeline**
+
 
 ### Workflow Outputs
 After backend execution, each step can produce output variables, which can be displayed in the frontend. These outputs can include links to newly created resources like Git repositories, documentation pages, or CI/CD pipelines.

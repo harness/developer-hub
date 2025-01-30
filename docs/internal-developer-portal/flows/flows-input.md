@@ -1,8 +1,8 @@
 ---
 title: Workflows Form Inputs Library
 description: Instructions to build the UI of individual workflows and all the types of inputs possible in Workflows
-sidebar_position: 2
-sidebar_label: Workflows Form Inputs Library
+sidebar_position: 4
+sidebar_label: Workflow Inputs
 redirect_from:
   - /docs/internal-developer-portal/flows/custom-extensions
 ---

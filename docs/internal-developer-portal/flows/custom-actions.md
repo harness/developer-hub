@@ -1,7 +1,8 @@
 ---
 title: Supported Workflows Actions
 description: These Workflows Actions are supported in Harness IDP
-sidebar_position: 4
+sidebar_position: 5
+sidebar_label: Workflow Actions
 ---
 
 ## Introduction

@@ -1,6 +1,6 @@
 ---
 title: Managing Workflows
-description: Managing workflows
+description: Manage workflows
 sidebar_position: 3
 sidebar_label: Managing Workflows
 ---
