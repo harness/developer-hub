@@ -23,3 +23,24 @@ Harness DB DevOps provides a way to:
  - **Streamline Change Management**: Managing database schema changes becomes more efficient with version control and automated deployments.
  - **Enhanced Security and Compliance**: Automated processes ensure that security policies are consistently applied across all environments, and compliance checks can be integrated into the CI/CD pipeline. 
 
+## Harness DB DevOps Architecture
+
+:::info
+Before you can access Harness Database DevOps, you must have Harness enable the following feature flag, `DBOPS_ENABLED`. To enable the feature flag, please contact [Harness Support](mailto:support@harness.io).
+:::
+
+![Harness DB DevOps architecture diagram](./static/database-devops-architecture.png) 
+
+The Harness Database DevOps architecture is built around the Harness Delegate, which plays a crucial role in managing database change operations. This delegate operates within your environment—whether that's a local network, virtual private cloud, or Kubernetes cluster—ensuring seamless integration with your existing infrastructure. 
+
+The [Harness Delegate](../../platform/delegates/delegate-concepts/delegate-overview.md) serves as the bridge between the Harness Manager in your SaaS instance and your database instances, code repositories, and cloud providers. It facilitates the orchestration of database changes by connecting to your version control systems and artifact repositories, allowing for efficient management of database migrations and updates.
+
+You have the flexibility to store your database scripts and artifacts either internally or on public platforms like GitHub. The delegate is responsible for executing database change jobs and applying migrations as specified in your deployment pipelines. It also collects and transmits data back to the Harness Manager, which can be utilized for orchestration, monitoring, debugging, and analytics.
+
+Upon successful completion of a database deployment pipeline, the system can apply changes to the designated database instances, based on your pipeline configuration. Harness Database DevOps captures detailed logs and outputs from each deployment, enabling you to review and analyze the results both during and after the execution of your database operations. 
+
+This comprehensive approach ensures that your database changes are managed efficiently and effectively, aligning with best practices in Database DevOps.
+
+## Try Harness DB DevOps
+
+If you are interested in trying Harness DB DevOps for yourself, you can [try Harness DB DevOps now](https://app.harness.io/auth/#/signup?utm_source=harness_io&utm_medium=cta&utm_campaign=platform&utm_content=main_nav) or [request a demo](https://www.harness.io/company/contact-sales?utm_source=harness_io&utm_medium=cta&utm_campaign=platform&utm_content=main_nav). 
