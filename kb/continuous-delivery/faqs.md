@@ -3264,6 +3264,15 @@ For more details, refer to the Harness documentation on [Containerized Step Grou
 
 You can use the API: https://apidocs.harness.io/tag/ServiceOverrides/#operation/createServiceOverride to create Global Environment overrides.
 
+#### Can we  update service override via  API
+Yes you can use below api to update service override https://apidocs.harness.io/tag/ServiceOverrides/#operation/updateServiceOverride
+
+#### How to Find the Service Override Identifier When Using getServiceOverrides
+The override identifier can be constructed as follows, depending on the level you are querying:
+Format: <envname>_<servicename>_<infraname>
+
+You can pass only the required values and omit others as needed. For example, if you need a global environment override, you only need to pass the envname
+
 #### Is it possible to swap the template from the other branch that is already used in the pipeline?
 Yes, User can swap the template by changing the branch in the git config of the template.
 
