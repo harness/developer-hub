@@ -14,7 +14,7 @@ You can create a Split Zendesk Support ticket.
 To create a support ticket:
 
 1. Send an email to [support@split.io](mailto:support@split.io).
-2. Include steps to reproduce the issue.
+2. In the email message, provide steps to reproduce the issue.
 3. Attach any relevant screenshots or mini video clips.
 
 The request will be routed to FME support engineers and create an internal Zendesk ticket, which is actively monitored by the Harness FME team.
@@ -35,7 +35,7 @@ To create a support ticket:
 
 This will create an internal Zendesk ticket, which is actively monitored.
 
-#### What’s Next?
+### What’s Next?
 
 Harness FME Support team will communicate with you directly through the ticket to keep track of updates.
 

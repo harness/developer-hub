@@ -31,7 +31,7 @@ import { MODULES } from "@site/src/constants"
           title: "Development guides",
           module: MODULES.fme,
           description:
-            "Guides for using Harness FME with popular languages and platforms, including mobile development",
+            "Use Harness FME with popular languages and platforms, including mobile development",
           link: "/docs/feature-management-experimentation/sdks-and-infrastructure",
         },
       ],
@@ -52,7 +52,7 @@ import { MODULES } from "@site/src/constants"
           title: "Release monitoring",
           module: MODULES.fme,
           description:
-            "Measuring KPIs, performance metrics, and alerting for your feature variations",
+            "Measure KPIs, performance metrics, and alerting for your feature variations",
           link: "/docs/feature-management-experimentation/release-monitoring",
         },
         {
@@ -91,8 +91,14 @@ import { MODULES } from "@site/src/constants"
         {
           title: "FME knowledge base",
           module: MODULES.fme,
-          description: "",
+          description: "In-depth knowledge base articles",
           link: "/kb/feature-management-experimentation",
+        },
+        {
+          title: "Harness FME support",
+          module: MODULES.fme,
+          description: "Open a support ticket with us",
+          link: "/docs/feature-management-experimentation/fme-support",
         },
       ],
     },

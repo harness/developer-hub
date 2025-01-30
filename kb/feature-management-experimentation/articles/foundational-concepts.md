@@ -3,6 +3,7 @@ title: Foundational concepts
 sidebar_label: Foundational concepts
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: Take a minute to learn the foundational concepts of Split’s Feature Data Platform
 ---
 
 import Link from "@docusaurus/Link";
@@ -11,7 +12,7 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025335091-Step-4-Create-a-metric-monitor-and-measure-the-impact </button>
 </p>
 
-Take 5 minutes to learn the foundational concepts of Split’s Feature Data Platform.
+Take a minute to learn the foundational concepts of Split’s Feature Data Platform.
 
 # What is a feature flag?
 A feature flag wraps or gates a section of your code, allowing it to be selectively turned on or off remotely with precision, down to the level of an individual user, at any time, without a new code deployment.
