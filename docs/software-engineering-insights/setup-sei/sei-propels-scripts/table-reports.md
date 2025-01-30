@@ -20,7 +20,7 @@ You can use Propels to populate and modify Tables for presentation on Table repo
 
 <!-- ![](../static/table_report1.png) -->
 
-<DocImage path={require('../static/table_report1.png')} />
+<DocImage path={require('../static/table-report-1.png')} />
 
 To add the **Table report** widget to Insights:
 
@@ -48,9 +48,9 @@ You might want to set the time range to **Use Insight time**, which allows the u
 
 Use this report to inspect specific rows and columns in a [Table](./tables.md), such as providing trend analysis at the executive level across several teams and specific use cases not addressed by other built-in widgets.
 
-<!-- ![](../static/custom_table_report1.png) -->
+<!-- ![](../static/custom-table-report-1.png.png) -->
 
-<DocImage path={require('../static/custom_table_report1.png')} />
+<DocImage path={require('../static/custom-table-report-1.png')} />
 
 To add the **Custom Table report** widget to Insights:
 
@@ -99,9 +99,9 @@ With bar graph visualizations, you can modify color schemes by selecting from th
 
 Currently, grouping is only supported at one level. You can group by any column. Baselines and trendlines are compatible with grouping. Here is an example of a bar graph with a low baseline of 4 and a high baseline of 7, as well as a trendline.
 
-<!-- ![](../static/custom_table_report1.png) -->
+<!-- ![](../static/custom-table-report-1.png.png) -->
 
-<DocImage path={require('../static/custom_table_report1.png')} />
+<DocImage path={require('../static/custom-table-report-1.png')} />
 
 If you use grouping, you can also also apply stacking based on any column. Stacks control how data is arranged in each X-axis increment.
 

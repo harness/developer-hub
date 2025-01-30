@@ -116,17 +116,17 @@ When configured to calculate the Lead Time as the **Average time in stage**, the
 
 ### Median
 
-The [median lead time](/docs/software-engineering-insights/sei-administration/dora/dora-lead-time-calculation#median) is the duration by which half of the tasks or tickets are completed. It gives you idea about the typical completion time by showing the point where half of the tickets are resolved faster and the other half take longer.
+The [median lead time](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-lead-time-calculation#median) is the duration by which half of the tasks or tickets are completed. It gives you idea about the typical completion time by showing the point where half of the tickets are resolved faster and the other half take longer.
 
 ### 90th Percentile
 
-The [90th percentile lead time](/docs/software-engineering-insights/sei-administration/dora/dora-lead-time-calculation#90th-percentile) is the duration within which 90% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays.
+The [90th percentile lead time](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-lead-time-calculation#90th-percentile) is the duration within which 90% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays.
 
 ### 95th Percentile
 
-The [95th percentile lead time](/docs/software-engineering-insights/sei-administration/dora/dora-lead-time-calculation#95th-percentile) is the duration within which 95% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays. The calculation of the 95th percentile lead time follows the same steps as the 90th percentile, with the only difference being the percentile value used.
+The [95th percentile lead time](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-lead-time-calculation#95th-percentile) is the duration within which 95% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays. The calculation of the 95th percentile lead time follows the same steps as the 90th percentile, with the only difference being the percentile value used.
 
-If you want to learn more about the calculations behind these metrics, you can check out the [DORA Lead Time calculations](/docs/software-engineering-insights/sei-administration/dora/dora-lead-time-calculation).
+If you want to learn more about the calculations behind these metrics, you can check out the [DORA Lead Time calculations](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-lead-time-calculation).
 
 ### Examples
 

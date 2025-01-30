@@ -75,7 +75,7 @@ This release does not include any early access features.
 
 The new experience for configuring the **GitHub Actions integration** and **GitLab integration** is now **Generally Available**! Find the step-by-step instructions for configuring the integration in the documentation below:
 
-* [Connect with GitHub Actions](/docs/software-engineering-insights/setup-sei/configure-integrations/github%20actions/sei-github-actions)
+* [Connect with GitHub Actions](/docs/software-engineering-insights/setup-sei/configure-integrations/github-actions/sei-github-actions)
 * [Connect with GitLab](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab)
 
 #### Early access features
@@ -212,7 +212,7 @@ Check out the release notes below for complete details and refer to the document
 
 We're excited to announce that Business Alignment is now Generally Available on the Harness platform. For more information, please refer to our documentation on:
 
-* [Business Alignment Profile](/docs/software-engineering-insights/sei-profiles/business-alignment-profile)
+* [Business Alignment Profile](/docs/software-engineering-insights/setup-sei/sei-profiles/business-alignment-profile)
 * [Business Alignment Report](/docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment)
 
 #### Deprecation Notice
@@ -695,7 +695,7 @@ In our continued effort to improve the user experience, this release introduces 
 * Added the following improvements to the **Issue Backlog Trend report.** (SEI-6369)
   * You can now configure the report to display historical data for the current issues, allowing you to analyze trends over time.
   * Now you can define the settings for the current issue type using the existing filters and set preferences for tracking trends related to specific issue types using historical data filters i.e. **Status** & **Category**
-  * A new time interval option **Daily** has been added into the widget settings. Now you can choose between the **Day**, **Week**, **Month** and **Quarter** time intervals directly within the widget. <br /><br />To learn more, go to [Issue Backlog Trend Report](/docs/software-engineering-insights/early-access/metrics-reports/issue-backlog-trend-report). This feature is currently in **BETA** and is behind the Feature Flag `<SEI_SHOW_HISTORICAL_FILTERS>`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+  * A new time interval option **Daily** has been added into the widget settings. Now you can choose between the **Day**, **Week**, **Month** and **Quarter** time intervals directly within the widget. <br /><br />To learn more, go to [Issue Backlog Trend Report](/docs/software-engineering-insights/get-started/early-access/metrics-reports/issue-backlog-trend-report). This feature is currently in **BETA** and is behind the Feature Flag `<SEI_SHOW_HISTORICAL_FILTERS>`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
   ![](./static/issue-trend.png)
 

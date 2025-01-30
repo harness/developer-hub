@@ -91,7 +91,7 @@ The examples below uses the **Average** calculation method across each individua
 
 ### Calculation Example 1: One Pull Request associated with a Single Jira Ticket
 
-![](./static/Case%201.png)
+![](./static/case-1.png)
 
 In this example, we consider a use case where a single pull request (PR) is associated with a single Jira ticket. The Lead Time calculation includes several stages as shown below.
 
@@ -124,7 +124,7 @@ Therefore, the Total Lead Time is **70 minutes**.
 
 ### Calculation Example 2 - Two Sequential PRs associated with a Single Jira Ticket
 
-![](./static/Case%202.png)
+![](./static/case-2.png)
 
 In the case where two pull requests (PRs) are associated with a single Jira ticket in a sequential manner, the Lead Time calculation can be broken down into the following stages.
 
@@ -155,7 +155,7 @@ Therefore, the Total Lead Time is **99 minutes**.
 
 ### Calculation Example 3 - Two Overlapping PRs associated with a Single Jira Ticket
 
-![](./static/Case%203.png)
+![](./static/case-3.png)
 
 In the case where two pull requests (PRs) are associated with a single Jira ticket in an overlapping manner, the lead time calculation can be broken down into the various stages.
 
@@ -186,7 +186,7 @@ Therefore, the Total Lead Time is **70 minutes**.
 
 ### Calculation Example 4 - Two Overlapping PRs associated with a Single Jira Ticket with Jira Re-Entry
 
-![](./static/Case%204.png)
+![](./static/case-4.png)
 
 In this case, two pull requests (PRs) are associated with a single Jira ticket in an overlapping manner, and there is a re-entry into the Jira ticket after the initial completion.
 
@@ -217,7 +217,7 @@ Therefore, the Total Lead Time is **104 minutes**.
 
 ### Calculation Example 5 - Two PRs associated with a Single Jira Ticket and Jira Ticket was re-opened after Release
 
-![](./static/Case%205.png)
+![](./static/case-5.png)
 
 In this case, two pull requests (PRs) are associated with a single Jira ticket, and the Jira ticket is reopened after the initial release.
 
@@ -248,7 +248,7 @@ Therefore, the Total Lead Time is **164 minutes**.
 
 ### Calculation Example 6 - No Associated PR or Commit (No Ticket ID Mentioned in PRs)
 
-![](./static/Case%206.png)
+![](./static/case-6.png)
 
 In this case, there are no pull requests (PRs) or commits associated with the Jira ticket, as the ticket ID was not mentioned in the PRs.
 
@@ -281,7 +281,7 @@ Therefore, the Total Lead Time is **70 minutes**.
 
 ### Calculation Example 7 - Same Job for CI and CD
 
-![](./static/Case%207.png)
+![](./static/case-7.png)
 
 In this case, a single job is responsible for both the continuous integration (CI) and continuous deployment (CD) processes.
 
@@ -313,7 +313,7 @@ In this case, a single job handles both the CI and CD processes, so the **First 
 
 ### Calculation Example 8 - Different Jobs for CI and CD
 
-![](./static/Case%208.png)
+![](./static/case-8.png)
 
 In this case, there are separate jobs for the continuous integration (CI) and continuous deployment (CD) processes.
 

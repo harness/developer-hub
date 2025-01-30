@@ -31,7 +31,7 @@ Harness SEI supports a variety of platforms, repos, tools, and related technolog
 * [Jenkins](/docs/software-engineering-insights/setup-sei/configure-integrations/jenkins/jenkins-plugin)
 * [Harness Continuous Delivery & GitOps and Continuous Integration](/docs/software-engineering-insights/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd)
 * [Azure Pipelines](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)
-* [GitHub Actions](/docs/software-engineering-insights/setup-sei/configure-integrations/github%20actions/sei-github-actions)
+* [GitHub Actions](/docs/software-engineering-insights/setup-sei/configure-integrations/github-actions/sei-github-actions)
 
 ### BETA
 

@@ -247,7 +247,7 @@ Note that SEI natively supports correlation for container image based artifacts.
 
 This section explains how SEI correlates CI and CD stages in the Lead Time workflow when the CI tool is Github Actions and CD tool used is Harness CD.
 
-You can set up a [GitHub Actions workflow](/docs/software-engineering-insights/setup-sei/configure-integrations/github%20actions/sei-github-actions#ingest-artifacts-and-environment-variable-data)to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions. To learn more, go to [Github Actions integration](/docs/software-engineering-insights/setup-sei/configure-integrations/github%20actions/sei-github-actions).
+You can set up a [GitHub Actions workflow](/docs/software-engineering-insights/setup-sei/configure-integrations/github-actions/sei-github-actions#ingest-artifacts-and-environment-variable-data)to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions. To learn more, go to [Github Actions integration](/docs/software-engineering-insights/setup-sei/configure-integrations/github-actions/sei-github-actions).
 
 In this scenario it is important to ensure both pipelines are using the same artifact source. The following details are required to be met in order to set the correlation between Harness CI and Harness CD.
 

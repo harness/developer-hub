@@ -154,7 +154,7 @@ SEI can connect to one or more CI/CD integrations. The jobs and executions are n
 
 The correlation between CI & CD execution is built on generated artifacts (by CI execution) and consumed artifacts (by CD execution). At this time, only container image-type artifacts are supported.
 
-You can set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions. To learn more, go to [Github Actions integration](/docs/software-engineering-insights/setup-sei/configure-integrations/github%20actions/sei-github-actions#ingest-artifacts-and-environment-variable-data).
+You can set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions. To learn more, go to [Github Actions integration](/docs/software-engineering-insights/setup-sei/configure-integrations/github-actions/sei-github-actions#ingest-artifacts-and-environment-variable-data).
 
 :::info
 SEI currently supports only [HarnessNG integration](/docs/software-engineering-insights/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd) as the CD tool for configuring stages in the Lead Time workflow.
@@ -305,7 +305,7 @@ The following Issue Management Platforms are supported for calculating the DORA 
     * If integrated using Webhooks, CI and CD Lead Time will be obtained separately.
   * [Harness NG](/docs/software-engineering-insights/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd)
     * By Default, the ability to split CI and CD is available
-  * [GitHub Actions](/docs/software-engineering-insights/setup-sei/configure-integrations/github%20actions/sei-github-actions)
+  * [GitHub Actions](/docs/software-engineering-insights/setup-sei/configure-integrations/github-actions/sei-github-actions)
     * By Default, the ability to split CI and CD is available
   * [Custom CICD](/docs/software-engineering-insights/setup-sei/configure-integrations/custom-cicd/sei-custom-cicd-integration)
     * Integration can be set up by using your own custom implementation through webhooks.
