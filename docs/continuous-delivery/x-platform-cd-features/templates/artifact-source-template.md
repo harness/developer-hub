@@ -276,3 +276,7 @@ When changes are made to an artifact source template the service using the templ
 You can reconcile these changes by using the **Reconcile** option in the service (next to **Save**).
 
 Once the reconcile action is initiated, the changes are available in the service.
+
+## Limitation
+
+Artifact templates created in a repository with a different branch name than the service template will use the service's branch name during lookup, which is not the expected behavior. This limitation occurs because Harness currently defaults to the branch and repository used in the service for artifact templates, and cross-branch referencing is not supported.
