@@ -114,9 +114,9 @@ static/  @rohanmaharjan100 @wei-harness
 
 # Incident Response Docs
 /docs/incident-response/ @SmritiSatya @sagarkrsd @naveen-harness
-/release-notes/chaos-engineering.md @SmritiSatya @sagarkrsd @naveen-harness
-/src/components/Roadmap/data/ceData.ts @krishi0408 @SmritiSatya @sagarkrsd @naveen-harness @vishal-av @SushrutHarness
-/src/components/Docs/data/chaosEngineeringData* @krishi0408 @SmritiSatya @sagarkrsd @naveen-harness @vishal-av @SushrutHarness
+/release-notes/incident-response.md @SmritiSatya @sagarkrsd @naveen-harness
+/src/components/Roadmap/data/irData.ts @krishi0408 @SmritiSatya @sagarkrsd @naveen-harness @vishal-av @SushrutHarness
+/src/components/Docs/data/incidentResponseData* @krishi0408 @SmritiSatya @sagarkrsd @naveen-harness @vishal-av @SushrutHarness
 
 # Platform Docs
 /docs/platform/ @pratmit @krishi0408 @GokulBansal0 @abhishekharness @ivikramsahu

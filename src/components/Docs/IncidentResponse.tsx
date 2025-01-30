@@ -16,7 +16,7 @@ export default function CE() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon-ir.svg`} />
-            <h1>Incident Response (BETA) </h1>
+            <h1>Incident Response (COMING SOON) </h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/docs/incident-response/faq">
@@ -45,8 +45,8 @@ export default function CE() {
                 className={styles.illustration}
                 src={
                   colorMode === "light"
-                    ? `${baseUrl}img/ce.svg`
-                    : `${baseUrl}img/CE_Landing_Page_dark_mode.svg`
+                    ? `${baseUrl}img/ir-landing-page.svg`
+                    : `${baseUrl}img/ir-landing-page.svg`
                 }
               />
             </div>

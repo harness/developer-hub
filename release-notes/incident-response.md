@@ -26,8 +26,6 @@ The release notes describe recent changes to Harness Incident Response.
 
 #### New features and enhancements
 
-This new feature was released.
 
 #### Bug Fixes
 
-This bug was fixed.

@@ -150,7 +150,7 @@ const sidebars: SidebarsConfig = {
         {
           type: "link",
           href: "/docs/incident-response",
-          label: "Incident Response (BETA)",
+          label: "Incident Response (COMING SOON)",
           className: "sidebar-ir",
           customProps: {
             description:
