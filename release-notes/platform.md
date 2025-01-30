@@ -79,7 +79,7 @@ The following deprecated API endpoints are longer supported:
 
 ## January 2025
 
-#### Version 1.74.x <!-- January 31, 2025 -->
+### Version 1.74.x <!-- January 31, 2025 -->
 #### Fixed issues
 
 - Users will now require the "Create Project" permission for the **Create Project** button to be enabled. [PL-59658]  
