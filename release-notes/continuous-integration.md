@@ -41,7 +41,7 @@ ip-15.204.71.0/24
 ip-51.81.128.0/24
 ip-51.81.189.0/24
 
-If you have any questions or need assistance with the whitelisting process, please contact Harness Support.
+If you have any questions or need assistance with the whitelisting process, please contact [Harness Support](mailto:support@harness.io).
 
 :::
 
