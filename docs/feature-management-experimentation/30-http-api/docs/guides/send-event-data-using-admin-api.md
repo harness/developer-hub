@@ -46,9 +46,11 @@ import Link from "@docusaurus/Link";
 <p>
   This API key will be used for sending events.
 </p>
-<p>
-  <strong>Note: </strong><strong>For this document, we are using $apiKey to replace the actual API key and that we gathered previously. Be sure to replace this with what you have copied down from the Prerequisites section.</strong>
-</p>
+
+:::note
+For this document, we are using **$apiKey** to replace the actual API key and that we gathered previously. Be sure to replace this with what you have copied down from the Prerequisites section.
+:::
+
 <h2 id="h_01HKX8TXC71MEFVQK47YC25KN5">Sending events</h2>
 <p>
   If you are not using the SDK track method, then events need to be imported in some other way, such as using the Admin API, as documented here.&nbsp;
@@ -224,18 +226,14 @@ import Link from "@docusaurus/Link";
 <p>&nbsp;</p>
 <pre>\[<br /> &nbsp;&nbsp;\{<br />&nbsp; &nbsp; &nbsp; "eventTypeId": "page_latency",<br />&nbsp; &nbsp; &nbsp; "trafficTypeName": "user",<br />&nbsp; &nbsp; &nbsp; "key": "Liam",<br />&nbsp; &nbsp; &nbsp; "timestamp": "1645557823",<br />&nbsp; &nbsp; &nbsp; "value": 3.85,<br />&nbsp; &nbsp; &nbsp; "properties": \{<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"country": "CA"<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\}<br /> &nbsp;&nbsp;\},<br /> &nbsp;&nbsp;\{<br />&nbsp; &nbsp; &nbsp;"eventTypeId": "page_load",<br />&nbsp; &nbsp; &nbsp;"trafficTypeName": "user",<br />&nbsp; &nbsp; &nbsp;"key": "Ava",<br />&nbsp; &nbsp; &nbsp;"timestamp": "1645557824",<br />&nbsp; &nbsp; &nbsp;"value": 1.31,<br />&nbsp; &nbsp; &nbsp;"properties": \{<br />&nbsp; &nbsp; &nbsp; &nbsp;"country": "CA"<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\}<br /> &nbsp;&nbsp;\}<br />\]</pre>
 <p>
-  To send these events to Split via the Admin API, use the following cURL command:&nbsp;
+  To send these events to Split via the Admin API, use the following cURL command:
 </p>
-<p>
-  curl --location --request POST 'https://events.split.io/api/events/bulk' \
-</p>
-<p>
-  --header 'Content-Type: application/json' \
-</p>
-<pre>--header 'Authorization: Bearer $apiKey \\<br />--data-raw '\[<br /> &nbsp;\{<br />&nbsp; &nbsp; &nbsp;"eventTypeId": "page_latency",<br />&nbsp; &nbsp; &nbsp;"trafficTypeName": "user",<br />&nbsp; &nbsp; &nbsp;"key": "Liam",<br />&nbsp; &nbsp; &nbsp;"timestamp": "1645557823",<br />&nbsp; &nbsp; &nbsp;"value": 3.85,<br />&nbsp; &nbsp; &nbsp;"properties": \{<br />&nbsp; &nbsp; &nbsp; &nbsp; "country": "CA"<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /> &nbsp;},<br /> &nbsp;\{<br />  &nbsp; "eventTypeId": "page_load",<br />  &nbsp; "trafficTypeName": "user",<br />&nbsp; &nbsp; "key": "Ava",<br />&nbsp; &nbsp; "timestamp": "1645557824",<br />&nbsp; &nbsp; "value": 1.31,<br />&nbsp; &nbsp; "properties": \{<br />&nbsp; &nbsp; &nbsp; "country": "CA"<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\}<br /> &nbsp;\}<br />\]<br />'</pre>
-<p>
-  <strong>Note: </strong><strong>This is a POST command. It creates new events in Split. It cannot be used to edit or update existing events. It is not idempotent. Sending the same data multiple times will create multiple events.</strong>
-</p>
+<pre>curl --location --request POST 'https://events.split.io/api/events/bulk' \\<br />--header 'Content-Type: application/json' \\<br />--header 'Authorization: Bearer $apiKey \\<br />--data-raw '\[<br /> &nbsp;\{<br />&nbsp; &nbsp; &nbsp;"eventTypeId": "page_latency",<br />&nbsp; &nbsp; &nbsp;"trafficTypeName": "user",<br />&nbsp; &nbsp; &nbsp;"key": "Liam",<br />&nbsp; &nbsp; &nbsp;"timestamp": "1645557823",<br />&nbsp; &nbsp; &nbsp;"value": 3.85,<br />&nbsp; &nbsp; &nbsp;"properties": \{<br />&nbsp; &nbsp; &nbsp; &nbsp; "country": "CA"<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /> &nbsp;},<br /> &nbsp;\{<br />  &nbsp; "eventTypeId": "page_load",<br />  &nbsp; "trafficTypeName": "user",<br />&nbsp; &nbsp; "key": "Ava",<br />&nbsp; &nbsp; "timestamp": "1645557824",<br />&nbsp; &nbsp; "value": 1.31,<br />&nbsp; &nbsp; "properties": \{<br />&nbsp; &nbsp; &nbsp; "country": "CA"<br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\}<br /> &nbsp;\}<br />\]<br />'</pre>
+
+:::note:
+This is a POST command. It creates new events in Split. It cannot be used to edit or update existing events. It is not idempotent. Sending the same data multiple times will create multiple events.
+:::
+
 <p>
   The Split endpoint returns a 202 code, which indicates that the events have been accepted.&nbsp;
 </p>

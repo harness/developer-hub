@@ -64,17 +64,35 @@ import { MODULES } from "@site/src/constants"
         },
       ],
     },
-
     {
       name: "Integrate FME",
       description: "",
       list: [
         {
-          title: "Integrate & Automate",
+          title: "Integrations",
           module: MODULES.fme,
           description:
             "Use your current tech stack + FME",
           link: "/docs/feature-management-experimentation/integrations",
+        },
+        {
+          title: "Split API",
+          module: MODULES.fme,
+          description:
+            "Hit our HTTP API endpoints to interact with FME objects",
+          link: "/docs/feature-management-experimentation/http-api",
+        },
+      ],
+    },
+    {
+      name: "Help and more",
+      description: "",
+      list: [
+        {
+          title: "FME knowledge base",
+          module: MODULES.fme,
+          description: "",
+          link: "/kb/feature-management-experimentation",
         },
       ],
     },

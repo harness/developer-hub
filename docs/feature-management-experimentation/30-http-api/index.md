@@ -15,11 +15,11 @@ import OutboundSvg from "@site/docs/feature-management-experimentation/_template
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/12622773861901-Admin-API </button>
 </p>
 
-<FmePreviewAdmonition ApiInfoHighlight="infoHighlight" />
-
 :::note
 **Split API** is also called **Split Admin API** and **Admin API**. 
 :::
+
+<FmePreviewAdmonition ApiInfoHighlight="infoHighlight" />
 
 ### Overview
 
@@ -35,6 +35,6 @@ The [Admin API](https://docs.split.io/reference/introduction) documentation prov
 
 ### Wrappers
 
-You can use the [Python Library Wrapper for Split API](./docs/fme-api-wrappers/python-library-wrapper-for-fme-api/python-library-wrapper-for-fme-api.md) to work with standalone Split. This library is maintained by the Harness FME team.
+You can also use the [Python Library Wrapper for Split API](./docs/fme-api-wrappers/python-library-wrapper-for-fme-api/python-library-wrapper-for-fme-api.md) to work with Split. This library is maintained by the Harness FME team.
 
 See also [Split API FAQs](./docs/zfaqs).

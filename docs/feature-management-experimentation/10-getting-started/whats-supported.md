@@ -44,6 +44,7 @@ Scroll left to see the feature list for all SDKs.
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+<!--
 
 <Tabs
   groupId="sdktab" queryString>
@@ -479,9 +480,13 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 
+-->
+
+<!-- TODO - uncomment this when the FME module can be selected in the Idea Portal
 ## Feature requests
 
 Some of our best ideas come from our customers. You can submit your feature requests to [Harness Idea Portal](https://ideas.harness.io/feature-request).
+-->
 
 ## What else does Harness support?
 
