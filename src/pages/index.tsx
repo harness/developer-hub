@@ -11,7 +11,6 @@ import LearnAboutPlatform from '@site/src/components/LearnAboutPlatform';
 import HomepageUniversity from '@site/src/components/HomepageUniversity';
 import Feedback from '@site/src/components/Feedback';
 import styles from './index.module.scss';
-
 import { useColorMode } from '@docusaurus/theme-common';
 
 function HomePageAnimation() {
