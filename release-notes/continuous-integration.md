@@ -22,6 +22,29 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## January 2025
 
+:::note
+
+**Network Whitelisting Update for Hosted linux Infrastructure**
+
+Harness Cloud users utilizing hosted linux infrastructure, who rely on whitelisting for on-premises resource access, are requested to update their configuration:
+
+To ensure uninterrupted connectivity and functionality for your CI builds, please whitelist the following IP range in your network settings by March 15th, 2025. 
+
+IP Ranges:
+
+ip-15.204.17.0/24
+ip-15.204.19.0/24
+ip-15.204.23.0/24
+ip-15.204.69.0/24
+ip-15.204.70.0/24
+ip-15.204.71.0/24
+ip-51.81.128.0/24
+ip-51.81.189.0/24
+
+If you have any questions or need assistance with the whitelisting process, please contact Harness Support.
+
+:::
+
 ### Version 1.62
 
 <!-- 2025-01-20 -->
