@@ -9,7 +9,9 @@ redirect_from:
 
 Workflows allow users to provide input parameters that drive the execution of templates. A well-designed form ensures a smooth user experience by offering the right input types and validation mechanisms. Inputs can be categorized into static inputs, where users manually enter values, and dynamic inputs, which fetch or derive values based on context.
 
-Below are the different ways you can design form inputs in IDP workflows:
+
+## Input Types
+There are different types of Inputs as explained below:
 
 #### Static Inputs
 

@@ -110,4 +110,13 @@ output:
 ### Dynamic Outputs Based on Inputs
 Outputs can be dynamically generated based on user inputs. For example, if a user selects the "production" environment during onboarding, the output may include production-specific links, such as monitoring dashboards or production CI/CD pipelines.
 
-
+```YAML
+output:
+  text:
+    - title: Output Variable
+      content: |
+        Output Variable **test2** is `${{ steps.trigger.output.test2 }}` 
+    - title: Another Output Variable
+      content: |
+        Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`
+        ```
