@@ -255,9 +255,9 @@ All inputs, except for [pipeline input as variables](https://developer.harness.i
 
 ## Create a Workflow
 
-Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. 
+Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. Create a `workflow.yaml` file anywhere in your Git repository. 
 
-In the following `template.yaml` we have added few enums to choose from the available list of options like for the `instance_type`, `ami`, `subnet` and `vpc`. Team responsible for infrastructure provisioning is expected to fill this enums with available possibilities for the ease of developers to just select form the available options. 
+In the following `workflow.yaml` we have added few enums to choose from the available list of options like for the `instance_type`, `ami`, `subnet` and `vpc`. Team responsible for infrastructure provisioning is expected to fill this enums with available possibilities for the ease of developers to just select form the available options. 
 
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
@@ -358,6 +358,10 @@ spec:
         url: YOUR PIPELINE URL HERE
         inputset:
           owner: ${{ parameters.owner }}
+          instancetype: ${{ parameters.instance_type }}
+          ami: ${{ parameters.ami }}
+          subnet: ${{ parameters.subnet }}
+          vpc: ${{ parameters.vpc }}
         apikey: ${{ parameters.token }}
   output:
     links:
@@ -438,5 +442,5 @@ Use the URL to the `workflow.yaml` created above and register it by using the sa
 
 ## Use the Self Service Workflows
 
-Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization!
+Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the EC2 instance provisioned.
 

@@ -818,7 +818,7 @@ In case you need to use the data present in your Catalog as an input for the Wor
 Here's an example workflow template that uses the  jira `projectName` for the corresponding new service being created. 
 
 ```YAML
-## Example template.yaml
+## Example workflow.yaml
 ...
 projectName:
     title: Project-Name
@@ -837,7 +837,7 @@ projectName:
 The `ui:displayField` fetches all the `projectName` names from the Catalog. 
 
 ```YAML
-### Complete Example of a service onboarding template.yaml
+### Complete Example of a service onboarding workflow.yaml
 
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
@@ -845,7 +845,7 @@ kind: Template
 metadata:
   name: react-app
   title: Create a new service
-  description: A template to create a new service
+  description: A workflow to create a new service
   tags:
     - nextjs
     - react

@@ -581,6 +581,10 @@ When you select an environment in a stage, you can select the **Infrastructure D
 
 ![](./static/services-and-environments-overview-14.png)
 
+:::info note
+During pipeline execution, all infrastructure definitions are displayed, regardless of whether they are scoped to the selected service.Users are advised to manually ensure that only the appropriate infrastructure definitions are chosen for their services. This limitation is more prominent when services or environments are dynamically expressed, as scoping may not apply consistently.
+:::
+
 #### Infrastructure Tags
 
 Tags can be attached to infrastructure definitions representing their characteristics. These tags can be key value pairs.

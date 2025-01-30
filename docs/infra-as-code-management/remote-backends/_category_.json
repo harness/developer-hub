@@ -1,6 +1,6 @@
 {
     "label":"Remote Backends",
-    "position": 60,
+    "position": 80,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",

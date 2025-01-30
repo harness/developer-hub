@@ -44,12 +44,6 @@ You can also install Harness Self-Managed Enterprise Edition in an air-gapped en
 
 The account you use to install Harness Self-Managed Enterprise Edition must have the Account Admin role to create service accounts. For more information on role-based permissions, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
-## Download the Harness Helm chart
-
-To download the Harness Helm chart for the installation of Self-Managed Enterprise Edition, go to the [Harness Helm chart repo](https://github.com/harness/helm-charts/releases).
-
-Harness Helm charts are available for demonstration and production environments.
-
 ## Update the override.yaml file
 
 Helm chart values, default value definitions, and field descriptions are available in the [Harness Helm chart repo](https://github.com/harness/helm-charts#values).
@@ -279,8 +273,6 @@ enabled: true
 Harness Self-Managed Enterprise Edition needs a license to be provisioned for the Harness NextGen platform. Contact [Harness Support](mailto:support@harness.io) to procure the license and add it to the `override.yaml` file.
 ```
   license:
-    # -- Insert CG License String to enable CG license
-    cg: ''
     # -- Insert NG License String to enable NG license
     ng: ''
 ```
@@ -325,7 +317,7 @@ To verify installation, do the following:
 2. In your browser, type the following instruction:
 
    ```
-   http://localhost/auth/#/signup
+   http://<load-balancer-IP-address>/auth/#/signup
    ```
 
    If the installation was successful, the Harness **Sign up** page appears.

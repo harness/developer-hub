@@ -22,17 +22,11 @@ export const docsCards: CardSections = [
         link: "/docs/infra-as-code-management/get-started/onboarding-guide",
       },
       {
-        title: "Overview",
+        title: "Overview & key concepts",
         module: MODULES.iacm,
         description: "Learn about Harness Infrastructure as Code Management.",
         link: "/docs/infra-as-code-management/get-started/overview",
       },
-      {
-        title: "Key Concepts",
-        module: MODULES.iacm,
-        description: "Learn the key terms and concepts related to Infrastructure as Code Management.",
-        link: "/docs/infra-as-code-management/get-started/key-concepts",
-      }
     ]
   },
   {
@@ -49,7 +43,7 @@ export const docsCards: CardSections = [
         title: "Provision and destroy workspaces",
         description: "Learn how to provision and destroy workspaces.",
         module: MODULES.iacm,
-        link: "/docs/infra-as-code-management/pipelines/operations/provision-workspace",
+        link: "/docs/infra-as-code-management/workspaces/provision-workspace",
       },
       {
         title: "Review workspace resources, states, and execution history",
@@ -67,7 +61,7 @@ export const docsCards: CardSections = [
         title: "Approval Step",
         module: MODULES.iacm,
         description: "Learn how to use the approval step to review resource changes before applying them.",
-        link: "/docs/infra-as-code-management/pipelines/iacm-plugins/approval-step",
+        link: "/docs/infra-as-code-management/pipelines/operations/approval-step",
       },
       {
         title: "PR Automation",
@@ -85,7 +79,7 @@ export const docsCards: CardSections = [
         title: "Using OPA Policies with IaCM",
         module: MODULES.iacm,
         description: "Learn how to use OPA to add security and governance to your IaCM pipeline.",
-        link: "/docs/infra-as-code-management/project-setup/opa-workspace",
+        link: "/docs/infra-as-code-management/policies-governance/opa-workspace",
       },
       {
         title: "Drift Detection",

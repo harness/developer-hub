@@ -435,15 +435,15 @@ export default function University() {
                       src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
                       alt="Administrator CCM Badge"
                     />
-                  </div>
-
-                  <h5>Coming Soon</h5>
-                  <div className={styles.unAvailableCerts}>
                     <img
                       src={`${baseUrl}img/cert_adm_ce_badge.svg`}
                       alt="Administrator CE Badge"
                     />
                   </div>
+
+                    {/* <h5>Coming Soon</h5> */}
+                  {/* <div className={styles.unAvailableCerts}>
+                </div> */}
                 </div>
               </div>
 

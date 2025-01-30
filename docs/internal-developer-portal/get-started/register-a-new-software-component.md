@@ -1,29 +1,30 @@
 ---
-title: Add a new software component to the catalog
-description: Learn how you can add a new software component to the IDP software catalog.
-sidebar_position: 5
+title: Get Started with Catalog
+description: Learn how you can add a new software component to the IDP catalog.
+sidebar_position: 3
 redirect_from:
   - /docs/internal-developer-portal/getting-started/register-a-new-software-component
+sidebar_label: Get Started with Catalog
 ---
 
-<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+## Introduction
 
-Let's start with adding your software components to IDP. You can do so by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.
+In Harness IDP, software components represent entities within your organization's ecosystem, such as services, libraries, APIs, or other resources. These components are defined in a `catalog-info.yaml` file, which describes their metadata, ownership, relationships, and lifecycle.
+
+Let's start by adding your software components to IDP. To do this, create a `catalog-info.yaml` file in your Git repository and register its URL to add the component to your catalog.
 
 <DocVideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
 
 ## Create a new catalog-info.yaml
 
-1. If you want to register an existing software component, navigate to its repository. If it is a mono-repo, navigate to its directory and create a `catalog-info.yaml` at the root of the directory. The file can technically live anywhere (for example, `.harness/catalog-info.yaml`). You can use the following YAML code:
+1. To add a software component, you need to create a `catalog-info.yam` file in its repository. In the case of a mono-repo, this file should be created at the root of the repository. While the file can technically reside anywhere (e.g., `.harness/catalog-info.yaml`), placing it in a standard location ensures consistency. You can use the following YAML code as a template:
 
-```yaml
+```YAML
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: my-new-service
   description: Description of my new service
-  annotations:
-    pagerduty.com/integration-key: <sample-service-integration-key>
   tags:
     - java
   links:
@@ -49,7 +50,7 @@ Following are the key fields that you must update:
 
 ## Register the software component
 
-3. In the left navigation, select **Register**.
+1. Next, navigate to your Harness IDP module, and from the left navigation menu, select **Register**.
 
 ![](./static/register-url.png)
 
@@ -60,77 +61,37 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="Git-Provider">
 <TabItem value="other-git-provider" label="Other Git Providers">
 
-4. Enter the URL to your new `catalog-info.yaml`.
+2. Enter the URL to your new `catalog-info.yaml`.
 
 ![](static/url-on-register-page.png)
 
 </TabItem>
 <TabItem value="harness-code-repo-enabled" label="Harness Code Repository">
 
-4. Copy the URL for `catalog-info.yaml` and paste it on the field to Register the component. 
+2. Copy the URL for `catalog-info.yaml` and paste it on the field to Register the component. 
 
 ![](./static/register-software-component-hcr.gif)
-
-> Note: In case of vanity URLs, once you copy the URL for `catalog-info.yaml` from Harness Code Repository, make sure to replace vanity URL domain with `accounts.eu.harness.io`
-
-![](static/replace-vanity-url-register.png)
 
 </TabItem>
 </Tabs>
 
-
-5. Select **Import**.
+3. Select **Import**.
 
 ![](static/finished-state.png)
 
 The new component will be available in your catalog.
 
 ![](static/imported-entity.png)
-
-
-## Register multiple software components together
-
-We can register multiple `catalog-info.yaml` in the following ways.
-
-1. If all your `catalog-info.yaml` are in the root of the same repo you can add the extensions in the target, as shown in the example below and it will register all the components.
-
-```YAML
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
-  name: example-all
-  description: A collection of all Backstage example entities, except users, groups, and templates
-spec:
-  targets:
-    - ./all-apis.yaml
-    - ./all-components.yaml
-```
-
-2. If the `catalog -info.yaml` is scattered across repos and you want to register them together then mention the absolute path in the git provider. Please make sure the **connector** you have created has **account level permissions** and all the repos mentioned under targets are under that **same account**.
-
-```YAML
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
-  name: food-delivery
-  description: A collection of all example entities, except users, groups, and templates
-spec:
-  targets:
-    - https://github.com/account-name/location-service/blob/main/catalog-info.yaml
-    - https://github.com/account-name/member-service/blob/main/catalog-info.yaml
-    - https://github.com/account-name/delivery-service/blob/main/catalog-info.yaml
-    - https://github.com/account-name/order-service/blob/main/catalog-info.yaml
-    - https://github.com/account-name/menu-service/blob/main/catalog-info.yaml
-```
+ 
 
 ## Delete/Unregister Software Components
 
-1. Navigate to the **Catalog** page, and select **Component** under Kind, here we are de-registering a template
+1. Navigate to the Catalog page and select Component under Kind. Here, we will deregister the software component registered above.
 
-![](./static/catalog-navigation.png)
+![](./static/navigate-componenet-new.png)
 
-2. Select the Workflow Name you want to Unregister.
-3. Now on the Workflow overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+2. Select the component name you want to Unregister from the list
+3. Now on the component overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
 
 ![](./static/unregister-entity.png)
 
@@ -138,10 +99,18 @@ spec:
 
 ![](./static/Unregister-location.png)
 
-5. This will delete the Workflow.
+5. This will delete the software component.
 
-## Troubleshooting: Failed to register
+## Troubleshooting 
+
+#### Failed to register
 
 If, after registering an entity, you're unable to find the same in your catalog, check the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab, wait a few minutes for registration to complete. If it's under the **Failed** tab. Try re-registering the entity.
 
 ![](./static/devtools.png)
+
+#### Missing required fields/Invalid YAML schema.
+
+In case of a `InputError`, check for `missingProperty` details and add the required property to your `catalog-info.yaml`.
+
+![](./static/invalid-schema.png)

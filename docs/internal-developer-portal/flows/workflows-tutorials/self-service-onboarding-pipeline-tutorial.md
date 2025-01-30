@@ -181,7 +181,6 @@ Please update the `connectorRef: <the_connector_name_you_created_under_prerequis
 Now, if you also use Harness CI/CD, you can follow the steps below to create a [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) with Terraform Apply step to provision the Harness deployment pipeline. 
 
 
-
 4. [Add a Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage), after the Developer Portal Stage.
 
 5. [Add the Terraform Apply step](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#step-1-add-the-terraform-plan-step), that could provision Harness Pipeline for the newly created service. 
@@ -250,7 +249,7 @@ Workflows currently support pipelines that are composed only of [IDP Stage](http
 
 ## Create a Workflow
 
-Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.
+Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `workflow.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.
 
 [Source](https://github.com/harness-community/idp-samples/blob/main/tutorial-self-service-flow-template.yaml)
 
@@ -432,7 +431,7 @@ Use the URL to the `workflow.yaml` created above and register it by using the sa
 
 ## Use the Self Service Workflows
 
-Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization!
+Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new service created using the Cookiecutter template added to the Harness IDP software catalog as a software component, with its metadata defined in the `catalog-info.yaml`. Additionally, a Deployment Pipeline for the service will be provisioned and ready for execution, leveraging the capabilities of the Harness Terraform Provider.
 
 ### Unregister/Delete Workflow
 

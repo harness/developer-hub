@@ -17,7 +17,7 @@ This topic provides settings and permissions for the Docker connector. You can u
 
 * **Docker registry rate limits:** Harness is restricted by the limits of the Docker repo, such as [Docker Hub limits](https://docs.docker.com/docker-hub/download-rate-limit/) for pulling Docker images from Docker repos.
 * **Docker Registries in Cloud Platforms:** The Docker connector is platform-agnostic and can be used to connect to any Docker container registry. Harness also provides first class support for registries in AWS and GAR through [AWS connectors](../add-aws-connector.md) and [Google Cloud Platform (GCP) connectors](../connect-to-google-cloud-platform-gcp.md).
-
+* **Docker base image connection rate limits:** Customers utilizing Docker as a Base Image Connector will need to consider enabling the Feature Flag `CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR`, to utilize the defined Docker Connector for the Base Image Pull.
 :::
 
 ## Create a Docker connector
@@ -78,6 +78,20 @@ The URL of the Docker registry. This is usually the URL used for your [docker lo
    * For JFrog Artifactory Docker registries, provide your JFrog instance URL, such as `https://mycompany.jfrog.io`. You can get this URL from the `docker-login` command on your repo's **Set Me Up** page.
    * For Sonatype Nexus Docker registries, provide the Nexus instance URL, such as `<nexus-hostname>:<repository-port>` or `<subdomain>.<nexus-hostname>`. For more information, see the Sonatype Nexus [Docker Authentication](https://help.sonatype.com/en/docker-authentication.html) documentation.
 
+## Harness Artifact Registry (HAR) Configuration
+When using the Docker Connector with Harness Artifact Registry (HAR), it's important to configure the registry URL and image names correctly to ensure seamless operation.
+
+- **Correct URL Format:** Set the registry URL to `https://pkg.harness.io/`. Avoid including the registry name in the URL to prevent validation errors.
+- **Fully Qualified Image Name:** Provide the fully qualified image name within the step configuration, such as `pkg.qa.harness.io/<account-id>/harness/<registry-name>`.
+- **Deprecated Source Type:** If using a deprecated source type, such as "image" in YAML configurations, ensure the configuration is updated to the current standard to avoid potential issues. For example, if you previously used `sourceType: image`, update it to the current standard like `sourceType: container`.
+
+:::tip policy enforcement and authentication
+**SBOM (Software Bill of Materials) Policy Enforcement:** Ensure the registry URL is correctly configured to avoid hard-coded URL issues.
+
+**SLSA (Supply-chain Levels for Software Artifacts) Verification Authentication:** Double-check the authentication settings if encountering errors.
+:::
+---
+
 ## Authentication
 
 You can authenticate anonymously or by username and password.
@@ -91,11 +105,9 @@ You can authenticate anonymously or by username and password.
   * For JFrog Docker registries, provide a password.
 
 :::info Docker registry permissions
-
 Make sure the connected user account has *read permission for all repositories* as well as access and permissions to *pull images* and *list images and tags*.
 
 For more information, go to the Docker documentation on [Docker Permissions](https://docs.docker.com/datacenter/dtr/2.0/user-management/permission-levels/).
-
 :::
 
 </TabItem>

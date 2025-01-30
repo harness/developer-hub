@@ -161,7 +161,9 @@ The users from the Propelo platform will be automatically associated with the ro
 The Base URL for all SEI services is updated based on the specific production environment. 
 
 * **Base URL (PROD2):** `https://app.harness.io/gratis/sei/api/`
-* **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`   
+* **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`
+* **Base URL (PROD3):** `https://app3.harness.io/sei/api/`
+* **BASE URL (EU):** `https://accounts.eu.harness.io/sei/api/`
 
 For steps on using these APIs, go to [Harness SEI API Guide](/docs/software-engineering-insights/sei-technical-reference/sei-api-reference/sei-api-guide).
 
@@ -238,6 +240,18 @@ If you notice any inconsistencies in the migrated data, please create a support 
 Note that all secrets associated with your existing Propelo account will be securely transferred from Propelo's Google KMS infrastructure to Harness's Google KMS infrastructure.
 :::
 
+### Account overview
+
+To get an overview of your **Harness account**, go to **Account Settings**. Under General, select **Account Details** to open the Account Overview page.
+The **Account Details** section enables you to view your account information and set your default experience.
+
+* **Account Name:** Your account name.
+* **Account Id:** Your account ID.
+* **Harness Cluster:** The Harness cluster assigned to your account.
+* **Default Experience:** This setting allows environment administrators to set the default generation landing page for users to ensure the correct Harness experience, Harness First Generation or Harness Next Generation, is provided.
+
+![](../static/account-environment.png)
+
 ## Manual steps to be performed
 
 ### SSO Configuration
@@ -263,11 +277,13 @@ If you were using an Ingestion Satellite for on-premise integrations, follow the
 * In the `satellite.yml` file, replace the existing **Propelo Account ID** in the tenant field with the new **Account ID** of your **Harness account**. You can find this ID in the Harness account URL.
 * Update the Base URL to match the appropriate environment:
   * **Base URL (PROD2):** `https://app.harness.io/gratis/sei/api/`
-  * **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`   
+  * **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`
+  * **Base URL (PROD3):** `https://app3.harness.io/sei/api/`
+  * **BASE URL (EU):** `https://accounts.eu.harness.io/sei/api/`
 
 ![](../static/MIGRATION-SATELLITE.png)
 
-If you’re unsure which environment to use, contact the Support Executive assigned to your Harness account.
+To determine which Harness cluster is assigned to your account, go to your[account details](#account-overview) page.
 
 After updating the `satellite.yml` file, run the container to schedule the ingestion process for your integrations.
 
@@ -281,15 +297,38 @@ If your Jenkins plugin version is 1.0.30 or higher, follow the instructions belo
 
 Once the migration is complete, you’ll need to uninstall the existing Jenkins plugin and reinstall it:
 
+#### Step 1: Generate Jenkins User Credentials
+
+The SEI plugin requires authentication via a Jenkins API token. Ensure the user account has one of the following roles:
+
+* Admin
+* Overall Read and Job Read.
+
+To generate the API token:
+
+* In the Jenkins banner frame, click your user name to open the user menu.
+* Navigate to **Your Username > Configure > API Token**.
+* Click **Add new Token**.
+* Click **Generate**.
+* Copy the generated API token for use in the plugin configuration.
+
+![](../static/jenkins-api-key.png)
+
+#### Step 2: Re-install the Harness Jenkins plugin
+
 * Sign-in to **Jenkins** and select **Manage Jenkins**
 * Select **Manage Plugins**
 * Select the **Available plugins** tab.
 * In the **Search** field, type **Harness - SEI Jenkins Plugin**.
 * Install the **Harness - SEI Job Reporter Plugin** and click on **Install without restart**
-* Install the plugin called **SEI Job Reporter** by selecting it and clicking **Install without restart**
 * Once the plugin installation is complete, the status will change to **Success**. If it doesn't change to Success, then a restart might be needed
-* Set the **Instance Name** and use the **APIKEY** available in your Jenkins integration instance as the value for the **Manage Jenkins >> Harness - SEI Job Reporter >> SEI APIKEY** field.
-* Set the **Application Type** to the environment where you are configuring the **Plugin**.
+* Set the **Instance Name** and use the **APIKEY** available in the Jenkins integration configuration page in Harness as the value for the **Manage Jenkins >> Harness - SEI Job Reporter >> SEI APIKEY** field.
+
+![](../static/jenkins-key-harness.png)
+
+* Set the **Application Type** to the environment where you are configuring the **Plugin** i.e. the cluster where your Harness Account is hosted on.
+* Add the [Jenkins Username](#step-1-generate-jenkins-user-credentials) and [Jenkins User Token (Jenkins API Token)](#step-1-generate-jenkins-user-credentials).
+* Save the plugin settings.
 
 ![](../static/jenkins-plugin.webp)
 
@@ -298,7 +337,7 @@ Once the migration is complete, you’ll need to uninstall the existing Jenkins 
 If your Jenkins plugin version is newer than 1.0.30, follow these steps:
 
 * Go to **Jenkins plugin** settings.
-* Set the **Application Type** to the **Harness SEI environment** where your account is hosted. Contact [Harness Support](mailto:support@harness.io) to confirm where your account is hosted.
+* Set the **Application Type** to the **Harness SEI environment** where your account is hosted. View the [Account details](#account-overview) page to confirm where your account is hosted.
 
 #### Verification
 

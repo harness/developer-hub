@@ -55,7 +55,7 @@ export default async (req: Request, context: Context) => {
     }
 
     const responseData = await response.json();
-    console.log(responseData);
+    // console.log(responseData);
 
     const uuid = await getUUID(body.account_id, token);
     if (!uuid) {

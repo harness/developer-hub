@@ -11,15 +11,26 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-
 The self-service flow in IDP is powered by the Harness Pipelines. A stage is a part of a pipeline that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
 
 The process of adding a stage to a pipeline is the same for all Harness modules. When you add a stage to a pipeline, you select the stage type, such as **Developer Portal** for IDP or **Build** for CI or **Deploy** for CD. The available stage settings are determined by the stage type, and, if applicable, the module associated with the selected stage type.
 
 This functionality is limited to the modules and settings that you have access to.
 
-## How to Add the Developer Portal Stage
+:::info
 
+#### Limitations
+
+- The "Clone Codebase (Git Clone)" action is not supported at the stage level for the IDP stage.
+
+<DocImage path={require('./static/git-clone-not.png')} width="40%" height="40%" title="Click to view full size image" />
+
+- [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) (Parallelism, Matrix, Repeat) are not supported for the IDP stage.
+
+:::
+
+
+## How to Add the Developer Portal Stage
 
 <Tabs>
 <TabItem value="Present Nav" label="Present Nav" default>
@@ -716,6 +727,51 @@ The `xApiKey` is the [Harness PAT](https://developer.harness.io/docs/platform/au
 - You can add a **Name** to the step followed by adding the **Resource Definition** and create a Harness Entity using Resources supported by our [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs). Likewise, you'll find an already existing sample **Resource Definition** by default, that can create a Harness Pipeline with a **Run Step**.  
 
 ![](./static/create-resource-step.png)
+
+</TabItem>
+</Tabs>
+
+### 9. Update Catalog Property
+
+This step is used to update the catalog metadata for your entities. For example, you want to add the latest build version for your service in your catalog using this step in your CI pipeline and update the data in your catalog. 
+
+- You can select the step **Update Catalog Property** from the **Step Library**. 
+
+![](./static/update-catalog-property.png)
+
+- Now under the **Select the Catalog entity and the properties to be updated** you have two options
+  - Update single Catalog Entity
+  - Update multiple catalog Entities
+
+- **Permission:** For anyone to update catalog property need to have [edit catalog permission](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#catalog-access-policies). 
+
+<Tabs>
+<TabItem value="Update a single Catalog Entity" label="Update a single Catalog Entity">
+
+- To **update a single Catalog Entity**, select the Catalog Entity from the dropdown. You need to type at least the first three characters in the field for the entity options to appear.
+
+![](./static/ucp-demo.gif)
+
+- Now add the **property**, you want to update/add and the **value** against it. e.g., `<+metadata.testCoverage>`, `<+metadata.additionalInfo.onShorelead>`. 
+
+- The **API Key** field is optional. If left empty, the credentials of the user executing the pipeline will be used to update the catalog entity.
+
+</TabItem>
+<TabItem value="Update Multiple Catalog Entities" label="Update Multiple Catalog Entities" default>
+
+- To **update multiple Catalog entities**, you need to add the **property** to be updated across the entities followed by `entity-ref` and corresponding values. 
+
+- In case you want to add a default value across all the entities then update the field under Default Value.
+
+- The **API Key** field is optional. If left empty, the credentials of the user executing the pipeline will be used to update the catalog entity.
+
+- Under Advanced you can select the mode 
+
+  - Available Modes:
+    - replace (default): Completely replaces the existing value with the new one provided in the value field.
+    - append: Adds new values to the existing array (or other types to be appended like maps or key-value pairs).
+  
+> Note: `append` only works with data types that can hold multiple values, such as arrays or maps. It does not apply to simple data types like strings.
 
 </TabItem>
 </Tabs>

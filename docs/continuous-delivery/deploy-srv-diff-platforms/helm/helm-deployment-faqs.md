@@ -558,3 +558,35 @@ We do not have any way to provide customer ordering. We follow a bottom up appro
 
 ### What happens if we do not pass any chart version to helm deployment having manifest with runtime input option for chart version?
 If chart version is not provided as runtime input the deployment is done using the latest chart version available for the specified chart in the given repo.
+
+### Why am I getting a Helm template error related to an invalid value in `_helpers.tpl`?
+
+The Helm template error "invalid value; expected string" in `_helpers.tpl` indicates that a non-string value (likely an integer) is being passed to a string function (e.g., `upper`).  Check the values file for unquoted numeric values used in string contexts.  The issue is likely related to how secrets are being managed and passed to the Helm template.
+
+### How can I deploy Helm charts to OpenShift using Harness?
+
+Deploying Helm charts to OpenShift using Harness can be done using the `oc apply` command, which is a superset of `kubectl`.  The commands should be largely interchangeable, but be mindful of OpenShift-specific resources like routes.
+
+### What is the new native Helm deployment support?
+
+Harness now supports native Helm deployments for blue-green and canary deployments.  Each strategy is controlled by a separate feature flag: `CDS_HELM_BG_STRATEGY` and `CDS_HELM_CANARY_STRATEGY`. [https://developer.harness.io/docs/category/helm-step-reference](https://developer.harness.io/docs/category/helm-step-reference)
+
+### Why does leaving the Chart Version field blank in a Helm Deployment Input Set cause a failure?
+
+Leaving the Chart Version field blank in a Helm Deployment Input Set causes a failure because a value is required.  Harness does not automatically retrieve the latest chart version in this scenario.
+
+
+### How do I debug failed Helm chart deployments?
+Helm deployment failures may be caused by incorrect values, missing dependencies, or insufficient permissions. Check the Helm logs and verify the release configuration.
+
+### Why does Helm execution show excessive warnings during deployment?
+Large index files and resource limitations can cause excessive warnings. Increasing delegate memory and CPU can help mitigate performance issues.
+
+### Why is Helm deployment failing with a 137 exit when multiple concurrent deployments are being run?
+Concurrent execution failures may be due to large `index.yaml` files, exceeding recommended memory limits. Increasing delegate memory to at least 8GB may improve performance.
+
+### How to resolve the issue where a namespaced Helm chart is not found during deployment?
+If a namespace doesn’t exist, using the `--create-namespace` flag can resolve the issue. If the namespace was manually created, Helm may still fail, requiring further troubleshooting.
+
+### How to resolve the issue where a user reports an issue when deploying a Helm chart in a specific namespace?
+Users facing namespace errors should remove namespace objects from their manifest templates or ensure Helm correctly scopes installation to the specified namespace. 

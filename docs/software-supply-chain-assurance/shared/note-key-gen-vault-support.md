@@ -1,0 +1,1 @@
+Keys for attestation and verification should be generated using [Cosign](https://docs.sigstore.dev/cosign/key_management/signing_with_self-managed_keys/) and stored in HashiCorp Vault. Currently, Harness SCS supports only HashiCorp Vault. Support for additional Key Management Systems (KMS) will be introduced in the near future.

@@ -17,12 +17,9 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 A [Software Bill of Materials (SBOM)](https://cyclonedx.org/capabilities/sbom/) is a list of all the components, libraries, and other dependencies used in a software application. Harness SCS can ingest [JSON SPDX](https://spdx.dev/learn/overview/) or [CycloneDx](https://cyclonedx.org/specification/overview/) formatted SBOM from any tool that can generate these report formats.
 
 ### Generate the keys for SBOM Attestation - optional
-For enhanced trust and verification of your SBOM's integrity, the SBOM Orchestration step offers optional signing and attestation generation. This functionality requires a private key, password, and corresponding public key. If you choose to skip signing, you can proceed without generating or storing these keys.
+import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shared/generate-consign-keys-prerequisite.md';
 
-Here's how to set these keys if you choose to enable signing
-
-- **Generate the keys**: Begin by generating the keys using [Cosign](https://docs.sigstore.dev/signing/quickstart)
-- **Securely store the keys**: Safeguard the generated private key, public key, and password by creating [Harness file secrets](https://developer.harness.io/docs/platform/secrets/add-file-secrets/) for each.
+<GenerateKeysPrerequisite />
 
 ### Configure your pipeline to ingest SBOM
 

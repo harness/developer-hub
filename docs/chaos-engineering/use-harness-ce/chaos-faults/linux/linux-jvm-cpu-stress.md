@@ -76,6 +76,10 @@ Linux JVM CPU stress:
   </tr>
 </table>
 
+:::tip
+If multiple Java processes on the same machine are subject to JVM chaos, whether simultaneously or not, each process must use a unique Byteman port.
+:::
+
 ### Pid
 
 The process ID used by Byteman to target the services of the JVM. This is mutually exclusive with the `startupCommand` input variable.

@@ -66,7 +66,7 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 
 | Manifest Type                       | Required Tool/SDK     | Certified Version     |
 | ----------------------------------- | --------------------- | --------------------- |
-| Kubernetes                          | kubectl               | v1.28.7              |
+| Kubernetes                          | kubectl               | v1.29.2               |
 |                                     | go-template           | v0.4.1                |
 | Helm                                | kubectl               | v1.27.0               |
 |                                     | helm                  | v3.11.0               |
@@ -74,7 +74,7 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 |                                     | helm                  | v3.11                 |
 |                                     | chartmuseum           | v0.8.2 and v0.12.0    |
 | Kustomize                           | kubectl               | v1.27.0               |
-|                                     | kustomize             | v4.5.4                |
+|                                     | kustomize             | v5.0.4                |
 | OpenShift                           | kubectl               | v1.27.0               |
 |                                     | oc                    | v4                    |
 
@@ -118,9 +118,11 @@ Harness supports approvals for these collaboration tools:
 
 For other providers, you can use [custom approvals](/docs/platform/approvals/custom-approvals) or [manual approvals](/docs/platform/approvals/adding-harness-approval-stages)
 
-## Open Source Software (OSS) components
+## Software Bill of Materials (SBOM) and Open Source Software (OSS) components
 
-For a list of the open source libraries and third-party software Harness uses, download the [Harness Open Source Software (OSS) components PDF](./static/harness-open-source-software-components.pdf).
+The Harness Software Bill of Materials contains information on packages used to build Harness Software. The SBOMs are available in CycloneDX format and includes package details such as name, version, licenses, supplier and relationships between other packages
+
+For detailed information about the SBOM/OSS component list used by Harness, visit the [Harness Trust Center](https://trust.harness.io/).
 
 ## RBAC
 

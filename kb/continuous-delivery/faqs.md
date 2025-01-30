@@ -2362,8 +2362,7 @@ One can use an example like `<+secrets.getValue(<+....OutputVariables.AppCredent
 Yes, the new Kubernetes Patch step enables users to apply specific configurations on deployments or post-deployment processes.
 To effectively employ this feature, it is imperative to fulfill the following prerequisites:
 - Ensure that your delegate version is 828xx or newer.
-- Enable the Feature Flag `CDS_K8S_PATCH_STEP_NG` within your operational environment.
-To learn more about this step, go to [Kubernetes Patch Step](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-patch-step).
+- To learn more about this step, go to [Kubernetes Patch Step](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-patch-step).
 
 
 #### How do I export deployments from the UI or the API?

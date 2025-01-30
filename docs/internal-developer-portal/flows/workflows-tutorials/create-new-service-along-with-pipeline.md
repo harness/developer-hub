@@ -10,7 +10,7 @@ redirect_from:
 
 This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic service onboarding pipeline that uses a Workflow and provisions an application templated by cookiecutter for a developer. After you create the software template, developers can choose the Workflow on the **Workflows Overview** page and enter details such as a name for the application and the path to their Git repository. The service onboarding pipeline creates a new repository and adds a `catalog-info.yaml` to it and registers it back into your software catalog all using the new **Developer Portal** stage. 
 
-Users (developers) must perform a sequence of tasks to create the application. First, they interact with a Workflow. A Workflow is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboard the new service. Usually the pipeline fetches a cookiecutter template code, creates a new repository, and interacts with third-party providers such as cloud providers, Jira, and Slack.
+Users (developers) must perform a sequence of tasks to create the application. First, they interact with a Workflow. A Workflow is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboard the new service, along with provisioning a deployment pipeline for the newly created service.
 
 ## Prerequisites
 
@@ -374,7 +374,7 @@ Workflows currently support pipelines that are composed only of [IDP Stage](http
 
 ## Create a Workflow
 
-Now let's create the UI counterpart in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. Harness IDP uses the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.
+Now let's create the UI counterpart in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `workflow.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. Harness IDP uses the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.
 
 [Source](https://github.com/harness-community/idp-samples/blob/main/template-self-service-flow-with-pipeline-provisioning.yaml)
 
@@ -573,11 +573,11 @@ That token is then used as part of `steps` as `apikey`
 
 ### Register the Workflow in IDP
 
-Use the URL to the `template.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
 
 ## Use the Self Service Workflows
 
-Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization!
+Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization along with the CI/CD pipelines provisioned in Harness. 
 
 ### Unregister/Delete Workflow
 

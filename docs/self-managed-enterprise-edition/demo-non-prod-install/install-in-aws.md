@@ -138,7 +138,7 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
 
 2. Retrieve and extract the latest [Harness Helm charts](https://github.com/harness/helm-charts/releases). The harness charts will look like `harness-<version_number>`.
 
-3. Open the `harness/override-demo.yaml` file in any editor, and modify the following values.
+3. Open the `harness/values.yaml` file in any editor, and modify the following values.
 
 
     | Key                       | Value     |
@@ -468,7 +468,7 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
     harness-ingress-controller   LoadBalancer   10.100.130.107   af5b132b743fb4318947b24581119f1b-1454307465.us-east-2.elb.amazonaws.com   10254:32709/TCP,80:32662/TCP,443:32419/TCP   38s
     ```
 
-7. Open the `harness/override-demo.yaml` file in any editor and modify the following values.
+7. Open the `harness/values.yaml` file in any editor and modify the following values.
 
     | Key                       | Value     |
     | ----------------------------------- | --------------------- |

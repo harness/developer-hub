@@ -19,6 +19,7 @@
     "test": "npm run lint:ci"
   },
   "dependencies": {
+    "@coveo/headless": "2.80.5",
     "@docusaurus/core": "^3.6.2",
     "@docusaurus/cssnano-preset": "^3.6.2",
     "@docusaurus/faster": "^3.6.2",
@@ -51,12 +52,13 @@
     "update-notifier": "^7.2.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.6.2",
-    "@docusaurus/tsconfig": "^3.6.2",
+    "@docusaurus/module-type-aliases": "^3.7.0",
+    "@docusaurus/tsconfig": "^3.7.0",
+    "@docusaurus/types": "^3.7.0",
     "dictionary-en": "^4.0.0",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.7.3"
   },
   "browserslist": {
     "production": [
@@ -71,6 +73,6 @@
     ]
   },
   "engines": {
-    "node": ">=18.0"
+    "node": ">=22.0"
   }
 }

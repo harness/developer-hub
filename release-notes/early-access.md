@@ -183,9 +183,9 @@ No early access (beta) features are available for Harness Code Repository. -->
 
 For information about early access (beta) features for Harness Software Engineering Insights, go to [Active SEI feature flags](/docs/software-engineering-insights/sei-supported-platforms/#active-sei-feature-flags) and the [SEI release notes](/release-notes/software-engineering-insights).
 
-<!-- ## SSCA early access features
+<!-- ## SCS early access features
 
-No early access (beta) features are available for the Harness Software Supply Chain Assurance module. -->
+No early access (beta) features are available for the Harness Supply Chain Security module. -->
 
 
 ## STO early access features
@@ -331,7 +331,7 @@ No information available. -->
 
 For information about early access (beta) features for Harness Software Engineering Insights, go to [Active SEI feature flags](/docs/software-engineering-insights/sei-supported-platforms/#active-sei-feature-flags) and the [SEI release notes](/release-notes/software-engineering-insights).
 
-<!-- ### SSCA features promoted to GA
+<!-- ### SCS features promoted to GA
 
 No information available. -->
 

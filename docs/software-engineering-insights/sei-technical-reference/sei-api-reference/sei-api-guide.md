@@ -27,8 +27,10 @@ A service endpoint is the base URL that specifies the network address of an API 
 
 #### Harness SEI Environments
 
-* Prod 1: https://app.harness.io/prod1/sei/api/ 
-* Prod 2: https://app.harness.io/gratis/sei/api/ 
+* Base URL (PROD2): https://app.harness.io/gratis/sei/api/
+* Base URL (PROD1): https://app.harness.io/prod1/sei/api/
+* Base URL (PROD3): https://app3.harness.io/sei/api/
+* BASE URL (EU): https://accounts.eu.harness.io/sei/api/
 
 ### Authentication
 

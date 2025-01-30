@@ -73,6 +73,10 @@ When set to true, the step will proceed with a commit even if no changes are det
 
 When set to false, the step will fail if no changes are detected and display the message: `No files were committed. Hence not creating a pull request`.
 
+:::note info
+Harness Delegate version 84600 or later is required for the **Allow Empty Commit** feature.
+:::
+
 2. **Disable Git Restraint**: Use the Disable Git Restraint option to allow multiple pipelines to simultaneously modify the same Git repository using a single connector.
 
 When set to true, it disables the Git locking mechanism, removing constraints and enabling concurrent operations on the repository.
@@ -180,6 +184,18 @@ If a parameter is specified both in the values file and as a parameter or file p
 ![](../use-gitops/static/harness-git-ops-application-set-tutorial-64.png)
 
 Once your GitOps application is updated, you can use the GitOps Sync step to deploy your changes.
+
+#### Update GitOps App step for multi-source applications
+
+:::note
+
+Currently, support for multi-source applications are behind the feature flag `GITOPS_MULTI_SOURCE_ENABLED`. Please contact Harness support to enable this feature. 
+
+:::
+
+With this feature enabled, you can select your multi-source application in the **Application** field. This will populate the step with all the sources for the selected application. 
+
+From there, you can update each source individually as you would for a single source application and described above. 
 
 ### GitOps Sync step
 

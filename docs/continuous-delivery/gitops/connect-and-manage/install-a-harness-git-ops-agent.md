@@ -250,6 +250,12 @@ Also, whenever new entities are created in mapped Argo CD projects, they are add
 
 For steps on setting up the mapping and import, go to [Map existing Argo projects](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness#map-existing-argo-projects).
 
+## Default In-Cluster for Account-Level GitOps Agent
+
+When you create a GitOps agent at the account level, a default in-cluster is automatically created. This in-cluster is only visible on the Cluster page at the account level.
+- The default in-cluster is not visible at the organization or project level unless a project mapping is configured.
+- You cannot create another in-cluster at the account level since only one default in-cluster is allowed for an account-level GitOps agent.
+
 ## Proxy support
 
 The Harness GitOps Agent can work on environments where traffic is routed through a proxy. 
@@ -528,16 +534,24 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 ### What version of GitOps Agent supports what version of Repo server and Redis cache?
 
-| GitOps Agent version | Packaged Argo CD version | Supported Argo CD versions                    | Redis version       |
-| -------------------- | ------------------------ | --------------------------------------------- | ------------------- |
-| 0.78.0               | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  |
-| 0.77.0               | v2.10.10                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10          | redis:7.2.4-alpine  |
-| 0.67.0 - 0.76.0      | v2.9.4                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0, 2.9.3, 2.9.4  | redis:7.0.11-alpine |
-| 0.66.0               | v2.9.3                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0, 2.9.3         | redis:7.0.11-alpine |
-| 0.64.0 - 0.65.0      | v2.9.0                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0,               | redis:7.0.11-alpine |
-| 0.60.0 - 0.63.0      | v2.8.2                   | v2.3.5, v2.7.2, v.2.7.8, v2.8.2               | redis:7.0.11-alpine |
+
+| GitOps Agent version | Packaged Argo CD version | Supported Argo CD versions                    | Redis version       | Haproxy version |
+| -------------------- | ------------------------ | --------------------------------------------- | ------------------- | --------------- |
+| 0.84.2 - 0.85.0      | v2.13.2                  | 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14, 2.13.2 | redis:7.4.1-alpine  | 2.9.4-alpine    |
+| 0.83.0               | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  | 2.6.14-alpine   |
+| 0.82.0               | RELEASE BURNED           | RELEASE BURNED                                | RELEASE BURNED      | N/A             |
+| 0.78.0 - 0.81.0      | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  | N/A             |
+| 0.77.0               | v2.10.10                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10          | redis:7.2.4-alpine  | N/A             |
+| 0.67.0 - 0.76.0      | v2.9.4                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0, 2.9.3, 2.9.4  | redis:7.0.11-alpine | N/A             |
+| 0.66.0               | v2.9.3                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0, 2.9.3         | redis:7.0.11-alpine | N/A             |
+| 0.64.0 - 0.65.0      | v2.9.0                   | v2.7.2, v.2.7.8, v2.8.2, 2.9.0,               | redis:7.0.11-alpine | N/A             |
+| 0.60.0 - 0.63.0      | v2.8.2                   | v2.3.5, v2.7.2, v.2.7.8, v2.8.2               | redis:7.0.11-alpine | N/A             |
 
 The supported Argo CD versions listed above are what Harness has verified. However, any patch version should work for each minor version listed. For example, the GitOps agent version `0.78.0` should support the Argo CD version of `2.10.0`, but this is not verified by Harness. 
+
+:::warning
+The GitOps Agent version 0.82.0 was published to docker, but the release has been burned due to backward compatibility issues. Please skip that release. 
+:::
 
 ### How long is a GitOps Agent version supported?
 

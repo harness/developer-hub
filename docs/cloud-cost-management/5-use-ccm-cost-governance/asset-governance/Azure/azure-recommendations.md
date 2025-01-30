@@ -6,6 +6,45 @@ description: This topic describes how to optimize cloud costs using asset govern
 
 Recommendations help kickstart your journey with governance. Essentially, Harness runs certain policies behind the scenes to generate recommendations for your governance-enabled Azure subscriptions. These policies not only help to cut costs but also increase the efficiency of your system. On the Governance Overview page, Harness showcases recommendations that will benefit you to save costs on associated resources. You can click on any recommendation to view its details. 
 
+
+## Governance Recommendation Health
+
+Harness CCM now provides users the ability to monitor Governance Recommendations through the new Optimization tab in the Governance module. 
+
+This enhancement offers clear visibility into the evaluation status of each rule and provides detailed insights about the cloud account (connector) and region involved in generating the recommendations.
+
+This tab is designed to streamline troubleshooting and improve visibility into why recommendations may fail, be ignored, or succeed, enabling users to take immediate corrective actions when necessary.
+
+#### How It Works:
+- Status Tracking: Each Recommendation Rule's status is displayed in the Optimization tab.
+- Cloud Connector (Subscription ID): The specific cloud account associated with the rule.
+- Region: The region for which the rule is evaluated.
+
+#### Error Notifications:
+If any connector and region combination encounters an issue, the system flags it with a Failed status.
+The UI displays a detailed error message to assist in resolving the issue quickly.
+
+#### Status Breakdown:
+
+1. **Failed Status :** A failed status indicates one of the following scenarios:
+
+- Missing Permissions: The necessary permissions required for Harness to get or list resources are not provided.
+- Harness Internal Error: A system-level issue occurred during processing.
+
+2. **Ignored Status :** An ignored status indicates one of the following scenarios:
+
+- No Cost Data Available: Billing connector setup at Harness is missing cost data for the target cloud account.
+- Cost Threshold Not Met: Cost is less than $300 for the combination of subscription x region.
+- Invalid Region: The regions found in cost data is not valid to run against Governance Rule.
+
+3. **Success Status :** A successful status indicates one of the following scenarios:
+
+- Recommendation Generated: The system successfully evaluated the rule and created a recommendation.
+- No Resources in Evaluation: The rule was evaluated, but there were no resources found.
+- Savings Below Threshold: A recommendation was generated, but the potential savings were calculated to be less than $10.
+
+## Recommendations
+
 Listed below are the custodian policies which are used to generate recommendations that Harness offers for Azure. Along with each policy, you can also find their respective descriptions, the logic behind savings computation and the permissions required to generate or apply these recommendations.
 
 ### Recommendation: delete-low-utilised-cosmodb
