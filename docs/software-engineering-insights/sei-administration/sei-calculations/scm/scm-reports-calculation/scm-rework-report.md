@@ -3,6 +3,8 @@ title: SCM Rework Report Calculation
 description: How is the SCM Rework report calculated on SEI?
 sidebar_label: SCM Rework report
 sidebar_position: 10
+redirect_from:
+    - /docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-reports-calculation/scm-rework-report
 ---
 
 In this example, we consider a software development team working on a given project.
