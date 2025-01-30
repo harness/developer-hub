@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-01-23T10:00
+date: 2025-01-30T10:00
 sidebar_position: 10
 ---
 
@@ -21,6 +21,28 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## January 2025
+
+### Version 1.63
+
+<!-- 2025-01-27 -->
+
+#### Fixed issues
+
+- Fixed an issue where the node selector field under the Infrastructure tab in the CI module lost focus when input was entered for the first time. (CI-15730, ZD-76187)
+- Fixed an issue where the DockerHub v2 URL was not working with Buildx in CI. This issue occurred specifically in the **Docker Build and Push** step when caching was enabled. (CI-15702, ZD-75850)
+- Fixed an issue where project-level default settings for the S3 bucket in **self-hosted build infrastructure** failed to pass secrets to the proxy server when selecting an account-level connector or secret. (CI-15699, ZD-76063, ZD-76750)
+
+#### New features and enhancements
+
+- Added logs for container resource allocation in Kubernetes-based CI stages, including background steps, parallel steps, sequential steps, and step groups. (CI-15534)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `plugins/buildx`      | Updated dependencies to address vulnerabilities | 1.1.24                | 1.1.25           |
+| `plugins/ci-addon`       | Minor updates and improvements                  | 1.16.71              | 1.16.73         |
+| `plugins/ci-lite-engine` | Minor updates and improvements                  | 1.16.71              | 1.16.73         |
 
 ### Version 1.62
 
