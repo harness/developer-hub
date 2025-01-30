@@ -3,7 +3,7 @@ title: Sprints Metrics Overview
 description: The Complete Sprints Metrics Handbook
 sidebar_position: 10
 sidebar_label: Overview
-redirect_url: /docs/category/sprint-metrics
+redirect_url: /docs/category/agile-metrics
 canonical_url: https://www.harness.io/blog/top-3-sprint-metrics-to-measure-developer-productivity
 redirect_from:
   - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sprint-metrics/sei-sprints-metrics-overview

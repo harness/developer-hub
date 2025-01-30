@@ -4,7 +4,7 @@ description: Integrate SEI with Harness CI and CD
 sidebar_position: 10
 sidebar_label: Connect with Harness CI/CD
 redirect_from:
-    - /docs/software-engineering-insights/sei-integrations/harness-cicd/sei-integration-harnesscicd
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd
 ---
 
 Use the SEI HarnessNG integration to integrate Software Engineering Insights with the Harness Continuous Delivery & GitOps and Continuous Integration modules.

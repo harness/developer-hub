@@ -103,7 +103,7 @@ To add the **SCM PRs Report** widget to Insights:
 9. Define how the items displayed in the **X-Axis** should be sorted.
 10. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
-For information, go to [SCM PRs Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
+For information, go to [SCM PRs Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights).
 
 ### SCM Coding Days Report
 
@@ -122,7 +122,7 @@ To add the **SCM Coding Days Report** widget to Insights:
 7. Define how the items displayed in the X-Axis should be sorted.
 8. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
-For information, go to SCM [Coding Days Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
+For information, go to SCM [Coding Days Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights).
 
 ### SCM PR Lead Time by Stage Report
 
@@ -170,11 +170,11 @@ To add the **SCM Commits Single Stat Report** widget to Insights:
 Similarly you can also configure the other Single Stat reports.
 Some other SCM related reports which are frequently used are
 
-* [SCM Rework Report](/docs/software-engineering-insights/sei-administration/scm-calculation/scm-reports-calculation/scm-rework-report ): The Rework report measures the refactoring of code, which involves making modifications to the existing codebase or rewriting it entirely.
-* [SCM Committers Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-committers-report): This report analyzes the volume of code changes by committer.
-* [SCM Issues Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-issues-reports): This report analyzes the number of issues in your SCM tool by time, label, or other categories.
-* [SCM Issues Count Single Stat](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-issues-reports): This report displays a single stat related to the number of issues in your SCM tool.
-* [SCM Issues Trends Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-issues-reports): This report analyzes changes over time in the volume of SCM issues.
+* [SCM Rework Report](/docs/software-engineering-insights/sei-administration/sei-calculations/scm/scm-reports-calculation/scm-rework-report ): The Rework report measures the refactoring of code, which involves making modifications to the existing codebase or rewriting it entirely.
+* [SCM Committers Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-committers-report): This report analyzes the volume of code changes by committer.
+* [SCM Issues Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-issues-reports): This report analyzes the number of issues in your SCM tool by time, label, or other categories.
+* [SCM Issues Count Single Stat](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-issues-reports): This report displays a single stat related to the number of issues in your SCM tool.
+* [SCM Issues Trends Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-issues-reports): This report analyzes changes over time in the volume of SCM issues.
 
 ## Best Practices
 

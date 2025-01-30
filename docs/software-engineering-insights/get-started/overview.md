@@ -10,7 +10,7 @@ Harness Software Engineering Insights (SEI) helps you to increase developer prod
 
 Harness SEI analyzes data from over 40 DevOps tools to compute [DORA metrics and over 100 other insightful metrics](/docs/category/metrics-and-reports) that provide the missing insights to help you deliver software faster with better quality.
 
-SEI [integrates](/docs/category/sei-integrations) seamlessly with the Harness platform, works with other common CI/CD tools (such as Jenkins, CircleCI, Gitlab, and Azure), and provides popular third-party integrations (such as Azure, Jira, and GitHub). Enterprise companies with heterogeneous environments are able to fetch data from disparate DevOps tools and receive centralized visibility into their software development lifecycle (SDLC) process.
+SEI [integrates](/docs/category/configure-integrations) seamlessly with the Harness platform, works with other common CI/CD tools (such as Jenkins, CircleCI, Gitlab, and Azure), and provides popular third-party integrations (such as Azure, Jira, and GitHub). Enterprise companies with heterogeneous environments are able to fetch data from disparate DevOps tools and receive centralized visibility into their software development lifecycle (SDLC) process.
 
 SEI achieves this by looking at different facets of the SDLC process where bottlenecks are prevalent, such as:
 
@@ -28,7 +28,7 @@ To start using SEI, configure the following:
 
 * [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview)
 * [Integrations](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview)
-* [Contributors](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-contributors)
+* [Contributors](/docs/software-engineering-insights/setup-sei/sei-contributors/manage-contributors)
 * [Projects](/docs/platform/organizations-and-projects/projects-and-organizations)
 * [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview)
 * [Profiles](/docs/category/profiles)
@@ -37,7 +37,7 @@ To start using SEI, configure the following:
 
 :::tip
 
-Use [Propels](/docs/category/propels-and-tables) to add human-in-the-loop automation to your SDLC.
+Use [Propels](/docs/category/workflow-automation) to add human-in-the-loop automation to your SDLC.
 
 :::
 

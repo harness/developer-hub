@@ -61,7 +61,7 @@ If you're migrating to Harness SEI from Propelo standalone application, review t
 | <a href="/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview#collection-categories">Collection Hierarchy</a> | Learn how to use collection-level hierarchies to keep data in SEI organized | [Click here](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview#collection-categories) |
 | <a href="/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collection-cat">Manage Collection Categories</a> | View, add, edit, enable/disable collection categories | [Click here](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collection-cat) |
 | <a href="/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections">Manage Collections</a> | View, add, edit and remove collections | [Click here](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections) |
-| <a href="/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-contributors">Manage Contributors</a> | View, add, edit and remove contributors | [Click here](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-contributors) |
+| <a href="/docs/software-engineering-insights/setup-sei/sei-contributors/manage-contributors">Manage Contributors</a> | View, add, edit and remove contributors | [Click here](/docs/software-engineering-insights/setup-sei/sei-contributors/manage-contributors) |
 
 ### <a href="#phase-5-profiles-setup"> Phase 5: Profiles Setup </a>
 
@@ -230,7 +230,7 @@ To learn more about how to use the satellite to configure an integration, go to 
 
 You can also create custom CI/CD integration. Find the instructions to create a custom CI/CD integration on SEI [here](/docs/software-engineering-insights/setup-sei/configure-integrations/custom-cicd/sei-custom-cicd-integration).
 
-The required credentials and method of authentication vary with the integration type and the third-party tool. To learn more about how to configure the integration on SEI, refer to the [integration-specific documentation](/docs/category/sei-integrations).
+The required credentials and method of authentication vary with the integration type and the third-party tool. To learn more about how to configure the integration on SEI, refer to the [integration-specific documentation](/docs/category/configure-integrations).
 
 ## Phase 4: Collection Setup
 
@@ -241,7 +241,7 @@ Review the following resources to learn more about **Collection Categories** and
 * [Project and Collection Hierarchy](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview): Learn about how the collection hierarchy is defined on Harness SEI
 * [Manage collection categories](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collection-cat): Learn how you can add, view, edit, and enable/disable Collection categories
 * [Manage collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-collections): Learn how you can add, view, edit, and manage Insight associations with a collection
-* [Manage contributors](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/manage-contributors): Learn how to add contributors and configure the contributor attributes
+* [Manage contributors](/docs/software-engineering-insights/setup-sei/sei-contributors/manage-contributors): Learn how to add contributors and configure the contributor attributes
 
 ## Phase 5: Profiles Setup
 
@@ -311,8 +311,8 @@ Find the list of demos for the latest Harness SEI features.
 | Role-Based Access Control on Harness SEI |<a href="https://youtu.be/7GProEXyB9c">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/setup-sei/access-control/sei-roles-and-permissions) |
 | Account Level Settings on Harness SEI |<a href="https://youtu.be/NCzw--puYmY">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights) |
 | Project Level Settings on Harness SEI |<a href="https://youtu.be/Jbza13xRnMU?si=80HvIXvaqE9Uf7hD">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/) |
-| Business Alignment |<a href="https://youtu.be/f3fLqermTGo?si=bqY_sfda1QzxJWQj">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports) |
-| Trellis Scores - Reimagined - BETA |<a href="https://youtu.be/KsdTv3z2BkA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/early-access/profiles/sei-trellis-factors) |
+| Business Alignment |<a href="https://youtu.be/f3fLqermTGo?si=bqY_sfda1QzxJWQj">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment) |
+| Trellis Scores - Reimagined - BETA |<a href="https://youtu.be/KsdTv3z2BkA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/get-started/early-access/profiles/sei-trellis-factors) |
 | DORA Metrics Explained |<a href="https://youtu.be/443Zhm_bAqs?si=8WdhRC0Kp_X7KZKz">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/dora-insight) |
 | Dev Insight Explained |<a href="https://youtu.be/Jibzk-KF7PA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/developer-insight) |
 | Sprints Insight Explained |<a href="https://youtu.be/OPhoRbRuZCU?si=TcgUlFs06Uf906ZH">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/agile-insights) |

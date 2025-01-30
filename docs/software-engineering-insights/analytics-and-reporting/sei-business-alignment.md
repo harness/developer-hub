@@ -4,11 +4,11 @@ description: Generate Alignment metrics for your Engineering Team using the Busi
 sidebar_position: 50
 sidebar_label: Business Alignment
 redirect_from:
-  - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports
+  - /docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment
   - /docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-reports
-  - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports
+  - /docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment
   - /docs/category/business-alignment
-  - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports
+  - /docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment
 ---
 
 The Business Alignment Report helps you visualize where your teams are investing the majority of their effort and assist them in prioritizing their time effectively. This report displays your investment efforts across the categories outlined in the corresponding Business Alignment Profile.

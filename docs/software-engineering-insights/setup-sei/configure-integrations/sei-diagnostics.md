@@ -4,7 +4,7 @@ description: Troubleshoot and validate your data in SEI
 sidebar_label: Diagnostics
 sidebar_position: 85
 redirect_from:
-  - /docs/software-engineering-insights/sei-diagnostics
+  - /docs/software-engineering-insights/setup-sei/configure-integrations/sei-diagnostics
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

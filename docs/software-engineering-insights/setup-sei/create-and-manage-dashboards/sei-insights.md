@@ -48,7 +48,7 @@ Once you're viewing an Insight, you can explore the widgets and interact with th
 
 :::info Where does the data come from?
 
-Widgets get data from [integrations](/docs/category/sei-integrations), which are inherited from the [Collections associated with Insights](#manage-insights-associations). In turn, Collections inherit integrations from their associated Harness project, because integrations are configured at the project level. For more information about this hierarchy and configuring Collections, go to [Collections](/docs/category/projects-and-collections).
+Widgets get data from [integrations](/docs/category/configure-integrations), which are inherited from the [Collections associated with Insights](#manage-insights-associations). In turn, Collections inherit integrations from their associated Harness project, because integrations are configured at the project level. For more information about this hierarchy and configuring Collections, go to [Collections](/docs/category/projects-and-collections).
 
 You can also configure individual metrics and widgets to specify what data is used in calculations, how data is presented, and other criteria. For more information, go to [Metrics and widgets](/docs/category/metrics-and-reports).
 
@@ -124,7 +124,7 @@ To add widgets to Insights:
 
 :::info Where does the data in widgets come from?
 
-Widgets get data from [integrations](/docs/category/sei-integrations), which are inherited from the [Collections associated with Insights](#manage-insights-associations). In turn, Collections inherit integrations from their associated Harness project, because integrations are mapped at the project level. For more information about this hierarchy and configuring Collections, go to [Collections](/docs/category/projects-and-collections).
+Widgets get data from [integrations](/docs/category/configure-integrations), which are inherited from the [Collections associated with Insights](#manage-insights-associations). In turn, Collections inherit integrations from their associated Harness project, because integrations are mapped at the project level. For more information about this hierarchy and configuring Collections, go to [Collections](/docs/category/projects-and-collections).
 
 You can also configure individual metrics and widgets to specify what data is used in calculations, how data is presented, and other criteria. For more information, go to [Metrics and reports](/docs/category/metrics-and-reports).
 
@@ -176,12 +176,12 @@ If you want to create a DORA Metrics Insight refer to the below resoures.
 
 Dev Insights examines development efforts, particularly in relation to SCM metrics, such as PR creation, merging, and review collaboration.
 
-For more information about SCM metrics and widgets, go to [velocity metrics](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-metrics) and [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
+For more information about SCM metrics and widgets, go to [velocity metrics](/docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-metrics) and [SCM reports](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights).
 
 If you want to create a Developer i.e. SCM Metrics Insight refer to the below resources.
 
 * [Tutorial: Create a Developer / SCM Metrics Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/developer-insight)
-* [SCM widgets](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports) 
+* [SCM widgets](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights) 
 
 ![](./static/dev-insight.png)
 
@@ -189,7 +189,7 @@ If you want to create a Developer i.e. SCM Metrics Insight refer to the below re
 
 The Business Alignment Insight can help visualize where your teams expend the most effort and help your teams prioritize their time. Implementing this requires you to create a Business Alignment profile and then use the profile to generate the Business Alignment report.
 
-For more information about these report, go to [Business Alignment](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports).
+For more information about these report, go to [Business Alignment](/docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment).
 
 ![](./static/business-alignment-insight.png)
 
@@ -206,9 +206,9 @@ If you want to create a Trellis Insight refer to the below resources.
 
 ### Planning Insights
 
-Use the Planning Insight to examine [sprint metrics](/docs/category/sprint-metrics).
+Use the Planning Insight to examine [sprint metrics](/docs/category/agile-metrics).
 
 If you want to create a Sprints Metrics Insight refer to the below resources.
 
 * [Tutorial: Create a Sprint Metrics Insight](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/insight-tutorials/agile-insights)
-* [Sprint metric widgets](/docs/category/sprint-metrics)
+* [Sprint metric widgets](/docs/category/agile-metrics)

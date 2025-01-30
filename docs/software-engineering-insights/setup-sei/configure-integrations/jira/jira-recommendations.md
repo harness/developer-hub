@@ -25,7 +25,7 @@ For teams working on DevOps, DORA metrics like Lead Time for Changes and Mean Ti
 A measure of how effectively engineering efforts contribute to strategic business outcomes, such as customer satisfaction, adoption, and operational efficiency. Use the Jira integration to set up a Business Alignment profile within SEI, and use the Business Alignment widget to track key alignment metrics.
 
 * [Create Business Alignment profile](/docs/software-engineering-insights/setup-sei/sei-profiles/business-alignment-profile)
-* [Configure the Business Alignment widget](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports)
+* [Configure the Business Alignment widget](/docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment)
 
 ### Sprint activity tracking
 

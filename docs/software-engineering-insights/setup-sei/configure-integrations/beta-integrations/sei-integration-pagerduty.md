@@ -4,7 +4,7 @@ description: Integrate SEI with PagerDuty.
 sidebar_position: 150
 sidebar_label: Connect with PagerDuty
 redirect_from:
-    - /docs/software-engineering-insights/sei-integrations/beta-integrations/sei-integration-pagerduty
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/sei-integration-pagerduty
 ---
 
 PagerDuty specializes in a SaaS incident response platform for IT departments.
@@ -12,7 +12,7 @@ PagerDuty specializes in a SaaS incident response platform for IT departments.
 Use the SEI PagerDuty integration to integrate SEI with any Cloud-based PagerDuty account/plan.
 
 :::note
-The 202403.2 release added the support to measure the incident recovery time using the DORA MTTR report for the PagerDuty integration. To learn more, go to [Measure incident recovery time](/docs/software-engineering-insights/early-access/metrics-reports/mttr-incident-recovery).
+The 202403.2 release added the support to measure the incident recovery time using the DORA MTTR report for the PagerDuty integration. To learn more, go to [Measure incident recovery time](/docs/software-engineering-insights/get-started/early-access/metrics-reports/mttr-incident-recovery).
 :::
 
 ## Requirements

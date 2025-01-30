@@ -33,7 +33,7 @@ For teams working on DevOps, DORA metrics like Lead Time for Changes and Mean Ti
 A measure of how effectively engineering efforts contribute to strategic business outcomes, such as customer satisfaction, adoption, and operational efficiency. Use the Azure Boards integration to set up a Business Alignment profile within SEI, and use the Business Alignment widget to track key alignment metrics.
 
 * [Create Business Alignment profile](/docs/software-engineering-insights/setup-sei/sei-profiles/business-alignment-profile)
-* [Configure the Business Alignment widget](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports)
+* [Configure the Business Alignment widget](/docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment)
 
 ### Sprint activity tracking
 
@@ -55,20 +55,20 @@ Hygiene refers to how well the team manages and tracks ongoing work, which suppo
 
 Monitor individual contributions to understand how often developers are committing code and contributing to the codebase. These metrics can highlight engagement, focus areas, and workload distribution among team members. The following widgets are commonly used:
 
-* [SCM Coding Days Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-coding-days-report)
-* [SCM Coding Days Single Stat](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-coding-days-report)
+* [SCM Coding Days Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-coding-days-report)
+* [SCM Coding Days Single Stat](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-coding-days-report)
 
 ### Pull request activity
 
 Use SCM PR widgets to analyze the flow of PRs through your repositories, assess PR lead time, and understand team collaboration during reviews. These widgets help identify bottlenecks, improve efficiency, and ensure code quality through better collaboration.
 
-* [SCM PRs Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-prs-report)
-* [SCM PR Lead Time by Stage Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-pr-lead-time-by-stage-report)
-* [SCM Review Collaboration Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-review-collaboration-report)
+* [SCM PRs Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-prs-report)
+* [SCM PR Lead Time by Stage Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-pr-lead-time-by-stage-report)
+* [SCM Review Collaboration Report](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-review-collaboration-report)
 
 ### Code rework and quality
 
-Understanding rework is essential to improving code quality and maintaining high standards in development. The [SCM Rework widget](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-rework-report) tracks rework volumes over time, helping teams identify which areas of code are more prone to revisions and need improvement.
+Understanding rework is essential to improving code quality and maintaining high standards in development. The [SCM Rework widget](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights#scm-rework-report) tracks rework volumes over time, helping teams identify which areas of code are more prone to revisions and need improvement.
 
 :::info
 

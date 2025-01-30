@@ -3,7 +3,7 @@ title: Issue tracking
 description: Analyze data related to issues in your issue management system.
 sidebar_position: 50
 redirect_from:
-    - /docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports
+    - /docs/software-engineering-insights/analytics-and-reporting/efficiency/issues-reports
 ---
 
 Use these issues reports to analyze data related to issues in issue management systems, such as Jira. Some reports can also be used for support tickets and tickets or issues that cover multiple systems (support, issue management, SCM, and CI/CD).
@@ -55,7 +55,7 @@ Select a metric to use for the Y-axis. You can select either **Number of Tickets
   
 #### Step 5: Configure the Settings
 
-* Select the issue management system to use for this widget. Available options are based on your [SEI integrations](/docs/category/sei-integrations).
+* Select the issue management system to use for this widget. Available options are based on your [SEI integrations](/docs/category/configure-integrations).
 * Select how you want to sort X-axis data, such as ascending or descending.
 * Select the maximum number of values to show on the X-axis.
 * Select the visualization style for the widget, such as bar chart, donut chart, multi-line chart, or percentage-stacked bar chart.
@@ -186,7 +186,7 @@ On the **Aggregations** tab, you can select the dimension, from your issue manag
 
 On the **Settings** tab, you can:
 
-* Select the issue management system to use for this widget. Available options are based on your configured [SEI integrations](/docs/category/sei-integrations).
+* Select the issue management system to use for this widget. Available options are based on your configured [SEI integrations](/docs/category/configure-integrations).
 * Select how you want to sort X-axis data, such as ascending or descending.
 * Select the maximum number of unique values to show on the X-axis.
 
@@ -496,7 +496,7 @@ Single stats are versatile widgets that provide a single metric over a given tim
 When you configure a single stat widget:
 
 * You can create filters for any field that can be viewed as a single value, such as issue type, priority, status, labels, components, and so on.
-* The available fields depend on your [integrations](/docs/category/sei-integrations), and you can choose from custom fields, if they exist in your SCM, issue management, or support tool.
+* The available fields depend on your [integrations](/docs/category/configure-integrations), and you can choose from custom fields, if they exist in your SCM, issue management, or support tool.
 * If you use multiple filters to focus the widget (such as to show the total number of *bugs* in the *won't do* status for a specific project), the filters are inherently combined by `AND` operators.
 * Keep in mind that single stat widgets intend to show a single value, such as the total number of tickets or the sum of story points. Determine what single stat you want to show, and then create your filters accordingly.
 
@@ -505,5 +505,5 @@ You might want to set the time range to **Use Insight time**, which allows the u
 ## Other issues reports
 
 * **Issue Hotspots Report:** Determine code hotspots most often result in issues being created in your issue management system. This can help you identify code areas that need better test coverage.
-* **Issue Progress Report:** Analyze progress on [effort investment categories](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports).
-* **SCM issues:** For information about reports that track SCM issues, go to [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
+* **Issue Progress Report:** Analyze progress on [effort investment categories](/docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment).
+* **SCM issues:** For information about reports that track SCM issues, go to [SCM reports](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights).

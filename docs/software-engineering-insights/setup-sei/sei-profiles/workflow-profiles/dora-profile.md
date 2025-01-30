@@ -1715,7 +1715,7 @@ While configuring the DORA profile, you may encounter some common issues. Below 
 
 #### Resolution Steps
 
-* **Check Diagnostics:** Navigate to the [Diagnostics](/docs/software-engineering-insights/sei-diagnostics) section and verify whether data is ingested for the selected integrations. If data is not yet available, wait for the ingestion process to complete.
+* **Check Diagnostics:** Navigate to the [Diagnostics](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-diagnostics) section and verify whether data is ingested for the selected integrations. If data is not yet available, wait for the ingestion process to complete.
 * **Request Field Ingestion:** If the field is not ingested, create a [Harness Support](/docs/software-engineering-insights/sei-support) ticket and request the ingestion of the specific field as part of the integration.
 
 ### Values for selected filters don't populate
@@ -1726,7 +1726,7 @@ While configuring the DORA profile, you may encounter some common issues. Below 
 
 #### Resolution Steps
 
-* **Verify Data Availability:** Use the [Diagnostics](/docs/software-engineering-insights/sei-diagnostics) section to confirm whether the data has been successfully ingested. If the data is not present, wait until ingestion is complete to configure the filters.
+* **Verify Data Availability:** Use the [Diagnostics](/docs/software-engineering-insights/setup-sei/configure-integrations/sei-diagnostics) section to confirm whether the data has been successfully ingested. If the data is not present, wait until ingestion is complete to configure the filters.
 
 ### Projects/Collections not available in the association settings
 

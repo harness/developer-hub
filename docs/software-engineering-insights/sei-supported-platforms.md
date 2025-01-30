@@ -76,7 +76,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>SEI_SHOW_TRELIS_NEW_INTERVAL</td>
-        <td>Enables Trellis Profile configuration using <a href="/docs/software-engineering-insights/early-access/profiles/sei-trellis-factors">Trellis Factors</a> at the Central Profile. This feature is in BETA. </td>
+        <td>Enables Trellis Profile configuration using <a href="/docs/software-engineering-insights/get-started/early-access/profiles/sei-trellis-factors">Trellis Factors</a> at the Central Profile. This feature is in BETA. </td>
     </tr>
     <tr>
         <td>SEI_NEW_COLLECTION_TREE</td>
@@ -104,7 +104,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>SEI_BA_INCLUDE_UNRESOLVED_ISSUES</td>
-        <td>Allows you to use the [Business Alignment report](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports) to calculate alignment metrics for tickets that are in the **In Progress status category** and those that have been resolved (i.e., Done status category) within a specific duration of time.</td>
+        <td>Allows you to use the [Business Alignment report](/docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment) to calculate alignment metrics for tickets that are in the **In Progress status category** and those that have been resolved (i.e., Done status category) within a specific duration of time.</td>
     </tr>
 </table>
 

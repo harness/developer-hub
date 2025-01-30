@@ -104,7 +104,7 @@ Pipeline job reports are functionally identical to [job count reports](#job-coun
 
 ## SCM to CI/CD jobs reports
 
-For information about SCM to CI/CD jobs reports, such as the **SCM Commit to CI/CD Job Lead Time Trend Report**, go to [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
+For information about SCM to CI/CD jobs reports, such as the **SCM Commit to CI/CD Job Lead Time Trend Report**, go to [SCM reports](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights).
 
 ## Configure CI/CD job reports
 

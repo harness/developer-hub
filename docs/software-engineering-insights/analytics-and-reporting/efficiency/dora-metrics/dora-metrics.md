@@ -11,7 +11,7 @@ DORA (DevOps Research Assessment) identified the following key metrics that desc
 
 With SEI, you can use [DORA Metrics Insights](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights/#dora-metrics) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
 
-Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/sei-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
+Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/configure-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
 
 ## DORA Metrics Reports
 
@@ -84,7 +84,7 @@ The Deployment Frequency formula depends on whether you are tracking issue manag
 * Widget-level filters.
 * Insight time range, which is the time range selected by the user when viewing the Insight.
 
-To learn more, go to [Deployment Frequency calculation](/docs/software-engineering-insights/sei-administration/dora-metrics-calculation/dora-deployment-frequency-calculation).
+To learn more, go to [Deployment Frequency calculation](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-deployment-frequency-calculation).
 
 :::info
 SEI fetches the history for both the builds jobs and triggers jobs for each pipeline from GitLab. The list of all jobs is available in the job selection tab under Deployment Frequency when configuring the DORA profile.
@@ -241,17 +241,17 @@ When configured to calculate the Lead Time as the **Average time in stage**, the
 
 ### Median
 
-The [median lead time](/docs/software-engineering-insights/sei-administration/dora-metrics-calculation/dora-lead-time-calculation#median) is the duration by which half of the tasks or tickets are completed. It gives you idea about the typical completion time by showing the point where half of the tickets are resolved faster and the other half take longer.
+The [median lead time](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-lead-time-calculation#median) is the duration by which half of the tasks or tickets are completed. It gives you idea about the typical completion time by showing the point where half of the tickets are resolved faster and the other half take longer.
 
 ### 90th Percentile
 
-The [90th percentile lead time](/docs/software-engineering-insights/sei-administration/dora-metrics-calculation/dora-lead-time-calculation#90th-percentile) is the duration within which 90% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays.
+The [90th percentile lead time](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-lead-time-calculation#90th-percentile) is the duration within which 90% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays.
 
 ### 95th Percentile
 
-The [95th percentile lead time](/docs/software-engineering-insights/sei-administration/dora-metrics-calculation/dora-lead-time-calculation#95th-percentile) is the duration within which 95% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays. The calculation of the 95th percentile lead time follows the same steps as the 90th percentile, with the only difference being the percentile value used.
+The [95th percentile lead time](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-lead-time-calculation#95th-percentile) is the duration within which 95% of tasks or tickets are completed, representing an upper bound for typical completion times while excluding the most extreme delays. The calculation of the 95th percentile lead time follows the same steps as the 90th percentile, with the only difference being the percentile value used.
 
-If you want to learn more about the calculations behind these metrics, you can check out the [DORA Lead Time calculations](/docs/software-engineering-insights/sei-administration/dora-metrics-calculation/dora-lead-time-calculation).
+If you want to learn more about the calculations behind these metrics, you can check out the [DORA Lead Time calculations](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-lead-time-calculation).
 
 ### Lead Time Scoring
 
@@ -316,7 +316,7 @@ To measure the Change Failure Rate accurately, define your workflow profile conf
 * Go to **Settings** and select **Workflow Profiles**.
 * Select **Add Profile** or select an existing profile to modify.
 * If this is a new profile, on the **Workflow Profile Configuration** page, enter a name for the profile.
-* Select **Change Failure Rate**, and select the [SEI integration](/docs/category/sei-integrations) to use. Configuration details vary by SEI integration type. Default values are pre-populated, and you can change them, if desired. For example:
+* Select **Change Failure Rate**, and select the [SEI integration](/docs/category/configure-integrations) to use. Configuration details vary by SEI integration type. Default values are pre-populated, and you can change them, if desired. For example:
   * Select factors to use to calculate failed deployments.
   * Select factors to use to calculate total deployments.
   * Select whether the failed deployment calculation should be based on items that were *updated/ended* or *created/started* within the Insight time range. *Insight time* is the time range selected by the user when viewing the Insight. <br /><br />Here you can also select **Show absolute value** if you would rather get the absolute value than the rate (percentage).
@@ -358,7 +358,7 @@ The Change Failure Rate is calculated by dividing the number of failed deploymen
 * Widget-level filters.
 * Insight time range, which is the time range selected by the user when viewing the Insight.
 
-To learn more, go to [Change Failure Rate calculation](/docs/software-engineering-insights/sei-administration/dora-metrics-calculation/dora-change-failure-rate-calculation).
+To learn more, go to [Change Failure Rate calculation](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-change-failure-rate-calculation).
 
 <details>
 <summary>Change Failure Rate calculation example</summary>
@@ -402,7 +402,7 @@ There are several ways to present MTTR in SEI Insights, including:
 * **Time To Restore Service**
 * **[Issue Resolution Time reports](/docs/software-engineering-insights/analytics-and-reporting/efficiency/issues-reports)**
 
-To learn more, go to [DORA MTTR calculation](/docs/software-engineering-insights/sei-administration/dora-metrics-calculation/dora-mttr-calculation).
+To learn more, go to [DORA MTTR calculation](/docs/software-engineering-insights/sei-administration/sei-calculations/dora/dora-mttr-calculation).
 
 ### Add the DORA Mean Time To Restore report
 

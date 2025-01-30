@@ -3,7 +3,7 @@ title: Lead time widgets
 description: Use these reports to analyze lead time metrics.
 sidebar_position: 15
 redirect_from:
-    - /docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports
+    - /docs/software-engineering-insights/analytics-and-reporting/efficiency/velocity-lead-time
 ---
 
 Lead time measures elapsed time to deliver features, close issues, or complete workflows. For example, it can measure:
@@ -195,7 +195,7 @@ To ensure the accuracy of SEI calculations, it is necessary to maintain code hyg
 2. **Commits and Default Branch:** SEI captures all commits made to the default branch, typically named `main` or `master`. These commits serve as the basis for calculating various metrics within SEI.
 3. **Commits and Pull Requests:** SEI collects commit data related to pull requests (PRs), irrespective of the target branch. This information is vital for measuring lead time metrics during the PR process. 
 
-To learn more about how SCM Commits are ingested on Harness SEI, go to [Technical Reference: SCM Commits](/docs/software-engineering-insights/sei-administration/scm-calculation/scm-metrics-calculation/scm-commits)
+To learn more about how SCM Commits are ingested on Harness SEI, go to [Technical Reference: SCM Commits](/docs/software-engineering-insights/sei-administration/sei-calculations/scm/scm-metrics-calculation/scm-commits)
 
 It's important to note that certain usecases like the Lead Time calculations, offer valuable insights only after the work has been completed and merged. Consequently, when assessing these metrics in SEI, make sure to configure the Workflow Profile based on the final code changes rather than individual contributions before merging.
 
@@ -412,7 +412,7 @@ Similar to the [Issue Lead Time by Stage Report](#issue-lead-time-by-stage-repor
 When you configure a single stat widget:
 
 * You can create filters for any field that can be viewed as a single value, such as issue type, priority, status, labels, components, and so on.
-* The available fields depend on your [integrations](/docs/category/sei-integrations), and you can choose from custom fields, if they exist in your SCM, issue management, or support tool.
+* The available fields depend on your [integrations](/docs/category/configure-integrations), and you can choose from custom fields, if they exist in your SCM, issue management, or support tool.
 * If you use multiple filters to focus the widget (such as to show the total number of *bugs* in the *won't do* status for a specific project), the filters are inherently combined by `AND` operators.
 * Keep in mind that single stat widgets intend to show a single value, such as the total number of tickets or the sum of story points. Determine what single stat you want to show, and then create your filters accordingly.
 
@@ -432,7 +432,7 @@ For information about the DORA Lead Time For Changes report, go to [DORA Reports
 
 ## PR and SCM lead time
 
-For information about reports that track PR lead time, SCM issue lead time, and lead time between SCM commits and CI/CD jobs, go to [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports). Such reports include:
+For information about reports that track PR lead time, SCM issue lead time, and lead time between SCM commits and CI/CD jobs, go to [SCM reports](/docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights). Such reports include:
 
 ## Support lead time
 

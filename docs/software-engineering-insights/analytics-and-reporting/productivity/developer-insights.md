@@ -3,7 +3,7 @@ title: Developer insights
 description: These widgets show metrics related to SCM activity.
 sidebar_position: 20
 redirect_from:
-    - /docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports
+    - /docs/software-engineering-insights/analytics-and-reporting/productivity/developer-insights
 ---
 
 SCM reports help you analyze activity in your SCM tools, including:

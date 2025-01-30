@@ -4,7 +4,7 @@ description: Integrate SEI with Azure DevOps.
 sidebar_position: 1
 sidebar_label: Connect with Azure DevOps
 redirect_from:
-    - /docs/software-engineering-insights/sei-integrations/azure-devops/sei-integration-azure-devops
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

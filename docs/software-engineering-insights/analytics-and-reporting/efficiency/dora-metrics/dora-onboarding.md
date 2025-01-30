@@ -13,7 +13,7 @@ DORA (DevOps Research Assessment) identified the following key metrics that desc
 
 With SEI, you can use [DORA Metrics Insights](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights/#dora-metrics) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
 
-Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/sei-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
+Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/configure-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
 
 ### <a href="#"> DORA Onboarding Path </a>
 
@@ -179,7 +179,7 @@ SEI also ingests the data for commits associated with pull requests (PRs), regar
 
 The ingestion logic within SEI rests on the assumption that important code additions go through a careful review process before being approved. At the same time, it expects that all important code changes will eventually be merged into the main branch, creating a unified and up-to-date codebase.
 
-To learn more, go to [SCM Commits Calculation on Harness SEI](/docs/software-engineering-insights/sei-administration/scm-calculation/scm-metrics-calculation/scm-commits)
+To learn more, go to [SCM Commits Calculation on Harness SEI](/docs/software-engineering-insights/sei-administration/sei-calculations/scm/scm-metrics-calculation/scm-commits)
 
 ## DORA Insights & Profile
 

@@ -4,7 +4,7 @@ description: Integrate SEI with the ServiceNow Platform.
 sidebar_position: 10
 sidebar_label: Connect with ServiceNow
 redirect_from:
-    - /docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow
+    - /docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow
 ---
 
 import Tabs from '@theme/Tabs';
@@ -267,7 +267,7 @@ integrations:
 
 The ServiceNow integration primarily is used for measuring the incident recovery time using the DORA Mean Time to Restore (MTTR) widget.
 
-For detailed instructions on setting up and configuring the DORA profile to effectively measure MTTR using the ServiceNow integration, please refer to [Measure incident recovery time](/docs/software-engineering-insights/early-access/metrics-reports/mttr-incident-recovery).
+For detailed instructions on setting up and configuring the DORA profile to effectively measure MTTR using the ServiceNow integration, please refer to [Measure incident recovery time](/docs/software-engineering-insights/get-started/early-access/metrics-reports/mttr-incident-recovery).
 
 ## See also
 
