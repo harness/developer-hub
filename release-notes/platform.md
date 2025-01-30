@@ -77,7 +77,102 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## January 2025
+
+### Version 1.73.x <!-- January 27, 2025 -->
+#### Fixed issues
+
+- With this update, we ensure proper handling of the missing `onDelegate` key in the Secret Manager template. Previously, during the creation flow of a Custom Secret Manager, the `Execute on Delegate` checkbox was selected by default, even when the `onDelegate` key was absent in the Secret Manager template YAML. (PL-59514)
+
+- The number of user groups inherited in child scopes, such as Organization and Project, will now display up to a limit of 5000. (PL-59185)
+
+#### New features and enhancements
+
+- Accounts with a FREE license will no longer be able to configure SAML authentication. (PL-59708)
+
+- Added the Banners feature for users to display important messages across the UI. This feature is available behind the feature flag `PL_CUSTOM_BANNERS`. (PL-43420)
+
+### Version 1.72.x <!-- January 20, 2025-->
+#### Fixed issues
+
+- Enabled support for AIDA settings at the organization level. (PL-59525)
+
+- Improved the user experience on the Settings page across all three scopes (Account, Organization, and Project) by sorting the cards for accessing specific settings or resources in alphabetical order. Previously, these cards appeared in random order, making it difficult to locate specific settings as their number increased over time. The alphabetical arrangement now ensures easier and quicker access. (PL-59352)
+
+- Previously, when creating or updating a resource group with resources containing invalid identifiers, the system would remove the invalid resources and update the rest of the resource group. Now, an error message will be displayed, specifying the invalid identifiers. (PL-58961)
+
+#### New features and enhancements
+
+- Improved the revoked token flow by removing the self-destruct operation for revoked tokens. (PL-58728)
+
+- Upgraded JRE to version 17.0.13_11 in the delegate image. (PL-59512)
+
+- The disconnected delegates list in the selection log now displays only eligible but disconnected delegates, filtering out non-eligible ones. (PL-56301)
+
+- Updated the NGINX controller image from version 1.3.0 to 1.11.2 to address and eliminate all critical and high vulnerabilities. (PL-56529)
+
+### Version 1.71.x <!-- January 13, 2025-->
+#### Fixed issues
+
+- On the RoleDetailsPage, permissions are now sorted alphabetically to enhance ease of discovery and navigation, replacing the previous random order. (PL-59350)
+
+- Fixed the pagination response for the User Group List API. The User Groups GET API now correctly returns the total pages and page count. [Learn more](https://apidocs.harness.io/tag/User-Group#operation/getUserGroupList) (PL-59214)
+
+- Fixed an issue where navigating via URL to view a specific file loaded the correct line initially but later displayed an incorrect line number. The file and line number now remain consistent. (PL-59002)
+
+- Added ng-manager virtual service routes in the chart to support GitX webhook APIs at both org and project levels. (PL-58990)
+
+- Fixed an issue where the 'Apply' button remained enabled and caused an error when clicked, even with no changes to assignments. The 'Apply' button is now correctly disabled when there are no changes. (PL-58782)
+
+- Updated the text input to accept only the domain instead of the full email. Placeholder changed from 'Eg: abc@harness.io' to 'Eg: harness.io'. (PL-57883)
+
+- Added search functionality to the Dashboard's Resource Groups modal for improved navigation. (PL-57783)
+
+#### New features and enhancements
+
+- "Added a feature on the delegate list page to allow customers to easily differentiate polling mode delegates. This feature is available behind the flag `PL_SHOW_IF_POLLING_MODE_DELEGATE`." (PL-58853)
+
+- Support has been added to configure either 'Force Delete without recovery' or a 'Recovery Window' when creating or updating the AWS Secret Manager Connector. These settings will be used in the delete secret request and work as follows:
+
+  1. **Force Delete without recovery**: When enabled, the request to AWS will immediately delete the secret without recovery options.
+  2. **Recovery Window (in days)** (optional): If set, the deletion request will be made to AWS with the specified recovery window. The secret will be deleted in Harness but can still be recovered in AWS Secret Manager within the recovery window. (PL-58225)
+
+- All delegates in CG will now start disconnecting for customers who are not using CG. (PL-59298)
+
+- Added support for expressions (webhook url,custom header value, etc) in the values of webhook headers in the Centralized Notification System. (PL-58248)
+
+- Minio image has been updated to version 2024.9.22-debian-12-r1. (PL-59170)
+
+- Updated the TimescaleDB chart to use pg13.16-ts2.15.3-oss to reduce vulnerabilities. (PL-58116)
+
+- Upgraded the `org.asynchttpclient_async-http-client` to version 3.0.1. (PL-59246)
+
+- Upgraded the delegate base image from `ubi8-minimal:8.10` to `ubi9-minimal:9.4`. (PL-58376)
+
 ## December 2024
+### Version 1.69.x<!-- December 12, 2024 -->
+#### Fixed issues
+- Resolved an issue where the secrets created were not appearing in the **“Referenced By”** section of the connector. This was solved by updating the entity setup to support **cross-scope references**. With this fix, newly created secrets are now correctly displayed in the “Referenced By” section as expected.
+(PL-55818, ZD-67675) 
+
+#### New features and enhancements
+- Successfully onboarded **DB-DevOps** (DBOPS) to Custom Dashboards. 
+(PL-58911)
+
+
+### Version 1.68.x<!-- December 5, 2024 -->
+
+#### Fixed issues
+
+- Resolved an issue in the pipeline approval stage where Slack notifications were delayed by up to 10 minutes after the approval event. With this fix, Slack notifications are now sent instantly once the pipeline approval stage is issued. 
+(PL-58801, ZD-72930)
+
+
+#### New features and enhancements
+
+- Introduced enhanced support for the variables in the resource group allowing restriction of access to ```specific variables``` within the scope. Previously, users had access to either all variables or none. This update enables fine-grained access control, enabling users to select specific variables for controlled access across their organisation, account or project scope. 
+(PL-58267)
+
 
 ### Version 1.67.x<!-- December 3, 2024 -->
 
@@ -106,6 +201,8 @@ The following deprecated API endpoints are longer supported:
 - Optimized role assignment deletions by replacing the inefficient `findAllAndRemove` method with remove. This improves database performance by avoiding unnecessary data fetching during deletions. (PL-56385)
 
 - Upgraded the `io.netty:netty-common` library to version `4.1.115` to address security vulnerabilities, including `CVE-2024-47535`, ensuring enhanced application security and compliance. (PL-58550)
+
+- Cross-module pipeline executions dashboards includes the ability to run ad-hoc queries for pipeline, stage, and step level views and allow cross module analysis. This includes one OOTB dashboard for pipeline executions, one for stage executions and another for step executions. (PL-50496)
 
 ## November 2024
 

@@ -577,3 +577,71 @@ Invalid request: No manifests found in stage Deploy_AMI. AsgRollingDeploy step r
 ```
 
 This means that your Launch Template and ASG Configuration are not setup correctly in your service under AWS ASG Configurations.
+
+### What is the purpose of the ECS Scheduled Task Deployment Pipeline? 
+This pipeline automates building, pushing, scheduling, and running ECS tasks using Harness. It helps dynamically update ECS task definitions and schedule tasks with AWS EventBridge.
+
+### What are the main stages in the ECS Scheduled Task Deployment Pipeline? 
+The pipeline has three main stages:  
+1. ecr push: Builds and pushes a Docker image to Amazon ECR.  
+2. schedule task: Schedules the ECS task using AWS EventBridge.  
+3. deploy ecs: Updates the ECS task definition and optionally runs the ECS task.
+
+### How does the ecr_push stage work?
+The ecr_push stage builds the Docker image, tags it, and pushes it to Amazon ECR. You can create an output variable to dynamically pass the updated image tag to subsequent stage, for example:- deploy stage.
+
+### What does the schedule_task stage accomplish?
+The schedule_task stage creates or updates an AWS EventBridge rule and sets the ECS task as its target. It uses AWS CLI commands to define scheduling parameters and associates the updated ECS task definition with the rule. You need to run these command via a Shell Script since Harness does not natively support scheduling tasks in ECS.
+
+### How is the deploy_ecs stage used? 
+The deploy_ecs stage updates the ECS task definition with the new Docker image tag and uses the EcsRunTask step to optionally run the ECS task. Rollback options like ECS Canary Delete and Rolling Rollback are included to handle deployment failures.
+
+### What are the IAM role requirements for the ECS Scheduled Task Deployment Pipeline? 
+You need an IAM role (`ecsEventBridgeRole`) with the following permissions:  
+- Trust Policy: Allows EventBridge to assume the role.  
+- Permissions: `ecs:RunTask`, `ecs:DescribeTaskDefinition`, `events:PutRule`, `events:PutTargets`.
+
+### How is the Docker image tag updated dynamically in ECS Scheduled Task Deployment Pipeline? 
+You can use output variables in your build stage where you are building your docker image and reference that output variable in your ECS service step where you are defining your artifacts. It will make sure that the image tag is updated dynamically.
+Learn more about [Output variables in Harness](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables).
+
+### How can I schedule the ECS task using AWS CLI?
+The schedule_task stage runs the following AWS CLI commands:  
+1. Create or update an EventBridge rule:  
+   ```bash
+   aws events put-rule --schedule-expression "rate(5 minutes)" --name my-scheduled-task
+   ```  
+2. Set the ECS task as the rule's target using updated task definitions.
+
+### How does the rollback mechanism work? 
+The pipeline includes rollback steps like ECS Canary Delete and ECS Rolling Rollback. These steps revert deployments if failures occur during task scheduling or execution.
+
+### Can I run the ECS task immediately after updating the task definition?
+Yes, the deploy_ecs stage includes the EcsRunTask step, which allows running the ECS task immediately using the updated ECS task definition file.
+
+### How can I deploy to ECS using only a task definition file, without a service definition?
+
+The AWS ECS Deploy step in Harness requires a service definition.  Workarounds include using a custom stage with a shell script step to invoke the RunTask API directly, or providing a minimal service definition.  More information on ECS deployments can be found in [Harness documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-v2-summary/).
+
+### Why am I getting an error stating that `aws-iam-authenticator` is required for EKS deployments?
+
+The error "aws-iam-authenticator is required" for EKS deployments indicates that the `aws-iam-authenticator` is not installed on the delegate.  The `aws-iam-authenticator` is required for using AWS EKS Infrastructure for Kubernetes deployments using the AWS connector.  Alternatively, a regular Kubernetes connector can be used.
+
+### Why is the AWS Connector using the default EC2 instance role instead of the role defined on the Delegate's Service Account?
+
+The AWS Connector is using the default EC2 instance role instead of the role defined on the Delegate's Service Account because the connector configuration is set to `InheritFromDelegate` instead of explicitly using `IRSA`.  For roles obtained via IRSA, the `type: Irsa` setting must be explicitly specified in the connector configuration.
+
+### How to use API to create a trigger for ECS artifacts?  
+Users need to correctly configure the `artifactRef` parameter when creating a trigger via the API. Example API request structures can be found in the [Harness API documentation](https://apidocs.harness.io/tag/Triggers#operation/createTrigger).
+
+### How can we deploy ECS Scheduled Tasks without using Harness scheduling?  
+Harness does not natively support ECS Scheduled Tasks, but users can:
+- Build and push the Docker image to ECR.
+- Update the ECS Task Definition.
+- Use AWS CLI commands to schedule the task execution.
+
+### How can we create a custom script to access a Bitbucket repository and deploy using AWS CLI?  
+Users can:
+- Use the Bitbucket API to retrieve necessary files.
+- Implement an AWS CLI-based deployment script.
+- Automate the process via a Harness pipeline step.

@@ -5,6 +5,7 @@ sidebar_position: 6
 sidebar_label: How to Add API Docs
 redirect_from:
   - /docs/internal-developer-portal/get-started/add-api-docs
+  - /docs/internal-developer-portal/plugins/available-plugins/grpc
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
@@ -211,11 +212,60 @@ spec:
 
 ## gRPC Docs
 
-We have now added the support for [protoc-gen-doc plugin](https://github.com/backstage/backstage/tree/master/plugins/api-docs-module-protoc-gen-doc), which contains `ApiDefinitionWidgets` for [grpc-docs](https://github.com/gendocu-com/grpc-docs)to enable Swagger UI for gRPC APIs. 
+You can render gRPC documentation by using the [protoc-gen-doc plugin](https://github.com/backstage/backstage/tree/master/plugins/api-docs-module-protoc-gen-doc), which contains `ApiDefinitionWidgets` for [grpc-docs](https://github.com/gendocu-com/grpc-docs)to enable Swagger UI for gRPC APIs. 
 
-Make sure to add the `spec.type` as `grpc` or `grpc-docs`. 
 
-## proto file Format
+### JSON Format
+
+:::info
+
+You can render gRPC documentation when the `type` is set to `grpc-doc` or `grpc` **and** the `definition` is provided in JSON format. 
+
+:::
+
+#### Type: `grpc`
+
+```YAML
+##Example
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: grpc-docs-test-1
+spec:
+  type: grpc
+  lifecycle: production
+  owner: group:engineering
+  definition:
+    $text: https://github.com/pseudomuto/protoc-gen-doc/blob/master/examples/doc/example.json
+```
+
+#### Rendered Output for JSON Format
+
+![](./static/json-format.png)
+
+
+#### Type: `grpc-docs`
+
+[Example catalog-info.yaml](https://github.com/harness-community/idp-samples/blob/main/demo-prorto-api.yaml)
+
+```YAML
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: grpc-docs-test
+spec:
+  type: grpc-docs
+  lifecycle: production
+  owner: group:engineering
+  definition:
+    $text: https://github.com/pseudomuto/protoc-gen-doc/blob/master/examples/doc/example.json
+```
+
+#### Rendered Output for JSON Format
+
+![](./static/grpc.gif)
+
+### proto file Format
 
 ```YAML
 ## Example
@@ -242,27 +292,7 @@ spec:
       port: 8084
 ```
 
-### Rendered Output for proto file
+#### Rendered Output for proto file
 
 ![](./static/non-json-render.png)
 
-
-## JSON Format
-
-```YAML
-##Example
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: grpc-docs-test-1
-spec:
-  type: grpc
-  lifecycle: production
-  owner: group:engineering
-  definition:
-    $text: https://github.com/pseudomuto/protoc-gen-doc/blob/master/examples/doc/example.json
-```
-
-### Rendered Output for JSON Format
-
-![](./static/json-format.png)

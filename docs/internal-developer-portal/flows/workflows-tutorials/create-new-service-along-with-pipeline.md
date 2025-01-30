@@ -10,7 +10,7 @@ redirect_from:
 
 This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic service onboarding pipeline that uses a Workflow and provisions an application templated by cookiecutter for a developer. After you create the software template, developers can choose the Workflow on the **Workflows Overview** page and enter details such as a name for the application and the path to their Git repository. The service onboarding pipeline creates a new repository and adds a `catalog-info.yaml` to it and registers it back into your software catalog all using the new **Developer Portal** stage. 
 
-Users (developers) must perform a sequence of tasks to create the application. First, they interact with a Workflow. A Workflow is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboard the new service. Usually the pipeline fetches a cookiecutter template code, creates a new repository, and interacts with third-party providers such as cloud providers, Jira, and Slack.
+Users (developers) must perform a sequence of tasks to create the application. First, they interact with a Workflow. A Workflow is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboard the new service, along with provisioning a deployment pipeline for the newly created service.
 
 ## Prerequisites
 
@@ -374,7 +374,7 @@ Workflows currently support pipelines that are composed only of [IDP Stage](http
 
 ## Create a Workflow
 
-Now let's create the UI counterpart in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. Harness IDP uses the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.
+Now let's create the UI counterpart in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `workflow.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. Harness IDP uses the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.
 
 [Source](https://github.com/harness-community/idp-samples/blob/main/template-self-service-flow-with-pipeline-provisioning.yaml)
 
@@ -573,152 +573,11 @@ That token is then used as part of `steps` as `apikey`
 
 ### Register the Workflow in IDP
 
-Use the URL to the `template.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
+Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started/register-a-new-software-component).
 
 ## Use the Self Service Workflows
 
-Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization!
-
-## Additional Information
-
-### Conditional Inputs in Workflow
-
-1. One Of: Helps you create a dropdown in the Workflow, where only one of all the options available could be selected. 
-
-```YAML
-dependencies:
-  technology:
-    oneOf:
-      - properties:
-          technology:
-            enum:
-              - java
-          java version:
-            type: "string"
-            enum:
-              - java8
-              - java11
-```
-2. All Of: Helps you create a dropdown in the Workflow, where only all the options available could be selected.
-
-```YAML
-type: object
-allOf:
-- properties:
-    lorem:
-      type:
-      - string
-      - boolean
-      default: true
-- properties:
-    lorem:
-      type: boolean
-    ipsum:
-      type: string
-```
-3. Any Of: Helps you to select from multiple properties where both can't be selected together at once. 
-
-```YAML
-type: object
-properties:
-  age:
-    type: integer
-    title: Age
-  items:
-    type: array
-    items:
-      type: object
-      anyOf:
-      - properties:
-          foo:
-            type: string
-      - properties:
-          bar:
-            type: string
-anyOf:
-- title: First method of identification
-  properties:
-    firstName:
-      type: string
-      title: First name
-      default: Chuck
-    lastName:
-      type: string
-      title: Last name
-- title: Second method of identification
-  properties:
-    idCode:
-      type: string
-      title: ID code
-```
-
-For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
-
-### Upload a File in a Workflow
-
-There are 3 types of file upload. 
-
-1. Single File
-2. Multiple Files
-3. Single File with Accept Attribute 
-
-```YAML
-#Example
-title: Files
-type: object
-properties:
-  file:
-    type: string
-    format: data-url
-    title: Single file
-  files:
-    type: array
-    title: Multiple files
-    items:
-      type: string
-      format: data-url
-  filesAccept:
-    type: string
-    format: data-url
-    title: Single File with Accept attribute
-```
-
-### Pass an Array of Inputs to a Harness Pipeline 
-
-Harness Pipelines variables can only be 3 types, string, number and secrets, in case you want to add multiple strings and comma separated values you need to [join](https://mozilla.github.io/nunjucks/templating.html#join) them and send as single input parameters. 
-
-In the following template I want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the inputset for pipeline. 
-As you could see in the example below under `inputset`, `exampleVar` takes input as `${{ parameters.exampleVar.join(',') }}`. 
-
-```YAML
-    - title: Pass Variables Here      
-      properties:
-        exampleVar:
-          title: Select an option
-          type: array
-          items:
-            type: string
-            enum:
-              - Option1
-              - Option2
-              - Option3
-          default: 
-            - Option1
-      ui:
-        exampleVar:
-          title: Select Options
-          multi: true
-  steps:
-    - id: trigger
-      name: Call a harness pipeline, and pass the variables from above
-      action: trigger:harness-custom-pipeline
-      input:
-        url: 'https://app.harness.io/ng/account/*********/home/orgs/default/projects/*************/pipelines/*************/pipeline-studio/?storeType=INLINE'
-        inputset:
-          exampleVar: ${{ parameters.exampleVar.join(',') }}
-          owner: ${{ parameters.owner }}
-        apikey: ${{ parameters.token }}
-```
+Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization along with the CI/CD pipelines provisioned in Harness. 
 
 ### Unregister/Delete Workflow
 
@@ -736,3 +595,11 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
 ![](./static/Unregister-location.png)
 
 5. This will delete the Workflow.
+
+## Extended Reading
+
+1. [How to add conditional Inputs in Workflow?](https://developer.harness.io/docs/internal-developer-portal/flows/flows-input#conditional-inputs-in-workflows) 
+
+2. [How to upload a file in a Workflow?](https://developer.harness.io/docs/internal-developer-portal/flows/flows-input#upload-a-file-using-workflows)
+
+3. [How to ingest data dynamically into Workflows?](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker)

@@ -47,13 +47,14 @@ To begin your installation, download the following files:
 
    With each Self-Managed Enterprise Edition release, Harness adds individual module image files to the air gap image bundle. You can download module `*.tgz` files for the modules you want to deploy. For example, if you only want to deploy Harness Platform, download the `platform-images.tgz` file. Available image files are:
 
-     - Chaos Engineering: `ce-images.tgz`
-     - Cloud Cost Management: `ccm-images.tgz`
-     - Continuous Delivery & GitOps NextGen: `cdng-images.tgz`
-     - Continuous Integration: `ci-images.tgz`
-     - Feature Flags: `ff-images.tgz`
-     - Harness Platform: `platform-images.tgz`
-     - Security Testing Orchestration: `sto-images.tgz`
+     - Chaos Engineering: `ce_images.tgz`
+     - Cloud Cost Management: `ccm_images.tgz`
+     - Continuous Delivery & GitOps NextGen: `cdng_images.tgz`
+     - Continuous Integration: `ci_images.tgz`
+     - Feature Flags: `ff_images.tgz`
+     - Harness Platform: `platform_images.tgz`
+     - Security Testing Orchestration: `sto_images.tgz`
+     - Software Supply Chain Assurance: `ssca_images.tgz`
 
    :::info note
    The `platform-images.tgz` file includes NextGen dashboards and policy management enabled by default. The `cdng-images.tgz` file includes GitOps by default.
@@ -86,7 +87,7 @@ To save Docker images, do the following:
     #Authenticate with AWS for ECR
     aws ecr get-login-password --region <region> | docker login --username AWS --password-
     ```
-    All Docker files required to deploy Harness are stored in the [Harness Helm charts repository](https://github.com/harness/helm-charts/releases).
+    All Docker files required to deploy Harness are stored in the [Harness Airgap bundles](https://console.cloud.google.com/storage/browser/smp-airgap-bundles).
 2. Add the `*.tgz` for each module you want to deploy to your air-gapped network. You can now push your images locally.
 3. Run `harness-airgap-images.sh`.
     ```

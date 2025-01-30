@@ -162,4 +162,14 @@ export const university: CardItem[] = [
     link: "/university/iacm?lvl=developer",
     // numberOfCerts: 1,
   },
+  {
+    title: "Chaos Engineering  - Administrator",
+    module: MODULES.ce,
+    type: certType.administrator,
+    description:
+      "Chaos Administrator focuses focuses on the advanced skills in of injecting failure into your applications to build resilience.",
+    version: "Harness Chaos Enterprise Plan",
+    link: "/university/chaos-engineering?lvl=administrator",
+    // numberOfCerts: 1,
+  },
 ];

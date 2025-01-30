@@ -4,6 +4,10 @@ description: Manage RBAC for your pipelines with help of tags
 sidebar_position: 130
 ---
 
+:::info note
+Currently, this feature is behind the FF `PIE_TAG_BASED_ACCESS_TO_PIPELINES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 You can manage RBAC for your pipelines with help of tags.
 
 Let's discuss this with an example:-

@@ -4,6 +4,9 @@ description: Build a Docker Registry with Harness
 sidebar_position: 20
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The Harness Artifact Registry module allows you to quickly and easily store your digital artifacts. 
 
 Use this docker quick start guide to learn what the module has to offer and how to use it.
@@ -36,18 +39,36 @@ You can find the Artifact Registry module in the module selector in the left nav
 
 An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that allows the registry to fetch artifacts from another external or remote registry. When a user requests an artifact that isn't available in the registry, the registry directs the request to a configured upstream proxy. To create one, follow these steps: 
 
+<Tabs>
+<TabItem value="Interactive guide">
+<iframe 
+    src="https://app.tango.us/app/embed/4d59383b-7b7d-4355-acb7-1eed4ca657f0" 
+    title="Create an Upstream Proxy in Harness Artifact Registry" 
+    style={{ minHeight: '640px' }}
+    width="100%" 
+    height="100%"
+    referrerpolicy="strict-origin-when-cross-origin"
+    frameborder="0"
+    webkitallowfullscreen="true"
+    mozallowfullscreen="true"
+    allowfullscreen="true"
+></iframe>
+</TabItem>
+<TabItem value="Step-by-step">
+
 1. Select the dropdown next to **+ New Artifact Registry**, and then select **Upstream Proxy**.
-
     ![](./static/create-proxy.png)
-
-1. Select 
-1. Enter the **Upstream Proxy Key**. This is the identifier or name for the proxy within Harness and is chosen by you. 
-   :::tip
+2. Enter the **Upstream Proxy Key**. This is the identifier or name for the proxy within Harness and is chosen by you. 
+   
+   :::tip allowed characters
     This proxy key must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
    :::
-1. For the source, select Docker Hub.
-1. Choose your **Authentication** method. In this case, we only want to use public docker images, so we will select **Anonymous**.
-1. Select **Create Upstream Proxy**.
+
+3. For the source, select Docker Hub.
+4. Choose your **Authentication** method. In this case, we only want to use public docker images, so we will select **Anonymous**.
+5. Select **Create Upstream Proxy**.
+</TabItem>
+</Tabs>
 
 ### Set the upstream proxy
 

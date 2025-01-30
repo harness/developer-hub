@@ -201,7 +201,7 @@ In **Source Module**, you can select **Use Connector credentials** to have Harne
 
 If you do not select **Use Connector credentials**, Terraform will use the credentials that have been set up in the system.
 
-The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
+The **Use Connector credentials** setting is available to Harness Git Connectors using SSH authentication or HTTPS.
 
 When configuring the SSH key for the connector, exporting an SSH key with a passphrase for the module source is not supported. Configure an SSH Key without the passphrase.
 
@@ -534,6 +534,10 @@ Here's an example of decrypted Terraform JSON output:
   }
 }
 ```
+
+**Handling Sensitive Terraform Outputs**
+
+To extract specific values from the encrypted Terraform output, users can use tools like jq to parse and retrieve individual values from the JSON output.
 
 ## Skip state storage
 

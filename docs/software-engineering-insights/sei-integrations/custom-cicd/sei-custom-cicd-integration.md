@@ -21,7 +21,8 @@ Configure the API according to the following specifications.
 
 * **Method:** `POST`
 * **Base URL (Environment: PROD2):** `https://app.harness.io/gratis/sei/api/v1/custom-cicd`
-* **Base URL (Environment: PROD1 ):** `https://app.harness.io/prod1/sei/api/v1/custom-cicd`
+* **Base URL (Environment: PROD1):** `https://app.harness.io/prod1/sei/api/v1/custom-cicd`
+* **Base URL (Environment: EU):** `https://accounts.eu.harness.io/sei/api/v1/custom-cicd`
 * **Header:** Requires Harness SEI ApiKey authorization. The content type is ```application/json```
 * **Body:** Contains a data object with ```request_type``` and ```payload```.
 
@@ -49,7 +50,7 @@ Configure the API according to the following specifications.
 Here is an example of a request on PROD2 environment:
 
 ```bash
-curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \
+curl --location '<CUSTOM_CICD_API>' \
 --header 'sec-ch-ua: "Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"' \
 --header 'Accept: application/json, text/plain, */*' \
 --header 'Referer: https://app.harness.io/' \
@@ -211,7 +212,7 @@ We need to generate a CI/CD instance GUID associated with that integration. This
 Here is an example using a cURL command:
 
 ```shell
-curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \ # The Base URL is relative to the environment that you're using.
+curl --location '<CUSTOM_CICD_API>' \ # The Base URL is relative to the environment that you're using.
 --header 'Authorization: ApiKey <HARNESS_SEI_API_KEY>' \
 --header 'Content-Type: application/json' \
 --data '{

@@ -178,7 +178,7 @@ It's crucial to have the SBOM for the main branch available to monitor any drift
 
 After you trigger the pipeline and it executes successfully, you will find the SBOM for the main branch in the **Artifacts** section within SCS.
 
-<DocImage path={require('./static/automate-sbom-drift/main-branch-sbom.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/sbom-react-store.png')} width="100%" height="100%" title="Click to view full size image" />
 
 With the SBOM for the main branch in place, it's time to introduce some changes to the codebase and prepare a PR. If you're working with your own project and already have a feature branch ready for a PR, feel free to skip ahead to the [Trigger the pipeline on PR submission](#trigger-the-pipeline-on-pr-submission) section.
 

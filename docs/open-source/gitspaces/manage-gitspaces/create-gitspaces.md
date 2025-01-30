@@ -1,6 +1,7 @@
 ---
 title: How to Create a Gitspace
-sidebar_position: 2
+sidebar_position: 1
+description: Learn more about how to create a new Gitspace.
 sidebar_label: Create Gitspaces
 ---
 
@@ -10,7 +11,7 @@ Make sure you have latest version of Harness Open Source installed that includes
 
 :::
 
-## How to Create a Gitspace
+## How to create a Gitspace
 
 1. **Login** to Harness Open Source, and create a [new project](https://developer.harness.io/docs/open-source/installation/quick_start#create-a-project). You will see **Gitspace** available in the sidenav. 
 

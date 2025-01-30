@@ -6,8 +6,45 @@ description: This topic describes recommendations for AWS
 
 Recommendations help kickstart your journey with governance. Essentially, Harness run certain policies behind the scenes to generate recommendations for your governance-enabled AWS accounts. These policies not only help to cut costs but also increase the efficiency of your system. On the Governance Overview page, Harness showcases recommendations that will benefit you to save costs on associated resources. You can click on any recommendation to view its details. 
 
-Listed below are the custodian policies which are used to generate recommendations that Harness offers for AWS. Along with each policy, you can also find their respective descriptions, the logic behind savings computation and the permissions required to generate or apply these recommendations.
+## Governance Recommendation Health
 
+Harness CCM now provides users the ability to monitor Governance Recommendations through the new Optimization tab in the Governance module. 
+
+This enhancement offers clear visibility into the evaluation status of each rule and provides detailed insights about the cloud account (connector) and region involved in generating the recommendations.
+
+This tab is designed to streamline troubleshooting and improve visibility into why recommendations may fail, be ignored, or succeed, enabling users to take immediate corrective actions when necessary.
+
+#### How It Works:
+- Status Tracking: Each Recommendation Rule's status is displayed in the Optimization tab.
+- Cloud Connector (Account ID): The specific cloud account associated with the rule.
+- Region: The region for which the rule is evaluated.
+
+#### Error Notifications:
+If any connector and region combination encounters an issue, the system flags it with a Failed status.
+The UI displays a detailed error message to assist in resolving the issue quickly.
+
+#### Status Breakdown:
+
+1. **Failed Status :** A failed status indicates one of the following scenarios:
+
+- Missing Permissions: The necessary permissions required for Harness to get or list resources are not provided.
+- Harness Internal Error: A system-level issue occurred during processing.
+
+2. **Ignored Status :** An ignored status indicates one of the following scenarios:
+
+- No Cost Data Available: Billing connector setup at Harness is missing cost data for the target cloud account.
+- Cost Threshold Not Met: Cost is less than $300 for the combination of account x region.
+- Invalid Region: The regions found in cost data is not valid to run against Governance Rule.
+
+3. **Success Status :** A successful status indicates one of the following scenarios:
+
+- Recommendation Generated: The system successfully evaluated the rule and created a recommendation.
+- No Resources in Evaluation: The rule was evaluated, but there were no resources found.
+- Savings Below Threshold: A recommendation was generated, but the potential savings were calculated to be less than $10.
+
+## Recommendations 
+
+Listed below are the custodian policies which are used to generate recommendations that Harness offers for AWS. Along with each policy, you can also find their respective descriptions, the logic behind savings computation and the permissions required to generate or apply these recommendations.
 
 ### Recommendation: delete-unattached-ebs
 **Description:** Delete all ebs volumes which are unattached
@@ -448,5 +485,140 @@ policies:
 - **Run Once:** 
     - ```redshift:DeleteClusterSnapshot```
     - ```redshift:DescribeClusterSnapshots```
+
+---
+
+### Recommendation: delete-empty-dynamodb-tables
+
+**Description:** Delete DyanmoDB tables which are empty
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: delete-empty-dynamodb-tables
+    resource: dynamodb-table
+    description: |
+      Delete DyanmoDB tables which are empty
+    filters:
+      - TableSizeBytes: 0
+    actions:
+      - delete
+```
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+---
+
+### Recommendation: delete-stale-log-group
+
+**Description:** Delete stale cloud watch log groups
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: delete-stale-log-group
+    resource: log-group
+    description: |
+      Delete stale cloud watch log groups
+    filters:
+      - type: last-write
+        days: 60
+    actions:
+      - delete
+```
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+---
+
+### Recommendation: delete-stale-rds-snapshots
+
+**Description:** Delete all stale(older than 28 days) RDS snapshots
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: delete-stale-rds-snapshots
+    resource: rds-snapshot
+    description: |
+      Delete all stale(older than 28 days) RDS snapshots
+    filters:
+      - type: age
+        days: 28
+        op: ge
+    actions:
+      - delete
+```
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+---
+
+### Recommendation: delete-unencrypted-firehose
+
+**Description:**  Delete Firehose which are not encrypted
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: delete-unencrypted-firehose
+    resource: firehose
+    description: |
+      Delete Firehose which are not encrypted
+    filters:
+      - KmsMasterKeyId: absent
+    actions:
+      - type: delete
+```
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+---
+
+### Recommendation: delete-unencrypted-sqs
+
+**Description:**  Delete SQS which are not encrypted
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: delete-unencrypted-sqs
+    resource: sqs
+    description: |
+      Delete SQS which are not encrypted
+    filters:
+      - KmsMasterKeyId: absent
+    actions:
+      - type: delete
+```
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
+
+---
+
+### Recommendation: delete-unused-nat-gateways
+
+**Description:** Delete unused NAT Gateways based on no associated traffic in past 7 days.
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: delete-unused-nat-gateways
+    resource: nat-gateway
+    description: |
+      Delete unused NAT Gateways based on no associated traffic in past 7 days.
+    filters:
+      - type: metrics
+        name: BytesOutToDestination
+        statistics: Sum
+        period: 86400
+        days: 7
+        value: 0
+        op: eq
+    actions:
+      - type: delete
+```
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
 
 ---

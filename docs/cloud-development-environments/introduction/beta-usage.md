@@ -2,9 +2,7 @@
 title: Beta Plan Usage
 description: How to get started with Gitspaces Beta?
 sidebar_label: Beta Plan Usage
-sidebar_position: 3
-redirect_from:
-  - /docs/cloud-development-environments/introduction/beta-usage
+sidebar_position: 4
 ---
 
 :::info

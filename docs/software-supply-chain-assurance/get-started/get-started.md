@@ -29,7 +29,8 @@ Follow the instructions to connect your GitHub account with Harness SCS for RSPM
 
 To begin, from the **Get Started** page click to expand the **GitHub** integration.
 
-<DocImage path={require('./static/get-started-gh-01.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/getstarted-gh.png')} width="100%" height="80%" title="Click to view full size image" />
+
 
 You can select **Configure** in the **Repo Security** and **CI/CD Security** option. This will take you to a new screen with two steps: configuring your integration and selecting the repositories to scan.
 

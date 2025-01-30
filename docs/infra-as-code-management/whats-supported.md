@@ -2,7 +2,7 @@
 title: What's supported in Harness IaCM
 description: Supported Platforms and Features in Harness IaCM
 sidebar_label: What's supported
-sidebar_position: 1
+sidebar_position: 10
 ---
 
 import HarnessApiData from '../../src/components/HarnessApiData/index.tsx';

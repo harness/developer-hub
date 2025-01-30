@@ -344,7 +344,7 @@ You can use [Harness expressions](https://developer.harness.io/docs/platform/var
 This setup ensures that the scan result name reflects both the branch and the PR, making it easier to identify and manage scan results in the SonarQube portal.
 
 ## View SonarQube quality gate failures
-SonarQube quality gate failures will appear in scan results as 'Info' severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply OPA policies in Harness STO to enforce or manage these failures.
+SonarQube quality gate failures will appear in scan results as 'Info' severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply an OPA policy to fail the pipeline based on the quality gate failures. This can be achieved using the [Security Tests - External Policy Failures](/docs/security-testing-orchestration/policies/create-opa-policies.md#block-the-pipeline-based-on-external-policy-failures) policy from the [security tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies.md#security-test-policy-samples).
 
 To retrieve quality gate failure data from SonarQube, ensure the access token used in the SonarQube step configuration has **Browse Project** or **Administer** [permissions](https://docs.sonarsource.com/sonarqube/latest/instance-administration/user-management/user-permissions/) for the project being scanned.
 

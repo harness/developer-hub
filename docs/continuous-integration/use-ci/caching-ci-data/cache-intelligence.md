@@ -15,15 +15,32 @@ With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integr
 You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 :::note
-Cache intelligence for self-managed build infrastructure is an early access feature and is behind the feature flag `CI_ENABLE_CACHE_INTEL_SELF_HOSTED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Cache Intelligence is now Generally Available (GA). 
+If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 :::
 
 
 ## Supported tools and paths
 
-Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, **Node** and **MSBuild/dotnet (only for C#)** build tools, as long as default cache paths are used. 
+Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, **Node**,  **VB** (with .Net), **F#** (with .Net) and **MSBuild/dotnet** (only for C#) build tools, as long as default cache paths are used. 
 
-For other build tools or non-default cache locations, you use Cache Intelligence with [custom cache paths](#customize-cache-paths).
+Below is a list of the default locations cached using Cache Intelligence:
+
+| **Build Tool** | **Dependency Management file**  | **Default Path cached** 
+|----------------|---------------------------------|-------------------------|
+| `Maven` | pom.xml | .m2/repository
+| `Gradle` | build.gradle | .gradle
+| `Bazel` | WORKSPACE | .bazel
+| `Node` | yarn.lock | .yarn
+| `Go` | go.mod | .go
+| `C# .Net` | *.csproj | .nuget/packages
+| `VB .Net` | *.vbproj | .nuget/packages
+| `F# .Net` | *.fsproj | .nuget/packages
+
+
+For other build tools or non-default cache locations, use Cache Intelligence with [custom cache paths](#customize-cache-paths).
+
+
 
 ## Cache storage
 
@@ -36,11 +53,7 @@ When you use Cache Intelligence with [Harness CI Cloud](/docs/continuous-integra
 
 All pipelines in the account use the same cache storage, and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime.
 
-The cache storage limit depends on your subscription plan type:
-
-* Free: 2 GB
-* Team: 5 GB
-* Enterprise: 10 GB
+The cache storage limit depends on your subscription plan type. Please visit [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#usage-limits) page to learn more about usage limits.
 
 Harness doesn't limit the number of caches you can store, but, once you reach your storage limit, Harness continues to save new caches by automatically evicting old caches.
 
@@ -49,7 +62,7 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
 </TabItem>
 <TabItem value="sm" label="Self-managed build infrastructures">
 
-When running builds in self-managed infrastructures, [configure S3-compatible  default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
+When running builds in self-managed infrastructures, [configure S3-compatible default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
 
 We suggest that you consider setting bucket level retention policy for efficient cache management. 
 
@@ -312,3 +325,5 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [How can I use an artifact in a different stage from where it was created?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
 * [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
 * [What is the Cache Intelligence cache storage limit?](/kb/continuous-integration/continuous-integration-faqs/#what-is-the-cache-intelligence-cache-storage-limit)
+
+* [How can I share cache between different OS types (Linux/macOS)?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-share-cache-between-different-os-types-linuxmacos)

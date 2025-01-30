@@ -12,6 +12,7 @@ When Clumsy is downloaded, the path is exported and is used while executing the 
 ![Windows Network Corruption](./static/images/windows-network-corruption.png)
 
 ## Use cases
+Windows network corruption:
 - Determines the resilience of an application when a network corruption scenario is simulated on a Windows virtual machine.
 - Simulates the situation of network corruption on the application, which degrades their performance.
 - Helps verify the application's ability to handle network failures and its failover mechanisms.

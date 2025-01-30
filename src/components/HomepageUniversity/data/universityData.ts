@@ -75,7 +75,7 @@ export const university: CardItem[] = [
     link: "/university/chaos-engineering",
     ILT_available: true,
     SPT_available: true,
-    numberOfCerts: 1,
+    numberOfCerts: 2,
   },
   {
     title: "Software Engineering Insights",

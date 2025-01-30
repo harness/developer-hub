@@ -68,8 +68,8 @@ If you're migrating to Harness SEI from Propelo standalone application, review t
 | **Step** | **Details** | **Documentation** |
 | - | - | - |
 | <a href="/docs/software-engineering-insights/sei-profiles/business-alignment-profile">Configure Business Alignment Profile</a> | Learn how to create/edit an investment profile | [Click here](/docs/software-engineering-insights/sei-profiles/business-alignment-profile) |
-| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-type-workflow-profile">Configure Workflow profile for DORA</a> | Learn how to create/edit a workflow profile for measuring DORA metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-type-workflow-profile) |
-| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-velocity-lead-time-type-workflow-profile">Configure Workflow profile for Lead Time</a> | Learn how to create/edit a workflow profile to measure Lead Time metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-velocity-lead-time-type-workflow-profile) |
+| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview#configure-the-dora-type-workflow-profile">Configure Workflow profile for DORA</a> | Learn how to create/edit a workflow profile for measuring DORA metrics | [Click here]/docs/software-engineering-insights/sei-profiles/workflow-profiles/dora-profile) |
+| <a href="/docs/software-engineering-insights/sei-profiles/workflow-profiles/velocity-profile">Configure Workflow profile for Lead Time</a> | Learn how to create/edit a workflow profile to measure Lead Time metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profiles/velocity-profile) |
 | <a href="/docs/software-engineering-insights/sei-profiles/trellis-profile">Configure Trellis profile</a> | Learn how to create/edit a Trellis profile | [Click here](/docs/software-engineering-insights/sei-profiles/trellis-profile) |
 
 ### <a href="#phase-6-insights-creation"> Phase 6: Insights Creation </a>
@@ -81,10 +81,10 @@ If you're migrating to Harness SEI from Propelo standalone application, review t
 | <a href="/docs/software-engineering-insights/insights/sei-insights#manage-insights-associations">Manage Insight association</a> | Associate or Disassociate Insights with collections | [Click here](/docs/software-engineering-insights/insights/sei-insights#manage-insights-associations) |
 | <a href="/docs/software-engineering-insights/insights/sei-insights#view-insights">View Insight</a> | View existing Insights | [Click here](/docs/software-engineering-insights/insights/sei-insights#view-insights) |
 | <a href="/docs/software-engineering-insights/insights/sei-insights#explore-data">Explore Insight data</a> | Derive value out of the widget data on the Insights | [Click here](/docs/software-engineering-insights/insights/sei-insights#explore-data) |
-| <a href="/docs/software-engineering-insights/insights/dora-insight">Create DORA Insight</a> | Learn how to create a DORA Insight using various DORA widgets | [Click here](/docs/software-engineering-insights/insights/dora-insight) |
-| <a href="/docs/software-engineering-insights/insights/trellis-insight">Create Trellis Insight</a> | Learn how to create a Trellis Insight using various Trellis widgets | [Click here](/docs/software-engineering-insights/insights/trellis-insight) |
-| <a href="/docs/software-engineering-insights/insights/sprint-metrics-insight">Create Sprints Insight</a> | Learn how to create a Sprints Insight using various sprint metric widgets | [Click here](/docs/software-engineering-insights/insights/sprint-metrics-insight) |
-| <a href="/docs/software-engineering-insights/insights/developer-insight">Create Developer Insight</a> | Learn how to create a Developer Insight using SCM metric widgets | [Click here](/docs/software-engineering-insights/insights/developer-insight) |
+| <a href="/docs/software-engineering-insights/insights/insight-tutorials/dora-insight">Create DORA Insight</a> | Learn how to create a DORA Insight using various DORA widgets | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/dora-insight) |
+| <a href="/docs/software-engineering-insights/insights/insight-tutorials/trellis-insight">Create Trellis Insight</a> | Learn how to create a Trellis Insight using various Trellis widgets | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/trellis-insight) |
+| <a href="/docs/software-engineering-insights/insights/insight-tutorials/agile-insights">Create Sprints Insight</a> | Learn how to create a Sprints Insight using various sprint metric widgets | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/agile-insights) |
+| <a href="/docs/software-engineering-insights/insights/insight-tutorials/developer-insight">Create Developer Insight</a> | Learn how to create a Developer Insight using SCM metric widgets | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/developer-insight) |
 
 ### <a href="#phase-7-role-based-access-control"> Phase 7: Role-Based Access Control </a>
 
@@ -251,7 +251,7 @@ SEI provides 3 different types of profiles:
 
 * [Investment Profile / Business Alignment Profile](/docs/software-engineering-insights/sei-profiles/business-alignment-profile): Business Alignment profiles help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics by connecting engineering to business value.
 * [Trellis Profile](/docs/software-engineering-insights/sei-profiles/trellis-profile): The Trellis Scores feature on SEI provides a proprietary scoring mechanism to evaluate and understand your engineering team's productivity. The Trellis Profile is the entity that lets you customize the standards and thresholds for calculating the Trellis Score. 
-* [Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profile): Workflow profile is an entity in SEI where users define the stages, events, and measurement criteria to assess the entire development process lifecycle using Lead Time and DORA metrics. You can use these profiles to derive insights on the time taken to ship changes or the time taken for bug fixes to reach production etc.
+* [Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview): Workflow profile is an entity in SEI where users define the stages, events, and measurement criteria to assess the entire development process lifecycle using Lead Time and DORA metrics. You can use these profiles to derive insights on the time taken to ship changes or the time taken for bug fixes to reach production etc.
 
 ## Phase 6: Insights Creation
 
@@ -269,10 +269,10 @@ Review the following resources to learn more about creating and managing Insight
 
 ### Tutorials
 
-* [DORA Insight](/docs/software-engineering-insights/insights/dora-insight)
-* [Trellis Scores Insight](/docs/software-engineering-insights/insights/trellis-insight)
-* [Developer Insight](/docs/software-engineering-insights/insights/developer-insight)
-* [Sprints Insight](/docs/software-engineering-insights/insights/sprint-metrics-insight)
+* [DORA Insight](/docs/software-engineering-insights/insights/insight-tutorials/dora-insight)
+* [Trellis Scores Insight](/docs/software-engineering-insights/insights/insight-tutorials/trellis-insight)
+* [Developer Insight](/docs/software-engineering-insights/insights/insight-tutorials/developer-insight)
+* [Sprints Insight](/docs/software-engineering-insights/insights/insight-tutorials/agile-insights)
 
 ## Phase 7: Role-Based Access Control
 
@@ -313,7 +313,7 @@ Find the list of demos for the latest Harness SEI features.
 | Project Level Settings on Harness SEI |<a href="https://youtu.be/Jbza13xRnMU?si=80HvIXvaqE9Uf7hD">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/) |
 | Business Alignment |<a href="https://youtu.be/f3fLqermTGo?si=bqY_sfda1QzxJWQj">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sei-business-alignment-reports) |
 | Trellis Scores - Reimagined - BETA |<a href="https://youtu.be/KsdTv3z2BkA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/early-access/profiles/sei-trellis-factors) |
-| DORA Metrics Explained |<a href="https://youtu.be/443Zhm_bAqs?si=8WdhRC0Kp_X7KZKz">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/dora-insight) |
-| Dev Insight Explained |<a href="https://youtu.be/Jibzk-KF7PA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/developer-insight) |
-| Sprints Insight Explained |<a href="https://youtu.be/OPhoRbRuZCU?si=TcgUlFs06Uf906ZH">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/sprint-metrics-insight) |
+| DORA Metrics Explained |<a href="https://youtu.be/443Zhm_bAqs?si=8WdhRC0Kp_X7KZKz">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/dora-insight) |
+| Dev Insight Explained |<a href="https://youtu.be/Jibzk-KF7PA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/developer-insight) |
+| Sprints Insight Explained |<a href="https://youtu.be/OPhoRbRuZCU?si=TcgUlFs06Uf906ZH">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/insight-tutorials/agile-insights) |
 | Collections Walkthrough |<a href="https://www.youtube.com/embed/3sD8K-ratYM?si=oIu9wAkNQOOA0p7J">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections) |

@@ -87,9 +87,67 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## January 2025
+
+### Version 24.12.84708 <!-- January 16, 2025 -->
+
+#### Hotfix
+
+- Add support for Incomplete Responses from New Relic during verify step execution. (CDS-105146)
+
+### Version 25.01.84800 <!-- January 10, 2025 -->
+
+#### New features and improvements
+
+:::info 
+Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4` (PL-58376)
+:::
+
+- Added a new metric on the delegate side to track the number of times the delegate WebSocket reconnects. This metric, `io_harness_custom_metric_delegate_reconnected_total`, can be used to set alerts for frequent reconnections, helping identify potential issues with the delegate and enabling you to seek further assistance from Harness if needed. (PL-48535)
+
 ## December 2024
+
+### Version 24.11.84503 <!-- December 18, 2024 -->
+
+#### Fixed issues
+- Fixed an issue that prevented users from retrieving secrets from the HashiCorp Vault when the path contained special characters. The solution involved enhancing support for **"dots"** in dynamic secret reference expressions, ensuring seamless retrieval of such secrets.
+(PL-58771, ZD-73710, ZD-73724)
+
+#### New features and improvements
+- Updated ```“org.bouncycastle:bcpkix-jdk18on”``` to version 1.78 and removed ```“org.bouncycastle:bcprov-jdk15on”``` (version 1.70) from the Delegate. (PL-58474)
+
+### Version 24.11.84311 <!--  December 16, 2024 -->
+
+#### Hotfix
+
+- Previously, when there was deployment failure in TAS Rolling deployment, secrets were printed in the delgate logs. This issue has now been fixed. (CDS-105208)
+
+### Version 24.11.84310 <!--  December 4, 2024 -->
+
+#### Hotfix
+
+- Increase Azure Web App Http client ReadTimeout duration to 230 Seconds. (CDS-104813)
+
+### Version 24.10.84106 <!-- December 4, 2024 -->
+
+#### Hotfix
+
+- Previously, when users encountered the **Too many files open** error while running pipelines, insufficient logs made it challenging to debug the issue. Additional logs have been added to help triage and identify the root cause of this issue. (PIPE-23686, ZD-72845,73732)
+
+### Version 24.11.84502 <!--  December 4, 2024 -->
+
+#### Hotfix
+
+- Removed CVE-2024-29857 & CVE-2024-30172 from delegate image. (PL-58901)
+
 ### Version 24.11.84501 <!-- December 3, 2024 -->
 - Implemented functionality to expose Custom CF CLI variables while executing any CF CLI commands
+
+### Version 24.07.83407 <!--  December 3, 2024 -->
+
+#### Hotfix
+
+- Encoding Nexus 2 URI to support downloading artifacts which contains special characters in artifact version. (CDS-102807)
 
 ### Version 24.11.84500 <!-- December 3, 2024 -->
 

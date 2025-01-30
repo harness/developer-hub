@@ -13,7 +13,7 @@ This topic provides use cases for some of the most popular widgets available wit
 
 For teams working on DevOps, DORA metrics like Deployment Frequency and Change Failure Rate are important. If your team uses Jenkins as the CI and CD tool, the following widgets can help you identify delays in delivery and monitor the effectiveness of your recovery from issues.
 
-* [Create a DORA profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#dora-profile)
+* [Create a DORA profile]/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview#dora-profile)
 * [Deployment Frequency](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/#deployment-frequency)
 * [Change Failure Rate](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/#change-failure-rate)
 

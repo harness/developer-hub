@@ -23,8 +23,10 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Organizations | Available at the account and org [scopes](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_organization_view`)</li><li>Create (`core_organization_create`)</li><li>Edit (`core_organization_edit`)</li><li>Delete (`core_organization_delete`)</li></ul> |
 | Roles | <ul><li>View (`core_role_view`)</li><li>Create/Edit (`core_role_edit`)</li><li>Delete (`core_role_delete`)</li></ul> |
 | Streaming Destination | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_streamingDestination_view`)</li><li>Create/Edit (`core_streamingDestination_edit`)</li><li>Delete (`core_streamingDestination_delete`)</li></ul> |
+| Banners | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_banner_view`)</li><li>Create/Edit (`core_banner_edit`)</li><li>Delete (`core_banner_delete`)</li></ul>| 
 | Users | <ul><li>View (`core_user_view`)</li><li>Manage: Edit and delete users (`core_user_manager`)</li><li>Invite: Add users by inviting them to Harness (`core_user_invite`)</li></ul> |
 | Authentication Settings | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_authsetting_view`)</li><li>Create/Edit (`core_authsetting_edit`)</li><li>Delete (`core_authsetting_delete`)</li></ul> |
+
 
 ## Environment Groups
 
@@ -118,6 +120,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | AutoStopping Rules | <ul><li>View (`ccm_autoStoppingRule_view`)</li><li>Create/Edit (`ccm_autoStoppingRule_edit`)</li><li>Delete (`ccm_autoStoppingRule_delete`)</li></ul> |
 | Budgets | <ul><li>View (`ccm_budget_view`)</li><li>Create/Edit (`ccm_budget_edit`)</li><li>Delete (`ccm_budget_delete`)</li></ul> |
 | Load Balancer | <ul><li>View (`ccm_loadBalancer_view`)</li><li>Create/Edit (`ccm_loadBalancer_edit`)</li><li>Delete (`ccm_loadBalancer_delete`)</li></ul> |
+| Data Scop (CCM_DATA_SCOPE) | <ul><li>View (`ccm_dataScope_view`)</li></ul> |
 
 ### Code Repository
 
@@ -186,3 +189,11 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Tokens | <ul><li>View (`cet_token_view`)</li><li>Create/Edit (`cet_token_create`)</li><li>Revoke (`cet_token_revoke`)</li></ul> |
 | Critical Events | <ul><li>View (`cet_criticalevent_view`)</li><li>Create/Edit (`cet_criticalevent_create`)</li><li>Delete (`cet_criticalevent_delete`)</li></ul> |
 | Agents | <ul><li>View (`cet_agents_view`)</li></ul> |
+
+### Database DevOps
+
+| Resource  | Permissions |
+|-----------| ----------- |
+| Schemas   | <ul><li>View (`dbops_schema_view`)</li><li>Create/Edit (`dbops_schema_edit`)</li><li>Delete (`dbops_schema_delete`)</li></ul> |
+| Instances | <ul><li>View (`dbops_instance_view`)</li><li>Create/Edit (`dbops_instance_edit`)</li><li>Delete (`dbops_instance_delete`)</li></ul> |
+

@@ -200,6 +200,48 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod JVM method exception",
+    description:"Pod JVM method exception injects chaos into a Java application executing in a Kubernetes pod by invoking an exception.",
+    tags: ["pod", "jvm", "exception"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod JVM CPU stress",
+    description:"Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.",
+    tags: ["pod", "jvm", "cpu"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod JVM modify return",
+    description:"Pod JVM modify return modifies the return value of a method in a Java application executing on a Kubernetes pod, for a specific duration.",
+    tags: ["pod", "jvm"],
+    category: "kubernetes",
+   },
+   {
+    name: "Pod JVM method latency",
+    description:"Pod JVM method latency slows down the Java application executing on Kubernetes pod by introducing delays in executing the method calls.",
+    tags: ["pod", "latency"],
+    category: "kubernetes",
+   },
+  {
+    name: "Pod JVM trigger gc",
+    description:"Pod JVM trigger gc triggers the garbage collector for a Java process executing in a Kubernetes pod. This causes unused (or out of scope) objects and variables to be garbage collected and recycled, thereby freeing up memory space.",
+    tags: ["pod", "jvm"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod JVM SQL Exception",
+    description:"Pod JVM SQL Exception injects exception in sql queries for a Java application executing in a Kubernetes pod",
+    tags: ["pod", "jvm", "sql", "exception"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod JVM SQL Latency",
+    description:"Pod JVM SQL Latency injects latency in sql queries for a Java application executing in a Kubernetes pod",
+    tags: ["pod", "jvm", "sql", "latency"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod memory hog exec",
     description:"Pod memory hog exec consumes memory resources on the application container in megabytes.",
     tags: ["pod"],
@@ -243,8 +285,26 @@ export const experiments: ExperimentDetails[] = [
   },
   {
     name: "Pod network rate limit",
-    description:"Pod network rate limit fault generates Traffic Control (tc) rules with Token Bucket Filter (TBF) to assess Kubernetes pod resilience under limited network bandwidth condition",
+    description:"Pod network rate limit fault generates Traffic Control (tc) rules with Token Bucket Filter (TBF) to assess Kubernetes pod resilience under limited network bandwidth condition. ",
     tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Redis cache penetration",
+    description:"Redis cache penetration fault continuously sends cache requests to the Redis database to find the value for a key that does not exist. This continuous request reduces the performance of the application.",
+    tags: ["pod", "redis", "cache"],
+    category: "kubernetes",
+  },
+  {
+    name: "Redis cache expire",
+    description:"Redis cache expire expires a given key (or all keys) for a specified duration. During this period of chaos, you can't access the keys associated with the cache.",
+    tags: ["pod", "redis", "expire"],
+    category: "kubernetes",
+  },
+  {
+    name: "Redis cache limit",
+    description:"Redis cache limit fault limits the amount of memory used by a Redis cache and restores it after the chaos duration.",
+    tags: ["pod", "cache", "redis"],
     category: "kubernetes",
   },
   {

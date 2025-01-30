@@ -72,7 +72,7 @@ SEI provides 3 different types of profiles:
 
 1. **Investment Profile:** Investment profiles help you understand where engineers are allocating their time through effort investment metrics. For more information, Go to [Investment Profile](/docs/software-engineering-insights/sei-profiles/business-alignment-profile).
 
-2. **Workflow Profile:** Workflow profile is an entity in SEI where users define the stages, events, and measurement criteria to assess the entire development process lifecycle. You can use these profiles to derive insights on time taken to ship changes or the time taken for bug fixes to reach production etc. For more information, Go to [Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profile).
+2. **Workflow Profile:** Workflow profile is an entity in SEI where users define the stages, events, and measurement criteria to assess the entire development process lifecycle. You can use these profiles to derive insights on time taken to ship changes or the time taken for bug fixes to reach production etc. For more information, Go to [Workflow Profile](/docs/software-engineering-insights/sei-profiles/workflow-profiles/workflow-profile-overview).
 
 3. **Trellis Profile:** Trellis Scores are a proprietary scoring mechanism from SEI. Your Trellis Score helps you understand your team's productivity. Trellis Scores are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. For more information, Go to [Trellis Profile](/docs/software-engineering-insights/sei-profiles/trellis-profile).
 
