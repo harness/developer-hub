@@ -118,7 +118,7 @@ steps:
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
 
-#### [Supported Actions](./docs/internal-developer-portal/flows/custom-actions.md)
+#### [Supported Actions](/docs/internal-developer-portal/flows/custom-actions.md)
 
 Workflow Actions are integration points with third-party tools, designed to take inputs from the workflow's frontend and execute specific tasks based on user input. Workflows include several built-in actions for fetching content, registering in the catalog, and performing key operations such as creating and publishing a Git repository.
 
