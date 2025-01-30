@@ -618,3 +618,30 @@ The pipeline includes rollback steps like ECS Canary Delete and ECS Rolling Roll
 
 ### Can I run the ECS task immediately after updating the task definition?
 Yes, the deploy_ecs stage includes the EcsRunTask step, which allows running the ECS task immediately using the updated ECS task definition file.
+
+### How can I deploy to ECS using only a task definition file, without a service definition?
+
+The AWS ECS Deploy step in Harness requires a service definition.  Workarounds include using a custom stage with a shell script step to invoke the RunTask API directly, or providing a minimal service definition.  More information on ECS deployments can be found in [Harness documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-v2-summary/).
+
+### Why am I getting an error stating that `aws-iam-authenticator` is required for EKS deployments?
+
+The error "aws-iam-authenticator is required" for EKS deployments indicates that the `aws-iam-authenticator` is not installed on the delegate.  The `aws-iam-authenticator` is required for using AWS EKS Infrastructure for Kubernetes deployments using the AWS connector.  Alternatively, a regular Kubernetes connector can be used.
+
+### Why is the AWS Connector using the default EC2 instance role instead of the role defined on the Delegate's Service Account?
+
+The AWS Connector is using the default EC2 instance role instead of the role defined on the Delegate's Service Account because the connector configuration is set to `InheritFromDelegate` instead of explicitly using `IRSA`.  For roles obtained via IRSA, the `type: Irsa` setting must be explicitly specified in the connector configuration.
+
+### How to use API to create a trigger for ECS artifacts?  
+Users need to correctly configure the `artifactRef` parameter when creating a trigger via the API. Example API request structures can be found in the [Harness API documentation](https://apidocs.harness.io/tag/Triggers#operation/createTrigger).
+
+### How can we deploy ECS Scheduled Tasks without using Harness scheduling?  
+Harness does not natively support ECS Scheduled Tasks, but users can:
+- Build and push the Docker image to ECR.
+- Update the ECS Task Definition.
+- Use AWS CLI commands to schedule the task execution.
+
+### How can we create a custom script to access a Bitbucket repository and deploy using AWS CLI?  
+Users can:
+- Use the Bitbucket API to retrieve necessary files.
+- Implement an AWS CLI-based deployment script.
+- Automate the process via a Harness pipeline step.

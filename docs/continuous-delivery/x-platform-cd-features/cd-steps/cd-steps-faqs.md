@@ -476,3 +476,40 @@ org.apache.http.client.HttpResponseException: status code: 500, reason phrase: S
 ```
 
 This can happen if the Jenkins Job is parameterized but no parameters are being passed. The reverse, where the Jenkins Job is not parameterized but parameters are being passed, can also cause this issue. To fix this, please make sure that the proper parameters are being passed to Jenkins.
+
+## Approvals
+
+### How can I retrieve a list of approvers for approval stages in Harness pipelines?
+
+Retrieving a list of approvers for approval stages requires querying the Harness database.  The `/api/approvals` API endpoint can retrieve approval instances per pipeline execution, but user data is not directly included.  Custom dashboards might offer a way to visualize this data.
+
+### How can I retrieve a list of approvers for approval stages in Harness pipelines?
+
+Retrieving a list of approvers for approval stages requires querying the Harness database.  The `/api/approvals` API endpoint can retrieve approval instances per pipeline execution, but user data is not directly included.  Custom dashboards might offer a way to visualize this data.
+
+### Does Harness use delegates for pipelines in a wait or approval state?
+
+Harness does not use delegates for Harness approvals, but uses delegates for ServiceNow, Jira, and custom approvals while polling for approval criteria.
+
+## Service Now
+
+### Does Harness support RITM option for ServiceNow approvals?
+
+Harness does not currently support the RITM option for ServiceNow approval ticket creation. 
+
+### How can I trigger Harness from ServiceNow and Jira and pass ticket values?
+
+Triggering Harness from ServiceNow and Jira and passing ticket values can be achieved using custom stages with shell scripts to extract values from the trigger payload and pass them to approval steps.
+
+### Why does deployment proceed through multiple environments, only to fail at the approval stage due to incorrect permissions?
+
+This issue arises from a workflow gap where users lack the necessary permissions to deploy to the target environment, but this is only discovered after an approval step. The absence of an early permission check results in wasted time and resources. To prevent this, implementing a pre-deployment permission validation is recommended. Additionally, reviewing the permission model and deployment process can help identify and resolve potential gaps. 
+
+## Failure strategy
+
+### How can I configure a retry strategy for a CD stage in Harness?
+
+To configure a retry strategy for a CD stage, add a failure strategy to the stage.  By default, Harness adds a rollback strategy for all error types, but additional failure strategies can be added to handle specific error types and implement retry logic.  Note that creating a CD stage and closing the wizard without selecting a strategy will result in a blank failure strategy.
+
+### How can users automate rollback strategies in Harness pipelines?
+Rollbacks can be automated using failure strategies that trigger rollback steps when a deployment fails.

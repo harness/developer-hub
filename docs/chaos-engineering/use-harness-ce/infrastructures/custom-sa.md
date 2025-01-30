@@ -144,8 +144,8 @@ Here, `chaos-delegate` refers to the name of the service account in the Delegate
       - replicationcontrollers
       - services
       - statefulsets
-      - nodes                 #(nodes and namespaces permission is required to create automatic network experiments)
-      - namespaces
+      - nodes
+      - namespaces     #(nodes and namespace permissions are required to autocreate network experiments)
       verbs:
       - watch
       - list
@@ -180,6 +180,14 @@ Here, `chaos-delegate` refers to the name of the service account in the Delegate
       verbs:
       - create
       - delete
+      - get
+      - list
+    - apiGroups:    #(Prerequisite: Metrics server should be installed on the cluster. This is required if your are running a custom script in command (CMD) source probe to get CPU and memory metrics for pods and nodes.)
+      - metrics.k8s.io
+      resources:
+      - pods
+      - nodes
+      verbs:
       - get
       - list
     - apiGroups:
@@ -607,10 +615,11 @@ To discover the resources and run chaos, use the permissions (described below) i
       - delete
       - get
       - list
-    - apiGroups:
+    - apiGroups:    #(Prerequisite: Metrics server should be installed on the cluster. This is required if your are running a custom script in command (CMD) source probe to get CPU and memory metrics for pods and nodes.)
       - metrics.k8s.io
       resources:
       - pods
+      - nodes
       verbs:
       - get
       - list

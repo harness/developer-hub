@@ -487,3 +487,28 @@ This approach prevents parallel deployments when a pipeline is triggered both fr
 You can select infrastructure per pipeline in Harness. For Harness Cloud, you can scale resources as needed. Alternatively, if you run builds on your own EKS cluster, you can define CPU and memory requirements within the pipeline.
 
 For more details on setting up build resources in your Kubernetes cluster for Harness builds, refer to [our documentation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/).
+
+### What is the current and future support for CDK, including support for zipped files and CDK as a deployment type?
+
+CDK currently supports containerized images but not zipped files.  CDK is not a deployment type; it functions similarly to CloudFormation.  Adding support for zipped files is planned.  Native canary/blue-green deployments are not possible with CDK due to its black-box nature.
+
+### How can I resolve a `ModuleNotFoundError` for `aws_cdk` in a CDK step?
+
+The `ModuleNotFoundError` for `aws_cdk` is because the required Python packages are not installed in the CDK Synth step container.  A `pip install` command is needed within the step.
+
+### What happens when users use V1 YAML with Terraform or the API to create entities?
+
+There is no automated upgrade path from V1 to V2 YAML schemas.  Users must manually update their YAML to V2.  Harness does not automatically convert V1 YAML to V2.
+
+### How can a user handle the cyclical dependency that Terraform's linear dependency graph cannot resolve?
+
+The user is experiencing a cyclical dependency when using Terraform to manage pipelines.  This requires careful review of the pipeline definitions to identify and break the cycle.  Relevant documentation on managing dependencies in Terraform can be found on the Terraform website ([https://www.terraform.io/](https://www.terraform.io/)).
+
+### Why is my Terraform plan failing in a pipeline?
+Terraform plans may fail due to incorrect configurations, missing credentials, or conflicts with existing resources.
+
+### How to handle the Terraform pipeline secret in the `tfvar` file?
+Multi-line secrets may not render correctly. Using Terraform’s `heredoc` syntax (`<<EOF ... EOF`) may help retain formatting.
+
+### How can I dynamically select infrastructure in my deployment?
+Users can use runtime expressions to dynamically select infrastructure based on environment conditions. This requires pre-defined mappings of environment-to-infrastructure variables.
