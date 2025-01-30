@@ -18,7 +18,7 @@ When a workflow is executed, users provide input details required for pipeline e
 
 The action accepts the **Harness Pipeline URL** as input, along with an authentication token that is automatically inserted into the parameters section. This seamless integration is enabled by Harness IDP being part of the broader Harness SaaS ecosystem. Users can also manage workflows via pipelines’ RBAC.
 
-### IDP Stage
+### [IDP Stage](/docs/internal-developer-portal/flows/idp-stage.md)
 Harness IDP includes a native IDP Stage where all IDP-specific tasks required for pipeline execution are pre-configured as pipeline steps within the stage. This enables quick and efficient creation of self-service workflows. 
 
 The IDP Stage provides built-in support for:
@@ -34,17 +34,17 @@ Currently, Harness-specific workflow actions support:
 - Custom Stage (Available with Harness CD License or Free Tier)
 - Codebase-disabled CI Stage with Run Step (Available with Harness CI License)
 
-## Create a Harness Pipeline from Harness IDP
+## Creating a Harness Pipeline from Harness IDP
 To create a Harness Pipeline using the IDP Stage, follow these steps:
 1. In your Harness IDP, go to **Admin -> Select Project**.
 2. Now start with **Create a Pipeline**.
+![](./static/navigate-pipeline.gif)
 
 3. Add a **Name**, select the type as **Inline** and **Continue**.
+![](./static/name-pipeline.png)
 
 4. Now **Select Stage Type** as **Developer Portal** and add a [name for your stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#stage-names) to **Set Up Stage**.
-
 ![](./static/dev-portal-stage-selection.png)
-
 ![](./static/set-up-stage.png)
 
 ### Infrastructure
@@ -60,9 +60,11 @@ To add pipeline variables:
 
 1. Navigate to the right-hand side of your page and click on the **Variables** icon.  
 2. Under **Custom Variables**, select **+Add Variable**.  
+![](./static/navigate-variable.png)
 3. Assign a name to the variable and set the input type to **Runtime**.
+![](./static/add-variable.png)
 
-### Passing Inputs to Harness Pipeline using ```workflow.yaml```
+### Passing Inputs
 The ```spec.parameters``` field in ```workflow.yaml``` contains the inputs required for the configuration. The keys under ```properties``` represent unique IDs for various input fields. These keys correspond to the pipeline variables that must be set as runtime inputs when configuring the pipeline. These inputs are designed to prompt the developer to provide necessary details when creating a new application.
 
 The ```spec.steps``` field specifies a single action: triggering a Harness pipeline. This action requires mainly three inputs:
@@ -105,9 +107,74 @@ spec:
           template_type: ${{ parameters.template_type }} ## SUPPORTED
 ...
 ```
+### Fetching Outputs
+You can configure your workflows to fetch output from the **Harness Pipeline** and display pipeline output variables using `workflow.yaml`. Here’s how you can do it:  
 
-### Execution Steps (IDP Stage)
-There are various execution steps which can be added as a part of IDP stage. You can learn more about the detailed descriptions here.
+1. In your `workflow.yaml`, under the `steps` property field, set `showOutputVariables` to `true`.  
+2. Define pipeline output variables under the `output` field in your YAML configuration.  
+
+There are two ways to add output variables in the workflow syntax:  
+
+1. **Directly referencing the output variable name:**  
+   ```yaml
+   ${{ steps.trigger.output.test2 }}
+   ```  
+   Here, `test2` is the output variable created in the pipeline.  
+
+2. **Using the JEXL expression from execution logs:**  
+   - Copy the JEXL expression of the output variable and remove the JEXL constructs.  
+   - Example:  
+     ```yaml
+     ${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}
+     ```  
+   - In this case, `pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1` is derived from: 
+     ```yaml
+     <+pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test2>
+     ```  
+     ![](./static/output-variables.png)
+  
+  This approach ensures that pipeline outputs are correctly fetched and displayed. 
+
+
+#### Example ```workflow.yaml```
+```YAML
+steps:
+  - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+      url: "https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/default/projects/communityeng/pipelines/IDP_New_NextJS_app/pipeline-studio/?storeType=INLINE"
+      inputset:
+          project_name: ${{ parameters.project_name }}
+          github_repo: ${{ parameters.github_repo }}
+          cloud_provider: ${{ parameters.provider }}
+          db: ${{ parameters.db }}
+          cache: ${{ parameters.cache }}
+      apikey: ${{ parameters.token }}
+      showOutputVariables: true
+output:
+  text:
+    - title: Output Variable
+      content: |
+        Output Variable **test2** is `${{ steps.trigger.output.test2 }}`
+    - title: Another Output Variable
+      content: |
+        Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`
+```
+
+:::info
+Please note that while **user-defined output variables** are allowed for the above use-case, you can also use **system-generated variables** by assigning them as a new variable under the **Shell Script** step, as shown below.  
+
+For example, if a system-generated output variable is **`jira_id`**, you can define it as a **user-defined output variable** under **Optional Configuration** by assigning it to a new variable, such as `test-var`. This newly defined variable (`test-var`) can then be displayed as output in the **IDP workflows**.
+
+![](./static/output-variable.png)
+:::
+
+
+### Execution Steps
+You can add various **execution steps** (pre-included with the **IDP stage**) under the **Execution** tab. Refer to this detailed guide for step-by-step instructions on adding and implementing **IDP stage execution steps**. 
+
+![](./static/execution-pipeline.png)
 
 ## Example Pipeline
 <Tabs>

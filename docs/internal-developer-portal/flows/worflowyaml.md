@@ -53,12 +53,15 @@ spec:
           type: string
           title: First name
           default: Chuck
+        lastName:
+          type: string
+          title: Last name
 ```
 
 </TabItem>
 <TabItem value="Template Playground" label="Template Playground">
 
-![](./static/idp-stage.png)
+![](./static/template-editor-wofrkflowyaml.png)
 
 
 </TabItem>
