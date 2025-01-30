@@ -129,4 +129,23 @@ An enhancement has been made to ensure the orchestration step always downloads r
 
 
 
+#### Is user can set the image tag for STO scanner steps such as SonarQube, Twistlock?
+Yes, user can able to configure the image version in the Additional configuration of the step.
 
+#### Can user add the STO type step template in the CI build stage?
+No, the STO type step type can only be added in the STO type stage.
+
+#### What are targets in the scan process?
+Targets are user-defined labels for code repositories, containers, applications, or configurations that you want to scan.
+
+#### What is a variant in the context of a scan?
+A variant specifies the branch, tag, or version of the code that will be scanned during the operation.
+
+#### Where can I find detected issues related to targets with baselines?
+Detected issues for targets with baselines are displayed in the STO Overview and Security Testing Dashboard.
+
+#### How does STO assign severity scores to vulnerabilities?
+STO assigns severity scores based on the Common Vulnerability Scoring System (CVSS) version 3.1.
+
+#### What happens if a scanner detects a vulnerability without a CVSS score?
+In such cases, STO uses the score determined by the scanner that detected the vulnerability.
