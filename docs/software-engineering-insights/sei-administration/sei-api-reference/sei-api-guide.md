@@ -3,8 +3,6 @@ title: SEI API Guide
 description: The SEI services API guide
 sidebar_label: SEI API Guide
 sidebar_position: 10
-redirect_from:
-    - /docs/software-engineering-insights/sei-technical-reference/sei-api-reference/sei-api-guide
 ---
 
 <CTABanner
