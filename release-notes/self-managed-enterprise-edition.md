@@ -255,12 +255,10 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
 
   :::
 
-
-
 This release includes the following Harness module and component versions.
 
 | **Name**                  | **Version**                                                                                  |
-|-:-------------------------|-:-:------------------------------------------------------------------------------------------|
+|---------------------------|----------------------------------------------------------------------------------------------|
 | Helm Chart                | [0.25.0](https://github.com/harness/helm-charts/releases/tag/harness-0.25.0)                 |
 | Air Gap Bundle            | [0.25.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.25.0) |
 | NG Manager                | 1.72.3                                                                                       |
@@ -522,7 +520,7 @@ gsutil -m cp \
 This release includes the following Harness module and component versions.
 
 | **Name**                  | **Version**                                                                                  |
-|-:-------------------------|-:-:------------------------------------------------------------------------------------------|
+|---------------------------|----------------------------------------------------------------------------------------------|
 | Helm Chart                | [0.24.2](https://github.com/harness/helm-charts/releases/tag/harness-0.24.0)                 |
 | Air Gap Bundle            | [0.24.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.24.0) |
 | NG Manager                | 1.68.8                                                                                       |
@@ -539,7 +537,7 @@ This release includes the following Harness module and component versions.
 | LE NG                     | 1.5.6                                                                                        |
 | Looker                    | 1.7.1                                                                                        |
 | Log Service               | 1.14.6                                                                                       |
-| Batch Processing          | 1.31.8                                                                                       | 
+| Batch Processing          | 1.31.8                                                                                       |
 
 #### Alternative air gap bundle download method
 
@@ -571,7 +569,7 @@ gsutil -m cp \
 This release includes the following Harness module and component versions.
 
 | **Name**                  | **Version**                                                                                  |
-|-:-------------------------|-:-:------------------------------------------------------------------------------------------|
+|---------------------------|----------------------------------------------------------------------------------------------|
 | Helm Chart                | [0.24.1](https://github.com/harness/helm-charts/releases/tag/harness-0.24.0)                 |
 | Air Gap Bundle            | [0.24.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.24.0) |
 | NG Manager                | 1.68.8                                                                                       |
