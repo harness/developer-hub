@@ -1,5 +1,5 @@
 ---
-title: Workflows Form Inputs Library
+title: Workflow Inputs
 description: Instructions to build the UI of individual workflows and all the types of inputs possible in Workflows
 sidebar_position: 4
 sidebar_label: Workflow Inputs
@@ -7,18 +7,60 @@ redirect_from:
   - /docs/internal-developer-portal/flows/custom-extensions
 ---
 
-There are various ways in which you can take input from users in IDP Workflows. All types of form input types and examples are listed in this document.
+Workflows allow users to provide input parameters that drive the execution of templates. A well-designed form ensures a smooth user experience by offering the right input types and validation mechanisms. Inputs can be categorized into static inputs, where users manually enter values, and dynamic inputs, which fetch or derive values based on context.
 
-## Simple text input
+Below are the different ways you can design form inputs in IDP workflows:
 
-### Simple input with basic validations
+#### Static Inputs
+
+These inputs require users to enter predefined values manually.
+
+- `string` – Single-line text input
+- `textarea` – Multi-line text input
+- `number` – Numeric input
+- `boolean` – Checkbox (true/false)
+- `enum` – Dropdown selection from a predefined list
+- `array` – List of values (e.g., strings, numbers)
+- `object` – Key-value pair inputs
+- `password` – Masked input for sensitive values
+
+#### Dynamic Inputs
+
+These inputs fetch values dynamically based on external data sources or runtime context.
+
+1. [Standard Workflow UI Picker](/docs/internal-developer-portal/flows/flows-input#workflow-ui-pickers)
+    - `Entity Picker` – Select an entity from the catalog
+    - `Owner Picker` – Select a user or group
+    - `Repository Picker` – Choose a repository from a version control provider
+
+2. [API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/dynamic-picker)
+
+    - `Dynamic API Picker` – Fetch options dynamically via an API request
+    - `Autocomplete Fields` – Suggestions based on previous inputs or external data fetched using Dynamic API Picker. 
+
+
+
+## Input Examples
+
+### Simple text input
+
+#### Simple input with basic validations
+
+Basic form inputs allow users to provide structured data while ensuring it meets specific requirements. You can define constraints such as character limits, patterns, and UI hints to guide users effectively.
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/text-input-pattern.yaml)
+
+This example demonstrates a simple text input field with:
+
+- A `title` and `description` for clarity.
+- A **maximum length constraint** (`maxLength: 8`).
+- A r**egex pattern validation** (`pattern`) to enforce naming rules.
+- **UI enhancements** like autofocus and helper text.
 
 <details>
 <summary>Example YAML</summary>
 
-```yaml
+```YAML
 parameters:
   - title: Fill in some steps
     properties:
@@ -36,9 +78,18 @@ parameters:
 
 ![](./static/workflows-pattern.png)
 
-### Multi-line text input
+#### Multi-line text input
+
+Multi-line text inputs are useful for capturing larger blocks of text, such as descriptions, configuration snippets, or scripts. This example demonstrates how to use a textarea widget to enable multi-line input, with additional UI options for better usability.
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/multi-line-input.yaml)
+
+This configuration includes:
+
+- A textarea widget (`ui:widget: textarea`) for multi-line input.
+- Custom row height (`ui:options: rows: 10`) for better visibility.
+- A **placeholder example** showcasing a shell script.
+- **Helper text** (`ui:help`) to guide users.
 
 <details>
 <summary>Example YAML</summary>
@@ -72,77 +123,16 @@ parameters:
 
 ![](./static/workflows-multiline.png)
 
-### Dynamically Fetch Values in Workflows
 
-You can dynamically fetch values in the Workflows fields using UI Pickers, which are in-built. There are two kinds of UI Pickers:
+### Array options
 
-1. [Standard Workflow UI Picker](/docs/internal-developer-portal/flows/flows-input#workflow-ui-pickers)
-2. [API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/dynamic-picker)
+Array inputs allow users to provide multiple values, either as strings, numbers, or complex objects. These can be structured to ensure uniqueness, predefined options, or flexible custom objects.
 
-### Use Form Data from a Previous page in a New Page
-
-While using Dynamic Workflow UI Pickers, users can now reference the data take as an input in the previous page, using `{{ parameters.properties }}`.
-
-```YAML
-parameters:
-  - title: Select Harness Project
-    type: object
-    properties:
-      projectId:
-        title: Harness Project ID
-        description: Select the Harness Project ID
-        type: string
-        ui:field: HarnessProjectPicker
-        ui:autofocus: true
-      organizationId:
-        title: Harness Organization ID
-        description: Select the Harness Organization ID
-        type: string
-        ui:field: HarnessAutoOrgPicker
-  - title: Select Harness Pipeline
-    type: object
-    properties:
-      pipelineId:
-        type: string
-        ui:field: SelectFieldFromApi
-        ui:options:
-          title: Harness Pipeline ID
-          placeholder: Select the Harness Pipeline ID
-          allowArbitraryValues: true
-          path: proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{
-            parameters.projectId }}/pipelines
-          valueSelector: identifier
-          labelSelector: identifier
-steps:
-  - id: debug
-    name: Debug
-    action: debug:log
-    input:
-      message:
-        "{ parameters.pipelineId }": null
-```
-
-In the above YAML, the API endpoint values under the `path` dynamically insert the `organizationId` and `projectId` from the first set of parameters taken as an input in the previous page, to construct the endpoint URL for fetching the list of pipelines. 
-
-```bash
-proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{ parameters.projectId }}/pipelines
-```
-
-Hence, it will list all the pipelines present under the particular project int org mentioned as displayed below. 
-
-![](./static/parameters-refernce.gif)
-
-:::info
-You cannot reference properties on the same page, and property references only work with values provided through Dynamic UI pickers. 
-:::
-
-## Array options
-
-### Array with strings
+#### Array with strings
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/arrays.yaml)
 
-### Array with distinct values
+#### Array with distinct values
 
 Values mentioned under `enum` needs to be distinct, duplicate values aren't allowed under `enum`.
 
@@ -175,7 +165,9 @@ parameters:
 
 ![Arrays With Distinct Values](./static/arrays-distinct-values.png)
 
-### Array with duplicate values
+#### Array with duplicate values
+
+Allows multiple values, including duplicates, by using `enumNames` to provide user-friendly labels.
 
 <details>
 <summary>Example YAML</summary>
@@ -211,7 +203,14 @@ parameters:
 
 ![Arrays With Duplicate Values](./static/arrays-duplicate-values.png)
 
-### A multiple choices list
+#### A multiple choices list with checkboxes
+
+Users can select multiple predefined values from checkboxes.
+
+Key Features:
+- Supports **multiple selections**
+- Uses **checkbox UI** for easy selection
+- Ensures **unique selections** with `uniqueItems: true`
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/5140ef7993a3c932c49af9162562a99e16428080/workflow-examples/multi-choice-list.yaml#L24-L34)
 
@@ -239,9 +238,17 @@ parameters:
 
 ![](./static/multi-option-arrays.png)
 
-### Array with Custom Objects
+#### Array with Custom Objects
+
+This allows users to enter an **array of complex objects**, each containing multiple fields. It supports adding, removing, and reordering objects dynamically.
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/5140ef7993a3c932c49af9162562a99e16428080/workflow-examples/multi-choice-list.yaml#L24-L34)
+
+A user needs to provide a list of configurations, each containing:
+
+- A dropdown selection (`array`)
+- A boolean flag (`flag`)
+- A free-text input (`someInput`)
 
 <details>
 <summary>Example YAML</summary>
@@ -282,12 +289,36 @@ parameters:
 
 ![](./static/template-arrays-multipleobjects.png)
 
-### Pass an Array of Inputs to a Harness Pipeline 
 
-Harness Pipelines variables can only be 3 types, string, number and secrets, in case you want to add multiple strings and comma separated values you need to [join](https://mozilla.github.io/nunjucks/templating.html#join) them and send as single input parameters. 
+### Comparison Table of Array Input Types  
 
-In the following Workflow if you want to pick the enum and parse the `exampleVar` as a string and use it as comma separated value in the inputset for pipeline. 
-As you could see in the example below under `inputset`, `exampleVar` takes input as `${{ parameters.exampleVar.join(',') }}`. 
+| Feature | Distinct Values | Duplicate Values | Multiple Choice List | Custom Object Array |
+|---------|----------------|------------------|----------------------|---------------------|
+| **Dropdown Selection** | ✅ | ✅ | ❌ | ❌ |
+| **Checkbox UI** | ❌ | ❌ | ✅ | ❌ |
+| **Allows Multiple Selections** | ❌ | ❌ | ✅ | ✅ |
+| **Supports Complex Objects** | ❌ | ❌ | ❌ | ✅ |
+| **User-friendly Labels** (`enumNames`) | ❌ | ✅ | ❌ | ✅ |
+
+
+
+#### Pass an Array of Inputs to a Harness Pipeline 
+
+Harness Pipelines only support three variable types:
+
+- String
+- Number
+- Secret
+
+This means that arrays cannot be directly passed as pipeline inputs. Instead, if you need to pass multiple values, you should convert the array into a comma-separated string using [join](https://mozilla.github.io/nunjucks/templating.html#join) in Nunjucks.
+
+- Use Case: 
+You want users to select multiple values from a `enum` list, and then pass those values as a single comma-separated string into the Harness Pipeline’s `inputset`.
+
+- How It Works: 
+1. User selects multiple options from an enum list (`Option1`, `Option2`, `Option3`).
+2. The selected options are joined into a single string using `parameters.exampleVar.join(',')`.
+3. The pipeline **receives the values as a single string**, ensuring compatibility with Harness’ input format.
 
 ```YAML
     - title: Pass Variables Here      
@@ -320,11 +351,15 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
 ```
 
 
-## Boolean options
+### Boolean options
 
-### Boolean
+Boolean inputs allow users to select between true/false or yes/no values in forms. These inputs are useful for enabling/disabling features, selecting configuration options, and making binary choices.
 
-```yaml
+#### Basic Boolean (Checkbox Input)
+
+A simple **checkbox** allows users to toggle a setting on/off.
+
+```YAML
 parameters:
   - title: Fill in some steps
     properties:
@@ -335,9 +370,11 @@ parameters:
 
 ![](./static/template-checkbox-boolean.png)
 
-### Boolean Yes or No options (Radio Button)
+#### Boolean Yes or No options (Radio Button)
 
-```yaml
+Instead of a checkbox, you can use radio buttons for a clearer Yes/No selection.
+
+```YAML
 parameters:
   - title: Fill in some steps
     properties:
@@ -349,7 +386,9 @@ parameters:
 
 ![](./static/template-boolean-radio.png)
 
-### Boolean multiple options
+#### Boolean multiple options
+
+For cases where **multiple boolean choices** are needed, you can use an array of checkboxes.
 
 <details>
 <summary>Example YAML</summary>
@@ -375,184 +414,18 @@ parameters:
 
 ![](./static/template-boolean-multiselect.png)
 
-## Conditional Inputs in Workflows
+#### When to Use Each Boolean Input Type
 
-### Conditionally set parameters
+| **Input Type**            | **Best Use Case**           | **Example Scenario**                |
+|---------------------------|----------------------------|--------------------------------------|
+| **Checkbox Boolean**       | Single feature toggle      | Enable/Disable Dark Mode            |
+| **Radio Button Boolean**   | Explicit Yes/No choice     | Confirming a deletion               |
+| **Multi-Select Boolean**   | Selecting multiple options | Enable multiple monitoring features |
 
-The `if` keyword within the parameter uses [nunjucks templating](https://mozilla.github.io/nunjucks/templating.html#if). The `not` keyword is unavailable; instead, use JavaScript equality. e.g.: `${{ parameters.branchName if parameters.branchName else appendTimestamp("default-branch-name-") }}`
 
-<details>
-<summary>Example YAML</summary>
+## Advanced Input Configurations
 
-```YAML
-spec:
-  parameters:
-    - title: Fill in some steps
-      properties:
-        path:
-          title: path
-          type: string
-
-  steps:
-    - id: fetch
-      name: Fetch template
-      action: fetch:template
-      input:
-        url: ${{ parameters.path if parameters.path else '/root' }}
-```
-
-</details>
-
-### Use parameters as conditional for fields
-
-<details>
-<summary>Example YAML</summary>
-
-```yaml
-parameters:
-  - title: Fill in some steps
-    properties:
-      includeName:
-        title: Include Name?
-        type: boolean
-        default: true
-
-    dependencies:
-      includeName:
-        allOf:
-          - if:
-              properties:
-                includeName:
-                  const: true
-            then:
-              properties:
-                lastName:
-                  title: Last Name
-                  type: string
-```
-
-</details>
-
-![](./static/template-conditional.gif)
-
-1. **`One Of`**: Helps you create a dropdown in the Workflow, where only one of all the options available could be selected.
-
-Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/05d533cb9789d5abffbdc103d55530efea489161/workflow-examples/conditional-one-of.yaml#L11-L25)
-
-<details>
-<summary>Example YAML</summary>
-
-```YAML
-dependencies:
-  technology:
-    oneOf:
-      - properties:
-          technology:
-            enum:
-              - java
-          java version:
-            type: "string"
-            enum:
-              - java8
-              - java11
-```
-
-</details>
-
-![](./static/template-one-of.png)
-
-2. **`All Of`**: Helps you create a dropdown in the Workflow, where only all the options available could be selected.
-
-Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/70f70f32dfca3ad394677b19608d72706cc8d38c/workflow-examples/conditional-all-of.yaml#L54-L77)
-
-<details>
-<summary>Example YAML</summary>
-
-```YAML
-type: object
-allOf:
-- properties:
-    lorem:
-      type:
-      - string
-      - boolean
-      default: true
-- properties:
-    lorem:
-      type: boolean
-    ipsum:
-      type: string
-```
-
-</details>
-
-![](./static/template-conditional-all-of.png)
-
-3. **`Any Of`**: Helps you to select from multiple properties where both can't be selected together at once.
-
-Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/4215c82f933af1d3c1675b89baa2f042e83a60a2/workflow-examples/conditional-any-of.yaml#L31-L46)
-
-**The Example Workflow Explained**
-
-1. **Parameters Structure**
-   The parameters section includes `age` as an integer and `items` as an array. Each item in the array can contain either a `foo` or `bar` property, utilizing `anyOf`.
-
-2. **Identification Methods**
-   The Workflow allows for two methods of identification using `anyOf`. Users can provide either:
-
-- A first name and last name (defaulting `firstName` to "Chuck"), or
-- An ID code.
-
-3. **Required Fields**
-   The `age` field is required, while the fields under the two identification methods are optional but must comply with the `anyOf` logic.
-
-4. **Display Step**
-   The steps section includes a `debug:log` action to display the collected information based on the provided input.
-
-<details>
-<summary>Example YAML</summary>
-
-```YAML
-type: object
-properties:
-  age:
-    type: integer
-    title: Age
-  items:
-    type: array
-    items:
-      type: object
-      anyOf:
-      - properties:
-          foo:
-            type: string
-      - properties:
-          bar:
-            type: string
-anyOf:
-- title: First method of identification
-  properties:
-    firstName:
-      type: string
-      title: First name
-      default: Chuck
-    lastName:
-      type: string
-      title: Last name
-- title: Second method of identification
-  properties:
-    idCode:
-      type: string
-      title: ID code
-```
-
-</details>
-
-![](./static/template-conditional-anyof.png)
-
-For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/).
-
-## Upload a file using Workflows
+### Upload a file using Workflows
 
 Workflow supports a limited form of file types as input, in the sense that it will parse the file contents to Workflow inputs as [data-urls](https://developer.mozilla.org/en-US/docs/Web/URI/Schemes/data).
 
@@ -629,7 +502,7 @@ Here's an [example](https://github.com/Debanitrkl/backstage-test/blob/main/pipel
 
 ![](./static/demo-pwsh-process-json.png)
 
-## Using Secrets
+### Using Secrets
 
 You may want to mark things as secret and make sure that these values are protected and not available through REST endpoints. You can do this by using the built-in `ui:field: Secret` and `ui:widget: password`.
 
@@ -709,100 +582,63 @@ spec:
 
 </details>
 
-## Built in Filters
+### Pre-fill workflows with URL Params
 
-Workflow filters are functions that help you transform data, extract specific information,
-and perform various operations in Workflows.
+We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. e.g.: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
 
-This section introduces the built-in filters provided by Backstage and offers examples of
-how to use them in the Workflows. It's important to mention that Backstage also leverages the
-native filters from the Nunjucks library. For a complete list of these native filters and their usage,
-refer to the [Nunjucks documentation](https://mozilla.github.io/nunjucks/templating.html#builtin-filters).
+The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7` in the end of the URL allow you to automatically fill in values of the form. Please see the below table for explanation of individual tokens in the query param.
 
-### parseRepoUrl
+| Item                | Example Value                           | Explanation                                                                                      |
+| ------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `formData`          | `formData`                              | Key of the query param.`formData` object is used to fill out IDP Workflow forms.                 |
+| `{"key"%3A"value"}` | `{"title"%3A"Title from query params"}` | Value of the query param. A JSON object with invalid URL characters encoded.`:` encodes to `%3A` |
 
-The `parseRepoUrl` filter parse a repository URL into
-its components, such as `owner`, repository `name`, and more.
+### Add Read only Fields
 
-**Usage Example:**
+Using automatically filled out values is handy when wanting to direct users to use IDP Workflows with known good values. This also allows automation to be constructed around the Workflows, where the automation can provide fully constructed IDP URLs to the user. You can also prevent user from modifying the form values inserted from query params by making the form fields `readonly`. See below example of a minimal form which would be filled using query params defined in the above explanation.
 
-```YAML
-- id: log
-  name: Parse Repo URL
-  action: debug:log
-  input:
-    extra: ${{ parameters.repoUrl | parseRepoUrl }}
+<details>
+<summary>Example YAML</summary>
+
+```YAML {15}
+## Example Workflow
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: test-workflow-pipeline
+  title: Test pipeline using Workflows
+spec:
+  owner: name.owner
+  type: service
+  parameters:
+    - title: Repository Name
+      properties:
+        project_name:
+          title: Name your project
+          ui:readonly: true
+          type: string
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Creating your github repository
+      action: trigger:harness-custom-pipeline
+      input:
+        url: PIPELINE_URL
+        inputset:
+          github_org: ${{ parameters.project_name }}
+        apikey: ${{ parameters.token }}
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+
 ```
 
-- **Input**: `github.com?repo=backstage&org=backstage`
-- **Output**: [RepoSpec](https://github.com/backstage/backstage/blob/v1.17.2/plugins/scaffolder-backend/src/scaffolder/actions/builtin/publish/util.ts#L39)
-
-### parseEntityRef
-
-The `parseEntityRef` filter allows you to extract different parts of
-an entity reference, such as the `kind`, `namespace`, and `name`.
-
-**Usage example**
-
-1. Without context
-
-```YAML
-- id: log
-  name: Parse Entity Reference
-  action: debug:log
-  input:
-    extra: ${{ parameters.owner | parseEntityRef }}
-```
-
-- **Input**: `group:techdocs`
-- **Output**: [CompoundEntityRef](https://github.com/backstage/backstage/blob/v1.17.2/packages/catalog-model/src/types.ts#L23)
-
-2. With context
-
-```YAML
-- id: log
-  name: Parse Entity Reference
-  action: debug:log
-  input:
-    extra: ${{ parameters.owner | parseEntityRef({ defaultKind:"group", defaultNamespace:"another-namespace" }) }}
-```
-
-- **Input**: `techdocs`
-- **Output**: [CompoundEntityRef](https://github.com/backstage/backstage/blob/v1.17.2/packages/catalog-model/src/types.ts#L23)
-
-### pick
-
-This `pick` filter allows you to select specific properties from an object.
-
-**Usage Example**
-
-```yaml
-- id: log
-  name: Pick
-  action: debug:log
-  input:
-    extra: ${{ parameters.owner | parseEntityRef | pick('name') }}
-```
-
-- **Input**: `{ kind: 'Group', namespace: 'default', name: 'techdocs' }`
-- **Output**: `techdocs`
-
-### projectSlug
-
-The `projectSlug` filter generates a project slug from a repository URL
-
-**Usage Example**
-
-```yaml
-- id: log
-  name: Project Slug
-  action: debug:log
-  input:
-    extra: ${{ parameters.repoUrl | projectSlug }}
-```
-
-- **Input**: `github.com?repo=backstage&org=backstage`
-- **Output**: `backstage/backstage`
+</details>
 
 ## Workflow UI Pickers
 
@@ -812,7 +648,9 @@ This is where Workflow UI Pickers come in.
 
 ### Harness Specific UI Pickers
 
-### 1. `EntityFieldPicker`
+### 1. `EntityFieldPicker` (Fetch values from catalog)
+
+The `EntityFieldPicker` can be used to fetch information for workflows that are already defined in the catalog, such as data under `metadata.annotations`. 
 
 :::info
 
@@ -1484,63 +1322,10 @@ token from the user, which you can do on a per-provider basis, in case your Work
 
 Note, that you will need to configure a **connector** for your source code management (SCM) service to make this feature work.
 
-## Pre-fill workflows with URL Params
+## Dynamic API Picker
 
-We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. e.g.: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
+Using dynamic API picker, users can make API calls from workflows UI and fetch values dynamically and use them as an input for the workflows. Detailed information on the usage can be found [here](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker).
 
-The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7` in the end of the URL allow you to automatically fill in values of the form. Please see the below table for explanation of individual tokens in the query param.
-
-| Item                | Example Value                           | Explanation                                                                                      |
-| ------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `formData`          | `formData`                              | Key of the query param.`formData` object is used to fill out IDP Workflow forms.                 |
-| `{"key"%3A"value"}` | `{"title"%3A"Title from query params"}` | Value of the query param. A JSON object with invalid URL characters encoded.`:` encodes to `%3A` |
-
-## Add Read only Fields
-
-Using automatically filled out values is handy when wanting to direct users to use IDP Workflows with known good values. This also allows automation to be constructed around the Workflows, where the automation can provide fully constructed IDP URLs to the user. You can also prevent user from modifying the form values inserted from query params by making the form fields `readonly`. See below example of a minimal form which would be filled using query params defined in the above explanation.
-
-<details>
-<summary>Example YAML</summary>
-
-```YAML {15}
-## Example Workflow
-apiVersion: scaffolder.backstage.io/v1beta3
-kind: Template
-metadata:
-  name: test-workflow-pipeline
-  title: Test pipeline using Workflows
-spec:
-  owner: name.owner
-  type: service
-  parameters:
-    - title: Repository Name
-      properties:
-        project_name:
-          title: Name your project
-          ui:readonly: true
-          type: string
-        token:
-          title: Harness Token
-          type: string
-          ui:widget: password
-          ui:field: HarnessAuthToken
-  steps:
-    - id: trigger
-      name: Creating your github repository
-      action: trigger:harness-custom-pipeline
-      input:
-        url: PIPELINE_URL
-        inputset:
-          github_org: ${{ parameters.project_name }}
-        apikey: ${{ parameters.token }}
-  output:
-    links:
-      - title: Pipeline Details
-        url: ${{ steps.trigger.output.PipelineUrl }}
-
-```
-
-</details>
 
 ## For Use-Cases you don't find here
 

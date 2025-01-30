@@ -128,7 +128,7 @@ Here are some examples used in a workflow:
 - **Creating Repositories**: Using `trigger:harness-custom-pipeline` to execute a pipeline with a `create-repo` stage, generating a new repository based on the provided input.  
 - **Logging Data**: Using `debug:log` to capture and display specific input details in the IDP Workflows Logs UI.
 
-#### [Harness Pipeline](./docs/internal-developer-portal/flows/harness-pipeline.md)
+#### [Harness Pipeline](/docs/internal-developer-portal/flows/harness-pipeline.md)
 Self-service workflows in Harness IDP are powered by **Harness Pipeline**. Each workflow’s backend is configured using Actions and Harness Pipelines.
 
 When a workflow is executed, users provide input details required for pipeline execution. These inputs are passed into the pipeline through a workflow action, which triggers specific steps in the pipeline. These steps can perform tasks such as launching a CI/CD process, registering a service in the catalog, setting up infrastructure, etc.
