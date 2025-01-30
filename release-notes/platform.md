@@ -82,7 +82,7 @@ The following deprecated API endpoints are longer supported:
 #### Version 1.74.x <!-- January 31, 2025 -->
 #### Fixed issues
 
-- Users will now require the "Create Project" permission for the buttons to be enabled. [PL-59658]  
+- Users will now require the "Create Project" permission for the **Create Project** button to be enabled. [PL-59658]  
 
 - When creating or updating a resource group containing resources with invalid identifiers, the system previously removed the invalid resources and updated the rest of the group. Now, an error message will be displayed specifying the invalid identifiers. [PL-58961]
 
@@ -90,8 +90,6 @@ The following deprecated API endpoints are longer supported:
 #### New features and enhancements
 
 - We have rotated the SAML signing certificate, which is available for download from the SAML settings page under authentication settings. [PL-59737]  
-
-- The OPA policy defined on Service Accounts will now be enforced for role assignments bound to service accounts. [PL-59294]  
 
 - Added delegate-less support to the HashiCorp Secret Manager Connector, allowing users to choose the connectivity mode as Platform or Delegate when configuring JWT authentication for the connector. [PL-59176]  
 
