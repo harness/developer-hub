@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+redirect_from: /docs/open-source/repositories/pull_requests
 ---
 
 # Pull requests

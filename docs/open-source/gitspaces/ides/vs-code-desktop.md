@@ -20,10 +20,10 @@ To install the “Harness Open Source Gitspaces” extension, here’s what you 
 
 2. Search for “Harness Open Source Gitspaces Extension”.
 
-    ![](./static/vscode'1.png)
+    ![](./static/vscode1.png)
 
 3. Once it appears, click “Install”.
-    ![](./static/hoss-9'.png)
+    ![](./static/hoss-9a.png)
 
 ### Setting up the extension
 Here’s what you have to do to setup the extension in your VS Code Desktop:
@@ -33,7 +33,7 @@ Here’s what you have to do to setup the extension in your VS Code Desktop:
 
 2. To set it up, navigate to the extension settings. You need to configure the extension with a token.
 
-    ![](./static/hoss-10'.png)
+    ![](./static/hoss-10a.png)
 
     ![](./static/hoss1.png)
 
@@ -59,26 +59,26 @@ Here’s what you have to do to setup the extension in your VS Code Desktop:
 Here’s how you can create and open a Gitspace in your VS Code Desktop via Harness Open Source:
 1. Start by creating a Gitspace in your Harness Open Source UI.
 
-    ![](./static/hoss-1'.png)
+    ![](./static/hoss-1a.png)
 
 2. After the Gitspace is created, click "Open VS Code Editor" from the Harness Open Source UI. 
 
-    ![](./static/hoss-2'.png)
+    ![](./static/hoss-2a.png)
 
 3. You’ll be asked for permission to open VS Code Desktop. Click “Open.”
 
-    ![](./static/hoss-3'.png)
+    ![](./static/hoss-3a.png)
 
 4. You’ll be prompted to open the Gitspace inside your VS Code IDE. Click “Open.”
 
-    ![](./static/hoss-4'.png)
+    ![](./static/hoss-4a.png)
 
 5. To establish this remote connection, a temporary password will be generated automatically. After the Gitspace is created, you'll be prompted to copy the temporary password. Paste it and follow the prompts to establish the remote connection.
 
-    ![](./static/hoss-5'.png)
+    ![](./static/hoss-5a.png)
 
 6. Once you have set it up, you’ll be able to access your Gitspace remotely inside your VS Code Desktop.
 
-    ![](./static/hoss-8'.png)
+    ![](./static/hoss-8a.png)
 
 
