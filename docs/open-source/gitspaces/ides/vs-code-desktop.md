@@ -3,6 +3,7 @@ title: VS Code Desktop
 sidebar_position: 2
 description: Connect to your Gitspaces within VS Code Desktop.
 sidebar_label: VS Code Desktop
+redirect_from: /docs/open-source/gitspaces/ide's/vs-code-desktop
 ---
 
 This guide will walk you through the steps to install, setup and start developing in your Gitspaces using this extension. 

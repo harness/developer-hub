@@ -3,6 +3,7 @@ title: VS Code Browser
 sidebar_position: 1
 description: Connect to your Gitspaces within VS Code Browser.
 sidebar_label: VS Code Browser
+redirect_from: /docs/open-source/gitspaces/ide's/vs-code-browser
 ---
 
 VS Code Browser can directly be started on your browser and doesn't require any pre-configuration.
