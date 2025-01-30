@@ -2,6 +2,8 @@
 title: SEI integrations overview
 description: Learn about SEI integration options and support.
 sidebar_position: 1
+redirect_from:
+  - /docs/software-engineering-insights/sei-integrations/sei-integrations-overview
 ---
 
 Harness SEI integrations helps you to integrate SEI with your issue management systems, codebase, ci/cd tools, and collaboration and monitoring tools. In order to calculate metrics, you must integrate your SDLC tools with SEI.

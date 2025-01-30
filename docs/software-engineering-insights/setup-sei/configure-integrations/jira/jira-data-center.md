@@ -3,7 +3,8 @@ title: Connect with Jira Data Center
 description: Integrate SEI with Jira Data Center
 sidebar_position: 5
 sidebar_label: Connect with Jira Data Center
-
+redirect_from:
+  - /docs/software-engineering-insights/sei-integrations/jira/jira-data-center
 ---
 
 Jira Data Center is the self-managed, enterprise edition of Jira.

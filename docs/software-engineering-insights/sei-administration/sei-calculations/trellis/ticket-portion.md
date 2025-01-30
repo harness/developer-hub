@@ -3,6 +3,8 @@ title: Ticket Portion Calculation
 description: How is Ticket Portion metric calculated on SEI
 sidebar_label: Ticket Portion
 sidebar_position: 30
+redirect_from:
+    - /docs/software-engineering-insights/sei-technical-reference/trellis-calculations/ticket-portion
 ---
 
 The **Ticket Portion** field is a useful metric that helps measure how much time each individual user has contributed to the overall resolution of a ticket. It represents the proportion of time a particular user worked on a ticket relative to the total amount of time the ticket was open.

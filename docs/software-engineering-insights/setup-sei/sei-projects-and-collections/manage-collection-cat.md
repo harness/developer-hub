@@ -1,5 +1,5 @@
 ---
-title: Manage Collection categories
+title: Manage collection categories
 description: Create and edit Collection categories
 sidebar_position: 30
 ---

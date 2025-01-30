@@ -3,6 +3,8 @@ title: SCM Commits
 description: How are SCM commits calculated on SEI?
 sidebar_label: SCM Commits
 sidebar_position: 30
+redirect_from:
+    - /docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-metrics-calculation/scm-commits
 ---
 
 This topic provides a guide on how SCM commits are fetched from various SCM providers on SEI.

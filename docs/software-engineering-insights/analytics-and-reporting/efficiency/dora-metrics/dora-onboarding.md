@@ -3,7 +3,8 @@ title: DORA Overview
 description: The central hub to learn everything about the DORA metrics on Harness SEI
 sidebar_position: 5
 sidebar_label: Overview
-
+redirect_from:
+    - /docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/dora-onboarding
 ---
 
 ## What is DORA

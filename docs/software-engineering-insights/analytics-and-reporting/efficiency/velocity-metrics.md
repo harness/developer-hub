@@ -1,8 +1,10 @@
 ---
-title: Velocity metrics
-description: These metrics help analyze the time taken to deliver a feature.
-sidebar_position: 10
-sidebar_label: Overview
+title: Velocity widgets
+description: These widgets help analyze the time taken to deliver a feature.
+sidebar_position: 20
+sidebar_label: Velocity widgets
+redirect_from:
+    - /docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics-overview
 ---
 
 Velocity metrics help analyze the time taken to deliver a feature. They can help you identify bottlenecks in product development and delivery processes.

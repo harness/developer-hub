@@ -3,6 +3,8 @@ title: Reauthenticate
 description: Reauthenticate the integration when token expires or authentication fails
 sidebar_position: 100
 sidebar_label: Reauthenticate
+redirect_from:
+  - /docs/software-engineering-insights/sei-integrations/reauthenticate-integration
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

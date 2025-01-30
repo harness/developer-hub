@@ -3,6 +3,8 @@ title: SCM PR Lead Time by Stage Report Calculation
 description: How is the SCM PRs report calculated on SEI?
 sidebar_label: SCM PR Lead Time by Stage report
 sidebar_position: 15
+redirect_from:
+    - /docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-reports-calculation/scm-pr-leadtime-by-stage-report
 ---
 This widget calculated the **Lead Time** only for the **SCM stages** i.e. the velocity time spent on different stages across the lifecycle of a **Pull Request**.
 

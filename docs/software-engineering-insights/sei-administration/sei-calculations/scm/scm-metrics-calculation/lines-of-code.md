@@ -3,6 +3,8 @@ title: Lines of Code
 description: How is Lines of Code metric calculated on SEI?
 sidebar_label: Lines of Code
 sidebar_position: 20
+redirect_from:
+    - /docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-metrics-calculation/lines-of-code
 ---
 
 This topic provides a guide on how the Lines of Code metric is calculated on SEI.

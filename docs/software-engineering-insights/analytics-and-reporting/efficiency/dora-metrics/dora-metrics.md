@@ -3,6 +3,8 @@ title: DORA Reports
 description: DORA metrics are key metrics for describing a software development team's performance.
 sidebar_position: 10
 sidebar_label: DORA Reports
+redirect_from:
+    - /docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/
 ---
 
 DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, Time to Restore service (MTTR), and Reliability (MTBF).

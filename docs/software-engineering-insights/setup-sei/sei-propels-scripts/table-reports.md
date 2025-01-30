@@ -1,7 +1,7 @@
 ---
-title: Table reports
+title: Table widgets
 description: Use Table reports to analyze data from Tables.
-sidebar_position: 20
+sidebar_position: 45
 ---
 
 Add Table reports to your [Insights](../insights/sei-insights.md) to analyze data from [Tables](./tables.md).

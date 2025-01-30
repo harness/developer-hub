@@ -1,5 +1,5 @@
 ---
-title: Manage Collections
+title: Manage collections
 description: Create and edit Collections.
 sidebar_position: 40
 ---

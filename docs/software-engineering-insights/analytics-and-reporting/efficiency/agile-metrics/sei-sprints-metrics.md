@@ -3,6 +3,8 @@ title: Sprint Metrics
 description: All the supported sprints metrics on SEI
 sidebar_position: 13
 sidebar_label: Sprint Metrics
+redirect_from:
+  - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sprint-metrics/sei-sprints-metrics
 ---
 
 ## What are Sprint metrics?

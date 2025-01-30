@@ -3,6 +3,8 @@ title: Jenkins plugin
 description: Use the plugin to send jenkins builds data to SEI
 sidebar_position: 2
 sidebar_label: Jenkins plugin
+redirect_from:
+    - /docs/software-engineering-insights/sei-integrations/jenkins/jenkins-plugin
 ---
 
 The **Harness - SEI Jenkins Plugin** is a tool, written in Java, to send reports about builds to Harness SEI.

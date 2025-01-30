@@ -3,6 +3,8 @@ title: DORA Lead Time Calculation
 description: How is Lead Time calculated for DORA metrics on SEI?
 sidebar_label: DORA Lead Time
 sidebar_position: 10
+redirect_from:
+    - /docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation
 ---
 
 ### What is Lead Time?

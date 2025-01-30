@@ -1,7 +1,7 @@
 ---
-title: Configure Tables
+title: Configure tables
 description: Import CSVs into SEI Tables.
-sidebar_position: 10
+sidebar_position: 40
 ---
 
 SEI Tables can contain any custom data that you enter manually, pull from a [Propel](./propels-overview.md), or import from a CSV file. You can then display Table data on [Table reports](./table-reports.md).

@@ -3,6 +3,8 @@ title: SCM PRs Report Calculation
 description: How is the SCM PRs report calculated on SEI?
 sidebar_label: SCM PRs report
 sidebar_position: 5
+redirect_from:
+    - /docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-reports-calculation/scm-prs-report
 ---
 
 The **SCM PRs Report** shows a high-level view of PRs moving through your SCM tool. The reports display data based on the selected metric. Find the list of supported metrics [here](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-prs-report).

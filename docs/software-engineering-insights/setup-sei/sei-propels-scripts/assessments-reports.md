@@ -1,5 +1,5 @@
 ---
-title: Assessment reports
+title: Assessment widgets
 description: Use these reports to analyze data from SEI assessments and issues.
 sidebar_position: 50
 ---

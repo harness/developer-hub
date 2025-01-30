@@ -3,6 +3,8 @@ title: Change Failure Rate Calculation
 description: How is Change Failure Rate calculated for DORA metrics on SEI?
 sidebar_label: Change Failure Rate
 sidebar_position: 20
+redirect_from:
+    - /docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-change-failure-rate-calculation
 ---
 
 ### What is Change Failure Rate?

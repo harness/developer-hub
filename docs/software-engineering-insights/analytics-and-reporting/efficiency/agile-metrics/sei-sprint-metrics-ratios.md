@@ -3,6 +3,8 @@ title: Sprint Metric Ratios
 description: All the supported sprints metrics ratios on SEI
 sidebar_position: 15
 sidebar_label: Sprint Metric Ratios
+redirect_from:
+  - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sprint-metrics/sei-sprint-metrics-ratios
 ---
 
 These ratios are calculated from sprint metrics.

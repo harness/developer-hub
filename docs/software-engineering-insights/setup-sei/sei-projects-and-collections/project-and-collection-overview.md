@@ -1,5 +1,5 @@
 ---
-title: Project and Collection hierarchies
+title: Project and collection hierarchies
 description: Learn how projects and Collections create hierarchies in SEI.
 sidebar_position: 10
 ---

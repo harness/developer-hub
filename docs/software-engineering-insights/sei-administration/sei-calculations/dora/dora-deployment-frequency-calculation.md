@@ -3,6 +3,8 @@ title: Deployment Frequency Calculation
 description: How is Deployment Frequency calculated for DORA metrics on SEI?
 sidebar_label: Deployment Frequency
 sidebar_position: 15
+redirect_from:
+    - /docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-deployment-frequency-calculation
 ---
 
 ### What is Deployment Frequency?

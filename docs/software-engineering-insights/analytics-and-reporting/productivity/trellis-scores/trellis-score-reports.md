@@ -2,6 +2,8 @@
 title: Trellis widgets
 description: Trellis Scores helps you understand your team's productivity.
 sidebar_position: 70
+redirect_from:
+    - /docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/trellis-score-reports
 ---
 
 Trellis Score reports provide valuable insights into developer performance and facilitate data-driven decision-making. Add these widgets to your Insights to analyze Trellis Scores.

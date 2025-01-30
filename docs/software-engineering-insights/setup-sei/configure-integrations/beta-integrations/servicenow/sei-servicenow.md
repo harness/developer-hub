@@ -3,6 +3,8 @@ title: Connect with ServiceNow
 description: Integrate SEI with the ServiceNow Platform.
 sidebar_position: 10
 sidebar_label: Connect with ServiceNow
+redirect_from:
+    - /docs/software-engineering-insights/sei-integrations/beta-integrations/servicenow/sei-servicenow
 ---
 
 import Tabs from '@theme/Tabs';

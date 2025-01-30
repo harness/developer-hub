@@ -3,6 +3,8 @@ title: Contributors API
 description: Access and modify Contributors
 sidebar_label: Contributors API
 sidebar_position: 25
+redirect_from:
+    - /docs/software-engineering-insights/sei-technical-reference/sei-api-reference/sei-contributors-api
 ---
 
 Use this API endpoints to access and modify Contributors.

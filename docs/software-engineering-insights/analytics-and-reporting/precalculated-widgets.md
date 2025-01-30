@@ -3,6 +3,8 @@ title: Precalculation
 description: Learn how to configure a precalculated report on SEI
 sidebar_position: 100
 sidebar_label: Precalculation
+redirect_from:
+    - /docs/software-engineering-insights/sei-metrics-and-reports/precalculated-reports
 ---
 
 ## What is a precalculated report?

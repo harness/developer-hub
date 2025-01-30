@@ -1,7 +1,9 @@
 ---
-title: Lead time reports
+title: Lead time widgets
 description: Use these reports to analyze lead time metrics.
-sidebar_position: 60
+sidebar_position: 15
+redirect_from:
+    - /docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports
 ---
 
 Lead time measures elapsed time to deliver features, close issues, or complete workflows. For example, it can measure:

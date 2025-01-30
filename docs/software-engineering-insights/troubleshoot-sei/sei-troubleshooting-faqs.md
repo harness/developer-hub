@@ -1,7 +1,8 @@
 ---
-title: Troubleshooting & FAQs
+title: Troubleshooting overview
 description: SEI troubleshooting and FAQs
-sidebar_position: 90
+sidebar_label: Overview
+sidebar_position: 5
 ---
 
 For troubleshooting guidelines for Harness Software Engineering Insights, go to the [Harness SEI Knowledge Base](/kb/sei/)

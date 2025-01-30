@@ -5,6 +5,8 @@ sidebar_position: 10
 sidebar_label: Overview
 redirect_url: /docs/category/sprint-metrics
 canonical_url: https://www.harness.io/blog/top-3-sprint-metrics-to-measure-developer-productivity
+redirect_from:
+  - /docs/software-engineering-insights/sei-metrics-and-reports/planning/sprint-metrics/sei-sprints-metrics-overview
 ---
 Sprint metrics can help you plan and deliver on sprints more effectively, including backlog grooming and story hygiene. These metrics can help you address business problems like:
 

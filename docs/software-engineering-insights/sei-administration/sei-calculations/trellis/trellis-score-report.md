@@ -3,6 +3,8 @@ title: Trellis Score Report Calculation
 description: How are the Trellis Factors calculated in the Trellis Score Report
 sidebar_label: Trellis Score Report
 sidebar_position: 10
+redirect_from:
+    - /docs/software-engineering-insights/sei-technical-reference/trellis-calculations/trellis-score-report
 ---
 The Trellis Score Report calculates and displays the Trellis Scores by individual developers.
 
