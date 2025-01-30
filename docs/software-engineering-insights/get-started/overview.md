@@ -32,7 +32,7 @@ To start using SEI, configure the following:
 * [Projects](/docs/platform/organizations-and-projects/projects-and-organizations)
 * [Collections](/docs/software-engineering-insights/setup-sei/sei-projects-and-collections/project-and-collection-overview)
 * [Profiles](/docs/category/profiles)
-* [Insights](../insights/sei-insights.md)
+* [Insights](/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights)
 * [Metrics and reports](/docs/category/metrics-and-reports)
 
 :::tip
