@@ -22,6 +22,46 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## January 2025
 
+:::note
+
+**Network Whitelisting Update for Hosted Linux Infrastructure**
+
+Harness Cloud users utilizing hosted Linux infrastructure, who rely on whitelisting for on-premises resource access, are requested to update their configuration:
+
+To ensure uninterrupted connectivity and functionality for your CI builds, please whitelist the following IP range in your network settings by February 15th, 2025:
+
+**15.204.x.x Range**:
+
+CIDR Blocks:
+
+```
+15.204.17.0/24, 15.204.19.0/24, 15.204.23.0/24, 15.204.69.0/24, 15.204.70.0/24, 15.204.71.0/24, 51.81.128.0/24, 51.81.189.0/24
+```
+
+**34.x.x.x Range**
+
+```
+34.102.16.205, 34.102.51.149, 34.127.6.209, 34.127.65.210, 34.133.164.105, 34.139.103.193, 34.162.177.5, 34.162.184.1, 34.162.189.244, 34.162.31.112, 34.162.90.200, 34.168.158.33, 34.168.20.8, 34.168.60.254, 34.171.8.178, 34.172.44.211, 34.28.94.170, 34.75.255.154, 34.82.140.146, 34.82.156.127, 34.82.176.50, 34.82.64.242, 34.82.65.138, 34.83.1.152, 34.83.94.29, 34.94.194.45, 34.94.207.230, 34.94.56.103 
+```
+
+**35.x.x.x Range**
+
+```
+35.184.10.123, 35.185.226.205, 35.197.35.30,
+35.199.170.16, 35.227.126.5, 35.230.87.138,
+35.231.172.154, 35.231.234.224, 35.233.172.173, 35.233.237.208, 35.247.24.71, 35.247.53.82
+```
+
+**51.x.x.x Range**
+
+```
+51.81.128.0/24, 51.81.189.0/24, 51.81.221.151, 51.81.221.30, 51.81.221.64
+```
+
+If you have any questions or need assistance with the whitelisting process, please [contact Harness Support](https://support.harness.io/).
+
+:::
+
 ### Version 1.63
 
 <!-- 2025-01-27 -->
