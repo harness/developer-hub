@@ -69,7 +69,7 @@ If you have any questions or need assistance with the whitelisting process, plea
 #### Fixed issues
 
 - Fixed an issue where the node selector field under the Infrastructure tab in the CI module lost focus when input was entered for the first time. (CI-15730, ZD-76187)
-- Fixed an issue where the DockerHub v2 URL was not working with Buildx in CI. This issue occurred specifically in the **Docker Build and Push** step when caching was enabled. (CI-15702, ZD-75850)
+- Fixed an issue where the DockerHub v2 URL was not working with Buildx in CI. This issue occurred specifically in the **Build and Push an Image to Docker Registry** step when caching was enabled. (CI-15702, ZD-75850)
 - Fixed an issue where project-level default settings for the S3 bucket in **self-hosted build infrastructure** failed to pass secrets to the proxy server when selecting an account-level connector or secret. (CI-15699, ZD-76063, ZD-76750)
 
 #### New features and enhancements
