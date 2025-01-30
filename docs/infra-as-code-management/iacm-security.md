@@ -74,7 +74,7 @@ In infrastructure management, security is paramount, as misconfigurations or una
 The following diagram below illustrates the IaCM operational security flow and the key operations performed at each stage:
 
 1. **Run the `plan` Command:** The plan command executes in your pipeline environment, where it compares your defined backend state with proposed infrastructure changes.
-2. **Cost Estimation and Policy Checks:** During the plan step, a copy of the plan is sent to Harness Cloud for cost estimation and is checked against your OPA policies to enforce implicit policies on the Plan File entity. [Learn more about configuring OPA policies](https://developer.harness.io/docs/infra-as-code-management/project-setup/opa-workspace/).
+2. **Cost Estimation and Policy Checks:** During the plan step, a copy of the plan is sent to Harness Cloud for cost estimation and is checked against your OPA policies to enforce implicit policies on the Plan File entity. [Learn more about configuring OPA policies](https://developer.harness.io/docs/infra-as-code-management/policies-governance/opa-workspace).
 3. **Plan Storage:** A copy of the plan is stored in IaCM/Harness Cloud, providing pipeline and historical tracking of changes over time.
 4. **Confirm Apply/Destroy Parameters:** Before executing changes, IaCM verifies your proposed updates by comparing them against the defined backend state.
 5. **Apply/Destroy Execution:** When applying or destroying infrastructure changes, IaCM ensures adherence to defined policies. After verification, changes are applied, and a new state is stored securely in IaCM/Harness Cloud.

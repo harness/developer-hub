@@ -78,6 +78,39 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## January 2025
+
+### Version 1.73.x <!-- January 27, 2025 -->
+#### Fixed issues
+
+- With this update, we ensure proper handling of the missing `onDelegate` key in the Secret Manager template. Previously, during the creation flow of a Custom Secret Manager, the `Execute on Delegate` checkbox was selected by default, even when the `onDelegate` key was absent in the Secret Manager template YAML. (PL-59514)
+
+- The number of user groups inherited in child scopes, such as Organization and Project, will now display up to a limit of 5000. (PL-59185)
+
+#### New features and enhancements
+
+- Accounts with a FREE license will no longer be able to configure SAML authentication. (PL-59708)
+
+- Added the Banners feature for users to display important messages across the UI. This feature is available behind the feature flag `PL_CUSTOM_BANNERS`. (PL-43420)
+
+### Version 1.72.x <!-- January 20, 2025-->
+#### Fixed issues
+
+- Enabled support for AIDA settings at the organization level. (PL-59525)
+
+- Improved the user experience on the Settings page across all three scopes (Account, Organization, and Project) by sorting the cards for accessing specific settings or resources in alphabetical order. Previously, these cards appeared in random order, making it difficult to locate specific settings as their number increased over time. The alphabetical arrangement now ensures easier and quicker access. (PL-59352)
+
+- Previously, when creating or updating a resource group with resources containing invalid identifiers, the system would remove the invalid resources and update the rest of the resource group. Now, an error message will be displayed, specifying the invalid identifiers. (PL-58961)
+
+#### New features and enhancements
+
+- Improved the revoked token flow by removing the self-destruct operation for revoked tokens. (PL-58728)
+
+- Upgraded JRE to version 17.0.13_11 in the delegate image. (PL-59512)
+
+- The disconnected delegates list in the selection log now displays only eligible but disconnected delegates, filtering out non-eligible ones. (PL-56301)
+
+- Updated the NGINX controller image from version 1.3.0 to 1.11.2 to address and eliminate all critical and high vulnerabilities. (PL-56529)
+
 ### Version 1.71.x <!-- January 13, 2025-->
 #### Fixed issues
 

@@ -118,9 +118,11 @@ Harness supports approvals for these collaboration tools:
 
 For other providers, you can use [custom approvals](/docs/platform/approvals/custom-approvals) or [manual approvals](/docs/platform/approvals/adding-harness-approval-stages)
 
-## Open Source Software (OSS) components
+## Software Bill of Materials (SBOM) and Open Source Software (OSS) components
 
-For a list of the open source libraries and third-party software Harness uses, download the [Harness Open Source Software (OSS) components PDF](./static/harness-open-source-software-components.pdf).
+The Harness Software Bill of Materials contains information on packages used to build Harness Software. The SBOMs are available in CycloneDX format and includes package details such as name, version, licenses, supplier and relationships between other packages
+
+For detailed information about the SBOM/OSS component list used by Harness, visit the [Harness Trust Center](https://trust.harness.io/).
 
 ## RBAC
 

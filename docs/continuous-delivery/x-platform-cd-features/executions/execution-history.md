@@ -195,3 +195,32 @@ It includes:
 - Pull Request/Merge Request
 - Branch
 - Tag
+
+### Execution Summary API 
+
+Harness provides an API to retrieve a summary of pipeline executions:
+
+Sample cURL Command:
+
+```
+curl --location 'https://app.harness.io/gateway/pipeline/api/pipelines/execution/summary?routingId=vpCkHKsDSxK9_KYfjCTMKA&accountIdentifier=vpCkHKsDSxK9_KYfjCTMKA&projectIdentifier=<your-project-id>&orgIdentifier=<your-org-id>&pipelineIdentifier=<your-pipeline-id>global&page=0&size=20&sort=startTs%2CDESC&myDeployments=false&searchTerm=' \
+--header 'Authorization: Bearer <your-auth-token>' \
+--header 'Content-Type: application/json' \
+--data '{"filterType":"PipelineExecution","myDeployments":false,"timeRange":{"timeRangeFilterType":"LAST_30_DAYS"},"moduleProperties":{"ci":{},"cd":{}}}'
+```
+**Result Limitations:**
+
+Due to the underlying technical implementation, the API cannot retrieve records beyond the 10,000th execution, even if the page size is increased. If the results exceed this limit, an error will be encountered.
+
+If this limitation is encountered, an error message will appear. Below is an example screenshot of the error message to help you identify the issue:
+
+![](./static/error_api_execution.png)
+
+**Solution:**
+
+To avoid encountering this limitation:
+
+Apply additional filters, such as Status and Time Range, to narrow down the result set and reduce the number of executions listed.
+Refer to the [Pipeline Execution API](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getListOfExecutions) for more details.
+As an alternate, you can use the [Pipeline Execution Outline API](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getListOfExecutionsOutline).
+

@@ -5,6 +5,11 @@ export const IacmData: Horizon = {
     description: "What has been released",
     feature: [
       {
+        tag: [{ value: "Developer Experience" }],
+        title: "Default Pipelines",
+        description: "Users will have the ability to assign pipelines to different Terraform/OpenTofu operations, making it easier to control the automation for each Workspace update",
+      },
+      {
         tag: [{ value: "Simplify Onboarding" }],
         title: "Customized pipeline",
         description: "IaCM supports highly customized pipelines that allows you to create advanced workflow, add 3rd party plugins, run steps in parallel, and more.",
@@ -59,11 +64,6 @@ export const IacmData: Horizon = {
         title: "Workspace templates",
         description: "Users will be able to create Workspaces that will inherit cost, OPA, and other configurations from templates, simplifying onboarding and enforcing best practices",
       },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Default Pipelines",
-        description: "Users will have the ability to assign pipelines to different Terraform/OpenTofu operations, making it easier to control the automation for each Workspace update",
-      },
       {    
         tag: [{ value: "Developer Experience" }],
         title: "Variable Sets",
@@ -85,11 +85,6 @@ export const IacmData: Horizon = {
         title: "SMP (on-prem)",
         description: "Supporting implementing IaCM in private environments",
       },
-      {
-        tag: [],
-        title: "Native Ansible Support",
-        description: "Supporting Ansible as an IaC provider",
-      },
     ],
   },
   Later: {
@@ -104,6 +99,11 @@ export const IacmData: Horizon = {
         tag: [],
         title: "Harness CCM Integration",
         description: "Integration with CCM allows IaCM users to have full visibility of costs associated with the resources being managed by IaCM",
+      },
+      {
+        tag: [],
+        title: "Native Ansible Support",
+        description: "Supporting Ansible as an IaC provider",
       },
       {
         tag: [{ value: "Developer Experience" }],

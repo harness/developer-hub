@@ -1,7 +1,7 @@
 ---
 title: IaCM onboarding guide
 description: A self-service onboarding guide for Harness IaCM.
-sidebar_position: 3
+sidebar_position: 20
 sidebar_label: Onboarding guide
 ---
 
@@ -265,4 +265,4 @@ You can add the Approval step to prompt a review of the previous pipeline before
 
 This onboarding guide has introduced you to the essential functionalities and initial setup processes of Harness Infrastructure as Code Management (IaCM). Through this guide, you have explored the essentials of managing and provisioning infrastructure using IaCM, from creating workspaces to configuring pipelines.
 
-For a deeper understanding of setting up your projects and analyzing their performance, Harness recommends reviewing the [Project Setup guides](https://developer.harness.io/docs/category/project-setup) and the [Reporting & Insights guides](https://developer.harness.io/docs/category/reporting--insights). These resources are designed to support your continued learning and to help you maximize the effectiveness of your infrastructure management strategies with Harness.
+For a deeper understanding of setting up your projects and analyzing their performance, Harness recommends reviewing the [Project Setup guides](https://developer.harness.io/docs/category/project-settings) and the [Reporting & Insights guides](https://developer.harness.io/docs/category/reports--insights). These resources are designed to support your continued learning and to help you maximize the effectiveness of your infrastructure management strategies with Harness.

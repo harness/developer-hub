@@ -47,6 +47,30 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## January 2025
 
+### Version 1.73.6
+
+#### New features and enhancements
+
+- Users can now enforce OPA policy on Service, Environment, Infrastructure Definitions and Overrides.  Currently, this feature is behind the feature flag `CDS_OPA_CD_ENTITIES_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-101677, ZD-57706**)
+
+- Users can now add input variables in the Email step. (**CDS-101651, ZD-66735,67864**)
+
+- Users can now fetch attributes from JSON files marked as secrets and have them masked in the pipeline execution page outputs and execution logs by setting the output variable type to `secret`. (**CDS-103225, ZD-103225**)
+
+#### Breaking Changes
+
+- Admin users can now hide unsubscribed modules from the sidebar, ensuring only subscribed modules are visible to team members. This helps streamline the user experience and prevents access to steps or features from unsubscribed modules. Visit Account Settings to manage module visibility for your Org. Currently, this feature is behind the feature flag `CDS_NAV_MODULE_VISIBILITY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-20641, ZD-53621,66260**)
+![](./static/module_visibility.png)
+
+#### Fixed Issues
+
+- Previously, When the `CDS_SPECIFY_INFRASTRUCTURES` feature flag was enabled, customers using environment groups faced an issue where infrastructure options were scoped incorrectly to the project level instead of the account level. This prevented users from selecting the correct infrastructures for deployment. The issue is fixed now. (**CDS-105822,ZD-76254**)
+- Previously, DeployToAll option for cluster was showing empty string instead of true which is a default value. The issue is fixed now. (**CDS-103296**)
+- Previously, deployment was timing out and was failing without any logs getting showed. The issue is fixed now. (**PIPE-24324, ZD-74851,75772,75937**)
+- Previously, CV phase failed intermittently due to an issue with handling incomplete responses from external API calls (e.g., New Relic). This issue was particularly observed when certain metric values (e.g., average values) were missing in the response from New Relic APIs, causing the entire verification phase to fail. The issue is fixed now. (**CDS-105226, ZD-74901,74902,75694**)
+- Previously, the artifact download step in pipelines was failing during the initialization stage due to improper sanitization of environment variables containing special characters like backslashes (`\`) and dollar signs (`$`). This caused XML parsing errors in the pywinrm library used for command execution over WinRM. The issue is fixed now. This fix is behind feature flag `CDS_ESCAPE_ENV_VARS_FOR_WINRM_KERBEROS_NG`. Please contact [Harness Support](mailto:support@harness.io) to enable the feature. This feature flag disables ANSI C quoting for environment variables.(**CDS-105139, ZD-74886**)
+- Previously, the Helm Blue-Green deployment process encountered a failure during the second release due to incorrect resource formatting. The first deployment worked as expected, creating the service with the correct annotations and labels. The second deployment failed during the Swap stage with the error: `Found conflicting service in the cluster. Blue/Green strategy doesn't support migration of existing non blue/green release. Either helm manifest doesn't have service or service is not in blue/green format. Please check the manifest in the release and cluster.` Instead of deploying resources in `<resource>-green` format, the second deployment reverted to `<resource>` format, causing the Swap stage to fail due to missing annotations and labels. The issue is fixed now. This fix is behind FF `CDS_BLUE_GREEN_RESOURCE_FORMAT_FIX`. Please contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-105807, ZD-75909**)
+
 ### Version 1.72.3
 
 #### Fixed Issues

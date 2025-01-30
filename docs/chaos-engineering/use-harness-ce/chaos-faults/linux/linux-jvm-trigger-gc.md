@@ -68,6 +68,10 @@ Linux JVM trigger gc:
   </tr>
 </table>
 
+:::tip
+If multiple Java processes on the same machine are subject to JVM chaos, whether simultaneously or not, each process must use a unique Byteman port.
+:::
+
 ### Startup command
 
 The `startupCommand` input variable is used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with the `pid` input variable.

@@ -24,11 +24,11 @@ This topic explains how to set up and use bidirectional sync.
 ## Important notes
 
 - If users make changes on the Harness and Git side at the same time, precedence is given on a first come, first served basis.
-- Customers using the current unidirectional sync (Harness --> Git) functionality can migrate to bi-directional sync using the steps in this topic. The process involves enabling an account-level setting. 
 - If you make an invalid YAML change to the YAML in the Git repo file an **Invalid YAML Detected** error appears in the Harness UI. You can fix the invalid YAML in Harness or in the Git repo.
 - If your Git repo server is on-premise, it must have connectivity to Harness SaaS. 
 - Currently, only `.yaml` and `.yml` files are supported for bi-directional sync.
 - When configuring a webhook, you need to be the owner of the relevant git repository.
+- Bidirectional sync is not supported for Harness Code.
 
 
 ## Configure bi-directional sync
@@ -118,5 +118,6 @@ Harness provides the following troubleshooting features to help you diagnose syn
 - **View Webhook Events**: in the Git information on your Harness entity, you can select **View Webhook Events** and see each event and payload for that entity.
   
   ![picture 2](static/73011f2a1eb78aaef5b0cbe0fc162bdaf451ef49b934020e7e97c3bb4cb0075d.png)  
+- You can view the [audit trail](/docs/platform/governance/audit-trail/audit-trail.md) for webhooks that were created, deleted, or when webhook was enabled or disabled.
 
-
+![](./static/audit_bidir.png)
