@@ -25,11 +25,12 @@ The ```workflow.yaml``` has three main components:
 
 These components work together to facilitate workflow execution. Let’s dive deeper into each.
 
-### Workflow Frontend 
+### [Workflow Frontend](/docs/internal-developer-portal/flows/flows-input.md) 
 The frontend of Harness IDP workflows is customizable to accept different types of input fields based on custom requirements. This frontend serves as the entry point, where users fill in the necessary details to execute the workflow using the input parameters described.
 
 #### How to define the Workflow Frontend?
-You can configure the frontend using the ```spec.parameters``` field in your YAML configuration. 
+- You can configure the frontend using the ```spec.parameters``` field in your YAML configuration. 
+- You can define multiple input fields using the `properties` field in your YAML configuration.
 
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
@@ -86,7 +87,7 @@ Input fields can be made dynamic using ``anyOf`` or ``allOf``, making certain fi
 - **Required Fields:**
 Workflows allow developers to enforce mandatory fields to ensure critical data is collected. For example, fields like age or owner can be marked as required to prevent missing essential information during onboarding.
 
-Learn more about the different input types and use cases here. 
+Learn more about configuring inputs and frontend for your workflow [here](/docs/internal-developer-portal/flows/flows-input.md). 
 
 ### Workflow Backend
 The backend of Harness IDP workflows includes a library of steps and actions to define the workflow logic. These steps are core execution units used to trigger actions and orchestration pipelines. Input details from the frontend are passed to the backend for task execution.
@@ -114,24 +115,36 @@ steps:
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
 
-**Supported Actions**
+#### [Supported Actions](./docs/internal-developer-portal/flows/custom-actions.md)
 
-**Harness Pipeline**
+Workflow Actions are integration points with third-party tools, designed to take inputs from the workflow's frontend and execute specific tasks based on user input. Workflows include several built-in actions for fetching content, registering in the catalog, and performing key operations such as creating and publishing a Git repository.
 
+Here are some examples used in a workflow:  
 
-### Workflow Outputs
+- **Triggering Pipelines**: Using `trigger:harness-custom-pipeline` to trigger pipelines in Harness for various actions, such as creating a repository or onboarding a new service.  
+- **Creating Repositories**: Using `trigger:harness-custom-pipeline` to execute a pipeline with a `create-repo` stage, generating a new repository based on the provided input.  
+- **Logging Data**: Using `debug:log` to capture and display specific input details in the IDP Workflows Logs UI.
+
+#### [Harness Pipeline](./docs/internal-developer-portal/flows/harness-pipeline.md)
+Self-service workflows in Harness IDP are powered by **Harness Pipeline**. Each workflow’s backend is configured using Actions and Harness Pipelines.
+
+When a workflow is executed, users provide input details required for pipeline execution. These inputs are passed into the pipeline through a workflow action, which triggers specific steps in the pipeline. These steps can perform tasks such as launching a CI/CD process, registering a service in the catalog, setting up infrastructure, etc.
+
+### [Workflow Outputs](/docs/internal-developer-portal/flows/outputs.md)
 After backend execution, each step can produce output variables, which can be displayed in the frontend. These outputs can include links to newly created resources like Git repositories, documentation pages, or CI/CD pipelines.
 
 **Example Syntax**:
-```YAML
-links:
-  - title: "Repository Link"
-    url: "${{ steps['repo-create'].output.repoUrl }}"
-  - title: "Pipeline Dashboard"
-    url: "${{ steps['deploy-pipeline'].output.pipelineUrl }}"
+``` YAML
+output:
+  links:
+    - title: "Repository Link"
+      url: "${{ steps['repo-create'].output.repoUrl }}"
+    - title: "Pipeline Dashboard"
+      url: "${{ steps['deploy-pipeline'].output.pipelineUrl }}"
+
 ```
 
-## Example of ```workflow.yaml```
+## Example YAML
 Here's an example of a single-page workflow:
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
@@ -221,5 +234,99 @@ spec:
 
 ## Syntax Essentials
 
+### Input Parameters
+The input fields in **parameters** can be structured sequentially. Since it accepts an array, you can either have all input fields on a single page or divide them into multiple pages, rendering them as different steps in the form.  
 
+These fields are built using the [**React JSON Schema**](https://github.com/rjsf-team/react-jsonschema-form) library. Additionally, the library includes an option called **`uiSchema`**, which we have integrated by merging it with the existing **JSON Schema** you provide. This allows for enhanced UI customization using `ui:*` properties, which can be seen in the step definitions.
 
+You can explore more about the different input types available in this library. Check out the [documentation](https://rjsf-team.github.io/react-jsonschema-form/docs/) and an interactive [playground](https://rjsf-team.github.io/react-jsonschema-form/) to experiment with various examples.
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: v1beta3-demo
+  title: Test Action Workflow
+  description: Workflow Demo
+spec:
+  owner: backstage/techdocs-core
+  type: service
+  parameters:
+    - title: A registration form
+      description: A simple form example.
+      type: object
+      required:
+        - firstName
+        - lastName
+      properties:
+        firstName:
+          type: string
+          title: First name
+          default: Chuck
+          ui:autofocus: true
+          ui:emptyValue: ''
+          ui:autocomplete: given-name
+        lastName:
+          type: string
+          title: Last name
+          ui:emptyValue: ''
+          ui:autocomplete: family-name
+        nicknames:
+          type: array
+          items:
+            type: string
+          ui:options:
+          orderable: false
+        telephone:
+          type: string
+          title: Telephone
+          minLength: 10
+          ui:options:
+            inputType: tel
+# ... pipeline details will follow
+```
+
+</details>
+
+### Templating Syntax
+Variables in **Workflow YAML** are wrapped in `${{ }}` and are used to connect different parts of the workflow. All form inputs from the **parameters** section can be accessed using this syntax.  
+
+For example, `${{ parameters.project_name }}` inserts the value of `project_name` entered by the user in the UI. This allows seamless passing of values from the form into different workflow steps, making input variables reusable. These strings retain the type of the parameter.  
+
+The `${{ parameters.project_name }}` pattern is specifically used in **Workflow YAML** to pass parameters from the UI to the input of the `trigger:harness-custom-pipeline` step.  
+
+**Important Note:**  
+The `${{ parameters.x }}` syntax is supported only within the **steps** section when configuring the **Workflows Backend**. It **cannot** be used within the **properties** section to reference another parameter.
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML
+spec:
+  parameters:
+    - title: Service Details
+      properties:
+        projectId:
+            title: Project Identifier
+            description: Harness Project Identifier
+            type: string
+            ui:field: HarnessProjectPicker
+        template_type:
+          title: Type of the Template
+          type: string
+          description: Type of the Template
+          ui:readonly: $${{ parameters.another_field}}  ## NOT SUPPORTED
+  steps:
+    - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+        url: "https://app.harness.io/ng/account/account_id/module/idp/orgs/org_id/projects/project_id/pipelines/pipeline_id/pipeline-studio/?storeType=INLINE"
+        inputset:
+          project_id: ${{ parameters.projectId }}  ## SUPPORTED
+          template_type: ${{ parameters.template_type }} ## SUPPORTED
+```
+</details>
