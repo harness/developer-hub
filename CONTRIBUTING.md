@@ -35,7 +35,7 @@ Large changes are considered to be an entire document/tutorial or making UI/UX c
 
 The Harness Developer Hub is powered by [Docusaurus](https://docusaurus.io/). Larger changes should be vetted locally before submitting a PR.
 
-- NPM [Node 18 LTS]
+- NPM [Node 22]
 - Yarn
 
 You need to fork this repository and create a branch to commit, which will be basis for the eventual PR . On your local machine, run the following commands.
@@ -45,8 +45,8 @@ You need to fork this repository and create a branch to commit, which will be ba
 
 ```
 #Install node
-brew install node@18
-brew link node@18
+brew install node@22
+brew link node@22
 
 #Run
 cd developer-hub
