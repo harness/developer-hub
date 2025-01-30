@@ -28,35 +28,35 @@ This section lists the major onboarding phases and provides links to more detail
 
 ### <a href="#phase-2"> Phase 2: Cost reporting</a>
 
-| **Step**                                                                              | **Details**                                                               | **Demo video** |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | -------------- |
-| <a href="#step-1-explore-cost-using-perspectives">Explore cost using perspectives</a> | A perspective can be used to visualize data from multiple cloud providers |                |
-| <a href="#step-2-explore-cost-using-dashboards">Explore cost using dashboards</a>     | Explore cost data using powerful BI dashboard                             |                |
-| <a href="#step-3-performing-root-cost-analysis">Root cost analysis</a>                | Understand detailed breakdown of cloud spend                              |                |
-| <a href="#step-4-cost-anomalies">Cost anomalies</a>                                   | Protect from anomalous spend                                              |                |
+| **Step**                                                                              | **Details**                                                               |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | 
+| <a href="#step-1-explore-cost-using-perspectives">Explore cost using perspectives</a> | A perspective can be used to visualize data from multiple cloud providers |                
+| <a href="#step-2-explore-cost-using-dashboards">Explore cost using dashboards</a>     | Explore cost data using powerful BI dashboard                             |                
+| <a href="#step-3-performing-root-cost-analysis">Root cost analysis</a>                | Understand detailed breakdown of cloud spend                              |                
+| <a href="#step-4-cost-anomalies">Cost anomalies</a>                                   | Protect from anomalous spend                                              |                
 
 ### <a href="#phase-3"> Phase 3: Cost optimization</a>
 
-| **Step**                                                                            | **Details**                                                                                              | **Demo video** |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------- |
-| <a href="#step-1-setup-cloud-connectors">Setup cloud connectors</a>                 | Set up cloud connectors enabling optimization permissions                                                |                |
-| <a href="#step-2-recommendations">Recommendations</a>                               | Explore right sizing recommendations for node pools and other resource types                             |                |
-| <a href="#step-3-autostopping">AutoStopping - Stop resources when they are idle</a> | Create AutoStopping rules to stop resources (VMs, k8s workloads, ECS tasks etc) when they are not in use |                |
+| **Step**                                                                            | **Details**                                                                                              |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| <a href="#step-1-setup-cloud-connectors">Setup cloud connectors</a>                 | Set up cloud connectors enabling optimization permissions                                                |                
+| <a href="#step-2-recommendations">Recommendations</a>                               | Explore right sizing recommendations for node pools and other resource types                             |                
+| <a href="#step-3-autostopping">AutoStopping - Stop resources when they are idle</a> | Create AutoStopping rules to stop resources (VMs, k8s workloads, ECS tasks etc) when they are not in use |                
 
 ### <a href="#phase-4"> Phase 4: Cost governance</a>
 
-| **Step**                                                | **Details**                                                                                                                          | **Demo video** |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------- |
-| <a href="#step-1-setup-budgets">Setup budgets</a>       | Setting up a cloud budget is crucial to control costs, prevent overspending, and maintain financial transparency in cloud operations |                |
-| <a href="#step-2-asset-governance">Asset governance</a> | Powerful governance based on cloud custodian policies                                                                                |                |
+| **Step**                                                | **Details**                                                                                                                          | 
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | 
+| <a href="#step-1-setup-budgets">Setup budgets</a>       | Setting up a cloud budget is crucial to control costs, prevent overspending, and maintain financial transparency in cloud operations |                
+| <a href="#step-2-asset-governance">Asset governance</a> | Powerful governance based on cloud custodian policies                                                                                |                
 
 
 ### <a href="#phase-5"> Phase 5: Automation</a>
 
-| **Step**                                                    | **Details**                                 | **Demo video** |
-| ----------------------------------------------------------- | ------------------------------------------- | -------------- |
-| <a href="#step-1-ccm-apis">CCM APIs</a>                     | Integrate with CCM APIs to extend the usage |                |
-| <a href="#step-2-terraform-provider">Terraform provider</a> | Manage CCM entities using Terraform         |                |
+| **Step**                                                    | **Details**                                 | 
+| ----------------------------------------------------------- | ------------------------------------------- | 
+| <a href="#step-1-ccm-apis">CCM APIs</a>                     | Integrate with CCM APIs to extend the usage |                
+| <a href="#step-2-terraform-provider">Terraform provider</a> | Manage CCM entities using Terraform         |                
 
 
 ## Phase 1: Initial setup

@@ -1,6 +1,7 @@
 ---
-title: Kubernetes
-description: Cloud Cost Management - Accelerator
+title: Kubernetes onboarding path
+description: Step-by-step instructions to get started with CCM for Kubernetes
+sidebar_position: 1
 ---
 
 # Kubernetes
@@ -23,7 +24,7 @@ Gathering fine-grain metrics in the cluster is memory intensive.  In an effort t
 |       `301 - 400`      |      4      |   15258   |
 |       `401 - 500`      |      5      |   19073   |
 
-<!-- ![](../../static/k8s_delegate.png) -->
+![](./static/k8s_delegate.png)
 
 #### Deployment Options
 
@@ -127,7 +128,7 @@ On the next page you are given a deployment yaml that encompasses the auto stopp
 
 After the deployment has completed, check the pods in the `harness-auto stopping` namespace to be sure they all come up fully. At this point you should be able to create new Kubernetes auto stopping rules for the cluster.
 
-<!-- ![](../../static/k8s_autostop_controller.png) -->
+![](./static/k8s_autostop_controller.png)
 
 ## Service Account for CCM
 
@@ -255,3 +256,68 @@ Step 2a: For each connector that already exists for a cluster, we need to verify
 Step 2b: Once you've identified the connectors for clusters you need to onboard, verified their cluster access (or not), you can create a CCM Kubernetes connector that points towards each of them. You can do this by hand or by going to "Setup>Clusters" under CCM and clicking the "Enable CCM" button on the connector.
 
 Step 3: For any clusters on your list from step 1 that have no existing connector, follow the regular cluster onboarding procedure. 
+
+## Connectors and Roles for Kubernetes CCM
+
+The process below defines how to provision Harness connectors to get K8s costs into CCM.
+
+### Permissions
+
+You will need access to create CCM connectors in Harness.
+
+### Setup Providers
+
+We need to leverage the Harness Terraform provider. We will use this provider to create two connectors for each cluster.  We will also define all of our cluster names within Terraform `locals` block.  The cluster names will be used to create the connectors.
+
+```
+terraform {
+  required_providers {
+    harness = {
+      source = "harness/harness"
+    }
+  }
+}
+
+provider "harness" {}
+
+locals {
+    cluster_names = toset(["cluster-a", "cluster-b", "cluster-c"])
+}
+```
+
+### Create A K8s Connector For Each Cluster
+
+This is the first connector we need to provision.  It addresses the question: "How do I connect to the delegate in the cluster"?
+
+```
+resource "harness_platform_connector_kubernetes" "cluster-connector" {
+  for_each = local.cluster_names
+  identifier  = replace(each.value, "-", "_")
+  name        = replace(each.value, "_", "-")
+
+  inherit_from_delegate {
+    delegate_selectors = [each.value]
+  }
+}
+```
+
+### Create A CCM K8s Connector For Each Cluster
+
+This connector can only be provisioned after the K8s connector.  It's in charge of letting the process know we need to start gathering metrics for CCM.
+
+```
+resource "harness_platform_connector_kubernetes_cloud_cost" "ccm-cluster-connector" {
+  for_each = local.cluster_names
+  identifier  = "${replace(each.value, "-", "_")}_ccm"
+  name        = "${replace(each.value, "_", "-")}-ccm"
+
+  features_enabled = ["VISIBILITY", "OPTIMIZATION"]
+  connector_ref    = harness_platform_connector_kubernetes.cluster-connector[each.key].id
+}
+```
+
+:::info
+
+This is a general example of taking a list of clusters and creating the two necessary connectors to get K8s costs into CCM.  Before you create these connectors, you need to be sure you have a delegate running in the cluster.  If the EKS clusters are running in AWS, the metrics server also needs to be enabled in each cluster.
+
+:::
