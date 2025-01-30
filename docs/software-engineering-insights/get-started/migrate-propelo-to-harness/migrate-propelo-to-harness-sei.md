@@ -162,6 +162,7 @@ The Base URL for all SEI services is updated based on the specific production en
 
 * **Base URL (PROD2):** `https://app.harness.io/gratis/sei/api/`
 * **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`
+* **Base URL (PROD3):** `https://app3.harness.io/sei/api/`
 * **BASE URL (EU):** `https://accounts.eu.harness.io/sei/api/`
 
 For steps on using these APIs, go to [Harness SEI API Guide](/docs/software-engineering-insights/sei-technical-reference/sei-api-reference/sei-api-guide).
@@ -276,7 +277,9 @@ If you were using an Ingestion Satellite for on-premise integrations, follow the
 * In the `satellite.yml` file, replace the existing **Propelo Account ID** in the tenant field with the new **Account ID** of your **Harness account**. You can find this ID in the Harness account URL.
 * Update the Base URL to match the appropriate environment:
   * **Base URL (PROD2):** `https://app.harness.io/gratis/sei/api/`
-  * **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`   
+  * **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/`
+  * **Base URL (PROD3):** `https://app3.harness.io/sei/api/`
+  * **BASE URL (EU):** `https://accounts.eu.harness.io/sei/api/`
 
 ![](../static/MIGRATION-SATELLITE.png)
 
