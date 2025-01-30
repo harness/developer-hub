@@ -82,16 +82,16 @@ If we have three pipeline, and two delgates involved, the assignment in our exam
 - `Pipeline A` and `Pipeine C` use the delegate, `delegate-mumbai`
 - `Pipeline B` uses the delegate, `delegate-sanfran`
 
-We will see the following behavior for the Vault connector occur in the executions
+We will see the following behavior for the Vault connector occur in the executions, along with the **unique refresh timer** for each delegate
 ```
-Pipeline A executed at time 0 (Token intial refresh, stored on delegate-mumbai)
-Pipeline B executed at time 2min (Token initial refresh, because this is a different delegate delegate-sanfran)
-Pipeline A executed at time 5min
-Pipeline C executed at time 10 min
-Pipeline B executed at time 11 min
-Pipeline A executed at time 16 min (Token expired on delegate-mumbai, requires refresh)
-Pipeline C executed at time 17 min
-Pipeline B executed at time 20 min (Token expired on delegate-sanfran, requires refresh)
+Pipeline A executed at time 0 (Token initial new fetch using role ID and Secret ID, stored on delegate-mumbai)
+Pipeline B executed at time +2min (Token initial new fetch using role ID and Secret ID, because this is a different delegate delegate-sanfran)
+Pipeline A executed at time +5min
+Pipeline C executed at time +10 min
+Pipeline B executed at time +11 min
+Pipeline A executed at time +16 min (Token expired on delegate-mumbai, Token new fetch performed using role ID and Secret ID,)
+Pipeline C executed at time +17 min
+Pipeline B executed at time +20 min (Token expired on delegate-sanfran, Token new fetch performed using role ID and Secret ID,)
 ```
 
 Each delegate being utilized with the connector has a local cache of the token which refreshes according to the TTL rule of 15 minutes (minus 1 percent).
