@@ -1,11 +1,11 @@
 ---
 title: DB DevOps Architecture
 sidebar_label: DB DevOps Architecture
-description: Deployment architecture of Harness Database DevOps
+description: Explain the architecture of Harness Database DevOps
 sidebar_position: 5
 ---
 
-Welcome to the Harness Database DevOps Product Documentation. This guide will assist you in  integrating database operations into your application deployment workflows. Our Database DevOps module enables you to manage database schemas, orchestrate changes, and ensure consistency across all your environments. Let's dive into how Harness Database DevOps can streamline your database change management and enhance your overall deployment strategy.
+This topic gives a high-level explanation of Harness Database DevOps' Platform Architecture. 
 
 ## Before you begin, review the following:
 
