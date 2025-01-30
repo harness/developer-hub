@@ -71,11 +71,14 @@ If you have any questions or need assistance with the whitelisting process, plea
 - Fixed an issue where the node selector field under the Infrastructure tab in the CI module lost focus when input was entered for the first time. (CI-15730, ZD-76187)
 - Fixed an issue where the DockerHub v2 URL was not working with Buildx in CI. This issue occurred specifically in the **Build and Push an Image to Docker Registry** step when caching was enabled. (CI-15702, ZD-75850)
 - Fixed an issue where project-level default settings for the S3 bucket in **self-hosted build infrastructure** failed to pass secrets to the proxy server when selecting an account-level connector or secret. (CI-15699, ZD-76063, ZD-76750)
+- Fixed an issue where using the `ci-addon` image caused it to be identified as root, violating non-root policies. Added configuration for rootless `lite-engine` and `ci-addon` container images. When using Windows infrastructure with the feature flag `CI_ADDON_LE_WINDOWS_ROOTLESS` enabled, rootless container images will be used for the lite-engine addon. (CI-14868, ZD-72927, ZD-77194)
 
 #### New features and enhancements
 
 - Added logs for container resource allocation in Kubernetes-based CI stages, including background steps, parallel steps, sequential steps, and step groups. (CI-15534)
-
+- Added support for SSH clone with passphrase in Git, GitHub, GitLab, Azure, and Bitbucket connectors. This feature is available on Linux and macOS infrastructure (Windows support is not yet available) and requires `drone-git` plugin version 1.6.5. (CI-15212)
+- Output variables from a plugin step are now visible in the Outputs tab even when the step fails. Only variables populated up until the failure point will be displayed. This feature is available in Lite Engine and Addon version 1.16.73 and can be enabled using the CI_ENABLE_OUTPUTS_STEP_FAILURE feature flag. (CI-15379)
+  
 #### Harness images updates
 
 | **Image**                | **Change**                                      | **Previous version** | **New Version** |
