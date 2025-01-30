@@ -592,3 +592,42 @@ strategy:
 ```
 
 In this case, if infra1 fails during deployment due to an issue (e.g., invalid connector reference), the remaining deployment will be skipped, stopping the execution for all pending or queued combinations.
+
+## Override Failure Strategy at Service/Environment Level
+
+Users can override stage-level failure strategies and define service- or environment-specific strategies to control pipeline behavior during failures. 
+
+### Supported Failure Strategies
+
+- **Service Level**:
+  - **Rollback Pipeline**
+  - **Retry Step**
+  - **Abort**
+  - **Mark as Failure**
+
+- **Environment and Infrastructure Level**:
+  - **Abort**
+  - **Rollback Pipeline**
+  - **Retry Step**
+  - **Mark as Failure**
+  - **Rollback Stage**
+
+These strategies can be configured in the **Advanced Configuration** section of the service/environment tabs in the pipeline and are reflected in the YAML under the `failureStrategies` field. Failure strategies are directly associated with the service/environment configuration, ensuring flexibility and alignment with the existing failure strategy schema.
+
+### Behavior of Failure Strategies
+
+- **Fallback to Stage-Level Strategy**:  
+  If no failure strategy is set at the service or environment level, the pipeline will fall back to the failure strategy defined at the stage level. However, this fallback only works if the stage-level strategy is within the subset of allowed failure strategies for the service or environment level. 
+  
+  Failure strategies at the service/environment level are completely independent of step-level failure strategies.
+
+- **Flexibility Over Propagation**:  
+  When propagating services and environments across stages, failure strategies are not propagated. Instead, users are given the flexibility to define a specific failure strategy for each stage, ensuring tailored configurations.
+
+### Limitations
+
+- **Excluded Strategies for Environment Failures**:  
+  Strategies such as **Manual Intervention**, **Ignore Failure**, **Mark as Success**, and **Proceed with Default Values** are not supported as they are not applicable to environment failures.
+
+- **Excluded Strategies for Service Failures**:  
+  Strategies such as **Manual Intervention**, **Ignore Failure**, **Mark as Success**, and **Proceed with Default Values** are not supported as they are not applicable to service failures.

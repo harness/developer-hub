@@ -43,6 +43,25 @@ When you destroy the provisioned infrastructure, you specify the same **Provisio
 
 ![](./static/remove-provisioned-infra-with-terraform-destroy-01.png)
 
+### Viewing Destroy Plan Logs Without Export
+
+To review what will be destroyed before executing a Terraform Destroy step, you can configure your pipeline with the following steps:
+
+1. **Add a Terraform Plan Step**:
+   - Configure the plan step with the `destroy` command.
+   - Fetch the configuration from a specific commit or branch in your repository.
+   - This allows you to view the destroy plan logs directly within the Harness UI.
+
+2. **Add an Approval Step**:
+   - Include an approval step after the Terraform Plan step to allow teams to review the destroy plan logs before proceeding with execution.
+
+3. **Add a Terraform Destroy Step**:
+   - Configure the destroy step with the `inline` command.
+   - Use the same commit or branch configuration as the Terraform Plan step.
+   - Execute the destroy step once the plan has been reviewed and approved.
+
+The destroy step behaves similarly to the apply step but is specifically designed for removing provisioned infrastructure.
+
 ## Step 1: Add the Terraform Destroy Step
 
 You can add the Terraform Destroy step in the following places:

@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-01-16T08:09:25
+date: 2025-01-21T08:09:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -27,11 +27,29 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: January 16, 2025
+#### Last updated: January 21, 2025
+
+## January 2025
+
+### Ruby SDK
+
+### Version 1.4.6
+
+**Fixed Issues**:
+ - Thread safety issues have been resolved. Previously, the Ruby SDK was marked a singleton and did not ensure only one instance can be created. This caused some issues where multiples were created in a quick period of time. This fix helps protect you from it. (FFM-12281)
+ - Added `initialized` method. This checks if client is initialized and returns `true` if initialization is complete and `false` if it has 
+  not. (FFM-12277)
+
+# Previous releases
+
+<details>
+<summary>2024 releases</summary>
 
 ## December 2024
 
 ### Android Client SDK
+
+### Version 2.2.4
 
 **New features and enhancements**:
  - Remove unused `org.threeten:threetenbpdependency`. (FFM-12237)
@@ -899,8 +917,7 @@ This is a major hardening effort of the SDK to improve its overall reliability:
 #### Version 1.7.0
 
  - This version updates the JavaScript SDK to the latest version. This will now make your experience using with React Native much better. (FFM-10488)
-
-# Previous releases
+</details>
 
 <details>
 <summary>2023 releases</summary>

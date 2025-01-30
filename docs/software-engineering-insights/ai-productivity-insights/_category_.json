@@ -1,0 +1,11 @@
+{
+    "label":"AI Productivity Insights",
+    "position": 22,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"AI Productivity Insights"
+    }
+ }

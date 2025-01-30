@@ -165,33 +165,54 @@ export const moduleIconAndColor = {
     iconUrl:
       'https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/666730eaefeed82bad545d10_Subtract.svg',
     colors: {
-      border: '--mod-iacm-200',
-      backgroundColor: '--mod-iacm-100',
-      color: '--mod-iacm-300',
+      border: '--mod-aida-200',
+      backgroundColor: '--mod-aida-100',
+      color: '--mod-aida-300',
     },
   },
   'Harness Intelligence': {
+    iconUrl: 'https://developer.harness.io/img/AIDA_Logo.svg',
+    colors: {
+      border: '--mod-aida-200',
+      backgroundColor: '--mod-aida-100',
+      color: '--mod-aida-300',
+    },
+  },
+  'AI QA Assistant': {
     iconUrl:
       'https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/666730eaefeed82bad545d10_Subtract.svg',
     colors: {
-      border: '--mod-iacm-200',
-      backgroundColor: '--mod-iacm-100',
-      color: '--mod-iacm-300',
+      border: '--mod-aida-200',
+      backgroundColor: '--mod-aida-100',
+      color: '--mod-aida-300',
     },
   },
   'Feature Management & Experimentation': {
     iconUrl:
       'https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/66e605fcc40e1bbd3f7b2604_FME%20icon%20color.svg',
     colors: {
-      border: '--mod-ff-200',
-      backgroundColor: '--mod-ff-100',
-      color: '--mod-ff-300',
+      border: '--mod-fme-200',
+      backgroundColor: '--mod-fme-100',
+      color: '--mod-fme-300',
     },
   },
   'Artifact Registry': {
     iconUrl:
       'https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/66df6931514873567c9cdc3c_artifact-registry-logo-icon.svg',
-    colors: { color: '' },
+      colors: {
+        border: '--mod-ar-200',
+        backgroundColor: '--mod-ar-100',
+        color: '--mod-ar-300',
+      },
+  },
+  'Incident Response': {
+    iconUrl:
+      'https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/66df6931514873567c9cdc3c_artifact-registry-logo-icon.svg',
+      colors: {
+        border: '--mod-ir-200',
+        backgroundColor: '--mod-ir-100',
+        color: '--mod-ir-300',
+      },
   },
 };
 

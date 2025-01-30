@@ -41,7 +41,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CDS_PIPELINE_ABORT_RBAC_PERMISSION | Enables users to control Abort permission separately from other pipeline execute functions. <b> This Feature is in Beta. </b> |
 | CDS_REMOVE_CONNECTOR_HEARTBEAT | Enables users to set Pre Flight Check as the default for pipeline execution. <b> This feature is in Limited GA. </b>|
 | PL_GCP_OIDC_AUTHENTICATION | Enables user to configure custom attributes for OIDC with the GCP connector. <b> This feature is in Limited GA. </b> |
-| CDS_EVENT_BRIDGE_WEBHOOK | Enables users to trigger pipelines in real time using the newly introduced EventBridge webhooks, which can be configured with Git, Slack, or generic options (such as Nexus artifacts). <b> This feature is in Limited GA. </b> |
+| CDS_EVENT_BRIDGE_WEBHOOK and CD_TRIGGERS_REFACTOR| Enables users to trigger pipelines in real time using the newly introduced EventBridge webhooks, which can be configured with Git, Slack, or generic options (such as Nexus artifacts). <b> This feature is in Limited GA. </b> |
 | PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT | Enables users to upload files as a runtime input during execution of a pipeline using **File Upload** step. <b> This feature is in Limited GA. </b>|
 | CDS_ENCODE_API_REQUESTS | Enables users to fetch an artifact version from Nexus during deployment. <b> This feature is in Limited GA. </b>|
 | CDS_EMAIL_USE_DEFAULT_FORMATTING | Enables user to send HTML content in the email body in the **Email Step**. <b> This feature is in Limited GA. </b> |
@@ -61,7 +61,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | ENV_GROUP_DEPLOYMENTS_IN_SERIAL | Enables users to use the serial deployment of environment groups. <b> This feature is in Limited GA. </b>|
 | PIE_SHOW_ALL_EXECUTIONS_FILTER | Enables users to lists all pipeline executions including retired and child executions in the Executions page. <b> This feature is GA. </b>|
 | CDS_DISABLE_FALLBACK_EXPRESSION_ENGINE | Enables users to leverage the updated expression resolution fallback logic, which now calls the fallback more effectively. <b> This feature is in Limited GA. </b> |
-| CDS_K8S_PATCH_STEP_NG | We have introduced a Patch step for Kubernetes deployments to make changes to specific resources or workloads in a Kubernetes cluster without affecting other fields. This step helps Spinnaker users migrate to Harness. Spinnaker has a stage type called Kubernetes Patch. <b>This feature flag is Limited GA.</b> |
 | GITOPS_AGENT_HELM_V2 | Enables you to download a helm-chart file for the Harness GitOps Agent. <b> This feature is GA. </b> |
 | CDS_GITOPS_LABELS_BASED_ACCESS_TO_APPS | Allow users to filter applications based on labels while creating a resource group for Gitops application. <b> This feature is in Limited GA. </b> |
 | GITOPS_MULTI_SOURCE_ENABLED | Enables users to support Multi-Source applications with ArgoCD in Harness GitOps. <b> This feature is in Limited GA. </b> |
@@ -96,7 +95,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG | Enables steady state check for Helm deployments on Kubernetes clusters using 1.16 or higher. <b>This feature is in Beta.</b> |
 | CDS_AZURE_WEBAPP_LISTING_APP_NAMES_AND_SLOTS | Enables users to select Azure WebApps in a drop down for slot deployments. <b>This feature is in Limited GA.</b> |
 | CDS_RESOLVE_OBJECTS_VIA_JSON_SELECT | Support resolution of objects via the JSON Select Command in the HTTP step. <b>This feature is in Beta.</b> |
-| CDS_SUPPORT_EXPRESSION_REMOTE_TERRAFORM_VAR_FILES_NG | Enables Harness expressions in remote Terraform var files. <b>This feature is in Beta.</b> |
 | CDS_ENABLE_LOAD_FROM_CACHE_FOR_RETRY_FORM | Enables a load from cache option on pipeline execution retry form. <b>This feature is in Beta.</b> |
 | CDS_ENV_PROPAGATION | Enables environment propagation across CD stages. <b>This feature is in Limited GA.</b> |
 | CDS_RECONFIGURE_JIRA_APPROVAL_TIMEOUT | Reduces timeout for Jira from 5 minutes to 1 minute and allows pausing of approval. <b>This feature is in Beta.</b> |
@@ -105,8 +103,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CDS_ENABLE_SHELL_SCRIPT_FILE_REFERENCE | Enables the Shell Script step to support scripts from Harness File Store. <b>This feature is in Beta.</b> |
 | CDS_DISABLE_EVALUATE_EXPORT_VARIABLES | Enables exporting variables without evaluating them in the Command step. <b>This feature is in Beta.</b> |
 | CD_CONTAINER_STEP_DELEGATE_SELECTOR | Makes the Container step to respect the delegate selector configured at the pipeline. <b>This feature is in Beta.</b> |
-| CDS_REMOVE_TIME_BUCKET_GAPFILL_QUERY | Removes the usage of time bucket gapfill from CD. <b>This feature is in Beta.</b> |
-| CDS_TERRAGRUNT_USE_UNIQUE_DIRECTORY_BASE_DIR_NG | Enables a unique directory to support Terragrunt run-in-parallel. <b>This feature is in Beta.</b> |
 | OPA_AIDA_WIDGET | Enables <a href="/docs/platform/governance/policy-as-code/aida-for-policies">AIDA for OPA</a>. <b>This feature is in Beta.</b> |
 | PIE_SIMPLIFY_LOG_BASE_KEY | Reduces the length of the log base key. <b>This feature is in Beta.</b><br/>This feature requires delegate version 23.10.81010 or later.<br/>After enabling this feature flag, you must re-run your pipelines to apply the change.<br/>For more information, go to <a href="/docs/platform/pipelines/executions-and-logs/download-logs">Download execution logs</a>. |
 | PIE_ASYNC_FILTER_CREATION | Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> |
@@ -114,3 +110,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CV_NEWRELIC_NEW_API | Enable this feature if you want to use the NerdGraph API for the NewRelic Health Source. <b>This is a Beta feature.</b> |
 | CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX | Enable this feature if you want updated logic for permissions inheritance between steps and their step groups. To learn more go to [Step Group Inheritance Logic](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step). <b>This is a Beta feature.</b> |
 | CV_MONITORED_SERVICE_TEMPLATIZATION | Enable this feature if you want to select a monitored service template as a runtime input. To learn more, go to [Select a monitored service template during runtime](/docs/continuous-delivery/verify/cv-getstarted/configure-first-cv#select-a-monitored-service-template-during-runtime). <b>This is a Beta feature.</b> |
+| CDS_OPA_CD_ENTITIES_GOVERNANCE | Enable this feature if you want to enforce OPA policy on Service, Environment, Infrastructure Definitions and Overrides <b>This is a Beta feature.</b> |
+| CDS_ASYNC_EXECUTABLE_USE_SELECTORS | When enabled the delegate selector priorities are correctly handled in Helm Blue/Green and Canary Deployment steps. <b>This is a Beta feature.</b> |
+| CDS_BLUE_GREEN_RESOURCE_FORMAT_FIX | When enabled it ensure correct resource formatting during Helm Blue-Green deployments. <b>This is a Beta feature.</b> |
+| CDS_NAV_MODULE_VISIBILITY | When enabled Admin users can hide unsubscribed modules from the sidebar, ensuring only subscribed modules are visible to team members. This helps streamline the user experience and prevents access to steps or features from unsubscribed modules. <b>This is a Beta feature.</b> |

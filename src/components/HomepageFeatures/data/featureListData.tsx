@@ -44,7 +44,7 @@ export const featureList: CardItem[] = [
     module: MODULES.iacm,
     icon: "img/icon_iacm.svg",
     description: <>Manage your infrastructure with ease.</>,
-    link: "docs/category/get-started-with-iacm",
+    link: "docs/infrastructure-as-code-management",
   },
   {
     title: "Release Faster with Feature Flags",
@@ -100,7 +100,7 @@ export const featureList: CardItem[] = [
     module: MODULES.idp,
     icon: "img/icon_idp.svg",
     description: <>A home for developers to create, manage, and explore software.</>,
-    link: "docs/category/get-started-with-idp",
+    link: "docs/internal-developer-portal/get-started",
   },
   {
     title: "Set up Cloud Development Environments",

@@ -64,7 +64,11 @@ const ResultList: React.FC<ResultListProps> = (props) => {
                           }}
                         >
                           <img
-                            src={moduleIconAndColor[module]?.iconUrl || ''}
+                            src={
+                              moduleIconAndColor[module]
+                                ? moduleIconAndColor[module].iconUrl
+                                : moduleIconAndColor['Harness Platform'].iconUrl
+                            }
                             alt={module}
                           />
 

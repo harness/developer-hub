@@ -79,7 +79,20 @@ The following deprecated API endpoints are longer supported:
 
 ## January 2025
 
-### Version 1.72.x <!-- January , 2025-->
+### Version 1.73.x <!-- January 27, 2025 -->
+#### Fixed issues
+
+- With this update, we ensure proper handling of the missing `onDelegate` key in the Secret Manager template. Previously, during the creation flow of a Custom Secret Manager, the `Execute on Delegate` checkbox was selected by default, even when the `onDelegate` key was absent in the Secret Manager template YAML. (PL-59514)
+
+- The number of user groups inherited in child scopes, such as Organization and Project, will now display up to a limit of 5000. (PL-59185)
+
+#### New features and enhancements
+
+- Accounts with a FREE license will no longer be able to configure SAML authentication. (PL-59708)
+
+- Added the Banners feature for users to display important messages across the UI. This feature is available behind the feature flag `PL_CUSTOM_BANNERS`. (PL-43420)
+
+### Version 1.72.x <!-- January 20, 2025-->
 #### Fixed issues
 
 - Enabled support for AIDA settings at the organization level. (PL-59525)

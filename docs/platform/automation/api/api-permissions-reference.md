@@ -255,6 +255,14 @@ The following permissions allow an API key to interact with IDP Admin resources.
 | `idp_advancedconfiguration_edit` | Create or Edit IDP Advanced Configurations |
 | `idp_advancedconfiguration_delete` | Delete IDP Advanced Configurations |
 
+## Input Sets
+
+The following permissions allow an API key to manage Input Sets. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+
+* View input sets: `core_inputsets_view`
+* Create/edit input sets: `core_inputsets_edit`
+* Delete input sets: `core_inputsets_delete`
+
 ## Organizations
 
 The following permissions allow an API key to manage organizations. They are available at either the account or organization [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes) but not the project [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
@@ -410,3 +418,17 @@ The following permissions allow an API key to manage variables. They are availab
 * View variables: `core_variable_view`
 * Create/edit variables: `core_variable_edit`
 * Delete variables: `core_variable_delete`
+
+## Database DevOps
+
+The following permissions allow an API key to interact with Database DevOps resources. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+
+| Permission ID           | Description              |
+|-------------------------|--------------------------|
+| `dbops_schema_view`     | View Schemas             |
+| `dbops_schema_edit`     | Create or Edit Schemas   |
+| `dbops_schema_delete`   | Delete Schemas           |
+| `dbops_instance_view`   | View Instances           |
+| `dbops_instance_edit`   | Create or Edit Instances |
+| `dbops_instance_delete` | Delete Instances         |
+

@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-01-17T10:00
+date: 2025-01-23T10:00
 sidebar_position: 10
 ---
 
@@ -21,6 +21,26 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## January 2025
+
+### Version 1.62
+
+<!-- 2025-01-20 -->
+
+#### Fixed issues
+
+- Fixed an issue where the resource class size option under Cloud Infra for the CI module was incorrectly interchanged between macOS and Linux. (CI-15587)
+- Fixed an issue where the security context of the last step in the stage was incorrectly applied to all steps, causing Kaniko to lack root permissions even when configured with runAsUser: 0. This issue resulted in Build and Push to DockerHub stage failures due to file permission errors. (CI-15732, ZD-76107, ZD-76178)
+- Resolved an issue where the build and push step would fail when configured to use Docker Layer Caching (DLC) and push to Harness Artifact Registry. (CI-15683, AH-879)
+ 
+#### New features and enhancements
+
+- The UI editor for CI stages running on Cloud has been enhanced to allow setting machine size and enabling nested virtualization. Previously available only through YAML, these configurations can now be easily managed via the UI editor. (CI-15587)
+  
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `harness/ssca-plugin`      | Updated dependencies to address vulnerabilities | 0.30.3                | 0.32.0           |
 
 ### Version 1.61
 

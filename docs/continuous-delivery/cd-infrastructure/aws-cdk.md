@@ -373,6 +373,24 @@ Ensure that the user Id used in the Git Clone step and steps that call Git comma
 This issue can also occur for existing pipelines for users who have turned on the `CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX` feature flag as it changes the behavior of certain settings including `Run as User` when it is not configured. To fix this issue, set `Run as User` in your Git Clone step and CDK Deploy step to `0`.
 :::
 
+:::tip
+
+Currently, there isn’t a direct method to manage application dependencies during the process. It is necessary to install the required dependencies before running the CDK commands. Below are some recommended approaches to handle this:
+
+1. **Add a Run Step for Installing Dependencies**:  
+Add a *Run Step* prior to the CDK Deploy step where you can execute the commands to install the dependencies, such as `npm install`. This ensures that when the CDK step runs, all necessary dependencies are already installed.
+
+2. **Update the `cdk.json` File**:  
+Update the `cdk.json` file to define a custom build command that includes dependency installation, such as `npm install`, before deployment. For example:
+```json
+{
+"app": "npx ts-node -P tsconfig.json --prefer-ts-exts src/ec2-instance.ts",
+"output": "cdk.out",
+"build": "npm install --verbose && npx projen bundle"
+}
+```
+:::
+
 ### Output variable expressions
 
 After pipeline execution, the CDK Deploy step **Output** tab displays several output variables.
