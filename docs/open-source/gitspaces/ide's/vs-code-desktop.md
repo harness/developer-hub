@@ -30,17 +30,17 @@ Here’s what you have to do to setup the extension in your VS Code Desktop:
 
     ![](./static/hoss-11.png)
 
-2. To set it up, navigate to the extension settings. You need to configure the extension with a “Gitness Token”.
+2. To set it up, navigate to the extension settings. You need to configure the extension with a token.
 
     ![](./static/hoss-10'.png)
 
     ![](./static/hoss1.png)
 
-3. To create a Gitness Token, go to the Harness Open Source UI and open your profile section. 
+3. To create a token, go to the Harness Open Source UI and open your profile section. 
 
     ![](./static/hoss2.png)
 
-4. From there, create a new Gitness Token by giving it a name and setting its expiration. Once created, copy the token from the provided box. *Please ensure you store this token securely, as you will not be able to view it again.*
+4. From there, create a new token by giving it a name and setting its expiration. Once created, copy the token from the provided box. *Please ensure you store this token securely, as you will not be able to view it again.*
 
     ![](./static/hoss3.png)
     ![](./static/hoss4.png)

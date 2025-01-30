@@ -23,7 +23,7 @@ You can also create a PR by comparing branches. In your repository, go to **Bran
 
 ## Request reviews
 
-To request a reviews from other users in your Gitness instance:
+To request a reviews from other users in your Harness Open Source instance:
 
 1. In your repository, go to **Pull Requests** and select your PR.
 2. On the **Conversation** tab, in the **Reviewers** section, select **Add**.
@@ -63,7 +63,7 @@ On a PR's **Changes** tab, you can mark files as **Viewed** to collapse the diff
 
 If a file is changed after you mark it as viewed, the file is marked as **Change since last viewed**, so you don't have to manually check for changes to viewed files.
 
-Gitness also tracks file deletions and additions. Assume that a file was deleted in a PR, and you marked it as viewed. If that file is later restored in the PR, Gitness marks the file appropriately so you can review it in its restored state.
+Harness Open Source also tracks file deletions and additions. Assume that a file was deleted in a PR, and you marked it as viewed. If that file is later restored in the PR, Harness Open Source marks the file appropriately so you can review it in its restored state.
 
 :::
 
@@ -73,7 +73,7 @@ A status check appears for each [pipeline](../pipelines/overview) configured in 
 
 ## Merge pull requests
 
-Gitness automatically checks for potential merge conflicts in PRs. If conflicts are found, merging is blocked until you resolve the conflicts.
+Harness Open Source automatically checks for potential merge conflicts in PRs. If conflicts are found, merging is blocked until you resolve the conflicts.
 
 If all checks have passed, you can select a merge strategy:
 
@@ -86,11 +86,11 @@ If all checks have passed, you can select a merge strategy:
 <details>
 <summary>Learn more about merge strategies</summary>
 
-Merge strategies define how changes from the source branch are integrated to the base branch. Depending on your branch history, some strategies might be unavailable. Also, your team or organization might have a preferred or required strategy. Gitness offers three merge strategies:
+Merge strategies define how changes from the source branch are integrated to the base branch. Depending on your branch history, some strategies might be unavailable. Also, your team or organization might have a preferred or required strategy. Harness Open Source offers three merge strategies:
 
 * **Squash and merge**: The **Squash and merge** strategy combines all commits from the source branch into a single commit, or *squash commit*, on the base branch. This strategy is best if you want to maintain a linear project history. From a project standpoint, a squash commit represents a single, meaningful commit on the base branch. The squash commit preserves the context of all changes through PR comments, discussions, and the metadata stored within the commit itself. However, the drawback is that you lose some granular commit-by-commit metadata that you would retain with other merge strategies.
 
-* **Merge pull request**: The **Merge pull request** strategy incorporates all commits from the source branch into the base branch through a merge commit. In Gitness, the merge commit captures a snapshot of the codebase after merging the source branch into the base branch. This strategy preserves a detailed history of changes, and this record remains accessible for future reference through the merge commit.
+* **Merge pull request**: The **Merge pull request** strategy incorporates all commits from the source branch into the base branch through a merge commit. In Harness Open Source, the merge commit captures a snapshot of the codebase after merging the source branch into the base branch. This strategy preserves a detailed history of changes, and this record remains accessible for future reference through the merge commit.
 
 * **Rebase and merge**: With the **Rebase and merge** strategy, all commits in the source branch are rebased before being incorporated into the base branch. This strategy alters the commit history in order to provide a linear sequence of commits on the base branch. This strategy provides a chronological and streamlined history of events while retaining individual commit messages and contributions.
 

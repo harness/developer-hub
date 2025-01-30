@@ -7,20 +7,20 @@ import TabItem from '@theme/TabItem';
 
 # Overview
 
-A repository is where your code is stored. When developers make changes to code in a Gitness repository, those changes are tracked with version control. Gitness fosters collaboration and governance with code reviews, approvals, status checks, and more.
+A repository is where your code is stored. When developers make changes to code in a Harness Open Source repository, those changes are tracked with version control. Harness Open Source fosters collaboration and governance with code reviews, approvals, status checks, and more.
 
 ## Create a repository
 
 1. In your [project](../administration/project-management.md), select **Repositories**, and then select **New Repository**.
 2. Enter a repository **Name** and optional **Description**.
-3. Gitness repositories are initialized with a `main` branch, unless you specify a different name for the base branch. To change the base branch name, select **main** and enter a name for the base branch.
+3. Harness Open Source repositories are initialized with a `main` branch, unless you specify a different name for the base branch. To change the base branch name, select **main** and enter a name for the base branch.
 4. Select your preference for visibility (**Public** or **Private**).
 5. Optionally, you can add a **License**, **.gitignore**, or **README** file to your repository.
 6. Select **Create Repository**.
 
 ## Import a repository
 
-Gitness can import repositories from external sources such as GitLab or GitHub.
+Harness Open Source can import repositories from external sources such as GitLab or GitHub.
 
 1. In your [project](../administration/project-management.md), select **Repositories**.
 2. Select the dropdown next to **New Repository**, and then select **Import Repository**.

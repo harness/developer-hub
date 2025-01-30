@@ -38,7 +38,7 @@ __Potential causes:__
 __Solutions:__
 
 1. Verify the container exists and can be pulled by running `docker pull IMAGE_NAME` locally
-2. Gitness inherits authentication from the host, see Docker's [login](https://docs.docker.com/reference/cli/docker/login/) command documentation
+2. Harness Open Source inherits authentication from the host, see Docker's [login](https://docs.docker.com/reference/cli/docker/login/) command documentation
 
 ## Pipeline step fails with /bin/sh: exec format error
 
