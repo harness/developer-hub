@@ -539,9 +539,12 @@ Here's an example of decrypted Terraform JSON output:
 
 To extract specific values from the encrypted Terraform output, users can use tools like jq to parse and retrieve individual values from the JSON output.
 
-In order to parse with jq tool, the content of the file must follow the correct JSON format
+To parse a file using the jq tool, its content must be in a valid JSON format.
 
-You can use for example: `jq '.["test-output-name1"].value' file.json` to extract the value for "test-output-name1"
+For example, use the following command to extract the value for `test-output-name1`:
+```
+jq '.["test-output-name1"].value' file.json
+```
 
 ## Skip state storage
 
