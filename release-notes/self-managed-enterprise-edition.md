@@ -232,6 +232,106 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
 
 :::
 
+## Jan 31, 2025, Patch Version 0.25.1
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.25.1](https://github.com/harness/helm-charts/releases/tag/harness-0.25.1)                 |
+| Air Gap Bundle            | [0.25.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.25.1) |
+| NG Manager                | 1.72.3                                                                                       |
+| CI Manager                | 1.61.2                                                                                       |
+| Pipeline Service          | 1.111.1                                                                                      |
+| Platform Service          | 1.48.0                                                                                       |
+| Access Control Service    | 1.70.1                                                                                       |
+| Delegate                  | 24.11.84800                                                                                  |
+| GitOps Service            | 1.23.10                                                                                      |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.123.1                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.58.4                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.1                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.25.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.1/code_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Cloud Cost Management
+
+- EC2 recommendation tags: We’ve introduced support for EC2 recommendation tags, making it easier to organize and optimize your instances.[CCM-20883]
+
+- Data Optimization: As part of our ongoing improvements, we have implemented new tables for labels and cost categories data. After performing the Cost category backfill, we have ensured that the necessary data is populated in these new tables, and later we use these tables for faster result. [CCM-21043]
+
+- Optimized Dashboard Filtering: To optimized dashboard filtering within SMP, we have updated the system to use unifiedLabels and unifiedCostCategory tables' columns. This change ensures we fetch filter values easily and categorize cost data efficiently. [CCM-21063]
+
+## Jan 31, 2025, Patch Version 0.24.3
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.24.3](https://github.com/harness/helm-charts/releases/tag/harness-0.24.3)                 |
+| Air Gap Bundle            | [0.24.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.24.3) |
+| NG Manager                | 1.68.8                                                                                       |
+| CI Manager                | 1.57.5                                                                                       |
+| Pipeline Service          | 1.107.4                                                                                      |
+| Platform Service          | 1.46.1                                                                                       |
+| Access Control Service    | 1.68.0                                                                                       |
+| Delegate                  | 24.11.84503                                                                                  |
+| GitOps Service            | 1.20.6                                                                                       |
+| Change Data Capture       | 1.39.2                                                                                       |
+| STO Core                  | 1.120.4                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.54.4                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.1                                                                                        |
+| Log Service               | 1.14.6                                                                                       |
+| Batch Processing          | 1.31.8                                                                                       |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.24.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.3/code_images.tgz"
+  "gs://smp-airgap-bundles/harness-0.24.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.3/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Cloud Cost Managment
+
+- EC2 recommendation tags: We’ve introduced support for EC2 recommendation tags, making it easier to organize and optimize your instances.[CCM-20883]
+
+- Data Optimization: As part of our ongoing improvements, we have implemented new tables for labels and cost categories data. After performing the Cost category backfill, we have ensured that the necessary data is populated in these new tables, and later we use these tables for faster result. [CCM-21043]
+
+- Optimized Dashboard Filtering: To optimized dashboard filtering within SMP, we have updated the system to use unifiedLabels and unifiedCostCategory tables' columns. This change ensures we fetch filter values easily and categorize cost data efficiently. [CCM-21063]
 
 ## Jan 30, 2025, Version 0.25.0
 
