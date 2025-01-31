@@ -28,7 +28,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 Harness Cloud users utilizing hosted Linux infrastructure, who rely on whitelisting for on-premises resource access, are requested to update their configuration:
 
-To ensure uninterrupted connectivity and functionality for your CI builds, please whitelist the following IP range in your network settings by February 15th, 2025:
+To ensure uninterrupted connectivity and functionality for your CI builds, please whitelist the following IP range in your network settings by March 15th, 2025:
 
 **15.204.x.x Range**:
 
@@ -75,7 +75,6 @@ If you have any questions or need assistance with the whitelisting process, plea
 
 #### New features and enhancements
 
-- Added logs for container resource allocation in Kubernetes-based CI stages, including background steps, parallel steps, sequential steps, and step groups. (CI-15534)
 - Added support for SSH clone with passphrase in Git, GitHub, GitLab, Azure, and Bitbucket connectors. This feature is available on Linux and macOS infrastructure (Windows support is not yet available) and requires `drone-git` plugin version 1.6.5. (CI-15212)
 - Output variables from a plugin step are now visible in the Outputs tab even when the step fails. Only variables populated up until the failure point will be displayed. This feature is available in Lite Engine and Addon version 1.16.73 and can be enabled using the `CI_ENABLE_OUTPUTS_STEP_FAILURE` feature flag. (CI-15379)
   
