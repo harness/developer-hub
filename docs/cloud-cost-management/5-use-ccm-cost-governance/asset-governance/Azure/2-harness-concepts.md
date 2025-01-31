@@ -52,7 +52,7 @@ Number of Rules per Account[Custom + OOTB] can be 300.
 11. Select **Dry Run** to view the instances or services that will be acted upon when you enforce the rule.
 12. After evaluating the output, select **Run Once** to execute the rule. 
 
-  <DocImage path={require('../static/rule_window.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('../static/rule_window_azure.png')} width="90%" height="90%" title="Click to view full size image" />
 
 :::info
 Harness provides some out-of-the-box policies for azure.vm, azure.disk, azure.cosmosdb, etc. that can be enforced. These policies cannot be edited but can be cloned.
@@ -100,7 +100,7 @@ The rule set is created successfully.
   <DocImage path={require('../static/create-new-rule-set.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
-  <DocImage path={require('../static/view-rule-set.png')} width="90%" height="90%" title="Click to view full size image" />
+  <!-- <DocImage path={require('../static/view-rule-set.png')} width="90%" height="90%" title="Click to view full size image" /> -->
 
 11. You can view the rule set on the **Asset Governance Rules** page. Expand the rule set to view the individual rules in the rule set.
 12. Select **Enforce Rule Set** in the Enforcements column to enforce this rule set.
@@ -132,7 +132,9 @@ While setting up a new Enforcement, you can select the following:
 - **Time**: After setting the frequency, you can choose the time at which it runs.
 - **Dry Run Mode**: You can choose to run your Enforcement in Dry Run mode which will generate a simulation of the rule enforcement instead of performing actions.
 
-  <DocImage path={require('../static/enforcements.png')} width="95%" height="95%" title="Click to view full size image" />
+  <DocImage path={require('../static/create_enforcement_azure.png')} width="95%" height="95%" title="Click to view full size image" />
+  <DocImage path={require('../static/rules_azure_selection.png')} width="95%" height="95%" title="Click to view full size image" />
+
 
 :::important note
 - Number of Targets in an Enforcement can be upto 200.

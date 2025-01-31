@@ -102,7 +102,7 @@ The rule set is created successfully.
   <DocImage path={require('../static/create-new-rule-set-gcp.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
-  <DocImage path={require('../static/view-rule-set-gcp.png')} width="90%" height="90%" title="Click to view full size image" />
+  <!-- <DocImage path={require('../static/view-rule-set-gcp.png')} width="90%" height="90%" title="Click to view full size image" /> -->
 
 11. You can view the rule set on the **Asset Governance Rules** page. Expand the rule set to view the individual rules in the rule set.
 12. Select **Enforce Rule Set** in the Enforcements column to enforce this rule set.any
@@ -156,6 +156,8 @@ To create an Enforcement, perform the following steps:
 8. Select the Rules or Rule Sets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
 9. Select **Continue**. 
     <DocImage path={require('../static/create_enforcement_gcp.png')} width="90%" height="90%" title="Click to view full size image" />
+    <DocImage path={require('../static/rules_gcp_selection.png')} width="90%" height="90%" title="Click to view full size image" />
+
 10. Select the target accounts. You could select multiple accounts.
 11. Set the frequency from **Hourly**, **Daily**, or **Weekly** options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
 12. Toggle the **Dry Run** mode if you do not want to take action immediately.
@@ -165,7 +167,7 @@ To create an Enforcement, perform the following steps:
 
 After setting up the schedule, you can view the Enforcement on the **Enforcements** page. 
 
-<DocImage path={require('../static/enforcements_list_gcp.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('../static/enforcements_list_aws.png')} width="90%" height="90%" title="Click to view full size image" />
 
 Furthermore, you can disable the Enforcement at any time using the toggle button in the **Status** column. If you want to turn off the dry-run mode, select **Edit** from the vertical ellipsis menu (⋮) then go to "Target And Schedule", use slider to turn off "Enforce Rule(s) in Dry Run mode" and click on Finish.
 
@@ -205,7 +207,7 @@ Harness CCM also supports multiple statuses for evaluations. Currently CCM suppo
 4. You can see all the Evaluations of Rules listed on  the window.
 4. Select the rule for which you want to view the Evaluation details. The target project, identified resources and evaluation logs are displayed.
 
-<DocImage path={require('../static/evaluation_gcp_.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('../static/evaluation_gcp.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
 ### Filters in Evaluations List Page
