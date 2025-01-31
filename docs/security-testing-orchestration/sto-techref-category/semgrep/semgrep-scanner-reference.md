@@ -49,33 +49,6 @@ For a quick introduction, go to the [SAST code scans using Semgrep](/docs/securi
 
 
 ## Set-up workflows
- 
-<details>
-
-<summary>Add a built-in SAST scanner (easiest)</summary>
-
-To scan a code repository, you need [Harness Code Repository](/docs/code-repository) or a [Harness connector](/docs/category/code-repo-connectors) to your Git service. 
-
-
-#### Add the built-in SAST scanner
-
-Do the following:
-
-1. Add a **Build** or **Security** stage to your pipeline.
-2. Configure the stage to point to the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) you want to scan. 
-3. Go to the **Execution** tab, click **Add step**, and select the **SAST** built-in scanner.
-
-   <DocImage path={require('./static/add-built-in-sast-scanner.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
-
-4. Select **Semgrep** and then **Add scanner**.
-5. Save your pipeline and then click **Run**. 
-
-   The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results).
-
-
-</details>
-
-
 
 <details>
 
@@ -312,6 +285,16 @@ import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
 import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
+
+## Configure Semgrep as a Built-in Scanner  
+
+The Semgrep scanner is available as a [built-in scanner](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
+
+1. Search for **SAST** in the step palette or navigate to the **Built-in Scanners** section and select the **SAST** step.  
+2. Expand the **Additional CLI Flags** section if you want to configure optional CLI flags.  
+3. Click **Add Scanner** to save the configuration.  
+
+The scanner will automatically use the free version, detect scan targets, and can be further configured by clicking on the step whenever needed.
 
 ## Proxy settings
 

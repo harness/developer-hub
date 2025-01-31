@@ -20,7 +20,7 @@ You can scan your container images with [Anchore Enterprise](https://docs.anchor
 
 - You must use the Anchore v2 API and Anchore Enterprise Server v5.0 or higher to run orchestration and extraction scans.
 
-- When you're deploying an Anchore Enterprise server, expose port 8228. This is the port that Harness uses to communicate with the server.
+When you deploy an Anchore Enterprise server, expose port 8228. Harness uses this port to communicate with the server.
 
 ### All data ingestion methods are supported
 
@@ -229,7 +229,7 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 <ScannerRefAdvancedSettings />
 
 ## View Anchore policy failures
-Anchore policy failures will appear in scan results as `Info` severity issues, with the issue type set to `EXTERNAL_POLICY`. Successfully passed policies will not be included in the scan results.  Additionally, you can apply [OPA policies](/docs/security-testing-orchestration/policies/create-opa-policies) in Harness STO to enforce or manage the policy failures.
+Anchore policy failures will appear in scan results as `Info` severity issues, with the issue type set to `EXTERNAL_POLICY`. Successfully passed policies will not be included in the scan results.  Additionally, you can apply an OPA policy to fail the pipeline based on the policy failures. This can be achieved using the [Security Tests - External Policy Failures](/docs/security-testing-orchestration/policies/create-opa-policies.md#block-the-pipeline-based-on-external-policy-failures) policy from the [security tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies.md#security-test-policy-samples).
 
 ## Proxy settings
 

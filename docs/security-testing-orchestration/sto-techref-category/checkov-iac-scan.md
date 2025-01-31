@@ -239,6 +239,16 @@ import ScannerRefAdvancedSettings from '/docs/security-testing-orchestration/sto
 
 <ScannerRefAdvancedSettings />
 
+## Configure Checkov as a Built-in Scanner  
+
+The Checkov scanner is available as a built-in scanner in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
+
+1. Search for **IaC** in the step palette or navigate to the **Built-in Scanners** section and select the **IaC** step.
+2. Expand the **Additional CLI Flags** section if you want to configure optional CLI flags.
+3. Click **Add Scanner** to save the configuration.  
+
+The scanner will automatically use the free version, detect scan targets, and can be further configured by clicking on the step whenever needed.
+
 ## Proxy settings
 
 import ProxySettings from './shared/proxy-settings.md';

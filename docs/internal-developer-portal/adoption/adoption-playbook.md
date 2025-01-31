@@ -6,6 +6,7 @@ sidebar_position: 1
 redirect_from:
   - docs/internal-developer-portal/get-started/adoption-playbook
   - docs/internal-developer-portal/get-started/get-started
+unlisted: true
 ---
 
 **A step-by-step implementation guide for adopting Harness Internal Developer Portal at scale.**
