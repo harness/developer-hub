@@ -20,7 +20,7 @@ To kill a feature, do the following:
 3. Optionally add a title, comment, or approver.
 4. Click the **Kill** button.
 
-# Restoring a killed feature
+## Restoring a killed feature
 
 Once you kill a feature, the **Restore** button appears. The Restore function reverses your Kill decision and turns back on the exact targeting rules that were in place prior to the kill.
 

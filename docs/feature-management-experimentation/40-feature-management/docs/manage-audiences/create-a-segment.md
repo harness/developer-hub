@@ -29,7 +29,7 @@ For feature releases, you can use segments to:
 
 These are a few examples of using segments to deploy safe and successful feature releases.
 
-# Segment types
+## Segment types
 
 Split supports the following segment types:
   * **Standard segments** - can contain up to 100,000 user IDs
@@ -65,7 +65,7 @@ In Split UI, you can filter the segments listed on the Segments pane by segment 
   <img src="https://help.split.io/hc/article_attachments/32099444683149" alt="create_a_segment_filter.png" width="250" />
 </p>
 
-# Creating a segment
+## Creating a segment
 
 When creating a segment, the segment name, description, owners, and tags can help you and your team later manage your segment. This information can be customized to your team's workflow.
 
@@ -90,7 +90,7 @@ Segment names must start with a letter and can contain the characters - _ a-z A-
 
 Next, you can create a segment definition and add user IDs.
 
-## Adding user IDs to a segment
+### Adding user IDs to a segment
 
 You need to add a segment definition for a given environment (this creates an empty segment in that environment) and then add user IDs to the segment. This is done as follows:
 
@@ -112,11 +112,11 @@ You need to add a segment definition for a given environment (this creates an em
 
   For details about the import file contents, see the [CSV import file format](#csv-import-file-format) section below.
 
-### File import for Standard segments
+#### File import for Standard segments
 
 When using file import for a Standard segment, the user IDs listed in the file are ___added___ to the IDs already in the segment. Duplicate IDs are not added. This means that you can repeatedly import up to 10,000 user IDs at a time until the 100,000 limit is reached. (This is different from the way file import works for Large segments.)
 
-### File import for Large segments
+#### File import for Large segments
 
 When using file import for a Large segment, the list of user IDs in the file will ___replace___ all the IDs that were already in the segment. The import file contents represent the new segment version and overwrite the previous segment version.
 
@@ -163,7 +163,7 @@ A segment is a list of user IDs. For a Large segment you can append new user IDs
 3. Upload the edited CSV file using the **[File import for Large segments](#file-import-for-large-segments)** steps.
 :::
 
-# CSV import file format
+## CSV import file format
 
 When adding user keys to a segment by importing them from a file, use a CSV file (a file with .csv extension) that lists the user IDs in a single column with no header. User IDs containing commas, line breaks, or any other special character need to be wrapped in double quotes. Duplicate user IDs are ignored.
 

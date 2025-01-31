@@ -18,7 +18,7 @@ With custom attributes, you can create dynamic targeted feature rollout plans us
 
 ___Tip:___ Consider using [segments](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) (instead of attributes) if the users in a segment would not change multiple times in a day or the grouping of users needs to be standardized across your Split account (e.g., key accounts, internal or outsourced QA teams, or company employees).
 
-# Creating custom attributes
+## Creating custom attributes
 
 This section explains how to create attributes and how to use them to define feature flag targeting rules in the Split UI. You can choose to define custom attributes [within feature flag targeting rules](#creating-custom-attributes-within-feature-flag-targeting-rules), [in Admin Settings](#creating-custom-attributes-in-admin-settings), or [using the Split API](#creating-custom-attributes-or-setting-custom-attribute-values-using-api-endpoints).
 
@@ -30,7 +30,7 @@ ___Tip for developers:___ No matter how attributes are created ([within attribut
 
 To see how to pass attributes with feature flag evaluation requests in your code, refer to the relevant language-specific article in our [SDK Documentation](https://help.split.io/hc/en-us/articles/360033557092-SDK-overview#supported-sdks).
 
-## Creating custom attributes within feature flag targeting rules
+### Creating custom attributes within feature flag targeting rules
 
 You can freely create attributes within attribute-based targeting rules on the feature flag’s Definition tab. (The attributes that you define in directly within a feature flag’s targeting rules become part of the feature flag definition, but are _not associated with a project and traffic type_.)
 
@@ -40,13 +40,13 @@ The steps to create a custom attribute in the Split UI within a feature flag att
 To work with SemVer attributes, first create a new custom attribute within a feature flag's attribute-based targeting rule, and select a SemVer matcher. See the _[Using custom attributes in feature flag targeting](#using-custom-attributes-in-feature-flag-targeting)_ section, step 2.
 :::
 
-## Creating custom attributes in Admin settings
+### Creating custom attributes in Admin settings
 
 You can create a standard set of attributes for use in your feature flag definitions. The attributes that you define in Admin settings will be _associated with a project and traffic type_.
 
 You can create attributes individually or create multiple attributes using a CSV file.
 
-### Creating individual custom attributes in Admin settings
+#### Creating individual custom attributes in Admin settings
 
 To create a custom attribute that will appear as a User Attribute in your feature flag targeting rules:
 
@@ -67,7 +67,7 @@ To create a custom attribute that will appear as a User Attribute in your featur
 
 4. Click the **Create** button. A new custom attribute is created and displayed on the Attributes page.
 
-### Creating multiple custom attributes in Admin Settings
+#### Creating multiple custom attributes in Admin Settings
 
 You can create multiple custom attributes by performing a bulk upload of custom attributes from a CSV file (a text file having the ".csv" file extension).
 
@@ -98,7 +98,7 @@ To create multiple custom attributes that will appear as User Attributes in your
    ```
 6. When the file upload is complete, click **Save**. The new attributes are created and displayed on the Attributes page.
 
-## Creating custom attributes or writing custom attribute values using API endpoints
+### Creating custom attributes or writing custom attribute values using API endpoints
 
 You can create custom attributes for use in feature flag targeting rules by using the following Split API endpoints:
 
@@ -107,7 +107,7 @@ __[Save identity](https://docs.split.io/reference/save-identity):__ Create or ov
 
 As with attributes [created in Admin settings](#creating-custom-attributes-in-admin-settings), the attributes created using the Split API will will be associated with a project and traffic type and will appear as **User Attributes** in the Split UI.
 
-# Using custom attributes in feature flag targeting
+## Using custom attributes in feature flag targeting
 
 After you [create a feature flag](https://help.split.io/hc/en-us/articles/9058495582349-Create-a-feature-flag) you can **use** (and also **create**) custom attributes in your [targeting rules](https://help.split.io/hc/en-us/articles/360020791591-Targeting-customers). To add an attribute-based targeting rule to a feature flag:
 
@@ -165,11 +165,11 @@ After you [create a feature flag](https://help.split.io/hc/en-us/articles/905849
      <img src="https://help.split.io/hc/article_attachments/30742702274317" alt="target_with_custom_attributes_using_custom_attributes_04_date.png" width="1000" />
     </p>
   
-# How feature flag targeting rules with custom attributes are evaluated
+## How feature flag targeting rules with custom attributes are evaluated
 
 This section explains how a feature flag targeting rule with a custom attribute is evaluated in your source code, in the following cases:
 
-#### The custom attribute value is not provided
+##### The custom attribute value is not provided
 
 The feature flag targeting rule containing the custom attribute does not result in a match.
 
@@ -182,7 +182,7 @@ else 100% : off
 
 If the value for the age attribute is not provided in code in the attributes map passed to the getTreatment call, the matcher in the first condition `age <= 20` evaluates to **false**. The `else` condition then evaluates to **true**, resulting in the `off` treatment.
 
-#### The custom attribute value is not the correct type
+##### The custom attribute value is not the correct type
 
 The feature flag targeting rule containing the custom attribute does not result in a match.
 
@@ -195,7 +195,7 @@ else 100% : off
 
 If the value provided for plan_type is an int instead of a string, then the matcher in the first condition `user.plan_type is "basic"` evaluates to **false**. The `else` condition then evaluates to **true**, resulting in the `off` treatment.
 
-# Custom attribute types and matchers
+## Custom attribute types and matchers
 
 This section describes attribute matchers (comparison operators) that are available in the Split UI when you are creating attribute-based feature flag targeting rules. You can use this information to help you plan your dynamic targeted feature rollout plans using custom attributes.
 
@@ -204,7 +204,7 @@ ___Tip:___ In the Split UI, on a feature flag's Definition tab, the **IF** dropd
 
 * ___Select a User Attribute.___ When you select an existing User Attribute, the **Select matcher** dropdown menu will show **_a subset of matchers based on the selected attribute type_**. _Note that the '**User Attributes**' label contains the traffic type name (selected when the feature flag was created), so another traffic type name may be shown instead of '**User**'._
 
-## String literal attributes
+### String literal attributes
 
 **String** literal attributes store text. These attributes are used with the **String matchers** to set feature flag targeting rules based on standard string comparisons, regular expression matching, or comparisons against a list of strings.
 
@@ -225,7 +225,7 @@ For example, use an attribute 'subscription_plan' of type String to show account
 
 ___Tip:___ You can target your customers with any list or pick list dimension that you track.
 
-## SemVer attributes
+### SemVer attributes
 
 SemVer attributes store version strings that follow the [Semantic Version](https://semver.org/) specification. These attributes are used with the **SemVer matchers** to set feature flag targeting rules based on version numbers.
 
@@ -247,7 +247,7 @@ ___Note:___ The version numbers you provide must include the patch number (e.g. 
 See [this page](https://help.split.io/hc/en-us/articles/27337626547341-Does-my-SDK-version-support-SemVer) to verify compatibility of Split SDK or Spit optional infrastructure. For older SDK versions that do not support SemVer, the `control` treatment will be returned and a special impression will be created. See the _[Control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment)_ help page for more information.
 :::
 
-## Set attributes
+### Set attributes
 
 Set attributes store lists of strings. The following **Set matchers** can be used with Set attributes:
 
@@ -262,7 +262,7 @@ Set attributes store lists of strings. The following **Set matchers** can be use
 
 For example, use an attribute 'us_states_visited' of type Set to show a survey to users who have visited at least one state of the US West Coast. 
 
-## Numeric attributes
+### Numeric attributes
 
 Numeric attributes store positive or negative whole numbers. (Decimal values are not supported.) The following **Numeric matchers** can be used with Numeric attributes:
 
@@ -274,7 +274,7 @@ Numeric attributes store positive or negative whole numbers. (Decimal values are
 
 For example, use an attribute 'orders_last_quarter' of type Number to provide a new premium shopping feature to customers who had at least 20 orders in the last quarter.
 
-## DateTime attributes
+### DateTime attributes
 
 DateTime attributes store a date and optional time. In your source code, set the values of DateTime attributes in **_milliseconds since epoch_** or **_seconds since epoch_**, depending on the Split SDK you are using.
 
@@ -289,7 +289,7 @@ The following comparisons can be used with DateTime attributes:
 
 For example, use an attribute 'contract_signed' of type DateTime to keep a legacy feature available for customers who signed up before 1/1/2015.
 
-## Boolean attributes
+### Boolean attributes
 
 Boolean attributes store a value of `true` or `false`. Boolean attributes are used with the **Boolean matcher**:
 

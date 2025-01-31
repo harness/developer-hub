@@ -28,7 +28,7 @@ If, however, you have `status_quo` in the middle of the order (`treatment1`, `st
 
 Let's say you have more than three treatments.  In this case, the `status_quo` was the safe treatment, and if any of the treatments were found to have a bad experience the plan is to move those users to `status_quo`.  If we decide `treatment2` was bad and we try to give that 20% to `status_quo` by setting `treatment2` to zero and increasing `status_quo` to 40%, we will actually cause an undesired shift: users in `treatment1` would get `status_quo` as well since the first 40 buckets, which had been distributed between `status_quo` and `treatment1`, now all get `status_quo`. Buckets 40-59, which had been getting `treatment2` would then get `treatment1`. Users who were getting `treatment3` and `treatment4` are unaffected.
 
-<table style={{width: '100%', height: '132px'}}>
+<table style={{width: '100%', height: '332px'}}>
   <thead>
     <tr style={{height: '22px'}}>
       <th style={{textAlign: 'center', height: '22px'}}>Even Distribution</th>
@@ -67,6 +67,7 @@ Let's say you have more than three treatments.  In this case, the `status_quo` w
 One way to 'move' users between multivariate treatments while only removing users from `treatment2` is to take advantage of Dynamic Configuration, assuming you can represent the differences between treatments using a set of configured values.  In this case, you'd set the configuration of `treatment2` to the `status_quo` settings, which would give them the `status_quo` experience.
 
 | Even Distribution |	Buckets |	Dynamic Config |
+| --- | --- | --- |
 | status_quo | 0-19 | status_quo |
 | treatment1 | 20-39 | treatment1 |
 | treatment2 | 40-59 | status_quo |

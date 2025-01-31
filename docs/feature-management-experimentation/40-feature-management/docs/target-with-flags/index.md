@@ -11,7 +11,7 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020791591-Define-feature-flag-treatments-and-targeting <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-# Define feature flag treatments and targeting
+## Define feature flag treatments and targeting
 
 Afer you [create a feature flag](https://help.split.io/hc/en-us/articles/9058495582349-Create-a-feature-flag), you can define treatments, dynamic configurations, and targeting rules. 
 
@@ -21,11 +21,11 @@ Feature flag ___treatments___ represent feature variations, with a given variati
 
 This article provides an overview of creating a feature flag definition for a given environment, and links to articles with more specific configuration details.
 
-# Create a feature flag
+## Create a feature flag
 
 On the [Create a feature flag](https://help.split.io/hc/en-us/articles/9058495582349-Create-a-feature-flag) pane, create a feature flag by filling in metadata useful to your team.
 
-# Initiate your feature flag definition for a given environment
+## Initiate your feature flag definition for a given environment
 
 Initiating your feature flag definition for a given environment will create an initial set of treatments and a targeting rule that you can modify. 
 
@@ -50,7 +50,7 @@ You will be able to modify the feature flag treatments, dynamic configurations, 
 
 The next sections guide you through configuring your feature flag definition.
 
-# Setting up treatments
+## Setting up treatments
 
 Treatment names are strings that are returned when you evaluate the feature flag in your code.
 
@@ -60,17 +60,17 @@ In the [Treatments](https://help.split.io/hc/en-us/articles/360020525112) area, 
 2. Optionally, click **Add treatment** to add additional treatments.
 3. Select the [default treatment](https://help.split.io/hc/en-us/articles/360020528192-Default-treatment). This treatment will be served to everyone if the feature flag is [killed](https://help.split.io/hc/en-us/articles/360020794271-Use-the-kill-switch). This treatment is also served to all traffic not exposed to the feature flag (if you _Limit exposure_ when [setting up targeting](#setting-up-targeting)).
 
-# Setting up dynamic configuration
+## Setting up dynamic configuration
 
 In the [Dynamic configuration](https://help.split.io/hc/en-us/articles/360026943552-Dynamic-configuration) area, optionally define custom JSON or Key-value pairs that you can retrieve in your code. This allows you to add dynamic configurations to your feature variations.
 
-# Setting up targeting
+## Setting up targeting
 
 Targeting defines how your feature flag will be evaluated for a given [**user ID**](docs/feature-management-experimentation/10-getting-started/docs/key-concepts/user-ids.md) (user key). You can add inidividual user IDs to your targeting rules. Targeting rules have a limit of 500 user IDs, so we suggest [creating a segment](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) if you need to target a large number of user IDs.
 
 To set up targeting, you can use the Individual targets area and/or the Targeting rules area. Both are described below.
 
-## Individual targets
+### Individual targets
 
 In the Individual targets area, you can:
 
@@ -80,7 +80,7 @@ Click the **Add new individual target** button to assign a selected treatment to
   <img src="https://help.split.io/hc/article_attachments/32101070992397" alt="targeting_customers_individual.png" width="850" />
 </p>
 
-## Targeting rules
+### Targeting rules
 
 In the Targeting rules area, you can:
 
@@ -102,7 +102,7 @@ In the Targeting rules area, you can:
 If you have at least one targeting rule with ___percentage distribution___, then you can ___compare metric results between feature flag treatments___ (on the [Metrics impact tab](https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab)).
 :::
 
-# Setting the alert baseline treatment
+## Setting the alert baseline treatment
 
 In the [Set alert baseline treatment](https://help.split.io/hc/en-us/articles/360029566292-Set-the-alert-baseline-treatment-) area, select a baseline treatment that will be used for your alert policies.
 
@@ -110,7 +110,7 @@ In the [Set alert baseline treatment](https://help.split.io/hc/en-us/articles/36
 If you set the ___alert baseline treatment___ AND you have at least one targeting rule with ___percentage distribution___, then you can receive ___[feature flag alerts](https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting)___ and ___[metric alerts](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting)___.
 :::
 
-# Rules evaluation order
+## Rules evaluation order
 
 The rules are evaluated in the following order:
 

@@ -11,7 +11,9 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360029566292-Set-the-alert-baseline-treatment <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-**Note: Get access to alert policies by contacting your customer success manager or[support](mailto:support@split.io) and we’ll enable in your account.**
+:::tip
+Get access to alert policies by contacting your customer success manager or [support@split.io](mailto:support@split.io) and we’ll enable in your account.
+:::
 
 The alert baseline treatment is always one of the treatments defined for any feature flag in the targeting rules. The alert baseline treatment can only be a treatment that meets the following criteria;
 

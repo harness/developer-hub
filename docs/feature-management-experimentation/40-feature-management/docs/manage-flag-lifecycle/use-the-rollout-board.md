@@ -24,7 +24,7 @@ You can set a status for every feature flag and update as it moves through the f
 
 **Note: For more information about statuses, refer to the [Use statuses](https://help.split.io/hc/en-us/articles/4405023981197-Use-statuses) guide.**
 
-# Viewing feature flags on a rollout board
+## Viewing feature flags on a rollout board
 
 To view feature flag on the rollout board, do the following:
 
@@ -34,7 +34,7 @@ From the left navigation bar, select **Rollout board**. The following page opens
   <img src="https://help.split.io/hc/article_attachments/30801072641037" alt="rollout_one.png" />
 </p>
 
-# Updating status from the rollout board
+## Updating status from the rollout board
 
 To immediately update a feature flag status, you can move a flag card from an existing status column to a new status column by doing the following:
 
@@ -46,7 +46,7 @@ To immediately update a feature flag status, you can move a flag card from an ex
 
   * The status of a feature flag is not associated with environments.
 
-# Cleaning up your rollout board
+## Cleaning up your rollout board
 
 Use the Ready to cleanup feature to find feature flags that are at the end of their lifecycle and can be retired. Typically, feature flags that are in their current status for at least 100 days and are 100% released, killed, ramping, and removed from code are ready to be cleaned up. In addition, the statuses within each column sorts by the number of days in status by descending order.
 
@@ -54,7 +54,7 @@ Use the Ready to cleanup feature to find feature flags that are at the end of th
 
 To clean up your rollout board, at the top left of the rollout board, click **Ready to cleanup**. The Statuses list appears with 100% release, Removed from code, Ramping, and Killed already selected by default. It also shows you can deselect any of the options or select more options. Once you identify which flag you want removed, you can delete the flag from the user interface and ask an approver to delete the flag from the code using a comment or you can contact the owner of the flag to remove it.
 
-# About feature flag cards
+## About feature flag cards
 
 Each feature flag displayed on the rollout board has a card associated with it which has the following information:
 
@@ -76,7 +76,7 @@ Each feature flag displayed on the rollout board has a card associated with it w
       * **Red.** No traffic received ever
       * **Grey.** Not configured
      
-# An in-depth view of a feature flag’s information 
+## An in-depth view of a feature flag’s information 
 
 If you click on a specific card, you get the following in-depth view of your feature flag’s information:
 
@@ -100,11 +100,11 @@ You also get a detailed table showing environment specific data:
 
 You can go directly to the feature flag's rollout plan by clicking on the name and make changes to the flag.
 
-## About filters, sorting, and properties
+### About filters, sorting, and properties
 
 The following describes filters and properties on the rollout board and how to use them.
 
-### Filters
+#### Filters
 
 The rollout board has two basic filters: 
 
@@ -117,7 +117,7 @@ The rollout board has two basic filters:
 
 You can also deselect all filters to see a rollout board of all feature flags in the project.
 
-### Customize your filter search 
+#### Customize your filter search 
 
 Select additional filters to refine the search of your featiure flag on the Rollout board. These filters allow you to customize your searches to find the desired flags. In addition to the basic filters, use the following additional filters to further customize your search: 
 
@@ -138,15 +138,15 @@ To apply a filter, do the following:
 4. Select **AND** or **OR**. The conditions are applied to all added filters.
 5. After you add the desired filters, you can see the number of applied filters on the Filter icon.
 
-### Select your sorting order
+#### Select your sorting order
 
 You can select a custom sort order to sort the feature flag cards by a given status. By default, cards with pending changes are listed first. This enables you to see what actions are needed for the feature flag. To select a particular sort order, click **Pending changes** first and then the desired order.
 
-### Share a rollout board
+#### Share a rollout board
 
 You can share the current view of a rollout board, including applied filters, by using the Copy link selection. To share a rollout board, click the **Copy link** button.  This copies a URL to your clipboard, including the additional filter parameters.
 
-### Select properties
+#### Select properties
 
 Within a session, you can select certain statuses to get the desired view.
 

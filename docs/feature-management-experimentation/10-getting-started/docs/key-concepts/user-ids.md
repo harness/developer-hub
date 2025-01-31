@@ -25,3 +25,5 @@ Here are a few examples:
 
 Be mindful of using random user IDs, as [overuse of random IDs](https://help.split.io/hc/en-us/articles/26978089134349-MTK-Usage-and-Comparing-Counts#use-of-unstable-ids) can increase your MTK count (and [costs](https://help.split.io/hc/en-us/articles/360034159232-Account-usage-data)) unnecessarily.
 :::
+
+For a deep dive into user IDs, go to [How does FME ensure a consistent user experience?](/docs/feature-management-experimentation/40-feature-management/docs/target-with-flags/targeting-rules/percentage-rollouts/how-does-split-ensure-a-consistent-user-experience.md)

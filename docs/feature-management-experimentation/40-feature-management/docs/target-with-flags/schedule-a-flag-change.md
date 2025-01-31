@@ -13,7 +13,9 @@ import Link from "@docusaurus/Link";
 
 Essential scheduling provides the capability to launch a feature on a certain date and time. This allows you to make changes to a feature flag and get approvals ahead of the release date which makes release planning and collaboration easier and more flexible while also increasing the likelihood to release on a target date.
 
-**Note: Total number of scheduled changes per month depends if you are in a certain pricing tier. Contact [support@split.io](emailto:support@split.io) for more information.**
+::note
+The total number of scheduled changes per month depends if you are in a certain pricing tier. Contact [support@split.io](emailto:support@split.io) for more information.
+:::
 
 To use essential scheduling, do the following:
 
@@ -38,6 +40,6 @@ To use essential scheduling, do the following:
 
 4. After the feature flag is saved and approved, the feature flag displays in a read-only mode until it’s published at the scheduled time or the scheduling is discarded. Be aware that if a scheduled change request is pending approval and so much time has passed that the scheduled date is now in the past, the change request immediately gets published once it is approved. For example, if you schedule a change request to go out on February 1st  and the approval occurs on February 3rd, the change is immediately published on February 3rd.
 
-# Discarding a scheduled change
+## Discarding a scheduled change
 
 To discard a scheduled change, click the scheduling counter and click the **Discard changes** button.
