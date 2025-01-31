@@ -228,7 +228,7 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
        bound_issuer="<BOUND_ISSUER>"     
    ```  
 
-   ![jwt-conf](../static/jwt_configure.png)    
+   ![jwt-conf](../static/jwt-configure.png)    
 
 
 3. **Verify JWT Configuration**:  
