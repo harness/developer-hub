@@ -1,6 +1,6 @@
 ---
 title: Configuring containerUser and remoteUser in Gitspace
-description: Learn more about how you can configure "containerUser" and "remoteUser" in your Gitspace.
+description: Learn more about how you can configure "containerUser" and "remoteUser". 
 sidebar_position: 5
 sidebar_label: User Configuration
 ---
