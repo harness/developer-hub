@@ -2055,3 +2055,31 @@ Controlling the number of concurrently deployed services in a multi-service depl
 
 ### How can a user utilize a step template with a script to run across multiple hosts in parallel?
 Users migrating from Cloudbees can create multiple infrastructures with host names set as override variables. When selecting multiple infrastructures during execution, the pipeline runs the stage for each selected infrastructure.
+
+### What is multi-deployment, and why are stages suffixed with _0, _1, etc.?
+Multi-deployment allows you to deploy to multiple environments. The suffixes (_0, _1, etc.) differentiate between different stages of deployment.
+
+### Why is only one stage with the suffix _0 being deployed in my case?
+Since you are providing only one environment and one infrastructure, only one stage is created, and it is suffixed with _0.
+
+### How can I deploy to only one environment and infrastructure?
+To deploy to a single environment and infrastructure, uncheck the "Deploy to multiple Environments or Infrastructure" option on the environments tab.
+
+### What can the identifier of a stage (e.g., "foo") be used for?
+The identifier (like "foo") can be used in any expression, both inside and outside the stage. However, inside the same stage, it's better not to use the identifier, as the execution is already in the context of that stage.
+
+### How should I reference a stage’s identifier in expressions?
+You can start the expression with the stage identifier when referencing it outside the stage. For example: <+stage.spec.execution.steps.Build_bazel_target.output.outputVariables.packageId>.
+
+### Can I search for the Harness log of a previous stage and check for a specific string?
+There is no direct way to access the log entries from previous or current stage executions in Harness. The execution logs are not exposed via any variable for easy access.
+
+### How can I check the logs of previous stages?
+To check the logs, you can download the log files using the Harness API, untar the files, and then search for the desired string within the log files manually.
+
+### Why is the allowedValues parameter required in the value of the stage variable in the compiled YAML?
+  The allowedValues parameter ensures that the values provided for the variable are within the predefined acceptable range. Without it, you cannot validate if any runtime input or other values fall within the allowed set.
+
+### What happens if allowedValues is not propagated to the compiled YAML?
+  If allowedValues is not included in the compiled YAML, you won't be able to validate if the values provided (e.g., from runtime input) are within the allowed range, which could lead to invalid or unexpected behavior.
+
