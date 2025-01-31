@@ -1,6 +1,6 @@
 ---
-title: How to configure my proxy server to allow connections to Split servers?
-sidebar_label: How to configure my proxy server to allow connections to Split servers?
+title: What are the Split cloud HTTP endpoints?
+sidebar_label: What are the Split cloud HTTP endpoints?
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: ""
@@ -14,7 +14,9 @@ import Link from "@docusaurus/Link";
 
 ## Question
 
-What URLs or IP addresses do I need to allow in order to have my internal systems connect to Split's cloud platform?
+How to configure my proxy server to allow connections to Split servers?
+
+Specifically, what URLs or IP addresses do I need to allow in order to have my internal systems connect to Split's cloud platform?
 
 ## Answer
 
