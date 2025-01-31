@@ -13,7 +13,7 @@ Make sure you have latest version of Harness Open Source installed that includes
 
 ## How to create a Gitspace
 
-1. **Login** to Harness Open Source, and create a [new project](https://developer.harness.io/docs/open-source/installation/quick_start#create-a-project). You will see **Gitspace** available in the sidenav. 
+1. **Login** to Harness Open Source, and create a [new project](https://developer.harness.io/docs/open-source/installation/quick-start#create-a-project). You will see **Gitspace** available in the sidenav. 
 
 2. Click on **+New Gitspace**. To create a **Gitspace** using the [sample app](https://github.com/harness-community/demo-repo-nm). You have two options to create Gitspace:
 
