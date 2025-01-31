@@ -77,7 +77,8 @@ If you have any questions or need assistance with the whitelisting process, plea
 
 - Added support for SSH clone with passphrase in Git, GitHub, GitLab, Azure, and Bitbucket connectors. This feature is available on Linux and macOS infrastructure (Windows support is not yet available) and requires `drone-git` plugin version 1.6.5. (CI-15212)
 - Output variables from a plugin step are now visible in the Outputs tab even when the step fails. Only variables populated up until the failure point will be displayed. This feature is available in Lite Engine and Addon version 1.16.73 and can be enabled using the `CI_ENABLE_OUTPUTS_STEP_FAILURE` feature flag. (CI-15379)
-  
+- The `CI` environment variable, which returns `true` to indicate a Continuous Integration environment, is now available. (CI-15304, ZD-73840)
+    
 #### Harness images updates
 
 | **Image**                | **Change**                                      | **Previous version** | **New Version** |
