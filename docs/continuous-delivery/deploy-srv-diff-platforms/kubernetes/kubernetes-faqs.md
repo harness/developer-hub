@@ -903,3 +903,7 @@ Increasing CPU and memory resources on delegates can improve monitoring performa
 
 ### How to handle old release files in OpenShift under the configMap section when versioning deployments?
 Old config maps can be cleaned up without affecting rollbacks, but keeping the latest two versions is recommended.
+
+### While using Canary deployment, Harness is adding -canary to the release name. This is causing an issue as we have restrictions and cannot change the release name for some resources like PVC. How can we resolve this?
+As the -canary suffix is added by Harness to track canary releases, it can cause issues with certain resources taht have strict naming requirements.
+To work around this, you can remove the PVC or similar workloads from the manifest and apply them separately using a Kubernetes Job. 
