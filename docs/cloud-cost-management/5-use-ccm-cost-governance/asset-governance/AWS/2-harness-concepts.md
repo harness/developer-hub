@@ -180,7 +180,6 @@ We now have Terraform support for managing Governance Enforcements. Please see [
 :::
 
 
-
 ## Evaluations
 
 Evaluations include all the data about enforcements run (both RUN ONCE from rule editor and from Enforcement). The Evaluations window also shows you the total cost impact with each Enforcement i.e. the costs or spendings associated with each Evaluation along with the last time that Rule/Rule set was enforced. With Evaluations, you can view and audit all the Enforcements that ran in the past.
