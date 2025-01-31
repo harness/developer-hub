@@ -11,7 +11,7 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020579472-Audit-logs <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-# Overview
+## Overview
 
 Audit logs are captured every time a member changes a feature flag, segment, or metric. These logs provide detailed records of every change that took place and who made them. Here are the changes we track:  
 
@@ -27,14 +27,14 @@ Audit logs are captured every time a member changes a feature flag, segment, or 
 | Reallocating a feature flag | | Updating an alert policy |
 | | | Removing an alert policy |
 
-# Titles and comments in changes
+## Titles and comments in changes
 When you click review changes after making a change to a feature flag, segment, or metric, a panel displays offering a diff view of the changed elements. You can enter a title and comments for the change made to make it easier for teammates to understand why the change was made. If you want to make titles and comments required for all changes in a project, refer to the [Projects](https://help.split.io/hc/en-us/articles/360023534451-Projects#editing-a-project) guide for more information.
 
 <p>
     <img src="https://help.split.io/hc/article_attachments/15614601902733" alt="Screen_Shot_2023-05-09_at_8.41.21_AM.png" />
 </p>
 
-# Viewing audit logs
+## Viewing audit logs
 
 To find audit log entries, click the **Audit logs** tab when viewing a feature flag, segment, or metric. 
 

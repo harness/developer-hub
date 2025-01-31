@@ -3,6 +3,7 @@ title: Segments
 sidebar_label: Segments
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: Lists of user IDs
 ---
 
 A segment is a list of [user IDs](./user-ids.md).

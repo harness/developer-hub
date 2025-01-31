@@ -3,6 +3,7 @@ title: Feature flags
 sidebar_label: Feature flags
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: "Allow you to enable or disable a feature without deploying source code"
 ---
 
 Feature flags are a software development tool that allow you to enable or disable a feature without modifying the source code or performing a new deployment.

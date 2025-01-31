@@ -1,6 +1,6 @@
 ---
-title: Manage user groups
-sidebar_label: Manage user groups
+title: Groups
+sidebar_label: Groups
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -13,11 +13,11 @@ import Link from "@docusaurus/Link";
 
 A group is a convenient way to manage a collection of users in your account. Use groups to grant administrative controls and grant environment-, feature flag-, or segment-level controls.
 
-# About default administrator group
+## About default administrator group
 
 When you set up Split, the Administrators group is automatically created.  Administrators are the only users that can access advanced administrative features, e.g., account settings, traffic type setup, team management, environment setup, API tokens and integrations.
 
-# Creating a group
+## Creating a group
  
 To create a new group, do the following:
 
@@ -25,7 +25,7 @@ To create a new group, do the following:
 2. Click **Add group**.
 3. Enter a **Name** and **Description** for this group and click the **Create** button.
 
-# Deleting a group
+## Deleting a group
 
 To delete a group, do the following:
 
@@ -36,7 +36,7 @@ From the left navigation pane, click the user's initials at the bottom, select *
 Deleting a group is **permanent**.  If you are using the group to control edit rights for feature flag or segments, users in this group may no longer be able to edit those items if the group is deleted.
 :::
 
-# Modifying group membership
+## Modifying group membership
  
 To edit a group's membership, do the following:
 

@@ -3,6 +3,7 @@ title: Invite users and manage user permissions
 sidebar_label: Invite users and manage user permissions
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 2
 ---
 
 import Link from "@docusaurus/Link";
@@ -21,11 +22,11 @@ Split supports three roles to give users different permission levels in the Spli
 
 **Note: Administrators is a group that has been created for you. The first user in a new account is automatically added to the Administrators group. A user added to the Administrators group will have full administrator privileges, without regard for other role assignments.**
 
-# Assigning user roles
+## Assigning user roles
 
 The following sections explain how a user in the Administrators group can assign a role to other users.
 
-## Assigning an Editor or Viewer Role when creating a user
+### Assigning an Editor or Viewer Role when creating a user
 
 A role is assigned when creating a new user as described below.
 
@@ -33,7 +34,7 @@ A role is assigned when creating a new user as described below.
 2. Assign the Editor or Viewer role by selecting the role in the User role menu list. The Editor role is selected by default.
 3. Click the **Invite** button. The new user is created.
 
-## Creating a new user in the Administrators group
+### Creating a new user in the Administrators group
 
 A new user can be created in the Administrators group as described below.
 
@@ -41,7 +42,7 @@ A new user can be created in the Administrators group as described below.
 2. Add the user to the Administrators group by typing 'Administrators' in the Group text box.
 3. Click the **Invite** button. The new user is created.
 
-## Changing permissions of existing users by assigning the Editor or Viewer role
+### Changing permissions of existing users by assigning the Editor or Viewer role
 
 The Editor or a Viewer role can be assigned to an existing user by following the steps below.
 
@@ -55,7 +56,7 @@ The Editor or a Viewer role can be assigned to an existing user by following the
 
 4. Click the **Save** button. The new role will be assigned to the user.
 
-## Adding an existing user to the Administrators group
+### Adding an existing user to the Administrators group
 
 An existing user can be added to the Administrators group as described below.
 
@@ -72,10 +73,10 @@ An existing user can be added to the Administrators group as described below.
      <img src="https://help.split.io/hc/article_attachments/16432917628941" alt="add-as-admin.png" />
    </p>
 
-# About object-level edit permissions
+## About object-level edit permissions
 
 For a user that is not in the Administrators group, object-level edit permissions previously granted will no longer be honored once the user is switched to the Viewer role. In other words, even if the user still appears in object-level edit permissions (Feature flag, Segment, or Metric owners), Environment settings (in the list of editors and approvers), or Feature flag change requests (in the list of approvers), the user will only be able to view any of those objects, and will not be able to edit them.
 
-# About audit logging
+## About audit logging
 
 A change in the role assignment for a user (e.g. from Editor to Viewer) is tracked in the Admin audit logs (under Admin settings, Security). Viewing behavior of a Viewer user is not captured in audit logs.

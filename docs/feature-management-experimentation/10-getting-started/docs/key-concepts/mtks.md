@@ -3,9 +3,10 @@ title: Monthly Tracked Keys (MTKs)
 sidebar_label: Monthly Tracked Keys
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: "The number of unique user IDs counted to your account per month"
 ---
 
-A key is a `user ID` used for a feature flag evaluation. FME counts the number of unique `user ID`s you use in a month. This number is called **Monthly Tracked Keys (MTKs)**.
+A key is a `user ID` used for a feature flag evaluation. FME counts the number of unique `user ID`s you evaluate in a month. This number is called **Monthly Tracked Keys (MTKs)**.
 
 :::info
 MTKs are the units used to measure your FME usage (and costs).  Go to [Account Usage Data](https://help.split.io/hc/en-us/articles/360034159232-Account-usage-data#usage-data) for more information.

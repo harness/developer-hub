@@ -19,7 +19,7 @@ Each feature flag that you create has its own set of targeting rules in each env
 
 You can manage your environments for each project from your Admin settings. You can also add new environments or edit existing.
 
-# Navigating
+## Navigating
 
 The Environments section provides you and your team insights into the feature flags configured in each environment. Teams can now easily toggle between any environment via the environments dropdown.
 
@@ -29,7 +29,7 @@ Navigate to the environments icon to quickly see the status of each feature flag
   <img src="https://help.split.io/hc/article_attachments/15587079043853" alt="navigate-feature-flag-status-by-environment.png" />
 </p>
 
-# Editing
+## Editing
 
 When you first create your account, you are provided with two environments. To manage your environments, go to the **Projects** tab in your **Admin settings** page. Select the project that you want to edit environments for. You can: 
 
@@ -40,6 +40,6 @@ When you first create your account, you are provided with two environments. To 
   <img src="https://help.split.io/hc/article_attachments/15587865204621" alt="Screen_Shot_2023-05-08_at_11.59.42_AM.png" />
 </p>
 
-# Localhost
+## Localhost
 
 A developer can set up a feature flag on their development machine without the SDK requiring network connectivity. This is called the localhost environment. This environment does not show up in the user interface because, by definition, that requires network connectivity. To configure your SDK for this mode, refer to your language SDK guide.

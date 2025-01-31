@@ -3,6 +3,7 @@ title: API keys
 sidebar_label: API keys
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: "Authorize communication with Harness servers"
 ---
 import OutboundSvg from "@site/docs/feature-management-experimentation/_templates/OutboundLink.mdx";
 import FindAPIKeys from "@site/docs/feature-management-experimentation/_templates/_find-sdk-api-key.mdx";

@@ -3,6 +3,7 @@ title: Deactivate or reactivate a user
 sidebar_label: Deactivate or reactivate a user
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 3
 ---
 
 import Link from "@docusaurus/Link";
@@ -13,14 +14,14 @@ import Link from "@docusaurus/Link";
 
 Administrators can take a number of actions to help manage users in their Split account.
 
-# Deactivate a user
+## Deactivate a user
 
 1. From the left navigation, click the **user's initials** at the bottom, select **Admin settings** and then **Users**.
 2. Click **Deactivate** next to a user’s name. The user’s status changes to **Inactive**.
 
 When the user’s login is deactivated, they cannot access your account in Split and cannot reactivate their own login. 
 
-# Reactivate a user
+## Reactivate a user
 
 1. From the left navigation, click the **user's initials** at the bottom, select **Admin settings** and then **Users**.
 2. Click **Activate** next to a user’s name. The user’s status changes to **Active**.

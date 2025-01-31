@@ -3,9 +3,10 @@ title: User IDs
 sidebar_label: User IDs
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: Identify your application end user (or customer)
 ---
 
-A user ID represents your application end user. This is the user that sees your app's feature flag variations.
+A user ID represents your application end user (or customer). This is the user that sees your app's feature flag variations.
 
 :::info
 User IDs are also called **keys** and **user keys**. When they are counted over a month, user IDs are called [MTKs](./mtks.md) (Monthly Tracked Keys).

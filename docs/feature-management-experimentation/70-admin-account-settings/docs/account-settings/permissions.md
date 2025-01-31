@@ -18,7 +18,7 @@ Administrators can control who can edit and configure feature flags and segments
 * Limit access to production environments: For example, for security compliance or per company requirements, you can limit edit access in production to an authorized group of individuals.
 * Limit access by teams: For example, for improved usability, you can limit edit access for different teams that only need access to certain environments.
 
-# Setting environment level permissions
+## Setting environment level permissions
 
 An environment has the following three permission settings that you can set:
 
@@ -89,7 +89,7 @@ To set up permissions, do the following:
 
 5. Click **Save** to save your changes.
 
-# Allowing administrators to skip approval 
+## Allowing administrators to skip approval 
 
 You can optionally specify if admins can skip an approval flow for specific environments when feature flags and segments need updating. This prevents delays in necessary changes to feature flags and segments that need to quickly occur and remove adoption blockers. To set this up, do the following:
 

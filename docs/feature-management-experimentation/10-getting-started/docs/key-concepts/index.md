@@ -8,6 +8,6 @@ helpdocs_is_published: true
 
 import DocCardList from '@theme/DocCardList';
 
-Click below to define some key concepts that unlock how FME works.
+Click on the tiles below to unlock key concepts that explain how FME works.
 
 <DocCardList />

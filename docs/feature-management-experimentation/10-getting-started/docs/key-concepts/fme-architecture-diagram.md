@@ -1,9 +1,9 @@
 ---
 title: FME object architecture diagram
 sidebar_label: FME object architecture diagram
-description: Visualization of object relationship for FME engineers and administrators
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: Visualization of object relationship for FME engineers and administrators
 ---
 
 The diagram below shows FME objects and object relationships.

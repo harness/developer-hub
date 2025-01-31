@@ -3,6 +3,7 @@ title: FME payload
 sidebar_label: FME payload
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: "The feature flag and segment definitions fetched by FME SDKs"
 ---
 
 <p>

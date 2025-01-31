@@ -25,7 +25,7 @@ It is also possible, but much less common, for a traffic type to identify someth
 
 For some feature flags, you may want to randomize by sessionId rather than userId, so session is another possible traffic type. Because there will be more sessions than users, with this traffic type, you end up with a higher number of unique keys being sent to Split.
 
-# Traffic Types and Impressions
+## Traffic Types and Impressions
 
 Traffic types are used to match events with impressions so that user events are correlated to treatments served to the same users.
 
@@ -33,7 +33,7 @@ Impressions have their traffic type determined by the traffic type was assigned 
 
 When evaluating a feature flag it is implied that the key you provided is of the correct traffic type (e.g. if you are evaluating a FF of ‘user’ traffic type, then you’d be passing a user ID). The SDK does not perform any kind of traffic type validation.
 
-# Traffic Types and Events
+## Traffic Types and Events
 
 A traffic type must be specified when sending events. When using a Server Side SDK there is no specific key associated with the SDK instance so for every treatment evaluation you need to pass in the key, and for every event that is tracked you need to pass both the key and the traffic type. 
 
@@ -41,7 +41,7 @@ Client side SDKs are typically tied to one or a handful of keys (typically keys 
 
 
 
-# Customizing a traffic type
+## Customizing a traffic type
 
 You can customize traffic types as needed at any time, but it is a best practice to do so during your initial account setup, taking into consideration your anticipated needs. Once a feature flag is created with a given traffic type, that traffic type cannot be changed, so it is important to get it right the first time.
 

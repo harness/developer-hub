@@ -3,6 +3,7 @@ title: GetTreatment call
 sidebar_label: GetTreatment call
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: "The method used to evalute feature flags in FME SDKs"
 ---
 
 `GetTreatment` is a method defined in the FME SDKs. When you use an SDK in your application code, the SDK factory client calls the `GetTreatment` method to evaluate a feature flag. This feature flag evaluation is executed in milliseconds locally using [locally cached memory](./fme-payload.md) without requiring any network calls.

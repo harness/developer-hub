@@ -3,13 +3,14 @@ title: Events
 sidebar_label: Events
 helpdocs_is_private: false
 helpdocs_is_published: true
+description: "User actions, performance measurements, or error exceptions that you send to FME"
 ---
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020585772-Events </button>
 </p>
 
-An event is a user action, performance metric, or error exception that you send to FME.
+An event is a user action, performance measurement, or error exception that you send to FME.
 
 FME attributes your events to specific feature flag variations and uses this data to calculate metric results and analytics.This enables you to measure the impact of your features on customer behavior, user experience, or application performance. 
 

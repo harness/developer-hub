@@ -3,6 +3,7 @@ title: Unblock a user
 sidebar_label: Unblock a user
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 4
 ---
 
 import Link from "@docusaurus/Link";
@@ -11,7 +12,7 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020813272-Unblock-a-user </button>
 </p>
 
-# Password reset
+## Password reset
 
 A user can go through the password reset flow to unblock their login.
 
@@ -20,7 +21,7 @@ A user can go through the password reset flow to unblock their login.
 3. Enter your email.
 4. Follow the instructions sent to the email, provided the user exists.
 
-# Admin intervention
+## Admin intervention
 
 An administrator can unblock users in Admin settings.
 

@@ -13,7 +13,7 @@ import Link from "@docusaurus/Link";
 
 As an administrator, you can set up approval workflows in your environment. These workflows help you manage what changes users or groups are allowed to make on any given environment. These approvals apply to feature flags and segments. Editors on an environment can submit the change for approval to another teammate using Split to ensure no mistakes were made in the release. For more information about setting up approval flows, refer to the [Permissions](https://help.split.io/hc/en-us/articles/360020579052-Permissions) guide.
 
-# Submitting for approval
+## Submitting for approval
 
 As part of the review and [comment process](https://help.split.io/hc/en-us/articles/360020579472-Audit-logs) for your changes, you can select a set of teammates or [groups](https://help.split.io/hc/en-us/articles/360020812952-Manage-user-groups) to review the change. Enter the name of the teammate or group into the search bar and select your desired approvers.
 
@@ -27,7 +27,7 @@ Once you submit a change for approval, the selected approvers receive an email n
   <img src="https://help.split.io/hc/article_attachments/30801599662093" alt="approval_flows_two.png" />
 </p>
 
-# Skipping approval
+## Skipping approval
 
 If the environment is set to Allow Admins to Skip the Approval, the following message appears on the feature flag that indicates that the admin now has the option to skip approvals. This message is only available for Admins. For other users, the message Approvals required appears.
 
@@ -43,7 +43,7 @@ Additionally, you can also change permissions when you click the **Review change
 
 **Note: The Skip Approvals & save link only appears for admins.**
 
-# Reviewing a request
+## Reviewing a request
 
 As an approver, you can review the diff of the proposed change and then either approve or reject the change with a comment to let the submitter know why you made your decision to approve or reject. From the left navigation, go to My work to see a list of changes that are waiting for your approval.
 
@@ -51,7 +51,7 @@ As an approver, you can review the diff of the proposed change and then either a
   <img src="https://help.split.io/hc/article_attachments/30801604791565" alt="approval_flows_five.png" />
 </p>
 
-# Withdrawing a request
+## Withdrawing a request
 
 As a submitter, if you make a mistake or no longer believe your change is relevant, you can withdraw the change and notify the approvers that their review is no longer needed. From the left navigation, select **My work** to see a list of changes that you submitted for approval. To withdraw a change, click the **View** link to review or withdraw your changes.
 
