@@ -276,7 +276,7 @@ gsutil -m cp \
 
 #### Cloud Cost Management
 
-- EC2 recommendation tags: We’ve introduced support for EC2 recommendation tags, making it easier to organize and optimize your instances.[CCM-20883]
+- EC2 recommendation tags: We’ve introduced support for EC2 recommendation tags, making it easier to organize your instances.[CCM-20883]
 
 - Data Optimization: As part of our ongoing improvements, we have implemented new tables for labels and cost categories data. After performing the Cost category backfill, we have ensured that the necessary data is populated in these new tables, and later we use these tables for faster result. [CCM-21043]
 
@@ -327,7 +327,7 @@ gsutil -m cp \
 
 #### Cloud Cost Managment
 
-- EC2 recommendation tags: We’ve introduced support for EC2 recommendation tags, making it easier to organize and optimize your instances.[CCM-20883]
+- EC2 recommendation tags: We’ve introduced support for EC2 recommendation tags, making it easier to organize your instances.[CCM-20883]
 
 - Data Optimization: As part of our ongoing improvements, we have implemented new tables for labels and cost categories data. After performing the Cost category backfill, we have ensured that the necessary data is populated in these new tables, and later we use these tables for faster result. [CCM-21043]
 
