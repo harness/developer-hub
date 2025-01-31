@@ -3,6 +3,7 @@ title: Two-factor authentication (2FA)
 sidebar_label: Two-factor authentication (2FA)
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 1
 ---
 
 import Link from "@docusaurus/Link";

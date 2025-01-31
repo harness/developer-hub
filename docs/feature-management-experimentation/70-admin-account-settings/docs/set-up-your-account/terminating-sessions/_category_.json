@@ -2,5 +2,6 @@
     "label": "Terminating sessions",
     "collapsible": true,
     "collapsed": true,
-    "className": "red"
+    "className": "red",
+    "position": 1
 }

@@ -37,4 +37,4 @@ The [Admin API](https://docs.split.io/reference/introduction) documentation prov
 
 You can also use the [Python Library Wrapper for Split API](./docs/fme-api-wrappers/python-library-wrapper-for-fme-api/python-library-wrapper-for-fme-api.md) to work with Split. This library is maintained by the Harness FME team.
 
-See also [Split API FAQs](./docs/zfaqs).
+See also [Split API FAQs](./docs/faqs).
