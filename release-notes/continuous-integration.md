@@ -44,7 +44,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 | **Image**                | **Change**                                      | **Previous version** | **New Version** |
 | ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
 | `plugins/buildx`      | Updated dependencies to address vulnerabilities | 1.1.24                | 1.1.25           |
-| `plugins/ci-addon`       | Minor updates and improvements                  | 1.16.71              | 1.16.73         |
+| `plugins/ci-addon`       | Changes described in fixed issues list                  | 1.16.71              | 1.16.73         |
 | `plugins/ci-lite-engine` | Minor updates and improvements                  | 1.16.71              | 1.16.73         |
 
 ### Version 1.62
