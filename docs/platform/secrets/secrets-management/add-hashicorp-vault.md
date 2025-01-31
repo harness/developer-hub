@@ -204,6 +204,102 @@ In **Service Account Token Path** enter the JSON Web Token (JWT) path. This is t
 
 For more information, go to [Service Account Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens) in the Kubernetes documentation.
 
+### Option: JWT/OIDC Auth
+
+JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JWT token in just a few steps.
+
+#### Steps to enable Vault authentication:  
+
+1. **Enable the JWT authentication method** on custom path:  
+   
+   Enable any custom path with `<YOUR_PATH>/jwt`. For example, we have used `harness/jwt` below.
+
+   ```  
+   vault auth enable -path=harness/jwt jwt  
+   ```  
+
+2. **Configure the JWT authentication method**:  
+   
+   - Set the OIDC discovery URL or manually specify the JWT issuer with `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID/>`. Harness exposes endpoints with discovery url for publishing the OpenID configuration and RSA public key.  
+
+   ```  
+   vault write auth/harness/jwt/config   
+       oidc_discovery_url="<OIDC_DISCOVERY>"   
+       bound_issuer="<BOUND_ISSUER>"     
+   ```  
+
+   ![jwt-conf](../static/jwt-configure.png)
+
+
+3. **Verify JWT Configuration**:  
+   
+   After setting the OIDC discovery URL or manually specifying the JWT issuer, you can verify the configuration by running the following command:
+   ```  
+   curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/config
+   ```  
+   This will return the current configuration, showing details like `bound_issuer`, `oidc_discovery_url`, and other settings.
+
+4. **Create a Role for JWT Authentication**:  
+   
+   Create a role that maps JWT claims to Vault policies. Define this role in a file, such as `role-config.json`. Here's an example of how to configure it:
+
+   - **bound_audiences**: Set this to the audience (`aud`) in the JWT claims, matching the JWT authentication mount path (`harness/jwt`).
+   - **bound_claims**: Specify the claims you want to validate (e.g., `sub`, `iss`, `account_id`).
+   - **policies**: Define the policies associated with the client token.
+   - **ttl**: Set the time-to-live for the generated token.
+   - **role_type**: Roles allow you to group configuration settings together to simplify plugin management. Set this to `jwt`.
+
+   Example `role-config.json`:
+   ```json
+   {
+     "bound_audiences": ["<CUSTOM_MOUNT_PATH>"],
+     "user_claim": "sub",
+     "bound_claims": {
+       "sub": "<YOUR_ACCOUNT_ID>",
+       "iss": "<SAME_AS_OIDC_DISCOVERY_URL>",
+       "account_id": "<YOUR_ACCOUNT_ID>"
+     },
+     "policies": ["<YOUR_POLICIES>"],
+     "ttl": "1h",
+     "max_ttl": "4h",
+     "role_type": "jwt"
+   }
+   ```
+
+5. **Apply the Role Configuration**:  
+   
+   Use the following command to create the role in Vault:
+   ```  
+   curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" --request POST --data @role-config.json http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/role_assigned
+   ```  
+
+6. **Verify the Role**:  
+   
+   To ensure that the role was created successfully, run the following command:
+   ```  
+   curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/role_assigned
+   ```  
+
+7. **Configure in HashiCorp Vault in Harness**
+
+     ![hashicorp](../static/harshicorp.gif)
+
+   - **Configure directly through Harness, without using a delegate**:
+
+      After setting up your Vault URL, Authentication, Path, and Role, choose the connectivity mode: either using a delegate or without a delegate. For now, we will use the **"Connect through Harness Platform"** option, as shown in the image below. 
+      
+      Next, set up the engine by either auto-fetching or manually configuring it. Finally, the system will check the connection. Click "Finish" to complete the setup.
+
+      ![hashicorp-without-delegate](../static/harshicorp-without-delegate.gif)
+   
+   - **Configure directly through Harness Delegate**:
+
+      Repeat the steps by configuring Vault URL, Authentication, Path and role, choose **"Connect through Harness Delegate"** option in connectivity mode.
+
+      Next, set up the engine (auto-fetch or manual). Once the connection is verified, click "Finish" to complete the setup.  
+
+      ![hashicorp-without-delegate](../static/harshicorp-with-delegate.gif)
+
 ### Step 2: Select Secret Engine and Version
 
 Once you have entered the required fields, you can choose to **Fetch Engines** or **Manually Configure Engine**.
