@@ -212,7 +212,7 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
 
 1. **Enable the JWT authentication method** on custom path:  
    
-   Enable any custom path with `<YOUR_PATH>/jwt`. For example, we have used `harness/jwt` below.
+   Enable any custom path with `<YOUR_PATH>`. For example, we have used `harness/jwt` below.
 
    ```  
    vault auth enable -path=harness/jwt jwt  
@@ -250,6 +250,15 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
    - **role_type**: Roles allow you to group configuration settings together to simplify plugin management. Set this to `jwt`.
 
    Example `role-config.json`:
+
+   :::note
+      The **sub** field can have the following format, depending on the scope of the authentication method configured in Harness:
+
+         - For account scope only: `<ACCOUNT_ID>`
+
+         - With the `PL_OIDC_ENHANCED_SUBJECT_FIELD` feature flag enabled: `account/{account_id}:org/{organization_id}:project/{project_id}`
+   :::
+
    ```json
    {
      "bound_audiences": ["<CUSTOM_MOUNT_PATH>"],
@@ -285,6 +294,10 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
      ![hashicorp](../static/harshicorp.gif)
 
    - **Configure directly through Harness, without using a delegate**:
+
+      :::note
+         In this step, the customer needs to whitelist the Harness Platform IPs to enable connectivity to Vault.
+      :::
 
       After setting up your Vault URL, Authentication, Path, and Role, choose the connectivity mode: either using a delegate or without a delegate. For now, we will use the **"Connect through Harness Platform"** option, as shown in the image below. 
       
