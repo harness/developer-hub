@@ -15,7 +15,7 @@ Basic code to use Python and Split REST API to individually target segments to t
 
 ## How to use
 
- - Class wrapper for FME API, installation instructions in this link: [Python Library Wrapper for Split API](https://help.split.io/hc/en-us/articles/4412331052685)
+ - Class wrapper for Split API, installation instructions in this link: [Python Library Wrapper for Split API](https://help.split.io/hc/en-us/articles/4412331052685)
  - Update your Split Admin API key, environment name, workspace (project) name, and segment name in the code below.
  - Update the feature flag and treatment names in the `splits` array
 

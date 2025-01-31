@@ -1,6 +1,6 @@
 ---
-title: FME proxy
-sidebar_label: FME proxy
+title: Split Proxy
+sidebar_label: Split Proxy
 ---
 
 The Split Proxy enables you to deploy a service in your own infrastructure that behaves like Split's servers and is used by both server-side and client-side SDKs to synchronize the flags without connecting to Split's actual backend directly.

@@ -19,7 +19,7 @@ The script will use the REST Admin API to perform the actions.
 
 ## How to use
 
- - Class wrapper for FME API, installation instructions in this link: [Python Library Wrapper for Split API](https://help.split.io/hc/en-us/articles/4412331052685)
+ - Class wrapper for Split API, installation instructions in this link: [Python Library Wrapper for Split API](https://help.split.io/hc/en-us/articles/4412331052685)
  - Update your Split Admin API key in the the code below.
  - Update the `sourceProjectName`, `sourceEnvironmentName`, `sourceSplitName` (feature flag name), `targetProjectName`, `targetEnvironmentName`, `targetSplitName` (feature flag name), `targetSplitDescription`, `targetTrafficTypeName` variables.
 

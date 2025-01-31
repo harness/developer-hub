@@ -1,6 +1,6 @@
 ---
-title: "Article: Performance benefits with FME Synchronizer"
-sidebar_label: "Article: Performance benefits with FME Synchronizer"
+title: "Article: Performance benefits with Split Synchronizer"
+sidebar_label: "Article: Performance benefits with Split Synchronizer"
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 8

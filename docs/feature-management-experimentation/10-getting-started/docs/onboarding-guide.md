@@ -22,7 +22,7 @@ This series walks you through creating your first feature flag, using an FME SDK
 
 ## Quickstart wizard
 
-You can also follow the SDK Setup and Event Ingestion **Quickstart wizard** in FME UI. Click **Help** in the left navigation menu, and click on one of the quickstarts.
+You can also follow the SDK Setup and Event Ingestion **Quickstart wizard** in FME/Split. Click **Help** in the left navigation menu, and click on one of the quickstarts.
 
 ![A screenshot of the Quickstart guides in Split UI](./static/fme-quickstart.png)
 

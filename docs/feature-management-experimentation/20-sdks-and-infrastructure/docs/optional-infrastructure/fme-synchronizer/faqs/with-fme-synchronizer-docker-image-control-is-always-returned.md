@@ -1,6 +1,6 @@
 ---
-title: With FME Synchronizer Docker image, control is always returned by getTreatment
-sidebar_label: With FME Synchronizer Docker image, control is always returned by getTreatment
+title: With Split Synchronizer Docker image, control is always returned by getTreatment
+sidebar_label: With Split Synchronizer Docker image, control is always returned by getTreatment
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

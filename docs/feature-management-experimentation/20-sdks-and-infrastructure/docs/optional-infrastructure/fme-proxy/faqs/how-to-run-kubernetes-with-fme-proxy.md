@@ -1,6 +1,6 @@
 ---
-title: How to run Kubernetes with FME Proxy
-sidebar_label: How to run Kubernetes with FME Proxy
+title: How to run Kubernetes with Split Proxy
+sidebar_label: How to run Kubernetes with Split Proxy
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 ## Introduction
 
-Kubernetes is a tool used to orchestrate and manage containerized applications. FME Synchronizer, FME Evaluator, and FME Proxy can be run on your own infrastructure. These apps can handle specific use cases for feature flagging and experimentation with our SDKs and APIs.
+Kubernetes is a tool used to orchestrate and manage containerized applications. Split Synchronizer, Split Evaluator, and Split Proxy can be run on your own infrastructure. These apps can handle specific use cases for feature flagging and experimentation with our SDKs and APIs.
 
 All three Kubernetes related examples have a NodePort service to allow communication outside the cluster for the app. Once you have this up and running, if you are using minikube you can get the NodePort URL by calling:
 ```bash

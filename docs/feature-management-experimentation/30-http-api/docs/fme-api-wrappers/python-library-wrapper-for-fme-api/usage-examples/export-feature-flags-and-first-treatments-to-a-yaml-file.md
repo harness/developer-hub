@@ -53,7 +53,7 @@ feature_flag_treatments_3.yaml:
 
 ## How to use
 
- - Class wrapper for FME API, installation instructions in this link: [Python Library Wrapper for Split API](https://help.split.io/hc/en-us/articles/4412331052685)
+ - Class wrapper for Split API, installation instructions in this link: [Python Library Wrapper for Split API](https://help.split.io/hc/en-us/articles/4412331052685)
  - Update your Split Admin API key in the code below.
  - Update the `projectName` (project name), `environmentName`, `featureFlagNames`, and `targetYamlFile` variables.
 

@@ -18,7 +18,7 @@ Most customers choose to use the `user` traffic type. This would allow you to se
 You can use [segments](./segments.md) to group user IDs. Segments can be used in feature flag targeting rules.
 :::
 
-Traffic types should define your most granular level of feature flag targeting decisions. (Note that you can also set feature flag targeting rules based on user attributes.) Take a moment and carefully consider your traffic type choices. Our customer success advisors are on hand to help validate your FME plan.
+Traffic types should define your most granular level of feature flag targeting decisions. (Note that you can also set feature flag targeting rules based on user attributes.) Take a moment and carefully consider your traffic type choices. Our customer success advisors are on hand to help validate your Harness FME plan.
 
 :::info
 The actual string value you enter for your traffic types is a label. It is for your convenience and is not treated in any special way within FME. For example, FME will treat 'user', 'account', 'device', and 'utilizador' exactly the same. It is just a label for your convenience.

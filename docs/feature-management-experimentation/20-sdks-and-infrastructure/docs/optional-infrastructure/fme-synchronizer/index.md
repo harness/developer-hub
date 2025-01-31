@@ -1,6 +1,6 @@
 ---
-title: FME synchronizer
-sidebar_label: FME synchronizer
+title: Split Synchronizer
+sidebar_label: Split Synchronizer
 ---
 
 import Tabs from "@theme/Tabs";

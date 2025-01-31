@@ -14,7 +14,7 @@ Feature Management & Experimentation (FME) supports the following features.
 
 | **Features** | | **Description** |
 | --- | --- | --- |
-| Feature flags | ✅ | In Harness FME UI, you can create feature flags in Harness FME UI. In your codebase, you can use FME SDKs and conditional statments to deploy code "behind" feature flags without immediately releasing it to customers. Then, safely test, target, and turn features on/off with effortless controls. |
+| Feature flags | ✅ | You can create feature flags in FME/Split. In your codebase, you can use FME SDKs and conditional statments to deploy code "behind" feature flags without immediately releasing it to customers. Then, safely test, target, and turn features on/off with effortless controls. |
 | Binary flags | ✅ | Allow you to toggle a feature on or off. |
 | Multivariant flags | ✅ | You can also set multiple variants per feature. |
 | Release scheduling | ✅ | You can schedule feature releases or targeting changes to take effect on future dates. |
@@ -31,20 +31,18 @@ Feature Management & Experimentation (FME) supports the following features.
 | Experimentation | ✅ | Select your most valuable metrics and feature variations for low-risk flexible A/B/n experiments, to power your data-driven business decisions. |
 | Sequential testing | ✅ | Detect consistent significant impacts in the short term with sequential metric analysis. |
 | Fixed horizon testing | ✅ | Detect gradual steady impact over the long term with fixed horizon metric analysis. |
-| Integrations |  ✅ | Explore more than 30 pre-built ingrations, or create your own using Harness FME webhooks and Harness FME HTTP API endpoints. |
+| Integrations |  ✅ | Explore more than 30 pre-built ingrations, or create your own using Split webhooks and Split Admin API endpoints. |
 | User consent | ✅ | Protect privacy and confidential data with fully localized feature flag evaluations on all SDKs and user consent support on all client-side SDKs. |
 | AI support | ✅ | Meet ___Release Agent___, our new Harness FME module chatbot, ready to answer your questions and help you interpret experimental results. |
 
 ## FME SDK supported features
 
-Harness FME works with client-side server-side SDKs, built for popular programming languages. If you are looking for a language that is not shown below, consider using [FME Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator).
+Harness FME works with client-side server-side SDKs, built for popular programming languages. If you are looking for a language that is not shown below, consider using [Split Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator).
 
 Scroll left to see the feature list for all SDKs.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-<!--
 
 <Tabs
   groupId="sdktab" queryString>
@@ -462,11 +460,11 @@ import TabItem from '@theme/TabItem';
             <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
           </tr>
           <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>FME Synchronizer suport</th>
+            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Split Synchronizer suport</th>
             <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
           </tr>
           <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>FME Proxy suport</th>
+            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Split Proxy suport</th>
             <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
           </tr>
           <tr>
@@ -479,8 +477,6 @@ import TabItem from '@theme/TabItem';
 
   </TabItem>
 </Tabs>
-
--->
 
 <!-- TODO - uncomment this when the FME module can be selected in the Idea Portal
 ## Feature requests

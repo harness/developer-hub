@@ -15,7 +15,7 @@ Basic code to use Python and Split REST API to export feature flags names that d
 
 ## How to use
 
- - Class wrapper for FME API, installation instructions in this link: [Python Library Wrapper for Split API](https://help.split.io/hc/en-us/articles/4412331052685)
+ - Class wrapper for Split API, installation instructions in this link: [Python Library Wrapper for Split API](https://help.split.io/hc/en-us/articles/4412331052685)
  - Update your Split Admin API key in the code below.
  - Update the `workspaceName` (project name) and `environmentName` variables.
  - Set the `cutoffDate` variable as Epoch Time.

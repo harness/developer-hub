@@ -1,6 +1,6 @@
 ---
-title: How to handle high impression rate with FME Synchronizer?
-sidebar_label: How to handle high impression rate with  FME Synchronizer?
+title: How to handle high impression rate with Split Synchronizer?
+sidebar_label: How to handle high impression rate with  Split Synchronizer?
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -11,11 +11,11 @@ helpdocs_is_published: true
 
 ## Question
 
-When using a server-side Split SDK with the FME Synchronizer and Redis, what is the best configuration for Synchronizer to handle a high load of incoming impressions?
+When using a server-side Split SDK with the Split Synchronizer and Redis, what is the best configuration for Synchronizer to handle a high load of incoming impressions?
 
 ## Answer
 
-The FME Synchronizer (version 1.6.0 and above) has configuration parameters that can be set to achieve this.
+The Split Synchronizer (version 1.6.0 and above) has configuration parameters that can be set to achieve this.
 
 The Synchronizer documentation shows the [configuration parameter details](https://docs.split.io/docs/split-synchronizer#section-advanced-configuration). The specific parameters that control the performance are:
 * impressionsMaxSize
@@ -99,4 +99,4 @@ Please make sure to update the JSON with the relevant API Key, Redis host, port 
 
 ##See also
 
-For more information on setup and configuration, see [FME Synchronizer Runbook](https://help.split.io/hc/en-us/articles/360018343391-Split-Synchronizer-Runbook).
+For more information on setup and configuration, see [Split Synchronizer Runbook](https://help.split.io/hc/en-us/articles/360018343391-Split-Synchronizer-Runbook).

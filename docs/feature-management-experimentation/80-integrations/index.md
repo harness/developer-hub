@@ -17,7 +17,7 @@ import FmePreviewAdmonition from "@site/docs/feature-management-experimentation/
 
 <FmePreviewAdmonition ApiInfoHighlight="infoHighlight" />
 
-Harness FME integrates across a number categories including messaging, monitoring, issue management, customer data platforms and analytics. The Split developer community has contributed a number of integrations, bringing data from your feature delivery platform into the tools your team uses to enhance collaboration, making all tools flag aware. If you're not seeing a tool you need to be connected to Harness FME, we encourage you to leverage FME HTTP API and SDK functionality to connect with the tools your team uses. If you need help leveraging an FME SDK or FME HTTP API, contact [support@split.io](mailto:support@split.io).
+Harness FME integrates across a number categories including messaging, monitoring, issue management, customer data platforms and analytics. The Split developer community has contributed a number of integrations, bringing data from your feature delivery platform into the tools your team uses to enhance collaboration, making all tools flag aware. If you're not seeing a tool you need to be connected to Harness FME, we encourage you to leverage HTTP API and SDK functionality to connect with the tools your team uses. If you need help leveraging an FME SDK or HTTP API, contact [support@split.io](mailto:support@split.io).
 
 # Harness FME supported
 
@@ -56,7 +56,7 @@ You can utilize Harness FME supported integrations to send admin changes to the 
 
 # Community supported
 
-Leverage FME HTTP API and SDK functionality to connect Harness FME with the tools your team uses. Below are a few of the community-supported ways you can integrate FME with the tools your team uses. Already built out your own integration or want to request an integration, contact [support@split.io](emailto:support@split.io).  We’d like to feature your work to the entire Harness developer community.
+Leverage our HTTP API and SDK functionality to connect Harness FME with the tools your team uses. Below are a few of the community-supported ways you can integrate FME with the tools your team uses. Already built out your own integration or want to request an integration, contact [support@split.io](emailto:support@split.io).  We’d like to feature your work to the entire Harness developer community.
 
 * [Bugsnag](https://help.split.io/hc/en-us/articles/5709939011085)
 * [Dynatrace](https://help.split.io/hc/en-us/articles/360059673711)

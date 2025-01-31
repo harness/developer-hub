@@ -17,7 +17,7 @@ This script is useful to detect old feature flags that can be removed from the c
 
 ## How to use
 
- - Class wrapper for FME API, installation instructions in this link: [Python Library Wrapper for Split API](https://help.split.io/hc/en-us/articles/4412331052685)
+ - Class wrapper for Split API, installation instructions in this link: [Python Library Wrapper for Split API](https://help.split.io/hc/en-us/articles/4412331052685)
  - Update your Split Admin API key in the code below.
  
  The script will loop through all workspaces, environments and feature flags and check the target dates threshold for feature flag last modified and last impressions received dates. The script will print out the feature flag, environment and workspace (project) names.

@@ -1,6 +1,6 @@
 ---
-title: FME Evaluator
-sidebar_label: FME Evaluator
+title: Split Evaluator
+sidebar_label: Split Evaluator
 ---
 
 Using Split involves using one of our SDKs. The Split team builds and maintains these SDKs for some of the most popular language libraries and the SDKs are available under open source licenses. For languages where there is no native SDK support, Split offers the [Split Evaluator](https://github.com/splitio/split-evaluator), a small service capable of evaluating some or all available features for a given customer via a REST endpoint.

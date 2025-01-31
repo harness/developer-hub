@@ -1,6 +1,6 @@
 ---
-title: In Amazon AWS, how to deploy FME Synchrnizer Docker container?
-sidebar_label: In Amazon AWS, how to deploy FME Synchrnizer Docker container?
+title: In Amazon AWS, how to deploy Split Synchronizer Docker container?
+sidebar_label: In Amazon AWS, how to deploy Split Synchronizer Docker container?
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

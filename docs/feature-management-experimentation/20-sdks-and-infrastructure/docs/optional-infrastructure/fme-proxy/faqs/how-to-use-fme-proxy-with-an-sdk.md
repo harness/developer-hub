@@ -1,6 +1,6 @@
 ---
-title: How to use FME Proxy with an SDK?
-sidebar_label: How to use FME Proxy with an SDK?
+title: How to use Split Proxy with an SDK?
+sidebar_label: How to use Split Proxy with an SDK?
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

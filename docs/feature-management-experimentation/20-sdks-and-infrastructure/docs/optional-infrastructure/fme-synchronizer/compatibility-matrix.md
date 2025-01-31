@@ -1,6 +1,6 @@
 ---
-title: Compatibility matrix for FME Synchronizer
-sidebar_label: Compatibility matrix for FME Synchronizer
+title: Compatibility matrix for Split Synchronizer
+sidebar_label: Compatibility matrix for Split Synchronizer
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 1

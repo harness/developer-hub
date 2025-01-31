@@ -1,6 +1,6 @@
 ---
-title: In Heroku, how to deploy FME Synchrnizer Docker container?
-sidebar_label: In Heroku, how to deploy FME Synchrnizer Docker container?
+title: In Heroku, how to deploy Split Synchronizer Docker container?
+sidebar_label: In Heroku, how to deploy Split Synchronizer Docker container?
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
