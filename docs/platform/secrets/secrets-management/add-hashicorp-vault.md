@@ -228,7 +228,7 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
        bound_issuer="<BOUND_ISSUER>"     
    ```  
 
-   ![jwt-conf](../static/jwt-configure.png)    
+   ![jwt-conf](../static/jwt-configure.png)
 
 
 3. **Verify JWT Configuration**:  
@@ -284,7 +284,21 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
 
      ![hashicorp](../static/harshicorp.gif)
 
+   - **Configure directly through Harness, without using a delegate**:
 
+      After setting up your Vault URL, Authentication, Path, and Role, choose the connectivity mode: either using a delegate or without a delegate. For now, we will use the **"Connect through Harness Platform"** option, as shown in the image below. 
+      
+      Next, set up the engine by either auto-fetching or manually configuring it. Finally, the system will check the connection. Click "Finish" to complete the setup.
+
+      ![hashicorp-without-delegate](../static/harshicorp-without-delegate.gif)
+   
+   - **Configure directly through Harness Delegate**:
+
+      Repeat the steps by configuring Vault URL, Authentication, Path and role, choose **"Connect through Harness Delegate"** option in connectivity mode.
+
+      Next, set up the engine (auto-fetch or manual). Once the connection is verified, click "Finish" to complete the setup.  
+
+      ![hashicorp-without-delegate](../static/harshicorp-with-delegate.gif)
 
 
 ### Step 2: Select Secret Engine and Version
