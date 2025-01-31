@@ -67,7 +67,7 @@ export default function Home(): JSX.Element {
               </div>
               <LearnAboutPlatform />
             </div>
-            <Feedback />
+            {/* <Feedback /> */}
           </main>
 
           <HomepageUniversity />
