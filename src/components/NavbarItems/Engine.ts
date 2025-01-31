@@ -22,7 +22,6 @@ async function InitializeCoveo() {
       localStorage.setItem('coveo_token', JSON.stringify(item));
       return item;
     } catch (error) {
-      console.error('Error fetching Coveo token:', error);
       return {};
     }
   };
