@@ -40,18 +40,18 @@ Follow the steps below to view the License-Report for the artifacts. You can use
 
 3) You will be able to see the License Report with all the data.
 
-<DocImage path={require('./static/licensereports-artifact.png')} width="80%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/license-artifact-reports.png')} width="80%" height="100%" title="Click to view full size image" />
 
 4) You can filter out the data based on individual licenses or license family by selecting any of the artifacts.
 
-* **License:** Filter the artifacts based on specific license types (e.g., MIT, GPL, Apache). This helps to track and analyze each and individual components of the artifact.
-
+* **Harness Organization:** Filter the artifacts based on your selected organisation within the account 
+* **Harness Project:** Filter the artifacts based on your selected project
+* **License:** Filter the artifacts based on specific license types (e.g., MIT, GPL, Apache) to track and analyze each and individual components of the artifact.
 * **License Family:** Filter the artifacts based on specific license family types
  **Example**: If you only want to allow permissive licenses, such as MIT or Apache 2.0, you can easily filter out any licenses from other families like Reciprocal (GPL) or Weak Reciprocal (LGPL).
-
 * **Artifacts:** Select any artifact to view and manage its components and to access the detailed information.
 
-<DocImage path={require('./static/overview-dashboard.png')} width="80%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/license-filter.png')} width="80%" height="100%" title="Click to view full size image" />
 
 :::note
 
