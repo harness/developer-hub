@@ -84,6 +84,10 @@ Refer to the link: `https://app.harness.io/gratis/ng/static/versions.html`.
 
 Harness console does not support rendering image files.
 
+### Is it possible to trigger a step once another step finishes in a pipeline?
+
+Yes, you can use conditional execution on steps. This allows you to define conditions that determine whether a step should run based on the outcome of a previous step. If the condition evaluates to true, certain steps can be skipped, allowing other steps to execute accordingly.
+
 ## Pipeline access control
 
 ### Can I disable a pipeline?
