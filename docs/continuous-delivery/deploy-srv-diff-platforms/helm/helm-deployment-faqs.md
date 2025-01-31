@@ -569,7 +569,7 @@ Deploying Helm charts to OpenShift using Harness can be done using the `oc apply
 
 ### What is the new native Helm deployment support?
 
-Harness now supports native Helm deployments for blue-green and canary deployments.  Each strategy is controlled by a separate feature flag: `CDS_HELM_BG_STRATEGY` and `CDS_HELM_CANARY_STRATEGY`. [https://developer.harness.io/docs/category/helm-step-reference](https://developer.harness.io/docs/category/helm-step-reference)
+Harness now supports native Helm deployments for blue-green and canary deployments. [https://developer.harness.io/docs/category/helm-step-reference](https://developer.harness.io/docs/category/helm-step-reference)
 
 ### Why does leaving the Chart Version field blank in a Helm Deployment Input Set cause a failure?
 
