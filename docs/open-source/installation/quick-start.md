@@ -1,6 +1,7 @@
 ---
 title: Quick Start
 sidebar_position: 1
+redirect_from: /docs/open-source/installation/quick_start
 ---
 
 Let's discover **[Harness Open Source](/docs/open-source)** in less than 30 seconds.
@@ -59,7 +60,7 @@ Optionally, Harness Open Source can [import repositories](../repositories/overvi
 Now that you've created a project and repository, you can:
 
 - [Clone](/docs/open-source/repositories/cloning) a repository
-- Create a branch and open a [pull request](/docs/open-source/repositories/pull_requests)
+- Create a branch and open a [pull request](/docs/open-source/repositories/pull-requests)
 - Create a [pipeline](/docs/open-source/pipelines/overview)
 - Add [users](/docs/open-source/administration/user-management) and assign [project members](/docs/open-source/administration/project-management)
-- Learn how to customize your Harness Open Source [installation](/docs/open-source/installation/quick_start)
+- Learn how to customize your Harness Open Source [installation](/docs/open-source/installation/quick-start)

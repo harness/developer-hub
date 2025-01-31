@@ -19,7 +19,7 @@ import {
             module: MODULES.opensource,
             description:
               "Learn the benefits, features, and key concepts of the Harness Open Source.",
-            link: "/docs/open-source/installation/quick_start",
+            link: "/docs/open-source/installation/quick-start",
           },
           {
             title: "Administration guide",

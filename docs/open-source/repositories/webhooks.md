@@ -11,7 +11,7 @@ stateDiagram
     branch_created: Branch created
     pr_raised: PR raised
     tag_deleted: Tag deleted
-    action_performed: Action performed on Gitness
+    action_performed: Action performed on Harness Open Source instance
     external_webservers: External Web Server
 
     branch_created --> action_performed
