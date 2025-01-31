@@ -56,6 +56,6 @@ Harness Open Source can import repositories from external sources such as GitLab
 After creating a repository, you can:
 
 - [Clone](./cloning.md) your repository.
-- Create a branch, commit changes, and open a [pull request](./pull_requests.md).
+- Create a branch, commit changes, and open a [pull request](./pull-requests.md).
 - Create tags.
 - Create [pipelines](../pipelines/overview.md) and configure [webhooks](./webhooks.md).
