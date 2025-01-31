@@ -223,7 +223,7 @@ You can create filters to view selected rules:
     * Enforcements
     * Minimum Cost Impact ($)
     * Cloud Provider
-    * GCP Filters
+    * GCP Filtersß
       - GCP Project
 
 5. Select **Apply**.

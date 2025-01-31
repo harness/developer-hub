@@ -132,9 +132,7 @@ While setting up a new Enforcement, you can select the following:
 - **Time**: After setting the frequency, you can choose the time at which it runs.
 - **Dry Run Mode**: You can choose to run your Enforcement in Dry Run mode which will generate a simulation of the rule enforcement instead of performing actions.
 
-  <DocImage path={require('../static/create_enforcement_azure.png')} width="95%" height="95%" title="Click to view full size image" />
-  <DocImage path={require('../static/rules_azure_selection.png')} width="95%" height="95%" title="Click to view full size image" />
-
+  <DocImage path={require('../static/enforcements_azure.png')} width="95%" height="95%" title="Click to view full size image" />
 
 :::important note
 - Number of Targets in an Enforcement can be upto 200.
@@ -155,17 +153,20 @@ To create an Enforcement, perform the following steps:
 7. Select the cloud provider.
 8. Select the Rules or Rule Sets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
 9. Select **Continue**. 
-    <DocImage path={require('../static/create_enforcement.png')} width="90%" height="90%" title="Click to view full size image" />
+
+  <DocImage path={require('../static/create_enforcement_azure.png')} width="95%" height="95%" title="Click to view full size image" />
+  <DocImage path={require('../static/rules_azure_selection.png')} width="95%" height="95%" title="Click to view full size image" />
+
 10. Select the target accounts and target regions. You could select multiple accounts and regions.
 11. Set the frequency from **Hourly**, **Daily**, or **Weekly** options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
 12. Toggle the **Dry Run** mode if you do not want to take action immediately.
 13. Select **Finish**. 
 
-    <DocImage path={require('../static/set-up-schedule.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/set-up-schedule_azure.png')} width="90%" height="90%" title="Click to view full size image" />
 
 After setting up the schedule, you can view the Enforcement on the **Enforcements** page. 
 
-<DocImage path={require('../static/enforcements_list.png')} width="90%" height="90%" title="Click to view full size image" />
+  <!-- <DocImage path={require('../static/set-up-schedule_azure.png')} width="90%" height="90%" title="Click to view full size image" /> -->
 
 Furthermore, you can disable the Enforcement at any time using the toggle button in the **Status** column. If you want to turn off the dry-run mode, select **Edit** from the vertical ellipsis menu (⋮) then go to "Target And Schedule", use slider to turn off "Enforce Rule(s) in Dry Run mode" and click on Finish.
 
