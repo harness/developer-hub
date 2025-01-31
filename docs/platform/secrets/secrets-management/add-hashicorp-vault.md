@@ -210,8 +210,10 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
 
 ### Steps to enable Vault authentication:  
 
-1. **Enable the JWT authentication method** on the `harness/jwt` path:  
+1. **Enable the JWT authentication method** on custom path:  
    
+   Enable any custom path with `<YOUR_PATH>/jwt`. For example, we have used `harness/jwt` below.
+
    ```  
    vault auth enable -path=harness/jwt jwt  
    ```  
@@ -226,7 +228,7 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
        bound_issuer="<BOUND_ISSUER>"     
    ```  
 
-   ![jwt-conf](../static/JWT-configure.png)    
+   ![jwt-conf](../static/jwt_configure.png)    
 
 
 3. **Verify JWT Configuration**:  
@@ -245,6 +247,7 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
    - **bound_claims**: Specify the claims you want to validate (e.g., `sub`, `iss`, `account_id`).
    - **policies**: Define the policies associated with the client token.
    - **ttl**: Set the time-to-live for the generated token.
+   - **role_type**: Roles allow you to group configuration settings together to simplify plugin management. Set this to `jwt`.
 
    Example `role-config.json`:
    ```json
@@ -267,28 +270,21 @@ JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JW
    
    Use the following command to create the role in Vault:
    ```  
-   curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" --request POST --data @role-config.json http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/my-test-role
+   curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" --request POST --data @role-config.json http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/role_assigned
    ```  
 
 6. **Verify the Role**:  
    
    To ensure that the role was created successfully, run the following command:
    ```  
-   curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/my-test-role
+   curl --header "X-Vault-Token: YOUR_ROOT_TOKEN" http://<VAULT_DOMAIN_IP>/v1/auth/harness/jwt/role/role_assigned
    ```  
-   This will return the details of the created role, confirming it is properly configured for JWT authentication.
 
-You can now use the client token to perform operations in Vault, according to the policies bound to the token.
+7. **Configure in HashiCorp Vault in Harness**
 
-7. **Verify Secret Creation using client token**
+     ![hashicorp](../static/harshicorp.gif)
 
-  ```
-   curl   --header "X-Vault-Token: hvs.<CLIENT_TOKEN>"   --request POST   --data @secret.json   http://<VAULT_DOMAIN_IP>/v1/secret/data/my-secret
-  ```
 
-8. **Check and Configure in Harness**
-
-  ![hashicorp](../static/harshicorp.gif)
 
 
 ### Step 2: Select Secret Engine and Version
