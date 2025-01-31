@@ -8,20 +8,21 @@ redirect_from:
 ---
 
 Node CPU hog exhausts the CPU resources on a Kubernetes node.
-- The CPU chaos is injected using a helper pod running the Linux stress tool (a workload generator).
+- The CPU chaos is injected using a helper pod running the Linux stress tool.
 - The chaos affects the application for a specific duration.
 
 ![Node CPU Hog](./static/images/node-cpu-hog.png)
 
 
 ## Use cases
-- Node CPU hog fault helps verify the resilience of applications whose replicas get evicted on the account of the nodes turning unschedulable (in **NotReady** state) or new replicas unable to be scheduled due to a lack of CPU resources.
-- It causes CPU stress on the target node(s).
-- It simulates the situation of lack of CPU for processes running on the application, which degrades their performance.
-- It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition.
-- It helps scalability of nodes based on growth beyond budgeted pods.
-- It verifies the autopilot functionality of cloud managed clusters.
-- It also verifies multi-tenant load issues; that is, when the load increases on one container, it does not cause downtime in other containers.
+Node CPU hog fault:
+- Verifies the resilience of applications whose replicas get evicted on the account of the nodes turning unschedulable (in **NotReady** state) or new replicas unable to be scheduled due to a lack of CPU resources.
+- Causes CPU stress on the target node(s).
+- Simulates the situation of lack of CPU for processes running on the application, which degrades their performance.
+- Verifies metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition.
+- Helps the scalability of nodes based on growth beyond budgeted pods.
+- Verifies the autopilot functionality of cloud managed clusters.
+- Verifies multi-tenant load issues; that is, when the load increases on one container, it does not cause downtime in other containers.
 
 ### Permissions required
 
