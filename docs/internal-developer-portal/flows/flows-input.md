@@ -9,9 +9,48 @@ redirect_from:
 
 Workflows allow users to provide input parameters that drive the execution of templates. A well-designed form ensures a smooth user experience by offering the right input types and validation mechanisms. Inputs can be categorized into static inputs, where users manually enter values, and dynamic inputs, which fetch or derive values based on context.
 
+#### Workflow YAML Syntax for Parameters
+Parameters are defined at the beginning of a workflow YAML file, and they play an important role in specifying what inputs the workflow expects from the user. They allow the user to pass values that can be referenced later in the workflow, such as repository names, versions, or any other configurable item.
 
-## Input Types
-There are different types of Inputs as explained below:
+Here’s an example of how parameters are defined in workflow YAML:
+
+```YAML
+# Example of defining parameters
+parameters:
+  - title: Project Configuration
+    properties:
+      projectName:
+        title: Project Name
+        type: string
+        description: The name of the new project
+      githubRepo:
+        title: GitHub Repository
+        type: string
+        description: The GitHub repository where the project will be initialized
+      environment:
+        title: Deployment Environment
+        type: string
+        enum:
+          - dev
+          - staging
+          - production
+        description: The environment for deployment
+```
+#### Breakdown of the YAML Structure
+- `parameters`:This key holds an array of parameter definitions. Each parameter is defined as an object that specifies its title, type, and additional details such as whether it is required or has specific options like enums (choices).
+- `title`: This is the name displayed in the UI when the user is prompted for input.
+- `properties`: Under this key, individual input fields are defined. Each property corresponds to a user input field.
+    - `title`: The label or name for the parameter input field, displayed in the UI.
+    - `type`: The data type of the input. Common types are:
+        - `string`: Represents a free-text field.
+        - `number`: For numeric inputs.
+        - `boolean`: For true/false checkboxes.
+    - `description`: A brief description explaining what the parameter is for.
+    - `required`: Specifies whether the input is mandatory. 
+    - `enum`: A list of predefined options from which the user can choose. This is useful for fields like deployment environments (e.g., dev, staging, production).
+    - `ui:widget`: Specifies the UI element used for input (e.g., text field, dropdown).
+
+Below are the different ways you can design form inputs in IDP workflows:
 
 #### Static Inputs
 
@@ -46,9 +85,9 @@ These inputs fetch values dynamically based on external data sources or runtime 
 
 ### Simple text input
 
-#### Simple input with basic validations
+#### Basic Input with Validations
 
-Basic form inputs allow users to provide structured data while ensuring it meets specific requirements. You can define constraints such as character limits, patterns, and UI hints to guide users effectively.
+Basic form inputs let users provide structured data while ensuring it meets specific rules. You can set limits like character counts, patterns, and UI hints to help users fill out the form correctly.
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/text-input-pattern.yaml)
 
@@ -131,6 +170,8 @@ parameters:
 Array inputs allow users to provide multiple values, either as strings, numbers, or complex objects. These can be structured to ensure uniqueness, predefined options, or flexible custom objects.
 
 #### Array with strings
+
+You can add an array to the workflow with string values, allowing users to select one option when filling out the workflow.
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/arrays.yaml)
 
@@ -294,6 +335,14 @@ parameters:
 
 ### Comparison Table of Array Input Types  
 
+The table compares array input types based on key features:
+
+- Distinct Values: Dropdowns ensure unique values, checkboxes allow duplicates.
+- Duplicate Values: Checkboxes support duplicates, dropdowns do not.
+- Multiple Choice: Checkboxes and custom arrays allow multiple selections, dropdowns do not.
+- Custom Objects: Only custom object arrays support complex data.
+- User-friendly Labels: Checkboxes and custom arrays can have labels, dropdowns cannot.
+
 | Feature | Distinct Values | Duplicate Values | Multiple Choice List | Custom Object Array |
 |---------|----------------|------------------|----------------------|---------------------|
 | **Dropdown Selection** | ✅ | ✅ | ❌ | ❌ |
@@ -301,7 +350,6 @@ parameters:
 | **Allows Multiple Selections** | ❌ | ❌ | ✅ | ✅ |
 | **Supports Complex Objects** | ❌ | ❌ | ❌ | ✅ |
 | **User-friendly Labels** (`enumNames`) | ❌ | ✅ | ❌ | ✅ |
-
 
 
 #### Pass an Array of Inputs to a Harness Pipeline 
@@ -423,224 +471,6 @@ parameters:
 | **Checkbox Boolean**       | Single feature toggle      | Enable/Disable Dark Mode            |
 | **Radio Button Boolean**   | Explicit Yes/No choice     | Confirming a deletion               |
 | **Multi-Select Boolean**   | Selecting multiple options | Enable multiple monitoring features |
-
-
-## Advanced Input Configurations
-
-### Upload a file using Workflows
-
-Workflow supports a limited form of file types as input, in the sense that it will parse the file contents to Workflow inputs as [data-urls](https://developer.mozilla.org/en-US/docs/Web/URI/Schemes/data).
-
-There are 3 types of file upload.
-
-1. Single File: There are two formats available `data-url` and `file`. 
-2. Multiple Files: Multiple files selectors are supported by defining an `array` of strings having `data-url` as a format. 
-3. Single File with Accept Attribute: You can use the `accept` attribute to specify a filter for what file types the user can upload.
-
-<details>
-<summary>Example YAML</summary>
-
-```YAML
-#Example
-title: Files
-type: object
-properties:
-  file:
-    type: string
-    format: data-url
-    title: Single file
-  files:
-    type: array
-    title: Multiple files
-    items:
-      type: string
-      format: data-url
-  filesAccept:
-    type: string
-    format: data-url
-    title: Single File with Accept attribute
-    ui:enableMarkdownInDescription: true
-    ui:description: Provide the Json File
-    ui:options:
-      accept: .json
-```
-</details>
-
-
-### Hide the uploaded file contents in Workflow review page
-
-When you upload a file in Workflows, you can see the base-64 encoded content of the file on the review page, to hide them you can use `ui:backstage`. 
-
-```YAML
-...
-properties:
-  uploaded_file:
-    title: Upload File
-    type: string
-    format: data-url
-    description: Upload a file that will be processed in the workflow
-    ui:backstage:
-      review:
-        show: false
-        mask: true
-...
-```
-[Example workflow.yaml](https://github.com/Debanitrkl/backstage-test/blob/main/upload-file-prod.yaml)
-
-![](./static/file-upload-hide-content.png)
-
-### How to use the contents of the file uploaded
-
-Files uploaded to workflows are automatically encoded in **base64** format. To use the contents of an uploaded file, the **base64-encoded data** must first be decoded. This can be achieved using the Run Step in IDP stage.
-
-1. Start with a Run Step in IDP stage, write a script in the step to: 
-  - Extract the base64-encoded content from the uploaded file.
-  - Decode the content back to its original format.
-2. Process or utilize the decoded content as needed in the steps that follow.
-
-**Without decoding, the uploaded file contents cannot be directly used.** 
-
-Here's an [example](https://github.com/Debanitrkl/backstage-test/blob/main/pipeline-to-parse-json.yaml) harness pipeline that uses [PowerShell](https://github.com/Debanitrkl/backstage-test/blob/b420528f309ef2a84e5190689912a929d53bc90a/pipeline-to-parse-json.yaml#L29-L84) in run step to decode the content of the file uploaded to Workflows. 
-
-![](./static/demo-pwsh-process-json.png)
-
-### Using Secrets
-
-You may want to mark things as secret and make sure that these values are protected and not available through REST endpoints. You can do this by using the built-in `ui:field: Secret` and `ui:widget: password`.
-
-:::info
-`ui:widget: password` needs to be mentioned under the first `page` in-case you have multiple pages.
-
-```YAML {14}
-# example workflow.yaml
-...
-parameters:
-  - title: <PAGE-1 TITLE>
-    properties:
-      property-1:
-        title: title-1
-        type: string
-      property-2:
-        title: title-2
-    token:
-      title: Harness Token
-      type: string
-      ui:widget: password
-      ui:field: HarnessAuthToken
-  - title: <PAGE-2 TITLE>
-    properties:
-      property-1:
-        title: title-1
-        type: string
-      property-2:
-        title: title-2
-  - title: <PAGE-n TITLE>
-...
-```
-
-:::
-
-You can define this property as any normal parameter, however the consumption of this parameter will not be available through `${{ parameters.myKey }}` you will instead need to use `${{ secrets.myKey }}` in your `workflow.yaml`.
-
-Parameters will be automatically masked in the review step.
-
-<details>
-<summary>Example YAML</summary>
-
-```YAML
-apiVersion: scaffolder.backstage.io/v1beta3
-kind: Template
-metadata:
-  name: v1beta3-demo
-  title: Test Action Workflow
-  description: Workflows Demo
-spec:
-  owner: backstage/techdocs-core
-  type: service
-
-  parameters:
-    - title: Authentication
-      description: Provide authentication for the resource
-      required:
-        - username
-        - password
-      properties:
-        username:
-          type: string
-          # use the built in Secret field extension
-          ui:field: Secret
-        password:
-          type: string
-          ui:field: Secret
-
-  steps:
-    - id: setupAuthentication
-      action: auth:create
-      input:
-        # make sure to use ${{ secrets.parameterName }} to reference these values
-        username: ${{ secrets.username }}
-        password: ${{ secrets.password }}
-```
-
-</details>
-
-### Pre-fill workflows with URL Params
-
-We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. e.g.: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
-
-The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7` in the end of the URL allow you to automatically fill in values of the form. Please see the below table for explanation of individual tokens in the query param.
-
-| Item                | Example Value                           | Explanation                                                                                      |
-| ------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `formData`          | `formData`                              | Key of the query param.`formData` object is used to fill out IDP Workflow forms.                 |
-| `{"key"%3A"value"}` | `{"title"%3A"Title from query params"}` | Value of the query param. A JSON object with invalid URL characters encoded.`:` encodes to `%3A` |
-
-### Add Read only Fields
-
-Using automatically filled out values is handy when wanting to direct users to use IDP Workflows with known good values. This also allows automation to be constructed around the Workflows, where the automation can provide fully constructed IDP URLs to the user. You can also prevent user from modifying the form values inserted from query params by making the form fields `readonly`. See below example of a minimal form which would be filled using query params defined in the above explanation.
-
-<details>
-<summary>Example YAML</summary>
-
-```YAML {15}
-## Example Workflow
-apiVersion: scaffolder.backstage.io/v1beta3
-kind: Template
-metadata:
-  name: test-workflow-pipeline
-  title: Test pipeline using Workflows
-spec:
-  owner: name.owner
-  type: service
-  parameters:
-    - title: Repository Name
-      properties:
-        project_name:
-          title: Name your project
-          ui:readonly: true
-          type: string
-        token:
-          title: Harness Token
-          type: string
-          ui:widget: password
-          ui:field: HarnessAuthToken
-  steps:
-    - id: trigger
-      name: Creating your github repository
-      action: trigger:harness-custom-pipeline
-      input:
-        url: PIPELINE_URL
-        inputset:
-          github_org: ${{ parameters.project_name }}
-        apikey: ${{ parameters.token }}
-  output:
-    links:
-      - title: Pipeline Details
-        url: ${{ steps.trigger.output.PipelineUrl }}
-
-```
-
-</details>
 
 ## Workflow UI Pickers
 
@@ -777,7 +607,7 @@ entity:
 
 ### 2. `HarnessOrgPicker`
 
-Fetches all the org ID dynamically.
+Fetches all the organization, under the account dynamically. 
 
 ```YAML
 #Example
@@ -805,7 +635,7 @@ spec:
 
 ### 3. `HarnessProjectPicker`
 
-Fetches all the project ID dynamically.
+Fetches all the Harness project ID, available in the account dynamically
 
 ```YAML
 # Example workflow.yaml file
@@ -1323,6 +1153,223 @@ There's also the ability to pass additional scopes when requesting the `oauth`
 token from the user, which you can do on a per-provider basis, in case your Workflow can be published to multiple providers.
 
 Note, that you will need to configure a **connector** for your source code management (SCM) service to make this feature work.
+
+## Advanced Input Configurations
+
+### Upload a file using Workflows
+
+Workflow supports a limited form of file types as input, in the sense that it will parse the file contents to Workflow inputs as [data-urls](https://developer.mozilla.org/en-US/docs/Web/URI/Schemes/data).
+
+There are 3 types of file upload.
+
+1. Single File: There are two formats available `data-url` and `file`. 
+2. Multiple Files: Multiple files selectors are supported by defining an `array` of strings having `data-url` as a format. 
+3. Single File with Accept Attribute: You can use the `accept` attribute to specify a filter for what file types the user can upload.
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML
+#Example
+title: Files
+type: object
+properties:
+  file:
+    type: string
+    format: data-url
+    title: Single file
+  files:
+    type: array
+    title: Multiple files
+    items:
+      type: string
+      format: data-url
+  filesAccept:
+    type: string
+    format: data-url
+    title: Single File with Accept attribute
+    ui:enableMarkdownInDescription: true
+    ui:description: Provide the Json File
+    ui:options:
+      accept: .json
+```
+</details>
+
+
+### Hide the uploaded file contents in Workflow review page
+
+When you upload a file in Workflows, you can see the base-64 encoded content of the file on the review page, to hide them you can use `ui:backstage`. 
+
+```YAML
+...
+properties:
+  uploaded_file:
+    title: Upload File
+    type: string
+    format: data-url
+    description: Upload a file that will be processed in the workflow
+    ui:backstage:
+      review:
+        show: false
+        mask: true
+...
+```
+[Example workflow.yaml](https://github.com/Debanitrkl/backstage-test/blob/main/upload-file-prod.yaml)
+
+![](./static/file-upload-hide-content.png)
+
+### How to use the contents of the file uploaded
+
+Files uploaded to workflows are automatically encoded in **base64** format. To use the contents of an uploaded file, the **base64-encoded data** must first be decoded. This can be achieved using the Run Step in IDP stage.
+
+1. Start with a Run Step in IDP stage, write a script in the step to: 
+  - Extract the base64-encoded content from the uploaded file.
+  - Decode the content back to its original format.
+2. Process or utilize the decoded content as needed in the steps that follow.
+
+**Without decoding, the uploaded file contents cannot be directly used.** 
+
+Here's an [example](https://github.com/Debanitrkl/backstage-test/blob/main/pipeline-to-parse-json.yaml) harness pipeline that uses [PowerShell](https://github.com/Debanitrkl/backstage-test/blob/b420528f309ef2a84e5190689912a929d53bc90a/pipeline-to-parse-json.yaml#L29-L84) in run step to decode the content of the file uploaded to Workflows. 
+
+![](./static/demo-pwsh-process-json.png)
+
+### Using Secrets
+
+You may want to mark things as secret and make sure that these values are protected and not available through REST endpoints. You can do this by using the built-in `ui:field: Secret` and `ui:widget: password`.
+
+:::info
+`ui:widget: password` needs to be mentioned under the first `page` in-case you have multiple pages.
+
+```YAML {14}
+# example workflow.yaml
+...
+parameters:
+  - title: <PAGE-1 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+    token:
+      title: Harness Token
+      type: string
+      ui:widget: password
+      ui:field: HarnessAuthToken
+  - title: <PAGE-2 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+  - title: <PAGE-n TITLE>
+...
+```
+
+:::
+
+You can define this property as any normal parameter, however the consumption of this parameter will not be available through `${{ parameters.myKey }}` you will instead need to use `${{ secrets.myKey }}` in your `workflow.yaml`.
+
+Parameters will be automatically masked in the review step.
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: v1beta3-demo
+  title: Test Action Workflow
+  description: Workflows Demo
+spec:
+  owner: backstage/techdocs-core
+  type: service
+
+  parameters:
+    - title: Authentication
+      description: Provide authentication for the resource
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          # use the built in Secret field extension
+          ui:field: Secret
+        password:
+          type: string
+          ui:field: Secret
+
+  steps:
+    - id: setupAuthentication
+      action: auth:create
+      input:
+        # make sure to use ${{ secrets.parameterName }} to reference these values
+        username: ${{ secrets.username }}
+        password: ${{ secrets.password }}
+```
+
+</details>
+
+### Pre-fill workflows with URL Params
+
+We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. e.g.: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
+
+The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7` in the end of the URL allow you to automatically fill in values of the form. Please see the below table for explanation of individual tokens in the query param.
+
+| Item                | Example Value                           | Explanation                                                                                      |
+| ------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `formData`          | `formData`                              | Key of the query param.`formData` object is used to fill out IDP Workflow forms.                 |
+| `{"key"%3A"value"}` | `{"title"%3A"Title from query params"}` | Value of the query param. A JSON object with invalid URL characters encoded.`:` encodes to `%3A` |
+
+### Add Read only Fields
+
+Using automatically filled out values is handy when wanting to direct users to use IDP Workflows with known good values. This also allows automation to be constructed around the Workflows, where the automation can provide fully constructed IDP URLs to the user. You can also prevent user from modifying the form values inserted from query params by making the form fields `readonly`. See below example of a minimal form which would be filled using query params defined in the above explanation.
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML {15}
+## Example Workflow
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: test-workflow-pipeline
+  title: Test pipeline using Workflows
+spec:
+  owner: name.owner
+  type: service
+  parameters:
+    - title: Repository Name
+      properties:
+        project_name:
+          title: Name your project
+          ui:readonly: true
+          type: string
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+  steps:
+    - id: trigger
+      name: Creating your github repository
+      action: trigger:harness-custom-pipeline
+      input:
+        url: PIPELINE_URL
+        inputset:
+          github_org: ${{ parameters.project_name }}
+        apikey: ${{ parameters.token }}
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+
+```
+
+</details>
 
 ## Dynamic API Picker
 
