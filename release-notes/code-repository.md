@@ -20,6 +20,78 @@ These release notes describe recent changes to Harness Code Repository.
 
 :::
 
+## January 2025
+
+<!-- 24 Jan 24 -->
+
+### Version 1.28.2
+
+#### New features and enhancements
+
+* Added Archive repository functionality
+* Added networking and API support for SSH with git repositories
+* Add checkbox for comment events and review events
+* Support for Harness SMP - Self Managed Platform
+* Support for Jira Cloud integration to link commits with issues
+* List Status Checks for account/org/project
+
+#### Fixed issues
+
+* We need org view and edit permissions in order to create rules/labels on the account level
+
+## August 2024
+
+### Version 1.17.2
+
+<!-- 26 Aug 24 -->
+
+#### New features and enhancements
+
+* Add routing and openapi related to labels
+* Update CODE_PUBLIC_RESOURCE_CREATION_ENABLED value in config
+* vanity url support should be false by default
+* Add Update default-branch API
+* remove stale moveAPI from open api
+* Support Repo Migration APIs (create repo, import PRs, webhooks, and branch rules)
+* Change OSV ignore list to allow list
+* (Public Access) Enforce repo-review permission
+* Improve SSH Configuration 
+* Add PR Label Filtering Support
+* add recursive search toggle
+
+#### Fixed issues
+
+* Fix pullreq count when applying label/value id filter
+* (Swagger) Add Update default-branch API
+* Fix missing empty type and color values validation
+* Add restricted by query label count when using query and sanitize empty label (value) text
+* styles issues in repo description and summary
+
+## July 2024
+
+### Version 1.14.0
+
+<!-- 23 Jul 24 -->
+
+#### New features and enhancements
+
+* Fixed a bug where some users were not able to create a token
+* Show Line level stats in PRs 
+* Fix file history mapping and audit trail improvements
+
+### Version 1.13.1
+
+<!-- 15 Jul 24 -->
+
+#### New features and enhancements
+
+* PR Page Improvements 
+* Azure Devops Import  
+* Repo Summary
+* Code suggestion in PR Comments
+* Public Repository Support
+* CODE IDP Integration
+
 ## April 2024
 
 ### Version 0.79.4
