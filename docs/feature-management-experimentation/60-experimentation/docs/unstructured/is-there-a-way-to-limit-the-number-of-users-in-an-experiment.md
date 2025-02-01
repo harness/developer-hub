@@ -1,6 +1,6 @@
 ---
-title: How can I override individually targeted users with a superseding targeting rule?
-sidebar_label: How can I override individually targeted users with a superseding targeting rule?
+title: Is there a way to limit the number of users in an experiment?
+sidebar_label: Is there a way to limit the number of users in an experiment?
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -13,7 +13,7 @@ import Link from "@docusaurus/Link";
 
 ## Question
 
-Is there a way to limit the amount of users participating in the experiment?
+Is there a way to limit the number of users participating in an experiment?
 
 ## Answer
 

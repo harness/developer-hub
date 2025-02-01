@@ -3,7 +3,7 @@ title: Schedule a flag change
 sidebar_label: Schedule a flag change
 helpdocs_is_private: false
 helpdocs_is_published: true
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 import Link from "@docusaurus/Link";

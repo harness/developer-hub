@@ -7,7 +7,7 @@ sidebar_position: 1
 ---
 
 import Link from "@docusaurus/Link";
-
+import RulesEvaluationOrder from "/docs/feature-management-experimentation/40-feature-management/docs/target-with-flags/rules-evaluation-order.md"
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/9058495582349-Create-a-feature-flag, https://help.split.io/hc/en-us/articles/9650375859597-Feature-flag-management  <br /> ✘ images still hosted on help.split.io </button>
@@ -112,11 +112,4 @@ In the [Set alert baseline treatment](https://help.split.io/hc/en-us/articles/36
 If you set the ___alert baseline treatment___ AND you have at least one targeting rule with ___percentage distribution___, then you can receive ___[feature flag alerts](https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting)___ and ___[metric alerts](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting)___.
 :::
 
-## Rules evaluation order
-
-The rules are evaluated in the following order:
-
-* The first evaluation is against the individual target section. User IDs and segments listed in this section receive the specified treatment.
-* The second evaluation is against the traffic allocation. If the limit exposure is set to 100%, we continue to the targeting rules section. If the limit exposure less than 100%, we allocate a percentage of your traffic to the default treatment selected in the user interface or into the targeting rules and default rule.
-* The third evaluation is against the targeting rules. The conditions are structured as layered if/else statements and are meant to be human readable. They are evaluated in order and when a condition is met, the evaluation stops.
-* The fourth evaluation is against the default rule. The remaining traffic is allocated based on the distribution set in the default rule.
+<RulesEvaluationOrder />
