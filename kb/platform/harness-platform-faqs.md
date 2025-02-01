@@ -3388,3 +3388,35 @@ All mTLS configuration related query should happen through the support case. It 
 
 #### Is it possible to stream the audit logs to any third party tool for consumption through a generic cofnigruation?
 Currently we only provide first class support for streaming to splunk and s3. We do not have any generic configuration for streaming the audit logs.
+
+#### How can we have multiline in initscript attribute inside values yaml for delegate helm chart?
+
+We can use yaml multiline notation for passing multiline script in the initscript attribute of values yaml, below is a sample:
+```
+initScript: |
+  microdnf install jq
+  microdnf install vim
+  microdnf install iputils
+```
+
+#### Does a delegate accepts task while it is terminating?
+No, in terminating state the delegate will not accept any new task. It will try to complete the tasks assigned to it till the grace period specified for the delegate.
+
+#### What is the difference between the startup probe and liveness probe in delegate yaml?
+The startup probe and liveness probe happen on same end point but they serve different purpose. The startup probe is used for indicating if the application process in delegate container has started or not. While liveness probe is used to detect the health of the delegate pod while the pod is operating and assists in restart in case the threshold for liveness probe is reached.
+
+#### Why does delegate startup fails with the error "software.wings.exception.AccountNotFoundException: Account is not found for the given id" ?
+This error happens because at the time of registration delegate tries to reach to the specified manager endpoint and if the given end point is valid but not the one on which account exist then it will not be able to find the account and throws the above exception. In these scenarios we should always validate the manager end point specified for the delegate.
+
+#### In case of helm delegate where do we pass the INIT_SCRIPT commands?
+The helm deployment of the delegate uses a values yaml file which has the initscript attribute. This attribute can be used to pass the value for INIT_SCRIPT. Even if we use the default chart, a values yaml with this attribute can be passed as a values yaml override.
+
+
+#### Does docker delegate reconnects if there is a disconnection happened for the delegate?
+Docker does not have the capability to perform restart automatically for the delegate container in case there is a disconnection or heartbeat missing sceanrio. The docker delegate needs to be restarted manually.
+
+#### How often does Harness update the third party binary on  delegate images?
+We do not have a definite frequency of third party binary upgrade in our delegate image. However if you want to control the version of the third party cli on the delegate you can chose to use minimal delegate which does not have these binaries and then install the corresponding version using init script.
+
+#### How can we find out whether we are using account level delegate token or project level delegate token?
+We register delegates based on the scope of tokens. Hence if the token is at account level we will register the delegate at account level. If the token is at project level it will register the delegate at project level.

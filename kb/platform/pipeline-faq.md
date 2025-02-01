@@ -779,3 +779,53 @@ Harness git experience is configured at individual level and not project level. 
 
 #### Do we have git experience for triggers?
 We do not store trigger as part of remote repo and all the triggers for the pipeline are stored as inline.
+
+#### How to select the value for a specified key from a json string using json select function?
+
+Below is an example of the json select:
+```
+<+json.select("artifactData.metadata[?(@.key == 'myjsonkey')].value",<+json.format(<+trigger.payload>)>)>
+```
+
+#### Do we have a native delete step for helm deployments?
+We currently do not have a native support for helm uninstall. 
+
+#### Is there any way or options to delete the kubernetes namespace forcefully?
+
+The option for deleting a namespace is available in K8s delete step. This will perform a force delete of the namespace regardless if any workload is running in that namespace.
+
+#### How can we use same service to deploy different artifacts while deploying to multiple environment?
+
+We can have a service where we define the artifact using service configuration variables and we can make use of environment specific or infrastructure override to overrwrite these values for specific environment/infrastructure execution.
+
+#### How to execute script before deployment in CD pipeline?
+We can either have a custom stage before the deploy stage and use the shell step in the custom stage. This way it will be completely decoupled from the deploy stage and will not have access to any service related configruation that is going to be in the deploy stage.
+Or if we need to access service related variables or configuration then we can add the shell step in the deploy stage itself before actual deploy step.
+
+#### For a script in custom stage, how can we ensure its output is passed to the deploy stage if needed?
+You can create an output variable and use fqn expression for the output variable anywhere in the pipeline. 
+
+
+#### Does the image automatically deploy for a k8 deployment if we add the artifact in the k8 service?
+No, it does not deploy the image automatically from the artifact. We need to add the artifact image reference in the corresponding manifest using artifact expression. The image will be picked then for the corresponding manifest.
+
+#### Can we have a deploy stage without performing any actual deployment?
+We can create a deploy stage and select blank strategy for the deployment. Thereafter we can add a simple shell script in the stage as the stage will not save without any step in it. This stage will now perform the service initialization without performing any actual deployment.
+
+#### How can we access infra namespace with expression in K8s Infra?
+For the namespace in k8 infra we do have expression but it will work post infra initialisation only. Below is a sample expression:
+<+pipeline.stages.[stageName].spec.infrastructure.output.namespace>
+
+
+#### How to ensure same delegate selector is used for all the steps inside a stage?
+The delegate selection happens as per the priority that we define here:
+https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#delegate-selector-priority
+ 
+Hence if we want all the steps/task inside a stage to use the same delegate selector we will need to specify one delegate selector at the stage level and not define any delegate selector for step inside the stage individually.
+
+#### For Kubernetes task which selector takes priority in absence of stage/step or pipeline selector?
+If pipeline stage or step level selector is not there, the next in priority of selector is connector. However a Kubernetes step can have two connectors, one from the git fetch and another from the kubernetest infra. If both connectors have same selector or only one connector has selector then it will pick that. If both connectors have different selector it will combine the selectors and will try to find a delegate with both the selectors.
+
+#### Why we are not able to see pipeline execution history prior to 30 days? 
+By default in the pipeline execution history tab we only show executions for 30 days. For viewing older executions you can use the executions tab in the menu and filter on the corresponding pipeline.
+
