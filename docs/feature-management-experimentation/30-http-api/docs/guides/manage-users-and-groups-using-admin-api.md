@@ -91,7 +91,7 @@ import Link from "@docusaurus/Link";
   is null, indicating that there are no more users to retrieve.&nbsp;
 </p>
 <p>
-  Alternatively, if we just want to retrieve the data for a single user, we can call the API with the user id as part of the endpoint:
+  Alternatively, if we just want to retrieve the data for a single user, we can call the API with the user ID as part of the endpoint:
 </p>
 <pre>curl --location --request GET 'https://api.split.io/internal/api/v2/users/id-user-UUID' \<br />--header 'Authorization: Bearer $apiKey</pre>
 <p>

@@ -3,6 +3,7 @@ title: Edit treatments
 sidebar_label: Treatments
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 1
 ---
 
 import Link from "@docusaurus/Link";

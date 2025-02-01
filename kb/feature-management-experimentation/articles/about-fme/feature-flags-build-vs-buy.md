@@ -3,6 +3,7 @@ title: "Feature flags: Build vs. buy"
 sidebar_label: "Feature flags: Build vs. buy"
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 3
 ---
 
 import Link from "@docusaurus/Link";

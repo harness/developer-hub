@@ -2,5 +2,6 @@
     "label": "Manage audiences",
     "collapsible": true,
     "collapsed": true,
-    "className": "red"
+    "className": "red",
+    "position": 3
 }

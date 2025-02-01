@@ -2,5 +2,6 @@
     "label": "Targeting rules",
     "collapsible": true,
     "collapsed": true,
-    "className": "red"
+    "className": "red",
+    "position": 2
 }

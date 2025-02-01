@@ -3,6 +3,7 @@ title: Dynamic configuration
 sidebar_label: Dynamic configuration
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 4
 ---
 
 import Link from "@docusaurus/Link";
@@ -62,7 +63,7 @@ Select JSON as your format to get a JSON editor for each of your treatments as f
 
 The Split platform stringifies the entered JSON and provides it as a string to each of our SDKs when downloading feature flag plans.
 
-# SDK usage and programmatic configuration updates
+## SDK usage and programmatic configuration updates
 
 To find out how to use the configurationsin your code, look through the documentation for the language for your project:
 * Android [docs](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#get-treatments-with-configurations) 
@@ -78,12 +79,12 @@ To find out how to use the configurationsin your code, look through the document
 
 All the configurations that are configurable in our user interface are also editable using our Admin APIs. Refer to examples on how to include configurations in changes to roll out plans [in our APIs](https://docs.split.io/v2/reference#create-split-definition-in-environment)
 
-# Data validation and switching formats
+## Data validation and switching formats
 
 Split validates that the entered configs are valid JSON and won’t allow you to save until you have entered valid JSON.
 
 Additionally, you can switch between key-value and JSON editing when configuring your plan. However, if moving from JSON to Key-value pairs, make sure all keys and values in the JSON object are strings. Nested objects, arrays, numbers, or booleans aren’t accepted and the application prevents you from switching.
 
-# Configuration size limit
+## Configuration size limit
 
 To make sure configurations are not too large, the configurations for each feature flag are limited at 1KB in size. If you need a larger set of configurations, contact support@split.io

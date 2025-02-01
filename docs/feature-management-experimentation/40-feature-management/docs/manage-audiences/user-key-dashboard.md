@@ -3,6 +3,7 @@ title: User key dashboard
 sidebar_label: User key dashboard
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 5
 ---
 
 import Link from "@docusaurus/Link";
@@ -11,7 +12,7 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360043245611-Review-customer-dashboard <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-The User Key Dashboard provides feature flag, segment, and attribute information on a particular [user key](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/user-ids.md). This dashboard can be navigated to by clicking on a unique key when viewing impression data or using the search bar on the left navigation panel.
+The User key dashboard provides feature flag, segment, and attribute information on a particular [user key](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/user-ids.md). This dashboard can be navigated to by clicking on a unique key when viewing impression data or using the search bar on the left navigation panel.
 
 ## Feature flags
 

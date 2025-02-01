@@ -83,7 +83,7 @@ public String handleRequest(Object input, Context context) {
 11. Next step is to configure test event, click on the drop down arrow and select **Configure test events** item.
 ![](https://help.split.io/hc/article_attachments/360039462191/Screen_Shot_2019-09-26_at_12.22.09_PM.png)
 
-12. Use the `Hello World` template to pass key dictionaries to your Lambda function, the user id used in GetTreatment call will be the value for key1, type a name for your event and click **Create**.
+12. Use the `Hello World` template to pass key dictionaries to your Lambda function, the user ID used in GetTreatment call will be the value for key1, type a name for your event and click **Create**.
 
 ![](https://help.split.io/hc/article_attachments/360039476332/Screen_Shot_2019-09-26_at_12.26.13_PM.png)
 

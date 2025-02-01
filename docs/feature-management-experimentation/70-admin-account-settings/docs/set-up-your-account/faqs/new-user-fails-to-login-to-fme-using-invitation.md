@@ -20,7 +20,7 @@ Invitation is sent successfully to a user for given organization, however, when 
 
 There are multiple root causes:
 
-* The same user id (email address) exists in another organization. Split platform does not allow users to belong to multiple organizations.
+* The same user ID (email address) exists in another organization. Split platform does not allow users to belong to multiple organizations.
 * The invitation link has expired.
 * The user is trying to use Google Authentication to log in to Split for the first time, not Split authentication.
 

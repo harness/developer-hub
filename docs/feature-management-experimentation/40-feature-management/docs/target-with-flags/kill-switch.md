@@ -3,6 +3,7 @@ title: Kill switch
 sidebar_label: Kill switch
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 6
 ---
 
 import Link from "@docusaurus/Link";

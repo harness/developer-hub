@@ -3,6 +3,7 @@ title: Default treatment
 sidebar_label: Default treatment
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 1
 ---
 
 import Link from "@docusaurus/Link";
@@ -14,7 +15,7 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020527672-Set-the-default-treatment <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-The default treatment is always one of the treatments defined for any feature flag in the targeting rules. The default treatment is returned by the SDK in these two scenarios.
+The default treatment is returned by the SDK in the following scenarios:
 
 * **The end user does not meet any defined conditions:** The default treatment is shown to end users who do not meet any of the conditions in the targeting rules.
 

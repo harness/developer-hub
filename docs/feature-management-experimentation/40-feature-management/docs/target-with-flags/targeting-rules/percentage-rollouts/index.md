@@ -1,5 +1,5 @@
 ---
-title: Creating a rollout plan
+title: Percentage rollouts
 sidebar_label: Creating a rollout plan
 helpdocs_is_private: false
 helpdocs_is_published: true

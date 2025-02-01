@@ -1,6 +1,6 @@
 ---
-title: How to implement sticky treatments for an experiment?
-sidebar_label: How to implement sticky treatments for an experiment?
+title: Randomization and stickiness
+sidebar_label: Randomization and stickiness
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -12,9 +12,11 @@ import Link from "@docusaurus/Link";
 </p>
 
 <h2 id="h_01JENPSA4T0KQX92J4WFHKGQAM">The challenge</h2>
-<p>
-  How do I ensure that once a treatment is assigned to a particular key (user id), that the same treatment will be assigned to that key in the future, regardless of any changes to the rollout plan or to the values of attributes associated with the user id?
-</p>
+
+### How to implement sticky treatments for an experiment?
+
+  How do I ensure that once a treatment is assigned to a particular key (user ID), that the same treatment will be assigned to that key in the future, regardless of any changes to the rollout plan or to the values of attributes associated with the user ID?
+
 <p>
   Because each instance of the SDK is an independent targeting engine with no local record of the treatment previously assigned to a key, to achieve this goal it is necessary to somehow maintain state, so that a user is always assigned the same treatment they saw the first time they visited, even if a change to the rollout plan would flip the user to another treatment, or if the value of an attribute associated with a user changed such that they switched to a different targeting rule. One example of when it would be desirable to maintain consistency is a feature flag that controls the value associated with an offer of some sort, such as the interest rate for a loan or a promotional discount on a product.
 </p>
@@ -45,10 +47,10 @@ import Link from "@docusaurus/Link";
   Saving state
 </h3>
 <p>
-  The core functionality necessary to make treatments sticky regardless of changes to a feature flag's rules is the ability to store state; in this case the treatment returned by the first call to getTreatment to a flag for a particular user id and set of attributes. How you store this state is up to you; feasible approaches depend on where you are calling getTreatment, the traffic type of the feature flag, and whether or not you are interested in sticky treatments to deal with the case of a known user’s attribute values changing over the lifetime of a flag.
+  The core functionality necessary to make treatments sticky regardless of changes to a feature flag's rules is the ability to store state; in this case the treatment returned by the first call to getTreatment to a flag for a particular user ID and set of attributes. How you store this state is up to you; feasible approaches depend on where you are calling getTreatment, the traffic type of the feature flag, and whether or not you are interested in sticky treatments to deal with the case of a known user’s attribute values changing over the lifetime of a flag.
 </p>
 <p>
-  The latter situation is the simplest. If you are passing attribute values for a given id (key) to pass to getTreatment, you must have some system in which you are associating attributes with that known user id. In this case, store the original treatment for the id in that same system.
+  The latter situation is the simplest. If you are passing attribute values for a given id (key) to pass to getTreatment, you must have some system in which you are associating attributes with that known user ID. In this case, store the original treatment for the id in that same system.
 </p>
 <p>
   If the getTreatment call is server side, then conceivably you have some sort of caching server, like Redis available where you can maintain an association between the id and the original treatment for the feature flag returned from getTreatment.
@@ -63,7 +65,7 @@ import Link from "@docusaurus/Link";
   Logic
 </h3>
 <p>
-  So once you have a plan for storing state associated with a user id, how do you structure the code around the getTreatment call for the feature flag where the initially assigned treatment should remain sticky?
+  So once you have a plan for storing state associated with a user ID, how do you structure the code around the getTreatment call for the feature flag where the initially assigned treatment should remain sticky?
 </p>
 
 ```
@@ -112,5 +114,5 @@ if (getTreatment(key, "new_feature_experiment_sticky", attributes) == "on") {
 ### Limitations
 
 <p>
-  This technique cannot be used for feature flags using dynamic config, unless the program caches the configuration information in addition to the treatment name. And then one would not be able to change the configuration info in the feature flag definition and have it updated while the treatment remained sticky. This limitation could be worked around by having a well-known individually targeted user id for each treatment and then calling getTreatment with the appropriate individually targeted user_id for the cached treatment.
+  This technique cannot be used for feature flags using dynamic config, unless the program caches the configuration information in addition to the treatment name. And then one would not be able to change the configuration info in the feature flag definition and have it updated while the treatment remained sticky. This limitation could be worked around by having a well-known individually targeted user ID for each treatment and then calling getTreatment with the appropriate individually targeted user_id for the cached treatment.
 </p>

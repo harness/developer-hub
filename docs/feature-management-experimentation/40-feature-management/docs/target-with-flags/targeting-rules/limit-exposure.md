@@ -3,6 +3,7 @@ title: Limit exposure
 sidebar_label: Limit exposure
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 4
 ---
 
 import Link from "@docusaurus/Link";
@@ -28,6 +29,6 @@ By gradually increasing the percentage in the Limit exposure box, you increase t
 
 The Limit exposure feature is particularly useful for experimentation, where you can allocate a limited percentage of your traffic to be in an experiment.
 
-Note that the treatment assigned a user id according to the feature flag's targeting rules will be "sticky", meaning that increasing the Limit exposure percentage will not reallocate an already assigned user to a different treatment.
+Note that the treatment assigned a user ID according to the feature flag's targeting rules will be "sticky", meaning that increasing the Limit exposure percentage will not reallocate an already assigned user to a different treatment.
 
 A user that is outside the exposed traffic is assigned the default treatment and the feature flag's [impression](https://help.split.io/hc/en-us/articles/360020585192-Impressions) for that evaluation will include the _**targeting label**_ `not in split`.

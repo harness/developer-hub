@@ -3,6 +3,7 @@ title: Alert baseline treatment
 sidebar_label: Alert baseline treatment
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 3
 ---
 
 import Link from "@docusaurus/Link";
@@ -10,6 +11,8 @@ import Link from "@docusaurus/Link";
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360029566292-Set-the-alert-baseline-treatment <br /> ✘ images still hosted on help.split.io </button>
 </p>
+
+The alert baseline treatment is used if an alert policy has been created. When there is an active alert policy, then the feature flag's alert baseline treatment is compared against all the other treatments when metrics are calculated.
 
 :::tip
 Get access to alert policies by contacting your customer success manager or [support@split.io](mailto:support@split.io) and we’ll enable in your account.

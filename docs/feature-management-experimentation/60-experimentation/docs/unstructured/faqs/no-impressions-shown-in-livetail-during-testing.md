@@ -20,7 +20,7 @@ import Link from "@docusaurus/Link";
 <h2 id="answer" class="header-anchor">Answer</h2>
 <p>
   All Split SDKs support a de-dupe feature to conserve the amount of impressions
-  posted to Split cloud, the impressions that contain the same user id, feature
+  posted to Split cloud, the impressions that contain the same user ID, feature
   flag name, and treatment value will not be posted if it they are generated within
   few minutes.
 </p>

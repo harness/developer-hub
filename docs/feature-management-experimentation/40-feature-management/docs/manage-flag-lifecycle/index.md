@@ -3,6 +3,7 @@ title: Manage feature flag lifecycle
 sidebar_label: Manage flag lifecycle
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 4
 ---
 
 import Link from "@docusaurus/Link";

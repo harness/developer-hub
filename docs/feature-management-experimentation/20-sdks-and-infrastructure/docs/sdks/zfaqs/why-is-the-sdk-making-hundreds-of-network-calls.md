@@ -41,7 +41,7 @@ mySplit3 = new SplitIO();
 
 ## Solution
 
-We always recommend using a singleton factory object, and one client object especially if we are using only one traffic type and customer id. If you need to the traffic type or user id, then you should initiate the client object only. Example:
+We always recommend using a singleton factory object, and one client object especially if we are using only one traffic type and customer id. If you need to the traffic type or user ID, then you should initiate the client object only. Example:
 
 ```javascript
 class SplitIO {

@@ -1,6 +1,6 @@
 ---
-title: Can I call getTreatment() without a user id?
-sidebar_label: Can I call getTreatment() without a user id?
+title: Can I call getTreatment() without a user ID?
+sidebar_label: Can I call getTreatment() without a user ID?
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: ""
@@ -12,7 +12,7 @@ description: ""
 
 ## Question
 
-There are scenarios when there is a need to calculate treatment without specifying a user id, for example, when using a feature flag as a 100% feature toggle; either `"On"` or `"Off"`. Is there a way to omit the user id from the `getTreatment` call?
+There are scenarios when there is a need to calculate treatment without specifying a user ID, for example, when using a feature flag as a 100% feature toggle; either `"On"` or `"Off"`. Is there a way to omit the user ID from the `getTreatment` call?
 
 ## Answer
 

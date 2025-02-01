@@ -11,7 +11,7 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360040085991-Python-Admin-API-sample-Adding-user-keys-to-individual-target-section-in-existing-feature-flag </button>
 </p>
 
-Basic code to use Python to add new user id (key) in the individual targeted  section of given treatment to an existing feature flag
+Basic code to use Python to add new user ID (key) in the individual targeted  section of given treatment to an existing feature flag
 
 The script will use the REST Admin API to perform the actions. The example will determine the treatment order to use in constructing the patch request payload, it also checks if an individual target section already exists for the treatment to change the JSON path accordingly.
 

@@ -110,7 +110,7 @@ import Link from "@docusaurus/Link";
     <strong>Program defensively:</strong> Take care that your code accounts for all possible eventualities. For instance, with regards to the aforementioned potential latency of the Profiles API call, you might want to set a shorter than default timeout for the HTTP request.&nbsp;
   </li>
   <li>
-    <strong>Segment trait limiting</strong>: The sample code provided is for demonstration purposes only and does not deal with all possibilities, such as a user id having more than ten traits, which is the limit for the number of traits returned in a single call. In that case, to fetch all of a user’s traits, you’ll have to iteratively call the Profiles API, using the cursor element in the returned data. Always make sure to account for the case where the data doesn’t exist or isn’t returned because the request timed out.
+    <strong>Segment trait limiting</strong>: The sample code provided is for demonstration purposes only and does not deal with all possibilities, such as a user ID having more than ten traits, which is the limit for the number of traits returned in a single call. In that case, to fetch all of a user’s traits, you’ll have to iteratively call the Profiles API, using the cursor element in the returned data. Always make sure to account for the case where the data doesn’t exist or isn’t returned because the request timed out.
   </li>
 </ul>
 <p>&nbsp;</p>

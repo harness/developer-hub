@@ -1,8 +1,9 @@
 ---
-title: MTK usage and comparing counts
-sidebar_label: MTK usage and comparing counts
+title: MTK efficiency
+sidebar_label: MTK efficiency
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 10
 ---
 
 import Link from "@docusaurus/Link";

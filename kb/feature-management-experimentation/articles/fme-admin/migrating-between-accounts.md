@@ -42,8 +42,6 @@ If you move feature flags to a new organization or workspace, you will need to g
 
 - Create new API keys, if needed. For example, if you move all of the flags into a new Workspace you will need new API keys. You can also re-use existing API keys in TargetOrg if you are re-using an existing Environment.
 
-
-
 ### Segments
 
 Review the [Segments guide](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) for more information about manually managing segments. If you are migrating many segments with many entries, you can use the [Split Admin API](https://docs.split.io/reference/segments-overview) to streamline the process. If the segment is maintained external to Split, it should be straightforward to create and update the segment in the new organization.
@@ -72,6 +70,4 @@ Timing of the migration:
 * The migration process can be done at once or over time. Some things may make sense to migrate earlier than others. For example, we recommend that you move users over as soon as you can. However, you will want to have at least one user in the previous organization so that they can log in and manage any remaining flags.
 * Once we confirm no more traffic is coming into the organization or workspace being migrated from, and the users are moved (if this is an Organization), then we can shut it down.
 
-If needed, Split can provide a list of users, flags, or segments to assist you with your migration. [Contact our Support team](https://help.split.io/hc/en-us/requests/new) for assistance.
-
-
+If needed, Split can provide a list of users, flags, or segments to assist you with your migration. Contact [support@split.io](mailto:support@split.io) for assistance.

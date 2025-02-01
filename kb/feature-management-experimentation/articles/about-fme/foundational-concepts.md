@@ -4,6 +4,7 @@ sidebar_label: Foundational concepts
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: Take a minute to learn the foundational concepts of Split’s Feature Data Platform
+sidebar_position: 1
 ---
 
 import Link from "@docusaurus/Link";
