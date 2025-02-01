@@ -91,6 +91,13 @@ Kubernetes AutoStopping support is fully available for the following ingress con
 <Tabs>
 <TabItem value="nginx" label="Kubernetes AutoStopping for Nginx" default>
 
+0. You will need the following options set on your NGINX Ingress Controller:
+
+```yaml
+allow-snippet-annotations: true
+annotations-risk-level: Critical
+```
+
 1. Expose your application by creating an ingress rule. Apply the following YAML to the cluster.
 
 ```yaml
