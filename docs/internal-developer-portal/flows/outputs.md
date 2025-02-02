@@ -1,6 +1,6 @@
 ---
 title: Configuring Workflow Outputs
-description: Learn more about how to define and generate outputs for your Workflows
+description: Learn more about defining and generating outputs for your Workflows.
 sidebar_position: 6
 sidebar_label: Workflow Outputs
 ---

@@ -1,8 +1,8 @@
 ---
 title: Dynamic Workflow Picker based on API Response
-description: This page describes how you can create a dynamic workflow picker in IDP and create dropdown fields which show results based on an API response.
+description: Learn to create a dynamic workflow picker in IDP with API-based dropdown fields.
 sidebar_position: 20
-sidebar_label: Dynamic Workflow picker based on API response
+sidebar_label: Dynamic Workflow Picker
 ---
 
 It is quite common to create a UI field in [IDP Workflow](http://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#specparameters---formstep--formstep) forms which shows a static list options to the user. For example -

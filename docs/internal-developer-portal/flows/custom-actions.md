@@ -1,21 +1,17 @@
 ---
 title: Workflow Actions
-description: These Workflows Actions are supported in Harness IDP
+description: Learn how to configure actions for your Workflow's backend. 
 sidebar_position: 5
 sidebar_label: Workflow Actions
 ---
-
-
-## Introduction
+The backend of **Harness IDP workflows** consists of a library of steps and actions that define the workflow logic. 
 
 **Workflow Actions** in IDP are integration points with third-party tools that take inputs from workflows and execute specific tasks based on user input. Workflows include built-in actions for fetching content, registering services in the catalog, and creating/publishing Git repositories.
 
-Harness IDP supports multiple repository providers out of the box, including **GitHub**, **Azure**, **GitLab**, and **Bitbucket**.
+## Defining Workflow Actions
+You can configure the backend using the `spec.steps` field in your YAML configuration. These steps serve as core execution units, triggering actions and orchestrating pipelines. Input details from the frontend are passed to the backend, enabling task execution.
 
-## Actions Syntax
-
-Each Workflow action follows a general YAML syntax:
-
+### YAML Syntax
 ```YAML
 steps:
   - id: step_id
@@ -26,7 +22,7 @@ steps:
     output:
       key: value
 ```
-
+#### YAML Breakdown
 - `id` – A unique identifier for the step, used to reference it in later steps.
 - `name` – A human-readable label for the step.
 - `action` – Specifies the workflow action to execute (e.g., trigger:harness-custom-pipeline, publish:github).
@@ -50,20 +46,17 @@ output:
 ```
 This allows other steps to reference the generated `filePath`.
 
-## How to View Supported Actions
+## Supported Actions
 
 You can find a list of all registered Workflow actions under:
 
 `Workflows/Create/Self Service` -> `Installed Actions`
 
-![](./static/create_neww.png)
-
 ![](./static/fetch-actions.png)
 
 ![](./static/installed-actions.png)
 
-
-## Supported Actions
+Let's dive deeper into each supported action.  
 
 ### 1. `trigger:harness-custom-pipeline`
 

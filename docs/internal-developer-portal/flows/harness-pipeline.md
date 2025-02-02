@@ -1,6 +1,6 @@
 ---
 title: Setting Up the Backend with Harness Pipeline
-description: Setting Up the Backend with Harness Pipeline
+description: Get started with setting up your Workflow's backend with Harness Pipeline.
 sidebar_position: 6
 sidebar_label: Configuring Harness Pipeline
 ---

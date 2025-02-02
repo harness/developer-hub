@@ -1,19 +1,22 @@
 ---
 title: Workflow Inputs
-description: Instructions to build the UI of individual workflows and all the types of inputs possible in Workflows
+description: Learn how to configure and customize inputs for your Workflow's frontend.  
 sidebar_position: 4
 sidebar_label: Workflow Inputs
 redirect_from:
   - /docs/internal-developer-portal/flows/custom-extensions
 ---
 
-Workflows allow users to provide input parameters that drive the execution of templates. A well-designed form ensures a smooth user experience by offering the right input types and validation mechanisms. Inputs can be categorized into static inputs, where users manually enter values, and dynamic inputs, which fetch or derive values based on context.
+The frontend of **Harness IDP workflows** can be customized to accept different **input fields** based on specific requirements. It acts as the entry point where users provide details to run workflows using predefined input parameters.
 
-#### Workflow YAML Syntax for Parameters
-Parameters are defined at the beginning of a workflow YAML file, and they play an important role in specifying what inputs the workflow expects from the user. They allow the user to pass values that can be referenced later in the workflow, such as repository names, versions, or any other configurable item.
+A well-structured frontend improves the user experience by ensuring the right input types and validations. There are various input types and validation use cases. Let’s explore them in detail.
 
-Here’s an example of how parameters are defined in workflow YAML:
+## Defining Workflow Inputs
+You can define workflow inputs using the `spec.parameters` property in your `workflow.yaml`. Parameters are specified at the beginning of a workflow YAML file and define the inputs required from the user. These inputs allow users to pass values—such as repository names, versions, or other configurable items—that can be referenced throughout the workflow.
 
+### YAML Syntax
+
+#### Example YAML
 ```YAML
 # Example of defining parameters
 parameters:
@@ -36,25 +39,26 @@ parameters:
           - production
         description: The environment for deployment
 ```
-#### Breakdown of the YAML Structure
-- `parameters`:This key holds an array of parameter definitions. Each parameter is defined as an object that specifies its title, type, and additional details such as whether it is required or has specific options like enums (choices).
-- `title`: This is the name displayed in the UI when the user is prompted for input.
-- `properties`: Under this key, individual input fields are defined. Each property corresponds to a user input field.
-    - `title`: The label or name for the parameter input field, displayed in the UI.
-    - `type`: The data type of the input. Common types are:
-        - `string`: Represents a free-text field.
-        - `number`: For numeric inputs.
-        - `boolean`: For true/false checkboxes.
-    - `description`: A brief description explaining what the parameter is for.
-    - `required`: Specifies whether the input is mandatory. 
-    - `enum`: A list of predefined options from which the user can choose. This is useful for fields like deployment environments (e.g., dev, staging, production).
-    - `ui:widget`: Specifies the UI element used for input (e.g., text field, dropdown).
+#### YAML Breakdown
+- **`parameters`**: This key holds an array of parameter definitions. Each parameter is defined as an object that specifies its title, type, and additional details, such as whether it is required or has specific options like enums (choices).  
 
-Below are the different ways you can design form inputs in IDP workflows:
+  - **`title`**: The title of the input form displayed in the frontend when prompting the user for input.  
+  - **`properties`**: Defines individual input fields, where each property corresponds to a separate and specific input field.  
+    - **`title`**: The label or name for the parameter input field, shown in the frontend.  
+    - **`type`**: The expected data type of the input. Common types include:  
+      - **`string`**: A free-text input field.  
+      - **`number`**: Accepts numeric values.  
+      - **`boolean`**: A true/false checkbox.  
+    - **`description`**: A brief explanation of the parameter's purpose.  
+    - **`required`**: Indicates whether the input is mandatory.  
+    - **`enum`**: A list of predefined options the user can choose from, useful for fields like deployment environments (e.g., dev, staging, production).  
+    - **`ui:widget`**: Specifies the UI element used for input (e.g., text field, dropdown).  
 
-#### Static Inputs
+## Input Types
+Here are the different ways to design form inputs in IDP workflows:
 
-These inputs require users to enter predefined values manually.
+### Static Inputs
+**Static inputs** are fields where users manually enter their details as defined in the frontend. These inputs come in various types:
 
 - `string` – Single-line text input
 - `textarea` – Multi-line text input
@@ -65,31 +69,29 @@ These inputs require users to enter predefined values manually.
 - `object` – Key-value pair inputs
 - `password` – Masked input for sensitive values
 
-#### Dynamic Inputs
+### Dynamic Inputs
+**Dynamic inputs** are fields that automatically retrieve data from external sources or runtime context, eliminating the need for manual entry.
 
-These inputs fetch values dynamically based on external data sources or runtime context.
-
-1. [Standard Workflow UI Picker](/docs/internal-developer-portal/flows/flows-input#workflow-ui-pickers)
+1. **[Standard Workflow UI Picker](/docs/internal-developer-portal/flows/flows-input#workflow-ui-pickers)**
     - `Entity Picker` – Select an entity from the catalog
     - `Owner Picker` – Select a user or group
     - `Repository Picker` – Choose a repository from a version control provider
 
-2. [API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/dynamic-picker)
+2. **[API Based Dynamic Workflow UI Picker](/docs/internal-developer-portal/flows/dynamic-picker)**
 
     - `Dynamic API Picker` – Fetch options dynamically via an API request
     - `Autocomplete Fields` – Suggestions based on previous inputs or external data fetched using Dynamic API Picker. 
-
 
 
 ## Input Examples
 
 ### Simple text input
 
-#### Basic Input with Validations
+#### Basic Input
 
-Basic form inputs let users provide structured data while ensuring it meets specific rules. You can set limits like character counts, patterns, and UI hints to help users fill out the form correctly.
+Basic form inputs allow users to enter structured data while ensuring it meets predefined rules. You can enforce limits such as character counts, patterns, and UI hints to guide users in filling out the form accurately.
 
-Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/text-input-pattern.yaml)
+#### [Example `workflow.yaml`](https://github.com/harness-community/idp-samples/blob/main/workflow-examples/text-input-pattern.yaml)
 
 This example demonstrates a simple text input field with:
 
@@ -474,9 +476,9 @@ parameters:
 
 ## Workflow UI Pickers
 
-Collecting input from the user is a very large part of the Workflows as a whole. Sometimes the built-in components and fields just aren't good enough, and sometimes you want to enrich the form that the users sees with better inputs that fit better.
+User input is a crucial aspect of Workflows. However, built-in components and fields may not always meet specific requirements, and at times, you may want to enhance the form with more intuitive and tailored inputs.  
 
-This is where Workflow UI Pickers come in.
+This is where **Workflow UI Pickers** come in.
 
 ### Harness Specific UI Pickers
 
@@ -1020,16 +1022,11 @@ entity:
     defaultNamespace: payment
 ```
 
-### The Repository Picker
+### Repository Picker
 
-In order to make working with repository providers easier, we've built a custom
-picker that can be used by overriding the `ui:field` option in the `uiSchema`
-for a `string` field. Instead of displaying a text input block it will render
-our custom component that we've built which makes it easy to select a repository
-provider, and insert a project or owner, and repository name.
+To simplify working with repository providers, we’ve built a custom picker that can be used by overriding the `ui:field` option in the `uiSchema` for a `string` field. Instead of displaying a standard text input, this picker renders a custom component that allows users to easily select a repository provider and enter details like project/owner and repository name.  
 
-You can see it in the above full example which is a separate step and it looks a
-little like this:
+You can see this in the full example , where it appears as a separate step and looks something like this:
 
 ```yaml
 - title: Choose a location
@@ -1153,6 +1150,335 @@ There's also the ability to pass additional scopes when requesting the `oauth`
 token from the user, which you can do on a per-provider basis, in case your Workflow can be published to multiple providers.
 
 Note, that you will need to configure a **connector** for your source code management (SCM) service to make this feature work.
+
+## Conditional Inputs
+
+Workflows support dynamic parameter handling using conditional logic. You can control how inputs are assigned based on specific conditions, allowing for greater flexibility in user selections and workflow execution.
+
+### Conditionally set parameters
+
+You can use the `if` keyword within a parameter to apply conditional logic using [Nunjucks templating](https://mozilla.github.io/nunjucks/templating.html#if). Since the `not` keyword is unavailable, use JavaScript-style equality instead.
+
+Example: If `parameters.branchName` is set, use its value; otherwise, append a timestamp to a default name,`${{ parameters.branchName if parameters.branchName else appendTimestamp("default-branch-name-") }}`
+
+:::info
+
+These conditionals could be used only under `steps`
+
+:::
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML
+spec:
+  parameters:
+    - title: Fill in some steps
+      properties:
+        path:
+          title: path
+          type: string
+
+  steps:
+    - id: fetch
+      name: Fetch template
+      action: fetch:template
+      input:
+        url: ${{ parameters.path if parameters.path else '/root' }}
+```
+
+</details>
+
+### Use parameters as conditional for fields
+
+<details>
+<summary>Example YAML</summary>
+
+```yaml
+parameters:
+  - title: Fill in some steps
+    properties:
+      includeName:
+        title: Include Name?
+        type: boolean
+        default: true
+
+    dependencies:
+      includeName:
+        allOf:
+          - if:
+              properties:
+                includeName:
+                  const: true
+            then:
+              properties:
+                lastName:
+                  title: Last Name
+                  type: string
+```
+
+</details>
+
+![](./static/template-conditional.gif)
+
+
+
+1. **`One Of`**: Helps you create a dropdown in the Workflow, where only one of all the options available could be selected.
+
+Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/05d533cb9789d5abffbdc103d55530efea489161/workflow-examples/conditional-one-of.yaml#L11-L25)
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML
+dependencies:
+  technology:
+    oneOf:
+      - properties:
+          technology:
+            enum:
+              - java
+          java version:
+            type: "string"
+            enum:
+              - java8
+              - java11
+```
+
+</details>
+
+![](./static/template-one-of.png)
+
+2. **`All Of`**: Helps you create a dropdown in the Workflow, where only all the options available could be selected.
+
+Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/70f70f32dfca3ad394677b19608d72706cc8d38c/workflow-examples/conditional-all-of.yaml#L54-L77)
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML
+type: object
+allOf:
+- properties:
+    lorem:
+      type:
+      - string
+      - boolean
+      default: true
+- properties:
+    lorem:
+      type: boolean
+    ipsum:
+      type: string
+```
+
+</details>
+
+![](./static/template-conditional-all-of.png)
+
+3. **`Any Of`**: Helps you to select from multiple properties where both can't be selected together at once.
+
+Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/4215c82f933af1d3c1675b89baa2f042e83a60a2/workflow-examples/conditional-any-of.yaml#L31-L46)
+
+**Example Workflow Explained**
+
+1. **Parameters Structure**
+   The parameters section includes `age` as an integer and `items` as an array. Each item in the array can contain either a `foo` or `bar` property, utilizing `anyOf`.
+
+2. **Identification Methods**
+   The Workflow allows for two methods of identification using `anyOf`. Users can provide either:
+
+- A first name and last name (defaulting `firstName` to "Chuck"), or
+- An ID code.
+
+3. **Required Fields**
+   The `age` field is required, while the fields under the two identification methods are optional but must comply with the `anyOf` logic.
+
+4. **Display Step**
+   The steps section includes a `debug:log` action to display the collected information based on the provided input.
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML
+type: object
+properties:
+  age:
+    type: integer
+    title: Age
+  items:
+    type: array
+    items:
+      type: object
+      anyOf:
+      - properties:
+          foo:
+            type: string
+      - properties:
+          bar:
+            type: string
+anyOf:
+- title: First method of identification
+  properties:
+    firstName:
+      type: string
+      title: First name
+      default: Chuck
+    lastName:
+      type: string
+      title: Last name
+- title: Second method of identification
+  properties:
+    idCode:
+      type: string
+      title: ID code
+```
+
+</details>
+
+![](./static/template-conditional-anyof.png)
+
+### Advanced use-cases
+
+#### Usage of dependencies and reusable references.
+
+<details>
+<summary>Example YAML</summary>
+
+```YAML
+spec:
+  owner: owner@company.com
+  type: service
+  parameters:
+    - title: Infrastructure Provisioning
+      type: object
+      required:
+        - environment_type
+        - owner
+      properties:
+        owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+        # This field is hidden but needed to authenticate the request to trigger the pipeline
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+        environment_type:
+            title: environment_type
+            type: string
+            description: Name of the environment where you want to provision a resource
+            enum:
+              - dev
+              - staging
+              - prod
+        infracomponent:
+            title: infra component
+            type: object
+            properties:
+                resource_type:
+                    title: resource_type
+                    type: string
+                    description: Name of the resource that you want to provision
+                    enum:
+                        - s3
+                        - vpc
+                        - sns
+                        - glue
+                        - sqs
+            required:
+                - resource_type
+            dependencies:
+                resource_type:
+                    oneOf:
+                        - properties:
+                              resource_type:
+                                  enum:
+                                      - s3
+                                      - vpc
+                              Operationtype:
+                                  $ref: "#/myregion/operation"
+      myregion:
+          operation:
+              title: region
+              type: object
+              properties:
+                  ChooseRegion:
+                      type: string
+                      enum:
+                          - Region A
+                          - Region B
+                          - Region C
+```
+</details>
+
+Example [workflows.yaml](https://github.com/harness-community/idp-samples/blob/main/template-conditional-parameters.yaml)
+
+The workflow defines an Infrastructure Provisioning setup with parameters, within `infracomponent`, the `resource_type` field is defined. The `dependencies` section ensures that, if `resource_type` is either `s3` or `vpc`, an additional field `Operationtype` (referenced from `myregion/operation`) is required.
+
+```YAML
+dependencies:
+  resource_type:
+    oneOf:
+      - properties:
+          resource_type:
+            enum:
+              - s3
+              - vpc
+          Operationtype:
+            $ref: "#/myregion/operation"
+```
+What Happens Here?
+- If a user selects `s3` or `vpc`, then `Operationtype` must also be provided.
+- The `dependencies` field ensures `Operationtype` is only required when `resource_type` is `s3` or `vpc`.
+- The use of `$ref: "#/myregion/operation"` allows referencing another part of the YAML file, ensuring DRY (Don't Repeat Yourself) principles.
+- Users only see the relevant fields based on their selections.
+
+#### Understanding dependencies usage and indentations
+
+The `dependencies` keyword specifies conditional relationships between fields. When a field depends on another, its presence or properties change based on the value of the controlling field.
+
+Structure of dependencies:
+
+```YAML
+dependencies:
+  controlling_field:
+    oneOf:
+      - properties:
+          controlling_field:
+            enum:
+              - option1
+          dependent_field:
+            type: string
+            description: Visible when option1 is selected
+        required:
+          - dependent_field
+      - properties:
+          controlling_field:
+            enum:
+              - option2
+          another_dependent_field:
+            type: string
+            description: Visible when option2 is selected
+        required:
+          - another_dependent_field
+```
+
+Things to take care of: 
+
+1. Ensure `dependencies` is at the same level as `properties`.
+
+2. Inside `oneOf`, `allOf`, or `anyOf`, indent `properties` and `required` correctly.
+
+3. Each field inside `dependencies` should align with its `controlling` field.
+
+
+For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/).
 
 ## Advanced Input Configurations
 
@@ -1371,11 +1697,8 @@ spec:
 
 </details>
 
-## Dynamic API Picker
+## Dynamic API Picker 
+The **Dynamic API Picker** allows users to make API calls directly from the Workflows UI, dynamically fetching values to use as inputs in workflows. For detailed usage instructions, refer to the documentation [here](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker). 
 
-Using dynamic API picker, users can make API calls from workflows UI and fetch values dynamically and use them as an input for the workflows. Detailed information on the usage can be found [here](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker).
-
-
-## For Use-Cases you don't find here
-
-It is suggested to use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the frontend(UI for Inputs) for use-cases that are not listed here. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the Self Service Workflows.
+## For Use Cases Not Listed Here  
+For scenarios not covered in this guide, it is recommended to use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to design the UI for input fields. Additionally, [Nunjucks](https://mozilla.github.io/nunjucks/) serves as the templating engine for Self-Service Workflows.

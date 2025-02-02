@@ -1,6 +1,6 @@
 ---
 title: IDP Stage
-description: Overview of IDP stage and the steps associated with it
+description: Get started with learning more about the IDP stage and its various execution steps.
 sidebar_position: 7
 ---
 
