@@ -2,5 +2,6 @@
     "label": "Monitoring",
     "collapsible": true,
     "collapsed": true,
-    "className": "red"
+    "className": "red",
+    "position": 5
 }

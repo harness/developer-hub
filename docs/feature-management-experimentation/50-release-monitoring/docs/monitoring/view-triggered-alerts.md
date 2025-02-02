@@ -1,6 +1,6 @@
 ---
-title: Monitoring tab
-sidebar_label: Monitoring tab
+title: View triggered alerts
+sidebar_label: View triggered alerts
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -11,17 +11,7 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/30098162579853-Monitoring-tab <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-The Monitoring tab provides real-time insights into your feature flag's traffic and a summary of alerts that have fired. This data can be used to identify unexpected trends or issues that require troubleshooting.
-
-The Monitoring tab includes the following sections:
-
-## Traffic insights
-
-This section visualizes the number of unique keys (users, accounts, or your defined traffic type) served each treatment over the selected time period. The data is shown in a line graph, with each line corresponding to a selected treatment. If a time range is selected that spans across versions, vertical lines indicate when a new feature flag version was created. Additionally, a table displays a summary of unique keys and total impressions per treatment.
-
-<p>
-  <img src="https://help.split.io/hc/article_attachments/32241788034445" alt="monitoring_tab_traffic_insights.png" />
-</p>
+The Monitoring tab provides a summary of alerts that have fired.
 
 ## Alerts fired
 

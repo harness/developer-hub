@@ -3,6 +3,7 @@ title: Metrics
 sidebar_label: Metrics
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 3
 ---
 
 import Link from "@docusaurus/Link";

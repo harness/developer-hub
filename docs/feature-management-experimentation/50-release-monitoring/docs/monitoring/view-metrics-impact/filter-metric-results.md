@@ -19,7 +19,6 @@ Split provides the ability to filter your metric results, so you can analyze imp
 
 Optionally, you can filter the metrics displayed by metric tag, metric owner, or metric result.
 
-
 ## Set your filters
 
 ### Version

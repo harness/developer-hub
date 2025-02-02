@@ -99,7 +99,7 @@ All criteria are necessary and sufficient to view your data when you select a tr
 
 The information displayed within the metric dispersion section of the table is dependent on the type of metric you are analyzing. When available, you can understand the minimum, maximum, median, and the 95th percentile of your metric. The metrics dispersion allows you to measure the spread of your data, or the variability in your sample. This section also includes the absolute total contributing to the metric value. For example, if you are measuring the count of purchases per user, you can see the actual count of purchases in each treatment and the uplift between the treatments. The table below highlights which columns is available based on the type of metric you are analyzing and those which show as N/A.
 
-|  | **Total / Average / Contributors ** | **Mean** | **Stdev** | **Min** | **Median** | **95th Percentile** | **Max** |
+|  | Total / Average / Contributors | Mean | Stdev | Min | Median | 95th Percentile | Max |
 | --- | --- | --- | --- | --- | --- |--- | --- | 
 | **PER USER** | | | | | | | | 
 | Count of events per user | yes | yes | yes | yes | yes | yes | yes | 
@@ -114,7 +114,7 @@ The information displayed within the metric dispersion section of the table is d
 | Ratio of two events per user | yes | N/A | N/A | N/A | N/A | N/A | N/A | 
 | Count of unique users | yes | N/A | N/A | N/A | N/A | N/A | N/A | 
 
-| **Title** | **Description** | 
+| Title | Description | 
 | --- | --- | 
 | **Mean**| The mean is equal to the sum of all the data points in the data set, divided by the number of contributors in the data set.| 
 | **Stdev** | The standard deviation represents the variance of the data set as compared to the mean.| 
@@ -127,7 +127,7 @@ The information displayed within the metric dispersion section of the table is d
 
 This section of the table provides information about the metric's sample population. A description of these columns are listed below: 
 
-| **Title** | **Description** |
+| Title | Description |
 | --- | --- | 
 | **In treatment** | The number of unique user keys that were served a treatment, and in some cases sent an event measured by the metric. | 
 | **Excluded** | The number of unique user keys excluded from the analysis. For more information, see the Exclusions section in [Attribution and exclusion](https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion#potential-complications). | 

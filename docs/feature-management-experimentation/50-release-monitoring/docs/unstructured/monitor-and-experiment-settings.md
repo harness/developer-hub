@@ -1,97 +1,17 @@
 ---
-title: Monitor and experiment settings
-sidebar_label: Monitor and experiment settings
+title: Experiment settings
+sidebar_label: Experiment settings
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import Link from "@docusaurus/Link";
+import MonitoringSettings from "@site/docs/feature-management-experimentation/50-release-monitoring/_templates/monitor-and-experiment-settings.md";
+
+<MonitoringSettings />
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings <br /> ✘ images still hosted on help.split.io </button>
 </p>
-
-Whether you are releasing new functionality or running an experiment, Split analyzes the change in your metrics. This allows you to determine whether the impact is positive and statistically significant and not happening by chance. You can ensure the analyses are run in the way which best suits your use cases by configuring your statistical settings. For example, you can adjust parameters such as the significance threshold. This controls your chances of seeing false positive results. You can set it higher for a faster time to significance or lower to filter more reliable results, which reflects your preferred balance between confidence and time.
-
-There are two types of statistical settings:
-
-* [Monitor settings](#monitor-settings). Impacts how your alert policies are triggered
-* [Experiment settings](#experiment-settings). Impacts how your metric impact results are analyzed
-
-You can set account-wide defaults by configuring your account's statistical settings in the Admin settings section. These settings are used to trigger all alert policies and uncustomized feature flags, and they are applied by default for all newly created feature flags.
-
-You can also configure the experiment threshold of your feature flags individually by customizing their settings. The settings used for a particular environment's results within a particular feature flag can be individually customized. When you customize your experiment settings at the feature flag-level, the new settings are immediately applied to all versions of the feature flag only in the particular environment you customized. For example, you could set a particular feature flag to use different experiment settings in the staging and production environments. Customizing experiment settings at the feature flag-level has no impact on your other feature flags or any of your alert policies.
-
-## Changing the settings
-
-The following explains how to change your account- and feature flag-level settings. Account-wide settings trigger all alert policies and uncustomized feature flags, and they are applied by default for all newly created feature flags. Feature flag-level settings are individually customized for a particular environment's results within a particular feature flag.
-
-### Changing account-wide settings
-
-To change your account-wide settings, do the following:
-
-**Important: The testing method menu list only applies to results that are in your user interface. It doesn't apply to your alerts.**
-
-1. From the left navigation, click the **user's initials** at the bottom and then **Admin settings**. 
-2. Click the **Monitor window and statistics** selection. The Monitor window and statistics page appears.
-
- <p>
-      <img src="https://help.split.io/hc/article_attachments/30833174987661" alt="monitor_and_experiment_settings_account.png" />
- </p>
-
-3. Adjust your settings and and when done, click **Save**.
-
-___Note: Changing your statistical settings instantly affects your entire account.___ _All alert policies are analyzed against the new settings in future. All feature flags which are not customized (i.e., those for which the Always use account-wide settings checkbox is checked in their experiment settings) are also analyzed using these new settings._
-
-_For example, if your experiment is showing metrics as having a statistically positive impact at a .05 significant threshold, and you change your significance threshold from 0.05 to 0.01, the next time you load your metrics impact page you may see that metrics are no longer marked as having a significant impact._
-
-### Changing feature flag-level settings
-
-___Note: When you change the experiment settings for a feature flag, it immediately affects all versions of that flag in the environment for which you customized the settings.___ _Versions in other environments, other feature flags in your account, and all alert policies aren't affected by your customization. Customizations apply to specific environments. If your feature flag has multiple environments, each must be customized separately._
-
-To change the settings of a feature flag, do the following:
-
-1. From the left navigation, select a feature flag.
-2. Click the **Metrics impact** and then **Experiment settings** tabs. Be sure that you select the right environment, or change the selection in the environment menu list in the top section to customize a different environment.
-
-<p>
-  <img src="https://help.split.io/hc/article_attachments/30833174988045" alt="monitor_and_experiment_settings_feature.png" />
-</p>
-
-3. To set a specific setting for a specific experiment, uncheck the **Always use account-wide settings** selection and modify the setting you want to change.
-4. After you adjust your settings, click **Save**.
-
-___Note:___ _When the **Always use account-wide settings** checkbox is selected, the settings for a flag update whenever your account-wide settings are changed._ _When it's not selected, the settings no longer reflect any changes to your account-wide settings._
-
-## Monitor settings
-
-___Note: Monitor settings can only be configured at the account level.___ _This is to ensure each alert policy is always analyzed against the same statistical settings, maintaining consistency across any alerts that may be raised._
-
-The following describes how to set your monitor settings.
-
-### Monitor window
-
-Split allows you to configure how long you want your metrics to be monitored for and alert you if a severe degradation occurs. By default, the monitoring window is set to 24 hours from a feature flag version change. You can select from a range of different monitoring windows, from 30 minutes to 28 days.
-
-With these monitoring windows, you can customize your monitoring period based on your team's release strategy. Adjust your monitoring window to 24 hours if you are turning on a feature at night with low traffic volumes and you want to monitor through the morning when traffic begins to increase, or to 30 minutes if you are expecting high traffic volumes within the first 30 minutes of a new feature flag version. To learn about selecting your degradation threshold based on your expected traffic, refer to [Choosing your degradation threshold for alerting](https://help.split.io/hc/en-us/articles/360030908431) for more information.
-
-### Monitor significance threshold
-
-The monitor significance threshold limits your chances of receiving a false alert. A lower significance threshold means you wait until there is more evidence of a degradation before firing an alert. Therefore, a lower significance threshold reduces the chance of false alerts, but this comes at the cost of increasing the time it takes for an alert to fire when a degradation does exist.
-
-A commonly used value for the monitor significance threshold is 0.05 (5%), which means that, for each alert policy and for each version update, there is at most a 5% chance of seeing an alert when the true difference between the treatments is less than the degradation threshold set up in your metric’s alert policy.
-
-You can configure the monitor significance threshold independently from the default significance threshold used for calculating your metric results. Changing this setting only impacts your monitoring alerts and not the metric results.
-
-### Statistical approach used for monitoring window
-
-For [alert policies](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting), rather than testing for statistically significant evidence of any impact as we do for our standard metric analyses, we test for significant evidence of an impact larger than your chosen degradation threshold, in the opposite direction to the metric’s desired direction.
-
-In order to control the false positive rate during the monitoring window we adjust the significance threshold that the p-value must meet before an alert is fired. We divide the threshold by the number of times we check for degradations during the selected monitoring window. For example, if your monitoring window is 30 minutes, we estimate that we run 5 calculations during that time. In this case, if your monitor significance threshold is set to 0.05 in your statistical settings, the p-value would need to be below 0.01 (0.05 / 5) for an alert to fire in this time window.
-
-This adjustment allows us to control the false positive rate and ensure that the likelihood of getting a false alert, across the whole of the monitoring window, is no higher than your chosen monitor significance threshold. The level of adjustment is dependent on the duration of the monitoring window and how many calculations run during that time.
-
-This adjustment means that a longer monitoring window have slightly less ability to detect small degradations at the beginning of your release or rollout, but in most cases this is outweighed by the gain in sensitivity due to the larger sample size you accrue over a longer window.
 
 ## Experiment settings
 
@@ -157,7 +77,6 @@ You can reduce the default minimum sample size of 355 if you need results for sm
 
 This parameter does not affect your monitoring alerts. For alerts, even though you can set a minimum sample size of 10, which allows you to see your results, we require a minimum sample size of over 100 in each treatment to generate an alert.
 
-
 ### Power threshold
 
 Power measures an experiment's ability to detect an effect, if possible. Formally, the power of an experiment is the probability of rejecting a false null hypothesis.
@@ -189,4 +108,3 @@ With this setting applied, the significance of your metrics, and their p-values 
 Be aware of the trade-offs associated with changing the statistical settings. In general, a lower significance threshold increases the number of samples required to achieve significance. Increasing this setting decreases the number of samples and the amount of time needed to declare significance, but may also increase the chance that some of the results are false positives.
 
 As best practice, we recommend setting your significance threshold to between 0.01 and 0.1. In addition, we recommend an experimental review period of at least 14 days to account for weekly use patterns.
-

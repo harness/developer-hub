@@ -3,6 +3,7 @@ title: Events
 sidebar_label: Events
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 2
 ---
 
 import Link from "@docusaurus/Link";
