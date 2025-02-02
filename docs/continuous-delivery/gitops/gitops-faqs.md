@@ -324,3 +324,37 @@ Enhancement requests for GitOps RBAC improvements have been submitted, but curre
 
 ### How can a user manage Argo CD Application Sets using a single Argo CD Agent?
 Argo CD Application Sets are managed by a single Argo CD Agent, so a single AppSet cannot cover multiple clusters. Users can set up separate AppSets in different agents for different environments.
+
+### What should I do if I encounter the error "Agent took too long to respond" when installing Harness GitOps Agent?
+This error occurs when the agent cannot connect to Redis or the Argo CD Repo Server. You need to update your NetworkPolicy settings by adding the necessary `podSelector` settings to the NetworkPolicy objects in Argo CD services.  
+
+### How do I resolve the "Forbidden: seccomp may not be set provider" error?
+Remove the following block from all Argo CD configuration files that contain a `kind: deployment` key-value pair:  
+     ```yaml
+     seccompProfile:
+       type: RuntimeDefault
+     ```  
+### Why do I see a "Finalizer detected" error when deleting an application?**  
+This happens when a finalizer is present in the application. To delete the application, remove the finalizer or delete its resources. This allows the application to be deleted automatically.  
+
+### How can I fix the "error: create not allowed while custom resource definition is terminating" issue?
+This issue arises when a CRD is stuck in the termination state due to a finalizer. Use the following command to remove the finalizer from the stuck resource:  
+     ```sh
+     kubectl patch <CRD> <stuckresourcename> -n <namespace> --type json --patch="[{ \"op\": \"remove\", \"path\": \"/metadata/finalizers\" }]"
+     ```  
+
+### How do I fix the error "rpc error: code = InvalidArgument desc = existing cluster spec is different;"?**  
+This error indicates that the GitOps entity you are trying to create already exists, either in another Harness scope (account, organization, or project) or in a different Argo CD project. Verify and remove duplicates if necessary.  
+
+### What causes the error "rpc error: code = Unknown desc = error testing repository connectivity: authorization failed"?**  
+This error occurs when an agent cannot connect to a repository. Check your GitHub rate limits and ensure that authentication credentials are correctly configured. 
+
+### Why is my GitOps agent pod stuck in a CrashLoopBackoff state?**  
+This issue often occurs due to an authentication failure. Ensure that the agent's YAML file contains the correct authentication token that matches the public key in the GitOps service database. Update and redeploy the agent if necessary. 
+
+### Why does my application creation fail after upgrading to ArgoCD 2.12?**  
+The `project` field, which was previously optional, is now mandatory. Ensure that all GitOps application configurations explicitly include the `project` field.  
+
+### How do I allow a repository to be accessed across multiple projects in ArgoCD 2.12?**  
+Since ArgoCD 2.12 enforces project-based repository access, you need to unset the `project` field in the cluster secret configuration or explicitly scope it for multiple projects to allow cross-project access.  
+     
