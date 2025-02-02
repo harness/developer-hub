@@ -425,6 +425,8 @@ pipeline:
 
 ```
 
+You need to specify the specific step `uuid` if you want to extract output variables from a specific step, same can ne extracted from JSON.
+
 Output:-
 
 ![](./static/execution_graph.png)
