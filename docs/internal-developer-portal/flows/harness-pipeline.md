@@ -172,7 +172,7 @@ For example, if a system-generated output variable is **`jira_id`**, you can def
 
 
 ### Execution Steps
-You can add various **execution steps** (pre-included with the **IDP stage**) under the **Execution** tab. Refer to this detailed guide for step-by-step instructions on adding and implementing **IDP stage execution steps**. 
+You can add various **execution steps** (pre-included with the **IDP stage**) under the **Execution** tab. Refer to this [detailed guide](docs/internal-developer-portal/flows/idp-stage.md) for step-by-step instructions on adding and implementing **IDP stage execution steps**. 
 
 ![](./static/execution-pipeline.png)
 
