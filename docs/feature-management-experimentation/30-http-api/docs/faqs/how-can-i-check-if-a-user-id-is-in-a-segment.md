@@ -1,6 +1,6 @@
 ---
-title: Check if a user ID is in a segment
-sidebar_label: Check if a user ID is in a segment
+title: How can I check if a user ID is in a segment?
+sidebar_label: How can I check if a user ID is in a segment?
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: ""

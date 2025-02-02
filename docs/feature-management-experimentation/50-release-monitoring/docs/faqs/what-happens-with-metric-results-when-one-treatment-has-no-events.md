@@ -11,12 +11,15 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360029085092-What-happens-with-metric-results-when-one-treatment-has-no-events <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-<h2 id="question" class="header-anchor">Question</h2>
+## Question
+
 <p>
   What happens on my metric cards when I don't have events coming in for one treatment?
   Will I get statistical significance? How should I view my metric card?
 </p>
-<h2 id="answer" class="header-anchor">Answer</h2>
+
+## Answer
+
 <p>
   The system will test the difference between any mean values, even if one of them happens to be 0. As a result, you can still get statistically significant results, a card that turns red or green.
 </p>

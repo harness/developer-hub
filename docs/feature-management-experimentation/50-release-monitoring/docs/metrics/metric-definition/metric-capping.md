@@ -62,14 +62,14 @@ import Link from "@docusaurus/Link";
   impression within a particular version of an experiment.
 </p>
 <p>
-  <img src="https://help.split.io/guide-media/01GW8E88T5STNKTJF3VPXDFKCV" alt="per_user.png" />
+  <img src="https://help.split.io/hc/article_attachments/360019398752/per_user.png" alt="per_user.png" />
 </p>
 <p>
   The table below shows the when capping can be used for the various
   <em>across</em> and <em>per</em> functions.
 </p>
 <p>
-  <img src="https://help.split.io/guide-media/01GW8V3KWBGYFZRN2J99YKZXR6" alt="table.png" />
+  <img src="https://help.split.io/hc/article_attachments/360019398932/table.png" alt="table.png" />
 </p>
 <h3 id="examples" class="header-anchor">Examples</h3>
 <p>

@@ -13,13 +13,13 @@ import Link from "@docusaurus/Link";
 
 An alert policy allows you to configure a degradation threshold for your metrics. If the metric exceeds the threshold in an undesired direction, you are alerted by your configured notification channel.
 
-## Create an alert policy
-
 :::info[Alert policy limits]
 You can create alert policies for metrics that are measured per traffic type, rather than those that are measured across the traffic type you are using.
 
 One alert policy can be created per environment.
 :::
+
+## Create an alert policy
 
 To create an alert policy, do the following:
 
@@ -37,17 +37,17 @@ To create an alert policy, do the following:
      <img src="https://help.split.io/hc/article_attachments/19832304579981" alt="example-alert-policy.png" />
  </p>
 
-  * In the Name field, give your alert policy a human recognizable name. We recommend also including the metric name your alert policy is associated with in your policy name. 
+  * Name: Give your alert policy a human recognizable name. We recommend also including the metric name your alert policy is associated with in your policy name. 
 
-  * In the Description field, optionally give your alert policy a description. This can include anything that would be useful to you and your team if an alert is fired. Include runbooks, alerting protocols, and key information about the alert.
+  * Description: Optionally give your alert policy a description. This can include anything that would be useful to you and your team if an alert is fired. Include runbooks, alerting protocols, and key information about the alert.
 
-  * **1st alert condition area** An alert policy can have multiple alert conditions. Each alert condition relates to a particular environment. (You can create one alert policy per environment.)
+  * 1st alert condition: An alert policy can have multiple alert conditions. Each alert condition relates to a particular environment. (You can create one alert policy per environment.)
 
-  * In the Choose your environment field, select the environment you want to apply the alert condition to. If you already have an alert condition for a particular environment, this is not available in the environment menu list when you create a second alert condition. 
+  * Choose your environment: select the environment you want to apply the alert condition to. If you already have an alert condition for a particular environment, this is not available in the environment menu list when you create a second alert condition. 
 
-  * In the Set alert threshold field, add a degradation threshold in the form of a relative percentage threshold or absolute value threshold. The degradation direction is assumed to be the opposite of the desired direction of the metric. Learn more about setting degradation thresholds in the [Choosing your degradation threshold for alerting](https://help.split.io/hc/en-us/articles/360030908431-Choosing-your-degradation-threshold-for-alerting) guide.
+  * Set alert threshold: Add a degradation threshold in the form of a relative percentage threshold or absolute value threshold. The degradation direction is assumed to be the opposite of the desired direction of the metric. Learn more about setting degradation thresholds in the [Choosing your degradation threshold for alerting](https://help.split.io/hc/en-us/articles/360030908431-Choosing-your-degradation-threshold-for-alerting) guide.
 
-  * In the Define alert notification channel field, configure who to notify if an alert is fired. As default, the metric owner is selected. You can also select the emails of any group as well as add emails using the freeform section. 
+  * Define alert notification channel: configure who to notify if an alert is fired. As default, the metric owner is selected. You can also select the emails of any group as well as add emails using the freeform section. 
 
 4. From here, you can add additional alert conditions.
 

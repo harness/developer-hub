@@ -11,13 +11,16 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4409917046157-No-impressions-shown-in-Live-tail-tab-during-testing </button>
 </p>
 
-<h2 id="question" class="header-anchor">Question</h2>
+## Question
+
 <p>
   When test generating impressions using Split SDK, on Split user interface Live
   tail page, no impressions show up, even though treatments are calculated successfully
   from the SDK side.
 </p>
-<h2 id="answer" class="header-anchor">Answer</h2>
+
+## Answer
+
 <p>
   All Split SDKs support a de-dupe feature to conserve the amount of impressions
   posted to Split cloud, the impressions that contain the same user ID, feature

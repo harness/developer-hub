@@ -8,7 +8,7 @@ helpdocs_is_published: true
 import Link from "@docusaurus/Link";
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab, https://help.split.io/hc/en-us/articles/360020890491-Understanding-metric-impact <br /> ✘ images still hosted on help.split.io <br /> <span style={{backgroundColor:'#ffae42'}}> ✘ is the calculation schedule up to date? </span> </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab, https://help.split.io/hc/en-us/articles/360020890491-Understanding-metric-impact <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 The Metrics impact tab shows the impact of your experiment or feature rollout on your customers. To make data-driven decisions on your features, review and interpret the data that you collect before deciding to roll out the functionality to more customers. Before getting started, review the following:

@@ -11,12 +11,15 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025467112-Why-are-the-counts-different-from-other-tools </button>
 </p>
 
-<h2 id="question" class="header-anchor">Question</h2>
+## Question
+
 <p>
   Why are number of visitors/impressions and/or the number of events different
   when I compare Split to other tools?
 </p>
-<h2 id="answer" class="header-anchor">Answer</h2>
+
+## Answer
+
 <p>
   Most companies have a variety of tools to count and track user visits and interactions
   on their web and mobile applications. While it can be helpful to compare

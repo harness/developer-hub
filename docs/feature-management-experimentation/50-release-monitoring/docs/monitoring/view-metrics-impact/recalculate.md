@@ -5,30 +5,51 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import Link from "@docusaurus/Link";
-
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab <br /> ✘ images still hosted on help.split.io <br /> <span style={{backgroundColor:'#ffae42'}}> ✘ is the calculation schedule up to date? </span><br /> <span style={{backgroundColor:'#c2e2f2'}}> ✘ Ani to review </span> </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab <br /> ✘ images still hosted on help.split.io <br /> </button>
 </p>
 
-<span style={{backgroundColor:'#c2e2f2'}}>When you have a feature flag with percentage distribution targeting, Split automatically calculates metrics for the feature flag treatments. You can view the calculated metrics results on the Metrics impact tab. You can also manually initiate a metric recalculation to update the metric results to reflect the most recent data.</span>
+When you have a feature flag with percentage distribution targeting, Split automatically calculates metrics for the feature flag treatments. You can view the calculated metrics results on the Metrics impact tab. You can also manually initiate a metric recalculation to update the metric results to reflect the most recent data.
 
-## Automated calculation frequency
+## When metric cards are updated
 
-Automatic calculations are run for feature flag versions that include a percentage targeting rule. The duration between automatic calculations scales with the length of the version since the longer the experiment has run, the less likely that the data collected in the last few hours can move the metric. You can see the last calculation time on the Metrics impact tab.
+Every change to a feature flag, including modifying the percentage targeting rules, leads to a new version. **Metric impact calculations are automatically run for feature flag versions that include a percentage targeting rule.** They can also be calculated on demand at any time by clicking the Recalculate metrics button. While you can manually calculate impact for a feature flag with no % targeting rules, Split won't run any statistical analysis in those cases.
 
-The automated calculation schedule is:
-<div style={{backgroundColor:'#ffae42'}}>
-* After 5 minutes, then
-* After 30 minutes, then
-* After 1 hour, then
-* Every 1 hour until 12 hours, then
-* Every 2 hours until 24 hours, then
-* Every 1 day until 7 days, then
-* On day 14, then
-* On day 21, then
-* On day 28
-</div>
+Some examples are:
+
+* an absolute value for a treatment served by a particular rule
+* a difference between treatments. Because each rule only serves one treatment, this only applies to the "any" rule, for which statistical analysis is not possible anyways
+
+### Automated calculation frequency
+
+We compute metric impact on an expanding schedule. The longer the test runs (i.e., the older the latest version is) the longer before a metric update. We do that because the data collected is gradually less likely to move the metric. Metric calculations for definitions run as follows:
+
+* Every 5 minutes for the first 30 minutes
+* Every 15 minutes for the next 5.5 hours
+* Every 30 minutes for the next 6 hours
+* Every 1 Hour for the next 12 hours
+
+That’s the first 24 hours
+
+* Every 2 Hours for the next 24 hours
+* Every 4 Hours for the next 2 days
+* Every 6 Hours for the following 2 days
+* Every 8 Hours for the following 2 days
+* Every 12 Hours for the following 4 days
+
+That’s the first 12 days 
+
+* Every Day for the following 12 days
+* Every 2 Days for the following 24 days
+* Every 3 Days for the following 24 days
+
+That’s the first 72 days
+
+* Every 5 Days for the next 15 days
+* One last run on day 90
+* Everything else is manual
+
+Metrics impact updates one last time after a version ends. You can manually recalculate at any time. This is useful if you add or update metrics. The last calculation time is visible in the Metrics Impact tab.
 
 ## Manually recalculating metrics
 

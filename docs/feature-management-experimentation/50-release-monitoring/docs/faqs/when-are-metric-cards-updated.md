@@ -61,6 +61,6 @@ import Link from "@docusaurus/Link";
   would be if there is a very specific cadence to the results.
 </p>
 <p>
-  This<a href="https://help.split.io/hc/en-us/articles/360021867572-Reviewing-Metrics-during-an-experiment" target="_self">article</a>provides
+  This <a href="https://help.split.io/hc/en-us/articles/360021867572-Reviewing-Metrics-during-an-experiment" target="_self">article</a> provides
   more information on reviewing your metrics cards.
 </p>

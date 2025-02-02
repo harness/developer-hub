@@ -2,5 +2,6 @@
     "label": "Automated alerts and notifications",
     "collapsible": true,
     "collapsed": true,
-    "className": "red"
+    "className": "red",
+    "position": 1
 }

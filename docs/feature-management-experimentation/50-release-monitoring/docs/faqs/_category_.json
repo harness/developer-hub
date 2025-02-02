@@ -1,7 +1,7 @@
 {
-    "label": "Monitoring window",
+    "label": "FAQs",
     "collapsible": true,
     "collapsed": true,
     "className": "red",
-    "position": 3
+    "position": 16
 }
