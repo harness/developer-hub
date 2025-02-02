@@ -14,7 +14,13 @@ import Link from "@docusaurus/Link";
 
 The rules are evaluated in the following order:
 
-* The first evaluation is against the individual target section. User IDs and segments listed in this section receive the specified treatment.
-* The second evaluation is against the traffic allocation. If the limit exposure is set to 100%, we continue to the targeting rules section. If the limit exposure less than 100%, we allocate a percentage of your traffic to the default treatment selected in the user interface or into the targeting rules and default rule.
-* The third evaluation is against the targeting rules. The conditions are structured as layered if/else statements and are meant to be human readable. They are evaluated in order and when a condition is met, the evaluation stops.
-* The fourth evaluation is against the default rule. The remaining traffic is allocated based on the distribution set in the default rule.
+* The first evaluation is against the **individual targets** section. User IDs and segments listed in this section receive the specified treatment. The individual targets are evaluated in order and when a condition is met, the evaluation stops (see example below).
+* The second evaluation is against the **traffic allocation**. If the limit exposure is set to 100%, we continue to the targeting rules section. If the limit exposure less than 100%, we allocate a percentage of your traffic to the default treatment selected in the user interface or into the targeting rules and default rule.
+* The third evaluation is against the **targeting rules**. The conditions are structured as layered if/else statements and are meant to be human readable. They are evaluated in order and when a condition is met, the evaluation stops.
+* The fourth evaluation is against the **default rule**. The remaining traffic is allocated based on the distribution set in the default rule.
+
+### Individual targets evaluation order
+
+Individual targets are evaluated in order. For example, if **Bob** is a user ID in the **Internal_QA** [segment](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/segments.md), then **Bob** will get **on** even though you’ve specifically assigned that key **off**.
+
+![](./static/rules-evaluation-order-example.png)
