@@ -7,4 +7,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Coming soon.
+The feature flag Monitoring tab provides real-time insights into your feature flag's traffic and a summary of alerts that have fired. This data can be used to identify unexpected trends or issues that require troubleshooting.
+
+![](./static/alert.png)

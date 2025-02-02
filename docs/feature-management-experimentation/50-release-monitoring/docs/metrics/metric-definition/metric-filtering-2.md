@@ -21,5 +21,5 @@ import Link from "@docusaurus/Link";
   <span>Filtering is also used to create metrics that target only users who engage in a particular behavior, for instance observing the support ticket rate of those users who experience an exception or of users who completed the on-boarding process, as shown below:</span><strong><br /></strong>
 </p>
 <p>
-  <img src="https://help.split.io/guide-media/01GW8WXTJ6VTHAQ5P6E0MG16RX" alt="Screen_Shot_2019-01-24_at_8.43.08_AM.png" />
+  <img src="https://help.split.io/hc/article_attachments/360019455852/Screen_Shot_2019-01-24_at_8.43.08_AM.png" alt="Screen_Shot_2019-01-24_at_8.43.08_AM.png" />
 </p>

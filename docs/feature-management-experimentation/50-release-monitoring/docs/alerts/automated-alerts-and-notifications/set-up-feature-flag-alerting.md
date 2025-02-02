@@ -1,6 +1,6 @@
 ---
-title: Configuring feature flag alerting
-sidebar_label: Configuring feature flag alerting
+title: Key metric alerts
+sidebar_label: Key metric alerts
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -11,11 +11,11 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-Feature flag alerts provide immediate feedback about a feature flag’s key metrics. An alert will fire when a desired or undesired impact is detected. You can choose key metrics for each feature flag and specify which feature flag should alert you about its key metrics. This allows you to take quick action on insights that may be especially useful to your team.
+Key metric alerts provide immediate feedback about a feature flag’s key metrics. An alert will fire when a desired or undesired impact is detected. You can choose key metrics for each feature flag and specify which feature flag should alert you about its key metrics. This allows you to take quick action on insights that may be especially useful to your team.
 
 To check if you have feature flag alerting enabled for your account, in the Split UI click **My work** in the left navigation menu and click into a feature flag. Then click on the gear icon next to the flag name. If you see the **Alerts setup** menu item, you have feature flag alerting enabled for your account.
 
-## Setting up feature flag alerting
+## Set up a key metric alert
 
 To enable or disable alert notifications for a specific feature flag, do the following:
 

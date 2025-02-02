@@ -1,6 +1,6 @@
 ---
-title: Metrics impact tab
-sidebar_label: Metrics impact tab
+title: View metrics impact
+sidebar_label: View metrics impact
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

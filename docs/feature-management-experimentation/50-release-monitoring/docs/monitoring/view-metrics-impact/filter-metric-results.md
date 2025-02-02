@@ -1,6 +1,6 @@
 ---
-title: Applying filters
-sidebar_label: Applying filters
+title: Filter metric results
+sidebar_label: Filter metric results
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -20,15 +20,15 @@ Split provides the ability to filter your metric results, so you can analyze imp
 Optionally, you can filter the metrics displayed by metric tag, metric owner, or metric result.
 
 
-## Selecting a version
+## Set your filters
+
+### Version
 
 Each time a feature flag definition is changed in any way, Split creates a new version. Versioning is intended to support focused and rigorous analysis of changes you make to your features.
 
 Select a version of the feature flag to see your metric results calculated for the lifetime of that version.
 
-<p>
-  <img src="https://lh5.googleusercontent.com/r6GzUUxwqP0AFHbyuM0boGLPqzi2oFYovDhqyw47mK9oID9wQO-fEr6uV5KOX9j3nJQl8j8md_gNni0gksx_mJIKgJhcBpokuSVZ2uCkoc4m2PooJ_u14299LazmwGkKoTB6h5tSaE5gqaesk4JIs1g" alt="applying_filters_selecting_a_version.png" width="749" height="322" />
-</p>
+![](./static/filter-metric-results-filters.png)
 
 :::info[Which changes trigger a new version?]
 
@@ -64,7 +64,7 @@ If you have made what you consider to be an insubstantial change to a feature fl
 
 :::
 
-## Selecting custom dates
+### Custom dates
 
 With the custom date filter, you can analyze your feature flag impact for any period of time that your flag has been active within Split’s [data retention period](https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion#data-retention) (the last 90 days). For example, a particular week of interest or before and after a major event. 
 
@@ -104,7 +104,7 @@ To start using custom dates on your analysis, do the following:
   <img src="https://lh4.googleusercontent.com/8q4CtTtunJNMVmfMflbtp3WKgMpuGg3u4JP9V8ssgHPrVGmNlVyCCrlMAZAyeK2bFHVZyIn5IPLsjJa4z5I_t6_nTIjLtbhxrWR4m3eqoQGekVzdjXD4K8C813B7tKQPP_tl4p7SOp8Xc_RwPDMzHeA" alt="_" />
 </p>
 
-### Scenarios to be aware of
+#### Scenarios to be aware of
 
 When you perform analysis with custom dates, be aware that some combinations can return results that are difficult or impossible to analyze. The following are some of the possible scenarios that could occur while combining different versions of the same feature flag:
 
@@ -117,7 +117,7 @@ When you perform analysis with custom dates, be aware that some combinations can
 
 Sharing results is not currently supported when analyzing with custom dates.
 
-## Selecting a targeting rule
+### Targeting rule
  
 To ensure statistical rigor and prevent issues that could arise due to unequal distributions across the sample set, we require customers to filter their results by the targeting rule used in the evaluation. 
 
@@ -127,7 +127,7 @@ To see a statistically significant comparison when comparing two treatments, sel
   <img src="https://help.split.io/hc/article_attachments/15859729852941" alt="metric-impact-targeting-rule.png" />
 </p>
 
-## Selecting treatment and baseline
+### Treatment and baseline
  
 View metrics cards for the customers exposed to a particular treatment as well as compared against customers exposed to two treatments. Select the treatment that you want to view metric results for and optionally add a baseline comparison if you want to see statistically significant comparisons.
 
@@ -135,7 +135,7 @@ View metrics cards for the customers exposed to a particular treatment as well a
   <img src="https://help.split.io/hc/article_attachments/15859771931149" alt="metric-impact-treatment-and-baseline.png" />
 </p>
 
-## Selecting tags and owners
+### Tags and owners
  
 If your account has many metrics, you can filter the metrics displayed down to those with a particular tag and a particular owner. To filter metrics, do the following:
 

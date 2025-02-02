@@ -112,4 +112,6 @@ In the [Set alert baseline treatment](https://help.split.io/hc/en-us/articles/36
 If you set the ___alert baseline treatment___ AND you have at least one targeting rule with ___percentage distribution___, then you can receive ___[feature flag alerts](https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting)___ and ___[metric alerts](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting)___.
 :::
 
+## Rules evaluation order
+
 <RulesEvaluationOrder />
