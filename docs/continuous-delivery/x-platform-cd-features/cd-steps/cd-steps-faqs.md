@@ -513,3 +513,40 @@ To configure a retry strategy for a CD stage, add a failure strategy to the stag
 
 ### How can users automate rollback strategies in Harness pipelines?
 Rollbacks can be automated using failure strategies that trigger rollback steps when a deployment fails.
+
+## Barriers
+
+### What is a Barrier in Harness pipelines?
+A Barrier is a synchronization mechanism that ensures multiple parallel stages or step groups wait for each other before proceeding. It helps coordinate deployments when interdependent services need to be deployed together.
+
+### Where can Barriers be used in Harness?
+Barriers are supported only within Deploy and Custom stage types. They cannot be used in other pipeline stages.
+
+### How do Barriers work in a pipeline?
+Barriers work when two or more parallel stages or step groups use the same Barrier Reference name. Execution pauses at the Barrier step until all associated stages/step groups reach that point, allowing them to proceed together.
+
+### What happens if a stage fails before reaching a Barrier?
+If a stage or step group fails before reaching a Barrier, it signals the other stages sharing the same Barrier Reference. These stages will then react as if they failed too, following their defined failure strategy.
+
+### How do I add a Barrier to my pipeline?
+Go to Flow Control settings in your pipeline.
+Click Add Barrier and assign it a unique name.
+In the stage execution section, add a Barrier step and select the Barrier Reference you created.
+Ensure the same Barrier Reference is used in all relevant parallel stages.
+
+### What is the timeout setting in a Barrier step?
+The timeout setting determines how long a stage will wait at a Barrier before failing. It is set in milliseconds (e.g., 600000 ms = 10 minutes). If the timeout expires, the deployment is considered failed.
+
+### Can I use Barriers in looping strategies?
+Yes, Barriers can be used in looping strategies like matrix deployments, multi-service, or multi-environment stages. However, the same Barrier Reference must be used across all looped stages for synchronization.
+
+### What are some key limitations when using Barriers?
+You cannot use the same Barrier Reference in sequential stages; otherwise, execution will get stuck.
+Barriers cannot be shared between pipelines—each Barrier is restricted to a single pipeline.
+The maxConcurrency parameter should not be used with looping stages, as it may cause the pipeline to hang.
+
+### How do Barriers work with multi-service deployments?
+When using Barriers in a multi-service deployment, ensure that the Deploy Services in Parallel option is selected. This prevents one stage from completing before another begins.
+
+### Can multiple Barriers be used within a single stage?
+Yes, multiple Barrier steps can be used in a single stage or step group, but each Barrier step must have a unique Barrier Reference to function correctly.
