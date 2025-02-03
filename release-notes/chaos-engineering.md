@@ -20,6 +20,18 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## February 2025
+
+### Version 1.54.0
+
+#### New features and enhancements
+
+#### Fixed issues
+
+- Fixed the issue where clicking a Kubernetes Harness Infrastructure from the Experiments table threw a 400 (Bad request) error. (CHAOS-7512)
+
+- Fixed an issue where Kubernetes API, HTTP, and network faults failed due to a malfunctioning container ID derivation command in the customer's Docker environment. This has been resolved by allowing user-defined input for the command pattern. (CHAOS-7255)
+
 ## January 2025
 
 ### Version 1.53.1
