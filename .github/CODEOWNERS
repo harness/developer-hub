@@ -180,6 +180,10 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/cloud-development-environments/ @manishas @khushisharmaharness
 /src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas @khushisharmaharness
 
+# IR Docs
+/docs/incident-response/ @ryantaylor16 @Kmonkeyjam
+/release-notes/incident-response @ryantaylor16 @Kmonkeyjam
+
 # AI QA Assistant Docs
 /docs/ai-qa-assistant/ 
 
