@@ -1309,6 +1309,13 @@ Harness performs some validations before the deployment. Before the deployment, 
 
 - If you abort the deployment, the execution remains incomplete. During the next deployment, you must fix the configuration by resetting the ECS service in the AWS Management Console.
 
+:::note
+Harness is introducing a new feature flag: ```CDS_ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS```. When enabled, the validation described above will only be performed if the target groups attached to the services match those attached to the Load Balancer specified in the deployment step. That will be available with the delegate version: ```851xx```.
+
+This ensures that Harness leverages the configuration defined in the step, enhancing accuracy and consistency during deployment.
+
+:::
+
 ### ECS Rollbacks
 
 When an ECS deployment fails, the service tasks it was deploying are scaled down to 0.
