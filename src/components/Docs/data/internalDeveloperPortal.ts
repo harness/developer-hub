@@ -42,7 +42,7 @@ export const docsCards: CardSections = [
         title: "Self Service Workflows",
         module: MODULES.idp,
         description: "Explore how to design workflows for automating engineering process in your organization.",
-        link: "/docs/internal-developer-portal/flows/service-onboarding-pipelines",
+        link: "/docs/internal-developer-portal/flows/overview",
       },
       {
         title: "Scorecards",
