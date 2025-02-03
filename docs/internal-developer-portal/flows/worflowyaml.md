@@ -2,7 +2,7 @@
 title: Understanding Worfklow YAML
 description: Get started with creating your workflows using the `workflow.yaml` configuration. 
 sidebar_position: 2
-sidebar_label: Workflow YAML
+sidebar_label: YAML
 ---
 
 import Tabs from '@theme/Tabs';

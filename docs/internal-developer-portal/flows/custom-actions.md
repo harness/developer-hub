@@ -1,8 +1,8 @@
 ---
-title: Workflow Actions
+title: Configuring Workflow Actions
 description: Learn how to configure actions for your Workflow's backend. 
 sidebar_position: 5
-sidebar_label: Workflow Actions
+sidebar_label: Actions
 ---
 The backend of **Harness IDP workflows** consists of a library of steps and actions that define the workflow logic. 
 
@@ -192,8 +192,6 @@ parameters:
 
 #### Outputs
 
-#### Output
-
 1. `Title` : Name of the Pipeline. 
 2.  `url` : Execution URL of the Pipeline e.g.: `https://app.harness.io/ng/account/********************/module/idp-admin/orgs/default/projects/communityeng/pipelines/uniteddemo/executions/**********/pipeline?storeType=INLINE`
 
@@ -327,14 +325,104 @@ steps:
       triggerName: ${{ parameters.triggerName }}
       apikey: ${{ parameters.token }}
 ```
+### 3. `github:actions:dispatch`
+This action dispatches a **GitHub Action** workflow for a given branch or tag for your Harness self service Workflow. 
 
-### 3. `harness:create-secret`
+#### Inputs
+Here's a list of **inputs** required to use the action: 
 
-Creates a secret in Harness.
+| Name | Title | Description | Type |
+|---------|----------------|------------------|----------------------|
+| **repoUrl** *(Mandatory)*	| Repository Location	| Accepts the format 'github.com?repo=reponame&owner=owner' where 'reponame' is the new repository name and 'owner' is an organization or username	|  ```string```
+**workflowId** *(Mandatory)* | Workflow ID	| GitHub Action Workflow filename	| ```string```
+**branchOrTagName** *(Mandatory)* | 	Branch or Tag name |	Git branch or tag name used to dispatch the workflow	| ```string```
+**workflowInputs** | Workflow Inputs	| Inputs keys and values to send to GitHub Action configured on the workflow file. The maximum number of properties is 10.	| ```string```
+**token**	| Authentication Token	| GITHUB_TOKEN to use for authorization to GitHub	| ```string```
 
-### 4. `harness:delete-secret`
+#### Example YAML:
+```YAML
+steps:
+  - action: github:actions:dispatch
+    name: Dispatch Github Action Workflow with inputs
+    input:
+      repoUrl: github.com?repo=repo&owner=owner
+      workflowId: WORKFLOW_ID
+      branchOrTagName: main
+      workflowInputs:
+        input1: value1
+        input2: value2
+      token: ${{ secrets.MY_CUSTOM_TOKEN }}
+```
+### 4. `harness:create-secret`
+
+This action is used to create a secret in Harness.
+
+#### Inputs
+Here's a list of **inputs** required to use the action: 
+| Name | Title | Description | Type |
+|---------|----------------|------------------|----------------------|
+| **projectId** *(Mandatory)*	| Project Identifier	| Project Identifier where secret will be created	| `string`|
+| **orgId** *(Mandatory)*	| Organization Identifier	| Organization Identifier where secret will be created	| `string`|
+| **secretValue** *(Mandatory)*	| Secret Value	| Secret Value | `string` |
+| **apikey**	| Harness x-api-key	| Harness Token to Authenticate Secret Creation	| `string` |
+
+
+### 5. `harness:delete-secret`
 
 Deletes a secret from Harness.
+
+### 6. `debug:log`
+This action is used to write a message into the log or list all the files in your workspace. 
+
+#### Inputs
+Here's a list of **inputs** required to use the action: 
+| Name | Title | Type |
+|---------|----------------|---------------|
+| **message** | Message to output | ```string``` |
+| **listWorkspace** | List all files in the workspace, if true	| ```boolean``` |
+| **extra** | Extra info | ```unknown``` |
+
+#### Example YAML
+
+**Write a debug message**:
+```YAML
+steps:
+  - action: debug:log
+    id: write-debug-line
+    name: Write "Hello Backstage!" log line
+    input:
+      message: Hello Backstage!
+```
+**List the workspace directory**:
+```YAML
+steps:
+  - action: debug:log
+    id: write-workspace-directory
+    name: List the workspace directory
+    input:
+      listWorkspace: true
+```
+
+### 7. `debug:wait`
+This action is used to add a waiting period for certain time. 
+
+#### Inputs
+Here's a list of **inputs** required to use this action:
+| Name | Title | Type |
+|---------|----------------|---------------|
+| **minutes** | Waiting period in minutes	 | ```number``` |
+| **seconds** | Waiting period in seconds	| ```number``` |
+| **milliseconds** | Waiting period in milliseconds | ```number``` |
+
+#### Example YAML
+```YAML
+steps:
+  - action: debug:wait
+    id: wait-1min
+    name: Waiting for 1 minutes
+    input:
+      minutes: 1
+```
 
 ## Use Cases
 

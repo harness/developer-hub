@@ -1,8 +1,8 @@
 ---
-title: Workflow Inputs
+title: Configuring Workflow Inputs
 description: Learn how to configure and customize inputs for your Workflow's frontend.  
 sidebar_position: 4
-sidebar_label: Workflow Inputs
+sidebar_label: Inputs
 redirect_from:
   - /docs/internal-developer-portal/flows/custom-extensions
 ---
@@ -1706,9 +1706,6 @@ spec:
 ```
 
 </details>
-
-## Dynamic API Picker 
-The **Dynamic API Picker** allows users to make API calls directly from the Workflows UI, dynamically fetching values to use as inputs in workflows. For detailed usage instructions, refer to the documentation [here](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker). 
 
 ## For Use Cases Not Listed Here  
 For scenarios not covered in this guide, it is recommended to use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to design the UI for input fields. Additionally, [Nunjucks](https://mozilla.github.io/nunjucks/) serves as the templating engine for Self-Service Workflows.

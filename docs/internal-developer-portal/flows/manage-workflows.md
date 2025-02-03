@@ -1,8 +1,8 @@
 ---
-title: Managing Workflows
+title: Managing Workflows in Harness IDP
 description: Learn more about managing workflows directly in Harness IDP. 
 sidebar_position: 3
-sidebar_label: Managing Workflows
+sidebar_label: Manage Workflows
 ---
 This guide will walk you through the process of registering and managing your Workflows directly from Harness IDP. Let's dive in!
 ## Workflows in Software Catalog
