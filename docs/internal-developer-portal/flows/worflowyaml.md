@@ -59,7 +59,7 @@ spec:
 ```
 
 </TabItem>
-<TabItem value="Template Playground" label="Template Playground">
+<TabItem value="Workflow Playground" label="Template Playground">
 
 ![](./static/template-editor-wofrkflowyaml.png)
 
@@ -233,7 +233,22 @@ spec:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
+ ## Workflows Playground
+:::caution
+The Workflows Playground **does not render accurate previews** for **advanced user inputs** and **complex use cases** such as conditional fields or complex input formats. It is recommended to use the editor only for **lightweight input previews**. For accurate validation of **advanced inputs**, test the Workflow Form Inputs in an **actual Workflow execution**.
+:::
 
+Harness IDP also provides a **built-in editor** to help you build your **Workflow's Frontend**. It offers a real-time preview of the corresponding UI based on the YAML definition. Here, you can create a new workflow or edit an existing one.  '
+
+**Note:** The editor is for **preview purposes** only; changes made here cannot be saved. Once you have tested the modifications, you must manually copy the updated YAML and add it to the Workflow definition YAML stored in your Git provider.  
+
+Here's how you can access the playground: 
+1. Go to your **Workflows** page. Click on the **three dots** in the top right corner and select **Open Playground**.
+![](./static/template-editor-1.png)
+2. Select **Edit Template Form**. 
+![](./static/template-editoer-2.png)
+3. Choose an existing workflow or begin creating a new one.
+![](./static/template-editor-3.png)
 
 ## Syntax Essentials
 

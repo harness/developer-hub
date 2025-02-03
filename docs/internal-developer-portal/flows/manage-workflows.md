@@ -4,7 +4,7 @@ description: Learn more about managing workflows directly in Harness IDP.
 sidebar_position: 3
 sidebar_label: Managing Workflows
 ---
-
+This guide will walk you through the process of registering and managing your Workflows directly from Harness IDP. Let's dive in!
 ## Workflows in Software Catalog
 Once a workflow is registered, it is stored in the Software Catalog under the kind **“Template”**.
 
@@ -14,7 +14,7 @@ Once a workflow is registered, it is stored in the Software Catalog under the ki
 
 ![](./static/access-workflow-catalog.png)
 
-You can inspect the catalog metadata for a workflow by clicking on the **three dots in the top-right corner** and selecting **“Inspect Entity”**.
+You can also inspect the **catalog metadata** for a workflow by clicking on the **three dots in the top-right corner** and selecting **“Inspect Entity”**.
 
 ## Managing Workflows 
 You can manage your workflows from Harness IDP directly. Let's dive deeper into specific functions.

@@ -82,6 +82,16 @@ Here are the different ways to design form inputs in IDP workflows:
     - `Dynamic API Picker` – Fetch options dynamically via an API request
     - `Autocomplete Fields` – Suggestions based on previous inputs or external data fetched using Dynamic API Picker. 
 
+## Workflows Playground
+:::caution
+The Workflows Playground **does not render accurate previews** for **advanced user inputs** and **complex use cases** such as conditional fields or complex input formats. It is recommended to use the editor only for **lightweight input previews**. For accurate validation of **advanced inputs**, test the Workflow Form Inputs in an **actual Workflow execution**.
+:::
+
+Harness IDP also provides a **built-in editor** to help you build your **Workflow's Frontend**. It offers a real-time preview of the corresponding UI based on the YAML definition. Here, you can create a new workflow or edit an existing one.  '
+
+**Note:** The editor is for **preview purposes** only; changes made here cannot be saved. Once you have tested the modifications, you must manually copy the updated YAML and add it to the Workflow definition YAML stored in your Git provider.  
+
+For more information on **accessing the Workflow Playground**, check out the details [here](/docs/internal-developer-portal/flows/worflowyaml.md).
 
 ## Input Examples
 
