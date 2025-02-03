@@ -5,7 +5,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import MonitoringSettings from "@site/docs/feature-management-experimentation/50-release-monitoring/_templates/_monitor-and-experiment-settings.md";
+import MonitoringSettings from "@site/docs/feature-management-experimentation/50-release-monitoring/_templates/_monitor-and-experiment-settings.mdx";
 
 <MonitoringSettings />
 

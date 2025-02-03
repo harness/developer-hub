@@ -1,7 +1,7 @@
 {
-    "label": "Analyzing experiment results",
+    "label": "Events",
     "collapsible": true,
     "collapsed": true,
     "className": "red",
-    "position": 6
+    "position": 3
 }
