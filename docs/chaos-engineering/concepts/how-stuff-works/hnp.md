@@ -39,22 +39,24 @@ HNP can be deployed in multiple modes, providing flexibility based on the user�
 
     ![harness network proxy](../static/how-stuff-works/hnp-deployment-modes.png)
 
-1. **mTLS Enabled on HNP (Reverse Proxy Mode)**
+1. **End-to-End mTLS Communication**
 
-HNP holds the mTLS certificate and key, which centralizes mTLS secret management, eliminating the need to create and manage mTLS secrets in multiple locations.
-**Communication**
-Transient pod ↔ Agent Proxy: Can be configured for insecure communication (e.g., within a user-controlled environment).
-Agent Proxy ↔ Upstream (DDCR/Manager): Secure mTLS communication.
-Use Case: Ideal for users prioritizing ease of management without compromising upstream security.
-
-2. **End-to-End mTLS Communication**
-
-Both the transient pod and Agent Proxy use mTLS certificates and keys, which ensures full end-to-end encryption between the transient pod, Agent Proxy, and the manager.
+Both the transient pod and HNP use mTLS certificates and keys, which ensures full end-to-end encryption between the transient pod, HNP, and the manager.
 
 This is recommended for users requiring strict security controls across all communication layers.
+
+2. **mTLS Enabled on HNP (Reverse Proxy Mode)**
+
+HNP holds the mTLS certificate and key, which centralizes mTLS secret management, eliminating the need to create and manage mTLS secrets in multiple locations.
+
+**Communication**
+
+- Transient pod ↔ HNP: Can be configured for insecure communication (for example, within a user-controlled environment).
+- HNP ↔ Upstream (DDCR/Manager): Secure mTLS communication. It is ideal for you if you prioritize ease of management without compromising upstream security.
 
 3. **HNP as an HTTP Tunnel**
 
 HNP acts as an HTTP tunnel to establish an end-to-end encrypted TLS session with the upstream.
-**Requirements**: The user needs to create a Kubernetes TLS secret containing the mTLS certificate and key. The transient pod can leverage the standard https_proxy environment variable to route communication via the Agent Proxy.
+ 
+**Requirements**: The user needs to create a Kubernetes TLS secret containing the mTLS certificate and key. The transient pod can leverage the standard `https_proxy` environment variable to route communication via the HNP.
 This is best suited for setups requiring HTTPS tunneling through a proxy layer with full encryption.
