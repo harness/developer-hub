@@ -2,12 +2,12 @@
 title: Built-in scanners
 description: Scan your targets without the need of scan tool licenses and configurations
 sidebar_label: Built-in scanners
-sidebar_position: 14
+sidebar_position: 16
 redirect_from:
-  - /docs/security-testing-orchestration/sto-techref-category/built-in-scanners
-  - /docs/security-testing-orchestration/sto-techref-category/built-in-scanners
-  - /docs/security-testing-orchestration/sto-techref-category/built-in-scanners
-  - /docs/security-testing-orchestration/sto-techref-category/built-in-scanners
+  - /docs/security-testing-orchestration/sto-techref-category/built-in/sast
+  - /docs/security-testing-orchestration/sto-techref-category/built-in/sca
+  - /docs/security-testing-orchestration/sto-techref-category/built-in/secrets
+  - /docs/security-testing-orchestration/sto-techref-category/built-in/containers
   - /security-testing-orchestration/sto-techref-category/built-in/dast
   - /docs/security-testing-orchestration/sto-techref-category/built-in/iac
 ---
@@ -82,10 +82,10 @@ Setting up a built-in scanner is just the same as setting up any other scanner s
 1. In your **Build** or **Security** stage, open the step palette by clicking the **Add Step** option in your pipeline.
 2. Navigate to the **Built-in Scanners** section under the **Security Tests** category.
 3. You will see all the supported scan types listed as steps. Select the one you want to perform.
-   <DocImage path={require('./static/built-in-scan-steps.png')} width="50%" height="50%" title="Click to view full size image" />
+   <DocImage path={require('/docs/security-testing-orchestration/sto-techref-category/static/built-in-scan-steps.png')} width="50%" height="50%" title="Click to view full size image" />
 4. Once selected, you will view a list of supported scanners available for the selected scan type. Depending on the scan type and scanner availability, you may see one or multiple step options to select. Optionally, expand the scan step to pass any **Additional CLI Flags** if required.
    
-   <DocImage path={require('./static/built-in-pass-cli-flags.png')} width="50%" height="50%" title="Click to view full size image" />
+   <DocImage path={require('/docs/security-testing-orchestration/sto-techref-category/static/built-in-pass-cli-flags.png')} width="50%" height="50%" title="Click to view full size image" />
 5. If you have selected **Container** or **DAST** steps, you will need to provide the necessary details like **Container Information** or **Domain Information**, respectively.
 6. Click **Add Scanner** to add the selected scanner to your pipeline. The Target and Variant will be automatically detected by STO.
 
