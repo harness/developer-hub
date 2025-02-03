@@ -122,6 +122,12 @@ import { MODULES } from "@site/src/constants";
           link: "/docs/cloud-development-environments/develop-using-cde/source-control",
         },
         {
+          title: "Dev Container Features",
+          module: MODULES.cde,
+          description: "Learn more about configuring Dev Container Features for your Gitspace.",
+          link: "/docs/cloud-development-environments/develop-using-cde/port-forwarding",
+        },
+        {
           title: "Port Forwarding",
           module: MODULES.cde,
           description: "Learn more about how to forward ports in your Gitspaces.",
