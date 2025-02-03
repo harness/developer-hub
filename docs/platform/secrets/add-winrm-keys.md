@@ -125,3 +125,11 @@ Enter a **Name** for the WinRM credential and select **Continue**.
 
    If a message appears stating that no Harness Delegate could reach the host, or that a credential is invalid, verify that your settings are correct, and your Harness Delegate is able to connect to the server.
 8. After the test succeeds, select **Finish** to save the WinRM credential.
+
+
+
+## Limitations
+There are some limitations in how winRM operates that can cause some issues
+
+### Special Characters for Kerberos Passwords
+Secrets have limits in supporting certain special characters without escaping. For example, if the secret contains a `$` as a part of the secret, like ab`$`c it will fail. It may be necessary to escape special characters in your secrets: ab`\$`c.
