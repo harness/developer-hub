@@ -51,7 +51,7 @@ Follow the steps below to view the License-Report for the artifacts. You can use
  **Example**: If you only want to allow permissive licenses, such as MIT or Apache 2.0, you can easily filter out any licenses from other families like Reciprocal (GPL) or Weak Reciprocal (LGPL).
 * **Artifacts:** Select any artifact to view and manage its components and to access the detailed information.
 
-<DocImage path={require('./static/license-filter.png')} width="80%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/license-artifact-filter.png')} width="80%" height="100%" title="Click to view full size image" />
 
 :::tip
 
