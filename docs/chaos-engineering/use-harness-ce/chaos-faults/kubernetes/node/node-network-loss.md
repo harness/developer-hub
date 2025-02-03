@@ -13,6 +13,7 @@ Node network loss is a Kubernetes node-level chaos fault that induces packet los
 
 ## Use cases
 Node network loss:
+- Checks how the application behaves when there is network loss on the nodes.
 - Simulates a degraded network at the node level, causing potential disruptions to all pods running on the affected node.
 - Tests the node and inter-node communication resilience against packet loss.
 - Simulates scenarios where specific nodes might experience network problems due to issues like faulty NICs or network misconfigurations.

@@ -17,8 +17,10 @@ CPU hog:
 - Simulates a situation where the application's CPU resource usage unexpectedly increases.
 - Verifies metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition.
 - Facilitates scalability of the nodes based on the growth beyond budgeted pods.
+- Determines the resilience of the application when APIs slow down.
 - Verifies the autopilot functionality of cloud managed clusters.
 - Verifies multi-tenant load issues, that is, when the load increases on one container, this does not cause downtime in other containers.
+- Helps determine whether alerts are triggered when CPU consumption exceeds a threshold.
 
 ### Permissions required
 

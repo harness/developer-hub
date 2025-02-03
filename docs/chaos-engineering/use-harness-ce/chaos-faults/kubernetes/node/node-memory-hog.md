@@ -7,20 +7,20 @@ redirect_from:
 - /docs/chaos-engineering/chaos-faults/kubernetes/node-memory-hog
 ---
 Node memory hog causes memory resource exhaustion on the Kubernetes node.
-- It is injected using a helper pod running the Linux stress-ng tool (a workload generator).
+- It is injected using a helper pod running the Linux stress-ng tool.
 - The chaos affects the application for a specific duration.
 
 ![Node Memory Hog](./static/images/node-memory-hog.png)
 
 ## Use cases
 
-- Node memory hog fault causes memory resource exhaustion on the Kubernetes node.
-- It aims to verify resilience of applications whose replicas may be evicted on account on nodes becoming unschedulable (in **NotReady** state) due to lack of memory resources.
-- It simulates the situation of memory leaks in the deployment of microservices.
-- It simulates application slowness due to memory starvation.
-- It simulates noisy neighbour problems due to hogging.
-- It verifies pod priority and QoS setting for eviction purposes.
-- It also verifies application restarts on OOM kills.
+Node memory hog fault:
+- Verifies application restarts on OOM kills.
+- Verifies resilience of applications whose replicas may be evicted on account on nodes becoming unschedulable (in **NotReady** state) due to lack of memory resources.
+- Simulates the situation of memory leaks in the deployment of microservices.
+- Simulates application slowness due to memory starvation.
+- Simulates noisy neighbour problems due to hogging.
+- Verifies pod priority and QoS setting for eviction purposes.
 
 ### Permissions required
 

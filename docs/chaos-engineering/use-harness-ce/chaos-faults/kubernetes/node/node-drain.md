@@ -13,12 +13,13 @@ Node drain drains the node of all its resources running on it. Due to this, serv
 
 
 ## Use cases
-- Node drain fault drains all the resources running on a node.
-- It determines the resilience of the application when the application replicas scheduled on a node are removed.
-- It validates the application failover capabilities when a node suddenly becomes unavailable.
-- It simulates node maintenance activity (hardware refresh, OS patching, Kubernetes upgrade).
-- It verifies resource budgeting on cluster nodes (whether request (or limit) settings are honored on available nodes).
-- It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
+Node drain:
+- Determines how an application scales to handle traffic.
+- Determines the resilience of the application when the application replicas scheduled on a node are removed.
+- Validates the application failover capabilities when a node suddenly becomes unavailable.
+- Simulates node maintenance activity (hardware refresh, OS patching, Kubernetes upgrade).
+- Verifies resource budgeting on cluster nodes (whether request (or limit) settings are honored on available nodes).
+- Verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
 
 ### Permissions required
 

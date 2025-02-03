@@ -28,6 +28,8 @@ Pod delete:
   - Graceful delete, or rescheduling, of pods as a result of upgrades.
   - Forced deletion of pods as a result of eviction.
   - Leader-election in complex applications.
+- To understand how quickly an application recovers after such failures.
+
 
 ### Permissions required
 
