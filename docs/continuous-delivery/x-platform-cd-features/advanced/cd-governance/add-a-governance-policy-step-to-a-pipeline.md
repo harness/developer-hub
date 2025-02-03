@@ -219,3 +219,7 @@ status: pass
 projectPolicySetDetails: pass
 Command completed with ExitCode (0)
 ```
+
+### Limitations
+
+OPA policies cannot be applied directly to filters. During stage and pipeline evaluations, any filters are disregarded when OPA policies are enforced.

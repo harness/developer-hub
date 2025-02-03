@@ -15,6 +15,7 @@ const DocVideo = ({
   const isYoutubeShortenedURL = src.includes("youtu.be");
   const isWistiaVideo = /https?:\/\/(.+)?(wistia\.com|wi\.st)\/.*/.test(src);
   const isLoomVideo = /https?:\/\/(.+)?(loom\.com)\/.*/.test(src);
+  const isTangoVideo = src.includes("tango");
   if (isYoutubeShortenedURL) {
     //Strip out WWW incase WWW duplicate by user
     videoSrc = (src || "").replace("www.", "");
@@ -93,6 +94,20 @@ const DocVideo = ({
         height={height}
         title={title}
       />
+    );
+  } else if (isTangoVideo) {
+    return (
+      <iframe
+        src={videoSrc}
+        title={title}
+        width={width}
+        height={height}
+        referrerPolicy="strict-origin-when-cross-origin"
+        frameBorder="0"
+        webkitallowfullscreen="true"
+        mozallowfullscreen="true"
+        allowfullscreen="true">
+      </iframe>
     );
   }
   return (

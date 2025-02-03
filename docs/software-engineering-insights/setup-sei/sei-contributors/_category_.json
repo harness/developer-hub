@@ -1,0 +1,11 @@
+{
+    "label":"Contributors",
+    "position": 20,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Contributors"
+    }
+ }
