@@ -1,0 +1,5 @@
+```swift title="Swift"
+let result = client.getTreatmentWithConfig("new_boxes", attributes: attributes)
+let config = try? JSONSerialization.jsonObject(with: result.config.data(using: .utf8)!, options: []) as? [String: Any]
+let treatment = result.treatment
+```

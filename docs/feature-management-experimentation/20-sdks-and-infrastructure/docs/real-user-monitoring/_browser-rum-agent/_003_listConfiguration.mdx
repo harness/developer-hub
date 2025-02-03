@@ -1,0 +1,4 @@
+- Prefix: Optional prefix to append to the `eventTypeId` of the events sent to Split. For example, if you set the prefix to `'my-app'`, the event type `'error'` will be sent as `'my-app.error'`. It defaults to `'split.rum'`.
+- Push Rate: The Agent posts the queued events data in bulks. This parameter controls the posting rate in seconds. The default value is `30`.
+- Queue Size: The maximum number of event items we want to queue. If we queue more values, events will be dropped until they are sent to Split. The default value is `5000`.
+- User Consent: User consent status used to control the tracking of events and impressions. Possible values are `'GRANTED'`, `'DECLINED'`, and `'UNKNOWN'`. The default value is `'GRANTED'`. See the [User consent](#user-consent) section for details.

@@ -1,0 +1,48 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+You can import the SDK into your project using NPM or our bundled option which we host through our CDN.
+
+You can take advantage of both `slim` and `full` entry points when using NPM as you decide what to import. However, on the already bundled option, the code included is static, so we expose a different bundle for each entry point. The `slim` version includes all the key functionality of the SDK and the full one includes every available pluggable module, for example, the logger or the *InlocalStorage* module.
+
+<Tabs>
+  <TabItem label="NPM" value="npm">
+```bash
+npm install @splitsoftware/splitio-react-native
+```
+  </TabItem>
+  <TabItem label="Yarn" value="yarn">
+```bash
+yarn add @splitsoftware/splitio-react-native
+```
+  </TabItem>
+  <TabItem label="Expo CLI" value="cdn">
+```bash
+expo install @splitsoftware/splitio-react-native
+```
+  </TabItem>
+</Tabs>
+
+The Split SDKs support two synchronization mechanisms, **streaming** (default and recommended) and **polling** which is the fallback in cases where streaming is not supported or as a temporary measure in case of any issues detected on the persistent connection. We recommend following the steps below to enable the necessary support for the Event Source modules.
+
+- For React Native bare projects, you need to *link* the native modules of the package.
+
+  If using React Native 0.59 or below, run `react-native link @splitsoftware/splitio-react-native`
+
+  If using React Native 0.60+, the [autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) is available and you don't need to run `react-native link`, but you still need to install the pods if developing for iOS, with the command `npx pod-install ios`.
+
+- For Expo managed projects, Split SDK native modules cannot be used, but you can still support streaming by *polyfilling* the global EventSource constructor:
+
+Install an EventSource implementation such as [react-native-event-source](https://www.npmjs.com/package/react-native-event-source):
+
+```bash
+expo install react-native-event-source
+```
+
+Polyfill the global EventSource constructor, for example, by including the following in your project entrypoint file (e.g. `App.jsx`): 
+
+```javascript
+import RNEventSource from 'react-native-event-source';
+
+globalThis.EventSource = RNEventSource;
+```

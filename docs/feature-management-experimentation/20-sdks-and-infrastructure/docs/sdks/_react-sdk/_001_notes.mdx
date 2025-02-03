@@ -1,0 +1,37 @@
+:::note[The factory prop]
+**For more flexibility** as we wanted to support most use cases, the `SplitFactoryProvider` component can receive the factory already instantiated for our React SDK to use it. If you're using the JavaScript SDK already, it is recommended that you follow the Singleton Pattern and keep only one instance of the factory at all times, which you can provide to the React SDK following the approach shown below.
+
+You could access the JavasScript SDK factory function through the `SplitFactory` named export of the React SDK too, which points to the original JavaScript SDK function so you don't need to import two different Split packages.
+
+___Note that you shouldn't mix the two options:___&nbsp; Either provide a config or a factory instance. If both are provided, config will be ignored and you'll get a warning log.
+
+When using the **`config`** prop, the `SplitFactoryProvider` component automatically instantiates and shuts down the SDK factory when the component is mounted and unmounted respectively.
+
+Therefore, you should use the `config` prop for simpler setups where you know that the component [state in the render tree](https://react.dev/learn/preserving-and-resetting-state) will not reset, i.e. it will not be unmounted and mounted again (for instance, when you have a single `SplitFactoryProvider` component in the root or near the root of your app). Otherwise, a new factory instance will be created (if you pass a new `config` object) or the factory will be re-initialized (if you pass a reference to the same `config` object and the component is mounted again).
+
+When using the **`factory`** prop, the `SplitFactoryProvider` component doesn't shut down the SDK automatically. You should [handle the shutdown](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#shutdown) yourself.
+
+You can use it for more complex setups. For example, when you need to use the `SplitFactoryProvider` component in different parts of your app, or when the `SplitFactoryProvider` is nested in a component that might be unmounted and mounted again, for example in a tabbed view, or a micro-frontend architecture. In these cases, you can create the factory instance as a global variable, and pass it down to the `SplitFactoryProvider` components.
+
+```typescript
+// The npm package exposes the different components and functions of the library as named exports.
+// If you were using the bundle via CDN, it'll be at `window.splitio.SplitFactory`
+import { SplitFactory, SplitFactoryProvider } from '@splitsoftware/splitio-react';
+
+// Create the Split factory object with your custom settings, using the re-exported function.
+const factory: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'key'
+  },
+  ...
+});
+
+// Using the SplitFactoryProvider component, MyApp component and all it's descendants will have access to the SDK functionality using the provided factory.
+const App: React.ComponentType = () => (
+  <SplitFactoryProvider factory={factory} >
+    <MyApp />
+  </SplitFactoryProvider>
+);
+```
+###

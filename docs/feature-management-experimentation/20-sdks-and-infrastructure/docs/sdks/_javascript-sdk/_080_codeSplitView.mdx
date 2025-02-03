@@ -1,0 +1,17 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+```typescript
+type SplitView = {
+  name: string,
+  trafficType: string,
+  killed: boolean,
+  treatments: Array<string>,
+  changeNumber: number,
+  configs: {
+    [treatmentName: string]: string
+  },
+  defaultTreatment: string,
+  sets: Array<string>
+}
+```

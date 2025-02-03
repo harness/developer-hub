@@ -1,0 +1,114 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+client.on(SplitEvent.SDK_READY, new SplitEventTask() {
+  @Override
+  public void onPostExecution(SplitClient client) {
+    // Background Code in Here
+  }
+
+  @Override
+  public void onPostExecutionView(SplitClient client) {
+    // UI Code in Here
+  }
+});
+
+// When definitions and any bound attributes were loaded from cache
+client.on(SplitEvent.SDK_READY_FROM_CACHE, new SplitEventTask() {
+  @Override
+  public void onPostExecution(SplitClient client) {
+    // Background Code in Here
+  }
+
+  @Override
+  public void onPostExecutionView(SplitClient client) {
+    // UI Code in Here
+  }
+});
+
+// When the SDK couldn't fetch definitions before *config.ready* time
+client.on(SplitEvent.SDK_READY_TIMED_OUT, new SplitEventTask() {
+  @Override
+  public void onPostExecution(SplitClient client) {
+    // Background Code in Here
+  }
+
+  @Override
+  public void onPostExecutionView(SplitClient client) {
+    // UI Code in Here
+  }
+});
+
+// When definitions have changed
+client.on(SplitEvent.SDK_READY_UPDATE, new SplitEventTask() {
+  @Override
+  public void onPostExecution(SplitClient client) {
+    // Background Code in Here
+  }
+
+  @Override
+  public void onPostExecutionView(SplitClient client) {
+    // UI Code in Here
+  }
+});
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+client.on(SplitEvent.SDK_READY, object : SplitEventTask() {
+    override fun onPostExecution(client: SplitClient) {
+        // Background Code in Here
+    }
+
+    override fun onPostExecutionView(client: SplitClient) {
+        // UI Code in Here
+    }
+})
+
+// When definitions were loaded from cache
+client.on(SplitEvent.SDK_READY_FROM_CACHE, object : SplitEventTask() {
+    override fun onPostExecution(client: SplitClient) {
+        // Background Code in Here
+    }
+
+    override fun onPostExecutionView(client: SplitClient) {
+        // UI Code in Here
+    }
+})
+
+// When the SDK couldn't fetch definitions before *config.ready* time
+client.on(SplitEvent.SDK_READY_TIMED_OUT, object : SplitEventTask() {
+    override fun onPostExecution(client: SplitClient) {
+        // Background Code in Here
+    }
+
+    override fun onPostExecutionView(client: SplitClient) {
+        // UI Code in Here
+    }
+})
+
+// When definitions have changed
+client.on(SplitEvent.SDK_UPDATE, object : SplitEventTask() {
+    override fun onPostExecution(client: SplitClient) {
+        // Background Code in Here
+    }
+
+    override fun onPostExecutionView(client: SplitClient) {
+        // UI Code in Here
+    }
+})
+```
+
+  </TabItem>
+</Tabs>

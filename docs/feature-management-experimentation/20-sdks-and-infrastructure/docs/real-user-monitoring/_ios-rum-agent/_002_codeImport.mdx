@@ -1,0 +1,15 @@
+### Swift Package Manager
+
+Import the Agent into your project using Swift Package Manager pointing to the iOS RUM repo [URL](https://github.com/splitio/ios-rum). Currently, the last version is `0.4.0`.
+
+### Cocoa Pods
+
+You can also import the Agent into your Xcode project using CocoaPods, adding it in your **Podfile**.
+
+``` title="Podfile"
+pod 'SplitRum', '~> 0.4.0'
+```
+
+:::warning
+If you get the `Sandbox: rsync.samba(19690) deny(1) file-read-data ...` error, make sure that the **ENABLE_USER_SCRIPT_SANDBOXING** project flag is set to 'No'
+:::

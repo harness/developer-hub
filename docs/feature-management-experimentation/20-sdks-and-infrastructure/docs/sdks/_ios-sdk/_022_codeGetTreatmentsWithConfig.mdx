@@ -1,0 +1,15 @@
+```swift title="Swift"
+let featureFlagList = ["FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2", "FEATURE_FLAG_NAME_3"]
+let treatments = client?.getTreatmentsWithConfig(splits: featureFlagList, attributes: nil)
+
+let treatmentsByFlagSet = client.getTreatmentsWithConfigByFlagSet("frontend", attributes: nil)
+
+let flagSets = ["frontend", "client_side"]
+let treatmentsByFlagSets = client.getTreatmentsWithConfigByFlagSets(flagSets, attributes: nil)
+
+// treatments will have the following form:
+// {
+//   "FEATURE_FLAG_NAME_1": { "treatment": "on", "config": "{ \"color\":\"red\" }"},
+//   "FEATURE_FLAG_NAME_2": { "treatment": "visa", "config": "{ \"color\":\"red\" }"}
+// }
+```

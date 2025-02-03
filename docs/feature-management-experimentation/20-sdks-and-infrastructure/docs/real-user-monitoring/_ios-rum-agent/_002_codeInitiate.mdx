@@ -1,0 +1,34 @@
+To allow the Agent to send information to Split services, you need to call the `setup` method on the `SplitRum` object.
+
+```swift
+try? SplitRum.setup(apiKey: "YOUR_SDK_KEY")
+```
+
+:::warning
+
+The Crashlytics framework has a compatibility issue that interferes with the proper functioning of Split RUM Agent when Crashlytics is initialized first. To resolve this, initialize the Split RUM Agent using the setup method before starting Crashlytics.
+
+```swift
+  try? SplitRum.setup(apiKey: "YOUR_SDK_KEY")
+  FirebaseApp.configure()
+```
+:::
+
+Alternatively, you can create a `SplitRumAgent-Info.plist` file with a key called `apiKey` and your SDK KEY as its value. Then call the `setup` method without parameters.
+
+```xml title="SplitRumAgent-Info.plist configuration"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>apiKey</key>
+	<string>YOUR_SDK_KEY</string>
+</dict>
+</plist>
+```
+
+```Swift
+try? SplitRum.setup()
+```
+
+Arguments passed to the `setup` method will override any value contained in the `SplitRumAgent-Info.plist`. When initializing the Agent, the `setup` method will throw an error if any parameter invalid, so this method must be called using a `try` clause.

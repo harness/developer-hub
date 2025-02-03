@@ -1,0 +1,31 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<p />
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+SplitResult result = cli.getTreatmentWithConfig("new_boxes", attributes);
+Gson gson = new Gson();
+Map map = gson.fromJson(result.config(), Map.class);
+String treatment = result.treatment();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val result: SplitResult = client.getTreatmentWithConfig("new_boxes", attributes)
+val config: String = result.config()
+val treatment: String = result.treatment()
+```
+
+  </TabItem>
+</Tabs>

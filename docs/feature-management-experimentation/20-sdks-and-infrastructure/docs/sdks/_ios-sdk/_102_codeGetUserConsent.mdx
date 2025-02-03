@@ -1,0 +1,32 @@
+```swift title="User consent: Initial config, getter and setter"
+  let config = SplitClientConfig()
+  // Overwrites the initial consent status of the factory instance, which is 'GRANTED' by default.
+  // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
+
+  // so the SDK locally tracks data but not send it to Split cloud until consent is changed to 'GRANTED'.
+  config.userConsent = .unknown
+  guard let factory = DefaultSplitFactoryBuilder()
+      .setApiKey("YOUR_SDK_KEY")
+      .setKey(Key(matchingKey: "user_key"))
+      .setConfig(config)
+      .build() else {
+      return
+  }
+
+  // Changed User Consent status to 'GRANTED'. Data will be sent to Split cloud.
+  factory.setUserConsent(enabled: true);
+  // Changed User Consent status to 'DECLINED'. Data will not be sent to Split cloud.
+  factory.setUserConsent(enabled: false);
+
+  // The 'getUserConsent' method returns User Consent status.
+  // We expose the constants for customer checks and tracking.
+  if (factory.userConsent == UserConsent.declined) {
+      print("USER CONSENT DECLINED");
+  }
+  if (factory.userConsent == UserConsent.granted) {
+      print("USER CONSENT GRANTED");
+  }
+  if (factory.userConsent == UserConsent.unknown) {
+      print("USER CONSENT UNKNOWN");
+  }
+```
