@@ -11,7 +11,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Welcome to Harness Chaos Engineering (HCE)!
+Welcome to Harness Chaos Engineering!
 
 This topic provides you with all the details such as **what**, **why**, and **how** of chaos engineering, such as:
 
@@ -104,13 +104,11 @@ HCE doesn't just focus on fault injection; it helps you set up a fully operation
 
 ### Steps to Inject Chaos into your Application
 
-1. [Fulfill the resource requirements or facilitate the permissions](/docs/chaos-engineering/getting-started/saas/): You can create resources or get the required permissions to create the necessary resources. For example, to execute a Kubernetes fault, you may need the permissions mentioned [here](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/permissions/fault-wise-permission).
+1. [Fulfill the resource requirements and facilitate the permissions](/docs/chaos-engineering/getting-started/saas/): You can create resources or get the required permissions to create the necessary resources. For example, to execute a Kubernetes fault, you may need the permissions mentioned [here](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/permissions/fault-wise-permission).
 
-2. [Add an environment](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#create-environment): A chaos experiment is performed within a chaos environment that houses the necessary infrastructure.
+2. [Add an environment](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#create-environment) and [create an infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#enable-chaos): A chaos experiment is performed within a chaos environment that houses the necessary infrastructure. The required chaos infrastructure is enabled within a chaos environment.
 
-3. [Enabling a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#enable-chaos): The required chaos infrastructure is enabled within a chaos environment.
-
-4. [Create and run a chaos experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments): You can decide which resources to target and execute the chaos experiments on.
+3. [Create and run a chaos experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments): You can decide which resources to target and execute the chaos experiments on.
 
 #### Workflow Custom Resource (CR)
 
@@ -159,6 +157,5 @@ By embracing chaos engineering, you can better prepare your applications to with
 
 ## Try Chaos Engineering today
 
-* [Run your first chaos experiment](/docs/chaos-engineering/getting-started/saas/first-experiment)
+* [Run your first chaos experiment](/docs/chaos-engineering/getting-started/saas/)
 * [Executing experiments in a sandbox](/docs/chaos-engineering/training/sandbox)
-* [Create chaos experiments from scratch](/docs/chaos-engineering/getting-started/saas/chaos-experiment-from-blank-canvas)
