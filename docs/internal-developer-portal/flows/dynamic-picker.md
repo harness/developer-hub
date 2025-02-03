@@ -200,12 +200,12 @@ properties:
     ui:options:
       title: Title
       description: Description
+      # (Optional) Mention about the type of API call POST/GET, GET is default if not mentioned
       request:
         method: POST
-        # Mention about the type of API call POST/GET
         headers:
           Content-Type: text/plain
-        #Indicates the format of the request body being sent. 
+        # Indicates the format of the request body being sent. 
         body: This is a simple plain text message
       # The Path on the Harness IDP backend API and the parameters to fetch the data for the dropdown
       path: "proxy/proxy-endpoint/api-path"
