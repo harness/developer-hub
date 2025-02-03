@@ -7,8 +7,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import Link from "@docusaurus/Link";
-
 This guide describes the basic steps for getting started with Split Feature Management & Experimentation.
 
 ## Quickstart guides

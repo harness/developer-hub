@@ -6,8 +6,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import Link from "@docusaurus/Link";
-
 import FmePreviewAdmonition from "@site/docs/feature-management-experimentation/_templates/_fme-preview-admonition.mdx";
 import OutboundSvg from "@site/docs/feature-management-experimentation/_templates/OutboundLink.mdx";
 

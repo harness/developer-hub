@@ -6,8 +6,6 @@ helpdocs_is_published: true
 sidebar_position: 5
 ---
 
-import Link from "@docusaurus/Link";
-
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/19832825482637-Troubleshooting-alerts </button>
 </p>

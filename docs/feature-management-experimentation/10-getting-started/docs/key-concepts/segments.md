@@ -12,4 +12,4 @@ A segment is a list of [user IDs](./user-ids.md).
 You can target segments in your feature flag targeting rules, and you can gradually rollout features by increasing percentage to segments.
 :::
 
-Harnes FME supports Standard segments and Large segments. Go to [Segments](/docs/feature-management-experimentation/40-feature-management/docs/manage-audiences/segments/segments.md) for more information.
+Harnes FME supports Standard segments and Large segments. Go to [Segments](/docs/feature-management-experimentation/40-feature-management/docs/manage-audiences/segments.md) for more information.

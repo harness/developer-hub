@@ -5,8 +5,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import Link from "@docusaurus/Link";
-
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360043412752-Python-Admin-API-sample-Report-feature-flags-with-100-treatment-and-not-changed-for-certain-time-period </button>
 </p>

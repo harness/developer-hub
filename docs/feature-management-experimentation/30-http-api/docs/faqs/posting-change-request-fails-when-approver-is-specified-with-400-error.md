@@ -6,8 +6,6 @@ helpdocs_is_published: true
 description: ""
 ---
 
-import Link from "@docusaurus/Link";
-
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360050159491-Posting-a-change-request-using-the-Admin-API-fails-when-the-approver-is-specified </button>
 </p>

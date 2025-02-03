@@ -4,8 +4,6 @@ sidebar_label: Impressions
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
-import Link from "@docusaurus/Link";
 import Impressions from "@site/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/impressions.md";
 
 <p>

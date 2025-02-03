@@ -5,8 +5,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import Link from "@docusaurus/Link";
-
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360029716732-What-is-the-sequence-and-timing-when-sending-events-with-Split-s-track-method </button>
 </p>

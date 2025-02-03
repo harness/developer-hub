@@ -6,8 +6,6 @@ helpdocs_is_published: true
 description: ""
 ---
 
-import Link from "@docusaurus/Link";
-
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360050550512-Events-not-seen-in-Split-when-using-Admin-API-call-to-post-new-events </button>
 </p>

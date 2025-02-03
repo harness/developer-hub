@@ -15,9 +15,9 @@ An event is a user action, performance measurement, or error exception that you 
 FME attributes your events to specific feature flag variations and uses this data to calculate metric results and analytics.This enables you to measure the impact of your features on customer behavior, user experience, or application performance. 
 
 Event data can be sent to FME in any of the following ways:
-* Install an FME Suite or RUM agent
+* Install an FME SDK Suite or RUM Agent
 * Call an FME SDK's `track` method
 * Post a JSON body to the `/events` HTTP API endpoint
 * FME integrations with Segment, mParticle, Sentry, Amazon S3, or Google Analytics
 
-The FME Suite and RUM Agents will automatically collect event data when installed in a client-side application. Use the `track` method if you want to explicitly add instrumentation code to your application to record events. The API and integration options allow you to ingest event data from existing sources (i.e. take advantage of telemetry from existing instrumentation or analytics).
+The FME SDK Suites and RUM Agents will automatically collect event data when installed in a client-side application. Use the `track` method if you want to explicitly add instrumentation code to your application to record events. The API and integration options allow you to ingest event data from existing sources (i.e. take advantage of telemetry from existing instrumentation or analytics).

@@ -5,8 +5,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 10
 ---
-
-import Link from "@docusaurus/Link";
 import MTK from "@site/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/mtks.md";
 
 <p>

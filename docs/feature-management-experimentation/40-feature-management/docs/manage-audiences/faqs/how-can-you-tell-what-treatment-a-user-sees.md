@@ -5,13 +5,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import Link from "@docusaurus/Link";
-
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360047489331-How-can-you-tell-what-treatment-a-user-sees <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-There are three primary use cases for determining who is seeing which treatment that can be answered in Split:
+### Answer
+
+There are three primary use cases for determining who is seeing which treatment:
 
 ## Use Case 1 - What a user sees whenever they log back in?
 

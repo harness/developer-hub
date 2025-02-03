@@ -4,8 +4,6 @@ sidebar_label: Traffic type attributes
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
-import Link from "@docusaurus/Link";
 import UserAttributes from "@site/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/user-attributes.md";
 
 <p>

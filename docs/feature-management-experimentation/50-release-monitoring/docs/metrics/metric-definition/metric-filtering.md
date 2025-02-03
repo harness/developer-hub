@@ -5,8 +5,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import Link from "@docusaurus/Link";
-
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360022217832-Metric-filtering, https://help.split.io/hc/en-us/articles/9652327065485-Setting-up-and-using-metrics <br /> ✘ images still hosted on help.split.io </button>
 </p>
@@ -28,7 +26,7 @@ import Link from "@docusaurus/Link";
 
 You can optionally apply filters and filter properties, and a cap to your metric value. Filters help you improve the sensitivity of your metric by refining the sample used in the analysis. Filtering provides deeper analysis of how customers progress through a particular flow in your product. This allows you to see the behavior of customers who reach particular points in the funnel, such as abandonment by those who visited a product page, or those who added something to their cart. By filtering with events, it’s enforcing that the user has at some point seen both events of a particular version.
 
- Also, use filtering to create metrics that target only users who engage in a particular behavior, for example, observing the support ticket rate of those users who experience an exception or of users who completed the onboarding process. For more information about applying filters, refer to the [Apply filters](https://help.split.io/hc/en-us/articles/360020848451-Apply-filters) guide. To apply filters, do the following:
+Also, use filtering to create metrics that target only users who engage in a particular behavior, for example, observing the support ticket rate of those users who experience an exception or of users who completed the onboarding process. For more information about applying filters, refer to the [Apply filters](https://help.split.io/hc/en-us/articles/360020848451-Apply-filters) guide. To apply filters, do the following:
 
 1. Towards the bottom of the Metrics page, click the **Show advanced** link. The Advanced section displays.
 
@@ -39,4 +37,6 @@ You can optionally apply filters and filter properties, and a cap to your metric
 4. In the Cap at field, apply a cap to your metric value. With metric capping, any outlier value in your metrics is capped and replaced with a fixed threshold value. This reduces the variance and increases the sensitivity of your metric. When a metric cap is set to a per user per day, this is 24 hours from a user’s first impression within a particular version of a feature flag. Refer to [Metric capping](https://help.split.io/hc/en-us/articles/360022165552-Metric-capping) for more information.
 5. Once finished, click **Create** to create your metric. Your new metric appears.
 
-**Note: To get access to alert policies, contact your customer success manager or support to enable your account. If you create a metric that is measured on a per traffic type basis, you can create an alert policy for this metric. For more information about alert policies, refer to the [metric alerting guide](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting).**
+:::note
+To get access to alert policies, contact your customer success manager or support to enable your account. If you create a metric that is measured on a per traffic type basis, you can create an alert policy for this metric. For more information about alert policies, refer to the [metric alerting guide](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting).
+:::

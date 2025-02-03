@@ -6,14 +6,13 @@ helpdocs_is_published: true
 sidebar_position: 3
 ---
 
-import Link from "@docusaurus/Link";
 import MetricsInfo from "@site/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/metrics.md";
 
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/22005565241101-Metrics <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-Metrics are be assigned to one of the following categories:
+When you create a metrics, you assign one of the following categories:
 
 * **None:** By default, metrics are not assigned to a category. You can add an uncategorized metric to the Supporting metrics on a feature flag's [Metrics impact tab](https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab), for any feature flag that shares the metric's traffic type. (You can also add a Supporting metric to a feature flag's Key metrics.)
 

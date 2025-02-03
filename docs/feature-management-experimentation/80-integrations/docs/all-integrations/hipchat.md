@@ -5,8 +5,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import Link from "@docusaurus/Link";
-
 <p>
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> github link: https://github.com/splitio/documentation/blob/main/integrate_automate/hipchat.markdown <br /> ✘ images links are broken <br /> this article is not on help.split.io - do we still have this integration? </button>
 </p>

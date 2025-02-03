@@ -6,7 +6,6 @@ helpdocs_is_published: true
 sidebar_position: 1
 ---
 
-import Link from "@docusaurus/Link";
 import RulesEvaluationOrder from "/docs/feature-management-experimentation/40-feature-management/docs/target-with-flags/rules-evaluation-order.md"
 
 <p>
