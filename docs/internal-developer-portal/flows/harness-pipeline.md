@@ -19,7 +19,7 @@ When a workflow is executed, users provide input details required for pipeline e
 
 The action accepts the **Harness Pipeline URL** as input, along with an authentication token that is automatically inserted into the parameters section. This seamless integration is enabled by Harness IDP being part of the broader Harness SaaS ecosystem. Users can also manage workflows via pipelines’ RBAC.
 
-### [IDP Stage](/docs/internal-developer-portal/flows/idp-stage.md)
+### IDP Stage
 Harness IDP includes a native IDP Stage where all IDP-specific tasks required for pipeline execution are pre-configured as pipeline steps within the stage. This enables quick and efficient creation of self-service workflows. 
 
 The IDP Stage provides built-in support for:

@@ -94,6 +94,17 @@ steps:
 
 #### Inputs
 
+Here's a list of **inputs** required to use the action: 
+| Name | Title | Description | Type |
+|---------|----------------|------------------|----------------------|
+| **url** *(Mandatory)*	| Pipeline URL	| URL of the pipeline you want to execute		| `string`|
+| **inputset** *(Mandatory)*	| Pipeline Inputset	| Required input set for the pipeline to execute	| `object`|
+| **apikey** 	| Harness x-api-key	| Harness Token to Authenticate Pipeline Execution | `string` |
+| **apiKeySecret**	| Harness secret	| Harness secret to which contains x-api-key	| `string` |
+| **hidePipelineURLLog** | Hide Pipeline URL	| Parameter to hide pipeline url from the execution logs	| `boolean` |
+| **showOutputVariables** | Show Output Variables	| Parameter to show output variables exported from a pipeline from the execution logs	| `boolean` |
+
+Let's dive into these **inputs** in detail: 
 1. `url`: Pipeline execution URL
 
 > Note: For pipelines using [Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview) make sure your URL includes `branch` and `repoName` e.g., `https://app.harness.io/ng/account/accountID/module/idp/orgs/orgID/projects/projectID/pipelines/pipelineID?repoName=repo-name&branch=branch`
@@ -300,17 +311,22 @@ Here's an example workflow based on this [source](https://github.com/harness-com
 ![](static/input-form-ca.png)
 
 #### Inputs
+Here's a list on **inputs** used for this action:
 
-- `url`: The Harness pipeline URL
-- `inputSetName`: The identifier for the input set
-- `triggerName`: The name of the webhook trigger
-- `apikey`: Harness API authentication token
+| Name | Title | Type |
+|---------|----------------| ----------------------|
+| **url** *(Mandatory)*	| Pipeline URL	|  `string`|
+| **inputSetName** *(Mandatory)*	| Input Set Name	| `string`|
+| **triggerName** *(Mandatory)*	| Trigger Name	| `string` |
+| **apiKey**	| Harness API Key	| `string` |
+
 
 #### Outputs
-
-- `API URL`: Webhook URL used for execution
-- `Pipeline Details`: Redirects to the Harness Pipeline Editor
-- `Execution URL`: Recent executions of the pipeline
+| Name | Title |
+|---------|----------------| 
+| **API URL** | Webhook URL used for execution |
+| **Pipeline Details**	| Redirects to the Harness Pipeline Editor	| 
+| **Execution URL** | Recent executions of the pipeline	| 
 
 #### Example
 
@@ -325,35 +341,7 @@ steps:
       triggerName: ${{ parameters.triggerName }}
       apikey: ${{ parameters.token }}
 ```
-### 3. `github:actions:dispatch`
-This action dispatches a **GitHub Action** workflow for a given branch or tag for your Harness self service Workflow. 
-
-#### Inputs
-Here's a list of **inputs** required to use the action: 
-
-| Name | Title | Description | Type |
-|---------|----------------|------------------|----------------------|
-| **repoUrl** *(Mandatory)*	| Repository Location	| Accepts the format 'github.com?repo=reponame&owner=owner' where 'reponame' is the new repository name and 'owner' is an organization or username	|  ```string```
-**workflowId** *(Mandatory)* | Workflow ID	| GitHub Action Workflow filename	| ```string```
-**branchOrTagName** *(Mandatory)* | 	Branch or Tag name |	Git branch or tag name used to dispatch the workflow	| ```string```
-**workflowInputs** | Workflow Inputs	| Inputs keys and values to send to GitHub Action configured on the workflow file. The maximum number of properties is 10.	| ```string```
-**token**	| Authentication Token	| GITHUB_TOKEN to use for authorization to GitHub	| ```string```
-
-#### Example YAML:
-```YAML
-steps:
-  - action: github:actions:dispatch
-    name: Dispatch Github Action Workflow with inputs
-    input:
-      repoUrl: github.com?repo=repo&owner=owner
-      workflowId: WORKFLOW_ID
-      branchOrTagName: main
-      workflowInputs:
-        input1: value1
-        input2: value2
-      token: ${{ secrets.MY_CUSTOM_TOKEN }}
-```
-### 4. `harness:create-secret`
+### 3. `harness:create-secret`
 
 This action is used to create a secret in Harness.
 
@@ -366,12 +354,25 @@ Here's a list of **inputs** required to use the action:
 | **secretValue** *(Mandatory)*	| Secret Value	| Secret Value | `string` |
 | **apikey**	| Harness x-api-key	| Harness Token to Authenticate Secret Creation	| `string` |
 
+#### Output
+Here's what we get as an **output** from the action: 
+| Name | Title | Type |
+|---------|----------------|----------------------|
+| **secretId**	| Secret Identifier created	| `string` |
 
-### 5. `harness:delete-secret`
+### 4. `harness:delete-secret`
+This action is used to delete a secret from Harness.
 
-Deletes a secret from Harness.
+#### Inputs
+Here's a list of **inputs** required to use the action: 
+| Name | Title | Description | Type |
+|---------|----------------|------------------|----------------------|
+| **projectId** *(Mandatory)*	| Project Identifier	| Project Identifier where secret will be created	| `string`|
+| **orgId** *(Mandatory)*	| Organization Identifier	| Organization Identifier where secret will be created	| `string`|
+| **secretId** *(Mandatory)*	| Secret Identifier	| Secret identifier which is to be deleted	| `string` |
+ | **apikey**	| Harness x-api-key	| Harness Token to Authenticate Secret Creation	| `string` |
 
-### 6. `debug:log`
+### 5. `debug:log`
 This action is used to write a message into the log or list all the files in your workspace. 
 
 #### Inputs
@@ -389,9 +390,9 @@ Here's a list of **inputs** required to use the action:
 steps:
   - action: debug:log
     id: write-debug-line
-    name: Write "Hello Backstage!" log line
+    name: Write "Hello Harness!" log line
     input:
-      message: Hello Backstage!
+      message: Hello Harness!
 ```
 **List the workspace directory**:
 ```YAML
@@ -404,7 +405,7 @@ steps:
 ```
 
 ### 7. `debug:wait`
-This action is used to add a waiting period for certain time. 
+This action is used to add a **waiting period** for certain time. 
 
 #### Inputs
 Here's a list of **inputs** required to use this action:

@@ -316,6 +316,8 @@ For example, `${{ parameters.project_name }}` inserts the value of `project_name
 
 The `${{ parameters.project_name }}` pattern is specifically used in **Workflow YAML** to pass parameters from the UI to the input of the `trigger:harness-custom-pipeline` step.  
 
+The templating engine used for this YAML is **[Nunjucks](https://mozilla.github.io/nunjucks/)**.
+
 **Important Note:**  
 The `${{ parameters.x }}` syntax is supported only within the **steps** section when configuring the **Workflows Backend**. It **cannot** be used within the **properties** section to reference another parameter.
 
