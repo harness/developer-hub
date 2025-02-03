@@ -1,8 +1,6 @@
 import {
-  CardItem,
-  CardSections,
-  docType,
-} from "@site/src/components/LandingPage/TutorialCard";
+  CardSections
+} from "@site/src/components/TutorialCard/TutorialCard";
 import { MODULES } from "@site/src/constants";
 
 /* Define the cards - start */

@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
 import {
   useColorMode,
   useCurrentSidebarCategory,
-} from "@docusaurus/theme-common";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { TutorialCards } from "../LandingPage/TutorialCard";
-import styles from "./styles.module.scss";
+} from '@docusaurus/theme-common';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
+import styles from './styles.module.scss';
 
-import { ReferenceArchitecturesCards } from "./data/referenceArchitecture";
+import { ReferenceArchitecturesCards } from './data/referenceArchitecture';
 const ReferenceArchitectures = () => {
   const { colorMode } = useColorMode();
-  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+  const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   const category = useCurrentSidebarCategory();
   return (
     <div className="container">
@@ -20,7 +20,7 @@ const ReferenceArchitectures = () => {
         <img
           className={styles.illustration}
           src={
-            colorMode !== "light"
+            colorMode !== 'light'
               ? `${baseUrl}img/ReferenceArchitectures_Dark.svg`
               : `${baseUrl}img/ReferenceArchitectures_Light.svg`
           }

@@ -1,13 +1,12 @@
-import React from 'react';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Link from '@docusaurus/Link';
-import clsx from 'clsx';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React from 'react';
+import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
-import TutorialCard, { TutorialCards } from '../LandingPage/TutorialCard';
 // Define the cards in "***Data.ts"
-import { docsCards } from './data/openSourceData';
 import { useColorMode } from '@docusaurus/theme-common';
-export default function Code() {
+import { docsCards } from './data/openSourceData';
+export default function OpenSource() {
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   const { colorMode } = useColorMode();
   return (
@@ -61,6 +60,5 @@ export default function Code() {
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
     </div>
-    // </Layout>
   );
 }

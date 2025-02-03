@@ -1,16 +1,15 @@
-import React from "react";
-import Link from "@docusaurus/Link";
-import clsx from "clsx";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import styles from "./styles.module.scss";
-import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React from 'react';
+import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
+import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
-import { docsCards } from "./data/platformData";
+import { docsCards } from './data/platformData';
 
-import { useColorMode } from "@docusaurus/theme-common";
+import { useColorMode } from '@docusaurus/theme-common';
 export default function Platform() {
   const { colorMode } = useColorMode();
-  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+  const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -50,7 +49,7 @@ export default function Platform() {
               <img
                 className={styles.illustration}
                 src={
-                  colorMode !== "light"
+                  colorMode !== 'light'
                     ? `${baseUrl}img/Platform_Landing_Page.svg`
                     : `${baseUrl}img/Platform_Landing_Page_dark_mode.svg`
                 }
@@ -61,6 +60,5 @@ export default function Platform() {
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
     </div>
-    // </Layout>
   );
 }

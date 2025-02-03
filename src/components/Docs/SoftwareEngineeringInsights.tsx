@@ -1,23 +1,21 @@
-import React from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Link from "@docusaurus/Link";
-import clsx from "clsx";
-import styles from "./styles.module.scss";
-import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React from 'react';
+import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
+import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
-import { docsCards } from "./data/softwareEngineeringInsightsData";
-import { useColorMode } from "@docusaurus/theme-common";
-import { SEIActions } from "../Telemetry/TememetryConstants";
-import Telemetry from "../Telemetry";
-
-
+import { useColorMode } from '@docusaurus/theme-common';
+import Telemetry from '@site/src/components/Telemetry';
+import { SEIActions } from '@site/src/components/Telemetry/TememetryConstants';
+import { docsCards } from './data/softwareEngineeringInsightsData';
 
 export default function SEI() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
 
-  // <Telemetry event ="event2" property_w ="property_w" property_y ="property_y" /
   
+
+
     const handleReleaseNotesClick = () => {
       <Telemetry event={SEIActions.SEIReleaseNotes} button="ReleaseNotes" />;
     };
@@ -56,17 +54,16 @@ export default function SEI() {
               <img
                 className={styles.illustration}
                 src={
-                  colorMode === "light"
+                  colorMode === 'light'
                     ? `${baseUrl}img/sei.svg`
                     : `${baseUrl}img/SEI_Landing_Page_dark_mode.svg`
                 }
-              />{" "}
+              />{' '}
             </div>
           </div>
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
     </div>
-    // </Layout>
   );
 }
