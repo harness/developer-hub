@@ -1246,6 +1246,16 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.sidebar-ir > div > a::before,.sidebar-ir > a::before{
+  content: " ";
+  display: inline-block;
+  height: 24px;
+   min-width: 24px;
+  margin-right:16px;
+  background-image: url('/img/icon-ir.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .sidebar-srm > div > a::before,
 .sidebar-srm > a::before {
   content: ' ';

@@ -76,6 +76,13 @@ export const moduleList: CardItem[] = [
     link: "docs/chaos-engineering",
   },
   {
+    title: "Incident Response",
+    module: MODULES.ir,
+    icon: "img/icon-ir.svg",
+    description: <>Revolutionize incident management by focusing on proactive issue prevention and accelerated resolution.</>,
+    link: "docs/incident-response",
+  },
+  {
     title: "Service Reliability Management",
     module: MODULES.srm,
     // icon: "img/icon_srm.svg",
