@@ -1,6 +1,6 @@
 ---
 title: Implementing "Features" in Gitspaces
-description: Get started with implementing Dev Container Features in your Gitspaces.  
+description: Learn more about configuring Dev Container Features for your Gitspace. 
 sidebar_position: 2
 sidebar_label: Dev Container Features
 ---
@@ -45,6 +45,13 @@ The key must refer to either:
 The value can be a **string** or **boolean** and must align with what is expected in the ``devcontainer-feature.json`` file. If the features property value is a single string, it is mapped to an **option** called ``version``.
 
 ### Referencing Features
+While referencing features, ensure that the feature originates only from the **following valid sources** and that the **feature ID** follows the specified format:
+| **Source**    | **Type** | **Example** |
+| -------- | ------- | ------- |
+| Reference to Feature in OCI Registry | ```<oci-registry>/<namespace>/<feature>[:<semantic-version>]``` | ghcr.io/user/repo/go ghcr.io/user/repo/go:1 ghcr.io/user/repo/go:latest | 
+| Direct HTTPS URI to a tarball | ```https://<uri-to-feature-tgz>``` |  https://github.com/user/repo/releases/devcontainer-feature-go.tgz | 
+
+For more details on referencing features, refer to this [guide](https://containers.dev/implementors/features/#referencing-a-feature) here. 
 
 ## Example Feature Reference
 Here's an example feature reference for your `devcontainer.json` file:
@@ -85,8 +92,6 @@ Here’s how you can add this property:
   "ghcr.io/user/repo/feature2"
 ]
 ```
-
-## Verifying the Setup
 
 ## Authoring your Own Features
 You can also create and author your own features by following the [detailed guide](https://containers.dev/implementors/features/).
