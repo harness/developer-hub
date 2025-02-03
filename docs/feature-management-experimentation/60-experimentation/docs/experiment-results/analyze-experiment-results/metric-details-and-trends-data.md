@@ -1,8 +1,9 @@
 ---
-title: Using the metric details and trends data
-sidebar_label: Using the metric details and trends data
+title: Metric details and trends data
+sidebar_label: Metric details and trends data
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 1
 ---
 
 <p>

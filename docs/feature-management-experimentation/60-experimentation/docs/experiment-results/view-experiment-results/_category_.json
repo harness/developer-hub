@@ -1,7 +1,7 @@
 {
-    "label": "Experiment results",
+    "label": "View experiment results",
     "collapsible": true,
     "collapsed": true,
     "className": "red",
-    "position": 6
+    "position": 1
 }

@@ -3,6 +3,7 @@ title: View triggered alerts
 sidebar_label: View triggered alerts
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 2
 ---
 
 <p>

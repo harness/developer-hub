@@ -3,7 +3,7 @@ title: Metrics details and trends
 sidebar_label: Metrics details and trends
 helpdocs_is_private: false
 helpdocs_is_published: true
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 <p>

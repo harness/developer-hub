@@ -7,16 +7,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Coming soon.
+Experiment on your feature variations, allowing you to back bold bets with data-driven decisions. Execute rapid iterations with [sequential testing](/docs/feature-management-experimentation/60-experimentation/docs/key-concepts-for-experimentation/sequential-vs-fixed-horizon.md#sequential-testing), or confidently detect even minimal significant impacts with [fixed horizon testing](/docs/feature-management-experimentation/60-experimentation/docs/key-concepts-for-experimentation/sequential-vs-fixed-horizon.md#fixed-horizon-testing).
 
 ![](./static/experiment.png)
 
-Here's a little text.
+Visualize your experimental results.
 
 <div style={{display: 'flex', width:'100%', boxSizing: 'border-box'}}>
 <div style={{paddingRight:'10px'}}>
 
-For example, you can view dimensional analysis for your feature's metrics results on the on the Metric details page.
+For example, [dimensional analysis](/docs/feature-management-experimentation/60-experimentation/docs/experiment-results/analyze-experiment-results/dimensional-analysis.md) can to capture important business insights for your team.
 
 </div>
 <div style={{maxWidth: '500px'}} align='right'>

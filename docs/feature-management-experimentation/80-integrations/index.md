@@ -17,7 +17,7 @@ import FmePreviewAdmonition from "@site/docs/feature-management-experimentation/
 
 Harness FME integrates across a number categories including messaging, monitoring, issue management, customer data platforms and analytics. The Split developer community has contributed a number of integrations, bringing data from your feature delivery platform into the tools your team uses to enhance collaboration, making all tools flag aware. If you're not seeing a tool you need to be connected to Harness FME, we encourage you to leverage HTTP API and SDK functionality to connect with the tools your team uses. If you need help leveraging an FME SDK or HTTP API, contact [support@split.io](mailto:support@split.io).
 
-# Harness FME supported
+## Harness FME supported integrations
 
 You can utilize Harness FME supported workflow integrations to send feature flag changes to the tools your team uses. FME supports the following integrations:
 

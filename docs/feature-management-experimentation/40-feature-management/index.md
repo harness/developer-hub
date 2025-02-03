@@ -7,12 +7,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Coming soon.
+[Define feature flags](docs/feature-management-experimentation/40-feature-management/docs/quickstart-create-a-feature-flag.md) in Harness, then evaluate feature flags in real time from your codebase.
 
 <div style={{display: 'flex', width:'100%', boxSizing: 'border-box'}}>
 <div style={{paddingRight:'10px'}}>
 
-We will describe feature flags. If we fill this with enough text, it should look okay. What if the amount of text is small?
+Feature flags speed up software delivery by deploying code in production without releasing it to customers. Then safely test, target, and turn on your features from Harness.
 
 </div>
 <div style={{maxWidth: '380px'}} align='right'>
@@ -22,6 +22,6 @@ We will describe feature flags. If we fill this with enough text, it should look
 </div>
 </div>
 
-A little text here would look good.
+Flexible targeting rules allow you to roll out beta features to a defined segment of users, canary-release to a sample percentage, or make adjustments to live code in the wild using [dynamic configurations](docs/feature-management-experimentation/40-feature-management/docs/feature-flags/treatments/dynamic-configurations.md).
 
 ![](./static/feature-flag.png)

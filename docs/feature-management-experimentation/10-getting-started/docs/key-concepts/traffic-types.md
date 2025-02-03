@@ -1,6 +1,6 @@
 ---
-title: Traffic Types
-sidebar_label: Traffic Types
+title: Traffic types
+sidebar_label: Traffic types
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: "Traffic types are a way of categorizing your user IDs"

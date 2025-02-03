@@ -3,11 +3,11 @@ title: Sample ratio check
 sidebar_label: Sample ratio check
 helpdocs_is_private: false
 helpdocs_is_published: true
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020636472-Sample-ratio-check <br /> ✘ images still hosted on help.split.io </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020636472-Sample-ratio-check, https://help.split.io/hc/en-us/articles/360019981952-Sample-ratio-mismatch-check <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 ## Overview
@@ -44,7 +44,7 @@ The table below shows the results of the check and a quick overview of each.
 | Not Applicable | Sample ratio calculation is not available as there are no users in your samples. |
 | Not Applicable | Sample ratio calculation is not available as the calculation has not yet run for this split. |
 
-## What to do if you see a Sample Ratio Mismatch warning
+## What to do if you see a sample ratio mismatch warning
 
 Unfortunately there are a variety of potential causes of sample ratio mismatches (SRMs) and the root cause can often be difficult to diagnose. The most common causes of SRMs are explained below, along with some suggested approaches to verify or rule out each cause. 
 
@@ -86,3 +86,33 @@ When performing a sample ratio check in the Split platform, the current treatmen
 ### What significance threshold does Split use for its sample ratio check?
 
 When conducting its sample ratio check, Split compares the calculated p-value against a threshold of 0.001. This threshold was determined based on the constant and rigorous monitoring performed on the accuracy of our randomization algorithms, and to minimize the impact a false positive would have on the trust of experimental results.
+
+### How can I troubleshoot a sample ratio mismatch in my feature flag?
+
+<p>
+  Split’s sample ratio check detects whether there is a sampling bias in your randomization.
+  The check ensures the the percentage of the treatments selected by the targeting
+  rules engine matches the requested percentage within a reasonable confidence
+  interval.
+</p>
+
+  The most common reasons for a sample ratio mismatch to occur:
+  * <strong>Customer Exclusion</strong>: Users may be being excluded from
+  your metric impact analysis due to flipping targeting rules twice or
+  more. If for some reason more users are excluded from one treatment than
+  another a sample ratio mismatch will result. You can learn more about
+  exclusion in Split in our
+  <a href="https://docs.split.io/docs/attribution-exclusion#section-user-exclusion">product documentation</a>.
+  * <strong>Dropped Impressions</strong>: If spotty network coverage or some
+  other communication issue makes it impossible for instances of the Split
+  SDK to transmit impressions to the Split cloud, you could see a sample ratio
+  mismatch occur if for some reason more impressions for one treatment are
+  dropped than those for another treatment. The frequency with which the SDK
+  flushes impressions can be tuned with an SDK initialization parameter.
+
+<p>
+  If you have concerns of any potential for a bias in your targeting that may result
+  in a sample ratio mismatch, you can conduct an
+  <a href="https://help.split.io/hc/en-us/articles/360031279312-Running-an-A-A-test" target="_self">A/A test</a>
+  before you start your experiment.
+</p>

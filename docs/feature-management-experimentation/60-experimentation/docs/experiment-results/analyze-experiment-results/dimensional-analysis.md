@@ -1,9 +1,9 @@
 ---
-title: Using dimensional analysis
-sidebar_label: Using dimensional analysis
+title: Dimensional analysis
+sidebar_label: Dimensional analysis
 helpdocs_is_private: false
 helpdocs_is_published: true
-sidebar_position: 5
+sidebar_position: 2
 ---
 
 <p>

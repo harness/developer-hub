@@ -3,6 +3,7 @@ title: Filter metric results
 sidebar_label: Filter metric results
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 3
 ---
 
 <p>
@@ -86,8 +87,10 @@ To start using custom dates on your analysis, do the following:
 1. Select your feature flag and then click the **Metrics impact** tab.
 2. In the **View impact for** menu list, select **Custom dates**.
 
+import changedates from "./static/filter-metrics-cards-custom-dates.png";
+
 <p>
-  <img src="https://lh4.googleusercontent.com/vvrH9nQpqlRUZqOjVQkC-EkhMcHvOHaUi1-NUpwJN6gT3JgYqOWRlZeimE4pN4cBUefAo6_yGNY9f3qDm-8ksUnpv5LaTrWH7mTBasPvbovbOz3OBMYN1WKcjvIAhTH08_XN0yvgNZrMvgwyljUFhgI" alt="_" />
+  <img src={changedates} alt="Custom dates dropdown" />
 </p>
   
 

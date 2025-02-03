@@ -3,6 +3,7 @@ title: Traffic insights
 sidebar_label: Traffic insights
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 1
 ---
 
 <p>

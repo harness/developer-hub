@@ -1,17 +1,18 @@
 ---
-title: Share results
-sidebar_label: Share results
+title: Share experiment results
+sidebar_label: Share experiment results
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 7
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}>> help.split.io link: https://help.split.io/hc/en-us/articles/360059696231-Share-results <br /> ✘ images still hosted on help.split.io </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}>> help.split.io link: https://help.split.io/hc/en-us/articles/360059696231-Share-results, https://help.split.io/hc/en-us/articles/9652327065485-Setting-up-and-using-metrics <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 ## Overview
 
-The share results functionality allows you to download a copy of your metrics impact results in various formats or share via URL. This enables you to:
+Sharing results allows you to download a copy of your metrics impact results in various formats or share via URL. You can:
 
 *   Share the outcome of your experiments with colleagues without them needing to visit Split
 *   Keep a record of experiment outcomes in your preferred documentation formats or applications
@@ -21,13 +22,15 @@ The share results functionality allows you to download a copy of your metrics im
 
 ## How to share results
 
-When viewing the Metrics impact tab, under Results, you can find the Share results dropdown on the right side of the page, above the metric cards.
+To generate the results, do the following:
 
-To generate the results, simply click on **Share results** to view the dropdown of format options. Click on your chosen format and your browser will begin downloading the file. A green pop up will appear on the page when the file has finished downloading. Clicking on **Copy URL** will copy a URL link to your current view in the Split app to your clipboard and will not download any file.
+1. On the Metrics impact tab, under Results, the Share results list is on the right side of the page, above the metric cards.
+2. Click **Share results**. This allows you to view the list of format options.
 
-<p>
-  <img alt="share_results_metrics_tab.png" src="https://help.split.io/hc/article_attachments/360092207032" />
-</p>
+  <img src="https://help.split.io/hc/article_attachments/30833238583053" alt="setting_up_and_using_metrics_share.png" /> 
+3. Click your chosen format. Your browser downloads the file. A message appears on the page when the file has finished downloading. 
+
+When you click Copy URL, this copies a URL link to your current view in the Split app to your clipboard but does not download a file.
 
 :::info[Note]
 * The results reflect the version, rule, and treatments selected in the filter box above, including any metric tag or metric owner filters applied.

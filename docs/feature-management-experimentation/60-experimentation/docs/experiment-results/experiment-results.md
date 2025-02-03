@@ -1,9 +1,9 @@
 ---
-title: View experiment results
-sidebar_label: View experiment results
+title: Experiment results
+sidebar_label: Experiment results
 helpdocs_is_private: false
 helpdocs_is_published: true
-sidebar_position: 1
+sidebar_position: 6
 ---
 
 <!-- used to be Metrics impact -->
