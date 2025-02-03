@@ -7,7 +7,7 @@ description: This topic describes how to optimize cloud costs using asset govern
 Recommendations help kickstart your journey with governance. Essentially, Harness runs certain policies behind the scenes to generate recommendations for your governance-enabled Azure subscriptions. These policies not only help to cut costs but also increase the efficiency of your system. On the Governance Overview page, Harness showcases recommendations that will benefit you to save costs on associated resources. You can click on any recommendation to view its details. 
 
 
-## Governance Recommendation Health
+## Governance Recommendation Insights
 
 Harness CCM now provides users the ability to monitor Governance Recommendations through the new Recommendations Insights tab in the Governance module. 
 
@@ -16,7 +16,7 @@ This enhancement offers clear visibility into the evaluation status of each rule
 This tab is designed to streamline troubleshooting and improve visibility into why recommendations may fail, be ignored, or succeed, enabling users to take immediate corrective actions when necessary.
 
 #### How It Works:
-- Status Tracking: Each Recommendation Rule's status is displayed in the Optimization tab.
+- Status Tracking: Each Recommendation Rule's status is displayed in the Recommendation Insights tab.
 - Cloud Connector (Subscription ID): The specific cloud account associated with the rule.
 - Region: The region for which the rule is evaluated.
 
@@ -45,11 +45,9 @@ The UI displays a detailed error message to assist in resolving the issue quickl
 
 ## Recommendations
 
-Listed below are the custodian policies which are used to generate recommendations that Harness offers for Azure. Along with each policy, you can also find their respective descriptions, the logic behind savings computation and the permissions required to generate or apply these recommendations.
-
 ### Granular Recommendations
 
-Cloud Asset Governance provides valuable recommendations, but when it comes to operationalizing them at scale, it might become challenging. With Granular Recommendations, Governance recommendations will now be generated at the individual resource level, ensuring greater granularity and actionable insights for both custom and out-of-the-box (OOTB) recommendations. This enhancement simplifies implementation and tracking, enabling customers to address governance issues more effectively at scale.
+Cloud Asset Governance provides valuable recommendations, but when it comes to operationalizing them at scale, it might become challenging. Additionally, when using shared cloud accounts across teams, subscription-level recommendations might not work out.With Granular Recommendations, Governance recommendations will now be generated at the individual resource level, ensuring greater granularity and actionable insights for both custom and out-of-the-box (OOTB) recommendations. This enhancement simplifies implementation and tracking, enabling customers to address governance issues more effectively at scale.
 
 #### Enabling Granular Recommendations
 
@@ -65,7 +63,11 @@ Cloud Asset Governance provides valuable recommendations, but when it comes to o
      mozallowfullscreen="mozallowfullscreen" 
      allowfullscreen="allowfullscreen"></iframe>
 
-Owing to this, now, while adding a recommendation to Ignore List, users have the option to specify the scope at which the users want to ignore the recommendation. The scope can be either Rule-level, Subscription-level or Resource-level.
+Owing to this, now, while adding a recommendation to Ignore List, users have the option to specify the scope at which the users want to ignore the recommendation. The scope can be either at:
+
+- Rule-level
+- Rule-level + Subscription/Region-level
+- Rule-level + Subscription/Region-level + Resource-level.
 
   <DocImage path={require('../static/azure_granular.png')} width="90%" height="90%" title="Click to view full size image" />
 
