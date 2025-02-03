@@ -1,7 +1,7 @@
 ---
 title: View pipeline execution results
 description: Your SBOM, SLSA Provenance, and policy enforcement results are stored in Harness.
-sidebar_position: 60
+sidebar_position: 61
 ---
 
 Upon the completion of your pipeline execution, the outcomes derived from the SCS steps are displayed in the "Software Supply Chain" tab within the pipeline execution window. This tab offers a comprehensive overview and serves as a centralized location to view the results from every stage of your pipeline at the artifact/repository level. In this tab, you can:
