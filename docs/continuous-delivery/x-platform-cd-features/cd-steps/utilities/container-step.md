@@ -478,5 +478,8 @@ In **Advanced**, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
+## FAQ's
 
+### How can I find the delegate task ID for a failed container step in a Harness pipeline execution?
 
+The delegate task ID for a failed container step can be found by examining the Harness logs for the specific execution.  The logs often contain the task ID within the execution details, particularly within sections related to the failed container step.  Harness Cloud Logging provides a user interface to search and filter logs based on execution ID and specific nodes within the pipeline execution graph.
