@@ -131,11 +131,11 @@ And that's it! We now have a Workflow dropdown where results are coming from an 
 
 ![](./static/dynamic-picker-example.png)
 
-### Use Form Data from a Previous page in a New Page
+### Use Form Data 
 
-While using Dynamic Workflow UI Pickers, users can now reference the data taken as an input previously, using `{{ parameters.properties }}`.
+When a user selects or provides input in a form field, the Form Context is updated with the relevant data. Other fields, which are typically read-only, can subscribe to this context and automatically update based on the latest information. While using Dynamic Workflow UI Pickers, users can now reference the form data taken as an input previously, using `{{ parameters.properties }}`.
 
-```YAML
+```YAML {23}
 parameters:
   - title: Select Harness Project
     type: object
@@ -200,7 +200,13 @@ properties:
     ui:options:
       title: Title
       description: Description
-
+      request:
+        method: POST
+        # Mention about the type of API call POST/GET
+        headers:
+          Content-Type: text/plain
+        #Indicates the format of the request body being sent. 
+        body: This is a simple plain text message
       # The Path on the Harness IDP backend API and the parameters to fetch the data for the dropdown
       path: "proxy/proxy-endpoint/api-path"
       params:
@@ -220,6 +226,36 @@ properties:
 ```
 
 You can find the detailed docs on the [project's README](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/scaffolder-field-extensions/scaffolder-frontend-module-http-request-field).
+
+#### POST Method for Dynamic API Pickers 
+
+The POST method can be used as part of the configuration for dynamic API pickers, allowing users to interact with external APIs by sending data in the body of the request.
+
+Here's how the POST method is used to fetch and populate the dynamic pickers within forms, with a focus on the GitHub Repos Multi picker (`customMulti`):
+
+```YAML
+customMulti:
+  title: GitHub Repos Multi
+  type: array
+  description: Pick one of GitHub Repos
+  ui:field: SelectFieldFromApi
+  ui:options:
+    label: Multi Select
+    path: proxy/github-api/users/{{parameters.gitusername}}/repos
+    valueSelector: full_name
+    request:
+      method: POST
+      headers:
+        Content-Type: text/plain
+      body: This is a simple plain text message
+```
+
+- In this example, the POST request is made to the GitHub API to retrieve the repositories for a specific GitHub user (`{{parameters.gitusername}}`).
+- Using POST is especially useful when sending more complex or sensitive data (e.g., API tokens, authentication headers, or data that needs to trigger server-side actions like filtering or updating records).
+
+- `Content-Type: text/plain`: This header indicates the format of the request body being sent. Here, `text/plain` is used, meaning the body is sent as plain text. For more structured data, like JSON, this could be changed to `application/json`.
+
+- The `body` field is where the data is sent to the API in the request. In this example, the `body`is a **simple plain text** message: `"This is a simple plain text message"`.
 
 ### Parsing API Response using filters
 
