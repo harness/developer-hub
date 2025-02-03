@@ -61,5 +61,5 @@ Harness goes beyond this with comprehensive developer automation. Here’s how:
 - **Version control**: Manage Workflows and Pipelines in Git for easy collaboration and rollback.
 - **Pipeline Studio**: An intuitive visual interface for creating and editing Pipelines within Harness IDP.
 
-For more details on what **Harness IDP** adds on top of Backstage software templates, please refer to the **[docs here](http://localhost:3000/docs/internal-developer-portal/harness-vs-backstage#workflows)**. 
+For more details on what **Harness IDP** adds on top of Backstage software templates, please refer to the **[docs here](/docs/internal-developer-portal/harness-vs-backstage.md)**. 
 

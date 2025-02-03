@@ -1,6 +1,6 @@
 ---
 title: Understanding Worfklow YAML
-description: Get started with creating your workflows using the `workflow.yaml` configuration. 
+description: Get started with creating your Workflows using the Workflow YAML configuration. 
 sidebar_position: 2
 sidebar_label: YAML
 ---

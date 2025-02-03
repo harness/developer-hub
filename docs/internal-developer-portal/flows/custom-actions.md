@@ -49,11 +49,9 @@ This allows other steps to reference the generated `filePath`.
 ## Supported Actions
 
 You can find a list of all registered Workflow actions under:
-
-`Workflows/Create/Self Service` -> `Installed Actions`
-
-![](./static/fetch-actions.png)
-
+1. Click on the **three dots** in the top right corner of the **Workflows** page. Select **Installed Actions**.
+![](./static/supported-actions-1.png)
+2. You'll be able to see all the supported actions here. 
 ![](./static/installed-actions.png)
 
 Let's dive deeper into each supported action.  

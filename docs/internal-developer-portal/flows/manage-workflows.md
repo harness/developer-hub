@@ -1,6 +1,6 @@
 ---
 title: Managing Workflows in Harness IDP
-description: Learn more about managing workflows directly in Harness IDP. 
+description: Learn more about managing Workflows directly in Harness IDP. 
 sidebar_position: 3
 sidebar_label: Manage Workflows
 ---
