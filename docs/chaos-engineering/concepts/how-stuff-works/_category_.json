@@ -1,0 +1,13 @@
+{
+  "position": 8,
+  "label": "How Stuff Works",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+    "type":"generated-index",
+    "title":"How Stuff Works",
+ },
+  "customProps": {
+    "description": "Understand how Harness Network proxy works, generic flow of control during a chaos experiment, how network faults, stress faults, and API faults work."
+  }
+}
