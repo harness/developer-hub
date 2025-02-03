@@ -1169,15 +1169,6 @@ const sidebars: SidebarsConfig = {
           dirName: "incident-response",
         },
       ],
-    }, // Release Notes
-    {
-      type: "link",
-      label: "Release Notes",
-      className: "sidebar-Release_Notes",
-      href: "/release-notes/incident-response",
-      customProps: {
-        description: "Learn about recent changes to Harness products.",
-      },
     },
      // Roadmap
      {

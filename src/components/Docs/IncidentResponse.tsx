@@ -19,20 +19,6 @@ export default function CE() {
             <h1>Incident Response (COMING SOON) </h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/docs/incident-response/faqs">
-              <button className={styles.btn}>
-                {/* <i className="fa-regular fa-file"></i> */}
-                <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                FAQs
-              </button>
-            </Link>
-            <Link href="/release-notes/incident-response">
-              <button className={styles.btn}>
-                {/* <i className="fa-regular fa-file"></i> */}
-                <img src={`${baseUrl}img/icon_release_notes.svg`} />
-                Release Notes
-              </button>
-            </Link>
           </div>
         </div>
         <div className={styles.spaceBetween}>

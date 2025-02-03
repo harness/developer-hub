@@ -34,20 +34,6 @@ export default function FF() {
                 Documentation
               </button>
             </Link>
-
-            <Link href="/release-notes/incident-response">
-              <button
-                className={clsx(
-                  "button button--lg",
-                  styles.btn,
-                  styles.btnLight
-                )}
-              >
-                {/* <i className="fa-regular fa-file"></i> */}
-                <img src={`${baseUrl}img/icon_release_notes.svg`} />
-                Release Notes
-              </button>
-            </Link>
           </div>
         </div>
         <div className={styles.spaceBetween}>
