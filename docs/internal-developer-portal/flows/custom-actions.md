@@ -1,70 +1,104 @@
 ---
-title: Supported Workflows Actions
-description: These Workflows Actions are supported in Harness IDP
-sidebar_position: 4
+title: Configuring Workflow Actions
+description: Learn how to configure actions for your Workflow's backend. 
+sidebar_position: 5
+sidebar_label: Actions
 ---
+The backend of **Harness IDP workflows** consists of a library of steps and actions that define the workflow logic. 
 
-## Introduction
+**Workflow Actions** in IDP are integration points with third-party tools that take inputs from workflows and execute specific tasks based on user input. Workflows include built-in actions for fetching content, registering services in the catalog, and creating/publishing Git repositories.
 
-**Workflow Actions** in IDP are integration points with third-party tools, used to take inputs from workflows frontend and execute specific tasks based on users input. The Workflows come with several built-in actions for fetching content, registering in the catalog and of course actions for creating and publishing a git repository.
+## Defining Workflow Actions
+You can configure the backend using the `spec.steps` field in your YAML configuration. These steps serve as core execution units, triggering actions and orchestrating pipelines. Input details from the frontend are passed to the backend, enabling task execution.
 
-There are several repository providers supported out of the box such as **GitHub**, **Azure**, **GitLab** and **Bitbucket**.
+### YAML Syntax
+```YAML
+steps:
+  - id: step_id
+    name: Step Name
+    action: action_name
+    input:
+      key: value
+    output:
+      key: value
+```
+#### YAML Breakdown
+- `id` – A unique identifier for the step, used to reference it in later steps.
+- `name` – A human-readable label for the step.
+- `action` – Specifies the workflow action to execute (e.g., trigger:harness-custom-pipeline, publish:github).
+- `input` – Defines the parameters required by the action. These vary depending on the action used.
 
+Example (for `trigger:harness-custom-pipeline`):
+```YAML
+input:
+  url: "https://app.harness.io/ng/account/..."
+  inputset:
+    project_name: ${{ parameters.project_name }}
+    github_repo: ${{ parameters.github_repo }}
+```
+Here, `url` specifies the Harness pipeline, and `inputset` are the parameters provided by the user, to be used as an input for the pipeline mentioned in the URL. 
+- `output` – Stores results from the action, which can be used in later steps.
 
-## How To View Supported Actions
+Example (for storing a generated file path):
+```YAML
+output:
+  filePath: '{{ steps.generate.outputs.file }}'
+```
+This allows other steps to reference the generated `filePath`.
 
-A list of all registered Workflow actions can be found under 
+## Supported Actions
+
+You can find a list of all registered Workflow actions under:
 
 `Workflows/Create/Self Service` -> `Installed Actions`
-
-![](./static/create_neww.png)
 
 ![](./static/fetch-actions.png)
 
 ![](./static/installed-actions.png)
 
-
-## Harness Specific Workflow Actions
+Let's dive deeper into each supported action.  
 
 ### 1. `trigger:harness-custom-pipeline`
 
-:::info
+This action triggers a Harness pipeline using a provided URL and user-defined input variables. It supports various pipeline configurations, including:
 
-This action currently supports [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage) along with the [Deploy Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage#add-a-stage), [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)(**Available with Harness CD License or Free Tier usage**), Pipelines using [Pipeline Templates](https://developer.harness.io/docs/platform/templates/create-pipeline-template/) and [codebase disabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) **Build Stage(Only Available with Harness CI License)** with [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
+- [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)
 
-:::
+- [Deploy Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage#add-a-stage)
 
-This Worfklow action requires **variables of type pipeline, stage or step** as input along with the **pipeline url**, and then trigger the pipeline based in the `inputset` obtained from the user. 
+- [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) (Harness CD License or Free Tier required)
+
+- [Pipeline Templates](https://developer.harness.io/docs/platform/templates/create-pipeline-template/)
+
+- [codebase disabled](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) Build Stage (Harness CI License required)
+
+```YAML
+##Example
+...
+steps:
+  - id: trigger
+    name: Creating your React app
+    action: trigger:harness-custom-pipeline
+    input:
+      url: "https://app.harness.io/ng/account/..."
+      inputset:
+        project_name: ${{ parameters.project_name }}
+        github_repo: ${{ parameters.github_repo }}
+      apikey: ${{ parameters.token }}
+      hidePipelineURLLog: true
+    output:
+      text:
+        - title: Pipeline Execution
+          content: "Execution URL: `${{ steps.trigger.output.url }}`"
+```
+
+#### Inputs
+
+1. `url`: Pipeline execution URL
 
 > Note: For pipelines using [Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview) make sure your URL includes `branch` and `repoName` e.g., `https://app.harness.io/ng/account/accountID/module/idp/orgs/orgID/projects/projectID/pipelines/pipelineID?repoName=repo-name&branch=branch`
 
-```YAML
-...
-## Example
-steps:
-  - id: trigger
-      name: Creating your react app
-      action: trigger:harness-custom-pipeline
-      input:
-      url: "https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/default/projects/communityeng/pipelines/IDP_New_NextJS_app/pipeline-studio/?storeType=INLINE"
-      inputset:
-          project_name: ${{ parameters.project_name }}
-          github_repo: ${{ parameters.github_repo }}
-          pipeline.variables.cloud_provider: ${{ parameters.provider }}
-          db: ${{ parameters.db }}
-          cache: ${{ parameters.cache }}
-      apikey: ${{ parameters.token }}
-      showOutputVariables: true
-output:
-  text:
-    - title: Output Variable
-      content: |
-        Output Variable **test2** is `${{ steps.trigger.output.test2 }}` 
-    - title: Another Output Variable
-      content: |
-        Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`      
-...
-```
+2. `inputset`: Key-value pairs of pipeline variables
 
 In the YAML example above, under `inputset`, values such as `project_name` and `github_repo` are placeholders for pipeline variable names. You can use the reference format `<+pipeline.variables.VARIABLE_NAME>` directly within the `inputset` **key-value pairs**. For example, instead of simply specifying the variable name, you can reference the pipeline variable like this:
 
@@ -106,10 +140,9 @@ To obtain these references, simply copy the variable path from the Harness Pipel
 | Variable name (`variable_name`)                                      | Supported with Pipelines Variables for IDP stage, custom stage and Codebase Disabled build stage along Pipelines **not** containing any templates.  |
 | Variable name with Fully Qualified Path (`pipeline.variables.variable_name`) | Supported with Pipelines Variables for all supported stages and Pipelines containing any templates.      |
 
+3. `apikey`: Harness authentication token 
 
-:::info 
-
-In the above example the `apikey` parameter takes input from Harness Token which is specified under spec as a mandatory parameter as mentioned below
+In the example above the `apikey` parameter takes input from Harness Token which is specified under spec as a mandatory parameter as mentioned below
 
 ```YAML
 ...
@@ -123,7 +156,6 @@ token:
 ```
 Without the above parameter input the pipeline won't be executed. [Take a look at this example](https://github.com/harness-community/idp-samples/blob/eb9988020d3917c0bca7daccb354ba670626221b/tutorial-self-service-flow-template.yaml#L64-L68) 
 
-:::
 
 The `token` property we use to fetch **Harness Auth Token** is hidden on the **Review Step** using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in-case you have multiple pages.
 
@@ -154,7 +186,11 @@ parameters:
 ...
 ```
 
-#### Output
+4. `hidePipelineURLLog`: Boolean to hide logs (optional)
+
+4. `showOutputVariables`: Boolean to display pipeline output variables (optional)
+
+#### Outputs
 
 1. `Title` : Name of the Pipeline. 
 2.  `url` : Execution URL of the Pipeline e.g.: `https://app.harness.io/ng/account/********************/module/idp-admin/orgs/default/projects/communityeng/pipelines/uniteddemo/executions/**********/pipeline?storeType=INLINE`
@@ -183,6 +219,14 @@ steps:
 
 ```YAML
 ...
+## Example
+steps:
+  - id: trigger
+      ...
+      inputset:
+          project_name: ${{ parameters.project_name }}
+      apikey: ${{ parameters.token }}
+      showOutputVariables: true
 output:
   text:
     - title: Output Variable
@@ -190,7 +234,7 @@ output:
         Output Variable **test2** is `${{ steps.trigger.output.test2 }}` 
     - title: Another Output Variable
       content: |
-        Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}` 
+        Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`      
 ...
 ```
 
@@ -210,7 +254,38 @@ There are two ways in which you can add the output variable to the template synt
 
 ![](./static/output-variables.png)
 
+#### Example
+
+```YAML
+...
+## Example
+steps:
+  - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+      url: "https://app.harness.io/ng/account/..."
+      inputset:
+          project_name: ${{ parameters.project_name }}
+          github_repo: ${{ parameters.github_repo }}
+          pipeline.variables.cloud_provider: ${{ parameters.provider }}
+          db: ${{ parameters.db }}
+          cache: ${{ parameters.cache }}
+      apikey: ${{ parameters.token }}
+      showOutputVariables: true
+output:
+  text:
+    - title: Output Variable
+      content: |
+        Output Variable **test2** is `${{ steps.trigger.output.test2 }}` 
+    - title: Another Output Variable
+      content: |
+        Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`      
+...
+```
+
 ### 2. `trigger:trigger-pipeline-with-webhook`
+
 
 This Workflow action could be used to trigger a pipeline execution based on the **input-set identifier** and a webhook name. Usually a single deployment pipeline has different input-set as per the environment it's going to be deployed and developers can just specify the input-set ID aligning with the environment name to trigger the deployment pipeline. 
 
@@ -224,55 +299,165 @@ Here's an example workflow based on this [source](https://github.com/harness-com
 
 ![](static/input-form-ca.png)
 
+#### Inputs
+
+- `url`: The Harness pipeline URL
+- `inputSetName`: The identifier for the input set
+- `triggerName`: The name of the webhook trigger
+- `apikey`: Harness API authentication token
+
+#### Outputs
+
+- `API URL`: Webhook URL used for execution
+- `Pipeline Details`: Redirects to the Harness Pipeline Editor
+- `Execution URL`: Recent executions of the pipeline
+
+#### Example
+
 ```YAML
-## Example
-...
 steps:
   - id: trigger
-    name: Creating your react app
+    name: Triggering pipeline via webhook
     action: trigger:trigger-pipeline-with-webhook
     input:
-      url: "YOUR PIPELINE URL"
+      url: "YOUR_PIPELINE_URL"
       inputSetName: ${{ parameters.inputSetName }}
       triggerName: ${{ parameters.triggerName }}
       apikey: ${{ parameters.token }}
-...
-
 ```
+### 3. `github:actions:dispatch`
+This action dispatches a **GitHub Action** workflow for a given branch or tag for your Harness self service Workflow. 
 
-:::info 
+#### Inputs
+Here's a list of **inputs** required to use the action: 
 
-In the above example the `apikey` parameter takes input from Harness Token which is specified under spec as a mandatory parameter as mentioned below
+| Name | Title | Description | Type |
+|---------|----------------|------------------|----------------------|
+| **repoUrl** *(Mandatory)*	| Repository Location	| Accepts the format 'github.com?repo=reponame&owner=owner' where 'reponame' is the new repository name and 'owner' is an organization or username	|  ```string```
+**workflowId** *(Mandatory)* | Workflow ID	| GitHub Action Workflow filename	| ```string```
+**branchOrTagName** *(Mandatory)* | 	Branch or Tag name |	Git branch or tag name used to dispatch the workflow	| ```string```
+**workflowInputs** | Workflow Inputs	| Inputs keys and values to send to GitHub Action configured on the workflow file. The maximum number of properties is 10.	| ```string```
+**token**	| Authentication Token	| GITHUB_TOKEN to use for authorization to GitHub	| ```string```
 
+#### Example YAML:
 ```YAML
-...
-token:
-    title: Harness Token
-    type: string
-    ui:widget: password
-    ui:field: HarnessAuthToken
-    ...
-
+steps:
+  - action: github:actions:dispatch
+    name: Dispatch Github Action Workflow with inputs
+    input:
+      repoUrl: github.com?repo=repo&owner=owner
+      workflowId: WORKFLOW_ID
+      branchOrTagName: main
+      workflowInputs:
+        input1: value1
+        input2: value2
+      token: ${{ secrets.MY_CUSTOM_TOKEN }}
 ```
-Without the above parameter input the pipeline won't be executed. [Take a look at this example](https://github.com/harness-community/idp-samples/blob/eb9988020d3917c0bca7daccb354ba670626221b/tutorial-self-service-flow-template.yaml#L64-L68) 
+### 4. `harness:create-secret`
 
-:::
+This action is used to create a secret in Harness.
 
-#### Output
+#### Inputs
+Here's a list of **inputs** required to use the action: 
+| Name | Title | Description | Type |
+|---------|----------------|------------------|----------------------|
+| **projectId** *(Mandatory)*	| Project Identifier	| Project Identifier where secret will be created	| `string`|
+| **orgId** *(Mandatory)*	| Organization Identifier	| Organization Identifier where secret will be created	| `string`|
+| **secretValue** *(Mandatory)*	| Secret Value	| Secret Value | `string` |
+| **apikey**	| Harness x-api-key	| Harness Token to Authenticate Secret Creation	| `string` |
 
-1. `API URL:` : The webhook URL used to execute the pipeline. 
-2. `Pipeline Details` : Redirects you to the pipeline in Harness Pipeline Editor. 
-3. `UI URL`: Lists all the recent executions of the pipeline. 
 
-Once you create the workflow with this Workflow action, you can see the pipeline URL running in the background and executing the flow. 
+### 5. `harness:delete-secret`
 
-![](static/output-ca.png)
+Deletes a secret from Harness.
 
+### 6. `debug:log`
+This action is used to write a message into the log or list all the files in your workspace. 
 
-### 3. `harness:create-secret`
+#### Inputs
+Here's a list of **inputs** required to use the action: 
+| Name | Title | Type |
+|---------|----------------|---------------|
+| **message** | Message to output | ```string``` |
+| **listWorkspace** | List all files in the workspace, if true	| ```boolean``` |
+| **extra** | Extra info | ```unknown``` |
 
-### 4. `harness:delete-secret`
+#### Example YAML
 
+**Write a debug message**:
+```YAML
+steps:
+  - action: debug:log
+    id: write-debug-line
+    name: Write "Hello Backstage!" log line
+    input:
+      message: Hello Backstage!
+```
+**List the workspace directory**:
+```YAML
+steps:
+  - action: debug:log
+    id: write-workspace-directory
+    name: List the workspace directory
+    input:
+      listWorkspace: true
+```
+
+### 7. `debug:wait`
+This action is used to add a waiting period for certain time. 
+
+#### Inputs
+Here's a list of **inputs** required to use this action:
+| Name | Title | Type |
+|---------|----------------|---------------|
+| **minutes** | Waiting period in minutes	 | ```number``` |
+| **seconds** | Waiting period in seconds	| ```number``` |
+| **milliseconds** | Waiting period in milliseconds | ```number``` |
+
+#### Example YAML
+```YAML
+steps:
+  - action: debug:wait
+    id: wait-1min
+    name: Waiting for 1 minutes
+    input:
+      minutes: 1
+```
+
+## Use Cases
+
+### 1. Hiding Logs
+
+To prevent displaying pipeline URLs in workflow execution logs, use `hidePipelineURLLog: true`.
+
+```yaml
+steps:
+  - id: trigger
+    name: Create React App
+    action: trigger:harness-custom-pipeline
+    input:
+      url: "Pipeline URL"
+      hidePipelineURLLog: true
+      inputset:
+        project_name: ${{ parameters.project_name }}
+      apikey: ${{ parameters.token }}
+```
+
+### 2. Using Parameters as Conditions
+
+You can conditionally execute steps based on parameters.
+
+```yaml
+steps:
+  - id: deploy
+    name: Deploy App
+    action: trigger:harness-custom-pipeline
+    input:
+      url: "YOUR_PIPELINE_URL"
+      inputset:
+        project_name: ${{ parameters.project_name }}
+    if: "${{ parameters.environment == 'production' }}"
+```
 
 
 ### Workflow Actions Usage Limitations
