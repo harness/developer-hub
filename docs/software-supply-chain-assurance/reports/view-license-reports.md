@@ -7,13 +7,13 @@ sidebar_position: 2
 
 Software licenses generally fall into different categories or families, each with its own set of rules and obligations. Harness groups the licenses into four different categories which are called License Families.
 
-* **Permissive Licenses:** Use, modify, and share software with minimal restrictions. You can keep changes private.
-  **Examples:** MIT,OpenSSL,Expat, etc.
+* **Permissive Licenses:** Use, modify, and share software with minimal restrictions. You can keep changes private.        
+  Examples: MIT,OpenSSL,Expat, etc.
 * **Reciprocal Licenses:** Use, modify, and share, but changes must be open-sourced under the same license.            
-  **Examples:** GPL (General Public License), AGPL (Affero General Public License), etc.
+  Examples: GPL (General Public License), AGPL (Affero General Public License), etc.
 
 * **Weak Reciprocal Licenses:** Use, modify, but share modifications to open-source code only; proprietary code can remain private.    
-  **Examples:** LGPL (Lesser General Public License),GFDL (GNU Free Documentation License), etc.
+  Examples: LGPL (Lesser General Public License),GFDL (GNU Free Documentation License), etc.
 
 * **Unknown Licenses:** No clear license or ambiguous terms. Default copyright laws apply.
 
@@ -53,7 +53,7 @@ Follow the steps below to view the License-Report for the artifacts. You can use
 
 <DocImage path={require('./static/license-filter.png')} width="80%" height="100%" title="Click to view full size image" />
 
-:::note
+:::tip
 
 Whenever you apply a new filter, make sure to click on **Refresh** icon at the top-right corner to pull the latest data onto the dashboard.
 
@@ -62,7 +62,7 @@ Whenever you apply a new filter, make sure to click on **Refresh** icon at the t
 5) Click on ellipsis which is on the top right corner of your  dashboard for more actions
 
 * **Clear Cache & Refresh:** Performs a hard refresh, clears the cache, and updates the dashboard with the latest changes.
-* **Download:** Download the license report in any of the format ( PDF,CSV )to easily share with stakeholders and executives.
-* **Schedule Delivery:** Set up automatic delivery of your license report—daily, weekly, or monthly—so you never have to manually check the dashboard again.
+* **Download:** Download the license report in any of the format ( PDF,CSV ).
+* **Schedule Delivery:** Set up automatic delivery of your license report (daily, weekly, or monthly) so you don’t have to check the dashboard manually.
 
 <DocImage path={require('./static/apply-filters-dashboard.png')} width="80%" height="100%" title="Click to view full size image" />
