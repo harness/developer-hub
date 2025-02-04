@@ -7,7 +7,7 @@ sidebar_position: 20
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360021120871-Single-sign-on-overview <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360021120871-Single-sign-on-overview <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 Split implements single sign-on (SSO) using the SAML 2.0 protocol. Security assertion markup language (SAML) is an XML-based data format that makes it easier for your users to log in to their Split account using your organization's identity provider (IdP). With SAML, users can sign in to multiple software applications using the same login details. 

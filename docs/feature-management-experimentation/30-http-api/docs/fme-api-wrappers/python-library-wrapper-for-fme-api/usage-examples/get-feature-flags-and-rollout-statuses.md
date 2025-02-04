@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360030467692-Python-Admin-API-sample-Getting-list-of-feature-flags-in-environment-with-their-rollout-status </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360030467692-Python-Admin-API-sample-Getting-list-of-feature-flags-in-environment-with-their-rollout-status </button>
 </p>
 
 Basic code to use Python to retrieve list of feature flags names and their status for given workspace and environment names.

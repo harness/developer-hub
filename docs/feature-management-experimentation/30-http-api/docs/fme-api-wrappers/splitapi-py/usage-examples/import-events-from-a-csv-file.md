@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360032634992-Python-App-importing-events-from-CSV-file-to-feature-flag-example </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360032634992-Python-App-importing-events-from-CSV-file-to-feature-flag-example </button>
 </p>
 
 Basic code to use Python to Import Events from CSV file to Split organization using Split Admin API.

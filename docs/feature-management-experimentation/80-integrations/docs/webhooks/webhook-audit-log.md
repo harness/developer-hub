@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020957991-Webhook-audit-log </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020957991-Webhook-audit-log </button>
 </p>
 
 Use this outgoing webhook to integrate Split changes into the tools that your team already uses. You can use Split webhooks to enhance your monitoring, tracking, and analytics tools by updating external issue trackers and support tickets or overlaying performance charts.

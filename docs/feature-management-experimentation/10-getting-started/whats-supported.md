@@ -50,11 +50,11 @@ import TabItem from '@theme/TabItem';
 
   Client-side SDKs evaluate feature flags on your web or mobile client. See below for the full list of supported features.
 
-    <div style={{overflowX: 'scroll', marginLeft: '0'}}>
-      <table style={{border: '1px solid rgb(96, 103, 112)', marginTop: '20px', borderCollapse: 'collapse'}}>
-        <thead style={{ display:'block' }}>
+    <div style={{ overflowX: 'scroll', marginLeft: '0'}}>
+      <table style={{border: '1px solid rgb(96, 103, 112)'}}>
+        <thead>
           <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0', top:'0', minWidth:'15em'}}>Features</th>
+            <th class='solidBgColor' style={{position: 'sticky', left:'0', minWidth:'15em'}}>Features</th>
             <th>[Android SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-suite)</th>
             <th>      [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk)</th>
             <th>[Android RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-rum-agent/)</th>
@@ -72,7 +72,7 @@ import TabItem from '@theme/TabItem';
             <th>        [Redux SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/redux/redux-sdk)</th>
           </tr>
         </thead>
-        <tbody style={{ maxHeight: '60em', overflowY: 'scroll', display: 'block' }}>
+        <tbody>
           <tr>
             <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Language(s)</th>
             <td>[Java](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/java/android-suite)/[Kotlin](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/kotlin/android-suite)</td>

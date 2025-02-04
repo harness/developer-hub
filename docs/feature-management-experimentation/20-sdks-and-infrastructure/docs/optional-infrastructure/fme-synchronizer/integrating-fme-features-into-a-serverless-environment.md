@@ -7,7 +7,7 @@ sidebar_position: 7
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360038143771-SDK-versioning-policy, www.split.io link:  https://www.split.io/blog/serverless-applications-powered-split-feature-flags/  <br /> ✘ images hosted on www.split.io <br /> ✘ links to www.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360038143771-SDK-versioning-policy, www.split.io link:  https://www.split.io/blog/serverless-applications-powered-split-feature-flags/  <br /> ✘ images hosted on www.split.io <br /> ✘ links to www.split.io </button>
 </p>
 
 In serverless environments, data persistence is best handled by externalizing state. This avoids the performance hit of "cold starts" where processes have to load and cache data before they can perform. This is the case with feature flagging SDKs as well.

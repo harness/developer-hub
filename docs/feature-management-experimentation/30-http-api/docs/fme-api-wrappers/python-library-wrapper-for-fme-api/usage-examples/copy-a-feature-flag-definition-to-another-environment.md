@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360051602451-Python-Admin-API-sample-Copy-and-overwrite-feature-flag-definitions-between-environments </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360051602451-Python-Admin-API-sample-Copy-and-overwrite-feature-flag-definitions-between-environments </button>
 </p>
 
 Basic code to use Python to copy feature flag fefinition (Individual targets, targeting rules, and treatments) for a given feature flag in workspace from one environment to another, and overwrite existing definitions in the target environment.

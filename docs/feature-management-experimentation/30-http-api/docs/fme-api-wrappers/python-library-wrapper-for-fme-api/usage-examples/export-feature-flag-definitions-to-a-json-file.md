@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360031029132-Python-Admin-API-sample-Export-all-feature-flags-definitions-JSON-structure-to-files </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360031029132-Python-Admin-API-sample-Export-all-feature-flags-definitions-JSON-structure-to-files </button>
 </p>
 
 Basic code to use Python and Split REST API to export all feature flags definitions JSON structure in all environments and workspaces to files.

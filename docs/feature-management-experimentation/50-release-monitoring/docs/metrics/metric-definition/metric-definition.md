@@ -9,7 +9,7 @@ sidebar_position: 1
 import MetricsInfo from "@site/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/metrics.md";
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/22005565241101-Metrics <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/22005565241101-Metrics <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 <MetricsInfo />

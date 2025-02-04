@@ -7,7 +7,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020582092-Owners <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020582092-Owners <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 In addition to [tags](https://help.split.io/hc/en-us/articles/360020839151-Tags), use owners to organize and manage feature flag, segments, and metrics across the Split user inteface. Use owners to isolate feature flags, segments, and metrics in the browse panes to those owned by me and simplify permissions by providing owners with edit rights for a single flag across all environments by toggling permissions On. When toggled on, permissions inherit owners as editors.

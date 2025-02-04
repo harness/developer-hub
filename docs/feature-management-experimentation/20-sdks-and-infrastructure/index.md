@@ -8,7 +8,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360033557092-SDK-overview </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360033557092-SDK-overview </button>
 </p>
 
 Data flows from Harness to your running application by using FME SDK clients. Feature flags you define in Harness are consumed in your app. Flag evaluation information and metrics events are sent back to Harness to power feature flag monitoring and experimentation.

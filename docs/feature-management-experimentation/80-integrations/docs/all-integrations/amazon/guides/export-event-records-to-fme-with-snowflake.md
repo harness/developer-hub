@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360057485811-How-to-export-event-records-from-Snowflake-to-Split </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360057485811-How-to-export-event-records-from-Snowflake-to-Split </button>
 </p>
 
 Using the S3 Events Integration with Split, it is possible to import events data to Split platform using parquet formatted files. Snowflake provides an easy way to export records to parquet files which can be used in the S3 integration. 

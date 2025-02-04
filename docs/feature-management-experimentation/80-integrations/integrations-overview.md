@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: ?? <br /> ✘ images still hosted on help.split.io <br /> where is this article on help.split.io? </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: ?? <br /> ✘ images still hosted on help.split.io <br /> where is this article on help.split.io? </button>
 </p>
 
 Split supports integrations with a number of third parties. This category of articles documents how to setup each integration.

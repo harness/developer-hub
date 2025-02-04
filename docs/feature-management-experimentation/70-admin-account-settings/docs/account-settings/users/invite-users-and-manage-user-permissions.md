@@ -7,7 +7,7 @@ sidebar_position: 2
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/16432983870605-Invite-users-and-manage-user-permissions <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/16432983870605-Invite-users-and-manage-user-permissions <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 Split supports three roles to give users different permission levels in the Split UI:

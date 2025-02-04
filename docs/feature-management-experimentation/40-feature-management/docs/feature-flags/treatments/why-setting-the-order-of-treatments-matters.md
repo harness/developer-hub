@@ -7,7 +7,7 @@ sidebar_position: 16
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360030117011-Why-setting-the-order-of-treatments-matters </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360030117011-Why-setting-the-order-of-treatments-matters </button>
 </p>
 
 With Split, rules are evaluated from the top down. 

@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360058868152-Python-Admin-API-sample-Fetch-list-of-all-feature-flag-users </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360058868152-Python-Admin-API-sample-Fetch-list-of-all-feature-flag-users </button>
 </p>
 
 Basic Code to use Python to fetch list of all users invited to the Split account.

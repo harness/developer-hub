@@ -7,7 +7,7 @@ description: ""
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360050159491-Posting-a-change-request-using-the-Admin-API-fails-when-the-approver-is-specified </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360050159491-Posting-a-change-request-using-the-Admin-API-fails-when-the-approver-is-specified </button>
 </p>
 
 ### Issue
@@ -20,7 +20,7 @@ When [submitting a change request](https://docs.split.io/reference#create-change
 
 ### Root cause
 
-This error is possible if the approver option is set in the environment that has the feature flag. When approvers are pre-selected, it is not allowed to specify an approver when submitting the change request, similarly to when submitting the change from the FME user interface; the approver edit box will be greyed out.
+This error is possible if the approver option is set in the environment that has the feature flag. When approvers are pre-selected, it is not allowed to specify an approver when submitting the change request, similarly to when submitting the change from the Split user interface; the approver edit box will be greyed out.
 
 ### Answer
 

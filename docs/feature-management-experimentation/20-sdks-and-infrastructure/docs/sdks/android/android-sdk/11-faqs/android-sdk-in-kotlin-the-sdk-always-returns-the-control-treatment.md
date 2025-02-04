@@ -9,7 +9,7 @@ description: ""
 <!-- applies to Android SDK -->
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360042150571-Android-SDK-Using-Kotlin-SDK-always-returns-control-treatment </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360042150571-Android-SDK-Using-Kotlin-SDK-always-returns-control-treatment </button>
 </p>
 
 ## Issue

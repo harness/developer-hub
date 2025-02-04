@@ -7,7 +7,7 @@ sidebar_position: 8
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360038143771-SDK-versioning-policy, www.split.io link:  https://www.split.io/blog/serverless-applications-powered-split-feature-flags/  <br /> ✘ images hosted on www.split.io <br /> ✘ links to www.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360038143771-SDK-versioning-policy, www.split.io link:  https://www.split.io/blog/serverless-applications-powered-split-feature-flags/  <br /> ✘ images hosted on www.split.io <br /> ✘ links to www.split.io </button>
 </p>
 
 Split lets companies fulfill the promise of continuous delivery: with Split’s safe launch and experimentation, teams can take any feature into production with fine-grain control. In order to precisely release features (and gather data on their engagement), Split’s SDKs utilize different streams of data. And many of our customers run Split with SDKs installed in multiple languages and throughout their application stack. By default, Split’s SDKs keep [Split segment](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) and [Split targeting](https://help.split.io/hc/en-us/articles/360020791591-Target-customers) data synchronized as your users navigate across large distributed systems, treatments and conditions. Some languages, however, do not have a native capability to keep a shared local cache of this data to properly serve treatments.

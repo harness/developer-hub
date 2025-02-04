@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360051384832-Webhook-admin-audit-logs </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360051384832-Webhook-admin-audit-logs </button>
 </p>
 
 Use this outgoing webhook to integrate admin changes into the tools that your team already uses. You can use admin webhooks to make sure you have all the changes that have been made to your team's base config logged within your systems for audit purposes.

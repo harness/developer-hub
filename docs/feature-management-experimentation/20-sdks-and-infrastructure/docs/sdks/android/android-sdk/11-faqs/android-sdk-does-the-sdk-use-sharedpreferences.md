@@ -9,7 +9,7 @@ description: ""
 <!-- applies to Android SDK -->
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025324672-Android-SDK-Does-the-SDK-utilize-the-SharedPreferences-on-the-device-to-store-the-Split-cache </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025324672-Android-SDK-Does-the-SDK-utilize-the-SharedPreferences-on-the-device-to-store-the-Split-cache </button>
 </p>
 
 ## Question

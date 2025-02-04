@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360033831431-Segment-Building-Segment-audiences-and-traits-utilizing-Split-impression-data <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360033831431-Segment-Building-Segment-audiences-and-traits-utilizing-Split-impression-data <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 <h2 id="h_01JFM11F1JCAWWB8V2GH1D9G16">

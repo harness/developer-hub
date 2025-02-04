@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360016253331-How-can-I-override-individually-targeted-users-with-a-superseding-targeting-rule <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360016253331-How-can-I-override-individually-targeted-users-with-a-superseding-targeting-rule <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 ## Question

@@ -7,7 +7,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020825212-Two-factor-authentication-2FA <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020825212-Two-factor-authentication-2FA <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 For increased login security, you can add two-factor authentication (2FA) for your Split account. With 2FA enabled, Split asks you to enter a verification code after authentication.

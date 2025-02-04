@@ -7,7 +7,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025599452-Setting-up-environments-in-Split </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025599452-Setting-up-environments-in-Split </button>
 </p>
 
 Every project in Split has its own environments. Environments typically represent the SDLC, with one for each stage: Dev, Test, Staging, Production. There's usually no reason to have more than one Split environment per SDLC environment, other than if multiple projects use the same environments.

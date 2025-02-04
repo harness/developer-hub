@@ -7,7 +7,7 @@ sidebar_position: 4
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360026943552-Dynamic-configuration <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360026943552-Dynamic-configuration <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 You can attach configurations to any of your treatments on a feature flag's Definition tab to dynamically control components of your features, such as:

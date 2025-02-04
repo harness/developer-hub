@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4413713254413-Python-Admin-API-Sample-Find-all-Feature-Flags-that-have-dependency-on-a-given-Flag-name </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4413713254413-Python-Admin-API-Sample-Find-all-Feature-Flags-that-have-dependency-on-a-given-Flag-name </button>
 </p>
 
 Basic Code to use Python and Split REST API to show feature flags names that have dependency on a specific feature flag in a given environment and workspace names.

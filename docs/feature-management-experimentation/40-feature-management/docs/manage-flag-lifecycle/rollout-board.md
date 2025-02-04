@@ -7,7 +7,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4405016480269-Use-the-rollout-board <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4405016480269-Use-the-rollout-board <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 The Rollout board provides a place for teams to visualize where different features are in the release process and start answering questions like what features are ready for clean up or are ready to be ramped to more customers.

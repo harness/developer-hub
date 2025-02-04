@@ -7,7 +7,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020525112-Edit-treatments <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020525112-Edit-treatments <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 Every feature you want to release in Split has at least two treatments. In the simplest case, these are **on** and **off**. You can edit the treatment's name and description as well as add additional treatments at any time. 

@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360021218331-Segment-Sending-Segment-Events-to-Split-With-Additional-Traffic-Type <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360021218331-Segment-Sending-Segment-Events-to-Split-With-Additional-Traffic-Type <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 <h2 id="issue" class="header-anchor">Problem</h2>

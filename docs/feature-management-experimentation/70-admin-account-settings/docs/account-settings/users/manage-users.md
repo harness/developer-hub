@@ -7,7 +7,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360006960311-Manage-users-in-Split </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360006960311-Manage-users-in-Split </button>
 </p>
 
 Split’s permissions model allows for by-environment or by-feature access controls, as well as the creation of groups for easier administration of permissions by teams.
@@ -25,7 +25,7 @@ We recommend using groups where possible as owners. As you onboard new teammates
 Visit our documentation to read more about Split’s permissions controls, using owners, and [creating groups](https://docs.split.io/docs/managing-user-groups).
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020811732-Manage-users </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020811732-Manage-users </button>
 </p>
 
 As an administrator, you can manage users directly in Split. Refer to these pages below for more information on managing users and their roles within Split. 

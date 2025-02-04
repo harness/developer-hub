@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020950431-Librato <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020950431-Librato <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 Librato allows your team to collect, store, and visualize any metric across all levels of your application stack. Integrate Split data into Librato to monitor and measure the performance impact of Split changes.

@@ -7,7 +7,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 Segments are lists of user IDs that can you can create and share across your feature flags in an environment. You can segment your customer base and target these segments in your release process.
@@ -176,7 +176,7 @@ id3
 ## FAQs
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360042835732-How-to-upload-CSV-file-that-contain-IDs-with-comma-character-to-new-segment </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360042835732-How-to-upload-CSV-file-that-contain-IDs-with-comma-character-to-new-segment </button>
 </p>
 
 ### How to upload CSV file with user IDs containing comma characters?
@@ -198,7 +198,7 @@ user3, key3
 ```
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360057771572-How-to-delete-a-segment-with-all-its-keys <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360057771572-How-to-delete-a-segment-with-all-its-keys <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 ### How to delete a segment with all its keys?

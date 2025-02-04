@@ -7,7 +7,7 @@ description: "User actions, performance measurements, or error exceptions that y
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020585772-Events </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020585772-Events </button>
 </p>
 
 An event is a user action, performance measurement, or error exception that you send to FME.

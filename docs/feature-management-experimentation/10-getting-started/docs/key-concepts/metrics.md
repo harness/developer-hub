@@ -7,7 +7,7 @@ description: "Measure events that are sent to FME"
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/22005565241101-Metrics </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/22005565241101-Metrics </button>
 </p>
 
 A metric measures [events](./events.md) that are sent to FME. Metrics can be defined to count the occurrence of events, measure event values, or measure event properties.

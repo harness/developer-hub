@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025334751-Step-1-Install-the-SDK <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025334751-Step-1-Install-the-SDK <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 Our SDKs are designed to live at the application layer of your application and provide a secure and out-of-the-box method for controlling your experiments and feature flags. Each SDK has two main functions:

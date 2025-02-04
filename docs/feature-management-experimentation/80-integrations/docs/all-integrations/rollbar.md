@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020700732-Rollbar <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020700732-Rollbar <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 Rollbar is an error tracking software for development teams. Integrate Split data into Rollbar to get rollout events in Rollbar to gain insight on the causes of errors. 

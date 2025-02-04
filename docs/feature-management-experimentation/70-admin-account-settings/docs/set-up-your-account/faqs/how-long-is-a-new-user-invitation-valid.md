@@ -7,7 +7,7 @@ description: ""
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360032491232-How-long-is-a-new-user-invitation-link-valid </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360032491232-How-long-is-a-new-user-invitation-link-valid </button>
 </p>
 
 ## Question

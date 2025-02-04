@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4411398846349-Python-Admin-API-sample-Export-all-feature-flags-that-have-not-received-Impressions-from-certain-date </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4411398846349-Python-Admin-API-sample-Export-all-feature-flags-that-have-not-received-Impressions-from-certain-date </button>
 </p>
 
 Basic code to use Python and Split REST API to export feature flags names that did not receive any impressions from certain date in a specific environments and workspace.

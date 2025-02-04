@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360027624411-Python-App-importing-events-from-Snowflake-DB-to-Split-example </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360027624411-Python-App-importing-events-from-Snowflake-DB-to-Split-example </button>
 </p>
 
 Basic code to use Python to import events from Snowflake database to Split organization using Split Admin API.

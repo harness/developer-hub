@@ -6,7 +6,7 @@ helpdocs_is_published: false
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360024849512-Which-API-Key-to-use-with-NET-Xamarin-project </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360024849512-Which-API-Key-to-use-with-NET-Xamarin-project </button>
 </p>
 
 ## Question

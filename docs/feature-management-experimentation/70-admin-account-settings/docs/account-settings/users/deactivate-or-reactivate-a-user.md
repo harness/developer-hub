@@ -7,7 +7,7 @@ sidebar_position: 3
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360021065051-Deactivate-or-reactivate-a-user </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360021065051-Deactivate-or-reactivate-a-user </button>
 </p>
 
 Administrators can take a number of actions to help manage users in their Split account.

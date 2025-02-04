@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> github link: https://github.com/splitio/documentation/blob/main/integrate_automate/hipchat.markdown <br /> ✘ images links are broken <br /> this article is not on help.split.io - do we still have this integration? </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> github link: https://github.com/splitio/documentation/blob/main/integrate_automate/hipchat.markdown <br /> ✘ images links are broken <br /> this article is not on help.split.io - do we still have this integration? </button>
 </p>
 
 Use our HipChat integration to keep your team notified and up to date when new Splits are enabled, and which rollouts are modified and by which of your teammates.

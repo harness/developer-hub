@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360051389331-How-to-implement-sticky-treatments-for-an-experiment </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360051389331-How-to-implement-sticky-treatments-for-an-experiment </button>
 </p>
 
 <h2 id="h_01JENPSA4T0KQX92J4WFHKGQAM">The challenge</h2>

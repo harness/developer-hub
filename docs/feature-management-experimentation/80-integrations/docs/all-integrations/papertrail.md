@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020700512-Papertrail <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020700512-Papertrail <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 Papertrail provides cloud-hosted log management solutions. Integrate with Papertrail to get Split rollout and rollback events in Papertrail. These events can be overlayed with any other log data to quickly detect and correlate application issues with Split changes.

@@ -7,7 +7,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4412331052685-Python-PyPi-library-for-Split-REST-Admin-API <br /> ✘ TODO: move the <b>Split Python API CLI object reference</b> to the github (README)[https://github.com/splitio/python-api/blob/master/README.md] file. </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4412331052685-Python-PyPi-library-for-Split-REST-Admin-API <br /> ✘ TODO: move the <b>Split Python API CLI object reference</b> to the github (README)[https://github.com/splitio/python-api/blob/master/README.md] file. </button>
 </p>
 
 ## Python PyPi library for Admin API

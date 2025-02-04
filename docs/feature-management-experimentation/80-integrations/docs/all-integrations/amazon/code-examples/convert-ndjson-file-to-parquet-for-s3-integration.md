@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4404185940365-Python-Example-to-generates-Parquet-file-from-NDJson-format-for-S3-Integration </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4404185940365-Python-Example-to-generates-Parquet-file-from-NDJson-format-for-S3-Integration </button>
 </p>
 
 Basic Python code converts NDJson file that contains events into a Parquet file which is  used to integrate the Amazon S3 integration with Split. To learn more about this integration, refer to the Amazon S3 integration guide.

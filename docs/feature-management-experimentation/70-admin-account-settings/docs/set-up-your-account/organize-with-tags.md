@@ -7,7 +7,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020839151-Tags <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020839151-Tags <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 Use tags to organize and manage feature flags, segments, and metrics across the Split user interface. Tags can isolate a particular team or feature release, for example, _reporting team_, _front end_, or _geo search release_.

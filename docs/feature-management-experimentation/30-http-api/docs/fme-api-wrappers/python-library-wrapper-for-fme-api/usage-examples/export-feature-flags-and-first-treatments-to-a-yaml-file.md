@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360029219192-Python-Admin-API-sample-Export-feature-flags-treatments-to-YAML-file </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360029219192-Python-Admin-API-sample-Export-feature-flags-treatments-to-YAML-file </button>
 </p>
 
 Example to use Python to export feature flags names and treatments to YAML files. The YAML files can be used with test automation to test all possible treatments from each feature flag.

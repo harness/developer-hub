@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360033469612-Segment-Targeting-Split-feature-flags-using-Segment-personas </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360033469612-Segment-Targeting-Split-feature-flags-using-Segment-personas </button>
 </p>
 
 <h2 id="h_01J9GT6DRAZ10THERQSV94RAS1">

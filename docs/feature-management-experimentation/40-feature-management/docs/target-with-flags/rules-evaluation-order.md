@@ -7,7 +7,7 @@ sidebar_position: 5
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020791591-Define-feature-flag-treatments-and-targeting#rules-evaluation-order </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020791591-Define-feature-flag-treatments-and-targeting#rules-evaluation-order </button>
 </p>
 
 Feature flag rules are evaluated in the following order:

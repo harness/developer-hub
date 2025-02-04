@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360032185971-Python-Admin-API-sample-Add-a-segment-to-individual-targets-for-group-of-feature-flags </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360032185971-Python-Admin-API-sample-Add-a-segment-to-individual-targets-for-group-of-feature-flags </button>
 </p>
 
 Basic code to use Python and Split REST API to individually target segments to treatments for a given array of feature flags names within a given workspace/environment.

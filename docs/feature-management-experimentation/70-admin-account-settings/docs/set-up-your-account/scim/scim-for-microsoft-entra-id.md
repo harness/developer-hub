@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/12386431119245-SCIM-for-Microsoft-Entra-ID <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/12386431119245-SCIM-for-Microsoft-Entra-ID <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 System for Cross-domain Identity Management (SCIM) is an open standard that allows admins to automate user and group provisioning. SCIM communicates user and group information between identity providers (e.g., Okta, AzureAD) and service providers requiring user and group information (Split). With SCIM, IT administrators can govern Split users and groups within their own identity provider.

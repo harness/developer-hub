@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360023534451-Projects <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360023534451-Projects <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 Projects allow you to separately manage your feature flags and experiments across your different business units, product lines, and applications. When you first create your account, you're  provided with one project named Default. This project has two [environments](https://help.split.io/hc/en-us/articles/360019915771) and one [traffic type](https://help.split.io/hc/en-us/articles/360019916311) created underneath it. You can rename and edit these environments and traffic types and add more to the Default project. 
@@ -108,7 +108,7 @@ To manage your projects, go to the **projects** tab in your **Admin Settings** p
 ## Deleting projects
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044809051-How-can-I-delete-projects <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044809051-How-can-I-delete-projects <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 To delete a project:

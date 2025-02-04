@@ -6,7 +6,7 @@ helpdocs_is_published: true
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360043412752-Python-Admin-API-sample-Report-feature-flags-with-100-treatment-and-not-changed-for-certain-time-period </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360043412752-Python-Admin-API-sample-Report-feature-flags-with-100-treatment-and-not-changed-for-certain-time-period </button>
 </p>
 
 Basic code to use Python and Split REST API to extract feature flags names that serve 100% treatment in default rule and have not been changed for a specific time for  a given workspace/environment, and last received impressions for specific time.

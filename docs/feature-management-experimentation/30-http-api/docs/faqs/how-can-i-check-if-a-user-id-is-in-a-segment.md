@@ -7,7 +7,7 @@ description: ""
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360033336272-How-to-programmatically-determine-if-a-particular-user-ID-exists-in-a-segment </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360033336272-How-to-programmatically-determine-if-a-particular-user-ID-exists-in-a-segment </button>
 </p>
 
 ### Question
