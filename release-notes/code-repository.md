@@ -58,17 +58,17 @@ These release notes describe recent changes to Harness Code Repository.
 #### Fixed issues
 
 * Streamlined the **list-paths** Git operation to avoid message limits.
-* Handle sync of empty repo with non-'main' default branch
-* Move Generated UI URLs to New Nav
-* fix issue on label unassign activity
-* Use space permissions in labels and rules controllers
-* Change space permissions for space rules to repo permissions
-* Resolve mentioned user IDs in email notifications
-* Webhook Trigger PullReq Review Submitted is missing for sanitization
-* fix string search by '_' or '%'
-* Improve PR activity message for force push
-* include pr author in browser param in PR listing page
-* replaced TypesRepository with RepoRepositoryOutput from swagger
+* Handled synchronization of an empty repository with a non-'main' default branch.
+* Moved generated UI URLs to the new navigation.
+* Fixed an issue with label unassign activity.
+* Used space permissions in label and rules controllers.
+* Changed space permissions for space rules to repository permissions.
+* Resolved mentioned user IDs in email notifications.
+* Fixed sanitization for the Webhook Trigger: **Pull Request Review Submitted**.
+* Fixed string search issues involving '_' or '%'.
+* Improved PR activity messages for force pushes.
+* Included the PR author in the browser parameter in the PR listing page.
+* Replaced `TypesRepository` with `RepoRepositoryOutput` in Swagger.
 
 ## November 2024
 
@@ -76,32 +76,31 @@ These release notes describe recent changes to Harness Code Repository.
 
 #### New features and enhancements
 
-* Added support for Labels for migration tool
-* Add acc, org and proj webhooks
-* Added Audit log for bypassed requests
-* Separate CODE Repo Create/Edit into distinct permissions
-* codeowners status in PR overview page
-* Add new webhook type: review_submitted 
-* Add new webhook event for label assignment
-* Add API for space level webhook creation
-* support for codeowners usergroup
-* Update error message in case of forbidden
-* add API to squash commits on a branch
-* Update UI labels for audit service
-* audit logging changes for commit, merge, create and delete branch
+* Added support for **Labels** in the Migration Tool.
+* Added account, organization, and project webhooks.
+* Added an Audit Log for bypassed requests.
+* Separated CODE Repo **Create/Edit** into distinct permissions.
+* Added Code Owners status in the PR overview page.
+* Added a new webhook type: **review_submitted**.
+* Added a new webhook event for label assignment.
+* Added an API for space-level webhook creation.
+* Added support for **Code Owners** user groups.
+* Updated error messages for forbidden access cases.
+* Added an API to squash commits on a branch.
+* Updated UI labels for the audit service.
+* Added audit logging changes for commit, merge, branch creation, and deletion.
 
 #### Fixed issues
 
-* Increase ingress limits
-* Add env vars to enable indexing and search of large files
-* fix swagger of webhook execution and add branch restore
-* update code url api
-* fix for status checks showing wrong time
-* fix missing resource name issue
-* handle error for import-progress API failure
-* fix swagger of webhook execution
-* Expand detection of repo not found cases in git error parsing
-* handle import-progress API response for importing repos via the migrator
+* Increased ingress limits.
+* Added environment variables to enable indexing and searching of large files.
+* Fixed Swagger documentation for webhook execution and added branch restore.
+* Updated code URL API.
+* Fixed status checks displaying incorrect timestamps.
+* Fixed an issue where resource names were missing.
+* Handled errors for import-progress API failures.
+* Expanded detection of repository not found cases in Git error parsing.
+* Handled import-progress API responses when importing repositories via the migrator.
 
 ## October 2024
 
@@ -109,20 +108,20 @@ These release notes describe recent changes to Harness Code Repository.
 
 #### New features and enhancements
 
-* Rename Gitness to Harness Open Source 
-* Add support for Fast Forward merge strategy
-* added rules to update branch [ block_branch_update , block_force_push ] 
-* added button to rebase pr
-* update to latest release of GitLeaks
-* add missing pr activity type: reviewer-add
-* PR source branch delete/restore API
-* added reviewer-add PR activity entry
+* Renamed **Gitness** to **Harness Open Source**.
+* Added support for the **Fast Forward Merge strategy**.
+* Added branch update rules: **block_branch_update**, **block_force_push**.
+* Added a button to rebase PRs.
+* Updated to the latest GitLeaks release.
+* Added a missing PR activity type: reviewer-add.
+* Added PR source branch delete/restore API.
+* Added reviewer-add PR activity entry.
 
 #### Fixed issues
 
-* fix vanity url
-* fix pr link in pr listing
-* fix rebase API rule check
+* Fixed vanity URLs.
+* Fixed PR links in the PR listing.
+* Fixed rebase API rule checks.
 
 ## September 2024
 
@@ -130,21 +129,21 @@ These release notes describe recent changes to Harness Code Repository.
 
 #### New features and enhancements
 
-* Update Semantic Search and PR Summary from GPT3Dot5Turbo to  GPT4oMini
-* Add backend support for User Groups
-* add support for webhook execution logs
-* Branch Rules: UserGroup support: Create and List
-* Add an option to delete branch for merged/closed PR
-* Add error message to protection rule violation error responses 
-* auto collapse resolved code comments
-* Add repo description and UI url in the webhook emitted info
+* Updated Semantic Search and PR Summary from **GPT-3.5-Turbo** to **GPT-4o-Mini**.
+* Added backend support for User Groups.
+* Added support for Webhook Execution Logs.
+* Added Branch Rules: User Group Support (Create and List).
+* Added an option to delete branches for merged/closed PRs.
+* Improved error messages for protection rule violations.
+* Enabled auto-collapse for resolved code comments.
+* Added repository descriptions and UI URLs in emitted webhook info.
 
 #### Fixed issues
 
-* Update to latest gitleaks 
-* Add repo_review permission to auth JWT with allowedResources 
-* fix repo listing open api
-* Send empty list in case of no repos present in space
+* Updated to the latest GitLeaks release.
+* Added repo_review permission to JWT authentication with allowed resources.
+* Fixed OpenAPI issues in repository listing.
+* Ensured an empty list is returned when no repositories are present in a space.
 
 ## August 2024
 
