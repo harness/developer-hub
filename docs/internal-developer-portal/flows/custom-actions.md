@@ -163,7 +163,7 @@ parameters:
 
 #### Authentication using Harness secrets
 
-You can use a Harness `x-api-key`(with permission to execute the pipeline) stored in [Harness secret manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to execute a workflow followed by triggering a pipeline using the same secret. 
+You can use a Harness `x-api-key`(with permission to execute the pipeline) stored in [Harness secret manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to execute a workflow followed by triggering a pipeline using the same secret. The secret must be stored in the Account Scope. 
 
 For example: 
 
