@@ -7,7 +7,7 @@ redirect_from:
   - /docs/internal-developer-portal/flows/service-onboarding-pipelines
 ---
 
-**Service onboarding** in today’s tech world is slow and tedious. Developers often spend days—or even weeks—setting up new software and completing Day 2 operations. This inefficiency arises from either waiting for ticket resolutions (TicketOps) or manually handling repetitive tasks, which results in a poor developer experience and decreased productivity.
+**Service and Infrastructure onboarding** in today’s world is slow, manual and tedious. Developers often spend days—or even weeks—setting up new software and completing Day-2 operations. This inefficiency arises from either waiting for ticket resolutions (TicketOps) or manually handling repetitive tasks, which results in a poor developer experience and decreased productivity.
 
 Harness IDP addresses these challenges with **Self-Service Workflows**.
 
