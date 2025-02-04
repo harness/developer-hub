@@ -16,11 +16,11 @@ API keys are confidential GUID strings that authorize communciation with Harness
 
 **Admin API keys** are used for requests to our public <a href="https://docs.split.io">FME HTTP API<OutboundSvg /></a> endpoints.
 
+**SDK API keys** are used to download the [FME payload](./fme-payload.md) and to send [impressions](./impressions.md) and [events](./events.md) needed by FME to calculate monitoring and experimentation data.
+
 :::info
 <FindAPIKeys keyType='Admin API keys and SDK API keys' is='are' />
 :::
-
-**SDK API keys** are used to download the [FME payload](./fme-payload.md) and to send [impressions](./impressions.md) and [events](./events.md) needed by FME to calculate monitoring and experimentation data.
 
 In practice, you need only one client-side and one server-side API key for each environment. When a new environment is created in Harness, FME automatically creates one key of each type for the new FME environment.
 

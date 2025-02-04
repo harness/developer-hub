@@ -17,5 +17,5 @@ With feature flags, you can deploy new features “turned off” so they are not
 FME feature flags are created in Harness UI and evaluated at runtime using FME SDKs.
 
 :::note
-Other names for feature flags include **feature toggles**, **release toggles**, **feature flippers**, and **remote configurations**. 
+You may also hear **feature flags** commonly referred to as **feature toggles**, **release toggles**, **feature flippers**, and **remote configurations**. 
 :::

@@ -1,6 +1,6 @@
 ---
-title: User IDs (user keys)
-sidebar_label: User IDs (user keys)
+title: User IDs (User keys)
+sidebar_label: User IDs (User keys)
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: Identify your application end user (or customer)
@@ -8,8 +8,8 @@ description: Identify your application end user (or customer)
 
 A user ID represents your application end user (or customer). This is the user that sees your app's feature flag variations.
 
-:::info
-User IDs are also called **keys** and **user keys**. When they are counted over a month, user IDs are called [MTKs](./mtks.md) (Monthly Tracked Keys).
+:::note
+**User IDs** are also called **keys**, **traffic keys**, and **user keys**. When they are counted over a month, user IDs are called [MTKs](./mtks.md) (Monthly Tracked Keys).
 :::
 
 SDKs evaluate feature flags for a given user ID at runtime. An SDK will call the `getTreatment` method to retrieve a feature flag treatment for a given user ID. The treatment (flag variation) returned by the `getTreatment` call depends on the feature flag's targeting rules.
