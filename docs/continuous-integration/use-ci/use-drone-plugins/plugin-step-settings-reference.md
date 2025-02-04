@@ -103,6 +103,10 @@ If the step is within a step group, include the step group identifier in the exp
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
+#### Output Variables on Step Failure
+
+Output variables will be exported from the plugin step even if the step fails. Consider a CI pipeline stage with two steps: a plugin step **step1** and a run step **step2**. Suppose the plugin step is designed to export two variables, `foo` and `bar`. If the step fails after successfully exporting foo but before reaching `bar`, `foo` will still be available for the next step.
+
 ### Environment variables
 
 When a Harness CI pipeline runs, it produces a number of environment variables, including many `DRONE_` environment variables. You can reference these in your plugin script, if needed. For more information, go to the [CI environment variables reference](/docs/continuous-integration/troubleshoot-ci/ci-env-var.md).
