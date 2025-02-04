@@ -109,6 +109,15 @@ To obtain these references, simply copy the variable path from the Harness Pipel
 
 #### Authentication
 
+|                              | **Authentication Mode: User Token**                                                                                                                                                                                                                                                                                             | **Authentication Mode: Harness API Key**                                                                                                                                                                                                                                                                                          |
+|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Overview                     | The user who triggers the workflow will also use their own credentials to trigger the pipeline. The user must have Execute permission for the underlying pipeline(s) to ensure successful execution.                                                                                                                            | The user triggers the workflow using a dedicated API Key to initiate the pipeline. In this case, the user may not have direct access to the underlying pipeline(s). Platform engineers can generate the necessary API token and configure it within the workflow as a default, ensuring no user can access and edit the pipeline. |
+| When to use (Ideal scenario) | Workflow lives in an open scope while the underlying Pipeline(s) live in a project where All Account Users (or All Org Users) are added with Pipeline Execute permission.                                                                                                                                                       | Pipeline lives in a closed project where you do not want to give users direct View and Execute permissions. This is useful to hide the business/implementation.                                                                                                                                                                   |
+| Ease of setup                | Easy to setup, need to add a field under parameters in workflow                                                                                                                                                                                                                                                                 | Requires creation and management of a Harness API Key, also configuring the workflow with the secret identifier.                                                                                                                                                                                                                  |
+| RBAC Setup                   | Requires adding All Account Users (or specific users and groups) to the project where pipeline resides with the Pipeline Execute permission. This could be a tedious setup and can expose other pipelines in the project as well. (Ideally such pipelines should live in a dedicated project for  IDP Workflows which are open) | The Workflow and Pipeline can live in different scopes but can be connected with the Platform Engineer’s API Key.                                                                                                                                                                                                                 |
+
+#### Authentication using User Token
+
 In the above example the `apikey` parameter takes input from Harness Token which is specified under spec as a mandatory parameter as mentioned below
 
 ```YAML
@@ -158,7 +167,7 @@ You can use a Harness `x-api-key`(with permission to execute the pipeline) store
 
 For example: 
 
-```YAML
+```YAML {22}
 parameters:
   - title: Deploy service
     required:
@@ -180,22 +189,15 @@ steps:
       url: pipeline url
       inputset:
         username: ${{ parameters.username }}
-      apikey: ${{ parameters.secretkey }}
+      apiKeySecret: ${{ parameters.secretkey }}
 output:
   links:
     - title: Pipeline Details
       url: ${{ steps.trigger.output.PipelineUrl }}
 ```
 
-In this example, the `apikey` field pulls its value from `parameters.secretkey`, which is pre-populated with the Harness secret identifier by default. Additionally, the field is set to `readonly`, ensuring that users cannot modify the secret identifier.
+In this example, the `apiKeySecret` field pulls its value from `parameters.secretkey`, which is pre-populated with the Harness secret identifier by default. Additionally, the field is set to `readonly`, ensuring that users cannot modify the secret identifier.
 
-
-|                              | **Authentication Mode: User Token**                                                                                                                                                                                                                                                                                             | **Authentication Mode: Harness API Key**                                                                                                                                                                                                                                                                                          |
-|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Overview                     | The user who triggers the workflow will also use their own credentials to trigger the pipeline. The user must have Execute permission for the underlying pipeline(s) to ensure successful execution.                                                                                                                            | The user triggers the workflow using a dedicated API Key to initiate the pipeline. In this case, the user may not have direct access to the underlying pipeline(s). Platform engineers can generate the necessary API token and configure it within the workflow as a default, ensuring no user can access and edit the pipeline. |
-| When to use (Ideal scenario) | Workflow lives in an open scope while the underlying Pipeline(s) live in a project where All Account Users (or All Org Users) are added with Pipeline Execute permission.                                                                                                                                                       | Pipeline lives in a closed project where you do not want to give users direct View and Execute permissions. This is useful to hide the business/implementation.                                                                                                                                                                   |
-| Ease of setup                | Easy to setup, need to add a field under parameters in workflow                                                                                                                                                                                                                                                                 | Requires creation and management of a Harness API Key, also configuring the workflow with the secret identifier.                                                                                                                                                                                                                  |
-| RBAC Setup                   | Requires adding All Account Users (or specific users and groups) to the project where pipeline resides with the Pipeline Execute permission. This could be a tedious setup and can expose other pipelines in the project as well. (Ideally such pipelines should live in a dedicated project for  IDP Workflows which are open) | The Workflow and Pipeline can live in different scopes but can be connected with the Platform Engineer’s API Key.                                                                                                                                                                                                                 |
 
 #### Output
 
