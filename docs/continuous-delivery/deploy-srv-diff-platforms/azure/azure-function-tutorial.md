@@ -158,6 +158,12 @@ Additionally you can have optional configurations such as
 
 ![](static/azure-functions-7.png)
 
+## Step by Step Guide
+
+<iframe src="https://app.tango.us/app/embed/42b00687-c903-46c5-96a5-33a4e8c273fd" style={{ minHeight: '640px' }}sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" security="restricted" title="Deploying Azure Functions with Harness" width="100%" height="100%" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
+
+
+
 ## Azure Function Deployment Sample 
 
 To see an example of how to deploy Azure Functions using Harness, visit the [Harness Community Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/azure-function-deployment).
