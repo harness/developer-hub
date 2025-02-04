@@ -2610,3 +2610,39 @@ If it is operating as expected, the Kaniko CLI will show the following in the CL
 <!-- Please do a keyword search (cmd+F) to avoid making duplicate entries. For example, `buildkit`, `lfs`, `kaniko`, `buildah`, etc. -->
 
 <!-- Please follow a sequential heading structure. The level 4 headings don't show up on the mini-TOC. This makes it impossible for customers to scan the questions in the Mini-TOC and then jump directly to their question. It is also inappropriate, from an accessibility perspective, to skip heading levels. -->
+
+### What is the difference between <+codebase.branch> and <+codebase.sourceBranch>?
+`<+codebase.branch>` refers to the PR target branch or the selected branch for a branch build, while `<+codebase.sourceBranch>` specifically refers to the source branch of a PR.
+
+### How can I access Git user details in a build?
+
+Harness CI provides the following variables:  
+
+- `<+codebase.gitUser>` – Git username  
+- `<+codebase.gitUserEmail>` – Git user email  
+- `<+codebase.gitUserId>` – Git user ID  
+- `<+codebase.gitUserAvatar>` – Git user avatar link  
+
+### Why do some pipeline runs fail to resolve codebase variables, even when using a supported Git provider?
+While Harness supports GitHub, Bitbucket, and GitLab, variables may still remain unresolved if:
+
+- The repo connector lacks API access permissions.
+- The build was triggered by a method that doesn’t include the required Git metadata (e.g., cron triggers).
+- The pipeline has multiple codebases but only the default codebase is supported for variable resolution.
+
+### How can I dynamically reference the source of a build without knowing its trigger type?
+To accommodate both manual and webhook builds, use <+codebase.prNumber> instead of <+trigger.prNumber>.
+Why? trigger.prNumber is null for manual builds, but codebase.prNumber resolves correctly for both.
+
+### What happens to codebase variables if a PR build is manually restarted?
+If you manually rerun a PR build (instead of triggering a new one), some variables may resolve to null, particularly <+codebase.sourceBranch> and <+codebase.targetBranch>. Instead, push a new commit or trigger a fresh PR build to ensure these values remain intact.
+
+### Can I extract short commit SHAs for logging or versioning purposes?
+Yes! While <+codebase.commitSha> provides the full SHA, <+codebase.shortCommitSha> gives a 7-character version, making it ideal for version tags or concise logs.
+
+### How do I ensure consistent environment variable behavior across manual and webhook builds?
+To prevent inconsistencies, avoid using trigger.* expressions alone. Instead:
+- Use <+codebase.commitSha> instead of <+trigger.commitSha>
+- Use <+codebase.prNumber> instead of <+trigger.prNumber>
+- Use <+codebase.branch> when working with branch builds
+
