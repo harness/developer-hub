@@ -39,6 +39,113 @@ These release notes describe recent changes to Harness Code Repository.
 
 * We need org view and edit permissions in order to create rules/labels on the account level
 
+## December 2024
+
+### Version 1.26.2
+
+#### New features and enhancements
+
+* add recreate replica API
+* Add rules API for Proj/Org/Account
+* add go-get middleware in git router
+* updated swagger for delete PR branch API
+* Add scope info to webhooks 
+* ignore not found error in delete repo
+* Add time and author filter params to list commits page
+* Updated Webhook for Code Comments to include all comment types
+* Rename review submitted webhook trigger
+
+#### Fixed issues
+
+* Stream list-paths git operation to avoid message limit
+* Handle sync of empty repo with non-'main' default branch
+* Move Generated UI URLs to New Nav
+* fix issue on label unassign activity
+* Use space permissions in labels and rules controllers
+* Change space permissions for space rules to repo permissions
+* Resolve mentioned user IDs in email notifications
+* Webhook Trigger PullReq Review Submitted is missing for sanitization
+* fix string search by '_' or '%'
+* Improve PR activity message for force push
+* include pr author in browser param in PR listing page
+* replaced TypesRepository with RepoRepositoryOutput from swagger
+
+## November 2024
+
+### Version 1.25.3
+
+#### New features and enhancements
+
+* Added support for Labels for migration tool
+* Add acc, org and proj webhooks
+* Added Audit log for bypassed requests
+* Separate CODE Repo Create/Edit into distinct permissions
+* codeowners status in PR overview page
+* Add new webhook type: review_submitted 
+* Add new webhook event for label assignment
+* Add API for space level webhook creation
+* support for codeowners usergroup
+* Update error message in case of forbidden
+* add API to squash commits on a branch
+* Update UI labels for audit service
+* audit logging changes for commit, merge, create and delete branch
+
+#### Fixed issues
+
+* Increase ingress limits
+* Add env vars to enable indexing and search of large files
+* fix swagger of webhook execution and add branch restore
+* update code url api
+* fix for status checks showing wrong time
+* fix missing resource name issue
+* handle error for import-progress API failure
+* fix swagger of webhook execution
+* Expand detection of repo not found cases in git error parsing
+* handle import-progress API response for importing repos via the migrator
+
+## October 2024
+
+### Version 1.23.3
+
+#### New features and enhancements
+
+* Rename Gitness to Harness Open Source 
+* Add support for Fast Forward merge strategy
+* added rules to update branch [ block_branch_update , block_force_push ] 
+* added button to rebase pr
+* update to latest release of GitLeaks
+* add missing pr activity type: reviewer-add
+* PR source branch delete/restore API
+* added reviewer-add PR activity entry
+
+#### Fixed issues
+
+* fix vanity url
+* fix pr link in pr listing
+* fix rebase API rule check
+
+## September 2024
+
+### Version 1.21.4
+
+#### New features and enhancements
+
+* Update Semantic Search and PR Summary from GPT3Dot5Turbo to  GPT4oMini
+* Add backend support for User Groups
+* add support for webhook execution logs
+* Branch Rules: UserGroup support: Create and List
+* Add an option to delete branch for merged/closed PR
+* Add error message to protection rule violation error responses 
+* auto collapse resolved code comments
+* Add repo description and UI url in the webhook emitted info
+
+#### Fixed issues
+
+* Update to latest gitleaks 
+* Add repo_review permission to auth JWT with allowedResources 
+* fix repo listing open api
+* Send empty list in case of no repos present in space
+
 ## August 2024
 
 ### Version 1.17.2
