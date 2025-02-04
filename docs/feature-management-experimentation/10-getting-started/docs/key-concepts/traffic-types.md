@@ -6,7 +6,7 @@ helpdocs_is_published: true
 description: "Traffic types are a way of categorizing your user IDs (user keys)"
 ---
 
-Traffic types are a way of categorizing your [user IDs (user keys)](./user-ids.md).
+When you create a feature flag, metric, or segment, you must specify a traffic type. Traffic types are a way of categorizing your [traffic keys (user IDs)](./user-ids.md).
 
 The traffic types you choose will determine the granularity of your feature flag targeting rules and metric results.
 
@@ -21,7 +21,7 @@ You can use [segments](./segments.md) to group user IDs. Segments can be used in
 Traffic types should define your most granular level of feature flag targeting decisions. (Note that you can also set feature flag targeting rules based on user attributes.) Take a moment and carefully consider your traffic type choices. Our customer success advisors are on hand to help validate your plan.
 
 :::info
-The actual string value you enter for your traffic types is a label. It is for your convenience and is not treated in any special way within FME. For example, FME will treat 'user', 'account', 'device', and 'utilizador' exactly the same. It is just a label for your convenience.
+The actual string value you enter for your traffic type is a label for the user IDs you pass. We recommend choosing a name that will be easy for your team to understand.
 :::
 
 :::warning

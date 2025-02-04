@@ -10,13 +10,7 @@ import UserAttributes from "@site/docs/feature-management-experimentation/10-get
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020529772-Identifying-customers <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-<UserAttributes />
-
-:::warning[User attributes need to be passed to the getTreatment method]
-To target your end users based on user attributes, in your codebase you must pass the attribute to the SDK `getTreatment` call. Learn more about targeting based on [custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes).
-:::
-
-You can use the [identities Split API endpoint](https://docs.split.io/reference/identities-overview) to identify the user keys and user attributes of traffic coming in to Split, making them available throughout the Split UI (e.g., when writing targeting rules). Identifying your user attributes is useful if you want to pre-populate the Split UI for your team and provide end user (customer) data when setting up your rollouts and analyzing [impression data](https://help.split.io/hc/en-us/articles/360020585192-Impression-events).
+<UserAttributes User_attribute='Traffic type attribute' user_attribute='traffic type attribute' />
 
 ## Send
  
