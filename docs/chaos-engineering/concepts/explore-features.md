@@ -1,7 +1,7 @@
 ---
 title: Harness Chaos Engineering Features
 sidebar_label: Explore Features
-sidebar_position: 6
+sidebar_position: 8
 description: Explore all the capabilities of Harness Chaos Engineering
 ---
 
@@ -186,7 +186,7 @@ It describes how resilient an application is to different kinds of failures. For
 ### Prometheus Chaos Metrics
 
 It provides comprehensive visibility into the effects of chaos experiments, enabling real-time monitoring and analysis about how the system behaved prior to, during, and after the chaos experiment was run.
-For more information, go to [Prometheus Metrics in your first experiment](/docs/chaos-engineering/getting-started/saas/first-experiment#step-7-evaluate-the-experiment-run).
+For more information, go to [Prometheus Metrics in your first experiment](/docs/chaos-engineering/getting-started/saas/#evaluate-the-experiment-run).
 
 ## Resilience Insights
 

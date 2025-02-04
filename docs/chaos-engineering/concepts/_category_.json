@@ -6,7 +6,7 @@
   "link":{
       "type":"generated-index",
       "title":"Concepts and Features",
-      "description": "Understand the general concepts of Chaos Engineering, the deployment architecture and explore features."
+      "description": "Understand the general concepts of Chaos Engineering, the deployment architecture, features and the interaction between the execution plane and the control plane."
    },
   "customProps": {
     "description": "Understand the general concepts of Chaos Engineering, concepts in Harness Chaos Engineering, it's architecture & explore it's features"
