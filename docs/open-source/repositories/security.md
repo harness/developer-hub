@@ -6,11 +6,11 @@ sidebar_position: 3
 
 ## Secret Scanning
 
-In Gitness, you can use the integrated [Gitleaks](https://github.com/gitleaks/gitleaks) tool to block secrets like passwords, API keys, and tokens from being pushed to your Git repositories. Enabling secret scanning for individual repositories ensures that any attempt to push a commit containing a [recognized secret pattern](https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml) is denied. This is essential for maintaining the security of your codebase.
+In Harness Open Source, you can use the integrated [Gitleaks](https://github.com/gitleaks/gitleaks) tool to block secrets like passwords, API keys, and tokens from being pushed to your Git repositories. Enabling secret scanning for individual repositories ensures that any attempt to push a commit containing a [recognized secret pattern](https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml) is denied. This is essential for maintaining the security of your codebase.
 
 :::caution
 
-Gitness Secret Scanning scans *only new/changed code* in commits that users attempt to push *after* you enable Secret Scanning on a repo. Secrets in existing/unchanged code aren't detected.
+Harness Open Source Secret Scanning scans *only new/changed code* in commits that users attempt to push *after* you enable Secret Scanning on a repo. Secrets in existing/unchanged code aren't detected.
 
 :::
 

@@ -22,9 +22,22 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## February 2025
+
+### Version 1.125.0
+
+<!-- 2025-02-04 -->
+
+#### New Features and Enhancements  
+- Added a new "STO Usage Dashboard" to display user usage data (STO-8340).
+- Added a new "Occurrences" column to the issue list on the security test page, showing the total number of detected occurrences, along with new detections and remediation numbers. The status column was moved to the end, and the title column was renamed to "Issue" (STO-8085).
+
+#### Fixed Issues 
+- Fixed an issue where Gitleaks may not work properly if the clone and scan steps were not run by the default user (STO-8473, ZD-76568).
+
 ## January 2025
 
-### Version v1.124.3
+### Version 1.124.3
 
 <!-- 2025-01-23 -->
 
@@ -33,7 +46,6 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 - Custom Ingestion scanner results now display both the scanner details and scanning results (STO-8352).  
 - Fixed an issue where adding an additional route to the Domain field in the Checkmarx step would not properly process the URL (STO-5669).
 
-## January 2025
 
 ### Version 1.122.1
 
@@ -93,9 +105,6 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 #### Documentation enhancements
 - Added a video tutorial for [SonarQube Orchestration scan mode](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference).
 - Added a video on [How to perform Local Docker/OCI Archive scanning with Harness STO.](https://www.youtube.com/watch?v=x1NXBJaHF7U&list=PLXsYHFsLmqf1wmAiQZkL65Xt6VarH_DuH&index=8&t=7s)
-
-
-## October 2024
 
 ### Version 1.112.5
 

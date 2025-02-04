@@ -311,7 +311,7 @@ See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-p
 1. In **Identifier**, enter an identifier, so you can refer to variables using expressions if needed.
 2. In **Region**, select the region where your bucket is stored.
 3. In **Bucket**, select the bucket where your Terraform var files are stored (all buckets from the selected region that are available to the connector will be fetched).
-4. In **File Paths**, add one or more file paths from the root of the bucket to the variable file.
+4. In **File Paths**, add one or more file paths from the root of the bucket to the variable file. Ensure the file is archived as a `.zip`, and the file paths should include the full path, including the repo.
 
    ![](./static/provision-infra-dynamically-with-terraform-10.png)
 

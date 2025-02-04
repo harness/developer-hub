@@ -5,7 +5,7 @@ redirect_from:
   - /docs/chaos-engineering/get-started/whats-supported
 ---
 
-This topic lists the platforms and technologies that Harness Chaos Engineering (HCE) supports for deploying chaos infrastructure.
+This topic lists the platforms and technologies that Harness Chaos Engineering (Harness CE) supports for deploying chaos infrastructure.
 To learn more about chaos infrastructure, go to [Chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/).
 
 Harness Chaos Engineering is supported on the following platforms:
@@ -13,11 +13,11 @@ Harness Chaos Engineering is supported on the following platforms:
 - [Harness Self-Managed Enterprise Edition](#harness-self-managed-enterprise-edition)
 - [Harness Self-Managed Enterprise Edition In Offline Environments](#harness-self-managed-enterprise-edition-in-offline-environments)
 
+Harness Chaos Engineering supports running faults on [AWS](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/), [Azure](/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/), [Bring Your Own Chaos (BYOC)](/docs/chaos-engineering/use-harness-ce/chaos-faults/byoc/), [Cloud Foundry](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/), [GCP](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/), [Kube Resilience](/docs/chaos-engineering/use-harness-ce/chaos-faults/kube-resilience/), [Kubernetes](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/), [Linux](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/), [Load](/docs/chaos-engineering/use-harness-ce/chaos-faults/load/), [SSH](/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/), [VMware](/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/), and [Windows](/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/) platforms.
+
+Learn more about [concepts](/docs/chaos-engineering/concepts/chaos101), [architecture](/docs/chaos-engineering/concepts/explore-architecture) and [features](/docs/chaos-engineering/concepts/explore-features).
+
 ## Harness SaaS
-
-### Chaos infrastructure
-
-#### Supported operating systems and distributions
 
 The following table shows the supported operating systems and distributions for deploying chaos infrastructure.
 
@@ -36,17 +36,13 @@ The following table shows the supported operating systems and distributions for 
 | Linux | Fedora | 30+ |  ✅  |
 | Linux | openSUSE Leap | 15.4+ |  ✅  |
 
-### Kubernetes
-
-#### Container runtime
-
-The supported container runtimes are as follows:
+:::tip
+Kubernetes faults support the following container runtimes:
 
 * Docker
 * Crio
 * Containerd
-
-### Chaos fault types
+:::
 
 The following table shows available fault types and where they are supported. For a complete list and detailed information, go to [Chaos faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/).
 

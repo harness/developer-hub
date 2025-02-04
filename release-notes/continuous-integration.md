@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-01-23T10:00
+date: 2025-01-30T10:00
 sidebar_position: 10
 ---
 
@@ -21,6 +21,58 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## January 2025
+
+:::note
+
+**Network Whitelisting Update for Hosted Linux Infrastructure**
+
+Harness Cloud users utilizing hosted Linux infrastructure, who rely on whitelisting for on-premises resource access, are requested to update their configuration.
+
+To ensure uninterrupted connectivity and functionality for your CI builds, please whitelist the following IP range in your network settings by **March 15th, 2025**:
+
+CIDR Blocks:
+
+```
+15.204.17.0/24, 15.204.19.0/24, 15.204.23.0/24, 15.204.69.0/24, 15.204.70.0/24, 15.204.71.0/24, 51.81.128.0/24, 51.81.189.0/24
+```
+
+**Additional IPs to Whitelist:**
+```
+34.94.194.45, 34.133.164.105, 35.184.10.123, 34.171.8.178, 34.172.44.211, 34.28.94.170, 34.75.255.154, 34.139.54.93, 35.231.172.154,  
+35.227.126.5, 35.231.234.224, 34.139.103.193, 34.139.148.112, 35.196.119.169, 34.73.226.43, 35.237.185.165, 34.162.90.200, 34.162.31.112,  
+34.162.177.5, 34.162.189.244, 34.162.184.1, 34.125.74.8, 34.125.80.89, 34.16.190.122, 34.125.82.12, 34.125.11.217, 35.197.35.30,  
+35.233.237.208, 34.83.94.29, 34.168.158.33, 34.168.20.8, 34.82.156.127, 34.83.1.152, 34.168.60.254, 34.82.65.138, 34.82.140.146,  
+34.127.6.209, 35.185.226.205, 35.247.24.71, 34.168.30.50, 35.233.132.196, 34.168.214.255, 34.102.103.7, 34.102.40.149, 34.102.16.205,  
+34.127.65.210, 35.233.172.173
+```
+If you have any questions or need assistance with the whitelisting process, please [contact Harness Support](https://support.harness.io/).
+
+:::
+
+### Version 1.63
+
+<!-- 2025-01-27 -->
+
+#### Fixed issues
+
+- Fixed an issue where the node selector field under the Infrastructure tab in the CI module lost focus when input was entered for the first time. (CI-15730, ZD-76187)
+- Fixed an issue where the DockerHub v2 URL was not working with Buildx in CI. This issue occurred specifically in the **Build and Push an Image to Docker Registry** step when caching was enabled. (CI-15702, ZD-75850)
+- Fixed an issue where project-level default settings for the S3 bucket in **self-hosted build infrastructure** failed to pass secrets to the proxy server when selecting an account-level connector or secret. (CI-15699, ZD-76063, ZD-76750)
+- Fixed an issue where using the `ci-addon` image caused it to be identified as root, violating non-root policies. Added configuration for rootless `lite-engine` and `ci-addon` container images. When using Windows infrastructure with the feature flag `CI_ADDON_LE_WINDOWS_ROOTLESS` enabled, rootless container images will be used for the lite-engine addon. (CI-14868, ZD-72927, ZD-77194)
+
+#### New features and enhancements
+
+- Added support for SSH clone with passphrase in Git, GitHub, GitLab, Azure, and Bitbucket connectors. This feature is available on Linux and macOS infrastructure (Windows support is not yet available) and requires `drone-git` plugin version 1.6.5. For Kubernetes (k8s) infrastructure, this change is not supported in the current delegate version. Support will be added in a future update. (CI-15212)
+- Output variables from a plugin step are now visible in the Outputs tab even when the step fails. Only variables populated up until the failure point will be displayed. This feature is available in Lite Engine and Addon version 1.16.73 and can be enabled using the `CI_ENABLE_OUTPUTS_STEP_FAILURE` feature flag. (CI-15379)
+- The `CI` environment variable, which returns `true` to indicate a Continuous Integration environment, is now available. (CI-15304, ZD-73840)
+    
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `plugins/buildx`      | Updated dependencies to address vulnerabilities | 1.1.24                | 1.1.25           |
+| `plugins/ci-addon`       | Changes described in fixed issues list                  | 1.16.71              | 1.16.73         |
+| `plugins/ci-lite-engine` | Minor updates and improvements                  | 1.16.71              | 1.16.73         |
 
 ### Version 1.62
 
@@ -176,7 +228,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 | **Image**                | **Change**                                                            | **Previous version** | **New Version** |
 | ------------------------ | --------------------------------------------------------------------- | -------------------- | --------------- |
 | `drone/buildx`           | Revert base64 support added to handle secrets with special characters | 1.1.16               | 1.1.19          |
-| `harness/ci-addon`       | Log Service - ability to increase limit for logs in K8S               | 1.59                 | 1.61            |
+| `harness/ci-addon`       | Log Service - ability to increase limit for logs in K8S               | 1.16.59                 | 1.16.61            |
 | `harness/ci-lite-engine` | Log Service - ability to increase limit for logs in K8S               | 1.591.59             | 1.611.61        |
 
 ### Version 1.53
@@ -198,7 +250,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 - Improved "Copy to Clipboard" functionality for pipeline output logs. Previously, extra new lines were added when pasting the copied output, causing unnecessary spacing between lines. This issue has been fixed to ensure log output is pasted without additional line breaks. (CI-14200, ZD-68902)
 
 #### Harness images updates
-
+ 
 | **Image**            | **Change**                                                                                                    | **Previous version** | **New Version** |
 | -------------------- | ------------------------------------------------------------------------------------------------------------- | -------------------- | --------------- |
 | `harness/drone-git`  | Fixed an issue when using the GitHub SSH connector on Windows and cloning while fetching LFS files (CI-14592) | 1.61                 | 1.62            |

@@ -48,7 +48,7 @@ import {
             module: MODULES.sei,
             description:
               "SEI uses integrations to ingest data from your SDLC tools.",
-            link: "/docs/software-engineering-insights/sei-integrations/sei-integrations-overview",
+            link: "/docs/software-engineering-insights/setup-sei/configure-integrations/sei-integrations-overview",
           },
           {
             title: "Profiles",
@@ -70,7 +70,7 @@ import {
             module: MODULES.sei,
             description:
               "Insights are dashboards that make it easy to visualize and interpret metrics that are captured by SEI.",
-            link: "/docs/software-engineering-insights/insights/sei-insights",
+            link: "/docs/software-engineering-insights/setup-sei/create-and-manage-dashboards/sei-insights",
           },
           {
             title: "Metrics and reports",
@@ -99,14 +99,14 @@ import {
             module: MODULES.sei,
             description:
               "Propels are a no-code/low-code way to use SEI to add human-in-the-loop automation to your SDLC.",
-            link: "/docs/software-engineering-insights/sei-propels-scripts/propels-overview",
+            link: "/docs/software-engineering-insights/setup-sei/sei-propels-scripts/propels-overview",
           },
           {
             title: "Troubleshooting and FAQs",
             module: MODULES.sei,
             description:
               "",
-            link: "/docs/software-engineering-insights/sei-troubleshooting-faqs",
+            link: "/docs/software-engineering-insights/troubleshoot-sei/sei-troubleshooting-faqs",
           },
           {
             title: "SEI Knowledge Base",

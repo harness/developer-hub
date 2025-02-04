@@ -40,8 +40,4 @@ The use of this information is governed by our [Privacy Policy](https://harness.
 
 If you would like us to stop processing your data, or if you have any other questions or requests concerning your data, please contact the [Harness Privacy Team](mailto:privacy@harness.io). For more information on how we process your data, go to our [Privacy Policy](https://harness.io/privacy).
 
-### The current documentation advises us to use the Drone plugin model. How similar will this be with the move to Gitness?
-
-Gitness is using Drone plugins so rework is not necessary.
-The only changes with Gitness is you need to provide an additional mapping file that defines inputs and maps those inputs into the plugin container.
 

@@ -167,6 +167,18 @@ You can define your job using either Job Name or Job Manifest.
    - In the **Specify Google Cloud Run Job Manifest Store**, select the source where the manifest file is stored.  
    - In **Manifest Details**, specify the path where the manifest file is stored.
 
+:::note  
+If you are deploying a **container-based Google Cloud Run Job**, ensure that you:  
+
+1. Create a Step Group by clicking on **Add Step Group** in the execution tab.  
+2. Provide the Name of the Step Group. Enable the **Enable Container-Based Execution** toggle.
+3. Provide **Kubernetes Cluster** details.
+4. Add the **Google Cloud Run Job** Step to the Step Group.  
+
+These steps are necessary for successful execution.  
+:::
+
+
 **Deploy Step**
 
 The deploy step uses the deploy `gcloud run jobs replace` command and execute `gcloud run jobs execute` command in sequence.  

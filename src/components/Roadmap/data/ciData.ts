@@ -2,50 +2,50 @@ import { Horizon } from "./roadmapData";
 
 export const CiData: Horizon = {
   Now: {
-    description: "Q4 2024, Nov-Jan 2025",
+    description: "Q1 2025, Feb-April 2025",
     feature: [
-      {
-        tag: [{ value: "Fast" }],
-        title: "Build Intelligence for Gradle & Bazel - Self Hosted",
-        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. Support for cloud is already available, this work is to extend support for self-hosted build infrastructure.",
-      },
+      // Harness Cloud - Allow other Secrets than Harness Secrets
       {
         tag: [{ value: "Fast" }],
         title: "Build Intelligence for Maven",
         description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. Support will be added for Maven build tool, for both Cloud ans self-hosted builds.",
       },
       {
-        tag: [{ value: "Cloud" }],
-        title: "Cloud Credits Breakdown report",
-        description: "Gain insights into how Harness Cloud build credits are consumed by different pipelines, helping you manage and optimize your CI resource allocation.",
-      },
-      {
-        tag: [{ value: "Fast" }, { value: "Beta" }],
-        title: "Cache Intelligence - VB & F# ",
-        description: "Cache Intelligence reduces build times by automatically caching software dependencies, avoiding the need for external storage. We will add support for VB & F#.",
-      },
-      {
         tag: [{ value: "Fast" }],
-        title: "Test Intelligence for JavaScript-based languages and tools",
+        title: "Test Intelligence for JavaScript-based languages with Jest",
         description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related the code changes made.",
       },
       {
-        tag: [{ value: "Integrations" }],
-        title: "Docker Build Secrets",
-        description: "Ability to use Docker build secrets in Build and Push steps.",
-      },
+        tag: [{ value: "Fast" }],
+        title: "Test Intelligence for Kotest",
+        description: "Accelerate testing cycles of Kotest applications with Test Intelligence, selectively running only tests that cover the code changes made.",
+      },  
       {
-        tag: [{ value: "Secure" }],
-        title: "OpenID Connect (OIDC) - HashiCorp",
-        description: "Securely connect to HashiCorp through OIDC, for accessing public cloud resources without secrets or credentials.",
+        tag: [{ value: "Cloud" }],
+        title: "Using external secret managers with Harness Cloud",
+        description: "This enhancement allows users to securely integrate with external secret management systems like HashiCorp Vault, providing greater flexibility for managing sensitive data.",
+      }, 
+      {
+        tag: [{ value: "Cloud" }],
+        title: "Additional VM images for macOS and Linux with Harness Cloud",
+        description: "We're expanding our hosted CI offering to support multiple VM images for macOS and Linux, giving users the flexibility to choose from a predefined set of images. This allows teams to run builds on both the latest and previous stable OS versions, ensuring compatibility with different environments",
+      }, 
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Improvements for Build and Push steps ",
+        description: "Enhancing the Build and Push steps with a new 'build-only' mode and support for generating Docker images or tar files for local vulnerability scans. These improvements make it easier to accomplish the build-local scan-and-push flow.",
       },
-   
-,
       
+      {
+        tag: [{ value: "Integrations" }],
+        title: "Push Docker Image plugin",
+        description: "Introducing a new plugin for securely pushing  a local Docker images or a tar file to registries. This complements the build-only mode, allowing users to scan local images before pushing.",
+      },
+,
     ],
   },
   Next: {
-    description: "Q1 2025, Feb-Apr 2025",
+    description: "Q2 2025, May-July 2025",
     feature: [
       {
         tag: [{ value: "Artifact Management" }],
@@ -57,11 +57,7 @@ export const CiData: Horizon = {
         title: "Test Intelligence for all test types",
         description: "ML-based Test Intelligence that applies smart test selection across all testing frameworks, reducing testing times and speeding up the feedback loop for developers. Test Intelligence currently supported for unit tests, and with this work we will make it available for other test types as well.",
       },
-      {
-        tag: [{ value: "Integrations" }, { value: "Mobile" }],
-        title: "Native integration with Fastlane",
-        description: "Simplify building and publishing iOS and Android applications with native Fastlane integration",
-      },
+
       {
         tag: [{value: "Insights"}],
         title: "Test Insights",
@@ -75,7 +71,7 @@ export const CiData: Horizon = {
     ],
   },
   Later: {
-    description: "Q2 2025+, May 2025 & beyond",
+    description: "Q3 2025+, Aug 2025 & beyond",
     feature: [
 
       {
@@ -87,6 +83,11 @@ export const CiData: Horizon = {
         tag: [{ value: "Fast" }],
         title: "Flaky tests management",
         description: "Identify, track, and manage flaky tests, improving test reliability and build stability.",
+      },
+      {
+        tag: [{ value: "Integrations" }, { value: "Mobile" }],
+        title: "Native integration with Fastlane",
+        description: "Simplify building and publishing iOS and Android applications with native Fastlane integration",
       },
       {
         tag: [{ value: "AIDA" }],
@@ -105,10 +106,20 @@ export const CiData: Horizon = {
     description: "What has been released",
     feature: [
       {
-        tag: [{ value: "Integrations" }],
-        title: "Git Clone Enhancements",
-        description: "Native support for Git LFS, submodules, and tag fetching in the native clone functionality and Git Clone step. These enhancements improve repository management, reducing setup time and errors, and boosting overall productivity.",
-      }, 
+        tag: [{ value: "Cloud" }],
+        title: "Cloud Credits Breakdown report",
+        description: "Gain insights into how Harness Cloud build credits are consumed by different pipelines, helping you manage and optimize your CI resource allocation.",
+      },
+      {
+        tag: [{ value: "Fast" }],
+        title: "Build Intelligence for Gradle & Bazel - Cloud & Self Hosted",
+        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
+      },
+      {
+        tag: [{ value: "Fast" }, { value: "Beta" }],
+        title: "Cache Intelligence - VB & F# ",
+        description: "Cache Intelligence reduces build times by automatically caching software dependencies, avoiding the need for external storage. We will add support for VB & F#.",
+      },
       {
         tag: [{ value: "Cloud" }],
         title: "Linux Hardware Acceleration in Harness Cloud",
@@ -119,16 +130,6 @@ export const CiData: Horizon = {
         title: "Test Intelligence for C# ",
         description: "Accelerate testing cycles of C# C# (.Net Core 6.0+) applications with Test Intelligence, selectively running only tests that cover the code changes made.",
       },  
-      {
-        tag: [{ value: "Fast" },{ value: "Cloud" } ,{ value: "Beta" }],
-        title: "Build Intelligence for Gradle",
-        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. Available for Cloud, with support for self-hosted coming soon. ",
-      },
-      {
-        tag: [{ value: "Fast"} ,{ value: "Cloud" }, { value: "Beta" }],
-        title: "Build Intelligence for Bazel",
-        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. . Available for Cloud, with support for self-hosted coming soon. ",
-      },
       {
         tag: [{ value: "Secure" }, { value: "Beta" }],
         title: "Secure Connect",
@@ -148,21 +149,6 @@ export const CiData: Horizon = {
         tag: [{ value: "Fast" }, { value: "Beta" }],
         title: "Simplify usage of Test Intelligence with new Test step",
         description: "Simplify the configuration and utilization of Test Intelligence with, making it easier for teams to speed up their builds.",
-      },
-      {
-        tag: [{ value: "Cloud" }, { value: "Beta" }],
-        title: "Build Resource Class support",
-        description: "Choose the appropriate compute size for your builds and monitor credit usage by resource type, improving build efficiency and resource management.",
-      },
-      {
-        tag: [{ value: "Secure" }],
-        title: "OpenID Connect (OIDC) - AWS",
-        description: "Securely connect to Amazon Web Services (AWS) through OIDC, for accessing public cloud resources without secrets or credentials.",
-      },
-      {
-        tag: [{ value: "Secure" }],
-        title: "OpenID Connect (OIDC) - GCP",
-        description: "Securely connect to Google Cloud Platform (GCP) through OIDC, for accessing public cloud resources without secrets or credentials.",
       },
       {
         tag: [{ value: "Integrations" }],

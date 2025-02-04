@@ -285,6 +285,5 @@ import ProxySettings from './shared/proxy-settings.md';
 
 <ProxySettings />
 
-## View Twistlock compliance rule failures
-Twistlock compliance rule failures will appear in scan results as `Info` severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply OPA policies in Harness STO to enforce or manage these failures.
-
+## View Prisma Cloud compliance rule failures
+Prisma Cloud compliance rule failures will appear in scan results as `Info` severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply OPA policies in Harness STO to enforce or manage these failures. Additionally, you can apply an OPA policy to fail the pipeline based on the compliance rule failures. This can be achieved using the [Security Tests - External Policy Failures](/docs/security-testing-orchestration/policies/create-opa-policies.md#block-the-pipeline-based-on-external-policy-failures) policy from the [security tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies.md#security-test-policy-samples).

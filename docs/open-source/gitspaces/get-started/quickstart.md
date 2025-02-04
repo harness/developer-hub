@@ -10,7 +10,7 @@ This Quickstart guide aims to provide users with an introduction to developing u
 ## Pre-Requisite
 
 ### Installation
-Gitspaces are automatically available when you install **Harness Open Source**. For detailed installation instructions [refer this guide](https://developer.harness.io/docs/open-source/installation/quick_start).
+Gitspaces are automatically available when you install **Harness Open Source**. For detailed installation instructions [refer this guide](https://developer.harness.io/docs/open-source/installation/quick-start).
 
 ## Sample application
 
@@ -18,7 +18,7 @@ Let us go through the flow of creating a Gitspace for our sample application, wh
 
 ### Creating a Gitspace
 
-1. **Sign up** for or **Login** to Harness Open Source, and create a [new project](https://developer.harness.io/docs/open-source/installation/quick_start). You will see Gitspace available in the sidenav. 
+1. **Sign up** for or **Login** to Harness Open Source, and create a [new project](https://developer.harness.io/docs/open-source/installation/quick-start). You will see Gitspace available in the sidenav. 
 
 ![](./static/loading-page-gitspace.png)
 

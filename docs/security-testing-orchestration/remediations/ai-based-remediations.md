@@ -25,6 +25,8 @@ Once you complete a security scan using the scanners in STO, you can access all 
 - **[Create Pull Request](#create-pull-request-from-sto):** You can directly create a pull request with the remediation from STO, [available for supported code repositories and scanners](#configuration-for-code-suggestions-and-create-pull-request-features).
 - **[Make Code Suggestions](#make-code-suggestion-from-sto):** You can incorporate the remediation as code suggestions into an existing pull request, [available for supported code repositories and scanners](#configuration-for-code-suggestions-and-create-pull-request-features).
 
+<DocVideo src="https://youtu.be/h-Obqn2b9o4?si=nLu299rwZUfHODSH" />
+
 ## Important notes for Harness AI remediations in STO
 
 

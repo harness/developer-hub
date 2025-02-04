@@ -25,7 +25,7 @@ An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that
 1. In your [project](../administration/project-management.md), select **Artifact Registries**. 
 2. Select the dropdown next to **New Artifact Registry**, and then select **Upstream Proxy**.
 3. Select a [registry type](/docs/open-source/registries/whats-supported#supported-registry-types).
-4. Enter the **Upstream Proxy Key**. This is the identifier or name for the proxy within Gitness and is chosen by you. 
+4. Enter the **Upstream Proxy Key**. This is the identifier or name for the proxy within Harness Open Source instance and is chosen by you. 
    :::tip
     This proxy key must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
    :::

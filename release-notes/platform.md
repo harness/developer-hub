@@ -79,6 +79,24 @@ The following deprecated API endpoints are longer supported:
 
 ## January 2025
 
+### Version 1.74.x <!-- January 31, 2025 -->
+#### Fixed issues
+
+- Users will now require the "Create Project" permission for the **Create Project** button to be enabled. [PL-59658]  
+
+- When creating or updating a resource group containing resources with invalid identifiers, the system previously removed the invalid resources and updated the rest of the group. Now, an error message will be displayed specifying the invalid identifiers. [PL-58961]
+
+
+#### New features and enhancements
+
+- We have rotated the SAML signing certificate, which is available for download from the SAML settings page under authentication settings. [PL-59737]  
+
+- Added delegate-less support to the HashiCorp Secret Manager Connector, allowing users to choose the connectivity mode as Platform or Delegate when configuring JWT authentication for the connector. [PL-59176]  
+
+- Upgraded the base image from ubi8-minimal to ubi9-minimal in Harness images. [PL-58377]  
+
+- Archiving support has been added in TimescaleDB using a dedicated MinIO server, which will be installed alongside TimescaleDB. By default, archiving is enabled in the Harness Helm chart. [PL-58114]
+
 ### Version 1.73.x <!-- January 27, 2025 -->
 #### Fixed issues
 
