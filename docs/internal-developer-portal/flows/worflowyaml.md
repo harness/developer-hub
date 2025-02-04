@@ -10,12 +10,12 @@ import TabItem from '@theme/TabItem';
 
 Workflows are stored in the Software Catalog under the kind **“Template”.** You can create and configure your own workflows in Harness IDP using a YAML file typically named **```workflow.yaml```.** This YAML file acts as the single source of truth, describing the workflow and its metadata. Below is an overview of its configuration.
 
-## What is  ```workflow.yaml```?
+## Workflow YAML Definition
 A workflow is defined through a YAML configuration file, usually named ```workflow.yaml```, which contains all the workflow’s metadata.
 
 The syntax and guidelines for writing this YAML configuration file are inspired by Backstage Templates. Learn more about the [Backstage guidelines](https://backstage.io/docs/features/software-templates/writing-templates/#specparameters---formstep--formstep) here.
 
-## Components of  ```workflow.yaml```
+## Components of Workflow YAML```
 The ```workflow.yaml``` has three main components:
 1. **Frontend**: Configures the input fields required for the workflow.
 2. **Backend**: Configures the actions to be triggered and the orchestration pipelines to be executed.
