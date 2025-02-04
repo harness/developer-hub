@@ -2,7 +2,7 @@
 title: Configuring Workflow Outputs
 description: Learn more about defining and generating outputs for your Workflows.
 sidebar_position: 6
-sidebar_label: Outputs
+sidebar_label: Configure Outputs
 ---
 
 You can configure specific outputs for your workflows. Each step defined in your backend within ```workflow.yaml``` can generate output variables that are used in the frontend after task execution. These outputs can include direct links to newly created resources, such as Git repositories, documentation pages, or CI/CD pipelines, providing developers with immediate access to manage or monitor their onboarded resources.

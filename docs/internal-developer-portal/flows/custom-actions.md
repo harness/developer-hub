@@ -2,7 +2,7 @@
 title: Configuring Workflow Actions
 description: Learn how to configure actions for your Workflow's backend. 
 sidebar_position: 5
-sidebar_label: Actions
+sidebar_label: Configure Actions
 ---
 The backend of **Harness IDP workflows** consists of a library of steps and actions that define the workflow logic. 
 

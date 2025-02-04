@@ -2,7 +2,7 @@
 title: Configuring Workflow Inputs
 description: Learn how to configure and customize inputs for your Workflow's frontend.  
 sidebar_position: 4
-sidebar_label: Inputs
+sidebar_label: Configure Inputs
 redirect_from:
   - /docs/internal-developer-portal/flows/custom-extensions
 ---

@@ -2,7 +2,7 @@
 title: Understanding Workflow YAML
 description: Get started with creating your Workflows using the Workflow YAML configuration. 
 sidebar_position: 2
-sidebar_label: YAML
+sidebar_label: Understand YAML Syntax
 ---
 
 import Tabs from '@theme/Tabs';
@@ -15,7 +15,7 @@ A workflow is defined through a YAML configuration file, usually named ```workfl
 
 The syntax and guidelines for writing this YAML configuration file are inspired by Backstage Templates. Learn more about the [Backstage guidelines](https://backstage.io/docs/features/software-templates/writing-templates/#specparameters---formstep--formstep) here.
 
-## Components of Workflow YAML```
+## Components of Workflow YAML
 The ```workflow.yaml``` has three main components:
 1. **Frontend**: Configures the input fields required for the workflow.
 2. **Backend**: Configures the actions to be triggered and the orchestration pipelines to be executed.
