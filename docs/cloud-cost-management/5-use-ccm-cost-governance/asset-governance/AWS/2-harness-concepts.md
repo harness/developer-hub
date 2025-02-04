@@ -98,8 +98,6 @@ The rule set is created successfully.
   <DocImage path={require('../static/create-new-rule-set-aws.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
-  <DocImage path={require('../static/view-rule-set-aws.png')} width="90%" height="90%" title="Click to view full size image" />
-
 11. You can view the rule set on the **Asset Governance Rules** page. Expand the rule set to view the individual rules in the rule set.
 12. Select **Enforce Rule Set** in the Enforcements column to enforce this rule set.
 
@@ -153,6 +151,7 @@ To create an Enforcement, perform the following steps:
 8. Select the Rules or Rule Sets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
 9. Select **Continue**. 
     <DocImage path={require('../static/create_enforcement_aws.png')} width="90%" height="90%" title="Click to view full size image" />
+     <DocImage path={require('../static/rules_aws_selection.png')} width="90%" height="90%" title="Click to view full size image" />
 10. Select the target accounts and target regions. You could select multiple accounts and regions.
 11. Set the frequency from **Hourly**, **Daily**, or **Weekly** options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
 12. Toggle the **Dry Run** mode if you do not want to take action immediately.
@@ -181,7 +180,6 @@ We now have Terraform support for managing Governance Enforcements. Please see [
 :::
 
 
-
 ## Evaluations
 
 Evaluations include all the data about enforcements run (both RUN ONCE from rule editor and from Enforcement). The Evaluations window also shows you the total cost impact with each Enforcement i.e. the costs or spendings associated with each Evaluation along with the last time that Rule/Rule set was enforced. With Evaluations, you can view and audit all the Enforcements that ran in the past.
@@ -203,6 +201,9 @@ Harness CCM also supports multiple statuses for evaluations. Currently CCM suppo
 4. Select the rule for which you want to view the Evaluation details. The target account, region, identified resources and evaluation logs are displayed.
 
 <DocImage path={require('../static/evaluations_Aws.png')} width="90%" height="90%" title="Click to view full size image" />
+
+In the output window, users can see the resources identified in form of a Table or JSON. The table view supports all the filters and flattening of the table is supported as well. That essentially means, nested propoerties are flattened. By default, nested objects and arrays are collapsed and can be expanded upto two levels. Further nested properties are shown as formatted JSON.
+
 
 
 ### Filters in Evaluations List Page

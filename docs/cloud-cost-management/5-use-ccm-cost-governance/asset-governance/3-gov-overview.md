@@ -10,7 +10,7 @@ The **Overview** page offers a consolidated summary of your organization's gover
 ## Asset Governance Overview 
 Here is an in-depth explanation of the Overview page and the information it displays for the users:
 
-  <DocImage path={require('./static/AG7.png')} width="120%" height="120%" title="Click to view full size image" />
+  <DocImage path={require('./static/AG8.png')} width="120%" height="120%" title="Click to view full size image" />
 
   - **Total Evaluations** — The total number of evaluations performed to date.
   - **Total Active Enforcements** — The total number of active enforcements created to date.
@@ -24,7 +24,7 @@ Here is an in-depth explanation of the Overview page and the information it disp
   - **Savings Breakdown** — A granular graph that shows savings breakdown across different cloud providers and resources. You can see savings broken down by:
     - **Cloud Provider**:  This shows total cost savings for each cloud provider.
     - **Resource Type**: This shows total cost savings by resource type .
-  - **Evaluations Trend** - This graph shows evaluations performed per day in the selected timeframe. If timeframe is selected for more than 2 months, the evaluations are shown per month in the selected timeframe.
+  - **Evaluations Trend** - This graph shows evaluations performed per day in the selected timeframe. If timeframe is selected for more than 2 months, the evaluations are shown per month in the selected timeframe. Also, evaluations along with their status i.e. "Success", "Partial Success" and "Failed" are shown.
   - **Recommendations** - Governance Overview displays a list of all recommendations that can help optimize the cloud assets and minimize cloud costs. Governance Overview highlights the total potential savings that can be achieved if all recommendations are applied.
   
     Additional to this, for each recommendation, Harness shows more details like:
@@ -47,14 +47,16 @@ You can see a list of all recommendations offered by Harness for each Cloud prov
 - [Asset Governance recommendations for Azure](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/Azure/azure-recommendations)
 - [Asset Governance recommendations for GCP](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/GCP/gcp-recommendations)
 
-### Custom Recommendations
+### Governance Recommendation Insights
 
 Harness CCM's Cloud Asset Governance provides recommendations out of the box for management of cloud resources. Harness CCM now offers the ability to customize these recommendations.
 
 Custom recommendations allow users to create personalized policies that integrate with the existing CCM recommendation engine.
 These custom recommendations not only show up in the recommendation section but also leverage features like the Ignore list, state management, and ticketing integration.
-  <DocImage path={require('./static/create-custom.png')} width="120%" height="120%" title="Click to view full size image" />
-  <DocImage path={require('./static/custom-tab.png')} width="120%" height="120%" title="Click to view full size image" />
+
+By clicking on the new 'Recommendation Insights' tab, users can view all recommendations and their insights. These recommendations can be filtered based on out-of-the-box rules ('By Harness') or custom rules ('Custom').
+
+  <DocImage path={require('./static/custom_rec.png')} width="120%" height="120%" title="Click to view full size image" />
   
 :::note
 - Currently, per account, a maximum of 10 custom recommendations can be created.
