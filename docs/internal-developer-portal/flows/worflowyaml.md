@@ -13,7 +13,7 @@ Workflows are stored in the Software Catalog under the kind **“Template”.** 
 ## What is  ```workflow.yaml```?
 A workflow is defined through a YAML configuration file, usually named ```workflow.yaml```, which contains all the workflow’s metadata.
 
-The syntax and guidelines for writing this YAML configuration file are governed by Backstage. Learn more about the [backstage guidelines](https://backstage.io/docs/features/software-templates/writing-templates/#specparameters---formstep--formstep) here.
+The syntax and guidelines for writing this YAML configuration file are inspired by Backstage Templates. Learn more about the [Backstage guidelines](https://backstage.io/docs/features/software-templates/writing-templates/#specparameters---formstep--formstep) here.
 
 ## Components of  ```workflow.yaml```
 The ```workflow.yaml``` has three main components:
