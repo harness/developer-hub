@@ -6,18 +6,7 @@ sidebar_position: 35
 
 You can manage your applications through the **Applications** found in **GitOps Overview** page. 
 
-<iframe 
-    src="https://app.tango.us/app/embed/4d59383b-7b7d-4355-acb7-1eed4ca657f0" 
-    title="Create an Upstream Proxy in Harness Artifact Registry" 
-    style={{ minHeight: '640px' }}
-    width="100%" 
-    height="100%"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    webkitallowfullscreen="true"
-    mozallowfullscreen="true"
-    allowfullscreen="true"
-></iframe>
+<DocVideo src="https://app.tango.us/app/embed/Navigating-GitOps-to-Access-Applications-in-Harness-cad0aa3f8abd4f1d96af0e482c51729e" title="Navigating GitOps to Access Applications in Harness" />
 
 ## New Applications
 
@@ -31,7 +20,8 @@ Each application will display various helpful information such as the applicatio
 
 Each tile will have 3 vertical dots. Clicking this will allow you to manually **Sync**, **Refresh**, or **Delete** the application. 
 
-![](./static/gitopsapplication.png)
+<!-- comment out this picture until we get one that is in sync -->
+<!-- ![](./static/gitopsapplication.png) -->
 
 See the following to learn more about some of these operations:
 - [Sync Applications](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications)
