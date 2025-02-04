@@ -26,7 +26,7 @@ Some other examples of traffic types that you might choose to create:
 | Traffic type | Description |  Key examples |
 | --- | --- | --- |
 | User | Authenticated users | user ID, profile ID |
-| Anonymous | Unauthenticated users <br />(Be careful not to overuse anonymous IDs as this can inflate your [MTK count](docs/feature-management-experimentation/admin-account-settings/docs/admin-best-practices/account-usage/mtk-efficiency#improving-your-mtk-efficiency).) | UUID, session ID |
+| Anonymous | Unauthenticated users <br />(Be careful not to overuse anonymous IDs as this can inflate your [MTK count](/docs/feature-management-experimentation/admin-account-settings/docs/admin-best-practices/account-usage/mtk-efficiency#improving-your-mtk-efficiency).) | UUID, session ID |
 | Tenant or organization | An ID that represents a tenant, company, or organization and may cover multiple users | tenant ID, company ID, organization ID |
 | Device | An ID that represents a specific device used by your users/customers | deviceID or equivalent |
 
@@ -68,7 +68,7 @@ How it works:
 2. In your application code that your developers write, your application initializes and configures the FME SDK to use one traffic type (the SDK will uses the string `"user"` by default if none is passed in). The SDK fetches [the payload (the **feature flag and segment definitions**)](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/fme-payload.md) **for that traffic type**. The SDK will be able to evalute these feature flags that it just fetched (associated with that one traffic type). Any **key (user ID)** you pass to the SDK client when calling the [getTreatment method](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/gettreatment-call.md) (to evaluate a feature flag) is **associated with the same traffic type** at the moment of evaluation.
 3. The SDK will periodically send events and impressions back to Harness. On Harness backend servers, Split will run metric calculations for **metrics** that share the same traffic type as the key (user ID) and feature flag.
 
-Thus, your choice of traffic type determines the feature flags, metrics, and segments that you can use together.
+Thus, the traffic type you select determines the feature flags, metrics, and segments that you can use together.
 
 ## FAQs
 
@@ -83,23 +83,21 @@ If these large groups are based on data you have about your users&mdash;e.g. dev
 ### Can I target multiple traffic types in the same feature flag, e.g. both authenticated and unauthenticated IDs?
 No, you must choose one traffic type, as this will ensure a consistent user experience. You can hypothetically pass multiple IDs within the same traffic type; however, this may create conflicting user experiences as multiple IDs may represent the same person.
 
-Something else to consider is using [custom attributes](/docs/feature-management-experimentation/40-feature-management/docs/target-with-flags/targeting-rules/target-with-user-attributes). For example, if you want to target users and devices, or users and companies, AND if the user ID has associated data (e.g. device, company), then you can pass the user ID as the traffic type and then use attributes to target groups of user IDs based on device or company. In this case, using the user traffic type allows you the granularity of user, but you can still targets groups of these users by whatever information you have about them!
+Something else to consider is using [custom attributes](/docs/feature-management-experimentation/40-feature-management/docs/target-with-flags/targeting-rules/target-with-user-attributes/target-with-user-attributes.md). For example, if you want to target users and devices, or users and companies, AND if the user ID has associated data (e.g. device, company), then you can pass the user ID as the traffic type and then use attributes to target groups of user IDs based on device or company. In this case, using the 'user' traffic type allows you the granularity of user, but you can still target groups of these users by whatever information you have about them!
 
 ### What if I’m running a feature flag on a webpage that gets authenticated and unauthenticated traffic?
 Our recommendation in this case is to use the traffic type that represents the first experience a user has on the webpage. For example, if it’s a homepage where visitors typically land on the page prior to logging in, using the “anonymous” traffic type is best practice to ensure a consistent user experience.
 
 ### My organization is B2B and we typically need to target organizations/ tentants/companies. However, we sometimes want to target down to the user level. How should we approach this?
 Our typical recommended solution is:
-1. Create the user traffic type and pass user ID or equivalent as the traffic
-key.
-2. Use custom attributes to then target the user IDs based on tenant ID or
-equivalent identifier.
+1. Create the user traffic type and pass user ID or equivalent as the traffic key.
+2. Use custom attributes to then target the user IDs based on tenant ID or equivalent identifier.
 
 Remember, create traffic types for the granularity you need for targeting and use attributes and segments to group those IDs together for easy targeting!
 
 ### I want to start sending events to FME for experimentation. What do I need to consider?
-When sending events to FME, the payload will include a traffic key or identifier. This is how our system is able to make the proper attribution for experiments, as we need the key to match between the event (e.g. the action taken by the user) and the impression (e.g. who saw on or off).
+When sending events to FME, the payload will include a traffic key or identifier. This is how our system is able to make the proper attribution for experiments, as we need the key to match between the event (e.g. the action taken by the user) and the impression (e.g. who saw the 'on' or 'off' feature flag treatment).
 
 Please ensure that whatever key is being passed with the event matches the traffic type(s) you plan to use in FME for feature flagging and experimentation.
 
-For example, if you send events tied to user IDs but you’re running experiments on unauthenticated traffic (anonymous), you’ll want to ensure you’re also collecting events associated with the unauthenticated traffic key.
+For example, if you send events tied to user IDs but you’re running experiments on 'unauthenticated' traffic (anonymous), you’ll want to ensure you’re also collecting events associated with the 'unauthenticated' traffic key.
