@@ -3,7 +3,7 @@ title: Rollout board
 sidebar_label: Rollout board
 helpdocs_is_private: false
 helpdocs_is_published: true
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 <p>

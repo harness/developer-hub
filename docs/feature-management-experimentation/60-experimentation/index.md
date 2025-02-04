@@ -16,7 +16,7 @@ Visualize your experimental results.
 <div style={{display: 'flex', width:'100%', boxSizing: 'border-box'}}>
 <div style={{paddingRight:'10px'}}>
 
-For example, [dimensional analysis](/docs/feature-management-experimentation/60-experimentation/docs/experiment-results/analyze-experiment-results/dimensional-analysis.md) can to capture important business insights for your team.
+For example, [dimensional analysis](/docs/feature-management-experimentation/60-experimentation/docs/experiment-results/analyze-experiment-results/dimensional-analysis.md) can capture important business insights for your team.
 
 </div>
 <div style={{maxWidth: '500px'}} align='right'>

@@ -3,10 +3,10 @@ title: Traffic types
 sidebar_label: Traffic types
 helpdocs_is_private: false
 helpdocs_is_published: true
-description: "Traffic types are a way of categorizing your user IDs"
+description: "Traffic types are a way of categorizing your user IDs (user keys)"
 ---
 
-Traffic types are a way of categorizing your user IDs.
+Traffic types are a way of categorizing your [user IDs (user keys)](./user-ids.md).
 
 The traffic types you choose will determine the granularity of your feature flag targeting rules and metric results.
 
@@ -18,7 +18,7 @@ Most customers choose to use the `user` traffic type. This would allow you to se
 You can use [segments](./segments.md) to group user IDs. Segments can be used in feature flag targeting rules.
 :::
 
-Traffic types should define your most granular level of feature flag targeting decisions. (Note that you can also set feature flag targeting rules based on user attributes.) Take a moment and carefully consider your traffic type choices. Our customer success advisors are on hand to help validate your Harness FME plan.
+Traffic types should define your most granular level of feature flag targeting decisions. (Note that you can also set feature flag targeting rules based on user attributes.) Take a moment and carefully consider your traffic type choices. Our customer success advisors are on hand to help validate your plan.
 
 :::info
 The actual string value you enter for your traffic types is a label. It is for your convenience and is not treated in any special way within FME. For example, FME will treat 'user', 'account', 'device', and 'utilizador' exactly the same. It is just a label for your convenience.
@@ -31,5 +31,5 @@ Your choice of traffic types does, however, determine the feature flags that you
 :::
 
 :::note[Note for developers]
-If you are using an SDK and you are unsure what traffic type you are using, then you are most likely using the `'user'` traffic type. This is the default traffic type when none is specified. Depending on the type of SDK you can pass a traffic type when initializing the SplitFactory instance (client-side SDKs), calling the `getTreatment` method (server-side SDKs), or calling the `track` method (most client-side and server-side SDKs).
+If you are using an SDK and you are unsure what traffic type you are using, then you are most likely using the `'user'` traffic type. This is the default traffic type when none is specified. Depending on the type of SDK, you can pass a traffic type when initializing the SplitFactory instance (client-side SDKs), calling the `getTreatment` method (server-side SDKs), or calling the `track` method (most client-side and server-side SDKs).
 :::
