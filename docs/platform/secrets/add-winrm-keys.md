@@ -116,7 +116,7 @@ Enter a **Name** for the WinRM credential and select **Continue**.
 
       6. **TGT Generation:** Select one of the following options:
 
-          * **Key Tab File:** Generates a new TGT from KDC every time you authenticate with the service.
+          * **Key Tab File:** Generates a new TGT from KDC every time you authenticate with the service. For more information, [please see below](#generating-keytab-files)
           * **Password:** Use Harness [encrypted text secrets](/docs/platform/secrets/add-use-text-secrets) to save the password and refer to it using this option.
 
 5. Select **Save and Continue**.
@@ -125,3 +125,16 @@ Enter a **Name** for the WinRM credential and select **Continue**.
 
    If a message appears stating that no Harness Delegate could reach the host, or that a credential is invalid, verify that your settings are correct, and your Harness Delegate is able to connect to the server.
 8. After the test succeeds, select **Finish** to save the WinRM credential.
+
+## Generating KeyTab Files
+There are multiple methods to generate KeyTab files.  The following is an example from the [MIT Kerberos Documentation](https://web.mit.edu/kerberos/krb5-devel/doc/basic/keytab_def.html)
+
+As a note, when utilizing KeyTab files, the file will need to be included/distributed to all delegates which may be establishing the connection.  The KeyTab will also need to be updated with rotations.  Because KeyTab files are encrypted tokens, they will not contain password data, or the special characters that may cause problems in password data.
+
+1. Ensure `ktutil` is available.  [ktutil Documentation](https://web.mit.edu/kerberos/krb5-1.12/doc/admin/admin_commands/ktutil.html)
+2. In terminal/bash, enter the `ktutil` CLI 
+3. Run `addent -password -p <principalName> -k 1 -e aes256-cts-hmac-sha1-96` to pull the token
+4. Run `wkt ./<username>.keytab` to write the keytab/keylist file to the location
+5. Add the keytab to the appropriate delegates.  This can be done in multiple methods, but an example would be to do a `kubectl cp` command.
+6. Provide the file location to the WinRM Secret
+   ![](./static/winrm-keytab.png)
