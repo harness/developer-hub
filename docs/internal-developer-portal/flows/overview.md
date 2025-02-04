@@ -35,7 +35,7 @@ The `workflow.yaml` file is divided into three key components:
 
 1. **Frontend**: Defines the **input fields** required for the Workflow.  
 2. **Backend**: Configures the **actions** to be triggered and the **orchestration pipelines** to be executed during the Workflow.  
-3. **Outputs**: Specifies the **output variables** to be used after backend execution.  
+3. **Outputs**: Specifies the **output variables** to be shown to developers after the execution.  
 
 Learn more about the [**Workflow YAML syntax**](/docs/internal-developer-portal/flows/worflowyaml.md) here. 
 
