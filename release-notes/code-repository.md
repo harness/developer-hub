@@ -45,19 +45,19 @@ These release notes describe recent changes to Harness Code Repository.
 
 #### New features and enhancements
 
-* add recreate replica API
-* Add rules API for Proj/Org/Account
-* add go-get middleware in git router
-* updated swagger for delete PR branch API
-* Add scope info to webhooks 
-* ignore not found error in delete repo
-* Add time and author filter params to list commits page
-* Updated Webhook for Code Comments to include all comment types
-* Rename review submitted webhook trigger
+* Added Recreate Replica API.
+* Added **Rules API** for projects, organizations, and accounts.
+* Added `go-get` middleware in the Git router.
+* Updated Swagger for the **Delete PR Branch** API.
+* Added scope info to webhooks.
+* Ignored "not found" errors when deleting repositories.
+* Added time and author filter parameters to the **List Commits** page.
+* Updated Webhook for **Code Comments** to include all comment types.
+* Renamed the **Review Submitted** Webhook Trigger.
 
 #### Fixed issues
 
-* Stream list-paths git operation to avoid message limit
+* Streamlined the **list-paths** Git operation to avoid message limits.
 * Handle sync of empty repo with non-'main' default branch
 * Move Generated UI URLs to New Nav
 * fix issue on label unassign activity
