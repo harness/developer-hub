@@ -27,7 +27,7 @@ Ready to start using Workflows? Follow our [**Quickstart Guide**](/docs/internal
 3. **Inputs are processed**, **backend actions are triggered**, and **orchestration pipelines** execute tasks according to the Workflow logic.  
 4. **Outputs are generated** as specified in the `workflow.yaml` configuration.  
 
-### [Understanding Workflow.yaml](/docs/internal-developer-portal/flows/worflowyaml.md) 
+### [Understanding Workflow YAML](/docs/internal-developer-portal/flows/worflowyaml.md) 
 Workflow is defined using a **YAML configuration** file, typically named **`workflow.yaml`**, which contains all the metadata required for the Workflow. This file is stored in the **root directory** of the source code repository in your connected Git provider.
 
 #### **Components of `Workflow.yaml`**
