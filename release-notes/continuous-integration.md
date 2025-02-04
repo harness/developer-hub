@@ -228,7 +228,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 | **Image**                | **Change**                                                            | **Previous version** | **New Version** |
 | ------------------------ | --------------------------------------------------------------------- | -------------------- | --------------- |
 | `drone/buildx`           | Revert base64 support added to handle secrets with special characters | 1.1.16               | 1.1.19          |
-| `harness/ci-addon`       | Log Service - ability to increase limit for logs in K8S               | 1.59                 | 1.61            |
+| `harness/ci-addon`       | Log Service - ability to increase limit for logs in K8S               | 1.16.59                 | 1.16.61            |
 | `harness/ci-lite-engine` | Log Service - ability to increase limit for logs in K8S               | 1.591.59             | 1.611.61        |
 
 ### Version 1.53
@@ -250,7 +250,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 - Improved "Copy to Clipboard" functionality for pipeline output logs. Previously, extra new lines were added when pasting the copied output, causing unnecessary spacing between lines. This issue has been fixed to ensure log output is pasted without additional line breaks. (CI-14200, ZD-68902)
 
 #### Harness images updates
-
+ 
 | **Image**            | **Change**                                                                                                    | **Previous version** | **New Version** |
 | -------------------- | ------------------------------------------------------------------------------------------------------------- | -------------------- | --------------- |
 | `harness/drone-git`  | Fixed an issue when using the GitHub SSH connector on Windows and cloning while fetching LFS files (CI-14592) | 1.61                 | 1.62            |
