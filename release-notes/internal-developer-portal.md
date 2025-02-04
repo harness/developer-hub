@@ -16,6 +16,40 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+## February 2025 
+
+### Version 0.39.0
+
+<!-- February 04, 2025-->
+
+#### What's New in this Release (New Features and Enhancements)
+1. **Conditional API Requests in Workflow Dynamic Pickers**: 
+Workflow Dynamic Pickers now support **conditional API requests** based on user input from prior workflow form fields. This feature enables interactive workflows where one field’s values dynamically depend on another.
+**For example**: In a **repository picker workflow**, users can now enter the organization name, and a subsequent dynamic picker field will fetch and display repositories specific to that organization. Read more about the feature here. [IDP-4291]
+
+2. **API Key based Pipeline Execution from IDP Workflows**: Users can now trigger a **Harness Pipeline** in an IDP Workflow using a **Harness API Key** instead of a user token. Previously, authentication relied on the user's token, requiring execution permissions for the pipeline.
+This feature enhances security by using dedicated API keys, eliminating the need for execution permissions. Read more about the feature here. [IDP-4051]
+
+3. **POST Method support for Dynamic Pickers**: Workflow Dynamic Pickers now supports the **POST method**, extending beyond just GET requests. 
+This feature is useful for fetching data using **GraphQL APIs**, calling **Lambda functions** with POST requests and handling APIs that require **large inputs via POST**. Read more about the feature here. [IDP-4292]
+
+#### Upcoming Features (Releasing by Feb 17)
+There are other features currently in progress and scheduled for release no later than **February 17th**. Here’s what these features do:
+
+1. **Fetch additional details and auto-populate form fields based on user selection**: This feature dynamically updates workflow form fields based on user input.
+**For Example**: When a user selects an application, an API request is sent to CMDB to fetch additional details, which are then used to populate the remaining fields automatically.
+
+2. **Allow arbitrary values in dynamic pickers**: Users can now manually enter custom text if their desired option is not available in the predefined list.
+
+#### Bug Fixes 
+1. Fixed payload creation for template variables and extended support for **pipeline template variables** in `trigger:harness-custom-pipeline` workflow action. [IDP-4492]
+2. Fixed an issue in **HarnessAutoOrgPicker** where projects with the same ID across different organizations caused conflicts. A dropdown has been added to allow users to **select the appropriate organization** when a project name exists in multiple organizations. [IDP-4168]
+3. Resolved an issue where negative values could be entered for scorecard weights. Added validation to ensure only **valid, non-negative values** are accepted. [IDP-3721]
+4. Resolved an issue where text on IDP workflow tiles was breaking across lines due to incorrect styling. This has been fixed to ensure proper text formatting and alignment. [IDP-4193]
+
+
+
+
 
 ## December 2024
 
