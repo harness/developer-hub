@@ -39,6 +39,112 @@ These release notes describe recent changes to Harness Code Repository.
 
 * We need org view and edit permissions in order to create rules/labels on the account level
 
+## December 2024
+
+### Version 1.26.2
+
+#### New features and enhancements
+
+* Added Recreate Replica API.
+* Added **Rules API** for projects, organizations, and accounts.
+* Added `go-get` middleware in the Git router.
+* Updated Swagger for the **Delete PR Branch** API.
+* Added scope info to webhooks.
+* Ignored "not found" errors when deleting repositories.
+* Added time and author filter parameters to the **List Commits** page.
+* Updated Webhook for **Code Comments** to include all comment types.
+* Renamed the **Review Submitted** Webhook Trigger.
+
+#### Fixed issues
+
+* Streamlined the **list-paths** Git operation to avoid message limits.
+* Handled synchronization of an empty repository with a non-'main' default branch.
+* Moved generated UI URLs to the new navigation.
+* Fixed an issue with label unassign activity.
+* Used space permissions in label and rules controllers.
+* Changed space permissions for space rules to repository permissions.
+* Resolved mentioned user IDs in email notifications.
+* Fixed sanitization for the Webhook Trigger: **Pull Request Review Submitted**.
+* Fixed string search issues involving '_' or '%'.
+* Improved PR activity messages for force pushes.
+* Included the PR author in the browser parameter in the PR listing page.
+* Replaced `TypesRepository` with `RepoRepositoryOutput` in Swagger.
+
+## November 2024
+
+### Version 1.25.3
+
+#### New features and enhancements
+
+* Added support for **Labels** in the Migration Tool.
+* Added account, organization, and project webhooks.
+* Added an Audit Log for bypassed requests.
+* Separated CODE Repo **Create/Edit** into distinct permissions.
+* Added Code Owners status in the PR overview page.
+* Added a new webhook type: **review_submitted**.
+* Added a new webhook event for label assignment.
+* Added an API for space-level webhook creation.
+* Added support for **Code Owners** user groups.
+* Updated error messages for forbidden access cases.
+* Added an API to squash commits on a branch.
+* Updated UI labels for the audit service.
+* Added audit logging changes for commit, merge, branch creation, and deletion.
+
+#### Fixed issues
+
+* Increased ingress limits.
+* Added environment variables to enable indexing and searching of large files.
+* Fixed Swagger documentation for webhook execution and added branch restore.
+* Updated code URL API.
+* Fixed status checks displaying incorrect timestamps.
+* Fixed an issue where resource names were missing.
+* Handled errors for import-progress API failures.
+* Expanded detection of repository not found cases in Git error parsing.
+* Handled import-progress API responses when importing repositories via the migrator.
+
+## October 2024
+
+### Version 1.23.3
+
+#### New features and enhancements
+
+* Renamed **Gitness** to **Harness Open Source**.
+* Added support for the **Fast Forward Merge strategy**.
+* Added branch update rules: **block_branch_update**, **block_force_push**.
+* Added a button to rebase PRs.
+* Updated to the latest GitLeaks release.
+* Added a missing PR activity type: reviewer-add.
+* Added PR source branch delete/restore API.
+* Added reviewer-add PR activity entry.
+
+#### Fixed issues
+
+* Fixed vanity URLs.
+* Fixed PR links in the PR listing.
+* Fixed rebase API rule checks.
+
+## September 2024
+
+### Version 1.21.4
+
+#### New features and enhancements
+
+* Updated Semantic Search and PR Summary from **GPT-3.5-Turbo** to **GPT-4o-Mini**.
+* Added backend support for User Groups.
+* Added support for Webhook Execution Logs.
+* Added Branch Rules: User Group Support (Create and List).
+* Added an option to delete branches for merged/closed PRs.
+* Improved error messages for protection rule violations.
+* Enabled auto-collapse for resolved code comments.
+* Added repository descriptions and UI URLs in emitted webhook info.
+
+#### Fixed issues
+
+* Updated to the latest GitLeaks release.
+* Added repo_review permission to JWT authentication with allowed resources.
+* Fixed OpenAPI issues in repository listing.
+* Ensured an empty list is returned when no repositories are present in a space.
+
 ## August 2024
 
 ### Version 1.17.2
