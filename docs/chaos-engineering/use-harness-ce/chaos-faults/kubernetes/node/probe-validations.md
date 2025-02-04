@@ -46,7 +46,7 @@ This topic describes the best practices to use with resilience probes in Kuberne
 - CMD Source Probe (Cluster Autoscaler): To check if the nodes are scaled (up or down) according to your autoscaler. It also determines the time the service takes to scale the nodes.
 - CMD Source Probe (Pod Failover): To check if pods can failover to other nodes if the impacted node becomes unresponsive.
 - CMD Source Probe: Check if the containers scheduled on the target node restarted.
-- CMD Source Probe: Checks if alerts were fired or node status was upodated when the node was restarted due to OOM kill (when memory usage was more than allotted memory).
+- CMD Source Probe: Checks if alerts were fired or node status was updated when the node was restarted due to OOM kill (when memory usage was more than allotted memory).
 
 ### [Kubelet Service Kill](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/node/kubelet-service-kill)
 
