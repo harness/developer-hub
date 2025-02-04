@@ -417,7 +417,7 @@ You can see the evaluation you just performed.
 
 You can view YAML difference when updates are made to policy and policy set within [Audit Trail](/docs/platform/governance/audit-trail/audit-trail.md).
 
-![](./static/yaml_diff_audit_trail.png)
+![](./static/yaml-diff-audit-trail.png)
 
 ### Summary
 
