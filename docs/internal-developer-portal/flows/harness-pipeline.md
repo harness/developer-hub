@@ -3,7 +3,7 @@ title: Setting Up the Backend with IDP Pipeline
 description: Get started with setting up your Workflow's backend with Harness Pipeline.
 sidebar_position: 6
 sidebar_label: Harness IDP Pipeline
-redirect_from: /docs/internal-developer-portal/flows/idp-stage.md
+redirect_from: /docs/internal-developer-portal/flows/idp-stage
 ---
 
 import Tabs from '@theme/Tabs';
