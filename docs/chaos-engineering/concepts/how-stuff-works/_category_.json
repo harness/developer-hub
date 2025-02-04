@@ -1,13 +1,14 @@
 {
-  "position": 8,
+  "position": 10,
   "label": "How Stuff Works",
-  "collapsible": "true",
-  "collapsed": "true",
+  "collapsible": true,
+  "collapsed": true,
   "link":{
-    "type":"generated-index",
-    "title":"How Stuff Works",
- },
+      "type":"generated-index",
+      "title":"How Stuff Works",
+      "description": "Understand how centralized execution plane works, the interaction between execution and control plane for agent-based and agentless models in Harness Chaos Engineering, and all about Harness Network Proxy."
+   },
   "customProps": {
-    "description": "Understand how Harness Network proxy works, generic flow of control during a chaos experiment, how network faults, stress faults, and API faults work."
+    "description": ""
   }
 }
