@@ -232,6 +232,51 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
 
 :::
 
+## Jan 31, 2025, Patch Version 0.24.4
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.24.4](https://github.com/harness/helm-charts/releases/tag/harness-0.24.4)                 |
+| Air Gap Bundle            | [0.24.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.24.4) |
+| NG Manager                | 1.68.8                                                                                       |
+| CI Manager                | 1.57.5                                                                                       |
+| Pipeline Service          | 1.107.4                                                                                      |
+| Platform Service          | 1.46.1                                                                                       |
+| Access Control Service    | 1.68.0                                                                                       |
+| Delegate                  | 24.11.84503                                                                                  |
+| GitOps Service            | 1.20.6                                                                                       |
+| Change Data Capture       | 1.39.2                                                                                       |
+| STO Core                  | 1.120.4                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.54.4                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.1                                                                                        |
+| Log Service               | 1.14.6                                                                                       |
+| Batch Processing          | 1.31.8                                                                                       |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.24.4/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.4/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.4/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.4/code_images.tgz"
+  "gs://smp-airgap-bundles/harness-0.24.4/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.4/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.4/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.24.4/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Added log instrumentation for SAML login issue
+  
 ## Jan 31, 2025, Patch Version 0.25.1
 
 This release includes the following Harness module and component versions.
