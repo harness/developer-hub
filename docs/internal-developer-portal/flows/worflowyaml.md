@@ -255,7 +255,7 @@ Here's how you can access the playground:
 ### Input Parameters
 The input fields in **parameters** can be structured sequentially. Since it accepts an array, you can either have all input fields on a single page or divide them into multiple pages, rendering them as different steps in the form.  
 
-These fields are built using the [**React JSON Schema**](https://github.com/rjsf-team/react-jsonschema-form) library. Additionally, the library includes an option called **`uiSchema`**, which we have integrated by merging it with the existing **JSON Schema** you provide. This allows for enhanced UI customization using `ui:*` properties, which can be seen in the step definitions.
+These fields are built using the [**React JSON Schema**](https://rjsf.netlify.app) library. The library includes many fields which can be used with the `ui:field` property of an input field. `ui:options` in the same field are used to customize the field behavior.
 
 You can explore more about the different input types available in this library. Check out the [documentation](https://rjsf-team.github.io/react-jsonschema-form/docs/) and an interactive [playground](https://rjsf-team.github.io/react-jsonschema-form/) to experiment with various examples.
 
