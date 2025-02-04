@@ -1,0 +1,17 @@
+Each event for the metrics described above automatically includes three properties that can be use to filter certain events when defining Split metrics for experimentation purposes. Learn more about [metric definitions and how to define property filters](https://help.split.io/hc/en-us/articles/22005565241101-Metrics).
+
+| **Name** | **Description** | **Values** | 
+| --- | --- | --- | 
+| connectionType | Speed of connection  | 2g, 3g, 4g |
+| url | The url that generated the metric |  |
+| userAgent | The user agent |  |
+
+Custom properties can be also added to a tracked event by using the `setProperties` method:
+
+```javascript
+SplitRumAgent.setProperties({ 'property_name': 'property_value' }); // set a single or multiple properties as a map object of key/value pairs
+
+const properties = SplitRumAgent.getProperties(); // get all properties as a map object of key/value pairs
+
+SplitRumAgent.removeProperties(); // remove properties
+```

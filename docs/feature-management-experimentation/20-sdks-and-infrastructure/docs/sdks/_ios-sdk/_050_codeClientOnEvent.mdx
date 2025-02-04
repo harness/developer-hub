@@ -1,0 +1,35 @@
+```swift title="Swift"
+...
+let client = factory.client
+
+client.on(event: SplitEvent.sdkReady, execute: {
+    // The client is ready to evaluate treatments according to the latest feature flag definitions
+    // Do some stuff on main thread
+})
+
+// Or
+client.on(event: SplitEvent.sdkReadyTimedOut) {
+  // This callback will be called if and only if the client is configured with ready timeout and
+  // is not ready for that time or if the API key is wrong. 
+  // You can still call getTreatment() but it could return CONTROL.
+
+  // Do some stuff on main thread
+}
+
+client.on(event: SplitEvent.sdkReadyFromCache) {
+  // Fired after the SDK could confirm the presence of the Split data.
+  // This event fires quickly, since there's no actual fetching of information.
+  // Keep in mind that data might be stale, this is NOT a replacement of sdkReady.
+
+  // Do some stuff on main thread
+}
+
+client.on(event: SplitEvent.sdkUpdated) {
+  // fired each time the client state change. 
+  // For example, when a feature flag or segment changes.
+
+  // Do some stuff on main thread
+}
+
+...
+```

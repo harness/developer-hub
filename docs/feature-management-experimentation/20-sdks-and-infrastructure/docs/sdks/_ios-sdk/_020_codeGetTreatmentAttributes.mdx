@@ -1,0 +1,23 @@
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the feature flag targeting rules (defined in the FME/Split user interface) to decide which treatment is assigned to this key.
+
+```swift title="Swift"
+var attributes: [String:Any] = [:]
+
+attributes["plan_type"] = "growth"
+attributes["registered_date"] = Date().timeIntervalSince1970
+attributes["deal_size"] = 1000
+attributes["paying_customer"] = true
+let perms: [String] = ["read", "write"];
+attributes["permissions"] = perms
+
+// See client initialization above
+let treatment = client?.getTreatment("FEATURE_FLAG_NAME", attributes: attributes)
+
+if treatment == "on" {
+    // insert code here to show on treatment
+} else if treatment == "off" {
+    // insert code here to show off treatment
+} else {
+    // insert your control treatment code here
+}
+```

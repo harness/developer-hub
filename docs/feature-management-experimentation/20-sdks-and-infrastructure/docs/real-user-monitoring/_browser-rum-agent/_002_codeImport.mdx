@@ -1,0 +1,26 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Split's RUM Agent is delivered as a NPM package and as a script UMD bundle hosted in a CDN. You can import the Agent into your project using either of the two methods shown below.
+
+<Tabs
+  groupId="package"
+  values={[
+    {label: 'NPM package (recommended)', value: 'npm'},
+    {label: 'CDN bundle', value: 'cdn'},
+  ]}>
+  <TabItem value="npm">
+
+```bash
+npm install --save @splitsoftware/browser-rum-agent
+```
+
+  </TabItem>
+  <TabItem value="cdn">
+
+```html
+<script src="https://cdn.split.io/rum-agent/browser-rum-agent-1.0.0.min.js"></script>
+```
+
+  </TabItem>
+</Tabs>

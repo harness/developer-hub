@@ -1,0 +1,56 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+`Impression` object interface:
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+String key();
+String bucketingKey();
+String split();
+String treatment();
+Long time();
+String appliedRule();
+Long changeNumber();
+Map<String, Object> attributes();
+Long previousTime();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+key(): String?
+bucketingKey(): String?
+split(): String?
+treatment(): String?
+time(): Long?
+appliedRule(): String?
+changeNumber(): Long?
+attributes(): Map<String, Any?>?
+previousTime(): Long?
+```
+
+  </TabItem>
+</Tabs>
+
+Type and description of each `Impression` object field:
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- | 
+| key | String | Key which is evaluated. |
+| bucketingKey | String | Key which is used for bucketing, if provided. |
+| split | String | Feature flag which is evaluated. |
+| treatment | String | Treatment that is returned. |
+| time | Long | Timestamp of when the impression is generated. |
+| appliedRule | String | Targeting rule in the definition that matched resulting in the treatment being returned. |
+| changeNumber | Long | Date and time of the last change to the targeting rule that the SDK used when it served the treatment. It is important to understand when a change made to a feature flag is picked up by the SDKs and whether one of the SDK instances is not picking up changes. |
+| attributes | Map\<String, Object\> | A map of attributes passed to `getTreatment`/`getTreatments`, if any. |
+| previousTime | Long | If SDK is deduping and a matching impression is seen before on the lifetime of the instance this is its timestamp. |

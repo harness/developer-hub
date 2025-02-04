@@ -1,0 +1,16 @@
+## User consent
+
+By default the Agent will send events to Split cloud, but you can disable this behavior until user consent is explicitly granted.
+
+The `userConsent` configuration parameter lets you set the initial consent status of the Agent, and the `SplitRumAgent.setUserConsent(boolean)` method lets you grant (enable) or decline (disable) dynamic event tracking.
+
+There are three possible initial states:
+ * `'GRANTED'`: The user grants consent for tracking events. The Agent sends them to Harness servers. This is the default value if the `userConsent` parameter is not defined.
+ * `'DECLINED'`: The user declines consent for tracking events. The Agent does not send them to Harness servers.
+ * `'UNKNOWN'`: The user neither grants nor declines consent for tracking events. The Agent tracks them in its internal storage, and eventually either sends them or not if the consent status is updated to `'GRANTED'` or `'DECLINED'` respectively.
+
+The status can be updated at any time with the `setUserConsent` method.
+
+Example of working with user consent:
+
+<>{props.codeGetUserConsent}</>

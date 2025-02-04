@@ -1,0 +1,26 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+You can import the SDK into your project using NPM or our bundled option which we host through our CDN.
+
+You can take advantage of both `slim` and `full` entry points when using NPM as you decide what to import. However, on the already bundled option, the code included is static, so we expose a different bundle for each entry point. The `slim` version includes all the key functionality of the SDK and the full one includes every available pluggable module, for example, the logger or the *InlocalStorage* module.
+
+<Tabs>
+  <TabItem label="NPM (recommended)" value="npm">
+```bash
+npm install --save @splitsoftware/splitio-browserjs
+```
+  </TabItem>
+  <TabItem label="CND bundle" value="cdn">
+```html
+<!-- Choose the preferred script tag, you don't need both -->
+
+<!-- Slim build, smaller footprint -->
+<script src="//cdn.split.io/sdk/split-browser-1.0.1.min.js"></script>
+
+<!-- Full build, bigger footprint but all modules are exposed and usable,
+including fetch polyfill -->
+<script src="//cdn.split.io/sdk/split-browser-1.0.1.full.min.js"></script>
+```
+  </TabItem>
+</Tabs>
