@@ -20,9 +20,6 @@ Each application will display various helpful information such as the applicatio
 
 Each tile will have 3 vertical dots. Clicking this will allow you to manually **Sync**, **Refresh**, or **Delete** the application. 
 
-<!-- comment out this picture until we get one that is in sync -->
-<!-- ![](./static/gitopsapplication.png) -->
-
 See the following to learn more about some of these operations:
 - [Sync Applications](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications)
 - [Refresh Applications](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics#refresh)
