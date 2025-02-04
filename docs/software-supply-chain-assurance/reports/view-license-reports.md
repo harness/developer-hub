@@ -32,19 +32,16 @@ Follow the steps below to view the License-Report for the artifacts. You can use
 
 1) Click on the Grid in the top-left menu, Select Dashboards, and then choose Supply Chain.
 
-<!-- <DocImage path={require('./static/license-reporting.png')} width="80%" height="100%" title="Click to view full size image" />  -->
-![Click to view full-size image](./static/license-reporting.png)
+<DocImage path={require('./static/license-reporting.png')} width="80%" height="100%" title="Click to view full size image" /> 
 
 
 2) Click on the **License Report - Artifacts** dashboard to view the license reports for artifacts. Similarly you can view the license reports for code repositories by selecting **License Report - Repositories**
 
-<!-- <DocImage path={require('./static/artifacts-dashboard.png')} width="80%" height="100%" title="Click to view full size image" /> -->
-![Click to view full-size image](./static/artifacts-dashboard.png)
+<DocImage path={require('./static/artifacts-dashboard.png')} width="80%" height="100%" title="Click to view full size image" />
 
 3) You will be able to see the License Report with all the data.
 
-<!-- <DocImage path={require('./static/license-artifact-reports.png')} width="80%" height="100%" title="Click to view full size image" /> -->
-![Click to view full-size image](./static/license-artifact-reports.png)
+<DocImage path={require('./static/license-artifact-reports.png')} width="80%" height="100%" title="Click to view full size image" />
 
 4) You can filter out the data based on individual licenses or license family by selecting any of the artifacts.
 
@@ -55,8 +52,7 @@ Follow the steps below to view the License-Report for the artifacts. You can use
  **Example**: If you only want to allow permissive licenses, such as MIT or Apache 2.0, you can easily filter out any licenses from other families like Reciprocal (GPL) or Weak Reciprocal (LGPL).
 * **Artifacts:** Select any artifact to view and manage its components and to access the detailed information.
 
-<!-- <DocImage path={require('./static/license-artifact-filter.png')} width="80%" height="100%" title="Click to view full size image" /> -->
-![Click to view full-size image](./static/license-artifact-filter.png)
+<DocImage path={require('./static/license-artifact-filter.png')} width="80%" height="100%" title="Click to view full size image" />
 
 :::tip
 
@@ -70,5 +66,4 @@ Whenever you apply a new filter, make sure to click on **Refresh** icon at the t
 * **Download:** Download the license report in any of the format ( PDF,CSV ).
 * **Schedule Delivery:** Set up automatic delivery of your license report (daily, weekly, or monthly) so you don’t have to check the dashboard manually.
 
-<!-- <DocImage path={require('./static/apply-filters-dashboard.png')} width="80%" height="100%" title="Click to view full size image" /> -->
-![Click to view full-size image](./static/apply-filters-dashboard.png)
+<DocImage path={require('./static/apply-filters-dashboard.png')} width="80%" height="100%" title="Click to view full size image" />
