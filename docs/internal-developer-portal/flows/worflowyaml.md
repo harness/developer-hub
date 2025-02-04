@@ -29,7 +29,7 @@ These components work together to facilitate workflow execution. Let’s dive de
 The frontend of Harness IDP workflows is customizable to accept different types of input fields based on custom requirements. This frontend serves as the entry point, where users fill in the necessary details to execute the workflow using the input parameters described.
 
 #### How to define the Workflow Frontend?
-- You can configure the frontend using the ```spec.parameters``` field in your YAML configuration. 
+- You can configure one or more pages of input fields in the frontend using the ```spec.parameters``` field in your YAML configuration. 
 - You can define multiple input fields using the `properties` field in your YAML configuration.
 
 <Tabs>
