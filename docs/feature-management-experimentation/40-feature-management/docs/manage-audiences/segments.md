@@ -64,7 +64,7 @@ In Split UI, you can filter the segments listed on the Segments pane by segment 
   <img src="https://help.split.io/hc/article_attachments/32099444683149" alt="create_a_segment_filter.png" width="250" />
 </p>
 
-## Creating a segment
+## Create a segment
 
 When creating a segment, the segment name, description, owners, and tags can help you and your team later manage your segment. This information can be customized to your team's workflow.
 
