@@ -1,5 +1,5 @@
 ---
-title: What's supported in Self-Managed Enterprise Edition
+title: Supported Features in Self-Managed Enterprise Edition
 description: Platforms and technologies supported by the on-prem Harness Self-Managed Enterprise Edition
 sidebar_label: What's supported
 sidebar_position: 1
@@ -22,13 +22,15 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 
 For details on the supported features of other Harness modules and the overall Harness Platform, visit [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
-## Production environment deployment infrastructure
+## Enviroment Deployment infrastructure
+
+### Production
 
 import Infra from '/docs/self-managed-enterprise-edition/shared/prod-env-infra.md';
 
 <Infra />
 
-## Development environment deployment infrastructure
+### Development 
 
 import Infra2 from '/docs/self-managed-enterprise-edition/shared/dev-env-infra.md';
 
