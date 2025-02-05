@@ -199,20 +199,20 @@ To enable this feature, set the `nestedVirtualization` property to `true` as sho
               size: xlarge # optional 
 ```
 
-### Whitelisting for Access to On-Prem Services (Mac Platform)
+### Allowlisting for Access to On-Prem Services (Mac Platform)
 
-If you're running builds on Harness Cloud macOS machines, and require access to on-premises resources, please whitelist the following CIDR block:  `207.254.53.128/25`
+If you're running builds on Harness Cloud macOS machines, and require access to on-premises resources, please allowlist the following CIDR block:  `207.254.53.128/25`
 
 This will enable seamless communication between Harness Mac-based CI infrastructure and your on-prem services.
 
 Alternatively, you can also use [Secure connector](/docs/continuous-integration/secure-ci/secure-connect) for accessing your on-premises resources.
 
-### Whitelisting for Access to On-Prem Services (Linux Platform)
+### Allowlisting for Access to On-Prem Services (Linux Platform)
 
-Harness Cloud users utilizing hosted Linux infrastructure, who rely on whitelisting for on-premises resource access, are requested to update their configuration.
+Harness Cloud users utilizing hosted Linux infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration.
 
 :::warning
-To ensure uninterrupted connectivity and functionality for your CI builds, please whitelist the following IP range in your network settings by **March 15th, 2025**:
+To ensure uninterrupted connectivity and functionality for your CI builds, please allowlist the following IP range in your network settings by **March 15th, 2025**:
 :::
 CIDR Blocks:
 
@@ -220,7 +220,7 @@ CIDR Blocks:
 15.204.17.0/24, 15.204.19.0/24, 15.204.23.0/24, 15.204.69.0/24, 15.204.70.0/24, 15.204.71.0/24, 51.81.128.0/24, 51.81.189.0/24
 ```
 
-**Additional IPs to Whitelist:**
+**Additional IPs to add to allowlist:**
 ```
 34.94.194.45, 34.133.164.105, 35.184.10.123, 34.171.8.178, 34.172.44.211, 34.28.94.170, 34.75.255.154, 34.139.54.93, 35.231.172.154,  
 35.227.126.5, 35.231.234.224, 34.139.103.193, 34.139.148.112, 35.196.119.169, 34.73.226.43, 35.237.185.165, 34.162.90.200, 34.162.31.112,  
@@ -229,7 +229,7 @@ CIDR Blocks:
 34.127.6.209, 35.185.226.205, 35.247.24.71, 34.168.30.50, 35.233.132.196, 34.168.214.255, 34.102.103.7, 34.102.40.149, 34.102.16.205,  
 34.127.65.210, 35.233.172.173
 ```
-If you have any questions or need assistance with the whitelisting process, please [contact Harness Support](https://support.harness.io/).
+If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
 
 ### Harness Cloud best practices
 

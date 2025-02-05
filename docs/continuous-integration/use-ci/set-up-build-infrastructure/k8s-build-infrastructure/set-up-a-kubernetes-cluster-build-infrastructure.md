@@ -338,7 +338,7 @@ If you leave this field blank, the `PriorityClass` is set to the `globalDefault`
 
 ### Node Selector
 
-A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector), which whitelist the set of candidate nodes based on your stage pod's requirements.
+A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector), which define an allowlist of candidate nodes based on your stage pod's requirements.
 
 ### Tolerations
 
