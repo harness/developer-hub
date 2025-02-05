@@ -22,6 +22,10 @@ The basic steps are:
 4. Define the steps for the different deployment strategies:
 	- **Basic:** In a Basic deployment, all nodes(pods, instances, etc) within a single environment are replaced at the same time with new nodes containing the new service/artifact version.
 
+## Step by Step Guide
+
+<iframe src="https://app.tango.us/app/embed/42b00687-c903-46c5-96a5-33a4e8c273fd" style={{ minHeight: '640px' }}sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" security="restricted" title="Deploying Azure Functions with Harness" width="100%" height="100%" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
+
 ## Azure Function pipeline stages
 
 Azure deployments are performed using a CD stage with the deployment type **Azure Function**.
@@ -96,10 +100,6 @@ In your stage **Environment**, in **Specify Infrastructure**, you select an infr
 
 Within the same resource group, you can't mix Windows and Linux apps in the same region. See [Limitations](https://docs.microsoft.com/en-us/azure/app-service/overview#limitations) from Azure.
 
-When you're done, infrastructure will look something like this:
-
-![](static/azure-functions-6.png)
-
 :::info note
 In the deploy steps under Container Configuration, specify the appropriate image based on your container registry:
 
@@ -122,8 +122,6 @@ The Azure function Deploy step has the following settings:
  * **Image**: Specify the artifact image you want to run. 
  * **Function app**: Specify the Azure Container to be used.
  * **Deployment Slot:** Enter the name of the Source slot for the deployment. This slot is where Harness deploys the new Azure Function version. Make sure the slot you enter is running.
-
-![](static/azure-functions-5.png)
 
 Additionally you can have optional configurations such as 
 * **Pre-Execution Command:** A command that runs before the main execution starts.
@@ -157,12 +155,6 @@ Additionally you can have optional configurations such as
 * **Limit CPU:** Sets a limit on the CPU usage for the function or container, ensuring the function does not consume excessive resources.
 
 ![](static/azure-functions-7.png)
-
-## Step by Step Guide
-
-<iframe src="https://app.tango.us/app/embed/42b00687-c903-46c5-96a5-33a4e8c273fd" style={{ minHeight: '640px' }}sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" security="restricted" title="Deploying Azure Functions with Harness" width="100%" height="100%" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
-
-
 
 ## Azure Function Deployment Sample 
 
