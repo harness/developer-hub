@@ -35,19 +35,24 @@ CIDR Blocks:
 ```
 15.204.17.0/24, 15.204.19.0/24, 15.204.23.0/24, 15.204.69.0/24, 15.204.70.0/24, 15.204.71.0/24, 51.81.128.0/24, 51.81.189.0/24
 ```
-
-**Additional IPs to Whitelist:**
-```
-34.94.194.45, 34.133.164.105, 35.184.10.123, 34.171.8.178, 34.172.44.211, 34.28.94.170, 34.75.255.154, 34.139.54.93, 35.231.172.154,  
-35.227.126.5, 35.231.234.224, 34.139.103.193, 34.139.148.112, 35.196.119.169, 34.73.226.43, 35.237.185.165, 34.162.90.200, 34.162.31.112,  
-34.162.177.5, 34.162.189.244, 34.162.184.1, 34.125.74.8, 34.125.80.89, 34.16.190.122, 34.125.82.12, 34.125.11.217, 35.197.35.30,  
-35.233.237.208, 34.83.94.29, 34.168.158.33, 34.168.20.8, 34.82.156.127, 34.83.1.152, 34.168.60.254, 34.82.65.138, 34.82.140.146,  
-34.127.6.209, 35.185.226.205, 35.247.24.71, 34.168.30.50, 35.233.132.196, 34.168.214.255, 34.102.103.7, 34.102.40.149, 34.102.16.205,  
-34.127.65.210, 35.233.172.173
-```
-If you have any questions or need assistance with the whitelisting process, please [contact Harness Support](https://support.harness.io/).
-
 :::
+:::note
+
+**Action Required: Migration from GCR to GAR**
+
+Google Container Registry (GCR) is being decommissioned. 
+
+* As part of this change, support for the **"Build and Push to GCR" step in Harness CI will be discontinued. Customers currently using this step need to transition to the "Build and Push to Google Artifact Registry (GAR)" step to continue building and pushing container images without interruption.
+* Customers that have configured HarnessImage Connector to pull [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) form GCR, need to update the connector configurations to the [new Google Artifact Registry URL](http://us-docker.pkg.dev/gar-prod-setup/harness-public)
+
+To ensure uninterrupted service, we recommend completing these updates by April 22, 2025.
+* After March 18, 2025, writing images to Google Container Registry (GCR) will no longer be possible.
+* After April 22, 2025, reading images from GCR will also be disabled.
+
+For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
+:::
+
+
 
 ### Version 1.63
 
