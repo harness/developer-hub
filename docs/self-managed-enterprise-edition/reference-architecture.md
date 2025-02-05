@@ -19,12 +19,12 @@ Organizations can optimize their software delivery platform with these architect
 
 Harness Self-Managed Enterprise Edition offers four environment profiles based on team size and execution capacity:  
 
-| **Environment** | **Users** | **CI Executions** | **CD Executions** | 
-|---------------|----------|------------------|------------------|
-| **Demo**     | Up to 10  | 2                | 2                | 
-| **Small**    | Up to 200 | 50               | 50               | 
-| **Medium**   | Up to 1000 | 250              | 250              |
-| **Large**    | Up to 3000 | 500              | 500              |
+| **Environment** | **Users**  | **Parallel Executions (CI)** | **Parallel Executions (CD)** |
+|-----------------|------------|------------------------------|------------------------------|
+| **Demo**        | Up to 10   | 2                            | 2                            |
+| **Small**       | Up to 200  | 50                           | 50                           |
+| **Medium**      | Up to 1000 | 250                          | 250                          |
+| **Large**       | Up to 3000 | 500                          | 500                          |
 
 The **Demo** environment is for testing, while **Small, Medium, and Large** require a licensed version.
 

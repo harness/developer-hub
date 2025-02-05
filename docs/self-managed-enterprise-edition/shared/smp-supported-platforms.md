@@ -1,10 +1,5 @@
 The following table lists the major supported features for Harness Self-Managed Enterprise Edition offerings.
 
-<<<<<<< Updated upstream
-Solution| Supported Platform| Air Gap | HA | Monitoring| Disaster Recovery |
-| :-----------------------------------------------------------------: | :----------------------------: | :-----------: | :----------------: | :-------------------: | :-----------------: |
-| Kubernetes Cluster|  GKE - AKS - EKS | Yes| Yes | Prometheus, Grafana | Yes
-=======
 | Feature                | Supported                                                      | 
 |------------------------|----------------------------------------------------------------|
 | Cloud Platform         | <li>EKS</li><li>GKE</li><li>AKS</li>                           |
@@ -15,7 +10,6 @@ Solution| Supported Platform| Air Gap | HA | Monitoring| Disaster Recovery |
 | Networking             | <li>Istio/Nginx</li><li>[ALB/NLB/GCLB](/docs/self-managed-enterprise-edition/install/install-using-helm/#add-a-load-balancer).</li>                      |
 | Monitoring             | <li>[Prometheus](/docs/self-managed-enterprise-edition/monitor-harness-on-prem#set-up-prometheus-in-cluster).</li><li>[Grafana](/docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the-grafana-dashboard).</li>                             |
 | Air-gapped             | [Yes](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment/)                                                            |
->>>>>>> Stashed changes
 
 ### Self-Managed Enterprise Edition Release cadence
 Harness releases Self-Managed Enterprise Edition on a monthly basis. Additionally, periodic hot-fixes are released as needed. Self-Managed Enterprise Edition takes a branch cut of Harness SaaS release and creates a Release Candidate which goes through the iteration of testing and bug fixing process after which the release candidate is released.
