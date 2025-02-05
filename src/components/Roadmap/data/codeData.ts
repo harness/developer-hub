@@ -40,7 +40,6 @@ export const codeData: Horizon = {
         title: "Automatically Add Code Owners to Reviews",
         description: "Enable automatically adding Code Owners to reviews",
       },
-
     ],
   },
   Next: {
