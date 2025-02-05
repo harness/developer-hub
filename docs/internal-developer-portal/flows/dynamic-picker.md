@@ -37,7 +37,7 @@ This is where our Dynamic Workflow Picker comes into play. Let's see how it work
 
 The Workflow UI makes a request to our [Backend Proxy](https://developer.harness.io/docs/internal-developer-portal/plugins/delegate-proxy/) which you can configure as a way to securely make requests to third party APIs and get a response. The UI Picker allows you to customize the response a bit and present it as a list in the dropdown.
 
-## How to create a Dynamic Workflow Picker
+## Creating a Dynamic Workflow Picker
 
 There are two steps to adding a dynamic workflow picker in Harness IDP.
 
@@ -99,7 +99,7 @@ https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/proxy/github-api/user
 
 Here `https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/proxy/github-api/` can be seen exactly as `https://api.github.com/`. So all the endpoint paths on the GitHub API can be used after the proxy endpoint URL. You can learn more about how to consume Harness IDP APIs on our [API Docs](/docs/internal-developer-portal/api-refernces/public-api).
 
-### Step 2: Create the dropdown picker in Workflows form
+### Step 2: Create the Dropdown Picker in Workflows Form
 
 Now that our Backend proxy is ready, it is time to create that dropdown picker. Here is a small example to start with
 
@@ -131,11 +131,22 @@ And that's it! We now have a Workflow dropdown where results are coming from an 
 
 ![](./static/dynamic-picker-example.png)
 
-### Use Form Data from a Previous page in a New Page
+## Conditional API Requests
 
-While using Dynamic Workflow UI Pickers, users can now reference the data take as an input in the previous page, using `{{ parameters.properties }}`.
+Workflow Dynamic Pickers support **conditional API requests** based on user input from prior workflow form fields. This enables interactive workflows where one field’s values dynamically depend on another.
 
-```YAML
+**For example:** In a repository picker workflow, users can now enter the organization name, and a subsequent dynamic picker field will fetch and display repositories specific to that organization.
+
+### Using Form Data
+When a user selects or provides input in a form field, the **Form Context** is updated with the relevant data. Other fields, typically read-only, can subscribe to this context and automatically update based on the latest information.
+
+With Dynamic Workflow UI Pickers, users can reference previously entered form data using **``{{ parameters.properties }}``**. This allows dynamic values to be used directly in the **``path``** field of the Dynamic Picker, where the variables pull values selected in other fields.
+
+### Example YAML
+Let’s understand this with an example. In this case, we aim to list all the pipelines available under a specific project within a specific organization—both defined dynamically by the user.
+
+
+```YAML {23}
 parameters:
   - title: Select Harness Project
     type: object
@@ -151,9 +162,6 @@ parameters:
         description: Select the Harness Organization ID
         type: string
         ui:field: HarnessAutoOrgPicker
-  - title: Select Harness Pipeline
-    type: object
-    properties:
       pipelineId:
         type: string
         ui:field: SelectFieldFromApi
@@ -161,8 +169,7 @@ parameters:
           title: Harness Pipeline ID
           placeholder: Select the Harness Pipeline ID
           allowArbitraryValues: true
-          path: proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{
-            parameters.projectId }}/pipelines
+          path: proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{ parameters.projectId }}/pipelines
           valueSelector: identifier
           labelSelector: identifier
 steps:
@@ -174,27 +181,36 @@ steps:
         "{ parameters.pipelineId }": null
 ```
 
-In the above YAML, the API endpoint values under the `path` dynamically insert the `organizationId` and `projectId` from the first set of parameters taken as an input in the previous page, to construct the endpoint URL for fetching the list of pipelines. 
+#### YAML Breakdown:
+To achieve our goal, we need to establish a dependency between the **`pipelineId`** dynamic picker field and the **`organizationId`** and **`projectId`** fields. Here's how:  
 
+- The API endpoint values under the **`path`** dynamically insert **`organizationId`** and **`projectId`** from the previously provided input parameters, constructing the endpoint URL for fetching the list of pipelines.  
+- You can use the property variable in the **`path`** field with the following format:  
+
+  ```bash
+  {{ parameters.propertyName }}
+  ```
+
+**Example API Path:**  
 ```bash
 proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{ parameters.projectId }}/pipelines
 ```
 
-Hence, it will list all the pipelines present under the particular project int org mentioned as displayed below. 
+As a result, it will list all pipelines available under the specified project within the mentioned organization, as shown below:  
 
-![](./static/parameters-refernce.gif)
+![](./static/parameters-refernce.gif)  
 
 :::info
-You cannot reference properties on the same page, and property references only work with values provided through Dynamic UI pickers. 
+You can also reference properties across **multiple pages**, and property references only work with values provided through Dynamic UI pickers. 
 :::
 
-## Reference Docs
+## Supported Filters to parse API response
 
-### `SelectFieldFromApi`
+### `SelectFieldFromApi` Field
 
-Here is an elaborate example of what all properties are possible with the `SelectFieldFromApi` field.
+Here is an elaborate example of what all properties are possible with the `SelectFieldFromApi` field, showcasing how to parse values from an API response.
 
-```yaml
+```YAML
 properties:
   api-picker:
     type: string
@@ -203,7 +219,13 @@ properties:
     ui:options:
       title: Title
       description: Description
-
+      # (Optional) Mention about the type of API call POST/GET, GET is default if not mentioned
+      request:
+        method: POST
+        headers:
+          Content-Type: text/plain
+        # Indicates the format of the request body being sent. 
+        body: This is a simple plain text message
       # The Path on the Harness IDP backend API and the parameters to fetch the data for the dropdown
       path: "proxy/proxy-endpoint/api-path"
       params:
@@ -223,6 +245,36 @@ properties:
 ```
 
 You can find the detailed docs on the [project's README](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/scaffolder-field-extensions/scaffolder-frontend-module-http-request-field).
+
+### POST Method Support
+
+The **POST method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, and handling APIs that require **large inputs** via POST.
+
+Here's how the POST method is used to fetch and populate dynamic pickers within forms, focusing on the GitHub Repos Multi picker (`customMulti`):
+
+```YAML
+customMulti:
+  title: GitHub Repos Multi
+  type: array
+  description: Pick one of GitHub Repos
+  ui:field: SelectFieldFromApi
+  ui:options:
+    label: Multi Select
+    path: proxy/github-api/users/{{parameters.gitusername}}/repos
+    valueSelector: full_name
+    request:
+      method: POST
+      headers:
+        Content-Type: text/plain
+      body: This is a simple plain text message
+```
+
+- In this example, a POST request is made to the GitHub API to retrieve repositories for a specific user (`{{parameters.gitusername}}`).
+- Using POST is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
+
+#### Key Elements:
+- **`Content-Type: text/plain`**: Specifies that the request body is sent as plain text. If structured data (e.g., JSON) is needed, this should be changed to `application/json`.
+- **`body` field**: Contains the data sent to the API. In this example, the body is a **plain text message**: `"This is a simple plain text message"`.
 
 ### Parsing API Response using filters
 

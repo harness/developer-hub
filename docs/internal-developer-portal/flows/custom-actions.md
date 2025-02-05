@@ -151,48 +151,43 @@ To obtain these references, simply copy the variable path from the Harness Pipel
 
 3. `apikey`: Harness authentication token 
 
-In the example above the `apikey` parameter takes input from Harness Token which is specified under spec as a mandatory parameter as mentioned below
+You can opt for authentication via the **`user token`** mode by specifying the **`token`** setup in your **`parameters.properties`** section of the **Workflow YAML**.
 
+#### Defining the **`token`** setup:
 ```YAML
-...
 token:
     title: Harness Token
     type: string
     ui:widget: password
     ui:field: HarnessAuthToken
-    ...
-
 ```
-Without the above parameter input the pipeline won't be executed. [Take a look at this example](https://github.com/harness-community/idp-samples/blob/eb9988020d3917c0bca7daccb354ba670626221b/tutorial-self-service-flow-template.yaml#L64-L68) 
 
-
-The `token` property we use to fetch **Harness Auth Token** is hidden on the **Review Step** using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in-case you have multiple pages.
-
+#### Referencing the **`token`** in the **`steps`** spec of the Workflow YAML:
+You'll need to reference the **`token`** within the **steps** section using the following format:
 ```YAML
-# example workflow.yaml
-...
-parameters:
-  - title: <PAGE-1 TITLE>
-    properties:
-      property-1:
-        title: title-1
-        type: string
-      property-2:
-        title: title-2
-    token:
-      title: Harness Token
-      type: string
-      ui:widget: password
-      ui:field: HarnessAuthToken
-  - title: <PAGE-2 TITLE>
-    properties:
-      property-1:
-        title: title-1
-        type: string
-      property-2:
-        title: title-2
-  - title: <PAGE-n TITLE>  
-...
+apikey: ${{ parameters.token }}
+```
+
+4. `apiKeySecret`: Harness API Key 
+
+Read more about this [authentication mode](docs/internal-developer-portal/flows/worflowyaml.md) here. 
+
+You can also trigger a pipeline in an IDP Workflow using a **pre-configured Harness API Key**.  
+- Use a **Harness `x-api-key`** (with pipeline execution permissions) stored in the [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview).  
+- The secret must be stored in the **Account Scope** to ensure accessibility for workflow execution.
+
+#### Defining the **`secretkey`** setup:
+```YAML
+secretkey:
+    title: API Key Secret
+    type: string
+    default: apiKeySecret
+    ui:readonly: true
+```
+
+#### Referencing the **`secretkey`** in the **`steps`** spec:
+```YAML
+apiKeySecret: ${{ parameters.secretkey }}
 ```
 
 4. `hidePipelineURLLog`: Boolean to hide logs (optional)

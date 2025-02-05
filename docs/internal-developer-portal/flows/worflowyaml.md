@@ -146,6 +146,167 @@ output:
       url: "${{ steps['deploy-pipeline'].output.pipelineUrl }}"
 
 ```
+## Authentication
+
+There are two ways in which **Workflow to Harness Pipeline authentication** works in **Harness IDP Workflows**. You can trigger a Harness Pipeline in an IDP Workflow using two modes:  
+
+- **User Token**: The user's token is used to trigger the Harness Pipeline.  
+- **Harness API Key**: A pre-configured Harness API key is used to trigger the Harness Pipeline.  
+
+These authentication modes can be defined while using the following action: [**`trigger:harness-custom-pipeline`**](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline).
+
+### Modes
+
+
+|                              | **Authentication Mode: User Token**                                                                                                                                                                                                                                                                                             | **Authentication Mode: Harness API Key**                                                                                                                                                                                                                                                                                          |
+|------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Overview**                     | The user who triggers the workflow uses their **own credentials** to trigger the pipeline. The user must have **Execute permission** for the underlying pipeline(s) to ensure successful execution.                                                                                                                            | The user triggers the workflow using a **dedicated API Key** to initiate the pipeline. In this case, the user **may not have direct access** to the underlying pipeline(s). Platform engineers can generate the necessary API token and configure it within the workflow as default, ensuring no user can access or modify the pipeline. |
+| **When to use (Ideal scenario**) | The **workflow** exists in an **open scope**, while the **underlying pipeline(s)** are in a project where **All Account Users (or All Org Users)** have Pipeline Execute permission.                                                                                                                                                       | The **Pipeline** lives in a **closed project** where you do not want to give users **direct View and Execute permissions**. This is useful to hide the business/implementation.                                                                                                                                                                   |
+| **Ease of setup**                | Easy to set up—requires **adding a field under parameter**s in the workflow.                                                                                                                                                                                                                                                                 | Requires **creation and management of a Harness API Key**, also configuring the workflow with the secret identifier.                                                                                                                                                                                                                  |
+| **RBAC Setup**                   | Requires adding **All Account** Users (or specific users and groups) to the project where pipeline resides with the **Pipeline Execute** permission. This could be a tedious setup and can expose other pipelines in the project as well. (Ideally such pipelines should live in a dedicated project for  IDP Workflows which are open) | The Workflow and Pipeline can live in **different scopes** but can be connected with the **Platform Engineer’s API Key**.                                                                                                                                                                                                                 |
+
+
+### User Token
+
+You can opt for authentication via the **`user token`** mode by specifying the **`token`** setup in your **`parameters.properties`** section of the **Workflow YAML**.
+
+#### 1. Defining the **`token`** setup:
+```YAML
+token:
+    title: Harness Token
+    type: string
+    ui:widget: password
+    ui:field: HarnessAuthToken
+```
+
+#### 2. Referencing the **`token`** in the **`steps`** spec of the Workflow YAML:
+You'll need to reference the **`token`** within the **steps** section using the following format:
+```YAML
+apikey: ${{ parameters.token }}
+```
+
+#### Example YAML:
+```YAML {22}
+parameters:
+  - title: Deploy service
+    required:
+      - username
+    properties:
+      username:
+        title: Username
+        type: string
+    token:
+      title: Harness Token
+      type: string
+      ui:widget: password
+      ui:field: HarnessAuthToken
+steps:
+  - id: trigger
+    name: Run Deploy service
+    action: trigger:harness-custom-pipeline
+    input:
+      url: pipeline url
+      inputset:
+        username: ${{ parameters.username }}
+      apikey: ${{ parameters.token }}
+output:
+  links:
+    - title: Pipeline Details
+      url: ${{ steps.trigger.output.PipelineUrl }}
+```
+
+
+#### YAML Breakdown:
+- In the above example, the **`apikey`** parameter retrieves its value from **Harness Token**, which is defined in the **`parameters.properties`** section as a required input.  
+- Without the **`token`** parameter input, the pipeline won't be executed.  
+- [Take a look at this example for further clarification.](https://github.com/harness-community/idp-samples/blob/eb9988020d3917c0bca7daccb354ba670626221b/tutorial-self-service-flow-template.yaml#L64-L68)
+
+
+#### How does it work for a multi-page Workflow?
+The **`token`** property used to fetch the **Harness Auth Token** is hidden on the **Review Step** using **`ui:widget: password`**. However, for this to function correctly in a **multi-page workflow**, the token property must be included under the **first `page`**.
+
+```YAML
+# example workflow.yaml
+parameters:
+  - title: <PAGE-1 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+    token:
+      title: Harness Token
+      type: string
+      ui:widget: password
+      ui:field: HarnessAuthToken
+  - title: <PAGE-2 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+  - title: <PAGE-n TITLE>
+```
+
+### Harness API Key
+You can also trigger a pipeline in an IDP Workflow using a **pre-configured Harness API Key**.  
+- Use a **Harness `x-api-key`** (with pipeline execution permissions) stored in the [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview).  
+- The secret must be stored in the **Account Scope** to ensure accessibility for workflow execution.
+
+#### 1. Defining the **`secretkey`** setup:
+```YAML
+secretkey:
+    title: API Key Secret
+    type: string
+    default: apiKeySecret
+    ui:readonly: true
+```
+
+#### 2. Referencing the **`secretkey`** in the **`steps`** spec:
+```YAML
+apiKeySecret: ${{ parameters.secretkey }}
+```
+
+---
+
+#### Example YAML:
+```YAML {22}
+parameters:
+  - title: Deploy service
+    required:
+      - username
+    properties:
+      username:
+        title: Username
+        type: string
+      secretkey:
+        title: API Key Secret
+        type: string
+        default: apiKeySecret
+        ui:readonly: true
+steps:
+  - id: trigger
+    name: Run Deploy service
+    action: trigger:harness-custom-pipeline
+    input:
+      url: pipeline url
+      inputset:
+        username: ${{ parameters.username }}
+      apiKeySecret: ${{ parameters.secretkey }}
+output:
+  links:
+    - title: Pipeline Details
+      url: ${{ steps.trigger.output.PipelineUrl }}
+```
+
+---
+
+#### YAML Breakdown:
+- The **`apiKeySecret`** field retrieves its value from **`parameters.secretkey`**, which is pre-populated with the Harness secret identifier.  
+- The **`readonly`** attribute ensures that users **cannot modify** the secret identifier, maintaining security.  
+
 
 ## Example YAML
 Here's an example of a single-page workflow:
