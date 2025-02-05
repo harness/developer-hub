@@ -13,6 +13,11 @@ import TabItem from '@theme/TabItem';
 This topic describes when Harness Network Proxy (HNP) is required, how you can install it, and configure DDCR and discovery HNP settings.
 
 When you have a restricted network and when you want all the outbound connections to go from a single node/cluster, you can use your own proxy or Harness Network Proxy (HNP).
+If direct connectivity exists, the proxy can be bypassed entirely.
+
+:::tip
+You can configure HNP with custom certificates that offers greater control over secure communication.
+:::
 
 The diagram below describes how the **Discovery Agent** and **Chaos Runner** communicate with Harness Control Plane.
 
@@ -24,6 +29,7 @@ The diagram above describes the following:
 - If your cluster does not have connectivity with the Harness portal (Harness Control Plane in the diagram), then such requests goes through the proxy.
     - In case you already have a proxy set up, you can [provide the URL of the proxy in the UI](/docs/chaos-engineering/use-harness-ce/infrastructures/proxy-support#delegate-driven-chaos-runner-ddcr).
     - In case you don't have a proxy set up, you can [install](#installation) HNP.
+    - In case you don't have a proxy set up, you can [install](#installation) HNP.
 
 :::tip
 Chaos runner supports token-based authentication with the Harness Platform. If you want to add another authentication on top of Harness authentication, you can [enable mTLS](/docs/chaos-engineering/use-harness-ce/infrastructures/mtls-support) for the account.
@@ -31,6 +37,17 @@ Chaos runner supports token-based authentication with the Harness Platform. If y
 
 ## Installation
 
+To install HNP, execute the below Helm command.
+
+```bash
+helm repo add harness-chaos https://harness.github.io/chaos-infra-helm-chart
+```
+
+```bash
+helm upgrade --install chaos-agent-proxy harness-chaos/chaos-infra -n hce -f override.yaml
+```
+
+You can install HNP with or without using mTLS. Described below are sample configurations for both of them.
 To install HNP, execute the below Helm command.
 
 ```bash
@@ -87,6 +104,7 @@ agent-proxy:
 </Tabs>
 
 ## HNP Configuration for Delegate-Driven Chaos Runner (DDCR)
+## HNP Configuration for Delegate-Driven Chaos Runner (DDCR)
 You can enable proxy settings in DDCR that enables you to restrict all the outbound traffic to go through the proxy.
 
 DDCR supports standard proxy variables `HTTP_PROXY` , `HTTPS_PROXY`, and `NO_PROXY`.
@@ -99,6 +117,7 @@ Instead, you can also provide `PROXY_URL` setting that is used to communicate wi
 
     ![](./static/delegate/mtls.png)
 
+## HNP Configuration for Discovery Agent
 ## HNP Configuration for Discovery Agent
 
 You can enable proxy settings in Discovery Agent that enables you to restrict all the outbound traffic to go through the proxy.

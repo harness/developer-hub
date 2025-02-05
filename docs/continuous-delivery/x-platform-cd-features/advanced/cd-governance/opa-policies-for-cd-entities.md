@@ -11,7 +11,7 @@ Open Policy Agent (OPA) is an open-source policy engine that enables users to wr
 Harness now supports OPA policies for Continuous Delivery (CD) entities, such as **Services**, **Environments**, **Infrastructure Definitions**, and **Overrides**. These policies ensure governance by enforcing predefined rules during entity operations, such as creating or saving configurations.
 
 :::note
-Currently, this feature is behind the feature flag `OPA_CD_ENTITIES_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `CDS_OPA_CD_ENTITIES_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 ### Key Features

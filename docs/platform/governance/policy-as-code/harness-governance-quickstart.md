@@ -413,6 +413,12 @@ Click **Evaluations**.
 
 You can see the evaluation you just performed.
 
+### View Audit Trail for updates made to Policy and Policy Set
+
+You can view YAML difference when updates are made to policy and policy set within [Audit Trail](/docs/platform/governance/audit-trail/audit-trail.md).
+
+![](./static/yaml-diff-audit-trail.png)
+
 ### Summary
 
 In this tutorial, you:

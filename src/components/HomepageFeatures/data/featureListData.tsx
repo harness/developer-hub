@@ -1,6 +1,6 @@
 import React from "react";
-import { CardItem, docType } from "../../LandingPage/TutorialCard";
-import { MODULES } from "../../../constants";
+import { MODULES } from "@site/src/constants";
+import { CardItem } from "@site/src/components/TutorialCard/TutorialCard";
 
 export const featureList: CardItem[] = [
   {

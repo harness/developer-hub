@@ -195,10 +195,11 @@ bootstrap:
     postgresql:
       metrics:
         enabled: true
-      podAnnotations:
-        prometheus.io/path: /metrics
-        prometheus.io/port: '9187'
-        prometheus.io/scrape: 'true'
+      primary:
+        podAnnotations:
+          prometheus.io/path: /metrics
+          prometheus.io/port: '9187'
+          prometheus.io/scrape: 'true'
 global:
   monitoring:
     enabled: true
