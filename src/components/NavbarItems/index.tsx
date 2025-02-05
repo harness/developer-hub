@@ -8,14 +8,6 @@ const CoveoSearch = () => {
   const [open, setOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [searchBoxController, setSearchBoxController] = useState<any>(null);
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      searchBoxRef.current &&
-      !searchBoxRef.current.contains(event.target as Node)
-    ) {
-      setOpen(false);
-    }
-  };
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -24,13 +16,6 @@ const CoveoSearch = () => {
     };
   }, []);
 
-  const handleSearch = (searchValue: string) => {
-    if (searchValue.trim().length > 0) {
-      setOpen(true);
-      setSearchValue(searchValue);
-    }
-  };
-  const [engine, setEngine] = useState<any>(null);
   useEffect(() => {
     async function Initialize() {
       const engine = await InitializeCoveo();
@@ -41,7 +26,43 @@ const CoveoSearch = () => {
       }
     }
     Initialize();
+
+    const interval = setInterval(() => {
+      console.log("checking");
+      
+      if (isTokenExpired()) {
+        Initialize();
+      }
+    }, 30000); // Check every 30 seconds
+
+    return () => clearInterval(interval);
   }, []);
+
+  const isTokenExpired = (): boolean => {
+    const storedToken = localStorage.getItem('coveo_token');
+    const data = JSON.parse(storedToken);
+    if (data.expiry) {
+      return data.expiry <= Date.now();
+    }
+    return true;
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      searchBoxRef.current &&
+      !searchBoxRef.current.contains(event.target as Node)
+    ) {
+      setOpen(false);
+    }
+  };
+
+  const handleSearch = (searchValue: string) => {
+    if (searchValue.trim().length > 0) {
+      setOpen(true);
+      setSearchValue(searchValue);
+    }
+  };
+  const [engine, setEngine] = useState<any>(null);
 
   if (!engine) {
     return <></>;
