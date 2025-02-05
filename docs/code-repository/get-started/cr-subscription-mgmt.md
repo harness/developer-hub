@@ -4,9 +4,9 @@ description: CR subscription usage limits.
 sidebar_position: 6
 ---
 
-Harness Code Repository is available for all customers of Harness Continuous Integration. Your subscription for Harness Continuous Integration determines the limits of your usage for Code Repository. Please refer to the documentation for [Harness Continous Integration](/docs/continuous-integration/get-started/ci-subscription-mgmt) to see your current subsctiption. 
+Harness Code Repository (CR) is available for all customers of the Harness Continuous Integration (CI) module. Your subscription for Harness CI determines the usage limits for Code Repository. Please refer to the documentation for [Harness Continous Integration](/docs/continuous-integration/get-started/ci-subscription-mgmt) to see your current subscription. 
 
-The number of users for Code Repository is determined by your CI subscription, however there are additional limits on Code Repository for storage and bandwidth based on your subscription tier.
+The number of users for CR is determined by your CI subscription, however there are additional limits on Code Repository for storage and bandwidth based on your subscription tier.
 
 ### Usage limits
 
