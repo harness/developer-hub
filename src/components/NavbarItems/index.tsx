@@ -28,8 +28,6 @@ const CoveoSearch = () => {
     Initialize();
 
     const interval = setInterval(() => {
-      console.log("checking");
-      
       if (isTokenExpired()) {
         Initialize();
       }
