@@ -34,7 +34,7 @@ Here is an interactive guide to setup your Cloud Run Service pipeline.
 
 <iframe 
 	src="https://app.tango.us/app/embed/8560a005-3946-42ad-9f60-15c4ff588749" 
-	style={{ minHeight: '640px'}} 
+	style={{ minHeight: '800px'}} 
 	sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
 	security="restricted" 
 	title="Setting Up GCR Sample Pipeline in Harness" 
@@ -178,7 +178,7 @@ Here is an interactive guide to setup your Cloud Run Job Stage.
 
 <iframe 
 	src="https://app.tango.us/app/embed/f5e17709-e6b9-4594-8b32-7cd49df99331" 
-	style={{ minHeight: '640px'}} 
+	style={{ minHeight: '800px'}} 
 	sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
 	security="restricted" 
 	title="Setting Up GCR Sample Pipeline in Harness" 
