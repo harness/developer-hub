@@ -12,6 +12,9 @@ redirect_from:
 canonical_url: https://www.harness.io/blog/gitops-benefits
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This topic describes how to install a Harness GitOps Agent, a worker process that runs in your environment and performs GitOps tasks.
 
 You need to set up an Agent before you can set up a Cluster, Repository, or Application, as the Agent is selected in all three of these.
@@ -60,6 +63,14 @@ If you do not use an existing Argo CD instance, then Harness will install the fo
 See [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md).
 
 ## Create a GitOps Agent
+
+<Tabs>
+<TabItem value="Interactive Guide">
+
+<DocVideo src="https://app.tango.us/app/embed/Creating-a-New-GitOps-Agent-in-Harness-318247e44e694d7cb3d046e986071ee3" title="Create a Harness GitOps Agent" />
+
+</TabItem>
+<TabItem value="Step-by-step Guide">
 
 Ensure your Harness Project has the **Continuous Delivery** module enabled.
 
@@ -115,6 +126,8 @@ The **YAML** option lets you download the manifest YAML for the Harness GitOps A
 
 ![](install-a-harness-git-ops-agent-yaml-95.png)
 
+</TabItem>
+</Tabs>
 
 ## Install the Agent
 
