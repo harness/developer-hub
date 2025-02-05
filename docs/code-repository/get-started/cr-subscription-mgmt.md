@@ -14,7 +14,7 @@ The following sections describe limits for storage and network transfer used by 
 
 #### Storage
 
-Harness stores data for git repositories and large file storage (LFS) in Harness managed storage. The aggregate size of all repositories on disk must not exceed the defined storage limit. If an account exceeds the storage limit, the system will block git push operations until resolved. 
+Harness stores data for git repositories and large file storage (LFS) in Harness-managed storage. The aggregate size of all repositories on disk must not exceed the defined storage limit. If an account exceeds the storage limit, the system will block git push operations until resolved. 
 
 The maximum amount of data that you can store depends on the plan you are subscribed to:
 * Free: 10 GB
@@ -32,7 +32,7 @@ All files stored in git are limited to 100 MB in size by default, regardless of 
 
 #### Bandwidth
 
-The network transfer limit applies to the data transferred from Harness Cloud to customer managed storage. The aggregate inbound and outbound network traffic must not exceed the defined bandwidth limit for the given calendar month. If an account exceeds the bandwidth limit their network requests will be blocked and return a “429 Too Many Requests http error” code.
+The network transfer limit applies to the data transferred from Harness Cloud to customer managed storage. The aggregate inbound and outbound network traffic must not exceed the defined bandwidth limit for the given calendar month. If an account exceeds the bandwidth limit, their network requests will be blocked and return a “429 Too Many Requests" HTTP error code.
 
 The bandwidth limit depends on the plan you are subscribed to:
 * Free: 50 GB
