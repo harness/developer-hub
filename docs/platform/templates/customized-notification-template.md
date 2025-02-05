@@ -7,10 +7,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::info note
-Currently this feature is behind Feature Flags `PL_CENTRAL_NOTIFICATIONS`, `PIPE_CENTRALISED_NOTIFICATION` and `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`. You will need all these flags turned on to use this feature. Contact [Harness Support](mailto:support@harness.io) to enable them.
+Currently this feature is behind Feature Flag: `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`
+However, since this is supported for centralised notification, we need `PL_CENTRAL_NOTIFICATIONS` and `PIPE_CENTRALISED_NOTIFICATION` to be enabled first.
 :::
 
-Users can now create notification templates, allowing users to customize notification content and reuse templates across multiple pipelines. Templates support Pipeline Expressions, Inputs, and RBAC controls, ensuring flexibility and security.
+Users can now create notification templates, allowing users to customize notification content and reuse templates across multiple pipelines. Templates support Pipeline Expressions and RBAC controls, ensuring flexibility and security.
 
 We are going to discuss about setting up notificatio template for Pipeline at a given scope. 
 
@@ -39,7 +40,7 @@ In this example, we are going to discuss setting up notification template for Pi
 5. (Optional) Select the pencil icon to enter a **Description**.
 6. (Optional) Select the pencil icon to add **Tags**.
 7. In **Version Label**, enter the version of the template, for example, `v1`. Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
-8. In Text Type you can choose text type **HTML**, **JSON**, **YAML** or **String**.
+8. In Text Type you can choose text type as **HTML**, **JSON**, **YAML** or **String** for content body.
 
 ![](./static/notification-template-1.png)
 
@@ -50,12 +51,60 @@ In this example, we are going to discuss setting up notification template for Pi
 
 10. Click on **Save**.
 
+Now, let's add this notification template to a notification rule:-
+
+1. In this example, we are going to discuss setting up notification management of Pipeline resource at Project Level:-
+
+1. In Harness, go to **Organization Settings**.
+2. Under **General**, select **Notifications Management**. 
+3. Under **Overview**, provide **Notification Name** and **Continue** to select Resource type.
+4. Under **Resources**, Select Resource Type as **Pipeline**. 
+5. Under **Condition** , select **+ Add Condition** to define pipeline events based on which you want to be notified.
+
+Under events you can select the following **pipeline events**:-
+
+1. Pipeline Start
+2. Pipeline Success
+3. Pipeline Failed
+4. Stage Start
+5. Stage Success
+5. Stage Failed
+
+:::info note
+Stage start/success/failed events will apply to all stages within a pipeline. There is no option to configure notifications for specific stages, if you want to do that you can configure it via [Pipeline level notification](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md).
+:::
+
+Under **Create Condition** provide, Condition Name and **Select Pipeline Events**. Click on **Continue** to set channel where you want to send the notification.
+
+6. Under **Notification Templates**, select your Notification template and select **Use Template** and click on **Continue**.
+
+7. Under **Set Channels**, **Select Channels** where you want notification to be sent.
+
+Under **Select Channel** you can chose the already created channel at that scope or you can create a [**New Channel**](/docs/platform/notifications/notification-settings.md).
+
+
+8. Select **Submit** to save your notification configuration.
+
+
+You can also view **Referenced By** in your Notification Template to see notification rule it is attached to.
+
+![](./static/notification-referenced-by.png)
+
+You can also check audit trail events for notification template created. 
+
+![](./static/notification-template-audit.png)
+
+
 </TabItem>
 </Tabs>
 
 ## YAML Structure
 
 YAML of notification template will look like:-
+
+:::info note
+You can choose text type for your content body as **HTML**, **JSON**, **YAML** or **String**.
+:::
 
 ```yaml
 template:
@@ -73,7 +122,7 @@ template:
         {
                 "pipeline name" : "<+pipeline.name>",
                 "stage Name" : "<+stage.name>",
-                "service Name" : "<+service.name>",
+                "service Name" : "deploy_azure_function",
                 "status" : "<+pipeline.status>"
          }
 ```
