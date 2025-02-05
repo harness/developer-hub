@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Tooltip from 'rc-tooltip';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { CardItem } from '../LandingPage/TutorialCard';
+import { CardItem } from '@site/src/components/TutorialCard/TutorialCard';
 import { featureList } from './data/featureListData';
 import 'rc-tooltip/assets/bootstrap.css';
 import styles from './styles.module.scss';
