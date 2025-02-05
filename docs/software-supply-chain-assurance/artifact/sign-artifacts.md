@@ -15,9 +15,9 @@ Protect your software supply chain by safeguarding your artifacts from being com
 As artifacts pass through multiple stages in the software lifecycle, ensuring they remain secure and untampered is critical. Artifact signing provides a reliable way to guarantee that the artifact built at one stage is the exact same artifact consumed or deployed at the next, with no chance of compromise. This process builds trust, ensures integrity, and strengthens the security of your software supply chain.
 
 
-:::note 
+<!-- :::note 
 Currently, this feature is behind the feature flag `SSCA_ARTIFACT_SIGNING`. Contact Harness Support to enable the feature.
-:::
+::: -->
 
 ## Artifact Signing process in SCS
 
