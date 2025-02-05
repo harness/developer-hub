@@ -89,6 +89,13 @@ export const featureList: CardItem[] = [
     link: "docs/chaos-engineering/getting-started/",
   },
   {
+    title: "Revolutionize Incident Management",
+    module: MODULES.ir,
+    icon: "img/icon-ir.svg",
+    description: <>Focus on proactive issue prevention and accelerated resolution.</>,
+    link: "docs/incident-response",
+  },
+  {
     title: "Increase Developer Productivity",
     module: MODULES.idp,
     icon: "img/icon_idp.svg",
