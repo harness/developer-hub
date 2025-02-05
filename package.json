@@ -48,8 +48,7 @@
     "react-router-dom": "^6.26.0",
     "rehype-katex": "7",
     "remark-math": "6",
-    "sass": "^1.81.0",
-    "update-notifier": "^7.2.0"
+    "sass": "^1.81.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.7.0",

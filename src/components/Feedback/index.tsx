@@ -11,12 +11,6 @@ const Feedback = () => {
       <BrowserOnly fallback={<div></div>}>
         {() => {
           const handleClick = () => {
-            /*
-            Refiner('setProject', '9afbf970-3859-11ed-91de-cb8481e90a69')
-            Refiner('showForm', '9afbf970-3859-11ed-91de-cb8481e90a69', true)
-            */
-            // NPM module doesn't work here in SSR mode for Docusaurus!
-            // Use plain js instead!!
             try {
               window._refinerQueue = window._refinerQueue || [];
               function _refiner() {
@@ -31,13 +25,6 @@ const Feedback = () => {
                 var b = document.getElementsByTagName('script')[0];
                 b.parentNode.insertBefore(a, b);
               })();
-              /* comment identifyUser code to use Anonymous mode for Refiner
-              _refiner('identifyUser', {
-                id: 'USER-ID-ABC-123', // Replace with your user ID
-                email: 'jane@awesome.com', // Replace with user Email
-                name: 'Jane Doe', // Replace with user name
-              });
-              */
               _refiner(
                 'showForm',
                 '9afbf970-3859-11ed-91de-cb8481e90a69',
