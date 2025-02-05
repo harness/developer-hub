@@ -1,15 +1,15 @@
-import React from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Link from "@docusaurus/Link";
-import styles from "./styles.module.scss";
-import { TutorialCards } from "../LandingPage/TutorialCard";
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React from 'react';
+import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
+import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
-import { docsCards } from "./data/iacmData";
-import { useColorMode } from "@docusaurus/theme-common";
+import { useColorMode } from '@docusaurus/theme-common';
+import { docsCards } from './data/iacmData';
 
 export default function Iacm() {
   const { colorMode } = useColorMode();
-  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+  const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -41,7 +41,7 @@ export default function Iacm() {
               <img
                 className={styles.illustration}
                 src={
-                  colorMode === "light"
+                  colorMode === 'light'
                     ? `${baseUrl}img/iacm_landing.png`
                     : `${baseUrl}img/iacm_landing dark.png`
                 }

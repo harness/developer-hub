@@ -42,24 +42,8 @@ Here's an example configuration:
 
 4. To access the forwarded port URL, go to the **"Ports"** section in your IDE terminal. From there, you can easily open the forwarded port URL.
 
-![](./static/port-forward-latest.png)
+![](./static/forward-port-hoss.png)
 
-### Understanding Port URLs
-A port URL includes:
-- ```Gitspace ID```: Unique identifier for your Gitspace.
-- ```Port No```: Forwarded port number is added to the port URL just before the region identifier.
-- ```Region```: Hosting region of the Gitspace.
-- ```Token```: A secure token generated for the session.
-
-A Gitspace URL exists in the following form:
-
-- https://[```Gitspace ID```].[```Region```].gitspace.harness.io/?token=[```Token```]
-
-Once the port number is added before the region, the port URL exists in the following form:
-
-- https://[```Gitspace ID```]-[```Port Number```].[```Region```].gitspace.harness.io/?token=[```Token```]
-
-The port URL is public, so you can share it with others to give them access to your application.
 
 ## Forwarding a Port: VS Code Desktop
 If you're using VS Code Desktop:

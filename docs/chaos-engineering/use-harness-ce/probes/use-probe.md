@@ -8,6 +8,9 @@ redirect_from:
 - /docs/chaos-engineering/use-harness-ce/probes/use-probe
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This topic describes the steps you can follow to create and use a resilience probe in your chaos experiment.
 
 ## Before you begin, review the following
@@ -25,6 +28,25 @@ Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. 
 :::
 
 ## Create a Resilience Probe from UI
+
+<Tabs>
+<TabItem value="Interactive Guide">
+
+<iframe 
+  src="https://app.tango.us/app/embed/49b98dd8-d557-41e1-b6c5-ede6ef7f17b3" 
+  style={{minHeight:'640px'}}
+  title="Set up a Resilience Probe" 
+  width="100%" 
+  height="100%" 
+  referrerpolicy="strict-origin-when-cross-origin" 
+  frameborder="0" 
+  webkitallowfullscreen="webkitallowfullscreen" 
+  mozallowfullscreen="mozallowfullscreen" 
+  allowfullscreen="allowfullscreen"></iframe>
+
+</TabItem>
+
+<TabItem value = "Step-by-Step">
 
 1. Select the **Chaos** module and navigate to **Resilience probes**. Click **New probe**.
 
@@ -46,6 +68,9 @@ Currently, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. 
 If you are a first-time chaos module user or a [Platform](https://developer.harness.io/docs/platform) user who has not used resilience probes, you can create a resilience probe directly from the Chaos Studio drawer (from within an experiment).
 For this, you will see an option to add a system probe (which is a health check system probe) as a one-click button. This will not be present if you have configured at least one resilience probe.
 :::
+
+</TabItem>
+</Tabs>
 
 ## Edit a Resilience Probe
 

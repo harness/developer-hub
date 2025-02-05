@@ -1,8 +1,6 @@
 import {
-  CardItem,
-  CardSections,
-  docType,
-} from "@site/src/components/LandingPage/TutorialCard";
+  CardSections
+} from "@site/src/components/TutorialCard/TutorialCard";
 import { MODULES } from "@site/src/constants";
 
 /* Define the cards - start */
@@ -42,7 +40,7 @@ export const docsCards: CardSections = [
         title: "Self Service Workflows",
         module: MODULES.idp,
         description: "Explore how to design workflows for automating engineering process in your organization.",
-        link: "/docs/internal-developer-portal/flows/service-onboarding-pipelines",
+        link: "/docs/internal-developer-portal/flows/overview",
       },
       {
         title: "Scorecards",
