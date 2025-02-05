@@ -21,7 +21,7 @@ You can set up notification template for Pipeline at following [scope](https://d
 :::info note
 1. Custom Notification template will work only with Centralized Notifications. 
 2. Custom Notification templates will work only for webhook notifications.
-3. Custom notiification templates don't support usage of template variables
+3. Custom notiification templates don't support usage of template variables.
 :::
 
 <Tabs>
