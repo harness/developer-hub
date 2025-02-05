@@ -104,7 +104,6 @@ agent-proxy:
 </Tabs>
 
 ## HNP Configuration for Delegate-Driven Chaos Runner (DDCR)
-## HNP Configuration for Delegate-Driven Chaos Runner (DDCR)
 You can enable proxy settings in DDCR that enables you to restrict all the outbound traffic to go through the proxy.
 
 DDCR supports standard proxy variables `HTTP_PROXY` , `HTTPS_PROXY`, and `NO_PROXY`.
