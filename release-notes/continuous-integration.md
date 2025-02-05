@@ -55,7 +55,7 @@ If you have any questions or need assistance with the whitelisting process, plea
 
 Google Container Registry (GCR) is being decommissioned. 
 
-* As part of this change, support for the **"Build and Push to GCR" step in Harness CI will be discontinued. Customers currently using this step need to transition to the "Build and Push to Google Artifact Registry (GAR)" step to continue building and pushing container images without interruption.
+* As part of this change, support for the **Build and Push to GCR** step in Harness CI will be discontinued. Customers currently using this step need to transition to the **Build and Push to Google Artifact Registry (GAR)** step to continue building and pushing container images without interruption.
 * Customers that have configured HarnessImage Connector to pull [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) form GCR, need to update the connector configurations to the [new Google Artifact Registry URL](http://us-docker.pkg.dev/gar-prod-setup/harness-public)
 
 To ensure uninterrupted service, we recommend completing these updates by April 22, 2025.
