@@ -10,7 +10,7 @@ The number of users for Code Repository is determined by your CI subscription, h
 
 ### Usage limits
 
-The following sections describe limits for storage and network transfer used by Harness Code Repository on Harness Cloud. Customers on paid plans can request request to increase bandwidth or storage limits. For more information, contact Harness Sales or your account manager.
+The following sections describe limits for storage and network transfer used by Harness Code Repository on Harness Cloud. Customers on paid plans can request to increase bandwidth or storage limits. For more information, contact [Harness Sales](https://www.harness.io/company/contact-sales) or your account manager.
 
 #### Storage
 
