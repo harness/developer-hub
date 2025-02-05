@@ -61,6 +61,28 @@ In this step, you can do the following:
    }
    ```
 
+- Use variables to update values in a list. For example, if you had the following yaml:
+
+```yaml 
+spec:
+  template:
+    metadata:
+      labels:
+        app: "bbguestbook-ui"
+        execution: "8"
+    spec:
+      containers:
+      - image: "gcr.io/heptio-images/ks-guestbook-demo:0.2"
+```
+
+  You can change the first container image by updating the variable `spec.template.spec.containers[0].image`. 
+
+  :::note
+
+  You can only update values that are present in a list. You cannot create or remove items in the list.
+
+  :::
+
 - If a variable name used in this step matches a variable in the Harness service or environment used in this pipeline, the variable entered in this step overrides the service or environment variable.
 
 - If an empty or blank value is provided for a variable, the variable is disregarded, and no updates are made to the JSON or YAML file for that specific variable.
