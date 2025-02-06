@@ -133,17 +133,24 @@ And that's it! We now have a Workflow dropdown where results are coming from an 
 
 ## Conditional API Requests
 
-Workflow Dynamic Pickers support **conditional API requests** based on user input from prior workflow form fields. This enables interactive workflows where one field’s values dynamically depend on another.
+Dynamic Pickers enable users to interact with the input form fields and get real-time options. This also ensures soft validation for the workflow creator as the user has the ability to choose their input form field value dynamically. How this works in the background is that the dynamic picker makes an API request to fetch the data to be shown dynamically. But this came with a downside, this API URL was fixed. This means that no query parameters could be used in this API URL to filter down the end results. There are several use cases where some API requests require an input to enable the user to interact with the form field. 
 
-**For example:** In a repository picker workflow, users can now enter the organization name, and a subsequent dynamic picker field will fetch and display repositories specific to that organization.
+Workflow Dynamic Pickers support **conditional API requests** based on user input from prior workflow form fields. This enables **interactive workflows** where one field’s values dynamically depend on another. This enables users to add inputs in the dynamic picker API request to fetch data to filter down the results. 
 
-### Using Form Data
+### Without vs With Conditional Requests
+Let's deep dive into the use cases of what happens when we don't use a conditional API request vs when we do use such requests in Harness IDP Workflows. 
+
+#### Without using Conditional API Requests
+In one such use case, for a repository picker workflow - a user needs to enter their organization and project name to get the list of repositories present. To enable this, users should be able to pass organization name and project name as inputs in the API URL for the respective repository dynamic picker field to pick the respective repositories. 
+
+
+### Using Form Context
 When a user selects or provides input in a form field, the **Form Context** is updated with the relevant data. Other fields, typically read-only, can subscribe to this context and automatically update based on the latest information.
 
-With Dynamic Workflow UI Pickers, users can reference previously entered form data using **``{{ parameters.properties }}``**. This allows dynamic values to be used directly in the **``path``** field of the Dynamic Picker, where the variables pull values selected in other fields.
+With Dynamic Workflow UI Pickers, users can reference previously entered form data using **``{{ parameters.[propertyId] }}``**. This allows dynamic values to be used directly in the **``path``** field of the Dynamic Picker, where the variables pull values selected in other fields.
 
 ### Example YAML
-Let’s understand this with an example. In this case, we aim to list all the pipelines available under a specific project within a specific organization—both defined dynamically by the user.
+Let’s understand this with an example. In this case, we aim to list all the pipelines available under a specific project within a specific organization—both defined dynamically by the user. (github repository, github org)
 
 
 ```YAML {23}

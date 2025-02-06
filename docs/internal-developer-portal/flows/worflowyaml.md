@@ -150,8 +150,8 @@ output:
 
 There are two ways in which **Workflow to Harness Pipeline authentication** works in **Harness IDP Workflows**. You can trigger a Harness Pipeline in an IDP Workflow using two modes:  
 
-- **User Token**: The user's token is used to trigger the Harness Pipeline.  
-- **Harness API Key**: A pre-configured Harness API key is used to trigger the Harness Pipeline.  
+- **User Token**: The user's token is used to trigger the Harness Pipeline.  (session token + execute permission emojis)
+- **Harness API Key**: A pre-configured Harness API key is used to trigger the Harness Pipeline.  (api key should have exeucte permission but the user must not have it)
 
 These authentication modes can be defined while using the following action: [**`trigger:harness-custom-pipeline`**](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline).
 
