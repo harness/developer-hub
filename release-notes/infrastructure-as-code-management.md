@@ -1,7 +1,7 @@
 ---
 title: Infrastructure as Code Management release notes
 sidebar_label: Infrastructure as Code Management
-date: 2024-08-27T17:00
+date: 2025-02-06T17:00
 tags: [Infrastructure as Code Management]
 sidebar_position: 17
 ---
@@ -35,6 +35,18 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 </HarnessApiData>
 ::: -->
 
+## February 2025
+### IAC-Server: Version TBC
+<!-- Released on 7 February 2025 -->
+#### New Features and Enhancements
+- **Module Registry:** We've introduced the Module Registry, a centralized repository that allows you to manage and publish versions of pre-built infrastructure modules. This feature supports versioning, enhances search functionality, and integrates seamlessly with existing IaCM configurations, all while providing detailed access control settings. 
+
+  #### What You Need to Know:
+  - **Prerequisites:** Ensure your Harness connectors are set up, or if using a delegate, it should be version `25.01.85000` or later.
+For more information, check out the [Module Registry Documentation](https://developer.harness.io/docs/infra-as-code-management/iacm-features/module-registry/).
+
+<details>
+<summary>IaCM 2024 Release Notes</summary>
 ## August 2024
 ### IAC-Server 1.50.0 and IAC-Manager: 1.32.0
 <!-- Released on 27 August 2024 -->
@@ -115,3 +127,4 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 <!-- Released on: 08 February 2024 -->
 #### Fixed issues
 - **Improved Variable Deletion Permissions:** Fixed an oversight where permissions for variable deletion were not checked during workspace updates. Previously, checks were only performed via the */variable* endpoint using the **DELETE method**. This update ensures that permissions are verified against both the individual deletions and the broader workspace variable updates, maintaining security without modifying the core architecture between **iac-server** and **sprox**. (IAC-1362)
+</details>
