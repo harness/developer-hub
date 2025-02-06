@@ -1,7 +1,7 @@
 ---
 title: CLI Integration
 description: Learn how to use CLI integration to confirm your remote backend.
-sidebar_position: 50
+sidebar_position: 70
 ---
 
 import Tabs from '@theme/Tabs';
