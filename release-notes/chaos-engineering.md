@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2025-01-22T10:00
+date: 2025-02-06T10:00
 sidebar_position: 5
 ---
 
@@ -24,7 +24,22 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ### Version 1.54.0
 
+#### Images required
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+
+- harness/chaos-ddcr:1.54.0
+- harness/chaos-log-watcher:1.54.0
+- harness/service-discovery-collector:0.34.0
+- docker.io/harness/chaos-ddcr-faults:1.54.0
+
 #### New features and enhancements
+
+- Upgraded the base image for all chaos services from `UBI-8` to `UBI-9` to resolve vulnerabilities. (CHAOS-7504)
+
+- Supports using a chaos fault template with boolean values. (CHAOS-7514)
+
+- Supports including a templated fault for an experiment that is part of an application map. (CHAOS-7516)
 
 #### Fixed issues
 
