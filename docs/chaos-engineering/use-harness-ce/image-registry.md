@@ -144,31 +144,31 @@ container:
 
 ## Images required
 
-Listed below are images that you should download to use image registry. The example below describes images required for 1.47.x release. Based on the release, the version will vary.
+Listed below are images that you should download to use image registry. The example below describes images required for 1.53.x release. Based on the release, the version will vary.
 
-Go to [Delegate release](https://developer.harness.io/release-notes/delegate/) to get the latest version of Delegate image.
+Refer to the [Delegate release](https://developer.harness.io/release-notes/delegate/) to download the latest version of Delegate and [Chaos Engineering](https://developer.harness.io/release-notes/chaos-engineering) to get the latest version of chaos component images, respectively.
 
 <Tabs>
 <TabItem value = "Harness Delegate / DDCR">
 
-- harness/chaos-ddcr:1.47.0
-- harness/chaos-log-watcher:1.47.0
-- harness/service-discovery-collector:0.27.0
-- docker.io/harness/chaos-ddcr-faults:1.47.0
+- harness/chaos-ddcr:1.53.0
+- harness/chaos-log-watcher:1.53.0
+- harness/service-discovery-collector:0.33.0
+- docker.io/harness/chaos-ddcr-faults:1.53.0
 
 </TabItem>
 
 <TabItem value = "Dedicated Chaos Infrastructure">
 
-- harness/chaos-log-watcher:1.47.0
+- harness/chaos-log-watcher:1.53.0
 - harness/chaos-workflow-controller:v3.4.16
 - harness/chaos-argoexec:v3.4.16
-- harness/chaos-exporter:1.47.0
-- harness/chaos-operator:1.47.0
-- harness/chaos-runner:1.47.0
-- harness/chaos-subscriber:1.47.0
-- docker.io/harness/chaos-go-runner:1.47.0
-- harness/k8s-chaos-infrastructure-upgrader:1.47.0
+- harness/chaos-exporter:1.53.0
+- harness/chaos-operator:1.53.0
+- harness/chaos-runner:1.53.0
+- harness/chaos-subscriber:1.53.0
+- docker.io/harness/chaos-go-runner:1.53.0
+- harness/k8s-chaos-infrastructure-upgrader:1.53.0
 
 </TabItem>
 

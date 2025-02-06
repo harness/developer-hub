@@ -24,6 +24,15 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ### Version 1.53.1
 
+### Images required
+
+Listed below are the images to download to use [image registry with Harness Delegate](/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+
+- harness/chaos-ddcr:1.53.0
+- harness/chaos-log-watcher:1.53.0
+- harness/service-discovery-collector:0.33.0
+- docker.io/harness/chaos-ddcr-faults:1.53.0
+
 #### New features and enhancements
 
 - Upgrades all Go Services to use Go 1.23 to address the vulnerabilities.(CHAOS-7324)
