@@ -62,6 +62,7 @@ parameters:
         path: proxy/github-api/orgs/{{ parameters.github_org }}/repos
         valueSelector: full_name
 ```
+![](./static/dynamic-picker-2.png)
 
 This feature makes workflows more flexible, interactive, and user-friendly.  
 

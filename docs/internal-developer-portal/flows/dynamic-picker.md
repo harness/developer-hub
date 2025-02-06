@@ -227,15 +227,6 @@ In a **Repository Picker** workflow, the user provides their **GitHub username**
 Below is the YAML configuration for this setup:
 
 ```YAML {23}
-apiVersion: scaffolder.backstage.io/v1beta3
-kind: Template
-metadata:
-  name: Usage of Dynamic Pickers
-  title: how to use dynamic picker 
-  description: A workflow to demonstrate dynamic pickers
-spec:
-  owner: platform_engineer
-  type: service
   parameters:
     - title: Fill in some steps
       properties:
@@ -276,7 +267,7 @@ spec:
 **Example API Path**  
 ``path: proxy/github-api/users/{{ parameters.gitusername }}/repos``
 
-![](./static/workflow-picker.png)
+![](./static/dynamic-picker-2.png)
 
 ## Supported Filters to parse API response
 
