@@ -146,7 +146,7 @@ container:
 
 Listed below are images that you should download to use image registry. The example below describes images required for 1.53.x release. Based on the release, the version will vary.
 
-Refer to the [Delegate release](https://developer.harness.io/release-notes/delegate/) and [Chaos Engineering](https://developer.harness.io/release-notes/chaos-engineering) to get the latest version of Delegate and chaos images, respectively.
+Refer to the [Delegate release](https://developer.harness.io/release-notes/delegate/) to download the latest version of Delegate and [Chaos Engineering](https://developer.harness.io/release-notes/chaos-engineering) to get the latest version of chaos component images, respectively.
 
 <Tabs>
 <TabItem value = "Harness Delegate / DDCR">
