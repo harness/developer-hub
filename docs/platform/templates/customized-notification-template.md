@@ -13,7 +13,7 @@ However, since this is supported for centralised notification, we need `PL_CENTR
 
 Users can now create notification templates, allowing users to customize notification content and reuse templates across multiple pipelines. Templates support Pipeline Expressions and RBAC controls, ensuring flexibility and security.
 
-We are going to discuss about setting up notificatio template for Pipeline at a given scope. 
+We are going to discuss about setting up notification template for Pipeline at a given scope. 
 
 You can set up notification template for Pipeline at following [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): **Account**, **Organization** and **Project Level**. 
 
