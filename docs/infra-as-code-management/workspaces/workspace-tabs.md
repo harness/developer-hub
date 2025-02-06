@@ -81,6 +81,9 @@ This tab records the execution of full pipelines, such as Provision or Destroy, 
 ### State
 The State tab provides access to your complete infrastructure state file, offering critical insights into your current configuration and dependencies of your resources.
 - **Usage:** Utilize this tab to conduct audits and maintain consistency across your infrastructure setup, ensuring alignment with your desired state.
+
+For detailed instructions on managing your infrastructure state, visit [Provision workspace](https://developer.harness.io/docs/infra-as-code-management/workspaces/provision-workspace).
+
 ---
 ### Configuration
 Derived from the initial setup steps of your workspace, including cost estimation settings, selected connectors, and default pipelines.
@@ -89,3 +92,5 @@ Derived from the initial setup steps of your workspace, including cost estimatio
 ### CLI Integration
 This tab provides guidance on integrating the OpenTofu/Terraform CLI with Harness as a backend.
 - **Usage:** It offers step-by-step instructions for setting up CLI integration, facilitating seamless management of your infrastructure code.
+
+For step-by-step instructions on CLI integration, check out [CLI Integration Guide](https://developer.harness.io/docs/infra-as-code-management/workspaces/cli-integration).
