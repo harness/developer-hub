@@ -126,7 +126,7 @@ Another example is to use a Harness [Shell Script step](/docs/continuous-deliver
 ```
 cat << 'EOM' > manifest.yaml
 <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.manifestDryRun>
-'EOM'
+EOM
 cat manifest.yaml
 echo "K8s client/server version:"
 kubectl version --output yaml
