@@ -37,7 +37,7 @@ This is where our Dynamic Workflow Picker comes into play. Let's see how it work
 
 The Workflow UI makes a request to our [Backend Proxy](https://developer.harness.io/docs/internal-developer-portal/plugins/delegate-proxy/) which you can configure as a way to securely make requests to third party APIs and get a response. The UI Picker allows you to customize the response a bit and present it as a list in the dropdown.
 
-## How to create a Dynamic Workflow Picker
+## Creating a Dynamic Workflow Picker
 
 There are two steps to adding a dynamic workflow picker in Harness IDP.
 
@@ -99,7 +99,7 @@ https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/proxy/github-api/user
 
 Here `https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/proxy/github-api/` can be seen exactly as `https://api.github.com/`. So all the endpoint paths on the GitHub API can be used after the proxy endpoint URL. You can learn more about how to consume Harness IDP APIs on our [API Docs](/docs/internal-developer-portal/api-refernces/public-api).
 
-### Step 2: Create the dropdown picker in Workflows form
+### Step 2: Create the Dropdown Picker in Workflows Form
 
 Now that our Backend proxy is ready, it is time to create that dropdown picker. Here is a small example to start with
 
@@ -131,70 +131,151 @@ And that's it! We now have a Workflow dropdown where results are coming from an 
 
 ![](./static/dynamic-picker-example.png)
 
-### Use Form Data from a Previous page in a New Page
+## Conditional API Requests
 
-While using Dynamic Workflow UI Pickers, users can now reference the data take as an input in the previous page, using `{{ parameters.properties }}`.
+**Dynamic Pickers** allow users to interact with input form fields and receive real-time options, ensuring validation for workflow creators. Users can dynamically select input values, making workflows more interactive.
 
-```YAML
+In the background, Dynamic Pickers make an **API request** to fetch relevant data. However, there was a limitation:
+- The **API URL was fixed**, meaning no query parameters could be used to filter results dynamically.
+- Some use cases require **user inputs** to refine results, which wasn't previously possible.
+
+#### Introducing Conditional API Requests
+Workflow Dynamic Pickers now support **conditional API requests**, where one field's values depend on another. This enables:
+- ✔ **Interactive workflows** – Users can dynamically filter results based on prior inputs.
+- ✔ **Customizable API requests** – API URLs can now include query parameters derived from user input.
+
+
+### Without vs. With Conditional API Requests
+
+#### Without Conditional API Requests
+Since **query parameters** couldn't be used in the **API URL**, input fields were independent of each other.
+
+**For example**, consider a GitHub repository picker in a Harness IDP workflow. The repository picker consists of:
+- **UI Picker** – Displays the list of repositories.
+- **Proxy Backend** – Provides authentication and API access.
+
+If the proxy backend is configured with an API URL like http://api.github.com, without conditional API requests, the UI Picker would look like this:
+```YAML {10}
 parameters:
-  - title: Select Harness Project
-    type: object
-    properties:
-      projectId:
-        title: Harness Project ID
-        description: Select the Harness Project ID
-        type: string
-        ui:field: HarnessProjectPicker
-        ui:autofocus: true
-      organizationId:
-        title: Harness Organization ID
-        description: Select the Harness Organization ID
-        type: string
-        ui:field: HarnessAutoOrgPicker
-  - title: Select Harness Pipeline
-    type: object
-    properties:
-      pipelineId:
-        type: string
-        ui:field: SelectFieldFromApi
-        ui:options:
-          title: Harness Pipeline ID
-          placeholder: Select the Harness Pipeline ID
-          allowArbitraryValues: true
-          path: proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{
-            parameters.projectId }}/pipelines
-          valueSelector: identifier
-          labelSelector: identifier
-steps:
-  - id: debug
-    name: Debug
-    action: debug:log
-    input:
-      message:
-        "{ parameters.pipelineId }": null
+ properties:
+   github_repo:
+     type: string
+     ui:field: SelectFieldFromApi
+     ui:options:
+       title: GitHub Repository
+       description: Pick one of the GitHub Repositories
+       placeholder: "Choose a Repository"
+       path: proxy/github-api/orgs/harness/repos
+       valueSelector: full_name
 ```
+**Limitations**
 
-In the above YAML, the API endpoint values under the `path` dynamically insert the `organizationId` and `projectId` from the first set of parameters taken as an input in the previous page, to construct the endpoint URL for fetching the list of pipelines. 
+- The **``path``** field ``(proxy/github-api/orgs/harness/repos)`` is fixed to fetch repositories only from the **harness org**.
+- Users **cannot filter** repositories based on **different organizations or projects**.
 
-```bash
-proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{ parameters.projectId }}/pipelines
+#### With Conditional API Requests
+By enabling conditional API requests, users can create dependencies between input fields.
+- API URLs can now include **dynamic query parameters** derived from user input.
+- Users can **interactively** use Workflows. 
+
+**For example**, if users need to specify their GitHub organization to fetch repositories dynamically, the UI Picker would be updated as follows:
+```YAML {13}
+parameters: 
+  properties:
+    github_org:
+      type: string
+      title: Provide GitHub Org
+    github_repo:
+      type: string
+      ui:field: SelectFieldFromApi
+      ui:options:
+        title: GitHub Repository
+        description: Pick one of the GitHub Repositories
+        placeholder: "Choose a Repository"
+        path: proxy/github-api/orgs/{{ parameters.github_org }}/repos
+        valueSelector: full_name
 ```
+**Benefits**
 
-Hence, it will list all the pipelines present under the particular project int org mentioned as displayed below. 
+- ✔ The **``path``** field now **dynamically updates** based on the selected **github_org**.
+- ✔ Users can **filter repositories dynamically** instead of being restricted to a fixed org.
+- ✔ Enables **interactive and responsive workflows**.
 
-![](./static/parameters-refernce.gif)
+
+Let's deep dive into the details of how this feature can be implemented.
+
+### Form Context
+When a user selects or provides input in a form field, the **Form Context** updates with the relevant data. Other fields, typically read-only, can subscribe to this context and automatically update based on the latest information.
+
+#### Implementation
+- With Dynamic Workflow UI Pickers, users can reference previously entered form data using the following format in the ``path`` field: 
+
+  **``{{ parameters.[propertyId] }}``**
+
+  Here, `propertyId` refers to the **ID of the input field** that you want to use as a dependency for the Dynamic Picker.
+
+- This enables **dynamic values** in the ``path`` field of the Dynamic Picker, where variables retrieve values from other input fields.
 
 :::info
-You cannot reference properties on the same page, and property references only work with values provided through Dynamic UI pickers. 
+You can also use conditional API requests across **multiple pages** using the **same format and references**. Please note these references only work with values provided through Dynamic UI pickers. 
 :::
 
-## Reference Docs
+### Example YAML
+Let’s understand this with an example.
+In a **Repository Picker** workflow, the user provides their **GitHub username**, and all the associated repositories for that username are dynamically displayed.
 
-### `SelectFieldFromApi`
+Below is the YAML configuration for this setup:
 
-Here is an elaborate example of what all properties are possible with the `SelectFieldFromApi` field.
+```YAML {15}
+  parameters:
+    - title: Fill in some steps
+      properties:
+        gitusername:
+          title: Github username
+          description: Username
+          type: string
+        github_repo:
+          type: string
+          ui:field: SelectFieldFromApi
+          ui:options:
+            title: GitHub Repository
+            description: Pick one of the GitHub Repositories
+            placeholder: "Choose a Repository"
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: full_name
+  steps:
+    - id: trigger
+      name: using dynamic pickers
+      action: trigger:harness-custom-pipeline
+      input:
+        url: <Your Pipeline URL>
+        inputset:
+          "username": ${{ parameters.gitusername }}
+          "pipeline.stages.GitsyncStageTemplate.variables.greetings": ${{ parameters.github_repo }}
+        apikey: ${{ parameters.token }}
+        enableVariableMapping: true
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+```
 
-```yaml
+#### YAML Breakdown
+- In the above YAML, we have referenced the ```gitusername``` variable in the ``path`` of the dynamic picker field. 
+- This helps the dynamic picker field retrieve the input value to the ``gitusername`` field and show all the repositories associated with that username. 
+
+**Example API Path**  
+``path: proxy/github-api/users/{{ parameters.gitusername }}/repos``
+
+![](./static/dynamic-picker-2.png)
+
+## Supported Filters to parse API response
+
+### `SelectFieldFromApi` Field
+
+Here is an elaborate example of what all properties are possible with the `SelectFieldFromApi` field, showcasing how to parse values from an API response.
+
+```YAML
 properties:
   api-picker:
     type: string
@@ -203,7 +284,13 @@ properties:
     ui:options:
       title: Title
       description: Description
-
+      # (Optional) Mention about the type of API call POST/GET, GET is default if not mentioned
+      request:
+        method: POST
+        headers:
+          Content-Type: text/plain
+        # Indicates the format of the request body being sent. 
+        body: This is a simple plain text message
       # The Path on the Harness IDP backend API and the parameters to fetch the data for the dropdown
       path: "proxy/proxy-endpoint/api-path"
       params:
@@ -223,6 +310,38 @@ properties:
 ```
 
 You can find the detailed docs on the [project's README](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/scaffolder-field-extensions/scaffolder-frontend-module-http-request-field).
+
+### POST Method Support
+
+The **POST method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, etc. 
+
+#### Key Elements:
+- **`method` field** - Used to specify the **POST** request method.
+- **`headers` field - `Content-Type`**: Specifies the request body's type. 
+  - In case of structured data (e.g., JSON) - `application/json` is used. 
+  - In case of plain text - `text/plain` is used. 
+- **`body` field**: Contains the data sent to the API.
+
+Here's how the POST method is used to fetch and populate dynamic pickers within forms:
+
+```YAML {10}
+custom1:
+  title: GitHub Repos Single
+  type: string
+  description: Pick one of GitHub Repos
+  ui:field: SelectFieldFromApi
+  ui:options:
+    path: proxy/github-api/users/{{parameters.gitusername}}/repos
+    valueSelector: full_name
+    request:
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        secret: { { parameters.formdata } }
+```
+
+Using POST is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
 
 ### Parsing API Response using filters
 
