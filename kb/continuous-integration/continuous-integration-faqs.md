@@ -712,6 +712,40 @@ npm config set strict-ssl false
 
 If your `pnpm` commands are waiting for user input. Try using the [append-only flag](https://pnpm.io/cli/install#--reportername).
 
+### How do I use a self-signed certificate for a private Docker registry in the Build and Push to Docker Registry step?
+
+To use a self-signed certificate for a private Docker registry in the **Build and Push to Docker Registry** step, you need to ensure that the runner (or build infrastructure) trusts the certificate. Since the Build and Push to Docker Registry step does not provide a direct way to configure self-signed certificates, you can use a [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/) before it to manually add the certificate.
+
+Example: Using a **Run step** to configure the self-signed certificate
+
+Before running the Build and Push to Docker Registry step, add a **Run step** in your pipeline and use the following example to set up the self-signed certificate:
+
+```YAML
+- step:
+    type: Run
+    name: Run_1
+    identifier: Run_1
+    spec:
+      shell: Sh
+      command: |-
+        echo '<+secrets.getValue("crt")>' > ca.crt
+        mkdir -p /etc/docker/certs.d/PRIVATE_DOCKER_REGISTRY_SERVER:PRIVATE_DOCKER_REGISTRY_PORT
+        cp ca.crt /etc/docker/certs.d/PRIVATE_DOCKER_REGISTRY_SERVER:PRIVATE_DOCKER_REGISTRY_PORT
+``` 
+
+Use another **Run step** to test the connection:
+
+```YAML
+- step:
+    type: Run
+    name: Run_2
+    identifier: Run_2
+    spec:
+      shell: Sh
+      command: |-
+        docker login PRIVATE_DOCKER_REGISTRY_SERVER:PRIVATE_DOCKER_REGISTRY_PORT --username SOMEUSERNAME --password SOMEPASSWORD
+```
+
 ## Windows builds
 
 ### Error when running Docker commands on Windows build servers
