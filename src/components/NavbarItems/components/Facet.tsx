@@ -63,8 +63,6 @@ const Facet: React.FC<FacetProps> = (props) => {
       !QueryCommonmodule &&
       controller.state.facetId == 'commonsource'
     ) {
-      console.log('no url facets');
-
       controller.toggleSelect({
         numberOfResults: 0,
         state: 'selected',

@@ -6,31 +6,31 @@ interface ITokenData {
   expiry?: number;
 }
 
+const getCoveoToken = async () => {
+  const rootUrl = window.location.href.split('/').slice(0, 3).join('/');
+  try {
+    const response = await fetch(rootUrl + '/api/coveo_api');
+    const data = await response.json();
+
+    const item = {
+      token: data.token,
+      orgId: data.id,
+      expiry: Date.now() + 12 * 60 * 60 * 1000, // 12hrs from now
+      // expiry: Date.now() + 900000, // 12hrs from now
+    };
+    localStorage.setItem('coveo_token', JSON.stringify(item));
+    return item;
+  } catch (error) {
+    console.error('Error fetching Coveo token:', error);
+    return {};
+  }
+};
 async function InitializeCoveo() {
-  let tokenData: ITokenData = {};
-  const getCoveoToken = async () => {
-    const rootUrl = window.location.href.split('/').slice(0, 3).join('/');
-    try {
-      const response = await fetch(rootUrl + '/api/coveo_api');
-      const data = await response.json();
-
-      const item = {
-        token: data.token,
-        orgId: data.id,
-        expiry: Date.now() + 12 * 60 * 60 * 1000, // 12hrs from now
-      };
-      localStorage.setItem('coveo_token', JSON.stringify(item));
-      return item;
-    } catch (error) {
-      console.error('Error fetching Coveo token:', error);
-      return {};
-    }
-  };
-
+  let tokenData: ITokenData | null = null;
   const storedToken = localStorage.getItem('coveo_token');
   if (storedToken) {
-    const data = JSON.parse(storedToken);
-    if (data.expiry <= Date.now()) {
+    const data = JSON.parse(storedToken) as ITokenData;
+    if (data.expiry && data.expiry <= Date.now()) {
       tokenData = await getCoveoToken();
     } else {
       tokenData = data;
