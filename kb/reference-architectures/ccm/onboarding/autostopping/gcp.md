@@ -28,7 +28,7 @@ The flow of a proxy auto stopping rule is as follows:
 4. When proxy shows no activity, it updates Harness
 5. Repeat from step 1
 
-![](../../../static/gcp_proxy.png)
+![](../../../static/gcp-proxy.png)
 
 ## Schedule Based
 
@@ -53,7 +53,7 @@ So without any schedule applied, the application will always be down, and you ca
 
 That is to say, you should only apply uptime schedules to non-ingress rules.
 
-![](../../../static/gcp_schedule.png)
+![](../../../static/gcp-schedule.png)
 
 ## Dependencies
 

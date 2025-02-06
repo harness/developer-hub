@@ -30,7 +30,7 @@ The flow of an ALB auto stopping rule is as follows:
 6. When cloudwatch shows no activity, the lambda updates Harness
 7. Repeat from step 1
 
-![](../../../static/aws_alb.png)
+![](../../../static/aws-alb.png)
 
 ### Proxy
 
@@ -45,7 +45,7 @@ The flow of a proxy auto stopping rule is as follows:
 4. When proxy shows no activity, it updates Harness
 5. Repeat from step 1
 
-![](../../../static/aws_proxy.png)
+![](../../../static/aws-proxy.png)
 
 ## Schedule Based
 
@@ -70,7 +70,7 @@ So without any schedule applied, the application will always be down, and you ca
 
 That is to say, you should only apply uptime schedules to non-ingress rules.
 
-![](../../../static/aws_schedule.png)
+![](../../../static/aws-schedule.png)
 
 ## Dependencies
 

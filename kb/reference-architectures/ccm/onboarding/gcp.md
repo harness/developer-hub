@@ -25,7 +25,7 @@ The first step is to [create a billing export](https://developer.harness.io/docs
 
 To do this, assign `BigQuery Data Viewer` to the Harness GCP service account you found above for the database which holds the billing export.
 
-![](../../static/gcp_export.png)
+![](../../static/gcp-export.png)
 
 ### Harness CCM GCP Connector
 

@@ -30,7 +30,7 @@ The flow of an AGW auto stopping rule is as follows:
 6. When logs shows no activity, the function updates Harness
 7. Repeat from step 1
 
-![](../../../static/azure_agw.png)
+![](../../../static/azure-agw.png)
 
 ### Proxy
 
@@ -45,7 +45,7 @@ The flow of a proxy auto stopping rule is as follows:
 4. When proxy shows no activity, it updates Harness
 5. Repeat from step 1
 
-![](../../../static/azure_proxy.png)
+![](../../../static/azure-proxy.png)
 
 ## Schedule Based
 
@@ -70,7 +70,7 @@ So without any schedule applied, the application will always be down, and you ca
 
 That is to say, you should only apply uptime schedules to non-ingress rules.
 
-![](../../../static/azure_schedule.png)
+![](../../../static/azure-schedule.png)
 
 ## Dependencies
 

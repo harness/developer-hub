@@ -21,7 +21,7 @@ When the router does not see traffic for a specified amount of idle time, the co
 
 When the router sees traffic again, the controller modifies the the deployment that backs the service to have the amount of replicas that it had whenever it reduced the pods after seeing no traffic.
 
-![](../../../static/k8s_autostop_router.png)
+![](../../../static/k8s-autostop-router.png)
 
 The YAML for an ingress rule:
 ```
@@ -69,7 +69,7 @@ So without any schedule applied, the workload will always be down, and you can a
 
 That is to say, you should only apply uptime schedules to non-ingress rules.
 
-![](../../../static/k8s_schedule.png)
+![](../../../static/k8s-schedule.png)
 
 The YAML for a schedule only rule:
 ```

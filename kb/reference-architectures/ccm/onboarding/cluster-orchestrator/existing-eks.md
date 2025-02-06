@@ -213,14 +213,14 @@ Once your cluster has been set up with all orchestrator components you can enabl
 
 Navigate to the CCM module, and select `Cluster Orchestrator` from the side menu. You should see a list of clusters that have been set up or are pending. Find the cluster you are onboarding and click `Resume Setup`.
 
-![](../../../static/cluster_orch_existing_0.png)
+![](../../../static/cluster-orch-existing-0.png)
 
 On the first page we can set a base on-demand capacity, split of spot vs on-demand compute, and the distribution strategy.
 
-![](../../../static/cluster_orch_existing_1.png)
+![](../../../static/cluster-orch-existing-1.png)
 
 When you have set the configuration according to your needs, select `Complete Enablement`.
 
 Now you can click on your cluster again in the menu and browse the cluster resources and current compute setup.
 
-![](../../../static/cluster_orch_existing_2.png)
+![](../../../static/cluster-orch-existing-2.png)
