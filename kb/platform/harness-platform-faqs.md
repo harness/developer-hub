@@ -47,10 +47,10 @@ You can search for a heading, for example, ## Access Control, and add your new F
 The package includes CI, CD, Code Repository, Security Test Orchestration, and Infrastructure as Code Management.   
         
 #### Can I scale beyond the included usage metrics?  
-Additional pipeline executions, cloud compute minutes, and extended data retention can’t be purchased as add-ons now. At the end of the month, you will receive a bill for overage. The Harness platform does not prevent the overuse of consumption metrics. 
+Additional pipeline executions, cloud credits, and extended data retention can’t be purchased as add-ons now. At the end of the month, you will receive a bill for overage. The Harness platform does not prevent the overuse of consumption metrics. 
 
 #### What kind of customer support is available? 
-Customers receive enterprise-grade support with a dedicated customer success manager and access to Harness’s expert support team. Professional Services and Premier support can be purchased as add-ons.
+Customers receive standard support. They can purchase professional services as an add on.
 
 #### Can DevOps Essentials be deployed on-premises?  
 No on-premise support.
