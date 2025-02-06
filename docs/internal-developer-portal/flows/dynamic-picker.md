@@ -222,57 +222,61 @@ You can also use conditional API requests across **multiple pages** using the **
 
 ### Example YAML
 Let’s understand this with an example.
-In a **Repository Picker** Workflow, the user provides their ``organization name``, and we want the workflow to:
+In a **Repository Picker** workflow, the user provides their **GitHub username**, and all the associated repositories for that username are dynamically displayed.
 
-- Fetch all ``projects`` under the **selected organization** and display them to the user.
-- Fetch all ``repositories`` under the **selected project** based on the user’s selection.
-
-To achieve this, we need two dynamic pickers. Below is the YAML configuration for this setup:
+Below is the YAML configuration for this setup:
 
 ```YAML {23}
-parameters:
-  - title: Select Harness Project
-    type: object
-    properties:
-      projectId:
-        title: Harness Project ID
-        description: Select the Harness Project ID
-        type: string
-        ui:field: HarnessProjectPicker
-        ui:autofocus: true
-      organizationId:
-        title: Harness Organization ID
-        description: Select the Harness Organization ID
-        type: string
-        ui:field: HarnessAutoOrgPicker
-      pipelineId:
-        type: string
-        ui:field: SelectFieldFromApi
-        ui:options:
-          title: Harness Pipeline ID
-          placeholder: Select the Harness Pipeline ID
-          allowArbitraryValues: true
-          path: proxy/harness-api/v1/orgs/{{ parameters.organizationId }}/projects/{{ parameters.projectId }}/pipelines
-          valueSelector: identifier
-          labelSelector: identifier
-steps:
-  - id: debug
-    name: Debug
-    action: debug:log
-    input:
-      message:
-        "{ parameters.pipelineId }": null
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: Usage of Dynamic Pickers
+  title: how to use dynamic picker 
+  description: A workflow to demonstrate dynamic pickers
+spec:
+  owner: platform_engineer
+  type: service
+  parameters:
+    - title: Fill in some steps
+      properties:
+        gitusername:
+          title: Github username
+          description: Username
+          type: string
+        github_repo:
+          type: string
+          ui:field: SelectFieldFromApi
+          ui:options:
+            title: GitHub Repository
+            description: Pick one of the GitHub Repositories
+            placeholder: "Choose a Repository"
+            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            valueSelector: full_name
+  steps:
+    - id: trigger
+      name: using dynamic pickers
+      action: trigger:harness-custom-pipeline
+      input:
+        url: <Your Pipeline URL>
+        inputset:
+          "username": ${{ parameters.gitusername }}
+          "pipeline.stages.GitsyncStageTemplate.variables.greetings": ${{ parameters.github_repo }}
+        apikey: ${{ parameters.token }}
+        enableVariableMapping: true
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
 ```
 
 #### YAML Breakdown
-
+- In the above YAML, we have referenced the ```gitusername``` variable in the ``path`` of the dynamic picker field. 
+- This helps the dynamic picker field retrieve the input value to the ``gitusername`` field and show all the repositories associated with that username. 
 
 **Example API Path**  
+``path: proxy/github-api/users/{{ parameters.gitusername }}/repos``
 
-
-Result
-
-![](./static/parameters-refernce.gif)  
+![](./static/workflow-picker.png)
 
 ## Supported Filters to parse API response
 
