@@ -131,7 +131,7 @@ There are multiple methods to generate KeyTab files.  The following is an exampl
 
 As a note, when utilizing KeyTab files, the file will need to be included/distributed to all delegates which may be establishing the connection.  The KeyTab will also need to be updated with rotations.  Because KeyTab files are encrypted tokens, they will not contain password data, or the special characters that may cause problems in password data.
 
-1. Ensure `ktutil` is available.  [ktutil Documentation](https://web.mit.edu/kerberos/krb5-1.12/doc/admin/admin_commands/ktutil.html)
+1. Ensure `ktutil` is available.  [ktutil Documentation](https://web.mit.edu/kerberos/krb5-1.12/doc/admin/admin_commands/ktutil.html). The machine executing the `ktutil` commands must also have access to the Key Distribution Center (KDC) database.
 2. In terminal/bash, enter the `ktutil` CLI 
 3. Run `addent -password -p <principalName> -k 1 -e aes256-cts-hmac-sha1-96` to pull the token
 4. Run `wkt ./<username>.keytab` to write the keytab/keylist file to the location
