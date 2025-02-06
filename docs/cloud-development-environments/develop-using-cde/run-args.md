@@ -52,7 +52,8 @@ As of now, the runArgs property supports the following [Docker CLI arguments](ht
 | :---------------- | 
 | --add-host        |  
 | --annotation           | 
-| --blkio-weight    | 
+| --blkio-weight    |
+| --cap-add	| 
 | --cap-drop |  
 | --cgroup-parent |
 | --cgroupns
@@ -92,6 +93,7 @@ As of now, the runArgs property supports the following [Docker CLI arguments](ht
 | --memory-reservation
 | --memory-swap
 | --memory-swappiness
+| --mount
 | --network
 | --no-healthcheck
 | --oom-kill-disable
@@ -99,6 +101,7 @@ As of now, the runArgs property supports the following [Docker CLI arguments](ht
 | --pid
 | --pids-limit
 | --platform
+| --privileged
 | --pull
 | --restart
 | --rm
