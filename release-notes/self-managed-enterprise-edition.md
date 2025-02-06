@@ -231,14 +231,60 @@ By doing this, you ensure that the same lookerMasterKey is used during upgrades,
 Harness Helm charts are now signed to ensure they are secure and trustworthy. Click [here](../docs/self-managed-enterprise-edition/install/helm-chart-provenance) to learn more. 
 
 :::
+
+## Feb 6, 2025, Patch Version 0.14.13 
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                    |
+|---------------------------|------------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.14.13](https://github.com/harness/helm-charts/releases/tag/harness-0.14.13)                 |
+| Air Gap Bundle            | [0.14.13](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.13) |
+| NG Manager                | 1.24.7                                                                                         |
+| CI Manager                | 1.12.5                                                                                         |
+| Pipeline Service          | 1.69.9                                                                                         |
+| Platform Service          | 1.12.0                                                                                         |
+| Access Control Service    | 1.33.2                                                                                         |
+| Delegate                  | 24.02.82203                                                                                    |
+| Change Data Capture       | 1.5.3                                                                                          |
+| STO Core                  | 1.83.8                                                                                         |
+| Test Intelligence Service | 1.8.1                                                                                          |
+| NG UI                     | 1.7.6                                                                                          |
+| LE NG                     | 1.1.0                                                                                          |
+
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.14.13/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.13/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.13/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.13/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.13/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.13/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.13/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.13/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Continuous Delivery
+
+- We identified an issue with event processing in SMP when pods were running on a system clock with delays. This hotfix addresses the problem, ensuring accurate event handling in  0.14.13. [PIPE-25019]
+
+
 ## Feb 4, 2025, Patch Version 0.25.2
 
 This release includes the following Harness module and component versions.
 
 | **Name**                  | **Version**                                                                                  |
 |---------------------------|----------------------------------------------------------------------------------------------|
-| Helm Chart                | [0.25.2](https://github.com/harness/helm-charts/releases/tag/harness-0.24.4)                 |
-| Air Gap Bundle            | [0.25.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.24.4) |
+| Helm Chart                | [0.25.2](https://github.com/harness/helm-charts/releases/tag/harness-0.24.2)                 |
+| Air Gap Bundle            | [0.25.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.24.2) |
 | NG Manager                | 1.72.3                                                                                       |
 | CI Manager                | 1.61.2                                                                                       |
 | Pipeline Service          | 1.111.1                                                                                      |
@@ -277,6 +323,7 @@ gsutil -m cp \
 #### Platform
 
 - Included additional debug logs for SAML login.[PL-60283]
+
 ## Feb 4, 2025, Patch Version 0.24.4
 
 This release includes the following Harness module and component versions.
