@@ -66,7 +66,7 @@ parameters:
 
 This feature makes workflows more flexible, interactive, and user-friendly.  
 
-👉 Read more about the feature [here](/docs/internal-developer-portal/flows/dynamic-picker.md).
+👉 Read more about the feature here.
 
 2️⃣ **``API Key based Pipeline Execution from IDP Workflows`` [IDP-4051]**
 
@@ -78,7 +78,7 @@ There are now two ways in which **Workflow to Harness Pipeline authentication** 
 
 This feature enhances security by using dedicated API keys, eliminating the need for user execution permissions. 
 
-👉 Read more about the feature [here](/docs/internal-developer-portal/flows/worflowyaml.md).
+👉 Read more about the feature here.
 
 3️⃣ **``POST Method support for Dynamic Pickers`` [IDP-4292]**
 
@@ -106,7 +106,7 @@ customvalidate:
             - metadata.name
 ```
 
-👉 Read more about the feature [here](/docs/internal-developer-portal/flows/dynamic-picker.md).
+👉 Read more about the feature here.
 
 #### Upcoming Features
 There are other features currently in progress and scheduled for release no later than **February 17th**. Here’s what these features do:
