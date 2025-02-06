@@ -1,11 +1,11 @@
 ---
-title: AWS
+title: Azure
 description: Cloud Cost Management - AutoStopping 
 ---
 
-# AWS Auto Stopping
+# Azure Auto Stopping
 
-Auto stopping in AWS enables you to spin down EC2 instances, RDS databases, ASGs, and ECS Services. You can do this either by monitoring traffic with an ALB or proxy, or by creating defined schedules of uptime and downtime.
+Auto stopping in Azure enables you to spin down VM instances. You can do this either by monitoring traffic with an AGW or proxy, or by creating defined schedules of uptime and downtime.
 
 ## Creating Rules
 
@@ -15,45 +15,45 @@ A rule can use both traffic monitoring and schedules to define its stopping beha
 
 ## Ingress Based
 
-### ALB
+### AGW
 
-If the application has an existing ALB, or the application is HTTP based, then you can use an ALB to measure the usage of the application for auto stopping.
+If the application has an existing AGW, or the application is HTTP based, then you can use an AGW to measure the usage of the application for auto stopping.
 
-The flow of an ALB auto stopping rule is as follows:
+The flow of an AGW auto stopping rule is as follows:
 
-0. Harness shuts down the EC2 instance
-1. Harness modifies the ALB to point at the created lambda function
+0. Harness shuts down the VM instance
+1. Harness modifies the AGW to point at the created function
 2. When traffic is received, lambda presents the user with the progress page
-3. Harness starts up the EC2 instance
-4. When instance is ready, ALB is modified to send traffic to EC2
-5. The lambda monitors cloudwatch for activity logs
-6. When cloudwatch shows no activity, the lambda updates Harness
+3. Harness starts up the VM instance
+4. When instance is ready, AGW is modified to send traffic to VM
+5. The function monitors logs for activity logs
+6. When logs shows no activity, the function updates Harness
 7. Repeat from step 1
 
-![](../../static/aws_alb.png)
+![](../../../static/azure_agw.png)
 
 ### Proxy
 
-If the application uses non HTTP traffic then you must use an auto stopping proxy, which is an Ubuntu EC2 that is provisioned into your account.
+If the application uses non HTTP traffic then you must use an auto stopping proxy, which is an Ubuntu VM that is provisioned into your account.
 
 The flow of a proxy auto stopping rule is as follows:
 
-0. Harness shuts down the instance
+0. Harness shuts down the VM instance
 1. When traffic is received, proxy presents the user with the progress page
-2. Harness starts up the instance
-3. When instance is ready, proxy sends traffic to the application
+2. Harness starts up the VM instance
+3. When instance is ready, proxy sends traffic to VM
 4. When proxy shows no activity, it updates Harness
 5. Repeat from step 1
 
-![](../../static/aws_proxy.png)
+![](../../../static/azure_proxy.png)
 
 ## Schedule Based
 
 In tandem with traffic based stopping you can define uptime and downtime schedules that will keep the application up, or down, based on a pre-defined schedule.
 
-Uptime schedules will ensure that applications are not taken offline, no matter the traffic seen by the ALB/proxy.
+Uptime schedules will ensure that applications are not taken offline, no matter the traffic seen by the AGW/proxy.
 
-Downtime schedules will keep the application offline, no matter the traffic seen by the ALB/proxy.
+Downtime schedules will keep the application offline, no matter the traffic seen by the AGW/proxy.
 
 |          |     idle    |    active  |
 |----------|:-----------:|-----------:|
@@ -62,7 +62,7 @@ Downtime schedules will keep the application offline, no matter the traffic seen
 
 ### Schedule-Only Rules
 
-If you do not have an ALB/proxy, or you only want to stop/start your application based on a schedule, you can optionally create a non-ingress rule.
+If you do not have an AGW/proxy, or you only want to stop/start your application based on a schedule, you can optionally create a non-ingress rule.
 
 When creating a non-ingress rule, Harness will act as if it was an ingress rule, but never see traffic.
 
@@ -70,7 +70,7 @@ So without any schedule applied, the application will always be down, and you ca
 
 That is to say, you should only apply uptime schedules to non-ingress rules.
 
-![](../../static/aws_schedule.png)
+![](../../../static/azure_schedule.png)
 
 ## Dependencies
 
@@ -83,7 +83,7 @@ For example, you have a stopping rule for a database configured in Harness. When
 2. Harness triggers the database to come online, waits the specified amount of time
 3. Harness triggers the application to come online.
 
-![](../../static/dependency.png)
+![](../../../static/dependency.png)
 
 ## Warming Up Workloads
 
