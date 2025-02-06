@@ -113,7 +113,7 @@ roleRef:
 ### Step 2. Create Kubernetes Connector
 
 A connector describes how the Delegate communicates with the target cluster.
-Create a Kubernetes cluster connector using service account based authentication. You would have obtained the token in the previous step. Obtain the master URL by executing the command `kubectl cluster-info` and get the service account token and secret from the Kubernetes secret.
+Create a Kubernetes cluster connector using service account based authentication where the service account token is base64 decoded. You would have obtained the token in the previous step. Obtain the master URL by executing the command `kubectl cluster-info` and get the service account token and secret from the Kubernetes secret.
 
     ![k8s connector](./static/delegate/diff-cluster.png)
 
