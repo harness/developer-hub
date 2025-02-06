@@ -149,11 +149,17 @@ To obtain these references, simply copy the variable path from the Harness Pipel
 | Variable name (`variable_name`)                                      | Supported with Pipelines Variables for IDP stage, custom stage and Codebase Disabled build stage along Pipelines **not** containing any templates.  |
 | Variable name with Fully Qualified Path (`pipeline.variables.variable_name`) | Supported with Pipelines Variables for all supported stages and Pipelines containing any templates.      |
 
-3. `apikey`: Harness authentication token 
+3. `apikey`: User Session Token
 
-You can opt for authentication via the **`user token`** mode by specifying the **`token`** setup in your **`parameters.properties`** section of the **Workflow YAML**.
+Learn more about this authentication mode in detail **[here](/docs/internal-developer-portal/flows/worflowyaml.md)**.
 
-#### Defining the **`token`** setup:
+- The **user's session token** is used to trigger the Harness Pipeline.  
+- The user must have **execute permissions** for the underlying pipeline(s) to ensure successful execution.  
+
+
+You can trigger a pipeline in Harness IDP Workflows using the **`user session token`** mode by specifying the **`token`** setup in your **`parameters.properties`** section of the **Workflow YAML**. 
+
+#### 1. Defining the **`token`** setup:
 ```YAML
 token:
     title: Harness Token
@@ -162,7 +168,7 @@ token:
     ui:field: HarnessAuthToken
 ```
 
-#### Referencing the **`token`** in the **`steps`** spec of the Workflow YAML:
+#### 2. Referencing the **`token`** in the **`steps`** spec of the Workflow YAML:
 You'll need to reference the **`token`** within the **steps** section using the following format:
 ```YAML
 apikey: ${{ parameters.token }}
@@ -170,25 +176,19 @@ apikey: ${{ parameters.token }}
 
 4. `apiKeySecret`: Harness API Key 
 
-Read more about this [authentication mode](docs/internal-developer-portal/flows/worflowyaml.md) here. 
+Learn more about this authentication mode in detail **[here](/docs/internal-developer-portal/flows/worflowyaml.md)**.
 
 You can also trigger a pipeline in an IDP Workflow using a **pre-configured Harness API Key**.  
-- Use a **Harness `x-api-key`** (with pipeline execution permissions) stored in the [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview).  
+- Use a **Harness `x-api-key`** stored in the [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview).  
 - The secret must be stored in the **Account Scope** to ensure accessibility for workflow execution.
+- The secret must have ```execute permissions``` to the underlying pipeline(s).
 
-#### Defining the **`secretkey`** setup:
+#### Referencing the **`secret`** in the **`steps`** spec:
 ```YAML
-secretkey:
-    title: API Key Secret
-    type: string
-    default: apiKeySecret
-    ui:readonly: true
+apiKeySecret: ${{ secretId }}
 ```
 
-#### Referencing the **`secretkey`** in the **`steps`** spec:
-```YAML
-apiKeySecret: ${{ parameters.secretkey }}
-```
+Here, ```secretId``` refers to the identifier of the **Harness API Key**. You can retrieve this ``secretId`` from the **Harness Secret Manager**. 
 
 4. `hidePipelineURLLog`: Boolean to hide logs (optional)
 

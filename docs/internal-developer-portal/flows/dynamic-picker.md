@@ -201,19 +201,24 @@ parameters:
 - ✔ Users can **filter repositories dynamically** instead of being restricted to a fixed org.
 - ✔ Enables **interactive and responsive workflows**.
 
+
 Let's deep dive into the details of how this feature can be implemented.
 
 ### Form Context
 When a user selects or provides input in a form field, the **Form Context** updates with the relevant data. Other fields, typically read-only, can subscribe to this context and automatically update based on the latest information.
 
 #### Implementation
-- With Dynamic Workflow UI Pickers, users can reference previously entered form data using the following format in the **``path``** field: 
+- With Dynamic Workflow UI Pickers, users can reference previously entered form data using the following format in the ``path`` field: 
 
   **``{{ parameters.[propertyId] }}``**
 
-  Here, **`propertyId`** refers to the **ID of the input field** that you want to use as a dependency for the Dynamic Picker.
+  Here, `propertyId` refers to the **ID of the input field** that you want to use as a dependency for the Dynamic Picker.
 
 - This enables **dynamic values** in the ``path`` field of the Dynamic Picker, where variables retrieve values from other input fields.
+
+:::info
+You can also use conditional API requests across **multiple pages** using the **same format and references**. Please note these references only work with values provided through Dynamic UI pickers. 
+:::
 
 ### Example YAML
 Let’s understand this with an example.
@@ -269,11 +274,6 @@ Result
 
 ![](./static/parameters-refernce.gif)  
 
-:::info
-You can also use conditional API requests across **multiple pages**, and property references only work with values provided through Dynamic UI pickers. 
-//Example
-:::
-
 ## Supported Filters to parse API response
 
 ### `SelectFieldFromApi` Field
@@ -327,7 +327,7 @@ The **POST method** can be configured for Dynamic API Pickers, enabling users to
   - In case of plain text - `text/plain` is used. 
 - **`body` field**: Contains the data sent to the API.
 
-Here's how the POST method is used to fetch and populate dynamic pickers within forms, focusing on the GitHub Repos Multi picker (`customMulti`):
+Here's how the POST method is used to fetch and populate dynamic pickers within forms:
 
 ```YAML
 customvalidate:
@@ -353,7 +353,7 @@ customvalidate:
           title: Fetch Refs
 ```
 
-- In this example, a POST request is made to the GitHub API to retrieve repositories for a specific user (`{{parameters.gitusername}}`).
+- In this example, a POST request is made to provide ``entity refs``. 
 - Using POST is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
 
 ### Parsing API Response using filters
