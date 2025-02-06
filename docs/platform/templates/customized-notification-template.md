@@ -15,14 +15,14 @@ Users can now create notification templates, allowing users to customize notific
 
 We are going to discuss about setting up notification template for Pipeline at a given scope. 
 
-You can set up notification template for Pipeline at following [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): **Account**, **Organization** and **Project Level**. 
+You can set up a notification template for a Pipeline at the following [scopes](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): **Account**, **Organization** and **Project Level**. 
 
 ## Setting Up Notifications Template
 
 :::info note
 1. Custom Notification template will work only with Centralized Notifications. 
 2. Custom Notification templates will work only for webhook notifications.
-3. Custom notiification templates don't support usage of template variables.
+3. Custom Notification templates don't support usage of template variables.
 :::
 
 <Tabs>
@@ -55,13 +55,13 @@ Now, let's add this notification template to a notification rule:-
 
 1. In this example, we are going to discuss setting up notification management of Pipeline resource at Project Level:-
 
-1. In Harness, go to **Organization Settings**.
+1. In Harness, go to **Project Settings**.
 2. Under **General**, select **Notifications Management**. 
 3. Under **Overview**, provide **Notification Name** and **Continue** to select Resource type.
 4. Under **Resources**, Select Resource Type as **Pipeline**. 
 5. Under **Condition** , select **+ Add Condition** to define pipeline events based on which you want to be notified.
 
-Under events you can select the following **pipeline events**:-
+Under Events, you can select from the following **pipeline events**:-
 
 1. Pipeline Start
 2. Pipeline Success
@@ -78,9 +78,9 @@ Under **Create Condition** provide, Condition Name and **Select Pipeline Events*
 
 6. Under **Notification Templates**, select your Notification template and select **Use Template** and click on **Continue**.
 
-7. Under **Set Channels**, **Select Channels** where you want notification to be sent.
+7. Under **Set Channels**, select the channels where you want the notification to be sent.
 
-Under **Select Channel** you can chose the already created channel at that scope or you can create a [**New Channel**](/docs/platform/notifications/notification-settings.md).
+Under **Select Channel** you can choose the already created channel at that scope or you can create a [**New Channel**](/docs/platform/notifications/notification-settings.md).
 
 
 8. Select **Submit** to save your notification configuration.
