@@ -22,6 +22,46 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 :::
 
+## January 2025
+
+### Version 202501.2
+
+#### Early access features
+
+* We have improved the **DORA correlation engine** to check and compare the work item/issue creation date with the commit or PR creation date for correlation in the lead time widgets. This feature is still in **BETA** and is enabled for a limited number of customers. If you'd like to use this enhancement, please contact [Harness Support](/docs/software-engineering-insights/sei-support). (SEI-9289)
+* We have added support for selecting the repositories to be ingested into the system before creating the GitHub integration. This feature is in **BETA** and requires the SEI_GITHUB_REPO_SELECTION_ENABLED feature flag. Please contact [Harness Support](/docs/software-engineering-insights/sei-support) to enable this for your account. (SEI-9621)
+
+#### New features and enhancements
+
+This release does not include any new features.
+
+#### Fixed issues
+
+* Fixed a bug in the **Collection definition settings** where the boolean contributor attributes were not functioning correctly. (SEI-9570)
+* Resolved an issue in the **Trellis scores widget** where the impact factor definition was not working as expected, causing data discrepancies. (SEI-9976) (ZD-75749)
+* Resolved the issue where users were not being redirected to the default insight, as defined in the collection settings. (SEI-9981) (SEI-10173) (ZD-76881)
+
+### Version 202501.1
+
+#### Generally available
+
+The new integrations landing page with categorized sections is now generally available.
+
+#### Early access features
+
+This release does not include any early access features.
+
+#### New features and enhancements
+
+* We have improved the user experience for configuring the [GitLab integration](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab). (SEI-8766)
+  * To connect with [GitLab Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab), you can either use the **Direct Cloud Connection (easy to set up)** or the **Ingestion Satellite (high security)** to host data in your environment.
+  * To connect with [GitLab Self-Managed Edition](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-gitlab-onprem), you must use the **Ingestion Satellite** to set up the integration.
+* We have improved the [Azure DevOps integration](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops) by adding pre-flight checks, which validate the API key and its associated permissions before the integration is created. (SEI-9247)
+
+#### Fixed issues
+
+* Fixed the issue where OAuth-based authentication and re-authentication were not working for the [Azure DevOps integration](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops). (SEI-9978)
+
 ## December 2024
 
 ### Version 202412.2

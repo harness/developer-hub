@@ -106,6 +106,10 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>SEI_BA_INCLUDE_UNRESOLVED_ISSUES</td>
         <td>Allows you to use the [Business Alignment report](/docs/software-engineering-insights/analytics-and-reporting/sei-business-alignment) to calculate alignment metrics for tickets that are in the **In Progress status category** and those that have been resolved (i.e., Done status category) within a specific duration of time.</td>
     </tr>
+    <tr>
+        <td>SEI_GITHUB_REPO_SELECTION_ENABLED</td>
+        <td>Adds support for selecting the repositories to be ingested into the system before creating the GitHub integration.</td>
+    </tr>
 </table>
 
 <!-- missing SHOW_DIAGNOSTIC_TILE. Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite. SEI-5818 -->
