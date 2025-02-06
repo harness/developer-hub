@@ -77,6 +77,29 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## February 2025
+
+### Version 1.76.x <!-- February 07, 2025 -->
+#### Fixed issues
+
+- **Fixed** mTLS validation for STRICT mode. [PL-60169]  
+
+- **Resolved** an issue in NG SCIM group management where existing user groups were not marked as SCIM-managed when a group with the same name was sent from SCIM. [PL-60098]  
+
+- **Fixed** expiry duration calculation (24 weeks) by using buildTimeStamp instead of the manager version. Updated BuildServices pipeline to set buildTimeStamp correctly for all services. [PL-60051] 
+
+- **Updated** cluster admin/cluster viewer role binding names to include user-defined namespace prefixes, ensuring unique roles across different namespaces and retaining permissions when delegates start in different namespaces. [PL-59921]  
+
+#### New features and enhancements
+
+- **Enforced** OPA policies on Service Accounts to apply to role assignments bound to them. [PL-59294]  
+
+- **Limited** the maximum number of roles per account to 21,000 to ensure system stability and prevent abuse. [PL-59162]  
+
+- **Added** an option in the Delegate Helm chart to provide mTLS certificates and enable mTLS for the Delegate. [PL-59074]  
+
+- **Upgraded** `org.redisson:redisson` to version 3.43.0. [PL-55966]  
+
 ## January 2025
 
 ### Version 1.74.x <!-- January 31, 2025 -->
