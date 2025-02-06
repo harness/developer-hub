@@ -728,9 +728,20 @@ Before running the Build and Push to Docker Registry step, add a **Run step** in
     spec:
       shell: Sh
       command: |-
+        # Write the certificate content to a file
         echo '<+secrets.getValue("crt")>' > ca.crt
+        
+        # Create the Docker certificates directory for the private registry
         mkdir -p /etc/docker/certs.d/PRIVATE_DOCKER_REGISTRY_SERVER:PRIVATE_DOCKER_REGISTRY_PORT
+        
+        # Copy the certificate to the Docker certificates directory
         cp ca.crt /etc/docker/certs.d/PRIVATE_DOCKER_REGISTRY_SERVER:PRIVATE_DOCKER_REGISTRY_PORT
+
+        # Update the system's trusted certificate store (for Ubuntu/Debian)
+        update-ca-certificates
+
+        # Update the system's trusted certificate store (for CentOS/RHEL/Fedora)
+        update-ca-trust
 ``` 
 
 Use another **Run step** to test the connection:
