@@ -17,6 +17,24 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 
 :::
+
+## February 2025
+
+### Version 1.41.0
+
+#### New features and enhancements
+
+- Resource-Breakdown Tab for Evaluations: We are now displaying the Resource Breakdown tab for non-recommendation evaluations as well like we did for recommendation evaluations earlier. [CCM-20841]
+ <DocImage path={require('./static/resource-breakdown.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+-  Expandable Resource ID with Details in Asset Governance: We’ve added support in the Resource Breakdown where the resource ID appears with a “+” icon. When expanded, the resource details are displayed in the same column and row. [CCM-20839]
+
+- Improved Input Behavior for Target Account and Region Selection : Now, while selecting a Target Account or Region, the text input field will automatically be cleared. [CCM-20625]
+
+- Bin Packing in Cluster Orchestrator: We have introduced Bin Packing in the Cluster Orchestrator to optimize resource allocation and performance. You can now define your cluster preferences to fine-tune settings for Pod Eviction by Harness and Node Disruption by Karpenter. Customize node deletion criteria, set eviction delays, and configure disruption budgets to enhance efficiency and ensure optimal resource utilization. [CCM-20468]
+
+ <DocImage path={require('./static/bin-packing.png')} width="90%" height="90%" title="Click to view full-size image" />
+
 ## January 2025
 
 ### Version 1.38.3
@@ -32,7 +50,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Extended Idle Time for AutoStopping Rules: The AutoStopping idle time limit in the UI has been extended to allow users to set up to 24 hours (1440 minutes). [CCM-20484]
 
 - Overlapping Schedules for AutoStopping Rules: Users can now define multiple fixed schedules within an AutoStopping rule, with support for overlapping schedules. To determine the final resulting schedule at any given time, users can set the priority order of the schedules using drag-and-drop functionality. [CCM-19196]
-
 
 ## December 2024
 
