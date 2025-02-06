@@ -154,8 +154,8 @@ There are two ways in which **Workflow to Harness Pipeline authentication** work
 - The **user's session token** is used to trigger the Harness Pipeline.  
 - The user must have **execute permissions** for the underlying pipeline(s) to ensure successful execution.  
 
-🔑 **Harness API Key**
-- A pre-configured **Harness API Key** is used to trigger the Harness Pipeline.  
+🔑 **Harness API Key Secret**
+- A pre-configured **Harness API Key Secret** is used to trigger the Harness Pipeline.  
 - The user does **not** need direct access to the underlying pipeline(s); however, the API key must have the **execute permissions** for the underlying pipeline(s).
 
 These authentication modes can be defined while using the following action: [**`trigger:harness-custom-pipeline`**](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline).
@@ -163,7 +163,7 @@ These authentication modes can be defined while using the following action: [**`
 ### Modes
 
 
-|                              | 💾 **User Session Token**                                                                                                                                                                                                                                                                                             | 🔑 **Harness API Key**                                                                                                                                                                                                                                                                                          |
+|                              | 💾 **User Session Token**                                                                                                                                                                                                                                                                                             | 🔑 **Harness API Key Secret**                                                                                                                                                                                                                                                                                          |
 |------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Overview**                     | The user who triggers the workflow uses their **own credentials** to trigger the pipeline. The user must have **Execute permission** for the underlying pipeline(s) to ensure successful execution.                                                                                                                            | The user triggers the workflow using a **dedicated API Key** to initiate the pipeline. In this case, the user **may not have direct access** to the underlying pipeline(s). Platform engineers can generate the necessary API token and configure it within the workflow as default, ensuring no user can access or modify the pipeline. |
 | **When to use (Ideal scenario**) | The **workflow** exists in an **open scope**, while the **underlying pipeline(s)** are in a project where **All Account Users (or All Org Users)** have Pipeline Execute permission.                                                                                                                                                       | The **Pipeline** lives in a **closed project** where you do not want to give users **direct View and Execute permissions**. This is useful to hide the business/implementation.                                                                                                                                                                   |
@@ -171,11 +171,12 @@ These authentication modes can be defined while using the following action: [**`
 | **RBAC Setup**                   | Requires adding **All Account** Users (or specific users and groups) to the project where pipeline resides with the **Pipeline Execute** permission. This could be a tedious setup and can expose other pipelines in the project as well. (Ideally such pipelines should live in a dedicated project for  IDP Workflows which are open) | The Workflow and Pipeline can live in **different scopes** but can be connected with the **Platform Engineer’s API Key**.                                                                                                                                                                                                                 |
 
 
-### 💾 User Session Token
+### 💾  Mode 1: User Session Token
 
 You can trigger a pipeline in Harness IDP Workflows using the **`user session token`** mode by specifying the **`token`** setup in your **`parameters.properties`** section of the **Workflow YAML**. 
 
 #### 1. Defining the **`token`** setup:
+This is defined under the `parameter.properties` spec to extract the user session token. This token is then used to execute the pipeline. 
 ```YAML
 token:
     title: Harness Token
@@ -254,21 +255,26 @@ parameters:
   - title: <PAGE-n TITLE>
 ```
 
-### 🔑 Harness API Key
-You can also trigger a pipeline in an IDP Workflow using a **pre-configured Harness API Key**.  
-- Use a **Harness `x-api-key`** stored in the [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview).  
-- The secret must be stored in the **Account Scope** to ensure accessibility for workflow execution.
+### 🔑 Mode 2: Harness API Key Secret
+You can also trigger a pipeline in an IDP Workflow using a **pre-configured Harness API Key**.  Here's how you can set this up:
+- Create a [Harness API Key Secret](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager#create-secrets). 
+- Store it in your [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview). 
+- The secret must be stored in the [**Account Scope**](https://developer.harness.io/docs/platform/secrets/secrets-management/reference-secrets-in-custom-sm) to ensure accessibility for workflow execution.
 - The secret must have ```execute permissions``` to the underlying pipeline(s).
+
+:::caution
+Other secret managers are **not supported** for storing secrets with this feature. You must use **[Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview)** to store your secret and authenticate via this mode. Since this secret is only relevant within Harness, it does not pose a security concern.
+:::
 
 #### Referencing the **`secret`** in the **`steps`** spec:
 ```YAML
 apiKeySecret: ${{ secretId }}
 ```
 
-Here, ```secretId``` refers to the identifier of the **Harness API Key**. You can retrieve this ``secretId`` from the **Harness Secret Manager**. 
+Here, ```secretId``` refers to the identifier of the secret which stores the **Harness API Key**. You can retrieve this ``secretId`` from the **Harness Secret Manager**. 
 
 #### Example YAML:
-```YAML {22}
+```YAML {17}
 parameters:
   - title: Deploy service
     required:
@@ -293,6 +299,10 @@ output:
 ```
 
 The **`apiKeySecret`** field retrieves its value from **`secretId`**, which is the Harness secret identifier.  
+
+:::info
+Authentication using the user session token is **no longer required** in case you are using the Harness API Key Secret authentication mode. 
+:::
 
 ## Example YAML
 Here's an example of a single-page workflow:

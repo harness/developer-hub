@@ -133,7 +133,7 @@ And that's it! We now have a Workflow dropdown where results are coming from an 
 
 ## Conditional API Requests
 
-**Dynamic Pickers** allow users to interact with input form fields and receive real-time options, ensuring soft validation for workflow creators. Users can dynamically select input values, making workflows more interactive.
+**Dynamic Pickers** allow users to interact with input form fields and receive real-time options, ensuring validation for workflow creators. Users can dynamically select input values, making workflows more interactive.
 
 In the background, Dynamic Pickers make an **API request** to fetch relevant data. However, there was a limitation:
 - The **API URL was fixed**, meaning no query parameters could be used to filter results dynamically.
@@ -155,7 +155,7 @@ Since **query parameters** couldn't be used in the **API URL**, input fields wer
 - **Proxy Backend** – Provides authentication and API access.
 
 If the proxy backend is configured with an API URL like http://api.github.com, without conditional API requests, the UI Picker would look like this:
-```YAML
+```YAML {10}
 parameters:
  properties:
    github_repo:
@@ -179,8 +179,8 @@ By enabling conditional API requests, users can create dependencies between inpu
 - Users can **interactively** use Workflows. 
 
 **For example**, if users need to specify their GitHub organization to fetch repositories dynamically, the UI Picker would be updated as follows:
-```YAML
-parameters:
+```YAML {13}
+parameters: 
   properties:
     github_org:
       type: string
@@ -226,7 +226,7 @@ In a **Repository Picker** workflow, the user provides their **GitHub username**
 
 Below is the YAML configuration for this setup:
 
-```YAML {23}
+```YAML {15}
   parameters:
     - title: Fill in some steps
       properties:
@@ -324,32 +324,24 @@ The **POST method** can be configured for Dynamic API Pickers, enabling users to
 
 Here's how the POST method is used to fetch and populate dynamic pickers within forms:
 
-```YAML
-customvalidate:
-    title: GitHub Repos Single
-    type: string
-    description: Pick one of GitHub Repos
-    ui:field: ValidateAndFetch
-    ui:options:
-      path: "catalog/entities/by-refs"
-      request:
-        method: POST
-        headers:
-          Content-Type: application/json
-        body:
-          entityRefs:
-            - user:default/autouser1
-          fields:
-            - kind
-            - metadata.name
-        contextData:
-          loginName: items[0].metadata.name
-        button:
-          title: Fetch Refs
+```YAML {10}
+custom1:
+  title: GitHub Repos Single
+  type: string
+  description: Pick one of GitHub Repos
+  ui:field: SelectFieldFromApi
+  ui:options:
+    path: proxy/github-api/users/{{parameters.gitusername}}/repos
+    valueSelector: full_name
+    request:
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        secret: { { parameters.formdata } }
 ```
 
-- In this example, a POST request is made to provide ``entity refs``. 
-- Using POST is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
+Using POST is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
 
 ### Parsing API Response using filters
 

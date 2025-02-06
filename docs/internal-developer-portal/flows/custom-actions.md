@@ -151,15 +151,16 @@ To obtain these references, simply copy the variable path from the Harness Pipel
 
 3. `apikey`: User Session Token
 
-Learn more about this authentication mode in detail **[here](/docs/internal-developer-portal/flows/worflowyaml.md)**.
+Learn more about this authentication mode in detail **[here](/docs/internal-developer-portal/flows/worflowyaml#authentication)**.
 
 - The **user's session token** is used to trigger the Harness Pipeline.  
 - The user must have **execute permissions** for the underlying pipeline(s) to ensure successful execution.  
 
-
 You can trigger a pipeline in Harness IDP Workflows using the **`user session token`** mode by specifying the **`token`** setup in your **`parameters.properties`** section of the **Workflow YAML**. 
 
 #### 1. Defining the **`token`** setup:
+This is defined under the `parameter.properties` spec to extract the user session token. This token is then used to execute the pipeline. 
+```YAML
 ```YAML
 token:
     title: Harness Token
@@ -174,13 +175,17 @@ You'll need to reference the **`token`** within the **steps** section using the 
 apikey: ${{ parameters.token }}
 ```
 
-4. `apiKeySecret`: Harness API Key 
+4. `apiKeySecret`: Harness API Key Secret
 
-Learn more about this authentication mode in detail **[here](/docs/internal-developer-portal/flows/worflowyaml.md)**.
+Learn more about this authentication mode in detail **[here](/docs/internal-developer-portal/flows/worflowyaml#authentication)**.
 
-You can also trigger a pipeline in an IDP Workflow using a **pre-configured Harness API Key**.  
-- Use a **Harness `x-api-key`** stored in the [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview).  
-- The secret must be stored in the **Account Scope** to ensure accessibility for workflow execution.
+- A pre-configured **Harness API Key** is used to trigger the Harness Pipeline.  
+- The user does **not** need direct access to the underlying pipeline(s); however, the API key must have the **execute permissions** for the underlying pipeline(s).
+
+You can also trigger a pipeline in an IDP Workflow using a **pre-configured Harness API Key**.  Here's how you can set this up:
+- Create a [Harness API Key Secret](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager#create-secrets). 
+- Store it in your [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview). 
+- The secret must be stored in the [**Account Scope**](https://developer.harness.io/docs/platform/secrets/secrets-management/reference-secrets-in-custom-sm) to ensure accessibility for workflow execution.
 - The secret must have ```execute permissions``` to the underlying pipeline(s).
 
 #### Referencing the **`secret`** in the **`steps`** spec:
@@ -188,7 +193,7 @@ You can also trigger a pipeline in an IDP Workflow using a **pre-configured Harn
 apiKeySecret: ${{ secretId }}
 ```
 
-Here, ```secretId``` refers to the identifier of the **Harness API Key**. You can retrieve this ``secretId`` from the **Harness Secret Manager**. 
+Here, ```secretId``` refers to the identifier of the secret which stores the **Harness API Key**. You can retrieve this ``secretId`` from the **Harness Secret Manager**. 
 
 4. `hidePipelineURLLog`: Boolean to hide logs (optional)
 

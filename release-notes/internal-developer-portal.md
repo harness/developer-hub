@@ -25,11 +25,11 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 #### What's New in this Release (New Features and Enhancements)
 
-1️⃣ **``Conditional API Requests in Workflow Dynamic Pickers`` [IDP-4291]**
+#### 1️⃣ ``Conditional API Requests in Workflow Dynamic Pickers`` [IDP-4291]
 
 This release marks a **major milestone** for **Workflow Dynamic Pickers**, and we’re excited to introduce **Conditional API Requests**!  
 
-Dynamic Pickers make workflows more interactive by providing real-time options and ensuring soft validation for workflow creators. However, until now, input fields in **IDP workflows** were **independent** of each other. This lack of dependency made it difficult for users to fully utilize workflows.
+Dynamic Pickers make workflows more interactive by providing real-time options and ensuring validation for workflow creators. However, until now, input fields in **IDP workflows** were **independent** of each other. This lack of dependency made it difficult for users to fully utilize workflows.
 
 🚀 Introducing Conditional API Requests
 
@@ -46,7 +46,7 @@ With **Conditional API Requests**, users can now specify their GitHub organizati
 
 Here’s how the **UI Picker YAML** looks with Conditional API Requests:  
 
-```YAML
+```YAML {13}
 parameters:
   properties:
     github_org:
@@ -66,21 +66,21 @@ parameters:
 
 This feature makes workflows more flexible, interactive, and user-friendly.  
 
-👉 Read more about the feature here.
+👉 Read more about the feature [here](/docs/internal-developer-portal/flows/dynamic-picker#conditional-api-requests).
 
-2️⃣ **``API Key based Pipeline Execution from IDP Workflows`` [IDP-4051]**
+#### 2️⃣ ``API Key Secret based Pipeline Execution from IDP Workflows`` [IDP-4051]
 
-There are now two ways in which **Workflow to Harness Pipeline authentication** works in Harness IDP Workflows. Users can now trigger a Harness Pipeline in an IDP Workflow using a **Harness API Key** instead of a user session token. Previously, authentication relied on the user session token, requiring execution permissions for the pipeline. With Harness API Key:
+There are now two ways in which **Workflow to Harness Pipeline authentication** works in Harness IDP Workflows. Users can now trigger a Harness Pipeline in an IDP Workflow using a **Harness API Key Secret** instead of a user session token. Previously, authentication relied on the user session token, requiring execution permissions for the pipeline. With this mode: 
 
-- A pre-configured **Harness API Key** is used to trigger the Harness Pipeline.
-- The user **does not need** direct access to the underlying pipeline(s); however, the **API key** must have the **execute permissions** for the underlying pipeline(s).
+- A pre-configured **Harness API Key Secret** is used to trigger the Harness Pipeline.
+- The user **does not need** direct access to the underlying pipeline(s); however, the **API Key Secret** must have the **execute permissions** for the underlying pipeline(s).
 - Platform engineers can generate the necessary API token and configure it within the workflow as default, ensuring **no user** can **access or modify** the pipeline.
 
 This feature enhances security by using dedicated API keys, eliminating the need for user execution permissions. 
 
-👉 Read more about the feature here.
+👉 Read more about the feature [here](/docs/internal-developer-portal/flows/worflowyaml#authentication).
 
-3️⃣ **``POST Method support for Dynamic Pickers`` [IDP-4292]**
+#### 3️⃣ ``POST Method support for Dynamic Pickers`` [IDP-4292]
 
 Workflow Dynamic Pickers now supports the **POST method**, extending beyond just GET requests. 
 This feature is useful for fetching data using **GraphQL APIs**, calling **Lambda functions** with POST requests and handling APIs that require **large inputs via POST**. 
@@ -106,10 +106,12 @@ customvalidate:
             - metadata.name
 ```
 
-👉 Read more about the feature here.
+👉 Read more about the feature [here](/docs/internal-developer-portal/flows/dynamic-picker#post-method-support).
 
 #### Upcoming Features
-There are other features currently in progress and scheduled for release no later than **February 17th**. Here’s what these features do:
+The following features are currently in progress and are scheduled for release no later than **February 17th**. These features are part of the promised quarterly roadmap and are included in the **new workflow enhancements** introduced in this version.
+
+Here’s what these features do:
 
 - **Fetch additional details and auto-populate form fields based on user selection**: This feature dynamically updates workflow form fields based on user input.
 **For Example**: When a user selects an application, an API request is sent to CMDB to fetch additional details, which are then used to populate the remaining fields automatically.
