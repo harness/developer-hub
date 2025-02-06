@@ -198,7 +198,6 @@ import ProxySettings from './shared/proxy-settings.md';
 
 ## View AquaSec Assurance Policy violations
 
-The Aqua Security Assurance Policy violations will appear in scan results as INFO-level issues in [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
+AquaSec Assurance Policy violations will appear in scan results as `Info` severity issues, with the issue type set to `EXTERNAL_POLICY`. Additionally, you can apply OPA policies in Harness STO to enforce or manage these failures. Additionally, you can apply an OPA policy to fail the pipeline based on the security assurance policy violations. This can be achieved using the [Security Tests - External Policy Failures](/docs/security-testing-orchestration/policies/create-opa-policies.md#block-the-pipeline-based-on-external-policy-failures) policy from the [security tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies.md#security-test-policy-samples).
 
 <DocImage path={require('./static/sto-7164-aquasec-external-policies.png')} width="70%" height="70%" title="Select policy sample" />
-

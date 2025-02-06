@@ -280,3 +280,47 @@ Verify that the agent, cluster, and service are set up correctly. After linking 
 
 ### What steps should I take if the problem persists after linking the clusters?  
 Double-check the cluster, agent, and service configurations in both Harness and your GitOps setup. If the issue persists, reach out to your Harness support team with detailed logs or screenshots for further assistance.
+
+### What are the key differences in GitOps workflows when using Argo CD versus Flux?
+
+When implementing GitOps, Argo CD and Flux offer similar core functionalities but differ in their approach to deployment and reconciliation.  Argo CD uses a declarative approach, continuously comparing the desired state in Git with the live state and automatically syncing any discrepancies. Flux, on the other hand, employs an operator-based approach, reacting to changes in Git and applying them to the cluster.  The choice between them depends on specific project needs and preferences.  Further details on these tools can be found in relevant documentation from their respective projects.
+
+### For GitOps Repos, does Bitbucket fall under the umbrella of a supported platform?
+
+Bitbucket is supported any git provider that Argo supports should be supported by us as well [Argo CD Access Token](https://argo-cd.readthedocs.io/en/release-1.8/user-guide/private-repositories/#access-token).
+
+###  How can we address the unexpected behavior of linking a GitOps cluster to an environment when **a link already exists**, resulting in updated entities when we try to create secret/connector/pipeline etc that already exist?
+
+The insert call creates a new link, but there is an update call that updates as well. The update call can be used to update the existing link.
+
+###  How can we address the user's report of a GitOps agent container with errors, specifically the inability to connect to the GitOps server, and the subsequent authentication failures?
+
+The GitOps agent's inability to connect to the server and subsequent authentication failures point to network connectivity or authentication configuration problems. Verify network connectivity between the agent and the server.  Check the agent's configuration for correct server address, port, and authentication credentials.  Review the server logs for any errors related to the agent's connection attempts.  Refer to [Harness Docs](https://developer.harness.io/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent/).
+
+### How can users set up GitOps correctly and avoid configuration errors?  
+Users should ensure:
+- Correct repository configurations in the GitOps settings.
+- Proper sync policies are in place.
+- Required access permissions are granted for GitOps agents.
+
+### How can we improve the experience of users getting logged out due to using existing Argo CD when services are prefixed?  
+Users should check the following:
+- Ensure correct environment variables are set for Redis and Repo connections.
+- Validate that the GitOps agent is properly configured and has the necessary permissions.
+
+### How can users resolve the issue of GitOps agents failing to connect to the GitOps server?  
+Check the following:
+- Ensure the agent config map is correctly set.
+- Verify that the `AGENT_HTTP_TARGET` variable is properly defined.
+- Restart the agent if configuration changes were made.
+
+### How can users configure Sync Windows for GitOps applications?  
+Argo CD allows configuring Sync Windows to control when auto-sync occurs. This can be done via:
+- Defining maintenance windows.
+- Using Sync Windows APIs to set restricted deployment times.
+
+### How can users implement better control around GitOps Syncs to restrict certain applications?
+Enhancement requests for GitOps RBAC improvements have been submitted, but currently, fine-grained GitOps RBAC controls are limited.
+
+### How can a user manage Argo CD Application Sets using a single Argo CD Agent?
+Argo CD Application Sets are managed by a single Argo CD Agent, so a single AppSet cannot cover multiple clusters. Users can set up separate AppSets in different agents for different environments.

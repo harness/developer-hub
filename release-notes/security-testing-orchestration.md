@@ -22,7 +22,30 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## February 2025
+
+### Version 1.125.0
+
+<!-- 2025-02-04 -->
+
+#### New Features and Enhancements  
+- Added a new "STO Usage Dashboard" to display user usage data (STO-8340).
+- Added a new "Occurrences" column to the issue list on the security test page, showing the total number of detected occurrences, along with new detections and remediation numbers. The status column was moved to the end, and the title column was renamed to "Issue" (STO-8085).
+
+#### Fixed Issues 
+- Fixed an issue where Gitleaks may not work properly if the clone and scan steps were not run by the default user (STO-8473, ZD-76568).
+
 ## January 2025
+
+### Version 1.124.3
+
+<!-- 2025-01-23 -->
+
+#### New Features and Enhancements  
+- Prisma Cloud step in STO now automatically pulls the appropriate CLI version to match the user’s version (STO-5300).  
+- Custom Ingestion scanner results now display both the scanner details and scanning results (STO-8352).  
+- Fixed an issue where adding an additional route to the Domain field in the Checkmarx step would not properly process the URL (STO-5669).
+
 
 ### Version 1.122.1
 
@@ -82,9 +105,6 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 #### Documentation enhancements
 - Added a video tutorial for [SonarQube Orchestration scan mode](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference).
 - Added a video on [How to perform Local Docker/OCI Archive scanning with Harness STO.](https://www.youtube.com/watch?v=x1NXBJaHF7U&list=PLXsYHFsLmqf1wmAiQZkL65Xt6VarH_DuH&index=8&t=7s)
-
-
-## October 2024
 
 ### Version 1.112.5
 
@@ -206,11 +226,11 @@ The setting **Users can approve their own exemptions** is behind the feature fla
 The following features are now generally available:
 
 - Built-in scans:
-  - [SAST](/docs/security-testing-orchestration/sto-techref-category/built-in/sast)
-  - [SCA](/docs/security-testing-orchestration/sto-techref-category/built-in/sca)
-  - [Secret Detection](/docs/security-testing-orchestration/sto-techref-category/built-in/secrets)
-  - [Container](/docs/security-testing-orchestration/sto-techref-category/built-in/containers)
-  - [DAST](/docs/security-testing-orchestration/sto-techref-category/built-in/dast)
+  - [SAST](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners)
+  - [SCA](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners)
+  - [Secret Detection](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners)
+  - [Container](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners)
+  - [DAST](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners)
 - [Default baselines based on regular expressions](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-baselines-based-on-regular-expressions)
 - [Jira tickets for detected vulnerabilities](/docs/security-testing-orchestration/jira-integrations)
 - Wiz support for scanning [artifacts](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz), [code repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz), and [IaC repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz)
@@ -396,7 +416,7 @@ Harness introduced a back-end dashboard change to support features that are curr
 
 #### New feature: Built-in SAST scans
 
-This release introduces a new [built-in SAST step](/docs/security-testing-orchestration/sto-techref-category/built-in/sast) that adds a preconfigured [Semgrep step](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) that's ready to run as soon as you add it. (STO-7180) 
+This release introduces a new [built-in SAST step](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) that adds a preconfigured [Semgrep step](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) that's ready to run as soon as you add it. (STO-7180) 
 
 <!--
 This step is behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it.
@@ -518,17 +538,17 @@ The following features are now generally available:
   You can add built-in scanners for the following scan types:
 
     <!-- 
-    - [**SAST**](/docs/security-testing-orchestration/sto-techref-category/built-in/sast) Add a Semgrep scan to detect vulnerabilities in your code repositories.
+    - [**SAST**](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) Add a Semgrep scan to detect vulnerabilities in your code repositories.
 
     -->
 
-    - [**Secret Detection**](/docs/security-testing-orchestration/sto-techref-category/built-in/secrets) Add a GitLeaks scan to detect passwords and other secrets in your code repositories.
+    - [**Secret Detection**](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) Add a GitLeaks scan to detect passwords and other secrets in your code repositories.
 
-    - [**SCA**](/docs/security-testing-orchestration/sto-techref-category/built-in/sca) Add an OWASP Dependency Check or OSV scan to detect vulnerabilities in your open-source libraries and packages. 
+    - [**SCA**](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) Add an OWASP Dependency Check or OSV scan to detect vulnerabilities in your open-source libraries and packages. 
 
-    - [**Container**](/docs/security-testing-orchestration/sto-techref-category/built-in/containers) Add an Aqua Trivy or Anchor Grype scan to detect vulnerabilities in your container images.
+    - [**Container**](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) Add an Aqua Trivy or Anchor Grype scan to detect vulnerabilities in your container images.
 
-    - [**DAST**](/docs/security-testing-orchestration/sto-techref-category/built-in/dast) Add a Zed Attack Proxy (ZAP) scan to detect vulnerabilities in your application instances.
+    - [**DAST**](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) Add a Zed Attack Proxy (ZAP) scan to detect vulnerabilities in your application instances.
 
 #### New feature: Wiz scanner integration
 

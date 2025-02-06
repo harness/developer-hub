@@ -1,8 +1,6 @@
 import {
-  CardItem,
-  CardSections,
-  docType,
-} from "@site/src/components/LandingPage/TutorialCard";
+  CardSections
+} from "@site/src/components/TutorialCard/TutorialCard";
 import { MODULES } from "@site/src/constants";
 
 /* Define the cards - start */
@@ -18,13 +16,13 @@ export const docsCards: CardSections = [
         module: MODULES.idp,
         description:
           "Learn more about the features and capabilities of Harness IDP.",
-        link: "/docs/internal-developer-portal/get-started/overview",
+        link: "/docs/internal-developer-portal/overview",
       },
       {
         title: "Get started with IDP",
         module: MODULES.idp,
         description: "Learn how to configure your IDP and start onboarding.",
-        link: "/docs/category/get-started-with-idp",
+        link: "/docs/internal-developer-portal/get-started/",
       },
     ],
   },
@@ -42,7 +40,7 @@ export const docsCards: CardSections = [
         title: "Self Service Workflows",
         module: MODULES.idp,
         description: "Explore how to design workflows for automating engineering process in your organization.",
-        link: "/docs/internal-developer-portal/flows/service-onboarding-pipelines",
+        link: "/docs/internal-developer-portal/flows/overview",
       },
       {
         title: "Scorecards",
@@ -114,7 +112,7 @@ export const docsCards: CardSections = [
         title: "Track Adoption using Dashboard",
         module: MODULES.idp,
         description: "Learn how the out-of-the-box adoption dashboard helps track Harness IDP usage in your organization.",
-        link: "/docs/internal-developer-portal/get-started/how-to-track-adoption",
+        link: "/docs/internal-developer-portal/adoption/how-to-track-adoption",
       },
     ],
   },

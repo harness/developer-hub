@@ -50,9 +50,9 @@ static/  @rohanmaharjan100 @wei-harness
 # data/*.ts @global-data-file-owners
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta
-/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta
-/src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
+/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta @shylajas
+/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta @shylajas
+/src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av @thisrohangupta @shylajas
 /src/components/Docs/data/continuousDeliveryData*  @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
 # FirstGen CD Docs
 /docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
@@ -63,10 +63,10 @@ static/  @rohanmaharjan100 @wei-harness
 
 
 # Continuous Integration Docs
-/docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed @SushrutHarness
-/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed
-/src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed
-/src/components/Docs/data/continuousIntegrationData.ts @nofarblue @rustd @dewan-ahmed
+/docs/continuous-integration/ @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
+/release-notes/continuous-integration.md @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
+/src/components/Roadmap/data/ciData.ts @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
+/src/components/Docs/data/continuousIntegrationData.ts @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
 
 # CODE Docs
 /docs/code-repository/ @pwolf-harness @hitesharinga @dewan-ahmed
@@ -151,7 +151,7 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/softwareSupplyChainAssuranceData.tsx @sunilgupta-harness @tejakummarikuntla @pranay-harness
 
 # IACM Docs
-/docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez @urischeiner
+/docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez
 /src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
 /src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness
 
@@ -184,12 +184,16 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/cloud-development-environments/ @manishas @khushisharmaharness
 /src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas @khushisharmaharness
 
+# IR Docs
+/docs/incident-response/ @ryantaylor16 @Kmonkeyjam
+/release-notes/incident-response @ryantaylor16 @Kmonkeyjam
+
 # AI QA Assistant Docs
-/docs/ai-qa-assistant/ @deba-harness
+/docs/ai-qa-assistant/ 
 
 # Artifact Registry Docs
-/docs/artifact-registry/ @SushrutHarness @shankaranandh @shivagowda @richardblack-Harness
-/src/components/Docs/data/artifactRegistryData.ts @SushrutHarness @shankaranandh @shivagowda @richardblack-Harness
+/docs/artifact-registry/ @shankaranandh @shivagowda @richardblack-Harness
+/src/components/Docs/data/artifactRegistryData.ts @shankaranandh @shivagowda @richardblack-Harness
 
 # Open Source Docs
 /docs/open-source/ @dewan-ahmed @rustd @SushrutHarness

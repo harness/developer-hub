@@ -1,13 +1,18 @@
 ---
 title: Upgrade chaos infrastructure
-sidebar_position: 6
+sidebar_position: 15
 description: Guide to upgrade your chaos infrastructure
 redirect_from:
 - /docs/chaos-engineering/chaos-infrastructure/upgrade-infra
 - /docs/chaos-engineering/features/chaos-infrastructure/upgrade-infra/
 ---
 
-If a HCE release is not backward compatible, upgrade your chaos infrastructure to ensure you can execute all experiments smoothly. This applies only to releases that have breaking changes, which will be clearly indicated in [release notes](/release-notes/chaos-engineering).
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+This topic describes how you can upgrade your chaos infrastructure.
+
+If a Harness CE release is not backward compatible, upgrade your chaos infrastructure to ensure you can execute all experiments smoothly. This applies only to releases that have breaking changes, which will be clearly indicated in the [release notes](/release-notes/chaos-engineering).
 
 :::warning
 - If you don't upgrade your infrastructure for these types of releases, chaos experiments may fail.
@@ -118,3 +123,68 @@ Based on the scope of installation, you have to execute the commands.
 1. If you install your infrastructure in cluster scope, HCE supports auto-upgrade for such an infrastructure.
 2. It is important that you remember that the flags in the command are based on the input parameters you provide while installing the infrastructure.
 :::
+
+## Upgrade Linux infrastructure
+
+You can upgrade Linux infrastructure in two ways depending on the platform (SaaS or SMP). They are described below.
+
+<Tabs>
+<TabItem value="SaaS">
+
+For SaaS, execute the commands in the VM where your infrastructure is installed.
+
+- Execute the following commands to fetch the `INFRA_ID` and the `ACCESS_KEY`.
+
+	```yaml
+	INFRA_ID=$(sed -n 's/^infraID: "\(.*\)"/\1/p' /etc/linux-chaos-infrastructure/config.yaml)
+	```
+
+	```yaml
+	ACCESS_KEY=$(sed -n 's/^accessKey: "\(.*\)"/\1/p' /etc/linux-chaos-infrastructure/config.yaml)
+	```
+
+- Execute the below command to uninstall the existing infrastructure.
+
+	```yaml
+	/etc/linux-chaos-infrastructure/uninstall.sh
+	```
+
+- You can find the URL (which is a binary required for installation) to upgrade the Linux infrastructure by navigating to your account, and accessing the Linux infrastructure from the UI. Execute this command with the `INFRA_ID` and the `ACCESS_KEY` that you got by executing the first command.
+
+	```yaml
+	sudo https://app.harness.io/public/shared/tools/chaos/linux/1.50.0/install.sh | bash /dev/stdin --infra-id <INFRA_ID> --access-key <ACCESS_KEY> --server-url https://<YOUR_IP>/chaos/lserver/api
+	```
+
+</TabItem>
+
+<TabItem value="SMP">
+- Raise a [Harness support](https://support.harness.io) ticket to get the `offline-linux-installer` tarball.
+- Copy and extract the offline installer to your target VM and `cd` (navigate) to the extracted directory.
+- Execute the following commands to fetch the `INFRA_ID` and the `ACCESS_KEY`.
+
+	```yaml
+	INFRA_ID=$(sed -n 's/^infraID: "\(.*\)"/\1/p' /etc/linux-chaos-infrastructure/config.yaml)
+	```
+
+	```yaml
+	ACCESS_KEY=$(sed -n 's/^accessKey: "\(.*\)"/\1/p' /etc/linux-chaos-infrastructure/config.yaml)
+	```
+
+- Execute the below command to uninstall the existing infrastructure.
+
+	```yaml
+	/etc/linux-chaos-infrastructure/uninstall.sh
+	```
+
+:::tip
+To upgrade the infrastructure in an air-gapped environment, assuming you have downloaded the Linux infrastructure, execute the following command:
+
+```yaml
+sudo  ./install.sh --infra-id <INFRA_ID> --access-key <ACCESS_KEY> --server-url https://<YOUR_IP>chaos/lserver/api
+```
+:::
+
+</TabItem>
+
+</Tabs>
+

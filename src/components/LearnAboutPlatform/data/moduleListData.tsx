@@ -1,6 +1,6 @@
 import React from "react";
-import { CardItem, docType } from "../../LandingPage/TutorialCard";
-import { MODULES } from "../../../constants";
+import { MODULES } from "@site/src/constants";
+import { CardItem } from "@site/src/components/TutorialCard/TutorialCard";
 
 export const moduleList: CardItem[] = [
   {
@@ -74,6 +74,13 @@ export const moduleList: CardItem[] = [
     // icon: "img/icon_ce.svg",
     description: <>Ensure application and infrastructure resilience.</>,
     link: "docs/chaos-engineering",
+  },
+  {
+    title: "Incident Response",
+    module: MODULES.ir,
+    icon: "img/icon-ir.svg",
+    description: <>Revolutionize incident management by focusing on proactive issue prevention and accelerated resolution.</>,
+    link: "docs/incident-response",
   },
   {
     title: "Service Reliability Management",

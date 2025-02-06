@@ -74,6 +74,19 @@ If your build [runs as non-root](#run-as-non-root-or-a-specific-user), you can r
 
 If your security policy doesn't allow running as root, you can use the Builah plugin to [build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot.md) instead of the built-in **Build and Push** steps.
 
+### Use mTLS on Kubernetes infrastructure
+In order to [use mTLS](/docs/platform/delegates/secure-delegates/delegate-mtls-support/) on a Kubernetes delegate for CI, you will need to ensure you have these minimum required versions:
+
+| Service          | Minimum Version Required |
+|------------------|--------------------------|
+| log-service      | 1.17.3                   |
+| pipeline-service | 1.108.10                 |
+| ng-manager       | 1.69.11                  |
+| ci-manager       | 1.57.6                   |
+| agent-gateway    | 1.1.0                    |
+| delegate         | 24.11.84306              |
+
+
 ### Create headless service for Istio MTLS STRICT mode
 
 If you use [Istio MTLS STRICT mode](https://istio.io/latest/docs/tasks/security/authentication/authn-policy/#globally-enabling-istio-mutual-tls-in-strict-mode), you need to add a [headless service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) to the Kubernetes namespace where you will install the Harness Delegate. For example:
@@ -325,7 +338,7 @@ If you leave this field blank, the `PriorityClass` is set to the `globalDefault`
 
 ### Node Selector
 
-A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector), which whitelist the set of candidate nodes based on your stage pod's requirements.
+A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector), which define an allowlist of candidate nodes based on your stage pod's requirements.
 
 ### Tolerations
 

@@ -472,7 +472,7 @@ For instructions, go to [Use IRSA](/docs/platform/connectors/cloud-providers/add
 
 Currently, OIDC authentication for AWS connectors is behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-Additionally, this option requires Harness Delegate version 24.03.82603 or later.
+Additionally, this option requires Harness Delegate version 24.03.836xx or later.
 
 :::
 
@@ -732,6 +732,78 @@ Here's list of throttled error codes where equal jitter strategy is applied:
 ```
 
 For more strategies, go to [Exponential Backoff And Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/) from AWS.
+
+
+### Connector Limitations
+
+<table style={{ border: '1px solid black', borderCollapse: 'collapse', width: '100%' }}>
+  <thead>
+    <tr>
+      <th style={{ border: '1px solid black', padding: '8px' }}>Connectors</th>
+      <th style={{ border: '1px solid black', padding: '8px' }}>Limitations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Deployment Support</strong></td>
+      <td style={{ border: '1px solid black', padding: '8px' }}>
+        The following deployments are not supported using the OIDC connector:
+        <ul>
+          <li>AWS Serverless Lambda deployments</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Plugin-based Support</strong></td>
+      <td style={{ border: '1px solid black', padding: '8px' }}>
+        The following plugins are not supported using the OIDC connector:
+        <ul>
+          <li>Serverless V2</li>
+          <li>AWS SAM</li>
+          <li>AWS CDK</li>
+          <li>S3 Download Step</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Delegate-based Support</strong></td>
+      <td style={{ border: '1px solid black', padding: '8px' }}>
+        The following Delegate-based connections are not supported using the OIDC connector:
+        <ul>
+          <li>SSH</li>
+          <li>WinRM</li>
+          <li>Spot</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Provisioner-based Support</strong></td>
+      <td style={{ border: '1px solid black', padding: '8px' }}>
+        The following provisioners are not supported using the OIDC connector:
+        <ul>
+          <li>CloudFormation provisioner</li>
+          <li>CDK provisioner</li>
+          <li>Terraform provisioner</li>
+          <li>Terraform Cloud provisioner</li>
+          <li>Terragrunt provisioner</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Manifest and Artifact Support</strong></td>
+      <td style={{ border: '1px solid black', padding: '8px' }}>
+        The following artifact and manifest sources are not supported using the OIDC connector:
+        <ul>
+          <li>AMI Artifact</li>
+          <li>ECR Artifact</li>
+          <li>S3 Artifact</li>
+          <li>S3 Manifest</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## Connect to Elastic Kubernetes Service (EKS)
 

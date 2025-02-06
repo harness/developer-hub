@@ -239,7 +239,7 @@ customPlugins:
 
 #### New features and enhancements
 
-- You can now see an out of the box [**Adoption Dashboard**](/docs/internal-developer-portal/get-started/how-to-track-adoption) under the platform Dashboards showing a quick insight into the adoption of IDP across different areas. Executive Buyers can now subscribe to this and get a weekly/monthly report.
+- You can now see an out of the box [**Adoption Dashboard**](/docs/internal-developer-portal/adoption/how-to-track-adoption) under the platform Dashboards showing a quick insight into the adoption of IDP across different areas. Executive Buyers can now subscribe to this and get a weekly/monthly report.
 - New plugins added to the marketplace
   - [Harness Chaos Engineering](/docs/internal-developer-portal/plugins/available-plugins/harness-chaos)
   - [Synk](https://github.com/snyk-tech-services/backstage-plugin-snyk/blob/main/README.md)
@@ -767,7 +767,7 @@ In this release, we're excited to unveil features like the HTTP actions support 
 
 #### Early access features
 
-- Added a [new stage](/docs/internal-developer-portal/flows/idp-stage), specifically for IDP, knows as Developer Portal to help with the self service flows (presently this feature is behind a Feature Flag) [IDP-1425]
+- Added a [new stage](/docs/internal-developer-portal/flows/harness-pipeline), specifically for IDP, knows as Developer Portal to help with the self service flows (presently this feature is behind a Feature Flag) [IDP-1425]
 
 ![](./static/idp-stage.png)
 

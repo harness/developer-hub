@@ -5,6 +5,8 @@ sidebar_position: 1
 redirect_from:
   - /docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Google Cloud Run Deployments
 
@@ -23,13 +25,35 @@ Harness supports deploying both **Google Cloud Run Services** and **Google Cloud
 
 Follow these steps to set up a **Google Cloud Run Service** in Harness:
 
+## Interactive guide
+
+<Tabs>
+<TabItem value="Interactive guide">
+
+Here is an interactive guide to setup your Cloud Run Service pipeline.
+
+<iframe 
+	src="https://app.tango.us/app/embed/8560a005-3946-42ad-9f60-15c4ff588749" 
+	style={{ minHeight: '800px'}} 
+	sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
+	security="restricted" 
+	title="Setting Up GCR Sample Pipeline in Harness" 
+	width="100%" 
+	height="100%" 
+	referrerpolicy="strict-origin-when-cross-origin" 
+	frameborder="0" 
+   webkitallowfullscreen="webkitallowfullscreen" 
+   mozallowfullscreen="mozallowfullscreen" 
+	allowfullscreen="allowfullscreen"
+></iframe>
+</TabItem>
+</Tabs>
+
 ## Create a CD Pipeline
 
 1. In the Harness UI, create a new CD pipeline.
 2. Add a Deploy stage and select **Google Cloud Run** as the deployment type.
 3. Click **Set Up Stage**.
-
-![](static/google-cloud-run-1.png)
 
 ## Configure the Service
 
@@ -120,7 +144,7 @@ We do not use the Google Run Deploy command here as this command takes every fie
 ### Container Configuration
 
 For Container Registry, create or select a Docker connector to access the container registry. Use the following public Docker image:
-- [`harness/google-cloud-run-plugin:1.0.1-linux-amd64`](https://hub.docker.com/layers/harness/google-cloud-run-plugin/1.0.1-linux-amd64/images/sha256-bfb25c236e59041452ca81c7370a5d1ca924b361acb5309de3424ccc0645d074).  
+- [`harness/google-cloud-run-plugin:1.0.1-linux-amd64`](https://hub.docker.com/layers/harness/google-cloud-run-plugin/1.0.1-linux-amd64/images/sha256-bfb25c236e59041452ca81c7370a5d1ca924b361acb5309de3424ccc0645d074) 
 
 This image is required to perform deployments to Google Cloud Run
 
@@ -145,14 +169,34 @@ Google Cloud Run does not allow deletion of the new revision; only traffic can b
 
 ### Google Cloud Run Job Step
 
-You can also add a Google Cloud Run Job step in the Execution tab.
+You can add a Google Cloud Run Job step in the Execution tab.
 
-![](static/google-cloud-run-job.png)
+<Tabs>
+<TabItem value="Interactive guide">
+
+Here is an interactive guide to setup your Cloud Run Job Stage.
+
+<iframe 
+	src="https://app.tango.us/app/embed/f5e17709-e6b9-4594-8b32-7cd49df99331" 
+	style={{ minHeight: '800px'}} 
+	sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
+	security="restricted" 
+	title="Setting Up GCR Sample Pipeline in Harness" 
+	width="100%" 
+	height="100%" 
+	referrerpolicy="strict-origin-when-cross-origin" 
+	frameborder="0" 
+   webkitallowfullscreen="webkitallowfullscreen" 
+   mozallowfullscreen="mozallowfullscreen" 
+	allowfullscreen="allowfullscreen"
+></iframe>
+</TabItem>
+</Tabs>
 
 **Container Configuration**
 
 For Container Registry, create or select a Docker connector to access the container registry. Use the following public Docker image:
-- [`harness/google-cloud-run-plugin:1.0.1-linux-amd64`](https://hub.docker.com/layers/harness/google-cloud-run-plugin/1.0.1-linux-amd64/images/sha256-bfb25c236e59041452ca81c7370a5d1ca924b361acb5309de3424ccc0645d074). 
+- [`harness/google-cloud-run-plugin:1.0.1-linux-amd64`](https://hub.docker.com/layers/harness/google-cloud-run-plugin/1.0.1-linux-amd64/images/sha256-bfb25c236e59041452ca81c7370a5d1ca924b361acb5309de3424ccc0645d074)
 
 This image is required to perform deployments to Google Cloud Run.
 
@@ -166,6 +210,18 @@ You can define your job using either Job Name or Job Manifest.
    - Click **+ Google Cloud Run Job Manifest**.  
    - In the **Specify Google Cloud Run Job Manifest Store**, select the source where the manifest file is stored.  
    - In **Manifest Details**, specify the path where the manifest file is stored.
+
+:::note  
+If you are deploying a **container-based Google Cloud Run Job**, ensure that you:  
+
+1. Create a Step Group by clicking on **Add Step Group** in the execution tab.  
+2. Provide the Name of the Step Group. Enable the **Enable Container-Based Execution** toggle.
+3. Provide **Kubernetes Cluster** details.
+4. Add the **Google Cloud Run Job** Step to the Step Group.  
+
+These steps are necessary for successful execution.  
+:::
+
 
 **Deploy Step**
 
