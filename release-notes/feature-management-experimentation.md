@@ -20,30 +20,45 @@ These release notes describe recent changes to Harness Feature Management & Expe
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
 
-#### Last updated: December 12, 2024
+#### Last updated: September 30, 2024
 
-## December 2024
+## September 2024
 
-### Client-side SDKs, Split FME UI
+### 2024-09-30
 
-Large segments for Enterprise tier.
+#### Better Together: Split + Harness
 
-### Browser RUM Agent
+##### New Colors, Names for Organization and Workspace
 
-#### Version 1.0.0
+Starting on September 30th, we began a progressive rollout to update the Split UI, bringing it closer to the look of Harness:
 
-Google Web Vitals metrics collected automatically.
+![Image](https://www.split.io/wp-content/uploads/Better-Together-Color-Changes.png)
 
-### Split FME UI
+Beyond a change in color scheme, you will also see two changes to **terminology**:
 
-#### SemVer
+- **Workspaces** will now be known as **Projects** in the UI
+- **Organizations** will now be known as **Accounts** in the UI
 
-Full SemVer support.
+![Image](https://www.split.io/wp-content/uploads/Admin-Settings-New-Nomenclature-1920x977.png)
 
-![SemVer type shown with suggested values in a feature flag targeting rule](./static/fme-semver-targeting.png)
+Note: These terminology changes are being made only to labels in the UI at this time. To avoid introducing a breaking change, the [Admin API](https://docs.split.io/reference/introduction) will continue to use the strings ws, workspace, organizationId, and orgId until further notice.
 
-#### Alert table
+### 2024-09-12
 
-Guardrail alerts and Key metric alerts shown in Alert table on feature flag Monitoring tab.
+#### Monitoring
 
-![Alert table on feature flag Monitoring tab](./static/fme-alerts-table-nov-2024.png)
+##### Traffic Insights and Alerts
+
+The **Alerts** tab has been renamed **Monitoring** and expanded to show real-time traffic insights over time and any alerts fired for the flag on a single page.
+
+![Image](https://www.split.io/wp-content/uploads/monitoring_tab_in_docs-1920x1431.png)
+
+By default, traffic over the **Last 48 hours** is shown, but you may also select the **Last 7 days**, another **Time range**, or a specific **Feature flag version**:
+
+![Image](https://www.split.io/wp-content/uploads/Traffic_last48-by-defaultother_options-1920x573.png)
+
+Changes made to flags (i.e., new flag versions) are displayed as vertical bars for context:
+
+![Image](https://www.split.io/wp-content/uploads/flag-versions-vertical-bars.png)
+
+For more information, have a look at the [Monitoring tab docs](https://help.split.io/hc/en-us/articles/30098162579853-Monitoring-tab).
