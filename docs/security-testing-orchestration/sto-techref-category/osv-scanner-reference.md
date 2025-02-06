@@ -151,7 +151,7 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 ## Configure OSV as a Built-in Scanner  
 
-The OSV scanner is available as a [built-in scanner](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
+The OSV scanner is available as a [built-in scanner](/docs/security-testing-orchestration/set-up-scans/built-in-scanners) in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
 
 1. Search for **SCA** in the step palette or navigate to the **Built-in Scanners** section and select the **SCA** step.  
 2. Select **OSV** from the list of scanners.  
