@@ -13,7 +13,7 @@ Whenever you add a new payer account to Harness it may take up to 24 hours for c
 
 The first step is to [create a CUR](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur) (Cost Usage Report) in the payer account. Once the CUR is created, we will need to create a role that has access to the S3 bucket that the CUR resides in. This role will have a trust policy that allows Harness to assume the role and copy the CUR data to an S3 bucket in Harness' AWS account for data ingestion.
 
-![](../../static/aws_cur.png)
+![](../../static/aws-cur.png)
 
 There is a CloudFormation template or Terraform module to provision this role. [The CloudFormation stack is located here](https://github.com/harness/harness-core/blob/develop/ce-nextgen/awstemplate/prod/HarnessAWSTemplate.yaml), and the [Terraform module here](https://github.com/harness-community/terraform-aws-harness-ccm).
 

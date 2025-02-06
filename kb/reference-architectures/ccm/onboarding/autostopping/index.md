@@ -9,3 +9,4 @@ description: Onboarding to Cloud Cost Management AutoStopping
 - [Azure](./azure.md)
 - [GCP](./gcp.md)
 - [Kubernetes](./k8s.md)
+- [Proxy](./proxy.md)

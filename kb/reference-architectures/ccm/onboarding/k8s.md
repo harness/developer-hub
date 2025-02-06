@@ -23,7 +23,7 @@ Gathering fine-grain metrics in the cluster is memory intensive.  In an effort t
 |       `301 - 400`      |      4      |   15258   |
 |       `401 - 500`      |      5      |   19073   |
 
-![](../../static/k8s_delegate.png)
+![](../../static/k8s-delegate.png)
 
 #### Deployment Options
 
@@ -127,7 +127,7 @@ On the next page you are given a deployment yaml that encompasses the auto stopp
 
 After the deployment has completed, check the pods in the `harness-auto stopping` namespace to be sure they all come up fully. At this point you should be able to create new Kubernetes auto stopping rules for the cluster.
 
-![](../../static/k8s_autostop_controller.png)
+![](../../static/k8s-autostop-controller.png)
 
 ## Service Account for CCM
 
