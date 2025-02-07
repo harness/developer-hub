@@ -94,7 +94,7 @@ The following deprecated API endpoints are longer supported:
 
 - **Enforced** OPA policies on Service Accounts to apply to role assignments bound to them. [PL-59294]  
 
-- **Limited** the maximum number of roles per account to 21,000 to ensure system stability and prevent abuse. [PL-59162]  
+- **Limited** the maximum number of [roles per account to 21,000](../docs/platform/account-license-limits) to ensure system stability and prevent abuse. [PL-59162]  
 
 - **Added** an option in the Delegate Helm chart to provide mTLS certificates and enable mTLS for the Delegate. [PL-59074]  
 
