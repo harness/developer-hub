@@ -9,18 +9,9 @@ helpdocs_is_published: true
 
 This guide describes the basic steps for getting started with Split Feature Management & Experimentation.
 
-## Quickstart guides
-
-This series walks you through creating your first feature flag, using an FME SDK in your codebase, and measuring impact with experimentation.
-
-* [Step 1: Create a feature flag and target users](./tutorials/step-1-create-feature-flag-and-target-users.md)
-* [Step 2: Install the SDK](./tutorials/step-2-install-the-sdk.md)
-* [Step 3: Send event data](./tutorials/step-3-send-event-data.md)
-* [Step 4: Create a metric, monitor and measure impact](./tutorials/step-1-create-feature-flag-and-target-users.md)
-
 ## Quickstart wizard
 
-You can also follow the SDK Setup and Event Ingestion **Quickstart wizard** in FME/Split. Click **Help** in the left navigation menu, and click on one of the quickstarts.
+You can follow the SDK Setup and Event Ingestion **Quickstart wizard** in FME/Split. Click **Help** in the left navigation menu, and click on one of the quickstarts.
 
 ![A screenshot of the Quickstart guides in Split UI](./static/fme-quickstart.png)
 
