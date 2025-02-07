@@ -13,6 +13,12 @@ A Harness monitored service functions as a unified logical entity across three m
 - inside the SRM module
 - within the CET module
 
+:::warning
+
+Currently, [built-in Harness variables and expressions](/docs/platform/variables-and-expressions/) cannot be used with a default monitored service. Please use a monitored service template if you wish to use Harness expressions. 
+
+:::
+
 ## Create a monitored service at project level
 
 :::note
