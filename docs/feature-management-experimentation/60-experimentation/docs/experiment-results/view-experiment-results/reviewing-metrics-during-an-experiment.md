@@ -7,7 +7,7 @@ sidebar_position: 6
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360021867572-Reviewing-metrics-during-an-experiment </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360021867572-Reviewing-metrics-during-an-experiment </button>
 </p>
 
 <h3 id="reviewing-metrics" class="header-anchor">Reviewing metrics</h3>
