@@ -40,10 +40,12 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 <!-- Released on 7 February 2025 -->
 #### New Features and Enhancements
 - **Module Registry:** We've introduced the Module Registry, a centralized repository that allows you to manage and publish versions of pre-built infrastructure modules. This feature supports versioning, enhances search functionality, and integrates seamlessly with existing IaCM configurations, all while providing detailed access control settings. 
-
   #### What You Need to Know:
   - **Prerequisites:** Ensure your Harness connectors are set up, or if using a delegate, it should be version `25.01.85000` or later.
-For more information, check out the [Module Registry Documentation](https://developer.harness.io/docs/infra-as-code-management/iacm-features/module-registry/).
+For more information, check out the [Module Registry Documentation](/docs/infra-as-code-management/iacm-features/module-registry).
+
+### IAC-Manager: Version 1.57.0
+- **OpenTofu/Terraform import:** Harness Pipelines now support the [tofu/terraform import](/docs/infra-as-code-management/pipelines/iacm-plugins/terraform-plugins#import) command, allowing you to bring existing infrastructure under IaC control.
 
 <details>
 <summary>IaCM 2024 Release Notes</summary>
