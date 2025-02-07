@@ -22,7 +22,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## February 2025
 
-### Version 1.64
+### Version 1.65
 
 <!-- 2025-02-03 -->
 
