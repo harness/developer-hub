@@ -13,8 +13,7 @@ redirect_from:
 
 This topic describes generic prerequisites to be fulfilled before executing chaos experiments using Harness Chaos Engineering (SaaS). 
 
-
-The prerequisites are listed in the table format that maps every prerequisite with the type and the user persona.
+The prerequisites are listed in the table format that maps every category of prerequisite with the checks to perform or permissions to obtain.
 
 <table>
     <thead>
