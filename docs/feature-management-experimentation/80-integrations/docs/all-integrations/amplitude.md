@@ -11,17 +11,17 @@ helpdocs_is_published: true
 
 Amplitude is a product intelligence platform that helps teams convert, engage, and retain customers. Split provides multiple integration options to send impression data from the Split platform as a data source to Amplitude, export Amplitude cohorts to be used in Split for targeting, or extract Amplitude events to be used as events in Split.
 
-# Sending Split impressions to Amplitude (Recommended)
+## Sending Split impressions to Amplitude (Recommended)
 
 This integration will send impressions to Amplitude as events, mapped according to the configuration settings. It gives you the ability to connect Split to Amplitude and easily run deeper analysis on A/B and beta tests.
 
 Each call to **getTreatment** in a Split SDK is passed to Amplitude as a separate event.
 
-## In Amplitude
+### In Amplitude
 
 Within your Amplitude account, set up Split as a data source. Copy your Amplitude project's API Key to be used in Split.
 
-## In Split
+### In Split
 
 1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
@@ -42,7 +42,7 @@ Within your Amplitude account, set up Split as a data source. Copy your Amplitud
 You can repeat this process depending on how many environments and traffic types you want to configure.
 
 
-# Sending Split impressions to Amplitude (Alternative)
+## Sending Split impressions to Amplitude (Alternative)
 
 There are some situations where the recommended approach to send Split impressions to Amplitude is not preferred. One example is when the same impression is expected to be sent frequently. Amplitude bills by event volume so each impression counts against your organization's event quota.
 
@@ -50,17 +50,17 @@ Using Amplitude’s Identify API, you can leverage a **User Property** in Amplit
 
 *The user property will not take effect until the user takes an action.*
 
-## How to implement
+### How to implement
 
 If you have an existing Amplitude integration with Split, you will need to disable and remove the packaged Split to Amplitude integration from the Split Admin panel by selecting **Uninstall** from the dropdown menu at the top right.
 
 <img src="https://help.split.io/hc/article_attachments/26783234831629" alt="Integrations Amplitude for Split App" />
 
-### Step 1: Rationalize the Split traffic type with the Amplitude id
+#### Step 1: Rationalize the Split traffic type with the Amplitude id
 
 If you are using an id in Amplitude other than that of a known user, you should not call the identity API to set a user_id with that id. The device_id may be an appropriate alternative in that scenario. If using the SDK, this may be already handled, but it is important to keep in mind which Amplitude id you are using and to which traffic type it maps to in Split.
 
-### Step 2: Update your code to use the Amplitude Identify API
+#### Step 2: Update your code to use the Amplitude Identify API
 
 You have several options to do this. There are interfaces to the identify API in all of the Amplitude SDKs. For example, see [Amplitude's documentation](https://www.docs.developers.amplitude.com/data/sdks/javascript/#set-a-user-property) for the Javascript SDK.
 
@@ -291,11 +291,11 @@ exports.handler = async (impressions) => {
 
 User properties will show up on the User Look-up screen to be used for further analysis and processing in Amplitude. You do not need to pass all of the properties at once. In the examples above, each Split feature flag sends a single property as individual Identify calls, but all properties sent to Amplitude will be associated with the user.
 
-# Exporting Amplitude cohorts for Split targeting
+## Exporting Amplitude cohorts for Split targeting
 
 With Amplitude’s Split integration, you can export your Amplitude cohorts and use them for targeting in Split. For more information, refer to [Amplitude's documentation](https://www.docs.developers.amplitude.com/data/destinations/split-cohort/).
 
-# Sending Amplitude events to Split
+## Sending Amplitude events to Split
 
 **Note: This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, contact the [contributor](https://github.com/dbmartin00).**
 

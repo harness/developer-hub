@@ -17,15 +17,15 @@ Use this integration to:
 
 This guide explains how you can set up and test different configurations within the mParticle integration.
 
-# Split as a feed input
+## Split as a feed input
 
-## In mParticle
+### In mParticle
 
 Before you begin, within your mParticle account, set up Split using the Integration Directory to receive your API key and secret. Copy and save these 2 strings. Refer to [mParticle documentation](https://docs.mparticle.com/integrations/split/feed/) for more information. 
 
 <img src="https://help.split.io/hc/article_attachments/360046876712/Screen_Shot_2020-01-10_at_2.13.41_PM.png" alt="Screen_Shot_2020-01-10_at_2.13.41_PM.png" />
 
-## In Split 
+### In Split 
 
 1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
@@ -52,9 +52,9 @@ Before you begin, within your mParticle account, set up Split using the Integrat
 
 Repeat this process for each environment and traffic type you want to configure. 
 
-# Split as an event output 
+## Split as an event output 
 
-## In Split 
+### In Split 
 
 1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
@@ -81,24 +81,24 @@ Repeat this process for each environment and traffic type you want to configure.
 9. Click **Save**.
 10. Copy the generated key and use it to configure the events integration settings in mParticle. 
  
-## In mParticle
+### In mParticle
 Within mParticle, select Split from the integration directory and configure the events integration. When prompted, enter the integration key provided by Split. Refer to[mParticle documentation](https://docs.mparticle.com/integrations/split/event/) for more information. 
 
-# User identity mapping 
+## User identity mapping 
 
-## Logged in and anonymous mapping
+### Logged in and anonymous mapping
 
 If you want to map logged in and anonymous traffic, we recommend mapping your logged-in traffic type in Split to `customer_id` in mParticle. For mapping an anonymous traffic type, pass any anonymous ID to Split for targeting and use a `other_id` field in the user identities to reserve for Split anonymous traffic.
 
 If you are unsure of which mParticle identifier to map your Split traffic to, reach out to your mParticle solutions consultant or contact [support@split.io](mailto:support@split.io).
 
-## Multiple identity mapping
+### Multiple identity mapping
 
 In general, it is recommended to map a single mParticle identity to a single traffic type in Split. If you require mapping multiple mParticle identities to a single traffic type in Split, contact [support@split.io](mailto:support@split.io) so we can provide guidance on best practices. If an event contains two mParticle identities that are mapped to a single Split traffic type, two events are generated.
 
 For example, if we have `customer_id` = 123 and `other_id` = 456 as mParticle identities in an event and both are mapped to user traffic type in Split. It becomes two events in Split, both with traffic type as user and event one has `key` = 123 and event two has `key` = 456. Other fields remain the same.
 
-# Event data mapping
+## Event data mapping
 
 From mParticle, we accept the following events types:
 
@@ -110,7 +110,7 @@ From mParticle, we accept the following events types:
 
 See the following section to learn more about how fields and properties are mapped in Split for each event type.
 
-## Commerce event
+### Commerce event
 
 For the commerce event, Split accepts product-based events. These events have a product action field populated. Split does not accept promotion-based or impression-based commerce events. If multiple products are included in the product action event, the number of products are equal to the number of events generated in Split.
 
@@ -127,7 +127,7 @@ Event fields are mapped as shown below:
 | [Product fields](https://docs.mparticle.com/developers/server/json-reference/#product_action): product id product name product brand product category product variant product position product price product quantity product coupon code product total amount| properties (These fields are prepended with *product* in the event property field in Split) |
 | custom attributes | properties (These fields are prepended with *attribute* in the event property field in Split.) | 
 
-## Custom event
+### Custom event
 
 Event fields are mapped as shown below:
 
@@ -140,7 +140,7 @@ Event fields are mapped as shown below:
 | [Location fields](https://docs.mparticle.com/developers/server/json-reference/#custom_event): location latitude location longitude location accuracy | properties | 
 | custom attributes | properties (These fields are prepended with *attribute* in the event property field in Split.) |
 
-## Session start event
+### Session start event
 
 Event fields are mapped as shown below:
 
@@ -153,7 +153,7 @@ Event fields are mapped as shown below:
 | [Location fields](https://docs.mparticle.com/developers/server/json-reference/#session_start): location latitude location longitude location accuracy | properties | 
 | custom attributes | properties (These fields are prepended with *attribute* in the event property field in Split.) |
 
-## Session end event
+### Session end event
 
 Event fields are mapped as shown below: 
 
@@ -168,7 +168,7 @@ Event fields are mapped as shown below:
 | custom attributes | properties (These fields are prepended with *attribute* in the event property field in Split.) |
 
 
-## Screen view
+### Screen view
 
 Event fields are mapped as shown below: 
 

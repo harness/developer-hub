@@ -13,7 +13,7 @@ Use our HipChat integration to keep your team notified and up to date when new S
 
 If you have trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
 
-# In HipChat
+## In HipChat
  
 1. Go to **Account Settings**
   * Click on **API Access**
@@ -35,7 +35,7 @@ If you have trouble completing the integration, contact us at [support@split.io]
 	<img src="https://help.split.io/hc/article_attachments/360017413512/HipChat_RoomDetails.png" alt="HipChat_RoomDetails.png" />
 </p>
 
-# In Split
+## In Split
 
 <p>
   <img src="https://help.split.io/hc/article_attachments/360021730871/hipchat1.png" alt="hipchat1.png" />

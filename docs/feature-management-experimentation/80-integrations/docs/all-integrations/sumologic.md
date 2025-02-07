@@ -13,7 +13,7 @@ Sumo Logic provides log monitoring, management, and analytics service. Integrate
 
 If you are having trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
 
-# In Sumo Logic
+## In Sumo Logic
  
 1. Click **Manage** and **Setup Wizard** from the dropdown to set up new streaming data.
 
@@ -45,7 +45,7 @@ If you are having trouble completing the integration, contact us at [support@spl
 	<img src="https://help.split.io/hc/article_attachments/360017445971/Sumo_HTTPSource.png" alt="Sumo_HTTPSource.png" />
 </p>
 
-# In Split
+## In Split
 
 1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.

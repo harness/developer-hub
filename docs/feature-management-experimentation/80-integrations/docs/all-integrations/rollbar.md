@@ -13,7 +13,7 @@ Rollbar is an error tracking software for development teams. Integrate Split dat
 
 If you are having trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
 
-# In Rollbar
+## In Rollbar
  
 1. Log in to your Rollbar account.
 2. Click **Settings**.
@@ -42,7 +42,7 @@ If you are having trouble completing the integration, contact us at [support@spl
 	<img src="https://help.split.io/hc/article_attachments/360017383051/Rollbar_tokens_copy.png" alt="Rollbar_tokens_copy.png" />
 </p>
 
-# In Split
+## In Split
 
 1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.

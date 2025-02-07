@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 Datadog is a cloud-hosted monitoring and analytics platform for development and operations teams. Integrate Split data into Datadog to monitor and measure the performance impact of Split changes. If you are having trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
 
-# In Datadog
+## In Datadog
  
 1. Go to **Integrations** and click **APIs**.
 
@@ -26,7 +26,7 @@ Datadog is a cloud-hosted monitoring and analytics platform for development and 
 
 3. Copy the API key that you just created.
 
-# In Split
+## In Split
 
 1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
@@ -48,7 +48,7 @@ Split notifications should now display in Datadog as "tage:role:split.io".
 
 If you have any issues with this integration, contact [support@split.io](mailto:support@split.io). 
 
-# Using Split with Datadog RUM
+## Using Split with Datadog RUM
 
 This Split integration automatically enriches your RUM data with a feature flag variant. It allows you to correlate feature releases with performance and troubleshoot any issues to ensure safe feature releases. 
 

@@ -15,11 +15,11 @@ You can send audit log notifications to Grafana as chart annotations. This Split
   <img src="https://help.split.io/hc/article_attachments/12398239153677" alt="annotations.png" />
 </p>
 
-# Prerequisites
+## Prerequisites
 
 Before you start, you should be familiar with AWS and working with Lambdas.
 
-# Installing the Split audit log webhook
+## Installing the Split audit log webhook
 
 The Split audit log webhook is a node.js lambda, which is designed to be deployed in AWS. To install the webhook on your local environment, do the following:
 
@@ -43,7 +43,7 @@ The grafana.zip now includes the index.js, the Grafana key and url files, and a 
 
 **Note: You can also "brew install npm" on OSX. Follow the instructions to install npm for other operating systems.**
 
-# Creating an annotation query for tag split
+## Creating an annotation query for tag split
 
 You must create an annotation query for tag 'split' on the dashboards for where you want the Split annotations to appear. Refer to the Grafana documentation for information about dashboard settings. Once you set this up, you see the following:
 
@@ -53,7 +53,7 @@ The following shows you an example of what you see when you click the Preview in
   <img src="https://help.split.io/hc/article_attachments/12398239153677" alt="annotations.png" />
 </p>
 
-# Installing in AWS 
+## Installing in AWS 
 
 To install Grafana in AWS, do the following:
 
@@ -64,11 +64,11 @@ To install Grafana in AWS, do the following:
 5. Provide the functional URL to a new Split audit log webhook.
 6. Use the Split webhook test button to make sure you get back a 200 response from your lambda.
 
-# Debug
+## Debug
 
 Use CloudWatch to look at inbound events and check they're properly handled. Incorrect key or Grafana server host and port are likely problems.
 
-# About this integration
+## About this integration
 
 This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, reach out to the [contributor](mailto:david.martin@split.io).
 

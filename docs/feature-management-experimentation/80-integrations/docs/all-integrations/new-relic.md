@@ -13,7 +13,7 @@ New Relic provides real-time application performance management. Integrate Split
 
 If you have trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
 
-# In New Relic
+## In New Relic
  
 1. Go to **New Relic One** and click your name.
 
@@ -41,7 +41,7 @@ If you have trouble completing the integration, contact us at [support@split.io]
 
 5. Ensure you have copied down your Account ID (the number next to "**Account:**") and the key for use in Split.
 
-# In Split
+## In Split
 
 1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.

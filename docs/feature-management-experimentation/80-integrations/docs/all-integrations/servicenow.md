@@ -17,7 +17,7 @@ The ServiceNow integration enables enterprise organizations to improve operation
 * If you’re an approver, you can manage your approvals.
 * If you’re an engineer, any change you make is quickly recorded and approved. This integration also lets you know when your changes are approved.
 
-# Supported version
+## Supported version
 
 The following is the supported ServiceNow version:
 
@@ -25,9 +25,9 @@ Service Now ITSM Pro product/plan
 Platform version: Rome / SanDiego / Tokyo versions
 DevOps plugin: 1.35.1
 
-# Setting up in Split
+## Setting up in Split
 
-## Create a Split token
+### Create a Split token
 To start connecting the ServiceNow integration to the Split application, you need to generate and copy a Split token so you can paste it into the ServiceNow integration.
 
 To create your Split token, do the following:
@@ -41,7 +41,7 @@ To create your Split token, do the following:
 
 From here, you can either configure your environment within Split for ServiceNow approvals or go to ServiceNow to finish setting up your integration.
 
-## Configure your Split environment for ServiceNow approval (optional)
+### Configure your Split environment for ServiceNow approval (optional)
 
 You can configure your Split environment so approvals only occur on the ServiceNow side.
 
@@ -55,9 +55,9 @@ To configure your Split environment, do the following:
 6. On the Approvers menu list, in the first field, select Integration and in the second field, select **ServiceNow, ServiceNow DevOps**.
 7. Click the **Save** button. This takes you back to the selected project page. Now when you make a change to a feature flag or segment in the Split application, the approver is automatically set to the ServiceNow integration.  View this in the Change summary page under the Approvers field. 
   
-# Set up in ServiceNow DevOps
+## Set up in ServiceNow DevOps
 
-## Create a ServiceNow DevOps tool for Split
+### Create a ServiceNow DevOps tool for Split
 After setting up the Split application, you can set up the integration in ServiceNow DevOps by doing the following: 
 
 1. From the ServiceNow store, install the [DevOps Feature Flag Integration](https://store.servicenow.com/$appstore.do#!/store/application/632860a753a301104a6eddeeff7b1266/) (if not already installed).
@@ -72,7 +72,7 @@ After setting up the Split application, you can set up the integration in Servic
 5. Click the **Submit** button. A new DevOps tool is created in the ServiceNow application. From here, refer to the Connection status field to see if  the tool is connected to Split.
  **Note: When you create a tool, it can take up to a minute.**
 
-## Add a webhook for the ServiceNow DevOps tool
+### Add a webhook for the ServiceNow DevOps tool
 Once you connect to the Split application, you need to configure your new tool to receive notifications from Split when you or others make changes to feature flags and segments.
 
 To add a webhook, do the following:
@@ -84,7 +84,7 @@ To add a webhook, do the following:
 
 ___Troubleshooting tip:___ If all the projects, environments, and feature flags are not loaded correctly or some are missing. Please reload the page and wait for all of them to appear. If they still don't appear, then please remove the webhook from both ServiceNow and Split and add it again by following the steps mentioned above.
 
-## Add an approval group in ServiceNow (optional)
+### Add an approval group in ServiceNow (optional)
 
 After configuring your ServiceNow tool, you can optionally preconfigure an environment to assign change requests to a specific Change Approval Group by doing the following:
 

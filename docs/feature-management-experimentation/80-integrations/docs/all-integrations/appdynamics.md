@@ -17,7 +17,7 @@ If you have trouble completing the integration, contact us at [support@split.io]
 The Split pre-built integration with AppDynamics does not support AppDynamics On-Premise (self-hosted) solution.
 :::
 
-# In AppDynamics
+## In AppDynamics
  
 To connect Split to AppDynamics, create a role and a user within that role.
 
@@ -50,7 +50,7 @@ To connect Split to AppDynamics, create a role and a user within that role.
 12. Verify that the user belongs to the group you created in steps 1 through 8.
 13. Click **Save**. 
 
-# In Split
+## In Split
 
 <p>
   <img src="https://help.split.io/hc/article_attachments/360021229812/appd7.png" alt="appd7.png" />

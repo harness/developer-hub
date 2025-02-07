@@ -9,24 +9,24 @@ helpdocs_is_published: true
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4423968122381-Quantum-Metric <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-# Split + Quantum Metric
+## Split + Quantum Metric
 
 Split and Quantum Metric enable brands to identify what features to test, prioritize feature releases, validate results, and iterate quicker by combining real-time analysis and data-driven experimentation.
 
 Use Quantum Metric’s segment builder to identify sessions with a specific feature flag. Compare each feature flag by validating results and comparing feature-level impact on user behavior. Split impressions (the feature flag treatments seen by each user) become part of segments within Quantum Metric. Sessions are marked with the feature flag treatment for playback and analysis.
 
-# Prerequisites
+## Prerequisites
 
 To connect Quantum Metric with Split, you need:
 
 * Quantum Metric API recording Javascript installed
 * Split Javascript SDK 10.15.0 + to be installed
 
-# How to use
+## How to use
 
 The following sections explain how to install both your Split and your Quantum Metric software.
 
-## Install in Quantum Metric
+### Install in Quantum Metric
 
 **Quantum Metric provisioning**
 
@@ -76,7 +76,7 @@ You can now create a JavaScript event in the Event settings of the Quantum Metri
       <img src="https://help.split.io/hc/article_attachments/4423969455117/edit-event-frequency.png" alt="edit-event-frequency.png" width="470" />
      </p>
 
-## Install with Split
+### Install with Split
 
 Split and Quantum Metric must initialize in succession Quantum Metric first and then Split. This allows Split to obtain the Quantum Metric session identifier for its key. To do this, Split waits in a JavaScript setInterval loop until it checks that verify the QuantumMetricAPI is on.
 
@@ -159,7 +159,7 @@ Split SDK needs to get the session ID from Quantum Metric. It then must track a 
 
 The Split SDK loops and waits for the Quantum Metric API to be available. Then, it supplies the Quantum Session ID for the Split key. Once initialized, it queues a *qmreplay* event (it’s OK for this to happen before SDK_READY).
 
-# What you see
+## What you see
 
 Once you have the Split SDK configured with Quantum Metric, impressions display with Quantum Metric sessions identifiers in the Live tail view of Split. In addition, the Live tail for events show *qmreplay* events with the linkback to Quantum Metric in a property:
 
@@ -171,6 +171,6 @@ On Quantum Metric user interface, use Session Segment to filter for replays by y
 
 To learn more about all our integrations, check out our integrations page. If you’d like a demo of Split, or help to implement any of our integrations, contact [support@split.io](mailto:support@#split.io).
 
-# About this integration
+## About this integration
 
 This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, reach out to the contributor.

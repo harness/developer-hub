@@ -18,7 +18,7 @@ This guide explains how to use the Split Visual Studio Code (VSCode) extension t
 * Hover over a feature flag to view information such as description, tags, etc. within a tooltip
 * Find code references for a given flag 
 
-# Installing VSCode extension
+## Installing VSCode extension
 
 To install the VSCode extension, do the following:
 
@@ -26,7 +26,7 @@ To install the VSCode extension, do the following:
 2. Click the **Install** button. The extension installs.
 
 
-# Configuring the VSCode extension in Split
+## Configuring the VSCode extension in Split
 
 To connect Visual Studio Code to your Split account, do the following:
 
@@ -48,18 +48,18 @@ To connect Visual Studio Code to your Split account, do the following:
 
 All your Split projects are now available within VSCode.
 
-# Using Visual Studio code extension
+## Using Visual Studio code extension
 
 The following explains what you can do within the extension.
 
-## Switching between Split projects
+### Switching between Split projects
 
 Click the switch project icon to switch between your Split projects. A list of your Split projects appears. When you select a different Split project, it displays all the feature flags in the selected project.
 <p>
   <img src="https://help.split.io/hc/article_attachments/10732454761101" alt="switch-workspace.png" />
 </p>
 
-## Sorting feature flags in your Split project
+### Sorting feature flags in your Split project
 
 Click the sort icon to sort your feature flags. You can sort your flags:
 
@@ -71,15 +71,15 @@ Click the sort icon to sort your feature flags. You can sort your flags:
   <img src="https://help.split.io/hc/article_attachments/10732119898381" alt="sort-flags.png" />
 </p>
 
-## Refreshing data
+### Refreshing data
 
 Click the refresh icon to refresh the data in your feature flags. Because the extension does not automatically refresh data, it’s recommended that you periodically refresh the data manually.
 
-## Working with feature flags
+### Working with feature flags
 
 The following describes how to work with feature flags in VSCode.
 
-## Copying the feature flag name
+### Copying the feature flag name
 
 To copy the feature flag name, hover over the desired flag and click the copy icon. The name is copied to clipboard.
 
@@ -87,7 +87,7 @@ To copy the feature flag name, hover over the desired flag and click the copy ic
   <img src="https://help.split.io/hc/article_attachments/10732151441037" alt="copy-name.png" />
 </p>
 
-## Searching for code references
+### Searching for code references
 
 You can search for code references in one or more files. When you do a search, it displays the names of the files that contain the code reference and the location within the file. 
 
@@ -101,11 +101,11 @@ Once displayed, you can either view the code itself or a summary of the code.
   <img src="https://help.split.io/hc/article_attachments/10732228845069" alt="code-summary.png" />
 </p>
 
-## Expanding feature flags
+### Expanding feature flags
 
 Expanding a feature flag in the tree view allows you to see a list of environments. Clicking each environment opens a read-only editor displaying the feature flag definition for the given environment. If you have no targeting rules that are defined for that environment, a note appears at the top of the screen indicating that no definition is found for the selected environment.
 
-## Additional capabilities
+### Additional capabilities
 
 The following are actions you can perform within VSCode.
 

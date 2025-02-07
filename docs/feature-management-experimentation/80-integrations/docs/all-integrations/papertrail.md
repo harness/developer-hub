@@ -13,7 +13,7 @@ Papertrail provides cloud-hosted log management solutions. Integrate with Papert
 
 If you are having trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
 
-# In Papertrail
+## In Papertrail
  
 1. Log in to your Papertrail account.
 2. Go to [https://papertrailapp.com/systems/setup](https://papertrailapp.com/systems/setup).
@@ -23,7 +23,7 @@ If you are having trouble completing the integration, contact us at [support@spl
 	<img src="https://help.split.io/hc/article_attachments/360017382611/Papertrail_LogInfo.png" alt="Papertrail_LogInfo.png" />
 </p>
 
-# In Split
+## In Split
 
 1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.

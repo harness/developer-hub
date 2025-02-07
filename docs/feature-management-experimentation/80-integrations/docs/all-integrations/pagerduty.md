@@ -9,24 +9,24 @@ helpdocs_is_published: true
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360046246631-PagerDuty <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-# Split + PagerDuty
+## Split + PagerDuty
 
 PagerDuty is a leading provider of on-call management, incident response, and event intelligence. Split is uniquely suited to detect degradations in key metrics when features are rolled out. Configuring alerts in Split, you can be notified when a rollout impacts the metrics your team cares about.
 
 Split sends alerts on degradation via email. PagerDuty can receive these emails and feed them into its modern incident response engine to be distributed for action as appropriate. The integration uses out-of-the-box features of both products.
 
-# Prerequisites
+## Prerequisites
 
 To connect PagerDuty to Split, you need the following:
 
 * PagerDuty
 * Split platform edition with Split's monitoring pack
 
-# How to Use
+## How to Use
 
 The following describe how to use PagerDuty with Split.
 
-## Locate the incoming event source in PagerDuty
+### Locate the incoming event source in PagerDuty
 
 1. From PagerDuty’s main menu, go to Configuration and Event Rules.
 
@@ -40,7 +40,7 @@ The following describe how to use PagerDuty with Split.
 
 A unique integration key and accompanying email address is shown. This is the email address you use with the Split alert policy. Copy the email address and save it for later.
 
-## Create a rule in PagerDuty
+### Create a rule in PagerDuty
 
 1. Create a new rule to process the email alerts from Split. The rule can be simple.
 
@@ -61,7 +61,7 @@ A unique integration key and accompanying email address is shown. This is the em
 
 The actions performed by my rule are to route to an appropriate service -- “AB feature testing” -- set the severity to critical and label the incident with a note that “Split has detected a degradation in a key metric”. You can specify whatever action you think is most appropriate; PagerDuty is incredibly flexible in its response to the alerts.
 
-## Configure a metric alert policy in Split
+### Configure a metric alert policy in Split
 
 1. Select a metric on which you would like to alert. The full details on configuring an alert policy are found in Split's [metric alerting guide](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting).
 
@@ -73,11 +73,11 @@ The actions performed by my rule are to route to an appropriate service -- “AB
 
 You are now ready for your alert to fire to PagerDuty.
 
-## Trigger an alert in Split
+### Trigger an alert in Split
 
 Split does not have a test button to trigger an alert. The simplest approach is to write a test program that generates fake users to create impressions and events that triggers an alert. Contact the [contributor](email:david.martin@split.io) for help and suggestions.
 
-## Handle a Split incident in PagerDuty
+### Handle a Split incident in PagerDuty
 
 <p>
   <img src="https://help.split.io/hc/article_attachments/360062016591/image_5.png" alt="image_5.png" />
@@ -95,7 +95,7 @@ In this case, the test_split degraded the processing time by 30%.
 
 You have successfully integrated Split alerts with PagerDuty.
 
-# About this integration
+## About this integration
 
 This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, contact the [contributor](mailto:david.martin@split.io).
 

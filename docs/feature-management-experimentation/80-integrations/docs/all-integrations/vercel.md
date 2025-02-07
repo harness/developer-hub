@@ -13,7 +13,7 @@ helpdocs_is_published: true
 
 Developers can incorporate serverless code that runs in the Edge Runtime on the Vercel platform using [Edge Functions](https://vercel.com/docs/concepts/functions/edge-functions) and [Middleware](https://vercel.com/docs/concepts/functions/edge-middleware). Vercel supports compute logic in Edge Functions and Middleware that is scalable, on-demand, and stateless with the [Edge Config](https://vercel.com/docs/storage/edge-config) low-latency data store. Split provides out-of-the-box integration that wraps the Edge Config data store, allowing near-instant reads at the edge.
 
-# Architecture of the integration
+## Architecture of the integration
 
 The following diagram shows the architecture of the Split integration for Vercel.
 
@@ -30,7 +30,7 @@ Setting up the Split Integration for Vercel is done in two phases:
 
 The integration setup process requires Split admin level access. This is available for all Split tiers, and you can create a Split account during the Split integration setup.
 
-# Add the Split integration to your Vercel project
+## Add the Split integration to your Vercel project
 
 The Split integration is added from within Vercel as follows.
 
@@ -38,7 +38,7 @@ The Split integration is added from within Vercel as follows.
 
 2. Go to [https://vercel.com/integrations/split](https://vercel.com/integrations/split) or search for "Split" in the Vercel Marketplace, click **Add Integration**, and follow the setup process. You will be prompted to log in or create your Split account, and then you will see the Vercel setup page. Specify each [Split environment](https://help.split.io/hc/en-us/articles/360019915771-Environments) and choose the Edge Config instance that each should sync to. You are given a key for each environment to use in your code to access the correct JSON root-tree for that environment in your Edge Config instance. Click **Save** to save the setup for all environments. Then click the **Finish integration** link near the top of the window to close the dialog.
 
-# Set up the Split JavaScript Browser SDK client
+## Set up the Split JavaScript Browser SDK client
 
 To set up the Split SDK in the code of your Vercel project, follow the steps below.
 
@@ -52,6 +52,6 @@ npm install @splitsoftware/splitio-browserjs @splitsoftware/vercel-integration-u
 
 Following this setup, you can consume Split feature flags from Edge Config and send events to Split Cloud.
 
-## Manage the integration after installation
+### Manage the integration after installation
 
 Read more about [Managing Integrations After Installation](https://vercel.com/docs/integrations/using-an-integration/manage-integration) in the Vercel docs.

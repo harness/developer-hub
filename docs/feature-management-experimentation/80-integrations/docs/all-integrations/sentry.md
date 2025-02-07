@@ -14,23 +14,23 @@ Reach out to your customer success manager or [support](mailto:support@split.io)
 :::
 
 
-# Overview 
+## Overview 
 
 Sentry allows you to easily centralize all your exception and error tracking across your stack. By tracking exceptions via Sentry's API and libraries, you can leverage their grouping algorithms to review exceptions that are similar to each other in one place. They offer support for most platforms, including JavaScript, Node.js, PHP, .Net, Go, Python, and more.your integration in Split's dashboard.
 your integration in Split's dashboard.
 
 Use this integration to send exceptions from your Projects in Sentry to the Split platform. When configured, Split will quickly process and display [Sentry exception data](https://docs.sentry.io/error-reporting/capturing/) in the Split platform as [track events](https://help.split.io/hc/en-us/articles/360020585772-Track-events) for analysis. You can control what environments and traffic types you're capturing exceptions for in the Split dashboard without having to touch any code. 
 
-# Setting up the integration
+## Setting up the integration
 
-## Integration Requirements
+### Integration Requirements
 In order to use this integration, you will need to:
 
 * Be on Sentry's Business plan or above.
 * [Send Environment data](https://docs.sentry.io/enriching-error-data/environments/?platform=javascript#how-to-send-environment-data) as part of your Sentry implementation. This is necessary in order to map your exceptions to the proper [Split environment](https://help.split.io/hc/en-us/articles/360019915771-Environments)
 * [Send key data](https://docs.sentry.io/platforms/javascript/enriching-events/identify-user/) as part of your Sentry implementation. This is necessary in order to map your exceptions to the proper [Split traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) and to set the proper `key` for track events in Split.
 
-## In Sentry
+### In Sentry
 
 For each Sentry project that you want to integrate with Split, you will need copy and paste three things into Split's dashboard:
 
@@ -64,7 +64,7 @@ Copy the Installation ID to paste into Split:
       <img src="https://help.split.io/hc/article_attachments/360031994772/Sentry_Project_Slug.png" alt="Sentry_Project_Slug.png" />
     </p>
 
-## In Split
+### In Split
 
 1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
@@ -113,15 +113,15 @@ Once you've configured the above fields, click **Save**. Split will then create 
 
 **Capture Culprit as separate Event**. If you have have specific Sentry Issues that come up consistently and want to be able to create metrics based on a specifc Sentry Issue - select this checkbox to capture an extra event for each exception sent from Sentry.    
 
-# Example data mappings
+## Example data mappings
 
 Below are some examples of how you might set up the integration depending on your Sentry implementation. For full examples of how Sentry formats data from their webhooks check out their docs [here](https://docs.sentry.io/workflow/integrations/integration-platform/webhooks/#error).
 
-## Standard data mapping
+### Standard data mapping
 
 Let's walk through what a Sentry integration setup might look like if you're using a Sentry JS project and are capturing exceptions from both a 'staging' and 'production' environment in that project.
 
-### 1. Sentry Exception Logs
+#### 1. Sentry Exception Logs
 
 Below are two example exceptions that you might log via the Sentry JS SDK.
 
@@ -163,7 +163,7 @@ const x = Error('Test error');
 Sentry.captureException(x);
 ```
 
-### 2. Split Sentry Integration
+#### 2. Split Sentry Integration
 
 Below is a screenshot of how you could then configure your integration in Split's dashboard.
 
@@ -171,7 +171,7 @@ Below is a screenshot of how you could then configure your integration in Split'
   <img src="https://help.split.io/hc/article_attachments/16368425755789" alt="sentry-integration-example.png" />
 </p>
 
-### 3. Split Track Events
+#### 3. Split Track Events
 
 Below is a JSON representation of the events that would then be logged in Split from the sample exception examples above.
 
@@ -209,11 +209,11 @@ Sample Track event in production:
 }
 ```
 
-## Multiple traffic type data mapping
+### Multiple traffic type data mapping
 
 Let's walk through what a Sentry integration setup might look like if you're using a Sentry JS project and are capturing exceptions from a 'production' environment in that Sentry project. Additionally, lets assume that you build B2B software and you identify both an orgId and userId on all your exceptions so that you know what user's trigger an exception and what organization that user was part of.
 
-### 1. Sentry Exception Logs
+#### 1. Sentry Exception Logs
 
 Below is an example exception that you might log via the Sentry JS SDK
 
@@ -235,7 +235,7 @@ const x = Error('Test error');
 Sentry.captureException(x);
 ```
 
-### 2. Split Sentry Integration Setup
+#### 2. Split Sentry Integration Setup
 
 Below is a screenshot of how you could then configure your integration in Split's dashboard.
 
@@ -243,7 +243,7 @@ Below is a screenshot of how you could then configure your integration in Split'
   <img src="https://help.split.io/hc/article_attachments/16368425755789" alt="sentry-integration-example.png" />
 </p>
 
-### 3. Split Track Events
+#### 3. Split Track Events
 
 Since you have multiple traffic types mapped, we will create one track event in Split for each mapping you've set. The events will be very similar except the `trafficTypeName` and `key` will be different based off of your mappings. Below is a JSON representation of the events that would then be logged in Split from the sample exception example above.
 

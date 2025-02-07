@@ -13,7 +13,7 @@ Librato allows your team to collect, store, and visualize any metric across all 
 
 If you have trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).
 
-# In Librato
+## In Librato
  
 1. Go to **Account Settings**.
 2. Click **API Access Tokens**.
@@ -39,7 +39,7 @@ If you have trouble completing the integration, contact us at [support@split.io]
     <img src="https://help.split.io/hc/article_attachments/360017486432/Librato_API_Info.png" alt="Librato_API_Info.png" />
 </p>
 
-# In Split
+## In Split
 
 <p>
   <img src="https://help.split.io/hc/article_attachments/360021734131/librato1.png" alt="librato1.png" />

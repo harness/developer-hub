@@ -29,7 +29,7 @@ The following flowchart shows how this integration works:
   <img src="https://help.split.io/hc/article_attachments/4408873417357/split-azure_flow.png" alt="split-azure_flow.png" /><br />
 </p>
 
-# Set up in Split 
+## Set up in Split 
 
 To start, you need to first set up in Split by doing the following:
 
@@ -40,11 +40,11 @@ To start, you need to first set up in Split by doing the following:
 5. From the Azure selection, click **Edit**. The Connect to Azure DevOps page displays with your generated Split token. 
 6. Copy your Split token to configure your Split extension in Azure.
 
-# Set up in Azure DevOps
+## Set up in Azure DevOps
 
 Once you have performed your set up in Split, you can set up your extension in Azure DevOps. The following sections describe how to install and set up an extension.
 
-## Install an extension in Azure DevOps organization
+### Install an extension in Azure DevOps organization
 
 The following explains how to install your extension in Azure DevOps organization. To install your Split extension, do the following: 
 
@@ -53,7 +53,7 @@ The following explains how to install your extension in Azure DevOps organizatio
 3. Select your organization and click **Install**. The extension installs.
 4. Once the installation completes, click **Proceed to organization**. The Projects page with a list of your projects displays.
 
-## Set up an extension
+### Set up an extension
 
 Once you install your extension, you can set it up in the Azure DevOps organization. To set up the extension, do the following:
 
@@ -68,11 +68,11 @@ Once you install your extension, you can set it up in the Azure DevOps organizat
 9. Add all necessary users or groups to the service connection's security settings. Be aware that to work with Split's Azure DevOps integration, you must be assigned a User role or higher.
 10. Click **Verify and save** to establish and save the connection. A successful service connection displays as Active on the Split integration page. You can now connect your work items to feature flags and configure release tasks. 
 
-# Use the Azure integration
+## Use the Azure integration
 
 This section provides instructions on how to use the Azure DevOps integration with Split. From here, you connect your work items to feature flags, which allows you to see what work pertains to which feature flag. You can also automate the creation and update of feature flag targeting rules with pipeline tasks. 
 
-## Connect feature flags with Azure work items
+### Connect feature flags with Azure work items
 
 You can connect your work items with the associated feature flag in Split. To connect a work item to a feature flag, do the following:
 
@@ -82,7 +82,7 @@ You can connect your work items with the associated feature flag in Split. To co
    * Create a new feature flag. If you create a new feature flag, enter the name, traffic type, and optionally a description.
    * Select one or more feature flags to link to.
 
-## Update feature flag targeting definitions with pipeline task
+### Update feature flag targeting definitions with pipeline task
 
 You can trigger feature flag definition changes as part of your deployment process.The targeting definitions can be both written in YAML or via Azure’s task builder. You can create the definition by selecting Split from the tasks menu in the pipeline editing screen. You can then select the desired service connection, Split project and environment. You can also customize your target definition. To configure your definitions, do the following:
 
@@ -150,7 +150,7 @@ The following is a sample payload.
 }
 ```
 
-# Visualize Azure work items in Split
+## Visualize Azure work items in Split
 
 Once you link your Azure work items, you can visualize your key work item information associated with a feature flag. To visualize your work items, do the following:
 
@@ -158,7 +158,7 @@ Once you link your Azure work items, you can visualize your key work item inform
 2. In the desired work item, click the link icon. This takes you to Split. 
 3. Click the **Additional settings** tab. You can now visualize your Azure information in Split.
 
-# Troubleshooting
+## Troubleshooting
 
 The following errors may occur when you run a job:
 

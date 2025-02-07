@@ -9,13 +9,13 @@ helpdocs_is_published: true
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360045937831-FullStory <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-# Split + FullStory
+## Split + FullStory
 
 FullStory is a digital experience analytics platform that records users’ sessions for playback and analysis. FullStory events allow FullStory customers to add additional information to a session while it is being recorded. Split leverages FullStory events to report feature flag impressions to the FullStory session, and as a source of events for measurement and experimentation in Split (there is a section below for both types of integration). 
 
 Follow the guide for your type of integration to proceed with installation. Segments integration deals with passing Split impressions to FullStory sessions. Events integration covers passing FullStory events to Split for use in measurement and experimentation.
 
-# Prerequisites
+## Prerequisites
 
 To connect FullStory with Split, you need:
 
@@ -24,11 +24,11 @@ To connect FullStory with Split, you need:
 * AWS lambda experience recommended
 * Node.js developer experience recommended
 
-# Integrating FullStory impressions into Split
+## Integrating FullStory impressions into Split
 
 The following sections explain how to integrate FullStory impressions into Split.
 
-## Send Split impressions as FullStory custom events
+### Send Split impressions as FullStory custom events
 
 The Split + FullStory integration uses out-of-the-box features of both products.
 
@@ -42,7 +42,7 @@ The Split + FullStory integration uses out-of-the-box features of both products.
 
 If you’re not familiar with the Split Javascript SDK configuration, visit Split's [Javascript documentation](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK) for more information.
 
-## Verify split_evaluation events are arriving in FullStory
+### Verify split_evaluation events are arriving in FullStory
 
 To verify events are arriving in FullStory, do the following:
 
@@ -58,7 +58,7 @@ To verify events are arriving in FullStory, do the following:
   <img src="https://help.split.io/hc/article_attachments/360061265172/filter_events.png" alt="filter_events.png" />
 </p>
 
-## Create a segment based on a treatment received
+### Create a segment based on a treatment received
 
 Once you have split_evaluation events, create a new FullStory segment that contains all the users who received a particular treatment from a given feature flag. Do the following:
 
@@ -90,7 +90,7 @@ You can now play back and review specific customer experiences. Every session in
 
 Knowing which treatment a user saw for a particular feature flag is crucial data for evaluating their experience with FullStory. This simple integration makes that data available to analyze a single user’s session and to create segments for overall comparison of behavior between treatment groups.
 
-# Integrating FullStory events into Split
+## Integrating FullStory events into Split
 
 Send FullStory events to Split to use in experimentation. FullStory events are received from a FullStory webhook, transformed, and reported to Split. This lets Split share the event data channel that may already be in place for FullStory.
 
@@ -114,7 +114,7 @@ split: {
 }, // etc.
 ```
 
-# Installing the FullStory events webhook
+## Installing the FullStory events webhook
 
 To install the FullStory events webhook, do the following:
 
@@ -135,7 +135,7 @@ To install the FullStory events webhook, do the following:
 
 **Note: If you have brew installed, you can perform a "brew install npm" on OSX. Follow the instructions to install npm for other operating systems described in [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). The fullstory.zip should include the index.js, the key files, and a full node_modules directory.**
 
-# Installing the FullStory events webhook
+## Installing the FullStory events webhook
 
 A single node.js lambda does the work for the integration, using only the filesystem (for API keys) and the Axios HTTP client. The integration makes two cheap API calls per FullStory event. To install a FullStory webhook in AWS, do the following:
 
@@ -151,11 +151,11 @@ A single node.js lambda does the work for the integration, using only the filesy
 
 **Note: When testing, it can sometimes take 5 to 10 minutes for FS.event calls to propagate to Split. Try reloading your page after a minute to accelerate the event publishing.**
 
-# Debugging
+## Debugging
 
 Use [Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html) to look at inbound events and check they're properly handled. Some events take time to propagate, but CloudWatch gives early indication of trouble.
 
-# About this integration
+## About this integration
 
 This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, contact the [contributor](mailto:david.martin@split.io).
 

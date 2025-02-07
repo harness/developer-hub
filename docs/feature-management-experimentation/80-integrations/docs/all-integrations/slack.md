@@ -20,7 +20,7 @@ With this integration, as a Slack user, you can subscribe channels to notificati
 
 **Note: If you are having trouble completing the integration, contact [support@split.io](mailto:support@split.io).**
 
-# Setting up in Split
+## Setting up in Split
 
 To start, first set up in Split by doing the following:
 
@@ -43,7 +43,7 @@ To start, first set up in Split by doing the following:
 
 The Slack installation flow is complete and Slack is now open with a new app installed.
 
-# Setting up in Slack
+## Setting up in Slack
 
 To set up in Slack, do the following:
 
@@ -65,7 +65,7 @@ To set up in Slack, do the following:
      <img src="https://help.split.io/hc/article_attachments/9947575225613" alt="slack-notifications.png" />
    </p>
 
-# Using Split commands
+## Using Split commands
 
 You can interact with the Slack app to initiate initial configuration, subscription management, and help documentation using the following commands:
 
@@ -75,7 +75,7 @@ You can interact with the Slack app to initiate initial configuration, subscript
 * /split help
 
 
-## Using the configure command
+### Using the configure command
 
 **Note: Only admins have access to the Split token that is needed to enter in the configure modal.**
 
@@ -83,7 +83,7 @@ Use the `/split configure` command to display the Configure Split app modal. Whe
 
 **Note: If there is a problem with the token validation, an error message displays when you click the Submit button.**
 
-## Create a channel subscription
+### Create a channel subscription
 
 Use the `/split subscribe` command to create a channel subscription, which subscribes your Slack channel to Split notifications. The Channel menu list is pre-selected with the current channel. However, a user can select a different channel if desired. Optionally select your desired filter criteria and click **Submit** to create the channel subscription. 
 
@@ -93,20 +93,20 @@ Use the `/split subscribe` command to create a channel subscription, which subsc
 
 **Note: If you select a private channel, you get an error message indicating that the channel is private.**
 
-# Managing subscriptions
+## Managing subscriptions
 
 The `/split subscriptions` command lists out the available subscriptions within the current channel, displaying a filter summary for each, and allows you to edit and delete subscriptions.
 
-## Edit a subscription
+### Edit a subscription
 
 To make a change to a subscription, click the **Edit** button next to the desired subscription. The Edit Subscription modal displays pre-populated with the subscription’s filter criteria. Make the desired changes and click the **Submit** button. You get a message indicating that the subscription is updated.
 
 
-## Delete a subscription
+### Delete a subscription
 
 Delete a subscription by clicking the **Delete** button next to a given subscription. You’re prompted with a confirmation message indicating that notification matching the subscription will be removed. Click the **Confirm** button to finish deleting the subscription.
 
-# Split/Slack webhook integration
+## Split/Slack webhook integration
 
 :::warning[About this webhook integration]
 The following content describes how to set up the older Slack integration. The updated version above is currently in beta. If you'd like to be a part of the beta, contact <a href="mailto:earlyaccess@split.io">earlyaccess@split.io</a>.
@@ -114,7 +114,7 @@ The following content describes how to set up the older Slack integration. The u
 
 Slack makes it easy to communicate with your team and keep your colleagues up to date on changes in Split. By combining Split's rollout capabilities with Slack, you can keep your team notified as new feature flags are enabled, as well as which rollouts are modified and by which of your teammates. If you are having trouble completing the integration, contact [support@split.io](mailto:support@split.io).
 
-# Setting up in Slack
+## Setting up in Slack
  
 1. Go to the Incoming Webhooks page in the Slack App Directory [here](https://slack.com/apps/A0F7XDUAZ-incoming-webhooks). Make sure you're signed into Slack.
 
@@ -142,7 +142,7 @@ Slack makes it easy to communicate with your team and keep your colleagues up to
   <img src="https://help.split.io/hc/article_attachments/360021736191/slack4.png" alt="slack4.png" />
 </p>
 
-# Setting up in Split
+## Setting up in Split
 
 1. Go to Admin Settings and click **Integrations**.
 

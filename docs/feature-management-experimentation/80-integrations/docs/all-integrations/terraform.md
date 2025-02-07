@@ -27,7 +27,7 @@ Use Terraform to create Split projects, environments, users, groups, traffic typ
   * split_traffic_type
   * split_workspace (now called Split project)
 
-# Using the Split Terraform Provider
+## Using the Split Terraform Provider
 
 This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, contact the [contributor](https://github.com/davidji99/terraform-provider-split/issues).
 

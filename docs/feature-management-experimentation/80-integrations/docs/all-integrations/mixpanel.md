@@ -11,22 +11,22 @@ helpdocs_is_published: true
 
 Mixpanel is a product analytics tool that enables you to explore user behavior data and analyze metrics like user adoption, growth, and retention. Split integrations can be configured to send impressions to Mixpanel, or extract Mixpanel events to be used as events in Split.
 
-# Sending Split impressions to Mixpanel
+## Sending Split impressions to Mixpanel
 
 **Note: This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, contact [the contributor](https://github.com/dbmartin00).**
 
 Split impressions describe the treatment that each user receives when a feature flag is evaluated.  Set up a Split webhook to listen for impressions as they are captured and send them to Mixpanel.  The webhook will transform the impressions into Mixpanel events. Using either AWS Lambda or a Google Cloud Function you can easily transform Split impressions into Mixpanel events.
 
-## Prerequisites
+### Prerequisites
 
 To connect Mixpanel to Split, you need:
 
 * A Mixpanel project token
 * Administrator access to your Split account
 
-## How to use
+### How to use
 
-### Step 1: Publish a Split impressions webhook
+#### Step 1: Publish a Split impressions webhook
 
 Using Java AWS Lambda (AWS) and Java Google Cloud Function (GCF) parse the input stream into Impression instances. Then create a new series of Mixpanel events that include the data from the impressions, setting the Mixpanel `distinct_id` to the impression's key and passing other properties through as event properties. Base64 encode the resulting events and post them to Mixpanel events endpoint. For the code to compile, you need the following Mixpanel token:
 
@@ -34,13 +34,13 @@ Using Java AWS Lambda (AWS) and Java Google Cloud Function (GCF) parse the input
 
 Both AWS and GCF versions cache the HTTP client used to POST to Mixpanel in their execution runtimes.  After cold start, the cheapest, default runtimes show timings in the 100-200ms range for handling batches of 50 impressions.
 
-### Step 2: Configure Split to use your webhook
+#### Step 2: Configure Split to use your webhook
 
 Copy your function/lambdas URL endpoint and paste it into the [Split impressions webhook](https://help.split.io/hc/en-us/articles/360020700232-Webhook-impressions) configuration.
 
 Make sure you choose the environment from which you wish to receive impressions. If you are generating traffic in a testing environment, you will not see those impressions in production, and vice-versa.
 
-### Step 3: Trigger Split impressions
+#### Step 3: Trigger Split impressions
 
 You must have some code written that uses a `getTreatment` call to evaluate a feature flag. Once the listener is registered, each `getTreatment` call generates an impression, and within several seconds the impression arrives at the listener.
 
@@ -48,7 +48,7 @@ Using your cloud's native logging infrastructure (e.g., CloudWatch for AWS and L
 
 Note that AWS Lambda functions ought to be installed with a POST method on the API Gateway in order to get a URL for use with Split.
 
-### Step 4: Verify Mixpanel events are arriving from Split
+#### Step 4: Verify Mixpanel events are arriving from Split
 
 Use the Mixpanel LiveView to verify that your Split events are arriving as expected.
 
@@ -62,11 +62,11 @@ The event in Mixpanel includes the treatment (typically "on" or "off" or whichev
 
 These functions have not been heavily performance tested.  Further tuning may be necessary for high volumes of event traffic.  
 
-## Code
+### Code
 
 The source code referenced can be found in GitHub - [Java AWS Lambda](https://github.com/dbmartin00/split2mixpanel) and [Java Google Cloud Function](https://github.com/dbmartin00/split2mixpanelGCF).
 
-# Sending Mixpanel impressions to Split
+## Sending Mixpanel impressions to Split
 
 **Note: This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, contact [the contributor](https://github.com/dbmartin00).**
 

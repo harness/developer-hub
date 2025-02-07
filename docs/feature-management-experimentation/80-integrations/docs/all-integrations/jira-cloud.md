@@ -17,7 +17,7 @@ This integration only works with Jira Cloud product offerings and does not work 
 
 If you are having trouble completing the integration please contact us at [support@split.io](email:support@split.io).
 
-# Setting up in Split
+## Setting up in Split
 
 To set up in Split, do the following:
 
@@ -37,7 +37,7 @@ To set up in Split, do the following:
 
 **Note: If your Split projects have set [project view permissions](https://help.split.io/hc/en-us/articles/12621628930445-Project-view-permissions), ensure that the projects you want to use with this integration grant access to the Admin API Key that you just generated in this section.**
 
-# Setting up in Jira
+## Setting up in Jira
 
 To set up in Jira, do the following:
 
@@ -53,7 +53,7 @@ To set up in Jira, do the following:
 
 With the app configured, you can connect Split feature flags to Jira issues.
 
-# Connecting feature flags and issues
+## Connecting feature flags and issues
  
 Once the integration is installed, you can do either of the following:
   
@@ -76,7 +76,7 @@ Once the integration is installed, you can do either of the following:
 
 **Note: You must select a Split project that has been configured in the Jira integration setup. A Jira instance is 1:1 with a Split account, and the integration can be configured for one or more projects.**
 
-# Viewing your connections
+## Viewing your connections
  
 Once you’ve connected feature flags to issues, you can do either of the following:
  
@@ -104,6 +104,6 @@ Once you’ve connected feature flags to issues, you can do either of the follow
 
 **Note: Since you can navigate to the feature flag, we no longer send and store all of the changes in Jira.**
  
-# Disconnecting an issue
+## Disconnecting an issue
  
 You can disconnect an issue from a feature flag, on the Integrations tab of the flag.

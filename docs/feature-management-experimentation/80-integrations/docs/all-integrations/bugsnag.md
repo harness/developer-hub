@@ -22,28 +22,28 @@ The Bugsnag community integration with Split lets you identify which feature fla
   <img src="https://help.split.io/hc/article_attachments/5709949405965/bugsnag-error.png" alt="bugsnag-error.png" />
 </p>
 
-# Supported SDKs
+## Supported SDKs
 
 Split SDKs support listeners so you can automatically declare the flags and their variations to Bugsnag whenever they are queried within your app. Bugsnag supports the following SDKs when declaring feature flags and experiments from Split: Android, iOS, Electron, Expo, JavaScript (browser and Node.js), and React Native. 
 
-# Integrating Split and Bugsnag
+## Integrating Split and Bugsnag
 
 For more information on integrating Bugsnag and Split, refer to the [Bugsnag](https://docs.bugsnag.com/product/integrations/feature-management/split) documentation. 
 
-# Integrating Bugsnag to Split
+## Integrating Bugsnag to Split
 
 This integration uses a BugSnag webhook to report errors to Split, where they become events eligible for inclusion in A/B test results. This integration uses a BugSnag webhook to report errors to Split, where they become events eligible for inclusion in A/B test results. There are two possible approaches to this integration: 
 
 * Sending Split feature flags to BugSnag. Involves using the Split SDK and is documented on BugSnag's site.
 * Using a webhook to pass BugSnag errors to Split. This is described in the following sections.
 
-## How it works
+### How it works
 
 BugSnag has built-in webhooks. When you create a webhook that reports errors, Split can provision a service to listen for errors. The service receives an error, transforms it into a Split event, and sends the event on to Split for use in metrics and experimentation.
 
 The BugSnag errors have rich property information, and not all of it is sent to Split. Some of the properties are flattened in order to be suitable for a Split event.
 
-## Setting it up
+### Setting it up
 
 The Split service is expected to be an AWS node.js lambda. The lambda can also be provisioned as a serverless function in another cloud, but the instructions are not provided. The installer is expected to be a Git user, have access to AWS, and understand how to provision new lambdas. It is also assumed you have both Split and BugSnag accounts.
 
@@ -77,7 +77,7 @@ Create a zip file for your soon-to-be-created lambda:
 zip -r bugsnag.zip *
 ```
 
-## AWS Installation
+### AWS Installation
 
 Create a node.js lambda. On the code page, upload your bugsnag.zip file.
 
@@ -87,7 +87,7 @@ Under configuration, create a function URL for your lambda.
 * Configure CORS
 * Allow methods POST
 
-## Install on Bugsnag
+### Install on Bugsnag
 
 1. From Projects, select Data forwarding, then  Webhook.
 2. Paste in the function URL from the previous step.
@@ -96,7 +96,7 @@ Under configuration, create a function URL for your lambda.
 5. Click the checkbox to **Notify me every time an error occurs**.
 6. Update your preferences. The integration install is now complete.
 
-## View BugSnag errors in Split
+### View BugSnag errors in Split
 
 Using the Split Data hub, you can view errors as they arrive in Split. They have a lot of information available in properties. The following is an example error:
 
@@ -144,7 +144,7 @@ Using the Split Data hub, you can view errors as they arrive in Split. They have
 }
 ```
 
-## About the Split key
+### About the Split key
 
 The Split key of the error events must agree with the Split key of your impressions. In practice, you’ll want to configure the key in your BugSnag initialization. Use the same ‘id’ key for your Split SDK configuration.
 ```
@@ -158,7 +158,7 @@ The Split key of the error events must agree with the Split key of your impressi
 	})
 ```
 
-## A hint on triggering errors
+### A hint on triggering errors
 
 If you want to stimulate some errors from your JS app, you can use the notify function of Bugsnag. In this example, a buttons onclick has been passed a clickHandler that creates a new exception. If your integration is fully installed, you’ll see the event arrive at the Data hub “momentarily”.
 ```

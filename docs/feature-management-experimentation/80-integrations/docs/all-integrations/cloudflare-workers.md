@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 Running applications or business logic in a serverless environment has become prevalent. In these environments, the context in which logic runs is volatile, stateless, and can be reused multiple times by different applications. 
 
-# Split’s Cloudflare Workers
+## Split’s Cloudflare Workers
 
 Cloudflare Workers is a serverless application platform that runs on Cloudflare’s global cloud. Our JavaScript SDK runs on it by utilizing Cloudflare Workers’s stateful APIs, e.g., [Durable Objects store](https://developers.cloudflare.com/workers/runtime-apis/durable-objects/). This is done using the following three components:
 
@@ -31,6 +31,6 @@ The following data flow diagram shows an overall architecture of how the differe
   <img src="https://help.split.io/hc/article_attachments/4601174766989/cloudflare-worker.png" alt="cloudflare-worker.png" />
 </p>
 
-# Getting started 
+## Getting started 
 
 The GitHub repository for the [Cloudflare Workers template](https://github.com/splitio/cloudflare-workers-template) contains the necessary steps to get started using this template.
