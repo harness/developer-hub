@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-01-30T10:00
+date: 2025-02-06T10:00
 sidebar_position: 10
 ---
 
@@ -20,6 +20,18 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
+## February 2025
+
+### Version 1.65
+
+<!-- 2025-02-03 -->
+
+#### Fixed issues
+
+- Added logs for container resource allocation in Kubernetes-based CI stages, including background steps, parallel steps, sequential steps, and step groups. Note: Ensure that the Harness Delegate version is **25.02.85200** or higher for this fix to take effect. (CI-15534)
+- Fixed an issue where the ARM64 platform was incorrectly displayed for Windows OS under the Cloud Infra section in the Build Infrastructures tab of the CI module. (CI-15920, ZD-76620)
+- Fixed an issue where the CI stage was failing without any error message. (CI-15793)
+ 
 ## January 2025
 
 :::note
@@ -64,8 +76,6 @@ To ensure uninterrupted service, we recommend completing these updates by April 
 
 For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
 :::
-
-
 
 ### Version 1.63
 
