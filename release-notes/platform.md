@@ -86,7 +86,7 @@ The following deprecated API endpoints are longer supported:
 
 - **Resolved** an issue in NG SCIM group management where existing user groups were not marked as SCIM-managed when a group with the same name was sent from SCIM. [PL-60098]  
 
-- **Fixed** expiry duration calculation (24 weeks) by using buildTimeStamp instead of the manager version. Updated BuildServices pipeline to set buildTimeStamp correctly for all services. [PL-60051] 
+- **Fixed** expiry duration calculation (24 weeks) by using buildTimeStamp instead of the manager version. [PL-60051] 
 
 - **Updated** cluster admin/cluster viewer role binding names to include user-defined namespace prefixes, ensuring unique roles across different namespaces and retaining permissions when delegates start in different namespaces. [PL-59921]  
 
