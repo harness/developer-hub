@@ -51,7 +51,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 ### Version 1.53.1
 
-### Images required
+#### Images required
 
 Listed below are the images to download to use [image registry with Harness Delegate](/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
 
