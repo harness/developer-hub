@@ -4,11 +4,6 @@ sidebar_position: 10
 description: Connect to your Gitspaces within WebStorm IDE.
 sidebar_label: WebStorm
 ---
-:::info
-
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io
-
-:::
 
 With **WebStorm IDE** support, Harness CDE enables seamless and efficient remote development in your Gitspaces with your IDE. This integration leverages **[JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/)** to establish a direct remote connection with WebStorm, eliminating the need for any prior setup.
 
