@@ -45,13 +45,16 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
-## January 2025
+## February 2024
 
 ### Version 1.76.x
 
 #### New features and enhancements
 
 - **Slack Step Enhancements**: Users can now send event notifications directly to Slack channels. Supported formats include plain text and JSON Blocks. (**CDS-105984**)
+
+- Users can utilize the ASG Steady State Step in Harness to track the progress of launching new instances and terminating existing ones in AWS during a rolling deployment. Currently, this feature is behind the feature flag `CDS_ASG_SKIP_INSTANCE_TERMINATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-101393**)
+
 - You can view YAML difference when updates are made to policy and policy set within [Audit Trail](/docs/platform/governance/audit-trail/audit-trail.md). (**PIPE-20618**)
 
 #### Fixed Issues
@@ -60,6 +63,8 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Previously, the ECS Blue-Green deployment pipeline validation failed for users with dynamically generated load balancer configurations. This issue is resolved and is behind the feature flag `CDS_ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-105573, ZD-72261**)
 - Previously, regex filtering did not apply for the Artifactory artifact type in Service configuration, causing all tags to be displayed. This issue is resolved. (**CDS-105959, ZD-76412**)
 - Previously, broken templates pushed via webhooks with missing required types could not be fixed and had to be deleted. This issue is resolved by adding a check to ensure the template type is not empty. (**PIPE-24533**)
+
+## January 2025
 
 ### Version 1.74.8
 
