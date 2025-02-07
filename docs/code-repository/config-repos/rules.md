@@ -10,9 +10,13 @@ For broader permissions, such as the ability to view repos within a specific Har
 
 ## Add branch rules
 
-In Harness Code, you can create branch rules for a single branch or multiple branches in a repository. Branch rules establish criteria for approving and merging PRs, define who can create and delete branches, and more.
+In Harness Code, you can create branch rules for a single branch or multiple branches in a repository, project, org, or account. Branch rules establish criteria for approving and merging PRs, define who can create and delete branches, and more.
 
-1. Go to the repository where you want to enable branch rules, and select **Settings**.
+Branch rules set on a repository only apply to that specific repository but you can also set branch rules at the project, organization or account level to enforce consistent policies across multiple repositories. E.g. A branch rule set on a project will apply to every repository in that project - even newly created repositories. 
+
+If you configure branch rules at multiple levels they are combined with an `AND` clause. This generally means the more restrictive rule applies. E.g If you configure a repository branch rule that requires 1 approval before merging but the org requires 2 approvals, the org branch rule will apply.
+
+1. Navigate to the level where you want to enable branch rules: repository, project, org, or account and select **Manage Repositories**.
 2. Select the **Rules** tab.
 3. Select **New Branch Rule**.
 4. Enter the rule **Name** and optional **Description**.
