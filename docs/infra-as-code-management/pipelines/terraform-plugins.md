@@ -107,4 +107,3 @@ import aws_s3_bucket.my_bucket my-existing-bucket
 ```
 
 In this example, `aws_s3_bucket.my_bucket` is the resource name in your IaC configuration, and `my-existing-bucket` is the identifier of the existing S3 bucket in AWS. The import command associates the existing bucket with your IaC configuration, allowing you to manage it as part of your infrastructure code. This process effectively transitions the resource under IaC management without altering its current state.
-
