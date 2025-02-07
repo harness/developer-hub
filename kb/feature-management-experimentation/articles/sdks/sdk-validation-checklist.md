@@ -81,7 +81,7 @@ The following items are specific to all client-side SDKs. This includes mobile- 
 
   For experimentation, it is desired to have the results up to date. It is recommended to set the parameter scheduler.impressionsRefreshRate to a value less than the average time the user stays on the app.
 
-## Server-side SDKs (Python, Node, Java, etc.)
+## Server-side SDKs (Python, Node.js, Java, etc.)
 
 The following items are specific to server-side SDKs. 
 

@@ -663,7 +663,7 @@ SPLIT_EVALUATOR_ENVIRONMENTS='[{"API_KEY":"<SDK_KEY_env1>","AUTH_TOKEN":"<CUSTOM
 
 ## Global config
 
-The SDK has a number of knobs for configuring performance. Each knob is tuned to a reasonable default. However, you can override the value while instantiating the SDK. The parameters available for configuration are shown below.
+The SDK exposes configuration parameters that you can use to optimize SDK performance. Each parameter is preset to a reasonable default. You can optionally override these default values when instantiating the SDK.
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- |
@@ -674,7 +674,7 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | scheduler.eventsPushRate  | The SDK sends tracked events to Split servers. This setting controls that flushing rate in seconds. | 60  |
 | scheduler.eventsQueueSize  | The max amount of events we queue. If the queue is full, the SDK flushes the events and resets the timer. | 500  |
 | scheduler.telemetryRefreshRate | The SDK caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers in seconds. | 3600 seconds (1 hour) |
-| startup.requestTimeoutBeforeReady  | Time to wait for a request before the SDK is ready. If this time expires, Node SDK tries again `retriesOnFailureBeforeReady` times before notifying its failure to be `ready`. Zero means no timeout.  | 15  |
+| startup.requestTimeoutBeforeReady  | Time to wait for a request before the SDK is ready. If this time expires, Node.js SDK tries again `retriesOnFailureBeforeReady` times before notifying its failure to be `ready`. Zero means no timeout.  | 15  |
 | startup.retriesOnFailureBeforeReady  | Number of quick retries we do while starting up the SDK.  | 1  |
 | startup.readyTimeout  | Maximum amount of time in seconds to wait before notifying a timeout. Zero means no timeout, so no `SDK_READY_TIMED_OUT` event is fired. | 15  |
 | sync.splitFilters | Filter specific feature flags to be synced and evaluated by the SDK. This is formed by a type string property and a list of string values for the given criteria. Using the types 'bySet' (recommended, flag sets are available in all tiers) or 'byName', pass an array of strings defining the query. If empty or unset, all feature flags are downloaded by the SDK. | [] |

@@ -110,7 +110,7 @@ The JavaScript synchronizer has a number of knobs for configuring performance. E
 | sync.flagSpecVersion | The version of the feature flag definitions to be fetched and stored. | `1.1` |
 | sync.splitFilters | List of Split filter objects to granularly control which feature flags are synced into the storage. This is formed by a type string property and a list of string values for the given criteria. Using the types 'bySet' (recommended, flag sets are available in all tiers) or 'byName', pass an array of strings defining the query. If empty or unset, all feature flags are synced. | [] |
 | sync.impressionsMode | This configuration defines how impressions extracted from the storage are pre-processed before being sent to Split servers. Supported modes are OPTIMIZED and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Split. In DEBUG mode, ALL impressions are queued and sent to Split. Use DEBUG mode when you want every impression to be logged in the Split user interface when trying to debug your setup. | `OPTIMIZED` |
-| sync.requestOptions.agent | A custom NodeJS HTTP(S) Agent used to perform the requests to the Split servers. Go to the [Proxy](#proxy) section for details. | undefined |
+| sync.requestOptions.agent | A custom Node.js HTTP(S) Agent used to perform the requests to the Split servers. Go to the [Proxy](#proxy) section for details. | undefined |
 | storage.prefix | An optional prefix for your data, to avoid collisions if using the same storage for multiple SDK keys. | `SPLITIO` |
 | debug  | Either a boolean flag or a log level string ('ERROR', 'WARN', 'INFO', or 'DEBUG') for activating Synchronizer logs. | false |
 
@@ -143,7 +143,7 @@ const synchronizer = new Synchronizer({
 
 ## Proxy
 
-If you need to use a network proxy, you can provide a custom [NodeJS HTTPS Agent](https://nodejs.org/api/https.html#class-httpsagent) by setting the `sync.requestOptions.agent` configuration variable. The Synchronizer will use this agent to perform requests to Split servers.
+If you need to use a network proxy, you can provide a custom [Node.js HTTPS Agent](https://nodejs.org/api/https.html#class-httpsagent) by setting the `sync.requestOptions.agent` configuration variable. The Synchronizer will use this agent to perform requests to Split servers.
 
 Example using the HTTPS Proxy Agent NPM library:
 

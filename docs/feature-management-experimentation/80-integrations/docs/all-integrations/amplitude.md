@@ -194,7 +194,7 @@ app.listen(port, () => {
 
 });
 ```
-3. You could also implement this using a serverless function, such as AWS Lambda. This code below can be used as an AWS lambda function. Note that Lambdas are limited to running 15 minutes. Split webhooks run every 10 seconds. Each call of the Identify API takes around 250ms to run when the Lambda is warm. That means that if you have more than ~20,000 Split feature flags evaluated per minute during bursts, the Lambda may time out. Other more sophisticated approaches like queuing using SQS, or falling back to running your own service like the NodeJS code above, may be more appropriate.
+3. You could also implement this using a serverless function, such as AWS Lambda. This code below can be used as an AWS lambda function. Note that Lambdas are limited to running 15 minutes. Split webhooks run every 10 seconds. Each call of the Identify API takes around 250ms to run when the Lambda is warm. That means that if you have more than ~20,000 Split feature flags evaluated per minute during bursts, the Lambda may time out. Other more sophisticated approaches like queuing using SQS, or falling back to running your own service like the Node.js code above, may be more appropriate.
 ```
 var axios = require("axios");
 
@@ -300,4 +300,3 @@ With Amplitude’s Split integration, you can export your Amplitude cohorts and 
 **Note: This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, contact the [contributor](https://github.com/dbmartin00).**
 
 This integration extracts events from Amplitude via the API, transforms them to the Split event format, and then sends these events to Split via the API. Refer to the [Github repository](https://github.com/dbmartin00/amplitude2split) for instructions on how to install this integration.
-
