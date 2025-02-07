@@ -32,9 +32,13 @@ It's possible to install the Split.io certificate manually into any Java store t
 Here are the steps to download the Split.io certificate and add it:
 1. Run the command below to fetch the cert from sdk.split.io, re-run the command to fetch the cert from events.split.io
   ```
-openssl s_client -showcerts -connect sdk.split.io:443 </dev/null 2>/dev/null|openssl x509 -outform PEM >splitsdkcert.pemopenssl s_client -showcerts -connect events.split.io:443 </dev/null 2>/dev/null|openssl x509 -outform PEM >spliteventscert.pem
+openssl s_client -showcerts -connect sdk.split.io:443 </dev/null 2>/dev/null|openssl x509 -outform PEM >splitsdkcert.pem
+
+openssl s_client -showcerts -connect events.split.io:443 </dev/null 2>/dev/null|openssl x509 -outform PEM >spliteventscert.pem
 ```
 2. Run the keytool to import both certs into Java cacerts store, or specify any other ket store:
   ```
-keytool -importcert -file splitsdkcert.pem -keystore [JAVA_HOME]/lib/security/cacerts -alias "splitsdkcert"keytool -importcert -file spliteventscert.pem -keystore [JAVA_HOME]/lib/security/cacerts -alias "spliteventscert"
+keytool -importcert -file splitsdkcert.pem -keystore [JAVA_HOME]/lib/security/cacerts -alias "splitsdkcert"
+  
+keytool -importcert -file spliteventscert.pem -keystore [JAVA_HOME]/lib/security/cacerts -alias "spliteventscert"
 ```
