@@ -1,8 +1,8 @@
 import { Horizon } from "./roadmapData";
 
 export const CcmData: Horizon = {
-  "Q1 CY'24": {
-    description: "Q1 CY'24, Feb-Apr 2024",
+  Released: {
+    description: "What has been released",
     feature: [
       {
         tag: [{value: "Visibility"}],
@@ -46,11 +46,6 @@ export const CcmData: Horizon = {
         description: "Correlate cost impact of policy runs to identify savings",
         backgroundColor: "var(--green-100)",
       },
-    ],
-  },
-  "Q2 CY'24": {
-    description: "Q2 CY'24, May-Jul 2024",
-    feature: [
       {
         tag: [{value: "Visibility"}],
         title: "Azure preferences",
@@ -71,12 +66,6 @@ export const CcmData: Horizon = {
           "New resources added for all three clouds for Cost Correlation.",
         backgroundColor: "var(--green-100)",
       },
-
-    ],
-  },
-  "Q3 CY'24": {
-    description: "Q3 CY'24, Aug-Oct 2024",
-    feature: [
       {
         tag: [{value: "Asset Governance"}],
         title: "Custom Recommendations powered by Governance ",
@@ -105,11 +94,6 @@ export const CcmData: Horizon = {
           "",
         backgroundColor: "var(--green-100)",
       },
-    ],
-  },
-  "Q4 CY'24": {
-    description: "Q4 CY'24, Nov-Jan 2025",
-    feature: [
       {
         tag: [{value: " Asset Governance" }],
         title: "FInOps AI assistant (Beta)",
@@ -181,27 +165,14 @@ export const CcmData: Horizon = {
       },
     ],
   },
-  "Q1 CY'25": {
-    description: "Q1 CY'24, Feb-Apr 2025",
+ Now:{
+  description: "Q1 CY'25, Feb 2025 - Apr 2025",
     feature: [
       {
         tag: [{value: "AutoStopping"}],
         title: "Granular RBAC",
         description:
           "Granular RBAC in Harness Autostopping introduces fine-grained control over Rules and Connectors as separate resources, enabling more precise permission management.",
-        backgroundColor: "var(--yellow-100)",
-      },
-      {
-        tag: [{value: "AutoStopping"}],
-        title: "Smart Advisor",
-        description:
-          "Smart Advisor helps you uncover cost-saving opportunities by identifying underused cloud resources and recommending the ideal Autostopping configurations.",
-        backgroundColor: "var(--yellow-100)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Anomaly FinOps AI Assistant ",
-        description:" AI-powered insights to help FinOps teams analyze anomalies and notify the right stakeholders.",
         backgroundColor: "var(--yellow-100)",
       },
       {
@@ -254,5 +225,24 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--yellow-100)",
       },
     ],
-  },
+ },
+Later:{
+    description: "Q2 2025 and beyond",
+    feature: [
+      {
+        tag: [{value: "AutoStopping"}],
+        title: "Smart Advisor",
+        description:
+          "Smart Advisor helps you uncover cost-saving opportunities by identifying underused cloud resources and recommending the ideal Autostopping configurations.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Anomaly FinOps AI Assistant ",
+        description:" AI-powered insights to help FinOps teams analyze anomalies and notify the right stakeholders.",
+        backgroundColor: "var(--yellow-100)",
+      },
+    ],
+
+  }
 };
