@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const FmeData: Horizon = {
   Now: {
-    description: "Q1 2025, Feb 2025-Apr 2025",
+    description: "Q1 2025, Feb-Apr 2025",
     feature: [
       {
         tag: [{ value: "Better Together" }],
@@ -19,11 +19,6 @@ export const FmeData: Horizon = {
         tag: [{ value: "Experimentation" }],
         title: "Reimagined experimentation design",
         description: "New workflow for designing experiments, decoupling experimentation analysis from flag monitoring use cases.",
-      },
-      {
-        tag: [{ value: "Experimentation" }],
-        title: "Reimagined experimentation dashboard",
-        description: "Tabular experiment results dashboard + new features like comparison of multiple treatments & sample size visualization.",
       },
       {
         tag: [{ value: "Experimentation" }],
@@ -114,11 +109,13 @@ export const FmeData: Horizon = {
         title: "AI results interpretation conversation",
         description:
           "AI-generated metric results summary can be asked follow-up questions.",
+        link:"https://www.split.io/releases/2025-01-08/",
       },
       {
         tag: [{ value: "Targeting" }],
         title: "Large segments",
         description: "New segment type enabling large-scale audience targeting up to 1M keys. Even higher limits available by request.",
+        link:"https://www.split.io/releases/2025-01-07/",
       },
       {
         tag: [{ value: "Better Together" }],
@@ -135,7 +132,7 @@ export const FmeData: Horizon = {
         tag: [{ value: "Monitoring" }],
         title: "Feature flag alerts on Monitoring tab",
         description: "Show guardrail and key metric alerts on the monitoring tab, in addition to the threshold-based alerts shown prev.",
-        link:"https://www.split.io/releases/#zzodil-2024-11-27",
+        link:"https://www.split.io/releases/2024-11-27",
       },
       {
         tag: [{ value: "Measurement" }],
