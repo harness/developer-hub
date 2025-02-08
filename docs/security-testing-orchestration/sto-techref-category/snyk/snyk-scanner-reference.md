@@ -216,36 +216,98 @@ import StoSettingSettings from '../shared/step_palette/all/_settings.md';
 <StoSettingSettings />
 
 
-### Show original issue severities overridden by Snyk security policies 
+## Show original issue severities overridden by Snyk security policies 
 
-You can configure a Snyk step to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity for an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.   
+Harness originally will categorize a scan utilizing the CVSS scores that are provided, and using it to categorize vulnerabilities into **Critical, High, Medium, and Low** categories
 
-<DocImage path={require('../static/sto-7041-override-in-security-tests.png')} width="50%" height="50%" title="Snyk security override in Security Tests" />
+With the Snyk Step, or a [Custom Scan Step](https://developer.harness.io/docs/security-testing-orchestration/custom-scanning/custom-scan-reference/) utilizing a self installed Snyk runner, you can configure Harness to utilize the severity scores in a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies), and provide an override severity for an issue.  This can be adjusted from your Snyk results, or it can also come from the `snyk` CLI. You can see this information in **Issue Details**.   
 
-<DocImage path={require('../static/sto-6927-override-popup-for-snyk.png')} width="50%" height="50%" title="Override for Snyk issue in Issue Details table" />
+![](../static/sto-7041-override-in-security-tests.png)
+
+Harness will also display the information that the severity was overriden, and the original score, so long as the report follows the Snyk required format
+
+![](../static/sto-6927-override-popup-for-snyk.png)
 
 This feature is supported for `snyk container` and `snyk test` JSON output that properly reflects an override.
-  
-To enable this behavior, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step. With this setting enabled, the Snyk step processes the relevant data for issues with overridden severities. 
 
-  <Tabs>
-     <TabItem value="Visual" label="Visual" default>
+### Requirement
 
-     <DocImage path={require('../static/sto-7041-add-setting-in-visual-editor.png')} width="40%" height="40%" title="Add ingest_tool_severity to Snyk ste" />
+- [STO Plugin version 1.56.x or higher](https://hub.docker.com/r/harness/sto-plugin/tags)
 
-    </TabItem>
-  
+### JSON Output Format
+Please note that the override format must follow the Snyk documented process, such as [in the following Snyk example.](https://docs.snyk.io/supported-languages-package-managers-and-frameworks/c-c++/snyk-cli-for-open-source-c++-scans)
+
+The formatting should contain the following:
+- A value, `originalSeverity`, needs to be defined, and should contain the original severity value
+- The `severity` value can now be defined with the new severity value.  Below is a portion of an adjusted vulnerability sample:
+
+```
+{  
+     "vulnerabilities": [
+        {
+            "id": "SNYK-JS-POSTCSS-5926692",
+            "title": "Improper Input Validation",
+            "CVSSv3": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+            "credit": [
+                "Unknown"
+            ],
+            "semver": {
+                "vulnerable": [
+                    "<8.4.31"
+                ]
+            },
+            "exploit": "Not Defined",
+            "fixedIn": [
+                "8.4.31"
+            ],
+            "patches": [],
+            "insights": {
+                "triageAdvice": null
+            },
+            "language": "js",
+            "severity": "critical",
+            "originalSeverity": "medium",
+            "cvssScore": 5.3,
+            "functions": [],
+            "malicious": false,
+            "isDisputed": false,
+            "moduleName": "postcss",
+            [...]
+        }
+    ]
+ }
+```
+
+
+### Enable Severity Override
+To enable this behavior, add the setting `ingest_tool_severity` and set it to `true` in the Snyk ingestion step or Custom Scan Step. With this setting enabled, the Snyk step processes the relevant data for issues with overridden severities. 
+
+<Tabs>
+    <TabItem value="Visual" label="Visual" default>
+      Add `ingest_tool_severity` to Snyk step keys
+      ![](../static/sto-7041-add-setting-in-visual-editor.png)
+      Add `ingest_tool_severity` to Custom Scan step keys
+      ![](./static/snyk-customstage-Ingesttoolseverity.png)
+      </TabItem>
     <TabItem value="YAML" label="YAML">
-      ``` yaml
-      - step:
-          type: Snyk
-          spec:
-            settings:
-              ingest_tool_severity: "true"
-      ```
-
-    </TabItem>
-    </Tabs>
+          **Snyk Step Declaration**
+          ``` yaml
+          - step:
+              type: Snyk
+              spec:
+                settings:
+                  ingest_tool_severity: "true"
+          ```
+          **Custom Scan Step Declaration**
+          ``` yaml
+          - step:
+              type: Security
+              spec:
+                settings:
+                  ingest_tool_severity: "true"
+          ```
+      </TabItem>
+</Tabs>
 
 
 ### Additional Configuration
