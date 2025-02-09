@@ -3,19 +3,19 @@ title: Traffic types
 sidebar_label: Traffic types
 helpdocs_is_private: false
 helpdocs_is_published: true
-description: "Traffic types are a way of categorizing your user IDs (user keys)"
+description: "Traffic types are a way of categorizing keys"
 ---
 
-When you create a feature flag, metric, or segment, you must specify a traffic type. Traffic types are a way of categorizing your [traffic keys (user IDs)](./user-ids.md).
+When you create a feature flag, metric, or segment, you must specify a traffic type. Traffic types are a way of categorizing your [keys](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/keys/keys.md).
 
 The traffic types you choose will determine the granularity of your feature flag targeting rules and metric results.
 
-For example, if your users share accounts, and you want to provide an identical user experience (the same feature variation for each evaluated flag) to all users within an account, then you could set your traffic type to be 'account'. (Your users will share [MTKs](./mtks.md) and this will reduce your costs, but your targeting will be less granular and your metric results will not differentiate between individual end users).
+For example, if your users share accounts, and you want to provide an identical user experience (the same feature variation for each evaluated flag) to all users within an account, then you could set your traffic type to be 'account'. (Your users will share [MTKs](./keys/mtks.md) and this will reduce your costs, but your targeting will be less granular and your metric results will not differentiate between individual end users).
 
 Most customers choose to use the **'user'** traffic type. This would allow you to see the precise percentage of users impacted by a feature variation.
 
 :::tip
-You can use [segments](./segments.md) to group user IDs. Segments can be used in feature flag targeting rules.
+You can use [segments](./segments.md) to group keys. Segments can be used in feature flag targeting rules.
 :::
 
 Traffic types should define your **most granular level** of feature flag targeting decisions. (Note that you can also set feature flag targeting rules based on user attributes.) Take a moment and carefully consider your traffic type choices. Our customer success advisors are on hand to help validate your plan.

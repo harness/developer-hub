@@ -67,7 +67,7 @@ In the [Dynamic configuration](https://help.split.io/hc/en-us/articles/360026943
 
 ## Setting up targeting
 
-Targeting defines how your feature flag will be evaluated for a given [user ID (user key)](docs/feature-management-experimentation/10-getting-started/docs/key-concepts/user-ids.md). You can add inidividual user IDs to your targeting rules. Targeting rules have a limit of 500 user IDs, so we suggest [creating a segment](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) if you need to target a large number of user IDs.
+Targeting defines how your feature flag will be evaluated for a given [user key](docs/feature-management-experimentation/10-getting-started/docs/key-concepts/keys/keys.md). You can add inidividual user IDs to your targeting rules. Targeting rules have a limit of 500 user IDs, so we suggest [creating a segment](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) if you need to target a large number of user IDs.
 
 To set up targeting, you can use the Individual targets area and/or the Targeting rules area. Both are described below.
 

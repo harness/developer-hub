@@ -12,11 +12,11 @@ import FindAPIKeys from "@site/docs/feature-management-experimentation/_template
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360006854852-Frontend-and-backend-API-key-usage </button>
 </p>
 
-API keys are confidential GUID strings that authorize communciation with Harness servers.
+API keys are confidential GUID strings that authorize communication with Harness servers.
 
 **Admin API keys** are used for requests to our public <a href="https://docs.split.io">Split Admin HTTP API<OutboundSvg /></a> endpoints.
 
-**SDK API keys** are used to download the [FME payload](./fme-payload.md) and to send [impressions](./impressions.md) and [events](./events.md) needed by FME to calculate monitoring and experimentation data.
+**SDK API keys** are used to download the [FME definitions](./fme-definitions.md) and to send [impressions](./impressions.md) and [events](./events.md) needed by FME to calculate monitoring and experimentation data.
 
 :::info
 <FindAPIKeys keyType='Admin API keys and SDK API keys' is='are' />

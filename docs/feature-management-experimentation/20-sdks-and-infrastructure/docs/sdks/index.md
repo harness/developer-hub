@@ -12,7 +12,7 @@ FME SDKs are central to FME. Using Harness FME means using FME SDKs.
 
 <SDKDataFlowImage />
 
-Running in your app, the FME SDK client pulls your [rollout plans](docs/feature-management-experimentation/10-getting-started/docs/key-concepts/fme-payload.md) (feature flags and targeting rules) from Harness servers and stores this data. This locally cached data ensures your feature flag evaluations execute instantly, in under 5 ms. At regular configurable intervals, the SDK sends feature flag [performance and behavioral data](docs/feature-management-experimentation/10-getting-started/docs/key-concepts/fme-payload.md) to Harness for analytics, to power your team's feature monitoring and experimentation.
+Running in your app, the FME SDK client pulls your [rollout plans](docs/feature-management-experimentation/10-getting-started/docs/key-concepts/fme-definitions.md) (feature flags and targeting rules) from Harness servers and stores this data. This locally cached data ensures your feature flag evaluations execute instantly, in under 5 ms. At regular configurable intervals, the SDK sends feature flag [performance and behavioral data](docs/feature-management-experimentation/10-getting-started/docs/key-concepts/fme-definitions.md) to Harness for analytics, to power your team's feature monitoring and experimentation.
 
 Use the left sidebar to navigate to the FME SDK tailored to your coding language and tech stack.
 

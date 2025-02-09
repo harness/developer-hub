@@ -5,7 +5,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 10
 ---
-import MTK from "@site/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/mtks.md";
+import MTK from "@site/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/keys/mtks.md";
 
 <p>
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/26978089134349-MTK-Usage-and-Comparing-Counts </button>

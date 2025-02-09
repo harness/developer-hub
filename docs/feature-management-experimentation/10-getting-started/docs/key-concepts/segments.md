@@ -3,10 +3,10 @@ title: Segments
 sidebar_label: Segments
 helpdocs_is_private: false
 helpdocs_is_published: true
-description: Lists of user IDs (user keys)
+description: Lists of keys
 ---
 
-A segment is a list of [user IDs](./user-ids.md).
+A segment is a list of [keys](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/keys/keys.md).
 
 :::tip
 You can target segments in your feature flag targeting rules, and you can gradually rollout features by increasing percentage to segments.
