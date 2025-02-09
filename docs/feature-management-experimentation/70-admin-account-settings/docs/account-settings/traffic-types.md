@@ -36,7 +36,7 @@ The traffic types you choose to create depends on multiple factors:
 * **Granularity:** How granular do you need to get with your targeting logic? If you typically target based on tenants or companies, but sometimes you want to target down to the user level, then you’ll want a user traffic type.
 * **B2B vs. B2C:** B2B organizations will typically require targeting by tenants or companies rather than by individual users, or they may require both.
 * **Authenticated vs. unauthenticated traffic:** Do you plan to run feature flags on webpages with both types of traffic? Then you should set up two traffic types to represent the two keys/IDs - typically a UUID and a user ID.
-* **Experimentation & Release Monitoring:** If you plan to monitor feature flag impact or run experiments, you should consider which identifiers are associated with the events you send to FME. For example, if events collected in your analytics tool are for authenticated users or sessions, then you should set up a traffic type and pass that same authenticated user ID or session ID. (Go to [Attribution and exclusion](https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion) for more information.)
+* **Experimentation & Release Monitoring:** If you plan to monitor feature flag impact or run experiments, you should consider which identifiers are associated with the events you send to FME. For example, if events collected in your analytics tool are for authenticated users or sessions, then you should set up a traffic type and pass that same authenticated user ID or session ID. (Go to [Attribution and exclusion](/docs/feature-management-experimentation/50-release-monitoring/docs/metrics/attribution-and-exclusion.md) for more information.)
 
 ## Create a traffic type
 
@@ -99,11 +99,11 @@ Create traffic types for the granularity you need for targeting and use attribut
 :::
 
 ### I want to start sending events to FME for experimentation. What do I need to consider?
-When sending events to FME, the payload will include a traffic key or identifier. This is how our system is able to make the proper attribution for experiments, as we need the key to match between the **event** (e.g. the action taken by the user) and the **impression** (e.g. who saw the 'on' or 'off' feature flag treatment). Go to [Attribution and exclusion](https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion) for more information.
+When sending events to FME, the payload will include a traffic key or identifier. This is how our system is able to make the proper attribution for experiments, as we need the key to match between the **event** (e.g. the action taken by the user) and the **impression** (e.g. who saw the 'on' or 'off' feature flag treatment). Go to [Attribution and exclusion](/docs/feature-management-experimentation/50-release-monitoring/docs/metrics/attribution-and-exclusion.md) for more information.
 
 Please ensure that the key passed with the event matches the traffic type(s) you plan to use in FME for feature flagging and experimentation.
 
 For example, if you send events associated with session IDs but you’re running experiments on authenticated users, you will need to ensure you are also collecting events associated with the authenticated traffic key **or** target the session ID instead of user ID for your feature flags.
 
 ### How will my traffic type impact my Monthly Tracked Keys (MTKs)?
-Monthly Tracked Keys (MTKs) are the number of unique traffic type identifiers evaluated by our SDKs in a calendar month. The more granular you choose to get with your traffic type (e.g. user ID is more granular than company ID), the more MTKs you will typically see. Go to [MTK usage and comparing counts](https://help.split.io/hc/en-us/articles/26978089134349-MTK-Usage-and-Comparing-Counts) for more information about what impacts MTKs.
+Monthly Tracked Keys (MTKs) are the number of unique traffic type identifiers evaluated by our SDKs in a calendar month. The more granular you choose to get with your traffic type (e.g. user ID is more granular than company ID), the more MTKs you will typically see. Go to [MTK efficiency](/docs/feature-management-experimentation/40-feature-management/docs/manage-audiences/mtk-efficiency.md) for more information about what impacts MTKs.
