@@ -1,6 +1,6 @@
 ---
-title: What is Instant Feature Impact Detection?
-sidebar_label: What is Instant Feature Impact Detection?
+title: What is release monitoring?
+sidebar_label: What is release monitoring?
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 2
@@ -12,12 +12,12 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/26506008776077-What-is-Instant-Feature-Impact-Detection <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-# What is Instant Feature Impact Detection
+# What is release monitoring
 
-This document will provide an overview of IFID (Instant Feature Impact Detection) and how it can be used to improve the performance and behavioral health of your application.
+This document will provide an overview of release monitoring and how it can be used to improve the performance and behavioral health of your application.
 
-Why Use IFID
-============
+Why use release monitoring?
+===========================
 
 Software engineering teams are constantly building and delivering features. State of the art in the industry is the progressive rollout - ensuring that released features are slowly ramped up and released to minimize the potential for service disruption and ensure the feature is positively impacting metrics before being released to everyone. 
 
@@ -25,16 +25,16 @@ Teams want to release software safely and know who is getting impacted if there 
 
 For example  - if there is a catastrophic 10% increase in crash percentage when a new feature is rolled out to 5% of customers, that 0.5% crash increase rate across your entire population might just be chalked up to noise and not even noticed- until 20, 30 or even 50% of customers are having the app crash more frequently, reducing the quality of their experience and harming their affinity towards your product and services. 
 
-This becomes exceptionally more complex when you have multiple different features in various stages of rollout. Split handles the data analysis on a feature by feature impact analysis - offering you the knowledge of which feature specifically is affecting your metrics. If you have two features at 50% rollout and your APM tells you that application crashes have increased - you may not know which feature is causing the majority of this negative impact. Split’s IFID capability gives you the tools to do this. 
+This becomes exceptionally more complex when you have multiple different features in various stages of rollout. Split handles the data analysis on a feature by feature impact analysis - offering you the knowledge of which feature specifically is affecting your metrics. If you have two features at 50% rollout and your APM tells you that application crashes have increased - you may not know which feature is causing the majority of this negative impact. Split’s release monitoring capability gives you the tools to do this. 
 
-What is IFID
-============
+What is release monitoring?
+===========================
 
 ![](https://help.split.io/hc/article_attachments/26506008745997)
 
-IFID is a capability that Split provides with our powerful statistics, monitoring and alerting engine. 
+Release monitoring is a capability that Split provides with our powerful statistics, monitoring and alerting engine. 
 
-There are five key components of IFID:
+There are five key components of release monitoring:
 
 1\. Create an active feature flag
 ---------------------------------
@@ -59,11 +59,11 @@ In order for Split to evaluate the Metrics properly, there needs to be a percent
 5\. Feature Flag and Metric alerting are present
 ------------------------------------------------
 
-All you need to do is check your metrics impact dashboard to see how your features are doing, but to get the most value from IFID it is highly recommended that you set up metric [alert policies](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) and [feature flag alerting](https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting). Feature flag alerting immediately notifies you when a feature flag key metric achieves significance, allowing you to have confidence in the impact of your new feature.  Alert policies will alert you immediately to a guardrail metric being hit, ensuring that service degradations can be acted upon swiftly. 
+All you need to do is check your metrics impact dashboard to see how your features are doing, but to get the most value from release monitoring it is highly recommended that you set up metric [alert policies](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) and [feature flag alerting](https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting). Feature flag alerting immediately notifies you when a feature flag key metric achieves significance, allowing you to have confidence in the impact of your new feature.  Alert policies will alert you immediately to a guardrail metric being hit, ensuring that service degradations can be acted upon swiftly. 
 
-### IFID components
+### Release monitoring components
 
-Here is a table of how to much effort to implement each of the components of IFID - from lowest to highest lift:
+Here is a table of how to much effort to implement each of the components of release monitoring - from lowest to highest lift:
 
 
 |Lift|Performance Event Data|Metrics|Percentage Based Rollouts|Understand Impact|
@@ -75,7 +75,7 @@ Here is a table of how to much effort to implement each of the components of IFI
 What it enables
 ===============
 
-IFID enables you to see beyond the sea of data from your APM tools and business analytics tools - letting you focus on the value and performance effects from each individual feature. 
+Release monitoring enables you to see beyond the sea of data from your APM tools and business analytics tools - letting you focus on the value and performance effects from each individual feature. 
 
 Split’s provided Suite or RUM agents, when installed, will automatically send events to Split that can be used to monitor and keep abreast of the impact of individual features on performance metrics, ensuring that you are aware and able to monitor features as they roll out. The agents can also be used to send important business events and used to build business metrics. Allowing business and performance metrics to be monitored together. This 360 degree view of the business is extremely valuable.
 

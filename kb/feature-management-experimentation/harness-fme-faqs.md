@@ -7,7 +7,7 @@ sidebar_position: 2
 ## Feature flags
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044768212-Feature-flags-and-SEO </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044768212-Feature-flags-and-SEO </button>
 </p>
 
 ### How do feature flags impact SEO, particularly when running experiments?
@@ -31,7 +31,7 @@ Google and Microsoft have both repeatedly advocated for the use of A/B testing o
 ## Administration (Standalone Split)
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020399652-What-happens-when-I-downgrade-to-the-Free-Edition </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020399652-What-happens-when-I-downgrade-to-the-Free-Edition </button>
 </p>
 
 ### What happens when I downgrade to the Free Edition of Split?
@@ -73,7 +73,7 @@ There are a few more features that will become unavailable, but most won’t cau
 ## SDK initialization
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360006667012-Block-traffic-until-the-SDK-is-ready </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360006667012-Block-traffic-until-the-SDK-is-ready </button>
 </p>
 
 ### How can I avoid getting the control treatment during SDK initialization?
@@ -93,7 +93,7 @@ end
 ```
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4409917901837-General-SDK-SDK-Readiness-always-times-out-when-running-in-Kubernetes-and-Istio-proxy </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4409917901837-General-SDK-SDK-Readiness-always-times-out-when-running-in-Kubernetes-and-Istio-proxy </button>
 </p>
 
 ### How can I troubleshoot SDK not ready exception when running SDK in Kubernetes container with Istio proxy?

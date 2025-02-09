@@ -1,6 +1,6 @@
 ---
-title: "Instant Feature Impact Detection: Quickstart Guide"
-sidebar_label: "Instant Feature Impact Detection: Quickstart Guide"
+title: "Release monitoring quickstart guide"
+sidebar_label: "Release monitoring quickstart guide"
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 3
@@ -12,7 +12,7 @@ import Link from "@docusaurus/Link";
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/26526728778381-Instant-Feature-Impact-Detection-Quickstart-Guide </button>
 </p>
 
-See the following below quickstart guides that take advantage of Split Suite (or RUM agents) and the default events they track in order to quickly get you up and running with IFID.  If you don’t want to or can’t use them, you can always send events to Split other ways - via SDK’s track methods, API calls, or integrations as documented [here](https://help.split.io/hc/en-us/articles/360020585772-Events). 
+See the following below quickstart guides that take advantage of Split Suite (or RUM agents) and the default events they track in order to quickly get you up and running with release monitoring.  If you don’t want to or can’t use them, you can always send events to Split other ways - via SDK’s track methods, API calls, or integrations as documented [here](https://help.split.io/hc/en-us/articles/360020585772-Events). 
 
 ## Rollout a new feature on the Web
 
@@ -62,4 +62,4 @@ While the Split Suites today only exist for client side code, this does not mean
 
 To do this requires a few components to think about. First, you will need to ensure that you have the same ID values available in the frontend and available to the Server side Split SDK that is doing the rollout of your server side feature. This allows Split’s statistics engine to do the join and comparison. Second, you will need to install the appropriate Suite or agent in your client side code and ensure that it is capturing events with the proper ID. 
 
-Follow the steps in the [Rollout a new feature on the web](https://help.split.io/hc/en-us/articles/26526728778381#h_01HX7VTF55FBE8SHASVB96PJKM) or [Rollout a new feature on Android or iOS](https://help.split.io/hc/en-us/articles/26526728778381#h_01HX7VTF55FZXQM92PHCYHPNBN) to set up the agents and get protected from features causing downtime or degradation with IFID.
+Follow the steps in the [Rollout a new feature on the web](https://help.split.io/hc/en-us/articles/26526728778381#h_01HX7VTF55FBE8SHASVB96PJKM) or [Rollout a new feature on Android or iOS](https://help.split.io/hc/en-us/articles/26526728778381#h_01HX7VTF55FZXQM92PHCYHPNBN) to set up the agents and get protected from features causing downtime or degradation with release monitoring.
