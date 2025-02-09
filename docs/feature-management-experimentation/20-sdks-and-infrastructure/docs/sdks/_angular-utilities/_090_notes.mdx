@@ -1,0 +1,45 @@
+Since version 2.2.0, our SDK supports using a YAML file  to define feature flag definitions for localhost mode. This format allows the user to map different keys to different treatments within a single feature flag, and also add configurations to them. The YAML file is a list of single-key maps (one per mapping feature_flag-keys-config), defined as follows:
+
+```yaml title="YAML"
+# - feature_name:
+#     treatment: "treatment_applied_to_this_entry"
+#     keys: "single_key_or_list"
+#     config: "{\"desc\" : \"this applies only to ON treatment\"}"
+
+- my_feature:
+    treatment: "on"
+    keys: "key"
+    config: "{\"desc\" : \"this applies only to ON treatment\"}"
+- some_other_feature:
+    treatment: "off"
+- my_feature:
+    treatment: "off"
+- other_feature:
+    treatment: "off"
+    keys: ["key_1", "key_2"]
+    config: "{\"desc\" : \"this overrides multiple keys and returns off treatment for those keys\"}"
+```
+
+The above example defines four feature flag **targeting rules** (for three feature flags):
+
+ * The feature flag named `my_feature` returns the `on` treatment for the `key` user ID. Together with the `on` treatment the flag will return the configuration `{"desc" : "this applies only to ON treatment"}`.
+ * The feature flag named `some_other_feature` returns the `off` treatment and no configuration.
+ * The feature flag named `my_feature` returns `off` (except for the `key` user ID that is matched in the preceding rule).
+ * The feature flag named `other_fourth" will return the `off` treatment and a configuration for two user IDs.
+
+In this mode, the SDK loads the yaml file from a resource bundle file at the assets' project `src/main/assets/splits.yaml`.
+
+If a split.yaml or split.yml is not found in assets, Split SDK maintains backward compatibility by trying to load the legacy file (split.properties), which is now deprecated.
+
+The format of this file is a properties file as key-value line. The key is the feature flag name, and the value is the treatment name. The following is a sample `split.properties` file:
+
+```bash title="split.properties file"
+# this is a comment
+
+# sdk.getTreatment(*, reporting_v2) will return 'on'
+reporting_v2=on
+
+double_writes_to_cassandra=off
+
+new-navigation=v3
+```

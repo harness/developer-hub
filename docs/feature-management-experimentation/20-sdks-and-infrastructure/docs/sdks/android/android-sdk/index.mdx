@@ -13,6 +13,7 @@ import {
 import {
   Repository,
   GetStarted,
+  InitializationSdk,
   UseTheSdk,
 } from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_all_sdks/index.mdx";
 
@@ -39,13 +40,18 @@ export const Result = SDKDocsBuilder(
     [ 
       GetStarted, 
       {
-        sdkName:         "Android",
+        sdkName:         "Android SDK",
         sdkKeyType:      "client-side",
         repo:            "https://github.com/splitio/android-client",
         introduction:    <Introduction />,
         language:        <Language />,
+      }, 
+    ],
+    [ 
+      InitializationSdk, 
+      {
         codeImport:      <Import />,
-        codeInitiate: <Initiate />,
+        codeInitiate:    <Initiate />,
         sdkKeyDetails:   <ClientSdkKeyDetails />,
       },
     ],

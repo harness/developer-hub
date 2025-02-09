@@ -4,7 +4,7 @@ To [leverage dynamic configurations with your treatments](https://help.split.io/
 
 <>{props.codeTreatmentResult}</>
 
-The config element is a stringified version of the configuration JSON defined in the FME (Split) user interface. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
+The config element is a stringified version of the configuration JSON defined in the FME (Split) user interface. If there is no configuration defined for a treatment, the {props.sdk ?? 'SDK'} returns `null` for the config parameter.
 
 This method takes the exact same set of arguments as the standard `getTreatment` method.
 
