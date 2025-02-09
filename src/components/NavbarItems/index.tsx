@@ -39,7 +39,7 @@ const CoveoSearch = () => {
   const isTokenExpired = (): boolean => {
     const storedToken = localStorage.getItem('coveo_token');
     const data = JSON.parse(storedToken);
-    if (data.expiry) {
+    if (data && data.expiry) {
       return data.expiry <= Date.now();
     }
     return true;
