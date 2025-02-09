@@ -31,32 +31,6 @@ Authentication, access, and user management are part of the Harness Platform. Pe
 
 <!-- todo: add info about FME Admin/User roles and permissions and their management --->
 
-<!-- decision: 2025/02/07 - LS/DK/JA - Remove terminology section because Account and Projects renames are
-                                       familiar to readers, while Admin API and Admin API Key will be transitioned
-                                       over server steps.
-
-## Terminology
-
-Some Split terminology changed to align with the Harness Platform.
-
-| Split term | Harness term | Comments |
-| ------------ | ------------ | -------- |
-| Organization | Account | Your company has one Harness account. This is the highest level container. |
-| Workspaces | Projects | Each Harness project is a workspace. Harness organizations are umbrellas over projects. |
-| Admin API | Harness API | Split Admin API endpoints will eventually be added into Harness API, and endpoints for managing workspaces, users, groups, and permissions will be handled by Harness API. |
-| Admin API key | API Key | You will be able to generate Harness API key tokens to work with HTTP API endpoints for Harness FME. |
-
-The following terms are the same:
-
-* [Feature flags](./key-concepts/feature-flags.md)
-* [Metrics](./key-concepts/metrics.md)
-* [Events](./key-concepts/events.md)
-* [Impressions](./key-concepts/impressions.md)
-* [Traffic types](./key-concepts/traffic-types.md)
-* [Segments](./key-concepts/segments.md)
-
--->
-
 ## Harness platform integrations coming soon
 
 We are moving rapidly to unlock integrations with Harness's innovative DevOps tools, DevEx improvements, Security features, and Cloud optimizations. Check back here for how to switch on these benefits for your team.
