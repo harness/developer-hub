@@ -24,12 +24,16 @@ If you're new to Harness, go to [Get started with Harness](/docs/category/get-st
 
 ## Authentication, access, and user management
 
-Authentication, access, and user management are part of the Harness Platform. Permissions granted to users and user groups depends on their associations with resources and resource groups, which are controlled at the account and project level in Harness. For more information about authentication, access, and user management, go to the following:
+Authentication, access, and user management are part of the Harness Platform. Permissions granted to users and user groups depends on their associations with resources and resource groups, which are controlled at the account, organization, and project level in Harness. For more information about authentication, access, and user management, go to the following:
 
 * [Harness Platform authentication (including 2FA and SSO)](/docs/category/authentication)
 * [Harness RBAC overview](/docs/platform/role-based-access-control/rbac-in-harness)
 
 <!-- todo: add info about FME Admin/User roles and permissions and their management --->
+
+<!-- decision: 2025/02/07 - LS/DK/JA - Remove terminology section because Account and Projects renames are
+                                       familiar to readers, while Admin API and Admin API Key will be transitioned
+                                       over server steps.
 
 ## Terminology
 
@@ -40,7 +44,7 @@ Some Split terminology changed to align with the Harness Platform.
 | Organization | Account | Your company has one Harness account. This is the highest level container. |
 | Workspaces | Projects | Each Harness project is a workspace. Harness organizations are umbrellas over projects. |
 | Admin API | Harness API | Split Admin API endpoints will eventually be added into Harness API, and endpoints for managing workspaces, users, groups, and permissions will be handled by Harness API. |
-| Admin API Key | API Key | You will be able to generate Harness API key tokens to work with HTTP API endpoints for Harness FME. |
+| Admin API key | API Key | You will be able to generate Harness API key tokens to work with HTTP API endpoints for Harness FME. |
 
 The following terms are the same:
 
@@ -50,6 +54,8 @@ The following terms are the same:
 * [Impressions](./key-concepts/impressions.md)
 * [Traffic types](./key-concepts/traffic-types.md)
 * [Segments](./key-concepts/segments.md)
+
+-->
 
 ## Harness platform integrations coming soon
 
