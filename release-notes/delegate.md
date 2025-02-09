@@ -89,6 +89,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## January 2025
 
+### Version 24.10.84107 <!-- January 31, 2025 -->
+
+#### Hotfix
+
+- Fixed a bug where socket files during git operations were not cleaned. (PIPE-24724)
+
 ### Version 24.12.84708 <!-- January 16, 2025 -->
 
 #### Hotfix

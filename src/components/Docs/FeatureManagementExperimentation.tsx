@@ -3,7 +3,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import styles from "./styles.module.scss";
-import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
+import TutorialCard, { TutorialCards } from "../TutorialCard/TutorialCard";
 // Define the cards in "***Data.ts"
 import { docsCards } from "./data/featureManagementExperimentationData";
 

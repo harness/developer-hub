@@ -152,6 +152,10 @@ const config: Config = {
               to: 'docs/chaos-engineering',
             },
             {
+              label: 'Incident Response',
+              to: 'docs/incident-response',
+            },
+            {
               label: 'Service Reliability Management',
               to: 'docs/service-reliability-management',
             },
@@ -357,6 +361,10 @@ const config: Config = {
             {
               label: 'Chaos Engineering',
               to: 'https://harness.io/products/chaos-engineering',
+            },
+            {
+              label: 'Incident Response',
+              to: 'https://harness.io/products/incident-response',
             },
             {
               label: 'Service Reliability Management',
@@ -597,7 +605,7 @@ const config: Config = {
     ],
 
     path.join(__dirname, '/plugins/utmcookie-plugin'),
-    path.join(__dirname, '/plugins/feedback-plugin'),
+    // path.join(__dirname, '/plugins/feedback-plugin'),
     path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
   ],
   clientModules: [

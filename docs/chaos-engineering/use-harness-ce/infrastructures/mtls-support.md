@@ -7,6 +7,11 @@ redirect_from:
 - /docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/mtls-support
 ---
 
+## Prerequisites
+
+- [What is mTLS?](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support)
+- [What is DDCR?](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr)
+
 This topic describes how you can configure mTLS with DDCR and Discovery Agent.
 
 Chaos runner supports token-based authentication with the Harness Platform. If you want to add another authentication on top of Harness authentication, you can [enable mTLS](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support/) for the account.

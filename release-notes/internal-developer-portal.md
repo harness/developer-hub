@@ -17,6 +17,114 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 :::
 
+## February 2025 
+
+### Version 0.39.0
+
+<!-- February 04, 2025-->
+
+#### What's New in this Release (New Features and Enhancements)
+
+#### 1️⃣ ``Conditional API Requests in Workflow Dynamic Pickers`` [IDP-4291]
+
+This release marks a **major milestone** for **Workflow Dynamic Pickers**, and we’re excited to introduce **Conditional API Requests**!  
+
+Dynamic Pickers make workflows more interactive by providing real-time options and ensuring validation for workflow creators. However, until now, input fields in **IDP workflows** were **independent** of each other. This lack of dependency made it difficult for users to fully utilize workflows.
+
+🚀 Introducing Conditional API Requests
+
+Workflow Dynamic Pickers now support **conditional API requests** based on user input from prior workflow form fields. This means **one field's values can dynamically depend on another**, enabling:  
+
+✔ **Interactive workflows** – Users can dynamically filter results based on prior inputs.  
+✔ **Customizable API requests** – API URLs in Dynamic Pickers can now include **query parameters** derived from user input.  
+
+🚀 Use Case: Repository Picker Workflow  
+
+Previously, users could not filter repositories based on different organizations or projects. The repositories were fetched only from a pre-fixed organization and project, limiting flexibility.  
+
+With **Conditional API Requests**, users can now specify their GitHub organization and dynamically fetch repositories **without being restricted** to a fixed org.  
+
+Here’s how the **UI Picker YAML** looks with Conditional API Requests:  
+
+```YAML {13}
+parameters:
+  properties:
+    github_org:
+      type: string
+      title: Provide GitHub Org
+    github_repo:
+      type: string
+      ui:field: SelectFieldFromApi
+      ui:options:
+        title: GitHub Repository
+        description: Pick one of the GitHub Repositories
+        placeholder: "Choose a Repository"
+        path: proxy/github-api/orgs/{{ parameters.github_org }}/repos
+        valueSelector: full_name
+```
+![](./static/dynamic-picker-2.png)
+
+This feature makes workflows more flexible, interactive, and user-friendly.  
+
+👉 Read more about the feature [here](/docs/internal-developer-portal/flows/dynamic-picker#conditional-api-requests).
+
+#### 2️⃣ ``API Key Secret based Pipeline Execution from IDP Workflows`` [IDP-4051]
+
+There are now two ways in which **Workflow to Harness Pipeline authentication** works in Harness IDP Workflows. Users can now trigger a Harness Pipeline in an IDP Workflow using a **Harness API Key Secret** instead of a user session token. Previously, authentication relied on the user session token, requiring execution permissions for the pipeline. With this mode: 
+
+- A pre-configured **Harness API Key Secret** is used to trigger the Harness Pipeline.
+- The user **does not need** direct access to the underlying pipeline(s); however, the **API Key Secret** must have the **execute permissions** for the underlying pipeline(s).
+- Platform engineers can generate the necessary API token and configure it within the workflow as default, ensuring **no user** can **access or modify** the pipeline.
+
+This feature enhances security by using dedicated API keys, eliminating the need for user execution permissions. 
+
+👉 Read more about the feature [here](/docs/internal-developer-portal/flows/worflowyaml#authentication).
+
+#### 3️⃣ ``POST Method support for Dynamic Pickers`` [IDP-4292]
+
+Workflow Dynamic Pickers now supports the **POST method**, extending beyond just GET requests. 
+This feature is useful for fetching data using **GraphQL APIs**, calling **Lambda functions** with POST requests and handling APIs that require **large inputs via POST**. 
+
+Here’s how you can define the POST method:
+```YAML
+customvalidate:
+    title: GitHub Repos Single
+    type: string
+    description: Pick one of GitHub Repos
+    ui:field: ValidateAndFetch
+    ui:options:
+      path: "catalog/entities/by-refs"
+      request:
+        method: POST
+        headers:
+          Content-Type: application/json
+        body:
+          entityRefs:
+            - user:default/autouser1
+          fields:
+            - kind
+            - metadata.name
+```
+
+👉 Read more about the feature [here](/docs/internal-developer-portal/flows/dynamic-picker#post-method-support).
+
+#### Upcoming Features
+The following features are currently in progress and are scheduled for release no later than **February 17th**. These features are part of the promised quarterly roadmap and are included in the **new workflow enhancements** introduced in this version.
+
+Here’s what these features do:
+
+- **Fetch additional details and auto-populate form fields based on user selection**: This feature dynamically updates workflow form fields based on user input.
+**For Example**: When a user selects an application, an API request is sent to CMDB to fetch additional details, which are then used to populate the remaining fields automatically.
+
+- **Allow arbitrary values in dynamic pickers**: Users can now manually enter custom text if their desired option is not available in the predefined list.
+
+#### Bug Fixes 
+- Fixed payload creation for template variables and extended support for **pipeline template variables** in `trigger:harness-custom-pipeline` workflow action. [IDP-4492]
+- Fixed an issue in **HarnessAutoOrgPicker** where projects with the same ID across different organizations caused conflicts. A dropdown has been added to allow users to **select the appropriate organization** when a project name exists in multiple organizations. [IDP-4168]
+- Resolved an issue where negative values could be entered for scorecard weights. Added validation to ensure only **valid, non-negative values** are accepted. [IDP-3721]
+- Resolved an issue where text on IDP workflow tiles was breaking across lines due to incorrect styling. This has been fixed to ensure proper text formatting and alignment. [IDP-4193]
+
+
 ## December 2024
 
 ### Version 0.38.0
@@ -767,7 +875,7 @@ In this release, we're excited to unveil features like the HTTP actions support 
 
 #### Early access features
 
-- Added a [new stage](/docs/internal-developer-portal/flows/idp-stage), specifically for IDP, knows as Developer Portal to help with the self service flows (presently this feature is behind a Feature Flag) [IDP-1425]
+- Added a [new stage](/docs/internal-developer-portal/flows/harness-pipeline), specifically for IDP, knows as Developer Portal to help with the self service flows (presently this feature is behind a Feature Flag) [IDP-1425]
 
 ![](./static/idp-stage.png)
 

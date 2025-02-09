@@ -45,14 +45,48 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## February 2024
+
+### Version 1.76.1
+
+#### New features and enhancements
+
+- **Slack Step Enhancements**: Users can now send event notifications directly to Slack channels. Supported formats include plain text and JSON Blocks. (**CDS-105984**)
+
+- Users can utilize the **ASG Steady State** step in a Harness pipeline to track the progress of launching and terminating instances in AWS during an ASG rolling deployment. Currently, this feature is behind the feature flag `CDS_ASG_SKIP_INSTANCE_TERMINATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-101393**)
+
+- You can view YAML difference when updates are made to policy and policy set within [Audit Trail](/docs/platform/governance/audit-trail/). (**PIPE-20618**)
+
+#### Fixed Issues
+
+- Previously, users could not run the pipeline after moving the service to a Git branch. This issue is resolved. (**CDS-105180, **ZD-74852**)
+- Previously, the ECS Blue-Green deployment pipeline validation failed for users with dynamically generated load balancer configurations. This issue is resolved and is behind the feature flag `CDS_ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-105573, ZD-72261**)
+- Previously, regex filtering did not apply for the Artifactory artifact type in Service configuration, causing all tags to be displayed. This issue is resolved. (**CDS-105959, ZD-76412**)
+- Previously, broken templates pushed via webhooks with missing required types could not be fixed and had to be deleted. This issue is resolved by adding a check to ensure the template type is not empty. (**PIPE-24533**)
+
 ## January 2025
+
+### Version 1.74.8
+
+#### Fixed Issues
+
+- Previously, the AWS load balancer dropdown was not populated when using a blue-green deployment step during multi env deployment. This issue is fixed, and the dropdown now populates correctly. (**CDS-106002, ZD-73560**)
+- Previously users were not able to re-run pipeline that had gitops deploy stage. The issue is fixed now. (**CDS-105968, ZD-76321**)
+- Previously, the timeout for refresh GitOps app call was timing out sporadically for some customers, and there was no way to adjust the timeout. The refresh API can take a long time in some cases. We have made the timeout configurable. SMP customers can set `GITOPS_RESOURCE_CLIENT_CONNECT_TIMEOUT_SECONDS` and `GITOPS_RESOURCE_CLIENT_READ_TIMEOUT_SECONDS` in ng manager's override to set the timeout. (**CDS-105967, ZD-76481**)
+- Previously, pipelines using docker delegates were failing due to too many open connection errors. The issue is fixed now. 
+(**PIPE-24724, ZD-73732**)
+- Before executing any step, the system evaluates whether the step needs to run based on its `when` conditions. If no `when` conditions are specified, the system automatically evaluates `<+stage.CurrentStatus>`. This behavior led to unintended step skipping due to a race condition when failure strategies were triggered with a slight delay. The issue is fixed now. This fix is behind the feature flag `FF_PIE_SET_ADVISORS_PROCESSED`. Please contact [Harness Support](mailto:support@harness.io) to enable the feature.(**PIPE-24525, ZD-76102,76909,76959**)
+- Previously, when selecting the lowest scope webhook to process file changes in the autocreation flow, the system did not validate whether the chosen webhook's scope matched the project associated with the new autocreation entity. As a result a project-level webhook from a different project could be mistakenly selected leading to scope mismatches in downstream processes, causing failures in entity creation. The issue is fixed now. (**PIPE-24303, ZD-76145**)
+- Previously, when navigating to the execution history of a remote pipeline from Pipeline Studio, the default behavior is to display the execution history of the pipeline corresponding to the branch selected in the Pipeline Studio. However, the filter for this was not visible due to a mismatch in the filter names. The issue is fixed now. (**PIPE-24603, ZD-76312**)
+- Previously, input field was not getting displayed for Service Override when configured with multiple manifests. The issue is fixed now. (**CDS-105935, ZD-76332**)
+- Improved the console output for the GitOps Sync step. (**CDS-101630**)
 
 ### GitOps Version 1.24.0, GitOps Agent Version 0.85.0
 
 #### Fixed Issues
 
 - After the Argo update, the default image tag was outdated. This has been fixed. (**CDS-105945, ZD-75761**)
-- Previously, clusters attached to apps could be deleted. Now, this is disallowed; you cannot delete a cluster attached to apps. If you want to get around this requirement in order recreate the cluster or update it, use the `forceDelete` option. (**CDS-105804, ZD-76147**)
+- Previously, Organisation scoped clusters attached to applications could be deleted. Now, this is disallowed; you cannot delete a cluster attached to applications. If you want to get around this requirement in order recreate the cluster or update it, use the `forceDelete` option. (**CDS-105804, ZD-76147**)
 - Previously, buttons for actions (restart, promote, sync) were visible to users who lacked the `GitOps app sync` permission which is required for those actions. This resulted in failures due to the actions being run by users without permission. Now, the buttons are disabled in the UI for users without the proper permissions. (**CDS-105624, ZD-75858**)
 - Previously, repository creation was failing when using repository credentials template that contained uppercase letters. Due to a normalization error, there was a credential url mismatch. This issue has been resolved. Repository creation now works with repo credential templates with uppercase letters. (**CDS-105622, ZD-75760**)
 - Previously, the metrics server in the GitOps agent did not initialize correctly when the metrics service is enabled. The issue has been resolved. Now, the correct value for `GITOPS_AGENT_METRICS_PORT` will be set when metrics are enabled. Users should update gitops-helm chart to `1.1.16` (or `1.3.5` for `gitops-helm-byoa`) to ensure that the metrics server works correctly. (**CDS-105241**)

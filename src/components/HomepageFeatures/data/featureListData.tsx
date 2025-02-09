@@ -1,6 +1,6 @@
 import React from "react";
-import { CardItem, docType } from "../../LandingPage/TutorialCard";
-import { MODULES } from "../../../constants";
+import { MODULES } from "@site/src/constants";
+import { CardItem } from "@site/src/components/TutorialCard/TutorialCard";
 
 export const featureList: CardItem[] = [
   {
@@ -94,6 +94,13 @@ export const featureList: CardItem[] = [
     icon: "img/icon_ce.svg",
     description: <>Ensure application and infrastructure resilience.</>,
     link: "docs/chaos-engineering/getting-started/",
+  },
+  {
+    title: "Revolutionize Incident Management",
+    module: MODULES.ir,
+    icon: "img/icon-ir.svg",
+    description: <>Focus on proactive issue prevention and accelerated resolution.</>,
+    link: "docs/incident-response",
   },
   {
     title: "Increase Developer Productivity",

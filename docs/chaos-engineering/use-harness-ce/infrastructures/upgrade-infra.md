@@ -1,6 +1,6 @@
 ---
 title: Upgrade chaos infrastructure
-sidebar_position: 6
+sidebar_position: 15
 description: Guide to upgrade your chaos infrastructure
 redirect_from:
 - /docs/chaos-engineering/chaos-infrastructure/upgrade-infra

@@ -344,9 +344,15 @@ These variables provide identifiers, statuses, and other references for pipeline
 
 For commit SHAs and other codebase-related identifiers, go to [Codebase and trigger variables](#codebase-and-trigger-variables) and the [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
 
-### CI/DRONE
+### CI
 
-Identifies the build environment as CI. Always `true` for all builds.
+Identifies the build environment as CI. 
+
+Enable the feature flag, `CI_POPULATE_CI_VARIABLE` to ensure this variable is always `true` for all builds.
+
+### DRONE
+
+Identifies the build environment is CI. Always `true` for all builds.
 
 ### CI\_BUILD\_LINK/DRONE\_BUILD\_LINK
 

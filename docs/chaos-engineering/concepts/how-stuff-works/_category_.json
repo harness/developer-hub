@@ -1,0 +1,14 @@
+{
+  "position": 10,
+  "label": "How Stuff Works",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"How Stuff Works",
+      "description": "Understand how centralized execution plane works, the interaction between execution and control plane for agent-based and agentless models in Harness Chaos Engineering, and all about Harness Network Proxy."
+   },
+  "customProps": {
+    "description": ""
+  }
+}

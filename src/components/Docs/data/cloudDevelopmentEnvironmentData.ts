@@ -1,8 +1,6 @@
 import {
-    CardItem,
-    CardSections,
-    docType,
-  } from "@site/src/components/LandingPage/TutorialCard";
+  CardSections
+} from "@site/src/components/TutorialCard/TutorialCard";
 import { MODULES } from "@site/src/constants";
   
   /* Define the cards - start */
@@ -120,6 +118,12 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.cde,
           description: "Learn how to execute various Git functions directly in your Gitspace.",
           link: "/docs/cloud-development-environments/develop-using-cde/source-control",
+        },
+        {
+          title: "Dev Container Features",
+          module: MODULES.cde,
+          description: "Learn more about configuring Dev Container Features for your Gitspace.",
+          link: "/docs/cloud-development-environments/develop-using-cde/port-forwarding",
         },
         {
           title: "Port Forwarding",

@@ -488,8 +488,7 @@ If you deploy pods to Fargate nodes in an EKS cluster, and your nodes needs IAM 
 
 ## Troubleshoot AWS VM build infrastructure
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-managed VM build infrastructures, including:
-
+- [Optimize Windows VM runner](/docs/continuous-integration/troubleshoot-ci/optimize-windows-vm-runner)
 - [Build VM creation fails with no default VPC](/kb/continuous-integration/continuous-integration-faqs/#aws-build-vm-creation-fails-with-no-default-vpc)
 - [AWS VM builds stuck at the initialize step on health check](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-builds-stuck-at-the-initialize-step-on-health-check)
 - [Delegate connected but builds fail](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-delegate-connected-but-builds-fail)
@@ -500,3 +499,5 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 - [How do I specify the disk size for a Windows instance in pool.yml?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
 - [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
 - [Can I limit memory and CPU for Run Tests steps running on self-managed VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for a broader list of frequently asked questions and answers.
