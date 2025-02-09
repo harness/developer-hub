@@ -76,7 +76,7 @@ Click on the tiles below to unlock key concepts that explain how FME works. You 
     },
     { 
       type:'link', 
-      href:'./traffic-type',
+      href:'./traffic-types',
       label:'Traffic type',
       description:'Traffic types are a way of categorizing keys',
     },
