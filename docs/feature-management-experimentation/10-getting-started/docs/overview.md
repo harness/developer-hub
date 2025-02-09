@@ -15,7 +15,7 @@ Harness Feature Management & Experimentation (FME) combines capabilities for fea
 
 ![](./static/overview.png)
 
-### Architected for Performance, Security, and Resilience
+### Architected for performance, security, and resilience
 
 Split is built on a global feature flag and data processing architecture that serves 50 billion daily feature flags to over 2 billion end users around the globe.
 
@@ -24,6 +24,21 @@ Split is built on a global feature flag and data processing architecture that se
 * **Resilience:** Our SaaS app, data platform, and API span multiple data centers. Plus, our SDKs cache locally to handle any network interruptions.
 
 Our stateless architecture scales to millions of users with no degradation in performance. Our SDKs reside in your frontend, backend, and mobile apps where they make feature flags and targeting decisions locally, without the need to send private user data outside your app for evaluation.
+
+## FME features
+
+### Feature flags
+[Feature flags](/docs/feature-management-experimentation/40-feature-management/index.md) turn on and off features to specific users or segments. You can tailor access to beta testers and early adopters based on individual IDs, attributes, dependencies, or percentages. Gradually target users little by little to limit the blast radius of your releases.
+
+### Release monitoring
+[Release monitoring](/docs/feature-management-experimentation/50-release-monitoring/index.md) detects the impact of each feature on system performance and user behavior, starting with the earliest stage of a gradual rollout. With detection and triage done at the flag level, you can ship more often and with greater confidence.
+
+### Experimentation
+[Experimentation](/docs/feature-management-experimentation/60-experimentation/index.md) centralizes notifications for metric impacts, review periods, and change requests, empowering your team with actionable data to make rapid, precise, data-driven decisions.
+
+## Harness platform
+
+If you're new to Harness, review the [Harness platform onboarding guide](/docs/platform/get-started/onboarding-guide) and [Harness platform key concepts](/docs/platform/get-started/key-concepts).
 
 ## Get started with FME
 
