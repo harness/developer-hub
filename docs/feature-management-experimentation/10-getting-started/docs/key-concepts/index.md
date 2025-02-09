@@ -10,73 +10,74 @@ import DocCardList from '@theme/DocCardList';
 
 Click on the tiles below to unlock key concepts that explain how FME works. You can also see how it they all fit together by looking at the [FME object architecture diagram](./fme-object-architecture-diagram).
 
+<!-- DocCardList / -->
 
 <DocCardList items={
   [
     { 
       type:'link', 
       href:'./api-keys',
-      label:'API keys -',
+      label:'API key',
       description:'Authorize communication with Harness servers',
     },
     { 
       type:'link', 
       href:'./attributes',
-      label:'Attributes -',
+      label:'Attribute',
       description:'Properties associated with traffic keys',
     },
     { 
       type:'link', 
       href:'./events',
-      label:'Events -',
+      label:'Event',
       description:'User actions, performance measurements, or error exceptions that you send to FME',
     },
     { 
       type:'link', 
       href:'./feature-flags',
-      label: 'Feature flags -',
+      label: 'Feature flag',
       description:'Allow you to enable or disable a feature without deploying source code',
     },
     { 
       type:'link', 
       href:'./fme-definitions',
-      label:'FME definitions -',
+      label:'FME definition',
       description:'The feature flag and segment definitions fetched by FME SDKs',
     },
     { 
       type:'link', 
       href:'./gettreatment-call',
-      label:'GetTreatment call -',
+      label:'GetTreatment call',
       description:'The method used to evalute feature flags in FME SDKs',
     },
     { 
       type:'link', 
       href:'./impressions',
-      label:'Impressions -',
+      label:'Impression',
       description:'An impression is a record of a feature flag evaluation',
     },
     { 
       type:'link', 
       href:'./keys',
-      label:'Keys -',
+      label:'Key',
       description:'Identify your application traffic (end users or customers)',
     },
     { 
       type:'link', 
       href:'./metrics',
-      label:'Metrics -',
-      description:'Measure events that are sent to FME',
+      label:'Metric',
+      description:'Measures events that are sent to FME',
     },
     { 
       type:'link', 
       href:'./segments',
-      label:'Segments -',
-      description:'Lists of keys',
+      label:'Segment',
+      description:'A list of keys',
     },
     { 
       type:'link', 
-      href:'./traffic-types',
-      label:'Traffic types -',
+      href:'./traffic-type',
+      label:'Traffic type',
       description:'Traffic types are a way of categorizing keys',
     },
   ]

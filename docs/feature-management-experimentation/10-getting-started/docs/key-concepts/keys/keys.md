@@ -1,15 +1,16 @@
 ---
-title: Keys
-sidebar_label: Keys
+title: Key
+sidebar_label: Key
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: Identify your application end user (or customer)
+slug: ../keys
 ---
 
 A key identifies your application end user (or customer). This is the user that sees your app's feature flag variations.
 
 :::note
-**Keys** are also called **traffic keys** and **user keys**. When they are counted over a month, keys are called [MTKs](./mtks) (Monthly Tracked Keys).
+**Keys** are also called **traffic keys** and **user keys**. When they are counted over a month, keys are called [MTKs](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/keys/mtks.md) (Monthly Tracked Keys).
 :::
 
 SDKs evaluate feature flags for a given key at runtime. An SDK will call the `getTreatment` method to retrieve a feature flag treatment for a given key. The treatment (flag variation) returned by the `getTreatment` call depends on the feature flag's targeting rules.

@@ -1,12 +1,12 @@
 ---
-title: Feature flags
-sidebar_label: Feature flags
+title: Feature flag
+sidebar_label: Feature flag
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: "Allow you to enable or disable a feature without deploying source code"
 ---
 
-Feature flags are a software development tool that allow you to enable or disable a feature without modifying the source code or performing a new deployment.
+A feature flag is a software development tool that allows you to enable or disable a feature without modifying the source code or performing a new deployment.
 
 Feature flags are used in conditional statements (e.g., if-then-else) to determine which code path will be executed. Their power lies in the ability to determine at runtime which functionality is executed and to make these decisions at the user or request level, not just globally.
 

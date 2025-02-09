@@ -1,6 +1,6 @@
 ---
-title: Events
-sidebar_label: Events
+title: Event
+sidebar_label: Event
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: "User actions, performance measurements, or error exceptions that you send to FME"

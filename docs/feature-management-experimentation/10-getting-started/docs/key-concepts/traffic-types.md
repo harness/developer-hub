@@ -1,6 +1,6 @@
 ---
-title: Traffic types
-sidebar_label: Traffic types
+title: Traffic type
+sidebar_label: Traffic type
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: "Traffic types are a way of categorizing keys"

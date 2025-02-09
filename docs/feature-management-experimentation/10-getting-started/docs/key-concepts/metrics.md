@@ -1,6 +1,6 @@
 ---
-title: Metrics
-sidebar_label: Metrics
+title: Metric
+sidebar_label: Metric
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: "Measure events that are sent to FME"

@@ -1,6 +1,6 @@
 ---
-title: API keys
-sidebar_label: API keys
+title: API key
+sidebar_label: API key
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: "Authorize communication with Harness servers"
@@ -12,7 +12,7 @@ import FindAPIKeys from "@site/docs/feature-management-experimentation/_template
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360006854852-Frontend-and-backend-API-key-usage </button>
 </p>
 
-API keys are confidential GUID strings that authorize communication with Harness servers.
+An API key is a confidential GUID string that authorizes communication with Harness servers.
 
 **Admin API keys** are used for requests to our public <a href="https://docs.split.io">Split Admin HTTP API<OutboundSvg /></a> endpoints.
 

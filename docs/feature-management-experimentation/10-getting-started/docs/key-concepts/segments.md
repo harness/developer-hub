@@ -1,6 +1,6 @@
 ---
-title: Segments
-sidebar_label: Segments
+title: Segment
+sidebar_label: Segment
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: Lists of keys

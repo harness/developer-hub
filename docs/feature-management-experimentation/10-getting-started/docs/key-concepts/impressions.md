@@ -1,6 +1,6 @@
 ---
-title: Impressions
-sidebar_label: Impressions
+title: Impression
+sidebar_label: Impression
 helpdocs_is_private: false
 helpdocs_is_published: true
 description: "An impression is a record of a feature flag evaluation"
