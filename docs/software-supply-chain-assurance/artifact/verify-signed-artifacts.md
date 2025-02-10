@@ -13,9 +13,9 @@ import TabItem from '@theme/TabItem';
 
 After you sign the artifact using the [Artifact Signing step](/docs/software-supply-chain-assurance/artifact/sign-artifacts), it’s crucial to verify that the artifact has not been tampered and was signed by a trusted source. The Artifact Verification process enables you to validate the integrity and authenticity of the signed artifact before it’s deployed.
 
-:::note 
+<!-- :::note 
 Currently, this feature is behind the feature flag `SSCA_ARTIFACT_SIGNING`. Contact Harness Support to enable the feature.
-:::
+::: -->
 
 ## Artifact Verification in SCS
 
