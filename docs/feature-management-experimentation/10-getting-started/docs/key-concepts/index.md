@@ -18,25 +18,25 @@ Click on the tiles below to unlock key concepts that explain how FME works. You 
       type:'link', 
       href:'./api-keys',
       label:'API key',
-      description:'Authorize communication with Harness servers',
+      description:'Authorizes communication with Harness servers',
     },
     { 
       type:'link', 
       href:'./attributes',
       label:'Attribute',
-      description:'Properties associated with traffic keys',
+      description:'Property associated with a traffic key',
     },
     { 
       type:'link', 
       href:'./events',
       label:'Event',
-      description:'User actions, performance measurements, or error exceptions that you send to FME',
+      description:'User action, performance measurement, or error exception that you send to FME',
     },
     { 
       type:'link', 
       href:'./feature-flags',
       label: 'Feature flag',
-      description:'Allow you to enable or disable a feature without deploying source code',
+      description:'Allows you to enable or disable a feature without deploying source code',
     },
     { 
       type:'link', 
@@ -54,7 +54,7 @@ Click on the tiles below to unlock key concepts that explain how FME works. You 
       type:'link', 
       href:'./impressions',
       label:'Impression',
-      description:'An impression is a record of a feature flag evaluation',
+      description:'Record of a feature flag evaluation',
     },
     { 
       type:'link', 
@@ -72,13 +72,13 @@ Click on the tiles below to unlock key concepts that explain how FME works. You 
       type:'link', 
       href:'./segments',
       label:'Segment',
-      description:'A list of keys',
+      description:'List of keys',
     },
     { 
       type:'link', 
       href:'./traffic-types',
       label:'Traffic type',
-      description:'Traffic types are a way of categorizing keys',
+      description:'A way of categorizing keys',
     },
   ]
 }/>

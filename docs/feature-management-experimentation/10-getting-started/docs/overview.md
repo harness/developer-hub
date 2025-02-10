@@ -17,13 +17,13 @@ Harness Feature Management & Experimentation (FME) combines capabilities for fea
 
 ### Architected for performance, security, and resilience
 
-Split is built on a global feature flag and data processing architecture that serves 50 billion daily feature flags to over 2 billion end users around the globe.
+Harness FME is built on a global feature flag and data processing architecture that serves 50 billion daily feature flags to over 2 billion end users around the globe.
 
 * **Performance:** FME streaming architecture pushes changes to its SDKs in milliseconds.
 * **Security:** The SDKs evaluate feature flags locally, so customer data is never sent over the internet.
 * **Resilience:** Our SaaS app, data platform, and API span multiple data centers. Plus, our SDKs cache locally to handle any network interruptions.
 
-Our stateless architecture scales to millions of users with no degradation in performance. Our SDKs reside in your frontend, backend, and mobile apps where they make feature flags and targeting decisions locally, without the need to send private user data outside your app for evaluation.
+Our stateless architecture scales to millions of users with no degradation in performance. FME SDKs reside in your frontend, backend, and mobile apps where they make feature flags and targeting decisions locally, without the need to send private user data outside your app for evaluation.
 
 ## FME features
 

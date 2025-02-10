@@ -12,7 +12,7 @@ description: "User action, performance measurement, or error exception that you 
 
 An event is a user action, performance measurement, or error exception that you send to FME.
 
-FME attributes your events to specific feature flag variations and uses this data to calculate metric results and analytics.This enables you to measure the impact of your features on customer behavior, user experience, or application performance. 
+FME correlates your events to specific feature flag variations and uses this data to calculate metric results and analytics.This enables you to measure the impact of your features on customer behavior, user experience, or application performance. 
 
 Event data can be sent to FME in any of the following ways:
 * Install an FME SDK Suite or RUM Agent

@@ -15,7 +15,7 @@ import TrafficType from "@site/docs/feature-management-experimentation/10-gettin
 
 ## Traffic types that you may create
 
-Split allows you to have up to 10 traffic types per project. All environments within a project share the same set of traffic types.
+Harness FME allows you to have up to 10 traffic types per project. All environments within a project share the same set of traffic types.
 
 :::info
 By default, a project has one traffic type named **'user'**. It is most common for our customers to use just this one traffic type.
@@ -23,19 +23,19 @@ By default, a project has one traffic type named **'user'**. It is most common f
 
 Some other examples of traffic types that you might choose to create:
 
-| Traffic type | Key examples | Description |
+| Traffic type | Description | Key examples |
 | --- | --- | --- |
-| User | user ID, profile ID | Authenticated users |
-| Anonymous | UUID, session ID | Unauthenticated users <br />(Be careful not to overuse anonymous IDs as this can inflate your [MTK count](/docs/feature-management-experimentation/admin-account-settings/docs/admin-best-practices/account-usage/mtk-efficiency#improving-your-mtk-efficiency).) |
-| Tenant or organization | tenant ID, company ID, organization ID | An ID that represents a tenant, company, or organization and may cover multiple users |
-| Device | device ID or equivalent | An ID that represents a specific device used by your users/customers |
-| Session | session ID | An ID that represents a user’s session, typically captured by analytics tools like GA4 |
+| User | Authenticated users | user ID, profile ID |
+| Anonymous | Unauthenticated users <br />(Be careful not to overuse anonymous IDs as this can inflate your [MTK count](/docs/feature-management-experimentation/admin-account-settings/docs/admin-best-practices/account-usage/mtk-efficiency#improving-your-mtk-efficiency).) | UUID, session ID |
+| Tenant or organization| An ID that represents a tenant, company, or organization and may cover multiple users | | tenant ID, company ID, organization ID 
+| Device | An ID that represents a specific device used by your users/customers | device ID or equivalent |
+| Session | An ID that represents a user’s session, typically captured by analytics tools like GA4 | session ID |
 
 The traffic types you choose to create depends on multiple factors:
 
 * **Granularity:** How granular do you need to get with your targeting logic? If you typically target based on tenants or companies, but sometimes you want to target down to the user level, then you’ll want a user traffic type.
 * **B2B vs. B2C:** B2B organizations will typically require targeting by tenants or companies rather than by individual users, or they may require both.
-* **Authenticated vs. unauthenticated traffic:** Do you plan to run feature flags on webpages with both types of traffic? Then you should set up two traffic types to represent the two keys/IDs - typically a UUID and a user ID.
+* **Authenticated vs. unauthenticated traffic:** Do you plan to run feature flags on webpages with both types of traffic? Then you should set up two traffic types to represent the two keys/IDs&mdash;typically a UUID and a user ID.
 * **Experimentation & Release Monitoring:** If you plan to monitor feature flag impact or run experiments, you should consider which identifiers are associated with the events you send to FME. For example, if events collected in your analytics tool are for authenticated users or sessions, then you should set up a traffic type and pass that same authenticated user ID or session ID. (Go to [Attribution and exclusion](/docs/feature-management-experimentation/50-release-monitoring/docs/metrics/attribution-and-exclusion.md) for more information.)
 
 ## Create a traffic type
@@ -60,14 +60,14 @@ If you need assistance with traffic types, contact support at [support@split.io]
 
 ## How your traffic type is used
 
-This section explains how your team will use your traffic type, and how it is used within Split.
+This section explains how your team will use your traffic type, and how it is used within Harness FME.
 
-The traffic type is a way of categorizing your keys (user IDs), but it also categorizes your feature flags, metrics, and segments.
+The traffic type can be thought of as a way of categorizing your keys, but it also categorizes your feature flags, metrics, and segments.
 
 How it works:
-1. In Split UI, when you create a **feature flag**, you select a traffic type (this one traffic type is associated with the flag). You also associate one traffic type when you create a **segment** or **metric** definition.
-2. In your application code that your developers write, your application initializes and configures the FME SDK to use one traffic type (the SDK will uses the string `"user"` by default if none is passed in). The SDK fetches [the FME definition (the **feature flag and segment definitions**)](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/fme-definitions.md) **for that traffic type**. The SDK will be able to evalute these feature flags that it just fetched (associated with that one traffic type). Any **key (user ID)** you pass to the SDK client when calling the [getTreatment method](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/gettreatment-call.md) (to evaluate a feature flag) is **associated with the same traffic type** at the moment of evaluation.
-3. The SDK will periodically send events and impressions back to Harness. On Harness backend servers, Split will run metric calculations for **metrics** that share the same traffic type as the key (user ID) and feature flag.
+1. In Harness FME, when you create a **feature flag**, you select a traffic type (this one traffic type is associated with the flag). You also associate one traffic type when you create a **segment** or **metric** definition.
+2. In your application code that your developers write, your application initializes and configures the FME SDK to use one traffic type (the SDK will uses the string `"user"` by default if none is passed in). The SDK fetches [the FME definition](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/fme-definitions.md) (the **feature flag and segment definitions**) **for that traffic type**. The SDK will be able to evalute these feature flags that it just fetched (associated with that one traffic type). Any **key** you pass to the SDK client when calling the [getTreatment method](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/gettreatment-call.md) (to evaluate a feature flag) is **associated with the same traffic type** at the moment of evaluation.
+3. The SDK will periodically send events and impressions back to Harness. On Harness backend servers, Split will run metric calculations for **metrics** that share the same traffic type as the key and feature flag.
 
 Thus, the traffic type you select determines the feature flags, metrics, and segments that you can use together.
 

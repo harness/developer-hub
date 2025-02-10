@@ -19,19 +19,19 @@ Impressions are valuable for feature monitoring and experimentation, because imp
 | **Field** | **Description** |
 | --- | --- | 
 Environment ID and name | Environment where the feature flag was evaluated.
-Key | The user ID (key) which was provided.
+Key | Key that was evaluated.
 Label | Targeting rule in the definition that matched the resulting treatment being returned.
 Machine IP and name <br /> **(only for Server-side SDKs)** | Machine making the feature flag evaluation.
 Reception timestamp | Time the impression was received by Split.
 SDK and version | Language and version of the SDK that was used in the evaluation. 
-Split name | Feature flag which was evaluated.
-Split version number | Date and time of the last change to the targeting rule that the SDK used when it served the treatment. Valuable in understanding when a change made to a feature flag got picked up by the SDKs and whether one of the SDK instances is not picking up changes.
-Timestamp | Time the customer was served the treatment.
-Traffic type ID and name | Traffic type associated to the feature flag evaluated.
+Split name | Feature flag that was evaluated.
+Split version number | Date and time of the last change to the targeting rule that the SDK used when it served the treatment. This is valuable for understanding when a change made to a feature flag got picked up by the SDKs and whether one of the SDK instances is not picking up changes.
+Timestamp | Time the end user was served the treatment.
+Traffic type ID and name | Traffic type associated with the evaluated feature flag.
 Treatment | Feature flag treatment that was returned.
 
-:::note[Note]
-Split retains impression data for 90 days. Contact the [team at Split](mailto:support@split.io) to learn more.
+:::info[Note]
+Split retains impression data for 90 days.
 :::
 
 :::tip

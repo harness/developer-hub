@@ -33,4 +33,4 @@ For context, most customers will use an ID for known or logged-in users and a co
 Be mindful of using random keys, as [overuse of random IDs](https://help.split.io/hc/en-us/articles/26978089134349-MTK-Usage-and-Comparing-Counts#use-of-unstable-ids) can increase your MTK count (and [costs](https://help.split.io/hc/en-us/articles/360034159232-Account-usage-data)) unnecessarily.
 :::
 
-For a deep dive into keys, go to [Ensure a consistent user experience](/docs/feature-management-experimentation/40-feature-management/docs/target-with-flags/targeting-rules/percentage-rollouts/ensure-a-consistent-user-experience.md).
+For a deep dive into keys, go to [Ensure a consistent user experience](https://help.split.io/hc/en-us/articles/360030024391-How-does-Split-ensure-a-consistent-user-experience).

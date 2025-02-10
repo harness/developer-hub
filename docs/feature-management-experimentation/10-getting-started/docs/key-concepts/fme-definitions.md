@@ -18,9 +18,9 @@ The **FME definition** is also called **FME feature flag and segment definitions
 
 These definitions are cached locally and updated in real-time in milliseconds using a streaming architecture.
 
-As needed, your application makes a just-in-time call to the FME SDK in local memory, passing the feature flag name, the user ID, and optionally, a map of user or session attributes. The response is returned instantly, with no need for a network call.
+As needed, your application makes a just-in-time call to the FME SDK in local memory, passing the feature flag name, the [key](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/keys/keys.md), and optionally, a map of [attributes](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/attributes.md). The response is returned instantly, with no need for a network call.
 
-As a result of this architecture, targeting decisions are made locally, in memory, from within your own application code (in milliseconds).
+As a result of this architecture, targeting decisions are made locally, in memory, from within your own application code.
 
 :::tip
 You can limit the size of the FME definition fetched from Harness servers by using flag sets.
