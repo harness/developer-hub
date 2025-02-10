@@ -176,10 +176,16 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--yellow-100)",
       },
       {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: " Budgets 2.0 ",
+        tag: [{value: "AutoStopping"}],
+        title: "Smart Advisor",
         description:
-          "AI-driven budget suggestions with filtering, sorting, and tagging for better cost management.",
+          "Smart Advisor helps you uncover cost-saving opportunities by identifying underused cloud resources and recommending the ideal Autostopping configurations.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Anomaly FinOps AI Assistant ",
+        description:" AI-powered insights to help FinOps teams analyze anomalies and notify the right stakeholders.",
         backgroundColor: "var(--yellow-100)",
       },
       {
@@ -188,13 +194,6 @@ export const CcmData: Horizon = {
         description:
           "Enhancing Commitment Orchestrator with seamless Cluster Orchestrator integration.",
         backgroundColor: "var(--yellow-100)",
-      },
-      {
-      tag: [{value: "Commitment Orchestrator"}],
-      title: " RDS GA ",
-      description:
-        "General availability release of RDS support in Commitment Orchestrator.",
-      backgroundColor: "var(--yellow-100)",
       },
       {
         tag: [{value: "Cluster Orchestrator"}],
@@ -230,18 +229,26 @@ Later:{
     description: "Q2 2025 and beyond",
     feature: [
       {
-        tag: [{value: "AutoStopping"}],
-        title: "Smart Advisor",
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: " Budgets 2.0 ",
         description:
-          "Smart Advisor helps you uncover cost-saving opportunities by identifying underused cloud resources and recommending the ideal Autostopping configurations.",
+          "AI-driven budget suggestions with filtering, sorting, and tagging for better cost management.",
         backgroundColor: "var(--yellow-100)",
       },
       {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Anomaly FinOps AI Assistant ",
-        description:" AI-powered insights to help FinOps teams analyze anomalies and notify the right stakeholders.",
+        tag: [{value: "Commitment Orchestrator"}],
+        title: " RDS GA ",
+        description:
+          "General availability release of RDS support in Commitment Orchestrator.",
         backgroundColor: "var(--yellow-100)",
       },
+      {
+        tag: [{value: "Asset Governance"}],
+        title: " Governance Notifications ",
+        description:
+          "Alert notifications on evaluations for prompt alerting.",
+        backgroundColor: "var(--yellow-100)",
+      }
     ],
 
   }
