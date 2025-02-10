@@ -52,9 +52,7 @@ In this example, we are going to discuss setting up notification template for Pi
 
 10. Click on **Save**.
 
-Now, let's add this notification template to a notification rule:-
-
-In this example, we are going to discuss setting up notification management of Pipeline resource at Project Level:-
+Now, let's add this notification template to a notification rule at Project Level:-
 
 :::info note
 A template created at the Account level can be used for notification rules at Account, Org, or Project levels. Similarly, Org-level templates can be used at Org and Project levels.
