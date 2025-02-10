@@ -315,7 +315,12 @@ To use Helm to install a chaos infrastructure,
 7. If you select the namespace scope, you will see some commands that you need to execute on your terminal. One you are done, click **Completed Command Execution**.
 
 </TabItem>
+
 </Tabs>
+
+### Harness Terraform Provider
+
+You can [create Harness Delegate (DDCR)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/chaos_infrastructure) using [Harness Terraform provider](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider-overview/).
 
 ## Validate Chaos Infrastructure Installation
 
