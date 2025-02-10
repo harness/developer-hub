@@ -3,7 +3,7 @@ title: Attribute
 sidebar_label: Attribute
 helpdocs_is_private: false
 helpdocs_is_published: true
-description: "Properties associated with a key"
+description: "Property associated with a key"
 User_attribute: Attribute
 user_attribute: attribute
 ---

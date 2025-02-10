@@ -3,7 +3,7 @@ title: Traffic type
 sidebar_label: Traffic type
 helpdocs_is_private: false
 helpdocs_is_published: true
-description: "Traffic types are a way of categorizing keys"
+description: "A way of categorizing keys"
 ---
 
 When you create a feature flag, metric, or segment, you must specify a traffic type. Traffic types are a way of categorizing your [keys](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/keys/keys.md).

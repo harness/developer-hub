@@ -3,7 +3,7 @@ title: Segment
 sidebar_label: Segment
 helpdocs_is_private: false
 helpdocs_is_published: true
-description: Lists of keys
+description: List of keys
 ---
 
 A segment is a list of [keys](/docs/feature-management-experimentation/10-getting-started/docs/key-concepts/keys/keys.md).
