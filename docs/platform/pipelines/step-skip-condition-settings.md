@@ -178,6 +178,14 @@ The hierarchy for conditional execution settings is as follows:
 2. **Step group:** Step group-level conditional execution settings determine when a step group should run. If triggered, the steps in the group start running.
 3. **Step:** Step-level conditional execution settings determine if individual steps should run. Step conditions are evaluated after stage and step group conditions. This means that step-level conditional execution settings effectively override the stage and step group conditional execution settings. For example, if a stage-level condition evaluates to true and causes a stage to run, each individual step-level condition within that stage is evaluated separately to determine if each individual step should run.
 
+:::info
+
+ In Deploy stages, the **Rollback** phase is given higher precedence than **Conditional Execution**. This means that steps configured with Condition: `Always` may not execute as expected if the rollback process is triggered.
+
+ For more information, refer to [Deploy Stage and Step Conditional Execution Settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/#failure-strategy-takes-precedence-over-conditional-execution).
+
+:::
+
 ### Important note
 
 For users setting a JEXL Boolean condition, it is important to remember that a conditional that evaluates false will result in a skipped step or stage.  
