@@ -20,7 +20,9 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="engg-leader" label="Engineering leader" default>
 
-  Releases are always late—even though sprint velocity looks good. You’re constantly fighting fires to find out what’s slowing the process down. Without the right data, it’s nearly impossible to justify further investments or convincingly explain these setbacks to stakeholders and the board
+  Releases are always late—even though sprint velocity looks good.
+  
+  You’re constantly fighting fires to find out what’s slowing the process down. Without the right data, it’s nearly impossible to justify further investments or convincingly explain these setbacks to stakeholders and the board
 
 </TabItem>
 <TabItem value="engg-managaer" label="Engineering manager">
@@ -30,7 +32,9 @@ Every day is a balancing act. Code reviews take too long, feedback comes late, a
 </TabItem>
 <TabItem value="product-manager" label="Product manager">
 
-Customers want new features, but you can’t give clear timelines because deadlines keep slipping. A simple question like “When will it ship?” turns into guessing games. This gap between product goals and engineering work makes planning a challenge.
+Customers want new features, but you can’t give clear timelines because deadlines keep slipping.
+
+A simple question like “When will it ship?” turns into guessing games. This gap between product goals and engineering work makes planning a challenge.
 
 </TabItem>
 </Tabs>
