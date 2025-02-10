@@ -82,7 +82,9 @@ This topic describes the binaries to be installed before executing the Linux OS 
             <td>N/A</td>
         </tr>
         <tr>
-            <td><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-http-latency">VMware HTTP Latency</a></td>
+            <td><ol><li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-http-latency">VMware HTTP Latency</a></li>
+            <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-http-modify-response"> VMware HTTP Modify Response</a></li>
+            <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/vmware-http-reset-peer"> VMware HTTP Reset Peer</a></li></ol></td>
             <td>
                 <ul>
                     <li>Install <code>toxiproxy-server</code> binary in the target VM.</li>
@@ -97,8 +99,18 @@ This topic describes the binaries to be installed before executing the Linux OS 
                     <li>Extract the archive: <code>tar -zxvf toxiproxy-server-linux-amd64.tar.gz</code></li>
                     <li>Make it executable: <code>chmod +x toxiproxy-server</code></li>
                     <li>Move to system path: <code>sudo mv toxiproxy-server /usr/local/bin/</code></li>
+                    <li>Download the binary: <code>curl -LO https://litmus-http-proxy.s3.amazonaws.com/cli/toxiproxy-cli-linux-amd64.tar.gz</code></li>
+<li>Extract the archive: <code>tar -zxvf toxiproxy-cli-linux-amd64.tar.gz</code></li>
+<li>Make it executable: <code>chmod +x toxiproxy-cli</code></li>
+<li>Move to system path: <code>sudo mv toxiproxy-cli /usr/local/bin/ </code></li>
+
                 </ol>
             </td>
         </tr>
     </tbody>
 </table>
+
+
+
+
+
