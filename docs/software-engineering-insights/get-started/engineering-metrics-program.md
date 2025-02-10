@@ -278,7 +278,10 @@ Use the baseline insights to define specific improvement objectives for each tea
 | Scale velocity | The key metric to measure in this case should be increase in new feature velocity |
 | Optimize resource allocation | Review if the invested resources / effort align with the allocation goals that was assigned. |
 
-#### Create a team specific roadmap
+#### Create your roadmap
+
+<Tabs>
+<TabItem value="team-roadmap" label="Team roadmap" default>
 
 Every team is different in terms of the proceses and tooling thus the same roadmap might now tell the entire story. It is recommended to create team or section specific roadmaps.
 
@@ -287,3 +290,40 @@ Every team is different in terms of the proceses and tooling thus the same roadm
 | Org-wide | Improving quality | Improving quality | Improving quality | Improving quality |
 | Team A | Scale velocity | Better lead time | Improve deployment frequency | Improve dev productivity |
 | Team B | Improve planning | Healthy sprint results | Improve lead time | Better business alignment |
+
+</TabItem>
+<TabItem value="persona-roadmap" label="Persona-based roadmap">
+
+| Persona             | Quarter 1 Metrics                                                                                                              | Quarter 2 Metrics                                                                                                                | Quarter 3 Metrics                                                                                                                | Quarter 4 Metrics                                                                                                               |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| **Engineering Manager** | <ul><li>Lead Time</li><li>Deployment Frequency</li><li>Defect Rates</li><li>Resource Allocation Efficiency</li></ul>  | <ul><li>Cycle Time</li><li>Code Review Efficiency</li><li>Team Velocity</li><li>Resource Allocation Efficiency</li></ul>         | <ul><li>MTTR</li><li>Change Failure Rate</li><li>Team Morale</li><li>Resource Allocation Efficiency</li></ul>             | <ul><li>Customer-Reported Defects</li><li>Predictability Score</li><li>Innovation Rate</li><li>Resource Allocation Efficiency</li></ul>  |
+| **Product Manager**     | <ul><li>Delivered vs. Planned Stories</li><li>Scope Creep</li><li>Customer Satisfaction</li></ul>                             | <ul><li>Feature Adoption Rate</li><li>Market Feedback</li><li>Predictability Score</li></ul>                                     | <ul><li>Time to Market</li><li>Competitive Analysis</li><li>Customer Retention</li></ul>                                     | <ul><li>Business Value Delivered</li><li>Roadmap Alignment</li><li>Stakeholder Feedback</li></ul>                              |
+| **Developer**           | <ul><li>Code Quality</li><li>Pull Request Review Time</li><li>Commit Frequency</li></ul>                                    | <ul><li>Test Coverage</li><li>Refactoring Efforts</li><li>Skill Development</li></ul>                                            | <ul><li>Bug Fix Rate</li><li>Feature Completion Rate</li><li>Peer Reviews</li></ul>                                            | <ul><li>Technical Debt Reduction</li><li>Innovation Contributions</li><li>Personal Productivity</li></ul>                     |
+| **QA Engineer**         | <ul><li>Defect Detection Efficiency</li><li>Test Case Coverage</li><li>Automation Coverage</li></ul>                          | <ul><li>Regression Defects</li><li>Test Execution Time</li><li>Bug Reopen Rate</li></ul>                                        | <ul><li>User Acceptance Testing Feedback</li><li>Performance Testing Metrics</li></ul>                                         | <ul><li>Post-Release Defects</li><li>Test Maintenance Effort</li><li>Quality Improvement Initiatives</li></ul>                  |
+| **DevOps Engineer**     | <ul><li>Infrastructure Stability</li><li>Deployment Automation</li><li>System Monitoring Coverage</li></ul>                  | <ul><li>Incident Response Time</li><li>Resource Utilization</li><li>Backup and Recovery Success</li></ul>                         | <ul><li>CI/CD Pipeline Efficiency</li><li>Security Compliance</li></ul>                                                      | <ul><li>Downtime Reduction</li><li>Scalability Testing</li><li>Infrastructure Cost Optimization</li></ul>                      |
+| **Executive/CTO**       | <ul><li>ROI</li><li>Strategic Alignment</li><li>Market Position</li></ul>                                                     | <ul><li>Innovation Index</li><li>Risk Management</li><li>Talent Acquisition and Retention</li></ul>                                | <ul><li>Operational Efficiency</li><li>Customer Lifetime Value</li><li>Brand Strength</li></ul>                                | <ul><li>Long-Term Sustainability</li><li>Industry Leadership</li><li>Vision Realization</li></ul>                              |
+
+</TabItem>
+</Tabs>
+
+#### Track improvements
+
+We recommend managers file tickets for improving their engineering excellence. That will ensure transparency and accountability. This plans should be reviewed by every manager monthly with the team. They should also be reviewed at the monthly Engineering Excellence QBR by the leadership.
+					
+You may use the following template with an example for your action plans.
+					
+The plan must have 
+
+1. What actions will you take
+2. Who is responsible and 
+3. When it will be done
+
+| Opportunity / Challenge  | Resolution                                                                                                                                                   | Owner          | Due by      | Completed on            |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|-------------|-------------------------|
+| PR missing Jira tickets  | Introduced automation to check if PR has a linked Jira ticket; if not, automatically adds a label “DO-NOT-MERGE”                                               | Tech lead name | Review date | When was it completed   |
+
+It is important to meet and review the metrics and insights to drive the continuous improvement process. We recommend settings up scheduled meetings with the correct stakeholders to review the status of improvement and have very transparent and clear communications across your engineering team. 
+
+Congratulations! You’ve just built your first engineering metrics program and are well on your way to engineering excellence and better business outcomes!		
+		
+
