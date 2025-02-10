@@ -182,7 +182,7 @@ The hierarchy for conditional execution settings is as follows:
 
  In Deploy stages, the **Rollback** phase is given higher precedence than **Conditional Execution**. This means that steps configured with Condition: `Always` may not execute as expected if the rollback process is triggered.
 
- For more information, refer to [Deploy Stage and Step Conditional Execution Settings](docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/#failure-strategy-takes-precedence-over-conditional-execution).
+ For more information, refer to [Deploy Stage and Step Conditional Execution Settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/#failure-strategy-takes-precedence-over-conditional-execution).
 
 :::
 
