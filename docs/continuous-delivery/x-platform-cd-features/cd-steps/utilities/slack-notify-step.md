@@ -11,6 +11,8 @@ This topic describes the settings for the Slack Notify step available in Continu
 
 The Slack Notify step lets you easily send notifications to slack channel and slack threads during a pipeline execution.
 
+## Step-by-Step Guide
+
 <Tabs>
 <TabItem value="Interactive guide">
 
@@ -28,9 +30,11 @@ The Slack Notify step lets you easily send notifications to slack channel and sl
     mozallowfullscreen="mozallowfullscreen" 
     allowfullscreen="allowfullscreen"></iframe>
 
+
 </TabItem>
 
 <TabItem value="Step-by-step guide">
+
 
 **Setting Up a Slack Notify Step**
 
@@ -56,9 +60,10 @@ Follow the steps below to set up a Slack notify step:
    - Select **Slack Notify** under **Miscellaneous**.
 
 6. **Configure Slack Notify Step**  
-   - Select the **Channel checkbox**.
-   - Provide the channel details where you want your message to be published.
-   - Optionally, send a custom text message or a JSON block.
+   - Select the **Channel** checkbox or the **Email** checkbox.
+   - For sending notifications to a channel, provide the channel details where you want your message to be published.
+   - For sending notifications to an email address, provide the email details where you want your message to be published.
+   - Optionally, send a custom text message or a Slack block.
    - Under **Slack Secret Key**, create or select your Slack secret key.
    - Optionally, specify the thread in which you want the notification to be received.
 
@@ -69,10 +74,39 @@ Follow the steps below to set up a Slack notify step:
 </TabItem>
 </Tabs>
 
+:::note
 The Slack Notify step **can be added in any stage**, but it is **only available within a step group**.
+:::
 
-Please ensure you have the necessary **write permissions** for your Slack token.
+## Types of Recipients Supported:
 
-On a successful run of the pipeline, you will receive the message you posted in the Slack channel.
+- **Email**: The email address associated with the Slack account. This can be used to send notifications to a specific recipient.
+- **Channel**: The channel where the notification is to be sent. Provide the **channel-id** of the channel.
+
+## Types of Messages Supported:
+
+- **Message**: A plain text format. This can be a fixed value, runtime input, or an expression.
+- **Block**: You can send Slack Block notifications. Ensure that the block is enclosed in an array. For more information on Slack Blocks, refer to [Slack documentation](https://api.slack.com/reference/block-kit/blocks#header).
+
+<details>
+<summary>Sample Block Message</summary>
+
+```
+[{
+    "type": "header",
+    "text": {
+        "type": "plain_text",
+        "text": "This is a Header block"
+        }
+}]
+```
+This block will send the notification This is a Header block in heading 1 format to the recipient.
+
+</details>
+
+## Sending Notifications to a Specific Thread in a Channel
+To send notifications to a specific **thread**, provide the `thread_ts` details under Thread. For more information on how to get **thread_ts** details, refer to [Slack documentation](https://api.slack.com/methods/conversations.replies#:~:text=Conversation%20ID%20to%20fetch%20thread%20from.&text=Unique%20identifier%20of%20either%20a,just%20an%20ordinary%2C%20unthreaded%20message.)
+
+Upon a successful pipeline run, the message you configured in the Slack Notify step will be sent to the designated Slack channel or recipient.
 
 ![Execution](./static/slack-notify.png)
