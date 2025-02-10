@@ -104,6 +104,10 @@ For example, if the **Step Timeout** is set as `10m`, **Script Timeout** is set 
 
 How many times a script executes within the **Script Timeout** depends on how fast the script executes.
 
+:::info note
+Pipeline Timeout and Stage Timeout take precedence over individual step-level timeouts. For example, if an Approval Step is set to 1d but the Pipeline Timeout is 10h, the pipeline will expire after 10h, regardless of the step-level setting.
+:::
+
 ### Option: Script Output Variables
 
 You can output variables from the script to be used in subsequent pipeline steps or in the acceptance and rejection criteria.
