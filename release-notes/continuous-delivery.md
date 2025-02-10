@@ -123,7 +123,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Previously, an Approval stage that timed out did not fail the pipeline as expected, even when the next stage was set to execute conditionally based on the pipeline's success. This resulted in subsequent stages running and deployments being executed, which was not intended. The issue is resolved, ensuring that if an approval stage times out and no failure strategy is applied, the pipeline will fail by default. (**PIPE-24150, ZD-75080**)
 - Previously, in Helm Blue/Green deployment strategies, delegate selection failed with the error: `no eligible delegates available in the account to execute the task` even when appropriate delegate selectors were defined. The issue is fixed. When the feature flag `CDS_ASYNC_EXECUTABLE_USE_SELECTORS` is enabled, the delegate selector priorities are correctly handled in Helm Blue/Green and Canary Deployment steps. (**CDS-105570, ZD-75740**)
 - Previously, when there was no time series data during a fetch sample data call in the Datadog health source, the existing DSL attempted to access the first element of the timeSeriesValues array. This resulted in an exception: `Invalid array index access. Array size is 0 and index is 0` The issue is fixed. The data collection logic now appropriately handles scenarios where no time series data is available. (**CDS-105330, ZD-73506**)
-- Previously, when propagating a service from one stage to another in a pipeline, execution-time input expressions (For exammple, `chartVersion: <+input>.executionInput()`) were not resolved correctly. This issue is now resolved. (**CDS-105282, ZD-74642**)
+- Previously, when propagating a service from one stage to another in a pipeline, execution-time input expressions (For example, `chartVersion: <+input>.executionInput()`) were not resolved correctly. This issue is now resolved. (**CDS-105282, ZD-74642**)
 - Previously, the Continuous Verification (CV) phase experienced intermittent failures with the error: Verification could not complete due to an unknown error when running pipelines with CV phases across multiple executions. This issue is now resolved. (**CDS-105146, ZD-74901, ZD-74902, ZD-75694**)
 - Previously, during a rollback of Google Cloud Run Service, the traffic was routed to the previous version instead of deploying the previous version as a new revision. This issue is now resolved. The rollback process now correctly creates a temporary revision to manage traffic shifting. (**CDS-103029, ZD-71937**)
 
@@ -1968,7 +1968,7 @@ This release does not include early access features.
 
 - Input and output variables for Tanzu deployments (CDS-79461)
 
-  You can now add input and ouput variables to the Tanzu Command step and step template to facilitate Tanzu deployments.
+  You can now add input and output variables to the Tanzu Command step and step template to facilitate Tanzu deployments.
 
 ##### Early access features
 
@@ -2510,7 +2510,7 @@ This release does not include early access features.
 
 - Fixed an issue where users could not save a Manual Approval step as a template when `autoApprove : action` is set to `APPROVE` or `REJECT`. (CDS-76350)
 
-- Added an information banner and documnetation link to the **Synchronization Barrier** step. The referenced content highlights best practices when synchronizing deployments using barriers. (CDS-76291, ZD-48636)
+- Added an information banner and documentation link to the **Synchronization Barrier** step. The referenced content highlights best practices when synchronizing deployments using barriers. (CDS-76291, ZD-48636)
 
 - Fixed an issue where the Kubernetes connector in a container step doesn't respect the delegate selector tags set at pipeline level. With this fix, the connector selects delegates specified in the pipeline rather than the connector, which is the correct behavior. (CDS-76105, ZD-48542)
 
@@ -5804,7 +5804,7 @@ Added expression support for the following:
 <+artifact.buildNo>
 <+artifact.metadata.image>
 <+artifact.metadata.tag>
-<+artifact.metadata.regisrtyUrl>
+<+artifact.metadata.registryUrl>
 <+artifact.metadata.repositoryName>
 ```
 
