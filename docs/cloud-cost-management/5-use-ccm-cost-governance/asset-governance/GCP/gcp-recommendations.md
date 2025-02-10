@@ -70,7 +70,7 @@ The scope can be either at:
 - Rule-level + Project-level + Resource-level.
 
 
-  <DocImage path={require('../static/gcp_granular.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/gcp-granular.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
 ### Recommendation: delete-gcp-idle-compute-images

@@ -51,7 +51,7 @@ Number of Rules per Account[Custom + OOTB] can be 300.
 12. Select **Dry Run** to view the instances or services that will be acted upon when you enforce the rule.
 13. After evaluating the output, select **Run Once** to execute the rule. 
 
-  <DocImage path={require('../static/rule_window_Aws.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/rule-window-aws.png')} width="90%" height="90%" title="Click to view full size image" />
 
 :::info
 Harness provides some out-of-the-box policies for aws.ebs-snapshot, ebs, rds, etc. that can be enforced. These policies cannot be edited but can be cloned.
@@ -64,7 +64,7 @@ You can view the Rules on the Asset Governance Rules page. You can click on Edit
 
 To delete a Rule Set, click on Delete from the vertical ellipsis menu (⋮).
 
-  <DocImage path={require('../static/update_and_delete_aws.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/update-and-delete-aws.png')} width="90%" height="90%" title="Click to view full size image" />
 
 :::info 
 We now have Terraform support for managing Governance Rules. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule) for more details.
@@ -73,7 +73,7 @@ We now have Terraform support for managing Governance Rules. Please see [here](h
 
 As mentioned previously, a Rule can have multiple policies. However, when there are multiple rules with multiple policies, it can become hard to manage them all together. This is where **Rule Sets** can be used. Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. By organizing rules into sets, organizations improve accessibility and simplify maintenance, as enforcements can be made against the entire rule set rather than individual rules.
 
-  <DocImage path={require('../static/rule_set_aws.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/rule-set-aws.png')} width="90%" height="90%" title="Click to view full size image" />
   
 :::info
 A Rule Set can have upto 30 Rules in it.
@@ -108,7 +108,7 @@ You can view the Rule Set on the Asset Governance Rules page. Expand the rule se
 ### Delete a Rule Set
 To delete a Rule Set, click on Delete from the vertical ellipsis menu (⋮).
 
- <DocImage path={require('../static/update_and_delete_ruleSet_aws.png')} width="90%" height="90%" title="Click to view full size image" />
+ <DocImage path={require('../static/update-and-delete-ruleset-aws.png')} width="90%" height="90%" title="Click to view full size image" />
 
 :::info 
 We now have Terraform support for managing Governance RuleSets. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule_set) for more details.
@@ -129,7 +129,7 @@ While setting up a new Enforcement, you can select the following:
 - **Time**: After setting the frequency, you can choose the time at which it runs.
 - **Dry Run Mode**: You can choose to run your Enforcement in Dry Run mode which will generate a simulation of the rule enforcement instead of performing actions.
 
-  <DocImage path={require('../static/enforcements_aws.png')} width="95%" height="95%" title="Click to view full size image" />
+  <DocImage path={require('../static/enforcements-aws.png')} width="95%" height="95%" title="Click to view full size image" />
 
 :::info
 - Number of Targets in an Enforcement can be upto 200.
@@ -150,18 +150,18 @@ To create an Enforcement, perform the following steps:
 7. Select the cloud provider.
 8. Select the Rules or Rule Sets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
 9. Select **Continue**. 
-    <DocImage path={require('../static/create_enforcement_aws.png')} width="90%" height="90%" title="Click to view full size image" />
-     <DocImage path={require('../static/rules_aws_selection.png')} width="90%" height="90%" title="Click to view full size image" />
+    <DocImage path={require('../static/create-enforcement-aws.png')} width="90%" height="90%" title="Click to view full size image" />
+     <DocImage path={require('../static/rules-aws-selection.png')} width="90%" height="90%" title="Click to view full size image" />
 10. Select the target accounts and target regions. You could select multiple accounts and regions.
 11. Set the frequency from **Hourly**, **Daily**, or **Weekly** options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
 12. Toggle the **Dry Run** mode if you do not want to take action immediately.
 13. Select **Finish**. 
 
-    <DocImage path={require('../static/set-up-schedule_aws.png')} width="90%" height="90%" title="Click to view full size image" />
+    <DocImage path={require('../static/set-up-schedule-aws.png')} width="90%" height="90%" title="Click to view full size image" />
 
 After setting up the schedule, you can view the Enforcement on the **Enforcements** page. 
 
-<DocImage path={require('../static/enforcements_list_aws.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('../static/enforcements-list-aws.png')} width="90%" height="90%" title="Click to view full size image" />
 
 Furthermore, you can disable the Enforcement at any time using the toggle button in the **Status** column. If you want to turn off the dry-run mode, select **Edit** from the vertical ellipsis menu (⋮) then go to "Target And Schedule", use slider to turn off "Enforce Rule(s) in Dry Run mode" and click on Finish.
 
@@ -173,7 +173,7 @@ You can view any Enforcements on Rule Enforcements page. Click on the enforcemen
 
 To delete an enforcement, simply click on “Delete” from the vertical ellipsis menu (⋮).
 
-<DocImage path={require('../static/update_and_delete_enforcement_aws.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('../static/update-and-delete-enforcement-aws.png')} width="90%" height="90%" title="Click to view full size image" />
 
 :::info 
 We now have Terraform support for managing Governance Enforcements. Please see [here](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/governance_rule_enforcement) for more details.
@@ -190,7 +190,7 @@ Harness CCM also supports multiple statuses for evaluations. Currently CCM suppo
 - Failure:  If the evaluation is not completed and has errors, the status of the evaluation is shown as "Failure".
 - Partial Success: If the evaluation is successful without any Harness errors but Cloud Custodian has additional logs and/or in case of multi-policy evaluations, if the evaluation was successful only for a subset of resources, the status is shown as "Partial Success".
 
-<DocImage path={require('../static/evaluation_aws1.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('../static/evaluation-aws-one.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ### View Evaluations
 
@@ -200,7 +200,7 @@ Harness CCM also supports multiple statuses for evaluations. Currently CCM suppo
 4. You can see all the Evaluations of Rules listed on  the window.
 4. Select the rule for which you want to view the Evaluation details. The target account, region, identified resources and evaluation logs are displayed.
 
-<DocImage path={require('../static/evaluations_Aws.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('../static/evaluations-aws.png')} width="90%" height="90%" title="Click to view full size image" />
 
 In the output window, users can see the resources identified in form of a Table or JSON. The table view supports all the filters and flattening of the table is supported as well. That essentially means, nested propoerties are flattened. By default, nested objects and arrays are collapsed and can be expanded upto two levels. Further nested properties are shown as formatted JSON.
 

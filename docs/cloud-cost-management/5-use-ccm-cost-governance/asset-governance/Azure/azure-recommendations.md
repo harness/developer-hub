@@ -69,7 +69,7 @@ Owing to this, now, while adding a recommendation to Ignore List, users have the
 - Rule-level + Subscription/Region-level
 - Rule-level + Subscription/Region-level + Resource-level.
 
-  <DocImage path={require('../static/azure_granular.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/azure-granular.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ### Recommendation: delete-low-utilised-cosmodb
 **Description:** Delete low utilised CosmosDB based on total requests in last 72 hours.

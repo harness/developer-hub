@@ -67,7 +67,7 @@ Owing to this, now, while adding a recommendation to Ignore List, users have the
 - Rule-level + Account/Region-level
 - Rule-level + Account/Region-level + Resource-level.
 
-  <DocImage path={require('../static/aws_granular.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/aws-granular.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
 ### Recommendation: delete-unattached-ebs

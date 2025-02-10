@@ -10,7 +10,7 @@ The **Overview** page offers a consolidated summary of your organization's gover
 ## Asset Governance Overview 
 Here is an in-depth explanation of the Overview page and the information it displays for the users:
 
-  <DocImage path={require('./static/AG8.png')} width="120%" height="120%" title="Click to view full size image" />
+  <DocImage path={require('./static/ag-overview.png')} width="120%" height="120%" title="Click to view full size image" />
 
   - **Total Evaluations** — The total number of evaluations performed to date.
   - **Total Active Enforcements** — The total number of active enforcements created to date.
@@ -56,7 +56,7 @@ These custom recommendations not only show up in the recommendation section but 
 
 By clicking on the new 'Recommendation Insights' tab, users can view all recommendations and their insights. These recommendations can be filtered based on out-of-the-box rules ('By Harness') or custom rules ('Custom').
 
-  <DocImage path={require('./static/custom_rec.png')} width="120%" height="120%" title="Click to view full size image" />
+  <DocImage path={require('./static/custom-rec.png')} width="120%" height="120%" title="Click to view full size image" />
   
 :::note
 - Currently, per account, a maximum of 10 custom recommendations can be created.
