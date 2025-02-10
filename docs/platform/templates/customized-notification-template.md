@@ -1,6 +1,6 @@
 ---
-title: Custom templates for Pipeline Notifications
-description: Configure Custom templates for Pipeline Notifications
+title: Custom Notification templates for Pipeline Notifications
+description: Configure Custom Notification templates for Pipeline Notifications
 sidebar_position: 3
 ---
 import Tabs from '@theme/Tabs';
@@ -8,31 +8,49 @@ import TabItem from '@theme/TabItem';
 
 :::info note
 Currently this feature is behind Feature Flag: `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`
-However, since this is supported for centralised notification, we need `PL_CENTRAL_NOTIFICATIONS` and `PIPE_CENTRALISED_NOTIFICATION` to be enabled first.
+However, since this is supported for centralised notification, we need `PL_CENTRAL_NOTIFICATIONS` and `PIPE_CENTRALISED_NOTIFICATION` to be enabled first. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
 :::
 
-Users can create notification templates, allowing them to customize notification content and reuse templates within **Centralized Pipeline Notifications**. Templates support Pipeline Expressions and RBAC controls, ensuring flexibility and security.
+Users can create custom notification templates, allowing them to customize notification content and reuse templates within **Centralized Pipeline Notifications**. Templates support Pipeline Expressions and RBAC controls, ensuring flexibility and security.
 
 We are going to discuss setting up a notification for Pipeline Events using Custom Notification Templates, at a certain scope.
 
-You can set up notification template for Pipeline notification at following [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): **Account**, **Organization** and **Project Level**. 
+You can set up custom notification template for Pipeline notification at following [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): **Account**, **Organization** and **Project Level**. 
 
 ## Setting Up Notifications Template
 
 :::info note
 1. Custom Notification templates will work only with Centralized Notifications. 
 2. Custom Notification templates will work only for webhook notifications.
-3. Custom notiification templates don't support usage of template variables.
-4. Custom notification templates will be an inline entity, meaning they cannot be stored in Git.
+3. Custom Notification templates don't support usage of template variables.
+4. Custom Notification templates will be an inline entity, meaning they cannot be stored in Git.
+5. All Pipeline and Stage-level variables are supported. If an expression cannot be resolved, it will return a null or an empty string.
 :::
 
 <Tabs>
 <TabItem value="Interactive guide">
-<iframe src="https://app.tango.us/app/embed/fc86f283-ef3a-4199-88a1-8de92b845754" style={{ minHeight: '800px' }} sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" security="restricted" title="Creating a Notification Template in Harness" width="100%" height="100%" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen" allowfullscreen="allowfullscreen"></iframe>
+
+In this example, we are going to discuss setting up custom notification template for Pipeline at Project Level:-
+
+<iframe 
+  src="https://app.tango.us/app/embed/fc86f283-ef3a-4199-88a1-8de92b845754"
+  style={{ minHeight: '960px', maxWidth: '800px', width: '100%' }}
+  sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
+  security="restricted"
+  title="Creating a Notification Template in Harness"
+  width="100%" 
+  height="100%" 
+  referrerpolicy="strict-origin-when-cross-origin"
+  frameborder="0" 
+  webkitallowfullscreen="webkitallowfullscreen"
+  mozallowfullscreen="mozallowfullscreen"
+  allowfullscreen="allowfullscreen"
+/>
+
 </TabItem>
 
 <TabItem value="Step-by-step">
-In this example, we are going to discuss setting up notification template for Pipeline at Project Level:-
+In this example, we are going to discuss setting up custom notification template for Pipeline at Project Level:-
 
 1. In your Harness, go to your project.
 2. Select **Project Settings**, then, under **Project-level resources**, select **Templates**.
@@ -52,7 +70,7 @@ In this example, we are going to discuss setting up notification template for Pi
 
 10. Click on **Save**.
 
-Now, let's add this notification template to a notification rule at Project Level:-
+Now, let's add this custom notification template to a notification rule at Project Level:-
 
 :::info note
 A template created at the Account level can be used for notification rules at Account, Org, or Project levels. Similarly, Org-level templates can be used at Org and Project levels.
@@ -89,11 +107,11 @@ Under **Select Channel** you can chose the already created channel at that scope
 8. Select **Submit** to save your notification configuration.
 
 
-You can also view **Referenced By** in your Notification Template to see notification rule it is attached to.
+You can also view **Referenced By** in your Custom Notification Template to see notification rule it is attached to.
 
 ![](./static/notification-referenced-by.png)
 
-You can also check audit trail events for notification template created. 
+You can also check audit trail events for Custom Notification Template created. 
 
 ![](./static/notification-template-audit.png)
 
@@ -103,10 +121,10 @@ You can also check audit trail events for notification template created.
 
 ## YAML Structure
 
-YAML of notification template will look like:-
+YAML of Custom Notification Template will look like:-
 
 :::info note
-You can choose text type for your content body as **HTML**, **JSON**, **YAML** or **String**.
+You can choose `type` for your content body as **HTML**, **JSON**, **YAML** or **String**.
 :::
 
 ```yaml
