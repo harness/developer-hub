@@ -1,7 +1,7 @@
 ---
 title: Delete a workspace
 description: Learn how to delete a workspace.
-sidebar_position: 50
+sidebar_position: 90
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,7 +1,7 @@
 ---
 title: Create a Workspace Template 
 description: Learn how to create and manage workspace templates for standardized configurations.
-sidebar_position: 20
+sidebar_position: 60
 sidebar_label: Workspace templates
 ---
 
