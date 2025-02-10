@@ -297,7 +297,7 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 - Previously, URLs used to fetch artifacts from Artifactory with artifact filters did not support special characters, such as spaces, in artifact names. This issue is now fixed to automatically encode URLs, allowing support for special characters. This change is behind FF `CDS_ENCODE_API_REQUESTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-103041, ZD-69919)
 - Previously, when a canary pod had no data while the primary pod did, the risk should have been marked as "No Data" per [documentation](/docs/continuous-delivery/verify/cv-results/interpret-metric-results#metrics-summary-section). Instead, it was incorrectly marked as "No Analysis," causing issues when using the "Fail on No Analysis" feature. This issue is now fixed to align with the documentation, distinguishing "No Data" from "No Analysis" in risk assessments.(CDS-102865, ZD-72242)
 
-#### Gitops Version 1.20.2, Gitops Agent Version 0.81.0
+### Gitops Version 1.20.2, Gitops Agent Version 0.81.0
 
 #### New Features and Enhancement
 
@@ -340,7 +340,7 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 - Previously, the rollback process failed due to an incorrect branch reference for the YAML file. This issue is resolved by adding logic to include the Git details when performing post-deployment rollbacks. 
 Currently, this feature is behind the feature flag `CDS_ADD_GIT_INFO_IN_POST_DEPLOYMENT_ROLLBACK`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-101504)
 
-#### Gitops Version 1.19.0, Gitops Agent Version 0.80
+### Gitops Version 1.19.0, Gitops Agent Version 0.80
 
 #### New features and enhancements
 
@@ -407,7 +407,7 @@ Currently, this feature is behind the feature flag `CDS_ADD_GIT_INFO_IN_POST_DEP
 
 - The ECR token was revealed through artifact expressions in the shell script step. This issue is resolved. (CDS-101258, ZD-70269)
 
-#### Gitops Version 1.18.0
+### Gitops Version 1.18.0
 
 #### New features and enhancements
 
@@ -613,6 +613,22 @@ We have introduced a UI component to make the list of infrastructure searchable 
 - When a user tried to fetch a payload file from Bitbucket, it threw an invalid payload format and the HTTP capability check returned a 501 status code, indicating Bitbucket connectivity problems. This issue is fixed now.(CDS-98500, ZD-65594)
 
 ## July 2024
+
+### GitOps Version 1.15.0, GitOps Agent Version 0.78.0
+
+#### New features and enhancements
+
+- Improved event handling for `OnEventAppsCrud` by removing unnecessary fields to increase efficiency and minimize event noise. (CDS-99431)
+
+- Optimized sync operations by filtering out excessive tasks, enhancing performance, and reducing unnecessary system processing. (CDS-99069)
+
+- Enhanced High Availability (HA) pod synchronization on project mappings and integrated Redis to better manage synchronization. Added time-to-live (TTL) logic to improve session lifecycle handling. (CDS-96409)
+
+- ArgoCD has been upgraded to version 2.10.14, addressing a security vulnerability related to OpenSSH (CVE-2024-6387), which enhances system security. (CDS-98694)
+
+#### Fixed issues
+
+- Previously, an unmarshalling issue caused invalid duplicate updates to the task collection, resulting in unnecessary retries and increased load on MongoDB. The issue is resolved.
 
 ### Version 1.48.11
 
