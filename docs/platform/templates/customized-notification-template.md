@@ -121,7 +121,7 @@ You can also check audit trail events for Custom Notification Template created.
 
 ## YAML Structure
 
-YAML of Custom Notification Template will look like:-
+YAML structure of Custom Notification Template with `type` of content body as **JSON** will look like:-
 
 :::info note
 You can choose `type` for your content body as **HTML**, **JSON**, **YAML** or **String**.
