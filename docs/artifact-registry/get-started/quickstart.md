@@ -1,6 +1,6 @@
 ---
-title: Quick Start with Docker
-description: Build a Docker Registry with Harness
+title: Get started with Artifact Registry
+description: Build a Registry with Harness
 sidebar_position: 20
 ---
 
@@ -9,24 +9,16 @@ import TabItem from '@theme/TabItem';
 
 The Harness Artifact Registry module allows you to quickly and easily store your digital artifacts. 
 
-Use this docker quick start guide to learn what the module has to offer and how to use it.
-
 ## Prerequisite
-
-This quick start guide requires the use of docker, so ensure that you can use the docker CLI. 
+Depending on your package manager, e.g. Docker, Helm or Maven, you may need to use its associated dependencies like the Docker CLI. 
 
 ## Creating a registry
 
-This first section will go over how to create and configure a registry for use. 
-
-### Enable and select the module
-
-You can find the Artifact Registry module in the module selector in the left nav.
-
-![](./static/module-selector.png)
-
-### Create a docker registry
-
+<Tabs>
+<TabItem value="Interactive guide">
+<DocVideo src="https://app.tango.us/app/embed/e3650c96-80e9-414d-aba1-64cb0d4db24d" title="Creating an Artifact Registry" />
+</TabItem>
+<TabItem value="Step-by-step">
 1. Select **+ New Artifact Registry** under the **Registries** tab. 
 1. Select a [registry type](/docs/artifact-registry/whats-supported#supported-registry-types). In this guide, we will use **Docker**.
 1. Enter a **Registry Name** and, optionally, a **Description** or **Labels**.
@@ -34,47 +26,39 @@ You can find the Artifact Registry module in the module selector in the left nav
     This registry name must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
     :::
 1. Select **Create Registry**.
+</TabItem>
+</Tabs>
+---
 
-## Create a docker upstream proxy
+## Create an upstream proxy
 
 An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that allows the registry to fetch artifacts from another external or remote registry. When a user requests an artifact that isn't available in the registry, the registry directs the request to a configured upstream proxy. To create one, follow these steps: 
 
 <Tabs>
 <TabItem value="Interactive guide">
-<iframe 
-    src="https://app.tango.us/app/embed/4d59383b-7b7d-4355-acb7-1eed4ca657f0" 
-    title="Create an Upstream Proxy in Harness Artifact Registry" 
-    style={{ minHeight: '640px' }}
-    width="100%" 
-    height="100%"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    webkitallowfullscreen="true"
-    mozallowfullscreen="true"
-    allowfullscreen="true"
-></iframe>
+<DocVideo src="https://app.tango.us/app/embed/4d59383b-7b7d-4355-acb7-1eed4ca657f0" title="Create an Upstream Proxy in Harness Artifact Registry" />
 </TabItem>
 <TabItem value="Step-by-step">
 
 1. Select the dropdown next to **+ New Artifact Registry**, and then select **Upstream Proxy**.
-    ![](./static/create-proxy.png)
 2. Enter the **Upstream Proxy Key**. This is the identifier or name for the proxy within Harness and is chosen by you. 
    
    :::tip allowed characters
     This proxy key must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
    :::
 
-3. For the source, select Docker Hub.
-4. Choose your **Authentication** method. In this case, we only want to use public docker images, so we will select **Anonymous**.
+3. For the source, e.g. **Docker Hub**.
+4. Choose your **Authentication** method. 
+    - In cases where you use public images, select **Anonymous**.
 5. Select **Create Upstream Proxy**.
 </TabItem>
 </Tabs>
+---
 
 ### Set the upstream proxy
-
 After creating an upstream proxy, you need to set it in your artifact registry. To do so, follow these steps:
 
-1. In the docker registry we created above, select **Configuration**.
+1. In the registry we created above, select **Configuration**.
 2. Open the **Advanced (Optional)** dropdown menu. 
 3. Select **Configure Upstream**.
 4. Under **Available upstream proxies**, you will see a list of available upstream proxies. Select as many as you would like. 
