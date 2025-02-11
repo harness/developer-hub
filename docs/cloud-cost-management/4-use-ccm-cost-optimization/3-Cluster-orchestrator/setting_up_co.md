@@ -61,6 +61,7 @@ variable "cluster" {
     security_groups  = list(string)
     ami              = string
     k8s_connector_id = string
+    existing_node_role = string
   })
 
   default = {
@@ -80,7 +81,6 @@ variable "harness" {
     endpoint         = string
     account_id       = string
     platform_api_key = string
-    existing_node_role = string
   })
 
   default = {
