@@ -1787,12 +1787,24 @@ The ASG Blue Green Deploy step has the following settings:
 - **ASG Name:** Enter a name for the ASG that Harness will create.
 - **Same as already running Instances** or **Fixed**:
   - Select **Fixed** to enforce a Max, Min, and Desired number of instances.Select **Same as already running Instances** to use scaling settings on the last ASG deployed by this Harness pipeline. If this is the first deployment and you select **Same as already running Instances**, Harness uses a default of Min 0, Desired 6, and Max 10. Harness does not use the Min, Max, and Desired settings of the base ASG.
-- **Load Balancer:** select the load balancer(s) to use.
-- **Prod Listener:** provide the ARN for the listener to be used for prod traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`)
-- **Prod Listener Rule ARN:** provide the ARN for the listener rule to be used for prod traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`)
-- **Stage Listener:** provide the ARN for the listener to be used for staging traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`)
-- **Stage Listener Rule ARN:** provide the ARN for the listener rule to be used for staging traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`)
+- **Load Balancer:** Provide the load balancer(s) to use.
+
+- **Prod Listener:** Provide the listener on your load balancer that handles live production traffic. This field specifies the production listener on your load balancer. A listener is responsible for receiving incoming connections on a specified protocol and port. The production listener is the one that handles live traffic for your currently active deployment.
   
+  Example Prod Listener value: `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`
+
+- **Prod Listener Rule ARN:** Provide the ARN of the listener rule associated with the production listener. This field holds the Amazon Resource Name (ARN) of the listener rule associated with the production listener. Listener rules define how incoming requests are evaluated (using conditions like URL path, host header, etc.) and routed to the appropriate target group. The rule ensures that traffic is correctly directed to the target group for your production environment.
+  
+  Example Listener Rule ARN value: `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`
+
+- **Stage Listener:** Provide the listener on your load balancer that routes traffic to your staging environment. This field defines the staging listener on the load balancer. The staging listener is used to route traffic to the new environment where you can perform tests and validations before making it live.
+  
+  Example Stage Listener value: `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`
+
+- **Stage Listener Rule ARN:** Provide the ARN of the listener rule associated with the staging listener. Similar to the production listener rule, this field contains the ARN for the rule associated with the staging listener. It determines how traffic is routed to the staging target group based on the defined conditions.
+  
+  Example Stage Listener Rule ARN value: `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`
+
   :::important
   There is only one listener rule for both target groups (stage and prod), and one listener ARN for a listener rule. Go to [AWS requirements](#aws-requirements) for more information.
   :::
