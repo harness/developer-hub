@@ -1,20 +1,12 @@
 ---
 title: Split and Harness
-description: Split is now Harness SEI.
+description: Split is now Harness FME
 sidebar_position: 18
 ---
 
-<CTABanner
-  buttonText="View Migration Guide"
-  title="We have started to migrate the Propelo platform users to Harness SEI"
-  link="/docs/software-engineering-insights/get-started/migrate-propelo-to-harness/migrate-propelo-to-harness-sei"
-  closable={true}
-  target="_self"
-/>
+In June 2024, Harness acquired Split, now called Harness Feature Management & Experimentation (FME). This page provides information to support you during the transition to Feature Management & Experimentation in the Harness platform.
 
-In May 2024, Harness acquired Split, now called Harness Feature Management & Experimentation (FME). This page provides information to support you during the transition to Feature Management & Experimentation in the Harness platform.
-
-If you are using standalone Split you can continue to do so. Our customer success and support teams will be in contact with you to help you ensure a smooth transition into FME when the time is right.
+If you are using standalone Split, our customer success and support teams will be in contact with you to help you ensure a smooth transition into FME.
 
 For more information about the acquisition, go to the [Harness blog](https://www.harness.io/blog/harness-to-acquire-split).
 
@@ -33,4 +25,4 @@ Authentication, access, and user management are part of the Harness platform. Pe
 
 ## Harness platform integrations coming soon
 
-We are moving rapidly to unlock integrations with Harness's innovative DevOps tools, DevEx improvements, Security features, and Cloud optimizations. Check back here for how to switch on these benefits for your team.
+We are moving rapidly to unlock integrations with Harness's innovative DevOps tools, DevEx improvements, Security features, and Cloud optimizations, while also accelerating the roadmap of enhancements to the core of what you have previously known as Split. Please visit our [roadmap](https://developer.harness.io/roadmap/#fme) to learn more.
