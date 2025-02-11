@@ -603,7 +603,7 @@ const config: Config = {
     path.join(__dirname, '/client-modules/searchBar'),
     path.join(__dirname, '/client-modules/iframeEmbed'),
     path.join(__dirname, '/client-modules/chatbot'),
-    path.join(__dirname, '/client-modules/feedback'),
+    // path.join(__dirname, '/client-modules/feedback'),
   ],
   stylesheets: [
     {
