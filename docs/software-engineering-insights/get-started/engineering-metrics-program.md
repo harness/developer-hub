@@ -1,8 +1,8 @@
 ---
-title: Engineering metrics program
+title: Build an Engineering Metrics Program
 description: Increase engineering productivity, efficiency and business impact.
 sidebar_position: 10
-sidebar_label: Build your Engineering metrics program
+sidebar_label: Build an Engineering Metrics Program
 ---
 
 Measuring software engineering excellence poses a significant challenge for most engineering organizations. 
@@ -52,24 +52,26 @@ At its core, engineering excellence means optimizing three areas:
 
 #### People
 
-* Have the right team: Skilled people in the right roles.
-* Have the right size: Not too many, not too few.
+* **Have the right team:** Skilled people in the right roles.
+* **Have the right size:** Not too many, not too few.
 
 #### Processes
 
-* Frictionless workflows: Minimize repetitive, low-value tasks.
-* Cognitive load: Free up mental bandwidth for creative, high-impact work.
+* **Frictionless workflows:** Minimize repetitive, low-value tasks.
+* **Cognitive load:** Free up mental bandwidth for creative, high-impact work.
 
 #### Tools
 
-* Right tools for the job: Ensure the tech stack supports efficiency and scalability.
+* **Right tools for the job:** Ensure the tech stack supports efficiency and scalability.
 
 ### The big question
 
 How do you optimize people, processes, and tools to create outsized impact?
 The answer lies in measuring what’s happening in your engineering organization. Metrics can help you identify bottlenecks, understand what’s working, and focus efforts where they matter most.
 
-Here’s a framework—or a “flywheel”—that you can use to align workforce, processes, and tooling to drive continuous improvement.
+Here’s a framework — that you can use to align workforce, processes, and tooling to drive continuous improvement.
+
+![](./static/dora-improvement-framework.png)
 
 There are two main reasons to measure an engineering organization:
 
@@ -85,8 +87,8 @@ There are two main reasons to measure an engineering organization:
 
 Both are equally important, but they require different metrics to address their unique goals. Based on this we can categorize engineering metrics into two broad categories:
 
-* Engineering Excellence metrics: Focus on team productivity, efficiency, and technical execution.
-* Business Alignment metrics: Focus on how engineering outcomes drive business results.
+* **Engineering Excellence metrics:** Focus on team productivity, efficiency, and technical execution.
+* **Business Alignment metrics:** Focus on how engineering outcomes drive business results.
 
 Not all metrics contribute equally to both categories because the goals are different. The chart below shows how various metrics align with each initiative.
 
@@ -117,15 +119,15 @@ The challenge is that this data is spread across different tools, built for diff
 
 Take DORA metrics as an example. They combine data from:
 
-* Issue management systems (e.g., Jira, GitHub Issues).
-* Source code managers (e.g., GitHub, GitLab, Bitbucket).
-* CI/CD tools (e.g., Jenkins, Harness).
-* Incident management tools (e.g., ServiceNow).
+* Issue management systems (e.g., [Jira](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration), [Azure DevOps Boards](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops)).
+* Source code managers (e.g., [GitHub](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration), [GitLab](/docs/software-engineering-insights/setup-sei/configure-integrations/gitlab/sei-integration-gitlab), [Bitbucket](/docs/software-engineering-insights/setup-sei/configure-integrations/bitbucket/sei-integration-bitbucket)).
+* CI/CD tools (e.g., [Jenkins](/docs/software-engineering-insights/setup-sei/configure-integrations/jenkins/jenkins-plugin), [Harness](/docs/software-engineering-insights/setup-sei/configure-integrations/harness-cicd/sei-integration-harnesscicd)).
+* Incident management tools (e.g., [ServiceNow](/docs/software-engineering-insights/setup-sei/configure-integrations/beta-integrations/servicenow/sei-servicenow)).
 
 By correlating data across these sources, you can connect activities, processes, and tooling to find bottlenecks faster.
 
 :::note What is DORA?
-DORA (DevOps Research & Assessment) metrics are widely recognized as the gold standard for measuring an engineering team’s health, performance, and productivity. They focus on velocity and stability, helping teams of all sizes track progress and identify areas for improvement:
+[DORA (DevOps Research & Assessment)](https://dora.dev/) metrics are widely recognized as the gold standard for measuring an engineering team’s health, performance, and productivity. They focus on velocity and stability, helping teams of all sizes track progress and identify areas for improvement:
 * Lead Time for Changes: The amount of time it takes for an item (change request) from ideation, code to get in production.
 * Deployment frequency: How often engineer teams successfully releases to production?
 * Mean time to restore: How long it takes for an organization to recover from an incident in production.
@@ -138,6 +140,8 @@ While DORA metrics are a great starting point for measuring your team’s perfor
 
 To get the full picture, you need to measure engineering activity holistically. This requires connecting all your data sources, analyzing the data in meaningful ways, and understanding how the factors behind the scenes—people, processes, and tools—impact your metrics.
 
+![](./static/dora-drilldown.png)
+
 Harness Software Engineering Insights (SEI) helps you do just that.
 
 * SEI fetches data from multiple sources like issue trackers, source code managers, CI/CD pipelines, and incident management tools.
@@ -148,9 +152,9 @@ Harness Software Engineering Insights (SEI) helps you do just that.
 
 The goal is to create a dashboard that categorizes metrics alongside DORA into key areas:
 
-* Efficiency: Lead time, cycle time, deployment frequency.
-* Quality: Change failure rate, incident frequency.
-* Hygiene: PR size, review time, backlog health.
+* **Efficiency:** Lead time, cycle time, deployment frequency.
+* **Quality:** Change failure rate, incident frequency.
+* **Hygiene:** PR size, review time, backlog health.
 
 This breakdown helps you pinpoint exactly what’s working and what’s not.
 
@@ -184,7 +188,7 @@ Set long-term goals for improvement.
 
 ### Set contextual thresholds
 
-Refer to industry benchmarks, like those published in the latest DORA report, as a guide. But don’t rely on them blindly—adjust them to fit your team’s structure and objectives.
+Refer to industry benchmarks, like those published in the latest [DORA report](https://cloud.google.com/devops/state-of-devops), as a guide. But don’t rely on them blindly—adjust them to fit your team’s structure and objectives.
 
 ## Step 3 - Set the next target condition
 
@@ -267,9 +271,9 @@ Start by identifying the key objectives your team should focus on each quarter. 
 
 If you're unsure where to begin, consider a baseline implementation for a few representative teams. This baseline will help you understand:
 
-* Execution: Where are the hidden bottlenecks in your software delivery process
-* Alignment: How does engineering impact business outcomes?
-* Planning: Why are teams not delivering on their commitments?
+* **Execution:** Where are the hidden bottlenecks in your software delivery process
+* **Alignment:** How does engineering impact business outcomes?
+* **Planning:** Why are teams not delivering on their commitments?
 
 Use the baseline insights to define specific improvement objectives for each team or product group. Focus on one mandatory objective per team per quarter. For each objective, understand what the key results will look like.		
 
