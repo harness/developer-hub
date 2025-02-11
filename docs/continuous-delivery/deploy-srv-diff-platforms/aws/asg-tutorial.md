@@ -1347,7 +1347,7 @@ Harness stores configurations of the ASG you are deploying twice:
 </Tabs4>
 
 
-### ASG Steady State Step
+### Steady State Step
 
 :::note
 
@@ -1375,8 +1375,30 @@ The **ASG Steady State Step** is an additional pipeline step designed to monitor
 <details>
 <summary>Sample Asg Steady State Step YAML</summary>
 
-```
-execution:
+```yaml
+    - stage:
+        name: Steady Stage
+        identifier: Steady_Stage
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Asg
+          service:
+            serviceRef: ASG_SERVICE
+            serviceInputs:
+              serviceDefinition:
+                type: Asg
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: ASG_ENV
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: ASG_INFRA
+          execution:
             steps:
               - step:
                   type: AsgSteadyState
@@ -1386,6 +1408,67 @@ execution:
                     pollingInterval: 30s
                     asgName: asg-test
                   timeout: 10m
+            rollbackSteps: []
+```
+The YAML defines an ASG Steady State Step in a stage that:
+- Monitors an ASG by polling every 30 seconds.
+- Uses the specified ASG name `asg-test`
+- Completes within a 10-minute timeout period.
+- Since this stage only monitors instance health, it does not require a rollback step.
+</details>
+
+<details>
+<summary>Sample Asg Steady State Step YAML along with Rolling deploy Step</summary>
+
+```yaml
+    - stage:
+        name: Deploy Stage
+        identifier: deploy-stage
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Asg
+          service:
+            serviceRef: ASG_SERVICE
+            serviceInputs:
+              serviceDefinition:
+                type: Asg
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: ASG_ENV
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: ASG_ENV
+          execution:
+            steps:
+              - step:
+                  type: AsgRollingDeploy
+                  name: AsgRollingDeploy_1
+                  identifier: AsgRollingDeploy_1
+                  spec:
+                    useAlreadyRunningInstances: false
+                    skipMatching: true
+                    asgName: asg-test
+                    instances:
+                      type: Fixed
+                      spec:
+                        desired: 2
+                        max: 3
+                        min: 1
+                    skipInstanceTermination: true
+                  timeout: 10m
+              - step:
+                  type: AsgSteadyState
+                  name: AsgSteadyState_1
+                  identifier: AsgSteadyState_1
+                  spec:
+                    pollingInterval: ""
+                    asgName: asg-test
+                  timeout: 10m
             rollbackSteps:
               - step:
                   name: Asg Rolling Rollback
@@ -1393,11 +1476,19 @@ execution:
                   type: AsgRollingRollback
                   timeout: 10m
                   spec: {}
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
 ```
-The YAML defines an ASG Steady State Step that:
+The YAML defines an ASG Steady State Step in a stage that:
 - Monitors an ASG by polling every 30 seconds.
 - Uses the specified ASG name `asg-test`
 - Completes within a 10-minute timeout period.
+- Includes a rollback step that reverts to the previous version of the ASG Rolling Deployment step.
 </details>
 
 ### Canary
