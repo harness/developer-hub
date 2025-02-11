@@ -24,7 +24,14 @@ You can set up custom notification template for Pipeline notification at followi
 2. Custom Notification templates will work only for webhook notifications.
 3. Custom Notification templates don't support usage of template variables.
 4. Custom Notification templates will be an inline entity, meaning they cannot be stored in Git.
-5. All Pipeline and Stage-level variables are supported. If an expression cannot be resolved, it will return a null or an empty string.
+5. All Pipeline and Stage-level variables are supported. If an expression cannot be resolved, it will return an empty string.
+```json
+{
+  "pipeline name": "pipeline",
+  "stage name": "",
+  "stage type": ""
+}
+```
 :::
 
 <Tabs>
@@ -143,7 +150,16 @@ template:
         {
                 "pipeline name" : "<+pipeline.name>",
                 "stage Name" : "<+stage.name>",
-                "service Name" : "deploy_azure_function",
-                "status" : "<+pipeline.status>"
+                "status" : "<+stage.type>"
          }
+```
+
+JSON Response recieved:-
+
+```json
+{
+  "pipeline name": "pipeline",
+  "stage name": "stage_1",
+  "stage type": "Custom"
+}
 ```
