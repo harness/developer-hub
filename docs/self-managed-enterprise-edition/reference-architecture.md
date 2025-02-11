@@ -98,7 +98,7 @@ Achieving high availability and fault tolerance is paramount for mission-critica
 
 Recognizing that each organization has unique requirements, this reference architecture explores customization options and extensibility features. It empowers users to tailor the Harness platform to specific workflows and integrations, ensuring a personalized and efficient continuous delivery pipeline.
 
-![](./static/smp-ref-arch-dt.png)
+![](./static/smp-ref-arch-dt.jpg)
 
 <details>
   <summary>
