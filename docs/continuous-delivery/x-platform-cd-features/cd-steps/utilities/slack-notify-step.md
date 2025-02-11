@@ -107,6 +107,46 @@ This block will send the notification This is a Header block in heading 1 format
 ## Sending Notifications to a Specific Thread in a Channel
 To send notifications to a specific **thread**, provide the `thread_ts` details under Thread. For more information on how to get **thread_ts** details, refer to [Slack documentation](https://api.slack.com/methods/conversations.replies#:~:text=Conversation%20ID%20to%20fetch%20thread%20from.&text=Unique%20identifier%20of%20either%20a,just%20an%20ordinary%2C%20unthreaded%20message.)
 
+**YAML example**
+
+<details>
+<summary>Sample YAML describing the Slack Notify Step</summary>
+
+```
+stages:
+    - stage:
+        name: slack-step
+        identifier: slack-step
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - stepGroup:
+                  name: container
+                  identifier: container
+                  steps:
+                    - step:
+                        type: SlackNotify
+                        name: SlackNotify_1
+                        identifier: SlackNotify_1
+                        spec:
+                          channel: CHANNEL_ID
+                          messageContent: <+input>
+                          token: SLACK_TOKEN
+                          threadTs: THREAD_ID
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: KUBERNETES_DELEGATE
+                      namespace: NAMESPACE
+            rollbackSteps: []
+          serviceDependencies: []
+        tags: {}
+```
+
+</details>
+
 Upon a successful pipeline run, the message you configured in the Slack Notify step will be sent to the designated Slack channel or recipient.
 
 ![Execution](./static/slack-notify.png)
