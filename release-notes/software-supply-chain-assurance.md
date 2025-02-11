@@ -26,11 +26,10 @@ These release notes describe recent changes to Harness Supply Chain Security.
 - Added [Dashboards for License and Compliance Reports](/docs/software-supply-chain-assurance/reports/view-license-reports) to easily access detailed information about the licenses and compliance status associated with your software components at one place.
 - Added [Artifact Signing and Verification](/docs/software-supply-chain-assurance/artifact/sign-artifacts) steps to sign artifacts and verify the signed artifacts before it gets deployed to ensure integrity and prevent tampering.
 - With Harness Internal Developer Portal (IDP) workflow now you can use a single GitHub connector at the account level and selectively onboard repositories to the project of your choice and automatically create scan pipelines to scan those repositories.
-- Cosign attestation now supports Vault with Proxy URL and GCP Workload Identity Federation (WIF) for enhanced security.
+- For attestation with Cosign now supports HashiCorp Vault while using a Proxy URL for added security.
 - Enabled SBOM and SLSA generation and verification via Harness GitHub Actions, integrating seamlessly with GitHub CI workflows.
 
 #### Fixed Issues
-
 
 - Added a link in the Supply Chain tab that redirects to the Artifacts/Repositories details page, for better traceability.
 - Fixed the issue where clicking the back button on the Select Code Repo page after selecting a connector redirected the user to the login page.
