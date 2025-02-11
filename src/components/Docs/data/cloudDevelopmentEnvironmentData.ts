@@ -42,13 +42,7 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.cde,
           description: "A detailed step-by-step tutorial to get started with Gitspaces. ",
           link: "/docs/cloud-development-environments/introduction/quickstart-tutorial",
-        },
-        {
-          title: "Beta Plan Usage",
-          module: MODULES.cde,
-          description: "Learn more about the Harness Gitspaces Beta Plan.",
-          link: "/docs/cloud-development-environments/introduction/beta-usage",
-        },
+        }
       ],
     },
     {
@@ -118,6 +112,12 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.cde,
           description: "Learn how to execute various Git functions directly in your Gitspace.",
           link: "/docs/cloud-development-environments/develop-using-cde/source-control",
+        },
+        {
+          title: "Dev Container Features",
+          module: MODULES.cde,
+          description: "Learn more about configuring Dev Container Features for your Gitspace.",
+          link: "/docs/cloud-development-environments/develop-using-cde/port-forwarding",
         },
         {
           title: "Port Forwarding",

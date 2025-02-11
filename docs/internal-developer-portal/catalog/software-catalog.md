@@ -4,7 +4,7 @@ description: Learn more about the software catalog in Harness IDP
 sidebar_position: 1
 sidebar_label: Overview
 redirect_from:
-  - /docs/internal-developer-portal/features/software-catalog
+  - /docs/internal-developer-portal/catalog/
 ---
 
 ![](./static/catalog-screenshot.png)

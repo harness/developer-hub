@@ -61,6 +61,23 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   - Select **Respect Ignore Differences** in order to skip syncing of the resources listed in the **Ignore Differences** section. Normally, the **Ignore Differences** section in the manifest is only to check whether a sync is required; when we sync, the entire set of resources are still synced. Note that this option has no effect when creating a new application, only when syncing existing ones.
 - The packaged Argo version has been upgraded from 2.13.2 to 2.13.5. 
 
+### Version 1.76.6
+
+#### New features and enhancements
+
+- **Slack Step Enhancements**: Users can now send event notifications directly to Slack channels. Supported formats include plain text and JSON Blocks. (**CDS-105984**)
+
+- Users can utilize the **ASG Steady State** step in a Harness pipeline to track the progress of launching and terminating instances in AWS during an ASG rolling deployment. Currently, this feature is behind the feature flag `CDS_ASG_SKIP_INSTANCE_TERMINATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-101393**)
+
+- You can view YAML difference when updates are made to policy and policy set within [Audit Trail](/docs/platform/governance/audit-trail/). (**PIPE-20618**)
+
+#### Fixed Issues
+
+- Previously, users could not run the pipeline after moving the service to a Git branch. This issue is resolved. (**CDS-105180, **ZD-74852**)
+- Previously, the ECS Blue-Green deployment pipeline validation failed for users with dynamically generated load balancer configurations. This issue is resolved and is behind the feature flag `CDS_ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-105573, ZD-72261**)
+- Previously, regex filtering did not apply for the Artifactory artifact type in Service configuration, causing all tags to be displayed. This issue is resolved. (**CDS-105959, ZD-76412**)
+- Previously, broken templates pushed via webhooks with missing required types could not be fixed and had to be deleted. This issue is resolved by adding a check to ensure the template type is not empty. (**PIPE-24533**)
+
 ## January 2025
 
 ### Version 1.74.8
@@ -120,7 +137,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Previously, an Approval stage that timed out did not fail the pipeline as expected, even when the next stage was set to execute conditionally based on the pipeline's success. This resulted in subsequent stages running and deployments being executed, which was not intended. The issue is resolved, ensuring that if an approval stage times out and no failure strategy is applied, the pipeline will fail by default. (**PIPE-24150, ZD-75080**)
 - Previously, in Helm Blue/Green deployment strategies, delegate selection failed with the error: `no eligible delegates available in the account to execute the task` even when appropriate delegate selectors were defined. The issue is fixed. When the feature flag `CDS_ASYNC_EXECUTABLE_USE_SELECTORS` is enabled, the delegate selector priorities are correctly handled in Helm Blue/Green and Canary Deployment steps. (**CDS-105570, ZD-75740**)
 - Previously, when there was no time series data during a fetch sample data call in the Datadog health source, the existing DSL attempted to access the first element of the timeSeriesValues array. This resulted in an exception: `Invalid array index access. Array size is 0 and index is 0` The issue is fixed. The data collection logic now appropriately handles scenarios where no time series data is available. (**CDS-105330, ZD-73506**)
-- Previously, when propagating a service from one stage to another in a pipeline, execution-time input expressions (For exammple, `chartVersion: <+input>.executionInput()`) were not resolved correctly. This issue is now resolved. (**CDS-105282, ZD-74642**)
+- Previously, when propagating a service from one stage to another in a pipeline, execution-time input expressions (For example, `chartVersion: <+input>.executionInput()`) were not resolved correctly. This issue is now resolved. (**CDS-105282, ZD-74642**)
 - Previously, the Continuous Verification (CV) phase experienced intermittent failures with the error: Verification could not complete due to an unknown error when running pipelines with CV phases across multiple executions. This issue is now resolved. (**CDS-105146, ZD-74901, ZD-74902, ZD-75694**)
 - Previously, during a rollback of Google Cloud Run Service, the traffic was routed to the previous version instead of deploying the previous version as a new revision. This issue is now resolved. The rollback process now correctly creates a temporary revision to manage traffic shifting. (**CDS-103029, ZD-71937**)
 
@@ -294,7 +311,7 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 - Previously, URLs used to fetch artifacts from Artifactory with artifact filters did not support special characters, such as spaces, in artifact names. This issue is now fixed to automatically encode URLs, allowing support for special characters. This change is behind FF `CDS_ENCODE_API_REQUESTS`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-103041, ZD-69919)
 - Previously, when a canary pod had no data while the primary pod did, the risk should have been marked as "No Data" per [documentation](/docs/continuous-delivery/verify/cv-results/interpret-metric-results#metrics-summary-section). Instead, it was incorrectly marked as "No Analysis," causing issues when using the "Fail on No Analysis" feature. This issue is now fixed to align with the documentation, distinguishing "No Data" from "No Analysis" in risk assessments.(CDS-102865, ZD-72242)
 
-#### Gitops Version 1.20.2, Gitops Agent Version 0.81.0
+### Gitops Version 1.20.2, Gitops Agent Version 0.81.0
 
 #### New Features and Enhancement
 
@@ -337,7 +354,7 @@ Harness now supports configuring OAuth for self-hosted GitLab providers. This fe
 - Previously, the rollback process failed due to an incorrect branch reference for the YAML file. This issue is resolved by adding logic to include the Git details when performing post-deployment rollbacks. 
 Currently, this feature is behind the feature flag `CDS_ADD_GIT_INFO_IN_POST_DEPLOYMENT_ROLLBACK`. Please contact [Harness support](mailto:support@harness.io) to enable this feature. (CDS-101504)
 
-#### Gitops Version 1.19.0, Gitops Agent Version 0.80
+### Gitops Version 1.19.0, Gitops Agent Version 0.80
 
 #### New features and enhancements
 
@@ -404,7 +421,7 @@ Currently, this feature is behind the feature flag `CDS_ADD_GIT_INFO_IN_POST_DEP
 
 - The ECR token was revealed through artifact expressions in the shell script step. This issue is resolved. (CDS-101258, ZD-70269)
 
-#### Gitops Version 1.18.0
+### Gitops Version 1.18.0
 
 #### New features and enhancements
 
@@ -610,6 +627,22 @@ We have introduced a UI component to make the list of infrastructure searchable 
 - When a user tried to fetch a payload file from Bitbucket, it threw an invalid payload format and the HTTP capability check returned a 501 status code, indicating Bitbucket connectivity problems. This issue is fixed now.(CDS-98500, ZD-65594)
 
 ## July 2024
+
+### GitOps Version 1.15.0, GitOps Agent Version 0.78.0
+
+#### New features and enhancements
+
+- Improved event handling for `OnEventAppsCrud` by removing unnecessary fields to increase efficiency and minimize event noise. (CDS-99431)
+
+- Optimized sync operations by filtering out excessive tasks, enhancing performance, and reducing unnecessary system processing. (CDS-99069)
+
+- Enhanced High Availability (HA) pod synchronization on project mappings and integrated Redis to better manage synchronization. Added time-to-live (TTL) logic to improve session lifecycle handling. (CDS-96409)
+
+- ArgoCD has been upgraded to version 2.10.14, addressing a security vulnerability related to OpenSSH (CVE-2024-6387), which enhances system security. (CDS-98694)
+
+#### Fixed issues
+
+- Previously, an unmarshalling issue caused invalid duplicate updates to the task collection, resulting in unnecessary retries and increased load on MongoDB. The issue is resolved.
 
 ### Version 1.48.11
 
@@ -1949,7 +1982,7 @@ This release does not include early access features.
 
 - Input and output variables for Tanzu deployments (CDS-79461)
 
-  You can now add input and ouput variables to the Tanzu Command step and step template to facilitate Tanzu deployments.
+  You can now add input and output variables to the Tanzu Command step and step template to facilitate Tanzu deployments.
 
 ##### Early access features
 
@@ -2491,7 +2524,7 @@ This release does not include early access features.
 
 - Fixed an issue where users could not save a Manual Approval step as a template when `autoApprove : action` is set to `APPROVE` or `REJECT`. (CDS-76350)
 
-- Added an information banner and documnetation link to the **Synchronization Barrier** step. The referenced content highlights best practices when synchronizing deployments using barriers. (CDS-76291, ZD-48636)
+- Added an information banner and documentation link to the **Synchronization Barrier** step. The referenced content highlights best practices when synchronizing deployments using barriers. (CDS-76291, ZD-48636)
 
 - Fixed an issue where the Kubernetes connector in a container step doesn't respect the delegate selector tags set at pipeline level. With this fix, the connector selects delegates specified in the pipeline rather than the connector, which is the correct behavior. (CDS-76105, ZD-48542)
 
@@ -5785,7 +5818,7 @@ Added expression support for the following:
 <+artifact.buildNo>
 <+artifact.metadata.image>
 <+artifact.metadata.tag>
-<+artifact.metadata.regisrtyUrl>
+<+artifact.metadata.registryUrl>
 <+artifact.metadata.repositoryName>
 ```
 

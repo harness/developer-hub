@@ -5,12 +5,6 @@ sidebar_position: 1
 sidebar_label: Gitspace Configuration
 ---
 
-:::info
-
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io
-
-:::
-
 This guide will walk you through the Gitspace configuration in detail. 
 
 Each time a new Gitspace is created, a dedicated Development Container is provisioned on a separate Virtual Machine (VM), providing an isolated and secure development environment.
@@ -35,15 +29,22 @@ Currently, we support the following properties in a  ```devcontainer.json``` fil
 
 | **Argument**    | **Usage** |
 | -------- | ------- |
-| ```image```  | Image used to create the container    |
+| [```image```](https://containers.dev/implementors/json_reference/#image-specific)  | Image used to create the container    |
 | [```forwardPorts``` ](/docs/cloud-development-environments/develop-using-cde/port-forwarding.md)   | Array of ports to be forwarded from the Gitspace to the local machine (including inside the web)    |
-| ```postCreateCommand``` | Command to be executed after the Gitspace is created |
-| ```postStartCommand```    | Command to be executed after the Gitspace is started    |
-| [```runArgs```](docs/cloud-development-environments/develop-using-cde/run-args.md)    | Array of Docker CLI arguments to be used when running the Gitspace     |
-| [```containerEnv```](docs/cloud-development-environments/develop-using-cde/env-variables.md)    | Name-value pairs that sets/overrides environment variables for the container    |
-| [```containerUser```](docs/cloud-development-environments/develop-using-cde/container-remote-user.md)    | Defines the user for all operations run as inside the container    |
-| [```remoteUser```](docs/cloud-development-environments/develop-using-cde/container-remote-user.md)    | Defines the user that devcontainer.json supporting services tools / runs as in the container (including lifecycle scripts and any remote editor/IDE server processes)   |
-| [```extensions```](docs/cloud-development-environments/develop-using-cde/extensions.md)    | Array of extension IDs that specifies which extensions should be installed when the Gitspace is created    |
+| [```features``` ](/docs/cloud-development-environments/develop-using-cde/features.md)   | An object of Dev Container Feature IDs and related options to be added into your Gitspace    |
+| [```postCreateCommand```](https://containers.dev/implementors/json_reference/#lifecycle-scripts) | Command to be executed after the Gitspace is created |
+| [```postStartCommand```](https://containers.dev/implementors/json_reference/#lifecycle-scripts)    | Command to be executed after the Gitspace is started    |
+| [```runArgs```](/docs/cloud-development-environments/develop-using-cde/run-args.md)    | Array of Docker CLI arguments to be used when running the Gitspace     |
+| [```containerEnv```](/docs/cloud-development-environments/develop-using-cde/env-variables.md)    | Name-value pairs that sets/overrides environment variables for the container    |
+| [```containerUser```](/docs/cloud-development-environments/develop-using-cde/container-remote-user.md)    | Defines the user for all operations run as inside the container    |
+| [```remoteUser```](/docs/cloud-development-environments/develop-using-cde/container-remote-user.md)    | Defines the user that devcontainer.json supporting services tools / runs as in the container (including lifecycle scripts and any remote editor/IDE server processes)   |
+| [```extensions```](/docs/cloud-development-environments/develop-using-cde/extensions.md)    | Array of extension IDs that specifies which extensions should be installed when the Gitspace is created    |
+| [```mounts```](https://containers.dev/implementors/json_reference/#general-properties)    |Allows the user to add additional mounts to a container. Each value is a string that accepts the same values as the [Docker CLI --mount flag](https://docs.docker.com/reference/cli/docker/container/run/#mount). **Defaults to unset**   |
+| [```overrideFeatureInstallOrder```](https://containers.dev/implementors/json_reference/#general-properties)    |Allows the user to override the Feature install order when needed     |
+| [```privileged```](https://containers.dev/implementors/json_reference/#general-properties)    |Allows the user to cause the container to run in privileged mode (--privileged). **Defaults to ```false```**|
+| [```init```](https://containers.dev/implementors/json_reference/#general-properties)    |Allows the user to indicate whether the [tini init process](https://github.com/krallin/tini) should be used to help deal with zombie processes. **Defaults to ```false```**      |
+| [```capAdd```](https://containers.dev/implementors/json_reference/#general-properties)    |Allows the user to add capabilities typically disabled for a container. Most often used to add the ``ptrace`` capability required to debug languages like C++, Go, and Rust. **Defaults to [ ]**   |
+| [```securityOpt```](https://containers.dev/implementors/json_reference/#general-properties)    |Allows the user to set container security options. **Defaults to [ ]** |
 
 
 The path for this configuration file is ```.devcontainer/devcontainer.json```

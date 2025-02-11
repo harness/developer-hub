@@ -149,51 +149,51 @@ To obtain these references, simply copy the variable path from the Harness Pipel
 | Variable name (`variable_name`)                                      | Supported with Pipelines Variables for IDP stage, custom stage and Codebase Disabled build stage along Pipelines **not** containing any templates.  |
 | Variable name with Fully Qualified Path (`pipeline.variables.variable_name`) | Supported with Pipelines Variables for all supported stages and Pipelines containing any templates.      |
 
-3. `apikey`: Harness authentication token 
+3. `apikey`: User Session Token
 
-In the example above the `apikey` parameter takes input from Harness Token which is specified under spec as a mandatory parameter as mentioned below
+Learn more about this authentication mode in detail **[here](/docs/internal-developer-portal/flows/worflowyaml#authentication)**.
 
+- The **user's session token** is used to trigger the Harness Pipeline.  
+- The user must have **execute permissions** for the underlying pipeline(s) to ensure successful execution.  
+
+You can trigger a pipeline in Harness IDP Workflows using the **`user session token`** mode by specifying the **`token`** setup in your **`parameters.properties`** section of the **Workflow YAML**. 
+
+#### 1. Defining the **`token`** setup:
+This is defined under the `parameter.properties` spec to extract the user session token. This token is then used to execute the pipeline. 
 ```YAML
-...
+```YAML
 token:
     title: Harness Token
     type: string
     ui:widget: password
     ui:field: HarnessAuthToken
-    ...
-
 ```
-Without the above parameter input the pipeline won't be executed. [Take a look at this example](https://github.com/harness-community/idp-samples/blob/eb9988020d3917c0bca7daccb354ba670626221b/tutorial-self-service-flow-template.yaml#L64-L68) 
 
-
-The `token` property we use to fetch **Harness Auth Token** is hidden on the **Review Step** using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in-case you have multiple pages.
-
+#### 2. Referencing the **`token`** in the **`steps`** spec of the Workflow YAML:
+You'll need to reference the **`token`** within the **steps** section using the following format:
 ```YAML
-# example workflow.yaml
-...
-parameters:
-  - title: <PAGE-1 TITLE>
-    properties:
-      property-1:
-        title: title-1
-        type: string
-      property-2:
-        title: title-2
-    token:
-      title: Harness Token
-      type: string
-      ui:widget: password
-      ui:field: HarnessAuthToken
-  - title: <PAGE-2 TITLE>
-    properties:
-      property-1:
-        title: title-1
-        type: string
-      property-2:
-        title: title-2
-  - title: <PAGE-n TITLE>  
-...
+apikey: ${{ parameters.token }}
 ```
+
+4. `apiKeySecret`: Harness API Key Secret
+
+Learn more about this authentication mode in detail **[here](/docs/internal-developer-portal/flows/worflowyaml#authentication)**.
+
+- A pre-configured **Harness API Key** is used to trigger the Harness Pipeline.  
+- The user does **not** need direct access to the underlying pipeline(s); however, the API key must have the **execute permissions** for the underlying pipeline(s).
+
+You can also trigger a pipeline in an IDP Workflow using a **pre-configured Harness API Key**.  Here's how you can set this up:
+- Create a [Harness API Key Secret](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager#create-secrets). 
+- Store it in your [Harness Secret Manager](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview). 
+- The secret must be stored in the [**Account Scope**](https://developer.harness.io/docs/platform/secrets/secrets-management/reference-secrets-in-custom-sm) to ensure accessibility for workflow execution.
+- The secret must have ```execute permissions``` to the underlying pipeline(s).
+
+#### Referencing the **`secret`** in the **`steps`** spec:
+```YAML
+apiKeySecret: ${{ secretId }}
+```
+
+Here, ```secretId``` refers to the identifier of the secret which stores the **Harness API Key**. You can retrieve this ``secretId`` from the **Harness Secret Manager**. 
 
 4. `hidePipelineURLLog`: Boolean to hide logs (optional)
 

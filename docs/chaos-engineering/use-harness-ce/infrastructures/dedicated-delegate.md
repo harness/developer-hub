@@ -281,7 +281,7 @@ Create a Kubernetes connector using Delegate permissions.
 
 ### Step 9. Create Kubernetes Infrastructure
 
-Finally create the Kubernetes infrastructure using the Kubernetes connectors created in the step 8.
+Finally create the Kubernetes infrastructure using the Kubernetes connectors created in the [step 8](#step-8-create-a-kubernetes-connector).
 
     ![](./static/delegate/setup-1.png)
     ![](./static/delegate/setup-2.png)

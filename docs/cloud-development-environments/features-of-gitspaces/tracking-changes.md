@@ -5,12 +5,6 @@ sidebar_position: 5
 sidebar_label: Tracking Changes
 ---
 
-:::info
-
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io
-
-:::
-
 You can spin up as many Gitspaces as they want. You can also keep a track of the changes in their Gitspaces directly from the Harness UI. 
 
 You can monitor changes in your Gitspace for the following code changes:
