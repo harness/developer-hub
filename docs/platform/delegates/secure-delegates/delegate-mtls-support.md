@@ -211,7 +211,7 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
 
   2. In your helm command add the `mTLS.secretName` flag to enable the mTLS feature. Setting this flag will mount the secret as a volume to both Delegate and Upgrader compoentns and configure appropriate config options. For example
       ```
-        helm template --namespace <delegate namespace> --create-namespace \
+        helm upgrade -i helm-delegate --namespace <delegate namespace> --create-namespace \
             harness-delegate/harness-delegate-ng \
           --set delegateName=<delegate name> \
           --set accountId=<account ID> \
