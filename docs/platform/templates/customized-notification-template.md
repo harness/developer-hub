@@ -32,6 +32,7 @@ You can set up custom notification template for Pipeline notification at followi
   "stage type": ""
 }
 ```
+6. Once a custom notification template is selected for a notification rule, it cannot be removed. Users must recreate the notification rule if they want to use a different template or remove it. A fix for this is expected by **February 20, 2025**.
 :::
 
 <Tabs>
