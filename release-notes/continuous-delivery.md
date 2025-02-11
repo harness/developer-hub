@@ -203,6 +203,10 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - **Previously**, during load testing, customers faced issues with the delegate thread pool size being too small, leading to failures when executing pipelines concurrently. Additionally, some delegates reported errors due to missing CF CLI versions, and 503 errors occurred due to proxy configuration issues. This issue is fixed by increasing the delegate thread pool size and improving the detection mechanism for CF CLI installations. Customers should now experience more stable pipeline executions, even with larger concurrent loads. (**CDS-103868**)
 - **Previously**, some pipelines faced issues with black-screening after approximately 6 hours, despite an increase in the log-service duration from 5 hours to 10 hours. This was due to large log files (over 20k lines) causing disruptions. The issue also involved a discrepancy between the log-service's stream duration and the expected limits, affecting log processing during longer executions. This issue is now fixed by extending the log-service duration to 10 hours and improving the handling of log limits at the account level.(**PIPE-24058, ZD-73735**)
 
+## Previous releases
+
+<details>
+<summary>2024 Releases</summary>
 
 ## December 2024
 
@@ -1361,9 +1365,7 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
   - When editing the looping strategy setting in a stage template, the strategy editor disappeared arbitrarily. It should only get hidden when the entire strategy YAML is removed.
   - This issue has been resolved to ensure the editor remains visible as long as the strategy type (matrix, repeat, etc.) is present in the YAML.
 
-
-
-## Previous releases
+</details>
 
 <details>
 <summary>2023 releases</summary>
