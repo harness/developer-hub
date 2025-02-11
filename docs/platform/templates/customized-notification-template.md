@@ -149,8 +149,8 @@ template:
       content: |-
         {
                 "pipeline name" : "<+pipeline.name>",
-                "stage Name" : "<+stage.name>",
-                "status" : "<+stage.type>"
+                "stage name" : "<+stage.name>",
+                "stage type" : "<+stage.type>"
          }
 ```
 
