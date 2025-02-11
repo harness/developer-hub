@@ -59,6 +59,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Added two new options to the sync application page: **Server Side Apply** and **Respect Ignore Differences**.
   - Select **Server Side Apply** to use the `--server-side` flag when syncing resources. This can be used for very large resources, or when patching existing resources on the cluster. Note that the `replace` flag takes precedence over this one.
   - Select **Respect Ignore Differences** in order to skip syncing of the resources listed in the **Ignore Differences** section. Normally, the **Ignore Differences** section in the manifest is only to check whether a sync is required; when we sync, the entire set of resources are still synced. Note that this option has no effect when creating a new application, only when syncing existing ones.
+- The packaged Argo version has been upgraded from 2.13.2 to 2.13.5. 
 
 ## January 2025
 
