@@ -1,7 +1,7 @@
 ---
 title: Infrastructure as Code Management release notes
 sidebar_label: Infrastructure as Code Management
-date: 2025-02-06T17:00
+date: 2025-02-12T17:00
 tags: [Infrastructure as Code Management]
 sidebar_position: 17
 ---
@@ -36,7 +36,7 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 ::: -->
 
 ## February 2025
-### IAC-Server: Version TBC
+### IAC-Server: Version 1.116.0 & IAC-Manager: Version 1.61.4
 <!-- Released on 7 February 2025 -->
 #### New Features and Enhancements
 - **Module Registry:** We've introduced the Module Registry, a centralized repository that allows you to manage and publish versions of pre-built infrastructure modules. This feature supports versioning, enhances search functionality, and integrates seamlessly with existing IaCM configurations, all while providing detailed access control settings. 
