@@ -3,13 +3,8 @@ title: Quickstart Guide
 description: Get Started with Harness CDE (Gitspaces)
 sidebar_position: 2
 sidebar_label: Quickstart Guide
+redirect_from: /docs/cloud-development-environments/introduction/beta-usage
 ---
-
-:::info
-
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io 
-
-:::
 
 Harness CDE (also known as Gitspaces) are on-demand, remote development environments that can be launched instantly with a single click. This document serves as a quickstart guide to help users get started with Harness Gitspaces. Please refer to our [quickstart tutorial](/docs/cloud-development-environments/introduction/quickstart-tutorial.md) guide for a detailed, step-by-step demo on how to get started with Gitspaces.
 
