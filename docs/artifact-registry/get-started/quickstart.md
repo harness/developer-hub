@@ -9,11 +9,16 @@ import TabItem from '@theme/TabItem';
 
 The Harness Artifact Registry module allows you to quickly and easily store your digital artifacts. 
 
+Getting started with Artifact Registry follows these steps:
+- [Create a registry](/docs/artifact-registry/get-started/quickstart#create-a-registry)
+- [Create an upstream proxy](/docs/artifact-registry/get-started/quickstart#create-an-upstream-proxy)
+- [Connect the upstream proxy to the registry](/docs/artifact-registry/get-started/quickstart#connect-the-upstream-proxy)
+- [Use you registry](/docs/artifact-registry/get-started/quickstart#use-a-registry)
+
 ## Prerequisite
 Depending on your package manager, e.g. Docker, Helm or Maven, you may need to use its associated dependencies like the Docker CLI. 
 
 ## Create a registry
-
 <Tabs>
 <TabItem value="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/e3650c96-80e9-414d-aba1-64cb0d4db24d" title="Create an Artifact Registry" />
