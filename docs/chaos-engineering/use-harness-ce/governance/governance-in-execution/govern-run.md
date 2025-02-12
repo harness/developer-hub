@@ -53,19 +53,19 @@ This gives you 3 ways to define a condition from the **Condition Editor**:
 
 2. Add the **WHAT** clause. It blocks a fault that is **EQUAL TO** (or matches) or **NOT EQUAL TO** (everything else apart from the given value) pod delete. You can add more than one **WHAT** clause.
 
-	![what](./static/exec/condition-what.png)
+	![what](./static/chaosguard/what-condition.png)
 
 3. Add the **WHERE** clause. It blocks one or more infrastructure. Select more than one infrastructure by hovering over the field.
 
-	![where](./static/exec/condition-where.png)
+	![where](./static/chaosguard/where-condition.png)
 
 4. Add the **WHICH** clause. It blocks the infrastructure that has specific entries for **APPLICATION MAP**, **SERVICES**, **NAMESPACE** (mandatory), **KIND** (mandatory), and **APP LABEL**. You can add more than one **WHICH** clause.
 
-	![which](./static/exec/condition-which.png)
+	![which](./static/chaosguard/which-condition.png)
 
 5. Add the **USING** clause. It blocks specific service account. You can add more than one service account by clicking the field and adding service account name to it. Click **Save**.
 
-	![using](./static/exec/condition-using.png)
+	![using](./static/chaosguard/using-condition.png)
 
 :::tip
 - You can use both **'EQUAL'** and **'NOT EQUAL TO'** operators in the condition logic for WHAT, WHERE, WHICH and USING. 

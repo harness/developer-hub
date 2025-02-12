@@ -28,7 +28,7 @@ The different levels of security policy enforcement include (but are not limited
 ## Flow of control
 The security evaluation step iterates over every active (or enabled) [rule](#rule) for every experiment run in the project. If the evaluation is successful, you can proceed with the experiment. Upon failure, you can't iterate further in the experiment. Below is a flowchart that summarizes the flow of control when you enable a ChaosGuard rule for a fault or set of faults.
 
-    ![flow-chart](./static/chaosguard/flow-chart-chaosguard.png)
+    ![flow-chart](./static/chaosguard/flowchart-chaosguard.png)
 
 
 ## Low-level security governance requirements
