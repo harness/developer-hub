@@ -160,6 +160,34 @@ You can trigger a pipeline in Harness IDP Workflows using the **`user session to
 
 #### 1. Defining the **`token`** setup:
 This is defined under the `parameter.properties` spec to extract the user session token. This token is then used to execute the pipeline. 
+
+:::warning
+The **`token`** property used to fetch the **Harness Auth Token** is hidden on the **Review Step** using **`ui:widget: password`**. However, for this to function correctly in a **multi-page workflow**, the token property must be included under the **first `page`**.
+```YAML {12}
+parameters:
+  - title: <PAGE-1 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+    token:
+      title: Harness Token
+      type: string
+      ui:widget: password
+      ui:field: HarnessAuthToken
+  - title: <PAGE-2 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+  - title: <PAGE-n TITLE>  
+```
+:::
+
 ```YAML
 ```YAML
 token:
