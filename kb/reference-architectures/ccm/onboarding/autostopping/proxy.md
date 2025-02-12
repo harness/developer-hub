@@ -3,9 +3,9 @@ title: Proxy
 description: Cloud Cost Management - AutoStopping using a Proxy VM
 ---
 
-# Mantinence
+# Maintenance
 
-## Roatate API Key
+## Rotate API Key
 
 When the API key you used when provision the proxy expires, you will need to rotate the key manually.
 
