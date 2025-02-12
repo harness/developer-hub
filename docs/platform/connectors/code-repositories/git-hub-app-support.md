@@ -42,7 +42,6 @@ Follow the instructions in the GitHub documentation on [Creating a GitHub App](h
 - **Homepage URL:** Enter `https://harness.io/`.
 - **Webhook:** Deselect **Active**. The app is used for authentication and doesn't need to receive webhook events.
 - **Permissions:** Configure the following **Repository Permissions**.
-  - **Administration:** Select **Read & write**.
   - **Commit statuses**: Select **Read & write**.
   - **Contents:** Select **Read & write**.
   - **Metadata:** Select **Read-only**.
