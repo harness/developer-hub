@@ -6,7 +6,7 @@ sidebar_position: 18
 
 In June 2024, Harness acquired Split, now called Harness Feature Management & Experimentation (FME). This page provides information to support you during the transition to Feature Management & Experimentation in the Harness platform.
 
-If you are using standalone Split, our customer success and support teams will be in contact with you to help you ensure a smooth transition into FME.
+If you are currently accessing Split via app.split.io, our customer success and support teams will be in contact with you to help you ensure a smooth transition into FME on app.harness.io.
 
 For more information about the acquisition, go to the [Harness blog](https://www.harness.io/blog/harness-to-acquire-split).
 
