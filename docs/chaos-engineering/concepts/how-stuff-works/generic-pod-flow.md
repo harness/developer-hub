@@ -8,7 +8,6 @@ This topic describes the flow of control when you execute a generic Kubernetes p
 
 The diagram below describes the flow of control for a generic Kubernetes pod experiment. 
 
-// ![generic pod flow](./static)
 
 ### Step 1: Design and Launch an Experiment
 
