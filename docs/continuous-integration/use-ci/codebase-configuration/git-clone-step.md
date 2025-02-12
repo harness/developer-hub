@@ -71,7 +71,7 @@ The following topics provide more information about creating code repo connector
 
 :::warning
 
-Currently, attempting to use a connector with an SSH credential that uses a passphrase is not supported with Kubernetes build infrastructure. This will be supported in a future delegate version. 
+You must have delegate version 25.02.85201 and onwards in order to use a connector with an SSH credential that uses a passphrase with Kubernetes build infrastructure. For any earlier delegate version, this will not work. 
 
 :::
 
