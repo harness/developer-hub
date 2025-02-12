@@ -1,0 +1,7442 @@
+[
+    {
+        "flag": "FFM_11173_TARGET_GROUP_AND_OPERATOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_ASG_SKIP_INSTANCE_TERMINATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DEPLOY_TO_SPECIFIC_HOSTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_FLEXIBLE_TEMPLATES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_FIX_ABORT_RACE_CONDITIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_CG_FIXING_PIPELINE_RESUME",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_STATE_MACHINE_MAPPING_EXCEPTION_IGNORE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_IMPROVED_HELM_DEPLOYMENT_TRACKING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_NAV_MODULE_VISIBILITY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_USER_CD_LICENSE_VIEW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_WINRM_COPY_CONFIG_FILES_WITH_ENCODING_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "NG_SVC_ENV_REDESIGN",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_DISABLE_NOTES_UPDATE_AFTER_EXECUTION_COMPLETED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPELINE_PER_ENV_DEPLOYMENT_PERMISSION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "WF_VAR_MULTI_SELECT_ALLOWED_VALUES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CD_CONTAINER_STEP_DELEGATE_SELECTOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_ENABLE_TTY_LOGS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_8184_FEATURE_FLAG_TAGGING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_MODULE_REGISTRY_TESTING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "APPLICATION_DROPDOWN_MULTISELECT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_SERVICE_OVERRIDES_2_0_YAML_SUPPORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_DLITE_DISTRIBUTED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ALLOW_EXPRESSION_RESOLUTION_PIPELINE_ROLLBACK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CET_SINGLE_NOTIFICATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DEL_SELECTION_LOGS_READ_FROM_GOOGLE_DATA_STORE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "OPA_AIDA_WIDGET",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_OPTIMIZE_PIPELINE_QUERY_ON_AUTH",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_DEBEZIUM_ENABLED_CG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_K8S_ROLLOUT_STEP_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_RESOURCE_CONSTRAINT_INSTANCE_OPTIMIZATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CV_APM_GROUPED_DATADOG_METRICS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "GITOPS_STEP_DELEGATE_SELECTOR_PRECEDENCE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_AUDIT_LOG_STREAMING_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_INIT_STEP_FAILURE_STRATEGY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_FLAG_CLEANUP_ENABLE_DB_REFRESH",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_ENABLE_GITLAB_ON_PREM_FLOW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_HOST_SAMPLING_ENABLE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SSCA_ARTIFACT_REDESIGN_READ",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_BASELINE_DEFAULTING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_FILTER_ACTIVE_INSTANCES_SAM_SERVERLESS_PT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_NG_DISABLE_SPECIAL_CHARS_ESCAPE_OF_WINRM_ENV_VARS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CHAOS_LICENSING_MFE_COMPONENTS_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CIE_ENABLE_TART_MAC",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ELK_HEALTH_SOURCE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_8853_METRICS_SERVICE_DISCARD_METRICS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_DISCOVERY_ENABLE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_OPTIMIZE_WORKFLOW_EXECUTIONS_LISTING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "TEMPLATE_SCHEMA_VALIDATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "AZURE_WEBAPP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_SSH_WinRM_USE_CONNECTOR_AND_SM_DELEGATE_SELECTORS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CODE_IMPORTER_V2_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IDP_UI_API_BASED_RESTART",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_RESOLVE_TO_NULL_VALUE_BASED_ON_EXPRESSION_MODE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_NG_INSTANCE_SYNC_ALWAYS_RESET_PT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_NG_SECRET_RUNTIME_USAGE_EVENT_GENERATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_DOCKER_INFRASTRUCTURE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CIE_ENABLE_RUNTEST_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_ENABLE_OUTPUTS_STEP_FAILURE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SRM_DOWNTIME",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_NAV_PREFS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CFNG_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_NEW_ONBOARDING_INTEGRATIONS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_DISABLE_SEARCH_DEPLOYMENTS_PAGE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SSCA_SBOM_DRIFT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "WORKFLOW_EXECUTION_REFRESH_STATUS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_BULK_RECONCILIATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_ENABLE_READ_TARGET_FROM_HEADER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_RESTRICT_INVALID_TEMPLATE_AND_INPUT_SET_YAML_THROW_EXCEPTION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_OIDC_ENHANCED_SUBJECT_FIELD",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_PUBLISH_HEARTBEAT_METRICS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "USE_TEXT_SEARCH_FOR_EXECUTION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_HELM_FETCH_CHART_METADATA_NG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_IGNORE_TEST_CONNECTION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FF_FLAG_SYNC_THROUGH_GITEX_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_DISABLE_SM_CREDENTIALS_CHECK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_FIX_INCONSISTENT_USER_DATA",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_USER_ACCOUNT_LEVEL_DATA_FLOW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_ENABLE_GITHUB_ACTIONS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_HTTP_STEP_CERTIFICATE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SSCA_REPO_POSTURE_MANAGEMENT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_ENABLE_LOAD_FROM_CACHE_FOR_RETRY_FORM",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_TERRAFORM_TERRAGRUNT_PLAN_ENCRYPTION_ON_MANAGER_CG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_CACHE_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_MARK_RETRIED_STEP_GROUP_CHILDREN_RETRIED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "POLLING_INTERVAL_CONFIGURABLE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CCM_ENABLE_DATA_SCOPE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_AWS_EKS_CLUSTER_MANUAL_CONFIGURATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_HOSTED_BUILDS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_DISABLE_EXPIRING_TO_MANUAL_INTERVENTION_CANDIDATE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_AZURE_INFRA_DEPLOYMENTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "TI_DOTNET",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_EXPORT_DEPLOYMENT_LOGS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ECS_MULTI_LBS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_ASYNC_VALIDATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_GITX_WEBHOOK_EVENT_VALIDATION_UI",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CCM_COMMORCH_RDS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CUSTOM_DASHBOARD_INSTANCE_FETCH_LONGER_RETENTION_DATA",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SSCA_MANAGER_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ARTIFACT_PERPETUAL_TASK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_REMOVE_FQN_DEPENDENCY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_11986_SDK_KEY_EXTRA_DETAILS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "HELM_CHART_VERSION_STRICT_MATCH",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "NG_DASHBOARDS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_CUSTOM_BANNERS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_ENABLE_SLI_BUCKET",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "TI_MFE_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_FIX_PIPELINE_INTERRUPT_NO_LEAVES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_DLC_SIGNED_URL",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CUSTOM_DASHBOARD_ENABLE_CRON_DEPLOYMENT_DATA_MIGRATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ENABLE_DEFAULT_TIMEFRAME_IN_DEPLOYMENTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FF_ENABLE_60_DAY_TARGET_DELETION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_SERVICE_ENV_CLONING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_8823_AIDA_SDK_CODE_SAMPLE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "HELM_CHART_NAME_SPLIT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_APPROLE_CUSTOM_PATH",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_ENABLE_MULTIPLE_IDP_SUPPORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "WORKFLOW_DATA_COLLECTION_ITERATOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CF_CUSTOM_EXTRACTION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_REMOVE_AMBIANCE_POPULATION_IN_NODE_EXECUTION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "RESOURCE_CONSTRAINT_MAX_QUEUE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_ENCODE_API_REQUESTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_OPTIMISE_EXPRESSION_ENGINE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_TEMPLATE_SET_GIT_CONTEXT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CUSTOM_DASHBOARD",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "MOVE_AWS_SSH_INSTANCE_SYNC_TO_PERPETUAL_TASK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_CREATE_AMBIANCE_FROM_EXECUTION_CONTEXT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_DISABLE_TTL_INCREASE_FOR_PMS_COLLECTIONS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_FAVORITES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "TIME_SCALE_CG_SYNC",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "NG_HARNESS_APPROVAL",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_DO_RBAC_CHECK_ON_SECRETS_FOR_PATH_REFERENCE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "READ_ENCRYPTED_DELEGATE_TOKEN",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "TRIGGER_PROFILE_SCRIPT_EXECUTION_WF",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ADD_GIT_INFO_IN_POST_DEPLOYMENT_ROLLBACK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ENABLE_VM_DELEGATE_SELECTOR",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CUSTOM_APM_24_X_7_CV_TASK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CV_UI_HEALTHSOURCE_SERVICE_INSTANCE_PREVIEW",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_MARK_PARENT_PIPELINE_STATUS_WAITING_AS_CHILD",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_ENABLE_BARE_METAL",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "HELM_MERGE_CAPABILITIES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_THEME_BASED_DORA",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_LIVE_DASHBOARD_STATS_DEBUGGING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_ENABLE_REQUEST_SLO",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_ET_JIRA_INTEGRATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_CF_CLI_ENVIRONMENT_VARIABLE_SUPPORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "RESOLVE_DEPLOYMENT_TAGS_BEFORE_EXECUTION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STACKDRIVER_SERVICEGUARD",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CV_USE_SEPARATE_LE_TASK_TYPE_FOR_LOG_CLUSTERING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DO_NOT_RENEW_APPROLE_TOKEN",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_1859",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_ENABLE_SSH_MODULE_REGISTRY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_INPUTSET_RBAC_PERMISSIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_ENABLE_SHARING_FILTERS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "MERGE_RUNTIME_VARIABLES_IN_RESUME",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_USER_DELETION_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SAVE_ARTIFACT_TO_DB",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_ENABLE_VALIDATION_WORKFLOW_PIPELINE_STAGE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CCM_COST_CATEGORIES_DASHBOARD",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_11228_ENABLE_EVALUATOR_V2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ENABLE_GIT_TOKEN_FOR_PUBLIC_REPO",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CUSTOM_ARTIFACT_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CVNG_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "OPA_GIT_GOVERNANCE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_NG_GITX_CACHING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_STEP_PALETTE_WIZ",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_HIDE_AIDA_RCA",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_K8S_SOCKET_CAPABILITY_CHECK_NG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_TIMESCALE_DB_QUERY_OPTIMIZATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_METRIC_LESS_SLO_ENABLE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_PCF_DEPLOYMENTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "OPA_IMPORT_FROM_GIT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_LDAP_PARALLEL_GROUP_SYNC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_CG_TIMEOUT_FAILURE_AT_WORKFLOW",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ADD_MANIFEST_COLLECTION_STEP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CHAOS_ECS_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CUSTOM_POLICY_STEP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "MULTI_SERVICE_INFRA",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_VALIDATE_SCHEMA_IN_VALIDATE_API",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "REMOVE_USERGROUP_CHECK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_REDUCE_KEYWORDS_PERSISTENCE_ON_EXECUTIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_GOOGLE_CLOUD_RUN",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_VARIABLES_MERGE_V2_OPTIMIZED_FLOW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_FLAG_CLEANUP_ENABLE_REGO_BACKEND",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "NEW_DEPLOYMENT_FREEZE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "LIMITED_ACCESS_FOR_HARNESS_USER_GROUP",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_GITX_AUTOCREATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_DISABLE_CG_ITERATORS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_DISABLE_POLLED_KEYS_EVICTION_FOR_ARTIFACT_TRIGGER_POLLING_DOCUMENT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_ENABLE_EXECUTE_STEP_CAPABILITY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_LE_STATUS_REST_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_CUSTOM_NOTIFICATION_TEMPLATES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_DASHBOARD_STATS_OPTIMIZE_DEPLOYMENTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_DISABLE_SECRET_DETAILS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ARTIFACT_STREAM_METADATA_ONLY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_FIX_RETRY_FAILED_PIPELINE_WITH_USE_SERVICES_FROM_STAGE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "EXTERNAL_USERID_BASED_LOGIN",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_6683_ALL_ENVIRONMENTS_FLAGS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IDP_2_0",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_USER_ACCOUNT_LEVEL_DATA_MIGRATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ADD_EXPRESSION_RESOLUTION_FOR_OVERRIDES_V2_AT_SERVICE_STEP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_SVC_ENV_DASHBOARD_FOR_ACCOUNT_AND_ORG_LEVEL",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CUSTOM_DASHBOARD_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_TRIGGER_MAPPING_V2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_ENABLE_GIT_SYNC_YAML_VALIDATE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_SHOW_SERVICE_ENVIRONMENT_NAMES_IN_DROPDOWN",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_VM_CONTAINERLESS_RUN_ASUSER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FF_ENABLE_ADMIN_HANDLER_V2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_GITLAB_NEW_ONBOARDING_FLOW_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "TIME_SERIES_WORKFLOW_V2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_QUERY_OPTIMIZATION_GLOBAL",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_TRIM_NEW_LINE_SUFFIX",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DBOPS_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DISABLE_HARNESS_SM",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ENHANCED_GCR_CONNECTIVITY_CHECK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_FLAG_CLEANUP_USE_MATERIALISED_VIEW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "For_Testing_Only_FFMigration",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "GITOPS_GET_APP_DETAILS_STEP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_RUN_SKIPPED_SPAWNED_STAGES_OR_STEPS_IN_RETRY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CV_DEMO",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DISABLE_SERVICEGUARD_LOG_ALERTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "INSTANCE_SYNC_V2_CG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_DESERIALIZE_JSON_NODE_TO_SNAKE_YAML",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_NOT_FREEZE_DELEGATE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_AUDIT_LOGS_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SRM_ENABLE_GRAFANA_LOKI_LOGS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_AIDA_SUPPORT_DEFLECTION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_OPA_WORKSPACE_GOVERNANCE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "TIME_SERIES_SERVICEGUARD_V2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_K8S_TRAFFIC_ROUTING_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CF_ROLLBACK_CONFIG_FILTER",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_USE_S3_FOR_DLC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IRO_AI_CAPABILITIES_UI",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_BLOCK_SECRET_RESOLUTION_ON_TRIGGER_EXECUTIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "UPDATE_EMAILS_VIA_SCIM",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CCM_COMMITMENT_V1",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ENABLE_BUILD_CACHE_K8",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "OVERRIDE_VALUES_YAML_FROM_HELM_CHART",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_RESTRICT_NEXT_OF_STARTING_NODE_IN_NODE_GRAPH",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_7121_AI_INSIGHTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SAVE_TERRAFORM_OUTPUTS_TO_SWEEPING_OUTPUT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_UT_JSON_FLAG",
+        "identifier": "all_enabled",
+        "kind": "string",
+        "value": "{\"github\":true,   \"azure_devops\":true,   \"jira\":true }"
+    },
+    {
+        "flag": "SSCA_ARTIFACT_REDESIGN",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "TEMPLATIZED_SECRET_MANAGER",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CHAOS_GAMEDAY_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IDP_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PURGE_DANGLING_APP_ENV_REFS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_DISABLE_RESOURCE_OPTIMIZATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_ENABLE_RESTRICTION_IN_TRIGGER_HEADERS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_RETURN_FINAL_EXPRESSION_ON_ERROR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "REMOVE_STENCIL_MANUAL_INTERVENTION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_HELM_BG_STRATEGY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_TF_TG_HARD_RESET_GIT_REF",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "HELM_STEADY_STATE_CHECK_1_16",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_MANAGE_USERS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_CREDIT_CARD_ONBOARDING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ECS_REGISTER_TASK_DEFINITION_TAGS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_ENABLE_SAML_ASSERTION_CACHE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ON_DEMAND_ROLLBACK_WITH_DIFFERENT_ARTIFACT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_INFO_LOGS_GITX_WEBHOOKS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_IP_ALLOWLIST_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STOP_SHOWING_RUNNING_EXECUTIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "AUTO_REJECT_PREVIOUS_APPROVALS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CUSTOM_APM_CV_TASK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "GIT_HTTPS_KERBEROS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_FIX_STUCK_EXECUTION_AFTER_TRANSITION_FAILURE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_NEW_USERINFO_PAGE_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ENABLE_CVNG_INTEGRATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "LOG_APP_DEFAULTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_NEW_BA_PROFILES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_EXECUTION_LIST_CARD_VIEW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_FORCE_DELETE_CONNECTOR_SECRET",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PRUNE_KUBERNETES_RESOURCES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEND_SLACK_NOTIFICATION_FROM_DELEGATE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SHOW_REFINER_FEEDBACK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_ENABLE_INTELLIGENT_DEFAULTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_12083_ALL_ENVIRONMENTS_LAYOUT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SRM_ENABLE_AZURE_LOGS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDP_UPDATE_INSTANCE_DETAILS_WITH_IMAGE_SUFFIX",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FIXED_INSTANCE_ZERO_ALLOW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "MOVE_AWS_CODE_DEPLOY_INSTANCE_SYNC_TO_PERPETUAL_TASK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "AMAZON_ECR_AUTH_REFACTOR",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "MODULE_NG_SUBSCRIPTION_PAGE_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "REFACTOR_ARTIFACT_SELECTION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_CV_UI_HEALTHSOURCE_SERVICE_INSTANCE_PREVIEW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_MICRO_FRONTEND",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ASYNC_ARTIFACT_COLLECTION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "BT_5594_TEST_FLAG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CIE_HOSTED_VMS_MAC",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IDP_ENABLE_WORKFLOW_FORM_CONTEXT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ON_NEW_ARTIFACT_TRIGGER_WITH_LAST_COLLECTED_FILTER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_SETTINGS_INFINITY_SCROLL_FIX",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CE_HARNESS_ENTITY_MAPPING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_10140_TARGET_SCALING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_DASHBOARD_PROJECTION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_GIT_CLONE_ENHANCED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CV_NEWRELIC_NEW_API",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DISABLE_WINRM_COMMAND_ENCODING_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_OPTIMISE_EXPORTED_VARIABLES_FUNCTOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_ENABLE_VERIFY_STEP_LONG_DURATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_INDIRECT_LOG_UPLOAD",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_NEW_PAGE_SIZE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_PANORAMA",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STO_JIRA_INTEGRATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_SKIP_INFRA_VALIDATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_USE_SINGLE_STEP_TASK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CV_SUCCEED_FOR_ANOMALY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "LANDING_OVERVIEW_PAGE_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_RETURN_NULL_ON_EXPRESSION_FAIL_PIPELINE_STAGE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_ENABLE_TOPICS_SUPPORT_FOR_GITHUB",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_AWS_SESSION_TOKEN_SUPPORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CF_CLI7",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CG_LICENSE_USAGE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CODE_SECURITY_SCANNING_ON_PUSH",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "COMPARE_YAML_IN_GIT_SYNC",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_ENABLE_MODULE_REGISTRY_TESTING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "OUTCOME_GRAPHQL_WITH_INFRA_DEF",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_CLONE_PIPELINE_USE_DEFAULT_IF_SOURCE_BRANCH_NOT_PASSED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SSCA_ARTIFACT_SIGNING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ADD_CHILDREN_REGARDLESS_OF_OLD_RETRY_VALUE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_ASG_ENABLE_METRICS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CF_ALLOW_SPECIAL_CHARACTERS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CUSTOM_MANIFEST",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PCF_OLD_APP_RESIZE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_REMOVE_RESUME_EVENT_FOR_ASYNC_AND_ASYNCCHAIN_MODE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "HONOR_DELEGATE_SCOPING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_TF_VAR_FILES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_REMOVE_SAVE_ORCHESTRATION_LOG_EVENTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_ENABLE_NG_LDAP_SETTINGS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "QUEUED_COUNT_FOR_QUEUEKEY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_EASY_ONBOARDING_GITHUB",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_ENVIRONMENT_QUERY_LOGS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_ENABLE_TAS_ARTIFACT_AS_MANIFEST_SOURCE_NG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_RECENT_SCOPES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ENABLE_ADDING_SERVICE_VARS_TO_ECS_SPEC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FF_ENABLE_ARCHIVED_FLAGS_DELETION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_REDIS_METRICS_AGGREGATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "USE_K8S_API_FOR_STEADY_STATE_CHECK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ACCOUNT_BASIC_ROLE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CLEAN_UP_OLD_MANAGER_VERSIONS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_WORKSPACE_SHA_CLONE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_SERVICE_OVERRIDES_2_0_YAML_V2_SUPPORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_USE_SECONDARY_NODE_FOR_TIMESCALE_QUERIES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_USE_SINGLE_QUOTES_IN_SECRET_FUNCTOR",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CUSTOM_DEPLOYMENT_ARTIFACT_FROM_INSTANCE_JSON",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CVNG_VERIFY_STEP_DEMO",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "KUBERNETES_EXPORT_MANIFESTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_MOVE_FILE_STORE_FUNCTOR_TO_PIPELINE_SERVICE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_ALLOW_DISABLE_USER_GITCONFIG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_ENABLE_ANALYZE_DEPLOYMENT_STEP",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SSCA_REPO_ARTIFACT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "TIME_RANGE_FREEZE_GOVERNANCE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "HOSTED_BUILDS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_OPA_CD_ENTITIES_GOVERNANCE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ML_CODEGEN_ACCESS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CHECKMARX_SCA_SUPPORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CV_FAIL_ON_EMPTY_NODES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_DISCARD_ALL_METRICS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "HARNESS_TAGS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "JDK11_UPGRADE_BANNER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_ERROR_ENHANCEMENTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "BIND_FETCH_FILES_TASK_TO_DELEGATE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDB_SCHEDULED_PLAN_DISABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_INCLUDE_EMPTY_VALUE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CE_GCP_CUSTOM_PRICING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_PARSE_SAVINGS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SSCA_ARTIFACTS_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ALLOW_HTTP_ANONYMOUS_GITHUB_CONNECTOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_SAVE_EXECUTION_EXPRESSIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_8853_METRICS_SERVICE_DISCARD_TARGETS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_OPA_INTEGRATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_ENABLE_LICENSE_USAGE_COMPUTE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_DISASSOCIATE_TRELLIS_INVESTMENT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ARTIFACT_STREAM_REFACTOR",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CG_GIT_POLLING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_SWITCH_ACCOUNT_V2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_SERVICE_NOW_ADVANCE_CONFIGURATION_FIELD",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_UT_BOOLEAN_FF",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "AMI_IN_SERVICE_HEALTHY_WAIT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CCM_CLUSTER_ORCH",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_IMPOSE_EXECUTION_LIMITS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_DEV_PROD_NEW_INTERVALS_ENABLED_TENANTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CD_MAKE_CD_LICENSE_USAGE_REPORTS_ASYNC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CODE_ENABLE_MFE_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_HC_LIBERAL_TOKEN",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_MOVE_INSTANCE_FUNCTOR_TO_PIPELINE_SERVICE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_STOP_PLAN_EXECUTION_METADATA_DATA_DUPLICATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_USE_IMPERSONATED_DELEGATE_LOGGING_TOKEN",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_ALLOW_UI_JIRA_CUSTOM_DATETIME_FIELD",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_ENABLE_MS_TEMPLATE_RECONCILIATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_USE_BULK_SECRET_EVALUATORS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CUSTOM_DASHBOARD_ENABLE_REALTIME_DEPLOYMENT_MIGRATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_ENABLE_REDIS_SET_COMMAND_FOR_CDN",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "GIT_ACCOUNT_SUPPORT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_ENFORCE_TIME_RANGE_DEPLOYMENTS_WITHOUT_APP_ID",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_ENABLE_HEALTHSOURCE_CLOUDWATCH_METRICS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "AZURE_ARM",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CE_RERUN_HOURLY_JOBS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_INVALID_SECRET_ERROR",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FME_REDIRECTION_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_STATIC_YAML_SCHEMA",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SKIP_BASED_ON_STACK_STATUSES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_AWS_SSH_DEPLOYMENTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDP_AWS_SAM",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_TERRAFORM_TERRAGRUNT_PLAN_ENCRYPTION_ON_MANAGER_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_ADOPT_DELEGATE_DECRYPTION_ON_SERVICE_VARIABLES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_FETCH_ARTIFACT_FROM_DB",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CVNG_TEMPLATE_VERIFY_STEP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "HELP_PANEL",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ML_ENABLE_AI_DEVOPS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_MTTR_PAGERDUTY_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ACCOUNT_ID_MIGRATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_DISABLE_ALL_CG_TRIGGERS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PERSIST_MONITORED_SERVICE_TEMPLATE_STEP",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SERVICE_DASHBOARD_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_AIDA_PR_GITHUB",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "YAML_APIS_GRANULAR_PERMISSION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "APPD_CV_TASK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDP_USE_K8S_DECLARATIVE_ROLLBACK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_RBAC_V2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SOCKET_HTTP_STATE_TIMEOUT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_INPUT_SET_MIGRATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_POPULATE_CI_VARIABLE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CV_ENABLE_DATA_RETENTION_FROM_PIPELINE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "GITOPS_MULTI_SOURCE_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IDP_ENABLE_EDIT_HARNESS_CI_CD_PLUGIN",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STO_STEP_PALETTE_CHECKOV",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DISABLE_DEPLOYMENTS_SEARCH_AND_LIMIT_DEPLOYMENT_STATS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "NG_TEMPLATE_GITX",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_CACHE_OLD_RETRIED_STEP_GROUP_GRAPH",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_REMOVE_PIPELINE_ROLLBACK_FILTER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_USE_HARNESS_CODE_FOR_INLINE_ENTITIES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CD_TRIGGER_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_BITBUCKET_STATUS_KEY_HASH",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "NEW_KUSTOMIZE_BINARY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "USE_ANALYTIC_MONGO_FOR_GRAPHQL_QUERY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "BOOKING_RECOMMENDATIONS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_OVERVIEW_PAGE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_7258_INTERCOM_VIDEO_LINKS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_NEW_ACCOUNT_LICENSE_MANAGEMENT_FLOW",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CHAOS_WINDOWS_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CV_MONITORED_SERVICE_TEMPLATIZATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DELEGATE_TASK_CAPACITY_CHECK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DISABLE_LOCAL_LOGIN",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FF_ENVIRONMENT_TARGET_CHANNEL_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_9266_ENABLE_AIDA",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_LICENSE_TRACKING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_PAUSE_JIRA_APPROVAL_CG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_PIPELINE_SDK_PRIORITY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "HAR_TRIGGERS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_NG_BATCH_GET_TEMPLATES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_DISABLE_MTLS_CHECK_ON_CG_DELEGATES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_RUN_INVALID_AUDITS_CLEANUP",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_SPLIT_PERPETUAL_TASK_ITERATOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SAVE_SHELL_SCRIPT_PROVISION_OUTPUTS_TO_SWEEPING_OUTPUT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_MERGE_PIPELINE_EXECUTION_SUMMARY_UPDATE_FLOW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ARTIFACT_STREAM_DELEGATE_TIMEOUT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DEBEZIUM_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_WORKFLOW_RBAC_ON_TRIGGER_RESOURCE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CIE_USE_DOCKER_BUILDX",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "NEXT_GEN_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_JIRA_CHURN_RATE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CD_JIRA_CG_FETCH_ISSUE_DEBUG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_IGNORE_APPROVAL_WAITING_FROM_CONCURRENT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_SKIP_WEBHOOK_TRIGGER_EXECUTION_ON_SPECIAL_KEYWORDS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DISABLE_INSTANCE_STATS_JOB_CG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FF_FLAG_CLEANUP_PHASE_2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_ENABLE_MODULE_REGISTRY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_SEND_SECRET_REF_FOR_SHELLSCRIPT_VARIABLES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_NEW_SCIM_STANDARDS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "WHITELIST_GRAPHQL",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DEL_NOTIFICATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "GITOPS_AGENT_HELM_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "HIDE_ABORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_ALLOW_WFLOW_VARIABLES_TO_CONDITION_SKIP_PIPELINE_STAGE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_CUSTOM_CHANGE_SOURCE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_PROJECT_SCOPED_RESOURCE_CONSTRAINT_QUEUE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CUSTOM_DASHBOARD_ENABLE_CRON_INSTANCE_DATA_MIGRATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FME_EMBEDDED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_REMOVE_ORCHESTRATION_LOG_EVENTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PLG_CD_CLI_WIZARD_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "EXTRA_LARGE_PAGE_SIZE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_DISABLE_INSTANCE_SYNC_PT_CREATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FREE_PLAN_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_MONITORED_SERVICE_VALIDATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_INFRA_DEFINITION_VALIDATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ADDON_RETRY_MARKER_FILE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FF_ENABLE_CLIENT_SDK_CDN_CACHE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "GLOBAL_CV_DASH",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_MIGRATE_STEP",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "NEW_KUBECTL_VERSION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_RETRY_STEP_GROUP",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_SHOW_ALL_EXECUTIONS_FILTER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SSCA_REMEDIATION_TRACKER",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_NG_TRIGGER_MULTI_ARTIFACTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DEL_EVALUATE_SECRET_EXPRESSION_SYNC",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DEL_SECRET_EVALUATION_VERBOSE_LOGGING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "OUTAGE_CV_DISABLE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_YAML_VERSIONING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "NOTIFY_GIT_SYNC_ERRORS_PER_APP",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_GCP_GCS_STREAMING_DESTINATION_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_METHOD_INVOCATION_NEW_FLOW_EXPRESSION_ENGINE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CHAOS_V2_ONBOARDING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "REGISTRY_VANITY_URL_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "BYPASS_HELM_FETCH",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CCM_RAPIDCUR",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_K8S_PATCH_STEP_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CE_HARNESS_INSTANCE_QUERY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CET_EVENTS_CHART",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CHAOS_PROBE_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CLOUDFORMATION_SKIP_WAIT_FOR_RESOURCES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "GIT_HOST_CONNECTIVITY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SSCA_SLSA_COMPLIANCE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "TG_USE_AUTO_APPROVE_FLAG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CCM_ENABLE_SEASONAL_PROPHET",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_EVENT_BRIDGE_WEBHOOK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_GITOPS_LABELS_BASED_ACCESS_TO_APPS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_SERVICE_INFRA_FAILURE_STRATEGY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DELEGATE_TASK_LOAD_DISTRIBUTION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_GET_FILE_CONTENT_ONLY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_EMAIL_USE_DEFAULT_FORMATTING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CV_VERIFICATION_DASHBOARD_CUSTOM_FIELD_COUNT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_UT_JSONFF",
+        "identifier": "all_enabled",
+        "kind": "json",
+        "value": "\"{\\\"github\\\":true,   \\\"azure_devops\\\":true,   \\\"jira\\\":true }\""
+    },
+    {
+        "flag": "SPG_UI_ALLOW_ENCODING_FOR_JENKINS_ARTIFACT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_JIRA_PHASE_1",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_CG_REDUCED_EXPORT_LOG_LIMIT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_NG_K8S_PASS_RELEASE_METADATA",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_ENABLE_HARNESS_CODE_REPO",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SRM_TELEMETRY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SSCA_UNIFIED_ARTIFACT_FLOW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "USAGE_SCOPE_RBAC",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_NEW_DEPLOYMENT_FREEZE_EXCLUSIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "THREE_PHASE_SECRET_DECRYPTION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ENABLE_CHECK_STATE_EXECUTION_STARTING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ENV_GROUP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_BUDGET",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_SHOW_TRELIS_NEW_INTERVAL",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_UT_JSON_FF",
+        "identifier": "all_enabled",
+        "kind": "string",
+        "value": "{\"github\":true,   \"azure_devops\":true,   \"jira\":true }"
+    },
+    {
+        "flag": "UPGRADE_JRE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "GRAPHQL_WORKFLOW_EXECUTION_OPTIMIZATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_DRIFT_DETECTION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "USE_IMMUTABLE_DELEGATE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CV_UI_DISPLAY_SHOULD_USE_NODES_FROM_CD_CHECKBOX",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FAIL_WORKFLOW_IF_SECRET_DECRYPTION_FAILS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_11900_DELETE_ALL_TARGETING_RULES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CCM_LABELS_FLATTENING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_CUSTOMIZE_PIPELINE_TTL",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_SERVICE_OVERRIDES_2_0",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FREEZE_DURING_MIGRATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_FIX_PIPELINE_STAGE_ABORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_ARTIFACTS_APPLY_TEMPLATES_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_ENABLE_TRIGGER_YAML_VALIDATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_K8S_CUSTOM_YAML_PARSER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_NG_SUBSCRIPTION_PAGE_V2_GITOPS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_FLAG_CLEANUP_ENABLE_STALE_FLAG_CHECKS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_HARNESS_CODE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_ENABLE_ELASTIC_SEARCH",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "USE_TF_CLIENT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IDP_ENABLE_CUSTOM_PLUGINS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_STEP_PALETTE_VERACODE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_ENCODE_SCM_API_REQUESTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_INCREASE_LOG_LIMIT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DISABLE_WINRM_COMMAND_ENCODING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ENABLE_AI_DEVOPS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_ACTIVITY_HISTORY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "JENKINS_ARTIFACT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "VIEW_USAGE_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CCM_CURRENCY_PREFERENCES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CVNG_SPLUNK_METRICS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_SIMPLIFY_LOG_BASE_KEY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_CONTAINER_DEPLOYMENTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDE_OVH_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ENABLE_ENCRYPTING_RAW_OUTPUT_YAML",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_REMOVE_CONNECTOR_HEARTBEAT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_ENABLE_PLUGIN_OUTPUT_SECRETS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ENABLE_TEST_SUMMARY_AS_OUTPUTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_OVERRIDE_SERVICE_URLS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_SETTINGS_ACCORDION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "GIT_SYNC_NG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_SECRETS_OBSERVER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_TRIGGER_EVENTS_PAGE_UI",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CCM_BUDGET_CASCADES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ASYNC_EXECUTABLE_USE_SELECTORS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CUSTOM_DASHBOARD_DEPLOYMENT_FETCH_LONGER_RETENTION_DATA",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ECS_AUTOSCALAR_REDESIGN",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_PREFERENCE_LANDING_PAGE_URL",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "QUEUE_CI_EXECUTIONS_CONCURRENCY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_GRAPHQL_VERIFY_APPLICATION_FROM_USER_GROUP",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_SAVE_REJECTED_BY_FREEZE_WINDOWS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_ENABLE_SIMPLE_VERIFICATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ENTITY_AUDIT_RECORD",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "GLOBAL_COMMAND_LIBRARY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_EXECUTION_SWITCH_FIELD_SOURCE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "TERRAFORM_CONFIG_INSPECT_VERSION_SELECTOR",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "AWS_OVERRIDE_REGION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_PMS_COLLECTION_TTL_FIELD_MIGRATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_CODEBASE_SELECTOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DISABLE_PIPELINE_SCHEMA_VALIDATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_9497_PROXY_KEY_MANAGEMENT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_RBAC_CHECK_UP_THE_HIERARCHY_DELEGATE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STO_SONARQUBE_BRANCHING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_ARTIFACT_DISABLE_VALIDATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_OUTPUT_VARIABLES_AS_ENV",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_5332_GIT_EX_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "INFRA_MAPPING_BASED_ROLLBACK_ARTIFACT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_ENABLE_LICENSE_USAGE_COMPUTE_UI",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_EPIC_REPORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_CG_LIST_RESUMED_PIPELINES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SRM_LOG_FEEDBACK_ENABLE_UI",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ECS_BG_DOWNSIZE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "GCB_CI_SYSTEM",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_BULK_RECONCILIATION_PHASE2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_CONNECTOR_ENCRYPTION_PRIVILEGED_CALL",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_CHECKMARX_SCA_SUPPORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "USE_GET_FILE_V2_GIT_CALL",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CCM_ANOMALIES_V2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ENABLE_PIPELINE_GET_ASYNC_VALIDATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_OVERRIDES_GITX",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_TRIGGER_EXECUTION_DETAILS_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DISABLE_LOGML_NEURAL_NET",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "NG_TEMPLATES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "WINRM_ASG_ROLLBACK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_TERRAFORM_SUPPORT_OPTIONAL_VAR_FILE_PATHS_NG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_K8CLEANUP_DEFAULT_GRACE_PERIOD",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_PIPELINE_SETTINGS_ENFORCEMENT_LIMIT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ATTRIBUTE_TYPE_ACL_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CET_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ENABLE_IMAGE_PULL_POLICY_VM",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ENABLE_K8_BUILDS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_ENABLE_BLOCK_UNBLOCK_EXECUTION_ADMIN_ACTION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_ALLOW_TO_SET_PUBLIC_ACCESS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "RANCHER_SUPPORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SYNC_GIT_CLONE_AND_COPY_TO_DEST_DIR",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_DISABLE_EVALUATE_EXPORT_VARIABLES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_VALIDATE_INPUT_SET_IDENTIFIER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_TI_DASHBOARDS_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_CODE_ERROR_NOTIFICATIONS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_PIPELINE_ABORT_RBAC_PERMISSION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_PRESERVE_WINRM_WORKING_DIR_FOR_COMMAND_UNITS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SSCA_ENFORCEMENT_EXEMPTIONS_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SSH_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "WORKFLOW_PIPELINE_PERMISSION_BY_ENTITY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "HTTP_HEADERS_CAPABILITY_CHECK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "NEW_RELIC_CV_TASK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_OPTIMIZE_EXECUTIONS_LIST_VIEW_WITH_HINT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEMANTIC_SEARCH_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_ENABLE_NOTIFICATION_RULES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "AZURE_SAML_150_GROUPS_SUPPORT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "INSTANT_DELEGATE_DOWN_ALERT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_ALLOW_GET_BUILD_SYNC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CD_TRIGGERS_REFACTOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_DISABLE_GIT_SAFEDIR",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CODE_PULLREQ_LABELS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "REFACTOR_STATEMACHINEXECUTOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_PYTHON_TI",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DEFAULT_ARTIFACT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_TARGETS_V2_RETRIEVE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_OPTIMIZE_S3_TRIGGER_POLLING_TASK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_10508_SPLIT_CREATE_EDIT_RBAC",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_COST_ESTIMATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_SELECT_SPECIFIC_SERVICE_ACCOUNT_IN_RESOURCE_GROUP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_OCCURRENCE_DETECTION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "VALIDATE_SERVICE_NAME_IN_FILE_PATH",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "WEBHOOK_TRIGGER_AUTHORIZATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_REMOTE_DEBUG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_REDIS_METRICS_AGGREGATION_POLLER",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "OPTIMIZED_TF_PLAN",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_DISABLE_RUNTIME_CSM_CHECK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_DEV_PROD_PARENT_PROFILES_ENABLED_TENANTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SSCA_ENFORCEMENT_OPA",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STO_EXEMPTION_SETTING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_VALIDATE_WORKSPACE_ACCESS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_HARD_IMPOSE_EXECUTION_LIMITS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SRM_LICENSE_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ENABLE_PIPELINE_SCOPED_OIDC_SUB",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_ENABLE_RUNTESTV2_DOTNET",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DEL_FETCH_TASK_LOG_API",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FETCH_PIPELINE_HEALTH_FROM_NEW_TABLE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "WINRM_SCRIPT_COMMAND_SPLIT_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_12020_ADD_EDIT_ATTRIBUTES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "TIMEOUT_FAILURE_SUPPORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_SSH_CLIENT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_4737_JIRA_INTEGRATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_ENFORCE_API_KEY_SCOPE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "NG_LICENSES_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_UPDATE_CONNECTOR_HEARTBEAT_PPT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "BUILD_CREDITS_VIEW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_CG_FORCE_UPSERTYAML_RETURN_ENTITY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CODE_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CODE_VANITY_URL_GIT_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SRM_ET_EXPERIMENTAL",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_APPROVAL_AND_STAGE_NOTIFICATIONS_WITH_CD_METADATA",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_PERFORM_SHELL_SCRIPT_HOST_CAPABILITY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FF_METRICS_AGGREGATION_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_ENABLE_BASIC_ROLE_FOR_PROJECTS_ORGS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_BA_INCLUDE_UNRESOLVED_ISSUES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_DISABLE_MAX_TIMEOUT_CONFIG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_USE_S3_FOR_CACHE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_NEW_BA_COMBINED_WIDGET",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_MULTI_DEPLOYMENT_ON_FAILURE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_NG_SUBSCRIPTION_PAGE_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_USE_WEBHOOK_PAYLOAD_FILE_IN_GITX",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_YAML_SIMPLIFICATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ADDON_LE_WINDOWS_ROOTLESS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ENABLE_CERT_VALIDATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "GITSTATUSFLAG",
+        "identifier": "false",
+        "kind": "string",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_NOTIFY_AFTER_GRAPH_UPDATE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_OPTIMIZE_ENVIRONMENT_VIEW_BUILDER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_ONE_CLICK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_CREATE_MERGE_PLAN_V2_OPTIMIZED_FLOW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_USE_NG_DELEGATE_LDAP_AUTH",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "OPTIMISE_CUSTOM_DEPLOYMENT_INSTANCE_SYNC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_EXPRESSION_DISABLE_COMPLEX_JSON_SUPPORT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_REMOVE_STRATEGY_METADATA_POPULATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ROLLBACK_PROVISIONER_AFTER_PHASES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_SERVICE_NOW",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_REMOVE_RESTRICTION_APPS_UNNECESSARY_CALLS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DYNATRACE_MULTI_SERVICE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_CITI_MTLS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_CG_SEGMENT_EVENT_FIRST_DEPLOYMENT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_AWS_AMI_DEPLOYMENTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_MARK_PIPELINE_AS_FAILURE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DEPLOYMENT_SUBFORMIK_WORKFLOW_DROPDOWN",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_DATA_OPA",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_LIST_REPO_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_TEST_FF_SDK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "LDAP_SYNC_WITH_USERID",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_HIDE_ACCOUNT_LEVEL_MANAGED_ROLE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SLACK_APPROVALS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_LOG_SERVICE_ENABLE_DOWNLOAD_LOGS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_STEP_PALETTE_TRACEABLE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "USE_CDC_FOR_PIPELINE_HANDLER",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ALLOW_USER_TYPE_FIELDS_JIRA",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_ENABLE_BUFFERED_TARGETS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_PLUGINS_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CG_SECRET_MANAGER_DELEGATE_SELECTORS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_USE_BUILDX_ON_K8",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "INLINE_SSH_COMMAND",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_HELM2_DELEGATE_BANNER",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SSCA_MATCH_INSTANCE_IMAGE_NAME",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDP_SKIP_DEFAULT_VALUES_YAML_CG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_REMOVE_COMMENTS_FROM_VALUES_YAML_WITH_ESCAPE_CHARACTERS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ENABLE_DLC_SELF_HOSTED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DEPRECATE_K8S_STEADY_STATE_CHECK_STEP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_SUPPORT_JWT_TOKEN_SCIM_API",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CHANGE_INSTANCE_QUERY_OPERATOR_TO_NE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CONSIDER_ORIGINAL_STATE_VERSION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_AUDIT_STREAMING_USING_SPLUNK_HEC_ENABLE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_ENABLE_JIT_USER_PROVISION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_CHANGE_SECRET_VAULT_PATTERN_ON_YAML",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_NG_USE_SCM_FOR_PR_DETAILS_ON_ISSUE_COMMENT_TRIGGER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "GITHUB_WEBHOOK_AUTHENTICATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "GRAPHQL",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_USE_SECRET_FUNCTOR_WITH_RBAC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SKIP_SWITCH_ACCOUNT_REAUTHENTICATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "WINRM_SCRIPT_COMMAND_SPLIT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_PIPELINE_ABORT_RBAC_PERMISSION_MIGRATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_PIPELINE_TEMPLATE_API_OPTIMISATIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CHAOS_SANDBOX_ENVIRONMENT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CODE_VANITY_URL_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "MOVE_AWS_LAMBDA_INSTANCE_SYNC_TO_PERPETUAL_TASK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ENABLE_WINRM_ENV_VARIABLES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_CG_REJECT_PRIORITY_WHEN_FORK_STATE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SRM_SLO_ANNOTATIONS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CVNG_LICENSE_ENFORCEMENT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CVNG_VERIFY_STEP_TO_SINGLE_ACTIVITY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_SHOW_HISTORICAL_FILTERS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "USE_OLD_GIT_SYNC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_AWS_OIDC_AUTHENTICATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FME_RESOURCE_REGISTRATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "LOG_STREAMING_INTEGRATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_ENABLE_POLICY_ANALYZER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_CG_STATS_INSTANCE_CONSUMER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_AUTO_DISCOVERY_ENABLE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_PROVIDERS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_NEW_VERSION_GODOTENV",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "GRAPHQL_DEV",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "LDAP_USER_ID_SYNC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "RESOURCE_CENTER_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_1984_WORKSPACE_TEMPLATES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_MANUAL_SELECT_V2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_WFE_OPTIMIZE_UPDATE_PIPELINE_ESTIMATES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ENABLE_NEW_PARAMETER_FIELD_PROCESSOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_ENABLE_BUILD_CACHE_HOSTED_K8",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "LIMIT_PCF_THREADS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_NEW_YAML_NODE_COMPARE_METHOD",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SSCA_COSIGN_USING_VAULT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_K8S_SANITIZE_DRY_RUN_STEP_OUTPUT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "MANIFEST_INHERIT_FROM_CANARY_TO_PRIMARY_PHASE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_CHANGE_NOTIFICATION_EVENT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SELF_SERVICE_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "WINRM_KERBEROS_CACHE_UNIQUE_FILE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CHAOS_IMAGEREGISTRY_DEV",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ENABLE_CLOUDFORMATION_AS_EXPRESSION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_POPULATE_RETRY_NODE_METADATA",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_PIPELINE_ROLLBACK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CCM_GOVERNANCE_EVALUATION_COST_PER_RESOURCE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CCM_USE_AZURE_QUANTITY_TRUEUP",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DEPLOY_TO_INLINE_HOSTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "QUEUE_DELEGATE_TASK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "RECOMPUTE_ELIGIBLE_DELEGATES_LIST",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_10740_ENABLE_PROXY_RBAC",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "REDUCE_DELEGATE_MEMORY_SIZE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_MODULE_VERSION_INFO",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_TRIPLE_TIMEOUT_FOR_ZIP_YAML_UPSERT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SRM_ET_CRITICAL_EVENTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CCM_SUSTAINABILITY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDB_PROJECT_RBAC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_DISABLE_FIRST_GEN_CD",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_TRELLIS_BY_JOB_ROLES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SRM_ET_RESOLVED_EVENTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_QUERY_OPTIMIZATION_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_USE_RUNNER",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_GC_ALLOW_GRAPHQL_GET_EXECUTIONS_RUNNING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_GENERATE_CURL_WITHOUT_ARTIFACT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STO_GLOBAL_EXEMPTIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_STEP_PALETTE_CHECKMARX_ONE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_DARK_MODE_PREFS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_CACHE_INTELLIGENCE_SIGNED_URL",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "disable_cds_service_env_schema_validation",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_DEBEZIUM_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "RESOURCE_CONSTRAINT_SCOPE_PIPELINE_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SETTINGS_OPTIMIZATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CCM_MSP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_CACHE_OVERRIDE_FALSE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IRO_MODULE_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SINGLE_MANIFEST_SUPPORT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "WORKFLOW_EXECUTION_ZOMBIE_MONITOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_RESTRICT_SUBGRAPH_API_TO_STEP_GROUP",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_OPTIMISE_EXPANDED_JSON_FUNCTOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_REMOVE_USER_VIEWER_ROLE_ASSIGNMENTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_CUSTOM_MANIFEST_CHECKOUT_HIDDEN_FILES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_USE_EXECUTION_TRIGGER_PAYLOAD_TO_EVALUATE_BRANCH_EXPRESSION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_GITX_OAUTH",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SAVE_TERRAFORM_APPLY_SWEEPING_OUTPUT_TO_WORKFLOW",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ACTIVITY_ID_BASED_TF_BASE_DIR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_EXPRESSION_V2_OPTIMISATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CV_HOST_SAMPLING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FF_ENABLE_TAGGING_RBAC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_CENTRAL_NOTIFICATIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "WHITELIST_PUBLIC_API",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_SECURE_TUNNEL",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_ENABLE_MODULE_REGISTRY_PATH",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_MOVE_CONFIG_FILE_FUNCTOR_TO_PIPELINE_SERVICE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_RESOLVE_ONLY_TRIGGER_EXPRESSIONS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SKIP_ADDING_TRACK_LABEL_SELECTOR_IN_ROLLING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_AUTH_CHECK_IN_WEBHOOK_DETAILS_ENDPOINTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_TRAFFIC_SHIFT_WITHOUT_TEMP_VERSION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_UI_SERVICE_DASHBOARD_API_PAGINATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_ENABLE_DLC",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "EXPONENTIAL_TASK_REBROADCAST",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "GDS_TIME_SERIES_SAVE_PER_MINUTE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_ENABLE_MIGRATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_DATADOG_NOTIFICATIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "TRIGGER_YAML",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ARTIFACT_STREAM_DELEGATE_SCOPING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CCM_NODE_POOL_RECOMMENDATIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_DISABLE_CONNECTOR_PT_CREATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_NAV_2_0",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "HAR_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_NO_PLAN_STATE_STORED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_BLOCK_SENSITIVE_EXPRESSIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_DO_NOT_PROCESS_CONNECTOR_HEARTBEAT_RESPONSE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_NOT_SUPPORT_SECRETS_BASE64_EXPRESSION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_XML_FUNCTOR_WITH_NAMESPACE_IN_PIPELINE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_12082_TAGGING_DELETE_TAGS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_GIT_DEFAULT_BRANCH_CACHE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_TAG_BASED_ACCESS_TO_PIPELINES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_INCREASE_DEFAULT_RESOURCES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDB_MFE_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_MARK_PIPELINE_AND_STAGE_AS_RESOURCE_WAITING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_SUPPORT_HPA_AND_PDB_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ENABLE_EXPERIMENTAL_STEP_FAILURE_STRATEGIES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FF_METRICS_TIMESCALE_WRITE_TIMEOUT",
+        "identifier": "Ten_Seconds",
+        "kind": "int",
+        "value": "10"
+    },
+    {
+        "flag": "NG_CG_TASK_ASSIGNMENT_ISOLATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CCM_DEV_TEST",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "OPA_EVAL_OBJECT_YAML",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_GCP_OIDC_AUTHENTICATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "TRIGGER_FOR_ALL_ARTIFACTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_INCLUDE_ALWAYS_USE_STABLE_VERSION_UI",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_NG_STRATEGY_IDENTIFIER_POSTFIX_TRUNCATION_REFACTOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_CONSERVATIVE_K8_RESOURCE_LIMITS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IRO_ZOOM_CONNECTOR_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "MOVE_AWS_AMI_SPOT_INST_INSTANCE_SYNC_TO_PERPETUAL_TASK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_PROCESS_TRIGGER_SEQUENTIALLY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_RESOLVE_EXECUTION_INPUT_EXPRESSION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "RALLY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_PANORAMA_V2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STO_ALL_ISSUES_PAGE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_DRONE_REPO_OWNER",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DISABLE_CI_STAGE_DEL_SELECTOR",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STO_SNYK_ORCHESTRATION_ENHANCEMENTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_SPECIFY_INFRASTRUCTURES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CHAOS_PCF_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_USE_GCS_FOR_MACOS_CACHE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "HAR_CI_NATIVE_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "KUSTOMIZE_PATCHES_CG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_CV_BIGQUERY_LOG_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_STORE_WEBHOOK_PAYLOAD_IN_FILE_STORAGE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "HAR_SSCA_NATIVE_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_OPEN_TOFU",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CVNG_METRIC_THRESHOLD",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_ENABLE_SPECULATIVE_PLANS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_STEP_CONCURRENCY_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "QUEUE_CI_EXECUTIONS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SSCA_USE_ELK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_INPUT_YAML_IN_WEBHOOK_NOTIFICATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FF_ALLOW_OPTIONAL_VARIABLE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STO_AUTO_TARGET_NAME_VARIANT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "VALIDATE_PHASES_AND_ROLLBACK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_V0_HOSTED_BUILDS_USE_RUNNER",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_SKIP_SECRETS_USAGE_CHECK_IF_USAGE_RESTRICTIONS_ARE_NOT_UPDATED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_VALIDATION_FRAMEWORK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SUPERVISED_TS_THRESHOLD",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_DISABLE_FABRIC8_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "NG_EXECUTION_INPUT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PLANS_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "USE_COMPLETE_STEP_GROUP_ID",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "BT_8394_TEST_FLAG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_K8S_APPLY_MANIFEST_WITHOUT_SERVICE_NG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_GITLAB_METADATA",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "HELM_VERSION_3_8_0",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_CENTRALISED_NOTIFICATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_CG_ADDING_VALIDATION_OF_ENTITY_NULL",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_DELETE_ENVIRONMENTS_ON_SERVICE_RENAME_GIT_SYNC",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_ENABLE_BUILD_CACHE_NON_HOSTED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "OPA_RBAC_FEATURE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_SIDENAV_COLLAPSE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_SERVICE_ACCOUNT_SUPPORT_IN_HARNESS_APPROVAL",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CUSTOM_DASHBOARD_ENABLE_REALTIME_INSTANCE_AGGREGATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_GITX_WEBHOOK_EVENT_VALIDATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_TERRAFORM_S3_SUPPORT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ENABLE_CACHE_INTEL_SELF_HOSTED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_ENABLE_GCS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "JIRA_INTEGRATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_CG_SHOW_MEMBER_ID_COUNT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "AZURE_BLOB_SM",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CREATE_DEFAULT_PROJECT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_9811_CCM_INTEGRATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_ENABLE_DEFAULT_PIPELINES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_MODULE_NG_SUBSCRIPTION_PAGE_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_2K_DEFAULT_PAGE_SIZE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_EVENT_LISTENER_STEP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_GITHUB_APP_AUTHENTICATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_NG_CONVERT_BRANCH_TO_PUSH_WEBHOOK_BITBUCKET_ON_PREM",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "MOVE_CONTAINER_INSTANCE_SYNC_TO_PERPETUAL_TASK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_IS_PRE_STEP_OPA_POLICY_EVALUATION_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_HIDE_LAUNCH_NEXTGEN",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_AWS_AMI_SPOT_INST_DEPLOYMENTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_DISABLE_FABRIC8_CG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ENABLE_PAGINATED_CLOUD_PROVIDERS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_NEW_WORKSPACE_WIZARD",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IDP_ENABLE_WORKFLOWSV2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_BOOLEAN_CUSTOM_FIELD_DROPDOWN",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "AUTO_FREE_MODULE_LICENSE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_INPUT_SET_UNSAVED_CHANGES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_ALLOW_DISABLE_TRIGGERS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SRM_ENABLE_JIRA_INTEGRATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_ASG_ROLLOUT_ROLLBACK_INSTANCE_REFRESH",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_MERGED_RUN_AND_RETRY_PIPELINE_COMPONENT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CUSTOM_MAX_PAGE_SIZE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CV_FEEDBACKS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ARTIFACT_PERPETUAL_TASK_MIGRATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_PREPARE_EXECUTION_FLOW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_FLEXIBLE_TEMPLATES_PHASE2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_ALLOW_FILTER_BY_PATHS_GCS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_AWS_CODE_DEPLOY_DEPLOYMENTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_ENABLE_CONSTRAINTS_ON_APPROVAL_INPUTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CF_ROLLBACK_CUSTOM_STACK_NAME",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FREE_PLAN_ENFORCEMENT_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PMS_MERGE_PIPELINE_EXECUTION_SUMMARY_UPDATE_FLOW",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_FIX_APPROVAL_WAITING_FOR_INPUTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SRM_ENABLE_BASELINE_BASED_VERIFICATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_OCCURRENCE_FINGERPRINTING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "AZURE_US_GOV_CLOUD",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CD_NG_DYNAMIC_PROVISIONING_ENV_V2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_SSH_SSHJ",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_STEP_GROUP_SKIP_ON_LOOPING_STRATEGY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_INVALID_PT_TASK_INSTANCE_CLEAN_UP",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_11285_ENABLE_SYNC_NOW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_REVERSE_STAGE_ORDER_IN_POST_EXECUTION_ROLLBACK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_SKIP_LEGACY_DELEGATE_REGISTRATION_IN_CG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_INTEGRATION_VALIDATION_MAP",
+        "identifier": "all_disabled",
+        "kind": "json",
+        "value": "\"{   \\\"github\\\": false,   \\\"azure_devops\\\": false,   \\\"jira\\\": false }\""
+    },
+    {
+        "flag": "SEI_MIGRATION_NOTICE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CCM_FINOPS_UI",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ENABLE_LOGIN_AUDITS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FF_LICENCE_SERVICE_CACHED_METRICS_STORE_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_8344_FLAG_CLEANUP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CET_PLATFORM_MONITORED_SERVICE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CET_SAVED_SEARCH_NOTIFICATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_BITBUCKET_SERVER_FORK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ECS_ROLLBACK_MAX_DESIRED_COUNT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_9724_WORKER_TARGET_REFRESH_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SSCA_CI_CD_POSTURE_MANAGEMENT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "AMI_ASG_CONFIG_COPY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_V0_LOCAL_BUILDS_USE_RUNNER",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DEPLOYMENT_RECONCILIATION_LOGIC_QUERY_OPTIMIZATIONS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PLG_ENABLE_CROSS_GENERATION_ACCESS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "TERRAFORM_AWS_CP_AUTHENTICATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_SERVICE_AND_INFRA_STEP_DELEGATE_SELECTOR_PRECEDENCE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CF_APP_NON_VERSIONING_INACTIVE_ROLLBACK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ENABLE_OUTPUT_SECRETS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "EXPORT_TF_PLAN",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_AWS_LAMBDA_DEPLOYMENTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "USE_HELM_REPO_FLAGS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "WINRM_COPY_CONFIG_FILES_WITH_ENCODING_NG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CD_GIT_WEBHOOK_POLLING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_FETCH_CHILD_PIPELINE_WITHOUT_CONTEXT_GUARD",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_REMOVE_COMMENTS_FROM_VALUES_YAML",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_OPTIMIZE_EXECUTIONS_LIST_VIEW_TIME_RANGE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_STEP_PALETTE_OSV",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ENABLE_BUILD_CACHE_HOSTED_VM",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "GLOBAL_DISABLE_HEALTH_CHECK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "HELM_CHART_AS_ARTIFACT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "REGISTRY_UI_VANITY_URL_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_ALLOW_REFRESH_PIPELINE_EXECUTION_BEFORE_CONTINUE_PIPELINE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_REMOVE_FQN_DEPENDENCY_FOR_PRIVATE_REGISTRY_CONNECTOR_DOCKER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_EULA_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CD_ONBOARDING_HELP_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CV_UI_DISPLAY_FAIL_IF_ANY_CUSTOM_METRIC_IN_NO_ANALYSIS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_TARGETS_V2_LOGIC",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_ENABLE_COPY_PATH_FOR_OUTPUT_VARIABLE_ENDING_WITH_DEFINITION_KEYWORD",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_DISABLE_DELEGATE_UPGRADE_BANNER",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEARCH_REQUEST",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "STO_SNYK_ORCHESTRATION_ENHANCEMENT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_PIPELINE_EXECUTIONS_DASHBOARDS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_DO_NOT_USE_COLLATION_FOR_SORT_WHEN_NOT_REQUIRED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_DISABLE_CUSTOM_WEBHOOK_V3_URL",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_OPTIMIZE_WORKFLOW_EXECUTIONS_LISTING_GRAPHQL",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_DIVIDE_SDK_RESPONSE_EVENTS_IN_DIFF_STREAMS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DEPLOYMENT_SUBFORMIK_APPLICATION_DROPDOWN",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_8719_METRICS_SERVICE_LOG_TARGET_DATA",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_ENABLE_FLAG_CREATE_V2_HANDLER",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_USE_REDIS_LATEST_HASH",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "My_Test_Flag",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SEI_AI_INSIGHTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CET_SAVED_SEARCH",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ALL_ACTIVE_COMMITTERS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DISABLE_TEMPLATE_SCHEMA_VALIDATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_RBAC_FEATUREFLAG_RESOURCE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "OPTIMIZED_GIT_FETCH_FILES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_DASHBOARD_STATS_OPTIMIZE_ACTIVE_SERVICES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_SERVICES_OVERVIEW_RBAC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_USE_NEW_METADATA",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDB_AIDA_WIDGET",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CV_UI_DISPLAY_NODE_REGEX_FILTER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ENABLE_CODE_MFE_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "HAR_STO_NATIVE_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_BITBUCKET_PR_FIX",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_CODE_TRIGGERS_FIX",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_REMOVE_EXTERNAL_USER_ORG_PROJECT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SERVICE_ID_FILTER_FOR_TRIGGERS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SSCA_INDEPENDENT_PROVENANCE_STEP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ANALYSE_TF_PLAN_SUMMARY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ADD_STAGES_PREFIX_TO_EXECUTION_INPUT_EXPRESSIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_9686_FLAG_PIPELINE_USER_TOKEN",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "GITOPS_FILTER_PANE_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_WORKSPACE_EXPRESSION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_EXECUTION_LIST_FILTERS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CHAOS_EXP_RUNTIMEINPUT_DEV",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ENABLE_ERROR_MESSAGE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_AUDIT_GITX_WEBHOOKS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_SHOW_IF_POLLING_MODE_DELEGATE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_GITHUB_ACTIONS_NEW_ONBOARDING_FLOW_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "AUDIT_TRAIL_UI",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "BIND_CUSTOM_VALUE_AND_MANIFEST_FETCH_TASK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CCM_USE_BQML_ANOMALIES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_FLAG_CLEANUP_ENABLE_CONFIGURABLE_CRITERIA",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "GITOPS_USE_AGGREGATED_APP_STATES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_ENABLE_RESTRICTION_IN_TRIGGER_HEADERS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_PIPELINE_VARIABLES_IN_STEPS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "NG_EXPRESSIONS_NEW_INPUT_ELEMENT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_PASS_RESOLVE_EXPRESSION_TYPE_FROM_UI_IN_INPUT_TAB_APIS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_ENGINE_LOG_UPLOAD_CONCURRENCY",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_10503_SIMPLIFIED_ONBOARDING_FLOW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_ASYNC_FILTER_CREATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_USE_ISSUE_VERSION_IDS_ENABLED_TENANTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_ENABLE_STATUS_OF_DEPLOYMENTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DISABLE_HELM_REPO_YAML_CACHE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "LOGS_V2_247",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_GET_PARENT_STEP_GROUP_SUPPORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "REJECT_TRIGGER_IF_ARTIFACTS_NOT_MATCH",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_RESOLVE_OBJECTS_VIA_JSON_SELECT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "GCP_WORKLOAD_IDENTITY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_SET_ADVISORS_PROCESSED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_ADD_RBAC_CHECK_CONNECTORS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_AI_SUPPORT_CHATBOT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "TERRAFORM_REMOTE_BACKEND_CONFIG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "TRIGGERS_PAGE_PAGINATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CHAOS_LINUX_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FFM_8261_EXPRESSIONS_IN_PIPELINE_STEP",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_CG_WFE_PROJECTION_FIELDS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ENABLE_RESOURCE_CLASSES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_SECRET_EXPRESSION_RESOLUTION_NEW",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_AUTO_ABORT_STUCK_EXECUTIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_MASK_SECRET_EXPRESSIONS_IN_TRIGGER_PAYLOAD",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_CENTRAL_CERTIFICATES_MANAGEMENT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SSCA_REMEDIATION_FROM_ARTIFACT_V2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STOP_INSTANCE_SYNC_VIA_ITERATOR_FOR_PDC_DEPLOYMENTS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_NG_K8S_SERVICE_RELEASE_NAME",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CG_K8S_MANIFEST_COMMIT_VAR",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ARTIFACT_COLLECTION_CONFIGURABLE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "AZURE_CLOUD_PROVIDER_VALIDATION_ON_DELEGATE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_DELEGATE_VIRTUAL_SERVICE_SUPPORT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CG_SPG_JIRA_APPROVAL_POLLING_ASYNC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FF_ENABLE_WORKER_FLAG_EVALUATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEARCH_USERGROUP_BY_APPLICATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_K8S_SANITIZE_COMPLETE_DRY_RUN_STEP_OUTPUT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_LIST_BRANCH_V2",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_VM_INFRASTRUCTURE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "JDK11_WATCHER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PDC_PERPETUAL_TASK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_RECONFIGURE_JIRA_APPROVAL_TIMEOUT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CLOUDFORMATION_CHANGE_SET",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "DEPLOYMENT_SUBFORMIK_PIPELINE_DROPDOWN",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IDP_EXPERIMENTAL_FEATURES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_ENABLE_MODULE_BREAKDOWN_TABLE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ROLLBACK_NONE_ARTIFACT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CCM_K8S_COST_TRUE_UP_WITH_CUR_PUBLIC_PRICING",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ENABLE_BARE_METAL_FREE_ACCOUNT",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DELEGATE_SELECTION_LOGS_DISABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "GITOPS_AGENT_BLOCKED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_HELM_CANARY_STRATEGY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_OVERRIDES_V2_IDENTIFIER_SUPPORT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "MOVE_AWS_AMI_INSTANCE_SYNC_TO_PERPETUAL_TASK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "NEW_LEFT_NAVBAR_SETTINGS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_K8S_ASYNC_STEP_STRATEGY",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_ENABLE_EMAIL_VALIDATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SSCA_GITHUB_ACTIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_CACHE_INTELLIGENCE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "USE_LATEST_CHARTMUSEUM_VERSION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_SAVE_PIPELINE_OPA_RESPONSE_CODE_CHANGE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_EXTRA_ADDON_RESOURCE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_GITXWEBHOOKS_RBAC_PERMISSIONS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SPG_ENABLE_POPULATE_USING_ARTIFACT_VARIABLE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SSH_JSCH_LOGS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_QUEUE_SERVICE_FOR_TRIGGERS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_PROCESS_ADDITIONAL_BASE_KEYS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_DO_NOT_INTERRUPT_OLD_RETRIED_NODE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CV_AWS_PROMETHEUS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPELINE_GOVERNANCE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_AZURE_FUNCTION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_JIRA_TRANSITION_LIST",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IACM_1984_DISABLE_WORKSPACE_TEMPLATES_PHASE_2",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SHOW_NG_REFINER_FEEDBACK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SIDE_NAVIGATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CIE_HOSTED_VMS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "POST_PROD_ROLLBACK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ENV_GROUP_DEPLOYMENTS_IN_SERIAL",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_METRICS_SUMMARY_AGGREGATES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STO_AIDA_PR_CREATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "VALIDATE_PROVISIONER_EXPRESSION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "ACTIVE_MIGRATION_FROM_LOCAL_TO_GCP_KMS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_HARNESS_DOWNTIME_NOTIFICATION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_NEW_PROJECT_OVERVIEW_DASHBOARD",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_SKIP_STEADY_STATE_CHECK_AZURE_WEBAPP_SLOT_DEPLOY_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "USE_PAGINATED_ENCRYPT_FOR_VARIABLE_OVERRIDES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "AUTO_ACCEPT_SAML_ACCOUNT_INVITES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_CROSS_SCOPED_ENV_GROUPS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_QUERY_OPTIMIZATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "LOCAL_DELEGATE_CONFIG_OVERRIDE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PL_DO_NOT_MIGRATE_NON_ADMIN_CG_USERS_TO_NG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "RATE_LIMITED_TOTP",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "STO_ONE_CLICK_SAST",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIE_ABORT_PIPELINES_ON_DELETION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_SEND_TRIGGER_PIPELINE_FOR_WEBHOOKS_ASYNC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_NG_SERVICE_PRINCIPAL_FOR_CUSTOM_WEBHOOK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_ENABLE_BASE_IMAGE_DOCKER_CONNECTOR",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "FFM_USE_REDIS_LATEST_HASH_FOR_FLAGS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "IRO_ENABLE_SYNC_ASYNC_TASK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_EXPRESSION_CONCATENATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_ENABLE_DATA_RETENTION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "WINRM_COPY_CONFIG_OPTIMIZE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FF_ENABLE_CDN_CACHE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_MOVE_KUBERNETES_RELEASE_FUNCTOR",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_ADD_RBAC_CHECK_SECRETS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SORT_ARTIFACTS_IN_UPDATED_ORDER",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDE_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ENABLE_RAW_MODE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_USE_SWEEPING_OUTPUT_SECRET_FUNCTOR_FOR_IMAGE_PULL_SECRET",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IACM_CLONE_SUBMODULES",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_EXECUTION_VIEW_COLLAPSIBLE_STEP_GROUP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "USE_NEXUS3_PRIVATE_APIS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_ALLOWED_VALUES_DROPDOWN_PDC_HOSTS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_DEPTH_LIMITED_EXPRESSION_RESOLUTION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CHAOS_TIMELINE_VIEW_DEV",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "DISABLE_METRIC_NAME_CURLY_BRACE_CHECK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "USE_PAGINATED_ENCRYPT_SERVICE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FF_ENFORCE_RESOURCE_LIMITS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_PAGINATED_CONNECTORS_FETCHING_IN_TRIGGER_FILTERS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CI_ENABLE_BARE_METAL_STANDARD_32",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_RUBY_TI",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CVNG_TEMPLATE_MONITORED_SERVICE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PIPE_BB_ONPREM_COMPARE_COMMITS_ISSUE_FIX",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "PL_SIMPLIFY_ACL_CHECK",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_ALLOW_TEMPLATE_ON_NEXUS_ARTIFACT",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CCM_FORCE_WARM_UP",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "IRO_MONITORING_AGENT_SETTING_ENABLED",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "MOVE_PCF_INSTANCE_SYNC_TO_PERPETUAL_TASK",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "OPA_PIPELINE_GOVERNANCE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_USE_PARENT_NODE_TO_GET_MODULE_INFO",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "GTM_DEVELOPER_LICENSING",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SETTING_ATTRIBUTES_SERVICE_ACCOUNT_TOKEN_MIGRATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CCM_SUPPORT_RESOURCEID_CLOUDID_FIELDS",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_MOUNT_PATH_ENABLED_MAC",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIPE_VALIDATE_RETRY_FROM_PREVIOUS_EXECUTION_ID",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_CG_END_OF_LIFE_BANNER",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SSCA_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "YAML_GIT_CONNECTOR_NAME",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CDS_DISABLE_FALLBACK_EXPRESSION_ENGINE",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDS_RESOLVE_CUSTOM_TRIGGER_EXPRESSION",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "CI_SKIP_NON_EXPRESSION_EVALUATION",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "FEATURE_ENFORCEMENT_ENABLED",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "SEI_AIP_DEMO_DATA",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "SPG_3K_DEFAULT_PAGE_SIZE",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "AZURE_VMSS",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CDC_SERVICE_DASHBOARD_REVAMP_NG",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "CVNG_MONITORED_SERVICE_DEMO",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    },
+    {
+        "flag": "ENABLE_DEFAULT_NG_EXPERIENCE_FOR_ONPREM",
+        "identifier": "false",
+        "kind": "boolean",
+        "value": "false"
+    },
+    {
+        "flag": "PIE_REARRANGE_NODE_EXECUTION_UPDATES",
+        "identifier": "true",
+        "kind": "boolean",
+        "value": "true"
+    }
+]
