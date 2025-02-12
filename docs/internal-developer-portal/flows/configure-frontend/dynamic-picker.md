@@ -272,23 +272,35 @@ Below is the YAML configuration for this setup:
 
 ![](./static/dynamic-picker-2.png)
 
-## Auto-Updating Input Fields
-With conditional API requests in Dynamic Pickers, you can create a Workflow with dependent input fields. What it also enables you to do is that you can configure a Workflow with a Dynamic Picker to automatically update other data fields in your Workflow's frontend based on your previous input. All the information in your workflow's frontend can be auto-filled from third-party sources based on your selection/input. 
+## Auto-Updating Input Fields  
 
-This is made possible with a global **Form Context**. 
-When a user selects or provides input in a form field, the **Form Context** updates with the relevant data. Other fields, typically read-only, can subscribe to this context and automatically update based on the latest information.
+With conditional API requests in **Dynamic Pickers**, you can create a **Workflow** with dependent input fields. This also allows you to configure a **Workflow** with a **Dynamic Picker** to automatically update other data fields in your **Workflow's frontend** based on previous input. All relevant information in your **Workflow's frontend** can be auto-filled from third-party sources based on your selection/input.  
 
-**For Example**: You are using a Repository Picker Workflow and you enter your GitHub Username to ensure all your repositories are shown to you in the frontend form. Now, once your 
+This functionality is powered by a global **Form Context**.  
+When a user selects or provides input in a form field, the **Form Context** updates with the relevant data. Other fields—typically read-only—can subscribe to this context and automatically update based on the latest information.  
 
-### Understanding Form Context
-1. Whenever you use a Dynamic Picker, there is an API call in the background to fetch relevant data. This data (which comes off as the API Picker response) is shown to you in the form of picker dropdown options. 
-2. Form Context is then updated with all the required data (retrieved from the API Picker Response Object). You can configure what all fields to be stored in this form context from the API Picker response object in the workflow yaml. 
-3. The input fields can then be auto-updated from this form context. 
+#### Example  
+If you are using a **Repository Picker Workflow** and enter your **GitHub Username**, the form dynamically fetches and displays all repositories linked to that username. Once entered, other dependent fields in the form can be auto-updated based on this selection.  
 
-### Implementing Form Context
-You can implement this feature by following the given steps: 
-1. Choose what all data fields you want to store in the form context for your dynamic picker field and find their identifiers. For the syntax, let's take  ```apifield_id1``` and ```apifield_id2```
-2. You can set context data in your form context in the ``ui:options`` by using the ```setContextData``` field in your dynamic picker field definition in your Workflow YAML:
+### Understanding Form Context  
+
+1. Whenever you use a **Dynamic Picker**, an API call runs in the background to fetch relevant data. This data (returned in the **API Picker response**) is displayed in the form as picker dropdown options.  
+2. The **Form Context** is then updated with all the required data retrieved from the **API Picker Response Object**. You can configure which fields should be stored in **Form Context** from the API Picker response in the **Workflow YAML**.  
+3. The input fields in the **Workflow frontend** can then be auto-updated using **Form Context**.  
+
+Diagram Pending
+
+### Implementing Form Context  
+
+Follow these steps to implement **Form Context**:  
+
+#### 1. Choose Data Fields to Store in Form Context  
+Decide which API response fields should be stored in **Form Context** for your **Dynamic Picker field**. Identify their respective field names, for example:  
+```apifield_id1``` and ```apifield_id2```  
+
+#### 2. Set Context Data in Your Workflow YAML  
+You can define **Form Context** in the ``ui:options`` section using the ```setContextData``` field within the **Dynamic Picker field definition** in **Workflow YAML**:  
+
 ```YAML {5}
 dynamic-picker-name:
   ui:field: SelectFieldFromApi
@@ -297,15 +309,18 @@ dynamic-picker-name:
     setContextData:
       field1_id: apifield_id1
       field2_id: apifield_id2
-      ....
+      ...
 ```
-**Syntax Breakdown**:
-- To define a dynamic picker, please set ```ui:field: SelectFieldFromApi```
-- ```field1_id``` and ```field2_id``` are identifiers used in form context to refer to relative API fields from the API picker response object. 
-- ```apifield_id1``` and ```apifield_id2``` are API response object field identifiers
-- ```setContextData``` is used to add and define certain API response object fields in the Form Context 
 
-3. Once you've set context data, you can define input fields and use ```getContextData``` to auto-update these field values in the frontend with the values received from the API response (as per user's input).
+#### **Syntax Breakdown**  
+- Define a **Dynamic Picker** using: ```ui:field: SelectFieldFromApi```  
+- ```field1_id``` and ```field2_id``` are identifiers in **Form Context** referring to API fields from the API Picker response.  
+- ```apifield_id1``` and ```apifield_id2``` represent actual API response object field identifiers.  
+- ```setContextData``` is used to define and store certain API response object fields in **Form Context**.  
+
+#### 3. Auto-Update Input Fields Using `getContextData`  
+Once **Context Data** is set, define **input fields** and use ```getContextData``` to auto-update these fields with values from the API response based on user input.  
+
 ```YAML {11}
 dynamic-picker-name:
   ui:field: SelectFieldFromApi
@@ -322,13 +337,14 @@ field2-name:
   ui:field: ContextViewer
   ui:options: 
     getContextData: {{ formContext.field2_id }}
-    ....
+    ...
 ```
-**Syntax Breakdown**:
-- ```field1-name``` and ```field2-name``` are the names of input fields defined in the workflow frontend. 
-- To define form context for this fields, please set ``ui:field: ContextViewer``
-- ```getContextData``` is used to retrieve and auto-update the value of the defined input field from the relative API response object field value. 
-- You'll have to refer to the value stored in the form context using ```formContext.field1_id```
+
+#### **Syntax Breakdown**  
+- ```field1-name``` and ```field2-name``` are input field names in the **Workflow frontend**.  
+- Define **Form Context** for these fields using: ```ui:field: ContextViewer```  
+- ```getContextData``` retrieves and auto-updates the input field with data from the API response.  
+- Reference values stored in **Form Context** using: ```formContext.field1_id```  
 
 ### Example YAML 
 <Tabs>
@@ -388,6 +404,11 @@ parameters:
 </Tabs>
 
 ## Adding User Validation 
+You can also add user validation in your Workflows. This enables you to let your users enter certain input details manually and provide feedback on the UI by validating their details with a "Validate" button. This button makes an API call in the background with the validated user input details, parse the response and updates the **Form Context** with the validated details. 
+
+This solves for auto-updating the input form fields along with live validation of user inputs. 
+
+### Implementing user validation
 
 ## Supported Filters to parse API response
 
