@@ -598,12 +598,12 @@ const config: Config = {
 
     path.join(__dirname, '/plugins/utmcookie-plugin'),
     path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
+    path.join(__dirname, '/plugins/feedback-plugin'),
   ],
   clientModules: [
     path.join(__dirname, '/client-modules/searchBar'),
     path.join(__dirname, '/client-modules/iframeEmbed'),
     path.join(__dirname, '/client-modules/chatbot'),
-    // path.join(__dirname, '/client-modules/feedback'),
   ],
   stylesheets: [
     {
