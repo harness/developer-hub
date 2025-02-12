@@ -25,7 +25,7 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 * [Feature Flags](/docs/feature-flags/ff-supported-platforms)
 * [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported)
 * [Service Reliability Management](/docs/service-reliability-management/srm-whats-supported)
-* [Supply Chain Security](/docs/software-supply-chain-assurance/ssca-supported) `[BETA]`
+* [Supply Chain Security (Beta)](/docs/software-supply-chain-assurance/ssca-supported)
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
