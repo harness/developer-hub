@@ -548,9 +548,9 @@ These output variable could be viewed under the output tab in
 This step is used to push the `service/application` created using Cookiecutter step along with the `catalog-info.yaml` in the repo you created in previous step. 
 
 :::warning
+You can only push the `service/application` created above to repositories within the same project where the **Direct Push** step is being executed.
 
-In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
-
+In the example provided for this step, we have used pipeline variables as input for multiple fields. Ensure that the corresponding pipeline variables are created with the appropriate values, as described in the [Pipeline Variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables) documentation.
 :::
 
 <Tabs>
