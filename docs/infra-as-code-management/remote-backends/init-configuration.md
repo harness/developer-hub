@@ -25,7 +25,7 @@ Both OpenTofu and Terraform offer a flexible and adaptable backend setup by util
 - `PLUGIN_INIT_BACKEND_CONFIG_REGION`
 - `PLUGIN_INIT_BACKEND_CONFIG_DYNAMODB_TABLE`
 
-### How to Configure:
+### How to Configure (Dynamic):
 - **Define Variables:** Set the necessary environment variables in your IaCM workspace
 - **Initialize Backend:** Use the `init` command with the `-backend-config` option to specify the environment variables.
 </TabItem>
@@ -41,7 +41,7 @@ terraform {
 }
 ```
 
-### How to Configure:
+### How to Configure (Partial):
 - **Define Backend Block:** Create a backend block with minimal details in your configuration file.
 - **Supply Variables:** Use environment variables to provide the missing values during the `init` command.
 </TabItem>
