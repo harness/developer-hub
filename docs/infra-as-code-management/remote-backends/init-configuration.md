@@ -9,10 +9,11 @@ import TabItem from '@theme/TabItem';
 
 
 This guide provides insights on configuring your [OpenTofu](https://opentofu.org/) or Terraform backend using environment variables, presenting two approaches: 
-- [Dynamic configuration](/docs/infra-as-code-management/remote-backends/init-configuration#dynamic-backend-configuration) 
-- [Partial configuration](/docs/infra-as-code-management/remote-backends/init-configuration#partial-configuration)
+- **Dynamic configuration:** Perfect for environments requiring frequent updates, offering seamless adjustments without altering core files.
+- **Partial configuration:** Ideal for streamlined setups, leveraging environment variables to enhance security and simplify updates.
 
-## Dynamic backend configuration
+ <Tabs>
+<TabItem value="Dynamic configuration">
 Both OpenTofu and Terraform offer a flexible and adaptable backend setup by utilizing environment variables. This approach is particularly beneficial for managing multiple environments efficiently, as it caters to environments requiring frequent changes or updates. By employing [environment variables](/docs/infra-as-code-management/remote-backends/init-configuration#add-new-environment-variables), dynamic configuration allows you to seamlessly adjust backend settings without altering the core configuration files. This flexibility ensures that your infrastructure remains adaptable to evolving requirements, providing a robust solution for dynamic and multi-environment management.
 
 ### Setting Up Dynamic Configuration
@@ -27,9 +28,8 @@ Both OpenTofu and Terraform offer a flexible and adaptable backend setup by util
 ### How to Configure:
 - **Define Variables:** Set the necessary environment variables in your IaCM workspace
 - **Initialize Backend:** Use the `init` command with the `-backend-config` option to specify the environment variables.
----
-
-## Partial configuration
+</TabItem>
+<TabItem value="Partial configuration">
 Opting for partial configuration provides a streamlined approach by defining a minimal backend setup in your configuration files. [Environment variables](/docs/infra-as-code-management/remote-backends/init-configuration#add-new-environment-variables) are then used to fill in the missing details. This method simplifies updates and enhances security by centralizing sensitive information in environment variables, making it easier to manage and protect your configurations across different environments.
 
 Go to [OpenTofu partial backend configuation](https://opentofu.org/docs/language/settings/backends/configuration/#partial-configuration) to learn more.
@@ -44,6 +44,9 @@ terraform {
 ### How to Configure:
 - **Define Backend Block:** Create a backend block with minimal details in your configuration file.
 - **Supply Variables:** Use environment variables to provide the missing values during the `init` command.
+</TabItem>
+ </Tabs>
+
 ---
 
 ## Add new environment variables
