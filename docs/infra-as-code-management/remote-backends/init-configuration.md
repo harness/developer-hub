@@ -27,6 +27,17 @@ Both OpenTofu and Terraform offer a flexible and adaptable backend setup by util
 
 ### How to Configure (Dynamic):
 - **Define Variables:** Set the necessary environment variables in your IaCM workspace
+
+:::important
+To set up an environment variable that populates your backend configuration as part of the tofu/terraform `init -backend-config` command, you must name your variables in the format `PLUGIN_PLUGIN_INIT_BACKEND_CONFIG_` followed by a `unique identifier`. For example:
+
+```hcl
+tofu init -backend-config="bucket=\${PLUGIN_INIT_BACKEND_CONFIG_BUCKET}" \
+          -backend-config="key=\${PLUGIN_INIT_BACKEND_CONFIG_KEY}" \
+          -backend-config="region=\${PLUGIN_INIT_BACKEND_CONFIG_REGION}"
+```
+:::
+
 - **Initialize Backend:** Use the `init` command with the `-backend-config` option to specify the environment variables.
 </TabItem>
 <TabItem value="Partial configuration">
@@ -44,6 +55,16 @@ terraform {
 ### How to Configure (Partial):
 - **Define Backend Block:** Create a backend block with minimal details in your configuration file.
 - **Supply Variables:** Use environment variables to provide the missing values during the `init` command.
+
+:::important
+When setting up environment variables to populate your backend configuration as part of the tofu/terraform `init -backend-config` command, ensure that you name your variables in the format `PLUGIN_PLUGIN_INIT_BACKEND_CONFIG_` followed by a `unique identifier`. This helps in correctly applying the backend configuration during initialization. For example:
+
+```hcl
+tofu init -backend-config="bucket=\${PLUGIN_INIT_BACKEND_CONFIG_BUCKET}" \
+          -backend-config="key=\${PLUGIN_INIT_BACKEND_CONFIG_KEY}" \
+          -backend-config="region=\${PLUGIN_INIT_BACKEND_CONFIG_REGION}"
+```
+:::
 </TabItem>
  </Tabs>
 
