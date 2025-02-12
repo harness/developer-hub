@@ -79,6 +79,11 @@ The following deprecated API endpoints are longer supported:
 
 ## February 2025
 
+### Version 1.77.x <!-- February 14, 2025 -->
+#### New features and enhancements
+
+- Service Account CRUD operations have been subject to Governance Policy checks for a while. However, policy checks were missing when assigning or deleting roles. These checks have now been added for both assigning new roles and deleting existing ones, regardless of whether the feature flag `PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES` is ON or OFF.
+
 ### Version 1.76.x <!-- February 07, 2025 -->
 #### Fixed issues
 
