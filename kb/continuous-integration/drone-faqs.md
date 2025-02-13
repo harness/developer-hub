@@ -159,6 +159,12 @@ This is usually caused by a step starting a subprocess that never exits, or the 
 
 You can create cron jobs in the Drone UI only. References to cron jobs in your drone.yml are for filtering purposes only.
 
+### Will plugins/gcr continue to be supported after GCR is decommissioned for the foreseeable future?
+plugins/gcr Drone plugin will be deprecated in alignment with GCR’s decommissioning schedule, as the GCR API functionality will become obsolete afterward.
+
+### When I  Need to change signature in drone or its fixed?
+You must re-generate the signature any time the configuration file is modified, otherwise signature verification will fail.
+
 ## Drone logging
 
 ### How do I enable the debug logs flag on Drone-Server and Drone-Runner?
