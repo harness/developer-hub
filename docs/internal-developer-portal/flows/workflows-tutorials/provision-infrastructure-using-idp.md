@@ -19,7 +19,7 @@ Before you begin this tutorial, make sure that you have completed the following 
 - Enable Harness IDP and Harness IaCM for your account.
 - Make sure you are assigned the **[IDP Admin Role](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin)** or another role that has full access to all IDP resources along with the **IACM Workspace**. 
 - Create a [Service Now](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-service-now/) and [JIRA connector](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-jira) with access to the projects where you want to create the tickets for provisioning the pipeline. 
-- Create a [Connector for AWS](/docs/infra-as-code-management/get-started/add-connectors).
+- Create a [Connector for AWS](/docs/infra-as-code-management/get-started/#add-connectors).
 - Create a [connector for git provider](/docs/infra-as-code-management/get-started/#add-connectors)
 - Create a [Workspace](/docs/infra-as-code-management/get-started/#add-a-new-workspace) using the AWS Connector created above. Also use the following [repository](https://github.com/luisredda/terraform-aws-ec2-instance) for the workspace and add the **branch** as `master` and **file path** as `.`
 
