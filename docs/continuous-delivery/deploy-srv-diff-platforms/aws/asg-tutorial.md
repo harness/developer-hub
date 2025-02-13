@@ -1347,15 +1347,19 @@ Harness stores configurations of the ASG you are deploying twice:
 </Tabs4>
 
 
-### Steady State Step
+### ASG Steady State Step
 
 :::note
 
-Currently, Asg Steady State Step is behind the feature flag `CDS_ASG_SKIP_INSTANCE_TERMINATION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+Currently, ASG Steady State Step is behind the feature flag `CDS_ASG_SKIP_INSTANCE_TERMINATION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
 
 :::
 
 The **ASG Steady State Step** is an additional pipeline step designed to monitor the progress and completion of the Instance Refresh process in AWS Auto Scaling Groups (ASGs). It is introduced to ensure that, during an ASG rolling deployment, the deployment workflow proceeds as soon as the new instances are launched and have reached a healthy state.
+
+:::warning
+The ASG Steady State Step can only be added if the ASG Rolling Deploy Step is part of the stage or pipeline. It will **fail** if added alongside an ASG Blue-Green or Canary Deploy Step.
+:::
 
 **Key Features**
 
