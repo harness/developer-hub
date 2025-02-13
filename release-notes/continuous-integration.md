@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-02-06T10:00
+date: 2025-02-14T10:00
 sidebar_position: 10
 ---
 
@@ -21,6 +21,25 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## February 2025
+
+### Version 1.66
+
+<!-- 2025-02-10 -->
+
+#### Fixed issues
+
+- Resolved an issue with the CI `repoName` filter on the execution list page. Previously, due to Elasticsearch filtering inconsistencies, users were not seeing the correct responses. This fix ensures proper filtering when the execution list page is served via Elasticsearch, which is controlled by the feature flags `PIPE_ENABLE_ELASTIC_SEARCH` and `PIPE_ENABLE_DATA_RETENTION`. (PIPE-25112, ZD-77259, ZD-77611)
+  
+#### Updates
+
+- The Build Intelligence flag can now be toggled on and off based on an already resolved variable value, providing greater flexibility in pipeline configurations. (CI-15706)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `addonImageRootless`      | Routine image updates | -                | 1.16.71           |
+| `liteEngineImageRootless`       | Routine image updates                  | -              | 1.16.71         |
 
 ### Version 1.65
 
