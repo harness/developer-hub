@@ -24,7 +24,7 @@ export default function SSCA() {
                 Knowledge Base
               </button>
             </Link>
-            <Link href="/release-notes/software-supply-chain-assurance">
+            <Link href="/release-notes/supply-chain-security">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />

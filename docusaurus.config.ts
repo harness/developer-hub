@@ -141,7 +141,7 @@ const config: Config = {
             },
             {
               label: 'Supply Chain Security',
-              to: 'docs/software-supply-chain-assurance',
+              to: 'docs/supply-chain-security',
             },
             {
               label: 'Chaos Engineering',
@@ -348,7 +348,7 @@ const config: Config = {
             },
             {
               label: 'Supply Chain Security',
-              to: 'https://www.harness.io/products/software-supply-chain-assurance',
+              to: 'https://www.harness.io/products/supply-chain-security',
             },
             {
               label: 'Chaos Engineering',

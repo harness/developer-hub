@@ -128,7 +128,7 @@ const sidebars: SidebarsConfig = {
         // SCS
         {
           type: "link",
-          href: "/docs/software-supply-chain-assurance",
+          href: "/docs/supply-chain-security",
           label: "Supply Chain Security",
           className: "sidebar-ssca",
 
@@ -1063,7 +1063,7 @@ const sidebars: SidebarsConfig = {
       type: "link",
       label: "Roadmap",
       className: "sidebar-roadmap",
-      href: "/roadmap/#ssca",
+      href: "/roadmap/#scs",
       customProps: {
         description: "Learn about recent changes to Harness products.",
       },
