@@ -166,8 +166,6 @@ Customers who are seeing to utilize Windows Images with rootless operation can d
 * `harness/ci-lite-engine:rootless-1.16.71`
 * `harness/drone-git:1.6.7-rootless`
 
-
-
 ## Troubleshoot Harness images
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Harness-required images and pipeline initialization, such as:
