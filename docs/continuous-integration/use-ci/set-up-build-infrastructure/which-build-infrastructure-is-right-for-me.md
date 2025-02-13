@@ -86,9 +86,9 @@ The following table shows the supported operating systems and architectures for 
 | -  | - | - | - | - | - |
 | Linux | amd64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Linux | arm64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| macOS | arm64 (M1) | ✅ Supported & Recommended | ✅ Supported | ❌ Not supported | 🔸 Supported, not recommended |
+| macOS | arm64 | ✅ Supported & Recommended | ✅ Supported | ❌ Not supported | 🔸 Supported, not recommended |
 | Windows | amd64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| Windows | arm64 | ✅ Supported | ❌ Not supported | ❌ Not supported | ❌ Not supported |
+| Windows | arm64 | ❌ Not supported | ❌ Not supported | ❌ Not supported | ❌ Not supported |
 
 :::info
 
