@@ -156,7 +156,7 @@ API key authentication is required. For more information about API keys, go to [
 Harness images are available on Docker Hub, the [Harness project on GAR](http://us-docker.pkg.dev/gar-prod-setup/harness-public), and the [Harness ECR public gallery](https://gallery.ecr.aws/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness deprecated the Harness-hosted `app.harness` Docker registry effective 15 February 2024. For more information, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md#deprecation-notice-appharness-docker-registry).
 
 ## Windows Rootless
-::: Info
+:::info
 Currently, the feature to download **rootless lite-engine, add on, and drone-git images for Windows** by default is behind the feature flag, `CDS_SERVICE_OVERRIDES_2_0`. Contact Harness Support to enable the feature to be enabled
 :::
 Customers who are seeing to utilize Windows Images with rootless operation can do so by downloading the appropriate images.  The rootless Windows version is available as of the following version, or higher:
