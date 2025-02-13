@@ -1824,12 +1824,26 @@ Currently, the C# support still has some limitations where classes that reside i
 
 ### Does Test Intelligence support dynamic code?
 
-Harness doesn't recommend using TI with Ruby projects using dynamically generated code or Python projects using dynamic loading or metaclasses.
+Harness doesn't recommend using TI with Ruby projects that use dynamically generated code or Python projects that use dynamic loading or metaclasses.
+
+### Why did Test Intelligence Skip Analysis
+Sometimes, teams may see that tests appear to have been a part of an execution and build, but for some reason, the selected tests are 0, and there is no data on the test having been completed
+![no test selected](static/test-skip1.png)
+In the logs, customers may notice a blank array of tests selected by Test Intelligence `level=info msg="Running tests selected by Test Intelligence: []"` to be run.  There are several reasons why this may happen, and they are often related to how Test Intelligence behaves, [as outlined in our TI Overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview/#how-does-test-intelligence-work).
+
+#### Tests were skipped because Code Changes and Test have no overlap
+Test Intelligence may choose to ignore or pass on tests if the code changes that were executed, are irrelevant to the tests.  This is because it is choosing to skip tests to save time.  For example, changes to a readme file would not invoke Java tests outlined and defined.  Likewise, changes to files within the [ignore tests/files definitions will also cause Test Intelligence to Skip](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview/#ignore-tests-or-files) the tests.  
+
+#### Git Branch execution builds
+Customers choosing to define a build type for the CI Codebase as a Git Branch may also find odd behavior on re-runs on the same branch
+![Git Branch](static/test-skip1.png)
+This is because the tests associated with the branch are tied to a specific Commit ID. If the Commit ID does not change in subsequent steps or executions, Test Intelligence will see that a test result is already associated. This causes Test Intelligence to consider the testing complete, and on subsequent executions, it does not see a need to rerun a completed test.  This would be expected behavior for Test Intelligence, as TI would consider a re-run unnecessary if nothing has changed.  
+
+Customers are recommended to either change their Build Type to a **Git Pull Request** to ensure the test is run on each PR (and new Commit ID), or they can clone the Git Branch to cause a re-execution on the test.
 
 ### Why is the cache intelligence is not saving the cache from the default yarn location?
 
 This could happen if you have a custom path added in the cache intelligence config. If you want the YARN cache to be picked from the default location, make sure you don’t configure cache intelligence with a custom path
-
 
 ### Can user import test results from a generic 'mvn clean deploy' Run step into the test Dashboard? Or must use the Unit Test step to display them on that tab?
 Yes, you can use the Run step to run your maven command and upload the test results. There is a field for this in the run step (like in the run tests step). Please check [the documentation](../../docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/#report-paths) for more information.
