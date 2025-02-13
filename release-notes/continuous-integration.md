@@ -26,13 +26,14 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 <!-- 2025-02-10 -->
 
+#### New features and enhancements
+- The Build Intelligence flag can now be toggled on and off based on an already resolved variable value, providing greater flexibility in pipeline configurations (CI-15706).
+- 'Save Cache to S3' now supports Zstd compression for faster archiving and improved upload/download efficiency (CI-16010).
+
 #### Fixed issues
 
 - Resolved an issue with the CI `repoName` filter on the execution list page. Previously, due to Elasticsearch filtering inconsistencies, users were not seeing the correct responses. This fix ensures proper filtering when the execution list page is served via Elasticsearch, which is controlled by the feature flags `PIPE_ENABLE_ELASTIC_SEARCH` and `PIPE_ENABLE_DATA_RETENTION`. (PIPE-25112, ZD-77259, ZD-77611)
   
-#### New features and enhancements
-
-- The Build Intelligence flag can now be toggled on and off based on an already resolved variable value, providing greater flexibility in pipeline configurations. (CI-15706)
 
 #### Harness images updates
 
