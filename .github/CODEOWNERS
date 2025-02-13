@@ -152,6 +152,7 @@ static/  @rohanmaharjan100 @wei-harness
 
 # IACM Docs
 /docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez
+/release-notes/infrastructure-as-code-management.md @RickCraig @richardblack-Harness
 /src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
 /src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness
 
