@@ -18,6 +18,7 @@ Harness Database DevOps currently supports several database platforms, including
 3. **Microsoft SQL Server**
 4. **PostgreSQL**
 5. **MySQL**
+6. **Google Cloud Spanner**
 
 It's worth noting that **MongoDB** is a NoSQL database which brings some limitations to your experience of Harness DB DevOps if this is your database of choice. 
 
