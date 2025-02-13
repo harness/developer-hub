@@ -113,7 +113,7 @@ With this configuration, the step generates the SLSA Provenance and stores it in
 
 ### Attest SLSA Provenance
 
-To configure attestation, along with the [above configuration](#slsa-generation-step-configuration) you should enable the **SLSA Attestation** checkbox in the **SLSA Generation** step. This requires a key pair generated using **Cosign**. To understand the attestation process please refer to [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
+To configure attestation, along with the [above configuration](#slsa-generation-step-configuration), you should enable the **SLSA Attestation** checkbox in the **SLSA Generation** step. This requires a key pair generated using **Cosign**. Attesting the provenance enhances pipeline security by ensuring its integrity and preventing tampering. To understand the attestation process, see [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
 
 You can perform the attestation with **Cosign** or **Cosign with Secret Manager**
 
