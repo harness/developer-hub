@@ -36,7 +36,7 @@ As a first step, we recommend configuring your Cloud Provider and Code repositor
 ### OpenTofu / Terraform Authentication
 To effectively authenticate OpenTofu or Terraform across different providers, it’s crucial to follow a consistent approach that aligns with the requirements of each provider while ensuring security and efficiency.
 
-1. **Use Connectors When Available:** If the provider supports native integration with Harness (e.g., AWS, Azure, GCP), use the relevant [Harness connectors](/docs/infra-as-code-management/get-started/get-started#add-connectors). These connectors provide secure and streamlined authentication, reducing the need for manual setup and environment configuration.
+1. **Use Connectors When Available:** If the provider supports native integration with Harness (e.g., AWS, Azure, GCP), use the relevant [Harness connectors](/docs/infra-as-code-management/get-started/#add-connectors). These connectors provide secure and streamlined authentication, reducing the need for manual setup and environment configuration.
 2. **Environment Variables and Secrets:** For providers that do not have native Harness connectors, you can manage authentication using environment variables and secrets. Ensure that sensitive credentials are securely stored using Harness Secret Manager or another secure secret management system.
 3. **Custom Plugin Images:** If the provider has specific dependencies or custom configurations, use a [custom plugin image](/docs/infra-as-code-management/pipelines/plugin-images) to include the necessary tools and libraries. This approach allows for flexibility and tailored setups but requires maintaining the image to match provider updates and requirements.
 
