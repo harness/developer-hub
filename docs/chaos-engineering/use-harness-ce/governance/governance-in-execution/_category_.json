@@ -1,6 +1,6 @@
 {
   "position": 50,
-  "label": "Governance in Execution",
+  "label": "ChaosGuard- Governance in Execution",
   "collapsed": "true",
   "customProps": {
     "description": "Set of policies, rules, and processes that manage and control how chaos experiments are created, executed, and monitored."
