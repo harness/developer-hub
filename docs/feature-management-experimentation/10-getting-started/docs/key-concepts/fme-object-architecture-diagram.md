@@ -18,4 +18,8 @@ The diagram shows the Harness users and access settings that you use for permiss
 
 import FMEArchitectureObjectsImage from '@site/docs/feature-management-experimentation/10-getting-started/docs/FMEArchitectureObjectsImage.js';
 
+:::info
+Post migration to app.harness.io, Split legacy Project permissions,  Change permissions and Data export permissions (marked in purple below) will move out of their current locations and into Harness RBAC management.
+:::
+
 <FMEArchitectureObjectsImage />
