@@ -1,7 +1,7 @@
 ---
 title: Delete Registries
 description: Learn how to delete an artifact registry.
-sidebar_position: 30
+sidebar_position: 40
 ---
 
 :::warning
