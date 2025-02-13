@@ -68,8 +68,8 @@ export const featureList: CardItem[] = [
     link: "docs/category/get-started-with-sto",
   },
   {
-    title: "Secure Supply Chain",
-    module: MODULES.ssca,
+    title: "Supply Chain Security",
+    module: MODULES.scs,
     icon: "img/icon_ssca.svg",
     description: <>Secure your software supply chain.</>,
     link: "docs/category/get-started-with-scs",

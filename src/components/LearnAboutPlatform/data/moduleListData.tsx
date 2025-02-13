@@ -63,10 +63,10 @@ export const moduleList: CardItem[] = [
   },
   {
     title: "Supply Chain Security",
-    module: MODULES.ssca,
+    module: MODULES.scs,
     // icon: "img/icon_ssca.svg",
-    description: "Secure your   software supply chain.",
-    link: "docs/software-supply-chain-assurance",
+    description: "Secure your software supply chain.",
+    link: "docs/supply-chain-security",
   },
   {
     title: "Chaos Engineering",
