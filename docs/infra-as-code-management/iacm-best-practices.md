@@ -1,9 +1,9 @@
 ---
-title: IaCM Best Practices
+title: Best Practices
 description: Learn about IaCM onboarding and best practices.
 ---
 
-import HarnessApiData from '../../../src/components/HarnessApiData/index.tsx';
+import HarnessApiData from '/src/components/HarnessApiData/index.tsx';
 
 Harness Infrastructure as Code allows you to define, deploy, and manage infrastructure across environments, ensuring compliance and control. Key features include cost estimation, approval steps, PR automation, policy enforcement, and drift detection, which can integrate seamlessly with other Harness modules and third-party services, enhancing your DevOps lifecycle.
 

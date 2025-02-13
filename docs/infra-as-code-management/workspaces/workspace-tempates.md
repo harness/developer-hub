@@ -110,7 +110,7 @@ Follow these steps to:
 3. Name your template and provide a suitable version label.  
 4. Select **Start**.
 
-This will bring you to your templates **General** tab that contains a typical workspace setup form as describes in the [IaCM onboarding guide](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#create-a-workspace).
+This will bring you to your templates **General** tab that contains a typical workspace setup form as describes in the [IaCM Get Started guide](/docs/infra-as-code-management/get-started/#create-a-workspace).
 
 Once you complete your workspace setup:
 

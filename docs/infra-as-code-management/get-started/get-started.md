@@ -1,8 +1,8 @@
 ---
-title: IaCM onboarding guide
+title: Get started with IaCM
 description: A self-service onboarding guide for Harness IaCM.
 sidebar_position: 20
-sidebar_label: Onboarding guide
+sidebar_label: Get Started
 ---
 
 import Tabs from '@theme/Tabs';
@@ -22,18 +22,22 @@ Infrastructure as Code (IaC) enables the automated management and provisioning o
 Before beginning the walkthroughs in this guide, ensure you have:
 
 - Access to a Harness account.
-- Access to a Git provider with your OpenTofu or Terraform file.  
+- Access to a Git provider with your [OpenTofu](https://opentofu.org/) or Terraform file.  
 - Access to a Cloud Provider such as AWS or Google Cloud Platform.
 - An [organization and project set up](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization) on the Harness Platform.
+
+:::info what's supported
+Go to [What's Supported in IaCM](/docs/infra-as-code-management/whats-supported) for more information
+:::
 
 ### Sample Terraform
 
 The following example Terraform (.tf) file declares:
 
-- Provider Configuration: Specifies the AWS provider and sets the region to "us-east-1". Go to [AWS Regions & Availability Zones](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) for a complete region list.
-- Resource Definition: Creates an EC2 instance with the identifier `my_first_ec2_instance`.
-- AMI: Utilizes ami-123abc321cba18, go to [AWS EC2 User Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) to find your AMI image ID.
-- Instance Type: Configures the instance to use a t2.micro. Go to the [AWS t2 instances list](https://aws.amazon.com/ec2/instance-types/t2/).  
+- **Provider Configuration:** Specifies the AWS provider and sets the region to "us-east-1". Go to [AWS Regions & Availability Zones](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) for a complete region list.
+- **Resource Definition:** Creates an EC2 instance with the identifier `my_first_ec2_instance`.
+- **AMI:** Utilizes ami-123abc321cba18, go to [AWS EC2 User Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) to find your AMI image ID.
+- **Instance Type:** Configures the instance to use a t2.micro. Go to the [AWS t2 instances list](https://aws.amazon.com/ec2/instance-types/t2/).  
 Tags: To facilitate easy identification and management within AWS resources, a tag name with the value `my_first_ec2_instance` is applied.
 
 ```hcl
@@ -51,7 +55,7 @@ resource "aws_instance" "my_first_ec2_instance" {
 }
 ```
 
-Go to [Terraform Documentation](https://developer.hashicorp.com/terraform/intro) or [OpenTofu Documentation](https://opentofu.org/docs/) for more information on currently supported Workspace types. 
+Go to [OpenTofu Documentation](https://opentofu.org/docs/) or [Terraform Documentation](https://developer.hashicorp.com/terraform/intro) for more information on currently supported Workspace types. 
 
 ## Terraform to OpenTofu migration
 Harness supports all OpenTofu versions, and Terraform MPL versions up to 1.5.x, any BSL versions (from 1.6.0) are not supported. 
@@ -64,7 +68,7 @@ A workspace is essentially a named environment or container that stores your Ter
 One of the fundamental pieces of the Workspace creation step is to configure a connection to your Cloud Provider and Code Repository through **Connectors** so it can compare the current and expected state of your infrastructure, and apply infrastructure updates when required via your Harness IaCM pipelines.
 
 :::info
-Harness recommends configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-a-new-workspace).
+Harness recommends configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](https://developer.harness.io/docs/infra-as-code-management/get-started/get-started#add-a-new-workspace).
 :::
 
 ## Add connectors
