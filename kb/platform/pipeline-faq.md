@@ -84,6 +84,70 @@ Refer to the link: `https://app.harness.io/gratis/ng/static/versions.html`.
 
 Harness console does not support rendering image files.
 
+### Can I select a specific branch to use for a template stored remotely in my repository?
+Yes, you can specify a branch for your remote template in your pipeline. By default, the pipeline uses the default branch (such as master, main, or develop). However, you can override this by setting the gitBranch property in the Pipeline YAML configuration.
+
+### Can I update and test a template in a branch before merging it?
+Yes, by specifying a particular branch in the gitBranch property in the Pipeline YAML, you can test your changes to the template before merging it into the default branch. This helps ensure your updates work as expected before being integrated into the main branch.
+
+### Why can’t I select the branch for my template by default?
+By default, the pipeline uses the default branch of the repository for templates. This is typically set to master, main, or develop. However, you can override this by specifying the desired branch from the pipeline YAML View. 
+
+### Can I store the pipeline.yaml file in the same repository as application code?
+Yes, you can store the pipeline.yaml file in the same repository as your application code. This setup allows you to make changes to the pipeline configuration alongside changes to the application code, ensuring that both are synchronized when developing new features or making adjustments to the pipeline.
+
+### How can I ensure that the correct pipeline.yaml is fetched for each branch in the repository?
+User can use a pipeline trigger that specifies the appropriate branch for fetching the pipeline.yaml file. By using the runtime expression `<+trigger.Branch>` in the Pipeline Reference Branch tab of the trigger definition, Harness will automatically fetch the pipeline.yaml file from the branch trigger is runned.
+
+### Can I disable the PolicySet and still run the Policy Step without errors?
+No, if the PolicySet is disabled, the Policy Step will not perform its intended function and will throw an error. The Policy Step is specifically designed to enforce the policies defined in the PolicySet. When the PolicySet is toggled off, it leads to a conflict, and the system throws an error to prevent the step from being executed without enforcement.
+
+### Can I change the Git repository for a Harness pipeline after it has been set?
+Yes, you can update the Git details for a pipeline after creation. There is an option in the pipeline page UI that allows you to modify the Git configuration without having to delete and recreate the pipeline.
+
+If you are unable to edit the Git repository details, verify if your user permissions allow modifications and check if the repository settings restrict changes.
+
+### How can I view executions from more than 30 days ago?
+You can customize the timeframe filter to see executions from earlier dates. To do this:
+- Navigate to the Previous Executions section of your pipeline.
+- Click on the Filter options.
+- Select "Timeframe" and choose "Past 6 months" (or another preferred time range).
+- Click "Apply" to update the execution list.
+
+### Is there a way to prevent saving invalid YAML in templates?
+At the moment, there is no built-in validation that prevents the saving of invalid YAML in Harness templates. The system allows such configurations to be saved for flexibility, even though the fields may not be recognized or valid according to the template schema.
+
+### Can I move an environment from Inline to Git in Harness?
+Yes, Harness provides an option to "Move to Git", which allows you to migrate your existing inline environment to a Git-based configuration.
+
+### Can I propagate the environment from one stage to another in a GitOps pipeline?
+No, environment propagation is not currently supported in GitOps pipelines. You must configure the environment separately for each stage in the pipeline.
+
+### How can I access the secret value being passed between pipelines?
+If you are using a Run step, Harness has released a feature that allows accessing secret-type output variables. However, this feature is currently behind a feature flag and must be enabled. You can refer to the  [documentation](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#output-variables) for details on enabling and using it.
+
+For container-based steps, output secrets are not yet supported, and you may need to retrieve secrets using a Secret Manager or an external vault.
+
+###  How do I define a custom label for matrix stages in Harness?
+You can specify a custom label in your matrix stage configuration by using expressions that reference the matrix values. This ensures that your logs display meaningful stage names instead of generic numbered labels.
+
+For detailed steps, refer to: [Use a Custom Label for Matrix Stages](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#use-a-custom-label-for-matrix-stages)
+
+### How can I use matrix as stage labels in pipeline execution logs?
+You can use matrix axes as stage labels by defining a custom naming pattern in your pipeline YAML. Instead of default numerical indexes, you can set labels based on matrix values (e.g., component names).
+
+For implementation details, check: [Use Matrix Axes as Stage Labels](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#use-matrix-axes-as-stage-labels)
+
+### Can I customize the naming convention for matrix stages in pipeline?
+Yes, Harness allows you to customize the names of matrix stages for better readability. By default, matrix iterations are named Build_0, Build_1, etc., but you can modify them to display names like Build_buyflow, Build_portal, Build_help-center for clarity.
+
+Refer to the official documentation on customizing matrix stage names: [Customize Matrix Stage Names](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#customize-matrix-stage-names)
+
+### Can I store environment "Overrides" in a third-party Git repository?
+Yes, Harness provides an option to store environment Overrides in Git repositories, but this feature is currently behind a feature flag called CDS_OVERRIDES_GITX. If you want to enable this feature for your account, you can request it through Harness Support.
+
+For more details, refer to the documentation: [Manage Overrides Using Git Experience](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/overrides-v2/#manage-overrides-using-git-experience)
+
 ## Pipeline access control
 
 ### Can I disable a pipeline?
@@ -135,9 +199,18 @@ The triggered test pipeline will run independently and will not be part of the o
 
 If the test pipeline fails, you can utilize the rollback feature to revert the deployment. However, this rollback functionality depends on having a previous successful execution to revert to.
 
-#### Is there a way to integrate the triggered test pipeline within the original deployment pipeline?
+### Is there a way to integrate the triggered test pipeline within the original deployment pipeline?
 
 No, currently there is no way to fully integrate a triggered test pipeline within the original deployment pipeline. The test pipeline will always operate as a separate entity.
+
+### What is the best approach to restrict access to certain pipelines?
+The recommended approach is to use Resource Groups and explicitly specify which pipelines users are allowed to access. This ensures they can only run permitted pipelines while preventing access to others. However, this method requires updating the list when new pipelines are added.
+
+### Does Harness provide a way to create a deny list for pipelines?
+No, Harness does not have a built-in feature for setting up a deny list for pipelines. The current permission model allows you to define an allow list of specific pipelines that users can access but does not provide an option to explicitly deny access to selected pipelines.
+
+### Can I hide account-level templates in Harness from end users?
+Yes, you can hide templates using Role-Based Access Control (RBAC). By configuring Roles and Resource Groups, you can control which users or teams have visibility into specific templates. This ensures that internally used templates (such as Step Groups or Stage Templates) remain hidden from end users.
 
 ## API
 
@@ -294,6 +367,89 @@ No, failure strategies apply to all steps within a step group.
 ### How can I restrict approval for the user who ran the pipeline?
 
 You can select the **Disallow the executor from approving the pipeline** option in the Approval step.
+
+### How can I use Python to publish multiple input sets to Harness?
+You can use the Harness API to create input sets programmatically with a Python script. The API endpoint for creating input sets is available here. Below is a sample Python script you can customize for your migration project:
+```
+import requests
+import urllib.parse
+
+def main():
+    params = {
+        "accountIdentifier": "<Your Account ID>",
+        "orgIdentifier": "<Your Org ID>",
+        "projectIdentifier": "<Your Project ID>",
+        "pipelineIdentifier": "<Your Pipeline ID>",
+    }
+
+    query = urllib.parse.urlencode(params)
+
+    host = "https://app.harness.io"
+    pathname = "/pipeline/api/inputSets"
+    url = f"{host}{pathname}?{query}"
+
+    payload = """inputSet:
+  name: Test_1
+  tags: {}
+  identifier: Test_1
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Test_Pipe
+    stages:
+      - stage:
+          identifier: Test
+          type: Deployment
+          spec:
+            environment:
+              environmentRef: K8Env
+              infrastructureDefinitions:
+                - identifier: k8testcluster
+                  inputs:
+                    identifier: k8testcluster
+                    type: KubernetesDirect
+                    spec:
+                      namespace: brijesh
+"""
+
+    headers = {
+        "Content-Type": "application/yaml",
+        "x-api-key": "<Your_API_Key>",
+    }
+
+    response = requests.post(url, headers=headers, data=payload)
+
+    if response.status_code == 200:
+        print("Success:", response.json())
+    else:
+        print("Error:", response.status_code, response.text)
+
+if __name__ == "__main__":
+    main()
+```
+
+### How do I correctly delete a trigger using the Harness API?
+When deleting a trigger via the Harness API, ensure that the targetIdentifier correctly references the pipeline under which the trigger resides. If the identifier is incorrect, the API call will fail.
+
+For example, the correct cURL command should be structured like this:
+```
+curl -i -X DELETE \
+'https://app.harness.io/pipeline/api/triggers/<TriggerID>?accountIdentifier=<YourAccountID>&orgIdentifier=<YourOrgID>&projectIdentifier=<YourProjectID>&targetIdentifier=<YourPipelineID>' \
+-H 'If-Match: string' \
+-H 'x-api-key: <Your_API_Key>'
+```
+Verify that `<YourPipelineID>` correctly maps to the pipeline where the trigger is defined.
+
+### Can I trigger a pipeline execution without passing an input set or YAML in the request body?
+Yes, you can trigger a pipeline without providing an input set or YAML only if the pipeline does not require any runtime inputs or input sets. If your pipeline has mandatory inputs, you must pass the required input set YAML in the request body.
+
+For more details, refer to the [API documentation](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/postPipelineExecuteWithInputSetYaml)
+
+### Is there an API endpoint to update project variables in Harness?
+Yes, you can update project variables using the Harness API. The API allows you to modify existing variables by specifying the Project Identifier, Org Identifier, and Variable Identifier in the request body.
+
+You can refer to the [API documentation](https://apidocs.harness.io/tag/Variables/#operation/updateVariable)
+
 ## Pipeline triggers
 
 ### How can I obtain the triggered build version value, trigger ID, or trigger URL during pipeline runtime when a pipeline is triggered by a PR?
@@ -349,6 +505,11 @@ There is no limit to the number of triggers for a pipeline.
 ### Does Harness NextGen support the same cron syntax for triggers as FirstGen?
 
 Yes, Harness NextGen supports both the QUARTZ and UNIX syntax formats for cron triggers. For more information, go to [Schedule Pipelines Using Cron Triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
+
+### Can I use pipeline variables in trigger conditions to dynamically set the Git branch?
+No, pipeline variables cannot be used in trigger conditions. This is because pipeline variables are only resolved at execution time, whereas triggers evaluate conditions before the pipeline runs. As a result, expressions like `<+pipeline.variables.GIT_BRANCH_NAME>` will not work in trigger conditions.
+
+For more details, refer to: [Harness Trigger Documentation](https://developer.harness.io/docs/platform/triggers/triggers-reference/#built-in-git-payload-expressions)
 
 ## Stop pipelines
 
