@@ -1,0 +1,7 @@
+| **Event type ID** | **Description** | **Has value?** | **Has properties?** |
+| --- | --- | --- | --- |
+| crash | Any unhandled exception that causes the application to crash. | No | ```{ message: string, trace: string }``` |
+| error | Exceptions tracked via the `trackError` method. | No | ```{ message: string, trace: string }``` |
+| app_start | Time in milliseconds elapsed until app is launched | Yes | No |
+| anr | Sent if an ANR (Application Not Responding) is detected. | No | No |
+| device_info | Information provided by the OS about a device. This is sent the first time the Agent runs on the device. | No | ```{ id: string, display: string, product: string, device: string, board: string, manufacturer: string, brand: string, model: string, hardware: string, base: string, incremental: string, sdkVersion: string, host: string, fingerprint: string, release: string, baseOs: string, socManufacturer: string, securityPatch: string, abis: string }``` |

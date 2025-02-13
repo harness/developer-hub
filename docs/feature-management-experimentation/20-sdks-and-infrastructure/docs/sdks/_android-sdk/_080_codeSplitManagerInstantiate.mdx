@@ -1,0 +1,31 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_API_KEY");
+SplitManager manager = splitFactory.manager();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val splitFactory: SplitFactory = SplitFactoryBuilder.build(
+    "api_key",
+    Key("key"),
+    applicationContext
+)
+
+val manager: SplitManager = splitFactory.manager()
+```
+
+  </TabItem>
+</Tabs>

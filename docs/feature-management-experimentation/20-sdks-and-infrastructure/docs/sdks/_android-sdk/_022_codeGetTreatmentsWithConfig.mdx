@@ -1,0 +1,51 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<p />
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  <TabItem value="java">
+
+```java
+
+List<String> flagNames = Lists.newArrayList("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2");
+Map<String, SplitResult> treatments = client.getTreatmentsWithConfig(flagNames, null);
+
+Map<String, SplitResult> treatmentsByFlagSet = client.getTreatmentsWithConfigByFlagSet("frontend", null);
+
+List<String> flagSetNames = List.newArrayList("frontend", "client_side");
+Map<String, SplitResult> treatmentsByFlagSets = client.getTreatmentsWithConfigByFlagSets(flagSetNames, null);
+
+// treatments have the following form:
+// {
+//   "FEATURE_FLAG_NAME_1": { "treatment": "on", "config": "{ \"color\":\"red\" }" },
+//   "FEATURE_FLAG_NAME_2": { "treatment": "visa", "config": "{ \"color\":\"red\" }" }
+// }
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val flagNames: List<String> = listOf("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2")
+val treatments: Map<String, SplitResult> = client.getTreatmentsWithConfig(flagNames, null)
+
+val treatmentsByFlagSet = client.getTreatmentsWithConfigByFlagSet("frontend", null)
+
+val flagSetNames = listOf("frontend", "client_side");
+val treatmentsByFlagSets = client.getTreatmentsWithConfigByFlagSets(flagSetNames, null)
+
+// treatments have the following form:
+// {
+//   "FEATURE_FLAG_NAME_1": { "treatment": "on", "config": "{ \"color\":\"red\" }" },
+//   "FEATURE_FLAG_NAME_2": { "treatment": "visa", "config": "{ \"color\":\"red\" }" }
+// }
+```
+
+  </TabItem>
+</Tabs>

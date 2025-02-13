@@ -1,0 +1,28 @@
+:::info[Testing with Jest]
+
+We recommend using the SDK in localhost mode for your tests.
+
+For example, you can mock the module import (see [Jest documentation](https://jestjs.io/docs/jest-object#jestmockmodulename-factory-options) for details) to instantiate the SDK in localhost mode as shown below:
+
+```javascript
+jest.mock('@splitsoftware/splitio-react-native', () => {
+  const splitio = jest.requireActual('@splitsoftware/splitio-react-native');
+  return {
+    ...splitio,
+    SplitFactory: () => {
+      return splitio.SplitFactory({
+        core: {
+          authorizationKey: 'localhost',
+        },
+        // Mock your feature flags and treatments here
+        features: {
+            feature_flag_1: 'on',
+        }
+      });
+    },
+  };
+});
+```
+
+It is not recommended to use the default (online) mode of the SDK in your tests because it slows them down and increases their instability due to network latencies. However, if you must use it, you need to polyfill the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), which is used by the SDK but not provided by Jest and Node.js. [`isomorphic-fetch`](https://www.npmjs.com/package/isomorphic-fetch) is a good option for that.
+:::
