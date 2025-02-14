@@ -5,8 +5,6 @@ sidebar_position: 10
 ---
 
 This document provides steps to resolve "401 Unauthorized" errors when pulling images from Harness Artifact Registry.
-
-## Understanding 401 Errors When Pulling Images
 401 Unauthorized errors occur when Harness Artifact Registry fails to authenticate image pull requests from the Kubernetes cluster.
 
 :::tip Cluster Secrets
