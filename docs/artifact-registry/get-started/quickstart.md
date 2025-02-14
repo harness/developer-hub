@@ -38,10 +38,10 @@ Depending on your package manager, e.g. Docker, Helm or Maven, you may need to u
 ---
 
 ## Create an upstream proxy
-An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that allows the registry to fetch artifacts from another external or remote registry. When a user requests an artifact that isn't available in the registry, the registry directs the request to a configured upstream proxy. 
+An **Upstream Proxy** in an Artifact Registry is a configuration that enables the registry to retrieve artifacts from an external or remote registry. If a requested artifact is not available locally, the registry forwards the request to the upstream proxy to fetch it. 
 
 :::info upstream proxy usage
-Upstream proxy is used in most cases. When you build, you need open source dependencies and if it’s not present in the upstream proxy cache, it will need to be pulled from public repository.
+Upstream proxies are commonly used to manage dependencies. During a build, if an open-source dependency is not already cached in the upstream proxy, it will be fetched from a public repository. This ensures access to necessary dependencies while optimizing retrieval speed and reducing redundant downloads.
 :::
 
 To create one, follow these steps: 
@@ -100,7 +100,7 @@ Next, use the registry we created. To do so, we will pull an artifact from the p
 </Tabs>
 
 :::info pull an image
-When you attempt to pull an artifact, the system first checks the local registry. If the artifact is not found there, it automatically queries the configured upstream proxy. The upstream proxy then retrieves the artifact from the designated external source, if it is available. This ensures that even if the artifact isn't initially present in the local registry, it can still be accessed seamlessly through the proxy.
+When you pull an artifact, the system first checks the local registry. If the artifact is not found, it automatically queries the upstream proxy. The proxy then attempts to retrieve the artifact from the designated external source, if available. This process ensures seamless access to artifacts, even if they are not initially stored in the local registry.
 :::
 
 Now, you should see the artifact appear in your docker registry as well as the **Artifacts** tab in the left navigation panel.

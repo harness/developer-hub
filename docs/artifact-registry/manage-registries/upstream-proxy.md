@@ -7,10 +7,10 @@ sidebar_position: 20
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-An upstream proxy in Harness allows your artifact registry to automatically pull and cache artifacts from remote sources when they are not available locally. This serves as an intermediary between your registry and external repositories (e.g., Maven Central, Docker Hub). 
+An upstream proxy in Harness enables your artifact registry to automatically fetch and cache artifacts from remote sources when they are not available locally. It acts as an intermediary between your registry and external repositories such as Maven Central or Docker Hub.
 
 :::tip
-The upstream proxy plays a crucial role by caching open source dependencies. When building, if these dependencies aren't present in the upstream proxy cache, they must be fetched from a public repository. This initial fetch stores the dependencies in the Upstream Proxy artifact tab, ensuring they are always available locally. This is particularly beneficial when the source repository, such as Docker Hub, is temporarily unavailable. Harness's caching mechanism provides a reliable and efficient solution, reducing dependency on external services and safeguarding access to essential artifacts during server outages.
+The upstream proxy is essential for caching open-source dependencies. During a build, if a required dependency is not already cached, it is retrieved from a public repository and stored in the Upstream Proxy artifact tab. This ensures continuous availability, even if the source repository (e.g. Docker Hub or Maven Central) experiences downtime. Harness’s caching mechanism enhances reliability and efficiency by reducing dependency on external services and safeguarding access to critical artifacts.
 :::
 
 ## Key benefits
