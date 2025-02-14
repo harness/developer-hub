@@ -28,13 +28,13 @@ Our stateless architecture scales to millions of users with no degradation in pe
 ## FME features
 
 ### Feature flags
-[Feature flags](/docs/feature-management-experimentation/40-feature-management/index.md) turn on and off features to specific users or segments. You can tailor access to beta testers and early adopters based on individual IDs, attributes, dependencies, or percentages. Gradually target users little by little to limit the blast radius of your releases.
+Feature flags turn on and off features to specific users or segments. You can tailor access to beta testers and early adopters based on individual IDs, attributes, dependencies, or percentages. Gradually target users little by little to limit the blast radius of your releases.
 
 ### Release monitoring
-[Release monitoring](/docs/feature-management-experimentation/50-release-monitoring/index.md) detects the impact of each feature on system performance and user behavior, starting with the earliest stage of a gradual rollout. With detection and triage done at the flag level, you can ship more often and with greater confidence.
+Release monitoring detects the impact of each feature on system performance and user behavior, starting with the earliest stage of a gradual rollout. With detection and triage done at the flag level, you can ship more often and with greater confidence.
 
 ### Experimentation
-[Experimentation](/docs/feature-management-experimentation/60-experimentation/index.md) centralizes notifications for metric impacts, review periods, and change requests, empowering your team with actionable data to make rapid, precise, data-driven decisions.
+Experimentation centralizes notifications for metric impacts, review periods, and change requests, empowering your team with actionable data to make rapid, precise, data-driven decisions.
 
 ## Harness platform
 

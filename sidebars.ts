@@ -698,7 +698,7 @@ const sidebars: SidebarsConfig = {
       className: "horizontal-bar",
     },
     "infra-as-code-management/get-started/overview",
-    "infra-as-code-management/get-started/onboarding-guide",
+    "infra-as-code-management/get-started/get-started",
     {
       type: "html",
       value: "Use IaCM",
