@@ -23,7 +23,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | Flag | Description |
 | --- | --- |
 | CDS_SKIP_INSTANCES_V2 | Enables users to retry failed deployments on a subset of hosts when using traditional infrastructure. **This feature is in Limited GA** |
-| CDS_EVENT_LISTENER_STEP | Enables users to use the **EventListener Step** for event-driven pipeline execution. **This feature is in Limited GA**|
 | CDS_ASG_SKIP_INSTANCE_TERMINATION | Enables users to track the progress of launching new instances and terminating existing ones in AWS during a rolling deployment using the ASG Steady State Step in Harness. **This feature is in Limited GA**|
 | CDS_ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS | Enables users with dynamically generated load balancer configurations to successfully validate ECS Blue-Green deployment pipelines, resolving the previous validation failure. **This feature is in Limited GA** |
 | CDS_ARTIFACT_DISABLE_VALIDATION | Enables users to bypass primary and sidecar artifact consumption checks in the service of a **Deploy** stage. For more information, go to Harness [Skip Artifact Consumption for the Stage](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#skip-artifact-consumption-for-the-stage). **This feature is in Limited GA**  |
