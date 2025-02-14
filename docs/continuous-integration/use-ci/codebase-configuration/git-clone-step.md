@@ -57,7 +57,6 @@ The **Description** is an optional text string.
 
 If you're using [Harness Code Repository (Code)](https://developer.harness.io/docs/code-repository/get-started/overview/), you do not need to configure a connector. 
 
-
 For third-party Git provider, select a connector for the source control provider hosting the code repo that you want the step to clone.
 
 The following topics provide more information about creating code repo connectors:
@@ -69,6 +68,12 @@ The following topics provide more information about creating code repo connector
 * Other Git providers:
   * [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
   * [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
+
+:::warning
+
+You must have delegate version 25.02.85201 and onwards in order to use a connector with an SSH credential that uses a passphrase with Kubernetes build infrastructure. For any earlier delegate version, this will not work. 
+
+:::
 
 ### Repository Name
 

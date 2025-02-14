@@ -177,6 +177,34 @@ You can trigger a pipeline in Harness IDP Workflows using the **`user session to
 
 #### 1. Defining the **`token`** setup:
 This is defined under the `parameter.properties` spec to extract the user session token. This token is then used to execute the pipeline. 
+
+:::warning
+The **`token`** property used to fetch the **Harness Auth Token** is hidden on the **Review Step** using **`ui:widget: password`**. However, for this to function correctly in a **multi-page workflow**, the token property must be included under the **first `page`**.
+```YAML {12}
+parameters:
+  - title: <PAGE-1 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+    token:
+      title: Harness Token
+      type: string
+      ui:widget: password
+      ui:field: HarnessAuthToken
+  - title: <PAGE-2 TITLE>
+    properties:
+      property-1:
+        title: title-1
+        type: string
+      property-2:
+        title: title-2
+  - title: <PAGE-n TITLE>  
+```
+:::
+
 ```YAML
 token:
     title: Harness Token
@@ -226,34 +254,6 @@ output:
 - In the above example, the **`apikey`** parameter retrieves its value from **Harness Token**, which is defined in the **`parameters.properties`** section as a required input.  
 - Without the **`token`** parameter input, the pipeline won't be executed.  
 - [Take a look at this example for further clarification.](https://github.com/harness-community/idp-samples/blob/eb9988020d3917c0bca7daccb354ba670626221b/tutorial-self-service-flow-template.yaml#L64-L68)
-
-
-#### How does it work for a multi-page Workflow?
-The **`token`** property used to fetch the **Harness Auth Token** is hidden on the **Review Step** using **`ui:widget: password`**. However, for this to function correctly in a **multi-page workflow**, the token property must be included under the **first `page`**.
-
-```YAML
-parameters:
-  - title: <PAGE-1 TITLE>
-    properties:
-      property-1:
-        title: title-1
-        type: string
-      property-2:
-        title: title-2
-    token:
-      title: Harness Token
-      type: string
-      ui:widget: password
-      ui:field: HarnessAuthToken
-  - title: <PAGE-2 TITLE>
-    properties:
-      property-1:
-        title: title-1
-        type: string
-      property-2:
-        title: title-2
-  - title: <PAGE-n TITLE>
-```
 
 ### 🔑 Mode 2: Harness API Key Secret
 You can also trigger a pipeline in an IDP Workflow using a **pre-configured Harness API Key**.  Here's how you can set this up:

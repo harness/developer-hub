@@ -12,7 +12,7 @@ Cloud Asset Governance is built on top of the popular open source software Cloud
 
 ## Resource Coverage
 
-Harness also offers a wide range of policies which are available out of the box, which you can leverage on day 0 to optimize your cloud resources and set up guardrails against future wastage.
+Harness also offers a wide range of policies, which are available out of the box, which you can leverage on day 0 to optimize your cloud resources and set up guardrails against future wastage.
 
 ### AWS Resource Coverage (Comprehensive list)
 

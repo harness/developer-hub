@@ -212,11 +212,8 @@ static/  @rohanmaharjan100 @wei-harness
 #Armory KB
 /kb/armory @okosun-j @jimin-harness @deepanshuHarness @guna-harness
 
-#RA
-/kb/reference-architectures/ @rssnyder @suranc @jimin-harness @deepanshuHarness @guna-harness
-
 # DB DevOps
 /kb/database-devops/ @jenniferopal @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness
 
 #Reference Architectures
-/kb/reference-architectures @RajiKoppala @rssnyder 
+/kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness
