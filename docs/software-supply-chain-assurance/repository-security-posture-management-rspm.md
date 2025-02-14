@@ -42,6 +42,11 @@ The RSPM feature in the Harness SCS module is currently supported only for **Git
 
 The overview page provides a comprehensive summary of a specific code repository's security and risk posture. This page compiles all the crucial details in one place, offering a clear and concise view.
 
+:::note
+
+Scans will not run if **Git Experience** is enforced and the **Default Store Type for Entities** is set to remote in the account settings. Make sure these settings are configured correctly to enable scan execution.
+
+:::
 
 ### What is an Evaluation?
 
