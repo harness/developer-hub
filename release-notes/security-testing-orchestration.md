@@ -24,6 +24,17 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## February 2025
 
+### Version 1.127.5
+
+<!-- 2025-02-15 -->
+
+#### New Features and Enhancements
+- Unsupported connectors can now be configured as Docker connectors for STO steps. (STO-8398, ZD-75006)
+
+#### Fixed Issues 
+- Fixed an issue where remediation calculations were skipped due to a race condition between remediation detection logic and dependent processes. (STO-8456)
+- Fixed AI remediation steps failing with a 403 error when triggered by a project admin; added support for eligible scopes like project and org. (STO-8483, ZD-76591)
+
 ### Version 1.125.0
 
 <!-- 2025-02-04 -->
