@@ -28,35 +28,36 @@ To authenticate your Kubernetes cluster, follow these steps:
 1. **Create a Docker Registry Secret:**
   - If the Harness authentication isn’t in your `~/.docker/config.json`, create a temporary `temp_dockercfg` file with the following Docker authentication settings:
 
-```json
-{
-  "pkg.harness.io": {
-  "username": "<registry_username>",
-  "password": "<registry_PAT_or_SAT>",
-  "email": "<registry_email>",
-  "auth": "<encoded_PAT_you_copied_from_previous_step>"
+  ```json
+  {
+    "pkg.harness.io": {
+    "username": "<registry_username>",
+    "password": "<registry_PAT_or_SAT>",
+    "email": "<registry_email>",
+    "auth": "<encoded_PAT_you_copied_from_previous_step>"
+    }
   }
-}
-```
-- Encode the `temp_dockercfg`:
-```bash
-cat temp_dockercfg | base64 -w 0 > dockercfg
-```
-- Create a `secret.yaml` file:
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: <some_identifier>-dockercfg
-  namespace: <your_namespace>
-type: kubernetes.io/dockercfg
-data:
-  .dockercfg: <encoded_dockercfg_from_previous_step>
-```
-- Apply the secret for declarative management:
-```bash
-kubectl apply -f secret.yaml -n <namespace>
-```
+  ```
+  - Encode the `temp_dockercfg`:
+  ```bash
+  cat temp_dockercfg | base64 -w 0 > dockercfg
+  ```
+  - Create a `secret.yaml` file:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: <some_identifier>-dockercfg
+    namespace: <your_namespace>
+  type: kubernetes.io/dockercfg
+  data:
+    .dockercfg: <encoded_dockercfg_from_previous_step>
+  ```
+  - Apply the secret for declarative management:
+  ```bash
+  kubectl apply -f secret.yaml -n <namespace>
+  ```
+---
 
 2. **Update your Kubernetes deployment manifest to reference the secret:**
 ```yaml
@@ -72,7 +73,7 @@ spec:
   imagePullSecrets:
     - name: <some_identifier>-dockercfg
   ```
-
+---
 3.	**Verify the Setup:**
 Deploy the updated manifest and monitor the pod status to ensure the image is pulled successfully without authentication errors.
 
