@@ -1,484 +1,149 @@
 ---
-title: What's supported by Harness FME
-description: Platforms and technologies supported by FME
+title: What's supported in Harness FME
+description: Platforms and technologies supported in FME
 sidebar_label: What's supported
 sidebar_position: 1
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-import "./static/_scrolling-table.css";
+This topic lists platform and technologies supported by Harness Feature Management & Experimentation (FME).
 
-## FME module features
+For more information about FME features and functionality, go to the [Harness FME overview](/docs/feature-management-experimentation/10-getting-started/docs/overview.md).
 
-Feature Management & Experimentation (FME) supports the following features.
+For information about upcoming and recently released features, go to the [Harness FME product roadmap](https://developer.harness.io/roadmap/#fme).
 
-| **Features** | | **Description** |
-| --- | --- | --- |
-| Feature flags | ✅ | You can create feature flags in FME/Split. In your codebase, you can use FME SDKs and conditional statments to deploy code "behind" feature flags without immediately releasing it to customers. Then, safely test, target, and turn features on/off with effortless controls. |
-| Binary flags | ✅ | Allow you to toggle a feature on or off. |
-| Multivariant flags | ✅ | You can also set multiple variants per feature. |
-| Release scheduling | ✅ | You can schedule feature releases or targeting changes to take effect on future dates. |
-| Approval flows | ✅ | Feature flag or segment changes can be assigned to approvers before taking effect. |
-| Versioning | ✅ | Feature flag and segment audit logs allow you to review decisions and protect your data. |
-| Flexible feature flag targeting rules | ✅ | Release features to users based on individual IDs, attributes, dependencies, or gradually increasing percentages. |
-| Dynamic configurations | ✅ | Dynamically adjust feature variations (e.g. visual styles, back-end configs, machine learning parameters, and LLM prompts) without deploying new code. |
-| Event tracking | ✅ | Track events and FME automatically attribution them to feature variations for monitoring and analysis. |
-| Live tail | ✅ | See events and impressions (feature flag evaluation data) events come in to FME servers in realtime.
-| Automatic metrics | ✅ | Auto-capture performance metrics in web and mobile apps by using FME SDK Suites or FME RUM agents. |
-| Release monitoring | ✅ | Unparalleled metric comparison between any two feature flag variations. |
-| Alerting | ✅ | Custom alerting pinpoints the feature variation that significantly impacts your metrics, no matter your rollout size, powering your data-driven decisions and saving hours of investigation. |
-| Instant rollback | ✅ | Promptly roll-back a problematic feature with a feature flag's Kill switch. |
-| Experimentation | ✅ | Select your most valuable metrics and feature variations for low-risk flexible A/B/n experiments, to power your data-driven business decisions. |
-| Sequential testing | ✅ | Detect consistent significant impacts in the short term with sequential metric analysis. |
-| Fixed horizon testing | ✅ | Detect gradual steady impact over the long term with fixed horizon metric analysis. |
-| Integrations |  ✅ | Explore more than 30 pre-built ingrations, or create your own using Split webhooks and Split Admin API endpoints. |
-| User consent | ✅ | Protect privacy and confidential data with fully localized feature flag evaluations on all SDKs and user consent support on all client-side SDKs. |
-| AI support | ✅ | Meet ___Release Agent___, our new Harness FME module chatbot, ready to answer your questions and help you interpret experimental results. |
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
 
-## FME SDK supported features
+## Supported server-side SDKs
 
-Harness FME works with client-side server-side SDKs, built for popular programming languages. If you are looking for a language that is not shown below, consider using [Split Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator).
+The following table lists the server-side FME SDKs that Harness supports.
 
-Scroll left to see the feature list for all SDKs.
+| SDK | Documentation |
+| ---- | --- |
+| [Go](https://github.com/splitio/go-client) | [Go SDK reference](https://help.split.io/hc/en-us/articles/360020093652-Go-SDK) |
+| [Java](https://github.com/splitio/java-client) | [Java SDK reference](https://help.split.io/hc/en-us/articles/360020405151-Java-SDK)                   |
+| [.NET](https://github.com/splitio/dotnet-client) | [.NET SDK Reference](https://help.split.io/hc/en-us/articles/360020240172--NET-SDK)                   |
+| [Node.js](https://github.com/splitio/javascript-client) | [Node.js SDK Reference](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK) |
+| [PHP](https://github.com/splitio/php-client) | [PHP SDK reference](https://help.split.io/hc/en-us/articles/360020350372-PHP-SDK) |
+| [PHP Thin Client](https://github.com/splitio/php-thin-client) | [PHP Thin Client SDK reference](https://help.split.io/hc/en-us/articles/18305128673933-PHP-Thin-Client-SDK) |
+| [Python](https://github.com/splitio/python-client) | [Python SDK reference](https://help.split.io/hc/en-us/articles/360020359652-Python-SDK) |
+| [Ruby](https://github.com/splitio/ruby-client) | [Ruby SDK reference](https://help.split.io/hc/en-us/articles/360020673251-Ruby-SDK) |
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+## Supported client-side SDKs
 
-<Tabs
-  groupId="sdktab" queryString>
-  <TabItem value="client-side" label="Client-side SDKs">
+The following table lists the client-side FME SDKs that Harness supports.
 
-  Client-side SDKs evaluate feature flags on your web or mobile client. See below for the full list of supported features.
+| SDK | Documentation |
+| ---- | --- |
+| [Android](https://github.com/splitio/android-client) | [Android SDK reference](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK) |
+| [Angular utilities](https://github.com/splitio/angular-sdk-plugin) | [Angular utilities reference](https://help.split.io/hc/en-us/articles/6495326064397-Angular-utilities) |
+| [JavaScript Browser](https://github.com/splitio/javascript-browser-client) | [JavaScript Browser SDK Reference](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK) |
+| [Flutter plugin](https://github.com/splitio/flutter-sdk-plugin) | [Flutter plugin Reference](https://help.split.io/hc/en-us/articles/8096158017165-Flutter-plugin) |
+| [iOS](https://github.com/splitio/ios-client) | [iOS SDK reference](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK) |
+| [Javascript](https://github.com/splitio/javascript-client) | [Javascript SDK reference](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK) |
+| [React](https://github.com/splitio/react-client) | [React SDK reference](hhttps://help.split.io/hc/en-us/articles/360038825091-React-SDK) |
+| [React Native](https://github.com/splitio/react-native-client) | [React Native SDK reference](https://help.split.io/hc/en-us/articles/4406066357901-React-Native-SDK) |
+| [Redux](https://github.com/splitio/redux-client) | [Redux SDK reference](https://help.split.io/hc/en-us/articles/360038851551-Redux-SDK) |
 
-    <div style={{ overflowX: 'scroll', marginLeft: '0'}}>
-      <table style={{border: '1px solid rgb(96, 103, 112)'}}>
-        <thead>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0', minWidth:'15em'}}>Features</th>
-            <th>[Android SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-suite)</th>
-            <th>      [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk)</th>
-            <th>[Android RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-rum-agent/)</th>
-            <th>[Angular utilities](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/angular/angular-utilities)</th>
-            <th>[Browser SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-suite)</th>
-            <th>      [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/)</th>
-            <th>[Browser RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/)</th>
-            <th>   [Flutter plugin](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/flutter/flutter-plugin)</th>
-            <th>    [iOS SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-suite)</th>
-            <th>          [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/)</th>
-            <th>    [iOS RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-rum-agent/)</th>
-            <th>   [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/)</th>
-            <th>        [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/)</th>
-            <th> [React Native SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/)</th>
-            <th>        [Redux SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/redux/redux-sdk)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Language(s)</th>
-            <td>[Java](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/java/android-suite)/[Kotlin](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/kotlin/android-suite)</td>
-            <td>[Java](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/java/android-sdk/)/[Kotlin](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/kotlin/android-sdk/)</td>
-            <td>[Java](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/java/android-rum-agent/)/[Kotlin](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/kotlin/android-rum-agent/)</td>
-            <td>[TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/angular-utilities)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-suite)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-suite)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/browser-sdk/)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/browser-rum-agent/)</td>
-            <td>[Dart](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/dart/flutter-plugin)/[Flutter](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/flutter/flutter-plugin)</td>
-            <td>[Swift](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/swift/ios-suite)</td>
-            <td>[Swift](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/swift/ios-sdk/)</td>
-            <td>[Swift](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/swift/ios-rum-agent/)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/javascript-sdk/)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/react-sdk/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/react-sdk/)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/react-native-sdk/)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/react-native-sdk/)</td>
-            <td>[JavaScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/redux-sdk)/ [TypeScript](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/typescript/redux-sdk)</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Feature flag evaluation</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/#basic-use)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/#basic-use)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/#basic-use)</td>
-            <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/#basic-use)</td>
-            <td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Dynamic config (for feature flag treatments)</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
-            <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/#example-of-getting-feature-flag-treatments-with-configurations)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/advanced-feature-flag-evaluations/#get-treatments-with-configurations)</td>
-            <td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>User ID targeting</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/#basic-use)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/#basic-use)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/#basic-use)</td>
-            <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/#basic-use)</td>
-            <td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Segment targeting</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/#basic-use)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/#basic-use)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/#basic-use)</td>
-            <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/#basic-use)</td>
-            <td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Large Segment targeting</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/#basic-use)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/#basic-use)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/#basic-use)</td>
-            <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/#basic-use)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/#basic-use)</td>
-            <td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Custom attributes targeting</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
-            <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/advanced-feature-flag-evaluations/#user-attributes)</td>
-            <td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Flag sets</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/configuration/#syncconfig)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/configuration/#splitfilters)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/configuration/#sync)</td>
-            <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/configuration/#syncsplitfilters)</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Experiments</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/real-user-monitoring/android-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/track/)</td>
-            <td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Event tracking</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/real-user-monitoring/android-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/track/)</td>
-            <td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Custom event properties</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/real-user-monitoring/android-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-rum-agent/advanced-use-cases/#custom-events)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/track/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/track/)</td>
-            <td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Automatic metrics</th>
-            <td>✅</td>
-            <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-rum-agent/#automatic-metric-creation)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-rum-agent/#automatic-metric-creation)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-rum-agent/#automatic-metric-creation)</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Localhost mode</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/localhost-mode/)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/localhost-mode/)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/localhost-mode/)</td>
-            <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/localhost-mode/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/localhost-mode/)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/localhost-mode/)</td>
-            <td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Flush</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/flush/)</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/flush/)</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>External impression listener (for data montoring integrations)</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/advanced-use-cases/#custom-impression-listener)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/advanced-use-cases/#custom-impression-listener)</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/advanced-use-cases/#custom-impression-listener)</td>
-            <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/advanced-use-cases/#custom-impression-listener)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/advanced-use-cases/#custom-impression-listener)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/advanced-use-cases/#custom-impression-listener)</td>
-            <td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Authentication header overrides</th>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/browser-sdk/configuration/#headeroverrides)</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/javascript/javascript-sdk/configuration/#headeroverrides)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-sdk/configuration/#headeroverrides)</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/react/react-native-sdk/configuration/#headeroverrides)</td>
-            <td>✘</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Certificate pinning</th>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/android/android-sdk/advanced-use-cases/#certificate-pinning)</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✅</td>
-            <td>[✅](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/ios/ios-sdk/advanced-use-cases/#certificate-pinning)</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-            <td>✘</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+## Supported RUM Agents and Suite SDKs
 
-  </TabItem>
-  <TabItem value="server-side" label="Server-side SDKs">
+RUM Agents collect Real User Metric events and sends these events to Harness. Harness FME also supports FME Suite SDKs that include RUM Agents. The following table lists the FME RUM Agents and FME Suite SDKs that Harness supports.
 
-  Server-side SDKs evaluate feature flags on your web server. See below for the full list of supported features.
+| FME Suite SDK | FME Suite SDK documentation | RUM Agent documentation |
+| ---- | --- | --- |
+| [Android](https://github.com/splitio/android-client) | [Android Suite SDK reference](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite) | [Android RUM Agent reference](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent) |
+| [iOS](https://github.com/splitio/ios-client) | [iOS Suite SDK reference](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite) | [iOS RUM Agent reference](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent) |
+| [JavaScript Browser](https://github.com/splitio/javascript-browser-client) | [JavaScript Browser Suite SDK Reference](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite) | [JavaScript Browser RUM Agent reference](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-Agent) |
 
-    <div style={{ overflowX: 'scroll', marginLeft: '0'}}>
-      <table style={{border: '1px solid rgb(96, 103, 112)'}}>
-        <thead>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Features</th>
-            <th>Go SDK</th>
-            <th>Java SDK</th>
-            <th>.NET SDK</th>
-            <th>Node.js SDK</th>
-            <th>PHP SDK</th>
-            <th>PHP Thin Client SDK</th>
-            <th>Python SDK</th>
-            <th>Ruby SDK</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Language(s)</th>
-            <td>Golang</td>
-            <td>Java/Kotlin</td>
-            <td>C#</td>
-            <td>JavaScript/ TypeScript</td>
-            <td>PHP</td>
-            <td>PHP</td>
-            <td>Python</td>
-            <td>Ruby/Ruby + Rails</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Feature flag evaluation</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Dynamic config (for feature flag treatments)</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>User ID targeting</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Segment targeting</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Custom attributers targeting</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Experiments</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Event tracking</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Custom event properties</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Automatic metrics</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Localhost mode</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>External impression listener (for data montoring integrations)</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Split Synchronizer suport</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Split Proxy suport</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-          <tr>
-            <th class='solidBgColor' style={{position: 'sticky', left:'0'}}>Network proxy pinning</th>
-            <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+## FME Evaluator
 
-  </TabItem>
-</Tabs>
+For languages where there is no native SDK support, Harness offers the [FME Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator), a small service capable of evaluating some or all available features for a given customer via a REST endpoint.
 
-<!-- TODO - uncomment this when the FME module can be selected in the Idea Portal
+## FME Synchronizer
+
+The [FME Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer) service is built for languages that do not have a native capability to keep a shared local cache, which is needed to evaluate FME feature flags.
+
+This tool coordinates the sending and receiving of data to a remote datastore that all of your processes can share. Out of the box, FME Synchronizer supports Redis as a remote datastore. The Synchronizer service runs as a standalone process in dedicated or shared servers and it does not affect the performance of your code or FME SDKs.
+
+## FME Proxy
+
+The [FME Proxy](https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy) enables you to deploy a service in your own infrastructure that behaves like Harness servers and is used by both server-side and client-side SDKs to synchronize the flags without connecting to Harness FME's actual backend directly.
+
+This tool reduces connection latencies from the SDKs to the Harness servers transparently, and when a single connection is required from a private network to the outside for security reasons.
+
+## Running in the Cloud
+
+There are no limitations for using FME in any cloud or non-cloud environment as long as the languages needed are supported with an SDK, and connectivity to either Harness or the FME Proxy can be established.
+
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
+
+## Monitoring and analytics sources
+
+Monitoring and analytics sources in Harness FME are APM (Application Performance Monitoring) or customer data and analytics providers that allow you to collect customer events and performance metrics.
+
+<!-- Analytics, Customer data platform, Monitoring, Warehouse + Google Tag Manager (from Deployment) -->
+
+Harness FME supports the following monitoring and analytics sources:
+
+- [Amazon S3](https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3)
+- [Amplitude](https://help.split.io/hc/en-us/articles/360046658932-Amplitude)
+- [AppDynamics](https://help.split.io/hc/en-us/articles/360020898371-AppDynamics)
+- [Bugsnag](https://help.split.io/hc/en-us/articles/5709939011085-Bugsnag)
+- [Datadog](https://help.split.io/hc/en-us/articles/4822553169933-Datadog)
+- [Dynatrace](https://help.split.io/hc/en-us/articles/360059673711-Dynatrace)
+- [FullStory](https://help.split.io/hc/en-us/articles/360045937831-FullStory)
+- [Google Analytics](https://help.split.io/hc/en-us/articles/360040838752-Google-Analytics)
+- [Google Tag Manager](https://help.split.io/hc/en-us/articles/7936008367245-Google-Tag-Manager)
+- [Grafana](https://help.split.io/hc/en-us/articles/12397463150861-Grafana)
+- [Heap](https://help.split.io/hc/en-us/articles/360035207311-Heap)
+- [Librato](https://help.split.io/hc/en-us/articles/360020950431-Librato)
+- [Mixpanel](https://help.split.io/hc/en-us/articles/360045503191-Mixpanel)
+- [mParticle](https://help.split.io/hc/en-us/articles/360038306272-mParticle)
+- [New Relic](https://help.split.io/hc/en-us/articles/360020695432-New-Relic)
+- [PagerDuty](https://help.split.io/hc/en-us/articles/360046246631-PagerDuty)
+- [Papertrail](https://help.split.io/hc/en-us/articles/360020700512-Papertrail)
+- [Quantum Metric](https://help.split.io/hc/en-us/articles/4423968122381-Quantum-Metric)
+- [Rollbar](https://help.split.io/hc/en-us/articles/360020700732-Rollbar)
+- [Segment](https://help.split.io/hc/en-us/articles/360020742532-Segment)
+- [Sentry](https://help.split.io/hc/en-us/articles/360029879431-Sentry)
+- [SessionCam](https://help.split.io/hc/en-us/articles/360039246411-SessionCam)
+- [Sumologic](https://help.split.io/hc/en-us/articles/360020746172-Sumo-Logic)
+
+To learn how to add a monitoring or analytics source, click on one of the links above.
+
+## Deployment platforms
+
+Deployment and serverless application platforms simplify deployment and hosting for your application code or infrastructure.
+
+Harness FME supports the following deployment and serverless application platforms:
+
+<!-- Deployment -->
+
+- [Cloudflare Workers](https://help.split.io/hc/en-us/articles/4505572184589-Cloudflare-Workers) <!-- serverless hosting -->
+- [Terraform provider](https://help.split.io/hc/en-us/articles/6191463919885-Terraform-provider) <!-- terraform = deploy cloud infrastructure, create feature flags from terraform -->
+- [Vercel](https://help.split.io/hc/en-us/articles/16469873148173-Vercel)
+
+To learn how to configure Harness FME for a deployment platform or serverless application platform, click on one of the links above.
+
+## Development, change management, and messaging tools
+
+Development, change management, and messaging tools improve team efficiency, enhance developer experience, and help effectively manage permissions.
+
+Harness FME supports the following development, change management, and messaging tools:
+
+<!-- Development, Change management, Messaging -->
+
+- [Azure DevOps](https://help.split.io/hc/en-us/articles/4408032964493-Azure-DevOps) <!-- configure/enable rollouts, create/associate feature flags -->
+- [GitHub Actions](https://help.split.io/hc/en-us/articles/24994768544269-GitHub-Actions) <!-- evaluate feature flags in GA -->
+- [Jenkins](https://help.split.io/hc/en-us/articles/360044691592-Jenkins) <!-- create/update/delete feature flags as part of test & automation workflow -->
+- [Jira Cloud](https://help.split.io/hc/en-us/articles/360059317892-Jira-Cloud) <!-- connect feature flags and Jira issues -->
+- [Slack](https://help.split.io/hc/en-us/articles/360020997851-Slack)
+- [ServiceNow](https://help.split.io/hc/en-us/articles/5524203735181-ServiceNow) <!-- manage permissions/approval flows -->
+- [VSCode extension](https://help.split.io/hc/en-us/articles/10731776599309-VSCode-extension)
+
+To learn how to configure one of these tools to effectively work with FME, click on a link above.
+
+<!-- todo: consider including this when the FME module can be selected in the Idea Portal
 ## Feature requests
 
 Some of our best ideas come from our customers. You can submit your feature requests to [Harness Idea Portal](https://ideas.harness.io/feature-request).

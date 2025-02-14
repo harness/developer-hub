@@ -24,7 +24,7 @@ import { MODULES } from "@site/src/constants"
           title: "What's supported",
           module: MODULES.fme,
           description:
-            "At a glance view of FME supported features",
+            "Platforms and technologies supported in FME",
           link: "/docs/feature-management-experimentation/getting-started/whats-supported",
         },
         {
