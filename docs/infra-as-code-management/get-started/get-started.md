@@ -184,7 +184,7 @@ A pipeline structures workflows to manage tasks like planning infrastructure cha
 
 #### Provision with Cost Estimation
 :::info
-You can include **cost estimation** as part of the workspace setup and in conjunction with the provision operation in your pipeline. This is part of the tofu or terraform `plan` step in your pipeline, which provides you with an approximate cost of the infrastructure changes you are making. Go to [cost estimation](docs/infra-as-code-management/workspaces/cost-estimation) for more details.
+You can include **cost estimation** as part of the workspace setup and in conjunction with the provision operation in your pipeline. This is part of the tofu or terraform `plan` step in your pipeline, which provides you with an approximate cost of the infrastructure changes you are making. Go to [cost estimation](/docs/infra-as-code-management/workspaces/cost-estimation) for more details.
 :::
 
 <Tabs>
@@ -208,7 +208,7 @@ You can include **cost estimation** as part of the workspace setup and in conjun
   </TabItem>
 </Tabs>
   
-The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `apply`. Go to [Tofu/Terraform Plugins](docs/infra-as-code-management/pipelines/terraform-plugins) for more information about supported OpenTofu/Terraform commands.
+The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `apply`. Go to [Tofu/Terraform Plugins](/docs/infra-as-code-management/pipelines/terraform-plugins) for more information about supported OpenTofu/Terraform commands.
 
 ---
 
