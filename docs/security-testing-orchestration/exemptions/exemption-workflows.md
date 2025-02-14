@@ -1,5 +1,5 @@
 ---
-title: Exemptions to override STO failure policies
+title: Request Issue Exemption
 description: Procedures and best practices for requesting and approving exemptions.
 sidebar_label: Request issue exemption
 sidebar_position: 60
@@ -11,7 +11,13 @@ import request_exemption from '../use-sto/static/request-exemption.png'
 import open_exemption_details from '../use-sto/static/open-exemption-details.png'
 import baseline_not_defined from '../use-sto/static/exemption-workflows-no-baseline-defined.png'
 
-## Request an STO exemption
+When security scanning results in a list of issues with varying severities that could potentially block your pipelines, you can request an exemption to bypass specific issues. This ensures that approved exemptions are ignored in future scans, allowing your pipelines to continue uninterrupted.
+
+:::note
+To raise an issue exemption, you must have **Security Testing Developer** or **Security Testing SecOps** user permissions.
+:::
+
+To request an issue exemption, follow these steps:
 
 1. Select **Executions** (left menu) and then go to a successful build.  
 

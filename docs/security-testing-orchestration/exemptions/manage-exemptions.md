@@ -9,6 +9,28 @@ import request_exemption from '../use-sto/static/request-exemption.png'
 import open_exemption_details from '../use-sto/static/open-exemption-details.png'
 import baseline_not_defined from '../use-sto/static/exemption-workflows-no-baseline-defined.png'
 
+When an [issue exemption request](./exemption-workflows) is submitted, it goes through a defined lifecycle. The available actions to address these requests include **Approving**, **Rejecting**, or **Cancelling**. The exemption lifecycle consists of the following stages:
+
+1. **Pending:**  
+   - The request is newly created and awaits review.  
+   - At this stage, users can choose to approve, reject, or cancel the request.
+
+2. **Approved:**  
+   - The request has been reviewed and accepted.  
+   - The issue is temporarily or permanently exempt from further action based on the exemption details.
+
+4. **Expired:**  
+   - The exemption period has elapsed, or the exemption has been invalidated.  
+   - Once expired, the issue returns to its original active state unless a new exemption is requested.
+
+<DocImage path={require('./static/exemption-lifecycle.png')} width="60%" height="60%" title="Click to view full size image" />
+
+### Actions
+- **Approve:** Accept the request and apply the exemption.  
+- **Reject:** Decline the request and maintain the issue status.  
+- **Cancel:** Close the request before any decision is made.
+
+
 ## Approve, reject, or cancel an STO exemption
 
 :::note
