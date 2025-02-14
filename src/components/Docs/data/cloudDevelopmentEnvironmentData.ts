@@ -42,13 +42,7 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.cde,
           description: "A detailed step-by-step tutorial to get started with Gitspaces. ",
           link: "/docs/cloud-development-environments/introduction/quickstart-tutorial",
-        },
-        {
-          title: "Beta Plan Usage",
-          module: MODULES.cde,
-          description: "Learn more about the Harness Gitspaces Beta Plan.",
-          link: "/docs/cloud-development-environments/introduction/beta-usage",
-        },
+        }
       ],
     },
     {

@@ -13,10 +13,39 @@ In the Harness Chaos Engineering module, a **Service** refers to the specific ta
 
 The table below describes how a **Service** is considered in Chaos Engineering, in the context of the target resource.
 
-| **Target Resource**                                             | **Chaos Service Mapping**                                                                                                                                                       | **Target resource : Chaos Service License** |
-|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------|
-| Kubernetes Service                                              | Each Kubernetes service is mapped directly to a Chaos Service.                                                                                                                  | 1:1                                         |
-| Virtual Machine or a Baremetal host running Windows or Linux OS | The virtual machine can be a VMware VM, or a hypervisor VM, or any cloud provider VM such as EC2 or GCP VM or Azure VM. This has a one to one mapping with the license service. | 1:1                                         |
-| Serverless functions                                            | Cloud provides serverless functions such as Lambda (AWS), GCP Cloud Functions or Azure functions. Chaos experiments on 5 serverless functions are mapped to a license service.  | 5:1                                         |
-| Cloud Container Services                                        | This could be AWS ECS or Azure Container App or GCP Cloud Run. This has a one to one mapping with the license service.                                                          | 1:1                                         |
-| Miscellaneous (experiment runs)                                 | Any target resource that does not fall into a particular type described above. 100 chaos experiment runs on a given target is mapped to a license service.                      | 100:1                                       |
+<table>
+    <thead>
+        <tr>
+            <th>Target Resource</th>
+            <th>Chaos Service Mapping</th>
+            <th>Target Resource : Chaos Service License</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Kubernetes Service</td>
+            <td>Each Kubernetes service is mapped directly to a Chaos Service.</td>
+            <td>1:1</td>
+        </tr>
+        <tr>
+            <td>Virtual Machine or a Baremetal host running Windows or Linux OS</td>
+            <td>The virtual machine can be a VMware VM, a hypervisor VM, or any cloud provider VM such as EC2, GCP VM, or Azure VM. This has a one-to-one mapping with the license service.</td>
+            <td>1:1</td>
+        </tr>
+        <tr>
+            <td>Serverless functions</td>
+            <td>Cloud providers offer serverless functions such as AWS Lambda, GCP Cloud Functions, or Azure Functions. Chaos experiments on 5 serverless functions are mapped to a license service.</td>
+            <td>5:1</td>
+        </tr>
+        <tr>
+            <td>Cloud Container Services</td>
+            <td>This could be AWS ECS, Azure Container Apps, or GCP Cloud Run. This has a one-to-one mapping with the license service.</td>
+            <td>1:1</td>
+        </tr>
+        <tr>
+            <td>Miscellaneous (experiment runs)</td>
+            <td>Any target resource that does not fall into a specific type described above. 100 chaos experiment runs on a given target are mapped to a license service.</td>
+            <td>100:1</td>
+        </tr>
+    </tbody>
+</table>

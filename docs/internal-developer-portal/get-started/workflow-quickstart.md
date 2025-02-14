@@ -158,13 +158,10 @@ spec:
 
 In the above Workflow we have used the [Harness Trigger Workflow Action](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline), which takes the **exact variable name** `github_org` and `github_repo` you created for your pipeline as input and a **token** as `apikey`
 
-:::info
+:::warning
+The **token** property used to fetch the **Harness Auth Token** is hidden on the Review Step using ``ui:widget: password``. However, for this to function correctly in a **multi-page workflow**, the token property must be included under the **first page**.
 
-The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in-case you have multiple pages.
-
-```YAML
-# example workflow.yaml
-...
+```YAML {12}
 parameters:
   - title: <PAGE-1 TITLE>
     properties:
@@ -186,7 +183,6 @@ parameters:
       property-2:
         title: title-2
   - title: <PAGE-n TITLE>  
-...
 ```
 :::
 

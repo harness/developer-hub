@@ -80,7 +80,14 @@ instances:
       disk:
         size: 100
         type: "pd-balanced"
+      private_ip: true ## Ensures the instance is assigned only a private IP and prevents exposure to the public internet.  
 ```
+
+:::note
+
+With `private_ip: true`, the runner does not create an external IP.
+
+:::
 
 ### Pool settings reference
 
