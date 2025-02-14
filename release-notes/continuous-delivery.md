@@ -53,7 +53,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Users can now use the **EventListener Step** to enable event-driven pipeline execution, allowing pipelines to resume or fail based on webhook events that meet predefined approval or rejection criteria. Currently, this feature is behind the feature flag `CDS_EVENT_LISTENER_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-102801**)
 
-- Users can now retry failed deployments on a subset of hosts when using traditional infrastructure (SSH/WinRM/PDC) in a single CD stage. (**CDS-99674**)
+- Users can now retry failed deployments on a subset of hosts when using traditional infrastructure (SSH/WinRM/PDC) in a single CD stage. Currently, this feature is behind the feature flag `CDS_SKIP_INSTANCES_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-99674**)
 
 
 #### Fixed Issues
