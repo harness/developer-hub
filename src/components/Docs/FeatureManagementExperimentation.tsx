@@ -19,22 +19,6 @@ export default function FME() {
             <img src={`${baseUrl}img/icon_fme.svg`} />
             <h1>Feature Management & Experimentation</h1>
           </div>
-          <div className={styles.btnContainer}>
-            <Link href="/kb/feature-flags">
-              <button className={styles.btn}>
-                {/* <i className="fa-regular fa-file"></i> */}
-                <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Knowledge Base
-              </button>
-            </Link>
-            <Link href="/release-notes/feature-flags">
-              <button className={styles.btn}>
-                {/* <i className="fa-regular fa-file"></i> */}
-                <img src={`${baseUrl}img/icon_release_notes.svg`} />
-                Release Notes
-              </button>
-            </Link>
-          </div>
         </div>
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
