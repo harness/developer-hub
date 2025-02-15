@@ -30,10 +30,20 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 - 'Save Cache to S3' now supports Zstd compression for faster archiving and improved upload/download efficiency (CI-16010).
 - Improved the robustness of the Build Intelligence step by ensuring failures in bringing up the cache server are ignored. This enhancement prevents disruptions and ensures a smoother build process. (CI-16165, ZD-77827)
+- Windows rootless mode support is now available for the CI Addon and Lite Engine images. With the new feature flag `CI_ADDON_LE_WINDOWS_ROOTLESS` enabled, Windows infrastructure will pull the rootless versions of these images (harness/ci-addon and harness/ci-lite-engine), allowing builds to run without root privileges. The rootless image versions are now available as rootless-1.16.61. (CI-14868, ZD-72927, ZD-77194)
 
 #### Fixed issues
 
 - Resolved an issue with the CI `repoName` filter on the execution list page. Previously, due to Elasticsearch filtering inconsistencies, users were not seeing the correct responses. This fix ensures proper filtering when the execution list page is served via Elasticsearch, which is controlled by the feature flags `PIPE_ENABLE_ELASTIC_SEARCH` and `PIPE_ENABLE_DATA_RETENTION`. (PIPE-25112, ZD-77259, ZD-77611)
+
+#### Harness images updates
+
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`      | See update for CI-14868 above  | N/A                | rootless-1.16.61          |
+| `harness/ci-lite-engine`      | See update for CI-14868 above                  | N/A             | rootless-1.16.61        |
+
 
 ### Version 1.65
 
@@ -112,8 +122,8 @@ For more information see [Google Container Registry deprecation notice](https://
 | **Image**                | **Change**                                      | **Previous version** | **New Version** |
 | ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
 | `plugins/buildx`      | Updated dependencies to address vulnerabilities | 1.1.24                | 1.1.25           |
-| `plugins/ci-addon`       | Changes described in fixed issues list                  | 1.16.71              | 1.16.73         |
-| `plugins/ci-lite-engine` | Minor updates and improvements                  | 1.16.71              | 1.16.73         |
+| `harness/ci-addon`       | Changes described in fixed issues list                  | 1.16.71              | 1.16.73         |
+| `harness/ci-lite-engine` | Minor updates and improvements                  | 1.16.71              | 1.16.73         |
 
 ### Version 1.62
 
@@ -148,8 +158,8 @@ For more information see [Google Container Registry deprecation notice](https://
 | **Image**                | **Change**                                      | **Previous version** | **New Version** |
 | ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
 | `plugins/drone-git`      | Updated dependencies to address vulnerabilities | 1.6.3                | 1.6.4           |
-| `plugins/ci-addon`       | Minor updates and improvements                  | 1.16.69              | 1.16.71         |
-| `plugins/ci-lite-engine` | Minor updates and improvements                  | 1.16.69              | 1.16.71         |
+| `harness/ci-addon`       | Minor updates and improvements                  | 1.16.69              | 1.16.71         |
+| `harness/ci-lite-engine` | Minor updates and improvements                  | 1.16.69              | 1.16.71         |
 
 ### Version 1.60
 
