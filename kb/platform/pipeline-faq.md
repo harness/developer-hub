@@ -730,3 +730,6 @@ Discrepancies arise when the YAML file in any Git branch has different values co
 When you make updates to the pipeline via the Harness UI, these changes are saved both to the Harness DB and to the YAML file in the selected Git branch. However, other branches in your repository may still carry outdated YAML files with old values.
 
 To maintain consistency across all branches and interfaces, ensure that any manual changes to the YAML in Git are synchronized with updates made in the Harness UI. It’s also a good practice to regularly update all relevant branches to keep them aligned with the Harness DB.
+
+### How to dynamically refer to a secret, depending on some criteria that require referencing a different secret?
+You can use <+secrets.getValue(<+pipeline.variables.secret>)>, where you define a pipeline variable (secret) and assign its value accordingly. Make sure there is a valid secret associated with that identifier.
