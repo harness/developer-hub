@@ -38,15 +38,15 @@ The FME team builds and maintains FME SDKs for some of the most popular language
 
 ### Evaluator service
 
-For languages with no native SDK support, FME offers the [Split Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator), a small service capable of evaluating all available features for a given customer via a REST endpoint. This service is available as a Docker container for ease of installation and is compatible with popular framework like Kubernetes when it comes to supporting standard health checks to achieve reliable uptimes.
+For languages with no native SDK support, FME offers the [FME Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator), a small service capable of evaluating all available features for a given customer via a REST endpoint. This service is available as a Docker container for ease of installation and is compatible with popular framework like Kubernetes when it comes to supporting standard health checks to achieve reliable uptimes.
 
 ### Synchronizer service
 
-By default, FME's SDKs keep segment and feature flag definitions synchronized in an in-memory cache for speed at evaluating feature flags. However, some languages do not have a native capability to keep a shared local cache of this data to properly serve treatments. For these cases, we built [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer) to maintain an external cache like Redis.
+By default, FME's SDKs keep segment and feature flag definitions synchronized in an in-memory cache for speed at evaluating feature flags. However, some languages do not have a native capability to keep a shared local cache of this data to properly serve treatments. For these cases, we built [FME Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer) to maintain an external cache like Redis.
 
 ### Proxy service
 
-[Split Proxy](https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy) enables you to deploy a service in your own infrastructure that behaves like FME's servers and is used by both server-side and client-side SDKs to synchronize the flags without directly connecting to Harness backend servers.
+[FME Proxy](https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy) enables you to deploy a service in your own infrastructure that behaves like FME's servers and is used by both server-side and client-side SDKs to synchronize the flags without directly connecting to Harness backend servers.
 
 This tool reduces connection latencies between the SDKs and Harness servers, and can be used when a single connection is required from a private network to the outside for security reasons.
 
