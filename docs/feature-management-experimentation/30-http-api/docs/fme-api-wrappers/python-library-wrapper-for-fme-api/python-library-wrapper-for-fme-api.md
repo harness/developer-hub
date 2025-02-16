@@ -7,10 +7,10 @@ sidebar_position: 1
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4412331052685-Python-PyPi-library-for-Split-REST-Admin-API <br /> ✘ TODO: move the <b>Split Python API CLI object reference</b> to the github (README)[https://github.com/splitio/python-api/blob/master/README.md] file. </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4412331052685-Python-PyPi-library-for-Split-REST-Admin-API </button>
 </p>
 
-## Python PyPi library for Admin API
+## Python PyPi Library Wrapper for Admin API
 
 The Python library provides full support for Split Admin API. It allows you to create, delete, and edit environments, feature flags, feature flag definitions, segments, segment keys, users, groups, API keys, change requests, attributes, and identities. Refer to [Admin API](https://docs.split.io/reference/introduction) for more information. The library source is available at this [github repository.](https://github.com/splitio/python-api)
 
@@ -48,4 +48,4 @@ When the library receives 429 http response because of limit rate, it waits for 
    
 ## Objects Reference
 
-See the [README](https://github.com/splitio/python-api/blob/master/README.md) file for the complete Split Python API CLI object reference.
+See the [Objects Reference](https://github.com/splitio/python-api/blob/master/README.md) file for the complete Python Library Wrapper for Admin API object reference.
