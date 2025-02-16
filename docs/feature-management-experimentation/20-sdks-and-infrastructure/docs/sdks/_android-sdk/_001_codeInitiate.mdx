@@ -3,12 +3,15 @@ import TabItem from "@theme/TabItem";
 
 <!-- span>{ window.location.pathname.includes("Java") ? "java" : "kotlin" }</span -->
 
+
+defaultValue is {props.tab ?? 'java'}
+
 <Tabs
   groupId="android-sdk-lang-choice"
   values={[
     {label: 'Java', value: 'java'},
     {label: 'Kotlin', value: 'kotlin'},
-  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  ]} defaultValue={ props.tab ?? 'java' }>
   <TabItem value="java">
 
 ```java

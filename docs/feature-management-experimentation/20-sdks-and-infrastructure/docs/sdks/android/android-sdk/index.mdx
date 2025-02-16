@@ -29,7 +29,9 @@ import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/2
 
 export const toc = [];
 
-export const Result = SDKDocsBuilder(
+parent props.tab is {props.tab}
+
+export const Result = (t) => SDKDocsBuilder(
   [
     [ 
       Repository, 
@@ -51,7 +53,7 @@ export const Result = SDKDocsBuilder(
       InitializationSdk, 
       {
         codeImport:      <Import />,
-        codeInitiate:    <Initiate />,
+        codeInitiate:    <Initiate tab={t} />,
         sdkKeyDetails:   <ClientSdkKeyDetails />,
       },
     ],
@@ -66,6 +68,6 @@ export const Result = SDKDocsBuilder(
   toc
 );
 
-<>{Result}</>
+<>{Result(props.tab ?? 'java')}</>
 
 <DocCardList />
