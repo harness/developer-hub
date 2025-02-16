@@ -81,8 +81,8 @@ After creating your policy, add it to a Policy Set before applying it to your Se
     
     You can select one of the following
 
-    * **Warn & continue** - You will receive a warning if the policy is not met when the Connector is evaluated, but the Connector will be saved and you may proceed.
-    * **Error and exit** - You'll get an error and be exited without saving the Connector if the policy isn't met when the Connector is examined.
+    * **Warn & continue** - You will receive a warning if the policy is not met when the Service Account is evaluated, but the Service Account will be saved and you may proceed.
+    * **Error and exit** - You'll get an error and be exited without saving the Service Account if the policy isn't met when the Service Account is examined.
 
     ![opa-apply-severity](../../governance/policy-as-code/static/opa-apply.png)
 
