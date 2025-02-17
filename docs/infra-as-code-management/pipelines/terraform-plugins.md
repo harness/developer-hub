@@ -22,7 +22,7 @@ The supported commands include:
 - [apply-refresh-only](#apply---refresh-only)
 - [detect-drift](#detect-drift)
 - [validate](#validate)
-[import](#import-pending-release)
+[import](#import)
 </TabItem>
 <TabItem value="Add a new command step">
 <DocVideo src="https://app.tango.us/app/embed/732528d2-2863-4c7c-8951-12459f301c6c" title="Harness IaCM: Add an OpenTofu or Terraform command step to your pipeline" />
@@ -33,7 +33,7 @@ The supported commands include:
 ### Initialize
 The `init` command prepares a working directory containing IaC configuration files, performing key functions like:
 
-- **Backend Initialization:** Sets up the backend for state management. Visit [Backend Initialization](https://developer.harness.io/docs/infra-as-code-management/remote-backends/init-configuration) for more information on using environment variables for dynamic infrastructure initialization.
+- **Backend Initialization:** Sets up the backend for state management. Visit [OpenTofu backend documentation](https://opentofu.org/docs/language/settings/backends/configuration/) for more information on infrastructure initialization.
 - **Provider Installation:** Downloads and installs necessary provider plugins to interact with service provider APIs.
 - **Module Installation:** Downloads and sets up modules included in the configuration within the `.terraform` directory.
 ---
@@ -93,7 +93,7 @@ The `validate` command checks the configuration for errors:
 - **Consistency Checks**: Confirms all configurations are internally consistent with no unresolved references or missing mandatory arguments.
 ---
 
-### Import (Pending Release)
+### Import
 The `import` command allows you to bring existing infrastructure under IaC control. This feature is now supported in Harness pipelines, similar to the `init` or `plan` commands. Key benefits include:
 
 - **Seamless Integration:** Supports the `import` command, so users don't need to execute it manually outside of Harness.

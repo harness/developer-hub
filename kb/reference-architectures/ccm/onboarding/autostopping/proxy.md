@@ -3,6 +3,27 @@ title: Proxy
 description: Cloud Cost Management - AutoStopping using a Proxy VM
 ---
 
+# Maintenance
+
+## Rotate API Key
+
+When the API key you used when provision the proxy expires, you will need to rotate the key manually.
+
+Log into the box via SSH using the PEM key you specified when creating the proxy.
+
+The API Key is stored in a file located at `/var/lw_proxy/config.toml`:
+
+```
+accessPointID="ap-crun4gs76otnefrectlg"
+apiURL="https://app.harness.io/gratis/lw/api"
+proxyPort=8093
+usageTrackingPort=8094
+authToken="sat.wlgELJ0TTre5aZhzpt8gVA.xxx.xxx"
+accountID="wlgELJ0TTre5aZhzpt8gVA"
+```
+
+Replace the `authToken` key with your newly created token.
+
 # Troubleshooting
 
 When troubleshooting issues with the Auto Stopping proxy the following are simple steps you can take to narrow down what could be causing issues.

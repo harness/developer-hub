@@ -692,6 +692,10 @@ hooks:
 
 For more information about Helm dependencies, go to [Helm dependency](https://helm.sh/docs/helm/helm_dependency/) and [Helm dependency update](https://helm.sh/docs/helm/helm_dependency_update/).
 
+:::warning
+Harness does not support **Helm hooks** for Helm **Blue-Green** and **Canary** deployments.
+:::
+
 ### Video summary
 
 <!-- Video:

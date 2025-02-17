@@ -155,7 +155,7 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 ## Configure OWASP Dependency-Check as a Built-in Scanner  
 
-The OWASP Dependency-Check is available as a [built-in scanner](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
+The OWASP Dependency-Check is available as a [built-in scanner](/docs/security-testing-orchestration/set-up-scans/built-in-scanners) in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
 
 1. Search for **SCA** in the step palette or navigate to the **Built-in Scanners** section and select the **SCA** step.  
 2. Select **OWASP Dependency-Check** from the list of scanners.  

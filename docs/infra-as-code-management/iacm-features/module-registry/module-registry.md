@@ -5,32 +5,15 @@ sidebar_position: 10
 sidebar_label: Register modules
 ---
 
-<CTABanner
-  buttonText="Learn More"
-  title="Pending release"
-  tagline="The IaCM Module Registry feature is currently pending release and will be available soon!"
-  link="https://www.harness.io/blog/harness-iacm-module-registry"
-  closable={true}
-  target="_self"
-/>
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::warning pending release
-IaCM Module Registry is currently pending release and will be available soon! [Learn more](https://www.harness.io/blog/harness-iacm-module-registry).
-:::
- 
 The Harness IaCM Module Registry is a centralized repository where you can publish and manage versions of pre-built infrastructure modules. These modules, which include components like virtual machines, databases, and networks, can be reused by different teams, streamlining infrastructure management and ensuring consistency across projects.
-
-### Prerequisites
-Before you begin configuring module registry, ensure that you have:
-- Access to your OpenTofu or Legacy Terraform environment via [Harness connectors](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-connectors).
 
 :::tip delegate version
 If you are using Harness to connect to your code repository, you can continue without further action.
 
-However, if you are connecting via a [delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/), ensure the delegate version is `24.10.84200` or later
+However, if you are connecting via a [delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/), ensure the delegate version is `25.01.85000` or later
 :::
 
 ## Register a module

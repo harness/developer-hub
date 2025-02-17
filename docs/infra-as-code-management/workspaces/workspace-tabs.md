@@ -13,7 +13,7 @@ Your workspace serves as a centralized environment that seamlessly links your in
 - A created workspace, go to [Create/clone a workspace](https://developer.harness.io/docs/infra-as-code-management/workspaces/create-workspace) to find out more.
 
 :::tip new workspaces
-If you are new to Harness IaCM, check out the [onboarding guide](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide) to learn more about IaCM, supported frameworks like [OpenTofu](https://opentofu.org/), and how to prepare your workspace with connectors to code repositories and cloud providers, as well as running pipelines against it to provision and store your infrastructure state. 
+If you are new to Harness IaCM, check out the [onboarding guide](/docs/infra-as-code-management/get-started/) to learn more about IaCM, supported frameworks like [OpenTofu](https://opentofu.org/), and how to prepare your workspace with connectors to code repositories and cloud providers, as well as running pipelines against it to provision and store your infrastructure state. 
 :::
 
 ## Workspace tabs
