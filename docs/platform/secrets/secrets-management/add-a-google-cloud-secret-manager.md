@@ -76,7 +76,7 @@ Select one of the following options to configure details for the Google cloud se
    - **Specify credentials here**
    - **Use the credentials of a specific Harness Delegate (IAM role, service account, etc)**
 
-![](../../secrets/static/GCP-details.png)
+![](../../secrets/static/gcp-details.png)
 
 ### Specify credentials here
 
@@ -94,7 +94,7 @@ Go to [Managing secrets](https://cloud.google.com/secret-manager/docs/access-con
 6. Go back to Harness.
 7. In **Google Secrets Manager Credentials File**, select the encrypted file you just added in Harness.
 
-   ![](../../secrets/static/GCP-specifyCredentials.png)
+   ![](../../secrets/static/gcp-specify-credentials.png)
 
    You can also create a new [File Secret](/docs/platform/secrets/add-file-secrets) here and add the Google Cloud service account key that you downloaded.
 
