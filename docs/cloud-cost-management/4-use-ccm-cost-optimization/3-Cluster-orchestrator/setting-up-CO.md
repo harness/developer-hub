@@ -61,11 +61,13 @@ variable "cluster" {
     security_groups  = list(string)
     ami              = string
     k8s_connector_id = string
+    existing_node_role = string
   })
 
   default = {
     name             = "cluster-xxx-xxx"                                                   // Replace with your EKS cluster Name
     oidc_arn         = "arn:aws:iam::xxx:oidc-provider/oidc.eks.xxx.amazonaws.com/id/xxxx" // Replace with your OIDC Provder ARN for the cluster
+    existing_node_role = "RoleNameXXXX"
     subnets          = ["eksctl-xxx"]                                                      // Replace with the names of subnets used in your EKS cluster
     security_groups  = ["eks-cluster-sg-xxx"]                                              // Replace with the names of security groups used in your EKS cluster
     ami              = "ami-i0xxxxxxxxx"                                                   // Replace with the id of AMI used in your EKS cluster
@@ -213,6 +215,26 @@ resource "aws_iam_role" "controller_role" {
   managed_policy_arns = [aws_iam_policy.controller_role_policy.arn]
 }
 
+resource "aws_iam_role_policy" "harness_describe_permissions" {
+   name = "HarnessDescribePermissions"
+   role = var.cluster.existing_node_role
+   policy = jsonencode({
+     Version = "2012-10-17"
+     Statement = [
+       {
+         Action = [
+           "ec2:DescribeImages",
+           "ec2:DescribeInstanceTypeOfferings",
+           "ec2:DescribeInstanceTypes",
+           "ec2:DescribeAvailabilityZones"
+         ]
+         Effect   = "Allow"
+         Resource = "*"
+       },
+     ]
+   })
+ }
+
 resource "harness_cluster_orchestrator" "cluster_orchestrator" {
   name             = substr(data.aws_eks_cluster.cluster.name, 0, 40)
   cluster_endpoint = data.aws_eks_cluster.cluster.endpoint
@@ -323,7 +345,9 @@ helm upgrade -i harness-ccm-cluster-orchestrator --namespace kube-system harness
 
 :::info
 If your cluster does not have a OIDC provider arn, use this :-
-```eksctl utils associate-iam-oidc-provider --region <your_cluster_region> --cluster <your_cluster> --approve
+
+```
+eksctl utils associate-iam-oidc-provider --region <your_cluster_region> --cluster <your_cluster> --approve
 ```
 :::
 
