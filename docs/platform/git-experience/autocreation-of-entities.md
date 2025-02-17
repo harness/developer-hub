@@ -587,5 +587,6 @@ After pushing the changes, we will see that Input set named as **input_set** is 
 ![](./static/input_set_creation_autocreation.png)
 
 :::info note
-Harness RBAC is not applicable in Autocreation. The scope of the webhook should match the entity it's trying to create. For example, a project-level webhook can only create entities within the same project, whereas an account-level webhook can create entities across multiple projects and the organizations. If you are able to push to the default branch, you will be able to create the entity in Harness.
+- Harness RBAC is not applicable in Autocreation. The scope of the webhook should match the entity it's trying to create. For example, a project-level webhook can only create entities within the same project, whereas an account-level webhook can create entities across multiple projects and the organizations. If you are able to push to the default branch, you will be able to create the entity in Harness.
+- When files are deleted in Git, the corresponding entity is not removed; instead, it's just an automatic creation process, not a complete Git sync.
 :::

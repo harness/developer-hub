@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-02-12T10:00:00
+date: 2025-02-17T10:00:00
 sidebar_position: 8
 ---
 
@@ -46,6 +46,35 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## February 2025
+
+
+### GitOps Version 1.25.3, GitOps Agent Version 0.86.2
+
+#### New Features and Enhancements
+
+- Added two new options to the sync application page: **Server Side Apply** and **Respect Ignore Differences**.
+  - Select **Server Side Apply** to use the `--server-side` flag when syncing resources. This can be used for very large resources, or when patching existing resources on the cluster. Note that the `replace` flag takes precedence over this one.
+  - Select **Respect Ignore Differences** in order to skip syncing of the resources listed in the **Ignore Differences** section. Normally, the **Ignore Differences** section in the manifest is only to check whether a sync is required; when we sync, the entire set of resources are still synced. Note that this option has no effect when creating a new application, only when syncing existing ones. 
+- The packaged Argo version has been upgraded from 2.13.2 to 2.13.5. 
+
+#### Fixed Issues
+
+- Previously, the Argo 2.13.2 binary upgrade made the project ID a mandatory field for using the repo APIs, causing agent creation to fail when the `skipCertificateValidation` flag was used. This issue is now fixed. (**CDS-106137**)
+- Previously, when an application was created with a cross project repository, the repo identifier was assigned from the wrong Harness project, causing an error. This is fixed now. (**CDS-104760**)
+
+### Version 1.77.5
+
+#### New features and enhancements
+
+- Users can now retry failed deployments on a subset of hosts when using traditional infrastructure (SSH/WinRM/PDC) in a single CD stage. Currently, this feature is behind the feature flag `CDS_SKIP_INSTANCES_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-99674**)
+
+#### Fixed Issues
+
+- Previously, policy evaluation was timing out while evaluating OPA rules, preventing pipeline execution from proceeding. The issue is resolved. (**PIPE-25055, ZD-77756**)
+- Previously, when viewing logs for a Harness GitOps resource, the log window would continuously refresh, creating a looping effect that disrupted usability. The issue is resolved by reopening the event source each time for init containers. (**CDS-105810, ZD-76246**)
+- Previously, when accessing a pipeline stored in GitHub, users would encounter an "entity not found" error upon clicking the pipeline name. However, refreshing the page would load the pipeline correctly. The issue is resolved. (**PIPE-25012, ZD-76525**)
+- Previously, selecting a Deploy stage followed by an Approval stage in a pipeline template incorrectly added an environment section to the Approval stage YAML, causing unnecessary reconciliation and user prompts. The issue is resolved. (**PIPE-24398**)
+
 
 ### Version 1.76.6
 
