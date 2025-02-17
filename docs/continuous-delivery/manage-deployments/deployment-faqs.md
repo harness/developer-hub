@@ -2055,3 +2055,36 @@ Controlling the number of concurrently deployed services in a multi-service depl
 
 ### How can a user utilize a step template with a script to run across multiple hosts in parallel?
 Users migrating from Cloudbees can create multiple infrastructures with host names set as override variables. When selecting multiple infrastructures during execution, the pipeline runs the stage for each selected infrastructure.
+
+### What is a deployment freeze in Harness?
+A deployment freeze is a feature in Harness that allows users to temporarily restrict deployments within specified timeframes, ensuring stability during critical periods such as maintenance or high-traffic events.
+
+### Can I modify an active freeze window?
+No, you cannot edit an enabled deployment freeze window. You must first disable it, make your changes, and then enable it again.
+
+### Who can bypass deployment freeze windows?
+Account admins always have the ability to bypass deployment freeze windows, ensuring critical updates can still be made when necessary.
+
+### What happens if a pipeline is already running when a freeze starts?
+If a pipeline is running when a freeze starts, it will continue executing until the current stage is completed. However, subsequent stages will not execute, and the pipeline will be marked as "Aborted By Freeze."
+
+### Does deployment freeze apply to all Harness modules?
+No, deployment freeze applies only to Continuous Delivery (CD) stages. Other stages, such as Continuous Integration (CI) or Feature Flags, are not affected.
+
+### Can deployment freezes be configured at different levels?
+Yes, deployment freezes can be set at three levels:
+1. Account level (applies across all orgs and projects).
+2. Org level (applies to all projects within the organization).
+3. Project level (applies to selected services, environments, or pipelines).
+
+### Can I create exceptions for a freeze window?
+Yes, you can define exceptions at any level. For example, you can freeze all projects in an organization but exclude specific projects as exceptions.
+
+### Do API-triggered pipelines respect deployment freezes?
+Yes, API-triggered pipelines are blocked by deployment freezes unless the API key used has deployment freeze override permissions.
+
+### How can users be notified about freeze window events?
+Harness allows notifications via Slack, Email, Microsoft Teams, PagerDuty, and Harness User Groups when:
+1. freeze window is enabled.
+2. freeze window becomes active.
+3. deployment is rejected due to a freeze.
