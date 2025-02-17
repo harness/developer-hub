@@ -229,7 +229,7 @@ When setting up your AWS Secrets Manager in Harness, you can choose one of the f
 
         Once you have selected OIDC, you will be able to select **connectivity mode**, based on the requirement you can select the provider that can be either connect through a **delegate** or through **Harness platform**. 
 
-          ![connetivity-mode](../../secrets/static/oidc-connectivity%20mode.png)
+          ![connetivity-mode](../../secrets/static/oidc-connectivity-mode.png)
           
       </details>
 
