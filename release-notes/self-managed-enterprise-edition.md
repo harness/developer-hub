@@ -232,6 +232,55 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
 
 :::
 
+## Feb 17, 2025, Patch Version 0.25.3
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                    |
+|---------------------------|------------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.25.3](https://github.com/harness/helm-charts/releases/tag/harness-0.25.3)                 |
+| Air Gap Bundle            | [0.25.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.25.3) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.61.2                                                                                       |
+| Pipeline Service          | 1.111.1                                                                                      |
+| Platform Service          | 1.48.0                                                                                       |
+| Access Control Service    | 1.70.0                                                                                       |
+| Delegate                  | 25.01.84800                                                                                  |
+| GitOps Service            | 1.23.10                                                                                      |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.123.1                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.2                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.35.7                                                                                       |
+| Gateway                   | 1.41.7                                                                                       |
+
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.25.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.3/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed a bug in the SSO login by adding user group sync functionality to OIDC login. [PL-60577] 
+
 ## Feb 6, 2025, Patch Version 0.14.13 
 
 This release includes the following Harness module and component versions.
@@ -320,7 +369,7 @@ gsutil -m cp \
 
 ### Fixed issues
 
-#### Platform
+#### Harness Platform
 
 - Included additional debug logs for SAML login.[PL-60283]
 
@@ -367,7 +416,7 @@ gsutil -m cp \
 
 ### Fixed issues
 
-#### Platform
+#### Harness Platform
 
 - Included additional debug logs for SAML login.[PL-60283]
 
@@ -535,7 +584,7 @@ gsutil -m cp \
 ```
 ### New features and enhancements
 
-#### Harness  Platform
+#### Harness Platform
 
 - Customers can now differentiate polling mode delegates on the delegate list page. [PL-58853]  
 
