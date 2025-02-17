@@ -7,7 +7,7 @@ sidebar_position: 4
 <CTABanner
   buttonText="Explore SEI DORA Dashboard"
   title="Get a more accurate picture of your entire SDLC with the SEI DORA Dashboard"
-  link="/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/dora-metrics"
+  link="/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/"
   closable={true}
   target="_self"
 />
@@ -145,7 +145,7 @@ For a holistic view of software delivery performance across your entire toolchai
 This dashboard is powered by:
 
 * **[DORA profile](/docs/software-engineering-insights/setup-sei/sei-profiles/workflow-profiles/dora-profile)**: Allows you to define the software delivery lifecycle with customizable thresholds and higher granularity for measuring DORA metrics.
-* **[Correlation engine](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/dora-metrics)**: Analyzes data from all integrated tools (Issue management system, CI, CD, SCM, incident management, etc.) to identify root causes of bottlenecks. For example:
+* **[Correlation engine](/docs/software-engineering-insights/analytics-and-reporting/efficiency/dora-metrics/)**: Analyzes data from all integrated tools (Issue management system, CI, CD, SCM, incident management, etc.) to identify root causes of bottlenecks. For example:
   * Long lead times caused by code review delays in GitHub
   * High failure rates linked to flaky tests in Jenkins pipelines
   * Recovery time outliers correlated with specific service architectures
