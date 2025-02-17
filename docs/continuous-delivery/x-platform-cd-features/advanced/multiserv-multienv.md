@@ -148,7 +148,8 @@ You can also add tags to existing environment by navigating through **Project Se
 
 :::note
 
-Make sure that the feature flags `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure that the feature flag `ENV_GROUP` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Also, please make sure that the setting `Fetch files from Git using provider-specific APIs`, under Continuous Deployment section is enabled.
 
 :::
 Now, lets deploy the service using filtered list in your CD pipeline.
@@ -193,7 +194,8 @@ You can also add tags to existing infrastructure by navigating through **Project
 
 :::note
 
-Make sure that the feature flags  `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure that the feature flag `ENV_GROUP` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Also, please make sure that the setting `Fetch files from Git using provider-specific APIs`, under Continuous Deployment section is enabled.
 
 :::
 Now, lets deploy the service using filtered list in your CD pipeline.
@@ -235,7 +237,8 @@ You can also add tags to existing environment by navigating through **Project Se
 
 :::note
 
-Make sure that the feature flags `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure that the feature flag `ENV_GROUP` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Also, please make sure that the setting `Fetch files from Git using provider-specific APIs`, under Continuous Deployment section is enabled.
 
 :::
 
