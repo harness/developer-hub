@@ -408,7 +408,7 @@ You can configure Workflows to enable user validation for input form fields. If 
 
 This functionality allows users to:
 - Manually enter input field details for live validation (instead of selecting from a dynamic picker drop-down).
-- Provide feedback and validate auto-updated input field details retrieved from [**Form Context**](/docs/internal-developer-portal/flows/configure-frontend/dynamic-picker#auto-updating-input-fields).
+- Provide feedback and validate auto-updated input field details retrieved from [**Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields).
 
 This process triggers an API call in the background with the user-provided details, parses the response, and updates the Form Context with the validated information. It ensures that input form fields are dynamically updated while enabling real-time validation of user inputs.
 
@@ -455,8 +455,8 @@ customValidationName:
    You can configure various options under this field:  
    - **`button`**: Defines and adds a button.  
    - **`path`**: Specifies the API endpoint path that will be called when the button is clicked.  
-   - **`setContextData`**: Stores context data in **Form Context** while making the API call. [Learn more here](/docs/internal-developer-portal/flows/configure-frontend/dynamic-picker#2-set-context-data-in-your-workflow-yaml)  
-   - **`request`**: Defines the API request details. [Read more about making a POST API request here](/docs/internal-developer-portal/flows/configure-frontend/dynamic-picker#post-method-support)  
+   - **`setContextData`**: Stores context data in **Form Context** while making the API call. [Learn more here](/docs/internal-developer-portal/flows/dynamic-picker#2-set-context-data-in-your-workflow-yaml)  
+   - **`request`**: Defines the API request details. [Read more about making a POST API request here](/docs/internal-developer-portal/flows/dynamic-picker#post-method-support)  
 
 ### Example YAML 
 <Tabs>
