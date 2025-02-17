@@ -42,21 +42,11 @@ Google Spanner uses a unique JDBC URL format and does not require a password for
 
 ### Prerequisites for Google Spanner
 
-1. **Dependencies**:  
-   - Ensure the `liquibase-spanner-version-all.jar` is available. This can be obtained from the [Liquibase Spanner GitHub Release v4.30.0.1](https://github.com/cloudspannerecosystem/liquibase-spanner/releases/tag/v4.30.0.1).
-
-2. **Authentication**:  
+1. **Authentication**:  
    - Authentication is done via **Kubernetes Service Account (KSA)** linked to a **Google Service Account (GSA)**.  
    - The GSA must have the following roles:  
      - `roles/spanner.databaseAdmin`  
      - `roles/spanner.databaseUser`
-
-3. **Service Account Key**:  
-   - The `PLUGIN_JSON_KEY` environment variable is used to pass the service account key file.  
-   - This key is added as `GOOGLE_APPLICATION_CREDENTIALS` in the environment variables and is used by the Liquibase JAR for authentication.
-
-4. **Image Configuration**:  
-   - Use the `plugins/latest-spanner` image, which includes an `entrypoint.sh` script to handle the service account key and set up the environment.
 
 ---
 
