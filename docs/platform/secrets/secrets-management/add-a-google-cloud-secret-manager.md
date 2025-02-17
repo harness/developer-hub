@@ -76,7 +76,7 @@ Select one of the following options to configure details for the Google cloud se
    - **Specify credentials here**
    - **Use the credentials of a specific Harness Delegate (IAM role, service account, etc)**
 
-![](../../secrets/static/gcp-details.png)
+![](../../secrets/static/gcp-details1.png)
 
 ### Specify credentials here
 
