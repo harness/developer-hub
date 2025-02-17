@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-02-12T10:00:00
+date: 2025-02-17T10:00:00
 sidebar_position: 8
 ---
 
@@ -47,12 +47,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## February 2025
 
-### Version 1.77
+### Version 1.77.5
 
 #### New features and enhancements
 
 - Users can now retry failed deployments on a subset of hosts when using traditional infrastructure (SSH/WinRM/PDC) in a single CD stage. Currently, this feature is behind the feature flag `CDS_SKIP_INSTANCES_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-99674**)
-
 
 #### Fixed Issues
 
