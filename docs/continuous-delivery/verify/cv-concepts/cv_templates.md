@@ -51,6 +51,10 @@ To create a monitored service:
 
 After creating the monitored service template, you can edit it to add a Health Source of your preference. While a monitored service entity contains a lot more than a set of health sources, the presence of health sources is sufficient for verification purposes. Hence, a monitored service template can be created only with the required health sources. For more details, go to [Monitored service template documentation](/docs/service-reliability-management/monitored-service/monitored-service-template-quickstart).
 
+:::info note
+[Git Experience](/docs/platform/git-experience/git-experience-overview.md) is not supported for monitored services
+:::
+
 ## Configure the monitored service template in a Verify step
 
 You can configure the monitored service template in the Verify step configuration. You can select whether you want to use Default or Template for verification.
