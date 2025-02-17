@@ -106,6 +106,18 @@ For more information, go to [How to Use an External ID When Granting Access to Y
 
 This is the AssumeRole Session Duration. Go to Session Duration in the[AssumeRole AWS docs](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html).
 
+<details>
+    <summary>An additional step before proceeding.</summary>
+
+    #### Connectivity mode 
+
+    This additional step allows you to select the connectivity mode.
+
+    Once you have selected OIDC, you will be able to select **connectivity mode**, based on the requirement you can select the provider that can be either connect through a **delegate** or through **Harness platform**. 
+        
+    ![connetivity-mode](../../secrets/static/oidc-connectivity-mode.png)          
+</details>
+
 ### Step 3: Setup Delegates
 
 In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Select **Save and Continue**.
