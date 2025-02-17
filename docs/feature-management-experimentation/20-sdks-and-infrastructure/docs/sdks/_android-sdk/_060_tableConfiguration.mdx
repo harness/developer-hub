@@ -2,21 +2,21 @@ import * as DESCRIPTIONS from "@site/docs/feature-management-experimentation/20-
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- |
-| backgroundSyncWhenBatteryNotLow | { DESCRIPTIONS.MOBILE_BACKGROUND_SYNC_WHEN_BATTERY_NOT_LOW()                                 } |                `true` |
-| backgroundSyncWhenWifiOnly      | { DESCRIPTIONS.MOBILE_BACKGROUND_SYNC_WHEN_WIFI_ONLY()                                       } |               `false` |
+| backgroundSyncWhenBatteryNotLow | { DESCRIPTIONS.MOBILE_BACKGROUND_SYNC_WHEN_BATTERY_NOT_LOW(props.sdk)                        } |                `true` |
+| backgroundSyncWhenWifiOnly      | { DESCRIPTIONS.MOBILE_BACKGROUND_SYNC_WHEN_WIFI_ONLY(props.sdk)                              } |               `false` |
 | certificatePinningConfiguration | { DESCRIPTIONS.MOBILE_CERTIFICATE_PINNING_CONFIGURATION()                                    } |                `null` |
 | connectionTimeout               | { DESCRIPTIONS.CONNECTION_TIMEOUT()                                                          } |                 10000 |
 | disableLabels                   | { DESCRIPTIONS.CORE_LABELS_DISABLED()                                                        } |                `true` |
 | encryptionEnabled               | { DESCRIPTIONS.MOBILE_STORAGE_ENCRYPTION_ENABLED()                                           } |               `false` |
 | eventFlushInterval              | { DESCRIPTIONS.SCHEDULER_EVENTS_PUSH_RATE()       } <br /> { DESCRIPTIONS.EVENTS_INFO_RUM()  } |                  1800 |
 | eventsPerPush                   | { DESCRIPTIONS.MOBILE_EVENTS_PER_PUSH()                                                      } |                  2000 |
-| eventsQueueSize                 | { DESCRIPTIONS.SCHEDULER_EVENTS_QUEUE_SIZE()                                                 } |                 10000 |
+| eventsQueueSize                 | { DESCRIPTIONS.SCHEDULER_EVENTS_QUEUE_SIZE(props.sdk)                                        } |                 10000 |
 | featuresRefreshRate             | { DESCRIPTIONS.SCHEDULER_FEATURES_REFRESH_RATE()                                             } |                  3600 |
 | impressionsMode                 | { DESCRIPTIONS.SYNC_IMPRESSIONS_MODE()                                                       } |           `OPTIMIZED` |
 | impressionsQueueSize            | { DESCRIPTIONS.SCHEDULER_IMPRESSIONS_QUEUE_SIZE() } <br /> { DESCRIPTIONS.IMPRESSIONS_INFO() } |                 30000 |
 | logLevel                        | { DESCRIPTIONS.ANDROID_LOG_LEVEL()                                                           } |                `NONE` |
 | persistentAttributesEnabled     | { DESCRIPTIONS.MOBILE_PERSISTENT_ATTRIBUTES_ENABLED()                                        } |               `false` |
-| prefix                          | { DESCRIPTIONS.MOBILE_STORAGE_PREFIX()                                                       } |                `null` |
+| prefix                          | { DESCRIPTIONS.MOBILE_STORAGE_PREFIX(props.sdk)                                              } |                `null` |
 | proxyHost                       | { DESCRIPTIONS.MOBILE_PROXY_HOST()                                                           } |                `null` |
 | readTimeout                     | { DESCRIPTIONS.MOBILE_READ_TIMEOUT()                                                         } |                 10000 |
 | ready                           | { DESCRIPTIONS.STARTUP_READY_TIMEOUT()                                                       } |          -1 (not set) |

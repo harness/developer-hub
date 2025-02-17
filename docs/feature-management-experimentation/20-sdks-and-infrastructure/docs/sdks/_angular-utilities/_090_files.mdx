@@ -23,7 +23,7 @@ You can then change the feature flags as necessary for your testing, by mutating
   values={[
     {label: 'JavaScript', value: 'javascript'},
     {label: 'TypeScript', value: 'typescript'},
-  ]} defaultValue={ window.location.pathname.includes("TypeScript") ? "typescript" : "javascript" }>
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
   <TabItem value="javascript">
 
 ```javascript

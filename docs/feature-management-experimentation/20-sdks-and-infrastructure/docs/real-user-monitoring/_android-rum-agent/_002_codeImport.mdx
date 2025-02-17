@@ -8,7 +8,7 @@ Import the Agent into your project with the following line:
   values={[
     {label: 'Gradle Groovy', value: 'java'},
     {label: 'Gradle Kotlin DSL', value: 'kotlin'},
-  ]} defaultValue={ window.location.pathname.includes("Kotlin") ? "kotlin" : "java" }>
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
   <TabItem value="java">
 
 ```groovy

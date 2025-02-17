@@ -15,19 +15,16 @@ import {
 import NotesDestroy from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_react-sdk/_040_notes.mdx";
 import FactoryDestroy from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_040_codeFactoryDestroy.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = (t) => SDKDocsBuilder(
   [
     [
       Shutdown,
       {
         notes:              <NotesDestroy />,
-        codeFactoryDestroy: <FactoryDestroy />,
+        codeFactoryDestroy: <FactoryDestroy defaultTab={t} />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>

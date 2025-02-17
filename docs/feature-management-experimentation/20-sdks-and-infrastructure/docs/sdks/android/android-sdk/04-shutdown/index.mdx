@@ -16,16 +16,15 @@ import FactoryDestroy from "@site/docs/feature-management-experimentation/20-sdk
 
 export const toc = [];
 
-export const Result = SDKDocsBuilder(
+export const Document = (t) => SDKDocsBuilder(
   [
     [
       Shutdown,
       {
-        codeFactoryDestroy: <FactoryDestroy />,
+        codeFactoryDestroy: <FactoryDestroy defaultTab={t} />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>

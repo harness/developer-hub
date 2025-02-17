@@ -18,22 +18,21 @@ import NotesPersistentAttributes  from "@site/docs/feature-management-experiment
 import AttributesManagerInterface from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_react-sdk/_020_codeAttributesManagerInterface.mdx";
 import ClientSetAttribute         from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_react-sdk/_020_codeClientSetAttribute.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = (t) => SDKDocsBuilder(
   [
     [
       UserAttributes,
       {
         attributeTypes:                   <AttributeTypes />,
-        codeGetTreatmentAttributes:       <GetTreatmentAttributes />,
+        codeGetTreatmentAttributes:       <GetTreatmentAttributes defaultTab={t} />,
         notesPersistentAttributesEnabled: <NotesPersistentAttributes />,
-        codeAttributesManagerInterface:   <AttributesManagerInterface />,
-        codeClientSetAttribute:           <ClientSetAttribute />,
+        codeAttributesManagerInterface:   <AttributesManagerInterface defaultTab={t} />,
+        codeClientSetAttribute:           <ClientSetAttribute defaultTab={t} />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []

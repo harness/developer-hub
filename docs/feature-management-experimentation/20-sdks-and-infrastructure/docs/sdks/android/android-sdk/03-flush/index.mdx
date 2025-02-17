@@ -15,19 +15,16 @@ import {
 import Notes from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_android-sdk/_030_notes.mdx";
 import Code  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_android-sdk/_030_codeFlush.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = (t) => SDKDocsBuilder(
   [
     [
       Flush,
       {
         notes:     <Notes />,
-        codeFlush: <Code />,
+        codeFlush: <Code defaultTab={t} />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>

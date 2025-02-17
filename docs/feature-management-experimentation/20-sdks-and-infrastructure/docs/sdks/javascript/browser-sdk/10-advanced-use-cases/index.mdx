@@ -23,14 +23,12 @@ import SplitFactoryClient      from "@site/docs/feature-management-experimentati
 
 import GetUserConsent          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_102_codeGetUserConsent.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = () => SDKDocsBuilder(
   [
     [ 
       Listener, 
       { 
-        dataImpression:            <DataImpression />,
+        dataImpression:            <DataImpression sdkLanguage='browserjs' />,
         codeImpression:            <Impression />,
         codeUseImpressionListener: <UseImpressionListener />,
         notesImpressionListener:   <NotesImpressionListener />,
@@ -49,8 +47,9 @@ export const Result = SDKDocsBuilder(
         codeGetUserConsent: <GetUserConsent />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []

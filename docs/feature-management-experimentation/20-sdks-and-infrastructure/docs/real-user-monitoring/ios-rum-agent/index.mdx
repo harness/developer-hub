@@ -37,9 +37,7 @@ import MetricsTable        from "@site/docs/feature-management-experimentation/2
 
 import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = () => SDKDocsBuilder(
   [
     [ 
       Introduction, 
@@ -86,10 +84,11 @@ export const Result = SDKDocsBuilder(
       MoreFeatures,
       {},
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []
 
 <DocCardList />

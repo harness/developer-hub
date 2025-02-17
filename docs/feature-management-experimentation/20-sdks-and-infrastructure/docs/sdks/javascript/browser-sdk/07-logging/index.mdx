@@ -16,20 +16,17 @@ import Log    from "@site/docs/feature-management-experimentation/20-sdks-and-in
 import Output from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_browser-sdk/_070_outputLog.mdx";
 import Notes  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_browser-sdk/_070_notes.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = () => SDKDocsBuilder(
   [
     [
       Logging,
       {
-        codeLog:   <Log  />,
+        codeLog:   <Log />,
         outputLog: <Output />,
-        notes:     <Notes   />,
+        notes:     <Notes />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>

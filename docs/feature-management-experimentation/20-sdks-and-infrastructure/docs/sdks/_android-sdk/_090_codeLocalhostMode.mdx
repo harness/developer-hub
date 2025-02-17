@@ -8,7 +8,7 @@ In localhost mode, the SDK loads the yaml file from a resource bundle file at th
   values={[
     {label: 'Java', value: 'java'},
     {label: 'Kotlin', value: 'kotlin'},
-  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
   <TabItem value="java">
 
 ```java

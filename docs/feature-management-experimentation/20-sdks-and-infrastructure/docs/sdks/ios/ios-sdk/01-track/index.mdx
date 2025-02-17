@@ -14,9 +14,7 @@ import {
 
 import TrackMetricEvents   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_ios-sdk/_010_codeTrack.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = () => SDKDocsBuilder(
   [
     [
       Track,
@@ -24,8 +22,7 @@ export const Result = SDKDocsBuilder(
         codeTrack: <TrackMetricEvents />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>

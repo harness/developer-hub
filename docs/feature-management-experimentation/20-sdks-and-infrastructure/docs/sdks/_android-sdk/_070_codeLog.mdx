@@ -8,7 +8,7 @@ To enable SDK logging, the `logLevel` setting is available in the `SplitClientCo
   values={[
     {label: 'Java', value: 'java'},
     {label: 'Kotlin', value: 'kotlin'},
-  ]} defaultValue={ window.location.pathname.includes("Java") ? "java" : "kotlin" }>
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
   <TabItem value="java">
 
 ```java

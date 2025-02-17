@@ -15,9 +15,7 @@ import {
 import Notes from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_ios-sdk/_030_notes.mdx";
 import Code  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_ios-sdk/_030_codeFlush.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = () => SDKDocsBuilder(
   [
     [
       Flush,
@@ -26,8 +24,7 @@ export const Result = SDKDocsBuilder(
         codeFlush: <Code />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>

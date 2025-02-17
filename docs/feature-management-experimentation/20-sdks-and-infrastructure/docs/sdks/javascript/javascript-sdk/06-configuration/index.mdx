@@ -15,19 +15,16 @@ import {
 import ConfigTable       from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_060_tableConfiguration.mdx";
 import SplitClientConfig from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_060_codeSplitClientConfig.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = (t) => SDKDocsBuilder(
   [
     [
       Configuration,
       {
-        tableConfiguration: <ConfigTable />,
-        codeSplitClientConfig: <SplitClientConfig />,
+        tableConfiguration:    <ConfigTable defaultTab={t} />,
+        codeSplitClientConfig: <SplitClientConfig defaultTab={t} />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>

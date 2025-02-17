@@ -20,7 +20,7 @@ Beginning with v9.2.0 of the SDK, you can also enable the logging via SDK settin
   values={[
     {label: 'Logger instance (JavaScript)', value: 'javascript'},
     {label: 'Logger instance (TypeScript)', value: 'typescript'},
-  ]} defaultValue={ window.location.pathname.includes("TypeScript") ? "typescript" : "javascript" }>
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
   <TabItem value="javascript">
 
 ```javascript
@@ -80,7 +80,7 @@ You can also enable the SDK logging via a boolean or log level value as `debug` 
   values={[
     {label: 'Logger API (JavaScript)', value: 'javascript'},
     {label: 'Logger API (TypeScript)', value: 'typescript'},
-  ]} defaultValue={ window.location.pathname.includes("TypeScript") ? "typescript" : "javascript" }>
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
   <TabItem value="javascript">
 
 ```javascript
@@ -130,7 +130,7 @@ SDK logging can also be globally enabled via a localStorage value by opening you
   values={[
     {label: 'Logger API (JavaScript)', value: 'javascript'},
     {label: 'Logger API (TypeScript)', value: 'typescript'},
-  ]} defaultValue={ window.location.pathname.includes("TypeScript") ? "typescript" : "javascript" }>
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
   <TabItem value="javascript">
 
 ```javascript title="Enable logging from browser console"

@@ -26,40 +26,39 @@ import GetUserConsent                  from "@site/docs/feature-management-exper
 
 import CertificatePinningConfiguration from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_android-sdk/_103_codeCertificatePinningConfiguration.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = (t) => SDKDocsBuilder(
   [
     [ 
       Listener, 
       { 
         dataImpression:            <DataImpression />,
-        codeImpression:            <Impression />,
-        codeUseImpressionListener: <UseImpressionListener />,
+        codeImpression:            <Impression defaultTab={t} />,
+        codeUseImpressionListener: <UseImpressionListener defaultTab={t} />,
         notesImpressionListener:   <NotesImpressionListener />,
       }, 
     ],
     [ 
       MultipleSdkClients, 
       {
-        codeSplitFactoryClient: <SplitFactoryClient />,
+        codeSplitFactoryClient: <SplitFactoryClient defaultTab={t} />,
       },
     ],
     [
       UserConsent,
       {
         method:             "setUserConsent(enabled: Bool)",
-        codeGetUserConsent: <GetUserConsent />,
+        codeGetUserConsent: <GetUserConsent defaultTab={t} />,
       },
     ],
     [
       CertificatePinning,
       {
-        codeCertificatePinningConfiguration: <CertificatePinningConfiguration />,
+        codeCertificatePinningConfiguration: <CertificatePinningConfiguration defaultTab={t} />,
       },
     ],
   ],
-  toc
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []

@@ -26,36 +26,35 @@ import TreatmentResult            from "@site/docs/feature-management-experiment
 import GetTreatmentWithConfig     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_022_codeGetTreatmentWithConfig.mdx";
 import GetTreatmentsWithConfig    from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_022_codeGetTreatmentsWithConfig.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = (t) => SDKDocsBuilder(
   [
     [
       UserAttributes,
       {
         attributeTypes:                   <AttributeTypes />,
-        codeGetTreatmentAttributes:       <GetTreatmentAttributes />,
+        codeGetTreatmentAttributes:       <GetTreatmentAttributes defaultTab={t} />,
         notesPersistentAttributesEnabled: <NotesPersistentAttributes />,
-        codeAttributesManagerInterface:   <AttributesManagerInterface />,
-        codeClientSetAttribute:           <ClientSetAttribute />,
+        codeAttributesManagerInterface:   <AttributesManagerInterface defaultTab={t} />,
+        codeClientSetAttribute:           <ClientSetAttribute defaultTab={t} />,
       },
     ],
     [
       MultipleTreatments,
       {
-        codeGetTreatments: <GetTreatments />,
+        codeGetTreatments: <GetTreatments defaultTab={t} />,
       },
     ],
     [
       TreatmentWithConfig,
       {
-        codeTreatmentResult:      <TreatmentResult />,
-        codeTreatmentWithConfig:  <GetTreatmentWithConfig />,
-        codeTreatmentsWithConfig: <GetTreatmentsWithConfig />,
+        codeTreatmentResult:      <TreatmentResult defaultTab={t} />,
+        codeTreatmentWithConfig:  <GetTreatmentWithConfig defaultTab={t} />,
+        codeTreatmentsWithConfig: <GetTreatmentsWithConfig defaultTab={t} />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []

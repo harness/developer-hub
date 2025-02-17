@@ -18,10 +18,7 @@ import SplitClientConfig          from "@site/docs/feature-management-experiment
 
 import ConfigureLocalStorageCache from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_browser-sdk/_061_codeLocalStorageCache.mdx";
 
-
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = () => SDKDocsBuilder(
   [
     [
       Configuration,
@@ -36,8 +33,7 @@ export const Result = SDKDocsBuilder(
         codeLocalStorageCache: <ConfigureLocalStorageCache />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>

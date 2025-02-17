@@ -14,18 +14,15 @@ import {
 
 import TrackMetricEvents   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_android-sdk/_010_codeTrack.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = (t) => SDKDocsBuilder(
   [
     [
       Track,
       {
-        codeTrack: <TrackMetricEvents />,
+        codeTrack: <TrackMetricEvents defaultTab={t} />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>

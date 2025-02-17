@@ -18,7 +18,7 @@ You can also enable the logging via JavaScript SDK (v9.2.0+) settings and progra
   values={[
     {label: 'Logger API (JavaScript)', value: 'javascript'},
     {label: 'Logger API (TypeScript)', value: 'typescript'},
-  ]} defaultValue={ window.location.pathname.includes("TypeScript") ? "typescript" : "javascript" }>
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
   <TabItem value="javascript">
 
 ```javascript

@@ -15,9 +15,7 @@ import {
 import SplitEventTask from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_050_codeSplitEventTask.mdx";
 import ClientOnEvent  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_050_codeClientOnEvent.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = () => SDKDocsBuilder(
   [
     [
       SdkEvents,
@@ -26,8 +24,7 @@ export const Result = SDKDocsBuilder(
         codeClientOnEvent:            <ClientOnEvent />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>

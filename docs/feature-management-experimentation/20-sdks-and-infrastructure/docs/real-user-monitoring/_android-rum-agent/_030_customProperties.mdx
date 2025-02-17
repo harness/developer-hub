@@ -14,7 +14,7 @@ Custom properties can be also added to a tracked event, as shown below:
   values={[
     {label: 'Java', value: 'java'},
     {label: 'Kotlin', value: 'kotlin'},
-  ]} defaultValue={ window.location.pathname.includes("Kotlin") ? "kotlin" : "java" }>
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
   <TabItem value="java">
 
 ```java

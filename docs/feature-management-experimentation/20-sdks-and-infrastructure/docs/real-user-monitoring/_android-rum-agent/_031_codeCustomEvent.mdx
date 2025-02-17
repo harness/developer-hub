@@ -10,7 +10,7 @@ This method generates an event which value is the number of milliseconds between
   values={[
     {label: 'Java', value: 'java'},
     {label: 'Kotlin', value: 'kotlin'},
-  ]} defaultValue={ window.location.pathname.includes("Kotlin") ? "kotlin" : "java" }>
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
   <TabItem value="java">
 
 ```java

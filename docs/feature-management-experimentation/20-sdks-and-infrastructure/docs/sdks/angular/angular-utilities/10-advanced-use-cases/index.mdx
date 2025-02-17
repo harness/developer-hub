@@ -23,34 +23,33 @@ import SplitFactoryClient   from "@site/docs/feature-management-experimentation/
 
 import GetUserConsent       from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_102_codeGetUserConsent.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = (t) => SDKDocsBuilder(
   [
     [ 
       Listener, 
       { 
-        dataImpression:            <DataImpression />,
-        codeImpression:            <Impression />,
-        codeUseImpressionListener: <UseImpressionListener />,
+        dataImpression:            <DataImpression sdkLanguage='browserjs' />,
+        codeImpression:            <Impression defaultTab={t} />,
+        codeUseImpressionListener: <UseImpressionListener defaultTab={t} />,
         notesImpressionListener:   <NotesImpressionListener />,
       }, 
     ],
     [ 
       MultipleSdkClients, 
       {
-        codeSplitFactoryClient: <SplitFactoryClient />,
+        codeSplitFactoryClient: <SplitFactoryClient defaultTab={t} />,
       },
     ],
     [
       UserConsent,
       {
         method:             "UserConsent.setStatus(boolean)",
-        codeGetUserConsent: <GetUserConsent />,
+        codeGetUserConsent: <GetUserConsent defaultTab={t} />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []

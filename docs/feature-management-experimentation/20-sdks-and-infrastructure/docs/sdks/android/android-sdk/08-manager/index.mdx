@@ -16,20 +16,17 @@ import SplitManagerInstantiate from "@site/docs/feature-management-experimentati
 import SplitManager            from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_android-sdk/_080_codeSplitManager.mdx";
 import SplitView               from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_android-sdk/_080_codeSplitView.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = (t) => SDKDocsBuilder(
   [
     [
       Manager,
       {
-        codeSplitManagerInstantiate: <SplitManagerInstantiate />,
-        codeSplitManager:            <SplitManager />,
-        codeSplitView:               <SplitView />,
+        codeSplitManagerInstantiate: <SplitManagerInstantiate defaultTab={t} />,
+        codeSplitManager:            <SplitManager defaultTab={t} />,
+        codeSplitView:               <SplitView defaultTab={t} />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>

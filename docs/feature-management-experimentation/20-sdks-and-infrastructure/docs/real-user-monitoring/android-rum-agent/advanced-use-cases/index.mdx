@@ -23,33 +23,32 @@ import CustomEvent    from "@site/docs/feature-management-experimentation/20-sdk
 
 import GetUserConsent from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_android-rum-agent/_033_codeGetUserConsent.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = (t) => SDKDocsBuilder(
   [
     [ 
       CustomProperties, 
       { 
-        customProperties: <Properties />,
+        customProperties: <Properties defaultTab={t} />,
        }, 
     ],
     [ 
       CustomEvents, 
       {
         lastMethod:      <LastMethod />,
-        codeTrack:       <Track />,
-        codeTrackError:  <TrackError />,
-        codeCustomEvent: <CustomEvent />,
+        codeTrack:       <Track defaultTab={t} />,
+        codeTrackError:  <TrackError defaultTab={t} />,
+        codeCustomEvent: <CustomEvent defaultTab={t} />,
       },
     ],
     [
       UserConsent,
       {
-        codeGetUserConsent: <GetUserConsent />,
+        codeGetUserConsent: <GetUserConsent defaultTab={t} />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []

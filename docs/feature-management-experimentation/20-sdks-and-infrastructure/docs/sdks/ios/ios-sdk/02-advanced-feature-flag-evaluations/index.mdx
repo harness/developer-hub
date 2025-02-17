@@ -26,9 +26,7 @@ import TreatmentResult            from "@site/docs/feature-management-experiment
 import GetTreatmentWithConfig     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_ios-sdk/_022_codeGetTreatmentWithConfig.mdx";
 import GetTreatmentsWithConfig    from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_ios-sdk/_022_codeGetTreatmentsWithConfig.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = () => SDKDocsBuilder(
   [
     [
       UserAttributes,
@@ -54,8 +52,9 @@ export const Result = SDKDocsBuilder(
         codeTreatmentsWithConfig: <GetTreatmentsWithConfig />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []

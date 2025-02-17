@@ -8,7 +8,7 @@ The `getTreatmentWithConfig` method returns the `TreatmentResult` object:
   values={[
     {label: 'JavaScript', value: 'javascript'},
     {label: 'TypeScript', value: 'typescript'},
-  ]} defaultValue={ window.location.pathname.includes("TypeScript") ? "typescript" : "javascript" }>
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
   <TabItem value="javascript">
 
 ```javascript

@@ -29,9 +29,7 @@ import UseNotes     from "@site/docs/feature-management-experimentation/20-sdks-
 
 import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
 
-export const toc = [];
-
-export const Result = SDKDocsBuilder(
+export const Document = (t) => SDKDocsBuilder(
   [
     [ 
       Repository, 
@@ -52,8 +50,8 @@ export const Result = SDKDocsBuilder(
     [ 
       InitializationSdk, 
       {
-        codeImport:      <Import />,
-        codeInitiate:    <Initiate />,
+        codeImport:      <Import defaultTab={t} />,
+        codeInitiate:    <Initiate defaultTab={t} />,
         notes:           <InstantiateNotes />,
         sdkKeyDetails:   <ClientSdkKeyDetails />,
       },
@@ -62,14 +60,13 @@ export const Result = SDKDocsBuilder(
       UseTheSdk,
       {
         details:          <UseDetails />,
-        codeGetTreatment: <GetTreatment />,
+        codeGetTreatment: <GetTreatment defaultTab={t} />,
         notes:            <UseNotes />,
       },
     ],
-  ],
-  toc
+  ]
 );
 
-<>{Result}</>
+<>{ Document(props.defaultTab).contents }</>
 
-<DocCardList />
+export const toc = Document().toc ?? []
