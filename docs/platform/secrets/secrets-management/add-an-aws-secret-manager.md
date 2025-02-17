@@ -220,7 +220,19 @@ When setting up your AWS Secrets Manager in Harness, you can choose one of the f
        - Configure an IAM role in the target AWS account. 
 
        - Once your configuration is complete, set the IAM role and region below to proceed with the setup, as shown in the image above.
-  
+
+      <details>
+      <summary>An additional step before proceeding.</summary>
+      #### Connectivity mode 
+
+        This additional step allows you to select the connectivity mode.
+
+        Once you have selected OIDC, you will be able to select **connectivity mode**, based on the requirement you can select the provider that can be either connect through a **delegate** or through **Harness platform**. 
+
+          ![connetivity-mode](../../secrets/static/oidc-connectivity%20mode.png)
+          
+      </details>
+
 ### Step 4: Setup Delegates
 
   In **Setup Delegates,** enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this connector.
