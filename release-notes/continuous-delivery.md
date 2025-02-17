@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-02-12T10:00:00
+date: 2025-02-17T10:00:00
 sidebar_position: 8
 ---
 
@@ -46,6 +46,19 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## February 2025
+
+### Version 1.77.5
+
+#### New features and enhancements
+
+- Users can now retry failed deployments on a subset of hosts when using traditional infrastructure (SSH/WinRM/PDC) in a single CD stage. Currently, this feature is behind the feature flag `CDS_SKIP_INSTANCES_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-99674**)
+
+#### Fixed Issues
+
+- Previously, policy evaluation was timing out while evaluating OPA rules, preventing pipeline execution from proceeding. The issue is resolved. (**PIPE-25055, ZD-77756**)
+- Previously, when viewing logs for a Harness GitOps resource, the log window would continuously refresh, creating a looping effect that disrupted usability. The issue is resolved by reopening the event source each time for init containers. (**CDS-105810, ZD-76246**)
+- Previously, when accessing a pipeline stored in GitHub, users would encounter an "entity not found" error upon clicking the pipeline name. However, refreshing the page would load the pipeline correctly. The issue is resolved. (**PIPE-25012, ZD-76525**)
+- Previously, selecting a Deploy stage followed by an Approval stage in a pipeline template incorrectly added an environment section to the Approval stage YAML, causing unnecessary reconciliation and user prompts. The issue is resolved. (**PIPE-24398**)
 
 ### Version 1.76.6
 
