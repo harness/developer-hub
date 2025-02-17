@@ -9,15 +9,9 @@ export const SDKDocsBuilder = (
 ) => {
   const result = sections.map(([Section, props], index) => {
     toc.push(...Section.toc);
-    return (
-      <BrowserOnly>
-      { () =>
-        <React.Fragment key={"" + index}>
-          <Section.default {...props} />
-        </React.Fragment>
-      }
-      </BrowserOnly>
-    );
+    return <React.Fragment key={"" + index}>
+      <Section.default {...props} />
+    </React.Fragment>
   });
   return [ ...result];
 };
