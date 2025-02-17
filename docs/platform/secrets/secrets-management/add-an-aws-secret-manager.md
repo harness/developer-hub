@@ -108,6 +108,7 @@ When setting up your AWS Secrets Manager in Harness, you can choose one of the f
 1. **AWS Access Key**  
 2. **Assume IAM Role on Delegate**  
 3. **Assume Role Using STS on Delegate**
+4. **OIDC**
 
   #### General Settings for All Credential Types
 
@@ -209,6 +210,28 @@ When setting up your AWS Secrets Manager in Harness, you can choose one of the f
       #### Additional Fields
 
         - Refer to the **Secret Name Prefix** and **Region** settings described under the AWS Access Key section above.
+
+      #### 4. OIDC - OpenID Connect
+
+       Harness uses OpenID Connect (OIDC) to authenticate and authorize users. This option is commonly used for secure identity federation across different applications or cloud platforms, enabling seamless authentication and access management.
+
+       ![oidc-connect](../../secrets/static/aws-secret-manager-oidc.png)
+
+       - Configure an IAM role in the target AWS account. 
+
+       - Once your configuration is complete, set the IAM role and region below to proceed with the setup, as shown in the image above.
+
+      <details>
+      <summary>An additional step before proceeding.</summary>
+      #### Connectivity mode 
+
+        This additional step allows you to select the connectivity mode.
+
+        Once you have selected OIDC, you will be able to select **connectivity mode**, based on the requirement you can select the provider that can be either connect through a **delegate** or through **Harness platform**. 
+
+          ![connetivity-mode](../../secrets/static/oidc-connectivity-mode.png)
+          
+      </details>
 
 ### Step 4: Setup Delegates
 

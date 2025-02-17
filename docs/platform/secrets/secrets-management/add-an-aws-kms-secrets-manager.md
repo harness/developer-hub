@@ -107,6 +107,7 @@ For more information, go to [How to Use an External ID When Granting Access to Y
 
 This is the AssumeRole Session Duration. Go to Session Duration in the[AssumeRole AWS docs](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html).
 
+
 ### 4. OIDC - OpenID Connect.
 
  This option uses OpenID Connect (OIDC) to authenticate and authorize users. This option is commonly used for secure identity federation across different applications or cloud platforms, enabling seamless authentication and access management.
@@ -115,6 +116,18 @@ This is the AssumeRole Session Duration. Go to Session Duration in the[AssumeRol
 
 - **Role ARN**: Enter the Amazon Resource Name (ARN) of the role you want to assume.  
 - **Region and IAM Role**: Once your configuration is complete, set the IAM role and region below to proceed with the setup, as shown in the image above.
+
+<details>
+    <summary>An additional step before proceeding.</summary>
+
+    #### Connectivity mode 
+
+    This additional step allows you to select the connectivity mode.
+
+    Once you have selected OIDC, you will be able to select **connectivity mode**, based on the requirement you can select the provider that can be either connect through a **delegate** or through **Harness platform**. 
+        
+    ![connetivity-mode](../../secrets/static/oidc-connectivity-mode.png)          
+</details>
 
 ### Step 3: Setup Delegates
 
