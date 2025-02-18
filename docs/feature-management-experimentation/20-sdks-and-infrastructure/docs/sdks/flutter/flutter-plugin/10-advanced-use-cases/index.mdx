@@ -1,0 +1,290 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Set up a proxy or use an external impression listener.
+---
+
+## Custom impression listener
+
+Split SDKs send impression data back to Split servers periodically as a result of evaluating feature flags. To additionally send this information to a location of your choice, use the `impressionsStream`.
+
+This provides a stream that publishes `Impression` objects every time one is generated.
+
+```dart title="Flutter"
+final Splitio _split = Splitio(_apiKey, _matchingKey,
+  configuration: SplitConfiguration(
+    trafficType: "user",
+  ));
+
+StreamSubscription<Impression> impressionsStream = _split.impressionsStream().listen((impression) {
+  /// Fired each time an impression has been generated.
+});
+```
+
+The `Impression` class has the following format.
+
+```dart title="Flutter"
+class Impression {
+  final String? key;
+  final String? bucketingKey;
+  final String? split;
+  final String? treatment;
+  final num? time;
+  final String? appliedRule;
+  final num? changeNumber;
+  final Map<String, dynamic> attributes;
+}
+
+```
+
+An impression listener is called asynchronously from the corresponding evaluation, but is almost immediate.
+
+## Instantiate multiple SDK clients
+
+Split supports the ability to release based on multiple traffic types. For example, with traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, refer to the [Traffic type guide](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) for more information.
+
+Each SDK client is tied to one specific customer ID at a time, so if you need to roll out feature flags by different keys, instantiate multiple SDK clients, one for each traffic type. For example, you may want to roll out the feature `USER_POLL` by `users` and the feature `ACCOUNT_PERMISSIONING` by `accounts`. You can do this with the example below:
+
+```dart title="Flutter"
+final Splitio _split = Splitio('YOUR_SDK_KEY', 'ACCOUNT_ID');
+
+/// Create a client for the default key, in this case, the account id.
+final SplitClient _accountClient = _split.client(onReady: (client) async {
+  var userPollTreatment = client.getTreatment('USER_POLL');
+});
+
+/// To create another client for a user instead, just pass in a
+/// User ID to the splitService.initClient() method. (This is only valid after
+/// at least one client has been initialized).
+final SplitClient _userClient = _split.client(
+    matchingKey: 'USER_ID',
+    onReady: (client) async {
+      var accountPermissioningTreatment =
+          client.getTreatment('ACCOUNT_PERMISSIONING');
+    });
+
+/// Track events for accounts
+_userClient.track('PAGELOAD', value: 7.86);
+
+/// Track events for users
+_accountClient.track('ACCOUNT_CREATED');
+```
+
+:::info[Number of SDK instances]
+While the SDK does not put any limitations on the number of instances that can be created, we strongly recommend keeping the number of clients down to **one** or **two**.
+:::
+
+## User consent
+
+The plugin allows you to disable the tracking of events and impressions until user consent is explicitly granted or declined.
+
+The `userConsent` configuration parameter lets you set the initial consent status of the SDK, and the `Splitio` method `setUserConsent(enabled: bool)` lets you grant (enable) or decline (disable) the dynamic data tracking.
+
+The following are the three possible initial states:
+
+ * `UserConsent.granted`. The user grants consent for tracking events and impressions. The SDK sends them to the Split cloud. This is the default value if the `userConsent` param is not defined.
+ * `UserConsent.declined`. The user declines consent for tracking events and impressions. The SDK does not send them to the Split cloud.
+ * `UserConsent.unknown`. The user neither grants nor declines consent for tracking events and impressions. The SDK tracks them in its internal storage, and eventually either sends them or not if the consent status is updated to `'GRANTED'` or `'DECLINED'` respectively. The status can be updated at any time with the `setUserConsent` factory method.
+
+```dart title="User consent: initial config, getter and setter"
+
+  // Overwrites the initial consent status of the factory instance, which is 'GRANTED' by default.
+  // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
+  // so the SDK locally tracks data but not send it to Split cloud until consent is changed to 'GRANTED'.
+
+  final Splitio _split = Splitio(_sdkKey, _matchingKey,
+    configuration: SplitConfiguration(
+      userConsent: UserConsent.unknown,
+    ));
+
+  // Changed User Consent status to 'GRANTED'. Data will be sent to Split cloud.
+  _split.setUserConsent(true);
+  // Changed User Consent status to 'DECLINED'. Data will not be sent to Split cloud.
+  _split.setUserConsent(false);
+
+  // The 'getUserConsent' method returns User Consent status.
+  // We expose the constants for customer checks and tracking.
+
+  UserConsent userConsent = await _split.getUserConsent();
+  if (userConsent == UserConsent.declined) {
+    print("USER CONSENT DECLINED");
+  }
+
+  if (userConsent == UserConsent.granted) {
+    print("USER CONSENT GRANTED");
+  }
+
+  if (userConsent == UserConsent.unknown) {
+    print("USER CONSENT UNKNOWN");
+  }
+
+```
+
+## Certificate pinning
+
+The plugin allows you to constrain the certificates that it trusts, by pinning a certificate's `SubjectPublicKeyInfo` providing the public key as a ___base64 SHA-256___ hash or a ___base64 SHA-1___ hash.
+
+Each pin corresponds to a host. For subdomains, you can optionally use wildcards, where `*` will match one subdomain (e.g. `*.example.com`), and `**` will match any number of subdomains (e.g `**.example.com`).
+
+To set the plugin to require pinned certificates for specific hosts, add the `CertificatePinningConfiguration` object to the configuration, as shown below.
+
+```dart title="Flutter"
+
+    // Define pins for certificate pinning
+    final CertificatePinningConfiguration pinningConfig = CertificatePinningConfiguration()
+
+    // Provide a base 64 SHA-256 hash
+    .addPin("*.example1.com", "sha256/7HIpactkIAq2Y49orFOOQKurWxmmSFZhBCoQYcRhJ3Y=");
+
+    // Set the CertificatePinningConfiguration property for the Split client configuration
+    SplitConfiguration config = SplitConfiguration(
+          certificatePinningConfiguration: pinningConfig);
+
+```
+
+## Link with native factory
+
+A native Split Factory instance can be shared with the plugin to save resources when evaluations need to be performed on native platform logic. To do so, do the following:
+
+### Android
+
+1. If not created already, create a subclass of Android's `Application`, and add its name to the Manifest.
+
+```java title="Android"
+public class CustomApplication extends Application {
+
+}
+```
+
+```xml title="AndroidManifest.xml"
+   <application
+        android:label="my_app"
+        android:name=".CustomApplication"
+        android:icon="@mipmap/ic_launcher">
+```
+
+2. Add the Split Android SDK dependency to your project's `build.gradle` file.
+
+```groovy title="Gradle
+dependencies {
+    implementation 'io.split.client:android-client:split_version'
+    ...
+}
+```
+
+3. Create a property in your subclass of `Application` to hold your factory instance.
+4. Initialize the factory in the `onCreate` callback of your `Application` subclass.
+
+```java title="Android"
+public class CustomApplication extends Application {
+    private SplitFactory factory;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        try {
+            factory = SplitFactoryBuilder
+                .build("YOUR_SDK_KEY",
+                    new Key("USER_KEY"),
+                    SplitClientConfig.builder()
+                        .build(),
+                    getApplicationContext());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+}
+```
+
+5. Make the `Application` subclass implement the `SplitFactoryProvider` interface, and return the previously created factory in the overridden `getSplitFactory()` method.
+
+```java title="Android"
+public class CustomApplication extends Application implements SplitFactoryProvider {
+    private SplitFactory factory;
+
+    @Override
+    public void onCreate() {
+        ...
+    }
+
+    @Override
+    public SplitFactory getSplitFactory() {
+        return factory;
+    }
+}
+```
+
+### iOS
+
+1. Add the Split iOS SDK dependency to your app's `Podfile`.
+
+```podfile title="Podfile"
+  pod 'Split', '~> 2.15.0'
+...
+```
+
+2. Add a property in your AppDelegate class to hold the factory instance. Make sure to import `Split`.
+
+```swift title="iOS"
+@UIApplicationMain
+@objc class AppDelegate: FlutterAppDelegate {
+
+  private var splitFactory: SplitFactory?
+
+  ...
+}
+```
+
+3. Initialize the factory just before the `GeneratedPluginRegistrant.register(with: self)` line.
+
+```swift title="iOS"
+@UIApplicationMain
+@objc class AppDelegate: FlutterAppDelegate {
+
+  private var splitFactory: SplitFactory?
+
+  override func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+    let config = SplitClientConfig()
+    splitFactory = DefaultSplitFactoryBuilder()
+            .setConfig(config)
+            .setApiKey("YOUR_SDK_KEY")
+            .setKey(Key(matchingKey: "USER_KEY"))
+            .build()
+    GeneratedPluginRegistrant.register(with: self)
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+
+  ...
+}
+```
+
+4. Implement the `SplitFactoryProvider` protocol in your `AppDelegate` and return the previously created factory in the overridden `getFactory()` method.
+
+```swift title="iOS"
+@UIApplicationMain
+@objc class AppDelegate: FlutterAppDelegate, SplitFactorProvider {
+
+  private var splitFactory: SplitFactory?
+
+  override func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+    ...
+  }
+
+  func getFactory() -> SplitFactory? {
+    splitFactory
+  }
+}
+```
+
+:::warning
+By using this method, all configuration declared when instantiating the Plugin in Flutter are ignored, since the factory is already instantiated and its configuration loaded.
+
+Instantiating the factory natively prevents the plugin from setting up an Impression Listener, so impressions won't be accessible from Flutter. However, Impression Listeners can still be added and used in native code.
+:::
