@@ -63,10 +63,10 @@ Harness recommends configuring your connector before creating your workspace, ho
 ---
 ## Action Items
 <BreadcrumbTabs>
-  <Tab value="connectors" label="Add connectors">
-Connect your Cloud Provider and Code Repository through **Connectors** to manage infrastructure changes and updates with Harness IaCM pipelines.
+<Tab value="connectors" label="Add connectors">
 <Tabs>
 <TabItem value="Cloud Provider connector">
+Connect your Cloud Provider and Code Repository through **Connectors** to manage infrastructure changes and updates with Harness IaCM pipelines.
 <DocVideo src="https://app.tango.us/app/embed/3d7ee504-7664-4805-a93c-5796b3db939b" title="Set up a Cloud Provider Connector" />
 </TabItem>
 <TabItem value="Git repository connector">
@@ -127,12 +127,10 @@ Go to [Connect your Code Repository](https://developer.harness.io/docs/platform/
 For easier access and token management, use the **OIDC** (OpenID Connect) option in the Credentials panel. This allows your connector to assume roles with permissions set in your Cloud Provider, updated only by authorized users. For more details, visit [the Use OIDC tab](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials).
 :::
   </Tab>
-  
   <Tab value="create-workspace" label="Add workspace">
-Once you have configured your connectors, you can create a Workspace and select them in the New Workspace panel:
-
 <Tabs>
 <TabItem value="Interactive guide">
+Once you have configured your connectors, you can create a Workspace and select them in the New Workspace panel:
 <DocVideo src="https://app.tango.us/app/embed/cfb68b54-eb46-42af-a622-5b76c9270598" title="Creating a New Workspace in Harness" />
 </TabItem>
 <TabItem value="Step-by-step">
@@ -171,10 +169,10 @@ For first-time use, use our [migration tool](https://developer.harness.io/docs/i
 </Tab>
 
 <Tab value="add-pipeline" label="Add pipelines">
-A pipeline structures workflows to manage tasks like planning infrastructure changes, enforcing policies, and approvals. Learn more about [Harness Pipelines](https://developer.harness.io/docs/category/pipelines). You can also add pipelines through the Harness Platform or [use a code-first approach with YAML](https://developer.harness.io/docs/platform/pipelines/harness-yaml-quickstart).
-
 <Tabs>
   <TabItem value="Interactive guide">
+
+  A pipeline structures workflows to manage tasks like planning infrastructure changes, enforcing policies, and approvals. Learn more about [Harness Pipelines](https://developer.harness.io/docs/category/pipelines). You can also add pipelines through the Harness Platform or [use a code-first approach with YAML](https://developer.harness.io/docs/platform/pipelines/harness-yaml-quickstart).
   <DocVideo src="https://app.tango.us/app/embed/ca925494-e35b-4ddc-af6f-a881197da980" title="Create an IaCM Provision Pipeline" />
   </TabItem>
   <TabItem value="Step-by-step">
@@ -202,10 +200,9 @@ You can include **cost estimation** as part of the workspace setup and in conjun
 :::
 </Tab>
 <Tab value="approval-step" label="Add approval step">
-You can add the optional Approval step to prompt a review of the previous pipeline before proceeding to the next. The most common use case would be to add the Approval step between the `plan` and `apply` steps to ensure you are happy with the infrastructure changes and estimated costs (if `cost estimation` is enabled on your Workspace) that come with them before applying them.
-
 <Tabs>
 <TabItem value="Interactive guide">
+You can add the optional Approval step to prompt a review of the previous pipeline before proceeding to the next. The most common use case would be to add the Approval step between the `plan` and `apply` steps to ensure you are happy with the infrastructure changes and estimated costs (if `cost estimation` is enabled on your Workspace) that come with them before applying them.
 <DocVideo src="https://app.tango.us/app/embed/3efdb37e-0d97-4875-a0b2-91fd4442cbe9" title="Add an IaCM Approval step to your provision pipeline" />
 </TabItem>
 <TabItem value="Step-by-step">

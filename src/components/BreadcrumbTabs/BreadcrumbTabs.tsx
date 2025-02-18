@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import styles from "./BreadcrumbTabs.module.css";
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 interface TabProps {
   label: string;
@@ -50,7 +50,7 @@ export const BreadcrumbTabs: React.FC<BreadcrumbTabsProps> = ({ children }) => {
     }
   };
 
-  const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className={styles.breadcrumbContainer} ref={tabsContainerRef}>
       {/* Breadcrumb Navigation */}
@@ -67,7 +67,7 @@ export const BreadcrumbTabs: React.FC<BreadcrumbTabsProps> = ({ children }) => {
             </span>
             {index < tabs.length - 1 && (
               <img
-                src={`${baseUrl}img/iacm/next-progress-arrow.svg`}
+                src={`${baseUrl}img/iacm/progress-arrow.svg`}
                 alt="Arrow"
                 className={styles.breadcrumbArrow}
               />
@@ -91,9 +91,9 @@ export const BreadcrumbTabs: React.FC<BreadcrumbTabsProps> = ({ children }) => {
                       onClick={handlePrevious}
                     >
                       <img
-                        src={`${baseUrl}img/iacm/previous-progress-arrow.svg`}
+                        src={`${baseUrl}img/iacm/progress-arrow.svg`}
                         alt="Previous"
-                        className={styles.buttonArrow}
+                        className={`${styles.buttonArrow} ${styles.previous}`}
                       />
                       {
                         tabs[
@@ -118,7 +118,7 @@ export const BreadcrumbTabs: React.FC<BreadcrumbTabsProps> = ({ children }) => {
                         ].props.label
                       }
                       <img
-                        src={`${baseUrl}img/iacm/next-progress-arrow.svg`}
+                        src={`${baseUrl}img/iacm/progress-arrow.svg`}
                         alt="Next"
                         className={styles.buttonArrow}
                       />
