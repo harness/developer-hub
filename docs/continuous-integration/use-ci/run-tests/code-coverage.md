@@ -510,5 +510,5 @@ Below is a sample of what can happen:
 As you can see from the below screenshot, with Test Intelligence off, all tests were executed, and Code Coverage shows that it had a score of **69.9**.  
 ![Code Coverage without Test Intelligence](./static/codecoverage-tioff.png)
 
-Once the Test Intelligence was engaged, may of the tests were skipped because of the initial testing.  As a result, almost no tests were run and were skipped, so the test step completed quickly.  As a result, the coverage for this execution is much lower (**9.6**), because the actual tests executed was significantly less.
+Once the Test Intelligence was engaged, many of the tests were skipped because of the initial testing.  As a result, almost no tests were run and were skipped, so the test step completed quickly.  As a result, the coverage for this execution is much lower (**9.6**), because the actual tests executed were significantly fewer.
 ![Code Coverage with Test Intelligence](./static/codecoverage-tion.png)
