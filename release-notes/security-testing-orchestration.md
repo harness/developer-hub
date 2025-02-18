@@ -29,11 +29,14 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 <!-- 2025-02-15 -->
 
 #### New Features and Enhancements
-- Unsupported connectors can now be configured as Docker connectors for STO steps. (STO-8398, ZD-75006)
+- Unsupported connectors can now be configured as Docker connectors for STO steps (STO-8398, ZD-75006).  
+- CheckmarxOne is now available as an STO step, currently behind the feature flag `STO_STEP_PALETTE_CHECKMARX_ONE` (STO-5747).  
+- Checkmarx step now supports scan configurations for Checkmarx SCA and Checkmarx OSA. These can be used by setting the **Scan Configuration** field to `CxSCA` or `CxOSA` (STO-7891).  
 
-#### Fixed Issues 
-- Fixed an issue where remediation calculations were skipped due to a race condition between remediation detection logic and dependent processes. (STO-8456)
-- Fixed AI remediation steps failing with a 403 error when triggered by a project admin; added support for eligible scopes like project and org. (STO-8483, ZD-76591)
+#### Fixed Issues  
+- Fixed an issue where remediation calculations were skipped due to an internal race condition, ensuring accurate remediation details (STO-8456).  
+- Fixed AI remediation steps failing with a 403 error when triggered by a project admin; added support for eligible scopes like project and org (STO-8483, ZD-76591).  
+- Fixed an issue preventing users from canceling an issue exemption; users with the necessary privileges can now cancel issue exemptions without issues.
 
 ### Version 1.125.0
 
