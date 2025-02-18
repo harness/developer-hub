@@ -94,7 +94,7 @@ This section outlines the steps to integrate Okta as an OIDC provider for seamle
     - Enter a **name** for the OIDC configuration.  
     - In **OIDC Scope**, the default required values (`openid`, `email`, `profile`) are pre-selected. You may add additional scopes if needed.  
     - Under **Issuer**, enter the Issuer URL from your authorization server (e.g., `https://example-123.oktapreview.com`).  
-    - In **UID Field**, enter `email` to use the email address as the unique identifier.  
+    - In the UID Field, enter the attribute that contains the user's email address. Only email addresses are supported as the unique identifier, and other attributes will not work.  
     - Click **Continue** to proceed. 
     
         ![configure-oidc](./static/oidc-page-1.png)
@@ -150,7 +150,7 @@ Click on **Continue** to proceed
 
         1. **Create a User Group in Okta** (if not already created):  
             - Log in to **Okta Admin Account**.  
-            - Go to **Directory** > **Groups**, then click **Add Group**.  
+            - Go to **Directory** > **Groups**, then click **Add group**.  
             - In the **Add group** dialog, enter a **Name** and **Description**, then click **Save**.
 
                 ![user-group in okta](./static/okta-user-group.png)
@@ -177,7 +177,7 @@ Click on **Continue** to proceed
         3. Select **Assign** and click **Done**.
             
             ![app-assignment](./static/okta-assign-application.gif)
-        4. Go to the **Applications** page and select the Okta app you created in previously.
+        4. Go to the **Applications** page and select the Okta app you created previously.
         5. In the **Assignments** tab, check that your Okta user group is listed.
             
             ![okta-app-assignments](./static/okta-app-assignments.png)
@@ -197,7 +197,7 @@ Click on **Continue** to proceed
         2. Expand the **Login via OIDC** section.  
         3. Click **More options (⋮)** next to your Okta provider configuration and select **Edit**.  
             ![check-edit-config](./static/edit-for-okta-provider.png)
-        4. On the **OIDC Provider Overview** page, add **groups** as an additional **OIDC Scope** if using an **Org authorization server** in Issuer.  
+        4. On the **OIDC Provider Overview** page, add **groups** as the additional **OIDC Scope** if using an **Org authorization server** in Issuer.  
             ![oidc-scope](./static/oidc-groups-scope.png)
         5. In **Additional Settings**, enable **Authorization**.  
         6. Set **Group Claim** as `groups`.  
