@@ -1,0 +1,52 @@
+.breadcrumbContainer {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .breadcrumbNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: none;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .breadcrumbItem {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0; /* Light grey for inactive tabs */
+    color: black;
+    font-weight: normal;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  
+  .breadcrumbItem:hover {
+    background-color: #0478D4; /* Slightly darker purple for hover */
+    color: white; /* Better contrast */
+    text-decoration: none;
+  }
+  
+  .active {
+    background-color: #0478D4; /* Blue background for active tab */
+    border-color: #007bff;
+    color: white; /* White text for active tab */
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .breadcrumbArrow {
+    font-size: 1.2rem;
+    color: #007bff; /* Blue arrows */
+    margin: 0 0.5rem;
+  }
+  
+  .contentContainer {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: white;
+  }

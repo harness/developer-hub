@@ -6,7 +6,8 @@
   "compilerOptions": {
     "jsx": "react",
     "baseUrl": ".",
-    "types": ["docusaurus-plugin-sass"]
+    "types": ["docusaurus-plugin-sass"],
+    "esModuleInterop": true
   },
   "exclude": [".docusaurus", "build"]
 }
