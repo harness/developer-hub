@@ -1,0 +1,216 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Set up a proxy, Redis cache, or use an external impression listener.
+---
+
+## Network proxy
+
+If you need to use a proxy, you can configure proxies by setting the environment variables `HTTP_PROXY` and `HTTPS_PROXY`. The SDK reads those variables and uses them to perform the server request. [Documentation](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient.defaultproxy?view=net-7.0)
+
+Also you can configure proxies by setting the ProxyHost and ProxyPort properties in the SDK configuration (refer [Configuration](#configuration) section for more information). The SDK uses those properties, with higher precedence than environment variables, to perform the server request. [Documentation](https://learn.microsoft.com/en-us/dotnet/api/system.net.webproxy.-ctor?view=net-7.0#system-net-webproxy-ctor(system-string-system-int32))
+
+## Redis integration
+
+**Configuring this Redis integration section is optional for most setups. Read below to determine if it might be useful for your project**
+
+By default, the Split client stores the state it needs to compute treatments (rollout plans, segments, and so on) in memory. As a result, it is easy to get set up with Split: instantiate a client and start using it.
+
+This simplicity hides one important detail that is worth exploring. Because each Split client downloads and stores state separately, a change in a feature flag is picked up by every client on its own schedule. If a customer issues back-to-back requests that are served by two different machines behind a load balancer, the customer can see different treatments for the same feature flag because one Split client may not have picked up the latest change. This drift in clients is natural and usually ignorable as long as each client sets an aggressive value for `FeaturesRefreshRate` and `SegmentsRefreshRate`. You can learn more about setting these rates in the [Configuration section](#configuration) below.
+
+However, if your application requires a total guarantee that Split clients across your entire infrastructure pick up a change in a feature flag at the exact same time, then the only way to ensure that is to externalize the state of the Split client in a data store hosted on your infrastructure.
+
+We currently support Redis for this external data store.
+
+To use the .Net SDK with Redis, you need to set up the Split Synchronizer and instantiate the SDK in Consumer mode.
+
+### Producer
+
+Refer to our [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) documents and follow the steps there to get everything set to sync data to your Redis cache. After you do that, come back to set up the Consumer.
+
+### Consumer
+
+First, import Splitio.Redis NuGet package into your project.
+
+Use NuGet in the command line or the Package Manager UI in Visual Studio.
+
+```csharp title="NuGet"
+Install-Package Splitio.Redis -Version 7.10.0
+```
+
+To initiate an SDK with support for Redis as consumer mode, use the following code snippet:
+
+```csharp title="C#"
+using Splitio.Services.Client.Classes;
+
+var cacheAdapterConfigurationOptions = new CacheAdapterConfigurationOptions
+{
+    Type = AdapterType.Redis,
+    Host = "localhost",
+    Port = "6379",
+    Password = "",
+    Database = 2,
+    ConnectTimeout = 5000,
+    ConnectRetry = 3,
+    SyncTimeout = 1000,
+    UserPrefix = "my_user_prefix",
+    PoolSize = 1
+};
+
+var config = new ConfigurationOptions
+{
+    Mode = Mode.Consumer,
+    CacheAdapterConfig = cacheAdapterConfigurationOptions
+};
+
+try
+{
+    sdk.BlockUntilReady(10000);
+}
+catch (Exception ex)
+{
+    // log & handle
+}
+```
+
+Available modes are *standalone* (default, for in-memory cache) and *consumer* (for Redis cache).
+
+### SSL support for Redis connections
+
+This is a basic snippet to set it up
+
+``` csharp title="C#"
+using Splitio.Services.Client.Classes;
+using Splitio.Domain;
+
+var tlsConfig = new TlsConfig(ssl: true);
+var cacheAdapterConfigurationOptions = new CacheAdapterConfigurationOptions
+{
+   // ....
+   TlsConfig = tlsConfig
+};
+```
+
+There are two more functions that you can optionally set up, for an advanced use case, that we provide to the library underneath if set:
+* If you want to be responsible for validating the certificate supplied by the remote party, you should define the CertificateValidationFunc. [Doc](https://github.com/StackExchange/StackExchange.Redis/blob/main/src/StackExchange.Redis/ConfigurationOptions.cs#L158)
+* If you want to be responsible for selecting the certificate used for authentication, you should define CertificateSelectionFunc. [Doc](https://github.com/StackExchange/StackExchange.Redis/blob/main/src/StackExchange.Redis/ConfigurationOptions.cs#L151)
+
+``` csharp title="C#"
+using Splitio.Services.Client.Classes;
+using Splitio.Domain;
+
+var tlsConfig = new TlsConfig(ssl: true)
+{
+    CertificateValidationFunc = CertificateValidation,
+    CertificateSelectionFunc = CertificateSelection
+};
+
+var cacheAdapterConfigurationOptions = new CacheAdapterConfigurationOptions
+{
+   // ....
+   TlsConfig = tlsConfig
+};
+```
+
+``` csharp title="C#"
+private X509Certificate2 CertificateSelection(object sender, string targetHost, X509CertificateCollection localCertificates, X509Certificate remoteCertificate, string[] acceptableIssuers)
+{
+    // your custom code
+}
+
+private bool CertificateValidation(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+{
+    // your custom code
+}
+```
+
+### Redis cluster support
+
+The Split .NET SDK version **7.10.0 and above** supports Redis with [Cluster](https://redis.io/topics/cluster-spec).
+
+To initiate the SDK with support for Redis Cluster, use the following code snippet:
+
+```csharp title="C#"
+using Splitio.Services.Client.Classes;
+
+var clusterNodes = new Splitio.Domain.ClusterNodes
+(
+    new List<string>() { "RedisNode1:6379", "RedisNode2:6380", "RedisNode3:6381", ... },
+    "{SPLITIO}"  // KeyHashTag added to user prefix
+);
+var cacheAdapterConfigurationOptions = new CacheAdapterConfigurationOptions
+{
+    Type = AdapterType.Redis,
+    RedisClusterNodes = clusterNodes,
+    Password = "",
+    Database = 2,
+    ConnectTimeout = 5000,
+    ConnectRetry = 3,
+    SyncTimeout = 1000,
+    UserPrefix = "my_user_prefix",
+    PoolSize = 1
+};
+
+var config = new ConfigurationOptions
+{
+    Mode = Mode.Consumer,
+    CacheAdapterConfig = cacheAdapterConfigurationOptions
+};
+
+var factory = new SplitFactory("YOUR_SDK_KEY", config);
+var sdk = factory.Client();
+
+try
+{
+    sdk.BlockUntilReady(10000);
+}
+catch (Exception ex)
+{
+    // log & handle
+}
+```
+
+:::warning[The KeyHashTag Parameter]
+The KeyHashTag is a required parameter. If left empty, the SDK will by default use "\{SPLITIO\}" as the KeyHashTag value. The KeyHashTag value is added to the user prefix to improve SDK performance in Redis Cluster.
+You should use the same KeyHashTag value in the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer) app synching to the same Redis cluster.
+:::
+
+## Custom impression listener
+
+Split SDKs send impression data back to Split servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an impression listener.
+
+The SDK sends the generated impressions to the impression listener right away.
+
+To create an impression listener, you need to implement an `IImpressionListener` interface.
+
+```csharp title="Listener"
+public class CustomImpressionListener: IImpressionListener
+{
+  ...
+
+  public void Log(KeyImpression impression)
+  {
+    //Implement your custom code
+  }
+}
+```
+
+Then add a configuration to attach to it.
+
+```csharp title="Configuration"
+...
+configurations.ImpressionListener = new CustomImpressionListener();
+...
+
+var factory = new SplitFactory("YOUR_SDK_KEY", configurations);
+var sdk = factory.Client();
+
+try
+{
+    sdk.BlockUntilReady(10000);
+}
+catch (Exception ex)
+{
+    // log & handle
+}
+```

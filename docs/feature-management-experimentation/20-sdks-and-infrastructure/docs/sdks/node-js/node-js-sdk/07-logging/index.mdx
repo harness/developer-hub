@@ -1,0 +1,82 @@
+---
+title: Logging
+sidebar_label: Logging
+description: Explore the range of logging levels for transparent development and debugging.
+---
+ 
+## SDK logging
+
+To enable SDK logging in your Node.js app, set the `SPLITIO_DEBUG` environment variable as follows.
+
+```bash title="Enable logging from console"
+# Acceptable values are 'DEBUG', 'INFO', 'WARN', 'ERROR' and 'NONE'
+# Other acceptable values are 'on', 'enable' and 'enabled', which are equivalent to 'DEBUG' log level
+SPLITIO_DEBUG='on' node app.js
+```
+
+Since v9.2.0 of the SDK, you can enable logging via SDK settings and programmatically by calling the Logger API.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Logger API (JavaScript)', value: 'javascript'},
+    {label: 'Logger API (TypeScript)', value: 'typescript'},
+  ]}>
+  <TabItem value="javascript">
+```javascript
+var SplitFactory = require('@splitsoftware/splitio').SplitFactory;
+
+var factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY'
+  },
+  debug: true // Debug boolean option can be passed on settings.
+});
+
+// Or you can use the Logger API which two methods, enable and disable.
+// Calling this methods will have an immediate effect.
+factory.Logger.enable();
+factory.Logger.disable();
+
+// You can also set the log level programatically after v10.4.0
+// Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
+// 'DEBUG' is equivalent to `enable` method.
+// 'NONE' is equivalent to `disable` method.
+factory.Logger.setLogLevel('WARN');
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+import { SplitFactory } from '@splitsoftware/splitio';
+
+const factory: SplitIO.ISDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY'
+  },
+  debug: true  // Debug boolean option can be passed on settings
+});
+
+// Or you can use the Logger API which two methods, enable and disable.
+// Calling this methods will have an immediate effect.
+factory.Logger.enable();
+factory.Logger.disable();
+
+// You can also set the log level programatically after v10.4.0
+// Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'.
+// 'DEBUG' is equivalent to `enable` method.
+// 'NONE' is equivalent to `disable` method.
+factory.Logger.setLogLevel('WARN');
+```
+  </TabItem>
+</Tabs>
+
+Example output is shown below.
+
+<p><img src="/hc/article_attachments/360016427052/f517ed3-Logs_output.png" alt="f517ed3-Logs_output.png" /></p>
+
+:::info[Note]
+For more information on using the logging framework in SDK versions prior to 9.2, visit [https://github.com/visionmedia/debug](https://github.com/visionmedia/debug).
+:::

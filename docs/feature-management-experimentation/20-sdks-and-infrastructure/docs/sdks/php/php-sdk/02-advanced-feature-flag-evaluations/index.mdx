@@ -1,0 +1,143 @@
+---
+title: Advanced feature flag evaluations
+sidebar_label: Advanced feature flag evaluations
+description: Set user attributes, evaluate multiple treatments, and retrieve treatment config data.
+---
+
+## Traffic type Attributes
+
+Traffic type attributes are also called custom attributes. If your feature flags [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), then you can pass attributes to the `getTreatment` method.
+
+### Attribute syntax
+
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
+
+The `getTreatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are: 
+
+* **Strings:** Use type String.
+* **Numbers:** Use type Integer.
+* **Dates:** Express the value in `seconds since epoch`. Use a timestamp represented by an Integer. 
+* **Booleans:** Use type Boolean.
+* **Sets:** Use type Array. 
+ 
+```php title="PHP"
+<?php
+ 
+$attributes["plan_type"] = "growth";
+$attributes["registered_date"] = (new DateTime("now", new DateTimeZone("UTC")))->getTimestamp();
+$attributes["deal_size"] = 10000;
+$attributes["paying_customer"] = True;
+$attributes["permissions"] = array("gold","silver","platinum");
+ 
+$treatment = $splitClient->getTreatment('key', 'FEATURE_FLAG_NAME', $attributes);
+ 
+if ($treatment === 'on') {
+    // insert code here to show on experience
+} elseif ($treatment === 'off') {
+    // insert code here to show off experience
+} else {
+    // insert your control treatment code here to show no reporting
+}
+```
+
+## Multiple evaluations at once
+
+In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` from the Split client to do this.
+* `getTreatments`: Pass a list of the feature flag names you want treatments for. 
+* `getTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
+* `getTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
+
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'getTreatments', value: 'get'},
+    {label: 'getTreatmentsByFlagSet', value: 'getflag'},
+    {label: 'getTreatmentsByFlagSets', value: 'getflags'},
+  ]}>
+  <TabItem value="get">
+```php
+$treatments = $splitClient->getTreatments('key', ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2']);
+ 
+echo json_encode($treatments);
+```
+  </TabItem>
+  <TabItem value="getflag">
+```php
+$treatments = $splitClient->getTreatmentsByFlagSet('key', 'backend');
+ 
+echo json_encode($treatments);
+```
+  </TabItem>
+  <TabItem value="getflags">
+```php
+$treatments = $splitClient->getTreatmentsByFlagSets('key', ['backend', 'server_side']);
+ 
+echo json_encode($treatments);
+```
+  </TabItem>
+</Tabs>
+
+You can also use the [Split Manager](#manager) to get all of your treatments at once.
+
+## Get Treatments with Configurations
+
+To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
+
+The config element is a stringified version of the configuration JSON defined in the Split user interface. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
+
+This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
+
+```php title="PHP"
+$result = $splitClient->getTreatmentWithConfig("KEY", "FEATURE_FLAG_NAME", attributes);
+$config = json_decode($result["config"], true);
+$treatment = $result["treatment"];
+```
+
+If you need to get multiple evaluations at once, you can also use the `getTreatmentsWithConfig` methods. These methods take the exact same arguments as the [getTreatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to SplitResult instead of strings. See example usage below:
+
+<Tabs
+  values={[
+    {label: 'getTreatmentsWithConfig', value: 'get'},
+    {label: 'getTreatmentsWithConfigByFlagSet', value: 'getflag'},
+    {label: 'getTreatmentsWithConfigByFlagSets', value: 'getflags'},
+  ]}>
+  <TabItem value="get">
+```php
+$TreatmentResults = $splitClient->getTreatmentsWithConfig('KEY', array('FEATURE_FLAG_NAME_1' 'FEATURE_FLAG_NAME_2'), attributes);
+// TreatmentResults will have the following form: 
+// {
+//   FEATURE_FLAG_NAME_1: {treatment: 'on',
+//                  config: "{ 'color' : 'red'}}",
+//   FEATURE_FLAG_NAME_2: {treatment: 'v2',
+//                  config: "{ 'copy' : 'better copy'}}",
+// }
+```
+  </TabItem>
+  <TabItem value="getflag">
+```php
+$treatments = $splitClient->getTreatmentsWithConfigByFlagSet('KEY', 'backend')
+// $treatments will have the following form: 
+// {
+//   FEATURE_FLAG_NAME_1: {treatment: 'on',
+//                  config: "{ 'color' : 'red'}}",
+//   FEATURE_FLAG_NAME_2: {treatment: 'v2',
+//                  config: "{ 'copy' : 'better copy'}}",
+// }
+```
+  </TabItem>
+  <TabItem value="getflags">
+```php
+$treatments = $splitClient->getTreatmentsWithConfigByFlagSets('KEY', ['backend', 'server_side'])
+// $treatments will have the following form: 
+// {
+//   FEATURE_FLAG_NAME_1: {treatment: 'on',
+//                  config: "{ 'color' : 'red'}}",
+//   FEATURE_FLAG_NAME_2: {treatment: 'v2',
+//                  config: "{ 'copy' : 'better copy'}}",
+// }
+```
+  </TabItem>
+</Tabs>

@@ -1,0 +1,92 @@
+---
+title: Manager
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+ 
+Use the Split Manager to get a list of feature flags available to the Split client.
+
+To instantiate a Manager in your code base, use the same factory that you used for your client.
+
+```csharp title="Manager"
+var factory = new SplitFactory("YOUR_SDK_KEY");
+var splitManager = factory.Manager();
+```
+
+The Manager has the following methods available.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'Manager interface', value: 'man'},
+    {label: 'Manager interface async', value: 'manasync'}
+  ]}>
+  <TabItem value="man">
+```csharp
+/**
+* Retrieves the feature flags that are currently registered with the
+* SDK.
+*
+* @return a List of SplitView or empty.
+*/
+List<SplitView> Splits();
+
+/**
+* Returns the feature flags registered with the SDK of this name.
+*
+* @return SplitView or null
+*/
+SplitView Split(string splitName);
+
+/**
+* Returns the names of feature flags registered with the SDK.
+*
+* @return a List of String (feature flag names) or empty
+*/
+List<String> SplitNames();
+```
+  </TabItem>
+  <TabItem value="manasync">
+```csharp
+/**
+* Retrieves the feature flags that are currently registered with the
+* SDK.
+*
+* @return a List of SplitView or empty.
+*/
+Task<List<SplitView>> SplitsAsync();
+
+/**
+* Returns the feature flags registered with the SDK of this name.
+*
+* @return SplitView or null
+*/
+Task<SplitView> SplitAsync(string splitName);
+
+/**
+* Returns the names of feature flags registered with the SDK.
+*
+* @return a List of String (feature flag names) or empty
+*/
+Task<List<String>> SplitNamesAsync();
+```
+  </TabItem>
+</Tabs>
+
+The `SplitView` object that you see referenced above has the following structure.
+
+```csharp title="SplitView"
+public class SplitView
+{
+  public string name { get; }
+  public string trafficType { get; }
+  public bool killed { get; }
+  public List<string> treatments { get; }
+  public long changeNumber { get; }
+  public Dictionary<string, string> configs { get; }
+  public string defaultTreatment { get; }
+  public List<string> sets { get; }
+}
+```

@@ -1,0 +1,42 @@
+---
+title: Shutdown
+sidebar_label: Shutdown
+description: Gracefully stop background threads, clear caches, close connections, and flush data.
+---
+
+The in-memory implementation of Python uses threads in Multi-threaded mode and tasks in asyncio mode to synchronize feature flags, segments, and impressions. If at any point in the application the split client is not longer needed, you can disable it by calling the `destroy()` method on the factory object.
+
+This does NOT kill the threads or tasks if they are synchronizing, but prevents them from rescheduling for future executions.
+
+When you call the `.destroy()` method from the client, any subsequent call to `get_treatment()`returns `CONTROL`, and when querying `splits` or `split_names` via the manager interface, an empty list `[]` is returned.
+
+Since version `8.0.0` .destroy() accepts an optinal argument of type `threading.Event`. This allows the user to have control of the shutdown cycle of the SDK.
+The user can for example choose to block the application until destroy() has finished, so that all the impressions and events are flushed correctly before the application shuts down.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'Multi-threaded', value: 'multi'},
+    {label: 'asyncio', value: 'asyncio'},
+  ]}>
+  <TabItem value="multi">
+```python
+stop_event = threading.Event()
+factory.destroy(stop_event)
+stop_event.wait()
+sys.exit(0)
+```
+  </TabItem>
+  <TabItem value="asyncio">
+```python
+await factory.destroy()
+sys.exit(0)
+```
+  </TabItem>
+</Tabs>
+
+:::warning[Important!]
+A call to the `destroy()` method also destroys the factory object. When creating new client instance, first create a new factory instance.
+:::

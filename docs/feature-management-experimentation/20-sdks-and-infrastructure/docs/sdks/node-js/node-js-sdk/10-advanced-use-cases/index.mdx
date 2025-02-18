@@ -1,0 +1,299 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Set up a proxy, use a Redis cache, use an external impression listener, etc.
+---
+
+## Network proxy
+
+If you need to use a network proxy, you can provide a custom [Node.js HTTPS Agent](https://nodejs.org/api/https.html#class-httpsagent) by setting the `sync.requestOptions.agent` configuration variable. The SDK will use this agent to perform requests to Split servers.
+
+```javascript title="Example using the HTTPS Proxy Agent NPM library"
+// Install with `npm install https-proxy-agent`
+const { HttpsProxyAgent } = require('https-proxy-agent');
+const { SplitFactory } = require('@splitsoftware/splitio');
+
+const proxyAgent = new HttpsProxyAgent(process.env.HTTPS_PROXY || 'http://10.10.1.10:1080');
+
+const factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY'
+  },
+  sync: { 
+    requestOptions: { 
+      agent: proxyAgent
+    } 
+  }
+})
+```
+
+## Redis integration
+
+**Configuring this Redis integration section is optional for most setups. Read below to determine if it might be useful for your project.**
+
+By default, the Split client stores the state it needs to compute treatments (rollout plans, segments, and so on) in memory. As a result, it is easy to get set up with Split: simply instantiate a client and start using it.
+
+This simplicity hides one important detail that is worth exploring. Because each Split client downloads and stores state separately, a change in a feature flag is picked up by every client on its own schedule. Thus, if a customer issues back-to-back requests that are served by two different machines behind a load balancer, the customer can see different treatments for the same feature flag because one Split client may not have picked up the latest change. This drift in clients is natural and usually ignorable as long as each client sets an aggressive value for `FeaturesRefreshRate` and `SegmentsRefreshRate`. You can learn more about setting these rates in the [Configuration section](#configuration) below.
+
+However, if your application requires a total guarantee that Split clients across your entire infrastructure pick up a change in a feature flag at the exact same time or you need an async data store, then the only way to ensure that is to externalize the state of the Split client in a data store hosted on your infrastructure.
+
+We currently support Redis for this external data store.
+
+To use the Node.js SDK with Redis, set up the Split Synchronizer and instantiate the SDK in consumer mode.
+
+### Split Synchronizer
+
+Follow the steps in our [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) documents to get everything set to sync data to your Redis cache. After you do that, come back to set up the SDK in consumer mode!
+
+### Consumer mode
+
+In consumer mode, a client can be embedded in your application code and respond to calls to `getTreatment` by retrieving state from the data store (Redis in this case).
+
+Here is how to configure and get treatments for a Split client in consumer mode.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]}>
+  <TabItem value="javascript">
+```javascript
+var SplitFactory = require('@splitsoftware/splitio').SplitFactory;
+
+var config = {
+  mode: 'consumer', // changing the mode to consumer here
+  core: {
+    authorizationKey: '<your-sdk-key>'
+  },
+  // defining the location of the Redis cache that the SDK should talk to
+  storage: {
+    type: 'REDIS',
+    options: {
+      url: 'redis://<your-redis-server>:<your-redis-server-port>/0'
+    },
+    prefix: 'nodejs' // Optional prefix to prevent any kind of
+                     // data collision between SDK versions.
+  }
+};
+
+var factory = SplitFactory(config);
+var client = factory.client();
+
+// Redis in Node.js is async, so the operation is executed asynchronously.
+// You have as 2 different syntaxes to getTreatments:
+
+// one is the async/await syntax
+var treatment = await client.getTreatment('user_id', 'my-feature-flag-coming-from-redis');
+
+// or just using the returned promise
+client.getTreatment('user_id', 'my-feature-flag-coming-from-redis')
+  .then(treatment => {
+    // do something with the treatment
+  });
+
+// You can optionally listen at the following events in consumer mode:
+
+client.once(client.Event.SDK_READY, function () {
+  // This callback will be called once the connection with Redis is stablished.
+  // There is no need to wait for this event before using the SDK, since the promise will resolve once it could get
+  // the data (including Redis connection) and perform the operation or reject in case of error, including timeouts.
+});
+
+client.once(client.Event.SDK_READY_TIMED_OUT, function () {
+  // This callback will be called after the seconds set at the `startup.readyTimeout` config parameter,
+  // if and only if the SDK_READY event was not emitted for that time.
+});
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+import { SplitFactory } from '@splitsoftware/splitio';
+
+const config: SplitIO.INodeAsyncSettings = {
+  mode: 'consumer', // changing the mode to consumer here
+  core: {
+    authorizationKey: '<your-sdk-key>'
+  },
+  // defining the location of the Redis cache that the SDK should talk to
+  storage: {
+    type: 'REDIS',
+    options: {
+      url: 'redis://<your-redis-server>:<your-redis-server-port>/0'
+    },
+    prefix: 'nodejs' // Optional prefix to prevent any kind of
+                     // data collision between SDK versions.
+  }
+};
+
+const factory: SplitIO.IAsyncSDK = SplitFactory(config);
+const client: SplitIO.IAsyncClient = factory.client();
+
+// Redis in Node.js is async. This means we run the evaluation in a async way.
+// You have 2 different syntaxes to interact with getTreatment results:
+
+// One, by just using the returned promise
+client.getTreatment('user_id', 'my-feature-flag-coming-from-redis')
+  .then(treatment => {
+    // do something with the treatment
+  });
+
+// Or you can use the async/await syntax
+const treatment = await client.getTreatment('user_id', 'my-feature-flag-coming-from-redis');
+// do something with the treatment
+
+// NOTE: async/await is supported for all targets since TypeScript 2.1.
+// See https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html#downlevel-async-functions for details.
+```
+  </TabItem>
+</Tabs>
+
+### Redis configuration
+
+The SDK in consumer mode connects to Redis to function, using URL `redis://localhost:6379/0` by default. You can override this URL and other Redis connection parameters with the SDK `storage.options` configuration object. The available parameters are shown below.
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| host | Hostname where the Redis instance is. | `localhost` |
+| port | HTTP port to be used in the connection. | 6379  |
+| db | Numeric database to be used. | 0 |
+| pass | Redis DB password. Don't define if no password is used. | undefined |
+| url | Redis URL. If set, `host`, `port`, `db` and `pass` params will be ignored. Example: `redis://:authpassword@127.0.0.1:6379/0` | undefined |
+| tls | TLS configuration object. See [ioredis TLS Options](https://www.npmjs.com/package/ioredis#tls-options) for details. | undefined |
+| connectionTimeout | The milliseconds before a timeout occurs during the initial connection to the Redis server. | 10000 |
+| operationTimeout | The milliseconds before Redis commands are timeout by the SDK. Method calls that involve Redis commands, like `client.getTreatment` or `client.track` calls, are resolved when the commands success or timeout. | 5000 |
+
+## Custom impression listener
+
+Split SDKs send impression data back to Split servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*. Use the SDK's `impressionListener` parameter, where you can add an implementation of `ImpressionListener`. This implementation **must** define the `logImpression` method. It receives data in the following schema.
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| impression | Object / SplitIO.Impression | Impression object that has the feature flag, key, treatment, label, etc. |
+| attributes | Object / SplitIO.Attributes | A map of attributes passed to `getTreatment`/`getTreatments` (if any). |
+| ip | String  | The IP address of the machine where the SDK is running. |
+| hostname | String  | The hostname of the OS where the SDK is running. |
+| sdkLanguageVersion | String  | The version of the SDK. In this case the language is `nodejs` plus the version currently running. |
+
+Here is an example of how to implement a custom impression listener.
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]}>
+  <TabItem value="javascript">
+```javascript
+function logImpression(impressionData) {
+  // do something with the impression data.
+}
+
+var factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY'
+  },
+  impressionListener: {
+    logImpression: logImpression
+  }
+});
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+class MyImprListener implements SplitIO.IImpressionListener {
+  logImpression(impressionData: SplitIO.ImpressionData) {
+    // do something with impressionData
+  }
+}
+
+const factory: SplitIO.ISDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY'
+  },
+  impressionListener: {
+    logImpression: new MyImprListener()
+  }
+});
+```
+  </TabItem>
+</Tabs>
+
+An impression listener is called asynchronously from the corresponding evaluation, but is almost immediate.
+
+The SDK does not fail if there is an exception in the listener, but be careful to avoid blocking the call stack.
+
+## Working with both sync and async storage
+
+You can write code that works with all type of SDK storage. For example, you might have an application that you want to run on both `REDIS` and `MEMORY` storage types. To accommodate this, check if the treatments are [thenable objects](https://promisesaplus.com/#terminology) to decide when to execute the code that depends on the feature flag.
+
+See example below.
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]}>
+  <TabItem value="javascript">
+```javascript
+var treatment = client.getTreatment('key', 'FEATURE_FLAG_NAME');
+
+if (thenable(treatment)) {
+  // We have a promise so we will use the treatment in the callback, which will receive the treatment string.
+  treatment.then(useTreatment);
+} else {
+  // We have the actual string.
+  useTreatment(treatment);
+}
+
+function useTreatment(splitTreatment) {
+  if (splitTreatment == 'on') {
+    // insert code here to show on treatment
+  } else if (splitTreatment == 'off') {
+    // insert code here to show off treatment
+  } else {
+    // insert your control treatment code here
+  }
+}
+
+function thenable(val) {
+  // By definition, “thenable” is an object or function that defines a then method.
+  return val !== undefined && typeof val.then === 'function';
+}
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+const treatment: (SplitIO.Treatment | SplitIO.AsyncTreatment) =
+  client.getTreatment('key', 'FEATURE_FLAG_NAME');
+
+if (thenable(treatment)) {
+  // We have a promise so we will use the treatment in the cb,
+  // which will receive the treatment string.
+  treatment.then(useTreatment);
+} else {
+  // We have the actual string.
+  useTreatment(treatment);
+}
+
+function useTreatment(splitTreatment) {
+  if (splitTreatment == 'on') {
+    // insert code here to show on treatment
+  } else if (splitTreatment == 'off') {
+    // insert code here to show off treatment
+  } else {
+    // insert your control treatment code here
+  }
+}
+
+function thenable(val) {
+  // By definition, “thenable” is an object or function that defines a then method.
+  return val !== undefined && typeof val.then === 'function';
+}
+```
+  </TabItem>
+</Tabs>

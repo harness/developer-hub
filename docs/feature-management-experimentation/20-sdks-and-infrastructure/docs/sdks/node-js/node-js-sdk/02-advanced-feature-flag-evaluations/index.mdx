@@ -1,0 +1,232 @@
+---
+title: Advanced feature flag evaluations
+sidebar_label: Advanced feature flag evaluations
+description: Set user attributes, evaluate multiple treatments, and retrieve treatment config data.
+---
+
+## Traffic type Attributes
+
+Traffic type attributes are also called custom attributes. If your feature flags [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), then you can pass attributes to the `getTreatment` method.
+
+### Attribute syntax
+
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
+
+The `getTreatment` method has a number of variations that are described below. Each of these additionally has a variation that takes an attributes argument, which can defines attributes of the following types: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
+
+* **Strings:** Use type String.
+* **Numbers:** Use type Number.
+* **Dates: ** Express the value for these attributes in `milliseconds since epoch` and as objects of class `DateTime`.
+* **Booleans:** Use type Boolean.
+* **Sets:** Use type Array.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]}>
+  <TabItem value="javascript">
+```javascript
+var attributes = {
+  // date attributes are handled as `millis since epoch`
+  registered_date: new Date('YYYY-MM-DDTHH:mm:ss.sssZ').getTime(),
+  // this string will be compared against a list called `plan_type`
+  plan_type: 'growth',
+  // this number will be compared against a const value called `deal_size`
+  deal_size: 10000,
+  // this boolean will be compared against a const value called `paying_customer`
+  paying_customer: true,
+  // this array will be compared against a set called `permissions`
+  permissions: [‘read’, ‘write’]
+};
+
+var treatment = client.getTreatment('key', 'FEATURE_FLAG_NAME', attributes);
+
+if (treatment === 'on') {
+  // insert on code here
+} else if (treatment === 'off') {
+  // insert off code here
+} else {
+  // insert control code here
+}
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+const attributes: SplitIO.Attributes = {
+  // date attributes are handled as `millis since epoch`
+  registered_date: new Date('YYYY-MM-DDTHH:mm:ss.sssZ').getTime(),
+  // this string will be compared against a list called `plan_type`
+  plan_type: 'growth',
+  // this number will be compared agains a const value called `deal_size`
+  deal_size: 10000,
+  // this array will be compared against a set called `permissions`
+  permissions: [‘read’, ‘write’]
+};
+
+const treatment: SplitIO.Treatment =
+  client.getTreatment('key', 'FEATURE_FLAG_NAME', attributes);
+
+if (treatment === 'on') {
+  // insert on code here
+} else if (treatment === 'off') {
+  // insert off code here
+} else {
+  // insert control code here
+}
+```
+  </TabItem>
+</Tabs>
+
+You can pass your attributes in the same way to the `client.getTreatments` method.
+
+## Multiple evaluations at once
+
+In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` from the Split client to do this.
+* `getTreatments`: Pass a list of the feature flag names you want treatments for.
+* `getTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
+* `getTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]}>
+  <TabItem value="javascript">
+```javascript
+// Getting treatments by feature flag names
+var featureFlagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
+var treatments = client.getTreatments('key', featureFlagNames);
+
+// Getting treatments by set
+treatments = client.getTreatmentsByFlagSet('key', 'backend');
+
+// Getting treatments for the union of multiple sets
+var flagSets = ['backend', 'server_side'];
+treatments = client.getTreatmentsByFlagSets('key', flagSets);
+
+// treatments have the following form: 
+// {
+//   FEATURE_FLAG_NAME_1: 'on',
+//   FEATURE_FLAG_NAME_2: 'visa'
+// }
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+// Getting treatments by feature flag names
+const featureFlagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_1'];
+let treatments: SplitIO.Treatments = client.getTreatments('key', featureFlagNames);
+
+// Getting treatments by set
+treatments = client.getTreatmentsByFlagSet('key', 'backend');
+
+// Getting treatments for the union of multiple sets
+const flagSets = ['backend', 'server_side'];
+treatments = client.getTreatmentsByFlagSets('key', flagSets);
+
+// treatments have the following form: 
+// {
+//   FEATURE_FLAG_NAME_1: 'on',
+//   FEATURE_FLAG_NAME_2: 'visa'
+// }
+```
+  </TabItem>
+</Tabs>
+
+You can also use the [Split Manager](#manager) to get all of your treatments at once.
+
+:::warning[Working with sync and async storage]
+If your code runs with both types of storage, read [Working with both sync and async storage](#working-with-both-sync-and-async-storage).
+:::
+
+## Get treatments with configurations
+
+To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `getTreatmentWithConfig` method.
+
+This method will return an object containing the treatment and associated configuration.
+
+The config element will be a stringified version of the configuration JSON defined in the Split user interface. If there is no configuration defined for a treatment, the SDK will return `null` for the config parameter.
+
+This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]}>
+  <TabItem value="javascript">
+```javascript
+var flagResult = client.getTreatmentWithConfig('user_id', 'FEATURE_FLAG_NAME', attributes);
+var configs = JSON.parse(flagResult.config);
+var treatment = flagResult.treatment;
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+const flagResult: SplitIO.TreatmentWithConfig = client.getTreatmentWithConfig('user_id', 'FEATURE_FLAG_NAME', attributes);
+const configs: any = JSON.parse(flagResult.config);
+const treatment: SplitIO.Treatment = flagResult.treatment;
+```
+  </TabItem>
+</Tabs>
+
+If you need to get multiple evaluations at once, you can also use the `getTreatmentsWithConfig` methods. These methods take the exact same arguments as the [getTreatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to TreatmentResults instead of strings. Example usage below:
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]}>
+  <TabItem value="javascript">
+```javascript
+// Getting treatments by feature flag names
+var flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
+var treatmentResults = client.getTreatmentsWithConfig('user_id', flagNames);
+
+// Getting treatments by set
+treatmentResults = client.getTreatmentsWithConfigByFlagSet('user_id', 'backend');
+
+// Getting treatments for the union of multiple sets
+var flagSets = ['backend', 'server_side'];
+treatmentResults = client.getTreatmentsWithConfigByFlagSets('user_id', flagSets);
+
+// treatmentResults will have the following form: 
+// {
+//   FEATURE_FLAG_NAME_1: {treatment: 'on',
+//                         config: "{ 'color' : 'red'}}",
+//   FEATURE_FLAG_NAME_2: {treatment: 'v2',
+//                         config: "{ 'copy' : 'better copy'}}",
+// }
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+// Getting treatments by feature flag names
+const flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2']; 
+let treatmentResults: SplitIO.TreatmentsWithConfig = client.getTreatmentsWithConfig('user_id', flagNames);
+
+// Getting treatments by set
+treatmentResults = client.getTreatmentsWithConfigByFlagSet('user_id', 'backend');
+
+// Getting treatments for the union of multiple sets
+const flagSets = ['backend', 'server_side'];
+treatmentResults = client.getTreatmentsWithConfigByFlagSets('user_id', flagSets);
+
+// treatmentResults will have the following form: 
+// {
+//   FEATURE_FLAG_NAME_1: {treatment: 'on',
+//                         config: "{ 'color' : 'red'}}",
+//   FEATURE_FLAG_NAME_2: {treatment: 'v2',
+//                         config: "{ 'copy' : 'better copy'}}",
+// }
+```
+  </TabItem>
+</Tabs>

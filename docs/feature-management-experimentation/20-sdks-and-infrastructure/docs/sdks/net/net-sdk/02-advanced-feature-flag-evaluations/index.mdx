@@ -1,0 +1,251 @@
+---
+title: Advanced feature flag evaluations
+sidebar_label: Advanced feature flag evaluations
+description: Set user attributes, evaluate multiple treatments, and retrieve treatment config data.
+---
+
+## Traffic type Attributes
+
+Traffic type attributes are also called custom attributes. If your feature flags [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), then you can pass attributes to the `getTreatment` method.
+
+### Attribute syntax
+
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `GetTreatment` call. These attributes are compared and evaluated against the attributes used in the Rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
+
+The `GetTreatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
+
+* **Strings:** Use type String.
+* **Numbers:** Use type `long` or `int`.
+* **Dates: ** Express the value for these attributes in `milliseconds since epoch` and as objects of class `DateTime`.
+* **Booleans:** Use type `bool`.
+* **Sets:** Use type `List<string>`.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'GetTreatment', value: 'get'},
+    {label: 'GetTreatmentAsync', value: 'getasync'}
+  ]}>
+  <TabItem value="get">
+```csharp
+using Splitio.Services.Client.Classes;
+
+var factory = new SplitFactory("YOUR_SDK_KEY");
+var sdk = factory.Client();
+
+try
+{
+    sdk.BlockUntilReady(10000);
+}
+catch (Exception ex)
+{
+    // log & handle
+}
+
+var values = new List<string> { "read", "write" };
+
+var attributes = new Dictionary<string, object>
+{
+    { "plan_type", "growth" },
+    { "registered_date", System.DateTime.UtcNow },
+    { "deal_size", 1000 },
+    { "paying_customer", true },
+    { "permissions", values }
+};
+
+var treatment = sdk.GetTreatment("KEY", "FEATURE_FLAG_NAME", attributes);
+
+if (treatment == "on")
+{
+    // insert code here to show on treatment
+}
+else if (treatment == "off")
+{
+    // insert code here to show off treatment
+}
+else
+{
+    // insert your control treatment code here
+}
+```
+  </TabItem>
+  <TabItem value="getasync">
+
+```csharp
+using Splitio.Services.Client.Classes;
+
+var factory = new SplitFactory("YOUR_SDK_KEY");
+var sdk = factory.Client();
+
+try
+{
+    sdk.BlockUntilReady(10000);
+}
+catch (Exception ex)
+{
+    // log & handle
+}
+
+var values = new List<string> { "read", "write" };
+
+var attributes = new Dictionary<string, object>
+{
+    { "plan_type", "growth" },
+    { "registered_date", System.DateTime.UtcNow },
+    { "deal_size", 1000 },
+    { "paying_customer", true },
+    { "permissions", values }
+};
+
+var treatment = await sdk.GetTreatmentAsync("KEY", "FEATURE_FLAG_NAME", attributes);
+
+if (treatment == "on")
+{
+    // insert code here to show on treatment
+}
+else if (treatment == "off")
+{
+    // insert code here to show off treatment
+}
+else
+{
+    // insert your control treatment code here
+}
+```
+  </TabItem>
+</Tabs>
+
+## Multiple evaluations at once
+
+In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `GetTreatments` from the Split client to do this.
+* `GetTreatments`: Pass a list of the feature flag names you want treatments for.
+* `GetTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
+* `GetTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
+
+<Tabs
+  values={[
+    {label: 'GetTreatments', value: 'get'},
+    {label: 'GetTreatmentsByFlagSet', value: 'getflag'},
+    {label: 'GetTreatmentsByFlagSets', value: 'getflags'},
+    {label: 'GetTreatmentsAsync', value: 'getasync'},
+    {label: 'GetTreatmentsByFlagSetAsync', value: 'getflagasync'},
+    {label: 'GetTreatmentsByFlagSetsAsync', value: 'getflagsasync'},
+  ]}>
+  <TabItem value="get">
+```csharp
+var featureFlagNames = new List<string> { "FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2" };
+var result = client.GetTreatments("KEY", featureFlagNames);
+```
+  </TabItem>
+  <TabItem value="getflag">
+```csharp
+var result = client.GetTreatmentsByFlagSet("KEY", "backend");
+```
+  </TabItem>
+  <TabItem value="getflags">
+```csharp
+var flagSets = new List<string> { "backend", "server_side" };
+var result = client.GetTreatmentsByFlagSets("KEY", flagSets);
+```
+  </TabItem>
+  <TabItem value="getasync">
+```csharp
+var featureFlagNames = new List<string> { "FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2" };
+var result = await client.GetTreatmentsAsync("KEY", featureFlagNames);
+```
+  </TabItem>
+  <TabItem value="getflagasync">
+```csharp
+var result = await client.GetTreatmentsByFlagSetAsync("KEY", "backend");
+```
+  </TabItem>
+  <TabItem value="getflagsasync">
+```csharp
+var flagSets = new List<string> { "backend", "server_side" };
+var result = await client.GetTreatmentsByFlagSetsAsync("KEY", flagSets);
+```
+  </TabItem>
+</Tabs>
+
+You can also use the [Split Manager](#manager) to get all of your treatments at once.
+
+## Get Treatments with Configurations
+
+To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `GetTreatmentWithConfig` method.
+
+This method returns an object containing the treatment and associated configuration.
+
+The config element is a stringified version of the configuration JSON defined in the Split user interface. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
+
+This method takes the exact same set of arguments as the standard `GetTreatment` method. See below for examples on proper usage:
+
+<Tabs
+  values={[
+    {label: 'GetTreatmentWithConfig', value: 'get'},
+    {label: 'GetTreatmentWithConfigAsync', value: 'getasync'}
+  ]}>
+  <TabItem value="get">
+```csharp
+var featureFlagResult = splitClient.GetTreatmentWithConfig("KEY", "FEATURE_FLAG_NAME");
+var config = JsonConvert.DeserializeObject(featureFlagResult.Config);
+var treatment = featureFlagResult.Treatment;
+```
+  </TabItem>
+  <TabItem value="getasync">
+```csharp
+var featureFlagResult = await splitClient.GetTreatmentWithConfigAsync("KEY", "FEATURE_FLAG_NAME");
+var config = JsonConvert.DeserializeObject(featureFlagResult.Config);
+var treatment = featureFlagResult.Treatment;
+```
+  </TabItem>
+</Tabs>
+
+If you need to get multiple evaluations at once, you can also use the `GetTreatmentsWithConfig` methods. These methods take the exact same arguments as the [GetTreatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to SplitResult instead of strings. Example usage below:
+
+
+<Tabs
+  values={[
+    {label: 'GetTreatmentsWithConfig', value: 'get'},
+    {label: 'GetTreatmentsWithConfigByFlagSet', value: 'getflag'},
+    {label: 'GetTreatmentsWithConfigByFlagSets', value: 'getflags'},
+    {label: 'GetTreatmentsWithConfigAsync', value: 'getasync'},
+    {label: 'GetTreatmentsWithConfigByFlagSetAsync', value: 'getflagasync'},
+    {label: 'GetTreatmentsWithConfigByFlagSetsAsync', value: 'getflagsasync'},
+  ]}>
+  <TabItem value="get">
+```csharp
+var featureFlagNames = new List<string> { "FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2" };
+var featureFlagResults = splitClient.GetTreatmentsWithConfig("KEY", featureFlagNames);
+```
+  </TabItem>
+  <TabItem value="getflag">
+```csharp
+var featureFlagResults = splitClient.GetTreatmentsWithConfigByFlagSet("KEY", "backend");
+```
+  </TabItem>
+  <TabItem value="getflags">
+```csharp
+var flagSets = new List<string> { "backend", "server_side" };
+var featureFlagResults = splitClient.GetTreatmentsWithConfigByFlagSets("KEY", flagSets);
+```
+  </TabItem>
+  <TabItem value="getasync">
+  ```csharp
+var featureFlagNames = new List<string> { "FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2" };
+var featureFlagResults = await splitClient.GetTreatmentsWithConfigAsync("KEY", featureFlagNames);
+```
+  </TabItem>
+  <TabItem value="getflagasync">
+```csharp
+var featureFlagResults = await splitClient.GetTreatmentsWithConfigByFlagSetAsync("KEY", "backend");
+```
+  </TabItem>
+  <TabItem value="getflagsasync">
+```csharp
+var flagSets = new List<string> { "backend", "server_side" };
+var featureFlagResults = await splitClient.GetTreatmentsWithConfigByFlagSetsAsync("KEY", flagSets);
+```
+  </TabItem>
+</Tabs>

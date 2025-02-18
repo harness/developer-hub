@@ -1,0 +1,142 @@
+---
+title: Advanced feature flag evaluations
+sidebar_label: Advanced feature flag evaluations
+description: Set user attributes, evaluate multiple treatments, and retrieve treatment config data.
+---
+
+## Traffic type Attributes
+
+Traffic type attributes are also called custom attributes. If your feature flags [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), then you can pass attributes to the `get_treatment` method.
+
+### Attribute syntax
+
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `get_treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
+
+The `get_treatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
+
+* **Strings:** Use type String.
+* **Numbers:** Use type `long` or `int`.
+* **Dates:** Express the value as `seconds since epoch` and as objects of class `DateTime`.
+* **Booleans:** Use type Boolean.
+* **Sets:** Use type `List<string>`.
+
+```ruby title="Ruby"
+attributes = {}
+attributes[:deal_size] = 10000
+attributes[:registered_date] = Time.now.to_i # any time as seconds since epoch
+attributes[:plan_type] = "growth"
+attributes[:permissions] = ['read', 'write']
+attributes[:paying_customer] = true
+
+treatment = split_client.get_treatment("KEY",
+                                       "FEATURE_FLAG_NAME",
+                                       attributes)
+
+if treatment == 'on'
+    # insert on code here
+ elsif treatment == 'off'
+    # insert off code here
+ else
+    # insert control code here
+end
+```
+
+## Multiple evaluations at once
+
+In some instances, you may want to evaluate treatments for multiple feature flag at once. Use the different variations of `get_treatments` method from the split client to do this.
+* `get_treatments`': Pass a list of the feature flag names you want treatments for.
+* `get_treatments_by_flag_set`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
+* `get_treatments_by_flag_sets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'get_treatments', value: 'treatments'},
+    {label: 'getTreatments_by_flag_set', value: 'flagset'},
+    {label: 'getTreatments_by_flag_sets', value: 'flagsets'},
+  ]}>
+  <TabItem value="treatments">
+```ruby
+attributes = {}
+split_client.get_treatments('key', ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'], attributes)
+```
+  </TabItem>
+  <TabItem value="flagset">
+```ruby
+attributes = {}
+treatments = split.get_treatments_by_flag_set('key', 'backend', attributes)
+```
+  </TabItem>
+  <TabItem value="flagsets">
+```ruby
+attributes = {}
+treatments = split.get_treatments_by_flag_sets('key', ['backend', 'server_side'], attributes)
+```
+  </TabItem>
+</Tabs>
+
+You can also use the [Split Manager](#manager) if you want to get all of your treatments at once.
+
+## Get Treatments with Configurations
+
+To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `get_treatment_with_config` method.
+
+This method will return an object containing the treatment and associated configuration.
+
+The config element will be a stringified version of the configuration JSON defined in the Split user interface. If there are no configs defined for a treatment, the SDK returns `None` for the config parameter.
+
+This method takes the exact same set of arguments as the standard `get_treatment` method. See below for examples on proper usage:
+
+```ruby title="get_treatment_with_config"
+result = client.get_treatment_with_config('key', 'new_boxes', attributes)
+configs = JSON.parse(result[:config])
+treatment = result[:treatment]
+```
+
+If you need to get multiple evaluations at once, you can also use the `get_treatments_with_config` methods.
+These methods take the exact same arguments as the [get_treatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to SplitResult objects instead of strings. Example usage below.
+
+<Tabs
+  values={[
+    {label: 'get_treatments_with_config', value: 'withconfig'},
+    {label: 'get_treatments_with_config_by_flag_set', value: 'withconfigbyflagset'},
+    {label: 'get_treatments_with_config_by_flag_sets', value: 'withconfigbyflagsets'},
+  ]}>
+  <TabItem value="withconfig">
+```ruby
+
+feature_flag_names = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2']
+feature_flag_results = client.get_treatments_with_config('KEY', feature_flag_names)
+
+ # feature_flag_results will have the following format:
+ # {
+ #   'FEATURE_FLAG_NAME_1': ('on', '{"color": "red"}'),
+ #   'FEATURE_FLAG_NAME_2': ('v2', '{"copy": "better copy"}')
+ # }
+```
+  </TabItem>
+  <TabItem value="withconfigbyflagset">
+```ruby
+attributes = {}
+result = split.get_treatments_with_config_by_flag_set('key', 'backend', attributes)
+result.each do |feature_flag, treatment_with_config|
+ configs = JSON.parse(treatment_with_config[:config])
+ treatment = treatment_with_config[:treatment]
+ puts "Feature: #{feature_flag}, Treatment: #{treatment}, Config: #{configs}"
+end
+```
+  </TabItem>
+  <TabItem value="withconfigbyflagsets">
+```ruby
+attributes = {}
+result = split.get_treatments_with_config_by_flag_sets('key', ['backend', 'server_side'], attributes)
+result.each do |feature_flag, treatment_with_config|
+ configs = JSON.parse(treatment_with_config[:config])
+ treatment = treatment_with_config[:treatment]
+ puts "Feature: #{feature_flag}, Treatment: #{treatment}, Config: #{configs}"
+end
+```
+  </TabItem>
+</Tabs>

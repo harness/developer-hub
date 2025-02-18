@@ -1,0 +1,57 @@
+---
+title: Manager
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+ 
+Use the Split Manager to get a list of feature flags available to the Split client. 
+
+To instantiate a Manager in your code base, use the same factory that you used for your client.
+
+```go title="Go"
+package main
+ 
+import (
+	"fmt"
+	"github.com/splitio/go-client/splitio/client"
+)
+ 
+func main() {
+	factory, err := client.NewSplitFactory("YOUR_SDK_KEY", nil)
+	if err != nil {
+		fmt.Printf("SDK init error: %s\n", err)
+		return
+	}
+  
+	manager := factory.Manager()
+  
+  // ...
+}
+```
+
+The Manager then has the following methods available.
+
+```go title="Manager Interface"
+// Returns the names of all the feature flags in storage
+SplitNames() []string
+// Returns a partial view of all feature flags in the storage
+Splits() []SplitView
+// Returns a partial view of a single feature flag given it's name
+Split(featureFlagName string) *SplitView
+```
+
+The `SplitView` object that you see referenced above has the following structure.
+
+```go title="SplitView"
+type SplitView struct {	
+	Name                string                 `json:"name"`
+	TrafficType         string                 `json:"trafficType"`
+	Killed              bool                   `json:"killed"`
+	Treatments          []string               `json:"treatments"`
+	ChangeNumber        int64                  `json:"changeNumber"`
+	Configs             map[string]string      `json:"configs"`
+	DefaultTreatment    string                 `json:"defaultTreatment"`
+	Sets                []string               `json:"sets"`
+  ImpressionsDisabled bool                   `json:"impressionsDisabled"`
+}
+```

@@ -1,0 +1,26 @@
+---
+title: Logging
+sidebar_label: Logging
+description: Explore the range of logging levels for transparent development and debugging.
+---
+ 
+Our Ruby SDK makes use of Ruby’s stdlib `Logger` class to log errors/events. The default option is shown below:
+
+```ruby title="Ruby"
+Logger.new($stdout)
+```
+
+You can configure the following options in the config file.
+
+```ruby title="Ruby"
+{
+  # ...
+  # you can specify your own Logger class instance here:
+  logger: Logger.new('logfile.log'),
+  # to enable more verbose logging, including more debug information (false is the default) use:
+  debug_enabled: true,
+  # to log transport data (mostly http requests, false is the default) use:
+  transport_debug_enabled: true
+  # ...
+}
+```

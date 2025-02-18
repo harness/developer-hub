@@ -1,0 +1,66 @@
+---
+title: Logging
+sidebar_label: Logging
+description: Explore the range of logging levels for transparent development and debugging.
+---
+ 
+Since version `8.3.0` the loggers use a hierarchical approach, which enable the user to handle all split-sdk related logs either as a whole or as independent components. Each module has it's own logger, the root being `splitio`.
+Below is an example of simple usage.
+
+```python title="Multi-threaded"
+import logging
+logger = logging.getLogger('splitio')
+handler = logging.StreamHandler()
+formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+logger.setLevel(logging.WARNING)
+```
+
+For asyncio mode, since the SDK uses the same logger library, we suggest to create a custom listener to fetch logging lines in a separate thread to avoid any blocking in asyncio tasks during I/O logging operations, see example below:
+
+```python title="asyncio"
+import asyncio
+import logging
+import logging.handlers
+import time
+from queue import SimpleQueue
+from splitio import get_factory
+
+queue = SimpleQueue()
+queue_handler = logging.handlers.QueueHandler(queue)
+listener = logging.handlers.QueueListener(
+    queue,
+    logging.StreamHandler(),
+    logging.FileHandler('split.log'),
+)
+logger = logging.getLogger()
+logFormatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
+queue_handler.setFormatter(logFormatter)
+logger.addHandler(queue_handler)
+logger.setLevel('DEBUG')
+logger.propagate = False
+lhStdout = logger.handlers[0]
+logger.removeHandler(lhStdout)
+
+listener.start()
+
+async def main():
+    factory = get_factory('YOUR_SDK_KEY')
+    split = factory.client()
+
+try:
+    loop = asyncio.new_event_loop()
+    loop.run_until_complete(main())
+finally:
+    listener.stop()
+```
+
+For older versions, to set a specific location or logging threshold, use the following syntax.
+
+```python title="Python"
+import logging
+
+#Set logging configuration.
+logging.basicConfig(filename='example.log',level=logging.WARNING)
+```

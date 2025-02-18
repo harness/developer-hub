@@ -1,0 +1,69 @@
+---
+title: Logging
+sidebar_label: Logging
+description: Explore the range of logging levels for transparent development and debugging.
+---
+ 
+The Split SDK provides a custom logger that implements the [PSR-3 standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md). **By default, the SDK logs to syslog and a WARNING log level.** To configure the logger, set the adapter and the desired log level.
+
+:::warning[Production environments]
+For production environments, we strongly recommend setting the adapter to **syslog** and avoid using the `echo` adapter. Even better, set your own custom adapter. See [Custom logging](#custom-logging) below.
+:::
+
+```php title="PHP - Logger configuration"
+<?php
+$sdkConfig = array(
+    'log' => array('adapter' => 'syslog', 'level' => 'error')
+);
+ 
+$splitFactory = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $sdkConfig);
+$splitClient = $splitFactory->client();
+```
+
+The log configuration parameters are described below.
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- | 
+| adapter | The logger adapter. Split SDK supports:<ul><li>**stdout:** Write log messages to standard output (php://stdout)</li><li>**syslog:** Generate a log message that is distributed by the system logger.</li><li>**void:** Prevent log writes.</li><li>**echo:** Echo messages to output. Note that the output could be the web browser.</li></ul> | syslog |
+| level | The log level message. According the [PSR-3 standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md) the supported levels are:<ul><li>emergency</li><li>alert</li><li>critical</li><li>error</li><li>warning</li><li>notice</li><li>info</li><li>debug\|warning</li></ul> |
+| psr3-instance | Your custom logger instance that implements the [PSR-3 standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md) | null 
+
+### Custom logging
+
+To integrate a third-party logger, follow this example of including the Zend logger.
+
+```php title="PHP"
+<?php
+ 
+$zendLogLogger = new Zend\Log\Logger;
+$psrLogger = new Zend\Log\PsrLoggerAdapter($zendLogLogger);
+ 
+/** SDK options */
+$options = [
+    'log'   => ['psr3-instance' => $psrLogger],
+];
+ 
+/** Create the Split client instance. */
+$splitFactory = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $options);
+$splitClient = $splitFactory->client();
+```
+
+Another example is [Monolog](https://github.com/Seldaek/monolog). Monolog sends your logs to files, sockets, inboxes, databases, and various web services. See the complete list of handlers in the [Monolog documentation](https://github.com/Seldaek/monolog/blob/master/doc/02-handlers-formatters-processors.md).
+
+```php title="PHP"
+<?php
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+ 
+/** create a log channel */
+$psrLogger = new Logger('SplitIO');
+$psrLogger->pushHandler(new StreamHandler('path/to/your.log', Logger::WARNING));
+ 
+/** SDK options */
+$options = [
+    'log'   => ['psr3-instance' => $psrLogger],
+];
+ 
+/** Create the Split Client instance. */
+$splitClient = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $options);
+```

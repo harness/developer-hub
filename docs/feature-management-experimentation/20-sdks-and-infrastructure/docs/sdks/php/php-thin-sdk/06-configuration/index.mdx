@@ -1,0 +1,29 @@
+---
+title: Configuration
+sidebar_label: Configuration
+description: Optimize SDK performance in your environment by fine-tuning SDK config settings.
+---
+
+With the SDK architecture, there is a set of options that you can configure to get everything connected and working as expected.
+
+| **Option** | **Description** | 
+| --- | --- | 
+| transfer | IPC socket parameters (type, address, timeouts) | 
+| logging | Logging parameters |
+| utils | Instance of an impression listener to send impression data to a custom location |
+
+```php title="PHP"
+<?php
+ 
+$sdkConfig = [
+   'transfer' => ['address' => '/var/run/splitd.sock'],
+   'logging' => ['psr-instance' => $myLogger],
+];
+ 
+$splitFactory = \SplitIO\ThinSdk\Factory::withConfig($sdkConfig);
+$splitClient = $splitFactory->client();
+```
+
+### Impressions data
+
+By default, the SDK sends small amounts of information to the Split backend indicating the reason for each treatment returned from a feature flag. An example would be that a user saw the `on` treatment because they are `in segment all`.

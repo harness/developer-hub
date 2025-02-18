@@ -1,0 +1,60 @@
+---
+title: Manager
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+ 
+Use the Split Manager to get a list of feature flags available to the Split client.
+
+To instantiate a Manager in your code base, use the same factory that you used for your client.
+
+```php title="Manager"
+<?php
+ 
+$splitFactory = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $options);
+$splitManager = $splitFactory->manager();
+```
+
+The Manager then has the following methods available.
+
+```php title="PHP"
+<?php
+namespace SplitIO\Sdk\Manager;
+ 
+interface SplitManagerInterface
+{
+    /**
+     * Retrieves the feature flags that are currently registered with the
+     * SDK.
+     *
+     * @return array of \SplitIO\Sdk\Manager\SplitView
+     */
+    public function splits();
+ 
+    /**
+     * Returns the feature flags registered with the SDK of this name.
+     *
+     * @param $featureFlagName
+     * @return \SplitIO\Sdk\Manager\SplitView
+     */
+    public function split($featureFlagName);
+}
+```
+
+The `SplitView` object referenced above has the following structure.
+
+```php title="PHP"
+<?php
+namespace SplitIO\Sdk\Manager;
+ 
+class SplitView
+{
+    private $name;
+    private $trafficType; // the name of the traffic type
+    private $killed;
+    private $treatments;
+    private $changeNumber;
+    private $configs;
+  
+  // Getter and Setter methods have been omitted
+}

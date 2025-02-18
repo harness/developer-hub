@@ -1,0 +1,37 @@
+---
+title: Shutdown
+sidebar_label: Shutdown
+description: Gracefully stop background threads, clear caches, close connections, and flush data.
+---
+
+Make sure to call `.destroy()` before letting a process using the SDK exit as it gracefully shuts down the Split SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions and events. The Java SDK specifically subscribes to the JVM shutdown hook (SIGTERM signal) which in normal circumstances is invoked automatically by the JVM during a shutdown process. This means that on a graceful shutdown of the server, the client will automatically call destroy() and will flush the buffers and release the resources.
+
+In cases where you don't want our SDK to automatically destroy on shutdown, you can use the config: `disableDestroyOnShutDown()` (example usage in the [Configuration](#configuration) section below) and set it to `true`. If you do this, the SDK ignores any signals like SIGTERM and it is your responsibility to properly call destroy at the right time. If a manual shutdown is required, you can then call:
+
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+client.destroy();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+client.destroy()
+```
+  </TabItem>
+</Tabs>
+
+After `destroy()` is called, any subsequent invocations to `client.getTreatment()` or manager methods result in `control` or empty list, respectively.
+
+:::warning[Important!]
+A call to the `destroy()` method also destroys the factory object. When creating new client instance, first create a new factory instance.
+:::
