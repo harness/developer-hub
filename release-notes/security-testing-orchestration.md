@@ -34,7 +34,8 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 - Checkmarx step now supports scan configurations for Checkmarx SCA and Checkmarx OSA. These can be used by setting the **Scan Configuration** field to `CxSCA` or `CxOSA` (STO-7891).  
 
 #### Fixed Issues  
-- Fixed an issue where remediation calculations were skipped due to an internal race condition, ensuring accurate remediation details (STO-8456).  
+- Fixed an issue where remediation calculations were skipped due to an internal race condition; this now ensures accurate remediation trends in the **Remediation Over Time** graph on the **Security Testing Dashboard** (STO-8456).
+  <DocImage path={require('./static/sto-11275-remediation-fix.png')} width="50%" height="50%" title="Click to view full size image" />
 - Fixed AI remediation steps failing with a 403 error when triggered by a project admin; added support for eligible scopes like project and org (STO-8483, ZD-76591).  
 - Fixed an issue preventing users from canceling an issue exemption; users with the necessary privileges can now cancel issue exemptions without issues.
 
