@@ -20,11 +20,13 @@ You can enable SCIM user provisioning to work with your SSO-strict enabled accou
 * Connect Split to a selected IdP
 * Create and manage users and groups in Split directly from a selected IdP
 
+:::info
 Once SCIM is enabled for your organization:
 
 * You must add new users in the IdP to give them access to Split. You can't invite new users using Split and any existing open invites are revoked.
-* User management actions such as deactivate and activate is disabled in Split. IdP administrators control the user management.
-* Groups that are synced from the selected IdP are uneditable in Split. If you want to change the members in a group, the administrators can push them over.
+* **User management actions such as deactivate and activate is disabled in Split. IdP administrators control the user management.**
+* **Groups that are synced from the selected IdP are uneditable in Split. If you want to change the members in a group, the administrators can push them over.**
+:::
 
 ## What we support
 

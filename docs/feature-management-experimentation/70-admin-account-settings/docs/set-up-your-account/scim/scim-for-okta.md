@@ -19,11 +19,13 @@ You can enable SCIM user provisioning to work with your SSO-strict enabled accou
 * Connect Split to Okta
 * Create and manage users and groups in Split directly from Okta 
 
+:::info
 Once SCIM is enabled for your organization, 
 
 * You must add new users in Okta to give them access to Split. You can't invite new users to Split and any existing open invites are revoked.
-* User management actions such as Deactivate and Activate is disabled in Split. Okta administrators control the user management within Okta.
-* Groups that are synced from Okta are uneditable in Split. If you want to change the members in a group, the Okta administrators can push them over.
+* **User management actions such as Deactivate and Activate is disabled in Split. Okta administrators control the user management within Okta.**
+* **Groups that are synced from Okta are uneditable in Split. If you want to change the members in a group, the Okta administrators can push them over.**
+:::
 
 ## Enabling SCIM for your Split organization
 

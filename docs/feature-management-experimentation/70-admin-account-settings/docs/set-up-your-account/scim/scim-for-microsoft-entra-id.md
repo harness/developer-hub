@@ -19,6 +19,7 @@ You can enable SCIM user provisioning to work with your SSO-Strict mode enabled 
 * Connect Split to Azure AD
 * Create and manage users and groups in Split directly from Azure AD 
 
+:::info
 Once SCIM is enabled for your organization:
 
 * You must add new users in AzureAD to give them access to Split. You can’t invite new users to Split. Any existing open invites are revoked.
@@ -26,6 +27,9 @@ Once SCIM is enabled for your organization:
 * Be aware that the display or user name of the users reflects the username in Azure AD and cannot be edited in Split.
 * Groups that are synced from AzureAD are uneditable in Split. If you want to change the members in a group, the AzureAD administrators can add them.
 * Split_Administrators is a reserved group name. Use this group name in AzureAD to map it to Administrators on the Split side.
+* **User management actions such as deactivate and activate are disabled in Split. Azure AD administrators control the user management within Azure AD.**
+* **Groups that are synced from AzureAD are uneditable in Split. If you want to change the members in a group, the AzureAD administrators can add them.**
+:::
 
 ## Enabling SCIM for your Split organization
 
