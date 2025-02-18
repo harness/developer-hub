@@ -92,7 +92,7 @@ SRM tracks **Service** license consumption, instead of **Developers**. All Servi
 <details>
 <summary>Chaos Engineering (CE) Services</summary>
 
-Chaos Engineering (CE) makes it easy to run chaos experiments across diverse services within an R&D organization, aimed at enhancing their resilience. A **Service** represents an autonomous software unit managed and tracked through Harness CD and GitOps. This typically maps to:
+Chaos Engineering (CE) makes it easy to run chaos experiments across diverse services within an R&D organization, aimed at enhancing their resilience. A **Service** represents an autonomous software unit managed and tracked through Harness CE. This typically maps to:
 
 - A service in Kubernetes.
 - A containerized service on a cloud (such as AWS ECS, Azure ACS, or Google Container Engine).
