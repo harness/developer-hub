@@ -500,9 +500,9 @@ Code coverage reports are not the only artifacts you can publish to the **Artifa
 :::
 
 ## Code Coverage and Test Intelligence (TI)
-Customers utilizing Test Intelligence in steps before Code Coverage reports may find that Test Intelligence will affect the overall code coverage.  This is due to the nature of how Test Intelligence works in that it executes *fewer tests* in order to speed up the overall testing process.
+Customers utilizing [Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview) in steps before Code Coverage reports may find that Test Intelligence will affect the overall code coverage.  This is due to the nature of how Test Intelligence works in that it executes **fewer tests** in order to speed up the overall testing process.
 
-Because Test Intelligence is anticipated to execute fewer tests, customers will experience lower Code Coverage numbers and may conflict with expected test code coverage metrics. The recommended approach is to disable Test Intelligence if you wish to run Code Coverage. 
+Because Test Intelligence is anticipated to execute fewer tests, customers will experience lower Code Coverage numbers and may conflict with expected test code coverage metrics. The recommended approach is to disable **Test Intelligence** if you wish to run Code Coverage. 
 
 Alternatively, you can execute it in a separate pipeline on a daily or weekly basis. Test Intelligence and Testing Code Coverage are conflicting objectives to achieve so you will have to pick one or the other.
 
