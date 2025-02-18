@@ -13,10 +13,14 @@ import TabItem from '@theme/TabItem';
 
 :::warning Important Note
     - The OIDC authentication feature is controlled by the feature flag `PL_ENABLE_OIDC_AUTHENTICATION`, which must be enabled to use this feature.
-    - OIDC Authentication is only supported for accounts with **[Vanity URL](https://developer.harness.io/docs/platform/authentication/authentication-overview#set-up-vanity-url)**
+    - OIDC Authentication is only supported for accounts with **[Vanity URL](https://developer.harness.io/docs/platform/authentication/authentication-overview#set-up-vanity-url)**.
 :::
 
-Harness supports Single Sign-On (SSO) with any custom OIDC (OpenID Connect) provider, allowing authentication and provisioning user and user group. Currently, only the Authorization Code flow is supported, enabling applications to exchange an authorization code for a token.
+Harness supports Single Sign-On (SSO) with any custom OIDC (OpenID Connect) provider, allowing authentication and provisioning user and user group. 
+
+:::note Note
+Currently, only the `Authorization Code flow` is supported, enabling applications to exchange an authorization code for a token.
+:::
 
 ### Getting Started
 
@@ -37,6 +41,14 @@ Before you begin, It's helpful to check the following:
 
 To configure Harness with Okta for OIDC SSO, you need to exchange required information between your **Okta application** and **Harness**.
 
+:::tip
+Use two browser windows or tabs for this process. Open Okta in one tab and open Harness in the other.
+In your Harness tab, navigate to the Add OIDC Provider page:
+    - Select Account Settings, and then select Authentication.
+    - Select Login via OIDC and enable OIDC Provider as authentication mechanism.
+    - Click on Add OIDC Provider to configure a new OIDC provider.
+:::
+
 This section outlines the steps to integrate Okta as an OIDC provider for seamless authentication in Harness. 
 
 ### Steps to Create an App Integration in Okta
@@ -47,19 +59,17 @@ This section outlines the steps to integrate Okta as an OIDC provider for seamle
      
      ![create-app-okta](./static/create-app-integration.png)
 
-2. **Select Sign-in Method**  
+2. **Select Sign-in Method and Application Type**  
    - In the **Create a new app integration** dialog, choose **OIDC - OpenID Connect** as the sign-in method.  
-   - Select **Web Application** as the application type.
+   - Select **Web Application** as application type.
      
      ![sign-in-method-okta](./static/sign-in-method-okta.png)  
 
 3. **Configure General Settings**  
    - Enter a name for the app in **App Integration Name**.  
-   - Under **Sign-in redirect URIs**, enter your **Harness URL** followed by:  
-     ```
-     /gateway/user/auth/oidc/callback
-     ```
-     **Example:** `https://something.harness.io/gateway/user/auth/oidc/callback`
+   - Under **Sign-in redirect URIs**, enter your **Harness URL** followed by `/gateway/user/auth/oidc/callback` 
+   
+    **Example:** `https://something.harness.io/gateway/user/auth/oidc/callback`
 
 4. **Set User Access**  
    - Under **Assignments**, select the **user groups** that should have access to the application.  
@@ -76,14 +86,14 @@ This section outlines the steps to integrate Okta as an OIDC provider for seamle
 
 1. Navigate to the **Account Settings ➝ Security and Governance ➝ Authentication** page in Harness.
     
-    Check and select  **OIDC Provider** 
+    - Select Login via OIDC and click on Add OIDC Provider 
 
-    ![authentication-oidc](./static/authentication-oidc.gif)
+        ![authentication-oidc](./static/authentication-oidc.gif)
 
 2. Configure OIDC 
     - Enter a **name** for the OIDC configuration.  
-    - In **OIDC Scope**, the default required values (`openid, email, profile`) are pre-selected. You may add additional scopes if needed.  
-    - Under **Issuer**, enter your **Okta URL** (e.g., `https://example-123.oktapreview.com`).  
+    - In **OIDC Scope**, the default required values (`openid`, `email`, `profile`) are pre-selected. You may add additional scopes if needed.  
+    - Under **Issuer**, enter the Issuer URL from your authorization server (e.g., `https://example-123.oktapreview.com`).  
     - In **UID Field**, enter `email` to use the email address as the unique identifier.  
     - Click **Continue** to proceed. 
     
@@ -191,6 +201,7 @@ Click on **Continue** to proceed
         3. Click **More options (⋮)** next to your **Okta provider configuration** and select **Edit**.  
             ![check-edit-config](./static/edit-for-okta-provider.png)
         4. On the **OIDC Provider Overview** page, add **groups** as an additional **OIDC Scope** if using an **Org authorization server** in Issuer.  
+            ![oidc-scope](./static/oidc-groups-scope.png)
         5. In **Additional Settings**, enable **Authorization**.  
         6. Set **Group Claim** as `groups`.  
         7. Click **Submit** to save changes. Now, your **Okta configuration** uses the **Group Claim** for authorization.
