@@ -95,17 +95,17 @@ Client Settings include the credentials and endpoints needed for Harness to conn
 
 <Tabs>
   <TabItem value="DE" label="Discovery Enabled (Default)" default>
-        - If **Discovery is enabled** (default behavior):  
+        If **Discovery is enabled** (default behavior):  
         - Harness automatically retrieves Identity Provider (IdP) details from the `/.well-known` endpoint. (i.e., `https://example-123.oktapreview.com/.well-known/openid-configuration` )  
         - Provide the following:  
             - **Client Identifier** – Found in Okta under "Client Credentials" in the General tab.  
-            - **Client Secret** – Found in the same section.  
+            - **Client Secret** – Ensure that you store this secret in the **Built-In Harness Secrets Manager**, as it is a required part of the configuration. 
             - **Redirect URL** – Must match the Sign-in Redirect URI from the Okta app setup (e.g., `https://something.harness.io/gateway/user/auth/oidc/callback`). 
 
                 ![oidc-with-discovery](./static/oidc-with-discovery.png) 
     </TabItem>
    <TabItem value="DD" label="Discovery Disabled">
-        - If **Discovery is disabled**, enter additional details:  
+        If **Discovery is disabled**, enter additional details:  
         - **Authorization Endpoint** – URL for user authorization (e.g., `https://example-123.oktapreview.com/oauth2/v1/authorize`).  
         - **Token Endpoint** – URL for retrieving access tokens (e.g., `https://example-123.oktapreview.com/oauth2/v1/token`).  
         - **User Info Endpoint** – URL for obtaining user details (e.g., `https://example-123.oktapreview.com/oauth2/v1/userinfo`).  
