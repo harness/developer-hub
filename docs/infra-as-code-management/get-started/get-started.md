@@ -168,14 +168,9 @@ Harness IaCM currently supports integration with all **OpenTofu** versions<Harne
 :::tip migrate existing projects
 For first-time use, use our [migration tool](https://developer.harness.io/docs/infra-as-code-management/remote-backends/state-migration) to create new workspaces and import your existing Terraform projects into the Harness Platform.
 :::
+</Tab>
 
-<details>
-<summary>Add connectors while creating a workspace</summary>
-<DocVideo src="https://app.tango.us/app/embed/d267f7c8-767f-4f14-b382-7b20c96a8e08" title="Add connector while create a workspace" />
-</details>  
-  </Tab>
-
-  <Tab value="add-pipeline" label="Add pipelines">
+<Tab value="add-pipeline" label="Add pipelines">
 A pipeline structures workflows to manage tasks like planning infrastructure changes, enforcing policies, and approvals. Learn more about [Harness Pipelines](https://developer.harness.io/docs/category/pipelines). You can also add pipelines through the Harness Platform or [use a code-first approach with YAML](https://developer.harness.io/docs/platform/pipelines/harness-yaml-quickstart).
 
 <Tabs>
