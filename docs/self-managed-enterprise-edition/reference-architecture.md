@@ -48,13 +48,13 @@ You can use the following commands to upgrade/install via Helm for each profile.
 As shown below, you can replace the file name `<OVERRIDE-FILE>` placeholder with one of the override files listed above.
  
 <Tabs>
-<TabItem value="Dinstall" label="Install">
+<TabItem value="custom-install" label="Install">
   
    ```
    helm install my-release harness/harness-prod -n <namespace> -f your-override.yaml -f <OVERRIDE-FILE>.yaml
    ```
 </TabItem>
-<TabItem value="DUpgrade" label="Upgrade">
+<TabItem value="custom-upgrade" label="Upgrade">
   
    ```
    helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f <OVERRIDE-FILE>.yaml
