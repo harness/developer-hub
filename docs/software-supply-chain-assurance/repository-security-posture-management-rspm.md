@@ -38,6 +38,11 @@ To onboard your code repositories, refer to the [Get Started](./get-started) gui
 
 The RSPM feature in the Harness SCS module is currently supported only for **GitHub**. Harness plans to add support for other code repositories in the near future. To learn more about all supported integrations and their required permissions, please refer to the [Integrations and Permissions](./integrations-and-permissions)
 
+:::tip
+
+To efficiently onboard a large number of GitHub repositories, set up a single GitHub connector at the account level using [Harness APIs](https://apidocs.harness.io/tag/integration), which enables you to select and onboard repositories for specific projects and automatically create scan pipelines.
+
+:::
 ## Overview Tab
 
 The overview page provides a comprehensive summary of a specific code repository's security and risk posture. This page compiles all the crucial details in one place, offering a clear and concise view.
