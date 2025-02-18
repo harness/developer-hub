@@ -194,6 +194,10 @@ For more information, go to the [Bash manual](https://www.gnu.org/software/bash
 
 In case of PowerShell, if the script executes on Delegate it requires the powershell binary to be installed as it is not shipped with delegate tools, see the [Install PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.3) for installation instructions.
 
+:::info note
+PowerShell version 7.5.0 and above are not supported. Users will encounter errors when using version 7.5.0 or later in the Harness delegate.
+:::
+
 ### Script
 
 The Bash or Powershell script.
