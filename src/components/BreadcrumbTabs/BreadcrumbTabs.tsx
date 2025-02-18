@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import styles from "./BreadcrumbTabs.module.css";
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 interface TabProps {
   label: string;
@@ -49,6 +50,7 @@ export const BreadcrumbTabs: React.FC<BreadcrumbTabsProps> = ({ children }) => {
     }
   };
 
+  const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   return (
     <div className={styles.breadcrumbContainer} ref={tabsContainerRef}>
       {/* Breadcrumb Navigation */}
@@ -64,7 +66,11 @@ export const BreadcrumbTabs: React.FC<BreadcrumbTabsProps> = ({ children }) => {
               {tab.props.label}
             </span>
             {index < tabs.length - 1 && (
-              <span className={styles.breadcrumbArrow}>➜</span>
+              <img
+                src={`${baseUrl}img/iacm/next-progress-arrow.svg`}
+                alt="Arrow"
+                className={styles.breadcrumbArrow}
+              />
             )}
           </React.Fragment>
         ))}
@@ -84,6 +90,11 @@ export const BreadcrumbTabs: React.FC<BreadcrumbTabsProps> = ({ children }) => {
                       className={`${styles.breadcrumbItem} ${styles.previousButton}`}
                       onClick={handlePrevious}
                     >
+                      <img
+                        src={`${baseUrl}img/iacm/previous-progress-arrow.svg`}
+                        alt="Previous"
+                        className={styles.buttonArrow}
+                      />
                       {
                         tabs[
                           tabs.findIndex(
@@ -106,6 +117,11 @@ export const BreadcrumbTabs: React.FC<BreadcrumbTabsProps> = ({ children }) => {
                           ) + 1
                         ].props.label
                       }
+                      <img
+                        src={`${baseUrl}img/iacm/next-progress-arrow.svg`}
+                        alt="Next"
+                        className={styles.buttonArrow}
+                      />
                     </button>
                   )}
                 </div>

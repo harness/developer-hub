@@ -19,32 +19,31 @@
   color: #333;
   text-align: center;
   cursor: pointer;
-  padding: 12px 20px; /* Increased padding for larger buttons */
-  border-radius: 8px; /* Slightly more rounded corners */
+  padding: 8px 16px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  background-color: #f0f0f0;
+  background-color: #f0f0f0; /* Light grey for inactive tabs */
   font-weight: normal;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 .breadcrumbItem:hover {
-  background-color: #0056b3; /* Darker blue for hover */
-  color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+  background-color: #0478D4; /* Slightly darker purple for hover */
+  color: white; /* Better contrast */
+  text-decoration: none;
 }
 
 .active {
-  background-color: #0056b3; /* Brighter blue for active tab */
-  border-color: #0056b3;
-  color: white;
+  background-color: #0478D4; /* Blue background for active tab */
+  border-color: #007bff;
+  color: white; /* White text for active tab */
   font-weight: bold;
+  text-decoration: none;
 }
 
 .breadcrumbArrow {
-  font-size: 1.2rem;
-  color: #007bff; /* Blue arrows */
-  margin: 0 0.5rem;
+  width: 16px;
+  height: 16px;
 }
 
 .breadcrumbItem.active {
@@ -89,14 +88,11 @@
 
 .navigationButtons button:hover {
   background-color: #0056b3; /* Darker blue for hover */
-  color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+  color: white;
 }
 
-.navigationButtons .previousButton::before {
-  content: "← ";
-}
-
-.navigationButtons .nextButton::after {
-  content: " →";
+.buttonArrow {
+  width: 16px;
+  height: 16px;
+  margin: 0 8px;
 }
