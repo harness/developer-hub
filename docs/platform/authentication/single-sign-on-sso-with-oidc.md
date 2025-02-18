@@ -105,17 +105,16 @@ Client Settings include the credentials and endpoints needed for Harness to conn
 
 <Tabs>
   <TabItem value="DE" label="Discovery Enabled (Default)" default>
-        If **Discovery is enabled** (default behavior):  
-        - Harness automatically retrieves Identity Provider (IdP) details from the `/.well-known` endpoint. (i.e., `https://example-123.oktapreview.com/.well-known/openid-configuration` )  
+        If **Discovery is enabled** (default behavior), Harness automatically retrieves Identity Provider (IdP) details from the `/.well-known` endpoint. (i.e., `https://example-123.oktapreview.com/.well-known/openid-configuration` )  
         - Provide the following:  
-            - **Client Identifier** – Found in Okta under "Client Credentials" in the General tab.  
+            - **Client Identifier** – The **Client ID** of the previously created Okta application can be found under **"Client Credentials"** in the **General** tab of the application's details in Okta.  
             - **Client Secret** – Ensure that you store this secret in the **Built-In Harness Secrets Manager**, as it is a required part of the configuration. 
             - **Redirect URL** – Must match the Sign-in Redirect URI from the Okta app setup (e.g., `https://something.harness.io/gateway/user/auth/oidc/callback`). 
 
                 ![oidc-with-discovery](./static/oidc-with-discovery.png) 
     </TabItem>
    <TabItem value="DD" label="Discovery Disabled">
-        If **Discovery is disabled**, enter additional details:  
+        If **Discovery is disabled**, enter the following additional details apart from **Client Identifier**, **Client Secret** and **Redirect URL**:  
         - **Authorization Endpoint** – URL for user authorization (e.g., `https://example-123.oktapreview.com/oauth2/v1/authorize`).  
         - **Token Endpoint** – URL for retrieving access tokens (e.g., `https://example-123.oktapreview.com/oauth2/v1/token`).  
         - **User Info Endpoint** – URL for obtaining user details (e.g., `https://example-123.oktapreview.com/oauth2/v1/userinfo`).  
@@ -130,7 +129,7 @@ Click on **Continue** to proceed
 #### Step 3: Additional Settings (Optional)
 
 **1. Enable JIT Provisioning**
-
+        
     By default, JIT provisioning is **disabled**. Without it, SSO login will fail if the user does not already exist in Harness. When enabled, users are automatically created upon their first login, eliminating the need for manual account creation.
 
         ![JIT-provisioning](./static/claim-key-value-jit.png)  
@@ -145,25 +144,25 @@ Click on **Continue** to proceed
 
     For more details, refer to the **[RBAC section](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness)** in Harness documentation.
 
-    1. Setting Up OIDC SSO and Authorization in Harness
+    1. Setting up Authorization for an OIDC provider in Harness
 
-        1. Enabling OIDC authorization allows the same users authenticated via your OIDC provider to be authorized in Harness.  
+        Enabling OIDC authorization allows the same users authenticated via your OIDC provider to be authorized in Harness.  
 
-        2. **Create a User Group in Okta** (if not already created):  
+        1. **Create a User Group in Okta** (if not already created):  
             - Log in to **Okta Admin Account**.  
             - Go to **Directory** > **Groups**, then click **Add Group**.  
-            - In the **Add Group** dialog, enter a **Group Name** and **Description**, then click **Add Group**.
+            - In the **Add group** dialog, enter a **Name** and **Description**, then click **Save**.
 
                 ![user-group in okta](./static/okta-user-group.png)
 
-        3. **Add Users to the Group**:  
+        2. **Add Users to the Group**:  
             - After creating the group, search for it in the **Groups** section.  
-            - Select the group and click **Assign People**.  
+            - Select the group and click **Assign people**.  
             - Search for users and add them to the group.  
 
                 ![Okta-user-group](./static/okta-group-assignment.gif)
 
-        4. **Verify Group Members**:  
+        3. **Verify Group Members**:  
             - After adding members, the group should display the list of users added.
 
 
@@ -174,22 +173,20 @@ Click on **Continue** to proceed
     2. Ensure the **Okta user group** is assigned to the same Okta OIDC provider app you use for **Harness OIDC SSO**. Here’s how to do it:
 
         1. In Okta, go to **Directory** > **Groups** and select your Okta user group.
-        2. Click **Assign Apps** and find the your **Okta app**.
+        2. Go to the **Applications** tab and click on **Assign applications**. Find the Okta application created by you.
         3. Select **Assign** and click **Done**.
             
             ![app-assignment](./static/okta-assign-application.gif)
-        4. Then, under **Applications**, go to **Applications** and select the **Okta app** you created in previous step.
+        4. Go to the **Applications** page and select the Okta app you created in previously.
         5. In the **Assignments** tab, check that your Okta user group is listed.
             
             ![okta-app-assignments](./static/okta-app-assignments.png)
 
-    3. Create a **Groups Claim** for your OpenID Connect client app by following the steps in the official Okta documentation. This claim will later be used to enable **OIDC authorization** in Harness.
+    3. Create a **Groups Claim** for your OpenID Connect client app by following the steps in the [official Okta documentation](https://developer.okta.com/docs/guides/customize-tokens-groups-claim/main/#add-a-groups-claim-for-the-org-authorization-server). This claim will later be used to enable **OIDC authorization** in Harness.
 
         1. In Okta, go to **Applications** and select your **Harness Okta OIDC SSO app**.
         2. Go to the **Sign On** tab and click **Edit** under the **OpenID Connect ID Token** section.
-        3. Use the **Groups claim filter** or **Groups claim expression** to list the user’s groups. The filter allows you to select which groups should be authenticated to Harness.  
-            - In the **Groups claim filter** section, make sure the name "groups" is present (add it if empty).  
-            - Set the filter type to **Matches regex** and enter `.*` to return all user groups.
+        3. Use the **Groups claim filter** or **Groups claim expression** that contains the list of user’s groups. The filter allows you to select which groups should be authenticated to Harness. In the **Groups claim filter** section, make sure the name "groups" is present (add if it is empty). Set the filter type to **Matches regex** and enter `.*` to return all user groups.
         4. Click **Save** to complete the configuration.
 
             ![group-assign-okta-application](./static/group-assign-okta-application.gif)
@@ -198,7 +195,7 @@ Click on **Continue** to proceed
 
         1. In **Harness**, go to **Account Settings** > **Authentication**.  
         2. Expand the **Login via OIDC** section.  
-        3. Click **More options (⋮)** next to your **Okta provider configuration** and select **Edit**.  
+        3. Click **More options (⋮)** next to your Okta provider configuration and select **Edit**.  
             ![check-edit-config](./static/edit-for-okta-provider.png)
         4. On the **OIDC Provider Overview** page, add **groups** as an additional **OIDC Scope** if using an **Org authorization server** in Issuer.  
             ![oidc-scope](./static/oidc-groups-scope.png)
@@ -207,39 +204,37 @@ Click on **Continue** to proceed
         7. Click **Submit** to save changes. Now, your **Okta configuration** uses the **Group Claim** for authorization.
             ![Auth-enabled-group](./static/auth-enabled.png)
     
-### Link Okta User Group to a Harness User Group
+    5. Link Okta User Group to a Harness User Group
 
-    1. In **Harness**, go to **Account Settings** > **Access Control**.  
-    2. Click on **User Groups** and find the group you want to link with your Okta user group.  
-    3. Select **Link to SSO Provider Group**.  
-    4. In the **Search SSO Settings** window, choose your **Okta OIDC SSO configuration**.  
-    5. Enter the **Okta Group Name** and click **Save**.
-        ![link-to-sso](./static/link-to-sso.gif)
-    6. Repeat these steps for any additional user groups you need to connect.
+        1. In **Harness**, go to **Account Settings** > **Access Control**.  
+        2. Click on **User Groups** and find the group you want to link with your Okta user group.  
+        3. Select **Link to SSO Provider Group**.  
+        4. In the **Search SSO Settings** window, choose your **Okta OIDC SSO configuration**.  
+        5. Enter the **Okta Group Name** and click **Save**.
+            ![link-to-sso](./static/link-to-sso.gif)
+        6. Repeat these steps for any additional user groups you need to connect.
 
-### Test and Verify OIDC Authorization in Harness
+    6. Test and Verify OIDC Authorization in Harness
 
-    1. **Log in via OIDC:**  
-        - Open a **private/incognito browsing window** and go to **Harness**.  
-        - Log in using a **Harness user account** with an email registered in **Okta**.  
-        - If configured correctly, you'll be redirected to the **Okta login page**. 
+        1. **Log in via OIDC:**  
+            - Open a **private/incognito browsing window** and go to **Harness**.  
+            - Log in using a **Harness user account** with an email registered in **Okta**.  
+            - If configured correctly, you'll be redirected to the **Okta login page**. 
 
-    2. **Authenticate with Okta:**  
-        - Enter your **email address** (passwords for Harness and Okta can be different).  
-        - If authentication is successful, you’ll be redirected back to **Harness**.
-            
-            > **Note:** The login screen below will appear only if you have multiple OIDC configurations set up.
-            
-            ![Step-1-and-step-2](./static/okta-login-sso.gif)  
+        2. **Authenticate with Okta:**  
+            - Enter your **email address** (passwords for Harness and Okta can be different).  
+            - If authentication is successful, you’ll be redirected back to **Harness**.
+                
+                ![Step-1-and-step-2](./static/okta-login-sso.gif)  
 
-    3. **Verify User Group Membership in Harness:**  
-        - In another browser window, where you're logged in as an **admin**, go to **Account Settings** > **Access Control**.  
-        - Select **User Groups** and open the group linked to **Okta**.  
-        - Ensure that the logged-in user appears as a **member** of the group.  
+        3. **Verify User Group Membership in Harness:**  
+            - In another browser window, where you're logged in as an **admin**, go to **Account Settings** > **Access Control**.  
+            - Select **User Groups** and open the group linked to **Okta**.  
+            - Ensure that the logged-in user appears as a **member** of the group.  
 
-By being part of this **user group**, the user inherits all **permissions and access** assigned to it. For more details, refer to **[RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness)**.  
+    By being part of this **user group**, the user inherits all **permissions and access** assigned to it. For more details, refer to **[RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness)**.  
 
-:::warning Note
-If there are any errors, you can **disable SSO** using your **Harness Administrator account** in another session.
-:::
+    :::warning Note
+    If there are any errors, you can **disable SSO** using your **Harness Administrator account** in another session.
+    :::
 
