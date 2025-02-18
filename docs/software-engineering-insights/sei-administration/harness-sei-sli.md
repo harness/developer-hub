@@ -9,7 +9,7 @@ This is a Harness operational reference guide for all the Service Level Indicato
 
 | **SLI**         | **Threshold**                           | **Availability**|
 |-------------------------------------------|-----------------|-----------------------------------------|
-| Login Failure (Legacy only)| Greater than 30 seconds for a consecutive duration of 5 minutes |Major Outage|
+| Login Failure | Greater than 30 seconds for a consecutive duration of 5 minutes |Major Outage|
 | Integrations list API Error Rate | failure rate (5XX) of the API  in 5 minutes > 0.5 |Major Outage|
 | Integrations list API Latency | Response time greater than 30 seconds | Degraded Performance|
 | Ingestion Delay | Delay in receiving any events > 24 hours |Partial Outage|
