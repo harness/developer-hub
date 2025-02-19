@@ -161,7 +161,7 @@ Currently, the feature to download rootless **lite-engine**, **ci-addon**, and *
 
 :::
 
-Customers who are seeing to utilize Windows Images with rootless operation can do so by downloading the appropriate images.  The rootless Windows version is available as of the following version, or higher:
+Customers who are trying to utilize Windows Images with a rootless operation can do so by downloading the appropriate images.  The rootless Windows version is available as of the following version, or higher:
 * `harness/ci-addon:rootless-1.16.71`
 * `harness/ci-lite-engine:rootless-1.16.71`
 * `harness/drone-git:1.6.7-rootless`
