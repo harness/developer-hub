@@ -87,6 +87,14 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## February 2025
+
+### Version 24.12.84709 <!-- February 11, 2025 -->
+
+#### Hotfix
+
+- Fixed a bug where npe was being thrown in CI initialise flow in case of an edge case arising due to a race condition
+
 ## January 2025
 
 ### Version 24.10.84107 <!-- January 31, 2025 -->
