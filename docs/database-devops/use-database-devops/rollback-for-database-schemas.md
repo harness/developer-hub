@@ -50,7 +50,7 @@ Example: For the following pipeline configuration, the expressions would be
 - `<+pipeline.stages.s2.spec.execution.steps.stepGroup1.steps.DBSchemaApply_1.output.preStartTag>`
 - `<+execution.steps.stepGroup1.steps.DBSchemaApply_1.output.preStartTag>`
 
-![dependency-graph](./static/db-devops-stage-config.png)
+![stage-configuration](./static/db-devops-stage-config.png)
 
 ## Built in failure strategies including rollback
 
