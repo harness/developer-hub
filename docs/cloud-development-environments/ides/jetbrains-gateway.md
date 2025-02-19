@@ -19,16 +19,16 @@ The following JetBrains IDEs are supported for remote development:
 
 ![](./static/manage-plugin-2.png)
 
-## JetBrains Gateway Plugin  
+## [JetBrains Gateway Plugin](https://plugins.jetbrains.com/plugin/26594-harness-gitspaces)  
 
-**JetBrains Gateway** is a lightweight desktop application that allows you to work remotely with **JetBrains IDEs** without downloading the full IDE. It connects to a remote server, fetches the necessary backend components, and opens your project in a **JetBrains client**.  
+[**JetBrains Gateway**](https://www.jetbrains.com/remote-development/gateway/) is a lightweight desktop application that allows you to work remotely with **JetBrains IDEs** without downloading the full IDE. It connects to a remote server, fetches the necessary backend components, and opens your project in a **JetBrains client**.  
 
-With the **JetBrains Gateway Plugin**, you can seamlessly access and manage your **Gitspaces** created in JetBrains IDEs. This plugin ensures smooth navigation and efficient development within your IDE.  
+With the [**Harness Gitspaces Plugin**](https://plugins.jetbrains.com/plugin/26594-harness-gitspaces), you can seamlessly access and manage your **Gitspaces** created in JetBrains IDEs. This plugin ensures smooth navigation and efficient development within your IDE.  
 
 ## Pre-Requisites  
 
 #### Install JetBrains Gateway  
-Before proceeding, ensure that **JetBrains Gateway** is installed on your device.  
+Before proceeding, ensure that [JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/) is installed on your device.  
 
 #### Recommended Gitspace Configuration  
 Refer to [this section](/docs/cloud-development-environments/ides/intellij#recommended-gitspace-configuration) to understand the **recommended Gitspace requirements** for optimal performance when connecting to your Gitspace in JetBrains IDEs.  
@@ -37,8 +37,8 @@ Refer to [this section](/docs/cloud-development-environments/ides/intellij#recom
 
 Follow these steps to install the **Harness Gitspace Plugin**:  
 
-1. **Download the latest version** of the Harness Gitspace Plugin package.  
-2. **Install and open** JetBrains Gateway.  
+1. **Download the latest version** of the [Harness Gitspace Plugin](https://plugins.jetbrains.com/plugin/26594-harness-gitspaces) package.  
+2. **Install and open** [JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/).  
 
 3. Click the **settings icon** in the bottom-left corner of the application.  
 <img width="650" alt="Image" src="https://github.com/user-attachments/assets/0d096cb6-8c08-4d6f-85da-33b2463e77f4" />
