@@ -11,6 +11,7 @@ The Supply Chain Security (SCS) module is available on the following platforms:
 - Generate [SLSA](../slsa/overview.md) provenance and achieve Build [Levels 1](../slsa/overview.md#how-to-comply-with-slsa-level-1), [2](../slsa/overview.md#how-to-comply-with-slsa-level-2), and [3](../slsa/overview.md#how-to-comply-with-slsa-level-3).
 - [Verify SLSA provenance](../slsa/verify-slsa.md) with [SLSA governance policies](../slsa/verify-slsa.md#enforce-policies-on-slsa-provenance).
 - Attest and verify SBOM and SLSA Provenance with Cosign.
+- [Sign and Verify Artifacts](/docs/software-supply-chain-assurance/shared/ssca-supported.md) with Cosign
 - Create and manage [Remediation Trackers](../remediation-tracker/overview.md).
 
 ### SCS on Harness Self-Managed Enterprise Edition (SMP)
@@ -42,6 +43,7 @@ The following code repository providers are integrated using 3rd party Git Conne
 * GitLab
 * BitBucket
 * Azure Code Repos
+* AWS CodeCommit
 
 ### CI/CD Pipelines
 
@@ -63,6 +65,7 @@ The following CI/CD pipeline providers are integrated using [Pipeline Triggers](
 * Amazon ECR
 * Microsoft ACR
 * GAR
+* HAR (Harness Artifact Registry)
 
 ### SBOM Generation Tools
 
