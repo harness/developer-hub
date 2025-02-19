@@ -9,7 +9,7 @@ This topic describes how Harness Database DevOps implements automated rollback t
 
 ## What are tags? 
 
-A tag is a marker or label assigned to a specific point in a database's migration history. Harness recommends creating a change every time you deploy a changeset to a database so that you always have a rollback point for future changes.
+A tag is a marker or label assigned to a specific point in a database's migration history. Harness recommends creating a tag every time you deploy a changeset to a database so that you always have a rollback point for future changes.
 
 ### Rollback A Database Schema 
 
