@@ -139,10 +139,10 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/platform/connectors/ @krishi0408 @vishal-av
 
 # IDP Docs
-/docs/internal-developer-portal/ @Debanitrkl @OrkoHunter @manishas
-/release-notes/internal-developer-portal.md @Debanitrkl @OrkoHunter @manishas
-/src/components/Roadmap/data/idpData.ts @Debanitrkl @OrkoHunter @manishas
-/src/components/Docs/data/internalDeveloperPortal.ts @Debanitrkl @OrkoHunter @manishas
+/docs/internal-developer-portal/ @Debanitrkl @OrkoHunter @manishas @khushisharmaharness
+/release-notes/internal-developer-portal.md @Debanitrkl @OrkoHunter @manishas @khushisharmaharness
+/src/components/Roadmap/data/idpData.ts @Debanitrkl @OrkoHunter @manishas @khushisharmaharness
+/src/components/Docs/data/internalDeveloperPortal.ts @Debanitrkl @OrkoHunter @manishas @khushisharmaharness
 
 # SCS Docs
 /docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness
