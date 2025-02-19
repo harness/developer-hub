@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2025-02-07T10:00
+date: 2025-02-19T10:00
 sidebar_position: 5
 ---
 
@@ -21,6 +21,26 @@ The release notes describe recent changes to Harness Chaos Engineering.
 :::
 
 ## February 2025
+
+### Version 1.55.1
+
+#### Images required
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+
+- harness/chaos-ddcr:1.55.0
+- harness/chaos-log-watcher:1.55.0
+- harness/service-discovery-collector:0.35.0
+- docker.io/harness/chaos-ddcr-faults:1.55.0
+
+#### New features and enhancements
+
+- Modified the Chaos Select Pipeline component to accept additional resources as properties and support allowed infrastructure types. (CHAOS-7035)
+
+#### Fixed issues
+
+- Fixed an issue where the Kubernetes chaos infrastructure was being auto-selected even when other infrastructure types were enabled. (CHAOS-7549)
+- Updated the `useGetChaosExperimentStats` API to support project and account-scoped data retrieval. (CHAOS-7530)
 
 ### Version 1.54.0
 
