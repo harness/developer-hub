@@ -17,7 +17,7 @@ The following JetBrains IDEs are supported for remote development:
 - RubyMine
 - Webstorm
 
-
+![](./static/manage-plugin-2.png)
 
 ## JetBrains Gateway Plugin  
 
@@ -41,18 +41,21 @@ Follow these steps to install the **Harness Gitspace Plugin**:
 2. **Install and open** JetBrains Gateway.  
 
 3. Click the **settings icon** in the bottom-left corner of the application.  
-   ![](./static/install-plugin-1.png)  
+<img width="650" alt="Image" src="https://github.com/user-attachments/assets/0d096cb6-8c08-4d6f-85da-33b2463e77f4" />
 
 4. Select **"Manage Providers."**  
-   ![](./static/install-plugin-2.png)  
+<img width="275" alt="Image" src="https://github.com/user-attachments/assets/636be358-a703-4eb6-a76d-b4e70c35949e" />
+
 5. In the **Installed Plugins** section, click the **settings icon** on the right and choose **"Install Plugin from Disk."**  
-   ![](./static/install-plugin-3.png)  
+<img width="650" alt="Image" src="https://github.com/user-attachments/assets/ff6459be-8b70-4a47-8769-d1a19a842630" />
 
 6. Locate and **select the downloaded Harness Gitspaces Plugin package.**  
 7. A warning will appear indicating that this is a third-party plugin (Harness Gitspaces Plugin) and not a JetBrains plugin. Click **"Accept."**  
-   ![](./static/install-plugin-4.png)  
+<img width="350" alt="Image" src="https://github.com/user-attachments/assets/2989a192-bbc2-428e-a29d-c65aab92f992" />
+
 8. That’s it! You will now see the plugin successfully installed in your **JetBrains Gateway connections.**  
-   ![](./static/install-plugin-5.png)  
+<img width="1100" alt="Image" src="https://github.com/user-attachments/assets/2de2d956-99dc-47c5-aa0b-91755c5d0995" />
+ 
 
 
 ## Configuring the Plugin
@@ -60,8 +63,13 @@ Now that you've successfully installed the plugin, you can configure it in **Jet
 
 1. Click on **"Harness Gitspaces"** from the sidebar connections.  
 2. You will be prompted to configure the app URL in JetBrains Gateway. Enter: **"https://app.harness.io"** and click **"Connect"**  
+<img width="1400" alt="Image" src="https://github.com/user-attachments/assets/06a7d4d0-496c-4ee7-a2bd-6d400037a882" />
+
 3. You will be redirected to the **Harness platform** to sign in. Enter your credentials to log into your account.  
-4. That’s it! Once configured, you can view all your **Gitspaces** created in JetBrains IDEs directly within the **JetBrains Gateway** application.  
+<img width="350" alt="Image" src="https://github.com/user-attachments/assets/3f9c4639-77e0-45a8-9811-27db89ce292e" />
+
+4. That’s it! Once configured, you can view all your **Gitspaces** created in JetBrains IDEs directly within the **JetBrains Gateway** application. 
+![](./static/configure-plugin-3.png)
 
 ## Managing Your Gitspaces  
 
@@ -74,6 +82,8 @@ You can connect to your **Gitspaces** directly from the **Gateway** application:
 1. **For an actively running Gitspace**, click on **"Connect."** This will connect you to your remote Gitspace within your selected IDE.  
 2. **For a stopped Gitspace**, clicking on **"Connect"** will redirect you to the **Harness Gitspaces UI**, where you can check its details.  
 
+![](./static/connect-plugin.png)
+
 :::info  
 **Note:** While a Gitspace is transitioning between **started and stopped states**, its status in the application will be displayed as **"Busy."** This indicates that the Gitspace is undergoing the transition.  
 :::  
@@ -82,11 +92,13 @@ You can connect to your **Gitspaces** directly from the **Gateway** application:
 
 You can start your **stopped Gitspaces** directly from **JetBrains Gateway**:  
 - Click the **Green Start** icon to start your Gitspace.  To open your Gitspace in your preferred IDE, refer to the IDE-specific documentation. For example, here’s how you can connect to your [Gitspace in IntelliJ IDEA](/docs/cloud-development-environments/ides/intellij#open-the-gitspace-in-intellij).
+![](./static/start-gitspace-plugin.png)
 - This icon will be visible **only if your Gitspace is stopped**.  
 
 ### Stop Your Gitspaces  
 
 You can stop your **active Gitspaces** directly from **JetBrains Gateway**:  
 - Click the **Red Stop** icon to stop it from running.  
+![](./static/stop-gitspace-plugin.png)
 - This icon will be visible **only if your Gitspace is currently active**.  
 
