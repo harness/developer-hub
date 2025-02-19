@@ -521,6 +521,98 @@ Command finished with status SUCCESS
 ```
 Congratulations! You have now successfully created and completed the steps for running a pipeline by using Secure Shell.
 
+## Selective Failed Hosts Rerun
+
+You can do a **selective retry and rollback** for traditional deployments. These improvements ensure:
+- **Efficient retries**: Redeploy only on failed hosts instead of all hosts.
+- **Accurate rollback**: Rollback artifacts are determined per host instead of per stage.
+- **Enhanced instance sync**: Deployment data is correctly maintained per host.
+- **Expressions for failed hosts**: Retrieve failed hosts dynamically for debugging and retry logic.
+
+:::note
+Currently, the Selective Failed Hosts Rerun feature is behind the feature flag `CDS_SKIP_INSTANCES_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+**Change in Behavior with Feature Flag Activation**
+Turning on the `CDS_SKIP_INSTANCES_V2` feature flag modifies the existing skip instances feature to enhance reliability across various deployment scenarios. The updated behavior improves:
+- **Org/Account-Level Service & Environment Handling**: Ensures that skip instance logic is applied consistently across different organizational scopes.
+- **Rollback Accuracy**: Skips only failed hosts during rollback instead of re-executing on all hosts.
+- **Partial Success Handling**: Accurately tracks and skips only successfully deployed hosts, preventing unnecessary re-deployments.
+:::
+
+To use this feature, navigate to the **advanced tab** of the **CD stage**, Under the **Failure Strateg**y, enable the **Skip instances with the same artifact version already deployed** checkbox. 
+
+You can enable this checkbox dusing the run-time by making this checkbox a **Runtime Input**. 
+
+**Success criteria for deployment on host:**
+- Successful Deployed criteria is: **All command steps executed on a host in an execution should be successful.**
+- Deployed criteria is: **Any command step execution on the host**
+
+**Key Features**
+
+**1. Selective Retry for Failed Hosts**
+- Deployment retries now target only failed hosts instead of redeploying on all hosts when the **Skip instances with the same artifact version already deployed** checkbox is enabled. 
+- Infrastructure changes, such as **new hosts added or credentials updated**, are considered between retries.
+
+**2. Enhanced Skip Instances Feature**
+- Deployment is skipped on hosts where the **last deployment was successful using the same artifact**.
+- Each host’s deployment success is tracked **individually**, ensuring only failed hosts are retried.
+- **New Expression Introduced**:
+  `<+stage.output.skippedHosts>`: Fetches all the Hosts skipped/failed during successful previous deployments
+  
+**3. Improved Rollback Behavior**
+- Rollback now considers per-host deployment success instead of rolling back all hosts in a stage.
+- Ensures rollback artifacts are correctly selected for each host.
+- **New Expression Introduced**:
+  - `<+stageFqn.deployedHosts.succeeded>`: Fetches the hosts that successfully deployed in a stage.
+  - `<+stageFqn.deployedHosts.failed>`: Fetches the hosts that failed deployment in a stage.
+
+#### Rollback Enhancements
+
+Hosts are tracked independently, ensuring only failed hosts are rollbacked.
+
+**Rollback Artifact Version Selection**
+- Rollback artifacts are determined based on previous successful deployment per host.
+- Supports cases where hosts were partially deployed before failure.
+
+<details>
+<summary>Use-Cases in Deployment & Rollback</summary>
+
+The improved retry and rollback mechanisms ensure that only necessary actions are taken, avoiding unnecessary redeployments and rollbacks. Below are some key scenarios and how they are handled:
+
+1. Pipeline Termination After Successful Deployment
+- If the pipeline terminates due to **expire/abort/failure** cases, but the host was successfully deployed via a command step before termination, the deployment on that host is still considered successful.
+- This ensures that unexpected pipeline failures do not unnecessarily mark successful hosts as failed.
+
+2. **Parallel Deployments with Multiple Command Steps**
+- When multiple command steps run on different hosts simultaneously, their statuses may interleave.
+- The system considers the latest execution state to determine success or failure.
+
+3. **Executions Without Command Steps**
+- If a pipeline execution does not contain command steps, it is ignored in tracking.
+- The system does not register any deployment for the hosts.
+
+4. **Partial Success Without Rollback**
+- If a deployment succeeds on some hosts but fails on others, **only failed hosts are retried**.
+- Successfully deployed **hosts are skipped**.
+
+5. **Execution Failure Followed by a Partial Rollback**
+- If a rollback is **partially successful**, only successfully rolled-back hosts are **marked as completed**.
+- The system ensures these hosts are correctly updated for future deployments.
+
+6. **Handling Command Step Retries**
+- If a command step **fails initially** but **succeeds after retry**, the host is **marked as successfully deployed**.
+- Ensures hosts are not mistakenly retried in future deployments.
+
+7. **Command Steps within Step Groups**
+- If a command step inside a step group fails but **succeeds on retry**, the host is considered **successfully deployed**.
+- This prevents unnecessary redeployments on already successful hosts.
+
+8. **Pipeline Rollback Considerations**
+- If a pipeline rollback is triggered, only hosts that were successfully deployed, are rolled back.
+- Hosts that failed the deployment are skipped during rollback.
+
+</details>
+
 ## Permission to perform SSH Deployments in AWS
 
 We use the SSH Credentials to connect to hosts to perform deployment.
