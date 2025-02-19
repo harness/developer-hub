@@ -195,7 +195,7 @@ The following early access (beta) feature is available for the Harness Security 
 
 #### CheckmarxOne Step
 
-* **GA date: March 2025** 
+* **GA date:** March 2025
 * **Early access release date:** February 2025
 * **Early access release version:** v1.127.5
 * **Issue number:** STO-5747
