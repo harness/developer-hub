@@ -159,6 +159,6 @@ By embracing chaos engineering, you can better prepare your applications to with
 
 ## Try Chaos Engineering today
 
-* [Run your first chaos experiment](/docs/chaos-engineering/getting-started/saas/first-experiment)
+* [Run your first chaos experiment](/docs/chaos-engineering/getting-started/saas/)
 * [Executing experiments in a sandbox](/docs/chaos-engineering/training/sandbox)
 * [Create chaos experiments from scratch](/docs/chaos-engineering/getting-started/saas/chaos-experiment-from-blank-canvas)
