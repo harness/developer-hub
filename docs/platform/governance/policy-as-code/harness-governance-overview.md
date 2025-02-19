@@ -163,7 +163,7 @@ Soon, policies can be applied to more entities, such as Connectors, Services, En
 ### Pipelines
 
 :::info note
-Currently, **On Step Start** pipeline event is behind the feature flag `PIPE_IS_PRE_STEP_OPA_POLICY_EVALUATION_ENABLED`. Contact [Harness Support](mailto:support@harness.io)to enable the feature.
+Currently, **On Step Start** pipeline event is behind the feature flag `PIPE_IS_PRE_STEP_OPA_POLICY_EVALUATION_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 Policies are evaluated against Harness Pipelines. The input payload is an expanded version of the Pipeline YAML, including expanded references of stages/steps. 
