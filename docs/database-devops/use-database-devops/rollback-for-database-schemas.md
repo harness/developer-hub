@@ -46,6 +46,10 @@ Expression format:
 1. If Apply Schema step run as part of different stage: `<+pipeline.stages.{stageIdentifier}.spec.execution.steps.{stepGroupIdentifier}.steps.{stepIdentifier}.output.preStartTag>`
 2. If Apply Schema step run as part of same stage: `<+execution.steps.{stepGroupIdentifier}.steps.{stepIdentifier}.output.preStartTag>`
 
+Example: for following pipeline configuration expressions would be `<+pipeline.stages.s2.spec.execution.steps.stepGroup1.steps.DBSchemaApply_1.output.preStartTag>` and `<+execution.steps.stepGroup1.steps.DBSchemaApply_1.output.preStartTag>`
+
+![dependency-graph](./static/db-devops-stage-config.png)
+
 ## Built in failure strategies including rollback
 
 When managing database schema changes, it’s crucial to have mechanisms in place to handle failures gracefully. Built-in failure strategies, including rollback, are designed to protect your application and data by providing automated responses when something goes wrong during a database update.
