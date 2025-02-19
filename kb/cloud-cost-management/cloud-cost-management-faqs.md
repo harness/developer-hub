@@ -161,7 +161,7 @@ Currently, it's not supported. However, you can leverage dashboard for the same.
 
 When we ingest cloud data, we make certain modifications to the tags/labels. However, with cluster data, we ingest the labels without any alterations.
 
-More information can be found [here](../../docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws#analyze-aws-cost).
+More information can be found [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws/#analyze-aws-cost).
 
 ### Why does the dropdown in the GPU cost tracking perspective only show instance types that have already been used, and not all available GPU instance types across clouds?
 
