@@ -212,3 +212,15 @@ If the pods do come up and are healthy but the page is not redirecting, or the l
 - Scale controller to one: `k -n harness-autostopping scale deploy/autostopping-controller --replicas=1`
 
 At this point the configmap should be regenerated, and you can try accessing your application again.
+
+## No snapshot found for Autostopping rule
+
+This could be because of any issues regarding the config map used for the Autostopping rule.  Execute these steps to delete the existing config map and regenerate it.
+
+```
+kubectl delete configmap harness-autostopping-config -n harness-autostopping
+
+kubectl rollout restart deployment autostopping-controller -n harness-autostopping
+
+kubectl rollout restart deployment autostopping-router -n harness-autostopping
+```
