@@ -33,6 +33,19 @@ Here is how you can rollback a database within Harness Database DevOps:
 You can refer to the Harness documentation detailing how to [Add a Liquibase command step](/docs/database-devops/use-database-devops/add-liquibase-command-step.md)
 :::
 
+## Rolling Back to a Previous Database State
+
+The **Apply Schema** step in our deployment pipeline applies database changeSets and provides an expression pointing to the tag marking the database state before deployment.
+
+How It Works
+- If a Liquibase tag exists on the last changeSet, it is captured and exposed in the rollback expression.
+- If no tag exists, the Apply Schema step creates one before applying new changes.
+- Use this exposed tag as expression to rollback to the previous state.
+
+Expression format:
+1. If Apply Schema step run as part of different stage: `<+pipeline.stages.stageIdentifier.spec.execution.steps.stepGroupIdentifier.steps.stepIdentifier.output.preStartTag>`
+2. If Apply Schema step run as part of same stage: `<+execution.steps.stepGroupIdentifier.steps.stepIdentifier.output.preStartTag>`
+
 ## Built in failure strategies including rollback
 
 When managing database schema changes, it’s crucial to have mechanisms in place to handle failures gracefully. Built-in failure strategies, including rollback, are designed to protect your application and data by providing automated responses when something goes wrong during a database update.
