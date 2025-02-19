@@ -31,7 +31,7 @@ With the **JetBrains Gateway Plugin**, you can seamlessly access and manage your
 Before proceeding, ensure that **JetBrains Gateway** is installed on your device.  
 
 #### Recommended Gitspace Configuration  
-Refer to this section to understand the **recommended Gitspace requirements** for optimal performance when connecting to your Gitspace in JetBrains IDEs.  
+Refer to [this section](/docs/cloud-development-environments/ides/intellij#recommended-gitspace-configuration) to understand the **recommended Gitspace requirements** for optimal performance when connecting to your Gitspace in JetBrains IDEs.  
 
 ## Installing the Plugin  
 
