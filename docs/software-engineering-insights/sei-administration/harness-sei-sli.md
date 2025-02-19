@@ -5,7 +5,7 @@ sidebar_label: Harness SEI SLIs
 sidebar_position: 20
 ---
 
-This is a Harness operational reference guide for all the Service Level Indicators (SLIs) across the Harness Software Engineering Insights module. Our SLO gets calculated based on these user centric SLIs. 
+This is a Harness operational reference guide for all the Service Level Indicators (SLIs) across the Harness Software Engineering Insights module. Our SLO gets calculated based on these user centric SLIs.
 
 ## Weightage factor
 
@@ -21,14 +21,9 @@ A production incident, commonly known as an "incident," is an unexpected event o
 
 | **SLI**         | **Threshold**                           | **Availability**|
 |-------------------------------------------|-----------------|-----------------------------------------|
-| Integrations list API Error Rate | failure rate (5XX) of the API  in 5 minutes > 0.5 | Major outage |
-| Integrations list API Latency | Response time greater than 30 seconds | Degraded performance|
-| Ingestion & data processing delay | Greater than 72 hrs of no data received | Degraded performance |
-| UI dashboard widget loading time | Greater than 3 mins for a consecutive duration of 10 mins for all customers | Degraded performance |
-| UI landing page/dashboard page not loading| For a consecutive duration of 5 mins |Major outage|
-| Trellis events| Delay in processing trellis data > 24 hours or monthly calculation not finished in first 7 days |Degraded performance|
-| Server API Error rate (5XX) | More than 1% over 5 min rolling window | Major outage|
-| API Response Time | 95th percentile: > 15s over 5 min rolling window | Degraded performance|
+| APIs Error rate | More than 5% over 5 min rolling window | Major outage |
+| API Response Time | 95th percentile: > 2s over 5 min rolling window | Degraded performance|
+| Ingestion & data processing delay | Delay of more than 72 hours for the latest data to appear on the dashboard. <br />This threshold excludes delays caused by pending customer actions. In the event of failures, processing historical data may take additional time depending on the volume of data that needs to be backfilled. | Degraded performance |
 
 :::info Third-party integrations and ingestion impact
 
