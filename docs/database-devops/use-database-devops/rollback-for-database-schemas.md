@@ -9,7 +9,7 @@ This topic describes how Harness Database DevOps implements automated rollback t
 
 ## What are tags? 
 
-A tag is a marker or label assigned to a specific point in a database's migration history. Harness recommends creating a change every time you deploy a changeset to a database so that you always have a rollback point for future changes.
+A tag is a marker or label assigned to a specific point in a database's migration history. Harness recommends creating a tag every time you deploy a changeset to a database so that you always have a rollback point for future changes.
 
 ### Rollback A Database Schema 
 
@@ -33,13 +33,37 @@ Here is how you can rollback a database within Harness Database DevOps:
 You can refer to the Harness documentation detailing how to [Add a Liquibase command step](/docs/database-devops/use-database-devops/add-liquibase-command-step.md)
 :::
 
-## Built in failure strategies including rollback
+### Rollback A Database Schema
 
-When managing database schema changes, it’s crucial to have mechanisms in place to handle failures gracefully. Built-in failure strategies, including rollback, are designed to protect your application and data by providing automated responses when something goes wrong during a database update.
+To rollback a database schema, this action refers to rolling back changes you've made to your database based on a specified tag of your creation.
 
-Rollback is the process of undoing changes that were made to the database if an error occurs during an update. This ensures that the database is returned to its previous state, preventing partial updates that could lead to inconsistencies or application crashes.
+Here is how you can rollback a database within Harness Database DevOps:
 
-This reduces the risk of downtime or data corruption and allows teams to quickly address issues without having to manually intervene.
+1. In Harness, go to the **Database DevOps** module and select your **Project**.
+2. Determine the tag you want to roll back to. This tag represents a specific state of the database schema that you want to revert to after applying changes.
+3. Select the **Pipelines** tab on the side menu, and open the pipeline in your Harness Database DevOps interface where the rollback will be executed.
+4. In the configuration for the rollback step, you will need to provide the following details:
+    -  **Schema Name**: Specify the name of the database schema that you want to roll back.
+    - **Instance Name**: Indicate the database instance where the rollback will take place. This is typically defined by a JDBC URL, user, and password.
+    - **Rollback Tag**: Enter the name of the tag to which you want to roll back the schema.
+5. Run the pipeline with the configured rollback step.
+6. Keep an eye on the execution logs to ensure that the rollback is successful. The logs will provide information about the actions taken
+   during the rollback.
+7. After the rollback is complete, verify that the database schema has been reverted to the desired state. This may involve checking the schema structure and ensuring that any changes made after the specified tag have been undone.
+
+## Rolling Back to a Previous Database State
+
+The **Apply Schema** step in our deployment pipeline applies database changeSets and provides an expression pointing to the tag marking the database state before deployment.
+
+How It Works
+- If a Liquibase tag exists on the last changeSet, it is captured and exposed in the rollback expression. 
+- If no tag exists, the Apply Schema step creates one before applying new changes.
+- Use this exposed tag as expression to rollback to the previous state.
+
+Expression format:
+1. If Apply Schema step run as part of different stage: `<+pipeline.stages.stageIdentifier.spec.execution.steps.stepGroupIdentifier.steps.stepIdentifier.output.preStartTag>`
+2. If Apply Schema step run as part of same stage: `<+execution.steps.stepGroupIdentifier.steps.stepIdentifier.output.preStartTag>`
+
 
 ## Automated Rollback for Database Schema Changes
 
