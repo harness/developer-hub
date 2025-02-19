@@ -19,6 +19,8 @@ The SEI data processing workflow is composed of the following stages:
 
 ## Connection with third party services
 
+![](../static/integration-flow.png)
+
 Harness SEI integrates with Software Development Lifecycle (SDLC) tools—such as [JIRA Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/jira/sei-jira-integration.md) and [GitHub Cloud](/docs/software-engineering-insights/setup-sei/configure-integrations/github/sei-github-integration) —using secure API connections. Depending on your environment, you can use one of two integration methods:
 
 ### Direct SaaS integration
@@ -32,8 +34,6 @@ When integrating with on-premise systems, Harness SEI uses the [ingestion satell
 * The ingestion satellite creates outbound connections from your network to on-premise services (e.g., JIRA, GitHub) to fetch the required metadata.
 * Authentication tokens and secrets remain within your environment, ensuring they are not transmitted externally.
 * Once data is collected, the satellite sends the metadata securely to the SEI SaaS API endpoints.
-
-![](../static/data-flow.png)
 
 ## Ingestion layer
 
