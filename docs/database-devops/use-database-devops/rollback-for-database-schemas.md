@@ -46,7 +46,9 @@ Expression format:
 1. If Apply Schema step run as part of different stage: `<+pipeline.stages.{stageIdentifier}.spec.execution.steps.{stepGroupIdentifier}.steps.{stepIdentifier}.output.preStartTag>`
 2. If Apply Schema step run as part of same stage: `<+execution.steps.{stepGroupIdentifier}.steps.{stepIdentifier}.output.preStartTag>`
 
-Example: For the following pipeline configuration, the expressions would be `<+pipeline.stages.s2.spec.execution.steps.stepGroup1.steps.DBSchemaApply_1.output.preStartTag>` and `<+execution.steps.stepGroup1.steps.DBSchemaApply_1.output.preStartTag>`
+Example: For the following pipeline configuration, the expressions would be 
+- `<+pipeline.stages.s2.spec.execution.steps.stepGroup1.steps.DBSchemaApply_1.output.preStartTag>`
+- `<+execution.steps.stepGroup1.steps.DBSchemaApply_1.output.preStartTag>`
 
 ![dependency-graph](./static/db-devops-stage-config.png)
 
