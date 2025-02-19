@@ -43,8 +43,8 @@ How It Works
 - Use this exposed tag as expression to rollback to the previous state.
 
 Expression format:
-1. If Apply Schema step run as part of different stage: `<+pipeline.stages.stageIdentifier.spec.execution.steps.stepGroupIdentifier.steps.stepIdentifier.output.preStartTag>`
-2. If Apply Schema step run as part of same stage: `<+execution.steps.stepGroupIdentifier.steps.stepIdentifier.output.preStartTag>`
+1. If Apply Schema step run as part of different stage: `<+pipeline.stages.{stageIdentifier}.spec.execution.steps.{stepGroupIdentifier}.steps.{stepIdentifier}.output.preStartTag>`
+2. If Apply Schema step run as part of same stage: `<+execution.steps.{stepGroupIdentifier}.steps.{stepIdentifier}.output.preStartTag>`
 
 ## Built in failure strategies including rollback
 
