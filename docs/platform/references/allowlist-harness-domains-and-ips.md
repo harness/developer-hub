@@ -90,6 +90,14 @@ All the IPs are cloud NAT gateways and need to enable specific IPs instead of ra
 34.94.190.229/32
 ```
 
+### Whitelisting for Access to On-Prem Services (Mac Platform)
+
+To allow access from our Mac baremetal CI machines to your on-prem services, please ensure that the following CIDR block is whitelisted:
+
+	•	CIDR: 207.254.53.128/25
+
+This will enable seamless communication between our Mac-based CI infrastructure and your on-prem services.
+
 ### Harness hosted Feature Flags IPs
 
 With Feature Flags, the following IP can be added to the allowlist as needed.
