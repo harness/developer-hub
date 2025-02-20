@@ -7,6 +7,10 @@ sidebar_label: JetBrains Gateway Plugin
 
 Harness CDE supports seamless and efficient remote development in **JetBrains IDEs** using **JetBrains Gateway**. 
 
+[**JetBrains Gateway**](https://www.jetbrains.com/remote-development/gateway/) is a lightweight desktop application that allows you to work remotely with **JetBrains IDEs** without downloading the full IDE. It connects to a remote server, fetches the necessary backend components, and opens your project in a **JetBrains client**.  
+
+With the [**Harness Gitspaces Plugin**](https://plugins.jetbrains.com/plugin/26594-harness-gitspaces), you can seamlessly access and manage your **Gitspaces** created in JetBrains IDEs. This plugin ensures smooth navigation and efficient development within your IDE. 
+
 The following JetBrains IDEs are supported for remote development:
 - IntelliJ IDEA
 - PyCharm
@@ -19,13 +23,10 @@ The following JetBrains IDEs are supported for remote development:
 
 ![](./static/manage-plugin-2.png)
 
-## [JetBrains Gateway Plugin](https://plugins.jetbrains.com/plugin/26594-harness-gitspaces)  
-
-[**JetBrains Gateway**](https://www.jetbrains.com/remote-development/gateway/) is a lightweight desktop application that allows you to work remotely with **JetBrains IDEs** without downloading the full IDE. It connects to a remote server, fetches the necessary backend components, and opens your project in a **JetBrains client**.  
-
-With the [**Harness Gitspaces Plugin**](https://plugins.jetbrains.com/plugin/26594-harness-gitspaces), you can seamlessly access and manage your **Gitspaces** created in JetBrains IDEs. This plugin ensures smooth navigation and efficient development within your IDE.  
-
 ## Pre-Requisites  
+
+#### Install Harness Gitspaces JetBrains Plugin Package 
+Ensure that you have downloaded the latest version of the [**Harness Gitspaces JetBrains Gateway Plugin**](https://plugins.jetbrains.com/plugin/26594-harness-gitspaces) package. Follow [these steps](/docs/cloud-development-environments/ides/jetbrains-gateway#installing-the-plugin) to install and configure the plugin.
 
 #### Install JetBrains Gateway  
 Before proceeding, ensure that [JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/) is installed on your device.  
