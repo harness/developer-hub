@@ -300,7 +300,7 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
     When the override API is called, it allows user to update delegates not only at a specific scope but also delegates with a specific tags or a combination of both with the provided identifier (**Account, Organization, Project or Tag**). If no exact match is found, it follows a **bottom-up approach**, where updates start at the lowest level (**tag**) and move upward to **Project**, **Organization** and then **Account**. 
 
-    **Overrides delegate API and Required parameters**
+    ### Overrides delegate API and Required parameters
 
     ```bash
       curl -i -X PUT \
@@ -317,19 +317,19 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
     | `tag`               | No           | Used to target specific delegates across scope (e.g., differentiating between `qa` and `prod` environments). If provided, only delegates matching this tag will be updated. |
 
 
-    **How Override-delegate API works?**  
+    ### How Override-delegate API works?  
 
       **1. Account-Level Update**
          If no additional parameters are provided, the update occurs at the **Account level**.This update automatically applies to **all Organizations and Projects** under that Account. The next time the **delegate upgrader** runs, it will use the updated image version.  
 
-    **2. Organization-Level Update**  
-         If an `orgIdentifier` is provided, the update is limited to the **Organization and its associated Projects**. The Account-level version remains **unchanged**. The upgrader starts at the **Project level** first, and then updates the Organization level, ensuring the correct version is applied without affecting the Account level.  
+      **2. Organization-Level Update**  
+          If an `orgIdentifier` is provided, the update is limited to the **Organization and its associated Projects**. The Account-level version remains **unchanged**. The upgrader starts at the **Project level** first, and then updates the Organization level, ensuring the correct version is applied without affecting the Account level.  
 
-    **3. Project-Level Update**  
-         If a `projectIdentifier` is provided, the update is restricted **only to that specific Project**. The Organization and Account versions remain **unchanged**. The upgrader at the **Project level** picks up the specified delegate version without modifying higher levels.  
+      **3. Project-Level Update**  
+          If a `projectIdentifier` is provided, the update is restricted **only to that specific Project**. The Organization and Account versions remain **unchanged**. The upgrader at the **Project level** picks up the specified delegate version without modifying higher levels.  
 
-    **4. Tag-level Update** 
-         In cases where multiple delegates exist within the same level (e.g., different environments such as **QA, Pre-prod, Prod and so on**), a **tag** can be used to further refine the update, A `tag` is a unique identifier assigned to a delegate (e.g., `qa`, `pre-prod` or `prod`). When a tag is specified in the API request, **only the delegates matching that tag** will receive the update. This allows independent updates for multiple delegates running in the same Project, Organization or Account.
+      **4. Tag-level Update** 
+          In cases where multiple delegates exist within the same level (e.g., different environments such as **QA, Pre-prod, Prod and so on**), a **tag** can be used to further refine the update, A `tag` is a unique identifier assigned to a delegate (e.g., `qa`, `pre-prod` or `prod`). When a tag is specified in the API request, **only the delegates matching that tag** will receive the update. This allows independent updates for multiple delegates running in the same Project, Organization or Account.
 
     2.1 Let's consider an example covering different scenarios based on delegates at various levels. We start with an initial state where an **Account** contains two **Organizations (A and B)**.  
 
