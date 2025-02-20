@@ -329,7 +329,40 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
          If a `projectIdentifier` is provided, the update is restricted **only to that specific Project**. The Organization and Account versions remain **unchanged**. The upgrader at the **Project level** picks up the specified delegate version without modifying higher levels.  
 
     **4. Tag-level Update** 
-         In cases where multiple delegates exist within the same level (e.g., different environments such as **QA, Pre-prod, Prod and so on**), a **tag** can be used to further refine the update, A `tag` is a unique identifier assigned to a delegate (e.g., `qa`, `pre-prod` or `prod`). When a tag is specified in the API request, **only the delegates matching that tag** will receive the update. This allows independent updates for multiple delegates running in the same Project, Organization or Account.     
+         In cases where multiple delegates exist within the same level (e.g., different environments such as **QA, Pre-prod, Prod and so on**), a **tag** can be used to further refine the update, A `tag` is a unique identifier assigned to a delegate (e.g., `qa`, `pre-prod` or `prod`). When a tag is specified in the API request, **only the delegates matching that tag** will receive the update. This allows independent updates for multiple delegates running in the same Project, Organization or Account.
+
+  2.1 Let's consider an example covering different scenarios based on delegates at various levels. We start with an initial state where an **Account** contains two **Organizations (A and B)**.  
+
+    - A delegate is installed at the **Account level** and in **Organization A**, but not in **Organization B**.  
+    - Within **Organization A**, there are **three Projects (P, Q, and R)**, all with delegates installed.  
+    - Within **Organization B**, there is **one Project (S)**, which also has a delegate installed.
+
+    Now that we have an understanding of the example setup, let's add a table incorporating **Tag** and **Version**.
+
+    | Delegate Installed | Scope   | Tag    | Version |
+    |--------------------|---------|--------|---------|
+    | D1                 | Account | T1     | v1      |
+    | D2                 | Account | T2, T4 | V1      |
+    | D3                 | Org A   | T5     | V3      |
+    | D4                 | Proj P  | T1, T2 | V5      |
+    | D5                 | Proj C  | T6     | V1      |
+    | D6                 | Proj C  | T4     | V2      |
+    | D7                 | Proj D  | T3     | V3      |
+    | D8                 | Proj D  | T7,T4  | V4      |
+    | D9                 | Proj D  | T1,T3  | V2      |
+
+    In the table above:  
+    - **D1..Dn** represent the installed delegates.  
+    - **Scope** indicates where each delegate is installed.  
+    - **T1..Tn** are tags used to identify specific delegates across different scopes.  
+    - **Versions** represent the delegate versions.  
+
+    For example, **Delegate D1** is installed at the **Account level**, has the tag **T1**, and runs **Version V1**.
+
+    Now, let's explore a few scenarios where the **override delegate API** is used to update delegates with a specific version, tag, or a combination of both across different levels.
+ 
+
+
 
 3. Delete an Override Delegate API.
 
