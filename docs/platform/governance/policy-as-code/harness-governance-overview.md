@@ -162,12 +162,19 @@ Soon, policies can be applied to more entities, such as Connectors, Services, En
 
 ### Pipelines
 
+:::info note
+Currently, **On Step Start** pipeline event is behind the feature flag `PIPE_IS_PRE_STEP_OPA_POLICY_EVALUATION_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 Policies are evaluated against Harness Pipelines. The input payload is an expanded version of the Pipeline YAML, including expanded references of stages/steps. 
 
 Policy Sets can be configured to be enforced automatically on these Pipeline events:
 
 * **On Save:** Policies are evaluated when the Pipeline is saved.
 * **On Run:** Policy sets are evaluated after the preflight checks.
+* **On Step Start:** Policy sets are evaluated when the step execution starts.
+
+![](./static/pipeline-events-opa.png)
 
 Severities:
 
