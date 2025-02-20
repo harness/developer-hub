@@ -24,9 +24,6 @@ An **Artifact Registry** is a central location for storing and managing software
 An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that allows the registry to fetch artifacts from another external or remote registry. When a user requests an artifact that isn't available in the registry, the registry directs the request to a configured upstream proxy. To create one, follow these steps: 
 
 1. Select the dropdown next to **+ New Artifact Registry**, and then select **Upstream Proxy**.
-
-    ![](./static/create-proxy.png)
-
 1. Select a [registry type](/docs/artifact-registry/whats-supported#supported-registry-types).
 1. Enter the **Upstream Proxy Key**. This is the identifier or name for the proxy within Harness and is chosen by you. 
    :::tip
