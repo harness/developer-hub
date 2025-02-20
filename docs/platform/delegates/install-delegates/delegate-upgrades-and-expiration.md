@@ -287,24 +287,76 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
     When the `upgrader` makes a request, it tries to change the image to `harness/delegate:24.04.82804`. You can take either the `harness/delegate:24.04.82804` image or the `harness/delegate:24.04.82804.minimal` image and build your own image by adding more tools and binaries, and then push it to your own container repository. For example, you might publish the image to a private repository, such as `artifactory-abc/harness/delegate:24.04.82804`.
 
-2. Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to enable the Harness back-end to supply the upgrader with the custom delegate tag:
+2.  Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to enable the Harness back-end to supply the upgrader with the custom delegate tag.
+ 
+    The **override-delegate-tag** API allows you to update delegate versions at different levels of your hierarchy: **Account → Organization → Project**. This ensures that the correct delegate version is applied based on the selected scope.  
 
+    Harness operates in a [three-level hierarchy](/docs/platform/get-started/key-concepts):  
+
+    1. **Account Level** (Highest)  
+    2. **Organization Level**  
+    3. **Project Level** (Lowest)  
+
+    When the override API is called, it checks for an exact match with the provided identifier (**Account, Organization, or Project**). If no exact match is found, it follows a **bottom-up approach**, where updates start at the lowest level (**Project**) and move upward to **Organization** and then **Account**. 
+
+    **Overrides delegate API and Required parameters**
+
+    ```bash
+      curl -i -X PUT \
+      'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<ACCOUNT_ID>&delegateTag=<IMAGE_VERSION>&validTillNextRelease=false&validForDays=180' \
+      -H 'x-api-key: YOUR_API_KEY_HERE'
     ```
-   curl --location --request PUT 'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<account_identifier>&delegateTag=artifactory-abc%2Fharness%2Fdelegate%3A23.04.78910' \
-    --header 'x-api-key: <your_api_key>'
-    ```
 
-    It returns the following results:
+    | **Parameter**       | **Required** | **Description**                                                                                                                                                                                |
+    |---------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | `accountIdentifier` | Yes          | Unique identifier for the Harness account. This is mandatory for all requests.                                                                                                                 |
+    | `delegateTag`       | Yes          | The custom delegate tag to override with the new image version.                                                                                                                                |
+    | `orgIdentifier`     | No           | Identifier for the organization. If provided, the update applies to the organization and its projects but does not affect the account level.                                                   |
+    | `projectIdentifier` | No           | Identifier for the project. If provided, the update applies **only to the specified project**, leaving the organization and account levels unchanged.                                          |
+    | `tag`               | No           | Used to target specific delegates within the same hierarchy level (e.g., differentiating between `qa` and `prod` environments). If provided, only delegates matching this tag will be updated. |
 
-    ```json
-    {
-    "metaData": {},
-    "resource": "Updated Delegate image tag to artifactory-abc/harness/delegate:24.04.82804",
-    "responseMessages": []
-    }
-    ```
 
-    The next time the `upgrader` runs, it will receive the `artifactory-abc/harness/delegate:24.04.82804` image.
+    **How Updates Are Works?**  
+
+      **1. Default Behavior (Account-Level Update)**
+        - If no additional parameters are provided, the update occurs at the **Account level**.This update automatically applies to **all Organizations and Projects** under that Account. The next time the **delegate upgrader** runs, it will use the updated image version.  
+
+    **2. Organization-Level Update**  
+        - If an `orgIdentifier` is provided, the update is limited to the **Organization and its associated Projects**. The Account-level version remains **unchanged**. The upgrader starts at the **Project level** first, and then updates the Organization level, ensuring the correct version is applied without affecting the Account level.  
+
+    **3. Project-Level Update**  
+        - If a `projectIdentifier` is provided, the update is restricted **only to that specific Project**. The Organization and Account versions remain **unchanged**. The upgrader at the **Project level** picks up the specified delegate version without modifying higher levels.  
+
+    **Customizing Updates Using Tags** 
+
+      In cases where multiple delegates exist within the same level (e.g., different environments such as **QA and Prod**), a **tag** can be used to further refine the update:  
+
+      A `tag` is a unique identifier assigned to a delegate (e.g., `qa` or `prod`). When a tag is specified in the API request, **only the delegates matching that tag** will receive the update. This allows independent updates for multiple delegates running in the same Project or Organization.  
+
+    **Tag-Based Upgrade**
+
+      - If a **Project-level update** API is triggered with a tag, only the matching delegates with the tag in that Project will be updated.  
+      - If an **Organization-level update** API is triggered with a tag, it first checks the **Project delegates with the same tag**, and then applies the update at the **Organization level** if necessary and So on.
+
+3. Delegate an Override API.
+
+  The [delete-override-delegate](https://apidocs.harness.io/tag/Delegate-Setup-Resource#operation/overrideDelegateImageTag) API allows you to remove an existing delegate image override at different hierarchy levels (Account → Organization → Project).
+
+  ```bash
+  curl -i -X DELETE \
+  'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=string&delegateTag=string&validTillNextRelease=false&validForDays=180' \
+  -H 'x-api-key: YOUR_API_KEY_HERE'
+  ```
+
+  Required Parameters are same as override delegate API
+
+  | **Parameter**       | **Required** | **Description**                                                                                                                                                                                |
+    |---------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | `accountIdentifier` | Yes          | Unique identifier for the Harness account. This is mandatory for all requests.                                                                                                                 |
+    | `delegateTag`       | Yes          | The custom delegate tag to override with the new image version.                                                                                                                                |
+    | `orgIdentifier`     | No           | Identifier for the organization. If provided, the update applies to the organization and its projects but does not affect the account level.                                                   |
+    | `projectIdentifier` | No           | Identifier for the project. If provided, the update applies **only to the specified project**, leaving the organization and account levels unchanged.                                          |
+    | `tag`               | No           | Used to target specific delegates within the same hierarchy level (e.g., differentiating between `qa` and `prod` environments). If provided, only delegates matching this tag will be updated. |
 
 
 ## Delegate expiration support policy
