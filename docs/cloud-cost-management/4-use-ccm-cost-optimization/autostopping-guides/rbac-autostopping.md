@@ -6,9 +6,9 @@ sidebar_position: 50
 
 With RBAC, user can control view, create+edit, and delete access for AWS, Azure, and GCP autostopping resources based on cloud connectors (cloud accounts). Granular permission is an additional fine grained permission level on top of global RBAC levels. Global RBAC currently provides following roles:
 - `CCM Viewer` : Grants permission to view CCM entities, including AutoStopping rules and loadbalancers as whole.
-- `CCM Admin` `: Grants permission to create/edit/delete CCM entities, including all AutoStopping rules and loadbalancers.
+- `CCM Admin`: Grants permission to create/edit/delete CCM entities, including all AutoStopping rules and loadbalancers.
 
-While global RBAC assigns broad roles such as Admin, Viewer, or Editor, granular permissions enable precise control over which resources and actions a user can access. This ensures adherence to the principle of least privilege, reducing security risks by granting only the necessary permissions. It also improves multi-team management by restricting access based on specific resource groups, such as connectors, without exposing unnecessary data. 
+While global RBAC assigns broad roles such as Admin, Viewer, or Editor, granular permissions enable precise control over which resources and actions a user can access. This reducing security risks by granting only the necessary permissions. It also improves multi-team management by restricting access based on specific resource groups, such as connectors, without exposing unnecessary data. 
 
 Connectors are shared resources in the Harness account, meaning multiple users can use them. Since they are shared, they appear in the Shared Resources section when creating a Resource Group (RG) in the ACL (Access Control List) module. Admins can create Resource Groups (RGs) for connectors by selecting the relevant connectors.
 
