@@ -101,6 +101,8 @@ Chaos Engineering (CE) makes it easy to run chaos experiments across diverse ser
 
 CE tracks **Service** license consumption, instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window.
 
+For more information about CE services and how they are tracked, go to [Service licensing for CE](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/license-consumption/).
+
 </details>
 
 <details>

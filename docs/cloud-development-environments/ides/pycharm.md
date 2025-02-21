@@ -4,11 +4,6 @@ sidebar_position: 4
 description: Connect to your Gitspaces within PyCharm IDE.
 sidebar_label: PyCharm
 ---
-:::info
-
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io
-
-:::
 
 With **PyCharm IDE** support, Harness CDE enables seamless and efficient remote development in your Gitspaces with your IDE. This integration leverages **[JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/)** to establish a direct remote connection with PyCharm IDE, eliminating the need for any prior setup.
 
