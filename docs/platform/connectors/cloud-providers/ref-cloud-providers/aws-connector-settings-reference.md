@@ -752,7 +752,7 @@ For more strategies, go to [Exponential Backoff And Jitter](https://aws.amazon.c
           <li>AWS Serverless Lambda deployments</li>
         </ul>
       </td>
-    </tr>
+    </tr>  
     <tr>
       <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Plugin-based Support</strong></td>
       <td style={{ border: '1px solid black', padding: '8px' }}>
@@ -786,18 +786,6 @@ For more strategies, go to [Exponential Backoff And Jitter](https://aws.amazon.c
           <li>Terraform provisioner</li>
           <li>Terraform Cloud provisioner</li>
           <li>Terragrunt provisioner</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Manifest and Artifact Support</strong></td>
-      <td style={{ border: '1px solid black', padding: '8px' }}>
-        The following artifact and manifest sources are not supported using the OIDC connector:
-        <ul>
-          <li>AMI Artifact</li>
-          <li>ECR Artifact</li>
-          <li>S3 Artifact</li>
-          <li>S3 Manifest</li>
         </ul>
       </td>
     </tr>
