@@ -22,7 +22,7 @@ Split SDKs send impression data back to Split servers periodically when evaluati
 | Impression | Impression | Impression object that has the feature flag name, treatment result, label, etc. |
 | Attributes | map[string]interface{} | A list of attributes passed by the client. |
 | InstanceID | string | The IP address of the machine running the SDK. |
-| SDKLanguageVersion | string | The version of the SDK. In this case the language is Python plus the version. |
+| SDKLanguageVersion | string | The version of the SDK. In this case the language is `go` plus the version. |
 
 Here is an example of how implement a custom impression listener.
 
