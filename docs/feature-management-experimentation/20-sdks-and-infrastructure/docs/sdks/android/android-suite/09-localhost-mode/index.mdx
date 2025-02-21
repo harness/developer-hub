@@ -1,0 +1,77 @@
+---
+title: Localhost mode
+sidebar_label: Localhost mode
+description: Develop and test without an internet connection. Read flag and segment definitions from a file.
+---
+
+For testing, a developer can put code behind feature flags on their development machine without the Suite requiring network connectivity. To achieve this, you can start the Suite in **localhost** mode (aka, off-the-grid mode). In this mode, the Suite neither polls or updates Split servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the feature flags. To use the Suite in localhost mode, replace the SDK Key with `localhost`, as shown in the example below/
+
+The format for defining the definitions is as follows:
+
+```yaml title="YAML"
+# - feature_name:
+#     treatment: "treatment_applied_to_this_entry"
+#     keys: "single_key_or_list"
+#     config: "{\"desc\" : \"this applies only to ON treatment\"}"
+
+- my_feature:
+    treatment: "on"
+    keys: "key"
+    config: "{\"desc\" : \"this applies only to ON treatment\"}"
+- some_other_feature:
+    treatment: "off"
+- my_feature:
+    treatment: "off"
+- other_feature:
+    treatment: "off"
+    keys: ["key_1", "key_2"]
+    config: "{\"desc\" : \"this overrides multiple keys and returns off treatment for those keys\"}"
+```
+
+In the example above, we have four entries:
+
+ * The first entry defines that for feature flag `my_feature`, the key `key` returns the treatment `on` and the `on` treatment is tied to the configuration `{"desc" : "this applies only to ON treatment"}`.
+ * The second entry defines that the feature flag `some_other_feature` always returns the `off` treatment and no configuration.
+ * The third entry defines that `my_feature` always returns `off` for all keys that don't match another entry (in this case, any key other than `key`).
+ * The fourth entry shows an example on how to override a treatment for a set of keys.
+
+In this mode, the Split Suite loads the yaml file from a resource bundle file at the assets' project `src/main/assets/splits.yaml`.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-suite-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+```java
+import io.split.android.client.SplitClient;
+import io.split.android.client.SplitFactoryBuilder;
+import io.split.android.client.api.Key;
+
+// Create a new user key to be evaluated
+String matchingKey = "key";
+Key key = new Key(matchingKey);
+
+SplitClient client = SplitSuiteBuilder.build("localhost", key, getApplicationContext()).client();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+import io.split.android.client.SplitFactoryBuilder
+import io.split.android.client.api.Key
+
+// Create a new user key to be evaluated
+val key = Key("key")
+
+val client = SplitSuiteBuilder.build(
+    "localhost",
+    key,
+    applicationContext
+).client()
+```
+  </TabItem>
+</Tabs>

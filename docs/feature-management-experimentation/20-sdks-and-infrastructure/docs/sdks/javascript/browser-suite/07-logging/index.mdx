@@ -1,0 +1,66 @@
+---
+title: Logging
+sidebar_label: Logging
+description: Explore the range of logging levels for transparent development and debugging.
+---
+ 
+To trim as many bits as possible from the user application builds, we divided the logger in implementations that contain the log messages for each log level: `ErrorLogger`, `WarnLogger`, `InfoLogger`, and `DebugLogger`. Higher log level options contain the messages for the lower ones, with DebugLogger containing them all. To enable descriptive logging, you need to plug in a logger instance as shown below:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs>
+  <TabItem label="ES modules" value="es">
+```javascript
+import { SplitSuite, DebugLogger } from '@splitsoftware/browser-suite';
+
+const suite = SplitSuite({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
+});
+```
+  </TabItem>
+  <TabItem label="CommonJS" value="cjs">
+```javascript
+var splitio = require('@splitsoftware/browser-suite');
+
+var suite = splitio.SplitSuite({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: splitio.DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
+});
+```
+  </TabItem>
+</Tabs>
+
+You can also enable the Suite logging via a boolean or log level value as `debug` settings, and change it dynamically by calling the Suite Logger API. However, in any case where the proper logger instance is not plugged in, instead of a human readable message, you'll get a code and optionally some params for the log itself. If you find yourself in a scenario where you need to parse this information, you can check the constant files in our javascript-commons repository (where you have tags per version if needed) under the [logger folder](https://github.com/splitio/javascript-commons/blob/master/src/logger/).
+
+```javascript title="Logger API"
+import { SplitSuite } from '@splitsoftware/browser-suite';
+
+const suite = SplitSuite({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: true // other options are 'ERROR', 'WARN', 'INFO' and 'DEBUG
+});
+
+// Or you can use the Logger API methods which have an immediate effect.
+suite.Logger.setLogLevel('WARN'); // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'
+suite.Logger.enable(); // equivalent to `setLogLevel('DEBUG')`
+suite.Logger.disable(); // equivalent to `setLogLevel('NONE')`
+```
+
+Suite logging can also be globally enabled via a localStorage value by opening your DevTools console and typing the following:
+
+```javascript title="Enable logging from browser console"
+// Acceptable values are 'DEBUG', 'INFO', 'WARN', 'ERROR' and 'NONE'
+// Other acceptable values are 'on', 'enable' and 'enabled', which are equivalent to 'DEBUG' log level
+localStorage.splitio_debug = 'on' <enter>
+```

@@ -1,0 +1,343 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Set up a proxy or use an external impression listener.
+---
+
+### Custom impression listener
+
+The Split Suite sends impression data back to Split servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*.
+
+The Suite sends the generated impressions to the impression listener right away. Because of this, be careful while implementing handling logic to avoid blocking the thread. Generally speaking, you should create a separate thread to handle incoming impressions. Refer to the snippet below:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-suite-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+                        .impressionListener(new MyImpressionListener())
+                        .build();
+
+class MyImpressionListener implements ImpressionListener {
+    @Override
+    public void log(Impression impression) {
+        // Do something on UI thread
+        new Thread(new Runnable() {
+            public void run() {
+                // Do something in another thread (use this most of the time!)
+            }
+        }).start();
+    }
+
+    @Override
+    public void close() {
+    }
+}
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+class MyImpressionListener : ImpressionListener {
+    override fun log(impression: Impression) {
+        // Do something on UI thread
+        Thread {
+            // Do something in another thread (use this most of the time!)
+        }.start()
+    }
+
+    override fun close() {
+
+    }
+}
+
+val config = SplitClientConfig.builder()
+    .impressionListener(MyImpressionListener())
+    .build()
+```
+  </TabItem>
+</Tabs>
+
+In regards with the data available here, refer to the `Impression` objects interface and information about each field below:
+
+<Tabs
+  groupId="android-suite-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+```java
+    String key();
+    String bucketingKey();
+    String split();
+    String treatment();
+    Long time();
+    String appliedRule();
+    Long changeNumber();
+    Map<String, Object> attributes();
+    Long previousTime();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+    key(): String?
+    bucketingKey(): String?
+    split(): String?
+    treatment(): String?
+    time(): Long?
+    appliedRule(): String?
+    changeNumber(): Long?
+    attributes(): Map<String, Any?>?
+    previousTime(): Long?
+```
+  </TabItem>
+</Tabs>
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- | 
+| key | String | Key which is evaluated. |
+| bucketingKey | String | Key which is used for bucketing, if provided. |
+| split | String | Feature flag which is evaluated. |
+| treatment | String | Treatment that is returned. |
+| time | Long | Timestamp of when the impression is generated. |
+| appliedRule | String | Targeting rule in the definition that matched resulting in the treatment being returned. |
+| changeNumber | Long | Date and time of the last change to the targeting rule that the Suite used when it served the treatment. It is important to understand when a change made to a feature flag is picked up by the Suite and whether one of the Suite instances is not picking up changes. |
+| attributes | Map\<String, Object\> | A map of attributes passed to `getTreatment`/`getTreatments`, if any. |
+| previousTime | Long | If Suite is deduping and a matching impression is seen before on the lifetime of the instance this is its timestamp. |
+
+
+## Instantiate multiple clients
+
+Split supports the ability to create multiple clients, one for each user ID. Each Suite client is tied to one specific customer ID at a time. For example, if you need to roll out feature flags for different user IDs, you can instantiate multiple clients, one for each ID. You can then evaluate them using the corresponding client.
+
+You can do this with the example below:
+
+<Tabs
+  groupId="android-suite-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+```java
+
+// Create factory
+Key key = new Key("anonymous_user");
+SplitClientConfig config = SplitClientConfig.builder().build();
+SplitSuite suite = SplitSuiteBuilder.build("yourAuthKey", key, config, getApplicationContext());
+// Now when you call suite.client(), the Suite will create a client
+// using the Key you passed in during the factory creation
+SplitClient anonymousClient = suite.client();
+// To create another client for a user instead, just pass in a different Key or id
+SplitClient userClient = suite.client("user_id");
+// Add events handler for each client to be notified when Suite is ready
+anonymousClient.on(SplitEvent.SDK_READY, new SplitEventTask() {
+    @Override
+    public void onPostExecutionView(SplitClient client) {
+        // Check treatment for account-permissioning and anonymousClient
+        String accountPermissioningTreatment = anonymousClient.getTreatment("account-permissioning");
+    }
+});
+userClient.on(SplitEvent.SDK_READY, new SplitEventTask() {
+    @Override
+    public void onPostExecutionView(SplitClient client) {
+        // Check treatment for user-poll and userClient
+        String userPollTreatment = userClient.getTreatment("user-poll");
+    }
+});
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+// Create factory
+val key = Key("anonymous_user")
+val config = SplitClientConfig.builder().build()
+val suite = SplitSuiteBuilder.build("yourAuthKey", key, config, getApplicationContext())
+// Now when you call suite.client(), the Suite will create a client
+// using the Key you passed in during the factory creation
+val anonymousClient = suite.client()
+// To create another client for a user instead, just pass in a different Key or id
+val userClient = suite.client("user_id")
+// Add events handler for each client to be notified when Suite is ready
+anonymousClient.on(SplitEvent.SDK_READY, object : SplitEventTask() {
+    override fun onPostExecutionView(client: SplitClient) {
+        // Check treatment for account-permissioning and anonymousClient
+        val accountPermissioningTreatment = anonymousClient.getTreatment("account-permissioning")
+    }
+})
+userClient.on(SplitEvent.SDK_READY, object : SplitEventTask() {
+    override fun onPostExecutionView(client: SplitClient) {
+        // Check treatment for user-poll and userClient
+        val userPollTreatment = userClient.getTreatment("user-poll")
+    }
+})
+```
+  </TabItem>
+</Tabs>
+
+The events captured by the Suite's RUM agent are sent to Split servers using the traffic types and keys of the created client. If no traffic type is provided, the traffic type is `user` by default.
+
+:::info[Number of Suite instances"]
+While the Suite does not put any limitations on the number of instances that can be created, we strongly recommend keeping the number of instances down to **one** or **two**.
+:::
+
+## User consent
+
+The Suite allows you to disable the tracking of events and impressions until user consent is explicitly granted or declined.
+
+The `userConsent` configuration parameter lets you set the initial consent status of the Suite instance, and the Suite method `UserConsent.setStatus(boolean)` lets you grant (enable) or decline (disable) the dynamic data tracking.
+
+There are three possible initial states:
+ * `'GRANTED'`: the user grants consent for tracking events and impressions. The Suite sends them to Split cloud. This is the default value if `userConsent` param is not defined.
+ * `'DECLINED'`: the user declines consent for tracking events and impressions. The Suite does not send them to Split cloud.
+ * `'UNKNOWN'`: the user neither grants nor declines consent for tracking events and impressions. The Suite tracks them in its internal storage, and eventually either sends them or not if the consent status is updated to `'GRANTED'` or `'DECLINED'` respectively. The status can be updated at any time with the `setUserConsent` Suite method.
+
+<Tabs
+  groupId="android-suite-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+```java
+
+// Overwrites the initial consent status of the Suite instance, which is 'GRANTED' by default.
+// 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
+// so the Suite locally tracks data but not send it to Split cloud until consent is changed to 'GRANTED'.
+SplitClientConfig config = SplitClientConfig.builder()
+    .userConsent(UserConsent.UNKNOWN)
+    .build();
+SplitSuite suite = SplitSuiteBuilder.build("YOUR_SDK_KEY",
+        new Key(mUserKey, null),
+        config, context);
+// Changed User Consent status to 'GRANTED'. Data is sent to Split cloud.
+suite.setUserConsent(true);
+// Changed User Consent status to 'DECLINED'. Data is not sent to Split cloud.
+suite.setUserConsent(false);
+// The 'getUserConsent' method returns User Consent status.
+// We expose the constants for customer checks and tracking.
+if (suite.getUserConsent() == UserConsent.DECLINED) {
+    Log.i(TAG, "USER CONSENT DECLINED");
+} else if (suite.getUserConsent() == UserConsent.GRANTED) {
+    Log.i(TAG, "USER CONSENT GRANTED");
+} else if (suite.getUserConsent() == UserConsent.UNKNOWN) {
+    Log.i(TAG, "USER CONSENT UNKNOWN");
+}
+```
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// Overwrites the initial consent status of the Suite instance, which is 'GRANTED' by default.
+// 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
+// so the Suite locally tracks data but not send it to Split cloud until consent is changed to 'GRANTED'.
+val config: SplitClientConfig = SplitClientConfig.builder()
+    .userConsent(UserConsent.UNKNOWN)
+    .build()
+val suite: SplitSuite = SplitSuiteBuilder.build("YOUR_SDK_KEY",
+        Key(mUserKey, null),
+        config, context)
+// Changed User Consent status to 'GRANTED'. Data is sent to Split cloud.
+suite.setUserConsent(true)
+// Changed User Consent status to 'DECLINED'. Data is not sent to Split cloud.
+suite.setUserConsent(false)
+// The 'getUserConsent' method returns User Consent status.
+// We expose the constants for customer checks and tracking.
+if (suite.getUserConsent() == UserConsent.DECLINED) {
+    Log.i(TAG, "USER CONSENT DECLINED")
+} else if (suite.getUserConsent() == UserConsent.GRANTED) {
+    Log.i(TAG, "USER CONSENT GRANTED")
+} else if (suite.getUserConsent() == UserConsent.UNKNOWN) {
+    Log.i(TAG, "USER CONSENT UNKNOWN")
+}
+```
+  </TabItem>
+</Tabs>
+
+## Certificate pinning
+
+The SDK allows you to constrain the certificates that the SDK trusts, using one of the following techniques:
+
+1. Pin a certificate's `SubjectPublicKeyInfo`, by providing the public key as a ___base64 SHA-256___ hash or a ___base64 SHA-1___ hash.
+2. Pin a certificate's entire certificate chain (the root, all intermediate, and the leaf certificate), by providing the certificate chain as a .der file.
+
+Each pin corresponds to a host. For subdomains, you can optionally use wildcards, where `*` will match one subdomain (e.g. `*.example.com`), and `**` will match any number of subdomains (e.g `**.example.com`).
+
+You can optionally configure a listener to execute on certificate validation failure for a host.
+
+To set the SDK to require pinned certificates for specific hosts, add the `CertificatePinningConfiguration` object to `SplitClientConfig.Builder`, as shown below.
+
+<Tabs
+  groupId="android-suite-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+```java
+import io.split.android.client.network.CertificatePinningConfiguration;
+import io.split.android.client.SplitClientConfig;
+import com.yourApp.R; // to reference your res/ folder
+
+// Define pins for certificate pinning
+CertificatePinningConfiguration certPinningConfig = CertificatePinningConfiguration.builder()
+
+    // Provide a base 64 SHA-256 hash
+    .addPin("*.example1.com", "sha256/7HIpactkIAq2Y49orFOOQKurWxmmSFZhBCoQYcRhJ3Y=")
+
+    // Provide a certificate chain as a 'res/raw/cert.der' file
+    .addPin("*.example2.com", context.getResources().openRawResource(R.raw.cert))
+
+    // Provide a listener to log failure
+    .failureListener((host, certificateChain) -> {
+        Log.d("CertPinning", "Certificate pinning failure for " + host);
+    })
+
+    .build();
+
+// Set the CertificatePinningConfiguration property for the Split client configuration
+SplitClientConfig config = SplitClientConfig.builder()
+    .certificatePinningConfiguration(certPinningConfig)
+    // you can add other configuration properties here
+    .build();
+
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+import io.split.android.client.network.CertificatePinningConfiguration
+import io.split.android.client.SplitClientConfig
+import com.yourApp.R // to reference your res/ folder
+
+// Define pins for certificate pinning
+val certPinningConfig = CertificatePinningConfiguration.builder()
+
+    // Provide a base 64 SHA-256 hash
+    .addPin("*.example1.com", "sha256/7HIpactkIAq2Y49orFOOQKurWxmmSFZhBCoQYcRhJ3Y=")
+
+    // Provide a certificate chain as a 'res/raw/cert.der' file
+    .addPin("*.example2.com", context.getResources().openRawResource(R.raw.cert))
+
+    // Provide a listener to log failure
+    .failureListener { host, certificateChain ->
+        Log.d("CertPinning", "Certificate pinning failure for $host")
+    }
+
+    .build()
+
+// Set the CertificatePinningConfiguration property for the Split client configuration
+val config = SplitClientConfig.builder()
+    .certificatePinningConfiguration(certPinningConfig)
+    // you can add other configuration properties here
+    .build()
+
+```
+  </TabItem>
+</Tabs>

@@ -1,0 +1,25 @@
+---
+title: Shutdown
+sidebar_label: Shutdown
+description: Gracefully stop background threads, clear caches, close connections, and flush data.
+---
+
+Split browser solutions are designed to evict pending impressions and events when a page is hidden or closed. Nonetheless you can call the `suite.destroy()` method before letting a process using the Suite exit. This method gracefully shuts down the Split Suite by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions and events.
+
+```javascript title="JavaScript"
+// You can just destroy and move on:
+suite.destroy();
+
+// destroy() returns a promise, so if you want to, for example,
+// navigate to another page without losing impressions, you
+// can do that once the promise resolves.
+suite.destroy().then(function() {
+  document.location.replace('another_page');
+});
+```
+
+After the `destroy` method is called and finishes, any subsequent invocations to `getTreatment`/`getTreatments` or manager methods result in `control` or an empty list, respectively. You can also call `destroy` on the client instance, which will stop the specific Suite client and remove this client's identity from the Suite's RUM agent, but will keep the Suite running.
+
+:::warning[Important!]
+A call to the Suite's `destroy` method destroys all client objects and stops the Suite's RUM agent from tracking events. To create a new client instance, first create a new Suite instance.
+:::

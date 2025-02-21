@@ -1,0 +1,207 @@
+---
+title: Configuration
+sidebar_label: Configuration
+description: Optimize SDK performance in your environment by fine-tuning SDK config settings.
+---
+
+The Suite exposes configuration parameters that you can use to optimize performance. Each parameter is preset to a reasonable default. You can optionally override these default values when instantiating the Suite.
+
+The parameters available for configuration are shown below in separate tables for those parameters that affect feature flagging, those that affect the Suite RUM agent, and those that affect both.
+
+Feature flagging parameters:
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| core.labelsEnabled | Enable impression labels from being sent to Split cloud. Labels may contain sensitive information. | true |
+| startup.readyTimeout | Maximum amount of time in seconds to wait before firing the `SDK_READY_TIMED_OUT` event | 10 |
+| startup.requestTimeoutBeforeReady | The Suite has two main endpoints it uses /splitChanges and /mySegments that it hits to get ready. This config sets how long (in seconds) the Suite will wait for each request it makes as part of getting ready. | 5 |
+| startup.retriesOnFailureBeforeReady | How many retries on /splitChanges and /mySegments we will do while getting the Suite ready | 1 |
+| startup.eventsFirstPushWindow | Use to set a specific timer (expressed in seconds) for the first push of events, starting on Suite initialization. | 10 |
+| scheduler.featuresRefreshRate | The Suite polls Split servers for changes to feature rollout plans. This parameter controls this polling period in seconds. | 60 |
+| scheduler.segmentsRefreshRate | The Suite polls Split servers for changes to segment definitions. This parameter controls this polling period in seconds. | 60 |
+| scheduler.impressionsRefreshRate | The Suite sends information on who got what treatment at what time back to Split servers to power analytics. This parameter controls how often this data is sent to Split servers. The parameter should be in seconds. | 300 |
+| scheduler.impressionsQueueSize | The max amount of impressions we queue. If the queue is full, the Suite flushes the impressions and resets the timer. | 30000 |
+| scheduler.eventsPushRate | The Suite sends tracked events to Split servers. This setting controls that flushing rate in seconds. | 60 |
+| scheduler.eventsQueueSize | The max amount of events we queue. If the queue is full, the Suite flushes the events and resets the timer. | 500 |
+| scheduler.telemetryRefreshRate | The Suite caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers (in seconds). | 3600 seconds (1 hour) |
+| sync.splitFilters | Filter specific feature flags to be synced and evaluated by the Suite. This is formed by a type string property and a list of string values for the given criteria. Using the types 'bySet' (recommended, flag sets are available in all tiers) or 'byName', pass an array of strings defining the query. If empty or unset, all feature flags are downloaded by the Suite. | [] |
+| sync.impressionsMode | This configuration defines how impressions (decisioning events) are queued on the Suite. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Split; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Split; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
+| sync.enabled | Controls the Suite continuous synchronization flags. When `true`, a running Suite processes rollout plan updates performed in the Split user interface (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
+| sync.requestOptions.getHeaderOverrides | A callback function that can be used to override the Authentication header or append new headers to the Suite's HTTP(S) requests. | undefined |
+| storage | Pluggable storage instance to be used by the Suite as a complement to in memory storage. Only supported option today is `InLocalStorage`. See the [Configuration](#configuring-localstorage-cache-for-the-sdk) section for details. | In memory storage |
+| streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the Suite will fallback to the polling mechanism. If false, the Suite will poll for changes as usual without attempting to use streaming. | true |
+
+Suite RUM agent parameters:
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| rumAgent.prefix | Optional prefix to append to the `eventTypeId` of the events sent to Split by the RUM Agent. For example, if you set the prefix to 'my-app', the event type 'error' will be sent as 'my-app.error'. | undefined |
+| rumAgent.pushRate | The Agent posts the queued events data in bulks. This parameter controls the posting rate in seconds. | 30 |
+| rumAgent.queueSize | The maximum number of event items the RUM Agent will queue. If more values are queued, events will be dropped until they are sent to Split. | 5000 |
+| rumAgent.eventCollectors | The RUM Agent tracks some events by default using event collectors. These event collectors include errors, navigation timing metrics (`page.load.time` and `time.to.dom.interactive` event types), and Web-Vitals. You can disable any of them by setting their value to `false`. Go to [RUM Agent events](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-Agent#events) for more information on each event. | `{ errors: true, navigationTiming: true, webVitals: true }` |
+
+Shared parameters:
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| debug | Either a boolean flag, string log level or logger instance for activating logging. See the [Logging](#logging) section for details. | false |
+| userConsent | User consent status used to control the tracking of events and impressions. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. See the [User consent](#user-consent) section for details. | `GRANTED` |
+
+To set each of the parameters defined above, use the following syntax:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="browser-suite-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+```javascript
+var suite = SplitSuite({
+  startup: {
+    readyTimeout:                 10, // 10 sec
+    eventsFirstPushWindow:        10  // 10 sec
+  },
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'YOUR_KEY'
+  },
+  scheduler: {
+    featuresRefreshRate:      5, // 5 sec 
+    segmentsRefreshRate:     60, // 60 sec 
+    impressionsRefreshRate: 300, // 300 sec
+    impressionsQueueSize: 30000, // 30000 items
+    eventsPushRate:          60, // 60 sec
+    eventsQueueSize:        500, // 500 items
+    telemetryRefreshRate:  3600  // 1 hour
+  },
+  sync: {
+    splitFilters: [{
+      type: 'bySet',
+      values: ['frontend']
+    }],
+    impressionsMode: 'OPTIMIZED'
+  },
+  streamingEnabled: true,
+  debug: false,
+  rumAgent: {
+    prefix: 'my-app',
+    pushRate:     30, // 30 sec
+    queueSize:  5000,
+    eventCollectors: {
+      errors: true,
+      navigationTiming: true,
+      webVitals: true
+    }
+  }
+});
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+const suite: ISuiteSDK = SplitSuite({
+  startup: {
+    readyTimeout:                 10, // 10 sec
+    eventsFirstPushWindow:        10  // 10 sec
+  },
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'YOUR_KEY'
+  },
+  scheduler: {
+    featuresRefreshRate:      5, // 5 sec 
+    segmentsRefreshRate:     60, // 60 sec 
+    impressionsRefreshRate: 300, // 300 sec
+    impressionsQueueSize: 30000, // 30000 items
+    eventsPushRate:          60, // 60 sec
+    eventsQueueSize:        500, // 500 items
+    telemetryRefreshRate:  3600  // 1 hour
+  },
+  sync: {
+    splitFilters: [{
+      type: 'bySet',
+      values: ['frontend']
+    }],
+    impressionsMode: 'OPTIMIZED'
+  },
+  streamingEnabled: true,
+  debug: false,
+  rumAgent: {
+    prefix: 'my-app',
+    pushRate:     30, // 30 sec
+    queueSize:  5000,
+    eventCollectors: {
+      errors: true,
+      navigationTiming: true,
+      webVitals: true
+    }
+  }
+});
+```
+  </TabItem>
+</Tabs>
+
+## Configuring LocalStorage cache for the Suite
+
+To use the pluggable `InLocalStorage` option of the Suite and be able to cache flags for subsequent loads in the same browser, you need to pass it to the Suite config as the `storage` option.
+
+This `InLocalStorage` function accepts an optional object with options described below:
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| prefix | An optional prefix for your data, to avoid collisions. | `SPLITIO` |
+
+```javascript title="With ES Modules"
+import { SplitSuite, InLocalStorage } from '@splitsoftware/browser-suite';
+
+const suite = SplitSuite({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  storage: InLocalStorage({
+    prefix: 'MY_PREFIX'
+  })
+});
+
+// Now use the Suite as usual
+const client = suite.client();
+```
+
+## RUM agent configuration
+
+The Suite handles the setup of the RUM agent using the same SDK key. Configurations for [Logging](#logging), [User consent](#user-consent) and [Identities](#instantiate-multiple-clients) are also shared between the Suite and the RUM agent.
+
+You can further configure the RUM agent using the `rumAgent` property of the Suite configuration object, which is passed as the second argument to the RUM agent's [`setup` method](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-agent#configuration):
+
+```javascript
+import { SplitSuite } from '@splitsoftware/browser-suite';
+
+const suite = SplitSuite({
+  ...
+  rumAgent: {
+    // Optional prefix to append to the `eventTypeId` of the events sent to Split.
+    // For example, if you set the prefix to 'my-app', the event type 'error' will be sent as 'my-app.error'.
+    prefix: 'my-app',
+    // The agent posts the queued events data in bulks. This parameter controls the posting rate in seconds.
+    pushRate: 30,
+    // The maximum number of event items we want to queue. If we queue more values, events will be dropped until they are sent to Split.
+    queueSize: 5000,
+  }
+})
+```
+
+To extend the RUM agent with custom event collectors or properties, you can use the `SplitRumAgent` singleton instance, retrieving it with the Suite's `rumAgent` method, as shown below:
+
+```javascript
+import { SplitSuite, SplitRumAgent, routeChanges } from '@splitsoftware/browser-suite';
+
+SplitRumAgent.register(routeChanges());
+
+const suite = SplitSuite(config);
+
+suite.rumAgent().setProperties({ 'application': 'application_name' });
+```

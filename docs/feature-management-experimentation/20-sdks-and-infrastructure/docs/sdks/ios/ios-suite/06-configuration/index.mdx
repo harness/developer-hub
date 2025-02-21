@@ -1,0 +1,102 @@
+---
+title: Configuration
+sidebar_label: Configuration
+description: Optimize SDK performance in your environment by fine-tuning SDK config settings.
+---
+
+The Suite exposes configuration parameters that you can use to optimize performance. Each parameter is preset to a reasonable default. You can optionally override these default values when instantiating the Suite.
+
+The parameters available for configuration are shown below in separate tables for those parameters that affect feature flagging, those that affect the Suite RUM agent, and those that affect both.
+
+Feature flagging parameters:
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| featuresRefreshRate | The Suite polls Split servers for changes to feature flags at this rate (in seconds). | 3600 seconds (1 hour) |
+| segmentsRefreshRate | The Suite polls Split servers for changes to segments at this rate (in seconds). | 1800 seconds (30 minutes) |
+| impressionRefreshRate | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Split servers. This configuration controls how quickly the cache expires after a write (in seconds). | 1800 seconds (30 minutes) |
+| impressionsQueueSize | Default queue size for impressions. | 30K |
+| eventsPushRate | When using `.track`, how often the events queue is flushed to Split servers. | 1800 seconds|
+| eventsPerPush | Maximum size of the batch to push events. | 2000 |
+| eventsFirstPushWindow | Amount of time to wait for the first flush. | 10 seconds |
+| eventsQueueSize | When using `.track`, the number of **events** to be kept in memory. | 10000 |
+| trafficType | (optional) The default traffic type for events tracked using the `track` method. If not specified, every `track` call should specify a traffic type. | not set |
+| telemetryRefreshRate | The Suite caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers (in seconds). | 3600 seconds (1 hour) |
+| logLevel | Enables logging according to the level specified. Options are `NONE`, `VERBOSE`, `DEBUG`, `INFO`, `WARNING`, and `ERROR`. | `NONE` |
+| synchronizeInBackground | Activates synchronization when application host is in background. | `false` |
+| streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism when in foreground. In the event of an issue with streaming, the Suite falls back to the polling mechanism. If false, the Suite polls for changes as usual without attempting to use streaming. | `true` |
+| sync | Optional SyncConfig instance. Use it to filter specific feature flags to be synced and evaluated by the Suite. These filters can be created with the `SplitFilter::bySet` static function (recommended, flag sets are available in all tiers), or `SplitFilter::byName` static function, and appended to this config using the `SyncConfig` builder. If not set or empty, all feature flags are downloaded by the Suite. | `nil` |
+| offlineRefreshRate | The Suite periodically reloads the localhost mocked feature flags at this given rate in seconds. This can be turned off by setting it to -1 instead of a positive number. | -1 (off) |
+| sdkReadyTimeOut | Amount of time in milliseconds to wait before notifying a timeout. | -1 (not set) |
+| persistentAttributesEnabled | Enables saving attributes on persistent cache which is loaded as part of the SDK_READY_FROM_CACHE flow. All functions that mutate the stored attributes map affect the persistent cache.| `false` |
+| syncEnabled | Controls the Suite continuous synchronization flags. When `true`, a running Suite processes rollout plan updates performed in the Split user interface (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | `true` |
+| userConsent | User consent status used to control the tracking of events and impressions. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. See the [User consent](#user-consent) section for details. | `GRANTED` |
+| encryptionEnabled | Enables or disables encryption for cached data. | `false` |
+| httpsAuthenticator | If set, the Suite uses it to authenticate network requests. To set this value, an implementation of SplitHttpAuthenticator must be provided. | `nil` |
+| prefix | Allows to use a prefix when naming the Suite storage. Use this when using multiple `SplitFactory` instances with the same SDK key. | `nil` |
+| certificatePinningConfig | If set, enables certificate pinning for the given domains. For details, see the [Certificate pinning](#certificate-pinning) section below. | null |
+
+Suite RUM agent parameters:
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| prefix | Optional prefix to append to the `eventTypeId` of the events sent to Split by the Suite RUM agent. For example, if you set the prefix to 'my-app', the event type 'error' will be sent as 'my-app.error'. | `nil` |
+
+Shared parameters:
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| logLevel | Enables logging according to the level specified. Options are `NONE`, `VERBOSE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, and `ASSERT`. | `NONE` |
+
+To set each of the parameters defined above, use the following syntax:
+```swift title="Swift"
+import Split
+
+// Your Split SDK key
+let sdkKey: String = "YOUR_SDK_KEY"
+
+//User Key
+let key: Key = Key(matchingKey: "key")
+
+//Split Configuration
+let config = SplitClientConfig()
+config.impressionRefreshRate = 30
+config.isDebugModeEnabled = false
+let syncConfig = SyncConfig.builder()
+                    .addSplitFilter(SplitFilter.bySet(["frontend"]))
+                    .build()
+config.sync = syncConfig
+
+//Split Factory
+let builder = DefaultSplitFactoryBuilder()
+let factory =
+builder.setApiKey(sdkKey).setKey(key).setConfig(config).build()
+
+//Split Client
+let client = factory?.client
+
+```
+
+## RUM agent configuration
+
+The Suite handles the setup of its RUM agent using the same SDK key. Configurations for [Logging](#logging) and [Identities](#instantiate-multiple-clients) are also shared with the Suite's RUM agent.
+
+You can further configure the RUM agent by passing a `SplitSuiteConfig` object instead of `SplitClientConfig`. 
+
+```swift title="Swift"
+// Optionally create feature flagging configuration
+let sdkConfig = SplitClientConfig()
+sdkConfig.logLevel = .verbose
+sdkConfig.trafficType = "custom" 
+        
+// Specify a prefix for the Suite events
+let suiteConfig = SplitSuiteConfig().prefix("new.v7")
+
+// Instantiate the Suite passing in the SplitSuiteConfiguration
+let suite = DefaultSplitSuite
+        .builder()
+        .setApiKey("YOUR_SDK_KEY")
+        .setKey(Key(matchingKey: "key"))
+        .setConfig(sdkConfig) // This methods is overloaded
+        .setConfig(suiteConfig).build()
+```

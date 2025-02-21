@@ -1,0 +1,29 @@
+---
+title: Background synchronization
+sidebar_label: Background synchronization
+description: Synchronize FME definitions when the app is in the background
+---
+
+Since version 2.11.0, background synchronization is available for devices having iOS 13+.
+To enable this feature, just follow the next 4 steps:
+
+1. Enable _[Background Mode Fetch](https://developer.apple.com/documentation/watchkit/background_execution/enabling_background_sessions)_ capability for your app.
+2. Add the Split SDK background sync task identifier *io.split.bg-sync.task* to the Permitted background task scheduler identifiers section of the Info.plist .
+3. Set the Split config flag _synchronizeInBackground_ to true .
+
+```swift title="Swift"
+let config = SplitClientConfig()
+config.synchronizeInBackground = true
+...
+```
+
+4. Schedule the background sync during app startup. e.g., _application(\_:didFinishLaunchingWithOptions:)_
+
+```swift title="Swift"
+SplitBgSynchronizer.shared.schedule()
+...
+```
+
+:::warning[Important!]
+Due to an iOS limitation for background fetch capability, only one task identifier is allowed for that purpose. If there is already a current background fetch identifier registered, background sync may not work.
+:::

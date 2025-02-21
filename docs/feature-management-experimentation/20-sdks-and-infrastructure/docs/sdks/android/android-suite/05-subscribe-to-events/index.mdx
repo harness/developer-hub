@@ -1,0 +1,142 @@
+---
+title: Subscribe to SDK events
+sidebar_label: Subscribe to SDK events
+description: Improve UX by listening for SDK ready and update events.
+---
+
+You can listen for four different events from the Suite.
+
+* `SDK_READY_FROM_CACHE`. This event fires once the Suite is ready to evaluate treatments using a locally cached version of your rollout plan from a previous session (which might be stale). If there is data in the cache, this event fires almost immediately, since access to the cache is fast; otherwise, it doesn't fire.
+* `SDK_READY`. This event fires once the Suite is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Split servers.
+* `SDK_READY_TIMED_OUT`. This event fires if there is no cached version of your rollout plan in disk cache, and the Suite could not download the data from Split servers within the time specified by the `ready` setting of the `SplitClientConfig` object. This event does not indicate that the Suite initialization was interrupted. The Suite continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in the Split user interface.
+
+To define what is executed after each event, create an extension of `SplitEventTask`.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-suite-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+```java
+
+public class SplitEventTask {
+    public void onPostExecution(SplitClient client) { }
+    public void onPostExecutionView(SplitClient client) { }
+}
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+open class SplitEventTask {
+    open fun onPostExecution(client: SplitClient) { }
+    open fun onPostExecutionView(client: SplitClient) { }
+}
+```
+  </TabItem>
+</Tabs>
+
+Both the `onPostExecution` and `onPostExecutionView` methods are executed after the SDK event is triggered. The `onPostExecution` method is executed on a background thread, so we recommend it's used in cases where heavy computation is needed. The `onPostExecutionView` method is executed on the UI thread, so we recommend it's only used for short tasks or manipulating the UI.
+
+The syntax to listen for each event is shown below:
+
+<Tabs
+  groupId="android-suite-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+```java
+
+client.on(SplitEvent.SDK_READY, new SplitEventTask() {
+  @Override
+  public void onPostExecution(SplitClient client) {
+    // Background Code in Here
+  }
+  @Override
+  public void onPostExecutionView(SplitClient client) {
+    // UI Code in Here
+  }
+});
+// When definitions and any bound attributes were loaded from cache
+client.on(SplitEvent.SDK_READY_FROM_CACHE, new SplitEventTask() {
+  @Override
+  public void onPostExecution(SplitClient client) {
+    // Background Code in Here
+  }
+  @Override
+  public void onPostExecutionView(SplitClient client) {
+    // UI Code in Here
+  }
+});
+// When the Suite couldn't fetch definitions before *config.ready* time
+client.on(SplitEvent.SDK_READY_TIMED_OUT, new SplitEventTask() {
+  @Override
+  public void onPostExecution(SplitClient client) {
+    // Background Code in Here
+  }
+  @Override
+  public void onPostExecutionView(SplitClient client) {
+    // UI Code in Here
+  }
+});
+// When definitions have changed
+client.on(SplitEvent.SDK_READY_UPDATE, new SplitEventTask() {
+  @Override
+  public void onPostExecution(SplitClient client) {
+    // Background Code in Here
+  }
+  @Override
+  public void onPostExecutionView(SplitClient client) {
+    // UI Code in Here
+  }
+});
+```
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+client.on(SplitEvent.SDK_READY, object : SplitEventTask() {
+    override fun onPostExecution(client: SplitClient) {
+        // Background Code in Here
+    }
+    override fun onPostExecutionView(client: SplitClient) {
+        // UI Code in Here
+    }
+})
+// When definitions were loaded from cache
+client.on(SplitEvent.SDK_READY_FROM_CACHE, object : SplitEventTask() {
+    override fun onPostExecution(client: SplitClient) {
+        // Background Code in Here
+    }
+    override fun onPostExecutionView(client: SplitClient) {
+        // UI Code in Here
+    }
+})
+// When the Suite couldn't fetch definitions before *config.ready* time
+client.on(SplitEvent.SDK_READY_TIMED_OUT, object : SplitEventTask() {
+    override fun onPostExecution(client: SplitClient) {
+        // Background Code in Here
+    }
+    override fun onPostExecutionView(client: SplitClient) {
+        // UI Code in Here
+    }
+})
+// When definitions have changed
+client.on(SplitEvent.SDK_UPDATE, object : SplitEventTask() {
+    override fun onPostExecution(client: SplitClient) {
+        // Background Code in Here
+    }
+    override fun onPostExecutionView(client: SplitClient) {
+        // UI Code in Here
+    }
+})
+```
+  </TabItem>
+</Tabs>

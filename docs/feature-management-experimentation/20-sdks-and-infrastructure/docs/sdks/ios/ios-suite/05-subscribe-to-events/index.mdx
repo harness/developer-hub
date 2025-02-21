@@ -1,0 +1,52 @@
+---
+title: Subscribe to SDK events
+sidebar_label: Subscribe to SDK events
+description: Improve UX by listening for SDK ready and update events.
+---
+
+You can listen for four different events from the Suite.
+
+* `sdkReadyFromCache`: This event fires once the Suite is ready to evaluate treatments using a locally cached version of your rollout plan from a previous session (which might be stale). If there is data in the cache, this event fires almost immediately, since access to the cache is fast; otherwise, it doesn't fire.
+* ` sdkReady`: This event fires once the Suite is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Split servers.
+* ` sdkReadyTimedOut`: This event fires if there is no cached version of your rollout plan in disk cache, and the Suite could not fully download the data from Split servers within the time specified by the `sdkReadyTimeOut` property of the `SplitClientConfig` object. This event does not indicate that the Suite initialization was interrupted. The Suite continues downloading the rollout plan and fires the `sdkReady` event when finished.  This delayed `sdkReady` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `sdkUpdated`: This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in the Split user interface.
+
+Split Suite event handling is done through the `on(event:execute:)` function, which receives a closure as an event handler. The code within the closure is executed on the main thread. For that reason, running code in the background must be done explicitly.
+
+The syntax to listen for an event is shown below.
+
+```swift title="Swift"
+...
+let client = factory.client
+
+client.on(event: SplitEvent.sdkReady, execute: {
+    // The client is ready to evaluate treatments according to the latest feature flag definitions
+    // Do some stuff on main thread
+})
+
+// Or
+client.on(event: SplitEvent.sdkReadyTimedOut) {
+  // This callback will be called if and only if the client is configured with ready timeout and
+  // is not ready for that time or if the API key is wrong. 
+  // You can still call getTreatment() but it could return CONTROL.
+
+  // Do some stuff on main thread
+}
+
+client.on(event: SplitEvent.sdkReadyFromCache) {
+  // Fired after the Suite confirms the presence of the Split data.
+  // This event fires quickly, since there's no actual fetching of information.
+  // Keep in mind that data might be stale, this is NOT a replacement of sdkReady.
+
+  // Do some stuff on main thread
+}
+
+client.on(event: SplitEvent.sdkUpdated) {
+  // fired each time the client state change. 
+  // For example, when a feature flag or segment changes.
+
+  // Do some stuff on main thread
+}
+
+...
+```
