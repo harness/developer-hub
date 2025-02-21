@@ -75,7 +75,5 @@ k. Based on the option you select, Harness auto-creates the experiments for each
 
 ## Troubleshooting
 
-- Go to [Troubleshooting Discovery Agent](/docs/chaos-engineering/troubleshooting/troubleshooting#discovery-agent) in case your discovery agent is unable to discover services.
-
-	
+- Go to [Troubleshooting Discovery Agent](/docs/chaos-engineering/troubleshooting/#discovery-agent) in case your discovery agent is unable to discover services.	
 
