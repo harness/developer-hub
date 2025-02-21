@@ -559,15 +559,15 @@ Turning on the `CDS_SKIP_INSTANCES_V2` feature flag modifies the existing skip i
 - Deployment is skipped on hosts where the **last deployment was successful using the same artifact**.
 - Each host’s deployment success is tracked **individually**, ensuring only failed hosts are retried.
 - **New Expression Introduced**:
-  - `<+stage.output.skippedHosts>`: Fetches all the Hosts skipped/failed during successful previous deployments
+  - `<+stage.output.skippedHosts>`: This expression returns the hosts skipped due to the Skip Instances feature during the current execution. (Note: deployedHosts may not always be equal to `{hosts - skippedHosts}`)
 - Infrastructure changes, such as connector or credentials updates, are considered while determining the last deployment on the host.
   
 **3. Improved Rollback Behavior**
 - Rollback now considers per-host deployment success instead of rolling back all hosts in a stage.
 - Ensures rollback artifacts are correctly selected for each host.
 - **New Expression Introduced**:
-  - `<+stageFqn.deployedHosts.succeeded>`: Fetches the hosts that successfully deployed in a stage.
-  - `<+stageFqn.deployedHosts.failed>`: Fetches the hosts that failed deployment in a stage.
+  - `<+stageFqn.deployedHosts.succeeded>`: This expression fetches the hosts that successfully deployed in a stage.
+  - `<+stageFqn.deployedHosts.failed>`: This expression fetches the hosts that failed deployment in a stage.
 
 <details>
 <summary>Example Workflow: Deployment with Retries</summary>
