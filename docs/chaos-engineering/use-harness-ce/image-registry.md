@@ -42,6 +42,15 @@ This feature is behind the feature flag `CHAOS_IMAGEREGISTRY_DEV`. Contact [Harn
 <Tabs>
 <TabItem value = "Harness Delegate / DDCR">
 
+### Permissions Required
+
+Ensure you have at least **View** permissions to the project to execute chaos experiments. 
+
+To create or view an image registry, ask your admin to grant you the **Create/Edit** permissions from account/project/organization settings.
+
+  ![](./static/image-registry/chaos-engineering-img-registry-perms.png)
+
+
 ### Configure Image Registry from Account/Organization/Project/Infrastructure settings
 
 With appropriate permissions, you can configure image registry from the **account** or **organization** or **project** or **infrastructure** settings.
