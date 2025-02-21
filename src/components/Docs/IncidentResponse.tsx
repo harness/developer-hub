@@ -15,7 +15,7 @@ export default function IR() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon-ir.svg`} />
-            <h1>Incident Response (COMING SOON) </h1>
+            <h1>Incident Response</h1>
           </div>
           <div className={styles.btnContainer}>
           </div>
