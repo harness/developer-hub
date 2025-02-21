@@ -47,6 +47,16 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## February 2025
 
+### GitOps Version 1.26.1, GitOps Agent Version 0.87.0
+
+#### New Features and Enhancements
+
+- Harness GitOps now supports the Harness GitOps Agent in the OpenShift Certified Vendor Catalog, enabling integration with OpenShift OperatorHub and Red Hat Marketplace. (**CDS-97876**)
+
+#### Fixed Issues
+
+- Previously, the Harness GitOps Terraform Provider did not properly handle cluster shard definitions, causing unexpected behavior when managing GitOps Clusters. This issue is resolved. Users should update to the latest [harness-terraform-provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to ensure proper functionality. (**CDS-106122, ZD-76843**)
+- Previously, the GitOps App Diff tab returned a 500 error when retrieving differences for certain applications, particularly those using inline `values.yaml`. This issue is resolved. (**CDS-106028, ZD-76378**)
 
 ### GitOps Version 1.25.3, GitOps Agent Version 0.86.2
 
