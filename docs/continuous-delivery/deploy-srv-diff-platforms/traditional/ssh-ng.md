@@ -523,11 +523,11 @@ Congratulations! You have now successfully created and completed the steps for r
 
 ## Selective Rerun and Skipping Hosts with Same Artifact
 
-You can do a **selective rerun** for traditional deployments. These improvements ensure:
+You can now skip the `hosts where the last deployment was successful using the same artifact` for traditional deployments. These improvements ensure:
 - **Efficient reruns**: Redeploy only on failed hosts instead of all hosts.
-- **Expressions for failed hosts**: Retrieve failed hosts dynamically for debugging and retry logic.
+- **Expressions for failed hosts**: Retrieve failed hosts dynamically for debugging, fixing and rerunning on only failed hosts.
 
-To use this feature, navigate to the **Advanced** tab of the **CD stage**, Under the **Failure Strategy**, enable the **Skip instances with the same artifact version already deployed** checkbox. 
+To use this feature, navigate to the **Advanced** tab of the **CD stage**, enable the **Skip instances with the same artifact version already deployed** checkbox. 
 
 You can enable this checkbox using the run-time by making this checkbox a **Runtime Input**. 
 
@@ -553,42 +553,36 @@ Turning on the `CDS_SKIP_INSTANCES_V2` feature flag modifies the existing skip i
 
 **1. Selective Retry for Failed Hosts**
 - Deployment retries now target only failed hosts instead of redeploying on all hosts when the **Skip instances with the same artifact version already deployed** checkbox is enabled. 
-- Infrastructure changes, such as **new hosts added or credentials updated**, are considered between retries.
 
 **2. Enhanced Skip Instances Feature**
 - Deployment is skipped on hosts where the **last deployment was successful using the same artifact**.
 - Each host’s deployment success is tracked **individually**, ensuring only failed hosts are retried.
-- **New Expression Introduced**:
-  - `<+stage.output.skippedHosts>`: Fetches all the Hosts skipped/failed during successful previous deployments
-- Infrastructure changes, such as connector or credentials updates, are considered while determining the last deployment on the host.
+- Infrastructure changes, such as connector or credentials updated, are considered while determining the last deployment on the host.
   
 **3. Improved Rollback Behavior**
-- Rollback now considers per-host deployment success instead of rolling back all hosts in a stage.
-- Ensures rollback artifacts are correctly selected for each host.
-- **New Expression Introduced**:
-  - `<+stageFqn.deployedHosts.succeeded>`: Fetches the hosts that successfully deployed in a stage.
-  - `<+stageFqn.deployedHosts.failed>`: Fetches the hosts that failed deployment in a stage.
+- Skip Instances feature now tracks successful rollbacks per host.
+- This ensures that these hosts are correctly updated for future deployments.
+
+**4. New Expression Introduced**
+- `<+stage.output.skippedHosts>`: Fetches the Hosts skipped during current deployment by virtue of skip instance feature.
+- `<+stageFqn.deployedHosts.succeeded>`: Fetches the hosts that successfully deployed in a stage.
+- `<+stageFqn.deployedHosts.failed>`: Fetches the hosts that failed deployment in a stage.
+
+:::note
+Currently, `<+stageFqn.deployedHosts.succeeded>` and `<+stageFqn.deployedHosts.failed>` expressions will only be resolved after stage completion. Hence, entire stage fqn for example `<+pipeline.stages.ssh.deployedHosts.succeeded>` is required. And these expressions will only include the hosts satisfying Deployed criteria.
 
 <details>
-<summary>Example Workflow: Deployment with Retries</summary>
+<summary>Example Workflow: Deployment with Partial Success</summary>
 
-**Step 1**: Deploy on a Host
+**Step 1**: Deploy on two hosts using artifact version 1
 
-Deploy version 1 on host1 using a command step.
+Deploy artifact version 1 on host1 and host2 using a command step.
 
-Outcome: `{host1: Success, version 1, {}}` → host1 successfully deployed version 1.
+Outcome → host1 successfully deployed version 1, deployment on host2 failed.
 
-**Step 2**: Deploy Version 2 with Multiple Command Steps
+**Step 2**: Now, fix the issue on host2. Rerun the pipeline with skip instances enabled.
 
-Deploy version 2 on host1 using three command steps:
-
-- command-step1: Success → `{host1: Success, version 2, {}}`
-- command-step2: Failure → `{host1: Failed, version 2, {setup-F}}`
-- command-step2: Retry + Success → `{host1: Success, version 2, {}}`
-- command-step3: Failure → `{host1: Failed, version 2, {setup-C3}}`
-
-command-step2 initially failed but succeeded after retry.
-command-step3 failed, marking the deployment as unsuccessful.
+Outcome → deployment on host1 will be skipped, host2 successfully deployed version 1.
 
 </details>
 
@@ -597,11 +591,11 @@ command-step3 failed, marking the deployment as unsuccessful.
 
 The improved retry and rollback mechanisms ensure that only necessary actions are taken, avoiding unnecessary redeployments and rollbacks. Below are some key scenarios and how they are handled:
 
-1. Pipeline Termination After Successful Deployment
+1. **Pipeline Termination After Successful Deployment**
 - If the pipeline terminates due to **expire/abort/failure** cases, but the host was successfully deployed via a command step before termination, the deployment on that host is still considered successful.
 - This ensures that unexpected pipeline failures do not unnecessarily mark successful hosts as failed.
 
-2. Parallel Deployments on the Same Hosts
+2. **Parallel Deployments on the Same Hosts**
 - When the same hosts are deployed in parallel using different stages, the stage with the most recent command step execution is considered the last deployment for the skip instances feature.
 
 3. **Executions Without Command Steps**
