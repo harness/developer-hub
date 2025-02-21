@@ -367,7 +367,7 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
               Based on the table above, let's assume we want to update the delegate image to version `V6` for delegates with the tag `T1`. As discussed earlier, when the API is triggered, it follows a **bottom-up approach**, checking for delegates with tag `T1` and overriding their image with version `V6`.  
 
-              In this case, the following delegates will be updated:
+              In this case, the following delegates with T1 will be updated:
 
               | Delegate Installed | Scope   | Tag    | Version |
               |--------------------|---------|--------|---------|
@@ -385,6 +385,20 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
               | D4                 | Proj P  | T1, T2 | V2      |
               | D5                 | Proj R  | T6     | V2      |
               | D6                 | Proj R  | T4     | V2      |
+
+            After triggering the API call for two different scenarios, the initial table will be updated as follows.
+
+              | Delegate Installed | Scope   | Tag    | Version |
+              |--------------------|---------|--------|---------|
+              | D1                 | Account | T1     | V6      |
+              | D2                 | Account | T2, T4 | V1      |
+              | D3                 | Org A   | -      | V2      |
+              | D4                 | Proj P  | T1, T2 | V2      |
+              | D5                 | Proj R  | T6     | V2      |
+              | D6                 | Proj R  | T4     | V2      |
+              | D7                 | Proj S  | T3     | V3      |
+              | D8                 | Proj S  | T7,T4  | V4      |
+              | D9                 | Proj S  | T1,T3  | V2      |
 
 
 3. Delete an Override Delegate API.
