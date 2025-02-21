@@ -50,7 +50,7 @@ You can [create](#create-application-map), [edit](#edit-application-map), and [d
 
     ![](./static/app-maps/name-np-2.png)
 
-5. Select one or more discovered services and select **Next**.
+5. Select one or more discovered services on which you wish to inject chaos and select **Next**.
 
     ![](./static/app-maps/select-service-3.png)
 
