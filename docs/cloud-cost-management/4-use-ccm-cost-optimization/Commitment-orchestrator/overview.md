@@ -158,6 +158,9 @@ Step 2: Setup flow (to enable actual orchestration)
 "ce:GetCostAndUsage"
 savingsplans:DescribeSavingsPlansOfferings
 savingsplans:CreateSavingsPlan
+"rds:PurchaseReservedDBInstancesOffering"
+"rds:DescribeReservedDBInstancesOfferings"
+pricing:GetProducts
 ```
 
 ## Native User Approval
