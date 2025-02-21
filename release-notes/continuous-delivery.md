@@ -47,6 +47,20 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## February 2025
 
+### Version 1.78
+
+#### New features and enhancements
+
+#### Fixed Issues
+
+- Previously, the system fetched the service YAML from the Master branch during Helm Chart Deployment, preventing the selection of the Primary Manifest due to a branch mismatch. This issue is resolved. (**CDS-106242, ZD-77092**)
+- Previously, users experienced an issue where selecting Org-level environments during pipeline runtime resulted in an access error despite having the correct permissions. This issue is resolved. (**CDS-106527, ZD-74454**)
+- Previously, pipeline executions were not appearing in the Execution History tab after moving a pipeline to Git. The issue is resolved.
+**Note**: When switching from Pipeline Studio to Execution History, the system automatically applies a branch filter based on the selected branch in Pipeline Studio. To view executions performed before moving the pipeline to Git, users need to remove the branch filter. (**PIPE-25154, ZD-78153**)
+- Previously, the Approval Step input variables dialog box in the Harness UI displayed unnecessary line wrapping, causing UI distortion. The issue is resolved. (**CDS-106804, ZD-78238**)
+- Previously, the Primary Manifest API did not support passing Git details for remote services. The issue is resolved by updating the API to support remote services. (**CDS-106625, ZD-77092**)
+- Previously, in Pipeline Studio UI, selecting a Deploy stage followed by an Approval stage caused an unnecessary environment section to be added to the Approval stage YAML. This modification occurred even without making actual edits. The issue is resolved. (**PIPE-24398**)
+- Previously, in Containerized Step Groups, adding a third parallel step resulted in an incorrect step palette being displayed, not respecting the containerized setting of the step group. The issue is resolved. (**PIPE-24399**)
 
 ### GitOps Version 1.25.3, GitOps Agent Version 0.86.2
 
