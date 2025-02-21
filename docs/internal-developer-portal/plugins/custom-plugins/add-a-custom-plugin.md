@@ -221,8 +221,8 @@ endpoints:
 This configuration creates a proxy endpoint in IDP.
 - `target` defines the destination server where the request will be proxies.
 - `pathRewrite` is used to remove or replace parts of the path in the request URL.
-When a request is made to `https://idp.harness.io/{ACCOUNT_ID}/idp/api/proxy/github-api/<path>`, the following happens:
-1. The target setting modifies the base URL, transforming `https://idp.harness.io/{ACCOUNT_ID}/idp/api/proxy/github-api/<path>` into `https://api.github.com/api/proxy/github-api/<path>`.
+When a request is made to `https://idp.harness.io/<ACCOUNT_ID>/idp/api/proxy/github-api/<path>`, the following happens:
+1. The target setting modifies the base URL, transforming `https://idp.harness.io/<ACCOUNT_ID>/idp/api/proxy/github-api/<path>` into `https://api.github.com/api/proxy/github-api/<path>`.
 2. `pathRewrite` replaces `/api/proxy/github-api/` with `/`, so the URL transforms from `https://api.github.com/api/proxy/github-api/<path>` to `https://api.github.com/<path>`.
 
 11. Now in the above proxy authorization is added as a variable `SECRET_TOKEN` and the secret is stored in Harness Secret manager. 

@@ -30,21 +30,20 @@ Register Software Component in Harness Catalog.
 #### URL 
 
 ```bash
-https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations
+https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations
 ```
 #### URL Parameters
 
-`ACCOUNT_IDENTIFIER`: Your Harness account ID.
+`ACCOUNT_ID`: Your Harness account ID.
 
 You can find your account ID in any Harness URL, for example:
 
 ```bash
-https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
+https://app.harness.io/ng/account/<ACCOUNT_ID>/idp/overview
 ```
 
 #### Headers
 - `x-api-key`: Your Harness API token.
-- `Harness-Account`: Your Harness account ID.
 
 #### Request Body
 
@@ -58,9 +57,8 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 ### cURL Example
 
 ```cURL
-curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations' \
---header 'x-api-key: {X_API_KEY}' \
---header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
+curl --location 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations' \
+--header 'x-api-key: <HARNESS_TOKEN>' \
 --data-raw '{"type":"url","target":"https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml"}'
 ```
 #### Response:
@@ -80,28 +78,27 @@ Syncs the component with the latest version of `catalog-info.yaml` stored in git
 #### URL 
 
 ```bash
-https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/refresh
+https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/refresh
 ```
 #### URL Parameters
 
-`ACCOUNT_IDENTIFIER`: Your Harness account ID.
+`ACCOUNT_ID`: Your Harness account ID.
 
 You can find your account ID in any Harness URL, for example:
 
 ```bash
-https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
+https://app.harness.io/ng/account/<ACCOUNT_ID>/idp/overview
 ```
 
 #### Headers
 - `x-api-key`: Your Harness API token.
-- `Harness-Account`: Your Harness account ID.
 
 ### cURL Example
 
 ```cURL
-curl 'https://idp.harness.io/{HARNESS_ACCOUNT_IDENTIFIER}/idp/api/catalog/refresh' \
+curl 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/refresh' \
   -H 'Content-Type: application/json' \
-  -H 'x-api-key: {HARNESS_X_API_KEY}' \
+  -H 'x-api-key: <HARNESS_TOKEN>' \
   --data-raw '{"entityRef":"{ENTITY_REF}"}'
 ```
 
@@ -135,24 +132,23 @@ Delete Software Component from Harness Catalog.
 #### URL 
 
 ```bash
-https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations/{LOCATION_ID}
+https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations/<LOCATION_ID>
 ```
 #### URL Parameters
 
-`ACCOUNT_IDENTIFIER`: Your Harness account ID.
+`ACCOUNT_ID`: Your Harness account ID.
 
 You can find your account ID in any Harness URL, for example:
 
 ```bash
-https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
+https://app.harness.io/ng/account/<ACCOUNT_ID>/idp/overview
 ```
 
 `LOCATION_ID`: To get the Location ID, use the cURL command given below to fetch all the Locations for the account and `grep` your component name and the ID mentioned there is the Location ID to be used.
 
 ```cURL
-curl 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations' \
---header 'x-api-key: {X_API_KEY}' \
---header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
+curl 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations' \
+--header 'x-api-key: <HARNESS_TOKEN>'
 ```
 
 The Response of the above cURL would be as shown below and the `id` mentioned is the **Location ID**, search for the component name in the response and pick the `id`
@@ -173,14 +169,12 @@ The Response of the above cURL would be as shown below and the `id` mentioned is
 
 #### Headers
 - `x-api-key`: Your Harness API token.
-- `Harness-Account`: Your Harness account ID.
 
 ### cURL Example
 
 ```cURL
-curl --location --request DELETE 'https://idp.harness.io/{ACCOUNT_ID}/idp/api/catalog/locations/{LOCATION_ID}' \
---header 'x-api-key: <API-KEY>' \
---header 'Harness-Account: {ACCOUNT_ID}'
+curl --location --request DELETE 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations/<LOCATION_ID>' \
+--header 'x-api-key: <HARNESS_TOKEN>'
 ```
 #### Response:
 The response will remove the software component along the with the locations from your IDP catalog as defined in the location provided.
@@ -199,24 +193,23 @@ Deletes an entity by its `metadata.uid` field value.
 #### URL 
 
 ```bash
-https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/entities/by-uid/{uid}
+https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/entities/by-uid/<uid>
 ```
 #### URL Parameters
 
-`ACCOUNT_IDENTIFIER`: Your Harness account ID.
+`ACCOUNT_ID`: Your Harness account ID.
 
 You can find your account ID in any Harness URL, for example:
 
 ```bash
-https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
+https://app.harness.io/ng/account/<ACCOUNT_ID>/idp/overview
 ```
 
 `udi`: To get the uid, use the cURL command given below to fetch all the Locations for the account and `grep` your component name and the `metadata.uid` mentioned there is the `uid` to be used.
 
 ```cURL
-curl --location 'https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/entities/by-query?filter=kind=location' \
---header 'x-api-key: {X_API_KEY}' \
---header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
+curl --location 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/entities/by-query?filter=kind=location' \
+--header 'x-api-key: <HARNESS_TOKEN>'
 ```
 
 The Response of the above cURL would be as shown below and the `metadata.uid` mentioned is the **uid**, search for the component name in the response and pick the `uid`
@@ -244,14 +237,12 @@ The Response of the above cURL would be as shown below and the `metadata.uid` me
 
 #### Headers
 - `x-api-key`: Your Harness API token.
-- `Harness-Account`: Your Harness account ID.
 
 ### cURL Example
 
 ```cURL
-curl --location --request DELETE 'https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/entities/by-uid/{uid}' \
---header 'x-api-key: <API-KEY>' \
---header 'Harness-Account: {ACCOUNT_ID}'
+curl --location --request DELETE 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/entities/by-uid/<UID>' \
+--header 'x-api-key: <HARNESS_TOKEN>'
 ```
 #### Response:
 The response will remove the locations from your IDP catalog as defined in the `uid`.
@@ -270,16 +261,16 @@ Retrieves catalog entities that match a specific filter from the Harness IDP.
 #### URL 
 
 ```bash
-https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/entities
+https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/entities
 ```
 #### URL Parameters
 
-1. `ACCOUNT_IDENTIFIER`: Your Harness account ID.
+1. `ACCOUNT_ID`: Your Harness account ID.
 
 You can find your account ID in any Harness URL, for example:
 
 ```bash
-https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
+https://app.harness.io/ng/account/<ACCOUNT_ID>/idp/overview
 ```
 
 2. Lists entities. Supports the following **query parameters**, described in sections below:
@@ -314,9 +305,8 @@ Example:
 - **Example: Filter `components` based on `system` name**
 
 ```cURL
-curl --location 'https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/entities?filter=kind=component,relations.partOf=system:default/SYSTEM_NAME' \
---header 'x-api-key: X_API_KEY' \
---header 'Harness-Account: ACCOUNT_ID'
+curl --location 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/entities?filter=kind=component,relations.partOf=system:default/SYSTEM_NAME' \
+--header 'x-api-key: <HARNESS_TOKEN>'
 ```
 In the above example since the `system` name is mentioned under `relations` in component's definition YAML, hence we have used the filter `relations.partOf=system:default/SYSTEM_NAME`. Here's the mention of `system` in component's YAML. 
 
@@ -347,15 +337,12 @@ relations:
 
 #### Headers
 - `x-api-key`: Your Harness API token.
-- `Harness-Account`: Your Harness account ID.
 
 ### cURL Example
 
 ```cURL
-curl 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/entities?filter=kind=template' \
---header 'x-api-key: {X_API_KEY}' \
---header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
-```
+curl 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/entities?filter=kind=template' \
+--header 'x-api-key: <HARNESS_TOKEN>'
 
 
 #### Response:

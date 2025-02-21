@@ -124,7 +124,6 @@ We have used few pipeline variables in the body, which will be used to take inpu
 
 ```sh
 curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
---header 'Harness-Account: <+account.identifier>' \
 --header 'Content-Type: application/json' \
 --header 'x-api-key: <+secrets.getValue('account.TOKEN_ID')>' \
 --data '{
@@ -284,7 +283,6 @@ In the above body the openTicket which got created in JIRA will be added, to kin
 
 20. Under **Optional Configuration** add the **Assertion** as `<+httpResponseCode>==200`.
 21. Under **Headers** add the following key value pairs:
-    - Harness-Account: `<+account.identifier>`
     - Content-Type: `application/json`
     - Accept: `*/*`
     - x-api-key: `<+secrets.getValue('account.TOKEN_ID')>`, add the token ID for your API key. Get your token ID from your Profile
@@ -531,7 +529,6 @@ We have used few pipeline variables in the body, which will be used to take inpu
 
 ```sh
 curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
---header 'Harness-Account: <+account.identifier>' \
 --header 'Content-Type: application/json' \
 --header 'x-api-key: <+secrets.getValue('account.TOKEN_ID')>' \
 --data '{
@@ -652,7 +649,6 @@ In the above body the openTicket which got created in JIRA will be added, to kin
 
 20. Under **Optional Configuration** add the **Assertion** as `<+httpResponseCode>==200`.
 21. Under **Headers** add the following key value pairs:
-    - Harness-Account: `<+account.identifier>`
     - Content-Type: `application/json`
     - Accept: `*/*`
     - x-api-key: `<+secrets.getValue('account.TOKEN_ID')>`, add the token ID for your API key. Get your token ID from your Profile
