@@ -1,6 +1,6 @@
 ---
-title: Go SDK Error flushing storage queue couldn't send message to task SubmitImpressions
-sidebar_label: Go SDK Error flushing storage queue couldn't send message to task SubmitImpressions
+title: "Error flushing storage: Queue couldn't send message to task SubmitImpressions"
+sidebar_label: "Error flushing storage: Queue couldn't send message to task SubmitImpressions"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

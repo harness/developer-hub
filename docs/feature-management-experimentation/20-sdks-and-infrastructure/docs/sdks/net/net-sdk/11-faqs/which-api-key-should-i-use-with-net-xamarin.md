@@ -1,6 +1,6 @@
 ---
-title: Which API Key to use with .NET Xamarin project?
-sidebar_label: Which API Key to use with .NET Xamarin project?
+title: Which API Key should I use with a .NET Xamarin project?
+sidebar_label: Which API Key should I use with a .NET Xamarin project?
 helpdocs_is_private: true
 helpdocs_is_published: false
 ---

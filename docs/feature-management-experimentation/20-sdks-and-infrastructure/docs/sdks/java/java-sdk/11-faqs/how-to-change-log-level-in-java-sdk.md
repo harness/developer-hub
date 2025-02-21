@@ -1,6 +1,6 @@
 ---
-title: Java SDK how to change log level
-sidebar_label: Java SDK how to change log level
+title: How to change log level in Java SDK
+sidebar_label: How to change log level in Java SDK
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

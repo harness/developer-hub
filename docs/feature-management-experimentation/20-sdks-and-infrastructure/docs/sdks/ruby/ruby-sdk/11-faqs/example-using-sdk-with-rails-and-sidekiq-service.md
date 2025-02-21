@@ -1,6 +1,6 @@
 ---
-title: "Ruby SDK: Example using Split SDK with Rails and Sidekiq service"
-sidebar_label: "Ruby SDK: Example using Split SDK with Rails and Sidekiq service"
+title: "Example using Split SDK with Rails and Sidekiq service"
+sidebar_label: "Example using Split SDK with Rails and Sidekiq service"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

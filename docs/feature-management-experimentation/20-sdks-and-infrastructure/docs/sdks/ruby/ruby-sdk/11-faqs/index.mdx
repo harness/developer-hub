@@ -3,14 +3,35 @@ title: Ruby SDK FAQs
 sidebar_label: FAQs
 ---
 
-#### Question
+import DocCardList from '@theme/DocCardList';
 
-### I am seeing the following certificate error: `OpenSSL::SSL::SSLError`
+Explore Ruby SDK frequently asked questions by clicking the tiles below.
 
-```ruby title="Error message"
-OpenSSL::SSL::SSLError: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed
-```
+<p />
 
-#### Solution
+<DocCardList items={
+  [
+    { 
+      type:'link', href:'../../../ruby/ruby-sdk/faqs/certificate-error-open-ssl-sslerror',
+      label:"Certificate error: 'OpenSSL::SSL::SSLError'", 
+    },
+    { 
+      type:'link', href:'../../../ruby/ruby-sdk/faqs/close-wait-tcp-connections-in-puma',
+      label:'Why do CLOSE_WAIT TCP connections in Puma not go down as expected?', 
+    },
+    { 
+      type:'link', href:'../../../ruby/ruby-sdk/faqs/example-using-sdk-with-rails-and-sidekiq-service',
+      label:'Example using Split SDK with Rails and Sidekiq service', 
+    },
+    { 
+      type:'link', href:'../../../ruby/ruby-sdk/faqs/uninitialized-constant',
+      label:"Uninitialized constant error caused by 'Process::RLIMIT_NOFILE' in lib/net/http/persistent.rb", 
+    },
+    { 
+      type:'link', href:'../../../ruby/ruby-sdk/faqs/upgrading-from-4-to-5-plus',
+      label:'Upgrading from 4.x to 5.x and above', 
+    },
+  ]
+} />
 
-On OSX, if you see an SSL issue that looks similar to the example below, refer to [this post](https://toadle.me/2015/04/16/fixing-failing-ssl-verification-with-rvm.html) for troubleshooting.
+See also [FME SDK FAQs](/docs/feature-management-experimentation/sdks-and-infrastructure/docs/sdks/zfaqs/).

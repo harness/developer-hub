@@ -1,6 +1,6 @@
 ---
-title: "Redux SDK: Control treatment returned when SDK is initialized"
-sidebar_label: "Redux SDK: Control treatment returned when SDK is initialized"
+title: "Control treatment is returned when initializing Redux SDK"
+sidebar_label: "Control treatment is returned when initializing Redux SDK"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

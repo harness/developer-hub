@@ -1,6 +1,6 @@
 ---
-title: "NodeJS SDK: Using getTreatment() in localhost mode, does not work with then() and catch() blocks"
-sidebar_label: "NodeJS SDK: Using getTreatment() in localhost mode, does not work with then() and catch() blocks"
+title: "GetTreatment() in Localhost mode does not work with then() and catch() blocks"
+sidebar_label: "GetTreatment() in Localhost mode does not work with then() and catch() blocks"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

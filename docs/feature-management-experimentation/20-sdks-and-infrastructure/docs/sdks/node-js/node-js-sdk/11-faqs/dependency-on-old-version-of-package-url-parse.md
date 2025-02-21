@@ -1,6 +1,6 @@
 ---
-title: "Node.js SDK: Dependency on old version of package url-parse"
-sidebar_label: "Node.js SDK: Dependency on old version of package url-parse"
+title: "Dependency on old version of package url-parse"
+sidebar_label: "Dependency on old version of package url-parse"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

@@ -1,6 +1,6 @@
 ---
-title: "Ruby SDK: Upgrading from 4.x to 5.x and above"
-sidebar_label: "Ruby SDK: Upgrading from 4.x to 5.x and above"
+title: "Upgrading from 4.x to 5.x and above"
+sidebar_label: "Upgrading from 4.x to 5.x and above"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

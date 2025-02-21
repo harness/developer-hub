@@ -1,6 +1,6 @@
 ---
-title: "Python SDK error: \"type() argument 1 must be string, not unicode\"?"
-sidebar_label: "Python SDK error: \"type() argument 1 must be string, not unicode\"?"
+title: "Error: \"type() argument 1 must be string, not unicode\""
+sidebar_label: "Error: \"type() argument 1 must be string, not unicode\""
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -9,7 +9,7 @@ helpdocs_is_published: true
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360016742831-What-is-the-Python-SDK-error-type-argument-1-must-be-string-not-unicode </button>
 </p>
 
-## Issue
+### Issue
 When initializing the SDK factory object in Python, this exception occurs:
 ```
     from splitio import get_factory
@@ -30,10 +30,10 @@ TypeError: type() argument 1 must be string, not unicode
 type() argument 1 must be string, not unicode
 ```
 
-## Root cause
+### Root cause
 The Python Split SDK requires enum34 library version 1.1.5 or above, if a lower version of enum34 installed (for example 1.0.x), or the environment is forced to use this version, the exception above is thrown when initializing SDK factory object.
 
-## Solution
+### Solution
 Upgrade enum34 to 1.1.5 or above using pip command. As of this article publishing date, the latest version is 1.1.6.
 ```
 sudo pip install enum34 --upgrade

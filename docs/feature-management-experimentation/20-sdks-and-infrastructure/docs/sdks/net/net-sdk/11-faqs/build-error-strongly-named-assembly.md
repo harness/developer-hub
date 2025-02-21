@@ -1,6 +1,6 @@
 ---
-title: "Why do I see .NET SDK Build error \"Split 3.4.2.0 cannot be loaded since it needs a strongly-named assembly\"?"
-sidebar_label: "Why do I see .NET SDK Build error \"Split 3.4.2.0 cannot be loaded since it needs a strongly-named assembly\"?"
+title: "Build error \"Split 3.4.2.0 cannot be loaded since it needs a strongly-named assembly\""
+sidebar_label: "Build error \"Split 3.4.2.0 cannot be loaded since it needs a strongly-named assembly\""
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
