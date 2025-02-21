@@ -12,6 +12,9 @@ This topic walks you through the known issues in Harness CE.
 
 The **Upgrade now** button appears even when the Kubernetes infrastructure is on the latest version due to the API not returning the correct update status. 
 
+![](./static/images/update.png)
+
+
 ## Copy to Clipboard Issue
 
 If you try to access the Harness Self-Managed Enterprise Edition (SMP) portal over an HTTP-based connection, the **Copy to clipboard** facility will not work. This facility works only when you access SMP over an HTTPS-based connection.
