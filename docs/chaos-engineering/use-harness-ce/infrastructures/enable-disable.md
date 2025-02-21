@@ -19,13 +19,7 @@ This topic describes how you can enable and disable a Harness Delegate to use wi
 
 ## Install Infrastructure
 
-You can install chaos infrastructure as a Kubernetes service, as a Linux daemon, or as a Windows agent, based on the targets. A chaos infrastructure is created within an environment.
-
-### Create Environment
-
-1. In your Harness project, navigate to **Chaos > Environments**. Select **+ New Environment**. In the **Create a new environment** screen, specify a **Name** for the environment, and optionally a **Description** and a **Tag**. For **Environment type**, choose either **Production** or **Non-Production**, and then click **Create**.
-
-    ![](./static/enable-disable/env-1.png)
+You can install chaos infrastructure as a Kubernetes service, as a Linux daemon, or as a Windows agent, based on the targets. Before creating an infrastructure, [create an environment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#create-environment) because a chaos infrastructure is created within an environment.
 
 :::tip
 If you want to delete your environment, remove the environment references, that is, the infrastructure(s) associated with it first.
