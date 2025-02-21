@@ -28,11 +28,20 @@ a. In this step, set up your cluster (where Harness CE executes chaos experiment
 
 ### Step 2: Set Up a Discovery agent
 
-b. Go to [Customize Discovery Agent](/docs/platform/service-discovery/#customize-discovery-agent), and specify the **Environment** and **Infrastructure** that you created before for your target cluster. Specify **Discovery Agent Name**, and for **Namespace**, provide the dedicated namespace you created in your target cluster for Harness. This is the namespace where Harness runs chaos runners, service discovery and executes chaos experiments.
+b. Go to [Customize Discovery Agent](/docs/platform/service-discovery/#customize-discovery-agent), and specify the following:
+
+	- **Environment** (that you created earlier for your target cluster)
+	- **Infrastructure** (that you created earlier for your target cluster). 
+	- Specify **Discovery Agent Name**. 
+	- For the **Namespace**, provide the dedicated namespace you created in your target cluster for Harness. This is the namespace where Harness runs chaos runners, discovers services and executes chaos experiments.
 
 		![create agent](./static/delegate-drive-agentless/create-agent-1.png)
 
-c. If you don’t want Harness to discover certain namespaces, specify **Exclusion** and provide the namespaces to be excluded.
+c. Select one of the following based on your requirement.
+
+	- **Namespace Selector**: Selects one or more namespaces based on [level selector](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+	- **Exclusion**: Select this option to avoid Harness from discovering certain namespaces. Provide the name of the namespaces to be excluded.
+	- **Inclusion**: Select this option to allow Harness to discover specific namespaces. Provide the name of the namespaces to be included.
 
 		![exclusion settings](./static/delegate-drive-agentless/exclusion-2.png)
 
@@ -40,7 +49,7 @@ d. If your cluster control plane node has a taint, **Add Node Selector** so that
 
 		![node selector](./static/delegate-drive-agentless/node-selector-3.png)
 
-e. Populate the **Use this Service Account** with the Service Account name that you created in the dedicated namespace in your target cluster for Harness.
+e. Populate the **Use this Service Account** field with the Service Account name that you created in the dedicated namespace in your target cluster for Harness.
 
 		![service account](./static/delegate-drive-agentless/service-acc-4.png)
 
@@ -50,7 +59,7 @@ f. Click **Create New Discovery Agent** on the top right corner of the page.
 
 The discovery agent may take some time to discover the microservices in your Kubernetes cluster. 
 
-If an active load is present in the systen, the agent creates a network map to determine the connections between services. If an active load doesn't exist, Harness won’t be able to establish a network flow relationship and consequently, won't auto-create network based experiments during [onboarding](/docs/chaos-engineering/getting-started/onboarding/).
+If the microservices in your system are communicating with each other, the agent will discover the connectivity between these microservices. Otherwise, no connectivity is discovered.
 
 However, you can manually create network experiments and tag them to the relevant application map.
 
@@ -62,13 +71,16 @@ g. Once the services are discovered, the output appears similar to this.
 
 h. [Create an application map](/docs/chaos-engineering/use-harness-ce/application-map#create-an-application-map) from the discovery agent.
 
-i. Go to the Application Map on the left menu, and select the application map that you created earlier. It would look similar to the image below.
+### Step 5: Harness Auto-Creates Experiments
+
+i. Go to **Application Map** in **Project Settings**, and select the application map that you created earlier. It would look similar to the image below.
 
 		![output](./static/delegate-drive-agentless/app-map-6.png)
 
 j. In the above screen, click **Chaos Experiments** and choose one of **OnlyFew**, **Moderate** and **Maximum** to auto-create experiments. These options describes the number of chaos experiments that would be automatically created.
 
-### Step 5: Harness Auto-Creates Experiments
+		![options](./static/delegate-drive-agentless/options.png)
+
 k. Based on the option you select, Harness auto-creates the experiments for each discovered service that was selected in the application map. Refresh the page to see the auto-created experiments.
 
 		![auto-create](./static/delegate-drive-agentless/auto-create-7.png)
