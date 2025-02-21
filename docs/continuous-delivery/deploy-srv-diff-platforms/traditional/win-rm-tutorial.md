@@ -397,6 +397,14 @@ After selecting the Execution Strategy, we are now ready to run the pipeline.
 
 You have now successfully created and completed the steps for running a pipeline by using WinRM.
 
+## Selective Rerun and Skipping Hosts with Same Artifact
+
+You can do a **selective rerun** for traditional deployments. These improvements ensure:
+- **Efficient reruns**: Redeploy only on failed hosts instead of all hosts.
+- **Expressions for failed hosts**: Retrieve failed hosts dynamically for debugging and retry logic.
+
+For more information, goto [Selective Rerun and Skipping Hosts with Same Artifact](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#selective-rerun-and-skipping-hosts-with-same-artifact)
+
 ## Permission to perform WinRM Deployments in AWS
 
 We use the WinRM Credentials to connect to hosts to perform deployment.
