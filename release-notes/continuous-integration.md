@@ -32,9 +32,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 #### Fixed issues
 
-- Fixed an issue where pipelines with excessively long IDs failed due to Kubernetes label length restrictions. Now, Kubernetes labels are automatically truncated to comply with the 63-character limit, preventing pipeline setup failures. (CI-15772, ZD-76064, ZD-76891)
 - Fixed an issue where enabling Build Intelligence caused Python shell executions to fail due to an extra newline being appended. The autoinjection script has been corrected for **run**, **runtest**, and **runtestv2** in Build Intelligence. (CI-15914, ZD-78087)
-- For Windows infrastructure on Kubernetes, if the feature flag `CI_ADDON_LE_WINDOWS_ROOTLESS` is enabled, a rootless image for `drone-git` will be used; otherwise, the root image will be used. (CI-15981, ZD-77194)
 
 ### Version 1.66
 
