@@ -7,6 +7,6 @@ You can use the additional configuration parameters below when instantiating the
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- | 
 | scheduler.offlineRefreshRate | The refresh interval for the mocked features treatments. | 15 |
-| features | A fixed mapping of which treatment to show for our mocked features. | {} <br />By default we have no mocked features. |
+| features | A fixed mapping of which treatment to show for our mocked features. | \{\} <br />By default we have no mocked features. |
 
 If you define just a string as the value for a feature flag name, any config returned by our SDKs will always be null. If you use a map, we return the specified treatment and the specified config (which can also be null).

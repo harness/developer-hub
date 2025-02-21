@@ -141,7 +141,7 @@ const synchronizer = new Synchronizer({
 });
 ```
 
-## Proxy
+## Network Proxy
 
 If you need to use a network proxy, you can provide a custom [Node.js HTTPS Agent](https://nodejs.org/api/https.html#class-httpsagent) by setting the `sync.requestOptions.agent` configuration variable. The Synchronizer will use this agent to perform requests to Split servers.
 

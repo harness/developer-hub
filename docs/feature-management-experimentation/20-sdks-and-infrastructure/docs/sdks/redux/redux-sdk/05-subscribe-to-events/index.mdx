@@ -1,0 +1,102 @@
+---
+title: Subscribe to SDK events
+sidebar_label: Subscribe to SDK events
+description: Improve UX by listening for SDK ready and update events.
+---
+
+The underlying JavaScript SDK has four different events:
+
+* `SDK_READY_FROM_CACHE`. This event fires in client-side code if using the `LOCALSTORAGE` storage type. This event fires once the SDK is ready to evaluate treatments using the rollout plan cached in localStorage from a previous session (which might be stale). If there is data in localStorage, this event fires almost immediately, since access to localStorage is fast; otherwise, it doesn't fire.
+* `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Split servers.
+* `SDK_READY_TIMED_OUT`. This event fires if there is no cached version of your rollout plan in localStorage, and the SDK could not download the data from Split servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished.  This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in the Split user interface.
+
+Besides managing `SDK_READY` on initialization, as explained in the [basic use](#basic-use) section, you can also add callbacks for the other events as shown below:
+
+```javascript title="Client and Server side"
+import { initSplitSdk } from '@splitsoftware/splitio-redux';
+
+function onReadyCallback() {
+  // Use the SDK now that it is ready to properly evaluate.
+}
+
+function onReadyFromCacheCallback() {
+  // Use the SDK to evaluate using data from the local storage cache.
+}
+
+function onTimedoutCallback() {
+  // Optionally handle timeout. SDK might be ready at a later point unless there's a problem on the setup.
+}
+
+function onUpdateCallback() {
+  // Optionally handle SDK update event. SDK was ready and processed an update on either your feature flags or segments
+  // that might change the result of an evaluation.
+}
+
+// Provide the callbacks if you're using the config.
+store.dispatch(initSplitSdk({ 
+  config: sdkConfig,
+  onReady: onReadyCallback,
+  onReadyFromCache: onReadyFromCacheCallback,
+  onTimedout: onTimedoutCallback,
+  onUpdate: onUpdateCallback;
+}));
+```
+
+You can also access the readiness state of any SDK client with the `selectStatus` selector, or when retrieving treatments with the `selectTreatmentAndStatus` or `selectTreatmentWithConfigAndStatus` selectors.
+
+```javascript title="Retrieve client status"
+import { selectStatus, selectTreatmentAndStatus } from '@splitsoftware/splitio-redux';
+
+// Retrieves current status of the SDK client with USER_ID key. If no key is provided, the main client status is returned.
+const { isReady, isReadyFromCache, isTimedout, hasTimedout, isDestroyed, lastUpdate } = selectStatus(store.getState().splitio, USER_ID);
+
+// Readiness properties are also available in the selector result.
+const { isReady, isReadyFromCache, isTimedout, hasTimedout, isDestroyed, lastUpdate, treatment } = selectTreatmentAndStatus(store.getState().splitio, 'feature_flag_1', USER_ID);
+```
+
+You can also do this from the store directly.
+
+```javascript title="Retrieve client status directly from store"
+// Accessing the status of the main client from the splitio slice of state
+const { isReady, isReadyFromCache, hasTimedout, isDestroyed } = store.getState().splitio;
+```
+
+The `getTreatments` action creator accepts two optional parameters, `evalOnUpdate` and `evalOnReadyFromCache`, which are `false` by default to avoid unwanted flickering. These parameters are **only for client side** and will be ignored if set on the server side.
+
+When `evalOnUpdate` is explicitly set to true, the given treatment will be re-evaluated in the event of an `SDK_UPDATE` being triggered by the underlying SDK. You can use it to re-render your components whenever there is a change due to a rollout update or a feature flag being killed.
+
+```javascript title="Client side (Browser)"
+  // The results for feature_flag_1 and feature_flag_2 will be re-evaluated whenever an update is processed,
+  // and updated in the Redux store if they changed.
+  // If you wanted to stop reacting to updates, dispatch the action again with the desired key,
+  // feature flag names an evalOnUpdate as false (to override the behavior).
+  store.dispatch(getTreatments({ splitNames: ['feature_flag_1', 'feature_flag_2'], evalOnUpdate: true }));
+```
+
+When `evalOnReadyFromCache` is explicitly set to true, the given treatment will be re-evaluated in the event of an `SDK_READY_FROM_CACHE` being triggered by the underlying SDK. Therefore, this param is only relevant when using 'LOCALSTORAGE' as storage type, since otherwise the event is never emitted.
+
+Keep in mind that if there was no cache previously loaded on the browser or the event has already fired, this parameter will take no effect. Also, consider that when evaluating from cache you might be using a stale snapshot until the SDK is ready.
+
+```javascript title="Client side (Browser)"
+  // The results for feature_flag_1 and feature_flag_2 will be evaluated when the Sdk is ready or an update is processed.
+  // However only feature_flag_1 will be evaluated also if the Sdk is ready from cache.
+  store.dispatch(initSplitSdk({ config: sdkBrowserConfig, onReadyFromCache: onReadyFromCacheCallback, onReady: onReadyCallback }));
+  store.dispatch(getTreatments({ splitNames: ['feature_flag_1'], evalOnUpdate: true, evalOnReadyFromCache: true }));
+  store.dispatch(getTreatments({ splitNames: ['feature_flag_2'], evalOnUpdate: true }));
+  
+  function onReadyFromCacheCallback() {
+    // feature_flag_1 is different than 'control' since we instructed the SDK to evaluate once cache is loaded.
+    const feature_flag_1 = selectTreatmentAndStatus(store.getState().splitio, 'feature_flag_1').treatment;
+    // feature_flag_2 is 'control' still as it wasn't evaluated with cached data.
+    const feature_flag_2 = selectTreatmentAndStatus(store.getState().splitio, 'feature_flag_2').treatment;
+    ...
+  }
+  
+  function onReadyCallback() {
+    // both feature flags treatments should be different than 'control' given that any pending evaluation is calculated once SDK is ready
+    const feature_flag_1 = selectTreatmentAndStatus(store.getState().splitio, 'feature_flag_1').treatment;
+    const feature_flag_2 = selectTreatmentAndStatus(store.getState().splitio, 'feature_flag_2').treatment;
+    ...
+  }
+```
