@@ -1,0 +1,152 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+#### Example of getting feature flag treatments with configurations:
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript title="With useSplitTreatments hook"
+import { useSplitTreatments } from '@splitsoftware/splitio-react';
+import MyComponentV1 from './MyComponentV1';
+import MyComponentV2 from './MyComponentV2';
+
+const featureName = 'FEATURE_FLAG_NAME';
+
+function renderContent(treatmentWithConfig, props) {
+  const { treatment, config } = treatmentWithConfig;
+
+  if (treatment === 'on') return (<MyComponentV2 config={config} {...props} />);
+
+  return (<MyComponentV1 config={config} {...props} />);
+}
+
+/**
+ * This is another way to write a toggler with a function component that uses hooks.
+ **/
+function MyComponentToggle (props) {
+
+  // evaluate feature flags with the `useSplitTreatments` hook
+  const { treatments, isReady } = useSplitTreatments({ names: [featureName] });
+
+  return isReady ?
+    renderContent(treatments[featureName], props) : // Use the treatments and configs.
+    <Spinner />; // Render a spinner if the SDK is not ready yet.
+}
+
+export default MyComponentToggle;
+```
+
+```javascript title="With SplitTreatments component (deprecated)"
+import { SplitTreatments } from '@splitsoftware/splitio-react';
+import MyComponentV1 from './MyComponentV1';
+import MyComponentV2 from './MyComponentV2';
+
+const featureName = 'FEATURE_FLAG_NAME';
+
+/**
+ * This is one way to write a toggler component, which might be convenient for code cleanup afterwards
+ * as you remove both toggle and legacy component, then wire the version you'll keep.
+ * But it's not the only way to use the treatments. Always follow the pattern that works best for you!
+ **/
+export default class MyComponentToggle extends React.Component {
+
+  renderContent(treatmentWithConfig) {
+    const { treatment, config } = treatmentWithConfig;
+
+    if (treatment === 'on') return (<MyComponentV2 config={config} {...this.props} />);
+
+    return (<MyComponentV1 config={config} {...this.props} />);
+  }
+
+  render() {
+    return (
+      <SplitTreatments names={[featureName]} >
+        {({ treatments, isReady }) => { // Passes down a TreatmentsWithConfig object and SplitContext properties like the boolean `isReady` flag.
+          return isReady ?
+            this.renderContent(treatments[featureName]) : // Use the treatments and configs.
+            <Spinner />; // Render a spinner if the SDK is not ready yet. You can do what you want with this boolean.
+        }}
+      </SplitTreatments>
+    );
+  }
+}
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript title="With useSplitTreatments hook"
+import { useSplitTreatments } from '@splitsoftware/splitio-react';
+import MyComponentV1 from './MyComponentV1';
+import MyComponentV2 from './MyComponentV2';
+
+const featureName = 'FEATURE_FLAG_NAME';
+
+function renderContent(treatmentWithConfig, props) {
+  const { treatment, config } = treatmentWithConfig;
+
+  if (treatment === 'on') return (<MyComponentV2 config={config} {...props} />);
+
+  return (<MyComponentV1 config={config} {...props} />);
+}
+
+/**
+ * This is another way to write a toggler with a function component that uses hooks.
+ **/
+function MyComponentToggle (props) {
+
+  // evaluate feature flags with the `useSplitTreatments` hook
+  const { treatments, isReady } = useSplitTreatments({ names: [featureName] });
+
+  return isReady ?
+    renderContent(treatments[featureName], props) : // Use the treatments and configs.
+    <Spinner />; // Render a spinner if the SDK is not ready yet.
+}
+
+export default MyComponentToggle;
+```
+
+```javascript title="With SplitTreatments component (deprecated)"
+import { SplitTreatments } from '@splitsoftware/splitio-react';
+import MyComponentV1 from './MyComponentV1';
+import MyComponentV2 from './MyComponentV2';
+
+const featureName = 'FEATURE_FLAG_NAME';
+
+/**
+ * This is one way to write a toggler component, which might be convenient for code cleanup afterwards
+ * as you remove both toggle and legacy component, then wire the version you'll keep.
+ * But it's not the only way to use the treatments. Always follow the pattern that works best for you!
+ **/
+export default class MyComponentToggle extends React.Component {
+
+  renderContent(treatmentWithConfig) {
+    const { treatment, config } = treatmentWithConfig;
+
+    if (treatment === 'on') return (<MyComponentV2 config={config} {...this.props} />);
+
+    return (<MyComponentV1 config={config} {...this.props} />);
+  }
+
+  render() {
+    return (
+      <SplitTreatments names={[featureName]} >
+        {({ treatments, isReady }) => { // Passes down a TreatmentsWithConfig object and SplitContext properties like the boolean `isReady` flag.
+          return isReady ?
+            this.renderContent(treatments[featureName]) : // Use the treatments and configs.
+            <Spinner />; // Render a spinner if the SDK is not ready yet. You can do what you want with this boolean.
+        }}
+      </SplitTreatments>
+    );
+  }
+}
+```
+
+  </TabItem>
+</Tabs>

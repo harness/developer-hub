@@ -1,0 +1,95 @@
+---
+title: Logging
+sidebar_label: Logging
+description: Explore the range of logging levels for transparent development and debugging.
+---
+ 
+The Java SDK uses slf4j-api for logging. If you do not provide an implementation for slf4j, you see the following error in your logs:
+
+```java title="Text"
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+```
+
+You can get the SDK to log by providing a concrete implementation for SLF4J. For instance, if you are using log4j, you should import the following dependency.
+
+```java title="pom.xml"
+<dependency>
+  <groupId>org.slf4j</groupId>
+  <artifactId>slf4j-log4j12</artifactId>
+  <version>1.7.21</version>
+</dependency>
+```
+
+If you have a log4j.properties in your classpath, the SDK log is visible. The following is an example of log4j.properties entry:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+log4j.rootLogger=DEBUG, A1
+log4j.appender.A1=org.apache.log4j.ConsoleAppender
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+log4j.rootLogger=DEBUG, A1
+log4j.appender.A1=org.apache.log4j.ConsoleAppender
+log4j.appender.A1.layout=org.apache.log4j.PatternLayout
+log4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c %x - %m%n
+```
+  </TabItem>
+</Tabs>
+
+The following is an example of initializing the logger object in Java:
+
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+import io.split.client.SplitClient;
+import io.split.client.SplitClientConfig;
+import io.split.client.SplitFactory;
+import io.split.client.SplitFactoryBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class SplitSD {
+
+	final static Logger logger = LoggerFactory.getLogger(SplitSD.class);
+	public static void main(String[] args) {
+		SplitClientConfig config = SplitClientConfig.builder()
+				   .setBlockUntilReadyTimeout(10000)
+				   .enableDebug()
+				   .build();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+import io.split.client.SplitClient;
+import io.split.client.SplitClientConfig;
+import io.split.client.SplitFactory;
+import io.split.client.SplitFactoryBuilder;
+import org.slf4j.LoggerFactory
+
+class SplitSD {
+    inline fun <reified T:Any> logger() = LoggerFactory.getLogger(T::class.java)
+}
+```
+  </TabItem>
+</Tabs>

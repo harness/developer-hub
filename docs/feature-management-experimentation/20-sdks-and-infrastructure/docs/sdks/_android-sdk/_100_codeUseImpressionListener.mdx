@@ -1,0 +1,61 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+The SDK sends the generated impressions to the impression listener right away. Because of this, be careful while implementing handling logic to avoid blocking the main thread. Generally speaking, you should create a separate thread to handle incoming impressions.
+
+Example of a custom impression listener:
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+                        .impressionListener(new MyImpressionListener())
+                        .build();
+
+class MyImpressionListener implements ImpressionListener {
+    @Override
+    public void log(Impression impression) {
+        // Do something on UI thread
+        new Thread(new Runnable() {
+            public void run() {
+                // Do something in another thread (use this most of the time!)
+            }
+        }).start();
+    }
+
+    @Override
+    public void close() {
+    }
+}
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+class MyImpressionListener : ImpressionListener {
+    override fun log(impression: Impression) {
+        // Do something on UI thread
+        Thread {
+            // Do something in another thread (use this most of the time!)
+        }.start()
+    }
+
+    override fun close() {
+
+    }
+}
+
+val config = SplitClientConfig.builder()
+    .impressionListener(MyImpressionListener())
+    .build()
+```
+
+  </TabItem>
+</Tabs>

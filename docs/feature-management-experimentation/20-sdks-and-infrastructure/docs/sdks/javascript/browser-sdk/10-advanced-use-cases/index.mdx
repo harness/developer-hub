@@ -1,0 +1,55 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Use an external impression listener, multiple SDK clients, user consent, and certificate pinning.
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Listener,
+  MultipleSdkClients,
+  UserConsent,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_all_sdks/index.mdx";
+
+import DataImpression          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_100_dataImpression.mdx";
+import Impression              from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_100_codeImpression.mdx";
+import UseImpressionListener   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_100_codeUseImpressionListener.mdx";
+import NotesImpressionListener from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_100_notes.mdx";
+
+import SplitFactoryClient      from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_101_codeSplitFactoryClient.mdx";
+
+import GetUserConsent          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_javascript-sdk/_102_codeGetUserConsent.mdx";
+
+export const Document = () => SDKDocsBuilder(
+  [
+    [ 
+      Listener, 
+      { 
+        dataImpression:            <DataImpression sdkLanguage='browserjs' />,
+        codeImpression:            <Impression />,
+        codeUseImpressionListener: <UseImpressionListener />,
+        notesImpressionListener:   <NotesImpressionListener />,
+      }, 
+    ],
+    [ 
+      MultipleSdkClients, 
+      {
+        codeSplitFactoryClient: <SplitFactoryClient />,
+      },
+    ],
+    [
+      UserConsent,
+      {
+        method:             "UserConsent.setStatus(boolean)",
+        codeGetUserConsent: <GetUserConsent />,
+      },
+    ],
+  ]
+);
+
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []

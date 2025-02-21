@@ -1,0 +1,439 @@
+---
+title: Localhost mode
+sidebar_label: Localhost mode
+description: Develop and test without an internet connection. Read flag and segment definitions from a file.
+---
+
+For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the Split SDK can be started in **localhost** mode (aka off-the-grid mode). In this mode, the SDK neither polls nor updates Split servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. To use the SDK in localhost mode, you must replace the API Key with "localhost" value.
+
+With this mode, you can instantiate the SDKS using one of the following methods:
+
+* JSON: Full support, for advanced cases or replicating an environment by pulling rules from Split cloud (from version `4.7.0`).
+* YAML: Supports dynamic configs, individual targets and default rules (from version `3.1.0`).
+* .split: Legacy option, only treatment result.
+
+## JSON
+
+Since version `4.7.0`, our SDK supports localhost mode by using the JSON format. This version allows the user to map feature flags and segment definitions in the same format as the APIs receive the data.
+
+This new mode needs extra configuration to be set
+
+| **Name** | **Description** | **Type** |
+| --- | --- | --- |
+| splitFile | Indicates the path of the feature flags file location to read | String |
+| segmentDirectory | Indicates the path where all the segment files are located | String |
+| localhostRefreshEnabled | Flag to run synchronization refresh for feature flags and segments in localhost mode. | Boolean |
+
+### splitFile
+
+The following splitFile is a JSON that represents a SplitChange:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'Java SplitChange Schema', value: 'javasplitchange'},
+    {label: 'Java Split Schema', value: 'javasplit'},
+    {label: 'Kotlin SplitChange Schema', value: 'kotlinsplitchange'},
+    {label: 'Kotlin Split Schema', value: 'kotlinsplit'},
+    {label: 'JSON example', value: 'json'},
+  ]}>
+  <TabItem value="javasplitchange">
+```java
+public class SplitChange {
+    public List<Split> splits;
+    public long since;
+    public long till;
+}
+```
+  </TabItem>
+  <TabItem value="javasplit">
+```java
+public class Split {
+    public String name;
+    public int seed;
+    public Status status;
+    public boolean killed;
+    public String defaultTreatment;
+    public List<Condition> conditions;
+    public String trafficTypeName;
+    public long changeNumber;
+    public Integer trafficAllocation;
+    public Integer trafficAllocationSeed;
+    public int algo;
+    public Map<String, String> configurations;
+}
+```
+  </TabItem>
+  <TabItem value="kotlinsplitchange">
+```kotlin
+class Split(
+    var splits: List<Split>?,
+    var since: Long?,
+    var till: Long?,
+)
+```
+  </TabItem>
+  <TabItem value="kotlinsplit">
+```kotlin
+class Split(
+    var name: String?,
+    var seed: Int?,
+    var status: Status?,
+    var killed: Boolean?,
+    var defaultTreatment: String?,
+    var conditions: List<Condition>?,
+    var trafficTypeName: String?,
+    var changeNumber: Long?,
+    var trafficAllocation: Int?,
+    var trafficAllocationSeed: Int?,
+    var algo: Int?,
+    configurations: Map<String, String>?
+)
+```
+  </TabItem>
+  <TabItem value="json">
+```json
+{
+  "splits": [
+    {
+      "trafficTypeName": "user",
+      "name": "feature_flag_1",
+      "trafficAllocation": 100,
+      "trafficAllocationSeed": -1364119282,
+      "seed": -605938843,
+      "status": "ACTIVE",
+      "killed": false,
+      "defaultTreatment": "off",
+      "changeNumber": 1660326991072,
+      "algo": 2,
+      "configurations": {},
+      "conditions": [
+        {
+          "conditionType": "ROLLOUT",
+          "matcherGroup": {
+            "combiner": "AND",
+            "matchers": [
+              {
+                "keySelector": {
+                  "trafficType": "user",
+                  "attribute": null
+                },
+                "matcherType": "IN_SEGMENT",
+                "negate": false,
+                "userDefinedSegmentMatcherData": {
+                  "segmentName": "segment_1"
+                },
+                "whitelistMatcherData": null,
+                "unaryNumericMatcherData": null,
+                "betweenMatcherData": null,
+                "booleanMatcherData": null,
+                "dependencyMatcherData": null,
+                "stringMatcherData": null
+              }
+            ]
+          },
+          "partitions": [
+            {
+              "treatment": "on",
+              "size": 0
+            },
+            {
+              "treatment": "off",
+              "size": 100
+            }
+          ],
+          "label": "in segment segment_1"
+        },
+        {
+          "conditionType": "ROLLOUT",
+          "matcherGroup": {
+            "combiner": "AND",
+            "matchers": [
+              {
+                "keySelector": {
+                  "trafficType": "user",
+                  "attribute": null
+                },
+                "matcherType": "ALL_KEYS",
+                "negate": false,
+                "userDefinedSegmentMatcherData": null,
+                "whitelistMatcherData": null,
+                "unaryNumericMatcherData": null,
+                "betweenMatcherData": null,
+                "booleanMatcherData": null,
+                "dependencyMatcherData": null,
+                "stringMatcherData": null
+              }
+            ]
+          },
+          "partitions": [
+            {
+              "treatment": "on",
+              "size": 50
+            },
+            {
+              "treatment": "off",
+              "size": 50
+            }
+          ],
+          "label": "default rule"
+        }
+      ]
+    }
+  ],
+  "since": -1,
+  "till": 1660326991072
+}
+```
+  </TabItem>
+</Tabs>
+
+### segmentDirectory
+
+The provided segment directory must have the json files of the corresponding segment linked to previous feature flag definitions. According to the Split file sample above: `feature_flag_1` has `segment_1` linked. That means that the segmentDirectory needs to have `segment_1` definition.
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java SegmentChange Schema', value: 'java'},
+    {label: 'Kotlin SegmentChange Schema', value: 'kotlin'},
+    {label: 'JSON example', value: 'json'},
+  ]}>
+  <TabItem value="java">
+```java
+public class SegmentChange {
+    public String id;
+    public String name;
+    public List<String> added;
+    public List<String> removed;
+    public long since;
+    public long till;
+}
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+class SegmentChange(
+    var id: String,
+    var name: String,
+    var added: List<String>,
+    var removed: List<String>,
+    var since: Long,
+    var till: Long
+)
+```
+  </TabItem>
+  <TabItem value="json">
+```json
+{
+  "name": "segment_1",
+  "added": [
+    "example1",
+    "example2"
+  ],
+  "removed": [],
+  "since": -1,
+  "till": 1585948850110
+}
+```
+  </TabItem>
+</Tabs>
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+       .splitFile("parentRoot/featureFlags.json")
+       .segmentDirectory("parentRoot/segments")
+       .setBlockUntilReadyTimeout(10000)
+       .build();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+val config: SplitClientConfig = SplitClientConfig.builder()
+                .splitFile("parentRoot/featureFlags.json")
+                .segmentDirectory("parentRoot/segments")
+                .setBlockUntilReadyTimeout(10000)
+                .build()
+```
+  </TabItem>
+</Tabs>
+
+## YAML
+
+Since version `3.1.0`, our SDK supports a type of localhost feature flag definition file that uses the YAML format. This new format allows the user to map different keys to different treatments within a single feature flag and also add configurations to them. The format is a list of single-key maps (one per mapping feature-flag-keys-config) which is defined as follows:
+
+```yaml title="YAML"
+# - feature_name:
+#     treatment: "treatment_applied_to_this_entry"
+#     keys: "single_key_or_list"
+#     config: "{\"desc\" : \"this applies only to ON treatment\"}"
+
+- my_feature_flag:
+    treatment: "on"
+    keys: "key"
+    config: "{\"desc\" : \"this applies only to ON treatment\"}"
+- some_other_feature_flag:
+    treatment: "off"
+- my_feature_flag:
+    treatment: "off"
+- other_feature_flag:
+    treatment: "off"
+    keys: ["key_1", "key_2"]
+    config: "{\"desc\" : \"this overrides multiple keys and returns off treatment for those keys\"}"
+```
+
+In the example above, we have four entries:
+
+ * The first entry defines that for feature flag `my_feature_flag`, the key `key` returns the treatment `on` and the `on` treatment is tied to the configuration `{"desc" : "this applies only to ON treatment"}`.
+ * The second entry defines that the feature flag `some_other_feature_flag` always returns the `off` treatment and no configuration.
+ * The third entry defines that `my_feature_flag` always returns `off` for all keys that don't match another entry (in this case, any key other than `key`).
+ * The fourth entry shows how an example overrides a treatment for a set of keys.
+
+Use the SplitConfigBuilder object to set the location of the Split localhost YAML file as shown in the example below:
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java Init example', value: 'java'},
+    {label: 'Kotlin Init example', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+import io.split.client.SplitClient;
+import io.split.client.SplitClientConfig;
+import io.split.client.SplitFactoryBuilder;
+
+SplitClientConfig config = SplitClientConfig.builder()
+       .splitFile("parentRoot/split.yaml")
+       .setBlockUntilReadyTimeout(10000)
+       .build();
+SplitClient client = SplitFactoryBuilder.build("localhost", config).client();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+import io.split.client.SplitFactoryBuilder
+import io.split.client.SplitClient
+import io.split.client.SplitClientConfig
+
+val config: SplitClientConfig = SplitClientConfig.builder()
+            .splitFile("parentRoot/split.yaml")
+            .setBlockUntilReadyTimeout(10000)
+            .build()
+val client: SplitClient = SplitFactoryBuilder.build("localhost", config).client()
+```
+  </TabItem>
+</Tabs>
+
+## .SPLIT file
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+SplitClientConfig config = SplitClientConfig.builder().setBlockUntilReadyTimeout(10000).build();
+SplitFactory splitFactory = SplitFactoryBuilder.build("localhost", config);
+SplitClient client = splitFactory.client();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+val config: SplitClientConfig = SplitClientConfig.builder().setBlockUntilReadyTimeout(10000).build()
+val splitFactory: SplitFactory = SplitFactoryBuilder.build("localhost", config)
+val client: SplitClient = splitFactory.client()
+```
+  </TabItem>
+</Tabs>
+
+In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given flag, the treatment specified in the file is returned for every customer.
+
+`getTreatment` calls for a feature flag and only returns the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature that is not provided in the `features` map returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK is asked to evaluate them.
+
+The format of this file is two columns separated by a whitespace. The left column is the feature flag name and the right column is the treatment name. The following is a sample `.split` file:
+
+```bash title="Shell"
+reporting_v2 on # sdk.getTreatment(*, reporting_v2) will return 'on'
+
+double_writes_to_cassandra off
+
+new-navigation v3
+```
+
+## Input Stream
+
+Since version `4.9.0`, the SDK supports InputStream to use localhost inside a JAR. To achieve this, we added new parameters in splitFile property to set the InputStream. The first param is an InputStream of the file that we want to read. And the second is a FileTypeEnum which can be either `YAML`, or `JSON`. Here is an example code to demonstrate how to use this new feature:
+
+<Tabs
+  values={[
+    {label: 'YAML', value: 'yaml'},
+    {label: 'JSON', value: 'json'},
+    {label: 'Kotlin example', value: 'kotlin'},
+  ]}>
+  <TabItem value="yaml">
+```java
+import io.split.client.SplitClient;
+import io.split.client.SplitClientConfig;
+import io.split.client.SplitFactoryBuilder;
+import io.split.client.utils.FileTypeEnum;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
+
+InputStream inputStream = new FileInputStream("parentRoot/split.yaml");
+SplitClientConfig config = SplitClientConfig.builder()
+       .splitFile(inputStream, FileTypeEnum.YAML)
+       .setBlockUntilReadyTimeout(10000)
+       .build();
+SplitClient client = SplitFactoryBuilder.build("localhost", config).client();
+```
+  </TabItem>
+  <TabItem value="json">
+```java
+import io.split.client.SplitFactoryBuilder;
+import io.split.client.SplitClient;
+import io.split.client.SplitClientConfig;
+import io.split.client.utils.FileTypeEnum;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
+
+InputStream inputStream = new FileInputStream("parentRoot/split.json");
+SplitClientConfig config = SplitClientConfig.builder()
+       .splitFile(inputStream, FileTypeEnum.JSON)
+       .setBlockUntilReadyTimeout(10000)
+       .build();
+SplitClient client = SplitFactoryBuilder.build("localhost", config).client();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+import io.split.client.SplitFactoryBuilder
+import io.split.client.SplitClient
+import io.split.client.SplitClientConfig
+import io.split.client.utils.FileTypeEnum
+
+import java.io.FileInputStream
+import java.io.InputStream
+
+val inputStream = new FileInputStream("parentRoot/split.json");
+val config: SplitClientConfig = SplitClientConfig.builder()
+            .splitFile(inputStream, FileTypeEnum.JSON)
+            .setBlockUntilReadyTimeout(10000)
+            .build()
+val client: SplitClient = SplitFactoryBuilder.build("localhost", config).client()
+```
+  </TabItem>
+</Tabs>

@@ -1,0 +1,15 @@
+React SDK is built on top of our JavaScript SDK core modules but is optimized for React applications. React SDK provides a set of components and custom hooks based on the React Hooks API, so your React app can conveniently use FME features.
+
+This SDK also has an optional pluggable API for full FME functionality. If already using our isomorphic JavaScript SDK, consider this [migration guide](https://help.split.io/hc/en-us/articles/360059966112-Browser-SDK-Migration-Guide) to understand the changes of the new pluggable API.
+
+:::info[Migrating from v1.x to v2.x]
+Refer to the [migration guide](https://github.com/splitio/react-client/blob/development/MIGRATION-GUIDE.md) for information on upgrading to v2.x.
+:::
+
+:::info[Deprecated HOCs & components]
+High-Order-Components (`withSplitFactory`, `withSplitClient`, and `withSplitTreatments`) and components that accept a render function as child component (`SplitTreatments` and `SplitClient`) have been deprecated and might be removed in a future major release.
+
+The deprecation is intended to simplify the API and discourage using old patterns (HOCs and render props) in favor of the *hook* alternatives, to take advantage of React optimizations.
+
+Although these components are still working, we recommend migrating to the `SplitFactoryProvider` component and library hooks. Refer to the [migration guide](https://github.com/splitio/react-client/blob/development/MIGRATION-GUIDE.md#migrating-to-react-sdk-v200) for more details.
+:::

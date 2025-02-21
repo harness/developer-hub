@@ -1,0 +1,50 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Adding custom properties to tracked events. Tracking custom events. Supporting user consent.
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  CustomProperties,
+  CustomEvents,
+  UserConsent,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_templates/_used_by_all_rum_agents/index.mdx";
+
+import Properties     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_ios-rum-agent/_030_customProperties.mdx";
+
+import Track          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_ios-rum-agent/_031_codeTrack.mdx";
+import TrackError     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_ios-rum-agent/_031_codeTrackError.mdx";
+
+import GetUserConsent from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_ios-rum-agent/_033_codeGetUserConsent.mdx";
+
+export const Document = () => SDKDocsBuilder(
+  [
+    [ 
+      CustomProperties, 
+      { 
+        customProperties: <Properties />,
+       }, 
+    ],
+    [ 
+      CustomEvents, 
+      {
+        codeTrack:       <Track />,
+        codeTrackError:  <TrackError />,
+      },
+    ],
+    [
+      UserConsent,
+      {
+        codeGetUserConsent: <GetUserConsent />,
+      },
+    ],
+  ]
+);
+
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []

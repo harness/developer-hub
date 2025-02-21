@@ -1,0 +1,27 @@
+---
+title: Shutdown
+sidebar_label: Shutdown
+description: Gracefully stop background threads, clear caches, close connections, and flush data.
+---
+
+Before letting your app shut down, call `destroy()` as it gracefully shuts down the Suite by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions and events.
+
+```swift title="Swift"
+client?.destroy()
+```
+
+Also, this method has a completion closure which can be used to run some code after destroy is executed. For instance, the following snippet waits until destroy has finished to continue execution:
+
+```swift title="Swift"
+let semaphore = DispatchSemaphore(value: 0)
+client?.destroy(completion: {
+    _ = semaphore.signal()
+})
+semaphore.wait()
+```
+
+After `destroy()` is called, any subsequent invocations to the `client.getTreatment()` or `manager` methods result in `control` or an empty list respectively.
+
+:::warning[Important!]
+A call to the `destroy()` method also destroys the factory object. When creating new client instance, first create a new factory instance.
+:::

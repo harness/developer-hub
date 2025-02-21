@@ -1,0 +1,17 @@
+---
+title: Shutdown
+sidebar_label: Shutdown
+description: Gracefully stop background threads, clear caches, close connections, and flush data.
+---
+
+Call the `.destroy` method before letting a process using the SDK exit, as this method gracefully shuts down the Split SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
+
+```ruby title="Ruby"
+client.destroy
+```
+
+**Note: Within multi-threaded setups like using Ruby with Rails and Puma, to fully destroy the factory, you need to set it to nil as follows: `Rails.configuration.split_factory = nil`**
+
+:::warning[Important!]
+A call to the `destroy()` method also destroys the factory object. When creating new client instance, first create a new factory instance.
+:::

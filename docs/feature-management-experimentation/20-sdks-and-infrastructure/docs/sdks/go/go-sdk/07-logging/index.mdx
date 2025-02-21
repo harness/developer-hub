@@ -1,0 +1,93 @@
+---
+title: Logging
+sidebar_label: Logging
+description: Explore the range of logging levels for transparent development and debugging.
+---
+ 
+SDK is intended to be embedded in other applications, so our logging should be the least intrusive possible. You can either supply your own logger (as long as it is wrapped in an adapter implementing the logger interface defined in our go-toolkit repo/logging package) or can use the SDK's own logger configuring its minimum `loglevel` and a writer for each of the levels.
+
+:::info[Note]
+By default, only error-level messages are logged, and all writer outputs are set to `os.Stdout`.
+:::
+
+## Custom logging
+
+To use a custom logger, implement the interface `LoggingInterface` from the `logging` package located in the `go-toolkit` repo, which is defined as follows.
+```go title="Go"
+type LoggerInterface interface {
+	Error(msg ...interface{})
+	Warning(msg ...interface{})
+	Info(msg ...interface{})
+	Debug(msg ...interface{})
+	Verbose(msg ...interface{})
+}
+```
+:::
+
+Below is an example of an HTTP logger sending messages to a server.
+
+:::info[Note]
+It is the developer's responsibility to ensure that this logger's methods do not panic, and to handle logging levels if a custom logger is user.
+:::
+
+```go title="Go"
+type HttpLogger struct {
+	url   string
+	level int
+}
+ 
+// Generic function to be used by different log levels to send messages
+func (l *HttpLogger) log(messages []string) {
+	// blocking call to send messages via http
+}
+ 
+func (l *CustomLogger) Debug(msgs ...interface{}) {
+	if l.level < constants.DebugLevel { // constants defined by user
+		return
+	}
+	var messages []string
+	for _, msg := range msgs {
+		str, conv := msg.(string)
+		if conv {
+			messages = append(messages, str)
+		}
+	}
+	go log(messages) // async call to avoid blocking the SDK 
+}
+ 
+// Should implement Error, Warning, Info, Debug, Verbose.
+// All with the same signature.
+ 
+func main() {
+  sdkConf := conf.Default()
+  sdkConf.Logger = &HttpLogger{url: "http://mylogs.io/"}
+  factory, err := client.NewSplitFactory("YOUR_SDK_KEY", sdkConf)
+  
+  // ...
+}
+```
+
+## SDK logging
+
+In this example, we use our logging library's FileRotateWriter for the **Error** log level, which outputs logging messages to a file pattern until a max file size is reached, then switching to a new a file.
+
+```go title="Go"
+	var errorWriter io.Writer
+	errorWriter, err := logging.NewFileRotate(&logging.FileRotateOptions{
+		BackupCount: 2,
+		MaxBytes:    1000000,
+		Path:        os.Getenv("HOME") + "/splitErrors.log",
+	})
+ 
+	if err != nil {
+		fmt.Println("Error while instantiating writer, will fallback to stderr")
+		fmt.Println(err)
+		errorWriter = os.Stderr
+	}
+ 
+  sdkConf := conf.Default()
+  sdkConf.LoggerConfig.LogLevel = logging.LevelInfo
+  sdkConf.LoggerConfg.ErrorWriter = errorWriter,
+  factory, err := client.NewSplitFactory("YOUR_SDK_KEY", sdkConfg)
+	// ...
+```

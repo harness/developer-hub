@@ -1,0 +1,42 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Use the Split manager to get a list of features available to the Split client. To access the Manager in your code base, use the `useSplitManager` hook.
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript
+import { useSplitManager } from '@splitsoftware/splitio-react';
+
+const { manager, isReady } = useSplitManager();
+
+// Make sure the SDK is ready to return Split's data from the manager object
+if (isReady) {
+  // Manager is ready to be used.
+  const flagNames = manager.names();
+}
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript
+import { useSplitManager } from '@splitsoftware/splitio-react';
+
+const { manager, isReady } = useSplitManager();
+
+// Make sure the SDK is ready to return Split's data from the manager object
+if (isReady) {
+  // Manager is ready to be used.
+  const flagNames: SplitIO.SplitNames = manager.names();
+}
+```
+
+  </TabItem>
+</Tabs>

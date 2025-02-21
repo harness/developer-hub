@@ -1,0 +1,63 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+These options can be configured using the `AndroidManifest.xml` or programmatically. Values specified programmatically will override values set through the `AndroidManifest.xml`. Both methods are demonstrated below.
+
+Configuration using the manifest file:
+
+```xml title="AndroidManifest.xml configuration"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <application ...>
+    <activity ...>...</activity>
+
+    <meta-data
+      android:name="io.split.android.rum.SPLIT_SDK_KEY"
+      android:value="YOUR_SDK_KEY" />
+
+    <!-- Configuration -->
+    <meta-data
+      android:name="io.split.android.rum.LOG_LEVEL"
+      android:value="DEBUG" />
+
+    <meta-data
+      android:name="io.split.android.rum.PREFIX"
+      android:value="pre" />
+
+  </application>
+</manifest>
+```
+
+Configuration specified programatically:
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```java
+SplitRumConfiguration config = new SplitRumConfiguration.Builder()
+  .setPrefix("pre")
+  .setLogLevel(LogLevel.DEBUG)
+  .build();
+
+SplitRumAgent.setup("YOUR_SDK_KEY", config);
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val config = SplitRumConfiguration.Builder()
+  .setPrefix("pre")
+  .setLogLevel(LogLevel.DEBUG)
+  .build()
+
+  SplitRumAgent.setup("YOUR_SDK_KEY", config)
+```
+
+  </TabItem>
+</Tabs>

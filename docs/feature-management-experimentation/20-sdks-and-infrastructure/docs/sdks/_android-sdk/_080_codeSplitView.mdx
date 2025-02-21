@@ -1,0 +1,43 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```java
+public class SplitView {
+    public String name;
+    public String trafficType;
+    public boolean killed;
+    public List<String> treatments;
+    public long changeNumber;
+    public Map<String, String> configs;
+    public String defaultTreatment;
+    public List<String> sets;    
+    public boolean impressionsDisabled;
+}
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+class SplitView(
+    var name: String?,
+    var trafficType: String?,
+    var killed: Boolean,
+    var treatments: List<String>?,
+    var changeNumber: Long
+    var defaultTreatment: String?
+    var sets: List<String>
+    var impressionsDisabled: Boolean
+)
+```
+
+  </TabItem>
+</Tabs>

@@ -1,0 +1,82 @@
+---
+title: Manager
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+ 
+Use the Split Manager to get a list of feature flags available to the split client.
+
+To instantiate a Manager in your code base, use the same factory that you used for your client.
+
+```python title="Manager"
+split = factory.client()
+manager = factory.manager()
+```
+
+The Manager then has the following methods available.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'Multi-threaded', value: 'multi'},
+    {label: 'asyncio', value: 'asyncio'},
+  ]}>
+  <TabItem value="multi">
+```python
+class SplitManager(object):
+    def split_names(self):
+        """Returns the names of feature flags registered with the SDK. Subclasses need to override this method.
+        :return: A list of str
+        :rtype: list
+        """
+        raise NotImplementedError()
+
+        def splits(self):
+        """Retrieves the feature flags that are currently registered with the SDK. Subclasses need to override this method.
+        :return: A List of SplitView.
+        :rtype: list
+        """
+        raise NotImplementedError()
+
+    def split(self, feature_flag_name):
+        """Returns the Feature Flag registered with the SDK of this name. Subclasses need to override this method.
+        :return: The SplitView instance.
+        :rtype: SplitView
+        """
+        raise NotImplementedError()
+```
+  </TabItem>
+  <TabItem value="asyncio">
+```python
+class SplitManagerAsync(object):
+    async def split_names(self):
+        """Returns the names of feature flags registered with the SDK. Subclasses need to override this method.
+        :return: A list of str
+        :rtype: list
+        """
+        raise NotImplementedError()
+
+    async def splits(self):
+        """Retrieves the feature flags that are currently registered with the SDK. Subclasses need to override this method.
+        :return: A List of SplitView.
+        :rtype: list
+        """
+        raise NotImplementedError()
+
+    async def split(self, feature_flag_name):
+        """Returns the Feature Flag registered with the SDK of this name. Subclasses need to override this method.
+        :return: The SplitView instance.
+        :rtype: SplitView
+        """
+        raise NotImplementedError()
+```
+  </TabItem>
+</Tabs>
+
+The `SplitView` object that you see referenced above has the following structure.
+
+```python title="SplitView"
+SplitView = namedtuple('SplitView', ['name', 'traffic_type', 'killed', 'treatments', 'change_number', 'configs', 'default_treatment', 'sets', 'impressions_disabled'])
+```

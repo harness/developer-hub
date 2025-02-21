@@ -1,0 +1,30 @@
+---
+title: Shutdown
+sidebar_label: Shutdown
+description: Gracefully stop background threads, clear caches, close connections, and flush data.
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Shutdown,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_all_sdks/index.mdx";
+
+import FactoryDestroy from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_android-sdk/_040_codeFactoryDestroy.mdx";
+
+export const toc = [];
+
+export const Document = (t) => SDKDocsBuilder(
+  [
+    [
+      Shutdown,
+      {
+        codeFactoryDestroy: <FactoryDestroy defaultTab={t} />,
+      },
+    ],
+  ]
+);
+
+<>{ Document(props.defaultTab).contents }</>

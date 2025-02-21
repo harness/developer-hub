@@ -1,0 +1,46 @@
+---
+title: Localhost mode
+sidebar_label: Localhost mode
+description: Develop and test without an internet connection. Read flag and segment definitions from a file.
+---
+
+Features start their life on one developer's machine. A developer should be able to put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the Split SDK can be started in **localhost** mode (aka off-the-grid mode). In this mode, the SDK neither polls nor updates Split servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features.
+
+To use the SDK in localhost mode, replace the SDK Key with "localhost", as shown in the example below:
+
+```ruby title="Ruby"
+require 'splitclient-rb'
+split_file = File.expand_path(File.join(File.dirname(__FILE__), '../test_data/local_treatments/split.yaml'))
+
+split_client = split_factory = SplitIoClient::SplitFactory.new('localhost', split_file: split_file).client
+```
+
+In this mode, the SDK loads a `.yaml` file containing a simple depiction of a feature flag. eg:
+
+```yaml title="YAML"
+- single_key_feature:
+    treatment: 'on'
+    keys: 'john_doe'
+    config: {'desc': 'this applies only to ON and only for john_doe. The rest will receive OFF'}
+- single_key_feature:
+    treatment: 'off'
+    keys:
+    config: {'desc': 'this applies only to OFF treatment'}
+```
+
+In the example given, a call to `get_treatment` passing `john_doe` as the key renders the `on` treatment, while as any other key receives `off`. Note that configs can be added to test the `_with_config` versions of `get_treatment` and `get_treatments`. Also, you can set multiple keys for the same treatment using an array:
+
+```yaml title="YAML"
+- multiple_keys_feature:
+    treatment: 'on'
+    keys: ['john_doe', 'jane_doe']
+    config: {'desc': 'this applies only to ON and only for john_doe and jane_doe. The rest will receive OFF'}
+```
+
+Any feature that is not provided in the `split_file` markup map returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK is asked to evaluate them.
+
+By default, changes in the file are not automatically picked up without restarting the client. To have the client automatically pick up changes to the file, specify `reload_rate` as the interval in seconds at which changes are picked up. Here is an example of specifying both `split_file` and `reload_rate`.
+
+```ruby title="Ruby"
+factory = SplitIoClient::SplitFactoryBuilder.build('localhost', split_file: '/where/to-look-for/<file_name>', reload_rate: 3)
+```

@@ -1,0 +1,43 @@
+---
+title: Configuration
+sidebar_label: Configuration
+description: Optimize SDK performance in your environment by fine-tuning SDK config settings.
+---
+
+The SDK exposes configuration parameters that you can use to optimize SDK performance. Each parameter is preset to a reasonable default. You can optionally override these default values when instantiating the SDK.
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| logger | The log implementation to use for warnings and errors from the SDK. | Logs to STDOUT  |
+| debug_enabled| Enabled verbose mode. | false  |
+| transport_debug_enabled | Super verbose mode that prints network payloads among others. | false  |
+| connection_timeout| HTTP client connection timeout (in seconds). | 5s  |
+| read_timeout | HTTP socket read timeout (in seconds). | 5s  |
+| features_refresh_rate  |The SDK polls Split servers for changes to feature flags at this period (in seconds). | 5s |
+| segments_refresh_rate | The SDK polls Split servers for changes to segments at this period (in seconds). | 60s  |
+| telemetry_refresh_rate | The SDK caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers (in seconds). | 3600s  |
+| impressions_refresh_rate | How often impressions are sent out (in seconds). | 60s  |
+| events_push_rate | How often events are sent out (in seconds). | 60s  |
+| cache_adapter| Where to store feature flags and impressions: `:memory` or `:redis` | `:memory`  |
+| redis_url | Redis URL or hash with configuration for SDK to connect to. See [http://www.rubydoc.info/github/redis/redis-rb/Redis%3Ainitialize](http://www.rubydoc.info/github/redis/redis-rb/Redis%3Ainitialize) | 'redis://127.0.0.1:6379/0'  |
+| mode | Whether the SDK is running in `standalone mode` using memory storage or `consumer mode` using an external storage. See Redis integration. | `:standalone`  |
+| redis_namespace | Prefix to add to elements in Redis cache when having to share Redis with other applications. | `"SPLITIO/ruby-#{VERSION}"`  |
+| labels_enabled | Disable labels from being sent to the Split backend. Labels may contain sensitive information. | true  |
+| impressions_queue_size | The size of the impressions queue in case of `cache_adapter == :memory`.  | 5000 |
+| events_queue_size | The size of the events queue in case of `cache_adapter == :memory`.  | 500 |
+| impressions_bulk_size | Max number of impressions to be sent to the backend on each post. | impressions_queue_size  |
+| ip_addresses_enabled | Flag to disable IP addresses and host name from being sent to the Split backend. | true |
+| streaming_enabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | true |
+| impressions_mode | Defines how impressions are queued on the SDK. Supported modes are OPTIMIZED(`:optimized`), NONE(`:none`), and DEBUG(`:debug`). In OPTIMIZED mode, only unique impressions are queued and posted to Split; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, all impressions are queued and sent to Split; this is useful for validations. Use DEBUG mode when you want every impression to be logged in Split user inferface when trying to debug your SDK setup. This setting does not impact the impression listener which receives all generated impressions locally. | `:optimized` |
+| flag_sets_filter | This setting allows the SDK to only synchronize the feature flags in the specified flag sets, avoiding unused or unwanted flags from being synced on the SDK instance, bringing all the benefits from a reduced payload. | nil |
+To set each of these parameters, use the syntax below:
+
+```ruby title="Ruby"
+options = {connection_timeout: 10,
+           read_timeout: 5,
+           impressions_refresh_rate: 360,
+           logger: Logger.new('logfile.log')}
+
+split_factory = SplitIoClient::SplitFactory.new('YOUR_SDK_KEY', options)
+split_client = split_factory.client
+```

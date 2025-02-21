@@ -1,0 +1,136 @@
+---
+title: Manager
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+ 
+Use the Split Manager to get a list of features available to the Split client. To instantiate a Manager in your code base, use the same suite instance that you used for your client:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="browser-suite-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript
+var suite = SplitSuite({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    // the key can be the logged in
+    // user id, or the account id that
+    // the logged in user belongs to.
+    // The type of customer (user, account, custom)
+    // is chosen during Split's sign-up process.
+    key: 'key'
+  }
+});
+
+var manager = suite.manager();
+
+manager.once(manager.Event.SDK_READY, function() {
+  // Once it's ready, use the manager
+});
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+const suite: ISuiteSDK = SplitSuite({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    // the key can be the logged in
+    // user id, or the account id that
+    // the logged in user belongs to.
+    // The type of customer (user, account, custom)
+    // is chosen during Split's sign-up process.
+    key: 'key'
+  }
+});
+
+const manager: SplitIO.IManager = suite.manager();
+
+manager.once(manager.Event.SDK_READY, function() {
+  // Once it's ready, use the manager
+});
+```
+  </TabItem>
+</Tabs>
+
+The Manager has the following methods available:
+
+<Tabs
+  groupId="browser-suite-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+```javascript
+/**
+ * Returns the feature flag registered within the SDK that matches this name.
+ *
+ * @return SplitView or null.
+ */
+var splitView = manager.split('name-of-feature-flag');
+
+/**
+ * Retrieves all the feature flags that are currently registered within the SDK.
+ *
+ * returns a List of SplitViews.
+ */
+var splitViewsList = manager.splits();
+
+/**
+ * Returns the names of all feature flags registered within the SDK.
+ *
+ * @return a List of Strings of the features' names.
+ */
+var splitNamesList = manager.names();
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+/**
+ * Returns the feature flag registered within the SDK that matches this name.
+ *
+ * @return SplitView or null.
+ */
+const splitView: SplitIO.SplitView = manager.split('name-of-feature-flag');
+
+/**
+ * Retrieves all the feature flags that are currently registered within the SDK.
+ *
+ * returns a List of SplitViews.
+ */
+const splitViewsList: SplitIO.SplitViews = manager.splits();
+
+/**
+ * Returns the names of all feature flags registered within the SDK.
+ *
+ * @return a List of Strings of the features' names.
+ */
+const splitNamesList: SplitIO.SplitNames = manager.names();
+```
+  </TabItem>
+</Tabs>
+
+The `SplitView` object referenced above has the following structure:
+
+```typescript title="TypeScript"
+type SplitView = {
+  name: string,
+  trafficType: string,
+  killed: boolean,
+  treatments: Array<string>,
+  changeNumber: number,
+  configs: {
+    [treatmentName: string]: string
+  },
+  defaultTreatment: string,
+  sets: Array<string>
+}
+```

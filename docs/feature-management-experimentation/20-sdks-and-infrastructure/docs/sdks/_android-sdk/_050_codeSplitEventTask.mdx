@@ -1,0 +1,42 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+An event is an extension of the `SplitEventTask`:
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```java
+public class SplitEventTask {
+    public void onPostExecution(SplitClient client) { }
+    public void onPostExecutionView(SplitClient client) { }
+}
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+open class SplitEventTask {
+
+  open fun onPostExecution(client: SplitClient) {
+
+  }
+
+  open fun onPostExecutionView(client: SplitClient) {
+
+  }
+}
+```
+
+  </TabItem>
+</Tabs>
+
+You can use the `onPostExecution` method to execute some long-running tasks in the background after an event is fired.
+
+The `onPostExecutionView` method is invoked on the UI thread after the `onPostExecution` method completes.

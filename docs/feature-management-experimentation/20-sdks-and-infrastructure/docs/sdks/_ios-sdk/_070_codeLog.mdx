@@ -1,0 +1,10 @@
+To enable SDK logging, the `logLevel` setting is available in the `SplitClientConfig` class:
+
+```swift title="Swift (Set up logs)"
+// This setting type is `SplitLogLevel`. 
+// The available values are .verbose, .debug, .info, .warning, .error and .none
+  let config = SplitClientConfig() 
+  config.logLevel = .verbose
+
+  ...
+```

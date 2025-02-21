@@ -1,0 +1,108 @@
+---
+title: FME PHP SDK
+sidebar_label: PHP SDK
+description: PHP developer reference for working with FME on the server side. PHP SDK uses Redis.
+sidebar_position: 1
+---
+
+import DocCardList from '@theme/DocCardList';
+
+This guide provides detailed information about our PHP SDK. All of our SDKs are open source. Go to our [PHP SDK GitHub repository](https://github.com/splitio/php-client) to learn more.
+
+## Language support
+
+The PHP SDK supports PHP language version 7.3 and later.
+
+## Initialization
+ 
+### SDK architecture
+
+The PHP SDK is architected differently from our other SDKs. This is because of the **share nothing** nature of PHP, which means that you need to leverage a remote data store that your processes can share to ensure that your customers are served consistent treatments from our SDK. The SDK has three components.
+
+#### SDK client
+
+The SDK client is embedded within your PHP app. It decides which treatment to show to a customer for a particular feature flag.
+
+#### Split Synchronizer
+
+The Split Synchronizer service fetches data from the Split servers so it can evaluate what treatment to show to a customer. This is a background service that can run on one machine on a schedule via your scheduling system. Refer to the [Split Synchronizer documentation](https://help.split.io/hc/en-us/articles/360019686092) for more information.
+
+#### Cache 
+
+The Synchronizer Service stores its fetched data in the cache component. The SDK comes pre-packaged with a Redis Cache Adapter. It is critical that Redis is configured **to never evict**. 
+
+Now that you have a sense of how this SDK is structured, follow the steps below to set up the SDK in your code base:
+
+### 1. Import the SDK into your project
+
+```php title="PHP 7.3+"
+composer require splitsoftware/split-sdk-php:7.3.0
+```
+
+The public release is available at [packagist.org/packages/splitsoftware/split-sdk-php](https://packagist.org/packages/splitsoftware/split-sdk-php).
+
+:::warning[If using Synchronizer with Redis - Synchronizer 2.x required after SDK Version 3.x]
+Since version 2.0.0 of the split-synchronizer, we use a more efficient scheme to store impressions in Redis. This approach is faster and easier on your Redis instances, since it yields better throughput of impressions to the backend. If you use this SDK with the Synchronizer in Redis or Proxy mode, you  need the newest versions of our Split Synchronizer. It is recommended that once you're using SDK versions compatible with Split-Sync 2.0 on all your applications pointing to the redis instance maintained by the Split-Sync, you disable backwards compatibility. This is as easy as changing a parameter to `true` on the JSON config or an environment variable to `on` if you're using the docker image.
+:::
+
+### 2. Set up the synchronizer service
+
+When the composer is done, follow the steps in our [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) documents to get everything set to sync data to your Redis cache. After you do that, come back to set up the SDK in consumer mode!
+
+### 3. Instantiate the SDK and create a new split client
+
+We recommend instantiating the Split factory once as a singleton and reusing it throughout your application.
+
+Use the code snippet below to instantiate the client in your code base. You need to provide your Redis details and your SDK API key.
+
+Configure the SDK with the SDK API key for the Split environment that you would like to access. The SDK key is available in the Split user interface, on your Admin settings page, API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+
+Do all of this as a part of the startup sequence of your application. 
+
+```php title="PHP"
+<?php
+ 
+$parameters = ['scheme' => 'tcp', 
+               'host' => REDIS_HOST, 
+               'port' => REDIS_PORT, 
+               'timeout' => 881
+              ];
+ 
+$options = ['prefix' => ''];
+ 
+$sdkConfig = array(
+    'cache' => array('adapter' => 'predis', 
+                     'parameters' => $parameters, 
+                     'options' => $options
+                    )
+);
+ 
+$splitFactory = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $sdkConfig);
+$splitClient = $splitFactory->client();
+```
+
+## Using the SDK
+ 
+### Basic use
+
+After you instantiate the SDK client, use the `getTreatment` method of the SDK client to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you want to serve the feature flag to.
+
+From there, you need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in the Split user interface. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+
+```php title="PHP"
+<?php
+// The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
+$treatment = $splitClient->getTreatment('key','FEATURE_FLAG_NAME');
+ 
+if ($treatment === 'on') {
+    // insert code here to show on treatment
+} elseif ($treatment === 'off') {
+    // insert code here to show off treatment
+} else {
+    // insert your control treatment code here
+}
+```
+
+### More SDK features
+
+<DocCardList />

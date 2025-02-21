@@ -1,0 +1,56 @@
+---
+title: Shutdown
+sidebar_label: Shutdown
+description: Gracefully stop background threads, clear caches, close connections, and flush data.
+---
+
+Call the `destroySplitSdk` function to gracefully shutdown the Split SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
+This function can be used as an action creator to update the `splitio` slice.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'Client side (browser)', value: 'browser'},
+    {label: 'Server side (Node.js/SSR)', value: 'ssr'},
+  ]}>
+  <TabItem value="browser">
+
+```javascript
+import { destroySplitSdk } from '@splitsoftware/splitio-redux';
+
+// you can dispatch the action to update the status at the store
+store.dispatch(destroySplitSdk());
+ 
+// the dispatched Thunk action returns a promise available as the return value of dispatch itself.
+// this promise always resolves once the SDK has been shutdown
+store.dispatch(destroySplitSdk()).then(() => {
+  console.log(store.getState().splitio.isDestroyed); // prints `true`
+});
+```
+  </TabItem>
+  <TabItem value="ssr">
+```javascript
+import { destroySplitSdk } from '@splitsoftware/splitio-redux';
+
+function serverClose() {
+  // on scenarios where you need to destroy the SDK without dispatching the action, such as on server-side,
+  // you can attach a callback that is invoked once the SDK has been shutdown
+  destroySplitSdk({
+    onDestroy: function() {
+      console.log("Split destroyed");
+    }
+  });
+
+});
+
+```
+  </TabItem>
+</Tabs>
+
+After `destroySplitSdk()` is dispatched and resolved, the evaluated treatments at the store will keep their current treatment values. However, if there is any subsequent attempt to use the `getTreatments` action creator, the treatments will be updated to `control` to be consistent with the JavaScript SDK. Also, the SDK [manager](#manager) methods will result in empty values.
+
+:::warning[Important!]
+Destroying the SDK is meant to be definitive. A call to the `destroySplitSdk` function also destroys the factory object. Attempting to restart the destroyed SDK by using the `initSplitSdk` action creator is not recommended and might lead to unexpected behavior.
+:::

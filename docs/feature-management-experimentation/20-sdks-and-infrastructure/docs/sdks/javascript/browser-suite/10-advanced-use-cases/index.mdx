@@ -1,0 +1,206 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Set up a proxy or use an external impression listener.
+---
+
+### Custom impression listener
+
+The Split Suite sends impression data back to Split servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*. For that purpose, the Suite's configurations have a parameter called `impressionListener` where an implementation of `ImpressionListener` could be added. This implementation **must** define the `logImpression` method and it receives data in the following schema.
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| impression | Object | Impression object that has the feature, key, treatment, label, etc. |
+| attributes | Object | A map of attributes passed to `getTreatment`/`getTreatments` (if any). |
+| sdkLanguageVersion | String | The version of the SDK. In this case the language is `browserjs` plus the version currently running. |
+
+:::info[Note]
+There are two additional keys on this object, `ip` and `hostname`. They are not captured but kept for consistency with server-side SDKs.
+:::
+
+## Implement custom impression listener
+
+The following is an example of how to implement a custom impression listener.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="browser-suite-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript
+function logImpression(impressionData) {
+  // do something with the impression data.
+}
+
+var suite = SplitSuite({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  impressionListener: {
+    logImpression: logImpression
+  }
+});
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+class MyImprListener implements SplitIO.IImpressionListener {
+  logImpression(impressionData: SplitIO.ImpressionData) {
+    // do something with impressionData
+  }
+}
+
+const suite: ISuiteSDK = SplitSuite({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  impressionListener: {
+    logImpression: new MyImprListener()
+  }
+});
+```
+  </TabItem>
+</Tabs>
+
+An impression listener is called asynchronously from the corresponding evaluation, but is almost immediate.
+
+Even though the SDK does not fail if there is an exception in the listener, do not block the call stack.
+
+## Instantiate multiple clients
+
+Split supports the ability to release based on multiple traffic types. For example, with traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, refer to the [Traffic type guide](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) for more information.
+
+Each Suite client is tied to one specific customer ID at a time, so if you need to roll out feature flags by different traffic types, instantiate multiple clients, one for each traffic type. For example, you may want to roll out the feature `user-poll` by `users` and the feature `account-permissioning` by `accounts`.
+
+You can do this with the example below:
+
+<Tabs
+  groupId="browser-suite-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript
+var suite = SplitSuite({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'CUSTOMER_ACCOUNT_ID',
+    // Instantiate the suite once and provide the ID for one of the
+    // traffic types that you plan to release to. It doesn't
+    // matter which you pick to start off with.
+  },
+});
+
+// now when you call suite.client(), the suite creates a client
+// using the Account ID and traffic type name (if any)
+// you passed in during the suite creation.
+var account_client = suite.client();
+
+// to create another client for a User instead, just pass in a User ID
+
+// This is only valid after at least one client has been initialized.
+var user_client = suite.client('CUSTOMER_USER_ID');
+
+// check treatment for user-poll and CUSTOMER_USER_ID
+var user_poll_treatment = user_client.getTreatment('user-poll');
+
+// check treatment for account-permissioning and CUSTOMER_ACCOUNT_ID
+var account_permissioning_treatment = account_client.getTreatment('account-permissioning');
+
+// track events for accounts
+user_client.track('account', 'PAGELOAD', 7.86);
+
+// or track events for users
+account_client.track('user', 'ACCOUNT_CREATED');
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+const suite: ISuiteSDK = SplitSuite({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'CUSTOMER_ACCOUNT_ID'
+    // instantiate the suite once and provide the ID for one of the
+    // traffic types that you plan to release to. It doesn't
+    // matter which you pick to start off with.
+  },
+});
+
+// now when you call suite.client(), the suite will create a client
+// using the Account ID you passed in during the suite creation.
+const account_client: SplitIO.IClient = suite.client();
+
+// to create another client for a User instead, just pass in a
+// User ID to the suite.client() method. This is only valid after
+// at least one client has been initialized.
+const user_client: SplitIO.IClient = suite.client('CUSTOMER_USER_ID');
+
+// check treatment for user-poll and CUSTOMER_USER_ID
+const user_poll_treatment: SplitIO.Treatment =
+  user_client.getTreatment('user-poll');
+
+// check treatment for account-permissioning and CUSTOMER_ACCOUNT_ID
+const account_permissioning_treatment: SplitIO.Treatment =
+  account_client.getTreatment('account-permissioning');
+
+// track events for accounts
+user_client.track('account', 'PAGELOAD', 7.86);
+
+// or track events for users
+account_client.track('user', 'ACCOUNT_CREATED');
+```
+  </TabItem>
+</Tabs>
+
+The events captured by the RUM Agent are sent to Split servers using the traffic types and keys of the created client. If no traffic type is provided, the traffic type is `user` by default.
+
+:::info[Number of Suite instances]
+While the Suite does not put any limitations on the number of instances that can be created, we strongly recommend keeping the number of instances down to **one** or **two**.
+:::
+
+## User consent
+
+The Suite allows you to disable the tracking of events and impressions until user consent is explicitly granted or declined.
+
+The `userConsent` configuration parameter lets you set the initial consent status of the Suite instance, and the Suite method `UserConsent.setStatus(boolean)` lets you grant (enable) or decline (disable) the dynamic data tracking.
+
+There are three possible initial states:
+ * `'GRANTED'`: the user grants consent for tracking events and impressions. The Suite sends them to Split cloud. This is the default value if `userConsent` param is not defined.
+ * `'DECLINED'`: the user declines consent for tracking events and impressions. The Suite does not send them to Split cloud.
+ * `'UNKNOWN'`: the user neither grants nor declines consent for tracking events and impressions. The Suite tracks them in its internal storage, and eventually either sends them or not if the consent status is updated to `'GRANTED'` or `'DECLINED'` respectively. The status can be updated at any time with the `UserConsent.setStatus` Suite method.
+
+```javascript title="User consent: initial config, getter and setter"
+var suite = SplitSuite({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  // Overwrites the initial consent status of the suite instance, which is 'GRANTED' by default.
+  // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
+  // so the suite will locally track data but not send it to Split cloud until consent is changed to 'GRANTED'.
+  userConsent: 'UNKNOWN'
+});
+
+
+// `getStatus` method returns the current consent status.
+suite.UserConsent.getStatus() === suite.UserConsent.Status.UNKNOWN;
+
+// `setStatus` method lets you update the suite consent status at any moment.
+// Pass `true` for 'GRANTED' and `false` for 'DECLINED'.
+suite.UserConsent.setStatus(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Split cloud.
+suite.UserConsent.getStatus() === suite.UserConsent.Status.GRANTED;
+
+suite.UserConsent.setStatus(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Split cloud.
+suite.UserConsent.getStatus() === suite.UserConsent.Status.DECLINED;
+
+```

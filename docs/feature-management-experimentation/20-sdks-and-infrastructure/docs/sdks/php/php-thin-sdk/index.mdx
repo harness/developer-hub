@@ -1,0 +1,79 @@
+---
+title: FME PHP Thin SDK
+sidebar_label: PHP Thin SDK
+description: PHP developer reference for working with FME on the server side. PHP Thin SDK does not use Redis.
+sidebar_position: 2
+---
+
+import DocCardList from '@theme/DocCardList';
+
+This guide provides detailed information about our PHP Thin SDK. All of our SDKs are open source. Go to our [PHP Thin SDK GitHub repository](https://github.com/splitio/php-thin-client) to learn more.
+
+## Language support
+
+The PHP Thin SDK supports PHP language version 7.3 and later.
+
+## Architecture
+
+The PHP Thin SDK depends on the [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157) which should be set up on the same host. The PHP Thin SDK client uses splitd to maintain the local cached copy of the Split rollout plan and return feature flag evaluations.
+
+## Initialization
+
+### 1. Import the SDK into your project
+
+```php title="PHP"
+composer require splitsoftware/thin-sdk:1.5.0
+```
+
+The public release of the PHP Thin SDK is available at [packagist.org](https://packagist.org/packages/splitsoftware/thin-sdk).
+
+### 2. Set up the splitd service
+
+When the composer is done, follow the guidance of our [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157) doc to integrate splitd into your application infrastructure.
+
+### 3. Instantiate the SDK and create a new split client
+
+We recommend instantiating the Split factory once as a singleton and reusing it throughout your application.
+
+```php title="PHP"
+
+<?php
+
+require_once '../vendor/autoload.php';
+
+use \SplitIO\ThinSdk\Factory;
+
+$factory = Factory::withConfig([
+    'transfer' => ['address' => 'path/to/socket/file.sock'],
+    'logging' => ['level' => \Psr\Log\LogLevel::INFO],
+]);
+
+$client = $factory->client();
+
+```
+
+## Using the SDK
+ 
+### Basic use
+
+After you instantiate the SDK client, you can start using the `getTreatment` method of the SDK client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you want to serve the feature to.
+
+From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in the Split user interface. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+
+```php title="PHP"
+<?php
+// The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
+$treatment = $client->getTreatment('key', 'bucketingKey', 'FEATURE_FLAG_NAME', null);
+ 
+if ($treatment === 'on') {
+    // insert code here to show on treatment
+} elseif ($treatment === 'off') {
+    // insert code here to show off treatment
+} else {
+    // insert your control treatment code here
+}
+```
+
+#### More SDK features
+
+<DocCardList />

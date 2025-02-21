@@ -1,0 +1,34 @@
+---
+title: Logging
+sidebar_label: Logging
+description: Explore the range of logging levels for transparent development and debugging.
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Logging,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_all_sdks/index.mdx";
+
+import Log    from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_react-native-sdk/_070_codeLog.mdx";
+import Output from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_react-native-sdk/_070_outputLog.mdx";
+import Notes  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_react-native-sdk/_070_notes.mdx";
+
+export const Document = (t) => SDKDocsBuilder(
+  [
+    [
+      Logging,
+      {
+        codeLog:   <Log defaultTab={t} />,
+        outputLog: <Output />,
+        notes:     <Notes />,
+      },
+    ],
+  ]
+);
+
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []

@@ -1,0 +1,171 @@
+---
+title: Configuration
+sidebar_label: Configuration
+description: Optimize SDK performance in your environment by fine-tuning SDK config settings.
+---
+
+The Suite exposes configuration parameters that you can use to optimize performance. Each parameter is preset to a reasonable default. You can optionally override these default values when instantiating the Suite.
+
+The parameters available for configuration are shown below in separate tables for those parameters that affect feature flagging, those that affect the Suite RUM agent, and those that affect both.
+
+Feature flagging parameters:
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| featuresRefreshRate | The Suite polls Split servers for changes to feature flags at this rate (in seconds). | 3600 seconds |
+| segmentsRefreshRate | The Suite polls Split servers for changes to segments at this rate (in seconds). | 1800 seconds |
+| impressionsRefreshRate | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Split servers. This configuration controls how quickly the cache expires after a write (in seconds). | 1800 seconds |
+| telemetryRefreshRate | The Suite caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers (in seconds). | 3600 seconds (1 hour) |
+| eventsQueueSize | When using the `track` method, the number of **events** to be kept in memory. | 10000 |
+| eventFlushInterval | When using the `track` method, how often is the events queue flushed to Split's servers. | 1800 seconds |
+| eventsPerPush | Maximum size of the batch to push events. | 2000 |
+| trafficType | When using the `track` method, the default traffic type to be used. | not set |
+| connectionTimeout  | HTTP client connection timeout (in ms). | 10000 ms |
+| readTimeout | HTTP socket read timeout (in ms). | 10000 ms |
+| impressionsQueueSize | Default queue size for impressions. | 30K |
+| disableLabels | Disable labels from being sent to Split backend. Labels may contain sensitive information. | true |
+| proxyHost | The location of the proxy using standard URI: `scheme://user:password@domain:port/path`. If no port is provided, the Suite defaults to port 80. | null |
+| ready | Maximum amount of time in milliseconds to wait before notifying a timeout. | -1 (not set) |
+| synchronizeInBackground | Activates synchronization when application host is in background. | false |
+| synchronizeInBackgroundPeriod | Rate in minutes in which the background synchronization would check the conditions and trigger the data fetch if those are met. Minimum rate allowed is 15 minutes. | 15 |
+| backgroundSyncWhenBatteryNotLow | When set to true, synchronize in background only if battery level is not low. | true |
+| backgroundSyncWhenWifiOnly | When set to true, synchronize in background only when the available connection is wifi (unmetered). When false, background synchronization takes place as long as there is an available connection. | false |
+| streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism when in foreground. In the event of an issue with streaming, the Suite will fallback to the polling mechanism. If false, the Suite will poll for changes as usual without attempting to use streaming. | true |
+| syncConfig | Optional SyncConfig instance. Use it to filter specific feature flags to be synced and evaluated by the Suite. These filters can be created with the `SplitFilter::bySet` static function (recommended, flag sets are available in all tiers), or `SplitFilter::byName` static function, and appended to this config using the `SyncConfig` builder. If not set or empty, all feature flags are downloaded by the Suite. | null |
+| persistentAttributesEnabled | Enables saving attributes on persistent cache which is loaded as part of the SDK_READY_FROM_CACHE flow. All functions that mutate the stored attributes map affect the persistent cache. | false |
+| syncEnabled | Controls the SDK continuous synchronization flags. When `true`, a running Suite processes rollout plan updates performed in the Split user interface (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
+| impressionsMode | This configuration defines how impressions (decisioning events) are queued on the Suite. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Split; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Split; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
+| userConsent | User consent status used to control the tracking of events and impressions. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. See [User consent](#user-consent) for details. | `GRANTED` |
+| encryptionEnabled | If set to `true`, the local database contents is encrypted. | false |
+| prefix | If set, the prefix will be prepended to the database name used by the Suite. | null |
+| certificatePinningConfiguration | If set, enables certificate pinning for the given domains. For details, see the [Certificate pinning](#certificate-pinning) section below. | null |
+
+Suite RUM agent parameters:
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| prefix | Optional prefix to append to the `eventTypeId` of the events sent to Split by the Suite RUM agent. For example, if you set the prefix to 'my-app', the event type 'error' will be sent as 'my-app.error'. | null |
+
+Shared parameters:
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| logLevel | Enables logging according to the level specified. Options are `NONE`, `VERBOSE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, and `ASSERT`. | `NONE` |
+
+To set each of the parameters defined above, use the following syntax:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-suite-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+```java
+SplitSuite suite = SplitSuiteBuilder.build(
+    sdkKey,
+    new Key("user_id"),
+    SplitClientConfig
+        .builder()
+        .featuresRefreshRate(30)
+        .segmentsRefreshRate(30)
+        .impressionsRefreshRate(30)
+        .impressionsQueueSize(30000)
+        .eventFlushInterval(60)
+        .eventsQueueSize(500)
+        .telemetryRefreshRate(3600)
+        .logLevel(SplitLogLevel.VERBOSE)
+        .build(),
+    applicationContext);
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+val suite: SplitSuite = SplitSuiteBuilder.build(
+    sdkKey,
+    Key("user_id"),
+    SplitClientConfig
+        .builder()
+        .featuresRefreshRate(30)
+        .segmentsRefreshRate(30)
+        .impressionsRefreshRate(30)
+        .impressionsQueueSize(30000)
+        .eventFlushInterval(60)
+        .eventsQueueSize(500)
+        .telemetryRefreshRate(3600)
+        .logLevel(SplitLogLevel.VERBOSE)
+        .build(),
+    applicationContext)
+```
+  </TabItem>
+</Tabs>
+
+## RUM agent configuration
+
+The Suite handles the setup of its RUM agent using the same SDK key. Configurations for [Logging](#logging) and [Identities](#instantiate-multiple-clients) are also shared with the Suite's RUM agent.
+
+You can further configure the RUM agent passing a `SplitSuiteConfiguration` object instead of `SplitClientConfiguration`. To create this object, use a `SplitSuiteConfigurationBuilder`.
+
+<Tabs
+  groupId="android-suite-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+```java
+// Optionally create feature flagging configuration
+SplitClientConfig splitClientConfig = SplitClientConfig
+    .builder()
+    .logLevel(SplitLogLevel.VERBOSE)
+    .build();
+
+// Create a SplitSuiteConfiguration builder
+SplitSuiteConfigurationBuilder suiteConfigurationBuilder = SplitSuiteConfiguration.builder();
+
+// Specify a prefix for the Suite events
+suiteConfigurationBuilder = suiteConfigurationBuilder.setPrefix("myprefix_");
+
+// Create the SplitSuiteConfiguration, passing the optional SplitClientConfig for feature flagging
+SplitSuiteConfiguration splitSuiteConfiguration = suiteConfigurationBuilder
+    .build(splitClientConfig);
+
+// Instantiate the Suite passing in the SplitSuiteConfiguration
+SplitSuite suite = SplitSuiteBuilder.build(
+    "YOUR_SDK_KEY",
+    new Key("key1"),
+    splitSuiteConfiguration,
+    applicationContext);
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+// Optionally create feature flagging configuration
+val splitClientConfig: SplitClientConfig = SplitClientConfig
+    .builder()
+    .logLevel(SplitLogLevel.VERBOSE)
+    .build()
+
+// Create a SplitSuiteConfiguration builder
+var suiteConfigurationBuilder = SplitSuiteConfiguration.builder()
+
+// Specify a prefix for the Suite events
+suiteConfigurationBuilder = suiteConfigurationBuilder.setPrefix("myprefix_")
+
+// Create the SplitSuiteConfiguration, passing the optional SplitClientConfig for feature flagging
+val splitSuiteConfiguration: SplitSuiteConfiguration = suiteConfigurationBuilder
+    .build(splitClientConfig)
+
+// Instantiate the Suite passing in the SplitSuiteConfiguration
+val suite: SplitSuite = SplitSuiteBuilder.build(
+    "YOUR_SDK_KEY",
+    Key("key1"),
+    splitSuiteConfiguration,
+    applicationContext
+)
+```
+  </TabItem>
+</Tabs>

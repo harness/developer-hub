@@ -1,0 +1,136 @@
+---
+title: Configuration
+sidebar_label: Configuration
+description: Optimize SDK performance in your environment by fine-tuning SDK config settings.
+---
+
+The SDK exposes configuration parameters that you can use to optimize SDK performance. Each parameter is preset to a reasonable default. You can optionally override these default values when instantiating the SDK.
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| core.labelsEnabled  | Disable labels from being sent to the Split backend. Labels may contain sensitive information. | true  |
+| core.IPAddressesEnabled | Disable machine IP and Hostname from being sent to Split backend. IP and Hostname may contain sensitive information. | true |
+| startup.readyTimeout  | Maximum amount of time in seconds to wait before notifying a timeout. Zero means no timeout, so no `SDK_READY_TIMED_OUT` event is fired. | 15  |
+| startup.requestTimeoutBeforeReady  | Time to wait for a request before the SDK is ready. If this time expires, Node.js SDK tries again `retriesOnFailureBeforeReady` times before notifying its failure to be `ready`. Zero means no timeout.  | 15  |
+| startup.retriesOnFailureBeforeReady  | Number of quick retries we do while starting up the SDK.  | 1  |
+| scheduler.featuresRefreshRate | The SDK polls Split servers for changes to feature rollout plans. This parameter controls this polling period in seconds. | 60 |
+| scheduler.segmentsRefreshRate  | The SDK polls Split servers for changes to segment definitions. This parameter controls this polling period in seconds. | 60  |
+| scheduler.impressionsRefreshRate  | The SDK sends information on who got what treatment at what time back to Split servers to power analytics. This parameter controls how often this data is sent to Split servers. The parameter should be in seconds. | 300 |
+| scheduler.impressionsQueueSize | The max amount of impressions we queue. If the queue is full, the SDK flushes the impressions and resets the timer. | 30000 |
+| scheduler.eventsPushRate  | The SDK sends tracked events to Split servers. This setting controls that flushing rate in seconds. | 60  |
+| scheduler.eventsQueueSize  | The max amount of events we queue. If the queue is full, the SDK flushes the events and resets the timer. | 500  |
+| scheduler.telemetryRefreshRate | The SDK caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers (in seconds). | 3600 seconds (1 hour) |
+| sync.splitFilters | Filter specific feature flags to be synced and evaluated by the SDK. This is formed by a type string property and a list of string values for the given criteria. Using the types 'bySet' (recommended, flag sets are available in all tiers) or 'byName', pass an array of strings defining the query. If empty or unset, all feature flags are downloaded by the SDK. | [] |
+| sync.impressionsMode | This configuration defines how impressions (decisioning events) are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Split; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is tracked, so never use this mode if you are experimenting with instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions' network and storage load. In DEBUG mode, ALL impressions are queued and sent to Split; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. Keep in mind that both the OPTIMIZED and DEBUG modes utilize an internal cache which uses heap memory incrementally up to a maximum limit ___without a memory leak___. | OPTIMIZED |
+| sync.enabled | Controls the SDK continuous synchronization flags. When `true`, a running SDK processes rollout plan updates performed in the Split user interface (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
+| sync.requestOptions.agent | A custom Node.js HTTP(S) Agent used to perform the requests to the Split servers. See [Proxy](#proxy) for details. | undefined |
+| sync.requestOptions.getHeaderOverrides | A callback function that can be used to override the Authentication header or append new headers to the SDK's HTTP(S) requests. | undefined |
+| storage.type  | Storage type to be used by the SDK. Possible values are `MEMORY`, and `REDIS`. | `MEMORY` |
+| storage.options | Options to be passed to the storage instance. Only usable with `REDIS` type storage for now. See [Redis configuration](#redis-configuration) for details. | {}<br />No default options |
+| storage.prefix | An optional prefix for your data, to avoid collisions. | `SPLITIO` |
+| mode  | The SDK mode. Possible values are standalone and consumer. | standalone |
+| debug  | Boolean flag or log level string ('ERROR', 'WARN', 'INFO', or 'DEBUG') for activating SDK logs. | false |
+| streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | true |
+
+To set each of the parameters defined above, use the following syntax.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]}>
+  <TabItem value="javascript">
+```javascript
+var factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_API_KEY',
+    labelsEnabled: true
+  },
+  scheduler: {
+    featuresRefreshRate:      5, // 5 sec
+    segmentsRefreshRate:     60, // 60 sec
+    impressionsRefreshRate: 300, // 300 sec
+    impressionsQueueSize: 30000, // 30000 items
+    eventsPushRate:          60, // 60 sec
+    eventsQueueSize:        500, // 500 items
+    telemetryRefreshRate:  3600  // 1 hour
+  },
+  startup: {
+    requestTimeoutBeforeReady: 1.5, // 1500 ms
+    retriesOnFailureBeforeReady: 3, // 3 times
+    readyTimeout: 5                 // 5 sec
+  },
+  sync: {
+    splitFilters: [{
+      type: 'bySet',
+      values: ['backend']
+    }],
+    impressionsMode: 'DEBUG',
+    requestOptions: {
+      getHeaderOverrides() {
+        return {
+          'custom-header': 'custom-value'
+        };
+      }
+    }
+  },
+  storage: {
+    type: 'REDIS',
+    options: {},
+    prefix: 'MYPREFIX'
+  },
+  mode: 'standalone',
+  debug: false
+});
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+const factory: SplitIO.ISDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_API_KEY',
+    labelsEnabled: true
+  },
+  scheduler: {
+    featuresRefreshRate:      5, // 5 sec
+    segmentsRefreshRate:     60, // 60 sec
+    impressionsRefreshRate: 300, // 300 sec
+    impressionsQueueSize: 30000, // 30000 items
+    eventsPushRate:          60, // 60 sec
+    eventsQueueSize:        500, // 500 items
+    telemetryRefreshRate:  3600  // 1 hour
+  },
+  startup: {
+    requestTimeoutBeforeReady: 1.5, // 1500 ms
+    retriesOnFailureBeforeReady: 3, // 3 times
+    readyTimeout: 5                 // 5 sec
+  },
+  sync: {
+    splitFilters: [{
+      type: 'bySet',
+      values: ['backend']
+    }],
+    impressionsMode: 'DEBUG',
+    requestOptions: {
+      getHeaderOverrides() {
+        return {
+          'custom-header': 'custom-value'
+        };
+      }
+    }
+  },
+  storage: {
+    type: 'REDIS',
+    options: {},
+    prefix: 'MYPREFIX'
+  },
+  mode: 'standalone',
+  debug: false
+});
+```
+  </TabItem>
+</Tabs>

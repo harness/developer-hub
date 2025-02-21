@@ -1,0 +1,164 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+### Event collectors
+
+{props.rumAgentType} RUM Agent can be configured to collect additional events by registering *event collectors*. Event collectors are not shipped by default with the Agent itself to avoid increasing your bundle size with unnecessary code.
+
+Event collectors are available when using the NPM package, or with a "full" version of the UMD bundle hosted in our CDN. They can be imported and registered as follows:
+
+<Tabs
+  groupId="package"
+  values={[
+    {label: 'Using ES modules (NPM package)', value: 'npm'},
+    {label: 'Using script tags (CDN version)', value: 'cdn'},
+  ]}>
+  <TabItem value="npm">
+  
+```javascript
+import { SplitRumAgent, routeChanges } from '@splitsoftware/browser-rum-agent';
+
+SplitRumAgent.register(routeChanges());
+```
+
+  </TabItem>
+  <TabItem value="cdn">
+
+```html
+<script src="https://cdn.split.io/rum-agent/browser-rum-agent-1.0.0.full.min.js"></script>
+<script>
+  SplitRumAgent.register(SplitRumAgent.routeChanges());
+</script>
+```
+
+  </TabItem>
+</Tabs>
+
+See the following sections to learn about the available event collectors.
+
+### Web Vitals
+
+[Web Vitals](https://web.dev/vitals/) is an initiative by Google to provide unified guidance for quality signals that are essential to delivering a great user experience on the web. 
+
+The RUM Agent uses the Google [web-vitals NPM package](https://www.npmjs.com/package/web-vitals) to collect the Web Vitals metrics.
+
+By default, the Agent will collect all metrics supported by the web-vitals package:
+* **Core Web Vitals:**
+    - [Cumulative Layout Shift (CLS)](https://web.dev/cls/)
+    - [Interaction to Next Paint (INP)](https://web.dev/inp/)
+    - [Largest Contentful Paint (LCP)](https://web.dev/lcp/)
+* **Other metrics:**
+    - [First Contentful Paint (FCP)](https://web.dev/fcp/)
+    - [Time to First Byte (TTFB)](https://web.dev/ttfb/)
+    - [First Input Delay (FID)](https://web.dev/fid/)
+
+You can also configure the Agent to collect only a subset of the web-vitals:
+
+```javascript
+SplitRumAgent.setup('YOUR_SDK_KEY', {
+  eventCollectors: {
+    webVitals: {
+      reportOptions: {
+        // collects only the core web-vitals
+        onCLS: true, 
+        onINP: true,
+        onLCP: true, 
+        // other web-vital metrics are not collected
+        onFCP: false,
+        onTTFB: false,
+        onFID: false
+      }
+    }
+  }
+});  
+```
+
+The format of collected events is shown below:
+
+```typescript
+type WebVitalsEvent = {
+  eventTypeId: 'webvitals.cls' | 'webvitals.inp' | 'webvitals.lcp' | 'webvitals.fcp' | 'webvitals.ttfb' | 'webvitals.fid',
+  value: number, // value in milliseconds
+  properties: {
+    rating: 'good' | 'needsImprovement' | 'poor',
+    navigationType: 'navigate' | 'reload' | 'back_forward' | 'back-forward-cache' | 'prerender' | 'restore'
+  }
+}
+```
+
+## Time to Interactive
+
+[Time to Interactive (TTI)](https://web.dev/tti/) is a metric that measures the time from when the page starts loading to when its main sub-resources have loaded and it is capable of reliably responding to user input.
+
+The RUM Agent exports an event collector for TTI, which internally uses the [tti-polyfill NPM package](https://www.npmjs.com/package/tti-polyfill) to collect it.
+
+You can set it as follows:
+
+```javascript
+import { SplitRumAgent, tti } from '@splitsoftware/browser-rum-agent';
+
+SplitRumAgent.register(tti());
+```
+
+Unlike `webVitals`, the `tti` collector does not support any configuration options.
+
+The format of collected event is shown below:
+
+```typescript
+type TTIEvent = {
+  eventTypeId: 'time.to.interactive',
+  value: number, // TTI value in milliseconds
+}
+```
+
+## Route Changes
+
+Route changes are events that are triggered when the user navigates to a new page in a Single-Page Application (SPA). 
+
+The RUM Agent exports an event collector for route changes.
+
+You can set the Agent to collect route change events as follows:
+
+```javascript
+import { SplitRumAgent, routeChanges } from '@splitsoftware/browser-rum-agent';
+
+SplitRumAgent.register(routeChanges());
+```
+
+You can also configure the Agent to collect only a subset of the route changes, by providing a filter callback. For example, to ignore hash (fragment) changes:
+
+```javascript
+SplitRumAgent.register(routeChanges({
+  filter({ fromUrl, toUrl }) {
+    return fromUrl.split('#')[0] !== toUrl.split('#')[0];
+  }
+}));
+```
+
+The format of a collected event is shown below:
+
+```typescript
+type RouteChangesEvent = {
+  eventTypeId: 'route.change',
+  value: number | undefined, // Value of the `duration` property
+  properties: {
+    // URL value before the change, without including the origin (protocol, host and port)
+    fromUrl: string,
+    // URL value after the change, without including the origin (protocol, host and port)
+    toUrl: string,
+    // Type of URL change
+    // * `pushState` indicates a new entry added to the history stack, when `history.pushState` is called
+    // * `replaceState` indicates the entry at the current index in the history stack being replaced, when `history.replaceState` is called
+    // * `popstate` indicates a change to an arbitrary index in the history stack
+    historyChangeSource: 'pushState' | 'replaceState' | 'popstate',
+
+    /* Browsers that support the Performance Timeline API will include the following properties: */
+    // Estimated duration of the navigation transition in milliseconds. The calculation is based on a time window of long tasks and resources around the history change event.
+    duration?: number,
+    // Value of performance.now() when the navigation started
+    startTime?: number,
+    // Time spent on the previous route (`fromUrl`) in milliseconds
+    timeOnRoute?: number,
+  }
+}
+```

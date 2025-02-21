@@ -1,0 +1,175 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Set up a proxy or use an external impression listener.
+---
+
+## Redis cache
+
+The Synchronizer Service stores its fetched data in the cache component. The SDK requires `predis` as the Redis cache adapter. For more information about `predis`, refer to the [Predis project](https://github.com/nrk/predis). 
+
+```php title="PHP"
+<?php
+ 
+$parameters = ['scheme' => 'tcp', 
+               'host' => REDIS_HOST, 
+               'port' => REDIS_PORT, 
+               'timeout' => 881
+              ];
+ 
+$options = ['prefix' => ''];
+ 
+$sdkConfig = array(
+    'cache' => array('adapter' => 'predis', 
+                     'parameters' => $parameters, 
+                     'options' => $options
+                    )
+);
+ 
+$splitFactory = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $sdkConfig);
+$splitClient = $splitFactory->client();
+```
+
+### Redis Sentinel
+
+The SDK also supports Redis with Sentinel v2 replication. The client can be configured to operate with a single master and multiple slaves to provide high availability. The current version of Sentinel is 2. A stable release of Sentinel has been shipped since Redis 2.8. For further information about Sentinel, refer to the [Sentinel documentation](https://redis.io/topics/sentinel).
+
+Use the following configuration for Redis in Sentinel mode.
+
+| **Variable** | **Type** | **Description** |
+| --- | --- | --- | 
+| distributedStrategy | string | The strategy to be used. For Sentinel mode, the strategy is `sentinel`. |
+| sentinels | array | The list of sentinels for replication service. |
+| service | string | The name of master service. |
+
+```php title="PHP"
+<?php
+ 
+$sentinels = array(
+    'tcp://SENTINEL_HOST_1:SENTINEL_PORT_1?timeout=10',
+    'tcp://SENTINEL_HOST_2:SENTINEL_PORT_2?timeout=10',
+    'tcp://SENTINEL_HOST_3:SENTINEL_PORT_3?timeout=10'
+);
+ 
+$options = array(
+    'distributedStrategy' => 'sentinel',
+    'service' => 'SERVICE_MASTER_NAME',
+    'prefix' => ''
+);
+ 
+$sdkConfig = array(
+    'cache' => array('adapter' => 'predis',
+                     'sentinels' => $sentinels,
+                     'options' => $options
+                    )
+);
+ 
+$splitFactory = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $sdkConfig);
+$splitClient = $splitFactory->client();
+```
+
+### Redis cluster support
+
+The SDK supports Redis with Cluster. Note that a stable release of Cluster has shipped since Redis 3.0. For further information about Redis Cluster, refer to the [Cluster documentation](https://redis.io/topics/cluster-spec).
+
+Use the following configuration for Redis in Cluster mode.
+
+| **Variable** | **Type** | **Description** |
+| --- | --- | --- | 
+| distributedStrategy | string | The strategy to be used. For Cluster mode, the strategy is `cluster`. |
+| clusterNodes | array | The list of cluster nodes. | 
+| keyHashTag | string | Custom hashtag to be used. Default value is `{SPLITIO}`. |
+| keyHashTags | array | List of custom hashtags from which the SDK randomly picks one to use on the generated instance. If this is set, the tag on `keyHashTag` config is ignored. |
+
+```php title="PHP"
+<?php
+ 
+$clusterNodes = array(
+    'tcp://CLUSTER_NODE_1:CLUSTER_PORT_1?timeout=10',
+    'tcp://CLUSTER_NODE_2:CLUSTER_PORT_2?timeout=10',
+    'tcp://CLUSTER_NODE_3:CLUSTER_PORT_3?timeout=10'
+);
+ 
+$options = array(
+    'distributedStrategy' => 'cluster',
+    'prefix' => ''
+);
+ 
+$sdkConfig = array(
+    'cache' => array('adapter' => 'predis',
+                     'clusterNodes' => $clusterNodes,
+                     'options' => $options
+                    )
+);
+ 
+$splitFactory = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $sdkConfig);
+$splitClient = $splitFactory->client();
+```
+
+:::info[Redis Cluster]
+The PHP SDK performs multi-key operations in certain methods such as `mget` (to return values of all specified keys) or `keys` (to return all the keys that matches a particular pattern) to avoid multiple calls to Redis. Redis Cluster does not allow these operations unless you use hashtags. Hashtags ensure that multiple keys are allocated in the same hash slot. The SDK allows you to use a custom key hashtag for storing keys. If this option is missing, it uses a default hashtag of `{SPLITIO}` when `cluster` mode is specified in the configuration. Keep in mind that multi-key operations may become unavailable during a resharding of the hash slots, calls to `getTreatments`, or `manager.splitNames()`, causing `featureFlagKeys` to fail.
+:::
+
+### TLS Support
+
+The client can leverage TLS/SSL encryption to connect to a secured remote Redis instance by using `tls` scheme and `ssl` options. 
+
+```php title="PHP"
+<?php
+ 
+$parameters = [
+                'scheme' => 'tls', 
+                'ssl' => array(), 
+                'host' => REDIS_HOST, 
+                'port' => REDIS_PORT, 
+            ];
+ 
+$options = ['prefix' => ''];
+ 
+$sdkConfig = array(
+    'cache' => array('adapter' => 'predis', 
+                     'parameters' => $parameters, 
+                     'options' => $options
+                    )
+);
+ 
+$splitFactory = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $sdkConfig);
+$splitClient = $splitFactory->client();
+```
+
+## Custom impression listener
+
+Split SDKs send impression data back to Split servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*. Use the SDK's `impressionListener` parameter, where you can add an implementation of `ImpressionListener`. This implementation **must** define the `logImpression` method. It receives data in the following schema.
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- | 
+| impression | impression | Impression object that has the feature flag name, treatment result, label, etc. |
+| attributes | array | A list of attributes passed by the client. |
+| instance-id | string | The IP address of the machine running the SDK. |
+| sdk-language-version | string | The version of the SDK. In this case the language is `php` plus the version. |
+
+Here is an example of how to implement a custom impression listener.
+
+```php title="PHP"
+// Implementation Sample for a Custom Impression Listener
+class CustomImpressionListener implements \SplitIO\Sdk\ImpressionListener
+{
+    public function logImpression($data)
+    {
+        // Custom Behavior
+    }
+}
+```
+
+Here is an example of how to attach a custom impression listener.
+
+```php title="PHP"
+$sdkConfig = array(
+    'log' => ...
+    'cache' => ...
+    'impressionListener' => new CustomImpressionListener(),
+);
+ 
+$splitFactory = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $sdkConfig);
+$splitClient = $splitFactory->client();
+```

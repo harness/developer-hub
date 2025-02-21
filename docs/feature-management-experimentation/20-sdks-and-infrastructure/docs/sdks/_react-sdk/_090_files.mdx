@@ -1,0 +1,12 @@
+Define the feature flags you want to use in the `features` object map. All `useSplitTreatments` calls for a feature flag return the treatment (and config, if defined) that you have defined in the map. You can then change the treatment as necessary for your testing. If you want to update a treatment or a config, or to add or remove feature flags from the mock cache, update the properties of the `features` object you've provided. The SDK simulates polling for changes and updates from the `features` object. Do not assign a new object to the `features` property because the SDK has a reference to the original object and will not detect the change.
+
+Any feature that is not provided in the `features` map returns the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK was asked to evaluate them.
+
+You can use the additional configuration parameters below when instantiating the SDK in `localhost` mode.
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- | 
+| scheduler.offlineRefreshRate | The refresh interval for the mocked features treatments. | 15 |
+| features | A fixed mapping of which treatment to show for our mocked features. | \{\} <br />By default we have no mocked features. |
+
+If you define just a string as the value for a feature flag name, any config returned by our SDKs will always be null. If you use a map, we return the specified treatment and the specified config (which can also be null).

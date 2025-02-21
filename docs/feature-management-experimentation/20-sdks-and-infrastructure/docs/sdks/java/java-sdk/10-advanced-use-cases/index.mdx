@@ -1,0 +1,453 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Set up a proxy, use an external impression listener, etc.
+---
+
+## Split Proxy
+ 
+### Connecting to a Split Proxy instance
+
+The SDK can connect to a Split Proxy instance as though it was connecting to our CDN, and the Proxy synchronizes the data and writes impressions and events back to the Split server. Be sure to install the Split Proxy by following the steps in [Split Proxy guide](https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy).
+
+Use the `.endpoint()` property in the SplitClientConfig builder object to point the Java SDK to the Synchronizer, making sure to use the same port specified in the Proxy command line. When creating the `SplitFactory` object, use the custom API key specified in the `client-apikeys` parameter for the Proxy. The Proxy uses the Split SDK key when connecting to Split. Refer to the following code example to connect to a Proxy instance:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+import io.split.client.SplitClient;
+import io.split.client.SplitClientConfig;
+import io.split.client.SplitFactory;
+import io.split.client.SplitFactoryBuilder;
+
+public class SplitSD {
+    public static void main(String[] args) {
+      SplitClientConfig config = SplitClientConfig.builder()
+           .setBlockUntilReadyTimeout(10000)
+           .endpoint("https://myproxy.com","https://myproxy.com")
+           .authServiceURL("https://myproxy.com" + "/api/auth")
+           .telemetryURL("https://myproxy.com" + "/api/v1")
+           .build();
+      SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config);
+      SplitClient client = splitFactory.client();
+      try {
+        client.blockUntilReady()
+        String treatment = client.getTreatment("user10","sample_feature_flag");
+        if (treatment.equals("on")) {
+          System.out.print("Treatment is on");
+        } else if (treatment.equals("off")) {
+          System.out.print("Treatment is off");
+        } else {
+          System.out.print("SDK Not ready");
+        }
+      } catch (Exception e) {
+          System.out.print("Exception: "+e.getMessage());
+      }
+    }
+}
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+import io.split.client.SplitFactoryBuilder
+import io.split.client.SplitClient
+import io.split.client.SplitClientConfig
+import io.split.client.SplitFactory
+
+fun main (args: Array<String>){
+    val config: SplitClientConfig = SplitClientConfig.builder()
+                .setBlockUntilReadyTimeout(10000)
+                .endpoint("https://myproxy.com","https://myproxy.com")
+                .authServiceURL("https://myproxy.com" + "/api/auth")
+                .telemetryURL("https://myproxy.com" + "/api/v1")
+                .build()
+    val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config)
+    val client: SplitClient = splitFactory.client()
+    try {
+        client.blockUntilReady()
+        val treatment = client.getTreatment("key", "FEATURE_FLAG_NAME", attributes)
+        when (treatment) {
+            "on" -> {
+                println("Treatment is on")
+            }
+            "off" -> {
+                println("Treatment is off")
+            }
+            else -> {
+                println("SDK Not ready")
+            }
+        }
+    } catch (e: Exception) {
+        println("Exception: " + e.message)
+    }
+}
+```
+  </TabItem>
+</Tabs>
+
+## Network proxy
+
+If you need to use a network proxy, you can configure proxies by setting the `proxyHost` and `proxyPort` options in the SDK configuration (refer [Configuration](#configuration) section for more information). The SDK reads those variables and uses them to perform the server request.
+
+## Redis integration
+
+Before you get started with the cache, download the correct version of Redis to your machine. Make sure to start your Redis server. Refer to the [Redis documentation](https://redis.io/topics/quickstart) for help. After that, followi the additional three steps to set up the cache with Redis.
+
+### 1. Install the Redis Wrapper into your project
+
+Import the Redis Wrapper into your project using one of the two methods below:
+
+<Tabs
+  values={[
+    {label: 'Maven', value: 'maven'},
+    {label: 'Gradle', value: 'gradle'}
+  ]}>
+  <TabItem value="maven">
+```java
+<dependency>
+    <groupId>io.split.client</groupId>
+    <artifactId>redis-wrapper</artifactId>
+    <version>3.1.1</version>
+</dependency>
+```
+  </TabItem>
+  <TabItem value="gradle">
+```java
+compile 'io.split.client:redis-wrapper:1.0.0'
+```
+  </TabItem>
+</Tabs>
+
+### 2. Set up the Split Synchronizer
+
+ Set up the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) to sync data to a Redis cache. Once you set up the synchronizer, go to the following step #3 to instantiate:
+
+### 3. Instantiate the SDK client with Redis enabled
+
+To run the SDK with Redis, you need to provide the Redis storage wrapper. Refer to the following to provide the wrapper:
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+// Building the Redis storage wrapper with some configurations of choice.
+CustomStorageWrapper redis = RedisInstance.builder()
+				.host("localhost")
+				.port(6379)
+				.timeout(1000)
+				.database(0)
+				.prefix("java")
+				.build();
+// Building the SDK config with the Redis wrapper referenced.
+SplitClientConfig splitConfig = SplitClientConfig.builder()
+                        .customStorageWrapper(redis)
+                        .operationMode(OperationMode.CONSUMER)
+                        .storageMode(StorageMode.REDIS)
+                        .build();
+// Then just build the factory as usual.
+SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_API_KEY", config);
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+// Building the Redis storage wrapper with some configurations of choice.
+val redis: CustomStorageWrapper = RedisInstance.builder()
+        .host("localhost")
+        .port(6379)
+        .timeout(1000)
+        .database(0)
+        .prefix("java")
+        .build()
+// Building the SDK config with the Redis wrapper referenced.
+val splitConfig: SplitClientConfig = SplitClientConfig.builder()
+                .customStorageWrapper(redis)
+                .operationMode(OperationMode.CONSUMER)
+                .storageMode(StorageMode.REDIS)
+                .build()
+// Then just build the factory as usual.
+val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_API_KEY", config)
+```
+  </TabItem>
+</Tabs>
+
+### Redis wrapper configuration
+
+When you create a new instance for the Redis wrapper, you can provide your own configurations for some values.
+
+| **Field name(s)** | **Description** | **Default value** |
+| --- | --- | --- |
+| timeout| Timeout that the connections is going to handle. | 1000 |
+| host | Hostname where the Redis instance is. | localhost  |
+| port | HTTP port used in the connection. | 6379  |
+| database | Numeric database to be used. | 0 |
+| user | Redis cluster user. Leave empty if no User is used. | ""  |
+| password | Redis cluster password. Leave empty if no password is used. | "" |
+| prefix | Best practice is to use a prefix in case the Redis instance is shared by many SDKs. | "" |
+| jedisPool| You can provide your own implementation of JedisPool. | null |
+| maxTotal| Max number of pool connections. | 8 |
+
+### Redis cluster support
+
+The SDK supports Redis with Cluster. Note that a stable release of Cluster has shipped since Redis 3.0. For further information about Redis Cluster, refer to the [Cluster documentation](https://redis.io/topics/cluster-spec).
+
+Use the following configuration for Redis in Cluster mode.
+
+| **Variable** | **Type** | **Description** |
+| --- | --- | --- |
+| clusterNodes | Set\<HostAndPort\> | The list of cluster nodes. |
+| jedis | JedisCluster | Jedis contains the list of cluster nodes. |
+| keyHashTag | string | Custom hashtag to be used. |
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+// Building the Redis storage wrapper with some configurations of choice.
+Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
+jedisClusterNodes.add(new HostAndPort("cluster-node1", 6071));
+jedisClusterNodes.add(new HostAndPort("cluster-node2", 6072));
+jedisClusterNodes.add(new HostAndPort("cluster-node3", 6073));
+JedisCluster jedis = new JedisCluster(jedisClusterNodes);
+CustomStorageWrapper redis = RedisInstance.builder()
+                              .jedisCluster(jedis)
+                              .hashtag("{SPLITIO}")
+                              .prefix("java:")
+                              .build();
+SplitClientConfig config = SplitClientConfig.builder()
+                            .customStorageWrapper(redis)
+                            .operationMode(OperationMode.CONSUMER)
+                            .storageMode(StorageMode.REDIS)
+                            .setBlockUntilReadyTimeout(10000)
+                            .enableDebug()
+                            .build();
+SplitFactory splitFactory =  SplitFactoryBuilder.build("apikey", config);
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+// Building the Redis storage wrapper with some configurations of choice.
+val jedisClusterNodes = setOf<HostAndPort>(
+                                HostAndPort("cluster-node1", 6071),
+                                HostAndPort("cluster-node2", 6072),
+                                HostAndPort("cluster-node3", 6073))
+        val jedis = JedisCluster(jedisClusterNodes)
+        val redis: CustomStorageWrapper = RedisInstance.builder()
+            .jedisCluster(jedis)
+            .hashtag("{SPLITIO}")
+            .prefix("java:")
+            .build();
+        val splitConfig: SplitClientConfig = SplitClientConfig.builder()
+            .customStorageWrapper(redis)
+            .operationMode(OperationMode.CONSUMER)
+            .storageMode(StorageMode.REDIS)
+            .build()
+val splitFactory: SplitFactory = SplitFactoryBuilder.build("apikey", config)
+```
+  </TabItem>
+</Tabs>
+
+:::info[Redis Cluster]
+The Java SDK performs multi-key operations in certain methods such as `mget` (to return values of all specified keys) or `keys` (to return all the keys that matches a particular pattern) to avoid multiple calls to Redis. Redis Cluster does not allow these operations unless you use hashtags. Hashtags ensure that multiple keys are allocated in the same hash slot. The SDK allows you to use a custom key hashtag for storing keys. If this option is missing, it uses a default hashtag of `{SPLITIO}` when `cluster` mode is specified in the configuration. Keep in mind that multi-key operations may become unavailable during a resharding of the hash slots, calls to `getTreatments`, or `manager.splitNames()`, causing `splitKeys` to fail.
+:::
+
+## Custom impression listener
+
+Split SDKs send impression data back to Split servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*. Use the SDK's `impressionListener` parameter, where you can add an implementation of `ImpressionListener`. This implementation **must** define the `LogImpression` method. It receives data in the following schema.
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- | 
+| Impression | Impression | Impression object that has the feature flag name, treatment result, label, etc. |
+| Attributes | map[string]interface{} | A list of attributes passed by the client. |
+| InstanceID | string | The IP address of the machine running the SDK. |
+| SDKLanguageVersion | string | The version of the SDK. In this case the language is Python plus the version. |
+
+The SDK sends the generated impressions to the impression listener immediately. As a result, be careful while implementing handling logic to avoid blocking the main thread. As the second parameter, specify the size of the queue acting as a buffer (see the snippet below).
+
+If the impression listener is slow at processing the incoming data, the queue fills up and any subsequent impressions are dropped.
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+    .integrations(
+            IntegrationsConfig.builder()
+                    .impressionsListener(new MyImpressionListener(), 500)
+                    .build())
+    .build();
+
+SplitFactoryBuilder.build("YOUR_SDK_KEY", config).client();
+
+
+// Custom Impression listener class
+static class MyImpressionListener implements ImpressionListener {
+
+  @Override
+  public void log(Impression impression) {
+      // Send this data somewhere. Printing to console for now.
+      System.out.println(impression);
+  }
+
+  @Override
+  public void close() {
+      // Do something
+  }
+}
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+val config: SplitClientConfig = SplitClientConfig.builder()
+            .integrations(
+                IntegrationsConfig.builder()
+                    .impressionsListener(MyImpressionListener(), 500)
+                    .build())
+            .build()
+SplitFactoryBuilder.build("YOUR_SDK_KEY", config).client()
+
+// Custom Impression listener class
+class MyImpressionListener : ImpressionListener {
+    override fun log(impression: Impression) {
+        // Send this data somewhere. Printing to console for now.
+        println(impression);
+    }
+    override fun close() {
+        // Do something
+    }
+}
+```
+  </TabItem>
+</Tabs>
+
+## Thread Factory
+
+Since version `4.10.0`, the Java SDK provides support for Virtual Threads using the config threadFactory, instead of traditional threads. Below is an example of how to set it up:
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+import io.split.client.SplitClient;
+import io.split.client.SplitClientConfig;
+import io.split.client.SplitFactory;
+import io.split.client.SplitFactoryBuilder;
+
+import java.util.concurrent.ThreadFactory;
+
+ThreadFactory virtualThreadFactory = Thread.ofVirtual().factory();
+SplitClientConfig config = SplitClientConfig.builder()
+                            .setBlockUntilReadyTimeout(10000)
+                            .threadFactory(virtualThreadFactory)
+                            .build();
+
+SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY",config);
+SplitClient client = splitFactory.client();
+client.blockUntilReady();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+import io.split.client.SplitClient;
+import io.split.client.SplitClientConfig;
+import io.split.client.SplitFactory;
+import io.split.client.SplitFactoryBuilder;
+
+val virtualThreadFactory = Thread.ofVirtual().factory();
+val config: SplitClientConfig = SplitClientConfig.builder()
+            .setBlockUntilReadyTimeout(10000)
+            .threadFactory(virtualThreadFactory)
+            .build()
+
+val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config)
+val client: SplitClient = splitFactory.client()
+client.blockUntilReady()
+```
+  </TabItem>
+</Tabs>
+
+## New Relic integration
+
+The New Relic integration annotates New Relic transactions with Split feature flags information that can be used to correlate application metrics with feature flag changes. This integration is implemented as a synchronous impression listener and it can be enabled as shown below:
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+SplitClientConfig config = SplitClientConfig.builder()
+    .integrations(
+            IntegrationsConfig.builder()
+                    .newRelicImpressionListener()
+                    .build())
+    .build();
+
+SplitFactoryBuilder.build("YOUR_SDK_KEY", config).client();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+val config: SplitClientConfig = SplitClientConfig.builder()
+            .integrations(
+                IntegrationsConfig.builder()
+                    .newRelicImpressionListener()
+                    .build())
+            .build()
+
+SplitFactoryBuilder.build("YOUR_SDK_KEY", config).client()
+```
+  </TabItem>
+</Tabs>
+
+This integration is only enabled if Split SDK detects the New Relic agent in the classpath. If the agent is not detected, the following error will be displayed in the logs (if logging is enabled):
+```
+WARN [main] (IntegrationsConfig.java:72) - New Relic agent not found. Continuing without it
+```
+
+## WebLogic container
+
+WebLogic and the Split Java SDK contain a reference to Google Guava. If you are currently deploying a web application that contains our Java SDK into WebLogic, instruct the container to load Guava from the app classpath and not from the container.
+
+If you have an existing **weblogic.xml** file in your deployment, add: `<package-name>com.google.common.*</package-name>` under the `<prefer-application-packages>` tag. If you do not, create the file and place it under the directory `WEB-INF`.
+
+Here is a sample of a **weblogic.xml** file that includes the previously mentioned Guava classpath loading instruction.
+
+```java title="weblogic.xml"
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app">
+  <context-root>/testing-java</context-root>
+  <container-descriptor>
+    <prefer-web-inf-classes>false</prefer-web-inf-classes>
+    <prefer-application-packages>
+      <package-name>com.google.common.*</package-name>
+    </prefer-application-packages>
+
+  </container-descriptor>
+</weblogic-web-app>
+```

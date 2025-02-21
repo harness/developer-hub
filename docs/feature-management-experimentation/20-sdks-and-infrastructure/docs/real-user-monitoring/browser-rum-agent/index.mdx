@@ -1,0 +1,99 @@
+---
+title: FME Browser RUM Agent
+sidebar_label: Browser RUM Agent
+description: Javascript developer reference for working with Real User Metrics (RUM)
+---
+
+import DocCardList from '@theme/DocCardList';
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Introduction,
+  InitializationTwoSteps,
+  IdentityObjects,
+  Configuration,
+  DefaultEvents,
+  AutomaticMetricCreation,
+  CodeExamples,
+  MoreFeatures,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_templates/_used_by_all_rum_agents/index.mdx";
+
+import Intro               from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_001_introduction.mdx";
+import Language            from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_001_language.mdx";
+
+import Import              from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_002_codeImport.mdx";
+import Initiate            from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_002_codeInitiate.mdx";
+
+import ConfigurationList   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_003_listConfiguration.mdx";
+import CodeConfiguration   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_003_codeConfiguration.mdx";
+
+import EventsTable         from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_020_tableDefaultEvents.mdx";
+
+import MetricsTable        from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_020_tableOutOfTheBoxMetrics.mdx";
+
+import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
+
+export const Document = (t) => SDKDocsBuilder(
+  [
+    [ 
+      Introduction, 
+      {
+        rumAgentType:    "Browser",
+        indroduction:    <Intro />,
+        language:        <Language />,
+      },
+    ],
+    [
+      InitializationTwoSteps,
+      {
+        codeImport:      <Import defaultTab={t} />,
+        sdkKeyDetails:   <ClientSdkKeyDetails />,
+        codeInitiate:    <Initiate defaultTab={t} />,
+      },
+    ],
+    [
+      IdentityObjects,
+      {},
+    ],
+    [
+      Configuration,
+      {
+        listConfiguration: <ConfigurationList />,
+        codeConfiguration: <CodeConfiguration defaultTab={t} />,
+      },
+    ],
+    [
+      DefaultEvents,
+      {
+        rumAgentType: "Browser",
+        tableDefaultEvents: <EventsTable />,
+      },
+    ],
+    [
+      AutomaticMetricCreation,
+      {
+        tableOutOfTheBoxMetrics: <MetricsTable />,
+      },
+    ],
+    [
+      CodeExamples,
+      {
+        rumAgentType: "Browser",
+        link: "https://github.com/splitio/browser-rum-agent-examples",
+      },
+    ],
+    [
+      MoreFeatures,
+      {},
+    ]
+  ]
+);
+
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []
+
+<DocCardList />

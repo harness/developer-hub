@@ -1,0 +1,52 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+The RUM Agent provides methods to manage Identities, as shown below.
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```java
+// add one Identity
+SplitRumAgent.addIdentity(new Identity("my_user", "user"));
+
+// add multiple Identities
+SplitRumAgent.addIdentities(
+  new Identity("my_user", "user"),
+  new Identity("my_account", "account")
+);
+
+// remove one Identity
+SplitRumAgent.removeIdentity(new Identity("my_user", "user"));
+
+// remove all Identities
+SplitRumAgent.removeIdentities();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// add one Identity
+SplitRumAgent.addIdentity(Identity("my_user", "user"))
+
+// add multiple Identities
+SplitRumAgent.addIdentities(
+  Identity("my_user", "user"),
+  Identity("my_account", "account")
+)
+
+// remove one Identity
+SplitRumAgent.removeIdentity(Identity("my_user", "user"))
+
+// remove all Identities
+SplitRumAgent.removeIdentities()
+```
+
+  </TabItem>
+</Tabs>

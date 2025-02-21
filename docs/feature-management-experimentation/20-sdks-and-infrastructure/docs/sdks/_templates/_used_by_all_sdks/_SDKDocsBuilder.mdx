@@ -1,0 +1,21 @@
+"use client";
+
+import React from "react";
+
+export const SDKDocsBuilder = (
+  sections
+) => {
+  const toc = []
+
+  const result = sections.map(([Section, props], index) => {
+    toc.push(...Section.toc);
+    return <React.Fragment key={"" + index}>
+      <Section.default {...props} />
+    </React.Fragment>
+  });
+
+  return {
+    contents: [ ...result],
+    toc: toc
+  }
+};
