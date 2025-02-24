@@ -90,7 +90,7 @@ terragrunt --version
 
 In Harness, Terragrunt is fully supported up to version 0.66.9
 
-Starting from 0.67.0, Terragrunt introduced a breaking change that may cause some issues because of new logging format. See [Terragrunt 0.67.0 breaking change] (https://github.com/gruntwork-io/terragrunt/releases/tag/v0.67.0)
+Starting from 0.67.0, Terragrunt introduced a breaking change that may cause some issues because of new logging format. See [Terragrunt 0.67.0 breaking change](https://github.com/gruntwork-io/terragrunt/releases/tag/v0.67.0)
 
 If you are using Terragrunt 0.67.0 or higher, you need to enable the environment variable TERRAGRUNT_FORWARD_TF_STDOUT to maintain the previous logging behavior.
 This ensures that Terragrunt preserves its standard logging format, preventing disruptions in Harness pipelines.
