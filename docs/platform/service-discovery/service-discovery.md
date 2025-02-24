@@ -1,5 +1,4 @@
 ---
-id: service-discovery
 sidebar_position: 1
 title: Service Discovery
 redirect_from:
@@ -47,38 +46,6 @@ You can leverage all the [permissions mentioned](/docs/chaos-engineering/securit
 
 When you are onboarding, one of the steps involves discovering services. Harness creates the discovery agent that automatically discovers services for your application.
 
-If you want to customize the discovery agent, follow the steps below.
+## Next Steps
 
-### Customize discovery agent
-
-1. To customize the discovery agent, navigate to **Project Settings** and select **Discovery**.
-
-    ![](./static/discovery.png)
-
-2. Click **New Discovery Agent**.
-
-    ![](./static/select-agent.png)
-
-3. Select an **environment**, **infrastructure**, **Discovery Agent Name** and **namespace**. The next step (optional) requires information such as node selector, blacklisted namespaces, and period of detecting the services. Select **Create New Discovery Agent**.
-
-    ![](./static/add-details-discovery.png)
-
-### Edit discovery agent
-
-1. To edit a discovery agent, navigate to the agent and click **Edit**. Make the necessary changes to the required fields.
-
-    ![](./static/edit-dis-agent-1.png)
-
-2. Select **Update Discovery Agent**.
-
-    ![](./static/edit-details-discovery.png)
-
-### Delete discovery agent
-
-1. To delete a discovery agent, navigate to the agent you want to delete and select **Delete**.
-
-    ![](./static/delete-1.png)
-
-2. Select **Delete**.
-
-    ![](./static/confirm-2.png)
+- [Customize Discovery Agent](/docs/platform/service-discovery/customize-agent)

@@ -1,6 +1,6 @@
 ---
 title: Restrict Discovery to Specific Namespace(s)
-sidebar_position: 3
+sidebar_position: 5
 description: Restrict Discovery to Single and Multiple Namespaces.
 redirect_from:
 - /docs/chaos-engineering/concepts/explore-concepts/service-discovery/user-defined-service-account
