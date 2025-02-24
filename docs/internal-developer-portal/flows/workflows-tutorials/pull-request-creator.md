@@ -29,7 +29,7 @@ The workflow enables developers to:
 - **Validate branch details** auto-fetched using Dynamic Pickers.
 - **Provide additional details** required to create a pull request.
 
-![](./static/Dynamic%20Picker%20Tutorial%20Flow.png)
+![](./static/dynamic-picker-tutorial-flow.png)
 
 ## Pre-Requisites
 Before starting, ensure you meet the following requirements: 
