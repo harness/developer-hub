@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-02-14T10:00
+date: 2025-02-21T10:00
 sidebar_position: 10
 ---
 
@@ -21,6 +21,26 @@ These release notes describe recent changes to Harness Continuous Integration.
 :::
 
 ## February 2025
+
+### Version 1.67
+
+<!-- 2025-02-17 -->
+
+#### New features and enhancements
+
+- The Build Intelligence flag can now be toggled on and off based on an already resolved variable value, providing greater flexibility in pipeline configurations (CI-15706).
+- The new input `PLUGIN_IGNORE_PATHS` (available in `plugins/kaniko:1.10.6`) allows users to specify multiple paths to ignore during the build. Each path is trimmed and appended as a separate `--ignore-path` flag in the Kaniko build process. (CI-16193)
+  
+#### Fixed issues
+
+- Fixed an issue where enabling Build Intelligence caused Python shell executions to fail due to an extra newline being appended. The autoinjection script has been corrected for **run**, **runtest**, and **runtestv2** in Build Intelligence. (CI-15914, ZD-78087)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `plugins/buildx`      | Configuration Updates  | 1.1.25                | 1.1.26          |
+| `plugins/buildx-ecr`      | Configuration Updates                  | 1.2.9             | 1.2.10        |
 
 ### Version 1.66
 
