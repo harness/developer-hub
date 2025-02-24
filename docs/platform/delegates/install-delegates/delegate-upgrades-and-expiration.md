@@ -307,44 +307,44 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
     | `delegateTag`       | Yes          | The custom delegate image version you want to use to override the existing one. |
     | `orgIdentifier`     | No           | The name assigned when creating the organization.                               |
     | `projectIdentifier` | No           | The name assigned when creating the project.                                    |
-    | `tag`               | No           | Used to target specific delegates across scope                                  |
+    | `tag`               | No           | Used to target specific delegates across scope.                                 |
 
 
     ### How Overrides delegate image tag API works?  
 
       **1. Account-Level Update**
-         If only `accountIdentifier` and `delegateTag` provided, the update happens at the Account level. It will automatically apply to all Organizations and Projects under that account, when the delegate upgrader runs.
+            If only `accountIdentifier` and `delegateTag` provided, the update happens at the Account level. It will automatically apply to all Organizations and Projects under that account, when the delegate upgrader runs.
 
       **2. Organization-Level Update**  
-          If `orgIdentifier` is provided along with `accountIdentifier` and `delegateTag`, the update applies only to that Organization and its Projects, leaving the Account-level version unchanged. During the upgrade, Project-level delegates update first, followed by the Organization-level delegate.
+            If  `orgIdentifier` is provided along with `accountIdentifier` and `delegateTag`, the update applies only to that Organization and its Projects, leaving the Account-level version unchanged. During the upgrade, Project-level delegates update first, followed by the Organization-level delegate.
 
       **3. Project-Level Update**  
-          If a `projectIdentifier` is provided along with `orgIdentifier`,`accountIdentifier` and `delegateTag`, the update is restricted only to that specific Project. The Organization and Account versions remain unchanged. During the upgrade, only the Project level delegates are updated without modifying higher levels.  
+            If a `projectIdentifier` is provided along with `orgIdentifier`,`accountIdentifier` and `delegateTag`, the update is restricted only to that specific Project. The Organization and Account versions remain unchanged. During the upgrade, only the Project level delegates are updated without modifying higher levels.  
 
-      **4. Tag-level Update** 
-          In cases where multiple delegates exist across different level, a tag can be used to further refine and update specific delegate image, A `tags` is a unique identifier assigned to a delegate (e.g., `qa`, `pre-prod`, `prod` or any custom name). 
+      **4. Tag-level Update**
+            In cases where multiple delegates exist across different level, a tag can be used to further refine and update specific delegate image, A `tags` is a unique identifier assigned to a delegate (e.g., `qa`, `pre-prod`, `prod` or any custom name). 
           
-          When `tags` is specified with `accountIdentifier` and `delegateTag` in the API request (or it may have different combination with `orgIdentifier` and `projectIdentifier`), only the delegates matching that `tags` will be updated across different level. This allows independent updates for multiple delegates running in the across different Project, Organization or Account.
+            When `tags` is specified with `accountIdentifier` and `delegateTag` in the API request (or it may have different combination with `orgIdentifier` and `projectIdentifier`), only the delegates matching that `tags` will be updated across different level. This allows independent updates for multiple delegates running in the across different Project, Organization or Account.
 
-3. Delete an Override Delegate API.
+3. **Delete an Override Delegate API**.
 
   The [delete-override-delegate](https://apidocs.harness.io/tag/Delegate-Setup-Resource#operation/overrideDelegateImageTag) API allows you to remove an existing delegate image override at different hierarchy levels (Account → Organization → Project).
 
   ```bash
   curl -i -X DELETE \
-  'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=string&delegateTag=string&validTillNextRelease=false&validForDays=180' \
+  'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<ACCOUNT_ID>&delegateTag=<IMAGE_VERSION>&orgIdentifier=<ORG_NAME>&projectIdentifier=<PROJECT_NAME>&tags=<T1>,tags=<T2>,tags=<T3>&validTillNextRelease=false&validForDays=180 \
   -H 'x-api-key: YOUR_API_KEY_HERE'
   ```
 
   Required Parameters are same as override delegate API
 
-  | **Parameter**       | **Required** | **Description**                                                                                                                                                                                |
-    |---------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | `accountIdentifier` | Yes          | Unique identifier for the Harness account. This is mandatory for all requests.                                                                                                                 |
-    | `delegateTag`       | Yes          | The custom delegate tag to override with the new image version.                                                                                                                                |
-    | `orgIdentifier`     | No           | Identifier for the organization. If provided, the update applies to the organization and its projects but does not affect the account level.                                                   |
-    | `projectIdentifier` | No           | Identifier for the project. If provided, the update applies **only to the specified project**, leaving the organization and account levels unchanged.                                          |
-    | `tag`               | No           | Used to target specific delegates within the same hierarchy level (e.g., differentiating between `qa` and `prod` environments). If provided, only delegates matching this tag will be updated. |
+    | **Parameter**       | **Required** | **Description**                                                                 |
+    |---------------------|--------------|---------------------------------------------------------------------------------|
+    | `accountIdentifier` | Yes          | Harness account Id (`Account Settings → Account Details → Account Id`).         |
+    | `delegateTag`       | Yes          | The custom delegate image version you want to use to override the existing one. |
+    | `orgIdentifier`     | No           | The name assigned when creating the organization.                               |
+    | `projectIdentifier` | No           | The name assigned when creating the project.                                    |
+    | `tag`               | No           | Used to target specific delegates across scope.                                 |
 
 
 ## Delegate expiration support policy
