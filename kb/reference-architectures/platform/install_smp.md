@@ -1,6 +1,6 @@
 ---
 title: Install SMP using
-description: Best Practices Document for DO's and Dont for Harness Delegate Architecture 
+description: How to Install SMP Using SMP Installer
 ---
 
 # Overview
