@@ -38,23 +38,19 @@ Refer to [this section](/docs/cloud-development-environments/ides/intellij#recom
 
 Follow these steps to install the **Harness Gitspace Plugin**:  
 
-1. **Download the latest version** of the [Harness Gitspace Plugin](https://plugins.jetbrains.com/plugin/26594-harness-gitspaces) package.  
-2. **Install and open** [JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/).  
-
-3. Click the **settings icon** in the bottom-left corner of the application.  
+1. Once you've installed JetBrains Gateway, click the **settings icon** in the bottom-left corner of the application.  
 <img width="650" alt="Image" src="https://github.com/user-attachments/assets/0d096cb6-8c08-4d6f-85da-33b2463e77f4" />
 
-4. Select **"Manage Providers."**  
+2. Select **"Manage Providers."**  
 <img width="275" alt="Image" src="https://github.com/user-attachments/assets/636be358-a703-4eb6-a76d-b4e70c35949e" />
 
-5. In the **Installed Plugins** section, click the **settings icon** on the right and choose **"Install Plugin from Disk."**  
-<img width="650" alt="Image" src="https://github.com/user-attachments/assets/ff6459be-8b70-4a47-8769-d1a19a842630" />
+3. From the **Plugins Marketplace**, search for **Harness Gitspaces**. Click **Install**. 
+<img width="1300" alt="Image" src="https://github.com/user-attachments/assets/6ac66195-b08d-44fb-b407-a9dbeed19ab0" />
 
-6. Locate and **select the downloaded Harness Gitspaces Plugin package.**  
-7. A warning will appear indicating that this is a third-party plugin (Harness Gitspaces Plugin) and not a JetBrains plugin. Click **"Accept."**  
-<img width="350" alt="Image" src="https://github.com/user-attachments/assets/2989a192-bbc2-428e-a29d-c65aab92f992" />
+4. Once you've installed the plugin, click **"OK"** in the bottom-corner page. 
+<img width="1300" alt="Image" src="https://github.com/user-attachments/assets/a1f8d3e7-96a0-4874-bbf4-628c4b2547bf" />
 
-8. That’s it! You will now see the plugin successfully installed in your **JetBrains Gateway connections.**  
+5. That’s it! You will now see the plugin successfully installed in your **JetBrains Gateway connections.**  
 <img width="1100" alt="Image" src="https://github.com/user-attachments/assets/2de2d956-99dc-47c5-aa0b-91755c5d0995" />
  
 
