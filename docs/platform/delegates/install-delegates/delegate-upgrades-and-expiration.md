@@ -289,9 +289,9 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
 2.  Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to enable the Harness back-end to supply the upgrader with the custom delegate image tag.
  
-    The override-delegate-tag API allows you to update delegate image versions at different levels of hierarchy: Account → Organization → Project & tags. This ensures that the correct delegate version is applied based on the selected scope.  
+    The `override-delegate-tag` API allows you to update delegate image versions at different hierarchy levels: Account, Organization, Project and Tags. This ensures that the correct delegate version is applied based on the specified scope.  
 
-    When the override API is called, it allows users to update delegates across different levels using specific tags, identifiers, or a combination of both with the provided identifier (Account, Organization, Project, or Tag). If no exact match is found, it follows a bottom-up approach, starting from the tag and moving up to the Project, Organization, and then Account.
+    When the API is called, users can update delegates using specific tags, identifiers, or a combination of both for the given level (Account, Organization, Project, or Tag). If an exact match is not found, the update follows a bottom-up approach—starting from the tag, then moving up through the Project, Organization, and finally the Account level. 
 
     ### Overrides delegate tag API and Required parameters
 
