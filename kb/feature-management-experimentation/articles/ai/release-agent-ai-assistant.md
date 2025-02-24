@@ -40,37 +40,31 @@ import ButtonImage from './static/release-agent-button.png';
   own question.
 </p>
 
-![](./static/release-agent-popup.png)
+import SidePanel from './static/release-agent-popup.png';
+
+<p>
+  <img src={SidePanel} width="500" />
+</p>
 
 ### Example questions
 
 <ul>
   <li>How do I set up a JavaScript SDK in my codebase?</li>
   <li>How do I create and manage feature flags in FME?</li>
-  <li>
-    How can I integrate FME with my application using the SDK?
-  </li>
-  <li>
-    What are the best practices for naming feature flags and events?
-  </li>
+  <li>How can I integrate FME with my application using the SDK?</li>
+  <li>What are the best practices for naming feature flags and events?</li>
   <li>How do I set up an A/B test in Harness FME?</li>
   <li>Can you explain how FME's targeting rules work?</li>
   <li>How can I use segments to target specific groups of users?</li>
-  <li>
-    What data types can I track using FME events for measurement?
-  </li>
+  <li>What data types can I track using FME events for measurement?</li>
   <li>How do I interpret the metrics on my experiments' results?</li>
   <li>How do I export data from FME for further analysis?</li>
-  <li>
-    What are the implications of feature flag rollout strategies, such as canary
-    releases?
-  </li>
+  <li>What are the implications of feature flag rollout strategies, such as canary
+    releases?</li>
   <li>How do I troubleshoot issues with the FME SDK?</li>
   <li>Can I use FME across multiple environments, and how?</li>
   <li>How does Harness FME handle data privacy and security?</li>
-  <li>
-    What are best practices for cleaning up old flags and technical debt?
-  </li>
+  <li>What are best practices for cleaning up old flags and technical debt?</li>
 </ul>
 
 ## Metric summary
