@@ -195,7 +195,7 @@ parameters:
         title: GitHub Repository
         description: Pick one of the GitHub Repositories
         placeholder: "Choose a Repository"
-        path: proxy/github-api/orgs/{{ parameters.github_org }}/repos
+        path: proxy/github-api/orgs/{{parameters.github_org}}/repos
         valueSelector: full_name
 ```
 **Benefits**
@@ -296,7 +296,7 @@ You can follow these steps to implement **Form Context**:
 
 #### 1. Choose Data Fields to Store in Form Context  
 Decide which API response fields should be stored in **Form Context** for your **Dynamic Picker field**. Identify their respective field names, for example:  
-```apifield_id1``` and ```apifield_id2```  
+```value1``` and ```value2```  
 
 #### 2. Set Context Data in Your Workflow YAML  
 You can define **Form Context** in the ``ui:options`` section using the ```setContextData``` field within the **Dynamic Picker field definition** in **Workflow YAML**:  
@@ -307,15 +307,15 @@ dynamic-picker-name:
   ui:options: 
     path: dynamic-picker-field-path
     setContextData:
-      field1_id: apifield_id1
-      field2_id: apifield_id2
+      key1: value1
+      key2: value2
       ...
 ```
 
 #### **Syntax Breakdown**  
 - Define a **Dynamic Picker** using: ```ui:field: SelectFieldFromApi```  
-- ```field1_id``` and ```field2_id``` are identifiers in **Form Context** referring to API fields from the API Picker response.  
-- ```apifield_id1``` and ```apifield_id2``` represent actual API response object field identifiers.  
+- ```key1``` and ```key2``` are identifiers in **Form Context** referring to API fields from the API Picker response.  
+- ```value1``` and ```value2``` represent actual API response object field identifiers.  
 - ```setContextData``` is used to define and store certain API response object fields in **Form Context**.  
 
 #### 3. Auto-Update Input Fields Using `getContextData`  
@@ -327,16 +327,17 @@ dynamic-picker-name:
   ui:options: 
     path: dynamic-picker-field-path
     setContextData:
-      field1_id: apifield_id1
-      field2_id: apifield_id2
+      key1: value1
+      key2: value2
 field1-name:
   ui:field: ContextViewer
+  readonly: true
   ui:options:
-    getContextData: {{ formContext.field1_id }}
+    getContextData: {{formContext.key1}}
 field2-name:
   ui:field: ContextViewer
   ui:options: 
-    getContextData: {{ formContext.field2_id }}
+    getContextData: {{formContext.key2}}
     ...
 ```
 
@@ -344,7 +345,11 @@ field2-name:
 - ```field1-name``` and ```field2-name``` are input field names in the **Workflow frontend**.  
 - Define **Form Context** for these fields using: ```ui:field: ContextViewer```  
 - ```getContextData``` retrieves and auto-updates the input field with data from the API response.  
-- Reference values stored in **Form Context** using: ```formContext.field1_id```  
+- Reference values stored in **Form Context** using: ```formContext.key1```  
+
+:::info 
+We can make some fields **non-editable** by adding ``readonly:true`` in their field definition. Similarly, we can make certain fields **editable** by not including this property and thus allowing users to validate the auto-fetched data and then edit it, thus updating the form context with updated values. 
+:::
 
 ### Example YAML 
 <Tabs>
