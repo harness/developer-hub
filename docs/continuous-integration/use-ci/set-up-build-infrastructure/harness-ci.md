@@ -157,7 +157,7 @@ Harness images are available on Docker Hub, the [Harness project on GAR](http://
 
 ## Windows Rootless
 :::info
-Currently, the feature to download rootless **lite-engine**, **ci-addon**, and **drone-git** images for Windows by default is behind the feature flag, `CDS_SERVICE_OVERRIDES_2_0`. [Contact Harness Support](https://support.harness.io/) to enable this feature.
+Currently, the feature to download rootless **lite-engine**, **ci-addon**, and **drone-git** images for Windows by default is behind the feature flag, `CI_ADDON_LE_WINDOWS_ROOTLESS`. [Contact Harness Support](https://support.harness.io/) to enable this feature.
 
 :::
 
