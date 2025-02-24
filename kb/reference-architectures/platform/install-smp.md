@@ -1,6 +1,6 @@
 ---
-title: Install SMP using
-description: How to Install SMP Using SMP Installer
+title: Install SMP using Harness SMP Installer
+description: This document describes the steps to install SMP on a cloud provider 
 ---
 
 # Overview
