@@ -35,6 +35,13 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 - Fixed an issue where enabling Build Intelligence caused Python shell executions to fail due to an extra newline being appended. The autoinjection script has been corrected for **run**, **runtest**, and **runtestv2** in Build Intelligence. (CI-15914, ZD-78087)
 
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `plugins/buildx`      | Configuration Updates  | 1.1.25                | 1.1.26          |
+| `plugins/buildx-ecr`      | Configuration Updates                  | 1.2.9             | 1.2.10        |
+
 ### Version 1.66
 
 <!-- 2025-02-10 -->
