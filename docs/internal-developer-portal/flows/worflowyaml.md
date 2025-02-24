@@ -268,7 +268,7 @@ Other secret managers are **not supported** for storing secrets with this featur
 
 #### Referencing the **`secret`** in the **`steps`** spec:
 ```YAML
-apiKeySecret: ${{ secretId }}
+apiKeySecret: "secretId"
 ```
 
 Here, ```secretId``` refers to the identifier of the secret which stores the **Harness API Key**. You can retrieve this ``secretId`` from the **Harness Secret Manager**. 
@@ -291,7 +291,7 @@ steps:
       url: pipeline url
       inputset:
         username: ${{ parameters.username }}
-      apiKeySecret: ${{ secretId }}
+      apiKeySecret: "secretId"
 output:
   links:
     - title: Pipeline Details
