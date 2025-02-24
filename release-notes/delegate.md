@@ -87,6 +87,14 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## February 2025
+
+### Version 25.02.85301 <!-- February 24, 2025 -->
+
+#### Fixed Issues
+
+- Added a new API to send Git details in requests, ensuring services are fetched from the correct branch. [CDS-106242]
+
 ## January 2025
 
 ### Version 24.10.84107 <!-- January 31, 2025 -->
