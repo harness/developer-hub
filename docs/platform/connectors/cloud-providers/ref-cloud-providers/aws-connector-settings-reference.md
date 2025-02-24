@@ -743,16 +743,7 @@ For more strategies, go to [Exponential Backoff And Jitter](https://aws.amazon.c
       <th style={{ border: '1px solid black', padding: '8px' }}>Limitations</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Deployment Support</strong></td>
-      <td style={{ border: '1px solid black', padding: '8px' }}>
-        The following deployments are not supported using the OIDC connector:
-        <ul>
-          <li>AWS Serverless Lambda deployments</li>
-        </ul>
-      </td>
-    </tr>  
+  <tbody> 
     <tr>
       <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Plugin-based Support</strong></td>
       <td style={{ border: '1px solid black', padding: '8px' }}>

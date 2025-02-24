@@ -146,6 +146,8 @@ AWS connectors are used in your Harness service for the artifact you select in *
 
 You can use the same connector or different connectors, but ensure that the credentials provided for the artifact connector are sufficient to fetch the ZIP or image and the credentials provided for the infrastructure definition connector are sufficient to deploy to Lambda.
 
+OIDC connectors are also supported for Lambda deployments, and this functionality is available starting with **delegate version 851xx or later**.
+
 ## Harness service configuration
 
 When you create a Harness service, select **AWS Lambda** to define a service that represents the AWS Lambda function you want to deploy.
