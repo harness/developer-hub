@@ -15,9 +15,9 @@ This document outlines the supported capabilities in Harness STO, including inte
 
 ## Harness SaaS
 
-- Harness SaaS fully supports all scanner integrations listed in the [Supported Scanners](link-to-supported-scanners) documentation.
-- STO leverages continuous integration (CI) build infrastructures to manage scans and process identified issues.  The [Infrastructure](link-to-infrastructure) document lists the infrastructure types STO supports. 
-- Harness SaaS includes all the features outlined in the [Harness STO Features](link-to-harness-sto-features) documentation. 
+- Harness SaaS fully supports all scanner integrations listed in the [Supported Scanners](/docs/security-testing-orchestration/whats-supported/scanners) documentation.
+- STO leverages continuous integration (CI) build infrastructures to manage scans and process identified issues.  The [Infrastructure](/docs/security-testing-orchestration/whats-supported/infrastructure) document lists the infrastructure types STO supports. 
+- Harness SaaS includes all the features outlined in the [Harness STO Features](/docs/security-testing-orchestration/whats-supported/features) documentation. 
 
 ## Harness Self-Managed Enterprise Edition (SMP)
 

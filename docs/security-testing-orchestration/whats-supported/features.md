@@ -5,15 +5,15 @@ sidebar_label: Features
 sidebar_position: 04
 ---
 
-This document outlines all the key features of Harness STO, providing a quick overview and links to detailed documentation for further exploration. To determine if a specific feature is supported in your deployment, please refer the [Deployment Options Documentation](/docs/security-testing-orchestration/whats-supported/sto-deployments/sto-deployments).
+This document outlines all the key features of Harness STO, providing a quick overview and links to detailed documentation for further exploration. To determine if a specific feature is supported in your deployment, please refer the [Deployment Options Documentation](/docs/security-testing-orchestration/whats-supported/sto-deployments).
 
 
 **1.⁠ ⁠Security Scanners**
 STO integrates with multiple security scanners to detect vulnerabilities. The supported scanners vary by scan type.
-View the list of [supported scanners](/docs/security-testing-orchestration/whats-supported/sto-deployments/scanners)
+View the list of [supported scanners](/docs/security-testing-orchestration/whats-supported/scanners)
 
 **2.⁠ ⁠Custom Scan and Ingestion**
-STO allows ingestion of scan results from supported scanners that are not available as native steps. This enables integration with additional security tools. Learn more about [Custom Scan and Ingestion](/docs/security-testing-orchestration/whats-supported/sto-deployments/scanners#scanners-supported-with-custom-scan-step)
+STO allows ingestion of scan results from supported scanners that are not available as native steps. This enables integration with additional security tools. Learn more about [Custom Scan and Ingestion](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference)
 
 **3.⁠ Scanner ⁠Scan Modes**
 Each supported scanner may offer different scan modes: Orchestration, Ingestion, and Extraction. These modes determine how the scanner interacts with your applications and infrastructure:
