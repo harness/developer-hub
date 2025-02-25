@@ -232,6 +232,77 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
 
 :::
 
+## Feb 24, 2025, Patch Version 0.25.4
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                    |
+|---------------------------|------------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.25.4](https://github.com/harness/helm-charts/releases/tag/harness-0.25.4)                 |
+| Air Gap Bundle            | [0.25.4](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.25.4) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.61.2                                                                                       |
+| Pipeline Service          | 1.111.1                                                                                      |
+| Platform Service          | 1.48.0                                                                                       |
+| Access Control Service    | 1.70.0                                                                                       |
+| Delegate                  | 25.01.84800                                                                                  |
+| GitOps Service            | 1.23.10                                                                                      |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.123.1                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.6                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.4                                                                                       |
+| Gateway                   | 1.41.7                                                                                       |
+
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.25.4/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.4/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.4/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.4/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.4/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.4/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.4/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.25.4/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Cloud Cost Management
+
+- Improved Query Performance: We have increased the socket timeout for all ClickHouse queries to enhance stability and performance. [CCM-21324]
+
+- Optimized Data Partitioning: We have added partitioning on the startTime field in unifiedTable to improve query efficiency. [CCM-21374]
+
+- Expanded AWS & Unified View Metrics: The following cost measures are now available in AWS and Unified views within Cloud Cost Dashboards, enabling more granular cost analysis:
+AWS:
+Total Discount
+Private Rate Discount
+Bundled Discount
+EDP Discount
+Tax
+Credit
+Refund
+
+Unified:
+AWS Total Discount
+AWS Private Rate Discount
+AWS Bundled Discount
+AWS EDP Discount
+AWS Tax
+AWS Credit
+AWS Refund
+[CCM-21445]
+
 ## Feb 17, 2025, Patch Version 0.25.3
 
 This release includes the following Harness module and component versions.
