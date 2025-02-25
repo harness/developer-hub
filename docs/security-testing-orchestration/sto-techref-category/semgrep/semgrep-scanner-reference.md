@@ -42,7 +42,7 @@ For a quick introduction, go to the [SAST code scans using Semgrep](/docs/securi
   You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your proxies using custom certificates. For more information, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 - The following topics contain useful information for setting up scanner integrations in STO:
-   - [What's supported in STO](/docs/security-testing-orchestration/whats-supported)
+   - [What's supported in STO](/docs/security-testing-orchestration/whats-supported/sto-deployments)
    - [Security Testing Orchestration FAQs](/docs/faqs/security-testing-orchestration)
    - [Optimize STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines)
 
