@@ -265,7 +265,8 @@ If automatic upgrade is enabled and you have a custom image, the following may o
 
 To avoid these issues, you can set up the `upgrader` to use your custom delegate tag.
 
-1. Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/publishedDelegateVersion) API to determine the delegate number for your account:
+### Latest supported delegate version 
+Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/publishedDelegateVersion) API to determine the delegate number for your account:
 
    ```
    curl --location 'https://app.harness.io/ng/api/delegate-setup/latest-supported-version?accountIdentifier=\<YOUR_ACCOUNT_IDENTIFIER>' \
@@ -287,33 +288,38 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
     When the `upgrader` makes a request, it tries to change the image to `harness/delegate:24.04.82804`. You can take either the `harness/delegate:24.04.82804` image or the `harness/delegate:24.04.82804.minimal` image and build your own image by adding more tools and binaries, and then push it to your own container repository. For example, you might publish the image to a private repository, such as `artifactory-abc/harness/delegate:24.04.82804`.
 
-2.  Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to update delegate image version for one or more delegates using `accountIdentifier`, `orgIdentifier`, `projectIdentifier`, and `tags`.
+### Override delegate image version
+  
+  #### Create override
 
-    ### Override delegate tag API and Required parameters
+    Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to update delegate image version for one or more delegates using `accountIdentifier`, `orgIdentifier`, `projectIdentifier`, and `tags`.
 
     ```bash
       curl -i -X PUT \
       'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<ACCOUNT_ID>&delegateTag=<IMAGE_VERSION>&orgIdentifier=<ORGANIZATION_ID>&projectIdentifier=<PROJECT_ID>&tags=<T1>,tags=<T2>,tags=<T3>&validTillNextRelease=false&validForDays=180' \
       -H 'x-api-key: YOUR_API_KEY_HERE'
     ```
+    **API Parameters**
 
     | **Parameter**       | **Required** | **Description**                                                                     | **Use Case**                                                                                                       |
     |---------------------|--------------|-------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
-    | `accountIdentifier` | Yes          | Harness account Id (`Account Settings → Account Details → Account Id`).             | Can be used to update all delegates in an Account, including child scopes. |
-    | `delegateTag`       | Yes          | The custom delegate image version you want to use to override the existing delegate version. | -                                                                                                                   |
-    | `orgIdentifier`     | No           | Id assigned when creating the organization.                                         | Can be used to updated all delegates in an Organization inclduding child scopes.                     |
-    | `projectIdentifier` | No           | Id assigned when creating the project.                                              | Can be used to update all delegates in a project.                                                                 |
-    | `tags`              | No           | [Delegate tag](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags).                                        | Can be used to update delegates with sepcific tags.                               |
+    | `delegateTag`       | Yes          | Custom delegate image version to override the existing delegate version | -                                                                                                                   |
+    | `accountIdentifier` | Yes          | Harness account Id (`Account Settings → Account Details → Account Id`)             | Used to update all delegates in an Account, including child scopes |
+    | `orgIdentifier`     | No           | Id assigned when creating the organization                                         | Used to updated all delegates in an organization inclduding child scopes                     |
+    | `projectIdentifier` | No           | Id assigned when creating the project                                              | Used to update all delegates in a project                                                                 |
+    | `tags`              | No           | [Tag](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags) assigned when creating the delegate                                        | Used to update delegates with sepcific tags                               |
+    | `validTillNextRelease`| No | If set to true, your custom image version will be overridden when new delegate is released | - |
+    | `validForDays` | No | Days after which your custom image version will be overridden | - |
 
-3. If you wish to delete an existing [override](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag), use the  [delete-override-delegate](https://dummy.com) API. 
+3. If you wish to delete an existing [override](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag), use the  [delete-delegate-override](https://dummy.com) API. 
 
     ```bash
     curl -i -X DELETE \
-    'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<ACCOUNT_ID>&delegateTag=<IMAGE_VERSION>&orgIdentifier=<ORGANIZATION_ID>&projectIdentifier=<PROJECT_ID>&tags=<T1>,tags=<T2>,tags=<T3>&validTillNextRelease=false&validForDays=180 \
+    'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<ACCOUNT_ID>&delegateTag=<IMAGE_VERSION>&orgIdentifier=<ORGANIZATION_ID>&projectIdentifier=<PROJECT_ID>&tags=<T1>,tags=<T2>,tags=<T3>\
     -H 'x-api-key: YOUR_API_KEY_HERE'
     ```
     
-    Required Parameters are same as [override delegate API](#override-delegate-tag-api-and-required-parameters).
+    Parameters are same as [override-delegate-tag](#override-delegate-tag-api-and-required-parameters) API.
 
 ## Delegate expiration support policy
 
