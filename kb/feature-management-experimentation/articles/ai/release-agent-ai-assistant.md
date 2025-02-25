@@ -1,6 +1,6 @@
 ---
-title: "Release Agent: AI assistant"
-sidebar_label: "Release Agent: AI assistant"
+title: "AI Release Agent"
+sidebar_label: "AI Release Agent"
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -14,7 +14,7 @@ import Link from "@docusaurus/Link";
 ## Overview
 
 <p>
-  <strong>Release Agent</strong> is an in-app AI assistant designed to streamline the
+  <strong>Release Agent</strong> is an in-app AI chatbot designed to streamline the
   use of Harness FME. It offers multilingual support, rapid responses, and
   knowledge-based assistance by utilizing our public documentation and blogs. Release Agent
   makes it easy for all developers to get the help they need, without ever leaving
