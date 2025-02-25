@@ -195,7 +195,7 @@ Severities:
 You can also create policy that allows you to validate if the template stored is Remote or Inline.
 
 :::info note
-We have a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote.Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag.
+We have a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote. Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag.
 :::
 
 ### Feature Flags
