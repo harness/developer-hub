@@ -26,7 +26,7 @@ For OAuth, your account must have the **Reporter** role or higher.
 If you can't use OAuth, you must create a GitLab personal access token to configure the SEI GitLab integration.
 
 1. Log in to your GitLab account and create a personal access token. For instructions, go to the GitLab documentation on [Personal Access Tokens](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html).
-2. Select the `api` scope with complete read/write API access.
+2. Select the `api` scope with read API access.
 3. Copy the token somewhere that you can retrieve it when you configure the integration.
 
 :::info
