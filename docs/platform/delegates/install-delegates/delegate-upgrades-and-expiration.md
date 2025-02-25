@@ -290,7 +290,7 @@ Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup
 
 ### Override delegate image version
   
-  #### Create override
+  #### Create a delegate override
 
     Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to update delegate image version for one or more delegates using `accountIdentifier`, `orgIdentifier`, `projectIdentifier`, and `tags`.
 
@@ -305,11 +305,24 @@ Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup
     |---------------------|--------------|-------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
     | `delegateTag`       | Yes          | Custom delegate image version to override the existing delegate version | -                                                                                                                   |
     | `accountIdentifier` | Yes          | Harness account Id (`Account Settings → Account Details → Account Id`)             | Used to update all delegates in an Account, including child scopes |
-    | `orgIdentifier`     | No           | Id assigned when creating the organization                                         | Used to updated all delegates in an organization inclduding child scopes                     |
-    | `projectIdentifier` | No           | Id assigned when creating the project                                              | Used to update all delegates in a project                                                                 |
-    | `tags`              | No           | [Tag](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags) assigned when creating the delegate                                        | Used to update delegates with sepcific tags                               |
+    | `orgIdentifier`     | No           | Id assigned when creating the organization                                         | Used to updated all delegates in an organization including child scopes                     |
+    | `projectIdentifier` | No           | Id assigned when creating the project                                              | Used to update all delegates in a specific project                                                                 |
+    | `tags`              | No           | [Tag](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags) assigned when creating the delegate                                        | Used to update delegates with specific tags                               |
     | `validTillNextRelease`| No | If set to true, your custom image version will be overridden when new delegate is released | - |
     | `validForDays` | No | Days after which your custom image version will be overridden | - |
+
+    :::note
+        1. At max, there can only be two override entries corresponding to a combination of query params: `accountIdentifier`, `orgIdentifier` (if present), and `projectIdentifier`(if present): one with `tags` and one without `tags`. If the same combination of parameters is used with a different value of `tags` or `delegateTag`, then the existing entry will get updated. 
+        2. When the Delegate upgrader runs, the system looks for a match as per the following criteria:
+            - If delegate tags are not present:  
+                1. The system first checks for an override entry at the same scope. If it doesn’t find one, it then looks for an override entry at a higher scope. This process continues up through higher levels.
+                2. If no match is found, the system defaults to using the latest version.
+            - If delegate tags are present:
+                1. The system first checks for an override entry that has tags at the same scope. If it doesn’t find one, it then looks for an override entry with tags at a higher scope. This process continues up through higher levels.
+                2. If it still doesn't find a match with tags, it then searches for an override entry at the same scope without tags, again moving up to higher scopes until it either finds a match or exhausts all options.
+                3. If no match is found, the system defaults to using the latest version.
+        3. When tags are used, to find a match, tags present in a delegate override should be a subset of the actual delegate tags. Example: If a delegate has `DELEGATE_TAGS = t1, t2` and an override entry exists with `tags=t1`, then the delegate will get upgraded. But if the override entry has `tags=t1, t2, t3`, then the delegate will not get upgraded.
+    :::
 
   #### Delete Delegate Override version
 
@@ -320,8 +333,20 @@ Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup
       'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<ACCOUNT_ID>&delegateTag=<IMAGE_VERSION>&orgIdentifier=<ORGANIZATION_ID>&projectIdentifier=<PROJECT_ID>&tags=<T1>,tags=<T2>,tags=<T3>\
       -H 'x-api-key: YOUR_API_KEY_HERE'
       ```
-      
-      Parameters are same as [override-delegate-tag](#override-delegate-tag-api-and-required-parameters) API.
+
+      **API Parameters**
+
+        | **Parameter**       | **Required** | **Description**                                                                                                                    |
+        |---------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------|
+        | `accountIdentifier` | Yes          | Harness account Id (`Account Settings → Account Details → Account Id`)                                                             |
+        | `orgIdentifier`     | No           | Id assigned when creating the organization                                                                                         |
+        | `projectIdentifier` | No           | Id assigned when creating the project                                                                                              |
+        | `tags`              | No           | [Tag](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags) assigned when creating the delegate |
+
+
+        :::note 
+          Each Delete API call deletes only one override entry if an exact match is found with the provided query parameters.
+        :::
 
 ## Delegate expiration support policy
 
