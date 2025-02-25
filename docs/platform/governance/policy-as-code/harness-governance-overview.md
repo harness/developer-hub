@@ -183,6 +183,25 @@ Severities:
 
 The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. See [Add a Governance Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline).
 
+### Templates
+
+Policy sets can be configured to be enforced automatically on templates during **On Save** event.
+
+Severities:
+
+* **On error (Error and Exit):** a message is shown and the action does not complete.
+* **On warning (Warn and Continue):** a message is shown and the action is completed.
+
+You can also create policy that allows you to validate if the template stored is Remote or Inline. We have a field `storeType` in YAML inside template that will help distinguish whether a template is Inline or Remote.
+
+:::info note
+Currently this feature i.e validating if the template stored is Inline or Remote is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag.
+:::
+
+
+
+
+
 ### Feature Flags
 
 Policies are evaluated against Harness [Feature Flags](/docs/feature-flags/get-started/overview).  
