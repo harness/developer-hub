@@ -192,15 +192,11 @@ Severities:
 * **On error (Error and Exit):** a message is shown and the action does not complete.
 * **On warning (Warn and Continue):** a message is shown and the action is completed.
 
-You can also create policy that allows you to validate if the template stored is Remote or Inline. We have a field `storeType` in YAML inside template that will help distinguish whether a template is Inline or Remote.
+You can also create policy that allows you to validate if the template stored is Remote or Inline.
 
 :::info note
-Currently this feature i.e validating if the template stored is Inline or Remote is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag.
+We have a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote.Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag.
 :::
-
-
-
-
 
 ### Feature Flags
 
