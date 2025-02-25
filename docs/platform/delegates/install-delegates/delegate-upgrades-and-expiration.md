@@ -330,7 +330,7 @@ Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup
 
       ```bash
       curl -i -X DELETE \
-      'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<ACCOUNT_ID>&delegateTag=<IMAGE_VERSION>&orgIdentifier=<ORGANIZATION_ID>&projectIdentifier=<PROJECT_ID>&tags=<T1>,tags=<T2>,tags=<T3>\
+      'https://app.harness.io/ng/api/delegate-setup/delete-delegate-override?accountIdentifier=<ACCOUNT_ID>&orgIdentifier=<ORGANIZATION_ID>&projectIdentifier=<PROJECT_ID>&tags=<T1>,tags=<T2>,tags=<T3>\
       -H 'x-api-key: YOUR_API_KEY_HERE'
       ```
 
