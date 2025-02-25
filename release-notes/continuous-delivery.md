@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-02-17T10:00:00
+date: 2025-02-25T10:00:00
 sidebar_position: 8
 ---
 
@@ -47,9 +47,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## February 2025
 
-### Version 1.78
-
-#### New features and enhancements
+### Version 1.78.7
 
 #### Fixed Issues
 
