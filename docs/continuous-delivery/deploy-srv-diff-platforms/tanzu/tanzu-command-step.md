@@ -14,9 +14,14 @@ Harness performs the `cf login` using the credentials in the stage Infrastructur
 ## Important notes
 
 - You can use the CF Command to run any [CF CLI command](https://cli.cloudfoundry.org/en-US/v6/) or script at any point in your Harness Tanzu Command step.
-- Secret variable types are not supported for **Input Variables** and **Output Variables** at this time. String and Number are supported.
 - The Tanzu Command step can be added to a Deploy stage only.
 - Output variables have a maximum size of 512KB.
+
+:::important
+
+Secret expressions are not supported for the Tanzu Command Step at this time.
+
+:::
 
 ## Add the Tanzu Command step
 
@@ -62,19 +67,9 @@ While you can simply declare a variable in your script using a Harness expressio
 
 These variables are set as environment variables and can be accessed in the script using `$variable_name`.
 
-The following variable types are supported:
-
-- String
-- Number
-
 ### Output variables
 
 To export variables from the script to other steps in the stage, you use the **Output Variables** option.
-
-The following variable types are supported:
-
-- String
-- Secret
 
 Output variables are passed from the the script output to the Harness pipeline and can be referenced in subsequent steps and settings using expressions.
 
@@ -116,16 +111,6 @@ To find the expression to reference your output variables, you can begin typing 
 If you exit from the script (`exit 0`), Harness does not populate the output variables because the step has exited.
 
 :::
-
-You can access a secret configured in the **Secrets Manager** using an expression. For example, `<+secrets.getValue('SECRET_NAME')>`.
-
-You can also configure variables of type Secret as output variables. When an output variable is configured as a secret, its value is encrypted. 
-
-![](static/tanzu-secrets-output-variable.png)
-
-The encrypted secret is decrypted and made available for use in the script. However, the script's output will not display the secret, even if the secret is explicitly passed to the output stream.
-
-![](static/output-variable-logs.png)
 
 ### Using manifests in your scripts
 
