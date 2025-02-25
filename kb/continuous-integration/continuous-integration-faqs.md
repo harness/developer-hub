@@ -1627,6 +1627,8 @@ To avoid authentication issues, it's recommended to either use a PAT when config
 ### How can user access the secrets as files in a Docker build without writing them to layers?
 The **build and push** steps used to build Docker images have a context field. Users can use the context field in the build and push steps to mount the current directory at `/harness`. By copying your files to a specific directory and then mounting them, you can avoid writing secrets into the Docker image layers.
 
+### Why do Build and Push steps fail with "Error while loading buildkit image: exit status 1" when /var/lib/docker is included in shared paths during DIND execution?
+**Build and Push** steps fail with the error "Error while loading buildkit image: exit status 1" when `/var/lib/docker` is included in the shared paths during Docker-in-Docker (DIND) execution because DIND creates a Docker daemon using this path, and sharing it across steps causes conflicts when multiple build steps try to create and access their own Docker daemons. To resolve this, remove `/var/lib/docker` from the shared paths configuration, which prevents conflicts and allows **Build and Push** steps to execute successfully.
 
 ## Upload artifacts
 
