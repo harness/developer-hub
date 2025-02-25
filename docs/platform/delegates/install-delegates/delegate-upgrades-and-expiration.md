@@ -311,15 +311,17 @@ Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup
     | `validTillNextRelease`| No | If set to true, your custom image version will be overridden when new delegate is released | - |
     | `validForDays` | No | Days after which your custom image version will be overridden | - |
 
-3. If you wish to delete an existing [override](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag), use the  [delete-delegate-override](https://dummy.com) API. 
+  #### Delete Delegate Override version
 
-    ```bash
-    curl -i -X DELETE \
-    'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<ACCOUNT_ID>&delegateTag=<IMAGE_VERSION>&orgIdentifier=<ORGANIZATION_ID>&projectIdentifier=<PROJECT_ID>&tags=<T1>,tags=<T2>,tags=<T3>\
-    -H 'x-api-key: YOUR_API_KEY_HERE'
-    ```
-    
-    Parameters are same as [override-delegate-tag](#override-delegate-tag-api-and-required-parameters) API.
+    If you wish to delete an existing [override](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag), use the  [delete-delegate-override](https://dummy.com) API. 
+
+      ```bash
+      curl -i -X DELETE \
+      'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<ACCOUNT_ID>&delegateTag=<IMAGE_VERSION>&orgIdentifier=<ORGANIZATION_ID>&projectIdentifier=<PROJECT_ID>&tags=<T1>,tags=<T2>,tags=<T3>\
+      -H 'x-api-key: YOUR_API_KEY_HERE'
+      ```
+      
+      Parameters are same as [override-delegate-tag](#override-delegate-tag-api-and-required-parameters) API.
 
 ## Delegate expiration support policy
 
