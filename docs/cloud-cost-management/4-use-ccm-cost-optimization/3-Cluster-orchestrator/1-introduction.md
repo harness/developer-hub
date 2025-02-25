@@ -53,8 +53,9 @@ Harness is a part of [AWS Service Ready Program](https://aws.amazon.com/blogs/ap
 | Currently available in Beta | Upcoming in GA |
 |-----------------------------|----------------|
 | Cluster node auto scaling & right-sizing | Cluster schedules |
-| Spot interruption handling | Bin-packing |
+| Spot interruption handling | Integration with Commitment Orchestration feature of Harness |
 | Distributed spot orchestration | Cluster preferences |
-| | Integration with Commitment Orchestration feature of Harness |
-
+| Bin-packing | Nodepools and Nodeclasses Configuration via Harness UI  |
+| | Reverse Fallback V2 |
+| | Cluster Orchestrator for AKS |
 
