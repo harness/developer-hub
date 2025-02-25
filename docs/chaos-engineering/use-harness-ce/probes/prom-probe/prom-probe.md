@@ -9,41 +9,16 @@ redirect_from:
 - /docs/chaos-engineering/concepts/explore-concepts/resilience-probes/prom-probe
 ---
 
-import CommonNote from './shared/common-note.md'
+import CommonNote from '../shared/common-note.md'
 
-The Prometheus probe allows users to run Prometheus queries and match the resulting output against specific conditions. The intent behind this probe is to allow users to define metrics-based SLOs in a declarative way and determine the experiment verdict based on their success. The probe runs the query on a Prometheus server defined by the endpoint and checks whether the output satisfies the specified criteria. The outcome of a PromQL query (that is provided) is used for probe validation.
+Prometheus probe allows you to run Prometheus queries and match the resulting output against specific conditions. You can define metrics-based SLOs in a declarative way and determine the experiment verdict based on their success. The probe runs the query on a Prometheus server defined by the endpoint and checks whether the output satisfies the specified criteria. The outcome of a PromQL query (that is provided) is used for probe validation.
 
 :::info YAML only feature
-In case of complex queries that span multiple lines, the `queryPath` attribute can be used to provide the link to a file consisting of the query. This file can be made available in the experiment pod via a ConfigMap resource, with the ConfigMap being passed in the [ChaosEngine](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-engine/contents/) or the [ChaosExperiment](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-experiment/contents/) CR. Also, `query` and `queryPath` attributes are mutually exclusive. Refer to the probe schema [here](https://docs.litmuschaos.io/docs/concepts/probes#promprobe).
+In case of complex queries that span multiple lines, the `queryPath` attribute can be used to provide the link to a file consisting of the query. This file can be made available in the experiment pod via a ConfigMap resource, with the ConfigMap being passed in the [ChaosEngine](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-engine/contents/) or the [ChaosExperiment](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-experiment/contents/) CR. Refer to the probe schema [here](https://docs.litmuschaos.io/docs/concepts/probes#promprobe).
 :::
 
-## Probe definition
-
-You can define the probes at **.spec.experiments[].spec.probe** path inside the chaos engine.
-
-```yaml
-kind: Workflow
-apiVersion: argoproj.io/v1alpha1
-spec:
-  templates:
-    - inputs:
-        artifacts:
-          - raw:
-              data: |
-                apiVersion: litmuschaos.io/v1alpha1
-                kind: ChaosEngine
-                spec:
-                  experiments:
-                    - spec:
-                        probe:
-                          ####################################
-                          Probes are defined here
-                          ####################################
-```
-
-:::tip
-The Prometheus probe expects you to provide a PromQL query along with Prometheus service endpoints to check for specific criteria.
-:::
+### Input
+Prometheus probe takes a PromQL query along with Prometheus service endpoints as input to check for specific criteria.
 
 ## Schema
 
@@ -63,20 +38,6 @@ Listed below is the probe schema for the Prometheus probe, with properties share
     <td>Mandatory</td>
     <td>N/A <code>type: string</code></td>
     <td>The <code>name</code> holds the name of the probe. It can be set based on the use case</td>
-  </tr>
-  <tr>
-    <td>type</td>
-    <td>Flag to hold the type of the probe</td>
-    <td>Mandatory</td>
-    <td><code>httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe</code></td>
-    <td>The <code>type</code> supports five types of probes: httpProbe, k8sProbe, cmdProbe, promProbe, and datadogProbe.</td>
-  </tr>
-  <tr>
-    <td>mode</td>
-    <td>Flag to hold the mode of the probe</td>
-    <td>Mandatory</td>
-    <td><code>SOT, EOT, Edge, Continuous, OnChaos</code></td>
-    <td>The <code>mode</code> supports five modes of probes: SOT, EOT, Edge, Continuous, and OnChaos. Datadog probe supports EOT mode only.</td>
   </tr>
   <tr>
     <td>endpoint</td>
@@ -155,11 +116,11 @@ The `credentials` and `credentialsFile` are two options that can't be used simul
    <td>Flag to hold the authentication type </td>
    <td>Optional </td>
    <td><code>string</code> </td>
-   <td>The <code>type</code> encompasses the authentication method, which includes support for both basic and bearer authentication types </td>
+   <td>The <code>type</code> encompasses the authentication method, which includes support for both `basic` and `bearer` authentication types. </td>
   </tr>
   <tr>
    <td>credentials </td>
-   <td>Flag to hold the basic auth credentials in `base64` format or `bearer` token </td>
+   <td>Flag to hold the basic auth credentials in `base64` format or `bearer`. token </td>
    <td>Optional </td>
    <td><code>string</code> </td>
    <td>The <code>credentials</code> consists of the basic authentication credentials, either as username:password encoded in `base64` format or as a `bearer` token, depending on the authentication type </td>
