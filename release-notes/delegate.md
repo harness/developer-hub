@@ -89,7 +89,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## February 2025
 
-### Version 24.10.84710 <!-- February 24, 2025 -->
+### Version 24.12.84710 <!-- February 24, 2025 -->
 
 #### Hotfix
 
