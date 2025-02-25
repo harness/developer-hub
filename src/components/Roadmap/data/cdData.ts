@@ -308,9 +308,9 @@ export const CdData: Horizon = {
         description: "Harness can help users visualize their serverless application endpoints and their failures, success, and metrics.",
       },
       {
-        tag: [{ value: "AIDA" }],
-        title: "AIDA driven Deployments",
-        description: "Using Harness AIDA, Harness will help generate and deploy pipelines.",
+        tag: [{ value: "Harness AI" }],
+        title: "Harness AI driven Deployments",
+        description: "Using Harness AI, Harness will help generate and deploy pipelines.",
       },
       {
         tag: [{value: "Continuous Verification"}],

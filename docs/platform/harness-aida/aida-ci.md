@@ -10,7 +10,7 @@ import Legal from '/docs/continuous-integration/shared/aida-legal.md';
 
 <Intro />
 
-<!-- Video: AIDA demo
+<!-- Video: Harness AI demo
 https://www.youtube.com/watch?v=b-l0Ig4HHBQ-->
 <DocVideo src="https://www.youtube.com/watch?v=b-l0Ig4HHBQ" />
 
