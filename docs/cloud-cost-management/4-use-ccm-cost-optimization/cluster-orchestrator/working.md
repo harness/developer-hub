@@ -14,7 +14,7 @@ Cluster Orchestrator primarily performs the action of node provisioning based on
 ### Spot Instance Orchestration: A High-Level Overview of Cluster Orchestrator's Working
 
 
-<DocImage path={require('./static/working_spot.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/working-spot.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
 Spot instances offer **discounts of up to 90% for the same performance of On-Demand instances**, which makes them a great option for cost savings. But, as discussed previously, their availability is subject to Amazon's two-minute interruption notice. This is where **Cluster Orchestrator's Spot instance orchestration** comes into play. 

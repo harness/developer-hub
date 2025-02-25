@@ -1,5 +1,5 @@
 ---
-title: Introduction to Cluster Orchestrator for AWS EKS clusters (Beta)
+title: Introduction to Cluster Orchestrator for AWS EKS clusters 
 description: This topic introduces Cluster Orchestrator
 # sidebar_position: 2
 helpdocs_topic_id: 
@@ -13,7 +13,7 @@ helpdocs_is_published: true
 Currently, this early access feature is behind a feature flag . Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
-<DocImage path={require('./static/CO.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/co.png')} width="90%" height="90%" title="Click to view full size image" />
 
 Harness’ Cloud Cost Management is centered on three key pillars: Cost Visibility, Cost Optimization and Cost Governance.
 Currently AutoStopping, Recommendations and Commitment Orchestrator (in beta) are present under cost optimisation. Harness CCM has now added Cluster Orchestrator for EKS (Beta) to enhance workload-driven autoscaling and intelligent management of AWS Spot instances, contributing to overall cost efficiency.
@@ -21,7 +21,7 @@ Currently AutoStopping, Recommendations and Commitment Orchestrator (in beta) ar
 ## AWS Spot Instances and challenges 
 Amazon EC2 provides a range of purchase options catering to diverse computing needs, including On-Demand Instances, Reserved Instances, and Spot Instances. While On-Demand Instances offer flexibility with pay-as-you-go pricing, Reserved Instances provide significant cost savings with long-term commitments. Spot Instances, on the other hand, allow users to bid for unused EC2 capacity at lower prices, making them ideal for fault-tolerant, flexible and stateless workloads. However, Spot Instances come with challenges such as potential interruptions and the risk of termination within just 2 minutes of a notice if capacity becomes unavailable.
 
-<DocImage path={require('./static/AWS_pricing.png')} width="70%" height="70%" title="Click to view full size image" />
+<DocImage path={require('./static/aws-pricing.png')} width="70%" height="70%" title="Click to view full size image" />
 
 ## Cluster Infrastructure and challenges  
 
@@ -53,8 +53,9 @@ Harness is a part of [AWS Service Ready Program](https://aws.amazon.com/blogs/ap
 | Currently available in Beta | Upcoming in GA |
 |-----------------------------|----------------|
 | Cluster node auto scaling & right-sizing | Cluster schedules |
-| Spot interruption handling | Bin-packing |
+| Spot interruption handling | Integration with Commitment Orchestration feature of Harness |
 | Distributed spot orchestration | Cluster preferences |
-| | Integration with Commitment Orchestration feature of Harness |
+| Bin-packing |  |
+| Reverse Fallback Retry | |
 
 
