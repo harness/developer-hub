@@ -26,9 +26,11 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 **New UI for License Management in Harness CI**
 
-We’re excited to introduce an updated UI for managing your Harness Continuous Integration (CI) licenses. With the new CI Subscription Page, you can now easily track and assign licenses based on the number of developers using the platform, offering greater flexibility and control over your license allocation.
+We’re excited to introduce an updated UI for managing your Harness Continuous Integration (CI) licenses. With the [new subscription page](https://developer.harness.io/docs/platform/get-started/subscriptions-licenses/subscriptions/#developer-360-modules-subscriptions), you can now easily track and assign licenses based on the number of developers using the platform, offering greater flexibility and control over your license allocation.
 
-This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March. For more details please refer to our [documentation](https://developer.harness.io/docs/continuous-integration/get-started/ci-subscription-mgmt#view-and-manage-subscriptions). 
+This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
+
+
 
 :::
 
