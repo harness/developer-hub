@@ -6,7 +6,8 @@
     "position": "3",
     "link": {
         "type": "generated-index",
-        "title": "Harness AI"
+        "title": "Harness AI",
+        "slug": "/docs/category/harness-aida"
     },
     "customProps": {
         
