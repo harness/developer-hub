@@ -43,7 +43,7 @@ The following preferences are applicable to all perspectives. By default, some o
 
 * **Show anomalies**
 
- Displays the anomalies in the perspective. This option is enabled by default. For more information about cloud cost anomalies, go to [Detect anomalies](../4-detect-cloud-cost-anomalies-with-ccm.md).
+ Displays the anomalies in the perspective. This option is enabled by default. For more information about cloud cost anomalies, go to [Detect anomalies](../anomaly-detection/detect-cloud-cost-anomalies-with-ccm.md).
 
 * **Show others**
 
