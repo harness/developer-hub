@@ -31,7 +31,7 @@ Once your code is deployed, you can instantly turn on or off features for any in
 * Experimentation and A/B testing to make bigger bets with less risk
 
 ## The role of data in Harness FME
-The FME provides visibility into your controlled releases by comparing data about feature flag evaluations with data about what happened after those evaluations. The data points that feed those comparisons are impressions and events. The results of those comparisons are called metrics.
+FME provides visibility into your controlled releases by comparing data about feature flag evaluations with data about what happened after those evaluations. The data points that feed those comparisons are impressions and events. The results of those comparisons are called metrics.
 
 ### Impressions
 An impression is a record of a targeting decision made. It is created automatically each time a feature flag is evaluated and contains details about the user or unique key for which the evaluation was performed, the targeting decision, the targeting rule that drove that decision, and a time stamp. Refer to the [Impressions](https://help.split.io/hc/en-us/articles/360020585192-Impressions) guide for more information.
@@ -54,7 +54,7 @@ Alerts notify metric stakeholders and the team rolling out a particular feature 
 Alerts, like the metrics they are based on, are centrally defined once, and then applied to every rollout or experiment automatically. This is another design unique to FME. Our goal is to make learning and safety at speed the default experience, for every rollout. Once you define thresholds for metrics, any future rollout or experiment that exceeds them will fire an alert. When that happens, notifications are sent out, and an alert box is presented on the Targeting and Alerts tabs for the feature flag in question. Refer to the [Configuring metric alerting](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) guide for more information.
 
 ## Using FME in your application
-Targeting decisions are made locally, in memory, from within your own application code. There is never a reason to send private user data to FME's network. Let’s take a look at how this is accomplished.
+Targeting decisions are made locally, in memory, from within your own application code. There is never a reason to send private user data to Harness. Let’s take a look at how this is accomplished.
 
 ### FME SDKs
 To use Harness FME, include and initialize one of FME SDKs in your application. Once the SDK is initialized, targeting rules are retrieved from a nearby content delivery network (CDN) node, cached inside your code, and updated in real-time in milliseconds using a streaming architecture. 
