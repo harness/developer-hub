@@ -247,7 +247,10 @@ customvalidate:
 
 👉 Read more about the feature [here](/docs/internal-developer-portal/flows/dynamic-picker#post-method-support).
 
-#### Upcoming Features
+#### Upcoming Features 
+
+**Update**: These features have been **released as part of Release 0.40.0**. Please refer to the [**release notes**](/release-notes/internal-developer-portal#february---version-0400) for more details.
+
 The following features are currently in progress and are scheduled for release no later than **February 17th**. These features are part of the promised quarterly roadmap and are included in the **new workflow enhancements** introduced in this version.
 
 Here’s what these features do:
