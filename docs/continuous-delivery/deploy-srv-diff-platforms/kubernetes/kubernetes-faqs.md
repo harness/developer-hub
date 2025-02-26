@@ -903,3 +903,17 @@ Increasing CPU and memory resources on delegates can improve monitoring performa
 
 ### How to handle old release files in OpenShift under the configMap section when versioning deployments?
 Old config maps can be cleaned up without affecting rollbacks, but keeping the latest two versions is recommended.
+
+### How can I handle SSL verification issues in Git & SCM for Kubernetes deployments?
+
+If your **Kubernetes manifests** or **GitOps configurations** fail due to **SSL certificate errors**, you can disable SSL verification using the following flags:  
+
+**1. `GIT_SSL_NO_VERIFY`**  
+- **Purpose:** Disables SSL verification for Git operations.  
+- **Use Case:** Use this flag when **fetching manifests from a Git repository** with **self-signed SSL certificates**.  
+
+**2. `SCM_SKIP_SSL`**  
+- **Purpose:** Skips SSL verification for SCM (Source Code Management) interactions.  
+- **Use Case:** Use this flag when **connecting to SCM providers like GitHub/GitLab** with **invalid SSL certificates**.  
+
+Note: Disabling SSL verification reduces security, so use these flags only in trusted environments
