@@ -31,7 +31,7 @@ Below is a high-level outline of how to install and configure the Harness GitOps
    - Review details such as version, provider (Harness), and description.
 
 3. **Install the Operator**  
-   - Choose the **Installation Mode** (e.g., install it cluster-wide or in a specific namespace).  
+   - Choose the **Installation Mode** (e.g., install it cluster-wide).  
    - Select an **update channel** if applicable (e.g., “stable” or “latest”), and decide on the **approval strategy** (Automatic or Manual).  
    - Select the **version**.  
    - Click **Install** to start the operator installation.
@@ -75,8 +75,7 @@ spec:
   secrets:
     agentSecret: YourAgentSecrets
   target:
-    grpc: 'https://qa.harness.io/gitops'
-    http: 'https://qa.harness.io/gitops'
+    http: 'https://app.harness.io/gitops'
     protocol: HTTP1
 ```
 
