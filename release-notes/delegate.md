@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-12-03T22:00 
+date: 2025-02-25T22:00 
 sidebar_position: 4
 ---
 
@@ -88,6 +88,13 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## February 2025
+
+### Version 24.08.83706 <!--  Feb 26, 2025 -->
+
+#### Hotfix
+
+- Added support for downloading artifact with special characters in the URl for Nexus. [CDS-102807]
+  
 
 ### Version 24.12.84710 <!-- February 24, 2025 -->
 
