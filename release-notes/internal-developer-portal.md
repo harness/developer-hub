@@ -29,18 +29,18 @@ Please note that the following features are behind a **Feature Flag**: `IDP_ENAB
 Ensure that it is **enabled in your account** before use. To enable this feature, contact [**Harness Support**](mailto:support@harness.io).
 :::
 ### [New Feature] Updating Fields using Form Context
-**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/dynamic-picker.md#auto-updating-input-fields) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md)**
+**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator)**
 
 -----
 With the introduction of Conditional API Requests in the last release, you can now create an interactive Workflow with dependent input fields. However, one of the challenges was requiring users to fill in too many text boxes, making it difficult for developers and platform engineers to fully utilize Workflows.
 
-#### 🚀 [Introducing Form Context](/docs/internal-developer-portal/flows/dynamic-picker.md#auto-updating-input-fields)
+#### 🚀 [Introducing Form Context](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields)
 
 With this new release, we introduce **Form Context**, a global context (active per Workflow session) that allows Workflows to **dynamically update data fields** in the frontend based on user input. Using Dynamic Pickers, you can now configure Workflows to **auto-fill relevant fields** with data from third-party sources based on user selections or inputs.
 
 When a user selects or provides input in a form field, the Form Context **automatically updates** with relevant data. Other fields—typically read-only can **subscribe to this context** and dynamically update based on the latest information.
 
-#### 🚀 Use Case: [Repository Picker Workflow](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md#creating-a-repository-picker)
+#### 🚀 Use Case: [Repository Picker Workflow](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator#creating-a-repository-picker)
 
 Previously, in a **repository picker** workflow, when a user entered their **GitHub username** and selected a repository, they still had to manually input details like the default branch and repository metadata.
 
@@ -96,12 +96,12 @@ parameters:
 
 ![](./static/reactive-form-context.png)
 
-👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker.md#auto-updating-input-fields).**
+👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields).**
 
 -----
 
 ### [New Feature] Live User Validation using API Requests
-**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/dynamic-picker.md#adding-user-validation) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md)**
+**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/dynamic-picker#adding-user-validation) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator)**
 
 ------
 This release also introduces **live user validation** for input fields in Workflow Dynamic Pickers. This feature enables users to:
@@ -110,7 +110,7 @@ This release also introduces **live user validation** for input fields in Workfl
 
 When users input details, an **API call** is triggered in the background, parsing the response and **updating the Form Context** dynamically with validated information. This ensures that input form fields remain up to date while enabling real-time validation.
 
-🚀 **Use Case: [Pull Request Creator Workflow](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md)**
+🚀 **Use Case: [Pull Request Creator Workflow](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator)**
 
 In a Pull Request Creator Workflow, you need the user to **enter the branch name** where changes are implemented. Additionally, a repository picker field dynamically fetches repository details and updates the Form Context as selections are made.
 
@@ -123,7 +123,7 @@ To achieve this, you can add a button that, when clicked:
 
 This feature ensures users can validate their inputs dynamically while improving workflow accuracy and efficiency.
 
-👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker.md#adding-user-validation).**
+👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker#adding-user-validation).**
 
 ------
 
@@ -144,13 +144,13 @@ This feature ensures users can validate their inputs dynamically while improving
 #### Reference Docs
 We have released new **reference documentation** covering the features introduced in this release. You can find detailed information at the following links:  
 
-- [**Updating Fields Using Form Context**](/docs/internal-developer-portal/flows/dynamic-picker.md#auto-updating-input-fields)  
-- [**Live User Validation Using API Requests**](/docs/internal-developer-portal/flows/dynamic-picker.md#adding-user-validation)  
+- [**Updating Fields Using Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields)  
+- [**Live User Validation Using API Requests**](/docs/internal-developer-portal/flows/dynamic-picker#adding-user-validation)  
 
 #### Tutorial
 This release also includes a comprehensive **tutorial** designed to help you understand and **implement these features** effectively. Check it out here:  
 
-- [**Use Dynamic Pickers for a Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md) 
+- [**Use Dynamic Pickers for a Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator) 
 
 ------
 
