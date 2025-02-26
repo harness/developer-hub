@@ -22,9 +22,9 @@ Review the notes below for details about recent changes to Harness Internal Deve
 <!-- February 26, 2025-->
 
 :::info
-Please note that the following features are behind a **Feature Flag**: `IDP_ENABLE_WORKFLOW_FORM_CONTEXT`.  
-- [**Updating Fields using Form Context**](/release-notes/internal-developer-portal.md#new-feature-updating-fields-using-form-context)  
-- [**Live User Validation using API Requests**](/release-notes/internal-developer-portal.md#new-feature-live-user-validation-using-api-requests)  
+Please note that the following features are behind a **Feature Flag**: `IDP_ENABLE_WORKFLOW_FORM_CONTEXT`.
+- [**Updating Fields using Form Context**](/release-notes/internal-developer-portal.md#new-feature-updating-fields-using-form-context)
+- [**Live User Validation using API Requests**](/release-notes/internal-developer-portal.md#new-feature-live-user-validation-using-api-requests)
 
 Ensure that it is **enabled in your account** before use. To enable this feature, contact [**Harness Support**](mailto:support@harness.io).
 :::
@@ -64,15 +64,15 @@ parameters:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitUsername}}/repos
             valueSelector: full_name
-            setContextData: 
+            setContextData:
               repoName: name
               branch: default_branch
-              type: visibility                 
+              type: visibility
         repositoryName:
           title: Repo Name
           readonly: true
           description: Repository Name
-          type: string            
+          type: string
           ui:field: ContextViewer
           ui:options:
             getContextData: {{formContext.repoName}}
@@ -83,12 +83,12 @@ parameters:
           type: string
           ui:field: ContextViewer
           ui:options:
-            getContextData: {{formContext.branch}} 
+            getContextData: {{formContext.branch}}
         typeName:
           title: Visibility
           readonly: true
           description: Visibility
-          type: string     
+          type: string
           ui:field: ContextViewer
           ui:options:
             getContextData: {{formContext.type}}
@@ -127,30 +127,32 @@ This feature ensures users can validate their inputs dynamically while improving
 
 ------
 
-### Bug Fixes 
-- Resolved an issue where the **markdown description hyperlink** in Workflows was not rendering correctly. It is now properly displayed. [IDP-4763]  
-- Fixed the **default behavior** for all missing data points in scorecard checks. [IDP-4732]  
-- Fixed an issue where the **"All Groups"** field in the Workflow UI was incorrectly displaying the total number of Workflow Groups instead of the total number of Workflows included in these Groups. [IDP-4407]  
-- Resolved an issue where **Tech Docs URLs** with the same host as where they are deployed were returning a 404 error. This has been fixed. [IDP-4368]  
+### Bug Fixes
+- Resolved an issue where the **markdown description hyperlink** in Workflows was not rendering correctly. It is now properly displayed. [IDP-4763]
+- Fixed the **default behavior** for all missing data points in scorecard checks. [IDP-4732]
+- Fixed an issue where the **"All Groups"** field in the Workflow UI was incorrectly displaying the total number of Workflow Groups instead of the total number of Workflows included in these Groups. [IDP-4407]
+- Resolved an issue where **Tech Docs URLs** with the same host as where they are deployed were returning a 404 error. This has been fixed. [IDP-4368]
 - Fixed an issue where **"View"** permission is now enabled by default for all IDP resources at the **Account** level under the **"Account Viewer"** role. [IDP-4264]
+- You can now use the icon for Wiz Scan in your Catalog cards to link to Wiz scan reports. [IDP-4001]
+- Updated the regex validation for endpoints configured using the Proxy backend plugin to support TLD endpoints. [IDP-4787]
 
 #### Additional Note
-- Renamed **"Request Access"** in the Plugins Marketplace to **"Upvote"** to better reflect its purpose—allowing users to upvote a plugin and help the Harness IDP team prioritize customer requests. [IDP-4503]  
+- Renamed **"Request Access"** in the Plugins Marketplace to **"Upvote"** to better reflect its purpose—allowing users to upvote a plugin and help the Harness IDP team prioritize customer requests. [IDP-4503]
 
 -------
 
 ### New Documentation
 
 #### Reference Docs
-We have released new **reference documentation** covering the features introduced in this release. You can find detailed information at the following links:  
+We have released new **reference documentation** covering the features introduced in this release. You can find detailed information at the following links:
 
-- [**Updating Fields Using Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context)  
-- [**Live User Validation Using API Requests**](/docs/internal-developer-portal/flows/dynamic-picker#live-user-validation-using-api-requests)  
+- [**Updating Fields Using Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context)
+- [**Live User Validation Using API Requests**](/docs/internal-developer-portal/flows/dynamic-picker#live-user-validation-using-api-requests)
 
 #### Tutorial
-This release also includes a comprehensive **tutorial** designed to help you understand and **implement these features** effectively. Check it out here:  
+This release also includes a comprehensive **tutorial** designed to help you understand and **implement these features** effectively. Check it out here:
 
-- [**Use Dynamic Pickers for a Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator) 
+- [**Use Dynamic Pickers for a Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator)
 
 ------
 
@@ -162,24 +164,24 @@ This release also includes a comprehensive **tutorial** designed to help you und
 
 [IDP-4291]
 
-This release marks a **major milestone** for **Workflow Dynamic Pickers**, and we’re excited to introduce **Conditional API Requests**!  
+This release marks a **major milestone** for **Workflow Dynamic Pickers**, and we’re excited to introduce **Conditional API Requests**!
 
 Dynamic Pickers make workflows more interactive by providing real-time options and ensuring validation for workflow creators. However, until now, input fields in **IDP workflows** were **independent** of each other. This lack of dependency made it difficult for users to fully utilize workflows.
 
 🚀 Introducing Conditional API Requests
 
-Workflow Dynamic Pickers now support **conditional API requests** based on user input from prior workflow form fields. This means **one field's values can dynamically depend on another**, enabling:  
+Workflow Dynamic Pickers now support **conditional API requests** based on user input from prior workflow form fields. This means **one field's values can dynamically depend on another**, enabling:
 
-✔ **Interactive workflows** – Users can dynamically filter results based on prior inputs.  
-✔ **Customizable API requests** – API URLs in Dynamic Pickers can now include **query parameters** derived from user input.  
+✔ **Interactive workflows** – Users can dynamically filter results based on prior inputs.
+✔ **Customizable API requests** – API URLs in Dynamic Pickers can now include **query parameters** derived from user input.
 
-🚀 Use Case: Repository Picker Workflow  
+🚀 Use Case: Repository Picker Workflow
 
-Previously, users could not filter repositories based on different organizations or projects. The repositories were fetched only from a pre-fixed organization and project, limiting flexibility.  
+Previously, users could not filter repositories based on different organizations or projects. The repositories were fetched only from a pre-fixed organization and project, limiting flexibility.
 
-With **Conditional API Requests**, users can now specify their GitHub organization and dynamically fetch repositories **without being restricted** to a fixed org.  
+With **Conditional API Requests**, users can now specify their GitHub organization and dynamically fetch repositories **without being restricted** to a fixed org.
 
-Here’s how the **UI Picker YAML** looks with Conditional API Requests:  
+Here’s how the **UI Picker YAML** looks with Conditional API Requests:
 
 ```YAML {13}
 parameters:
@@ -199,28 +201,28 @@ parameters:
 ```
 ![](./static/internal-developer-portal/dynamic-picker-2.png)
 
-This feature makes workflows more flexible, interactive, and user-friendly.  
+This feature makes workflows more flexible, interactive, and user-friendly.
 
 👉 Read more about the feature [here](/docs/internal-developer-portal/flows/dynamic-picker#conditional-api-requests).
 
-### [New Feature] API Key Secret based Pipeline Execution from IDP Workflows 
+### [New Feature] API Key Secret based Pipeline Execution from IDP Workflows
 [IDP-4051]
 
-There are now two ways in which **Workflow to Harness Pipeline authentication** works in Harness IDP Workflows. Users can now trigger a Harness Pipeline in an IDP Workflow using a **Harness API Key Secret** instead of a user session token. Previously, authentication relied on the user session token, requiring execution permissions for the pipeline. With this mode: 
+There are now two ways in which **Workflow to Harness Pipeline authentication** works in Harness IDP Workflows. Users can now trigger a Harness Pipeline in an IDP Workflow using a **Harness API Key Secret** instead of a user session token. Previously, authentication relied on the user session token, requiring execution permissions for the pipeline. With this mode:
 
 - A pre-configured **Harness API Key Secret** is used to trigger the Harness Pipeline.
 - The user **does not need** direct access to the underlying pipeline(s); however, the **API Key Secret** must have the **execute permissions** for the underlying pipeline(s).
 - Platform engineers can generate the necessary API token and configure it within the workflow as default, ensuring **no user** can **access or modify** the pipeline.
 
-This feature enhances security by using dedicated API keys, eliminating the need for user execution permissions. 
+This feature enhances security by using dedicated API keys, eliminating the need for user execution permissions.
 
 👉 Read more about the feature [here](/docs/internal-developer-portal/flows/worflowyaml#authentication).
 
 ### [New Feature] POST Method support for Dynamic Pickers
 [IDP-4292]
 
-Workflow Dynamic Pickers now supports the **POST method**, extending beyond just GET requests. 
-This feature is useful for fetching data using **GraphQL APIs**, calling **Lambda functions** with POST requests and handling APIs that require **large inputs via POST**. 
+Workflow Dynamic Pickers now supports the **POST method**, extending beyond just GET requests.
+This feature is useful for fetching data using **GraphQL APIs**, calling **Lambda functions** with POST requests and handling APIs that require **large inputs via POST**.
 
 Here’s how you can define the POST method:
 ```YAML
@@ -255,7 +257,7 @@ Here’s what these features do:
 
 - **Allow arbitrary values in dynamic pickers**: Users can now manually enter custom text if their desired option is not available in the predefined list.
 
-### Bug Fixes 
+### Bug Fixes
 - Fixed payload creation for template variables and extended support for **pipeline template variables** in `trigger:harness-custom-pipeline` workflow action. [IDP-4492]
 - Fixed an issue in **HarnessAutoOrgPicker** where projects with the same ID across different organizations caused conflicts. A dropdown has been added to allow users to **select the appropriate organization** when a project name exists in multiple organizations. [IDP-4168]
 - Resolved an issue where negative values could be entered for scorecard weights. Added validation to ensure only **valid, non-negative values** are accepted. [IDP-3721]
@@ -301,7 +303,7 @@ Here’s what these features do:
 
 <!-- November 26, 2024 -->
 
-- **New Videos:** [5 Things You Didn’t Know Were Possible in Harness IDP](https://youtu.be/S8kjTy5GBuQ), [Introducing New Workflows Homepage in Harness IDP](https://youtu.be/dJgf1ZUOs8s), [Catalog Metadata Ingestion API in Harness IDP](https://youtu.be/MB-IWGoYjOo), [How to let any user in your account Execute your Pipeline using Harness RBAC (IDP)](https://youtu.be/ySVEGtQ2uWU) 
+- **New Videos:** [5 Things You Didn’t Know Were Possible in Harness IDP](https://youtu.be/S8kjTy5GBuQ), [Introducing New Workflows Homepage in Harness IDP](https://youtu.be/dJgf1ZUOs8s), [Catalog Metadata Ingestion API in Harness IDP](https://youtu.be/MB-IWGoYjOo), [How to let any user in your account Execute your Pipeline using Harness RBAC (IDP)](https://youtu.be/ySVEGtQ2uWU)
 
 #### New features and enhancements
 
@@ -319,12 +321,12 @@ Here’s what these features do:
 
 ```YAML
 ## Example
-customPlugins:  
-  myPlugin:  
-    target: abc.com  
+customPlugins:
+  myPlugin:
+    target: abc.com
 ```
 
-- Enhanced the URL allow list to now validate URLs before storing them for whitelisting. [IDP-3955] 
+- Enhanced the URL allow list to now validate URLs before storing them for whitelisting. [IDP-3955]
 
 #### Bug fixes
 
@@ -364,7 +366,7 @@ customPlugins:
 - Added support for Harness Code Repository data points under Harness data source for Scorecards. The following data points are added: [IDP-3640]
   - Extract string from a file
   - Does file exist
-  - Match string in a file 
+  - Match string in a file
 
 
 #### Bug fixes
@@ -420,7 +422,7 @@ customPlugins:
 
 #### New features and enhancements
 
-- We have added the [new Workflows Homepage](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization), which helps you to customize the Workflows organization and information associated. This feature is behind the Feature Flag `IDP_ENABLE_WORKFLOWSV2`, contact [harness support](mailto:support@harness.io) to enable it on your account. [IDP-3752] 
+- We have added the [new Workflows Homepage](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization), which helps you to customize the Workflows organization and information associated. This feature is behind the Feature Flag `IDP_ENABLE_WORKFLOWSV2`, contact [harness support](mailto:support@harness.io) to enable it on your account. [IDP-3752]
 - We have upgraded to the new backend system of Backstage in Harness IDP. [IDP-3252]
 - Enhanced the API Response for Catalog Ingestion API. [IDP-3672]
 - New plugins added to the marketplace.
@@ -431,7 +433,7 @@ customPlugins:
 - Fixed the issue with `mode: append` to support updates to array values, in Catalog Ingestion API. [IDP-3734]
 - Fixed the UI issues with Harness Chaos Engineering Plugin. [IDP-3670]
 - Fixed the issue with global GitHub OAuth. [IDP-3655]
-- Fixed the issue with Catalog APIs with x-api-key in the header. 
+- Fixed the issue with Catalog APIs with x-api-key in the header.
 
 ## September 2024
 
@@ -447,7 +449,7 @@ customPlugins:
 - New plugins added to the marketplace.
   - [Argo-CD Plugin for Backstage](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-argo-cd#argo-cd-plugin-for-backstage)
 
-- We have encountered an issue with usage of `ui:widget: password` which reveals the user token in plain text to the user if the field is not used in the first page of the Workflow definition. We have updated our docs with instructions. Please find more context [here](/kb/internal-developer-portal/articles/secrets-issue) if you see the issue.  
+- We have encountered an issue with usage of `ui:widget: password` which reveals the user token in plain text to the user if the field is not used in the first page of the Workflow definition. We have updated our docs with instructions. Please find more context [here](/kb/internal-developer-portal/articles/secrets-issue) if you see the issue.
 
 #### Bug fixes
 
