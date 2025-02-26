@@ -1,5 +1,5 @@
 ---
-title: Setting up Cluster Orchestrator for AWS EKS clusters 
+title: Setting up Cluster Orchestrator for AWS EKS clusters (Beta)
 description: This topic describes how to set up Cluster Orchestrator 
 # sidebar_position: 2
 helpdocs_topic_id: 
@@ -38,11 +38,11 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.16"
+      version = "~> 5.86"
     }
     harness = {
       source  = "harness/harness"
-      version = "0.34.0"
+      version = "0.35.3"
     }
   }
 
@@ -55,37 +55,44 @@ provider "aws" {
 
 variable "cluster" {
   type = object({
-    name             = string
-    oidc_arn         = string
-    subnets          = list(string)
-    security_groups  = list(string)
-    ami              = string
-    k8s_connector_id = string
-    existing_node_role = string
+    name                     = string
+    oidc_arn                 = string
+    subnets                  = list(string)
+    security_groups          = list(string)
+    ami                      = string
+    k8s_connector_id         = string
+    existing_node_role       = string
+    eks_pod_identity_enabled = bool
   })
 
   default = {
-    name             = "cluster-xxx-xxx"                                                   // Replace with your EKS cluster Name
-    oidc_arn         = "arn:aws:iam::xxx:oidc-provider/oidc.eks.xxx.amazonaws.com/id/xxxx" // Replace with your OIDC Provder ARN for the cluster
-    subnets          = ["eksctl-xxx"]                                                      // Replace with the names of subnets used in your EKS cluster
-    security_groups  = ["eks-cluster-sg-xxx"]                                              // Replace with the names of security groups used in your EKS cluster
-    ami              = "ami-i0xxxxxxxxx"                                                   // Replace with the id of AMI used in your EKS cluster
-    k8s_connector_id = "xxx"                                                               // Replace with the ID of harness ccm kubernetes connector for the cluster
+    name                     = "cluster-xxx-xxx"                                                   // Replace with your EKS cluster Name
+    oidc_arn                 = "arn:aws:iam::xxx:oidc-provider/oidc.eks.xxx.amazonaws.com/id/xxxx" // Replace with your OIDC Provder ARN for the cluster
+    subnets                  = ["eksctl-xxx"]                                                      // Replace with the names of subnets used in your EKS cluster
+    security_groups          = ["eks-cluster-sg-xxx"]                                              // Replace with the names of security groups used in your EKS cluster
+    ami                      = "ami-i0xxxxxxxxx"                                                   // Replace with the id of AMI used in your EKS cluster
+    k8s_connector_id         = "xxx"                                                               // Replace with the ID of harness ccm kubernetes connector for the cluster
+    existing_node_role       = "RoleNameXXXX"
+    eks_pod_identity_enabled = false                                                               // Set to true if eks pod identity is enabled in the cluster   
   }
 
 }
 
 variable "harness" {
   type = object({
-    endpoint         = string
-    account_id       = string
-    platform_api_key = string
+    endpoint                          = string
+    account_id                        = string
+    platform_api_key                  = string
+    cluster_orch_service_account_name = string
+    cluster_orch_namespace            = string
   })
 
   default = {
-    endpoint         = "https://app.harness.io/gateway"
-    account_id       = "xxx"             // Replace with your Harness Account ID
-    platform_api_key = "pat.xxx.xxx.xxx" // Replace with your Harness API key
+    endpoint                          = "https://app.harness.io/gateway"
+    account_id                        = "xxx"                                                   // Replace with your Harness Account ID
+    platform_api_key                  = "pat.xxx.xxx.xxx"                                       // Replace with your Harness API key
+    cluster_orch_service_account_name = "ccm-clusterorchestrator"                               // Name of the service account used by cluster orchestrator
+    cluster_orch_namespace            = "kube-system"                                           // Namespace where the cluster orchestrator will be deployed
   }
 }
 
@@ -102,7 +109,8 @@ data "aws_eks_cluster" "cluster" {
 }
 
 data "aws_iam_openid_connect_provider" "cluster_oidc" {
-  arn = var.cluster.oidc_arn
+  count = var.cluster.eks_pod_identity_enabled ? 0 : 1
+  arn   = var.cluster.oidc_arn
 }
 
 data "aws_subnets" "cluster_subnets" {
@@ -157,13 +165,19 @@ resource "aws_iam_role" "node_role" {
   managed_policy_arns = ["arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly", "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy", "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy", "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy", "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"]
 }
 
+resource "aws_eks_access_entry" "node_role_entry" {
+  cluster_name  = var.cluster.name
+  principal_arn = aws_iam_role.node_role.arn
+  type          = "EC2_LINUX"
+}
+
 resource "aws_iam_instance_profile" "instance_profile" {
   name = format("%s-%s-%s", "harness-ccm", substr(data.aws_eks_cluster.cluster.name, 0, 40), "inst-prof")
   role = aws_iam_role.node_role.name
 }
 
 resource "aws_iam_policy" "controller_role_policy" {
-  name = "ClusterOrchestratorControllerPolicy"
+  name_prefix = "ClusterOrchestratorControllerPolicy"
   policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
@@ -195,46 +209,85 @@ resource "aws_iam_policy" "controller_role_policy" {
   })
 }
 
-data "aws_iam_policy_document" "controller_trust_policy" {
+data "aws_iam_policy_document" "oidc_controller_trust_policy" {
   statement {
     actions = ["sts:AssumeRole", "sts:AssumeRoleWithWebIdentity"]
     principals {
-      type = "Federated"
-      identifiers = [data.aws_iam_openid_connect_provider.cluster_oidc.arn
-      ]
+      type        = "Federated"
+      identifiers = var.cluster.eks_pod_identity_enabled ? [] : [data.aws_iam_openid_connect_provider.cluster_oidc[0].arn]
     }
     effect = "Allow"
   }
 }
 
+data "aws_iam_policy_document" "pod_identity_controller_trust_policy" {
+  statement {
+    sid    = "AllowEksAuthToAssumeRoleForPodIdentity"
+    effect = "Allow"
+    principals {
+      type        = "Service"
+      identifiers = ["pods.eks.amazonaws.com"]
+    }
+    actions = ["sts:AssumeRole", "sts:TagSession"]
+  }
+}
+
+
 resource "aws_iam_role" "controller_role" {
   name                = format("%s-%s-%s", "harness-ccm", substr(data.aws_eks_cluster.cluster.name, 0, 40), "controller")
-  assume_role_policy  = data.aws_iam_policy_document.controller_trust_policy.json
+  assume_role_policy  = var.cluster.eks_pod_identity_enabled ? data.aws_iam_policy_document.pod_identity_controller_trust_policy.json : data.aws_iam_policy_document.oidc_controller_trust_policy.json
   description         = format("%s %s %s", "Role to manage", data.aws_eks_cluster.cluster.name, "EKS cluster controller used by Harness CCM")
   managed_policy_arns = [aws_iam_policy.controller_role_policy.arn]
 }
 
+/*
+uncomment to create eks addon for pod identity agent, if "eks-pod-identity-agent" is not present as addon in the cluster
+
+resource "aws_eks_addon" "pod-identity-agent" {
+  count        = var.cluster.eks_pod_identity_enabled ? 1 : 0
+  cluster_name = var.cluster.name
+  addon_name   = "eks-pod-identity-agent"
+}
+*/
+
+resource "aws_eks_pod_identity_association" "pod_identity_association" {
+  count           = var.cluster.eks_pod_identity_enabled ? 1 : 0
+  cluster_name    = data.aws_eks_cluster.cluster.name
+  namespace       = var.harness.cluster_orch_namespace
+  service_account = var.harness.cluster_orch_service_account_name
+  role_arn        = aws_iam_role.controller_role.arn
+}
+
 resource "aws_iam_role_policy" "harness_describe_permissions" {
-   name = "HarnessDescribePermissions"
-   role = var.cluster.existing_node_role
-   policy = jsonencode({
-     Version = "2012-10-17"
-     Statement = [
-       {
-         Action = [
-           "ec2:DescribeImages",
-           "ec2:DescribeInstanceTypeOfferings",
+  name = "HarnessDescribePermissions"
+  role = var.cluster.existing_node_role
 
-
-           "ec2:DescribeInstanceTypes",
-           "ec2:DescribeAvailabilityZones"
-         ]
-         Effect   = "Allow"
-         Resource = "*"
-       },
-     ]
-   })
- }
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "ec2:DescribeImages",
+          "ec2:DescribeInstanceTypeOfferings",
+          "ec2:DescribeInstanceTypes",
+          "ec2:DescribeAvailabilityZones"
+          "ec2:DescribeLaunchTemplates",
+          "ec2:CreateLaunchTemplate",
+          "ec2:CreateTags",
+          "pricing:GetProducts",
+		   "ec2:DescribeSpotPriceHistory",
+		   "ec2:CreateFleet",
+		   "iam:PassRole",
+		   "ec2:RunInstances",
+		   "ec2:DeleteLaunchTemplate",
+           "ec2:TerminateInstances"
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+    ]
+  })
+}
 
 resource "harness_cluster_orchestrator" "cluster_orchestrator" {
   name             = substr(data.aws_eks_cluster.cluster.name, 0, 40)
@@ -296,6 +349,7 @@ output "eks_cluster_node_role_arn" {
 output "harness_cluster_orchestrator_id" {
   value = harness_cluster_orchestrator.cluster_orchestrator.id
 }
+
 ```
 
 #### Terraform Outputs
@@ -331,7 +385,7 @@ Please note, after running the Terraform script, the API key will not be printed
 Replace the placeholders in the command with values from the Terraform outputs and your specific configuration:
 
 ```bash
-helm upgrade -i harness-ccm-cluster-orchestrator --namespace kube-system harness-ccm-cluster-orchestrator/harness-ccm-cluster-orchestrator \
+helm install harness-ccm-cluster-orchestrator --namespace kube-system harness-ccm-cluster-orchestrator/harness-ccm-cluster-orchestrator \
 --set harness.accountID="<harness_account_id>" \
 --set harness.k8sConnectorID="<k8s_connector_id>" \
 --set harness.ccm.secret.token="<harness_ccm_token>" \
@@ -393,7 +447,7 @@ Cluster Orchestrator allows you to choose Cluster Preferences and Spot Preferenc
     - Resource Utilization Thresholds: This is used to set minimum CPU and memory usage levels to determine when a node is considered underutilized. This helps balance cost savings and performance by ensuring nodes are consolidated only when their resources fall below the specified thresholds.
 
 - Node Disruption Using Karpenter: This option can be utilised to activate Karpenter's node disruption management to optimize resource utilization and maintain application stability. Cluster orchestrator provders three optional settings here:
-    - Node deletion criteria: The setting ensures that the notes are deleted either when they are empty or under utilised as set by the user
+    - Node deletion criteria: The setting ensures that the nodes are deleted either when they are empty or under utilised as set by the user
     - Node deletion delay: The setting ensures that the nodes with no pods are deleted after a specified time and the delay time can be set by the user
     - Disruption Budgets: This feature allows users to define limits on the percentage of nodes that can be disrupted at any given time. This option comes with an added setting of selecting the reason and enabling or disabling budget scheduling
 
@@ -401,17 +455,13 @@ Cluster Orchestrator allows you to choose Cluster Preferences and Spot Preferenc
 
 <DocImage path={require('./static/step-two.png')} width="110%" height="110%" title="Click to view full size image" />
 
-
-
 **Spot Preferences:**
 
 Cluster Orchestrator allows users to set **Base On-Demand Capacity**, which can be further split into percentages to determine how much should be used by Spot and On-Demand instances. You can also choose the distribution strategy between **Least-Interrupted** or **Cost-optimized** and can define spot-ready for all workloads or spot-ready workloads. 
 
 Users can also enable reverse fallback retry. When spot nodes are interrupted, they are automatically replaced with on-demand nodes to maintain application stability. Once spot capacity becomes available again, the system will perform a reverse fallback, replacing the on-demand node with a spot node. Users can select the retry interval to define how often the system checks for spot capacity and performs the reverse fallback.
 
-
 Once all the details are filled in, click on the **"Complete Enablement"** button to enable Cluster Orchestrator for the cluster.
-
 
 <DocImage path={require('./static/step-three.png')} width="110%" height="110%" title="Click to view full size image" />
 
