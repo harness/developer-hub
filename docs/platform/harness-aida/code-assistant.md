@@ -4,7 +4,7 @@ description: Harness AI Code Agent for enhanced coding productivity.
 sidebar_position: 52
 ---
 
-Harness AI Code Agent consists of a set of tools that enhance coding experience by providing features such as intelligent code generation, real-time code suggestions, automated test generation, contextual code explanations, and a code agent for coding queries.
+Harness AI Code Agent consists of a set of tools that enhance coding experience by providing features such as intelligent code generation, real-time code suggestions, automated test generation, contextual code explanations, and a chat feature for coding queries.
 
 Harness AI Code Agent is designed to seamlessly integrate with your development workflow and it is available as an extension for popular Integrated Development Environments (IDEs). It exploits th power of Large Language Models to understand the context and generate relevant code/comment
 tailored to your specific needs.
@@ -33,7 +33,7 @@ Once you click the login button, you will be redirected to the Harness login pag
 ## Using Harness AI Code Agent: Main Features 
 After installing the Harness extension and completing the login process, you can immediately begin using the powerful features of the Harness AI DevOps Agent within your IDE.
 
-Harness AI Code Agent offers four key features: Code Generation, Code Agent and Inline Editing. Below, we provide a detailed explanation of each feature.
+Harness AI Code Agent offers four key features: Code Generation, Chat feature and Inline Editing. Below, we provide a detailed explanation of each feature.
 
 ### Code Generation
 Code generation works by showing real-time inline code suggestions. The suggestions are generated based on the context of the code being written, and additional information such as relevant files and code snippets in the workspace.
@@ -44,19 +44,19 @@ Once a suggestion is shown to the user, they can accept it fully or word by word
 When you select code in the editor and right click, a popup menu will appear, providing options to add selected code to a chat session, fix grammar or spelling, fix the code, optimize the code, write a docstring or add comments to the code.
 ![Harness AI Code Agent popup mentu](./static/ca_right_click.png)
 
-### Code Agent 
-Harness AI provides a powerful interactive code agent that can answer coding queries, provide explanations, generate new files, write tests, and assist with debugging. You can access the Code Agent by clicking on the Harness icon on the left sidebar of your IDE. This will open a chat window where you can type your questions or requests, and the code agent will respond with relevant information or code suggestions.
+### Harness AI Code Agent's Chat feature
+Harness AI provides a powerful interactive chat feature that can answer coding queries, provide explanations, generate new files, write tests, and assist with debugging. You can access the chat feature by clicking on the Harness icon on the left sidebar of your IDE. This will open a chat window where you can type your questions or requests, and the code agent will respond with relevant information or code suggestions.
 ![An example of AI code chat](./static/ca_explain_code.png)
 
-## Harness AI Code Agent: Features and Usage
-In this section we will explain some of the key features of the Harness AI Code Agent and how to effectively utilize them for your coding needs.
+## Harness AI Code Agent's Chat: Features and Usage
+In this section we will explain some of the key features of the Harness AI Code Agent's Chat feature and how to effectively utilize them for your coding needs.
 
 ### Shortcut Keys
 You can see a list of shortcut keys by clicing on `...` at the top of your chat window.
 ![Shortcut Keys](./static/ca_shortcuts.png)
 
 ### Reference the entire codebase
-Harness AI Code Agent indexes all of the code in your current workspace when VS Code launches. This semantic index makes the entire codebase available as context your chat session. By defualt, the code agent uses the context of the current file to provide relevant suggestions and answers. You can reference the entire codebase by clicking cmd + enter when entering your prompt. Alternatively, you can reference the entire codebase with `@codebase` in your prompt. 
+Harness AI Code Agent indexes all of the code in your current workspace when VS Code launches. This semantic index makes the entire codebase available as context your chat session. By defualt, the chat feature uses the context of the current file to provide relevant suggestions and answers. You can reference the entire codebase by clicking cmd + enter when entering your prompt. Alternatively, you can reference the entire codebase with `@codebase` in your prompt. 
 
 You can refresh the codebase index by clicking on `...` at the top of your chat window
 ![Codebase Index](./static/ca_index.png)
@@ -103,8 +103,8 @@ If you are using VS Code and require requests to be made through a proxy, you ar
 ### What information does Harnes AI Code Agent use to generate code suggestions?
 Harness AI Code Agent uses the content of the current file, the context of the code being written, and any relevant libraries or frameworks that are referenced in the project to generate accurate code suggestions. Furthmore, it uses relevant code snippets and patterns from the workspace to enhance its suggestions and provide context-aware assistance.
 
-### Do I need to select a piece of code when asking questions in the code agent?
-No, you do not need to select a piece of code when asking questions in the code agent. The code agent by defualt uses the visible code to the user to provide context for generating relevant answers and suggestions. However, you may select specific code snippets if you want to focus the agent's responses on particular sections of your code specially if the selection is outside the visible area of the editor.
+### Do I need to select a piece of code when asking questions in the chat feature?
+No, you do not need to select a piece of code when asking questions in the chat feature. The chat feature by defualt uses the visible code to the user to provide context for generating relevant answers and suggestions. However, you may select specific code snippets if you want to focus the agent's responses on particular sections of your code specially if the selection is outside the visible area of the editor.
 
 ### Does Harness store any of my code or personal data?
 No, Harness AI Code Agent does not store any of your code or personal data. The tool is designed with privacy in mind, ensuring that all code suggestions and interactions are processed locally within your IDE. Any data used for generating suggestions is not sent to external servers, maintaining the confidentiality of your work.
@@ -119,5 +119,5 @@ Harness AI Code Agent supports a wide range of programming languages including b
 ### What is language server and how does it work?
 The language server is component of Harness AI Code Agent that runs on the user's machine and communicates with the IDE. The role of the language server is to generate the context that is needed to respond to user queries by gathering and processing information from the current open tabs and files in the workspace. The language server is also responsible for generating and sending requests to the Harness AI backend.
 
-### What context information is used by the code agent?
-The context used when utilizing the code agent includes the visible code in the current file, any relevant libraries or frameworks referenced in the project, and the user's previous interactions within the chat, and the selected code snippets if applicable. This allows the code agent to provide tailored responses based on the specific coding environment and the user's ongoing work. Additionally, users can enhance the context by adding references to other files or libraries as needed.
+### What context information is used by the chat feature?
+The context used when utilizing the chat feature includes the visible code in the current file, any relevant libraries or frameworks referenced in the project, and the user's previous interactions within the chat, and the selected code snippets if applicable. This allows the code agent to provide tailored responses based on the specific coding environment and the user's ongoing work. Additionally, users can enhance the context by adding references to other files or libraries as needed.
