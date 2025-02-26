@@ -3,7 +3,7 @@ title: Dynamic execution of Pipelines
 description: You can dynamically execute pipelines in Harness.
 ---
 
-Dynamic execution of Pipelines allows you to execute pipelines by providing pipeline YAML configuration during runtime without requiring pre-saved configurations in Harness. This enables seamless integration with user existing ecosystem while maintanining Harness's robust security and governance controls.
+Dynamic execution of Pipelines allows you to execute pipelines by providing pipeline YAML configuration during runtime without requiring pre-saved configurations in Harness. This enables seamless integration with user existing ecosystem while maintaining Harness's robust security and governance controls.
 
 ## Pre-Requisites
 
@@ -22,6 +22,10 @@ Navigate to **Account Setting** -> **Default Settings** -> **Pipeline** -> Enabl
 ![](./static/account-settings-dynamic-execution.png)
 
 2. Pipeline Level Setting 
+
+:::info note
+Pipeline Setting for dynamic execution will only be visible once you enable the above Account Setting.
+:::
 
 Once you have enabled the above Account Setting, you need to enable the Pipeline level setting for Dynamically executing the Pipeline:-
 
