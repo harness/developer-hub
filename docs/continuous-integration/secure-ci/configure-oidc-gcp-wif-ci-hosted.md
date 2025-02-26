@@ -68,8 +68,6 @@ For example:
 1. [Create a pipeline](../use-ci/prep-ci-pipeline-components.md#create-a-harness-ci-pipeline) and [add a Build stage](../use-ci/set-up-build-infrastructure/ci-stage-settings.md#add-a-build-stage-to-a-pipeline).
 2. Configure the Build stage to [use Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#use-harness-cloud).
 
-   Currently, OIDC connectivity mode for GCP is supported for Harness Cloud build infrastructure only. OIDC-enabled GCP connectors only work in Build stages that use Harness Cloud build infrastructure.
-
 3. Add a [Build and Push to GAR step](../use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md) to the Build stage.
 
    For the step's **GCP Connector**, select your OIDC-enabled GCP connector.
