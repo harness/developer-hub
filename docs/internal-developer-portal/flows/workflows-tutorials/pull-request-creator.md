@@ -13,9 +13,9 @@ The primary goal of this tutorial is to help you understand the following concep
 
 ✔ [**Conditional API requests**](/docs/internal-developer-portal/flows/dynamic-picker#conditional-api-requests)
 
-✔ [**Updating Fields using Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields)
+✔ [**Updating Fields using Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context)
 
-✔ [**Live User Validation using API Requests**](/docs/internal-developer-portal/flows/dynamic-picker#adding-user-validation)
+✔ [**Live User Validation using API Requests**](/docs/internal-developer-portal/flows/dynamic-picker#live-user-validation-using-api-requests)
 
 These features allow users to dynamically filter results based on previous inputs and make customizable API requests with real-time validation. 
 
@@ -157,7 +157,9 @@ The ``gitUsername`` variable is referenced in the Dynamic Picker field path, ens
 This setup ensures that the repository list updates dynamically based on the entered username.
 
 ## Auto-updating Repository Details
-Once a repository is selected, the workflow should **automatically fetch and display repository details**. Read more about auto-updating input fields in Workflows [here](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields). 
+Once a repository is selected, the workflow should **automatically fetch and display repository details**. 
+
+**Read more about auto-updating input fields in Workflows [here](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context).**
 
 ### Required Fields
 - **Repository Name**: Name of the repsoitory, Auto-fetched, read-only.
@@ -259,7 +261,9 @@ originBranchName:
 - ``formContext.branch`` retrieves and automatically updates this field based on the GitHub API response.
 
 ## Adding Live User Validation
-Before creating a pull request, users should validate auto-updated details and provide additional inputs. Read more about adding live user validation in Workflows [here](/docs/internal-developer-portal/flows/dynamic-picker#adding-user-validation). 
+Before creating a pull request, users should validate auto-updated details and provide additional inputs. 
+
+**Read more about adding live user validation in Workflows [here](/docs/internal-developer-portal/flows/dynamic-picker#live-user-validation-using-api-requests).** 
 
 ### Required Fields
 - **PR Title**: User input for the Pull Request title.

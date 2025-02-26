@@ -439,7 +439,7 @@ You can configure Workflows to enable **user validation** for input form fields.
 
 This functionality allows users to:
 - Manually enter input field details for **live validation** (instead of selecting from a dynamic picker drop-down).
-- Provide **feedback and validate auto-updated** input field details retrieved from [**Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields).
+- Provide **feedback and validate auto-updated** input field details retrieved from [**Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context).
 
 This process triggers an API call in the background with the user-provided details, parses the response, and **updates the Form Context** with the validated information. It ensures that input form fields are dynamically updated while enabling real-time validation of user inputs.
 

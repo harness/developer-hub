@@ -29,12 +29,12 @@ Please note that the following features are behind a **Feature Flag**: `IDP_ENAB
 Ensure that it is **enabled in your account** before use. To enable this feature, contact [**Harness Support**](mailto:support@harness.io).
 :::
 ### [New Feature] Updating Fields using Form Context
-**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator)**
+**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator)**
 
 -----
 With the introduction of Conditional API Requests in the last release, you can now create an interactive Workflow with dependent input fields. However, one of the challenges was requiring users to fill in too many text boxes, making it difficult for developers and platform engineers to fully utilize Workflows.
 
-#### 🚀 [Introducing Form Context](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields)
+#### 🚀 [Introducing Form Context](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context)
 
 With this new release, we introduce **Form Context**, a global context (active per Workflow session) that allows Workflows to **dynamically update data fields** in the frontend based on user input. Using Dynamic Pickers, you can now configure Workflows to **auto-fill relevant fields** with data from third-party sources based on user selections or inputs.
 
@@ -96,12 +96,12 @@ parameters:
 
 ![](./static/reactive-form-context.png)
 
-👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields).**
+👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context).**
 
 -----
 
 ### [New Feature] Live User Validation using API Requests
-**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/dynamic-picker#adding-user-validation) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator)**
+**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/dynamic-picker#live-user-validation-using-api-requests) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator)**
 
 ------
 This release also introduces **live user validation** for input fields in Workflow Dynamic Pickers. This feature enables users to:
@@ -123,7 +123,7 @@ To achieve this, you can add a button that, when clicked:
 
 This feature ensures users can validate their inputs dynamically while improving workflow accuracy and efficiency.
 
-👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker#adding-user-validation).**
+👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker#live-user-validation-using-api-requests).**
 
 ------
 
@@ -144,8 +144,8 @@ This feature ensures users can validate their inputs dynamically while improving
 #### Reference Docs
 We have released new **reference documentation** covering the features introduced in this release. You can find detailed information at the following links:  
 
-- [**Updating Fields Using Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields)  
-- [**Live User Validation Using API Requests**](/docs/internal-developer-portal/flows/dynamic-picker#adding-user-validation)  
+- [**Updating Fields Using Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context)  
+- [**Live User Validation Using API Requests**](/docs/internal-developer-portal/flows/dynamic-picker#live-user-validation-using-api-requests)  
 
 #### Tutorial
 This release also includes a comprehensive **tutorial** designed to help you understand and **implement these features** effectively. Check it out here:  
