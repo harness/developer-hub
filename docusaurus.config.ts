@@ -132,6 +132,10 @@ const config: Config = {
               to: 'docs/feature-flags',
             },
             {
+              label: 'Feature Management & Experimentation',
+              to: 'docs/feature-management-experimentation',
+            },
+            {
               label: 'Cloud Cost Management',
               to: 'docs/cloud-cost-management',
             },
