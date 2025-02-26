@@ -301,6 +301,12 @@ Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-min
 
 - Upgraded the `dnsjava` library to version `3.6.0` to address CVE-2024-25638, which involved potential security vulnerabilities in DNS query responses. (PL-55721, ZD-63383, ZD-68810)
 
+### Version 24.08.83706 <!--  Feb 26, 2025 -->
+
+#### Hotfix
+
+- Added support for downloading artifact with special characters in the URl for Nexus. This is HF for origin ticket (CDS-102807)
+
 ### Version 24.07.83611, 24.08.83705 <!--  August 30, 2024 -->
 
 #### Hotfix
