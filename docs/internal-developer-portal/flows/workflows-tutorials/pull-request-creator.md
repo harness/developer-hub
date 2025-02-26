@@ -13,9 +13,9 @@ The primary goal of this tutorial is to help you understand the following concep
 
 ✔ [**Conditional API requests**](/docs/internal-developer-portal/flows/dynamic-picker#conditional-api-requests)
 
-✔ [**Auto-updating data fields**](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields)
+✔ [**Updating Fields using Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields)
 
-✔ [**Live user validation**](/docs/internal-developer-portal/flows/dynamic-picker#adding-user-validation)
+✔ [**Live User Validation using API Requests**](/docs/internal-developer-portal/flows/dynamic-picker#adding-user-validation)
 
 These features allow users to dynamically filter results based on previous inputs and make customizable API requests with real-time validation. 
 
@@ -111,7 +111,7 @@ Please ensure that this workflow is configured to accept the end user's **GitHub
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
 
-```YAML
+```YAML {12,14}
 parameters:
   - title: Enter your details
     properties:
@@ -168,13 +168,13 @@ Once a repository is selected, the workflow should **automatically fetch and dis
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
 
-```YAML
+```YAML {14,16,27,35,43}
 parameters:
-    - title: Enter your details
+    - title: Repo Picker
       properties:
         gitUsername:
-          title: Repository Owner Username
-          description: Enter the repository owner username
+          title: Github username
+          description: Enter your Github username
           type: string
         repoPicker:
           title: GitHub Repositories
@@ -189,28 +189,29 @@ parameters:
               branch: default_branch
               type: visibility                 
         repositoryName:
-          title: Repository Name
+          title: Repo Name
           readonly: true
-          description: Check your Repository Name
+          description: Repository Name
           type: string            
           ui:field: ContextViewer
           ui:options:
-            getContextData: {{formContext.repoName}}          
+            getContextData: {{formContext.repoName}}
+        branchName:
+          title: Default Branch
+          readonly: true
+          description: Default Branch
+          type: string
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: {{formContext.branch}}          
         typeName:
           title: Visibility
           readonly: true
-          description: Repository Visibility
+          description: Visibility
           type: string     
           ui:field: ContextViewer
           ui:options:
             getContextData: {{formContext.type}}
-        originBranchName:
-          title: Default Branch
-          description: Default Branch where you want the changes pulled into. 
-          type: string
-          ui:field: ContextViewer
-          ui:options:
-            getContextData: {{formContext.branch}}
 ```
 
 </TabItem>
@@ -233,7 +234,7 @@ The following values are retrieved and stored in **form context**:
 
 #### Defining Context Data
 Context data is stored in the ``ui:options`` section within the Dynamic Picker field using the ``setContextData``property:
-```YAML
+```YAML {1}
 setContextData: 
     repoName: name
     branch: default_branch
@@ -244,7 +245,7 @@ setContextData:
 Once context data is set, we use ``getContextData`` to auto-update the input fields dynamically.
 - **repositoryName** and **typeName** are **read-only** (using the ```readonly``` tag) fields (users cannot modify them)
 - **originBranchName** remains **editable** so users can specify a branch if required.
-```YAML
+```YAML {5,7}
 originBranchName:
     title: Default Branch
     description: Default Branch where you want the changes pulled into. 
@@ -269,7 +270,7 @@ Before creating a pull request, users should validate auto-updated details and p
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
 
-```YAML
+```YAML {16,18,20,22}
 parameters:
   - title: Enter your details
     properties:
@@ -322,7 +323,7 @@ To finalize the workflow, we need a **validation button** that allows users to v
 - ``button``: Defines and adds the "Create a Pull Request" button.
 - ``path``: Specifies the API endpoint for the PR creation request.
 - ``setContextData``: Stores additional context data upon API request execution.
-```YAML
+```YAML {2}
 setContextData:
   prUrl: html_url
 ```
@@ -330,8 +331,8 @@ setContextData:
 - ``html_url``: The API response field containing the PR URL.
 
 #### Defining the API Request
-The **GitHub API request** is structured as a **POST request**, containing the necessary fields for PR creation.
-```YAML
+The **GitHub API request** is structured as a **POST request**, containing the necessary fields for PR creation. [Read more about making a POST API request here](/docs/internal-developer-portal/flows/dynamic-picker#post-method-support)
+```YAML {2,5}
 request: 
   method: POST
   headers: 
@@ -346,7 +347,27 @@ request:
 - ``head``: The **changes source branch**, retrieved from ``newBranch``.
 - ``base``: The destination branch (default branch of the repository).
 
+#### Show Form Context Live
+At any time, if you need to display the **Form Context** live in your Workflow Frontend for debugging purposes, you can use the following format:  
+
+```YAML {7}
+formContext:
+  title: Live Form Context 
+  description: DEBUG Context
+  type: string            
+  ui:field: ContextViewer
+  ui:options:
+    getContextData: {{formContext}} 
+```
+
+Read more about the syntax [here](/docs/internal-developer-portal/flows/dynamic-picker.md#4-show-form-context-live-in-the-workflow-frontend). 
+
 ## Workflow YAML
+#### Additional Notes
+- Added a new field in the frontend that **retrieves and displays** the **"Pull Request URL"** stored in the **Form Context**.  
+- No specific **Action** has been added for this tutorial, as its primary purpose is to help users **understand the features and concepts**.
+
+#### Example YAML
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
 
@@ -354,7 +375,7 @@ request:
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: dynamic-picker-sample-demo
+  name: Dynamic-Picker-Demo-Pull-Request-Creator
   title: Pull-Request-Creator
   description: Create a new PR
 spec:

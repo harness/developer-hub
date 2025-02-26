@@ -17,36 +17,40 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 :::
 
-## February 2025 
-
-### Version 0.40.0
+## February - Version 0.40.0
 
 <!-- February 26, 2025-->
 
-#### What's New in this Release (New Features and Enhancements)
 :::info
-Please note that these features are behind a **Feature Flag**: `IDP_ENABLE_WORKFLOW_FORM_CONTEXT`. Ensure that it is **enabled in your account** before use.
+Please note that the following features are behind a **Feature Flag**: `IDP_ENABLE_WORKFLOW_FORM_CONTEXT`.  
+- [**Updating Fields using Form Context**](/release-notes/internal-developer-portal.md#new-feature-updating-fields-using-form-context)  
+- [**Live User Validation using API Requests**](/release-notes/internal-developer-portal.md#new-feature-live-user-validation-using-api-requests)  
+
+Ensure that it is **enabled in your account** before use. To enable this feature, contact [**Harness Support**](mailto:support@harness.io).
 :::
-#### 1️⃣ ``Auto-update Input Fields in Workflows with Form Context`` [IDP-]
+### [New Feature] Updating Fields using Form Context
+**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/dynamic-picker.md#auto-updating-input-fields) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md)**
+
+-----
 With the introduction of Conditional API Requests in the last release, you can now create an interactive Workflow with dependent input fields. However, one of the challenges was requiring users to fill in too many text boxes, making it difficult for developers and platform engineers to fully utilize Workflows.
 
-🚀 **Introducing Form Context**
+#### 🚀 [Introducing Form Context](/docs/internal-developer-portal/flows/dynamic-picker.md#auto-updating-input-fields)
 
-With this new release, we introduce **Form Context**, a global context that allows Workflows to **dynamically update data fields** in the frontend based on user input. Using Dynamic Pickers, you can now configure Workflows to **auto-fill relevant fields** with data from third-party sources based on user selections or inputs.
+With this new release, we introduce **Form Context**, a global context (active per Workflow session) that allows Workflows to **dynamically update data fields** in the frontend based on user input. Using Dynamic Pickers, you can now configure Workflows to **auto-fill relevant fields** with data from third-party sources based on user selections or inputs.
 
 When a user selects or provides input in a form field, the Form Context **automatically updates** with relevant data. Other fields—typically read-only can **subscribe to this context** and dynamically update based on the latest information.
 
-🚀 **Use Case: Repository Picker Workflow**
+#### 🚀 Use Case: [Repository Picker Workflow](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md#creating-a-repository-picker)
 
-Previously, in a repository picker workflow, when a user entered their GitHub username and selected a repository, they still had to manually input details like the default branch and repository metadata.
+Previously, in a **repository picker** workflow, when a user entered their **GitHub username** and selected a repository, they still had to manually input details like the default branch and repository metadata.
 
-With Form Context, dependent fields in the frontend automatically update based on the selection, reducing manual input and improving efficiency.
+With **Form Context**, dependent fields in the frontend **automatically update** based on the selection, reducing manual input and improving efficiency.
 
 Here's how the YAML configuration and frontend look for this example:
 
-```YAML
+```YAML {14,16,27,35,43}
 parameters:
-    - title: Repo Picker
+    - title: Repository Picker
       properties:
         gitUsername:
           title: Github username
@@ -60,7 +64,7 @@ parameters:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitUsername}}/repos
             valueSelector: full_name
-            contextData: 
+            setContextData: 
               repoName: name
               branch: default_branch
               type: visibility                 
@@ -79,7 +83,7 @@ parameters:
           type: string
           ui:field: ContextViewer
           ui:options:
-            getContextData: {{formContext.branch}}
+            getContextData: {{formContext.branch}} 
         typeName:
           title: Visibility
           readonly: true
@@ -94,14 +98,19 @@ parameters:
 
 👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker.md#auto-updating-input-fields).**
 
-#### 2️⃣ ``Live User Validation for Input Fields in Workflow Dynamic Pickers`` [IDP-]
+-----
+
+### [New Feature] Live User Validation using API Requests
+**[IDP-4154] | [Docs](/docs/internal-developer-portal/flows/dynamic-picker.md#adding-user-validation) | [Tutorial](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md)**
+
+------
 This release also introduces **live user validation** for input fields in Workflow Dynamic Pickers. This feature enables users to:
 - Manually enter input field details for **real-time validation**, instead of selecting from a dynamic picker drop-down.
 - Validate and provide **feedback on auto-updated input field** details retrieved from Form Context.
 
 When users input details, an **API call** is triggered in the background, parsing the response and **updating the Form Context** dynamically with validated information. This ensures that input form fields remain up to date while enabling real-time validation.
 
-🚀 **Use Case: Pull Request Creator Workflow**
+🚀 **Use Case: [Pull Request Creator Workflow](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md)**
 
 In a Pull Request Creator Workflow, you need the user to **enter the branch name** where changes are implemented. Additionally, a repository picker field dynamically fetches repository details and updates the Form Context as selections are made.
 
@@ -110,25 +119,48 @@ To achieve this, you can add a button that, when clicked:
 - Stores additional data from the API response in the Form Context.
 - Sends a POST request to create a pull request.
 
+<img width="500" alt="Image" src="https://github.com/user-attachments/assets/e80eb089-8be0-45d0-ab96-c0f99d2244e9" />
+
 This feature ensures users can validate their inputs dynamically while improving workflow accuracy and efficiency.
 
 👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker.md#adding-user-validation).**
 
-#### Bug Fixes 
+------
+
+### Bug Fixes 
 - Resolved an issue where the **markdown description hyperlink** in Workflows was not rendering correctly. It is now properly displayed. [IDP-4763]  
 - Fixed the **default behavior** for all missing data points in scorecard checks. [IDP-4732]  
-- Renamed **"Request Access"** in the Plugins Marketplace to **"Upvote"** to better reflect its purpose—allowing users to upvote a plugin and help the Harness IDP team prioritize customer requests. [IDP-4503]  
 - Fixed an issue where the **"All Groups"** field in the Workflow UI was incorrectly displaying the total number of Workflow Groups instead of the total number of Workflows included in these Groups. [IDP-4407]  
 - Resolved an issue where **Tech Docs URLs** with the same host as where they are deployed were returning a 404 error. This has been fixed. [IDP-4368]  
 - Fixed an issue where **"View"** permission is now enabled by default for all IDP resources at the **Account** level under the **"Account Viewer"** role. [IDP-4264]
 
-### Version 0.39.0
+#### Additional Note
+- Renamed **"Request Access"** in the Plugins Marketplace to **"Upvote"** to better reflect its purpose—allowing users to upvote a plugin and help the Harness IDP team prioritize customer requests. [IDP-4503]  
+
+-------
+
+### New Documentation
+
+#### Reference Docs
+We have released new **reference documentation** covering the features introduced in this release. You can find detailed information at the following links:  
+
+- [**Updating Fields Using Form Context**](/docs/internal-developer-portal/flows/dynamic-picker.md#auto-updating-input-fields)  
+- [**Live User Validation Using API Requests**](/docs/internal-developer-portal/flows/dynamic-picker.md#adding-user-validation)  
+
+#### Tutorial
+This release also includes a comprehensive **tutorial** designed to help you understand and **implement these features** effectively. Check it out here:  
+
+- [**Use Dynamic Pickers for a Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md) 
+
+------
+
+## February - Version 0.39.0
 
 <!-- February 04, 2025-->
 
-#### What's New in this Release (New Features and Enhancements)
+### [New Feature] Conditional API Requests in Workflow Dynamic Pickers
 
-#### 1️⃣ ``Conditional API Requests in Workflow Dynamic Pickers`` [IDP-4291]
+[IDP-4291]
 
 This release marks a **major milestone** for **Workflow Dynamic Pickers**, and we’re excited to introduce **Conditional API Requests**!  
 
@@ -171,7 +203,8 @@ This feature makes workflows more flexible, interactive, and user-friendly.
 
 👉 Read more about the feature [here](/docs/internal-developer-portal/flows/dynamic-picker#conditional-api-requests).
 
-#### 2️⃣ ``API Key Secret based Pipeline Execution from IDP Workflows`` [IDP-4051]
+### [New Feature] API Key Secret based Pipeline Execution from IDP Workflows 
+[IDP-4051]
 
 There are now two ways in which **Workflow to Harness Pipeline authentication** works in Harness IDP Workflows. Users can now trigger a Harness Pipeline in an IDP Workflow using a **Harness API Key Secret** instead of a user session token. Previously, authentication relied on the user session token, requiring execution permissions for the pipeline. With this mode: 
 
@@ -183,7 +216,8 @@ This feature enhances security by using dedicated API keys, eliminating the need
 
 👉 Read more about the feature [here](/docs/internal-developer-portal/flows/worflowyaml#authentication).
 
-#### 3️⃣ ``POST Method support for Dynamic Pickers`` [IDP-4292]
+### [New Feature] POST Method support for Dynamic Pickers
+[IDP-4292]
 
 Workflow Dynamic Pickers now supports the **POST method**, extending beyond just GET requests. 
 This feature is useful for fetching data using **GraphQL APIs**, calling **Lambda functions** with POST requests and handling APIs that require **large inputs via POST**. 
@@ -221,7 +255,7 @@ Here’s what these features do:
 
 - **Allow arbitrary values in dynamic pickers**: Users can now manually enter custom text if their desired option is not available in the predefined list.
 
-#### Bug Fixes 
+### Bug Fixes 
 - Fixed payload creation for template variables and extended support for **pipeline template variables** in `trigger:harness-custom-pipeline` workflow action. [IDP-4492]
 - Fixed an issue in **HarnessAutoOrgPicker** where projects with the same ID across different organizations caused conflicts. A dropdown has been added to allow users to **select the appropriate organization** when a project name exists in multiple organizations. [IDP-4168]
 - Resolved an issue where negative values could be entered for scorecard weights. Added validation to ensure only **valid, non-negative values** are accepted. [IDP-3721]

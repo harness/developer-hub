@@ -272,12 +272,14 @@ Below is the YAML configuration for this setup:
 
 ![](./static/dynamic-picker-2.png)
 
-## Auto-Updating Input Fields  
+## Updating Fields using Form Context  
 
 With conditional API requests in **Dynamic Pickers**, you can create a **Workflow** with dependent input fields. This also allows you to configure a **Workflow** with a **Dynamic Picker** to automatically update other data fields in your **Workflow's frontend** based on previous input. All relevant information in your **Workflow's frontend** can be auto-filled from third-party sources based on your selection/input.  
 
-This functionality is powered by a global [**Form Context**](/docs/internal-developer-portal/flows/dynamic-picker.md#understanding-form-context).  
+This functionality is powered by a global [**Form Context**](/docs/internal-developer-portal/flows/dynamic-picker.md#understanding-form-context). This global Form Context is **active per Workflow session**. 
 When a user selects or provides input in a form field, the **Form Context** updates with the relevant data. Other fields—typically read-only—can subscribe to this context and automatically update based on the latest information.  
+
+This release also includes a comprehensive **tutorial** designed to help you understand and **implement these features** effectively. Check it out here: [**Use Dynamic Pickers for a Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md) 
 
 #### Example  
 If you are using a [**Repository Picker Workflow**](/docs/internal-developer-portal/flows/dynamic-picker.md#example-yaml-1) and enter your **GitHub Username**, the form dynamically fetches and displays all repositories linked to that username. Once entered, other dependent fields in the form can be auto-updated based on this selection.  
@@ -318,7 +320,7 @@ dynamic-picker-name:
 #### 3. Auto-Update Input Fields Using `getContextData`  
 Once **Context Data** is set, define **input fields** and use ```getContextData``` to auto-update these fields with values from the API response based on user input.  
 
-```YAML {11}
+```YAML {12}
 dynamic-picker-name:
   ui:field: SelectFieldFromApi
   ui:options: 
@@ -351,7 +353,7 @@ We can make certain fields **non-editable** by adding `readonly: true` in their 
 #### 4. Show Form Context Live in the Workflow Frontend
 At any time, if you need to display the **Form Context** live in your Workflow Frontend for debugging purposes, you can use the following format:  
 
-```YAML
+```YAML {7}
 formContext:
   title: Live Form Context 
   description: DEBUG Context
@@ -372,7 +374,7 @@ This ensures that the **current Form Context state** is visible in the Workflow 
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
 
-```YAML
+```YAML {14,16,27,35,43,50}
 parameters:
     - title: Repo Picker
       properties:
@@ -388,7 +390,7 @@ parameters:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitUsername}}/repos
             valueSelector: full_name
-            contextData: 
+            setContextData: 
               repoName: name
               branch: default_branch
               type: visibility                 
@@ -432,7 +434,7 @@ parameters:
 </TabItem>
 </Tabs>
 
-## Adding User Validation 
+## Live User Validation using API Requests 
 You can configure Workflows to enable **user validation** for input form fields. If you want users to manually enter details and validate them instead of selecting from a drop-down, you can use this feature in your Workflow.
 
 This functionality allows users to:
@@ -440,6 +442,8 @@ This functionality allows users to:
 - Provide **feedback and validate auto-updated** input field details retrieved from [**Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields).
 
 This process triggers an API call in the background with the user-provided details, parses the response, and **updates the Form Context** with the validated information. It ensures that input form fields are dynamically updated while enabling real-time validation of user inputs.
+
+This feature release also includes a comprehensive **tutorial** designed to help you understand and **implement these features** effectively. Check it out here:  [**Use Dynamic Pickers for a Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md) 
 
 **Example**
 
@@ -455,7 +459,7 @@ You can implement user validation by adding a custom button using the following 
 
 A custom button allows users to manually enter their input details and validate them by clicking the button. You can define this button in your `workflow.yaml` as follows:  
 
-```YAML
+```YAML {3,5}
 customValidationName:
   type: string
   ui:field: ValidateAndFetch
@@ -485,7 +489,7 @@ customValidationName:
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
 
-```YAML
+```YAML {12,14,16,25,27,34,43,45,49,52}
 parameters:
     - title: Enter your details
       properties:
@@ -501,7 +505,7 @@ parameters:
           ui:options:
             path: proxy/github-api/users/{{parameters.gitUsername}}/repos
             valueSelector: full_name
-            contextData: 
+            setContextData: 
               repoName: name
               branch: default_branch
               type: visibility                 
@@ -623,7 +627,7 @@ custom1:
       headers:
         Content-Type: application/json
       body:
-        secret: { { parameters.formdata } }
+        secret: "{{parameters.formdata}}"
 ```
 
 Using POST is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
