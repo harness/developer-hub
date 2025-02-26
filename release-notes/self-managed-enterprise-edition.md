@@ -349,10 +349,6 @@ s available in the account to execute the task` even when appropriate delegate s
 
 #### Cloud Cost Management
 
-### Fixed issues
-
-#### Cloud Cost Management
-
 - Improved Query Performance: We have increased the socket timeout for all ClickHouse queries to enhance stability and performance. [CCM-21324]
 
 - Optimized Data Partitioning: We have added partitioning on the startTime field in unifiedTable to improve query efficiency. [CCM-21374]
