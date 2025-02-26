@@ -17,6 +17,17 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 
 :::
+## February 2025
+
+### Version 1.42.4
+
+#### New features and enhancements
+
+- Reverse Fallback Retry in Cluster Orchestrator: We have introduced support for Reverse Fallback Retry in the Cluster Orchestrator configuration. This ensures improved reliability by allowing the orchestrator to retry failed tasks using a reverse fallback mechanism. [CCM-17784]
+- Fix for Anomalies Alert Scope Visibility: Some anomalies alerts created from the existing flow were incorrectly assigned an alert scope. Due to this, the alerts were not appearing in the anomalies list. This issue has now been fixed by setting the correct scope, ensuring proper visibility of anomalies alerts. [CCM-21278]
+- Confirmation Dialog for Unsaved Cloud Asset Governance Rules: To prevent accidental loss of unsaved changes, a confirmation dialog will now appear when navigating away from an unsaved Cloud Asset Governance rule. [CCM-20972]
+- Time-To-Live (TTL) Support for Karpenter Nodes in Cluster Orchestrator: We have introduced Time-To-Live (TTL) support for Karpenter nodes in the Cluster Orchestrator configuration. This feature allows users to automatically terminate idle or underutilized Karpenter nodes after a specified period, optimizing resource usage and reducing costs. [CCM-20051]
+
 ## January 2025
 
 ### Version 1.38.3
