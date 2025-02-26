@@ -94,7 +94,7 @@ parameters:
             getContextData: {{formContext.type}}
 ```
 
-![](./static/reactive-form-context.png)
+![](./static/internal-developer-portal/reactive-form-context.png)
 
 👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker#updating-fields-using-form-context).**
 
@@ -197,7 +197,7 @@ parameters:
         path: proxy/github-api/orgs/{{ parameters.github_org }}/repos
         valueSelector: full_name
 ```
-![](./static/dynamic-picker-2.png)
+![](./static/internal-developer-portal/dynamic-picker-2.png)
 
 This feature makes workflows more flexible, interactive, and user-friendly.  
 
@@ -272,15 +272,15 @@ Here’s what these features do:
 
 1. The "My Pull Requests card" on the Developer Homepage now supports **[Harness Code Repository](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization/#2-harness-code-repository)** in addition to GitHub, with no configuration required for Harness Code Repository. [IDP-4184]
 
-![](./static/idp-hcr-card.png)
+![](./static/internal-developer-portal/idp-hcr-card.png)
 
 2. Added a new step in the IDP stage to [update catalog properties](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#9-update-catalog-property), enabling native support for the [Catalog Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-ingestion/catalog-ingestion-api) within pipelines.[IDP-3603]
 
-![](./static/update-catalog-property.png)
+![](./static/internal-developer-portal/update-catalog-property.png)
 
 3. Added support for a new [markdown card](/docs/internal-developer-portal/layout-and-appearance/home-page-customization#markdown-card) on IDP Homepage
 
-![](./static/idp-markdown-card.png)
+![](./static/internal-developer-portal/idp-markdown-card.png)
 
 #### Bug fixes
 
@@ -307,11 +307,11 @@ Here’s what these features do:
 
 - You can now view all your Jira tickets under the [My Tasks card](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/home-page-customization#my-tasks-card) on the Developer Home page, organized by sprints, progress, and other key developer information.
 
-![](./static/idp-jira-task.png)
+![](./static/internal-developer-portal/idp-jira-task.png)
 
 - Users can now onboard new services anytime using the [Get Started option under the Admin section](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#onboard-services-post-getting-started), even after completing the initial onboarding flow. [IDP-3984]
 
-![](./static/idp-re-onboarding.png)
+![](./static/internal-developer-portal/idp-re-onboarding.png)
 
 - Enhanced scorecard functionality by making the harness.io/services annotation optional for Policy Evaluation and STO stages based checks, enabling pipelines to use their last policy check results when defined. [IDP-3992]
 
@@ -351,13 +351,13 @@ customPlugins:
 
 - You can now view your pull requests under the [My Pull Requests card](/docs/internal-developer-portal/layout-and-appearance/home-page-customization#my-pull-requests-card) on the Developer Homepage. Currently, only GitHub is supported. [IDP-3458]
 
-![](./static/idp-pull-request-github.png)
+![](./static/internal-developer-portal/idp-pull-request-github.png)
 
 - We’ve added support for [pipeline templates, stage variables, and step variables](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#support-for-stage-step-variables-and-pipeline-templates) to be used as inputs for workflows with the `trigger:harness-custom-pipeline` action. [IDP-3927]
 
 - The [Plugins Marketplace](https://developer.harness.io/docs/internal-developer-portal/plugins/plugin-marketplace) now offers a single-pane-of-glass view, showing plugins supported under IDP as well as available Backstage Community Plugins, which can be added based on customer requests. [IDP-4010]
 
-![](./static/idp-plugin-marketplace.png)
+![](./static/internal-developer-portal/idp-plugin-marketplace.png)
 
 - Added Audit trails Support for Workflows v2 and Homepage Layout. [IDP-3849, IDP-3848]
 
@@ -392,7 +392,7 @@ customPlugins:
 - New plugins added to the marketplace.
   - [Harness CCM Backstage Plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/harness-ccm). [IDP-3758]
 
-![](./static/harness-ccm-backstage-plugin-screenshot.png)
+![](./static/internal-developer-portal/harness-ccm-backstage-plugin-screenshot.png)
 
 - You can now add [SimpleIcons](https://developer.harness.io/docs/internal-developer-portal/catalog/add-links-docs#icons) in the Links card on Overview page, the list of supported icons are available in **Admin** -> **Layout** -> **Icons**. [IDP-3763]
 
@@ -514,7 +514,7 @@ customPlugins:
 - In [Bitbucket data source](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#bitbucket) for [File Exist data point](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#url-priority-for-branch-name-field-6), we will use the **default branch** for the repository used in source-location, as the default `branchName`. [IDP-3236]
 - New Plugins: Add [gRPC playground plugin](https://github.com/zalopay-oss/backstage-grpc-playground) to enhance [gRPC API](https://developer.harness.io/docs/internal-developer-portal/techdocs/add-api-docs/#grpc-docs) view. [IDP-3199]
 
-![](./static/json-format.png)
+![](./static/internal-developer-portal/json-format.png)
 
 - You can now ingest [user-group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) as an entity YAML in Harness IDP.
 
@@ -538,7 +538,7 @@ In this release we have done few upgrades and bug-fixes which are dependant on [
 
 - You can now create a new Catalog Layout for your Custom Entity Types in the IDP Software Catalog. This extends our Catalog model beyond services, websites and libraries to track different types of applications such as micro-frontends, llm models, SDKs and more! [Read more](https://developer.harness.io/docs/category/layout--appearance) on how to do it. [IDP-3045]
 
-![](./static/layout-new-nav.png)
+![](./static/internal-developer-portal/layout-new-nav.png)
 
 - Added support for JEXL expressions in [catalog-info.yaml](https://developer.harness.io/docs/internal-developer-portal/catalog/yaml-file#support-for-harness-account-variables) and [template.yaml](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#support-for-harness-account-variables) (any YAML ingested in IDP). [IDP-2843]
 
@@ -585,7 +585,7 @@ Happy Juneteenth and welcome to the June release of IDP. In this release we have
   2. Create Project: Creates a Harness Project in the org provided.
   3. Create Resource: Takes [Terraform Provider Resource Definition](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider-overview/) as input to create Harness Entities like Pipelines, Connectors etc.
 
-![](./static/idp-harness-entities.png)
+![](./static/internal-developer-portal/idp-harness-entities.png)
 
 - Added support to show delegate related errors in Scorecards. For example any GitHub related checks if failed due to an issue in GitHub connector setup using delegate then it will show the same error on scorecard evaluation. [IDP-2940]
 
@@ -593,7 +593,7 @@ Happy Juneteenth and welcome to the June release of IDP. In this release we have
 
 - Created a new Catalog Info YAML check for Scorecards which can check if an annotation exists or not. [IDP-2609]
 
-![](./static/idp-checks-annotation-exist.png)
+![](./static/internal-developer-portal/idp-checks-annotation-exist.png)
 
 - Added support for view source and TechDocs for Harness Code Integration. [IDP-3030]
 
@@ -742,7 +742,7 @@ Continuing with the increased adoption of self-service flows, this release we're
 
 - Now we have a [new UI](https://youtu.be/aethqdKmZOo) for the Workflows page, as part of the Backstage Upgrades. [IDP-2355]
 
-![](./static/new-template.png)
+![](./static/internal-developer-portal/new-template.png)
 
 - We have added a new custom processor to convert the email-id used under `owner` field in `catalog-info.yaml` to an `user` incase the username is part of the email-id. [IDP-2369]
 
@@ -771,7 +771,7 @@ There are two ways in which you can add the output variable to the template synt
 
 2. You can copy the JEXL expression of the output variable and remove the JEXL constructs, `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`, here the part `pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1` comes from `<+pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test2>` copied from execution logs.
 
-![](./static/output-variables.png)
+![](./static/internal-developer-portal/output-variables.png)
 
 #### Bug Fixes
 
@@ -850,7 +850,7 @@ We are seeing a lot of excitement among our customers around Self Service Workfl
 
 - The project picker in IDP workflows [`HarnessProjectPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#harness-specific-custom-extensions) now shows the org as well. There is no change in the input/output values. [IDP-2048]
 
-![](./static/idp-projpicker-newview.png)
+![](./static/internal-developer-portal/idp-projpicker-newview.png)
 
 - Added support for a new Custom field extension **`HarnessAutoOrgPicker`**, which auto populates on project selection. So now when you select an project id as an input the org id gets selected automatically if required as an input. [IDP-2099]
 
@@ -880,7 +880,7 @@ spec:
 
 In the above example the the `Project Identifier` field once selected auto populates the `Org Identifier` field as shown below.
 
-![](./static/idp-proj-picker.png)
+![](./static/internal-developer-portal/idp-proj-picker.png)
 
 - Two new plugins [Azure Devops](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/azure-devops) [IDP-2078] and [Rootly](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/rootly) [IDP-1693] are available to use now!
 - Users can now add email as an input for Slack Notify step in the IDP Stage. When used with `<+pipeline.triggeredBy.email>`, your service onboarding pipeline can now notify the user! [IDP-1943].
@@ -908,8 +908,8 @@ In the above example the the `Project Identifier` field once selected auto popul
 
 - We have added support for [custom plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview), which enables users to upload their own frontend backstage plugins to Harness IDP. This feature is behind the feature flag `IDP_ENABLE_CUSTOM_PLUGINS`. To enable the feature, please reach out to IDP team or contact [Harness Support](mailto:support@harness.io). [IDP-771]
 
-![](./static/layout.png)
-![](./static/custom-plugin-view.png)
+![](./static/internal-developer-portal/layout.png)
+![](./static/internal-developer-portal/custom-plugin-view.png)
 
 - Added the support to push code to the existing main branch of git providers in the [Create Repo step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#3-create-repo) under [Developer Portal Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage). To enable the feature, please reach out to IDP team contact [Harness Support](mailto:support@harness.io). [IDP-1944]
 
@@ -918,7 +918,7 @@ In the above example the the `Project Identifier` field once selected auto popul
 - Added support for Workflow Executions in Audit trails. [IDP-1989]
 - Added support for CSV Downloads in Scorecards and Checks overview pages. [IDP-1932]
 
-![](./static/export-csv-checks.png)
+![](./static/internal-developer-portal/export-csv-checks.png)
 
 #### Bug Fixes
 
@@ -976,13 +976,13 @@ Since it's the first release of the year, we've wrapped up some interesting feat
 
 - Added Support for New [Devtools Plugin](https://github.com/backstage/backstage/blob/master/plugins/devtools/README.md)
 
-![](./static/devtools.png)
+![](./static/internal-developer-portal/devtools.png)
 
 - Added support for [new custom action](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook), that can execute pipeline with custom webhook based triggers.
 
 - Access Control is revamped with new roles (IDP Admin and IDP Platform Engineering) and permissions.
 
-![](./static/idp-roles.png)
+![](./static/internal-developer-portal/idp-roles.png)
 
 - Added support for persistent platform favorites, which allows users to star their most visited pages and also it gives information on the recently visited pages.
 
@@ -990,11 +990,11 @@ Since it's the first release of the year, we've wrapped up some interesting feat
 
 - Added support for regex in file name input in Scorecards.
 
-![](./static/checks-idp.png)
+![](./static/internal-developer-portal/checks-idp.png)
 
 - We now have a new intuitive Plugins Page.
 
-![](./static/new-plugin-page.png)
+![](./static/internal-developer-portal/new-plugin-page.png)
 
 ## December 2023
 
@@ -1014,7 +1014,7 @@ In this release, we're excited to unveil features like the HTTP actions support 
 
 - Added a [new stage](/docs/internal-developer-portal/flows/harness-pipeline), specifically for IDP, knows as Developer Portal to help with the self service flows (presently this feature is behind a Feature Flag) [IDP-1425]
 
-![](./static/idp-stage.png)
+![](./static/internal-developer-portal/idp-stage.png)
 
 - Added a [Cookiecutter step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#2-cookiecutter) to enable use of cookiecutter based templates in the IDP stage.[IDP-1437]
 - Added a [step](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#6-register-catalog) to register software components in IDP catalog.[IDP-1438]
@@ -1046,7 +1046,7 @@ In this release, we're excited to unveil features like the HTTP actions support 
 - New Plugin support added for [Dynatrace Plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/dynatrace) [IDP-1759]
 - New intuitive Homepage with added [Home Plugin](https://backstage.spotify.com/marketplace/spotify/plugin/home/) support [IDP-1694].
 
-![](./static/homepage-idp.png)
+![](./static/internal-developer-portal/homepage-idp.png)
 
 - New Parser for file contents of git providers(GitLab and Bitbucket) to support new data points in git-providers datasource. [IDP-1691]
 - New data points added to extract, filter and match file contents in git providers data sources.[IDP-1682]
@@ -1071,8 +1071,8 @@ Since last release, we have released some interesting docs and video tutorials t
 
 - We have added a new overview page for [Scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard#scorecard-overview-page) and [Individual checks](https://developer.harness.io/docs/internal-developer-portal/features/checks-datasources#checks-overview) in the scorecards.[IDP-1480] [IDP-1481]
 
-![](./static/check-component-overview.png)
-![](./static/component-overview.png)
+![](./static/internal-developer-portal/check-component-overview.png)
+![](./static/internal-developer-portal/component-overview.png)
 
 - The new overview pages for Scorecards and Checks have API support added to it.[IDP-1482]
 - Added support for two new Plugins [OpsGenie](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/opsgenie) and [Datadog](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/datadog) Plugin.[IDP-1662] [IDP-1351]
@@ -1125,7 +1125,7 @@ Post-Limited GA, we've taken your genius tips and mixed them into the Internal D
     - Code Scanning
     - Security Scanning
 
-  ![](./static/idp-scorecards.png)
+  ![](./static/internal-developer-portal/idp-scorecards.png)
 
   - GitHub Actions
     - Workflow Count
