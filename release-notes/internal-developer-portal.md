@@ -19,6 +19,109 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ## February 2025 
 
+### Version 0.40.0
+
+<!-- February 26, 2025-->
+
+#### What's New in this Release (New Features and Enhancements)
+:::info
+Please note that these features are behind a **Feature Flag**: `IDP_ENABLE_WORKFLOW_FORM_CONTEXT`. Ensure that it is **enabled in your account** before use.
+:::
+#### 1️⃣ ``Auto-update Input Fields in Workflows with Form Context`` [IDP-]
+With the introduction of Conditional API Requests in the last release, you can now create an interactive Workflow with dependent input fields. However, one of the challenges was requiring users to fill in too many text boxes, making it difficult for developers and platform engineers to fully utilize Workflows.
+
+🚀 **Introducing Form Context**
+
+With this new release, we introduce **Form Context**, a global context that allows Workflows to **dynamically update data fields** in the frontend based on user input. Using Dynamic Pickers, you can now configure Workflows to **auto-fill relevant fields** with data from third-party sources based on user selections or inputs.
+
+When a user selects or provides input in a form field, the Form Context **automatically updates** with relevant data. Other fields—typically read-only can **subscribe to this context** and dynamically update based on the latest information.
+
+🚀 **Use Case: Repository Picker Workflow**
+
+Previously, in a repository picker workflow, when a user entered their GitHub username and selected a repository, they still had to manually input details like the default branch and repository metadata.
+
+With Form Context, dependent fields in the frontend automatically update based on the selection, reducing manual input and improving efficiency.
+
+Here's how the YAML configuration and frontend look for this example:
+
+```YAML
+parameters:
+    - title: Repo Picker
+      properties:
+        gitUsername:
+          title: Github username
+          description: Enter your Github username
+          type: string
+        repoPicker:
+          title: GitHub Repositories
+          type: string
+          description: Pick one of GitHub Repos
+          ui:field: SelectFieldFromApi
+          ui:options:
+            path: proxy/github-api/users/{{parameters.gitUsername}}/repos
+            valueSelector: full_name
+            contextData: 
+              repoName: name
+              branch: default_branch
+              type: visibility                 
+        repositoryName:
+          title: Repo Name
+          readonly: true
+          description: Repository Name
+          type: string            
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: {{formContext.repoName}}
+        branchName:
+          title: Default Branch
+          readonly: true
+          description: Default Branch
+          type: string
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: {{formContext.branch}}
+        typeName:
+          title: Visibility
+          readonly: true
+          description: Visibility
+          type: string     
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: {{formContext.type}}
+```
+
+![](./static/reactive-form-context.png)
+
+👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker.md#auto-updating-input-fields).**
+
+#### 2️⃣ ``Live User Validation for Input Fields in Workflow Dynamic Pickers`` [IDP-]
+This release also introduces **live user validation** for input fields in Workflow Dynamic Pickers. This feature enables users to:
+- Manually enter input field details for **real-time validation**, instead of selecting from a dynamic picker drop-down.
+- Validate and provide **feedback on auto-updated input field** details retrieved from Form Context.
+
+When users input details, an **API call** is triggered in the background, parsing the response and **updating the Form Context** dynamically with validated information. This ensures that input form fields remain up to date while enabling real-time validation.
+
+🚀 **Use Case: Pull Request Creator Workflow**
+
+In a Pull Request Creator Workflow, you need the user to **enter the branch name** where changes are implemented. Additionally, a repository picker field dynamically fetches repository details and updates the Form Context as selections are made.
+
+To achieve this, you can add a button that, when clicked:
+- Triggers an API call in the background using the user-provided branch details.
+- Stores additional data from the API response in the Form Context.
+- Sends a POST request to create a pull request.
+
+This feature ensures users can validate their inputs dynamically while improving workflow accuracy and efficiency.
+
+👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/dynamic-picker.md#adding-user-validation).**
+
+#### Bug Fixes 
+- Resolved an issue where the **markdown description hyperlink** in Workflows was not rendering correctly. It is now properly displayed. [IDP-4763]  
+- Fixed the **default behavior** for all missing data points in scorecard checks. [IDP-4732]  
+- Renamed **"Request Access"** in the Plugins Marketplace to **"Upvote"** to better reflect its purpose—allowing users to upvote a plugin and help the Harness IDP team prioritize customer requests. [IDP-4503]  
+- Fixed an issue where the **"All Groups"** field in the Workflow UI was incorrectly displaying the total number of Workflow Groups instead of the total number of Workflows included in these Groups. [IDP-4407]  
+- Resolved an issue where **Tech Docs URLs** with the same host as where they are deployed were returning a 404 error. This has been fixed. [IDP-4368]  
+- Fixed an issue where **"View"** permission is now enabled by default for all IDP resources at the **Account** level under the **"Account Viewer"** role. [IDP-4264]
+
 ### Version 0.39.0
 
 <!-- February 04, 2025-->

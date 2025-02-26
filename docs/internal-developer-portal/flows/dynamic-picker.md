@@ -233,7 +233,7 @@ Below is the YAML configuration for this setup:
   parameters:
     - title: Fill in some steps
       properties:
-        gitusername:
+        gitUsername:
           title: Github username
           description: Username
           type: string
@@ -244,7 +244,7 @@ Below is the YAML configuration for this setup:
             title: GitHub Repository
             description: Pick one of the GitHub Repositories
             placeholder: "Choose a Repository"
-            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            path: proxy/github-api/users/{{parameters.gitUsername}}/repos
             valueSelector: full_name
   steps:
     - id: trigger
@@ -276,11 +276,11 @@ Below is the YAML configuration for this setup:
 
 With conditional API requests in **Dynamic Pickers**, you can create a **Workflow** with dependent input fields. This also allows you to configure a **Workflow** with a **Dynamic Picker** to automatically update other data fields in your **Workflow's frontend** based on previous input. All relevant information in your **Workflow's frontend** can be auto-filled from third-party sources based on your selection/input.  
 
-This functionality is powered by a global **Form Context**.  
+This functionality is powered by a global [**Form Context**](/docs/internal-developer-portal/flows/dynamic-picker.md#understanding-form-context).  
 When a user selects or provides input in a form field, the **Form Context** updates with the relevant data. Other fields—typically read-only—can subscribe to this context and automatically update based on the latest information.  
 
 #### Example  
-If you are using a **Repository Picker Workflow** and enter your **GitHub Username**, the form dynamically fetches and displays all repositories linked to that username. Once entered, other dependent fields in the form can be auto-updated based on this selection.  
+If you are using a [**Repository Picker Workflow**](/docs/internal-developer-portal/flows/dynamic-picker.md#example-yaml-1) and enter your **GitHub Username**, the form dynamically fetches and displays all repositories linked to that username. Once entered, other dependent fields in the form can be auto-updated based on this selection.  
 
 ### Understanding Form Context  
 
@@ -288,15 +288,12 @@ If you are using a **Repository Picker Workflow** and enter your **GitHub Userna
 2. The **Form Context** is then updated with all the required data retrieved from the **API Picker Response Object**. You can configure which fields should be stored in **Form Context** from the API Picker response in the **Workflow YAML**.  
 3. The input fields in the **Workflow frontend** can then be auto-updated using **Form Context**.  
 
-Diagram Pending
-
 ### Implementing Form Context  
 
 You can follow these steps to implement **Form Context**:  
 
 #### 1. Choose Data Fields to Store in Form Context  
-Decide which API response fields should be stored in **Form Context** for your **Dynamic Picker field**. Identify their respective field names, for example:  
-```value1``` and ```value2```  
+Decide which API response fields should be stored in **Form Context** for your **Dynamic Picker field**. For instance, in a repository picker workflow, we need to extract the **repository name** and **branch** from the API response object. Based on this [API](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-the-authenticated-user), we will define these values in the form context as retrieved from the API response: ``name`` and ``default_branch``.
 
 #### 2. Set Context Data in Your Workflow YAML  
 You can define **Form Context** in the ``ui:options`` section using the ```setContextData``` field within the **Dynamic Picker field definition** in **Workflow YAML**:  
@@ -307,15 +304,15 @@ dynamic-picker-name:
   ui:options: 
     path: dynamic-picker-field-path
     setContextData:
-      key1: value1
-      key2: value2
+      repoName: name
+      branchName: default_branch
       ...
 ```
 
 #### **Syntax Breakdown**  
 - Define a **Dynamic Picker** using: ```ui:field: SelectFieldFromApi```  
-- ```key1``` and ```key2``` are identifiers in **Form Context** referring to API fields from the API Picker response.  
-- ```value1``` and ```value2``` represent actual API response object field identifiers.  
+- ```repoName``` and ```branchName``` are identifiers in **Form Context** referring to API field values from the API Picker response.  
+- ```name``` and ```default_branch``` represent actual API response object field values.  
 - ```setContextData``` is used to define and store certain API response object fields in **Form Context**.  
 
 #### 3. Auto-Update Input Fields Using `getContextData`  
@@ -327,29 +324,49 @@ dynamic-picker-name:
   ui:options: 
     path: dynamic-picker-field-path
     setContextData:
-      key1: value1
-      key2: value2
-field1-name:
+      repoName: name
+      branchName: default_branch
+repositoryName:
   ui:field: ContextViewer
   readonly: true
   ui:options:
-    getContextData: {{formContext.key1}}
-field2-name:
+    getContextData: {{formContext.repoName}}
+originBranchName:
   ui:field: ContextViewer
   ui:options: 
-    getContextData: {{formContext.key2}}
+    getContextData: {{formContext.branchName}}
     ...
+```
+ 
+:::info
+We can make certain fields **non-editable** by adding `readonly: true` in their field definition, just like `repositoryName`. Conversely, to make fields **editable**, we simply omit this property, as seen with `originBranchName`. This allows users to validate the auto-fetched data, edit it if needed, and update the form context with the modified values.
+:::
+
+#### **Syntax Breakdown**  
+- ```repositoryName``` and ```originBranchName``` are input field names in the **Workflow frontend**.  
+- Define **Form Context** for these fields using: ```ui:field: ContextViewer```  
+- ```getContextData``` retrieves and auto-updates the input field with data from the API response.  
+- Reference values stored in **Form Context** using: ```formContext.repoName```  
+
+#### 4. Show Form Context Live in the Workflow Frontend
+At any time, if you need to display the **Form Context** live in your Workflow Frontend for debugging purposes, you can use the following format:  
+
+```YAML
+formContext:
+  title: Live Form Context 
+  description: DEBUG Context
+  type: string            
+  ui:field: ContextViewer
+  ui:options:
+    getContextData: {{formContext}} 
 ```
 
 #### **Syntax Breakdown**  
-- ```field1-name``` and ```field2-name``` are input field names in the **Workflow frontend**.  
-- Define **Form Context** for these fields using: ```ui:field: ContextViewer```  
-- ```getContextData``` retrieves and auto-updates the input field with data from the API response.  
-- Reference values stored in **Form Context** using: ```formContext.key1```  
+- `formContext` is the **field name** used to define the Form Context in your YAML.  
+- `ui:field` for this field should be set to `ContextViewer`.  
+- To display the Form Context **live in your frontend**, use `getContextData: {{formContext}}` under the `ui:options` property.  
 
-:::info 
-We can make some fields **non-editable** by adding ``readonly:true`` in their field definition. Similarly, we can make certain fields **editable** by not including this property and thus allowing users to validate the auto-fetched data and then edit it, thus updating the form context with updated values. 
-:::
+This ensures that the **current Form Context state** is visible in the Workflow UI for debugging. 
 
 ### Example YAML 
 <Tabs>
@@ -359,30 +376,30 @@ We can make some fields **non-editable** by adding ``readonly:true`` in their fi
 parameters:
     - title: Repo Picker
       properties:
-        gitusername:
+        gitUsername:
           title: Github username
           description: Enter your Github username
           type: string
-        custom:
+        repoPicker:
           title: GitHub Repositories
           type: string
           description: Pick one of GitHub Repos
           ui:field: SelectFieldFromApi
           ui:options:
-            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            path: proxy/github-api/users/{{parameters.gitUsername}}/repos
             valueSelector: full_name
             contextData: 
-              reponame: name
+              repoName: name
               branch: default_branch
               type: visibility                 
-        repositoryname:
+        repositoryName:
           title: Repo Name
           readonly: true
           description: Repository Name
           type: string            
           ui:field: ContextViewer
           ui:options:
-            getContextData: {{ formContext.reponame }}
+            getContextData: {{formContext.repoName}}
         branchName:
           title: Default Branch
           readonly: true
@@ -390,7 +407,7 @@ parameters:
           type: string
           ui:field: ContextViewer
           ui:options:
-            getContextData: {{ formContext.branch }}          
+            getContextData: {{formContext.branch}}          
         typeName:
           title: Visibility
           readonly: true
@@ -398,36 +415,37 @@ parameters:
           type: string     
           ui:field: ContextViewer
           ui:options:
-            getContextData: {{ formContext.type }}
+            getContextData: {{formContext.type}}
+        formContext:
+          title: Live Form Context 
+          description: DEBUG Context
+          type: string            
+          ui:field: ContextViewer
+          ui:options:
+            getContextData: {{formContext}} 
 ```
 </TabItem>
 <TabItem value="Workflow Frontend" label="Workflow Frontend">
 
-![](./static/reactive-form-context.png)
+![](./static/final-yaml-1.png)
 
 </TabItem>
 </Tabs>
 
 ## Adding User Validation 
-You can configure Workflows to enable user validation for input form fields. If you want users to manually enter details and validate them instead of selecting from a drop-down, you can use this feature in your Workflow.
+You can configure Workflows to enable **user validation** for input form fields. If you want users to manually enter details and validate them instead of selecting from a drop-down, you can use this feature in your Workflow.
 
 This functionality allows users to:
-- Manually enter input field details for live validation (instead of selecting from a dynamic picker drop-down).
-- Provide feedback and validate auto-updated input field details retrieved from [**Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields).
+- Manually enter input field details for **live validation** (instead of selecting from a dynamic picker drop-down).
+- Provide **feedback and validate auto-updated** input field details retrieved from [**Form Context**](/docs/internal-developer-portal/flows/dynamic-picker#auto-updating-input-fields).
 
-This process triggers an API call in the background with the user-provided details, parses the response, and updates the Form Context with the validated information. It ensures that input form fields are dynamically updated while enabling real-time validation of user inputs.
+This process triggers an API call in the background with the user-provided details, parses the response, and **updates the Form Context** with the validated information. It ensures that input form fields are dynamically updated while enabling real-time validation of user inputs.
 
 **Example**
 
-In a Pull Request Creator Workflow, you need the user to enter:
-- The name of the branch to be merged.
-- The name of the branch where the changes should be pulled into.
+In a [**Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md), you need the user to enter the name of the branch where changes are implemented. Additionally, you require a repository picker field that fetches repository details and updates the Form Context dynamically as selections are made.
 
-Additionally, you require a repository picker field that fetches repository details and updates the Form Context dynamically as selections are made.
-
-To achieve this, you can add a button (e.g., "Create a PR"). When clicked, this button triggers an API call in the background using the user-provided branch details, stores additional data from the API response object in the Form Context, and sends a POST request to create a pull request. This helps users validate their details for the given use case.
-
-Diagram pending 
+To achieve this, you can add a **button** (e.g., "Create a PR"). When clicked, this button triggers an API call in the background using the user-provided branch details, stores additional data from the API response object in the Form Context, and sends a POST request to create a pull request. This helps users **validate their details** for the given use case.
 
 ### Implementing User Validation  
 
@@ -445,10 +463,10 @@ customValidationName:
     button: 
       title: Title to be displayed on the button
     path: API call path
-    setContextData: 
-      fieldname: value
     request:
     ...
+    setContextData: 
+      fieldname: value
 ```
 
 #### 2. Configuration Details  
@@ -460,8 +478,8 @@ customValidationName:
    You can configure various options under this field:  
    - **`button`**: Defines and adds a button.  
    - **`path`**: Specifies the API endpoint path that will be called when the button is clicked.  
-   - **`setContextData`**: Stores context data in **Form Context** while making the API call. [Learn more here](/docs/internal-developer-portal/flows/dynamic-picker#2-set-context-data-in-your-workflow-yaml)  
    - **`request`**: Defines the API request details. [Read more about making a POST API request here](/docs/internal-developer-portal/flows/dynamic-picker#post-method-support)  
+   - **`setContextData`**: Stores context data in **Form Context** while making the API call. [Learn more here](/docs/internal-developer-portal/flows/dynamic-picker#2-set-context-data-in-your-workflow-yaml)  
 
 ### Example YAML 
 <Tabs>
@@ -471,30 +489,37 @@ customValidationName:
 parameters:
     - title: Enter your details
       properties:
-        gitusername:
+        gitUsername:
           title: Repository Owner Username
           description: Enter the repository owner username
           type: string
-        repopicker:
+        repoPicker:
           title: GitHub Repositories
           type: string
           description: Pick one of GitHub Repos
           ui:field: SelectFieldFromApi
           ui:options:
-            path: proxy/github-api/users/{{parameters.gitusername}}/repos
+            path: proxy/github-api/users/{{parameters.gitUsername}}/repos
             valueSelector: full_name
             contextData: 
-              reponame: name
+              repoName: name
               branch: default_branch
               type: visibility                 
-        repositoryname:
+        repositoryName:
           title: Repository Name
           readonly: true
           description: Check your Repository Name
           type: string            
           ui:field: ContextViewer
           ui:options:
-            getContextData: {{ formContext.reponame }} 
+            getContextData: {{formContext.repoName}} 
+        originBranchName:
+          title: Origin Branch Name
+          description: Check your origin Branch Name
+          type: string
+          ui:field: ContextViewer
+          ui:options: 
+            getContextData: {{formContext.branch}}
         titlePR:
           title: Title of PR
           description: Enter the Title of your Pull Request
@@ -503,19 +528,15 @@ parameters:
           title: Branch Name for PR
           description: Enter the name of the branch where your changes are implemented
           type: string
-        baseBranch:
-          title: Branch Name where you want your changes pulled into
-          description: Enter the name of the branch you want the changes pulled into. 
-          type: string
         customValidate:
           type: string
           ui:field: ValidateAndFetch
           ui:options:
             button: 
               title: Create a Pull Request
-            path: proxy/github-api/repos/{{parameters.gitusername}}/{{parameters.repositoryname}}/pulls
+            path: proxy/github-api/repos/{{parameters.gitUsername}}/{{parameters.repositoryName}}/pulls
             contextData:
-              prnumber: number
+              prURL: html_url
             request: 
               method: POST
               headers: 
@@ -523,7 +544,7 @@ parameters:
               body: 
                 title: "{{parameters.titlePR}}"
                 head: "{{parameters.newBranch}}"
-                base: "{{parameters.baseBranch}}"
+                base: "{{parameters.originBranchName}}"
 ```
 </TabItem>
 <TabItem value="Workflow Frontend" label="Workflow Frontend">
