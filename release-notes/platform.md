@@ -79,6 +79,16 @@ The following deprecated API endpoints are longer supported:
 
 ## February 2025
 
+### Version 1.79.x <!-- February 28, 2025-->
+#### Fixed issues 
+
+- Removed the page load spinner condition to include Usage Breakdown loading status. The Usage Breakdown component now has its own loading spinner instead of displaying a loading spinner on the Subscriptions page. [PL-60615]  
+- Users will now see a clear error message when they attempt to introduce two conditions with the same name. [PL-60365]  
+
+#### New features and enhancements
+
+- For the Email channel type in CNS, emails are now optional if the user has added user groups as input. [PL-57711]
+
 ### Version 1.78.x <!-- February 21, 2025-->
 #### Fixed issues
 
