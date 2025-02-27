@@ -46,7 +46,7 @@ export const aidaData: Horizon = {
     feature: [
       {
         tag: [],
-        title: "Code Assistant",
+        title: "Harness AI Code Agent",
         description:
           "AI-powered code completion tool that assists developers with writing code by suggesting relevant snippets and solutions.",
       },
@@ -100,25 +100,25 @@ export const aidaData: Horizon = {
       },
       {
         tag: [],
-        title: "Policy As Code Assistant",
+        title: "Policy As Code Agent",
         description:
           "AI-generated rules for asset governance accompanied with detailed descriptions to optimize your cloud spend.",
       },
       {
         tag: [],
-        title: "Policy As Code Assistant (Cloud Assets)",
+        title: "Policy As Code Agent (Cloud Assets)",
         description:
           "AI-generated rules for asset governance accompanied with detailed descriptions to optimize your cloud spend.",
       },
       {
         tag: [],
-        title: "Policy As Code Assistant (Pipelines)",
+        title: "Policy As Code Agent (Pipelines)",
         description:
           "Automatically generate Open Policy Agent (OPA) Rego policies for Pipeline governance.",
       },
       {
         tag: [],
-        title: "Policy As Code Assistant (Pipelines)",
+        title: "Policy As Code Agent (Pipelines)",
         description:
           "Automatically generate Open Policy Agent (OPA) Rego policies for Pipeline governance.",
       },

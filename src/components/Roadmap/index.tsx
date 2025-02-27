@@ -10,7 +10,7 @@ const Roadmap = () => {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const modules = [
     { value: "platform", name: "Platform" },
-    { value: "aida", name: "AI Development Assistant" },
+    { value: "aida", name: "Harness AI" },
     { value: "code", name: "Code Repository" },
     { value: "ci", name: "Continuous Integration" },
     { value: "cd", name: "Continuous Delivery & GitOps" },
