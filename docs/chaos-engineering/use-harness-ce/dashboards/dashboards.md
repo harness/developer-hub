@@ -59,8 +59,6 @@ Described below are descriptions of various fields used to plot and analyze data
 
 	* **Installation type**: Whether to enable execution of chaos experiments on an **existing infrastructures** or on **new infrastructures**.
 
-	* **Last heartbeat time**: Latest time of the infrastructure heartbeat to determine if the infrastructure is active or no.
-
 	* **Is Active (Yes / No)**: Whether the chaos infrastructure is active or no.
 
 	* **name**: The unique name of the chaos infrastructure where you execute the chaos experiment.
@@ -82,8 +80,6 @@ Described below are descriptions of various fields used to plot and analyze data
 	* **Repo branch**: The branch of the repository that is associated with the chaos hub.
 
 	* **Repo name**: The name of the branch in the repository that is associated with the chaos hub.
-
-	* **Auth type**: The type of authentication used, that is HTTP or SSH.
 
 	* **Connector scope**: Scope of the ChaosHub connector, which can be **project**, **organization** or Account** scope.
 
