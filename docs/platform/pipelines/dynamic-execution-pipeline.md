@@ -13,21 +13,20 @@ Dynamic execution of Pipelines allows you to execute pipelines by providing pipe
 Currently, this setting is behind the Feature Flag `PIPE_DYNAMIC_PIPELINES_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag.
 :::
 
-You need to enable two settings at Account and Pipeline level before starting with Dynamic execution of Pipelines:-
+Before you can execute pipelines dynamically, you need to enable two settings at both the **Account** and **Pipeline** levels.
 
 1. Account Level Setting
 
 Navigate to **Account Setting** -> **Default Settings** -> **Pipeline** -> Enable **Allow Dynamic Execution for Pipelines**
 
-![](./static/account-settings-dynamic-execution.png)
 
 2. Pipeline Level Setting 
 
 :::info note
-Pipeline Setting for dynamic execution will only be visible once you enable the above Account Setting.
+The pipeline-level setting for dynamic execution will only be visible once the Account-Level Setting is enabled
 :::
 
-Once you have enabled the above Account Setting, you need to enable the Pipeline level setting for Dynamically executing the Pipeline:-
+After enabling the account setting, you must enable the pipeline-level setting:
 
 Navigate to **Advanced Options** -> **Dynamic Execution Settings (optional)** -> **Enable Allow Dynamic Execution for Pipeline**
 
@@ -40,14 +39,42 @@ Users need both [**Edit and Execute**](/docs/platform/role-based-access-control/
 ### YAML Configuration
 
 :::info note
-Dynamic execution of Pipeline is only supported via an API not through UI.
+Dynamic execution of pipelines is only supported via the [API](#dynamic-execution-api) and not through the UI..
 :::
 
-You need to provide valid YAML configuration provided through Dynamic Execution API.
-
-
+To execute a pipeline dynamically, you must provide a valid YAML configuration through the Dynamic Execution API.
 
 ## Dynamic Execution API
+
+The Dynamic Execution API in Harness allows you to execute a pipeline dynamically by passing YAML configurations directly in the request body.
+
+```curl
+curl --location 'https://app.harness.io/gateway/pipeline/api/v1/orgs/default/projects/PROJECT_ID/pipelines/PIPELINE_ID/execute/dynamic' \
+--header 'accept: */*' \
+--header 'content-type: application/json' \
+--header 'origin: https://app.harness.io' \
+--header 'Harness-Account: ACCOUNT_ID' \
+--header 'x-api-key: HARNESS_API_KEY' \
+--data '{
+    "yaml": ""
+}'
+```
+
+Upon successful execution, the API returns the following response:
+
+```json
+{
+    "execution_details": {
+        "execution_id": "EXECUTION_ID",
+        "status": "RUNNING"
+    }
+}
+```
+Once the API is triggered, you can monitor the pipeline execution in the Harness UI.
+
+![](./static/dynamic-pipeline-execution-ui.png)
+
+In the trigger summary you will see a message indicating **This was executed dynamically**. This confirms that the pipeline was triggered using the Dynamic Execution API.
 
 ## What's Supported 
 
@@ -68,6 +95,7 @@ Dynamically executing pipelines doesn't support following features:-
 3. Retry/Re-Run capability
 4. Automatic Triggers
 5. Post Production Rollback
+6. Runtime Inputs
 
 
 
