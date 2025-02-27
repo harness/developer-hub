@@ -1,25 +1,12 @@
 ---
 title: Registered module settings
 description: Explore each tab of a registered module to understand its data, settings, and usage in detail.
-sidebar_position: 20
+sidebar_position: 40
 sidebar_label: Registered module settings
 ---
 
-<CTABanner
-  buttonText="Learn More"
-  title="Pending release"
-  tagline="The IaCM Module Registry feature is currently pending release and will be available soon!"
-  link="https://www.harness.io/blog/harness-iacm-module-registry"
-  closable={true}
-  target="_self"
-/>
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-:::warning pending release
-IaCM Module Registry is currently pending release and will be available soon! [Learn more](https://www.harness.io/blog/harness-iacm-module-registry).
-:::
 
 ## Prerequisites
 - A registered *tf* modules, to register a new module, go to [Register a module](https://developer.harness.io/docs/infra-as-code-management/iacm-features/module-registry#register-a-module)
