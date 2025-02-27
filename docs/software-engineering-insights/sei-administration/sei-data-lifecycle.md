@@ -9,7 +9,7 @@ This topic outlines the simplified architecture for the Harness Software Enginee
 
 ## Harness SEI data processing workflow
 
-![](../static/data-lifecycle-sei.png)
+![](../static/sei-data-lifecycle-architecture.png)
 
 The SEI data processing workflow is composed of the following stages:
 
@@ -77,7 +77,7 @@ To ensure rapid dashboard response times, SEI performs key [calculations in adva
 
 The processed data is indexed, making it easy to search and filter. Whether you need information by project, team, or time period, you can quickly find the data you need.
 
-### Graph analysis
+### Correlation of data across different tools
 
 Harness SEI analyzes data relationships to uncover deeper insights. For example, it can correlate code changes with build failures to help pinpoint root causes of issues.
 
