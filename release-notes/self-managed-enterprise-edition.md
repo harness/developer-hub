@@ -348,6 +348,7 @@ s available in the account to execute the task` even when appropriate delegate s
 - Updated the `useGetChaosExperimentStats` API to support project and account-scoped data retrieval. (CHAOS-7530)
 
 #### Supply Chain Security
+
 - Previously, when the base64 encoding setting was enabled, users were unable to select the "Text" or "File" options for setting the private key in the SBOM Orchestration step and the public key in the SBOM  Policy Enforcement step. This issue has been fixed. Now, when base64 encoding is enabled, users can choose between both methods (Text or File) for setting the keys during runtime. (**SCS-75280**)  
 
 #### Cloud Cost Management
