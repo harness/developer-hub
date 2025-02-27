@@ -565,6 +565,48 @@ In cases when the delegate OS doesn't support `apt` (Red Hat Linux), you can edi
 
 Now that you have configured the Service, we can define the target for our deployment.​
 
+## Plugin Info  
+
+Plugin Info defines essential details about the **runtime environment** and **dependencies** required for serverless deployments. It provides information about the **programming language runtime** and the **version of the serverless framework** being used.  
+
+The **Plugin Info** section can be found in the **Service**.
+
+This improvement ensures the users receive the **latest version of images**, enabling them to proceed with their deployments seamlessly.  
+
+![](./static/plugin-info.png)
+
+**Key Parameters**
+- **`runtimeLanguage`**: Specifies the programming language runtime used by the plugin.  
+  - Example: `java17`  
+- **`serverlessVersion`**: Defines the version of the serverless framework image being used.  
+  - Example: `3.39.0`
+
+Below is an example of how **Plugin Info** can be provided in the **Service YAML**:  
+
+```yaml
+service:
+  name: serverless-automation
+  identifier: serverlessautomation
+  serviceDefinition:
+    type: ServerlessAwsLambda
+    spec:
+      pluginInfo:
+        runtimeLanguage: java17
+        serverlessVersion: 3.39.0
+      manifests:
+        - manifest: ...
+```  
+
+Container Configuration (Optional)
+
+If you have provided **Service Plugin Info** in the service, then specifying **Container Configuration** at the step level such as **Container Registry** and **Image** becomes **optional**.  
+
+:::warning
+If Plugin Info is null or empty and Container Configuration is also empty, the pipeline will fail during execution.
+
+Ensure that at least one of these configurations is provided to avoid execution failures.
+:::
+
 ## Define the infrastructure
 
 You define the target infrastructure for your deployment in the **Environment** settings of the pipeline stage. You can define an environment separately and select it in the stage, or create the environment within the stage **Environment** tab.
@@ -841,6 +883,7 @@ To configure the Serverless Prepare Rollback step, do the following:
 1. Open the Serverless Prepare Rollback step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
 3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, you can specify: [`harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64`](https://hub.docker.com/r/harness/serverless-plugin/tags).
+Alternatively, you can configure the **Image details** in [**Plugin Info**](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#plugin-info) within the **Service** configuration.
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -855,7 +898,7 @@ To configure the Serverless Package step, do the following:
 1. Open the Serverless Package step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
 3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example: [`harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64`](https://hub.docker.com/r/harness/serverless-plugin/tags).
-
+Alternatively, you can configure the **Image details** in [**Plugin Info**](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#plugin-info) within the **Service** configuration.
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -910,6 +953,7 @@ To configure the Serverless Deploy step, do the following:
 1. Open the Serverless Deploy step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
 3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example: [`harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64`](https://hub.docker.com/r/harness/serverless-plugin/tags).
+Alternatively, you can configure the **Image details** in [**Plugin Info**](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#plugin-info) within the **Service** configuration.
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -961,6 +1005,7 @@ To configure the Serverless Rollback step, do the following:
 1. Open the Serverless Rollback step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
 3. In **Image**, enter the path, image, and tag for the image you want to run in this step.  For example: [`harness/serverless-plugin:nodejs20.x-3.39.0-1.0.0-beta-linux-amd64`](https://hub.docker.com/r/harness/serverless-plugin/tags).
+Alternatively, you can configure the **Image details** in [**Plugin Info**](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#plugin-info) within the **Service** configuration.
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
