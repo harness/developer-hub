@@ -1,7 +1,7 @@
 ---
 title: Client Setup
 description: Configure your client to pull and push artifact registries
-sidebar_position: 10
+sidebar_position: 30
 ---
 
 import Tabs from '@theme/Tabs';
