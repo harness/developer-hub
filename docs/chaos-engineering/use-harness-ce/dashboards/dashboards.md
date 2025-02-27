@@ -1,5 +1,4 @@
 ---
-id: dashboard
 sidebar_position: 15
 title: Chaos Dashboard
 redirect_from:
