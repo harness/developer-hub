@@ -80,6 +80,6 @@ It also allows organizations to fully customize, secure, and scale their continu
 
 Harness continuously updates the system with more secure and faster libraries, releasing the Self-Managed Edition every month. Also, to maintain the stability, we regularly identify and fix issues through periodic releases, which you can find in the [Self-Managed Platform release notes](/release-notes/self-managed-enterprise-edition).
 
-To stay informed on the latest updates, we strongly recommend [subscribing via RSS](/release-notes/self-managed-enterprise-edition/rss.xml).
+To stay informed on the latest updates, we strongly recommend [subscribing via RSS](https://developer.harness.io/release-notes/self-managed-enterprise-edition/rss.xml).
 
 
