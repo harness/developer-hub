@@ -1,21 +1,13 @@
 ---
-title: What's supported in Self-Managed Enterprise Edition
+title: What's supported
 description: Platforms and technologies supported by the on-prem Harness Self-Managed Enterprise Edition
 sidebar_label: What's supported
 sidebar_position: 1
 ---
 
-:::warning
+Self-Managed Enterprise Edition allows organizations to leverage nearly all Harness modules and features available on Harness SaaS, ensuring a powerful and flexible on-premises experience. This section provides a clear overview of the Supported features, integrations, and capabilities available in the system.  
 
-Harness ended support of KOTS-based installations and upgrades as of **December 1, 2023**. Harness customer support will no longer take any incoming questions on KOTs.
-
-:::
-
-import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';
-
-<Smp />
-
-## Supported modules and features
+### Supported Modules 
 
 * [Chaos Engineering](/docs/chaos-engineering/whats-supported)
 * [Cloud Cost Management (Beta)](/docs/cloud-cost-management/get-started/ccm-smp/smp-ccm-roadmap)
@@ -27,19 +19,13 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 * [Service Reliability Management](/docs/service-reliability-management/srm-whats-supported)
 * [Supply Chain Security (Beta)](/docs/software-supply-chain-assurance/ssca-supported)
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
+For more details on the supported features of other Harness modules, visit [Harness Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
-## Production environment deployment infrastructure
+### Supported Features
 
-import Infra from '/docs/self-managed-enterprise-edition/shared/prod-env-infra.md';
+import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';
 
-<Infra />
-
-## Development environment deployment infrastructure
-
-import Infra2 from '/docs/self-managed-enterprise-edition/shared/dev-env-infra.md';
-
-<Infra2 />
+<Smp />
 
 ### Ingress
 * Istio supported version: 1.15.3 to 1.24.2
@@ -64,5 +50,21 @@ The following permissions are required:
 * [Disaster Recovery](./advanced-configurations/set-up-disaster-recovery)
 
 ## What's not supported
-* Self-Managed Enterprise Edition is not validated with the FIPS-enabled K8S environment.
 
+- Self-Managed Enterprise Edition is not validated with the FIPS-enabled K8S environment.
+
+### Terms of support
+
+The support policy is 12 months of full support, followed by 6 months of limited support for critical security fixes only.
+
+Harness Self-Managed Enterprise Edition does not introduce changes that break compatibility with supported versions of Kubernetes. For example, Self-Managed Enterprise Edition does not use features from Kubernetes version n that do not work in Kubernetes version n-2.
+
+Installation and upgrade preflight checks provide warnings when you use unsupported Kubernetes versions.
+
+In cases where you encounter a problem related to an incompatibility issue, you must upgrade your cluster. Harness does not issue a patch to accommodate the use of unsupported Kubernetes versions.
+
+### Release cadence
+
+Harness releases the Self-Managed Edition monthly. To maintain system stability, we regularly identify and fix issues through periodic releases, which you can find in the [Self-Managed Platform release notes](/release-notes/self-managed-enterprise-edition).
+
+To stay informed on the latest updates, we strongly recommend [subscribing via RSS](/release-notes/self-managed-enterprise-edition/rss.xml).
