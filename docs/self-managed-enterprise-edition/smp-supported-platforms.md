@@ -5,7 +5,9 @@ sidebar_label: What's supported
 sidebar_position: 1
 ---
 
-Self-Managed Enterprise Edition allows organizations to leverage nearly all Harness modules and features available on Harness SaaS, ensuring a powerful and flexible on-premises experience. This section provides a clear overview of the Supported features, integrations, and capabilities available in the system.  
+Self-Managed Enterprise Edition allows organizations to leverage nearly all Harness modules and features available on Harness SaaS, ensuring a powerful and flexible on-premises experience. 
+
+This section provides a clear overview of the Supported features, integrations, and capabilities available in the system.  
 
 ### Supported Modules 
 
@@ -27,20 +29,6 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 
 <Smp />
 
-### Ingress
-* Istio supported version: 1.15.3 to 1.24.2
-* NGINX supported version: v1.3.0
-
-### RBAC requirements
-
-The following permissions are required:
-* Deploy Helm
-* Add roles
-* Add/edit secrets
-
-### License requirements
-* Contact [Harness Support](mailto:support@harness.io) for license information.
-
 ## Supported functionality
 * [Self-signed certificates](/docs/self-managed-enterprise-edition/install/install-using-helm/#use-self-signed-certificates-with-helm-based-installations)
 * [Air-gap mode](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment)
@@ -49,11 +37,12 @@ The following permissions are required:
 * [External Database](./advanced-configurations/external-db/configure-external-databases)
 * [Disaster Recovery](./advanced-configurations/set-up-disaster-recovery)
 
-## What's not supported
+## Kubernetes Networking 
 
-- Self-Managed Enterprise Edition is not validated with the FIPS-enabled K8S environment.
+* Istio supported version: 1.15.3 to 1.24.2
+* NGINX supported version: v1.3.0
 
-### Terms of support
+## Terms of support
 
 The support policy is 12 months of full support, followed by 6 months of limited support for critical security fixes only.
 
@@ -63,8 +52,6 @@ Installation and upgrade preflight checks provide warnings when you use unsuppor
 
 In cases where you encounter a problem related to an incompatibility issue, you must upgrade your cluster. Harness does not issue a patch to accommodate the use of unsupported Kubernetes versions.
 
-### Release cadence
+## What's not supported
 
-Harness releases the Self-Managed Edition monthly. To maintain system stability, we regularly identify and fix issues through periodic releases, which you can find in the [Self-Managed Platform release notes](/release-notes/self-managed-enterprise-edition).
-
-To stay informed on the latest updates, we strongly recommend [subscribing via RSS](/release-notes/self-managed-enterprise-edition/rss.xml).
+- Self-Managed Enterprise Edition is not validated with the FIPS-enabled K8S environment.
