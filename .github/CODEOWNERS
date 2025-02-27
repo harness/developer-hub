@@ -190,8 +190,8 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/ai-qa-assistant/ 
 
 # Artifact Registry Docs
-/docs/artifact-registry/ @shankaranandh @shivagowda @richardblack-Harness
-/src/components/Docs/data/artifactRegistryData.ts @shankaranandh @shivagowda @richardblack-Harness
+/docs/artifact-registry/ @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
+/src/components/Docs/data/artifactRegistryData.ts @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
 
 #FME Docs
 /src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
