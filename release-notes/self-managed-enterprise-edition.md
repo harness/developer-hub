@@ -273,16 +273,6 @@ gsutil -m cp \
   .
 ```
 
-### Images required
-
-#### Chaos Engineering
-
-- Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
-  - harness/chaos-ddcr:1.55.0
-  - harness/chaos-log-watcher:1.55.0
-  - harness/service-discovery-collector:0.35.0
-  - docker.io/harness/chaos-ddcr-faults:1.55.0
-
 ### Fixed issues
 
 #### Harness Platform 
