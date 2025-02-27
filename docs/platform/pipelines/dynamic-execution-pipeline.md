@@ -19,6 +19,8 @@ Before you can execute pipelines dynamically, you need to enable two settings at
 
 Navigate to **Account Setting** -> **Default Settings** -> **Pipeline** -> Enable **Allow Dynamic Execution for Pipelines**
 
+If you need to disable dynamic execution for the account, you can do so at any time by simply turning off this setting.
+
 
 2. Pipeline Level Setting 
 
@@ -39,7 +41,7 @@ Users need both [**Edit and Execute**](/docs/platform/role-based-access-control/
 ### YAML Configuration
 
 :::info note
-Dynamic execution of pipelines is only supported via the [API](#dynamic-execution-api) and not through the UI..
+Dynamic execution of pipelines is only supported via the [API](#dynamic-execution-api) and not through the UI.
 :::
 
 To execute a pipeline dynamically, you must provide a valid YAML configuration through the Dynamic Execution API.
