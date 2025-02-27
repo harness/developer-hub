@@ -54,4 +54,4 @@ In cases where you encounter a problem related to an incompatibility issue, you 
 
 ## What's not supported
 
-- Self-Managed Enterprise Edition is not validated with the FIPS-enabled K8S environment.
+Self-Managed Enterprise Edition is not validated with the FIPS-enabled K8S environment.
