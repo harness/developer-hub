@@ -70,7 +70,7 @@ Harness FME is architected to support teams and organizations of any size, from 
 ![](https://help.split.io/hc/article_attachments/30794709286029)
 
 ### Account
-Your company has one Harness account. Your account is the highest level container. Harness FME support may ask you for your account ID to speed troubleshooting. You’ll find your account ID in the URL for every page you visit in the FME application.
+Your company has one Harness account. Your account is the highest level container. Harness FME support may ask you for your account ID to speed troubleshooting. You’ll find your account ID in the URL for every page you visit in Harness.
 
 ### Users
 A Harness user is someone with access to the Harness user interface. Administrators can invite new users to Harness. All paid plans include SSO for user authentication and can support either invites or just in time provisioning.

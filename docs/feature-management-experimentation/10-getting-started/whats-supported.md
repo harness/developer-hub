@@ -21,7 +21,8 @@ The following table lists the server-side FME SDKs that Harness supports.
 | SDK | Documentation |
 | ---- | --- |
 | [Go](https://github.com/splitio/go-client) | [Go SDK reference](https://help.split.io/hc/en-us/articles/360020093652-Go-SDK) |
-| [Java](https://github.com/splitio/java-client) | [Java SDK reference](https://help.split.io/hc/en-us/articles/360020405151-Java-SDK)                   |
+| [Elixir Thin Client](https://github.com/splitio/elixir-thin-client) | [Elixir Thin Client SDK reference](https://help.split.io/hc/en-us/articles/26988707417869-Elixir-Thin-Client-SDK) |
+| [Java](https://github.com/splitio/java-client) | [Java SDK reference](https://help.split.io/hc/en-us/articles/360020405151-Java-SDK) |
 | [.NET](https://github.com/splitio/dotnet-client) | [.NET SDK Reference](https://help.split.io/hc/en-us/articles/360020240172--NET-SDK)                   |
 | [Node.js](https://github.com/splitio/javascript-client) | [Node.js SDK Reference](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK) |
 | [PHP](https://github.com/splitio/php-client) | [PHP SDK reference](https://help.split.io/hc/en-us/articles/360020350372-PHP-SDK) |
@@ -47,7 +48,7 @@ The following table lists the client-side FME SDKs that Harness supports.
 
 ## Supported RUM Agents and Suite SDKs
 
-RUM Agents collect Real User Metric events and sends these events to Harness. Harness FME also supports FME Suite SDKs that include RUM Agents. The following table lists the FME RUM Agents and FME Suite SDKs that Harness supports.
+RUM Agents collect Real User Metric events and send these events to Harness. Harness FME also supports FME Suite SDKs that include RUM Agents. The following table lists the FME RUM Agents and FME Suite SDKs that Harness supports.
 
 | FME Suite SDK | FME Suite SDK documentation | RUM Agent documentation |
 | ---- | --- | --- |
@@ -55,25 +56,25 @@ RUM Agents collect Real User Metric events and sends these events to Harness. Ha
 | [iOS](https://github.com/splitio/ios-client) | [iOS Suite SDK reference](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite) | [iOS RUM Agent reference](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent) |
 | [JavaScript Browser](https://github.com/splitio/javascript-browser-client) | [JavaScript Browser Suite SDK Reference](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite) | [JavaScript Browser RUM Agent reference](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-Agent) |
 
-## FME Evaluator
+## Split Evaluator
 
-For languages where there is no native SDK support, Harness offers the [FME Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator), a small service capable of evaluating some or all available features for a given customer via a REST endpoint.
+For languages where there is no native SDK support, Harness offers the [Split Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator), a small service capable of evaluating some or all available FME features for a given customer via a REST endpoint.
 
-## FME Synchronizer
+## Split Synchronizer
 
-The [FME Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer) service is built for languages that do not have a native capability to keep a shared local cache, which is needed to evaluate FME feature flags.
+The [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer) service is built for languages that do not have a native capability to keep a shared local cache, which is needed to evaluate FME feature flags.
 
-This tool coordinates the sending and receiving of data to a remote datastore that all of your processes can share. Out of the box, FME Synchronizer supports Redis as a remote datastore. The Synchronizer service runs as a standalone process in dedicated or shared servers and it does not affect the performance of your code or FME SDKs.
+This tool coordinates the sending and receiving of data to a remote datastore that all of your processes can share. Out of the box, Split Synchronizer supports Redis as a remote datastore. The Synchronizer service runs as a standalone process in dedicated or shared servers and it does not affect the performance of your code or FME SDKs.
 
-## FME Proxy
+## Split Proxy
 
-The [FME Proxy](https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy) enables you to deploy a service in your own infrastructure that behaves like Harness servers and is used by both server-side and client-side SDKs to synchronize the flags without connecting to Harness FME's actual backend directly.
+The [Split Proxy](https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy) enables you to deploy a service in your own infrastructure that behaves like Harness servers and is used by both server-side and client-side SDKs to synchronize the flags without connecting to Harness FME's actual backend directly.
 
 This tool reduces connection latencies from the SDKs to the Harness servers transparently, and when a single connection is required from a private network to the outside for security reasons.
 
 ## Running in the Cloud
 
-There are no limitations for using FME in any cloud or non-cloud environment as long as the languages needed are supported with an SDK, and connectivity to either Harness or the FME Proxy can be established.
+There are no limitations for using FME in any cloud or non-cloud environment as long as the languages needed are supported with an SDK, and connectivity to either Harness or the Split Proxy can be established.
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
