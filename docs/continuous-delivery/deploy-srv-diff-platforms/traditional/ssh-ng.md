@@ -88,6 +88,9 @@ Harness includes connectors for all the major artifact repositories. In this exa
 
 ![](static/ssh-ng-171.png)
 
+:::info
+Currently Delegate-based connections are not supported using the OIDC connector for SSH deployments.
+:::
 
 ### Set up artifact location and details
 
