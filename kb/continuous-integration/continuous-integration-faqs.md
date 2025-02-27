@@ -244,7 +244,7 @@ One way to establish a secure connection between our platform’s servers and a 
 
 :::note
 - The user must publish a public IP address (or have a domain).
-- VPN setup must be the first step in the pipeline, e.g., before cloning the codebase.
+- The VPN connection must be established before any step that relies on VPN traffic for functionality.
 ::: 
 
 Here is an example of using an OpenVPN server, but you can apply the same approach to Strongswan, Cisco, or any other VPN server.
