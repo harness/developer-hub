@@ -133,7 +133,7 @@ const ModuleData: ModuleData[] = [
     horizon: codeData,
   },
   {
-    title: "AI Development Assistant",
+    title: "Harness AI",
     description: "SaaS release status: GA, SMP release status: Not yet planned",
     module: MODULES.aida,
     horizon: aidaData,

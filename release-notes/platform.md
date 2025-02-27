@@ -79,6 +79,17 @@ The following deprecated API endpoints are longer supported:
 
 ## February 2025
 
+### Version 1.78.x <!-- February 21, 2025-->
+#### Fixed issues
+
+- Fixed an issue in **Notification Rules** where changing the **ResourceType** and saving it would not apply correctly. The **ResourceType** field is now disabled to prevent this.. [PL-60466]
+
+#### New features and enhancements
+
+- Added **userGroup sync** support for **OIDC** and implemented **license enforcement** for OIDC. [PL-60492]
+
+- Introduced delegate version override support at different scopes (account, org, project), with and without tags. [PL-58099]
+
 ### Version 1.77.x <!-- February 14, 2025 -->
 #### New features and enhancements
 

@@ -156,6 +156,10 @@ To save your remote pipeline template to Git, do the following:
 
    ![](./static/create-a-remote-pipeline-template-28.png)
 
+:::info note
+We have a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote. Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag.
+:::
+
 ## Next steps
 
 * [Use a template](use-a-template.md)

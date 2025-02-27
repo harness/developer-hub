@@ -138,6 +138,18 @@ Yes, with cloud-based faults, chaos pods can be mapped to specific IAM roles. Yo
 You can also create [a superset AWS policy](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to allow executing all fault types.
 For more information, go to [AWS switch profile](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile) and [workload identity setup for GCP](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/gcp-iam-integration).
 
+## Image Registry
+
+If you lack the necessary permissions (**View** or **Create/Edit**) for the image registry in the project, account, or organization settings, you will encounter the following error:
+
+**The user is not authorized to perform view operation on the chaos image registry.**
+
+Ask your admin to grant you the necessary permissions to access the image registry.
+
+![](./static/chaos-engineering-img-registry-perms.png)
+
+To execute a chaos experiment, you must have **at least** **Project Viewer** permissions.
+
 ## Deployment model
 
 #### Do you support execution of chaos across clusters from a single agent?
