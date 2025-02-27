@@ -287,6 +287,7 @@ gsutil -m cp \
 - Increased the limit of user groups inherited at the Organization and Project levels to 5,000. [PL-59185]  
 - Added ng-manager virtual service routes in the chart to support GitX Webhook APIs** at the Organization and Project levels. [PL-58990]  
 - When creating or updating a Resource Group with invalid resource identifiers, an error message will now be displayed instead of silently removing the invalid resources. [PL-58961] 
+- Added OIDC as a new authentication method, allowing [Single Sign-On (SSO) with any custom OIDC (OpenID Connect)](https://developer.harness.io/docs/platform/authentication/single-sign-on-sso-with-oidc) provider. This feature is available only for accounts with Vanity URL and is behind the feature flag PL_ENABLE_OIDC_AUTHENTICATION. [PL-56480]
 
 #### Continuous Integration
 
