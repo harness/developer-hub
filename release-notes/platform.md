@@ -88,6 +88,7 @@ The following deprecated API endpoints are longer supported:
 #### New features and enhancements
 
 - For the Email channel type in CNS, emails are now optional if the user has added user groups as input. [PL-57711]
+- Added OIDC as a new authentication method, allowing Single Sign-On (SSO) with any custom OIDC (OpenID Connect) provider. This feature is available only for accounts with Vanity URL and is behind the feature flag PL_ENABLE_OIDC_AUTHENTICATION. [PL-56480]
 
 ### Version 1.78.x <!-- February 21, 2025-->
 #### Fixed issues
