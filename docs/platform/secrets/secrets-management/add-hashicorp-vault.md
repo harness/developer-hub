@@ -206,6 +206,10 @@ For more information, go to [Service Account Tokens](https://kubernetes.io/docs/
 
 ### Option: JWT/OIDC Auth
 
+:::note
+   This feature is supported with [Delegate version](/release-notes/delegate): 25.02.85100 and above.
+:::
+
 JWT/OIDC authentication allows you to authenticate with HashiCorp Vault using JWT token in just a few steps.
 
 #### Steps to enable Vault authentication:  
