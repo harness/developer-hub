@@ -16,7 +16,7 @@ Self-Managed Enterprise Edition helps your organization achieve its objectives w
 
 ## Architecture Overview
 
-The Self-Managed Enterprise Edition runs within the customer's environment alongside their existing services. As shown below, Customers generally connects Harness through a **Load Balancer**, which forwards requests to the Load Balancer within the Harness namespace and then to appropriate services (**svc**) respectively. 
+The Self-Managed Enterprise Edition runs within the customer's environment alongside their existing services. As shown below, Customers generally connects Harness through a Load Balancer, which forwards requests to the Load Balancer within the Harness namespace and then to appropriate services respectively.
 
 It also offers extensive customization through various configuration files, allowing users to extend its functionalities. For more details, refer to [What's Supported](./smp-supported-platforms).
 
