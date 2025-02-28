@@ -6,7 +6,7 @@ redirect_from:
 - /docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments
 ---
 
-This topic describes how to create chaos experiments, execute chaos faults to improve the resilience of your application.
+This topic describes how you can create chaos experiments that consist of chaos faults and execute them to build and improve the resilience of your application.
 
 ## Before you begin, review the following:
 

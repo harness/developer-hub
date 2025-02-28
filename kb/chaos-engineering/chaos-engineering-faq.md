@@ -164,7 +164,6 @@ Yes, all chaos operations can be managed using APIs. For more information, go to
 #### Are there any tutorials to get started with Chaos?
 Yes, you can start executing chaos engineering experiments in the following ways:
 - [Run chaos experiments](/docs/chaos-engineering/getting-started/saas/)
-- [Run chaos experiments from blank canvas](/docs/chaos-engineering/getting-started/saas/chaos-experiment-from-blank-canvas)
 - [Execute experiments using API](/docs/chaos-engineering/getting-started/saas/experiment-using-api)
 
 #### Do you provide a Sandbox environment for us to play with the tool?
