@@ -7,6 +7,16 @@ sidebar_label: Module Code Structure
 
 OpenTofu or Terraform modules are reusable units of infrastructure configuration that help standardize deployment patterns and improve maintainability. A well-structured module simplifies usage and promotes best practices. This guide outlines the essential components of a Terraform module and how to structure it effectively.
 
+## Requirements
+### Root Module
+All OpenTofu or Terraform configurations consist of at least one module, known as the root module, which is **the only required element**. The most common name for this file is `main.tf`. This file serves as the entry point for [OpenTofu](https://opentofu.org/) or Terraform execution and contains all the necessary configurations to provision the desired infrastructure.
+
+:::info modules folder
+When using submodules, note that they are only recognized if they are placed within the `modules` folder at the root directory. 
+Go to [submodule usage](/docs/infra-as-code-management/iacm-features/module-registry/root-sub-module-usage) for more information.
+:::
+
+---
 ## Module Layout
 A typical OpenTofu or Terraform module consists of a set of configuration files that define resources, variables, outputs, and dependencies. Below is a recommended directory structure:
 
@@ -23,11 +33,7 @@ module-name/
 └── tests/       # Automated tests for the module
 ```
 
-## Key Components
-### Root Module (Required)
-All OpenTofu or Terraform configurations consist of at least one module, known as the root module, which is **the only required element**. The most common name for this file is `main.tf`. This file serves as the entry point for [OpenTofu](https://opentofu.org/) or Terraform execution and contains all the necessary configurations to provision the desired infrastructure.
-
----
+## Other key components
 ### `variables.tf` (Input Variables)
 - Declares configurable inputs for the module.
 - Variables should include descriptions and, when applicable, default values.
