@@ -346,24 +346,23 @@ s available in the account to execute the task` even when appropriate delegate s
 
 - Added AWS lineitemdescription support in dashboards.[CCM-21562] 
 
-- Expanded AWS & Unified View Metrics: The following cost measures are now available in AWS and Unified views at global level within Cloud Cost Dashboards, enabling more granular cost analysis:
-  - **AWS**:
-      Total Discount
-      Private Rate Discount
-      Bundled Discount
-      EDP Discount
-      Tax
-      Credit
-      Refund
-  - **Unified**:
-      AWS Total Discount
-      AWS Private Rate Discount
-      AWS Bundled Discount
-      AWS EDP Discount
-      AWS Tax
-      AWS Credit
-      AWS Refund
-         [CCM-21445]
+- Expanded AWS & Unified View Metrics: The following cost measures are now available in AWS and Unified views at global level within Cloud Cost Dashboards, enabling more granular cost analysis  [CCM-21445]:
+  RefundUnblendedCost
+  
+  RefundAmortisedCost
+  
+  RefundNetAmortisedCost
+  
+  RefundBlendedCost
+  
+  TaxBlendedCost
+  
+  TaxUnblendedCost
+  
+  TaxAmortisedCost
+  
+  TaxNetAmortisedCost
+
 
 ### New Features and Enhancements
 
