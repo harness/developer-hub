@@ -120,7 +120,7 @@ Sometimes users might have mixed case email addresses in Okta. In these situatio
 
    ![](./static/single-sign-on-saml-55.png)
 
-4. On the **Configure SAML** tab, enter the Harness SAML endpoint URL in the **Single sing on URL** field. To get the SAML endpoint URL from Harness:
+4. On the **Configure SAML** tab, enter the Harness SAML endpoint URL in the **Single sign on URL** field. To get the SAML endpoint URL from Harness:
 	1. If you aren't already on the **Add SAML Provider** page in Harness, open a new browser tab and navigate there. Sign in to Harness, go to **Account Settings**, select **Authentication**, select **SAML Provider**, enter a **Name** for the SAML configuration, and then select **Okta**.
 
 	   ![](./static/single-sign-on-saml-56.png)

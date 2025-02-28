@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-02-17T10:00:00
+date: 2025-02-25T10:00:00
 sidebar_position: 8
 ---
 
@@ -47,9 +47,36 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## February 2025
 
-### Version 1.78
+### Version 1.79.3
 
-#### New features and enhancements
+#### New Features and Enhancements
+
+- Users can now leverage the **Plugin Info** section in Service for **Serverless Deployments** to define essential details about the runtime environment and dependencies, ensuring they automatically receive the latest version of images. (**CDS-99161**)
+- Users can dynamically execute Pipelines in Hanress, it  allows you to execute pipelines by providing pipeline YAML configuration during runtime without requiring pre-saved configurations in Harness. Currently, this setting is behind the Feature Flag `PIPE_DYNAMIC_PIPELINES_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. For more information, refer to [Harness Documentation](/docs/platform/pipelines/dynamic-execution-pipeline). (**PIPE-11798**)
+- We have introduced a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote. Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**PIPE-16979**)
+- Users can now import OPA policies from Git. This feature behind the FF `OPA_IMPORT_FROM_GIT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PPIPE-17046,ZD-52607,ZD-69875**)
+
+#### Fixed Issues
+
+- Previously, runtime input validation was not working for ECR artifacts, preventing users from filtering artifact tags using regex patterns. This issue is resolved. (**CDS-106566, ZD-77818**)
+- Previously, when the deployment template version was updated in Git, the corresponding service did not appear in the runtime inputs dropdown for selection. This issue is resolved. (**CDS-106274, ZD-77132**)
+- Previously, users encountered an access permissions issue when selecting Org-level environments during pipeline runtime, despite having the correct view permissions. This issue is resolved. (**CDS-106527, ZD-74454**)
+- Previously, when using the **Deploy to multiple Environments or Infrastructure** option with a filtered list, unwanted characters appeared in the compiled YAML for the stage when matchType was set to **all**. This issue prevented the pipeline from executing successfully. This issue is resolved. (**CDS-106884, ZD-78208**)
+- Previously, selecting primaryManifestRef caused `serviceDefinition.spec.manifest.identifier` to be null, even when the configuration was correct. This resulted in errors when fetching manifest versions. This issue is resolved. (**CDS-106704, ZD-77493**)
+- Previously, after moving an existing service to Git (Bitbucket), pipelines using that service failed to execute. The issue occurred because the pipeline defaulted to the MASTER branch, even when the service was stored in a different branch.  This issue is resolved. (**CDS-105180, ZD-74852**)
+
+### GitOps Version 1.26.1, GitOps Agent Version 0.87.0
+
+#### New Features and Enhancements
+
+- Harness GitOps now supports the Harness GitOps Agent in the OpenShift Certified Vendor Catalog, enabling integration with OpenShift OperatorHub and Red Hat Marketplace. Currently, this feature is behind the feature flag `CDS_GITOPS_OPERATOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Harness Documentation](https://developer.harness.io/docs/continuous-delivery/gitops/connect-and-manage/gitops-agent-with-openshift-operator/). (**CDS-97876**)
+
+#### Fixed Issues
+
+- Previously, the Harness GitOps Terraform Provider did not properly handle cluster shard definitions, causing unexpected behavior when managing GitOps Clusters. This issue is resolved. Users should update to the latest [harness-terraform-provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to ensure proper functionality. (**CDS-106122, ZD-76843**)
+- Previously, the GitOps App Diff tab returned a 500 error when retrieving differences for certain applications, particularly those using inline `values.yaml`. This issue is resolved. (**CDS-106028, ZD-76378**)
+
+### Version 1.78.7
 
 #### Fixed Issues
 
@@ -61,6 +88,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Previously, the Primary Manifest API did not support passing Git details for remote services. The issue is resolved by updating the API to support remote services. (**CDS-106625, ZD-77092**)
 - Previously, in Pipeline Studio UI, selecting a Deploy stage followed by an Approval stage caused an unnecessary environment section to be added to the Approval stage YAML. This modification occurred even without making actual edits. The issue is resolved. (**PIPE-24398**)
 - Previously, in Containerized Step Groups, adding a third parallel step resulted in an incorrect step palette being displayed, not respecting the containerized setting of the step group. The issue is resolved. (**PIPE-24399**)
+
 
 ### GitOps Version 1.25.3, GitOps Agent Version 0.86.2
 

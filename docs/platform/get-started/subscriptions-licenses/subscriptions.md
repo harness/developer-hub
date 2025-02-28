@@ -16,7 +16,7 @@ You can view and manage module subscription details as well as license informati
 
 ## Developer 360 subscriptions
 
-You can subscribe to Harness modules using the [Developer 360](https://www.harness.io/pricing) subscription model. The Developer 360 subscription offers three plans: **Free**, **Startup**, and **Enterprise**. All plans include [Harness AIDA](/docs/category/harness-aida), our AI Development Assistant.
+You can subscribe to Harness modules using the [Developer 360](https://www.harness.io/pricing) subscription model. The Developer 360 subscription offers three plans: **Free**, **Startup**, and **Enterprise**. All plans include [Harness AI](/docs/category/harness-ai), our AI Development Assistant.
 
 :::info
 This model spans all modules except Cloud Cost Management, which is on a *Cloud Spend* model.
