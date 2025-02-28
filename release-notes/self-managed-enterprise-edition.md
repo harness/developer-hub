@@ -344,15 +344,9 @@ s available in the account to execute the task` even when appropriate delegate s
 
 #### Cloud Cost Management
 
-- Improved Query Performance: We have increased the socket timeout for all ClickHouse queries to enhance stability and performance. [CCM-21324]
+- Added AWS lineitemdescription support in dashboards.[CCM-21562] 
 
-- Optimized Data Partitioning: We have added partitioning on the startTime field in unifiedTable to improve query efficiency. [CCM-21374]
-
-- Improved Query Performance: We have increased the socket timeout for all ClickHouse queries to enhance stability and performance. [CCM-21324]
-
-- Optimized Data Partitioning: We have added partitioning on the startTime field in unifiedTable to improve query efficiency. [CCM-21374]
-
-- Expanded AWS & Unified View Metrics: The following cost measures are now available in AWS and Unified views within Cloud Cost Dashboards, enabling more granular cost analysis:
+- Expanded AWS & Unified View Metrics: The following cost measures are now available in AWS and Unified views at global level within Cloud Cost Dashboards, enabling more granular cost analysis:
   - **AWS**:
       Total Discount
       Private Rate Discount
