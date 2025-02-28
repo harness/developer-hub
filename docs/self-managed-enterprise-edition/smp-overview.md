@@ -16,7 +16,7 @@ Self-Managed Enterprise Edition helps your organization achieve its objectives w
 
 ## Architecture Overview
 
-The Self-Managed Enterprise Edition runs within the customer's environment alongside their existing services. As shown below, there are two namespaces: **Harness** and **Customer**. In general, Customers connect through a **Load Balancer**, which forwards requests to the Load Balancer within the Harness namespace and then to appropriate services (**svc**) respectively. 
+The Self-Managed Enterprise Edition runs within the customer's environment alongside their existing services. As shown below, Customers generally connects Harness through a **Load Balancer**, which forwards requests to the Load Balancer within the Harness namespace and then to appropriate services (**svc**) respectively. 
 
 It also offers extensive customization through various configuration files, allowing users to extend its functionalities. For more details, refer to [What's Supported](./smp-supported-platforms).
 
@@ -30,9 +30,9 @@ It also allows organizations to fully customize, secure, and scale their continu
 - **Air-Gapped Mode** ensures there is no external connection to the outside network, providing maximum security. If needed, you can enable specific connections by modifying configuration files.  
 - **Connected Mode** allows the system to establish a connection with external networks, enabling access to updates and external services.  
 
-### Customer Reference Architecture
+### Reference Architecture
 
-    Customer reference architectures make it easier to set up Harness Self-Managed Enterprise Edition. However, choosing the right one for your organization requires careful evaluation of your specific needs. The reference architecture ensures optimal performance and scalability, enabling you to handle varying workloads and deploy applications quickly and efficiently. It also helps you keep your applications running smoothly, even during unexpected failures. 
+    Reference architectures make it easier for customers to set up Harness Self-Managed Enterprise Edition. However, choosing the right one for your organization requires careful evaluation of your specific needs. The reference architecture ensures optimal performance and scalability, enabling you to handle varying workloads and deploy applications quickly and efficiently. It also helps you keep your applications running smoothly, even during unexpected failures. 
 
     It also allows you to customize Harness to fit your needs, making it easier to integrate with your workflows and streamline your deployment process. Refer to the image below to find the option that best suits your needs.
 
