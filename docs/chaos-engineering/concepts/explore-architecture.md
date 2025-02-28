@@ -57,7 +57,7 @@ In the agent model, a chaos agent has to be deployed on the target resource and 
 
 ![Agent based Execution Plane](./static/architecture/agentbased-model.png)
 
-Agent model is preferred to run chaos experiments on the Linux or Windows hosts. However, they can be used to run chaos experiments on all types of resources. 
+Agent model is preferred to run chaos experiments on the Linux or Windows hosts. 
 
 The following table provides different agent types and corresponding target resources.
 
@@ -89,7 +89,7 @@ Chaos governance is a critical feature of the Harness Chaos Engineering module, 
 2. Guardrails around running chaos experiments. This is achieved through the [ChaosGuard](/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/).
 
 ### Construct Chaos Experiments
-Chaos experiments are initially [constructed](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments) using an easy-to-use UI based builder called **Chaos Studio**. Chaos Studio helps in building complex chaos experiments with ease and also provides a great execution view. Chaos experiments will have chaos faults and resilience probes. Chaos fault templates are taken from the Enterprise ChaosHub and then tuned to the needs of the experiment. Resilience probes are constructed either from scratch or using the templates, tuned and then attached to a fault or an experiment. 
+Chaos experiments are initially [constructed](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments) using an easy-to-use UI based builder called **Chaos Studio**. Chaos Studio helps in building complex chaos experiments with ease and also provides a great execution view. Chaos experiments will have chaos faults and resilience probes. Chaos fault templates are taken from the Enterprise ChaosHub and then tuned to the needs of the experiment. Resilience probes are constructed in accordance with the validation needs and mapped to the desired faults.
 
 In summary, creation of chaos experiments is made easier by the UI based tooling and the end result of such creation is an YAML file. This YAML file can then be used to achieve further automation using infrastructure management tools such a Terraform or Harness IaC. 
 
