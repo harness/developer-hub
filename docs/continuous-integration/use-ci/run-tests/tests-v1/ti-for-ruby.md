@@ -20,6 +20,10 @@ While **Run Tests** step remains backwards compatible, Harness recommends using 
 
 ## Enable TI for Ruby
 
+:::note
+Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
+:::
+
 You can enable TI for Ruby in three steps:
 
 1. [Add a **Run Tests** step.](#add-the-run-tests-step) or use our new [**Test**](../tests-v2.md)
