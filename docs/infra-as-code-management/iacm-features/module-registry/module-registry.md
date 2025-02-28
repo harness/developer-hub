@@ -2,7 +2,7 @@
 title: Module Registry
 description: Learn how to register a module in Harness IaCM
 sidebar_position: 20
-sidebar_label: Register modules
+sidebar_label: Register Modules
 ---
 
 import Tabs from '@theme/Tabs';

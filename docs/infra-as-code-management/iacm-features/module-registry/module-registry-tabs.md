@@ -2,7 +2,7 @@
 title: Registered module settings
 description: Explore each tab of a registered module to understand its data, settings, and usage in detail.
 sidebar_position: 40
-sidebar_label: Registered module settings
+sidebar_label: Registered Module Settings
 ---
 
 import Tabs from '@theme/Tabs';

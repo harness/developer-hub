@@ -1,5 +1,5 @@
 ---
-title: Code Structure
+title: Module Code Structure
 description: Learn about the required code structure for module registry.
 sidebar_position: 10
 sidebar_label: Module Code Structure
@@ -25,7 +25,7 @@ module-name/
 
 ## Key Components
 ### Root Module (Required)
-All OpenTofu or Terraform configurations consist of at least one module, known as the root module, which is the only required element. The most common name for this file is `main.tf`. This file serves as the entry point for OpenTofu or Terraform execution and contains all the necessary configurations to provision the desired infrastructure.
+All OpenTofu or Terraform configurations consist of at least one module, known as the root module, which is **the only required element**. The most common name for this file is `main.tf`. This file serves as the entry point for [OpenTofu](https://opentofu.org/) or Terraform execution and contains all the necessary configurations to provision the desired infrastructure.
 
 ---
 ### `variables.tf` (Input Variables)
