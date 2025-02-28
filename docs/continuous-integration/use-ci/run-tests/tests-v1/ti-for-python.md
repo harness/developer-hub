@@ -21,7 +21,7 @@ While **Run Tests** step remains backwards compatible, Harness recommends using 
 
 :::note
 
-* To use TI for Python, your codebase must be Python 3.
+* To use TI for Python, the image for the step must have Python 3 installed and accessible. Additionally, Virtual Environments for Python (`venv`) are not supported by TI.
 * Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
 :::
 
