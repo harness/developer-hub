@@ -24,12 +24,6 @@ Below is a high-level architecture overview of how Harness Self-Managed Enterpri
 
 <img src={SmpOverview} style={{width: 850}} />
 
-
-It also allows organizations to fully customize, secure, and scale their continuous delivery processes, with two configuration options: **Air-Gapped** and **Connected**, based on their needs.
-
-- **Air-Gapped Mode** ensures there is no external connection to the outside network, providing maximum security. If needed, you can enable specific connections by modifying configuration files.  
-- **Connected Mode** allows the system to establish a connection with external networks, enabling access to updates and external services.  
-
 ### Reference Architecture
 
     Reference architectures make it easier for customers to set up Harness Self-Managed Enterprise Edition. However, choosing the right one for your organization requires careful evaluation of your specific needs. The reference architecture ensures optimal performance and scalability, enabling you to handle varying workloads and deploy applications quickly and efficiently. It also helps you keep your applications running smoothly, even during unexpected failures. 

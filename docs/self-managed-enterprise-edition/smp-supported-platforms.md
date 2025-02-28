@@ -16,10 +16,11 @@ This section provides a clear overview of the Supported features, integrations, 
 * [Continuous Delivery and GitOps](/docs/continuous-delivery/cd-integrations)
 * [Continuous Integration](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/#feature-compatibility-matrix)
 * [Custom Dashboards](/docs/platform/dashboards/cdb-whats-supported)
-* [Feature Flags](/docs/feature-flags/ff-supported-platforms)
 * [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported)
 * [Service Reliability Management](/docs/service-reliability-management/srm-whats-supported)
 * [Supply Chain Security (Beta)](/docs/software-supply-chain-assurance/ssca-supported)
+* [Infrastructure as Code Management](/docs/infrastructure-as-code-management)
+* [Code Repository](/docs/code-repository)
 
 For more details on the supported features of other Harness modules, visit [Harness Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
@@ -51,7 +52,3 @@ Harness Self-Managed Enterprise Edition does not introduce changes that break co
 Installation and upgrade preflight checks provide warnings when you use unsupported Kubernetes versions.
 
 In cases where you encounter a problem related to an incompatibility issue, you must upgrade your cluster. Harness does not issue a patch to accommodate the use of unsupported Kubernetes versions.
-
-## What's not supported
-
-Self-Managed Enterprise Edition is not validated with the FIPS-enabled K8S environment.
