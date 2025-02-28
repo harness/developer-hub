@@ -585,10 +585,10 @@ Plugin Info is configured at the **Service** level. To automatically use the lat
 - **`serverlessVersion`**: Defines the version of the serverless framework image being used.  
   - Example: `3.39.0`
 
-Below is an example of how **Plugin Info** can be provided in the **Service YAML**:  
-
 <details>
 <summary>Sample Service YAML</summary>
+
+Here is an example of how **Plugin Info** can be provided in the **Service YAML**:  
 
 ```yaml
 service:
