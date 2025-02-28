@@ -12,9 +12,13 @@ In Harness, you can [create triggers](../pipelines/code-triggers.md) to automati
 
 ## Create a webhook
 
+In Harness Code, you can create webhooks for a specific repository, project, org, or the entire account. 
+
+Webhooks set on a repository only apply to that specific repository but you can also create webhooks at the project, organization or account level to send a change payload when any repository in that container is updated. E.g. A webhook set on a project will send a payload for every repository change in that project - even newly created repositories. 
+
 You can create ad hoc webhooks to integrate your repository with other services, such as notification services or third party CI/CD providers.
 
-1. When viewing a repository in Harness Code, go to **Webhooks**, and select **New Webhook**.
+1. When viewing a repository or a list of repositories in a project, org or the account in Harness Code, go to **Webhooks**, and select **New Webhook**.
 2. Enter a webhook **Name** and optional **Description**.
 3. Enter your endpoint URL in the **Payload URL**.
 4. You can provide a **Secret** to sign the payload so the server can verify authenticity. If you provide a secret, the webhook call contains an `X-Harness-Signature` header.
