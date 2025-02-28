@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2025-02-26T14:00
+date: 2025-02-28T16:00
 sidebar_position: 16
 ---
 
@@ -232,7 +232,7 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
 
 :::
 
-## Feb 27, 2025, Version 0.26.0 <!-- Draft : Feb 26, 2025 -->
+## Feb 28, 2025, Version 0.26.0 <!-- Draft : Feb 28, 2025 -->
 
 This release includes the following Harness module and component versions.
 
@@ -252,9 +252,9 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | 1.42.1                                                                                       |
 | NG UI                     | 1.61.7                                                                                       |
 | LE NG                     | 1.5.6                                                                                        |
-| Looker                    | 1.7.6                                                                                        |
+| Looker                    | 1.7.7                                                                                        |
 | Log Service               | 1.17.3                                                                                       |
-| Batch Processing          | 1.38.4                                                                                       |
+| Batch Processing          | 1.38.5                                                                                       |
 | Gateway                   | 1.41.7                                                                                       |
 
 **Alternative air gap bundle download method**
