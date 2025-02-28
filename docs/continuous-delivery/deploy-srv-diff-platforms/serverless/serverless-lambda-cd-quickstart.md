@@ -571,13 +571,13 @@ Now that you have configured the Service, we can define the target for our deplo
 
 ## Plugin Info  
 
-Plugin Info defines essential details about the **runtime environment** and **dependencies** required for serverless deployments. It provides information about the **programming language runtime** and the **version of the serverless framework** being used.  
+The **Plugin Info** section defines essential details such as the **programming language runtime** and **serverless framework version** required for serverless deployments. This ensures users receive the **latest version of images**, enabling seamless deployments.  
 
-The **Plugin Info** section can be found in the **Service**.
+Plugin Info is configured at the **Service** level. To automatically use the latest images, leave **Container Configuration** empty at the step level and configure **Plugin Info** at the service level.  
 
-This improvement ensures the users receive the **latest version of images**, enabling them to proceed with their deployments seamlessly.  
-
-![](./static/plugin-info.png)
+<div align="center">
+  <DocImage path={require('./static/plugin-info.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
 **Key Parameters**
 - **`runtimeLanguage`**: Specifies the programming language runtime used by the plugin.  
@@ -585,7 +585,10 @@ This improvement ensures the users receive the **latest version of images**, ena
 - **`serverlessVersion`**: Defines the version of the serverless framework image being used.  
   - Example: `3.39.0`
 
-Below is an example of how **Plugin Info** can be provided in the **Service YAML**:  
+<details>
+<summary>Sample Service YAML</summary>
+
+Here is an example of how **Plugin Info** can be provided in the **Service YAML**:  
 
 ```yaml
 service:
@@ -600,6 +603,7 @@ service:
       manifests:
         - manifest: ...
 ```  
+</details>
 
 Container Configuration (Optional)
 
@@ -610,7 +614,7 @@ However, if the image is specified in the **Container Configuration** at the **S
 :::warning
 If **Plugin Info** and **Container Configuration** are not configured, the pipeline will fail during execution.
 
-Ensure that at least one of these configurations is provided to avoid execution failures.
+Ensure that either **Container Configuration** at the step level or **Plugin Info** at the service level is configured to avoid execution failures.
 :::
 
 ## Define the infrastructure
