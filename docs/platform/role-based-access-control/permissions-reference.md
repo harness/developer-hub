@@ -1,5 +1,5 @@
 ---
-title: Permissions reference
+title: Permissions reference 
 description: Permissions reference for Harness RBAC.
 sidebar_position: 120
 helpdocs_topic_id: yaornnqh0z
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness.md). For API permissions, go to the [API permissions reference](/docs/platform/automation/api/api-permissions-reference).
+This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness.md). For API permissions, refer the [API permissions reference](/docs/platform/automation/api/api-permissions-reference).
 
 ## Administrative Functions
 
@@ -26,6 +26,21 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Banners | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_banner_view`)</li><li>Create/Edit (`core_banner_edit`)</li><li>Delete (`core_banner_delete`)</li></ul>| 
 | Users | <ul><li>View (`core_user_view`)</li><li>Manage: Edit and delete users (`core_user_manager`)</li><li>Invite: Add users by inviting them to Harness (`core_user_invite`)</li></ul> |
 | Authentication Settings | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_authsetting_view`)</li><li>Create/Edit (`core_authsetting_edit`)</li><li>Delete (`core_authsetting_delete`)</li></ul> |
+| Account | <li>Edit (`core_account_edit`)</li><li>View (`core_account_view`)</li> |
+| Audit | <li>View (`core_audit_view`)</li> |
+| Certificate | <li>Delete (`core_certificate_delete`)</li><li>Edit (`core_certificate_edit`)</li><li>View (`core_certificate_view`)</li> |
+| Deployment Freeze | <li>Global (`core_deploymentfreeze_global`)</li><li>Manage (`core_deploymentfreeze_manage`)</li> |
+| License | <li>Edit (`core_license_edit`)</li><li>View (`core_license_view`)</li> |
+| Service Account | <li>List (`core_serviceaccount_list`)</li> |
+| SMTP | <li>Delete (`core_smtp_delete`)</li><li>Edit (`core_smtp_edit`)</li><li>View (`core_smtp_view`)</li> |
+| User | <li>Impersonate (`core_user_impersonate`)</li><li>Manage (`core_user_manage`)</li> |
+
+
+## Artifact Registry
+
+| Resource | Permissions |
+|----------|------------|
+| Art Registry | <li>Delete : `artifact_artregistry_delete`</li><li>Delete Artifact : `artifact_artregistry_deleteartifact`</li><li>Download Artifact : `artifact_artregistry_downloadartifact`</li><li>Edit : `artifact_artregistry_edit`</li><li>Upload Artifact : `artifact_artregistry_uploadartifact`</li><li>View : `artifact_artregistry_view`</li> |
 
 
 ## Environment Groups
@@ -106,7 +121,10 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Chaos Infrastructure | <ul><li>View (`chaos_chaosinfrastructure_view`)</li><li>Create/Edit (`chaos_chaosinfrastructure_edit`)</li><li>Delete (`chaos_chaosinfrastructure_delete`)</li></ul> |
 | Chaos Gameday | <ul><li>View (`chaos_chaosgameday_view`)</li><li>Create/Edit (`chaos_chaosgameday_edit`)</li><li>Delete (`chaos_chaosgameday_delete`)</li></ul> |
 | Chaos Hub | <ul><li>View: View Chaos experiments and Chaos scenarios (`chaos_chaoshub_view`)</li><li>Create/Edit: Connect to ChaosHub Git repo (`chaos_chaoshub_edit`)</li><li>Delete: Disconnect ChaosHub Git repo (`chaos_chaoshub_delete`)</li></ul> |
-| Chaos Experiment | <ul><li>View (`chaos_chaosexperiment_view`)</li><li>Create/Edit (`chaos_chaosexperiment_edit`)</li><li>Delete (`chaos_chaosexperiment_delete`)</li><li>Execute (`chaos_chaosexperiment_execute`)</li></ul> |
+| Chaos Experiment | <li>Execute Pipeline (`chaos_chaosexperiment_executepipeline`)</li> |
+| Chaos Image Registry | <li>Edit (`chaos_chaosimageregistry_edit`)</li><li>View (`chaos_chaosimageregistry_view`)</li> |
+| Chaos Probe | <li>Delete (`chaos_chaosprobe_delete`)</li><li>Edit (`chaos_chaosprobe_edit`)</li><li>View (`chaos_chaosprobe_view`)</li> |
+| Chaos Security Governance | <li>Delete (`chaos_chaossecuritygovernance_delete`)</li><li>Edit (`chaos_chaossecuritygovernance_edit`)</li><li>View (`chaos_chaossecuritygovernance_view`)</li> |
 
 ### Cloud Cost Management
 
@@ -120,20 +138,31 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | AutoStopping Rules | <ul><li>View (`ccm_autoStoppingRule_view`)</li><li>Create/Edit (`ccm_autoStoppingRule_edit`)</li><li>Delete (`ccm_autoStoppingRule_delete`)</li></ul> |
 | Budgets | <ul><li>View (`ccm_budget_view`)</li><li>Create/Edit (`ccm_budget_edit`)</li><li>Delete (`ccm_budget_delete`)</li></ul> |
 | Load Balancer | <ul><li>View (`ccm_loadBalancer_view`)</li><li>Create/Edit (`ccm_loadBalancer_edit`)</li><li>Delete (`ccm_loadBalancer_delete`)</li></ul> |
-| Data Scop (CCM_DATA_SCOPE) | <ul><li>View (`ccm_dataScope_view`)</li></ul> |
+| Data Scope (CCM_DATA_SCOPE) | <ul><li>View (`ccm_dataScope_view`)</li></ul> |
+| Anomalies | <li>View (`ccm_anomalies_view`)</li> |
+| Cloud Asset Governance Enforcement | <li>Delete (`ccm_cloudAssetGovernanceEnforcement_delete`)</li><li>Edit (`ccm_cloudAssetGovernanceEnforcement_edit`)</li><li>View (`ccm_cloudAssetGovernanceEnforcement_view`)</li> |
+| Cloud Asset Governance Rule Set | <li>Delete (`ccm_cloudAssetGovernanceRuleSet_delete`)</li><li>Edit (`ccm_cloudAssetGovernanceRuleSet_edit`)</li><li>View (`ccm_cloudAssetGovernanceRuleSet_view`)</li> |
+| Cloud Asset Governance Rule | <li>Delete (`ccm_cloudAssetGovernanceRule_delete`)</li><li>Edit (`ccm_cloudAssetGovernanceRule_edit`)</li><li>Execute (`ccm_cloudAssetGovernanceRule_execute`)</li><li>View (`ccm_cloudAssetGovernanceRule_view`)</li> |
+| Commitment Orchestrator | <li>Edit (`ccm_commitmentOrchestrator_edit`)</li><li>View (`ccm_commitmentOrchestrator_view`)</li> |
+| Recommendations | <li>Manage (`ccm_recommendations_manage`)</li><li>View (`ccm_recommendations_view`)</li> |
+
+
 
 ### Code Repository
 
 | Resource | Permissions |
 | ---  | ----------- |
-| Repository | <ul><li>View (`code_repo_view`)</li><li>Create/Edit (Create repositories and edit repository settings, such as descriptions, webhooks, and rules) (`code_repo_edit`)</li><li>Delete (`code_repo_delete`)</li><li>Push (Repository contributor permissions, such as committing, pushing, creating/deleting branches, creating/deleting tags) (`code_repo_push`)</li><li>Report commit check : Report a Status Check Result on a Commit (`code_repo_reportCommitCheck`)</li><li>Review PR: Review Pull Requests in a Code Repository (`code_repo_review`)</li></ul> |
+| Repository | <ul><li>Create (`code_repo_create`)</li><li>View (`code_repo_view`)</li><li>Create/Edit (Create repositories and edit repository settings, such as descriptions, webhooks, and rules) (`code_repo_edit`)</li><li>Delete (`code_repo_delete`)</li><li>Push (Repository contributor permissions, such as committing, pushing, creating/deleting branches, creating/deleting tags) (`code_repo_push`)</li><li>Report commit check : Report a Status Check Result on a Commit (`code_repo_reportCommitCheck`)</li><li>Review PR: Review Pull Requests in a Code Repository (`code_repo_review`)</li></ul> |
 
 ### Feature Flags
 
 | Resource | Permissions |
 | ---  | ----------- |
-| Feature flags | <ul><li>View (`ff_featureflag_view`)</li><li>Toggle: Turn Feature Flags on/off (`ff_featureflag_toggle`)</li><li>Create/Edit Flag (`ff_featureflag_edit`)</li> <li>Edit Rule (`ff_featureflag_rulesEdit`)</li> <li>Edit Configuration (`ff_featureflag_configEdit`)</li><li>Delete (`ff_featureflag_delete`)</li></ul>|
+| Feature flags | <ul><li>Create (`ff_featureflag_create`)</li><li>View (`ff_featureflag_view`)</li><li>Toggle: Turn Feature Flags on/off (`ff_featureflag_toggle`)</li><li>Create/Edit Flag (`ff_featureflag_edit`)</li> <li>Edit Rule (`ff_featureflag_rulesEdit`)</li> <li>Edit Configuration (`ff_featureflag_configEdit`)</li><li>Delete (`ff_featureflag_delete`)</li></ul>|
 | Target Management | <ul><li>View: View Targets and Target Groups (`ff_targetgroup_view`)</li><li>Create/Edit: Create and edit Targets and Target Groups to control visibility of a variation of a Feature Flag (`ff_targetgroup_edit`)</li><li>Delete: Delete Targets and Target Groups (`ff_targetgroup_delete`)</li></ul> |
+| Environment | <li>Edit (`ff_environment_edit`)</li><li>Target Group Edit (`ff_environment_targetGroupEdit`)</li><li>View (`ff_environment_view`)</li> |
+| Proxy API Key | <li>Create (`ff_proxyapikey_create`)</li><li>Delete (`ff_proxyapikey_delete`)</li><li>Edit (`ff_proxyapikey_edit`)</li><li>Rotate (`ff_proxyapikey_rotate`)</li><li>View (`ff_proxyapikey_view`)</li> |
+| Target | <li>View (`ff_target_view`)</li> |
 
 ### GitOps
 
@@ -152,6 +181,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Resource | Permissions |
 | ---  | ----------- |
 | IACM Workspaces | <ul><li>View (`iac_workspace_view`)</li><li>Create/Edit (`iac_workspace_edit`)</li><li>Delete (`iac_workspace_delete`)</li><li>Create/Edit Variables (`iac_workspace_editvariable`)</li><li>Delete Variables (`iac_workspace_deletevariable`)</li><li>Approve (`iac_workspace_approve`)</li><li>Access State (`iac_workspace_accessstate`)</li></ul> |
+| Registry | <li>Delete (`iac_registry_delete`)</li><li>Edit (`iac_registry_edit`)</li><li>View (`iac_registry_view`)</li> |
 
 ### Service Reliability
 
@@ -168,8 +198,15 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Issues | <ul><li>View (`sto_issue_view`)</li></ul> |
 | Scans | <ul><li>View (`sto_scan_view`)</li></ul> |
 | Test Targets | <ul><li>View (`sto_testtarget_view`)</li><li>Create/Edit (`sto_testtarget_edit`)</li></ul> |
-| Exemptions | <ul><li>View (`sto_exemption_view`)</li><li>Create/Edit (`sto_exemption_edit`)</li><li>Approve/Reject (`sto_exemption_approve`)</li></ul> |
+| Exemptions | <ul><li>Create (`sto_exemption_create`)</li><li>View (`sto_exemption_view`)</li><li>Create/Edit (`sto_exemption_edit`)</li><li>Approve/Reject (`sto_exemption_approve`)</li></ul> |
 | External Tickets | <ul><li>View (`sto_ticket_view`)</li><li>Create/Edit (`sto_ticket_edit`)</li><li>Delete (`sto_ticket_delete`)</li></ul> |
+
+### Software Engineering Insights (SEI)
+| Function | Permissions |
+|----------|------------|
+| SEI Collections | <li>Create (`sei_seicollections_create`)</li><li>Delete (`sei_seicollections_delete`)</li><li>Edit (`sei_seicollections_edit`)</li><li>View (`sei_seicollections_view`)</li> |
+| SEI Configuration Settings | <li>Create (`sei_seiconfigurationsettings_create`)</li><li>Delete (`sei_seiconfigurationsettings_delete`)</li><li>Edit (`sei_seiconfigurationsettings_edit`)</li><li>View (`sei_seiconfigurationsettings_view`)</li> |
+| SEI Insights | <li>Create (`sei_seiinsights_create`)</li><li>Delete (`sei_seiinsights_delete`)</li><li>Edit (`sei_seiinsights_edit`)</li><li>View (`sei_seiinsights_view`)</li> |
 
 ### Internal Developer Portal
 
@@ -181,6 +218,8 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Catalog Access Policies | <ul><li>View (`idp_catalogaccesspolicy_view`)</li><li>Create (`idp_catalogaccesspolicy_create`)</li><li>Edit (`idp_catalogaccesspolicy_edit`)</li><li>Delete (`idp_catalogaccesspolicy_delete`)</li></ul>                |
 | Integrations            | <ul><li>View (`idp_integration_view`)</li><li>Create (`idp_integration_create`)</li><li>Edit (`idp_integration_edit`)</li><li>Delete (`idp_integration_delete`)</li></ul>        |
 | Advanced Configurations | <ul><li>View (`idp_advancedconfiguration_view`)</li><li>Create/Edit (`idp_advancedconfiguration_edit`)</li><li>Delete (`idp_advancedconfiguration_delete`)</li></ul>                |
+| Catalog | <li>Delete (`idp_catalog_delete`)</li><li>Edit (`idp_catalog_edit`)</li><li>View (`idp_catalog_view`)</li> |
+| Workflow | <li>Delete (`idp_workflow_delete`)</li><li>Edit (`idp_workflow_edit`)</li><li>Execute (`idp_workflow_execute`)</li><li>View (`idp_workflow_view`)</li> |
 
 ### Continuous Error Tracking
 
@@ -196,4 +235,3 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 |-----------| ----------- |
 | Schemas   | <ul><li>View (`dbops_schema_view`)</li><li>Create/Edit (`dbops_schema_edit`)</li><li>Delete (`dbops_schema_delete`)</li></ul> |
 | Instances | <ul><li>View (`dbops_instance_view`)</li><li>Create/Edit (`dbops_instance_edit`)</li><li>Delete (`dbops_instance_delete`)</li></ul> |
-
