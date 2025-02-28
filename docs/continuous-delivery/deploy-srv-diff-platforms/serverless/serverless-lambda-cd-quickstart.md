@@ -599,10 +599,12 @@ service:
 
 Container Configuration (Optional)
 
-If you have provided **Service Plugin Info** in the service, then specifying **Container Configuration** at the step level such as **Container Registry** and **Image** becomes **optional**.  
+If you have provided **Service Plugin Info** in the service, then specifying **Container Configuration** at the step level such as **Container Registry** and **Image** becomes **optional**.
+
+However, if the image is specified in the **Container Configuration** at the **Step** level, it will always take precedence over the **Plugin Info** at the service level during execution.
 
 :::warning
-If Plugin Info is null or empty and Container Configuration is also empty, the pipeline will fail during execution.
+If **Plugin Info** and **Container Configuration** are not configured, the pipeline will fail during execution.
 
 Ensure that at least one of these configurations is provided to avoid execution failures.
 :::
