@@ -83,19 +83,19 @@ For more information see [Google Container Registry deprecation notice](https://
 
 #### Fixed issues
 
-- Fixed private registry configuration in the default Harness image connector. The container entrypoint is now correctly pulled from the specified private registry instead of DockerHub, ensuring compatibility with air-gapped environments. (ZD-76651, 76970, 77190, 78321, CI-15799)
+- Fixed private registry configuration in the Build Intelligence step container of the default Harness image connector. The container entrypoint is now correctly pulled from the specified private registry instead of DockerHub, ensuring compatibility with air-gapped environments. (ZD-76651, 76970, 77190, 78321, CI-15799)
 - Fixed an issue where Azure DevOps status did not reflect the pipeline link. The pipeline link is now correctly displayed in Azure DevOps status updates. (CI-16156, ZD-77790)
-- Added logic to ignore or remove unsupported connectors (IAM on delegate or IRSA for AWS and GCS connectors), resolving pipeline execution failures. (ZD-78127, CI-16265)
+- Added logic to ignore or remove unsupported cloud storage connectors for caching (Build Intelligence, Cache Intelligence), resolving issues with pipeline execution failures. (ZD-78127, CI-16265)
 - Fixed issue with Azure Repos where cloning with tags was not working due to unsupported Azure content list API for tags. (ZD-78432, CI-16298)
-- Fixed issue with Build Intelligence in run steps where auto-binaries were being injected without the necessary Linux condition, causing errors during execution. (ZD-78560, 78564, CI-16318)
+- For Windows builds, fixed an issue with **Build Intelligence** in **Run** steps where **Auto-Injection** binaries were being injected without the necessary Linux condition, causing errors during execution. (ZD-78560, 78564, CI-16318)
 - Fixed issue with GCP connector under "Save cache to GCS" when used as a runtime input, where Docker connectors were incorrectly listed instead of GCP connectors. (CI-16347, ZD-78363)
  
 #### New features and enhancements
 
-- CI pipeline now logs container names alongside step names for better visibility. (CI-14809)
+- CI pipeline now logs container names alongside step names in the **Initialize step** for better visibility, particularly for Kubernetes infrastructure. (CI-14809)
 - Added support for shell as a run-time input in the Run-step. (CI-15390)
 - CI stage now applies image pull policy from the nearest Project/Org/Account-level config for Kubernetes Infrastructure. (CI-15614)
-- Added option to run Clone Codebase in a containerless step for VM and Cloud infra. (CI-15756) (ZD-73794, ZD-76234)
+- Added option to run **Clone Codebase** in a containerless step for VM and Cloud infra, available through the `CI_GIT_CLONE_CONTAINERLESS` feature flag. This is particularly useful for Windows builds due to the large image size required for pull. (CI-15756) (ZD-73794, ZD-76234)
 
 #### Harness images updates
 
