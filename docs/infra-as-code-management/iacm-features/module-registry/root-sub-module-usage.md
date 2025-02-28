@@ -70,8 +70,8 @@ module "native-submodule" {
   source  = "app.harness.io/<account-id>/native-module//modules/native-submodule"
 }
 ```
-:::info
-Note that submodules cannot have a version attached, as Git tags do not apply to anything beyond the root level.
+:::info submodule versions
+Note that **submodules cannot have a version included**, as Git tags do not apply to anything beyond the root level.
 :::
 </TabItem>
 </Tabs>

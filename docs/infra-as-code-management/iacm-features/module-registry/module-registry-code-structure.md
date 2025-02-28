@@ -5,49 +5,132 @@ sidebar_position: 10
 sidebar_label: Module Code Structure
 ---
 
-To ensure compatibility and ease of use within the Harness module registry, it is essential to follow a specific code structure when developing your modules. This structure helps maintain consistency and facilitates the integration of modules into your infrastructure as code workflows.
+OpenTofu or Terraform modules are reusable units of infrastructure configuration that help standardize deployment patterns and improve maintainability. A well-structured module simplifies usage and promotes best practices. This guide outlines the essential components of a Terraform module and how to structure it effectively.
 
-## Directory Layout
-
-Each module should be organized into a directory that contains all the necessary files for the module to function. The recommended directory layout is as follows:
+## Module Layout
+A typical OpenTofu or Terraform module consists of a set of configuration files that define resources, variables, outputs, and dependencies. Below is a recommended directory structure:
 
 ```
 module-name/
-├── main.tf
-├── variables.tf
-├── outputs.tf
-├── README.md
+├── main.tf      # Primary resource configurations
+├── variables.tf # Input variable definitions
+├── outputs.tf   # Output values
+├── README.md    # Documentation for the module
+├── provider.tf  # Provider configuration (if needed)
+├── versions.tf  # Required Terraform and provider versions
+├── modules/     # Nested submodules (if applicable)
+├── examples/    # Usage examples for reference
+└── tests/       # Automated tests for the module
 ```
 
-### Main Configuration File (`main.tf`)
+## Key Components
+### Root Module (Required)
+All OpenTofu or Terraform configurations consist of at least one module, known as the root module, which is the only required element. The most common name for this file is `main.tf`. This file serves as the entry point for OpenTofu or Terraform execution and contains all the necessary configurations to provision the desired infrastructure.
 
-The `main.tf` file is the primary configuration file for the module. It should contain the core logic and resources that define the module's functionality. This file is the entry point for the module and should be well-organized and documented.
+---
+### `variables.tf` (Input Variables)
+- Declares configurable inputs for the module.
+- Variables should include descriptions and, when applicable, default values.
 
-### Variables Definition File (`variables.tf`)
+Example:
+```hcl
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+  default     = "t2.micro"
+}
+```
+Also see [variable usage](/docs/infra-as-code-management/project-setup/input-variables) for more information.
 
-The `variables.tf` file defines the input variables for the module. These variables allow users to customize the module's behavior by providing different values. Each variable should have a clear description and, if applicable, a default value.
+---
+### `outputs.tf` (Output Values)
+- Defines values that the module will return upon execution.
+- Helps users access relevant module data.
 
-### Outputs Definition File (`outputs.tf`)
+Example:
+```hcl
+output "instance_id" {
+  description = "ID of the created EC2 instance"
+  value       = aws_instance.example.id
+}
+```
 
-The `outputs.tf` file specifies the outputs of the module. Outputs are values that are exposed to the user after the module is applied. These values can be used to reference resources created by the module in other parts of your infrastructure.
+---
+### `README.md` (Module Documentation)
+- Provides an overview of the module’s purpose and usage.
+- Includes example configurations and descriptions of variables and outputs.
 
-### Module Documentation (`README.md`)
+---
+### `provider.tf` (Provider Configuration)
+If a module requires provider settings, define them here. Avoid hardcoding provider settings within a module to allow flexibility.
 
-The `README.md` file provides documentation for the module. It should include an overview of the module, usage instructions, input variables, outputs, and examples. Clear and comprehensive documentation helps users understand how to use the module effectively.
+Example:
+```hcl
+tofu {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
+}
+```
 
-### Examples Directory (`examples/`)
+---
+### `versions.tf` (Version Constraints)
+- Specifies compatible OpenTofu or Terraform and provider versions.
+- Ensures module stability by preventing incompatible updates.
 
-The `examples/` directory contains example configurations that demonstrate how to use the module. These examples should cover common use cases and provide a starting point for users. Each example should be a complete, working configuration that can be deployed independently.
+Example:
+```hcl
+tofu {
+  required_version = ">= 1.0.0"
+}
+```
 
-### Nested Modules Directory (`modules/`)
+---
+### `modules/` (Nested Modules / Submodules)
+If a module is composed of multiple submodules, organize them within this directory to improve modularity and reusability.
 
-The `modules/` directory is used to organize nested or submodules. Submodules are smaller modules that are used internally by the main module. This directory helps keep the main module directory clean and organized.
+:::info module folder
+Submodules are only recognized if they are placed within the `modules` folder. 
+:::
 
-## Best Practices
+---
+### `examples/` (Usage Examples)
+Provide working examples demonstrating how to use the module in different scenarios. This helps users understand its implementation.
 
-- **Consistency:** Follow a consistent naming convention and structure across all your modules.
-- **Documentation:** Provide clear and comprehensive documentation for each module, including usage instructions and examples.
-- **Modularity:** Break down complex configurations into smaller, reusable modules.
-- **Version Control:** Use version control to manage changes to your modules and track their history.
+---
+### `tests/` (Automated Testing)
+Testing ensures the module functions as expected. Use tools like `tofu test` or external frameworks such as `Terratest`.
 
-By adhering to this structure and best practices, you can create well-organized and maintainable modules that integrate seamlessly with the Harness module registry.
+Example test using `tofu test`:
+```hcl
+tofu {
+  test {
+    assert {
+      condition     = resource.aws_instance.example.instance_type == "t2.micro"
+      error_message = "Unexpected instance type"
+    }
+  }
+}
+```
+
+---
+## Best practices
+To ensure your modules are well-structured and maintainable, follow these best practices:
+
+**Root Module:** Always include a `main.tf` file at the root level of your repository. This file serves as the entry point for [OpenTofu](https://opentofu.org/docs/language/modules/) or Terraform execution.
+**Modules Folder:** Place all submodules within a `modules/` folder. Submodules are only recognized if they are placed within this folder.
+**Consistent Naming:** Use consistent naming conventions for files and directories to improve readability and maintainability.
+**Documentation:** Provide comprehensive documentation in the README.md file, including an overview, usage instructions, and examples.
+**Version Constraints:** Specify compatible OpenTofu or Terraform and provider versions in the `versions.tf` file to ensure module stability.
+**Testing:** Include automated tests in the tests/ directory to verify the functionality of your module.
+
+---
+## Conclusion
+A well-structured IaC module enhances reusability, maintainability, and collaboration. By following these guidelines, you can create reliable and scalable modules for your infrastructure needs.
+
+For more details, refer to the following documentation:
+- [Register a Module](/docs/infra-as-code-management/iacm-features/module-registry/module-registry)  
+- [Root and Submodule Usage](/docs/infra-as-code-management/iacm-features/module-registry/root-sub-module-usage)

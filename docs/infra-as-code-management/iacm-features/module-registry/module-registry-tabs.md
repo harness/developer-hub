@@ -113,18 +113,7 @@ Submodules can provide users with the flexibility to override or customize certa
 ## Top level overview
 <Tabs>
 <TabItem value="Interactive guide">
-<iframe 
-    src="https://app.tango.us/app/embed/338cf3be-ddf5-4272-9178-fe3f84d815d4" 
-    title="Harness IaCM registered module overview" 
-    style={{ minHeight: '640px' }}
-    width="100%" 
-    height="100%"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    webkitallowfullscreen="true"
-    mozallowfullscreen="true"
-    allowfullscreen="true"
-></iframe>
+<DocVideo src="https://app.tango.us/app/embed/338cf3be-ddf5-4272-9178-fe3f84d815d4" title="Harness IaCM registered module overview" />
 </TabItem>
 <TabItem value="Step-by-step">
 
