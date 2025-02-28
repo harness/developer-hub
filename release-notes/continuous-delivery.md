@@ -47,6 +47,23 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## February 2025
 
+### Version 1.79.0
+
+#### New Features and Enhancements
+
+- Users can now leverage the **Plugin Info** section in Service for **Serverless Deployments** to define essential details about the runtime environment and dependencies, ensuring they automatically receive the latest version of images. (**CDS-99161**)
+- Users can dynamically execute Pipelines in Hanress, it  allows you to execute pipelines by providing pipeline YAML configuration during runtime without requiring pre-saved configurations in Harness. Currently, this setting is behind the Feature Flag `PIPE_DYNAMIC_PIPELINES_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. For more information, refer to [Harness Documentation](/docs/platform/pipelines/dynamic-execution-pipeline.md)(**PIPE-11798**)
+- We have introduced a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote. Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**PIPE-16979**)
+- Users can now import OPA policies from Git. This feature behind the FF `OPA_IMPORT_FROM_GIT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PPIPE-17046,ZD-52607,ZD-69875**)
+
+#### Fixed Issues
+
+- Previously, runtime input validation was not working for ECR artifacts, preventing users from filtering artifact tags using regex patterns. This issue is resolved. (**CDS-106566, ZD-77818**)
+- Previously, when the deployment template version was updated in Git, the corresponding service did not appear in the runtime inputs dropdown for selection. This issue is resolved. (**CDS-106274, ZD-77132**)
+- Previously, users encountered an access permissions issue when selecting Org-level environments during pipeline runtime, despite having the correct view permissions. This issue is resolved. (**CDS-106527, ZD-74454**)
+- Previously, when using the **Deploy to multiple Environments or Infrastructure** option with a filtered list, unwanted characters appeared in the compiled YAML for the stage when matchType was set to **all**. This issue prevented the pipeline from executing successfully. This issue is resolved. (**CDS-106884, ZD-78208**)
+- Previously, selecting primaryManifestRef caused `serviceDefinition.spec.manifest.identifier` to be null, even when the configuration was correct. This resulted in errors when fetching manifest versions. This issue is resolved. (**CDS-106704, ZD-77493**)
+- Previously, after moving an existing service to Git (Bitbucket), pipelines using that service failed to execute. The issue occurred because the pipeline defaulted to the MASTER branch, even when the service was stored in a different branch.  This issue is resolved. (**CDS-105180, ZD-74852**)
 
 ### GitOps Version 1.26.1, GitOps Agent Version 0.87.0
 
