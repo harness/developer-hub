@@ -1,8 +1,8 @@
 ---
 title: Module Registry
 description: Learn how to register a module in Harness IaCM
-sidebar_position: 10
-sidebar_label: Register modules
+sidebar_position: 20
+sidebar_label: Register Modules
 ---
 
 import Tabs from '@theme/Tabs';
@@ -21,18 +21,7 @@ Follow the steps in the guide below to register a new module.
 
 <Tabs>
 <TabItem value="Interactive guide">
-<iframe 
-    src="https://app.tango.us/app/embed/5aa16720-f96c-44f3-9ad7-2e4dce4ad3b3" 
-    title="Register a module in Harness" 
-    style={{ minHeight: '640px' }}
-    width="100%" 
-    height="100%"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    webkitallowfullscreen="true"
-    mozallowfullscreen="true"
-    allowfullscreen="true"
-></iframe>
+<DocVideo src="ttps://app.tango.us/app/embed/5aa16720-f96c-44f3-9ad7-2e4dce4ad3b3" title="Register a module in Harness" />
 </TabItem>
 <TabItem value="Step-by-step">
     1. Login to [Harness](https://app.harness.io).
@@ -56,19 +45,8 @@ Follow the steps in the guide below to register a new module.
 
 ## Review module settings
 Harness pulls various details from your module and makes it easy to review them.
-<iframe 
-    src="https://app.tango.us/app/embed/f23cb280-5072-4622-a56b-7882cd01afff" 
-    title="Review your settings for a registered module" 
-    style={{ minHeight: '640px' }}
-    width="100%" 
-    height="100%"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    webkitallowfullscreen="true"
-    mozallowfullscreen="true"
-    allowfullscreen="true"
-></iframe>
 
+<DocVideo src="https://app.tango.us/app/embed/f23cb280-5072-4622-a56b-7882cd01afff" title="Review your settings for a registered module" />
 
 :::info syncing module versions
 The Sync button checks your registered module in Harness against the latest release in your repository and configured connector branch. If a newer version exists, it will sync it.
