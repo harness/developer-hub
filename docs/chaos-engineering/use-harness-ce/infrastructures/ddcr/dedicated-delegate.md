@@ -1,6 +1,6 @@
 ---
 title: Dedicated Delegate on Target Cluster
-sidebar_position: 7
+sidebar_position: 10
 description: Use Dedicated Delegate on Target Cluster
 ---
 

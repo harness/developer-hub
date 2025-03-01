@@ -17,7 +17,7 @@ This topic describes how you can use a Harness Delegate along with an agentless 
 
 ### Step 1: Set up your target cluster 
 
-a. In this step, set up your cluster (where Harness CE executes chaos experiments) with a dedicated namespace for Harness, and go to [Centralized Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/centralized-delegate) to perform the following steps.
+a. In this step, set up your cluster (where Harness CE executes chaos experiments) with a dedicated namespace for Harness, and go to [Centralized Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/centralized-delegate) to perform the following steps.
 	- Create a dedicated Namespace.
 	- Create a service account in the dedicated namespace.
 	- Create K8s RBACs and Role binding for Chaos runner pods.

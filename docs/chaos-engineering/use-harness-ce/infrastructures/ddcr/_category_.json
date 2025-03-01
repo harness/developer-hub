@@ -1,0 +1,9 @@
+{
+  "position": 10,
+  "label": "Delegate-Driven Chaos Infrastructure",
+  "collapsible": "true",
+  "collapsed": "true",
+  "customProps": {
+    "description": "Delegate-Driven Chaos Infrastructure, its components, characteristics, and installation."
+  }
+}
