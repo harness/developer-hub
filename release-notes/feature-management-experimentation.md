@@ -259,10 +259,179 @@ Users can now automatically capture event data in [Split for their Browser SDK](
 ##### **RUM Agent iOS**
 With [RUM Agent iOS](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent), the iOS SDK will automatically capture event data and send it back to the Split Cloud. Event data will then populate in Split’s Data Hub, similar to impression data. This eliminates the manual process of sending events to Split and enables a quicker setup of metrics and alert policies.
 
+
 ### 2023-12-19
 #### SDK Enhancements
 ##### React SDK Updates
 Split’s [React SDK](https://help.split.io/hc/en-us/articles/360038825091-React-SDK) hooks can now return the SDK’s readiness status and support update parameters to control when an application will render. These properties now allow users to easily refresh application components with just a few lines of code.
 
 The `useSplitTreatments` hook has been optimized to detect duplicate `getTreatment` calls, improving the performance and UX of the application.
+
+### 2023-12-14
+#### Usability Enhancements
+##### Dynamic Configurations Update
+Dynamic Configuration’s JSON input field now supports text wraps. This allows users to easily view and edit content that contains very long strings like prompts for Large Language Models without needing to scroll horizontally across the screen.
+
+### 2023-12-12
+#### Feature Flag Management Console 
+##### Flag Sets 
+With [Flag Sets](https://help.split.io/hc/en-us/articles/22256278916621-Using-flag-sets-to-boost-SDK-performance), users can group flags that logically belong together, so that the SDK only retrieves relevant flag definitions when initialized. This reduces SDK latency, memory consumption, and CPU utilization.
+
+### 2023-12-11
+#### Monitoring
+##### Event Visualization
+With [Event Visualization](https://help.split.io/hc/en-us/articles/360020585772-Events#exploring-events), users are now able to easily view their event data in aggregate directly in Split’s Data Hub without needing an external tool. This enables users to quickly validate if their event data is properly flowing into Split, and see how that event is behaving over time.
+
+### 2023-12-06
+#### Monitoring
+##### Custom Metrics Event Grouping (OR)
+With [Custom Metrics, Event Grouping (OR)](https://help.split.io/hc/en-us/articles/22005565241101), users have the flexibility to choose more than one base event and aggregate up to 5 different events together when creating metrics. This allows users to build more complex metrics that fit their needs and combine different inputs into one metric.
+##### Event Type Management Enhancements
+Users can now create metric definitions without needing to set [event types](https://help.split.io/hc/en-us/articles/360020585772-Events#h_01HGZV3J56QGKEV39YJ6KHF36M) beforehand in the Admin UI, removing bottlenecks between admins and users. 
+Event types will be automatically deleted after 150 days of no data being received, eliminating the manual process of cleaning up unused types.
+
+## November 2023
+### 2023-11-29
+#### Usability Enhancements
+##### Keyboard Accessibility
+Users can now use tab-based navigation to access Split’s login page, change summary modal (including approval flow from email), and definitions tab. This is supported on the Edge, Firefox, Safari, and Chrome browsers.
+
+### 2023-11-09
+#### Usability Enhancements
+##### Switch 
+[Switch](https://help.split.io/hc/en-us/articles/21188803158157) is an in-app AI assistant designed to streamline the use of the Split product. It offers multilingual support, rapid responses, and knowledge-based assistance by utilizing our public documentation and blogs. Switch makes it easy for all developers to get the help they need, without ever leaving the Split interface.
+
+### 2023-11-02
+#### Feature Experimentation
+##### Sequential Testing Update
+Sequential Testing will now be the default statistical method for all net-new organizations using monitoring and experimentation. 
+The minimum sample size for [Sequential Testing](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings#minimum-sample-size) has been reduced from 200 to 100. This allows users to get statistically significant results, faster.
+##### Dimensional Analysis Update
+Users can now create up to [20 dimensions with 20 values per dimension](https://help.split.io/hc/en-us/articles/14824241665421-Using-dimensional-analysis#configuring-dimensions-and-values). This gives users even more flexibility when doing a deeper analysis of their feature experiments or releases.
+
+## October 2023
+### 2023-10-25
+#### API Enhancements
+##### Different Access Levels for APIs: Roles and Scopes for API Keys 
+Define specific [roles](https://docs.split.io/reference/api-keys-overview#admin-api-key-roles) and [scopes](https://docs.split.io/reference/api-keys-overview#admin-api-key-scopes) for Admin API keys. Restrict access to resources at the organizational, workspace, or environment levels. This gives admins more flexibility when granting access to Split’s Public API.
+
+### 2023-10-10
+#### Monitoring
+##### **Feature Flag Significance Alerting**
+With [Feature Flag Significance Alerting](https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting), users can now receive notifications when a statistically significant difference has been observed between two treatments on their flag’s key metrics. Feature Flag alerting is enabled automatically for releases with a percentage allocation. This enables users to make fast, accurate release decisions in a timely manner.
+##### Out-of-the-Box Metrics, Browser RUM Agent
+Split now [automatically creates metrics](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-agent#automatic-metric-creation) for any events being auto-captured by the Split SDK (Browser RUM Agent). This reduces the manual effort of creating metrics and allows users to easily calculate their engineering and performance metrics.
+
+## September 2023
+### 2023-09-18
+#### Integrations
+##### Split-Segment Integration Update
+The `orginalTimestamp` precision has been updated to go from seconds to milliseconds when sending impressions to Segment. This update makes our timestamp field more consistent with the precision Segment uses.
+
+## August 2023
+### 2023-08-23
+#### Feature Management Console 
+##### Feature Flag Editor Enhancements 
+The feature flag definitions tab has added two minor UX updates to the editor flow. The treatment section will now automatically collapse once a flag definition has been created/updated. Also, users will be able to view treatment information via the environment cards on the left. These enhancements help the user understand which treatments are available in their environment and guide them to the targeting section.
+
+### 2023-08-15
+#### SDK Enhancements
+##### **RUM Agents - Web & Android**
+- Users can now automatically capture event data in Split for their [Web](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-agent) and [Android](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent) SDKs. This eliminates the manual process of sending events to Split, allowing users to quickly set up metrics and alert policies.
+#### Monitoring
+##### Custom Analysis Time Frame
+- With [Custom Analysis Time Frame](https://help.split.io/hc/en-us/articles/360020848451-Applying-filters#selecting-custom-dates), users can now analyze across date ranges regardless of any changes made to the feature flag definition. This enables better flexibility when analyzing results.
+
+### 2023-08-07
+#### SDK Enhancements 
+##### **PHP in-memory (PHP Thin Client SDK)**
+- Split now supports running PHP [locally](https://help.split.io/hc/en-us/articles/18305128673933) using the [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157) process to store and maintain feature flag data. This eliminates the need to use Redis & the Split Synchronizer while using our PHP SDK and provides a simpler set-up process.
+
+### 2023-08-03
+#### Learning and Onboarding
+##### Split Arcade
+[Split Arcade](https://help.split.io/hc/en-us/articles/7996112174733-Split-Arcade-self-paced-certifications) is an interactive, gamified experience that provides persona-based technical training, tutorials, and best-practice guidance from industry experts. Users gain access to highly engaging content including product explainer videos, clickable product walkthroughs, manipulatable code examples, and more. With knowledge checks along the way, team members earn professional certifications and LinkedIn badges to validate progress.
+#### Language Library Enhancements
+##### Flutter Plugin
+[Split's Flutter Plugin](https://help.split.io/hc/en-us/articles/8096158017165-Flutter-plugin) brings scalable feature flags to any app, website, or experience built with Flutter. Just inject the service into any component and start evaluating flags and tracking events.
+
+### 2023-08-01
+#### SDK Enhancements
+##### **Instant Feature Flags**
+- To reduce the latency of updates and increase the [reliability of SDKs](https://help.split.io/hc/en-us/articles/360033557092#streaming-architecture-overview), feature flag update notices delivered via streaming will not require a subsequent network request to fetch the changes. Instead, changes will be contained in the streaming payload itself.
+
+## July 2023
+### 2023-07-26
+#### Integrations
+##### **SDK@Edge, Split-Vercel Integration**
+- [Split’s integration with Vercel’s Edge](https://help.split.io/hc/en-us/articles/16469873148173) platform provides teams with the ability to incorporate feature flags and experiments into their Edge application and workstreams. Streamline Split data into the Edge without the extra network requests to retrieve config data.
+
+### 2023-07-24
+#### Feature Management Console
+##### **Viewer Role**
+- Admins can now assign the role, **Viewer**, to users. With the [Viewer role,](https://help.split.io/hc/en-us/articles/16432983870605-Managing-user-permissions) users can now be assigned a role that allows them to view data and objects within the Split application without the ability to make modifications. This will give admins more flexibility and control when assigning roles.
+
+## June 2023
+### 2023-06-22
+#### Experimentation
+##### **Sequential Testing**
+- [Sequential Testing](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings#using-sequential-testing) is a statistical testing method that allows users to obtain statistical results without the constraint of an experiment review period. This allows users to receive faster experimentation results, so that they make informed decisions about releases, quickly.
+
+### 2023-06-07
+#### Monitoring
+##### Metric Filtering Multiple Comparison Correction (MCC) Update
+When filtering your organizational metrics on the Metrics impact page, [MCC will only be applied once for all organizational metrics](https://help.split.io/hc/en-us/articles/360037852431#key-and-organizational-metrics). This will prevent users from seeing different p-values when metric results are filtered.
+
+## May 2023
+### 2023-05-24
+#### Monitoring
+##### Disabled Recalculating Metrics
+To help prevent unintentional resets of your data, the [recalculate metric button has been disabled](https://help.split.io/hc/en-us/articles/360020844451#About-recalculating-metrics) for feature flags that don't have any data available for calculations or haven't received traffic within Split's data retention period.
+
+### 2023-05-15
+#### Usability Enhancements
+##### Simplified Feature Flag Configurations
+The [feature flag configuration flow](https://www.split.io/wp-content/uploads/2023/04/Simplified-Feature-Flag-Configurations-1.pdf) on the definition tab has been reimagined with updated terminology and new visual cues. This will enable users to configure flags with a higher degree of confidence for any use case (percentage-based rollout, on/off, etc.).
+##### Visual Refresh to the Split User Interface
+The entire Split application has gone through a [visual refresh](https://www.split.io/wp-content/uploads/2023/04/Simplified-Feature-Flag-Configurations-1.pdf). Users will see a modern, forward-looking aesthetic with refined colors tuned for accessibility, visual cues, and more.
+##### Terminology Change
+To reduce the confusion between "Split", our product, and "split", the feature flag, we are [changing the term "split" to "feature flag"](https://www.split.io/wp-content/uploads/2023/04/Simplified-Feature-Flag-Configurations-1.pdf) across our application and documentation.
+
+### 2023-05-08
+#### Integrations
+##### Split's mParticle Integration Update
+Customers can now map Split traffic types to [mParticle MPID](https://help.split.io/hc/en-us/articles/360038306272#split-as-an-event-output) when sending events to Split.
+
+## April 2023
+### 2023-04-27
+#### Admin API Keys Enhancements
+##### Clone API Keys
+Users can now [clone API Keys](https://help.split.io/hc/en-us/articles/360019916211#cloning-api-keys) with the same access levels and scope as the key that is cloned. This will enable users to securely change/rotate keys on a regular basis while eliminating manual work.
+#### SDK Enhancements
+##### TLS support
+Split now supports TLS encryption for [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer#cli-configuration-options-and-its-equivalents-in-json--environment-variables) and [Split Proxy](https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy#cli-configuration-options-and-its-equivalents-in-json-and-environment-variables) endpoints. This will enable developers to further secure their SDK traffic.
+
+### 2023-04-26
+#### SDK Enhancements
+##### Mobile SDK Cache Encryption
+Developers can now encrypt the persistent cache of rollout plans on their [iOS](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#configuration) and [Android](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#configuration) SDKs. This will help enhance the security of this data.
+##### .NET Customizable Network Proxy
+Developers can now [configure specific proxies](https://help.split.io/hc/en-us/articles/360020240172--NET-SDK#proxy) using higher precedence than environment variables to perform the server requests for the .NET SDK. This will give developers the flexibility to proxy Split traffic separated from app traffic.
+
+### 2023-04-06
+#### Feature Management Console
+##### Essential Scheduling
+[Essential scheduling](https://help.split.io/hc/en-us/articles/11461143253517-Using-essential-scheduling) provides the capability to launch a feature on a certain date and time, up to 90 days in advance. This enables users to get all the necessary rollout work done, like getting approvals, long before the release.
+##### Simplified Feature Flag Configurations: Split Environment Usability Updates (Release 1)
+There are new UI and UX updates to the feature flag editing experience that make the selection of [environments](https://help.split.io/hc/en-us/articles/360020791591) and the editing of flag details more intuitive and easier. The updates include an environment pick list showcasing feature flag traffic per environment, production environment indicators, and upgraded headers to easily edit flag details.
+#### Security
+##### SCIM Support
+With [SCIM Support](https://help.split.io/hc/en-us/sections/14249918421005-SCIM), IT Admins can now manage Split users and groups using their preferred Identity Provider (IdP) including [Azure Active Directory](https://help.split.io/hc/en-us/articles/12386431119245-SCIM-for-Azure-AD) and [Okta](https://help.split.io/hc/en-us/articles/10488076923021-SCIM-for-Okta). This will help streamline the onboarding/offboarding processes as well as reduce the risk when governing users outside one's security platform.
+
+## March 2023
+### 2023-03-24
+#### SDK Enhancements
+##### SDK Offline Mode from JSON
+Developers can now start their [Go](https://help.split.io/hc/en-us/articles/360020093652-Go-SDK#json) and [Python](https://help.split.io/hc/en-us/articles/360020359652-Python-SDK#json) SDK instances in `localhost` mode, and easily download SDK data in the form of JSON files with just one command. These files can then mimic test or production environments, helping to improve the testing of applications offline.
+
 
