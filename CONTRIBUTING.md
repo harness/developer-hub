@@ -172,41 +172,4 @@ Additional info that might not be prudent to your first contribution.
 
 ### Style guide
 
-Harness Documentation follows the Microsoft Style Guide. We would recommend this.
-
-- [https://learn.microsoft.com/en-us/style-guide/welcome/](https://learn.microsoft.com/en-us/style-guide/welcome/)
-
-Since the final document is in Markdown, feel free to author in a tool of your choice and port to Markdown.
-
-Vale is an excellent tool for validating spelling and style in Markdown **locally**. You can run [Vale](https://vale.sh/) aganist a specific file or project structure prior to submitting if you would like, locally. This is not required.
-
-> :information_source:
-> Part of the PR checks, we are currently not using Vale. If you would like to check locally/programatically, Vale is a good tool.
-
-```
-#install
-brew install vale
-
-#Create Vale INI
-#https://vale.sh/docs/vale-cli/structure/#valeini
-
-cat <<EOF >>.vale.ini
-StylesPath = styles
-
-MinAlertLevel = suggestion
-Vocab = Base
-
-Packages = Microsoft, write-good
-
-[*.md]
-BasedOnStyles = Vale, Microsoft, write-good
-EOF
-
-#Vale sync
-vale sync
-
-#Execute Vale
-#cd into parent local folder if you want to validate all files.
-
-vale ./developer-hub/docs/**/*.md
-```
+Harness Documentation follows a [Style Guide](/docs/platform/style-guide). All PRs are required to follow the style guidelines where it fits, so please ensure your PRs are conformant. 
