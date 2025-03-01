@@ -257,6 +257,14 @@ There are two major parts of savings as discussed earlier: Savings Plans (SPs) a
 
 - If the account does not have any RI in a given region.
 
+10. Do exclusions apply only to Source RI or Target RI?  From above, it appears that it only excluded on Source RI.
+11. 
+- Exclusion is for the target instance type. 
+
+11. It looks like you have to set it by region and by machine type.  Is there a way to wildcard it for all machine types in a region?
+
+- We currently support exclusion at instance type and region level. Machine type (Platform as in Linux/ Windows) is not supported. That would be an enhancement request if needed. We have a way for users to filter the instances by family and region and apply for all the matching cases in the UI using a single “Exclude All” checkbox.
+
 
 
 
