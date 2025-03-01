@@ -1,0 +1,17 @@
+---
+title: Logging
+sidebar_label: Logging
+description: Explore the range of logging levels for transparent development and debugging.
+---
+ 
+To enable logging, the `logLevel` setting is available in `SplitClientConfig` class:
+
+```swift title="Setup logs"
+// This setting type is `SplitLogLevel`. 
+// The available values are DEBUG, INFO, WARNING, ERROR, ASSERT and NONE
+SplitClientConfig.Builder builder = SplitClientConfig.builder()
+    .logLevel(SplitLogLevel.VERBOSE)
+SplitClientConfig config = builder.build();
+
+  ...
+```

@@ -1,0 +1,13 @@
+:::info[Notice when debugging in Android]
+When running your app in debug mode on an Android device or emulator, you might get a warning notification stating, "Setting a timer for a long period of time is a performance and correctness issue on Android." 
+
+The warning is explained [here](https://github.com/facebook/react-native/issues/12981#issuecomment-652745831). It is intended to make developers aware that timer callbacks are invoked in foreground, and therefore timers could be delayed while the app is in background.
+
+Since the SDK uses timers for periodically pushing data to Split cloud, it is acceptable if those operations are delayed while the app is in background, and so it is completely safe to ignore or [hide this warning](https://reactnative.dev/docs/debugging#console-errors-and-warnings). If there is any concern, feel free to contact us through support.
+
+```javascript
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs(['Setting a timer']);
+```
+:::

@@ -1,0 +1,126 @@
+---
+title: Manager
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+ 
+Use the Split Manager to get a list of features available to the Split client.
+
+To instantiate a Manager in your code base, use the same factory that you used for your client.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY");
+SplitManager manager = splitFactory.manager();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY")
+val manager: SplitManager = splitFactory.manager()
+```
+  </TabItem>
+</Tabs>
+
+The Manager then has the following methods available:
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java Manager interface', value: 'java'},
+    {label: 'Kotlin Manager interface', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+/**
+ * Retrieves the feature flags that are currently registered with the
+ * SDK.
+ *
+ * @return a List of SplitView or empty.
+ */
+List<SplitView> splits();
+
+/**
+ * Returns the feature flags registered with the SDK of this name.
+ *
+ * @return SplitView or null
+ */
+SplitView split(String SplitName);
+
+/**
+ * Returns the feature flag names registered with the SDK.
+ *
+ * @return a List of String containing feature flag names or empty
+ */
+List<String> splitNames();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+/**
+* Retrieves the feature flags that are currently registered with the
+* SDK.
+*/
+fun splits(): List<SplitView>
+
+/**
+* Returns the feature flags registered with the SDK of this name.
+*/
+fun split(SplitName: String): SplitView
+
+/**
+* Returns the feature flag names registered with the SDK.
+*/
+fun splitNames(): List<String>
+
+```
+  </TabItem>
+</Tabs>
+
+The `SplitView` object that you see referenced above has the following structure:
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java SplitView', value: 'java'},
+    {label: 'Kotlin SplitView', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+public class SplitView {
+    public String name;
+    public String trafficType;
+    public boolean killed;
+    public List<String> treatments;
+    public long changeNumber;
+    public Map<String, String> configs;
+    public List<String> sets;
+    public String defaultTreatment;
+    public boolean impressionsDisabled;
+}
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+class SplitView(
+    var name: String?,
+    var trafficType: String?,
+    var killed: Boolean,
+    var treatments: List<String>?,
+    var changeNumber: Long,
+    var sets: List<String>?,
+    var defaultTreatment: String?,
+    var impressionsDisabled: boolean
+)
+```
+  </TabItem>
+</Tabs>

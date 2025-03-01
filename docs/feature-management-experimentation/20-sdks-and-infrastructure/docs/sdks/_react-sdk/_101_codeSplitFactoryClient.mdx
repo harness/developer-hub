@@ -1,0 +1,218 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript title="Using the useSplitClient hook"
+import { SplitFactoryProvider, useSplitClient } from '@splitsoftware/splitio-react';
+
+// Assuming this is how we setup the factory:
+const sdkConfig = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'nicolas@split'
+  }
+};
+
+const App = () => (
+  <SplitFactoryProvider config={sdkConfig} >
+    <MyComponentWithFlags accountId='nicolas@account' />
+  </SplitFactoryProvider>
+);
+
+// An example of how you can access a different SDK client to track events or evaluate flags in a function component with `useSplitClient` hook.
+function MyComponentWithFlags(props) {
+
+  // Calling useSplitClient with no `splitKey` parameter returns the client on the Split context.
+  // In this case the main client associated with the key 'nicolas@split' provided on initialization.
+  const { client: inContextClient } = useSplitClient();
+
+  // If client was already instantiated, it is just a getter like in the regular JS SDK.
+  const { client: myUserClient } = useSplitClient({ splitKey: 'nicolas@split' });
+
+  console.log(inContextClient === myUserClient); // logs "true"
+
+  // You can retrieve clients for as many keys as you need, although not recommended to create more than you absolutely need to.
+  // Keep in mind that if it is the first time you retrieve a client, it might not be ready yet.
+  const { client: accountClient, isReady: isReadyAccountClient } = useSplitClient({ splitKey: this.props.accountId });
+
+  if (isReadyAccountClient) {
+    // `accountClient` is ready to evaluate treatments as usual. To see more information about the client API go to the docs for JavaScript SDK.
+    const accountTreatments = accountClient.getTreatments(['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2']);
+
+    return (<div>{...}</div>);
+  } else {
+    // `accountClient` is not ready
+    return (<div>{...}</div>);
+  }
+
+}
+```
+
+```javascript title="Using SplitClient component (deprecated)"
+import { SplitFactoryProvider, SplitClient } from '@splitsoftware/splitio-react';
+
+// Assuming this is how we setup the factory:
+const sdkConfig = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'nicolas@split'
+  }
+};
+
+const App = () => (
+  <SplitFactoryProvider config={sdkConfig} > 
+    <MyComponentWithFlags accountId='nicolas@account' /> 
+  </SplitFactoryProvider>
+);
+
+class MyComponentWithFlags extends React.Component {
+
+  // See how you can use the component to evaluate for multiple clients in your templates.
+  render() {
+    return (
+      <div>
+        {
+          /*
+          * Using SplitTreatments as a descendant of the SplitFactoryProvider with no SplitClient wrapping it,
+          * uses the main client bound to the key passed in the config for evaluations.
+          * In this case the used key for evaluations is 'nicolas@split'.
+          */
+        }
+        <SplitTreatments names={['USER_FEATURE_FLAG_NAME']} >
+          {({ isReady, treatments }) => {
+              // Do something with the treatments for the user traffic type.
+          }}
+        </SplitTreatments>
+        {
+          /*
+          * To use another client, you can use the SplitClient component. Keep in mind that
+          * this client might not be ready yet if it's just being created and still downloading segments
+          * for the new key, but you can use the isReady property to block until ready.
+          */
+        }
+        <SplitClient splitKey={this.props.accountId}  >
+          <SplitTreatments names={['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2']} >
+            {({ isReady, treatments }) => {
+                // Do something with the treatments for the account traffic type.
+            }}
+          </SplitTreatments>
+        </SplitClient>
+      </div>
+    );
+  }
+}
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript title="Using the useSplitClient hook"
+import { SplitFactoryProvider, useSplitClient } from '@splitsoftware/splitio-react';
+
+// Assuming this is how we setup the factory:
+const sdkConfig = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'nicolas@split'
+  }
+};
+
+const App = () => (
+  <SplitFactoryProvider config={sdkConfig} >
+    <MyComponentWithFlags accountId='nicolas@account' />
+  </SplitFactoryProvider>
+);
+
+// An example of how you can access a different SDK client to track events or evaluate flags in a function component with `useSplitClient` hook.
+function MyComponentWithFlags(props) {
+
+  // Calling useSplitClient with no `splitKey` parameter returns the client on the Split context.
+  // In this case the main client associated with the key 'nicolas@split' provided on initialization.
+  const { client: inContextClient } = useSplitClient();
+
+  // If client was already instantiated, it is just a getter like in the regular JS SDK.
+  const { client: myUserClient } = useSplitClient({ splitKey: 'nicolas@split' });
+
+  console.log(inContextClient === myUserClient); // logs "true"
+
+  // You can retrieve clients for as many keys as you need, although not recommended to create more than you absolutely need to.
+  // Keep in mind that if it is the first time you retrieve a client, it might not be ready yet.
+  const { client: accountClient, isReady: isReadyAccountClient } = useSplitClient({ splitKey: this.props.accountId });
+
+  if (isReadyAccountClient) {
+    // `accountClient` is ready to evaluate treatments as usual. To see more information about the client API go to the docs for JavaScript SDK.
+    const accountTreatments = accountClient.getTreatments(['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2']);
+
+    return (<div>{...}</div>);
+  } else {
+    // `accountClient` is not ready
+    return (<div>{...}</div>);
+  }
+
+}
+```
+
+```javascript title="Using SplitClient component (deprecated)"
+import { SplitFactoryProvider, SplitClient } from '@splitsoftware/splitio-react';
+
+// Assuming this is how we setup the factory:
+const sdkConfig = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'nicolas@split'
+  }
+};
+
+const App = () => (
+  <SplitFactoryProvider config={sdkConfig} > 
+    <MyComponentWithFlags accountId='nicolas@account' /> 
+  </SplitFactoryProvider>
+);
+
+class MyComponentWithFlags extends React.Component {
+
+  // See how you can use the component to evaluate for multiple clients in your templates.
+  render() {
+    return (
+      <div>
+        {
+          /*
+          * Using SplitTreatments as a descendant of the SplitFactoryProvider with no SplitClient wrapping it,
+          * uses the main client bound to the key passed in the config for evaluations.
+          * In this case the used key for evaluations is 'nicolas@split'.
+          */
+        }
+        <SplitTreatments names={['USER_FEATURE_FLAG_NAME']} >
+          {({ isReady, treatments }) => {
+              // Do something with the treatments for the user traffic type.
+          }}
+        </SplitTreatments>
+        {
+          /*
+          * To use another client, you can use the SplitClient component. Keep in mind that
+          * this client might not be ready yet if it's just being created and still downloading segments
+          * for the new key, but you can use the isReady property to block until ready.
+          */
+        }
+        <SplitClient splitKey={this.props.accountId}  >
+          <SplitTreatments names={['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2']} >
+            {({ isReady, treatments }) => {
+                // Do something with the treatments for the account traffic type.
+            }}
+          </SplitTreatments>
+        </SplitClient>
+      </div>
+    );
+  }
+}
+```
+
+  </TabItem>
+</Tabs>

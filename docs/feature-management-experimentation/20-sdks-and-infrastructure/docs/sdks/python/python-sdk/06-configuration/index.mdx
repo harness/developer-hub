@@ -1,0 +1,121 @@
+---
+title: Configuration
+sidebar_label: Configuration
+description: Optimize SDK performance in your environment by fine-tuning SDK config settings.
+---
+
+The SDK exposes configuration parameters that you can use to optimize SDK performance. Each parameter is preset to a reasonable default. You can optionally override these default values when instantiating the SDK.
+
+| **Configuration** | **Description** | **Default value** | **Applies to** |
+| --- | --- | --- | --- |
+| featuresRefreshRate | The SDK polls Split servers for changes to feature flags at this period (in seconds). | 30 seconds | In-memory. |
+| segmentsRefreshRate  | The SDK polls Split servers for changes to segments at this period (in seconds).  | 30 seconds  | In-memory. |
+| impressionsRefreshRate | The treatment log captures which customer saw what treatment (on, off, and so on) at what time. This log is periodically flushed back to Split servers. This configuration controls how quickly the cache expires after a write (in seconds). | 300 seconds | In-memory. |
+| metricsRefreshRate | The SDK caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers (in seconds). | 3600 seconds | In-memory. |
+| eventsPushRate | How often the SDK sends events to the backend. | 10 seconds | In-memory. |
+| labelsEnabled | Disable labels from being sent to Split backend. Labels may contain sensitive information. | true | All operation modes.  |
+| connectionTimeout | HTTP client connection timeout (in ms).  | 1500ms | In-memory. |
+| apiKey | The Split SDK key. This entry is mandatory. If `localhost` is supplied as the SDK key, a localhost only client is created when `get_client` is called. | None  | All operation modes. |
+| redisHost | The host that contains the Redis instance. | localhost | Redis-based storage setup. |
+| redisPort | The port of the Redis instance. | 6379 | Redis-based storage setup. |
+| redisDb | The db index on the Redis instance. | 0 | Redis-based storage setup. |
+| redisUsername | The user name for Redis. | None | Redis-based storage setup. |
+| redisPassword | The password for Redis. | None | Redis-based storage setup. |
+| redisPrefix | The prefix for each key written in Redis by the SDK. | None | Redis-based storage setup. |
+| redisSsl | Enable encrypted connections to redis. | False | Redis-based storage setup. |
+| redisSslKeyfile | Client key used to decrypt incoming responses. | None | Redis-based storage setup. |
+| redisSslCertfile | Client certificate to prove client's identity to the server. | None | Redis-based storage setup. |
+| redisSslCertReqs | Whether to validate the server public key or blindly accept it and use it. | None | Redis-based storage setup. |
+| redisSslCaCerts | CA Root certificates capable of validating the certificate presented by the server. | None | Redis-based storage setup. |
+| redisLocalCacheEnabled | Enable a local in-memory cache on top of redis for fetching feature flags. | True | Redis-based storage setup. |
+| redisLocalCacheTTL | How long to cache feature flags in memory (in seconds). | 5 | Redis-based storage setup. |
+| redisSocketTimeout | Socket Timeout for Redis. | None | Redis-based storage setup. |
+| redisSocketConnectTimeout | Socket Connection Timeout for Redis. | None | Redis-based storage setup. |
+| redisRetryOnTimeout | If retries for Redis operations would be performed by the SDK if it receives a timeout. | False | Redis-based storage setup. |
+| preforkedInitialization | Flag for enabling fork execution (requires extra setup mentioned on the preforked client setup section). | False | Preforked running mode. |
+| impressionListener | Custom implementation of impression listener interface. | None | Redis-based storage setup. |
+| eventsQueueSize | Max number of events to accumulate before sending them to the backend. | 10000 | In-memory. |
+| eventsBulkSize | How many events to package when submiting them to the split servers | 5000 | In-memory. |
+| impressionsQueueSize | Max number of impressions to accumulate before sending them to the backend. | 10000 | In-memory. |
+| impressionsBulkSize | How many impressions to package when submiting them to the split servers | 5000 | In-memory. |
+| IPAddressesEnabled | Flag to disable IP addresses and host name from being sent to the Split backend.  | True | Redis, In-memory. |
+| impressionsMode | This configuration defines how impressions are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Split; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. In DEBUG mode, ALL impressions are queued and sent to Split. Use DEBUG mode when you want every impression to be logged in Split's user interface when trying to debug your SDK setup. This setting does not impact the impression listener which will receives all generated impressions. | `'optimized'` | In-memory operation mode. |
+| streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | True | In-memory operation mode. |
+| flagSetsFilter | This setting allows the SDK to only synchronize the feature flags in the specified flag sets, avoiding unused or unwanted flags from being synced on the SDK instance, bringing all the benefits from a reduced payload. | None |
+
+:::info[Impression listener]
+Starting with this version, the SDK removed the `impression_listener` parameter. If this parameter is passed, it is not handled by the SDK. If you want to attach a custom impression listener, send the new `impressionListener` parameter with an implementation of the impression listener interface.
+:::
+
+To set each of the parameters defined above, the syntax should be as seen below.
+
+Note that if you are using Standard Python, you pass the configuration parameters as a dictionary to the factory. In Django, plug the configuration parameters in to the SPLITIO dictionary in your Django settings
+
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="python-sdk-mode"
+  values={[
+    {label: 'Multi-threaded', value: 'multi'},
+    {label: 'asyncio', value: 'asyncio'},
+    {label: 'Django', value: 'django'},
+  ]}>
+  <TabItem value="multi">
+```python
+from splitio import get_factory
+
+configuration = {
+    'metricsRefreshRate' : 60,
+    'impressionsRefreshRate' : 60,
+    'ready' : 0,
+    'connectionTimeout' : 1500,
+    'readTimeout' : 1500,
+    'labelsEnabled' : True
+}
+
+factory = get_factory('YOUR_SDK_KEY', config=configuration)
+split = factory.client()
+```
+  </TabItem>
+  <TabItem value="asyncio">
+```python
+from splitio import get_factory_async
+
+async def main():
+    configuration = {
+        'metricsRefreshRate' : 60,
+        'impressionsRefreshRate' : 60,
+        'ready' : 0,
+        'connectionTimeout' : 1500,
+        'readTimeout' : 1500,
+        'labelsEnabled' : True
+    }
+
+    factory = await get_factory_async('YOUR_SDK_KEY', config=configuration)
+    split = factory.client()
+
+loop = asyncio.new_event_loop()
+loop.run_until_complete(main())
+```
+  </TabItem>
+  <TabItem value="django">
+```python
+SPLITIO = {
+    'apiKey': 'YOUR_SDK_KEY',
+    'labelsEnabled': True,
+    'redisHost': 'localhost',
+    'redisPort': 6379,
+    'redisDb': 0,
+    'redisPassword': 'somePassword',
+    # if the user access is not the default 'root' user, inlcude parameter below
+    'redisUsername' : 'username',
+  	'featuresRefreshRate': 5,
+    'segmentsRefreshRate' : 60,
+    'metricsRefreshRate' : 60,
+    'impressionsRefreshRate' : 60,
+}
+```
+  </TabItem>
+</Tabs>

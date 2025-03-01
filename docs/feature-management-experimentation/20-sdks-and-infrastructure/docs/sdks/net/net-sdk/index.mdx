@@ -1,0 +1,119 @@
+---
+title: FME .NET SDK
+sidebar_label: .NET SDK
+description: .NET developer reference for working with FME on the server side
+---
+
+import DocCardList from '@theme/DocCardList';
+
+This guide provides detailed information about our .NET SDK. All of our SDKs are open source. Go to our [.NET SDK GitHub repository](https://github.com/splitio/dotnet-client) to learn more.Language Support
+
+This SDK supports the following .NET platform versions:
+  - .NET Framework 4.5 and later
+  - .NET Core 2.x and 3.x
+  - .NET 8, .NET 7, .NET 6 and .NET 5Initialization
+
+:::warning[Important!]
+We unified the source code for Splitio and Splitio-net-core packages in one repository and there is no need to have two packages anymore. The last release of Splitio-net-core was 6.2.3. For current and future releases please use our Splitio package.
+:::
+
+## 1. Import the SDK into your project
+
+Use NuGet in the command line or the Package Manager UI in Visual Studio.
+
+```csharp title="NuGet"
+Install-Package Splitio -Version 7.10.0
+```
+
+## 2. Instantiate the SDK and create a new Split client
+
+:::danger[If upgrading an existing SDK - Block until ready changes]
+Starting version 5.0.0, .Ready is deprecated and migrated to the following implementation:
+Call `SplitClient.BlockUntilReady(int milliseconds)` or `SplitManager.BlockUntilReady(int milliseconds)`.
+:::
+
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Split servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+
+To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready. This is done by using `.BlockUntilReady(int milliseconds)` method as part of the instantiation process of the SDK client as shown below. Do this all as a part of the startup sequence of your application. If SDK is not ready after the specified time, the SDK fails to initialize and throws a `TimeoutException` error.
+
+We recommend instantiating the Split factory once as a singleton and reusing it throughout your application.
+
+Use the code snippet below with your own API key. Configure the SDK with the SDK key for the Split environment that you would like to access. The SDK key is available in the Split user interface, on your Admin settings page, API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+
+```csharp title="C#"
+using Splitio.Services.Client.Classes;
+
+var config = new ConfigurationOptions();
+
+var factory = new SplitFactory("YOUR_SDK_KEY", config);
+var sdk = factory.Client();
+
+try
+{
+    sdk.BlockUntilReady(10000);
+}
+catch (Exception ex)
+{
+    // log & handle
+}
+```
+
+Now you can start asking the SDK to evaluate treatments for your customers.Using the SDK
+
+## Basic use
+
+After you instantiate the SDK client, you can use the `GetTreatment` method of the SDK client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you are serving the feature to.
+
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in the Split user interface. Remember the final else branch in your code to handle the client returning the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'GetTreatment', value: 'get'},
+    {label: 'GetTreatmentAsync', value: 'getasync'}
+  ]}>
+  <TabItem value="get">
+```csharp
+// The KEY here represents the ID of the user/account/etc you're trying to evaluate a treatment for
+var treatment = sdk.GetTreatment("KEY","FEATURE_FLAG_NAME");
+
+if (treatment == "on")
+{
+    // insert code here to show on treatment
+}
+else if (treatment == "off")
+{
+    // insert code here to show off treatment
+}
+else
+{
+    // insert your control treatment code here
+}
+```
+  </TabItem>
+  <TabItem value="getasync">
+```csharp
+// The KEY here represents the ID of the user/account/etc you're trying to evaluate a treatment for
+var treatment = await sdk.GetTreatmentAsync("KEY","FEATURE_FLAG_NAME");
+
+if (treatment == "on")
+{
+    // insert code here to show on treatment
+}
+else if (treatment == "off")
+{
+    // insert code here to show off treatment
+}
+else
+{
+    // insert your control treatment code here
+}
+```
+  </TabItem>
+</Tabs>
+
+### More SDK features
+
+<DocCardList />

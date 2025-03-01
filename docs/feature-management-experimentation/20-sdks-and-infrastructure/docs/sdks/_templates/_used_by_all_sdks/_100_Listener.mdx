@@ -1,0 +1,10 @@
+## Custom impression listener
+
+Split {props.sdk ?? 'SDK'}s send impression data back to Split servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*.
+
+The {props.sdk ?? 'SDK'} configuration has a parameter called `impressionListener` where an implementation of `ImpressionListener` can be added. The implementation must define the `logImpression` method.
+
+<>{props.dataImpression}</>
+<>{props.codeImpression}</>
+<>{props.codeUseImpressionListener}</>
+<>{props.notesImpressionListener}</>

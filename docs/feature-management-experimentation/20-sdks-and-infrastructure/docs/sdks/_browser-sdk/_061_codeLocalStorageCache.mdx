@@ -1,0 +1,82 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```typescript title="With full bundle from CDN"
+var factory = window.splitio.SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  // Same as SplitFactory, InLocalStorage is exposed on the global splitio object
+  storage: window.splitio.InLocalStorage({
+    prefix: 'MY_PREFIX'
+  })
+});
+
+// Now use the SDK as usual
+var client = factory.client();
+```
+
+```javascript title="With NPM package"
+import { SplitFactory, InLocalStorage } from '@splitsoftware/splitio-browserjs';
+
+const factory: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  storage: InLocalStorage({
+    prefix: 'MY_PREFIX'
+  })
+});
+
+// Now use the SDK as usual
+const client = factory.client();
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript title="With full bundle from CDN"
+var factory = window.splitio.SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  // Same as SplitFactory, InLocalStorage is exposed on the global splitio object
+  storage: window.splitio.InLocalStorage({
+    prefix: 'MY_PREFIX'
+  })
+});
+
+// Now use the SDK as usual
+var client = factory.client();
+```
+
+```javascript title="With NPM package"
+import { SplitFactory, InLocalStorage } from '@splitsoftware/splitio-browserjs';
+
+const factory: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  storage: InLocalStorage({
+    prefix: 'MY_PREFIX'
+  })
+});
+
+// Now use the SDK as usual
+const client = factory.client();
+```
+
+  </TabItem>
+</Tabs>

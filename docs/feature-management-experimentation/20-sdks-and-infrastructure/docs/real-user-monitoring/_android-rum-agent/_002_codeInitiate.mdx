@@ -1,0 +1,42 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+To allow the Agent to send information to Split services, specify the SDK through your app's `AndroidManifest.xml` file, as a `meta-data` tag inside the `application` tag.
+
+```xml title="AndroidManifest initialization"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <application ...>
+    <activity ...>...</activity>
+
+    <meta-data
+      android:name="io.split.android.rum.SPLIT_SDK_KEY"
+      android:value="YOUR_SDK_KEY" />
+
+  </application>
+</manifest>
+```
+
+Alternatively, you can call the `setup` method on the `SplitRumAgent` object. This value will override the one specified through the `AndroidManifest.xml`.
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```java
+SplitRumAgent.setup("YOUR_SDK_KEY");
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+SplitRumAgent.setup("YOUR_SDK_KEY")
+```
+
+  </TabItem>
+</Tabs>

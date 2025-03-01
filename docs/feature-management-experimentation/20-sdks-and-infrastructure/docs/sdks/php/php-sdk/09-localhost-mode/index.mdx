@@ -1,0 +1,57 @@
+---
+title: Localhost mode
+sidebar_label: Localhost mode
+description: Develop and test without an internet connection. Read flag and segment definitions from a file.
+---
+
+For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the Split SDK can be started in **localhost** mode (aka off-the-grid mode). In this mode, the SDK neither polls nor updates Split servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. 
+
+To use the SDK in localhost mode, replace the SDK Key with "localhost", as shown in the example below:
+
+```php title="PHP"
+<?php
+ 
+$splitFactory = \SplitIO\Sdk::factory('localhost');
+$splitClient = $splitFactory->client();
+```
+
+In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given feature flag, the treatment specified in the file is returned for every customer. 
+
+`getTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `featureFlags` map returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK is asked to evaluate them.
+
+The format of this file is two columns separated by a whitespace. The left column is the feature flag name, and the right column is the treatment name. Here is a sample `.split` file.
+
+```bash title="Shell"
+# this is a comment
+ 
+# sdk.getTreatment(*, reporting_v2) will return 'on'
+reporting_v2 on
+ 
+# sdk.getTreatment(*, double_writes_to_cassandra) will return 'off'
+double_writes_to_cassandra off
+ 
+# sdk.getTreatment(*, new-navigation) will return 'v3'
+new-navigation v3
+```
+
+Since version 6.1.0, our SDK supports a new type of localhost feature flag definition file, using the YAML format. This new format allows the user to map different keys to different treatments within a single feature flag, and also adds configurations to them. The new format is a list of single-key maps (one per mapping feature-flag-keys-config), defined as follows:
+
+```yaml title="YAML"
+# - feature_flag_name:
+#     treatment: "treatment_applied_to_this_entry"
+#     keys: "single_key_or_list"
+#     config: "{\"desc\" : \"this applies only to ON treatment\"}"
+- my_feature:
+    treatment: "on"
+    keys: "key"
+    config: "{\"desc\" : \"this applies only to ON treatment\"}"
+- some_other_feature:
+    treatment: "off"
+- my_feature:
+    treatment: "off"
+```
+
+In the example above, we have 3 entries:
+ * The first entry defines that for feature flag `my_feature`, the key `key` returns the treatment `on` and the `on` treatment is tied to the configuration `{"desc" : "this applies only to ON treatment"}`.
+ * The second entry defines that the feature flag `some_other_feature` always returns the `off` treatment and no configuration.
+ * The third entry defines that `my_feature` always returns `off` for all keys that don't match another entry (in this case, any key other than `key`).

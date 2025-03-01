@@ -1,0 +1,24 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```java
+SplitRumAgent.trackError(new Throwable("my_error"));
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+SplitRumAgent.trackError(Throwable("my_error"))
+```
+
+  </TabItem>
+</Tabs>

@@ -1,0 +1,19 @@
+```java title="User consent: Initial config, getter and setter"
+SplitRumAgent.setup('YOUR_SDK_KEY', {
+  // Overwrites the initial consent status of the Agent, which is 'GRANTED' by default.
+  // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data,
+  // so the Agent will locally track data but not send it to Split cloud until consent is changed to 'GRANTED'.
+  userConsent: 'UNKNOWN'
+});
+
+// `getUserConsent` method returns the current consent status.
+SplitRumAgent.getUserConsent() == UserConsent.GRANTED;
+
+// `setUserConsent` method lets you update the consent status at any time.
+// Pass `true` for 'GRANTED' and `false` for 'DECLINED'.
+SplitRumAgent.setUserConsent(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Split cloud.
+SplitRumAgent.getUserConsent() == UserConsent.GRANTED;
+
+SplitRumAgent.setUserConsent(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Split cloud.
+SplitRumAgent.getUserConsent() == UserConsent.DECLINED;
+```

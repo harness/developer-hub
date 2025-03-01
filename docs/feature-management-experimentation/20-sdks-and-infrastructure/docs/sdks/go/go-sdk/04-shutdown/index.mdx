@@ -1,0 +1,43 @@
+---
+title: Shutdown
+sidebar_label: Shutdown
+description: Gracefully stop background threads, clear caches, close connections, and flush data.
+---
+
+Call the `.Destroy()` method before letting a process using the SDK exit, as this method gracefully shuts down the Split SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions. Call the `splitClient.Destroy()` method when the `kill` signal is cached by your application. After `.Destroy()` is called, any subsequent invocations to the `splitClient.Treatment()` or `manager` methods results in `control` or empty list, respectively.
+
+The example below shows how to catch the stop signal and call the `Destroy()` method.
+
+```go title="Go"
+func main() {
+    sigs := make(chan os.Signal, 2)
+    signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
+
+    cfg := conf.Default()
+    factory, err := client.NewSplitFactory("YOUR_SDK_KEY", cfg)
+
+    if err != nil {
+      fmt.Printf("SDK init error: %s\n", err)
+      return
+    }
+
+    splitClient := factory.Client()
+    err = splitClient.BlockUntilReady(10)
+    if err != nil {
+      fmt.Printf("SDK timeout: %s\n", err)
+      return
+    }
+
+    client := factory.Client()
+
+    go func() {
+        <-sigs
+        splitClient.Destroy()
+        os.Exit(0)
+    }()
+}
+```
+
+:::warning[Important!]
+A call to the `destroy()` method also destroys the factory object. When creating new client instance, first create a new factory instance.
+:::

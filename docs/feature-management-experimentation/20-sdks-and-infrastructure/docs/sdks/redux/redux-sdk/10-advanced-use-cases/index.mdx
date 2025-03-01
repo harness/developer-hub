@@ -1,0 +1,231 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Set up a proxy or use an external impression listener.
+---
+
+### Custom impression listener
+
+Split SDKs send impression data back to Split servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*. For that purpose, the SDK's configurations have a parameter called `impressionListener` where an implementation of `ImpressionListener` could be added. This implementation **must** define the `logImpression` method and it receives data in the following schema.
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- | 
+| impression |  | Object | Impression object that has the feature flag, key, treatment, label, etc. |
+| attributes | Object | A map of attributes used on the evaluation (if any). |
+| sdkLanguageVersion | String| The version of the SDK. In this case the language is `redux` plus the version of the underlying SDK. |
+
+:::info[Note]
+There are two additional keys on this object, `ip` and `hostname`. They are not used on the browser.
+:::
+
+You can implement a custom impression listener as shown in the example below.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'Client side (browser)', value: 'browser'},
+    {label: 'Server side (Node.js/SSR)', value: 'ssr'},
+  ]}>
+  <TabItem value="browser">
+
+```javascript
+import { initSplitSdk } from '@splitsoftware/splitio-redux';
+
+function logImpression(impressionData) {
+  // do something with the impression data.
+}
+
+// Create the config for the SDK factory.
+const sdkBrowserConfig = { 
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  impressionListener: {
+    logImpression: logImpression
+  }
+});
+
+store.dispatch(initSplitSdk({ config: sdkBrowserConfig }));
+```
+  </TabItem>
+  <TabItem value="ssr">
+```javascript
+import { initSplitSdk } from '@splitsoftware/splitio-redux';
+
+function logImpression(impressionData) {
+  // do something with the impression data.
+}
+
+// Create the config for the SDK factory.
+const sdkNodeConfig = { 
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY'
+  },
+  impressionListener: {
+    logImpression: logImpression
+  }
+});
+
+store.dispatch(initSplitSdk({ config: sdkNodeConfig }));
+```
+  </TabItem>
+</Tabs>
+
+An impression listener is called asynchronously from the corresponding evaluation, but is almost immediate. 
+
+Even though the SDK does not fail if there is an exception in the listener, do not block the call stack.
+
+## Instantiate multiple SDK clients
+ 
+When running **on the client side** the Redux SDK client is tied to one specific key or ID at a time which usually belongs to one traffic type (for example, `user`, `account`, `organization`). This enhances performance and reduces caching data in the SDK.
+
+Split supports the ability to release features to multiple keys with different traffic types. With traffic types, you can release to `users` in one feature flag and `accounts` in another. Go to [Traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) to learn more.
+
+If you need to roll out feature flags by different traffic types, the SDK instantiates multiple clients, one for each traffic type. For example, you may want to roll out the feature flag `user-poll` by `users` and the feature flag `account-permissioning` by `accounts`. 
+
+You can do this by providing a new key to be used when triggering evaluations or tracking events. See some examples below:
+ 
+```javascript title="Client side (browser)"
+import { initSplitSdk, getTreatments, track, selectTreatmentAndStatus, selectTreatmentWithConfigAndStatus } from '@splitsoftware/splitio-redux';
+
+const sdkBrowserConfig = {
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'CUSTOMER_ACCOUNT_ID', // This is the key that will be bound to the client.
+  }
+};
+
+store.dispatch(initSplitSdk({ config: sdkBrowserConfig, onReady: onReadyCallback }));
+
+// Regular track for bound account client (where key would be CUSTOMER_ACCOUNT_ID)
+const queuedAccountEvent = track({ trafficType: 'account', eventType: 'ACCOUNT_CREATED' });
+// Tracking events with a key parameter on the client side will get a new client (or reuse it if already created) and track events for the given key
+const queuedUserEvent = track({ key: 'CUSTOMER_USER_ID', trafficType: 'user', eventType: 'PAGELOAD', value: 7.86 }); 
+
+function onReadyCallback() {
+  // Dispatch action to evaluate and load treatments for a feature flag (where key would be CUSTOMER_ACCOUNT_ID)
+  store.dispatch(getTreatments({ splitNames: ['feature_flag_1'] }));
+  // Providing a different key will get a new client (or reuse it if already created) and calculate treatments for this key too.
+  store.dispatch(getTreatments({ splitNames: ['feature_flag_2'], key: 'CUSTOMER_USER_ID' }));
+
+  // To access the values for the different clients, you can use our selectors.
+  // If you're using multiple keys, you should provide the key when retrieving the data with the selectors, otherwise we'll default to the first entry found.
+  const accountTreatment = selectTreatmentAndStatus(store.getState().splitio, 'feature_flag_1', 'CUSTOMER_ACCOUNT_ID').treatment;
+  const userTreatment = selectTreatmentAndStatus(store.getState().splitio, 'feature_flag_2', 'CUSTOMER_USER_ID').treatment;
+
+  const accountTreatmentAndConfig = selectTreatmentWithConfigAndStatus(store.getState().splitio, 'feature_flag_1', 'CUSTOMER_ACCOUNT_ID').treatment;
+  const userTreatmentAndConfig = selectTreatmentWithConfigAndStatus(store.getState().splitio, 'feature_flag_2', 'CUSTOMER_USER_ID').treatment;
+}
+```
+:::info[Number of SDK instances]
+While the SDK does not put any limitations on the number of instances that can be created, we strongly recommend keeping the number of SDKs down to **one** or **two**.
+:::
+
+## Usage with React + Redux
+ 
+We provide extra functionality for users of [react-redux](https://github.com/reduxjs/react-redux) with two High Order Components (HOCs). In the future we'll add more mapState functions for your convenience.
+
+The `connectSplit` HOC connects a given component with the `splitio` slice and `getTreatments` action creator already bound to the dispatch, so you don't need to dispatch that action yourself. 
+
+```javascript title="JavaScript"
+import { connectSplit, selectTreatmentAndStatus, getSplitNames } from '@splitsoftware/splitio-redux';
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    props.getTreatments({ splitNames: ['myFeatureFlag'] }));
+  };
+
+  render() {
+    const { splitio } = props;
+
+    const isMyFeatureFlagOn = selectTreatmentAndStatus(splitio, 'myFeatureFlag').treatment === 'on';
+    
+    if (isMyFeatureFlagOn) {
+      return (<MyFeatureFlagOnComponent />);
+    } else {
+      return (<MyFeatureFlagDefaultComponent />);
+    }
+  }
+}
+
+export default connectSplit()(MyComponent);
+
+// If you've mounted the Redux SDK reducer in a key of the state other than `splitio`, you need to provide
+// a callback for retrieving the feature flag related slice of state. 
+// If not provided, it will default to using `state.splitio`.
+export default connectSplit((state) => {
+  return state['my_key_for_split_reducer'];
+})(MyComponent);
+```
+
+The `connectToggler` HOC simplifies toggling when you have a component version for "on" treatment and a different one for any other treatments (including "control"). For example:
+
+```javascript title="JavaScript"
+import { connectToggler } from '@splitsoftware/splitio-redux';
+
+const ComponentOn = () => {
+  return (...);
+}
+
+const ComponentDefault = () => {
+  return (...);
+}
+
+// This component renders ComponentOn if 'myFeatureFlag' evaluation yielded 'on', otherwise it renders ComponentDefault
+const FeatureFlagToggler = connectToggler('myFeatureFlag')(ComponentOn, ComponentDefault);
+
+// If you need to evaluate for a different key than the one bound to the factory config, 
+// you can pass it as the second param of the decorator.
+const key = 'key';
+const FeatureFlagTogglerForOtherKey = connectToggler('myFeatureFlag', key)(ComponentOn, ComponentDefault);
+
+// If you've mounted the Redux SDK reducer in a key of the state other than `splitio`, you need to provide
+// a callback for retrieving the feature flag related slice of state as the 3rd parameter. 
+// If not provided, it will default to using `state.splitio`.
+const FeatureFlagTogglerFromCustomStateKey = connectToggler('myFeatureFlag', key, (state) => {
+  return state['my_key_for_split_reducer'];
+})(ComponentOn, ComponentDefault);
+```
+
+## User consent
+
+The SDK factory allows you to disable the tracking of events and impressions until user consent is explicitly granted or declined. To learn how to configure this feature, refer to the [JavaScript SDK User consent](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#user-consent) section.
+
+When using the Redux SDK, you can access the underlying SDK factory instance via the `splitSdk` object, as shown below:
+
+<Tabs
+  groupId="redux-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript
+import { splitSdk, initSplitSdk, ... } from '@splitsoftware/splitio-redux';
+
+// `splitSdk.factory` is null until `initSplitSdk` action creator is called
+store.dispatch(initSplitSdk({ config: sdkBrowserConfig }));
+
+splitSdk.factory.UserConsent.getStatus();
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+import { splitSdk, initSplitSdk, ... } from '@splitsoftware/splitio-redux';
+
+// `splitSdk.factory` is null until `initSplitSdk` action creator is called
+store.dispatch(initSplitSdk({ config: sdkBrowserConfig }));
+
+(splitSdk.factory as SplitIO.IBrowserSDK).UserConsent.getStatus();
+```
+
+  </TabItem>
+</Tabs>

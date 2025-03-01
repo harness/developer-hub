@@ -1,0 +1,44 @@
+---
+title: Configuration
+sidebar_label: Configuration
+description: Optimize SDK performance in your environment by fine-tuning SDK config settings.
+---
+
+The SDK exposes configuration parameters that you can use to optimize SDK performance. Each parameter is preset to a reasonable default. You can optionally override these default values when instantiating the `Splitio`:
+
+```dart title="Flutter"
+final SplitConfiguration configurationOptions = SplitConfiguration(
+  trafficType: 'user',
+  logLevel: SplitLogLevel.debug,
+  syncConfig: SyncConfig.flagSets('frontend', 'client_side'),
+  persistentAttributesEnabled: true);
+
+final Splitio _split =
+  Splitio('YOUR_SDK_KEY', 'KEY', configuration: configurationOptions);
+```
+
+The parameters available for configuration are shown below.
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| featuresRefreshRate | The SDK polls Split servers for changes to feature flags at this rate (in seconds). | 3600 seconds |
+| segmentsRefreshRate | The SDK polls Split servers for changes to segments at this rate (in seconds). | 1800 seconds |
+| impressionsRefreshRate | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Split servers. This configuration controls how quickly the cache expires after a write (in seconds). | 1800 seconds |
+| telemetryRefreshRate | The SDK caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers (in seconds). | 3600 seconds (1 hour) |
+| eventsQueueSize | When using `.track`, the number of **events** to be kept in memory. | 10000 |
+| eventFlushInterval | When using `.track`, how often is the events queue flushed to Split's servers. | 1800 seconds |
+| eventsPerPush | Maximum size of the batch to push events. | 2000 |
+| trafficType | When using `.track`, the default traffic type to be used. | not set |
+| impressionsQueueSize | Default queue size for impressions. | 30K |
+| enableDebug | Enabled verbose mode. | false |
+| streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism when in foreground. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | true |
+| persistentAttributesEnabled | Enables saving attributes on persistent cache which is loaded as part of the SDK_READY_FROM_CACHE flow. All functions that mutate the stored attributes map affect the persistent cache. | false |
+| impressionListener | Enables impression listener. If true, generated impressions stream in the impressionsStream() method of Splitio. | false |
+| syncConfig | Use it to filter specific feature flags to be synced and evaluated by the SDK. It can be created with the `SyncConfig.flagSets('sets')` method (recommended, flag sets aree available in all tiers) or `SyncConfig(names: ["feature-flag-1", "feature-flag-2"])` for individual names. If not set, all flags are downloaded. | not set |
+| syncEnabled | Controls the SDK continuous synchronization flags.  When `true`, a running SDK processes the rollout plan updates which is performed in the Split user interface (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
+| userConsent | User consent status controls the tracking of events and impressions. Possible values are `UserConsent.granted`, `UserConsent.decline`, and `UserConsent.unknown`. See [User consent](#user-consent) for details. | `UserConsent.granted` |
+| encryptionEnabled | Enables or disables encryption for cached data. | `false` |
+| logLevel | Enables logging according to the level specified. Options are `SplitLogLevel.none`, `SplitLogLevel.verbose`, `SplitLogLevel.debug`, `SplitLogLevel.info`, `SplitLogLevel.warning`, and `SplitLogLevel.error`. | `SplitLogLevel.none` |
+| impressionsMode | This configuration defines how impressions (decisioning events) are queued. Supported modes are `ImpressionsMode.optimized`, `ImpressionsMode.none`, and `ImpressionsMode.debug`. In `ImpressionsMode.optimized` mode, only unique impressions are queued and posted to Split; this is the recommended mode for experimentation use cases. In `ImpressionsMode.none` mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use `ImpressionsMode.none` when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In `ImpressionsMode.debug` mode, ALL impressions are queued and sent to Split. This is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `ImpressionsMode.optimized` |
+| readyTimeout | Maximum amount of time (in seconds) to wait until the `onTimeout` callback is fired or `whenTimeout` future is completed. A negative value means no timeout. | 10 seconds |
+| certificatePinningConfiguration | If set, enables certificate pinning for the given domains. For details, see the [Certificate pinning](#certificate-pinning) section below. | null |

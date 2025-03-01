@@ -1,0 +1,14 @@
+---
+title: Logging
+sidebar_label: Logging
+description: Explore the range of logging levels for transparent development and debugging.
+---
+ 
+To enable logging, the `logLevel` setting is available in the configuration class:
+
+```dart title="Setup logs"
+final Splitio _split = Splitio(_sdkKey, _matchingKey,
+  configuration: SplitConfiguration(
+    logLevel: SplitLogLevel.debug,
+  ));
+```

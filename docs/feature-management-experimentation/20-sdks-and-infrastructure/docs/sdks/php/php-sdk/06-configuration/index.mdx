@@ -1,0 +1,34 @@
+---
+title: Configuration
+sidebar_label: Configuration
+description: Optimize SDK performance in your environment by fine-tuning SDK config settings.
+---
+
+With the SDK architecture, there is a set of options that you can configure to get everything connected and working as expected.
+
+| **Option** | **Description** | 
+| --- | --- | 
+| labelsEnabled | Enable a descriptive label for each generated impression. Refer to the [Impressions data](#impressions-data) section below. |
+| ipAddress | Manually set the IP address of your server to attach as metadata when impressions are sent. |
+| log | Configure the log adapter and level. Refer to the [Logging](#logging) section. |
+| cache | Configure the Redis cache adapter. Refer to the [Redis cache](#redis-cache) section. |
+| impressionListener | Instance of an impression listener to send impression data to a custom location. |
+| IPAddressesEnabled | Flag to disable IP addresses and host name from being sent to the Split backend. |
+
+```php title="PHP"
+<?php
+ 
+$sdkConfig = array(
+   'labelsEnabled' => false,
+   'ipAddress' => '15.2.34.123',
+   'log' => array(...),
+   'cache' => array(...),
+);
+ 
+$splitFactory = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $sdkConfig);
+$splitClient = $splitFactory->client();
+```
+
+### Impressions data
+
+By default, our SDK sends small amounts of information to our backend about why your customer saw a given treatment from your app. An example would be that a user saw the `on` treatment because they were `in segment all`. This information can be useful for experiments and debugging. However, if you prefer to not send this information to our servers, you can turn it off by setting the SDK configuration option `labelsEnabled`.

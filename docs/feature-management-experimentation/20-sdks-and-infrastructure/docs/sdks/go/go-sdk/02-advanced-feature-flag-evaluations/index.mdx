@@ -1,0 +1,128 @@
+---
+title: Advanced feature flag evaluations
+sidebar_label: Advanced feature flag evaluations
+description: Set user attributes, evaluate multiple treatments, and retrieve treatment config data.
+---
+
+## Traffic type Attributes
+
+Traffic type attributes are also called custom attributes. If your feature flags [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), then you can pass attributes to the `getTreatment` method.
+
+### Attribute syntax
+
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `Treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or off` treatment to this account.
+
+The `Treatment()` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
+
+* **Strings:** Use type String.
+* **Numbers:** Use type `int64`.
+* **Dates: ** Express the value in `seconds since epoch` in `int64`.
+* **Booleans:** Use type `bool`.
+* **Sets:** Pass as `string slice ([]string)`.
+
+```go title="Go"
+	attributes := make(map[string]interface{})
+	attributes["plan_type"] = "growth";
+	attributes["registered_date"] = time.Now().UTC().Unix()
+	attributes["deal_size"] = 10000;
+	attributes["paying_customer"] = true;
+	attributes["permissions"] = []string{"read","write"}
+```
+
+## Multiple evaluations at once
+
+In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `Treatments` from the Split client to do this.
+* `Treatments`: Pass a list of the feature flag names you want treatments for.
+* `TreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
+* `TreatmentsByFlagSets`: Evaluates all flags that are part of the provided set names and are cached on the SDK instance.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'Treatments', value: 'treatments'},
+    {label: 'TreatmentsByFlagSet', value: 'flagset'},
+    {label: 'TreatmentsByFlagSets', value: 'flagsets'},
+  ]}>
+  <TabItem value="treatments">
+```go title="Treatments"
+splitClient := factory.Client()
+treatments := splitClient.Treatments(
+	"KEY",
+	[]string{"FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2", "FEATURE_FLAG_NAME_3"},
+	nil,
+)
+ 
+for featureFlag, treatment := range treatments {
+	fmt.Printf("Treatment for feature flag %s is %s\n", featureFlag, treatment)
+}
+```
+  </TabItem>
+  <TabItem value="flagset">
+```go title="TreatmentsByFlagSet"
+splitClient := factory.Client()
+treatments := splitClient.TreatmentsByFlagSet("KEY", "backend", nil)
+```
+  </TabItem>
+  <TabItem value="flagsets">
+```go title="TreatmentsByFlagSets"
+splitClient := factory.Client()
+treatments := splitClient.TreatmentsByFlagSets("KEY", []string{"backend", "server_side"}, nil)
+```
+  </TabItem>
+</Tabs>
+
+## Get treatments with configurations
+
+To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `TreatmentWithConfig` method.
+
+This method will return an object containing the treatment and associated configuration.
+
+The config element will be a stringified version of the configuration JSON defined in the Split user interface. If there are no configs defined for a treatment, the SDK returns `nil` for the config parameter.
+
+This method takes the exact same set of arguments as the standard `Treatment` method. See below for examples on proper usage:
+
+```go title="Go"
+result := splitClient.TreatmentWithConfig("KEY", "FEATURE_FLAG_NAME", attributes)
+var configs MyConfiguration // User custom configuration structure
+if result.Config != nil {
+    err = json.Unmarshal([]byte(*result.Config), &config)
+    if err != nil {
+        fmt.Println("Error:", err)
+    }
+}
+treatment := result.Treatment
+```
+
+If you need to get multiple evaluations at once, you can also use the `TreatmentsWithConfig` methods. These methods take the exact same arguments as the [Treatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to SplitResult objects instead of strings. Example usage below.
+
+<Tabs
+  values={[
+    {label: 'TreatmentsWithConfig', value: 'withconfig'},
+    {label: 'TreatmentsWithConfigByFlagSet', value: 'withconfigbyflagset'},
+    {label: 'TreatmentsWithConfigByFlagSets', value: 'withconfigbyflagsets'},
+  ]}>
+  <TabItem value="withconfig">
+```go title="TreatmentsWithConfig"
+TreatmentResults := splitClient.TreatmentsWithConfig("KEY", []string{"FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2"}, attributes)
+// TreatmentResults will have the following form: 
+// {
+//   FEATURE_FLAG_NAME_1: {treatment: 'on',
+//                  config: "{ 'color' : 'red'}}",
+//   FEATURE_FLAG_NAME_2: {treatment: 'v2',
+//                  config: "{ 'copy' : 'better copy'}}",
+// }	
+```
+  </TabItem>
+  <TabItem value="withconfigbyflagset">
+```go title="TreatmentsWithConfigByFlagSet"
+TreatmentResults := splitClient.TreatmentsWithConfigByFlagSet("KEY", "backend", attributes)
+```
+  </TabItem>
+  <TabItem value="withconfigbyflagsets">
+```go title="TreatmentsWithConfigByFlagSets"
+TreatmentResults := splitClient.TreatmentsWithConfigByFlagSets("KEY", []string{"backend", "server_side"}, attributes)
+```
+  </TabItem>
+</Tabs>

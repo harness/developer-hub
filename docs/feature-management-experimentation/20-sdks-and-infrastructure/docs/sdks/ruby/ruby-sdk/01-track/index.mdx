@@ -1,0 +1,54 @@
+---
+title: Track
+sidebar_label: Track
+description: Track metric events to ensure the safety of your rollouts or run experiments.
+---
+
+Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Split and allows you to measure the impact of your feature flags on your users’ actions and metrics.
+
+[Learn more](https://help.split.io/hc/en-us/articles/360020585772) about using track events in feature flags.
+
+In the examples below, you can see that the `.track()` method can take up to four arguments. The proper data type and syntax for each are:
+
+* **key:** The `key` variable used in the `get_treatment` call and firing this track event. The expected data type is **String**.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Split.
+* **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
+     * Contains 63 characters or fewer.
+     * Starts with a letter or number.
+     * Contains only letters, numbers, hyphen, underscore, or period.
+     * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
+* **VALUE:** (Optional) The value used in creating the metric. This field can be sent in as nil or 0 if you intend to only use the count function when creating a metric. The expected data type is **Integer** or **Float**.
+* **PROPERTIES:** (Optional) A Hash of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. Split currently supports three types of properties: strings, numbers, and booleans.
+
+The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK successfully queued the event to be sent back to Split's servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `events_queue_size` or if an incorrect input to the `track` method is provided.
+
+In the case that a bad input has been provided, refer to the [Events](https://help.split.io/hc/en-us/articles/360020585772-Track-events) guide for more information about our SDK's expected behavior.
+
+```ruby title="Ruby"
+# If you would like to send an event without a value
+track_event = split_client.track('KEY', 'TRAFFIC_TYPE', 'EVENT_TYPE')
+
+# Example
+track_event = split_client.track('john@doe.com', 'user', 'page_load_time')
+
+# If you would like to associate a value to an event
+track_event = split_client.track('KEY', 'TRAFFIC_TYPE', 'EVENT_TYPE', VALUE)
+
+# Example
+track_event = split_client.track('john@doe.com', 'user', 'page_load_time', 83.334)
+
+# If you would like to associate just properties to an event
+track_event = split_client.track('KEY', 'TRAFFIC_TYPE', 'EVENT_TYPE', nil, { PROPERTIES })
+
+# If you would like to associate a value and properties to an event
+track_event = split_client.track('KEY', 'TRAFFIC_TYPE', 'EVENT_TYPE', VALUE, { PROPERTIES })
+
+# Example
+properties = {
+  package: 'premium',
+  admin: true,
+  discount: 50
+}
+
+track_event = split_client.track('john@doe.com', 'user', 'page_load_time', nil, properties)
+```

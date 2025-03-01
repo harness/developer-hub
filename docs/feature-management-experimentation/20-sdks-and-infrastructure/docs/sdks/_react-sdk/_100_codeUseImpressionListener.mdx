@@ -1,0 +1,72 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Example of a custom impression listener:
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript
+import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
+
+function logImpression(impressionData) {
+  // do something with the impression data.
+}
+
+// Create the config for the SDK factory.
+const sdkConfig = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'key'
+  },
+  impressionListener: {
+    logImpression: logImpression
+  }
+});
+
+// Using the SplitFactoryProvider component.
+const App = () => (
+  <SplitFactoryProvider config={sdkConfig} >
+    <MyApp />
+  </SplitFactoryProvider>
+);
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
+
+class MyImprListener implements SplitIO.IImpressionListener {
+  logImpression(impressionData: SplitIO.ImpressionData) {
+    // do something with impressionData
+  }
+}
+
+// Create the config for the SDK factory.
+const sdkConfig = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'key'
+  },
+  impressionListener: {
+    logImpression: new MyImprListener()
+  }
+});
+
+// Using the SplitFactoryProvider component.
+const App: React.ComponentType = () => (
+  <SplitFactoryProvider config={sdkConfig} >
+    <MyApp />
+  </SplitFactoryProvider>
+);
+```
+
+  </TabItem>
+</Tabs>

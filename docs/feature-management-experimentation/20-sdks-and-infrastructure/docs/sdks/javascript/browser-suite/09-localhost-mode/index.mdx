@@ -1,0 +1,52 @@
+---
+title: Localhost mode
+sidebar_label: Localhost mode
+description: Develop and test without an internet connection. Read flag and segment definitions from a file.
+---
+
+For testing, a developer can evaluate Split feature flags on their development machine without requiring network connectivity. To achieve this, the Suite can be started in **localhost** mode (aka off-the-grid or offline mode). In this mode, the Suite neither polls nor updates Split servers. Instead, it uses an in-memory data structure to determine the treatment returned by any given feature flag.
+
+Define the feature flags you want to use in the `features` object map. All `getTreatment` calls for a feature flag now only return the one treatment (and config, if defined) that you have defined in the map. You can then change the treatment as necessary for your testing. To update a treatment or a config, or to add or remove feature flags from the mock cache, update the properties of the `features` object you've provided. The SDK simulates polling for changes and updates from it. Do not assign a new object to the `features` property because the SDK has a reference to the original object and will not detect the change.
+
+Any feature flag that is not provided in the `features` map returns the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK is asked to evaluate it.
+
+You can use the additional configuration parameters below when instantiating the SDK in `localhost` mode.
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| scheduler.offlineRefreshRate | The refresh interval for the mocked features treatments. | 15 |
+| features | A fixed mapping of which treatment to show for our mocked features. | {} <br />By default we have no mocked features. |
+
+To use the SDK in localhost mode, replace the SDK key on `authorizationKey` property with `'localhost'`, as shown in the example below. Note that you can define in the `features` object a feature flag name and its treatment directly or use a map to define both a treatment and a dynamic configuration.
+
+If you define just a string as the value for a feature flag name, any config returned by our SDKs are always null. If you use a map, we return the specified treatment and the specified config (which can also be null).
+
+```javascript title="Using ES modules"
+import { SplitSuite } from '@splitsoftware/browser-suite';
+
+const suite = SplitSuite({
+  core: {
+    authorizationKey: 'localhost'
+  },
+  features: {
+    'reporting_v2': 'on', // example with just a string value for the treatment
+    'billing_updates': { treatment: 'visa', config: '{ "color": "blue"}' } // example of a defined config
+    'show_status_bar': { treatment: 'off', config: null } // example of a null config
+  },
+  scheduler: {
+    offlineRefreshRate: 15 // 15 sec
+  },
+});
+
+const client = suite.client();
+
+// The following code will be evaluated once the engine finishes the initialization
+client.on(client.Event.SDK_READY, () => {
+  // The sentence below will return 'on'
+  const t1 = client.getTreatment('reporting_v2');
+  // The sentence below will return an object with the structure of: {treatment:'visa',config:'{ "color":"blue" }'
+  const t2 = client.getTreatmentWithConfig('billing_updates');
+  // The sentence below will return 'control' because that feature does not exist
+  const t3 = client.getTreatmentWithConfig('navigation_bar_changes');
+});
+```

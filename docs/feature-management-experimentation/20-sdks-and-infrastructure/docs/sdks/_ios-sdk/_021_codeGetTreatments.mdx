@@ -1,0 +1,22 @@
+```swift title="Swift"
+// Assuming client is an instance of a class that has these methods
+let featureFlagNames = ["FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2"]
+let treatments = client.getTreatments(splits: featureFlagNames, attributes: nil)
+
+let treatmentsByFlagSet = client.getTreatmentsByFlagSet("frontend", attributes: nil)
+
+let flagSets = ["frontend", "client_side"]
+let treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets, attributes: nil)
+
+// Treatments will have the following form:
+// [
+//   "FEATURE_FLAG_NAME_1": "on",
+//   "FEATURE_FLAG_NAME_2": "visa"
+// ]
+
+// Treatments will have the following form:
+// [
+//   "FEATURE_FLAG_NAME_1": "on",
+//   "FEATURE_FLAG_NAME_2": "visa"
+// ]
+```

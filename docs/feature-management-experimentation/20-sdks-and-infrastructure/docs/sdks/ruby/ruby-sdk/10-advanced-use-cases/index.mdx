@@ -1,0 +1,98 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Set up a proxy or use an external impression listener.
+---
+
+## Network proxy
+
+Ruby SDK respects the `HTTP_PROXY` environment variable. To use a proxy, assign a proxy address to that variable.
+
+```ruby title="Proxy"
+http_proxy=http://username:password@hostname:port
+```
+
+## Redis integration
+
+**Configuring this Redis integration section is optional for most setups. Read the information below to determine if it might be useful for your project.**
+
+By default, the Split client stores the state it needs to compute treatments (rollout plans, segments, and so on) in memory. As a result, it is easy to get set up with Split by instantiating a client and starting to use it. Configuring this Redis integration section is optional for most setups.
+
+This simplicity hides one important detail that is worth exploring. Because each Split client downloads and stores state separately, a change in a feature flag is picked up by every client on its own schedule. Thus, if a customer issues back-to-back requests that are served by two different machines behind a load balancer, the customer can see different treatments for the same feature flag because one Split client may not have picked up the latest change. This drift in clients is natural and usually ignorable as long as each client sets an aggressive value for `features_refresh_rate` and `segments_refresh_rate`. You can learn more about setting these rates in the [Configuration section](#configuration).
+
+However, if your application requires a total guarantee that Split clients across your entire infrastructure pick up a change in a feature flag at the exact same time, the only way to ensure that is to externalize the state of the Split client in a data store hosted on your infrastructure.
+
+We currently support Redis for this external data store.
+
+To use the Ruby SDK with Redis, set up the Split Synchronizer and instantiate the SDK in consumer mode.
+
+### Split Synchronizer
+
+Follow the steps in our [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) document to get everything set to sync data to your Redis cache. After you do that, you can set up the SDK in consumer mode.
+
+### Consumer Mode
+
+In consumer mode, a client can be embedded in your application code and respond to calls to `get_treatment` by retrieving state from the data store (Redis in this case).
+
+Here is how to configure and get treatments for a Split client in consumer mode.
+
+```ruby title="Ruby"
+options = {
+  # Other options here
+  cache_adapter: :redis,
+  mode: :consumer,
+  redis_url: 'redis://127.0.0.1:6379/0'
+}
+
+split_factory = SplitIoClient::SplitFactory.new('YOUR_SDK_KEY', options)
+split_client = split_factory.client
+```
+
+## Configure Redis using Sentinel
+
+Use the syntax below to configure Redis using Sentinel:
+
+```ruby title="Ruby"
+SENTINELS = [{host: '127.0.0.1', port: 26380},
+             {host: '127.0.0.1', port: 26381}]
+
+redis_connection = {
+  url: 'redis://mymaster',
+  sentinels: SENTINELS,
+  role: :master
+}
+
+options = {
+  # Other options here
+  redis_url: redis_connection
+}
+
+split_factory = SplitIoClient::SplitFactory.new('YOUR_SDK_KEY', options)
+split_client = split_factory.client
+```
+
+## Redis Cluster
+
+This functionality is currently not supported for this SDK, but is coming in a future release! Subscribe to our [release notes](https://www.split.io/releases) for updates.Custom impression listener
+
+Split SDKs send impression data back to Split servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*.
+
+The SDK sends the generated impressions to the impression listener right away. However, to avoid blocking the caller thread, use the second parameter to specify the size of the queue acting as a buffer. Refer to the followoing snippet:
+
+If the impression listener is slow at processing the incoming data, the queue fills up and any subsequent impressions are dropped.
+
+```ruby title="Listener"
+class MyImpressionListener
+  def log(impression)
+    Logger.new($stdout).info(impression)
+  end
+end
+
+options = {
+  # other options
+  impression_listener: MyImpressionListener.new # do remember to initialize your class here
+  # other options
+}
+
+factory = SplitIoClient::SplitFactoryBuilder.build(sdk_key, options)
+```

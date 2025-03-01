@@ -1,0 +1,89 @@
+---
+title: Configuration
+sidebar_label: Configuration
+description: Optimize SDK performance in your environment by fine-tuning SDK config settings.
+---
+
+The SDK has a number of knobs for configuring performance. Each knob is tuned to a reasonable default. However, you can override the value while instantiating the SDK. The parameters available for configuration are shown below.
+
+| **Configuration** | **Description** | **Default value** |
+| --- | --- | --- |
+| featuresRefreshRate | The SDK polls Split servers for changes to feature rollout plans. This parameter controls this polling period in seconds. | 60 seconds |
+| segmentsRefreshRate  | The SDK polls Split servers for changes to segments at this rate (in seconds). | 60 seconds |
+| impressionsRefreshRate  | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Split servers. This configuration controls how quickly the cache expires after a write (in seconds). | 60 seconds |
+| telemetryRefreshRate  | The SDK caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers (in seconds). | 3600 seconds |
+| eventsQueueSize  | When using `.track`, the number of events to be kept in memory. | 500 |
+| eventFlushIntervalInMillis  | When using `.track`, how often (in milliseconds) the events queue is flushed to Split servers. | 30000 ms |
+| connectionTimeout | HTTP client connection timeout (in ms). | 15000ms |
+| readTimeout | HTTP socket read timeout (in ms). | 15000ms |
+| setBlockUntilReadyTimeout | If specified, the client building process blocks until the SDK is ready to serve traffic or the specified time has elapsed. If the SDK is not ready within the specified time, a `TimeOutException` is thrown (in ms). | 0ms |
+| impressionsQueueSize | Default queue size for impressions. | 30K |
+| disableLabels | Disable labels from being sent to Split backend. Labels may contain sensitive information. | enabled |
+| disableIPAddress | Disable sending IP Address & hostname to the backend. | enabled |
+| proxyHost | The location of the proxy. | localhost |
+| proxyPort | The port of the proxy. | -1 (not set) |
+| proxyUsername  | Username to authenticate against the proxy server. | null |
+| proxyPassword  | Password to authenticate against the proxy server. | null |
+| streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK falls back to the polling mechanism. If false, the SDK polls for changes as usual without attempting to use streaming. | true |
+| impressionsMode | Defines how impressions are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG.  In OPTIMIZED mode, only unique impressions are queued and posted to Split; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, all impressions are queued and sent to Split; this is useful for validations. Use DEBUG mode when you want every impression to be logged in the Split user interface when trying to debug your SDK setup.  This setting does not impact the impression listener which receives all generated impressions locally. | OPTIMIZED |
+| operationMode | Defines how the SDK synchronizes its data. Two operation modes are currently supported: <br />- STANDALONE. <br />- CONSUMER| STANDALONE |
+| storageMode | Defines what kind of storage the SDK is going to use. With MEMORY, the SDK uses its own storage and runs as STANDALONE mode. Set REDIS mode if you want the SDK to run with this implementation as CONSUMER mode. | MEMORY |
+| flagSetsFilter | This setting allows the SDK to only synchronize the feature flags in the specified flag sets, avoiding unused or unwanted flags from being synced on the SDK instance, bringing all the benefits from a reduced payload. | null |
+| threadFactory | Defines what kind of thread the SDK is going to use. Allows the SDK to use Virtual Threads. | null |
+| inputStream | This setting allows the SDK supports InputStream to use localhost inside a JAR. | null |
+| FileTypeEnum | Defines which kind of file is going to be the inputStream. Supported files are YAML and JSON for inputStream. | null |
+
+To set each of the parameters defined above, use the following syntax:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+import io.split.client.SplitClient;
+import io.split.client.SplitClientConfig;
+import io.split.client.SplitFactory;
+import io.split.client.SplitFactoryBuilder;
+
+SplitClientConfig config = SplitClientConfig.builder()
+                            .impressionsRefreshRate(60)
+                            .connectionTimeout(15000)
+                            .readTimeout(15000)
+                            .enableDebug()
+                            .setBlockUntilReadyTimeout(10000)
+                            .flagSetsFilter(Arrays.asList("backend", "server_side"))
+                            .build();
+
+SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY",config);
+SplitClient client = splitFactory.client();
+client.blockUntilReady();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+import io.split.client.SplitClient;
+import io.split.client.SplitClientConfig;
+import io.split.client.SplitFactory;
+import io.split.client.SplitFactoryBuilder;
+
+val config: SplitClientConfig = SplitClientConfig.builder()
+            .impressionsRefreshRate(60)
+            .connectionTimeout(15000)
+            .readTimeout(15000)
+            .enableDebug()
+            .setBlockUntilReadyTimeout(10000)
+            .flagSetsFilter(Arrays.asList("backend", "server_side"))
+            .build()
+
+val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY", config)
+val client: SplitClient = splitFactory.client()
+client.blockUntilReady()
+```
+  </TabItem>
+</Tabs>

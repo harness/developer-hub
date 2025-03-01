@@ -1,0 +1,6 @@
+React SDK provides the `isReady` boolean prop based on the client that will be used by the component. Internally we listen for the `SDK_READY` event triggered by given SDK client to set the value of `isReady`.
+
+When the `isReady` prop is set to true, you can use the SDK. The `useSplitTreatments` hook returns the feature flag treatments based on the `names` prop value passed to it and the `core.key` value you passed in the config when instantiating the SDK. Then use the `treatments` property to access the treatment values as well as the corresponding [dynamic configurations](https://help.split.io/hc/en-us/articles/360026943552) that you defined in the Split user interface.
+
+:::note[The isReadyFromCache prop]
+React SDK supports the ability to evaluate flags based on cached content when using [`LOCALSTORAGE`](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#configuration) as storage type. In this case, the `isReadyFromCache` prop will change to true almost instantly, since access to the cache is synchronous, allowing you to consume flags earlier on components that are critical to your UI. Keep in mind that the data might be stale until `isReady` prop is true. Go to [Subscribe to SDK events](./Subscribe to SDK events/) to learn more.

@@ -1,0 +1,220 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript title="Hooks"
+function MyApp() {
+  // Evaluates feature flags for the main client bound to the key passed in the factory config.
+  const { treatments, isReady, isReadyFromCache, hasTimedout, lastUpdate } = useSplitTreatments({ names: ['USER_FEATURE_FLAG_NAME'] });
+
+  // But we can evaluate at a per client basis, and choose when to trigger a re-render. 
+  // For example, the accountId we only want to update on SDK_READY and SDK_READY_TIMED_OUT. Not on SDK_READY_FROM_CACHE or SDK_UPDATE.
+  const { treatments: accountTreatments, isReady: isReadyAccount, hasTimedout: hasTimedoutAccount } = useSplitTreatments({
+    names: ['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2'],
+    splitKey: accountId,
+    updateOnSdkReadyFromCache: false, // true by default
+    updateOnSdkUpdate: false // true by default
+  });
+
+  return (
+    <div> 
+      {
+        // Do something with the treatments for the main key
+      }
+      {
+        // Do something with the treatments for the account key
+      }
+    </div>
+  );
+};
+
+const App = () => (
+  <SplitFactoryProvider config={sdkConfig} >
+    <MyApp />
+  </SplitFactoryProvider>
+);
+```
+
+```javascript title="Components & HOCs (deprecated)"
+function MyApp({ isReady, isReadyFromCache, isTimedout, hasTimedout, lastUpdate, factory, client }) {
+  return (
+    <div>
+      <SplitTreatments names={['USER_FEATURE_FLAG_NAME']} >
+        {
+          // Do something with the treatments for the user key defined in the config.
+        }
+      </SplitTreatments>
+
+      { /* But we can override that setup at a per client basis, so the account one we only want to
+         * update on SDK_READY and SDK_READY_TIMED_OUT */ }
+      <SplitClient splitKey={accountId} updateOnSdkReadyFromCache={false} updateOnSdkUpdate={false} >
+        <SplitTreatments 
+          names={['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2']}
+          updateOnSdkReadyFromCache={false} updateOnSdkUpdate={false}
+        >
+          {({ isReady, isReadyFromCache, isTimedout, hasTimedout, lastUpdate, treatments }) => {
+            // Do something with the treatments for the `accountId` key.
+          }}
+        </SplitTreatments>
+      </SplitClient>
+    </div>
+  );
+};
+
+const App = () => (
+  /* Here MyApp function component is passed as a render prop component and not as a React element like <MyApp>.
+   * MyApp is called with the SplitContext object as param, which contains the SDK factory, client and status properties.
+   * As a child of the SplitClient component, it is called on SDK_READY, SDK_READY_FROM_CACHE,
+   * and SDK_UPDATE events, but not on SDK_READY_TIMED_OUT since the `updateOnSdkTimedout` prop is false.
+   */
+  <SplitFactoryProvider config={sdkConfig}  >
+    <SplitClient updateOnSdkTimedout={false} >
+      {MyApp}
+    </SplitClient>
+  </SplitFactoryProvider>
+);
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript title="Hooks"
+function MyApp() {
+  // Evaluates feature flags for the main client bound to the key passed in the factory config.
+  const { treatments, isReady, isReadyFromCache, hasTimedout, lastUpdate } = useSplitTreatments({ names: ['USER_FEATURE_FLAG_NAME'] });
+
+  // But we can evaluate at a per client basis, and choose when to trigger a re-render. 
+  // For example, the accountId we only want to update on SDK_READY and SDK_READY_TIMED_OUT. Not on SDK_READY_FROM_CACHE or SDK_UPDATE.
+  const { treatments: accountTreatments, isReady: isReadyAccount, hasTimedout: hasTimedoutAccount } = useSplitTreatments({
+    names: ['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2'],
+    splitKey: accountId,
+    updateOnSdkReadyFromCache: false, // true by default
+    updateOnSdkUpdate: false // true by default
+  });
+
+  return (
+    <div> 
+      {
+        // Do something with the treatments for the main key
+      }
+      {
+        // Do something with the treatments for the account key
+      }
+    </div>
+  );
+};
+
+const App = () => (
+  <SplitFactoryProvider config={sdkConfig} >
+    <MyApp />
+  </SplitFactoryProvider>
+);
+```
+
+```javascript title="Components & HOCs (deprecated)"
+function MyApp({ isReady, isReadyFromCache, isTimedout, hasTimedout, lastUpdate, factory, client }) {
+  return (
+    <div>
+      <SplitTreatments names={['USER_FEATURE_FLAG_NAME']} >
+        {
+          // Do something with the treatments for the user key defined in the config.
+        }
+      </SplitTreatments>
+
+      { /* But we can override that setup at a per client basis, so the account one we only want to
+         * update on SDK_READY and SDK_READY_TIMED_OUT */ }
+      <SplitClient splitKey={accountId} updateOnSdkReadyFromCache={false} updateOnSdkUpdate={false} >
+        <SplitTreatments 
+          names={['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2']}
+          updateOnSdkReadyFromCache={false} updateOnSdkUpdate={false}
+        >
+          {({ isReady, isReadyFromCache, isTimedout, hasTimedout, lastUpdate, treatments }) => {
+            // Do something with the treatments for the `accountId` key.
+          }}
+        </SplitTreatments>
+      </SplitClient>
+    </div>
+  );
+};
+
+const App = () => (
+  /* Here MyApp function component is passed as a render prop component and not as a React element like <MyApp>.
+   * MyApp is called with the SplitContext object as param, which contains the SDK factory, client and status properties.
+   * As a child of the SplitClient component, it is called on SDK_READY, SDK_READY_FROM_CACHE,
+   * and SDK_UPDATE events, but not on SDK_READY_TIMED_OUT since the `updateOnSdkTimedout` prop is false.
+   */
+  <SplitFactoryProvider config={sdkConfig}  >
+    <SplitClient updateOnSdkTimedout={false} >
+      {MyApp}
+    </SplitClient>
+  </SplitFactoryProvider>
+);
+```
+
+  </TabItem>
+</Tabs>
+
+You can also access the `SplitContext` directly in your components for checking the readiness state of the client. Via the React [`useContext`](https://react.dev/reference/react/useContext) function, you can access the value of the `SplitContext` as shown below:
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript
+import { useContext } from 'react';
+import { SplitContext } from "@splitsoftware/splitio-react";
+
+const MyComponent = () => {
+  const { isReady, isTimedout } = useContext(SplitContext);
+  return isReady || isTimedout ?
+    <MyFeature /> :
+    <Loading />
+}
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+import { useContext } from 'react';
+import { SplitContext, ISplitContextValues } from "@splitsoftware/splitio-react";
+
+const MyComponent: React.ComponentType = () => {
+  const { isReady, isTimedout }: ISplitContextValues = useContext(SplitContext);
+  return isReady || isTimedout ?
+    <MyFeature /> :
+    <Loading />
+}
+```
+
+  </TabItem>
+</Tabs>
+
+The `SplitContext` value object has the following structure:
+
+```typescript
+interface SplitContextValue {
+  factory: SplitIO.IBrowserSDK,
+  client: SplitIO.IBrowserClient,
+  isReady: boolean,
+  isReadyFromCache: boolean,
+  hasTimeout: boolean,
+  isTimedout: boolean,
+  isDestroyed: boolean,
+  lastUpdate: number,
+}
+```
+
+The `SplitContext` exposes the internal factory and client instances of JavaScript SDK which is used underneath. While the React SDK should enable most use cases when using React, you might be in a situation where you must use the SDK factory functionality directly, for example, to manage [User Consent](#user-consent) and [Logging](#logging) configurations. We discourage direct use of these instances unless necessary.

@@ -1,0 +1,28 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Using the `trackTimeFromStart` method:
+
+This method generates an event which value is the number of milliseconds between app launch and the moment the method is called.
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```java
+SplitRumAgent.trackTimeFromStart("content_loaded");
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+SplitRumAgent.trackTimeFromStart("content_loaded")
+```
+
+  </TabItem>
+</Tabs>

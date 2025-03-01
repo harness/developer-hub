@@ -1,0 +1,64 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<!-- span>{ props.defaultTab ?? 'java' }</span -->
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript (using CommonJS)', value: 'javascript'},
+    {label: 'JavaScript (using CDN)', value: 'cdn'},
+    {label: 'TypeScript (using NPM)', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript
+// The npm package exposes the different components and functions of the library as named exports.
+const { SplitFactoryProvider } = require('@splitsoftware/splitio-react');
+
+// Create the config for the SDK factory.
+const sdkConfig = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'key' // user ID (or account ID etc.) for your application end user
+  }
+};
+
+// Using the SplitFactoryProvider component, MyApp component and all its descendants have access to the SDK functionality.
+const App = () => (
+  <SplitFactoryProvider config={sdkConfig} >
+    <MyApp />
+  </SplitFactoryProvider>
+);
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+// The npm package exposes the different components and functions of the library as named exports.
+import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
+
+// Create the config for the SDK factory.
+const sdkConfig: SplitIO.IBrowserSettings = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_SDK_KEY',
+    key: 'key' // user ID (or account ID etc.) for your application end user
+  }
+};
+
+// Using the SplitFactoryProvider component, MyApp component and all its descendants have access to the SDK functionality.
+const App: React.ComponentType = () => (
+  <SplitFactoryProvider config={sdkConfig} >
+    <MyApp />
+  </SplitFactoryProvider>
+);
+```
+
+info[Notice for TypeScript]
+With the SDK package on NPM, you get the SplitIO namespace, which contains useful types and interfaces for you to use.
+
+Feel free to dive into the declaration files if IntelliSense is not enough!
+:::
+  </TabItem>
+</Tabs>

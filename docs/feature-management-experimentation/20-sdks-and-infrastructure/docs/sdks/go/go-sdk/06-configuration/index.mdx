@@ -1,0 +1,135 @@
+---
+title: Configuration
+sidebar_label: Configuration
+description: Optimize SDK performance in your environment by fine-tuning SDK config settings.
+---
+
+The SDK exposes configuration parameters that you can use to optimize SDK performance. Each parameter is preset to a reasonable default. You can optionally override these default values when instantiating the SDK.
+
+| **Field name(s)** | **Description** | **Default value** |
+| --- | --- | --- | 
+| IPAddress | String in the format xxx.xxx.xxx.xxx containing the IP address that you want to be logged when submitting impressions. | By default, the SDK tries to figure out your IP address automatically. If this does not work, it falls back to *unknown*. |
+| InstanceName | Unique identifier for this instance. | By default, the IP address is taken and the dots are replaced with hyphens. |
+| LabelsEnabled | Whether impressions should include information about the label of the condition that matched. | true |
+| Logger | User custom logger that must implement `logging.LoggerInterface` as described in the `go-toolkit` repo. | nil |
+| LoggerConfig | Struct `logging.LoggerOptions` that allows you to customize the SDK's own logger. | See LoggerOptions section. |
+| OperationMode | Defines how the SDK synchronizes and stores its data. Four operation modes are currently supported: <br />*&nbsp;`inmemory-standalone`<br />*&nbsp;`redis-consumer`<br />*&nbsp;`localhost` | `inmemory-standalone` |
+| Redis | Describes the Redis connection information (host, port, etc.) and allows you to specify a prefix to avoid conflicts with other SDKs. | See Redis section. |
+| SplitFile | Filename to be used when operating in `localhost` mode. | `.splits` within the user's home folder |
+| TaskPeriods | Embedded struct that allows the developer to choose how frequently each synchronization task is run. | See TaskPeriods section. |
+| IPAddressesEnabled | Flag to disable IP addresses and host name from being sent to the Split backend.  | true |
+| ImpressionsMode | Defines how impressions are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG.  In OPTIMIZED mode, only unique impressions are queued and posted to Split; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, all impressions are queued and sent to Split; this is useful for validations. Use DEBUG mode when you want every impression to be logged in Split's user interface when trying to debug your SDK setup.  This setting does not impact the impression listener which receives all generated impressions locally. | `optimized` |
+
+The SDK factory receives two arguments, the API key and a pointer to a configuration structure.
+
+In most of our examples, we pass `nil` to use the default values. If we want to customize the SDK parameters we need to pass in the appropriate struct.
+
+To set each of the parameters defined above, use the following syntax. Use this syntax as an example of how to pass in a custom config.
+
+Note that we are not instantiating the struct on our own, but rather calling a `conf.Default()` method, which returns a valid configuration that you can then tailor to your specific needs.
+
+```go title="Go"
+import (
+	"fmt"
+	"github.com/splitio/go-client/splitio/client"
+	"github.com/splitio/go-client/splitio/conf"
+	"github.com/splitio/go-toolkit/logging"
+)
+ 
+func main() {
+	sdkConf := conf.Default()
+	sdkConf.LoggerConfig.LogLevel = logging.LevelInfo
+	factory, err := client.NewSplitFactory("YOUR_SDK_KEY", sdkConf)
+  
+  // ...
+}
+```
+
+## Advanced configuration
+
+These options are available under the `Advanced` property of the main configuration structure.
+
+| **Field name(s)** | **Description** | **Default value** |
+| --- | --- | --- | 
+| HTTPTimeout | Timeout for HTTP calls in seconds. | 30 |
+| SegmentQueueSize | Number of segments that can be queued for update (set to something greater than the number of segments your org has) | 500 |
+| SegmentWorkers | Number of background tasks for updating segments. Set in conjunction with `SegmentQueueSize` based on the number of segments you have defined. | 10 |
+| ImpressionListener | Custom implementation of impression listener interface. | nil |
+| EventsBulkSize  | Number of events to send per post. | 1000 |
+| EventsQueueSize | Max number of events in the queue. Only in memory mode. | 10000 |
+| ImpressionsQueueSize | Max number of impressions in the queue. Only in memory mode. | 10000 |
+| StreamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | true |
+| FlagSetsFilter | This setting allows the SDK to only synchronize the feature flags in the specified flag sets, avoiding unused or unwanted flags from being synced on the SDK instance, bringing all the benefits from a reduced payload. | empty |
+
+```go title="Go"
+import (
+	"fmt"
+	"github.com/splitio/go-client/splitio/client"
+	"github.com/splitio/go-client/splitio/conf"
+	"github.com/splitio/go-toolkit/logging"
+)
+
+func main() {
+	sdkConf := conf.Default()
+	sdkConf.LoggerConfig.LogLevel = logging.LevelInfo
+    cfg.Advanced.FlagSetsFilter = []string{"backend", "server_side"}
+	factory, err := client.NewSplitFactory("YOUR_SDK_KEY", sdkConf)
+
+  // ...
+}
+```
+
+## Logger configuration
+
+These options customize the logger used by the SDK by default `"github.com/splitio/go-toolkit/logging"`.
+
+| **Field name(s)** | **Description** | **Default value** |
+| --- | --- | --- | 
+|  &nbsp;ErrorWriter<br />&nbsp;WarningWriter<br />&nbsp;InfoWriter<br />&nbsp;DebugWriter<br />&nbsp;VerboseWriter | Each log-level has its own writer (a struct implementing Go's default interface `io.Writer`), meaning each level can be forwarded to a output stream. | By default all levels are configured to use Go's `os.Stdout` to output messages. |
+| LogLevel | Minimum log level that makes it to its writer. Use constants defined in github.com/splitio/go-toolkit/logging: <br />&nbsp;`logging.LevelError`<br />&nbsp;`logging.LevelWarning`<br />&nbsp;`logging.LevelInfo`<br />&nbsp;`logging.LevelDebug`<br />&nbsp;`logging.LevelVerbose` | `logging.LevelError` |
+
+## Redis configuration
+
+`redis-consumer` operation mode depends on Redis to function as the name suggests.
+
+The SDK configuration has the embedded struct `.Redis` where you can set up all of the parameters related to the Redis connection.
+
+| **Field name(s)** | **Description** | **Default value** |
+| --- | --- | --- | 
+| Host | Hostname where the Redis instance is. | localhost  | 
+| Port | HTTP port to be used in the connection | 6379  | 
+| Database | Numeric database to be used | 0 | 
+| Password | Redis cluster password. Leave empty if no password is used. | "" | 
+| Prefix | Best practice is to use a prefix in case the Redis instance is shared by many SDKs. | "" | 
+| TLSConfig | TLS configuration structure (ref: https://golang.org/pkg/crypto/tls/#Config) | False
+
+```go title="Go"
+func main() {
+	cfg := conf.Default()
+	cfg.Redis.Host = "localhost"
+	cfg.Redis.Prefix = "go"
+	cfg.OperationMode = "redis-consumer"
+	factory, err := client.NewSplitFactory("YOUR_SDK_KEY", cfg)
+	if err != nil {
+		fmt.Printf("SDK init error: %s\n", err)
+		return
+	}
+
+	splitClient := factory.Client()
+	err = splitClient.BlockUntilReady(10)
+	if err != nil {
+		fmt.Printf("SDK timeout: %s\n", err)
+		return
+	}
+	// ...
+}
+```
+
+## Task periods
+
+When running in `inmemory-standalone` the SDK uses synchronization tasks that run in the background to keep the feature flags up to date and post impressions to the backend.
+This configuration structure can be used to change the execution period of each of those tasks.
+
+| **Field name(s)** | **Description** | **Default value** |
+| --- | --- | --- | 
+| *&nbsp;SplitSync<br />*&nbsp;SegmentSync<br />*&nbsp;ImpressionSync<br />*&nbsp;GaugeSync<br />*&nbsp;CounterSync<br />*&nbsp;LatencySync<br />*&nbsp;EventsSync | All of these parameters change the time to wait between subsequent executions of each task. | 30 | 

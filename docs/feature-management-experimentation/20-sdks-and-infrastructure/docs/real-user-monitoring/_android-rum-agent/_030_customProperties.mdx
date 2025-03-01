@@ -1,0 +1,66 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Each event for the metrics described above automatically includes a `session_id` property that can be use to filter certain events when defining Split metrics for experimentation purposes. Learn more about [metric definitions and how to define property filters](https://help.split.io/hc/en-us/articles/22005565241101-Metrics)
+
+| **name** | **Description** |
+| --- | --- |
+| session_id | ID of the session in which the event took place. |
+
+Custom properties can be also added to a tracked event, as shown below: 
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```java
+// add a single property
+SplitRumAgent.setProperty("property_name", "property_value");
+
+// add multiple properties
+Map<String, Object> newProperties = new HashMap<>();
+newProperties.put("property_name", "property_value");
+newProperties.put("property_name_2", "property_value_2");
+SplitRumAgent.setProperties(newProperties);
+
+// get all properties
+Map<String, Object> properties = SplitRumAgent.getProperties();
+
+// remove a single property
+SplitRumAgent.removeProperty("property_name_2");
+
+// remove all properties
+SplitRumAgent.removeProperties();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// add a single property
+SplitRumAgent.setProperty("property_name", "property_value")
+
+// add multiple properties
+SplitRumAgent.setProperties(
+  mapOf(
+    "property_name" to "property_value",
+    "property_name_2" to "property_value_2",
+  )
+)
+
+// get all properties
+val properties: Map<String, Object> = SplitRumAgent.getProperties()
+
+// remove a single property
+SplitRumAgent.removeProperty("property_name_2")
+
+// remove all properties
+SplitRumAgent.removeProperties()
+```
+
+  </TabItem>
+</Tabs>

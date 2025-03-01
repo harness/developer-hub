@@ -1,0 +1,93 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+You can initialize the Browser RUM Agent in your code as shown below.
+
+<Tabs
+  groupId="package"
+  values={[
+    {label: 'Using ES modules (NPM package)', value: 'npm'},
+    {label: 'Using CommonJS (NPM package)', value: 'commonjs'},
+    {label: 'Using script tags (CDN version)', value: 'cdn'},
+  ]}>
+  <TabItem value="npm">
+
+```javascript
+import { SplitRumAgent } from '@splitsoftware/browser-rum-agent';
+
+SplitRumAgent
+  .setup('YOUR_SDK_KEY')
+  .addIdentities([
+    { key: 'key', trafficType: 'a_traffic_type' },
+    { key: 'another_key', trafficType: 'another_traffic_type' }
+  ]);
+```
+
+  </TabItem>
+  <TabItem value="commonjs">
+
+```javascript
+const { SplitRumAgent } = require('@splitsoftware/browser-rum-agent');
+ 
+SplitRumAgent
+  .setup('YOUR_SDK_KEY')
+  .addIdentities([
+    { key: 'key', trafficType: 'a_traffic_type' },
+    { key: 'another_key', trafficType: 'another_traffic_type' }
+  ]);
+```
+
+  </TabItem>
+  <TabItem value="cdn">
+
+```html
+<!-- Add the following script tags as high as possible in the `<head>` section of the main page -->
+<script src="https://cdn.split.io/rum-agent/browser-rum-agent-1.0.0.min.js"></script>
+<script>
+  window.SplitRumAgent
+    .setup('YOUR_SDK_KEY')
+    .addIdentities([
+      { key: 'key', trafficType: 'a_traffic_type' },
+      { key: 'another_key', trafficType: 'another_traffic_type' }
+    ]);
+</script>
+```
+
+  </TabItem>
+</Tabs>
+
+Alternatively, you can initialize the Agent in two parts. First, import the Agent early in the code execution order, and then postpone setting the identities until that information is available. 
+
+<Tabs
+  groupId="package"
+  values={[
+    {label: 'Using ES modules (NPM package)', value: 'npm'},
+    {label: 'Using script tags (CDN version)', value: 'cdn'},
+  ]}>
+  <TabItem value="npm">
+  
+```javascript
+import { SplitRumAgent } from '@splitsoftware/browser-rum-agent';
+SplitRumAgent.setup('YOUR_SDK_KEY');
+ 
+// In a different file or part of your code, where the identities are available:
+SplitRumAgent.addIdentity({ key: 'user_id', trafficType: 'user' });
+```
+
+  </TabItem>
+  <TabItem value="cdn">
+
+```html
+<script src="https://cdn.split.io/rum-agent/browser-rum-agent-1.0.0.min.js"></script>
+<script>
+  window.SplitRumAgent.setup('YOUR_SDK_KEY');
+</script>
+
+<!-- Later in the page, anywhere where you can add javascript, add: -->
+<script>
+  window.SplitRumAgent.addIdentity({ key: 'user_id', trafficType: 'user' });
+</script>
+```
+
+  </TabItem>
+</Tabs>

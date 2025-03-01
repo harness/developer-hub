@@ -1,0 +1,94 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+To reduce application build size, the logger is divided into four levels (from high to low): `DebugLogger`, `InfoLogger`, `WarnLogger`, and `ErrorLogger`. Higher log levels write the lower level messages (e.g., `DebugLogger` writes all log messages).
+
+To enable descriptive SDK logging, you need to plug in a logger instance as shown below:
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Logger instance (JavaScript)', value: 'javascript'},
+    {label: 'Logger instance (TypeScript)', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript
+var splitio = require('@splitsoftware/splitio-react-native');
+ 
+var sdk = splitio.SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: splitio.DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
+});
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript
+import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-react-native';
+ 
+const sdk: SplitIO.IBrowserSDK = SplitFactory({ 
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
+});
+```
+
+  </TabItem>
+</Tabs>
+
+You can also enable the SDK logging via a boolean or log level value as `debug` settings, and change it dynamically by calling the SDK Logger API. However, in any case where the proper logger instance is not plugged in, instead of a human readable message, you'll get a code and optionally some params for the log itself. While these logs would be enough for the Split support team, if you find yourself in a scenario where you need to parse this information, you can check the constant files in our javascript-commons repository (where you have tags per version if needed) under the [logger folder](https://github.com/splitio/javascript-commons/blob/master/src/logger/).
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'Logger API (JavaScript)', value: 'javascript'},
+    {label: 'Logger API (TypeScript)', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript
+var splitio = require('@splitsoftware/splitio-react-native');
+
+var sdk = splitio.SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: true // other options are 'ERROR', 'WARN', 'INFO' and 'DEBUG
+});
+
+// Or you can use the Logger API methods which have an immediate effect.
+sdk.Logger.setLogLevel('WARN'); // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'
+sdk.Logger.enable(); // equivalent to `setLogLevel('DEBUG')`
+sdk.Logger.disable(); // equivalent to `setLogLevel('NONE')`
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```typescript
+import { SplitFactory } from '@splitsoftware/splitio-react-native';
+
+const sdk: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: true // other options are 'ERROR', 'WARN', 'INFO' and 'DEBUG
+});
+
+// Or you can use the Logger API methods which have an immediate effect.
+sdk.Logger.setLogLevel('WARN'); // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'
+sdk.Logger.enable(); // equivalent to `setLogLevel('DEBUG')`
+sdk.Logger.disable(); // equivalent to `setLogLevel('NONE')`
+```
+
+  </TabItem>
+</Tabs>

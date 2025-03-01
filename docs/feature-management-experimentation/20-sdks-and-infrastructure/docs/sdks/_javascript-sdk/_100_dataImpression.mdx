@@ -1,0 +1,12 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Data recieved by the impression listener:
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- | 
+| impression | Object | Impression object that has the feature, key, treatment, label, etc. |
+| attributes | Object | A map of attributes passed to `getTreatment`/`getTreatments` (if any). |
+| sdkLanguageVersion | String | The version of the SDK. In this case the language is { props.sdkLanguage ?? 'javascript' } plus the version currently running. |
+
+There are two additional keys on this object, `ip` and `hostname`. They are not used on the client side.

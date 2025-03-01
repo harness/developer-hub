@@ -1,0 +1,178 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Set up a proxy or use an external impression listener.
+---
+
+### Custom impression listener
+
+Split Suite sends impression data back to Split servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression handler*.
+
+The Suite sends the generated impressions to the impression handler right away. As a result, be careful while implementing handling logic to avoid blocking the main thread. Generally speaking, you should create a separate thread to handle incoming impressions. Refer to the snippet below.
+
+```swift title="Swift"
+let config = SplitClientConfig()
+config.impressionListener = { impression in
+        // Do some work on main thread
+        DispatchQueue.global().async {
+            // Do some async work (use this most of the time!)
+        }
+}  
+
+let key: Key = Key(matchingKey: "key")
+let builder = DefaultSplitFactoryBuilder()
+let factory =
+builder.setApiKey(apiKey).setKey(key).setConfig(config).build()
+let client = factory?.client
+```
+
+In regards with the data available here, refer to the `impression` objects interface and description of each field below.
+
+```swift title="Swift"
+  feature: String?
+  keyName: String?
+  treatment: String?
+  time: Int64?
+  changeNumber: Int64?
+  label: String?
+  bucketingKey: String?
+  attributes: [String: Any]?
+```
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- | 
+| keyName | String? | Key which is evaluated. |
+| bucketingKey | String? | Key which is used for bucketing, if provided. |
+| feature | String? | Feature flag which is evaluated. |
+| treatment | String? | Treatment that is returned. |
+| time | Int64? | Timestamp of when the impression is generated. |
+| label | String? | Targeting rule in the definition that matched resulting in the treatment being returned. |
+| changeNumber | Int64? | Date and time of the last change to the targeting rule that the Suite used when it served the treatment. This can be used to help understand when a change made to a feature flag got picked up by the Suite, and whether one of the Suite instances is not picking up changes. |
+| attributes | [String: Any]? | A map of attributes passed to `getTreatment`/`getTreatments`, if any. |
+
+## Instantiate multiple Suite clients
+
+Split Suite supports the ability to create multiple clients, one for each user ID. For example, if you need to roll out feature flags for different user IDs, you can instantiate multiple clients, one for each ID. You can then evaluate flags for each ID using the corresponding client. You can do this as shown in the example below:
+
+```swift title="Swift"
+
+// Create factory
+let key = Key(matchingKey: "anonymous_user")
+let config = SplitClientConfig()
+let factory = DefaultSplitFactoryBuilder().setApiKey(authorizationKey)
+    .setKey(key)
+    .setConfig(config).build()
+
+// Now when you call factory.client, the Suite will create a client
+// using the anonymous_user key
+// you passed in during the factory creation
+let anonymousClient = factory.client
+
+// To create another client for a user instead, pass in a User ID
+let userClient = factory.client(matchingKey: "user_id")
+
+// Add events handler for each client to be notified when Suite is ready
+anonymousClient.on(event: SplitEvent.sdkReady, execute: {
+  // anonymousClient is ready to evaluate
+  // Check treatment for anonymous users
+  let accountPermissioningTreatment = anonymousClient.getTreatment("some_feature_flag")
+})
+
+userClient.on(event: SplitEvent.sdkReady, execute: {
+  // userClient is ready to evaluate
+  // Check treatment for the feature flag and user_id
+  let userPollTreatment = userClient.getTreatment("some_feature_flag")
+})
+
+```
+
+:::info[Number of Suite instances]
+While the Suite does not put any limitations on the number of `SplitFactory` instances that you can create, we strongly recommend keeping the number of Suite factory instances down to **one** or **two**.
+:::
+
+## User consent
+
+By default the Suite will send events to Split cloud, but you can disable this behavior until user consent is explicitly granted.
+
+The `userConsent` configuration parameter lets you set the initial consent status of the Suite, and the `suite.setUserConsent(boolean)` method lets you grant (enable) or decline (disable) dynamic event tracking.
+
+There are three possible initial states:
+ * `'GRANTED'`: The user grants consent for tracking events and impressions. The SDK sends them to Split cloud. This is the default value if `userConsent` param is not defined.
+ * `'DECLINED'`: The user declines consent for tracking events and impressions. The SDK does not send them to Split cloud.
+ * `'UNKNOWN'`: The user neither grants nor declines consent for tracking events and impressions. The SDK tracks them in its internal storage, and eventually either sends them or not if the consent status is updated to `'GRANTED'` or `'DECLINED'` respectively.
+
+The status can be updated at any time with the `setUserConsent` factory method.
+
+Working with user consent is demonstrated below.
+
+```swift title="User consent: Initial config, getter and setter"
+  // Overwrites the initial consent status of the Suite instance, which is 'GRANTED' by default.
+  // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
+  // so the Suite locally tracks data but not send it to Split cloud until consent is changed to 'GRANTED'.
+  let sdkConfig = SplitClientConfig()
+  sdkConfig.userConsent = .unknown
+
+  // Split SDK key
+  let sdkKey = "YOUR_SDK_KEY"
+  let matchingKey = Key(matchingKey: "key")
+
+  // Create Suite
+  let suite = SplitSuite.builder()
+    .apiKey(sdkKey)
+    .key(matchingKey)
+    .config(sdkConfig).build()
+
+  // Changed User Consent status to 'GRANTED'. Data will be sent to Split cloud.
+  suite.setUserConsent(enabled: true);
+  // Changed User Consent status to 'DECLINED'. Data will not be sent to Split cloud.
+  suite.setUserConsent(enabled: false);
+
+  // The 'getUserConsent' method returns User Consent status.
+  // We expose the constants for customer checks and tracking.
+  if (suite.userConsent == UserConsent.declined) {
+      print("USER CONSENT DECLINED");
+  }
+  if (suite.userConsent == UserConsent.granted) {
+      print("USER CONSENT GRANTED");
+  }
+  if (suite.userConsent == UserConsent.unknown) {
+      print("USER CONSENT UNKNOWN");
+  }
+```
+
+## Certificate pinning
+
+The SDK allows you to constrain the certificates that the SDK trusts, using one of the following techniques:
+
+1. Pin a certificate's `SubjectPublicKeyInfo`, by providing the public key as a ___base64 SHA-256___ hash or a ___base64 SHA-1___ hash.
+2. Pin a certificate's entire certificate chain (the root, all intermediate, and the leaf certificate), by providing the certificate chain as a .der file.
+
+Each pin corresponds to a host. For subdomains, you can optionally use wildcards, where `*` will match one subdomain (e.g. `*.example.com`), and `**` will match any number of subdomains (e.g `**.example.com`).
+
+You can optionally configure a handler to execute on certificate validation failure for a host.
+
+To set the SDK to require pinned certificates for specific hosts, add the `CertificatePinningConfig` object to `SplitClientConfig`, as shown below.
+
+```swift title="Swift"
+
+// Define pins for certificate pinning
+let certBuilder = CertificatePinningConfig.builder()
+
+// Provide a base 64 SHA-256 hash
+certBuilder.addPin(host: "www.example1.com", hashKey: "sha256/7HIpactkIAq2Y49orFOOQKurWxmmSFZhBCoQYcRhJ3Y=")
+
+// Provide a certificate file name. This file has to be added to the bundle.
+certBuilder.addPin(host: "www.example2.com", certificateName: "certificate.der")
+
+// Set a failure handler
+certBuilder.certificatePinningConfig { host in
+  print("Failed validation for host \(host)")
+}
+
+// Set the CertificatePinningConfig property for the Split client configuration
+let config = SplitClientConfig()
+config.certificatePinningConfig = certBuilder.build()
+// you can add other configuration properties here
+
+...
+```

@@ -1,0 +1,7 @@
+---
+title: Shutdown
+sidebar_label: Shutdown
+description: Gracefully stop background threads, clear caches, close connections, and flush data.
+---
+
+Due to the nature of PHP and the way HTTP requests are handled, the client is instantiated on every request and automatically destroyed when the request lifecycle comes to an end. The data is stored in Redis, which is populated by an external synchronization tool, so it does not make sense to provide a shutdown method within the PHP client. If desired, you can manually start or stop the Split Synchronizer and flush the Redis database.

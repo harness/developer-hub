@@ -1,0 +1,54 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+## Async/Lazy loading
+
+Including the RUM Agent code in your application bundle will increase its size and impact the captured performance metrics.
+
+If you want to avoid this, you can load the Agent asynchronously by [lazy loading](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading) it, for example by using dynamic imports or async script tags:
+
+<Tabs>
+  <TabItem label="Dynamic import (NPM package)" value="npm">
+
+```javascript
+import('@splitsoftware/browser-rum-agent').then(({ SplitRumAgent }) => {
+  SplitRumAgent
+    .setup('YOUR_SDK_KEY')
+    .addIdentity({ key: 'user_id', trafficType: 'user' });
+}).catch(err => {
+  console.error('Error loading Agent', err);
+});
+```
+
+  </TabItem>
+  <TabItem label="Async script tag (CDN version)" value="cdn">
+
+```html
+<script async src="https://cdn.split.io/rum-agent/browser-rum-agent-1.0.0.min.js" onload="setupRumAgent()"></script>
+<script>
+  function setupRumAgent() {
+    SplitRumAgent
+      .setup('YOUR_SDK_KEY')
+      .addIdentity({ key: 'user_id', trafficType: 'user' });
+  }
+</script>
+```
+
+  </TabItem>
+</Tabs>
+
+:::info[Missing error events on lazy loading]
+When using lazy loading, the RUM Agent will normally not be able to capture any errors that occur before the Agent has finished loading. To solve this, you can place the following script tag in the `<head>` section of your page.
+
+```html
+<script>
+(function(w){
+  var g=w.__error={e1:[],l1:function(e){g.e1.push(e);},e2:[],l2:function(e){g.e2.push(e);}};
+  w.addEventListener('error', g.l1);
+  w.addEventListener('unhandledrejection', g.l2);
+}(window))
+</script>
+```
+
+This script captures regular JavaScript errors and unhandled promise rejections, and stores them in memory. Once the RUM Agent loads, it sends the captured errors to Split services for processing, ensuring that even errors occurring before the Agent is fully loaded are not missed.
+:::

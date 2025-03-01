@@ -1,0 +1,7 @@
+## Automatic metric creation
+
+FME will automatically create [metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) for a subset of the event types received from the {props.rumAgentType} RUM Agent. These "out of the box metrics" are auto-created for you:
+
+<>{props.tableOutOfTheBoxMetrics}</>
+
+For a metric that was auto-created, you can manage the [definition](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) and [alert policies](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) like you would for any other metric. If you delete a metric that was auto-created, Split will not re-create the metric, even if the event type is still flowing.

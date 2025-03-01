@@ -1,0 +1,94 @@
+---
+title: FME iOS RUM Agent
+sidebar_label: iOS RUM Agent
+description: iOS developer reference for working with Real User Metrics (RUM)
+---
+
+import DocCardList from '@theme/DocCardList';
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Introduction,
+  InitializationTwoSteps,
+  InitializationThirdStep,
+  Configuration,
+  DefaultEvents,
+  AutomaticMetricCreation,
+  MoreFeatures,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_templates/_used_by_all_rum_agents/index.mdx";
+
+import Intro               from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_ios-rum-agent/_001_introduction.mdx";
+import Language            from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_ios-rum-agent/_001_language.mdx";
+
+import Import              from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_ios-rum-agent/_002_codeImport.mdx";
+import Initiate            from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_ios-rum-agent/_002_codeInitiate.mdx";
+
+import AddIdentity         from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_ios-rum-agent/_002_codeAddIdentity.mdx";
+
+import ConfigurationList   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_ios-rum-agent/_003_listConfiguration.mdx";
+import CodeConfiguration   from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_ios-rum-agent/_003_codeConfiguration.mdx";
+
+import EventsTable         from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_ios-rum-agent/_020_tableDefaultEvents.mdx";
+
+import MetricsTable        from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_ios-rum-agent/_020_tableOutOfTheBoxMetrics.mdx";
+
+import ClientSdkKeyDetails from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_client-side_sdks/_ClientSdkKeyDetails.mdx";
+
+export const Document = () => SDKDocsBuilder(
+  [
+    [ 
+      Introduction, 
+      {
+        rumAgentType:    "iOS",
+        language:        <Language />,
+      },
+    ],
+    [
+      InitializationTwoSteps,
+      {
+        codeImport:      <Import />,
+        sdkKeyDetails:   <ClientSdkKeyDetails />,
+        codeInitiate:    <Initiate />,
+      },
+    ],
+    [
+      InitializationThirdStep,
+      {
+        codeAddIdentity: <AddIdentity />,
+      },
+    ],
+    [
+      Configuration,
+      {
+        listConfiguration: <ConfigurationList />,
+        codeConfiguration: <CodeConfiguration />,
+      },
+    ],
+    [
+      DefaultEvents,
+      {
+        rumAgentType: "iOS",
+        tableDefaultEvents: <EventsTable />,
+      },
+    ],
+    [
+      AutomaticMetricCreation,
+      {
+        tableOutOfTheBoxMetrics: <MetricsTable />,
+      },
+    ],
+    [
+      MoreFeatures,
+      {},
+    ],
+  ]
+);
+
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []
+
+<DocCardList />

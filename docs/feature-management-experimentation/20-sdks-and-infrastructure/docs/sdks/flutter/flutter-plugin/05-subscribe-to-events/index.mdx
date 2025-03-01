@@ -1,0 +1,54 @@
+---
+title: Subscribe to SDK events
+sidebar_label: Subscribe to SDK events
+description: Improve UX by listening for SDK ready and update events.
+---
+
+You can subscribe to four different callbacks when creating a client.
+
+* `onReadyFromCache`. This event fires once the SDK is ready to evaluate treatments using a locally cached version of your rollout plan from a previous session (which might be stale). If there is data in the cache, this event fires almost immediately, since access to the cache is fast; otherwise, it doesn't fire.
+* `onReady`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Split servers.
+* `onTimeout`. This event fires if there is no cached version of your rollout plan in disk cache, and the SDK could not fully download the data from Split servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted. The SDK continues downloading the rollout plan and fires the `onReady` event when finished. This delayed `onReady` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `onUpdate`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in the Split user interface.
+
+```dart title="Flutter"
+final Splitio _split = Splitio('YOUR_SDK_KEY', 'ACCOUNT_ID');
+
+_split.client(onReady: (client) {
+  /// Client has fetched the most up-to-date definitions.
+}, onReadyFromCache: (client) {
+  /// Fired after the SDK could confirm the presence of the Split data.
+  /// This event fires really quickly, since there's no actual fetching of information.
+  /// Keep in mind that data might be stale, this is NOT a replacement of sdkReady.
+}, onUpdated: (client) {
+  /// Fired each time the client state changes, for example,
+  /// when a feature flag or a segment changes.
+}, onTimeout: (client) {
+  /// Fired if the client was not able to be ready.
+  /// GetTreatment can still be called but the result may be CONTROL.
+});
+```
+
+You can also receive Futures (or a Stream, for the Update event) by accessing the following methods in the client.
+
+```dart title="Flutter"
+_client.whenReady().then((client) {
+  /// Client has fetched the most up-to-date definitions.
+});
+
+_client.whenReadyFromCache((client) {
+  /// Fired after the SDK could confirm the presence of the Split data.
+  /// This event fires really quickly, since there's no actual fetching of information.
+  /// Keep in mind that data might be stale, this is NOT a replacement of sdkReady.
+});
+
+StreamSubscription<SplitClient> streamSubscription = _client.whenUpdated().listen((client) {
+  /// Fired each time the client state changes, for example,
+  /// when a feature flag or a segment changes.
+});
+
+_client.whenTimeout().then((client) {
+  /// Fired if the client was not able to be ready.
+  /// GetTreatment can still be called but the result may be CONTROL.
+});
+```

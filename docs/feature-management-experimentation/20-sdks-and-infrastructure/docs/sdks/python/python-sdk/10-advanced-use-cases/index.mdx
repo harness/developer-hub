@@ -1,0 +1,106 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Set up a proxy or use an external impression listener.
+---
+
+## Network Proxy
+ 
+You can configure proxies by setting the environment variables `HTTP_PROXY` and `HTTPS_PROXY`. The SDK uses those variables to perform the server request.
+
+```python title="Example: Environment variables
+$ export HTTP_PROXY="http://10.10.1.10:3128"
+$ export HTTPS_PROXY="http://10.10.1.10:1080"
+```
+
+## Custom impression listener
+
+Split SDKs send impression data back to Split servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*. Use the SDK's `impressionListener` parameter, where you can add an implementation of `ImpressionListener`. This implementation **must** define the `log_impression` method. It receives data in the following schema.
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- |
+| impression | impression | Impression object that has the feature name, treatment result, label, etc. |
+| attributes | array | A list of attributes passed by the client. |
+| instance-id | string | The IP address of the machine running the SDK. |
+| sdk-language-version | string | The version of the SDK. In this case the language is `python` plus the version. |
+
+How to implement a custom impression listener:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'Multi-threaded', value: 'multi'},
+    {label: 'asyncio', value: 'asyncio'},
+  ]}>
+  <TabItem value="multi">
+```python
+# Import ImpressionListener interface
+from splitio.impressions import ImpressionListener
+
+# Implementation Sample for a Custom Impression Listener
+class CustomImpressionListener(ImpressionListener)
+{
+  def log_impression(self, data):
+    # Custom behavior
+}
+```
+  </TabItem>
+  <TabItem value="asyncio">
+```python
+# Import ImpressionListener interface
+from splitio.impressions import ImpressionListener
+
+# Implementation Sample for a Custom Impression Listener
+class CustomImpressionListener(ImpressionListener)
+{
+  async def log_impression(self, data):
+    # Custom behavior
+}
+```
+  </TabItem>
+</Tabs>
+
+How to attach a custom impression listener:
+
+<Tabs
+  values={[
+    {label: 'Multi-threaded', value: 'multi'},
+    {label: 'asyncio', value: 'asyncio'},
+  ]}>
+  <TabItem value="multi">
+```python
+from splitio import get_factory
+
+factory = get_factory(
+  'YOUR_SDK_KEY',
+  config={
+    # ...
+    'impressionListener': CustomImpressionListener()
+  },
+  # ...
+)
+split = factory.client()
+```
+  </TabItem>
+  <TabItem value="asyncio">
+```python
+from splitio import get_factory_async
+
+async def main():
+    factory = await get_factory_async(
+    'YOUR_SDK_KEY',
+    config={
+        # ...
+        'impressionListener': CustomImpressionListener()
+    },
+    # ...
+    )
+    split = factory.client()
+
+loop = asyncio.new_event_loop()
+loop.run_until_complete(main())
+```
+  </TabItem>
+</Tabs>

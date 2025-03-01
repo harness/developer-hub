@@ -1,0 +1,99 @@
+---
+title: Manager
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+ 
+Use the Split Manager to get a list of feature flags available to the Split client. The Manager uses the data fetched from Split servers upon SDK initialization, so you should wait for the SDK to be ready after initialization (as explained in the [basic use](#basic-use) section) before using the manager; otherwise, the manager functions will return null values and empty arrays.
+
+You can access the manager functionality through the exposed `getSplitNames`, `getSplit`, and `getSplits` helper functions, as explained below.
+
+```typescript title="TypeScript"
+import { getSplitNames, getSplit, getSplits } from '@splitsoftware/splitio-redux'
+
+/** 
+ * Returns the names of feature flags registered with the SDK.
+ *
+ * @return a List of Strings of the feature flag names.
+ */
+const splitNamesList: SplitIO.SplitNames = getSplitNames();
+
+/**
+ * Returns the feature flag registered with the SDK of this name.
+ *
+ * @return SplitView or null.
+ */
+const splitView: SplitIO.SplitView = getSplit(splitName: string);
+ 
+/**
+ * Retrieves the feature flags that are currently registered with the SDK.
+ *
+ * @return List of SplitViews.
+ */
+const splitViewsList: SplitIO.SplitViews = getSplits();
+
+/**
+ * where each SplitView object has the following shape
+ */
+type SplitView = {
+  name: string,
+  trafficType: string,
+  killed: boolean,
+  treatments: Array<string>,
+  changeNumber: number,
+  configs: {
+    [treatmentName: string]: string
+  },
+  defaultTreatment: string,
+  sets: Array<string>
+}
+```
+
+Example usage:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'Client side (browser)', value: 'browser'},
+    {label: 'Server side (Node.js/SSR)', value: 'ssr'},
+  ]}>
+  <TabItem value="browser">
+
+```javascript
+import { getSplitNames, initSplitSdk, getTreatments } from '@splitsoftware/splitio-redux';
+
+// You need to initialize the SDK and wait for readiness to properly use the manager methods.
+store.dispatch(initSplitSdk({ config: sdkBrowserConfig, onReady: onReadyCallback }));
+
+function onReadyCallback() {
+  const myFeatureFlags = getSplitNames();
+
+  store.dispatch(getTreatments({ splitNames: myFeatureFlags }));
+}
+```
+  </TabItem>
+  <TabItem value="ssr">
+```javascript
+import { getSplitNames, initSplitSdk, getTreatments } from '@splitsoftware/splitio-redux';
+
+// You need to initialize the SDK and wait for readiness to properly use the manager methods.
+const initSplitSdkAction = initSplitSdk({ config: sdkNodeConfig, onReady: onReadyCallback });
+let myFeatureNames = [];
+
+function onReadyCallback() {
+  myFeatureNames = getSplitNames();
+}
+
+// Remember that the actions should be dispatched per request, so the results are loaded to the store that you'll return for the requesting user/entity.
+// The SDK should be ready by this point so it can evaluate immediately.
+function requestHandler(params) {
+  store.dispatch(initSplitSdkAction); // Loads Split general data into the store.
+  store.dispatch(getTreatments({ key: params.key, splitNames: myFeatureNames })); // Load the treatments and configs into the store.
+}
+```
+  </TabItem>
+</Tabs>
+
+For more details on about using the Manager, go to [JavaScript SDK Manager](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#manager).

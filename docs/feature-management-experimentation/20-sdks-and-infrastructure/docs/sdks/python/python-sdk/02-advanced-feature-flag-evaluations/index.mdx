@@ -1,0 +1,282 @@
+---
+title: Advanced feature flag evaluations
+sidebar_label: Advanced feature flag evaluations
+description: Set user attributes, evaluate multiple treatments, and retrieve treatment config data.
+---
+
+## Traffic type Attributes
+
+Traffic type attributes are also called custom attributes. If your feature flags [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), then you can pass attributes to the `getTreatment` method.
+
+### Attribute syntax
+
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `get_treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
+
+The `get_treatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
+
+* **Strings:** Use type String.
+* **Numbers:** Use type Integer.
+* **Dates: ** Express the value as the number of seconds since the epoch as seconds in UTC. For example, attribute `registered_date` is `arrow.utcnow().timestamp`, which is an integer.
+* **Booleans:** Use type Boolean.
+* **Sets:** Use type Set.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'Multi-threaded', value: 'multi'},
+    {label: 'asyncio', value: 'asyncio'},
+  ]}>
+  <TabItem value="multi">
+```python
+import arrow
+from splitio import get_factory
+
+factory = get_factory('YOUR_SDK_KEY')
+split = factory.client()
+
+attributes = dict()
+attributes['plan_type'] = 'growth'
+attributes['registered_date'] = arrow.utcnow().timestamp
+attributes['deal_size'] = 1000
+attributes['paying_customer'] = True
+
+treatment = split.get_treatment("key", "FEATURE_FLAG_NAME", attributes)
+
+if treatment == "on":
+    # insert on code here
+elif treatment == "off":
+    # insert off code here
+else:
+    # insert control code here
+```
+  </TabItem>
+  <TabItem value="asyncio">
+```python
+import arrow
+from splitio import get_factory_async
+
+async def main():
+    factory = await get_factory_async('YOUR_SDK_KEY')
+    split = factory.client()
+
+    attributes = dict()
+    attributes['plan_type'] = 'growth'
+    attributes['registered_date'] = arrow.utcnow().timestamp
+    attributes['deal_size'] = 1000
+    attributes['paying_customer'] = True
+
+    treatment = await split.get_treatment("key", "FEATURE_FLAG_NAME", attributes)
+
+    if treatment == "on":
+        # insert on code here
+    elif treatment == "off":
+        # insert off code here
+    else:
+        # insert control code here
+
+loop = asyncio.new_event_loop()
+loop.run_until_complete(main())
+```
+  </TabItem>
+</Tabs>
+
+## Multiple evaluations at once
+
+In some instances, you may want to evaluate treatments for multiple feature flag at once. Use the different variations of `get_treatments` method from the split client to do this.
+* `get_treatments`': Pass a list of the feature flag names you want treatments for.
+* `get_treatments_by_flag_set`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
+* `get_treatments_by_flag_sets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
+
+**Multi-threaded**
+<Tabs
+  values={[
+    {label: 'get_treatments', value: 'get'},
+    {label: 'get_treatments_by_flag_set', value: 'getflag'},
+    {label: 'get_treatments_by_flag_sets', value: 'getflags'},
+  ]}>
+  <TabItem value="get">
+```python
+treatments = split.get_treatments('key', ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'])
+
+print(treatments)
+```
+  </TabItem>
+  <TabItem value="getflag">
+```python
+treatments = split.get_treatments_by_flag_set('key', 'backend')
+
+print(treatments)
+```
+  </TabItem>
+  <TabItem value="getflags">
+```python
+treatments = split.get_treatments_by_flag_sets('key', ['backend', 'server_side'])
+
+print(treatments)
+```
+  </TabItem>
+</Tabs>
+
+**asyncio**
+<Tabs
+  values={[
+    {label: 'get_treatments', value: 'get'},
+    {label: 'get_treatments_by_flag_set', value: 'getflag'},
+    {label: 'get_treatments_by_flag_sets', value: 'getflags'},
+  ]}>
+  <TabItem value="get">
+```python
+treatments = await split.get_treatments('key', ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'])
+
+print(treatments)
+```
+  </TabItem>
+  <TabItem value="getflag">
+```python
+treatments = await split.get_treatments_by_flag_set('key', 'backend')
+
+print(treatments)
+```
+  </TabItem>
+  <TabItem value="getflags">
+```python
+treatments = await split.get_treatments_by_flag_sets('key', ['backend', 'server_side'])
+
+print(treatments)
+```
+  </TabItem>
+</Tabs>
+
+## Get Treatments with Configurations
+
+To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `get_treatment_with_config` method.
+
+This method will return an object containing the treatment and associated configuration.
+
+The config element will be a stringified version of the configuration JSON defined in the Split user interface. If there are no configs defined for a treatment, the SDK returns `None` for the config parameter.
+
+This method takes the exact same set of arguments as the standard `get_treatment` method. See below for usage examples:
+
+<Tabs
+  values={[
+    {label: 'Multi-threaded', value: 'multi'},
+    {label: 'asyncio', value: 'asyncio'},
+  ]}>
+  <TabItem value="multi">
+```python
+
+treatment, raw_config = client.get_treatment_with_config('key', 'FEATURE_FLAG_NAME', attributes)
+configs = json.loads(raw_config)
+
+if treatment == 'on':
+    # insert on code here and use configs here as necessary
+else if treatment == 'off':
+    # insert off code here and use configs here as necessary
+else:
+    # insert control code here
+```
+  </TabItem>
+  <TabItem value="asyncio">
+```python
+
+treatment, raw_config = await client.get_treatment_with_config('key', 'FEATURE_FLAG_NAME', attributes)
+configs = json.loads(raw_config)
+
+if treatment == 'on':
+    # insert on code here and use configs here as necessary
+else if treatment == 'off':
+    # insert off code here and use configs here as necessary
+else:
+    # insert control code here
+```
+  </TabItem>
+</Tabs>
+
+If you need to get multiple evaluations at once, you can also use the `get_treatments_with_config` methods.
+These methods take the exact same arguments as the [get_treatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to SplitResult objects instead of strings. Example usage below:
+
+**Multi-threaded**
+
+<Tabs
+  values={[
+    {label: 'get_treatments_with_config', value: 'withconfig'},
+    {label: 'get_treatments_with_config_by_flag_set', value: 'withconfigbyflagset'},
+    {label: 'get_treatments_with_config_by_flag_sets', value: 'withconfigbyflagsets'},
+  ]}>
+  <TabItem value="withconfig">
+```python
+feature_flag_names = ['FEATURE_FLAG_1', 'FEATURE_FLAG_2']
+split_results = client.get_treatments_with_config('key', feature_flag_names)
+
+ # split_results will have the following form:
+ # {
+ #   'FEATURE_FLAG_1': ('on', '{"color": "red"}'),
+ #   'FEATURE_FLAG_2': ('v2', '{"copy": "better copy"}')
+ # }
+```
+  </TabItem>
+  <TabItem value="withconfigbyflagset">
+```python
+attributes = {}
+result = split.get_treatments_with_config_by_flag_set('key', 'backend', attributes)
+for feature_flag, treatment_with_config in result.items():
+  treatment = treatment_with_config[0]
+  configs = treatment_with_config[1]
+  print("Feature: %s, Treatment: %s, Config: %s" % (feature_flag, treatment, configs))
+```
+  </TabItem>
+  <TabItem value="withconfigbyflagsets">
+```python
+attributes = {}
+result = split.get_treatments_with_config_by_flag_sets('key', 'backend', attributes)
+for feature_flag, treatment_with_config in result.items():
+  treatment = treatment_with_config[0]
+  configs = treatment_with_config[1]
+  print("Feature: %s, Treatment: %s, Config: %s" % (feature_flag, treatment, configs))
+```
+  </TabItem>
+</Tabs>
+
+**asyncio**
+
+<Tabs
+  values={[
+    {label: 'get_treatments_with_config', value: 'withconfig'},
+    {label: 'get_treatments_with_config_by_flag_set', value: 'withconfigbyflagset'},
+    {label: 'get_treatments_with_config_by_flag_sets', value: 'withconfigbyflagsets'},
+  ]}>
+  <TabItem value="withconfig">
+```python
+feature_flag_names = ['FEATURE_FLAG_1', 'FEATURE_FLAG_2']
+split_results = await client.get_treatments_with_config('key', feature_flag_names)
+
+ # split_results will have the following form:
+ # {
+ #   'FEATURE_FLAG_1': ('on', '{"color": "red"}'),
+ #   'FEATURE_FLAG_2': ('v2', '{"copy": "better copy"}')
+ # }
+```
+  </TabItem>
+  <TabItem value="withconfigbyflagset">
+```python
+attributes = {}
+result = await split.get_treatments_with_config_by_flag_set('key', 'backend', attributes)
+for feature_flag, treatment_with_config in result.items():
+  treatment = treatment_with_config[0]
+  configs = treatment_with_config[1]
+  print("Feature: %s, Treatment: %s, Config: %s" % (feature_flag, treatment, configs))
+```
+  </TabItem>
+  <TabItem value="withconfigbyflagsets">
+```python
+attributes = {}
+result = await split.get_treatments_with_config_by_flag_sets('key', ['backend'], attributes)
+for feature_flag, treatment_with_config in result.items():
+  treatment = treatment_with_config[0]
+  configs = treatment_with_config[1]
+  print("Feature: %s, Treatment: %s, Config: %s" % (feature_flag, treatment, configs))
+```
+  </TabItem>
+</Tabs>

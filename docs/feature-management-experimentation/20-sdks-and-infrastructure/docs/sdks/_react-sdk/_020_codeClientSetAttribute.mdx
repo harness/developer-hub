@@ -1,0 +1,280 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript title="Using hooks"
+import { SplitFactoryProvider, useSplitClient, useSplitTreatments } from '@splitsoftware/splitio-react';
+
+// Assuming this is how the user setup the factory:
+const sdkConfig = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_API_KEY',
+    key: 'nicolas@user'
+  }
+};
+// These are the attributes bound to the main client, for key 'nicolas@user'
+const userAttributes = {
+  permissions: ["read", "write"]
+};
+// These are the attributes bound to a secondary client, for key 'nicolas@account'
+const accountAttributes = {
+  permissions: "read"
+};
+// The are additional attributes for the evaluation
+const treatmentAttributes = {
+  deal_size: 10000
+};
+
+const App = () => (
+  <SplitFactoryProvider config={sdkConfig} attributes={userAttributes}>
+    <MyComponent accountId='nicolas@account' />
+  </SplitFactoryProvider>
+);
+
+function MyComponent(props) {
+
+  /*
+   * Using the main client bound to the key passed in the config for evaluations
+   * and the attributes received on SplitFactoryProvider attributes prop.
+   */
+  const { isReady, treatments } = useSplitTreatments({ names: ['USER_FEATURE_FLAG_NAME'], attributes: treatmentAttributes });
+  // Do something with the treatments for the 'nicolas@user' key.
+  // This evaluation combines SplitFactoryProvider component attributes with the ones provided to the useSplitTreatments hook.
+  // Then it evaluates with attributes = { permissions: ["read", "write"], deal_size: 10000 }
+
+  // You can retrieve clients for as many keys as you need, although it's not recommended to create more than you absolutely need to.
+  // Keep in mind that if it is the first time you retrieve a client, it might not be ready yet.
+  const { client: accountClient, isReady } = useSplitClient({ splitKey: this.props.accountId, attributes: accountAttributes });
+
+  if (isReady) {
+    // `accountClient` is ready to evaluate treatments as usual. To see more information about the client API, refer to the docs for JavaScript SDK.
+    // In this evaluation, `treatmentAttributes`` are combined with `accountAttributes`
+    const accountTreatments = accountClient.getTreatments(['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2'], treatmentAttributes);
+
+    // Do something with the treatments for the accountId key.
+    // This evaluation is for another client, so factory attributes stored in main client will not be taking part.
+    // This evaluation combines `treatmentAttributes` with `accountAttributes`.
+    // The evaluation attributes are { permissions: "read", deal_size: 10000 }
+    return (<div>{...}</div>);
+  } else {
+    // `accountClient` is not ready
+    return (<div>{...}</div>);
+  }
+
+}
+```
+
+```javascript title="Using SplitClient component (deprecated)"
+import { SplitFactoryProvider, SplitClient, SplitTreatments } from '@splitsoftware/splitio-react';
+
+// Assuming this is how the user setup the factory:
+const sdkConfig = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_API_KEY',
+    key: 'nicolas@user'
+  }
+};
+// These are the attributes bound to the main client, for key 'nicolas@user'
+const userAttributes = {
+  permissions: ["read", "write"]
+};
+// These are the attributes bound to a secondary client, for key 'nicolas@account'
+const accountAttributes = {
+  permissions: "read"
+};
+// The are additional attributes for the evaluation
+const treatmentAttributes = {
+  deal_size: 10000
+};
+
+const App = () => (
+  <SplitFactoryProvider config={sdkConfig} attributes={userAttributes}>
+    <MyComponent accountId='nicolas@account' />
+  </SplitFactoryProvider>
+);
+
+class MyComponent extends React.Component {
+
+  render() {
+    return (
+      <div>
+        {
+         /*
+          * Using SplitTreatments as a descendant of the SplitFactoryProvider with no SplitClient wrapping it, uses the main client 
+          * bound to the key passed in the config for evaluations and the attributes received on SplitFactoryProvider attributes prop.
+          */
+        }
+        <SplitTreatments names={['USER_FEATURE_FLAG_NAME']} attributes={treatmentAttributes}>
+          {({ isReady, treatments }) => {
+              // Do something with the treatments for the 'nicolas@user' key.
+              // This evaluation combines SplitFactoryProvider component attributes with the ones on the SplitTreatments component.
+              // Then it evaluates with attributes = { permissions: ["read", "write"], deal_size: 10000 }
+          }}
+        </SplitTreatments>
+        {
+         /*
+          * To use another client, use the SplitClient component. Keep in mind that
+          * this client might not be ready yet if it's just being created and still downloading segments
+          * for the new key. Use the `isReady` property to check that.
+          */
+        }
+        <SplitClient splitKey={this.props.accountId} attributes={accountAttributes} >
+          <SplitTreatments names={['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2']} attributes={treatmentAttributes} >
+            {({ isReady, treatments }) => {
+                // Do something with the treatments for the accountId key.
+                // This evaluation is for another client, so attributes stored in main client will not be taking part.
+                // This evaluation combines `treatmentAttributes` with `accountAttributes`.
+                // The evaluation attributes are { permissions: "read", deal_size: 10000 }
+            }}
+          </SplitTreatments>
+        </SplitClient>
+      </div>
+    );
+  }
+}
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+```javascript title="Using hooks"
+import { SplitFactoryProvider, useSplitClient, useSplitTreatments } from '@splitsoftware/splitio-react';
+
+// Assuming this is how the user setup the factory:
+const sdkConfig = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_API_KEY',
+    key: 'nicolas@user'
+  }
+};
+// These are the attributes bound to the main client, for key 'nicolas@user'
+const userAttributes = {
+  permissions: ["read", "write"]
+};
+// These are the attributes bound to a secondary client, for key 'nicolas@account'
+const accountAttributes = {
+  permissions: "read"
+};
+// The are additional attributes for the evaluation
+const treatmentAttributes = {
+  deal_size: 10000
+};
+
+const App = () => (
+  <SplitFactoryProvider config={sdkConfig} attributes={userAttributes}>
+    <MyComponent accountId='nicolas@account' />
+  </SplitFactoryProvider>
+);
+
+function MyComponent(props) {
+
+  /*
+   * Using the main client bound to the key passed in the config for evaluations
+   * and the attributes received on SplitFactoryProvider attributes prop.
+   */
+  const { isReady, treatments } = useSplitTreatments({ names: ['USER_FEATURE_FLAG_NAME'], attributes: treatmentAttributes });
+  // Do something with the treatments for the 'nicolas@user' key.
+  // This evaluation combines SplitFactoryProvider component attributes with the ones provided to the useSplitTreatments hook.
+  // Then it evaluates with attributes = { permissions: ["read", "write"], deal_size: 10000 }
+
+  // You can retrieve clients for as many keys as you need, although it's not recommended to create more than you absolutely need to.
+  // Keep in mind that if it is the first time you retrieve a client, it might not be ready yet.
+  const { client: accountClient, isReady } = useSplitClient({ splitKey: this.props.accountId, attributes: accountAttributes });
+
+  if (isReady) {
+    // `accountClient` is ready to evaluate treatments as usual. To see more information about the client API, refer to the docs for JavaScript SDK.
+    // In this evaluation, `treatmentAttributes`` are combined with `accountAttributes`
+    const accountTreatments = accountClient.getTreatments(['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2'], treatmentAttributes);
+
+    // Do something with the treatments for the accountId key.
+    // This evaluation is for another client, so factory attributes stored in main client will not be taking part.
+    // This evaluation combines `treatmentAttributes` with `accountAttributes`.
+    // The evaluation attributes are { permissions: "read", deal_size: 10000 }
+    return (<div>{...}</div>);
+  } else {
+    // `accountClient` is not ready
+    return (<div>{...}</div>);
+  }
+
+}
+```
+
+```javascript title="Using SplitClient component (deprecated)"
+import { SplitFactoryProvider, SplitClient, SplitTreatments } from '@splitsoftware/splitio-react';
+
+// Assuming this is how the user setup the factory:
+const sdkConfig = {
+  core: {
+    authorizationKey: 'YOUR_CLIENT_SIDE_API_KEY',
+    key: 'nicolas@user'
+  }
+};
+// These are the attributes bound to the main client, for key 'nicolas@user'
+const userAttributes = {
+  permissions: ["read", "write"]
+};
+// These are the attributes bound to a secondary client, for key 'nicolas@account'
+const accountAttributes = {
+  permissions: "read"
+};
+// The are additional attributes for the evaluation
+const treatmentAttributes = {
+  deal_size: 10000
+};
+
+const App = () => (
+  <SplitFactoryProvider config={sdkConfig} attributes={userAttributes}>
+    <MyComponent accountId='nicolas@account' />
+  </SplitFactoryProvider>
+);
+
+class MyComponent extends React.Component {
+
+  render() {
+    return (
+      <div>
+        {
+         /*
+          * Using SplitTreatments as a descendant of the SplitFactoryProvider with no SplitClient wrapping it, uses the main client 
+          * bound to the key passed in the config for evaluations and the attributes received on SplitFactoryProvider attributes prop.
+          */
+        }
+        <SplitTreatments names={['USER_FEATURE_FLAG_NAME']} attributes={treatmentAttributes}>
+          {({ isReady, treatments }) => {
+              // Do something with the treatments for the 'nicolas@user' key.
+              // This evaluation combines SplitFactoryProvider component attributes with the ones on the SplitTreatments component.
+              // Then it evaluates with attributes = { permissions: ["read", "write"], deal_size: 10000 }
+          }}
+        </SplitTreatments>
+        {
+         /*
+          * To use another client, use the SplitClient component. Keep in mind that
+          * this client might not be ready yet if it's just being created and still downloading segments
+          * for the new key. Use the `isReady` property to check that.
+          */
+        }
+        <SplitClient splitKey={this.props.accountId} attributes={accountAttributes} >
+          <SplitTreatments names={['ACCOUNT_FEATURE_FLAG_NAME', 'ACCOUNT_FEATURE_FLAG_NAME_2']} attributes={treatmentAttributes} >
+            {({ isReady, treatments }) => {
+                // Do something with the treatments for the accountId key.
+                // This evaluation is for another client, so attributes stored in main client will not be taking part.
+                // This evaluation combines `treatmentAttributes` with `accountAttributes`.
+                // The evaluation attributes are { permissions: "read", deal_size: 10000 }
+            }}
+          </SplitTreatments>
+        </SplitClient>
+      </div>
+    );
+  }
+}
+```
+
+  </TabItem>
+</Tabs>

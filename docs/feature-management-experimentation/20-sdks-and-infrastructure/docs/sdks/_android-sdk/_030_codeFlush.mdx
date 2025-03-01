@@ -1,0 +1,24 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```java
+client.flush();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+client.flush()
+```
+
+  </TabItem>
+</Tabs>

@@ -1,0 +1,60 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Adding custom properties to tracked events. Tracking custom events. Async loading. Supporting user consent.
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  CustomProperties,
+  CustomEvents,
+  AsyncLazyLoading,
+  UserConsent,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_templates/_used_by_all_rum_agents/index.mdx";
+
+import Properties     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_030_customProperties.mdx";
+
+import LastMethod     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_031_lastMethod.mdx";
+import Track          from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_031_codeTrack.mdx";
+import TrackError     from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_031_codeTrackError.mdx";
+import CustomEvent    from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_031_codeCustomEvent.mdx";
+
+import GetUserConsent from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/real-user-monitoring/_browser-rum-agent/_033_codeGetUserConsent.mdx";
+
+export const Document = (t) => SDKDocsBuilder(
+  [
+    [ 
+      CustomProperties, 
+      { 
+        customProperties: <Properties />,
+       }, 
+    ],
+    [ 
+      CustomEvents, 
+      {
+        lastMethod:      <LastMethod />,
+        codeTrack:       <Track defaultTab={t} />,
+        codeTrackError:  <TrackError defaultTab={t} />,
+        codeCustomEvent: <CustomEvent defaultTab={t} />,
+      },
+    ],
+    [ 
+      AsyncLazyLoading, 
+      {
+      },
+    ],
+    [
+      UserConsent,
+      {
+        codeGetUserConsent: <GetUserConsent defaultTab={t} />,
+      },
+    ],
+  ]
+);
+
+<>{ Document(props.defaultTab).contents }</>
+
+export const toc = Document().toc ?? []

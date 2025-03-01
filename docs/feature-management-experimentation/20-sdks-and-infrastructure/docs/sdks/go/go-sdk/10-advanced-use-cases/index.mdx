@@ -1,0 +1,59 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Set up a proxy or use an external impression listener.
+---
+
+## Network Proxy
+ 
+If you need to use a proxy, you can configure proxies by setting the environment variables `HTTP_PROXY` and `HTTPS_PROXY`. The SDK reads those variables and uses them to perform the server request.
+
+```go title="Example: Environment variables"
+$ export HTTP_PROXY="http://10.10.1.10:3128"
+$ export HTTPS_PROXY="http://10.10.1.10:1080"
+```
+
+## Custom impression listener
+
+Split SDKs send impression data back to Split servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*. Use the SDK's `impressionListener` parameter, where you can add an implementation of `ImpressionListener`. This implementation **must** define the `LogImpression` method. It receives data in the following schema.
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- | 
+| Impression | Impression | Impression object that has the feature flag name, treatment result, label, etc. |
+| Attributes | map[string]interface{} | A list of attributes passed by the client. |
+| InstanceID | string | The IP address of the machine running the SDK. |
+| SDKLanguageVersion | string | The version of the SDK. In this case the language is `go` plus the version. |
+
+Here is an example of how implement a custom impression listener.
+
+```go title="Custom listener example"
+// Import ImpressionListener interface
+import (
+  "github.com/splitio/go-client/splitio/impressionListener"
+)
+
+// Implementation Sample for a Custom Impression Listener
+type CustomImpressionListener struct {
+}
+
+func (i *CustomImpressionListener) LogImpression(data impressionlistener.ILObject) {
+  // Custom behavior
+}
+```
+
+Here is an example of how to implement a custom impression listener.
+
+```go title="Attach a listener"
+import (
+  "github.com/splitio/go-client/splitio/client"
+)
+
+func main() {
+  customImpressionListener := &CustomImpressionListener{}
+  sdkConf := conf.Default()
+  sdkconf.Advanced.ImpressionListener = customImpressionListener
+  factory, err := client.NewSplitFactory("YOUR_SDK_KEY", sdkConf)
+ 
+  // ...
+}
+```

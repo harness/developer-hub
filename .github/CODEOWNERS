@@ -159,6 +159,7 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness
 
 # FF Docs
+
 /docs/feature-flags/ @HarnessTheChaos @jenniferopal @laura-mannus @Kira-Jennings @laura135
 /release-notes/feature-flags.md @HarnessTheChaos @jenniferopal
 /src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
@@ -196,6 +197,7 @@ static/  @rohanmaharjan100 @wei-harness
 
 #FME Docs
 /src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
+/docs/feature-management-experimentation/ @lenasano
 
 # Open Source Docs
 /docs/open-source/ @dewan-ahmed @rustd @SushrutHarness

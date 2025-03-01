@@ -1,0 +1,4 @@
+```swift
+let errorInfo = SplitErrorEvent(message: "Error reaching server", isFatal: false).method("fetchData").code(-100).type(MyErrorEnum.type)
+let result = SplitRum.track(error: SplitErrorEvent(message: "Error tracked manually", isFatal: true))
+```
