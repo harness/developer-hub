@@ -12,7 +12,7 @@ redirect_from:
   - /docs/security-testing-orchestration/sto-techref-category/built-in/iac
 ---
 
-Built-in scanners in STO refer to a selection of [supported scanners](/docs/security-testing-orchestration/whats-supported) that are pre-configured to work seamlessly without requiring additional setup or licensing. These scanners leverage free or open-source versions of the tools, allowing you to perform scans without the need of buying commercial scanner licenses.
+Built-in scanners in STO refer to a selection of [supported scanners](/docs/security-testing-orchestration/whats-supported/sto-deployments) that are pre-configured to work seamlessly without requiring additional setup or licensing. These scanners leverage free or open-source versions of the tools, allowing you to perform scans without the need of buying commercial scanner licenses.
 
 Avoiding detailed configurations and paid license requirements, the built-in scanners in STO can be used for free, with STO automatically handling the configuration for a quick setup. However, please note that while the scanners themselves are free, Harness executions will still incur billing charges. This feature is especially beneficial for teams looking to integrate security scanning into their workflows quickly and cost-effectively. In doing so, STO eliminates the need for detailed setup and ensures that users can start scanning immediately.
 

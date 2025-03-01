@@ -46,7 +46,7 @@ You'll learn how to:
 <details open>
 <summary> Review: what's supported in Harness STO</summary>
 
-Go to [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported) for information about all supported STO features, infrastructures, and third-party scanners.
+Go to [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported/sto-deployments) for information about all supported STO features, infrastructures, and third-party scanners.
 
 </details>
 
@@ -438,7 +438,7 @@ For some examples of integrated workflows, go to:
 
 ### Add more scanner steps
 
-STO supports an extensive set of external scanners for repos, images, and artifacts. Go to [What's supported](/docs/security-testing-orchestration/whats-supported).
+STO supports an extensive set of external scanners for repos, images, and artifacts. Go to [What's supported](/docs/security-testing-orchestration/whats-supported/sto-deployments).
 
 ### Add governance policies
 
