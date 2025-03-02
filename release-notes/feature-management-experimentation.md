@@ -9,7 +9,7 @@ sidebar_position: 11
 
 import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/feature-management-experimentation/rss.xml" />
+
 
 These release notes describe recent changes to Harness Feature Management & Experimentation.
 
@@ -758,9 +758,9 @@ Statistical results in Split are now calculated using Welch's T-Test. Unlike the
 ###### Filter splits
 You can now filter split definitions by name to specify which ones are downloaded to the SDK from a given environment. This is particularly helpful for client side SDKs because it allows you to only select the subset of splits that are used for a specific application.
 #### June 2020
-### 2020-06-23
-#### Management Console
-##### Live tail
+#### 2020-06-23
+##### Management Console
+###### Live tail
 The live tail functionality within the Data hub gives you a single place to view and query all of your impressions and your event data. You will be able to filter this data by a variety of dimensions so you can easily find data that is important to you.
 #### 2020-06-08
 ##### Management Console
