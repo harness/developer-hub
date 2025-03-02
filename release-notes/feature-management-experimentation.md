@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2024-12-13T08:00:00
+date: 2025-03-01T08:00:00
 tags: ["fme", "feature management experimentation"]
 
 sidebar_position: 11
@@ -9,7 +9,7 @@ sidebar_position: 11
 
 import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/infrastructure-as-code-management/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/feature-management-experimentation/rss.xml" />
 
 These release notes describe recent changes to Harness Feature Management & Experimentation.
 
@@ -20,7 +20,27 @@ These release notes describe recent changes to Harness Feature Management & Expe
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
 
-#### Last updated: January 08, 2025
+#### Last updated: February 28, 2025
+## February 2025
+### 2025-02-28
+#### SDK Enhancements
+##### Elixir SDK General Availability
+The [Elixir thin client SDK](https://help.split.io/hc/en-us/articles/26988707417869-Elixir-Thin-Client-SDK) enables developers to integrate Harness FME feature flagging and event tracking directly into their Elixir applications. Leveraging [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd), this lightweight SDK provides highly performant first-class FME support within Elixir.
+
+Thanks are due to the team at Cars.com for the initial implementation, which they contributed to the FME user community. The Harness engineering team then finalized the work, making it generally available as a Harness-supported FME SDK.
+
+###### FME Thin SDK + Splitd Architecture
+
+FME thin client SDKs are known for their lightweight footprint and are always paired with Split Daemon (splitd). Splitd performs the storage and compute intensive operations and easily scales to high traffic volumes.
+
+![Image](https://www.split.io/wp-content/uploads/thin-sdksplitd-fme-server-diagram.png)
+
+Splitd can be set up locally to the consumer application or be deployed as a sidecar to the consumer application container. See the [](https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd)[Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157) documentation for details.
+
+##### Related documentation
+
+*   [Elixir Thin-Client SDK](https://help.split.io/hc/en-us/articles/26988707417869-Elixir-Thin-Client-SDK)
+*   [](https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd)[Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157)
 
 ## January 2025
 ### 2025-01-08
