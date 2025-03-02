@@ -488,7 +488,7 @@ Users can now [manage their alert policy](https://help.split.io/hc/en-us/article
 <details>
 <summary>Expand for 2022 releases</summary>
 
-### December 2022
+#### December 2022
 #### 2022-12-22
 ##### Feature Management Console
 ###### Usability Updates on the Targeting Rules page
@@ -501,7 +501,7 @@ The [Split-ServiceNow Integration Beta](https://help.split.io/hc/en-us/articles/
 ##### Monitoring & Experimentation
 ###### Metric Card Update
 The **Metrics impact** tab now has [redesigned metric cards](https://help.split.io/hc/en-us/articles/360020890491-Understand-impact) to highlight essential information and improve the clarity of experiment data. New visual cues and layout enable users to quickly understand results at a glance.
-### November 2022
+#### November 2022
 #### 2022-11-30
 ##### Experimentation
 ###### Dimensional Analysis
@@ -518,7 +518,7 @@ Admins can now add up to 100 suggested values when creating [custom attributes](
 ##### SDK Enhancements
 ###### Split Evaluator Update
 Users can now calculate flags for [multiple environments](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator#multiple-environments-support) from a single instance of the Evaluator. This will require users to set individual API keys paired with a token for each environment they connect to the evaluator.
-### October 2022
+#### October 2022
 #### 2022-10-26
 ##### SDK Enhancements
 ###### Support for watchOS, macOS, and tvOS
@@ -535,7 +535,7 @@ Split as added a new impression mode, `NONE`. Which can now enable [all Split SD
 ##### Learning and Onboarding
 ###### Split Arcade
 [Split Arcade](https://arcade.split.io/certifications) has added three new courses, **Feature Delivery Foundations for Admins & Product Managers**, **Administering Split**, and **Data Flow & Integrations**. These self-serve certification programs will help users level up their Split knowledge and admin capabilities through interactive tutorials, best practices, and knowledge checks along the way.
-### September 2022
+#### September 2022
 #### 2022-09-27
 ##### UX Enhancements
 ###### Login Page Update
@@ -544,7 +544,7 @@ Split as added a new impression mode, `NONE`. Which can now enable [all Split SD
 ##### Feature Management Console
 ###### Rollout Boards Enhancement - Ready to Clean Up View
 The [Ready to clean up](https://help.split.io/hc/en-us/articles/4405016480269-Use-the-rollout-board) view will filter the Rollout Board to show splits that have been in their status, 100% released, Removed from code, Ramping, or Killed, for at least 100 days. This will allow users to identify feature flags that can be retired which will help make the code more robust and readable.
-### August 2022
+#### August 2022
 #### 2022-08-19
 ##### Feature Management Console
 ###### Create Multiple Attributes
@@ -556,7 +556,7 @@ With [Split's Attribute Dictionary](https://help.split.io/hc/en-us/articles/3600
 ##### SDK Enhancements
 ###### LogLevel Configurations
 LogLevel Configuration gives developers more granularity when choosing what level of logs they want to capture within their [i](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#track)[OS](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#configuration) and [Android](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#configuration) SDKs.
-### July 2022
+#### July 2022
 #### 2022-07-29
 ##### Integrations
 **Google Tag Manage**r
@@ -573,7 +573,7 @@ Our [Get Split](https://docs.split.io/reference/get-split) and [Create Split](ht
 ##### SDK Enhancements
 ###### Client-Side Single Sync
 Client-side single sync allows customers to configure their [React](https://help.split.io/hc/en-us/articles/360038825091-React-SDK), [JavaScript](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK), [Node.js](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK), [React Native](https://help.split.io/hc/en-us/articles/4406066357901-React-Native-SDK), [Redux](https://help.split.io/hc/en-us/articles/360038851551), [JavaScript Browser](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK), and [Angular](https://help.split.io/hc/en-us/articles/6495326064397-Angular-utilities) SDKs to avoid processing updated or new targeting rules during a session. This enables the user experience to stay consistent while reducing performance impact.
-### June 2022
+#### June 2022
 #### 2022-06-16
 ##### Integrations
 ###### Amazon S3 Inbound Integration Update
@@ -602,7 +602,7 @@ Several new additions and enhancements to [Split's Admin API](https://docs.split
 - List Workspaces by name
 - Return API keys when creating new Environments
 - Create and update Environment Permissions
-### April 2022
+#### April 2022
 #### 2022-04-20
 ##### SDK Enhancements
 ###### User Consent Support
@@ -611,7 +611,7 @@ Our [JavaScript](https://help.split.io/hc/en-us/articles/360020448791-JavaScript
 ##### Integrations
 ###### Microsoft Azure DevOps Integration Update
 Split has added functionality to the [Azure DevOps integration](https://help.split.io/hc/en-us/articles/4408032964493-Azure-DevOps). With this update, users will be able to map their Split workspaces to Azure DevOps projects. In Split, users will now be able to see the Azure DevOps work item assignee, work item status, and action.
-### March 2022
+#### March 2022
 #### 2022-03-18
 ##### Management Console
 ###### Rollout Board Enhancement
@@ -620,7 +620,7 @@ Within a status column, you now have additional options to customize the sort or
 ##### Integrations
 ###### Datadog Integration Update
 Split has added functionality to the [Datadog integration](https://help.split.io/hc/en-us/articles/4822553169933-Datadog). With this update, account admins will be able to map the integration between a Split environment and a specific Datadog site. Split now supports the integration for any Datadog Site, including one for the EU.
-### January 2022
+#### January 2022
 #### 2022-01-22
 ##### Management Console
 ###### Rollout Board Enhancement
@@ -637,10 +637,12 @@ Our [iOS](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#user-cons
 ###### Admin Audit Logs
 [Admin Audit Logs](https://help.split.io/hc/en-us/articles/360051392872-Admin-audit-logs) will now capture any time a dimension is created, updated, or deleted.
 </details>
+
 ### 2021 releases
 <details>
 <summary>Expand for 2021 releases</summary>
-### November 2021
+
+#### November 2021
 #### 2021-11-16
 ##### Integration
 ###### Azure DevOps integration
@@ -648,7 +650,7 @@ Once configured, you can create feature flags and view flag statuses along with 
 ##### Management Console
 ###### Rollout Board Enhancement
 Users can now use a variety of out-of-box dimensions to refine your search and narrow down to a specific set of features on the Rollout Board. Visit the [Advanced Filtering documentation](https://help.split.io/hc/en-us/articles/4405016480269-Use-the-rollout-board#filters) to learn more.
-### August 2021
+#### August 2021
 #### 2021-08-10
 ##### Management console
 ###### Statuses and Rollout board
@@ -657,12 +659,12 @@ You can now assign a status to each feature flag upon creation or when updating 
 ##### SDK Enhancement
 ###### React Native SDK
 Our new [SDK for React Native](https://help.split.io/hc/en-us/articles/4406066357901-React-Native-SDK) is powered by Split's core TypeScript modules, and is optimized towards mobile lifecycle and use cases. It also uses a pluggable API to keep your bundle leaner by selecting only the features you need, with the ability to add more as we release them.
-### June 2021
+#### June 2021
 #### 2021-06-08
 ##### Statistics
 ###### Share results from Metrics
 The new [Share results dropdown,](https://help.split.io/hc/en-us/articles/360059696231-Share-Results) in the Metrics tab, allows you to share results from experiments with your teammates. Select the format that best meets their needs (JSON, PDF, CSV, or via URL). Available to all Experimentation customers.
-### April 2021
+#### April 2021
 #### 2021-04-28
 ##### Integrations
 ###### Jira Software Integration Update
@@ -670,12 +672,12 @@ A new Jira integration is now available, with which you can connect and view iss
 ##### REST API Enhancements
 ###### Approvals via the Admin API
 Engineers can now use Admin API endpoints to approve and reject change requests. This will allow teams to externalize approval processes to 3rd party applications already being leveraged for change management.
-### March 2021
+#### March 2021
 #### 2021-03-30
 ##### SDK Enhancements
 ###### Lightweight Browser SDK
 Our new JavaScript SDK optimized for browser usage comes with a smaller footprint and offers a pluggable API so you can include the functionality you need while keeping your bundle leaner.
-### February 2021
+#### February 2021
 #### 2021-02-18
 ##### Statistics
 ###### Split-level Statistical Settings
@@ -688,7 +690,7 @@ Split can now send impression data directly to your S3 bucket. From here, impres
 ##### REST API Enhancements
 ###### User and Group Management via the Admin API
 Engineers can now use Admin API endpoints to manage users and groups within your organization. These endpoints will allow an engineer to programmatically invite and deactivate users, create groups, and assign users to groups.
-### January 2021
+#### January 2021
 #### 2021-01-26
 ##### Integrations
 ###### Amplitude Cohort Integration
@@ -698,15 +700,17 @@ Users can now send Amplitude cohorts to Split as segments as a one-time, hourly,
 ###### Environment Permissions for Admin API Keys
 Users can now scope Admin API keys down to one or more environments in a workspace. With a scoped down API key, engineers can now create automation and jobs for their specific needs without needing to worry about accidentally making changes for splits and segments in other environments
 </details>
+
 ### 2020 releases
 <details>
 <summary>Expand for 2020 releases</summary>
-### December 2020
+
+#### December 2020
 #### 2020-12-15
 #### Integrations
 ###### Amazon S3 Integration
 Split can now ingest events directly from files stored in your S3 bucket. The files inside the provisioned S3 bucket should be in Parquet format with a specific schema (as defined in our documentation) and should not exceed 100MB in size when compressed.
-### November 2020
+#### November 2020
 #### 2020-11-17
 ##### Management Console
 ###### Admin Audit Logs
@@ -714,4 +718,69 @@ Split now logs every time an admin creates, changes, or deletes objects such as 
 ##### Integrations
 ###### Admin Audit Logs Webhook
 Split will now publish all admin audit logs changes to any URL provided by an admin user. Customers will now be able to store all admin changes in an internal system for future auditing purposes.
+#### October 2020
+#### 2020-10-30
+##### Statistics
+###### Multiple Comparison Correction
+You can now apply a statistical correction to control the False Discovery Rate when making multiple comparisons in the same experiment. The significance threshold setting can be adjusted to higher or lower confidence. Using the default significance threshold of 5%, you can be confident that at least 95% of all the changes without meaningful impacts don't incorrectly show as statistically significant. This guarantee applies regardless of how many metrics you have.
+#### September 2020
+#### 2020-09-08
+##### Management Console
+###### Data export
+A new "Data Exports" tab is located within the Data Hub, where you will be able to create and download (CSV) exports for impressions and events for up to 90 days worth of data. Your organization can run 5 reports per day, and will also be able to access previously generated data exports for up to 7 days after their creation date.
+#### August 2020
+#### 2020-08-18
+##### Statistics
+###### Welch's T-Test
+Statistical results in Split are now calculated using Welch's T-Test. Unlike the more commonly used Student's T-Test, Welch's T-Test does not assume that the samples have equal variances. This makes the Welch approach more accurate in cases where there is both a difference between the variances of the samples and an unequal rollout plan, e.g. 5% on, 95% off.
+#### 2020-08-17
+##### SDK Enhancements
+###### Filter splits
+You can now filter split definitions by name to specify which ones are downloaded to the SDK from a given environment. This is particularly helpful for client side SDKs because it allows you to only select the subset of splits that are used for a specific application.
+#### June 2020
+### 2020-06-23
+#### Management Console
+##### Live tail
+The live tail functionality within the Data hub gives you a single place to view and query all of your impressions and your event data. You will be able to filter this data by a variety of dimensions so you can easily find data that is important to you.
+#### 2020-06-08
+##### Management Console
+###### Approval flows environment settings
+You can now set controls for each of your environments to require approvals for an environment as well as restrict who can approve changes in a given environment.
+#### April 2020
+#### 2020-04-23
+##### Management Console
+###### My Work Landing Page
+Upon login users land on the new My Work page to view all your outstanding submissions and approvals in one place as well as any splits, segments, or metrics you own.
+###### Approval flows Admin API support
+You can now use the Admin API to submit changes for approval.
+#### March 2020
+#### 2020-03-26
+##### Integrations
+###### Receive data from Google Analytics
+Using Split's JavaScript SDK, easily send the data captured by Google Analytics - sessions, pageviews, performance and customer events -- to Split. Use these metrics to monitor each feature flag for defects and experiment on new features to determine their impact.
+###### Send data to Google Analytics
+Using Split's JavaScript SDK, easily send impressions and track events to Google Analytics to enrich the data you already capture via Google Analytics.
+#### 2020-03-16
+##### Integrations
+###### mParticle Event Integration
+Split can now be used as an event output via our mParticle integration. With this capability, users can send product action, custom, session start, session end, and screen view events from their mParticle account into Split.
+#### 2020-03-10
+##### Management Console****
+###### Approval Flows
+In addition to commenting on split and segment changes, now you can approve, reject, or withdraw changes. You'll also get notifications of changes and see approvals in audit logs to track past or present changes.
+#### January 2020
+#### 2020-01-31
+##### Feature Experimentation
+###### Recalculate metrics on demand
+You can now recalculate your metrics on demand. If you create a metric or modified a metric after the last updated metrics impact calculation, you can now push a recalculation to get the latest results.
+#### 2020-01-27
+##### SDK Enhancements
+###### React SDK
+The new React SDK provides components and helper functions to access client and manager functionality, simplifying integration into React web apps.
+###### Redux SDK
+The new Redux SDK simplifies loading your flags into a Redux store as well as accessing the client and manager functionality, whether you use Redux for SSR or in the frontend. It also has some extra features for react-redux users!
+#### 2020-01-20
+##### Integrations
+###### mParticle Feed Integration
+Split now integrates with mParticle as a feed. With this capability, users can export their impression data from their Split account into their mParticle account.
 </details>
