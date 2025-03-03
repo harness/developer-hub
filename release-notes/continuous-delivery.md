@@ -61,7 +61,7 @@ Updating an application that contains a `valuesObject` while using an agent olde
 
 #### Fixed Issues
 
-- Previously, a Get Application API call could take approximately 30 seconds to complete. This was fixed in two ways:
+- Previously, when there was an extreme load on the agent, a Get Application API call could take approximately 30 seconds to complete. This was fixed in two ways:
   - A new parameter, `fetchFromHarness`, was introduced in the Get Application API. This setting, when set to `true`, will fetch an application directly from Harness. This is currently fallback if the task times out on the GitOps Agent. Use this with caution as it may not return the latest state of the application.
   - The GitOps Agent Helm Chart has new values to configure the number of task processors: `numFetchers`, `numResponders`, and `numProcessors`. These control the number of task processing routines on the agent and are helpful if there is a high concurrent load on a specific agent.
   - (**CDS-106863**, **ZD-78359**)
