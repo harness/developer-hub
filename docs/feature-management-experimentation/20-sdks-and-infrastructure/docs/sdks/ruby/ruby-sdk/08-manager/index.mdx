@@ -1,0 +1,41 @@
+---
+title: Manager
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+ 
+Use the Split Manager to get a list of feature flags available to the Split client. To instantiate a Manager in your code base, use the same factory that you used for your client.
+
+```ruby
+# Reusing the split_factory created originally.
+split_manager = split_factory.manager
+```
+
+The `Manager` object referenced above has the following methods.
+
+```ruby
+# returns a List of SplitViews or empty.
+list_of_feature_flags = split_manager.splits
+
+# Array of String representing feature flag names
+list_of_feature_flag_names = split_manager.split_names
+
+# returns a SplitView of the 'name' specified or empty.
+feature_flag = split_manager.split(name)
+```
+
+The `feature_flag` object referenced above has the following structure.
+
+```ruby title="Feature flags by Split Manager"
+{
+ :name=>"new_reporting",
+ :traffic_type_name=>"user",
+ :killed=>false,
+ :treatments=>["v1", "v2", "v3"],
+ :change_number=>1469134003507,
+ :configs=>{:on=>"{\"size\":15,\"test\":20}"},
+ :default_treatment=>"off",
+ :sets>=["backend"],
+ :impressions_disabled=>false
+}
+```

@@ -1,0 +1,132 @@
+---
+title: Manager
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+ 
+Use the Split Manager to get a list of feature flags available to the Split client. To instantiate a Manager in your code base, use the same factory that you used for your client.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-suite-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+```java
+SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_API_KEY");
+SplitManager manager = splitFactory.manager();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+val splitFactory: SplitFactory = SplitFactoryBuilder.build(
+    "api_key",
+    Key("key"),
+    applicationContext
+)
+
+val manager: SplitManager = splitFactory.manager()
+```
+  </TabItem>
+</Tabs>
+
+The Manager then has the following methods available.
+
+<Tabs
+  groupId="android-suite-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+```java
+/**
+ * Retrieves the feature flags that are currently registered with the
+ * Suite.
+ *
+ * @return a List of SplitView or empty.
+ */
+List<SplitView> splits();
+
+/**
+ * Returns the feature flags registered with the Suite of this name.
+ *
+ * @return SplitView or null
+ */
+SplitView split(String SplitName);
+
+/**
+ * Returns the names of feature flags registered with the Suite.
+ *
+ * @return a List of String (Split feature names) or empty
+ */
+List<String> splitNames();
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+/**
+ * Retrieves the feature flags that are currently registered with the
+ * Suite.
+ *
+ * @return a List of SplitView or empty.
+ */
+fun splits(): List<SplitView>
+
+/**
+ * Returns the feature flags registered with the Suite of this name.
+ *
+ * @return SplitView or null
+ */
+fun split(SplitName: String): SplitView?
+
+/**
+ * Returns the names of features flags registered with the Suite.
+ *
+ * @return a List of String (feature flag names) or empty
+ */
+fun splitNames(): List<String>
+```
+  </TabItem>
+</Tabs>
+
+The `SplitView` object referenced above has the following structure.
+
+<Tabs
+  groupId="android-suite-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+```java
+public class SplitView {
+    public String name;
+    public String trafficType;
+    public boolean killed;
+    public List<String> treatments;
+    public long changeNumber;
+    public Map<String, String> configs;
+    public String defaultTreatment;
+    public List<String> sets;
+}
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+class SplitView(
+    var name: String?,
+    var trafficType: String?,
+    var killed: Boolean,
+    var treatments: List<String>?,
+    var changeNumber: Long
+    var defaultTreatment: String?
+    var sets: List<String>
+)
+```
+  </TabItem>
+</Tabs>

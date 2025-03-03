@@ -1,0 +1,142 @@
+---
+title: Logging
+sidebar_label: Logging
+description: Explore the range of logging levels for transparent development and debugging.
+---
+ 
+## SDK logging
+
+The .NET SDK uses Common.Logging for logging. It allows you to configure different adapters such as log4net or NLog, and you can also write your own adapter by implementing an `ILoggerFactoryAdapter` interface. For more details, go [here](http://netcommon.sourceforge.net/docs/2.1.0/reference/html/ch01.html).
+
+The following is an example of how to configure NLog and its adapter.
+
+```csharp title="C#"
+var configLog = new NLog.Config.LoggingConfiguration();
+var fileTarget = new NLog.Targets.FileTarget();
+configLog.AddTarget(“file”, fileTarget);
+fileTarget.FileName = @“mylog.log”;
+fileTarget.ArchiveFileName = “ANYFILENAME”;
+fileTarget.LineEnding = NLog.Targets.LineEndingMode.CRLF;
+fileTarget.Layout = “${longdate} ${level: uppercase = true} ${logger} - ${message} - ${exception:format=tostring}“;
+fileTarget.ConcurrentWrites = true;
+fileTarget.CreateDirs = true;
+fileTarget.ArchiveNumbering = NLog.Targets.ArchiveNumberingMode.Date;
+var rule = new NLog.Config.LoggingRule(“*”, NLog.LogLevel.Debug, fileTarget);
+configLog.LoggingRules.Add(rule);
+NLog.LogManager.Configuration = configLog;
+
+System.Collections.Specialized.NameValueCollection properties = new System.Collections.Specialized.NameValueCollection();
+properties[“configType”] = “INLINE”;
+Common.Logging.LogManager.Adapter = new MyAdapter();
+```
+
+The .NET Core SDK uses [Microsoft.Extensions.Logging](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging?view=dotnet-plat-ext-3.0) that works well with a variety of built-in and third-party logging providers.
+
+The following example shows how to include the Split SDK logs in only one line by updating your Startup class.
+
+```csharp title="C#"
+//...
+using Microsoft.Extensions.Logging;
+
+public class Startup
+{
+    //...
+
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+    {
+        //...
+
+        loggerFactory.AddSplitLogs();
+    }
+}
+```
+
+In the following example we use [Serilog](https://github.com/serilog/serilog-extensions-logging-file) to configure text file logging. Of course you can use the tool of your preference.
+
+```csharp title="C#"
+    loggerFactory
+        .AddSplitLogs()
+        .AddFile("Logs/myapp-{Date}.txt", LogLevel.Debug); // calling Serilog AddFile method
+```
+
+## Enable debug logging using Log4net library in ASP .NET Core App
+
+The following is an example that enables debug logging using the Log4net library in the ASP .NET Core app.
+
+**Environment**
+
+log4net 2.0.12
+
+.NET Core 3.1
+
+To use this example, do the following:
+
+1. [Download the project](https://github.com/splitio/split-dotnet-debug-log-examples/tree/main/SplitLog4netExample_NETCore) and open the project from Visual Studio.
+2. Open the SplitInitializer.cs file and replace the "SDK API KEY" text with the server side SDK KEY.
+3. Optionally edit the log4net.config file to change the log file path, name or format.
+
+## Enable debug logging using Log4net library
+
+The following is an example that enables debug logging using the Log4net library in .NET framework console app.
+
+**Environment**
+
+log4net 2.0.8
+
+.NET Framework 4.8
+
+To use this example, do the following:
+
+1. [Download the project](https://github.com/splitio/split-dotnet-debug-log-examples/tree/main/SplitLog4netExample_NETFramework) and open the project from Visual Studio.
+2. Open the Program.cs file and update the apikey variable with the server side SDK KEY.
+3. Optionally edit the log4net.config file to change the log file path, name, or format.
+
+## Custom logging
+
+To use a custom logger, implement the interface `ISplitLogger` which is defined as follows:
+```csharp title="C#"
+public interface ISplitLogger
+{
+    void Debug(string message, Exception exception);
+    void Debug(string message);
+    void Error(string message, Exception exception);
+    void Error(string message);
+    void Info(string message, Exception exception);
+    void Info(string message);
+    void Trace(string message, Exception exception);
+    void Trace(string message);
+    void Warn(string message, Exception exception);
+    void Warn(string message);
+    bool IsDebugEnabled { get; }
+}
+```
+
+The following is an example of how config the customer logger in the SDK:
+
+:::info[Note]
+It's the developer's responsibility to ensure that the following logger methods don't crash, and can handle logging levels if a custom logger is user.
+
+```csharp title="C#"
+using Microsoft.Extensions.Logging;
+
+public class CustomLoggerImplementation : ISplitLogger
+{
+    public void Debug(string message, Exception exception)
+    {
+        // your code
+    }
+
+    // Should implement interface.
+}
+
+// ...
+
+var config = new ConfigurationOptions
+{
+    ...
+    Logger = new CustomLoggerImplementation()
+};
+
+var factory = new SplitFactory("YOUR_SDK_KEY", config);
+var sdk = factory.Client();
+```

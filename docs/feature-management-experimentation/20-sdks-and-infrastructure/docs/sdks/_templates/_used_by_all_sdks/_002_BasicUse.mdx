@@ -1,0 +1,11 @@
+### Basic Use
+
+To make sure the {props.sdk ?? 'SDK'} is fully instantiated before evaluating a feature flag, you should block until the {props.sdk ?? 'SDK'} is ready. The client uses a handler for the `SDK_READY` event triggered by the {props.sdk ?? 'SDK'}.
+
+<>{props.details}</>
+
+When the {props.sdk ?? 'SDK'} is ready, you can get feature flag treatments (for a given user ID) and adjust code execution paths depending on different treatment results, as shown below. (Don't forget to handle the feature flag's `'CONTROL'` treatment.)
+
+<div>{props.codeGetTreatment}</div>
+
+<>{props.notes}</>

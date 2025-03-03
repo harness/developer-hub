@@ -1,0 +1,128 @@
+---
+title: Manager
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+ 
+Use the Split Manager to get a list of feature flags available to the Split client.
+
+To instantiate a Manager in your code base, use the same factory that you used for your client.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]}>
+  <TabItem value="javascript">
+```javascript
+var factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY'
+  }
+});
+
+var manager = factory.manager();
+
+manager.once(manager.Event.SDK_READY, function() {
+  // Once it's ready, use the manager
+});
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+const factory: SplitIO.ISDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY'
+  }
+});
+
+const manager: SplitIO.IManager = factory.manager();
+
+manager.once(manager.Event.SDK_READY, function() {
+  // Once it's ready, use the manager
+});
+```
+  </TabItem>
+</Tabs>
+
+The Manager instance has the following methods available.
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]}>
+  <TabItem value="javascript">
+```javascript
+/**
+ * Returns the feature flag registered with the SDK of this name.
+ *
+ * @return SplitView or null.
+ */
+var splitView = manager.split('FEATURE_FLAG_NAME');
+
+/**
+ * Retrieves the feature flags that are currently registered with the
+ * SDK.
+ *
+ * returns a List of SplitViews.
+ */
+var splitViewsList = manager.splits();
+
+/**
+ * Returns the names of feature flags registered with the SDK.
+ *
+ * @return a List of Strings of the feature flag names.
+ */
+var splitNamesList = manager.names();
+```
+  </TabItem>
+  <TabItem value="typescript">
+```javascript
+/**
+ * Returns the feature flag registered with the SDK of this name.
+ *
+ * @return SplitView or null.
+ */
+var splitView: SplitIO.SplitView = manager.split('FEATURE_FLAG_NAME');
+
+/**
+ * Retrieves the feature flags that are currently registered with the
+ * SDK.
+ *
+ * returns a List of SplitViews.
+ */
+var splitViewsList: SplitIO.SplitViews = manager.splits();
+
+/**
+ * Returns the names of feature flags registered with the SDK.
+ *
+ * @return a List of Strings of the features' names.
+ */
+var splitNamesList: SplitIO.SplitNames = manager.names();
+```
+  </TabItem>
+</Tabs>
+
+The `SplitView` object referenced above has the following structure:
+
+```typescript title="TypeScript"
+type SplitView = {
+  name: string,
+  trafficType: string,
+  killed: boolean,
+  treatments: Array<string>,
+  changeNumber: number,
+  configs: {
+    [treatmentName: string]: string
+  },
+  defaultTreatment: string,
+  sets: Array<string>,
+  impressionsDisabled: boolean
+}
+```

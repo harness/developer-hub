@@ -1,0 +1,34 @@
+---
+title: Manager
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+ 
+Use these methods on Splitio instance to get a list of the feature flags available to the Split client.
+
+```dart title="Flutter"
+
+/// Retrieves the feature flags that are currently registered with the SDK.
+Future<List<SplitView>> splits();
+
+/// Returns the feature flags registered with the SDK of this name.
+Future<SplitView?> split(String splitName);
+
+/// Returns the names of feature flags registered with the SDK.
+Future<List<String>> splitNames();
+```
+
+The `SplitView` class referenced above has the following structure:
+
+```dart title="Flutter"
+class SplitView {
+  String name;
+  String trafficType;
+  bool killed = false;
+  List<String> treatments = [];
+  int changeNumber;
+  Map<String, String> configs = {};
+  List<String> sets = [];
+  String defaultTreatment;
+}
+```

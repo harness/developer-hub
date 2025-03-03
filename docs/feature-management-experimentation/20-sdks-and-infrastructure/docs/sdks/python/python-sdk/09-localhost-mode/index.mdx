@@ -1,0 +1,387 @@
+---
+title: Localhost mode
+sidebar_label: Localhost mode
+description: Develop and test without an internet connection. Read flag and segment definitions from a file.
+---
+
+A developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the Split SDK can be started in **localhost** mode (aka off-the-grid mode). In this mode, the SDK neither polls nor updates Split servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. To use the SDK in localhost mode, replace the SDK Key with "localhost", as shown in the example below:
+
+With this mode, you can instantiate the SDKS using one of the following methods:
+
+* JSON: Full support, for advanced cases or replicating an environment by pulling rules from the Split cloud (from version `9.4.0`).
+* YAML: Supports dynamic configs, individual targets, and default rules (from version `8.0.0`).
+* .split: Legacy option, only treatment result.
+
+## JSON
+
+Since version `9.4.0`, our SDK supports localhost mode by using the JSON format. This version allows the user to map feature flags and segment definitions in the same format as the APIs that receive the data. This mode needs the following extra configuration to be set:
+
+| **Name** | **Description** | **Type** |
+| --- | --- | --- |
+| splitFile | Indicates the path of the feature flag file location to read | string |
+| segmentDirectory | Indicates the path where all the segment files are located | string |
+| localhostRefreshEnabled | Flag to run synchronization refresh for feature flags and segments in localhost mode. | bool |
+
+### splitFile
+
+The following splitFile is a JSON that represents a SplitChange:
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'SplitChange Schema', value: 'splitchange'},
+    {label: 'Split Schema', value: 'split'},
+    {label: 'JSON example', value: 'json'},
+  ]}>
+  <TabItem value="splitchange">
+```python
+class SplitChange(object):
+    """SplitChange class"""
+
+    @prperty
+    def splits(self):
+    """return splits"
+        return self._splits
+
+    @property
+    def since(self):
+    """return since epoch time"""
+        return self._since
+
+    @property
+    def till(self)
+    """return till epoch time"""
+        return self._till
+```
+  </TabItem>
+  <TabItem value="split">
+```python
+class Split(object):
+    """Split model object."""
+
+    @property
+    def name(self):
+        """Return name."""
+        return self._name
+
+    @property
+    def seed(self):
+        """Return seed."""
+        return self._seed
+
+    @property
+    def algo(self):
+        """Return hash algorithm."""
+        return self._algo
+
+    @property
+    def killed(self):
+        """Return whether the feature flag has been killed."""
+        return self._killed
+
+    @property
+    def default_treatment(self):
+        """Return the default treatment."""
+        return self._default_treatment
+
+    @property
+    def traffic_type_name(self):
+        """Return the traffic type of the feature flag."""
+        return self._traffic_type_name
+
+    @property
+    def status(self):
+        """Return the status of the feature flag."""
+        return self._status
+
+    @property
+    def change_number(self):
+        """Return the change number of the feature flag."""
+        return self._change_number
+
+    @property
+    def conditions(self):
+        """Return the condition list of the feature flag."""
+        return self._conditions
+
+    @property
+    def traffic_allocation(self):
+        """Return the traffic allocation percentage of the feature flag."""
+        return self._traffic_allocation
+
+    @property
+    def traffic_allocation_seed(self):
+        """Return the traffic allocation seed of the feature flag."""
+        return self._traffic_allocation_seed
+```
+  </TabItem>
+  <TabItem value="json">
+```json
+{
+  "splits": [
+    {
+      "trafficTypeName": "user",
+      "name": "feature_flag_1",
+      "trafficAllocation": 100,
+      "trafficAllocationSeed": -1364119282,
+      "seed": -605938843,
+      "status": "ACTIVE",
+      "killed": false,
+      "defaultTreatment": "off",
+      "changeNumber": 1660326991072,
+      "algo": 2,
+      "configurations": {},
+      "conditions": [
+        {
+          "conditionType": "ROLLOUT",
+          "matcherGroup": {
+            "combiner": "AND",
+            "matchers": [
+              {
+                "keySelector": {
+                  "trafficType": "user",
+                  "attribute": null
+                },
+                "matcherType": "IN_SEGMENT",
+                "negate": false,
+                "userDefinedSegmentMatcherData": {
+                  "segmentName": "segment_1"
+                },
+                "whitelistMatcherData": null,
+                "unaryNumericMatcherData": null,
+                "betweenMatcherData": null,
+                "booleanMatcherData": null,
+                "dependencyMatcherData": null,
+                "stringMatcherData": null
+              }
+            ]
+          },
+          "partitions": [
+            {
+              "treatment": "on",
+              "size": 0
+            },
+            {
+              "treatment": "off",
+              "size": 100
+            }
+          ],
+          "label": "in segment segment_1"
+        },
+        {
+          "conditionType": "ROLLOUT",
+          "matcherGroup": {
+            "combiner": "AND",
+            "matchers": [
+              {
+                "keySelector": {
+                  "trafficType": "user",
+                  "attribute": null
+                },
+                "matcherType": "ALL_KEYS",
+                "negate": false,
+                "userDefinedSegmentMatcherData": null,
+                "whitelistMatcherData": null,
+                "unaryNumericMatcherData": null,
+                "betweenMatcherData": null,
+                "booleanMatcherData": null,
+                "dependencyMatcherData": null,
+                "stringMatcherData": null
+              }
+            ]
+          },
+          "partitions": [
+            {
+              "treatment": "on",
+              "size": 50
+            },
+            {
+              "treatment": "off",
+              "size": 50
+            }
+          ],
+          "label": "default rule"
+        }
+      ]
+    }
+  ],
+  "since": -1,
+  "till": 1660326991072
+}
+```
+  </TabItem>
+</Tabs>
+
+### segmentDirectory
+
+The provided segment directory must have the JSON files of the corresponding segment linked to previous feature flag definitions. According to the Feature flag file sample above: `feature_flag_1` has `segment_1` linked. That means that the segmentDirectory must have `segment_1` definition.
+
+
+<Tabs
+  values={[
+    {label: 'SegmentChange Schema', value: 'segmentchange'},
+    {label: 'JSON example', value: 'json'},
+  ]}>
+  <TabItem value="segmentchange">
+```python
+class SegmentChange(object):
+    """SegmentChange object class."""
+
+    @property
+    def name(self):
+        """Return segment name."""
+        return self._name
+
+    @property
+    def added(self):
+        """Return the segment keys to be added."""
+        return self._added
+
+    @property
+    def removed(self):
+        """Return the segment keys to be removed."""
+        return self._removed
+
+    @property
+    def since(self):
+    """return since epoch time"""
+        return self._since
+
+    @property
+    def till(self)
+    """return till epoch time"""
+        return self._till
+```
+  </TabItem>
+  <TabItem value="json">
+```json
+{
+  "name": "segment_1",
+  "added": [
+    "example1",
+    "example2"
+  ],
+  "removed": [],
+  "since": -1,
+  "till": 1585948850110
+}
+```
+  </TabItem>
+</Tabs>
+
+**Init example**
+
+<Tabs
+  values={[
+    {label: 'Multi-threaded', value: 'multi'},
+    {label: 'asyncio', value: 'asyncio'},
+  ]}>
+  <TabItem value="multi">
+```python
+config = {
+            'splitFile': 'parentRoot/splits.json',
+            'segmentDirectory': '/parentRoot/segments',
+            'localhostRefreshEnabled': True
+        }
+factory = get_factory('localhost', config = config)
+
+try:
+    factory.block_until_ready(5) # wait up to 5 seconds
+except TimeoutException:
+    print("SDK TIMED OUT")
+
+```
+  </TabItem>
+  <TabItem value="asyncio">
+```python
+from splitio import get_factory_async
+
+async def main():
+    config = {
+                'splitFile': 'parentRoot/splits.json',
+                'segmentDirectory': '/parentRoot/segments',
+                'localhostRefreshEnabled': True
+            }
+    factory = await get_factory_async('localhost', config = config)
+
+    try:
+        await factory.block_until_ready(5) # wait up to 5 seconds
+    except TimeoutException:
+        print("SDK TIMED OUT")
+
+loop = asyncio.new_event_loop()
+loop.run_until_complete(main())
+
+```
+  </TabItem>
+</Tabs>
+
+## YAML
+
+Since version 8.0.0, our SDK supports a new type of localhost feature flag definition file, using the YAML format. This new format allows the user to map different keys to different treatments within a single feature flag, and also add configurations to them. The new format is a list of single-key maps (one per mapping feature-flag-keys-config), defined as follows:
+
+```yaml title="YAML"
+# - feature_flag_name:
+#     treatment: "treatment_applied_to_this_entry"
+#     keys: "single_key_or_list"
+#     config: "{\"desc\" : \"this applies only to ON treatment\"}"
+
+- my_feature_flag:
+    treatment: "on"
+    keys: "key"
+    config: "{\"desc\" : \"this applies only to ON treatment\"}"
+- some_other_feature_flag:
+    treatment: "off"
+- my_feature_flag:
+    treatment: "off"
+```
+
+In the example above, we have 3 entries:
+ * The first entry defines that for feature flag `my_feature_flag`, the key `key` will return the treatment `on` and the `on` treatment will be tied to the configuration `{"desc" : "this applies only to ON treatment"}`.
+ * The second entry defines that the feature flag `some_other_feature_flag` will always return the `off` treatment and no configuration.
+ * The third entry defines that `my_feature_flag` will always return `off` for all keys that don't match another entry (in this case, any key other than `key`).
+
+## .SPLIT file
+
+<Tabs
+  values={[
+    {label: 'Multi-threaded', value: 'multi'},
+    {label: 'asyncio', value: 'asyncio'},
+  ]}>
+  <TabItem value="multi">
+```python
+from splitio import get_factory
+
+factory = get_factory('localhost')
+split = factory.client()
+```
+  </TabItem>
+  <TabItem value="asyncio">
+```python
+from splitio import get_factory_async
+
+async def main():
+    factory = await get_factory_async('localhost')
+    split = factory.client()
+
+loop = asyncio.new_event_loop()
+loop.run_until_complete(main())
+```
+  </TabItem>
+</Tabs>
+
+In this mode, the SDK loads a mapping of Feature Flag name to treatment from a file at `$HOME/.split`. For a given feature flag, the treatment specified in the file is returned for every customer. Should you want to use another file, you just need to set the `splitFile` key in the configuration dictionary passed at instantiation time, to the full path of the desired file.
+
+
+The following is a sample `.split` file. The format of this file is two columns separated by a whitespace. The left column is the feature flag name, and the right column is the treatment name.
+
+```bash title="Shell"
+# sdk.get_treatment(*, reporting_v2) returns 'on'
+reporting_v2 on
+
+double_writes_to_cassandra off
+
+new-navigation v3
+```

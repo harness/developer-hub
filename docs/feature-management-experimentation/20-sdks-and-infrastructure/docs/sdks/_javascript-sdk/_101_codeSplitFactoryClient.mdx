@@ -1,0 +1,94 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="javascript-sdk-lang-choice"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'TypeScript', value: 'typescript'},
+  ]} defaultValue={ props.defaultTab ?? 'javascript' }>
+  <TabItem value="javascript">
+
+```javascript
+
+// Instantiate the SDK once and provide one of the user IDs (and
+// a traffic type) that you plan to release to. It doesn't
+// matter which you pick to start off with.
+var factory = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'CUSTOMER_ID',   // This is the user ID
+    trafficType: 'user'   // This is optional, the "user" traffic type is default
+  },
+});
+ 
+// When you call factory.client(), the SDK will create a client using
+// the key (user ID) passed in during factory creation.
+var user_client = factory.client();
+ 
+// To create another client for a different key (user ID),
+// pass in the new user ID to the factory.client() method.
+// This is only valid after at least one client has been initialized.
+var account_client = factory.client('ACCOUNT_ID');
+// (You could also specify a different traffic type.)
+//var account_client = factory.client('ACCOUNT_ID', 'account');
+ 
+// Evaluate the 'user-poll' feature flag for the 'CUSTOMER_ID'
+var user_poll_treatment = user_client.getTreatment('user-poll');
+ 
+// Evaluate the 'account-permissioning' feature flag for the 'ACCOUNT_ID'
+var account_permissioning_treatment = account_client.getTreatment('account-permissioning');
+
+// Track events for the 'user' traffic type
+user_client.track('user', 'PAGELOAD', 7.86);
+ 
+// or track events for the 'account' traffic type
+account_client.track('account', 'ACCOUNT_CREATED');
+```
+
+  </TabItem>
+  <TabItem value="typescript">
+
+// Instantiate the SDK once and provide one of the user IDs (and
+// a traffic type) that you plan to release to. It doesn't
+// matter which you pick to start off with.
+```typescript
+const sdk: SplitIO.IBrowserSDK = SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'CUSTOMER_ID' 
+    trafficType: 'user'   // This is optional, the "user" traffic type is default
+  },
+});
+ 
+// When you call factory.client(), the SDK will create a client using
+// the key (user ID) passed in during factory creation.
+const user_client: SplitIO.IBrowserClient = factory.client();
+ 
+// To create another client for a different key (user ID),
+// pass in the new user ID to the factory.client() method.
+// This is only valid after at least one client has been initialized.
+const account_client: SplitIO.IBrowserClient =
+  factory.client('ACCOUNT_ID'); 
+// (You could also specify a different traffic type.)
+//const account_client: SplitIO.IBrowserClient =
+//  factory.client('ACCOUNT_ID', 'account'); 
+
+ 
+// Evaluate the 'user-poll' feature flag for 'CUSTOMER_ID'
+const user_poll_treatment: SplitIO.Treatment =
+  user_client.getTreatment('user-poll');
+ 
+// Evaluate the 'account-permissioning' feature flag for 'ACCOUNT_ID'
+const account_permissioning_treatment: SplitIO.Treatment =
+  account_client.getTreatment('account-permissioning');
+
+// Track events for the 'user' traffic type
+user_client.track('user', 'PAGELOAD', 7.86);
+ 
+// or track events for the 'account' traffic type
+account_client.track('account', 'ACCOUNT_CREATED');
+```
+
+  </TabItem>
+</Tabs>

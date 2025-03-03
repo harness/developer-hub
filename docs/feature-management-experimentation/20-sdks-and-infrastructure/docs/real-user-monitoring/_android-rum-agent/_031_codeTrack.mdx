@@ -1,0 +1,47 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```java
+Map<String, Object> properties = new HashMap<>();
+properties.put("property_name", "property_value");
+
+// Track event
+SplitRumAgent.track("event_type_id");
+
+// Track event with value
+SplitRumAgent.track("event_type_id", 100L);
+
+// Track event with properties
+SplitRumAgent.track("event_type_id", properties);
+
+// Track event with value and properties
+SplitRumAgent.track("event_type_id", 100L, properties);
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+// Track event
+SplitRumAgent.track("event_type_id")
+
+// Track event with value
+SplitRumAgent.track("event_type_id", 100)
+
+// Track event with properties
+SplitRumAgent.track("event_type_id", mapOf("property_name" to "property_value"))
+
+// Track event with value and properties
+SplitRumAgent.track("event_type_id", 100, mapOf("property_name" to "property_value"))
+```
+
+  </TabItem>
+</Tabs>

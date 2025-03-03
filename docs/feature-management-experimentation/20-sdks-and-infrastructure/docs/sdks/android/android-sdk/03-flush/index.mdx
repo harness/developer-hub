@@ -1,0 +1,30 @@
+---
+title: Flush
+sidebar_label: Flush
+description: Immediately send all impression and event data to Harness servers.
+---
+
+import {
+  SDKDocsBuilder
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_all_sdks/_SDKDocsBuilder.mdx";
+
+import {
+  Flush,
+} from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_templates/_used_by_all_sdks/index.mdx";
+
+import Notes from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_android-sdk/_030_notes.mdx";
+import Code  from "@site/docs/feature-management-experimentation/20-sdks-and-infrastructure/docs/sdks/_android-sdk/_030_codeFlush.mdx";
+
+export const Document = (t) => SDKDocsBuilder(
+  [
+    [
+      Flush,
+      {
+        notes:     <Notes />,
+        codeFlush: <Code defaultTab={t} />,
+      },
+    ],
+  ]
+);
+
+<>{ Document(props.defaultTab).contents }</>

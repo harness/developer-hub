@@ -1,0 +1,47 @@
+---
+title: Advanced use cases
+sidebar_label: Advanced use cases
+description: Set up a proxy or use an external impression listener.
+---
+
+## Custom impression listener
+
+Split SDKs send impression data back to Split servers periodically when evaluating feature flags. To send this information to a location of your choice, define an *impression listener*. Use the `impressionListener` parameter, where you can provide an implementation of an `ImpressionListener`. This implementation **must** define the `accept` method, with the signature `public function accept(Impression $impression, ?array $attributes)` and with parameters as defined below.
+
+| **Name** | **Type** | **Description** |
+| --- | --- | --- | 
+| impression | SplitIO\ThinSdk\Models\Impression | Impression object that has the feature name, treatment result, label, etc. |
+| attributes | ?array | A list of attributes passed by the client. |
+
+Here is an example of how to implement a custom impression listener.
+
+```php title="PHP"
+use \SplitIO\ThinSdk\Utils\ImpressionListener;
+use \SplitIO\ThinSdk\Models\Impression;
+
+class CustomListener implements ImpressionListener
+{
+    public function accept(Impression $i, ?array $a)
+    {
+        echo "got an impression for: key=".$i->getKey()
+            ." feat=".$i->getFeature()
+            ." treatment=".$i->getTreatment()
+            ." label=".$i->getLabel()
+            ." cn=".$i->getChangeNumber()
+            ." #attrs=".(($a == null) ? 0 : count($a))."\n";
+    }
+}
+```
+
+Here is an example of how to attach a custom impression listener.
+
+```php title="PHP"
+$sdkConfig = [
+   'transfer' => ['address' => '/var/run/splitd.sock'],
+   'logging' => ['psr-instance' => $myLogger],
+   'utils' => ['impressionListener' => new \App\Utils\CustomListener()], # <-- custom listener
+];
+ 
+$splitFactory = \SplitIO\ThinSdk\Factory::withConfig($sdkConfig);
+$splitClient = $splitFactory->client();
+```

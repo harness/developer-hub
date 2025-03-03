@@ -1,0 +1,69 @@
+---
+title: Manager
+sidebar_label: Manager
+description: Access your rollout plan data (feature flag metadata and targeting rules) using the Manager object.
+---
+ 
+Use the Split Manager to get a list of feature flags available to the Split client.
+
+To instantiate a Manager in your code base, use the same factory that you used for your client.
+
+```swift title="Swift"
+let apiKey: String = "YOUR_API_KEY"
+let key: Key = Key(matchingKey: "key")
+let config = SplitClientConfig()
+let builder = DefaultSplitFactoryBuilder()
+let factory =
+builder.setApiKey(apiKey).setKey(key).setConfig(config).build()
+let manager = factory?.manager
+```
+
+The Manager then has the following properties and methods available.
+
+```swift title="Swift"
+/**
+ * Retrieves the feature flags that are currently registered with the
+ * Suite.
+ *
+ * @return an array of SplitView or empty.
+ */
+var splits: [SplitView] { get }
+
+/**
+ * Returns the names of feature flags registered with the Suite.
+ *
+ * @return an array of String (feature flag names) or empty
+ */
+var splitNames: [String] { get }
+
+/**
+ * Returns the feature flag registered with the Suite of this name.
+ *
+ * @return SplitView or nil
+ */
+func split(featureName: String) -> SplitView?
+```
+
+The `SplitView` class referenced above has the following structure.
+
+```swift title="Swift"
+public class SplitView: NSObject, Codable {
+
+    @objc public var name: String?
+    @objc public var trafficType: String?
+    @objc public var defaultTreatment: String?
+    public var killed: Bool?
+    @objc public var isKilled: Bool {
+        return killed ?? false
+    }
+    @objc public var treatments: [String]?
+    @objc public var sets: [String]?
+    public var changeNumber: Int64?
+
+    @objc public var changeNum: NSNumber? {
+        return changeNumber as NSNumber?
+    }
+    @objc public var configs: [String: String]?
+
+}
+```

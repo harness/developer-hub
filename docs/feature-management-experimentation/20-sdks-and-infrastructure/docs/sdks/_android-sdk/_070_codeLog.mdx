@@ -1,0 +1,38 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+To enable SDK logging, the `logLevel` setting is available in the `SplitClientConfig` class:
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```java
+// This setting type is `SplitLogLevel`. 
+// The available values are DEBUG, INFO, WARNING, ERROR, ASSERT and NONE
+SplitClientConfig.Builder builder = SplitClientConfig.builder()
+    .logLevel(Log.VERBOSE)
+SplitClientConfig config = builder.build();
+
+  ...
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```java
+// This setting type is `SplitLogLevel`. 
+// The available values are DEBUG, INFO, WARNING, ERROR, ASSERT and NONE
+SplitClientConfig.Builder builder = SplitClientConfig.builder()
+    .logLevel(Log.VERBOSE)
+SplitClientConfig config = builder.build();
+
+  ...
+```
+
+  </TabItem>
+</Tabs>

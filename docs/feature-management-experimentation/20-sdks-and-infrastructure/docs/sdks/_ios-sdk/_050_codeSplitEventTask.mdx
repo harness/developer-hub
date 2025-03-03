@@ -1,0 +1,3 @@
+SDK event handling is done through the function `on(event:execute:)`, which receives a closure as an event handler.
+
+The code within the closure is executed on the main thread. For that reason, running code in the background must be done explicitly.

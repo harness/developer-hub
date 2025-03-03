@@ -1,0 +1,210 @@
+---
+title: Advanced feature flag evaluations
+sidebar_label: Advanced feature flag evaluations
+description: Set user attributes, evaluate multiple treatments, and retrieve treatment config data.
+---
+
+## Traffic type Attributes
+
+Traffic type attributes are also called custom attributes. If your feature flags [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), then you can pass attributes to the `getTreatment` method.
+
+### Attribute syntax
+
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the Rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
+
+The `getTreatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
+
+* **Strings:** Use type String.
+* **Numbers:** Use type `java.lang.Long` or `java.lang.Integer`.
+* **Dates:** Express the value in `milliseconds since epoch`. In Java, `milliseconds since epoch` is of type `java.lang.Long`. For example, the value for the `registered_date` attribute below is `System.currentTimeInMillis()`, which is a long.
+* **Booleans:** Use type `java.lang.boolean`.
+* **Sets:** Use type `java.util.Collection`.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+import io.codigo.client.SplitClient;
+import io.split.client.SplitFactory;
+import io.split.client.SplitFactoryBuilder;
+
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Date;
+
+SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY");
+SplitClient client = splitFactory.client();
+
+Map<String, Object> attributes = new HashMap<String, Object>();
+attributes.put("plan_type", "growth");
+attributes.put("registered_date", System.currentTimeMillis());
+attributes.put("deal_size", 1000);
+attributes.put("paying_customer", true);
+List<String> perms = Arrays.asList("read", "write");
+attributes.put("permissions", perms);
+
+String treatment = client.getTreatment("key", "FEATURE_FLAG_NAME", attributes);
+
+if (treatment.equals("on")) {
+    // insert on code here
+} else if (treatment.equals("off")) {
+    // insert off code here
+} else {
+    // insert control code here
+}
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+import io.split.client.SplitClient
+import io.split.client.SplitFactory
+import io.split.client.SplitFactoryBuilder
+
+val splitFactory: SplitFactory = SplitFactoryBuilder.build("YOUR_SDK_KEY")
+val client: SplitClient = splitFactory.client()
+
+val perms = listOf("read", "write")
+val attributes = mapOf("plan_type" to "growth",
+                        "registered_date" to System.currentTimeMillis(),
+                        "deal_size" to 1000,
+                        "paying_customer" to true,
+                        "permissions" to perms)
+
+val treatment = client.getTreatment("key", "FEATURE_FLAG_NAME", attributes)
+
+when (treatment) {
+    "on" -> {
+        // insert code here to show on treatment
+    }
+    "off" -> {
+        // insert code here to show off treatment
+    }
+    else -> {
+        // insert your control treatment code here
+    }
+}
+```
+  </TabItem>
+</Tabs>
+
+## Multiple evaluations at once
+
+In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` from the Split client to do this.
+* `getTreatments`: Pass a list of the feature flag names you want treatments for.
+* `getTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
+* `getTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+// getTreatments
+List<String> featureFlagNames = Arrays.asList("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2");
+Map<String, String> treatments = client.getTreatments("KEY", featureFlagNames);
+
+// getTreatmentsByFlagSet
+Map<String, String> treatmentsBySet = client.getTreatmentsByFlagSet("KEY", "backend");
+
+// getTreatmentsByFlagSets
+List<String> flagSetNames = Arrays.asList("backend", "server_side");
+Map<String, String> treatmentsBySets = client.getTreatmentsByFlagSets("KEY", flagSetNames);
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+// getTreatments
+val featureFlagNames = listOf("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2")
+val treatments = client.getTreatments("KEY", featureFlagNames)
+
+// getTreatmentsByFlagSet
+val treatmentsBySet = client.getTreatmentsByFlagSet("KEY", "backend")
+
+// getTreatmentsByFlagSets
+val flagSetNames = listOf("backend", "server_side")
+val treatmentsBySets = client.getTreatmentsByFlagSets("KEY", flagSetNames)
+```
+  </TabItem>
+</Tabs>
+
+## Get treatments with configurations
+
+To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
+
+The config element is a stringified version of the configuration JSON defined in the Split user interface. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
+
+This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
+
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+SplitResult result = client.getTreatmentWithConfig("KEY", "FEATURE_FLAG_NAME");
+String treatment = result.treatment();
+if (null != result.config()) {
+    MyConfiguration config = gson.fromJson(result.config(), MyConfiguration.class);
+}
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+val result: SplitResult = client.getTreatmentWithConfig("KEY", "FEATURE_FLAG_NAME")
+val config: String = result.config()
+val treatment: String = result.treatment()
+```
+  </TabItem>
+</Tabs>
+
+If you need to get multiple evaluations at once, you can also use the `getTreatmentsWithConfig` methods. These methods take the exact same arguments as the [getTreatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to SplitResult instead of strings. Example usage below:
+
+
+<Tabs
+  groupId="java-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]}>
+  <TabItem value="java">
+```java
+// getTreatmentsWithConfig
+List<String> featureFlagNames = Arrays.asList("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2");
+Map<String, SplitResult> treatments = client.getTreatmentsWithConfig("KEY", featureFlagNames, attributes);
+
+// getTreatmentsWithConfigByFlagSet
+Map<String, SplitResult> treatmentsBySet = client.getTreatmentsWithConfigByFlagSet("KEY", "backend");
+
+// getTreatmentsWithConfigByFlagSets
+List<String> flagSetNames = Arrays.asList("backend", "server_side");
+Map<String, SplitResult> treatmentsBySets = client.getTreatmentsWithConfigByFlagSets("KEY", flagSetNames);
+```
+  </TabItem>
+  <TabItem value="kotlin">
+```kotlin
+// getTreatmentsWithConfig
+val featureFlagNames = listOf("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2")
+val treatments: Map<String, SplitResult> = client.getTreatmentsWithConfig("KEY", featureFlagNames)
+
+// getTreatmentsWithConfigByFlagSet
+val treatmentsBySet: Map<String, SplitResult> = client.getTreatmentsWithConfigByFlagSet("KEY", "backend")
+
+// getTreatmentsWithConfigByFlagSets
+val flagSetNames = listOf("backend", "server_side")
+val treatmentsBySets: Map<String, SplitResult> = client.getTreatmentsWithConfigByFlagSets("KEY", flagSetNames)
+```
+  </TabItem>
+</Tabs>

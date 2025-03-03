@@ -1,0 +1,27 @@
+:::info[Migrating from v0.x to v1.x]
+When upgrading, consider that the `webVitals` event collector (`import { webVitals } from '@splitsoftware/browser-rum-agent';`) is not exported anymore, but registered by default.
+
+In case you were registering it with specific options, you can now pass the options in the `eventCollectors` property of the `setup` configuration object.
+
+For example, replace this:
+
+```javascript
+import { SplitRumAgent, webVitals } from '@splitsoftware/browser-rum-agent';
+
+SplitRumAgent.register(webVitals(WEB_VITALS_OPTIONS));
+
+SplitRumAgent.setup(YOUR_SDK_KEY);
+```
+
+With this:
+
+```javascript
+import { SplitRumAgent } from '@splitsoftware/browser-rum-agent';
+
+SplitRumAgent.setup(YOUR_SDK_KEY, {
+  eventCollectors: { webVitals: WEB_VITALS_OPTIONS }
+});
+```
+
+See the [Web Vitals](#web-vitals) section for more information about Google Web Vitals metrics collected by the Browser RUM Agent.
+:::

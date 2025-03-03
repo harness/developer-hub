@@ -1,0 +1,33 @@
+## Traffic type Attributes
+
+Traffic type attributes are also called custom attributes. If your feature flags [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), then you can pass attributes to the `getTreatment` method or set attributes on the {props.sdk ?? 'SDK'} client using the `AttributesManager` methods.
+
+### Attribute syntax
+
+The `getTreatment` method supports the following types of attributes:
+
+<>{props.attributeTypes}</>
+
+<>{props.codeGetTreatmentAttributes}</>
+
+### Binding attributes to the client
+
+Attributes can optionally be bound to the {props.sdk ?? 'SDK'} client at any time during the {props.sdk ?? 'SDK'} lifecycle. These attributes are stored in memory and used in every evaluation to avoid the need for keeping the attribute set accessible throughout the whole app.
+
+<>{props.notesPersistentAttributesEnabled}</>
+
+When `getTreatment` is called, the attributes provided (if any) at evaluation time are combined with the ones already loaded into the {props.sdk ?? 'SDK'} memory. The attributes passed to `getTreatment` at function execution time take precedence, allowing you to override or hide cached attributes for specific feature flag evaluations.
+
+An attribute should be one of the following types:
+- String
+- Number
+- Boolean
+- Array
+
+The {props.sdk ?? 'SDK'} validates attributes before storing them. If there are invalid or missing values, the methods return `false` and do not update any stored attribute value.
+
+<>{props.codeAttributesManagerInterface}</>
+
+Example of binding attributes to the {props.sdk ?? 'SDK'} client:
+
+<>{props.codeClientSetAttribute}</>

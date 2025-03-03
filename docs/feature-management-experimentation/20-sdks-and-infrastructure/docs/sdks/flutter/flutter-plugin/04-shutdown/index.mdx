@@ -1,0 +1,14 @@
+---
+title: Shutdown
+sidebar_label: Shutdown
+description: Gracefully stop background threads, clear caches, close connections, and flush data.
+---
+
+Call the `client.destroy()` method once you've stopped using the client, as this method gracefully shuts down the Split SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
+
+```dart title="Flutter"
+/// You should call destroy() on the client once it is no longer needed:
+_client.destroy();
+```
+
+After `destroy()` is called and finishes, any subsequent invocations to `getTreatment`/`getTreatments` or manager methods result in `control` or empty list, respectively.

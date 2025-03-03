@@ -1,0 +1,26 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+Import the Agent into your project with the following line:
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Gradle Groovy', value: 'java'},
+    {label: 'Gradle Kotlin DSL', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```groovy
+implementation 'io.split.client:android-rum-agent:0.4.0'
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+implementation("io.split.client:android-rum-agent:0.4.0")
+```
+
+  </TabItem>
+</Tabs>

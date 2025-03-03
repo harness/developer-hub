@@ -1,0 +1,71 @@
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  groupId="android-sdk-lang-choice"
+  values={[
+    {label: 'Java', value: 'java'},
+    {label: 'Kotlin', value: 'kotlin'},
+  ]} defaultValue={ props.defaultTab ?? 'java' }>
+  <TabItem value="java">
+
+```java
+import io.split.android.client.*;
+import java.util.Arrays;
+
+SplitFilter splitFilter = SplitFilter.bySet(Arrays.asList("frontend"));
+
+SplitClientConfig config = SplitClientConfig.builder()
+                            .impressionsRefreshRate(60)
+                            .connectionTimeout(15000)
+                            .readTimeout(15000)
+                            .syncConfig(SyncConfig.builder()
+                                .addSplitFilter(splitFilter)
+                                .build())
+                            .build();
+
+// Split SDK key
+String sdkKey = "YOUR_SDK_KEY";
+
+// Create a new user key to be evaluated
+String matching = "key";
+String bucketingKey = null;
+Key k = new Key(matchingKey,bucketingKey);
+
+// Create factory
+SplitFactory splitFactory = SplitFactoryBuilder.build(sdkKey, k, config, getApplicationContext());
+
+// Get Split Client instance
+SplitClient client = splitFactory.client();
+```
+
+  </TabItem>
+  <TabItem value="kotlin">
+
+```kotlin
+val splitFilter: SplitFilter = SplitFilter.bySet(listOf("frontend"))
+
+val config: SplitClientConfig = SplitClientConfig.builder()
+    .impressionsRefreshRate(60)
+    .connectionTimeout(15000)
+    .readTimeout(15000)
+    .syncConfig(
+        SyncConfig.builder()
+            .addSplitFilter(splitFilter)
+            .build()
+    )
+    .build()
+
+val splitFactory: SplitFactory = SplitFactoryBuilder
+    .build(
+        "YOUR_SDK_KEY",
+        Key("key"),
+        config,
+        applicationContext
+    )
+
+val client: SplitClient = splitFactory.client()
+```
+
+  </TabItem>
+</Tabs>

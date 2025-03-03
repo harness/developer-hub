@@ -1,0 +1,204 @@
+---
+title: Advanced feature flag evaluations
+sidebar_label: Advanced feature flag evaluations
+description: Set user attributes, evaluate multiple treatments, and retrieve treatment config data.
+---
+
+## Traffic type Attributes
+
+Traffic type attributes are also called custom attributes. If your feature flags [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), then you can pass attributes to the `getTreatment` method.
+
+### Attribute syntax
+
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatments` action creator call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
+
+The SDK supports five types of attributes: strings, numbers, dates, booleans, and sets. The data type and syntax for each are: 
+
+* **Strings:** Use type String.
+* **Numbers:** Use type Number.
+* **Dates: ** Use type Date and express the value in `milliseconds since epoch`. <br />*Note:* Milliseconds since epoch is expressed in UTC. If your date or date-time combination is in a different timezone, first convert it to UTC, then transform it to milliseconds since epoch.
+* **Booleans:** Use type Boolean.
+* **Sets:** Use type Array.
+
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  values={[
+    {label: 'Client side (browser)', value: 'browser'},
+    {label: 'Server side (Node.js/SSR)', value: 'ssr'},
+  ]}>
+  <TabItem value="browser">
+
+```javascript
+import { selectTreatmentAndStatus, getTreatments } from '@splitsoftware/splitio-redux');
+
+const attributes = {
+  // date attributes are handled as `millis since epoch`
+  registered_date: new Date('YYYY-MM-DDTHH:mm:ss.sssZ').getTime(),
+  // this string will be compared against a list called `plan_type`
+  plan_type: 'growth',
+  // this number will be compared agains a const value called `deal_size`
+  deal_size: 10000,
+  // this boolean will be compared against a const value called `paying_customer`
+  paying_customer: true,
+  // this array will be compared against a set called `permissions`
+  permissions: ["read", "write"]
+};
+
+// You can pass the attributes with any getTretments action using the `attributes` key of the parameters.
+store.dispatch(getTreatments({ splitNames: ['feature_flag_1'], attributes: attributes }));
+
+const { treatment } = selectTreatmentAndStatus(store.getState().splitio, 'feature_flag_1');
+
+if (treatment === 'on') {
+  // insert on code here
+} else if (treatment === 'off') {
+  // insert off code here
+} else {
+  // insert control code here
+}
+```
+  </TabItem>
+  <TabItem value="ssr">
+```javascript
+import { selectTreatmentAndStatus, getTreatments } from '@splitsoftware/splitio-redux');
+
+const attributes = {
+  // date attributes are handled as `millis since epoch`
+  registered_date: new Date('YYYY-MM-DDTHH:mm:ss.sssZ').getTime(),
+  // this string will be compared against a list called `plan_type`
+  plan_type: 'growth',
+  // this number will be compared agains a const value called `deal_size`
+  deal_size: 10000,
+  // this boolean will be compared against a const value called `paying_customer`
+  paying_customer: true,
+  // this array will be compared against a set called `permissions`
+  permissions: ["read", "write"]
+};
+
+// You can pass the attributes with any getTretments action using the `attributes` key of the parameters.
+store.dispatch(getTreatments({ splitNames: ['feature_flag_1'], key: 'key', attributes: attributes }));
+
+const { treatment } = selectTreatmentAndStatus(store.getState().splitio, 'feature_flag_1', 'key');
+
+if (treatment === 'on') {
+  // insert on code here
+} else if (treatment === 'off') {
+  // insert off code here
+} else {
+  // insert control code here
+}
+```
+  </TabItem>
+</Tabs>
+
+## Multiple evaluations at once
+
+If you want to evaluate treatments for multiple feature flags at once, you can pass a list of feature flag names to the `getTreatments` action creator.
+
+You can also evaluate multiple feature flags at once using flag sets. In that case, you can use the `flagSets` property instead of the `splitNames` property when calling the `getTreatments` action creator. Like `splitNames`, the `flagSets` property must be an array of string, each one corresponding to a different flag set name.
+
+
+<Tabs
+  values={[
+    {label: 'Evaluating by feature flag names', value: 'flag'},
+    {label: 'Evaluating by flag sets', value: 'flagset'},
+  ]}>
+  <TabItem value="flag">
+
+```javascript
+store.dispatch(getTreatments({ splitNames: ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'] }));
+```
+  </TabItem>
+  <TabItem value="flagset">
+
+```javascript
+store.dispatch(getTreatments({ flagSets: ['frontend', 'client_side'] }));
+```
+  </TabItem>
+</Tabs>
+
+For retrieving the treatments from the store, you can use the `selectTreatmentAndStatus` selector. Note that this selector retrieves a single treatment value for a given feature flag name, so you need to call it for each feature flag name.
+
+```javascript title="JavaScript"
+// Getting treatments from the store
+const treatments = {
+  FEATURE_FLAG_NAME_1: selectTreatmentAndStatus(store.getState().splitio, 'FEATURE_FLAG_NAME_1').treatment,
+  FEATURE_FLAG_NAME_2: selectTreatmentAndStatus(store.getState().splitio, 'FEATURE_FLAG_NAME_2').treatment
+};
+```
+
+## Get Treatments with Configurations
+
+To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you don't need to call a specific action creator for your evaluations. Instead, our SDK stores both the treatment and the associated config (or null if there isn't one) in the Redux state. To access this values you can either use the `selectTreatmentWithConfigAndStatus` selector (recommended) or just access the config from the state.
+
+Each evaluation entry loaded into the state under the `treatments` key will have the structure below:
+
+```typescript title="TypeScript"
+type TreatmentWithConfig = {
+  treatment: string,
+  config: string | null
+};
+```
+
+As you can see from the object structure, the config will be a stringified version of the configuration JSON  defined in the Split user interface. If there is no configuration defined for a treatment, the SDK will return `null` for the config parameter.
+
+The `selectTreatmentWithConfigAndStatus` selector takes the exact same set of arguments as `selectTreatmentAndStatus`, as shown below.
+
+<Tabs
+  values={[
+    {label: 'Client side (browser)', value: 'browser'},
+    {label: 'Server side (Node.js/SSR)', value: 'ssr'},
+  ]}>
+  <TabItem value="browser">
+
+```javascript
+// Import treatment with config selector.
+import { selectTreatmentWithConfigAndStatus } from '@splitsoftware/splitio-redux');
+
+// Get the TreatmentResult corresponding to the key bound to the client (which value is 'key' on this snippet) for 'feature_flag_1' feature flag.
+const treatmentResult = selectTreatmentWithConfigAndStatus(store.getState().splitio, 'feature_flag_1').treatment;
+const config = JSON.parse(treatmentResult.config);
+const treatment = treatmentResult.treatment;
+
+if (treatment === 'on') {
+  // insert on code here and use configs here as necessary
+} else if (treatment === 'off') {
+  // insert off code here and use configs here as necessary
+} else {
+  // insert control code here
+}
+
+
+// Alternatively you could access the TreatmentResults directly from the store or your own custom selectors.
+const splitTreatments = store.getState().splitio.treatments;
+const treatmentResult = splitTreatments['key']['feature_flag_1'];
+```
+  </TabItem>
+  <TabItem value="ssr">
+```javascript
+// Import treatment with config selector.
+import { selectTreatmentWithConfigAndStatus } from '@splitsoftware/splitio-redux');
+
+// Get the TreatmentResult corresponding to the key of value 'key' for 'feature_flag_1' feature flag.
+const treatmentResult = selectTreatmentWithConfigAndStatus(store.getState().splitio, 'feature_flag_1', 'key').treatment;
+const config = JSON.parse(treatmentResult.config);
+const treatment = treatmentResult.treatment;
+
+if (treatment === 'on') {
+  // insert on code here and use configs here as necessary
+} else if (treatment === 'off') {
+  // insert off code here and use configs here as necessary
+} else {
+  // insert control code here
+}
+
+
+// Alternatively you could access the TreatmentResults directly from the store or your own custom selectors.
+const splitTreatments = store.getState().splitio.treatments;
+const treatmentResult = splitTreatments['key']['feature_flag_1'];
+```
+  </TabItem>
+</Tabs>
