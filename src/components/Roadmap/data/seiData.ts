@@ -21,7 +21,7 @@ export const SeiData: Horizon = {
       },
       {
         tag: [{ value: "Integrations" }],
-        title: "Franular scoping of Integrations",
+        title: "Granular scoping of Integrations",
         description: "Improved ability to more granularly scope integrations such as GitGub, Harness CI/CD. E.g. GitHub Integration can be scoped down by org, repos, teams, etc.",
       },
     ],
