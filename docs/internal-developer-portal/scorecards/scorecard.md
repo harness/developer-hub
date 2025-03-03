@@ -111,7 +111,7 @@ Follow these steps to navigate to the Trends Dashboard:
 Similarly, you can track trends for individual **Checks** to view component details and status updates.  
 
 :::info  
-The Scorecard Check jobs run twice a day.  
+The Scorecard Check jobs run twice a day, with a 12-hour interval between each run. If you run a check now, the next one will automatically run after 12 hours.  
 :::
 
 Follow these steps to navigate to the Trends Dashboard:
@@ -147,3 +147,7 @@ This will **manually trigger a refresh**, updating the component's score immedia
 
 <DocImage width="1750vw" path={require('./static/remove-scorecard.png')}/>
 
+## Schedule of a Scorecard
+The Trends Dashboard of a Scorecard updates **every 24 hours**. Newly created Scorecards (or Checks) will appear in the dashboard after the next update at **12:00 AM UTC**.
+
+The Scorecard Check jobs run **twice a day**, with a **12-hour interval between each run**. If you run a check now, the next one will automatically run after 12 hours.  
