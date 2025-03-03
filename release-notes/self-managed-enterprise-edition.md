@@ -316,7 +316,7 @@ This release includes the following Harness module and component versions.
 | Batch Processing          | 1.38.5                                                                                       |
 | Gateway                   | 1.41.7                                                                                       |
 | IaCM Manager              | 1.65.1                                                                                       |
-
+| IaC Server                | .119.5                                                                                       |
 
 **Alternative air gap bundle download method**
 
