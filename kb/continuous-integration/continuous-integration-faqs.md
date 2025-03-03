@@ -2219,7 +2219,7 @@ Go to [Cache Intelligence](https://developer.harness.io/docs/continuous-integrat
 
 ### What is the Cache Intelligence cache storage limit?
 
-Harness Cloud provides up to 2GB of [cache storage](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-storage) per account.
+When using Harness Cloud, cache storage limits apply based on your CI plan. For more details on storage limits, visit the [CI subscription page](https://developer.harness.io/docs/continuous-integration/get-started/ci-subscription-mgmt/#storage).
 
 ### What is the cache retention window for Cache Intelligence? Can the cache expire?
 
