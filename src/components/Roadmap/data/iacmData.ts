@@ -8,6 +8,7 @@ export const IacmData: Horizon = {
         tag: [{ value: "Developer Experience" }],
         title: "Default Pipelines",
         description: "Users will have the ability to assign pipelines to different Terraform/OpenTofu operations, making it easier to control the automation for each Workspace update",
+        link: "/docs/infra-as-code-management/pipelines/default-pipelines",
       },
       {
         tag: [{ value: "Simplify Onboarding" }],
@@ -18,11 +19,13 @@ export const IacmData: Horizon = {
         tag: [{ value: "Security" }],
         title: "OPA integration",
         description: "IaCM natively integrates with OPA, allowing you to define rules that can be enforced at design and runtime, eliminating policy violations and reducing the risks of security and unplanned cost",
+        link: "/docs/infra-as-code-management/policies-governance/opa-workspace",
       },
       {
         tag: [],
         title: "Cost estimation",
         description: "Using Infracost, IaCM provides cost estimation on resource changes, allowing you to understand how your cloud bill will be changed, based on resource changes",
+        link: "/docs/infra-as-code-management/workspaces/cost-estimation",
       },
       {
         tag: [{ value: "Security" }],
@@ -33,16 +36,19 @@ export const IacmData: Horizon = {
         tag: [{ value: "Security" }],
         title: "Drift Detection",
         description: "IaCM supports detecting drifts between state file and the actual resources, preventing misconfiguration, and securely vulnerabilities",
+        link: "/docs/infra-as-code-management/pipelines/operations/drift-detection",
       },
       {
         tag: [{ value: "Security" }],
         title: "RBAC",
         description: "IaCM supports granular RBAC operations, where admins can define the access privileges for different roles",
+        link: "/docs/infra-as-code-management/project-setup/workspace-rbac",
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "PR Automation",
         description: "IaCM support PR Automation that populates plan and cost data to the PR process, helping you to reduce testing time on Terraform changes",
+        link: "/docs/infra-as-code-management/pipelines/operations/pr-automation",
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -58,11 +64,13 @@ export const IacmData: Horizon = {
         tag: [{ value: "Developer Experience" }],
         title: "Module Registry",
         description: "Private Module Registry to test and publish approved modules",
+        link: "/docs/category/module-registry",
       },
       {
         tag: [{ value: "Simplify Onboarding" }],
         title: "Workspace templates",
         description: "Users will be able to create Workspaces that will inherit cost, OPA, and other configurations from templates, simplifying onboarding and enforcing best practices",
+        link: "/docs/infra-as-code-management/workspaces/workspace-tempates",
       },
       {    
         tag: [{ value: "Developer Experience" }],
