@@ -315,6 +315,7 @@ This release includes the following Harness module and component versions.
 | Log Service               | 1.17.3                                                                                       |
 | Batch Processing          | 1.38.5                                                                                       |
 | Gateway                   | 1.41.7                                                                                       |
+| IaCM Manager              | 1.65.1                                                                                       |
 
 
 **Alternative air gap bundle download method**
@@ -470,6 +471,10 @@ s available in the account to execute the task` even when appropriate delegate s
 - Upgraded the base image from ubi8-minimal to ubi9-minimal in Harness images. [PL-58377]  
 - Updated NGINX controller image from 1.3.0 to 1.11.2 to remove critical and high vulnerabilities. [PL-56529]  
 - Upgraded org.redisson:redisson to version 3.43.0. [PL-55966]  
+
+#### Infrastructure as Code Management (Beta)
+
+- Infrastructure as Code Management (IaCM) is now available on Self-Managed Enterprise Edition.
 
 #### Continuous Delivery
 
