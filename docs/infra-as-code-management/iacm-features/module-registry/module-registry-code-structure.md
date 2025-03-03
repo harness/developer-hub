@@ -138,5 +138,5 @@ To ensure your modules are well-structured and maintainable, follow these best p
 A well-structured IaC module enhances reusability, maintainability, and collaboration. By following these guidelines, you can create reliable and scalable modules for your infrastructure needs.
 
 For more details, refer to the following documentation:
-- [Register a Module](/docs/infra-as-code-management/iacm-features/module-registry/module-registry)  
+- [Register a Module](/docs/infra-as-code-management/iacm-features/module-registry/)  
 - [Root and Submodule Usage](/docs/infra-as-code-management/iacm-features/module-registry/root-sub-module-usage)
