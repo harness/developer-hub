@@ -45,6 +45,27 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## March 2025
+
+### GitOps Version 1.27, GitOps Agent Version 0.88
+
+#### New Features and Enhancements
+
+- GitOps applications now support the `valuesObject` field. However, Harness recommends using the [`values`](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#values) field since ArgoCD has some issues with `valueObject` when using AppSets. (**CDS-106998**)
+
+:::danger
+
+Updating an application that contains a `valuesObject` while using an agent older than version 0.88 may result in the complete removal of the `valuesObject`. To prevent data loss, please upgrade the agent before proceeding. Additionally, attempting to access an application with a `valuesObject` will cause the task to fail and return a raw version of the `valuesObject`, which can not be modified in the UI.
+
+:::
+
+#### Fixed Issues
+
+- Previously, a Get Application API call could take approximately 30 seconds to complete. This was fixed in two ways:
+  - A new parameter, `fetchFromHarness`, was introduced in the Get Application API. This setting, when set to `true`, will fetch an application directly from Harness. This is currently fallback if the task times out on the GitOps Agent. Use this with caution as it may not return the latest state of the application.
+  - The GitOps Agent Helm Chart has new values to configure the number of task processors: `numFetchers`, `numResponders`, and `numProcessors`. These control the number of task processing routines on the agent and are helpful if there is a high concurrent load on a specific agent.
+  - (**CDS-106863**, **ZD-78359**)
+
 ## February 2025
 
 ### Version 1.79.3
@@ -57,7 +78,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - We have introduced a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote. Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**PIPE-16979**)
 
-- Users can now import OPA policies from Git. This feature behind the FF `OPA_IMPORT_FROM_GIT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PPIPE-17046,ZD-52607,ZD-69875**)
+- Users can now import OPA policies from Git. This feature behind the FF `OPA_IMPORT_FROM_GIT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-17046, ZD-52607, ZD-69875**)
 
 #### Fixed Issues
 
