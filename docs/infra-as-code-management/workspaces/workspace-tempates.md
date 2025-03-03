@@ -5,21 +5,8 @@ sidebar_position: 60
 sidebar_label: Workspace templates
 ---
 
-<CTABanner
-  buttonText="Learn More"
-  title="Pending release"
-  tagline="The IaCM Workspace Templates feature is currently pending release and will be available soon!"
-  link="https://developer.harness.io/roadmap/#iacm"
-  closable={true}
-  target="_self"
-/>
-
 import Tabs from '@theme/Tabs';  
 import TabItem from '@theme/TabItem';  
-
-:::warning pending release
-IaCM Workspace templates are currently pending release and will be available soon!
-:::
  
 With workspace templates, you can standardize workspace configurations across your projects by predefining essential variables, configuration settings, and other workspace options. This helps streamline workspace setup, ensuring consistency and reducing manual configuration efforts. 
 
