@@ -247,8 +247,8 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
 
 This release includes the following Harness module and component versions.
 
-| **Name**                  | **Version**                                                                                    |
-|---------------------------|------------------------------------------------------------------------------------------------|
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
 | Helm Chart                | [0.26.1](https://github.com/harness/helm-charts/releases/tag/harness-0.26.1)                 |
 | Air Gap Bundle            | [0.26.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.1) |
 | NG Manager                | 1.76.7                                                                                       |
@@ -257,7 +257,7 @@ This release includes the following Harness module and component versions.
 | Platform Service          | 1.53.1                                                                                       |
 | Access Control Service    | 1.74.1                                                                                       |
 | Delegate                  | 25.02.85201                                                                                  |
-| GitOps Service            | 1.25.3                                                                                      |
+| GitOps Service            | 1.25.3                                                                                       |
 | Change Data Capture       | 1.41.0                                                                                       |
 | STO Core                  | 1.127.5                                                                                      |
 | Test Intelligence Service | 1.42.1                                                                                       |
@@ -267,6 +267,7 @@ This release includes the following Harness module and component versions.
 | Log Service               | 1.17.3                                                                                       |
 | Batch Processing          | 1.38.5                                                                                       |
 | Gateway                   | 1.41.7                                                                                       |
+| IaCM Manager              | 1.65.2                                                                                       |
 
 **Alternative air gap bundle download method**
 
@@ -288,7 +289,7 @@ gsutil -m cp \
 
 #### Infrastructure as Code Management
 
-- Reverted a change that allowed customers to view non-production-ready steps. [IAC-3239]
+- Fixed an issue that allowed users to view non production ready steps. [IAC-3239]
 
 ## Feb 28, 2025, Version 0.26.0 <!-- Draft : Feb 28, 2025 -->
 
@@ -314,6 +315,7 @@ This release includes the following Harness module and component versions.
 | Log Service               | 1.17.3                                                                                       |
 | Batch Processing          | 1.38.5                                                                                       |
 | Gateway                   | 1.41.7                                                                                       |
+
 
 **Alternative air gap bundle download method**
 
