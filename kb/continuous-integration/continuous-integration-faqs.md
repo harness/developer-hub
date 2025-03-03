@@ -238,6 +238,32 @@ To debug this issue, investigate delegate connectivity in your VM build infrastr
 - [Verify connectivity for GCP VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform#verify-connectivity)
 - [Verify connectivity for Anka macOS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry#verify-connectivity)
 
+### How to establish a VPN connection within a CI pipeline?
+
+One way to establish a secure connection between our platform’s servers and a customer’s on-premises infrastructure is through a Virtual Private Network (VPN). 
+
+:::note
+- The user must publish a public IP address (or have a domain).
+- The VPN connection must be established before any step that relies on VPN traffic for functionality.
+::: 
+
+Here is an example of using an OpenVPN server, but you can apply the same approach to Strongswan, Cisco, or any other VPN server.
+
+#### Steps to configure OpenVPN
+
+1. Download an OpenVPN file, "config.ovpn".
+2. Encode the file to Base64 and save it.
+3. Add the file as a secret.
+
+![Add config file as secret](static/vpndocs-add-file-as-secret.png)
+
+4. Decode the file, save it as a config file, and install OpenVPN.
+![Decode and save config](static/vpndocs-decode-save-config.png) 
+
+5. Run OpenVPN with the new file as a [Background Step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/).
+![Run as background step](static/vpndocs-run-ovpn-background-step.png)    
+ 
+6. Continue with the rest of the pipeline steps. 
 ## Harness Cloud
 
 ### What is Harness Cloud?
