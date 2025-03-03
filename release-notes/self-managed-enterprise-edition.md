@@ -232,6 +232,17 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
 
 :::
 
+:::danger Important
+    - For customers using ArgoCD to upgrade the Helm chart from 0.26 to future versions, use:  
+      ```yaml
+      platform:
+        bootstrap:
+          database:
+            timescaledb:
+              archive_minio_secret: false
+      ```
+:::  
+
 ## Feb 28, 2025, Version 0.26.0 <!-- Draft : Feb 28, 2025 -->
 
 This release includes the following Harness module and component versions.
@@ -389,14 +400,16 @@ s available in the account to execute the task` even when appropriate delegate s
           timescaledb:
             archive_enabled: false
     ```  
-  - For customers using ArgoCD to upgrade the Helm chart from 0.26 to future versions, use:  
-    ```yaml
-    platform:
-      bootstrap:
-        database:
-          timescaledb:
-            archive_minio_secret: false
-    ```  
+    :::warning Important
+      - For customers using ArgoCD to upgrade the Helm chart from 0.26 to future versions, use:  
+        ```yaml
+        platform:
+          bootstrap:
+            database:
+              timescaledb:
+                archive_minio_secret: false
+        ```
+    :::  
   [PL-58114]  
 - The disconnected delegates list in the selection log now only shows eligible but disconnected delegates, filtering out non-eligible ones. [PL-56301]  
 - Added a new metric on Delegates to track the number of times the delegate WebSocket reconnects. This helps monitor reconnection frequency and allows users to diagnose issues.  
