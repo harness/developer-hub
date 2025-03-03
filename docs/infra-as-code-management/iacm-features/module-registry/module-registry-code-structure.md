@@ -1,5 +1,5 @@
 ---
-title: Module Code Structure
+title: Module Structure
 description: Learn about the required code structure for module registry.
 sidebar_position: 10
 sidebar_label: Module Code Structure
@@ -26,11 +26,7 @@ module-name/
 ├── variables.tf # Input variable definitions
 ├── outputs.tf   # Output values
 ├── README.md    # Documentation for the module
-├── provider.tf  # Provider configuration (if needed)
-├── versions.tf  # Required Terraform and provider versions
 ├── modules/     # Nested submodules (if applicable)
-├── examples/    # Usage examples for reference
-└── tests/       # Automated tests for the module
 ```
 
 ## Other key components
