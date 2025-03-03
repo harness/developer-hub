@@ -1129,7 +1129,7 @@ service:
                 connectorRef: azure
                 scope: org
                 feed: universaltest68137
-                packageType: upack
+                packageType: maven
                 package: my-first-package
                 version: 0.0.1
               type: AzureArtifacts
@@ -1169,8 +1169,8 @@ You can reference artifact properties using the following expressions in a value
 | `<+artifact.project>`             | Name of the projects in Azure Artifacts                                                                                  | `acme-project`        |
 | `<+artifact.feed>`                | Name of the feed in Azure artifacts                                                                                      | `acme-feed-universal` |
 | `<+artifact.scope>`               | It will be one of `org` or `project`                                                                                     | `project`             |
-| `<+artifact.packageType>`         | Package type. It is one of `upack`, `maven`                                                                              | `upack`               |
-| `<+artifact.packageName>`         | Name of the package in the feed                                                                                          | `acme-upacks`         |
+| `<+artifact.packageType>`         | Package type. It is one of `NuGet`, `maven`                                                                              | `maven`               |
+| `<+artifact.packageName>`         | Name of the package in the feed                                                                                          | `acme-maven`          |
 | `<+artifact.version>`             | Version of the artifact                                                                                                  | `0.0.1`               |
 | `<+artifact.metadata.get([KEY])>` | This is the metadata attached with the file in Azure Devops. Popular keys include `publishDate`, `versionId`, `version`. |                       |
 
