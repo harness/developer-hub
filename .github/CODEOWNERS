@@ -167,6 +167,10 @@ static/  @rohanmaharjan100 @wei-harness
 # FF FAQs
 /docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos @jenniferopal
 
+#FME Docs
+/release-notes/feature-management.md @HarnessTheChaos @dtk-DaveKarow # John A should be added (when he has HDH github access)
+/src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
+
 # SEI Docs
 /docs/software-engineering-insights/ @codewdhruv @batraprashant
 /release-notes/software-engineering-insights.md @codewdhruv @batraprashant
@@ -194,9 +198,6 @@ static/  @rohanmaharjan100 @wei-harness
 # Artifact Registry Docs
 /docs/artifact-registry/ @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
 /src/components/Docs/data/artifactRegistryData.ts @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
-
-#FME Docs
-/src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
 
 # Open Source Docs
 /docs/open-source/ @dewan-ahmed @rustd @SushrutHarness
