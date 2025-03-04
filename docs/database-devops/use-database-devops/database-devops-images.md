@@ -14,8 +14,8 @@ Here are some examples of Harness DB Devops images and their purposes:
 * `plugins/download-artifactory`: Used for downloading artifacts from Artifactory.
 * `plugins/drone-liquibase`: Default Liquibase plugin for database operations.
 * `harness/drone-git`: Used to clone Git repositories.
-* `plugins/drone-liquibase:latest-mongo`: Liquibase plugin for MongoDB.
-* `plugins/drone-liquibase:latest-spanner`: Liquibase plugin for Google Spanner.
+* `plugins/drone-liquibase`: Liquibase plugin for MongoDB.
+* `plugins/drone-liquibase`: Liquibase plugin for Google Spanner.
 
 ## Configure Harness DB Devops Image Versions
 
