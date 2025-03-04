@@ -70,7 +70,7 @@ You can test the polcy on sample payloads
 
 ## create a custom policy set and attach above policy
 
-![Rego Policy Flow]((static/db-governance-custom-policy-set.png))
+![Rego Policy Flow](static/db-governance-custom-policy-set.png))
 
 ## attach the policy set in Database Devops step configuration
 
