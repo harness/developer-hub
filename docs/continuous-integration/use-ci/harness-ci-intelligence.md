@@ -2,6 +2,8 @@
 title: Harness CI Intelligence
 description: Harness CI Intelligence leverages a suite of CI features to optimize your builds.
 sidebar_position: 3
+redirect_from: 
+- /docs/continuous-integration/get-started/harness-ci-intelligence
 ---
 
 Harness Continuous Integration (CI) Intelligence features are designed to smartly speed up builds and boost efficiency.
