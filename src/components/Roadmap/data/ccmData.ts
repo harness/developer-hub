@@ -244,9 +244,9 @@ Later:{
       },
       {
         tag: [{value: "AutoStopping"}],
-        title: " A smart onboarding assistant for AutoStopping that automates resource identification, rule creation, and bulk configuration for Kubernetes-based environments. ",
+        title: "AutoStopping Onboarding Assistant for EKS",
         description:
-          "Alert notifications on evaluations for prompt alerting.",
+          "A smart onboarding assistant for AutoStopping that automates resource identification, rule creation, and bulk configuration for Kubernetes-based environments.",
         backgroundColor: "var(--yellow-100)",
       },
       {
