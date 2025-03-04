@@ -17,14 +17,14 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.ci,
           description:
             "Learn about the benefits, features, and architecture of Harness CI, as well as basic CI concepts.",
-          link: "/docs/category/get-started-with-ci",
+          link: "/docs/continuous-integration/get-started/onboarding-guide",
         },
         {
-          title: "Development guides",
+          title: "Tutorials and Code Samples",
           module: MODULES.ci,
           description:
-            "Guides for using Harness CI for popular languages and platforms, including mobile development.",
-          link: "/docs/category/development-guides",
+            "Tutorials and Code Samples for Harness CI.",
+          link: "/docs/category/tutorials-and-code-samples",
         },
         {
           title: "Secure CI",
@@ -125,7 +125,7 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.ci,
           description:
             "",
-          link: "/docs/category/troubleshoot-ci",
+          link: "/docs/category/troubleshoot-harness-ci",
         },
         {
           title: "CI Knowledge Base",
