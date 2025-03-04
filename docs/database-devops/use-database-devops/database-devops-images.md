@@ -44,7 +44,7 @@ Response:
 
 ### Get Customer-Specific Overrides
 
-Retrieve the image versions currently in use by your pipelines. If the response is empty, your pipeline is using the default images.
+Send a get-customer-config request to get the build images that your DB DevOps pipelines currently use. When overridesOnly is true, which is the default value, this endpoint returns the non-default images that your pipeline uses.
 
 ```sh
 curl --location --request GET "https://app.harness.io/gateway/v1/dbops/execution-config/get-customer-config?overridesOnly=true" \
