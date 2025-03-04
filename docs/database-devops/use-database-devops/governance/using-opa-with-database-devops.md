@@ -4,15 +4,13 @@
 This guide explains how to use **Harness Policy Agent** to enforce policies on **DataBase Devops** steps. Rego is a declarative policy language used by Open Policy Agent (OPA) for policy-based control.
 
 ## Prerequisites
-- Basic knowledge Rego
+- Basic knowledge of Rego
 
 ## Writing a Rego Policy for Database Devops Steps
 A Rego policy can validate that changesets conform to specific rules, such as enforcing naming conventions or restricting certain SQL operations.
 
-### Example Policy: Restricting `DROP TABLE`
+### Example Policy: Restricting  `DROP TABLE`
 Go to DB Governance section and create a new policy
-
-![Rego Policy Flow](static/db-governance-policy-create.png)
 
 ```rego
 package db_sql
@@ -42,6 +40,9 @@ deny[msg] {
 }
 ```
 
+![Rego Policy Flow](static/db-governance-policy-create.png)
+
+
 ### Sample Payload:
 
 You can test the polcy on sample payloads
@@ -68,11 +69,11 @@ You can test the polcy on sample payloads
 }
 ```
 
-## create a custom policy set and attach above policy
+### Create a custom policy set and attach above policy
 
 ![Rego Policy Flow](static/db-governance-custom-policy-set.png))
 
-## attach the policy set in Database Devops step configuration
+### Attach the policy set in Database Devops step configuration
 
 ![Add evaluation](static/db-governance-add-evaluation.png)
 
