@@ -1,6 +1,10 @@
-# Using Rego for Database devops Steps
+---
+title: Using Rego for Database Devops Steps
+description: Platforms and technologies supported by Harness DB DevOps
+sidebar_label: Using Rego with DB Devops
+sidebar_position: 1
+---
 
-## Introduction
 This guide explains how to use **Harness Policy Agent** to enforce policies on **DataBase Devops** steps. Rego is a declarative policy language used by Open Policy Agent (OPA) for policy-based control.
 
 ## Prerequisites
