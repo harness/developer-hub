@@ -483,8 +483,8 @@ const sidebars: SidebarsConfig = {
       className: "horizontal-bar",
     },
     "continuous-integration/get-started/overview",
-    "continuous-integration/get-started/onboarding-guide",
     "continuous-integration/get-started/key-concepts",
+    "continuous-integration/get-started/onboarding-guide",
     {
       type: "html",
       value: "Use Harness CI",
