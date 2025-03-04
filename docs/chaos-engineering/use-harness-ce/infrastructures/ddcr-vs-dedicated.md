@@ -1,6 +1,8 @@
 ---
 title: Delegate Versus Dedicated Chaos Infrastructure
 sidebar_position: 20
+redirect_link:
+- /docs/chaos-engineering/use-harness-ce/infrastructures/#dedicated-chaos-infrastructure-versus-harness-delegate-driven-chaos-infrastructure
 ---
 
 This section compares the characteristics of Delegate-Driven Chaos Infrastructure and Dedicated chaos infrastructure.
