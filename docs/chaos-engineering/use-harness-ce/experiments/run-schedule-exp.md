@@ -1,6 +1,6 @@
 ---
 title: Run or Schedule Experiment
-description: Understand how you can run or schedule chaos experiments and use advanced iptions.
+description: Understand how you can run or schedule chaos experiments and use advanced options.
 sidebar_position: 5
 ---
 
