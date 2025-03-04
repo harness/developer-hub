@@ -1,17 +1,15 @@
 ---
-title: Harness DBOps Images
-description: Harness DBOps images and how to configure updates.
+title: Harness DB DevOps Images
+description: Harness DB DevOps images and how to configure updates.
 sidebar_label: DB Devops Images
 sidebar_position: 21
 ---
 
-## Harness DBOps Image Updates
-
 Harness publishes `plugins/drone-liquibase` with `x.y.z-{liquibaseVersion}`, where `x.y.z` follows Harness semantic versioning.
 
-## Harness DBOps Images List
+## Harness DB DevOps Images List
 
-Here are some examples of Harness DBOps images and their purposes:
+Here are some examples of Harness DB Devops images and their purposes:
 
 * `plugins/download-artifactory`: Used for downloading artifacts from Artifactory.
 * `plugins/drone-liquibase`: Default Liquibase plugin for database operations.
@@ -19,28 +17,28 @@ Here are some examples of Harness DBOps images and their purposes:
 * `plugins/drone-liquibase:latest-mongo`: Liquibase plugin for MongoDB.
 * `plugins/drone-liquibase:latest-spanner`: Liquibase plugin for Google Spanner.
 
-## Configure Harness DBOps Image Versions
+## Configure Harness DB Devops Image Versions
 
 By default, Harness uses predefined images. Customers can override these defaults using API endpoints.
 
 ### Get Default Configurations
 
-Retrieve the latest default Harness DBOps image versions:
+Retrieve the latest default Harness DB Devops image versions:
 
 ```sh
 curl --location --request GET "https://app.harness.io/gateway/v1/dbops/execution-config/get-default-config" \
---header "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID"
+--header "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID" --header "X-API-KEY: $API_KEY"
 ```
 
 Response:
 
 ```json
 {
-    "artifactoryTag": "plugins/download-artifactory:latest",
-    "defaultTag": "plugins/drone-liquibase:latest",
-    "gitCloneTag": "harness/drone-git:1.5.6-rootless",
-    "mongoTag": "plugins/drone-liquibase:latest-mongo",
-    "spannerTag": "plugins/drone-liquibase:latest-spanner"
+    "artifactoryTag": "plugins/download-artifactory:1.0.0",
+    "defaultTag": "plugins/drone-liquibase:1.0.0-4.27",
+    "gitCloneTag": "harness/drone-git:1.6.4-rootless",
+    "mongoTag": "plugins/drone-liquibase:1.0.0-4.27-mongo",
+    "spannerTag": "plugins/drone-liquibase:1.0.0-4.27-spanner"
 }
 ```
 
@@ -50,7 +48,7 @@ Retrieve the image versions currently in use by your pipelines. If the response 
 
 ```sh
 curl --location --request GET "https://app.harness.io/gateway/v1/dbops/execution-config/get-customer-config?overridesOnly=true" \
---header "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID"
+--header "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID" --header "X-API-KEY: $API_KEY"
 ```
 
 ### Update Image Configuration
@@ -60,6 +58,7 @@ Override the default image versions with a new tag:
 ```sh
 curl --location --request POST "https://app.harness.io/gateway/v1/dbops/execution-config/update-config" \
 --header "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID" \
+--header "X-API-KEY: $API_KEY" \
 --header 'Content-Type: application/json' \
 --data-raw '[
     {
@@ -76,6 +75,7 @@ Reset specific images to their default versions:
 ```sh
 curl --location --request POST "https://app.harness.io/gateway/v1/dbops/execution-config/reset-config" \
 --header "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID" \
+--header "X-API-KEY: $API_KEY" \
 --header 'Content-Type: application/json' \
 --data-raw '[
     {
@@ -90,7 +90,7 @@ Delete all custom overrides for your account:
 
 ```sh
 curl --location --request DELETE "https://app.harness.io/gateway/v1/dbops/execution-config" \
---header "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID"
+--header "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID" --header "X-API-KEY: $API_KEY"
 ```
 
 ## Reference:
