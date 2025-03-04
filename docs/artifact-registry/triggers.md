@@ -22,3 +22,10 @@ In the Artifact Registry in Harness, **Triggers** automate actions based on even
 - **Version Control:** Notify teams when a new version of an artifact is available.
 - **Security & Compliance:** Scan artifacts when they are pushed or updated.
 - **Cleanup & Retention Policies:** Automatically remove outdated artifacts.
+
+## Webhooks and Artifact Registry Triggers
+Webhooks allow external systems to interact with Artifact Registry events in real time. Depending on your configuration, webhooks can either notify external systems about artifact-related events or enable external systems to trigger specific actions in Harness.
+
+**Example Use Case:**
+- **Outgoing Webhooks:** Notify a monitoring system when a new artifact is ingested or updated, enabling real-time tracking and validation.
+- **Incoming Webhooks:** A third-party build system triggers an artifact ingestion event in Harness, automating downstream workflows.
