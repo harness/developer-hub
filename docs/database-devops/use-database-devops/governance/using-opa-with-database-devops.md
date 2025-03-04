@@ -42,13 +42,39 @@ deny[msg] {
 }
 ```
 
+### Sample Payload:
+
+You can test the polcy on sample payloads
+
+```json
+{
+  "dbInstance": {
+    "dbConnectionUrl": "jdbc:sqlserver://35.xxx.125.32:1433;trustServerCertificate=true;databaseName=db_oajzu",
+    "identifier": "enkkMcacHU",
+    "name": "enkkMcacHU",
+    "tags": {
+      "tag1": "val1",
+      "tag2": "val2"
+    },
+    "type": "jdbc:sqlserver"
+  },
+  "dbSchema": {
+    "identifier": "CTJPjhVwkU",
+    "name": "CTJPjhVwkU"
+  },
+  "sqlStatements": [
+    "DROP TABLE public;"
+  ]
+}
+```
+
 ## create a custom policy set and attach above policy
 
 ![Rego Policy Flow]((static/db-governance-custom-policy-set.png))
 
 ## attach the policy set in Database Devops step configuration
 
-![<image>](static/db-governance-add-evaluation.png)
+![Add evaluation](static/db-governance-add-evaluation.png)
 
 ## Validating Liquibase Steps with OPA
 Run the OPA policy check against the changeset during pipeline run:
