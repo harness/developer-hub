@@ -243,6 +243,57 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
       ```
 :::  
 
+## Mar 04, 2025, Version 0.26.2 <!-- Draft : Mar 04, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.26.1](https://github.com/harness/helm-charts/releases/tag/harness-0.26.1)                 |
+| Air Gap Bundle            | [0.26.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.1) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.65.2                                                                                       |
+| Pipeline Service          | 1.115.4                                                                                      |
+| Platform Service          | 1.53.1                                                                                       |
+| Access Control Service    | 1.74.1                                                                                       |
+| Delegate                  | 25.02.85201                                                                                  |
+| GitOps Service            | 1.25.5                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.127.5                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.7                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.5                                                                                       |
+| Gateway                   | 1.41.7                                                                                       |
+| IaCM Manager              | 1.65.2  
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.26.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Infrastructure as Code Management
+
+- Fixed an issue that allowed users to view non production ready steps. [IAC-3239]
+
+#### Continuous Delivery
+- Fixed an issue where the customer is unable to perform Sync even if they have permissions (**CDS-107535, ZD-79513**)]
+
 ## Feb 28, 2025, Version 0.26.0 <!-- Draft : Feb 28, 2025 -->
 
 This release includes the following Harness module and component versions.
@@ -267,6 +318,8 @@ This release includes the following Harness module and component versions.
 | Log Service               | 1.17.3                                                                                       |
 | Batch Processing          | 1.38.5                                                                                       |
 | Gateway                   | 1.41.7                                                                                       |
+| IaCM Manager              | 1.65.1                                                                                       |
+| IaC Server                | .119.5                                                                                       |
 
 **Alternative air gap bundle download method**
 
@@ -421,6 +474,10 @@ s available in the account to execute the task` even when appropriate delegate s
 - Upgraded the base image from ubi8-minimal to ubi9-minimal in Harness images. [PL-58377]  
 - Updated NGINX controller image from 1.3.0 to 1.11.2 to remove critical and high vulnerabilities. [PL-56529]  
 - Upgraded org.redisson:redisson to version 3.43.0. [PL-55966]  
+
+#### Infrastructure as Code Management (Beta)
+
+- Infrastructure as Code Management (IaCM) is now available on Self-Managed Enterprise Edition.
 
 #### Continuous Delivery
 
