@@ -1,6 +1,9 @@
 ---
 title: Delegate-Driven Chaos Infrastructure
 description: Delegate-Driven Chaos Infrastructure
+redirect_from:
+- /docs/category/harness-delegate-driven-infrastructure
+- /docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/
 ---
 
 This topic describes Delegate-Driven Chaos Infrastructure, its characteristics, and installation. 
