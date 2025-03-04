@@ -81,17 +81,10 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--green-100)",
       },
       {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Recommendations RBAC enhancements",
-        description:
-          "",
-        backgroundColor: "var(--green-100)",
-      },
-      {
         tag: [{value: "Commitment Orchestrator"}],
         title: "Commitment Orchestrator for RDS (Beta) ",
         description:
-          "",
+          "The Commitment Orchestrator for RDS (Beta) extends our automated savings capabilities to Amazon RDS, helping organizations maximize cost efficiency by optimizing Reserved Instances (RIs) and Savings Plans",
         backgroundColor: "var(--green-100)",
       },
       {
@@ -223,6 +216,13 @@ export const CcmData: Horizon = {
           "Role-based access control to enhance security and governance in Cluster Orchestrator.",
         backgroundColor: "var(--yellow-100)",
       },
+      {
+        tag: [{value: "Platform"}],
+        title: " External Data Ingestion ",
+        description:
+          "Focus compliant external data ingestion to ingest SaaS (Ex. Snowflake, Databricks etc.)",
+        backgroundColor: "var(--yellow-100)",
+      },
     ],
  },
 Later:{
@@ -232,7 +232,7 @@ Later:{
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: " Budgets 2.0 ",
         description:
-          "AI-driven budget suggestions with filtering, sorting, and tagging for better cost management.",
+          "Granular budgeting with version control, rule-based alerts, and CSV uploads for dynamic cost tracking along with AI-powered forecasts and budget suggestions",
         backgroundColor: "var(--yellow-100)",
       },
       {
@@ -250,15 +250,22 @@ Later:{
         backgroundColor: "var(--yellow-100)",
       },
       {
-        tag: [{value: ""}],
+        tag: [{value: "AutoStopping"}],
+        title: " A smart onboarding assistant for AutoStopping that automates resource identification, rule creation, and bulk configuration for Kubernetes-based environments. ",
+        description:
+          "Alert notifications on evaluations for prompt alerting.",
+        backgroundColor: "var(--yellow-100)",
+      },
+      {
+        tag: [{value: "Innovation"}],
         title: " FinOps Workflows ",
         description:
           "Automated workflows to simplify and scale the adoption of FinOps practices and CCM features across organizations.",
         backgroundColor: "var(--yellow-100)",
       },
        {
-        tag: [{value: "Cluster Orchestrator for EKS (GA)"}],
-        title: " FinOps Workflows ",
+        tag: [{value: "Cluster Orchestrator"}],
+        title: " Cluster Orchestrator for EKS (GA) ",
         description:
           "Workload-driven intelligent K8s node auto scaling with distributed spot orchestration and advanced bin packing",
         backgroundColor: "var(--yellow-100)",
