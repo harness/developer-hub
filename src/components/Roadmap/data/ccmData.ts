@@ -237,9 +237,9 @@ Later:{
       },
       {
         tag: [{value: "Commitment Orchestrator"}],
-        title: " RDS GA ",
+        title: "Commitment Orchestrator for RDS GA ",
         description:
-          "General availability release of RDS support in Commitment Orchestrator.",
+          "General Availability of Commitment Orchestrator for Amazon RDS, enabling better cost-efficiency through commitment management for database services.",
         backgroundColor: "var(--yellow-100)",
       },
       {
@@ -248,7 +248,21 @@ Later:{
         description:
           "Alert notifications on evaluations for prompt alerting.",
         backgroundColor: "var(--yellow-100)",
-      }
+      },
+      {
+        tag: [{value: ""}],
+        title: " FinOps Workflows ",
+        description:
+          "Automated workflows to simplify and scale the adoption of FinOps practices and CCM features across organizations.",
+        backgroundColor: "var(--yellow-100)",
+      },
+       {
+        tag: [{value: "Cluster Orchestrator for EKS (GA)"}],
+        title: " FinOps Workflows ",
+        description:
+          "Workload-driven intelligent K8s node auto scaling with distributed spot orchestration and advanced bin packing",
+        backgroundColor: "var(--yellow-100)",
+      },
     ],
 
   }
