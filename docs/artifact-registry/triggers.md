@@ -21,7 +21,7 @@ In the Artifact Registry in Harness, **Triggers** automate actions based on even
 - **CI/CD Automation:** Start a pipeline when a new artifact is ingested.   
 
 <!-- Placeholder for interactive guide to learn how to configure a trigger in Harness Artifact Registry to automate your CD pipeline.
-This guide walks you through setting up an Artifact Ingestion trigger that starts a deployment pipeline when a new artifact is pushed to the registry. -->
+Start automating your pipelines today with Artifact Registry Triggers! This guide walks you through setting up an Artifact Ingestion trigger that starts a deployment pipeline when a new artifact is pushed to the registry. -->
 
 - **Version Control:** Notify teams when a new version of an artifact is available.
 - **Security & Compliance:** Scan artifacts when they are pushed or updated.
