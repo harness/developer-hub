@@ -19,6 +19,10 @@ In the Artifact Registry in Harness, **Triggers** automate actions based on even
 
 ## Use Cases for Triggers
 - **CI/CD Automation:** Start a pipeline when a new artifact is ingested.   
+
+<!-- Placeholder for interactive guide to learn how to configure a trigger in Harness Artifact Registry to automate your CD pipeline.
+This guide walks you through setting up an Artifact Ingestion trigger that starts a deployment pipeline when a new artifact is pushed to the registry. -->
+
 - **Version Control:** Notify teams when a new version of an artifact is available.
 - **Security & Compliance:** Scan artifacts when they are pushed or updated.
 - **Cleanup & Retention Policies:** Automatically remove outdated artifacts.
@@ -29,3 +33,5 @@ Webhooks allow external systems to interact with Artifact Registry events in rea
 **Example Use Case:**
 - **Outgoing Webhooks:** Notify a monitoring system when a new artifact is ingested or updated, enabling real-time tracking and validation.
 - **Incoming Webhooks:** A third-party build system triggers an artifact ingestion event in Harness, automating downstream workflows.
+
+Go to [platform triggers](/docs/platform/triggers/triggers-overview) to find out more about the types of triggers that are at your disposal including webhooks, artifacts, manifests and schedules triggers.
