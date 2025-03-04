@@ -249,8 +249,8 @@ This release includes the following Harness module and component versions.
 
 | **Name**                  | **Version**                                                                                  |
 |---------------------------|----------------------------------------------------------------------------------------------|
-| Helm Chart                | [0.26.1](https://github.com/harness/helm-charts/releases/tag/harness-0.26.1)                 |
-| Air Gap Bundle            | [0.26.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.1) |
+| Helm Chart                | [0.26.2](https://github.com/harness/helm-charts/releases/tag/harness-0.26.2)                 |
+| Air Gap Bundle            | [0.26.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.2) |
 | NG Manager                | 1.76.7                                                                                       |
 | CI Manager                | 1.65.2                                                                                       |
 | Pipeline Service          | 1.115.4                                                                                      |
@@ -275,13 +275,13 @@ Some admins might not have Google account access to download air gap bundles. As
 
 ```
 gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.26.1/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.26.1/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.26.1/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.26.1/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.26.1/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.26.1/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.26.1/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/sto_images.tgz" \
   .
 ```
 
