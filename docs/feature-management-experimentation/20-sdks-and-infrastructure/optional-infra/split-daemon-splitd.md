@@ -3,6 +3,7 @@ title: Split Daemon (splitd)
 sidebar_label: Split Daemon (splitd)
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 1
 ---
 
 <p>

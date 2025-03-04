@@ -3,6 +3,7 @@ title: Split Synchronizer
 sidebar_label: Split Synchronizer
 helpdocs_is_private: false
 helpdocs_is_published: true
+sidebar_position: 4
 ---
 
 <p>
