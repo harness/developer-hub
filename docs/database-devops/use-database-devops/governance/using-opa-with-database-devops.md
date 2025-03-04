@@ -56,3 +56,4 @@ Run the OPA policy check against the changeset during pipeline run:
 
 If a violation occurs, OPA will output a message indicating the problem (e.g., "Dropping tables is not allowed: users") and result in error / warning as per configuration.
 
+![failed pipeline](static/database-devops-failed-policy.png)
