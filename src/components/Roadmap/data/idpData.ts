@@ -14,6 +14,7 @@ import { Horizon } from "./roadmapData";
   tag: [{ value: "" }],
   title: "",
   description: "",
+  link: ""
 },
  */
 
@@ -23,43 +24,30 @@ export const IdpData: Horizon = {
    */
 
   Now: {
-    description: "Q4 2024, Nov 2024-Jan 2025",
+    description: "Q1 2024, Feb 2025-April 2025",
     feature: [
+      {
+        tag: [],
+        title: "IDP 2.0 BETA Launch",
+        description:
+          "At the end of quarter, we will launch a brand new IDP experience called IDP 2.0, with enhanced data model to support enterprise scale. It introduces Project/Org hierarchy into the Catalog and granular RBAC capabilities with a brand new Catalog UX. More information coming soon!",
+      },
       {
         tag: [
           { value: "Catalog" },
           { value: "Workflows" },
           { value: "Platform" },
         ],
-        title: "Granular RBAC at Account Level Resources",
+        title: "Introduce Project/Org Scopes to Catalog and Workflows",
         description:
-          "Move IDP Catalog entities as well as Workflows to Account scope and support Harness RBAC on those Resources",
+          "Introduce Project/Org Hierarchy in the Catalog to allow granular Access Control on IDP Catalog entities as well as Workflows on those levels. Entities can be created at 3 different scopes (Project, Org, Account) and can be shared with other Users and Groups using Harness Platform RBAC.",
       },
       {
-        tag: [{ value: "Catalog" }],
-        title: "API based Entity Creation",
+        tag: [{ value: "Platform" }],
+        title: "Git Experience for YAML files",
         description:
-          "Allow creating the Core entities (Components, APIs, Resources) directly on the Harness Platform without having to create a YAML. This will allow seamless integration with third party entities for catalog population and updates.",
-      },
-      {
-        tag: [{ value: "Workflows" }],
-        title: "Dynamic Picker: Support Conditional API Request",
-        description:
-          "Add support for Workflow Dynamic Picker to trigger the API request based on user's input in one of the previous Workflow form fields. Today as soon as Dynamic Pickers are rendered, the API requests to fetch the dropdown values are triggered",
-      },
-      {
-        tag: [{ value: "Workflows" }],
-        title:
-          "Fetch additional details and set form fields based on User selection",
-        description:
-          "Add a feature to set values of other fields in the workflow forms based on user selection. For example - user selects their application, an API request is made to CMDB to fetch additional details of the application and populate the rest of the fields.",
-      },
-      {
-        tag: [{ value: "Workflows" }],
-        title:
-          "Use an API Key to trigger Pipelines from an IDP Workflow instead of user token",
-        description:
-          "Today Pipelines are triggered from an IDP Workflow using the user's token. Additionally, it should be possible to use an API key to trigger the pipeline and remove the requirement for the user to have any access to the pipeline.",
+          "Ability to keep YAML file definitions in Git for Catalog entities and Workflows leveraging Harness Platform Git Experience.",
+        link: "https://developer.harness.io/docs/platform/git-experience/git-experience-overview/",
       },
     ],
   },
@@ -72,16 +60,6 @@ export const IdpData: Horizon = {
   Next: {
     description: "Q1 2025, Feb 2025 - Apr 2025",
     feature: [
-      {
-        tag: [
-          { value: "Catalog" },
-          { value: "Workflows" },
-          { value: "Platform" },
-        ],
-        title: "Introduce Project/Org Scopes to Catalog",
-        description:
-          "Introduce Project/Org Hierarchy in the Catalog to allow granular Access Control on IDP Catalog entities as well as Workflows on those levels. Entities can be created at 3 different scopes (Project, Org, Account) and can be shared with other Users and Groups using Harness Platform RBAC.",
-      },
       {
         tag: [{ value: "Scorecards" }],
         title: "Project/Org filters in account level Scorecards",
@@ -251,6 +229,42 @@ export const IdpData: Horizon = {
   Released: {
     description: "What has been released recently",
     feature: [
+      {
+        tag: [
+          { value: "Catalog" },
+          { value: "Workflows" },
+          { value: "Platform" },
+        ],
+        title: "Granular RBAC at Account Level Resources",
+        description:
+          "Move IDP Catalog entities as well as Workflows to Account scope and support Harness RBAC on those Resources",
+      },
+      {
+        tag: [{ value: "Catalog" }],
+        title: "API based Entity Creation",
+        description:
+          "Allow creating the Core entities (Components, APIs, Resources) directly on the Harness Platform without having to create a YAML. This will allow seamless integration with third party entities for catalog population and updates.",
+      },
+      {
+        tag: [{ value: "Workflows" }],
+        title: "Dynamic Picker: Support Conditional API Request",
+        description:
+          "Add support for Workflow Dynamic Picker to trigger the API request based on user's input in one of the previous Workflow form fields. Today as soon as Dynamic Pickers are rendered, the API requests to fetch the dropdown values are triggered",
+      },
+      {
+        tag: [{ value: "Workflows" }],
+        title:
+          "Fetch additional details and set form fields based on User selection",
+        description:
+          "Add a feature to set values of other fields in the workflow forms based on user selection. For example - user selects their application, an API request is made to CMDB to fetch additional details of the application and populate the rest of the fields.",
+      },
+      {
+        tag: [{ value: "Workflows" }],
+        title:
+          "Use an API Key to trigger Pipelines from an IDP Workflow instead of user token",
+        description:
+          "Today Pipelines are triggered from an IDP Workflow using the user's token. Additionally, it should be possible to use an API key to trigger the pipeline and remove the requirement for the user to have any access to the pipeline.",
+      },
       {
         tag: [{ value: "Workflows" }],
         title: "Workflows UI Enhancements",
