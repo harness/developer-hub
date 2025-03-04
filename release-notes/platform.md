@@ -41,7 +41,7 @@ To ensure uninterrupted availability, better performance, and enhanced security,
   1. Whitelist GAR to allow seamless access to Harness images.
   2. Configure Harness to use authenticated access instead of anonymous pulls from Docker Hub.
   3. Set up a [registry mirror](https://docs.docker.com/docker-hub/mirror/) to pull Harness images instead of relying on Docker Hub.
-  4. Continue using Docker Hub if the restrictions do not affect you. Contact [Harness Support](support@harness.io) to configure Docker Hub as the default registry.
+  4. Continue using Docker Hub if the restrictions do not affect you. Contact [Harness Support](mailto:support@harness.io) to configure Docker Hub as the default registry.
 
 **Images moving to GAR**
 
