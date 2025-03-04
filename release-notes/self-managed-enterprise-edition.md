@@ -292,7 +292,7 @@ gsutil -m cp \
 - Fixed an issue that allowed users to view non production ready steps. [IAC-3239]
 
 #### Continuous Delivery
-- Reverts - Fixed an issue where the customer is unable to perform Sync even if they have permissions (**CDS-107535, ZD-79513**)]
+- Fixed an issue where the customer is unable to perform Sync even if they have permissions (**CDS-107535, ZD-79513**)]
 
 ## Feb 28, 2025, Version 0.26.0 <!-- Draft : Feb 28, 2025 -->
 
