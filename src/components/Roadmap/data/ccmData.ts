@@ -269,8 +269,7 @@ Later:{
         description:
           "Automates AKS cluster provisioning, scaling, and node pool management with policy-driven orchestration",
         backgroundColor: "var(--yellow-100)",
-      }
+      },
     ],
-
   }
 };
