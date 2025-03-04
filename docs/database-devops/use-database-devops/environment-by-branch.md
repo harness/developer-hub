@@ -23,9 +23,7 @@ Here are several reasons to use environment branches with Harness Database DevOp
 
 3. **Controlled Progression**: Test and validate changes in lower environments before promoting to production, using Harness Database DevOps's deployment pipelines.
 
-4. **Easier Rollbacks**: Harness Database DevOps can quickly roll back changes by reverting to a previous commit in the environment's branch.
-
-5. **Audit Trail**: Each branch provides a clear history of changes, enhancing traceability in Harness Database DevOps.
+4. **Audit Trail**: Each branch provides a clear history of changes, enhancing traceability in Harness Database DevOps.
 
 ### What are the tradeoffs of Branch Per Environment?
 
@@ -48,7 +46,6 @@ To configure deployments by environment branch in Harness DB DevOps:
  4. When a change is committed (e.g., a merge from development to staging), the trigger will initiate the deployment pipeline for that specific environment.
  5. In your deployment pipeline, define the steps that specify which database changes to apply based on the environment. 
  6. You can, then, track the status of each change set and roll back changes if necessary.
- 7. Ensure that your database connector is properly configured to connect to the respective database instances.
 
 ## Conclusion 
 
