@@ -56,7 +56,7 @@ export const CdeData: Horizon = {
           ],
         title: "RBAC and Admin Functionality",
         description:
-          "Introduce RBAC and Admin functionality to ensure centralized control and maintain security and governance in Harness cloud development environments.  ",
+          "Introduce RBAC and Admin functionality to ensure centralized control in Harness cloud development environments.  ",
       },
       {
         tag: [
@@ -66,15 +66,6 @@ export const CdeData: Horizon = {
           "DevContainer Templates",
         description:
           "Add support for DevContainer Templates i.e. predefined configurations that enable users to setup standardized development environments. ",
-      },
-      {
-        tag: [
-            { value: "Usability" }, { value: "Core Feature" }
-          ],
-        title:
-          "Gitspace Rebuilds",
-        description:
-          "Allow users to rebuild their development container for an active Gitspace after applying configuration changes, ensuring the environment is updated with the latest settings and dependencies without requiring a fresh setup.",
       },
     ],
   },
@@ -93,7 +84,7 @@ export const CdeData: Horizon = {
           ],
         title: "Support Additional Clouds for Self Hosted CDE Infrastructure",
         description:
-          "Expand supported cloud providers (AWS, Azure) for users to self-host cloud development environments (CDE) in their private infrastructure.",
+          "Expand supported cloud providers (AWS) for users to self-host cloud development environments (CDE) in their private infrastructure.",
       },
       {
         tag: [{ value: "Usability" }, { value: "DevContainer" }],
@@ -102,34 +93,19 @@ export const CdeData: Horizon = {
           "Allow users to spin up containerized development environments on their local machines.",
       },
       {
-        tag: [{ value: "Core Feature" }],
-        title: "Pre-builds in Gitspaces",
-        description:
-          "Add support for pre-initialized development environments to reduce setup time for users.",
-      },
-      {
-        tag: [{ value: "Integration" }],
-        title: "Integration with Security Scanning Tools",
-        description:
-          "Integrate with security scanning tools to automatically detect, assess and manage vulnerabilities in development container base images.",
-      },
-      {
-        tag: [{ value: "Integration" }],
-        title: "Integration with Harness IDP",
-        description:
-          "Enable users to seamlessly create, manage, and configure their Gitspaces directly from Harness IDP, streamlining the development workflow within a unified platform.",
-      },
-      {
-        tag: [{ value: "Usability" }],
-        title: "Shared Gitspaces",
-        description:
-          "Introduce shared development environments, allowing users to collaborate in real-time on Gitspaces, ensuring seamless teamwork, consistency, and shared access to resources.",
-      },
-      {
         tag: [{ value: "Usability" }],
         title: "Policies & Governance Features",
         description:
-          ".",
+          "Enable users to block DevContainer images and(or) features based on security policies. ",
+      },
+      {
+        tag: [
+            { value: "Usability" }, { value: "Core Feature" }
+          ],
+        title:
+          "Gitspace Rebuilds",
+        description:
+          "Allow users to rebuild their development container for an active Gitspace after applying configuration changes, ensuring the environment is updated with the latest settings and dependencies without requiring a fresh setup.",
       },
     ],
   },
@@ -148,6 +124,24 @@ export const CdeData: Horizon = {
             title: "Self Managed Solution",
             description:
               "Introduce Self-Managed Hosting model for Harness Gitspaces, allowing users to self-host and self-manage their Harness cloud development infrastructure while ensuring security, compliance, and flexibility.",
+          },
+          {
+            tag: [{ value: "Core Feature" }],
+            title: "Pre-builds in Gitspaces",
+            description:
+              "Add support for pre-initialized development environments to reduce setup time for users.",
+          },
+          {
+            tag: [{ value: "Integration" }],
+            title: "Integration with Harness IDP",
+            description:
+              "Enable users to seamlessly create, manage, and configure their Gitspaces directly from Harness IDP, streamlining the development workflow within a unified platform.",
+          },
+          {
+            tag: [{ value: "Usability" }],
+            title: "Shared Gitspaces",
+            description:
+              "Introduce shared development environments, allowing users to collaborate in real-time on Gitspaces, ensuring seamless teamwork, consistency, and shared access to resources.",
           },
     ],
   },
