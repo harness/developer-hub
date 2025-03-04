@@ -325,7 +325,7 @@ HCE allows you to create the below probes for Windows:
 
 All the chaos infrastructure services adhere to the **principle of least privilege**, where the services execute with the minimum number of permissions.
 
-Go to [chaos infrastructures](/docs/chaos-engineering/use-harness-ce/infrastructures/) to learn more about infrastructures, their importance, and their types. Go to [Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr) to know about Harness Delegate.
+Go to [chaos infrastructures](/docs/chaos-engineering/use-harness-ce/infrastructures/) to learn more about infrastructures, their importance, and their types. Go to [Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/#what-is-ddcr) to know about Harness Delegate.
 
 Go to [enable or disable an infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable) and [upgrade it](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra) to get a hands-on experience.
 

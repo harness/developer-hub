@@ -1,0 +1,9 @@
+{
+  "position": 10,
+  "label": "Types of Infrastructure",
+  "collapsible": "true",
+  "collapsed": "true",
+  "customProps": {
+    "description": "Represents individual components of a deployment environment."
+  }
+}

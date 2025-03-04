@@ -2,13 +2,15 @@
 title: Dedicated Delegate on Target Cluster
 sidebar_position: 10
 description: Use Dedicated Delegate on Target Cluster
+redirect_from: 
+- /docs/chaos-engineering/use-harness-ce/infrastructures/dedicated-delegate
 ---
 
 This topic describes the permissions required to deploy Delegate for each target cluster to execute chaos experiments.
 
 ## Before you begin, review the following:
 
-- [What is DDCR?](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr)
+- [What is DDCR?](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/#what-is-ddcr)
 - [Install Delegate to execute chaos experiments](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#enable-chaos)
 
 ## Why service accounts matter

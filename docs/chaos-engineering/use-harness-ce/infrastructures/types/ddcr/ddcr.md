@@ -4,6 +4,7 @@ description: Delegate-Driven Chaos Infrastructure
 redirect_from:
 - /docs/category/harness-delegate-driven-infrastructure
 - /docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/
+- /docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr
 ---
 
 This topic describes Delegate-Driven Chaos Infrastructure, its characteristics, and installation. 
@@ -28,7 +29,7 @@ The schematic diagram below describes how chaos experiments are executed in usin
 
     ![](./static/delegate/ddci-flow.png)
 
-Go to [permissions required](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcrpermissions) to know the detailed list of permissions to execute Kubernetes faults with a Delegate.
+Go to [permissions required](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/#what-is-ddcrpermissions) to know the detailed list of permissions to execute Kubernetes faults with a Delegate.
 
 The diagram below describes the detailed flow of control (step 5 of the earlier diagram), for an example chaos experiment- [pod DNS chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-dns-error).
 
@@ -67,5 +68,5 @@ Earlier, resilience score was measured at the experiment level. With Harness Del
 
 ## Next Steps
 
-- [Permissions Required](/docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/permissions)
-- [Install Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/installation)
+- [Permissions Required](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/permissions)
+- [Install Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/installation)
