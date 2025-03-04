@@ -17,7 +17,8 @@ It is a best practice in software supply chain security to produce declarations 
 
 * **Software Bill of Materials (SBOM):** An inventory of components used in producing an artifact.
 * **SLSA Provenance:** A description of how an artifact was produced.
-* **Attestation:** A digitally signed SBOM or SLSA Provenance that can be verified for authenticity.
+* **Attestation**: A verifiable statement about the data which includes claims like build metadata, security scan results, or policy compliance, which anyone can verify using the corresponding public key.
+* **Signing**: Attaches a digital signature to a software component (such as a container image, SBOM, or provenance file) to verify its authenticity and integrity. This guarantees that it was created or approved by a trusted entity and remains unchanged.
 
 For a detailed explanation of software supply chain security concepts and terms, go to the [SLSA terminology documentation](https://slsa.dev/spec/v1.0/terminology).
 
@@ -102,6 +103,14 @@ Here’s an example of what the signed attestation would look like
 You can perform Base64 decoding on the payload data to view your SBOM or SLSA Provenance.
 
 For verification, the signed attestation is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the attestation was signed using the private key.
+
+
+## Artifact Signing and Verification
+
+The artifact Signing process involves a container image or digest, a private key from a key pair and a password. SCS uses Cosign to perform the signing and securely verify it. Once the signature is successfully generated, The signed artifact is then pushed to the container registry, where the digest of the image is set as the file name with a `.sig` extension.
+
+For verification, the signed artifact is retrieved from the container registry and verified using the corresponding public key. This public key should be of the same key pair where the artifact was signed using the private key.
+
 
 ## Harness Platform components
 
