@@ -82,10 +82,10 @@ export const featureList: CardItem[] = [
     link: "docs/category/get-started-with-srm",
   },
   {
-    title: "Run Chaos Experiments",
+    title: "Resilience Testing",
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
-    description: <>Ensure application and infrastructure resilience.</>,
+    description: <>Measure the resilience posture of applications.</>,
     link: "docs/chaos-engineering/getting-started/",
   },
   {
