@@ -292,7 +292,7 @@ gsutil -m cp \
 - Fixed an issue that allowed users to view non production ready steps. [IAC-3239]
 
 #### Continuous Delivery
-- Reverts - [Previously, buttons for actions (restart, promote, sync) were visible to users who lacked the `GitOps app sync` permission which is required for those actions. This resulted in failures due to the actions being run by users without permission. Now, the buttons are disabled in the UI for users without the proper permissions. (**CDS-105624, ZD-75858**)]
+- Reverts - Fixed an issue where the customer is unable to perform Sync even if they have permissions (**CDS-107535, ZD-79513**)]
 
 ## Feb 28, 2025, Version 0.26.0 <!-- Draft : Feb 28, 2025 -->
 
