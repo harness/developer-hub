@@ -180,9 +180,11 @@ use harness
 db.accounts.update({"_id":"${accountId}"},{\$set:{"subdomainUrl": "${subdomainUrl}"}})
 db.accounts.find()
 EOF
-kubectl patch configmap ng-auth-ui -n $namespace --type merge -p '{"data":{"EXPECTED_HOSTNAME":"app.harness.io"}}'
+kubectl patch configmap ng-auth-ui -n $namespace --type merge -p '{"data":{"EXPECTED_HOSTNAME":"mysubdomain.mysite.com"}}'
 kubectl rollout restart -n $namespace deployment -l "app.kubernetes.io/name=ng-auth-ui"
 ```
+
+The `mysubdomain.mysite.com` value in the command, `kubectl patch configmap ng-auth-ui -n $namespace --type merge -p '{"data":{"EXPECTED_HOSTNAME":"mysubdomain.mysite.com"}}'` should be replaced with your created subdomain value.
 
 ##### Example command
 
