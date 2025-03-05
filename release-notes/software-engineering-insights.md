@@ -24,6 +24,25 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## February 2025
 
+### Version 202502.2.1
+
+<!-- February 28, 2025 -->
+
+### Version 202502.2.1
+
+#### Early access features
+
+* You can now define the start date of an **epic** or **initiative** — indicating when the work item or issue was prioritized and work began — directly within the widget settings for the [Epic Overview](/docs/software-engineering-insights/analytics-and-reporting/epic-insights#epic-overview) and [Epic Hygiene widgets](/docs/software-engineering-insights/analytics-and-reporting/epic-insights#track-epic-hygiene). This feature is currently in **BETA** and requires the SEI_EPIC_REPORT feature flag. To enable it, please contact [Harness Support](/docs/software-engineering-insights/sei-support). (SEI-10636)
+
+#### New features & enhancements
+
+* We have made significant optimizations to the data processing layer for [Azure DevOps](/docs/software-engineering-insights/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops). These enhancements accelerate data ingestion and ensure quicker visibility of data in the widgets. (SEI-10029)
+
+#### Fixed issues
+
+* Resolved an issue where pagination was not functioning correctly on the Collections page. (SEI-10400)
+
+
 ### Version 202502.2
 
 <!-- February 25, 2025 -->
