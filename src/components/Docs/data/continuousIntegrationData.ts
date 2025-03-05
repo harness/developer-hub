@@ -53,7 +53,7 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.ci,
           description:
             "Leverage a suite of smart features that optimize your builds, including Test Intelligence and Cache Intelligence.",
-          link: "/docs/continuous-integration/get-started/harness-ci-intelligence",
+          link: "/docs/continuous-integration/use-ci/harness-ci-intelligence",
         },
         {
           title: "Plugins",
