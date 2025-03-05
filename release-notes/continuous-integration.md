@@ -85,7 +85,7 @@ For more information see [Google Container Registry deprecation notice](https://
 
 - For Kubernetes infrastructure, CI pipeline now logs container names alongside step names in the **Initialize step** for better visibility. (CI-14809)
 - Added support for shell as a run-time input in the Run-step. (CI-15390)
-- CI stage now applies image pull policy from the nearest Project/Org/Account-level config for Kubernetes Infrastructure. (CI-15614)
+- CI stage now applies image pull policy from the nearest Project/Org/Account-level config for Kubernetes Infrastructure. This functionality requires the feature flag `CI_ENABLE_IMAGE_PULL_POLICY_OVERRIDE_FROM_SETTINGS`. (CI-15614)
 - Added option to run **Clone Codebase** in a containerless step for VM and Cloud infra, available through the `CI_GIT_CLONE_CONTAINERLESS` feature flag. This is particularly useful for Windows builds due to the large image size required for pull. (CI-15756) (ZD-73794, ZD-76234)
 
 #### Fixed issues
