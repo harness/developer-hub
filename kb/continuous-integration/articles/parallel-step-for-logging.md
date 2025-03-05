@@ -42,6 +42,23 @@ In your pipeline's YAML, add the two debug monitoring steps, as shown in the fol
                               i=`expr $i + 1`
                           done
                       timeout: 10m ## Allow enough time to cover the failing step.
+                  - step:
+                      type: Run
+                      name: Backgroung Monitor ## This step lists what background tasks are running which impacts step completion.
+                      identifier: debug_monitor_3
+                      spec:
+                        connectorRef: YOUR_DOCKER_CONNECTOR
+                        image: alpine
+                        shell: Sh
+                        command: |- 
+                          i=0
+                          while [ $i -lt 10 ]
+                          do
+                              ps -ef ##
+                              sleep 10
+                              i=`expr $i + 1`
+                          done
+                      timeout: 10m
               - step: ## Other steps are outside the parallel group.
                   type: Run
                   name: Run 3
