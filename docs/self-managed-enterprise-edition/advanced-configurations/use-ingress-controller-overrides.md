@@ -1,18 +1,16 @@
 ---
-title: Use ingress controller overrides
+title: Configure and customize Ingress and NGINX Controller using Overrides
 description: Learn how to configure and use ingress controller overrides for the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 7
 redirect_from:
   - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/use-ingress-controller-overrides/
 ---
 
-This guide explains how to configure Ingress resources and NGINX controller in your Harness deployment.
-
-You can also customize the behavior of the nginx ingress controller using overrides. This topic explains how to use overrides to configure the ingress controller.
+This guide explains how to configure Ingress resources and the NGINX controller in your Harness deployment, including how to customize its behavior using overrides.
 
 For more information, go to [Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) in the Kubernetes documentation.
 
-## Basic Ingress and Nginx Configuration
+## Ingress and Nginx Configuration
 
 ### Enable Ingress
 ```yaml
