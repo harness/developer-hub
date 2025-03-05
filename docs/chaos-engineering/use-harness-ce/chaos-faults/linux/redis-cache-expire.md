@@ -37,8 +37,8 @@ Redis cache expire expires a given key (or all keys) for a specific duration. Du
   </tr>
   <tr>
     <td> keys </td>
-    <td> Comma separated list of keys to expire in the Redis cache. </td>
-    <td> For empty value, all the keys are expired. For more information, go to <a href="#key"> key</a>. </td>
+    <td> Comma-separated list of keys to expire in the Redis cache. </td>
+    <td> If this is empty, all the keys are expired. For more information, go to <a href="#keys"> key</a>. </td>
   </tr>
   <tr>
     <td> expiration </td>
