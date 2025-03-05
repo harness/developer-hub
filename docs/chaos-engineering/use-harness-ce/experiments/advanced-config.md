@@ -8,7 +8,7 @@ sidebar_position: 3
 
 - [Create an experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments)
 
-This topic describes how you use some advanced settings to configure your chaos experiments.
+This topic describes advanced settings to configure your chaos experiments.
 
 ## Advanced Experiment Setup Options
 
@@ -62,17 +62,7 @@ This option allows privileged or restricted access for experiment pods.
 
 ## Execute Experiment With Advanced Options
 
-You can execute the chaos experiment with advanced security options: **runAsUser** or **runAsGroup**. Both the options allow privileged or restricted access to experiment pods.
-
-1. **runAsUser**: Specifies the user ID used to start all the processes in the experiment pod containers. Default user ID is 1000.
-
-2. **runAsGroup**: Specifies the group ID used to start all the processes in the experiment pod containers. Default group ID is 0.
-
-To select one of the options,
-
-1. Click **Experiment builder** tab. Click **Advanced Options** on the right side of the screen.
-
-    ![run as user group](./static/edit-experiment/advanced-1.png)
+1. Select one of the advanced security options: **runAsUser** or **runAsGroup**.
 
 2. Click **Security** tab and select/unselect one or both the options.
 
@@ -82,7 +72,7 @@ To select one of the options,
 3. Click **Save**.
 
     ![save changes](./static/edit-experiment/save-3.png)
-    
+
 ## Next Steps
 
 - [Run or Schedule Experiments](/docs/chaos-engineering/use-harness-ce/experiments/run-schedule-exp)
