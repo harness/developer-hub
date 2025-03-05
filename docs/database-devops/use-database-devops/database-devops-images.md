@@ -103,7 +103,7 @@ By default, when a DBOps pipeline runs, the Harness Delegate uses a [Docker conn
 
 ### I don't want to pull images anonymously
 
-If you don't want the Harness Delegate to pull images anonymously, you can use credentialed access instead. For instructions, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
+You can use credentialed access if you don't want the Harness Delegate to pull images anonymously. For instructions, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
 
 ### I don't want to pull images from a public registry
 
