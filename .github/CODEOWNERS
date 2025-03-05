@@ -197,6 +197,8 @@ static/  @rohanmaharjan100 @wei-harness
 
 #FME Docs
 /src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
+/release-notes/feature-management-experimentation.md @dtk-DaveKarow @kleinjoshuaa @deej-split
+/release-notes/static/fme/ @dtk-DaveKarow @kleinjoshuaa @deej-split
 
 # Open Source Docs
 /docs/open-source/ @dewan-ahmed @rustd @SushrutHarness
