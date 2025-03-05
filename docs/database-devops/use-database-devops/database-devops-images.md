@@ -12,10 +12,10 @@ Harness publishes `plugins/drone-liquibase` with `x.y.z-{liquibaseVersion}`, whe
 Here are some examples of Harness DB Devops images and their purposes:
 
 * `plugins/download-artifactory`: Used for downloading artifacts from Artifactory.
-* `plugins/drone-liquibase`: Default Liquibase plugin for database operations.
+* `plugins/drone-liquibase:1.0.0-4.27`: Default Liquibase plugin for database operations.
 * `harness/drone-git`: Used to clone Git repositories.
-* `plugins/drone-liquibase:latest-mongo`: Liquibase plugin for MongoDB.
-* `plugins/drone-liquibase:latest-spanner`: Liquibase plugin for Google Spanner.
+* `plugins/drone-liquibase:1.0.0-4.27-mongo`: Liquibase plugin for MongoDB.
+* `plugins/drone-liquibase:1.0.0-4.27-spanner`: Liquibase plugin for Google Spanner.
 
 ## Configure Harness DB Devops Image Versions
 
@@ -97,3 +97,18 @@ curl --location --request DELETE "https://app.harness.io/gateway/v1/dbops/execut
 
 You can refer the images directly from [dockerhub](https://hub.docker.com/r/plugins/drone-liquibase/tags)
 
+
+## Harness DBOps Image Pulls
+By default, when a DBOps pipeline runs, the Harness Delegate uses a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md) to make an anonymous outbound connection to pull the Harness DBOps images from the public container registry where they are stored.
+
+### I don't want to pull images anonymously
+
+You can use credentialed access if you don't want the Harness Delegate to pull images anonymously. For instructions, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
+
+### I don't want to pull images from a public registry
+
+Harness DBOps images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can pull Harness images from your own private registry. For instructions on each of these options, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md).
+
+### Override LiteEngine Image in DBOps
+
+Refer to the [section](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#harness-ci-image-updates) to override using CI Apis
