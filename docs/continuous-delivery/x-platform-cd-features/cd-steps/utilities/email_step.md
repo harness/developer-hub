@@ -73,6 +73,53 @@ The **Body** is a string field. You can enter in text and Harness expressions. H
 
 For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
 
+<details>
+<summary>Example of using `<br>` tag in the email body.</summary>
+
+Below is an illustration of how you can insert `<br>` tags within the **Email Step** body:
+
+![](./static/email-step-example.png)
+
+**Pipeline YAML Example**:
+
+```yaml
+pipeline:
+  name: Email-test
+  identifier: emailtest
+  projectIdentifier: PROJECT_ID
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: s1
+        identifier: s1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: Email
+                  name: Email_1
+                  identifier: Email_1
+                  spec:
+                    to: RECIPIENT_EMAIL
+                    cc: ""
+                    subject: Pipeline status
+                    body: |-
+                      These are the pipeline details <br> <br>
+                      Pipeline name: <+pipeline.name> <br>
+                      Pipeline status: <+pipeline.status>. <br>
+                      Pipeline step identifier: <+step.identifier>
+                    inputVariables: []
+                  timeout: 10m
+        tags: {}
+
+```
+
+
+</details>
+
 ## Using Input Variables
 
 You can use input variables in the Email Step to customize the subject, body, and recipient list with dynamic values from your pipeline.
