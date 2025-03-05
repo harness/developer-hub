@@ -9,10 +9,9 @@ sidebar_position: 5
 - [What is a Chaos Experiment?](/docs/chaos-engineering/use-harness-ce/experiments/)
 - [Create an experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments)
 
-This topic describes how you can run or schedule experiments, and explains some advanced settings that you can configure in your chaos experiments.
+This topic describes how you can run or schedule experiments.
 
-
-You can run the experiment immediately by clicking the **Run** button, or schedule it to run at a specific time by selecting the **Schedule** tab.
+After configuring your chaos experiment, you can run the experiment immediately by clicking the **Run** button, or schedule it to run at a specific time by selecting the **Schedule** tab.
 
 ## Execute Experiment Once
 
