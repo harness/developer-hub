@@ -136,5 +136,11 @@
 .gitness:hover {
   border-color: var(--mod-gitness-200);
 }
+.cde:focus {
+  border-color: var(--mod-cde-200)
+}
+.cde:hover {
+  border-color: vae(--mod-cde-200)
+}
 
 
