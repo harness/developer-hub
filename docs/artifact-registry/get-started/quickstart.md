@@ -1,7 +1,8 @@
 ---
-title: Quick Start with Docker
-description: Build a Docker Registry with Harness
+title: Get started with Artifact Registry
+description: Build a Registry with Harness
 sidebar_position: 20
+sidebar_label: Get Started
 ---
 
 import Tabs from '@theme/Tabs';
@@ -9,145 +10,103 @@ import TabItem from '@theme/TabItem';
 
 The Harness Artifact Registry module allows you to quickly and easily store your digital artifacts. 
 
-Use this docker quick start guide to learn what the module has to offer and how to use it.
+Getting started with Artifact Registry follows these steps:
+- [Create a registry](/docs/artifact-registry/get-started/quickstart#create-a-registry)
+- [Create an upstream proxy](/docs/artifact-registry/get-started/quickstart#create-an-upstream-proxy)
+- [Connect the upstream proxy to the registry](/docs/artifact-registry/get-started/quickstart#connect-the-upstream-proxy)
+- [Use you registry](/docs/artifact-registry/get-started/quickstart#use-a-registry)
 
 ## Prerequisite
+Depending on your package manager, e.g. Docker, Helm or Maven, you may need to use its associated dependencies like the Docker CLI. 
 
-This quick start guide requires the use of docker, so ensure that you can use the docker CLI. 
-
-## Creating a registry
-
-This first section will go over how to create and configure a registry for use. 
-
-### Enable and select the module
-
-You can find the Artifact Registry module in the module selector in the left nav.
-
-![](./static/module-selector.png)
-
-### Create a docker registry
+## Create a registry
+<Tabs>
+<TabItem value="Interactive guide">
+<DocVideo src="https://app.tango.us/app/embed/e3650c96-80e9-414d-aba1-64cb0d4db24d" title="Create an Artifact Registry" />
+</TabItem>
+<TabItem value="Step-by-step">
 
 1. Select **+ New Artifact Registry** under the **Registries** tab. 
-1. Select a [registry type](/docs/artifact-registry/whats-supported#supported-registry-types). In this guide, we will use **Docker**.
-1. Enter a **Registry Name** and, optionally, a **Description** or **Labels**.
+2. Select a [registry type](/docs/artifact-registry/whats-supported#supported-registry-types).
+3. Enter a **Registry Name** and, optionally, a **Description** or **Labels**.
     :::tip
     This registry name must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
     :::
-1. Select **Create Registry**.
+4. Select **Create Registry**.
+</TabItem>
+</Tabs>
+---
 
-## Create a docker upstream proxy
+## Create an upstream proxy
+An **Upstream Proxy** in an Artifact Registry is a configuration that enables the registry to retrieve artifacts from an external or remote registry. If a requested artifact is not available locally, the registry forwards the request to the upstream proxy to fetch it. 
 
-An **Upstream Proxy** for an **Artifact Registry** is a proxy configuration that allows the registry to fetch artifacts from another external or remote registry. When a user requests an artifact that isn't available in the registry, the registry directs the request to a configured upstream proxy. To create one, follow these steps: 
+:::info upstream proxy usage
+Upstream proxies are commonly used to manage dependencies. During a build, if an open-source dependency is not already cached in the upstream proxy, it will be fetched from a public repository. This ensures access to necessary dependencies while optimizing retrieval speed and reducing redundant downloads.
+:::
 
+To create one, follow these steps: 
 <Tabs>
 <TabItem value="Interactive guide">
-<iframe 
-    src="https://app.tango.us/app/embed/4d59383b-7b7d-4355-acb7-1eed4ca657f0" 
-    title="Create an Upstream Proxy in Harness Artifact Registry" 
-    style={{ minHeight: '640px' }}
-    width="100%" 
-    height="100%"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    webkitallowfullscreen="true"
-    mozallowfullscreen="true"
-    allowfullscreen="true"
-></iframe>
+<DocVideo src="https://app.tango.us/app/embed/4d59383b-7b7d-4355-acb7-1eed4ca657f0" title="Create an Upstream Proxy in Harness Artifact Registry" />
 </TabItem>
 <TabItem value="Step-by-step">
 
 1. Select the dropdown next to **+ New Artifact Registry**, and then select **Upstream Proxy**.
-    ![](./static/create-proxy.png)
 2. Enter the **Upstream Proxy Key**. This is the identifier or name for the proxy within Harness and is chosen by you. 
    
    :::tip allowed characters
     This proxy key must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
    :::
 
-3. For the source, select Docker Hub.
-4. Choose your **Authentication** method. In this case, we only want to use public docker images, so we will select **Anonymous**.
+3. For the source, e.g. **Docker Hub**.
+4. Choose your **Authentication** method. 
+    - In cases where you use public images, select **Anonymous**.
 5. Select **Create Upstream Proxy**.
 </TabItem>
 </Tabs>
+---
 
-### Set the upstream proxy
-
+### Connect the upstream proxy
 After creating an upstream proxy, you need to set it in your artifact registry. To do so, follow these steps:
 
-1. In the docker registry we created above, select **Configuration**.
+<Tabs>
+<TabItem value="Interactive guide">
+<DocVideo src="https://app.tango.us/app/embed/4294875b-384e-4558-839c-3f96c225a928" title="Configuring Upstream in Harness Workspaces" />
+</TabItem>
+<TabItem value="Step-by-step">
+
+1. In the registry we created above, select **Configuration**.
 2. Open the **Advanced (Optional)** dropdown menu. 
 3. Select **Configure Upstream**.
 4. Under **Available upstream proxies**, you will see a list of available upstream proxies. Select as many as you would like. 
 5. Under **Selected proxies**, you will see an ordered list of selected proxies for this registry. When the registry receives a request, the proxies will be *queried in order* from top to bottom.
 6. Click **Save** in the top right corner. 
+</TabItem>
+</Tabs>
 
 ## Use a registry
+Next, use the registry we created. To do so, we will pull an artifact from the proxy, tag it, and add it to our registry. 
 
-Next, lets use the registry we created. To do so, we will pull an artifact from the proxy, tag it, and add it to our registry. 
+<Tabs>
+<TabItem value="Interactive guide">
+<DocVideo src="https://app.tango.us/app/embed/a6085408-4187-4d5d-90cd-08e4a2ee193d" title="Use an Artifact Registry" />
+</TabItem>
+<TabItem value="Step-by-step">
 
-Operations that interact with your registry all start with the **Setup Client** button in the top right corner of your registry.
+1. Click Setup Client.
+2. Select Generate Token to generate a token to use as your password when logging into your package e.g. Docker or Maven
+3. Follow the remained on-screen instruction by running the command in your terminal to pull an image and then push it to your registry.
+</TabItem>
+</Tabs>
 
-![](./static/setup-client.png)
-
-### Login to your registry
-
-1. Click **Setup Client**.
-2. Copy the docker login command shown. It should look something like: `docker login pkg.app.harness.io`
-3. Then, open a terminal window and paste the command.
-4. When prompted, enter the username given in the **Setup Client** tab. 
-5. When prompted for a password, click **Generate Token** in the **Setup Client** tab. Use this token as your password.
-
-![](./static/generate-token.png)
-
-### Pull an image
-
-Next, we will try and pull an image from your registry.
-
-1. Open the **Setup Client** tab in your registry.
-2. Scroll to the bottom and find the **Pull an image** section.
-3. Copy the pull image command. It should look something like this: 
-
-```
-docker pull pkg.qa.harness.io/<ACCOUNT_ID>/docs-registry/<IMAGE_NAME>:<TAG>
-```
-
-4. Run the command in terminal but replace `<IMAGE_NAME>:<TAG>` with the name and tag of the image you want to pull. In this case, we will pull the image `library/nginx` with no tag. In the end, the command will look like this: 
-```
-docker pull pkg.qa.harness.io/<ACCOUNT_ID>/docs-registry/library/nginx
-```
-
-This first attempts to pull the image from the registry `docs-registry` but the image doesn't exist. Therefore, it will check the proxy next and find it in DockerHub. 
-
-### Push an image
-
-Next, we will tag and push the nginx image to the registry to store it in Harness. 
-
-1. Open the **Setup Client** tab in your registry.
-2. Find the **Retag and Push the image** section.
-3. Copy the tag image command. It should look like this: 
-
-```
-docker tag <IMAGE_NAME>:<TAG> pkg.qa.harness.io/<ACCOUNT_ID>/docs-registry/<IMAGE_NAME>:<TAG>
-```
-
-4. Replace `<IMAGE_NAME>` with `nginx` and the second `<TAG>` with `test`. `<ACCOUNT_ID>` should be filled for you. The command will look like this:
-
-```
-docker tag nginx pkg.qa.harness.io/<ACCOUNT_ID>/docs-registry/nginx:test
-```
-
-5. Copy the push image command and make the replacements, it will look like this: 
-
-```
-docker push pkg.qa.harness.io/<ACCOUNT_ID>/docs-registry/nginx:test
-```
+:::info pull an image
+When you pull an artifact, the system first checks the local registry. If the artifact is not found, it automatically queries the upstream proxy. The proxy then attempts to retrieve the artifact from the designated external source, if available. This process ensures seamless access to artifacts, even if they are not initially stored in the local registry.
+:::
 
 Now, you should see the artifact appear in your docker registry as well as the **Artifacts** tab in the left navigation panel.
-
 That concludes the quick start guide! You should now have enough to get started with Artifact Registry. 
 
 ## See Also
-
 To learn more go to:
 
 - [Configure Registries](/docs/artifact-registry/manage-registries/configure-registry)
