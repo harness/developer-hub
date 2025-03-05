@@ -1,5 +1,5 @@
 ---
-title: Create experiment
+title: Create Experiment
 sidebar_position: 1
 redirect_from:
 - /docs/chaos-engineering/features/experiments/create-complex-chaos-experiments
@@ -8,7 +8,7 @@ redirect_from:
 
 This topic describes how you can create chaos experiments that consist of chaos faults and execute them to build and improve the resilience of your application.
 
-## Before you begin, review the following:
+## Prerequisites
 
 - [What is a chaos experiment?](/docs/chaos-engineering/concepts/chaos101)
 - [What are chaos faults?](/docs/chaos-engineering/use-harness-ce/experiments/#chaos-fault)
@@ -149,78 +149,8 @@ After constructing the chaos experiment using one of the three options, save the
 
 For more information, go to [Pipeline concepts](/docs/continuous-integration/get-started/key-concepts) and [Pipeline Modeling Overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
 
-## Run or Schedule the Experiment
 
-You can choose to run the experiment immediately by clicking the **Run** button, or schedule it to run at a specific time by selecting the **Schedule** tab.
-
-### Execute Experiment Once
-
-- To execute the experiment once, select **Non-Cron (Single run)**, click **Set Schedule**, and then select **Run**.
-
-- To run the experiment once, and at a specific time, select the **Run Once at a specific time**, choose the date and time, click apply, and select **Set Schedule**.
-
-	![Schedule experiment](./static/create-experiments/schedule.png)
-
-### Execute Experiment on a Schedule
-
-1. To schedule the experiment to run periodically, select **Cron (Recurring run)**, and set the schedule using the **Minutes**, **Hourly**, **Daily**, **Monthly** or **Yearly** options. The **Cron Expression** will be automatically generated.
-
-2. Click **Set Schedule**.
-
-	![cron experiment](./static/create-experiments/cron-schedule.png)
-
-## Advanced Experiment Setup Options
-
-On the Experiment Builder tab, you can click **Advanced Options** to configure the following advanced options when creating an experiment for a Kubernetes chaos infrastructure:
-
-![Advanced Options](./static/create-experiments/advanced-options.png)
-
-### General Options
-
-**Node Selector**
-
-Specify the node on which the experiment pods will be scheduled by providing the node label as a key-value pair.
-
-- This can be used with node-level faults to avoid scheduling the experiment pod on the target node(s).
-- It can also be used to limit the scheduling of experiment pods on nodes with an unsupported OS.
-
-	![Node Selector](./static/create-experiments/node-selector.png)
-
-**Toleration**
-
-Specify the tolerations that must be satisfied by a tainted node to schedule the experiment pods. For more information on taints and tolerations, refer to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
-
-- This can be used with node-level faults to avoid scheduling the experiment pod on the target node(s).
-- It can also be used to limit the scheduling of the experiment pods on nodes with an unsupported OS.
-
-	![Toleration](./static/create-experiments/toleration.png)
-
-**Annotations**
-
-Specify the annotations to be added to the experiment pods by providing them as key-value pairs. For more information on annotations, refer to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/).
-
-Annotations can be used to bypass network proxies enforced by service mesh tools like Istio.
-
-	![Annotations](./static/create-experiments/annotations.png)
-
-### Security Options
-
-**Enable runAsUser**
-
-Specify the user ID to start all the processes in the experiment pod containers. By default, the user ID `1000` is used.
-This option allows privileged or restricted access for experiment pods.
-
-	![runAsUser](./static/create-experiments/run-as-user.png)
-
-**Enable runAsGroup**
-
-Specify the group ID to start all the processes in the experiment pod containers instead of a user ID.
-This option allows privileged or restricted access for experiment pods.
-
-	![runAsGroup](./static/create-experiments/run-as-group.png)
-
-
-## Add serial and parallel faults
+## Add Serial and Parallel Faults
 You can add multiple faults in a single chaos experiment that is scaled efficiently by Harness CE during execution.
 
 :::tip
@@ -242,7 +172,7 @@ The image below shows a single experiment that consists of serial and parallel f
 
 	![Complex Faults Experiment](./static/create-experiments/complex-faults-experiment.png)
 
-## Analyze experiment
+## Analyze Experiment
 You can observe the status of execution of fault/s of a chaos experiment during its run. The screen shows the experiment pipeline on the right hand side, and details such as **Environment**, **Infrastructure Name**, and the runs that have passed and failed on the left hand side.
 
 ![Experiment Executing](./static/analyze-experiment/experiment-executing.png)
@@ -255,3 +185,8 @@ The **probe success percentage** helps determine the outcome of every fault in t
 If any of the faults fail, you can find the **Fail Step** that elaborates on the reason why the fault failed.
 
 ![Result Fail Step](./static/analyze-experiment/result-fail-step.png)
+
+## Next Steps
+
+- [Advanced Configurations](/docs/chaos-engineering/use-harness-ce/experiments/advanced-config)
+- [Edit or Update Experiment](/docs/chaos-engineering/use-harness-ce/experiments/edit-chaos-experiment)

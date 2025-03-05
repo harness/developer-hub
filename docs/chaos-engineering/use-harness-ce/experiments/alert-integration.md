@@ -124,5 +124,6 @@ Select the rule and click **Delete**. Confirm by selecting **Delete**.
 
     ![](./static/alert-integration/delete-18.png)
 
+## Next Steps
 
-
+- [Runtime Variable Support for Experiments](/docs/chaos-engineering/use-harness-ce/experiments/fault-template)

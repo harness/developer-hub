@@ -30,3 +30,8 @@ Select **Download Experiment**. This downloads the experiment file to your machi
 3. Select **Save**. Now, you should be able to see this experiment added to your chaos hub. You can access it and use it as a template for your new experiments.
 
 	![Added Experiment to Hub](./static/export-chaos-experiments/added-experiment-to-hub.png)
+
+## Next Steps
+
+- [Alerts for Experiments](/docs/chaos-engineering/use-harness-ce/experiments/alert-integration)
+- [Runtime Variable Support for Experiments](/docs/chaos-engineering/use-harness-ce/experiments/fault-template)
