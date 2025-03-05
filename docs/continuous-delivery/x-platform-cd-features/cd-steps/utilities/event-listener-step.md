@@ -35,7 +35,7 @@ Follow these steps to set up a **Google Cloud Run Service** in Harness:
 <Tabs>
 <TabItem value="Interactive guide">
 
-Here is an interactive guide to setup your Cloud Run Service pipeline.
+Here is an interactive guide to setup your Event Listener Step pipeline.
 
 <iframe 
 	src="https://app.tango.us/app/embed/d822c083-7b20-45c5-ada2-8a84b8104426"
