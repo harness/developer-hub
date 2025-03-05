@@ -85,7 +85,7 @@ export const IdpData: Horizon = {
       },
       {
         tag: [{ value: "Platform" }],
-        title: "Self-Managed Version",
+        title: "Self Managed Platform (SMP) BETA",
         description:
           "Release and support a self-managed version of IDP that can be hosted on a customer's infrastructure and environment.",
       },
