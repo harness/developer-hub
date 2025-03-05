@@ -9,7 +9,7 @@ sidebar_position: 20
 ### Prerequisites  
 
 :::info
-    To proceed with a custom dashboard, you may need a Looker license key. You can connect with the [Harness support](mailto:support@harness.io) team for assistance
+    To proceed with a custom dashboard, you may need a Looker license key. Reach out to [Harness support](mailto:support@harness.io) for assistance
 :::
 
 Dashboards application uses [Looker](https://cloud.google.com/looker), a third-party tool that needs its own domain name to work properly.  
