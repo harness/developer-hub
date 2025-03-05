@@ -247,6 +247,12 @@ export const platformData: Horizon = {
         description: "Ability to increase the console log line limits",
       },
       {
+        tag: [{ value: "SMP" }],
+        title: "Supported modules",
+        description:
+          "Supply Chain Security - Beta, Infrastructure as Code Mgmt - Beta",
+      },
+      {
         tag: [],
         title: "Auto Discovery of Entities in Git",
         description: "When an entity is created in Git it is created in Harness as well.",
@@ -272,7 +278,7 @@ export const platformData: Horizon = {
         tag: [{ value: "SMP" }],
         title: "Supported modules",
         description:
-          "Supply Chain Security",
+          "Internal Developer Portal",
       },
       {
         title: "Custom Login Message for SMP",
