@@ -28,6 +28,10 @@ This feature is behind the feature flag: `CDS_EVENT_LISTENER_STEP`
 - **Event-Driven**  
   Eliminates the overhead of polling by listening for relevant events as they occur.
 
+## Configuring an Webhook
+
+Refer [Generic Webhook Documentation](https://developer.harness.io/docs/platform/triggers/trigger-pipelines-using-generic-events/#configure-a-webhook) to know more about how to create a webhook.
+
 ## Configuring an Event Listener Step
 
 Follow these steps to set up a **Google Cloud Run Service** in Harness:
@@ -76,6 +80,9 @@ This step is available in **Deploy Stages** and **Custom Stages**.
 
 6. **Input Variables**  
    - Optionally, define input variables that can be used within your success/failure JEXL expressions.
+
+7. **Output Variables**  
+   - (Optional) Specify any variables you want to make available for later steps in the pipeline.
 
 </TabItem>
 </Tabs>
