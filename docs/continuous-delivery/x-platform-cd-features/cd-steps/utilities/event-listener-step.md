@@ -3,6 +3,8 @@ title: Event Listener Step
 description: Event Listener Step enables pipelines to resume or fail execution based on webhook events that meet predefined approval or rejection criteria
 sidebar_position: 1
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Event Listener Step
 
@@ -15,16 +17,43 @@ This feature is behind the feature flag: `CDS_EVENT_LISTENER_STEP`
 ## Key Features
 
 - **Webhook Event Handling**  
-  Processes webhook events to either resume or fail pipeline execution based on the event payload.
+  Processes incoming webhook events to either resume or fail pipeline execution based on the event payload.
 
 - **Success/Failure Criteria**  
-  Uses **JEXL expressions** to define conditions for success and failure. Success criteria are always evaluated first and take precedence over failure criteria.
+  - Harness uses **JEXL expressions** to define success and failure conditions.
+  - **Success Criteria** (required) is always evaluated first and takes precedence. If success criteria is met, the pipeline resumes.
+  - **Failure Criteria** (optional) is evaluated only if the success criteria is **not** met. If the failure criteria is met, the step fails and the corresponding failure strategy (step or stage-level) is applied.
+  - If no failure criteria is provided, the step continues to wait for an event that meets the success criteria until the timeout is reached.
 
 - **Event-Driven**  
   Eliminates the overhead of polling by listening for relevant events as they occur.
 
 ## Configuring an Event Listener Step
 
+Follow these steps to set up a **Google Cloud Run Service** in Harness:
+
+<Tabs>
+<TabItem value="Interactive guide">
+
+Here is an interactive guide to setup your Cloud Run Service pipeline.
+
+<iframe 
+	src="https://app.tango.us/app/embed/d822c083-7b20-45c5-ada2-8a84b8104426"
+	style={{ minHeight: '800px'}} 
+	sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" 
+	security="restricted" 
+	title="Setting Up GCR Sample Pipeline in Harness" 
+	width="100%" 
+	height="100%" 
+	referrerpolicy="strict-origin-when-cross-origin" 
+	frameborder="0" 
+   webkitallowfullscreen="webkitallowfullscreen" 
+   mozallowfullscreen="mozallowfullscreen" 
+	allowfullscreen="allowfullscreen"
+></iframe>
+</TabItem>
+
+<TabItem value="Step by Step Guide">
 This step is available in **Deploy Stages** and **Custom Stages**.
 
 1. **Add Step**  
@@ -47,6 +76,10 @@ This step is available in **Deploy Stages** and **Custom Stages**.
 
 6. **Input Variables**  
    - Optionally, define input variables that can be used within your success/failure JEXL expressions.
+
+</TabItem>
+</Tabs>
+
 
 ## Use Cases
 
@@ -86,5 +119,43 @@ The step fails.
 4. Neither Criteria Met
 
 If neither the success nor failure criteria is met, the step waits for additional events that might match until the time-out is reached.
+
+</details>
+
+## Sample Pipeline YAML
+
+<details>
+<summary>Sample yaml</summary>
+
+Here is the sample pipeline yaml for the EventListener step
+
+```yaml
+pipeline:
+  name: Event-Listener
+  identifier: EventListener
+  projectIdentifier: projectIdentifier
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: stage1
+        identifier: stage1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: EventListener
+                  name: EventListener_1
+                  identifier: EventListener_1
+                  spec:
+                    webhookIdentifier: Event_listener
+                    successCriteria: <+event.payload.action>=="SUCCESS"
+                    failureCriteria: <+event.payload.action>=="FAILURE"
+                  timeout: 10m
+        tags: {}
+
+````
 
 </details>
