@@ -63,12 +63,6 @@ export const FmeData: Horizon = {
         description:
           "Assign feature availability for user groups based on different conditions, with all the power of FME targeting.",
       },
-      {        
-        tag: [{value: "AI Agents"}],
-        title: "Gemini Code Assist",
-        description:
-          "View feature flags and definitions directly within your IDE through an integrated agent in the code assist interface.",
-      },
       {
         tag: [{ value: "SDK" }],
         title: "Remote evaluation client-side SDKs",
