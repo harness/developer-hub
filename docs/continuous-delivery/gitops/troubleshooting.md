@@ -136,6 +136,12 @@ This error occurs when an agent is unable to connect to a repo:
 
 - To manage rate limiting in GitHub, see [Enabling rate limits for Git](https://docs.github.com/en/enterprise-server@3.10/admin/configuration/configuring-user-applications-for-your-enterprise/configuring-rate-limits#enabling-rate-limits-for-git).
 
+### Error: `NOAUTH Authentication required` when the app controller is up before the redis-secret is created
+
+There is a known issue that is present in Argo when the app controller is up before the redis-secret is created. Please see this Argo thread for more information: [Redis NOAUTH failures](https://github.com/argoproj/argo-helm/issues/2836#issuecomment-2636975946).
+
+The current workaround is to restart the appcontroller and agent. 
+
 ## Error: GitOps agent pod stuck in CrashLoopBackoff
 
 ### Issue: This is an unauthorized agent. Sleeping for 15 minutes and then shutting down, please check your settings on HarnessUI
