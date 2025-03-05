@@ -63,9 +63,9 @@ export const CdeData: Horizon = {
             { value: "Usability" }, { value: "Core Feature" }
           ],
         title:
-          "DevContainer Templates",
+          "CDE Templates",
         description:
-          "Add support for DevContainer Templates i.e. predefined configurations that enable users to setup standardized development environments. ",
+          "Add support for CDE Templates i.e. predefined configurations that enable users to setup standardized development environments. ",
       },
     ],
   },
@@ -87,8 +87,8 @@ export const CdeData: Horizon = {
           "Expand supported cloud providers (AWS) for users to self-host cloud development environments (CDE) in their private infrastructure.",
       },
       {
-        tag: [{ value: "Usability" }, { value: "DevContainer" }],
-        title: "Local DevContainers",
+        tag: [{ value: "Usability" }, { value: "Devcontainer" }],
+        title: "Local Devcontainers",
         description:
           "Allow users to spin up containerized development environments on their local machines.",
       },
@@ -96,7 +96,7 @@ export const CdeData: Horizon = {
         tag: [{ value: "Usability" }],
         title: "Policies & Governance Features",
         description:
-          "Enable users to block DevContainer images and(or) features based on security policies. ",
+          "Enable users to block Devcontainer images and(or) features based on security policies. ",
       },
       {
         tag: [
@@ -175,19 +175,19 @@ export const CdeData: Horizon = {
       {
         tag: [
             { value: "Usability" },
-            { value: "DevContainer" }
+            { value: "Devcontainer" }
         ],
-        title: "DevContainer Features",
+        title: "Devcontainer Features",
         description:
-          "Add support for DevContainer Features, enabling users to easily add and automate the installation of additional tools, runtimes, and libraries in their Gitspace.",
+          "Add support for Devcontainer Features, enabling users to easily add and automate the installation of additional tools, runtimes, and libraries in their Gitspace.",
       },{
         tag: [
             { value: "Customization" },
-            { value: "DevContainer" }
+            { value: "Devcontainer" }
         ],
-        title: "Expanded DevContainer Property Support",
+        title: "Expanded Devcontainer Property Support",
         description:
-          "Introduced support for various new DevContainer properties such as 'mounts', 'privileged', 'overrideFeatureInstallationOrder' providing users with greater flexibility in configuring their development environment.",
+          "Introduced support for various new Devcontainer properties such as 'mounts', 'privileged', 'overrideFeatureInstallationOrder' providing users with greater flexibility in configuring their development environment.",
       },
       {
         tag: [
@@ -210,7 +210,7 @@ export const CdeData: Horizon = {
       {
         tag: [
             { value: "Customization" },
-            { value: "DevContainer" }
+            { value: "Devcontainer" }
         ],
         title: "User Configuration Support",
         description:
@@ -219,7 +219,7 @@ export const CdeData: Horizon = {
       {
         tag: [
             { value: "Customization" },
-            { value: "DevContainer" }
+            { value: "Devcontainer" }
         ],
         title: "runArgs Configuration Support ",
         description:
@@ -228,7 +228,7 @@ export const CdeData: Horizon = {
       {
         tag: [
             { value: "Customization" },
-            { value: "DevContainer" }
+            { value: "Devcontainer" }
         ],
         title: "Pre-installed Extensions",
         description:
@@ -243,7 +243,7 @@ export const CdeData: Horizon = {
         {
             tag: [
                 { value: "Customization" },
-                { value: "DevContainer" }
+                { value: "Devcontainer" }
             ],
         title: "Port Forwarding",
         description: "Enable users to access services running inside Gitspaces as if they were running locally using Port Forwarding.",
@@ -251,7 +251,7 @@ export const CdeData: Horizon = {
       {
         tag: [
             { value: "Customization" },
-            { value: "DevContainer" }
+            { value: "Devcontainer" }
         ],
     title: "Environment Variables Configuration",
     description: "Allow users to define and manage environment variables within containers for better application management and customization.",
