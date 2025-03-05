@@ -164,7 +164,7 @@ You can optimize your CI pipelines to make them faster, more efficient, and more
 
 ### Dependencies
 
-* [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md)
+* [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md)
 * [Caching and data sharing](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md)
 * [Dependency management strategies](/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies.md)
 

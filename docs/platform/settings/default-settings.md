@@ -120,10 +120,10 @@ If this setting is enabled **Skip Pre Flight** will be checked by default.
 #### S3-Compatible Object Store for Self-Managed Build Infrastructure
 
 :::note
-S3-Compatible Object Store for Self-Managed Build Infrastructure will appear in Default Settings page in case any of the [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) caching features for self-hosted build is enabled in the account.
+S3-Compatible Object Store for Self-Managed Build Infrastructure will appear in Default Settings page in case any of the [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) caching features for self-hosted build is enabled in the account.
 :::
 
-To use [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) caching features (Build Intelligence,  Docker layer caching, and Build Intelligence) with [self-managed build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), you must provide S3-compatible object store where Harness can store and manage your caches.
+To use [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) caching features (Build Intelligence,  Docker layer caching, and Build Intelligence) with [self-managed build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), you must provide S3-compatible object store where Harness can store and manage your caches.
 
 Use the **S3-Compatible Object Store for Self-Managed Build Infrastructure** settings to connect your S3-compatible object store to your Harness account. If you want to define different object store for individual organizations or projects, you must [allow overrides](#allow-overrides) and then change these settings at the lower scopes.
 

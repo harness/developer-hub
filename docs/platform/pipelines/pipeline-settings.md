@@ -161,7 +161,7 @@ For individual pipeline settings, such as stage and step settings, pipeline trig
 
 * [Harness CD](/docs/continuous-delivery)
 * [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
-* [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md)
+* [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md)
 * [Triggers](/docs/category/triggers)
 * [Pipeline failure handling, timeout limits, and retries](/docs/category/failure-handling)
 * [Conditional executions](/docs/platform/pipelines/step-skip-condition-settings)
