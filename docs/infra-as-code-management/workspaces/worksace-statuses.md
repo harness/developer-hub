@@ -1,5 +1,5 @@
 ---
-title: Workspace statuses
+title: Workspace Statuses
 description: Learn about IaCM workspace status
 sidebar_position: 70
 ---

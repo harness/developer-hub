@@ -1,5 +1,5 @@
 ---
-title: Default pipelines
+title: Default Pipelines
 description: Learn how to use Harness IaCM default pipelines
 sidebar_position: 30
 ---
