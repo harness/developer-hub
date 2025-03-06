@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-02-28T10:00
+date: 2025-03-06T10:00
 sidebar_position: 10
 ---
 
@@ -26,10 +26,6 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 <!-- 2025-03-03 -->
 
-#### New features and enhancements
-
-- Customers can now run the "Clone Codebase" step in a containerless setup when using VM infrastructure and Cloud, without requiring all steps to run on the host. This is especially beneficial for Windows builds that do not run on the host, as the Git image is significantly large. This functionality can be enabled via a feature flag. (CI-15756, ZD-73794, ZD-76234) 
-
 #### Fixed issues
 
 - Resolved an issue with Azure Repos where cloning with a tag was not working. (CI-16298, ZD-78432)
@@ -39,13 +35,13 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 | **Image**                | **Change**                                      | **Previous version** | **New Version** |
 | ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
-| `plugins/artifactory`      | Regular image updates  | 1.7.1                | 1.7.2          |
-| `harness/ecr`      | Regular image updates  | 20.18.6                | 20.18.7          |
-| `harness/ci-lite-engine`      | Regular image updates  | 1.16.73                | 1.16.75          |
-| `harness/ci-lite-engine`      | Regular image updates  | 1.16.73                | 1.16.75          |
-| `harness/drone-git`      | Regular image updates  | 1.6.5                | 1.6.7          |
-| `harness/ci-addon`      | Regular image updates  | rootless-1.16.74                | rootless-1.16.75          |
-| `harness/ci-addon`      | Regular image updates  | 1.16.73                | 1.16.75          |
+| `plugins/artifactory`      | Vulberability fixes  | 1.7.1                | 1.7.2          |
+| `harness/ecr`      | Changes described in fixed issues list                | 20.18.7          |
+| `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
+| `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
+| `harness/drone-git`      | Changes described in fixed issues list  | 1.6.5                | 1.6.7          |
+| `harness/ci-addon`      | Vulberability fixes  | rootless-1.16.74                | rootless-1.16.75          |
+| `harness/ci-addon`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
 
 ## February 2025
 
