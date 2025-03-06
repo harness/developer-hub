@@ -24,7 +24,7 @@ Thanks are due to the team at Cars.com for the initial implementation, which the
 
 ###### FME Thin SDK + Splitd Architecture
 
-FME thin client SDKs are known for their lightweight footprint and are always paired with Split Daemon (splitd). Splitd performs the storage and compute intensive operations and easily scales to high traffic volumes.
+FME Thin Client SDKs are known for their lightweight footprint and are always paired with Split Daemon (splitd). Splitd performs the storage and compute intensive operations and easily scales to high traffic volumes.
 
 ![Image](https://www.split.io/wp-content/uploads/thin-sdksplitd-fme-server-diagram.png)
 
