@@ -5,6 +5,7 @@ description: Configure DDCR and Discovery Agent Proxy settings.
 redirect_from:
 - /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/proxy-support
 - /docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/proxy-support
+- /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/proxy-support
 ---
 
 import Tabs from '@theme/Tabs';

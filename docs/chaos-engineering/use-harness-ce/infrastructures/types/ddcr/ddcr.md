@@ -1,6 +1,7 @@
 ---
 title: Delegate-Driven Chaos Infrastructure
 description: Delegate-Driven Chaos Infrastructure
+sidebar_position: 10
 redirect_from:
 - /docs/category/harness-delegate-driven-infrastructure
 - /docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/
@@ -68,5 +69,5 @@ Earlier, resilience score was measured at the experiment level. With Harness Del
 
 ## Next Steps
 
-- [Permissions Required](/docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/permissions)
-- [Install Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/installation)
+- [Permissions Required](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/permissions)
+- [Install Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/installation)
