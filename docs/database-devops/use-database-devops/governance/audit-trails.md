@@ -42,5 +42,3 @@ To see more information about a particular event, select the messaging icon next
 4. Type and name of the resource.
 
 You can also see a snapshot of changes in YAML format by expanding YAML Difference.
-
-![](./static/yaml-diff-audit-trail.png)
