@@ -1,5 +1,5 @@
 ---
-title: Review insights
+title: Workspace Resources & History
 description: Review workspace resources, states, and execution history.
 sidebar_position: 30
 ---
