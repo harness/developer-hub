@@ -9,7 +9,7 @@ redirect_from:
 You can edit an existing chaos experiment to update the experiment's metadata, faults, schedule, etc. This section describes three actions:
 1. [Edit an experiment](#edit-a-chaos-experiment)
 2. [Update old experiment manifests](#update-old-experiment-manifests)
-3. [Bulk update cron schedules](#bulk-update-cron-schedules)
+3. [Bulk update CRON schedules](#bulk-update-cron-schedules)
 
 ## Edit a Chaos Experiment
 
@@ -53,40 +53,40 @@ To update the experiment manifest, follow the steps below.
 
     ![save](./static/edit-experiment/save-6.png)
 
-## Bulk Update Cron Schedules
+## Bulk Update CRON Schedules
 
-You can update multiple cron-scheduled chaos experiments in one go. One important aspect is that you can **bulk update** multiple cron schedules to a **single value**, that is, the cron schedules you select to update will all update to a single common value. You **can't** map different cron schedules to their respective values while performing a bulk update.
+You can update multiple CRON-scheduled chaos experiments at once. 
+
+One important aspect is that you can **bulk update** multiple CRON schedules to a **single value**, that is, the CRON schedules you select to update will all update to a single common value. 
+
+You **can't** map different CRON schedules to their respective values while performing a bulk update.
 You can:
 1. Bulk disable active schedules
-2. Bulk enable inactive cron schedules
+2. Bulk enable inactive CRON schedules
 3. Bulk stop running experiments
 
-To enable/disable a cron schedule,
+To reschedule/enable/disable a CRON schedule, 
 
-1. Click **Bulk update** at the top right of the **Chaos Experiments** page and choose one of the following options:
-  1. Reschedule cron
-  2. Enable/disable cron
+1. Go to **Chaos Experiments** and select the experiments you wish to change.
 
-2. Select one of the above based on your requirements.
+2. Choose one of the following options:
+    1. **Reschedule CRON**
+    2. **Enable CRON**
+    3. **Disable CRON**
 
-3. Select one or more experiments that you wish to reschedule or enable/disable. Click **Next**.
+        ![bulk update](./static/edit-experiment/bulk-update.png)
 
-4. You can choose between [rescheduling](#reschedule-a-cron-schedule) or [enabling (or disabling)](#enable-or-disable-a-cron-schedule) a cron schedule.
+
+3. Based on the option you chose,
+    - Reschedule CRON: You can change the schedule of the experiments by changing the values, and click **Confirm**.
+    - Enable CRON or Disable CRON
+        - Select one of the options (enable CRON or disable CRON), and click **Confirm**.
+        - You will see a confirmation message on your screen about the updated schedule. Click **Close**.
+
 
 :::info note
 You can bulk update (reschedule or enable/disable) not more than 20 experiments in one go.
 :::
-
-### Reschedule a Cron Schedule
-
-You can change the schedule of the experiments by changing the values, and click **Confirm**.
-
-### Enable or Disable a Cron Schedule
-
-1. You can select one of the options (enable cron or disable cron), and click **Confirm**.
-
-2. You will see a confirmation message on your screen about the updated schedule. Click **Close**.
-
 
 ## Next Steps
 

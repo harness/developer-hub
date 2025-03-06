@@ -32,3 +32,4 @@ After configuring your chaos experiment, you can run the experiment immediately 
 ## Next Steps
 
 - [Edit or Update Experiment](/docs/chaos-engineering/use-harness-ce/experiments/edit-chaos-experiment)
+- [Halt or Delete Experiment](/docs/chaos-engineering/use-harness-ce/experiments/halt-delete-experiments)

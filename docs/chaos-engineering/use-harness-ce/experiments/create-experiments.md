@@ -61,7 +61,13 @@ These options are explained below.
 
 		* **Specify the target application (only for pod-level Kubernetes faults):** This allows the corresponding pods of the application to be targeted.
 
-			![target app](./static/create-experiments/target-app.png)
+			- **App Namespace**: The namespace where your application/services is housed. This is where chaos is injected.
+
+			- **App Kind** or **App Label**: Choose between the type of application or the label associated with it. 
+				- **App Kind**: This describes the type of your target application. Choose between "deployment", "statefulset", "daemonset", "deploymentconfig" or "rollout".
+				- **App Label**: Label associated with the target service. For example, "nginx" app can have the label as "app=nginx". 
+
+					![target app](./static/create-experiments/target-app.png)
 
 		* **Tune fault parameters:** Each fault has a set of common parameters, like **chaos duration** and **ramp time**, and unique parameters that you can customize as needed.
 
@@ -69,12 +75,11 @@ These options are explained below.
 
 			![Tune Fault](./static/create-experiments/tune-fault.png)
 
-		* **Add chaos probes:** (Optional) On the **Probes** tab, add [resilience probes](/docs/chaos-engineering/use-harness-ce/probes/use-probe) to automate the chaos hypothesis checks for a fault during the experiment execution. Probes are declarative checks that validate specific criteria, that help determine if an experiment **passed**.
+		* **Add chaos probes:** On the **Probes** tab, add [resilience probes](/docs/chaos-engineering/use-harness-ce/probes/use-probe) to automate the chaos hypothesis checks for a fault during the experiment execution. Probes are declarative checks that validate specific criteria, that help determine if an experiment **passed**.
 
 			![resilience probe](./static/create-experiments/res-probe.png)
 
-    
-
+		* You can configure [Advanced Settings](/docs/chaos-engineering/use-harness-ce/experiments/advanced-config) if required.
 #### Using Templates from ChaosHubs
 
 1. Select an experiment template from a [ChaosHub](/docs/chaos-engineering/use-harness-ce/chaoshubs/add-chaos-hub).
@@ -148,43 +153,6 @@ After constructing the chaos experiment using one of the three options, save the
 
 
 For more information, go to [Pipeline concepts](/docs/continuous-integration/get-started/key-concepts) and [Pipeline Modeling Overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
-
-
-## Add Serial and Parallel Faults
-You can add multiple faults in a single chaos experiment that is scaled efficiently by Harness CE during execution.
-
-:::tip
-Consider the overall impact that these faults have on the application. Your experience in production environments may differ due to lack of resources when a number of parallel faults are being executed.
-:::
-
-1. To add a fault that runs in parallel to another fault, point your mouse below an existing fault, and then select **Add**. You can follow the same process to add a serial fault.
-
-	![Complex Faults Experiment](./static/create-experiments/add-parallel.png)
-
-:::note
-For Linux, experiments with a parallel fault are currently not supported.
-:::
-
-The image below shows a single experiment that consists of serial and parallel faults.
-* Faults **A**, **B**, and **C** are parallel faults. They begin execution at the same time.
-* Faults **A**, **B**, **C** and faults **D** and **E** are serial. **A**, **B**, and **C**  complete execution and then  **D** and **E** begin execution.
-* Similarly, faults **H** and **I** are serial faults, where **H** completes execution, and **I** begins.
-
-	![Complex Faults Experiment](./static/create-experiments/complex-faults-experiment.png)
-
-## Analyze Experiment
-You can observe the status of execution of fault/s of a chaos experiment during its run. The screen shows the experiment pipeline on the right hand side, and details such as **Environment**, **Infrastructure Name**, and the runs that have passed and failed on the left hand side.
-
-![Experiment Executing](./static/analyze-experiment/experiment-executing.png)
-
-When the experiment completes execution, it displays the [**Resilience Score**](/docs/chaos-engineering/use-harness-ce/experiments/#determine-the-resilience-of-target-environment-using-resilience-score). This score describes how resilient your application is to unplanned failures.
-The **probe success percentage** helps determine the outcome of every fault in the chaos experiment. Probes (if any) associated with the experiment are used to understand how the application fared.
-
-![Experiment Failed](./static/analyze-experiment/experiment-failed.png)
-
-If any of the faults fail, you can find the **Fail Step** that elaborates on the reason why the fault failed.
-
-![Result Fail Step](./static/analyze-experiment/result-fail-step.png)
 
 ## Next Steps
 
