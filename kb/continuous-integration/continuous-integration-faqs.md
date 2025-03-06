@@ -2385,7 +2385,7 @@ Replace `LABEL_KEY` with your label's actual key.
 
 ### Why does the parallel execution of build and push steps fail when using Buildx on Kubernetes?
 
-When using Buildx on Kubernetes (enabled by feature flags), running multiple build-and-push steps in parallel can result in failures due to race conditions. This issue arises from how Docker-in-Docker works within Kubernetes pods.
+When using Buildx on Kubernetes, either enabled by feature flags or in the build and push steps when the Docker Layer Caching option is checked, running multiple build-and-push steps in parallel may result in failures due to race conditions. This issue arises from how Docker-in-Docker works within Kubernetes pods.
 
 The failure occurs when either of the following feature flags are enabled:
 
