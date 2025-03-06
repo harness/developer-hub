@@ -4,11 +4,20 @@ sidebar_position: 10
 sidebar_label: Security
 ---
 
-# Security Integration in Harness Artifact Registry
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-This guide explains how to configure and review security scanners in your Harness Artifact Registry pipeline.
+This guide explains how to configure and review security scanners in your Harness Artifact Registry.
 
 ## Configuring Security Scanners
+Follow these steps to set up automated security scanning for your container images. This configuration will enable vulnerability detection and generate detailed reports each time you push a new image to your registry.
+
+<Tabs>
+<TabItems value="Interactive guide">
+<DocVideo src="https://app.tango.us/app/embed/970b5d5c-600c-4567-96e0-62146d4f0b94" title="Harness Artifact Registry Security Configuration" />
+</TabItems>
+<TabItems value="Step-by-step">
+
 ### Select a Registry
 1. Navigate to your Artifact Registry module
 2. Select the registry you want to configure security scanning for
@@ -21,6 +30,8 @@ This guide explains how to configure and review security scanners in your Harnes
 The following scanners are available (depending on your registry type):
 - **SBOM:** Generates a Software Bill of Materials
 - **AquaTrivy:** Comprehensive vulnerability scanning
+</TabItems>
+</Tabs>
 
 ### Security Pipeline Creation
 When you configure security scanning, Harness automatically creates a security scanner pipeline called **HARNESS ARTIFACT SCAN PIPELINE**. This pipeline includes:
