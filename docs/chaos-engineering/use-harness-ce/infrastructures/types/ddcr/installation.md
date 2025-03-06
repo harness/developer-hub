@@ -1,6 +1,6 @@
 ---
 title: Installation
-sidebar_position: 5
+sidebar_position: 20
 description: Steps to install Harness Delegate and enable chaos.
 redirect_from:
 - /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/installation

@@ -1,6 +1,6 @@
 ---
 title: Dedicated Delegate on Target Cluster
-sidebar_position: 10
+sidebar_position: 30
 description: Use Dedicated Delegate on Target Cluster
 redirect_from:
 - /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/dedicated-delegate
