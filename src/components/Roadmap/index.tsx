@@ -8,6 +8,7 @@ import Link from "@docusaurus/Link";
 
 const Roadmap = () => {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+  
   const modules = [
     { value: 'platform', name: 'Platform', icon: 'icon_platform.svg' },
     { value: 'aida', name: 'Harness AI', icon: 'icon_aida.svg' },
