@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-02-28T10:00:00
+date: 2025-03-07T10:00:00
 sidebar_position: 8
 ---
 
@@ -44,6 +44,43 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 <Kustomizedep />
 
 </details>
+
+## March 2025
+
+### Version 1.80.1
+
+#### New Features and Enhancements
+
+- Users can now trigger Harness pipelines natively on **GitLab tag creation**, enabling seamless automation for new release candidates and improving integration with GitLab workflows. (**CDS-99762**)
+
+- Users can now **uninstall Helm charts** using a native Helm Uninstall step in the Deploy stage. Currently, this setting is behind the Feature Flag `CDS_HELM_DELETE_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**CDS-98454**)
+
+- Users can now utilize a **Kubectl Diff step** in Continuous Delivery (CD) to preview changes before deployment. Currently, this setting is behind the Feature Flag `CDS_K8S_DIFF_STEP_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**CDS-91752**)
+
+- Users can now trigger Harness pipelines natively when **pushing a tag to GitHub**, enabling seamless automation and enhanced integration for tag-based workflows. (**CDS-70773**)
+
+- Users can now apply tags to AWS Lambda functions during deployment using Harness, ensuring that all specified tags in the YAML manifest are correctly propagated to the Lambda resource. (**CDS-107032**)
+
+- Users can now rely on Harness to accurately detect failures in **ECS Rolling Deployments**. Currently, this setting is behind the Feature Flag `CDS_ECS_MONITOR_TASK_STATUS`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**CDS-107046**)
+
+
+#### Fixed Issues
+
+- Previously, when users created a step group template and added a nested step group with containerization enabled, the CI steps were not available for selection. This issue is resolved. (**PIPE-25227, ZD-78297**)
+- Previously, users who set **Skip already deployed** as a Runtime Input in a template were unable to configure it from the UI and had to manually edit the Pipeline YAML to set it as a Runtime Input. This issue is resolved. Users can now set **Skip Instances** directly from the UI when using a template. (**CDS-107087, ZD-78344**)
+- Previously, on Windows, the File Upload step allowed users to upload any file type, whereas on MacOS, unsupported file extensions were blocked from being uploaded. This issue is resolved. The system now enforces file type restrictions consistently across both Windows and MacOS. (**PIPE-25323, ZD-78151**)
+- Previously, in ECS Blue/Green Deployments, the Target Group and Listener Rule "stickiness" setting was lost after the Swap Routes step, resetting it to off even when initially enabled via Terraform. This issue is resolved. (**CDS-99881, ZD-67426**)
+- Previously, the GitHub App Connector allowed a successful connection even when the specified repository did not exist in GitHub. In contrast, the GitHub Connector correctly validated the repository's existence. This issue is resolved. (**PIPE-24905, ZD-76882**)
+- Previously, when using Artifact Bundle for a NodeJS app, file permissions inside the `tar.gz` archive were not retained when deployed to PCF (Pivotal Cloud Foundry). This led to permission issues when trying to start the application. This issue is resolved. (**CDS-106309, ZD-77258**)
+- Previously, Splunk verification in Continuous Verification (CV) failed with a `ClassCastException error`. This issue is resolved. (**CDS-106422, ZD-77698**)
+- Previously, Instance Refresh in ASG deployments would stall while waiting for the ASG to reach a steady state, preventing recovery if the ASG was already unstable. This issue is resolved. (**CDS-106506**)
+- Previously, overrides failed to be created after a Git file deletion, despite a successful webhook event or manual creation from the UI. This issue is resolved. (**CDS-107079, ZD-78709**)
+- Previously, the Terraform Plan step failed with an IO error while fetching secrets from GCP Secret Manager, despite a successful connection test. This issue is resolved. (**CDS-107114, ZD-78697**)
+- Previously, deployments failed in the Fetch File step due to an incorrect file path, where the system attempted to fetch a file with duplicate YAML extensions. This issue is resolved. (**CDS-107122, ZD-78816, ZD-79026**)
+- Previously, fetching Execution History with 100 results per page caused an error, while 50 results per page worked correctly. This issue is resolved. (**PIPE-25471, ZD-78142**)
+- Previously, in deployment pipelines, duplicate override identifiers appeared in the Rollout section (Fetch Files step) even after removing and re-adding the override configuration with a new identifier. This issue is resolved. (**CDS-107453, ZD-79252**)
+- Previously, in GitOps parallel deployments, if multiple services were deployed with Parallel set to true, one service would complete successfully while the other would exit prematurely without waiting for the configured timeout (10m) or the GitOps sync max duration. This issue is resolved. (**CDS-107462, ZD-79284**)
+- Previously, Serverless Deployments failed in the Prepare Rollback step with the error: `Invalid request: IllegalArgumentException: BucketName cannot be empty.` This issue is resolved. (**CDS-107585, ZD-79524, ZD-79626**)
 
 ## February 2025
 
