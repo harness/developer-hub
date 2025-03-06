@@ -28,8 +28,6 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 <!-- February 28, 2025 -->
 
-### Version 202502.2.1
-
 #### Early access features
 
 * You can now define the start date of an **epic** or **initiative** — indicating when the work item or issue was prioritized and work began — directly within the widget settings for the [Epic Overview](/docs/software-engineering-insights/analytics-and-reporting/epic-insights#epic-overview) and [Epic Hygiene widgets](/docs/software-engineering-insights/analytics-and-reporting/epic-insights#track-epic-hygiene). This feature is currently in **BETA** and requires the SEI_EPIC_REPORT feature flag. To enable it, please contact [Harness Support](/docs/software-engineering-insights/sei-support). (SEI-10636)
