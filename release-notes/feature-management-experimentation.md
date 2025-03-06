@@ -26,7 +26,7 @@ Thanks are due to the team at Cars.com for the initial implementation, which the
 
 FME Thin Client SDKs are known for their lightweight footprint and are always paired with Split Daemon (splitd). Splitd performs the storage and compute intensive operations and easily scales to high traffic volumes.
 
-![Image](https://www.split.io/wp-content/uploads/thin-sdksplitd-fme-server-diagram.png)
+![Architecture Diagram - Thin SDK Client SDK and Split D](https://www.split.io/wp-content/uploads/thin-sdksplitd-fme-server-diagram.png)
 
 Splitd can be set up locally to the consumer application or be deployed as a sidecar to the consumer application container. See the [](https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd)[Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157) documentation for details.
 
