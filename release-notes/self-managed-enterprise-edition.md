@@ -264,9 +264,9 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | 1.42.1                                                                                       |
 | NG UI                     | 1.61.7                                                                                       |
 | LE NG                     | 1.5.6                                                                                        |
-| Looker                    | 1.7.7                                                                                        |
+| Looker                    | 1.7.8                                                                                        |
 | Log Service               | 1.17.3                                                                                       |
-| Batch Processing          | 1.38.5                                                                                       |
+| Batch Processing          | 1.38.6                                                                                       |
 | Gateway                   | 1.41.7                                                                                       |
 | IaCM Manager              | 1.65.2                                                                                       
 
