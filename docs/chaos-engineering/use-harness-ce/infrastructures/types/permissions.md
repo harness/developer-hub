@@ -9,7 +9,7 @@ redirect_from:
 - /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/permissions
 ---
 
-This topic lists the RBAC permissions required to execute [DDCR-based](/docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/#what-is-ddcr) Kubernetes faults.
+This topic lists the RBAC permissions required to execute [DDCR-based](/docs/chaos-engineering/use-harness-ce/infrastructures/ddcr#what-is-ddcr) Kubernetes faults.
 
 <table>
 <tr>

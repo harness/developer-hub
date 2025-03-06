@@ -37,6 +37,6 @@ Navigate through the demo below to see how to create an environment, a new infra
 - Ensure your Delegate version is `24.09.83900` or above to support executing chaos experiments using DDCR. 
 - Currently, DDCR (or Harness Delegate) can only be installed to execute Kubernetes-based faults. This means you can only create Kubernetes connectors.
 - To execute faults on Linux and Windows, install Linux and Windows agents respectively.
-- To configure mTLS with DDCR and Discovery Agent, go to [mTLS Support](/docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/mtls-support).
-- To configure mTLS with DDCR and and Discovery Agent proxy settings, go to [proxy Support](/docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/proxy-support).
+- To configure mTLS with DDCR and Discovery Agent, go to [mTLS Support](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/mtls-support).
+- To configure mTLS with DDCR and and Discovery Agent proxy settings, go to [proxy Support](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support).
 :::
