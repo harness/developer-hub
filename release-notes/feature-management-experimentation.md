@@ -22,7 +22,7 @@ The [Elixir Thin Client SDK](https://help.split.io/hc/en-us/articles/26988707417
 
 Thanks are due to the team at Cars.com for the initial implementation, which they contributed to the FME user community. The Harness engineering team then finalized the work, making it generally available as a Harness-supported FME SDK.
 
-###### FME Thin SDK + Splitd Architecture
+###### FME Thin Client SDK + Splitd Architecture
 
 FME Thin Client SDKs are known for their lightweight footprint and are always paired with Split Daemon (splitd). Splitd performs the storage and compute intensive operations and easily scales to high traffic volumes.
 
