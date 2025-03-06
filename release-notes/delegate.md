@@ -87,6 +87,16 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## March 2025
+
+### Version 25.02.85302 <!--  March 07, 2025 -->
+
+#### Hotfix
+
+- Fix the aws library upgrade issue for AWS serverless lambda deployment [CDS-107585]
+
+
+
 ## February 2025
 
 ### Version 24.08.83706 <!--  Feb 26, 2025 -->
