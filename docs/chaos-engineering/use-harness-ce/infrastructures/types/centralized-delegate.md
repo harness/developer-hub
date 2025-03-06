@@ -2,6 +2,8 @@
 title: Centralized Delegate
 sidebar_position: 16
 description: Configure Centralized Delegate
+redirect_from:
+- /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/centralized-delegate
 ---
 
 This topic describes the permissions required to execute chaos experiments when the target application and Delegate are running on different clusters. 
