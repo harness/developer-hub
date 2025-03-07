@@ -95,17 +95,17 @@ permissions:
       <tr>
         <td> HEADERS_MAP </td>
         <td> Map of the headers to modify or add </td>
-        <td> For example, &#123;"X-Litmus-Test-Header": "X-Litmus-Test-Value"&#125;. To remove a header, just set the value to ""; For example, &#123;"X-Litmus-Test-Header": ""&#125;. For more information, go to <a href="#headers-map"> headers map</a>.</td>
+        <td> For example, &#123;"X-Litmus-Test-Header": "X-Litmus-Test-Value"&#125;. To remove a header, just set the value to ""; For example, &#123;"X-Litmus-Test-Header": ""&#125;. For more information, go to <a href="#modify-response"> headers map</a>.</td>
       </tr>
       <tr>
         <td> RESPONSE_BODY </td>
         <td> String body to overwrite the HTTP response body.</td>
-        <td> For more information, go to <a href="#response-body">response body </a></td>
+        <td> For more information, go to <a href="#modify-response">response body </a></td>
       </tr>
       <tr>
         <td> STATUS_CODE </td>
         <td> Modified status code for the API response. </td>
-        <td> For more information, go to <a href="#status-code">status code </a>. </td>
+        <td> For more information, go to <a href="#modify-response">status code </a>. </td>
       </tr>
       <tr>
         <td> PATH_FILTER </td>
@@ -283,7 +283,8 @@ spec:
 ### Modify response
 
 Modify the response by altering one or more of the following fields:
-1. `RESPONSE_BODY`: String body that overwrites the API request and response body
+
+1. `RESPONSE_BODY`: String body in `/<regex-to-be-replaced>/<substitute-string>` format, that overwrites the API request and response body.
 2. `HEADERS_MAP`: Map of the headers that need to be modified or added to the HTTP request or response.
 3. `STATUS_CODE`: Status code to be modified for the HTTP response.
 
