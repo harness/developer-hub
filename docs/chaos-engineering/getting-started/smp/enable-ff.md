@@ -1,6 +1,6 @@
 ---
 title: Enable Feature Flags
-sidebar_position: 3
+sidebar_position: 30
 description: Enable Feature Flags
 ---
 
@@ -8,14 +8,11 @@ This topic describes certain feature flags and their description for Harness Sel
 
 To enable these feature flags, go to [Add Feature Flags](/docs/self-managed-enterprise-edition/install/manage-feature-flags/#add-feature-flags-to-your-installation).
 
-<table border="1">
-    <thead>
+<table>
         <tr>
             <th>Feature Flag</th>
             <th>Description</th>
         </tr>
-    </thead>
-    <tbody>
         <tr>
             <td><code>CHAOS_LINUX_ENABLED</code></td>
             <td>Enables support for creating and running Linux experiments and adding Linux infrastructures.</td>
@@ -40,6 +37,5 @@ To enable these feature flags, go to [Add Feature Flags](/docs/self-managed-ente
             <td><code>CHAOS_WINDOWS_ENABLED</code></td>
             <td>Enables support for Windows Agent and chaos experiments.</td>
         </tr>
-    </tbody>
 </table>
 
