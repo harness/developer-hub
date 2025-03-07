@@ -1,8 +1,11 @@
 ---
 title: CI onboarding guide
 description: A self-service onboarding guide for Harness CI.
-sidebar_position: 4
+sidebar_position: 3
 sidebar_label: Onboarding guide
+redirect_from: 
+- /docs/continuous-integration/get-started/onboarding-guide
+- /docs/continuous-integration/get-started/tutorials
 ---
 
 Harness CI simplifies the code development and testing process. In Harness CI pipelines, you model your build and test processes as CI stages. Each stage includes steps for building, testing, and pushing your code. Pipelines can be triggered manually or automatically by triggers, such as Git commits and pull requests.

@@ -10,6 +10,8 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-integration/ci-quickstarts/ci-concepts
   - /tutorials/ci-pipelines/ci-overview
+  - /docs/continuous-integration/get-started/overview
+  - 
 ---
 
 Harness is a leading provider of the Continuous Delivery-as-a-Service platform. Harness Continuous Integration (CI) extends this functionality with Continuous Integration-as-a-Service. Harness CI simplifies the code development and testing process.
