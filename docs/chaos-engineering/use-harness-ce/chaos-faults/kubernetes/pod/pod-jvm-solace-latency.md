@@ -145,16 +145,16 @@ spec:
               value: "60"
             # name of the topic or queue
             - name: STREAM
-              value: "solace/chaos"
+              value: "solace-queue"
             # the type of Solace messaging role
             - name: SOLACE_MODE
-              value: "publisher"
+              value: "receiver"
             # type of the solace destination
             - name: SOLACE_DESTINATION_TYPE
-              value: "topic"
+              value: "queue"
             # implementation approach used by the target application
             - name: SOLACE_APPROACH
-              value: "jms"
+              value: "jcsmp"
             # provide the latency in ms
             - name: LATENCY
               value: "2000" #in ms
