@@ -21,7 +21,6 @@ This topic covers the basics of Harness' Lambda support and provides examples on
 - Currently, Lambda functions can be packaged as ZIP files in S3 Buckets or as containers in AWS ECR.
   - If Harness were to support another repository, like Nexus, when the container is fetched by the API, AWS spins up AWS resources (S3, ECR) anyways, and so Harness has limited support to S3 and ECR.
   - The containers must exist in ECR. Containers are not supported in other repositories.
-- Currently, Lambda functions can't be deployed with an OIDC-enabled AWS Connector. 
 
 ## AWS IAM permissions
 
@@ -146,6 +145,8 @@ You need to add a Harness AWS Connector to connect Harness to your AWS account, 
 AWS connectors are used in your Harness service for the artifact you select in **Artifacts** and in the environment's **Infrastructure Definition**.
 
 You can use the same connector or different connectors, but ensure that the credentials provided for the artifact connector are sufficient to fetch the ZIP or image and the credentials provided for the infrastructure definition connector are sufficient to deploy to Lambda.
+
+OIDC connectors are also supported for Lambda deployments, and this functionality is available starting with **delegate version 851xx or later**.
 
 ## Harness service configuration
 

@@ -1,10 +1,10 @@
 ---
-title: State migration
+title: State Migration
 description: Learn how to migrate and import infrastructure state in Harness IaCM workspaces.
 sidebar_position: 20
 ---
 
-This topic describes how you can migrate and import your infrastructure state into Harness workspaces with the IaCM migration tool. Go to [Remote backend initialization](https://developer.harness.io/docs/infra-as-code-management/remote-backends/init-configuration) to find out how to configure your remote backend.
+This topic describes how you can migrate and import your infrastructure state into Harness workspaces with the IaCM migration tool. Go to [OpenTofu backend configuration](https://opentofu.org/docs/language/settings/backends/configuration/) to find out how to configure your remote backend.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ Harness IaCM migration is built in three phases to grant control over your confi
   The following sample Terraform file sets a remote AWS S3 backend and a single AWS resource.
 
   :::note environment variables
-  In this case, your S3 bucket, key, and region can be set as workspace environment variables. Go to [Add new environment variables](https://developer.harness.io/docs/infra-as-code-management/remote-backends/init-configuration#add-new-environment-variables) to learn how to add these.
+  In this case, your S3 bucket, key, and region can be set as workspace environment variables.
   :::
 
   ```hcl

@@ -288,7 +288,7 @@ import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
 ## Configure Semgrep as a Built-in Scanner  
 
-The Semgrep scanner is available as a [built-in scanner](/docs/security-testing-orchestration/sto-techref-category/built-in-scanners) in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
+The Semgrep scanner is available as a [built-in scanner](/docs/security-testing-orchestration/set-up-scans/built-in-scanners) in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
 
 1. Search for **SAST** in the step palette or navigate to the **Built-in Scanners** section and select the **SAST** step.  
 2. Expand the **Additional CLI Flags** section if you want to configure optional CLI flags.  

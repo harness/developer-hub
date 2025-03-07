@@ -161,7 +161,7 @@ You might encounter these issues with code repo connectors. Additional connector
 
 :::note
 
-Currently, the fetch optimization feature is behind the feature flag `OPTIMIZED_GIT_FETCH_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, the fetch optimization feature is behind the setting `Fetch files from Git using provider-specific APIs`, under Continuous Deployment section.
 
 :::
 
@@ -169,7 +169,7 @@ Harness performs a `git clone` to fetch files. When fetching very large reposito
 
 :::info Optimized fetching for GitHub orgs with SAML
 
-If the `OPTIMIZED_GIT_FETCH_FILES` feature flag is enabled, and your GitHub organization has SAML enabled, the token must be SAML-authorized to access the organization, even if the repository is public. For more information, go to the GitHub documentation on [GitHub authentication with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/about-authentication-with-saml-single-sign-on).
+If the setting `Fetch files from Git using provider-specific APIs` is enabled, and your GitHub organization has SAML enabled, the token must be SAML-authorized to access the organization, even if the repository is public. For more information, go to the GitHub documentation on [GitHub authentication with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/about-authentication-with-saml-single-sign-on).
 
 :::
 

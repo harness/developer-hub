@@ -208,6 +208,18 @@ The **Potential Economic Benefit** represents the potential dollar amount saved 
 
 PEB is determined by the productivity boost observed in Cohort B (AI-enabled team) compared to Cohort A (non-AI team). The formula assumes that the productivity gain leads to cost savings by reducing the time developers spend on tasks.
 
+PEB is calculated using the following formula:
+
+```bash
+PEB = Average developer cost × Time interval × (Size of the Cohort using AI + Size of the Cohort not using AI) × Productivity boost in the selected time interval.
+```
+
+* **Average developer cost:** The annual cost of a single developer. The default is $130,000 (based on 2023 U.S. Bureau of Labor Statistics)
+* **Time interval:** The duration of the selected time interval in the dashboard in years (e.g., if the selected time interval is 3 months, this is 0.25 years).
+* **Size of the Cohort using AI:** The number of developers using AI code assistants.
+* **Size of the Cohort not using AI:** The number of developers in the cohort that is not using AI code assistants (non-AI users).
+* **Productivity boost:** The improvement in developer productivity (expressed as a percentage) due to AI tool adoption in the selected time interval.
+
 **​​Minimum Value of PEB:**
 
 The minimum value of PEB is $0. If the productivity boost is negative i.e. zero, there is no economic value generated, and the system will set the PEB to zero, indicating no cost-saving benefits from AI tools.

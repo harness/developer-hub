@@ -113,7 +113,7 @@ With this configuration, the step generates the SLSA Provenance and stores it in
 
 ### Attest SLSA Provenance
 
-To configure attestation, along with the [above configuration](#slsa-generation-step-configuration) you should enable the **SLSA Attestation** checkbox in the **SLSA Generation** step. This requires a key pair generated using **Cosign**. To understand the attestation process please refer to [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
+To configure attestation, along with the [above configuration](#slsa-generation-step-configuration), you should enable the **SLSA Attestation** checkbox in the **SLSA Generation** step. This requires a key pair generated using **Cosign**. Attesting the provenance enhances pipeline security by ensuring its integrity and preventing tampering. To understand the attestation process, see [attestation and verification](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification) concepts.
 
 You can perform the attestation with **Cosign** or **Cosign with Secret Manager**
 
@@ -144,13 +144,16 @@ For verifying the SLSA attestation, please refer to [Verify SLSA](/docs/software
 ## SLSA Generation step configuration with Build and Push step
 When using the Harness CI **Build and Push** step for the image-building process, you can configure the **SLSA Generation** step to generate and attest to the Provenance. Follow the [SLSA Generation step configuration](#slsa-generation-step-configuration), for the **Artifact Digest** field, you can use [Harness Expressions](/docs/platform/variables-and-expressions/harness-variables/) to dynamically populate the digest of the image built during the **Build and Push** step.  
 
-For example, the expression could look like:  
-`<+pipeline.stages.<YOUR_STAGE_NAME>.spec.execution.steps.<YOUR_BUILD_AND_PUSH_STEP_NAME>.output.outputVariables.digest>`  
+For example, the expression looks like:
+
+`<+pipeline.stages.<YOUR_STAGE_NAME>.spec.execution.steps.
+<YOUR_BUILD_AND_PUSH_STEP_NAME>.artifact_<YOUR_BUILD_AND_PUSH_STEP_NAME>.stepArtifacts.
+publishedImageArtifacts[0].digest>` 
 
 If you have already executed the **Build and Push** step, navigate to the execution details, open the **Output Variables** tab, and copy the expression for the digest from the **Input Name** column.
 
 
-<DocImage path={require('./static/slsa-with-build-and-push-step.png')} width="40%" height="40%" />
+<DocImage path={require('./static/buildandpush.png')} width="60%" height="20%" />
 
 For performing the attestation, refer to the section [Attest SLSA Provenance](#attest-slsa-provenance)
 

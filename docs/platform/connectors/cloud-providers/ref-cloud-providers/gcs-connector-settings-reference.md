@@ -188,12 +188,6 @@ Select how you want Harness to communicate with GCP. The available options depen
 
 With this option, Harness communicates with GCP through a direct, secure communication between Harness and GCP. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
 
-:::warning
-
-If you are using OIDC for your connection, you will not be able to connect to GCP through the Harness Platform. Please connect through a Harness Delegate.
-
-:::
-
 #### Connect through a Harness Delegate
 
 With this option, Harness communicates with GCP indirectly through a Harness Delegate that is running in GCP. 

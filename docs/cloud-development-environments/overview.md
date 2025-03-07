@@ -5,12 +5,6 @@ sidebar_position: 1
 sidebar_label: Overview
 ---
 
-:::info
-
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io 
-
-:::
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pEianR6PCPY?si=tCJKw0vAsu7yye95" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 

@@ -1,5 +1,5 @@
 ---
-title: Default pipelines
+title: Default Pipelines
 description: Learn how to use Harness IaCM default pipelines
 sidebar_position: 30
 ---
@@ -19,35 +19,13 @@ A pipeline containing the `destroy` command will remove all saved infrastructure
 
 - You have created pipelines to Provision, Plan, Destroy and Check for drift to be assigned as defaults. 
 
-<iframe 
-    src="https://www.youtube.com/embed/KvdzUWs8urE" 
-    title="Harness IaCM: Default Pipelines" 
-    style={{ minHeight: '540px' }}
-    width="100%" 
-    height="100%"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    webkitallowfullscreen="true"
-    mozallowfullscreen="true"
-    allowfullscreen="true"
-></iframe>
+<DocVideo src="https://www.youtube.com/embed/KvdzUWs8urE" title="Harness IaCM: Default Pipelines" />
 
 ### Configure and run default pipelines
 
 <Tabs>
 <TabItem value="Interactive guide">
-<iframe 
-    src="https://app.tango.us/app/embed/82d2b223-b468-4cdf-a311-be4fdf59ce6c" 
-    title="Harness IaCM: Default Pipelines" 
-    style={{ minHeight: '640px' }}
-    width="100%" 
-    height="100%"
-    referrerpolicy="strict-origin-when-cross-origin"
-    frameborder="0"
-    webkitallowfullscreen="true"
-    mozallowfullscreen="true"
-    allowfullscreen="true"
-></iframe>
+<DocVideo src="https://app.tango.us/app/embed/82d2b223-b468-4cdf-a311-be4fdf59ce6c" title="Harness IaCM: Default Pipelines" />
 </TabItem>
 <TabItem value="Step-by-step">
 

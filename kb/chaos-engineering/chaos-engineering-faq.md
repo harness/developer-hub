@@ -101,7 +101,7 @@ For example, to execute the network loss fault,
 ## Harness Delegate
 
 :::tip
-The FAQs below are based on HCE entities using [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr).
+The FAQs below are based on Harness CE entities using [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr#what-is-ddcr).
 :::
 
 #### Do you support On-Premise Harness Control Plane?
@@ -114,7 +114,7 @@ HCE uses the Harness Delegate to execute chaos experiments, which you can levera
 - Better control over chaos experiments by facilitating advanced tunables.
 - Gain insights into application-level resilience scores.
 
-Go to [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr) for more information.
+Go to [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr#what-is-ddcr) for more information.
 
 #### What ports are necessary to be opened in the org's firewall rules to access the Harness Control Plane from the user environment?
 You can access the Harness control plane from the user environment with outbound connectivity over HTTPS using port 443.
@@ -152,7 +152,7 @@ The agents are:
 
 #### What are the prerequisites to setup/onboard Harness Chaos Engineering?
 
-Go to [prerequisites](/docs/chaos-engineering/getting-started/saas/) to fulfill the requirements before onboarding. Once all the prerequisites are fulfilled, you can explore[sandbox](/docs/chaos-engineering/training/sandbox) or execute [your first chaos experiment](/docs/chaos-engineering/getting-started/saas/first-experiment).
+Go to [prerequisites](/docs/chaos-engineering/getting-started/saas/) to fulfill the requirements before onboarding. Once all the prerequisites are fulfilled, you can explore[sandbox](/docs/chaos-engineering/training/sandbox) or execute [your first chaos experiment](/docs/chaos-engineering/getting-started/saas/).
 **OR**
 If you want a head start to your journey with HCE, you can onboard HCE in two ways:
 - [Automated onboarding](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding); and
@@ -163,8 +163,7 @@ Yes, all chaos operations can be managed using APIs. For more information, go to
 
 #### Are there any tutorials to get started with Chaos?
 Yes, you can start executing chaos engineering experiments in the following ways:
-- [Run chaos experiments](/docs/chaos-engineering/getting-started/saas/first-experiment)
-- [Run chaos experiments from blank canvas](/docs/chaos-engineering/getting-started/saas/chaos-experiment-from-blank-canvas)
+- [Run chaos experiments](/docs/chaos-engineering/getting-started/saas/)
 - [Execute experiments using API](/docs/chaos-engineering/getting-started/saas/experiment-using-api)
 
 #### Do you provide a Sandbox environment for us to play with the tool?

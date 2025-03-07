@@ -1,14 +1,9 @@
 ---
 title: IntelliJ IDEA
-sidebar_position: 3
+sidebar_position: 4
 description: Connect to your Gitspaces within IntelliJ IDEA.
 sidebar_label: IntelliJ IDEA
 ---
-:::info
-
-Harness CDE is now available in public beta. To enable it on your account, contact your sales representative or reach out to the team at cde-interest@harness.io
-
-:::
 
 With **IntelliJ IDEA** support, Harness CDE enables seamless and efficient remote development in your Gitspaces with your IDE. This integration leverages **[JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/)** to establish a direct remote connection with IntelliJ IDEA, eliminating the need for any prior setup.
 

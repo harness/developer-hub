@@ -9,7 +9,7 @@ This topic describes how Harness Database DevOps implements automated rollback t
 
 ## What are tags? 
 
-A tag is a marker or label assigned to a specific point in a database's migration history. Harness recommends creating a change every time you deploy a changeset to a database so that you always have a rollback point for future changes.
+A tag is a marker or label assigned to a specific point in a database's migration history. Harness recommends creating a tag every time you deploy a changeset to a database so that you always have a rollback point for future changes.
 
 ### Rollback A Database Schema 
 
@@ -32,6 +32,25 @@ Here is how you can rollback a database within Harness Database DevOps:
 :::info
 You can refer to the Harness documentation detailing how to [Add a Liquibase command step](/docs/database-devops/use-database-devops/add-liquibase-command-step.md)
 :::
+
+## Rolling Back to a Previous Database State
+
+The **Apply Schema** step in our deployment pipeline applies database changeSets and provides an expression pointing to the tag marking the database state before deployment.
+
+How It Works
+- If a Liquibase tag exists on the last changeSet, it is captured and exposed in the rollback expression.
+- If no tag exists, the Apply Schema step creates one before applying new changes.
+- Use this exposed tag as expression to rollback to the previous state.
+
+Expression format:
+1. If Apply Schema step run as part of different stage: `<+pipeline.stages.{stageIdentifier}.spec.execution.steps.{stepGroupIdentifier}.steps.{stepIdentifier}.output.preStartTag>`
+2. If Apply Schema step run as part of same stage: `<+execution.steps.{stepGroupIdentifier}.steps.{stepIdentifier}.output.preStartTag>`
+
+Example: For the following pipeline configuration, the expressions would be 
+- `<+pipeline.stages.s2.spec.execution.steps.stepGroup1.steps.DBSchemaApply_1.output.preStartTag>`
+- `<+execution.steps.stepGroup1.steps.DBSchemaApply_1.output.preStartTag>`
+
+![stage-configuration](./static/db-devops-stage-config.png)
 
 ## Built in failure strategies including rollback
 

@@ -1347,6 +1347,168 @@ Harness stores configurations of the ASG you are deploying twice:
 </Tabs4>
 
 
+### Steady State Step
+
+:::note
+
+Currently, Asg Steady State Step is behind the feature flag `CDS_ASG_SKIP_INSTANCE_TERMINATION`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+:::
+
+<div style={{ textAlign: "center" }}>
+  <DocImage path={require('./static/asg-steady-state-step.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+The **ASG Steady State Step** is an additional pipeline step designed to monitor the progress and completion of the Instance Refresh process in AWS Auto Scaling Groups (ASGs). It is introduced to ensure that, during an ASG rolling deployment, the deployment workflow proceeds as soon as the new instances are launched and have reached a healthy state.
+
+To use this step, select the **Skip Instance Termination** checkbox in the **Instance Refresh Configuration** of the ASG Rolling Deploy step. This ensures that only new instance launches are tracked, without waiting for the termination of old instances. The ASG Steady State Step will monitor the instance termination state separately.
+
+:::info
+This step is not supported for **Canary** and **Blue-Green** deployment strategies, as the **Instance Refresh ID** is not available for these strategies. As a result, the step will fail if used in these scenarios.
+:::
+
+**Key Features**
+
+- **Polls Instance Refresh Status**: Uses the [DescribeInstanceRefreshes API](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeInstanceRefreshes.html) to monitor the PercentageComplete and Status of the instance refresh.
+
+- **Ensures Healthy Instances**: Marks the step successful only when the new instances reach a healthy state and the refresh process is 100% complete.
+
+- **Customizable Polling Interval**: Configurable polling interval to check the refresh status at regular intervals (default: 30 seconds).
+
+- **Supports Multi-Service Deployments**: Can be used in both single-service and multi-service deployments, as well as in custom deployments.
+
+**Configuration Parameters**
+
+- **ASG Name**: The ASG name is automatically picked up from the Service. In the case of a custom stage, provide the ASG name manually or use an expression to resolve it.
+- **Polling Interva**l: Defines how often the DescribeInstanceRefreshes API is invoked to check the instance refresh status; The default value is 60 seconds.
+
+**ASG Steady State Step and Rollback Support**
+
+The **ASG Steady State Step** does not support rollback on its own. If a rollback step is added to a stage that contains **only** the Steady State Step, the rollback step will fail.  
+
+Rollback is **only supported** when the stage includes a **Rolling Deployment step** along with the **Steady State Step**.
+
+Below are sample YAML configurations illustrating both use cases.
+
+<details>
+<summary>Sample Asg Steady State Step YAML</summary>
+
+```yaml
+    - stage:
+        name: Steady Stage
+        identifier: Steady_Stage
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Asg
+          service:
+            serviceRef: ASG_SERVICE
+            serviceInputs:
+              serviceDefinition:
+                type: Asg
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: ASG_ENV
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: ASG_INFRA
+          execution:
+            steps:
+              - step:
+                  type: AsgSteadyState
+                  name: AsgSteadyState_1
+                  identifier: AsgSteadyState_1
+                  spec:
+                    pollingInterval: 30s
+                    asgName: asg-test
+                  timeout: 10m
+            rollbackSteps: []
+```
+The YAML defines an ASG Steady State Step in a stage that:
+- Monitors an ASG by polling every 30 seconds.
+- Uses the specified ASG name `asg-test`
+- Completes within a 10-minute timeout period.
+- Since this stage only monitors instance health, it does not require a rollback step.
+</details>
+
+<details>
+<summary>Sample Asg Steady State Step YAML along with Rolling deploy Step</summary>
+
+```yaml
+    - stage:
+        name: Deploy Stage
+        identifier: deploy-stage
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Asg
+          service:
+            serviceRef: ASG_SERVICE
+            serviceInputs:
+              serviceDefinition:
+                type: Asg
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: ASG_ENV
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: ASG_ENV
+          execution:
+            steps:
+              - step:
+                  type: AsgRollingDeploy
+                  name: AsgRollingDeploy_1
+                  identifier: AsgRollingDeploy_1
+                  spec:
+                    useAlreadyRunningInstances: false
+                    skipMatching: true
+                    asgName: asg-test
+                    instances:
+                      type: Fixed
+                      spec:
+                        desired: 2
+                        max: 3
+                        min: 1
+                    skipInstanceTermination: true
+                  timeout: 10m
+              - step:
+                  type: AsgSteadyState
+                  name: AsgSteadyState_1
+                  identifier: AsgSteadyState_1
+                  spec:
+                    pollingInterval: ""
+                    asgName: asg-test
+                  timeout: 10m
+            rollbackSteps:
+              - step:
+                  name: Asg Rolling Rollback
+                  identifier: AsgRollingRollback
+                  type: AsgRollingRollback
+                  timeout: 10m
+                  spec: {}
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+```
+The YAML defines an ASG Steady State Step in a stage that:
+- Monitors an ASG by polling every 30 seconds.
+- Uses the specified ASG name `asg-test`
+- Completes within a 10-minute timeout period.
+- Includes a rollback step that reverts to the previous version of the ASG Rolling Deployment step.
+</details>
+
 ### Canary
 
 The ASG canary deployment uses two step groups:
@@ -1643,12 +1805,24 @@ The ASG Blue Green Deploy step has the following settings:
 - **ASG Name:** Enter a name for the ASG that Harness will create.
 - **Same as already running Instances** or **Fixed**:
   - Select **Fixed** to enforce a Max, Min, and Desired number of instances.Select **Same as already running Instances** to use scaling settings on the last ASG deployed by this Harness pipeline. If this is the first deployment and you select **Same as already running Instances**, Harness uses a default of Min 0, Desired 6, and Max 10. Harness does not use the Min, Max, and Desired settings of the base ASG.
-- **Load Balancer:** select the load balancer(s) to use.
-- **Prod Listener:** provide the ARN for the listener to be used for prod traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`)
-- **Prod Listener Rule ARN:** provide the ARN for the listener rule to be used for prod traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`)
-- **Stage Listener:** provide the ARN for the listener to be used for staging traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`)
-- **Stage Listener Rule ARN:** provide the ARN for the listener rule to be used for staging traffic. (e.g. `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`)
+- **Load Balancer:** Provide the load balancer(s) to use.
+
+- **Prod Listener:** Provide the listener on your load balancer that handles live production traffic. This field specifies the production listener on your load balancer. A listener is responsible for receiving incoming connections on a specified protocol and port. The production listener is the one that handles live traffic for your currently active deployment.
   
+  Example Prod Listener value: `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`
+
+- **Prod Listener Rule ARN:** Provide the ARN of the listener rule associated with the production listener. This field holds the Amazon Resource Name (ARN) of the listener rule associated with the production listener. Listener rules define how incoming requests are evaluated (using conditions like URL path, host header, etc.) and routed to the appropriate target group. The rule ensures that traffic is correctly directed to the target group for your production environment.
+  
+  Example Listener Rule ARN value: `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`
+
+- **Stage Listener:** Provide the listener on your load balancer that routes traffic to your staging environment. This field defines the staging listener on the load balancer. The staging listener is used to route traffic to the new environment where you can perform tests and validations before making it live.
+  
+  Example Stage Listener value: `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]]`
+
+- **Stage Listener Rule ARN:** Provide the ARN of the listener rule associated with the staging listener. Similar to the production listener rule, this field contains the ARN for the rule associated with the staging listener. It determines how traffic is routed to the staging target group based on the defined conditions.
+  
+  Example Stage Listener Rule ARN value: `arn:aws:elasticloadbalancing:us-east-2:999999999999:listener/app/[lbname]]/[lbref]/[listenerref]/[ruleref]]`
+
   :::important
   There is only one listener rule for both target groups (stage and prod), and one listener ARN for a listener rule. Go to [AWS requirements](#aws-requirements) for more information.
   :::

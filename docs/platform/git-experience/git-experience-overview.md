@@ -51,7 +51,11 @@ You can save the following Harness resources in Git using Harness Git Experience
 * Services
 * Environment 
 * Infrastructure Definitions
-* Policies
+* OPA Policies
+
+:::info note
+Support of Git Experience for OPA policies is behind the FF `OPA_IMPORT_FROM_GIT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
 
 
 :::info note

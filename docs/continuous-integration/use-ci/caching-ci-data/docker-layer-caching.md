@@ -16,7 +16,7 @@ To maximize savings, consider modifying your Dockerfile to [use the cache effici
 
 ## Docker Layer Caching, an Intelligence Feature 
 
-With **Docker Layer Caching (DLC)** , a [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) feature, Harness seamlessly caches Docker layers between builds to  accelerate the time it takes to build Docker images.
+With **Docker Layer Caching (DLC)** , a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, Harness seamlessly caches Docker layers between builds to  accelerate the time it takes to build Docker images.
 
 You can use DLC with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md). When you use DLC with Harness CI Cloud, the cache is stored in the Harness-managed environment.
 

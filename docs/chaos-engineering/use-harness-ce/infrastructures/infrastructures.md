@@ -10,9 +10,7 @@ redirect_from:
 - /docs/chaos-engineering/concepts/explore-concepts/infrastructures/
 - /docs/chaos-engineering/onboarding/harness-infra
 - /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/
-- /docs/category/harness-delegate-driven-infrastructure
 - /docs/category/harness-dedicated-infrastructure
-- /docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/
 ---
 
 import Tabs from '@theme/Tabs';
@@ -343,63 +341,6 @@ HCE facilitates installing two types of chaos infrastructure:
 - [DDCR](#what-is-ddcr) (Delegate Driven Chaos Runner) aka **Harness Delegate**; and
 - [Harness Chaos infrastructure](#what-is-harness-chaos-infrastructure) that uses a dedicated infrastructure (aka Legacy Kubernetes Infrastructure).
 
-## What is DDCR?
-
-DDCR, aka [Harness Delegate or DDCI (Delegate-Driven Chaos Infrastructure)](/docs/platform/delegates/delegate-concepts/delegate-overview) is a service that runs in your local network that helps connect your infrastructure, artifacts with Harness Manager. It allows for quick onboarding and optimized chaos execution for microservices-based targets on Kubernetes.
-
-To install a new Delegate, go to [enable chaos](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#enable-chaos)
-
-The diagram below describes the high-level flow of how you can [discover services](/docs/chaos-engineering/use-harness-ce/service-discovery) and [create application maps](/docs/chaos-engineering/use-harness-ce/application-map).
-
-    ![](./static/delegate/flow-v2.png)
-
-:::info note
-- To execute chaos experiments, HCE supports Delegate version `24.09.83900` and above.
-:::
-
-### Experiment execution using DDCR
-
-The schematic diagram below describes how chaos experiments are executed in using Harness Delegate. It highlights the use of Harness Delegate which eliminates the need for a separate chaos agent, which simplifies the experiment orchestration mechanism.
-
-    ![](./static/delegate/ddci-flow.png)
-
-Go to [permissions required](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcrpermissions) to know the detailed list of permissions to execute Kubernetes faults with a Delegate.
-
-The diagram below describes the detailed flow of control (step 5 of the earlier diagram), for an example chaos experiment- [pod DNS chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-dns-error).
-
-    ![](./static/delegate/elaborate.png)
-
-### Characteristics of DDCR
-
-- Automated Kubernetes [service discovery](/docs/chaos-engineering/use-harness-ce/service-discovery) and workloads with network traffic patterns between them through a transient discovery agent.
-- [Automated](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding#choose-between-automatic-and-customizable-application-map-creation) and [guided](/docs/chaos-engineering/use-harness-ce/application-map#create-an-application-map) application map creation that represent a fully functional application within the cluster (which comprises of several constituent microservices).
-- [Chaos experiment auto-creation](#auto-create-experiment) for a given [application map](/docs/chaos-engineering/use-harness-ce/application-map) based on the workload specification and its lineage in terms of network traffic.
-- Reuse the Harness Delegate for chaos experiment execution on the user cluster without a dedicated (or separate) chaos agent.
-- Application-level and application map level resilience scores.
-
-### Auto-create experiments
-Experiments are auto-created based on levels (or categories) you select during automated or guided onboarding. The default setting is that HCE creates all the recommended experiments for the selected application map.
-
-    ![](./static/delegate/exp-rec.png)
-
-#### Speed of execution
-Previously, chaos experiments that executed on dedicated chaos infrastructure would typically take more time (in the order of 4 minutes) whereas with Harness Delegate, you can complete experiment execution in less than half the time (in the order of 1.5 minutes).
-
-The diagram below shows the execution time for experiments that use legacy Kubernetes infrastructure.
-
-    ![](./static/delegate/v1-exp.png)
-
-The diagram below shows the execution time for experiments that use Harness Delegate.
-
-    ![](./static/delegate/v2-exp.png)
-
-#### Fault tunables
-The number of tunables configured in an experiment that uses Harness Delegate is different. Harness Delegate provides better control over the experiments because of the presence of advanced tunables.
-
-#### Resilience score
-
-Earlier, resilience score was measured at the experiment level. With Harness Delegate, you can gain insights into an application along with its associated application map. This way, you can view the application-level resilience score and application-map-level resilience score.
-
 ## What is Harness Chaos Infrastructure?
 
 Harness Chaos Infrastructure (also known as Legacy Kubernetes Infrastructure) uses a dedicated infrastructure to facilitate and execute chaos experiments.
@@ -418,16 +359,3 @@ The table below lists the chaos infrastructure execution plane components and th
 | chaos-exporter     | chaos-exporter        | 125m | 300M | chaosnative/chaos-exporter          |
 | subscriber         | subscriber            | 125m | 300M | chaosnative/harness-chaos-subscriber|
 | workflow-controller| workflow-controller   | 125m | 300M | chaosnative/workflow-controller     |
-
-## Dedicated chaos infrastructure versus Harness Delegate-Driven Chaos Infrastructure
-
-| **Dedicated Chaos Infrastructure**                                                                                                                                                                                                          | **Harness Delegate-Driven Chaos Infrastructure or Runner (DDCI or DDCR)**                                                                                                                                                                                                                                                                                                                                                                                         |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Involves [setting up](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#using-dedicated-chaos-infrastructure) a separate, dedicated environment specifically for running chaos experiments. | Involves installing Delegates, which is a service used to connect to artefact, collaboration, verification, and so on.                                                                                                                                                                                                                                                                                                                                            |
-| Requires its own resources (servers, network configurations, etc.) that are isolated from the main application infrastructure.                                                                                                              | Leverages the existing infrastructure, allowing chaos experiments to be run without a separate environment, and allowing to connect to other third-party resources.                                                                                                                                                                                                                                                                                               |
-| N/A                                                                                                                                                                                                                                         | Automated Kubernetes [service discovery](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/service-discovery) and workloads with network traffic patterns between them through a transient discovery agent.                                                                                                                                                                                                                           |
-| N/A                                                                                                                                                                                                                                         | [Automated](https://developer.harness.io/docs/chaos-engineering/getting-started/onboarding/guided-onboarding#choose-between-automatic-and-customizable-application-map-creation) and [guided](https://developer.harness.io/docs/chaos-engineering/concepts/explore-concepts/app-maps#create-an-application-map) application map creation that represent a fully functional application within the cluster (which comprises of several constituent microservices). |
-| N/A                                                                                                                                                                                                                                         | [Chaos experiment auto-creation](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/infrastructures/#auto-create-experiments) for a given [application map](https://developer.harness.io/docs/chaos-engineering/concepts/explore-concepts/app-maps) based on the workload specification and its lineage in terms of network traffic.                                                                                                              |
-| Provides chaos experiment level resilience scores.                                                                                                                                                                                          | Provides application-level and application map level resilience scores.                                                                                                                                                                                                                                                                                                                                                                                           |
-| Provides isolation from other set up.                                                                                                                                                                                                       | Integrates with existing set up.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Requires additional resources, set up, and time hence not adaptable.                                                                                                                                                                        | Adaptable for varying environments, making it easy to execute chaos experiments in the deployment pipeline.                                                                                                                                                                                                                                                                                                                                                       |

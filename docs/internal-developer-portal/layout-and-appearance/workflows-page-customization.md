@@ -4,13 +4,6 @@ sidebar_label: Workflows Homepage Customization
 description: Learn how you can customize your workflows homepage and organize workflows under groups
 sidebar_position: 30
 ---
-
-:::info
-
-The new Workflows homepage is behind a Feature Flag `IDP_ENABLE_WORKFLOWSV2`. To enable the feature flag, please contact [Harness Support](mailto:support@harness.io)
-
-:::
-
 ## Introduction
 
 You can organize your IDP Workflows into groups such as Service Onboarding, Infrastructure Use Cases or Day 1 Onboarding using the Workflows Homepage Customization. You can also change the icons of individual groups and each Workflow. You can also change the primary button text from "Execute" to more suitable verbs such as "Create", "Delete" or "Run" with appropriate intent colors. Finally, you can change the order of the groups and Workflows within an individual group as well.
