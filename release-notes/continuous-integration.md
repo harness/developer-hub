@@ -82,7 +82,7 @@ For more information see [Google Container Registry deprecation notice](https://
 #### Fixed issues
 
 - Resolved an issue with Azure Repos where cloning with a tag was not working. (CI-16298, ZD-78432)
-- Resolved an issue where Build Cache Intelligence under the "Overview" section of the CI module might not be visible when the build infrastructure is not selected. A tooltip has also been added to clarify that it will be supported only for Kubernetes and Cloud infrastructure. With this fix, the property is now visible in templates, allowing users to configure CI stages regardless of the selected infrastructure. (CI-16342)
+- Resolved an issue where Build Intelligence feature  couldn’t be configured via templates. With this fix, the property is now visible in templates, allowing users to configure CI stages regardless of the selected infrastructure. (CI-16342)
 
 #### Harness images updates
 
