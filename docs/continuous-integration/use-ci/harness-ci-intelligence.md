@@ -2,6 +2,8 @@
 title: Harness CI Intelligence
 description: Harness CI Intelligence leverages a suite of CI features to optimize your builds.
 sidebar_position: 3
+redirect_from: 
+- /docs/continuous-integration/get-started/harness-ci-intelligence
 ---
 
 Harness Continuous Integration (CI) Intelligence features are designed to smartly speed up builds and boost efficiency.
@@ -84,7 +86,7 @@ This feature is currently in beta, and is available with `CI_PARSE_SAVINGS` feat
 
 Below is a screenshot demonstrating the time savings for a **Build** stage using Cache Intelligence and Test Intelligence.
 
-![](./static/ci_stage_savings.png)
+![](./static/ci-stage-savings.png)
 
 ### How is Build stage time saving calculated 
 
