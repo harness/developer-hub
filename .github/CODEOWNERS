@@ -167,6 +167,11 @@ static/  @rohanmaharjan100 @wei-harness
 # FF FAQs
 /docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos @jenniferopal
 
+#FME Docs
+/src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
+/release-notes/feature-management-experimentation.md @dtk-DaveKarow @kleinjoshuaa @deej-split @HarnessTheChaos
+/release-notes/static/fme/ @dtk-DaveKarow @kleinjoshuaa @deej-split @HarnessTheChaos
+
 # SEI Docs
 /docs/software-engineering-insights/ @codewdhruv @batraprashant
 /release-notes/software-engineering-insights.md @codewdhruv @batraprashant
@@ -194,11 +199,6 @@ static/  @rohanmaharjan100 @wei-harness
 # Artifact Registry Docs
 /docs/artifact-registry/ @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
 /src/components/Docs/data/artifactRegistryData.ts @shankaranandh @shivagowda @richardblack-Harness @poojaSinghal @arvind-choudhary-h
-
-#FME Docs
-/src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
-/release-notes/feature-management-experimentation.md @dtk-DaveKarow @kleinjoshuaa @deej-split
-/release-notes/static/fme/ @dtk-DaveKarow @kleinjoshuaa @deej-split
 
 # Open Source Docs
 /docs/open-source/ @dewan-ahmed @rustd @SushrutHarness
