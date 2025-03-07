@@ -242,6 +242,18 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod JVM Solace Exception",
+    description:"Pod JVM Solace Exception injects exception in solace queries for a Java application executing in a Kubernetes pod",
+    tags: ["pod", "jvm", "solace", "exception"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod JVM Solace Latency",
+    description:"Pod JVM Solace Latency injects latency in solace queries for a Java application executing in a Kubernetes pod",
+    tags: ["pod", "jvm", "solace", "latency"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod memory hog exec",
     description:"Pod memory hog exec consumes memory resources on the application container in megabytes.",
     tags: ["pod"],
