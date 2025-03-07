@@ -67,7 +67,7 @@ Pod JVM Mongo exception:
   <tr>
     <td> TRANSACTION_PERCENTAGE </td>
     <td> The percentage of total mongodb calls to be targeted. </td>
-    <td> Supports percentage in (0.00,1.00] range. If not provided, it targets all SQL queries. For more information, go to <a href= "#parameters">Parameters</a></td>
+    <td> Supports percentage in (0.00,1.00] range. If not provided, it targets all mongodb queries. For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
   <tr>
     <td> POD_AFFECTED_PERCENTAGE </td>
