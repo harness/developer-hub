@@ -63,6 +63,10 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Users can now rely on Harness to accurately detect failures in **ECS Rolling Deployments**. Currently, this setting is behind the Feature Flag `CDS_ECS_MONITOR_TASK_STATUS`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**CDS-107046**)
 
+- Inline entities in Harness will be saved in [Harness Code Repository](/docs/code-repository/get-started/onboarding-guide.md) by default. Currently this feature is behind a Feature Flag `PIPE_USE_HARNESS_CODE_FOR_INLINE_ENTITIES`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**PIPE-18731**)
+
+- Users can now fetch the original execution ID during rollback, ensuring accurate execution context reference. (**PIPE-24537, ZD-73306**)
+
 
 #### Fixed Issues
 
