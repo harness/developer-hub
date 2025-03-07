@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-02-28T10:00
+date: 2025-03-06T10:00
 sidebar_position: 10
 ---
 
@@ -20,7 +20,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
-## February 2025
+## March 2025
 
 :::note
 
@@ -29,8 +29,6 @@ These release notes describe recent changes to Harness Continuous Integration.
 We’re excited to introduce an updated UI for managing your Harness Continuous Integration (CI) licenses. With the [new subscription page](https://developer.harness.io/docs/platform/get-started/subscriptions-licenses/subscriptions/#developer-360-modules-subscriptions), you can now easily track and assign licenses based on the number of developers using the platform, offering greater flexibility and control over your license allocation.
 
 This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
-
-
 
 :::
 
@@ -76,6 +74,29 @@ To ensure uninterrupted service, we recommend completing these updates by April 
 
 For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
 :::
+
+### Version 1.70
+
+<!-- 2025-03-03 -->
+
+#### Fixed issues
+
+- Resolved an issue with Azure Repos where cloning with a tag was not working. (CI-16298, ZD-78432)
+- Resolved an issue where Build Intelligence feature  couldn’t be configured via templates. With this fix, the property is now visible in templates, allowing users to configure CI stages regardless of the selected infrastructure. (CI-16342)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `plugins/artifactory`      | Vulberability fixes  | 1.7.1                | 1.7.2          |
+| `harness/ecr`      | Changes described in fixed issues list                | 20.18.7          |
+| `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
+| `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
+| `harness/drone-git`      | Changes described in fixed issues list  | 1.6.5                | 1.6.7          |
+| `harness/ci-addon`      | Vulberability fixes  | rootless-1.16.74                | rootless-1.16.75          |
+| `harness/ci-addon`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
+
+## February 2025
 
 ### Version 1.68
 
