@@ -1,20 +1,20 @@
 ---
-id: pod-jvm-sql-latency
-title: Pod JVM SQL Latency
+id: pod-jvm-mongo-latency
+title: Pod JVM Mongo Latency
 ---
 
-Pod JVM SQL Latency fault introduces latency in the SQL queries executed by the Java process running inside a Kubernetes pod.
+Pod JVM Mongo Latency fault introduces latency in the mongodb calls executed by the Java process running inside a Kubernetes pod.
 :::tip
 JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
 :::
 
-![Pod JVM SQL Latency](./static/images/pod-jvm-sql-latency.png)
+![Pod JVM Mongo Latency](./static/images/pod-jvm-mongo-latency.png)
 
 ### Use cases
-Pod JVM SQL latency:
-- Simulate database latency to evaluate how the application handles slower SQL queries, assess system performance under delayed database responses, and identify potential bottlenecks in handling high volumes of requests.
-- Test the impact of SQL query latency on the end-user experience, ensuring the application behaves gracefully under slower response times. This includes validating timeouts, retries, and fallback mechanisms to maintain a seamless user experience.
-- Ensure that the application can handle delayed SQL queries without failing. Test timeout configurations, error-handling strategies, and automatic recovery processes to verify that the system can withstand latency-induced delays without causing critical failures.
+Pod JVM Mongo latency:
+- Simulate database latency to evaluate how the application handles slower db queries, assess system performance under delayed database responses, and identify potential bottlenecks in handling high volumes of requests.
+- Test the impact of database query latency on the end-user experience, ensuring the application behaves gracefully under slower response times. This includes validating timeouts, retries, and fallback mechanisms to maintain a seamless user experience.
+- Ensure that the application can handle delayed db queries without failing. Test timeout configurations, error-handling strategies, and automatic recovery processes to verify that the system can withstand latency-induced delays without causing critical failures.
 
 ### Mandatory tunables
 <table>
@@ -24,18 +24,23 @@ Pod JVM SQL latency:
     <th> Notes </th>
   </tr>
   <tr>
-    <td> TABLE </td>
-    <td> The name of the SQL table to be targeted. </td>
+    <td> DATABASE </td>
+    <td> The name of the mongodb database to be targeted. </td>
     <td> For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
   <tr>
-    <td> SQL_DATA_ACCESS_FRAMEWORK </td>
-    <td> The name of the data access framework. </td>
-    <td> It supports MYSQL5, MYSQL8, and HIBERNATE types. For more information, go to <a href= "#parameters">Parameters</a></td>
+    <td> COLLECTION </td>
+    <td> The name of the mongodb collection to be targeted. </td>
+    <td> For more information, go to <a href= "#parameters">Parameters</a></td>
+  </tr>
+  <tr>
+    <td> METHOD </td>
+    <td> The name of the mongodb method to be targeted. </td>
+    <td> For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
  <tr>
     <td> LATENCY </td>
-    <td> The latency to be injected into the SQL queries (in ms). </td>
+    <td> The latency to be injected into the database queries (in ms). </td>
     <td> For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
 </table>
@@ -53,13 +58,8 @@ Pod JVM SQL latency:
     <td> Default: <code>30s</code>. For example: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
   </tr>
   <tr>
-    <td> SQL_OPERATION </td>
-    <td> The type of SQL query to be targeted. </td>
-    <td> If not provided it targets all SQL queries. For example: <code>select</code>. For more information, go to <a href= "#parameters">Parameters</a></td>
-  </tr>
-  <tr>
     <td> TRANSACTION_PERCENTAGE </td>
-    <td> The percentage of total SQL queries to be targeted. </td>
+    <td> The percentage of total mongodb calls to be targeted. </td>
     <td> Supports percentage in (0.00,1.00] range. If not provided, it targets all SQL queries. For more information, go to <a href= "#parameters">Parameters</a></td>
   </tr>
   <tr>
@@ -123,12 +123,12 @@ Pod JVM SQL latency:
 
 The following YAML snippet illustrates the use of these tunables:
 
-[embedmd]:# (./static/manifests/pod-jvm-sql-latency/params.yaml yaml)
+[embedmd]:# (./static/manifests/pod-jvm-mongo-latency/params.yaml yaml)
 ```yaml
 kind: KubernetesChaosExperiment
 apiVersion: litmuschaos.io/v1alpha1
 metadata:
-  name: pod-jvm-sql-latency
+  name: pod-jvm-mongo-latency
   namespace: hce
 spec:
   tasks:
@@ -137,17 +137,15 @@ spec:
           env:
             - name: TOTAL_CHAOS_DURATION
               value: "60"
-            # provide the sql table name
-            - name: TABLE
-              value: "product"
-            # provide the sql operation name
-            # it supports select, insert, update, delete, replace types
-            - name: SQL_OPERATION
-              value: "select"
-            # name of the data access framework
-            # it supports MYSQL5, MYSQL8, HIBERNATE types
-            - name: SQL_DATA_ACCESS_FRAMEWORK
-              value: "MYSQL8"
+            # name of the mongodb database to be targeted
+            - name: DATABASE
+              value: "library"
+            # name of the mongodb collection to be targeted
+            - name: COLLECTION
+              value: "books"
+            # name of the mongodb method to be targeted
+            - name: METHOD
+              value: "find"
             # provide the latency in ms
             - name: LATENCY
               value: "2000" #in ms
