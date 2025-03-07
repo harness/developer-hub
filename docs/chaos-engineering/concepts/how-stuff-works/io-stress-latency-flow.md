@@ -70,4 +70,4 @@ The helper pod extracts the process ID (PID) of the main process running inside 
 
 In case of IO stress chaos, after the chaos duration is complete, the helper pod stops the stressor process and cleans up resources.
 
-In case of latency chaos, fter the chaos duration is complete, the helper pod removes the latency injection rules and restores normal file operations.
+In case of IO latency chaos, after the chaos duration is complete, the helper pod removes the latency injection rules and restores normal file operations.
