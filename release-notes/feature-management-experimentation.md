@@ -26,7 +26,7 @@ Thanks are due to the team at [Cars.com](https://www.cars.com/) for the initial 
 
 FME Thin Client SDKs are known for their lightweight footprint and are always paired with Split Daemon (splitd). Splitd performs the storage and compute intensive operations and easily scales to high traffic volumes.
 
-![Architecture Diagram - Thin SDK Client SDK and Split D](https://www.split.io/wp-content/uploads/thin-sdksplitd-fme-server-diagram.png)
+![Architecture Diagram - Thin SDK Client SDK and Split D](./static/fme/thin-sdksplitd-fme-server-diagram.png)
 
 Splitd can be set up locally to the consumer application or be deployed as a sidecar to the consumer application container. See the [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd) documentation for details.
 
@@ -44,10 +44,10 @@ To see the Metric summary and ask follow-up questions:
 1. Drill into a metric tile on a Metrics impact dashboard and click **Summarize**.
 2. After viewing the summary, type your follow-up question and click **Continue conversation in Release Agent**.
 3. Continue to ask additional follow-up questions if you would like, including suggestions for next steps.
-![Image](https://www.split.io/wp-content/uploads/Continue-In-Release-Agent-01-1920x1040.png)
-![Image](https://www.split.io/wp-content/uploads/Continue-In-Release-Agent-02.png)
+![Image](./static/fme/continue-in-release-agent-01-1920x1040.png)
+![Image](./static/fme/continue-in-release-agent-02.png)
 Note: the transition from "Switch" to "Release Agent" will take place gradually.  For now, you'll still see **Ask Switch** in the lower left navigation of Harness Feature Management and Experimentation:
-![Image](https://www.split.io/wp-content/uploads/ask-switch-in-left-nav.png)
+![Image](./static/fme/ask-switch-in-left-nav.png)
 ##### Related documentation
 - [Metric details and trends](https://help.split.io/hc/en-us/articles/360025376251-Metric-details-and-trends)
 - [Switch AI assistant](https://help.split.io/hc/en-us/articles/21188803158157-Switch-AI-assistant)
@@ -61,7 +61,7 @@ Large segments support multiple use cases where bulk targeting of specific IDs i
 - Targeting any set of users based on attributes not available within the app at runtime.
 - Performing large-scale A/B tests on specific user bases, exported from external tools.
 Effective immediately, Enterprise tier customers may create and use Large segments containing up to one million (1,000,000) IDs. Significantly higher limits are available by request.
-![Image](https://www.split.io/wp-content/uploads/image-53.png)
+![Image](./static/fme/image-53.png)
 Learn more about Large segments and the ways they differ from Standard segments in the documentation:
 - [Create a segment](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment)
 - [Target segments](https://help.split.io/hc/en-us/articles/360020525252-Target-segments)
@@ -95,14 +95,14 @@ Attribute dictionary support reduces guesswork and manual errors when editing ta
 - This update adds the benefits of standardized attribute names and suggested values delivered by our Attribute Dictionary.
 ###### **What SemVer attribute support looks like to an admin**:
 Admins can create a custom attribute of type "Semver" and optionally enter suggested values.
-![Image](https://www.split.io/wp-content/uploads/semver-admin-create-1920x1171.png)
+![Image](./static/fme/semver-admin-create-1920x1171.png)
 ###### **What SemVer attribute support looks like to a user**:
 Choose an attribute name from the attribute dictionary, such as "ios_version"
-![Image](https://www.split.io/wp-content/uploads/1-chose-a-semver-attribute-name-1920x901.png)
+![Image](./static/fme/1-chose-a-semver-attribute-name-1920x901.png)
 If the chosen attribute is of type SemVer, the appropriate matchers are shown:
-![Image](https://www.split.io/wp-content/uploads/2-choose-a-semver-matcher-1920x888.png)
+![Image](./static/fme/2-choose-a-semver-matcher-1920x888.png)
 If "is in list" is chosen as the matcher type, suggested values are shown:
-![Image](https://www.split.io/wp-content/uploads/3-choose-a-suggsted-value-1920x890.png)
+![Image](./static/fme/3-choose-a-suggsted-value-1920x890.png)
 ###### **Related Documentation:**
 - [Creating individual custom attributes in Admin settings](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes#creating-individual-custom-attributes-in-admin-settings)
 - [Creating multiple custom attributes in Admin Settings](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes#creating-multiple-custom-attributes-in-admin-settings) (CSV upload)
@@ -113,7 +113,7 @@ If "is in list" is chosen as the matcher type, suggested values are shown:
 ##### Guardrail and Key Metric Alerts Now Shown in the Alerts Table
 Previously, the Alerts table on the Monitoring tab displayed Metric alerts only. Guardrail Metric alerts and Key Metric alerts generated email notifications to feature flag owners, but were not persisted in the UI.
 Now all three types of alerts are shown on each flag's Monitoring tab for any team member to see.  The table has been simplified to display the most valuable fields at a glance, reducing cognitive load. Details less critical for quick triage remain available under an info icon.
-![Image](https://www.split.io/wp-content/uploads/alerts-table-nov-2024.png)
+![Image](./static/fme/alerts-table-nov-2024.png)
 As a refresher, here is quick summary of the three alert types:
 
 * **Metric Alert**
@@ -135,12 +135,12 @@ As a refresher, here is quick summary of the three alert types:
 #### Better Together: Split + Harness
 ##### New Colors, Names for Organization and Workspace
 Starting on September 30th, we began a progressive rollout to update the Split UI, bringing it closer to the look of Harness:
-![Image](https://www.split.io/wp-content/uploads/Better-Together-Color-Changes.png)
+![Image](./static/fme/better-together-color-changes.png)
 Beyond a change in color scheme, you will also see two changes to **terminology**:
 - **Workspaces** will now be known as **Projects** in the UI
 - **Organizations** will now be known as **Accounts** in the UI
 
-![Image](https://www.split.io/wp-content/uploads/Admin-Settings-New-Nomenclature-1920x977.png)
+![Image](./static/fme/admin-settings-new-nomenclature-1920x977.png)
 Note: These terminology changes are being made only to labels in the UI at this time. To avoid introducing a breaking change, the [Admin API](https://docs.split.io/reference/introduction) will continue to use the strings ws, workspace, organizationId, and orgId until further notice.
 
 ### 2024-09-12
@@ -148,15 +148,15 @@ Note: These terminology changes are being made only to labels in the UI at this 
 ##### Traffic Insights and Alerts
 The **Alerts** tab has been renamed **Monitoring** and expanded to show real-time traffic insights over time and any alerts fired for the flag on a single page.
 
-![Image](https://www.split.io/wp-content/uploads/monitoring_tab_in_docs-1920x1431.png)
+![Image](./static/fme/monitoring-tab-in-docs-1920x1431.png)
 
 By default, traffic over the **Last 48 hours** is shown, but you may also select the **Last 7 days**, another **Time range**, or a specific **Feature flag version**:
 
-![Image](https://www.split.io/wp-content/uploads/Traffic_last48-by-defaultother_options-1920x573.png)
+![Image](./static/fme/traffic-last48-by-defaultother-options-1920x573.png)
 
 Changes made to flags (i.e., new flag versions) are displayed as vertical bars for context:
 
-![Image](https://www.split.io/wp-content/uploads/flag-versions-vertical-bars.png)
+![Image](./static/fme/flag-versions-vertical-bars.png)
 
 For more information, have a look at the [Monitoring tab docs](https://help.split.io/hc/en-us/articles/30098162579853-Monitoring-tab).
 
@@ -171,7 +171,7 @@ On the Metrics impact page, we have replaced “Organizational metrics” with �
 ###### **How do I assign flag-specific metrics?**
 Key metrics and Supporting metrics are specific to individual feature flags, and can be managed on a flag’s Metrics impact tab. Under each category, click “Add metric” to initiate the process of assigning metrics to the category. Once metrics are added, you can wait until the next scheduled calculation or manually “Recalculate metrics” to see results.
 
-![Image](https://www.split.io/wp-content/uploads/image1-14.png)
+![Image](./static/fme/image1-14.png)
 
 ###### **How do I ensure my important metrics are still monitored for every flag?**
 In June, Split introduced [Guardrail metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics?_gl=1*u0yhnk*_gcl_au*OTQzOTM3ODQ3LjE3MTk5ODA1NjI.#:~:text=Guardrail%20metrics%3A,impact%20is%20detected.) to improve your ability to define which metrics should be monitored for every flag. Guardrail metrics include automated alerting, meaning flag owners will be notified as their releases or experiments impact these metrics. 
@@ -180,7 +180,7 @@ Since Organizational metrics will no longer be available, **we recommend adding 
 
 Guardrail metrics can be assigned in the metric definition:
 
-![Image](https://www.split.io/wp-content/uploads/image2-10.png)
+![Image](./static/fme/image2-10.png)
 
 The combination of Key metrics, Guardrail metrics, and Supporting metrics will reduce noise and increase sensitivity while ensuring important metrics are monitored for every feature release or experiment. We welcome your feedback as we continue to improve our metric results!
 
@@ -411,11 +411,11 @@ To help prevent unintentional resets of your data, the [recalculate metric butto
 ### 2023-05-15
 #### Usability Enhancements
 ##### Simplified Feature Flag Configurations
-The [feature flag configuration flow](https://www.split.io/wp-content/uploads/2023/04/Simplified-Feature-Flag-Configurations-1.pdf) on the definition tab has been reimagined with updated terminology and new visual cues. This will enable users to configure flags with a higher degree of confidence for any use case (percentage-based rollout, on/off, etc.).
+The [feature flag configuration flow](./static/fme/simplified-feature-flag-configurations-1.pdf) on the definition tab has been reimagined with updated terminology and new visual cues. This will enable users to configure flags with a higher degree of confidence for any use case (percentage-based rollout, on/off, etc.).
 ##### Visual Refresh to the Split User Interface
-The entire Split application has gone through a [visual refresh](https://www.split.io/wp-content/uploads/2023/04/Simplified-Feature-Flag-Configurations-1.pdf). Users will see a modern, forward-looking aesthetic with refined colors tuned for accessibility, visual cues, and more.
+The entire Split application has gone through a [visual refresh](./static/fme/simplified-feature-flag-configurations-1.pdf). Users will see a modern, forward-looking aesthetic with refined colors tuned for accessibility, visual cues, and more.
 ##### Terminology Change
-To reduce the confusion between "Split", our product, and "split", the feature flag, we are [changing the term "split" to "feature flag"](https://www.split.io/wp-content/uploads/2023/04/Simplified-Feature-Flag-Configurations-1.pdf) across our application and documentation.
+To reduce the confusion between "Split", our product, and "split", the feature flag, we are [changing the term "split" to "feature flag"](./static/fme/simplified-feature-flag-configurations-1.pdf) across our application and documentation.
 
 ### 2023-05-08
 #### Integrations
