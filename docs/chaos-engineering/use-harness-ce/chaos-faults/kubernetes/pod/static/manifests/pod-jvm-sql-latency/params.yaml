@@ -22,7 +22,7 @@ spec:
             - name: SQL_DATA_ACCESS_FRAMEWORK
               value: "MYSQL8"
             # provide the latency in ms
-            - name: SQL_LATENCY
+            - name: LATENCY
               value: "2000" #in ms
             # provide the transaction percentage
             - name: TRANSACTION_PERCENTAGE

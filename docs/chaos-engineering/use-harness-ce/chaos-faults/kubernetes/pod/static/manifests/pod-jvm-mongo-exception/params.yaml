@@ -1,7 +1,7 @@
 kind: KubernetesChaosExperiment
 apiVersion: litmuschaos.io/v1alpha1
 metadata:
-  name: pod-jvm-sql-exception
+  name: pod-jvm-mongo-exception
   namespace: hce
 spec:
   tasks:
@@ -10,18 +10,16 @@ spec:
           env:
             - name: TOTAL_CHAOS_DURATION
               value: "60"
-            # provide the sql table name
-            - name: TABLE
-              value: "product"
-            # provide the sql operation name
-            # it supports select, insert, update, delete, replace types
-            - name: SQL_OPERATION
-              value: "select"
-            # name of the data access framework
-            # it supports MYSQL5, MYSQL8, HIBERNATE types
-            - name: SQL_DATA_ACCESS_FRAMEWORK
-              value: "MYSQL8"
-            # name of the sql exception class
+            # name of the mongodb database to be targeted
+            - name: DATABASE
+              value: "library"
+            # name of the mongodb collection to be targeted
+            - name: COLLECTION
+              # name of the mongodb method to be targeted
+              value: "books"
+            - name: METHOD
+              value: "find"
+            # name of the exception class
             - name: EXCEPTION_CLASS
               value: "IllegalArgumentException"
             # provide the exception message
