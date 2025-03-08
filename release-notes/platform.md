@@ -53,6 +53,27 @@ The following Harness images will now be pulled from GAR by default:
 
 :::
 
+:::danger Breaking Changes 
+   **Introducing a new set of permissions while deprecating the existing (EXPERIMENTAL) one.**  
+
+    Currently, **Notification Rules** and **Notification Channels** are governed by a single set of permissions:
+
+    | **Resource**                                      | **Permissions**                                                                                                              |
+    |---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+    | **Notifications Rules and Notification Channels** | <li>View (`core_notification_view`)</li><li>Edit (`core_notification_edit`)</li><li>Delete (`core_notification_delete`)</li> |
+
+    However, in an upcoming release, these permissions will become non-operational. They will be replaced with separate new permissions: 
+
+        | **Resource**              | **New Permissions**                                                                                                                                       |
+        |---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+        | **Notification Rules**    | <li>View (`core_notificationrule_view`)</li><li>Edit (`core_notificationrule_edit`)</li><li>Delete (`core_notificationrule_delete`)</li>     |
+        | **Notification Channels** | <li>View (`core_notificationchannel_view`)</li><li>Edit (`core_notificationchannel_edit`)</li><li>Delete (`core_notificationchannel_delete`)</li> |
+
+    If any automation relies on these `core_notification_view/edit/delete` permissions, we recommend updating them accordingly.
+
+    **Note:** The existing permissions are experimental and will be deprecated. The new permissions will be released in the **ACTIVE** state with RBAC enforced.
+:::
+
 :::info important
 This is a notification for a feature change aimed at enhancing your experience with Harness. Here's what you need to know:
 
