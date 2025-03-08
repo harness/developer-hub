@@ -641,6 +641,38 @@ Pod JVM sql exception injects chaos into a Java application executing in a Kuber
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM solace latency
+
+Pod JVM solace latency injects chaos into a Java application executing in a Kubernetes pod by invoking latency in solace queries.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application
+- Simulate solace calls latency to evaluate how the application handles slower solace calls
+- Test the impact of message queue latency on the end-user experience, ensuring the application behaves gracefully under slower response times.
+- Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM solace exception
+
+Pod JVM solace exception injects chaos into a Java application executing in a Kubernetes pod by invoking an solace query exception.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application
+- Simulates solace calls exceptions to ensure if application can recover gracefully
+- Assess if the monitoring systems and alerting mechanisms can accurately detect and report solace calls exceptions in real-time.
+- Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod JVM sql latency
 
 Pod JVM sql latency injects chaos into a Java application executing in a Kubernetes pod by invoking latency in sql queries.
