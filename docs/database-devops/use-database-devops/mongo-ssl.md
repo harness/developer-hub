@@ -42,7 +42,7 @@ kubectl create secret -n namespace generic db-ops-mongo-ssl-secret --from-file r
 
 Ensure that the [common delegate configuration](#common-delegate-configuration) is done before moving on to the next steps
 
-Within our delegate configuration environment variables we will need to mount the `root_ca.crt` file
+Within our delegate configuration environment variables we will need to mount the `root_ca.crt` file to the build pods
 
 ```shell
 - name: DESTINATION_CA_PATH
@@ -113,9 +113,8 @@ In order for the JDBC test connection to work, using env variable INIT_SCRIPT we
 
 Below is an example which imports
 
-.crt file to the default JVM trustStore ( `$JAVA_HOME/lib/security/cacerts` )
-
-pkcs12 file to the default keyStore ( `$JAVA_HOME/lib/security/jssecacerts` )
+* .crt file to the default JVM trustStore ( `$JAVA_HOME/lib/security/cacerts` )
+* pkcs12 file to the default keyStore ( `$JAVA_HOME/lib/security/jssecacerts` )
 
 
 ```shell
@@ -124,10 +123,11 @@ pkcs12 file to the default keyStore ( `$JAVA_HOME/lib/security/jssecacerts` )
   base64 --decode /opt/harness-delegate/ca-bundle/client_pkcs12.txt > client.p12
   keytool -importkeystore -destkeystore $JAVA_HOME/lib/security/jssecacerts -srckeystore client.p12 -srcstoretype PKCS12 -alias mongo-client -storepass changeit -srcstorepass changeit -noprompt
   keytool -importcert -file /opt/harness-delegate/ca-bundle/root_ca.crt -keystore $JAVA_HOME/lib/security/cacerts -alias "mongodb_ssl" -storepass changeit -noprompt
-  The keyStore system properties ( -Djavax.net.ssl.keyStore=keyStorePath,  -Djavax.net.ssl.keyStorePassword=keyStorePwd) must always be mentioned as a part of JAVA_TOOL_OPTIONS
 ```
 
-if the `root_ca.crt` is not added into the default trustStore, (`$JAVA_HOME/lib/security/cacerts`)  then we will need to add trustStore properties ( `-Djavax.net.ssl.trustStore=trustStorePath -Djavax.net.ssl.trustStorePassword=trustStorePwd` )in JAVA_TOOL_OPTIONS environment variable pointing to the trustStore.
+The keyStore system properties ( -Djavax.net.ssl.keyStore=keyStorePath,  -Djavax.net.ssl.keyStorePassword=keyStorePwd) must always be mentioned as a part of JAVA_TOOL_OPTIONS
+
+If the `root_ca.crt` is not added into the default trustStore, (`$JAVA_HOME/lib/security/cacerts`)  then we will need to add trustStore properties ( `-Djavax.net.ssl.trustStore=trustStorePath -Djavax.net.ssl.trustStorePassword=trustStorePwd` )in JAVA_TOOL_OPTIONS environment variable pointing to the trustStore.
 
 
 ```shell
