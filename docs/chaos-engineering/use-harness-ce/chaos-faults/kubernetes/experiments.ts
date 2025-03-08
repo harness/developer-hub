@@ -104,6 +104,12 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod API modify response custom",
+    description:"Pod API modify response custom modifies the headers, body, and status code of both request and response for the APIs of the service through path filtering",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod autoscaler",
     description:"Pod autoscaler determines whether nodes can accommodate multiple replicas of a given application pod.",
     tags: ["pod"],
