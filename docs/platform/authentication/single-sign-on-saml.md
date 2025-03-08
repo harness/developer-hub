@@ -386,10 +386,10 @@ To set `User.Read.All` access for the application, do the following:
 
 The following App registration permissions are required to configure the optional `client-id` and `client-secret` for Harness SAML SSO with the Azure app:
 
-- `Directory.ReadWrite.All`
-- `Group.ReadWrite.All`
-- `GroupMember.ReadWrite.All`
-- `User.ReadWrite.All`
+- `Directory.Read.All`
+- `Group.Read.All`
+- `GroupMember.Read.All`
+- `User.Read.All`
 
 :::info note
 You must set the above for both Delegated permissions and Application permissions.
