@@ -24,6 +24,7 @@ const Roadmap = () => {
     { value: "srm", name: "Service Reliability Management" },
     { value: "idp", name: "Internal Developer Portal" },
     { value: "sei", name: "Software Engineering Insights" },
+    { value: "cde", name: "Cloud Development Environments" },
   ];
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
