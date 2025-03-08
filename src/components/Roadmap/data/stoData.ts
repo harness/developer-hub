@@ -2,13 +2,8 @@ import { Horizon } from "./roadmapData";
 
 export const StoData: Horizon = {
   Now: {
-    description: "Q4 2024, Nov 2024 - Jan 2025",
+    description: "Q1 2025, Feb 2025 - Apr 2025",
     feature: [
-      {
-        tag: [{ value: "Platform" }, { value: "Governance"}],
-        title: "Detection of New Occurrences",
-        description: "Identifies and governs new occurrences of existing vulnerabilities.",
-      }, 
       {
         tag: [{ value: "Integration" }, { value: "Checkmarx"}],
         title: "Checkmarx Integration",
@@ -24,11 +19,6 @@ export const StoData: Horizon = {
         title: "Jira Integration",
         description: "Sync updates bi-directionally for vulnerabilities found, remediated, or exempted.",
       }
-    ],
-  },
-  Next: {
-    description: "Q1 2025, Feb 2025 - Apr 2025",
-    feature: [
       {
         tag: [{ value: "Exemption Workflow" }],
         title: "Global Exemption Management",
@@ -36,8 +26,8 @@ export const StoData: Horizon = {
       },
       {
         tag: [{ value: "Visibility" }, { value: "AppSec" }],
-        title: "Issues List",
-        description: "Centralized, prioritized vulnerability list for AppSec persona with ticket creation for tracking.",
+        title: "Issues List - Project",
+        description: "Centralized, prioritized vulnerability list for AppSec persona with ticket creation for tracking at Project scope.",
       },
       {
         tag: [{ value: "Platform" }, { value: "Exemption"}],
@@ -66,8 +56,8 @@ export const StoData: Horizon = {
       }
     ],
   },
-  Later: {
-    description: "Q2 2025+, May 2025 & Beyond",
+  Next: {
+    description: "Q2 2025, May 2025 - July 2025",
     feature: [
       {
         tag: [{ value: "Integration" }, { value: "Crowdstrike"}],
@@ -75,19 +65,34 @@ export const StoData: Horizon = {
         description: "Native integration with Crowdstrike.",
       },
       {
-        tag: [{ value: "AppSec" }],
-        title: "Custom Severity",
-        description: "Allow users to adjust vulnerability severity with justification.",
-      },
-      {
         tag: [{ value: "EPSS" }],
         title: "Exploit Protection Scoring System (EPSS)",
         description: "Provide EPSS score additional to CVSS score for better vulnerability prioritization.",
       },
       {
-        tag: [{ value: "Data Handling" }],
-        title: "Target Deletion",
-        description: "Allows deletion of unwanted targets/artifacts vulnerability data to reduce noise.",
+        tag: [{ value: "Visibility" }, { value: "AppSec" }],
+        title: "Issues List - Org/Account",
+        description: "Centralized, prioritized vulnerability list for AppSec persona at Org/Account scope.",
+      },
+      {
+        tag: [{ value: "UX Enhancement" }, { value: "Developer Productivity" }],
+        title: "Security Test page",
+        description: "Revamp the UX of the Security Test page.",
+      }
+    ],
+  },
+  Later: {
+    description: "Q3 2025+, Aug 2025 & Beyond",
+    feature: [
+      {
+        tag: [{ value: "Platform" }, { value: "Cross Module" }],
+        title: "Target view",
+        description: "Provides insights on vulnerability, external policy failures, code coverage, etc. for a target, in addition to the current pipeline view.",
+      },
+      {
+        tag: [{ value: "AppSec" }],
+        title: "Custom Severity",
+        description: "Allow users to adjust vulnerability severity with justification.",
       },
       {
         tag: [{ value: "Platform" }, { value: "Cross Module" }],
@@ -100,9 +105,9 @@ export const StoData: Horizon = {
         description: "A new Get Started workflow to onboard third-party integrations - Github Actions, Jenkins, GitLab.",
       },
       {
-        tag: [{ value: "Remediation" }, { value: "Integration" }],
-        title: "Remediation Tracker for Vulnerabilities",
-        description: "Enhances the remediation workflow to seamlessly integrate with ticketing services and notification channels.",
+        tag: [{ value: "Integration" }, { value: "ServiceNow" }],
+        title: "Exemption Management via ServiceNow",
+        description: "Add ServiceNow integration for the exemption mamnagement workflow.",
       },
       {
         tag: [{ value: "Data Handling" }],
@@ -143,6 +148,11 @@ export const StoData: Horizon = {
         tag: [{ value: "Pipeline, Artifact Scanning" }],
         title: "Local Tar/Archive Scan",
         description: "Scan local tar bundles and Docker/OCI archives directly in pipelines.",
+      },
+      {
+        tag: [{ value: "Platform" }, { value: "Governance"}],
+        title: "Detection of New Occurrences",
+        description: "Behind FF: Identifies and governs new occurrences of existing vulnerabilities.",
       } 
     ],
   },
