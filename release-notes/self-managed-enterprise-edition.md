@@ -303,7 +303,6 @@ Unified:
 - AWS Billing Period End Date
 - AWS Line Item Type
 
-We have also  fixed the discount calculations in costs for December 2024 to June 2025 for CBP to ensure accurate cost representation. (**CCM-21714**)
 
 ## Mar 04, 2025, Patch Version 0.26.2 <!-- Draft : Mar 04, 2025 -->
 
