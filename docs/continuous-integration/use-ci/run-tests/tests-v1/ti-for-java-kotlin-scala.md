@@ -18,6 +18,9 @@ While **Run Tests** step remains backwards compatible, Harness recommends using 
 :::
 
 ## Enable TI for Java, Kotlin, or Scala
+:::note
+Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
+:::
 
 You can enable TI for Java, Kotlin, or Scala in three steps:
 

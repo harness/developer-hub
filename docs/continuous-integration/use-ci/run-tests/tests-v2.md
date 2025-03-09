@@ -18,12 +18,12 @@ If this feature is not yet enabled in your account, please reach out to [Harness
 :::
 
 
-:::info
+:::note
 
-To use TI for Python, your codebase must be Python 3.
+* Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
+* To use TI for Python, the image for the step must have Python 3 installed and accessible. Additionally, Virtual Environments for Python (`venv`) are not supported by TI.
 
 :::
-
 
 ## Configure the Test step
 

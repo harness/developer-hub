@@ -1,5 +1,5 @@
 ---
-title: State migration
+title: State Migration
 description: Learn how to migrate and import infrastructure state in Harness IaCM workspaces.
 sidebar_position: 20
 ---

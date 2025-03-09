@@ -2,55 +2,64 @@ import { Horizon } from "./roadmapData";
 
 export const SeiData: Horizon = {
   Now: {
-    description: "Q3, 2024, Aug - Oct 2024",
+    description: "Q1, Feb 2025 - Apr 2025",
     feature: [
       {
       tag: [{ value: "Enhanced Insigths" }],
-      title: "Panorama Insight Dashboards (Beta)",
-      description: "Provide organization-wide and holistic insights for executives to have a comprehensive view of productivity, efficiency, and developer experience."
+      title: "Epic Insights (GA)",
+      description: "Empowers Engineering Managers / Project Managers to actively track the progress and health of planned epics / initiatives / tactics."
       },
       {
-      tag: [{ value: "Enhanced Insigths" }],
+      tag: [{ value: "AI" }, { value: "Enhanced Insigths" }],
       title: "AI Productivity Insights (Beta)",
       description: "Measure the impact of AI code assistant tools on developers' velocity and code quality."
       },
       {
-        tag: [{ value: "Data Accuracy" }],
-        title: "Built-in Data Ingestion Monitoring and Validation",
-        description: "Monitor and validate data ingestion inside the product, allowing customers to monitor the data ingestion, proactively notify potential issues, and run spot checks for specific data points.",
+        tag: [{ value: "Integrations" }],
+        title: "ServiceNow Integration (GA)",
+        description: "ServiceNow Integration to tie incident and change request data with DORA metrics.",
       },
       {
-        tag: [{ value: "Easy Adoption" }],
-        title: "Automated Identity Consolidation",
-        description: "Streamline management of identities from integrations and contributors in SEI. This new flow reduces the integration onboarding time and simplifies the complexity for customers to manage the identity to contributor matches.",
+        tag: [{ value: "Integrations" }],
+        title: "Granular scoping of Integrations",
+        description: "Improved ability to more granularly scope integrations such as GitGub, Harness CI/CD. E.g. GitHub Integration can be scoped down by org, repos, teams, etc.",
       },
     ],
   },
 
   Next: {
-    description: "Q4, 2024, Nov 2024 - Jan 2025",
+    description: "Q2, May 2025 - Jul 2025",
     feature: [
       {
-        tag: [{ value: "Easy Adoption" }],
-        title: "Automated Collection Builder",
-        description: "Automate and accelerate collection creation and simplify collection maintenance.",
+        tag: [{ value: "User Experience" }, { value: "New Features" }],
+        title: "SEI 2.0",
+        description: "SEI 2.0 brings a modern UX to enable executive insights with team level actionability. SEI 2.0 will bring new collection tree navigation with support for Efficiency / Productivity / Business Alignment tracking for all teams (with Histoirical Trends).",
       },
       {
-        tag: [{ value: "Enhanced Insights" }],
-        title: "Team Transformation and OKR Tracking",
-        description: "Track transformation and OKR for each team, providing a clear view of progress and identifying areas to improve.",
+        tag: [{ value: "AI" }, { value: "Enhanced Insights" }],
+        title: "AI Productivity Insights (GA)",
+        description: "Measure the impact of AI code assistant tools on developers' velocity and code quality.",
       },
       {
-        tag: [{ value: "Enhanced Insights" }],
-        title: "DORA Enhancement",
-        description: "Enhance the correlation in DORA.",
+        tag: [{ value: "Integrations" }],
+        title: "Workday Integration (GA)",
+        description: "Workday Integration will enable seamless onboarding of teams to SEI 2.0.",
       },
-	  
+      {
+        tag: [{ value: "Onboarding" }],
+        title: "New SEI 2.0 Onoarding",
+        description: "New SEI 2.0 onboarding will directly integrate with HRIS systems, to automate collection tree building, while making maintenance automated.",
+      },
+      {
+        tag: [{ value: "Harness Platform" }],
+        title: "Support for Harness Delegates",
+        description: "SEI integrations that require an agent can now leverage Harness Delegates, commonly deployed at all existing Harness customers.",
+      },
      ],
   },
   
   Later: {
-    description: "Q1 2025+, Feb 2025 & beyond",
+    description: "Aug 2025 & Beyond",
     feature: [
       {
         tag: [{ value: "Enhanced Insights" }, { value: "AIDA"}],

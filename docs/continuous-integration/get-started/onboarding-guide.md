@@ -48,7 +48,7 @@ Explore the documentation to learn what your Harness CI pipelines can do.
 
 :::tip
 
-With Harness CI, you can build and test code in any language. For guidance on some popular languages and platforms, check out the [CI development guides](/docs/category/development-guides).
+With Harness CI, you can build and test code in any language. For guidance on some popular languages and platforms, check out the [CI development guides](/docs/category/tutorials-and-code-samples).
 
 :::
 

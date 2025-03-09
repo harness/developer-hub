@@ -15,7 +15,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
     description: "Build faster and be more productive.",
-    link: "docs/category/get-started-with-ci",
+    link: "docs/continuous-integration/get-started/onboarding-guide",
   },
   {
     title: "Store Artifacts",
@@ -89,10 +89,10 @@ export const featureList: CardItem[] = [
     link: "docs/category/get-started-with-srm",
   },
   {
-    title: "Run Chaos Experiments",
+    title: "Resilience Testing",
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
-    description: <>Ensure application and infrastructure resilience.</>,
+    description: <>Measure the resilience posture of applications.</>,
     link: "docs/chaos-engineering/getting-started/",
   },
   {

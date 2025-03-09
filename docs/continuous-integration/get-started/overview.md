@@ -66,7 +66,7 @@ This is different from the Harness Platform Cloud or Harness SaaS operations, as
 
 ## Harness CI Intelligence
 
-[Harness CI Intelligence](./harness-ci-intelligence.md) optimizes your builds by leveraging a suite of smart features including Test Intelligence, Cache Intelligence, Harness-managed Docker Layer Caching, and more.
+[Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence) optimizes your builds by leveraging a suite of smart features including Test Intelligence, Cache Intelligence, Harness-managed Docker Layer Caching, and more.
 
 ## Platform integration
 

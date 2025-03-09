@@ -442,6 +442,10 @@ For Microsoft Azure or AWS:
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
 
+## Limitations  
+
+The **Copy** command for artifacts is not supported in **WinRM deployments**. As an alternative, users can use the **Download Artifact** command.  
+
 ## FAQs
 
 For frequently asked questions about traditional deployments in Harness, go to [SSH and WinRM deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-winrm-faqs).

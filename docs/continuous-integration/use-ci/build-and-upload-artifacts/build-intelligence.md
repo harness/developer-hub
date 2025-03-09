@@ -7,7 +7,7 @@ sidebar_position: 7
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Build Intelligence is part of [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence), a suite of features in Harness CI designed to improve build times. By storing these outputs remotely and retrieving them when inputs haven't changed, Build Intelligence avoids unnecessary rebuilds, significantly accelerating the build process and enhancing efficiency.
+Build Intelligence is part of [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence), a suite of features in Harness CI designed to improve build times. By storing these outputs remotely and retrieving them when inputs haven't changed, Build Intelligence avoids unnecessary rebuilds, significantly accelerating the build process and enhancing efficiency.
 
 Build Intelligence is currently available for **Gradle** and **Bazel** build tools, with Maven support coming soon. Regardless of the programming language used in your projects, as long as you're building with a supported build tool, you can leverage Build Intelligence to optimize your builds.
 
@@ -116,4 +116,4 @@ This is currently supported with Gradle build tool only .
 
 ![Build Intelligence Savings](./static/build-intelligence-savings.png)
 
-Visit [Intelligence Savings](/docs/continuous-integration/get-started/harness-ci-intelligence#intelligence-savings) for more information.
+Visit [Intelligence Savings](/docs/continuous-integration/use-ci/harness-ci-intelligence#intelligence-savings) for more information.

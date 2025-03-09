@@ -25,6 +25,34 @@ These release notes describe recent changes to Harness Platform.
 
 ## Important feature change notice
 
+:::warning Important Update: Change in Default Container Registry for Harness Images
+
+Starting **April 1, 2025**, Docker Hub will enforce [stricter limits](https://docs.docker.com/docker-hub/usage/) on image pulls for unauthenticated and free users. This change may impact access to Harness container images.
+
+To ensure uninterrupted availability, better performance, and enhanced security, we are transitioning to **Google Artifact Registry (GAR)** as our default public registry for Harness images.
+
+**What is changing?**
+- Currently, Harness images are pulled from Docker Hub by default with anonymous access.
+- Moving forward (starting **March 24, 2025**), all Harness container images will be pulled from GAR by default to improve performance, security, and scalability.
+
+**Do you need to take action?**
+- **No immediate action is required** for most customers.
+- However, if your organization restricts access to **Google Artifact Registry (GAR)**, consider one of the following options to avoid disruptions:
+  1. Whitelist GAR to allow seamless access to Harness images.
+  2. Configure Harness to use authenticated access instead of anonymous pulls from Docker Hub.
+  3. Set up a [registry mirror](https://docs.docker.com/docker-hub/mirror/) to pull Harness images instead of relying on Docker Hub.
+  4. Continue using Docker Hub if the restrictions do not affect you. Contact [Harness Support](mailto:support@harness.io) to configure Docker Hub as the default registry.
+
+**Images moving to GAR**
+
+The following Harness images will now be pulled from GAR by default:
+- [Harness Delegate images](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types)
+- [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci)
+- [Harness STO images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images#harness-sto-images-list)
+- [Harness IDP images](https://developer.harness.io/docs/internal-developer-portal/flows/harness-pipeline/#specify-the-harness-idp-images-used-in-your-pipelines)
+
+:::
+
 :::info important
 This is a notification for a feature change aimed at enhancing your experience with Harness. Here's what you need to know:
 
@@ -78,6 +106,17 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## February 2025
+
+### Version 1.79.x <!-- February 28, 2025-->
+#### Fixed issues 
+
+- Removed the page load spinner condition to include Usage Breakdown loading status. The Usage Breakdown component now has its own loading spinner instead of displaying a loading spinner on the Subscriptions page. [PL-60615]  
+- Users will now see a clear error message when they attempt to introduce two conditions with the same name. [PL-60365]  
+
+#### New features and enhancements
+
+- For the Email channel type in CNS, emails are now optional if the user has added user groups as input. [PL-57711]
+- Added OIDC as a new authentication method, allowing [Single Sign-On (SSO) with any custom OIDC (OpenID Connect)](/docs/platform/authentication/single-sign-on-sso-with-oidc) provider. This feature is available only for accounts with Vanity URL and is behind the feature flag PL_ENABLE_OIDC_AUTHENTICATION. [PL-56480]
 
 ### Version 1.78.x <!-- February 21, 2025-->
 #### Fixed issues

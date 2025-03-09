@@ -1,5 +1,5 @@
 ---
-title: Using output parameter
+title: Output Parameters
 description: Learn how to use Terraform output variables in the pipeline
 sidebar_position: 50
 ---
