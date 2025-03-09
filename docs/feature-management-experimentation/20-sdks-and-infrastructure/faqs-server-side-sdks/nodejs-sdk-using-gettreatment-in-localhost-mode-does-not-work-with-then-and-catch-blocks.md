@@ -1,6 +1,6 @@
 ---
-title: "NodeJS SDK: Using getTreatment() in localhost mode, does not work with then() and catch() blocks"
-sidebar_label: "NodeJS SDK: Using getTreatment() in localhost mode, does not work with then() and catch() blocks"
+title: "Node.js SDK: Using getTreatment() in localhost mode, does not work with then() and catch() blocks"
+sidebar_label: "Node.js SDK: Using getTreatment() in localhost mode, does not work with then() and catch() blocks"
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 3
@@ -12,7 +12,7 @@ sidebar_position: 3
 
 ## Issue
 
-When implementing NodeJS SDK with Redis storage, the getTreatment method is a wrapper for redis fetch call which returns a promise, which works fine with then() and catch() blocks.
+When implementing Node.js SDK with Redis storage, the getTreatment method is a wrapper for redis fetch call which returns a promise, which works fine with then() and catch() blocks.
 
 However, testing the SDK code in localhost mode below:
 

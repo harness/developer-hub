@@ -31,7 +31,7 @@ Error: ENOENT: no such file or directory, open '/Users/[USER_NAME]/projects/[PRO
 ## Answer
 
 The way Polymer is performing the build differs significantly from webpack and other bundlers that can recognize the right path for an isomorphic app.
-Polymer is trying to load the Node code path of the SDK, which in turn tries to import the events module from NodeJS.
+Polymer is trying to load the Node code path of the SDK, which in turn tries to import the events module from Node.js.
 
 Taking a look to what's on node_modules\@splitsoftware\splitio folder, you'll see a few package.json files with this format:
 
@@ -42,6 +42,6 @@ Taking a look to what's on node_modules\@splitsoftware\splitio folder, you'll se
 }
 ```
 
-What we do there is tell NodeJS to just run the Node version of that module (the main field), while we tell bundlers to use the "Browser version".
+What we do there is tell Node.js to just run the Node version of that module (the main field), while we tell bundlers to use the "Browser version".
 
 If the plan is to implement the JS SDK in both server and browser modes, make sure to set the browser and main values to the corresponding js code.

@@ -1,6 +1,6 @@
 ---
-title: How to deploy NodeJS SDK in AWS Lambda
-sidebar_label: How to deploy NodeJS SDK in AWS Lambda
+title: How to deploy Node.js SDK in AWS Lambda
+sidebar_label: How to deploy Node.js SDK in AWS Lambda
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 7
@@ -12,7 +12,7 @@ sidebar_position: 7
 
 ## Question
 
-How to deploy NodeJS SDK code in AWS Lambda service?
+How to deploy Node.js SDK code in AWS Lambda service?
 
 ## Answer
 
@@ -21,7 +21,7 @@ Prerequisites:
 1. We will use similar code to the Javascript SDK example code in this [KB Link](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/Javascript-SDK). Go ahead and download the example and make sure it runs successfully.
 2. AWS Lambda supports Node 10.x as of writing this article, make sure to use that version.
 
-Follow these steps to run NodeJS SDK as a Lambda Function:
+Follow these steps to run Node.js SDK as a Lambda Function:
 
 1. Create a node project and add the `index.js` file with the content below, make sure to replace the SDK API KEY, USER ID, and SPLIT NAME with corresponding value from your environment.
 

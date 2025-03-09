@@ -18,7 +18,7 @@ Shared Client not supported by the storage mechanism. Create isolated instances 
 
 ## Root cause
 
-When using Jest for testing applications, Jest runs in NodeJS by default, and NodeJS does not support shared clients, which is why it detects the storage does not have that function.
+When using Jest for testing applications, Jest runs in Node.js by default, and Node.js does not support shared clients, which is why it detects the storage does not have that function.
 It is not possible to overwrite that method from the outside.
 
 ## Solution

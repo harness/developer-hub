@@ -1,6 +1,6 @@
 ---
-title: React Native App using Split NodeJS SDK example
-sidebar_label: React Native App using Split NodeJS SDK example
+title: React Native App using Split Node.js SDK example
+sidebar_label: React Native App using Split Node.js SDK example
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 4
@@ -37,7 +37,7 @@ When running you should see a screen like the image below (taken from an Android
 ![](https://help.split.io/hc/article_attachments/360057415851/mobile_screenshot.png)
 
 ## Prerequisites
-You'll need [NodeJS](https://nodejs.org/en/download/). We recommend that you use the latest LTS version.
+You'll need [Node.js](https://nodejs.org/en/download/). We recommend that you use the latest LTS version.
 
 Second thing you'll need is to install [Expo-CLI](https://expo.io/) with the command `npm install -g expo-cli`.
 

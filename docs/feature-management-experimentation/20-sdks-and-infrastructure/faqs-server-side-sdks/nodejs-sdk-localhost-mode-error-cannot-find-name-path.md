@@ -1,6 +1,6 @@
 ---
-title: "NodeJS SDK: While using Localhost mode, error generated: Cannot find name 'path'"
-sidebar_label: "NodeJS SDK: While using Localhost mode, error generated: Cannot find name 'path'"
+title: "Node.js SDK: While using Localhost mode, error generated: Cannot find name 'path'"
+sidebar_label: "Node.js SDK: While using Localhost mode, error generated: Cannot find name 'path'"
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 4
