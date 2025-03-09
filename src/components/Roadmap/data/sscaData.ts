@@ -91,8 +91,8 @@ export const SscaData: Horizon = {
       },
       {
         tag: [],
-        title: "UX Enhancements",
-        description: "Improving search, filtering across product pages and overall user experience.",
+        title: "Global Level View",
+        description: "Gain complete visibility into all artifact and code repositories across projects, along with their associated findings, in a unified account-level view.",
       },
       {
         tag: [],
@@ -101,13 +101,8 @@ export const SscaData: Horizon = {
       },
       {
         tag: [],
-        title: "Support for Gitlab & CircleCI",
-        description: "Complete support for GitLab, allowing users to onboard GitLab repositories and perform configuration checks, SBOM generation, and security scans.",
-      },
-      {
-        tag: [],
-        title: "mTLS support for SCS plugins",
-        description: "mTLS support for SCS plugin to ensure secure communication with Harness services.",
+        title: "Support for Gitlab & Bitbucket",
+        description: "Complete support for GitLab and Bitbucket, allowing users to onboard repositories and perform configuration checks, SBOM generation, and security scans.",
       },
       {
         tag: [],
@@ -143,6 +138,16 @@ export const SscaData: Horizon = {
         tag: [],
         title: "Remediation Tracker",
         description: "Assign vulnerabilities & compliance issues to developers using remediation tracker to track across different types of target (Artifact, CI/CD, Repos).",
+      },
+      {
+        tag: [],
+        title: "Exemption Management",
+        description: "Manage exemptions for risk and compliance issues across all targets (Artifact, CI/CD, Repos).",
+      },
+      {
+        tag: [],
+        title: "Automate OSS Dependency Updates with Harness AI",
+        description: "Leverage Harness AI to automatically generate PRs for updating outdated dependencies.",
       },
     ],
   },
