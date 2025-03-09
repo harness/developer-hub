@@ -12,7 +12,7 @@ sidebar_position: 8
 
 ##Problem
 
-When using Split SDK and calling getTreatment for a list of feature flags names, there are lot of errors raised as below
+When using an FME SDK and calling getTreatment for a list of feature flags names, there are lot of errors raised as below
 
 ```
 admin     10 May 2019, 18:10:12    2019-05-10T17:10:12,445 ERROR [admin] [f0f338a964a0e3e1/07cfe07d08568096] [SplitClientImpl:256] - getTreatment: you passed "SPLIT NAME" that does not exist in this environment, please double check what Splits exist in the web console.

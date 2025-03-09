@@ -1,6 +1,6 @@
 ---
-title: Using SDK with Synchronizer docker, getTreatment is always returning 'control'
-sidebar_label: Using SDK with Synchronizer docker, getTreatment is always returning 'control'
+title: Using FME SDK with Synchronizer docker, getTreatment is always returning 'control'
+sidebar_label: Using FME SDK with Synchronizer docker, getTreatment is always returning 'control'
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 6

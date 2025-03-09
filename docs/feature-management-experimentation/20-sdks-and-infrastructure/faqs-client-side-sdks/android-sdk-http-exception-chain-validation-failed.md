@@ -12,7 +12,7 @@ sidebar_position: 18
 
 ## Issue
 
-When running Android app in Emulator, Split Android SDK shows the error below right after initialization:
+When running Android app in Emulator, Android SDK shows the error below right after initialization:
 ```
 io.split.android.client.network.HttpException: HttpException: Error serializing request body: Chain validation failed
 ```

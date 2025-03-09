@@ -12,7 +12,7 @@ sidebar_position: 16
 
 ## Issue
 
-Under the hood, Split SDK has a hashing algorithm that divides users across treatments. For example, given a 50/50 split between two treatments (e.g., on and off), the hashing algorithm decides which user is in the on treatment and which one is in the off treatment.
+Under the hood, Ruby SDK has a hashing algorithm that divides users across treatments. For example, given a 50/50 split between two treatments (e.g., on and off), the hashing algorithm decides which user is in the on treatment and which one is in the off treatment.
 
 Split has used two hashing algorithms:
 * Legacy Hash (or Algorithm 1). This is simple implementation that is optimized for speed, but suffers from uneven distributions when you have < 100 users.

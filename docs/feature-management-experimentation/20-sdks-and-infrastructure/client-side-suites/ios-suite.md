@@ -9,9 +9,9 @@ helpdocs_is_published: true
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite </button>
 </p>
 
-This guide provides detailed information about our iOS Suite, an SDK designed to harness the full power of Split. The iOS Suite is built on top of the [iOS SDK](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK) and the [iOS RUM Agent](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent), offering a unified solution, optimized for iOS development.
+This guide provides detailed information about our iOS Suite, an SDK designed to leverage the full power of FME. The iOS Suite is built on top of the [iOS SDK](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK) and the [iOS RUM Agent](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent), offering a unified solution, optimized for iOS development.
 
-The Suite provides the all-encompassing essential programming interface for working with your Split feature flags, as well as capabilities for automatically tracking performance measurements and user events. Code currently using iOS SDK or iOS RUM Agent can be easily upgraded to iOS Suite, which is designed as a drop-in replacement.
+The Suite provides the all-encompassing essential programming interface for working with your FME feature flags, as well as capabilities for automatically tracking performance measurements and user events. Code currently using iOS SDK or iOS RUM Agent can be easily upgraded to iOS Suite, which is designed as a drop-in replacement.
 
 ## Language support
 
@@ -19,11 +19,11 @@ This library is designed for iOS applications written in Swift and is compatible
 
 ## Initialization
 
-Set up Split in your code base with the following two steps:
+Set up FME in your code base with the following two steps:
 
 ### 1. Import the Suite into your project
 
-Add the Split SDK, Split RUM agent, and Split Suite into your project using Swift Package Manager by adding the following package dependencies:
+Add the SDK, Split RUM agent, and Split Suite into your project using Swift Package Manager by adding the following package dependencies:
 
 - [iOS SDK] (https://github.com/splitio/ios-client), latest version `3.0.0`
 - [iOS RUM](https://github.com/splitio/ios-rum), latest version `0.4.0`
@@ -48,7 +48,7 @@ Then import the Suite in your code.
 import iOSSplitSuite
 ```
 
-### 2. Instantiate the Suite and create a new Split client
+### 2. Instantiate the Suite and create a new SDK client
 
 In your code, instantiate the Suite client as shown below.
 
@@ -56,7 +56,7 @@ In your code, instantiate the Suite client as shown below.
 // Create default Suite configuration
 let config = SplitSuiteConfig()
 
-// Split SDK key
+// SDK key
 let sdkKey = "YOUR_SDK_KEY"
 let matchingKey = Key(matchingKey: "key")
 
@@ -71,10 +71,10 @@ let client = suite?.client;
 ```
 
 :::info[Important]
-If you are upgrading from Split's iOS RUM Agent to iOS Suite and you have setup or config information for the iOS RUM Agent in the `SplitRumAgent-Info.plist`, then this information will be overridden by the Suite initialization. That is why we recommended that you remove this information from that file when upgrading.
+If you are upgrading from FME's iOS RUM Agent to iOS Suite and you have setup or config information for the iOS RUM Agent in the `SplitRumAgent-Info.plist`, then this information will be overridden by the Suite initialization. That is why we recommended that you remove this information from that file when upgrading.
 :::
 
-When the Suite is instantiated, it starts synchronizing feature flag and segment definitions from Split servers, and also starts collecting performance and user events for the configured key and its optional traffic type (which if not set, defaults to `'user'`).
+When the Suite is instantiated, it starts synchronizing feature flag and segment definitions from Harness servers, and also starts collecting performance and user events for the configured key and its optional traffic type (which if not set, defaults to `'user'`).
 
 We recommend instantiating the Suite once as a singleton and reusing it throughout your application.
 
@@ -84,7 +84,7 @@ Configure the Suite with the SDK key for the Split environment that you would li
 
 ### Basic use
 
-When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Split servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
 
 To make sure the Suite is properly loaded before asking it for a treatment, block until the Suite is ready, as shown below. We set the client to listen for the `SDK_READY` event triggered by the Suite before asking for an evaluation.
 
@@ -189,7 +189,7 @@ let result = client.clearAttributes()
 
 ### Multiple evaluations at once
 
-In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` method of the Split client to do this.
+In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` method of the SDK client to do this.
 * `getTreatments`: Pass a list of the feature flag names you want treatments for.
 * `getTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the Suite instance.
 * `getTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the Suite instance.
@@ -265,7 +265,7 @@ The `client.track()` method sends events **_for the identity configured on the c
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`.
 * **VALUE:** (Optional) The value used in creating the metric. This field can be sent in as nil or 0 if you intend to only use the count function when creating a metric. The expected data type is `Double`.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. Split currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `suite.track()` method sends events **_for all the identities_** configured on all instances of the Suite clients. For those clients that have not been configured with a traffic type, this `track` method uses the default traffic type `user`. This `track` method can take up to three of the four arguments described above: `EVENT_TYPE`, `VALUE`, and `PROPERTIES`.
 
@@ -308,7 +308,7 @@ let resp = suite.track(eventType: "page_load_time", proerties: properties)
 
 ```
 
-The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event sent back to Split's servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method is provided.
+The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event sent back to Harness servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method is provided.
 
 ### Shutdown
 
@@ -341,16 +341,16 @@ Feature flagging parameters:
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- |
-| featuresRefreshRate | The Suite polls Split servers for changes to feature flags at this rate (in seconds). | 3600 seconds (1 hour) |
-| segmentsRefreshRate | The Suite polls Split servers for changes to segments at this rate (in seconds). | 1800 seconds (30 minutes) |
-| impressionRefreshRate | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Split servers. This configuration controls how quickly the cache expires after a write (in seconds). | 1800 seconds (30 minutes) |
+| featuresRefreshRate | The Suite polls Harness servers for changes to feature flags at this rate (in seconds). | 3600 seconds (1 hour) |
+| segmentsRefreshRate | The Suite polls Harness servers for changes to segments at this rate (in seconds). | 1800 seconds (30 minutes) |
+| impressionRefreshRate | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Harness servers. This configuration controls how quickly the cache expires after a write (in seconds). | 1800 seconds (30 minutes) |
 | impressionsQueueSize | Default queue size for impressions. | 30K |
-| eventsPushRate | When using `.track`, how often the events queue is flushed to Split servers. | 1800 seconds|
+| eventsPushRate | When using `.track`, how often the events queue is flushed to Harness servers. | 1800 seconds|
 | eventsPerPush | Maximum size of the batch to push events. | 2000 |
 | eventsFirstPushWindow | Amount of time to wait for the first flush. | 10 seconds |
 | eventsQueueSize | When using `.track`, the number of **events** to be kept in memory. | 10000 |
 | trafficType | (optional) The default traffic type for events tracked using the `track` method. If not specified, every `track` call should specify a traffic type. | not set |
-| telemetryRefreshRate | The Suite caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers (in seconds). | 3600 seconds (1 hour) |
+| telemetryRefreshRate | The Suite caches diagnostic data that it periodically sends to Harness servers. This configuration controls how frequently this data is sent back to Harness servers (in seconds). | 3600 seconds (1 hour) |
 | logLevel | Enables logging according to the level specified. Options are `NONE`, `VERBOSE`, `DEBUG`, `INFO`, `WARNING`, and `ERROR`. | `NONE` |
 | synchronizeInBackground | Activates synchronization when application host is in background. | `false` |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism when in foreground. In the event of an issue with streaming, the Suite falls back to the polling mechanism. If false, the Suite polls for changes as usual without attempting to use streaming. | `true` |
@@ -369,7 +369,7 @@ Suite RUM agent parameters:
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- |
-| prefix | Optional prefix to append to the `eventTypeId` of the events sent to Split by the Suite RUM agent. For example, if you set the prefix to 'my-app', the event type 'error' will be sent as 'my-app.error'. | `nil` |
+| prefix | Optional prefix to append to the `eventTypeId` of the events sent to Harness by the Suite RUM agent. For example, if you set the prefix to 'my-app', the event type 'error' will be sent as 'my-app.error'. | `nil` |
 
 Shared parameters:
 
@@ -381,7 +381,7 @@ To set each of the parameters defined above, use the following syntax:
 ```swift title="Swift"
 import Split
 
-// Your Split SDK key
+// Your SDK key
 let sdkKey: String = "YOUR_SDK_KEY"
 
 //User Key
@@ -407,7 +407,7 @@ let client = factory?.client
 
 ## Localhost mode
 
-For testing, a developer can put code behind feature flags on their development machine without the Suite requiring network connectivity. To achieve this, you can start the Suite in **localhost** mode (aka, off-the-grid mode). In this mode, the Suite neither polls or updates Split servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the feature flags. To use the Suite in localhost mode, replace the SDK Key with `localhost`, as shown in the example below.
+For testing, a developer can put code behind feature flags on their development machine without the Suite requiring network connectivity. To achieve this, you can start the Suite in **localhost** mode (aka, off-the-grid mode). In this mode, the Suite neither polls or updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the feature flags. To use the Suite in localhost mode, replace the SDK Key with `localhost`, as shown in the example below.
 
 The format for defining the definitions is as follows:
 
@@ -436,7 +436,7 @@ In the example above, we have four entries:
 In this mode, the Split Suite loads the yaml file from a resource bundle file at the assets' project `src/main/assets/splits.yaml`.
 
 ```swift title="Swift"
-// Split SDK key must be "localhost"
+// SDK key must be "localhost"
 let apiKey: String = "localhost"
 let key: Key = Key(matchingKey: "key")
 let config = SplitClientConfig()
@@ -453,7 +453,7 @@ FEATURE_FLAG_NAME TREATMENT
 You can update feature flag definitions programmatically by using the `updateLocalhost` method, as shown below.
 
 ```swift title="Swift"
-// Split SDK key must be "localhost"
+// SDK key must be "localhost"
 let apiKey: String = "localhost"
 let key: Key = Key(matchingKey: "key")
 let config = SplitClientConfig()
@@ -486,7 +486,7 @@ By enabling debug mode, the *localhost* file location is logged to the console, 
 
 ## Manager
 
-Use the Split Manager to get a list of feature flags available to the Split client.
+Use the Split Manager to get a list of feature flags available to the SDK client.
 
 To instantiate a Manager in your code base, use the same factory that you used for your client.
 
@@ -552,7 +552,7 @@ public class SplitView: NSObject, Codable {
 
 ## Listener
 
-Split Suite sends impression data back to Split servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression handler*.
+Split Suite sends impression data back to Harness servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression handler*.
 
 The Suite sends the generated impressions to the impression handler right away. As a result, be careful while implementing handling logic to avoid blocking the main thread. Generally speaking, you should create a separate thread to handle incoming impressions. Refer to the snippet below.
 
@@ -598,7 +598,7 @@ In regards with the data available here, refer to the `impression` objects inter
 
 ## Flush
 
-The flush() method sends the data stored in memory (impressions and events) to Split cloud and clears the successfully posted data. If a connection issue is experienced, the data will be sent on the next attempt.
+The flush() method sends the data stored in memory (impressions and events) to Harness FME servers and clears the successfully posted data. If a connection issue is experienced, the data will be sent on the next attempt.
 
 ```swift title="Swift"
 client.flush()
@@ -698,8 +698,8 @@ While the Suite does not put any limitations on the number of `SplitFactory` ins
 You can listen for four different events from the Suite.
 
 * `sdkReadyFromCache`: This event fires once the Suite is ready to evaluate treatments using a locally cached version of your rollout plan from a previous session (which might be stale). If there is data in the cache, this event fires almost immediately, since access to the cache is fast; otherwise, it doesn't fire.
-* ` sdkReady`: This event fires once the Suite is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Split servers.
-* ` sdkReadyTimedOut`: This event fires if there is no cached version of your rollout plan in disk cache, and the Suite could not fully download the data from Split servers within the time specified by the `sdkReadyTimeOut` property of the `SplitClientConfig` object. This event does not indicate that the Suite initialization was interrupted. The Suite continues downloading the rollout plan and fires the `sdkReady` event when finished.  This delayed `sdkReady` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* ` sdkReady`: This event fires once the Suite is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
+* ` sdkReadyTimedOut`: This event fires if there is no cached version of your rollout plan in disk cache, and the Suite could not fully download the data from Harness servers within the time specified by the `sdkReadyTimeOut` property of the `SplitClientConfig` object. This event does not indicate that the Suite initialization was interrupted. The Suite continues downloading the rollout plan and fires the `sdkReady` event when finished.  This delayed `sdkReady` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `sdkUpdated`: This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in the Split user interface.
 
 Split Suite event handling is done through the `on(event:execute:)` function, which receives a closure as an event handler. The code within the closure is executed on the main thread. For that reason, running code in the background must be done explicitly.
@@ -768,13 +768,13 @@ let suite = DefaultSplitSuite
 
 ### User consent
 
-By default the Suite will send events to Split cloud, but you can disable this behavior until user consent is explicitly granted.
+By default the Suite will send events to Harness FME servers, but you can disable this behavior until user consent is explicitly granted.
 
 The `userConsent` configuration parameter lets you set the initial consent status of the Suite, and the `suite.setUserConsent(boolean)` method lets you grant (enable) or decline (disable) dynamic event tracking.
 
 There are three possible initial states:
- * `'GRANTED'`: The user grants consent for tracking events and impressions. The SDK sends them to Split cloud. This is the default value if `userConsent` param is not defined.
- * `'DECLINED'`: The user declines consent for tracking events and impressions. The SDK does not send them to Split cloud.
+ * `'GRANTED'`: The user grants consent for tracking events and impressions. The SDK sends them to Harness FME servers. This is the default value if `userConsent` param is not defined.
+ * `'DECLINED'`: The user declines consent for tracking events and impressions. The SDK does not send them to Harness FME servers.
  * `'UNKNOWN'`: The user neither grants nor declines consent for tracking events and impressions. The SDK tracks them in its internal storage, and eventually either sends them or not if the consent status is updated to `'GRANTED'` or `'DECLINED'` respectively.
 
 The status can be updated at any time with the `setUserConsent` factory method.
@@ -784,11 +784,11 @@ Working with user consent is demonstrated below.
 ```swift title="User consent: Initial config, getter and setter"
   // Overwrites the initial consent status of the Suite instance, which is 'GRANTED' by default.
   // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
-  // so the Suite locally tracks data but not send it to Split cloud until consent is changed to 'GRANTED'.
+  // so the Suite locally tracks data but not send it to Harness FME servers until consent is changed to 'GRANTED'.
   let sdkConfig = SplitClientConfig()
   sdkConfig.userConsent = .unknown
 
-  // Split SDK key
+  // SDK key
   let sdkKey = "YOUR_SDK_KEY"
   let matchingKey = Key(matchingKey: "key")
 
@@ -798,9 +798,9 @@ Working with user consent is demonstrated below.
     .key(matchingKey)
     .config(sdkConfig).build()
 
-  // Changed User Consent status to 'GRANTED'. Data will be sent to Split cloud.
+  // Changed User Consent status to 'GRANTED'. Data will be sent to Harness FME servers.
   suite.setUserConsent(enabled: true);
-  // Changed User Consent status to 'DECLINED'. Data will not be sent to Split cloud.
+  // Changed User Consent status to 'DECLINED'. Data will not be sent to Harness FME servers.
   suite.setUserConsent(enabled: false);
 
   // The 'getUserConsent' method returns User Consent status.
@@ -844,7 +844,7 @@ certBuilder.certificatePinningConfig { host in
   print("Failed validation for host \(host)")
 }
 
-// Set the CertificatePinningConfig property for the Split client configuration
+// Set the CertificatePinningConfig property for the SDK client configuration
 let config = SplitClientConfig()
 config.certificatePinningConfig = certBuilder.build()
 // you can add other configuration properties here

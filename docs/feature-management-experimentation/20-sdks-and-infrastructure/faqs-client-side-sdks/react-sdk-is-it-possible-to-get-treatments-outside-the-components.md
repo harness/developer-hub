@@ -12,7 +12,7 @@ sidebar_position: 5
 
 ## Question
 
-Using the React SDK, is it possible to get Split treatments through JavaScript code in addition to using the SDK React components? 
+Using the React SDK, is it possible to get feature flag treatments through JavaScript code in addition to using the SDK React components? 
 
 ## Answer
 

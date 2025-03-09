@@ -14,7 +14,7 @@ sidebar_position: 2
 
 JavaScript, React, Redux, and Browser SDKs use features config parameter to set the feature flags and treatments names, however, it does not support adding Allowlist keys in the property.
 
-How can we mimic allowing keys to get certain treatments similar to the yaml file structure used for  Server side SDKs?
+How can we mimic allowing keys to get certain treatments similar to the yaml file structure used for  server-side SDKs?
 
 ## Answer
 

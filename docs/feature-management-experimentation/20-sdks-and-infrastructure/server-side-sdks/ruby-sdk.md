@@ -36,15 +36,15 @@ gem install splitclient-rb -v '~> 8.5.0'
 Since version 2.0.0 of the split-synchronizer, we use a more efficient scheme to store impressions in Redis. This approach is faster and easier on your Redis instances, since it yields better throughput of impressions to the backend. If you use this SDK with the Synchronizer in Redis or Proxy mode, you need the newest versions of our Split Synchronizer. We recommend that once you're using SDK versions compatible with Split-Sync 2.0 on all your applications pointing to the redis instance maintained by the Split-Sync, you disable backwards compatibility. This is as easy as changing a parameter to `true` on the JSON config or an environment variable to `on` if you're using the docker image.
 :::
 
-### 2. Instantiate the SDK and create a new Split client
+### 2. Instantiate the SDK and create a new SDK factory client
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Split servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
 
-To make sure the SDK is properly loaded before asking it for a treatment, block it until the SDK is ready. You can do this by using the `block_until_ready` method of the Split Client (or Manager) as part of the instantiation process of the SDK as shown below. Do this as a part of the startup sequence of your application.
+To make sure the SDK is properly loaded before asking it for a treatment, block it until the SDK is ready. You can do this by using the `block_until_ready` method of the SDK factory client (or Manager) as part of the instantiation process of the SDK as shown below. Do this as a part of the startup sequence of your application.
 
-We recommend instantiating the Split factory once as a singleton and reusing it throughout your application.
+We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the Split environment that you would like to access. The SDK key is available in the Split user interface, on your Admin settings page, API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ```ruby title="Ruby" 
 require 'splitclient-rb'
@@ -68,7 +68,7 @@ split_factory = SplitIoClient::SplitFactory.new('YOUR_SDK_KEY')
 Rails.configuration.split_client = split_factory.client
 ```
 
-To access the SDK client in your controllers, use the code snippet below:
+To access the SDK factory client in your controllers, use the code snippet below:
 
 ```ruby title="Ruby" 
 Rails.application.config.split_client
@@ -78,7 +78,7 @@ Now you can start asking the SDK to evaluate treatments for your customers.
 
 ### SDK Server Compatibility
 
-The Split Ruby SDK has been tested as a standalone app using the following web servers:
+The Ruby SDK has been tested as a standalone app using the following web servers:
 * Puma
 * Passenger
 * Unicorn
@@ -89,7 +89,7 @@ For other setups, contact [support@split.io](mailto:support@split.io).
 
 **Note:** This is only applicable when using "memory storage".
 
-During the start of your application, the SDK spawns multiple threads. Each thread has an infinite loop inside, which is used to fetch feature flags/segments or send impressions/events to the Split service continuously. When using Unicorn or Puma in cluster mode (i.e. with `workers` > 0) the application server will spawn multiple child processes, but they won't recreate the threads that existed in the parent process. So, if your application is running in Unicorn or Puma in cluster mode you need to make two small extra steps.
+During the start of your application, the SDK spawns multiple threads. Each thread has an infinite loop inside, which is used to fetch feature flags/segments or send impressions/events to the FME service continuously. When using Unicorn or Puma in cluster mode (i.e. with `workers` > 0) the application server will spawn multiple child processes, but they won't recreate the threads that existed in the parent process. So, if your application is running in Unicorn or Puma in cluster mode you need to make two small extra steps.
 
 For both servers, you need to have the following line in your `config/initializers/splitclient.rb`:
 
@@ -129,19 +129,19 @@ on_worker_boot do
 end
 ```
 
-By doing the above, the SDK recreates the threads for each new worker and prevents the master process (that doesn't handle requests) from needlessly querying the Split service.
+By doing the above, the SDK recreates the threads for each new worker and prevents the master process (that doesn't handle requests) from needlessly querying the service.
 
 :::danger[Server spawning method]
-If you are running NGINX with `thread_spawn_method = 'smart'`, use our Redis integration with the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer) or contact [support@split.io](mailto:support@split.io) for alternatives to run Split.
+If you are running NGINX with `thread_spawn_method = 'smart'`, use our Redis integration with the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer) or contact [support@split.io](mailto:support@split.io) for alternatives to run FME.
 :::
 
 ## Using the SDK
 
 ### Basic use
 
-After you instantiate the SDK client, you can start using the `get_Treatment` method of the SDK client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `KEY` attribute that corresponds to the end user that you want to serve the feature to.
+After you instantiate the SDK factory client, you can start using the `get_Treatment` method of the SDK factory client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `KEY` attribute that corresponds to the end user that you want to serve the feature to.
 
-From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in the Split user interface. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
 
 ```ruby title="Ruby" 
 ## The key here represents the ID of the user, account, etc. you're trying to evaluate a treatment for
@@ -160,7 +160,7 @@ end
 
 To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `get_treatment` method needs to be passed an attribute map at runtime.
 
-In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `get_treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `get_treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
 The `get_treatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
 
@@ -193,7 +193,7 @@ end
 
 ### Multiple evaluations at once
 
-In some instances, you may want to evaluate treatments for multiple feature flag at once. Use the different variations of `get_treatments` method from the split client to do this.
+In some instances, you may want to evaluate treatments for multiple feature flag at once. Use the different variations of `get_treatments` method from the SDK factory client to do this.
 * `get_treatments`': Pass a list of the feature flag names you want treatments for.
 * `get_treatments_by_flag_set`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
 * `get_treatments_by_flag_sets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
@@ -227,7 +227,7 @@ To [leverage dynamic configurations with your treatments](https://help.split.io/
 
 This method will return an object containing the treatment and associated configuration.
 
-The config element will be a stringified version of the configuration JSON defined in the Split user interface. If there are no configs defined for a treatment, the SDK returns `None` for the config parameter.
+The config element will be a stringified version of the configuration JSON defined in Harness FME. If there are no configs defined for a treatment, the SDK returns `None` for the config parameter.
 
 This method takes the exact same set of arguments as the standard `get_treatment` method. See below for examples on proper usage:
 
@@ -281,7 +281,7 @@ end
 
 ### Shutdown
 
-Call the `.destroy` method before letting a process using the SDK exit, as this method gracefully shuts down the Split SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
+Call the `.destroy` method before letting a process using the SDK exit, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
 
 ```ruby title="Ruby" 
 client.destroy
@@ -295,23 +295,23 @@ A call to the `destroy()` method also destroys the factory object. When creating
 
 ## Track
 
-Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Split and allows you to measure the impact of your feature flags on your users’ actions and metrics.
+Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to  and allows you to measure the impact of your feature flags on your users’ actions and metrics.
 
 [Learn more](https://help.split.io/hc/en-us/articles/360020585772) about using track events in feature flags.
 
 In the examples below, you can see that the `.track()` method can take up to four arguments. The proper data type and syntax for each are:
 
 * **key:** The `key` variable used in the `get_treatment` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Split.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value used in creating the metric. This field can be sent in as nil or 0 if you intend to only use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) A Hash of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. Split currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) A Hash of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
-The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK successfully queued the event to be sent back to Split's servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `events_queue_size` or if an incorrect input to the `track` method is provided.
+The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK successfully queued the event to be sent back to Harness servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `events_queue_size` or if an incorrect input to the `track` method is provided.
 
 In the case that a bad input has been provided, refer to the [Events](https://help.split.io/hc/en-us/articles/360020585772-Track-events) guide for more information about our SDK's expected behavior.
 
@@ -355,22 +355,22 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | transport_debug_enabled | Super verbose mode that prints network payloads among others. | false  |
 | connection_timeout| HTTP client connection timeout (in seconds). | 5s  |
 | read_timeout | HTTP socket read timeout (in seconds). | 5s  |
-| features_refresh_rate  |The SDK polls Split servers for changes to feature flags at this period (in seconds). | 5s |
-| segments_refresh_rate | The SDK polls Split servers for changes to segments at this period (in seconds). | 60s  |
-| telemetry_refresh_rate | The SDK caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers (in seconds). | 3600s  |
+| features_refresh_rate  |The SDK polls Harness servers for changes to feature flags at this period (in seconds). | 5s |
+| segments_refresh_rate | The SDK polls Harness servers for changes to segments at this period (in seconds). | 60s  |
+| telemetry_refresh_rate | The SDK caches diagnostic data that it periodically sends to Harness servers. This configuration controls how frequently this data is sent back to Harness servers (in seconds). | 3600s  |
 | impressions_refresh_rate | How often impressions are sent out (in seconds). | 60s  |
 | events_push_rate | How often events are sent out (in seconds). | 60s  |
 | cache_adapter| Where to store feature flags and impressions: `:memory` or `:redis` | `:memory`  |
 | redis_url | Redis URL or hash with configuration for SDK to connect to. See [http://www.rubydoc.info/github/redis/redis-rb/Redis%3Ainitialize](http://www.rubydoc.info/github/redis/redis-rb/Redis%3Ainitialize) | 'redis://127.0.0.1:6379/0'  |
 | mode | Whether the SDK is running in `standalone mode` using memory storage or `consumer mode` using an external storage. See Redis integration. | `:standalone`  |
 | redis_namespace | Prefix to add to elements in Redis cache when having to share Redis with other applications. | `"SPLITIO/ruby-#{VERSION}"`  |
-| labels_enabled | Disable labels from being sent to the Split backend. Labels may contain sensitive information. | true  |
+| labels_enabled | Disable labels from being sent to the Harness servers. Labels may contain sensitive information. | true  |
 | impressions_queue_size | The size of the impressions queue in case of `cache_adapter == :memory`.  | 5000 |
 | events_queue_size | The size of the events queue in case of `cache_adapter == :memory`.  | 500 |
 | impressions_bulk_size | Max number of impressions to be sent to the backend on each post. | impressions_queue_size  |
-| ip_addresses_enabled | Flag to disable IP addresses and host name from being sent to the Split backend. | true |
+| ip_addresses_enabled | Flag to disable IP addresses and host name from being sent to the Harness servers. | true |
 | streaming_enabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | true |
-| impressions_mode | Defines how impressions are queued on the SDK. Supported modes are OPTIMIZED(`:optimized`), NONE(`:none`), and DEBUG(`:debug`). In OPTIMIZED mode, only unique impressions are queued and posted to Split; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, all impressions are queued and sent to Split; this is useful for validations. Use DEBUG mode when you want every impression to be logged in Split user inferface when trying to debug your SDK setup. This setting does not impact the impression listener which receives all generated impressions locally. | `:optimized` |
+| impressions_mode | Defines how impressions are queued on the SDK. Supported modes are OPTIMIZED(`:optimized`), NONE(`:none`), and DEBUG(`:debug`). In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, all impressions are queued and sent to Harness; this is useful for validations. Use DEBUG mode when you want every impression to be logged in Harness when trying to debug your SDK setup. This setting does not impact the impression listener which receives all generated impressions locally. | `:optimized` |
 | flag_sets_filter | This setting allows the SDK to only synchronize the feature flags in the specified flag sets, avoiding unused or unwanted flags from being synced on the SDK instance, bringing all the benefits from a reduced payload. | nil |
 To set each of these parameters, use the syntax below:
 
@@ -388,11 +388,11 @@ split_client = split_factory.client
 
 **Configuring this Redis integration section is optional for most setups. Read the information below to determine if it might be useful for your project.**
 
-By default, the Split client stores the state it needs to compute treatments (rollout plans, segments, and so on) in memory. As a result, it is easy to get set up with Split by instantiating a client and starting to use it. Configuring this Redis integration section is optional for most setups.
+By default, the SDK factory client stores the state it needs to compute treatments (rollout plans, segments, and so on) in memory. As a result, it is easy to get set up with FME by instantiating a client and starting to use it. Configuring this Redis integration section is optional for most setups.
 
-This simplicity hides one important detail that is worth exploring. Because each Split client downloads and stores state separately, a change in a feature flag is picked up by every client on its own schedule. Thus, if a customer issues back-to-back requests that are served by two different machines behind a load balancer, the customer can see different treatments for the same feature flag because one Split client may not have picked up the latest change. This drift in clients is natural and usually ignorable as long as each client sets an aggressive value for `features_refresh_rate` and `segments_refresh_rate`. You can learn more about setting these rates in the [Configuration section](#configuration).
+This simplicity hides one important detail that is worth exploring. Because each SDK factory client downloads and stores state separately, a change in a feature flag is picked up by every client on its own schedule. Thus, if a customer issues back-to-back requests that are served by two different machines behind a load balancer, the customer can see different treatments for the same feature flag because one SDK factory client may not have picked up the latest change. This drift in clients is natural and usually ignorable as long as each client sets an aggressive value for `features_refresh_rate` and `segments_refresh_rate`. You can learn more about setting these rates in the [Configuration section](#configuration).
 
-However, if your application requires a total guarantee that Split clients across your entire infrastructure pick up a change in a feature flag at the exact same time, the only way to ensure that is to externalize the state of the Split client in a data store hosted on your infrastructure.
+However, if your application requires a total guarantee that SDK clients across your entire infrastructure pick up a change in a feature flag at the exact same time, the only way to ensure that is to externalize the state of the SDK factory client in a data store hosted on your infrastructure.
 
 We currently support Redis for this external data store.
 
@@ -406,7 +406,7 @@ Follow the steps in our [Split Synchronizer](https://help.split.io/hc/en-us/arti
 
 In consumer mode, a client can be embedded in your application code and respond to calls to `get_treatment` by retrieving state from the data store (Redis in this case).
 
-Here is how to configure and get treatments for a Split client in consumer mode.
+Here is how to configure and get treatments for a SDK factory client in consumer mode.
 
 ```ruby title="Ruby" 
 options = {
@@ -449,7 +449,7 @@ This functionality is currently not supported for this SDK, but is coming in a f
 
 ## Localhost mode
 
-Features start their life on one developer's machine. A developer should be able to put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the Split SDK can be started in **localhost** mode (aka off-the-grid mode). In this mode, the SDK neither polls nor updates Split servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features.
+Features start their life on one developer's machine. A developer should be able to put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the SDK can be started in **localhost** mode (aka off-the-grid mode). In this mode, the SDK neither polls nor updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features.
 
 To use the SDK in localhost mode, replace the SDK Key with "localhost", as shown in the example below:
 
@@ -493,7 +493,7 @@ factory = SplitIoClient::SplitFactoryBuilder.build('localhost', split_file: '/wh
 
 ## Manager
 
-Use the Split Manager to get a list of feature flags available to the Split client. To instantiate a Manager in your code base, use the same factory that you used for your client.
+Use the Split Manager to get a list of feature flags available to the SDK factory client. To instantiate a Manager in your code base, use the same factory that you used for your client.
 
 ```ruby title="Manager"
 ## Reusing the split_factory created originally.
@@ -531,7 +531,7 @@ The `feature_flag` object referenced above has the following structure.
 
 ## Listener
 
-Split SDKs send impression data back to Split servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*.
+FME SDKs send impression data back to Harness servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*.
 
 The SDK sends the generated impressions to the impression listener right away. However, to avoid blocking the caller thread, use the second parameter to specify the size of the queue acting as a buffer. Refer to the followoing snippet:
 

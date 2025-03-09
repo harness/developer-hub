@@ -61,8 +61,8 @@ To use Harness FME, include and initialize one of FME SDKs in your application. 
 
 As needed, your application makes a just-in-time call to the FME SDK in local memory, passing the feature flag name, the userId or unique key, and optionally, a map of user or session attributes. The response is returned instantly, with no need for a network call. After the evaluation is performed, the SDK asynchronously returns an impression record to Harness. Refer to our [SDK overview](https://help.split.io/hc/en-us/articles/360033557092-SDK-overview) for more information.
 
-### Split evaluator
-As an alternative to using FME SDKs, you can make REST API calls to a Split Evaluator hosted inside your own infrastructure. Like the SDK, this method never requires you to send private user data to the Harness network. The evaluator makes it possible to operate from within languages that do not yet have a published FME SDK and should only be used in that case. Refer to the [Split evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator) guide for more information.
+### Split Evaluator
+As an alternative to using FME SDKs, you can make REST API calls to a Split Evaluator hosted inside your own infrastructure. Like the SDK, this method never requires you to send private user data to the Harness network. The evaluator makes it possible to operate from within languages that do not yet have a published FME SDK and should only be used in that case. Refer to the [Split Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator) guide for more information.
 
 ## FME's structure
 Harness FME is architected to support teams and organizations of any size, from a single developer to multiple value-stream enterprises. Take a moment to familiarize yourself with the concepts of your Harness account, project, environment, and objects, e.g., users, groups, tags, traffic types, feature flags, segments, and metrics.

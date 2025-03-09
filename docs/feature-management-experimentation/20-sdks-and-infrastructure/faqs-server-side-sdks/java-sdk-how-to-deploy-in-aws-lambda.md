@@ -40,7 +40,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
   ```java
 public class SplitSDK_Sample implements RequestHandler<Object, String> {
 ```
-4. The code to implement Split SDK should be under the handleRequest function instead of main method remove the code under the main method and paste it under the handleRequest function as below:
+4. The code to implement Java SDK should be under the handleRequest function instead of main method remove the code under the main method and paste it under the handleRequest function as below:
 ```java
 @Override
 public String handleRequest(Object input, Context context) {

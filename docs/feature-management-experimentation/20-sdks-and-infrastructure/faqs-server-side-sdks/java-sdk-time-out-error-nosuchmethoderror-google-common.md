@@ -12,7 +12,7 @@ sidebar_position: 10
 
 ## Issue
 
-Using Split Java SDK within a framework, SDK always times out. Log shows the error below:
+Using Java SDK within a framework, SDK always times out. Log shows the error below:
 ```
 2602 [split-splitFetcher-0] ERROR io.split.engine.experiments.RefreshableSplitFetcher  - RefreshableSplitFetcher failed: com.google.common.collect.Multisets.removeOccurrences(Lcom/google/common/collect/Multiset;Ljava/lang/Iterable;)Z
 2603 [split-splitFetcher-0] DEBUG io.split.engine.experiments.RefreshableSplitFetcher  - Reason:
@@ -29,7 +29,7 @@ java.lang.NoSuchMethodError: com.google.common.collect.Multisets.removeOccurrenc
 
 ## Root Cause
 
-Split Java SDK uses Google Guava library, the error above will occur if the framework use Google Guava library below 19.0.
+Java SDK uses Google Guava library, the error above will occur if the framework use Google Guava library below 19.0.
 
 ## Solution
 Upgrade Google Guava to 19.0 or above version.

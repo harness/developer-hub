@@ -12,7 +12,7 @@ sidebar_position: 6
 
 ## Question
 
-When using a server side Split SDK with the Split Synchronizer and Redis, what is the best configuration for Synchronizer to handle a high load of incoming impressions?
+When using a server-side SDK with the Split Synchronizer and Redis, what is the best configuration for Synchronizer to handle a high load of incoming impressions?
 
 ## Answer
 
@@ -100,4 +100,4 @@ Please make sure to update the JSON with the relevant API Key, Redis host, port 
 
 ##See also
 
-For more information on setup and configuration, see [Split Synchronizer Runbook](https://help.split.io/hc/en-us/articles/360018343391-Split-Synchronizer-Runbook).
+For more information on setup and configuration, see [Split Synchronizer runbook](https://help.split.io/hc/en-us/articles/360018343391-Split-Synchronizer-Runbook).

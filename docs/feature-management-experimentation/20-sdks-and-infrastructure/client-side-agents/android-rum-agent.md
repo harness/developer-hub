@@ -12,17 +12,17 @@ helpdocs_is_published: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide provides detailed information about Split's Real User Monitoring (RUM) Agent for Android.
+This guide provides detailed information about FME's Real User Monitoring (RUM) Agent for Android.
 
-Split's Android RUM Agent collects events about your users' experience when they use your application and sends this information to Split services. This allows you to measure and analyze the impact of feature flag changes on performance metrics.
+FME's Android RUM Agent collects events about your users' experience when they use your application and sends this information to FME services. This allows you to measure and analyze the impact of feature flag changes on performance metrics.
 
 ## Language Support
 
-Split's Android RUM Agent is designed for Android applications written in Java or Kotlin and is compatible with Android SDK versions 15 and later (4.0.3 Ice Cream Sandwich).
+FME's Android RUM Agent is designed for Android applications written in Java or Kotlin and is compatible with Android SDK versions 15 and later (4.0.3 Ice Cream Sandwich).
 
 ## Initialization
  
-Set up Split's RUM Agent in your code with the following three steps:
+Set up FME's RUM Agent in your code with the following three steps:
 
 ### 1. Import the Agent into your project
 
@@ -43,7 +43,7 @@ implementation("io.split.client:android-rum-agent:0.4.0")
 
 ### 2. Setup the Agent
 
-To allow the Agent to send information to Split services, specify the SDK through your app's `AndroidManifest.xml` file, as a `meta-data` tag inside the `application` tag.
+To allow the Agent to send information to FME services, specify the SDK through your app's `AndroidManifest.xml` file, as a `meta-data` tag inside the `application` tag.
 
 ```xml title="AndroidManifest initialization"
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -76,9 +76,9 @@ SplitRumAgent.setup("YOUR_SDK_KEY")
 
 ### 3. Add an Identity
 
-While the Agent will work without having an Identity, events won't be sent to Split services until at least one is set.
+While the Agent will work without having an Identity, events won't be sent to FME services until at least one is set.
 
-Identity objects consist of a key and a [traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type). The traffic type value must match the name of a traffic type that you have defined in the Split Management Console.
+Identity objects consist of a key and a [traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type). The traffic type value must match the name of a traffic type that you have defined in Harness FME.
 
 The RUM Agent provides methods to manage Identities, as shown below:
 
@@ -123,9 +123,9 @@ SplitRumAgent.removeIdentities()
 
 ## Configuration
 
-Split's Android RUM Agent can be configured to change its default behavior. The following options are available:
+FME's Android RUM Agent can be configured to change its default behavior. The following options are available:
 - Log Level: Level of logging. Valid values are `DEBUG`, `INFO`, `WARNING` and `ERROR`.
-- Prefix: Optional prefix to append to the `eventTypeId` of the events sent to Split. For example, if you set the prefix to "my-app", the event type "error" will be sent as "my-app.error". The prefix "split.rum" is used by default if no prefix is configured.
+- Prefix: Optional prefix to append to the `eventTypeId` of the events sent to Harness. For example, if you set the prefix to "my-app", the event type "error" will be sent as "my-app.error". The prefix "split.rum" is used by default if no prefix is configured.
 - User Consent: User consent status used to control the tracking of events. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. The default value is `'GRANTED'`. See the [User consent](#user-consent) section for details.
 
  These options can be configured using the `AndroidManifest.xml` or programmatically. Values specified programmatically will override values set through the `AndroidManifest.xml`. Both methods are demonstrated below.
@@ -182,7 +182,7 @@ val config = SplitRumConfiguration.Builder()
 
 ## Events
 
-Split's Android RUM Agent collects a number of events by default.
+FME's Android RUM Agent collects a number of events by default.
 
 ### Default events
 
@@ -196,7 +196,7 @@ Split's Android RUM Agent collects a number of events by default.
 
 ### Automatic metric creation
 
-Split will automatically create [metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) for a subset of the event types received from the Android RUM Agent. These "out of the box metrics" are auto-created for you:
+FME will automatically create [metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) for a subset of the event types received from the Android RUM Agent. These "out of the box metrics" are auto-created for you:
 
 | **Event type** | **Metric name** |
 | --- | --- |
@@ -205,7 +205,7 @@ Split will automatically create [metrics](https://help.split.io/hc/en-us/article
 | split.rum.app_start | Average App Start Time - Split Agents |
 | split.rum.anr | Count of ANRs - Split Agents |
 
-For a metric that was auto-created, you can manage the [definition](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) and [alert policies](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) like you would for any other metric. If you delete a metric that was auto-created, Split will not re-create the metric, even if the event type is still flowing.
+For a metric that was auto-created, you can manage the [definition](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) and [alert policies](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) like you would for any other metric. If you delete a metric that was auto-created, FME will not re-create the metric, even if the event type is still flowing.
 
 ## Advanced use cases
 
@@ -344,13 +344,13 @@ SplitRumAgent.trackTimeFromStart("content_loaded")
 
 ### User consent
 
-By default the Agent will send events to Split cloud, but you can disable this behavior until user consent is explicitly granted.
+By default the Agent will send events to Harness servers, but you can disable this behavior until user consent is explicitly granted.
 
 The `userConsent` configuration parameter lets you set the initial consent status of the Agent, and the `SplitRumAgent.setUserConsent(boolean)` method lets you grant (enable) or decline (disable) dynamic event tracking.
 
 There are three possible initial states:
- * `'GRANTED'`: The user grants consent for tracking events. The Agent sends them to Split cloud. This is the default value if `userConsent` param is not defined.
- * `'DECLINED'`: The user declines consent for tracking events. The Agent does not send them to Split cloud.
+ * `'GRANTED'`: The user grants consent for tracking events. The Agent sends them to Harness servers. This is the default value if `userConsent` param is not defined.
+ * `'DECLINED'`: The user declines consent for tracking events. The Agent does not send them to Harness servers.
  * `'UNKNOWN'`: The user neither grants nor declines consent for tracking events. The Agent tracks them in its internal storage, and eventually either sends them or not if the consent status is updated to `'GRANTED'` or `'DECLINED'` respectively.
 
 The status can be updated at any time with the `setUserConsent` method.
@@ -361,7 +361,7 @@ Working with user consent is demonstrated below.
 SplitRumAgent.setup('YOUR_SDK_KEY', {
   // Overwrites the initial consent status of the Agent, which is 'GRANTED' by default.
   // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data,
-  // so the Agent will locally track data but not send it to Split cloud until consent is changed to 'GRANTED'.
+  // so the Agent will locally track data but not send it to Harness FME servers until consent is changed to 'GRANTED'.
   userConsent: 'UNKNOWN'
 });
 
@@ -370,10 +370,10 @@ SplitRumAgent.getUserConsent() == UserConsent.GRANTED;
 
 // `setUserConsent` method lets you update the consent status at any time.
 // Pass `true` for 'GRANTED' and `false` for 'DECLINED'.
-SplitRumAgent.setUserConsent(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Split cloud.
+SplitRumAgent.setUserConsent(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Harness FME servers.
 SplitRumAgent.getUserConsent() == UserConsent.GRANTED;
 
-SplitRumAgent.setUserConsent(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Split cloud.
+SplitRumAgent.setUserConsent(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Harness FME servers.
 SplitRumAgent.getUserConsent() == UserConsent.DECLINED;
 ```
 

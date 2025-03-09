@@ -12,12 +12,12 @@ sidebar_position: 27
 
 ## Issue
 
-Using Split iOS SDK in Xcode project, when trying to use track method, build error "Value of type 'SplitClientProtocol' has no member 'track'.
+Using iOS SDK in Xcode project, when trying to use track method, build error "Value of type 'SplitClientProtocol' has no member 'track'.
 
 ![](https://help.split.io/hc/article_attachments/360010664231/Screen_Shot_2018-09-04_at_9.36.57_AM.png)
 
 ## Root Cause
-The Split iOS SDK used is likely an old version that is earlier than 1.3.0.
+The iOS SDK used is likely an old version that is earlier than 1.3.0.
 
 ## Solution
 Make sure to use the latest version in Cocoapod. Refer to the [SDK doc link](https://docs.split.io/docs/ios-sdk-overview).

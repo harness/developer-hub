@@ -12,8 +12,8 @@ sidebar_position: 8
 
 ## Question
 
-The Split mobile (iOS and Android) and JavaScript browser SDKs download a local cache and store it in a file system. Does the cache have an expire date or TTL?
+The Split mobile (iOS and Android) and JavaScript Browser SDKs download a local cache and store it in a file system. Does the cache have an expire date or TTL?
 
 ## Answer
 
-The SDK will consider the cache stale if it hasn't been updated for 90 days. In such case it will issue a full download of Split definitions. This is an unlikely scenario since the SDK is continuously synching changes from the Split cloud and updating the cache.
+The SDK will consider the cache stale if it hasn't been updated for 90 days. In such case it will issue a full download of FME definitions. This is an unlikely scenario since the SDK is continuously synching changes from the Harness FME servers and updating the cache.

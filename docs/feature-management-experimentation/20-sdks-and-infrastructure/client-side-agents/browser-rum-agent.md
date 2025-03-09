@@ -12,9 +12,9 @@ helpdocs_is_published: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide provides detailed information about Split's Real User Monitoring (RUM) Agent for Web browsers.
+This guide provides detailed information about FME's Real User Monitoring (RUM) Agent for Web browsers.
 
-Split's Browser RUM Agent collects events about your users' experience when they visit your web application and sends this information to Split services. This allows you to measure and analyze the impact of feature flag changes on performance metrics.
+FME's Browser RUM Agent collects events about your users' experience when they visit your web application and sends this information to FME services. This allows you to measure and analyze the impact of feature flag changes on performance metrics.
 
 :::info[Migrating from v0.x to v1.x]
 When upgrading, consider that the `webVitals` event collector (`import { webVitals } from '@splitsoftware/browser-rum-agent';`) is not exported anymore, but registered by default.
@@ -46,17 +46,17 @@ See the [Web Vitals](#web-vitals) section for more information about Google Web 
 
 ## Language Support
 
-Split's Browser RUM Agent is compatible with EcmaScript 5 syntax and therefore supports the majority of today's popular browsers, with the exception of older browsers like IE. We rely on the browser [Beacon API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) support to reliably send information to Split services for processing. For browsers that do not support Beacon API, the RUM Agent defaults to using [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) or [XHR](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) instead. 
+FME's Browser RUM Agent is compatible with EcmaScript 5 syntax and therefore supports the majority of today's popular browsers, with the exception of older browsers like IE. We rely on the browser [Beacon API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) support to reliably send information to FME services for processing. For browsers that do not support Beacon API, the RUM Agent defaults to using [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) or [XHR](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) instead. 
 
 Additional Web APIs like Promise, History and Performance APIs, highly available in modern browser, are required to collect some specific events, but not for the regular operation of the Agent. See the [Events section](#events) for specific events and their compatibility.
 
 ## Initialization
  
-Set up Split's RUM Agent in your code with the following two steps:
+Set up FME's RUM Agent in your code with the following two steps:
 
 ### 1. Import the Agent into your project
 
-Split's RUM Agent is delivered as a NPM package and as a script UMD bundle hosted in a CDN. You can import the Agent into your project using either of the two methods, as shown below.
+FME's RUM Agent is delivered as a NPM package and as a script UMD bundle hosted in a CDN. You can import the Agent into your project using either of the two methods, as shown below.
 
 <Tabs>
 <TabItem value="NPM package (recommended)">
@@ -143,16 +143,16 @@ SplitRumAgent.addIdentity({ key: 'user_id', trafficType: 'user' });
 </TabItem>
 </Tabs>
 
-Identity objects consist of a key and a [traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type). The traffic type value must match the name of a traffic type that you have defined in the Split Management Console.
+Identity objects consist of a key and a [traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type). The traffic type value must match the name of a traffic type that you have defined in Harness FME.
 
-These identities are used to associate the events captured by the RUM Agent to some user, before sending them to Split services. If you provide more than one identity, the captured events will be duplicated and sent to Split services for each identity.
+These identities are used to associate the events captured by the RUM Agent to some user, before sending them to FME services. If you provide more than one identity, the captured events will be duplicated and sent to FME services for each identity.
 
 ## Configuration
 
 The RUM Agent can be configured to change its default behavior. The following options are available:
-- Prefix: Optional prefix to append to the `eventTypeId` of the events sent to Split. For example, if you set the prefix to `'my-app'`, the event type `'error'` will be sent as `'my-app.error'`. It defaults to `'split.rum'`.
+- Prefix: Optional prefix to append to the `eventTypeId` of the events sent to Harness. For example, if you set the prefix to `'my-app'`, the event type `'error'` will be sent as `'my-app.error'`. It defaults to `'split.rum'`.
 - Push Rate: The Agent posts the queued events data in bulks. This parameter controls the posting rate in seconds. The default value is `30`.
-- Queue Size: The maximum number of event items we want to queue. If we queue more values, events will be dropped until they are sent to Split. The default value is `5000`.
+- Queue Size: The maximum number of event items we want to queue. If we queue more values, events will be dropped until they are sent to Harness FME. The default value is `5000`.
 - User Consent: User consent status used to control the tracking of events and impressions. Possible values are `'GRANTED'`, `'DECLINED'`, and `'UNKNOWN'`. The default value is `'GRANTED'`. See the [User consent](#user-consent) section for details.
 
 These options can be configured programmatically, as demonstrated below:
@@ -168,7 +168,7 @@ SplitRumAgent.setup('YOUR_SDK_KEY', {
 
 ## Events
 
-Split's RUM Agent collects a number of browser events by default and can be extended by registering *event collectors*. Event collectors collect additional events that are relevant to your application. They are not shipped by default with the Agent itself to avoid increasing your bundle size with unnecessary code.
+FME's RUM Agent collects a number of browser events by default and can be extended by registering *event collectors*. Event collectors collect additional events that are relevant to your application. They are not shipped by default with the Agent itself to avoid increasing your bundle size with unnecessary code.
 
 Event collectors are available when using the NPM package, or with a "full" version of the UMD bundle hosted in our CDN. They can be imported and registered as follows:
 
@@ -329,7 +329,7 @@ type RouteChangesEvent = {
 
 ## Automatic metric creation
 
-Split will automatically create [metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) for a subset of the event types received from the Browser RUM Agent. These "out of the box metrics" are auto-created for you:
+FME will automatically create [metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) for a subset of the event types received from the Browser RUM Agent. These "out of the box metrics" are auto-created for you:
 
 | **Event type** | **Metric name** | 
 | --- | --- |
@@ -342,7 +342,7 @@ Split will automatically create [metrics](https://help.split.io/hc/en-us/article
 | split.rum.webvitals.ttfb | Average TTFB - Split Agents |
 | split.rum.webvitals.fid | Average FID - Split Agents |
 
-For a metric that was auto-created, you can manage the [definition](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) and [alert policies](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) like you would for any other metric. If you delete a metric that was auto-created, Split will not re-create the metric, even if the event type is still flowing.
+For a metric that was auto-created, you can manage the [definition](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) and [alert policies](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) like you would for any other metric. If you delete a metric that was auto-created, FME will not re-create the metric, even if the event type is still flowing.
 
 ## Advanced use cases
 
@@ -447,18 +447,18 @@ When using lazy loading, the RUM Agent will normally not be able to capture any 
 </script>
 ```
 
-This script captures regular JavaScript errors and unhandled promise rejections, and stores them in memory. Once the RUM Agent loads, it sends the captured errors to Split services for processing, ensuring that even errors occurring before the Agent is fully loaded are not missed.
+This script captures regular JavaScript errors and unhandled promise rejections, and stores them in memory. Once the RUM Agent loads, it sends the captured errors to FME services for processing, ensuring that even errors occurring before the Agent is fully loaded are not missed.
 :::
 
 ### User consent
 
-By default the Agent will send events to Split cloud, but you can disable this behavior until user consent is explicitly granted.
+By default the Agent will send events to Harness FME servers, but you can disable this behavior until user consent is explicitly granted.
 
 The `userConsent` configuration parameter lets you set the initial consent status of the Agent, and the `SplitRumAgent.setUserConsent(boolean)` method lets you grant (enable) or decline (disable) dynamic event tracking.
 
 There are three possible initial states:
- * `'GRANTED'`: The user grants consent for tracking events. The Agent sends them to Split cloud. This is the default value if `userConsent` param is not defined.
- * `'DECLINED'`: The user declines consent for tracking events. The Agent does not send them to Split cloud.
+ * `'GRANTED'`: The user grants consent for tracking events. The Agent sends them to Harness FME servers. This is the default value if `userConsent` param is not defined.
+ * `'DECLINED'`: The user declines consent for tracking events. The Agent does not send them to Harness FME servers.
  * `'UNKNOWN'`: The user neither grants nor declines consent for tracking events. The Agent tracks them in its internal storage, and eventually either sends them or not if the consent status is updated to `'GRANTED'` or `'DECLINED'` respectively.
 
 The status can be updated at any time with the `setUserConsent` method.
@@ -469,7 +469,7 @@ Working with user consent is demonstrated below.
 SplitRumAgent.setup('YOUR_SDK_KEY', {
   // Overwrites the initial consent status of the Agent, which is 'GRANTED' by default.
   // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
-  // so the Agent will locally track data but not send it to Split cloud until consent is changed to 'GRANTED'.
+  // so the Agent will locally track data but not send it to Harness FME servers until consent is changed to 'GRANTED'.
   userConsent: 'UNKNOWN'
 });
 
@@ -478,10 +478,10 @@ SplitRumAgent.getUserConsent() === 'UNKNOWN';
 
 // `setUserConsent` method lets you update the consent status at any time.
 // Pass `true` for 'GRANTED' and `false` for 'DECLINED'.
-SplitRumAgent.setUserConsent(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Split cloud.
+SplitRumAgent.setUserConsent(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Harness FME servers.
 SplitRumAgent.getUserConsent() === 'GRANTED';
 
-SplitRumAgent.setUserConsent(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Split cloud.
+SplitRumAgent.setUserConsent(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Harness FME servers.
 SplitRumAgent.getUserConsent() === 'DECLINED';
 ```
 
@@ -489,6 +489,6 @@ SplitRumAgent.getUserConsent() === 'DECLINED';
 
 ## Example apps
 
-The following repository contains different example apps that demonstrate how to use Split's Browser RUM Agent:
+The following repository contains different example apps that demonstrate how to use FME's Browser RUM Agent:
 
 * [Browser RUM Agent examples](https://github.com/splitio/browser-rum-agent-examples)

@@ -12,7 +12,7 @@ sidebar_position: 2
 
 ## Issue
 
-Running an application that uses Split SDK in a Kubernetes container that is configured to use Istio proxy always results in SDK not ready exception.
+Running an application that uses FME SDK in a Kubernetes container that is configured to use Istio proxy always results in SDK not ready exception.
 
 When enabling the SDK debug log files, it appears the SDK http calls are erroring out with **connection refused** error
 

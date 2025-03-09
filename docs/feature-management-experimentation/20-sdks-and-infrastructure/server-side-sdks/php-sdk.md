@@ -24,13 +24,13 @@ The PHP SDK supports PHP language version 7.3 and later.
 
 The PHP SDK is architected differently from our other SDKs. This is because of the **share nothing** nature of PHP, which means that you need to leverage a remote data store that your processes can share to ensure that your customers are served consistent treatments from our SDK. The SDK has three components.
 
-#### SDK client
+#### SDK factory client
 
-The SDK client is embedded within your PHP app. It decides which treatment to show to a customer for a particular feature flag.
+The SDK factory client is embedded within your PHP app. It decides which treatment to show to a customer for a particular feature flag.
 
 #### Split Synchronizer
 
-The Split Synchronizer service fetches data from the Split servers so it can evaluate what treatment to show to a customer. This is a background service that can run on one machine on a schedule via your scheduling system. Refer to the [Split Synchronizer documentation](https://help.split.io/hc/en-us/articles/360019686092) for more information.
+The Split Synchronizer service fetches data from the Harness servers so it can evaluate what treatment to show to a customer. This is a background service that can run on one machine on a schedule via your scheduling system. Refer to the [Split Synchronizer documentation](https://help.split.io/hc/en-us/articles/360019686092) for more information.
 
 #### Cache 
 
@@ -54,13 +54,13 @@ Since version 2.0.0 of the split-synchronizer, we use a more efficient scheme to
 
 When the composer is done, follow the steps in our [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) documents to get everything set to sync data to your Redis cache. After you do that, come back to set up the SDK in consumer mode!
 
-### 3. Instantiate the SDK and create a new split client
+### 3. Instantiate the SDK and create a new SDK factory client
 
-We recommend instantiating the Split factory once as a singleton and reusing it throughout your application.
+We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
 Use the code snippet below to instantiate the client in your code base. You need to provide your Redis details and your SDK API key.
 
-Configure the SDK with the SDK API key for the Split environment that you would like to access. The SDK key is available in the Split user interface, on your Admin settings page, API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK API key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 Do all of this as a part of the startup sequence of your application. 
  
@@ -90,9 +90,9 @@ $splitClient = $splitFactory->client();
  
 ### Basic use
 
-After you instantiate the SDK client, use the `getTreatment` method of the SDK client to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you want to serve the feature flag to.
+After you instantiate the SDK factory client, use the `getTreatment` method of the SDK factory client to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you want to serve the feature flag to.
 
-From there, you need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in the Split user interface. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+From there, you need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
 
 ```php title="PHP"
 <?php
@@ -112,7 +112,7 @@ if ($treatment === 'on') {
 
 To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `getTreatment` method needs to pass an attribute map at runtime.
 
-In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
 The `getTreatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are: 
 
@@ -144,7 +144,7 @@ if ($treatment === 'on') {
 
 ### Multiple evaluations at once
 
-In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` from the Split client to do this.
+In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` from the SDK factory client to do this.
 * `getTreatments`: Pass a list of the feature flag names you want treatments for. 
 * `getTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
 * `getTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
@@ -179,7 +179,7 @@ You can also use the [Split Manager](#manager) to get all of your treatments at 
 
 To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
 
-The config element is a stringified version of the configuration JSON defined in the Split user interface. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
+The config element is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
 
 This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
 
@@ -236,27 +236,27 @@ Due to the nature of PHP and the way HTTP requests are handled, the client is in
 
 ## Track 
 
-Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Split and allows you to measure the impact of your feature flags on your users’ actions and metrics.
+Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to  and allows you to measure the impact of your feature flags on your users’ actions and metrics.
 
 Refer to the [Events](https://help.split.io/hc/en-us/articles/360020585772) documentation for more information about using track events in feature flags. 
 
 In the examples below you can see that the `.track()` method can take up to five arguments. The proper data type and syntax for each are:
 
 * **key:** The `key` variable used in the `getTreatment` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Split.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period. 
      * This is the regular expression we use to validate the value:<br />`[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**. 
-* **PROPERTIES:** (Optional) An Map of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. Split currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An Map of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 :::warning[Redis Support]
 If you are using our SDK with Redis, you need Split Synchronizer v2.3.0 version at least in order to support *properties* in the `track` method.
 :::
 
-The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Split's servers on the next event post. The SDK will return `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
+The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Harness servers on the next event post. The SDK will return `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
 
 In the case that a bad input has been provided, you can read more about our SDK's expected behavior in the [Events documentation](https://help.split.io/hc/en-us/articles/360020585772-Track-events) 
 
@@ -298,7 +298,7 @@ With the SDK architecture, there is a set of options that you can configure to g
 | log | Configure the log adapter and level. Refer to the [Logging](#logging) section. |
 | cache | Configure the Redis cache adapter. Refer to the [Redis cache](#redis-cache) section. |
 | impressionListener | Instance of an impression listener to send impression data to a custom location. |
-| IPAddressesEnabled | Flag to disable IP addresses and host name from being sent to the Split backend. |
+| IPAddressesEnabled | Flag to disable IP addresses and host name from being sent to the Harness servers. |
 
 ```php title="PHP"
 <?php
@@ -453,7 +453,7 @@ $splitClient = $splitFactory->client();
 
 ## Localhost mode
 
-For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the Split SDK can be started in **localhost** mode (aka off-the-grid mode). In this mode, the SDK neither polls nor updates Split servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. 
+For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the SDK can be started in **localhost** mode (aka off-the-grid mode). In this mode, the SDK neither polls nor updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. 
 
 To use the SDK in localhost mode, replace the SDK Key with "localhost", as shown in the example below:
 
@@ -508,7 +508,7 @@ In the example above, we have 3 entries:
 
 ## Manager
  
-Use the Split Manager to get a list of feature flags available to the Split client.
+Use the Split Manager to get a list of feature flags available to the SDK factory client.
 
 To instantiate a Manager in your code base, use the same factory that you used for your client.
 
@@ -566,7 +566,7 @@ class SplitView
 
 ## Listener
 
-Split SDKs send impression data back to Split servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*. Use the SDK's `impressionListener` parameter, where you can add an implementation of `ImpressionListener`. This implementation **must** define the `logImpression` method. It receives data in the following schema.
+FME SDKs send impression data back to Harness servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*. Use the SDK's `impressionListener` parameter, where you can add an implementation of `ImpressionListener`. This implementation **must** define the `logImpression` method. It receives data in the following schema.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- | 
@@ -607,7 +607,7 @@ $splitClient = $splitFactory->client();
 
 ## Logging
  
-The Split SDK provides a custom logger that implements the [PSR-3 standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md). **By default, the SDK logs to syslog and a WARNING log level.** To configure the logger, set the adapter and the desired log level.
+The SDK provides a custom logger that implements the [PSR-3 standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md). **By default, the SDK logs to syslog and a WARNING log level.** To configure the logger, set the adapter and the desired log level.
 
 :::warning[Production environments]
 For production environments, we strongly recommend setting the adapter to **syslog** and avoid using the `echo` adapter. Even better, set your own custom adapter. See [Custom logging](#custom-logging) below.
@@ -627,7 +627,7 @@ The log configuration parameters are described below.
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- | 
-| adapter | The logger adapter. Split SDK supports:<ul><li>**stdout:** Write log messages to standard output (php://stdout)</li><li>**syslog:** Generate a log message that is distributed by the system logger.</li><li>**void:** Prevent log writes.</li><li>**echo:** Echo messages to output. Note that the output could be the web browser.</li></ul> | syslog |
+| adapter | The logger adapter. The SDK supports:<ul><li>**stdout:** Write log messages to standard output (php://stdout)</li><li>**syslog:** Generate a log message that is distributed by the system logger.</li><li>**void:** Prevent log writes.</li><li>**echo:** Echo messages to output. Note that the output could be the web browser.</li></ul> | syslog |
 | level | The log level message. According the [PSR-3 standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md) the supported levels are:<ul><li>emergency</li><li>alert</li><li>critical</li><li>error</li><li>warning</li><li>notice</li><li>info</li><li>debug</li></ul> | warning |
 | psr3-instance | Your custom logger instance that implements the [PSR-3 standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md) | null 
 
@@ -646,7 +646,7 @@ $options = [
     'log'   => ['psr3-instance' => $psrLogger],
 ];
  
-/** Create the Split client instance. */
+/** Create the SDK factory client instance. */
 $splitFactory = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $options);
 $splitClient = $splitFactory->client();
 ```
@@ -667,6 +667,6 @@ $options = [
     'log'   => ['psr3-instance' => $psrLogger],
 ];
  
-/** Create the Split Client instance. */
+/** Create the client instance. */
 $splitClient = \SplitIO\Sdk::factory('YOUR_SDK_KEY', $options);
 ```

@@ -24,9 +24,9 @@ The Go SDK supports Go language version 1.18 and above.
 
 The Go SDK can run in three different modes to fit in different infrastructure configurations.
 
-* **in-memory-standalone:** The default (if no mode is specified) and most straightforward operation mode uses an in-memory storage to keep feature flags, segments, and queued impressions/metrics, as well as its own synchronization tasks that periodically keep feature flags and segments up to date, while flushing impressions and metrics to the Split backend.
-* **redis-consumer:** This mode uses Redis as a broker to retrieve feature flags and segments and store impressions and metrics. It also requires the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) to be running in the background, populating Redis with segments and feature flags, and flushing impressions and metrics to the Split backend. This mode is useful if you have multiple instances of Split's SDKs running (either in the same or a different language) and want to have a single synchronization point in your infrastructure.
-* **localhost:** This mode should be used to stub the Split service when running local tests or development processes. It parses a file (either one specified by the user or `$HOME/.splits`) that defines feature flags and treatments to provide the developer with a predictable result of running `Treatment()` calls. 
+* **in-memory-standalone:** The default (if no mode is specified) and most straightforward operation mode uses an in-memory storage to keep feature flags, segments, and queued impressions/metrics, as well as its own synchronization tasks that periodically keep feature flags and segments up to date, while flushing impressions and metrics to the Harness servers.
+* **redis-consumer:** This mode uses Redis as a broker to retrieve feature flags and segments and store impressions and metrics. It also requires the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) to be running in the background, populating Redis with segments and feature flags, and flushing impressions and metrics to the Harness servers. This mode is useful if you have multiple instances of SDKs running (either in the same or a different language) and want to have a single synchronization point in your infrastructure.
+* **localhost:** This mode should be used to stub the FME service when running local tests or development processes. It parses a file (either one specified by the user or `$HOME/.splits`) that defines feature flags and treatments to provide the developer with a predictable result of running `Treatment()` calls. 
 
 ### 1. Installing the SDK into your Go environment
 
@@ -47,7 +47,7 @@ go get github.com/splitio/go-client/v6@v6.7.0
 ```
 
 :::warning[If using Synchronizer with Redis - Synchronizer 2.x required after SDK Version 5.0.0]
-Since version 2.0.0 of the split-synchronizer, we use a more efficient scheme to store impressions in Redis. This approach is faster and easier on your Redis instances, since it yields better throughput of impressions to the backend. If you use this SDK with the synchronizer in Redis or Proxy mode, you will need the newest versions of our Split synchronizer. It is recommended that once you're using SDK versions compatible with Split-Sync 2.0 on all your applications pointing to the Redis instance maintained by the Split-Sync, you disable backwards compatibility (this is as easy as changing a parameter to `true` on the JSON config or an environment variable to `on` if you're using the docker image).
+Since version 2.0.0 of the split-synchronizer, we use a more efficient scheme to store impressions in Redis. This approach is faster and easier on your Redis instances, since it yields better throughput of impressions to the backend. If you use this SDK with the synchronizer in Redis or Proxy mode, you will need the newest versions of our Split Synchronizer. It is recommended that once you're using SDK versions compatible with Split-Sync 2.0 on all your applications pointing to the Redis instance maintained by the Split-Sync, you disable backwards compatibility (this is as easy as changing a parameter to `true` on the JSON config or an environment variable to `on` if you're using the docker image).
 :::
 
 ### 2. Import the SDK into your project
@@ -66,7 +66,7 @@ Starting on version v6.0.0, every breaking change will require that you update y
 It is recommended to create a wrapper that keeps it encapsulated. The package/file should be responsible for instantiating a single instance and exposing its functionality.
 :::
 
-### 3. Instantiate the SDK and create a new Split client
+### 3. Instantiate the SDK and create a new SDK factory client
 
 :::danger[If upgrading an existing SDK - Block until ready changes]
 Starting version 4.0.0, cfg.BlockUntilReady is deprecated and migrated to the following implementation:
@@ -77,13 +77,13 @@ When the SDK is instantiated in `inmemory-standalone` operation mode, it kicks o
 
 This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it is in this intermediate state, it may not have the data necessary to run the evaluation. In this circumstance, the SDK does not fail, but instead returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
 
-To make sure the SDK is properly loaded before asking it for a treatment, you need to block until the SDK is ready. You can block by using the `BlockUntilReady(int)` method as part of the instantiation process of the SDK client as shown below. Do this as a part of the startup sequence of your application.
+To make sure the SDK is properly loaded before asking it for a treatment, you need to block until the SDK is ready. You can block by using the `BlockUntilReady(int)` method as part of the instantiation process of the SDK factory client as shown below. Do this as a part of the startup sequence of your application.
 
 Instantiating two (or more) different factories results in multiple instances of synchronization tasks, so you can have different instances of the SDK with different SDK Keys running within a single application.
 
-In the most common scenario, you should instantiate and reuse a single Split factory throughout your application.
+In the most common scenario, you should instantiate and reuse a single SDK factory throughout your application.
 
-Configure the SDK with the SDK key for the Split environment that you would like to access. The SDK key is available in the Split user interface, on your Admin settings page, API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ```go title="Go"
 func main() {
@@ -110,9 +110,9 @@ Now you can start asking the SDK to evaluate treatments for your customers.
  
 ### Basic use
 
-After you instantiate the SDK client, you can start using the client's `Treatment` method to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you are serving the feature flag to.
+After you instantiate the SDK factory client, you can start using the client's `Treatment` method to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you are serving the feature flag to.
 
-Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in the Split user interface. Remember the final else branch in your code to handle the client returning the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
 
 ```go title="Go"
 // The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
@@ -136,7 +136,7 @@ The arguments for the `Treatment()` call are:
 
 To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `Treatment` method needs to be passed an attribute map at runtime.
 
-In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `Treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or off` treatment to this account.
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `Treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or off` treatment to this account.
 
 The `Treatment()` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
 
@@ -157,7 +157,7 @@ The `Treatment()` method supports five types of attributes: strings, numbers, da
 
 ### Multiple evaluations at once
 
-In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `Treatments` from the Split client to do this.
+In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `Treatments` from the SDK factory client to do this.
 * `Treatments`: Pass a list of the feature flag names you want treatments for.
 * `TreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
 * `TreatmentsByFlagSets`: Evaluates all flags that are part of the provided set names and are cached on the SDK instance.
@@ -198,7 +198,7 @@ To [leverage dynamic configurations with your treatments](https://help.split.io/
 
 This method will return an object containing the treatment and associated configuration.
 
-The config element will be a stringified version of the configuration JSON defined in the Split user interface. If there are no configs defined for a treatment, the SDK returns `nil` for the config parameter.
+The config element will be a stringified version of the configuration JSON defined in Harness FME. If there are no configs defined for a treatment, the SDK returns `nil` for the config parameter.
 
 This method takes the exact same set of arguments as the standard `Treatment` method. See below for examples on proper usage:
 
@@ -243,7 +243,7 @@ TreatmentResults := splitClient.TreatmentsWithConfigByFlagSets("KEY", []string{"
 
 ### Shutdown
 
-Call the `.Destroy()` method before letting a process using the SDK exit, as this method gracefully shuts down the Split SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions. Call the `splitClient.Destroy()` method when the `kill` signal is cached by your application. After `.Destroy()` is called, any subsequent invocations to the `splitClient.Treatment()` or `manager` methods results in `control` or empty list, respectively.
+Call the `.Destroy()` method before letting a process using the SDK exit, as this method gracefully shuts down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions. Call the `splitClient.Destroy()` method when the `kill` signal is cached by your application. After `.Destroy()` is called, any subsequent invocations to the `splitClient.Treatment()` or `manager` methods results in `control` or empty list, respectively.
 
 The example below shows how to catch the stop signal and call the `Destroy()` method.
 
@@ -283,24 +283,24 @@ A call to the `destroy()` method also destroys the factory object. When creating
 
 ## Track
 
-Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Split and allows you to measure the impact of your feature flags on your users’ actions and metrics.
+Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to  and allows you to measure the impact of your feature flags on your users’ actions and metrics.
 
 [Learn more](https://help.split.io/hc/en-us/articles/360020585772) about using track events in feature flags. 
 
 In the examples below, you can see that the `Track()` method can take up to five arguments. The proper data type and syntax for each are:
 
 * **key:** The `key` variable used in the `Treatment` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Split.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period. 
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**. 
-* **PROPERTIES:** (Optional) A Map of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. Split currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) A Map of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 :::warning[Redis Support]
-If you are using our SDK with Redis, you need Split synchronizer **2.3.0** version at least in order to support *properties* in the `track` method.
+If you are using our SDK with Redis, you need Split Synchronizer **2.3.0** version at least in order to support *properties* in the `track` method.
 :::
 
 ```go title="Go"
@@ -345,8 +345,8 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | Redis | Describes the Redis connection information (host, port, etc.) and allows you to specify a prefix to avoid conflicts with other SDKs. | See Redis section. |
 | SplitFile | Filename to be used when operating in `localhost` mode. | `.splits` within the user's home folder |
 | TaskPeriods | Embedded struct that allows the developer to choose how frequently each synchronization task is run. | See TaskPeriods section. |
-| IPAddressesEnabled | Flag to disable IP addresses and host name from being sent to the Split backend.  | true |
-| ImpressionsMode | Defines how impressions are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG.  In OPTIMIZED mode, only unique impressions are queued and posted to Split; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, all impressions are queued and sent to Split; this is useful for validations. Use DEBUG mode when you want every impression to be logged in Split's user interface when trying to debug your SDK setup.  This setting does not impact the impression listener which receives all generated impressions locally. | `optimized` |
+| IPAddressesEnabled | Flag to disable IP addresses and host name from being sent to the Harness servers.  | true |
+| ImpressionsMode | Defines how impressions are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG.  In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, all impressions are queued and sent to Harness; this is useful for validations. Use DEBUG mode when you want every impression to be logged in Harness FME when trying to debug your SDK setup.  This setting does not impact the impression listener which receives all generated impressions locally. | `optimized` |
 
 The SDK factory receives two arguments, the API key and a pointer to a configuration structure.
 
@@ -464,11 +464,11 @@ This configuration structure can be used to change the execution period of each 
 
 ## Localhost mode
 
-For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the Split SDK can be started in localhost mode (also known as off-the-grid mode). In this mode, the SDK neither polls nor updates Split servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the feature flags. To use the SDK in localhost mode, you must replace the API key with localhost value.
+For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the SDK can be started in **localhost** mode (also known as off-the-grid mode). In this mode, the SDK neither polls nor updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the feature flags. To use the SDK in localhost mode, you must replace the API key with localhost value.
 
 With this mode, you can instantiate the SDKS using one of the following methods:
 
-* JSON: Full support, for advanced cases or replicating an environment by pulling rules from Split cloud (from version `v6.3.0`).
+* JSON: Full support, for advanced cases or replicating an environment by pulling rules from Harness FME servers (from version `v6.3.0`).
 * YAML: Supports dynamic configs, individual targets, and default rules (from version `4.0.0`).
 * .split: Legacy option, only treatment result.
 
@@ -714,7 +714,7 @@ new-navigation v3
 
 ## Manager
  
-Use the Split Manager to get a list of feature flags available to the Split client. 
+Use the Split Manager to get a list of feature flags available to the SDK factory client. 
 
 To instantiate a Manager in your code base, use the same factory that you used for your client.
 
@@ -768,7 +768,7 @@ type SplitView struct {
 
 ## Listener
 
-Split SDKs send impression data back to Split servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*. Use the SDK's `impressionListener` parameter, where you can add an implementation of `ImpressionListener`. This implementation **must** define the `LogImpression` method. It receives data in the following schema.
+FME SDKs send impression data back to Harness servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*. Use the SDK's `impressionListener` parameter, where you can add an implementation of `ImpressionListener`. This implementation **must** define the `LogImpression` method. It receives data in the following schema.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- | 

@@ -16,11 +16,11 @@ When using Android SDK in an app, before the app exits, calling client.Destroy()
 
 ## Root Cause
 
-The `client.Destory()` will post any cached impressions, however, if the app shutdown its process before or during the post request, the request will fail and no impressions are posted to Split cloud.
+The `client.Destory()` will post any cached impressions, however, if the app shutdown its process before or during the post request, the request will fail and no impressions are posted to Harness servers cloud.
 
 ## Answer
 
 To resolve the issue, there are two options:
 
-* This is the recommended action, add to the app workflow calling client.Flush() method which will post the cached impressions and events to Split cloud.
+* This is the recommended action, add to the app workflow calling client.Flush() method which will post the cached impressions and events to Harness FME servers.
 * Add a 2-3 seconds sleep or delay after the `client.Destory()` to allow enough time to post the impressions before the app exits, the amount of seconds will be depend on how fast the network though, it is recommended to adjust it accordingly.

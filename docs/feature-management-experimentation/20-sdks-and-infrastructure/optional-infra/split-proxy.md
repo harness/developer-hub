@@ -10,9 +10,9 @@ sidebar_position: 3
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy </button>
 </p>
 
-The Split Proxy enables you to deploy a service in your own infrastructure that behaves like Split's servers and is used by both server-side and client-side SDKs to synchronize the flags without connecting to Split's actual backend directly.
+The Split Proxy enables you to deploy a service in your own infrastructure that behaves like Harness servers and is used by both server-side and client-side SDKs to synchronize the flags without connecting to Harness FME's actual backend directly.
 
-This tool reduces connection latencies from the SDKs to the Split server to the SDKs transparently, and when a single connection is required from a private network to the outside for security reasons.
+This tool reduces connection latencies between the SDKs and Harness FME servers, and when a single connection is required from a private network to the outside for security reasons.
 
 ### Architecture
 
@@ -39,9 +39,9 @@ docker run --rm --name split-proxy \
 ```
 
 :::info[API Keys]
-The `SPLIT_PROXY_APIKEY` is the server-side SDK API Key that you can find or create in the Split UI in Admin settings. The Split Proxy uses the `SPLIT_PROXY_APIKEY` to connect to Split servers.
+The `SPLIT_PROXY_APIKEY` is the server-side SDK API Key that you can find or create in Admin settings. The Split Proxy uses the `SPLIT_PROXY_APIKEY` to connect to Harness servers.
 
-The `SPLIT_PROXY_CLIENT_APIKEYS` is a list of strings that the Split Proxy will use to authenticate a client. (A Split Proxy client is a client/server-side Split SDK instance that connects to Split Proxy.) The Split Proxy will validate the client by comparing the key the client provides with the strings listed in `SPLIT_PROXY_CLIENT_APIKEYS`. These keys can be any string, generated via any method of your choice. For example, you can generate a GUID or use the string "hello" (e.g. for initial setup and testing the connection). As long as the Proxy client supplies a string that is in the `SPLIT_PROXY_CLIENT_APIKEYS` list, the Proxy will accept the client and forward the request to Split servers. The Split Proxy client (the client/server-side Split SDK instance) will supply a Split Proxy Client API Key in the usual place of the SDK Key.
+The `SPLIT_PROXY_CLIENT_APIKEYS` is a list of strings that the Split Proxy will use to authenticate a client. (A Split Proxy client is a client/server-side FME SDK instance that connects to Split Proxy.) The Split Proxy will validate the client by comparing the key the client provides with the strings listed in `SPLIT_PROXY_CLIENT_APIKEYS`. These keys can be any string, generated via any method of your choice. For example, you can generate a GUID or use the string "hello" (e.g. for initial setup and testing the connection). As long as the Proxy client supplies a string that is in the `SPLIT_PROXY_CLIENT_APIKEYS` list, the Proxy will accept the client and forward the request to Harness servers. The Split Proxy client (the client/server-side FME SDK instance) will supply a Split Proxy Client API Key in the usual place of the SDK Key.
 :::
 
 ### Command line
@@ -122,7 +122,7 @@ stdout_logfile_maxbytes = 1MB
 
 The Proxy service has several knobs for configuring performance. Each knob is tuned to a reasonable default. However, you can override the default values by changing a `splitio.config.json` file or by setting your customer values as parameters of `-config` in the command line option. In this section, we lay out all the different knobs you can configure for performance, persistent storage, and logging.
 
-The `splitio.config.json` file provided using the `-config` option lets you control how often the synchronizer fetches data from Split servers. You can create a sample JSON file automatically with default values by running the following command:
+The `splitio.config.json` file provided using the `-config` option lets you control how often the synchronizer fetches data from Harness servers. You can create a sample JSON file automatically with default values by running the following command:
 
 ```bash title="Shell"
 ./split-proxy -write-default-config "/home/someuser/splitio.config.json"
@@ -218,10 +218,10 @@ split-proxy -config "/etc/splitio.config.json" -log-level=info -admin-username="
 ```
 
 ### CLI Configuration options and its equivalents in JSON and Environment variables
-The following table includes the available command line, JSON, and environment variable options and their descriptions. It specifies configuration options for the Split synchronizer. You can configure the synchronizer using command line arguments, environment variables when you run it as a docker container, and a JSON file when you run it locally. All of these configuration options can be used regardless of the configuration method.
+The following table includes the available command line, JSON, and environment variable options and their descriptions. It specifies configuration options for the Split Synchronizer. You can configure the synchronizer using command line arguments, environment variables when you run it as a docker container, and a JSON file when you run it locally. All of these configuration options can be used regardless of the configuration method.
 
 :::warning[Split Proxy v5.0 boolean options change]
-With the Split synchronizer v5.0.0, the only accepted values for boolean flags are "true" and "false" in lowercase. Values such as "enabled", "on", "yes", or "True" result in an error when you start up. This applies to JSON, CLI arguments, and environment variables.
+With the Split Synchronizer v5.0.0, the only accepted values for boolean flags are "true" and "false" in lowercase. Values such as "enabled", "on", "yes", or "True" result in an error when you start up. This applies to JSON, CLI arguments, and environment variables.
 :::
 
 | **Command line option** | **JSON option** | **Environment variable** (container-only) | **Description** |
@@ -247,8 +247,8 @@ With the Split synchronizer v5.0.0, the only accepted values for boolean flags a
 | impression-listener-queue-size | queueSize | SPLIT_PROXY_IMPRESSION_LISTENER_QUEUE_SIZE | max number of impressions bulks to queue. |
 | slack-webhook | webhook | SPLIT_PROXY_SLACK_WEBHOOK | slack webhook to post log messages. |
 | slack-channel | channel | SPLIT_PROXY_SLACK_CHANNEL | slack channel to post log messages. |
-| apikey | apikey | SPLIT_PROXY_APIKEY | Split Server-side SDK api-key. |
-| ip-address-enabled | ipAddressEnabled | SPLIT_PROXY_IP_ADDRESS_ENABLED | Bundle host's ip address when sending data to Split. |
+| apikey | apikey | SPLIT_PROXY_APIKEY | FME server-side SDK API key. |
+| ip-address-enabled | ipAddressEnabled | SPLIT_PROXY_IP_ADDRESS_ENABLED | Bundle host's ip address when sending data to Harness FME. |
 | timeout-ms | timeoutMS | SPLIT_PROXY_TIMEOUT_MS | How long to wait until the synchronizer is ready. |
 | snapshot | snapshot | SPLIT_PROXY_SNAPSHOT | Snapshot file to use as a starting point. |
 | force-fresh-startup | forceFreshStartup | SPLIT_PROXY_FORCE_FRESH_STARTUP | Wipe storage before starting the synchronizer |
@@ -269,9 +269,9 @@ With the Split synchronizer v5.0.0, the only accepted values for boolean flags a
 | segment-refresh-rate-ms | segmentRefreshRateMs | SPLIT_PROXY_SEGMENT_REFRESH_RATE_MS | How often to refresh segments. |
 | streaming-enabled | streamingEnabled | SPLIT_PROXY_STREAMING_ENABLED | Enable/disable streaming functionality. |
 | http-timeout-ms | httpTimeoutMs | SPLIT_PROXY_HTTP_TIMEOUT_MS | Total http request timeout. |
-| impressions-workers | impressionsWorkers | SPLIT_PROXY_IMPRESSIONS_WORKERS | #workers to forward impressions to Split servers. |
-| events-workers | eventsWorkers | SPLIT_PROXY_EVENTS_WORKERS | #workers to forward events to Split servers. |
-| telemetry-workers | telemetryWorkers | SPLIT_PROXY_TELEMETRY_WORKERS | #workers to forward telemetry to Split servers. |
+| impressions-workers | impressionsWorkers | SPLIT_PROXY_IMPRESSIONS_WORKERS | #workers to forward impressions to Harness servers. |
+| events-workers | eventsWorkers | SPLIT_PROXY_EVENTS_WORKERS | #workers to forward events to Harness servers. |
+| telemetry-workers | telemetryWorkers | SPLIT_PROXY_TELEMETRY_WORKERS | #workers to forward telemetry to Harness servers. |
 | internal-metrics-rate-ms | internalTelemetryRateMs | SPLIT_PROXY_INTERNAL_METRICS_RATE_MS | How often to send internal metrics. |
 | dependencies-check-rate-ms | dependenciesCheckRateMs | SPLIT_PROXY_DEPENDENCIES_CHECK_RATE_MS | How often to check dependecies health. |
 
@@ -495,7 +495,7 @@ Returns a binary snapshot file that can be used with the snapshot environment va
 
 ### Admin Dashboard
 
-Split-proxy has a web admin user interface out of the box that exposes all available endpoints. Browse to `/admin/dashboard` to see it.
+Split Proxy has a web admin user interface out of the box that exposes all available endpoints. Browse to `/admin/dashboard` to see it.
 
 <p>
   <img src="/hc/article_attachments/30652145699469" alt="proxy_dashboard_main.png" />
@@ -512,19 +512,19 @@ The dashboard is organized into four sections for easy visualization:
     - **Healthy Since**: Time passed without errors
     - **Logged Errors**: Total count of error messages
     - **SDKs Total Hits**: Total SDKs requests
-    - **Backend Total Hits**: Total backend requests between split-proxy and Split servers
+    - **Backend Total Hits**: Total backend requests between split-proxy and Harness servers
     - **Cached Feature flags**: Number of feature flags cached in memory
     - **Cached Segments**: Number of segments cached in memory
-    - **SDK Server**: displays the status of Split server for SDK
-    - **Events Server**: displays the status of Split server for Events
-    - **Streaming Server**: displays the status of Split streaming service
-    - **Auth Server**: displays the status of Split server for initial streaming authentication
-    - **Telemetry Server**: displays the status of Split server for telemetry capturing
+    - **SDK Server**: displays the status of server for SDK
+    - **Events Server**: displays the status of server for Events
+    - **Streaming Server**: displays the status of streaming service
+    - **Auth Server**: displays the status of server for initial streaming authentication
+    - **Telemetry Server**: displays the status of server for telemetry capturing
     - **Storage**: (only Sync mode) displays the status of the storage
     - **Sync**: displays the status of the Proxy
     - **Last Errors Log**: List of the last 10 error messages
 * **SDK stats**: Metrics numbers and a latency graph, measured between SDKs requests integration and proxy
-* **Split stats**: Metrics numbers and a latency graph, measured between proxy requests integration with Split servers
+* **Split stats**: Metrics numbers and a latency graph, measured between proxy requests integration with Harness servers
 * **Data inspector**: Cached data showing feature flags and segments; filters to find keys and feature flag definitions
 <p>
   <img src="/hc/article_attachments/30652167897229" alt="proxy_dashboard_data.png" />

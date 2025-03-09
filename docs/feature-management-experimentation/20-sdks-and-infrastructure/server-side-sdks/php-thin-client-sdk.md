@@ -20,7 +20,7 @@ The PHP Thin SDK supports PHP language version 7.3 and later.
 
 ## Architecture
 
-The PHP Thin SDK depends on the [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157) which should be set up on the same host. The PHP Thin SDK client uses splitd to maintain the local cached copy of the Split rollout plan and return feature flag evaluations.
+The PHP Thin SDK depends on the [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157) which should be set up on the same host. The PHP Thin SDK factory client uses splitd to maintain the local cached copy of the FME definitions and return feature flag evaluations.
 
 ## Initialization
 
@@ -36,9 +36,9 @@ The public release of the PHP Thin SDK is available at [packagist.org](https://p
 
 When the composer is done, follow the guidance of our [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157) doc to integrate splitd into your application infrastructure.
 
-### 3. Instantiate the SDK and create a new split client
+### 3. Instantiate the SDK and create a new SDK factory client
 
-We recommend instantiating the Split factory once as a singleton and reusing it throughout your application.
+We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
 ```php title="PHP"
 <?php
@@ -59,9 +59,9 @@ $client = $factory->client();
  
 ### Basic use
 
-After you instantiate the SDK client, you can start using the `getTreatment` method of the SDK client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you want to serve the feature to.
+After you instantiate the SDK factory client, you can start using the `getTreatment` method of the SDK factory client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you want to serve the feature to.
 
-From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in the Split user interface. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
 
 ```php title="PHP"
 <?php
@@ -81,7 +81,7 @@ if ($treatment === 'on') {
 
 To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `getTreatment` method needs to pass an attribute map at runtime.
 
-In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split Web Console to decide whether to show the `on` or `off` treatment to this account.
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
 The `getTreatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are: 
 
@@ -113,7 +113,7 @@ if ($treatment === 'on') {
 
 ### Multiple evaluations at once
 
-In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` from the Split client to do this.
+In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` from the SDK factory client to do this.
 * `getTreatments`: Pass a list of the feature flag names you want treatments for.
 * `getTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
 * `getTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
@@ -149,7 +149,7 @@ You can also use the [Split Manager](#manager) to get all of your treatments at 
 
 To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
 
-The config element is a stringified version of the configuration JSON defined in the Split user interface. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
+The config element is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
 
 This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
 
@@ -174,27 +174,27 @@ $TreatmentResults = $splitClient->getTreatmentsWithConfig("KEY", null, ["FEATURE
 
 ### Shutdown
 
-Due to the nature of PHP and the way HTTP requests are handled, the client is instantiated on every request and automatically destroyed when the request lifecycle comes to an end. The data is synchronized by an external tool and stored in memory, so the SDK client does not need to invoke any shutdown tasks.
+Due to the nature of PHP and the way HTTP requests are handled, the client is instantiated on every request and automatically destroyed when the request lifecycle comes to an end. The data is synchronized by an external tool and stored in memory, so the SDK factory client does not need to invoke any shutdown tasks.
 
 ## Track 
 
-Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Split and allows you to measure the impact of your feature flags on your users’ actions and metrics.
+Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to  and allows you to measure the impact of your feature flags on your users’ actions and metrics.
 
 Refer to the [Events](https://help.split.io/hc/en-us/articles/360020585772) documentation for more information about using track events in feature flags.
 
 In the examples below you can see that the `.track()` method can take up to five arguments. The proper data type and syntax for each are:
 
 * **key:** The `key` variable used in the `getTreatment` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Split.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value:<br />`[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) A Map of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. Split currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) A Map of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
-The `track` method returns a boolean value of `true` or `false` to indicate whether or not the event was successfully queued to be sent back to Split's servers on the next event post. The SDK will return `false` if the current queue on the Split Daemon is full or if an incorrect input to the `track` method has been provided.
+The `track` method returns a boolean value of `true` or `false` to indicate whether or not the event was successfully queued to be sent back to Harness servers on the next event post. The SDK will return `false` if the current queue on the Split Daemon is full or if an incorrect input to the `track` method has been provided.
 
 In the case that a bad input has been provided, you can read more about our SDK's expected behavior in the [Events documentation](https://help.split.io/hc/en-us/articles/360020585772-Track-events)
 
@@ -249,11 +249,11 @@ $splitClient = $splitFactory->client();
 
 ### Impressions data
 
-By default, the SDK sends small amounts of information to the Split backend indicating the reason for each treatment returned from a feature flag. An example would be that a user saw the `on` treatment because they are `in segment all`.
+By default, the SDK sends small amounts of information to the Harness servers indicating the reason for each treatment returned from a feature flag. An example would be that a user saw the `on` treatment because they are `in segment all`.
 
 ## Manager
  
-Use the Split Manager to get a list of feature flags available to the Split client.
+Use the Split Manager to get a list of feature flags available to the SDK factory client.
 
 To instantiate a Manager in your code base, use the same factory that you used for your client.
 
@@ -323,7 +323,7 @@ class SplitView
 
 ## Listener
     
-Split SDKs send impression data back to Split servers periodically when evaluating feature flags. To send this information to a location of your choice, define an *impression listener*. Use the `impressionListener` parameter, where you can provide an implementation of an `ImpressionListener`. This implementation **must** define the `accept` method, with the signature `public function accept(Impression $impression, ?array $attributes)` and with parameters as defined below.
+FME SDKs send impression data back to Harness servers periodically when evaluating feature flags. To send this information to a location of your choice, define an *impression listener*. Use the `impressionListener` parameter, where you can provide an implementation of an `ImpressionListener`. This implementation **must** define the `accept` method, with the signature `public function accept(Impression $impression, ?array $attributes)` and with parameters as defined below.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- | 
@@ -369,7 +369,7 @@ $splitClient = $splitFactory->client();
 
 ## Logging
  
-The Split SDK provides a custom logger that implements the [PSR-3 standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md). **By default, the SDK logs to stdout at the INFO log level.** To configure the logger, set the adapter and the desired log level.
+The SDK provides a custom logger that implements the [PSR-3 standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md). **By default, the SDK logs to stdout at the INFO log level.** To configure the logger, set the adapter and the desired log level.
 
 :::warning[Production environments]
 For production environments, we strongly recommend passing a proper `psr-instance` parameter with a PSR3 compliant logger (or custom wrapper for a non-cmpliant one).
@@ -411,7 +411,7 @@ $sdkConfig = [
     'logging'   => ['psr-instance' => $psrLogger],
 ];
  
-/** Create the Split Client instance. */
+/** Create the client instance. */
 $splitFactory = \SplitIO\ThinSdk\Factory::withConfig($sdkConfig);
 $splitClient = $splitFactory->client();
 ```
@@ -436,7 +436,7 @@ $sdkConfig = [
     'logging'   => ['psr-instance' => $psrLogger],
 ];
  
-/** Create the Split Client instance. */
+/** Create the client instance. */
 $splitFactory = \SplitIO\ThinSdk\Factory::withConfig($sdkConfig);
 $splitClient = $splitFactory->client();
 ```

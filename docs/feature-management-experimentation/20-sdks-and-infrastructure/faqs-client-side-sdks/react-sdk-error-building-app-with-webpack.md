@@ -35,7 +35,8 @@ i ?wdm?: Failed to compile.
 
 Webpack is trying to build the React SDK library into the server side, which will cause errors since React SDK is designed to run only on browser side. 
 
-Answer
+## Answer
+
 To resolve the issue, open `webpack.config.js` file, locate the resolve section, make sure the `mainFields` entry contain `browser` similar to this example:
 ```json
 resolve: {

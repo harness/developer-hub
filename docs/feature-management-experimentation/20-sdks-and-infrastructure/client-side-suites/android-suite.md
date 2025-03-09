@@ -12,9 +12,9 @@ helpdocs_is_published: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide provides detailed information about our Android Suite, an SDK designed to harness the full power of Split. The Android Suite is built on top of the [Android SDK](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK) and the [Android RUM Agent](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent), offering a unified solution, optimized for Android development.
+This guide provides detailed information about our Android Suite, an SDK designed to leverage the full power of FME. The Android Suite is built on top of the [Android SDK](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK) and the [Android RUM Agent](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent), offering a unified solution, optimized for Android development.
 
-The Suite provides the all-encompassing essential programming interface for working with your Split feature flags, as well as capabilities for automatically tracking performance measurements and user events. Code currently using Android SDK or Android RUM Agent can be easily upgraded to Android Suite, which is designed as a drop-in replacement.
+The Suite provides the all-encompassing essential programming interface for working with your FME feature flags, as well as capabilities for automatically tracking performance measurements and user events. Code currently using Android SDK or Android RUM Agent can be easily upgraded to Android Suite, which is designed as a drop-in replacement.
 
 ## Language support
 
@@ -22,7 +22,7 @@ This library is designed for Android applications written in Java or Kotlin and 
 
 ## Initialization
 
-Set up Split in your code base with the following two steps:
+Set up FME in your code base with the following two steps:
 
 ### 1. Import the Suite into your project
 
@@ -36,14 +36,14 @@ implementation 'io.split.client:android-suite:2.0.0'
 When upgrading from Split's Android SDK and/or Android RUM Agent to Android Suite, you need to remove individual project dependencies for the SDK and Agent. The dependency for the Suite replaces these dependencies.
 :::
 
-### 2. Instantiate the Suite and create a new Split client
+### 2. Instantiate the Suite and create a new SDK client
 
 In your code, instantiate the Suite client as shown below.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
 ```java
-// Split SDK key
+// SDK key
 String sdkKey = "YOUR_SDK_KEY";
 
 // Build Suite configuration by default
@@ -64,7 +64,7 @@ SplitClient client = suite.client();
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
 ```kotlin
-// Split SDK key
+// SDK key
 val sdkKey = "YOUR_SDK_KEY"
 
 // Build Suite configuration by default
@@ -87,12 +87,12 @@ val client: SplitClient = splitFactory.client()
 </Tabs>
 
 :::warning[Important]
-If you are upgrading from Split's Android RUM Agent to Android Suite and you have setup or config information for the Android RUM Agent in the `AndroidManifest.xml`, then this information will be overridden by the Suite initialization. That is why we recommended that you remove this information from `AndroidManifest.xml` when upgrading.
+If you are upgrading from FME's Android RUM Agent to Android Suite and you have setup or config information for the Android RUM Agent in the `AndroidManifest.xml`, then this information will be overridden by the Suite initialization. That is why we recommended that you remove this information from `AndroidManifest.xml` when upgrading.
 :::
 
-When the Suite is instantiated, it starts synchronizing feature flag and segment definitions from Split servers, and also starts collecting performance and user events for the configured key and its optional traffic type (which if not set, defaults to `'user'`).
+When the Suite is instantiated, it starts synchronizing feature flag and segment definitions from Harness servers, and also starts collecting performance and user events for the configured key and its optional traffic type (which if not set, defaults to `'user'`).
 
-We recommend instantiating the Split factory once as a singleton and reusing it throughout your application.
+We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
 Configure the Suite with the SDK key for the Split environment that you would like to access. The SDK key is available in the Split UI, on your Admin settings page, API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
@@ -100,7 +100,7 @@ Configure the Suite with the SDK key for the Split environment that you would li
 
 ### Basic use
 
-When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Split servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
 
 To make sure the Suite is properly loaded before asking it for a treatment, block until the Suite is ready, as shown below. We set the client to listen for the `SDK_READY` event triggered by the Suite before asking for an evaluation.
 
@@ -286,7 +286,7 @@ val result = client.clearAttributes()
 
 ### Multiple evaluations at once
 
-In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` from the Split client to do this.
+In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` from the SDK client to do this.
 * `getTreatments`: Pass a list of the feature flag names you want treatments for.
 * `getTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the Suite instance.
 * `getTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the Suite instance.
@@ -460,7 +460,7 @@ The `client.track()` method sends events **_for the identity configured on the c
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. Split currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
 The `suite.track()` method sends events **_for all the identities_** configured on all instances of the Suite clients. For those clients that have not been configured with a traffic type, this `track` method uses the default traffic type `user`. This `track` method can take up to three of the four arguments described above: `EVENT_TYPE`, `VALUE`, and `PROPERTIES`.
 
@@ -563,7 +563,7 @@ suite.track("screen_load_time", null, properties);
 </TabItem>
 </Tabs>
 
-The `client.track()` methods return a boolean value of `true` or `false` to indicate whether or not the Suite was able to successfully queue the event, to be sent back to Split's servers on the next event post.
+The `client.track()` methods return a boolean value of `true` or `false` to indicate whether or not the Suite was able to successfully queue the event, to be sent back to Harness servers on the next event post.
 
 ### Shutdown
 
@@ -597,18 +597,18 @@ Feature flagging parameters:
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- |
-| featuresRefreshRate | The Suite polls Split servers for changes to feature flags at this rate (in seconds). | 3600 seconds |
-| segmentsRefreshRate | The Suite polls Split servers for changes to segments at this rate (in seconds). | 1800 seconds |
-| impressionsRefreshRate | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Split servers. This configuration controls how quickly the cache expires after a write (in seconds). | 1800 seconds |
-| telemetryRefreshRate | The Suite caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers (in seconds). | 3600 seconds (1 hour) |
+| featuresRefreshRate | The Suite polls Harness servers for changes to feature flags at this rate (in seconds). | 3600 seconds |
+| segmentsRefreshRate | The Suite polls Harness servers for changes to segments at this rate (in seconds). | 1800 seconds |
+| impressionsRefreshRate | The treatment log captures which customer saw what treatment (on, off, etc.) at what time. This log is periodically flushed back to Harness servers. This configuration controls how quickly the cache expires after a write (in seconds). | 1800 seconds |
+| telemetryRefreshRate | The Suite caches diagnostic data that it periodically sends to Harness servers. This configuration controls how frequently this data is sent back to Harness servers (in seconds). | 3600 seconds (1 hour) |
 | eventsQueueSize | When using the `track` method, the number of **events** to be kept in memory. | 10000 |
-| eventFlushInterval | When using the `track` method, how often is the events queue flushed to Split's servers. | 1800 seconds |
+| eventFlushInterval | When using the `track` method, how often is the events queue flushed to Harness servers. | 1800 seconds |
 | eventsPerPush | Maximum size of the batch to push events. | 2000 |
 | trafficType | When using the `track` method, the default traffic type to be used. | not set |
 | connectionTimeout  | HTTP client connection timeout (in ms). | 10000 ms |
 | readTimeout | HTTP socket read timeout (in ms). | 10000 ms |
 | impressionsQueueSize | Default queue size for impressions. | 30K |
-| disableLabels | Disable labels from being sent to Split backend. Labels may contain sensitive information. | true |
+| disableLabels | Disable labels from being sent to Harness servers. Labels may contain sensitive information. | true |
 | proxyHost | The location of the proxy using standard URI: `scheme://user:password@domain:port/path`. If no port is provided, the Suite defaults to port 80. | null |
 | ready | Maximum amount of time in milliseconds to wait before notifying a timeout. | -1 (not set) |
 | synchronizeInBackground | Activates synchronization when application host is in background. | false |
@@ -619,7 +619,7 @@ Feature flagging parameters:
 | syncConfig | Optional SyncConfig instance. Use it to filter specific feature flags to be synced and evaluated by the Suite. These filters can be created with the `SplitFilter::bySet` static function (recommended, flag sets are available in all tiers), or `SplitFilter::byName` static function, and appended to this config using the `SyncConfig` builder. If not set or empty, all feature flags are downloaded by the Suite. | null |
 | persistentAttributesEnabled | Enables saving attributes on persistent cache which is loaded as part of the SDK_READY_FROM_CACHE flow. All functions that mutate the stored attributes map affect the persistent cache. | false |
 | syncEnabled | Controls the SDK continuous synchronization flags. When `true`, a running Suite processes rollout plan updates performed in the Split user interface (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
-| impressionsMode | This configuration defines how impressions (decisioning events) are queued on the Suite. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Split; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Split; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
+| impressionsMode | This configuration defines how impressions (decisioning events) are queued on the Suite. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Harness; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
 | userConsent | User consent status used to control the tracking of events and impressions. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. See [User consent](#user-consent) for details. | `GRANTED` |
 | encryptionEnabled | If set to `true`, the local database contents is encrypted. | false |
 | prefix | If set, the prefix will be prepended to the database name used by the Suite. | null |
@@ -629,7 +629,7 @@ Suite RUM agent parameters:
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- |
-| prefix | Optional prefix to append to the `eventTypeId` of the events sent to Split by the Suite RUM agent. For example, if you set the prefix to 'my-app', the event type 'error' will be sent as 'my-app.error'. | null |
+| prefix | Optional prefix to append to the `eventTypeId` of the events sent to Harness by the Suite RUM agent. For example, if you set the prefix to 'my-app', the event type 'error' will be sent as 'my-app.error'. | null |
 
 Shared parameters:
 
@@ -682,7 +682,7 @@ val suite: SplitSuite = SplitSuiteBuilder.build(
 
 ## Localhost mode
 
-For testing, a developer can put code behind feature flags on their development machine without the Suite requiring network connectivity. To achieve this, you can start the Suite in **localhost** mode (aka, off-the-grid mode). In this mode, the Suite neither polls or updates Split servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the feature flags. To use the Suite in localhost mode, replace the SDK Key with `localhost`, as shown in the example below/
+For testing, a developer can put code behind feature flags on their development machine without the Suite requiring network connectivity. To achieve this, you can start the Suite in **localhost** mode (aka, off-the-grid mode). In this mode, the Suite neither polls or updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the feature flags. To use the Suite in localhost mode, replace the SDK Key with `localhost`, as shown in the example below/
 
 The format for defining the definitions is as follows:
 
@@ -752,7 +752,7 @@ val client = SplitSuiteBuilder.build(
 
 ## Manager
 
-Use the Split Manager to get a list of feature flags available to the Split client. To instantiate a Manager in your code base, use the same factory that you used for your client.
+Use the Split Manager to get a list of feature flags available to the SDK client. To instantiate a Manager in your code base, use the same factory that you used for your client.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
@@ -863,7 +863,7 @@ class SplitView(
 
 ## Listener
 
-The Split Suite sends impression data back to Split servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*.
+The Split Suite sends impression data back to Harness servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*.
 
 The Suite sends the generated impressions to the impression listener right away. Because of this, be careful while implementing handling logic to avoid blocking the thread. Generally speaking, you should create a separate thread to handle incoming impressions. Refer to the snippet below:
 
@@ -958,7 +958,7 @@ In regards with the data available here, refer to the `Impression` objects inter
 
 ## Flush
 
-The `flush` method sends the data stored in memory (impressions and events tracked using client's `track` method) to the Split cloud and clears the successfully posted data. If a connection issue is experienced, the data is sent on the next attempt. If you want to flush all pending data when your app goes to the background, a good place to call this method is the `onPause` callback of your activity.
+The `flush` method sends the data stored in memory (impressions and events tracked using client's `track` method) to the Harness FME servers and clears the successfully posted data. If a connection issue is experienced, the data is sent on the next attempt. If you want to flush all pending data when your app goes to the background, a good place to call this method is the `onPause` callback of your activity.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
@@ -993,7 +993,7 @@ This section describes advanced use cases and features provided by the Suite.
 
 ### Instantiate multiple clients
 
-Split supports the ability to create multiple clients, one for each user ID. Each Suite client is tied to one specific customer ID at a time. For example, if you need to roll out feature flags for different user IDs, you can instantiate multiple clients, one for each ID. You can then evaluate them using the corresponding client.
+FME supports the ability to create multiple clients, one for each user ID. Each Suite client is tied to one specific customer ID at a time. For example, if you need to roll out feature flags for different user IDs, you can instantiate multiple clients, one for each ID. You can then evaluate them using the corresponding client.
 
 You can do this with the example below:
 
@@ -1054,7 +1054,7 @@ userClient.on(SplitEvent.SDK_READY, object : SplitEventTask() {
 </TabItem>
 </Tabs>
 
-The events captured by the Suite's RUM agent are sent to Split servers using the traffic types and keys of the created client. If no traffic type is provided, the traffic type is `user` by default.
+The events captured by the Suite's RUM agent are sent to Harness servers using the traffic types and keys of the created client. If no traffic type is provided, the traffic type is `user` by default.
 
 :::info[Number of Suite instances]
 While the Suite does not put any limitations on the number of instances that can be created, we strongly recommend keeping the number of instances down to **one** or **two**.
@@ -1065,8 +1065,8 @@ While the Suite does not put any limitations on the number of instances that can
 You can listen for four different events from the Suite.
 
 * `SDK_READY_FROM_CACHE`. This event fires once the Suite is ready to evaluate treatments using a locally cached version of your rollout plan from a previous session (which might be stale). If there is data in the cache, this event fires almost immediately, since access to the cache is fast; otherwise, it doesn't fire.
-* `SDK_READY`. This event fires once the Suite is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Split servers.
-* `SDK_READY_TIMED_OUT`. This event fires if there is no cached version of your rollout plan in disk cache, and the Suite could not download the data from Split servers within the time specified by the `ready` setting of the `SplitClientConfig` object. This event does not indicate that the Suite initialization was interrupted. The Suite continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_READY`. This event fires once the Suite is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
+* `SDK_READY_TIMED_OUT`. This event fires if there is no cached version of your rollout plan in disk cache, and the Suite could not download the data from Harness servers within the time specified by the `ready` setting of the `SplitClientConfig` object. This event does not indicate that the Suite initialization was interrupted. The Suite continues downloading the rollout plan and fires the `SDK_READY` event when finished. This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
 * `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in the Split user interface.
 
 To define what is executed after each event, create an extension of `SplitEventTask`.
@@ -1190,8 +1190,8 @@ The Suite allows you to disable the tracking of events and impressions until use
 The `userConsent` configuration parameter lets you set the initial consent status of the Suite instance, and the Suite method `UserConsent.setStatus(boolean)` lets you grant (enable) or decline (disable) the dynamic data tracking.
 
 There are three possible initial states:
- * `'GRANTED'`: the user grants consent for tracking events and impressions. The Suite sends them to Split cloud. This is the default value if `userConsent` param is not defined.
- * `'DECLINED'`: the user declines consent for tracking events and impressions. The Suite does not send them to Split cloud.
+ * `'GRANTED'`: the user grants consent for tracking events and impressions. The Suite sends them to Harness FME servers. This is the default value if `userConsent` param is not defined.
+ * `'DECLINED'`: the user declines consent for tracking events and impressions. The Suite does not send them to Harness FME servers.
  * `'UNKNOWN'`: the user neither grants nor declines consent for tracking events and impressions. The Suite tracks them in its internal storage, and eventually either sends them or not if the consent status is updated to `'GRANTED'` or `'DECLINED'` respectively. The status can be updated at any time with the `setUserConsent` Suite method.
 
 <Tabs>
@@ -1199,16 +1199,16 @@ There are three possible initial states:
 ```java
 // Overwrites the initial consent status of the Suite instance, which is 'GRANTED' by default.
 // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
-// so the Suite locally tracks data but not send it to Split cloud until consent is changed to 'GRANTED'.
+// so the Suite locally tracks data but not send it to Harness FME servers until consent is changed to 'GRANTED'.
 SplitClientConfig config = SplitClientConfig.builder()
     .userConsent(UserConsent.UNKNOWN)
     .build();
 SplitSuite suite = SplitSuiteBuilder.build("YOUR_SDK_KEY",
         new Key(mUserKey, null),
         config, context);
-// Changed User Consent status to 'GRANTED'. Data is sent to Split cloud.
+// Changed User Consent status to 'GRANTED'. Data is sent to Harness FME servers.
 suite.setUserConsent(true);
-// Changed User Consent status to 'DECLINED'. Data is not sent to Split cloud.
+// Changed User Consent status to 'DECLINED'. Data is not sent to Harness FME servers.
 suite.setUserConsent(false);
 // The 'getUserConsent' method returns User Consent status.
 // We expose the constants for customer checks and tracking.
@@ -1225,16 +1225,16 @@ if (suite.getUserConsent() == UserConsent.DECLINED) {
 ```kotlin
 // Overwrites the initial consent status of the Suite instance, which is 'GRANTED' by default.
 // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
-// so the Suite locally tracks data but not send it to Split cloud until consent is changed to 'GRANTED'.
+// so the Suite locally tracks data but not send it to Harness FME servers until consent is changed to 'GRANTED'.
 val config: SplitClientConfig = SplitClientConfig.builder()
     .userConsent(UserConsent.UNKNOWN)
     .build()
 val suite: SplitSuite = SplitSuiteBuilder.build("YOUR_SDK_KEY",
         Key(mUserKey, null),
         config, context)
-// Changed User Consent status to 'GRANTED'. Data is sent to Split cloud.
+// Changed User Consent status to 'GRANTED'. Data is sent to Harness FME servers.
 suite.setUserConsent(true)
-// Changed User Consent status to 'DECLINED'. Data is not sent to Split cloud.
+// Changed User Consent status to 'DECLINED'. Data is not sent to Harness FME servers.
 suite.setUserConsent(false)
 // The 'getUserConsent' method returns User Consent status.
 // We expose the constants for customer checks and tracking.
@@ -1285,7 +1285,7 @@ CertificatePinningConfiguration certPinningConfig = CertificatePinningConfigurat
 
     .build();
 
-// Set the CertificatePinningConfiguration property for the Split client configuration
+// Set the CertificatePinningConfiguration property for the SDK client configuration
 SplitClientConfig config = SplitClientConfig.builder()
     .certificatePinningConfiguration(certPinningConfig)
     // you can add other configuration properties here
@@ -1315,7 +1315,7 @@ val certPinningConfig = CertificatePinningConfiguration.builder()
 
     .build()
 
-// Set the CertificatePinningConfiguration property for the Split client configuration
+// Set the CertificatePinningConfiguration property for the SDK client configuration
 val config = SplitClientConfig.builder()
     .certificatePinningConfiguration(certPinningConfig)
     // you can add other configuration properties here

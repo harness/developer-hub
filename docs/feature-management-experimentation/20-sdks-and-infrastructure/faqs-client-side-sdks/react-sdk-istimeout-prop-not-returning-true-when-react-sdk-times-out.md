@@ -12,7 +12,7 @@ sidebar_position: 3
 
 ## Issue
 
-When using Split React SDK, it is recommended to check if the SDK has timed out within a specific timeout before it finish downloading the cache and signal its ready.
+When using React SDK, it is recommended to check if the SDK has timed out within a specific timeout before it finish downloading the cache and signal its ready.
 
 For the example below, the code does not display the message when SDK has timed-out:
 ```javascript

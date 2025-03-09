@@ -1,6 +1,6 @@
 ---
-title: "Ruby SDK: Example using Split SDK with Rails and Sidekiq service"
-sidebar_label: "Ruby SDK: Example using Split SDK with Rails and Sidekiq service"
+title: "Ruby SDK: Example using FME SDK with Rails and Sidekiq service"
+sidebar_label: "Ruby SDK: Example using FME SDK with Rails and Sidekiq service"
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 2
@@ -10,7 +10,7 @@ sidebar_position: 2
   <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360006667012-Block-traffic-until-the-SDK-is-ready </button>
 </p>
 
-Example: Basic example to use Split Ruby SDK in Rails and Sidekiq service.
+Example: Basic example to use Ruby SDK in Rails and Sidekiq service.
 
 Environment:
 

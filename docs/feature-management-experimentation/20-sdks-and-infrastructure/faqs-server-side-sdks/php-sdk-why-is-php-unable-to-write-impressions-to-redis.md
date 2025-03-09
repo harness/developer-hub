@@ -36,7 +36,7 @@ $sdkConfig = array(
 
 ## Solution
 
-Since the Split PHP SDK uses predis library, we can add the password parameter to the configuration structure:
+Since the PHP SDK uses Redis library, we can add the password parameter to the configuration structure:
 ```
 $options = [
   'prefix' => '',

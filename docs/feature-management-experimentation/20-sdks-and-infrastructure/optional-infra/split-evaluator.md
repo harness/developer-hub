@@ -10,7 +10,7 @@ sidebar_position: 2
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator </button>
 </p>
 
-Using Split involves using one of our SDKs. The Split team builds and maintains these SDKs for some of the most popular language libraries and the SDKs are available under open source licenses. For languages where there is no native SDK support, Split offers the [Split Evaluator](https://github.com/splitio/split-evaluator), a small service capable of evaluating some or all available features for a given customer via a REST endpoint.
+Using Harness FME involves using one of our SDKs. The FME team builds and maintains these SDKs for some of the most popular language libraries and the SDKs are available under open source licenses. For languages where there is no native SDK support, Harness offers the [Split Evaluator](https://github.com/splitio/split-evaluator), a small service capable of evaluating some or all available features for a given customer via a REST endpoint.
 
 ## Setup
 The service is available via Docker or command line and its source code is available at [https://github.com/splitio/split-evaluator]( https://github.com/splitio/split-evaluator).
@@ -628,7 +628,7 @@ For more information about how to configure the impression listener, refer to [C
 
 ## Multiple environments support
 
-Split Evaluator allows you to set more than one environment. This means that it's possible to evaluate treatments for many Split SDK Keys. To use this feature, the evaluator requires that each Split SDK Key is paired with a custom authorization token (which can be any string) in the environment variable SPLIT_EVALUATOR_ENVIRONMENTS as is shown in the following example:
+Split Evaluator allows you to set more than one environment. This means that it's possible to evaluate treatments for many SDK keys. To use this feature, the evaluator requires that each SDK key is paired with a custom authorization token (which can be any string) in the environment variable SPLIT_EVALUATOR_ENVIRONMENTS as is shown in the following example:
 
 ```bash
 SPLIT_EVALUATOR_ENVIRONMENTS='[{"API_KEY":"<SDK_KEY_env1>","AUTH_TOKEN":"<CUSTOM_AUTHENTICATION_1>"},{"API_KEY":"<SDK_KEY_env2>","AUTH_TOKEN":"<CUSTOM_AUTHENTICATION_2>"}]' npm start
@@ -674,18 +674,18 @@ The SDK exposes configuration parameters that you can use to optimize SDK perfor
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- |
-| scheduler.featuresRefreshRate | The SDK polls Split servers for changes to feature rollout plans. This parameter controls this polling period in seconds. | 60 |
-| scheduler.segmentsRefreshRate  | The SDK polls Split servers for changes to segment definitions. This parameter controls this polling period in seconds. | 60  |
-| scheduler.impressionsRefreshRate  | The SDK sends information on who got what treatment at what time back to Split servers to power analytics. This parameter controls how often this data is sent to Split servers. The parameter is in seconds. | 300 |
+| scheduler.featuresRefreshRate | The SDK polls Harness servers for changes to feature rollout plans. This parameter controls this polling period in seconds. | 60 |
+| scheduler.segmentsRefreshRate  | The SDK polls Harness servers for changes to segment definitions. This parameter controls this polling period in seconds. | 60  |
+| scheduler.impressionsRefreshRate  | The SDK sends information on who got what treatment at what time back to Harness servers to power analytics. This parameter controls how often this data is sent to Harness servers. The parameter is in seconds. | 300 |
 | scheduler.impressionsQueueSize | The max amount of impressions we queue. If the queue is full, the SDK flushes the impressions and resets the timer. | 30000 |
-| scheduler.eventsPushRate  | The SDK sends tracked events to Split servers. This setting controls that flushing rate in seconds. | 60  |
+| scheduler.eventsPushRate  | The SDK sends tracked events to Harness servers. This setting controls that flushing rate in seconds. | 60  |
 | scheduler.eventsQueueSize  | The max amount of events we queue. If the queue is full, the SDK flushes the events and resets the timer. | 500  |
-| scheduler.telemetryRefreshRate | The SDK caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers in seconds. | 3600 seconds (1 hour) |
+| scheduler.telemetryRefreshRate | The SDK caches diagnostic data that it periodically sends to Harness servers. This configuration controls how frequently this data is sent back to Harness servers in seconds. | 3600 seconds (1 hour) |
 | startup.requestTimeoutBeforeReady  | Time to wait for a request before the SDK is ready. If this time expires, Node.js SDK tries again `retriesOnFailureBeforeReady` times before notifying its failure to be `ready`. Zero means no timeout.  | 15  |
 | startup.retriesOnFailureBeforeReady  | Number of quick retries we do while starting up the SDK.  | 1  |
 | startup.readyTimeout  | Maximum amount of time in seconds to wait before notifying a timeout. Zero means no timeout, so no `SDK_READY_TIMED_OUT` event is fired. | 15  |
 | sync.splitFilters | Filter specific feature flags to be synced and evaluated by the SDK. This is formed by a type string property and a list of string values for the given criteria. Using the types 'bySet' (recommended, flag sets are available in all tiers) or 'byName', pass an array of strings defining the query. If empty or unset, all feature flags are downloaded by the SDK. | [] |
-| sync.impressionsMode | This configuration defines how impressions (decisioning events) are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Split. This is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Split; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
+| sync.impressionsMode | This configuration defines how impressions (decisioning events) are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Harness. This is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Harness; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
 | debug  | Boolean flag or log level string ('ERROR', 'WARN', 'INFO', or 'DEBUG') for activating SDK logs. | false |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK falls back to the polling mechanism. If false, the SDK polls for changes as usual without attempting to use streaming. | true |
 
@@ -728,20 +728,20 @@ For those configurations available on global config and environment variables (f
 | **Variable** | **Description** | **Default** |
 | --- | --- | --- |
 | SPLIT_EVALUATOR_ENVIRONMENTS | String list of environments `"API_KEY":string, "AUTH_TOKEN":string}[]` | - |
-| SPLIT_EVALUATOR_API_KEY | Split SDK key to authenticate against Split services. | - |
-| SPLIT_EVALUATOR_AUTH_TOKEN | Authentication key used to authenticate every request via the Authorization header. This is **not** a Split SDK key but an arbitrary value defined by the user. | No authentication |
+| SPLIT_EVALUATOR_API_KEY | SDK key to authenticate against Harness FME services. | - |
+| SPLIT_EVALUATOR_AUTH_TOKEN | Authentication key used to authenticate every request via the Authorization header. This is **not** a SDK key but an arbitrary value defined by the user. | No authentication |
 | SPLIT_EVALUATOR_GLOBAL_CONFIG | String SDK config for every environment. | - |
 | SPLIT_EVALUATOR_LOG_LEVEL | Use for setting the log level for service (NONE|INFO|DEBUG|WARN|ERROR). | - |
 | SPLIT_EVALUATOR_SERVER_PORT | TCP port of the server inside the container. When using in Docker, make sure to match the right side of `-p <ext_port>:<internal_port>` with the value of this variable. | 7548 |
 | SPLIT_EVALUATOR_IMPRESSION_LISTENER_ENDPOINT | Use it for providing a webhook to send a bulk of Impressions | - |
-| SPLIT_EVALUATOR_SPLITS_REFRESH_RATE | The SDK polls Split servers for changes to feature roll-out plans. This parameter controls this polling period in seconds. | 60 |
-| SPLIT_EVALUATOR_SEGMENTS_REFRESH_RATE | 	The SDK polls Split servers for changes to segment definitions. This parameter controls this polling period in seconds. | 60 |
-| SPLIT_EVALUATOR_METRICS_POST_RATE | The SDK sends diagnostic metrics to Split servers. This parameters controls this metric flush period in seconds. | 60 |
-| SPLIT_EVALUATOR_IMPRESSIONS_POST_RATE | The SDK sends information on who got what treatment at what time back to Split servers to power analytics. This parameter controls how often this data is sent to Split servers. The parameter should be in seconds. | 60 |
-| SPLIT_EVALUATOR_EVENTS_POST_RATE | The SDK sends tracked events to Split servers. This setting controls that flushing rate in seconds. | 60 |
+| SPLIT_EVALUATOR_SPLITS_REFRESH_RATE | The SDK polls Harness servers for changes to feature roll-out plans. This parameter controls this polling period in seconds. | 60 |
+| SPLIT_EVALUATOR_SEGMENTS_REFRESH_RATE | 	The SDK polls Harness servers for changes to segment definitions. This parameter controls this polling period in seconds. | 60 |
+| SPLIT_EVALUATOR_METRICS_POST_RATE | The SDK sends diagnostic metrics to Harness servers. This parameters controls this metric flush period in seconds. | 60 |
+| SPLIT_EVALUATOR_IMPRESSIONS_POST_RATE | The SDK sends information on who got what treatment at what time back to Harness servers to power analytics. This parameter controls how often this data is sent to Harness servers. The parameter should be in seconds. | 60 |
+| SPLIT_EVALUATOR_EVENTS_POST_RATE | The SDK sends tracked events to Harness servers. This setting controls that flushing rate in seconds. | 60 |
 | SPLIT_EVALUATOR_EVENTS_QUEUE_SIZE | The max amount of events we queue. If the queue is full, the SDK flushes the events and reset the timer. | 500 |
 | SPLIT_EVALUATOR_SWAGGER_URL | The url used as base for any Swagger test curl commands. | http://localhost:7548 |
-| SPLIT_EVALUATOR_IP_ADDRESSES_ENABLED | Flag to disable IP addresses and host name from being sent to the Split backend.  | 'true' |
+| SPLIT_EVALUATOR_IP_ADDRESSES_ENABLED | Flag to disable IP addresses and host name from being sent to the Harness servers.  | 'true' |
 
 ## HTTPS/SSL
 

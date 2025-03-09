@@ -12,7 +12,7 @@ sidebar_position: 19
 
 ## Question
 
-The JavaScript SDK is capable of initializing multiple client objects from the same Split factory object, each with their unique user key (user id):
+The JavaScript SDK is capable of initializing multiple client objects from the same SDK factory object, each with their unique user key (user id):
 
 ```javascript
 client1 = factory.client("user_id1");

@@ -32,7 +32,7 @@ type() argument 1 must be string, not unicode
 ```
 
 ## Root cause
-The Python Split SDK requires enum34 library version 1.1.5 or above, if a lower version of enum34 installed (for example 1.0.x), or the environment is forced to use this version, the exception above is thrown when initializing SDK factory object.
+The Python SDK requires enum34 library version 1.1.5 or above, if a lower version of enum34 installed (for example 1.0.x), or the environment is forced to use this version, the exception above is thrown when initializing SDK factory object.
 
 ## Solution
 Upgrade enum34 to 1.1.5 or above using pip command. As of this article publishing date, the latest version is 1.1.6.

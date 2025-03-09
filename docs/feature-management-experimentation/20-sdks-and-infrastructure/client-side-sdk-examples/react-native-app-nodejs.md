@@ -10,7 +10,7 @@ sidebar_position: 4
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360043632911-React-Native-App-using-Split-NodeJS-SDK-example </button>
 </p>
 
-Example: Basic example for React Native app project using Split JavaScript SDK 
+Example: Basic example for React Native app project using JavaScript SDK 
 
 Example Repo: https://github.com/splitio/react-native-sdk-example
 
@@ -23,7 +23,7 @@ $ cd react-native-sdk-example/
 $ npm install --save @splitsoftware/splitio # or 'yarn add @splitsoftware/splitio' if using yarn dependency manager
 ```
 
-Additionally, Split SDK can be used with React-Native-CLI. You can take a look at the [React Native getting started guide](https://facebook.github.io/react-native/docs/getting-started.html) if you want to test on your own application.
+Additionally, SDK can be used with React-Native-CLI. You can take a look at the [React Native getting started guide](https://facebook.github.io/react-native/docs/getting-started.html) if you want to test on your own application.
 
 ```
 $ npm install -g react-native-cli
@@ -73,10 +73,10 @@ Open it in the [Expo app](https://expo.io/) on your phone to view it. It will re
 Runs the [jest](https://github.com/facebook/jest) test runner on your tests.
 
 :::note
-No test cases have been added since this is an example app. If you're looking for how to test with Split SDK, you can:
+No test cases have been added since this is an example app. If you're looking for how to test with SDK, you can:
 
 * mock the module import, see Jest documentation for that [here](https://facebook.github.io/jest/docs/en/jest-object.html#jestmockmodulename-factory-options)
-* use the localhost (offline) mode of the JavaScript Split SDK, more information [here](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#localhost-mode)
+* use the localhost (offline) mode of the JavaScript SDK, more information [here](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#localhost-mode)
 :::
 
 ### `npm run ios`

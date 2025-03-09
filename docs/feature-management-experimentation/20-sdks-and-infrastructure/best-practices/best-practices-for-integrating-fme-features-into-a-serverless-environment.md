@@ -1,22 +1,22 @@
 ---
-title: Best practices for integrating Split feature flags into a serverless environment
-sidebar_label: Best practices for integrating Split feature flags into a serverless environment
+title: Best practices for integrating Harness FME feature flags into a serverless environment
+sidebar_label: Best practices for integrating Harness FME feature flags into a serverless environment
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360038143771-SDK-versioning-policy, www.split.io link:  https://www.split.io/blog/serverless-applications-powered-split-feature-flags/  <br /> ✘ images hosted on www.split.io <br /> ✘ links to www.split.io </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/17231291207309-Best-practices-for-integrating-Split-feature-flags-into-a-serverless-environment </button>
 </p>
 
 In serverless environments, data persistence is best handled by externalizing state. This avoids the performance hit of "cold starts" where processes have to load and cache data before they can perform. This is the case with feature flagging SDKs as well.
 
-Read the blog post, ___Serverless Applications Powered by FME Feature Flags___ (below) for examples of how to achieve the best performance when using Split from within Lambda functions in Amazon AWS.
+Read the blog post, ___Serverless Applications Powered by FME Feature Flags___ (below) for examples of how to achieve the best performance when using FME from within Lambda functions in Amazon AWS.
 
 ## Serverless Applications Powered by FME Feature Flags
 
-The concept of [Serverless Computing](https://en.wikipedia.org/wiki/Serverless_computing), also called [Functions as a Service (FaaS)](https://martinfowler.com/articles/serverless.html#unpacking-faas) is fast becoming a trend in software development. This blog post will highlight steps and best practices for integrating Split feature flags into a serverless environment.
+The concept of [Serverless Computing](https://en.wikipedia.org/wiki/Serverless_computing), also called [Functions as a Service (FaaS)](https://martinfowler.com/articles/serverless.html#unpacking-faas) is fast becoming a trend in software development. This blog post will highlight steps and best practices for integrating FME feature flags into a serverless environment.
 
 ### A quick look into Serverless Architecture
 
@@ -31,18 +31,18 @@ Some advantages of this architecture include:
 
 Some of the main providers for serverless architecture include, Amazon: [AWS Lambda](https://aws.amazon.com/lambda/); Google: [Cloud Functions](https://cloud.google.com/functions/); and Microsoft: [Azure Functions](https://azure.microsoft.com/en-us/services/functions/). Regardless of which provider you may choose, you will still reap the benefits of feature flagging without real servers.
 
-In this blog post, we’ll focus on AWS lambda with functions written in JavaScript running on [Node.js](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK). Additionally we’ll highlight one approach to interacting with Split feature flags on a serverless application. It’s worth noting that there are several ways in which one can interact with Split on a serverless application, but we will highlight just one of them in this post.
+In this blog post, we’ll focus on AWS lambda with functions written in JavaScript running on [Node.js](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK). Additionally we’ll highlight one approach to interacting with FME feature flags on a serverless application. It’s worth noting that there are several ways in which one can interact with FME on a serverless application, but we will highlight just one of them in this post.
 
 ### Externalizing state
 
-If we are using Lambda functions in Amazon AWS, the best approach would be to use ElastiCache (Redis flavor) as an in-memory external data store, where we can store our feature rules that will be used by the Split SDKs running on Lambda functions to generate the feature flags.
+If we are using Lambda functions in Amazon AWS, the best approach would be to use ElastiCache (Redis flavor) as an in-memory external data store, where we can store our feature rules that will be used by the FME SDKs running on Lambda functions to generate the feature flags.
 
-One way to achieve this is to set up the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer), a background service created to synchronize Split information for multiple SDKs onto an external cache, Redis. To learn more about Split Synchronizer, check out our recent blog post.
+One way to achieve this is to set up the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer), a background service created to synchronize FME information for multiple SDKs onto an external cache, Redis. To learn more about Split Synchronizer, check out our recent blog post.
 
-On the other hand, the Split Node SDK has a [built-in Redis integration](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK#state-sharing-redis-integration) that can be used to communicate with a Redis ElastiCache cluster. The diagram below illustrates the set up:
+On the other hand, the FME Node.js SDK has a [built-in Redis integration](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK#state-sharing-redis-integration) that can be used to communicate with a Redis ElastiCache cluster. The diagram below illustrates the set up:
 
 ![](https://www.split.io/wp-content/uploads/split-redis-elasticache-architecture.jpg)
-Redis holds Split definitions which are kept in sync by the Split Synchronizer and used by lambda functions​
+Redis holds FME definitions which are kept in sync by the Split Synchronizer and used by lambda functions​
 
 ### Step 1: Preparing the ElastiCache cluster
 
@@ -71,7 +71,7 @@ At this point we have the EC2 cluster and we have our task. The next step is to 
 
 ![](https://www.split.io/wp-content/uploads/create-split-ecs-service.png)
 split-synchronizer ECS service creation
-Finish with any custom configuration you may need, review and create the service. This will launch as many instances as specified. If there were no errors, the feature flags definitions provided by the Split service should already be in the external cache, and ready to be used by the SDKs integrated in the lambda functions that we’ll set up in the next section.
+Finish with any custom configuration you may need, review and create the service. This will launch as many instances as specified. If there were no errors, the feature flags definitions provided by the service should already be in the external cache, and ready to be used by the SDKs integrated in the lambda functions that we’ll set up in the next section.
 
 ### Step 3: Using Feature Flags on Lambda Functions
 
@@ -81,7 +81,7 @@ There are two things we need to know before we start:
   * the event that triggered the function;
   * the context;
   * a callback function to return the results.
-2. Lambda functions can be written directly on the AWS console as long as it doesn’t have any library dependencies. If extra dependencies are needed, a [deployment package](http://docs.aws.amazon.com/lambda/latest/dg/nodejs-create-deployment-pkg.html) should be built, which is no more than a .zip file with the functions code, as well as the required dependencies. Since we’ll be integrating a Split SDK to provide feature flags, we will be adding extra dependencies, and as such will have to create a deployment package.
+2. Lambda functions can be written directly on the AWS console as long as it doesn’t have any library dependencies. If extra dependencies are needed, a [deployment package](http://docs.aws.amazon.com/lambda/latest/dg/nodejs-create-deployment-pkg.html) should be built, which is no more than a .zip file with the functions code, as well as the required dependencies. Since we’ll be integrating an FME SDK to provide feature flags, we will be adding extra dependencies, and as such will have to create a deployment package.
 
 ### Our custom code
 
@@ -158,10 +158,10 @@ That’s it! To test your function manually, just click the “Test” button, s
 
 ### Summary
 
-There are few ways to make use of Split [Feature Flags](https://www.split.io/articles/top-10-feature-flag-examples/) in a serverless application. This blog post covers the case of using Split Synchronizer and for javascript functions.
+There are few ways to make use of FME [feature flags](https://www.split.io/articles/top-10-feature-flag-examples/) in a serverless application. This blog post covers the case of using Split Synchronizer and for javascript functions.
 
-In future posts we’ll share another approach using Split “callhome” or Split Evaluator which is a microservice that can evaluate flags and return the result, in addition to storing the rules to evaluate the flags as highlighted in this post.
+In future posts we’ll share another approach using Split Evaluator which is a microservice that can evaluate flags and return the result, in addition to storing the rules to evaluate the flags as highlighted in this post.
 
-In case you’re wondering “can’t I hit the Split servers from my Lambda function?” The answer is yes, in a “standalone” mode, but it won’t be as efficient as having the state in one common place i.e. Redis. It’s NOT recommended to run the SDK in a standalone mode due to the latency it may incur at the creation of one SDK object per function.
+In case you’re wondering “can’t I hit the Harness servers from my Lambda function?” The answer is yes, in a “standalone” mode, but it won’t be as efficient as having the state in one common place i.e. Redis. It’s NOT recommended to run the SDK in a standalone mode due to the latency it may incur at the creation of one SDK object per function.
 
-For further help using Split synchronizer in a serverless environment [contact us](https://www.split.io/company/contact/) or use the support widget in our cloud console — we’re here to help!
+For further help using Split Synchronizer in a serverless environment [contact us](https://www.split.io/company/contact/) or use the support widget in our cloud console — we’re here to help!

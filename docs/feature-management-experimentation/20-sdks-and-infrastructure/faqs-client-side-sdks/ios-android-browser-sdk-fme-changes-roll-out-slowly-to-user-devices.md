@@ -1,6 +1,6 @@
 ---
-title: "Mobile and web SDK: Split changes roll out slowly to user devices"
-sidebar_label: "Mobile and web SDK: Split changes roll out slowly to user devices"
+title: "Mobile and web SDK: FME changes roll out slowly to user devices"
+sidebar_label: "Mobile and web SDK: FME changes roll out slowly to user devices"
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 7
@@ -14,7 +14,7 @@ sidebar_position: 7
 
 When making a change to a feature flag through the web UI, mobile (iOS and Android) and JavaScript Browser SDKs do not reflect that change at the same time. A small population of devices are synched in the first day, then more user devices get synched in subsequent days until all SDKs are updated. 
 
-Why do Split changes propagate slowly to user devices?
+Why do FME changes propagate slowly to user devices?
 
 ## Root Cause
 
@@ -25,6 +25,6 @@ This scenario has two potential root causes:
 
 ## Solution
 
-Always calculate treatments after `SDK_READY` event fires. This event fires once the synchronization with Split cloud is complete and will guarantee the latest changes are reflected in the cache.
+Always calculate treatments after `SDK_READY` event fires. This event fires once the synchronization with Harness FME servers is complete and will guarantee the latest changes are reflected in the cache.
 
 While `SDK_READY_FROM_CACHE` is very useful to allow calculating treatments quickly, it is recommended to check the treatment again after `SDK_READY` and reflect the treatment in case there is a change.

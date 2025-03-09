@@ -17,7 +17,7 @@ The concept gained traction in the early 2010s, with the rise of Node.js, which 
 
 By bridging the gap between server and client, isomorphic JavaScript significantly improved application performance, SEO, and overall user experience, becoming a fundamental approach in modern web development.
 
-In the [isomorphic_js_wrapper_demo code example](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/JavaScript-Isomorphic-Wrapper), we show that the Split JavaScript SDK is, indeed, isomorphic.
+In the [isomorphic_js_wrapper_demo code example](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/JavaScript-Isomorphic-Wrapper), we show that the JavaScript SDK is, indeed, isomorphic.
 
 The demo evaluates flags on both the server side and the client side using the same SDK Wrapper. This allows you to maintain only a single codebase for wrapping Split's SDK and ensures that you use the proper methods when on the server and the client with the same code.
 

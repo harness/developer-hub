@@ -53,7 +53,7 @@ exports.handler = async (event) => {
 };
 ```
 
-2. Add the dependency libraries for Split SDK, run the command below at the root of your project folder:
+2. Add the dependency libraries for the SDK, run the command below at the root of your project folder:
   ```
 npm install --save @splitsoftware/splitio@10.16.0
 ```

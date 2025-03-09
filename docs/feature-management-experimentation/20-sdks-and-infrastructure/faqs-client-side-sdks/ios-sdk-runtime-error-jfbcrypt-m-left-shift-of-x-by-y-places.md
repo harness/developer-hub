@@ -12,7 +12,7 @@ sidebar_position: 13
 
 ## Issue
 
-Using Objective-C project with iOS SDK, the following runtime error shows as soon as the Split factory object is initialized:
+Using Objective-C project with iOS SDK, the following runtime error shows as soon as the SDK factory object is initialized:
 
 ```
 .../Pods/Split/Split/Common/Utils/JFBCrypt/JFBCrypt.m:578:16: runtime error: left shift of 16488694 by 8 places cannot be represented in type 'SInt32' (aka 'int')

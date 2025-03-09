@@ -34,7 +34,7 @@ Jump to the setup process for the mode your application is built in:
 
 ## Initialization: Multi-threaded mode
 
-Set up Split in your code base with two simple steps.
+Set up FME in your code base with two simple steps.
 
 ### 1. Import the SDK into your project using pip
 
@@ -42,21 +42,21 @@ Set up Split in your code base with two simple steps.
 pip install 'splitio_client[cpphash]==10.2.0'
 ```
 
-### 2. Instantiate the SDK and create a new split client
+### 2. Instantiate the SDK and create a new SDK factory client
 
 :::danger[If upgrading an existing SDK - Block until ready changes]
 Starting in version `8.0.0`, readiness has been migrated to a two part implementation. See below for syntax changes you must make if upgrading your SDK to the newest version.
 :::
 
-When the SDK is instantiated in `in-memory` mode, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Split servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK doesn't fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the SDK is instantiated in `in-memory` mode, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK doesn't fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready.
 Since version `8.0.0` This is done by calling the `.block_until_ready()` method in the factory object.
 This method also accepts a maximum time (in seconds or fractions of it) to wait until the SDK is ready, or throw an exception in case it's not.
 
-We recommend instantiating the Split factory once as a singleton and reusing it throughout your application.
+We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the Split environment that you would like to access. The SDK key is available in the Split user interface, on your Admin settings page, API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ```python title="Python"
 from splitio import get_factory
@@ -78,7 +78,7 @@ Now you can start asking the SDK to evaluate treatments for your customers.
 
 Python's asyncio library had gather lot of attention and support and provides many advantages to multi-threaded programming especially in I/O operations, checkout the [official doc](https://docs.python.org/3/library/asyncio.html) for more info.
 
-Set up Split in your code base with two simple steps.
+Set up FME in your code base with two simple steps.
 
 ### 1. Import the SDK into your project using pip
 
@@ -86,7 +86,7 @@ Set up Split in your code base with two simple steps.
 pip install 'splitio_client[cpphash,asyncio]==10.2.0'
 ```
 
-### 2. Instantiate the SDK and create a new split client
+### 2. Instantiate the SDK and create a new SDK factory client
 
 :::danger[asyncio support]
 Starting in version `10.0.0`, SDK support asyncio library, this required a breaking change to upgrade the python supported version to be 3.7.16 or later.
@@ -96,7 +96,7 @@ Starting in version `10.0.0`, SDK support asyncio library, this required a break
 When using the SDK, regardless if the mode is asyncio or Multi-threaded, all the public SDK API are identical, with only one exception; when initializing the factory.
 :::
 
-Similar to Multi-threaded mode, when the SDK is instantiated in `in-memory`, it kicks off background asyncio tasks to update an in-memory cache with small amounts of data fetched from Split servers. To make sure the SDK cache is properly loaded before asking it for a treatment, utilize `block_until_ready()` method.
+Similar to Multi-threaded mode, when the SDK is instantiated in `in-memory`, it kicks off background asyncio tasks to update an in-memory cache with small amounts of data fetched from Harness servers. To make sure the SDK cache is properly loaded before asking it for a treatment, utilize `block_until_ready()` method.
 
 We recommend instantiating the SDK once as a singleton and reusing it throughout your application.
 
@@ -129,7 +129,7 @@ There are a few extra steps for setting up our SDK with Python in multi-process 
 ### SDK architecture
 
 When the application is run in a server that spawns multiple processes (workers) to handle HTTP requests, all of them need to access fetched feature flags and segments as well as queuing up impressions and events. Since processes cannot access each other's memory, using the standalone operation mode will result in several sets of synchronisation tasks (threads) doing the same job (at least one per http worker - possibly more, since workers are often restarted).
-To avoid this scenario, the Split.IO SDK for Python supports an alternative operation mode, which uses an external tool called `Split-Synchronizer` and a `redis` cache. Our synchronization tool is responsible for maintaining the split data updated and flushing impressions, events and metrics to the split servers.
+To avoid this scenario, the Split.IO SDK for Python supports an alternative operation mode, which uses an external tool called `Split-Synchronizer` and a `redis` cache. Our synchronization tool is responsible for maintaining the FME data updated and flushing impressions, events and metrics to the split servers.
 If you are using a preforked-type server such as uWSGI or GUnicorn, we also offer a series of methods that can be attached to the server's "post-fork" hooks in order to ensure synchronization runs properly on the worker process after the master is forked.
 
 The previously mentioned approaches are described in depth below:
@@ -141,7 +141,7 @@ The previously mentioned approaches are described in depth below:
 
 Before you get started with the cache, download the correct version of Redis to your machine. Our SDK Redis integration requires a Redis version `2.10.5` or later. Also want to make sure to start your Redis server. Refer to the [Redis documentation](https://redis.io/topics/quickstart) for help. After that, there are a few more steps to set up the cache with Redis.
 
-#### 1. Install the Split SDK into your project
+#### 1. Install the SDK into your project
 
 Use `pip install` to install the SDK. Note that the package is different for standard Python and for Django, as shown below.
 
@@ -171,11 +171,11 @@ Since version `2.0.0` of the split-synchronizer, we use a more efficient scheme 
 
 Set up the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) to sync data to a Redis cache. Follow the steps in the [set up article](https://help.split.io/hc/en-us/articles/360019686092), then come back to this doc and go to step 3 to instantiate the client, below.
 
-#### 3. Instantiate the SDK client with Redis enabled
+#### 3. Instantiate the SDK factory client with Redis enabled
 
 If you are using Django, there is one extra step to add `django_splitio` to `INSTALLED_APPS` in your Django settings and add a SPLITIO dictionary in the Django settings. Input your own SDK key in for `YOUR_SDK_KEY`.
 
-To instantiate the SDK client, copy and paste the code snippet below into your code base where you want to use Split to roll out your feature flag. Again, note that the syntax is different for standard Python and for Django.
+To instantiate the SDK factory client, copy and paste the code snippet below into your code base where you want to use Harness FME to roll out your feature flag. Again, note that the syntax is different for standard Python and for Django.
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
@@ -341,10 +341,10 @@ This functionality is currently not supported for this SDK, but is planned for a
 
 ### Preforked client setup
 
-Since version `8.4.0` we added support for running our SDK in standalone mode in preforked multiprocess servers. With this feature you can take advantage of using Split in preforking servers such as GUnicorn or uWSGI and attaching it to the `postfork` hooks. This can yield significant performance improvements in terms of memory in comparison to use lazy-style initialization and greatly reduced evaluation time in comparison to use Redis + Split Synchronizer approach at the expense of CPU and BG network traffic.
-There are two main steps for initializating the Split SDK by using hooks:
+Since version `8.4.0` we added support for running our SDK in standalone mode in preforked multiprocess servers. With this feature you can take advantage of using FME in preforking servers such as GUnicorn or uWSGI and attaching it to the `postfork` hooks. This can yield significant performance improvements in terms of memory in comparison to use lazy-style initialization and greatly reduced evaluation time in comparison to use Redis + Split Synchronizer approach at the expense of CPU and BG network traffic.
+There are two main steps for initializating the SDK by using hooks:
 1. `preforkedInitialization`: this is a new configuration option that will tell the SDK that it should initiate the SDK in master mode and it will not start polling nor streaming.
-2. `factory.resume()`: this is a new method provided by Split Factory that should be executed on newly forked http worker processes in order to resume synchronisation.
+2. `factory.resume()`: this is a new method provided by the factory that should be executed on newly forked http worker processes in order to resume synchronisation.
 
 :::warning
 Preforked client is not supported in asyncio mode.
@@ -358,9 +358,9 @@ There are a few extra steps to set up SDK with `postfork` option.
 1. Importing the `uwsgidecorators` module for handling hooks.
 2. Set `preforkedInitialization` as true in the sdk configs.
 3. Add and use the `postfork` decorator.
-5. Call `factory.resume()` method to resume Split tasks on each forked child process.
+5. Call `factory.resume()` method to resume tasks on each forked child process.
 
-**Note:** Make sure to add the parameter `--enable-threads` to enable multi-threading when starting the UWSGI app server. While Python SDK does support UWSGI app server in process based mode, for the SDK to synchronize with Split cloud, you need to enable the multi-threading option, as the background threads perform the synching task. For example:
+**Note:** Make sure to add the parameter `--enable-threads` to enable multi-threading when starting the UWSGI app server. While Python SDK does support UWSGI app server in process based mode, for the SDK to synchronize with Harness FME servers, you need to enable the multi-threading option, as the background threads perform the synching task. For example:
 
 ```bash title="Shell"
 uwsgi --http :8080 --chdir /var/app --wsgi-file ${WSGI_PATH} ${UWSGI_MODULE} --master
@@ -410,7 +410,7 @@ INSTALLED_APPS = (
         'preforkedInitialization': True ## Step 2
     }
 ## -------------------------
-## in setup Split module
+## in setup FME module
 from django_splitio import get_factory
 
 
@@ -452,9 +452,9 @@ For further reading about uwsgi decorators and postfork you can take a look at t
 
 ### Basic use
 
-After you instantiate the SDK client, you can start using the `get_treatment` method of the SDK client to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you want to serve the feature to.
+After you instantiate the SDK factory client, you can start using the `get_treatment` method of the SDK factory client to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you want to serve the feature to.
 
-From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in the Split UI. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
@@ -493,7 +493,7 @@ If the `key` attribute is something other than `string`, Python SDK returns `CON
 
 To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `get_treatment` method needs to be passed an attribute map at runtime.
 
-In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `get_treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `get_treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
 The `get_treatment` method supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
 
@@ -560,7 +560,7 @@ loop.run_until_complete(main())
 
 ### Multiple evaluations at once
 
-In some instances, you may want to evaluate treatments for multiple feature flag at once. Use the different variations of `get_treatments` method from the split client to do this.
+In some instances, you may want to evaluate treatments for multiple feature flag at once. Use the different variations of `get_treatments` method from the SDK factory client to do this.
 * `get_treatments`': Pass a list of the feature flag names you want treatments for.
 * `get_treatments_by_flag_set`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
 * `get_treatments_by_flag_sets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
@@ -623,7 +623,7 @@ To [leverage dynamic configurations with your treatments](https://help.split.io/
 
 This method will return an object containing the treatment and associated configuration.
 
-The config element will be a stringified version of the configuration JSON defined in the Split user interface. If there are no configs defined for a treatment, the SDK returns `None` for the config parameter.
+The config element will be a stringified version of the configuration JSON defined in Harness FME. If there are no configs defined for a treatment, the SDK returns `None` for the config parameter.
 
 This method takes the exact same set of arguments as the standard `get_treatment` method. See below for examples on proper usage:
 
@@ -737,7 +737,7 @@ for feature_flag, treatment_with_config in result.items():
 
 ### Shutdown
 
-The in-memory implementation of Python uses threads in Multi-threaded mode and tasks in asyncio mode to synchronize feature flags, segments, and impressions. If at any point in the application the split client is not longer needed, you can disable it by calling the `destroy()` method on the factory object.
+The in-memory implementation of Python uses threads in Multi-threaded mode and tasks in asyncio mode to synchronize feature flags, segments, and impressions. If at any point in the application the SDK factory client is not longer needed, you can disable it by calling the `destroy()` method on the factory object.
 
 This does NOT kill the threads or tasks if they are synchronizing, but prevents them from rescheduling for future executions.
 
@@ -769,25 +769,25 @@ A call to the `destroy()` method also destroys the factory object. When creating
 
 ## Track
 
-Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Split and allows you to measure the impact of your feature flags on your users’ actions and metrics.
+Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to  and allows you to measure the impact of your feature flags on your users’ actions and metrics.
 
 [Learn more](https://help.split.io/hc/en-us/articles/360020585772) about using track events in splits.
 
 In the examples below you can see that the `.track()` method can take up to five arguments. The proper data type and syntax for each are:
 
 * **key:** The `key` variable used in the `get_treatment` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Split.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period.
      * This is the regular expression we use to validate the value:<br />`[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) A Map of key value pairs that can be used to filter your metrics. Learn more about event property capture [in the Events guide](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties). Split currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) A Map of key value pairs that can be used to filter your metrics. Learn more about event property capture [in the Events guide](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties). FME currently supports three types of properties: strings, numbers, and booleans.
 
 **Redis Support:** If you are using our SDK with Redis, you need Split Synchronizer **2.3.0** version at least in order to support *properties* in the `track` method.
 
-The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Split's servers on the next event post. The SDK will return `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
+The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Harness servers on the next event post. The SDK will return `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
 
 In the case that a bad input has been provided, you can read more about our SDK's expected behavior [here](https://help.split.io/hc/en-us/articles/360020585772-Track-events)
 
@@ -852,14 +852,14 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 
 | **Configuration** | **Description** | **Default value** | **Applies to** |
 | --- | --- | --- | --- |
-| featuresRefreshRate | The SDK polls Split servers for changes to feature flags at this period (in seconds). | 30 seconds | In-memory. |
-| segmentsRefreshRate  | The SDK polls Split servers for changes to segments at this period (in seconds).  | 30 seconds  | In-memory. |
-| impressionsRefreshRate | The treatment log captures which customer saw what treatment (on, off, and so on) at what time. This log is periodically flushed back to Split servers. This configuration controls how quickly the cache expires after a write (in seconds). | 300 seconds | In-memory. |
-| metricsRefreshRate | The SDK caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers (in seconds). | 3600 seconds | In-memory. |
+| featuresRefreshRate | The SDK polls Harness servers for changes to feature flags at this period (in seconds). | 30 seconds | In-memory. |
+| segmentsRefreshRate  | The SDK polls Harness servers for changes to segments at this period (in seconds).  | 30 seconds  | In-memory. |
+| impressionsRefreshRate | The treatment log captures which customer saw what treatment (on, off, and so on) at what time. This log is periodically flushed back to Harness servers. This configuration controls how quickly the cache expires after a write (in seconds). | 300 seconds | In-memory. |
+| metricsRefreshRate | The SDK caches diagnostic data that it periodically sends to Harness servers. This configuration controls how frequently this data is sent back to Harness servers (in seconds). | 3600 seconds | In-memory. |
 | eventsPushRate | How often the SDK sends events to the backend. | 10 seconds | In-memory. |
-| labelsEnabled | Disable labels from being sent to Split backend. Labels may contain sensitive information. | true | All operation modes.  |
+| labelsEnabled | Disable labels from being sent to Harness servers. Labels may contain sensitive information. | true | All operation modes.  |
 | connectionTimeout | HTTP client connection timeout (in ms).  | 1500ms | In-memory. |
-| apiKey | The Split SDK key. This entry is mandatory. If `localhost` is supplied as the SDK key, a localhost only client is created when `get_client` is called. | None  | All operation modes. |
+| apiKey | The SDK key. This entry is mandatory. If `localhost` is supplied as the SDK key, a localhost only client is created when `get_client` is called. | None  | All operation modes. |
 | redisHost | The host that contains the Redis instance. | localhost | Redis-based storage setup. |
 | redisPort | The port of the Redis instance. | 6379 | Redis-based storage setup. |
 | redisDb | The db index on the Redis instance. | 0 | Redis-based storage setup. |
@@ -882,8 +882,8 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | eventsBulkSize | How many events to package when submiting them to the split servers | 5000 | In-memory. |
 | impressionsQueueSize | Max number of impressions to accumulate before sending them to the backend. | 10000 | In-memory. |
 | impressionsBulkSize | How many impressions to package when submiting them to the split servers | 5000 | In-memory. |
-| IPAddressesEnabled | Flag to disable IP addresses and host name from being sent to the Split backend.  | True | Redis, In-memory. |
-| impressionsMode | This configuration defines how impressions are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Split; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. In DEBUG mode, ALL impressions are queued and sent to Split. Use DEBUG mode when you want every impression to be logged in Split's user interface when trying to debug your SDK setup. This setting does not impact the impression listener which will receives all generated impressions. | `'optimized'` | In-memory operation mode. |
+| IPAddressesEnabled | Flag to disable IP addresses and host name from being sent to the Harness servers.  | True | Redis, In-memory. |
+| impressionsMode | This configuration defines how impressions are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. In DEBUG mode, ALL impressions are queued and sent to Harness. Use DEBUG mode when you want every impression to be logged in Harness FME when trying to debug your SDK setup. This setting does not impact the impression listener which will receives all generated impressions. | `'optimized'` | In-memory operation mode. |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | True | In-memory operation mode. |
 | flagSetsFilter | This setting allows the SDK to only synchronize the feature flags in the specified flag sets, avoiding unused or unwanted flags from being synced on the SDK instance, bringing all the benefits from a reduced payload. | None |
 
@@ -956,11 +956,11 @@ SPLITIO = {
 
 ## Localhost mode
 
-A developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the Split SDK can be started in **localhost** mode (aka off-the-grid mode). In this mode, the SDK neither polls nor updates Split servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. To use the SDK in localhost mode, replace the SDK Key with "localhost", as shown in the example below:
+A developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the SDK can be started in **localhost** mode (aka off-the-grid mode). In this mode, the SDK neither polls nor updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. To use the SDK in localhost mode, replace the SDK Key with "localhost", as shown in the example below:
 
 With this mode, you can instantiate the SDKS using one of the following methods:
 
-* JSON: Full support, for advanced cases or replicating an environment by pulling rules from the Split cloud (from version `9.4.0`).
+* JSON: Full support, for advanced cases or replicating an environment by pulling rules from Harness FME servers (from version `9.4.0`).
 * YAML: Supports dynamic configs, individual targets, and default rules (from version `8.0.0`).
 * .split: Legacy option, only treatment result.
 
@@ -1318,7 +1318,7 @@ new-navigation v3
 
 ## Manager
 
-Use the Split Manager to get a list of feature flags available to the split client.
+Use the Split Manager to get a list of feature flags available to the SDK factory client.
 
 To instantiate a Manager in your code base, use the same factory that you used for your client.
 
@@ -1390,7 +1390,7 @@ SplitView = namedtuple('SplitView', ['name', 'traffic_type', 'killed', 'treatmen
 
 ## Listener
 
-Split SDKs send impression data back to Split servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*. Use the SDK's `impressionListener` parameter, where you can add an implementation of `ImpressionListener`. This implementation **must** define the `log_impression` method. It receives data in the following schema.
+FME SDKs send impression data back to Harness servers periodically when evaluating feature flags. To send this information to a location of your choice, define and attach an *impression listener*. Use the SDK's `impressionListener` parameter, where you can add an implementation of `ImpressionListener`. This implementation **must** define the `log_impression` method. It receives data in the following schema.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |

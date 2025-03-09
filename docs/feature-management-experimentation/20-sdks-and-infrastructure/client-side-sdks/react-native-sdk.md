@@ -24,13 +24,13 @@ Refer to this [migration guide](https://github.com/splitio/react-native-client/b
 
 ## Language support
 
-The Split SDK for React Native supports both React Native bare projects (using [React-Native CLI](https://reactnative.dev/docs/environment-setup)) and Expo managed projects (using [Expo CLI](https://docs.expo.io/get-started/installation/)).
+The FME SDK for React Native supports both React Native bare projects (using [React-Native CLI](https://reactnative.dev/docs/environment-setup)) and Expo managed projects (using [Expo CLI](https://docs.expo.io/get-started/installation/)).
 
 It has been validated with React Native v0.59 and later, and Expo v36 and later, but should also work with older versions.
 
 ## Initialization
  
-Set up Split in your code base with two steps.
+Set up FME in your code base with two steps.
 
 ### 1. Import the SDK into your project
 
@@ -54,7 +54,7 @@ expo install @splitsoftware/splitio-react-native
 </TabItem>
 </Tabs>
 
-The Split SDKs support two synchronization mechanisms, **streaming** (default and recommended) and **polling** which is the fallback in cases where streaming is not supported or as a temporary measure in case of any issues detected on the persistent connection. We recommend following the steps below to enable the necessary support for the Event Source modules.
+The SDK supports two synchronization mechanisms, **streaming** (default and recommended) and **polling** which is the fallback in cases where streaming is not supported or as a temporary measure in case of any issues detected on the persistent connection. We recommend following the steps below to enable the necessary support for the Event Source modules.
 
 - For React Native bare projects, you need to *link* the native modules of the package.
 
@@ -62,7 +62,7 @@ If using React Native 0.59 or below, run `react-native link @splitsoftware/split
 
 If using React Native 0.60+, the [autolink feature](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md) is available and you don't need to run `react-native link`, but you still need to install the pods if developing for iOS, with the command `npx pod-install ios`.
 
-- For Expo managed projects, Split SDK native modules cannot be used, but you can still support streaming by *polyfilling* the global EventSource constructor:
+- For Expo managed projects, SDK native modules cannot be used, but you can still support streaming by *polyfilling* the global EventSource constructor:
 
 Install an EventSource implementation such as [react-native-event-source](https://www.npmjs.com/package/react-native-event-source):
 
@@ -78,7 +78,7 @@ import RNEventSource from 'react-native-event-source';
 globalThis.EventSource = RNEventSource;
 ```
 
-### 2. Instantiate the SDK and create a new Split client
+### 2. Instantiate the SDK and create a new SDK factory client
 
 <Tabs>
 <TabItem value="TypeScript (with ES modules)">
@@ -127,21 +127,21 @@ With the SDK package you get the SplitIO namespace, which contains useful types 
 Feel free to dive into the declaration files if IntelliSense is not enough!
 :::
 
-We recommend instantiating the Split factory once as a singleton and reusing it throughout your application. Consider instantiating it once in the global scope, or in the `componentDidMount` method of your application root component.
+We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application. Consider instantiating it once in the global scope, or in the `componentDidMount` method of your application root component.
 
-Configure the SDK with the SDK key for the Split environment that you would like to access. The SDK key is available in the Split UI, on your Admin settings page, API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ## Using the SDK
  
 ### Basic use
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Split servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment). 
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment). 
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready, as shown below. We set the client to listen for the `SDK_READY` event triggered by the SDK before asking for an evaluation. 
 
 After the `SDK_READY` event fires, you can use the `getTreatment` method to return the proper treatment based on the `FEATURE_FLAG_NAME` and the `key` variables you passed when instantiating the SDK.
 
-Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in the Split user interface. Remember the final else branch in your code to handle the client returning control.
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning control.
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
@@ -181,7 +181,7 @@ When running your app in debug mode on an Android device or emulator, you might 
 
 The warning is explained [here](https://github.com/facebook/react-native/issues/12981#issuecomment-652745831). It is intended to make developers aware that timer callbacks are invoked in foreground, and therefore timers could be delayed while the app is in background.
 
-Since the SDK uses timers for periodically pushing data to Split cloud, it is acceptable if those operations are delayed while the app is in background, and so it is completely safe to ignore or [hide this warning](https://reactnative.dev/docs/debugging#console-errors-and-warnings). If there is any concern, feel free to contact us through support.
+Since the SDK uses timers for periodically pushing data to Harness FME servers, it is acceptable if those operations are delayed while the app is in background, and so it is completely safe to ignore or [hide this warning](https://reactnative.dev/docs/debugging#console-errors-and-warnings). If there is any concern, feel free to contact us through support.
 
 ```javascript
 import { LogBox } from 'react-native';
@@ -194,7 +194,7 @@ LogBox.ignoreLogs(['Setting a timer']);
 
 To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
 
-In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
+In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
 The `getTreatment` method has a number of variations that are described below. Each of these additionally has a variation that takes an attributes argument, which can defines attributes of the following types: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
 
@@ -310,7 +310,7 @@ var result = client.clearAttributes();
 
 ### Multiple evaluations at once
 
-In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` from the Split client to do this.
+In some instances, you may want to evaluate treatments for multiple feature flags at once. Use the different variations of `getTreatments` from the SDK factory client to do this.
 * `getTreatments`: Pass a list of the feature flag names you want treatments for.
 * `getTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the SDK instance.
 * `getTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the SDK instance.
@@ -385,7 +385,7 @@ type TreatmentResult = {
 </TabItem>
 </Tabs>
 
-As you can see from the object structure, the config will be a stringified version of the configuration JSON  defined in the Split user interface. If there is no configuration defined for a treatment, the SDK will return `null` for the config parameter.
+As you can see from the object structure, the config will be a stringified version of the configuration JSON  defined in Harness FME. If there is no configuration defined for a treatment, the SDK will return `null` for the config parameter.
 
 This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
 
@@ -477,7 +477,7 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets(flagSets);
 
 ### Shutdown
 
-You can call the `client.destroy()` method to gracefully shut down the Split SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions. 
+You can call the `client.destroy()` method to gracefully shut down the SDK by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions. 
 If the SDK was instantiated in the `componentDidMount` method of a React component, `destroy` should be called in the corresponding `componentWillUnmount` method. 
 
 However while releasing resources if the SDK is not needed anymore is a good practice, since the SDK automatically hooks to application state transitions (foreground, background) data synchronization is managed by the SDK and pending events are flushed automatically. 
@@ -510,22 +510,22 @@ A call to the `destroy()` method also destroys the factory object. When creating
 
 ## Track
 
-Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Split and allows you to measure the impact of your feature flags on your users’ actions and metrics.
+Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Calling `track` through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your feature flags on your users’ actions and metrics.
 
 [Learn more](https://help.split.io/hc/en-us/articles/360020585772) about using track events in feature flags. 
 
 In the examples below you can see that the `.track()` method can take up to four arguments. The proper data type and syntax for each are: 
 
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Split.
+* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
      * Contains only letters, numbers, hyphen, underscore, or period. 
      * This is the regular expression we use to validate the value: `[a-zA-Z0-9][-_\.a-zA-Z0-9]{0,62}`
 * **VALUE:** (Optional) The value to be used in creating the metric. This field can be sent in as null or 0 if you intend to purely use the count function when creating a metric. The expected data type is **Integer** or **Float**.
-* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. Split currently supports three types of properties: strings, numbers, and booleans.
+* **PROPERTIES:** (Optional) An object of key value pairs that can be used to filter your metrics. Learn more about event property capture in the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties) guide. FME currently supports three types of properties: strings, numbers, and booleans.
 
-The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Split's servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
+The `track` method returns a boolean value of `true` or `false` to indicate whether or not the SDK was able to successfully queue the event to be sent back to Harness servers on the next event post. The SDK returns `false` if the current queue size is equal to the config set by `eventsQueueSize` or if an incorrect input to the `track` method has been provided.
 
 In the case that a bad input has been provided, you can read more about our SDK's expected behavior [here](https://help.split.io/hc/en-us/articles/360020585772-Track-events) 
 
@@ -567,21 +567,21 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- | 
-| core.labelsEnabled | Enable impression labels from being sent to Split's backend. Labels may contain sensitive information. | true |
+| core.labelsEnabled | Enable impression labels from being sent to Harness FME's backend. Labels may contain sensitive information. | true |
 | startup.readyTimeout | Maximum amount of time in seconds to wait before firing the `SDK_READY_TIMED_OUT` event | 10 |
 | startup.requestTimeoutBeforeReady | The SDK has two main endpoints it uses /splitChanges and /mySegments that it hits to get ready. This config sets how long (in seconds) the SDK will wait for each request it makes as part of getting ready. | 5 |
 | startup.retriesOnFailureBeforeReady | How many retries on /splitChanges and /mySegments we will do while getting the SDK ready | 1 |
 | startup.eventsFirstPushWindow | Use to set a specific timer (expressed in seconds) for the first push of events, starting on SDK initialization. | 10 |
-| scheduler.featuresRefreshRate | The SDK polls Split servers for changes to feature rollout plans. This parameter controls this polling period in seconds. | 60 |
-| scheduler.segmentsRefreshRate | The SDK polls Split servers for changes to segment definitions. This parameter controls this polling period in seconds. | 60 |
-| scheduler.impressionsRefreshRate | The SDK sends information on who got what treatment at what time back to Split servers to power analytics. This parameter controls how often this data is sent to Split servers. The parameter should be in seconds. | 300 |
+| scheduler.featuresRefreshRate | The SDK polls Harness servers for changes to feature rollout plans. This parameter controls this polling period in seconds. | 60 |
+| scheduler.segmentsRefreshRate | The SDK polls Harness servers for changes to segment definitions. This parameter controls this polling period in seconds. | 60 |
+| scheduler.impressionsRefreshRate | The SDK sends information on who got what treatment at what time back to Harness servers to power analytics. This parameter controls how often this data is sent to Harness servers. The parameter should be in seconds. | 300 |
 | scheduler.impressionsQueueSize | The max amount of impressions we queue. If the queue is full, the SDK flushes the impressions and resets the timer. | 30000 |
-| scheduler.eventsPushRate | The SDK sends tracked events to Split servers. This setting controls that flushing rate in seconds. | 60 |
+| scheduler.eventsPushRate | The SDK sends tracked events to Harness servers. This setting controls that flushing rate in seconds. | 60 |
 | scheduler.eventsQueueSize | The max amount of events we queue. If the queue is full, the SDK flushes the events and resets the timer. | 500 |
-| scheduler.telemetryRefreshRate | The SDK caches diagnostic data that it periodically sends to Split servers. This configuration controls how frequently this data is sent back to Split servers (in seconds). | 3600 seconds (1 hour) |
+| scheduler.telemetryRefreshRate | The SDK caches diagnostic data that it periodically sends to Harness servers. This configuration controls how frequently this data is sent back to Harness servers (in seconds). | 3600 seconds (1 hour) |
 | sync.splitFilters | Filter specific feature flags to be synced and evaluated by the SDK. This is formed by a type string property and a list of string values for the given criteria. Using the types 'bySet' (recommended, flag sets are available in all tiers) or 'byName', pass an array of strings defining the query. If empty or unset, all feature flags are downloaded by the SDK. | [] |
-| sync.impressionsMode | This configuration defines how impressions (decisioning events) are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Split; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Split and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Split; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
-| sync.enabled | Controls the SDK continuous synchronization flags. When `true`, a running SDK processes rollout plan updates performed in the Split user interface (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
+| sync.impressionsMode | This configuration defines how impressions (decisioning events) are queued on the SDK. Supported modes are OPTIMIZED, NONE, and DEBUG. In OPTIMIZED mode, only unique impressions are queued and posted to Harness; this is the recommended mode for experimentation use cases. In NONE mode, no impression is tracked in Harness FME and only minimum viable data to support usage stats is, so never use this mode if you are experimenting with that instance impressions. Use NONE when you want to optimize for feature flagging only use cases and reduce impressions network and storage load. In DEBUG mode, ALL impressions are queued and sent to Harness; this is useful for validations. This mode doesn't impact the impression listener which receives all generated impressions locally. | `OPTIMIZED` |
+| sync.enabled | Controls the SDK continuous synchronization flags. When `true`, a running SDK processes rollout plan updates performed in Harness FME (default). When `false`, it fetches all data upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
 | sync.requestOptions.getHeaderOverrides | A callback function that can be used to override the Authentication header or append new headers to the SDK's HTTP(S) requests. | undefined |
 | debug | Either a boolean flag, string log level or logger instance for activating SDK logs. See [logging](#logging) for details. | false |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | true |
@@ -659,7 +659,7 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
 
 ## Localhost mode
 
-For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the Split SDK can be started in **localhost** mode (aka off-the-grid or offline mode). In this mode, the SDK neither polls nor updates Split servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. 
+For testing, a developer can put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the SDK can be started in **localhost** mode (aka off-the-grid or offline mode). In this mode, the SDK neither polls nor updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features. 
 
 Define the feature flags you want to use in the `features` object map. All `getTreatment` calls for a feature flag now only return the one treatment (and config, if defined) that you have defined in the map. You can then change the treatment as necessary for your testing. To update a treatment or a config, or to add or remove feature flags from the mock cache, update the properties of the `features` object you've provided. The SDK simulates polling for changes and updates from it. Do not assign a new object to the `features` property because the SDK has a reference to the original object and will not detect the change.
 
@@ -772,7 +772,7 @@ It is not recommended to use the default (online) mode of the SDK in your tests 
 
 ## Manager
 
-Use the Split Manager to get a list of features available to the Split client.
+Use the Split Manager to get a list of features available to the SDK factory client.
 
 To instantiate a Manager in your code base, use the same factory that you used for your client.
 
@@ -783,11 +783,6 @@ To instantiate a Manager in your code base, use the same factory that you used f
 var factory = SplitFactory({ 
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
-    // the key can be the logged in
-    // user id, or the account id that 
-    // the logged in user belongs to. 
-    // The type of customer (user, account, custom)
-    // is chosen during Split's sign-up process.
     key: 'key'
   }
 });
@@ -804,11 +799,6 @@ manager.once(manager.Event.SDK_READY, function() {
 const factory: SplitIO.IBrowserSDK = SplitFactory({ 
   core: {
     authorizationKey: 'YOUR_SDK_KEY',
-    // the key can be the logged in
-    // user id, or the account id that 
-    // the logged in user belongs to. 
-    // The type of customer (user, account, custom)
-    // is chosen during Split's sign-up process.
     key: 'key'
   }
 });
@@ -898,7 +888,7 @@ type SplitView = {
 
 ## Listener
  
-Split SDKs send impression data back to Split servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*. For that purpose, the SDK's configurations have a parameter called `impressionListener` where an implementation of `ImpressionListener` could be added. This implementation **must** define the `logImpression` method and it receives data in the following schema.
+FME SDKs send impression data back to Harness servers periodically and as a result of evaluating feature flags. To additionally send this information to a location of your choice, define and attach an *impression listener*. For that purpose, the SDK's configurations have a parameter called `impressionListener` where an implementation of `ImpressionListener` could be added. This implementation **must** define the `logImpression` method and it receives data in the following schema.
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- | 
@@ -1042,9 +1032,9 @@ This section describes advanced use cases and features provided by the SDK.
 
 ### Instantiate multiple SDK clients
 
-Split supports the ability to release based on multiple traffic types. For example, with traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, refer to the [Traffic type guide](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) for more information.
+FME supports the ability to release based on multiple traffic types. For example, with traffic types, you can release to `users` in one feature flag and `accounts` in another. If you are unfamiliar with using multiple traffic types, refer to the [Traffic type guide](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) for more information.
 
-Each SDK client is tied to one specific customer ID at a time, so if you need to roll out feature flags by different traffic types, instantiate multiple SDK clients, one for each traffic type. For example, you may want to roll out the feature `user-poll` by `users` and the feature `account-permissioning` by `accounts`. 
+Each SDK factory client is tied to one specific customer ID at a time, so if you need to roll out feature flags by different traffic types, instantiate multiple SDK clients, one for each traffic type. For example, you may want to roll out the feature `user-poll` by `users` and the feature `account-permissioning` by `accounts`. 
 
 You can do this with the example below.
  
@@ -1128,9 +1118,9 @@ While the SDK does not put any limitations on the number of instances that can b
  
 You can listen for three different events from the SDK.
 
-* `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Split servers.
-* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Split servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished.  This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
-* `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in the Split user interface.
+* `SDK_READY`. This event fires once the SDK is ready to evaluate treatments using the most up-to-date version of your rollout plan, downloaded from Harness servers.
+* `SDK_READY_TIMED_OUT`. This event fires if the SDK could not download the data from Harness servers within the time specified by the `readyTimeout` configuration parameter. This event does not indicate that the SDK initialization was interrupted.  The SDK continues downloading the rollout plan and fires the `SDK_READY` event when finished.  This delayed `SDK_READY` event may happen with slow connections or large rollout plans with many feature flags, segments, or dynamic configurations.
+* `SDK_UPDATE`. This event fires whenever your rollout plan is changed. Listen for this event to refresh your app whenever a feature flag or segment is changed in Harness FME.
 
 The syntax to listen for each event is shown below.
 
@@ -1205,8 +1195,8 @@ The SDK allows you to disable the tracking of events and impressions until user 
 The `userConsent` configuration parameter lets you set the initial consent status of the SDK instance, and the factory method `UserConsent.setStatus(boolean)` lets you grant (enable) or decline (disable) dynamic data tracking.
 
 There are three possible initial states:
- * `'GRANTED'`: The user grants consent for tracking events and impressions. The SDK sends them to Split cloud. This is the default value if `userConsent` param is not defined.
- * `'DECLINED'`: The user declines consent for tracking events and impressions. The SDK does not send them to Split cloud.
+ * `'GRANTED'`: The user grants consent for tracking events and impressions. The SDK sends them to Harness FME servers. This is the default value if `userConsent` param is not defined.
+ * `'DECLINED'`: The user declines consent for tracking events and impressions. The SDK does not send them to Harness FME servers.
  * `'UNKNOWN'`: The user neither grants nor declines consent for tracking events and impressions. The SDK tracks them in its internal storage, and eventually either sends them or not if the consent status is updated to `'GRANTED'` or `'DECLINED'` respectively.
 
 The status can be updated at any time with the `UserConsent.setStatus` factory method.
@@ -1221,7 +1211,7 @@ var factory = SplitFactory({
   },
   // Overwrites the initial consent status of the factory instance, which is 'GRANTED' by default.
   // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
-  // so the SDK will locally track data but not send it to Split cloud until consent is changed to 'GRANTED'.
+  // so the SDK will locally track data but not send it to Harness FME servers until consent is changed to 'GRANTED'.
   userConsent: 'UNKNOWN'
 });
 
@@ -1230,17 +1220,17 @@ factory.UserConsent.getStatus() === factory.UserConsent.Status.UNKNOWN;
 
 // `setStatus` method lets you update the factory consent status at any time.
 // Pass `true` for 'GRANTED' and `false` for 'DECLINED'.
-factory.UserConsent.setStatus(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Split cloud.
+factory.UserConsent.setStatus(true); // Consent status changed from 'UNKNOWN' to 'GRANTED'. Data will be sent to Harness FME servers.
 factory.UserConsent.getStatus() === factory.UserConsent.Status.GRANTED;
 
-factory.UserConsent.setStatus(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Split cloud.
+factory.UserConsent.setStatus(false); // Consent status changed from 'GRANTED' to 'DECLINED'. Data will not be sent to Harness FME servers.
 factory.UserConsent.getStatus() === factory.UserConsent.Status.DECLINED;
 
 ```
 
 ### Usage with React SDK
 
-The [Split React SDK](https://help.split.io/hc/en-us/articles/360038825091-React-SDK) is a wrapper around the Split JavaScript SDK that provides a more React-friendly API based on React components and hooks. You can use the React Native SDK with the React SDK in your React Native application following this [Usage Guide](https://help.split.io/hc/en-us/articles/360038825091-React-SDK#usage-with-react-native).
+The [React SDK](https://help.split.io/hc/en-us/articles/360038825091-React-SDK) is a wrapper around the JavaScript SDK that provides a more React-friendly API based on React components and hooks. You can use the React Native SDK with the React SDK in your React Native application following this [Usage Guide](https://help.split.io/hc/en-us/articles/360038825091-React-SDK#usage-with-react-native).
 
 ## Example apps
 

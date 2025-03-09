@@ -12,7 +12,7 @@ sidebar_position: 3
 
 ## Question
 
-If the Synchronizer Docker container is running in a network that has a proxy using SSL for all traffic, the Synchronizer docker might not be able to authenticate the root certification, which will result in the error below when Synchronizer tries to connect to Split cloud to fetch the feature flags definitions:
+If the Synchronizer Docker container is running in a network that has a proxy using SSL for all traffic, the Synchronizer docker might not be able to authenticate the root certification, which will result in the error below when Synchronizer tries to connect to Harness FME servers to fetch the feature flags definitions:
 ```
 SPLITIO-AGENT | ERROR: 2020/08/19 14:42:51 fetchdataforproxy.go:209: Error fetching split changes  Get https://sdk.split.io/api/splitChanges?since=-1: x509: certificate signed by unknown authority
 ```

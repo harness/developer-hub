@@ -1,6 +1,6 @@
 ---
-title: JavaScript code using Split SDK example
-sidebar_label: JavaScript code using Split SDK example
+title: JavaScript code using FME SDK example
+sidebar_label: JavaScript code using FME SDK example
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 11
@@ -10,4 +10,4 @@ sidebar_position: 11
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360018619691-JavaScript-Code-using-Split-SDK-example </button>
 </p>
 
-[JavaScript Code using Split SDK example](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/JavaScript-SDK)
+[JavaScript Code using FME SDK example](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/JavaScript-SDK)

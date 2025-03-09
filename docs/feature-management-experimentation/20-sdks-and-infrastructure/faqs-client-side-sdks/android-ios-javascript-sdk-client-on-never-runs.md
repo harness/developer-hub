@@ -22,11 +22,11 @@ client.on(SplitEvent.SDK_READY, new SplitEventTask() {
 
 ## Root Cause
 
-The SDK_READY event will fire only once when the SDK factory downloads all the information it needs to calculate the treatment from Split cloud If the code above is executed after the SDK_READY event fires, then the block inside will never be executed since SDK_READY event already fired and will not fire again.
+The SDK_READY event will fire only once when the SDK factory downloads all the information it needs to calculate the treatment from Harness FME servers If the code above is executed after the SDK_READY event fires, then the block inside will never be executed since SDK_READY event already fired and will not fire again.
 
 ## Solution
 
-Even if the cache existed prior to initializing the SDK Factory object, it will always make an http call to Split cloud to sync for any changes before firing SDK_READY event. This means if we execute client.on line immediately after the factory initialization line it will be guaranteed the SDK_READY event fires after client.on is executed.
+Even if the cache existed prior to initializing the SDK Factory object, it will always make an http call to Harness FME servers to sync for any changes before firing SDK_READY event. This means if we execute client.on line immediately after the factory initialization line it will be guaranteed the SDK_READY event fires after client.on is executed.
 We recommend to create a wrapper class for the SDK, define isSDKReady property and set it to true inside the client.on block.
 
 Below are examples per each SDK language:

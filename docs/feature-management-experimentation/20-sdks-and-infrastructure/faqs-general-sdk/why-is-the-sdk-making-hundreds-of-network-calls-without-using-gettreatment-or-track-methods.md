@@ -12,7 +12,7 @@ sidebar_position: 13
 
 ## Problem
 
-Using any Split SDK library, the Split library is making hundreds of network calls to split.io without using getTreatment or track methods
+Using any FME SDK library, the library is making hundreds of network calls to split.io without using getTreatment or track methods
 
 ## Root Cause
 
@@ -41,7 +41,7 @@ mySplit3 = new SplitIO();
 
 ## Solution
 
-We always recommend using a singleton factory object, and one client object especially if we are using only one traffic type and customer id. If we need to change either, then its recommended to initiate the client object only, as in the example below:
+We always recommend using a singleton factory object, and one client object especially if we are using only one traffic type and customer ID. If we need to change either, then its recommended to initiate the client object only, as in the example below:
 
 ```javascript
 class SplitIO {

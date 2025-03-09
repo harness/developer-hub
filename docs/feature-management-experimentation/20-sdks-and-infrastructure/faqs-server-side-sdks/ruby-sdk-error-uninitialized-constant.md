@@ -11,7 +11,7 @@ sidebar_position: 14
 </p>
 
 ## Problem
-When using Split Ruby SDK in Windows Platform, initializing the Split factory object causes the error:
+When using Ruby SDK in Windows Platform, initializing the SDK factory object causes the error:
 ```
 uninitialized constant error. caused by 'Process::RLIMIT_NOFILE' in lib/net/http/persistent.rb
 ```
@@ -22,7 +22,7 @@ This issue is related to net-http-persistent 3.0 library in Windows OS. This is 
 
 ## Solution
 
-The Split SDK works fine with a slightly lower version of net-http-persistent (2.9.4), use the commands below to downgrade it:
+The Ruby SDK works fine with a slightly lower version of net-http-persistent (2.9.4), use the commands below to downgrade it:
 ```
 gem uninstall net-http-persistent
 gem install net-http-persistent -v '2.9.4'

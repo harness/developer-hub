@@ -10,15 +10,15 @@ sidebar_position: 1
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd </button>
 </p>
 
-Splitd is a daemon that communicates with the Split backend. It keeps an up-to-date snapshot of the Split rollout plan for a specific Split environment. The rollout plan is accessed by a Split Thin SDK instance (via splitd) to consume feature flags in your code.
+Splitd is a daemon that communicates with the Harness servers. It keeps an up-to-date snapshot of the FME definitions for a specific FME environment. The rollout plan is accessed by a FME Thin SDK instance (via splitd) to consume feature flags in your code.
 
-Splitd can be used if you are working in a language that does not have native capability to keep a shared local cache, such as PHP. You can use splitd in combination with a Split Thin SDK (see [Supported Thin SDKs](#supported-thin-sdks)) as an alternative to using Split Synchronizer and Redis with a non-thin Split SDK. Splitd easily scales to high traffic volumes.
+Splitd can be used if you are working in a language that does not have native capability to keep a shared local cache, such as PHP. You can use splitd in combination with a FME Thin SDK (see [Supported Thin SDKs](#supported-thin-sdks)) as an alternative to using Split Synchronizer and Redis with a non-thin FME SDK. Splitd easily scales to high traffic volumes.
 
-Splitd is a daemon designed to be deployed in the same host as the application, and works as an offloaded evaluation engine running on a separate process. Splitd relies on the host machine's memory to store the cache and offers an IPC interface via Unix sockets (both stream and sequenced packet sockets supported). Consumer applications (that hold Split Thin SDK instances) connect to splitd and send evaluation requests for Split feature flags as remote procedure calls. Impressions are generated on the daemon and can be backfed to the client to trigger an impression listener.
+Splitd is a daemon designed to be deployed in the same host as the application, and works as an offloaded evaluation engine running on a separate process. Splitd relies on the host machine's memory to store the cache and offers an IPC interface via Unix sockets (both stream and sequenced packet sockets supported). Consumer applications (that hold FME Thin SDK instances) connect to splitd and send evaluation requests for FME feature flags as remote procedure calls. Impressions are generated on the daemon and can be backfed to the client to trigger an impression listener.
 
 ## Supported Thin SDKs
 
-Splitd currently works with the following Split Thin SDKs:
+Splitd currently works with the following FME Thin SDKs:
 
 * [Elixir Thin Client SDK](https://help.split.io/hc/en-us/articles/26988707417869)
 * [PHP Thin Client SDK](https://help.split.io/hc/en-us/articles/18305128673933)
@@ -29,9 +29,9 @@ If you are looking for a language that is not listed here, contact the support t
 
 The service performs three actions:
 
-* **Fetch targeting rules:** Fetch feature flags and segments from the Split servers.
-* **Perform evaluations:** Split Thin SDKs will establish a connection to splitd and send evaluation requests that splitd will service.
-* **Post impressions and events:** Impressions (data about a customer's feature flag evaluations) and events will be temporarily stored in the daemon's memory and periodically sent to Split servers.
+* **Fetch targeting rules:** Fetch feature flags and segments from the Harness servers.
+* **Perform evaluations:** FME Thin SDKs will establish a connection to splitd and send evaluation requests that splitd will service.
+* **Post impressions and events:** Impressions (data about a customer's feature flag evaluations) and events will be temporarily stored in the daemon's memory and periodically sent to Harness servers.
 
 ### Architecture
 
@@ -51,9 +51,9 @@ The following diagram illustrates a local setup where splitd is on the same serv
 <img src="/guide-media/01H78TPGNGB7HYKAW99QFQ4H0P" alt="splitd_shared_instance.drawio.svg" />
 </p>
 
-Since the service relies on interprocess communication (IPC) with thin clients, which happens on the operating system's kernel, the two processes need to be on the same host. The most straightforward way to achieve this is by having both the daemon and the application that bundles the Split Thin SDK in the same server/instance/container.
+Since the service relies on interprocess communication (IPC) with thin clients, which happens on the operating system's kernel, the two processes need to be on the same host. The most straightforward way to achieve this is by having both the daemon and the application that bundles the FME Thin SDK in the same server/instance/container.
 
-To set up splitd on the same host as the Split Thin SDK, follow the steps below:
+To set up splitd on the same host as the FME Thin SDK, follow the steps below:
 
 #### 1. Get a copy of splitd
 
@@ -82,7 +82,7 @@ wget https://raw.githubusercontent.com/splitio/splitd/main/splitd.yaml.tpl \
 ```
 
 :::warning[OSX & Unix sockets]
-Keep in mind that seqpacket-type sockets only work on the Linux operating system. If you're running a proof of concept on a Mac, you need to set the link type to `unix-stream` in both the daemon and the Split SDK configurations. For more information on socket types, see the [Advanced configuration](#advanced-configuration) section.
+Keep in mind that seqpacket-type sockets only work on the Linux operating system. If you're running a proof of concept on a Mac, you need to set the link type to `unix-stream` in both the daemon and the FME SDK configurations. For more information on socket types, see the [Advanced configuration](#advanced-configuration) section.
 :::
 
 :::info[Configuration file location]
@@ -91,7 +91,7 @@ By default, splitd searches for the configuration file at `/etc/splitd.yaml`. Th
 
 #### 3. Running splitd
 
-To start splitd, execute the binary `splitd`. This will find and parse the splitd configuration file and start the splitd daemon. Applications using a Split Thin SDK should now be able to connect to the socket created by splitd.
+To start splitd, execute the binary `splitd`. This will find and parse the splitd configuration file and start the splitd daemon. Applications using a FME Thin SDK should now be able to connect to the socket created by splitd.
 
 When integrating splitd with an application on a server, you will want the daemon to run at system startup and be managed by a background process. The process should automatically restart splitd if it is killed (for example, by the kernel’s memory management). Two popular options are deploying the splitd as a systemd unit or as a supervisord program. These approaches are described below.
 
@@ -329,15 +329,15 @@ link:
 
 | **YAML option** | **Environment variable (container-only)** | **Description** | **Default** | **Since** |
 | --- | --- | --- | --- | --- |
-| sdk.apikey | SPLITD_APIKEY | **(required always)** Server-side Split API key | EMPTY | 1.0.0 |
+| sdk.apikey | SPLITD_APIKEY | **(required always)** Server-side SDK API key | EMPTY | 1.0.0 |
 | sdk.streamingEnabled | SPLITD_STREAMING_ENABLED | Whether to enable streaming | `true` | 1.0.0 |
 | sdk.labelsEnabled | SPLITD_LABELS_ENABLED | Whether to send labels on impressions | `true` | 1.0.0 |
 | sdk.featureFlags.splitRefreshSeconds | SPLITD_FEATURE_FLAGS_SPLIT_REFRESH_SECS | Refresh rate when operating in polling (seconds) | `30` | 1.0.1 |
 | sdk.featureFlags.segmentRefreshSeconds | SPLITD_FEATURE_FLAGS_SEGMENT_REFRESH_SECS | Refresh rate for segments when operating in polling (seconds) | `60` | 1.0.1 |
 | sdk.impressions.mode | SPLITD_IMPRESSIONS_MODE | Impressions handling strategy [`optimized`/`debug`] | `optimized` | 1.0.1 |
-| sdk.impressions.refreshRateSeconds | SPLITD_IMPRESSIONS_REFRESH_SECS | How often to flush impressions to Split servers | 1800 | 1.0.1 |
+| sdk.impressions.refreshRateSeconds | SPLITD_IMPRESSIONS_REFRESH_SECS | How often to flush impressions to Harness servers | 1800 | 1.0.1 |
 | sdk.impressions.queueSize | SPLITD_IMPRESSIONS_QUEUE_SIZE | How many impressions (per client) to accumulate before flushing | `8192` | 1.0.1 |
-| sdk.events.refreshRateSeconds | SPLITD_EVENTS_REFRESH_SECS | How often to flush events to Split servers | `60` | 1.0.1 |
+| sdk.events.refreshRateSeconds | SPLITD_EVENTS_REFRESH_SECS | How often to flush events to Harness servers | `60` | 1.0.1 |
 | sdk.events.queueSize | SPLITD_EVENTS_QUEUE_SIZE | How many events (per client) to accumulate before flushing | `8192` | 1.0.1 |
 | sdk.flagSetsFilter | SPLITD_FLAG_SETS_FILTER | This setting allows the Split Synchronizer to synchronize only the feature flags in the specified flag sets. All other flags are not synchronized, resulting in a reduced payload. | empty | 1.2.0 |
 | sdk.urls.auth | SPLITD_AUTH_URL | Auth Endpoint | `https://auth.split.io/` | 1.0.0 |
@@ -359,7 +359,7 @@ link:
 
 `splitd` currently supports listenting for connection on two types of unix sockets: `STREAM` and `SEQPACKET`.
 
-Stream-based sockets operate in a similar fashion to TCP-based sockets, without message boundaries and with support for partial reads. Sequenced packet sockets, on the other hand, preserve message boundaries and require the reader to consume the whole package at once (with properly preallocated buffers on the reader side). Since sequenced packet sockets do not require framing/unframing and read with a single syscall, they tend to perform better than stream-based sockets, but they have limited support for large message sizes. With current splitd support for SDK `client.getTreatment()` and `client.getTreatments()` function calls, message size limits are not an issue, but once the manager functionality for querying Split feature flags or dynamic configs become available, it's possible to hit message size limits with the Split Thin SDK `client.getTreatmentsWithConfig()` or `manager.Splits()` function calls.
+Stream-based sockets operate in a similar fashion to TCP-based sockets, without message boundaries and with support for partial reads. Sequenced packet sockets, on the other hand, preserve message boundaries and require the reader to consume the whole package at once (with properly preallocated buffers on the reader side). Since sequenced packet sockets do not require framing/unframing and read with a single syscall, they tend to perform better than stream-based sockets, but they have limited support for large message sizes. With current splitd support for SDK `client.getTreatment()` and `client.getTreatments()` function calls, message size limits are not an issue, but once the manager functionality for querying FME feature flags or dynamic configs become available, it's possible to hit message size limits with the FME Thin SDK `client.getTreatmentsWithConfig()` or `manager.Splits()` function calls.
 
 For handling large payloads, the following options can be considered:
 * Use `unix-stream` type sockets. (Note that configuration should be set on both splitd and the consumer application).

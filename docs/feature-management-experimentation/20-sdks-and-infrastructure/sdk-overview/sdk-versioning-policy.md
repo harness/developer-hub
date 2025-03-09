@@ -40,4 +40,4 @@ Bug fixes that preserve compatibility are released as a patch version. Depending
 
 ## Version support
 
-Split supports and patches prior major releases for up to 12 months following the version release date. If 12 months has elapsed, support and Split’s SDK engineering team may ask you to first upgrade to the current major release before attempting to patch old versions.
+FME supports and patches prior major releases for up to 12 months following the version release date. If 12 months has elapsed, support and Split’s SDK engineering team may ask you to first upgrade to the current major release before attempting to patch old versions.

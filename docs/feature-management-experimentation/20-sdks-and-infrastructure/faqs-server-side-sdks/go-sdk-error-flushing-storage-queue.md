@@ -26,8 +26,8 @@ The SDK is trying to send impressions at a higher rate than the posting thread i
 To resolve the issue, follow these steps:
 
 1. Increase the size of the impressions queue by updating the `Advanced.ImpressionsQueueSize` parameter. Default is 10k, increasing it to 20k might improve results.
-2. Increase the bulk size of the impressions post to Split servers by updating the `Advanced.ImpressionsBulkSize` parameter. Default is 5k. 10k would be a logical next step.
-3. Decrease the period at which the SDK sends impressions to the Split servers by adjusting the `TaskPeriods.ImpressionSync` parameter. The default is 30 seconds which is on the low end if you're sending a huge number of impressions. Something along the lines of 5-10 seconds should help.
+2. Increase the bulk size of the impressions post to Harness servers by updating the `Advanced.ImpressionsBulkSize` parameter. Default is 5k. 10k would be a logical next step.
+3. Decrease the period at which the SDK sends impressions to the Harness servers by adjusting the `TaskPeriods.ImpressionSync` parameter. The default is 30 seconds which is on the low end if you're sending a huge number of impressions. Something along the lines of 5-10 seconds should help.
 
 :::note
 These changes will slightly increase the memory usage of the SDK as well as the network traffic.

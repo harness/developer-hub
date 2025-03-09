@@ -12,7 +12,7 @@ sidebar_position: 11
 
 ## Question
 
-How do I find out what changed when Split releases a new version of the SDK?
+How do I find out what changed when Harness releases a new version of an FME SDK?
 
 ### Answer
 

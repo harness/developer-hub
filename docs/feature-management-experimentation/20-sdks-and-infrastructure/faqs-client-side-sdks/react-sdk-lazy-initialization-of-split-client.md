@@ -1,6 +1,6 @@
 ---
-title: "React SDK: Lazy initialization of Split client"
-sidebar_label: "React SDK: Lazy initialization of Split client"
+title: "React SDK: Lazy initialization of SDK client"
+sidebar_label: "React SDK: Lazy initialization of SDK client"
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 12
@@ -12,7 +12,7 @@ sidebar_position: 12
 
 ## Question
 
-When using React app, on initial load of a client-side application the Split key is not always directly available. The React SDK will initialize SplitFactory and useClient on the initial render, which means that with the current setup we have to initiate the Split client with a key that might not exist yet.
+When using React app, on initial load of a client-side application the FME key is not always directly available. The React SDK will initialize SplitFactory and useClient on the initial render, which means that with the current setup we have to initiate the SDK client with a key that might not exist yet.
 
 ## Answer
 

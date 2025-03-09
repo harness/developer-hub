@@ -11,12 +11,12 @@ sidebar_position: 14
 </p>
 
 ## Question
-How can the Split SDK integrate with a Rails application that works with full page caching?
+How can the Ruby SDK integrate with a Rails application that works with full page caching?
 
 ### Environment
-We created a demo app to test Rails caching working with Split SDK. Rails Version: 5.0.7, Puma Version: 3.12.0 (standalone). Ruby Version: 2.2.2-p95
+We created a demo app to test Rails caching working with Ruby SDK. Rails Version: 5.0.7, Puma Version: 3.12.0 (standalone). Ruby Version: 2.2.2-p95
 
-We initialize the Split SDK as described in the [Split Documentation](https://docs.split.io/docs/ruby-sdk-overview#section-configuration)
+We initialize the SDK as described in the [Split Documentation](https://docs.split.io/docs/ruby-sdk-overview#section-configuration)
 
 Initialization snippet (typically: config/initializers/split_client.rb)
 

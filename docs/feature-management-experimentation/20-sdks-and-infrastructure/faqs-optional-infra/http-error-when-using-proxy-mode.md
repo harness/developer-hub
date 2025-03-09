@@ -14,13 +14,13 @@ sidebar_position: 2
 
 Synchronizer returns 500 HTTP error when used in proxy mode.
 
-Using Synchronizer in proxy mode, when trying to initialize a Split SDK factory connecting to the Synchronizer instance, the SDK never gets ready.
+Using Synchronizer in proxy mode, when trying to initialize an FME SDK factory connecting to the Synchronizer instance, the SDK never gets ready.
 
 ## Root Cause
 
-Looking at the Synchronizer debug log below, looks like the Synchronizer's call to Split cloud is successful but the JSON structure returns empty feature flags names. 
+Looking at the Synchronizer debug log below, looks like the Synchronizer's call to Harness FME servers is successful but the JSON structure returns empty feature flags names. 
 
-While the HTTP call to Split cloud did not error out, the Synchronizer returns a 500 error to SDK, since getting an empty feature flag list means no flags where added to the environment corresponding to the SDK API key used. This will result in the current SDK session to be unable to calculate any treatments.
+While the HTTP call to Harness FME servers did not error out, the Synchronizer returns a 500 error to SDK, since getting an empty feature flag list means no flags where added to the environment corresponding to the SDK API key used. This will result in the current SDK session to be unable to calculate any treatments.
 
 ```
 SPLITIO-AGENT  - DEBUG - 2020/10/12 21:41:51 logger.go:35: GET |500| 285.71µs | 10.10.6.249 | /api/splitChanges

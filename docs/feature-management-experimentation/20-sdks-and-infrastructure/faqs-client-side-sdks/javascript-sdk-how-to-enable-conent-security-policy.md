@@ -12,13 +12,13 @@ sidebar_position: 21
 
 ## Question
 
-Is it possible to enable SCP (Content Security Policy) on a site that uses Split JavaScript SDK?
+Is it possible to enable SCP (Content Security Policy) on a site that uses JavaScript SDK?
 
 ## Answer
 
 Content Security Policy (CSP) is a computer security standard introduced to prevent cross-site scripting (XSS), clickjacking and other code injection attacks, as defined by this wikipedia article.
 
-It is possible to allow SCP and enable running Split JavaScript SDK safely.
+It is possible to allow SCP and enable running JavaScript SDK safely.
 
 There are multiple ways to achieve this, the steps below use "nonce" keyword to target the script block.
 

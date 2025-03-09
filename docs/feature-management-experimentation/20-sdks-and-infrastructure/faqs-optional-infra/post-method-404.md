@@ -19,7 +19,7 @@ After starting Split Synchronizer process (version 1.6.0 and above), Synchronize
 
 ## Root Cause
 
-The Error is due to incorrect Split API key passed to the Synchronizer. Which caused the Synchronizer inability to find to the Account in the Split cloud.
+The Error is due to incorrect API key passed to the Synchronizer. Which caused the Synchronizer inability to find to the Account in the Harness FME servers.
 
 ## Solution
 
@@ -35,7 +35,7 @@ Second, make sure to pass the API key. There are many ways to do it:
 -api-key <APIKEY>
 ```
 
-* In a JSON file that Synchronizer uses for configuration. The `apiKey` property is the one that will be used to issue requests against Split Cloud.
+* In a JSON file that Synchronizer uses for configuration. The `apiKey` property is the one that will be used to issue requests against Harness FME servers.
 
 ![](https://help.split.io/hc/article_attachments/360013671132)
 
@@ -43,7 +43,7 @@ Second, make sure to pass the API key. There are many ways to do it:
 
 ![](https://help.split.io/hc/article_attachments/360013671492)
 
-* If the Synchronizer is running within the Split packaged docker image, make sure to use the parameter below:
+* If the Synchronizer is running within the packaged docker image, make sure to use the parameter below:
 ```
 -e SPLIT_SYNC_API_KEY <APIKEY>
 ```

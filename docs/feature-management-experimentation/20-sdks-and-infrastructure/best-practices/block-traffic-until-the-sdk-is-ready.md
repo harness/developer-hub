@@ -12,7 +12,7 @@ sidebar_position: 5
 
 ## Question
 
-When the SDK is instantiated, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Split servers. This process can take up to a few hundred milliseconds, depending on the size of data. While the SDK is in this intermediate state, if it is asked to evaluate which treatment to show to a customer for a specific feature flag, it may not have data necessary to run the evaluation. In this circumstance, the SDK does not fail, rather it returns the Control treatment. How can I avoid this?
+When the SDK is instantiated, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. While the SDK is in this intermediate state, if it is asked to evaluate which treatment to show to a customer for a specific feature flag, it may not have data necessary to run the evaluation. In this circumstance, the SDK does not fail, rather it returns the Control treatment. How can I avoid this?
 
 ## Answer
 

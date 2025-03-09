@@ -12,17 +12,17 @@ helpdocs_is_published: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide provides detailed information about Split's Real User Monitoring (RUM) Agent for iOS.
+This guide provides detailed information about FME's Real User Monitoring (RUM) Agent for iOS.
 
-Split's iOS RUM Agent collects events about your users' experience when they use your application and sends this information to Split services. This allows you to measure and analyze the impact of feature flag changes on performance metrics.
+FME's iOS RUM Agent collects events about your users' experience when they use your application and sends this information to FME services. This allows you to measure and analyze the impact of feature flag changes on performance metrics.
 
 ## Language Support
 
-Split's iOS RUM Agent is designed for iOS applications written in Swift and is compatible with iOS SDK versions 12 and later.
+FME's iOS RUM Agent is designed for iOS applications written in Swift and is compatible with iOS SDK versions 12 and later.
 
 ## Initialization
  
-Set up Split's RUM Agent in your code with the following three steps:
+Set up FME's RUM Agent in your code with the following three steps:
 
 ### 1. Import the Agent into your project
 
@@ -42,14 +42,14 @@ If you get the `Sandbox: rsync.samba(19690) deny(1) file-read-data ...` error, m
 
 ### 2. Setup the Agent
 
-To allow the Agent to send information to Split services, you need to call the `setup` method on the `SplitRum` object.
+To allow the Agent to send information to FME services, you need to call the `setup` method on the `SplitRum` object.
 
 ```swift title="Swift"
 try? SplitRum.setup(apiKey: "YOUR_SDK_KEY")
 ```
 
 :::warning[Important]
-The Crashlytics framework has a compatibility issue that interferes with the proper functioning of Split RUM Agent when Crashlytics is initialized first. To resolve this, initialize the Split RUM Agent using the setup method before starting Crashlytics.
+The Crashlytics framework has a compatibility issue that interferes with the proper functioning of RUM Agent when Crashlytics is initialized first. To resolve this, initialize the RUM Agent using the setup method before starting Crashlytics.
 
 ```swift
   try? SplitRum.setup(apiKey: "YOUR_SDK_KEY")
@@ -78,9 +78,9 @@ Arguments passed to the `setup` method will override any value contained in the 
 
 ### 3. Add an Identity
 
-While the Agent will work without having an Identity, events won't be sent to Split services until at least one is set.
+While the Agent will work without having an Identity, events won't be sent to FME services until at least one is set.
 
-Identity objects consist of a key and a [traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type). You can only pass values that match the names of traffic types already defined in the Split Management Console.
+Identity objects consist of a key and a [traffic type](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type). You can only pass values that match the names of traffic types already defined in Harness FME.
 
  The RUM Agent provides methods to manage Identities, as shown in the table below.
 
@@ -103,7 +103,7 @@ SplitRum.removeIdentities()
 
 ## Configuration
 
-Split's iOS RUM Agent can be configured to change its default behavior. The following options are available:
+FME's iOS RUM Agent can be configured to change its default behavior. The following options are available:
 - Log Level: level of logging. Valid values are `VERBOSE`, `DEBUG`, `INFO`, `WARNING`, `ERROR` and `NONE`.
 
  Log level can be configured using the `SplitRumAgent-Info.plist` file or programmatically. Values specified programmatically will override any of the same values specified in the configuration file.
@@ -132,7 +132,7 @@ SplitRum.setup(apiKey: "YOUR_SDK_KEY", config: config)
 
 ## Events
 
-Split's iOS RUM Agent collects a number of events by default.
+FME's iOS RUM Agent collects a number of events by default.
 
 ### Default events and properties
 
@@ -152,7 +152,7 @@ Each event for the metrics described above automatically includes a `session_id`
 
 ## Automatic metric creation
 
-Split will automatically create [metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) for a subset of the event types received from the iOS RUM Agent. These "out of the box metrics" are auto-created for you:
+FME will automatically create [metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) for a subset of the event types received from the iOS RUM Agent. These "out of the box metrics" are auto-created for you:
 
 | **Event type** | **Metric name** | 
 | --- | --- |
@@ -161,7 +161,7 @@ Split will automatically create [metrics](https://help.split.io/hc/en-us/article
 | split.rum.app_start | Average App Start Time - Split Agents |
 | split.rum.anr | Count of ANRs - Split Agents |
 
-For a metric that was auto-created, you can manage the [definition](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) and [alert policies](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) like you would for any other metric. If you delete a metric that was auto-created, Split will not re-create the metric, even if the event type is still flowing.
+For a metric that was auto-created, you can manage the [definition](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) and [alert policies](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) like you would for any other metric. If you delete a metric that was auto-created, FME will not re-create the metric, even if the event type is still flowing.
 
 ## Advanced use cases
 
@@ -219,13 +219,13 @@ SplitRum.trackTimeFromStart(marker: "data_loaded")
 
 ### User consent
 
-By default the Agent will send events to Split cloud, but you can disable this behavior until user consent is explicitly granted.
+By default the Agent will send events to Harness FME servers, but you can disable this behavior until user consent is explicitly granted.
 
 The `userConsent` configuration parameter lets you set the initial consent status of the Agent, and the `SplitRum.setUserConsent(boolean)` method lets you grant (enable) or decline (disable) dynamic event tracking.
 
 There are three possible initial states:
- * `'GRANTED'`: The user grants consent for tracking events and impressions. The SDK sends them to Split cloud. This is the default value if `userConsent` param is not defined.
- * `'DECLINED'`: The user declines consent for tracking events and impressions. The SDK does not send them to Split cloud.
+ * `'GRANTED'`: The user grants consent for tracking events and impressions. The SDK sends them to Harness FME servers. This is the default value if `userConsent` param is not defined.
+ * `'DECLINED'`: The user declines consent for tracking events and impressions. The SDK does not send them to Harness FME servers.
  * `'UNKNOWN'`: The user neither grants nor declines consent for tracking events and impressions. The SDK tracks them in its internal storage, and eventually either sends them or not if the consent status is updated to `'GRANTED'` or `'DECLINED'` respectively.
 
 The status can be updated at any time with the `setUserConsent` factory method.
@@ -237,12 +237,12 @@ Working with user consent is demonstrated below.
   // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
   let cfg = SplitRumConfig().userConsent(.unknown)
 
-  // so the Agent locally tracks data but not send it to Split cloud until consent is changed to 'GRANTED'.
+  // so the Agent locally tracks data but not send it to Harness FME servers until consent is changed to 'GRANTED'.
   try? SplitRum.setup(apiKey: apiKey, config: config)
 
-  // Changed User Consent status to 'GRANTED'. Data will be sent to Split cloud.
+  // Changed User Consent status to 'GRANTED'. Data will be sent to Harness FME servers.
   SlitRum.setUserConsent(enabled: true);
-  // Changed User Consent status to 'DECLINED'. Data will not be sent to Split cloud.
+  // Changed User Consent status to 'DECLINED'. Data will not be sent to Harness FME servers.
   SlitRum.setUserConsent(enabled: false);
 
   // The 'getUserConsent' method returns User Consent status.

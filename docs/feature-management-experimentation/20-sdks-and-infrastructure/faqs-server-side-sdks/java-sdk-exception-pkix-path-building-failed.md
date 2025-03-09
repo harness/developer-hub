@@ -25,7 +25,7 @@ unable to find valid certification path to requested target
 
 ## Root cause
 
-This exception means Java could not download the Split.io certificate, which will prevent the SSL connection to be established between the SDK and Split cloud.
+This exception means Java could not download the Split.io certificate, which will prevent the SSL connection to be established between the SDK and Harness FME servers.
 
 ## Solution
 

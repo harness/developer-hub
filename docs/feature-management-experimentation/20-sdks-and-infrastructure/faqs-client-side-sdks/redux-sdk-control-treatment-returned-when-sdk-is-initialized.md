@@ -30,7 +30,7 @@ export default function initialise() {
 
 ## Root Cause
 
-When the SDK initializes, it starts downloading the cache from Split cloud, during this time isReady is false, if we try fetching treatments at that point, we will get control. We also need to evaluate updating isReady flag to true once the SDK is ready asynchronously.
+When the SDK initializes, it starts downloading the cache from Harness FME servers, during this time isReady is false, if we try fetching treatments at that point, we will get control. We also need to evaluate updating isReady flag to true once the SDK is ready asynchronously.
 
 ## Solution
 

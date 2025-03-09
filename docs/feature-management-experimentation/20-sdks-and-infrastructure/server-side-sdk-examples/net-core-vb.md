@@ -1,6 +1,6 @@
 ---
-title: .NET Core VB using Split SDK example
-sidebar_label: .NET Core VB using Split SDK example
+title: .NET Core VB using FME SDK example
+sidebar_label: .NET Core VB using FME SDK example
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 3
@@ -10,7 +10,7 @@ sidebar_position: 3
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360039415491--NET-Core-VB-using-Split-SDK-example </button>
 </p>
 
-Example: Basic code to use .NET Split SDK 6.0.1
+Example: Basic code to use FME .NET SDK 6.0.1
 
 Environment:
 
@@ -25,7 +25,7 @@ Environment:
 
 How to use:
 
-* Update your relevant Split API key, user ID, and Split names in:
+* Update your relevant FME API key, user ID, and feature flag names in:
 
 ```
 Imports System
@@ -61,7 +61,7 @@ Public Class Application
     properties("configType") = "INLINE"
     Common.Logging.LogManager.Adapter = New Common.Logging.NLog.NLogLoggerFactoryAdapter(properties)
 
-' Using the Split SDK
+' Using the FME SDK
     Dim splitConfig As ConfigurationOptions
     splitConfig = New ConfigurationOptions()
     Dim factory As SplitFactory
@@ -72,7 +72,7 @@ Public Class Application
     System.Console.WriteLine("SDK is Ready")
 
     Dim treatment As String
-    treatment = client.GetTreatment("User ID","Split Name")
+    treatment = client.GetTreatment("User ID key","Feature flag name")
     System.Console.WriteLine(treatment)
   End Sub
 End Class

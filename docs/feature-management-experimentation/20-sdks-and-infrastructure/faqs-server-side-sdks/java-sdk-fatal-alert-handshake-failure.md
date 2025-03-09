@@ -13,7 +13,7 @@ sidebar_position: 12
 
 ## Issue
 
-Using Split Java SDK and JDK 1.6 (JRE 6.x), the following connection error to split.io is thrown:
+Using Java SDK and JDK 1.6 (JRE 6.x), the following connection error to split.io is thrown:
 ```
 .RECV TLSv1 ALERT: fatal, handshake_failure
 
