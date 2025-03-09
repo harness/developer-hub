@@ -27,6 +27,13 @@ import { MODULES } from "@site/src/constants"
             "Platforms and technologies supported in FME",
           link: "/docs/feature-management-experimentation/getting-started/whats-supported",
         },
+        {
+          title: "Development guides",
+          module: MODULES.fme,
+          description:
+            "Guides for using Harness FME with popular languages and platforms, including mobile development",
+          link: "/docs/feature-management-experimentation/sdks-and-infrastructure",
+        },
       ],
     },
     {
