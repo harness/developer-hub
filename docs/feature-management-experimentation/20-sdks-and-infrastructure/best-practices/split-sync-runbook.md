@@ -98,7 +98,7 @@ We recommend the following alerts:
 
 Alerting on CONTROL treatment can also be set at the Split Synchronizer level by setting an impression listener described in the [<u>Split Synchronizer guide.</u>](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer-proxy#listener) This approach is similar to the SDK as described at the top of this runbook, but from the Synchronizer standpoint.
 
-### Health Check Monitors
+### Health check monitors
 
 We have two monitors to periodically validate the Synchronizer health.
 

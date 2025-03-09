@@ -23,7 +23,7 @@ When `getTreatment` call returns `control`, this means either:
 
 ## Solution
 
-The `control` treatment is most likely to return using the mobile SDKs; Javascript, Android and iOS. Simply because potentially the SDK runs on users' mobile devices which may have a slow network connection.
+The `control` treatment is most likely to return using the mobile SDKs; JavaScript, Android and iOS. Simply because potentially the SDK runs on users' mobile devices which may have a slow network connection.
 
 That is why for these SDKs `getTreatment` should always be called when the SDK_READY events fires, which will ensure it's called after the SDK downloads all the information from Split cloud and avoid returning `control` treatments.
 

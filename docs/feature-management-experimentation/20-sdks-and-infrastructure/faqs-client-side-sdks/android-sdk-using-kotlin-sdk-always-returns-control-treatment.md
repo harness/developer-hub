@@ -1,6 +1,6 @@
 ---
-title: "Android SDK: Using Kotlin, SDK always returns control treatment"
-sidebar_label: "Android SDK: Using Kotlin, SDK always returns control treatment"
+title: "Android SDK: Using Kotlin, SDK always returns the control treatment"
+sidebar_label: "Android SDK: Using Kotlin, SDK always returns the control treatment"
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 17

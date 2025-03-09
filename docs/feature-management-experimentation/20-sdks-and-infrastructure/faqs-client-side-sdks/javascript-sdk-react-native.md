@@ -1,13 +1,13 @@
 ---
-title: "Running bundle using React Native and Javascript SDK causes an error. Bundling failed: Error: Unable to resolve module `util`"
-sidebar_label: "Running bundle using React Native and Javascript SDK causes an error. Bundling failed: Error: Unable to resolve module `util`"
+title: "Running bundle using React Native and JavaScript SDK causes an error. Bundling failed: Error: Unable to resolve module `util`"
+sidebar_label: "Running bundle using React Native and JavaScript SDK causes an error. Bundling failed: Error: Unable to resolve module `util`"
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 24
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025154551-Running-bundle-using-React-Native-and-Javascript-SDK-causes-an-error-Bundling-failed-Error-Unable-to-resolve-module-util </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025154551-Running-bundle-using-React-Native-and-JavaScript-SDK-causes-an-error-Bundling-failed-Error-Unable-to-resolve-module-util </button>
 </p>
 
 ## Issue
@@ -23,7 +23,7 @@ When running the bundle, following error occurrs: bundling failed: Error: Unable
 
 ## Answer
 
-Javascript SDK requires class util as a dependency; however, it's not included in the package.json dependencies, since it comes built-in in most npm packages.
+JavaScript SDK requires class util as a dependency; however, it's not included in the package.json dependencies, since it comes built-in in most npm packages.
 
 React Native, however, does not have the class "util" by default installation.
 

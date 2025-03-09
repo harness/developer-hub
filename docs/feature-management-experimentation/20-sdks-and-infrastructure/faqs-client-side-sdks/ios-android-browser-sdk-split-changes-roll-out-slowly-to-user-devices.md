@@ -1,6 +1,6 @@
 ---
-title: "Mobile and web SDK: Split changes roll out slowly to user devices."
-sidebar_label: "Mobile and web SDK: Split changes roll out slowly to user devices."
+title: "Mobile and web SDK: Split changes roll out slowly to user devices"
+sidebar_label: "Mobile and web SDK: Split changes roll out slowly to user devices"
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 7
@@ -12,7 +12,7 @@ sidebar_position: 7
 
 ## Issue
 
-When making a change to a feature flag through the web UI, mobile (iOS and Android) and Javascript Browser SDKs do not reflect that change at the same time. A small population of devices are synched in the first day, then more user devices get synched in subsequent days until all SDKs are updated. 
+When making a change to a feature flag through the web UI, mobile (iOS and Android) and JavaScript Browser SDKs do not reflect that change at the same time. A small population of devices are synched in the first day, then more user devices get synched in subsequent days until all SDKs are updated. 
 
 Why do Split changes propagate slowly to user devices?
 

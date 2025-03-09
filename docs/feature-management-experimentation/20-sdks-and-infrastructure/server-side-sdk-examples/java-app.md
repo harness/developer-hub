@@ -1,6 +1,6 @@
 ---
-title: Java App Project using Split SDK example
-sidebar_label: Java App Project using Split SDK example
+title: Java app project using Split SDK example
+sidebar_label: Java app project using Split SDK example
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 12
@@ -10,4 +10,4 @@ sidebar_position: 12
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360015385692-Java-App-Project-using-Split-SDK-example </button>
 </p>
 
-[Java App Project using Split SDK example](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/Java-SDK)
+[Java app project using Split SDK example](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/Java-SDK)

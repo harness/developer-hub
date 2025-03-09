@@ -21,7 +21,7 @@ What are the updates needed for each SDK to accomplish this?
 1. Make sure to obtain the Split Proxy URL 
 2. Refer to each SDK section below for the Configuration parameters needed, set the URL parameters to the full URL of the proxy location.
 
-### Javascript SDK
+### JavaScript SDK
 ```
 core: { ... },
 urls: {

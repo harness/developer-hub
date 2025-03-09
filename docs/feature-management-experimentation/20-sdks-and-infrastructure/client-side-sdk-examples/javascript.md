@@ -1,6 +1,6 @@
 ---
-title: JavaScript SDK used with JavaScript Frameworks
-sidebar_label: JavaScript SDK used with JavaScript Frameworks
+title: JavaScript SDK used with JavaScript frameworks
+sidebar_label: JavaScript SDK used with JavaScript frameworks
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 15

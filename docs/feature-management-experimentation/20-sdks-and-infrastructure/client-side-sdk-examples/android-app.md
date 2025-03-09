@@ -1,6 +1,6 @@
 ---
-title: Android App Project using Split SDK example
-sidebar_label: Android App Project using Split SDK example
+title: Android app project using Split SDK example
+sidebar_label: Android app project using Split SDK example
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 13
@@ -10,4 +10,4 @@ sidebar_position: 13
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360015345052-Android-App-Project-using-Split-SDK-example </button>
 </p>
 
-[Android App Project using Split SDK Example](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/android-sdk)
+[Android app project using Split SDK Example](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/android-sdk)

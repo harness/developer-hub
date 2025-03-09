@@ -1,6 +1,6 @@
 ---
-title: React Native Android App using Split SDK example
-sidebar_label: React Native Android App using Split SDK example
+title: React Native Android app using Split SDK example
+sidebar_label: React Native Android app using Split SDK example
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 9

@@ -98,4 +98,4 @@ sample.SplitSDK_Sample::handleRequest
 
 ![](https://help.split.io/hc/article_attachments/360039463251/Screen_Shot_2019-09-26_at_12.34.37_PM.png)
 
-[Download Example Project](https://drive.google.com/a/split.io/file/d/1iwl7u5ohAAx4PawuIw_gWb6kY_3Gfhs-/view?usp=sharing)
+[Download example project](https://drive.google.com/a/split.io/file/d/1iwl7u5ohAAx4PawuIw_gWb6kY_3Gfhs-/view?usp=sharing)

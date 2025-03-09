@@ -1,6 +1,6 @@
 ---
-title: Isomorphic JavaScript Wrapper Example
-sidebar_label: Isomorphic JavaScript Wrapper Example
+title: Isomorphic JavaScript wrapper example
+sidebar_label: Isomorphic JavaScript wrapper example
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 1
@@ -17,8 +17,8 @@ The concept gained traction in the early 2010s, with the rise of Node.js, which 
 
 By bridging the gap between server and client, isomorphic JavaScript significantly improved application performance, SEO, and overall user experience, becoming a fundamental approach in modern web development.
 
-In the [isomorphic_js_wrapper_demo code example](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/Javascript-Isomorphic-Wrapper), we show that the Split JavaScript SDK is, indeed, isomorphic.
+In the [isomorphic_js_wrapper_demo code example](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/JavaScript-Isomorphic-Wrapper), we show that the Split JavaScript SDK is, indeed, isomorphic.
 
 The demo evaluates flags on both the server side and the client side using the same SDK Wrapper. This allows you to maintain only a single codebase for wrapping Split's SDK and ensures that you use the proper methods when on the server and the client with the same code.
 
-To see the full readme and code, visit the [Split Community's Split-SDKs-Examples](https://github.com/Split-Community/Split-SDKs-Examples/tree/main) repo. The direct link to this example is: https://github.com/Split-Community/Split-SDKs-Examples/tree/main/Javascript-Isomorphic-Wrapper
+To see the full readme and code, visit the [Split Community's Split-SDKs-Examples](https://github.com/Split-Community/Split-SDKs-Examples/tree/main) repo. The direct link to this example is: https://github.com/Split-Community/Split-SDKs-Examples/tree/main/JavaScript-Isomorphic-Wrapper

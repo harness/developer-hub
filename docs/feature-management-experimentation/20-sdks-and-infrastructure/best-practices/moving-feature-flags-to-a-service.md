@@ -1,6 +1,6 @@
 ---
-title: Moving Feature Flags to a Service
-sidebar_label: Moving Feature Flags to a Service
+title: Moving feature flags to a service
+sidebar_label: Moving feature flags to a service
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 2
@@ -11,9 +11,9 @@ sidebar_position: 2
 </p>
 
 
-## Using a Service for Feature flags
+## Using a service for feature flags
 
-Split lets you roll out features and experiment with a target group of customers across the full web stack: from deep in the backend to client-facing Javascript and mobile.
+Split lets you roll out features and experiment with a target group of customers across the full web stack: from deep in the backend to client-facing JavaScript and mobile.
 
 Feature flagging in mobile can be particularly advantageous. For example, consider what happens when a critical bug appears in a newly-released mobile feature: due to App Store approval delay, a fix can’t be delivered to customers in minutes; not to mention, you can't force customers to update their apps.
 
@@ -39,7 +39,7 @@ This approach has a number of advantages:
 * **No impact to file size**
   By hosting the library on the server side, you need never worry about increasing the footprint of your mobile or IoT app by adding Split’s library. Phoning home is safe.
 
-## Best Practices for Designing the Service
+## Best practices for designing the service
 
 Split provides the [Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator) as an out of the box solution for evaluating feature flags on the server-side, to both address potential client-side challenges and to split on applications written in languages for which there is no SDK.
 
@@ -62,7 +62,7 @@ Example:
 
 Since dimension values are encoded in the query parameters, we recommend communicating over https.
 
-### Response Schema and Status Code
+### Response schema and status code
 
 The response object should follow this schema:
 
@@ -105,7 +105,7 @@ if ("on".equals(treatment)) {
 }
 ```
 
-### Server Code Sample
+### Server code sample
 
 Here is a Guice enabled Java pseudo-code for the REST server:
 

@@ -1,6 +1,6 @@
 ---
-title: "Mobile SDK: When using client.on method, the code block never called"
-sidebar_label: "Mobile SDK: When using client.on method, the code block never called"
+title: "Mobile SDK: When using client.on method, the code block is never called"
+sidebar_label: "Mobile SDK: When using client.on method, the code block is never called"
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 22
@@ -12,7 +12,7 @@ sidebar_position: 22
 
 ## Issue
 
-Using Javascript browser-side, Android or iOS SDKs, and implementing the code below, the code block never gets executed which indicates SDK_READY event never fires.
+Using JavaScript browser-side, Android or iOS SDKs, and implementing the code below, the code block never gets executed which indicates SDK_READY event never fires.
 
 ```javascript
 client.on(SplitEvent.SDK_READY, new SplitEventTask() {
@@ -85,7 +85,7 @@ class SplitWrapper {
 ```
 
   </TabItem>
-  <TabItem value="Javascript browser-side">
+  <TabItem value="JavaScript browser-side">
 
 ```javascript
 class SplitIO {

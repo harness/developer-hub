@@ -1,6 +1,6 @@
 ---
-title: .NET C# App Project using Split SDK example
-sidebar_label: .NET C# App Project using Split SDK example
+title: .NET C# app project using Split SDK example
+sidebar_label: .NET C# app project using Split SDK example
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 6

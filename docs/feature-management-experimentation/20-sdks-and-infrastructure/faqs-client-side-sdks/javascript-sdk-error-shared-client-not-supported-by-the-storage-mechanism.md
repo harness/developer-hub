@@ -1,18 +1,18 @@
 ---
-title: "Javascript SDK Error: \"Shared Client not supported by the storage mechanism. Create isolated instances instead\""
-sidebar_label: "Javascript SDK Error: \"Shared Client not supported by the storage mechanism. Create isolated instances instead\""
+title: "JavaScript SDK Error: \"Shared Client not supported by the storage mechanism. Create isolated instances instead\""
+sidebar_label: "JavaScript SDK Error: \"Shared Client not supported by the storage mechanism. Create isolated instances instead\""
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 20
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360034151511-Javascript-SDK-Error-Shared-Client-not-supported-by-the-storage-mechanism-Create-isolated-instances-instead </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360034151511-JavaScript-SDK-Error-Shared-Client-not-supported-by-the-storage-mechanism-Create-isolated-instances-instead </button>
 </p>
 
 ## Issue
 
-When testing Javascript SDK browser mode using Jest, it fails with the following error:
+When testing JavaScript SDK browser mode using Jest, it fails with the following error:
 
 Shared Client not supported by the storage mechanism. Create isolated instances in stead
 

@@ -59,7 +59,7 @@ You need to combine the Split reducer with yours when creating your store and us
 
 For the client side, the Redux documentation [recommends](https://redux.js.org/introduction/getting-started#basic-example) creating a single store to be used as the source of truth for your state. This is where we'll plug in the Split reducer.
 
-For Server Side Rendering, the Redux documentation [suggests](https://redux.js.org/usage/server-rendering#handling-the-request) creating a store per request, which is why we provide a function to create stores, where each instance will include the Split reducer.
+For Server-Side Rendering, the Redux documentation [suggests](https://redux.js.org/usage/server-rendering#handling-the-request) creating a store per request, which is why we provide a function to create stores, where each instance will include the Split reducer.
 
 <Tabs>
 <TabItem value="Client Side with Redux Toolkit">

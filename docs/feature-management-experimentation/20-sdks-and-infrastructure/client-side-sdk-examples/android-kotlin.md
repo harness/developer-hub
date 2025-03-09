@@ -1,6 +1,6 @@
 ---
-title: Android Kotlin App Project using Split SDK example
-sidebar_label: Android Kotlin App Project using Split SDK example
+title: Android Kotlin app project using Split SDK example
+sidebar_label: Android Kotlin app project using Split SDK example
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 7

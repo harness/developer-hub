@@ -1,17 +1,17 @@
 ---
-title: "Why does the Javascript URL \"https://sdk.split.io/api/mySegments/\" return HTTP 404 error?"
-sidebar_label: "Why does the Javascript URL \"https://sdk.split.io/api/mySegments/\" return HTTP 404 error?"
+title: "Why does the JavaScript URL \"https://sdk.split.io/api/mySegments/\" return HTTP 404 error?"
+sidebar_label: "Why does the JavaScript URL \"https://sdk.split.io/api/mySegments/\" return HTTP 404 error?"
 helpdocs_is_private: false
 helpdocs_is_published: true
 sidebar_position: 28
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360019195211-Why-does-the-Javascript-URL-https-sdk-split-io-api-mySegments-return-HTTP-404-error </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360019195211-Why-does-the-JavaScript-URL-https-sdk-split-io-api-mySegments-return-HTTP-404-error </button>
 </p>
 
 ## Problem
-Using Javascript SDK, its generating URL below with 404 errors
+Using JavaScript SDK, its generating URL below with 404 errors
 ```
 GET https://sdk.split.io/api/mySegments/ 404
 ```
