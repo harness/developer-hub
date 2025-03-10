@@ -51,11 +51,4 @@ The table below describes how a **Service** is considered in Chaos Engineering, 
     </tbody>
 </table>
 
-<h2>FAQs</h2>
-**1. How are the services counted across different instances in different environments?**
-
-If you have deployed a resource (such as a Kubernetes Deployment) in two different environment, for example in QA and in Pre-Production, and you run a chaos experiment on that service in both the environments, then the license utilisation is considered separately for both the services. In this specific case, two chaos licenses are utilised. 
-
-**2.Are the licenses continue to be counted beyond a 30 days cycle?**
-
-Only if the chaos experimentation is active. If you run chaos experiments on a resource (such as a Kuberentes Deployment) now and do not run any experiments for the next 30 days, then the utilised license will be released after the 30-day idle period. Licenses are counted only if at least one chaos experiment is run against a service in the last 30 days. This system of license counting allows the reuse of licenses in a given annual period of licensing. 
+Have questions? Go to [Frequently Asked Questions on Licenses](/docs/faqs/chaos-engineering-faqs#license).
