@@ -23,5 +23,5 @@ The page contains:
 - Cost Trend and Anomalies: Graph showing Anomalies Spend and Spend within Range for historical data over a time period of either 30 or 90 days.
 - Anomalies Spend:
   - Spend within range: 
-  - Top resource changes: Top resources with major cost impact due to the anomaly
+  - Top resource changes: Top resources with major cost impact due to the anomaly with corresponsing cloud labels on the resources for additional metadata.
   - Section to submit feedback: Users can mark an anomaly as “True Expected”, “True Unexpected”, or “False”” to improve accuracy of the system for further anomaly detection.

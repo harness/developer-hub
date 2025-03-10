@@ -15,7 +15,10 @@ Any anomaly from the list will exist in one of the three states at any given poi
 
 - Resolved: An anomaly that has been resolved is marked as “Resolved”.
 
-- Archived/Ignored: An anomaly that has been marked as ignored, appears in the Archived/Ignored list. Once an anomaly is more than 90 days, it is marked as archived. The Archived/Ignored page shows details about the anomalies marked as ignored as well as the estimated cost impact (total) from the anomalies, number of anomalies ignored and archived, etc.
+- Ignored: An anomaly that has been marked as ignored will appear in the Ignored list. Ignored anomalies are not actively flagged but remain visible for reference.
+- Archived: An anomaly is automatically moved to the Archived list once it is more than 90 days old.
+
+The Archived/Ignored page provides details about anomalies in both states, including the estimated total cost impact, the number of anomalies ignored, and the number archived.
 
 ## Anomaly Notifications
 It might not always be possible to keep an eye out on the homepage to check for anomalies and some anomalies might need urgent attention. For this reason, Harness CCM provides an option to set alerts for all anomalies for a particular account or specific resources. 
@@ -23,7 +26,7 @@ It might not always be possible to keep an eye out on the homepage to check for 
 While setting up a new alert, following can be selected:
 - Scope: Scope for which the anomaly needs to be alerted for. This can be either for all account data that the user has access to or the user can specify perspectives for which anomaly alerts will be sent.
 - Configuring the anomaly alert: Alert conditions follow your set preferences. You may override these thresholds, but only to increase them. Currently, the user can set thresholds for “Alert when cost difference is over ($)” and “Alert when cost difference is over (%)” depending on whether they want to define a specific cost amount or a cost percentage.
-- Alert Channel: Currently, Harness CCM supports Slack and e-mail as possible methods of sending alerts.
+- Alert Channel: Currently, Harness CCM supports Slack and/or e-mail as possible methods of sending alerts.
 
 ## Anomaly Global preferences
 Harness CCM allows users to configure how cost anomalies are detected and reported, ensuring that only significant anomalies are flagged for review. Here’s an explanation of the configurable options:
