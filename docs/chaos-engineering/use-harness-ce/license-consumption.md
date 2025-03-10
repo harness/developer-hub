@@ -8,7 +8,8 @@ Harness Chaos Engineering uses a licensing model based on the number of **Servic
 
 This approach allows targeted experimentation across a wide range of environments, optimizing license utilization and supporting the needs of different teams, applications, and infrastructure types.
 
-### What is a service?
+<h2> What is a service?</h2>
+
 In the Harness Chaos Engineering module, a **Service** refers to the specific target resource undergoing chaos experiments. This could include a variety of resources such as Kubernetes clusters, VMware instances, Windows or Linux servers, PCF applications, and popular cloud platforms. 
 
 The table below describes how a **Service** is considered in Chaos Engineering, in the context of the target resource.
@@ -23,8 +24,8 @@ The table below describes how a **Service** is considered in Chaos Engineering, 
     </thead>
     <tbody>
         <tr>
-            <td>Kubernetes Service</td>
-            <td>Each Kubernetes service is mapped directly to a Chaos Service.</td>
+            <td>Kubernetes Platform </td>
+            <td>One license service is equivalent to a Kubernetes service or a workload such as a Deployment/ReplicaSet/StatefulSet/DaemonSet/Job/CronJob.</td>
             <td>1:1</td>
         </tr>
         <tr>
@@ -44,8 +45,17 @@ The table below describes how a **Service** is considered in Chaos Engineering, 
         </tr>
         <tr>
             <td>Miscellaneous (experiment runs)</td>
-            <td>Any target resource that does not fall into a specific type described above. 100 chaos experiment runs on a given target are mapped to a license service.</td>
+            <td>Any target resource that does not fall into a specific type described above, will fall in the miscellaneous category. In this category, 100 chaos experiment runs on a given target are mapped to a license service.</td>
             <td>100:1</td>
         </tr>
     </tbody>
 </table>
+
+<h2>FAQs</h2>
+**1. How are the services counted across different instances in different environments?**
+
+If you have deployed a resource (such as a Kubernetes Deployment) in two different environment, for example in QA and in Pre-Production, and you run a chaos experiment on that service in both the environments, then the license utilisation is considered separately for both the services. In this specific case, two chaos licenses are utilised. 
+
+**2.Are the licenses continue to be counted beyond a 30 days cycle?**
+
+Only if the chaos experimentation is active. If you run chaos experiments on a resource (such as a Kuberentes Deployment) now and do not run any experiments for the next 30 days, then the utilised license will be released after the 30-day idle period. Licenses are counted only if at least one chaos experiment is run against a service in the last 30 days. This system of license counting allows the reuse of licenses in a given annual period of licensing. 
