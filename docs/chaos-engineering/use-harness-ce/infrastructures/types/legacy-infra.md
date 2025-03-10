@@ -27,12 +27,48 @@ Unless specified, chaos infrastructure refers to the dedicated chaos infrastruct
 
 The table below lists the chaos infrastructure execution plane components and the required resources for Legacy Kubernetes Infrastructure. You can install these components in your target cluster, allowing the chaos infrastructure to run experiments here. Chaos infrastructure runs within your target environment to aid HCE in accessing the target resources and injecting chaos at a cloud-native scale.
 
-| Deployment | Container | CPU<br />required | Memory<br />required | Image |
-|------------|-----------|-------------------|----------------------|-------|
-| chaos-operator-ce  | chaos-operator-ce     | 125m | 300M | chaosnative/chaos-operator          |
-| chaos-exporter     | chaos-exporter        | 125m | 300M | chaosnative/chaos-exporter          |
-| subscriber         | subscriber            | 125m | 300M | chaosnative/harness-chaos-subscriber|
-| workflow-controller| workflow-controller   | 125m | 300M | chaosnative/workflow-controller     |
+<table>
+    <thead>
+        <tr>
+            <th>Deployment</th>
+            <th>Container</th>
+            <th>CPU<br />Required</th>
+            <th>Memory<br />Required</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>chaos-operator-ce</td>
+            <td>chaos-operator-ce</td>
+            <td>125m</td>
+            <td>300M</td>
+            <td>harness/chaos-operator</td>
+        </tr>
+        <tr>
+            <td>chaos-exporter</td>
+            <td>chaos-exporter</td>
+            <td>125m</td>
+            <td>300M</td>
+            <td>harness/chaos-exporter</td>
+        </tr>
+        <tr>
+            <td>subscriber</td>
+            <td>subscriber</td>
+            <td>125m</td>
+            <td>300M</td>
+            <td>harness/harness-chaos-subscriber</td>
+        </tr>
+        <tr>
+            <td>workflow-controller</td>
+            <td>workflow-controller</td>
+            <td>125m</td>
+            <td>300M</td>
+            <td>harness/workflow-controller</td>
+        </tr>
+    </tbody>
+</table>
+
 
 
 ## Install Dedicated Chaos Infrastructure
