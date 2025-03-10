@@ -10,7 +10,7 @@ This guide explains how to configure Ingress resources and the NGINX controller 
 
 For more information, go to [Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) in the Kubernetes documentation.
 
-## Ingress and Nginx Configuration
+## Ingress Configuration
 
 ### Enable Ingress
 ```yaml
