@@ -57,14 +57,14 @@ The table below lists the chaos infrastructure execution plane components and th
             <td>subscriber</td>
             <td>125m</td>
             <td>300M</td>
-            <td>docker.io/harness/harness-chaos-subscriber</td>
+            <td>docker.io/harness/chaos-subscriber</td>
         </tr>
         <tr>
             <td>workflow-controller</td>
             <td>workflow-controller</td>
             <td>125m</td>
             <td>300M</td>
-            <td>docker.io/harness/workflow-controller</td>
+            <td>docker.io/harness/chaos-workflow-controller</td>
         </tr>
     </tbody>
 </table>
