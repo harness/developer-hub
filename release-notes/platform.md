@@ -105,6 +105,12 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## March 2025 <!--March 10, 2025-->
+
+#### New features and enhancements
+- Added Feature flag `EXPONENTIAL_INTERVAL_TASK_REBROADCAST` to enable exponential increase in delegate re-broadcast intervals. [PL-60477] 
+- Accounts with a FREE license can no longer configure SAML authentication. [PL-59708]
+
 ## February 2025
 
 ### Version 1.79.x <!-- February 28, 2025-->
