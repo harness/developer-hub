@@ -146,6 +146,5 @@ Common issues and solutions:
    - Check certificate validity
 
 4. **Performance Issues**
-   - Verify load balancing configuration
    - Increase nginx controller replicas if needed
    - Check nginx controller logs for errors
