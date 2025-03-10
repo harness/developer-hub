@@ -112,10 +112,13 @@ steps:
         github_org: ${{ parameters.github_org }}
         github_token: ${{ parameters.github_token }}
       apikey: ${{ parameters.token }}
-  output:
-    links:
-      - title: Pipeline Details
-        url: ${{ steps.trigger.output.PipelineUrl }}
+
+  - id: another-step
+    name: Clean up  # Trigger another pipeline
+    action: trigger:harness-custom-pipeline
+    input:
+      url: "YOUR PIPELINE URL"
+      apikey: ${{ parameters.token }}
 ```
 
 #### [Supported Actions](/docs/internal-developer-portal/flows/custom-actions.md)
