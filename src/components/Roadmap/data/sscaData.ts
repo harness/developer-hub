@@ -7,7 +7,7 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "Repo Security Posture Management for GitHub",
-        description: "Identify misconfigs in source code repositories based on industry standards such as CIS v1.0 and OWASP Top 10 CI/CD Security Risks. Also, includes support for SBOM generation and security tests such as SAST, SCA, and secrets scanning.",
+        description: "Identify misconfigurations in source code repositories based on industry standards such as CIS v1.0 and OWASP Top 10 CI/CD Security Risks. Also, includes support for SBOM generation and security tests such as SAST, SCA, and secrets scanning.",
       },
       {
         tag: [],
@@ -47,7 +47,7 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "Non-Container based Artifact Signing & Verification",
-        description: "Support for signing and verification for non-containerized artifacts like helm charts, manifest files, JARs, WARs etc.",
+        description: "Support for signing and verification for non-containerized artifacts like helm charts, manifest files, JARs, WARs, etc.",
       },
       {
         tag: [],
@@ -57,7 +57,7 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "Repo Security Posture Management for Harness Code",
-        description: "Identify misconfigs in source code repositories based on industry standards such as CIS v1.0 and OWASP Top 10 CI/CD Risk. Also, includes support for SBOM generation and security tests such as SAST, SCA, and secrets scanning.",
+        description: "Identify misconfigurations in source code repositories based on industry standards such as CIS v1.0 and OWASP Top 10 CI/CD Risk. Also, includes support for SBOM generation and security tests such as SAST, SCA, and secrets scanning.",
       },
       {
         tag: [],
@@ -67,7 +67,7 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "SLSA Policies",
-        description: "Out of the box policies to ensure compliance with Level 1, Level 2, and Level 3 requirements.",
+        description: "Out-of-the-box policies to ensure compliance with Level 1, Level 2, and Level 3 requirements.",
       },
       {
         tag: [],
@@ -121,7 +121,7 @@ export const SscaData: Horizon = {
       },
       {
         tag: [],
-        title: "SBOM & SLSA support for Jenkins",
+        title: "SBOM & SLSA Support for Jenkins",
         description: "Generate SBOMs and achieve SLSA compliance using Jenkins pipelines.",
       },
       {
@@ -137,7 +137,7 @@ export const SscaData: Horizon = {
       {
         tag: [],
         title: "Remediation Tracker",
-        description: "Assign vulnerabilities & compliance issues to developers using remediation tracker to track across different types of target (Artifact, CI/CD, Repos).",
+        description: "Assign vulnerabilities & compliance issues to developers using remediation tracker to track across different types of targets (Artifact, CI/CD, Repos).",
       },
       {
         tag: [],
