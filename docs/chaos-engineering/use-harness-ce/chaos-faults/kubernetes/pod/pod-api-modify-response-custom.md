@@ -1,30 +1,25 @@
 ---
 id: pod-api-modify-response-custom
-title: Pod API modify response custom
-redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-response-custom
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-api-modify-response-custom
-- /docs/chaos-engineering/chaos-faults/kubernetes/pod-api-modify-response-custom
+title: Pod API Modify Response Custom
 ---
 
 import CommonNote from './shared/common-note.md'
 import ConfTLS from './shared/configure-tls.md'
 
-The Pod API Modify Response Custom is a Kubernetes pod-level chaos fault that consolidates the **pod-api-modify-body**, **pod-api-modify-header**, and **pod-api-status-code** faults. It allows modifying one or more aspects of the API response simultaneously, including headers, status code, and response body.
+Pod API Modify Response Custom is a Kubernetes pod-level chaos fault that consolidates the **pod-api-modify-body**, **pod-api-modify-header**, and **pod-api-status-code** faults. It allows modifying one or more aspects of the API response simultaneously, including headers, status code, and response body.
 
 <CommonNote />
-
 
 ![Pod API Modify Response Custom](./static/images/pod-api-modify-response-custom.png)
 
 ## Use cases
 Pod API modify response custom:
-- This fault enables simultaneous modification of headers, status codes, and response bodies to simulate real-world failure scenarios, allowing for end-to-end testing of API behavior under different conditions.
-- By modifying both response headers and body content, this fault can simulate unauthorized access attempts, expired authentication tokens, or altered security policies to evaluate the robustness of authentication and authorization mechanisms.
-- This fault can help assess how changes in API responses impact client-side performance. For example, altering response sizes, introducing unexpected headers, or changing response codes can help identify performance bottlenecks and resilience gaps.
+- Enables simultaneous modification of headers, status codes, and response bodies to simulate real-world failure scenarios, allowing end-to-end testing of API behavior under different conditions.
+- Simulates unauthorized access attempts, expired authentication tokens, or altered security policies to evaluate the robustness of authentication and authorization mechanisms.
+- Helps assess how changes in API responses impact client-side performance. For example, altering response sizes, introducing unexpected headers, or changing response codes can help identify performance bottlenecks and resilience gaps.
 - In a distributed system, modifying API responses can help validate how dependent services react to unexpected responses, such as malformed data, missing fields, or incorrect status codes, ensuring better fault tolerance.
 
-### Permissions required
+### Permissions Required
 
 Below is a sample Kubernetes role that defines the permissions required to execute the fault.
 
