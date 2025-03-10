@@ -270,6 +270,22 @@ This fault evaluates the application's resilience to lossy (or flaky) API reques
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod API modify response custom
+
+Pod API modify response custom is a Kubernetes pod-level chaos fault that consolidates the **pod-api-modify-body**, **pod-api-modify-header**, and **pod-api-status-code** faults.
+
+- It modifies the headers, body, and status code of both request and response for the APIs of the service specified by the `TARGET_SERVICE_PORT` environment variable.
+- It assesses the application's resilience to modified or corrupted API requests and responses.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+This fault assesses the application's resilience to modified or corrupted API requests and responses.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod API Status Code
 
 Pod API status code is a Kubernetes pod-level chaos fault that change the API response status code and optionally api response body through path filtering.
