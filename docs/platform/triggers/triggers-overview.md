@@ -56,8 +56,8 @@ You can set up Harness pipelines to be triggered automatically when a new versio
 You can use the following artifact providers to triggers pipelines:
 
 - ACR (Azure Container Registry)
-- Amazon S3
 - Amazon Machine Image (AMI)
+- Amazon S3
 - Artifactory Registry
 - Azure Artifacts
 - Bamboo
@@ -70,7 +70,6 @@ You can use the following artifact providers to triggers pipelines:
 - Google Cloud Storage
 - Jenkins
 - Nexus3 Registry
-
 
 ### Manifest triggers
 
