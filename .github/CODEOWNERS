@@ -148,10 +148,10 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/internalDeveloperPortal.ts @OrkoHunter @manishas @khushisharmaharness
 
 # SCS Docs
-/docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness
-/release-notes/software-supply-chain-assurance.md @sunilgupta-harness @tejakummarikuntla @pranay-harness
-/src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla @pranay-harness
-/src/components/Docs/data/softwareSupplyChainAssuranceData.tsx @sunilgupta-harness @tejakummarikuntla @pranay-harness
+/docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07
+/release-notes/software-supply-chain-assurance.md @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07
+/src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07
+/src/components/Docs/data/softwareSupplyChainAssuranceData.tsx @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07
 
 # IACM Docs
 /docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez
