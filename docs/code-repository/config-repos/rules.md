@@ -16,11 +16,16 @@ Branch rules set on a repository only apply to that specific repository but you 
 
 If you configure branch rules at multiple levels they are combined with an `AND` clause. This generally means the more restrictive rule applies. E.g If you configure a repository branch rule that requires 1 approval before merging but the org branch rule requires 2 approvals, then 2 approvals are needed. Before the branch can be merged the repository requires 1 approval AND the org requires 2 approvals so 2 approvals are needed.
 
-1. Navigate to the level where you want to enable branch rules: repository, project, org, or account and select **Manage Repositories**.
+1. Navigate to the level where you want to enable branch rules. For projects, orgs, or accounts, select **Manage Repositories**. For a repository, click **Settings**.
 2. Select the **Rules** tab.
-3. Select **New Branch Rule**.
+3. Click **Create Rule**.
 4. Enter the rule **Name** and optional **Description**.
-5. In **Target Patterns**, specify branches covered by this rule according to branch name globstar patterns, such as `string`, `feature-*`, or `releases/**`. You can also select whether the rule should apply to the default branch (such as `main`). Patterns can be inclusive or exclusive.
+:::info
+
+**Name** must start with a letter or `_` and only contain `[a-zA-Z0-9-_.]`
+
+:::
+5. In **Target Patterns**, specify branches covered by this rule according to branch name globstar patterns, such as `golden`, `feature-*`, or `releases/**`. You can also select whether the rule should apply to the default branch (such as `main`). Patterns can be inclusive or exclusive.
 6. In **Bypass List**, you can specify users who can bypass this rule.
 7. For each of the [**Rules**](#available-rules), select the rule you want to enable and provide additional specifications, if necessary. For example, if you select **Require a minimum number of reviewers**, you must specify the minimum number of reviewers.
 8. Select **Create Rule**.

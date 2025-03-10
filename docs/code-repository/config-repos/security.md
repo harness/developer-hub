@@ -21,10 +21,8 @@ Harness Code Secret Scanning scans *only new/changed code* in commits that users
 To enable Secret Scanning:
 
 1. Go to the repository where you want to enable secret scanning and select **Settings**.
-2. Select the **Security** tab.
+2. Scroll down to the **Security** section.
 3. Enable **Secret Scanning**.
-4. Select **Save**.
-5. Repeat to enable Secret Scanning on additional repos.
 
 ### Bypass or ignore detected secrets
 
@@ -40,7 +38,7 @@ Harness Code Secret Scanning uses [Gitleaks](https://github.com/gitleaks/gitleak
 * Create a `.gitleaksignore` file.
 
 For more information and usage instructions for these options, go to the [Gitleaks README](https://github.com/gitleaks/gitleaks?tab=readme-ov-file#additional-configuration).
-
+<!-- 
 ## Enable Vulnerability Scanning
 
 In Harness Code, you can prevent vulnerable code from being introduced into your Git repository during a push. Harness Code checks your code against a database of known OSV vulnerabilities. If there are any matches, Harness Code can block the push or display a warning message to the code author.
@@ -62,7 +60,7 @@ To enable Vulnerability Scanning:
 3. Enable **Vulnerability Scanning**.
 4. Select whether to **Detect** (warn/log) or **Block** vulnerabilities.
 5. Select **Save**.
-6. Repeat to enable Vulnerability Scanning on additional repos.
+6. Repeat to enable Vulnerability Scanning on additional repos. -->
 
 ## Enable OPA with Harness Policy As Code
 
