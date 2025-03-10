@@ -57,7 +57,9 @@ You can use the following artifact providers to triggers pipelines:
 
 - ACR (Azure Container Registry)
 - Amazon S3
+- Amazon Machine Image (AMI)
 - Artifactory Registry
+- Azure Artifacts
 - Bamboo
 - Custom Artifact
 - Docker Registry
@@ -66,19 +68,9 @@ You can use the following artifact providers to triggers pipelines:
 - Github Package Registry
 - Google Artifact Registry
 - Google Cloud Storage
-
-:::note
-
-The following artifact providers are supported behind the feature flag `CD_TRIGGER_V2`:
-
 - Jenkins
-- Azure Artifacts
 - Nexus3 Registry
-- Amazon Machine Image (AMI)
 
-Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 ### Manifest triggers
 
