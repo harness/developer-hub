@@ -7,7 +7,7 @@ redirect_from:
   - /docs/continuous-integration/get-started/ci-subscription-mgmt
 ---
 
-<!-- ![](/docs/continuous-integration/static/ci_usage_overview.png) -->
+<!-- ![](/docs/continuous-integration/static/ci-usage-overview.png) -->
 
 
 import Overview from '/docs/continuous-integration/shared/subscription-overview.md';

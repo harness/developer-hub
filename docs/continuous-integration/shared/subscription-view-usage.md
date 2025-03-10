@@ -4,9 +4,9 @@ In legacy navigation, go to **Account Settings**, and then select **Usage**.
 
 In the navigation 2.0, go to **Account Settings** and select **Subscriptions** under the **Subscriptions** section, and then select the **Continuous Integration** module from the dropdown at the top of the page.
 
-<!-- ![](/docs/continuous-integration/static/ci_usage_overview.png) -->
+<!-- ![](/docs/continuous-integration/static/ci-usage-overview.png) -->
 
-<DocImage path={require('/docs/continuous-integration/static/ci_usage_overview.png')} />
+<DocImage path={require('/docs/continuous-integration/static/ci-usage-overview.png')} />
 
 CI subscription usage details are divided into several sections providing progressively more detail about your license and Harness Cloud build credit usage.
 
@@ -35,15 +35,15 @@ Under the [Developer 360 subscription model](/docs/platform/get-started/subscrip
 
 Subscription models that don't follow the Developer 360 model count active developers as active codebase committers observed in the builds managed by Harness CI over the last 30 days.
 
-<!-- ![](/docs/continuous-integration/static/ci_usage_plansummary_onetile.png) -->
+<!-- ![](/docs/continuous-integration/static/ci-usage-plansummary-onetile.png) -->
 
-<DocImage path={require('/docs/continuous-integration/static/ci_usage_plansummary_onetile.png')} />
+<DocImage path={require('/docs/continuous-integration/static/ci-usage-plansummary-onetile.png')} />
 
 The **Available Credits** tile shows your Harness Cloud build credit balance, expiration, and consumption. For details about Harness Build credit calculations, go to [Harness Cloud billing and build credits](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits)
 
-<!-- ![](/docs/continuous-integration/static/ci_usage_plansummary.png) -->
+<!-- ![](/docs/continuous-integration/static/ci-usage-plansummary.png) -->
 
-<DocImage path={require('/docs/continuous-integration/static/ci_usage_plansummary.png')} width="30%" height="30%" />
+<DocImage path={require('/docs/continuous-integration/static/ci-usage-plansummary.png')} width="30%" height="30%" />
 
 </details>
 
@@ -54,9 +54,9 @@ In this section, you can drill down into license usage data for active developer
 
 The **Breakdown** tab shows a breakdown of license usage.
 
-<!-- ![](/docs/continuous-integration/static/ci_usage_devs_breakdown.png) -->
+<!-- ![](/docs/continuous-integration/static/ci-usage-devs-breakdown.png) -->
 
-<DocImage path={require('/docs/continuous-integration/static/ci_usage_devs_breakdown.png')} />
+<DocImage path={require('/docs/continuous-integration/static/ci-usage-devs-breakdown.png')} />
 
 The **Trend** tab shows license usage trends over time, including:
 
@@ -64,9 +64,9 @@ The **Trend** tab shows license usage trends over time, including:
 * Total license limit for your subscription.
 * Over use.
 
-<!-- ![](/docs/continuous-integration/static/ci_usage_dev_trend.png) -->
+<!-- ![](/docs/continuous-integration/static/ci-usage-dev-trend.png) -->
 
-<DocImage path={require('/docs/continuous-integration/static/ci_usage_dev_trend.png')} />
+<DocImage path={require('/docs/continuous-integration/static/ci-usage-dev-trend.png')} />
 
 :::info Over use
 
@@ -93,9 +93,9 @@ In this section, you can drill down into Harness Cloud build credit usage data, 
    * Free plans receive 2000 free credits each month.
    * If you have a paid plan, you can see information about any credits from your purchased credit packages.
 
-<!-- ![](/docs/continuous-integration/static/ci_usage_build_credits.png) -->
+<!-- ![](/docs/continuous-integration/static/ci-usage-build-credits.png) -->
 
-<DocImage path={require('/docs/continuous-integration/static/ci_usage_build_credits.png')} />
+<DocImage path={require('/docs/continuous-integration/static/ci-usage-build-credits.png')} />
 
 These statistics update when builds finish running. It doesn't reflect usage of builds in progress.
 

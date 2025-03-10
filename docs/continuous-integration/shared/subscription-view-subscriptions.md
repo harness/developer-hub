@@ -8,8 +8,8 @@ You can quickly and securely manage your Harness CI subscription directly throug
 ## View Account Overview 
 In your Harness account, go to **Account Settings** and **Account Details** to view which Harness modules you are currently subscribed to. Subscriptions are shown in the **Subscribed Modules** section on the **Overview** page. You can select **Manage** to go to the **Subscriptions** page.
 
-<!-- ![](/docs/continuous-integration/static/ci_account_overview.png) -->
+<!-- ![](/docs/continuous-integration/static/ci-account-overview.png) -->
 
-<DocImage path={require('/docs/continuous-integration/static/ci_account_overview.png')} />
+<DocImage path={require('/docs/continuous-integration/static/ci-account-overview.png')} />
 
 

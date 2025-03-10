@@ -8,9 +8,9 @@
 
    Harness CI offers three tiers of subscription plans: **Free**, **Team**, and **Enterprise**. Plan features are summarized on the **Plans** page in your Harness account. For a detailed comparison of plans, go to [Harness CI Pricing and Plans](https://www.harness.io/pricing?module=ci#). For information about the Harness Developer 360 subscription model, go to [Harness Platform subscriptions and licenses](/docs/platform/get-started/subscriptions-licenses/subscriptions).
 
-   <!-- ![](/docs/continuous-integration/static/ci_subscribe_compare_plans.png) -->
+   <!-- ![](/docs/continuous-integration/static/ci-subscribe-compare-plans.png) -->
 
-   <DocImage path={require('/docs/continuous-integration/static/ci_subscribe_compare_plans.png')} />
+   <DocImage path={require('/docs/continuous-integration/static/ci-subscribe-compare-plans.png')} />
 
    :::
 
@@ -22,15 +22,15 @@
 
 4. Select the number of developers who will build with Harness CI. If you were actively using a Free plan before upgrading, Harness makes a recommendation based on your previous and predicted usage.
 
-   <!-- ![](/docs/continuous-integration/static/ci_subscribe_devs.png) -->
+   <!-- ![](/docs/continuous-integration/static/ci-subscribe-devs.png) -->
 
-   <DocImage path={require('/docs/continuous-integration/static/ci_subscribe_devs.png')} />
+   <DocImage path={require('/docs/continuous-integration/static/ci-subscribe-devs.png')} />
 
 5. If you would like to subscribe to the 24/7 support package, select **Add Premier Support**. If you already have premier support for another module subscription, your CI subscription must also include premier support.
 
-   <!-- ![](/docs/continuous-integration/static/ci_subscribe_premier.png) -->
+   <!-- ![](/docs/continuous-integration/static/ci-subscribe-premier.png) -->
 
-   <DocImage path={require('/docs/continuous-integration/static/ci_subscribe_premier.png')} />
+   <DocImage path={require('/docs/continuous-integration/static/ci-subscribe-premier.png')} />
 
 6. Select **Next: Billing Information** and enter your billing information.
 
@@ -48,8 +48,8 @@ If this is your first paid plan subscription, the price doesn't include tax unti
 
 If you have an existing subscription for another module, your new subscription is prorated so that your subscription renewal dates align. For example, if you have a CD subscription with 10 months remaining, your new CI subscription is prorated for 10 months so that both subscriptions renew at the same time.
 
-<!-- ![](/docs/continuous-integration/static/ci_subscribe_prorate_billing.png) -->
+<!-- ![](/docs/continuous-integration/static/ci-subscribe-prorate-billing.png) -->
 
-<DocImage path={require('/docs/continuous-integration/static/ci_subscribe_prorate_billing.png')} />
+<DocImage path={require('/docs/continuous-integration/static/ci-subscribe-prorate-billing.png')} />
 
 :::
