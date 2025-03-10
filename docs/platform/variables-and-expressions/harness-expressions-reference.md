@@ -660,6 +660,10 @@ Below are the expressions to fetch the original execution details when a rollbac
 * `<+pipeline.originalExecution.name>`
 * `<+pipeline.originalExecution.identifier>`
 
+:::info note
+These expressions won't work when called during normal execution; they will only function correctly when invoked during a rollback execution of the original execution.
+:::
+
 ## Handling Rollback Scenarios with `rollbackSteps`
 
 You can detect and handle rollback scenarios using various built-in expressions. One useful expression for stage-specific rollback handling is `rollbackSteps`, which helps determine if a stage is currently being rolled back, even when the pipeline itself may still be running in normal execution mode.
