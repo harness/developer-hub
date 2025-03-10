@@ -87,7 +87,7 @@ import { MODULES } from "@site/src/constants";
             module: MODULES.ccm,
             description:
               "Identify unusual or unexpected changes in your cloud service expenses.",
-            link: "/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm",
+            link: "/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection",
           },
           {
             title: "CCM FAQs",

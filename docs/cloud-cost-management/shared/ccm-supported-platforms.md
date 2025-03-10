@@ -194,7 +194,7 @@ Any of the following CCM cloud connectors in a healthy state:
 
 ### Documentation link
 
- [Detect cloud cost anomalies](/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm)
+ [Detect cloud cost anomalies](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection)
 
 </details>
 
