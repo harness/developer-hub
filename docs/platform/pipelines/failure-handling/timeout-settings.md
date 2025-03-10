@@ -22,6 +22,10 @@ Stage timeouts mark stages as expired in the following scenarios:
 * The stage does not complete before the configured timeout.
 * The pipeline reaches its timeout limit when the stage is still running.
 
+:::info note
+When a stage times is less thab it's total step execution time, the failure strategy applied is `EXPIRE_ALL`, preventing rollback. This occurs because child nodes (steps) inherit the expired status from the stage, stopping further execution.
+:::
+
 ## Pipeline timeouts
 
 The pipeline timeout applies to the duration of the entire pipeline. It does not override stage/step timeouts, but stages and steps will timeout if the pipeline timeout limit is hit while a stage/step is running.
