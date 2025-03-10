@@ -43,28 +43,28 @@ The table below lists the chaos infrastructure execution plane components and th
             <td>chaos-operator-ce</td>
             <td>125m</td>
             <td>300M</td>
-            <td>harness/chaos-operator</td>
+            <td>docker.io/harness/chaos-operator</td>
         </tr>
         <tr>
             <td>chaos-exporter</td>
             <td>chaos-exporter</td>
             <td>125m</td>
             <td>300M</td>
-            <td>harness/chaos-exporter</td>
+            <td>docker.io/harness/chaos-exporter</td>
         </tr>
         <tr>
             <td>subscriber</td>
             <td>subscriber</td>
             <td>125m</td>
             <td>300M</td>
-            <td>harness/harness-chaos-subscriber</td>
+            <td>docker.io/harness/harness-chaos-subscriber</td>
         </tr>
         <tr>
             <td>workflow-controller</td>
             <td>workflow-controller</td>
             <td>125m</td>
             <td>300M</td>
-            <td>harness/workflow-controller</td>
+            <td>docker.io/harness/workflow-controller</td>
         </tr>
     </tbody>
 </table>
