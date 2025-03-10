@@ -32,7 +32,7 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.fme,
           description:
             "Guides for using Harness FME with popular languages and platforms, including mobile development",
-          link: "/docs/feature-management-experimentation/sdks-and-infrastructure",
+          link: "/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview",
         },
       ],
     },
