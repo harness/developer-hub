@@ -18,7 +18,7 @@ export const StoData: Horizon = {
         tag: [{ value: "Ticketing" }, { value: "Integration" }],
         title: "Jira Integration",
         description: "Sync updates bi-directionally for vulnerabilities found, remediated, or exempted.",
-      }
+      },
       {
         tag: [{ value: "Exemption Workflow" }],
         title: "Global Exemption Management",
@@ -45,7 +45,7 @@ export const StoData: Horizon = {
         description: "Use native scanner severity and scoring for prioritization (e.g., Prisma Cloud, SonarQube, Anchore, Checkmarx, Wiz).",
       },
       {
-        tag: [{ value: "Integration" }, { value: "SonaType"}],
+        tag: [{ value: "Integration" }, { value: "Sonatype"}],
         title: "Sonatype Integration",
         description: "Native integration with Sonatype Nexus IQ.",
       },
@@ -60,9 +60,9 @@ export const StoData: Horizon = {
     description: "Q2 2025, May 2025 - July 2025",
     feature: [
       {
-        tag: [{ value: "Integration" }, { value: "Crowdstrike"}],
-        title: "Crowdstrike Integration",
-        description: "Native integration with Crowdstrike.",
+        tag: [{ value: "Integration" }, { value: "CrowdStrike"}],
+        title: "CrowdStrike Integration",
+        description: "Native integration with CrowdStrike.",
       },
       {
         tag: [{ value: "EPSS" }],
@@ -107,7 +107,7 @@ export const StoData: Horizon = {
       {
         tag: [{ value: "Integration" }, { value: "ServiceNow" }],
         title: "Exemption Management via ServiceNow",
-        description: "Add ServiceNow integration for the exemption mamnagement workflow.",
+        description: "Add ServiceNow integration for the exemption management workflow.",
       },
       {
         tag: [{ value: "Data Handling" }],
