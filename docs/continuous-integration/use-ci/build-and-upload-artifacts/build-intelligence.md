@@ -59,10 +59,6 @@ You can also enable or disable Build Intelligence based on an expression directl
   <TabItem value="Cloud" label="Harness Cloud" default>
 
 
-:::info
-- If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) to enable feature flags `CI_CACHE_ENABLED` and `CI_ENABLE_BUILD_CACHE_HOSTED_VM`. 
-:::
-
 The cache storage limit depends on your subscription plan type. Please visit [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#usage-limits) page to learn more about usage limits.
 
 Harness doesn't limit the number of caches you can store, but, once you reach your storage limit, Harness continues to save new caches by automatically evicting old caches.
@@ -77,9 +73,7 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
   <TabItem value="Self Hosted" label="Self Hosted" default>
   :::info
     - Build Intelligence is only supported for Kubernetes on self-hosted build infrastructure. 
-  - To use Build Intelligence with self-hosted builds the following feature flags need to be enabled: 
-  `CI_CACHE_ENABLED` and `CI_ENABLE_BUILD_CACHE_K8` 
-  - To authenticate to your S3 bucket using OIDC, feature flags `PL_GCP_OIDC_AUTHENTICATION` for GCP or `CDS_AWS_OIDC_AUTHENTICATION` for AWS are required.
+    - To authenticate to your S3 bucket using OIDC, feature flags `PL_GCP_OIDC_AUTHENTICATION` for GCP or `CDS_AWS_OIDC_AUTHENTICATION` for AWS are required.
   
   Contact [Harness Support](mailto:support@harness.io) to enable the feature, if not already available in your account.
   :::
