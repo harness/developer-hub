@@ -89,7 +89,7 @@ For more information see [Google Container Registry deprecation notice](https://
 | **Image**                | **Change**                                      | **Previous version** | **New Version** |
 | ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
 | `plugins/artifactory`      | Vulberability fixes  | 1.7.1                | 1.7.2          |
-| `harness/ecr`      | Changes described in fixed issues list                | 20.18.7          |
+| `plugins/ecr`      | Support a stage variable for plugin configuration (CI-16312)                | 20.18.6          | 20.18.7          |
 | `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
 | `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
 | `harness/drone-git`      | Changes described in fixed issues list  | 1.6.5                | 1.6.7          |
