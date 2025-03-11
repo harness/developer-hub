@@ -32,7 +32,7 @@ import { MODULES } from "@site/src/constants";
             module: MODULES.platform,
             description:
               "Learn how to create a Harness account and first project. These are the first tasks that come after installing the on-prem Harness Self-Managed Enterprise Edition.",
-            link: "/docs/self-managed-enterprise-edition/get-started/onboarding-guide",
+            link: "/docs/self-managed-enterprise-edition/get-started-with-smp",
           },
           {
             title: "Install using Helm",
