@@ -1059,6 +1059,9 @@ Here's a list of Harness IDP images used in the IDP stage:
 5. [``slackNotify``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/slacknotify): Used to notify individual developers once the pipeline is executed successfully and your Software component is registered successfully in your Software Catalog.
 6. [``createResource``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createresource): Used to create Harness entities like projects, users, connectors, pipelines, secrets, etc.
 7. [``updateCatalogProperty``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/updatecatalogproperty): Used to update the catalog metadata for your entities
+8. [``createOrganisation``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createorganisation)
+9. [``createProject``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createproject)
+10. [``createCatalog``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createcatalog)
 
 
 API key authentication is required. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io/#section/Introduction/Authentication).
