@@ -9,6 +9,8 @@ redirect_from:
 - /docs/category/chaosguard
 - /docs/chaos-engineering/concepts/explore-concepts/chaosguard
 - /docs/chaos-engineering/use-harness-ce/governance/govern-run
+- /docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts
+- /docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts/
 ---
 
 This section introduces you to ChaosGuard and describes how Harness enforces security policies during chaos experiments execution.
