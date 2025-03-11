@@ -657,6 +657,38 @@ Pod JVM sql exception injects chaos into a Java application executing in a Kuber
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM mongo latency
+
+Pod JVM mongo latency injects chaos into a Java application executing in a Kubernetes pod by invoking latency in mongodb calls.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application
+- Simulate database latency to evaluate how the application handles slower database queries
+- Test the impact of mongodb calls latency on the end-user experience, ensuring the application behaves gracefully under slower response times.
+- Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod JVM mongo exception
+
+Pod JVM mongo exception injects chaos into a Java application executing in a Kubernetes pod by invoking an mongodb exception.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Determines the performance bottlenecks of the application
+- Simulates mongodb exceptions to ensure if application can recover gracefully
+- Assess if the monitoring systems and alerting mechanisms can accurately detect and report mongodb query exceptions in real-time.
+- Determines the performance and resilience of the dependant application (or services) running on Kubernetes.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod JVM sql latency
 
 Pod JVM sql latency injects chaos into a Java application executing in a Kubernetes pod by invoking latency in sql queries.

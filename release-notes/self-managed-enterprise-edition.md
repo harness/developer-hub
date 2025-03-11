@@ -292,18 +292,39 @@ gsutil -m cp \
 - Fixed an issue where the GitOps resource actions are not disabled on UI for users without sync access (**CDS-107535, ZD-79513**)]
 
 #### Cloud Cost Management
-- New Dimensions in AWS and Unified View in Cloud Cost Dashboards: We have added the following new dimensions to enhance cost visibility in AWS and the Unified View:
+- New Dimensions in AWS and Unified View in Cloud Cost Dashboards: We have added the following new dimensions to enhance cost visibility in AWS and the Unified View (**CCM-21714**):
 
 AWS:
-- Billing Period Start Date
-- Billing Period End Date
+- Line Item Description
+- Total Discount
+- Private Rate Discount
+- Bundled Discount
+- EDP Discount
+- Tax (Blended Cost)
+- Tax (Amortised Cost)
+- Tax (Unblended Cost)
+- Tax (Net Amortised Cost)
+- Credit
+- Refund (Unblended Cost)
+- Refund (Amortised Cost)
+- Refund (Net Amortised Cost)
+- Refund (Blended Cost)
 
 Unified:
-- AWS Billing Period Start Date
-- AWS Billing Period End Date
-- AWS Line Item Type
-
-We have also  fixed the discount calculations in costs for December 2024 to June 2025 for CBP to ensure accurate cost representation. (**CCM-21714**)
+- AWS Line Item Description
+- AWS Total Discount
+- AWS Private Rate Discount
+- AWS Bundled Discount
+- AWS EDP Discount
+- AWS Tax (Unblended Cost)
+- AWS Tax (Amortised Cost)
+- AWS Tax (Blended Cost)
+- AWS Tax (Net Amortised Cost)
+- AWS Credit
+- AWS Refund (Unblended Cost)
+- AWS Refund (Blended Cost)
+- AWS Refund (Amortised Cost)
+- AWS Refund (Net Amortised Cost)
 
 ## Mar 04, 2025, Patch Version 0.26.2 <!-- Draft : Mar 04, 2025 -->
 
