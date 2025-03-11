@@ -55,7 +55,7 @@ The Cloud Credits View in Harness provides a comprehensive overview of your clou
 
 Harness Cloud provides Harness-managed infrastructure that can be used for various tasks in Harness such as builds, security tests and infrastructure provisioning. This section outlines how billing and credit consumption work for all Harness Cloud executions.
 
-[Learn more about Harness Cloud](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+[Learn more about Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
 
 ### Credit consumption
