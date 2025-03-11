@@ -137,12 +137,12 @@ export const SscaData: Horizon = {
       {
         tag: [{value : "Remediation"}, {value: "AppSec"}],
         title: "Remediation Tracker",
-        description: "Assign vulnerabilities & compliance issues to developers using remediation tracker to track across different types of targets (Artifact, CI/CD, Repos).",
+        description: "Assign vulnerabilities & compliance issues to developers using remediation tracker to track across different types of targets (Artifacts, CI/CD, Repos).",
       },
       {
         tag: [{value : "Risk & Compliance"}, {value : "AppSec"}],
         title: "Exemption Management",
-        description: "Manage exemptions for risk and compliance issues across all targets (Artifact, CI/CD, Repos).",
+        description: "Manage exemptions for risk and compliance issues across all targets (Artifacts, CI/CD, Repos).",
       },
       {
         tag: [{value : "AI"},{value: "Dependency Management"}],
