@@ -73,9 +73,6 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
   <TabItem value="Self Hosted" label="Self Hosted" default>
   :::info
     - Build Intelligence is only supported for Kubernetes on self-hosted build infrastructure. 
-    - To authenticate to your S3 bucket using OIDC, feature flags `PL_GCP_OIDC_AUTHENTICATION` for GCP or `CDS_AWS_OIDC_AUTHENTICATION` for AWS are required.
-  
-  Contact [Harness Support](mailto:support@harness.io) to enable the feature, if not already available in your account.
   :::
 
   - When using a Build Intelligence with self-hosted infrastructure, an S3-compatible bucket is required for cache storage. Please visit [configure default S3-compatible object storage](/docs/platform/settings/default-settings.md#continuous-integration) for more information.
