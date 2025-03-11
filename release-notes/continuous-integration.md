@@ -84,12 +84,16 @@ For more information see [Google Container Registry deprecation notice](https://
 - Resolved an issue with Azure Repos where cloning with a tag was not working. (CI-16298, ZD-78432)
 - Resolved an issue where Build Intelligence feature  couldn’t be configured via templates. With this fix, the property is now visible in templates, allowing users to configure CI stages regardless of the selected infrastructure. (CI-16342)
 
+#### New features and enhancements
+
+- Users can now set the stage variable `PLUGIN_SKIP_PUSH_IF_TAG_EXISTS` to skip the push step in the native **Build and Push to ECR** step if the tag already exists. (CI-10350)
+  
 #### Harness images updates
 
 | **Image**                | **Change**                                      | **Previous version** | **New Version** |
 | ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
 | `plugins/artifactory`      | Vulberability fixes  | 1.7.1                | 1.7.2          |
-| `plugins/ecr`      | Support a stage variable for plugin configuration (CI-16312)                | 20.18.6          | 20.18.7          |
+| `plugins/ecr`      | New input `PLUGIN_SKIP_PUSH_IF_TAG_EXISTS` and published at `plugins/ecr:20.18.7` (CI-10350)                | 20.18.6          | 20.18.7          |
 | `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
 | `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
 | `harness/drone-git`      | Changes described in fixed issues list  | 1.6.5                | 1.6.7          |
