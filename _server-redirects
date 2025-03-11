@@ -92,4 +92,8 @@
 
 /docs/platform/connectors/ref-source-repo-provider/http-helm-repo-connector-settings-reference /docs/platform/connectors/code-repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference
 
+# Added by ivikramsahu for self-managed enterprise edition documentation revamp.
+
+/docs/self-managed-enterprise-edition/get-started/onboarding-guide /docs/self-managed-enterprise-edition/Overview
+
 # Redirects generated from Front Matter [sytem generated goes below here]:
