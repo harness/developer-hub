@@ -74,6 +74,12 @@ Do not change the **release name value** between deployments unless absolutely n
 
 :::
 
+:::warning
+
+Not having a unique release name could affect licensing. Please ensure your release names are unique.
+
+:::
+
 You can supply a release name in a stage's infrastructure **Release Name** setting.
 
 ![](./static/k8s-infraReleaseName.png)
