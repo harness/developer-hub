@@ -110,7 +110,6 @@ The following deprecated API endpoints are longer supported:
 ### Version 1.80.x <!--March 10, 2025-->
 #### New features and enhancements
 - Added Feature flag `EXPONENTIAL_INTERVAL_TASK_REBROADCAST` to enable exponential increase in delegate re-broadcast intervals. [PL-60477] 
-- Accounts with a FREE license can no longer configure SAML authentication. [PL-59708]
 
 ## February 2025
 
