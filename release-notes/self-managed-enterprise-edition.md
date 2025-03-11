@@ -292,7 +292,7 @@ gsutil -m cp \
 - Fixed an issue where the GitOps resource actions are not disabled on UI for users without sync access (**CDS-107535, ZD-79513**)]
 
 #### Cloud Cost Management
-- New Dimensions in AWS and Unified View in Cloud Cost Dashboards: We have added the following new dimensions to enhance cost visibility in AWS and the Unified View:
+- New Dimensions in AWS and Unified View in Cloud Cost Dashboards: We have added the following new dimensions to enhance cost visibility in AWS and the Unified View (**CCM-21714**):
 
 AWS:
 - Line Item Description
@@ -325,7 +325,6 @@ Unified:
 - AWS Refund (Blended Cost)
 - AWS Refund (Amortised Cost)
 - AWS Refund (Net Amortised Cost)
-
 
 ## Mar 04, 2025, Patch Version 0.26.2 <!-- Draft : Mar 04, 2025 -->
 
