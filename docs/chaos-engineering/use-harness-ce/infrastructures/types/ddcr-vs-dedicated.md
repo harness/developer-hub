@@ -18,8 +18,8 @@ This section compares the characteristics of Delegate-Driven Chaos Infrastructur
     <td>Involves <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#using-dedicated-chaos-infrastructure">setting up</a> a separate, dedicated environment for running chaos experiments.</td>
   </tr>
   <tr>
-    <td>Leverages the <strong>existing infrastructure</strong>, allowing chaos experiments to be run without requiring a separate setup.</td>
-    <td>Requires its own <strong>resources</strong> (servers, network configurations, etc.) that are <strong>isolated</strong> from the main application infrastructure.</td>
+    <td>Leverages the <strong>existing infrastructure</strong>, allowing chaos experiments to be run without requiring a separate setup, eliminating the need of CRDs.</td>
+    <td>Requires CRDS and its own <strong>resources</strong> (servers, network configurations, etc.) that are <strong>isolated</strong> from the main application infrastructure.</td>
   </tr>
   <tr>
     <td>Includes <strong>automated Kubernetes service discovery</strong> and workload analysis using a <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/service-discovery#how-does-harness-ce-leverage-discovered-services"><strong>transient discovery agent</strong> </a>.</td>
@@ -44,5 +44,18 @@ This section compares the characteristics of Delegate-Driven Chaos Infrastructur
   <tr>
     <td><strong>Adaptable</strong> for varying environments, making it easy to execute chaos experiments within <strong>CI/CD pipelines</strong>.</td>
     <td>Requires <strong>additional resources, setup, and time</strong>, making it less adaptable for dynamic environments.</td>
+  </tr>
+  <tr>
+  <td> Enables fault execution on following platforms:
+  <ul><li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/">AWS</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/">GCP</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/">Kubernetes</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/">VMware</a></li></ul></td>
+  <td> Enables fault execution on following platforms:
+  <ul><li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/">AWS</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/">Azure</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/">GCP</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/">Kubernetes</a></li>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/">VMware </a></li></ul></td>
   </tr>
 </table>
