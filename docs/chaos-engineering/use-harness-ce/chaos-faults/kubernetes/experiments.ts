@@ -248,6 +248,18 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod JVM Mongo Exception",
+    description:"Pod JVM Mongo Exception injects exception in mongodb calls for a Java application executing in a Kubernetes pod",
+    tags: ["pod", "jvm", "mongo", "exception"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod JVM Mongo Latency",
+    description:"Pod JVM Mongo Latency injects latency in mongodb calls for a Java application executing in a Kubernetes pod",
+    tags: ["pod", "jvm", "mongo", "latency"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod memory hog exec",
     description:"Pod memory hog exec consumes memory resources on the application container in megabytes.",
     tags: ["pod"],
