@@ -295,15 +295,37 @@ gsutil -m cp \
 - New Dimensions in AWS and Unified View in Cloud Cost Dashboards: We have added the following new dimensions to enhance cost visibility in AWS and the Unified View:
 
 AWS:
-- Billing Period Start Date
-- Billing Period End Date
+- Line Item Description
+- Total Discount
+- Private Rate Discount
+- Bundled Discount
+- EDP Discount
+- Tax (Blended Cost)
+- Tax (Amortised Cost)
+- Tax (Unblended Cost)
+- Tax (Net Amortised Cost)
+- Credit
+- Refund (Unblended Cost)
+- Refund (Amortised Cost)
+- Refund (Net Amortised Cost)
+- Refund (Blended Cost)
 
 Unified:
-- AWS Billing Period Start Date
-- AWS Billing Period End Date
-- AWS Line Item Type
+- AWS Line Item Description
+- AWS Total Discount
+- AWS Private Rate Discount
+- AWS Bundled Discount
+- AWS EDP Discount
+- AWS Tax (Unblended Cost)
+- AWS Tax (Amortised Cost)
+- AWS Tax (Blended Cost)
+- AWS Tax (Net Amortised Cost)
+- AWS Credit
+- AWS Refund (Unblended Cost)
+- AWS Refund (Blended Cost)
+- AWS Refund (Amortised Cost)
+- AWS Refund (Net Amortised Cost)
 
-We have also  fixed the discount calculations in costs for December 2024 to June 2025 for CBP to ensure accurate cost representation. (**CCM-21714**)
 
 ## Mar 04, 2025, Patch Version 0.26.2 <!-- Draft : Mar 04, 2025 -->
 
