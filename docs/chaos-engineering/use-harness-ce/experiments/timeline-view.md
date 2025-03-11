@@ -18,7 +18,7 @@ This feature is currently behind the feature flag `CHAOS_TIMELINE_VIEW_DEV`. Con
 **Timeline View** provides a visual representation of all events associated with a **chaos experiment** during execution. It displays each event with their respective **timestamps**. 
 For example, if a chaos experiment has a resilience probe configured, the timeline view displays it and the time when the probe execution began.
 
-In the diagram below, you can see pod delete experiment and its probe running serially with container kill and pod delete experiments (along with their respective probes) running in parallel in the timeline view. 
+In the diagram below, you can see pod delete fault and its probe running serially with container kill and pod delete faults (along with their respective probes) running in parallel in the timeline view.
 
 	![timeline view 2](./static/timeline/view-2.png)
 
