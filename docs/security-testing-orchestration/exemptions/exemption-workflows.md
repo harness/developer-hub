@@ -38,7 +38,7 @@ To request an issue exemption, follow these steps:
 
          In general, you should select the shortest practical time window for your exemption. 
 
-      3. **Reason this issue should be exempted** 
+      3. **[Reason this issue should be exempted](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#when-exemptions-are-useful)** 
 
          Select one of the following reasons and provide any additional information for the [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  approver:
 

@@ -11,6 +11,10 @@ import baseline_not_defined from '../use-sto/static/exemption-workflows-no-basel
 
 When an [issue exemption request](./exemption-workflows) is submitted, it goes through a defined lifecycle. The available actions to address these requests include **Approving**, **Rejecting**, or **Cancelling**. The exemption lifecycle consists of the following stages:
 
+:::note
+Users with role `Security Testing SecOps` can approve or manage the issue exemption requests.
+:::
+
 1. **Pending:**  
    - The request is newly created and awaits review.  
    - At this stage, users can choose to approve, reject, or cancel the request.
@@ -19,13 +23,17 @@ When an [issue exemption request](./exemption-workflows) is submitted, it goes t
    - The request has been reviewed and accepted.  
    - The issue is temporarily or permanently exempt from further action based on the exemption details.
 
+3. **Rejected:**
+   - The request has been reviewed and denied.  
+   - The issue remains active, and the pipeline continues to enforce security policies as if no exemption was requested. 
 4. **Expired:**  
    - The exemption period has elapsed, or the exemption has been invalidated.  
    - Once expired, the issue returns to its original active state unless a new exemption is requested.
 
-<DocImage path={require('./static/exemption-lifecycle.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/exemption-lifecycle.png')} width="50%" height="50%" title="Click to view full size image" />
 
 ### Actions
+Here are the actions that can be performed on an issue exemption request.
 - **Approve:** Accept the request and apply the exemption.  
 - **Reject:** Decline the request and maintain the issue status.  
 - **Cancel:** Close the request before any decision is made.

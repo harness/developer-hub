@@ -6,15 +6,19 @@ sidebar_position: 59
 redirect_from: 
 ---
 
-STO’s exemption workflows help developers [raise exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows#request-an-sto-exemption) windows with product security teams for shipping software with vulnerabilities. Developers can request exemptions for specific vulnerabilities to allow their build pipelines to proceed even if these vulnerabilities are detected.
+Issue Exemption workflows in STO enable developers to request exemptions for specific security vulnerabilities when shipping software. If a security scanner in the pipeline detects a vulnerability or an [OPA policy violation](/docs/security-testing-orchestration/policies/enforce-opa-policies), the pipeline may be blocked, halting execution. In such cases, developers can [submit exemption requests](/docs/security-testing-orchestration/exemptions/exemption-workflows) to the product security team for review. If approved, the pipeline can proceed despite the detected vulnerabilities. These workflows provide a controlled mechanism for managing security exceptions while ensuring visibility and oversight.
 
 :::note 
 [Security Testing Developers](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) and [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) users can request exemptions, but only Security Testing SecOps users can approve them.
 ::: 
 
-<DocImage path={require('./static/issue-exemption-workflow.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/exemption-pipeline-status.png')} width="100%" height="100%" title="Click to view full size image" />
 
-Users with roles *Security Testing Developer* and *Security Testing SecOps* can raise exemptions. Only Security Testing SecOps users can [review, approve, reject,](#review-an-sto-exemption) and [update](#good-practice-review-and-update-sto-exemptions-periodically) exemptions. Refer to [Request Issue Exemptions](./exemption-workflows) and [Manage Issue Exemptions](./manage-exemptions) documentation for further details.
+
+Users with roles *Security Testing Developer* and *Security Testing SecOps* can raise exemptions. An exemption request can be raised for a specific issue. Once submitted, the request can be processed by either approving, rejecting, or canceling it. Refer to [Request Issue Exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows) for details on raising an exemption request, and [Manage Issue Exemption](/docs/security-testing-orchestration/exemptions/manage-exemptions) for handling exemption requests.
+
+<DocImage path={require('./static/exemption-workflow.png')} width="80%" height="80%" title="Click to view full size image" />
+
 
 ## When exemptions are useful
 
