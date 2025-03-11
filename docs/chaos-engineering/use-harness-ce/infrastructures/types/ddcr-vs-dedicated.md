@@ -48,26 +48,14 @@ This section compares the characteristics of Delegate-Driven Chaos Infrastructur
   <tr>
   <td> Enables fault execution on following platforms:
   <ul><li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/">AWS</a></li>
-  <li> <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/byoc/">BYOC </a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/">Cloud Foundry</a></li>
   <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/">GCP</a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/kube-resilience/">Kube Resilience</a></li>
   <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/">Kubernetes</a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/load/">Load</a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/">SSH</a></li>
   <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/">VMware</a></li></ul></td>
   <td> Enables fault execution on following platforms:
   <ul><li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/">AWS</a></li>
   <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/">Azure</a></li>
-  <li> <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/byoc/">BYOC </a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/">Cloud Foundry</a></li>
   <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/">GCP</a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/kube-resilience/">Kube Resilience</a></li>
   <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/">Kubernetes</a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/">Linux</a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/load/">Load </a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/">SSH </a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/">VMware </a></li>
-  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/">Windows </a></li></ul></td>
+  <li><a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/">VMware </a></li></ul></td>
   </tr>
 </table>
