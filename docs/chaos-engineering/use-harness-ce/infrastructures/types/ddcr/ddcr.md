@@ -71,3 +71,4 @@ Earlier, resilience score was measured at the experiment level. With Harness Del
 
 - [Permissions Required](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/permissions)
 - [Install Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/installation)
+- [Delegate versus Dedicated infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr-vs-dedicated)

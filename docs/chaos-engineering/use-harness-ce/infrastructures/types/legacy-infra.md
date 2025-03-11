@@ -162,4 +162,4 @@ That's it! Now you have a dedicated chaos infrastructure and you're all set to i
 ## Next Steps
 
 - [Delegate-Driven Chaos Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/)
-- [Dedicated versus Delegate Driven Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/ddcr-vs-dedicated)
+- [Dedicated versus Delegate Driven Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr-vs-dedicated)
