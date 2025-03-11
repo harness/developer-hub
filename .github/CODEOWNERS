@@ -96,7 +96,8 @@ static/  @rohanmaharjan100 @wei-harness
 # CET Docs
 /docs/continuous-error-tracking/ @M-Tsur
 /release-notes/continuous-error-tracking.md @M-Tsur
-/src/components/Docs/data/cloudCostManagementData.ts @M-Tsur
+/src/components/Docs/data/continuousErrorTrackingData.ts @M-Tsur
+/src/components/Docs/ContinuousErrorTracking.tsx @M-Tsur
 
 # SRM Docs
 /docs/service-reliability-management/ @sunilgupta-harness @umamukkara
