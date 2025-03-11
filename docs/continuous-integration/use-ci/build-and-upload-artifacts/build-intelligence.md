@@ -107,8 +107,6 @@ pipeline:
             spec:
               connectorRef: k8
               namespace: harness-delegate-ng
-              automountServiceAccountToken: true
-              nodeSelector: {}
               os: Linux
           execution:
             steps:
