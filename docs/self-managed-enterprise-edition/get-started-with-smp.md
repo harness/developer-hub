@@ -57,7 +57,7 @@ To get started with Harness Self-Managed Enterprise Edition, go to the following
 
 * Harness CCM: [Cloud Cost Management (CCM) overview](/docs/cloud-cost-management/get-started/overview).
 * Harness CI: [Continuous Integration (CI) overview](/docs/continuous-integration/get-started/overview).
-* Harness CD: [Continuous Delivery (CD) key concepts](../../continuous-delivery/get-started/key-concepts.md).
+* Harness CD: [Continuous Delivery (CD) key concepts](/docs/continuous-delivery/get-started/key-concepts).
 * Harness FF: [Feature Flag (FF) onboarding guide](/docs/feature-flags/get-started/onboarding-guide).
-* Harness STO: [Security Testing Orchestration (STO) overview](../../security-testing-orchestration/get-started/overview.md).
+* Harness STO: [Security Testing Orchestration (STO) overview](/docs/security-testing-orchestration/get-started/overview).
 * Harness Chaos Engineering: [Get started with Harness Chaos Engineering (CE)](/docs/chaos-engineering/concepts/chaos101).
