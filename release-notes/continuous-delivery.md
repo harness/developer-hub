@@ -51,13 +51,19 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### New Features and Enhancements
 
+- Users can now leverage the **Plugin Info** section in Service for **Serverless Deployments** to define runtime environment details and dependencies. To automatically use the latest images, leave Container Configuration at the step level empty and configure Plugin Info at the service level. (**CDS-99161**)
+
+- Users can dynamically execute Pipelines in Hanress, it  allows you to execute pipelines by providing pipeline YAML configuration during runtime without requiring pre-saved configurations in Harness. Currently, this setting is behind the Feature Flag `PIPE_DYNAMIC_PIPELINES_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. For more information, refer to [Harness Documentation](/docs/platform/pipelines/dynamic-execution-pipeline). (**PIPE-11798**)
+
+- We have introduced a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote. Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**PIPE-16979**)
+
+- Users can now import OPA policies from Git. This feature behind the FF `OPA_IMPORT_FROM_GIT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-17046, ZD-52607, ZD-69875**)
+
 - Users can now trigger Harness pipelines natively on **GitLab tag creation**, enabling seamless automation for new release candidates and improving integration with GitLab workflows. (**CDS-99762**)
 
-- Users can now **uninstall Helm charts** using a native Helm Uninstall step in the Deploy stage. Currently, this setting is behind the Feature Flag `CDS_HELM_DELETE_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**CDS-98454**)
+- Users can now **Uninstall Helm charts** using a native Helm Uninstall step in the Deploy stage. Currently, this setting is behind the Feature Flag `CDS_HELM_DELETE_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**CDS-98454**)
 
 - Users can now trigger Harness pipelines natively when **pushing a tag to GitHub**, enabling seamless automation and enhanced integration for tag-based workflows. (**CDS-70773**)
-
-- Users can now apply tags to AWS Lambda functions during deployment using Harness, ensuring that all specified tags in the YAML manifest are correctly propagated to the Lambda resource. (**CDS-107032**)
 
 - Users can now rely on Harness to accurately detect failures in **ECS Rolling Deployments**. Currently, this setting is behind the Feature Flag `CDS_ECS_MONITOR_TASK_STATUS`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**CDS-107046**)
 
@@ -65,6 +71,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Users can now fetch the original execution ID during rollback, ensuring accurate execution context reference. (**PIPE-24537, ZD-73306**)
 
+#### Behavior changes
+
+- Users can now **create, update, and delete tags** in **AWS Lambda** and **AWS ECS deployments**, ensuring that all specified tags in the YAML manifest are correctly propagated during the deployment process and accurately reflected in the AWS Console. (**CDS-107032**)
 
 #### Fixed Issues
 
@@ -83,29 +92,14 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Previously, in deployment pipelines, duplicate override identifiers appeared in the Rollout section (Fetch Files step) even after removing and re-adding the override configuration with a new identifier. This issue is resolved. (**CDS-107453, ZD-79252**)
 - Previously, in GitOps parallel deployments, if multiple services were deployed with Parallel set to true, one service would complete successfully while the other would exit prematurely without waiting for the configured timeout (10m) or the GitOps sync max duration. This issue is resolved. (**CDS-107462, ZD-79284**)
 - Previously, Serverless Deployments failed in the Prepare Rollback step with the error: `Invalid request: IllegalArgumentException: BucketName cannot be empty.` This issue is resolved. (**CDS-107585, ZD-79524, ZD-79626**)
-
-## February 2025
-
-### Version 1.79.5
-
-#### New Features and Enhancements
-
-- Users can now leverage the **Plugin Info** section in Service for **Serverless Deployments** to define runtime environment details and dependencies. To automatically use the latest images, leave Container Configuration at the step level empty and configure Plugin Info at the service level. (**CDS-99161**)
-
-- Users can dynamically execute Pipelines in Hanress, it  allows you to execute pipelines by providing pipeline YAML configuration during runtime without requiring pre-saved configurations in Harness. Currently, this setting is behind the Feature Flag `PIPE_DYNAMIC_PIPELINES_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. For more information, refer to [Harness Documentation](/docs/platform/pipelines/dynamic-execution-pipeline). (**PIPE-11798**)
-
-- We have introduced a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote. Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**PIPE-16979**)
-
-- Users can now import OPA policies from Git. This feature behind the FF `OPA_IMPORT_FROM_GIT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PPIPE-17046,ZD-52607,ZD-69875**)
-
-#### Fixed Issues
-
 - Previously, runtime input validation was not working for ECR artifacts, preventing users from filtering artifact tags using regex patterns. This issue is resolved. (**CDS-106566, ZD-77818**)
 - Previously, when the deployment template version was updated in Git, the corresponding service did not appear in the runtime inputs dropdown for selection. This issue is resolved. (**CDS-106274, ZD-77132**)
 - Previously, users encountered an access permissions issue when selecting Org-level environments during pipeline runtime, despite having the correct view permissions. This issue is resolved. (**CDS-106527, ZD-74454**)
 - Previously, when using the **Deploy to multiple Environments or Infrastructure** option with a filtered list, unwanted characters appeared in the compiled YAML for the stage when matchType was set to **all**. This issue prevented the pipeline from executing successfully. This issue is resolved. (**CDS-106884, ZD-78208**)
 - Previously, selecting primaryManifestRef caused `serviceDefinition.spec.manifest.identifier` to be null, even when the configuration was correct. This resulted in errors when fetching manifest versions. This issue is resolved. (**CDS-106704, ZD-77493**)
 - Previously, after moving an existing service to Git (Bitbucket), pipelines using that service failed to execute. The issue occurred because the pipeline defaulted to the MASTER branch, even when the service was stored in a different branch.  This issue is resolved. (**CDS-105180, ZD-74852**)
+
+## February 2025
 
 ### GitOps Version 1.26.1, GitOps Agent Version 0.87.0
 
