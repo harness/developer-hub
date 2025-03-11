@@ -518,12 +518,6 @@ As shown below, you can replace the file name `<OVERRIDE-FILE>` placeholder with
 2. Add your Harness license. For more information, go to [Add a Harness license](/docs/self-managed-enterprise-edition/install/install-using-helm/#add-a-harness-license).
 3. Configure SMTP to allow for additional user invitations. For more information, go to [Add SMTP configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration/).
 
-## Licenses
-
-License issues can occur even after you apply the license via a Helm values file. Use the following processes to identify and troubleshoot license issues.
-
-### Next-Gen License
-
 ## Feature Flags
 
 This topic describes how to manage Feature Flags for Harness Self-Managed Enterprise Edition. You can update Feature Flags using the `override.yaml` file for your base installation.
