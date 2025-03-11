@@ -28,7 +28,7 @@ To prevent rate limiting or throttling issues when pulling images, configure the
 
 ## Pull images anonymously from GAR or ECR
 
-By default, Harness pulls Harness images from Docker Hub with anonymous access. You can also pull Harness images with anonymous access from GAR or ECR. This option changes the behavior for your entire account by editing the configuration of the built-in **Harness Docker Connector**. This is useful if you experience rate limiting issues when pulling from Docker Hub.
+By default, Harness pulls Harness images from GAR with anonymous access. You can also pull Harness images with anonymous access from GAR or ECR. This option changes the behavior for your entire account by editing the configuration of the built-in **Harness Docker Connector**. This is useful if you experience rate limiting issues when pulling from Docker Hub.
 
 If you don't want to change the behavior for your entire account, follow the steps in [Use credentials to pull Harness images for specific stages](#use-credentials-to-pull-harness-images-for-specific-stages) to modify the behavior for specific stages only.
 
