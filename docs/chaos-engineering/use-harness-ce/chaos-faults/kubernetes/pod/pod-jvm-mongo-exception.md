@@ -149,8 +149,8 @@ spec:
               value: "library"
             # name of the mongodb collection to be targeted
             - name: COLLECTION
-            # name of the mongodb method to be targeted
               value: "books"
+            # name of the mongodb method to be targeted
             - name: METHOD
               value: "find"
             # name of the exception class
