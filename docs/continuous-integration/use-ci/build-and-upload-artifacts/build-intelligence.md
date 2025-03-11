@@ -53,6 +53,8 @@ Below is an example of a CI stage using Build Intelligence:
                 command: ./gradlew build --profile  # '--profile' is optional but advised for gradle
 ```
 
+You can also enable or disable Build Intelligence based on an expression directly in the YAML. For example, you can conditionally set whether Build Intelligence is on or off using a pipeline variable expression like `<+pipeline.variables.someVar>`.
+
 <Tabs>
   <TabItem value="Cloud" label="Harness Cloud" default>
 
@@ -83,7 +85,73 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
   :::
 
   - When using a Build Intelligence with self-hosted infrastructure, an S3-compatible bucket is required for cache storage. Please visit [configure default S3-compatible object storage](/docs/platform/settings/default-settings.md#continuous-integration) for more information.
-  - By default, Build Intelligence step that configures a proxy on port 8082. Ability to configure this port, if needed, is coming soon.  
+  - By default, the Build Intelligence step configures a proxy on port 8082. However, for self-hosted setups, you can configure this port by setting the stage variable `CACHE_SERVICE_HTTPS_BIND`.
+
+Example Pipeline YAML:
+
+```YAML
+pipeline:
+  tags: {}
+  projectIdentifier: YOUR_PROJECT_ID
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CONNECTOR_REF
+        build: <+input>
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: false
+            paths: []
+          buildIntelligence:
+            enabled: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: k8
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: gradle:8.1.1-jdk17
+                    shell: Sh
+                    command: |-
+                      #cat $GRADLE_HOME/init.d/init.gradle
+                      ./gradlew build
+                    resources:
+                      limits:
+                        memory: 5000Mi
+                        cpu: 5000m
+        variables:
+          - name: MAVEN_URL
+            type: String
+            description: ""
+            required: false
+            value: https://your-artifactory-domain/artifactory/your-repository/
+          - name: CACHE_SERVICE_HTTPS_BIND
+            type: String
+            description: "Custom port for self-hosted Build Intelligence proxy"
+            required: false
+            value: "8284"  # Example custom port
+  identifier: YOUR_PIPELINE_ID
+  name: YOUR_PIPELINE_NAME
+```
+
   - By default, the Build Intelligence plugin is downloaded from Maven Central. If your environment does not have access to Maven Central or you prefer using a custom Maven repository, you can configure this by setting a stage variable named `MAVEN_URL`. See [Build Intelligence plugin](https://central.sonatype.com/artifact/io.harness/gradle-cache/overview ) 
 
 
