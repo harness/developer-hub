@@ -14,18 +14,18 @@ import { MODULES } from "@site/src/constants";
           "",
         list: [
           {
+            title: "Overview",
+            module: MODULES.platform,
+            description:
+              "Overview of Harness Self-Managed Enterprise Edition, an on-premises solution that allows you to install and run Harness on your own infrastructure.",
+            link: "/docs/self-managed-enterprise-edition/smp-overview",
+          },
+          {
             title: "What's supported",
             module: MODULES.platform,
             description:
               "Platforms and technologies supported by the on-prem Harness Self-Managed Enterprise Edition.",
             link: "/docs/self-managed-enterprise-edition/smp-supported-platforms",
-          },
-          {
-            title: "Reference architectures",
-            module: MODULES.platform,
-            description:
-              "Review Harness Self-Managed Enterprise Edition reference architectures.",
-            link: "/docs/self-managed-enterprise-edition/reference-architecture",
           },
           {
             title: "Onboarding guide",
