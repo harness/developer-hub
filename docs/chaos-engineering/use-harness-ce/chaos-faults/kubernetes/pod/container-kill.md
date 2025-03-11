@@ -5,6 +5,7 @@ redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/container-kill
 - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/container-kill
 - /docs/chaos-engineering/chaos-faults/kubernetes/container-kill
+- /docs/chaos-engineering/technical-reference/chaos-faults/spring-boot/spring-boot-app-kill
 ---
 
 Container kill is a Kubernetes pod-level chaos fault that causes container failure on specific or random replicas of an application resource.
