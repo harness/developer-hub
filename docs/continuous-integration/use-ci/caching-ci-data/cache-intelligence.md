@@ -53,7 +53,7 @@ When you use Cache Intelligence with [Harness CI Cloud](/docs/continuous-integra
 
 All pipelines in the account use the same cache storage, and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime.
 
-The cache storage limit depends on your subscription plan type. Please visit [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#usage-limits) page to learn more about usage limits.
+The cache storage limit depends on your subscription plan type. Please visit [Subscriptions and licenses](/docs/continuous-integration/ci-subscription-mgmt.md#usage-limits) page to learn more about usage limits.
 
 Harness doesn't limit the number of caches you can store, but, once you reach your storage limit, Harness continues to save new caches by automatically evicting old caches.
 

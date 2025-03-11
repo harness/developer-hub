@@ -34,7 +34,7 @@ The steps in each stage execute on the stage's dedicated VM. This allows the sta
 Free plans get 2000 free Harness Cloud credits each month. 
 If you're using a paid CI plan, you can purchase build credit packages.
 
-Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-cloud-credits).
+Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/ci-subscription-mgmt.md#harness-cloud-billing-and-cloud-credits).
 
 Free plans require credit card validation to use Harness Cloud. If you don't want to provide a credit card, consider using [local runner build infrastructure](./define-a-docker-build-infrastructure).
 
@@ -167,7 +167,7 @@ To select a resource class size, please set the desired size as value for `size`
             spec: 
               size: xlarge # optional 
 ```
-To learn more about all available resource classes in Harness Cloud, please visit [Harness Cloud billing and cloud credits](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-cloud-credits).
+To learn more about all available resource classes in Harness Cloud, please visit [Harness Cloud billing and cloud credits](/docs/continuous-integration/ci-subscription-mgmt.md#harness-cloud-billing-and-cloud-credits).
 
 ### Hardware Acceleration 
 

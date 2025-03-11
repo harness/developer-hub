@@ -111,4 +111,4 @@ When a CI pipeline build finishes successfully, the pipeline can send artifacts 
 
 ## Try Harness CI
 
-Ready to try Harness CI for yourself? [Try Harness CI now](./tutorials.md) or [request a demo](https://harness.io/demo).
+Ready to try Harness CI for yourself? [Try Harness CI now](/docs/category/tutorials-and-code-samples) or [request a demo](https://harness.io/demo).

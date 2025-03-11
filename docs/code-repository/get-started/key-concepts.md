@@ -37,8 +37,8 @@ A pipeline is an end-to-end workflow that, for example, pulls code from a codeba
 
 To learn more about CI and CD pipelines go to:
 
-* [CI key concepts](../../continuous-integration/get-started/key-concepts.md)
-* [CD key concepts](../../continuous-delivery/get-started/key-concepts.md)
+* [CI key concepts](/docs/continuous-integration/key-concepts)
+* [CD key concepts](/docs/continuous-delivery/get-started/key-concepts)
 
 ### Projects
 

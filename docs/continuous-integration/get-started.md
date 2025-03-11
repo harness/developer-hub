@@ -43,10 +43,10 @@ If you're migrating to Harness CI from another CI provider, review the [Harness 
 
 Explore the documentation to learn what your Harness CI pipelines can do.
 
-* [Build images, push images, and upload artifacts.](../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact)
+* [Build images, push images, and upload artifacts.](/docs/category/build-push-upload-download)
 * [Use caching](/docs/category/share-and-cache-ci-data) and [manage dependencies](/docs/category/manage-dependencies).
 * Run [scripts](/docs/continuous-integration/use-ci/run-step-settings.md) and [tests](/docs/category/run-tests).
-* [Use plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) and [write your own plugins](../use-ci/use-drone-plugins/custom_plugins.md).
+* [Use plugins](/docs/category/use-plugins) and [write your own plugins](/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins).
 
 :::tip
 

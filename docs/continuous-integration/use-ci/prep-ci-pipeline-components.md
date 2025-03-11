@@ -8,7 +8,7 @@ redirect_from:
 
 This topic provides an overview of CI pipeline creation and configuration, including common components, such as stages, steps, and codebases, as well as advanced settings.
 
-For information about Harness CI's key features, Harness Platform components in Harness CI, and definitions of terms like build infrastructure, delegate, connector, and so on, go to [Harness CI key concepts](../get-started/key-concepts.md).
+For information about Harness CI's key features, Harness Platform components in Harness CI, and definitions of terms like build infrastructure, delegate, connector, and so on, go to [Harness CI key concepts](/docs/continuous-integration/key-concepts).
 
 ## Pipelines
 
