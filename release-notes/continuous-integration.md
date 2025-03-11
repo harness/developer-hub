@@ -78,15 +78,14 @@ For more information see [Google Container Registry deprecation notice](https://
 ### Version 1.70
 
 <!-- 2025-03-03 -->
+#### New features and enhancements
 
+- Users can now set the stage variable `PLUGIN_SKIP_PUSH_IF_TAG_EXISTS` to skip the push step in the native **Build and Push to ECR** step if the tag already exists. (CI-10350)
+  
 #### Fixed issues
 
 - Resolved an issue with Azure Repos where cloning with a tag was not working. (CI-16298, ZD-78432)
 - Resolved an issue where Build Intelligence feature  couldn’t be configured via templates. With this fix, the property is now visible in templates, allowing users to configure CI stages regardless of the selected infrastructure. (CI-16342)
-
-#### New features and enhancements
-
-- Users can now set the stage variable `PLUGIN_SKIP_PUSH_IF_TAG_EXISTS` to skip the push step in the native **Build and Push to ECR** step if the tag already exists. (CI-10350)
   
 #### Harness images updates
 
