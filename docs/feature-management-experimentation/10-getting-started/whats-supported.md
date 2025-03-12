@@ -47,15 +47,15 @@ The following table lists the client-side FME SDKs that Harness supports.
 | [React Native](https://github.com/splitio/react-native-client) | [React Native SDK reference](https://help.split.io/hc/en-us/articles/4406066357901-React-Native-SDK) |
 | [Redux](https://github.com/splitio/redux-client) | [Redux SDK reference](https://help.split.io/hc/en-us/articles/360038851551-Redux-SDK) |
 
-## Supported RUM Agents and Suite SDKs
+## Supported RUM Agents and SDK Suites
 
-RUM Agents collect Real User Metric events and send these events to Harness. Harness FME also supports FME Suite SDKs that include RUM Agents. The following table lists the FME RUM Agents and FME Suite SDKs that Harness supports.
+RUM Agents collect Real User Monitoring events and send these events to Harness. Harness FME also supports FME Suite SDKs that include RUM Agents. The following table lists the FME RUM Agents and FME Suite SDKs that Harness supports.
 
-| FME Suite SDK | FME Suite SDK documentation | RUM Agent documentation |
+| FME SDK Suite | FME SDK Suite documentation | RUM Agent documentation |
 | ---- | --- | --- |
-| [Android](https://github.com/splitio/android-client) | [Android Suite SDK reference](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite) | [Android RUM Agent reference](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent) |
-| [iOS](https://github.com/splitio/ios-client) | [iOS Suite SDK reference](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite) | [iOS RUM Agent reference](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent) |
-| [JavaScript Browser](https://github.com/splitio/javascript-browser-client) | [JavaScript Browser Suite SDK Reference](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite) | [JavaScript Browser RUM Agent reference](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-Agent) |
+| [Android](https://github.com/splitio/android-client) | [Android SDK Suite reference](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite) | [Android RUM Agent reference](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent) |
+| [iOS](https://github.com/splitio/ios-client) | [iOS SDK Suite reference](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite) | [iOS RUM Agent reference](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent) |
+| [JavaScript Browser](https://github.com/splitio/javascript-browser-client) | [JavaScript Browser SDK Suite Reference](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite) | [JavaScript Browser RUM Agent reference](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-Agent) |
 
 ## Split Evaluator
 
@@ -73,17 +73,20 @@ The [Split Proxy](https://help.split.io/hc/en-us/articles/4415960499213-Split-Pr
 
 This tool reduces connection latencies from the SDKs to the Harness servers transparently, and when a single connection is required from a private network to the outside for security reasons.
 
-## Running in the Cloud
+## Running in the cloud
 
 There are no limitations for using FME in any cloud or non-cloud environment as long as the languages needed are supported with an SDK, and connectivity to either Harness or the Split Proxy can be established.
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
+<!-- todo: move 3 sections to integrations landing page >
 ## Monitoring and analytics sources
 
 Monitoring and analytics sources in Harness FME are APM (Application Performance Monitoring) or customer data and analytics providers that allow you to collect customer events and performance metrics.
 
-<!-- Analytics, Customer data platform, Monitoring, Warehouse + Google Tag Manager (from Deployment) -->
+<!-- Review note on “Monitoring and analytics sources”: We do not ingest data from all these integrations. Some are only data out (i.e. send flag changes to APM tool) -->
+
+<!-- Analytics, Customer data platform, Monitoring, Warehouse + Google Tag Manager (from Deployment) - ->
 
 Harness FME supports the following monitoring and analytics sources:
 
@@ -119,10 +122,10 @@ Deployment and serverless application platforms simplify deployment and hosting 
 
 Harness FME supports the following deployment and serverless application platforms:
 
-<!-- Deployment -->
+<!-- Deployment - ->
 
-- [Cloudflare Workers](https://help.split.io/hc/en-us/articles/4505572184589-Cloudflare-Workers) <!-- serverless hosting -->
-- [Terraform provider](https://help.split.io/hc/en-us/articles/6191463919885-Terraform-provider) <!-- terraform = deploy cloud infrastructure, create feature flags from terraform -->
+- [Cloudflare Workers](https://help.split.io/hc/en-us/articles/4505572184589-Cloudflare-Workers) <!-- serverless hosting -- >
+- [Terraform provider](https://help.split.io/hc/en-us/articles/6191463919885-Terraform-provider) <!-- terraform = deploy cloud infrastructure, create feature flags from terraform - ->
 - [Vercel](https://help.split.io/hc/en-us/articles/16469873148173-Vercel)
 
 To learn how to configure Harness FME for a deployment platform or serverless application platform, click on one of the links above.
@@ -133,14 +136,14 @@ Development, change management, and messaging tools improve team efficiency, enh
 
 Harness FME supports the following development, change management, and messaging tools:
 
-<!-- Development, Change management, Messaging -->
+<!-- Development, Change management, Messaging - ->
 
-- [Azure DevOps](https://help.split.io/hc/en-us/articles/4408032964493-Azure-DevOps) <!-- configure/enable rollouts, create/associate feature flags -->
-- [GitHub Actions](https://help.split.io/hc/en-us/articles/24994768544269-GitHub-Actions) <!-- evaluate feature flags in GA -->
-- [Jenkins](https://help.split.io/hc/en-us/articles/360044691592-Jenkins) <!-- create/update/delete feature flags as part of test & automation workflow -->
-- [Jira Cloud](https://help.split.io/hc/en-us/articles/360059317892-Jira-Cloud) <!-- connect feature flags and Jira issues -->
+- [Azure DevOps](https://help.split.io/hc/en-us/articles/4408032964493-Azure-DevOps) <!-- configure/enable rollouts, create/associate feature flags - ->
+- [GitHub Actions](https://help.split.io/hc/en-us/articles/24994768544269-GitHub-Actions) <!-- evaluate feature flags in GA - ->
+- [Jenkins](https://help.split.io/hc/en-us/articles/360044691592-Jenkins) <!-- create/update/delete feature flags as part of test & automation workflow - ->
+- [Jira Cloud](https://help.split.io/hc/en-us/articles/360059317892-Jira-Cloud) <!-- connect feature flags and Jira issues - ->
 - [Slack](https://help.split.io/hc/en-us/articles/360020997851-Slack)
-- [ServiceNow](https://help.split.io/hc/en-us/articles/5524203735181-ServiceNow) <!-- manage permissions/approval flows -->
+- [ServiceNow](https://help.split.io/hc/en-us/articles/5524203735181-ServiceNow) <!-- manage permissions/approval flows - ->
 - [VSCode extension](https://help.split.io/hc/en-us/articles/10731776599309-VSCode-extension)
 
 To learn how to configure one of these tools to effectively work with FME, click on a link above.
