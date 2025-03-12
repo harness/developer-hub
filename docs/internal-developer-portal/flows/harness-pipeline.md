@@ -688,6 +688,8 @@ By integrating the API Key, the pipeline execution remains seamless, ensuring it
 
 ![](./static/api-key-ngui.png)
 
+This step is optional. You can proceed with executing your pipeline without an API key. In that case, the user context will be used for catalog registration.
+
 #### Output Variable
 
 Following is the output variable of this step.
