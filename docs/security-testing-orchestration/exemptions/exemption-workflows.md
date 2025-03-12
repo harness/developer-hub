@@ -39,7 +39,7 @@ A form will open titled **Request Exemption for Issue**. Complete the following 
 
 #### Where do you want this issue to be exempted?
 You can select one of the following options to specify the scope of the exemption:
-   - **This Target** – Exempts the issue only for this specific target. The issue will still be reported if detected in other targets.  
+   - **This Target** – This exemption applies only to the specific target, meaning that the issue will be ignored across all pipelines using that target within the project. However, if the issue is detected in other targets, it will still be reported.
    - **This Pipeline** – Exempts the issue only for this specific pipeline. Future scans in other pipelines or projects will still report the issue.  
    - **This Project** – Exempts the issue across all pipelines and targets within the project. Use this option only if you are certain that the issue should be ignored across the entire project.  
 
