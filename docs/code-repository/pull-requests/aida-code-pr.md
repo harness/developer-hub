@@ -2,6 +2,7 @@
 title: Generate PR summaries with AIDA
 description: Use AI to generate PR summaries.
 sidebar_position: 11
+unlisted: true
 ---
 
 Use the [Harness AIDA](/docs/platform/harness-aida/aida-overview) Pull Request Summary Generation functionality to automatically create PR descriptions.

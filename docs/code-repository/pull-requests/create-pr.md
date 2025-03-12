@@ -28,8 +28,8 @@ You can also create PRs by [comparing branches](../work-in-repos/branch.md#compa
 If you decide a pull request is invalid or not ready for review, you can close it.
 
 1. In your repository, go to **Pull Requests**, and select the PR you want to close.
-2. Select the dropdown next to **Squash and merge**, and select **Close pull request**.
-3. Select **Close pull request** again to confirm the closure.
+2. Select **More options** (&vellip;) next to **Squash and merge**,
+3. Select **Close pull request**
 
 To reopen the PR, select **Open for review**.
 
