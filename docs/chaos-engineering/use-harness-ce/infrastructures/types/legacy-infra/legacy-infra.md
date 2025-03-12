@@ -4,6 +4,11 @@ sidebar_position: 1
 redirect_from:
 - /docs/category/harness-dedicated-infrastructure
 - /docs/chaos-engineering/onboarding/harness-infra
+- /docs/chaos-engineering/technical-reference/architecture/kubernetes
+- /docs/chaos-engineering/onboarding/harness-infra
+- /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/
+- /docs/chaos-engineering/get-started/prerequisites/#chaos-infrastructure-requirements
+- /docs/chaos-engineering/features/chaos-infrastructure/introduction
 - /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/
 - /docs/chaos-engineering/get-started/prerequisites/#chaos-infrastructure-requirements
 ---
