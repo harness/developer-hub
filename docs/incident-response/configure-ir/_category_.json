@@ -1,0 +1,12 @@
+{
+    "label":"Configure Incident Response",
+    "position": 2,
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+       "type":"generated-index",
+       "title":"Concepts"
+    },
+    "customProps":{
+    }
+ }
