@@ -1,6 +1,12 @@
 {
-  "label": "Configure Custom Tools",
-  "position": 8,
-  "collapsible": true,
-  "collapsed": true
-}
+    "label":"Configure Custom Tools",
+    "position": 8,
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+       "type":"generated-index",
+       "title":"Configure Custom Tools"
+    },
+    "customProps":{
+    }
+ }
