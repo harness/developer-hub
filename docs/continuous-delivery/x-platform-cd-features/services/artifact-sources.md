@@ -327,6 +327,10 @@ You can reference artifact properties using the following expressions in a value
 
 ## Google Container Registry (GCR)
 
+:::warning
+​Google Container Registry (GCR) is deprecated and scheduled for shutdown on May 18, 2025. It is recommended to migrate your container images and workflows to Google Artifact Registry (GAR) before this date. For detailed guidance, refer to [Google's official transition documentation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr).
+:::
+
 ### Use GCR artifacts
 
 You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
