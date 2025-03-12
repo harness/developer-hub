@@ -34,6 +34,9 @@ To ensure uninterrupted availability, better performance, and enhanced security,
 **What is changing?**
 - Currently, Harness images are pulled from Docker Hub by default with anonymous access.
 - Moving forward (starting **March 24, 2025**), all Harness container images will be pulled from GAR by default to improve performance, security, and scalability.
+  
+**GAR Path**
+  `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/<IMAGE>:<TAG>`
 
 **Do you need to take action?**
 - **No immediate action is required** for most customers.
