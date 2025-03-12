@@ -152,6 +152,6 @@ You can also specify [different values](/docs/chaos-engineering/concepts/chaos10
 
 1. Select the `⋮` icon against the chaos infrastructure name and select **Disable**.
 
-    ![Delete Chaos Infra](./static/12.delete-infra.png)
+    ![Delete Chaos Infra](./static/delete-infra.png)
 
 2. Copy the command displayed in the modal, and execute it in your Linux machine to uninstall the chaos infrastructure components. Finally, select **Confirm**.
