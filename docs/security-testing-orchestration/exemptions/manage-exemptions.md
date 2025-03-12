@@ -1,6 +1,6 @@
 ---
-title: Manage Exemptions
-description: Respond to the issue exemptions
+title: Manage issue exemption requests
+description: Procedures and best practices for handling issue exemption requests.
 sidebar_label: Manage issue exemptions
 sidebar_position: 62
 ---
@@ -12,34 +12,24 @@ import baseline_not_defined from '../use-sto/static/exemption-workflows-no-basel
 When an [issue exemption request](./exemption-workflows) is submitted, it goes through a defined lifecycle. The available actions to address these requests include **Approving**, **Rejecting**, or **Cancelling**. The exemption lifecycle consists of the following stages:
 
 :::note
-Users with role `Security Testing SecOps` can approve or manage the issue exemption requests.
+Users with role **Security Testing SecOps** can approve or manage the issue exemption requests.
 :::
 
-1. **Pending:**  
-   - The request is newly created and awaits review.  
-   - At this stage, users can choose to approve, reject, or cancel the request.
+1. **Pending:** The request is newly created and awaits review. At this stage, users can choose to approve, reject, or cancel the request.
 
-2. **Approved:**  
-   - The request has been reviewed and accepted.  
-   - The issue is temporarily or permanently exempt from further action based on the exemption details.
+2. **Approved:** The request has been reviewed and accepted. The issue is temporarily or permanently exempt from further action based on the exemption details.
 
-3. **Rejected:**
-   - The request has been reviewed and denied.  
-   - The issue remains active, and the pipeline continues to enforce security policies as if no exemption was requested. 
-4. **Expired:**  
-   - The exemption period has elapsed, or the exemption has been invalidated.  
-   - Once expired, the issue returns to its original active state unless a new exemption is requested.
+3. **Rejected:** The request has been reviewed and denied. The issue remains active, and the pipeline continues to enforce OPA policies as if no exemption was requested. 
+4. **Expired:** The exemption period has elapsed, or the exemption has been invalidated. Once expired, the issue returns to its original active state unless a new exemption is requested.
 
 <DocImage path={require('./static/exemption-lifecycle.png')} width="50%" height="50%" title="Click to view full size image" />
 
-### Actions
-Here are the actions that can be performed on an issue exemption request.
-- **Approve:** Accept the request and apply the exemption.  
-- **Reject:** Decline the request and maintain the issue status.  
-- **Cancel:** Close the request before any decision is made.
-
 
 ## Approve, reject, or cancel an STO exemption
+
+<DocImage path={require('./static/exemption-workflow.png')} width="80%" height="80%" title="Click to view full size image" />
+
+To respond to an exemption request, navigate to the issue exemption request within the Security Tests tab of a specific pipeline execution. If the requester has not shared a direct link to the issue for exemption, you can request it from them. Alternatively, you can follow the steps below to locate the exemption and respond accordingly.
 
 :::note
 
@@ -47,19 +37,15 @@ This workflow requires [Security Testing SecOps](/docs/security-testing-orchestr
 
 :::
 
-1. You should receive an email or Slack from a developer that includes a URL to the relevant issue. Go to the URL provided.
- 
-   The URL should point to a Security Tests page in Harness with the issue selected in the **Issue Details** pane on the right. If the relevant issue isn't visible, notify the developer. 
-
-2. Select **Exemptions** (left menu) > **Pending** and then select the pending exemption to view the exemption details.
+1. Select **Exemptions** from the left navigation and then select **Pending** to view the pending exemption requests.
 
    ![](../use-sto/static/approve-exemption-00.png)
 
-3. Review the exemption request. The **Issue Details** pane includes a high-level summary of the issue, links to relevant documentation, and a list of all locations in the scanned object where the issue was detected. 
+3. Review the exemption request. The **Exemption Details** pane includes a high-level summary of the issue, links to relevant documentation, and a list of all locations in the scanned object where the issue was detected. 
 
     :::note
 
-    - The **Issue Details** pane is comprehensive, but might not include all the information you need. You might want to research the issue further before you approve the request.
+    - The **Exemption Details** pane is comprehensive, but might not include all the information you need. You might want to research the issue further before you approve the request.
 
     - Consider the **Requested Duration** for the exemption request. When you approve a request, the exemption remains active only for the specified time window (for example, 7 days from the approval time). 
 
