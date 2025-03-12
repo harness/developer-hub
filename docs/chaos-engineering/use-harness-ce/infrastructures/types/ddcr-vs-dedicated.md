@@ -1,7 +1,7 @@
 ---
 title: Delegate Versus Dedicated Chaos Infrastructure
 sidebar_position: 20
-redirect_link:
+redirect_from:
 - /docs/chaos-engineering/use-harness-ce/infrastructures/#dedicated-chaos-infrastructure-versus-harness-delegate-driven-chaos-infrastructure
 - /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr-vs-dedicated
 ---
