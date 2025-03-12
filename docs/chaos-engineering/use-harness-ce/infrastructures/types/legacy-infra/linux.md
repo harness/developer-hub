@@ -31,13 +31,7 @@ A set of mandatory input flags is required to install chaos infrastructure, incl
 12. **http-client-timeout**: HTTP client timeout for communicating with the control plane. The default value is **30s**.
 
 :::info note
-- LCI supports:
-    - [CRON schedules](/docs/chaos-engineering/use-harness-ce/experiments/run-schedule-exp#execute-experiment-on-a-schedule)
-    - [GameDay](/docs/chaos-engineering/use-harness-ce/GameDay)
-    
-- LCI currently does not support:
-    - [GameDays](/docs/chaos-engineering/use-harness-ce/GameDay)
-    - Executing [parallel faults](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI)
+- LCI currently does not support executing [parallel faults](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments) in SaaS (the self-managed platform (SMP) supports executing parallel faults on LCI).
 :::
 
 ### Infrastructure Service
