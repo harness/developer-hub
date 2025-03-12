@@ -6,7 +6,7 @@ This topic describes different types of infrastructure, that can be used to exec
 Based on the target environments, you can install chaos infrastructure as a Kubernetes service, a Linux daemon or a Windows agent.
 
 There are different types of chaos infrastructure such as:
-- Legacy Infrastructure
+- [Legacy Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra)
     - OpenShift
 - [Delegate-Driven Chaos Infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/)
 - Linux

@@ -8,6 +8,7 @@ redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score
 - /docs/chaos-engineering/features/experiments/resilience-score/
 - /docs/category/chaos-experiments-/
+- /docs/chaos-engineering/technical-reference/experiments/
 ---
 
 This topic describes chaos experiments, why it is required, the permissions required to execute a chaos experiment, and how the resilience score is determined based on the chaos experiment's execution.

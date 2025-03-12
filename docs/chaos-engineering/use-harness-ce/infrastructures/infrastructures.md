@@ -337,25 +337,7 @@ You can install an infrastructure as a part of creating an experiment. This infr
 :::
 
 
-HCE facilitates installing two types of chaos infrastructure:
+Harness CE facilitates installing two types of chaos infrastructure:
 - [DDCR](#what-is-ddcr) (Delegate Driven Chaos Runner) aka **Harness Delegate**; and
 - [Harness Chaos infrastructure](#what-is-harness-chaos-infrastructure) that uses a dedicated infrastructure (aka Legacy Kubernetes Infrastructure).
 
-## What is Harness Chaos Infrastructure?
-
-Harness Chaos Infrastructure (also known as Legacy Kubernetes Infrastructure) uses a dedicated infrastructure to facilitate and execute chaos experiments.
-
-:::tip
-Unless specified, chaos infrastructure refers to the dedicated chaos infrastructure (or legacy chaos infrastructure), and **NOT** DDCR.
-:::
-
-### Chaos infrastructure requirements
-
-The table below lists the chaos infrastructure execution plane components and the required resources for Legacy Kubernetes Infrastructure. You can install these components in your target cluster, allowing the chaos infrastructure to run experiments here. Chaos infrastructure runs within your target environment to aid HCE in accessing the target resources and injecting chaos at a cloud-native scale.
-
-| Deployment | Container | CPU<br />required | Memory<br />required | Image |
-|------------|-----------|-------------------|----------------------|-------|
-| chaos-operator-ce  | chaos-operator-ce     | 125m | 300M | chaosnative/chaos-operator          |
-| chaos-exporter     | chaos-exporter        | 125m | 300M | chaosnative/chaos-exporter          |
-| subscriber         | subscriber            | 125m | 300M | chaosnative/harness-chaos-subscriber|
-| workflow-controller| workflow-controller   | 125m | 300M | chaosnative/workflow-controller     |
