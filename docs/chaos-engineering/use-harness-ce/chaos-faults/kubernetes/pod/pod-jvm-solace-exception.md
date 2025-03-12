@@ -13,9 +13,9 @@ JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject
 
 ### Use cases
 Pod JVM Solace exception:
-- Simulate Solace messaging exceptions to evaluate how the application handles messaging failures, assess system resilience under error conditions, and identify potential vulnerabilities in message processing and fault tolerance.
-- Test the impact of messaging exceptions on the end-user experience, ensuring the application behaves gracefully under Solace message delivery failures. This includes validating retries, fallback mechanisms, and error recovery strategies to maintain communication integrity.
-- Ensure that the application can handle Solace messaging exceptions without critical failure. Test error-handling strategies, automatic recovery processes, and failover configurations to verify that the system remains operational despite messaging disruptions.
+- Simulates Solace messaging exceptions to evaluate how the application handles messaging failures, assess system resilience under error conditions, and identify potential vulnerabilities in message processing and fault tolerance.
+- Tests the impact of messaging exceptions on the end-user experience, ensuring the application behaves gracefully under Solace message delivery failures. This includes validating retries, fallback mechanisms, and error recovery strategies to maintain communication integrity.
+- Ensures that the application can handle Solace messaging exceptions without critical failure. Test error-handling strategies, automatic recovery processes, and failover configurations to verify that the system remains operational despite messaging disruptions.
 
 ### Mandatory tunables
 <table>

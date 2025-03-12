@@ -13,9 +13,9 @@ JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject
 
 ### Use cases
 Pod JVM Solace latency:
-- Simulate Solace messaging latency to evaluate how the application handles delayed message delivery, assess system performance under network-induced slowdowns, and identify potential bottlenecks in message processing.
-- Test the impact of messaging latency on the end-user experience, ensuring the application behaves gracefully under delayed Solace message delivery. This includes validating timeout mechanisms, retries, and fallback strategies to maintain seamless communication.
-- Ensure that the application can handle delayed Solace messages without failure. Test timeout configurations, error-handling strategies, and automatic recovery processes to verify that the system remains resilient against messaging-induced delays.
+- Simulates Solace messaging latency to evaluate how the application handles delayed message delivery, assess system performance under network-induced slowdowns, and identify potential bottlenecks in message processing.
+- Tests the impact of messaging latency on the end-user experience, ensuring the application behaves gracefully under delayed Solace message delivery. This includes validating timeout mechanisms, retries, and fallback strategies to maintain seamless communication.
+- Ensures that the application can handle delayed Solace messages without failure. Test timeout configurations, error-handling strategies, and automatic recovery processes to verify that the system remains resilient against messaging-induced delays.
 
 ### Mandatory tunables
 <table>
