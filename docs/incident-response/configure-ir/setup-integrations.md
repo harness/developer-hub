@@ -58,6 +58,10 @@ Optionally, on the  a Slack channel for the webhook alerts to appear in. The Sla
 
 ### Using Webhooks
 
-Once you have clicked **Add** to create the new webhook, find it in the list on the Integrations page, and click the **Click to copy** link.
+Once you have clicked **Add** to create the new webhook, find it in the list on the Integrations page, and click the **Click to copy** button.
+
+![Copy the Webhook URL](./img/copy_webhook_url.png)
 
 Now that you have created the webhook, you can register it in the external service, so that it will send data to Harness Incident Response when an event happens within the external service.
+
+
