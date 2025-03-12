@@ -1,6 +1,6 @@
 ---
 title: Key concepts
-sidebar_label: Key concepts (copy & paste)
+sidebar_label: Key concepts
 sidebar_position: 3
 helpdocs_is_private: false
 helpdocs_is_published: true
@@ -65,9 +65,17 @@ As needed, your application makes a just-in-time call to the FME SDK in local me
 As an alternative to using FME SDKs, you can make REST API calls to a Split Evaluator hosted inside your own infrastructure. Like the SDK, this method never requires you to send private user data to the Harness network. The evaluator makes it possible to operate from within languages that do not yet have a published FME SDK and should only be used in that case. Refer to the [Split Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator) guide for more information.
 
 ## FME's structure
-Harness FME is architected to support teams and organizations of any size, from a single developer to multiple value-stream enterprises. Take a moment to familiarize yourself with the concepts of your Harness account, project, environment, and objects, e.g., users, groups, tags, traffic types, feature flags, segments, and metrics.
+Harness FME is architected to support teams and organizations of any size, from a single developer to multiple value-stream enterprises. Take a moment to familiarize yourself with the concepts of your Harness account, project, environment, and objects, e.g., users, user groups, tags, traffic types, feature flags, segments, and metrics.
 
-![](https://help.split.io/hc/article_attachments/30794709286029)
+import FMEArchitectureObjectsImage from '@site/docs/feature-management-experimentation/10-getting-started/docs/FMEArchitectureObjectsImage.js';
+
+<FMEArchitectureObjectsImage />
+
+:::info[Note: Split Legacy settings locations]
+Post migration to app.harness.io, Split legacy Project permissions,  Change permissions and Data export permissions (marked in purple above) will move out of their current locations and into Harness RBAC management.
+
+New Admin API Key creation and management will move to Harness Service Accounts.  Existing Split legacy Admin API Keys will continue to operate until revoked in the Split legacy location.
+:::
 
 ### Account
 Your company has one Harness account. Your account is the highest level container. Harness FME support may ask you for your account ID to speed troubleshooting. You’ll find your account ID in the URL for every page you visit in Harness.
@@ -75,7 +83,7 @@ Your company has one Harness account. Your account is the highest level containe
 ### Users
 A Harness user is someone with access to the Harness user interface. Administrators can invite new users to Harness. All paid plans include SSO for user authentication and can support either invites or just in time provisioning.
 
-### Groups
+### User Groups
 A group is a convenient way to manage a collection of users in your account. You can use groups to grant administrative controls and grant environment, feature flag, or segment-level controls. Refer to the [Manage user groups](https://help.split.io/hc/en-us/articles/360020812952-Manage-user-groups) guide for more information.
 
 ### Projects
