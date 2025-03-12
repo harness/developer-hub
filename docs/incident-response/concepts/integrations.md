@@ -1,9 +1,9 @@
 ---
-title: Integrations Alerts and Webhooks
-sidebar_label: Integrations Alerts and Webhooks
-description: Integrations Alerts and Webhooks
+title: Alerts via Integrations
+sidebar_label: Alerts via Integrations
+description: Alerts via Integrations
 ---
 
 # Integrations
 
-This is a placeholder for the Integrations Alerts and Webhooks documentation page.
+This is a placeholder for Alerts via Integrations documentation page.

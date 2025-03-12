@@ -1,6 +1,12 @@
 {
-  "label": "Configure Oncall Tools",
-  "position": 7,
-  "collapsible": true,
-  "collapsed": true
-}
+    "label":"Configure Oncall Tools",
+    "position": 7,
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+       "type":"generated-index",
+       "title":"Configure Oncall Tools"
+    },
+    "customProps":{
+    }
+ }

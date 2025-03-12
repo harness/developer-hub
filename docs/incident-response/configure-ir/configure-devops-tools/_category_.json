@@ -1,6 +1,12 @@
 {
-  "label": "Configure DevOps Tools",
-  "position": 5,
-  "collapsible": true,
-  "collapsed": true
-}
+    "label":"Configure DevOps Tools",
+    "position": 5,
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+       "type":"generated-index",
+       "title":"Configure DevOps Tools"
+    },
+    "customProps":{
+    }
+ }
