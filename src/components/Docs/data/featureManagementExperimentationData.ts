@@ -17,8 +17,8 @@ import { MODULES } from "@site/src/constants"
           title: "Getting started",
           module: MODULES.fme,
           description:
-            "Quickstarts and key concepts",
-          link: "/docs/feature-management-experimentation/getting-started/docs/onboarding-guide",
+            "Key concepts",
+          link: "/docs/feature-management-experimentation/getting-started/docs/key-concepts",
         },
         {
           title: "What's supported",

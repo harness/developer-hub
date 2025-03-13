@@ -16,7 +16,7 @@ When using Android SDK in an app, before the app exits, calling client.Destroy()
 
 ## Root Cause
 
-The `client.Destory()` will post any cached impressions, however, if the app shutdown its process before or during the post request, the request will fail and no impressions are posted to Harness servers cloud.
+The `client.Destory()` will post any cached impressions, however, if the app shutdown its process before or during the post request, the request will fail and no impressions are posted to Harness servers.
 
 ## Answer
 

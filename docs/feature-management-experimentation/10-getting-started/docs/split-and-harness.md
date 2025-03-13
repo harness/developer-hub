@@ -25,4 +25,4 @@ Authentication, access, and user management are part of the Harness platform. Pe
 
 ## Harness platform integrations coming soon
 
-We are moving rapidly to unlock integrations with Harness's innovative DevOps tools, DevEx improvements, Security features, and Cloud optimizations, while also accelerating the roadmap of enhancements to the core of what you have previously known as Split. Please visit our [roadmap](https://developer.harness.io/roadmap/#fme) to learn more.
+We are moving rapidly to unlock integrations with Harness's innovative DevOps tools, DevEx improvements, Security features, and cloud optimizations, while also accelerating the roadmap of enhancements to the core of what you have previously known as Split. Please visit our [roadmap](https://developer.harness.io/roadmap/#fme) to learn more.
