@@ -3,14 +3,8 @@ title: Chaos Infrastructure
 canonical_url: https://www.harness.io/blog/chaos-engineering
 redirect_from:
 - /docs/category/chaos-infrastructure
-- /docs/chaos-engineering/technical-reference/architecture/kubernetes
-- /docs/chaos-engineering/get-started/prerequisites/#chaos-infrastructure-requirements
-- /docs/chaos-engineering/features/chaos-infrastructure/introduction
 - /docs/chaos-engineering/features/chaos-infrastructure/windows-chaos-infrastructure/
 - /docs/chaos-engineering/concepts/explore-concepts/infrastructures/
-- /docs/chaos-engineering/onboarding/harness-infra
-- /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/
-- /docs/category/harness-dedicated-infrastructure
 ---
 
 import Tabs from '@theme/Tabs';
