@@ -1,5 +1,5 @@
 ---
-title: Using pipeline variables
+title: Pipeline Variables
 description: Learn how to use Harness pipeline variables in your Workspaces
 sidebar_position: 10
 ---
