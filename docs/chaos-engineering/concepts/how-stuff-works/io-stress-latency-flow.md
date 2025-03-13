@@ -35,7 +35,7 @@ The helper pod extracts the process ID (PID) of the main process running inside 
 </table>
 
 
-### Step 5: Transfer IO Stress / Inject Stress Process
+### Step 5: Transfer IO Stress / Inject Latency Process
 
 <table>
   <tr>
