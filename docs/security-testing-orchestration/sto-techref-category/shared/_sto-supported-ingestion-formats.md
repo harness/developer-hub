@@ -18,6 +18,7 @@ Harness recommends that you publish and ingest using the scanner-specific JSON f
 - **Burp** — XML
 - **Traceable** — JSON
 - **Checkmarx** — XML, SARIF  <!-- - **Clair** — JSON -->
+- **CheckmarxOne** — JSON
 - **CodeQL** — SARIF
 - **Coverity** — XML
 - **Data Theorem** — JSON

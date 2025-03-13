@@ -117,12 +117,16 @@ import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
 
 <StoSettingAuthAccessID />
 
+For **Access ID**, you can use an existing OAuth client in Checkmarx or create a new one and use its `Client ID`.
+
 
 #### Access Token
 
 import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
 
 <StoSettingAuthAccessToken />
+
+For **Access ID**, you can use an existing OAuth client in Checkmarx or create a new one and use its `Client Secret`.
 
 </TabItem>
 <TabItem value="API Key" label="API Key">
@@ -142,6 +146,8 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 import StoSettingToolProjectName from './shared/step_palette/tool/project/_name.md';
 
 <StoSettingToolProjectName />
+
+If the specified project does not exist, the step will create a new project using the provided Project Name.
 
 
 ### Log Level

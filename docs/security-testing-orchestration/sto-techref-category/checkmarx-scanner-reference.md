@@ -12,21 +12,19 @@ sidebar_position: 100
 <br/>
 <br/>
 
-The Checkmarx step in Harness STO enables you to scan your code for security vulnerabilities, you can perform Checkmarx SAST, SCA, and OSA scanning in Orchestration, Ingestion and Extraction modes of STO. This document will guide you through understanding the fields, configuring them, and providing any necessary information for setting up the step.
-### Root access requirements 
+The Checkmarx step in Harness STO enables you to scan your code for security vulnerabilities, you can perform Checkmarx **CxSAST**, **CxSCA**, and **CxOSA** scanning in [Orchestration](#scan), [Ingestion](#scan) and [Extraction](#scan) modes of STO. This document will guide you through understanding the fields, configuring them, and providing any necessary information for setting up the step.
+
+### Root access requirements
 
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
 
-
 ## Checkmarx step settings
 
 The recommended workflow is to add a Checkmarx step to a **Security** or **Build** stage and then configure it as described below. 
 
-
 ### Scan
-
 
 #### Scan Mode
 
@@ -100,6 +98,9 @@ import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
 
 <StoSettingAuthDomain />
 
+- For **Default** and **CxOSA** scan configurations, the domain URL must end with the `/cxrestapi` route.
+- For **CxSCA** scan configuration, the domain should be set to `sca.checkmarx.net`.
+
 
 #### Enforce SSL
 
@@ -151,14 +152,15 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 
 #### Team Name
 
-The Checkmarx team name. Use the format `/<`*`server-name`*`>/<`*`team-name`*`>` — for example, `/server1.myorg.org/devOpsEast`.
-
+The Checkmarx team name. Use the format `/<`*`server-name`*`>/<`*`team-name`*`>` — for example, `/server1.myorg.org/devOpsEast`. In some cases, your Checkmarx's Account or Tenet name may be used as the Team Name.
 
 #### Project Name
 
 import StoSettingToolProjectName from './shared/step_palette/tool/project/_name.md';
 
 <StoSettingToolProjectName />
+
+If the specified project does not exist, the step will create a new project using the provided Project Name.
 
 
 ### Log Level
