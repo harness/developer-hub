@@ -50,7 +50,9 @@ Currently, this feature is behind the feature flag `CDS_HELM_DELETE_STEP`. Conta
 
 - **Dry-Run**: A **`--dry-run`** checkbox is available for safer execution of destructive operations, allowing users to preview the changes before applying them.
 
-- **Release Name**: The name of the Helm release to be deleted. Users can provide this manually or fetch it dynamically from the selected infrastructure. The release name also supports runtime input and expressions.
+- **Release Name**: The name of the Helm release to be deleted. Users can specify this manually or leave it blank to automatically retrieve the release name from the selected infrastructure.
+
+  The release name supports **Runtime input** and **expressions**.
 
 ### Optional Configuration
 
