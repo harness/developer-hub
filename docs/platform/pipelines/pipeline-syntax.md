@@ -237,7 +237,7 @@ Secret
 Failure Strategy
 Conditional Execution
 Matrix, Looping, and Parallelism
-[Q](Are there additional input types?)
+<!-- [Q](Are there additional input types?) -->
 A: https://harness.atlassian.net/wiki/spaces/CDNG/pages/21872247626/Inputs
 
 ### `inputs.<input_name>.required`
@@ -269,7 +269,8 @@ pipeline:
 ### `inputs.<input_name>.enum`
 ---
 
-Makes the input an `enum`. Can be used with other variable types. [Q](Why would you use enums? How do they work?)
+Makes the input an `enum`. Can be used with other variable types. 
+<!-- [Q](Why would you use enums? How do they work?) -->
 ```
 Enums are "allow" values. We let one of these 3 parameters or choices to be the input. Can take in different object types like service or connector. The value is chosen at runtime
 ```
@@ -370,7 +371,7 @@ Some pipelines will work with more than one environment. Use `environment.items`
 
 Use `environment.items` to specify more than one environment. 
 
-[Q]
+<!-- [Q] -->
 
 ### `environment.items[*].name`
 ---
@@ -382,7 +383,8 @@ The name of the environment.
 
 A single name or list of names that defines the target infrastructure.
 
-You can use the keyword `all` instead of an infrastructure name to target all infrastructure definitions. [Q](Is all clusters right?)
+You can use the keyword `all` instead of an infrastructure name to target all infrastructure definitions. 
+<!-- [Q](Is all clusters right?) -->
 
 #### Example: A multi-environment pipeline
 
@@ -800,7 +802,8 @@ Steps can be grouped using:
 ### `steps[*].run`
 ---
 
-Defines a run step for the stage. This step runs scripts, builds, deploys code etc. [Q](Add a better description)
+Defines a run step for the stage. This step runs scripts, builds, deploys code etc. 
+<!-- [Q](Add a better description) -->
 
 #### `steps[*].run.shell`
 ---
@@ -839,9 +842,10 @@ Script runs command line scripts using the operating system's shell. Each script
 #### `steps[*].run.container`
 ---
 
-The run step will run inside the container defined here. If you do not set a container, the step will run directly on the host unless the target runtime in kubernetes, in which case the container is required. [Q]
+The run step will run inside the container defined here. If you do not set a container, the step will run directly on the host unless the target runtime in kubernetes, in which case the container is required. 
+<!-- [Q] -->
 
-[Q](Add container long configuration)
+<!-- [Q](Add container long configuration) -->
 
 ##### Example: Using `run.container`
 
@@ -983,9 +987,9 @@ Provides unit test matching logic in glob format.
 #### `steps[*].run-test.container`
 ---
 
-The run step will run inside the container defined here. If you do not set a container, the step will run directly on the host unless the target runtime in kubernetes, in which case the container is required. [Q]
+The run step will run inside the container defined here. If you do not set a container, the step will run directly on the host unless the target runtime in kubernetes, in which case the container is required. 
 
-[Q](Add container long configuration)
+<!-- [Q](Add container long configuration) -->
 
 #### `steps[*].run-test.env`
 ---
@@ -1107,7 +1111,9 @@ These steps start npm in the background and then proceeds to run a test suite wi
 ### `steps[*].barrier`
 ---
 
-Defines a step barrier. [Q](Why have a step barrier??)
+Defines a step barrier. 
+
+<!-- [Q](Why have a step barrier??) -->
 
 Options:
 - `name`: Name of the barrier
@@ -1216,19 +1222,19 @@ Boolean. Enables trace logging.
 
 Defines the clone reference. For more information, go to [clone ref](./pipeline-syntax.md#cloneref)
 
-[Q](Is this a duplicate of the pipeline clone config?)
+<!-- [Q](Is this a duplicate of the pipeline clone config?) -->
 
 ### `steps[*].group`
 ---
 
 Defines a step group. A step group is a logical construction that groups a set of steps together.
-[Q](Why is this useful)
+<!-- [Q](Why is this useful) -->
 
 #### `steps[*].group.parallel`
 ---
 
 Defines the maximum number of steps that can run in parallel. If unset, zero, or set to false the steps run sequentially.
-[Q](DEPRECATED)
+<!-- [Q](DEPRECATED) -->
 
 #### `steps[*].group.steps`
 ---
