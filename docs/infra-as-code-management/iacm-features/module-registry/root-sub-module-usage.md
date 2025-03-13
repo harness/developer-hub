@@ -15,7 +15,7 @@ This document provides an overview of the requirements and best practices for us
 To authenticate with the Harness Module Registry when working locally, set the `TF_TOKEN_app_harness_io` environment variable with your personal access token (PAT) before running [the `init` command](/docs/infra-as-code-management/pipelines/terraform-plugins#initialize). This allows Terraform to access private modules securely.
 
 ```bash
-export TF_TOKEN_app_harness_io=your_pat_token
+export TF_TOKEN_harness_io=your_pat_token
 tofu init
 ```
 
