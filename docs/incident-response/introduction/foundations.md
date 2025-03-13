@@ -1,11 +1,11 @@
 ---
-title: Introduction to Incident Response
-sidebar_position: 1
-sidebar_label: Introduction to Harness Incident Response
-description: Introduction
+title: Foundational Incident Management
+sidebar_position: 2
+sidebar_label: Foundational Incident Management
+description: Foundational Incident Management
 ---
 
-# Introduction to Incident Response
+# Foundational Incident Response
 
 Each organization takes a different approach to setting up and configuring their incident resolution processes based on their unique needs, teams, and structure.
 
