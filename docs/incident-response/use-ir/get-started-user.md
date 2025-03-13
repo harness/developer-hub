@@ -1,6 +1,6 @@
 ---
 title: Get Started as a User
-sidebar_position: 3
+sidebar_position: 1
 sidebar_label: Get Started as a User
 description: Learn how to manage and resolve incidents as an incident responder.
 ---
@@ -13,7 +13,7 @@ Harness Incident Response empowers you to **detect, manage, and resolve incident
 
 - **Incident Management:** You’ll be able to **create, update, and track incidents** using the system’s built-in tools, whether through the **web interface** or **Slack integration**. 
 - **Automations:** Run pre-configured **automated actions** to streamline common responses, reducing manual intervention.
-- **AI Assistance:** Take advantage of **AI SRE Agent** for intelligent recommendations and **AI transcription** for capturing important discussions in incident timelines.
+- **AI Assistance:** Take advantage of **AI Incident Response Agent** for intelligent recommendations and **AI transcription** for capturing important discussions in incident timelines.
 - **Collaboration & Communication:** Use **timelines** to track progress, **on-call schedules** to know who’s available, and **Slack commands** to execute tasks directly in chat.
 
 The steps below will guide you through these essential functions.
@@ -28,7 +28,7 @@ Regardless of the setup, you will **manage incidents** by completing the followi
 - [Create an incident.](#)
 - [Update an incident’s severity and status.](#)
 - [Run an automation.](#)
-- [Use the AI SRE Agent.](#)
+- [Use the AI Incident Response Agent.](#)
 - [Use AI transcription.](#)
 - [Use the timelines.](#)
 - [Learn about Slack command options.](#)

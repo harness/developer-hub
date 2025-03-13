@@ -16,3 +16,5 @@ navigation:
   <!-- This is a comment and will not be rendered in the output -->
 
   <!-- ![Alt text](./path-to-image.png) -->
+
+  <!-- [Visit Example](https://example.com){target="_blank"} -->
