@@ -803,8 +803,9 @@ You can copy any of these and use them in later steps in your pipeline.
 
 ![](./static/ecs-deployment-tutorial-51.png)
 
+
 :::note  
-You can now get precise **failure detection** for **ECS Rolling Deployments** with Harness. 
+You can achieve more accurate failure detection for ECS Rolling Deployments in Harness. Harness evaluates both ECS task statuses and service steady-state statuses to determine deployment health.
 
 This feature is currently gated behind the **Feature Flag** `CDS_ECS_MONITOR_TASK_STATUS`. To enable this feature, contact [Harness Support](mailto:support@harness.io).  
 :::
