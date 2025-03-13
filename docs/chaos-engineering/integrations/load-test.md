@@ -49,7 +49,17 @@ A [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/type
 
 	![](./static/load/script-2.png)
 
-9. Click **Apply Changes** to save the changes to Shell Script Configuration. Click **Save** to save the changes to the pipeline. Click **Run** to execute the pipeline. 
+9. Click **Apply Changes** to save the changes to Shell Script Configuration. 
+
+	![](./static/load/apply-changes.png)
+
+10. Click **Save** to save the changes to the pipeline. 
+
+	![](./static/load/save-pipeline.png)
+
+11. Click **Run** to execute the pipeline.
+
+	![](./static/load/run-pipeline.png)
 
 ## Conclusion
 
