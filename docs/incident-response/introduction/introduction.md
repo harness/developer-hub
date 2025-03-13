@@ -15,7 +15,7 @@ Harness Incident Response (IR) is a comprehensive incident management system tha
 ### AI Incident Response Agent
 - AI-driven agent for detecting, analyzing, and responding to incidents.
 - Supports **voice and chat-based analysis** to discover key events, capture them, and then provide summarization.
-- Supports **Probable Root Cause Analysis** leveraging data accessible in the Harness Platform.
+<!-- - Supports **Probable Root Cause Analysis** leveraging data accessible in the Harness Platform. ![Coming Soon](https://img.shields.io/badge/Coming%20Soon-blue?style=flat) -->
 
 ### Alerts
 - Alerts originate from **webhooks** and are referred to as **Integrations**.
@@ -77,7 +77,7 @@ Harness Incident Response (IR) is a comprehensive incident management system tha
   - **Service Modifications** (API changes, new dependencies).
   - **Third-Party Changes** (Datadog alerts, ServiceNow updates).
 
-### On-Call
+### On-Call (Coming Soon)
 - Ensures availability of personnel for incident response.
 - Includes:
   - **Schedules** – Define rotations.
@@ -101,9 +101,9 @@ The **IR Overview Dashboard** provides key incident metrics:
   - Subtitle: **Mean Time to Resolve (MTTR)** with trends.
 - **Recent Alerts** – Count of triggered alerts.
 - **SLO Breaches** – Number of breached SLOs.
-- **On-Call Response Time** – Average response time for escalations.
-- **Deployment Health** – Success vs. rollback rates.
-- **Chaos Experiment Coverage** – % of services with chaos testing.
+<!-- - **On-Call Response Time** – Average response time for escalations.-->
+<!-- - **Deployment Health** – Success vs. rollback rates.-->
+<!-- - **Chaos Experiment Coverage** – % of services with chaos testing.-->
 - **System Uptime** – Percentage uptime of monitored services.
 - **Mean Time Between Failures (MTBF)** – Measures system stability.
 
