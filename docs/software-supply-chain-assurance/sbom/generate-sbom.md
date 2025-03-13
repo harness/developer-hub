@@ -136,7 +136,7 @@ Enabling this feature provides the following capabilities:
 
 
 :::info
-After you run the SBOM Orchestration step, the generated SBOM file is uploaded to the `/harness/sbom/{sbom_<sbom_orchestration_step_execution_id>}` path. You can download the SBOM using [Harness APIs](https://apidocs.harness.io/tag/SBOM#operation/downloadSbomForArtifact).
+After you run the SBOM Orchestration step, the generated SBOM file is uploaded to the `/harness/sbom/{sbom_<sbom_orchestration_step_execution_id>}.json` path. You can also download the SBOM using [Harness APIs](https://apidocs.harness.io/tag/SBOM#operation/downloadSbomForArtifact).
 :::
 
 ## Run the pipeline
