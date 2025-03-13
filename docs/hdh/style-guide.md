@@ -1,7 +1,7 @@
 ---
 title: Style Guide
 description: Use this style guide to contribute to Harness Developer Hub.
-sidebar_position: 1000
+sidebar_position: 10
 ---
 
 This guide is your **primary resource** for Harness documentation style.
@@ -19,6 +19,8 @@ For more advanced technical writing concepts, check out:
 -   Write the Docs/MDN - [How we made MDN discoverable](https://youtu.be/02DYqMD1ihs?feature=shared) (SEO)
 
 -   UX Booth - [Beginner's guide to information architecture](https://uxbooth.com/articles/complete-beginners-guide-to-information-architecture/)
+
+## Language, Tone, and Voice
 
 ### Voice, tone, grammar
 
@@ -82,7 +84,7 @@ Avoid cultural or regional biases, such as references to specific holidays or re
 
 - [Inclusive Documentation](https://developers.google.com/style/inclusive-documentation)
 
-### Information architecture
+## Information architecture
 
 It is important to structure content so that it is discoverable, cohesive, and useful while avoiding over-saturation (content split unnecessarily across multiple pages, too much content on one page, information overload). The appropriate balance can depend on the audience, the product, and the purpose for writing. Information architecture is a skill that is learned over time.
 
@@ -131,6 +133,8 @@ Consider the following:
 -   Details blocks (collapsible accordions) can be used for supplemental information or to collapse long portions of complex pages. Use them carefully so that crucial information isn't hidden. Also consider that search engines crawl the details content, but ctrl+F only searches within opened (expanded) details containers.
 
 -   Avoid setting details containers to default "open" unless you have a legitimate reason to do so. "Details" are, by their name, meant to contain extra details. If they contain required/critical information, that information shouldn't be in a "details".
+
+## Docusaurus/Markdown Feature Usage
 
 ### Admonitions (Notes)
 
@@ -317,27 +321,9 @@ For links to other markdown files, it is best to include the entire path from th
 
 This is because of the way the React Router handles link pathing on the live site. Including a partial relative path (such as ../some-folder/some-topic ) can cause links to break unexpectedly and with no build errors or flagging by the dead link checker. If you include a partial relative path, you must include .md for the most accurate rendering -however, some parts of HDH don't play well with .md (such as KB or release notes), therefore, it's best to get in the habit of using the entire path.
 
-### Early access (beta) features
+## Media
 
-How to document early access features:
-
--   Add an "early access feature" release note for the initial release and any subsequent updates/changes while still in beta.
-
--   Add the FF to your module's early access feature list (on your module's "What's supported" page).
-
--   If there is additional documentation for the FF, include the standard FF note. For example, take a look at [this feature note](/docs/continuous-integration/use-ci/run-tests/viewing-tests#test-report-dashboard) from CI.
-
--   When promoted to GA:
-
-    -   Add a "new features and enhancements" release note about the feature. Treat it as if it were a new feature, and include a statement to the effect of "This feature was previously released in beta under a feature flag. It is now generally available."
-
-    -   Remove the FF note from documentation. Recommended to search the entire workspace/codebase for the FF name to make sure you remove all instances of it. You do not need to remove the FF from historical release notes.
-
-    -   Update your module's early access feature list (remove the promoted feature or update the feature's status).
-
-### Media
-
-#### Screenshots
+### Screenshots
 
 -   Use screenshots sparingly.
 
@@ -353,7 +339,7 @@ How to document early access features:
 
 -   Resize large screenshots BEFORE adding them to the /static folder. HDH uses CSS to flex-resize images. Don't use in-line styling (like "width"/"height") to force-resize images. This can result in images that are overlarge on certain screens (like mobile) or skewed.
 
-#### Diagrams
+### Diagrams
 
 -   Prefer Mermaid for diagrams.
 
@@ -365,19 +351,21 @@ How to document early access features:
 
 -   Lucid chart is a free flowcharting tool. Useful for creating more complex diagrams that are difficult to configure with Mermaid.
 
-#### Videos
+### Videos
 
 This simplified version includes the most important guidelines for a technical writer working on Harness documentation. Feel free to adapt it further to suit your specific needs.
 
 If you're posting to the Harness youtube, please refer to the [Video Guidelines](https://harness.atlassian.net/wiki/spaces/HDH/pages/21474246759) for greater details.
 
-#### Tango
+### Tango
 
 Use tango guides to illustrate simple product walkthroughs or guides. You can import them in using the `embed` link into the `<DocVideo>` plugin mentioned above. EX:
 
 `<DocVideo src="https://app.tango.us/app/embed/7892f010-0f5b-4acd-8ad3-9de5426ba386" title="Build and Push Docker Images with Harness Artifact Registry" />`
 
 If you are a Harness employee, reach out to the #docs-council channel to receive a license for Tango. 
+
+## Harness Specific Style Elements
 
 ### UI elements and code
 
@@ -398,3 +386,21 @@ Use code notation (`some code`) for in-line code.
 Use code blocks (``` ```) for multiple lines of code or long strings of code.
 
 Don't use code in headings or titles.
+
+### Early access (beta) features
+
+How to document early access features:
+
+-   Add an "early access feature" release note for the initial release and any subsequent updates/changes while still in beta.
+
+-   Add the FF to your module's early access feature list (on your module's "What's supported" page).
+
+-   If there is additional documentation for the FF, include the standard FF note. For example, take a look at [this feature note](/docs/continuous-integration/use-ci/run-tests/viewing-tests#test-report-dashboard) from CI.
+
+-   When promoted to GA:
+
+    -   Add a "new features and enhancements" release note about the feature. Treat it as if it were a new feature, and include a statement to the effect of "This feature was previously released in beta under a feature flag. It is now generally available."
+
+    -   Remove the FF note from documentation. Recommended to search the entire workspace/codebase for the FF name to make sure you remove all instances of it. You do not need to remove the FF from historical release notes.
+
+    -   Update your module's early access feature list (remove the promoted feature or update the feature's status).
