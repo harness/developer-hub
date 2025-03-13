@@ -69,7 +69,7 @@ You can use the following artifact providers to triggers pipelines:
     :::warning
     **Google Container Registry Deprecation Notice 📢**
 
-    Google Container Registry (GCR) is deprecated and scheduled to shut down on **May 18, 2025**. It is recommended to migrate to Google Artifact Registry (GAR). For migration guidance, refer to [Google's official transition documentation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr).
+    Google Container Registry (GCR) is deprecated and scheduled to shut down on **March 18, 2025**. It is recommended to migrate to Google Artifact Registry (GAR). For migration guidance, refer to [Google's official transition documentation](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr).
 
     For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
     :::
