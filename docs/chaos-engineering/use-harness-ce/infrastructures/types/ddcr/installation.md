@@ -13,7 +13,9 @@ This topic describes how you can install Harness Delegate and enable chaos on it
 - [Create an Environment](/docs/chaos-engineering/getting-started/saas/#step-3-create-an-environment)
 
 ## Interactive Demo
-Navigate through the demo below to see how to create an environment, a new infrastructure, a new connector and a Delegate. If you have created a connector and a Harness Delegate earlier, you can find the same in the list that is displayed while selecting the connector and Delegate. Select it instead of creating a new one.
+Navigate through the demo below to see how to create an environment, a new infrastructure, a new connector and a Delegate. 
+
+If you have created a connector and a Harness Delegate earlier, you can find their names in the list that is displayed while selecting the connector and Delegate, respectively. Select it instead of creating a new one.
 
 <iframe 
   src="https://app.tango.us/app/embed/9c5307d6-ec41-4706-bacc-6dfdd84cde49"
@@ -26,6 +28,7 @@ Navigate through the demo below to see how to create an environment, a new infra
   webkitallowfullscreen="webkitallowfullscreen" 
   mozallowfullscreen="mozallowfullscreen" 
   allowfullscreen="allowfullscreen"></iframe>
+
 
 ## Step-by-Step Installation
 
@@ -48,3 +51,8 @@ Navigate through the demo below to see how to create an environment, a new infra
 - To configure mTLS with DDCR and Discovery Agent, go to [mTLS Support](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/mtls-support).
 - To configure mTLS with DDCR and and Discovery Agent proxy settings, go to [proxy Support](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support).
 :::
+
+## Next Steps
+
+- [Deploy Delegate on a Cluster](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/dedicated-delegate)
+- [Use mTLS with Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/mtls-support)
