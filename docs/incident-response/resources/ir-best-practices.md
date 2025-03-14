@@ -1,8 +1,7 @@
 ---
-title: Foundational Incident Management
-sidebar_position: 2
-sidebar_label: Foundational Incident Management
-description: Foundational Incident Management
+title: Incident Management Best Practices
+sidebar_label: Best Practices
+description: Incident Management Best Practices
 ---
 
 # Foundational Incident Response
