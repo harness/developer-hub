@@ -233,14 +233,36 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
 :::
 
 :::danger Important
-    - For customers using ArgoCD to upgrade the Helm chart from 0.26 to future versions, use:  
-      ```yaml
-      platform:
-        bootstrap:
-          database:
-            timescaledb:
-              archive_minio_secret: false
-      ```
+  
+  For customers using ArgoCD and upgrading to version 0.26.x for the first time, ensure that:
+      - The required flag is enabled and set `timescale-backup-minio` secret to be ignored by ArgoCD, similar to other secrets.
+      - For subsequent upgrades from 0.26.x to any other version, disable the flag to prevent ArgoCD from overwriting the secret, which could lead to authentication issues. 
+
+    ### Upgrade Scenarios:
+      
+      1. First-time upgrade to 0.26.x:
+          - Set `archive_minio_secret: true`
+          - Configure ArgoCD to ignore the `timescale-backup-minio` secret. This ensures proper secret creation
+
+            ```yaml
+              platform:
+                bootstrap:
+                  database:
+                    timescaledb:
+                      archive_minio_secret: true
+            ```
+
+      2.  Upgrading from 0.26.x to newer versions:
+          - Set `archive_minio_secret: false`
+          - Prevents ArgoCD from overwriting the existing secret
+  
+            ```yaml
+              platform:
+                bootstrap:
+                  database:
+                    timescaledb:
+                      archive_minio_secret: false
+            ```
 :::  
 
 
@@ -289,7 +311,7 @@ gsutil -m cp \
 ### Fixed issues
 
 #### Continuous Delivery
-- Fixed an issue where the GitOps resource actions are not disabled on UI for users without sync access (**CDS-107535, ZD-79513**)]
+- Fixed an issue where the GitOps resource actions are not disabled on UI for users without sync access (**CDS-107535, ZD-79513**)
 
 #### Cloud Cost Management
 - New Dimensions in AWS and Unified View in Cloud Cost Dashboards: We have added the following new dimensions to enhance cost visibility in AWS and the Unified View (**CCM-21714**):
@@ -536,15 +558,37 @@ s available in the account to execute the task` even when appropriate delegate s
           timescaledb:
             archive_enabled: false
     ```  
-    :::warning Important
-      - For customers using ArgoCD to upgrade the Helm chart from 0.26 to future versions, use:  
-        ```yaml
-        platform:
-          bootstrap:
-            database:
-              timescaledb:
-                archive_minio_secret: false
-        ```
+:::warning Important
+
+  For customers using ArgoCD and upgrading to version 0.26.x for the first time, ensure that:
+      - The required flag is enabled and set `timescale-backup-minio` secret to be ignored by ArgoCD, similar to other secrets.
+      - For subsequent upgrades from 0.26.x to any other version, disable the flag to prevent ArgoCD from overwriting the secret, which could lead to authentication issues. 
+
+    ### Upgrade Scenarios:
+      
+      1. First-time upgrade to 0.26.x:
+          - Set `archive_minio_secret: true`
+          - Configure ArgoCD to ignore the `timescale-backup-minio` secret. This ensures proper secret creation
+
+            ```yaml
+              platform:
+                bootstrap:
+                  database:
+                    timescaledb:
+                      archive_minio_secret: true
+            ```
+
+      2.  Upgrading from 0.26.x to newer versions:
+          - Set `archive_minio_secret: false`
+          - Prevents ArgoCD from overwriting the existing secret
+  
+            ```yaml
+              platform:
+                bootstrap:
+                  database:
+                    timescaledb:
+                      archive_minio_secret: false
+            ```
     :::  
   [PL-58114]  
 - The disconnected delegates list in the selection log now only shows eligible but disconnected delegates, filtering out non-eligible ones. [PL-56301]  
