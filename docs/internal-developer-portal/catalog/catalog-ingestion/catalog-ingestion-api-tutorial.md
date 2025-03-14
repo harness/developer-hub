@@ -29,9 +29,8 @@ In this tutorial we will be using the catalog metadata ingestion APIs to add add
 
 ```cURL
 curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/entity/' \
---header 'Harness-Account: ACCOUNT_ID' \
 --header 'Content-Type: application/json' \
---header 'x-api-key: X-API-KEY' \
+--header 'x-api-key: <HARNESS_TOKEN>' \
 --data '{
     "entity_ref": "warehouse",
     "property": "metadata.codeCoverageScore",
@@ -89,7 +88,6 @@ pipeline:
                       # Define the API endpoint and headers
                       url = 'https://app.harness.io/gateway/v1/catalog/custom-properties/entity'
                       headers = {
-                          'Harness-Account': '<+account.identifier>',
                           'Content-Type': 'application/json',
                           'x-api-key': '<+pipeline.variables.apikey>'  # Replace with your actual API key
                       }

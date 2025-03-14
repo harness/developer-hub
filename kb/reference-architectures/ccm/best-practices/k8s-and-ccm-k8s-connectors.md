@@ -9,7 +9,11 @@ The process below defines how to provision Harness connectors to get K8s costs i
 
 ## Permissions
 
-You will need access to create CCM connectors in Harness.
+You will need access to create CCM connectors in Harness. When running the Terraform code, two variables need to be defined:
+
+`HARNESS_ACCOUNT_ID` = (Your Harness Account ID)
+
+`HARNESS_PLATFORM_API_KEY` = Created via a [service account](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-service-account/) with connector and CCM admin permissions across all resources.
 
 ## Setup Providers
 

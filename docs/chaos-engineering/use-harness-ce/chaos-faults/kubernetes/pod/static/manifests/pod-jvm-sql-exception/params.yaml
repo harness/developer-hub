@@ -22,10 +22,10 @@ spec:
             - name: SQL_DATA_ACCESS_FRAMEWORK
               value: "MYSQL8"
             # name of the sql exception class
-            - name: SQL_EXCEPTION_CLASS
-              value: "com.mysql.cj.exceptions.CJException"
+            - name: EXCEPTION_CLASS
+              value: "IllegalArgumentException"
             # provide the exception message
-            - name: SQL_EXCEPTION_MESSAGE
+            - name: EXCEPTION_MESSAGE
               value: "CHAOS BOOM!"
             # provide the transaction percentage
             - name: TRANSACTION_PERCENTAGE

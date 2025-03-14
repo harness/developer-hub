@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-12-03T22:00 
+date: 2025-02-25T22:00 
 sidebar_position: 4
 ---
 
@@ -86,6 +86,27 @@ Six months after a delegate image is released, the delegate reaches End of Suppo
 For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
+
+## February 2025
+
+### Version 24.08.83706 <!--  Feb 26, 2025 -->
+
+#### Hotfix
+
+- Added support for downloading artifact with special characters in the URl for Nexus. [CDS-102807]
+  
+
+### Version 24.12.84710 <!-- February 24, 2025 -->
+
+#### Hotfix
+
+- Resolved an issue where WinRM passwords containing special characters were not working with WinRM Kerberos authentication. [CDS-107127]
+
+### Version 25.02.85300 <!-- February 24, 2025 -->
+
+#### Fixed Issues
+
+- Added a new API to send Git details in requests, ensuring services are fetched from the correct branch. [CDS-106242]
 
 ## January 2025
 

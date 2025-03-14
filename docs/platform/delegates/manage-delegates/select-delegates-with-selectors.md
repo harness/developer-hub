@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness runs tasks by using Harness Delegate to connect your environment to resources. Harness selects the best delegate based on previous use or round-robin selection. For more information, go to [How Harness Manager picks delegates](/docs/platform/delegates/delegate-concepts/delegate-overview.md#how-harness-manager-picks-delegates).
+Harness runs tasks by using Harness Delegate to connect your environment to resources. Harness selects the best delegate based on the current number of tasks getting executed on delegates, delegate executing the least number of tasks will be selected first.  For more information, go to [How Harness Manager picks delegates](/docs/platform/delegates/delegate-concepts/delegate-overview.md#how-harness-manager-picks-delegates).
 
 In some cases, you might want Harness to select specific delegates. In these cases, you can use the **Delegate Selector** settings in pipelines, connectors, and so on, with corresponding delegate tags.
 

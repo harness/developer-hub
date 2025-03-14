@@ -1,7 +1,7 @@
 ---
 title: Harness Chaos Engineering Features
 sidebar_label: Explore Features
-sidebar_position: 6
+sidebar_position: 8
 description: Explore all the capabilities of Harness Chaos Engineering
 ---
 
@@ -47,7 +47,7 @@ Instead of creating a database with the services, you can automatically discover
 
 Below is the control flow to a discovered service.
 
-![](../use-harness-ce/service-discovery/static/control-flow-1.png)
+![control flow](../../platform/service-discovery/static/control-flow-1.png)
 
 For more information on how to create a  discovery agent, go to [Service Discovery](/docs/chaos-engineering/use-harness-ce/service-discovery).
 
@@ -69,7 +69,7 @@ For more information on infrastructure logs, go to [Infrastructure Logs](/docs/c
 
 ### Application Map
 
-It is a resource on the Harness Platform (also known as the control plane) that binds multiple interacting [discovered services](/docs/chaos-engineering/use-harness-ce/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
+It is a resource on the Harness Platform (also known as the control plane) that binds multiple interacting [discovered services](/docs/platform/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
 
 Application maps help:
 - Test and monitor a group of services.
@@ -186,7 +186,7 @@ It describes how resilient an application is to different kinds of failures. For
 ### Prometheus Chaos Metrics
 
 It provides comprehensive visibility into the effects of chaos experiments, enabling real-time monitoring and analysis about how the system behaved prior to, during, and after the chaos experiment was run.
-For more information, go to [Prometheus Metrics in your first experiment](/docs/chaos-engineering/getting-started/saas/first-experiment#step-7-evaluate-the-experiment-run).
+For more information, go to [Prometheus Metrics in your first experiment](/docs/chaos-engineering/getting-started/saas/#step-7-evaluate-the-experiment-run).
 
 ## Resilience Insights
 

@@ -31,11 +31,6 @@ export const FmeData: Horizon = {
         description: "See accumulation of sample population over time. Identify unexpected assignment or traffic level changes.",
       },
       {
-        tag: [{ value: "SDK" }],
-        title: "Elixir SDK",
-        description: "First of new SDKs to be added after joining Harness.",
-      },
-      {
         tag: [{ value: "Better Together" }],
         title: "Authn and authz on Harness platform",
         description: "Login, API scoping, and RBAC enhancements delivered by migration.",
@@ -62,12 +57,6 @@ export const FmeData: Horizon = {
         title: "Rule-based segments",
         description:
           "Assign feature availability for user groups based on different conditions, with all the power of FME targeting.",
-      },
-      {        
-        tag: [{value: "AI Agents"}],
-        title: "Gemini Code Assist",
-        description:
-          "View feature flags and definitions directly within your IDE through an integrated agent in the code assist interface.",
       },
       {
         tag: [{ value: "SDK" }],
@@ -104,6 +93,11 @@ export const FmeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "SDK" }],
+        title: "Elixir SDK",
+        description: "First of new SDKs to be added after joining Harness.",
+      },
       {        
         tag: [{value: "AI Agents"}],
         title: "AI results interpretation conversation",

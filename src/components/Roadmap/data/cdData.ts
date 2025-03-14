@@ -308,9 +308,9 @@ export const CdData: Horizon = {
         description: "Harness can help users visualize their serverless application endpoints and their failures, success, and metrics.",
       },
       {
-        tag: [{ value: "AIDA" }],
-        title: "AIDA driven Deployments",
-        description: "Using Harness AIDA, Harness will help generate and deploy pipelines.",
+        tag: [{ value: "Harness AI" }],
+        title: "Harness AI driven Deployments",
+        description: "Using Harness AI, Harness will help generate and deploy pipelines.",
       },
       {
         tag: [{value: "Continuous Verification"}],
@@ -336,31 +336,31 @@ export const CdData: Horizon = {
         tag: [{value: "Deployment"}],
         title: "Azure Functions",
         description: "Users can deploy Azure Functions.",
+        link:"https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-function-tutorial/"
       },
       {
         tag: [{value: "Deployment"}],
         title: "Google Cloud Run Support",
         description: "Users can deploy to Google Cloud Run.",
-      },
-      {
-        tag: [{value: "OPA"}],
-        title: "Service, Environment, Overrides w/ OPA",
-        description: "Users can configure Service, Environment, and Overrides with OPA policies.",
+        link:"https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-cloud-run/"
       },
       {
         tag: [{value: "Pipeline"}],
         title: "Flexible Templates Phase II",
         description: "Users can reference dynamically inserted stages/steps in pipeline templates",
+        link:"https://developer.harness.io/docs/platform/templates/inject-step-stage-templates/"
       },
       {
         tag: [{value: "OPA"}],
         title: "Service, Environment, Overrides w/ OPA",
-        description: "Users can create and enforce OPA policies for CD entities such as Services, Environments, Overrides, and Infrastructure definitionsn",
+        description: "Users can create and enforce OPA policies for CD entities such as Services, Environments, Overrides, and Infrastructure definitions",
+        link:"https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/opa-policies-for-cd-entities/"
       },
       {
         tag: [{value: "GitOps"}],
         title: "Improved Application Filtering",
         description: "Users can filter applications using live search functionality, and wildcard search is also supported for application labels. ",
+        link:"https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/manage-gitops-applications/"
       }
     ]
   }

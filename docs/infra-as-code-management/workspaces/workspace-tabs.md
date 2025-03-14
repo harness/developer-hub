@@ -1,5 +1,5 @@
 ---
-title: Workspace settings
+title: Workspace Settings
 description: Learn about workspace settings and the information in your workspace tabs. 
 sidebar_position: 30
 ---
@@ -65,12 +65,7 @@ variable "db_password" {
 </Tabs>
 ---
 
-### Activity History (Pending Release)
-
-:::warning
-The **Activity History** tab is pending release and will be available soon!
-:::
-
+### Activity History
 The Activity History tab logs actions performed within the workspace, such as 'plan' and 'apply' steps executed via pipelines.
 - **Usage:** Use this tab to track the success or failure of specific actions, aiding in troubleshooting and auditing.
 ---

@@ -184,6 +184,8 @@ kubectl patch configmap ng-auth-ui -n $namespace --type merge -p '{"data":{"EXPE
 kubectl rollout restart -n $namespace deployment -l "app.kubernetes.io/name=ng-auth-ui"
 ```
 
+The `app.harness.io` value in the command, `kubectl patch configmap ng-auth-ui -n $namespace --type merge -p '{"data":{"EXPECTED_HOSTNAME":"app.harness.io"}}'` should NOT be replaced with your created subdomain value, it should be set to "app.harness.io" itself.
+
 ##### Example command
 
 The example command below executes the `configure-vanity-url.sh` script file for the `mynamespace` namespace, `abc123` account ID, and `http://smp.harnessurl.com` subdomain URL.

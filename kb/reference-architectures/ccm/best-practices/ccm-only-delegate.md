@@ -1,9 +1,11 @@
 ---
-title: CCM Only Delegate
-description: A Helm chart with parameters that ensure the Delegate is only used for CCM.
+title: IaC for a CCM Only Delegate
+description: IaC code samples for a Harness delegate that is tasked only for CCM related activities.
 ---
 
-# Overview
+# Provision a CCM Only Delegate via a Helm chart
+
+## Overview
 Because Delegates are a Harness platform offering, they can potentially be used for other modules other than CCM. In this example, we are setting specific parameters to ensure that the service account of the Delegate is read only and preventing the running of scripts:
 
 ```
@@ -11,7 +13,7 @@ Because Delegates are a Harness platform offering, they can potentially be used 
 --set-json custom_envs='[{"name":"BLOCK_SHELL_TASK","value":"true"}]'
 ```
 
-# Resource Requirements
+## Resource Requirements
 Gathering fine-grain metrics in the cluster is memory intensive.  In an effort to ensure we don't run out of memory and terminate the pod, the following sizing guidelines are recommended:
 
 | # Nodes in the Cluster | CPU (Cores) | MEM (Mi)  |
@@ -58,3 +60,20 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
   --set cpu=1 \
   --set memory=3814
   ```
+
+
+# Use Terraform to provision Delegate tokens
+
+## Overview
+Managing delegate tokens at scale isn't ideal inside the Harness UI.  You can instead manage these with Terraform using the [Harness provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_delegate_token).  All CCM functionality is at the account level so ensure you only set the `account_id` parameter and do not set an organization or project.
+
+You can then leverage the token created to provision your delegate with Terraform: `harness_platform_delegatetoken.this.value`.  You can use the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs) to directly reference the delegate token within your [delegate deployment values](https://registry.terraform.io/modules/harness/kubernetes-delegate/harness/latest).
+
+## Terraform Example
+```
+# Create delegate token for account level 
+resource "harness_platform_delegatetoken" "test" {  
+  name        = "test token"
+  account_id  = "account_id"
+}
+```

@@ -19,6 +19,12 @@ While **Run Tests** step remains backwards compatible, Harness recommends using 
 
 ## Enable TI for Python
 
+:::note
+
+* To use TI for Python, the image for the step must have Python 3 installed and accessible. Additionally, Virtual Environments for Python (`venv`) are not supported by TI.
+* Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
+:::
+
 You can enable TI for Python in three steps:
 
 <!-- no toc -->
@@ -30,11 +36,7 @@ You can enable TI for Python in three steps:
 
 Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
 
-:::info
 
-To use TI for Python, your codebase must be Python 3.
-
-:::
 
 In the Run Tests step, you must select **Run only selected tests** (`runOnlySelectedTests: true`). For information about each setting, go to [Run Tests step settings](#run-tests-step-settings).
 

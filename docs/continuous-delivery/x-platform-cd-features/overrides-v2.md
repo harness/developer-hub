@@ -204,7 +204,7 @@ You can store overrides remotely in a repository. The steps below explains how t
 5. In **Repository**, select your repository. If your repository isn't listed, enter its name. 
 
    Create the repository in Github before entering it in **Repository**. Harness does not create the repository for you.
-6. Select **Git Branch**. Currently only default branch of the repository is supported for overrides.
+6. Select **Git Branch**.
 7. Harness Git Experience auto-populates the **YAML Path** based on the scope where overrides are configured, for example, ``{scope}/overrides/harnessdevenv.yaml``.
 9. Select **Save**.
 
