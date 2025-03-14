@@ -287,7 +287,7 @@ gsutil -m cp \
 
 ### New Features and Enhancements
 
-## Harness Platform 
+#### Harness Platform 
 
 - The JTI claim is now optional in the User OIDC Authentication server response. Without it, replay attacks cannot be prevented. Customers should ensure the JTI claim is included if replay attack protection is needed.[PL-61135]
 
