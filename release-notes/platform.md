@@ -49,7 +49,7 @@ If your organization restricts access to Google Artifact Registry (GAR), conside
 * Whitelist GAR to allow seamless access to Harness images.
 * Configure Harness to use authenticated access instead of anonymous pulls from Docker Hub.
 * Set up a registry mirror to pull Harness images instead of relying on Docker Hub.
-* Continue using Docker Hub if the restrictions do not affect you. Contact Harness Support to configure Docker Hub as the default registry.
+* Continue using Docker Hub if the restrictions do not affect you. 
 
 ::: 
 
