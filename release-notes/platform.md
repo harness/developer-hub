@@ -40,6 +40,9 @@ The `harnessImage` connector configuration is used for pulling Harness images as
 - [Harness IDP images](https://developer.harness.io/docs/internal-developer-portal/flows/harness-pipeline/#specify-the-harness-idp-images-used-in-your-pipelines)
 
 [Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
+
+Additionally, to ensure uninterrupted availability, **[Harness delegate images](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types), used in delegate installations, are now available in Google Artifact Registry (GAR)**. We recommend using GAR to avoid installation failures. 
+
 ::: 
 
 :::info important
