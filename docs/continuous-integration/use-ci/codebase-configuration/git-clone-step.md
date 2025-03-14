@@ -14,7 +14,7 @@ This topic describes how to use the **Git Clone** step included in Harness Conti
 For example, assume the default codebase is a repo that contains app code files, and the Dockerfile necessary to build the app image is in a different repo. You can use a **Git Clone** or **Run** step to clone the second repo into the workspace. Then, you can use a **Build and Push** step to build and push an image using files from both repos.
 
 :::tip
-In VM runners and cloud infrastructure, the Git clone step runs in a container by default. Enable `CI_GIT_CLONE_CONTAINERLESS` FF to run it on the host.
+In VM runners and cloud infrastructure, the step to clone your codebase runs in a container by default. Enable the `CI_GIT_CLONE_CONTAINERLESS` feature flag to run it on the host, which is recommended for faster cloning on Windows by eliminating image download time.
 :::
 
 Add a **Git Clone** step to clone a second repo into the pipeline's workspace.
