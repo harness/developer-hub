@@ -290,6 +290,6 @@ Finally create the Kubernetes infrastructure using the Kubernetes connectors cre
 
 ### Step 10. Edit Infrastructure 
 
-Edit the infrastructure you created in step 9 to provide the details of dedicated namespace that was created earlier. This is the namespaace where the chaos runner will be launched along with the Service Account to ensure that experiments run with relevant permissions.
+Edit the infrastructure you created in [step 9](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/dedicated-delegate#step-9-create-kubernetes-infrastructure) to provide the details of dedicated namespace that was created earlier. This is the namespace where the chaos runner will be launched along with the Service Account to ensure that experiments run with relevant permissions.
 
     ![](./static/delegate/edit-infra-sa.png)

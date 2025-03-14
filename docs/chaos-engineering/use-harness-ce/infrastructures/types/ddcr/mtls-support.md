@@ -1,6 +1,6 @@
 ---
 title: Use mTLS with DDCR and Discovery Agent
-sidebar_position: 30
+sidebar_position: 40
 description: Configure mTLS with with DDCR and Discovery Agent.
 redirect_from:
 - /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/mtls-support
