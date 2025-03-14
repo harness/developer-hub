@@ -1,8 +1,8 @@
 ---
-title: Introduction to Harness Incident Response
+title: Harness Incident Response Overview and Key Concepts
 sidebar_position: 1
-sidebar_label: Introduction to Harness Incident Response
-description: Introduction to Harness Incident Response
+sidebar_label: Overview and Key Concepts
+description: Harness Incident Response Overview and Key Concepts
 ---
 
 # Harness Incident Response (IR) Module
