@@ -41,7 +41,15 @@ The `harnessImage` connector configuration is used for pulling Harness images as
 
 [Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
 
-Additionally, to ensure uninterrupted availability, **[Harness delegate images](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types), used in delegate installations, are now available in Google Artifact Registry (GAR)**. We recommend using GAR to avoid installation failures. 
+Additionally, **starting April 1, 2025, all [Harness delegate images](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types) will be pulled from Google Artifact Registry (GAR)** by default to improve performance, security, and scalability.
+
+GAR Path `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/<IMAGE>:<TAG>`
+
+If your organization restricts access to Google Artifact Registry (GAR), consider one of the following options to avoid disruptions:
+* Whitelist GAR to allow seamless access to Harness images.
+* Configure Harness to use authenticated access instead of anonymous pulls from Docker Hub.
+* Set up a registry mirror to pull Harness images instead of relying on Docker Hub.
+* Continue using Docker Hub if the restrictions do not affect you. Contact Harness Support to configure Docker Hub as the default registry.
 
 ::: 
 
