@@ -836,7 +836,11 @@ You can copy any of these and use them in later steps in your pipeline.
 :::note  
 You can achieve more accurate failure detection for ECS Rolling Deployments in Harness. Harness evaluates both ECS task statuses and service steady-state statuses to determine deployment health.
 
-This feature is currently gated behind the **Feature Flag** `CDS_ECS_MONITOR_TASK_STATUS`. To enable this feature, contact [Harness Support](mailto:support@harness.io).  
+<div align="center">
+  <DocImage path={require('./static/ecs-steady-state-logs.png')} width="100%" height="100%" title="Click to view full size image" />
+</div>
+
+Currently, this feature is behind the feature flag `CDS_ECS_MONITOR_TASK_STATUS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 ## Review
