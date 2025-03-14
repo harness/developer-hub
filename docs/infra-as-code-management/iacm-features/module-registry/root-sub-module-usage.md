@@ -12,10 +12,11 @@ import TabItem from '@theme/TabItem';
 This document provides an overview of the requirements and best practices for using root modules and nested submodules in your infrastructure-as-code setup. It explains the structure and configuration needed for single-module repositories and how to properly reference submodules within your code. Understanding these concepts will help ensure consistency and maintainability in your module usage.
 
 ## Authentication for Local Usage
-To authenticate with the Harness Module Registry when working locally, set the `TF_TOKEN_harness_io` environment variable with your personal access token (PAT) before running [the `init` command](/docs/infra-as-code-management/pipelines/terraform-plugins#initialize). This allows Terraform to access private modules securely.
+To authenticate with the Harness Module Registry when working locally, set the `TF_TOKEN_<subdomain>_harness_io` environment variable with your personal access token (PAT) before running [the `init` command](/docs/infra-as-code-management/pipelines/terraform-plugins#initialize). This allows Terraform to access private modules securely. For example, `TF_TOKEN_app_harness_io`.
+
 
 ```bash
-export TF_TOKEN_harness_io=your_pat_token
+export TF_TOKEN_<subdomain>_harness_io=your_pat_token
 tofu init
 ```
 
