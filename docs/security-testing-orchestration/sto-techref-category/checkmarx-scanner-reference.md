@@ -12,71 +12,27 @@ sidebar_position: 100
 <br/>
 <br/>
 
-With Harness STO, you can do the following:
-- Run local SAST scans using the [CxConsole CLI](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) (orchestration mode).
-- Extract results from a [Checkmarx SAST](https://checkmarx.com/resource/documents/en/34965-44074-checkmarx-sast.html) server (extraction mode).
-- [Ingest results](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data) from any Checkmarx scanner that can publish to SARIF.
+The Checkmarx step in Harness STO enables you to scan your code for security vulnerabilities, you can perform Checkmarx **CxSAST**, **CxSCA**, and **CxOSA** scanning in [Orchestration](#scan), [Ingestion](#scan) and [Extraction](#scan) modes of STO. This document will guide you through understanding the fields, configuring them, and providing any necessary information for setting up the step.
 
-## Important notes for running Checkmarx scans in STO
-
-### Supported Checkmarx workflows
-
-- Harness STO supports the following:
-
-  - Orchestration mode — The Checkmarx step runs SAST scans using the [CxConsole CLI](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html).
-
-  - Extraction mode  — The Checkmarx step can extract and ingest scan results for Checkmarx SAST (CxSAST). 
-
-  - Ingestion mode — The Checkmarx step can ingest results from any Checkmarx scanner that can publish results in [SARIF format](https://docs.oasis-open.org/sarif/sarif/v2.0/sarif-v2.0.html). 
-
-    - A common and very flexible workflow is to run your Checkmarx scan using a [GitHub Action or Drone Plugin step](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/run-scans-using-github-actions) and then ingest your scan results using a Checkmarx step.  
-
-    - For Checkmarx SAST (CxSAST), Checkmarx SCA (CxSCA), and Checkmarx Flow (CxFlow) scans, you can use a [Checkmarx CxFlow Github Action](https://github.com/checkmarx-ts/checkmarx-cxflow-github-action).
-
-    - For Checkmarx One scans, you can use a [Checkmark AST Github Action](https://github.com/Checkmarx/ast-github-action). 
-
-    - As part of the setup process, you need to verify your login information for the Checkmarx product that you want to use, and then specify this information in the GitHub Action or Drone Plugin step. 
-
-    - Review the documentation for the [Checkmarx CxFlow](https://github.com/checkmarx-ts/checkmarx-cxflow-github-action) or [Checkmark One](https://github.com/Checkmarx/ast-github-action) action thoroughly and verify that you’ve configured it correctly in Harness.
-
-    - For a general description and example of an end-to-end ingestion pipeline, go to [Run an ingestion scan in an STO Pipeline](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline).
-
-    - If you want to generate multiple results files in one scan, add a separate Checkmarx step to ingest each results file. 
-
-### Root access requirements 
+### Root access requirements
 
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
 
+## Checkmarx step settings
 
-### For more information
-
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-
-<StoMoreInfo />
-
-## Checkmarx step settings for STO scans
-
-The recommended workflow is to add a Checkmarx step to a Security or Build stage and then configure it as described below. 
-
+The recommended workflow is to add a Checkmarx step to a **Security** or **Build** stage and then configure it as described below. 
 
 ### Scan
 
-
 #### Scan Mode
 
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
-import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+- **Orchestration mode**: In this mode, the Checkmarx step runs a SAST scan using the [CxConsole CLI](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html), then processes the results by normalizing and deduplicating them.
 
-<!-- StoSettingScanMode / -->
-<StoSettingScanModeOrch />
-<StoSettingScanModeData />
-<StoSettingScanModeIngest />
+- **Ingestion mode**: In this mode, the Checkmarx step reads scan results from a data file, normalizes the data, and removes duplicates. It supports ingestion of results from any Checkmarx scanner that produces output in the [SARIF format](https://docs.oasis-open.org/sarif/sarif/v2.0/sarif-v2.0.html).
+
+- **Extraction mode**: In this mode, the Checkmarx step retrieves scan results from the Checkmarx portal and stores them in STO. This mode is supported only for Checkmarx SAST (CxSAST).
 
 
 #### Scan Configuration
@@ -85,6 +41,9 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 <StoSettingProductConfigName />
 
+- **Default** - Checkmarx Static Application Security Testing
+- **CxSCA** - Checkmarx Software Composition Analysis
+- **CxOSA** - Checkmarx Open Source Analysis
 
 ### Target
 
@@ -139,6 +98,9 @@ import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
 
 <StoSettingAuthDomain />
 
+- For **Default** and **CxOSA** scan configurations, the domain URL must end with the `/cxrestapi` route.
+- For **CxSCA** scan configuration, the domain should be set to `sca.checkmarx.net`.
+
 
 #### Enforce SSL
 
@@ -190,14 +152,15 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 
 #### Team Name
 
-The Checkmarx team name. Use the format `/<`*`server-name`*`>/<`*`team-name`*`>` — for example, `/server1.myorg.org/devOpsEast`.
-
+The Checkmarx team name. Use the format `/<`*`server-name`*`>/<`*`team-name`*`>` — for example, `/server1.myorg.org/devOpsEast`. In some cases, your Checkmarx's Account or Tenet name may be used as the Team Name.
 
 #### Project Name
 
 import StoSettingToolProjectName from './shared/step_palette/tool/project/_name.md';
 
 <StoSettingToolProjectName />
+
+If the specified project does not exist, the step will create a new project using the provided Project Name.
 
 
 ### Log Level
