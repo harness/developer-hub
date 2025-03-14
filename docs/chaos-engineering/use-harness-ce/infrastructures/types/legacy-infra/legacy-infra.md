@@ -10,4 +10,4 @@ There are different types of chaos infrastructure such as:
 - [Legacy Infrastructure (Kubernetes)](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes)
     - OpenShift
 - [Linux](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/linux)
-- Windows
+- [Windows](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/windows)
