@@ -14,6 +14,7 @@ import { IacmData } from "./iacmData";
 import { platformData } from "./platformData";
 import { aidaData } from "./aidaData";
 import { codeData } from "./codeData";
+import { CdeData } from "./cdeData"; 
 
 
 export interface ModuleData {
@@ -133,10 +134,16 @@ const ModuleData: ModuleData[] = [
     horizon: codeData,
   },
   {
-    title: "AI Development Assistant",
+    title: "Harness AI",
     description: "SaaS release status: GA, SMP release status: Not yet planned",
     module: MODULES.aida,
     horizon: aidaData,
+  },
+  {
+    title: "Cloud Development Environments",
+    description: "SaaS release status: GA, SMP release status: On Roadmap",
+    module: MODULES.cde,
+    horizon: CdeData,
   },
 
 ];

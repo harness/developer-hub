@@ -238,6 +238,32 @@ To debug this issue, investigate delegate connectivity in your VM build infrastr
 - [Verify connectivity for GCP VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform#verify-connectivity)
 - [Verify connectivity for Anka macOS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry#verify-connectivity)
 
+### How to establish a VPN connection within a CI pipeline?
+
+One way to establish a secure connection between our platform’s servers and a customer’s on-premises infrastructure is through a Virtual Private Network (VPN). 
+
+:::note
+- The user must publish a public IP address (or have a domain).
+- The VPN connection must be established before any step that relies on VPN traffic for functionality.
+::: 
+
+Here is an example of using an OpenVPN server, but you can apply the same approach to Strongswan, Cisco, or any other VPN server.
+
+#### Steps to configure OpenVPN
+
+1. Download an OpenVPN file, "config.ovpn".
+2. Encode the file to Base64 and save it.
+3. Add the file as a secret.
+
+![Add config file as secret](static/vpndocs-add-file-as-secret.png)
+
+4. Decode the file, save it as a config file, and install OpenVPN.
+![Decode and save config](static/vpndocs-decode-save-config.png) 
+
+5. Run OpenVPN with the new file as a [Background Step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/).
+![Run as background step](static/vpndocs-run-ovpn-background-step.png)    
+ 
+6. Continue with the rest of the pipeline steps. 
 ## Harness Cloud
 
 ### What is Harness Cloud?
@@ -1627,6 +1653,8 @@ To avoid authentication issues, it's recommended to either use a PAT when config
 ### How can user access the secrets as files in a Docker build without writing them to layers?
 The **build and push** steps used to build Docker images have a context field. Users can use the context field in the build and push steps to mount the current directory at `/harness`. By copying your files to a specific directory and then mounting them, you can avoid writing secrets into the Docker image layers.
 
+### Why do Build and Push steps fail with "Error while loading buildkit image: exit status 1" when /var/lib/docker is included in shared paths during DIND execution?
+**Build and Push** steps fail with the error "Error while loading buildkit image: exit status 1" when `/var/lib/docker` is included in the shared paths during Docker-in-Docker (DIND) execution because DIND creates a Docker daemon using this path, and sharing it across steps causes conflicts when multiple build steps try to create and access their own Docker daemons. To resolve this, remove `/var/lib/docker` from the shared paths configuration, which prevents conflicts and allows **Build and Push** steps to execute successfully.
 
 ## Upload artifacts
 
@@ -2191,7 +2219,7 @@ Go to [Cache Intelligence](https://developer.harness.io/docs/continuous-integrat
 
 ### What is the Cache Intelligence cache storage limit?
 
-Harness Cloud provides up to 2GB of [cache storage](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#cache-storage) per account.
+When using Harness Cloud, cache storage limits apply based on your CI plan. For more details on storage limits, visit the [CI subscription page](https://developer.harness.io/docs/continuous-integration/get-started/ci-subscription-mgmt/#storage).
 
 ### What is the cache retention window for Cache Intelligence? Can the cache expire?
 
@@ -2357,7 +2385,7 @@ Replace `LABEL_KEY` with your label's actual key.
 
 ### Why does the parallel execution of build and push steps fail when using Buildx on Kubernetes?
 
-When using Buildx on Kubernetes (enabled by feature flags), running multiple build-and-push steps in parallel can result in failures due to race conditions. This issue arises from how Docker-in-Docker works within Kubernetes pods.
+When using Buildx on Kubernetes, either enabled by feature flags or in the build and push steps when the Docker Layer Caching option is checked, running multiple build-and-push steps in parallel may result in failures due to race conditions. This issue arises from how Docker-in-Docker works within Kubernetes pods.
 
 The failure occurs when either of the following feature flags are enabled:
 

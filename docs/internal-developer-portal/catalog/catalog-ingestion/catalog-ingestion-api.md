@@ -129,7 +129,6 @@ POST /catalog/custom-properties/entity
 
 ```
 X-API-KEY: Harness API Key
-Harness-Account: YOUR ACCOUNT ID
 Content-Type: application/json
 ```
 
@@ -146,9 +145,8 @@ You can find your account ID in any of your Harness URLs, for example: `https://
 ```sh
 curl \
 --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/entity' \
---header 'Harness-Account: ADD_YOUR_ACCOUNT_ID' \
 --header 'Content-Type: application/json' \
---header 'x-api-key: ADD_YOUR_API_KEY' \
+--header 'x-api-key: <HARNESS_TOKEN>' \
 --data '{
     "entity_ref": "boutique-service",
     "property": "metadata.codeCoverageScore",
@@ -234,9 +232,8 @@ metadata:
 ```sh
 curl \
 --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/entity' \
---header 'Harness-Account: ADD_YOUR_ACCOUNT_ID' \
 --header 'Content-Type: application/json' \
---header 'x-api-key: ADD_YOUR_API_KEY' \
+--header 'x-api-key: <HARNESS_TOKEN>' \
 --data '{
   "entity_ref": "boutique-service"
   "properties": [
@@ -345,9 +342,8 @@ metadata:
 
 ```sh
 curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/entity' \
---header 'Harness-Account: ADD_YOUR_ACCOUNT_ID' \
 --header 'Content-Type: application/json' \
---header 'x-api-key: ADD_YOUR_API_KEY' \
+--header 'x-api-key: <HARNESS_TOKEN>' \
 --data '{
   "property": "metadata.releaseVersion",
   "entity_refs": [
@@ -576,9 +572,8 @@ metadata:
 
 ```sh
 curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/entity' \
---header 'Harness-Account: ADD_YOUR_ACCOUNT_ID' \
 --header 'Content-Type: application/json' \
---header 'x-api-key: ADD_YOUR_API_KEY' \
+--header 'x-api-key: <HARNESS_TOKEN>' \
 --data '{
   "entity_ref": "boutique-service",
   "property": "metadata.tags",
@@ -787,9 +782,8 @@ POST https://app.harness.io/gateway/v1/catalog/custom-properties
 
 ```bash
 curl --location --request DELETE 'https://app.harness.io/gateway/v1/catalog/custom-properties/entity' \
---header 'Harness-Account: ADD_YOUR_ACCOUNT_ID' \
 --header 'Content-Type: application/json' \
---header 'x-api-key: ADD_YOUR_API_KEY' \
+--header 'x-api-key: <HARNESS_TOKEN>' \
 --data '{
   "entity_ref": "boutique-service",
   "property": "metadata.teamLead"
@@ -802,9 +796,8 @@ Note that this only works for the custom properties added using the Ingestion AP
 
 ```bash
 curl --location --request DELETE 'https://app.harness.io/gateway/v1/catalog/custom-properties/entity' \
---header 'Harness-Account: ADD_YOUR_ACCOUNT_ID' \
 --header 'Content-Type: application/json' \
---header 'x-api-key: ADD_YOUR_API_KEY' \
+--header 'x-api-key: <HARNESS_TOKEN>' \
 --data '{
   "entity_ref": "boutique-service",
   "properties": ["metadata.teamLead", "metadata.teamOwner"]
@@ -815,9 +808,8 @@ curl --location --request DELETE 'https://app.harness.io/gateway/v1/catalog/cust
 
 ```bash
 curl --location --request DELETE 'https://app.harness.io/gateway/v1/catalog/custom-properties/property' \
---header 'Harness-Account: ADD_YOUR_ACCOUNT_ID' \
 --header 'Content-Type: application/json' \
---header 'x-api-key: ADD_YOUR_API_KEY' \
+--header 'x-api-key: <HARNESS_TOKEN>' \
 --data '{
   "property": "metadata.releaseVersion",
   "entity_refs": ["idp-service", "order-service"]
@@ -828,9 +820,8 @@ curl --location --request DELETE 'https://app.harness.io/gateway/v1/catalog/cust
 
 ```bash
 curl --location --request DELETE 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
---header 'Harness-Account: ADD_YOUR_ACCOUNT_ID' \
 --header 'Content-Type: application/json' \
---header 'x-api-key: ADD_YOUR_API_KEY' \
+--header 'x-api-key: <HARNESS_TOKEN>' \
 --data '{
     "property": "metadata.teamLead",
     "filter": {

@@ -69,6 +69,12 @@
 .ff:focus {
   border-color: var(--mod-ff-200);
 }
+.fme:hover {
+  border-color: var(--mod-fme-200);
+}
+.fme:focus {
+  border-color: var(--mod-fme-200);
+}
 .ccm:hover {
   border-color: var(--mod-ccm-200);
 }
@@ -135,6 +141,12 @@
 }
 .gitness:hover {
   border-color: var(--mod-gitness-200);
+}
+.cde:focus {
+  border-color: var(--mod-cde-200)
+}
+.cde:hover {
+  border-color: vae(--mod-cde-200)
 }
 
 

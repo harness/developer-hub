@@ -98,6 +98,13 @@ import { MODULES } from "@site/src/constants";
             link: "/release-notes/feature-flags",
           },
           {
+            title: "Feature Management & Experimentation release notes",
+            module: MODULES.fme,
+            description:
+              "",
+            link: "/release-notes/feature-management-experimentation",
+          },
+          {
             title: "Infrastructure as Code Management release notes",
             module: MODULES.iacm,
             description:

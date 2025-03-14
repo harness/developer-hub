@@ -1,5 +1,5 @@
 ---
-title: Pull request automation
+title: Pull Request Automation
 description: Learn how to set up a PR pipeline to review infrastructure changes. 
 sidebar_position: 50
 ---

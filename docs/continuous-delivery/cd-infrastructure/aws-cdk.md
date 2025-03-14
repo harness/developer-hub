@@ -14,7 +14,7 @@ This topic provides steps on using Harness to provision a target AWS environment
 
 - You can add AWS CDK provisioning steps to Harness Deploy and Custom stage types.
 - You can perform ad hoc provisioning or provision the target environment for a deployment as part of the deployment stage.
-
+- Currently, OIDC connector is not supported AWS CDK plugin.
 ## Demo Video
 
 <DocVideo src="https://www.loom.com/share/5a118a7ace3e49819c697b7131468990?sid=36ae85f0-0a39-4c5c-ba62-0e1a9d52c4de" />

@@ -335,6 +335,8 @@ Services represent your microservices and other workloads. Each service contains
 
 * `<+service.gitOpsEnabled>`: Resolves to a Boolean value to indicate whether [the GitOps option](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart) is enabled (`true`) or not (`false`).
 
+Harness supports expressions to check if a value is resolved instead of relying on null checks. The expression `<+expression.isResolved(<+pipeline.variables.var1>)>` verifies whether a variable resolves to a non-null value. Similarly, `<+expression.isUnresolved(<+pipeline.variables.var1>)>` can be used to check if a variable remains unresolved. It is recommended to use these expressions instead of `<+<+pipeline.variables.var1> != null>` for more reliable evaluation in pipelines.
+
 #### Custom service-level variables
 
 You can [define custom variables](./add-a-variable.md) in your environment and service definitions, and you can use expressions to reference those custom variables.
@@ -638,6 +640,29 @@ For example, you might have an [On New Artifact Trigger](../triggers/trigger-on-
 You can select who can create and use these triggers within Harness. However, you must use your repository's RBAC to control who can add the artifacts or initiate events that start the Harness trigger.
 
 </details>
+
+### Fetch Original Executions Details when Rollback occurs
+
+Below are the expressions to fetch the original execution details when a rollback occurs, ensuring that the system can accurately reference the execution context from which the rollback is initiated:-
+
+* `<+pipeline.originalExecution.executionId>`
+* `<+pipeline.originalExecution.startTs>`
+* `+pipeline.originalExecution.endTs`
+* `<+pipeline.originalExecution.status>`
+* `<+pipeline.originalExecution.sequenceId>`
+* `<+pipeline.originalExecution.storeType>`
+* `+pipeline.originalExecution.branch>`
+* `<+pipeline.originalExecution.repo>`
+* `<+pipeline.originalExecution.triggeredBy>`
+* `<+pipeline.originalExecution.executionMode>`
+* `<+pipeline.originalExecution.tags>`
+* `<+pipeline.originalExecution.triggerType>`
+* `<+pipeline.originalExecution.name>`
+* `<+pipeline.originalExecution.identifier>`
+
+:::info note
+These expressions won't work when called during normal execution; they will only function correctly when invoked during a rollback execution of the original execution.
+:::
 
 ## Handling Rollback Scenarios with `rollbackSteps`
 

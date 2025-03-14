@@ -1355,11 +1355,21 @@ Currently, Asg Steady State Step is behind the feature flag `CDS_ASG_SKIP_INSTAN
 
 :::
 
+<div style={{ textAlign: "center" }}>
+  <DocImage path={require('./static/asg-steady-state-step.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
 The **ASG Steady State Step** is an additional pipeline step designed to monitor the progress and completion of the Instance Refresh process in AWS Auto Scaling Groups (ASGs). It is introduced to ensure that, during an ASG rolling deployment, the deployment workflow proceeds as soon as the new instances are launched and have reached a healthy state.
+
+To use this step, select the **Skip Instance Termination** checkbox in the **Instance Refresh Configuration** of the ASG Rolling Deploy step. This ensures that only new instance launches are tracked, without waiting for the termination of old instances. The ASG Steady State Step will monitor the instance termination state separately.
+
+:::info
+This step is not supported for **Canary** and **Blue-Green** deployment strategies, as the **Instance Refresh ID** is not available for these strategies. As a result, the step will fail if used in these scenarios.
+:::
 
 **Key Features**
 
-- **Polls Instance Refresh Status**: Uses the DescribeInstanceRefreshes API to monitor the PercentageComplete and Status of the instance refresh.
+- **Polls Instance Refresh Status**: Uses the [DescribeInstanceRefreshes API](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeInstanceRefreshes.html) to monitor the PercentageComplete and Status of the instance refresh.
 
 - **Ensures Healthy Instances**: Marks the step successful only when the new instances reach a healthy state and the refresh process is 100% complete.
 
@@ -1371,6 +1381,14 @@ The **ASG Steady State Step** is an additional pipeline step designed to monitor
 
 - **ASG Name**: The ASG name is automatically picked up from the Service. In the case of a custom stage, provide the ASG name manually or use an expression to resolve it.
 - **Polling Interva**l: Defines how often the DescribeInstanceRefreshes API is invoked to check the instance refresh status; The default value is 60 seconds.
+
+**ASG Steady State Step and Rollback Support**
+
+The **ASG Steady State Step** does not support rollback on its own. If a rollback step is added to a stage that contains **only** the Steady State Step, the rollback step will fail.  
+
+Rollback is **only supported** when the stage includes a **Rolling Deployment step** along with the **Steady State Step**.
+
+Below are sample YAML configurations illustrating both use cases.
 
 <details>
 <summary>Sample Asg Steady State Step YAML</summary>

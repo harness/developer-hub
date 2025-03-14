@@ -5,7 +5,7 @@ sidebar_position: 9
 canonical_url: https://www.harness.io/blog/build-system-vs-ci
 ---
 
-Harness includes a [native CI system](/docs/category/get-started-with-ci) that can build and test code and push your artifact to any repository. You can set [triggers](/docs/category/triggers) on Harness pipelines that execute a pipeline when a change is made in the code or artifact repository.
+Harness includes a [native CI system](/docs/continuous-integration/get-started/onboarding-guide) that can build and test code and push your artifact to any repository. You can set [triggers](/docs/category/triggers) on Harness pipelines that execute a pipeline when a change is made in the code or artifact repository.
 
 In some cases, you might be using a third-party CI system. You can still execute Harness pipelines when changes are made to the code or artifact repositories used by that system.
 

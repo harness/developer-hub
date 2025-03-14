@@ -7,9 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::info 
-
-Harness Artifact Registry is in beta. To enable it on your account, please contact your sales representative or reach out to the team at [ar-interest@harness.io](mailto:support@harness.io).
-
+To enable Harness Artifact Registry in your account, contact your sales representative or reach out to the team at [ar-interest@harness.io](mailto:support@harness.io).
 :::
 
 **Harness Artifact Registry** is a centralized registry designed to store, manage, and organize software artifacts—such as binaries, container images, libraries, or other build outputs—that are essential for development and deployment processes. It provides developers with a secure and efficient way to store, version, and distribute these artifacts, while supporting key capabilities like access control, dependency management, and vulnerability scanning to ensure reliability and security across software delivery pipelines.  

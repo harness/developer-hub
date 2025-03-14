@@ -1,6 +1,8 @@
 ---
 id: windows-ec2-network-latency
 title: Windows EC2 Network Latency
+redirect_from:
+- /docs/chaos-engineering/technical-reference/chaos-faults/aws/windows-ec2-network-latency
 ---
 
 Windows EC2 network latency causes a network packet delay on Windows VM for the target EC2 instance(s) using [Clumsy](https://jagt.github.io/clumsy/).

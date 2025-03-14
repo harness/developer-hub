@@ -498,3 +498,17 @@ If you want to upload a compressed file, you must use a [Run step](../run-step-s
 Code coverage reports are not the only artifacts you can publish to the **Artifacts** tab. You can [publish any URL to the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab).
 
 :::
+
+## Code Coverage and Test Intelligence (TI)
+Customers utilizing [Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview) in steps before Code Coverage reports may find that Test Intelligence will affect the overall code coverage.  This is due to the nature of how Test Intelligence works in that it executes **fewer tests** in order to speed up the overall testing process.
+
+Because Test Intelligence is anticipated to execute fewer tests, customers will experience lower Code Coverage numbers and may conflict with expected test code coverage metrics. The recommended approach is to disable **Test Intelligence** if you wish to run Code Coverage. 
+
+Alternatively, you can execute it in a separate pipeline on a daily or weekly basis. Test Intelligence and Testing Code Coverage are conflicting objectives to achieve so you will have to pick one or the other.
+
+Below is a sample of what can happen:
+As you can see from the below screenshot, with Test Intelligence off, all tests were executed, and Code Coverage shows that it had a score of **69.9**.  
+![Code Coverage without Test Intelligence](./static/codecoverage-tioff.png)
+
+Once the Test Intelligence was engaged, many of the tests were skipped because of the initial testing.  As a result, almost no tests were run and were skipped, so the test step completed quickly.  As a result, the coverage for this execution is much lower (**9.6**), because the actual tests executed were significantly fewer.
+![Code Coverage with Test Intelligence](./static/codecoverage-tion.png)

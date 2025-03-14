@@ -162,12 +162,19 @@ Soon, policies can be applied to more entities, such as Connectors, Services, En
 
 ### Pipelines
 
+:::info note
+Currently, **On Step Start** pipeline event is behind the feature flag `PIPE_IS_PRE_STEP_OPA_POLICY_EVALUATION_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 Policies are evaluated against Harness Pipelines. The input payload is an expanded version of the Pipeline YAML, including expanded references of stages/steps. 
 
 Policy Sets can be configured to be enforced automatically on these Pipeline events:
 
 * **On Save:** Policies are evaluated when the Pipeline is saved.
 * **On Run:** Policy sets are evaluated after the preflight checks.
+* **On Step Start:** Policy sets are evaluated when the step execution starts.
+
+![](./static/pipeline-events-opa.png)
 
 Severities:
 
@@ -175,6 +182,21 @@ Severities:
 * **On warning (Warn and Continue):** a message is shown and the action is completed.
 
 The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. See [Add a Governance Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline).
+
+### Templates
+
+Policy sets can be configured to be enforced automatically on templates during **On Save** event.
+
+Severities:
+
+* **On error (Error and Exit):** a message is shown and the action does not complete.
+* **On warning (Warn and Continue):** a message is shown and the action is completed.
+
+You can also create policy that allows you to validate if the template stored is Remote or Inline.
+
+:::info note
+We have a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote. Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag.
+:::
 
 ### Feature Flags
 

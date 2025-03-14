@@ -64,86 +64,32 @@ You can also:
 
 :::
 
-## Handling Immutable ECR Repositories in the "Build and Push to ECR" Step
+### Handling Immutable ECR Repositories in the "Build and Push to ECR" Step
 
-For customers using immutable ECR repositories (a best practice for enhanced security), encountering AWS errors during the "Build and Push to ECR" step due to existing image tags can be resolved using the following approach.
-
-### Conditional Execution Using Crane
-
-You can leverage [Crane](https://github.com/google/go-containerregistry/tree/main/cmd/crane) to check if an image tag already exists in your ECR repository. By setting the result of this check in an output variable, you can use it as a conditional for the "Build and Push to ECR" step.
+You can set `PLUGIN_SKIP_PUSH_IF_TAG_EXISTS` as a stage variable, and the native "Build and Push to ECR" step will skip the push if the tag already exists. The logic supports both mutable and immutable repositories by checking for existing tags before proceeding with the build and push.
 
 Here's an example partial pipeline YAML demonstrating this approach:
 
 ```YAML
+...
               - step:
-                  identifier: Run_2
-                  type: Run
-                  name: Run_2
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: amazon/aws-cli
-                    shell: Sh
-                    command: |-
-                      #!/bin/bash
-                      export AWS_REGION="ap-southeast-2"
-
-                      # Set AWS credentials if not using the default profile
-                      export AWS_ACCESS_KEY_ID=<+secrets.getValue("AwsAccess")>
-                      export AWS_SECRET_ACCESS_KEY=<+secrets.getValue("AwsSecret")>
-
-                      # Get login password and authenticate crane with ECR
-                      PASSWD=$(aws ecr get-login-password --region $AWS_REGION)
-                      export LOGIN_PASSWD=$PASSWD
-                    outputVariables:
-                      - name: LOGIN_PASSWD
-                        type: String
-                        value: LOGIN_PASSWD
-              - step:
-                  identifier: Run_1
-                  type: Run
-                  name: Run_1
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: alpine/crane:0.19.0
-                    shell: Sh
-                    command: |-
-                      #!/bin/bash
-                      export AWS_REGION="ap-southeast-2"
-                      export ECR_REPO="test-repo"
-                      export AWS_ACCOUNT_ID="012345678910"
-                      export IMAGE_TAG="test-tag"
-
-                      # Authenticate crane with ECR
-                      crane auth login $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com -u AWS -p <+execution.steps.Run_2.output.outputVariables.LOGIN_PASSWD>
-
-                      # Check if the image tag exists
-                      if crane digest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG > /dev/null 2>&1; then
-                          echo "Image tag exists."
-                          export SKIP_BUILD=True
-                      else
-                          echo "Image tag does not exist."
-                          export SKIP_BUILD=False
-                      fi
-                    outputVariables:
-                      - name: SKIP_BUILD
-                        type: String
-                        value: SKIP_BUILD
-              - step:
-                  identifier: BuildAndPushECR_1
                   type: BuildAndPushECR
                   name: BuildAndPushECR_1
+                  identifier: BuildAndPushECR_1
                   spec:
-                    connectorRef: your_aws_connector
-                    region: ap-southeast-2
-                    account: "012345678910"
-                    imageName: test-repo
+                    connectorRef: YOUR_AWS_CONNECTOR
+                    region: YOUR_AWS_REGION
+                    account: YOUR_AWS_ACCOUNT
+                    imageName: YOUR_ECR_IMAGE_NAME
                     tags:
-                      - test-tag
-                    caching: true
-                  when:
-                    stageStatus: Success
-                    condition: <+execution.steps.Run_1.output.outputVariables.SKIP_BUILD>
-                      == "False"
+                      - YOUR_ECR_IMAGE_TAG
+        variables:
+          - name: PLUGIN_SKIP_PUSH_IF_TAG_EXISTS
+            type: String
+            description: ""
+            required: false
+            value: "true"
+...
 ```
 
 ## Build and Push to ECR step settings
@@ -320,3 +266,4 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 - [How do I fix this kaniko container runtime error: kaniko should only be run inside of a container?](/kb/continuous-integration/articles/kaniko_container_runtime_error)
 - [Can I push and pull from two different docker registries that have same prefix for registry URL?](/kb/continuous-integration/continuous-integration-faqs/#can-i-push-and-pull-from-two-different-docker-registries-that-have-same-prefix-for-registry-url-)
 - [Why does the parallel execution of build and push steps fail when using Buildx on Kubernetes?](/kb/continuous-integration/continuous-integration-faqs#why-does-the-parallel-execution-of-build-and-push-steps-fail-when-using-buildx-on-kubernetes)
+- [Why do Build and Push steps fail with "Error while loading buildkit image: exit status 1" when /var/lib/docker is included in shared paths during DIND execution?](/kb/continuous-integration/continuous-integration-faqs#why-do-build-and-push-steps-fail-with-error-while-loading-buildkit-image-exit-status-1-when-varlibdocker-is-included-in-shared-paths-during-dind-execution)
