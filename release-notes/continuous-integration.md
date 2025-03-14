@@ -27,14 +27,15 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 **Action Required: Avoid Docker Hub Rate Limits**
 
-Starting April 1, 2025, Docker Hub is enforcing stricter rate limits on public image pulls. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits.
+**Starting April 1, 2025, Docker Hub is enforcing stricter rate limits on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
 
-[Learn how to prevent disruptions](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) 
+* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
+* **Pull images from alternative registries**: Switch to Google Container Registry (GCR) or Amazon ECR for anonymous access, which have different rate limits.
+* **Private registry**: Consider pulling images from your own private registry to bypass the rate limits completely.
+
+[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) 
 
 :::
-
-
-
 
 
 :::warning
