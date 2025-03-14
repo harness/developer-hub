@@ -31,7 +31,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
 
 * **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
-* **Pull images anonymously from alternative registries**: Switch to Google Container Registry (GCR) or Amazon ECR for, where different rate limits apply.
+* **Pull images anonymously from alternative registries**: Switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
 * **Private registry**: Pull images from your own private registry.
 
 [Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) 
