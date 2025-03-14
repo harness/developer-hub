@@ -76,7 +76,7 @@ If you are looking for scanners that are not available as steps or are not suppo
 
 Here are the scanners that support ingestion scan mode in STO and the data format each scanner expects for ingestion into STO.
 
-import StoSupportedFormats from '/docs/security-testing-orchestration/sto-techref-category/shared/_sto-supported-ingestion-formats.md';
+import StoSupportedFormats from '/docs/security-testing-orchestration/sto-techref-category/shared/sto-supported-ingestion-formats.md';
 
 
 <StoSupportedFormats />
