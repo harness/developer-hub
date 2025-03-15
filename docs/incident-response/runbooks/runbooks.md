@@ -1,6 +1,7 @@
 ---
 title: Runbook Automation Overview
 sidebar_label: Overview
+sidebar_position: 1
 description: Learn about Harness Incident Response Runbook Automation - a powerful tool for automating incident response with integrations for communication, remediation, and monitoring.
 ---
 
@@ -8,81 +9,48 @@ description: Learn about Harness Incident Response Runbook Automation - a powerf
 
 Harness Incident Response (**IR**) allows teams to **automate incident resolution** by leveraging **Runbook automation**. Runbooks provide predefined workflows that execute **automated actions** based on specific triggers.
 
-## Overview
+## Key Features
 
-Runbooks are automated playbooks that codify your team's best practices for incident response. They help standardize response procedures, reduce human error, and accelerate incident resolution.
+### Automated Response Actions
+- Instant incident communication
+- Automated remediation steps
+- Multi-channel notifications
+- Integrated team collaboration
 
-### Key Features
+### Integration Ecosystem
+- **Communication Tools**
+  - [Slack](./integrations/slack.md) - Channel management and notifications
+  - [Microsoft Teams](./integrations/teams.md) - Team collaboration
+  - [Zoom](./integrations/zoom.md) - Incident bridges
 
-- **Automated Actions**
-  - Execute predefined response procedures
-  - Integrate with external tools and systems
-  - Run diagnostic commands
-  - Implement remediation steps
+- **Ticketing Systems**
+  - [Jira](./integrations/jira.md) - Issue tracking and updates
+  - [ServiceNow](./integrations/servicenow.md) - Incident management
 
-- **Trigger Conditions**
-  - Alert-based triggers
-  - Severity-based execution
-  - Time-based triggers
-  - Manual execution options
+## Getting Started
 
-- **Customizable Workflows**
-  - Sequential and parallel execution
-  - Conditional branching
-  - Error handling and rollback procedures
-  - Approval gates for critical actions
+1. [Create Your First Runbook](./create-runbook.md)
+   - Design workflows
+   - Configure triggers
+   - Test and deploy
 
-### Common Use Cases
+2. [Configure Authentication](./configure-authentication.md)
+   - Set up integration access
+   - Manage permissions
+   - Secure your runbooks
 
-1. **Infrastructure Management**
-   - Automated system diagnostics
-   - Resource scaling
-   - Configuration updates
-   - Service restarts
-
-2. **Security Response**
-   - Threat containment
-   - Access control modifications
-   - Log collection and analysis
-   - Security tool integration
-
-3. **Application Recovery**
-   - Database failover
-   - Cache clearing
-   - Load balancer configuration
-   - Feature flag management
-
-## Integration Support
-
-Runbooks support the following API-based integrations:
-
-### Communication & Collaboration
-- **Slack**: Notifications, channels, threads
-- **Microsoft Teams**: Team notifications and updates
-- **Zoom**: Meeting creation and management
-
-### Incident Response Automation
-- **PagerDuty**: On-call notifications and escalations
-- **OpsGenie**: Alert management and routing
-- **Harness Pipelines**: Automated remediation workflows
-
-### Feature Flagging & Deployment Control
-- **Split**: Feature flag management
-- **GitHub Actions**: Workflow triggers
-- **Jenkins**: Job execution
-- **Harness Pipelines**: Deployment automation
-
-### Observability & Monitoring
-- **Datadog**: Metric analysis and alerts
-- **Grafana Incident**: Incident correlation
+3. [Configure Incident Fields](./configure-incident-fields.md)
+   - Define custom fields
+   - Set up field mapping
+   - Configure templates
 
 ## Example Runbook Templates
 
-### 1. High CPU Usage Alert Response
-**Purpose**: Coordinate response across teams with automated remediation
+### 1. High CPU Usage Response
+**Purpose**: Automated response to CPU spikes
 
 **Trigger Configuration**:
-- Alert Type: Datadog Metric Alert
+- Alert Type: Datadog
 - Metric: CPU Usage
 - Threshold: > 90%
 - Duration: 5 minutes
@@ -179,75 +147,20 @@ Runbooks support the following API-based integrations:
    - Action Type: Zoom
    - Operation: Create Meeting
    - Name: "API Incident Bridge"
-   - Invite: API Team, Product, Support
+   - Participants: ["@api-team", "@product"]
 
-## Creating Runbooks
+## Next Steps
 
-### Step 1: Design Workflow
-1. Navigate to the Runbooks section
-2. Select "Create New Runbook"
-3. Build your workflow:
-   - Add Slack notifications
-   - Configure pipeline executions
-   - Set up action sequences
-   - Define variables
+### Documentation
+- [Create a Runbook](./create-runbook.md)
+- [Configure Authentication](./configure-authentication.md)
+- [Configure Incident Fields](./configure-incident-fields.md)
 
-### Step 2: Configure Triggers
-1. Set up trigger conditions:
-   - Alert patterns
-   - Service impacts
-   - Time windows
-   - Manual triggers
-
-### Step 3: Test and Deploy
-1. Run in test environment
-2. Validate notifications
-3. Review pipeline executions
-4. Deploy to production
-
-## Best Practices
-
-- **Start Simple**: Begin with basic automation and gradually add complexity
-- **Include Documentation**: Add detailed descriptions for each action
-- **Monitor Execution**: Track runbook performance and success rates
-- **Regular Updates**: Keep runbooks current with system changes
-- **Access Control**: Implement proper authorization for critical actions
-
-## Best Practices for Using Runbook Automation
-- Start with simple notification-based runbooks
-- Use pipelines for complex remediation actions
-- Include pipeline status in notifications
-- Create dedicated incident channels for coordination
-- Consider timezone-aware notifications for global teams
-
-## How to Trigger Runbook Automation
-
-### **1. Automatically Trigger Runbooks from an Incident or Alert**
-Runbooks can be configured to **automatically execute** when a new incident or alert meets predefined conditions.
-
-#### **Steps to Configure Automatic Triggers:**
-1. Navigate to **Runbooks** →
-2. Edit an existing runbook or [create a new one](#)
-	- Select the Trigger tab
-3. Define trigger conditions, such as:
-   - **Incident severity** (e.g., P1 or P2)
-   - **Service impacted** (e.g., API Gateway, Database)
-   - **Specific integration type** (e.g., Integration:Kubernetes)
-4. Click **Save** to apply the trigger rule.
-
-> **Example:** If an incident is categorized as **Sev0**, a **Runbook can automatically scale additional resources** to mitigate impact.
-
-### **2. Manually Trigger a Runbook from an Active Incident or Alert**
-Teams can **manually trigger** Runbooks to **execute predefined actions** during an active incident or an alert.
-
-#### **Steps to Manually Trigger a Runbook:**
-1. Open the **Incident or Alert Details** page.
-2. Click **Runbooks**.
-3. Select **Execute Additional Runbook** and choose from the available list.
-4. Confirm execution to **initiate**.
-5. Track Runbook progress in the **Timeline**.
-
-Next Steps
-- [Configuring Automated Incident Response](#)
-- [Integrating Runbooks with Supported Tools](#)
-- [Using AI Insights to Trigger Runbook Actions](#)
+### Integration Guides
+- Communication Tools
+  - [Slack Integration](./integrations/slack.md)
+  - [Microsoft Teams Integration](./integrations/teams.md)
+  - [Zoom Integration](./integrations/zoom.md)
+- Ticketing Systems
+  - [Jira Integration](./integrations/jira.md)
+  - [ServiceNow Integration](./integrations/servicenow.md)

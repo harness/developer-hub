@@ -1,7 +1,8 @@
 ---
 title: Configure Incident Fields for Runbooks
 sidebar_label: Configure Fields
-description: Learn how to configure and use incident fields in your runbook workflows for enhanced incident response automation.
+sidebar_position: 4
+description: Learn how to configure and use incident fields in your runbook workflows for dynamic, context-aware automation.
 ---
 
 # Configure Incident Fields for Runbooks
@@ -143,30 +144,42 @@ Options:
 
 ## Common Use Cases
 
-### Severity-Based Routing
-```
+### Integration Examples
+
+#### Slack Notifications
+```yaml
 if [incident.severity] == "P1" then
   notify: #sre-urgent
+  message: "🚨 [incident.service] incident in [incident.environment]"
 else
   notify: #sre-standard
 ```
 
-### Environment-Specific Actions
-```
-if [incident.environment] contains "Production" then
-  escalate: true
-  notify: @oncall
-```
-
-### Service-Based Templates
-```
+#### Jira Tickets
+```yaml
 ticket_template: "[incident.service]-incident-[incident.id]"
 description: "Issue in [incident.service] affecting [incident.environment]"
+priority: "[incident.severity]"
+```
+
+#### Teams Channels
+```yaml
+channel_name: "incident-[incident.id]-[incident.service]"
+description: "[incident.severity] incident in [incident.environment]"
 ```
 
 ## Next Steps
 
+### Documentation
 - [Create a Runbook](./create-runbook.md)
 - [Configure Authentication](./configure-authentication.md)
-- [Set Up Integrations](./configure-integrations.md)
 - [Return to Overview](./runbooks.md)
+
+### Integration Guides
+- Communication Tools
+  - [Slack Integration](./integrations/slack.md)
+  - [Microsoft Teams Integration](./integrations/teams.md)
+  - [Zoom Integration](./integrations/zoom.md)
+- Ticketing Systems
+  - [Jira Integration](./integrations/jira.md)
+  - [ServiceNow Integration](./integrations/servicenow.md)
