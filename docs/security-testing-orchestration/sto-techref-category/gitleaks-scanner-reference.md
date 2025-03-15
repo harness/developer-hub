@@ -94,7 +94,7 @@ You can also write your own [custom detection rules](https://github.com/gitleaks
 
 ### For more information
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 
 <StoMoreInfo />

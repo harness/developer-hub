@@ -20,7 +20,7 @@ The Custom Ingest step is intended for scanners that have no supported integrati
 ## For more information
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 
 <StoMoreInfo />
