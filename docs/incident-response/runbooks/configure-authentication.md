@@ -1,6 +1,7 @@
 ---
 title: Configure Authentication for Runbook Actions
 sidebar_label: Configure Authentication
+sidebar_position: 3
 description: Learn how to set up and manage authentication for different runbook actions and integrations in Harness Incident Response.
 ---
 
@@ -14,81 +15,42 @@ Each integration type requires specific authentication setup to ensure secure co
 
 ## Communication Tools
 
-### Slack
+### [Slack](./integrations/slack.md)
 1. Navigate to **Settings** → **Connectors** → **Collaboration**
 2. Click **+ New Connector**
 3. Select **Slack**
 4. Follow the OAuth flow to authorize Harness
 5. Configure channel permissions
 
-### Microsoft Teams
+### [Microsoft Teams](./integrations/teams.md)
 1. Navigate to **Settings** → **Connectors** → **Collaboration**
 2. Click **+ New Connector**
 3. Select **Microsoft Teams**
 4. Enter your Azure AD credentials
 5. Grant necessary permissions
 
-### Zoom
+### [Zoom](./integrations/zoom.md)
 1. Navigate to **Settings** → **Connectors** → **Collaboration**
 2. Click **+ New Connector**
 3. Select **Zoom**
 4. Configure OAuth settings
 5. Set meeting defaults
 
-## Incident Response Tools
+## Ticketing Systems
 
-### PagerDuty
+### [Jira](./integrations/jira.md)
 1. Navigate to **Settings** → **Connectors** → **Incident Response**
 2. Click **+ New Connector**
-3. Select **PagerDuty**
+3. Select **Jira**
 4. Enter your API key
-5. Configure service mapping
+5. Configure project mapping
 
-### OpsGenie
+### [ServiceNow](./integrations/servicenow.md)
 1. Navigate to **Settings** → **Connectors** → **Incident Response**
 2. Click **+ New Connector**
-3. Select **OpsGenie**
-4. Enter your API key
-5. Set up team mappings
-
-## CI/CD and Feature Management
-
-### Jenkins
-1. Navigate to **Settings** → **Connectors** → **CI/CD**
-2. Click **+ New Connector**
-3. Select **Jenkins**
-4. Enter your Jenkins URL and credentials
-5. Test the connection
-
-### GitHub Actions
-1. Navigate to **Settings** → **Connectors** → **CI/CD**
-2. Click **+ New Connector**
-3. Select **GitHub**
-4. Configure GitHub App or PAT
-5. Set repository access
-
-### Split
-1. Navigate to **Settings** → **Connectors** → **Feature Management**
-2. Click **+ New Connector**
-3. Select **Split**
-4. Enter your API key
-5. Configure environments
-
-## Monitoring Tools
-
-### Datadog
-1. Navigate to **Settings** → **Connectors** → **Monitoring**
-2. Click **+ New Connector**
-3. Select **Datadog**
-4. Enter API and Application keys
-5. Configure metric access
-
-### Grafana
-1. Navigate to **Settings** → **Connectors** → **Monitoring**
-2. Click **+ New Connector**
-3. Select **Grafana**
-4. Enter your API key
-5. Configure dashboard access
+3. Select **ServiceNow**
+4. Enter your instance URL and credentials
+5. Set up incident mapping
 
 ## Best Practices
 
@@ -126,6 +88,16 @@ Each integration type requires specific authentication setup to ensure secure co
 
 ## Next Steps
 
+### Documentation
+- [Create a Runbook](./create-runbook.md)
 - [Configure Incident Fields](./configure-incident-fields.md)
-- [Set Up Integrations](./configure-integrations.md)
 - [Return to Overview](./runbooks.md)
+
+### Integration Guides
+- Communication Tools
+  - [Slack Integration](./integrations/slack.md)
+  - [Microsoft Teams Integration](./integrations/teams.md)
+  - [Zoom Integration](./integrations/zoom.md)
+- Ticketing Systems
+  - [Jira Integration](./integrations/jira.md)
+  - [ServiceNow Integration](./integrations/servicenow.md)

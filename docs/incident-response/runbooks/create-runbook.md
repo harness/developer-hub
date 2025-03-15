@@ -1,6 +1,7 @@
 ---
 title: Create a Runbook
 sidebar_label: Create a Runbook
+sidebar_position: 2
 description: Step-by-step guide on creating and configuring runbooks in Harness Incident Response.
 ---
 
@@ -31,42 +32,27 @@ Ensure you have:
 Choose from these integration categories:
 
 #### Communication & Collaboration
-- **Slack**
+- **[Slack](./integrations/slack.md)**
   - Send notifications
   - Create channels
   - Start threads
-- **Microsoft Teams**
+- **[Microsoft Teams](./integrations/teams.md)**
   - Team notifications
   - Updates
-- **Zoom**
+- **[Zoom](./integrations/zoom.md)**
   - Create meetings
   - Manage participants
 
 #### Incident Response Automation
-- **PagerDuty**
-  - On-call notifications
-  - Escalations
-- **OpsGenie**
-  - Alert management
-  - Routing
+- **[Jira](./integrations/jira.md)**
+  - Issue tracking
+  - Status updates
+- **[ServiceNow](./integrations/servicenow.md)**
+  - Incident management
+  - Change requests
 - **Harness Pipelines**
   - Remediation workflows
   - Service management
-
-#### Feature Flagging & Deployment
-- **Split**
-  - Feature management
-- **GitHub Actions**
-  - Workflow triggers
-- **Jenkins**
-  - Job execution
-
-#### Observability & Monitoring
-- **Datadog**
-  - Metric analysis
-  - Alerts
-- **Grafana Incident**
-  - Incident correlation
 
 ## Step 2: Configure Triggers
 
@@ -99,6 +85,16 @@ Before deploying to production:
 
 ## Next Steps
 
-- [Configure Authentication for Actions](./configure-authentication.md)
+### Documentation
+- [Configure Authentication](./configure-authentication.md)
 - [Configure Incident Fields](./configure-incident-fields.md)
-- [Set Up Integrations](./configure-integrations.md)
+- [Return to Overview](./runbooks.md)
+
+### Integration Guides
+- Communication Tools
+  - [Slack Integration](./integrations/slack.md)
+  - [Microsoft Teams Integration](./integrations/teams.md)
+  - [Zoom Integration](./integrations/zoom.md)
+- Ticketing Systems
+  - [Jira Integration](./integrations/jira.md)
+  - [ServiceNow Integration](./integrations/servicenow.md)
