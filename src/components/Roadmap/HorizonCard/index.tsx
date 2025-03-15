@@ -50,7 +50,6 @@ const HorizonCard = ({ title, description, tag, module, link, backgroundColorCar
           tag.map((tagItem: tag) => {
             const colorSet = colorMap.get(tagItem.color);
 
-            //if  colorSet doesnot exists then it means the colors are hex code custom color and not predefined colors
             const textColorTag = colorSet ? colorSet.textColor : tagItem.textColor;
             const backgroundColorTag = colorSet ? colorSet.color : tagItem.color;
 
@@ -66,8 +65,9 @@ const HorizonCard = ({ title, description, tag, module, link, backgroundColorCar
             );
           })}
       </div>
-      <h4>{title}</h4>
-      <p>{description}</p>
+      <h4 style={{ color: backgroundColorCard ? ' var(--ifm-link-color)' : '' }}>{title}</h4>
+
+      <p style={{ color: backgroundColorCard ? 'black' : '' }}>{description}</p>
     </Link>
   );
 };
