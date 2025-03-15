@@ -2,6 +2,7 @@
 title: Semantic search
 description: Use AI to supercharge your code search.
 sidebar_position: 51
+unlisted: true
 ---
 
 Use the [Harness AI](/docs/platform/harness-aida/aida-overview) Semantic Code Search functionality to search your entire codebase using natural language queries. Ask a question and let Harness AI retrieve source code that best answers your question. This is useful when you aren't sure what specific keywords to search for or you want to better understand what the code achieves.

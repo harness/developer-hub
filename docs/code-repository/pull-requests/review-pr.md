@@ -11,7 +11,7 @@ After [creating a PR](./create-pr.md), you can request review from one or more r
 To request PR reviews from other users in your Harness project.
 
 1. In your repository, go to **Pull Requests**, and select your PR.
-2. On the **Conversation** tab, in the **Reviewers** section, select **Add**.
+2. On the **Conversation** tab, in the **Reviewers** section, select **More Options**x`` (&vellip;).
 3. Select the user that you want to assign as a reviewer.
 
    To remove a reviewer, select **More options** (&vellip;) next to the reviewer's name, and then select **Remove**.
@@ -81,4 +81,5 @@ Depending on the repository's [branch rules](../config-repos/rules.md), passing 
 </TabItem>
 </Tabs>
 
+---
 4. If everything looks good, select **Approve** to approve the PR for merge. To request changes, select the dropdown next to **Approve** and select **Request changes**.
