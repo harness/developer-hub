@@ -197,16 +197,24 @@ The API takes a JSON object as input that defines the configuration settings for
 
 In Harness, you use a JSON configuration file to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API.
 
+**Harness Support for Tag Management**
+
+Harness supports managing AWS Lambda function tags, allowing users to create, update, and delete tags as part of their function definition. Tags help with resource organization, cost allocation, and security policies.
+
 The minimal requirements for an AWS Lambda function definition are:
 
 - Function Name (`FunctionName`): A unique name for your Lambda function.
 - Runtime (`Runtime`): The programming language and version that your function code is written in. Lambda supports multiple programming languages, including Node.js, Python, Java, C#, and Go.
 - Handler (`Handler`): The name of the function within your code that Lambda should call when the function is invoked.
 - AWS IAM role (`Role`): The IAM role that the function should use to access other AWS services or resources. You can create an IAM role specifically for the Lambda function, or you can reuse an existing IAM role if it has the necessary permissions.
+- Tags (Optional): key-value pairs used for organizing resources, applying policies, and cost allocation.
 
 For a full list of supported fields, go to [AWS Lambda Create Function Request](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html).
 
 Harness supports all of the popular Git platforms for storing your function definition files.
+
+<details>
+<summary>Sample Lambda function</summary>
 
 Here is a NodeJS hello world function example:
 
@@ -218,6 +226,28 @@ Here is a NodeJS hello world function example:
   "role": "<YOUR_AWS_ARN>"
 }
 ```
+</details>
+
+<details>
+<summary>Sample Lambda function with tags</summary>
+
+Here is a NodeJS hello world function with tags example:
+
+```json
+{
+  "runtime": "nodejs14.x",
+  "functionName": "Hello_World",
+  "handler": "handler.hello",
+  "role": "<YOUR_AWS_ARN>",
+  "tags": {
+    "Environment": "Production",
+    "Project": "test-project",
+    "Owner": "DevOps"
+  }
+}
+```
+
+</details>
 
 :::note
 
@@ -287,6 +317,8 @@ Typically, you will use Harness to deploy a new function and its future versions
 To update an existing function, the function definition you supply Harness must have a `FunctionName` that matches the name of the function you are updating in AWS and follow the [Create Function API](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-FunctionName) conventions.
 
 You do not need to use the function ARN in the `FunctionName` of the function definition.
+
+Tag updates: If you need to modify the metadata for your function, you can update the tags without redeploying the function.
 
 ### Sample service YAML
 

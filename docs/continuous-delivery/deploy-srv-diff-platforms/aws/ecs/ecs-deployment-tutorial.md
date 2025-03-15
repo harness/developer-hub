@@ -489,6 +489,35 @@ deploymentConfiguration:
   minimumHealthyPercent: 100
 ```
 
+**ECS Tag Management Support**
+
+Harness also supports managing tags for Amazon ECS services. You can now create, update, or delete tags in your ECS service definition, allowing for better resource organization, automation, and management of your ECS deployments.
+
+
+<details>
+<summary>Sample yaml with tags</summary>
+
+```yaml
+launchType: FARGATE
+serviceName: myapp
+desiredCount: 1
+networkConfiguration:
+  awsvpcConfiguration:
+    securityGroups:
+      - <Security Group Id>
+    subnets:
+      - <Subnet Id>
+    assignPublicIp: ENABLED
+deploymentConfiguration:
+  maximumPercent: 200
+  minimumHealthyPercent: 100
+"tags": 
+  - "key": "Environment",
+  - "value": "Production"
+```
+
+</details>
+
 The ECS Service Definition is now added to the Service.
 
 ![](./static/ecs-deployment-tutorial-42.png)
