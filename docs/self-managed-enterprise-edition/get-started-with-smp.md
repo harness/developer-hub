@@ -1,8 +1,8 @@
 ---
-title: Harness Self-Managed Enterprise Edition Onboarding Guide
+title: Onboarding Guide
 sidebar_label: Onboarding guide
 description: This topic provides the basics on how to create a Harness account and first project. These are the first tasks that come after installing the on-prem Harness Self-Managed Enterprise Edition.
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: 09gjhl0tcw
 helpdocs_category_id: tvlmjozubh
 helpdocs_is_private: false
@@ -17,38 +17,19 @@ redirect_from:
   - /docs/get-started/self-managed-on-prem
 ---
 
-This topic provides an architecture overview, installation links, and the basics on how to create a Harness account and your first project. Perform these tasks soon after you install Harness Self-Managed Enterprise Edition, before you move on to other configuration tasks.
-
-To install Harness Self-Managed Enterprise Edition in a Kubernetes cluster with Helm, go to [Install Harness Self-Managed Enterprise Edition Using Helm](/docs/self-managed-enterprise-edition/install/install-using-helm).
-
-## Architecture overview
-You can install Harness Self-Managed Enterprise Edition in a Kubernetes cluster or on virtual machines.
-
-Review the following diagrams for your installation type.
-
-### Kubernetes cluster configuration
-
-Harness Self-Managed Enterprise Edition is installed in a Kubernetes cluster in the following configuration.
-
-![](./static/harness-self-managed-enterprise-edition-overview-00.png)
-
-**AWS architecture**
-
-![](./static/aws_architecture_smpOverview.png)
+This topic covers the basics of creating a Harness account and your first project. Once you have a good [Overview](./smp-overview.md) of the Self-Managed Enterprise Edition, these are the initial tasks to complete after installing the on-premise Harness Self-Managed Enterprise Edition.
 
 ## Create your Harness account
 
-You create your Harness account the first time you use Harness Self-Managed Enterprise Edition. You are automatically assigned the Harness user role, **Account Admin**.
+When you create your Harness account for the first time in Harness Self-Managed Enterprise Edition, you're automatically assigned the Account Admin role.
 
 ![](./static/getting-started-with-self-managed-enterprise-edition-01.png)
 
-To create your Harness account, do the following:
+To create your Harness account, follow these steps:
 
-1. On the Harness **Sign up** page, enter your email address and a secure password.
-
-2. Select **Sign up**.
-
-   After your account is created, you arrive at the **Continuous Delivery** start page.
+1. On the Harness Sign-up page, enter your email address and a secure password.
+2. Select **Sign Up**.
+3. Once your account is created, you'll be directed to the Continuous Delivery start page.
 
    ![](./static/getting-started-with-self-managed-enterprise-edition-02.png)
 
@@ -76,10 +57,7 @@ To get started with Harness Self-Managed Enterprise Edition, go to the following
 
 * Harness CCM: [Cloud Cost Management (CCM) overview](/docs/cloud-cost-management/get-started/overview).
 * Harness CI: [Continuous Integration (CI) overview](/docs/continuous-integration/get-started/overview).
-* Harness CD: [Continuous Delivery (CD) key concepts](../../continuous-delivery/get-started/key-concepts.md).
+* Harness CD: [Continuous Delivery (CD) key concepts](/docs/continuous-delivery/get-started/key-concepts).
 * Harness FF: [Feature Flag (FF) onboarding guide](/docs/feature-flags/get-started/onboarding-guide).
-* Harness STO: [Security Testing Orchestration (STO) overview](../../security-testing-orchestration/get-started/overview.md).
+* Harness STO: [Security Testing Orchestration (STO) overview](/docs/security-testing-orchestration/get-started/overview).
 * Harness Chaos Engineering: [Get started with Harness Chaos Engineering (CE)](/docs/chaos-engineering/concepts/chaos101).
-
-### Self-Managed Enterprise Edition Release cadence
-Harness releases Self-Managed Enterprise Edition on a monthly basis. Additionally, periodic hot-fixes are released as needed.
