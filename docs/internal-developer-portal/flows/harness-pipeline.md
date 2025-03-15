@@ -679,6 +679,19 @@ Add the Org, Repo Name, Branch and the File path relative to the root of the rep
 </TabItem>
 </Tabs>
 
+#### API Key Support
+Harness IDP now supports the use of a **Harness API Key** in the **Register Catalog** step.
+
+With this feature, users can configure the **API Key** by selecting the **"API Token"** field in the Harness UI. This option is available under **Advanced Settings** in the **Pipelines** tab. Enabling this ensures that the API Key is utilized for catalog registration in IDP.
+
+By integrating the API Key, the pipeline execution remains seamless, ensuring it functions correctly when triggered from another pipeline or through a trigger.
+
+![](./static/api-key-ngui.png)
+
+This step is optional. You can proceed with executing your pipeline without an API key. In that case, the user context will be used for catalog registration.
+
+#### Output Variable
+
 Following is the output variable of this step.
 
 1. **catalogInfoUrl** : The URL of the `catalog-info.yaml` stored in your git provider where you created the repo in the **CreateRepo step** eg; `https://github.com/org-name/repo-name/blob/code/catalog-info.yaml` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<<+pipeline.stages.idp.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>>`
