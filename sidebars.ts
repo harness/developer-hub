@@ -482,9 +482,9 @@ const sidebars: SidebarsConfig = {
       value: "New to Harness CI?",
       className: "horizontal-bar",
     },
-    "continuous-integration/get-started/overview",
-    "continuous-integration/get-started/key-concepts",
-    "continuous-integration/get-started/onboarding-guide",
+    "continuous-integration/overview",
+    "continuous-integration/key-concepts",
+    "continuous-integration/get-started",
     {
       type: "html",
       value: "Use Harness CI",
@@ -523,7 +523,7 @@ const sidebars: SidebarsConfig = {
       className: "horizontal-bar",
     },
     "continuous-integration/ci-supported-platforms",
-    "continuous-integration/get-started/ci-subscription-mgmt",
+    "continuous-integration/ci-subscription-mgmt",
     {
       type: "category",
       label: "Troubleshoot Harness CI",

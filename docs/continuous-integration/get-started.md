@@ -1,8 +1,11 @@
 ---
 title: CI onboarding guide
 description: A self-service onboarding guide for Harness CI.
-sidebar_position: 4
+sidebar_position: 3
 sidebar_label: Onboarding guide
+redirect_from: 
+- /docs/continuous-integration/get-started/onboarding-guide
+- /docs/continuous-integration/get-started/tutorials
 ---
 
 Harness CI simplifies the code development and testing process. In Harness CI pipelines, you model your build and test processes as CI stages. Each stage includes steps for building, testing, and pushing your code. Pipelines can be triggered manually or automatically by triggers, such as Git commits and pull requests.
@@ -24,14 +27,13 @@ Learn about the features, components, and key concepts of Harness CI:
 
 Learn about [creating pipelines in Harness CI](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md) and then try it for yourself:
 
-* [Tutorial - Build on Harness Cloud](./tutorials.md)
 * [Tutorial - Build on a Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra)
 
 ### Build infrastructure options
 
 Harness offers several build infrastructure options, including Harness-managed and self-managed options. To compare build infrastructure options, go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
 
-Harness recommends starting with [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), which you can start using in minutes and is available for all plan tiers.
+Harness recommends starting with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), which you can start using in minutes and is available for all plan tiers.
 
 ### Migrate to Harness CI
 
@@ -41,10 +43,10 @@ If you're migrating to Harness CI from another CI provider, review the [Harness 
 
 Explore the documentation to learn what your Harness CI pipelines can do.
 
-* [Build images, push images, and upload artifacts.](../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact)
+* [Build images, push images, and upload artifacts.](/docs/category/build-push-upload-download)
 * [Use caching](/docs/category/share-and-cache-ci-data) and [manage dependencies](/docs/category/manage-dependencies).
-* Run [scripts](../use-ci/run-step-settings.md) and [tests](/docs/category/run-tests).
-* [Use plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) and [write your own plugins](../use-ci/use-drone-plugins/custom_plugins.md).
+* Run [scripts](/docs/continuous-integration/use-ci/run-step-settings.md) and [tests](/docs/category/run-tests).
+* [Use plugins](/docs/category/use-plugins) and [write your own plugins](/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins).
 
 :::tip
 
@@ -56,7 +58,7 @@ With Harness CI, you can build and test code in any language. For guidance on so
 
 Your Harness CI subscription includes a number of developer licenses and build credits. It's important to understand your [license and build credit usage](./ci-subscription-mgmt.md#license-and-build-credit-usage).
 
-If you plan to use [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), it's important to understand [Harness Cloud billing and build credits](./ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
+If you plan to use [Harness Cloud build infrastructure](docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), it's important to understand [Harness Cloud billing and build credits](./ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
 
 ## Become a Harness Certified Expert
 

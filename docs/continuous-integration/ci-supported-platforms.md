@@ -17,7 +17,7 @@ import Ci from '/docs/continuous-integration/shared/ci-supported-platforms.md';
 
 ## Harness CI features
 
-For an overview of key CI features, go to [Harness CI overview](/docs/continuous-integration/get-started/overview.md) and [Harness CI key concepts](/docs/continuous-integration/get-started/key-concepts.md).
+For an overview of key CI features, go to [Harness CI overview](/docs/continuous-integration/get-started/overview.md) and [Harness CI key concepts](/docs/continuous-integration/key-concepts).
 
 For information about upcoming and recently released features, go to the [CI product roadmap](https://developer.harness.io/roadmap/#ci), [CI release notes](/release-notes/continuous-integration).
 
