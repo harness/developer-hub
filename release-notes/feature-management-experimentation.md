@@ -16,7 +16,7 @@ These release notes describe recent changes to Harness Feature Management & Expe
 #### Last updated: March 17, 2025
 ## March 2025
 ### 2025-03-17
-#### AI Release Agent - Admin settings
+#### AI settings
 The new AI settings page in Admin settings provides a toggle to enable/disable Release Agent and manage whether Release Agent has permissions to process experimentation data for experiment summarization and Q&A. This provides enhanced control over data privacy for AI features.
 
 ![Admin settings - AI settings](./static/fme/admin-settings-ai-settings.png)
