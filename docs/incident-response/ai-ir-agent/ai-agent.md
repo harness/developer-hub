@@ -40,6 +40,14 @@ The AI Agent joins incident meetings to:
 - Track action items
 - Save key points
 
+### Microsoft Teams Integration
+The AI Agent joins incident meetings to:
+- Monitor team discussions
+- Create meeting summaries
+- Document decisions
+- Track action items
+- Save key points
+
 ## Documentation Features
 
 ### Event Capture
