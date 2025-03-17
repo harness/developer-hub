@@ -10,507 +10,990 @@ import TabItem from '@theme/TabItem';
 
 Harness Self-Managed Enterprise Edition brings a robust and flexible software delivery platform to organizations seeking control over their deployment infrastructure. This topic describes Resource profiles, Module Enablement, outlining the basic configuration, key components and best practices for implementing Harness Self-Managed Enterprise Edition.
 
+### Overview
+This section provides detailed information about configuring Harness Self-Managed Enterprise Edition (SMP) using Helm charts. It covers essential configuration parameters and best practices for a production deployment.
+
+### Prerequisites
+Before proceeding with the configuration, ensure you have:
+- Kubernetes cluster (EKS, GKE, or AKS)
+- Helm 3.x installed
+- `kubectl` configured with cluster access
+- Harness license keys (NG and Looker)
+
+## Basic Configuration Parameters
+
+### Global Settings
+
+The following parameters are configured in your `values.yaml`:
+
+```yaml
+global:
+  # -- Your load balancer URL (Required)
+  # This is the external URL that users will use to access Harness
+  loadbalancerURL: "https://your-domain.example.com"
+  
+  # -- License Configuration (Required)
+  license:
+    ng: "your-ng-license"    # Next Generation license key
+    cg: "your-cg-license"    # Optional: Classic license if needed
+  
+  # -- High Availability Configuration
+  ha: true    # Set to true for production deployments
+              # Deploys components with proper replicas for HA
+  
+  # -- Global Feature Flags
+  features:
+    enabled: true
+    flags:
+      BACKGROUND_VERIFICATION: true    # Enable background verification
+      CUSTOM_DASHBOARD: true          # Enable custom dashboards
+      GRAPHQL_ENABLED: true          # Enable GraphQL API
+      NEXT_GEN_ENABLED: true        # Enable Next Generation features
+  
+  # -- Module Enablement
+  ci:
+    enabled: false          # Enable Continuous Integration
+  cd:
+    enabled: false          # Enable Continuous Delivery
+  ccm:
+    enabled: false          # Enable Cloud Cost Management
+  sto:
+    enabled: false          # Enable Security Testing Orchestration
+  
+  # -- Database Configuration
+  database:
+    # MongoDB Settings
+    mongo:
+      installed: true        # Set to false for external MongoDB
+      hosts: []             # Required if installed: false
+      protocol: "mongodb"   # Connection protocol
+      extraArgs: ""         # Additional connection arguments
+      secretName: ""        # Secret containing credentials
+      userKey: ""          # Username key in secret
+      passwordKey: ""      # Password key in secret
+      
+    # PostgreSQL Settings
+    postgres:
+      installed: true       # Set to false for external PostgreSQL
+      hosts: ["hostname:5432"]
+      protocol: "postgres"
+      extraArgs: ""
+      secretName: "postgres-secret"
+      userKey: "user"
+      passwordKey: "password"
+      
+    # Redis Settings
+    redis:
+      installed: true       # Set to false for external Redis
+      hosts: ["hostname:6379"]
+      secretName: "redis-user-pass"
+      userKey: "username"
+      passwordKey: "password"
+      
+    # TimescaleDB Settings (Required for some features)
+    timescaledb:
+      installed: true
+      hosts: ["hostname:5432"]
+      sslEnabled: false
+      secretName: "tsdb-secret"
+      userKey: "username"
+      passwordKey: "password"
+      certName: "tsdb-cert"    # Required if sslEnabled: true
+      certKey: "cert"          # Required if sslEnabled: true
+```
+
+### Security Settings
+```yaml
+global:
+  # -- SSL/TLS Configuration
+  ssl:
+    enabled: true                # Enable SSL/TLS
+    certSecret: "harness-ssl-cert"  # Secret containing certificates
+  
+  # -- MongoDB SSL Configuration
+  mongoSSL: false                # Enable SSL for MongoDB connections
+  
+  # -- Authentication Configuration
+  saml:
+    autoaccept: false           # Auto-accept SAML users
+  
+  # -- SMTP Configuration
+  smtpCreateSecret:
+    enabled: false              # Create SMTP secret automatically
+  
+  # -- Network Security
+  istio:
+    enabled: false              # Enable Istio service mesh
+    strict: false               # Enable strict mTLS
+    gateway:
+      create: true              # Create Istio gateway
+      port: 443
+      protocol: HTTPS
+  
+  ingress:
+    enabled: false              # Enable Kubernetes Ingress
+    className: "harness"
+    tls:
+      enabled: true
+      secretName: "harness-cert"
+```
+
+### Monitoring and Observability
+```yaml
+global:
+  # -- Monitoring Configuration
+  monitoring:
+    enabled: false              # Enable Prometheus metrics
+    path: /metrics             # Metrics endpoint
+    port: 8889                # Metrics port
+  
+  # -- Logging Configuration
+  logging:
+    level: INFO
+    format: json
+  
+  # -- Service Discovery
+  servicediscoverymanager:
+    enabled: false              # Enable service discovery
+```
+
+### Resource Management
+```yaml
+global:
+  # -- Pod Disruption Budget
+  pdb:
+    create: false               # Create PDB for components
+    minAvailable: "50%"        # Minimum available pods
+  
+  # -- Autoscaling Configuration
+  autoscaling:
+    enabled: true              # Enable HPA
+    minReplicas: 2
+    maxReplicas: 5
+    targetCPUUtilizationPercentage: 80
+```
+
 ## Resource Profiles  
 
-Harness Self-Managed Enterprise Edition offers four environment profiles based on team size and execution capacity:  
+This section details the resource requirements and recommendations for Harness SMP components. Proper resource allocation is crucial for optimal performance and stability.
 
-| **Environment** | **Users**  | **Parallel Executions (CI)** | **Parallel Executions (CD)** |
-|-----------------|------------|------------------------------|------------------------------|
-| **Demo**        | Up to 10   | 2                            | 2                            |
-| **Small**       | Up to 200  | 50                           | 50                           |
-| **Medium**      | Up to 1000 | 250                          | 250                          |
-| **Large**       | Up to 3000 | 500                          | 500                          |
+The resource profiles are designed to accommodate different deployment scales and workloads. Each profile provides specific resource allocations for CPU, memory, and storage requirements.
+
+### Selecting a Resource Profile
+Choose the appropriate profile based on your deployment needs:
+
+1. **Minimum Profile**: Development/Testing
+   - Up to 50 concurrent pipelines
+   - Team size: < 50 users
+   - Resource-constrained environments
+    
+        ```yaml
+            platform:
+                harness-manager:
+                    resources:
+                    limits:
+                        cpu: "1"
+                        memory: "4Gi"
+                    requests:
+                        cpu: "500m"
+                        memory: "2Gi"
+                        
+                gateway:
+                    resources:
+                    limits:
+                        cpu: "500m"
+                        memory: "1Gi"
+                    requests:
+                        cpu: "200m"
+                        memory: "512Mi"
+
+                ng-manager:
+                    resources:
+                    limits:
+                        cpu: "1"
+                        memory: "2Gi"
+                    requests:
+                        cpu: "500m"
+                        memory: "1Gi"
+        ```
+
+2. **Standard Profile**: Production/Medium Scale
+   - Up to 200 concurrent pipelines
+   - Team size: 50-200 users
+   - Typical enterprise deployments
+
+        ```yaml
+                platform:
+                    harness-manager:
+                        resources:
+                        limits:
+                            cpu: "2"
+                            memory: "8Gi"
+                        requests:
+                            cpu: "1"
+                            memory: "4Gi"
+                            
+                    gateway:
+                        resources:
+                        limits:
+                            cpu: "1"
+                            memory: "2Gi"
+                        requests:
+                            cpu: "500m"
+                            memory: "1Gi"
+
+                    ng-manager:
+                        resources:
+                        limits:
+                            cpu: "2"
+                            memory: "4Gi"
+                        requests:
+                            cpu: "1"
+                            memory: "2Gi"
+            ```
+
+
+3. **Performance Profile**: Large Scale Production
+   - 200+ concurrent pipelines
+   - Team size: 200+ users
+   - High-throughput requirements
+
+        ```yaml
+            platform:
+                harness-manager:
+                    resources:
+                    limits:
+                        cpu: "4"
+                        memory: "16Gi"
+                    requests:
+                        cpu: "2"
+                        memory: "8Gi"
+                        
+                gateway:
+                    resources:
+                    limits:
+                        cpu: "2"
+                        memory: "4Gi"
+                    requests:
+                        cpu: "1"
+                        memory: "2Gi"
+
+                ng-manager:
+                    resources:
+                    limits:
+                        cpu: "4"
+                        memory: "8Gi"
+                    requests:
+                        cpu: "2"
+                        memory: "4Gi"
+        ```
+
+### Installing with Resource Profiles
+
+You can easily install Harness with your desired resource profile using the Helm command. Choose from our predefined profiles (Minimum, Standard, Performance) or create your custom resource configuration.
+
+#### Using Predefined Profiles
+```bash
+# Add the Harness repository
+helm repo add harness https://harness.github.io/helm-charts
+helm repo update
+
+# Install using standard profile
+helm install my-release harness/harness-prod -n <namespace> -f your-override.yaml -f resource-profile-standard.yaml
+
+# Example with production namespace
+helm install harness harness/harness-prod -n harness -f values.yaml -f resource-profile-prod.yaml
+```
+
+#### Using Custom Profiles
+1. Create your resource override file (e.g., `my-resources.yaml`)
+2. Apply it during installation:
+```bash
+# Install with custom resources
+helm install my-release harness/harness-prod \
+  -n <namespace> \
+  -f your-override.yaml \
+  -f my-resources.yaml
+```
+
+### Upgrading Resource Profiles
+To modify resource allocations for an existing installation:
+
+#### Update Resources
+```bash
+# Upgrade with new resource profile
+helm upgrade my-release harness/harness-prod \
+  -n <namespace> \
+  -f your-override.yaml \
+  -f my-resources.yaml
+
+# Example with specific namespace
+helm upgrade harness harness/harness-prod \
+  -n harness \
+  -f values.yaml \
+  -f new-resource-profile.yaml
+```
 
 ## Module Enablement
 
-To enable a module in Harness Self-Managed Enterprise Edition, you'll typically need to edit the `override.yaml` file. Override files are available in the Harness [Helm chart repo](https://github.com/harness/helm-charts/blob/main/src/harness/).
+This section explains how to enable and configure different modules in Harness SMP. Each module provides specific functionality and can be enabled based on your requirements.
 
-- Demo: `override-demo.yaml`
-- Small: `override-small.yaml`
-- Medium: `override-medium.yaml`
-- Large: `override-large.yaml`
+### Core Platform (Always Enabled)
+The platform module is the foundation of Harness and includes essential services:
+```yaml
+platform:
+  enabled: true  # Cannot be disabled
+  components:
+    gateway: true
+    ui: true
+    ng-manager: true
+    access-control: true
+    template-service: true
+```
 
-### Installation and Upgrade commands
+### Chaos Engineering (CE)
+Enable Chaos Engineering for resilience testing:
+```yaml
+chaos:
+  enabled: true
+  components:
+    chaos-manager: true
+    chaos-infrastructure: true
+```
 
-You can use the following commands to upgrade/install via Helm for each profile. For complete Helm installation instructions, go to [Install using Helm](/docs/self-managed-enterprise-edition/install/install-using-helm).
+### Chaos Experiments
+Enables chaos testing capabilities:
+- Fault injection
+- Resilience testing
+- Experiment management
+- Impact analysis
 
-As shown below, you can replace the file name `<OVERRIDE-FILE>` placeholder with one of the override files listed above.
+```yaml
+global:
+  chaos:
+    enabled: true          # Enable Chaos Engineering module
 
-<Tabs>
-    <TabItem value="custom-install" label="Install">
+chaos:
+  experiments:
+    features:
+      faultInjection: true  # Enable fault injection
+      networkChaos: true    # Enable network chaos
+      podChaos: true        # Enable pod chaos
+      
+  analysis:
+    enabled: true
+    features:
+      impactAnalysis: true  # Enable impact analysis
+      metrics: true         # Enable chaos metrics
+```
 
-    ```
-    helm install my-release harness/harness-prod -n <namespace> -f your-override.yaml -f <OVERRIDE-FILE>.yaml
-    ```
-    </TabItem>
-    <TabItem value="custom-upgrade" label="Upgrade">
+### Chaos Infrastructure
+Enables chaos infrastructure components:
+- Chaos operator
+- Experiment runners
+- Metric collectors
+- Result analyzers
 
-    ```
-    helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f <OVERRIDE-FILE>.yaml
-    ```
-    </TabItem>
-    </Tabs>
+```yaml
+chaos:
+  infrastructure:
+    operator:
+      enabled: true         # Enable chaos operator
+      features:
+        scheduling: true    # Enable experiment scheduling
+        monitoring: true    # Enable chaos monitoring
+```
 
-    **For Example**, Let's use the **`Demo`** override file.
+### Next Generation (NG) Platform
+Enables the core Next Generation platform features:
+- Modern UI/UX experience
+- GraphQL API support
+- Enhanced security features
+- Role-based access control
 
-    <Tabs>
-    <TabItem value="Demo install" label="Install">
+```yaml
+global:
+  ng:
+    enabled: true    # Required for all NG features
+    features:
+      graphql: true  # Enable GraphQL API
+      rbac: true     # Enable enhanced RBAC
+    
+  platform:
+    features:
+      enabled: true
+      audit: true    # Enable audit logging
+      analytics: true  # Enable usage analytics
+```
 
-    ```
-    helm install my-release harness/harness-prod -n <namespace> -f your-override.yaml -f override-demo.yaml
-    ```
-    </TabItem>
-    <TabItem value="Demo Upgrade" label="Upgrade">
+### Platform Services
+Essential platform services configuration:
+- Gateway service for routing
+- UI service for web interface
+- Manager service for core functionality
+- Access control service
 
-    ```
-    helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-demo.yaml
-    ```
-    </TabItem>
-</Tabs>
+```yaml
+platform:
+  gateway:
+    enabled: true
+    service:
+      type: LoadBalancer
+      
+  next-gen-ui:
+    enabled: true
+    features:
+      customDashboard: true
+      
+  harness-manager:
+    enabled: true
+    features:
+      backgroundVerification: true
+```
+
+### Continuous Integration (CI)
+
+Enables pipeline execution for building and testing code:
+- Build automation
+- Test execution
+- Artifact management
+- Caching system
+
+```yaml
+global:
+  ci:
+    enabled: true      # Enable CI module
+
+ci:
+  ci-manager:
+    features:
+      caching: true    # Enable build caching
+      artifacts: true  # Enable artifact management
+      docker: true     # Enable Docker builds
+      
+  ti-service:
+    enabled: true      # Enable Test Intelligence
+    features:
+      testSelection: true
+      insights: true
+```
+
+### Continuous Delivery (CD)
+
+Enable CD for deployment automation:
+```yaml
+cd:
+  enabled: true
+  components:
+    delegate-service: true
+    pipeline-service: true
+    cv-nextgen: true      # Continuous Verification
+```
+
+Enables deployment orchestration and management:
+- Deployment strategies
+- Canary deployments
+- Blue-Green deployments
+- Rollback capabilities
+
+```yaml
+global:
+  cd:
+    enabled: true       # Enable CD module
+
+cd:
+  service:
+    features:
+      gitops: true     # Enable GitOps workflows
+      canary: true     # Enable Canary deployments
+      blueGreen: true  # Enable Blue-Green deployments
+      
+  delegate:
+    enabled: true      # Enable CD delegate
+    features:
+      k8s: true       # Enable Kubernetes deployments
+      helm: true      # Enable Helm deployments
+```
+
+### Cloud Cost Management (CCM)
+Enables cloud cost monitoring and optimization:
+- Cloud billing analysis
+- Cost forecasting
+- Budget management
+- Resource optimization
+
+```yaml
+global:
+  ccm:
+    enabled: true        # Enable CCM module
+
+ccm:
+  ce-nextgen:
+    features:
+      costAnalysis: true  # Enable cost analysis
+      forecasting: true   # Enable cost forecasting
+      
+  cloud-providers:
+    aws: true            # Enable AWS cost analysis
+    gcp: true            # Enable GCP cost analysis
+    azure: true          # Enable Azure cost analysis
+```
+
+Enables cost optimization features:
+- Resource recommendations
+- Rightsizing suggestions
+- Spot instance management
+- Waste identification
+
+```yaml
+ccm:
+  optimization:
+    enabled: true
+    features:
+      recommendations: true    # Enable optimization recommendations
+      spotManagement: true    # Enable spot instance management
+      resourceSizing: true    # Enable resource rightsizing
+```
+
+### Security Testing Orchestration (STO)
+Enable STO for security scanning:
+```yaml
+sto:
+  enabled: true
+  components:
+    stocore: true
+    stomanager: true
+```
+
+Enables security testing and analysis:
+- Vulnerability scanning
+- Compliance checks
+- Security policy enforcement
+- DAST/SAST integration
+
+```yaml
+global:
+  sto:
+    enabled: true         # Enable STO module
+
+sto:
+  security-tests:
+    features:
+      vulnerabilityScans: true  # Enable vulnerability scanning
+      complianceChecks: true    # Enable compliance checking
+      
+  integrations:
+    dast: true           # Enable Dynamic Application Security Testing
+    sast: true           # Enable Static Application Security Testing
+```
+
+### Policy Management
+Enables security policy configuration:
+- Policy definition
+- Enforcement rules
+- Compliance monitoring
+- Audit logging
+
+```yaml
+sto:
+  policy-management:
+    enabled: true
+    features:
+      customPolicies: true     # Enable custom policy creation
+      policyEnforcement: true  # Enable policy enforcement
+      complianceReports: true  # Enable compliance reporting
+```
 
 ## Load Balancer
 
 ### Amazon Elastic Kubernetes Service (EKS)
 
-1. Create a namespace for your deployment.
+This section explains how to configure AWS Application Load Balancer (ALB) and AWS Network Load Balancer (NLB) for your Harness SMP installation on Amazon EKS. ALB is recommended for HTTP/HTTPS traffic and provides advanced routing capabilities. While, NLB is recommended when you need extreme performance, static IPs, or handling of non-HTTP/HTTPS protocols.
 
-   ```
-   kubectl create namespace harness
-   ```
-
-2. Retrieve and extract the latest [Harness Helm charts](https://github.com/harness/helm-charts/releases). The harness charts will look like `harness-<version_number>`.
-
-3. Open the `harness/values.yaml` file in any editor, and modify the following values.
-
-   | Key                      | Value  |
-   | ------------------------ | ------ |
-   | `global.ingress.enabled` | `true` |
-   | `global.loadbalancerURL` | `""`   |
-   | `global.ingress.hosts`   | `""`   |
-
-4. Install the Helm chart.
-
-   ```
-   helm install harness harness/ -f override-demo.yaml -n harness
-   ```
-
-   AWS EKS has the ability to create and attach Elastic Load Balancers as a Kubernetes Resource. For more information, go to [Application load balancing on Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html) in the EKS documentation. For this tutorial, we'll take advantage of this functionality by creating our Load Balancer first manually.
-
-5. Save the following reference `loadbalancer.yaml` file and apply it into your cluster.
-
-   ```yaml
-     ---
-     # Source: networking/templates/nginx/controller.yaml
-     apiVersion: v1
-     kind: ServiceAccount
-     metadata:
-       name: harness-serviceaccount
-       namespace: harness
-     ---
-     # Source: networking/templates/nginx/controller.yaml
-     apiVersion: v1
-     kind: ConfigMap
-     metadata:
-       name: harness-ingress-controller
-       namespace: harness
-       labels:
-     data:
-       proxy-body-size: 1024m
-       proxy-read-timeout: "600"
-       proxy-send-timeout: "600"
-     ---
-     # Source: networking/templates/nginx/controller.yaml
-     apiVersion: rbac.authorization.k8s.io/v1
-     kind: Role
-     metadata:
-       name: harness-role
-       namespace: harness
-     rules:
-     - apiGroups:
-       - ""
-       resources:
-       - namespaces
-       verbs:
-       - get
-     - apiGroups:
-       - ""
-       resources:
-       - configmaps
-       - pods
-       - secrets
-       - endpoints
-       verbs:
-       - update
-       - get
-       - list
-       - watch
-     - apiGroups:
-       - ""
-       resources:
-       - services
-       verbs:
-       - get
-       - list
-       - update
-       - watch
-     - apiGroups:
-       - extensions
-       - networking.k8s.io
-       resources:
-       - ingresses
-      verbs:
-       - get
-       - list
-       - watch
-     - apiGroups:
-       - extensions
-       - networking.k8s.io
-       resources:
-       - ingresses/status
-       verbs:
-       - update
-     - apiGroups:
-       - ""
-       resourceNames:
-       - ingress-controller-leader-harness
-       resources:
-       - configmaps
-       verbs:
-       - get
-       - update
-     - apiGroups:
-       - ""
-       resources:
-       - configmaps
-       verbs:
-       - create
-     - apiGroups:
-       - ""
-       resources:
-       - endpoints
-       verbs:
-       - create
-       - get
-       - update
-     - apiGroups:
-       - ""
-       resources:
-       - events
-       verbs:
-       - create
-       - patch
-     ---
-     # Source: networking/templates/nginx/controller.yaml
-     apiVersion: rbac.authorization.k8s.io/v1
-     kind: RoleBinding
-     metadata:
-       name: harness-role-hsa-binding
-       namespace: harness
-     roleRef:
-       apiGroup: rbac.authorization.k8s.io
-       kind: Role
-       name: harness-role
-     subjects:
-       - kind: ServiceAccount
-         name: harness-serviceaccount
-         namespace: harness
-     ---
-     # Source: networking/templates/nginx/controller.yaml
-     apiVersion: v1
-     kind: Service
-     metadata:
-       name: harness-ingress-controller
-       namespace: harness
-       labels:
-       annotations:
-     spec:
-       selector:
-         app: harness-ingress-controller
-       type: 'LoadBalancer'
-       # externalTrafficPolicy: 'Cluster'
-       ports:
-       - name: health
-         protocol: TCP
-         port: 10254
-         targetPort: 10254
-       - name: http
-         port: 80
-         protocol: TCP
-         targetPort: http
-       - name: https
-         port: 443
-         protocol: TCP
-         targetPort: https
-     ---
-     # Source: networking/templates/nginx/default-backend.yaml
-     apiVersion: v1
-     kind: Service
-     metadata:
-       name: default-backend
-       namespace: harness
-       labels:
-     spec:
-       ports:
-       - name: http
-         port: 80
-         protocol: TCP
-         targetPort: 8080
-       selector:
-         app: default-backend
-       type: ClusterIP
-     ---
-     # Source: networking/templates/nginx/controller.yaml
-     kind: Deployment
-     apiVersion: apps/v1
-     metadata:
-       name: harness-ingress-controller
-       namespace: harness
-       labels:
-     spec:
-       replicas: 1
-       selector:
-         matchLabels:
-           app: harness-ingress-controller
-       progressDeadlineSeconds: 300
-       strategy:
-         rollingUpdate:
-           maxSurge: 1
-           maxUnavailable: 1
-         type: RollingUpdate
-       template:
-         metadata:
-           labels:
-             app: "harness-ingress-controller"
-         spec:
-           affinity:
-             podAntiAffinity:
-               requiredDuringSchedulingIgnoredDuringExecution:
-                 - labelSelector:
-                     matchLabels:
-                       app: "harness-ingress-controller"
-                   topologyKey: kubernetes.io/hostname
-           serviceAccountName: harness-serviceaccount
-           terminationGracePeriodSeconds: 60
-           securityContext:
-             runAsUser: 101
-           containers:
-           - image: us.gcr.io/k8s-artifacts-prod/ingress-nginx/controller:v1.0.0-alpha.2
-             name: nginx-ingress-controller
-             imagePullPolicy: IfNotPresent
-             envFrom:
-             - configMapRef:
-                 name: harness-ingress-controller
-             resources:
-               limits:
-                 memory: 512Mi
-               requests:
-                 cpu: "0.5"
-                 memory: 512Mi
-             ports:
-               - name: http
-                 containerPort: 8080
-                 protocol: TCP
-               - name: https
-                 containerPort: 8443
-                 protocol: TCP
-             livenessProbe:
-               httpGet:
-                 path: /healthz
-                 port: 10254
-                 scheme: HTTP
-               initialDelaySeconds: 30
-               timeoutSeconds: 5
-             securityContext:
-               allowPrivilegeEscalation: false
-             env:
-             - name: POD_NAME
-               valueFrom:
-                 fieldRef:
-                   apiVersion: v1
-                   fieldPath: metadata.name
-             - name: POD_NAMESPACE
-               valueFrom:
-                 fieldRef:
-                   apiVersion: v1
-                   fieldPath: metadata.namespace
-             args:
-             - /nginx-ingress-controller
-             - --ingress-class=harness
-             - --default-backend-service=$(POD_NAMESPACE)/default-backend
-             - --election-id=ingress-controller-leader
-             - --watch-namespace=$(POD_NAMESPACE)
-             - --update-status=true
-             - --configmap=$(POD_NAMESPACE)/harness-ingress-controller
-             - --http-port=8080
-             - --https-port=8443
-             - --default-ssl-certificate=$(POD_NAMESPACE)/harness-cert
-             - --publish-service=$(POD_NAMESPACE)/harness-ingress-controller
-     ---
-     # Source: networking/templates/nginx/default-backend.yaml
-     kind: Deployment
-     apiVersion: apps/v1
-     metadata:
-       name: default-backend
-       namespace: harness
-       labels:
-     spec:
-       replicas: 1
-       selector:
-         matchLabels:
-           app: default-backend
-       template:
-         metadata:
-           labels:
-             app: default-backend
-         spec:
-           serviceAccountName: harness-serviceaccount
-           terminationGracePeriodSeconds: 60
-           containers:
-           - name: default-http-backend
-             image: registry.k8s.io/defaultbackend-amd64:1.5
-             imagePullPolicy: IfNotPresent
-             livenessProbe:
-               httpGet:
-                 path: /healthz
-                 port: 8080
-                 scheme: HTTP
-               initialDelaySeconds: 30
-               timeoutSeconds: 5
-             resources:
-               limits:
-                 memory: 20Mi
-               requests:
-                 cpu: 10m
-                 memory: 20Mi
-             securityContext:
-               runAsUser: 65534
-             ports:
-             - name: http
-               containerPort: 8080
-               protocol: TCP
-   ```
-
-   ```
-   kubectl create -f loadbalancer.yaml -n harness
-   ```
-
-6. Get the ELB URL.
-
-   ```
-   kubectl get service -n harness
-   ```
-
-7. Make a note of the `EXTERNAL-IP` for the `harness-ingress-controller`. It should look like `<string>.us-east-2.elb.amazonaws.com`.
-
-   ```
-    NAME                         TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)                                      AGE
-    default-backend              ClusterIP      10.100.54.229    <none>                                                                    80/TCP                                       38s
-    harness-ingress-controller   LoadBalancer   10.100.130.107   af5b132b743fb4318947b24581119f1b-1454307465.us-east-2.elb.amazonaws.com   10254:32709/TCP,80:32662/TCP,443:32419/TCP   38s
-   ```
-
-8. Open the `harness/values.yaml` file in any editor and modify the following values.
-
-   | Key                      | Value                          |
-   | ------------------------ | ------------------------------ |
-   | `global.ingress.enabled` | `true`                         |
-   | `global.loadbalancerURL` | `"https://<YOUR_ELB_ADDRESS>"` |
-   | `global.ingress.hosts`   | `"<YOUR_ELB_ADDRESS>"`         |
-
-9. Upgrade the Helm deployment, applying your new ELB as the load balancer to your configuration.
-
-   ```
-   helm upgrade harness harness/ -f override-demo.yaml -n harness
-   ```
+<Tabs>
+  <TabItem value="ALB" label="AWS Application Load Balancer (ALB)" default>
    
-   kubectl destroy two pods to inherit the new configuration.
+  **Prerequisites**
+  - EKS cluster with AWS Load Balancer Controller installed
+  - `kubectl` access to your cluster
+  - Helm 3.x installed
 
-   - The ingress controller pod (for example, `harness-ingress-controller-7f8bc86bb8-mrj94`)
-   - The gateway pod (for example, `gateway-59c47c595d-4fvt2`)
+  #### Installation Steps
 
-10. Navigate to the sign up UI at `https://<YOUR_ELB_ADDRESS>/auth/#/signup` to create your admin user.
-11. Complete the [post-install](#-post-install-next-steps) next steps to proceed.
+  **1. Create Namespace**
+  ```bash
+  kubectl create namespace harness
+  ```
+
+  **2. Configure ALB**
+
+  Create a file named `alb-config.yaml`:
+  ```yaml
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: harness-ingress
+    namespace: harness
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "external"
+      service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+      service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+  spec:
+    type: LoadBalancer
+    ports:
+      - port: 80
+        targetPort: 80
+        protocol: TCP
+        name: http
+      - port: 443
+        targetPort: 443
+        protocol: TCP
+        name: https
+    selector:
+      app: harness-ng
+  ```
+
+  Apply the configuration:
+  ```bash
+  kubectl apply -f alb-config.yaml
+  ```
+
+  **3. Configure Harness Values**
+
+  Create `values-override.yaml`:
+  ```yaml
+  global:
+    # Enable ingress
+    ingress:
+      enabled: true
+      className: "alb"
+      annotations:
+        kubernetes.io/ingress.class: alb
+        alb.ingress.kubernetes.io/scheme: internet-facing
+        alb.ingress.kubernetes.io/target-type: ip
+        alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+        alb.ingress.kubernetes.io/ssl-redirect: '443'
+      
+    # Load balancer configuration
+    loadbalancerURL: "https://<YOUR-ALB-DNS>"  # Update this
+    
+    # Host configuration
+    hosts:
+      - "<YOUR-ALB-DNS>"  # Update this
+  ```
+
+  **4. Install Harness**
+
+  ```bash
+  # Add Harness repository
+  helm repo add harness https://harness.github.io/helm-charts
+  helm repo update
+
+  # Install Harness
+  helm install harness harness/harness-prod \
+    -n harness \
+    -f values-override.yaml
+  ```
+
+  **5. Get ALB Address**
+  ```bash
+  kubectl get ingress -n harness
+  ```
+  Note the ADDRESS field, which will be your ALB DNS name.
+
+  **6. Update Configuration**
+  Update your `values-override.yaml` with the ALB DNS and upgrade:
+  ```bash
+  helm upgrade harness harness/harness-prod \
+    -n harness \
+    -f values-override.yaml
+  ```
+
+  #### Verification
+
+  **1. Check Services**
+  ```bash
+  kubectl get svc -n harness
+  ```
+
+  **2. Check Ingress**
+  ```bash
+  kubectl get ingress -n harness
+  ```
+
+  **3. Verify Endpoints**
+  ```bash
+  # Test HTTPS endpoint
+  curl -k https://<YOUR-ALB-DNS>/health
+  ```
+
+  #### Common Issues
+
+  **SSL Certificate Issues**
+  If you encounter SSL issues:
+  ```yaml
+  global:
+    ingress:
+      annotations:
+        alb.ingress.kubernetes.io/certificate-arn: "<YOUR-ACM-CERT-ARN>"
+        alb.ingress.kubernetes.io/ssl-policy: "ELBSecurityPolicy-TLS-1-2-2017-01"
+  ```
+
+ **Health Check Issues**
+  If health checks fail:
+  ```yaml
+  global:
+    ingress:
+      annotations:
+        alb.ingress.kubernetes.io/healthcheck-path: "/health"
+        alb.ingress.kubernetes.io/healthcheck-interval-seconds: '15'
+        alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '5'
+  ```
+
+  </TabItem>
+
+  <TabItem value="NLB" label="AWS Network Load Balancer (NLB)" default>
+
+  ### Prerequisites
+  - EKS cluster
+  - `kubectl` access to your cluster
+  - Helm 3.x installed
+
+  #### Installation Steps
+
+  **1. Create Namespace**
+  ```bash
+  kubectl create namespace harness
+  ```
+
+  **2. Configure NLB**
+
+  Create a file named `nlb-config.yaml`:
+  ```yaml
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: harness-nlb
+    namespace: harness
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+      service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+      service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+      service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+  spec:
+    type: LoadBalancer
+    ports:
+      - port: 80
+        targetPort: 80
+        protocol: TCP
+        name: http
+      - port: 443
+        targetPort: 443
+        protocol: TCP
+        name: https
+    selector:
+      app: harness-ng
+  ```
+
+  Apply the configuration:
+  ```bash
+  kubectl apply -f nlb-config.yaml
+  ```
+
+  **3. Configure Harness Values**
+
+  Create `values-override.yaml`:
+  ```yaml
+  global:
+    # Load balancer configuration
+    loadbalancerURL: "https://<YOUR-NLB-DNS>"  # Update this
+    
+    # Enable ingress
+    ingress:
+      enabled: true
+      className: "nlb"
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-type: nlb
+        service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+      
+    # Host configuration
+    hosts:
+      - "<YOUR-NLB-DNS>"  # Update this
+
+    # TLS configuration
+    tls:
+      enabled: true
+      secretName: harness-tls
+  ```
+
+  **4. Install Harness**
+
+  ```bash
+  # Add Harness repository
+  helm repo add harness https://harness.github.io/helm-charts
+  helm repo update
+
+  # Install Harness
+  helm install harness harness/harness-prod \
+    -n harness \
+    -f values-override.yaml
+  ```
+
+  **5. Get NLB Address**
+  ```bash
+  kubectl get svc harness-nlb -n harness
+  ```
+  Note the EXTERNAL-IP field, which will be your NLB DNS name.
+
+  **6. Update Configuration**
+  Update your `values-override.yaml` with the NLB DNS and upgrade:
+  ```bash
+  helm upgrade harness harness/harness-prod \
+    -n harness \
+    -f values-override.yaml
+  ```
+
+  #### Verification
+
+  **1. Check Services**
+  ```bash
+  kubectl get svc -n harness
+  ```
+
+  **2. Check Endpoints**
+  ```bash
+  # Test HTTPS endpoint
+  curl -k https://<YOUR-NLB-DNS>/health
+  ```
+
+  **3. Monitor Health**
+  ```bash
+  # Check pod status
+  kubectl get pods -n harness
+
+  # View service logs
+  kubectl logs -l app=harness-ng -n harness
+  ```
+
+  #### Common Issues
+
+  **1. Target Group Issues**
+  If pods aren't being registered:
+  ```yaml
+  global:
+    ingress:
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-target-group-attributes: preserve_client_ip.enabled=true
+  ```
+
+  **2. Health Check Issues**
+  If health checks fail:
+  ```yaml
+  global:
+    ingress:
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-healthcheck-protocol: TCP
+        service.beta.kubernetes.io/aws-load-balancer-healthcheck-port: traffic-port
+        service.beta.kubernetes.io/aws-load-balancer-healthcheck-interval: '10'
+        service.beta.kubernetes.io/aws-load-balancer-healthcheck-timeout: '5'
+  ```
+
+  **3. SSL/TLS Issues**
+  If you encounter SSL issues:
+  ```yaml
+  global:
+    ingress:
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "<YOUR-ACM-CERT-ARN>"
+        service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+  ```
+
+  #### Quick Reference
+
+  **Common Annotations**
+  ```yaml
+  annotations:
+    # Basic NLB settings
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+    
+    # Health check settings
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-protocol: TCP
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-port: traffic-port
+    
+    # SSL settings
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: <cert-arn>
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+    
+    # Performance settings
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+  ```
+
+  </TabItem>
+</Tabs>
 
 ### Google Kubernetes Engine (GKE)
 
-1. Create a new cluster or use an existing one.
+This section explains how to configure Google Cloud Load Balancer for Harness SMP on Google Kubernetes Engine (GKE).
 
-2. Create a new namespace:
+**Prerequisites**
+- GKE cluster
+- `kubectl` access to your cluster
+- Helm 3.x installed
+- Static IP address in GCP (optional but recommended)
 
-   1. Set your Kubernetes context to the GCP project you are using.
+**1. Create Namespace**
+```bash
+# Create namespace for Harness
+kubectl create namespace harness
+```
 
-   2. Run the following
-
-      ```
-      kubectl create ns <namespace name>
-      ```
-
-3. Download the latest charts from the Harness Helm chart [repo](https://github.com/harness/helm-charts/releases).
-
-    :::info
-    Charts are located under **Assets**. The file name looks like `harness-0.15.0.tgz`.
-    :::
-
-4. Extract the `*.tgz` file.
-
-5. Open the `override-demo.yaml` file in a file editor.
-
-6. Add your external static IP address in the following fields.
-
-   ```yaml
-   loadbalancerURL: http://xx.xx.xx.xx
+**2. Download and Extract Charts**
+1. Download latest [Harness Helm charts](https://github.com/harness/helm-charts/releases)
+   - Find the file named `harness-<version>.tgz` under Assets
+2. Extract the downloaded file
+   ```bash
+   tar -xzf harness-<version>.tgz
    ```
 
-   ```yaml
-   loadBalancerIP: xx.xx.xx.xx
-   ```
+**3. Configure Load Balancer**
+Create `override-demo.yaml`:
+```yaml
+global:
+  # Load balancer configuration
+  loadbalancerURL: "http://<YOUR-IP-ADDRESS>"
+  
+  # Ingress configuration
+  ingress:
+    enabled: true
+    annotations: {}
+    loadBalancerIP: "<YOUR-IP-ADDRESS>"
+    className: "harness"
+    loadBalancerEnabled: true
+    useSelfSignedCert: false
+    hosts:
+      - ""
 
-7. Set the following fields.
+  # Enable NGINX
+  nginx:
+    create: true
 
-   ```yaml
-   loadbalancerURL: http://xx.xx.xx.xx
-     ingress:
-       # --- Enable Nginx ingress controller gateway
-       enabled: true
-       annotations: {}
-       loadBalancerIP: 34.136.145.137
-       className: "harness"
-       loadBalancerEnabled: true
-       useSelfSignedCert: false
-       ingressGatewayServiceUrl: ''
-       hosts:
-         - ""
-   ```
+  # Enable default backend
+  defaultbackend:
+    create: true
+```
 
-8. Search for "nginx:", and set `create:` to `true`.
+**4. Install Harness**
+```bash
+helm install harness harness/ \
+  -n harness \
+  -f override-demo.yaml
+```
 
-   ```yaml
-    nginx:
-      create: true
-   ```
+**5. Access Harness UI**
+Navigate to `http://<YOUR-IP-ADDRESS>` in your browser.
 
-9. Search for "defaultbackend:", and set `create:` to `true`.
-
-   ```yaml
-    defaultbackend:
-      create: true
-   ```
-
-10. Save the file and exit.
-
-11. Run the following from your terminal.
-
-    ```
-    helm install <YOUR_RELEASE_NAME> <path to Harness directory> -n <YOUR_NAMESPACE_NAME> -f override.demo.yaml
-    ```
-
-    For example:
-
-    ```
-    helm install test-release harness/ -n smp-test -f harness/override-demo.yaml
-    ```
-
-12. After the installation is complete, paste the `loadbalancerURL` in your browser's address bar, and then sign in to the Harness UI.
-13. Complete the [post-install](#-post-install-next-steps) next steps to proceed.
+Complete the [post-install](#-post-install-next-steps) next steps to proceed.
 
 ### Post-install next steps
 
@@ -518,185 +1001,430 @@ As shown below, you can replace the file name `<OVERRIDE-FILE>` placeholder with
 2. Add your Harness license. For more information, go to [Add a Harness license](/docs/self-managed-enterprise-edition/install/install-using-helm/#add-a-harness-license).
 3. Configure SMTP to allow for additional user invitations. For more information, go to [Add SMTP configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration/).
 
+## Licenses
+
+This guide explains how to manage licenses for Harness Self-Managed Platform (SMP). Harness SMP requires two types of licenses:
+1. Next Generation (NG) License - Core platform and modules
+2. Looker License - Analytics and reporting capabilities
+
+### Next Generation (NG) License
+
+#### Configuration
+Add your NG license in the `values.yaml` file:
+```yaml
+global:
+  license:
+    ng: "your-ng-license-key"    # Required
+    cg: "your-cg-license-key"    # Optional: Only for classic features
+```
+
+#### License Features
+- Access to core platform
+- Module enablement (CI/CD, CCM, STO, etc.)
+- User management
+- Pipeline execution
+- API access
+
+#### Obtaining a New License
+1. Contact [Harness Support](mailto:support@harness.io) team
+2. Provide deployment details:
+   - Number of users
+   - Required modules
+   - Usage estimates
+3. Receive license key via secure channel
+
+#### License Renewal
+1. Monitor expiration date in Harness UI
+2. Contact Harness 30 days before expiration
+3. Apply new license:
+   ```yaml
+   global:
+     license:
+       ng: "your-new-ng-license-key"
+   ```
+4. Verify activation in UI
+
+### Looker License
+
+#### Configuration
+Configure Looker license in your deployment:
+```yaml
+looker:
+  enabled: true
+  license:
+    key: "your-looker-license-key"
+    # Optional: Additional Looker configurations
+    configuration:
+      customization:
+        enabled: true
+        logo: "your-logo-url"
+      connections:
+        maxPoolSize: 50
+```
+
+#### Features
+- Custom dashboards
+- Analytics reports
+- Data visualization
+- Export capabilities
+- Custom report creation
+
+#### New License Setup
+1. Obtain Looker license from Harness
+2. Configure in values.yaml
+3. Apply configuration:
+   ```bash
+   helm upgrade harness harness/harness -f values.yaml
+   ```
+4. Verify Looker activation
+
+#### License Renewal Process
+1. Monitor license status
+2. Request renewal from Harness
+3. Update configuration:
+   ```yaml
+   looker:
+     license:
+       key: "your-new-looker-license"
+   ```
+4. Apply changes
+5. Verify renewal
+
+### License Monitoring and Alerts
+
+#### License Status Monitoring
+```yaml
+# Configure monitoring
+monitoring:
+  enabled: true
+  alerts:
+    license:
+      expiration:
+        enabled: true
+        threshold: 30d
+      usage:
+        enabled: true
+        threshold: 80
+```
+
+#### Usage Tracking
+```yaml
+# Enable detailed usage tracking
+analytics:
+  enabled: true
+  tracking:
+    users: true
+    features: true
+    modules: true
+
 ## Feature Flags
 
-This topic describes how to manage Feature Flags for Harness Self-Managed Enterprise Edition. You can update Feature Flags using the `override.yaml` file for your base installation.
+Feature flags in Harness SMP allow you to enable, disable, or configure specific functionality across different components. This guide explains how to manage feature flags effectively in your deployment. 
 
-### View installed Feature Flags
+### Global Feature Flags - Basic Configuration
+Configure global feature flags in your `values.yaml`:
+```yaml
+global:
+  features:
+    enabled: true
+    # Common feature flags
+    flags:
+      BACKGROUND_VERIFICATION: true
+      CUSTOM_DASHBOARD: true
+      GRAPHQL_ENABLED: true
+      NEXT_GEN_ENABLED: true
+```
 
-Your base installation includes default Feature Flag settings. To view installed Feature Flags, do the following:
+### Platform-level Features
+```yaml
+platform:
+  harness-manager:
+    featureFlags:
+      PIPELINE_EXECUTION_HISTORY: true
+      CUSTOM_DASHBOARD_V2: true
+      ENHANCED_GIT_EXPERIENCE: true
+      LDAP_SSO_PROVIDER: true
+      SAML_SSO_PROVIDER: true
+```
 
-1. Open your global `override-prod.yaml` file in a text editor.
+## Module-Specific Feature Flags
 
-   :::info note
-    This file is typically located in the following default path.
+### CI Module Features
+```yaml
+ci:
+  ci-manager:
+    features:
+      ENABLE_STEP_DEBUGGER: true
+      ENABLE_REMOTE_DEBUGGING: false
+      ENABLE_CACHE_SHARING: true
+      ENABLE_CUSTOM_METRICS: true
+```
 
-   ```
-    /path/to/helm-charts/src/override-prod.yaml
-   ```
-   :::
+### CD Module Features
+```yaml
+cd:
+  service:
+    features:
+      ENABLE_CANARY_DEPLOYMENT: true
+      ENABLE_BLUE_GREEN: true
+      ENABLE_CUSTOM_DEPLOYMENT: true
+      ENABLE_APPROVAL_GATES: true
+```
 
-2. Go to `platform`.
+### CCM Features
+```yaml
+ccm:
+  ce-nextgen:
+    features:
+      ENABLE_COST_EXPLORER: true
+      ENABLE_BUDGET_ALERTS: true
+      ENABLE_RECOMMENDATIONS: true
+      ENABLE_RESOURCE_OPTIMIZATION: true
+```
 
-   Feature Flags included with the base installation are listed in this section.
+### STO Features
+```yaml
+sto:
+  features:
+    ENABLE_SECURITY_TESTS: true
+    ENABLE_VULNERABILITY_SCANNING: true
+    ENABLE_COMPLIANCE_CHECKS: true
+    ENABLE_CUSTOM_POLICIES: true
+```
 
-### Add Feature Flags to your installation
+## Environment-Specific Configurations
 
-To add Feature Flags, do the following:
+### Development Environment
+```yaml
+global:
+  environment: "development"
+  features:
+    flags:
+      DEBUG_MODE: true
+      VERBOSE_LOGGING: true
+      MOCK_SERVICES: true
+```
 
-1. Open your global `override-prod.yaml` file in a text editor.
+### Production Environment
+```yaml
+global:
+  environment: "production"
+  features:
+    flags:
+      DEBUG_MODE: false
+      VERBOSE_LOGGING: false
+      MOCK_SERVICES: false
+```
 
-   :::info note
-    This file is typically located in the following default path.
+## Feature Flag Categories
 
-   ```
-    /path/to/helm-charts/src/override-prod.yaml
-   ```
-   :::
+### Security Features
+```yaml
+global:
+  security:
+    features:
+      ENABLE_IP_WHITELISTING: true
+      ENFORCE_2FA: true
+      SESSION_TIMEOUT: 30
+      PASSWORD_POLICY: true
+```
 
-2. Go to the `platform` section for the `harness-manager` component.
+### Performance Features
+```yaml
+global:
+  performance:
+    features:
+      ENABLE_CACHING: true
+      ENABLE_COMPRESSION: true
+      ENABLE_REQUEST_THROTTLING: true
+      MAX_CONCURRENT_OPERATIONS: 100
+```
 
-   ```yaml
-      harness-manager:
-       external_graphql_rate_limit: "500"
-       autoscaling:
-         enabled: true
-         minReplicas: 2
-       # -- These flags are used by the helper function to create the FEATURES config value based off the global.<feature>.enabled boolean
-       # -- Feature Flags
-      featureFlags:
-         # -- Base flags for all modules(enabled by Default)
-         Base: "LDAP_SSO_PROVIDER,ASYNC_ARTIFACT_COLLECTION,JIRA_INTEGRATION,AUDIT_TRAIL_UI,GDS_TIME_SERIES_SAVE_PER_MINUTE,STACKDRIVER_SERVICEGUARD,BATCH_SECRET_DECRYPTION,TIME_SERIES_SERVICEGUARD_V2,TIME_SERIES_WORKFLOW_V2,CUSTOM_DASHBOARD,GRAPHQL,CV_FEEDBACKS,LOGS_V2_247,UPGRADE_JRE,LOG_STREAMING_INTEGRATION,NG_HARNESS_APPROVAL,GIT_SYNC_NG,NG_SHOW_DELEGATE,NG_CG_TASK_ASSIGNMENT_ISOLATION,AZURE_CLOUD_PROVIDER_VALIDATION_ON_DELEGATE,TERRAFORM_AWS_CP_AUTHENTICATION,NG_TEMPLATES,NEW_DEPLOYMENT_FREEZE,HELM_CHART_AS_ARTIFACT,RESOLVE_DEPLOYMENT_TAGS_BEFORE_EXECUTION,WEBHOOK_TRIGGER_AUTHORIZATION,GITHUB_WEBHOOK_AUTHENTICATION,CUSTOM_MANIFEST,GIT_ACCOUNT_SUPPORT,AZURE_WEBAPP,LDAP_GROUP_SYNC_JOB_ITERATOR,POLLING_INTERVAL_CONFIGURABLE,APPLICATION_DROPDOWN_MULTISELECT,USER_GROUP_AS_EXPRESSION,RESOURCE_CONSTRAINT_SCOPE_PIPELINE_ENABLED,NG_TEMPLATE_GITX,ELK_HEALTH_SOURCE,NG_ENABLE_LDAP_CHECK,CVNG_METRIC_THRESHOLD,SRM_HOST_SAMPLING_ENABLE,SRM_ENABLE_HEALTHSOURCE_CLOUDWATCH_METRICS,NG_SETTINGS"
-         # -- NG Specific Feature Flags(activated when global.ng is enabled)
-         NG: "ENABLE_DEFAULT_NG_EXPERIENCE_FOR_ONPREM,NEXT_GEN_ENABLED,NEW_LEFT_NAVBAR_SETTINGS,SPG_SIDENAV_COLLAPSE"
-         # -- CD Feature Flags (activated when global.cd is enabled)
-         CD: ""
-         # -- CI Feature Flags (activated when global.ci is enabled)
-         CI: "CING_ENABLED,CI_INDIRECT_LOG_UPLOAD"
-         # -- STO Feature Flags (activated when global.sto is enabled)
-         STO: "STO_BASELINE_REGEX,STO_STEP_PALETTE_BURP_ENTERPRISE,STO_STEP_PALETTE_CODEQL,STO_STEP_PALETTE_FOSSA,STO_STEP_PALETTE_GIT_LEAKS,STO_STEP_PALETTE_SEMGREP"
-         # -- SRM Flags (activated when global.srm is enabled)
-         SRM: "CVNG_ENABLED"
-         # -- Custom Dashboard Flags (activated when global.dashboards is enabled)
-         CDB: "NG_DASHBOARDS"
-         # -- FF Feature Flags (activated when global.ff is enabled)
-         FF: "CFNG_ENABLED"
-         # -- CCM Feature Flags (activated when global.ccm is enabled)
-         CCM: "CENG_ENABLED,CCM_MICRO_FRONTEND,NODE_RECOMMENDATION_AGGREGATE"
-         # -- GitOps Feature Flags (activated when global.gitops is enabled)
-         GitOps: "GITOPS_ONPREM_ENABLED,CUSTOM_ARTIFACT_NG,SERVICE_DASHBOARD_V2,ENV_GROUP,NG_SVC_ENV_REDESIGN"
-         # -- OPA (activated when global.opa is enabled)
-         OPA: ""
-         # -- CHAOS Feature Flags (activated when global.chaos is enabled)
-         CHAOS: "CHAOS_ENABLED"
-         # -- Disables OLD_GIT_SYNC if .global.ngGitSync is enabled
-         OLDGITSYNC : "USE_OLD_GIT_SYNC"
-         # -- AutoAccept Feature Flags
-         SAMLAutoAccept: "AUTO_ACCEPT_SAML_ACCOUNT_INVITES,PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES"
-         # -- Additional Feature Flag (placeholder to add any other featureFlags)
-         ADDITIONAL: ""
-   ```
-
-   You can add additional Feature Flags that are not included with the base configuration here.
-
-3. Add the Feature Flag.
-
-   For example, to add the next generation `CDS_OrgAccountLevelServiceEnvEnvGroup` flag, enter the following.
-
-   ```yaml
-     # ...
-   platform:
-     # ...
-   harness-manager:
-      external_graphql_rate_limit: "500"
-      autoscaling:
-         enabled: true
-         minReplicas: 2
-      featureFlags:
-         ADDITIONAL: "CDS_OrgAccountLevelServiceEnvEnvGroup"
-   ```
-
-4. Run Helm upgrade against your current release installation, referencing your updated values.
-
-   ```
-   helm upgrade <my-release> . -n harness-ng -f ../override-prod.yaml
-   ```
-
-   :::info note
-   For Feature Flags that affect `ng-manager`, you must restart the component(s) after the Helm upgrade is complete and the Harness Manager has restarted and is up and running. You can restart your pods or run the following rollout restart command on the Harness Manager deployment for your installation.
-
-   ```
-   kubectl rollout restart deployment ng-manager
-   ```
-   :::
-
-   :::info note
-   This example is the snapshot to update the Helm chart. You can also update the `values.yaml` file for your Kubernetes delegate.
-   :::
+### UI/UX Features
+```yaml
+platform:
+  next-gen-ui:
+    features:
+      ENABLE_NEW_DASHBOARD: true
+      ENABLE_DARK_MODE: true
+      ENABLE_CUSTOM_THEMES: true
+      ENABLE_GUIDED_TOURS: true
+```
 
 ## Auto Scaling 
 
-:::info Note
-This feature is available from Harness Helm Chart version 0.23.0. 
+This section explains how to configure autoscaling for Harness SMP components using Kubernetes Horizontal Pod Autoscaling (HPA) and Vertical Pod Autoscaling (VPA). Proper autoscaling ensures optimal resource utilization and application performance.
 
-By default, autoscaling is enabled for all services in Harness Helm Chart now.
-:::
+### Horizontal Pod Autoscaling (HPA)
 
-You can set up autoscaling for harness workloads using [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/). 
-Harness helm chart supports configuring HPA for either all services at once or for selective services.
-
-### Autoscaling for all services
-
-You can configure autoscaling for all services using the global override of helm chart.
-
+#### Global HPA Configuration
 ```yaml
 global:
   autoscaling:
-    enabled: true      # Enables autoscaling for all services
-    minReplicas: 1     # Set minimum replicas for all services
-    maxReplicas: 5     # Set maximum replicas for all services
-    targetCPU: 80      # Set target CPU for all services
-    targetMemory: 80   # Set target Memory for all services
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
 ```
+### Component-Specific HPA
 
-### Autoscaling for selective services
-
-If you want to change the autoscaling spec such as `minReplicas` for selective services, you can configure it like below.
-
-```yaml
-global:
-  autoscaling:
-    enabled: true      # Disables autoscaling for all services
-    minReplicas: 1     # Set minimum replicas for all services
-    maxReplicas: 5     # Set maximum replicas for all services
-    targetCPU: 80      # Set target CPU for all services
-    targetMemory: 80   # Set target Memory for all services
-
-platform:
-  ng-manager:
-    autoscaling:
-      minReplicas: 3   # Takes precedence over global minReplicas     
-```
-
-The same applies for other spec fields `maxReplicas`, `targetCPU` and `targetMemory`.
-
-### Autoscaling behaviour of selective services
-
-You can set autoscaling behaviour of services through their individual overrides. For eg., to set the scaleDown policy of ng-manager, you can configure it like below.
-
+#### Gateway Service
 ```yaml
 platform:
-  ng-manager:
+  gateway:
     autoscaling:
+      enabled: true
+      minReplicas: 3
+      maxReplicas: 10
+      targetCPUUtilizationPercentage: 75
+      targetMemoryUtilizationPercentage: 75
       behavior:
-        scaleDown:
+        scaleUp:
+          stabilizationWindowSeconds: 300
           policies:
-          - type: Pods
-            value: 4
-            periodSeconds: 60
-          - type: Percent
-            value: 10
-            periodSeconds: 60    
+            - type: Pods
+              value: 2
+              periodSeconds: 60
+        scaleDown:
+          stabilizationWindowSeconds: 300
+          policies:
+            - type: Pods
+              value: 1
+              periodSeconds: 60
+```
+
+#### Manager Service
+```yaml
+platform:
+  harness-manager:
+    autoscaling:
+      enabled: true
+      minReplicas: 2
+      maxReplicas: 8
+      targetCPUUtilizationPercentage: 70
+      metrics:
+        - type: Resource
+          resource:
+            name: cpu
+            target:
+              type: Utilization
+              averageUtilization: 70
+        - type: Resource
+          resource:
+            name: memory
+            target:
+              type: Utilization
+              averageUtilization: 75
+```
+
+### Vertical Pod Autoscaling (VPA)
+
+#### Enable VPA
+```yaml
+global:
+  vpa:
+    enabled: true
+    updateMode: "Auto"  # Options: Off, Initial, Auto
+```
+
+#### Component VPA Configuration
+```yaml
+platform:
+  gateway:
+    vpa:
+      enabled: true
+      updateMode: "Auto"
+      resourcePolicy:
+        containerPolicies:
+          - containerName: "*"
+            minAllowed:
+              cpu: "100m"
+              memory: "128Mi"
+            maxAllowed:
+              cpu: "4"
+              memory: "8Gi"
+            controlledResources: ["cpu", "memory"]
+```
+
+### Cluster Autoscaling
+
+#### Node Autoscaling
+```yaml
+global:
+  cluster:
+    autoscaling:
+      enabled: true
+      minNodes: 3
+      maxNodes: 10
+      scaleDownUnneededTime: "10m"
+      scaleDownDelayAfterAdd: "10m"
+```
+
+#### Node Group Configuration
+```yaml
+nodeGroups:
+  - name: default-pool
+    minSize: 1
+    maxSize: 5
+    labels:
+      role: general
+    taints: []
 ```
 
 To learn more about the HPA behavior, you can refer to its [Official Documentation](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#configurable-scaling-behavior)
+
+## Pod Disruption Budgets (PDBs)
+
+Pod Disruption Budgets (PDBs) ensure high availability of Harness SMP services during voluntary disruptions such as node maintenance, cluster upgrades, or scaling operations. This guide explains how to configure PDBs for different Harness components.
+
+### Global PDB Configuration
+```yaml
+global:
+  pdb:
+    enabled: true
+    minAvailable: 1    # or use maxUnavailable
+    # maxUnavailable: "25%"
+```
+
+## Dashboards 
+
+This guide explains how to configure and customize dashboards in Harness SMP. Dashboards provide visibility into your deployment metrics, pipeline execution, cost analysis, and system health.
+
+## Dashboard Types
+
+### Next Generation Dashboards
+```yaml
+platform:
+  ng-custom-dashboards:
+    enabled: true
+    features:
+      customization: true
+      sharing: true
+      export: true
+    resources:
+      limits:
+        cpu: "1"
+        memory: "2Gi"
+      requests:
+        cpu: "500m"
+        memory: "1Gi"
+```
+
+### Looker Dashboards
+```yaml
+looker:
+  enabled: true
+  configuration:
+    customization:
+      enabled: true
+      branding:
+        logo: "your-logo-url"
+        colors:
+          primary: "#0B5FFF"
+          secondary: "#2C3E50"
+    connections:
+      maxPoolSize: 50
+      queryTimeout: 300
+```
+
