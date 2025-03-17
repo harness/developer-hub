@@ -144,11 +144,22 @@ You can also specify [different values](/docs/chaos-engineering/concepts/chaos10
 
 1. On the next screen, copy the command to set up Linux chaos access, select **Done**, and then execute the copied command on your Linux machine.
 
+## Validate Installation
 
-## Disable Chaos
+After adding chaos infrastructure, Harness takes some time to set up all the chaos infrastructure resources. On the UI, if you navigate to **Environments** -> **Linux**, you can see the connection status is `CONNECTED`.
 
-1. Select the `⋮` icon against the chaos infrastructure name and select **Disable**.
+  ![](./static/confirm-3.png)
+
+That's it! Now you have a Linux chaos infrastructure and you're all set to inject chaos into your infrastructure.
+
+## Disable Infrastructure
+
+1. Go to the **Environments** under the **Chaos** tab, that lists all the environments created under the current project. Select the environment that has the chaos infrastructure to be deleted. Select the **Infrastructure Type** as **Linux**.
+
+2. Select the `⋮` icon against the chaos infrastructure name and select **Disable**.
 
     ![Delete Chaos Infra](./static/delete-infra.png)
 
 2. Copy the command displayed in the modal, and execute it in your Linux machine to uninstall the chaos infrastructure components. Finally, select **Confirm**.
+
+This disables your Linux chaos infrastructure. 
