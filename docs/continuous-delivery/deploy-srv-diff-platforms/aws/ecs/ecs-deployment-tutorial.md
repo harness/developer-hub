@@ -832,6 +832,21 @@ You can copy any of these and use them in later steps in your pipeline.
 
 ![](./static/ecs-deployment-tutorial-51.png)
 
+
+:::note  
+You can achieve more accurate failure detection for ECS Rolling Deployments in Harness. Harness evaluates both ECS task statuses and service steady-state statuses to determine deployment health.
+
+<div align="center">
+  <DocImage path={require('./static/ecs-steady-state-logs.png')} width="100%" height="100%" title="Click to view full size image" />
+</div>
+
+<div align="center">
+  <DocImage path={require('./static/ecs-steady-state-logs-2.png')} width="100%" height="100%" title="Click to view full size image" />
+</div>
+
+Currently, this feature is behind the feature flag `CDS_ECS_MONITOR_TASK_STATUS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 ## Review
 
 Congratulations. You successfully deployed an ECS service using Harness.
