@@ -80,7 +80,7 @@ CIDR Blocks:
 34.127.65.210, 35.233.172.173
 ```
 
-**We will begin transitioning to the new IP range gradually from March 15th, 2025 to March 30th, 2025**. During this period, ensure both the old and new IP configureation is set to ensure a seamless transition.
+**We will begin transitioning to the new IP range gradually from March 15th, 2025, to March 30th, 2025**. During this period, ensure both the old and new IP configurations are set to ensure a seamless transition.
 
 If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
 
