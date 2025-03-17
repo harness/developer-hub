@@ -68,4 +68,4 @@ No, you cannot manage policy sets in Git.
 
 Harness platform uses the Open Policy Agent (OPA) library version **0.62.0**.
 
-For more details, you can refer to the official OPA repository: [OPA v0.62.0](https://github.com/open-policy-agent/opa/tree/v0.62.0).
+For more details, you can refer to [OPA v0.62.0](https://github.com/open-policy-agent/opa/tree/v0.62.0).
