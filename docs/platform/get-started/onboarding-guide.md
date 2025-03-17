@@ -46,7 +46,7 @@ This option requires access to a Harness SMP license key as well as the ability 
 
 When you have the license key and download location, install and configure a Harness SMP instance as explained in [Install Harness SMP using Helm Chart](/docs/self-managed-enterprise-edition/install/install-using-helm).
 
-Then [create your Harness SMP Account](/docs/self-managed-enterprise-edition/get-started-with-smp#create-your-harness-account). After initial account creation, you can sign in to your Harness SMP account by navigating to `http://YOUR_DOMAIN_NAME/auth/#/signin`.
+Then create your Harness SMP Account. After initial account creation, you can sign in to your Harness SMP account by navigating to `http://YOUR_DOMAIN_NAME/auth/#/signin`.
 
 </TabItem>
 </Tabs>
