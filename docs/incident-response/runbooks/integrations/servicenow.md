@@ -18,10 +18,6 @@ ServiceNow integration enables your runbooks to:
 - Automate workflow transitions
 - Sync incident updates bidirectionally
 
-:::note Bidirectional Sync
-While Harness IR is capable of bidirectional synchronization with ServiceNow, this feature is currently under development. The current documentation covers the existing connector-based integration, with notes on future bidirectional capabilities.
-:::
-
 ## Connector-Based Integration
 
 ### Prerequisites
@@ -79,6 +75,46 @@ While Harness IR is capable of bidirectional synchronization with ServiceNow, th
   Number: "[servicenow.number]"
   State: "In Progress"
   WorkNotes: "Incident response team engaged"
+```
+
+## Directional Synchronization with IR
+
+Harness IR uses runbook triggers to update ServiceNow when incident fields change. When a field in IR changes, a runbook can automatically update the corresponding ServiceNow incident.
+
+### Field Change Triggers
+Configure runbooks to trigger on field changes:
+- State changes
+- Priority updates
+- Severity modifications
+- Assignment changes
+
+### Example: State Change Sync
+```yaml
+Trigger:
+  Type: Field Change
+  Field: state
+  
+Actions:
+  - Action Type: ServiceNow
+    Operation: Update State
+    Number: "[servicenow.number]"
+    State: "[incident.state]"
+    WorkNotes: "State updated from IR"
+```
+
+### Example: Priority Sync
+```yaml
+Trigger:
+  Type: Field Change
+  Field: priority
+  
+Actions:
+  - Action Type: ServiceNow
+    Operation: Update Incident
+    Number: "[servicenow.number]"
+    Fields:
+      Priority: "[incident.priority]"
+      WorkNotes: "Priority updated from IR"
 ```
 
 ## Advanced Features
