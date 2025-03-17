@@ -33,7 +33,7 @@ To edit or delete the environment, select the **`⋮`** icon against the name of
 
 After creating your environment, [create an infrastructure](/docs/chaos-engineering/getting-started/saas/#step-4-create-an-infrastructure) within it. The chaos experiment is executed within this infrastructure. 
 
-### Create a Chaos Experiment
+## Create Chaos Experiment
 
 You can add one or more chaos faults to a chaos experiment and execute it. [Create an experiment using the interactive guide or step-by-step](/docs/chaos-engineering/getting-started/saas/#step-7-construct-a-chaos-experiment) with one chaos fault, namely, pod delete, which has one resilience probe associated with it.
 

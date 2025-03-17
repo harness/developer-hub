@@ -22,19 +22,47 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## March 2025
 
-:::note
 
-**New UI for License Management in Harness CI**
+:::warning
 
-We’re excited to introduce an updated UI for managing your Harness Continuous Integration (CI) licenses. With the [new subscription page](https://developer.harness.io/docs/platform/get-started/subscriptions-licenses/subscriptions/#developer-360-modules-subscriptions), you can now easily track and assign licenses based on the number of developers using the platform, offering greater flexibility and control over your license allocation.
+**Action Required: Avoid Docker Hub Rate Limits**
 
-This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
+**Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
+on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
+
+* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
+* **Pull images anonymously from alternative registries**: switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
+* **Private registry**: Pull images from your own private registry.
+
+[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
 
 :::
 
-:::note
 
-**Network allowlisting Update for Hosted Linux Infrastructure**
+
+
+
+
+:::warning
+
+**Action Required: Migration from GCR to GAR**
+
+Google Container Registry (GCR) is being decommissioned. 
+
+* As part of this change, support for the **Build and Push to GCR step in Harness CI will be discontinued**. Customers currently using this step need to **transition to the Build and Push to Google Artifact Registry (GAR)** step to continue building and pushing container images without interruption.
+* Customers that have configured HarnessImage Connector to pull [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) form GCR, need to update the connector configurations to the [new Google Artifact Registry URL](http://us-docker.pkg.dev/gar-prod-setup/harness-public)
+
+To ensure uninterrupted service, we recommend completing these updates by April 22, 2025.
+* After March 18, 2025, writing images to Google Container Registry (GCR) will no longer be possible.
+* After April 22, 2025, reading images from GCR will also be disabled.
+
+For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
+:::
+
+
+:::warning
+
+**Network allowlisting Update for Hosted (Cloud) Linux Infrastructure**
 
 Harness Cloud users utilizing hosted Linux infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration.
 
@@ -61,35 +89,32 @@ If you have any questions or need assistance with the allowlisting process, plea
 
 :::note
 
-**Action Required: Migration from GCR to GAR**
+**New UI for License Management in Harness CI**
 
-Google Container Registry (GCR) is being decommissioned. 
+We’re excited to introduce an updated UI for managing your Harness Continuous Integration (CI) licenses. With the [new subscription page](https://developer.harness.io/docs/platform/get-started/subscriptions-licenses/subscriptions/#developer-360-modules-subscriptions), you can now easily track and assign licenses based on the number of developers using the platform, offering greater flexibility and control over your license allocation.
 
-* As part of this change, support for the **Build and Push to GCR step in Harness CI will be discontinued**. Customers currently using this step need to **transition to the Build and Push to Google Artifact Registry (GAR)** step to continue building and pushing container images without interruption.
-* Customers that have configured HarnessImage Connector to pull [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) form GCR, need to update the connector configurations to the [new Google Artifact Registry URL](http://us-docker.pkg.dev/gar-prod-setup/harness-public)
+This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
 
-To ensure uninterrupted service, we recommend completing these updates by April 22, 2025.
-* After March 18, 2025, writing images to Google Container Registry (GCR) will no longer be possible.
-* After April 22, 2025, reading images from GCR will also be disabled.
-
-For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
 :::
 
 ### Version 1.70
 
 <!-- 2025-03-03 -->
+#### New features and enhancements
 
+- Users can now set the stage variable `PLUGIN_SKIP_PUSH_IF_TAG_EXISTS` to skip the push step in the native **Build and Push to ECR** step if the tag already exists. (CI-10350)
+  
 #### Fixed issues
 
 - Resolved an issue with Azure Repos where cloning with a tag was not working. (CI-16298, ZD-78432)
 - Resolved an issue where Build Intelligence feature  couldn’t be configured via templates. With this fix, the property is now visible in templates, allowing users to configure CI stages regardless of the selected infrastructure. (CI-16342)
-
+  
 #### Harness images updates
 
 | **Image**                | **Change**                                      | **Previous version** | **New Version** |
 | ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
 | `plugins/artifactory`      | Vulberability fixes  | 1.7.1                | 1.7.2          |
-| `harness/ecr`      | Changes described in fixed issues list                | 20.18.7          |
+| `plugins/ecr`      | New input `PLUGIN_SKIP_PUSH_IF_TAG_EXISTS` and published at `plugins/ecr:20.18.7` (CI-10350)                | 20.18.6          | 20.18.7          |
 | `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
 | `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
 | `harness/drone-git`      | Changes described in fixed issues list  | 1.6.5                | 1.6.7          |

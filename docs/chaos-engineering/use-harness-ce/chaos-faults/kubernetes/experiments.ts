@@ -224,6 +224,18 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
    },
    {
+    name: "Pod JVM Solace Latency",
+    description:"Pod JVM Solace Latency injects latency in Solace queries for a Java application executing in a Kubernetes pod.",
+    tags: ["pod", "jvm", "solace", "latency"],
+    category: "kubernetes",
+  },
+   {
+    name: "Pod JVM Solace Exception",
+    description:"Pod JVM Solace Exception injects exception in Solace queries for a Java application executing in a Kubernetes pod.",
+    tags: ["pod", "jvm", "solace", "exception"],
+    category: "kubernetes",
+  },
+   {
     name: "Pod JVM method latency",
     description:"Pod JVM method latency slows down the Java application executing on Kubernetes pod by introducing delays in executing the method calls.",
     tags: ["pod", "latency"],

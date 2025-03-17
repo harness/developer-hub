@@ -1,19 +1,29 @@
 ---
-title: Dedicated Chaos Infrastructure
+title: Kubernetes Chaos Infrastructure
 sidebar_position: 1
 redirect_from:
 - /docs/category/harness-dedicated-infrastructure
 - /docs/chaos-engineering/onboarding/harness-infra
+- /docs/chaos-engineering/technical-reference/architecture/kubernetes
+- /docs/chaos-engineering/onboarding/harness-infra
 - /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/
 - /docs/chaos-engineering/get-started/prerequisites/#chaos-infrastructure-requirements
+- /docs/chaos-engineering/features/chaos-infrastructure/introduction
+- /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/
+- /docs/chaos-engineering/get-started/prerequisites/#chaos-infrastructure-requirements
+- /docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/
+- /docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures
+- docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures
+- /docs/chaos-engineering/chaos-infrastructure/disconnect-chaos-infrastructure
+- /docs/chaos-engineering/features/chaos-infrastructure/disconnect-chaos-infrastructure
 ---
 
 This topic describes the following:
-  - [What is Dedicated Chaos Infrastructure?](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra#what-is-harness-chaos-infrastructure)
-  - [Resource Requirements](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra#chaos-infrastructure-requirements)
-  - [Installation steps](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra#install-dedicated-chaos-infrastructure)
-  - [Validate the installation](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra#validate-installation)
-  - [Disable the infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra#disable-infrastructure)
+  - [What is Dedicated Chaos Infrastructure?](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes#what-is-harness-chaos-infrastructure)
+  - [Resource Requirements](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes#chaos-infrastructure-requirements)
+  - [Installation steps](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes#install-dedicated-chaos-infrastructure)
+  - [Validate the installation](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes#validate-installation)
+  - [Disable the infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes#disable-infrastructure)
 
 ## What is Harness Chaos Infrastructure?
 
@@ -68,8 +78,6 @@ The table below lists the chaos infrastructure execution plane components and th
         </tr>
     </tbody>
 </table>
-
-
 
 ## Install Dedicated Chaos Infrastructure
 
@@ -149,7 +157,7 @@ After adding chaos infrastructure, Harness takes some time to set up all the cha
 
   ![](./static/confirm-3.png)
 
-That's it! Now you have a dedicated chaos infrastructure and you're all set to inject chaos into your infrastructure.
+That's it! Now you have a dedicated Kubernetes chaos infrastructure and you're all set to inject chaos into your infrastructure.
 
 ## Disable Infrastructure
 
@@ -158,6 +166,8 @@ That's it! Now you have a dedicated chaos infrastructure and you're all set to i
     ![Delete Chaos Infra](./static/delete-chaos-infra-short.png)
 
 2. Execute the commands displayed in the modal from your terminal to remove the chaos infrastructure components. Finally, select **Confirm**.
+
+This disables your Kubernetes infrastructure.
 
 ## Next Steps
 

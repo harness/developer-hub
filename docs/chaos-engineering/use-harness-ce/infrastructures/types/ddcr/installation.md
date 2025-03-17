@@ -6,10 +6,16 @@ redirect_from:
 - /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/installation
 ---
 
-This topic describes how you can install Harness Delegate and enable chaos on it.
+This topic describes how you can install Harness Delegate and enable chaos on it. You can follow the interactive demo or the steps to install Harness Delegate.
+
+## Prerequisites
+
+- [Create an Environment](/docs/chaos-engineering/getting-started/saas/#step-3-create-an-environment)
 
 ## Interactive Demo
-Navigate through the demo below to see how to create an environment, a new infrastructure, a new connector and a Delegate. If you have created a connector and a Harness Delegate earlier, you can find the same in the list that is displayed while selecting the connector and Delegate. Select it instead of creating a new one.
+Navigate through the demo below to see how to create an environment, a new infrastructure, a new connector and a Delegate. 
+
+If you have created a connector and a Harness Delegate earlier, you can find their names in the list that is displayed while selecting the connector and Delegate, respectively. Select it instead of creating a new one.
 
 <iframe 
   src="https://app.tango.us/app/embed/9c5307d6-ec41-4706-bacc-6dfdd84cde49"
@@ -23,7 +29,8 @@ Navigate through the demo below to see how to create an environment, a new infra
   mozallowfullscreen="mozallowfullscreen" 
   allowfullscreen="allowfullscreen"></iframe>
 
-## Step-by-Step Demo
+
+## Step-by-Step Installation
 
 1. Select the **Environment** you created, and choose the **Infrastructure type**. In this example, select **Kubernetes** and click **+ New Infrastructure**.
 
@@ -31,7 +38,9 @@ Navigate through the demo below to see how to create an environment, a new infra
 
 3. Provide a **Name**, **Deployment Type**, **Select Infrastructure Type**, and provide **Cluster Details**, such as **Connector**, and **Namespace**. 
   
-    a. To create a new connector, go to [Create Kubernetes Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector/#add-a-kubernetes-cluster-connector). 
+    a. To create a new connector, go to [Create Kubernetes Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector/#add-a-kubernetes-cluster-connector). Harness CE supports creating two types of connectors:         
+      - [Kubernetes (Direct Connection)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference) 
+      - [GCP](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference)
 
     b. While creating a Kubernetes connector, select or [create a new Delegate](/docs/platform/delegates/install-delegates/overview/#install-the-helm-chart). Once your Delegate shows up in the list, enter its name in the search bar, and select **Save and Continue**. This will test your connection and describe if it was a success or no. Contact [Harness Support](mailto:support@harness.io) if you encounter issues with the verification.
 
@@ -42,3 +51,8 @@ Navigate through the demo below to see how to create an environment, a new infra
 - To configure mTLS with DDCR and Discovery Agent, go to [mTLS Support](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/mtls-support).
 - To configure mTLS with DDCR and and Discovery Agent proxy settings, go to [proxy Support](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support).
 :::
+
+## Next Steps
+
+- [Deploy Delegate on a Cluster](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/dedicated-delegate)
+- [Use mTLS with Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/mtls-support)

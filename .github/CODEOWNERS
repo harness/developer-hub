@@ -69,10 +69,10 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/continuousIntegrationData.ts @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
 
 # CODE Docs
-/docs/code-repository/ @pwolf-harness @hitesharinga @dewan-ahmed
-/release-notes/code-repository.md @pwolf-harness @hitesharinga @dewan-ahmed
-/src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga @dewan-ahmed
-/src/components/Docs/data/codeRepositoryData.tsx @pwolf-harness @hitesharinga @dewan-ahmed
+/docs/code-repository/ @hitesharinga @dewan-ahmed
+/release-notes/code-repository.md @hitesharinga @dewan-ahmed
+/src/components/Roadmap/data/codeData.ts @hitesharinga @dewan-ahmed
+/src/components/Docs/data/codeRepositoryData.tsx @hitesharinga @dewan-ahmed
 
 # STO Docs
 /docs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
@@ -96,7 +96,8 @@ static/  @rohanmaharjan100 @wei-harness
 # CET Docs
 /docs/continuous-error-tracking/ @M-Tsur
 /release-notes/continuous-error-tracking.md @M-Tsur
-/src/components/Docs/data/cloudCostManagementData.ts @M-Tsur
+/src/components/Docs/data/continuousErrorTrackingData.ts @M-Tsur
+/src/components/Docs/ContinuousErrorTracking.tsx @M-Tsur
 
 # SRM Docs
 /docs/service-reliability-management/ @sunilgupta-harness @umamukkara
@@ -105,12 +106,12 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness
 
 # Chaos Docs
-/docs/chaos-engineering/ @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26
+/docs/chaos-engineering/ @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness
 /release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya @Jonsy13
 /src/components/Roadmap/data/ceData.ts @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
 /src/components/Docs/data/chaosEngineeringData* @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
 # Chaos FAQs
-/docs/faqs/chaos-engineering-faqs @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26
+/docs/faqs/chaos-engineering-faqs @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness
 /docs/faqs/static @neelanjan00 @SmritiSatya @Jonsy13 @Adarshkumar14 @ksatchit @umamukkara
 /kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit @umamukkara
 
@@ -160,12 +161,12 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness
 
 # FF Docs
-/docs/feature-flags/ @HarnessTheChaos @jenniferopal @laura-mannus @Kira-Jennings @laura135
-/release-notes/feature-flags.md @HarnessTheChaos @jenniferopal
-/src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
-/src/components/Docs/data/featureFlagsData.ts @HarnessTheChaos @jenniferopal
+/docs/feature-flags/ @HarnessTheChaos @laura-mannus
+/release-notes/feature-flags.md @HarnessTheChaos
+/src/components/Roadmap/data/ffData.ts @HarnessTheChaos
+/src/components/Docs/data/featureFlagsData.ts @HarnessTheChaos
 # FF FAQs
-/docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos @jenniferopal
+/docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos
 
 #FME Docs
 /src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
