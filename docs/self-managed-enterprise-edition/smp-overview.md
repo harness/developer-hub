@@ -1,6 +1,6 @@
 ---
 title: Self-Managed Enterprise Edition 
-description: Overview of on-prem Harness Self-Managed Enterprise Edition
+description: Overview of on-premise Harness Self-Managed Enterprise Edition
 sidebar_label: Overview
 sidebar_position: 1
 ---
