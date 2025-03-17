@@ -1,6 +1,6 @@
 ---
 title: Helm Charts Guide for Amazon EKS
-description: This Guide provides detailed instructions for deploying Harness Self-Managed Enterprise Edition on Elastic Kubernetes Service (EKS) using Helm chart.
+description: This guide provides detailed instructions for deploying the Harness Self-Managed Enterprise Edition on Elastic Kubernetes Service (EKS) using a Helm chart.
 sidebar_label: Helm Charts for EKS
 sidebar_position: 1
 ---

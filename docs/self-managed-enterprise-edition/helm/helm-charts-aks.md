@@ -1,6 +1,6 @@
 ---
 title: Helm Charts Guide for Azure Kubernetes Service (AKS)
-description: This Guide provides detailed instructions for deploying Harness Self-Managed Enterprise Edition on Azure Kubernetes Service (AKS) using Helm chart.
+description: This guide provides detailed instructions for deploying the Harness Self-Managed Enterprise Edition on Azure Kubernetes Service (AKS) using a Helm chart.
 sidebar_label: Helm Charts for AKS
 sidebar_position: 3
 ---

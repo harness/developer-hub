@@ -1,6 +1,6 @@
 ---
 title: Helm Charts Guide for Google Kubernetes Engine (GKE)
-description: This Guide provides detailed instructions for deploying Harness Self-Managed Enterprise Edition on Google Kubernetes Engine (GKE) using Helm chart.
+description: This guide provides detailed instructions for deploying the Harness Self-Managed Enterprise Edition on Google Kubernetes Engine (GKE) using a Helm chart.
 sidebar_label: Helm Charts for GKE
 sidebar_position: 2
 ---
