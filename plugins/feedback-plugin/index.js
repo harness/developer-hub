@@ -14,12 +14,12 @@ export default function (context) {
                   // Initialize Refiner queue before script loads
                   window._refinerQueue = window._refinerQueue || [];
                 
-                  var script = document.createElement("script");
+                  const script = document.createElement("script");
                   script.type = "text/javascript";
                   script.async = true;
                   script.src = "https://js.refiner.io/v001/client.js";
                 
-                  var firstScript = document.getElementsByTagName("script")[0];
+                  const firstScript = document.getElementsByTagName("script")[0];
                   firstScript.parentNode.insertBefore(script, firstScript);
                 })();
                 function _refiner() {
