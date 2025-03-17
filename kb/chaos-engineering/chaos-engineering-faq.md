@@ -209,7 +209,7 @@ No, the existing infrastructures will continue to function as usual, but HCE rec
 - If the experiment format is old, you may see `litmus-checker` and `chaos-k8s` images in the YAML. Since version 1.37.0 is the last supported version of these components, the `litmus-checker` and `chaos-k8s` are displayed with version 1.37.0. For the new experiment format, you will only see a `go-runner` image.
 
 #### Why can't I create a new experiment from the UI?
-- To create a new experiment, you need to have at least one infrastructure in version 1.38.x or higher. Hence, you can either [connect a new infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable) or [upgrade an existing one](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra).
+- To create a new experiment, you need to have at least one infrastructure in version 1.38.x or higher. Hence, you can either [connect a new infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/) or [upgrade an existing one](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra).
 
 #### Is there a way to upgrade the older experiment to the new format?
 - Yes, you can manually edit the experiment manifest or create a new experiment from the UI. Older experiments will continue to work because of backward compatibility.
@@ -228,7 +228,7 @@ To learn more, go to [authentication overview](/docs/platform/authentication/aut
 
 #### How does the chaos infrastructure connect to the Harness SaaS control plane? Which ports should be opened in the users' environments?
 
-The chaos infrastructure connects to the Harness control plane through outbound connectivity over HTTP(s) using port 443. To learn more, go to [chaos infrastructures](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable).
+The chaos infrastructure connects to the Harness control plane through outbound connectivity over HTTP(s) using port 443. To learn more, go to [chaos infrastructures](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/permissions/).
 
 #### What are the permissions and privileges required to deploy and run the chaos infrastructure?
 
@@ -321,7 +321,7 @@ This is applicable on HCE entities that use a dedicated infrastructure rather th
 ## Integration
 
 #### Can Harness Chaos Agents be installed via Helm Charts?
-Yes, [chaos dedicated infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#use-helm-template-to-install-chaos-infrastructure) as well as [Harness Delegate](https://www.harness.io/blog/delegate-installation-via-helm) can be installed using Helm charts.
+Yes, [chaos dedicated infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/) as well as [Harness Delegate](https://www.harness.io/blog/delegate-installation-via-helm) can be installed using Helm charts.
 
 #### Can chaos experiments be triggered from [X] pipeline (Harness, Jenkins, Gitlab, Azure DevOps)?
 Yes, HCE provides integration with many tools, such as [Gitlab pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-gitlab-pipeline), [Jenkins pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-jenkins-pipeline), with [Harness CD](https://developer.harness.io/docs/category/integrate-hce-with-harness-cd), [Harness Feature Flags](https://developer.harness.io/docs/chaos-engineering/integrations/chaos-ff), and [SRM](https://developer.harness.io/docs/chaos-engineering/integrations/use-chaos-with-srm).
