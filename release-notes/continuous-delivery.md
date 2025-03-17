@@ -80,9 +80,6 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Users can now fetch the original execution ID during rollback, ensuring accurate execution context reference. (**PIPE-24537, ZD-73306**)
 
-- Users can now enable **Enforce Git Experience** for environments, infrastructure, and overrides v2, ensuring a consistent Git workflow across all components. (**CDS-103096**)
-
-
 #### Behavior changes
 
 - Users can now **create, update, and delete tags** in **AWS Lambda** and **AWS ECS deployments**, ensuring that all specified tags in the YAML manifest are correctly propagated during the deployment process and accurately reflected in the AWS Console. (**CDS-107032**)
