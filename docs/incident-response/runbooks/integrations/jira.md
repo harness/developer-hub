@@ -18,10 +18,6 @@ Jira integration enables your runbooks to:
 - Automate workflow transitions
 - Sync incident updates bidirectionally
 
-:::note Bidirectional Sync
-While Harness IR is capable of bidirectional synchronization with Jira, this feature is currently under development. The current documentation covers the existing connector-based integration, with notes on future bidirectional capabilities.
-:::
-
 ## Connector-Based Integration
 
 ### Prerequisites
@@ -81,6 +77,46 @@ While Harness IR is capable of bidirectional synchronization with Jira, this fea
   Comment: "Incident response initiated"
 ```
 
+## Directional Synchronization with IR
+
+Harness IR uses runbook triggers to update Jira when incident fields change. When a field in IR changes, a runbook can automatically update the corresponding Jira issue.
+
+### Field Change Triggers
+Configure runbooks to trigger on field changes:
+- State changes
+- Priority updates
+- Severity modifications
+- Assignment changes
+
+### Example: State Change Sync
+```yaml
+Trigger:
+  Type: Field Change
+  Field: state
+  
+Actions:
+  - Action Type: Jira
+    Operation: Transition
+    IssueKey: "[jira.key]"
+    Transition: "[incident.state]"
+    Comment: "State updated from IR"
+```
+
+### Example: Priority Sync
+```yaml
+Trigger:
+  Type: Field Change
+  Field: priority
+  
+Actions:
+  - Action Type: Jira
+    Operation: Update Fields
+    IssueKey: "[jira.key]"
+    Fields:
+      Priority: "[incident.priority]"
+    Comment: "Priority updated from IR"
+```
+
 ## Advanced Features
 
 ### Bidirectional Sync (Coming Soon)
@@ -104,9 +140,23 @@ The following features are planned for future releases:
    - User mapping
 
 3. **Field Mapping**
-   - Custom field synchronization
-   - Value transformation
-   - Validation rules
+   ```yaml
+   # Issue Creation
+   fields:
+     summary: "{{incident.title}}"
+     description: "{{incident.description}}"
+     priority: "{{incident.severity}}"
+     assignee: "{{incident.owner}}"
+     labels: ["incident", "{{incident.service}}", "{{incident.environment}}"]
+     components: ["{{incident.component}}"]
+     customfield_10001: "{{incident.timeline}}"
+   ```
+
+   Common mappings:
+   - **Basic Fields**: Title, description, priority
+   - **Team Fields**: Assignee, components, labels
+   - **Context Fields**: Service, environment
+   - **Custom Fields**: Timeline, metrics, impact
 
 ## Best Practices
 
@@ -114,7 +164,8 @@ The following features are planned for future releases:
 - Use consistent naming conventions
 - Include key incident details
 - Link related issues
-- Maintain field mappings
+- Keep field mappings simple
+- Test template rendering
 
 ### Workflow Integration
 - Define clear state mappings
