@@ -28,13 +28,6 @@ import { MODULES } from "@site/src/constants";
             link: "/docs/self-managed-enterprise-edition/smp-supported-platforms",
           },
           {
-            title: "Onboarding guide",
-            module: MODULES.platform,
-            description:
-              "Learn how to create a Harness account and first project. These are the first tasks that come after installing the on-prem Harness Self-Managed Enterprise Edition.",
-            link: "/docs/self-managed-enterprise-edition/get-started-with-smp",
-          },
-          {
             title: "Install using Helm",
             module: MODULES.platform,
             description:
