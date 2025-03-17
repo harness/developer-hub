@@ -39,10 +39,6 @@ on public image pulls**. By default, Harness uses anonymous access to pull image
 :::
 
 
-
-
-
-
 :::warning
 
 **Action Required: Migration from GCR to GAR**
@@ -83,6 +79,9 @@ CIDR Blocks:
 34.127.6.209, 35.185.226.205, 35.247.24.71, 34.168.30.50, 35.233.132.196, 34.168.214.255, 34.102.103.7, 34.102.40.149, 34.102.16.205,  
 34.127.65.210, 35.233.172.173
 ```
+
+**We will begin transitioning to the new IP range gradually from March 15th, 2025, to March 30th, 2025**. During this period, ensure both the old and new IP configurations are set to ensure a seamless transition.
+
 If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
 
 :::
