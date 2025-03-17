@@ -1228,7 +1228,6 @@ const sidebars: SidebarsConfig = {
         },
         "incident-response/resources/whats-supported",
         "incident-response/resources/ir-best-practices",
-        "incident-response/resources/ir-security",
         "incident-response/resources/faq"
       ],
     },

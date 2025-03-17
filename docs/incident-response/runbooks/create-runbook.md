@@ -42,6 +42,9 @@ Choose from these integration categories:
 - **[Zoom](./integrations/zoom.md)**
   - Create meetings
   - Manage participants
+- **[Harness Pipelines](./integrations/harness-pipelines.md)**
+  - Send Notifications
+  - 
 
 #### Incident Response Automation
 - **[Jira](./integrations/jira.md)**
@@ -50,7 +53,7 @@ Choose from these integration categories:
 - **[ServiceNow](./integrations/servicenow.md)**
   - Incident management
   - Change requests
-- **Harness Pipelines**
+- **[Harness Pipelines](./integrations/harness-pipelines.md)**
   - Remediation workflows
   - Service management
 
