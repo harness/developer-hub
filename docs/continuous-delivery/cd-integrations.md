@@ -22,6 +22,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| CDS_AZURE_CLI_WEBAPP_DEPLOYMENT | Enables enhanced support for non-standard configurations and Azure CLI-based workflows for Azure Web App deployments. Available with Delegate version `85302` or later. **This feature is in Limited GA**|
 | CDS_HELM_DELETE_STEP | Enables a native **Helm Uninstall** step in the Deploy stage to uninstall Helm charts. **This feature is in Limited GA** |
 | CDS_ECS_MONITOR_TASK_STATUS | Enables Harness to accurately detect failures in **ECS Rolling Deployments**. **This feature is in Limited GA** |
 | PIPE_USE_HARNESS_CODE_FOR_INLINE_ENTITIES | Saves inline entities in the [Harness Code Repository](/docs/code-repository/get-started/onboarding-guide/) by default. **This feature is in Limited GA** |
