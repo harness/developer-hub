@@ -309,8 +309,50 @@ When the `Download` flag is set to `true`, the plugin reverses its behavior:
 
 You can download artifacts from GCS by:
 
+- [Using the OOTB **Upload Artifacts to GCS** step](#use-the-ootb-step)
 - [Using `plugins/gcs` in a **Plugin Step** to download](#use-a-plugin-step)
-- [Using the OOTB **Upload Artifacts to GCS** step with OIDC](#use-the-ootb-step-with-oidc)
+
+### Use the OOTB Step
+
+The OOTB **Upload Artifacts to GCS** step in CI is designed to perform upload operations by default. However, since the Drone plugins/gcs plugin supports downloads when the `PLUGIN_DOWNLOAD` variable is set to true, you can simply pass this stage variable to switch the operation mode.
+
+#### Configuration Steps
+
+1. Create a [GCP Connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
+
+  :::tip
+
+  This works with an OIDC enabled connector as well. To learn more, go to [Configure GCP with OIDC](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted)
+
+  :::
+
+2. Add a pipeline stage variable named `PLUGIN_DOWNLOAD` and set it `true`.
+3. Configure the pipeline. Add the **Upload Artifacts to GCS** step and select the GCP connector you created. 
+
+Example yaml:
+
+```yaml
+    - stage:
+...
+...
+              - step:
+                  type: GCSUpload
+                  name: GCSUpload_1
+                  identifier: GCSUpload_1
+                  spec:
+                    connectorRef: gcp-oidc-connector
+                    bucket: bucketName
+                    sourcePath: YOUR_BUCKET_NAME/DIRECTORY
+                    target: path/to/download/destination
+        variables:
+          - name: PLUGIN_DOWNLOAD
+            type: String
+            description: ""
+            required: false
+            value: "true"
+...
+...
+```
 
 ### Use a plugin step
 
@@ -391,42 +433,6 @@ Below is an example configuration:
         target: path/to/download/destination
         download: "true"
 ```
-
-### Use the OOTB Step with OIDC
-
-The OOTB **Upload Artifacts to GCS** step in CI is designed to perform upload operations by default. However, since the Drone plugins/gcs plugin supports downloads when the `PLUGIN_DOWNLOAD` variable is set to true, you can simply pass this stage variable to switch the operation mode.
-
-#### Configuration steps
-
-1. Create a GCP Connector with OIDC. Go to [Configure OIDC with GCP](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted) to learn how to set up a GCP connector that uses OIDC.
-2. Add a pipeline stage variable. In your pipeline stage, add a variable named `PLUGIN_DOWNLOAD` and set it `true`.
-3. Configure the pipeline. Add the **Upload Artifacts to GCS** step and select the GCP connector you created. 
-
-Example yaml:
-
-```yaml
-    - stage:
-...
-...
-              - step:
-                  type: GCSUpload
-                  name: GCSUpload_1
-                  identifier: GCSUpload_1
-                  spec:
-                    connectorRef: gcp-oidc-connector
-                    bucket: bucketName
-                    sourcePath: YOUR_BUCKET_NAME/DIRECTORY
-                    target: path/to/download/destination
-        variables:
-          - name: PLUGIN_DOWNLOAD
-            type: String
-            description: ""
-            required: false
-            value: "true"
-...
-...
-```
-
 
 ## Troubleshoot uploading artifacts
 
