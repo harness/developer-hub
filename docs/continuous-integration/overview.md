@@ -10,6 +10,8 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-integration/ci-quickstarts/ci-concepts
   - /tutorials/ci-pipelines/ci-overview
+  - /docs/continuous-integration/get-started/overview
+  - 
 ---
 
 Harness is a leading provider of the Continuous Delivery-as-a-Service platform. Harness Continuous Integration (CI) extends this functionality with Continuous Integration-as-a-Service. Harness CI simplifies the code development and testing process.
@@ -109,4 +111,4 @@ When a CI pipeline build finishes successfully, the pipeline can send artifacts 
 
 ## Try Harness CI
 
-Ready to try Harness CI for yourself? [Try Harness CI now](./tutorials.md) or [request a demo](https://harness.io/demo).
+Ready to try Harness CI for yourself? [Try Harness CI now](/docs/category/tutorials-and-code-samples) or [request a demo](https://harness.io/demo).

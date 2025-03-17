@@ -4,9 +4,10 @@ description: View and manage your CI subscriptions and licenses.
 sidebar_position: 6
 redirect_from:
   - /docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt
+  - /docs/continuous-integration/get-started/ci-subscription-mgmt
 ---
 
-<!-- ![](/docs/continuous-integration/get-started/static/ci_usage_overview.png) -->
+<!-- ![](/docs/continuous-integration/static/ci-usage-overview.png) -->
 
 
 import Overview from '/docs/continuous-integration/shared/subscription-overview.md';
@@ -35,7 +36,7 @@ Harness Continuous Integration module is using the Developer 360 subscription mo
 
 [Learn more Developer license model](/docs/platform/get-started/subscriptions-licenses/subscriptions/).
 
-<DocImage path={require('/docs/continuous-integration/get-started/static/ci-user-license-overview.png')} />
+<DocImage path={require('/docs/continuous-integration/static/ci-user-license-overview.png')} />
 
 ### Cloud Credits
 
@@ -46,7 +47,7 @@ The Cloud Credits View in Harness provides a comprehensive overview of your clou
 [Learn more about Harness Cloud billing](/docs/continuous-integration/get-started/ci-subscription-mgmt#harness-cloud-billing-and-cloud-credits).
 
 
-<DocImage path={require('/docs/continuous-integration/get-started/static/credits-usage-new-v2.png')} />
+<DocImage path={require('/docs/continuous-integration/static/credits-usage-new-v2.png')} />
 
 
 
@@ -54,7 +55,7 @@ The Cloud Credits View in Harness provides a comprehensive overview of your clou
 
 Harness Cloud provides Harness-managed infrastructure that can be used for various tasks in Harness such as builds, security tests and infrastructure provisioning. This section outlines how billing and credit consumption work for all Harness Cloud executions.
 
-[Learn more about Harness Cloud](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+[Learn more about Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
 
 ### Credit consumption
