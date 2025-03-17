@@ -25,6 +25,28 @@ A database schema is the structure of a database, e.g. what tables and columns a
 
 A database instance associates a database schema to a database connection. It represents the intersection of the database's structural definition (the schema) with the actual data environment where the schema is implemented.
 
+```bash
+Database Instance
+├── Database 1
+│   ├── Schema A
+│   │   ├── Table 1
+│   │   └── Table 2
+│   └── Schema B
+│       ├── Table 3
+│       └── View 1
+└── Database 2
+    ├── Schema C
+    │   └── Table 4
+    └── Schema D
+        ├── Table 5
+        └── Stored Procedure 1
+
+```
+**In this hierarchy**:
+- One database instance can host multiple databases
+- One database can contain multiple schemas
+- Each schema can contain multiple database objects
+
 ### Database Connection
 
 A database connection refers to the specific parameters and credentials used to establish a secure link between the Harness platform and an individual database server. This connection is done through a JDBC (Java Database Connectivity) URL, which specifies the location of the database server, and is authenticated using a username and password. The connection is made via a Harness Delegate, which allows secure access to the database, even when the database instance is not internet-accessible. This setup enables Harness to execute SQL scripts, orchestrate database changes, and manage schema versions as part of the CI/CD pipeline, all while adhering to security best practices. 
@@ -77,14 +99,87 @@ A rollback in the context of deployment refers to the process of reverting an ap
 
 An open source database change control CLI tool that is leveraged used by Harness DB DevOps.
 
-### Changelog
+## Understanding Changelog and Changesets
 
-A collection of database changes that can be applied to a database. It includes detailed entries for each release or update, listing new features, bug fixes, improvements, and any other modifications. 
+### Changelog
+A collection of database changes that can be applied to a database. It includes an individual unit of change known as a changeset.
 
 ### Changeset
-
-A single set of changes that are deployed and rollback together. It refers to a collection of changes made to a codebase in a single commit or transaction in a version control system (VCS) like Git, Mercurial, or Subversion. 
+Changesets are the fundamental units of database change tracking. Each changeset represents an atomic change to your database schema or data. Here are the key concepts:
 
 ### Change
-
 An individual change as part of a changeset.
+
+1. **Unique Identification**: Each changeset requires two identifiers:
+   - `id`: A unique identifier for the change
+   - `author`: The person responsible for the change
+
+2. **Change Tracking**: Once a changeset is executed, it's tracked in a special table (typically called DATABASECHANGELOG) to ensure it's never run twice.
+
+3. **File Name**: The name of the changeset file that defines the change.
+
+### Changelog
+A collection of database changes that can be applied to a database. It includes an individual unit of change known as a changeset.
+
+### File Format
+
+The format of your changeset depends on the file type of your changelog, which can be SQL, XML, YAML, or JSON
+
+![File format](./static/file-types-of-changelog.png)
+
+##### SQL Example 
+``` SQL Example
+--liquibase formatted sql
+--changeset John Snow:1
+CREATE TABLE products (
+      id INT PRIMARY KEY,
+      name VARCHAR(255)
+);
+```
+
+##### XML Example
+``` XML Example
+<changeSet  id="1"  author="John Snow">
+    <createTable  tableName="company">
+        <column  name="address"  type="varchar(255)"/>
+    </createTable>
+</changeSet>
+```
+
+##### YAML Example
+``` YAML Example
+databaseChangeLog:
+  -  changeSet:  
+      id:  1
+      author: John Snow
+      changes:
+        -  createTable:
+            tableName: company
+            columns:
+              -  column:
+                  name: address
+```
+
+##### JSON Example
+``` JSON Example
+{
+  "changeSet": {
+    "id": "1",
+    "author": "John Snow",
+    "changes": [
+      {
+        "createTable": {
+          "tableName": "company",
+          "columns": [
+            {
+              "column": {
+                "name": "address"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
