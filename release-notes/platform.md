@@ -22,8 +22,36 @@ These release notes describe recent changes to Harness Platform.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
-
 ## Important feature change notice
+
+:::warning Important Update: Change in Default Container Registry for Harness Images
+
+**Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
+on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. if you are using the default `harnessImage` with anonymous access, pipeline failures may occur. 
+
+To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
+* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
+* **Pull images anonymously from alternative registries**: switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
+* **Private registry**: Pull images from your own private registry.
+
+The `harnessImage` connector configuration is used for pulling Harness images as described in the below articles: 
+- [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci)
+- [Harness STO images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images#harness-sto-images-list)
+- [Harness IDP images](https://developer.harness.io/docs/internal-developer-portal/flows/harness-pipeline/#specify-the-harness-idp-images-used-in-your-pipelines)
+
+[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
+
+Additionally, **starting April 1, 2025, all [Harness delegate images](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types) will be pulled from Google Artifact Registry (GAR)** by default to improve performance, security, and scalability.
+
+GAR Path `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/<IMAGE>:<TAG>`
+
+If your organization restricts access to Google Artifact Registry (GAR), consider one of the following options to avoid disruptions:
+* Whitelist GAR to allow seamless access to Harness images.
+* Configure Harness to use authenticated access instead of anonymous pulls from Docker Hub.
+* Set up a registry mirror to pull Harness images instead of relying on Docker Hub.
+* Continue using Docker Hub if the restrictions do not affect you. 
+
+::: 
 
 :::info important
 This is a notification for a feature change aimed at enhancing your experience with Harness. Here's what you need to know:
@@ -78,6 +106,17 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## February 2025
+
+### Version 1.79.x <!-- February 28, 2025-->
+#### Fixed issues 
+
+- Removed the page load spinner condition to include Usage Breakdown loading status. The Usage Breakdown component now has its own loading spinner instead of displaying a loading spinner on the Subscriptions page. [PL-60615]  
+- Users will now see a clear error message when they attempt to introduce two conditions with the same name. [PL-60365]  
+
+#### New features and enhancements
+
+- For the Email channel type in CNS, emails are now optional if the user has added user groups as input. [PL-57711]
+- Added OIDC as a new authentication method, allowing [Single Sign-On (SSO) with any custom OIDC (OpenID Connect)](/docs/platform/authentication/single-sign-on-sso-with-oidc) provider. This feature is available only for accounts with Vanity URL and is behind the feature flag PL_ENABLE_OIDC_AUTHENTICATION. [PL-56480]
 
 ### Version 1.78.x <!-- February 21, 2025-->
 #### Fixed issues

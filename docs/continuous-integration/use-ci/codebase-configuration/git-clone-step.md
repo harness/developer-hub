@@ -13,19 +13,8 @@ This topic describes how to use the **Git Clone** step included in Harness Conti
 
 For example, assume the default codebase is a repo that contains app code files, and the Dockerfile necessary to build the app image is in a different repo. You can use a **Git Clone** or **Run** step to clone the second repo into the workspace. Then, you can use a **Build and Push** step to build and push an image using files from both repos.
 
-:::note
-Git Clone enhancements listed below are now Generally Available (GA)
-
-Harness has introduced several powerful enhancements to Git clone operations, available in both the Git Clone step and the native Clone Codebase functionality. These include:
-
-- Git LFS - Allows users to clone repositories with large file storage (LFS) efficiently.
-- Fetch Tags - Enables fetching of tags during the clone operation.
-- Sparse Checkout - Enables cloning specific subdirectories.
-- Clone Submodules - Adds options for including and recursively cloning Git submodules.
-- Clone Path Customization - Exposes the clone path in the codebase section, allowing users to specify a custom clone directory.
-- Additional Pre-Fetch Command - Ability to specify any additional Git commands to run before fetching the code.
-
-If these capabilities are not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+:::tip
+In VM runners and cloud infrastructure, the step to clone your codebase runs in a container by default. Enable the `CI_GIT_CLONE_CONTAINERLESS` feature flag to run it on the host, which is recommended for faster cloning on Windows by eliminating image download time.
 :::
 
 Add a **Git Clone** step to clone a second repo into the pipeline's workspace.

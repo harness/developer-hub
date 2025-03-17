@@ -103,7 +103,7 @@ For example, to execute the network loss fault,
 ## Harness Delegate
 
 :::tip
-The FAQs below are based on HCE entities using [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr).
+The FAQs below are based on Harness CE entities using [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr#what-is-ddcr).
 :::
 
 #### Do you support On-Premise Harness Control Plane?
@@ -116,7 +116,7 @@ HCE uses the Harness Delegate to execute chaos experiments, which you can levera
 - Better control over chaos experiments by facilitating advanced tunables.
 - Gain insights into application-level resilience scores.
 
-Go to [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr) for more information.
+Go to [Harness Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr#what-is-ddcr) for more information.
 
 #### What ports are necessary to be opened in the org's firewall rules to access the Harness Control Plane from the user environment?
 You can access the Harness control plane from the user environment with outbound connectivity over HTTPS using port 443.
@@ -356,6 +356,10 @@ Yes, each unique environment where a service undergoes chaos experimentation cou
 #### How is the license utilization measured in Harness Chaos Engineering?
 
 License utilization is measured over a 30-day cycle. Each cycle allows license services to be rolled over to a different set of target services, enabling flexible use across various teams, applications, and environments.
+
+##### Are the licenses continued to be counted beyond the 30 day cycle?
+
+Only if the chaos experimentation is active. If you run chaos experiments on a resource (such as a Kuberentes Deployment) now and do not run any experiments for the next 30 days, then the utilised license will be released after the 30-day idle period. Licenses are counted only if at least one chaos experiment is run against a service in the last 30 days. This system of license counting allows the reuse of licenses in a given annual period of licensing. 
 
 #### Can I change the target services for my license in Harness Chaos Engineering?
 

@@ -1,9 +1,42 @@
 import { Horizon } from "./roadmapData";
 export const platformData: Horizon = {
-    Released: {
+  Released: {
     description: "What has been released",
-
     feature: [
+      {
+        title: "Custom banners",
+        description: "Display custom banners in the Harness UI",
+        tag: [],
+      },
+      {
+        tag: [{ value: "Secure" }],
+        title: "OIDC Support for secret managers",
+        description:
+          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider secret manager without secrets or credentials",
+      },
+      {
+        tag: [{ value: "Delegate" }],
+        title: "UBI9 upgrade",
+        description: "Update the Delegate base image from redhat/ubi8-minimal:8.10 to redhat/ubi9-minimal:9.4",
+      },
+      {
+        tag: [{ value: "Access Control" }],
+        title: "Centralized view of permissions on a resource",
+        description:
+          "Centralized visibility into which permissions have been granted to whom and on what resources",
+      },
+      {
+        tag: [{ value: "Authentication" }],
+        title: "SSO with OIDC",
+        description:
+          "Single Sign-On (SSO) with any OIDC (OpenID Connect) provider, allowing authentication and provisioning user and user group",
+      },
+      {
+        tag: [{ value: "Notify" }, { value: "Pipeline" }],
+        title: "Notifications via Datadog",
+        description:
+          "Real-time pipeline event notifications directly in Datadog,",
+      },
       {
         tag: [{ value: "Secure" }],
         title: "OIDC Support for GCP",
@@ -14,7 +47,7 @@ export const platformData: Horizon = {
         tag: [{ value: "Secure" }],
         title: "Encrypted SAML",
         description:
-          "Enable encrypted SAML to allow Harness integration with your IDP",
+          "Enable encrypted SAML to allow Harness integration with your IdP",
       },
       {
         tag: [],
@@ -60,7 +93,7 @@ export const platformData: Horizon = {
       },
       {
         tag: [],
-        title: "Audit Trails",
+        title: "Audit Trail",
         description: "Send audit events to Splunk and GCS bucket",
       },
       {
@@ -90,8 +123,92 @@ export const platformData: Horizon = {
     ],
   },
   Now: {
-    description: "Q4 2024, Nov 2024 - Jan 2025",
+    description: "Q1 2025, Feb 2025 - Apr 2025",
     feature: [
+      {
+        title: "Audit logs streaming on Sumo Logic",
+        description:
+          "Configure Sumo Logic as a streaming destination in Harness to send audit log data to your Sumo Logic hostel collectors.",
+        tag: [{ value: "Audit Trail" }],
+      },
+      {
+        title: "Audit events for expired API token",
+        description:
+          "Dedicated event for expiry of API tokens allowing for easy debugging.",
+        tag: [{ value: "Audit Trail" }],
+      },
+      {
+        title: "Granular RBAC Permissions for User Groups",
+        description:
+          "Granular permissions for User Groups to provide users more control while creating different roles.",
+        tag: [{ value: "Access Control" }],
+      },
+      {
+        title: "Impersonate a user",
+        description:
+          "Ability to impersonate a user allowing an impersonator to perform actions on the user behalf. This helps admins ensure that all users have desired access to resources.",
+        tag: [{ value: "Access Control" }],
+      },
+      {
+        title: "Granular RBAC Permissions for Dashboards",
+        description:
+          "Granular permissions for Dashboards to provide users more control while creating different roles.",
+        tag: [{ value: "Access Control" }, { value: "Dashboards" }],
+      },
+      {
+        title: "Auto save Dashboard",
+        description:
+          "Auto save progress made on dashboards.",
+        tag: [{ value: "Dashboards" }],
+      },
+      {
+        title: "Copy tiles from a dashboard",
+        description:
+          "Copy tile from one dashboard and use it in another dashboard.",
+        tag: [{ value: "Dashboards" }],
+      },
+      {
+        title: "Access control for Dashboard: Schedule Delivery",
+        description:
+          "Copy tile from one dashboard and use it in another dashboard.",
+        tag: [{ value: "Dashboards" }, { value: "Access Control" }],
+      },
+      {
+        title: "Auto upgrade Harness Docker Delegate",
+        description:
+          "",
+        tag: [{ value: "Delegate" }],
+      },
+      {
+        title: "High availability support for Harness Docker Delegate",
+        description:
+          "",
+        tag: [{ value: "Delegate" }],
+      },
+      {
+        title: "Send notifications through Delegate",
+        description:
+          "Receive central or pipeline notifications exclusively through Delegates or a designated delegate.",
+        tag: [{ value: "Delegate" }],
+      },
+      {
+        title: "Policy as Code for Variables",
+        description:
+          "Support for Variables as an entity to store and enforce policies for variables and processes across the Harness platform.",
+        tag: [{ value: "Policy" }],
+      },
+      {
+        title: "Customized notification body text",
+        description:
+          "Create and manage customized notification body text",
+        tag: [{ value: "Notify" }],
+      },
+      {
+        title: "Send high frequency notifications",
+        description:
+          "",
+        tag: [{ value: "Notify" }],
+      },
       {
         title: "List UI Improvements",
         description:
@@ -126,24 +243,14 @@ export const platformData: Horizon = {
       },
       {
         tag: [],
-        title: "Custom banners",
-        description: "Display custom banners in the Harness UI",
-      },
-      {
-        tag: [{ value: "Delegate" }],
-        title: "UBI9 upgrade",
-        description: "Update the Delegate base image from redhat/ubi8-minimal:8.10 to redhat/ubi9-minimal:9.4",
-      },
-      {
-        tag: [{ value: "Secure" }],
-        title: "OIDC Support for secret managers",
-        description:
-          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your cloud provider secret manager without secrets or credentials",
-      },
-      {
-        tag: [],
         title: "Console log line limit",
         description: "Ability to increase the console log line limits",
+      },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Supported modules",
+        description:
+          "Supply Chain Security - Beta, Infrastructure as Code Mgmt - Beta",
       },
       {
         tag: [],
@@ -153,8 +260,44 @@ export const platformData: Horizon = {
     ],
   },
   Later: {
-    description: "Q1 2025+, Feb 2025 & beyond",
+    description: "Q2 2025+, May 2025 & beyond",
     feature: [
+      {
+        title: "Export audit trail as CSV",
+        description:
+          "Export audit trail as a CSV directly from Harness UI.",
+        tag: [{ value: "Audit Trail" }],
+      },
+      {
+        tag: [{ value: "Policy" }],
+        title: "Policy to govern projects",
+        description:
+          "Support to allow policy to govern projects",
+      },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Supported modules",
+        description:
+          "Internal Developer Portal",
+      },
+      {
+        title: "Custom Login Message for SMP",
+        description:
+          "Add a custom message on the login screen in SMP. Typically used for Legal disclaimers.",
+        tag: [{ value: "SMP" }],
+      },
+      {
+        title: "Move Project between Organizations",
+        description:
+          "Move a project from one org to another to support scenarios like ownership change.",
+        tag: [],
+      },
+      {
+        title: "Increased in Data Retention period",
+        description:
+          "Support for increased data retention for Audit logs & Pipeline logs.",
+        tag: [],
+      },
       {
         tag: [{ value: "Pipeline" }, { value: "Insights" }],
         title: "Pipeline Analytics",
@@ -165,31 +308,7 @@ export const platformData: Horizon = {
         title: "DAG Support For Pipeline",
         description:
           "Enable complex flows such as parallel execution, stage grouping, etc.",
-      },
-      {
-        tag: [{ value: "Access Control" }],
-        title: "Centralized view of permissions on a resource",
-        description:
-          "Centralized visibility into which permissions have been granted to whom and on what resources",
-      },
-      {
-        tag: [{ value: "Policy" }],
-        title: "Policy to govern projects",
-        description:
-          "Support to allow policy to govern projects",
-      },
-      {
-        tag: [{ value: "Notify" }],
-        title: "Customized notification body text",
-        description:
-          "Create and manage customized notification body text",
-      },    
-      {
-        tag: [{ value: "SMP" }],
-        title: "Supported modules",
-        description:
-          "Infrastructure as Code Mgmt, Internal Developer Portal, Supply Chain Security, Code Repository",
-      },
+      },   
     ],
-  },
+  }, 
 };

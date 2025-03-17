@@ -102,7 +102,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Resolved an issue where WinRM passwords containing special characters were not working with WinRM Kerberos authentication. [CDS-107127]
 
-### Version 25.02.85301 <!-- February 24, 2025 -->
+### Version 25.02.85300 <!-- February 24, 2025 -->
 
 #### Fixed Issues
 

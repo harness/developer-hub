@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2025-02-19T10:00
+date: 2025-03-04T10:00
 sidebar_position: 5
 ---
 
@@ -22,6 +22,35 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## February 2025
 
+### Version 1.56.3
+
+#### Images required
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+
+- harness/chaos-ddcr:1.56.0
+- harness/chaos-log-watcher:1.56.0
+- harness/service-discovery-collector:0.36.0
+- docker.io/harness/chaos-ddcr-faults:1.56.0
+
+#### New features and enhancements
+
+- Running timeline view in the **Execution View**: You can track the real-time execution of chaos experiments for improved visibility. (CHAOS-6672)
+
+- **Improved chaos infrastructure search navigation**: Searching for chaos infrastructure from the **Chaos Experiment** page now includes a search bar in the list view, making navigation easier when dealing with multiple entities. (CHAOS-7556)
+
+#### Fixed issues
+
+- Fixed issue that prevented auto-creation of experiments with unsupported kinds. (CHAOS-7600)
+
+- Linux Dynatrace probe details did not appear correctly during creation. This issue has been fixed. (CHAOS-7596)
+
+- Fixed caching issue when selecting chaos faults in Chaos Studio. (CHAOS-7595)
+
+- Resolved ChaosGuard failure for non-Kubernetes experiments. (CHAOS-7636)
+
+- Fix typo in category for template validation. (CHAOS-7692)
+
 ### Version 1.55.1
 
 #### Images required
@@ -35,7 +64,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 #### New features and enhancements
 
-- Modified the Chaos Select Pipeline component to accept additional resources as properties and support allowed infrastructure types. (CHAOS-7035)
+- Modifies the Chaos Select Pipeline component to accept additional resources as properties and support allowed infrastructure types. (CHAOS-7035)
 
 #### Fixed issues
 
@@ -55,7 +84,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 #### New features and enhancements
 
-- Upgraded the base image for all chaos services from `UBI-8` to `UBI-9` to resolve vulnerabilities. (CHAOS-7504)
+- Upgrades the base image for all chaos services from `UBI-8` to `UBI-9` to resolve vulnerabilities. (CHAOS-7504)
 
 - Supports using a chaos fault template with boolean values. (CHAOS-7514)
 

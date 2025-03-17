@@ -31,7 +31,7 @@ The transient runner (DDCR) communicates the results (or status) of the chaos ex
 
 ### Install HNP
 
-You (as the user) can install and manage HNP using Helm. This ensures that sensitive data like mTLS secrets and keys remain entirely under the user's control. For detailed steps on the installation, go to [installation](/docs/chaos-engineering/use-harness-ce/infrastructures/proxy-support#installation).
+You (as the user) can install and manage HNP using Helm. This ensures that sensitive data like mTLS secrets and keys remain entirely under the user's control. For detailed steps on the installation, go to [installation](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support#installation).
 
 ### Deploy HNP
 

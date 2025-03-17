@@ -150,3 +150,9 @@ stages:
 Upon a successful pipeline run, the message you configured in the Slack Notify step will be sent to the designated Slack channel or recipient.
 
 ![Execution](./static/slack-notify.png)
+
+## Slack Notify Step Sample 
+
+To see an example of how to deploy Slack Notify Step in Harness, visit the [Harness Community Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/cd-features/slack-notify-step).
+
+This repository provides a ready-to-use sample application and the necessary configuration files to help you get started quickly.

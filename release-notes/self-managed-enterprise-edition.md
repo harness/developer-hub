@@ -232,6 +232,199 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
 
 :::
 
+:::danger Important
+    - For customers using ArgoCD to upgrade the Helm chart from 0.26 to future versions, use:  
+      ```yaml
+      platform:
+        bootstrap:
+          database:
+            timescaledb:
+              archive_minio_secret: false
+      ```
+:::  
+
+## Mar 14, 2025, Patch Version 0.26.4 <!-- Draft : Mar 14, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.26.4](https://github.com/harness/helm-charts/releases/tag/harness-0.26.4)                 |
+| Air Gap Bundle            | [0.26.4](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.4) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.65.2                                                                                       |
+| Pipeline Service          | 1.115.4                                                                                      |
+| Platform Service          | 1.53.1                                                                                       |
+| Access Control Service    | 1.74.1                                                                                       |
+| Delegate                  | 25.02.85201                                                                                  |
+| GitOps Service            | 1.25.6                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.127.5                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.8                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.6                                                                                       |
+| Gateway                   | 1.41.8                                                                                       |
+| IaCM Manager              | 1.65.2                                                                                       
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.26.4/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.4/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.4/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.4/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.4/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.4/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.4/sto_images.tgz" \
+  .
+```
+
+### New Features and Enhancements
+
+#### Harness Platform 
+
+- The JTI claim is now optional in the User OIDC Authentication server response. Without it, replay attacks cannot be prevented. Customers should ensure the JTI claim is included if replay attack protection is needed.[PL-61135]
+
+
+## Mar 06, 2025, Patch Version 0.26.3 <!-- Draft : Mar 06, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.26.3](https://github.com/harness/helm-charts/releases/tag/harness-0.26.3)                 |
+| Air Gap Bundle            | [0.26.3](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.3) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.65.2                                                                                       |
+| Pipeline Service          | 1.115.4                                                                                      |
+| Platform Service          | 1.53.1                                                                                       |
+| Access Control Service    | 1.74.1                                                                                       |
+| Delegate                  | 25.02.85201                                                                                  |
+| GitOps Service            | 1.25.6                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.127.5                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.8                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.6                                                                                       |
+| Gateway                   | 1.41.7                                                                                       |
+| IaCM Manager              | 1.65.2                                                                                       
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.26.3/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.3/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.3/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.3/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.3/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.3/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.3/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Continuous Delivery
+- Fixed an issue where the GitOps resource actions are not disabled on UI for users without sync access (**CDS-107535, ZD-79513**)]
+
+#### Cloud Cost Management
+- New Dimensions in AWS and Unified View in Cloud Cost Dashboards: We have added the following new dimensions to enhance cost visibility in AWS and the Unified View (**CCM-21714**):
+
+AWS:
+- Line Item Description
+- Total Discount
+- Private Rate Discount
+- Bundled Discount
+- EDP Discount
+- Tax (Blended Cost)
+- Tax (Amortised Cost)
+- Tax (Unblended Cost)
+- Tax (Net Amortised Cost)
+- Credit
+- Refund (Unblended Cost)
+- Refund (Amortised Cost)
+- Refund (Net Amortised Cost)
+- Refund (Blended Cost)
+
+Unified:
+- AWS Line Item Description
+- AWS Total Discount
+- AWS Private Rate Discount
+- AWS Bundled Discount
+- AWS EDP Discount
+- AWS Tax (Unblended Cost)
+- AWS Tax (Amortised Cost)
+- AWS Tax (Blended Cost)
+- AWS Tax (Net Amortised Cost)
+- AWS Credit
+- AWS Refund (Unblended Cost)
+- AWS Refund (Blended Cost)
+- AWS Refund (Amortised Cost)
+- AWS Refund (Net Amortised Cost)
+
+## Mar 04, 2025, Patch Version 0.26.2 <!-- Draft : Mar 04, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.26.2](https://github.com/harness/helm-charts/releases/tag/harness-0.26.2)                 |
+| Air Gap Bundle            | [0.26.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.2) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.65.2                                                                                       |
+| Pipeline Service          | 1.115.4                                                                                      |
+| Platform Service          | 1.53.1                                                                                       |
+| Access Control Service    | 1.74.1                                                                                       |
+| Delegate                  | 25.02.85201                                                                                  |
+| GitOps Service            | 1.25.5                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.127.5                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.7                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.5                                                                                       |
+| Gateway                   | 1.41.7                                                                                       |
+| IaCM Manager              | 1.65.2  
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.26.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.2/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Infrastructure as Code Management
+
+- Fixed an issue that allowed users to view non production ready steps. [IAC-3239]
+
+#### Continuous Delivery
+- Fixed an issue where the customer is unable to perform Sync even if they have permissions (**CDS-107535, ZD-79513**)]
+
 ## Feb 28, 2025, Version 0.26.0 <!-- Draft : Feb 28, 2025 -->
 
 This release includes the following Harness module and component versions.
@@ -256,6 +449,8 @@ This release includes the following Harness module and component versions.
 | Log Service               | 1.17.3                                                                                       |
 | Batch Processing          | 1.38.5                                                                                       |
 | Gateway                   | 1.41.7                                                                                       |
+| IaCM Manager              | 1.65.1                                                                                       |
+| IaC Server                | .119.5                                                                                       |
 
 **Alternative air gap bundle download method**
 
@@ -344,32 +539,25 @@ s available in the account to execute the task` even when appropriate delegate s
 
 #### Cloud Cost Management
 
-- Improved Query Performance: We have increased the socket timeout for all ClickHouse queries to enhance stability and performance. [CCM-21324]
+- Added AWS lineitemdescription support in dashboards.[CCM-21562] 
 
-- Optimized Data Partitioning: We have added partitioning on the startTime field in unifiedTable to improve query efficiency. [CCM-21374]
+- Expanded AWS & Unified View Metrics: The following cost measures are now available in AWS and Unified views at global level within Cloud Cost Dashboards, enabling more granular cost analysis  [CCM-21445]:
+  RefundUnblendedCost
+  
+  RefundAmortisedCost
+  
+  RefundNetAmortisedCost
+  
+  RefundBlendedCost
+  
+  TaxBlendedCost
+  
+  TaxUnblendedCost
+  
+  TaxAmortisedCost
+  
+  TaxNetAmortisedCost
 
-- Improved Query Performance: We have increased the socket timeout for all ClickHouse queries to enhance stability and performance. [CCM-21324]
-
-- Optimized Data Partitioning: We have added partitioning on the startTime field in unifiedTable to improve query efficiency. [CCM-21374]
-
-- Expanded AWS & Unified View Metrics: The following cost measures are now available in AWS and Unified views within Cloud Cost Dashboards, enabling more granular cost analysis:
-  - **AWS**:
-      Total Discount
-      Private Rate Discount
-      Bundled Discount
-      EDP Discount
-      Tax
-      Credit
-      Refund
-  - **Unified**:
-      AWS Total Discount
-      AWS Private Rate Discount
-      AWS Bundled Discount
-      AWS EDP Discount
-      AWS Tax
-      AWS Credit
-      AWS Refund
-         [CCM-21445]
 
 ### New Features and Enhancements
 
@@ -396,14 +584,16 @@ s available in the account to execute the task` even when appropriate delegate s
           timescaledb:
             archive_enabled: false
     ```  
-  - For customers using ArgoCD to upgrade the Helm chart from 0.26 to future versions, use:  
-    ```yaml
-    platform:
-      bootstrap:
-        database:
-          timescaledb:
-            archive_minio_secret: false
-    ```  
+    :::warning Important
+      - For customers using ArgoCD to upgrade the Helm chart from 0.26 to future versions, use:  
+        ```yaml
+        platform:
+          bootstrap:
+            database:
+              timescaledb:
+                archive_minio_secret: false
+        ```
+    :::  
   [PL-58114]  
 - The disconnected delegates list in the selection log now only shows eligible but disconnected delegates, filtering out non-eligible ones. [PL-56301]  
 - Added a new metric on Delegates to track the number of times the delegate WebSocket reconnects. This helps monitor reconnection frequency and allows users to diagnose issues.  
@@ -415,6 +605,10 @@ s available in the account to execute the task` even when appropriate delegate s
 - Upgraded the base image from ubi8-minimal to ubi9-minimal in Harness images. [PL-58377]  
 - Updated NGINX controller image from 1.3.0 to 1.11.2 to remove critical and high vulnerabilities. [PL-56529]  
 - Upgraded org.redisson:redisson to version 3.43.0. [PL-55966]  
+
+#### Infrastructure as Code Management (Beta)
+
+- Infrastructure as Code Management (IaCM) is now available on Self-Managed Enterprise Edition.
 
 #### Continuous Delivery
 

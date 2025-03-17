@@ -134,6 +134,11 @@ Enabling this feature provides the following capabilities:
 - **Detect drift from a baseline**: Compare the current SBOM against a predefined baseline SBOM to detect deviations.
 
 
+
+:::info
+After you run the SBOM Orchestration step, the generated SBOM file is uploaded to the `/harness/sbom/{sbom_<sbom_orchestration_step_execution_id>}.json` path. You can also download the SBOM using [Harness APIs](https://apidocs.harness.io/tag/SBOM#operation/downloadSbomForArtifact).
+:::
+
 ## Run the pipeline
 
 When the pipeline runs, the **SBOM Orchestration** step performs the following actions:

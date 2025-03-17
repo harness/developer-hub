@@ -1,0 +1,30 @@
+kind: KubernetesChaosExperiment
+apiVersion: litmuschaos.io/v1alpha1
+metadata:
+  name: pod-jvm-mongo-exception
+  namespace: hce
+spec:
+  tasks:
+    - definition:
+        chaos:
+          env:
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
+            # name of the mongodb database to be targeted
+            - name: DATABASE
+              value: "library"
+            # name of the mongodb collection to be targeted
+            - name: COLLECTION
+              value: "books"
+            # name of the mongodb method to be targeted
+            - name: METHOD
+              value: "find"
+            # name of the exception class
+            - name: EXCEPTION_CLASS
+              value: "IllegalArgumentException"
+            # provide the exception message
+            - name: EXCEPTION_MESSAGE
+              value: "CHAOS BOOM!"
+            # provide the transaction percentage
+            - name: TRANSACTION_PERCENTAGE
+              value: "50"
