@@ -63,4 +63,9 @@ No, you cannot manage policy sets in Git.
    - Pipelines
 - **On Step:** When using the Governance Step, you can evaluate a policy against the JSON that is generated from the step. The following object type is supported:
    - Custom
-        
+
+### What version of the OPA library does Harness platform use?
+
+Harness platform uses the Open Policy Agent (OPA) library version **0.62.0**.
+
+For more details, you can refer to [OPA v0.62.0](https://github.com/open-policy-agent/opa/tree/v0.62.0).
