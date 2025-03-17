@@ -1,6 +1,8 @@
 ---
 title: Harness Incident Response Overview and Key Concepts
 sidebar_position: 1
+redirect_from:
+- /docs/incident-response/getting-started/
 sidebar_label: Overview and Key Concepts
 description: Harness Incident Response Overview and Key Concepts
 ---

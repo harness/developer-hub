@@ -60,5 +60,5 @@ The ITIL approach to incident management relies on a structured plan with define
 
 Continue learning about **incident response** by getting started with the right role-based guides:
 
-- 🚀 [Get Started as an Administrator](get-started-admin)
-- 🛠️ [Get Started as a User](get-started-user)
+- 🚀 Get Started as an Administrator
+- 🛠️ Get Started as a User
