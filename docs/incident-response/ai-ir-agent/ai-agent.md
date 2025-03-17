@@ -95,9 +95,9 @@ The AI Agent creates timelines from communications:
 ## Next Steps
 
 ### Documentation
-- [Incident Management](../incidents/incidents.md)
-- [Configure Runbook Integrations](../runbooks/runbook-integrations.md)
+- [Incident Management](/docs/incident-response/incidents/)
+- [Configure Runbook Integrations](/docs/category/integration-guides)
 
 ### Related Topics
-- [Slack Integration](../runbooks/integrations/slack.md)
-- [Zoom Integration](../runbooks/integrations/zoom.md)
+- [Slack Integration](/docs/incident-response/runbooks/integrations/slack)
+- [Zoom Integration](/docs/incident-response/runbooks/integrations/zoom)
