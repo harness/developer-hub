@@ -50,3 +50,8 @@ However, if you want to provide a default value for `myVariable` when the value 
 ```
 
 This ensures that `myVariable` takes a default value of `"DEFAULT_VALUE"` if the variable is not present in the payload.
+
+## Using isResolved and isUnresolved evaluation instead of null
+Customers may be considering using a ternary evaluation that `== null` or `!= null` as the condition should consider using the `isResolved` and `isUnresolved` operators.  In a null evaluation, this may not evaluate properly because the condition of a variable existing versus having a null value is slightly different.
+
+For more information, please visit [the following Harness Article about utilizing the evaluations](https://developer.harness.io/docs/platform/variables-and-expressions/harness-expressions-reference/#check-expression-isresolved-isunresolved-null-replacement).
