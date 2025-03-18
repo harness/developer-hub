@@ -1,4 +1,4 @@
----
+****---
 id: aws
 title: Chaos faults for AWS
 redirect_from:
@@ -872,6 +872,21 @@ Lambda update role permission is an AWS fault that modifies the role policies as
 - Verifies the handling mechanism for function failures.
 - Updates the role attached to a Lambda function.
 - Determines the performance of the running Lambda application when it does not have enough permissions.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### Lambda modify response body
+
+Lambda modify response body causes chaos by modifying the response body of a Lambda function at runtime, simulating unexpected output alterations. This interrupt the flow of the given function.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Debug runtime errors caused by unexpected function response.
+- Diagnose and mitigate response inconsistencies in real-time, reducing service disruptions and enhancing overall system reliability
 
 </Accordion>
 </FaultDetailsCard>
