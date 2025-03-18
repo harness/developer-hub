@@ -29,9 +29,7 @@ Harness streams the audit events to your chosen SIEM tool as structured JSON.
 
 ## Add a streaming destination
 
-You can add a streaming destination at the Account or Org scope. This topic explains how to add a streaming destination at the account scope.
-
-To add a streaming destination:
+Streaming destinations can only be added at the Account scope. Follow the steps below to add a streaming destination.
 
 1. In your Harness account, select **Account Settings**.
 
