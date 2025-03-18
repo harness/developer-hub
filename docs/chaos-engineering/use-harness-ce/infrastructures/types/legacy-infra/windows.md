@@ -1,6 +1,6 @@
 ---
 title: Windows Chaos Infrastructure
-sidebar_position: 10
+sidebar_position: 30
 redirect_from:
 - /docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#on-linux-infrastructure
 ---

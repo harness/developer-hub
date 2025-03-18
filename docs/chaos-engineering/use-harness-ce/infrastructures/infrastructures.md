@@ -24,7 +24,7 @@ Chaos infrastructure helps facilitate the chaos fault injection and hypothesis v
 
 All the chaos infrastructure services adhere to the **principle of least privilege**, where the services execute with the minimum number of permissions.
 
-Go to [enable or disable an infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable) and [upgrade it](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra) to get a hands-on experience.
+Go to [enable or disable an infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/) and [upgrade it](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra) to get a hands-on experience.
 
 You can install an infrastructure as a part of creating an experiment. This infrastructure is installed on the target Kubernetes cluster and helps inject chaos into applications, thereby executing the chaos experiments.
 
@@ -42,8 +42,11 @@ There are different types of chaos infrastructure such as Kubernetes, Linux, and
 
 Based on the target environments, you can install chaos infrastructure as a Kubernetes service, a Linux daemon or a Windows agent.
 
-:::tip
 Chaos experiments associated with Cloud Foundry are executed using Linux chaos infrastructure, and experiments with AWS, GCP, Azure, VMware, and Bare metal are executed on Kubernetes infrastructure.
+
+
+:::info note
+If you want to delete your environment, remove the environment references, that is, the infrastructure(s) associated with it first.
 :::
 
 ### OpenShift
@@ -125,7 +128,7 @@ To learn more about SCC, go to [SCC documentation](/docs/chaos-engineering/secur
 
 **Step 3. Get the manifest to install chaos infrastructure**
 
-After [connecting to a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable), select the installation mode (cluster scope or namespace scope).
+After [connecting to a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/), select the installation mode (cluster scope or namespace scope).
 
 ![configure-chaos-infra](https://user-images.githubusercontent.com/35391335/226420643-6490d8bc-90fc-438e-92cc-f90a736ab374.png)
 
@@ -165,7 +168,6 @@ To run Kubernetes experiments, you need to tune the parameters associated with t
 - name: SET_HELPER_DATA
   value: false
 ```
-
 
 Harness CE facilitates installing two types of chaos infrastructure:
 - [DDCR](#what-is-ddcr) (Delegate Driven Chaos Runner) aka **Harness Delegate**; and
