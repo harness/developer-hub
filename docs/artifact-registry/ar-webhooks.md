@@ -1,7 +1,6 @@
 ---
-title: Triggers
+title: Webhooks
 sidebar_position: 20
-sidebar_label: Triggers
 ---
 
 In the Artifact Registry in Harness, **Triggers** automate actions based on events related to your artifacts, and allow you to streamline workflows by responding dynamically to changes in your artifact repositories.

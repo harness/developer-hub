@@ -55,7 +55,7 @@ You can set up Harness pipelines to be triggered automatically when a new versio
 
 You can use the following artifact providers to triggers pipelines:
 
-- [Harness Artifact Registry](/docs/artifact-registry/triggers)
+- [Harness Artifact Registry](/docs/artifact-registry/ar-webhooks)
 - ACR (Azure Container Registry)
 - Amazon S3
 - Artifactory Registry
