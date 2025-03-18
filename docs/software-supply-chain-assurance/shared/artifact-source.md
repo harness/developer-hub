@@ -4,7 +4,7 @@ import TabItem from '@theme/TabItem';
 
 <Tabs>
 
-<TabItem value="har" label="HAR">
+<TabItem value="har" label="HAR" default>
 
 * **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
 

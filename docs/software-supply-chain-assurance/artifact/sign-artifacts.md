@@ -60,7 +60,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 <Tabs>
 
-<TabItem value="har" label="HAR">
+<TabItem value="har" label="HAR" default>
 
 * **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
 
@@ -69,7 +69,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 </TabItem>
 
 
-  <TabItem value="dockerhub" label="DockerHub" default>
+  <TabItem value="dockerhub" label="DockerHub">
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
