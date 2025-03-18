@@ -8,7 +8,7 @@ redirect_from:
 Lambda inject status code simulates runtime erroneous HTTP status codes in Lambda function responses, allowing users to evaluate how their systems handle unexpected status responses.
 This helps users to proactively validate their function's resilience against unexpected status code, ensuring uninterrupted service delivery even under challenging real-world conditions
 
-![Lambda Inject Status Code](./static/images/lambda-function-timeout.png)
+![Lambda Inject Status Code](./static/images/lambda-update-function-timeout.png)
 
 ## Use cases
 Lambda inject status code:
