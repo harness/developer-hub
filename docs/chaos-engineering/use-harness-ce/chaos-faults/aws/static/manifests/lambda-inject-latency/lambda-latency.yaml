@@ -1,0 +1,18 @@
+# contains the lambda latency value for the lambda function
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: lambda-inject-latency
+      spec:
+        components:
+          env:
+            # provide the latency value for the lambda function execution
+            - name: LAMBDA_LATENCY
+              value: '5'
+            - name: FUNCTION_NAME
+              value: 'chaos-function'

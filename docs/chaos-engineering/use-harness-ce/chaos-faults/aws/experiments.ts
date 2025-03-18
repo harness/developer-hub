@@ -338,6 +338,13 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "Lambda inject latency",
+    description:
+        "Lambda inject latency simulates runtime delays in Lambda function execution to emulate network lag and resource contention",
+    tags: ['lambda', 'latency', 'update'],
+    category: "aws",
+  },
+  {
     name: "Lambda update role permission",
     description:
       "  Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function.",
