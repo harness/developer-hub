@@ -31,15 +31,15 @@ In your pipeline's **Build** stage, add an **Upload Artifacts to GCS** step and 
 Here is a YAML example of a minimum **Upload Artifacts to GCS** step.
 
 ```yaml
-              - step:
-                  type: GCSUpload
-                  name: upload report
-                  identifier: upload_report
-                  spec:
-                    connectorRef: YOUR_GCP_CONNECTOR_ID
-                    bucket: YOUR_GCS_BUCKET
-                    sourcePath: path/to/source
-                    target: path/to/upload/location
+- step:
+    type: GCSUpload
+    name: upload report
+    identifier: upload_report
+    spec:
+      connectorRef: YOUR_GCP_CONNECTOR_ID
+      bucket: YOUR_GCS_BUCKET
+      sourcePath: path/to/source
+      target: path/to/upload/location
 ```
 
 ### Upload Artifacts to GCS step settings
@@ -110,16 +110,16 @@ Configure the **Plugin** step settings as follows:
 Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
 
 ```yaml
-               - step:
-                  type: Plugin
-                  name: publish artifact metadata
-                  identifier: publish_artifact_metadata
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: plugins/artifact-metadata-publisher
-                    settings:
-                      file_urls: https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION
-                      artifact_file: artifact.txt
+- step:
+   type: Plugin
+   name: publish artifact metadata
+   identifier: publish_artifact_metadata
+   spec:
+     connectorRef: account.harnessImage
+     image: plugins/artifact-metadata-publisher
+     settings:
+       file_urls: https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION
+       artifact_file: artifact.txt
 ```
 
 * `connectorRef`: Use the built-in Docker connector (`account.harness.Image`) or specify your own Docker connector.
@@ -332,26 +332,25 @@ The OOTB **Upload Artifacts to GCS** step in CI is designed to perform upload op
 Example yaml:
 
 ```yaml
-    - stage:
-...
-...
-              - step:
-                  type: GCSUpload
-                  name: GCSUpload_1
-                  identifier: GCSUpload_1
-                  spec:
-                    connectorRef: gcp-oidc-connector
-                    bucket: bucketName
-                    sourcePath: YOUR_BUCKET_NAME/DIRECTORY
-                    target: path/to/download/destination
-        variables:
-          - name: PLUGIN_DOWNLOAD
-            type: String
-            description: ""
-            required: false
-            value: "true"
-...
-...
+- stage:
+    spec:
+      execution:
+        steps:
+          - step:
+              type: GCSUpload
+              name: GCSUpload_1
+              identifier: GCSUpload_1
+              spec:
+                connectorRef: gcp-oidc-connector
+                bucket: bucketName
+                sourcePath: YOUR_BUCKET_NAME/DIRECTORY
+                target: path/to/download/destination
+      variables:
+        - name: PLUGIN_DOWNLOAD
+          type: String
+          description: ""
+          required: false
+          value: "true"
 ```
 
 ### Use a plugin step
@@ -370,18 +369,18 @@ The complete [Plugin step settings](../../use-drone-plugins/plugin-step-settings
 For example:
 
 ```yaml
-              - step:
-                  type: Plugin
-                  name: download
-                  identifier: download
-                  spec:
-                    connectorRef: YOUR_DOCKER_CONNECTOR
-                    image: plugins/gcs
-                    settings:
-                      token: <+secrets.getValue("gcpserviceaccounttoken")>
-                      source: YOUR_BUCKET_NAME/DIRECTORY
-                      target: path/to/download/destination
-                      download: "true"
+- step:
+    type: Plugin
+    name: download
+    identifier: download
+    spec:
+      connectorRef: YOUR_DOCKER_CONNECTOR
+      image: plugins/gcs
+      settings:
+        token: <+secrets.getValue("gcpserviceaccounttoken")>
+        source: YOUR_BUCKET_NAME/DIRECTORY
+        target: path/to/download/destination
+        download: "true"
 ```
 
 #### Use a plugin step with OIDC
