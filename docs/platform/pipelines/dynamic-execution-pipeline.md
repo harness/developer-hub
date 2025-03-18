@@ -61,6 +61,23 @@ curl --location 'https://app.harness.io/gateway/pipeline/api/v1/orgs/default/pro
     "yaml": ""
 }'
 ```
+### YAML Format Requirement
+
+To execute a pipeline dynamically, the YAML should follow the required format as shown in the [example](#example) below. The pipeline must be pre-scaffolded with the necessary identifiers to be valid.
+
+### Example
+
+```
+curl --location 'https://app.harness.io/gateway/pipeline/api/v1/orgs/default/projects/krishika_test/pipelines/pipeline_test/execute/dynamic' \
+--header 'accept: */*' \
+--header 'content-type: application/json' \
+--header 'origin: https://app.harness.io' \
+--header 'Harness-Account: ACCOUNT_ID' \
+--header 'x-api-key: HARNESS_API_KEY' \
+--data '{
+    "yaml": "pipeline:\n  name: \"pipeline_test\"\n  identifier: pipeline_test\n  projectIdentifier: krishika_test\n  orgIdentifier: default\n  tags: {}\n  stages:\n    - stage:\n        name: cust\n        identifier: cust\n        description: \"\"\n        type: Custom\n        spec:\n          execution:\n            steps:\n              - step:\n                  type: ShellScript\n                  name: ShellScript_1\n                  identifier: ShellScript_1\n                  spec:\n                    shell: Bash\n                    executionTarget: {}\n                    source:\n                      type: Inline\n                      spec:\n                        script: \"echo hello\"\n                    environmentVariables: []\n                    outputVariables: []\n                  timeout: 10m\n        tags: {}"
+}'
+```
 
 Upon successful execution, the API returns the following response:
 
