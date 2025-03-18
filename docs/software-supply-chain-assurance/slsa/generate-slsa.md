@@ -56,7 +56,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 </TabItem>
 
-  <TabItem value="dockerhub" label="DockerHub" default>
+  <TabItem value="dockerhub" label="DockerHub">
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
@@ -66,7 +66,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 </TabItem>
 
-<TabItem value="ecr" label="ECR" default>
+<TabItem value="ecr" label="ECR">
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Elastic container registry where the artifact is stored.
 
@@ -81,7 +81,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 </TabItem>
 
-<TabItem value="acr" label="ACR" default>
+<TabItem value="acr" label="ACR">
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
 
@@ -93,7 +93,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 </TabItem>
 
-<TabItem value="gar" label="GAR" default>
+<TabItem value="gar" label="GAR">
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
 

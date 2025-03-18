@@ -118,7 +118,7 @@ import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifac
 
 <ArtifactSource />
 
-With this configuration, the step generates the SBOM and stores it in the Artifact section of SCS. Optionally, you an attest to the generated SBOM, follow the instructions in the section below.
+With this configuration, the step generates the SBOM and stores it in the Artifact section of SCS. Optionally, you can attest to the generated SBOM, follow the instructions in the section below.
 
 
 ### Attest the SBOM
