@@ -59,6 +59,22 @@ CLB AZ down takes down the AZ (Availability Zones) on a target CLB for a specifi
 
 <FaultDetailsCard category="aws">
 
+### AZ blackhole
+
+The AZ blackhole causes network blackhole by isolating traffic in specific availability zones across an entire region. Users can control the blast radius by providing targeted VPC IDs for the AZ failure.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Checks how the applications and services handle the loss of network connectivity in specific zones.
+- Determine the effects of network isolation on critical business processes by simulating major network disruptions, helping teams to identify weak links and improve overall system robustness.
+- Test and refine disaster recovery plans by simulating AZ-level blackholes, ensuring that your infrastructure can efficiently reroute traffic and maintain operational continuity during large-scale outages.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### DynamoDB replication pause
 
 DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.
