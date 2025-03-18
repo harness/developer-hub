@@ -112,6 +112,10 @@ const config: Config = {
               to: 'docs/continuous-integration',
             },
             {
+              label: 'AI Test Automation',
+              to: 'docs/ai-test-automation',
+            },
+            {
               label: 'Artifact Registry',
               to: 'docs/artifact-registry',
             },
@@ -369,6 +373,10 @@ const config: Config = {
             {
               label: 'Software Engineering Insights',
               to: 'https://www.harness.io/products/software-engineering-insights',
+            },
+            {
+              label: 'AI Test Automation',
+              to: 'https://www.harness.io/products/ai-native-software-delivery#ai-test-automation',
             },
           ],
         },

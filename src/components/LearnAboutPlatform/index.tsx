@@ -23,7 +23,6 @@ export default function LearnAboutPlatform(): JSX.Element {
         <div className={styles.subSectionName}>
           <h3>Modules</h3>
         </div>
-        {/* <img src="img/harness-platform.svg" className={styles.platformIllustration} /> */}
         <ModuleTiles />
       </div>
 

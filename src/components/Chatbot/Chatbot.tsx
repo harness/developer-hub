@@ -246,7 +246,7 @@ const Chatbot = () => {
     <>
       <Tooltip placement="left" overlay="Ask AIDA">
         <div onClick={toggleChatWindow} className={styles.AIDA_btn}>
-          <img src="/img/AIDA_Logo.svg" alt="AIDA logo" />
+          <img src="/img/aida-logo.svg" alt="AIDA logo" />
         </div>
       </Tooltip>
 
@@ -257,7 +257,7 @@ const Chatbot = () => {
           <div className={styles["chatbot-heading"]}>
             <div className={styles["chatbot-heading-top"]}>
               <div className={styles.left}>
-                <img src="/img/AIDA_Logo.svg" alt="AIDA logo" />
+                <img src="/img/aida-logo.svg" alt="AIDA logo" />
                 <h1>Harness AIDA Chatbot</h1>
               </div>
               <div className={styles.right} onClick={toggleChatWindow}>
@@ -282,7 +282,7 @@ const Chatbot = () => {
                 }`}
               >
                 {message.isBot ? (
-                  <img src="/img/AIDA_Logo.svg" alt="AIDA logo"></img>
+                  <img src="/img/aida-logo.svg" alt="AIDA logo"></img>
                 ) : null}
                 <div
                   onClick={
@@ -307,7 +307,7 @@ const Chatbot = () => {
             ))}
             {isLoading && (
               <div className={`${styles.textBubble}`}>
-                <img src="/img/AIDA_Logo.svg" alt="AIDA logo"></img>
+                <img src="/img/aida-logo.svg" alt="AIDA logo"></img>
 
                 <div className={`${styles.message} ${styles["bot-loading"]}`}>
                   <div className={styles["dot-typing"]}></div>
