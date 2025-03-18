@@ -33,7 +33,13 @@ Follow the instructions below to configure the Artifact Verification step.
 
 * **Name**: Provide a name for the verification step.
 
-* **Artifact Source**: Select the source container registry (e.g., DockerHub, ACR, GCR, ECR, etc.).
+* **Artifact Source**: Select the source container registry (e.g., DockerHub, ACR, ECR, etc.).
+
+:::warning Deprecation Alert
+
+Google Container Registry (GCR) has been deprecated and shut down. Review the official documentation for [migration guidance](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr) and move to a supported alternative.
+
+:::
 
 <Tabs>
   <TabItem value="dockerhub" label="DockerHub" default>
@@ -55,21 +61,6 @@ Follow the instructions below to configure the Artifact Verification step.
 * **Region:** The geographical location of your ECR repository, example `us-east-1`
 
 * **Account ID:** The unique identifier associated with your AWS account.
-
-
-</TabItem>
-
-<TabItem value="gcr" label="GCR" default>
-
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
-
-* **Image:** Enter the name of your image using a tag or digest, example `my-image:tag` or you can use digest `my-image@sha256:<digest>`
-
-* **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
-
-* **Host:** Enter your GCR Host name. The Host name is regional-based. For instance, a common Host name is `gcr.io`, which serves as a multi-regional hostname for the United States. 
-
-* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
 
 
 </TabItem>
@@ -138,8 +129,7 @@ This example demonstrates how to implement artifact Verification in the Build st
 
 This example **Build** stage has three steps:
 
-- **Build and Push an Image to Docker Registry**: This step builds the cloned codebase and pushes the image to the container registry (DockerHub, ACR, GCR, etc.).
-
+- **Build and Push an Image to Docker Registry**: This step builds the cloned codebase and pushes the image to the container registry (DockerHub, ACR, etc.).
 
 
 - **Artifact Signing**: Pulls the artifact from the registry and signs it with a private key pair and pushes the `.sig` file back to the artifact registry.

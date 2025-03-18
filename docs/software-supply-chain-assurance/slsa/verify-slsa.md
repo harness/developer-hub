@@ -22,6 +22,12 @@ The SLSA Verification step has the following fields:
 * **Name**: Enter a name for the step.
 * **Registry Type**: Choose your registry from the list of supported items.
 
+:::warning Deprecation Alert
+
+Google Container Registry (GCR) has been deprecated and shut down. Review the official documentation for [migration guidance](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr) and move to a supported alternative.
+
+:::
+
 <Tabs>
   <TabItem value="dockerhub" label="DockerHub" default>
 
@@ -42,21 +48,6 @@ The SLSA Verification step has the following fields:
 * **Region:** The geographical location of your ECR repository, example `us-east-1`
 
 * **Account ID:** The unique identifier associated with your AWS account.
-
-* **Tag:** Enter the tag name of your image, example `latest`.
-
-
-</TabItem>
-
-<TabItem value="gcr" label="GCR" default>
-
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
-
-* **Host:** Enter your GCR Host name. The Host name is regional-based. For instance, a common Host name is `gcr.io`, which serves as a multi-regional hostname for the United States. 
-
-* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
-
-* **Image Name:** Enter the name of your image, example `my-image`.
 
 * **Tag:** Enter the tag name of your image, example `latest`.
 
