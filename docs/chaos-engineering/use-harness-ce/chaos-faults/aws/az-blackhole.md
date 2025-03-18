@@ -176,9 +176,9 @@ Comma-separated list of the VPC IDs to limit the impact. Tune it by using the `V
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/az-blackhole/availability-zones.yaml yaml)
+[embedmd]:# (./static/manifests/az-blackhole/vpc-ids.yaml yaml)
 ```yaml
-# contains az blackhole for given az
+# contains vpc ids for given az
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -191,9 +191,12 @@ spec:
     spec:
       components:
         env:
-        # target availability zones for the chaos
+        # target vpc ids for the chaos
         - name: VPC_IDS
           value: 'vpc-21312481928410,vpc-78926378028471'
+        # target availability zones for the chaos
+        - name: AVAILABILITY_ZONES
+          value: 'us-east-1a,us-east-1b'
         # region for chaos
         - name: REGION
           value: 'us-east-1'
