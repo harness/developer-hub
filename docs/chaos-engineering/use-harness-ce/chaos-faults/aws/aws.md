@@ -871,7 +871,8 @@ Lambda inject latency simulates runtime delays in Lambda function execution to e
 <summary>Use cases</summary>
 
 - Checks integrated services handle delayed responses, ensuring that timeouts and fallback mechanisms are appropriately configured.
-- Checks the slowness while interacting with external APIs or databases to determine if your system can maintain functionality under slower-than-expected response times.
+- Inject latency when interacting with external APIs or databases to determine if your system can maintain functionality under slower-than-expected response times.
+- Evaluate the impact of delays typically experienced during cold starts or resource contention, and refine scaling strategies accordingly.
 
 </Accordion>
 </FaultDetailsCard>

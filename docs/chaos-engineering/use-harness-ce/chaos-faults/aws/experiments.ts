@@ -341,7 +341,7 @@ export const experiments: ExperimentDetails[] = [
     name: "Lambda inject latency",
     description:
         "Lambda inject latency simulates runtime delays in Lambda function execution to emulate network lag and resource contention",
-    tags: ['lambda', 'latency', 'update'],
+    tags: ['lambda', 'runtime', 'update'],
     category: "aws",
   },
   {
