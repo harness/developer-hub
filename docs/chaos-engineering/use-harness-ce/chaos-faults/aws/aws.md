@@ -862,6 +862,22 @@ Hitting a timeout is a frequent scenario with Lambda functions. This can break t
 
 <FaultDetailsCard category="aws">
 
+### Lambda inject status code
+
+Lambda inject status code simulates runtime erroneous HTTP status codes in Lambda function responses, allowing users to evaluate how their systems handle unexpected status responses.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Assess how downstream services react when receiving non-standard or error HTTP status codes, ensuring that error-handling logic and fallback mechanisms are effective.
+- Test the robustness of client applications and APIs when they encounter unexpected status codes, allowing for early detection of integration issues.
+- Evaluate and fine-tune retry policies and error logging strategies by simulating intermittent faulty responses in a controlled manner.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### Lambda update role permission
 
 Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function. Sometimes, Lambda functions depend on services like RDS, DynamoDB, and S3. In such cases, certain permissions are required to access these services. This fault helps understand how your application would behave when a Lambda function does not have enough permissions to access the services.

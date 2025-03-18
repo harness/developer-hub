@@ -338,6 +338,13 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "Lambda inject status code",
+    description:
+        "Lambda inject status code simulates runtime erroneous HTTP status codes in Lambda function responses for a certain duration",
+    tags: ['lambda', 'runtime', 'update'],
+    category: "aws",
+  },
+  {
     name: "Lambda update role permission",
     description:
       "  Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function.",
