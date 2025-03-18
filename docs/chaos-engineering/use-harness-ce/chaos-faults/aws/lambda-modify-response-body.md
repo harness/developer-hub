@@ -11,7 +11,7 @@ This helps users to proactively validate their function's resilience against une
 ![Lambda Modify Response Body](./static/images/lambda-update-function-timeout.png)
 
 ## Use cases
-Lambda update function timeout:
+Lambda modify response body:
 - Checks the performance of the application (or service) running with unexpected response.
 - Diagnose and mitigate response inconsistencies in real-time, reducing service disruptions and enhancing overall system reliability.
 

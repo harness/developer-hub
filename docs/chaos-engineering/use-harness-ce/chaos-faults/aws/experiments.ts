@@ -348,7 +348,7 @@ export const experiments: ExperimentDetails[] = [
     name: "Lambda modify response body",
     description:
         "Lambda modify response body causes chaos by modifying the response body of a Lambda function at runtime, simulating unexpected output alterations. This interrupt the flow of the given function",
-    tags: ['lambda', 'response', 'function'],
+    tags: ['lambda', 'runtime', 'function'],
     category: "aws",
   },
   {
