@@ -1,4 +1,4 @@
-****---
+---
 id: aws
 title: Chaos faults for AWS
 redirect_from:

@@ -147,7 +147,6 @@ spec:
         # provide the response body lambda function
         - name: RESPONSE_BODY
           value: 'hello, Chaos!!!'
-        # provide the function name for timeout chaos
         - name: FUNCTION_NAME
           value: 'chaos-function'
 ```
