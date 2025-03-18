@@ -127,6 +127,10 @@ Service created and started successfully.
 
 ```
 
+## Upgrade Infrastructure
+
+Go to [Upgrade Infrastructure for Windows](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra#upgrade-linux-infrastructure) to upgrade to the latest version of your Windows infrastructure.
+
 ## Validate Installation
 
 After adding chaos infrastructure, Harness takes some time to set up all the chaos infrastructure resources. On the UI, if you navigate to **Environments** -> **Windows**, you can see the connection status is `CONNECTED`.
