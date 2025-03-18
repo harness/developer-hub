@@ -242,7 +242,7 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
               archive_minio_secret: false
       ```
 :::  
-## Mar 14, 2025, Patch Version 0.25.5 <!-- Draft : Mar 18, 2025 -->
+## Mar 18, 2025, Patch Version 0.25.5 <!-- Draft : Mar 18, 2025 -->
 
 This release includes the following Harness module and component versions.
 
