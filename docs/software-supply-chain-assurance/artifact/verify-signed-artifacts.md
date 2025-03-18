@@ -37,11 +37,23 @@ Follow the instructions below to configure the Artifact Verification step.
 
 :::warning Deprecation Alert
 
-Google Container Registry (GCR) has been deprecated and shut down. Review the official documentation for [migration guidance](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr) and move to a supported alternative.
+
+Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the Artifact Verification step.
 
 :::
 
 <Tabs>
+
+<TabItem value="har" label="HAR">
+
+* **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
+
+* **Image:** Enter the name of your image with tag, such as `imagename:tag`.
+
+</TabItem>
+
+
+
   <TabItem value="dockerhub" label="DockerHub" default>
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
