@@ -284,6 +284,11 @@ gsutil -m cp \
   .
 ```
 
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed an issue where the HPA for the SCM service was not functioning due to a service name override error. [PL-60900]
 
 ## Mar 14, 2025, Patch Version 0.26.4 <!-- Draft : Mar 14, 2025 -->
 
