@@ -7,9 +7,6 @@ redirect_from:
 - /docs/chaos-engineering/features/chaos-infrastructure/upgrade-infra/
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 This topic describes how you can upgrade your chaos infrastructure.
 
 If a Harness CE release is not backward compatible, upgrade your chaos infrastructure to ensure you can execute all experiments smoothly. This applies only to releases that have breaking changes, which will be clearly indicated in the [release notes](/release-notes/chaos-engineering).
@@ -107,7 +104,7 @@ To update the chaosnative/go-runner image version in an experiment:
 
 * To upgrade a chaos infrastructure that you installed using the Helm commands, you can navigate to the environment and click **Upgrade now**. This will list the set of commands that you can execute on your terminal.
 
-  ![step 9](./static/enable-disable/upgrade-9.png)
+  ![step 9](./static/upgrade/upgrade-9.png)
 
 2. Choose an existing environment or create a new environment
 
@@ -120,18 +117,19 @@ Based on the scope of installation, you have to execute the commands.
 2. If you wish to install the infrastructure in cluster scope, apply the helm upgrade command to install the CRDs and other infrastructure components.
 
 :::tip
-1. If you install your infrastructure in cluster scope, HCE supports auto-upgrade for such an infrastructure.
+1. If you install your infrastructure in cluster scope, Harness CE supports auto-upgrade for such an infrastructure.
 2. It is important that you remember that the flags in the command are based on the input parameters you provide while installing the infrastructure.
 :::
 
 ## Upgrade Linux infrastructure
 
-You can upgrade Linux infrastructure in two ways depending on the platform (SaaS or SMP). They are described below.
+You can upgrade Linux infrastructure in two ways depending on the platform:
+	- [SaaS](#saas)
+	- [SMP](#smp)
 
-<Tabs>
-<TabItem value="SaaS">
+### SaaS
 
-For SaaS, execute the commands in the VM where your infrastructure is installed.
+For SaaS platform, execute the commands in the VM where your infrastructure is installed.
 
 - Execute the following commands to fetch the `INFRA_ID` and the `ACCESS_KEY`.
 
@@ -155,9 +153,8 @@ For SaaS, execute the commands in the VM where your infrastructure is installed.
 	sudo https://app.harness.io/public/shared/tools/chaos/linux/1.50.0/install.sh | bash /dev/stdin --infra-id <INFRA_ID> --access-key <ACCESS_KEY> --server-url https://<YOUR_IP>/chaos/lserver/api
 	```
 
-</TabItem>
+### SMP
 
-<TabItem value="SMP">
 - Raise a [Harness support](https://support.harness.io) ticket to get the `offline-linux-installer` tarball.
 - Copy and extract the offline installer to your target VM and `cd` (navigate) to the extracted directory.
 - Execute the following commands to fetch the `INFRA_ID` and the `ACCESS_KEY`.
@@ -183,8 +180,4 @@ To upgrade the infrastructure in an air-gapped environment, assuming you have do
 sudo  ./install.sh --infra-id <INFRA_ID> --access-key <ACCESS_KEY> --server-url https://<YOUR_IP>chaos/lserver/api
 ```
 :::
-
-</TabItem>
-
-</Tabs>
 

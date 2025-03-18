@@ -1,6 +1,6 @@
 ---
 title: Windows Chaos Infrastructure
-sidebar_position: 10
+sidebar_position: 30
 redirect_from:
 - /docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#on-linux-infrastructure
 ---
@@ -126,6 +126,10 @@ Mode                 LastWriteTime         Length Name
 Service created and started successfully.
 
 ```
+
+## Upgrade Infrastructure
+
+Go to [Upgrade Infrastructure for Windows](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra#upgrade-linux-infrastructure) to upgrade to the latest version of your Windows infrastructure.
 
 ## Validate Installation
 
