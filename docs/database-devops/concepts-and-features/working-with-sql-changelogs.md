@@ -122,10 +122,6 @@ liquibase generate-changelog \
     --password=secret \
     --changelog-file=generated-changelog.xml
 ```
-### Steps
-- **Run the Command**: To generate the Changelog
-- **Review the ouput**: The output will be a changelog file in XML, YAML, or JSON format.
-- **Modify the Changelog**: Edit the Changelog as needed.
 
 ### Configuration Options
 - `--diffTypes`: Specify object types to include
@@ -212,6 +208,14 @@ Validation Failed:
    - Any attributes you specify in your changelog match the XSD
    - There are no duplicated id, author, and file combinations
    - There are no checksum errors
+
+
+### Steps
+- **Run the Command**: To generate the Changelog
+- **Sync Changelog**: To synchronize the changes in the changelog with the database
+- **Review the ouput**: The output will be a changelog file in XML, YAML, or JSON format.
+- **Modify the Changelog**: Edit the Changelog as needed.
+
 
 ### Version Control Integration
    - Commit changes to version control
