@@ -46,6 +46,7 @@ Once you save a pipeline in Harness, you can view the path of the YAML file for 
 
 1. Users will have access to the `harness-filestore` repository created at the account level.
 2. When a user deletes a pipeline from the UI, the corresponding file will be deleted from the Harness Code Repository. However, deleting a file from the Harness Code Repository will **not** delete the entity in the Harness UI.
+3. Bidirectional sync is also supported, i.e., when the user makes changes to the YAML file, the same will be reflected in the UI and vice versa.
 
 ## Supported Entities
 
