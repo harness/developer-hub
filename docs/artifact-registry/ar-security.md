@@ -9,8 +9,8 @@ import TabItem from '@theme/TabItem';
 
 This guide explains how to configure and review security scanners in your Harness Artifact Registry.
 
-:::warning Project-level scanner
-The security scanner pipeline operates at the Project level, ensuring consistent security checks across all of your project's artifacts. If you are using a registry at Account or Organization level, the scanner will only run at the Project level.
+:::info Default Project-Level Scanner
+The security scanner pipeline operates against the default project associated with your registry. While the registry can exist at the Account or Organization level, the scanner will still run within the context of the default project.
 :::
 
 ## Configuring Security Scanners
@@ -27,11 +27,11 @@ Follow these steps to set up automated security scanning for your container imag
 2. Select the registry you want to configure security scanning for
 
 ### Access Configuration
-1. Go to the Configuration tab
-2. Locate the Security section
+1. Go to the **Configuration** tab
+2. Locate the **Security** section
 
-### Review Built-in Container Scanners
-The following scanners are available (depending on your registry type):
+### Review Integrated Security Scanners
+Harness Artifact Registry integrates with the Harness Security modules ([SCS](/docs/software-supply-chain-assurance/) and [STO](/docs/security-testing-orchestration/)) for scanning. Depending on your registry type and licenses, the following scanners are available:
 - **SBOM:** Generates a Software Bill of Materials
 - **AquaTrivy:** Comprehensive vulnerability scanning
 </TabItem>
@@ -50,4 +50,4 @@ The specific scan performed depends on your selection in the Artifact Registry c
 <DocVideo src="https://app.tango.us/app/embed/aa88f990-326b-4edf-9323-1de4fd5125d4" title="Harness Artifact Registry Security Scan Pipeline" />
 
 ## Conclusion
-With security scanning configured, your Artifact Registry now automatically checks for vulnerabilities in your container images. You can view scan results directly in the Harness platform and take action on any security findings. This integration helps ensure your container images meet your organization's security requirements before deployment.
+With security scanning configured, your Artifact Registry now integrates with Harness Security modules to check for vulnerabilities in your container images. You can view scan results directly in the Harness platform and take action on any security findings. This integration helps ensure your container images meet your organization's security requirements before deployment.
