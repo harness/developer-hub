@@ -30,7 +30,7 @@ The recommended workflow is to add a Checkmarx step to a **Security** or **Build
 
 #### Scan Mode
 
-- **Orchestration mode**: In this mode, the Checkmarx step runs a SAST scan using the [CxConsole CLI](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html), then processes the results by normalizing and deduplicating them.
+- **Orchestration mode**: In this mode, the step executes the scan, then processes the results by normalizing and deduplicating them.
 
 - **Ingestion mode**: In this mode, the Checkmarx step reads scan results from a data file, normalizes the data, and removes duplicates. It supports ingestion of results from any Checkmarx scanner that produces output in the [SARIF format](https://docs.oasis-open.org/sarif/sarif/v2.0/sarif-v2.0.html).
 
@@ -43,7 +43,7 @@ import StoSettingProductConfigName from '../shared/step_palette/scan/_config-nam
 
 <StoSettingProductConfigName />
 
-- **Default** - Checkmarx Static Application Security Testing
+- **SAST** or **Default** - Checkmarx Static Application Security Testing. Checkmarx step runs a SAST scan using the [CxConsole CLI](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html)
 - **CxSCA** - Checkmarx Software Composition Analysis
 - **CxOSA** - Checkmarx Open Source Analysis
 
