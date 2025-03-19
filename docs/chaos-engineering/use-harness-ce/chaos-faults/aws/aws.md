@@ -864,7 +864,7 @@ Hitting a timeout is a frequent scenario with Lambda functions. This can break t
 
 ### Lambda inject status code
 
-Lambda inject status code simulates runtime erroneous HTTP status codes in Lambda function responses, allowing users to evaluate how their systems handle unexpected status responses.
+Lambda inject status code simulates runtime erroneous HTTP status codes in Lambda function responses, allowing you to evaluate how systems handle unexpected status responses.
 
 <Accordion color="green">
 <summary>Use cases</summary>

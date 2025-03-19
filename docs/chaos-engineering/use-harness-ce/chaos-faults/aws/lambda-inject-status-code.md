@@ -1,20 +1,18 @@
 ---
 id: lambda-inject-status-code
 title: Lambda inject status code
-redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-inject-status-code
-- /docs/chaos-engineering/chaos-faults/aws/lambda-inject-status-code
 ---
-Lambda inject status code simulates runtime erroneous HTTP status codes in Lambda function responses, allowing users to evaluate how their systems handle unexpected status responses.
-This helps users to proactively validate their function's resilience against unexpected status code, ensuring uninterrupted service delivery even under challenging real-world conditions
 
-![Lambda Inject Status Code](./static/images/lambda-update-function-timeout.png)
+Lambda inject status code is an AWS fault that simulates runtime erroneous HTTP status codes in Lambda function responses, allowing you to evaluate how your systems handle unexpected status responses.
+This helps you to proactively validate your function's resilience against unexpected status code, ensuring uninterrupted service delivery under such situations.
+
+![Lambda Inject Status Code](./static/images/lambda-inject-status-code.png)
 
 ## Use cases
 Lambda inject status code:
-- Assess how downstream services react when receiving non-standard or error HTTP status codes, ensuring that error-handling logic and fallback mechanisms are effective.
-- Test the robustness of client applications and APIs when they encounter unexpected status codes, allowing for early detection of integration issues.
-- Evaluate and fine-tune retry policies and error logging strategies by simulating intermittent faulty responses in a controlled manner.
+- Assesses how downstream services react when receiving non-standard or error HTTP status codes, ensuring that error-handling logic and fallback mechanisms are effective.
+- Tests the robustness of client applications and APIs when they encounter unexpected status codes, allowing for early detection of integration issues.
+- Evaluates and fine-tune retry policies and error logging strategies by simulating intermittent faulty responses in a controlled manner.
 
 ### Prerequisites
 - Kubernetes >= 1.17
@@ -66,7 +64,7 @@ Below is an example AWS policy to execute the fault.
 - Go to [AWS named profile for chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults.
 :::
 
-### Mandatory tunables
+### Mandatory Tunables
    <table>
       <tr>
         <th> Tunable </th>
@@ -90,7 +88,7 @@ Below is an example AWS policy to execute the fault.
       </tr>
     </table>
 
-### Optional tunables
+### Optional Tunables
   <table>
       <tr>
         <th> Tunable </th>
@@ -120,7 +118,7 @@ Below is an example AWS policy to execute the fault.
     </table>
 
 
-### Status code
+### Status Code
 
 Provide the Lambda function status code to cause invalid status code in the lambda function response. Tune it by using `STATUS_CODE` environment variable.
 

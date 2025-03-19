@@ -340,7 +340,7 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "Lambda inject status code",
     description:
-        "Lambda inject status code simulates runtime erroneous HTTP status codes in Lambda function responses for a certain duration",
+        "Lambda inject status code simulates runtime erroneous HTTP status codes in Lambda function responses for a certain duration.",
     tags: ['lambda', 'runtime', 'update'],
     category: "aws",
   },
