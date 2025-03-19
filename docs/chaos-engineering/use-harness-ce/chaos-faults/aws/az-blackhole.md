@@ -1,22 +1,19 @@
 ---
 id: az-blackhole
 title: AZ blackhole
-redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/az-blackhole
-- /docs/chaos-engineering/chaos-faults/aws/az-blackhole
 ---
 
-AZ blackhole causes network blackhole by isolating traffic in specific availability zones across an entire region. Users can control the blast radius by providing targeted VPC IDs for the AZ failure.
-It can help to evaluate how well your applications and services handle the loss of network connectivity across the availability zone ensuring that failover mechanisms and redundancy strategies function as expected.
+AZ blackhole is an AWS fault that causes network blackhole by isolating traffic in specific availability zones across an entire region. You can control the blast radius by providing targeted VPC IDs for the AZ failure.
+This fault helps evaluates how well your applications and services handle the loss of network connectivity across the availability zone ensuring that failover mechanisms and redundancy strategies function as expected.
 
-![AZ Blackhole](./static/images/clb-az-down.png)
+![AZ Blackhole](./static/images/az-blackhole.png)
 
 ## Use cases
 
 AZ blackhole:
 - Checks how the applications and services handle the loss of network connectivity in specific zones.
-- Determine the effects of network isolation on critical business processes by simulating major network disruptions, helping teams to identify weak links and improve overall system robustness.
-- Test and refine disaster recovery plans by simulating AZ-level blackholes, ensuring that your infrastructure can efficiently reroute traffic and maintain operational continuity during large-scale outages.
+- Determines the effects of network isolation on critical business processes by simulating major network disruptions, helping teams to identify weak links and improve overall system robustness.
+- Tests and refine disaster recovery plans by simulating AZ-level blackholes, ensuring that your infrastructure can efficiently reroute traffic and maintain operational continuity during large-scale outages.
 
 ### Prerequisites
 - Kubernetes >= 1.17
@@ -38,7 +35,7 @@ AZ blackhole:
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
+Harness CE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -82,7 +79,7 @@ Below is an example AWS policy to execute the fault.
 - Go to [AWS named profile for chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults.
 :::
 
-### Mandatory tunables
+### Mandatory Tunables
 
    <table>
       <tr>
@@ -102,7 +99,7 @@ Below is an example AWS policy to execute the fault.
       </tr>
     </table>
 
-### Optional tunables
+### Optional Tunables
    <table>
       <tr>
         <th> Tunable </th>
@@ -141,7 +138,7 @@ Below is an example AWS policy to execute the fault.
       </tr>
     </table>
 
-### Availability zones
+### Availability Zones
 
 Comma-separated list of the target availability zones under blackhole attach. Tune it by using the `AVAILABILITY_ZONES` environment variable.
 
