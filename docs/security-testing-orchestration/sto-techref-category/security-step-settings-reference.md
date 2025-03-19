@@ -33,7 +33,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
 
 ## Scanners supported by STO
 
-import StoSupportedScanners from './shared/_sto-supported-scanners.md';
+import StoSupportedScanners from './shared/sto-supported-scanners.md';
 
 <StoSupportedScanners />
 

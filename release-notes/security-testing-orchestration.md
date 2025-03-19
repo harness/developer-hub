@@ -194,7 +194,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 <!-- 2024-07-19 -->
 
 #### New features and enhancements
-- In the [Checkmarx step](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) under the **Scan Tool**, the fields **Team Name** and **Project Name** are now mandatory for step configuration. Previously, these fields were optional. (STO-7681)
+- In the [Checkmarx step](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference) under the **Scan Tool**, the fields **Team Name** and **Project Name** are now mandatory for step configuration. Previously, these fields were optional. (STO-7681)
 - We now track the number of occurrences for a given issue/scan combination independently of the associated occurrence IDs. Newly created issues will only store up to 1,000 occurrences, with the total number of occurrences being stored separately. Occurrences are stored based on severity, with higher-severity occurrences given priority. (STO-5979)
 
   These following endpoints now include `numOccurrences` at the issue level, showing the total number of occurrences for the issues:
@@ -1424,7 +1424,7 @@ The following security steps are now generally available:
 * [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference) (STO-5393)
 * [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference) (STO-5050)
 * [Black Duck Hub](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference) (STO-5052)
-* [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) (STO-5073)
+* [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference) (STO-5073)
 * [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) (STO-5394)
 * [Mend (formerly Whitesource)](/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference) (STO-5392)
 * [Prisma Cloud (formerly Twistlock)](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference) (STO-5055)

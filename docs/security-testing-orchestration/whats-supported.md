@@ -38,7 +38,7 @@ import StoSupportedCategories from '/docs/security-testing-orchestration/sto-tec
 <summary>Harness STO scanner support</summary>
 
 
-import StoSupportedScanners from '/docs/security-testing-orchestration/sto-techref-category/shared/_sto-supported-scanners.md';
+import StoSupportedScanners from '/docs/security-testing-orchestration/sto-techref-category/shared/sto-supported-scanners.md';
 
 
 <StoSupportedScanners />
