@@ -25,7 +25,7 @@ The SLSA Verification step has the following fields:
 :::warning Deprecation Alert
 
 
-Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the Artifact Verification step.
+Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the SLSA Verification step.
 
 :::
 
