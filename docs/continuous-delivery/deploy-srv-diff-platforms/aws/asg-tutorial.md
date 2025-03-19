@@ -1369,7 +1369,7 @@ This step is not supported for **Canary** and **Blue-Green** deployment strategi
 
 **Key Features**
 
-- **Polls Instance Refresh Status**: Uses the DescribeInstanceRefreshes API to monitor the PercentageComplete and Status of the instance refresh.
+- **Polls Instance Refresh Status**: Uses the [DescribeInstanceRefreshes API](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeInstanceRefreshes.html) to monitor the PercentageComplete and Status of the instance refresh.
 
 - **Ensures Healthy Instances**: Marks the step successful only when the new instances reach a healthy state and the refresh process is 100% complete.
 

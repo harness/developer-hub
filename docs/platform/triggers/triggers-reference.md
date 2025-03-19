@@ -122,6 +122,7 @@ Select Git events and, if applicable, one or more actions that will initiate the
 | | Push | GitHub push triggers respond to commit and tag creation actions by default. |
 | | Release | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li><li>Prerelease</li><li>Publish</li><li>Release</li><li>Unpublish</li></ul> |
 | | Issue Comment (Only comments on pull requests are supported.) | Select one or more of the following:<ul><li>Created</li><li>Deleted</li><li>Edited</li></ul> |
+| | Create | When a new branch or tag is created, GitHub sends a webhook event. Reconfigure the pipeline with this **Create** event type to trigger the pipeline. |
 | **GitLab** | Merge Request | Select one or more of the following:<ul><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li><li>Sync</li></ul> |
 | | Merge Request Comment | Create |
 | | Push | GitLab push triggers respond to commit and tag creation actions by default. |

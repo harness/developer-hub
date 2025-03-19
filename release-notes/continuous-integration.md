@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-02-21T10:00
+date: 2025-03-06T10:00
 sidebar_position: 10
 ---
 
@@ -20,23 +20,45 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
-## February 2025
-
-:::note
-
-**New UI for License Management in Harness CI**
-
-We’re excited to introduce an updated UI for managing your Harness Continuous Integration (CI) licenses. With the [new subscription page](https://developer.harness.io/docs/platform/get-started/subscriptions-licenses/subscriptions/#developer-360-modules-subscriptions), you can now easily track and assign licenses based on the number of developers using the platform, offering greater flexibility and control over your license allocation.
-
-This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
+## March 2025
 
 
+:::warning
+
+**Action Required: Avoid Docker Hub Rate Limits**
+
+**Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
+on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
+
+* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
+* **Pull images anonymously from alternative registries**: switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
+* **Private registry**: Pull images from your own private registry.
+
+[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
 
 :::
 
-:::note
 
-**Network allowlisting Update for Hosted Linux Infrastructure**
+:::warning
+
+**Action Required: Migration from GCR to GAR**
+
+Google Container Registry (GCR) is being decommissioned. 
+
+* As part of this change, support for the **Build and Push to GCR step in Harness CI will be discontinued**. Customers currently using this step need to **transition to the Build and Push to Google Artifact Registry (GAR)** step to continue building and pushing container images without interruption.
+* Customers that have configured HarnessImage Connector to pull [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) form GCR, need to update the connector configurations to the [new Google Artifact Registry URL](http://us-docker.pkg.dev/gar-prod-setup/harness-public)
+
+To ensure uninterrupted service, we recommend completing these updates by April 22, 2025.
+* After March 18, 2025, writing images to Google Container Registry (GCR) will no longer be possible.
+* After April 22, 2025, reading images from GCR will also be disabled.
+
+For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
+:::
+
+
+:::warning
+
+**Network allowlisting Update for Hosted (Cloud) Linux Infrastructure**
 
 Harness Cloud users utilizing hosted Linux infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration.
 
@@ -57,25 +79,79 @@ CIDR Blocks:
 34.127.6.209, 35.185.226.205, 35.247.24.71, 34.168.30.50, 35.233.132.196, 34.168.214.255, 34.102.103.7, 34.102.40.149, 34.102.16.205,  
 34.127.65.210, 35.233.172.173
 ```
+
+**We will begin transitioning to the new IP range gradually from March 15th, 2025, to March 30th, 2025**. During this period, ensure both the old and new IP configurations are set to ensure a seamless transition.
+
 If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
 
 :::
 
 :::note
 
-**Action Required: Migration from GCR to GAR**
+**New UI for License Management in Harness CI**
 
-Google Container Registry (GCR) is being decommissioned. 
+We’re excited to introduce an updated UI for managing your Harness Continuous Integration (CI) licenses. With the [new subscription page](https://developer.harness.io/docs/platform/get-started/subscriptions-licenses/subscriptions/#developer-360-modules-subscriptions), you can now easily track and assign licenses based on the number of developers using the platform, offering greater flexibility and control over your license allocation.
 
-* As part of this change, support for the **Build and Push to GCR step in Harness CI will be discontinued**. Customers currently using this step need to **transition to the Build and Push to Google Artifact Registry (GAR)** step to continue building and pushing container images without interruption.
-* Customers that have configured HarnessImage Connector to pull [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) form GCR, need to update the connector configurations to the [new Google Artifact Registry URL](http://us-docker.pkg.dev/gar-prod-setup/harness-public)
+This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
 
-To ensure uninterrupted service, we recommend completing these updates by April 22, 2025.
-* After March 18, 2025, writing images to Google Container Registry (GCR) will no longer be possible.
-* After April 22, 2025, reading images from GCR will also be disabled.
-
-For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
 :::
+
+### Version 1.70
+
+<!-- 2025-03-03 -->
+#### New features and enhancements
+
+- Users can now set the stage variable `PLUGIN_SKIP_PUSH_IF_TAG_EXISTS` to skip the push step in the native **Build and Push to ECR** step if the tag already exists. (CI-10350)
+  
+#### Fixed issues
+
+- Resolved an issue with Azure Repos where cloning with a tag was not working. (CI-16298, ZD-78432)
+- Resolved an issue where Build Intelligence feature  couldn’t be configured via templates. With this fix, the property is now visible in templates, allowing users to configure CI stages regardless of the selected infrastructure. (CI-16342)
+  
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `plugins/artifactory`      | Vulberability fixes  | 1.7.1                | 1.7.2          |
+| `plugins/ecr`      | New input `PLUGIN_SKIP_PUSH_IF_TAG_EXISTS` and published at `plugins/ecr:20.18.7` (CI-10350)                | 20.18.6          | 20.18.7          |
+| `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
+| `harness/ci-lite-engine`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
+| `harness/drone-git`      | Changes described in fixed issues list  | 1.6.5                | 1.6.7          |
+| `harness/ci-addon`      | Vulberability fixes  | rootless-1.16.74                | rootless-1.16.75          |
+| `harness/ci-addon`      | Vulberability fixes  | 1.16.73                | 1.16.75          |
+
+## February 2025
+
+### Version 1.68
+
+<!-- 2025-02-24 -->
+
+#### New features and enhancements
+
+- For Kubernetes infrastructure, CI pipeline now logs container names alongside step names in the **Initialize step** for better visibility. (CI-14809)
+- Added support for shell as a run-time input in the Run-step. (CI-15390)
+- CI stage now applies image pull policy from the nearest Project/Org/Account-level config for Kubernetes Infrastructure. This functionality requires the feature flag `CI_ENABLE_IMAGE_PULL_POLICY_OVERRIDE_FROM_SETTINGS`. (CI-15614)
+- Added option to run **Clone Codebase** in a containerless step for VM and Cloud infra, available through the `CI_GIT_CLONE_CONTAINERLESS` feature flag. This is particularly useful for Windows builds due to the large image size required for pull. (CI-15756) (ZD-73794, ZD-76234)
+
+#### Fixed issues
+
+- Fixed private registry configuration in the Build Intelligence step container of the default Harness image connector. The container entrypoint is now correctly pulled from the specified private registry instead of DockerHub, ensuring compatibility with air-gapped environments. (ZD-76651, 76970, 77190, 78321, CI-15799)
+- Fixed an issue where Azure DevOps status did not reflect the pipeline link. The pipeline link is now correctly displayed in Azure DevOps status updates. (CI-16156, ZD-77790)
+- Fixed an issue where execution would fail if a Cloud Storage Connector with an unsupported authentication method was used in Default Settings for the Caching Intelligence features. Now, instead of failing, execution will proceed, but Intelligence features relying on these settings will be disabled. (ZD-78127, CI-16265)
+- Fixed issue with Azure Repos where cloning with tags was not working due to unsupported Azure content list API for tags. (ZD-78432, CI-16298)
+- Fixed an issue where Build Intelligence was enabled when running on Windows in Kubernetes, which is currently unsupported. Build Intelligence configuration will no longer be injected into Windows environments, preventing errors during execution. (ZD-78560, 78564, CI-16318)
+- Fixed issue with GCP connector under "Save cache to GCS" when used as a runtime input, where Docker connectors were incorrectly listed instead of GCP connectors. (CI-16347, ZD-78363)
+ 
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `plugins/drone-s3`      | Vulberability fixes  | 1.5.0                | 1.5.1          |
+| `harness/ci-addon`      | Changes described in fixed issues list  | 1.16.73                | 1.16.74.1          |
+| `harness/ci-lite-engine`      | Changes described in fixed issues list  | 1.16.73                | 1.16.74.1          |
+| `harness/drone-git`      | Changes described in fixed issues list  | 1.6.6-rootless                | 1.6.7-rootless          |
+| `cacheS3Config`      | Changes described in fixed issues list  | v1.9.0                | v1.9.1          |
+| `cacheGCSConfig`      | Changes described in fixed issues list  | v1.9.0                | v1.9.1          |
 
 ### Version 1.67
 
@@ -493,7 +569,7 @@ To enable feature flags, please contact [Harness Support](mailto:support@harness
 
 #### New features and enhancements
 
-- Harness Intelligence features optimize your 'Build' stages by reducing execution time through advanced caching capabilities and Test Intelligence. With this release, we've added stage savings data to stage summary of 'Build' stages where saving is observed, as well as further insight into the optimization on the step level. To learn more, visit [Intelligence Savings Documentation](../docs/continuous-integration/get-started/harness-ci-intelligence#intelligence-savings) (CI-13252)
+- Harness Intelligence features optimize your 'Build' stages by reducing execution time through advanced caching capabilities and Test Intelligence. With this release, we've added stage savings data to stage summary of 'Build' stages where saving is observed, as well as further insight into the optimization on the step level. To learn more, visit [Intelligence Savings Documentation](../docs/continuous-integration/use-ci/harness-ci-intelligence#intelligence-savings) (CI-13252)
 
 #### Fixed issues
 

@@ -120,7 +120,7 @@ Sometimes users might have mixed case email addresses in Okta. In these situatio
 
    ![](./static/single-sign-on-saml-55.png)
 
-4. On the **Configure SAML** tab, enter the Harness SAML endpoint URL in the **Single sing on URL** field. To get the SAML endpoint URL from Harness:
+4. On the **Configure SAML** tab, enter the Harness SAML endpoint URL in the **Single sign on URL** field. To get the SAML endpoint URL from Harness:
 	1. If you aren't already on the **Add SAML Provider** page in Harness, open a new browser tab and navigate there. Sign in to Harness, go to **Account Settings**, select **Authentication**, select **SAML Provider**, enter a **Name** for the SAML configuration, and then select **Okta**.
 
 	   ![](./static/single-sign-on-saml-56.png)
@@ -386,10 +386,10 @@ To set `User.Read.All` access for the application, do the following:
 
 The following App registration permissions are required to configure the optional `client-id` and `client-secret` for Harness SAML SSO with the Azure app:
 
-- `Directory.ReadWrite.All`
-- `Group.ReadWrite.All`
-- `GroupMember.ReadWrite.All`
-- `User.ReadWrite.All`
+- `Directory.Read.All`
+- `Group.Read.All`
+- `GroupMember.Read.All`
+- `User.Read.All`
 
 :::info note
 You must set the above for both Delegated permissions and Application permissions.
@@ -504,7 +504,7 @@ To test Azure SSO using Azure, do the following:
 
 To test Azure SSO using Harness, do the following:
 
-1. In **Harness**, in **ACCOUNT SETUP**->**Authentication**, select **Login via SAML**, to enable SAML SSO using the Azure provider.
+1. In **Harness**, in **Account Settings** → **Security and Governance** → **Authentication**, select **Login via SAML**, to enable SAML SSO using the Azure provider.
 2. Open a new Chrome Incognito window to test the SSO login using a Harness User account other than the one you are currently logged in with.
 3. Sign into Harness using one of the user account email addresses shared by Harness and Azure. When you sign into Harness, you are prompted with the Microsoft Sign in dialog.
 4. Enter the Azure user name for the user (most often, the email address), enter the Azure password, and click **Sign in**.

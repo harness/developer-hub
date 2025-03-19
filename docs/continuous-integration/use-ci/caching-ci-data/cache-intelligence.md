@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
 
-With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) feature, Harness automatically caches and restores software dependencies to speed up your builds - hassle free.
+With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, Harness automatically caches and restores software dependencies to speed up your builds - hassle free.
 
 You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
