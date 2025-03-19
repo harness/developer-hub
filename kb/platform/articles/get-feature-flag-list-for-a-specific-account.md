@@ -9,10 +9,9 @@ Feature Flags allow specific features of the Harness Platform to be enabled or d
 ### Tools Needed: 
 
 * chrome / safari browser
-
 * curl 
-
 * jq
+* gitbash (if Windows)
 
 ### Instructions:
 
@@ -53,7 +52,7 @@ Feature Flags allow specific features of the Harness Platform to be enabled or d
     ![Image](../static/ff-safari-network-console.png)
 
 8. From the Response / Preview Tab you can search (CTRL+F) the entire payload to find any specific flags
-9. To run same command from command line (cURL), right click on the Name:evaluations?cluster=1  (chrome) / Name:evaluations (safari) then choose Copy=>Copy as cURL (chrome) / Copy as cURL (safari) option. You will have a full cURL command. Append the command with “-o ff.json” and run in the terminal as below
+9. To run same command from command line (cURL), right click on the Name:evaluations?cluster=1  (chrome) / Name:evaluations (safari) then choose Copy=>Copy as cURL (chrome) / Copy as cURL (safari) option. You will have a full cURL command. 
 
   - **Chrome Screenshot**:
 
@@ -62,7 +61,8 @@ Feature Flags allow specific features of the Harness Platform to be enabled or d
  -  **Safari Screenshot**:
 
     ![Image](../static/ff-safari-copy-curl.png)
- 
+
+ 10. Append the command with “-o ff.json” and run in the terminal as below
 ```
 
 curl 'https://proxy-prod.ff.harness.io/client/env/27e2d176-95b8-49b3-a76d-698e3056bcd7/target/1YXEnD4uTqqnkRbbeT3QAA/evaluations?cluster=1' \
@@ -99,6 +99,18 @@ curl 'https://proxy-prod.ff.harness.io/client/env/27e2d176-95b8-49b3-a76d-698e30
 
   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36’ \
 
--o ff.json
+  -o ff.json
 ```
+The above command will write all the json output containing all the feature flags into a file **ff.json**
 
+11. Now run below commands to get the relevant list of FFs in shell terminal
+
+    - Feature Flags Enabled
+    ```
+    jq  --raw-output 'map_values(select(.value == "true"))| .[]|[.flag] | @csv' ff.json | sort -u
+    ```
+
+    - Feature Flags NOT Enabled
+    ```
+    jq  --raw-output 'map_values(select(.value == "false"))| .[]|[.flag] | @csv' ff.json | sort -u
+    ```
