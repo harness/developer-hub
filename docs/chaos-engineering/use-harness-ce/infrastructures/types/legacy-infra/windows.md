@@ -129,7 +129,7 @@ Service created and started successfully.
 
 ## Upgrade Infrastructure
 
-Go to [Upgrade Infrastructure for Windows](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra#upgrade-linux-infrastructure) to upgrade to the latest version of your Windows infrastructure.
+Go to [Upgrade Infrastructure for Windows](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra#upgrade-windows-infrastructure) to upgrade to the latest version of your Windows infrastructure.
 
 ## Validate Installation
 
