@@ -1,20 +1,17 @@
 ---
 id: lambda-inject-latency
 title: Lambda inject latency
-redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-inject-latency
-- /docs/chaos-engineering/chaos-faults/aws/lambda-inject-latency
 ---
-Lambda inject latency simulates runtime delays in Lambda function execution to emulate network lag and resource contention. 
-This allows users to proactively evaluate and enhance their system's responsiveness under real-world latency conditions.
+Lambda inject latency is an AWS fault that simulates runtime delays in Lambda function execution to emulate network lag and resource contention. 
+This allows you to proactively evaluate and enhance youe system's responsiveness under real-world latency conditions.
 
-![Lambda Inject Latency](./static/images/lambda-update-function-timeout.png)
+![Lambda Inject Latency](./static/images/lambda-inject-latency.png)
 
 ## Use cases
 Lambda inject latency:
 - Checks integrated services handle delayed responses, ensuring that timeouts and fallback mechanisms are appropriately configured.
-- Inject latency when interacting with external APIs or databases to determine if your system can maintain functionality under slower-than-expected response times.
-- Evaluate the impact of delays typically experienced during cold starts or resource contention, and refine scaling strategies accordingly.
+- Injects latency when interacting with external APIs or databases to determine if your system can maintain functionality under slower-than-expected response times.
+- Evaluates the impact of delays typically experienced during cold starts or resource contention, and refine scaling strategies accordingly.
 
 ### Prerequisites
 - Kubernetes >= 1.17
@@ -35,7 +32,7 @@ Lambda inject latency:
       aws_secret_access_key = XXXXXXXXXXXXXXX
   ```
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
+Harness CE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -67,9 +64,9 @@ Below is an example AWS policy to execute the fault.
 - Go to [common attributes](/docs/chaos-engineering/use-harness-ce/chaos-faults/common-tunables-for-all-faults) and [AWS-specific tunables](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
 - Go to [AWS named profile for chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults.
 - Currently, this chaos fault supports Lambda functions implemented in Python; support for additional languages will be added in future releases.
-  :::
+:::
 
-### Mandatory tunables
+### Mandatory Tunables
    <table>
       <tr>
         <th> Tunable </th>
@@ -78,7 +75,7 @@ Below is an example AWS policy to execute the fault.
       </tr>
       <tr>
         <td> FUNCTION_NAME </td>
-        <td> Function name of the target Lambda function. It support single function name.</td>
+        <td> Function name of the target Lambda function. It supports single function name.</td>
         <td> For example, <code>test-function</code> </td>
       </tr>
       <tr>
@@ -93,7 +90,7 @@ Below is an example AWS policy to execute the fault.
       </tr>
     </table>
 
-### Optional tunables
+### Optional Tunables
   <table>
       <tr>
         <th> Tunable </th>
@@ -123,7 +120,7 @@ Below is an example AWS policy to execute the fault.
     </table>
 
 
-### Lambda latency
+### Lambda Latency
 
 Updates the Lambda function to cause runtime delays in Lambda function execution. Tune it by using `LAMBDA_LATENCY` environment variable.
 
