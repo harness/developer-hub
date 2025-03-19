@@ -38,21 +38,3 @@ Before you can access Harness Database DevOps, you must have Harness enable the 
  6. **Utilization of Delegates**: The Harness Delegate acts as an agent that facilitates the connection between the CI/CD pipeline and the database. It enables the execution of database changes in a secure and efficient manner. The Delegate can be configured to connect to various database instances, ensuring that the right credentials and access parameters are used for each environment.
 
 In summary, Database DevOps is vital to the Harness Delegate as it enhances the overall deployment process by integrating database management into CI/CD workflows, improving visibility, governance, and collaboration, while also enabling automation and risk mitigation. This integration ultimately leads to faster, more reliable, and safer database deployments.
-
-## Database DevOps Key Concepts
-
-### Database Schemas
-
-A database schema is the structure of a database, e.g. what tables and columns and indexes exist. In the context of Harness DB DevOps, there is an entity called a 'schema’ that is a collection of DDL or DML changes that can be applied to a database. Today this collection is in the form of a liquibase changelog checked into git or artifactory.
-
-### Database Instances 
-
-A database instance associates a database schema to a database connection. It represents the intersection of the database's structural definition (the schema) with the actual data environment where the schema is implemented.
-
-### Database Connection
-
-A database connection refers to the specific parameters and credentials used to establish a secure link between the Harness platform and an individual database server. This connection is done through a JDBC (Java Database Connectivity) URL, which specifies the location of the database server, and is authenticated using a username and password. The connection is made via a Harness Delegate, which allows secure access to the database, even when the database instance is not internet-accessible. This setup enables Harness to execute SQL scripts, orchestrate database changes, and manage schema versions as part of the CI/CD pipeline, all while adhering to security best practices. 
-
-:::info
-Head over to the [Key Concepts documentation on Harness Database DevOps](../get-started/key-concepts.md) to learn more.
-:::

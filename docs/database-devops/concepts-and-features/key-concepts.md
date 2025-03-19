@@ -2,7 +2,7 @@
 title: Database DevOps Key Concepts
 sidebar_label: DB DevOps Key Concepts
 description: Basic terminology and concepts related to Harness Database DevOps
-sidebar_position: 20
+sidebar_position: 1
 ---
 
 import BetaIcon from '/img/icon_beta.svg';
@@ -13,7 +13,7 @@ import BetaIcon from '/img/icon_beta.svg';
 
 This topic covers basic terminology and concepts related to Database DevOps. For general Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts.md). For information about using DB DevOps, go to [Harness Database DevOps onboarding guide](onboarding-guide.md).
 
-## Database
+### Database
 
 A database is an organized collection of structured information, or data, that is stored and managed electronically, typically in a computer system. Databases are designed to support the storage, retrieval, modification, and deletion of data in a way that ensures data integrity, security, and performance.
 
@@ -26,26 +26,20 @@ A database schema is the structure of a database, e.g. what tables and columns a
 A database instance associates a database schema to a database connection. It represents the intersection of the database's structural definition (the schema) with the actual data environment where the schema is implemented.
 
 ```bash
-Database Instance
-├── Database 1
-│   ├── Schema A
-│   │   ├── Table 1
-│   │   └── Table 2
-│   └── Schema B
-│       ├── Table 3
-│       └── View 1
-└── Database 2
-    ├── Schema C
-    │   └── Table 4
-    └── Schema D
-        ├── Table 5
-        └── Stored Procedure 1
-
+Schema Organization
+├── Schema A
+│   ├── Instance I1
+│   └── Instance I2
+├── Schema B
+│   ├── Instance P1
+│   ├── Instance P2
+│   └── Instance P3
+└── Schema C
+    ├── Instance E1
+    └── Instance E2
 ```
-**In this hierarchy**:
-- One database instance can host multiple databases
-- One database can contain multiple schemas
-- Each schema can contain multiple database objects
+**In this hierarchy**: Each schema can have multiple instances. 
+Schema B, for example, has three instances, while Schemas A and C each have two instances.
 
 ### Database Connection
 
@@ -102,24 +96,27 @@ An open source database change control CLI tool that is leveraged used by Harnes
 ## Understanding Changelog and Changesets
 
 ### Changelog
-A collection of database changes that can be applied to a database. It includes an individual unit of change known as a changeset.
+A Changelog is a file that defines all the changes made to your database. This helps audit your database and execute any changes that not applied.
+When you want to modify your database, simply add a new changeset and specify its operation as a Change Type. For example, you may add a changeset to create a new table, and another changeset to drop a primary key.
 
 ### Changeset
-Changesets are the fundamental units of database change tracking. Each changeset represents an atomic change to your database schema or data. Here are the key concepts:
+Changesets are the fundamental units of database change tracking. Each changeset represents a change to your database schema.
+It is a best practice to specify only one type of change per changeset. Doing so avoids failed auto-commit statements that can leave the database in an unexpected state.
 
-### Change
-An individual change as part of a changeset.
-
+Here are the key concepts:
 1. **Unique Identification**: Each changeset requires two identifiers:
-   - `id`: A unique identifier for the change
-   - `author`: The person responsible for the change
+   - `id`: A unique identifier for the change.
+   - `author`: The person responsible for the change.
+    :::info
+
+    A changeset is uniquely tagged by both the author and id attributes (author:id), as well as the changelog file path (The name of the changeset file that defines the change).
+
+    :::
 
 2. **Change Tracking**: Once a changeset is executed, it's tracked in a special table (typically called DATABASECHANGELOG) to ensure it's never run twice.
 
-3. **File Name**: The name of the changeset file that defines the change.
+![change-tracking](./static/changelog-and-changeset.png)
 
-### Changelog
-A collection of database changes that can be applied to a database. It includes an individual unit of change known as a changeset.
 
 ### File Format
 
@@ -130,16 +127,20 @@ The format of your changeset depends on the file type of your changelog, which c
 ##### SQL Example 
 ``` SQL Example
 --liquibase formatted sql
---changeset John Snow:1
+
+--changeset stephen-atwell:1
 CREATE TABLE products (
       id INT PRIMARY KEY,
       name VARCHAR(255)
 );
+
+--changeset stephen-atwell:2
+CREATE INDEX idx_products_name ON products(name);
 ```
 
 ##### XML Example
 ``` XML Example
-<changeSet  id="1"  author="John Snow">
+<changeSet  id="1"  author="stephen-atwell">
     <createTable  tableName="company">
         <column  name="address"  type="varchar(255)"/>
     </createTable>
@@ -151,7 +152,7 @@ CREATE TABLE products (
 databaseChangeLog:
   -  changeSet:  
       id:  1
-      author: John Snow
+      author: stephen-atwell
       changes:
         -  createTable:
             tableName: company
@@ -165,7 +166,7 @@ databaseChangeLog:
 {
   "changeSet": {
     "id": "1",
-    "author": "John Snow",
+    "author": "stephen-atwell",
     "changes": [
       {
         "createTable": {
