@@ -880,7 +880,7 @@ Lambda update role permission is an AWS fault that modifies the role policies as
 
 ### Lambda modify response body
 
-Lambda modify response body causes chaos by modifying the response body of a Lambda function at runtime, simulating unexpected output alterations. This interrupt the flow of the given function.
+Lambda modify response body modifies the response body of a Lambda function at runtime, simulating unexpected output alterations. This interrupt the flow of the given function.
 
 <Accordion color="green">
 <summary>Use cases</summary>

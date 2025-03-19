@@ -1,14 +1,13 @@
 ---
 id: lambda-modify-response-body
 title: Lambda modify response body
-redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-modify-response-body
-- /docs/chaos-engineering/chaos-faults/aws/lambda-modify-response-body
 ---
-Lambda modify response body causes chaos by modifying the response body of a Lambda function at runtime, simulating unexpected output alterations. This interrupt the flow of the given function.
-This helps users to proactively validate their function's resilience against unexpected response alterations, ensuring uninterrupted service delivery even under challenging real-world conditions.
 
-![Lambda Modify Response Body](./static/images/lambda-update-function-timeout.png)
+Lambda modify response body is an AWS fault that modifies the response body of a Lambda function at runtime, simulating unexpected output alterations. This interrupts the flow of the given function.
+
+This faults helps you to proactively validate your function's resilience against unexpected response alterations, ensuring uninterrupted service delivery under unexpected conditions.
+
+![Lambda Modify Response Body](./static/images/lambda-modify-response-body.png)
 
 ## Use cases
 Lambda modify response body:
@@ -35,7 +34,7 @@ Lambda modify response body:
   ```
 
 :::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
+Harness CE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
 :::
 
 Below is an example AWS policy to execute the fault.
@@ -69,7 +68,7 @@ Below is an example AWS policy to execute the fault.
 - Currently, this chaos fault supports Lambda functions implemented in Python; support for additional languages will be added in future releases.
 :::
 
-### Mandatory tunables
+### Mandatory Tunables
    <table>
       <tr>
         <th> Tunable </th>
@@ -93,7 +92,7 @@ Below is an example AWS policy to execute the fault.
       </tr>
     </table>
 
-### Optional tunables
+### Optional Tunables
   <table>
       <tr>
         <th> Tunable </th>
@@ -123,7 +122,7 @@ Below is an example AWS policy to execute the fault.
     </table>
 
 
-### Response body
+### Response Body
 
 Updates the Lambda function response body to a custom chaos value. Tune it by using `RESPONSE_BODY` environment variable.
 
