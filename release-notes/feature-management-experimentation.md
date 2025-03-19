@@ -13,13 +13,15 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: March 17, 2025
+#### Last updated: March 19, 2025
 ## March 2025
-### 2025-03-17
+### 2025-03-19
 #### AI settings
 The new AI settings page in Admin settings provides a toggle to enable/disable Release Agent and manage whether Release Agent has permissions to process experimentation data for experiment summarization and Q&A. This provides enhanced control over data privacy for AI features.
 
 ![Admin settings - AI settings](./static/fme/admin-settings-ai-settings.png)
+
+Your data is protected by the [Harness privacy policy](https://www.harness.io/legal/privacy) and the [OpenAI Enterprise privacy policy](https://openai.com/enterprise-privacy/). For more information go to [AI Release Agent](https://help.split.io/hc/en-us/articles/21188803158157-AI-Release-Agent#privacy).
 
 ##### Related documentation
 - [AI Release Agent](https://help.split.io/hc/en-us/articles/21188803158157-Switch-AI-assistant)
