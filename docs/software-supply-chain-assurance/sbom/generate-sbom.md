@@ -108,11 +108,17 @@ Using SBOM Orchestration step you can generate the SBOM for both Container image
 - **Registry Type**: Select **Harness Artifact Registry** or **Third-Party Artifact Registry**, based on where your artifact is stored.
 - **Source**: Select the **Source** by choosing either a supported container registry from the list or Repository if you are generating the SBOM for source code.
 
+:::warning Deprecation Alert
+
+Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the SBOM Orchestration step.
+
+:::
+
 import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifact-source.md';
 
 <ArtifactSource />
 
-With this configuration, the step generates the SBOM and stores it in the Artifact section of SCS. Optionally, you an attest to the generated SBOM, follow the instructions in the section below.
+With this configuration, the step generates the SBOM and stores it in the Artifact section of SCS. Optionally, you can attest to the generated SBOM, follow the instructions in the section below.
 
 
 ### Attest the SBOM
