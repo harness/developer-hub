@@ -862,6 +862,23 @@ Hitting a timeout is a frequent scenario with Lambda functions. This can break t
 
 <FaultDetailsCard category="aws">
 
+### Lambda inject latency
+
+Lambda inject latency simulates runtime delays in Lambda function execution to emulate network lag and resource contention. This allows users to proactively evaluate and enhance their system's responsiveness under real-world latency conditions.
+
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Checks integrated services handle delayed responses, ensuring that timeouts and fallback mechanisms are appropriately configured.
+- Inject latency when interacting with external APIs or databases to determine if your system can maintain functionality under slower-than-expected response times.
+- Evaluate the impact of delays typically experienced during cold starts or resource contention, and refine scaling strategies accordingly.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### Lambda update role permission
 
 Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function. Sometimes, Lambda functions depend on services like RDS, DynamoDB, and S3. In such cases, certain permissions are required to access these services. This fault helps understand how your application would behave when a Lambda function does not have enough permissions to access the services.
