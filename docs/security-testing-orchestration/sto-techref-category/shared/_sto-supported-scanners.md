@@ -43,7 +43,7 @@ A code scanner can detect one or more of the following issue types in your sourc
          <ul>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Extraction, Ingestion</li>
             <li>
-                <a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a>
+                <a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference">Checkmarx</a>
                  — The following workflows are supported:
                 <ul>
                   <li>Ingestion workflows for all Checkmarx One services (including SAST and SCA) that can publish scan results in SARIF format</li>

@@ -3,6 +3,8 @@ title: Checkmarx step configuration
 description: Scan code repositories with Checkmarx.
 sidebar_label: Checkmarx step configuration
 sidebar_position: 100
+redirect_from:
+- /docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference/
 ---
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
@@ -37,7 +39,7 @@ The recommended workflow is to add a Checkmarx step to a **Security** or **Build
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -49,42 +51,42 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeRepo     from '../shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
 
 
 #### Target and variant detection 
 
-import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectNote/>
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from '../shared/step_palette/target/_name.md';
 
 <StoSettingTargetName />
 
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
 #### Workspace
 
-import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
 
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from '../shared/step_palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 
@@ -94,7 +96,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 #### Domain
 
-import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
+import StoSettingAuthDomain from '../shared/step_palette/auth/_domain.md';
 
 <StoSettingAuthDomain />
 
@@ -104,7 +106,7 @@ import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
 
 #### Enforce SSL
 
-import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
+import StoSettingProductSSL from '../shared/step_palette/auth/_ssl.md';
 
 <StoSettingProductSSL />
 
@@ -113,7 +115,7 @@ import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
 #### API Version
 
 
-import StoSettingApiVersion from './shared/step_palette/auth/_api-version.md';
+import StoSettingApiVersion from '../shared/step_palette/auth/_api-version.md';
 
 
 
@@ -125,7 +127,7 @@ import StoSettingApiVersion from './shared/step_palette/auth/_api-version.md';
 #### Type
 
 
-import StoSettingAuthType from './shared/step_palette/auth/_type.md';
+import StoSettingAuthType from '../shared/step_palette/auth/_type.md';
 
 
 
@@ -135,14 +137,14 @@ import StoSettingAuthType from './shared/step_palette/auth/_type.md';
 
 #### Access ID
 
-import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
+import StoSettingAuthAccessID from '../shared/step_palette/auth/_access-id.md';
 
 <StoSettingAuthAccessID />
 
 
 #### Access Token
 
-import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
+import StoSettingAuthAccessToken from '../shared/step_palette/auth/_access-token.md';
 
 <StoSettingAuthAccessToken />
 
@@ -156,7 +158,7 @@ The Checkmarx team name. Use the format `/<`*`server-name`*`>/<`*`team-name`*`>`
 
 #### Project Name
 
-import StoSettingToolProjectName from './shared/step_palette/tool/project/_name.md';
+import StoSettingToolProjectName from '../shared/step_palette/tool/project/_name.md';
 
 <StoSettingToolProjectName />
 
@@ -165,7 +167,7 @@ If the specified project does not exist, the step will create a new project usin
 
 ### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
@@ -197,7 +199,7 @@ Consider carefully when to run incremental vs. full scans. See [When should I us
 
 #### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
@@ -212,96 +214,19 @@ You can configure the Checkmarx ingestion step to exclude issues detected by Che
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
 ## Proxy settings
 
-import ProxySettings from './shared/proxy-settings.md';
+import ProxySettings from '../shared/proxy-settings.md';
 
 <ProxySettings />
-
-## Example workflow: Ingest SARIF data from a Checkmarx GitHub Action scan
-
-The following pipeline example illustrates an ingestion workflow. It consists of two steps:
-
-* An Action step scans a code repo using a Checkmarx GitHub Action and export the scan results to a SARIF data file.
-* A Checkmarx step that ingests the SARIF data.
-
-![Checkmarx ingestion pipeline in Pipeline Studio](./static/checkmarx-ingestion-pipeline-example.png)
-
-```yaml
-pipeline:
-  projectIdentifier: STO
-  orgIdentifier: default
-  tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: GITHUB_CONNECTOR
-        repoName: https://github.com/OWASP/NodeGoat
-        build: <+input>
-  stages:
-    - stage:
-        name: CheckmarxSCA
-        identifier: checkmarxone
-        type: CI
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
-              - step:
-                  type: Action
-                  name: Checkmarx Scan GHA
-                  identifier: CxFlow
-                  spec:
-                    uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.6
-                    with:
-                      project: SampleProject
-                      team: /CxServer/nzsouth
-                      scanners: sca
-                      checkmarx_url: <+secrets.getValue("my-checkmarx-url")>
-                      checkmarx_username: zeronorth
-                      checkmarx_password:  <+secrets.getValue("my-checkmarx-password")>
-                      checkmarx_client_secret: <+secrets.getValue("my-checkmarx-client-secret")>
-                      sca_username: harness
-                      sca_password:  <+secrets.getValue("my-sca-passeword")>
-                      sca_tenant: cxIntegrations
-                      break_build: false
-              - step:
-                  type: Checkmarx
-                  name: ingest-cmarx
-                  identifier: Checkmarx_1
-                  spec:
-                    mode: ingestion
-                    config: default
-                    target:
-                      name: <+pipeline.name>
-                      type: repository
-                      variant: dev
-                    advanced:
-                      log:
-                        level: debug
-                    runAsUser: "1001"
-                    ingestion:
-                      file: /harness/cx.sarif
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          sharedPaths:
-            - /shared/scan_results/
-  identifier: CheckmarxGitAction
-  name: CheckmarxGitAction
-
-```

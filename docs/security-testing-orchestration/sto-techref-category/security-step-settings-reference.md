@@ -46,7 +46,7 @@ import StoInfraSupport from '/docs/security-testing-orchestration/sto-techref-ca
 
 ## Ingestion formats supported by STO
 
-import StoSupportedFormats from './shared/_sto-supported-ingestion-formats.md';
+import StoSupportedFormats from './shared/sto-supported-ingestion-formats.md';
 
 <StoSupportedFormats />
 

@@ -99,7 +99,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 

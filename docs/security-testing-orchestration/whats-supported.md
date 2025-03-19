@@ -60,7 +60,7 @@ import StoSupportedBinaries from '/docs/security-testing-orchestration/sto-techr
 <summary>Supported ingestion formats</summary>
 
 
-import StoSupportedFormats from '/docs/security-testing-orchestration/sto-techref-category/shared/_sto-supported-ingestion-formats.md';
+import StoSupportedFormats from '/docs/security-testing-orchestration/sto-techref-category/shared/sto-supported-ingestion-formats.md';
 
 
 <StoSupportedFormats />
