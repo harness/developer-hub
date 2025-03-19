@@ -1,7 +1,7 @@
 ---
 title: Artifact Registry Security Integration
-sidebar_position: 10
-sidebar_label: Security
+sidebar_position: 20
+sidebar_label: Security Scanners
 ---
 
 import Tabs from '@theme/Tabs';
@@ -31,7 +31,7 @@ Follow these steps to set up automated security scanning for your container imag
 2. Locate the **Security** section
 
 ### Review Integrated Security Scanners
-Harness Artifact Registry integrates with the Harness Security modules ([SCS](/docs/software-supply-chain-assurance/) and [STO](/docs/security-testing-orchestration/)) for scanning. Depending on your registry type and licenses, the following scanners are available:
+Harness Artifact Registry integrates with the Harness Security modules ([Supply Chain Security](/docs/software-supply-chain-assurance/) and [Security Testing Orchestration](/docs/security-testing-orchestration/)) for scanning. Depending on your registry type and licenses, the following scanners are available:
 - **SBOM:** Generates a Software Bill of Materials
 - **AquaTrivy:** Comprehensive vulnerability scanning
 </TabItem>
@@ -40,7 +40,7 @@ Harness Artifact Registry integrates with the Harness Security modules ([SCS](/d
 ---
 ### Security Pipeline Creation
 When you configure security scanning, Harness automatically creates a security scanner pipeline called **HARNESS ARTIFACT SCAN PIPELINE**. This pipeline includes:
-- A software supply chain assurance (SSCA) stage
+- A supply chain security (SCS) stage
 - Inline steps for either:
   - SBOM scanning
   - AquaTrivy security scanning
