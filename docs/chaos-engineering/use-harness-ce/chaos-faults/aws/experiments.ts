@@ -16,6 +16,13 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "AZ blackhole",
+    description:
+        "AZ blackhole causes network blackhole by isolating traffic in specific availability zones across an entire region.",
+    tags: ['zone', 'blackhole'],
+    category: "aws",
+  },
+  {
     name: "DynamoDB replication pause",
     description:
       "DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.",
