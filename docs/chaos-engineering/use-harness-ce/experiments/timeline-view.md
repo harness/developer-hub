@@ -10,10 +10,6 @@ This topic introduces **Timeline View** and demonstrates how you can use it to v
 - [Chaos Experiment](/docs/chaos-engineering/use-harness-ce/experiments/)
 - [Create Chaos Experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments)
 
-:::info note
-This feature is currently behind the feature flag `CHAOS_TIMELINE_VIEW_DEV`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
-
 ## What is Timeline View?
 **Timeline View** provides a visual representation of all events associated with a **chaos experiment** during execution. It displays each event with their respective **timestamps**. 
 For example, if a chaos experiment has a resilience probe configured, the timeline view displays it and the time when the probe execution began.

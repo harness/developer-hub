@@ -17,6 +17,10 @@ import { experiments } from "./experiments"
 
 Cloud Foundry faults disrupt the functioning of Cloud Foundry resources. This deteriorates the performance of the app for the duration of the chaos experiment.
 
+## Feature Flag
+
+This feature is currently behind the feature flag `CHAOS_PCF_ENABLED`. It enables support for creating and running CF experiments and adding CF infrastructures. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
 <!-- Experiment List and Search Bar (every experiment added below, need to be added in this file also) -->
 
 <ExperimentListSection experiments={experiments} />
