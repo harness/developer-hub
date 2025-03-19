@@ -52,6 +52,9 @@ Feature Flags allow specific features of the Harness Platform to be enabled or d
     ![Image](../static/ff-safari-network-console.png)
 
 8. From the Response / Preview Tab you can search (CTRL+F) the entire payload to find any specific flags
+
+   ![Image](../static/ff-list-search.jpg)
+
 9. To run same command from command line (cURL), right click on the Name:evaluations?cluster=1  (chrome) / Name:evaluations (safari) then choose Copy=>Copy as cURL (chrome) / Copy as cURL (safari) option. You will have a full cURL command. 
 
   - **Chrome Screenshot**:
@@ -62,7 +65,7 @@ Feature Flags allow specific features of the Harness Platform to be enabled or d
 
     ![Image](../static/ff-safari-copy-curl.png)
 
- 10. Append the command with “-o ff.json” and run in the terminal as below
+ 10. Append the command you got from step 9 with “-o ff.json” and run in the terminal as below. *Note: Please DO NOT copy and run below examplec code; it will not work!*
 ```
 
 curl 'https://proxy-prod.ff.harness.io/client/env/27e2d176-95b8-49b3-a76d-698e3056bcd7/target/1YXEnD4uTqqnkRbbeT3QAA/evaluations?cluster=1' \
