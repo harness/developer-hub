@@ -68,17 +68,15 @@ On the **Changes** tab, you can review the aggregated, latest code changes in th
 On the **Commits** tab, you can [inspect commits](../work-in-repos/commit.md#inspect-a-commit) included in the PR. This is useful if you need to trace the PR's change history across commits.
 
 </TabItem>
-<TabItem value="checks" label="Checks">
 
-On the **Checks** tab, you can inspect the results of PR status checks.
+<!-- On the **Checks** tab, you can inspect the results of PR status checks.
 
 Harness pipelines [triggered](../pipelines/code-triggers.md) by PR creation or updates automatically report the pipeline run status and other execution details on the PR.
 
 Status checks can also be reported by [custom webhooks](../config-repos/webhooks.md).
 
-Depending on the repository's [branch rules](../config-repos/rules.md), passing status checks might be required to [merge the PR](./merge-pr.md).
+Depending on the repository's [branch rules](../config-repos/rules.md), passing status checks might be required to [merge the PR](./merge-pr.md). -->
 
-</TabItem>
 </Tabs>
 
 ---

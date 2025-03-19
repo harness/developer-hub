@@ -56,7 +56,8 @@ You can toggle branch rules on and off.
 
 1. Go to your repository and select **Settings**.
 2. Select the **Rules** tab.
-3. Use the switch next to each rule to enable or disable rules.
+3. Select your rule. 
+4. Click the **Enable the rule** toggle at the top of the page to turn the rule on and off.
 
 ## Edit or delete rules
 

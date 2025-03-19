@@ -43,7 +43,7 @@ When viewing a repository in Harness Code, most pages initially show the default
 
 ## Compare branches (create a PR)
 
-You can [create a pull request (PR)](../pull-requests/create-pr.md) by comparing branches.
+You can [create a pull request (PR)](../pull-requests/create-pr.md) to compare branches.
 <!-- 
 1. When viewing a repository in Harness Code, go to **Branches**.
 2. On the list of branches, locate your *compare branch*. This is the branch that you want to merge into your base branch (or another branch).
