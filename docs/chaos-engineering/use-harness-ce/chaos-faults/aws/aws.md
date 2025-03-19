@@ -862,14 +862,15 @@ Hitting a timeout is a frequent scenario with Lambda functions. This can break t
 
 <FaultDetailsCard category="aws">
 
-### Lambda inject latency
-
-Lambda inject latency simulates runtime delays in Lambda function execution to emulate network lag and resource contention. This allows users to proactively evaluate and enhance their system's responsiveness under real-world latency conditions.
-
+### Lambda inject status code
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
+- Assess how downstream services react when receiving non-standard or error HTTP status codes, ensuring that error-handling logic and fallback mechanisms are effective.
+- Test the robustness of client applications and APIs when they encounter unexpected status codes, allowing for early detection of integration issues.
+- Evaluate and fine-tune retry policies and error logging strategies by simulating intermittent faulty responses in a controlled manner.
+=======
 - Checks integrated services handle delayed responses, ensuring that timeouts and fallback mechanisms are appropriately configured.
 - Inject latency when interacting with external APIs or databases to determine if your system can maintain functionality under slower-than-expected response times.
 - Evaluate the impact of delays typically experienced during cold starts or resource contention, and refine scaling strategies accordingly.

@@ -338,9 +338,9 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
-    name: "Lambda inject latency",
+    name: "Lambda inject status code",
     description:
-        "Lambda inject latency simulates runtime delays in Lambda function execution to emulate network lag and resource contention.",
+        "Lambda inject status code simulates runtime erroneous HTTP status codes in Lambda function responses for a certain duration.",
     tags: ['lambda', 'runtime', 'update'],
     category: "aws",
   },
