@@ -101,7 +101,8 @@ This update is currently being rolled out to customers, and we expect the rollou
 - Storing secrets in custom secret managers is now supported for the DLC self-hosted flow. This brings it in line with the rest of the CI Intelligence features, which already support this functionality. (CI-15039)
 - The AWS connector for Build Intelligence now supports IAM on Delegate and IRSA, in addition to the previously supported AccessKey/SecretKey flow. This enhancement provides more flexibility and security for AWS authentication. (CI-15257)
 - In **drone/drone-kaniko** plugin version `v1.10.7`, the image digest is now exported to the **digest** output variable. (CI-16330)
-  
+- Cache Intelligence will no longer restore or save cache if only the cache path is provided without a cache key. This ensures proper cache handling and avoids unintended behavior. (ZD-79572, CI-16519, CI-16617)
+    
 #### Fixed issues
 
 - Resolved an issue where the `DRONE_REPO` environment variable was incorrectly using the Git user ID as the owner name instead of the actual repository owner name. This fix is controlled by the feature flag `CI_DRONE_REPO_OWNER`. (ZD-79154, CI-16431)
