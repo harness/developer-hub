@@ -92,6 +92,11 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 
 </details>
 
+#### Limitation in STO RBAC Scope
+Currently, roles assigned to control STO must be assigned as a Resource Group that affects either the full Account, Organization, or Project.  Assignments that look to restrict to certain subsets of each will not operate correctly and may return any number of errors in displaying STO information or execution of STO operations.
+
+![](./static/rbac-allresource.png)
+
 ### Set up a build infrastructure for STO
 
 You need a Harness build infrastructure to run scans in STO. First, review [Operating systems and architectures supported by STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#supported-operating-systems-and-architectures). Then select the infrastructure you want to use: 
