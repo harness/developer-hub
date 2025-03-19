@@ -11,7 +11,7 @@ import BetaIcon from '/img/icon_beta.svg';
 
 # Database DevOps Key Concepts
 
-This topic covers basic terminology and concepts related to Database DevOps. For general Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts.md). For information about using DB DevOps, go to [Harness Database DevOps onboarding guide](onboarding-guide.md).
+This topic covers basic terminology and concepts related to Database DevOps. For general Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts.md). For information about using DB DevOps, go to [Harness Database DevOps onboarding guide](/docs/database-devops/get-started/onboarding-guide.md).
 
 ### Database
 
@@ -115,7 +115,7 @@ Here are the key concepts:
 
 2. **Change Tracking**: Once a changeset is executed, it's tracked in a special table (typically called DATABASECHANGELOG) to ensure it's never run twice.
 
-![change-tracking](./static/changelog-and-changeset.png)
+![changelog-and-changeset](./static/changelog-and-changeset.png)
 
 
 ### File Format
@@ -183,4 +183,3 @@ databaseChangeLog:
     ]
   }
 }
-```
