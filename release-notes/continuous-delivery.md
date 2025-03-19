@@ -75,7 +75,6 @@ Updating an application that contains a `valuesObject` while using an agent olde
   - (**CDS-106863**, **ZD-78359**)
 
 
-
 ### Version 1.80.6
 
 #### New Features and Enhancements
@@ -85,8 +84,6 @@ Updating an application that contains a `valuesObject` while using an agent olde
 - We have introduced a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote. Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**PIPE-16979**)
 
 - Users can now import OPA policies from Git. This feature behind the FF `OPA_IMPORT_FROM_GIT`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (**PIPE-17046, ZD-52607, ZD-69875**)
-
-- Users can now trigger Harness pipelines natively on **GitLab tag creation**, enabling seamless automation for new release candidates and improving integration with GitLab workflows. (**CDS-99762**)
 
 - Users can now **Uninstall Helm charts** using a native Helm Uninstall step in the Deploy stage. Currently, this setting is behind the Feature Flag `CDS_HELM_DELETE_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**CDS-98454**)
 
