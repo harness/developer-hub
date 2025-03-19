@@ -305,7 +305,17 @@ For examples of all methods, see [Add a Pipeline Notification Strategy](../x-pla
 </TabItem>
 </Tabs>
 
+### Freeze Window Alert Message for Account Admins
 
+You will now see an alert message when an account admin triggers a pipeline during a freeze window. This helps prevent confusion for users who may not be aware of their admin privileges.
+
+The alert explicitly informs you that:
+- A freeze window is active.
+- The pipeline can be initiated and will not be aborted because you have account admin privileges.
+
+<div align="center">
+  <DocImage path={require('./static/deployment-freeze-alert.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
 ## Enabling and disabling freeze windows
 
