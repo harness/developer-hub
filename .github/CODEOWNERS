@@ -169,9 +169,9 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/faqs/harness-feature-flag-faqs/ @HarnessTheChaos
 
 #FME Docs
-/src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split
+/src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split @harness-john
 /release-notes/feature-management-experimentation.md @dtk-DaveKarow @kleinjoshuaa @deej-split @HarnessTheChaos
-/release-notes/static/fme/ @dtk-DaveKarow @kleinjoshuaa @deej-split @HarnessTheChaos
+/release-notes/static/fme/ @dtk-DaveKarow @kleinjoshuaa @deej-split  @harness-john @HarnessTheChaos
 
 # SEI Docs
 /docs/software-engineering-insights/ @codewdhruv @batraprashant
