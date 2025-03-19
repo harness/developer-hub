@@ -878,6 +878,21 @@ Lambda update role permission is an AWS fault that modifies the role policies as
 
 <FaultDetailsCard category="aws">
 
+### Lambda modify response body
+
+Lambda modify response body modifies the response body of a Lambda function at runtime, simulating unexpected output alterations. This interrupt the flow of the given function.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Debug runtime errors caused by unexpected function response.
+- Diagnose and mitigate response inconsistencies in real-time, reducing service disruptions and enhancing overall system reliability
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### NLB AZ down
 
 NLB AZ down takes down the access for AZ (Availability Zones) on a target network load balancer for a specific duration. This fault restricts access to certain availability zones for a specific duration.

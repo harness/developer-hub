@@ -345,6 +345,13 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "Lambda modify response body",
+    description:
+        "Lambda modify response body modifies the response body of a Lambda function at runtime, simulating unexpected output alterations. This interrupt the flow of the given function.",
+    tags: ['lambda', 'runtime', 'function'],
+    category: "aws",
+  },
+  {
     name: "NLB AZ down",
     description:
       "NLB AZ down induces chaos to restrict access to specific availability zones by blocking the subnet ACL for a specified duration",
