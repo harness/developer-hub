@@ -864,14 +864,16 @@ Hitting a timeout is a frequent scenario with Lambda functions. This can break t
 
 ### Lambda inject status code
 
-Lambda inject status code simulates runtime erroneous HTTP status codes in Lambda function responses, allowing you to evaluate how systems handle unexpected status responses.
-
 <Accordion color="green">
 <summary>Use cases</summary>
 
 - Assess how downstream services react when receiving non-standard or error HTTP status codes, ensuring that error-handling logic and fallback mechanisms are effective.
 - Test the robustness of client applications and APIs when they encounter unexpected status codes, allowing for early detection of integration issues.
 - Evaluate and fine-tune retry policies and error logging strategies by simulating intermittent faulty responses in a controlled manner.
+=======
+- Checks integrated services handle delayed responses, ensuring that timeouts and fallback mechanisms are appropriately configured.
+- Inject latency when interacting with external APIs or databases to determine if your system can maintain functionality under slower-than-expected response times.
+- Evaluate the impact of delays typically experienced during cold starts or resource contention, and refine scaling strategies accordingly.
 
 </Accordion>
 </FaultDetailsCard>
@@ -888,6 +890,21 @@ Lambda update role permission is an AWS fault that modifies the role policies as
 - Verifies the handling mechanism for function failures.
 - Updates the role attached to a Lambda function.
 - Determines the performance of the running Lambda application when it does not have enough permissions.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### Lambda modify response body
+
+Lambda modify response body modifies the response body of a Lambda function at runtime, simulating unexpected output alterations. This interrupt the flow of the given function.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Debug runtime errors caused by unexpected function response.
+- Diagnose and mitigate response inconsistencies in real-time, reducing service disruptions and enhancing overall system reliability
 
 </Accordion>
 </FaultDetailsCard>
