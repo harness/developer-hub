@@ -243,14 +243,14 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
       ```
 :::  
 
-## Mar 19, 2025, Patch Version 0.26.8 <!-- Draft : Mar 19, 2025 -->
+## Mar 20, 2025, Patch Version 0.26.9 <!-- Draft : Mar 19, 2025 -->
 
 This release includes the following Harness module and component versions.
 
 | **Name**                  | **Version**                                                                                  |
 |---------------------------|----------------------------------------------------------------------------------------------|
-| Helm Chart                | [0.26.8](https://github.com/harness/helm-charts/releases/tag/harness-0.26.8)                 |
-| Air Gap Bundle            | [0.26.8](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.8) |
+| Helm Chart                | [0.26.9](https://github.com/harness/helm-charts/releases/tag/harness-0.26.9)                 |
+| Air Gap Bundle            | [0.26.9](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.9) |
 | NG Manager                | 1.76.7                                                                                       |
 | CI Manager                | 1.65.2                                                                                       |
 | Pipeline Service          | 1.115.4                                                                                      |
@@ -263,7 +263,7 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | 1.42.1                                                                                       |
 | NG UI                     | 1.61.7                                                                                       |
 | LE NG                     | 1.5.6                                                                                        |
-| Looker                    | 1.7.8                                                                                        |
+| Looker                    | 1.7.10                                                                                        |
 | Log Service               | 1.17.3                                                                                       |
 | Batch Processing          | 1.38.6                                                                                       |
 | Gateway                   | 1.41.8                                                                                       |
@@ -275,13 +275,13 @@ Some admins might not have Google account access to download air gap bundles. As
 
 ```
 gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.26.8/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.26.8/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.26.8/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.26.8/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.26.8/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.26.8/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.26.8/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/sto_images.tgz" \
   .
 ```
 
