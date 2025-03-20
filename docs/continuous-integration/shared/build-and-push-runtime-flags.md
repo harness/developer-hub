@@ -78,7 +78,7 @@ Previously, you could set some kaniko runtime flags as [stage variables](/docs/p
 
 For other types of environment variables (that aren't Build and Push plugin runtime flags), stage variables are still inherently available to steps as environment variables. However, where you declare environment variables depends on their usage and purpose in your build. You might need to set them in your Dockerfile, build args, or otherwise.
 
-However some flags still require using a stage variables: 
+However some flags still require using a stage variable: 
 
 - `ignore-path`: Set this flag to ignore a comma separated list of file paths when taking an image snapshot. Required when ignoring multiple paths. 
 
