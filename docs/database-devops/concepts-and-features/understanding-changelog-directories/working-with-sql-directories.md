@@ -99,14 +99,14 @@ Your changesets may include statements to be applied when rolling back the chang
 ```sql
 --liquibase formatted sql
 
---changeset nvoxland:1
+--changeset stephen-atwell:1
 create table test1 (  
     id int primary key,
     name varchar(255)  
 );  
 --rollback drop table test1; 
 
---changeset nvoxland:2 
+--changeset stephen-atwell:2 
 insert into test1 (id, name) values (1, ‘name 1′);
 insert into test1 (id,  name) values (2, ‘name 2′);
 ```
