@@ -107,6 +107,15 @@ The following deprecated API endpoints are longer supported:
 
 ## March 2025 
 
+### Version 1.81.x <!--March 20, 2025-->
+#### Fixed issues
+- Enhanced the error message when attempting to delete a connected delegate. [PL-46692]
+- Fixed the Service Account API to support both `filterType` as `INCLUDE_INHERITED_SERVICE_ACCOUNTS` and a search term with a specified value. [PL-60938]
+
+#### New features and enhancements
+- Starting March 24, 2025, Harness will transition to Google Artifact Registry (GAR) as the default public registry. All Harness container images will be pulled from GAR by default, as Docker Hub will enforce stricter limits on public image pulls starting April 1, 2025. [PL-60930]
+
+
 ### Version 1.80.x <!--March 10, 2025-->
 #### New features and enhancements
 - Added Feature flag `EXPONENTIAL_INTERVAL_TASK_REBROADCAST` to enable exponential increase in delegate re-broadcast intervals. [PL-60477] 
