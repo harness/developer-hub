@@ -271,7 +271,7 @@ This field appears when the scan mode is set to **Orchestration**. You can allow
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 

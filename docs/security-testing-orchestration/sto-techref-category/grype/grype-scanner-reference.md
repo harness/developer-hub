@@ -104,7 +104,7 @@ import StoSettingTargetVariant from '/docs/security-testing-orchestration/sto-te
 ### Ingestion File
 
 
-import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/ingest/file.md';
 
 
 

@@ -219,7 +219,7 @@ For Extraction scans, the name of the image that you want to extract from Prisma
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/file.md';
 
 
 <StoSettingIngestionFile  />

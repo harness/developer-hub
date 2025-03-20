@@ -169,7 +169,7 @@ import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
 #### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/file.md';
 
 
 

@@ -97,7 +97,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 #### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 

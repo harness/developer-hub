@@ -146,7 +146,7 @@ The AWS region of the image to scan.
 
 #### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 

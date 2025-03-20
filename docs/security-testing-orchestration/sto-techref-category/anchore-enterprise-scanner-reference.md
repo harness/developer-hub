@@ -153,7 +153,7 @@ import StoSettingImageAccessToken from './shared/step_palette/image/_access-toke
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 

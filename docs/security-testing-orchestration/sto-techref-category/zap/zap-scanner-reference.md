@@ -199,7 +199,7 @@ import StoScanToolPort from '../shared/step_palette/tool/_port.md'
 
 ### Ingestion File
 
-import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from '../shared/step_palette/ingest/file.md';
 
 
 <StoSettingIngestionFile  />

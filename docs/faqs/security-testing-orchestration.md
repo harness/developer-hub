@@ -125,7 +125,7 @@ These workflows are covered in [Add Security Testing roles](/docs/security-testi
 
 ## How do I set up a CheckMarx scan step in YAML?
 
-Here's an example. See also the [Checkmarx scanner reference](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference).
+Here's an example. See also the [Checkmarx scanner reference](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference).
 
 ```yaml
 - step:

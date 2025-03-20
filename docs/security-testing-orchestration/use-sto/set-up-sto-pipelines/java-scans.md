@@ -41,5 +41,5 @@ The following steps describe the high-level workflow.
       
    2. `product_java_binaries` (_SonarQube scans only_) = The Java binary or binaries to scan. To scan multiple binaries, use a comma-separated list such as `myservice.jar, subservice1.class, subservice2.class`.
 
-   3. `JAVA_TOOL_OPTIONS` You can run the step with specific Java tool options. For example, you can add a setting to [access an external Checkmarx server](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference#settings) through a proxy.
+   3. `JAVA_TOOL_OPTIONS` You can run the step with specific Java tool options. For example, you can add a setting to [access an external Checkmarx server](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference#settings) through a proxy.
    

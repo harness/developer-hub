@@ -159,7 +159,7 @@ The AWS region of the configuration to scan.
 
 ### Ingestion file 
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/file.md';
 
 
 <StoSettingIngestionFile  />

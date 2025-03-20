@@ -166,7 +166,7 @@ You should create a Harness text secret with your encrypted token and reference 
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 
