@@ -175,7 +175,9 @@ Harness generates a cache key from a hash of the build lock file (such as `pom.x
 You can define custom cache keys if you don't want to use the default cache key naming behavior or you have a use case that requires defining custom cache keys, such as [caching in parallel stages](#cache-intelligence-in-parallel-stages).
 
 :::note
-Cache Intelligence will not restore or save cache if only the cache path is provided without a cache key. This behavior is controlled by the feature flag `CI_CACHE_SKIP_IF_KEY_EMPTY`, which is disabled by default. Enabling this flag ensures proper cache handling and avoids unintended behavior.
+When **Cache Intelligence** is enabled, the cache plugin automatically detects build tools and determines cache paths. If no cache key is provided, a default key (`default`) is used, and cache paths are stored under `<account_id>/default/path/to/directory`.  
+
+By default, you can specify only a cache path without a key, but this may cause issues during cache restoration in CI stages. To avoid unnecessary cache downloads, we recommend enabling the `CI_CACHE_SKIP_IF_KEY_EMPTY` feature flag. When enabled, **Cache Intelligence** will skip cache restoration and saving if cache paths are provided without a cache key.
 :::
 
 <Tabs>
