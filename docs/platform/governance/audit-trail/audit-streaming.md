@@ -259,7 +259,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
         
               ![sumo-http-stream](./static/streaming-connector-http-source.png)  
 
-     5. Verify the connection and finish. You should be able to see audit logs in your Sumo Logic collector within few Mintues
+     5. Verify the connection and finish.
 </TabItem>
 
 </Tabs>
