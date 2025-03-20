@@ -177,7 +177,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
       <img src={SumoPermission} width="400"/>
 
   3. [Installed](https://help.sumologic.com/docs/send-data/installed-collectors/) or [Hosted](https://help.sumologic.com/docs/send-data/hosted-collectors/) Sumo Logic Collector.
-  4. The HTTP Source Address in Sumo Logic to receive logs and metrics from Harness.
+  4. The [HTTP Source Address](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/) in Sumo Logic to receive logs and metrics.
 
   ### Sumo Logic as New Streaming Destination
       
