@@ -28,6 +28,7 @@ For details on running Terraform configuration files locally on the delegate, go
 - The workspace in Terraform Cloud should be configured and connected to the configuration files repo. Execution mode should be set to **Remote**. Currently, Harness can be used only for running executions in the workspace.
 - User/role permissions required by the target platform (AWS, GCP, etc) in order to perform tasks: You should create an API token in Terraform Cloud that can be used in the Harness connector that connects Harness to Terraform Cloud. You can create **User** or **Team API** tokens. Organization tokens can’t be used for run creation. For more information about the required privileges, review the [API tokens access levels](https://developer.hashicorp.com/terraform/cloud-docs/users-teams-organizations/api-tokens#access-levels) from HashiCorp.
 - You can add Terraform Cloud steps in any CD or Custom stage.
+- We support using Terraform Cloud provisionor with an **OIDC-enabled AWS connector**, but it requires Delegate version `854xx` or later. For more information, refer to [AWS OIDC connector reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 ## Harness connector
 
