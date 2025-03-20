@@ -19,6 +19,12 @@ Currently, TI (v1) for C# is behind the feature flag `TI_DOTNET`. Contact [Harne
 
 ## Enable TI for C#
 
+:::note
+
+* To use TI for C#, you must use .NET Core or NUnit.<!-- or Framework. Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](#build-environment) in the YAML editor. -->
+* Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
+
+:::
 You can enable TI for C# in three steps:
 
 <!-- no toc -->
@@ -30,11 +36,7 @@ You can enable TI for C# in three steps:
 
 Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
 
-:::info
 
-To use TI for C#, you must use .NET Core or NUnit.<!-- or Framework. Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](#build-environment) in the YAML editor. -->
-
-:::
 
 You must select **Run only selected tests** (`runOnlySelectedTests: true`) to enable Test Intelligence. For information about each setting, go to [Run Tests step settings](#run-tests-step-settings).
 

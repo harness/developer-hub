@@ -476,12 +476,6 @@ Additionally, this option requires Harness Delegate version 24.03.836xx or later
 
 :::
 
-:::warning
-
-If you are using OIDC for your connection, you will not be able to connect to AWS through the Harness Platform. Please connect through a Harness Delegate.
-
-:::
-
 Select **Use OIDC** to connect to AWS with OIDC.
 
 To do this, you need to create an [OIDC identity provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html) in AWS. Then you need to add it in a trust relationship with an IAM role you create that Harness will use to operate in AWS.
@@ -495,7 +489,9 @@ Use the following Harness OIDC provider endpoint and OIDC audience settings to c
 
 These are the current supported deployment swimlanes for AWS OIDC:
 
-- ECS
+- AWS ECS
+- AWS ASG
+- AWS Lambda
 - Kubernetes
 - Terraform
 - CloudFormation
@@ -757,26 +753,11 @@ For more strategies, go to [Exponential Backoff And Jitter](https://aws.amazon.c
       </td>
     </tr>
     <tr>
-      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Delegate-based Support</strong></td>
-      <td style={{ border: '1px solid black', padding: '8px' }}>
-        The following Delegate-based connections are not supported using the OIDC connector:
-        <ul>
-          <li>SSH</li>
-          <li>WinRM</li>
-          <li>Spot</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
       <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Provisioner-based Support</strong></td>
       <td style={{ border: '1px solid black', padding: '8px' }}>
         The following provisioners are not supported using the OIDC connector:
         <ul>
-          <li>CloudFormation provisioner</li>
           <li>CDK provisioner</li>
-          <li>Terraform provisioner</li>
-          <li>Terraform Cloud provisioner</li>
-          <li>Terragrunt provisioner</li>
         </ul>
       </td>
     </tr>

@@ -17,6 +17,15 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 
 :::
+## March 2025
+
+### Version 1.43.5
+
+#### New features and enhancements
+- **Improved Accessibility for Rule Set Creation**: Previously, if a user added multiple Rules or Rule Sets while creating Rule Sets or Enforcements, the button to proceed or save would be pushed off-screen, preventing the action. This issue is now resolved. [CCM-21512]
+- **Improved Error Handling for AutoStopping Pages**: Previously, navigating away from a loading AutoStopping page caused aborted API calls to trigger error toasts. Now, toasts will only appear for valid errors.[CCM-21199]
+- **Improved UI Behavior for User Dropdown in AutoStopping** : Previously, users with access only to AutoStopping encountered an error in the UI due to missing permissions for listing other users. To enhance the experience, we have modified the implementation to **hide the user dropdown in filters** if the user does not have access to list other users. [CCM-19404]
+
 ## February 2025
 
 ### Version 1.42.4

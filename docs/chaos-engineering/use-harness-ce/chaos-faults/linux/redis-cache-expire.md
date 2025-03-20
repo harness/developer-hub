@@ -36,9 +36,9 @@ Redis cache expire expires a given key (or all keys) for a specific duration. Du
     <td> If a password or certificate is also required alongside the address, please use the <a href="#redis-authentication">secret file approach</a>. </td>
   </tr>
   <tr>
-    <td> key </td>
-    <td> The key to expire in the Redis cache. </td>
-    <td> For empty value, all the keys are expired. For more information, go to <a href="#key"> key</a>. </td>
+    <td> keys </td>
+    <td> Comma-separated list of keys to expire in the Redis cache. </td>
+    <td> If this is empty, all the keys are expired. For more information, go to <a href="#keys"> key</a>. </td>
   </tr>
   <tr>
     <td> expiration </td>
@@ -67,13 +67,13 @@ Redis cache expire expires a given key (or all keys) for a specific duration. Du
   </tr>
 </table>
 
-### Key
+### Keys
 
-The `key` input variable indicates the key to be expired from the Redis cache.
+The `keys` input variable denotes the keys to be expired from the Redis cache.
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]:# (./static/manifests/redis-cache-expire/key.yaml yaml)
+[embedmd]:# (./static/manifests/redis-cache-expire/keys.yaml yaml)
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
@@ -85,7 +85,7 @@ spec:
   redisChaos/inputs:
     duration: 30s
     expiration: ""
-    key: "KeyName"
+    keys: "key1,key2"
     database: 1
     expiryOption: ""
     rampTime: ""

@@ -88,6 +88,12 @@ All the IPs are cloud NAT gateways and need to enable specific IPs instead of ra
 35.236.112.238/32
 34.94.29.95/32
 34.94.190.229/32
+104.196.251.84/32
+34.94.191.198/32
+34.106.170.77/32
+34.38.153.209/32
+35.189.94.200/32
+34.141.112.174/32
 ```
 
 ### Harness hosted Feature Flags IPs

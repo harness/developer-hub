@@ -14,7 +14,6 @@ Dashboards provide a powerful way to visualize key metrics and data from your ex
 The Chaos Dashboard is an interactive interface designed to manage, visualize, and monitor chaos experiments. It offers visual representations of various experiment features, including bar graphs and a tabular display of the data for easy analysis.
 
 :::info note
-- For SaaS users, this feature is currently behind the feature flag `CHAOS_DASHBOARD_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 - Contact your [sales representative](mailto:sales@harness.io) to check if you are eligible for the on-prem platform.
 :::
 

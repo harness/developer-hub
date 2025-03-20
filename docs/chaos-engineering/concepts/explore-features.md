@@ -1,7 +1,7 @@
 ---
 title: Harness Chaos Engineering Features
 sidebar_label: Explore Features
-sidebar_position: 6
+sidebar_position: 8
 description: Explore all the capabilities of Harness Chaos Engineering
 ---
 
@@ -69,7 +69,7 @@ For more information on infrastructure logs, go to [Infrastructure Logs](/docs/c
 
 ### Application Map
 
-It is a resource on the Harness Platform (also known as the control plane) that binds multiple interacting [discovered services](/docs/chaos-engineering/use-harness-ce/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
+It is a resource on the Harness Platform (also known as the control plane) that binds multiple interacting [discovered services](/docs/platform/service-discovery) into a single object, thereby allowing the users to act (test, monitor, and so on) on a group of services.
 
 Application maps help:
 - Test and monitor a group of services.

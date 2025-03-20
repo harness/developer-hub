@@ -1,6 +1,6 @@
 ---
 title: Connect chaos infrastructure via proxy
-sidebar_position: 1
+sidebar_position: 10
 description: Connect chaos infrastructure to the control plane via proxy.
 redirect_from:
     - /docs/chaos-engineering/get-started/ce-on-smp/configure-proxy/connect-infrastructure
