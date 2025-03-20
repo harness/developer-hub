@@ -177,7 +177,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
       <img src={SumoPermission} width="400"/>
 
   3. [Installed](https://help.sumologic.com/docs/send-data/installed-collectors/) or [Hosted](https://help.sumologic.com/docs/send-data/hosted-collectors/) Sumo Logic Collector.
-  4. The [HTTP Source Address](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/) in Sumo Logic to receive logs and metrics.
+  4. [HTTP Source Address](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/) to receive logs and metrics.
 
   ### Sumo Logic as New Streaming Destination
       
@@ -210,6 +210,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
             - Verify the connection and click Finish to complete the setup. The connector is selected automatically after verification.
 
           3.3. Add the HTTP Source Address. Click Save and Continue to proceed.
+          
                 ![sumo-http-stream](./static/streaming-connector-http-source.png)  
 
      4. Verify the connection and finish.
