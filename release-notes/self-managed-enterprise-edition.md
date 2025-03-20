@@ -703,7 +703,8 @@ s available in the account to execute the task` even when appropriate delegate s
 - Maximum number of roles that can be created per account is now restricted to 21,000 to maintain system stability and prevent abuse. [PL-59162]  
 - Upgraded the base image from ubi8-minimal to ubi9-minimal in Harness images. [PL-58377]  
 - Updated NGINX controller image from 1.3.0 to 1.11.2 to remove critical and high vulnerabilities. [PL-56529]  
-- Upgraded org.redisson:redisson to version 3.43.0. [PL-55966]  
+- Upgraded org.redisson:redisson to version 3.43.0. [PL-55966]
+- Added the Banners feature for users to display important messages across the UI. This feature is available behind the feature flag PL_CUSTOM_BANNERS. [PL-43420]  
 
 #### Infrastructure as Code Management (Beta)
 
