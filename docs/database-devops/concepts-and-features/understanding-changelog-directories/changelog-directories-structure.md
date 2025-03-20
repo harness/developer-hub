@@ -1,7 +1,7 @@
 ---
 title: Working with Changelog Directory Structure
 description: Working with Changelog Directory Structure
-sidebar_position: 11
+sidebar_position: 1
 ---
 
 # Working with Changelog Directory Structure
@@ -29,7 +29,7 @@ databaseChangeLog:
 ```
 
 :::tip
-Use a consistent naming convention for your changelog files (e.g., `001-feature-name.yaml`, `002-feature-name.yaml`) to ensure they are processed in the intended order when using `includeAll`.
+Use a consistent naming convention for your changelog files (e.g., `001-feature-name.yaml`, `002-feature-name.yaml`) to ensure they are processed in the intended order when using `includeAll` as the files are processed in **alphabetical order**.
 :::
 
 
@@ -56,7 +56,7 @@ db/
 │       ├── accounts.yaml
 │       ├── cart.yaml
 │       └── new-feature.yaml
-└── changelog-master.yaml
+└── changelog-master.yaml           # Main changelog file, includes all changes across releases.
 ```
 
 Here are the examples for each file in the release-based structure:
@@ -65,7 +65,7 @@ Here are the examples for each file in the release-based structure:
 ```yaml
 databaseChangeLog:
   - includeAll:
-      path: release
+      path: db/releases/
       errorIfMissingOrEmpty: false
       relativeToChangelogFile: true
 ```
@@ -217,6 +217,10 @@ prod1 branch    → Production Instance 1
 prod2 branch    → Production Instance 2
 ```
 
+Below attached screen shows the structure of branch-based approach, where we have created `prod` instance for specfic production environment.
+
+![Branch-Based Approach](./static/Branch-Based.png)
+
 **Pros:**
 - Clear separation of environments
 - Easy rollback using git history
@@ -234,31 +238,32 @@ Maintain instance-specific directories in the main branch:
 
 ``` bash
 db/
-├── master.yaml
 ├── envs/
 │   ├── qa/
+│   │   ├── master.yaml
 │   │   ├── release-1.0.0/
-│   │   │   ├── master.yaml
 │   │   │   ├── 001-initial-schema.yaml
 │   │   │   └── 002-seed-data.yaml
-│   │   ├── release-1.1.0/
-│   │   │   ├── master.yaml
-│   │   │   ├── 001-add-user-preferences.yaml
-│   │   │   └── 002-update-product-tables.yaml
+│   │   └── release-1.1.0/
+│   │       ├── 001-add-user-preferences.yaml
+│   │       └── 002-update-product-tables.yaml
 │   ├── prod1/
+│   │   ├── master.yaml
 │   │   ├── release-1.0.0/
-│   │   │   ├── master.yaml
 │   │   │   ├── 001-initial-schema.yaml
 │   │   │   └── 002-prod1-specific-config.yaml
 │   │   └── release-1.1.0/
-│   │       ├── master.yaml
 │   │       └── 001-performance-optimizations.yaml
 │   └── prod2/
-│       ├── release-1.0.0/
-│       │   ├── master.yaml
-│       │   ├── 001-initial-schema.yaml
-│       │   └── 002-prod2-specific-config.yaml
+│       ├── master.yaml
+│       └── release-1.0.0/
+│           ├── 001-initial-schema.yaml
+│           └── 002-prod2-specific-config.yaml
 ```
+
+Below attached screen shows the structure of directory-based approach, where we are taking the path to specfic directory from **environment variable**.
+
+![Directory-Based Approach](./static/directory-Based.png)
 
 **Pros:**
 - All configurations in one place
