@@ -1,5 +1,5 @@
 ---
-title: Delete a workspace
+title: Delete Workspace
 description: Learn how to delete a workspace.
 sidebar_position: 90
 ---

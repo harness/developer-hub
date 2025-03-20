@@ -12,10 +12,10 @@ import { MODULES } from "@site/src/constants";
       list: [
         {
           title: "Revolutionize incident management by focusing on proactive issue prevention and accelerated resolution",
-          module: MODULES.ce,
+          module: MODULES.ir,
           description:
             "Learn the basics of Harness Incident Response.",
-          link: "/docs/incident-response/getting-started/",
+          link: "/docs/incident-response/get-started/overview",
         },
   ],
 },

@@ -72,7 +72,7 @@ export const moduleList: CardItem[] = [
     title: "Chaos Engineering",
     module: MODULES.ce,
     // icon: "img/icon_ce.svg",
-    description: <>Ensure application and infrastructure resilience.</>,
+    description: <>Measure the resilience posture of applications.</>,
     link: "docs/chaos-engineering",
   },
   {

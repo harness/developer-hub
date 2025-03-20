@@ -108,11 +108,17 @@ Using SBOM Orchestration step you can generate the SBOM for both Container image
 - **Registry Type**: Select **Harness Artifact Registry** or **Third-Party Artifact Registry**, based on where your artifact is stored.
 - **Source**: Select the **Source** by choosing either a supported container registry from the list or Repository if you are generating the SBOM for source code.
 
+:::warning Deprecation Alert
+
+Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the SBOM Orchestration step.
+
+:::
+
 import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifact-source.md';
 
 <ArtifactSource />
 
-With this configuration, the step generates the SBOM and stores it in the Artifact section of SCS. Optionally, you an attest to the generated SBOM, follow the instructions in the section below.
+With this configuration, the step generates the SBOM and stores it in the Artifact section of SCS. Optionally, you can attest to the generated SBOM, follow the instructions in the section below.
 
 
 ### Attest the SBOM
@@ -133,6 +139,11 @@ Enabling this feature provides the following capabilities:
 - **Detect drift from the last generated SBOM**: Compare the current SBOM with the most recently generated SBOM to identify changes.
 - **Detect drift from a baseline**: Compare the current SBOM against a predefined baseline SBOM to detect deviations.
 
+
+
+:::info
+After you run the SBOM Orchestration step, the generated SBOM file is uploaded to the `/harness/sbom/{sbom_<sbom_orchestration_step_execution_id>}.json` path. You can also download the SBOM using [Harness APIs](https://apidocs.harness.io/tag/SBOM#operation/downloadSbomForArtifact).
+:::
 
 ## Run the pipeline
 

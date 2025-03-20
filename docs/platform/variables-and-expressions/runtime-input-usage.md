@@ -448,7 +448,7 @@ Click the button to `Select files`.
 
 ![](./static/select_files.png)
 
-Once files are selected, click `Upload` to confirm the selection. Users can also delete the uploaded files. Uploaded files will then be displayed, and `Submit` can be clicked to complete the process.
+Once files are selected, click `Upload` to confirm the selection. Uploaded files will then be displayed, and `Submit` can be clicked to complete the process.
 
 :::note
 Users with `pipeline execution` RBAC permissions can upload and download files.

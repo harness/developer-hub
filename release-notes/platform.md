@@ -22,8 +22,36 @@ These release notes describe recent changes to Harness Platform.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
-
 ## Important feature change notice
+
+:::warning Important Update: Change in Default Container Registry for Harness Images
+
+**Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
+on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. if you are using the default `harnessImage` with anonymous access, pipeline failures may occur. 
+
+To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
+* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
+* **Pull images anonymously from alternative registries**: switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
+* **Private registry**: Pull images from your own private registry.
+
+The `harnessImage` connector configuration is used for pulling Harness images as described in the below articles: 
+- [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci)
+- [Harness STO images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images#harness-sto-images-list)
+- [Harness IDP images](https://developer.harness.io/docs/internal-developer-portal/flows/harness-pipeline/#specify-the-harness-idp-images-used-in-your-pipelines)
+
+[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
+
+Additionally, **starting April 1, 2025, all [Harness delegate images](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types) will be pulled from Google Artifact Registry (GAR)** by default to improve performance, security, and scalability.
+
+GAR Path `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/<IMAGE>:<TAG>`
+
+If your organization restricts access to Google Artifact Registry (GAR), consider one of the following options to avoid disruptions:
+* Whitelist GAR to allow seamless access to Harness images.
+* Configure Harness to use authenticated access instead of anonymous pulls from Docker Hub.
+* Set up a registry mirror to pull Harness images instead of relying on Docker Hub.
+* Continue using Docker Hub if the restrictions do not affect you. 
+
+::: 
 
 :::info important
 This is a notification for a feature change aimed at enhancing your experience with Harness. Here's what you need to know:
@@ -76,6 +104,12 @@ The following deprecated API endpoints are longer supported:
 - [GET | PUT | POST | DELETE] api/resourcegroup/\{identifier}
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
+
+## March 2025 
+
+### Version 1.80.x <!--March 10, 2025-->
+#### New features and enhancements
+- Added Feature flag `EXPONENTIAL_INTERVAL_TASK_REBROADCAST` to enable exponential increase in delegate re-broadcast intervals. [PL-60477] 
 
 ## February 2025
 

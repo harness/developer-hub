@@ -34,10 +34,7 @@ Supported security protocols for WinRM include Kerberos and Windows New Technolo
 * Credentials and other details for the EC2 Instance 
   * To configure and authenticate your WinRM credentials by using NTLM, you should have the domain name, username and password for the EC2 instance.
 * To use Harness execution strategies, make sure you should have [IIS service](https://learn.microsoft.com/en-us/iis/application-frameworks/scenario-build-an-aspnet-website-on-iis/configuring-step-1-install-iis-and-asp-net-modules#to-install-iis-and-aspnet-modules-on-windows-server-2012-using-the-ui) installed on your machine.
-
-:::info
-Currently Delegate-based connections are not supported using the OIDC connector for WinRm deployments.
-:::
+* We support using WinRM with an **OIDC-enabled AWS connector**, but it requires Delegate version `854xx` or later. For more information, refer to [AWS OIDC connector reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 ## Objectives
 
@@ -441,6 +438,10 @@ For Microsoft Azure or AWS:
 * `<+instance.host.publicIp>`
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
+
+## Limitations  
+
+The **Copy** command for artifacts is not supported in **WinRM deployments**. As an alternative, users can use the **Download Artifact** command.  
 
 ## FAQs
 
