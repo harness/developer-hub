@@ -52,6 +52,10 @@ If you have created a connector and a Harness Delegate earlier, you can find the
 - To configure mTLS with DDCR and and Discovery Agent proxy settings, go to [proxy Support](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/proxy-support).
 :::
 
+## Harness Terraform Provider
+
+You can [create Harness Delegate (DDCR)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/chaos_infrastructure) using [Harness Terraform provider](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider-overview/).
+
 ## Next Steps
 
 - [Deploy Delegate on a Cluster](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/dedicated-delegate)
