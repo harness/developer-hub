@@ -201,7 +201,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
 
             - Add the Sumo Logic API server URL. To know your Sumo Logic API Endpoint refer [Sumo Logic documentation ](https://help.sumologic.com/docs/api/getting-started/#sumo-logic-endpoints-by-deployment-and-firewall-security) 
             
-            - Add Sumo Logic Access ID and Access Key. You can either [add New Secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) directly or use an existing one. For now, we have used the exisiting secrets as show in the image below.
+            - Add Sumo Logic Access ID and Access Key. You can either [add new secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) directly or use existing ones. For now, we have used the existing secrets as shown in the GIF below.
 
             - Select the Delegate setup → Save and Continue.
 
