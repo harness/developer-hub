@@ -116,12 +116,12 @@ This update is currently being rolled out to customers, and we expect the rollou
 | ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
 | `plugins/buildx`      | Changes described in fixed issues list  | 1.1.26                | 1.1.27          |
 | `harness/harness-cache-server`      | Changes described under new features and enhancements      | 1.4.0          | 1.6.0          |
-| `harness/ci-lite-engine`      | Adjust the k9s addon to support the JS agent  | 1.16.75                | 1.16.76          |
-| `harness/ci-lite-engine`      | Adjust the k9s addon to support the JS agent  | rootless-1.16.75                | rootless-1.16.76          |
+| `harness/ci-lite-engine`      | Adjust the k8s addon to support the JS agent  | 1.16.75                | 1.16.76          |
+| `harness/ci-lite-engine`      | Adjust the k8s addon to support the JS agent  | rootless-1.16.75                | rootless-1.16.76          |
 | `plugins/kaniko-acr`      | Changes described under new features and enhancements  | 1.10.1                | 1.10.7          |
 | `plugins/kaniko-ecr`      | Changes described under new features and enhancements  | 1.10.4                | 1.10.7          |
-| `harness/ci-addon`      | Adjust the k9s addon to support the JS agent  | 1.16.75                | 1.16.76          |
-| `harness/ci-addon`      | Adjust the k9s addon to support the JS agent  | rootless-1.16.75                | rootless-1.16.76          |
+| `harness/ci-addon`      | Adjust the k8s addon to support the JS agent  | 1.16.75                | 1.16.76          |
+| `harness/ci-addon`      | Adjust the k8s addon to support the JS agent  | rootless-1.16.75                | rootless-1.16.76          |
 | `plugins/artifactory`      | Add custom ca.cert for windows builds  | 1.7.1                | 1.7.3          |
 | `plugins/cache`      | Changes described under new features and enhancements  | 1.9.1                | 1.9.3          |
 
