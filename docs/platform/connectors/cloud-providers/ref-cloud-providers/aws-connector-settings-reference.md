@@ -489,7 +489,9 @@ Use the following Harness OIDC provider endpoint and OIDC audience settings to c
 
 These are the current supported deployment swimlanes for AWS OIDC:
 
-- ECS
+- AWS ECS
+- AWS ASG
+- AWS Lambda
 - Kubernetes
 - Terraform
 - CloudFormation
