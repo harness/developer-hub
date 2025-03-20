@@ -84,14 +84,15 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/faqs/security-testing-orchestration/ @tejakummarikuntla
 
 # CCM Docs
-/docs/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss @nikunj-badjatya @raviyadalam @iamanmolm @sdsingh07 @sandyydk @abhinavsingh-ccm
-/release-notes/cloud-cost-management.md @raviyadalam
-/src/components/Roadmap/data/ccmData.ts @navaneeth @Rohit-Kaliki @joeyouss
-/src/components/Docs/data/cloudCostManagementData.ts @navaneeth @Rohit-Kaliki @joeyouss
+/docs/cloud-cost-management/ @Rohit-Kaliki @joeyouss @iamanmolm @sdsingh07 @sandyydk @abhinavsingh-ccm @riyasyash
+/release-notes/cloud-cost-management.md @Rohit-Kaliki @joeyouss
+/src/components/Roadmap/data/ccmData.ts @Rohit-Kaliki @joeyouss @rajarshee-harness
+/src/components/Docs/data/cloudCostManagementData.ts @Rohit-Kaliki @joeyouss @rajarshee-harness
+
 # FirstGen CCM Docs
-/docs/category/cloud-cost-management/ @navaneeth @Rohit-Kaliki @joeyouss
+/docs/category/cloud-cost-management/ @Rohit-Kaliki @joeyouss
 # CCM FAQs
-/docs/faqs/cloud-cost-management-faqs/ @navaneeth @Rohit-Kaliki @joeyouss
+/docs/faqs/cloud-cost-management-faqs/ @Rohit-Kaliki @joeyouss
 
 # CET Docs
 /docs/continuous-error-tracking/ @M-Tsur
