@@ -7,6 +7,9 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+import SumoPermission from './static/sumo-access-keys-permission.png'
+import SumoHTTPSource from './static/sumo-http-url.png'
+
 You can configure a streaming destination in Harness to send audit log data to another location for processing. Integrating audit data with other Security Incident and Event Management (SIEM) tools lets you do the following:
 
 - Trigger alerts for specific events.
@@ -164,102 +167,52 @@ At times, you might experience issues with the HEC connector. Here are some trou
 </TabItem>
 
 <TabItem value="sumo-logic" label="Sumo Logic">
-  :::note Important Points to Consider Before We Begin
-    1. Sumo Logic offers two UIs: Classic and New. In this section, we will be using images and steps that are available only in Sumo Logic's [New UI](https://help.sumologic.com/docs/get-started/sumo-logic-ui/).
-    2. Ensure that you have administrative access to your Sumo Logic account.
-  :::
   
-  Before adding Sumo Logic as a [New Streaming Destination](#add-a-streaming-destination), we need to follow a few steps to configure collectors and the source for streaming audit logs, as shown below:
-  
-  1. Create an Access Key for Sumo Logic:
+  **Prerequisites**
 
-      -  To create an access key, look for the Administration option in the top right corner.
-  
-      -  Select Access Keys → Add Access Key.
+  To configure Sumo Logic as a new streaming destination, ensure you meet the following requirements:
 
-          ![select-administrative](./static/sumo-audit-streaming-1.gif)
+  1. Sumo Logic's [Access ID and Access Key](https://help.sumologic.com/docs/manage/security/access-keys/). 
+  2. An Access Key can have two scope types: [Default and Custom](https://help.sumologic.com/docs/manage/security/access-keys/#create-an-access-key). If selecting Custom, ensure you enable the permissions shown in the image below. 
+      <img src={SumoPermission} width="400"/>
 
-   2. Add New Access Keys:
+  3. [Installed](https://help.sumologic.com/docs/send-data/installed-collectors/) or [Hosted](https://help.sumologic.com/docs/send-data/hosted-collectors/) Sumo Logic Collector.
+  4. The HTTP Source Address in Sumo Logic to receive logs and metrics from Harness.
 
-      - Give a unique name to differentiate your Access Key details from others.
-
-      - (Optional) Allowed CORS Domains: Restrict API requests to specific domains by adding them to the allowlist, ensuring Sumo Logic only accepts requests with a matching header. 
-
-      - Scopes allow you to restrict access to personal access keys. There are two types of scopes, as shown below—choose wisely.
-
-        - Default: All permissions associated with your roles will be granted to the key generated.
-        - Custom: You can add permissions according to your requirements. 
-        
-          While You can choose any of the options, but if you select Custom, we recommend granting at least the following permissions, as shown in the image below.
-          
-          ![sumo-add-permission](./static/sumo-add-new-keys.gif)
-
-      - Click Save to proceed. Once saved, you will receive an Access ID and Access Key as shown below. Make sure to save them for future use.
-
-          ![accessid-key](./static/sumo-accessid-and-key.png)
-
-   3. Create Sumo Logic [Hosted](https://help.sumologic.com/docs/send-data/hosted-collectors/configure-hosted-collector/) Collector:
-
-      - To create a Collector, locate the Configuration option in the top right corner, then click Collection.
-
-          ![sumo-collection](./static/sumo-collection.png)
+  ### Sumo Logic as New Streaming Destination
       
-      - Add a Collector, then select the Collector Type. You can choose either [Installed or Hosted](https://help.sumologic.com/docs/send-data/choose-collector-source/), depending on your requirements. For now, we will select the Hosted Collector to set up the collector in the Sumo Logic Cloud.
+      1. To Add [New Streaming Destination](#add-a-streaming-destination), Navigate to Account Settings → Security and Governance → Audit Trail.
 
-          ![add-a-collector](./static/sumo-add-a-collector.gif)
+      2. Check Audit Log Streaming → New Streaming Destination. 
 
-  4. Add [HTTP Source](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/logs-metrics/) to Sumo Logic Collector:
+      3. Configure Streaming Destination:
 
-      - Check Add Source option in the same row as your collector.
-
-      - Search for 'HTTP Logs & Metrics' in the search tab.
-
-      - Add a unique name and any optional input fields as per your requirements. Similarly, you can enable advanced options for logs and update processing rules based on your needs.
-
-        ![http-source-to-collector](./static/sumo-add-http-source.gif)   
-
-      - Click Save to proceed. Once saved, you will find the HTTP Source Address. Copy and save it for future configuration with Harness.
-
-        ![http-url](./static/sumo-http-url.png)        
-
-  ### Add Sumo Logic as New Streaming Destination
-
-      1. Add Sumo Logic's Access ID and Access Key to Harness Secrets that we saved in the previous steps. Navigate to Account Settings → Account-level Resources → Secrets.
-
-          ![sumo-secrets](./static/sumo-add-secrets.gif) 
-      
-      2. Add [New Streaming Destination](#add-a-streaming-destination), Navigate to Account Settings → Security and Governance → Audit Trail.
-
-      3. Check Audit Log Streaming → New Streaming Destination. 
-
-      4. Configure Streaming Destination:
-
-          4.1 Add a name, description, and tags in your Overview section.
+          3.1. Add a name, description, and tags in your Overview section; the description and tags are optional.
 
               ![stream-overview](./static/stream-destination-overview.png)
 
-          4.2 Configure Sumo Logic Connector:
+          3.2. Configure Sumo Logic Connector:
+
+            - Create or select an existing connector. For now, let's add a new connector.  
 
               ![sumo-stream-connector](./static/sumo-stream-connect.png)
-
-            - Create or select an existing connector. For now, let's add a new connector.
             
             - Click New Connector → Add a name, description, and tags accordingly.
 
             - Add the Sumo Logic API server URL. To know your Sumo Logic API Endpoint refer [Sumo Logic documentation ](https://help.sumologic.com/docs/api/getting-started/#sumo-logic-endpoints-by-deployment-and-firewall-security) 
-            - Add Sumo Logic Access ID and Access Key.
+            
+            - Add Sumo Logic Access ID and Access Key. You can either [add New Secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) directly or use an existing one. For now, we have used the exisiting secrets as show in the image below.
 
             - Select the Delegate setup → Save and Continue.
 
                 ![add-sumo-logic-connector](./static/sumo-add-configure-streaming.gif)
 
-            - Verify the connection and click Finish to complete the setup. The connector may be selected automatically after verification.
+            - Verify the connection and click Finish to complete the setup. The connector is selected automatically after verification.
 
-          4.3 Add the HTTP Source Address. Click Save and Continue to proceed.
-        
-              ![sumo-http-stream](./static/streaming-connector-http-source.png)  
+          3.3. Add the HTTP Source Address. Click Save and Continue to proceed.
+                ![sumo-http-stream](./static/streaming-connector-http-source.png)  
 
-     5. Verify the connection and finish.
+     4. Verify the connection and finish.
 </TabItem>
 
 </Tabs>
