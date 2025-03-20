@@ -22,6 +22,8 @@ Harness can provision any resource that is supported by Terragrunt and the relat
 
 If you want to use Terraform without Terragrunt, Harness supports that, too. For more information, go to [Terraform how-tos](./terraform-infra/terraform-how-tos).
 
+We support using Terragrunt provisioning with an **OIDC-enabled AWS connector**, but it requires Delegate version `854xx` or later. For more information, refer to [AWS OIDC connector reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+
 ## Dynamic provisioning steps for different deployment types
 
 Each of the deployment types Harness supports (Kubernetes, AWS ECS, etc.) require that you map different Terragrunt script outputs to the Harness infrastructure settings in the pipeline stage.

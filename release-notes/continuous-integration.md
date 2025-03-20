@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-03-06T10:00
+date: 2025-03-20T10:00
 sidebar_position: 10
 ---
 
@@ -22,7 +22,6 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 ## March 2025
 
-
 :::warning
 
 **Action Required: Avoid Docker Hub Rate Limits**
@@ -37,7 +36,6 @@ on public image pulls**. By default, Harness uses anonymous access to pull image
 [Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
 
 :::
-
 
 :::warning
 
@@ -54,7 +52,6 @@ To ensure uninterrupted service, we recommend completing these updates by April 
 
 For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
 :::
-
 
 :::warning
 
@@ -95,6 +92,38 @@ We’re excited to introduce an updated UI for managing your Harness Continuous 
 This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
 
 :::
+
+### Version 1.71
+
+<!-- 2025-03-17 -->
+
+#### New features and enhancements
+
+- Storing secrets in custom secret managers is now supported for the DLC self-hosted flow. This brings it in line with the rest of the CI Intelligence features, which already support this functionality. (CI-15039)
+- The AWS connector for Build Intelligence now supports IAM on Delegate and IRSA, in addition to the previously supported AccessKey/SecretKey flow. This enhancement provides more flexibility and security for AWS authentication. (CI-15257)
+- In **drone/drone-kaniko** plugin version `v1.10.7`, the image digest is now exported to the **digest** output variable. (CI-16330)
+- Cache Intelligence will no longer restore or save cache if only the cache path is provided without a cache key. This behavior is controlled by the feature flag `CI_CACHE_SKIP_IF_KEY_EMPTY`, which is disabled by default. Enabling this flag ensures proper cache handling and avoids unintended behavior. (ZD-79572, CI-16519, CI-16617)
+    
+#### Fixed issues
+
+- Resolved an issue where the `DRONE_REPO` environment variable was incorrectly using the Git user ID as the owner name instead of the actual repository owner name. This fix is controlled by the feature flag `CI_DRONE_REPO_OWNER`. (ZD-79154, CI-16431)
+- Resolved an issue on the CI Overview page where the API did not consider the timestamp when returning active and failed builds information. (CI-15773)
+- Resolved an issue where Build and Push to GAR did not include artifact details in the output section, unlike other Build and Push steps. This was caused by the artifact metadata file path not being set, which has now been fixed. (CI-16303)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `plugins/buildx`      | Changes described in fixed issues list  | 1.1.26                | 1.1.27          |
+| `harness/harness-cache-server`      | Changes described under new features and enhancements      | 1.4.0          | 1.6.0          |
+| `harness/ci-lite-engine`      | Adjust the k8s addon to support the JS agent  | 1.16.75                | 1.16.76          |
+| `harness/ci-lite-engine`      | Adjust the k8s addon to support the JS agent  | rootless-1.16.75                | rootless-1.16.76          |
+| `plugins/kaniko-acr`      | Changes described under new features and enhancements  | 1.10.1                | 1.10.7          |
+| `plugins/kaniko-ecr`      | Changes described under new features and enhancements  | 1.10.4                | 1.10.7          |
+| `harness/ci-addon`      | Adjust the k8s addon to support the JS agent  | 1.16.75                | 1.16.76          |
+| `harness/ci-addon`      | Adjust the k8s addon to support the JS agent  | rootless-1.16.75                | rootless-1.16.76          |
+| `plugins/artifactory`      | Add custom ca.cert for windows builds  | 1.7.1                | 1.7.3          |
+| `plugins/cache`      | Changes described under new features and enhancements  | 1.9.1                | 1.9.3          |
 
 ### Version 1.70
 
