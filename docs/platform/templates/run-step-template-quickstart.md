@@ -38,6 +38,12 @@ To create a inline step template from the project scope, do the following:
 8. Under **How do you want to set up your template?**, select **Inline**.
 9. Select **Start**. The **Step Library** panel opens.
 
+:::info note
+Harness now supports storing Inline Entities in the Harness Git Repository.  
+For more details, refer to [Storing Inline Entities in Harness Git Repository](/docs/platform/git-experience/harness-code-inline.md).
+:::
+
+
 ### Step 2: Add step parameters
 
 To add step parameters, do the following:
