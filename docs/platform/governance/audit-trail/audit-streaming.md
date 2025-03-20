@@ -172,48 +172,38 @@ At times, you might experience issues with the HEC connector. Here are some trou
 
   To configure Sumo Logic as a new streaming destination, ensure you meet the following requirements:
 
-  1. Sumo Logic's [Access ID and Access Key](https://help.sumologic.com/docs/manage/security/access-keys/). 
-  2. An Access Key can have two scope types: [Default and Custom](https://help.sumologic.com/docs/manage/security/access-keys/#create-an-access-key). If selecting Custom, ensure you enable the permissions shown in the image below. 
+  1. Sumo Logic's [Access ID and Access Key](https://help.sumologic.com/docs/manage/security/access-keys/). An Access Key can have two scope types: [Default and Custom](https://help.sumologic.com/docs/manage/security/access-keys/#create-an-access-key). If selecting Custom, ensure you enable the permissions shown in the image below. 
       <img src={SumoPermission} width="400"/>
 
-  3. [Installed](https://help.sumologic.com/docs/send-data/installed-collectors/) or [Hosted](https://help.sumologic.com/docs/send-data/hosted-collectors/) Sumo Logic Collector.
-  4. [HTTP Source Address](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/) to receive logs and metrics.
+  2. [HTTP Source Address](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/) to receive logs.
 
   ### Sumo Logic as New Streaming Destination
+
+  1. Add a name, description, and tags in your Overview section; the description and tags are optional.
       
-      1. To add a new streaming destination, navigate to Account Settings → Security and Governance → Audit Trail.
+      ![stream-overview](./static/stream-destination-overview.png)
 
-      2. Check Audit Log Streaming → New Streaming Destination. 
+  2. Configure Sumo Logic Connector: Create or select an existing connector. For now, let's add a new connector.  
 
-      3. Configure Streaming Destination:
-
-          3.1. Add a name, description, and tags in your Overview section; the description and tags are optional.
-
-              ![stream-overview](./static/stream-destination-overview.png)
-
-          3.2. Configure Sumo Logic Connector:
-
-            - Create or select an existing connector. For now, let's add a new connector.  
-
-              ![sumo-stream-connector](./static/sumo-stream-connect.png)
+      ![sumo-stream-connector](./static/sumo-stream-connect.png)
             
-            - Click New Connector → Add a name, description, and tags accordingly.
+    - Click New Connector → Add a name, description, and tags accordingly.
 
-            - Add the Sumo Logic API server URL. To know your Sumo Logic API Endpoint refer [Sumo Logic documentation ](https://help.sumologic.com/docs/api/getting-started/#sumo-logic-endpoints-by-deployment-and-firewall-security) 
+    - Add the Sumo Logic API server URL. To know your Sumo Logic API Endpoint refer [Sumo Logic documentation ](https://help.sumologic.com/docs/api/getting-started/#sumo-logic-endpoints-by-deployment-and-firewall-security) 
             
-            - Add Sumo Logic Access ID and Access Key. You can either [add new secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) directly or use existing ones. For now, we have used the existing secrets as shown in the GIF below.
+    - Add Sumo Logic Access ID and Access Key. You can either [add new secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) directly or use existing ones. For now, we have used the existing secrets as shown in the GIF below.
 
-            - Select the Delegate setup → Save and Continue.
+    - Complete the Delegate setup → Save and Continue.
 
-                ![add-sumo-logic-connector](./static/sumo-add-configure-streaming.gif)
+      ![add-sumo-logic-connector](./static/sumo-add-configure-streaming.gif)
 
-            - Verify the connection and click Finish to complete the setup. The connector is selected automatically after verification.
+    - Verify the connection and click Finish to complete the setup. 
 
-          3.3. Add the HTTP Source Address. Click Save and Continue to proceed.
+  3. Add the HTTP Source Address. Click Save and Continue to proceed.
           
-                ![sumo-http-stream](./static/streaming-connector-http-source.png)  
+      ![sumo-http-stream](./static/streaming-connector-http-source.png)  
 
-     4. Verify the connection and click on Finish.
+  3. Verify the connection and click on Finish.
 </TabItem>
 
 </Tabs>
