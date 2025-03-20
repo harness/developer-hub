@@ -20,6 +20,35 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## March 2025
+
+### Version 1.57.2
+
+#### Images required
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+
+- harness/chaos-ddcr:1.57.0
+- harness/chaos-log-watcher:1.57.0
+- harness/service-discovery-collector:0.37.1
+- docker.io/harness/chaos-ddcr-faults:1.57.0
+
+#### New features and enhancements
+
+- Replaces the large text blocks in the pod details and probes tabs with concise tooltips and "Learn More" links, directing users to relevant content in the Harness Developer Hub for improved readability and navigation. (CHAOS-7621, CHAOS-7619)
+
+- Adds support for targeting multiple keys in the [Linux Redis Cache Expire](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/redis-cache-expire) and [Kubernetes Redis Cache Expire](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/redis-cache-expire) faults.(CHAOS-7283)
+
+#### Fixed issues
+
+- Fixed an issue where services were not appearing on the application map in the Chaos module when the discovery agent was created through the Discovery page. (CHAOS-7743)
+
+- Fixed scrolling issue with the ChaosHubs side navigation bar. (CHAOS-7728)
+
+- Resolved an issue with the timeline view for an experiment with multiple probes, which showed incorrect probe information when user clicked any probe. (CHAOS-7718)
+
+- Resolved an issue in the experiment timeline view where all timestamps were unnecessarily converted to Unix milliseconds, even when already in Unix millisecond format. (CHAOS-7719)
+
 ## February 2025
 
 ### Version 1.56.3
