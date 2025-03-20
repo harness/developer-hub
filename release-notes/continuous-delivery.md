@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-03-13T10:00:00
+date: 2025-03-20T10:00:00
 sidebar_position: 8
 ---
 
@@ -55,7 +55,7 @@ Google Container Registry (GCR) is deprecated and scheduled to shut down on **Ma
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
-### Version 1.81.2
+### Version 1.81.3
 
 #### New Features and Enhancements
 
