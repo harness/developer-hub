@@ -57,6 +57,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   :::note
     Real-world changes to the token may not be reflected in the Terraform state, as the API returns a masked value for this field.
   :::
+- Previously, all pods sent updates, leading to high load and potential issues. Now, leader election allows only one pod to handle reconciliation updates, while all agent pods continue to process tasks. This change requires permission to create a lease resource for leader election. New agents should have these permissions, but older agents without them will fall back to the previous method where all pods send updates. 
 
 :::warning Announcement 
 **Google Container Registry Deprecation Notice 📢**
