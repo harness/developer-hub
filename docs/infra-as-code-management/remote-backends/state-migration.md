@@ -34,7 +34,7 @@ Create a new `<filename>.tfvars` file in your local repository. This file will d
 See the example below for reference:
 
 <details>
-<summary>📝 Sample tfvars file</summary>
+<summary>Sample tfvars file</summary>
 
 ```hcl
 account_id = "<harness-account-id>"
