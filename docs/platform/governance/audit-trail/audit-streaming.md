@@ -246,7 +246,8 @@ At times, you might experience issues with the HEC connector. Here are some trou
             
             - Click New Connector → Add a name, description, and tags accordingly.
 
-            - Add the Sumo Logic API server URL. Select the [most suitable URL](https://help.sumologic.com/docs/api/getting-started/#which-endpoint-should-i-should-use), then add the Access ID and Access Key that we configured in step 1.
+            - Add the Sumo Logic API server URL. To know your Sumo Logic API Endpoint refer [Sumo Logic documentation ](https://help.sumologic.com/docs/api/getting-started/#sumo-logic-endpoints-by-deployment-and-firewall-security) 
+            - Add Sumo Logic Access ID and Access Key.
 
             - Select the Delegate setup → Save and Continue.
 
@@ -254,11 +255,11 @@ At times, you might experience issues with the HEC connector. Here are some trou
 
             - Verify the connection and click Finish to complete the setup. The connector may be selected automatically after verification.
 
-          4.3 Add the HTTP Source Address that we saved in the previous section (Step 4). Click Save and Continue to proceed.
+          4.3 Add the HTTP Source Address. Click Save and Continue to proceed.
         
               ![sumo-http-stream](./static/streaming-connector-http-source.png)  
 
-     5. Verify the connection and finish. You should be able to see audit logs in your Sumo Logic collector within few Mintues
+     5. Verify the connection and finish.
 </TabItem>
 
 </Tabs>
