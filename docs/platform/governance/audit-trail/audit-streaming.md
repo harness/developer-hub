@@ -255,7 +255,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
 
             - Verify the connection and click Finish to complete the setup. The connector may be selected automatically after verification.
 
-          4.3 Add the HTTP Source Address that we saved in the previous section (Step 4). Click Save and Continue to proceed.
+          4.3 Add the HTTP Source Address. Click Save and Continue to proceed.
         
               ![sumo-http-stream](./static/streaming-connector-http-source.png)  
 
