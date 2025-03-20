@@ -181,7 +181,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
 
   ### Sumo Logic as New Streaming Destination
       
-      1. To Add [New Streaming Destination](#add-a-streaming-destination), Navigate to Account Settings → Security and Governance → Audit Trail.
+      1. To add a new streaming destination, navigate to Account Settings → Security and Governance → Audit Trail.
 
       2. Check Audit Log Streaming → New Streaming Destination. 
 
