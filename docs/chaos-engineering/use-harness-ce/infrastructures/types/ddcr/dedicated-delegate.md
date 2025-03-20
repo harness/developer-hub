@@ -11,7 +11,7 @@ This topic describes the permissions required to deploy Delegate for each target
 ## Before you begin, review the following:
 
 - [What is DDCR?](/docs/chaos-engineering/use-harness-ce/infrastructures/#what-is-ddcr)
-- [Install Delegate to execute chaos experiments](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#enable-chaos)
+- [Install Delegate to execute chaos experiments](/docs/chaos-engineering/use-harness-ce/infrastructures/types)
 
 ## Why service accounts matter
 

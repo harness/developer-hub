@@ -6,7 +6,7 @@ sidebar_position: 10
 ---
 
 :::info note
-This feature is currently behind two feature flags: `CHAOS_SRM_EVENT` and `SRM_INTERNAL_CHANGE_SOURCE_CE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+This feature is currently behind `SRM_INTERNAL_CHANGE_SOURCE_CE` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 

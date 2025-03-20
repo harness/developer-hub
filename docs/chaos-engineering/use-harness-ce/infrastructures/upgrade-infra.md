@@ -7,10 +7,7 @@ redirect_from:
 - /docs/chaos-engineering/features/chaos-infrastructure/upgrade-infra/
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-This topic describes how you can upgrade your chaos infrastructure.
+This topic describes how you can upgrade your legacy chaos infrastructure (Dedicated Kubernetes Infrastructure, Helm-based Installation, Linux, and Windows infrastructure).
 
 If a Harness CE release is not backward compatible, upgrade your chaos infrastructure to ensure you can execute all experiments smoothly. This applies only to releases that have breaking changes, which will be clearly indicated in the [release notes](/release-notes/chaos-engineering).
 
@@ -28,9 +25,9 @@ These are the high-level steps to upgrade your chaos infrastructure, explained i
 
 ## How to tell if an infrastructure upgrade is required?
 
-Go to **Chaos > Environments**, and select an environment where you've installed chaos infrastructure.  **UPGRADE NEEDED** is displayed next to an infrastructure if it requires an upgrade, along with an **Update** link.
+Go to **Chaos > Environments**, and select an environment where you've installed chaos infrastructure. Select the infrastructure and you will see the infrastructure version. If an upgrade is required, **Upgrade Now** is specified next to the infrastructure.
 
-![Environment details page showing chaos-enabled infrastructures](./static/upgrade/chaos-infra-upgrade-needed.png)
+	![Environment details page showing chaos-enabled infrastructures](./static/upgrade/chaos-infra-upgrade-needed.png)
 
 
 ## Upgrade your chaos infrastructure
@@ -105,11 +102,13 @@ To update the chaosnative/go-runner image version in an experiment:
 
 ## Use Helm Template to Upgrade Chaos Infrastructure
 
-* To upgrade a chaos infrastructure that you installed using the Helm commands, you can navigate to the environment and click **Upgrade now**. This will list the set of commands that you can execute on your terminal.
+To upgrade a chaos infrastructure that you installed using the Helm commands, perform the following operations:
 
-  ![step 9](./static/enable-disable/upgrade-9.png)
+1. Navigate to the environment and select the environment that you created, (this environment houses your infrastructure). Select the **Infrastructure Type** and select the infrastructure from the list you see on the screen.
 
-2. Choose an existing environment or create a new environment
+2. Click **Upgrade now** and **Confirm**. This will list the set of commands that you can execute on your terminal.
+
+  ![step 9](./static/upgrade/upgrade-9.png)
 
 3. If you want to override other values, you can make the changes in the values.yaml file of the respective custom resource in the Helm repository.
 1. Download the [helm repository](https://github.com/harness/chaos-infra-helm-chart). This repository contains all the chaos resources required for chaos infrastructure management. The repository also contains resources necessary for the namespace and cluster scope installations. You can use this repository to install and manage the infrastructure.
@@ -120,18 +119,19 @@ Based on the scope of installation, you have to execute the commands.
 2. If you wish to install the infrastructure in cluster scope, apply the helm upgrade command to install the CRDs and other infrastructure components.
 
 :::tip
-1. If you install your infrastructure in cluster scope, HCE supports auto-upgrade for such an infrastructure.
+1. If you install your infrastructure in cluster scope, Harness CE supports auto-upgrade for such an infrastructure.
 2. It is important that you remember that the flags in the command are based on the input parameters you provide while installing the infrastructure.
 :::
 
-## Upgrade Linux infrastructure
+## Upgrade Linux Infrastructure
 
-You can upgrade Linux infrastructure in two ways depending on the platform (SaaS or SMP). They are described below.
+You can upgrade Linux infrastructure in two ways depending on the platform:
+	- [SaaS](#saas)
+	- [SMP](#smp)
 
-<Tabs>
-<TabItem value="SaaS">
+### SaaS
 
-For SaaS, execute the commands in the VM where your infrastructure is installed.
+For SaaS platform, execute the commands in the VM where your infrastructure is installed.
 
 - Execute the following commands to fetch the `INFRA_ID` and the `ACCESS_KEY`.
 
@@ -155,9 +155,8 @@ For SaaS, execute the commands in the VM where your infrastructure is installed.
 	sudo https://app.harness.io/public/shared/tools/chaos/linux/1.50.0/install.sh | bash /dev/stdin --infra-id <INFRA_ID> --access-key <ACCESS_KEY> --server-url https://<YOUR_IP>/chaos/lserver/api
 	```
 
-</TabItem>
+### SMP
 
-<TabItem value="SMP">
 - Raise a [Harness support](https://support.harness.io) ticket to get the `offline-linux-installer` tarball.
 - Copy and extract the offline installer to your target VM and `cd` (navigate) to the extracted directory.
 - Execute the following commands to fetch the `INFRA_ID` and the `ACCESS_KEY`.
@@ -184,7 +183,57 @@ sudo  ./install.sh --infra-id <INFRA_ID> --access-key <ACCESS_KEY> --server-url 
 ```
 :::
 
-</TabItem>
+## Upgrade Windows Infrastructure
 
-</Tabs>
+To upgrade your Windows infrastructure, perform the following steps:
+
+### Step 1: Uninstall Current Infrastructure
+
+Execute the following command in the command prompt:
+
+The command below upgrades from `1.55.0` to the latest version (`1.56.0` in this case). Based on your current version, the version in the command changes.
+
+```bash
+powershell -Command "& { Invoke-WebRequest -Uri 'https://app.harness.io/public/shared/tools/chaos/windows/1.55.0/uninstall.ps1' -OutFile 'uninstall.ps1' -UseBasicParsing; .\uninstall.ps1 }"
+```
+
+:::info note
+Note down the account user running the `WindowsChaosInfrastructure` service. The same credentials are required for the upgrade.
+:::
+
+
+### Step 2: Install Upgraded Version of Infrastructure
+
+Execute the following command:
+
+```bash
+powershell -Command "& { Invoke-WebRequest -Uri 'https://app.harness.io/public/shared/tools/chaos/windows/1.56.0/install.ps1' -OutFile 'install.ps1' -UseBasicParsing; .\install.ps1 -AdminUser '.\<your-account-username> -AdminPass '<your-account-password>' -InfraId 'a975f804-8d91-480d-892b-1b9d74a16f26' -AccessKey '4e29tku7tqovua4q03fgejt6puakkjmu' -ServerUrl 'https://app.harness.io/gratis/chaos/mserver/api' }"
+```
+
+Here,
+
+- `your-account-username` is the username and `your-account-password` is the password for the user who launches the Windows infrastructure. 
+
+- `.\` indicates that it is a local account. If you use a domain account, you can update accordingly. You can identify the account from [Step 1](#step-1-uninstall-current-infrastructure).
+
+Fetch the `infraID` and `access key` from `config.yaml` file under `hce` (which is a dedicated chaos directory created during previous installation). By default, it is at `C:\HCE\config.yaml`.
+
+	If you’re using a proxy, provide `infraID` and `access key` as a part of the installation command in [Step 2](#step-2-install-upgraded-version-of-infrastructure) and specify the following proxy flags.
+
+		```bash
+		-HttpsProxy <proxy-server> -HttpProxy <proxy-server> -NoProxy <proxy-server>
+		```
+
+
+### Step 3: Verify the Upgrade
+
+Execute the below command to get the status of the service after installation.
+
+```bash
+sc query WindowsChaosInfrastructure
+```
+
+You can verify the version from the **Environments**->Infrastructure.
+
+	![](./static/upgrade/windows-update-verify.png)
 

@@ -13,7 +13,7 @@ This topic describes the following:
 - [Flow of control in Kubernetes faults](#flow-of-control-in-kubernetes-based-faults)
 - [Deployment modes](#deployment-modes-of-kubernetes-chaos-infrastructure)
 
-HCE supports three categories of faults that you can execute using the Kubernetes chaos agent. They are listed below.
+Harness CE supports three categories of faults that you can execute using the Kubernetes chaos agent. They are listed below.
 1. **[Pod faults](#pod-faults-microservices-based-faults)** (also known as microservices-based faults)
 2. **[Node faults](#node-faults-infrastructure-based-faults)** (also known as infrastructure-based faults)
 3. **[Cloud-based faults](#cloud-based-faults-aws-gcp-azure)**
@@ -34,19 +34,12 @@ Some of these faults use purely the Kubernetes API. In such cases, a Go client i
 
 Along with the Kubernetes API, many other faults use runtime APIs to extract the container PIDs and inject chaos in the target container's network, pid and mnt namespaces (for example, [pod network loss](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-network-loss), [pod CPU hog](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-cpu-hog), [pod IO latency](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-io-latency), and so on.)
 
-The diagram below describes how the chaos fault is executed against microservices, that is, application workloads.
+- Go to [How Stuff Works in Pod Faults](/docs/chaos-engineering/concepts/how-stuff-works/generic-pod-flow/) to know the flow of control when a generic pod fault is executed against microservices, that is, application workloads.
+- Go to [How Stuff Works in IO/Latency Faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-dns-error) to know the flow of control when a IO or latency is injected into pod.
 
-![](./static/generic-flow-3.png)
+Described below is the flow of control in [DNS chaos fault](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-dns-error).
 
-Described below are the flow of control in two chaos faults:
-
-[DNS chaos fault](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-dns-error)
-
-![](./static/dns-chaos-4.png)
-
-[IO stress chaos fault](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-io-stress)
-
-![](./static/ios-stress-5.png)
+    ![](./static/dns-chaos-4.png)
 
 ### Flow of control in Kubernetes-based faults
 
@@ -60,7 +53,7 @@ When you create a Kubernetes experiment with the target details, the fault tunab
 
 The diagram below describes the interaction between the Harness control plane and the TKGi Kubernetes cluster.
 
-![](./static/cluster-2.png)
+    ![](./static/cluster-2.png)
 
 ## Node faults (infrastructure-based faults)
 
@@ -83,7 +76,7 @@ The transient chaos pods leverage the respective cloud provider SDK to inject ch
 
 The diagram below describes how a chaos fault is executed in cloud-based chaos faults.
 
-![](./static/cloud-target-6.png)
+    ![](./static/cloud-target-6.png)
 
 ## Deployment modes of Kubernetes chaos infrastructure
 
