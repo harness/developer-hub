@@ -213,7 +213,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
           
                 ![sumo-http-stream](./static/streaming-connector-http-source.png)  
 
-     4. Verify the connection and finish.
+     4. Verify the connection and click on Finish.
 </TabItem>
 
 </Tabs>
