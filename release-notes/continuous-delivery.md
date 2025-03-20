@@ -53,6 +53,10 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 - Previously, the GitOps app resources action menu did not properly enforce label-based RBAC due to a missing resource identifier in the RBAC access check. Now, the action menu correctly honors label-based RBAC.
 - Previously, the action buttons (Restart, Promote, Sync) for GitOps app resources were visible to users who lacked the required **GitOps app sync** permission. This was due to a missing permission check in the UI. While the actions failed as expected when executed, the buttons were still accessible, causing confusion. Now, the UI correctly enforces the permission check, and the action buttons are disabled for users without the **GitOps app sync** permission.
+- Resolved an issue where the `bearer_token` field in the [GitOps cluster resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_gitops_cluster) always reported a diff. It now behaves like GitOps repository passwords and will only report a diff when explicitly changed in the resource file. 
+  :::note
+    Real-world changes to the token may not be reflected in the Terraform state, as the API returns a masked value for this field.
+  :::
 
 :::warning Announcement 
 **Google Container Registry Deprecation Notice 📢**
