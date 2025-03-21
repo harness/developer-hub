@@ -67,7 +67,7 @@ The database schema defines a set of SQL changes that can be deployed to one or 
  9. Click ‘Add Schema’.
 
 :::info
-To learn more about Git connectors settings, reference this [Harness Git connector settings](../../platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference.md) documentation for more.
+To learn more about Git connectors settings, reference this [Harness Git connector settings](../../../platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference.md) documentation for more.
 :::
 
 ## Connect your Database Instance 
@@ -82,7 +82,7 @@ Before we can deploy our Database Schema, we need to connect a database instance
  6. Enter a JDBC url that we can use to connect to the database. 
  7. Enter a username and password for the database. The user *must* have the permissions covered in the [Prerequisites](#prerequisites) section. 
  8. Click **Continue**.
- 9. Choose a [delegate](../../platform/delegates/delegate-concepts/delegate-overview.md) to connect to the database. This delegate must have network access to the database server. Click **Save and continue**.
+ 9. Choose a [delegate](../../../platform/delegates/delegate-concepts/delegate-overview.md) to connect to the database. This delegate must have network access to the database server. Click **Save and continue**.
  10. Harness will now test your connection. If the test passes successfully, click **Finish**.
  11. *Optional*: Configure context. [Context](https://docs.liquibase.com/concepts/changelogs/attributes/contexts.html) can be used to deploy a different set of changes to different environments from the same branch of git. Inside the changelog, any given change can be labelled with one or more contexts. If you specify a context here, then only changes marked with that context will be deployed to this database instance. If you leave this field blank, than all changes will be deployed to this DB Instance. For example, if you only want changes marked as **Production** to be deployed to your **Production** DB Instance, you could give it the context **Production**. To have a corresponding staging instance get all changes, you would leave the context blank for staging.
  12. Click **Add Database Instance**.

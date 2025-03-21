@@ -26,11 +26,11 @@ Harness DB DevOps provides a way to:
 Before you can access Harness Database DevOps, you must have Harness enable the following feature flag, `DBOPS_ENABLED`. To enable the feature flag, please contact [Harness Support](mailto:support@harness.io).
 :::
 
- ![Harness DB DevOps architecture diagram](../concepts-and-features/static/database-devops-architecture.png)
+ ![Harness DB DevOps architecture diagram](../../concepts-and-features/static/database-devops-architecture.png)
 
 The Harness Database DevOps architecture is built around the Harness Delegate, which plays a crucial role in managing database change operations. This delegate operates within your environment—whether that's a local network, virtual private cloud, or Kubernetes cluster—ensuring seamless integration with your existing infrastructure. 
 
-The [Harness Delegate](../../platform/delegates/delegate-concepts/delegate-overview.md) serves as the bridge between the Harness Manager in your SaaS instance and your database instances, code repositories, and cloud providers. It facilitates the orchestration of database changes by connecting to your version control systems and artifact repositories, allowing for efficient management of database migrations and updates.
+The [Harness Delegate](../../../platform/delegates/delegate-concepts/delegate-overview.md) serves as the bridge between the Harness Manager in your SaaS instance and your database instances, code repositories, and cloud providers. It facilitates the orchestration of database changes by connecting to your version control systems and artifact repositories, allowing for efficient management of database migrations and updates.
 
 You have the flexibility to store your database scripts and artifacts either internally or on public platforms like GitHub. The delegate is responsible for spinning up pods on a Kubernetes cluster to executing database change jobs and applying migrations as specified in your deployment pipelines. This Kubernetes cluster must have network access to your databases, and the delegate must have access to the cluster. By leveraging the harness delegate neither the database server, nor the Kubernetes cluster, needs to be internet accessible. It also collects and transmits data back to the Harness Manager, which can be utilized for orchestration, monitoring, debugging, and analytics.
 
