@@ -89,6 +89,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## March 2025
 
+### Version 25.02.85305 <!--  March 21, 2025 -->
+
+#### Hotfix
+
+- Fixed the slot deployment timeout issue in azure deployments [CDS-108129]
+
 ### Version 25.02.85304 <!--  March 13, 2025 -->
 
 #### Hotfix
