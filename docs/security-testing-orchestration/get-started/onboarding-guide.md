@@ -92,10 +92,18 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 
 </details>
 
-#### Limitation in STO RBAC Scope
-Currently, roles assigned to control STO must be assigned as a Resource Group that affects either the full Account, Organization, or Project.  Assignments that look to restrict to certain subsets of each will not operate correctly and may return any number of errors in displaying STO information or execution of STO operations.
+### STO Resource Group configuration limitation - RBAC
+STO is not currently listed as a **Resource** in the **Resource Groups** configuration UI. To allow users access to all STO resources, you must create or use a Resource Group with resources set to **All**. This requirement applies to all levels of the **Resource Scope**
+- Project
+- Organization
+- Account
 
-![](./static/rbac-allresource.png)
+:::warning
+Using the **Specified** option in the Resource Group may lead to errors in displaying STO information or executing STO operations for assigned users.
+:::
+
+<DocImage path={require('/docs/security-testing-orchestration/get-started/static/sto-resource-group-rbac-limiation.png')} width="100%" height="100%" title="Click to view full size image" />
+
 
 ### Set up a build infrastructure for STO
 
