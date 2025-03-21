@@ -265,6 +265,55 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
             ```
 :::  
 
+## Mar 20, 2025, Patch Version 0.26.9 <!-- Draft : Mar 19, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.26.9](https://github.com/harness/helm-charts/releases/tag/harness-0.26.9)                 |
+| Air Gap Bundle            | [0.26.9](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.26.9) |
+| NG Manager                | 1.76.7                                                                                       |
+| CI Manager                | 1.65.2                                                                                       |
+| Pipeline Service          | 1.115.4                                                                                      |
+| Platform Service          | 1.53.1                                                                                       |
+| Access Control Service    | 1.74.1                                                                                       |
+| Delegate                  | 25.02.85201                                                                                  |
+| GitOps Service            | 1.25.6                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.127.5                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.61.7                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.10                                                                                        |
+| Log Service               | 1.17.3                                                                                       |
+| Batch Processing          | 1.38.6                                                                                       |
+| Gateway                   | 1.41.8                                                                                       |
+| IaCM Manager              | 1.65.2                                                                                       
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.26.9/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.26.9/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Cloud Cost Management
+
+- Refund Handling in Custom Cost Measures: We have updated the custom cost measures to ensure that any costs linked to the line item type "Refund" are completely ignored. [CCM-21807]
+
+
 ## Mar 20, 2025, Patch Version 0.25.5 <!-- Draft : Mar 18, 2025 -->
 
 This release includes the following Harness module and component versions.
