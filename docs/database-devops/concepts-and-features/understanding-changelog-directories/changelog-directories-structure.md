@@ -219,7 +219,7 @@ prod2 branch    → Production Instance 2
 
 Below attached screen shows the structure of branch-based approach, where we have created `prod` instance for specfic production environment.
 
-![Branch-Based Approach](./static/Branch-Based.png)
+![Branch-Based Approach](./static/branch-based.png)
 
 **Pros:**
 - Clear separation of environments
@@ -263,7 +263,7 @@ db/
 
 Below attached screen shows the structure of directory-based approach, where we are taking the path to specfic directory from **environment variable**.
 
-![Directory-Based Approach](./static/directory-Based.png)
+![Directory-Based Approach](./static/directory-based.png)
 
 **Pros:**
 - All configurations in one place
