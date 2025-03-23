@@ -98,15 +98,76 @@ This supports safer rollout of IDP automation across environments and teams.
 
 ## Feature Compatibility Matrix (1.0 vs 2.0)
 
-Compares features, their status, etc.
+This section outlines the availability of key IDP features across IDP 1.0 and IDP 2.0. Some features from IDP 1.0 have been improved, reimagined, or deprecated. Others are currently in progress and will be included before the GA release.
 
-Table, with first column of features. second column IDP 1.0 status, third column IDP 2.0 status (supported, WIP or removed), fourth column notes.
+| Feature                              | IDP 1.0 | IDP 2.0 | Notes                                                                             |
+| ------------------------------------ | ------- | ------- | --------------------------------------------------------------------------------- |
+| 📁 **Catalog**                       |         |         |                                                                                   |
+| Catalog Entity YAMLs                 | ✅      | ✅      | YAML structure has changed in IDP 2.0. See Breaking Changes.                      |
+| UI-based Entity Creation             | ❌      | ✅      |                                                                                   |
+| Edit Entities via UI                 | ❌      | ✅      |                                                                                   |
+| Backstage Plugins Support            | ✅      | ✅      | Existing Backstage plugins are fully supported via annotations.                   |
+| Custom Plugins                       | ✅      | ✅      |                                                                                   |
+| Customizable Entity Page UI          | ✅      | ✅      |                                                                                   |
+| Scorecards view in Catalog table     | ❌      | ✅      |                                                                                   |
+| Scope Filters in Catalog             | ❌      | ✅      |                                                                                   |
+| System/Domain Hierarchy              | ✅      | ❌      | Replaced by Project/Org hierarchy. See Breaking Changes for details.              |
+| Ownership, tags, links, labels, etc. | ✅      | ✅      |                                                                                   |
+| Setting Ownership via UI             | ❌      | ✅      | Ownership can be assigned using selectable users and groups in the UI.            |
+| ⚙️ **Workflows**                     |         |         |                                                                                   |
+| Workflow YAMLs                       | ✅      | ✅      |                                                                                   |
+| Workflow Groups                      | ✅      | ✅      |                                                                                   |
+| Workflow Execute Permission          | ❌      | ✅      |                                                                                   |
+| Workflow Scope (Account/Org/Project) | ❌      | ✅      |                                                                                   |
+| Workflow Groups Scope                | ❌      | ✅      |                                                                                   |
+| Gradual Workflow Rollout             | ❌      | ✅      |                                                                                   |
+| UI-based Workflow Creation           | ❌      | ✅      |                                                                                   |
+| 📊 **Scorecards**                    |         |         |                                                                                   |
+| Scorecards in Catalog View           | ❌      | ✅      |                                                                                   |
+| Project/Org filters in Scorecards    | ❌      | ✅      | Scorecards can be applied to entities based on their scopes.                      |
+| Scorecards scoped to Project/Org     | ❌      | Planned | Scorecards can be created directly at the Project or Org scope.                   |
+| 🔄 **Git Experience**                |         |         |                                                                                   |
+| YAMLs in Git                         | ✅      | ✅      |                                                                                   |
+| Inline Entities (no Git)             | ❌      | ✅      |                                                                                   |
+| Single Git Connector for all         | ✅      | ✅      | Subject to Git provider rate limits in IDP 1.0.                                   |
+| Per-entity Git Connector             | ❌      | ✅      |                                                                                   |
+| Webhook based Git Sync               | ❌      | ✅      |                                                                                   |
+| PR-based Updates                     | ❌      | ✅      |                                                                                   |
+| Branch-aware Entity Sync             | ❌      | ✅      |                                                                                   |
+| 🔐 **Hierarchy & RBAC**              |         |         |                                                                                   |
+| Platform-level RBAC for Catalog      | ❌      | ✅      |                                                                                   |
+| Granular Permissions for Workflows   | ❌      | ✅      |                                                                                   |
+| Catalog Access Control Policies      | ✅      | ❌      | Deprecated. Use Harness RBAC to manage access in IDP 2.0.                         |
+| 🧰 **Other Core Features & API**     |         |         |                                                                                   |
+| TechDocs (docs like code)            | ✅      | ✅      |                                                                                   |
+| Search (Catalog)                     | ✅      | ✅      |                                                                                   |
+| Search (TechDocs)                    | ✅      | Planned | TechDocs search will be redesigned to support scoped visibility and Harness RBAC. |
+| Search (External e.g. Confluence)    | ❌      | ❌      |                                                                                   |
+| Entity CRUD APIs                     | ❌      | ✅      | Entities can be created, updated, and deleted using Harness APIs.                 |
+| Catalog Ingestion APIs               | ✅      | ✅      |                                                                                   |
+| Terraform Provider                   | ❌      | Planned |                                                                                   |
 
 ## What's Going Away (Breaking Changes)
 
 WIP
 
+Talk about YAML difference. However, we provide conversion.
+
+Talk about API Usage. No more Backstage APIs. All APIs on Harness.
+
+Talk about the usage of hidden tag.
+
+Talk about existing YAMLs being irrelevant.
+
+System/Domain - Replaced by Project/Org. Talk about Component and subComponentOf as an alternative. Say generic Grouping will come soon.
+
+## Before You Upgrade (Checklist)
+
+WIP
+
 ## Upgrade Path & Rollout Strategy
+
+WIP
 
 With the introduction of **IDP 2.0**, customers will have the opportunity to migrate from **IDP 1.0** (the existing version) to **IDP 2.0** (new platform). This migration will be **progressive** and **customer-friendly**, ensuring minimal disruption while enabling access to new features.
 
@@ -148,17 +209,15 @@ The rollout will be conducted in two phases, allowing for a controlled and feedb
 - Users will be provided with documentation, detailed guides and FAQs to facilitate migration.
 - Customers can choose to migrate at their convenience before IDP 1.0 deprecation.
 
-## Before You Upgrade (Checklist)
+#### Fallback / Rollback Plan
 
 WIP
 
 ## Timeline
 
-IDP 2.0 GA by end of Q2 (end of July). IDP 1.0 will be decomissioned.
-
-#### Fallback / Rollback Plan
-
-WIP
+- IDP 2.0 beta by end of April 2025.
+- IDP 2.0 will be Generally Available by end of Q2 (July 2025)
+- All customers will be moved over to IDP 2.0 by August 2025.
 
 ## FAQs
 
@@ -182,3 +241,4 @@ WIP
 - API Docs
 - Videos
 - Learn the impact of IDP 2.0 on the future of Harness IDP (Marketing blog)
+- Entity Schema JSON
