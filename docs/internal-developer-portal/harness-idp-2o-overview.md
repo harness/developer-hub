@@ -27,49 +27,19 @@ Harness IDP 2.0 is a major evolution of the Internal Developer Portal with a Har
 
 ## Addressing Key Challenges (Why IDP 2.0)
 
-- API Rate limits with
-- No Granular Control in Catalog - today we can not limit the scope of who can see which Components or Workflows.
-- Git Sync Rate Limit issues - Entities can have their own Git connectors.
-- Native sync with Harness Services used in CD - Catalog will be auto-populated and will be much easier for end-users to leverage IDP.
-- Hard dependency on Catalog Info YAML in Git - Today users can not quickly edit an entity and let's say update the JIRA project. This will all be possible to do via UI, API, Terraform - along with existing YAML approach. This will enable any developer at Deluxe to easily configure their Catalog components without having to understand how the Catalog YAML works and will improve adoption rate.
-- System and Domain are confusing concepts - they will be merged with Harness Projects and Orgs which is what you already have so there will be no need to maintain duplicate system (project) and domain (org).
-- Catalog UI Gaps - Too Backstage specific - More Persona based view, advanced filters, native Scorecards within the Catalog table and much more.
-- Gradual rollout of IDP Workflows - you can create a Workflow in playground project, and decide when to roll it out for the entire account when it's ready.
+While IDP 1.0 was a strong foundation built on Backstage, we encountered several platform and user experience challenges at scale. IDP 2.0 addresses these core limitations:
 
-While inspired by Backstage, our IDP faced several scalability and usability challenges. These gaps led us to build **Harness IDP 2.0**, a significant product evolution that introduces platform-native data models, granular controls, and a refined user experience.
+- **No Granular RBAC**: It was not possible to restrict who could view or edit specific Catalog entities or Workflows. IDP 2.0 introduces scope-aware permissions aligned with Harness Projects, Organizations and Account.
 
-1. **Lack of Granular Control in the Catalog**
+- **No Controlled Workflow Rollout**: There was no way to gradually test and release IDP Workflows without impacting everyone in the organization. IDP 2.0 supports staged rollouts — start in your project and expand scope to Organization and Account as the Workflow matures.
 
-   - No ability to share entities (Component, API, Resource, Template) with specific user groups.
-   - Organizations need hierarchical control to ensure governance.
+- **Manual YAML Management**: Users were required to manage Catalog YAML files for every update. This made adoption harder, especially for entities which required frequent updates such as infrastructure resources. IDP 2.0 supports "inline entities" and complete entity lifecycle using API and UI without necessarily having to do Git operations.
 
-2. **Confusing System & Domain Concepts**
+- **Single Git Connector with Rate Limits**: All entity updates went through one Git integration and updates had to be pulled, which quickly resulted in API rate limits for larger Catalogs. In 2.0, each entity can have its own Git connector, and updates happen in real time via webhooks.
 
-   - Backstage’s System and Domain entities do not align with Harness’s Project & Org structure.
-   - No support for Granular RBAC (Role-Based Access Control) or entity uniqueness.
+- **Disconnected from Harness Hierarchy**: Backstage’s System and Domain hierarchy didn’t align with how our customers have structured their organization using Harness platform hierarchy. IDP 2.0 replaces this with native support for Harness Projects and Organizations. This also unlocks use-cases such as auto-create a Software Component using a Harness CD service or aggregate Scorecards at project or org level.
 
-3. **Scaling in Siloed Organizations**
-
-   - Different teams use different tools, making entity segregation essential.
-   - Lack of multi-level visibility (account, project, org levels) hinders IDP adoption.
-
-4. **No Support for Gradual Rollout of Workflows**
-
-   - Users want to incrementally expose workflows: internal testing → team-wide → org-wide → company-wide.
-   - IDP lacks hierarchical workflow management.
-
-5. **Hard Dependency on YAMLs**
-
-   - Backstage-native entities require Catalog Info YAML for registration.
-   - This is cumbersome for large-scale use cases.
-
-6. **Git Sync Rate Limit Issues**
-
-   - Single Git integration causes rate limit issues as the catalog scales.
-   - Every entity update relied on a centralized Git sync, causing delays as the number of catalog entities grew.
-
-7. **UI Limitations in the Catalog**
-   - Unintuitive navigation, fixed columns, and poor filtering make entity management difficult.
+- **Outdated Catalog UX**: The previous Catalog UI was limited and not optimized for the needs of our current customers. IDP 2.0 ships with an improved UX purpose-built for Harness IDP users. It also comes with a built-in "Create entity" experience which makes onboarding a lot easier for end-users.
 
 ## What's New in IDP 2.0 (Feature Highlights)
 
