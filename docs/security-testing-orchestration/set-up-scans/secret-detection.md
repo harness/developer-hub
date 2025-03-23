@@ -17,7 +17,7 @@ You can configure secret detection in Harness STO using the supported scanners:
 
 - The following scanners automatically detect secrets in the code repository when used for **SAST** or **SCA**. These findings are categorized under the **Secret** issue type in the scan results. If your pipeline includes any of these scanners, they are already scanning for secrets in your code repository:
     - **[Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference)**  
-    - **[Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference)**  
+    - **[Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference)**  
     - **[Fossa](/docs/security-testing-orchestration/sto-techref-category/fossa-scanner-reference)**  
     - **[Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/sast-scan-semgrep)**  
     - **[Qwiet AI (formerly ShiftLeft)](/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference)**  
