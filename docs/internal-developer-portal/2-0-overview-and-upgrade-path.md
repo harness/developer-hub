@@ -221,6 +221,8 @@ WIP
 
 ## FAQs
 
+WIP
+
 1. **What happens to my Backstage plugins?**
 
 - IDP 2.0 supports all existing Backstage plugins.
@@ -237,6 +239,8 @@ WIP
 - Legacy mode will remain available until full adoption.
 
 ## Resources
+
+WIP
 
 - API Docs
 - Videos
