@@ -80,7 +80,6 @@ This topic lists resource types relevant to [RBAC in Harness](./rbac-in-harness.
 | `IDP_ADVANCED_CONFIGURATION`  |   advancedconfiguration|
 | `CODE_REPOSITORY` |  repo|
 | `NETWORK_MAP` |  networkmap|
-| `CHAOS_SECURITY_GOVERNANCE` |chaossecuritygovernance|
 | `CET_AGENT` |  agents|
 | `CET_TOKEN`  | token|
 | `CET_CRITICAL_EVENT` | criticalevent|

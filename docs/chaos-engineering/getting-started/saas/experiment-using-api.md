@@ -88,7 +88,7 @@ Use this token to create an authorization header with the **API-KEY-TOKEN** valu
 
 #### Step 1: Create and register chaos infrastructure using APIs
 
-1. [Create (or register) a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#using-dedicated-chaos-infrastructure) (Kubernetes infrastructure) to inject faults into the application.
+1. [Create (or register) a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes) (Kubernetes infrastructure) to inject faults into the application.
 
 2. Select **Cluster Wide** installation mode so that you can target resources across all the namespaces in your cluster (**Namespace Mode** installation restricts injecting chaos to a certain namespace where infrastructure is installed).
 

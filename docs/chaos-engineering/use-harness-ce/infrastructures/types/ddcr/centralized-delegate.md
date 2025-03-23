@@ -1,6 +1,6 @@
 ---
 title: Centralized Delegate
-sidebar_position: 40
+sidebar_position: 30
 description: Configure Centralized Delegate
 redirect_from:
 - /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/centralized-delegate

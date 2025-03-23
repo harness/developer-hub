@@ -12,7 +12,7 @@ This topic describes how you can configure **ChaosGuard** to enforce security po
 
 ## Prerequisites
 
-[Install a Harness Delegate or a dedicated chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#enable-chaos) before creating a condition because a condition is applied to an infrastructure.
+[Install a Harness Delegate or a dedicated chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/) before creating a condition because a condition is applied to an infrastructure.
 
 ## Configure a condition
 

@@ -1,4 +1,3 @@
-Harness STO can automatically ingest, aggregate, normalize, and deduplicate data from the following scanners and formats. 
 
 :::info
 Static Analysis Results Interchange Format (SARIF) is an open JSON format supported by many scan tools, especially tools available as GitHub Actions. Harness STO can [ingest SARIF 2.1.0 data](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data) from any tool that supports this format.

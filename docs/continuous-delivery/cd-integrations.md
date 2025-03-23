@@ -22,6 +22,16 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| CDS_ENFORCE_GIT_EXPERIENCE | Enables users to enforce the **Git experience for environments, infrastructure, and overrides V2**, ensuring consistency across all components, similar to pipelines, inputs, and templates. |
+| CDS_TAS_ARTIFACT_BUNDLE_PRESERVE_PERMISSION_ON_EXTRACTION | Ensures that file permissions inside the `tar.gz` archive are retained when deploying **Artifact Bundles** for **NodeJS apps** to **PCF (Pivotal Cloud Foundry)**, preventing permission issues during application startup. |
+| CDS_AZURE_CLI_WEBAPP_DEPLOYMENT | Enables enhanced support for non-standard configurations and Azure CLI-based workflows for Azure Web App deployments. Available with Delegate version `85302` or later. **This feature is in Limited GA**|
+| CDS_HELM_DELETE_STEP | Enables a native **Helm Uninstall** step in the Deploy stage to uninstall Helm charts. **This feature is in Limited GA** |
+| CDS_ECS_MONITOR_TASK_STATUS | Enables Harness to accurately detect failures in **ECS Rolling Deployments**. **This feature is in Limited GA** |
+| PIPE_USE_HARNESS_CODE_FOR_INLINE_ENTITIES | Saves inline entities in the [Harness Code Repository](/docs/code-repository/get-started/onboarding-guide/) by default. **This feature is in Limited GA** |
+| PIPE_DYNAMIC_PIPELINES_EXECUTION | Allows users to dynamically execute pipelines by providing pipeline YAML configurations at runtime, without requiring pre-saved configurations in Harness. **This feature is in Limited GA** |
+| PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION | Introduces the `storeType` field in YAML templates to distinguish whether a template is stored **Inline** or **Remote**. **This feature is in Limited GA** |
+| OPA_IMPORT_FROM_GIT | Enables users to import OPA policies directly from Git. **This feature is in Limited GA** |
+| CDS_GITOPS_OPERATOR | Enables integration of the Harness GitOps Agent with the OpenShift Certified Vendor Catalog, allowing seamless use with OpenShift OperatorHub and Red Hat Marketplace. **This feature is in Limited GA** |
 | CDS_K8S_CUSTOM_YAML_PARSER | Enables support for Kubernetes sidecar containers as introduced in Kubernetes 1.28. This custom YAML parser addresses compatibility issues with the current Kubernetes Java SDK version 18.0.0, which lacks native support for sidecar configurations. **This feature is in Limited GA** |
 | CDS_SKIP_INSTANCES_V2 | Enables users to retry failed deployments on a subset of hosts when using traditional infrastructure. **This feature is in Limited GA** |
 | CDS_ASG_SKIP_INSTANCE_TERMINATION | Enables users to track the progress of launching new instances and terminating existing ones in AWS during a rolling deployment using the ASG Steady State Step in Harness. **This feature is in Limited GA**|

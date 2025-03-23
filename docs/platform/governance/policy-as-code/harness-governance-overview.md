@@ -62,6 +62,10 @@ Policies are written in the OPA policy language, Rego.
 * **Highly recommend:** Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
 * See [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) from OPA. The [Rego Cheatsheet](https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/) is also helpful to have on hand.
 
+:::info note
+Harness platform uses the Open Policy Agent (OPA) library version **0.62.0**. For more details, you can refer to [OPA v0.62.0](https://github.com/open-policy-agent/opa/tree/v0.62.0).
+:::
+
 ### Policy Editor
 
 Harness policies are written and tested using the built-in policy editor.

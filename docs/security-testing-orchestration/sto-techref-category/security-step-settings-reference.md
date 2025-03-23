@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 This section describes how to set up each of the external scanners supported by Harness STO.
 
-For more information about STO support, go to [What's supported in STO](/docs/security-testing-orchestration/whats-supported).
+For more information about STO support, go to [What's supported in STO](/docs/security-testing-orchestration/whats-supported/sto-deployments).
 
 
 ## Scanner categories supported by STO
