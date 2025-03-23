@@ -43,93 +43,58 @@ While IDP 1.0 was a strong foundation built on Backstage, we encountered several
 
 ## What's New in IDP 2.0 (Feature Highlights)
 
-Harness IDP 2.0 is a reimagined version that moves all IDP catalog entities to a **Harness-native data model**, enabling:
+Harness IDP 2.0 brings foundational improvements across architecture, security, scalability, and user experience. Here’s a breakdown of the key capabilities:
 
-✅ Platform hierarchy & granular RBAC
+### Platform Hierarchy & Granular RBAC
 
-✅ Native Git experience
+Entities can now be created explicitly at Account, Organization, or Project scope. By default, entities at the Account scope are accessible platform-wide, while Project-level entities are scoped to the teams that own them. This allows teams to manage their own components while sharing approved workflows across the org.
 
-✅ UI-driven catalog entity creation
+You can define custom roles with specific permissions for Catalog and Workflows (Create, Edit, Read, Delete, Execute), and organize them into reusable resource groups. These permissions align fully with the existing Harness RBAC framework.
 
-✅ Improved scalability & user experience
+Learn more about the [Harness platform hierarchy](https://developer.harness.io/docs/platform/get-started/key-concepts/#account).
 
-**Platform Hierarchy for Catalog and Workflows**
+### Native Harness Git Experience
 
-In **Harness IDP 1.0**, all catalog entities were Backstage-native entities following their hierarchical design (“System” and “Domain”).
+IDP 2.0 introduces native Git support for all catalog entities, enabling real-time, bi-directional sync:
 
-In **Harness IDP 2.0**, we are moving Harness IDP Catalog Components and Workflows to live under Harness Platform Account, Organization, and Project scopes so that Platform Granular RBAC can be applied to them.
+- Edit the entity YAML in Git, and the changes reflect in IDP.
+- Modify the entity in IDP UI or API, and it updates Git (via direct push or a pull request using OAuth as well as API keys).
+- Choose between an inline entity (no YAML file) or a remote entity (YAML lives in your Git provider) depending on your preference.
+- Updates are instant via webhooks—no more periodic polling.
+- Supports multiple branches and version history for audit and rollback.
 
-This means that now users can create catalog entities and workflows at the account, org, or project levels in Harness IDP. This lays the foundation for supporting granular RBAC for catalog and workflows.
+This eliminates previous rate-limit issues and improves developer productivity. Learn more about the [Harness Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview/).
 
-**Support Granular RBAC for Catalog and Workflows**
+### UI-Driven Catalog Entity Creation
 
-In **Harness IDP 1.0**, there was limited support for RBAC.
+Users can now create and manage entities directly from the UI—no YAML expertise required:
 
-In **Harness IDP 2.0**, with platform hierarchy support, Harness IDP now supports Granular RBAC for all catalog entities and workflows.
+- Guided, form-based creation of Components, APIs, Resources, and Workflows.
+- Live sync between YAML and visual view for transparency.
+- Default values and dropdowns help standardize entity creation across teams.
 
-This enables users to:
+This makes it easier for any developer to onboard into the portal without learning Backstage-specific YAML conventions.
 
-✅ Create resource groups
+### Improved Scalability & UX
 
-✅ Manage access to resources
+The new Catalog and Workflow experience has been rebuilt for clarity, speed, and customization:
 
-✅ Assign different permissions to different user groups/users
+- Scope-based filters allow users to narrow down to their team’s view.
+- Catalog table supports search, sorting and pagination.
+- Scorecards are now natively integrated into the Catalog view.
+- Entity pages show scope, ownership, and references cleanly in the header.
 
-With granular RBAC, users can control what actions can be performed on catalog entities and workflows within Harness-native data models.
+These improvements reduce friction for everyday tasks and improve visibility for platform teams.
 
-**Natively Support Git Experience in Catalog and Workflows**
+### Enhanced Workflow Management
 
-In **Harness IDP 1.0**, users were **unable to update entities** directly in the product—it was only possible via YAML files in Git.
+The lifecycle of IDP Self Service Workflows can now easily be managed:
 
-Additionally, entities were **refreshed periodically** (every 30 minutes) or had to be manually refreshed per entity.
+- Can be created and managed at Project, Org, or Account level.
+- Governed by RBAC with explicit Execute permission.
+- Can easily be promoted from dev-only (project) to org-wide (Org or Account) usage as they mature.
 
-In **Harness IDP 2.0**, we are introducing **native Git support** for all catalog entities, allowing **bi-directional updates**:
-
-✅ Users can edit the YAML file in Git, and it will update the entity in IDP.
-
-✅ Users can edit the entity in IDP, and it will commit changes to Git (via direct push or pull request).
-
-✅ Instant updates via webhooks (no more waiting for periodic syncs).
-
-✅ Support for multiple entity versions from different Git branches.
-
-This eliminates rate-limit issues, ensures real-time updates, and provides seamless Git integration.
-
-**UI-Driven Catalog Entity Creation**
-
-In **Harness IDP 1.0**, users could only create catalog entities through YAML files, making it a hard dependency.
-
-In **Harness IDP 2.0**, we’ve introduced catalog entity creation and updates via the Harness IDP UI.
-
-This means:
-
-✅ No YAML required—users can create and modify entities directly through the UI.
-
-✅ Easier entity management, making IDP more user-friendly.
-
-This removes the hard dependency on YAMLs and improves accessibility for all users.
-
-**Harness-Native UX**
-
-Since Harness IDP was built on Backstage, the catalog UI was structured around Backstage’s version.
-
-Over time, users faced navigation issues such as:
-
-❌ Unintuitive filtering
-
-❌ Fixed, hard-coded columns
-
-❌ Lack of horizontal space
-
-In Harness IDP 2.0, we have revamped the Catalog UI to improve usability:
-
-✅ Optimized scope-based filtering
-
-✅ Better, more comprehensive entity views
-
-✅ User-configurable columns
-
-Users can now navigate the IDP Catalog with ease and see entities categorized at different scopes.
+This supports safer rollout of IDP automation across environments and teams.
 
 ## Feature Compatibility Matrix (1.0 vs 2.0)
 
