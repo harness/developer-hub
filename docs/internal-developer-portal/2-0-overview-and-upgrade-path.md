@@ -147,19 +147,27 @@ This section outlines the availability of key IDP features across IDP 1.0 and ID
 | Catalog Ingestion APIs               | ✅      | ✅      |                                                                                   |
 | Terraform Provider                   | ❌      | Planned |                                                                                   |
 
-## What's Going Away (Breaking Changes)
+## Breaking Changes
 
-WIP
+WIP (each should be a section)
 
 Talk about YAML difference. However, we provide conversion.
 
 Talk about API Usage. No more Backstage APIs. All APIs on Harness.
 
-Talk about the usage of hidden tag.
+Entity references - default now becomes account, or account.orgId, or account.orgId.projectId
+
+Talk about the usage of hidden tag. IDP 1.0 used "hidden" tags for access control. In IDP 2.0, these are removed. Customers must now use standard Harness RBAC controls (resource groups and permissions) to manage entity access, ensuring consistency and granularity.
 
 Talk about existing YAMLs being irrelevant.
 
 System/Domain - Replaced by Project/Org. Talk about Component and subComponentOf as an alternative. Say generic Grouping will come soon.
+
+DevTools: Removed from the sidebar, deemed unhelpful for customers.
+Register /catalog-import: Redirects to the new UI-driven entity creation page.
+Catalog Access Policy: Permission eliminated as it’s no longer needed. Access Control Page: Removed from IDP Admin; use Harness Platform RBAC instead.
+
+IDP Stage Steps in the Pipeline (Create and Register Catalog)
 
 ## Before You Upgrade (Checklist)
 
@@ -169,49 +177,27 @@ WIP
 
 WIP
 
-With the introduction of **IDP 2.0**, customers will have the opportunity to migrate from **IDP 1.0** (the existing version) to **IDP 2.0** (new platform). This migration will be **progressive** and **customer-friendly**, ensuring minimal disruption while enabling access to new features.
-
-The migration plan consists of:
-
-- Phased Rollout Strategy ensuring stability.
-- Gradual Migration Approach allowing customers to transition at their own pace.
-- Fallback Mechanism to handle any unforeseen issues.
-- Comprehensive Support for seamless adoption.
-
-IDP 2.0 accepts Backstage YAML as well, and there is an API to convert Backstage YAML to Harness YAML.
-
-**Rollout Phases**
-
-The rollout will be conducted in two phases, allowing for a controlled and feedback-driven release.
-
-#### Phase 1: Feature Flag-Based Rollout for Early Adopters
-
-- IDP 2.0 is deployed to production behind a feature flag.
-- A limited set of early adopters/customers will have the flag enabled.
-- Early adopters can test and provide feedback before a wider rollout.
-
-**Key Considerations**
-
-- Ensures stability by validating core functionalities.
-- Allows monitoring for bugs, performance issues, or user concerns.
-- Collects feedback for potential improvements before a full-scale release.
-
-#### Phase 2: Gradual Rollout to all Customers
-
-- After successful validation in Phase 1, IDP 2.0 will be gradually rolled out to all customers.
-- Customers will be notified about the upgrade process.
-- Support resources and migration tools will be provided.
-- Migration from IDP 1.0 to IDP 2.0 will be available once IDP 2.0 is fully rolled out.
-
-**Key Considerations**
-
-- Ensures a stable transition without affecting ongoing workflows.
-- Users will be provided with documentation, detailed guides and FAQs to facilitate migration.
-- Customers can choose to migrate at their convenience before IDP 1.0 deprecation.
-
-#### Fallback / Rollback Plan
-
-WIP
+- Prepare
+  - Review the IDP 2.0 Overview and Upgrade Path document.
+  - Train your team on Harness RBAC and hierarchical scoping.
+- Enable Feature Flag
+  - Contact Harness Support to enable the IDP_2_0 feature flag for your account.
+  - Test IDP 2.0 features in a controlled environment.
+- Migrate Entities
+  - Convert Backstage-native entities to Harness-native format manually or with Harness-assisted support.
+  - Use migration tools to update YAML definitions and validate them in the new model.
+- Test and Validate
+  - Create, edit, and delete entities via the UI and verify functionality.
+  - Confirm RBAC settings and Git Experience features (e.g., webhook updates, branching).
+  - Test workflows at different scopes (Account, Org, Project).
+- Roll Out Gradually
+  - Introduce IDP 2.0 features to your team incrementally.
+  - Monitor for issues and gather feedback.
+  - Use the rollback option to revert to IDP 1.0 if needed (supported and safe during migration).
+- Complete Migration
+  - Fully transition all entities and workflows to IDP 2.0.
+  - Update automation/scripts to leverage new APIs and the Harness-native model.
+- Critical Note: Reverting to IDP 1.0 is fully supported and safe during the migration period, ensuring flexibility and confidence.
 
 ## Timeline
 
