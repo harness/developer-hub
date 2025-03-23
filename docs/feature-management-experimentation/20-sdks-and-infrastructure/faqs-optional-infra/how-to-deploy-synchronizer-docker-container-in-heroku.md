@@ -1,8 +1,6 @@
 ---
 title: How to deploy Synchronizer Docker container in Heroku?
 sidebar_label: How to deploy Synchronizer Docker container in Heroku?
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 4
 ---
 

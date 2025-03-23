@@ -1,8 +1,6 @@
 ---
 title: "General SDK error, getTreatment: you passed \"SPLIT NAME\" that does not exist in this environment"
 sidebar_label: "General SDK error, getTreatment: you passed \"SPLIT NAME\" that does not exist in this environment"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 8
 ---
 

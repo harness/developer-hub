@@ -1,8 +1,6 @@
 ---
 title: "Ruby SDK Error: uninitialized constant error caused by 'Process::RLIMIT_NOFILE' in lib/net/http/persistent.rb"
 sidebar_label: "Ruby SDK Error: uninitialized constant error. caused by 'Process::RLIMIT_NOFILE' in lib/net/http/persistent.rb"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 14
 ---
 

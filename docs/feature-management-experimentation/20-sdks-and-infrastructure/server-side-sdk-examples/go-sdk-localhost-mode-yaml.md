@@ -1,8 +1,6 @@
 ---
 title: Go SDK app using localhost mode with yaml file example
 sidebar_label: Go SDK app using localhost mode with yaml file example
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 5
 ---
 

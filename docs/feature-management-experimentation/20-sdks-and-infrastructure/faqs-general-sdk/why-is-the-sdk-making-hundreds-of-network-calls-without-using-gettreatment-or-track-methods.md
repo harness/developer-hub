@@ -1,8 +1,6 @@
 ---
 title: Why is the SDK making hundreds of network calls without using getTreatment or track methods?
 sidebar_label: Why is the SDK making hundreds of network calls without using getTreatment or track methods?
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 13
 ---
 

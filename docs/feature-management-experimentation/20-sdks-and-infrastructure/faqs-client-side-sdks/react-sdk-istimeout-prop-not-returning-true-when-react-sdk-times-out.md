@@ -1,8 +1,6 @@
 ---
 title: "isTimeout prop not returning true when React SDK times out"
 sidebar_label: "isTimeout prop not returning true when React SDK times out"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 3
 ---
 

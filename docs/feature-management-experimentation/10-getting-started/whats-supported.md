@@ -3,8 +3,6 @@ title: What's supported in Harness FME
 description: Platforms and technologies supported in FME
 sidebar_label: What's supported
 sidebar_position: 1
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 This topic lists platform and technologies supported by Harness Feature Management & Experimentation (FME).

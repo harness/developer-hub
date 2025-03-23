@@ -1,8 +1,6 @@
 ---
 title: Elixir Thin Client SDK
 sidebar_label: Elixir Thin Client SDK
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

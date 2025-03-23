@@ -1,8 +1,6 @@
 ---
 title: "Android SDK: Duplicate class FinalizableReferenceQueue$DirectLoader in modules checkstyle-5.3-all.jar and guava-18.0.jar"
 sidebar_label: "Android SDK: Duplicate class FinalizableReferenceQueue$DirectLoader in modules checkstyle-5.3-all.jar and guava-18.0.jar"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 15
 ---
 

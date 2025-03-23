@@ -1,8 +1,6 @@
 ---
 title: JavaScript SDK
 sidebar_label: JavaScript SDK
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

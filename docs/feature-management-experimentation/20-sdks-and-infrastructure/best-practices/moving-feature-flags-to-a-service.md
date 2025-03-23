@@ -1,8 +1,6 @@
 ---
 title: Moving feature flags to a service
 sidebar_label: Moving feature flags to a service
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 2
 ---
 

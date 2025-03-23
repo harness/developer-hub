@@ -1,8 +1,6 @@
 ---
 title: "React SDK: Lazy initialization of SDK client"
 sidebar_label: "React SDK: Lazy initialization of SDK client"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 12
 ---
 

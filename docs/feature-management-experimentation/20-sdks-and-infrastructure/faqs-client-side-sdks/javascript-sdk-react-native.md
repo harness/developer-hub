@@ -1,8 +1,6 @@
 ---
 title: "Running bundle using React Native and JavaScript SDK causes an error. Bundling failed: Error: Unable to resolve module `util`"
 sidebar_label: "Running bundle using React Native and JavaScript SDK causes an error. Bundling failed: Error: Unable to resolve module `util`"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 24
 ---
 

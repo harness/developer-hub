@@ -1,8 +1,6 @@
 ---
 title: iOS Swift app project using two SDK Factories example
 sidebar_label: iOS Swift app project using two SDK Factories example
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 10
 ---
 

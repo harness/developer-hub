@@ -1,8 +1,6 @@
 ---
 title: .NET SDK
 sidebar_label: .NET SDK
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

@@ -2,8 +2,6 @@
 title: SDK versioning policy
 sidebar_label: SDK versioning policy
 sidebar_position: 1
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

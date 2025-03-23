@@ -1,8 +1,6 @@
 ---
 title: "Ruby SDK: Why do CLOSE_WAIT TCP connections in Puma not go down as expected?"
 sidebar_label: "Ruby SDK: Why do CLOSE_WAIT TCP connections in Puma not go down as expected?"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 17
 ---
 

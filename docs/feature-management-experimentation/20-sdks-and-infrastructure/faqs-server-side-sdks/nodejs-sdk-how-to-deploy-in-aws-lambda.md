@@ -1,8 +1,6 @@
 ---
 title: How to deploy Node.js SDK in AWS Lambda
 sidebar_label: How to deploy Node.js SDK in AWS Lambda
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 7
 ---
 

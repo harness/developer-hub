@@ -1,8 +1,6 @@
 ---
 title: How do I find out what changed in an SDK?
 sidebar_label: How do I find out what changed in an SDK?
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 11
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: "JavaScript SDK: Does SDK_READY event fire only once?"
 sidebar_label: "JavaScript SDK: Does SDK_READY event fire only once?"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 9
 ---
 

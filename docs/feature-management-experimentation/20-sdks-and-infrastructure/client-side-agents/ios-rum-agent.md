@@ -1,8 +1,6 @@
 ---
 title: iOS RUM Agent
 sidebar_label: iOS RUM Agent
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

@@ -1,8 +1,6 @@
 ---
 title: Using multiple web components and a single SDK factory instance
 sidebar_label: Using multiple web components and a single SDK factory instance
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 1
 ---
 

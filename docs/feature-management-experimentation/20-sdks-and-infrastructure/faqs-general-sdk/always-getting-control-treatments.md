@@ -1,8 +1,6 @@
 ---
 title: "General SDK: Always getting control treatments"
 sidebar_label: "General SDK: Always getting control treatments"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 10
 ---
 

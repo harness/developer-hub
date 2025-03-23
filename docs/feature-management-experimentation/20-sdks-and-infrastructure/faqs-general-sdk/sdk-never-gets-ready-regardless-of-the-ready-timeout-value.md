@@ -1,8 +1,6 @@
 ---
 title: "General SDK: SDK never gets ready, regardless of the ready timeout value"
 sidebar_label: "General SDK: SDK never gets ready, regardless of the ready timeout value"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 9
 ---
 

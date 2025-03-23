@@ -1,8 +1,6 @@
 ---
 title: Synchronizer compatibility matrix
 sidebar_label: Synchronizer compatibility matrix
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 8
 ---
 

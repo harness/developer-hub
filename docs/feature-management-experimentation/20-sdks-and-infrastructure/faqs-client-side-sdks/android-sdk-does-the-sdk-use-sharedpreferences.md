@@ -1,8 +1,6 @@
 ---
 title: "Android SDK: Does the SDK use SharedPreferences on the device to store the FME cache?"
 sidebar_label: "Android SDK: Does the SDK use SharedPreferences on the device to store the FME cache?"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 23
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: "General SDK: Split Manager returns incomplete list of feature flags"
 sidebar_label: "General SDK: Split Manager returns incomplete list of feature flags"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 6
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: "JavaScript SDK: How to enable Content Security Policy (CSP) to work with JavaScript SDK"
 sidebar_label: "JavaScript SDK: How to enable Content Security Policy (CSP) to work with JavaScript SDK"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 21
 ---
 

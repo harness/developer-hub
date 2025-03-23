@@ -1,8 +1,6 @@
 ---
 title: How to inject a certificate into a Synchronizer Docker image?
 sidebar_label: How to inject a certificate into a Synchronizer Docker image?
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 3
 ---
 

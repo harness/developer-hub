@@ -1,8 +1,6 @@
 ---
 title: "Why is PHP unable to write impressions to Redis throwing error \"NOAUTH Authentication required\"?"
 sidebar_label: "Why is PHP unable to write impressions to Redis throwing error \"NOAUTH Authentication required\"?"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 20
 ---
 

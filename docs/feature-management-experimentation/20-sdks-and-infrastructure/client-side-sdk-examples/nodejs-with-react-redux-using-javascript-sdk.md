@@ -1,8 +1,6 @@
 ---
 title: Node.js with React Redux project using FME JavaScript SDK example
 sidebar_label: Node.js with React Redux project using FME JavaScript SDK example
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 12
 ---
 

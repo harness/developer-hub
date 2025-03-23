@@ -2,8 +2,6 @@
 title: SDK validation checklist
 sidebar_label: SDK validation checklist
 sidebar_position: 2
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

@@ -1,8 +1,6 @@
 ---
 title: "Mobile and web SDK: FME changes roll out slowly to user devices"
 sidebar_label: "Mobile and web SDK: FME changes roll out slowly to user devices"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 7
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: Browser SDK migration guide
 sidebar_label: Browser SDK migration guide
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 6
 ---
 

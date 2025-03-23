@@ -1,8 +1,6 @@
 ---
 title: Ruby SDK
 sidebar_label: Ruby SDK
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

@@ -1,8 +1,6 @@
 ---
 title: "Android SDK: SDK takes too long to get ready"
 sidebar_label: "Android SDK: SDK takes too long to get ready"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 16
 ---
 

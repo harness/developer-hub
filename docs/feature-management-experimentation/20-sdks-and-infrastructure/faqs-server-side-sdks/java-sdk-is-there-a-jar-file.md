@@ -1,8 +1,6 @@
 ---
 title: Is there a JAR file for Java SDK?
 sidebar_label: Is there a JAR file for Java SDK?
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 9
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: React Native app using Split Node.js SDK example
 sidebar_label: React Native app using Split Node.js SDK example
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 4
 ---
 

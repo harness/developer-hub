@@ -1,8 +1,6 @@
 ---
 title: "Mobile and web SDK: Does the SDK cache expire?"
 sidebar_label: "Mobile and web SDK: Does the SDK cache expire?"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 8
 ---
 

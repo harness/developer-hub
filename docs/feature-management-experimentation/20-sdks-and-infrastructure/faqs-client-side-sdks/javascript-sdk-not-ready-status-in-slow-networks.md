@@ -1,8 +1,6 @@
 ---
 title: Why does the JavaScript SDK return Not Ready status in slow networks?
 sidebar_label: Why does the JavaScript SDK return Not Ready status in slow networks?
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 26
 ---
 

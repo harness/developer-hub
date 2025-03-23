@@ -1,8 +1,6 @@
 ---
 title: SDK overview
 sidebar_label: SDK overview
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 1
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: "JavaScript SDK: CORS Error in streaming call when running SDK in Service Worker"
 sidebar_label: "JavaScript SDK: CORS Error in streaming call when running SDK in Service Worker"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 4
 ---
 

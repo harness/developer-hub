@@ -1,8 +1,6 @@
 ---
 title: "Java SDK Time out Error: NoSuchMethodError: com.google.common.collect.Multisets.removeOccurrences"
 sidebar_label: "Java SDK Time out Error: NoSuchMethodError: com.google.common.collect.Multisets.removeOccurrences"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 10
 ---
 

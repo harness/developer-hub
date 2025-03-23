@@ -1,8 +1,6 @@
 ---
 title: Flutter plugin
 sidebar_label: Flutter plugin
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

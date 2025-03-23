@@ -1,8 +1,6 @@
 ---
 title: "General SDK: SDK readiness always times out when running in Kubernetes and Istio proxy"
 sidebar_label: "General SDK: SDK readiness always times out when running in Kubernetes and Istio proxy"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 2
 ---
 

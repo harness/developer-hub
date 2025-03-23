@@ -1,8 +1,6 @@
 ---
 title: Redux SDK running on client side example
 sidebar_label: Redux SDK running on client side example
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 5
 ---
 

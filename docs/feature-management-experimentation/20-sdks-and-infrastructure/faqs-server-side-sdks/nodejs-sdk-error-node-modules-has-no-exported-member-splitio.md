@@ -1,8 +1,6 @@
 ---
 title: "Node.js SDK error: \"/node_modules/@splitsoftware/splitio/types\"' has no exported member 'SplitIO'"
 sidebar_label: "Node.js SDK error: \"/node_modules/@splitsoftware/splitio/types\"' has no exported member 'SplitIO'"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 5
 ---
 

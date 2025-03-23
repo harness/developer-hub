@@ -1,8 +1,6 @@
 ---
 title: "iOS SDK runtime error: JFBCrypt.m left shift of [x] by [y] places cannot be represented in type 'SInt32'"
 sidebar_label: "iOS SDK runtime error: JFBCrypt.m left shift of [x] by [y] places cannot be represented in type 'SInt32'"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 13
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: "General SDK: How to use FME SDKs with Split Proxy?"
 sidebar_label: "General SDK: How to use FME SDKs with Split Proxy?"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 3
 ---
 

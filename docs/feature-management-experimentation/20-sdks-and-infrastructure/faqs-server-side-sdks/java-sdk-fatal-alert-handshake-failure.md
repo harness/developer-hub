@@ -1,8 +1,6 @@
 ---
 title: "Java SDK error using JRE 6.x \"fatal alert: handshake_failure\""
 sidebar_label: "Java SDK error using JRE 6.x \"fatal alert: handshake_failure\""
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 12
 ---
 

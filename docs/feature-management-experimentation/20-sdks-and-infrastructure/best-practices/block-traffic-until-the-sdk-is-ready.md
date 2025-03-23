@@ -1,8 +1,6 @@
 ---
 title: Block traffic until the SDK is ready
 sidebar_label: Block traffic until the SDK is ready
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 5
 ---
 

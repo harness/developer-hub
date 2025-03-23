@@ -32,8 +32,35 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.fme,
           description:
             "Guides for using Harness FME with popular languages and platforms, including mobile development",
-          link: "/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview",
+          link: "/docs/feature-management-experimentation/sdks-and-infrastructure",
         },
+      ],
+    },
+    {
+      name: "FME Features",
+      description: "",
+      list: [
+        {
+          title: "Feature management",
+          module: MODULES.fme,
+          description:
+            "Flag variations, canary releases, and gradual rollouts",
+          link: "/docs/feature-management-experimentation/feature-management",
+        },/*
+        {
+          title: "Release monitoring",
+          module: MODULES.fme,
+          description:
+            "Measure KPIs, performance metrics, and alerting for your feature variations",
+          link: "/docs/feature-management-experimentation/release-monitoring",
+        },
+        {
+          title: "Experimentation",
+          module: MODULES.fme,
+          description:
+            "Actionable results analysis for data-driven development",
+          link: "/docs/feature-management-experimentation/experimentation",
+        },*/
       ],
     },
     {

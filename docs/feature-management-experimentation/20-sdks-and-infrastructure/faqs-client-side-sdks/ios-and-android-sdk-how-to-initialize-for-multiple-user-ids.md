@@ -1,8 +1,6 @@
 ---
 title: "Mobile SDK: How to initialize for multiple user IDs?"
 sidebar_label: "Mobile SDK: How to initialize for multiple user IDs?"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 19
 ---
 

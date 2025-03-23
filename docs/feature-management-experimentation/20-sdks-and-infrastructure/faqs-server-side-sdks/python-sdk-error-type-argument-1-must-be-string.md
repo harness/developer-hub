@@ -1,8 +1,6 @@
 ---
 title: "What is  the Python SDK error: \"type() argument 1 must be string, not unicode\"?"
 sidebar_label: "What is  the Python SDK error: \"type() argument 1 must be string, not unicode\"?"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 18
 ---
 

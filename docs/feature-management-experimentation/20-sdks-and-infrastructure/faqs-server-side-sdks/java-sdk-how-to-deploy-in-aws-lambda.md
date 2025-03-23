@@ -1,8 +1,6 @@
 ---
 title: How to Deploy Java SDK in AWS Lambda
 sidebar_label: How to Deploy Java SDK in AWS Lambda
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 8
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: How to deploy JavaScript SDK to a Wordpress site?
 sidebar_label: How to deploy JavaScript SDK to a Wordpress site?
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 14
 ---
 

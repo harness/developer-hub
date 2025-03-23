@@ -1,8 +1,6 @@
 ---
 title: Best practices for integrating Harness FME feature flags into a serverless environment
 sidebar_label: Best practices for integrating Harness FME feature flags into a serverless environment
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 1
 ---
 

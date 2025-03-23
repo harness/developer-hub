@@ -3,8 +3,6 @@ title: Overview
 sidebar_label: Overview
 description: How to make Feature Management & Experimentation work for you
 sidebar_position: 1
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

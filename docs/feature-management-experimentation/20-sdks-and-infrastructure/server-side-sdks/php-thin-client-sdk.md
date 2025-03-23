@@ -1,8 +1,6 @@
 ---
 title: PHP Thin Client SDK
 sidebar_label: PHP Thin Client SDK
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

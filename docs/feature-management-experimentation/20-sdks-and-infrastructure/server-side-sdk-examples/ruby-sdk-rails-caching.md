@@ -1,8 +1,6 @@
 ---
 title: Ruby SDK and Rails caching
 sidebar_label: Ruby SDK and Rails caching
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 14
 ---
 

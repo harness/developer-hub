@@ -1,8 +1,6 @@
 ---
 title: Angular utilities
 sidebar_label: Angular utilities
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

@@ -1,8 +1,6 @@
 ---
 title: No Impressions sent from Python SDK 7.x and Synchronizer 1.x
 sidebar_label: No Impressions sent from Python SDK 7.x and Synchronizer 1.x
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 7
 ---
 

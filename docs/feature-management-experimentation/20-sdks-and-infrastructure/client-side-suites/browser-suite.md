@@ -1,8 +1,6 @@
 ---
 title: Browser Suite
 sidebar_label: Browser Suite
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

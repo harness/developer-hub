@@ -1,8 +1,6 @@
 ---
 title: "JavaScript SDK Error: \"Shared Client not supported by the storage mechanism. Create isolated instances instead\""
 sidebar_label: "JavaScript SDK Error: \"Shared Client not supported by the storage mechanism. Create isolated instances instead\""
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 20
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: "Why do I see a \"POST method: Status Code: 404 - 404 Not Found\" Synchronizer error?"
 sidebar_label: "Why do I see a \"POST method: Status Code: 404 - 404 Not Found\" Synchronizer error?"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 9
 ---
 

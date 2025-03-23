@@ -1,8 +1,6 @@
 ---
 title: "Ruby SDK: Example using FME SDK with Rails and Sidekiq service"
 sidebar_label: "Ruby SDK: Example using FME SDK with Rails and Sidekiq service"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 2
 ---
 

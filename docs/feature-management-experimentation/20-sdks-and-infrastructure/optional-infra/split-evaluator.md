@@ -1,8 +1,6 @@
 ---
 title: Split Evaluator
 sidebar_label: Split Evaluator
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 2
 ---
 

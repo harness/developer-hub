@@ -1,8 +1,6 @@
 ---
 title: Ruby on Rails with Puma App Engine project using FME SDK example
 sidebar_label: Ruby on Rails with Puma App engine project using FME SDK example
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 13
 ---
 

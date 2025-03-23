@@ -1,8 +1,6 @@
 ---
 title: Java SDK example using Scala SBT command line compiler
 sidebar_label: Java SDK example using Scala SBT command line compiler
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 4
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: Synchronizer returns 500 HTTP error when used in proxy mode
 sidebar_label: Synchronizer returns 500 HTTP error when used in proxy mode
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 2
 ---
 

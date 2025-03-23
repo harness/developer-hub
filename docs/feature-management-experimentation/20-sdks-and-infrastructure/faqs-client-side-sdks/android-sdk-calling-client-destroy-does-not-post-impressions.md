@@ -1,8 +1,6 @@
 ---
 title: Calling client.Destory does not post impressions in Android SDK
 sidebar_label: Calling client.Destory does not post impressions in Android SDK
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 10
 ---
 

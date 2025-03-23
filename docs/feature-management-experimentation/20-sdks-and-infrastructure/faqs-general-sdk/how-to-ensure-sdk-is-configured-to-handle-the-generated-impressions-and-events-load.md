@@ -1,8 +1,6 @@
 ---
 title: "General SDK: How to ensure SDK is configured to handle the generated impressions and events load?"
 sidebar_label: "General SDK: How to ensure SDK is configured to handle the generated impressions and events load?"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 7
 ---
 

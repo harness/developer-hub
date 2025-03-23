@@ -1,8 +1,6 @@
 ---
 title: Android SDK
 sidebar_label: Android SDK
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

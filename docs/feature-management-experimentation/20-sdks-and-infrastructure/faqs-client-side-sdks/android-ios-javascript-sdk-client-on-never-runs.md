@@ -1,8 +1,6 @@
 ---
 title: "Mobile SDK: When using client.on method, the code block is never called"
 sidebar_label: "Mobile SDK: When using client.on method, the code block is never called"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 22
 ---
 

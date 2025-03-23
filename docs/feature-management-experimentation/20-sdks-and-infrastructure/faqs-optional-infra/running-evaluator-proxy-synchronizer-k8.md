@@ -1,8 +1,6 @@
 ---
 title: Running Split Evaluator, Split Proxy, or Split Synchronizer with Kubernetes
 sidebar_label: Running Split Evaluator, Split Proxy, or Split Synchronizer with Kubernetes
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 1
 ---
 

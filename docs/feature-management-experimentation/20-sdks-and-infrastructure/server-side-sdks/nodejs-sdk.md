@@ -1,8 +1,6 @@
 ---
 title: Node.js SDK
 sidebar_label: Node.js SDK
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

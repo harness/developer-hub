@@ -1,8 +1,6 @@
 ---
 title: "React SDK: Is it possible to get treatments outside the components?"
 sidebar_label: "React SDK: Is it possible to get treatments outside the components?"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 5
 ---
 

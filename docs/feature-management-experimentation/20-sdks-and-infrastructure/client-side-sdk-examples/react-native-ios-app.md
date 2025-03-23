@@ -1,8 +1,6 @@
 ---
 title: React Native iOS app using FME SDK example
 sidebar_label: React Native iOS app using FME SDK example
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 8
 ---
 

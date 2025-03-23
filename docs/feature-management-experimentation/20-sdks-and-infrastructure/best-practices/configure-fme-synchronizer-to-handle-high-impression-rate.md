@@ -1,8 +1,6 @@
 ---
 title: Configure Split Synchronizer to handle high impression rate
 sidebar_label: Configure Split Synchronizer to handle high impression rate
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 6
 ---
 

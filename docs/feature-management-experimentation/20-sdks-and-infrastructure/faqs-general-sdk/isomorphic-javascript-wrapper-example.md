@@ -1,8 +1,6 @@
 ---
 title: Isomorphic JavaScript wrapper example
 sidebar_label: Isomorphic JavaScript wrapper example
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 1
 ---
 

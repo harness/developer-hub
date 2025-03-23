@@ -1,8 +1,6 @@
 ---
 title: "JavaScript SDK: Localhost mode does not support Allowlist keys"
 sidebar_label: "JavaScript SDK: Localhost mode does not support Allowlist keys"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 2
 ---
 

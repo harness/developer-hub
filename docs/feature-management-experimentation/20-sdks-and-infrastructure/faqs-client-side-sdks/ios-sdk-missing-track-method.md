@@ -1,8 +1,6 @@
 ---
 title: Is the iOS SDK Split library missing the track method?
 sidebar_label: Is the iOS SDK Split library missing the track method?
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 27
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: "Java SDK Exception: PKIX path building failed: unable to find valid certification path to requested target"
 sidebar_label: "Java SDK Exception: PKIX path building failed: unable to find valid certification path to requested target"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 15
 ---
 

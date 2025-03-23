@@ -1,8 +1,6 @@
 ---
 title: Java SDK how to change log level
 sidebar_label: Java SDK how to change log level
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 11
 ---
 

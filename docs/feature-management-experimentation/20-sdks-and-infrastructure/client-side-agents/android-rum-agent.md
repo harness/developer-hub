@@ -1,8 +1,6 @@
 ---
 title: Android RUM Agent
 sidebar_label: Android RUM Agent
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 <p>

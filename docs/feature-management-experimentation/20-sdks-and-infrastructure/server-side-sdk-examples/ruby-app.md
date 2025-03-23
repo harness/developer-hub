@@ -1,8 +1,6 @@
 ---
 title: Ruby app project using FME SDK example
 sidebar_label: Ruby app project using FME SDK example
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 9
 ---
 

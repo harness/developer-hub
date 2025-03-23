@@ -1,8 +1,6 @@
 ---
 title: "Why does the JavaScript URL \"https://sdk.split.io/api/mySegments/\" return HTTP 404 error?"
 sidebar_label: "Why does the JavaScript URL \"https://sdk.split.io/api/mySegments/\" return HTTP 404 error?"
-helpdocs_is_private: false
-helpdocs_is_published: true
 sidebar_position: 28
 ---
 
