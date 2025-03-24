@@ -7,6 +7,9 @@ description: Store your entities in Harness
 Currently, this feature is behind the Feature Flag `PIPE_USE_HARNESS_CODE_FOR_INLINE_ENTITIES`. Please contact Harness support to enable this feature.
 :::
 
+## Overview 
+By default, entities in Harness are stored either inline (within Harness) or in a remote Git repository. With this feature flag enabled, you will now have an option to store inline entities in the Harness Git Repository.
+
 ## Ways to Store Entities in Harness
 
 There are two ways to store entities in Harness:
@@ -23,7 +26,7 @@ With this feature enabled, entities will be stored in:
 
 ### Inline Entity Storage
 
-Inline entities will be stored in the default Harness Git Repository. The entity's YAML file will be stored in an account-level repository at a precomputed path. The file structure will follow the same approach as described in [Auto-creation of Entities](/docs/platform/git-experience/autocreation-of-entities.md) in Harness.
+Inline entities will be stored in the default Harness Git Repository. The entity's YAML file will be stored in an account-level repository at a precomputed path. The file structure will follow the same approach as described in [Auto-creation of Entities](/docs/platform/git-experience/autocreation-of-entities) in Harness.
 
 Once you save a pipeline in Harness, you can view the path of the YAML file for the entity. Clicking on the link will redirect you to the YAML file stored at the account level in the `harness-filestore` repository.
 
