@@ -45,10 +45,11 @@ In summary, Database DevOps is vital to the Harness Delegate as it enhances the 
    ![Harness DB DevOps architecture diagram](./static/detailed-architectural-diagram.png)
 
 
-## Understanding How Secrets are Passed to Build Pods
+## Understanding How Secret's Info is Sent to Build Pods
 
-1. All secrets are added as Kubernetes Secrets in the same namespace where build pods are deployed.
-2. Those secrets are referenced inside the Pod definition using imagePullSecrets.
+1. All secret requests are first sent as expressions from Harness to Delegates, where they are decrypted inside the Pod init request.
+2. Decrypted secrets are added as Kubernetes Secrets in the same namespace where build pods are deployed.
+3. Those secrets are referenced inside the Pod definition using imagePullSecrets.
 
 :::info
 Container registry credentials are stored as .dockercfg type secret in Kubernetes secret, allowing the Pod to pull images from the specified registry in the stepGroup.
