@@ -168,42 +168,42 @@ At times, you might experience issues with the HEC connector. Here are some trou
 
 <TabItem value="sumo-logic" label="Sumo Logic">
   
-  **Prerequisites**
+  
+  :::info **Prerequisites**
 
-  To configure Sumo Logic as a new streaming destination, ensure you meet the following requirements:
+    1. Sumo Logic's [Access ID and Access Key](https://help.sumologic.com/docs/manage/security/access-keys/). An Access Key can have two scope types: [Default and Custom](https://help.sumologic.com/docs/manage/security/access-keys/#create-an-access-key). If selecting Custom, ensure you enable the permissions shown in the image below. 
+        <img src={SumoPermission} width="400"/>
 
-  1. Sumo Logic's [Access ID and Access Key](https://help.sumologic.com/docs/manage/security/access-keys/). An Access Key can have two scope types: [Default and Custom](https://help.sumologic.com/docs/manage/security/access-keys/#create-an-access-key). If selecting Custom, ensure you enable the permissions shown in the image below. 
-      <img src={SumoPermission} width="400"/>
+    2. [HTTP Source Address](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/) to receive logs.
+  :::
 
-  2. [HTTP Source Address](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/) to receive logs.
+  To Configure Sumo Logic as New Streaming Destination:
 
-  ### Sumo Logic as New Streaming Destination
-
-  1. Add a name, description, and tags in your Overview section; the description and tags are optional.
+  1. Follow the steps above to [Add a streaming destination](#add-a-streaming-destination).
       
-      ![stream-overview](./static/stream-destination-overview.png)
+  2. Select **Sumo Logic** Connector.
+  
+  3. In **Select Connector**, select an existing connector or create a new one. For now, let's add a new connector.  
 
-  2. Configure Sumo Logic Connector: Create or select an existing connector. For now, let's add a new connector.  
-
-      ![sumo-stream-connector](./static/sumo-stream-connect.png)
+        ![sumo-stream-connector](./static/sumo-stream-connect.png)
             
-    - Click New Connector → Add a name, description, and tags accordingly.
+      - Click New Connector → Add a name, description, and tags accordingly.
 
-    - Add the Sumo Logic API server URL. To know your Sumo Logic API Endpoint refer [Sumo Logic documentation ](https://help.sumologic.com/docs/api/getting-started/#sumo-logic-endpoints-by-deployment-and-firewall-security) 
+      - Add the Sumo Logic API server URL. To know your Sumo Logic API Endpoint refer [Sumo Logic documentation ](https://help.sumologic.com/docs/api/getting-started/#sumo-logic-endpoints-by-deployment-and-firewall-security) 
             
-    - Add Sumo Logic Access ID and Access Key. You can either [add new secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) directly or use existing ones. For now, we have used the existing secrets as shown in the GIF below.
+      - Add Sumo Logic Access ID and Access Key. You can either [add new secrets](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/) or use existing ones. For now, we have used the existing secrets as shown in the GIF below.
 
-    - Complete the Delegate setup → Save and Continue.
+      - Complete the Delegate setup → Save and Continue.
 
-      ![add-sumo-logic-connector](./static/sumo-add-configure-streaming.gif)
+        ![add-sumo-logic-connector](./static/sumo-add-configure-streaming.gif)
 
-    - Verify the connection and click Finish to complete the setup. 
+      - Verify the connection and click Finish to complete the setup. 
 
-  3. Add the HTTP Source Address. Click Save and Continue to proceed.
+  4. Add the HTTP Source Address. Click Save and Continue to proceed.
           
       ![sumo-http-stream](./static/streaming-connector-http-source.png)  
 
-  3. Verify the connection and click on Finish.
+  5. Verify the connection and click on Finish.
 
     :::warning Troubleshoot a Sumo Logic Streaming destination
       
