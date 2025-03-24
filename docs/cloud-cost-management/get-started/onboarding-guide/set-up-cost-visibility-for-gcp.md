@@ -181,6 +181,53 @@ Your connector is now listed in the **Connectors**.
 
 <DocImage path={require('./static/set-up-cost-visibility-for-gcp-13.png')} width="50%" height="50%" title="Click to view full size image" />
 
+
+## Reference - GCP access permissions
+
+CCM requires the following permissions:
+
+### AutoStopping
+
+The following granular permissions are needed at the linked account level to perform GCP AutoStopping. AutoStopping support covered with the following permissions are:
+
+1. AutoStopping for GCP Compute Engine VMs.
+2. AutoStopping for GCP Instance Groups
+
+```
+compute.addresses.create
+compute.addresses.delete
+compute.addresses.get
+compute.addresses.use
+compute.disks.create
+compute.disks.list
+compute.firewalls.list
+compute.instanceGroupManagers.list
+compute.instanceGroups.get
+compute.instanceGroups.list
+compute.instances.create
+compute.instances.delete
+compute.instances.get
+compute.instances.getEffectiveFirewalls
+compute.instances.list
+compute.instances.setLabels
+compute.instances.setMetadata
+compute.instances.setTags
+compute.instances.start
+compute.instances.stop
+compute.machineTypes.list
+compute.networks.list
+compute.projects.get
+compute.regionOperations.get
+compute.regions.get
+compute.regions.list
+compute.snapshots.list
+compute.subnetworks.list
+compute.subnetworks.use
+compute.subnetworks.useExternalIp
+compute.zoneOperations.get
+secretmanager.versions.access
+```
+
 ### Next Steps
 
 * [Analyze Cost for GCP ​Using Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-gcp-using-perspectives)
