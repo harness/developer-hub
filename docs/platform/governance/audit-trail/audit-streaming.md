@@ -177,7 +177,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
     2. [HTTP Source Address](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/) to receive logs.
   :::
 
-  To Configure Sumo Logic as New Streaming Destination:
+  To configure Sumo Logic as a New Streaming Destination:
 
   1. Follow the steps above to [Add a streaming destination](#add-a-streaming-destination).
       
