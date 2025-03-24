@@ -15,7 +15,7 @@ import HealthCheck from './static/health-check.png';
 import DelegateStatus from './static/delegate-status.png';
 import EnVariable from './static/environment-variables.gif';
 
- Harness Delegate is essential for connecting your infrastructure with the Harness platform, enabling seamless deployments. Harness Delegates typically run on VMs, Kubernetes clusters, or ECS Fargate, but Google Cloud Run presents a lightweight, cost-efficient, and scalable alternative.
+Harness Delegate is essential for connecting your infrastructure with the Harness platform, enabling seamless deployments. Harness Delegates typically run on VMs, Kubernetes clusters, or ECS Fargate, but Google Cloud Run presents a lightweight, cost-efficient, and scalable alternative.
 
 This guide provides step-by-step instructions to configure a Harness Delegate on Google Cloud Run.
 
