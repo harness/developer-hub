@@ -101,8 +101,8 @@ Priority order (highest to lowest):
 
 - Account-level timeout (highest priority)
 - Organization-level timeout
-- Pipeline-specific timeout 
-- Project-level timeout (lowest priority)
+- Project-level timeout
+- Pipeline-level timeout (lowest priority)
 
 Manually configuring a pipeline or stage to have a longer timeout than the system limit, the system limit is still enforced.
 
