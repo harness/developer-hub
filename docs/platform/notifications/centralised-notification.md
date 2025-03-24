@@ -13,12 +13,11 @@ With notifications management, you can configure notifications for the following
 1. Pipeline
 2. Delegate
 3. Chaos Experiment 
+4. Service Level Objectives
 
-You can set up rules to receive notifications based on specific events or conditions for each of these resource types.
+To receive notifications for specific events or conditions related to these resource types, you need to configure appropriate rules. While notifications can be set up for all the above resources, we will configure a centralised notification for Pipelines at a specific scope for now. 
 
-We are going to discuss about setting up notification via notification management for Pipeline at a given scope. 
-
-You can set up notification for Pipeline at following [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): **Account**, **Organization** and **Project Level**. 
+You can set up notification for Pipeline at following [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-sces): **Account**, **Organization** and **Project Level**. 
 
 ### **Account Level**
 
@@ -84,13 +83,23 @@ Under **Create Condition** provide, Condition Name and **Select Pipeline Events*
 
 ![](./static/set_channels.png)
 
-Under **Select Channel** you can chose the already created channel at that scope or you can create a [**New Channel**](/docs/platform/notifications/notification-settings.md).
+Under **Select Channel** you can choose the already created channel at that scope or you can create a [**New Channel**](/docs/platform/notifications/notification-settings.md).
 
-![](./static/select_channels.png)
+6.1. To configure a New Channel, click New Channel and enter a Channel Name.
+    
+        ![](./static/select_channels.png)
 
-Under **New Channel** provide **Channel Name** and select [**Channel Type**](/docs/platform/notifications/notification-settings#configure-pipeline-notifications).
+        Next, choose a Connectivity Mode—you can send notifications either directly through the Harness Platform or via a Harness Delegate.
 
-![](./static/create_new_channel.png)
+            ![connectivity-mode](./static/connectiviy-mode.png)
+
+        If you choose to send notifications through a Harness Delegate, select the appropriate delegate in the Delegate Setup window.
+
+            ![delegate-mode](./static/delegate-setup.png)
+
+        Once the connectivity mode is configured, select the [**Channel Type**](/docs/platform/notifications/notification-settings#configure-pipeline-notifications) to proceed.
+
+            ![](./static/create_new_channel.png)
 
 7. Select **Submit** to save your notification configuration.
 
