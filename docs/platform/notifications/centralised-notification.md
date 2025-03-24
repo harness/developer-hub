@@ -99,7 +99,7 @@ Under **Select Channel** you can choose the already created channel at that scop
 
         Once the connectivity mode is configured, select the [**Channel Type**](/docs/platform/notifications/notification-settings#configure-pipeline-notifications) to proceed.
 
-            ![](./static/create_new_channel.png)
+            ![](./static/create-new-channel.png)
 
 7. Select **Submit** to save your notification configuration.
 
