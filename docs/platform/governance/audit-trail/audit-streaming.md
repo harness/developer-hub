@@ -205,7 +205,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
 
   3. Verify the connection and click on Finish.
 
-    :::warning Warnings:
+    :::warning Troubleshoot a Sumo Logic Streaming destination
       
       - Verify that the correct HTTP Source Address is provided. If an incorrect address is entered, logs will not be streamed, and an error will appear in the Harness UI.
 
