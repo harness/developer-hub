@@ -60,7 +60,7 @@ Select JSON as your format to get a JSON editor for each of your treatments as f
 1. In the JSON editor, enter valid JSON into the editor. Basic JSONlinting is done and nested JSON objects are permitted.
 2. Click to expand or collapse when editing if you have a large JSON object entered as a configuration.
 
-The Split platform stringifies the entered JSON and provides it as a string to each of our SDKs when downloading feature flag plans.
+The Harness FME platform stringifies the entered JSON and provides it as a string to each of our SDKs when downloading feature flag plans.
 
 ## SDK usage and programmatic configuration updates
 
@@ -80,7 +80,7 @@ All the configurations that are configurable in our user interface are also edit
 
 ## Data validation and switching formats
 
-Split validates that the entered configs are valid JSON and won’t allow you to save until you have entered valid JSON.
+FME validates that the entered configs are valid JSON and won’t allow you to save until you have entered valid JSON.
 
 Additionally, you can switch between key-value and JSON editing when configuring your plan. However, if moving from JSON to Key-value pairs, make sure all keys and values in the JSON object are strings. Nested objects, arrays, numbers, or booleans aren’t accepted and the application prevents you from switching.
 

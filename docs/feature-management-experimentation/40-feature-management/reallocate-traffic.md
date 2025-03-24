@@ -11,7 +11,7 @@ sidebar_position: 16
 
 When targeting rules are defined for a feature flag, the rules are used to assign every customer to a treatment. This assignment is permanent until the targeting rules change. This permanence is useful because a customer should not see a different treatment in two back to back calls. 
 
-In some circumstances, it is useful to reassign customers to treatments without changing the targeting rules. This process is called *reallocate* in Split. Here is an example.
+In some circumstances, it is useful to reassign customers to treatments without changing the targeting rules. This process is called *reallocate* in FME. Here is an example.
 
 * Your team enables a particular treatment for 10% of customers.
 * During the release, a critical issue is found and the feature flag is immediately [killed](https://help.split.io/hc/en-us/articles/360020794271), sending all customers to the default treatment. 

@@ -64,7 +64,7 @@ In the [Dynamic configuration](https://help.split.io/hc/en-us/articles/360026943
 
 ## Setting up targeting
 
-Targeting defines how your feature flag will be evaluated for a given user ID (user key). You can add inidividual user IDs to your targeting rules.
+Targeting defines how your feature flag will be evaluated for a given user ID (user key). You can add individual user IDs to your targeting rules.
 
 :::important[Tip: Think outside the box for User IDs]
 You can target customers or users based on their user ID (user key). When evaluating a feature flag, you can use any string as a user ID.
@@ -131,7 +131,7 @@ Feature flag rules are evaluated in the following order:
 * The third evaluation is against the **targeting rules**. The conditions are structured as layered if/else statements and are meant to be human readable. They are evaluated in order and when a condition is met, the evaluation stops.
 * The fourth evaluation is against the **default rule**. The remaining traffic is allocated based on the distribution set in the default rule.
 
-<!-- add this to the help.split.io docs first
+<!-- can we add this text?
 
 ### Individual targets evaluation order
 

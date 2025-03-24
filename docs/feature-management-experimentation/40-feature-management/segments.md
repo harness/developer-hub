@@ -13,7 +13,7 @@ Segments are lists of user IDs that can you can create and share across your fea
 
 A segment is a pre-defined list of user IDs (user keys) that a feature flag can target. Segments can:
 
-* be created and edited in the Split UI by manually adding IDs or by importing a file containing one ID per line
+* be created and edited in Harness by manually adding IDs or by importing a file containing one ID per line
 * be created and edited via the Split API
 * [sync with any Amplitude Cohort](https://www.split.io/product/integrations/amplitude/)
 
@@ -29,7 +29,7 @@ These are a few examples of using segments to deploy safe and successful feature
 
 ## Segment types
 
-Split supports the following segment types:
+Harness FME supports the following segment types:
   * **Standard segments** - can contain up to 100,000 user IDs
   * **Large segments** - can contain up to 1,000,000 user IDs (may be increased upon request)
 
@@ -47,17 +47,17 @@ When you add user IDs to a segment, note that these are lists that need to be fu
 
 **Large segments** are created and managed differently than standard segments. A brief summary:
   * Creating and updating Large segments is done in _two steps_, including using Split API to upload a CSV file containing the segment's _full list_ of user IDs.
-  * In Split UI, you can search a Large segment for a given User ID, but the full list of user IDs in a Large segment cannot be displayed.
+  * In Harness FME, you can search a Large segment for a given User ID, but the full list of user IDs in a Large segment cannot be displayed.
 
 This article shows how to work with Standard segments and Large segments and explains the differences in detail.
 
-The segment type is displayed at the top of each Segment page in the Split UI, as shown below.
+The segment type is displayed at the top of each Segment page in Harness FME, as shown below.
 
 <p>
   <img src="https://help.split.io/hc/article_attachments/32099471950861" alt="create_a_segment_segment_type.png" width="450" />
 </p>
 
-In Split UI, you can filter the segments listed on the Segments pane by segment type.
+In Harness FME, you can filter the segments listed on the Segments pane by segment type.
 
 <p>
   <img src="https://help.split.io/hc/article_attachments/32099444683149" alt="create_a_segment_filter.png" width="250" />
@@ -97,7 +97,7 @@ You need to add a segment definition for a given environment (this creates an em
 
    <img src="https://help.split.io/hc/article_attachments/32099444676493" alt="create_a_segment_add_definition.png" width="800" />
 
-2. In the Environment dropdown, select a Split environment where the segment will be defined.
+2. In the Environment dropdown, select a Harness FME environment where the segment will be defined.
 
 3. Click **Add definition**. A new blank definition for the segment (for the selected environment) appears.
 
@@ -147,7 +147,7 @@ curl -XPUT -H 'Host: split-large-segments-....' \
 Replace `filename.csv` with the name of your CSV file.
 </p>
 
-4. Run the curl command from the location of your CSV file. You may need to wait a moment for the command to complete. During this time, the segment will show pending changes in the Split UI.
+4. Run the curl command from the location of your CSV file. You may need to wait a moment for the command to complete. During this time, the segment will show pending changes in Harness.
 
     <img src="https://help.split.io/hc/article_attachments/32099471949069" alt="create_a_segment_pending.png" width="1000" />
 

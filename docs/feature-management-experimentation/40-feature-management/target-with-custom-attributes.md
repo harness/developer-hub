@@ -15,19 +15,19 @@ With custom attributes, you can create dynamic targeted feature rollout plans us
 * Sensitive information (e.g., customer purchase size or customer status)
 
 :::tip
-Consider using [segments](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) (instead of attributes) if the users in a segment would not change multiple times in a day or the grouping of users needs to be standardized across your Split account (e.g., key accounts, internal or outsourced QA teams, or company employees).
+Consider using [segments](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) (instead of attributes) if the users in a segment would not change multiple times in a day or the grouping of users needs to be standardized across your Harness account (e.g., key accounts, internal or outsourced QA teams, or company employees).
 :::
 
 ## Creating custom attributes
 
-This section explains how to create attributes and how to use them to define feature flag targeting rules in the Split UI. You can choose to define custom attributes [within feature flag targeting rules](#creating-custom-attributes-within-feature-flag-targeting-rules), [in Admin Settings](#creating-custom-attributes-in-admin-settings), or [using the Split API](#creating-custom-attributes-or-writing-custom-attribute-values-using-api-endpoints).
+This section explains how to create attributes and how to use them to define feature flag targeting rules in Harness FME. You can choose to define custom attributes [within feature flag targeting rules](#creating-custom-attributes-within-feature-flag-targeting-rules), [in Admin Settings](#creating-custom-attributes-in-admin-settings), or [using the Split API](#creating-custom-attributes-or-writing-custom-attribute-values-using-api-endpoints).
 
 :::tip
- _The attributes you create [in Admin Settings](#creating-custom-attributes-in-admin-settings) or [using the Split API](#creating-custom-attributes-or-writing-custom-attribute-values-using-api-endpoints)_ will be shown in the Split UI as **User Attributes** in your attribute-based targeting rules (on a feature flag's Definition tab, in the **IF** dropdown menu). This _standardization_ of attributes can help reduce the number of mismatches between attribute keys in code and attribute keys in targeting rules. _Attributes created [within attribute-based feature flag targeting rules](#creating-custom-attributes-within-feature-flag-targeting-rules)_ will not be shown as User Attributes in the Split UI.
+ _The attributes you create [in Admin Settings](#creating-custom-attributes-in-admin-settings) or [using the Split API](#creating-custom-attributes-or-writing-custom-attribute-values-using-api-endpoints)_ will be shown in Harness FME as **User Attributes** in your attribute-based targeting rules (on a feature flag's Definition tab, in the **IF** dropdown menu). This _standardization_ of attributes can help reduce the number of mismatches between attribute keys in code and attribute keys in targeting rules. _Attributes created [within attribute-based feature flag targeting rules](#creating-custom-attributes-within-feature-flag-targeting-rules)_ will not be shown as User Attributes in Harness.
 :::
 
 :::note
-This article refers to the **IF** dropdown menu in a feature flag’s attribute based targeting rules as having the labels **User** and **User Attributes**, but these labels vary based on the traffic type chosen for the feature flag. For example, if a traffic type is exists in your project named ‘account’ and you select this traffic type when creating a new feature flag, then the **IF** dropdown menu in The Split UI would show **Account** and **Account Attributes** section labels.
+This article refers to the **IF** dropdown menu in a feature flag’s attribute based targeting rules as having the labels **User** and **User Attributes**, but these labels vary based on the traffic type chosen for the feature flag. For example, if a traffic type is exists in your project named ‘account’ and you select this traffic type when creating a new feature flag, then the **IF** dropdown menu in Harness would show **Account** and **Account Attributes** section labels.
 :::
 
 :::tip[Tip for developers]
@@ -40,7 +40,7 @@ To see how to pass attributes with feature flag evaluation requests in your code
 
 You can freely create attributes within attribute-based targeting rules on the feature flag’s Definition tab. (The attributes that you define in directly within a feature flag’s targeting rules become part of the feature flag definition, but are _not associated with a project and traffic type_.)
 
-The steps to create a custom attribute in the Split UI within a feature flag attribute-based targeting rule, are described in the [Using custom attributes in feature flag targeting](#using-custom-attributes-in-feature-flag-targeting) section below.
+The steps to create a custom attribute in Harness FME within a feature flag attribute-based targeting rule, are described in the [Using custom attributes in feature flag targeting](#using-custom-attributes-in-feature-flag-targeting) section below.
 
 :::info[SemVer attributes]
 To work with SemVer attributes, first create a new custom attribute within a feature flag's attribute-based targeting rule, and select a SemVer matcher. See the _[Using custom attributes in feature flag targeting](#using-custom-attributes-in-feature-flag-targeting)_ section, step 2.
@@ -56,9 +56,9 @@ You can create attributes individually or create multiple attributes using a CSV
 
 To create a custom attribute that will appear as a User Attribute in your feature flag targeting rules:
 
-1. In the Split UI, click your initials at the bottom of the left navigation panel and click **Admin settings**. The Projects page appears.
+1. In Harness FME, click your initials at the bottom of the left navigation panel and click **Admin settings**. The Projects page appears.
 2. Click to **View** the desired project and click the Traffic types tab.
-3. Click to **View/Edit attributes** for a traffic type. (Your feature flags defined with this same traffic type will show the custom attributes in their attribute-based targeting rules in the Split UI.) The Attributes page appears.
+3. Click to **View/Edit attributes** for a traffic type. (Your feature flags defined with this same traffic type will show the custom attributes in their attribute-based targeting rules in Harness FME.) The Attributes page appears.
 4. Click the **Actions** button and select **Create an attribute**. The Create Attribute panel appears.
 5. In the ID field, enter a key identifier for the attribute (e.g., purchase_amt). This will be used in your feature flag targeting rules and in your source code as the attribute key.
 
@@ -72,7 +72,7 @@ To create a custom attribute that will appear as a User Attribute in your featur
    :::
 1. In the Name field, enter a descriptive name (e.g., Amount in customer’s cart at checkout).
 2. In the Description field, optionally enter a description of the attribute.
-3. In the Type dropdown, select an attribute value type (e.g., String to represent text values, Boolean to represent true or false values, etc.). Note that SemVer attributes should not be created as type String in Admin settings. Doing so will prevent you from choosing the SemVer matcher type in the Split UI. Instead, create a new custom attribute within a feature flag's attribute-based targeting rule.
+3. In the Type dropdown, select an attribute value type (e.g., String to represent text values, Boolean to represent true or false values, etc.). Note that SemVer attributes should not be created as type String in Admin settings. Doing so will prevent you from choosing the SemVer matcher type in Harness FME. Instead, create a new custom attribute within a feature flag's attribute-based targeting rule.
 
    :::tip
    When you select the String attribute type, you can create a list of suggested values to match against in your attribute based targeting rules.
@@ -90,16 +90,16 @@ You can create multiple custom attributes by performing a bulk upload of custom 
 
 To create multiple custom attributes that will appear as User Attributes in your feature flag targeting rules:
 
-1. In the Split UI, click your initials at the bottom of the left navigation panel and click **Admin settings**. The Projects page appears.
+1. In Harness FME, click your initials at the bottom of the left navigation panel and click **Admin settings**. The Projects page appears.
 2. Click to **View** the desired project and click the Traffic types tab.
-3. Click to **View/Edit attributes** for a traffic type. (Your feature flags defined with this same traffic type will show the custom attributes in their attribute-based targeting rules in the Split UI.) The Attributes page appears.
+3. Click to **View/Edit attributes** for a traffic type. (Your feature flags defined with this same traffic type will show the custom attributes in their attribute-based targeting rules in Harness FME.) The Attributes page appears.
 4. Click the **Actions** button and select **Create multiple attributes**. The Create multiple attributes page appears.
 5. Import your CSV file by dragging and dropping into the Import CSV drop target field or by clicking the file upload link. The CSV file must consist of lines of comma-separated values. The first line should be the heading values `ID, Name, Description, Type, SuggestedValues`. Each following line provides values for a custom attribute, as follows:
    * ID - A unique identifier for the attribute that will be displayed in targeting rules and used in code. The attribute ID cannot be changed after an attribute is created.
    * Attribute name - A descriptive name for the attribute.
    * Description - A description for the attribute.
    * Type - Possible types are `String`, `Number`, `Boolean`, `DateTime`, or `Set`. SemVer is not currently supported.
-   * SuggestedValues (only used with String attributes) - Suggested values must be a double-quoted value or list of values. You can define up to 100 suggested values, each up to 50 characters long. (In the Split UI, attribute suggested values will appear in feature flag attribute-based targeting rules in the attribute value field.)
+   * SuggestedValues (only used with String attributes) - Suggested values must be a double-quoted value or list of values. You can define up to 100 suggested values, each up to 50 characters long. (In Harness FME, attribute suggested values will appear in feature flag attribute-based targeting rules in the attribute value field.)
 
    For example, a file named "attributes sample.csv" with the following content could be used for creating multiple custom attributes:
    ```
@@ -120,13 +120,13 @@ You can create custom attributes for use in feature flag targeting rules by usin
 __[Save attribute](https://docs.split.io/reference/save-attribute):__ Create or overwrite a custom attribute associated with a project and traffic type.
 __[Save identity](https://docs.split.io/reference/save-identity):__ Create or overwrite a single user ID object (and its custom attribute values).
 
-As with attributes [created in Admin settings](#creating-custom-attributes-in-admin-settings), the attributes created using the Split API will will be associated with a project and traffic type and will appear as **User Attributes** in the Split UI.
+As with attributes [created in Admin settings](#creating-custom-attributes-in-admin-settings), the attributes created using the Split API will will be associated with a project and traffic type and will appear as **User Attributes** in Harness FME.
 
 ## Using custom attributes in feature flag targeting
 
 After you [create a feature flag](https://help.split.io/hc/en-us/articles/9058495582349-Create-a-feature-flag) you can **use** (and also **create**) custom attributes in your [targeting rules](https://help.split.io/hc/en-us/articles/360020791591-Targeting-customers). To add an attribute-based targeting rule to a feature flag:
 
-1. In the Split UI, on the Definition tab of a feature flag, in the Targeting rules area, click the **Add attribute based targeting rules** button. The **IF** field/dropdown menu appears.
+1. In Harness FME, on the Definition tab of a feature flag, in the Targeting rules area, click the **Add attribute based targeting rules** button. The **IF** field/dropdown menu appears.
 
     <p>
      <img src="https://help.split.io/hc/article_attachments/30742702211469" alt="target_with_custom_attributes_using_custom_attributes_01.png" width="1000" />
@@ -212,10 +212,10 @@ If the value provided for plan_type is an int instead of a string, then the matc
 
 ## Custom attribute types and matchers
 
-This section describes attribute matchers (comparison operators) that are available in the Split UI when you are creating attribute-based feature flag targeting rules. You can use this information to help you plan your dynamic targeted feature rollout plans using custom attributes.
+This section describes attribute matchers (comparison operators) that are available in Harness FME when you are creating attribute-based feature flag targeting rules. You can use this information to help you plan your dynamic targeted feature rollout plans using custom attributes.
 
 :::tip
- In the Split UI, on a feature flag's Definition tab, the **IF** dropdown menu is also an input field. In the **IF** dropdown field you can:
+ In Harness FME, on a feature flag's Definition tab, the **IF** dropdown menu is also an input field. In the **IF** dropdown field you can:
 * ___Enter a new attribute ID.__ When you enter a new custom attribute ID, the **Select matcher** dropdown menu will show **_all of the attribute matchers_**. 
 
 * ___Select a User Attribute.___ When you select an existing User Attribute, the **Select matcher** dropdown menu will show **_a subset of matchers based on the selected attribute type_**. _Note that the '**User Attributes**' label contains the traffic type name (selected when the feature flag was created), so another traffic type name may be shown instead of '**User**'._
@@ -265,7 +265,7 @@ For example, use an attribute 'os_version' of type SemVer to give users that hav
 :::
 
 :::info[SemVer attributes and SDK compatibility]
-See [this page](https://help.split.io/hc/en-us/articles/27337626547341-Does-my-SDK-version-support-SemVer) to verify compatibility of Split SDK or Spit optional infrastructure. For older SDK versions that do not support SemVer, the `control` treatment will be returned and a special impression will be created. See the _[Control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment)_ help page for more information.
+See [this page](https://help.split.io/hc/en-us/articles/27337626547341-Does-my-SDK-version-support-SemVer) to verify compatibility of FME SDK or Split optional infrastructure. For older SDK versions that do not support SemVer, the `control` treatment will be returned and a special impression will be created. See the _[Control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment)_ help page for more information.
 :::
 
 ### Set attributes
@@ -297,7 +297,7 @@ For example, use an attribute 'orders_last_quarter' of type Number to provide a 
 
 ### DateTime attributes
 
-DateTime attributes store a date and optional time. In your source code, set the values of DateTime attributes in **_milliseconds since epoch_** or **_seconds since epoch_**, depending on the Split SDK you are using.
+DateTime attributes store a date and optional time. In your source code, set the values of DateTime attributes in **_milliseconds since epoch_** or **_seconds since epoch_**, depending on the FME SDK you are using.
 
 The following comparisons can be used with DateTime attributes:
 

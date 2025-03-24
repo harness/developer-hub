@@ -24,7 +24,7 @@ Each impression contains these fields.
 | Key | Key which was evaluated. |
 | Label | Targeting rule in the definition that matched resulting in the treatment being returned. |
 | Machine IP and name <br /> (only for Server-side SDKs) | Machine making the feature flag evaluation. |
-| Reception timestamp | Time the impression was received by Split. |
+| Reception timestamp | Time the impression was received by FME. |
 | SDK and version | Language and version of the SDK that was used in the evaluation. |
 | Split name | Feature flag which was evaluated. |
 | Split version number | Date and time of the last change to the targeting rule that the SDK used when it served the treatment. Valuable in understanding when a change made to a feature flag got picked up by the SDKs and whether one of the SDK instances is not picking up changes. |
@@ -32,17 +32,17 @@ Each impression contains these fields.
 | Traffic type ID and name | Traffic type associated to the feature flag evaluated. |
 | Treatment | Treatment that was returned. |
 
-## Visualize in Split
+## Visualize in Harness
 
-Impressions are tracked by each SDK and sent to Split's backend services periodically. You may view incoming impressions in [Live tail](https://help.split.io/hc/en-us/articles/360044867032-Live-tail) within a feature flag's page or the Data hub, and export them based on query criteria in the Data hub's [Data export tab](https://help.split.io/hc/en-us/articles/360048120112-Export-data). If you do not see impressions arriving in Split, ensure that your SDK is installed and functioning as expected. Tips for this are included in the [Live tail](https://help.split.io/hc/en-us/articles/360044867032-Live-tail) article. Contact us at [support@split.io](mailto:support@split.io) if you have any issues.
+Impressions are tracked by each SDK and sent to Harness backend services periodically. You may view incoming impressions in [Live tail](https://help.split.io/hc/en-us/articles/360044867032-Live-tail) within a feature flag's page or the Data hub, and export them based on query criteria in the Data hub's [Data export tab](https://help.split.io/hc/en-us/articles/360048120112-Export-data). If you do not see impressions arriving in Harness, ensure that your SDK is installed and functioning as expected. Tips for this are included in the [Live tail](https://help.split.io/hc/en-us/articles/360044867032-Live-tail) article. Contact us at [support@split.io](mailto:support@split.io) if you have any issues.
 
 :::important
-Split retains impression data for 90 days. Contact the team at Split to learn more.
+Harness retains impression data for 90 days. Contact the team at Harness FME to learn more.
 :::
 
 ## Targeting rule label
  
-Targeting rules can be robust within Split. For example, the following is a feature flag with two rules:
+Targeting rules can be robust within FME. For example, the following is a feature flag with two rules:
 
 ```
 if user is in segment employees then split 100%:on,0%:off else
@@ -69,13 +69,13 @@ If your impression tables are showing *not available*, consider upgrading your S
 
 ## Data security
  
-*Labels* do not capture identifiable information about your customers. However, if you do not want the Split SDK to capture or send the label back to Split servers, set `labelsEnabled ` to `false` in the SDK advanced configuration.
+*Labels* do not capture identifiable information about your customers. However, if you do not want the FME SDK to capture or send the label back to Harness servers, set `labelsEnabled ` to `false` in the SDK advanced configuration.
 
-Additionally, if you don’t want to send a customer UUID to Split as the key, you can hash that ID prior to calling getTreatment. If you decide to hash the ID, be sure to use a deterministic algorithm that results in the same hash value each time. In addition, if it’s important to identify the treatment received by specific users, you must have your own method to be able to associate the hashed value with the actual user ID.
+Additionally, if you don’t want to send a customer UUID to Harness as the key, you can hash that ID prior to calling getTreatment. If you decide to hash the ID, be sure to use a deterministic algorithm that results in the same hash value each time. In addition, if it’s important to identify the treatment received by specific users, you must have your own method to be able to associate the hashed value with the actual user ID.
 
 ## Integrations for impression data
 
-Use our integrations to push Split feature flag impression data to your existing platforms or your data warehouse for a comprehensive view of user engagement and other key use metrics. Integration documentation is available for the following:
+Use our integrations to push FME feature flag impression data to your existing platforms or your data warehouse for a comprehensive view of user engagement and other key use metrics. Integration documentation is available for the following:
 - [Amazon S3](https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3)
 - [Amplitude](https://help.split.io/hc/en-us/articles/360046658932-Amplitude)
 - [Full Story](https://help.split.io/hc/en-us/articles/360045937831-FullStory)

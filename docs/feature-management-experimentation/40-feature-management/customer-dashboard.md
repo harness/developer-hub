@@ -25,4 +25,4 @@ The second tab shows the segments that a particular user belongs to or if that u
 
 ## Attributes
 
-The third tab shows the users's attribute data which is populated from the attribute data you send using Split's API. Learn more about [identifying customers](https://help.split.io/hc/en-us/articles/360020529772-Identifying-customers). 
+The third tab shows the users's attribute data which is populated from the attribute data you send using Split API. Learn more about [identifying customers](https://help.split.io/hc/en-us/articles/360020529772-Identifying-customers). 

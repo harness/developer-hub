@@ -15,7 +15,7 @@ Once you create a feature flag, you can [create feature flag targeting rules](/d
 
 This article shows how to target Standard segments and Large segments in your individual targeting rules and in attribute based targeting rules.
 
-___Tip:___ If you don't see a segment appear when you type its name in the segment input field, it may be that the segment is not [defined](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment#adding-user-ids-to-a-segment) for the given Split environment.
+___Tip:___ If you don't see a segment appear when you type its name in the segment input field, it may be that the segment is not [defined](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment#adding-user-ids-to-a-segment) for the given FME environment.
 
 :::warning[Server-side SDK support for Large segments]
 Server-side SDKs do not yet support Large segments, but soon will. Until they are supported, evaluations of feature flags that target Large segments will return `control` on server-side SDKs. 
