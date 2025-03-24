@@ -43,6 +43,8 @@ The following CCM features are supported with external cost data:
 
 ✅ Cost Categories
 
+✅ Dashboards
+
 **Coming Soon: Anomalies, Audit Trails, Granular RBAC, and more in future releases.**
 
 ## Steps to add External Cost Data Sources
@@ -81,7 +83,7 @@ A: After upload, when we click on finish, the ingestion gets triggered right awa
 
 Q: What all features supported on external cost data ?
 
-A: Perspectives, Budgets, CostCategories are only supported features in this release. We will add more support in future releases. Anomaly,  Granular RBAC, Audit Trail etc. are some of those.
+A: Perspectives, Budgets, CostCategories, Dashboards are only supported features in this release. We will add more support in future releases. Anomaly,  Granular RBAC, Audit Trail etc. are some of those.
 
 Q: What is the time to value ?
 
