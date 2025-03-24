@@ -10,7 +10,25 @@ import TabItem from '@theme/TabItem';
 This guide explains how to configure and review security scanners in your Harness Artifact Registry.
 
 :::info Default Project-Level Scanner
-The security scanner pipeline operates against the default project associated with your registry. While the registry can exist at the Account or Organization level, the scanner will still run within the context of the default project.
+The security scanner pipeline operates within a default project context, regardless of the registry's scope level (Account, Organization, or Project). This section explains the project requirements for each registry scope.
+
+### Project-Level Registry
+When a registry is created at the project level, the scanner pipeline automatically runs in the same project. No additional configuration is required.
+
+### Organization-Level Registry
+For registries created at the organization level:
+1. Create a project named `default_project` within the organization that contains the registry
+2. The scanner pipeline will automatically use this project for scanning operations
+
+**Example:**
+- Registry in organization "default" → Create `default_project` in "default" organization
+- Registry in organization "custom_org" → Create `default_project` in "custom_org" organization
+
+### Account-Level Registry
+For registries created at the account level:
+1. Locate the "default" organization (automatically created with your account)
+2. Create a project named `default_project` within the "default" organization
+3. The scanner pipeline will use this project for all account-level registry scans
 :::
 
 ## Configuring Security Scanners
