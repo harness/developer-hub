@@ -14,6 +14,25 @@ Harness provides a standard CSV-based ingestion format, called FOCUS, which allo
 Note: This feature is currently in early access and behind  `CCM_EXTERNAL_DATA_INGESTION` feature flag. Please reach out to our support team to enable it.
 :::
 
+## Why Use External Cost Data Ingestion?
+
+Organizations today operate in increasingly complex environments where teams also rely on:
+
+- SaaS services
+- Cloud resellers or channel partners
+- Hybrid infrastructure vendors, etc.
+
+These external vendors often provide cost and usage data outside of traditional cloud billing APIs, typically in formats like CSVs, PDFs, or through emailed invoices. Without a native integration or ingestion capability, cost data from these vendors becomes hard to manage making it hard to get a complete view of the total cloud + third-party spend, allocate external costs back to teams, include vendor costs in budgeting, reporting, and forecasting, etc.
+
+Without a centralized way to ingest and normalize this data, teams are forced to rely on manual spreadsheets, inaccurate or incomplete reports, which leads to delayed insights. 
+
+External Cost Data Ingestion in Harness CCM solves this by allowing users to upload cost data in a standardized CSV format (FOCUS). Once ingested, Harness treats this data just like native cloud costs enabling you to:
+
+- Analyze external spend with Perspectives
+- Set Budgets and Alerts on vendor costs
+- Organize costs by projects, environments, or cost categories
+- Visualize insights quickly (time to value is typically under 10 minutes)
+
 ### Supported Features
 
 The following CCM features are supported with external cost data:
