@@ -22,6 +22,9 @@ spec:
             # provide the connection type
             - name: SERVICE_DIRECTION
               value: 'ingress'
+            # provide the payload type
+            - name: DATA_DIRECTION
+              value: 'request'
             # provide the network interface
             - name: NETWORK_INTERFACE
               value: 'eth0'
