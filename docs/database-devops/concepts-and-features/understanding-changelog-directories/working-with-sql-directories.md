@@ -8,6 +8,10 @@ sidebar_position: 2
 
 This guide explains how to effectively manage SQL file directories. A well-organized SQL file directory structure is crucial for maintaining database changes
 
+:::tip
+Consider this as an example implementation of our changelog directory structure. For more detailed information about different directory organization patterns and best practices, refer to [Changelog Directory Structure](./changelog-directories-structure.md).
+:::
+
 ## SQL File Directory Organization
 
 A well-organized SQL file directory structure is crucial for maintaining database changes. Here's a recommended structure:
