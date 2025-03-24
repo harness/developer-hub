@@ -113,7 +113,7 @@ The following deprecated API endpoints are longer supported:
 - Fixed the Service Account API to support both `filterType` as `INCLUDE_INHERITED_SERVICE_ACCOUNTS` and a search term with a specified value. [PL-60938]
 
 #### New features and enhancements
-- Starting March 24, 2025, Harness will transition to Google Artifact Registry (GAR) as the default public registry. All Harness container images will be pulled from GAR by default, as Docker Hub will enforce stricter limits on public image pulls starting April 1, 2025. [PL-60930]
+- Starting April 01, 2025, Harness will transition to Google Artifact Registry (GAR) as the default public registry. All Harness container images will be pulled from GAR by default, as Docker Hub will enforce stricter limits on public image pulls starting April 01, 2025. [PL-60930]
 
 
 ### Version 1.80.x <!--March 10, 2025-->
