@@ -24,8 +24,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### New features and enhancements
 
 - External Cost Data Ingestion: Harness Cloud Cost Management now supports External Cost Data Ingestion, enabling you to bring in cost data from third-party vendors such as MongoDB and Snowflake using a standardized CSV format.
+Key Capabilities:
 
-**Key Capabilities:**
 - Ingest and analyze external costs using Perspectives, Budgets, and Cost Categories
 - Automatically generate default views post-ingestion for faster time to value (under 10 minutes)
 - Support for FOCUS-formatted CSV files (20MB max per file)
