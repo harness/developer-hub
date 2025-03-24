@@ -30,7 +30,7 @@ You'll learn how to:
 
 * Install a Harness GitOps Agent in your target cluster. You can skip this if you are using [Hosted GitOps](/docs/continuous-delivery/gitops/connect-and-manage/hosted-gitops).
 * Set up a Harness GitOps Cluster to points to the target cluster.
-* Set up a Harness GitOps Repository that points to the source  repo.
+* Set up a Harness GitOps Repository that points to the source manifest repo.
 * Set up a Harness GitOps Application that collects the Agent Cluster, and Repository, and defines the sync policy for GitOps.
 * Perform GitOps using your Harness GitOps Application.
 
