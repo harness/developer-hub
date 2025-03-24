@@ -42,7 +42,7 @@ In summary, Database DevOps is vital to the Harness Delegate as it enhances the 
 ## Communication Protocol between Services and Customer Infra
 
 
-   ![Harness DB DevOps architecture diagram](./static/etailed-architectural-diagram.png)
+   ![Harness DB DevOps architecture diagram](./static/detailed-architectural-diagram.png)
 
 
 ## Understanding How Secrets are Passed to Build Pods
