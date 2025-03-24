@@ -85,7 +85,7 @@ static/  @rohanmaharjan100 @wei-harness
 
 # CCM Docs
 /docs/cloud-cost-management/ @Rohit-Kaliki @joeyouss @iamanmolm @sdsingh07 @sandyydk @abhinavsingh-ccm @riyasyash
-/release-notes/cloud-cost-management.md @Rohit-Kaliki @joeyouss
+/release-notes/cloud-cost-management.md @Rohit-Kaliki @joeyouss @himanshu-jain-harness @suryanarayanan-venkatesan
 /src/components/Roadmap/data/ccmData.ts @Rohit-Kaliki @joeyouss @rajarshee-harness
 /src/components/Docs/data/cloudCostManagementData.ts @Rohit-Kaliki @joeyouss @rajarshee-harness
 
