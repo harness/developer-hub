@@ -134,13 +134,13 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/faqs/self-managed-ee-faq/ @pratmit @abhishekharness @ivikramsahu
 
 # Pipeline Docs
-/docs/platform/pipelines/ @krishi0408 @vishal-av @SudarshanPurohit
-/docs/platform/git-experience/ @krishi0408 @vishal-av @prasadsatamharness
-/docs/platform/templates/ @krishi0408 @vishal-av @SudarshanPurohit
-/docs/platform/variables-and-expressions/ @krishi0408 @vishal-av @SudarshanPurohit
-/docs/platform/triggers/ @krishi0408 @vishal-av @SudarshanPurohit
-/docs/platform/approvals/ @krishi0408 @vishal-av 
-/docs/platform/connectors/ @krishi0408 @vishal-av
+/docs/platform/pipelines/ @krishi0408 @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
+/docs/platform/git-experience/ @krishi0408 @vishal-av @prasadsatamharness @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
+/docs/platform/templates/ @krishi0408 @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
+/docs/platform/variables-and-expressions/ @krishi0408 @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
+/docs/platform/triggers/ @krishi0408 @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
+/docs/platform/approvals/ @krishi0408 @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
+/docs/platform/connectors/ @krishi0408 @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneethoh
 
 # IDP Docs
 /docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness
