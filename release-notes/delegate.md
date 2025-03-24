@@ -94,20 +94,10 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 #### Hotfix
 
 - Fixed the slot deployment timeout issue in azure deployments [CDS-108129]
-
-### Version 25.02.85304 <!--  March 13, 2025 -->
-
-#### Hotfix
-
+  
 - Fixed the runtime input regex filtering for ECR artifacts [CDS-106566]
 
-
-### Version 25.02.85303 <!--  March 07, 2025 -->
-
-#### Hotfix
-
 - Fix the aws library upgrade issue for AWS serverless lambda deployment [CDS-107585]
-
 
 ## February 2025
 
