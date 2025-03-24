@@ -207,7 +207,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
 
     :::warning Warnings:
       
-      - HTTP Source Address: There is no validation for the HTTP Source Address when creating a streaming destination. If an incorrect address is provided, logs will not be sent, and an error will appear in the Harness UI. Ensure that the correct HTTP Source Address is used.
+      - Verify that the correct HTTP Source Address is provided. If an incorrect address is entered, logs will not be streamed, and an error will appear in the Harness UI.
 
       - Access Credentials: If an invalid Access ID/Key is used or the key lacks necessary permissions, Sumo Logic does not display an error. Ensure that the access keys are valid and have the required permissions.
     :::
