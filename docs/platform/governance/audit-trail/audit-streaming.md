@@ -209,7 +209,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
       
       - Verify that the correct HTTP Source Address is provided. If an incorrect address is entered, logs will not be streamed, and an error will appear in the Harness UI.
 
-      - Access Credentials: If an invalid Access ID/Key is used or the key lacks necessary permissions, Sumo Logic does not display an error. Ensure that the access keys are valid and have the required permissions.
+      - Ensure that the access keys are valid and have the required permissions. If an invalid Access ID or Access Key is provided, or if the key does not have the required permissions, Sumo Logic will not generate an error message, and you will not see any error shown in the Harness UI.
     :::
 
 </TabItem>
