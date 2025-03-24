@@ -30,7 +30,7 @@ You'll learn how to:
 
 * Install a Harness GitOps Agent in your target cluster. You can skip this if you are using [Hosted GitOps](/docs/continuous-delivery/gitops/connect-and-manage/hosted-gitops).
 * Set up a Harness GitOps Cluster to points to the target cluster.
-* Set up a Harness GitOps Repository that points to the source manifest repo.
+* Set up a Harness GitOps Repository that points to the source  repo.
 * Set up a Harness GitOps Application that collects the Agent Cluster, and Repository, and defines the sync policy for GitOps.
 * Perform GitOps using your Harness GitOps Application.
 
@@ -38,8 +38,8 @@ For a quick summary of Harness GitOps concepts, see [Harness GitOps Basics](/doc
 
 ## Before you begin
 
-* (Optional) **GitHub and DockerHub account:** this example uses a publicly available manifest in GitHub and a public Docker image. You will be using anonymous credentials for connection, but you can use your own credentials if you like.  
-We'll be using public manifests from [https://github.com/argoproj/argocd-example-apps](https://github.com/argoproj/argocd-example-apps).
+* (Optional) **GitHub and DockerHub account:** this example uses a publicly available  in GitHub and a public Docker image. You will be using anonymous credentials for connection, but you can use your own credentials if you like.  
+We'll be using public s from [https://github.com/argoproj/argocd-example-apps](https://github.com/argoproj/argocd-example-apps).
 * **Target Kubernetes cluster:** you can use a cluster in any cloud platform. Harness makes a platform-agnostic connection to the cluster.
 
 * **Set up your Kubernetes Cluster:** you'll need a target Kubernetes cluster for the Harness GitOps Agent and deployment. Ensure your cluster meets the following requirements:
@@ -96,7 +96,7 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 8. Set **Namespace** to the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment. For this example, we use **default**.
 9. Select **Continue**. The **Review YAML** settings appear.
     
-    This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster. 
+    This is the  YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster. 
 10. Switch the configuration type from **Helm Chart** to **YAML** and select **Download YAML**. You can also review the contents of the YAML by clicking the arrow next to **gitops-agent.yml**.
 11. Open a terminal and navigate to the folder where you downloaded the YAML file.
 12. In the same terminal, log into the Kubernetes cluster where you want to install the Agent.
@@ -497,6 +497,10 @@ You can also initiate a Sync or Refresh from the main GitOps page.
 
 - **Refresh** will pull the latest commit from Git and display whether the current Sync State is **Synced** or **Out of Sync**. It does not sync with the live cluster state. You can Refresh, then use App Diff to view the diff between the desired Git state with the live cluster state.
 - **Sync** will sync the desired Git state with the live cluster state.
+
+:::info note
+We currently do not support using [Harness expressions](/docs/platform/variables-and-expressions/harness-expressions-reference) in GitOps manifests.
+:::
 
 ## Application filters
 
