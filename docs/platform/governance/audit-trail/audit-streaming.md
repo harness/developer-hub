@@ -181,7 +181,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
 
   1. Follow the steps above to [Add a streaming destination](#add-a-streaming-destination).
       
-  2. Select **Sumo Logic** Connector.
+  2. Select **Sumo Logic**.
   
   3. In **Select Connector**, select an existing connector or create a new one. For now, let's add a new connector.  
 
