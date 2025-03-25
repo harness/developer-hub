@@ -91,6 +91,8 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 25.03.85403 <!-- March 25, 2025 -->
 
+#### Fixed issues
+
 - Fixed the repository check during the test connection for GitHub App-based connectors. Now, connectors with an invalid repository will not pass the test connection. Only valid repositories will be accepted. [PIPE-24905]
 
 - Fixed an issue where GCP credential configurations could fail to process correctly in certain scenarios. [CDS-107114]
@@ -99,11 +101,15 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Added support for regex patterns in ECR artifact sources. [CDS-106566]
 
+- Upgraded the S3 library from version **1.12.725** to **1.12.780**. [CDS-107585]
+
 - Improved the file extraction process to preserve file permissions and symlinks. Previously, these attributes were not retained. This change is controlled by the Feature Flag: `CDS_TAS_ARTIFACT_BUNDLE_PRESERVE_PERMISSION_ON_EXTRACTION`. [CDS-106309]
 
 - Fixed an issue where the load balancer’s forward stickiness configuration was being reset during ECS Blue-Green deployments. Now, all stickiness settings remain unchanged. [CDS-99881]
 
 - Updated the error message for Google Cloud Function deployments that fail to reach a steady state. The message now reads: "Function couldn’t achieve steady state." instead of the previous wording. [CDS-102219]
+
+#### New features and improvements
 
 - Updated tags in AWS Lambda and ECS deployments based on the provided configuration. [CDS-97430]
 
