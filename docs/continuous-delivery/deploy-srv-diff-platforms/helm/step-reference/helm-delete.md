@@ -52,7 +52,7 @@ Currently, this feature is behind the feature flag `CDS_HELM_DELETE_STEP`. Conta
 
 - **Release Name**: The name of the Helm release to be deleted. You can specify this manually or leave it blank to automatically retrieve the release name from the selected infrastructure.
 
-  * When the **Helm Delete Step** is used in a **Deploy stage**, the release name can be fetched from the associated **service configuration**.  
+  * When the **Helm Delete Step** is used in a **Deploy stage**, the release name can be fetched from the selected **service and infrastructure configuration**.  
   * If used in a **Custom stage**, you must manually provide the release name, as there is no service context available in that stage.
 
   The release name supports **Runtime input** and **expressions**.
