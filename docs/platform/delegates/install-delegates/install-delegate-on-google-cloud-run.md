@@ -35,67 +35,66 @@ This guide provides step-by-step instructions to configure a Harness Delegate on
 
 To configure a delegate on Google Cloud Run:  
 
-    1. Log in to your [Harness account](https://app.harness.io/).  
-
-    2. Navigate to Account Settings → Account-level Resources → Delegate.  
-
-    3. Click **New Delegate** to access the installation steps as show below:
-
-        ```bash
-            docker run --cpus=1 --memory=2g \
-            -e DELEGATE_NAME=docker-delegate-demo \
-            -e NEXT_GEN="true" \
-            -e DELEGATE_TYPE="DOCKER" \
-            -e ACCOUNT_ID=gVcEXXXXXXXXA3JqA \
-            -e DELEGATE_TOKEN=ZmY5MXXXXBlMTIwOXXXXXXXQ2Zjc1NjI4MDQ= \
-            -e DELEGATE_TAGS="" \
-            -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis 24.10.84107
-        ```
-
-            Save the installation details for later use.
-
-    4. Login to your [Google Cloud Run](https://console.cloud.google.com/run), Select an existing project or create a new one as needed.
+    1. Login to [Google Cloud Run](https://console.cloud.google.com/run), Select an existing project or create a new one as needed.
  
         - Check for Deploy container → Service as shown below:
 
            ![deploy-container](./static/deploy-container.gif)
         
-    5. To create a service and get your delegate up and running, follow these steps.
+    2. To create a service, follow these steps:
 
-        5.1. Add your Container Image URL. You can select it from [Artifact Registry](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Fdelegate) or provide a [Docker Hub Image URL](https://hub.docker.com/r/harness/delegate/tags).
+        2.1. Add Container Image URL. You can select it from [Artifact Registry](https://console.cloud.google.com/artifacts/docker/gar-prod-setup/us/harness-public/harness%2Fdelegate) or provide a [Docker Hub Image URL](https://hub.docker.com/r/harness/delegate/tags).
         
             <img src={DeployContainer} width="600"/>
 
-        5.2. To configure the service, enter a name, select a region, choose a billing method (request-based or instance-based), and set up scaling. You can configure Auto Scaling by setting the minimum number of instances based on your requirements or switch to Manual Scaling. 
+        2.2. To configure a service, enter a name, select a region, choose a billing method (request-based or instance-based), and set up scaling. You can configure Auto Scaling by setting the minimum number of instances based on your requirements or switch to Manual Scaling. 
         
             For now, we will opt for Manual Scaling and set the number of instances to 1.
                 
                 <img src={ConfigureService} width="600"/>
                                 
-        5.3.  Configure **Ingress** to control access to Cloud Run services. For now, select "All" to allow direct access from the internet.
+        2.3.  Configure Ingress to control access to Cloud Run services. For now, select "All" to allow direct access from the internet.
 
-    6. To edit container configuration, click **Container(s), Volumes, Networking, Security** to expand the options and set the following details accordingly.
+    3. To edit container configuration, click **Container(s), Volumes, Networking, Security** section to expand the options and set the following details accordingly.
         
-        - **Container Port**: 3460  
-        - **Settings** → **Container Name**: Set an appropriate name (this will be used as the container image name).  
-        - **Resources** → **Memory**: At least 2Gi, **CPU**: 1 
+        - Container Port: 3460  
+        - Settings → Container Name: Set an appropriate name (this will be used as the container image name).  
+        - Resources → Memory: At least 2Gi, CPU: 1 
 
             <img src={ContainerConfig} width="600"/>
 
-    7. Click **Add Health Checks**, then configure the **Startup Probe** and **Liveness Probe** as follows:  
+    4. Click Add Health Checks, then configure the Startup Probe and Liveness Probe as follows:  
 
-        - **Select Protocol**: HTTP  
-        - **Set Path**: `/api/health`  
-        - **Startup Probe**: Set an initial delay of **120s**  
-        - **Liveness Probe**: Set an initial delay of **0s** (all other settings remain the same as Startup probe) as shown in image below.
+        - Select Protocol: HTTP  
+        - Set Path: `/api/health`  
+        - Startup Probe: Set an initial delay of 120s  
+        - Liveness Probe: Set an initial delay of 0s (all other settings remain the same as Startup probe) as shown in image below.
 
             <img src={HealthCheck} width="600"/>  
 
-            Click **Add** to proceed.
+        - Click Add to proceed.
 
-    8. To configure **Environment Variables**, scroll up and select **Variables & Secrets** next to **Settings** as shown in image below.
+    5. To configure Environment Variables, scroll up and select Variables & Secrets next to Settings.  
 
-        - Set the environment variables as shown below. These variables are the same as those saved in **Step 3**.
+            <img src={EnVariable} width="500"/>
+        These environment variables are the same as those in the delegate installation step available in the Harness UI, as shown below.
+
+        - Log in to your [Harness account](https://app.harness.io/). Navigate to Account Settings → Account-level Resources → Delegate.  
+
+        - Click New Delegate to access the installation steps as show below:
+
+            ```bash
+                docker run --cpus=1 --memory=2g \
+                -e DELEGATE_NAME=docker-delegate-demo \
+                -e NEXT_GEN="true" \
+                -e DELEGATE_TYPE="DOCKER" \
+                -e ACCOUNT_ID=gVcEXXXXXXXXA3JqA \
+                -e DELEGATE_TOKEN=ZmY5MXXXXBlMTIwOXXXXXXXQ2Zjc1NjI4MDQ= \
+                -e DELEGATE_TAGS="" \
+                -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis 24.10.84107
+            ```
+
+        - Set the variables in Variables & Secrets by adding the following key-value pairs:
 
             ```bash
                 DELEGATE_NAME="<your_delegate_name>"
@@ -108,11 +107,10 @@ To configure a delegate on Google Cloud Run:
                 # (Optional) Add delegate tags if needed
                 DELEGATE_TAGS="tag1"
             ``` 
-                <img src={EnVariable} width="500"/>
+            
+    6. Click Create to complete the setup.
 
-    9. Click **Create** to complete the setup.
-
-    10. To confirm the delegate is up and running, check its status in the Harness UI on Delegate page as shown in image below.
+    7. To confirm the delegate is created and running, check its status in the Harness UI on Delegate page as shown in image below.
 
         <img src={DelegateStatus} width="800"/>
 
