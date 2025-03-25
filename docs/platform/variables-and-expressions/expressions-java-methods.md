@@ -37,6 +37,9 @@ Here is an example where an expression supplied as an argument for the `replace(
 ```
 <+<+pipeline.variables.var2>.replace("a", "<+pipeline.variables.var1>")>
 ```
+:::warning
+This expression will not work if either `<+pipeline.variables.var1>` or `<+pipeline.variables.var2>` remains unresolved during execution.
+:::
 
 ## Java string method examples
 
