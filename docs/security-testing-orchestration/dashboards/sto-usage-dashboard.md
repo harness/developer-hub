@@ -9,6 +9,10 @@ The **STO Usage Dashboard** provides visibility into scan activity and user enga
 
 It includes [filters](#filters-on-sto-usage-dashboard) to narrow down usage data by Organization, Project, and date range. The dashboard components are interactive. You can hover over charts, graphs, and other visual elements to view tooltips with additional context. Clicking on a component lets you drill down into related data or navigate to specific detail pages within STO for deeper investigation.
 
+:::note
+This dashboard requires an **Enterprise** account.
+:::
+
 The dashboard includes the following sections:
 
 #### Scan Usage
@@ -26,10 +30,6 @@ The dashboard includes the following sections:
 - **User Scan Counts**: Shows the number of scans initiated by each user.
 
 <DocImage path={require('./static/sto-usage-dashboard.png')} width="100%" height="100%" title="Click to view full size image" />
-
-<!-- :::note
-- This dashboard requires an **Enterprise** account.
-::: -->
 
 ### Filters on STO Usage Dashboard
 

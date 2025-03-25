@@ -9,6 +9,11 @@ redirect_from:
 
 The **Security Testing Dashboard** provides an overview of security issues identified across the account. It includes [filters](#filters-on-security-testing-dashboard) that help narrow down data by Organization, Project, creation date, scanner, target, pipeline, severity, and more. The dashboard components are interactive. You can hover over charts, graphs, and other visual elements to view tooltips with additional context. Clicking on a component lets you drill down into related data or navigate to specific detail pages within STO for deeper investigation. For steps to navigate to this dashboard, refer to [View STO dashboards](/docs/security-testing-orchestration/dashboards/sto-dashboards-overview#view-sto-dashboards).
 
+:::note
+- This dashboard requires an **Enterprise** account.
+- This dashboard shows only results for targets that have baselines defined. You should [define a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) in your project. 
+:::
+
 The dashboard includes the following sections:
 
 #### Security Issues Overall
@@ -30,11 +35,6 @@ The dashboard includes the following sections:
 - **Remediations Over Time**: Displays the number of issues remediated, categorized by severity.
 
 <DocImage path={require('./static/security-testing-dashboard.png')} width="100%" height="100%" title="Click to view full size image" />
-
-:::note
-- This dashboard requires an **Enterprise** account.
-- This dashboard shows only results for targets that have baselines defined. You should [define a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) in your project. 
-:::
 
 ### Filters on Security Testing Dashboard
 The **Security Testing Dashboard** supports multiple filters to help you narrow down and analyze specific subsets of data. After applying any filter, you must click **Reload** at the top right of the dashboard for the changes to take effect.

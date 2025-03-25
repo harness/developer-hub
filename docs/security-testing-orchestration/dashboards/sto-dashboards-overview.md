@@ -11,9 +11,9 @@ STO dashboards offer visibility into security tests, scan results, scanner usage
 
 STO includes the following dashboards:
 
-- **Security Testing Dashboard**
-- **STO Usage Dashboard**
-- **STO Pipeline Execution Summary**
+- **[Security Testing Dashboard](/docs/security-testing-orchestration/dashboards/security-testing-dashboard)**
+- **[STO Usage Dashboard](/docs/security-testing-orchestration/dashboards/sto-usage-dashboard)**
+- **[STO Pipeline Execution Summary](/docs/security-testing-orchestration/dashboards/sto-pipeline-execution-summary)**
 
 Each dashboard presents data based on its specific focus. For more information, see the documentation for each dashboard.
 
