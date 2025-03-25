@@ -101,6 +101,8 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Added support for regex patterns in ECR artifact sources. [CDS-106566]
 
+- Added support for deploying Azure WebApps using Azure CLI. This feature is available behind the Feature Flag: `CDS_AZURE_CLI_WEBAPP_DEPLOYMENT`. [CDS-107533]
+
 - Improved the file extraction process to preserve file permissions and symlinks. Previously, these attributes were not retained. This change is controlled by the Feature Flag: `CDS_TAS_ARTIFACT_BUNDLE_PRESERVE_PERMISSION_ON_EXTRACTION`. [CDS-106309]
 
 - Fixed an issue where the load balancer’s forward stickiness configuration was being reset during ECS Blue-Green deployments. Now, all stickiness settings remain unchanged. [CDS-99881]
