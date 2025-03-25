@@ -120,14 +120,14 @@ This section outlines the availability of key IDP features across IDP 1.0 and ID
 | ⚙️ **Workflows**                     |         |         |                                                                                   |
 | Workflow YAMLs                       | ✅      | ✅      |                                                                                   |
 | Workflow Groups                      | ✅      | ✅      |                                                                                   |
-| Workflow Execute Permission          | ❌      | ✅      |                                                                                   |
+| Workflow RBAC                        | ❌      | ✅      |                                                                                   |
 | Workflow Scope (Account/Org/Project) | ❌      | ✅      |                                                                                   |
 | Workflow Groups Scope                | ❌      | ✅      |                                                                                   |
 | Gradual Workflow Rollout             | ❌      | ✅      |                                                                                   |
 | UI-based Workflow Creation           | ❌      | ✅      |                                                                                   |
 | 📊 **Scorecards**                    |         |         |                                                                                   |
 | Scorecards in Catalog View           | ❌      | ✅      |                                                                                   |
-| Project/Org filters in Scorecards    | ❌      | ✅      | Scorecards can be applied to entities based on their scopes.                      |
+| Project/Org filters in Scorecards    | ❌      | Planned | Scorecards can be applied to entities based on their scopes.                      |
 | Scorecards scoped to Project/Org     | ❌      | Planned | Scorecards can be created directly at the Project or Org scope.                   |
 | 🔄 **Git Experience**                |         |         |                                                                                   |
 | YAMLs in Git                         | ✅      | ✅      |                                                                                   |
@@ -143,9 +143,10 @@ This section outlines the availability of key IDP features across IDP 1.0 and ID
 | Catalog Access Control Policies      | ✅      | ❌      | Deprecated. Use Harness RBAC to manage access in IDP 2.0.                         |
 | 🧰 **Other Core Features & API**     |         |         |                                                                                   |
 | TechDocs (docs like code)            | ✅      | ✅      |                                                                                   |
+| Global Search                        | ✅      | Planned | Since the existing Global Search is powered by Backstage, it will be redesigned to support scoped visibility and Harness platform hierarchy, enabling users to consistently search across all IDP information.                                                                 |
 | Search (Catalog)                     | ✅      | ✅      |                                                                                   |
-| Search (TechDocs)                    | ✅      | Planned | TechDocs search will be redesigned to support scoped visibility and Harness RBAC. |
-| Search (External e.g. Confluence)    | ❌      | ❌      |                                                                                   |
+| Search (TechDocs)                    | ✅      | ✅      |                                                                                   |
+| Search (External e.g. Confluence)    | ❌      | ❌      | Confluence Plugin is broken and therefore not functional.  |                                                                                  |
 | Entity CRUD APIs                     | ❌      | ✅      | Entities can be created, updated, and deleted using Harness APIs.                 |
 | Catalog Ingestion APIs               | ✅      | ✅      |                                                                                   |
 | Terraform Provider                   | ❌      | Planned |                                                                                   |
