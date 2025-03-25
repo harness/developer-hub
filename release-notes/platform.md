@@ -107,6 +107,13 @@ The following deprecated API endpoints are longer supported:
 
 ## March 2025 
 
+### Version 1.82.x <!--March 26, 2025-->
+#### Fixed issues
+- Fixed the error message displayed when LDAP login fails due to invalid credentials. [PL-60508]
+
+#### New features and enhancements
+- Enhanced service account inheritance, allowing a single service account at the account level to be inherited at the project or organization level. This enables users to manage all resources with a single service account. [PL-58311]
+
 ### Version 1.81.x <!--March 20, 2025-->
 #### Fixed issues
 - Enhanced the error message when attempting to delete a connected delegate. [PL-46692]
