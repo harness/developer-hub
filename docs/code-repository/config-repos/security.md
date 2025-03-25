@@ -74,7 +74,7 @@ For more information and instructions, go to [Harness Policy as Code overview](/
 
 This security setting in Harness Code Repository enforces commit email verification. This setting can be enabled under **Repository** → **Manage Repository** → **Security**.
 
-![Verify Committer Identity](./assets/verify_committer_email.png)
+![Verify Committer Identity](./assets/verify-committer-email.png)
 
 When enabled, users can only push new commits if the committer email matches their email on their Harness user account. If the committer email does not match, the push is blocked.
 
