@@ -27,13 +27,18 @@ The content between the expression delimiter (`<+...>`) is passed to [JEXL](http
 ```
 <+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "harness-software"
 ```
-:::info Method Order Resolution
-Customers may also see odd behavior when attempting to resolve a method when a variable is not ready.
-For example, in the below example
-`<+<+infra.name>.replace("-","_")>`
-If `<+infra.name>` is unresolvable at the time of the execution, but is available later within the pipeline execution ,the replace process may be attempted on a non existent value.  This ends up causing the result to appear to only provide the `<+infra.name>` value as a resolution for the expression.
 
-In this case, customers may want to try utilizing `<+infra.name.replace("-","_")>` instead so that the replace process occurs at the time when the variable is resolved
+:::info Method Order Resolution
+
+Users may experience unexpected behavior when attempting to resolve a method on a variable that is not yet resolved.
+
+For example: `<+<+infra.name>.replace("-", "_")>`
+
+If `<+infra.name>` is **unresolved at the time of execution** but becomes available later in the pipeline, the `replace` method may be applied to a non-existent value. This can result in the expression resolving to just `<+infra.name>` rather than executing the full `replace()` logic.
+
+To avoid this, use the following format instead: `<+infra.name.replace("-", "_")>`
+This ensures that the `replace` method is applied **after** the variable is properly resolved.
+
 :::
 
 ### Escaping
