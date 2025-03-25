@@ -70,4 +70,4 @@ To troubleshoot AutoStopping rules, go to [Troubleshoot AutoStopping rules and P
 ## Learn more
 
 * [Harness Blog - Active Management of Idle Cloud Costs](https://www.harness.io/blog/cloud-autostopping)
-* [Autostopping guides](/docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-guides)
+* [Autostopping guides](/docs/category/autostopping-guides)

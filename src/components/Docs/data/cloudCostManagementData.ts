@@ -81,7 +81,7 @@ import { MODULES } from "@site/src/constants";
             module: MODULES.ccm,
             description:
               "Manage your cloud environment and cloud spend using the asset governance rules and budgets.",
-            link: "/docs/category/cost-governance",
+            link: "/docs/category/asset-governance",
           },   
           {
             title: "Cluster Orchestrator",
