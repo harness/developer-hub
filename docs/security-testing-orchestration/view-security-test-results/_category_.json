@@ -1,11 +1,11 @@
 {
-    "label": "Dashboards and reports",
-    "position": 95,
+    "label": "View security test results",
+    "position": 60,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Dashboards and reports"
+        "title": "View security test results"
     }
 }

@@ -5,6 +5,7 @@ sidebar_position: 20
 sidebar_label: "View baseline issues - STO Overview"
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview
+  - /docs/security-testing-orchestration/dashboards/sto-overview
 helpdocs_topic_id: 2ap1uol6ti
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false
@@ -16,7 +17,7 @@ To see all target baselines in the project, go to the left menu and select **Sec
 <details>
 <summary>Why you should define a baseline for every target</summary>
 
-import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/_why-define-baselines.md';
+import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/why-define-baselines.md';
 
 <StoWhyDefineBaselines />
 
@@ -42,6 +43,6 @@ This view has has the following components:
 
 :::info
 
- To see detected issues in a non-baseline variant, such as a feature or developer branch, go to a pipeline execution where the variant was scanned and then go to [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
+ To see detected issues in a non-baseline variant, such as a feature or developer branch, go to a pipeline execution where the variant was scanned and then go to [**Security Tests**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 
 :::
