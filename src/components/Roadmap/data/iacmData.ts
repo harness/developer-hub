@@ -81,21 +81,6 @@ export const IacmData: Horizon = {
       },
     ],
   },
-  // Next: {
-  //   description: "Q1 2025, Feb 2025-Mar 2025",
-  //   feature: [
-  //     {
-  //       tag: [{ value: "Developer Experience" }],
-  //       title: "CLI Integration",
-  //       description: "Having the ability to run Workspace-related pipelines directly from CLI",
-  //     },
-  //     {
-  //       tag: [{ value: "Security" },{ value: "Enterprise" }],
-  //       title: "SMP (on-prem)",
-  //       description: "Supporting implementing IaCM in private environments",
-  //     },
-  //   ],
-  // },
   Later: {
     description: "Q2 2025+ & beyond",
     feature: [
