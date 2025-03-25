@@ -8,6 +8,7 @@ This topic describes how you can use a Harness Delegate along with an agentless 
 
 ## Before you begin, review the following:
 
+* [Install Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/installation)
 * [Agentless Chaos Execution Model](/docs/chaos-engineering/concepts/how-stuff-works/agentless-chaos-working#agentless-chaos-execution-model)
 * [Centralized Execution Plane](/docs/chaos-engineering/concepts/how-stuff-works/centralized-exec-plane)
 * [Application Map](/docs/chaos-engineering/use-harness-ce/application-map#what-is-an-application-map)
@@ -17,14 +18,7 @@ This topic describes how you can use a Harness Delegate along with an agentless 
 
 ### Step 1: Set up your target cluster 
 
-a. In this step, set up your cluster (where Harness CE executes chaos experiments) with a dedicated namespace for Harness, and go to [Centralized Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/centralized-delegate) to perform the following steps.
-	- Create a dedicated Namespace.
-	- Create a service account in the dedicated namespace.
-	- Create K8s RBACs and Role binding for Chaos runner pods.
-	- Create a cluster role and cluster role binding for conducting service discovery and executing chaos experiments.
-	- Create a K8s connector with cluster URL and service account token as authentication method.
-	- Create an Infrastructure using the K8s connector.
-
+a. In this step, set up your cluster (where Harness CE executes chaos experiments) with a dedicated namespace for Harness, and go to [Centralized Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/centralized-delegate) to .
 
 ### Step 2: Set Up a Discovery agent
 
