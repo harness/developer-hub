@@ -89,7 +89,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## March 2025
 
-### Version 25.03.35403 <!-- March 25, 2025 -->
+### Version 25.03.85403 <!-- March 25, 2025 -->
 
 - Fixed the repository check during the test connection for GitHub App-based connectors. Now, connectors with an invalid repository will not pass the test connection. Only valid repositories will be accepted. [PIPE-24905]
 
