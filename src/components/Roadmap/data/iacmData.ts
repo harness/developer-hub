@@ -52,7 +52,7 @@ export const IacmData: Horizon = {
     ],
   },
   Now: {
-    description: "Q1 2025, Feb 2025-April 2025",
+    description: "Q1 2025, Feb 2025-Apr 2025",
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
