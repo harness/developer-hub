@@ -7,7 +7,7 @@ sidebar_position: 42
 
 The **STO Pipeline Execution Summary** dashboard provides a detailed view of all issues identified during a specific STO pipeline execution. It is designed to help you investigate scan results for a single execution and review associated metadata, such as the target, scanner, exemption status, and more.
 
-You can also export the scan results for a specific execution. The dashboard provides an option to download the report directly, or you can configure a pipeline to automatically generate the scan results report and send it via email. Refer to [this guide](/docs/security-testing-orchestration/view-security-test-results/export-scan-results) to learn how to set up the report generation and email step.
+Importantly, you can export the scan results for a specific execution. The dashboard provides an option to download the report directly, or you can configure a pipeline to automatically generate the scan results report and send it via email. Refer to [this guide](/docs/security-testing-orchestration/view-security-test-results/export-scan-results) to learn how to set up the report generation and email step.
 
 :::note
 - This dashboard requires an **Execution ID** filter to display scan results for a specific pipeline execution.
