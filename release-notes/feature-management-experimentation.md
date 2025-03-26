@@ -13,8 +13,19 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: March 19, 2025
+#### Last updated: March 26, 2025
+
+
 ## March 2025
+### 2025-03-26
+#### Feature flag impression toggle
+The feature flag impression toggle allows you to streamline your generated impression volume, by switching flag impressions on/off per feature flag per environment.
+
+![Impression tracking toggle](./static/fme/impression-tracking-toggle.png)
+
+##### Related documentation
+- [Tracking impressions](https://help.split.io/hc/en-us/articles/360020585192-Impressions#tracking-impressions)
+
 ### 2025-03-19
 #### AI settings
 The new AI settings page in Admin settings provides a toggle to enable/disable Release Agent and manage whether Release Agent has permissions to process experimentation data for experiment summarization and Q&A. This provides enhanced control over data privacy for AI features.
