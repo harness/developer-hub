@@ -9,10 +9,9 @@ sidebar_position: 1
 
 import Ccm from '/docs/cloud-cost-management/shared/ccm-supported-platforms.md';
 
-
 <Ccm />
 
-## CCM Feature flags
+## CCM Feature Flags
 
 Some Harness CCM features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience.
 
@@ -50,47 +49,19 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables the use of cost categories in the dashboard</td>
     </tr>
     <tr>
-        <td>CCM_SUPPORT_RESOURCEID_CLOUDID_FIELDS</td>
-        <td>Enables visibility of billing costs for virtual machines and their associated cloud account IDs</td>
-    </tr>
-    <tr>
         <td>CCM_COMMORCH_RDS</td>
         <td>Enables RDS support in commitment orchestration</td>
-    </tr>
-    <tr>
-        <td>CCM_USE_AZURE_QUANTITY_TRUEUP</td>
-        <td>Enables K8S cost true-up using Azure quantity field in CUR</td>
     </tr>
     <tr>
         <td>CCM_ENABLE_DATA_SCOPE</td>
         <td>Enables RBAC on CCM data scope</td>
     </tr>
     <tr>
-        <td>CCM_COMMITMENT_V1</td>
-        <td>Enables commitment revamp changes</td>
-    </tr>
-    <tr>
         <td>CCM_GOVERNANCE_EVALUATION_COST_PER_RESOURCE</td>
         <td>Enables cost per resource for a governance evaluation</td>
     </tr>
     <tr>
-        <td>CCM_USE_BQML_ANOMALIES</td>
-        <td>Enables new BQ based Anomaly detection</td>
-    </tr>
-    <tr>
-        <td>CCM_ENABLE_SEASONAL_PROPHET</td>
-        <td>Enables seasonality in prophet model for anomaly detection feature</td>
-    </tr>
-    <tr>
         <td>CCM_ANOMALIES_V2</td>
-        <td>Used to roll out the new version of CCM anomalies</td>
-    </tr>
-    <tr>
-        <td>CCM_FORCE_WARM_UP</td>
-        <td>Enables force warm-up or cool-down of resources in auto-stopping rules</td>
+        <td>Enables the new version of CCM anomalies</td>
     </tr>
 </table>
-
-
-
-
