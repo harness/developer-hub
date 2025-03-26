@@ -25,14 +25,13 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 #### New features and enhancements
 
-- External Cost Data Ingestion: Harness Cloud Cost Management now supports External Cost Data Ingestion, enabling you to bring in cost data from third-party vendors using a standardized CSV format.
+- (Beta) External Cost Data Ingestion: Harness Cloud Cost Management now supports External Cost Data Ingestion, enabling you to bring in cost data from third-party vendors using a standardized CSV format.
 Key Capabilities:
 
 - Ingest and analyze external costs using Perspectives, Budgets, Dashboards and Cost Categories
-- Automatically generate default views post-ingestion for faster time to value 
 - Support for FOCUS-formatted CSV files (20MB max per file)
 
-Feature flag required – `CCM_EXTERNAL_DATA_INGESTION` . Please contact our support team for enablement. [CCM-21297]
+This feature is currently in Beta and behind a feature flag `CCM_EXTERNAL_DATA_INGESTION` . Please contact our support team for enablement. [CCM-21297]
 
 - Anomaly Comments Support: You can now add and view comments directly on the Anomalies Details page, making collaboration and investigation easier. [CCM-21384]
 
