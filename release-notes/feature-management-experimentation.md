@@ -19,7 +19,7 @@ These release notes describe recent changes to Harness Feature Management & Expe
 ## March 2025
 ### 2025-03-26
 #### Feature flag impression toggle
-The feature flag impression toggle allows you to streamline your generated impression volume, by switching flag impressions on/off per feature flag per environment.
+The feature flag impression toggle allows you more control over your generated impression volume, by switching flag impression tracking on/off per feature flag per environment. (This does not impact MTKs/billing.)
 
 ![Impression tracking toggle](./static/fme/impression-tracking-toggle.png)
 
