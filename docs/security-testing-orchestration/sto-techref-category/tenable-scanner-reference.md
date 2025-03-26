@@ -20,7 +20,7 @@ You can scan your container images and application instances using [Tenable](htt
 <details>
 <summary>Orchestration/extraction workflows</summary>
 
-import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+import CustomScanWorkflowRepo from './shared/custom-scan/workflow.md';
 
 <CustomScanWorkflowRepo />
 
@@ -29,7 +29,7 @@ import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
 <details>
 <summary>Ingestion workflows</summary>
 
-import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+import CustomScanWorkflowIngest from './shared/custom-scan/workflow-ingest-only.md';
 
 <CustomScanWorkflowIngest />
 
@@ -121,7 +121,7 @@ legacy-web-application-scan
 
 ### Target and variant
 
-import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
@@ -148,7 +148,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 ### Instance
 
 
-import StoLegacyInstance from './shared/custom-scan/_dast.md';
+import StoLegacyInstance from './shared/custom-scan/dast.md';
 
 
 <StoLegacyInstance />
@@ -182,7 +182,7 @@ product_template_uuid
 ### Ingestion file
 
 
-import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md';
+import StoLegacyIngest from './shared/custom-scan/ingestion-file.md';
 
 
 <StoLegacyIngest />
@@ -190,7 +190,7 @@ import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md';
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/custom-scan/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
