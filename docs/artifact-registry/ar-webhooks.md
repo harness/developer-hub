@@ -6,15 +6,11 @@ sidebar_position: 20
 In the Artifact Registry in Harness, **Triggers** automate actions based on events related to your artifacts, and allow you to streamline workflows by responding dynamically to changes in your artifact repositories.
 
 ## Types of Triggers
-1.	**Artifact Ingestion**
+1.	**Artifact Creation**
     - Executes when a new artifact is pushed to the registry.
     - Useful for automating deployments or notifying downstream systems.
-2.	**Artifact Update**
-    - Fires when an existing artifact is updated.
-    - Can be used to track and validate changes.
 3.	**Artifact Deletion**
-    - Triggers when an artifact is deleted from the registry.
-    - Helps with cleanup automation or compliance monitoring.
+    - Triggers when an registry version is deleted.
 
 ## Use Cases for Triggers
 - **CI/CD Automation:** Start a pipeline when a new artifact is ingested.   
@@ -34,3 +30,6 @@ Webhooks allow external systems to interact with Artifact Registry events in rea
 - **Incoming Webhooks:** A third-party build system triggers an artifact ingestion event in Harness, automating downstream workflows.
 
 Go to [platform triggers](/docs/platform/triggers/triggers-overview) to find out more about the types of triggers that are at your disposal including webhooks, artifacts, manifests and schedules triggers.
+
+## Add a Webhook
+<DocVideo src="https://app.tango.us/app/embed/291ffc6f-26a4-4868-b0a7-946654e13bba" title="Creating a New Webhook in Harness Workspaces" />
