@@ -65,7 +65,7 @@ To add Feature Flags, do the following:
          # -- CI Feature Flags (activated when global.ci is enabled)
          CI: "CING_ENABLED,CI_INDIRECT_LOG_UPLOAD"
          # -- STO Feature Flags (activated when global.sto is enabled)
-         STO: "STO_BASELINE_REGEX,STO_step-palette_BURP_ENTERPRISE,STO_step-palette_CODEQL,STO_step-palette_FOSSA,STO_step-palette_GIT_LEAKS,STO_step-palette_SEMGREP"
+         STO: "STO_BASELINE_REGEX,STO_STEP_PALETTE_BURP_ENTERPRISE,STO_STEP_PALETTE_CODEQL,STO_STEP_PALETTE_FOSSA,STO_STEP_PALETTE_GIT_LEAKS,STO_STEP_PALETTE_SEMGREP"
          # -- SRM Flags (activated when global.srm is enabled)
          SRM: "CVNG_ENABLED"
          # -- Custom Dashboard Flags (activated when global.dashboards is enabled)

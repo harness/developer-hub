@@ -199,7 +199,7 @@ The following early access (beta) feature is available for the Harness Security 
 * **Early access release date:** February 2025
 * **Early access release version:** v1.127.5
 * **Issue number:** STO-5747
-* **Feature flag:** `STO_step-palette_CHECKMARX_ONE`
+* **Feature flag:** `STO_STEP_PALETTE_CHECKMARX_ONE`
 
 ## SRM early access features
 
@@ -377,7 +377,7 @@ STO includes a set of built-in steps for adding scans to your pipelines quickly 
 * **Release date:** June 2024
 * **Early access release date:** March 2024
 * **Early access Release version:** 1.88.2
-* **Feature flag:** `STO_step-palette_WIZ`
+* **Feature flag:** `STO_STEP_PALETTE_WIZ`
 
 You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets.
 
@@ -415,7 +415,7 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 * **GA date:** March 2024
 * **Early access release date:** February 2024
 * **Early access Release version:** 1.85.0
-* **Feature flag:** `STO_step-palette_OSV`
+* **Feature flag:** `STO_STEP_PALETTE_OSV`
 
 You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). 
 
@@ -424,7 +424,7 @@ You can now scan your code repositories using [Open Source Vulnerabilities (OSV)
 * **GA date:** March 2024
 * **Early access release date:** November 2023
 * **Early access Release version:** 1.73.1
-* **Feature flag:** `STO_step-palette_ANCORE_ENTERPRISE`
+* **Feature flag:** `STO_STEP_PALETTE_ANCORE_ENTERPRISE`
 
 You can specify a time limit when you request an exemption. The **Exemptions** table includes a **Time Remaining** column that shows when each exemption is scheduled to expire. The table is sorted by this column by default so that soonest-to-expire exemptions are listed first.
 
@@ -451,7 +451,7 @@ You can now write and apply OPA policies against all results from a scan. This g
 * **GA date:** November 2023
 * **Early access release date:** November 2023
 * **Early access Release version:** 1.74.1
-* **Feature flag:** `STO_step-palette_AQUASEC`
+* **Feature flag:** `STO_STEP_PALETTE_AQUASEC`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks.  (STO-6382)
@@ -523,7 +523,7 @@ This feature includes a set of Security steps with an improved UI for configurin
 * **GA date:** September 2023
 * **Early access release date:** July 2023
 * **Early access Release version:** 1.60.0
-* **Feature flag:** `STO_step-palette_CODEQL`
+* **Feature flag:** `STO_STEP_PALETTE_CODEQL`
 
 You can scan your code repositories using [CodeQL](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference), an analysis engine used by developers to automate security checks, and by security researchers to perform variant analysis.
 
@@ -532,7 +532,7 @@ You can scan your code repositories using [CodeQL](/docs/security-testing-orches
 * **GA date:** September 2023
 * **Early access release date:** July 2023
 * **Early access Release version:** 1.60.0
-* **Feature flag:** `STO_step-palette_SEMGREP`
+* **Feature flag:** `STO_STEP_PALETTE_SEMGREP`
 
 You can scan container images and repositories using [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
 
@@ -552,7 +552,7 @@ For more information about this feature, go to [Set up target baselines](/docs/s
 * **GA date:** August 2023
 * **Early access release date:** July 2023
 * **Early access Release version:** 1.60.0
-* **Feature flag:** `STO_step-palette_BURP_ENTERPRISE`
+* **Feature flag:** `STO_STEP_PALETTE_BURP_ENTERPRISE`
 
 The [Burp integration](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference) now supports scanner templates, which make it much easier to set up a scan step.
 
@@ -561,7 +561,7 @@ The [Burp integration](/docs/security-testing-orchestration/sto-techref-category
 * **GA date:** August 2023
 * **Early access release date:** July 2023
 * **Early access Release version:** 1.60.0
-* **Feature flag:** `STO_step-palette_FOSSA`
+* **Feature flag:** `STO_STEP_PALETTE_FOSSA`
 
 You can scan container images and repositories using [Fossa](/docs/security-testing-orchestration/sto-techref-category/fossa-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
 

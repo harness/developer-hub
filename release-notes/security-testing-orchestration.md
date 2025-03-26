@@ -47,7 +47,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 <!-- 2025-02-15 -->
 
 #### New Features and Enhancements
-- CheckmarxOne is now available as an STO step, currently behind the feature flag `STO_step-palette_CHECKMARX_ONE` (STO-5747).  
+- CheckmarxOne is now available as an STO step, currently behind the feature flag `STO_STEP_PALETTE_CHECKMARX_ONE` (STO-5747).  
 - Checkmarx step now supports scan configurations for Checkmarx SCA and Checkmarx OSA. These can be used by setting the **Scan Configuration** field to `CxSCA` or `CxOSA` (STO-7891).  
 
 #### Fixed Issues
@@ -594,7 +594,7 @@ Harness currently supports the following:
 1. Orchestrated Wiz scans for container images
 2. Ingestion of Wiz scan reports ( JSON/SARIF format ) generated for container images, repositories, and directories
  
-This integration is behind the feature flag `STO_step-palette_WIZ`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
+This integration is behind the feature flag `STO_STEP_PALETTE_WIZ`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
 -->
 
@@ -887,7 +887,7 @@ Fixed an issue where only the first run in a SARIF file was being ingested. This
 
 #### New features and enhancements
 
-- You can now ingest container-image scan results from [Aqua Security Enterprise](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference). This integration was previously behind the feature flag `STO_step-palette_AQUASEC` but is now generally available. (STO-5661, ZD-41491) 
+- You can now ingest container-image scan results from [Aqua Security Enterprise](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference). This integration was previously behind the feature flag `STO_STEP_PALETTE_AQUASEC` but is now generally available. (STO-5661, ZD-41491) 
 
 - The **Exemptions** table now shows the pipeline name in the **Scope** column and not the ID. This keeps the user experience consistent with other areas of the application. (STO-6631)
 
@@ -904,7 +904,7 @@ Fixed an issue where only the first run in a SARIF file was being ingested. This
 
 #### Early access feature
 
-You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. This integration was previously behind the feature flag `STO_step-palette_AQUASEC` but is now generally available. (STO-6382)
+You can now scan your repositories and other components used in your code with [Anchore Enterprise](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference), a scanner that provides visibility into supply chain security risks. This integration was previously behind the feature flag `STO_STEP_PALETTE_AQUASEC` but is now generally available. (STO-6382)
 
 #### Fixed issues
 
@@ -1198,19 +1198,19 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
 
 * The [Burp integration](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference) now supports scanner templates, which make it much easier to set up a scan step. 
 
-  This integration is behind the Feature Flag `STO_step-palette_BURP_ENTERPRISE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
+  This integration is behind the Feature Flag `STO_STEP_PALETTE_BURP_ENTERPRISE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5056)
 
 * You can scan your code repositories using [CodeQL](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference), an analysis engine used by developers to automate security checks, and by security researchers to perform variant analysis. 
 
- This integration is behind the Feature Flag `STO_step-palette_CODEQL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5366)
+ This integration is behind the Feature Flag `STO_STEP_PALETTE_CODEQL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (STO-5366)
 
 * You can scan container images and repositories using [Fossa](/docs/security-testing-orchestration/sto-techref-category/fossa-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects. (STO-5111)
 
- This integration is behind the Feature Flag `STO_step-palette_FOSSA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+ This integration is behind the Feature Flag `STO_STEP_PALETTE_FOSSA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
 * You can scan container images and repositories using [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects. (STO-5886)
  
- This integration is behind the Feature Flag `STO_step-palette_SEMGREP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+ This integration is behind the Feature Flag `STO_STEP_PALETTE_SEMGREP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
 
 ##### Fixed Issues
