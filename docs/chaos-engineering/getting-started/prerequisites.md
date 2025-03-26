@@ -1,7 +1,7 @@
 ---
 title: Prerequisites
 description: Prerequisites before runing a chaos experiment.
-sidebar_position: 1
+sidebar_position: 10
 canonical_url: https://www.harness.io/blog/chaos-engineering
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/prerequisites
