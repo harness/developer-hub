@@ -14,20 +14,22 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 
 :::info
 
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
+Progressive deployment: Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview page** in Harness. In the new UI, go to Account Settings, Account Details, General, Account Details, and then Platform Service Versions. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+
+
 ## March 2025
 
 ### Version 1.45.7
 
 #### New features and enhancements
 
-- External Cost Data Ingestion: Harness Cloud Cost Management now supports External Cost Data Ingestion, enabling you to bring in cost data from third-party vendors such as MongoDB and Snowflake using a standardized CSV format.
+- External Cost Data Ingestion: Harness Cloud Cost Management now supports External Cost Data Ingestion, enabling you to bring in cost data from third-party vendors using a standardized CSV format.
 Key Capabilities:
 
 - Ingest and analyze external costs using Perspectives, Budgets, Dashboards and Cost Categories
-- Automatically generate default views post-ingestion for faster time to value (under 10 minutes)
+- Automatically generate default views post-ingestion for faster time to value 
 - Support for FOCUS-formatted CSV files (20MB max per file)
 
 Feature flag required – `CCM_EXTERNAL_DATA_INGESTION` . Please contact our support team for enablement. [CCM-21297]
