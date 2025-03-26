@@ -26,21 +26,21 @@ To enable dashboards the following is the minimum configuration required.
 You can find `lookerPubDomain` in your DNS settings and the Looker license key from [Harness support team](mailto:support@harness.io)
 
 ```yaml
-    global:
-      # required if SMP is installed in airgapped mode
-      airgap: true
-      ngcustomdashboard:
-        enabled: true
-    ng-custom-dashboards:
-      config:
-        lookerPubDomain: 'looker.domain.tld'
-    looker:
-      secrets:
-        lookerLicenseKey: XXXXXXXXXXXXXXXXXXXX
-        # required if SMP is installed in airgapped mode
-        lookerLicenseFile: |
-          XXXXXXXXXXXXXXXXXXXXXXXXXX
-          XXXXXXXXXXXXXXXXXXXXXXXXXX
+global:
+  # required if SMP is installed in airgapped mode
+  airgap: true
+  ngcustomdashboard:
+    enabled: true
+ng-custom-dashboards:
+  config:
+    lookerPubDomain: 'looker.domain.tld'
+looker:
+  secrets:
+    lookerLicenseKey: XXXXXXXXXXXXXXXXXXXX
+    # required if SMP is installed in airgapped mode
+    lookerLicenseFile: |
+      XXXXXXXXXXXXXXXXXXXXXXXXXX
+      XXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 ### Looker Ingress/Istio Configuration  
