@@ -6,6 +6,10 @@ sidebar_position: 40
 
 The user-centric pull request page is available at the account, organization, and project levels, displaying pull requests relevant to the logged-in user.
 
+:::note
+This feature is behind a feature flag `CODE_SPACE_PULLREQ`.
+:::
+
 <DocImage path={require('/docs/code-repository/pull-requests/static/pr-overview.png')} />
 
 The page includes two sections:
