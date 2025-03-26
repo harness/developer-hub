@@ -50,9 +50,10 @@ Before configuring this step, ensure you have:
 ### Configure the Run step in your pipeline
 
 1. **Create a pipeline variable** named `TOKEN` and reference the stored Harness API key as a secret using Harness expressions.
+
    <DocImage path={require('/docs/security-testing-orchestration/view-security-test-results/static/export-results-pipeline-variable.png')} width="70%" height="70%" title="Click to view full size image" />
    
-export-results-pipelineRun** step to your pipeline. This step must be placed after your security scan steps. If your pipeline includes multiple security steps, place the Run step after the final security scan step.
+2. Add a **Run** step to your pipeline. This step must be placed after your security scan steps. If your pipeline includes multiple security steps, place the Run step after the final security scan step.
 
 3. Configure the **Run** step:
 
