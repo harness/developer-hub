@@ -57,6 +57,9 @@ This parameter specifies a regular expression pattern used to **securely overrid
 
 👉  **Read more about this feature [here](/docs/internal-developer-portal/plugins/available-plugins/jenkins).**
 
+### Feature Improvements
+- Harness IDP now supports the use of a **Harness API Key** in the [Register Catalog step](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog) (IDP Stage). With this feature, users can configure the API Key by selecting the "API Token" field in the Harness UI. Enabling this ensures that the API Key is utilized for catalog registration in IDP. By integrating the API Key, the pipeline execution remains seamless, ensuring it functions correctly when triggered from another pipeline or through a trigger. **Learn more about the feature [here](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog)**. (Please note that this feature was a part of the NGUI release.)
+
 ### Bug Fixes
 - Added support for **Mermaid diagrams** in TechDocs by integrating the Mermaid Plugin. Customers can now easily add Mermaid diagrams within TechDocs. Here's the [documentation](https://developer.harness.io/docs/internal-developer-portal/techdocs/techdocs-bestpractices/#1-using-mermaid-for-diagrams) to learn more about this use-case. [IDP-4844]
 - Resolved an issue causing scorecard custom checks to fail incorrectly, even when in a successful state. Fixed by addressing **JEXL check** failures. [IDP-5002]
