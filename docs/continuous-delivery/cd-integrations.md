@@ -22,6 +22,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| CDS_REMOVE_COMMENTS_FROM_VALUES_YAML_WITH_ESCAPE_CHARACTERS | Enables proper handling of special characters in `values.yaml` by removing control characters such as `single (' )`, `double (")`, and `backslash (\)`, preventing pipeline failures. |
 | CDS_ENFORCE_GIT_EXPERIENCE | Enables users to enforce the **Git experience for environments, infrastructure, and overrides V2**, ensuring consistency across all components, similar to pipelines, inputs, and templates. |
 | CDS_TAS_ARTIFACT_BUNDLE_PRESERVE_PERMISSION_ON_EXTRACTION | Ensures that file permissions inside the `tar.gz` archive are retained when deploying **Artifact Bundles** for **NodeJS apps** to **PCF (Pivotal Cloud Foundry)**, preventing permission issues during application startup. |
 | CDS_AZURE_CLI_WEBAPP_DEPLOYMENT | Enables enhanced support for non-standard configurations and Azure CLI-based workflows for Azure Web App deployments. Available with Delegate version `85302` or later. **This feature is in Limited GA**|
