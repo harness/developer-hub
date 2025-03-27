@@ -125,22 +125,54 @@ To enable the publication of build information, you must set the `publish_build_
 For example:
 
 ```yaml
-              - step:
-                  type: Plugin
-                  name: plugin
-                  identifier: plugin
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: plugins/artifactory
-                    settings:
-                      access_token: YOUR_JFROG_TOKEN
-                      url: YOUR_JFROG_ARTIFACTORY_URL
-                      source: /path/to/source
-                      target: /path/to/target
-                      build_name: <+pipeline.identifier> # You can use an expression or a fixed value.
-                      build_number: <+pipeline.sequenceId> # You can use an expression or a fixed value.
-                      publish_build_info: true
-                      targetProps: key1=123;projectName=ExampleApp # Optional metadata/properties
+- step:
+    type: Plugin
+    name: plugin
+    identifier: plugin
+    spec:
+      connectorRef: account.harnessImage
+      image: plugins/artifactory
+      settings:
+        access_token: YOUR_JFROG_TOKEN
+        url: YOUR_JFROG_ARTIFACTORY_URL
+        source: /path/to/source
+        target: /path/to/target
+        build_name: <+pipeline.identifier> # You can use an expression or a fixed value.
+        build_number: <+pipeline.sequenceId> # You can use an expression or a fixed value.
+        publish_build_info: true
+        targetProps: key1=123;projectName=ExampleApp # Optional metadata/properties
+```
+
+## Add local files as build dependencies
+
+The built-in **Upload Artifacts to JFrog Artifactory** step uses the [Artifactory Drone plugin](https://github.com/harness/drone-artifactory). You can used the plugin directly in case there is some configuration or flags that are not supported natively in the built-in step.
+
+To add dependencies from the local file system to the build info, you must add the `build-add-dependencies` flag. This feature requires `build_name`, `build_number`, and `dependency` to be specified. 
+
+Other options include:
+- `exclusions`: Exclude files with the regex defined in this setting. 
+- `from_rt`: Boolean. If true, will add dependencies from Artifactory instead of the local file system.
+- `spec_path`: Add a dependency from a specific file path. 
+
+Example:
+
+```yaml
+- step:
+    type: Plugin
+    name: AddBuildDependencyStep
+    identifier: AddBuildDependencyStep
+    spec:
+      connectorRef: account.harnessImage
+      image: plugins/artifactory
+      settings:
+        command: add-build-dependencies
+        access_token: YOUR_JFROG_TOKEN
+        url: YOUR_JFROG_ARTIFACTORY_URL
+        module: test_module
+        build_name: <+pipeline.identifier> # You can use an expression or a fixed value.
+        build_number: <+pipeline.sequenceId> # You can use an expression or a fixed value.
+        dependency: /harness/add_deps/\*\*/\*.jar
+        exclusions: /harness/add_deps/exclude_test/\*\*
 ```
 
 ## Post artifacts to the Artifacts tab
