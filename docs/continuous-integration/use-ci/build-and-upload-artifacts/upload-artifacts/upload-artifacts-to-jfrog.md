@@ -147,7 +147,7 @@ For example:
 
 The built-in **Upload Artifacts to JFrog Artifactory** step uses the [Artifactory Drone plugin](https://github.com/harness/drone-artifactory). You can used the plugin directly in case there is some configuration or flags that are not supported natively in the built-in step.
 
-To add dependencies from the local file system to the build info, you must add the `build-add-dependencies` flag. This feature requires `build_name`, `build_number`, and `dependency` to be specified. 
+To add dependencies from the local file system to the build info, you must add the `add-build-dependencies` flag. This feature requires `build_name`, `build_number`, and `dependency` to be specified. 
 
 Other options include:
 - `exclusions`: Exclude files with the regex defined in this setting. 
