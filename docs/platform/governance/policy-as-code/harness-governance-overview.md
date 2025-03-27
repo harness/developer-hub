@@ -226,6 +226,28 @@ The Custom entity type provides flexibility to enforce policy evaluations agains
 
 Custom entity types are open ended. There is no pre-set JSON schema that is used for Custom policies. The payload that the policy is evaluated against is determined by you (defined in the Policy step).
 
+### Service 
+
+:::info note
+Currently this feature is behind the feature flag `CDS_ENABLE_SERVICE_ON_RUN_OPA_EVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Policies can be apploed to the Service entity during **On Run** and **On Save** events.
+
+Checkout this interactive guide for selecting **Service** entity on Policy set:-
+
+<iframe
+	src="https://app.tango.us/app/embed/560906e2-d5dc-4df1-8a47-8f9da89b5932"
+	style={{minHeight:'640px'}}
+	sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
+	title="Creating a New ChaosHub and Connector in Harness"
+	width="100%"
+	height="100%"
+	referrerpolicy="strict-origin-when-cross-origin"
+	frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"
+	allowfullscreen="allowfullscreen"></iframe>
+
+
 ## Policy and Policy Set Hierarchy and Inheritance
 
 Policies and Policy Sets are saved at the Harness Account, Organization, or Project level in the Harness. Where the Policy or Policy set is saved determines its scope. 
