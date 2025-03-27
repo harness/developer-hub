@@ -73,12 +73,6 @@ However, apart from these differences, basic JSON documents are considered valid
 
 At the moment there is no dependency on the instance sync and infrastructure definition. Infrastructure definition is used only to generate infrastructure details. The instance sync is done for service and environment. Only in case if any these are deleted, the instance sync will stop and delete instances.
 
-:::info
-
-If you are using the default release name format in Harness FirstGen as `release-${infra.kubernetes.infraId}`, it's important to note that when migrating to Harness NextGen, you will need to replace `${infra.kubernetes.infraId}` with the new expression. In Harness NextGen, a similar expression `<+INFRA_KEY>` is available for defining release names. However, it's crucial to understand that these expressions will resolve to completely different values compared to the expressions used in Harness FirstGen.
-
-:::
-
 
 ### Is there an easy way to see all the recent deployments of a workflow that had run?
 
@@ -192,17 +186,6 @@ Looping strategies are useful for scenarios like canary deployments, gradual rol
 
 We have a 6 month data retention period as mentioned in [Documentation](https://www.Harness.io/pricing?module=cd#). 
 Deployments older that that are not available.
-
-<!---what's this
-
-
-### Currently we make use of this feature from FirstGen. Is there, or will there be an equivalent feature in Next Gen?
-
-Consider the below mentions :
-- Reference 1 : [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint/)
-- Reference 2 : You can Use Webhook notifications in NG to inform an external application of an event. Refer to this [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#webhook-notifications) 
-  
---->
 
 
 ### How to pass value to a variable manually while running from UI if same pipeline is configured to run via trigger and using variable from trigger?
@@ -669,10 +652,6 @@ You can only perform a rolling deployment strategy for Native Helm(no canary or 
 ### I am using AWS ASG template and would like to fetch "New ASG Name" while deployment/workflow/pipeline executes. Is it available in context? If yes then how can I get new asg name? 
 
 We support both old and new ASG names via variable, which should help you with this use case to run custom scripting if required on old ASG.
- 
-Both new and old ASG: $\{ami.newAsgName}, $\{ami.oldAsgName} documented here:
-https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/variables/built-in-variables-list#aws-amiasg-1
-
 
 ### Should the Fetch Instances step return only one instance for executing a trigger to an external orchestrator, such as Ansible or Puppet?
 
@@ -1621,18 +1600,6 @@ Yes, there is a method to determine the status of the deployment stage within su
 Service Entities can be configured with tags to categorize the same during deployments. Custom Dashboards now expose Service Tags and Service Execution Tags as a dimension. Visualizations can be configured to filter Services and associated pipeline executions based on Service Tags.
 For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv/).
 
-
-### Is there a method available to implement a percentage-based repeat strategy for Shell Script Hosts similar to the functionality present in FirstGen?
-
-For a rolling strategy, you specify the desired number of instances to deploy per phase. If you have multiple target hosts in a stage and wish to deploy a certain proportion of instances per phase, you can configure it accordingly. This allows for a flexible deployment approach where the number of instances per phase can be defined either as a count or a percentage.
-For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#rolling).
-
-
-### Does Harness support "Skip instances with the same artifact version already deployed" feature on NextGen?
-
-Yes, this feature parity to FirstGen is now available. For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#targetting-specific-hosts-for-deployment).
-
-
 ### How does Harness ensure that the tag fetched in the service step is consistently the latest for both triggers and manual executions?
 
 The expression `<+lastPublished.tag>` sorts the tags lexically rather than by the "created at" date. One can try replacing `<+lastPublished.tag>` with `<+trigger.artifact.build>` in the trigger's configuration ensures that it always fires using the latest collected tag.
@@ -1814,7 +1781,7 @@ Please read more on custom stages in the following [Documentation](https://devel
 
 ### What is the correct expression to reference artifact version in rollback phase?
 
-One can use the expression `rollbackArtifact.version` . This is a change from FirstGen to NextGen where rollback artifact version was getting automatically resolved
+One can use the expression `rollbackArtifact.version`.
 Please find an example use case on this in our [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#pipeline-sample-setup---cicd)
 
 

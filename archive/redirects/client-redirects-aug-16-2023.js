@@ -635,11 +635,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/first-gen/firstgen-fa-qs/docs/category/cicd-artifact-build-and-deploy-pipelines",
-      to: "/docs/category/faqs-fg",
-    },
-
-    {
       from: "/docs/first-gen/continuous-delivery/concepts-cd/deployment-types/docs/category/iis-net-deployments",
       to: "/docs/category/iis-net-deployments",
     },

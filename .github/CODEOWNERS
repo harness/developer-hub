@@ -54,8 +54,6 @@ static/  @rohanmaharjan100 @wei-harness
 /release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta @shylajasun
 /src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av @thisrohangupta @shylajasun
 /src/components/Docs/data/continuousDeliveryData*  @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
-# FirstGen CD Docs
-/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @thisrohangupta @shylajasun
 # CD FAQs
 /docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @vishal-av @shylajasun
 # GitEx FAQs
@@ -89,8 +87,6 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Roadmap/data/ccmData.ts @Rohit-Kaliki @joeyouss @rajarshee-harness
 /src/components/Docs/data/cloudCostManagementData.ts @Rohit-Kaliki @joeyouss @rajarshee-harness
 
-# FirstGen CCM Docs
-/docs/category/cloud-cost-management/ @Rohit-Kaliki @joeyouss
 # CCM FAQs
 /docs/faqs/cloud-cost-management-faqs/ @Rohit-Kaliki @joeyouss
 
@@ -123,10 +119,6 @@ static/  @rohanmaharjan100 @wei-harness
 /release-notes/self-managed-enterprise-edition.md @pratmit @abhishekharness @ivikramsahu @anshul-harness @raviyadalam 
 /src/components/Roadmap/data/platformData.ts @pratmit @abhishekharness @ivikramsahu
 /src/components/Docs/data/platformData.ts @pratmit @abhishekharness @ivikramsahu
-# FirtGen Platform Docs
-/docs/category/platform-firstgen/ @pratmit @abhishekharness @ivikramsahu
-# FirstGen SMP Docs
-/docs/category/self-managed-enterprise-edition-fg/ @pratmit @abhishekharness @ivikramsahu
 /docs/self-managed-enterprise-edition/ @pratmit @abhishekharness @ivikramsahu
 # Delegate FAQs
 /docs/faqs/harness-delegate-faqs/ @pratmit @abhishekharness @ivikramsahu
