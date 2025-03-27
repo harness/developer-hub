@@ -7,7 +7,9 @@ sidebar_label: Get Started
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import TabFragmentActivator from '@site/src/components/TabFragmentActivator/TabFragmentActivator';
 
+<TabFragmentActivator />
 
 Welcome to the Harness IaCM onboarding guide. Discover how Harness streamlines and secures your infrastructure management with Infrastructure as Code Management (IaCM).
 
@@ -67,13 +69,12 @@ Harness recommends configuring your connector before creating your workspace, ho
 ### Add connectors
 To configure your connectors before you create a Workspace, go to the following interactive guides:
 <Tabs>
-<TabItem value="Cloud Provider connector">
+<TabItem value="cloudProviderConnector" label="Cloud Provider connector">
 <DocVideo src="https://app.tango.us/app/embed/3d7ee504-7664-4805-a93c-5796b3db939b" title="Set up a Cloud Provider Connector" />
 </TabItem>
-<TabItem value="Git repository connector">
-<DocVideo src="https://app.tango.us/app/embed/33ce65a9-69bb-418d-9328-cd5198dcf6e5" title="Set up a Git Repository Connector" />
-</TabItem>
-<TabItem value="Step-by-step">
+<TabItem value="gitRepoConnector" label="Git Repository connector" attributes={{id: "gitRepoConnector"}}>
+<DocVideo src="https://app.tango.us/app/embed/33ce65a9-69bb-418d-9328-cd5198dcf6e5" title="Set up a Git Repository Connector"/></TabItem>
+<TabItem value="steps" label="Step-by-step" attributes={{id: "steps"}}>
 
 When adding any connector, start by:
 
