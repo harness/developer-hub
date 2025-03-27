@@ -107,9 +107,11 @@ The following deprecated API endpoints are longer supported:
 
 ## March 2025 
 
-### Version 1.82.x <!--March 26, 2025-->
+### Version 1.82.x <!--March 27, 2025-->
 #### Fixed issues
 - Fixed the error message displayed when LDAP login fails due to invalid credentials. [PL-60508]
+- Fixed an issue in the authentication flow between the delegate and manager. Previously, if a delegate sent an expired JWT token, it would receive a **token revoked** exception instead of a **token expired** exception. This behavior has now been corrected. [PL-61340]
+- Updated Cloud Credits routing to exclude the module prefix, resolving navigation issues. Users can now access Cloud Credits seamlessly while navigating through a module. [PL-61140]
 
 #### New features and enhancements
 - Enhanced service account inheritance, allowing a single service account at the account level to be inherited at the project or organization level. This enables users to manage all resources with a single service account. [PL-58311]
