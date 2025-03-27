@@ -139,9 +139,8 @@ For example, a destination path for a stage that deploys **todolist.war** using 
 `$HOME/tutorial-service-ssh2/ssh-tutorial-env/todolist.war`
 
 :::note
-
-Always use `$` in the beginning of the path when you reference an environment variables in a Command step.
-
+1. Always use `$` in the beginning of the path when you reference an environment variables in a Command step.
+2. Harness pipeline and stage variables are automatically added as environment variables during execution in the Command step.
 :::
 
 You can use any path on the target hosts you want. Harness will not create the path if it does not exist.

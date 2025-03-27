@@ -14,7 +14,7 @@ This topic describes Delegate-Driven Chaos Infrastructure, its characteristics, 
 
 DDCR, aka [Harness Delegate or DDCI (Delegate-Driven Chaos Infrastructure) or DDCR (Delegate-Driven Chaos Runners)](/docs/platform/delegates/delegate-concepts/delegate-overview) is a service that runs in your local network that helps connect your infrastructure, artifacts with Harness Manager. It allows for quick onboarding and optimized chaos execution for microservices-based targets on Kubernetes.
 
-To install a new Delegate, go to [enable chaos](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#enable-chaos)
+To install a new Delegate, go to [enable chaos](/docs/chaos-engineering/use-harness-ce/infrastructures/types/)
 
 The diagram below describes the high-level flow of how you can [discover services](/docs/chaos-engineering/use-harness-ce/service-discovery) and [create application maps](/docs/chaos-engineering/use-harness-ce/application-map).
 
@@ -71,3 +71,4 @@ Earlier, resilience score was measured at the experiment level. With Harness Del
 
 - [Permissions Required](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/permissions)
 - [Install Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/installation)
+- [Delegate versus Dedicated infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr-vs-dedicated)

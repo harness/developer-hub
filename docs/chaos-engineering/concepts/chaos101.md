@@ -107,7 +107,7 @@ HCE doesn't just focus on fault injection; it helps you set up a fully operation
 
 1. [Fulfill the resource requirements and facilitate the permissions](/docs/chaos-engineering/getting-started/saas/): You can create resources or get the required permissions to create the necessary resources. For example, to execute a Kubernetes fault, you may need the permissions mentioned [here](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/permissions/fault-wise-permission).
 
-2. [Add an environment](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#create-environment) and [create an infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#enable-chaos): A chaos experiment is performed within an environment that houses the chaos-enabled infrastructure.
+2. [Add an environment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#create-environment) and [create an infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes#install-dedicated-chaos-infrastructure): A chaos experiment is performed within an environment that houses the chaos-enabled infrastructure.
 
 3. [Create and run a chaos experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments): You can decide which resources to target and execute the chaos experiments on.
 

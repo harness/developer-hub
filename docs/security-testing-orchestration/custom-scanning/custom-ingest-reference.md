@@ -20,7 +20,7 @@ The Custom Ingest step is intended for scanners that have no supported integrati
 ## For more information
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 
 <StoMoreInfo />
@@ -113,7 +113,7 @@ import StoSettingTargetWorkspace from '/docs/security-testing-orchestration/sto-
 #### Ingestion File
 
 
-import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/ingest/file.md';
 
 
 
@@ -174,7 +174,7 @@ Here are some topics that describe end-to-end workflows for ingesting SARIF and 
 
 - [Gitleaks step configuration](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)
 
-- [Checkmarx step configuration](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference)
+- [Checkmarx step configuration](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference)
 
 - [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/run-scans-using-github-actions)
 

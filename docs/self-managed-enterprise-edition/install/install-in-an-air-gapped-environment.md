@@ -121,6 +121,7 @@ To install via Helm, do the following:
 
     ```yaml
     global:
+      airgap: true
       imageRegistry: "private-123.com"
     ```
 2. Run the Helm install command.

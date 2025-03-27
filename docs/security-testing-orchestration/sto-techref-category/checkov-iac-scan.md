@@ -16,7 +16,7 @@ import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-cat
 <br/>
 <br/>
 
-You can easily set up a Checkov step to run automated scans in your Harness pipeline. This step scans the IaC repository you specify using the Checkov CLI. Then it correlates, deduplicates, and ingests the scan results into Harness. You can see your scan results in the [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results) tab of the pipeline execution.  
+You can easily set up a Checkov step to run automated scans in your Harness pipeline. This step scans the IaC repository you specify using the Checkov CLI. Then it correlates, deduplicates, and ingests the scan results into Harness. You can see your scan results in the [Security Tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) tab of the pipeline execution.  
 
 ## Important notes for running Checkov scans in STO 
 
@@ -25,7 +25,7 @@ You can easily set up a Checkov step to run automated scans in your Harness pipe
 - You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
 

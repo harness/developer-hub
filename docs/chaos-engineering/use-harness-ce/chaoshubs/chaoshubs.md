@@ -6,6 +6,7 @@ redirect_from:
 - /docs/chaos-engineering/features/chaos-hubs/introduction
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/introduction
 - /docs/category/chaoshub
+- /docs/category/chaos-hubs
 ---
 
 ## ChaosHub

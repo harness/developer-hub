@@ -43,7 +43,7 @@ export default function CE() {
               Resilience measurement of the services can be automated such that informed 
               decisions are taken in the change management process of the Software 
               Delivery Life Cycle or SDLC. The practice of introducing, implementing,
-              and improvising the  **Resilience Testing**  is made easy by the chaos experimentation
+              and improvising the <strong>Resilience Testing</strong> is made easy by the chaos experimentation
               process.
 
               

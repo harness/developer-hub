@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 This section describes how to set up each of the external scanners supported by Harness STO.
 
-For more information about STO support, go to [What's supported in STO](/docs/security-testing-orchestration/whats-supported).
+For more information about STO support, go to [What's supported in STO](/docs/security-testing-orchestration/whats-supported/sto-deployments).
 
 
 ## Scanner categories supported by STO
@@ -33,7 +33,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
 
 ## Scanners supported by STO
 
-import StoSupportedScanners from './shared/_sto-supported-scanners.md';
+import StoSupportedScanners from './shared/sto-supported-scanners.md';
 
 <StoSupportedScanners />
 
@@ -46,7 +46,7 @@ import StoInfraSupport from '/docs/security-testing-orchestration/sto-techref-ca
 
 ## Ingestion formats supported by STO
 
-import StoSupportedFormats from './shared/_sto-supported-ingestion-formats.md';
+import StoSupportedFormats from './shared/sto-supported-ingestion-formats.md';
 
 <StoSupportedFormats />
 
