@@ -58,11 +58,15 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 ### Version 1.82.3
 
 #### New Features and Enhancements
-- Users can now select the Project that includes the workspace you want to run inside **Terraform Cloud Run Step**. (**CDS-98549, ZD-63376**)
+- Users can now select the Project that includes the workspace you want to run inside **Terraform Cloud Run Step**. Currently, this feature is behind the feature flag `CDS_TF_PROJECTS_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.  (**CDS-98549, ZD-63376**)
 
 - Users can now fetch Service Manifest source i.e Connector URL where manifest is stored using an expressions `<+manifests.MANIFEST_ID.store.connectorUrl>`. Currently, this feature is behind the feature flag `CDS_MANIFEST_CONNECTOR_URL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-103096, ZD-77202**)
 
 - Users can now configure Custom `maxConcurrency` in multideployment stage in Harness. Currently, this feature is behind the feature flag `CDS_CUSTOM_MAX_CONCURRENCY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-72941, ZD-44794**)
+
+- Users can now leverage cross-project access with the GCP OIDC connector in both Kubernetes and native Helm environments. (**CDS-104508, ZD-77202**)
+
+- Users can now select the **Service** entity for both **On Run** and **On Save** event while creating policy set.Currently, this feature is behind the feature flag `CDS_ENABLE_SERVICE_ON_RUN_OPA_EVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 - Users can now easily review the headers set by Webhook triggers directly in the UI. (**PIPE-24648, ZD-77202**)
 
