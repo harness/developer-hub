@@ -15,7 +15,6 @@ With notifications management, you can configure notifications for the following
 1. Pipeline
 2. Delegate
 3. Chaos Experiment 
-4. Service Level Objectives
 
 To receive notifications for specific events or conditions related to these resource types, you need to configure appropriate rules. While notifications can be set up for all the above resources, we will configure a centralised notification for Pipelines at a specific scope for now. 
 
@@ -99,7 +98,7 @@ In this example, we are going to discuss setting up notification management of P
 
                 ![delegate-mode](./static/delegate-setup.png)
 
-            Once the connectivity mode is configured, select the [**Channel Type**](/docs/platform/notifications/notification-settings#configure-pipeline-notifications) to proceed.
+            Once the connectivity mode is configured, select the [**Channel Type**](/docs/platform/notifications/notification-settings#configure-pipeline-notifications) and add details related to the channel type to proceed.
 
                 ![](./static/create-new-channel.png)
 
