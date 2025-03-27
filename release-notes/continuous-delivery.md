@@ -66,7 +66,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Users can now leverage cross-project access with the GCP OIDC connector in both Kubernetes and native Helm environments. Currently, this feature is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-104508, ZD-77202**)
 
-- Users can now select the **Service** entity for both **On Run** and **On Save** event while creating policy set.Currently, this feature is behind the feature flag `CDS_ENABLE_SERVICE_ON_RUN_OPA_EVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+- Users can now select the **Service** entity for both **On Run** and **On Save** event while creating policy set.Currently, this feature is behind the feature flag `CDS_ENABLE_SERVICE_ON_RUN_OPA_EVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-25407**)
 
 - Users can now easily review the headers set by Webhook triggers directly in the UI. (**PIPE-24648, ZD-77202**)
 
