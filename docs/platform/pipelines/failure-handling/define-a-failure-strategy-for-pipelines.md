@@ -8,16 +8,11 @@ redirect_from:
 
 Pipeline rollback is a type of [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) that allows you to roll back the entire pipeline upon stage or step failure.
 
-:::info note
-Pipeline Rollback strategy applies to CD step and stages, STO stages, and CI stages. Pipeline rollback failure strategy defined in STO and CI stages depends on the rollback steps defined by the user.
+:::info
+
+Pipeline Rollback is available by default for CD steps and stages. For all other stages, pipeline rollback is behind the feature flag `CDS_ALLOW_EXPRESSION_RESOLUTION_PIPELINE_ROLLBACK`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+
 :::
-
-
-Currently, the Rollback Pipeline failure strategy is available for the following deployment types only:
-
-* Kubernetes
-* Native Helm
-* Amazon Elastic Container Service (ECS)
 
 ## Configure a rollback failure strategy
 
