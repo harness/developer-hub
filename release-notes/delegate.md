@@ -91,6 +91,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 25.03.85504 <!-- March 27, 2025-->
 
+### Fixed Issues
+
+- Enhanced system stability and regular checks implemented to ensure reliability.
+
+### Version 25.03.85503 <!-- March 27, 2025-->
+
 #### Fixed issues
 
 - Added a validation check to ensure the correct client is used for OC. [CDS-107476]
