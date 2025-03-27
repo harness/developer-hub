@@ -17,7 +17,7 @@ With notifications management, you can configure notifications for the following
 
 To receive notifications for specific events or conditions related to these resource types, you need to configure appropriate rules. While notifications can be set up for all the above resources, we will configure a centralised notification for Pipelines at a specific scope for now. 
 
-You can set up notification for Pipeline at following [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-sces): **Account**, **Organization** and **Project Level**. 
+You can set up notification for Pipeline at all the [scopes](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): **Account**, **Organization** and **Project**. 
 
 ### **Account Level**
 
