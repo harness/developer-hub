@@ -114,7 +114,7 @@ The following deprecated API endpoints are longer supported:
 - Updated Cloud Credits routing to exclude the module prefix, resolving navigation issues. Users can now access Cloud Credits seamlessly while navigating through a module. [PL-61140]
 
 #### New features and enhancements
-- Enhanced service account inheritance, allowing a single service account at the account level to be inherited at the project or organization level. This enables users to manage all resources with a single service account. [PL-58311]
+- Enhanced service account inheritance, allowing a single service account at the account level to be inherited at the project or organization level. This enables users to manage all resources with a single service account. To enable this functionality, use the feature flag `PL_ENABLE_SERVICE_ACCOUNT_HIERARCHY`. [PL-58311,PL-61532]
 
 ### Version 1.81.x <!--March 20, 2025-->
 #### Fixed issues
