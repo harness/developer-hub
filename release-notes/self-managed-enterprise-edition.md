@@ -316,6 +316,8 @@ gsutil -m cp \
 #### Continuous Integration
 
 - Fixed an issue where the tooltip under the Stage Savings banner on the Executions page overlapped with the navigation bar.[CI-15637]
+- Fixed an issue where enabling Build Intelligence caused Python shell executions to fail due to an extra newline being appended. The autoinjection script has been corrected for **run**, **runtest**, and **runtestv2** in Build Intelligence. [CI-15914, ZD-78087]
+- Resolved an issue with the CI `repoName` filter on the execution list page. Previously, due to Elasticsearch filtering inconsistencies, users were not seeing the correct responses. This fix ensures proper filtering when the execution list page is served via Elasticsearch, which is controlled by the feature flags `PIPE_ENABLE_ELASTIC_SEARCH` and `PIPE_ENABLE_DATA_RETENTION`. [PIPE-25112, ZD-77259, ZD-77611]
 
 #### Chaos Engineering
 
@@ -359,6 +361,15 @@ gsutil -m cp \
 :::danger
   Updating an application that contains a `valuesObject` while using an agent older than version 0.88 may result in the complete removal of the `valuesObject`. To prevent data loss, please upgrade the agent before proceeding. Additionally, attempting to access an application with a `valuesObject` will cause the task to fail and return a raw version of the `valuesObject`, which can not be modified in the UI.
 :::
+
+#### Continuous Integration
+
+- The Build Intelligence flag can now be toggled on and off based on an already resolved variable value, providing greater flexibility in pipeline configurations [CI-15706].
+- The new input `PLUGIN_IGNORE_PATHS` [available in `plugins/kaniko:1.10.6`] allows users to specify multiple paths to ignore during the build. Each path is trimmed and appended as a separate `--ignore-path` flag in the Kaniko build process. [CI-16193]
+- 'Save Cache to S3' now supports Zstd compression for faster archiving and improved upload/download efficiency [CI-16010].
+- Improved the robustness of the Build Intelligence step by ensuring failures in bringing up the cache server are ignored. This enhancement prevents disruptions and ensures a smoother build process. [CI-16165, ZD-77827]
+- Windows rootless mode support is now available for the CI Addon and Lite Engine images. With the new feature flag `CI_ADDON_LE_WINDOWS_ROOTLESS` enabled, Windows infrastructure will pull the rootless versions of these images [harness/ci-addon and harness/ci-lite-engine], allowing builds to run without root privileges. The rootless image versions are now available as rootless-1.16.61. [CI-14868, ZD-72927, ZD-77194]
+
 
 ## Mar 25, 2025, Patch Version 0.26.10 <!-- Draft : Mar 25, 2025 -->
 
