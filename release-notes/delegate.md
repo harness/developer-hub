@@ -103,6 +103,13 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 - Added support for an optional values.yml file in Helm charts. [CDS-108183]
 - Added support for anonymous authentication in Helm OCI. [CDS-108311]  
 
+
+### Version 25.03.85405 <!--  March 21, 2025 -->
+
+#### Hotfix
+
+- Fixed the slot deployment timeout issue in azure deployments [CDS-108129]
+
 ### Version 25.03.85403 <!-- March 19, 2025 -->
 
 #### Fixed issues
