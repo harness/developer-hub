@@ -348,6 +348,10 @@ gsutil -m cp \
 
 - Added support for delegate version overrides at multiple scopes (account, org, project) with and without tags, providing greater flexibility in managing delegate updates. [PL-58099]
 
+- Updated the minimum Kubernetes version requirement from 1.25 to 1.27 to ensure compatibility with the latest features and security updates.  
+
+- Configured services to use image digests for improved security and deployment consistency.
+
 #### Chaos Engineering
 
 - Running timeline view in the **Execution View**: You can track the real-time execution of chaos experiments for improved visibility. [CHAOS-6672]
