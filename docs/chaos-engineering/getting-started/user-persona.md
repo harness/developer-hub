@@ -69,13 +69,13 @@ As a beginner, once you have fulfilled the [prerequisites](https://developer.har
 ```mermaid
 flowchart TD
   %% Entry point
-  START([🚀 Start Chaos Engineering])
+  START([🚀 Which version of Chaos Engineering do you want to use? ])
   START --> SaaS["Harness SaaS"]
   START --> SMP["Self-Managed Platform (SMP)"]
 
   %% -------------------------------
   %% SaaS Journey
-  subgraph SaaS_Flow [SaaS Journey]
+  subgraph SaaS_Flow [SaaS]
     SaaS --> SaaS_Onboard["Sign Up / Connect Harness Account"]
     SaaS_Onboard["Sign Up / Connect Harness Account"] --> Env["Create Environment"]
     Env["Create Environment"] --> SaaS_Install["Install Kubernetes Agent"]
@@ -88,7 +88,7 @@ flowchart TD
 
   %% -------------------------------
   %% SMP Journey
-  subgraph SMP_Flow [Self-Managed Platform Journey]
+  subgraph SMP_Flow [Self-Managed Platform]
     SMP --> SMP_Install["Install SMP"]
     SMP_Install --> SMP_CP["Set up Control Plane"]
     SMP_Install --> SMP_EP["Set up Execution Plane"]
