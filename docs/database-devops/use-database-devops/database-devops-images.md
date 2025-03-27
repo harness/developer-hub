@@ -12,10 +12,10 @@ Harness publishes `plugins/drone-liquibase` with `x.y.z-{liquibaseVersion}`, whe
 Here are some examples of Harness DB Devops images and their purposes:
 
 * `plugins/download-artifactory`: Used for downloading artifacts from Artifactory.
-* `plugins/drone-liquibase:1.0.0-4.27`: Default Liquibase plugin for database operations.
+* `plugins/drone-liquibase:1.1.0-4.27`: Default Liquibase plugin for database operations.
 * `harness/drone-git`: Used to clone Git repositories.
-* `plugins/drone-liquibase:1.0.0-4.27-mongo`: Liquibase plugin for MongoDB.
-* `plugins/drone-liquibase:1.0.0-4.27-spanner`: Liquibase plugin for Google Spanner.
+* `plugins/drone-liquibase:1.1.0-4.27-mongo`: Liquibase plugin for MongoDB.
+* `plugins/drone-liquibase:1.1.0-4.27-spanner`: Liquibase plugin for Google Spanner.
 
 ## Configure Harness DB Devops Image Versions
 
@@ -35,10 +35,10 @@ Response:
 ```json
 {
     "artifactoryTag": "plugins/download-artifactory:1.0.0",
-    "defaultTag": "plugins/drone-liquibase:1.0.0-4.27",
+    "defaultTag": "plugins/drone-liquibase:1.1.0-4.27",
     "gitCloneTag": "harness/drone-git:1.6.4-rootless",
-    "mongoTag": "plugins/drone-liquibase:1.0.0-4.27-mongo",
-    "spannerTag": "plugins/drone-liquibase:1.0.0-4.27-spanner"
+    "mongoTag": "plugins/drone-liquibase:1.1.0-4.27-mongo",
+    "spannerTag": "plugins/drone-liquibase:1.1.0-4.27-spanner"
 }
 ```
 

@@ -37,10 +37,26 @@ The **SLSA Generation** step can be used in two workflows depending on how you b
 Follow the instructions below to configure the **SLSA Generation** step.
 
 - Search and add the **SLSA Generation** step to your pipeline. It is important to place this step immediately after the steps that complete your image-building process, as it requires the artifact digest as input.
-- **Artifact Source**: Configure your artifact source by selecting from the options available in the dropdown menu. You can choose from **DockerHub**, **ECR**, **GCR**, **ACR**, or **GAR**. Select the corresponding artifact source tab below for detailed instructions on configuration.
+- **Artifact Source**: Configure your artifact source by selecting from the options available in the dropdown menu. You can choose from **DockerHub**, **ECR**, **ACR**, or **GAR**. Select the corresponding artifact source tab below for detailed instructions on configuration.
+
+:::warning Deprecation Alert
+
+
+Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the SLSA Generation step.
+
+:::
 
 <Tabs>
-  <TabItem value="dockerhub" label="DockerHub" default>
+
+<TabItem value="har" label="HAR" default>
+
+* **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
+
+* **Image:** Enter the name of your image with tag, such as `imagename:tag`.
+
+</TabItem>
+
+  <TabItem value="dockerhub" label="DockerHub">
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
@@ -50,7 +66,7 @@ Follow the instructions below to configure the **SLSA Generation** step.
 
 </TabItem>
 
-<TabItem value="ecr" label="ECR" default>
+<TabItem value="ecr" label="ECR">
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Elastic container registry where the artifact is stored.
 
@@ -65,22 +81,7 @@ Follow the instructions below to configure the **SLSA Generation** step.
 
 </TabItem>
 
-<TabItem value="gcr" label="GCR" default>
-
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
-
-* **Image:** Enter the name of your image, example `my-image`.
-
-* **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
-
-* **Host:** Enter your GCR Host name. The Host name is regional-based. For instance, a common Host name is `gcr.io`, which serves as a multi-regional hostname for the United States. 
-
-* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
-
-
-</TabItem>
-
-<TabItem value="acr" label="ACR" default>
+<TabItem value="acr" label="ACR">
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
 
@@ -92,7 +93,7 @@ Follow the instructions below to configure the **SLSA Generation** step.
 
 </TabItem>
 
-<TabItem value="gar" label="GAR" default>
+<TabItem value="gar" label="GAR">
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
 

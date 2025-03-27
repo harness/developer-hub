@@ -19,7 +19,7 @@ This topic describes how you can create chaos experiments that consist of chaos 
 
 ### Create Environment
 
-Before you create an experiment, you need an environment where you have to [enable a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable).
+Before you create an experiment, you need an environment where you have to [enable a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/).
 Therefore, [create an environment](/docs/chaos-engineering/getting-started/saas/#step-3-create-an-environment).
 
 
@@ -33,7 +33,7 @@ To edit or delete the environment, select the **`⋮`** icon against the name of
 
 After creating your environment, [create an infrastructure](/docs/chaos-engineering/getting-started/saas/#step-4-create-an-infrastructure) within it. The chaos experiment is executed within this infrastructure. 
 
-### Create a Chaos Experiment
+## Create Chaos Experiment
 
 You can add one or more chaos faults to a chaos experiment and execute it. [Create an experiment using the interactive guide or step-by-step](/docs/chaos-engineering/getting-started/saas/#step-7-construct-a-chaos-experiment) with one chaos fault, namely, pod delete, which has one resilience probe associated with it.
 
