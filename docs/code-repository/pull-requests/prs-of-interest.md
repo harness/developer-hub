@@ -1,5 +1,5 @@
 ---
-title: Your PRs
+title: My PRs
 description: A personalized pull request page showing PRs created by the user and those awaiting their review, available at the account, organization, and project levels.
 sidebar_position: 40
 ---
