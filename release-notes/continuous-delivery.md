@@ -55,6 +55,23 @@ Google Container Registry (GCR) is deprecated and scheduled to shut down on **Ma
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+### Version 1.82.3
+
+#### New Features and Enhancements
+- Users can now select the Project that includes the workspace you want to run inside **Terraform Cloud Run Step**. (**CDS-98549, ZD-63376**)
+
+- Users can now fetch Service Manifest source i.e Connector URL where manifest is stored using an expressions `<+manifests.MANIFEST_ID.store.connectorUrl>`. Currently, this feature is behind the feature flag `CDS_MANIFEST_CONNECTOR_URL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-103096, ZD-77202**)
+
+- Users can now configure Custom `maxConcurrency` in multideployment stage in Harness. Currently, this feature is behind the feature flag `CDS_CUSTOM_MAX_CONCURRENCY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-72941, ZD-44794**)
+
+- Users can now easily review the headers set by Webhook triggers directly in the UI. (**PIPE-24648, ZD-77202**)
+
+
+#### Fixed Issues
+
+- Previously, the version data shown in the service summary page for each environment did not match the actual version deployed to the cluster. This was caused by incorrect update logic for the deployment info list used during instance synchronization in native Helm deployments. As a result, stale versions were being picked up and displayed in the UI. This issue is now resolved. The deployment version displayed in the service summary page correctly reflects the actual version deployed to the cluster. (**CDS-101458, ZD-78480**)
+
+
 ### Version 1.81.3
 
 #### New Features and Enhancements
