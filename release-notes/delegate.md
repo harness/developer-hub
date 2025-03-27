@@ -91,6 +91,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 25.03.85504 <!-- March 27, 2025-->
 
+### Fixed Issues
+
+- Fixed an issue where the Harness delegate incorrectly used local container credentials instead of the OIDC access token when listing GCP projects via an OIDC-authenticated connector. This is now resolved behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`, ensuring the delegate lists projects correctly based on its IAM principal. [CDS-108481]
+
+### Version 25.03.85503 <!-- March 27, 2025-->
+
 #### Fixed issues
 
 - Added a validation check to ensure the correct client is used for OC. [CDS-107476]
