@@ -123,6 +123,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 - Starting April 01, 2025, Harness will transition to Google Artifact Registry (GAR) as the default public registry. All Harness container images will be pulled from GAR by default, as Docker Hub will enforce stricter limits on public image pulls starting April 01, 2025. [PL-60930]
+- Added support to send [Central notifications through Delegate](/docs/platform/notifications/centralised-notification/#setting-up-notifications-management). Users can now select the connectivity mode as either Harness Platform or Harness Delegate when creating a central notification channel. [PL-57851]
 
 
 ### Version 1.80.x <!--March 10, 2025-->
