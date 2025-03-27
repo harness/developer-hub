@@ -94,6 +94,8 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 #### Fixed issues
 
 - Added a validation check to ensure the correct client is used for OC. [CDS-107476]
+- Added support for an optional values.yml file in Helm charts. [CDS-108183]
+- Added support for anonymous authentication in Helm OCI. [CDS-108311]  
 
 ### Version 25.03.85403 <!-- March 19, 2025 -->
 
