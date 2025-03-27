@@ -83,7 +83,7 @@ Under **Create Condition** provide, Condition Name and **Select Pipeline Events*
 
 ![](./static/set_channels.png)
 
-Under **Select Channel** you can choose the already created channel at that scope or you can create a [**New Channel**](/docs/platform/notifications/notification-settings.md).
+Under **Select Channel** you can choose the already created channel at that scope or you can create a **New Channel**.
 
 6.1. To configure a New Channel, click New Channel and enter a Channel Name.
     
