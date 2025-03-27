@@ -83,7 +83,7 @@ Below is an example AWS policy to execute the fault.
       </tr>
       <tr>
         <td> EBS_VOLUME_TAG </td>
-        <td> Common tag for target volumes. It is in the format <code>key:value</code> (for example, 'team:devops'). For more information, go to <a href="#target-single-volume"> target single volume.</a></td>
+        <td> Common tag for target volumes. It is in the format <code>key=value</code> (for example, 'team=devops'). For more information, go to <a href="#target-single-volume"> target single volume.</a></td>
         <td> </td>
       </tr>
       <tr>
@@ -155,7 +155,7 @@ spec:
         env:
         # tag of the EBS volume
         - name: EBS_VOLUME_TAG
-          value: 'key:value'
+          value: 'key=value'
         # region for the EBS volume
         - name: REGION
           value: 'us-east-1'
@@ -189,7 +189,7 @@ spec:
           value: '100'
         # tag of the EBS volume
         - name: EBS_VOLUME_TAG
-          value: 'key:value'
+          value: 'key=value'
         # region for the EBS volume
         - name: REGION
           value: 'us-east-1'
