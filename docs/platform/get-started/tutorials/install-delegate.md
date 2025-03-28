@@ -162,7 +162,6 @@ helm repo add harness-delegate --ca-file <.PEM_FILE_PATH> <HELM_CHART_URL_FROM_U
 For more information on requirements for air-gapped environments, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 
 :::
-1.27.8
 7. Run the command.
 
 </TabItem>
