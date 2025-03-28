@@ -115,7 +115,7 @@ Deploy a Harness Delegate onto the GKE cluster.
     your-delegate name                   1/1     Running   0          2m23s
     ```
 
-## Create Service Account and IAM binding for Harness Delegate Deployment
+## Create Service Account and IAM binding 
 
 This section outlines the steps to configure GKE Workload Identity, allowing workloads to securely access Google Cloud services using IAM roles.
 
