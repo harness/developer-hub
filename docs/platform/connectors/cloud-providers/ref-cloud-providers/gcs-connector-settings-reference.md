@@ -148,6 +148,17 @@ When the checkbox is enabled, the connector will allow access to multiple GCP pr
     * The user will be prompted to select the target project (e.g., project2), in addition to the original project (project1).
     * With both project values, relevant APIs will be invoked in the workflow using both projects.
 
+**Configuring the Project at the Infrastructure Level**
+
+To configure the **Project** at the infrastructure level, follow these steps:
+
+1. Navigate to **Project Settings** -> **Environment**, and select your desired Kubernetes environment.
+2. In the **Infrastructure Definition** section, choose **Deployment Type** as **Kubernetes** and **Infrastructure Type** as **Google Kubernetes Engine**.
+3. In the **Cluster Details** section, select the previously configured GCP OIDC cluster. 
+4. After selecting the cluster, you'll be able to choose the **Project** for this environment.
+
+For more detailed instructions, refer to [Google Kubernetes Engine (GKE)](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure/#google-kubernetes-engine-gke).
+
 #### Custom Parameters 
 
 You can add attribute conditions in your Workload Identity Pools under Workload Identity Federation. 
