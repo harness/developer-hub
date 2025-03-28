@@ -129,6 +129,25 @@ To connect to GCP with OIDC, you must configure an [OIDC identity provider](http
 
 If accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector. For instructions, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
+#### Enable Cross-Project Access
+
+You can now have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. With this feature, the connector will allow access to multiple GCP projects.
+
+:::note
+Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+<div align="center">
+  <DocImage path={require('./static/gcp-oidc-cross-project-access.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+When the checkbox is enabled, the connector will allow access to multiple GCP projects.
+
+**Project Selection Flow**:
+    * Once the checkbox is enabled, the system will query the list of GCP projects accessible via the connector.
+    * The user will be prompted to select the target project (e.g., project2), in addition to the original project (project1).
+    * With both project values, relevant APIs will be invoked in the workflow using both projects.
+
 #### Custom Parameters 
 
 You can add attribute conditions in your Workload Identity Pools under Workload Identity Federation. 
