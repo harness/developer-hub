@@ -16,7 +16,7 @@ import { useEffect } from 'react';
  *    <TabItem value="myTab" label="My Tab" attributes={{id: "myTab"}}>
  * 
  * 4. Link to the tab from another page using the ID as a hash:
- *    [Link to My Tab](/path/to/page#{idProp})
+ *    [Link to My Tab](/path/to/page#{idProp}).
  */
 export default function TabFragmentActivator() {
   useEffect(() => {
