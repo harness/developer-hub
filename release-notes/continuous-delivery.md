@@ -62,7 +62,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
     Real-world changes to the token may not be reflected in the Terraform state, as the API returns a masked value for this field.
   :::
 
-### GitOps Agent Version 0.89.0
+#### GitOps Agent Version 0.89.0
 
 - Introduced leader election logic to reduce load and mitigate performance issues in HA agents where all pods were previously sending updates. With this change, only the elected leader pod performs reconciliation updates, while all agent pods continue to process tasks. This requires permission to create a lease resource for leader election. New agents have these permissions by default, while older agents without them will fall back to the previous behavior where all pods send updates. (**CDS-99072**)
 
