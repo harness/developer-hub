@@ -11,6 +11,8 @@ Labels are a way to categorize and filter Pull Requests in Harness Code. Labels 
 * Quickly identify the team who owns the pull request with labels like `team: frontend` or `team: backend`.
 * Dynamically filter and manage pull requests in a large list.
 
+If you are looking for release tags, go to [Tags](/docs/code-repository/work-in-repos/tag)
+
 ## Types of Labels
 
 All labels in Harness Code are customizable and can be created or modified to fit the specific needs of your project or team. Labels may be simple text values such as `Do not Merge` or include enumerated values like `status: in progress`, `status: completed`, or `status: blocked`. The list of values for a label may be limited to a pre-defined set, or users may be allowed to add new values as needed.
@@ -18,6 +20,16 @@ All labels in Harness Code are customizable and can be created or modified to fi
 # Create a label
 
 Labels, and their values, may be defined at various scopes within Harness Code. Labels can be created at the repository level, project level or even at the organization or account level, depending on your needs and permissions. Labels defined at the repository level will only apply to that specific repository, while project-level labels can be shared across multiple repositories within the same project. Organization-level labels are accessible across all projects and repositories within the organization. Labels created at the Account level are global to the account and available for every user, providing a consistent labeling system.
+
+##### Create a repository scoped label
+1. Go to **Settings** inside your specified repository
+2. Click **Labels**
+3. Click **New Label**
+
+##### Create a label at project, organization, or account scope
+1. In the Code Repository module, go to **Manage Repositories**.
+2. Click **Labels**
+3. Click **+New Label**
 
 :::tip 
 

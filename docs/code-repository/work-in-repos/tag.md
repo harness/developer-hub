@@ -4,7 +4,7 @@ description: Create and manage tags in your Harness Code repositories.
 sidebar_position: 40
 ---
 
-With Harness Code, you can create [tags] in the Harness Code UI or you can [clone your repo](./clone-repos.md) and create tags with command line Git, IDEs, or other Git tools.
+With Harness Code, you can create tags in the Harness Code UI or you can [clone your repo](./clone-repos.md) and create tags with command line Git, IDEs, or other Git tools.
 
 Tags you see in the Harness Code UI exist in your remote repositories. If you're working from a [local clone](./clone-repos.md), you need to push your tags to the remote to see those tags in Harness Code.
 
@@ -18,7 +18,7 @@ This topic explains how to work with tags in the Harness Code UI. For details ab
 4. Enter a **Description**. Descriptions are required for tags created in the Harness UI because they are annotated tags. If you want to create lightweight tags, use command line Git.
 5. Select **Create Tag**.
 
-Upon creating a tag, the **Tags** page shows the name, description, and the commit that the tag is based on, as well as the person who created the tag and the creation date.
+Upon creating a tag, the **Tags** page shows the name, commit, and creation date of the tag.
 
 ## Inspect a tag
 
