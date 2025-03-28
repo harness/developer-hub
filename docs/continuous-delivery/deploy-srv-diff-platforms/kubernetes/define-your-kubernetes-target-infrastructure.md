@@ -197,6 +197,28 @@ infrastructureDefinition:
   allowSimultaneousDeployments: false
 ```
 
+Here is the YAML for a GKE Infrastructure Definition with Cross-Project Access. In this example, the **Project** field is an additional configuration option. This feature is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`. For more information on how to use this feature, navigate to the **Pipeline Studio** tab.
+
+```yaml
+infrastructureDefinition:
+  name: K8s GKE
+  identifier: K8s_GKE
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  environmentRef: k8s_env
+  deploymentType: Kubernetes
+  type: KubernetesGcp
+  spec:
+    connectorRef: kubernetesdelegate
+    project: <+input>
+    cluster: <+input>
+    namespace: test
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
+```
+
 </TabItem>
   <TabItem value="API" label="API">
 
@@ -223,6 +245,26 @@ To add an Infrastructure Definition with the GKE connection method, do the follo
 9. In **Cluster**, select or enter the name of the target cluster.
 10. In **Namespace**, enter the name of an existing namespace where you want to deploy your service.
 11. Select **Save**.
+
+#### Enable Cross-Project Access
+
+You can now have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. With this feature, the connector will allow access to multiple GCP projects.
+
+:::note
+Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Enable the checkbox **Enable Cross Project Access** during the GCP OIDC connector configuration. For more information on GCP OIDC connector configuration, refer [GCP OIDC Connector Settings](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#enable-cross-project-access).
+
+With this checkbox enabled, you will have the option to select the **Project** in the **Cluster details** in the **Infrastructure configuration**.
+
+**Project** is an optional field. 
+- If the project is selected, in the **Cluster** dropdown, only the clusters associated with the selected project will be listed.
+- If the project field is left blank, the **Cluster** dropdown will list all the clusters associated with the **Project Number** configured at the Connector Level.
+
+<div align="center">
+  <DocImage path={require('./static/cross-project-access-gke.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
 </TabItem>
 </Tabs>
