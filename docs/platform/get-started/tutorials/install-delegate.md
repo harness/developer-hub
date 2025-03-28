@@ -61,10 +61,6 @@ For more information, go to [View account info and subscribe to downtime alerts]
 
 Ensure that you have access to a Kubernetes cluster. For the purposes of this tutorial, we will use `minikube`.
 
-import Delk8ssup from '/docs/platform/shared/delegate-install-k8s-supported-vernos.md'
-
-<Delk8ssup />
-
 <h4>Install minikube </h4>
 
 - On Windows
@@ -166,7 +162,7 @@ helm repo add harness-delegate --ca-file <.PEM_FILE_PATH> <HELM_CHART_URL_FROM_U
 For more information on requirements for air-gapped environments, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 
 :::
-
+1.27.8
 7. Run the command.
 
 </TabItem>
