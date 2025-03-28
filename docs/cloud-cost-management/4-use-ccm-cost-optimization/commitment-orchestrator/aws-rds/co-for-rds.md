@@ -80,7 +80,7 @@ The Commitment Orchestrator supports six action states currently:
 * **ERROR**: The approval process encounters an error.
 * **COMPLETED**: The approved recommendation has been successfully completed.
 
-<DocImage path={require('./static/action_state.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/action-state.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ### Action Center UI
 

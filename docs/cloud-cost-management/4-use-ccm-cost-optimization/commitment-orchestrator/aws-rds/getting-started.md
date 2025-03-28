@@ -52,7 +52,7 @@ Post set-up, you can view your dashboard with all the information required . You
 
 You can also view the Log history and Active Actions. 
 
-<DocImage path={require('./static/dashboard_co.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/dashboard-co.png')} width="80%" height="80%" title="Click to view full size image" />
 
 ## Interactive walkthrough for set-up:
  <iframe 

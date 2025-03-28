@@ -26,7 +26,7 @@ To help bring down the cloud costs, providers often offer special discounted rat
 
 2. **Savings Plans**: Savings Plans are a flexible pricing model introduced by cloud service providers that offer customers significant discounts on their usage in exchange for committing to a consistent amount of usage, measured in dollars per hour, for a one- or three-year term. Unlike Reserved Instances, Savings Plans offer more flexibility in terms of instance type, region, and operating system, making them suitable for workloads with variable usage patterns.
 
-<DocImage path={require('./static/ri_vs_sp.png')} width="70%" height="70%" title="Click to view full size image" />
+<DocImage path={require('./static/ri-vs-sp.png')} width="70%" height="70%" title="Click to view full size image" />
 
 Here's how Savings Plans are referred to by major cloud providers:
 
@@ -48,7 +48,7 @@ Commitments in the cloud, such as Reserved Instances (RIs) or other long-term co
 
 At Harness, we are committed to bring in the power of **AI and ML to manage the commitments**. Harness CCM helps you to track everything about your cloud spends so that you have an optimized cloud spend. With our latest addition of **Commitment Orchestrator for AWS EC2 Convertible RIs and Compute Savings Plans**, we focus on managing your commitments for optimal performance and mitigating the problems associated with manual management of commitments.
 
-<DocImage path={require('./static/harness_co.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/harness-co.png')} width="80%" height="80%" title="Click to view full size image" />
 
 ## What is over commitment and under commitment?
 In the context of cloud spend or cloud bills breakdown,, over-commitment and under-commitment typically refer to the utilization of resources compared to the commitments made through discount plans like Reserved Instances (RIs) or Savings Plan (SPs). 
@@ -143,7 +143,7 @@ The Commitment Orchestrator supports six action states currently:
 * **ERROR**: The approval process encounters an error.
 * **COMPLETED**: The approved recommendation has been successfully completed.
 
-<DocImage path={require('./static/action_state.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/action-state.png')} width="90%" height="90%" title="Click to view full size image" />
 
 The Commitment Orchestrator facilitates the following:
 - **SP Purchase Plan**: We send out monthly recommendations for purchasing Compute SP (Savings Plans), provided there isn't an existing SP in place already. Upon receipt, you will have 24 hours to approve the request. If not approved within this timeframe, the recommendation will expire. However, rest assured that our systems will automatically regenerate the recommendation for your consideration.
@@ -165,7 +165,7 @@ In the Action Center UI, you can:
 You can change and select the mode (either automatic approval or manual approval) during the setup flow. 
 :::
 
-<DocImage path={require('./static/native_user_approval.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/native-user-approval.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ## Savings and Pricing Computation for Commitment Orchestrator
 

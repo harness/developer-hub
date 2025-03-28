@@ -51,7 +51,7 @@ After all the set-up steps, you can review and finalise your inputs.
 
 Post set-up, you can view your dashboard with all the information required . You can manipulate the information shown according to the filters such as Instances and Regions and see all the information related to Computer Coverage, Savings, Commitment Utilisation alongwith Log history. This way, the dashboard allows you to easily keep a track of your commitments and make informed decisions.
 
-<DocImage path={require('./static/dashboard_co.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/dashboard-co.png')} width="80%" height="80%" title="Click to view full size image" />
 
 #### Interactive walkthrough for the same:
  <iframe 
