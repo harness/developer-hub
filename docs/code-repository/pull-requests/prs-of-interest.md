@@ -15,4 +15,4 @@ This feature is behind a feature flag `CODE_SPACE_PULLREQ`.
 The page includes two sections:
 
 - **My Pull Requests** – Displays all PRs created by the logged-in user.
-- **Review Requested** – Displays PRs where the logged-in user has been requested to review but has not yet submitted a review.
+- **Review Requested** – Displays PRs where the logged-in user has been requested to review.
