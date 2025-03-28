@@ -15,18 +15,20 @@ IDP 2.0 is launching soon! We're preparing to open early access **end of April 2
 
 ## Summary
 
-Harness IDP 2.0 is a major evolution of the Internal Developer Portal with a Harness-native data model designed for enterprise scale and access control. Here’s what’s new and important:
+**Harness IDP 2.0 is a major evolution of the Internal Developer Portal with a Harness-native data model designed for enterprise scale and access control**. Here’s what’s new and important:
 
 - **Harness-native Platform Hierarchy**: Catalog entities and Workflows now support **Account, Org, and Project scopes**, with built-in granular RBAC.
 - **Native Git Experience**: Bi-directional Git sync of entity YAML files with real-time updates and support for Git branches.
-- **New Catalog & Workflow UI**: YAML is now optional — create and manage entities visually.
-- **Backstage Plugin Compatibility**: Continue using existing plugins without modification.
 - **Easier automation without YAML file**: Entities can now be created and modified inline without having to deal with the YAML file git operations and its complexities.
-- **Feature Flag Rollout**: IDP 2.0 can be enabled via a feature flag. Your existing entities will be automatically upgraded to the new model.
-- **Default Migration Behavior**: Entities will initially live at the **Account scope**. You can later organize them into Org/Project scopes as needed.
-- **Breaking Changes**: The **Catalog APIs** and **entity YAML definitions** have changed. If you’ve built automations or integrations, please review the [breaking changes](#link-TODO).
+- **New Catalog & Workflow UI**: Newer UX, brand new Catalog table with filters and built-in entity creation UX.
+- **Backstage Plugin Support**: Continue using existing plugins without any changes.
+- **Automatic Upgrade**: IDP 2.0 can be enabled via a feature flag. Your existing entities will be automatically upgraded to the new model.
+- **Default Upgrade Behavior**: Entities will initially live at the **Account scope**. You can later organize them into Org/Project scopes as needed.
+- **Breaking Changes**: The **Catalog APIs** and **entity YAML definitions** have changed. If you’ve built automations or integrations, please review the [breaking changes](#breaking-changes).
 
 📬 **IDP 2.0 will be available in beta by late April.** Contact your Harness team or email [idp-interest@harness.io](mailto:idp-interest@harness.io) to request early access.
+
+<DocVideo src="https://www.youtube.com/watch?v=9Rj-jJp3Ehc" />
 
 ## Addressing Key Challenges (Why IDP 2.0)
 
@@ -43,6 +45,8 @@ While IDP 1.0 was a strong foundation built on Backstage, we encountered several
 - **Disconnected from Harness Hierarchy**: Backstage’s System and Domain hierarchy didn’t align with how our customers have structured their organization using Harness platform hierarchy. IDP 2.0 replaces this with native support for Harness Projects and Organizations. This also unlocks use-cases such as auto-create a Software Component using a Harness CD service or aggregate Scorecards at project or org level.
 
 - **Outdated Catalog UX**: The previous Catalog UI was limited and not optimized for the needs of our current customers. IDP 2.0 ships with an improved UX purpose-built for Harness IDP users. It also comes with a built-in "Create entity" experience which makes onboarding a lot easier for end-users.
+
+- **Bugs with Location Entities**: YAML Locations were dedicated entities in 1.0 which would often result in unexpected scenarios causing conflicts when refreshing Components.
 
 ## What's New in IDP 2.0 (Feature Highlights)
 
@@ -103,53 +107,52 @@ This supports safer rollout of IDP automation across environments and teams.
 
 This section outlines the availability of key IDP features across IDP 1.0 and IDP 2.0. Some features from IDP 1.0 have been improved, reimagined, or deprecated. Others are currently in progress and will be included before the GA release.
 
-| Feature                              | IDP 1.0 | IDP 2.0 | Notes                                                                             |
-| ------------------------------------ | ------- | ------- | --------------------------------------------------------------------------------- |
-| 📁 **Catalog**                       |         |         |                                                                                   |
-| Catalog Entity YAMLs                 | ✅      | ✅      | YAML structure has changed in IDP 2.0. See Breaking Changes.                      |
-| UI-based Entity Creation             | ❌      | ✅      |                                                                                   |
-| Edit Entities via UI                 | ❌      | ✅      |                                                                                   |
-| Backstage Plugins Support            | ✅      | ✅      | Existing Backstage plugins are fully supported via annotations.                   |
-| Custom Plugins                       | ✅      | ✅      |                                                                                   |
-| Customizable Entity Page UI          | ✅      | ✅      |                                                                                   |
-| Scorecards view in Catalog table     | ❌      | ✅      |                                                                                   |
-| Scope Filters in Catalog             | ❌      | ✅      |                                                                                   |
-| System/Domain Hierarchy              | ✅      | ❌      | Replaced by Project/Org hierarchy. See Breaking Changes for details.              |
-| Ownership, tags, links, labels, etc. | ✅      | ✅      |                                                                                   |
-| Setting Ownership via UI             | ❌      | ✅      | Ownership can be assigned using selectable users and groups in the UI.            |
-| ⚙️ **Workflows**                     |         |         |                                                                                   |
-| Workflow YAMLs                       | ✅      | ✅      |                                                                                   |
-| Workflow Groups                      | ✅      | ✅      |                                                                                   |
-| Workflow RBAC                        | ❌      | ✅      |                                                                                   |
-| Workflow Scope (Account/Org/Project) | ❌      | ✅      |                                                                                   |
-| Workflow Groups Scope                | ❌      | ✅      |                                                                                   |
-| Gradual Workflow Rollout             | ❌      | ✅      |                                                                                   |
-| UI-based Workflow Creation           | ❌      | ✅      |                                                                                   |
-| 📊 **Scorecards**                    |         |         |                                                                                   |
-| Scorecards in Catalog View           | ❌      | ✅      |                                                                                   |
-| Project/Org filters in Scorecards    | ❌      | Planned | Scorecards can be applied to entities based on their scopes.                      |
-| Scorecards scoped to Project/Org     | ❌      | Planned | Scorecards can be created directly at the Project or Org scope.                   |
-| 🔄 **Git Experience**                |         |         |                                                                                   |
-| YAMLs in Git                         | ✅      | ✅      |                                                                                   |
-| Inline Entities (no Git)             | ❌      | ✅      |                                                                                   |
-| Single Git Connector for all         | ✅      | ✅      | Subject to Git provider rate limits in IDP 1.0.                                   |
-| Per-entity Git Connector             | ❌      | ✅      |                                                                                   |
-| Webhook based Git Sync               | ❌      | ✅      |                                                                                   |
-| PR-based Updates                     | ❌      | ✅      |                                                                                   |
-| Branch-aware Entity Sync             | ❌      | ✅      |                                                                                   |
-| 🔐 **Hierarchy & RBAC**              |         |         |                                                                                   |
-| Platform-level RBAC for Catalog      | ❌      | ✅      |                                                                                   |
-| Granular Permissions for Workflows   | ❌      | ✅      |                                                                                   |
-| Catalog Access Control Policies      | ✅      | ❌      | Deprecated. Use Harness RBAC to manage access in IDP 2.0.                         |
-| 🧰 **Other Core Features & API**     |         |         |                                                                                   |
-| TechDocs (docs like code)            | ✅      | ✅      |                                                                                   |
-| Global Search                        | ✅      | Planned | Since the existing Global Search is powered by Backstage, it will be redesigned to support scoped visibility and Harness platform hierarchy, enabling users to consistently search across all IDP information.                                                                 |
-| Search (Catalog)                     | ✅      | ✅      |                                                                                   |
-| Search (TechDocs)                    | ✅      | ✅      |                                                                                   |
-| Search (External e.g. Confluence)    | ❌      | ❌      | Confluence Plugin is broken and therefore not functional.  |                                                                                  |
-| Entity CRUD APIs                     | ❌      | ✅      | Entities can be created, updated, and deleted using Harness APIs.                 |
-| Catalog Ingestion APIs               | ✅      | ✅      |                                                                                   |
-| Terraform Provider                   | ❌      | Planned |                                                                                   |
+| Feature                              | IDP 1.0 | IDP 2.0 | Notes                                                                                                                                                                                                          |
+| ------------------------------------ | ------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 📁 **Catalog**                       |         |         |                                                                                                                                                                                                                |
+| Catalog Entity YAMLs                 | ✅      | ✅      | YAML structure has changed in IDP 2.0. See [Breaking Changes](#breaking-changes).                                                                                                                              |
+| UI-based Entity Creation             | ❌      | ✅      |                                                                                                                                                                                                                |
+| Edit Entities via UI                 | ❌      | ✅      |                                                                                                                                                                                                                |
+| Backstage Plugins Support            | ✅      | ✅      | Existing Backstage plugins are fully supported via annotations.                                                                                                                                                |
+| Custom Plugins                       | ✅      | ✅      |                                                                                                                                                                                                                |
+| Customizable Entity Page UI          | ✅      | ✅      |                                                                                                                                                                                                                |
+| Scorecards view in Catalog table     | ❌      | ✅      |                                                                                                                                                                                                                |
+| Scope Filters in Catalog             | ❌      | ✅      |                                                                                                                                                                                                                |
+| System/Domain Hierarchy              | ✅      | ❌      | Replaced by Project/Org hierarchy. See Breaking Changes for details.                                                                                                                                           |
+| Ownership, tags, links, labels, etc. | ✅      | ✅      |                                                                                                                                                                                                                |
+| Setting Ownership via UI             | ❌      | ✅      | Ownership can be assigned using selectable users and groups in the UI.                                                                                                                                         |
+| ⚙️ **Workflows**                     |         |         |                                                                                                                                                                                                                |
+| Workflow YAMLs                       | ✅      | ✅      |                                                                                                                                                                                                                |
+| Workflow Groups                      | ✅      | ✅      |                                                                                                                                                                                                                |
+| Workflow RBAC                        | ❌      | ✅      |                                                                                                                                                                                                                |
+| Workflow Scope (Account/Org/Project) | ❌      | ✅      |                                                                                                                                                                                                                |
+| Workflow Groups Scope                | ❌      | ✅      |                                                                                                                                                                                                                |
+| Gradual Workflow Rollout             | ❌      | ✅      |                                                                                                                                                                                                                |
+| UI-based Workflow Creation           | ❌      | ✅      |                                                                                                                                                                                                                |
+| 📊 **Scorecards**                    |         |         |                                                                                                                                                                                                                |
+| Scorecards in Catalog View           | ❌      | ✅      |                                                                                                                                                                                                                |
+| Project/Org filters in Scorecards    | ❌      | Planned | Scorecards can be applied to entities based on their scopes.                                                                                                                                                   |
+| Scorecards scoped to Project/Org     | ❌      | Planned | Scorecards can be created directly at the Project or Org scope.                                                                                                                                                |
+| 🔄 **Git Experience**                |         |         |                                                                                                                                                                                                                |
+| YAMLs in Git                         | ✅      | ✅      |                                                                                                                                                                                                                |
+| Inline Entities (no file in Git)     | ❌      | ✅      |                                                                                                                                                                                                                |
+| Single Git Connector for all         | ✅      | ✅      | Subject to Git provider rate limits in IDP 1.0.                                                                                                                                                                |
+| Per-entity Git Connector             | ❌      | ✅      |                                                                                                                                                                                                                |
+| Webhook based Git Sync               | ❌      | ✅      |                                                                                                                                                                                                                |
+| PR-based YAML file updates           | ❌      | ✅      |                                                                                                                                                                                                                |
+| Branch-aware Entity YAML             | ❌      | ✅      |                                                                                                                                                                                                                |
+| 🔐 **Hierarchy & RBAC**              |         |         |                                                                                                                                                                                                                |
+| Platform-level RBAC for Catalog      | ❌      | ✅      |                                                                                                                                                                                                                |
+| Granular Permissions for Workflows   | ❌      | ✅      |                                                                                                                                                                                                                |
+| Catalog Access Control Policies      | ✅      | ❌      | Deprecated. Use Harness RBAC to manage access in IDP 2.0.                                                                                                                                                      |
+| 🧰 **Other Core Features & API**     |         |         |                                                                                                                                                                                                                |
+| TechDocs (docs like code)            | ✅      | ✅      |                                                                                                                                                                                                                |
+| Search (Catalog)                     | ✅      | ✅      |                                                                                                                                                                                                                |
+| Search (TechDocs)                    | ✅      | ✅      |                                                                                                                                                                                                                |
+| Global Search                        | ✅      | Planned | Since the existing Global Search is powered by Backstage, it will be redesigned to support scoped visibility and Harness platform hierarchy, enabling users to consistently search across all IDP information. |
+| Entity CRUD APIs                     | ❌      | ✅      | Entities can be created, updated, and deleted using Harness APIs.                                                                                                                                              |
+| Catalog Ingestion APIs               | ✅      | ✅      |                                                                                                                                                                                                                |
+| Terraform Provider                   | ❌      | Planned |                                                                                                                                                                                                                |
 
 ## Breaking Changes
 
@@ -164,7 +167,7 @@ All Catalog and Workflow APIs are now delivered directly through Harness Platfor
 - Any automation or custom processes utilizing Backstage-related APIs will require updates to implement the newer CRUD APIs
 - Catalog Ingestion APIs remain functional as before, though RBAC will now be enforced on updated entities
 
-Internal Note: We need to determine equivalent API(s) for the process of creating an entity from a YAML file stored in Git.
+We will provide detailed documentation on the newer API docs and provide sample scripts using the newer Catalog APIs.
 
 ### Entity YAML Definition
 
@@ -315,68 +318,42 @@ You can now directly use Harness IDP Catalog APIs to register new entities using
 
 ## Before You Upgrade (Checklist)
 
-WIP
+Please review the breaking changes above and prepare for the upgrade. We will provide a detailed checklist here soon.
 
 ## Upgrade Path & Rollout Strategy
 
-WIP
-
 - Prepare
-- Review the IDP 2.0 Overview and Upgrade Path document.
-- Train your team on Harness RBAC and hierarchical scoping.
+  - Review the IDP 2.0 Overview and Upgrade Handbook document.
+  - Review the Breaking Changes and assess how it impacts your setup.
 - Enable Feature Flag
-- Contact Harness Support to enable the IDP_2_0 feature flag for your account.
-- Test IDP 2.0 features in a controlled environment.
-- Migrate Entities
-- Convert Backstage-native entities to Harness-native format manually or with Harness-assisted support.
-- Use migration tools to update YAML definitions and validate them in the new model.
+  - Contact Harness Support to enable the `IDP_2_0` feature flag for your account.
+  - If you have a separate dedicated Harness account for testing, enable IDP 2.0 in that environment first.
+- Upgrade
+  - Entities will be automatically upgraded to the new data model and stored at Account level.
+  - Move Workflows which are not ready to use from Account to a Project scope.
+  - Update automation/scripts to leverage new APIs and the Harness-native model.
+  - (Optional) Use our migration tools to enable the new Git Experience and store YAML definitions in Git.
 - Test and Validate
-- Create, edit, and delete entities via the UI and verify functionality.
-- Confirm RBAC settings and Git Experience features (e.g., webhook updates, branching).
-- Test workflows at different scopes (Account, Org, Project).
+  - Create, edit, and delete entities via the UI and verify functionality.
+  - Confirm RBAC settings and Git Experience features (e.g., webhook updates, branching).
+  - Test workflows at different scopes (Account, Org, Project).
 - Roll Out Gradually
-- Introduce IDP 2.0 features to your team incrementally.
-- Monitor for issues and gather feedback.
-- Use the rollback option to revert to IDP 1.0 if needed (supported and safe during migration).
-- Complete Migration
-- Fully transition all entities and workflows to IDP 2.0.
-- Update automation/scripts to leverage new APIs and the Harness-native model.
-- Critical Note: Reverting to IDP 1.0 is fully supported and safe during the migration period, ensuring flexibility and confidence.
+  - Monitor for issues and gather feedback.
+  - Reverting to IDP 1.0 is fully supported and safe during the migration period, ensuring flexibility and confidence.
 
 ## Timeline
 
 - IDP 2.0 beta by end of April 2025.
 - IDP 2.0 will be Generally Available by end of Q2 (July 2025)
-- All customers will be moved over to IDP 2.0 by August 2025.
+- All customers will be moved over to IDP 2.0 by August 2025 tentatively
 
-## FAQs
+<!-- ## FAQs -->
 
-WIP
-
-1. **What happens to my Backstage plugins?**
-
-- IDP 2.0 supports all existing Backstage plugins.
-- Harness-native model does not break compatibility.
-
-2. **What about Custom Plugins?**
-
-- Custom plugins can be migrated and integrated into IDP 2.0.
-- We’ll provide a migration guide for plugin authors.
-
-3. **How will the feature flag upgrade process work?**
-
-- Once enabled, users can migrate to IDP 2.0 at their own pace.
-- Legacy mode will remain available until full adoption.
-
-## Resources
+<!-- ## Resources
 
 WIP
 
 - API Docs
 - Videos
 - Learn the impact of IDP 2.0 on the future of harness IDP (Marketing blog)
-- Entity Schema JSON
-
-```
-
-```
+- Entity Schema JSON -->
