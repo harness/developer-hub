@@ -24,7 +24,7 @@ Example: You push a tag v1 to the repository, which triggers the pipeline execut
 
 ![](./static/tag_event_execution.png)
 
-3. Things other than a new tag can trigger push [events](/docs/platform/triggers/triggers-reference#event-and-actions). In these cases you will need to add payload conditions to ensure your pipeline is only triggered on a tag push. For example:
+3. Other types of pushes (e.g., commits) can also trigger push [events](/docs/platform/triggers/triggers-reference#event-and-actions). To ensure your pipeline is only triggered when a new tag is pushed, you should configure payload conditions in the webhook trigger. In these cases you will need to add payload conditions to ensure your pipeline is only triggered on a tag push. For example:
 
 <Tabs>
 <TabItem value="GitHub">
