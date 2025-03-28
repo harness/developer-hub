@@ -110,7 +110,7 @@ The following deprecated API endpoints are longer supported:
 ### Version 1.82.x <!--March 27, 2025-->
 #### Fixed issues
 - Fixed the error message displayed when LDAP login fails due to invalid credentials. [PL-60508]
-- Fixed an issue in the authentication flow between the delegate and manager. Previously, if a delegate sent an expired JWT token, it would receive a **token revoked** exception instead of a **token expired** exception. This behavior has now been corrected. [PL-61340]
+- Fixed an issue in the authentication flow between the delegate and manager. Previously, if a delegate sent an expired JWT token, it would receive a **token revoked** exception instead of a **token expired** exception. This behavior has now been corrected. [PL-61313]
 - Updated Cloud Credits routing to exclude the module prefix, resolving navigation issues. Users can now access Cloud Credits seamlessly while navigating through a module. [PL-61140]
 
 #### New features and enhancements
