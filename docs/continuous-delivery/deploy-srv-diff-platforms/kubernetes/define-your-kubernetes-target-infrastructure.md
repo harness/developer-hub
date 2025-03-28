@@ -197,6 +197,28 @@ infrastructureDefinition:
   allowSimultaneousDeployments: false
 ```
 
+Here is the YAML for a GKE Infrastructure Definition with Cross-Project Access. In this example, the **Project** field is an additional configuration option. This feature is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`. For more information on how to use this feature, navigate to the **Pipeline Studio** tab.
+
+```yaml
+infrastructureDefinition:
+  name: K8s GKE
+  identifier: K8s_GKE
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  environmentRef: k8s_env
+  deploymentType: Kubernetes
+  type: KubernetesGcp
+  spec:
+    connectorRef: kubernetesdelegate
+    project: <+input>
+    cluster: <+input>
+    namespace: test
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
+```
+
 </TabItem>
   <TabItem value="API" label="API">
 
@@ -232,7 +254,7 @@ You can now have one connector scoped to multiple GCP projects, eliminating the 
 Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-Enable the **checkbox Enable Cross Project Access** during the GCP OIDC connector configuration. For more information on GCP OIDC connector configuration, refer [GCP OIDC Connector Settings](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#enable-cross-project-access).
+Enable the checkbox **Enable Cross Project Access** during the GCP OIDC connector configuration. For more information on GCP OIDC connector configuration, refer [GCP OIDC Connector Settings](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#enable-cross-project-access).
 
 With this checkbox enabled, you will have the option to select the **Project** in the **Cluster details** in the **Infrastructure configuration**.
 

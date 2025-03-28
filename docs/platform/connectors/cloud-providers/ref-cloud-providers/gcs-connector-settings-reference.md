@@ -141,7 +141,9 @@ Currently, the Cross-Project Access feature for GCP OIDC connectors is behind th
   <DocImage path={require('./static/gcp-oidc-cross-project-access.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
 
-When the checkbox is enabled, the connector will allow access to multiple GCP projects.
+Enable the checkbox **Enable Cross Project Access** during the GCP OIDC connector configuration.
+
+Note: This feature is supported when OIDC authentication is used and GKE infrastructure (Kubernetes or Helm) is selected. When the checkbox is enabled, the connector will allow access to multiple GCP projects for Kubernetes and Helm infrastructure types only.
 
 **Project Selection Flow**:
     * Once the checkbox is enabled, the system will query the list of GCP projects accessible via the connector.
@@ -153,11 +155,14 @@ When the checkbox is enabled, the connector will allow access to multiple GCP pr
 To configure the **Project** at the infrastructure level, follow these steps:
 
 1. Navigate to **Project Settings** -> **Environment**, and select your desired Kubernetes environment.
-2. In the **Infrastructure Definition** section, choose **Deployment Type** as **Kubernetes** and **Infrastructure Type** as **Google Kubernetes Engine**.
-3. In the **Cluster Details** section, select the previously configured GCP OIDC cluster. 
-4. After selecting the cluster, you'll be able to choose the **Project** for this environment.
+2. In the **Infrastructure Definition** section, choose **Deployment Type** as **Kubernetes** or **Helm Native** and **Infrastructure Type** as **Google Kubernetes Engine**.
+3. In the **Cluster Details** section:
+  - For the **Connector**: Select the previously configured GCP OIDC cluster with **Enable Cross Project Access** enabled. 
+  - **Project (optional)**: Select the Project you want to use in dropdown
+  - **Cluster**: The cluster dropdown will list all the cluster associated with the selected project
+  - **Namespace**: Enter the target namespace in target cluster.
 
-For more detailed instructions, refer to [Google Kubernetes Engine (GKE)](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure/#google-kubernetes-engine-gke).
+For more detailed instructions on using this for a Kubernetes infrastructure, refer to [Google Kubernetes Engine (GKE) for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure/#google-kubernetes-engine-gke).
 
 #### Custom Parameters 
 
