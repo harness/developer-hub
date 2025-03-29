@@ -2,6 +2,8 @@
 title: Harness AI Code Agent
 description: Harness AI Code Agent for enhanced coding productivity.
 sidebar_position: 52
+redirect_from:
+  - /docs/platform/harness-aida/code-assistant
 ---
 
 Harness AI Code Agent consists of a set of tools that enhance coding experience by providing features such as intelligent code generation, real-time code suggestions, automated test generation, contextual code explanations, and a chat feature for coding queries.
