@@ -127,6 +127,11 @@ This error ocurrs if there's no scan target in the Scanner configuration. To fix
 
 An enhancement has been made to ensure the orchestration step always downloads results for the branch specified in the step, instead of downloading results only for main or master branches. For more information, go to the [STO 1.83.1 release notes](https://developer.harness.io/release-notes/security-testing-orchestration#version-1831).
 
+### Does Harness natively support CrowdStrike image scans with the Security Tests feature?  
+No, Harness does not have native support for CrowdStrike image scans. However, you can build a custom integration to ingest scan results into Harness using the documented approach provided here: https://developer.harness.io/docs/security-testing-orchestration/custom-scanning/ingesting-issues-from-other-scanners#pipeline-exam%5B%E2%80%A6%5Dchema-into-sto 
 
+### How can I integrate CrowdStrike image scans into Harness?  
+You can use the custom integration feature in Harness to ingest issues from CrowdStrike image scans. https://developer.harness.io/docs/security-testing-orchestration/custom-scanning/ingesting-issues-from-other-scanners#pipeline-exam%5B%E2%80%A6%5Dchema-into-sto
+This will allow you to include CrowdStrike scan results in your security tests pipeline.
 
 
