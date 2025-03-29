@@ -21,7 +21,7 @@ Follow the steps in the guide below to register a new module.
 
 <Tabs>
 <TabItem value="Interactive guide">
-<DocVideo src="ttps://app.tango.us/app/embed/5aa16720-f96c-44f3-9ad7-2e4dce4ad3b3" title="Register a module in Harness" />
+<DocVideo src="https://app.tango.us/app/embed/5aa16720-f96c-44f3-9ad7-2e4dce4ad3b3" title="Register a module in Harness" />
 </TabItem>
 <TabItem value="Step-by-step">
     1. Login to [Harness](https://app.harness.io).
