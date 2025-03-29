@@ -9,10 +9,9 @@ sidebar_position: 1
 
 import Ccm from '/docs/cloud-cost-management/shared/ccm-supported-platforms.md';
 
-
 <Ccm />
 
-## CCM Feature flags
+## CCM Feature Flags
 
 Some Harness CCM features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience.
 
@@ -30,8 +29,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td width="600"><b>Description</b></td>
     </tr>
     <tr>
-        <td>CE_NET_AMORTISED_COST_ENABLED</td>
-        <td>Enabling this flag allows users to view the net amortized cost while disabling it will display the total cost</td>
+        <td>CCM_CLUSTER_ORCH</td>
+        <td>Enables cluster orchestrator functionality</td>
     </tr>
     <tr>
         <td>CCM_COMMORCH</td>
@@ -39,18 +38,30 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CCM_CURRENCY_PREFERENCES</td>
-        <td>Allows customers to view costs in their preferred currency</td>
+        <td>Enables viewing costs in preferred currency</td>
     </tr>
     <tr>
         <td>CCM_BUDGET_CASCADES</td>
-        <td>Allow users to view nested budgets for better Financial Management</td>
+        <td>Enables nested budgets for Financial Management</td>
     </tr>
     <tr>
         <td>CCM_COST_CATEGORIES_DASHBOARD</td>
-        <td>Enabling this flag allows customers to use the cost category in the dashboard</td>
+        <td>Enables the use of cost categories in the dashboard</td>
+    </tr>
+    <tr>
+        <td>CCM_COMMORCH_RDS</td>
+        <td>Enables RDS support in commitment orchestration</td>
+    </tr>
+    <tr>
+        <td>CCM_ENABLE_DATA_SCOPE</td>
+        <td>Enables RBAC on CCM data scope</td>
+    </tr>
+    <tr>
+        <td>CCM_GOVERNANCE_EVALUATION_COST_PER_RESOURCE</td>
+        <td>Enables cost per resource for a governance evaluation</td>
+    </tr>
+    <tr>
+        <td>CCM_ANOMALIES_V2</td>
+        <td>Enables the new version of CCM anomalies</td>
     </tr>
 </table>
-
-
-
-

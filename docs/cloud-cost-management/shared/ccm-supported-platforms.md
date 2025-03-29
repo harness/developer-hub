@@ -1,9 +1,5 @@
-:::info
-CCM FirstGen support is discontinued as of **December 31, 2022**. To migrate to Next Gen, please create Next Gen connectors and delete any existing First Gen connectors.
-:::
 
 This topic provides the Harness Cloud Cost Management supported platforms and feature support matrix: 
-
 
 
 import Tabs from '@theme/Tabs';
@@ -17,13 +13,13 @@ import TabItem from '@theme/TabItem';
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **RBAC Support** |
 | --- | --- | --- | --- | --- | --- |
 |Perspectives | ✅  | ✅  | ✅  | ✅  | ✅ |
-|Cost categories | ✅  | ✅  | ✅  | ✅ | |
-|BI dashboards |✅  |✅ | ✅ | ✅ | ✅ |
-|Anomaly detection  | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Currency standardization | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Inventory management | Supported services and products: <ul><li>EC2</li><li> RDS</li><li>EBS</li></ul> | Supported services and products: <ul><li>Azure VM</li></ul>| Supported services and products: <ul><li>Instances</li><li> Disks</li></ul> | NA | Managed through Dashboards |
+|Cost categories | ✅  | ✅  | ✅  | ✅ |✅ |
+|Dashboards |✅  |✅ | ✅ | ✅ | ✅ |
+|Anomaly Detection  | ✅ | ✅ | ✅ | ✅ | ✅ |
+|Currency Standardization | ✅ | ✅ | ✅ | ✅ | ✅ |
+|Inventory Management | Supported services and products: <ul><li>EC2</li><li> RDS</li><li>EBS</li></ul> | Supported services and products: <ul><li>Azure VM</li></ul>| Supported services and products: <ul><li>Instances</li><li> Disks</li></ul> | NA | Managed through Dashboards |
 
-<details>
+<!-- <details>
 <summary>Perspectives</summary>
 
 
@@ -246,7 +242,7 @@ The following data can be consumed through dashboards:
 
  [Dashboards](/docs/category/ccm-dashboards)
 
-</details>
+</details> -->
 
 
 
@@ -257,10 +253,10 @@ The following data can be consumed through dashboards:
 | --- | --- | --- | --- | --- | --- |
 |AutoStopping | ✅  | ✅  | ✅  | ✅ \*  | ✅ |
 |Recommendations | ✅  | ✅  | ✅  | ✅ | ✅ |
-|Commitment Orchestrator | EC2 | |  |  |  |
+|Commitment Orchestrator |<ul><li>EC2</li><li>RDS</li></ul>| |  |  | ✅ |
 
 \* - Review the information within the AutoStopping section to access details about supported Kubernetes providers.
-<details>
+<!-- <details>
 <summary>AutoStopping</summary>
 
 
@@ -461,18 +457,18 @@ The recommendations are computed by analyzing the past utilization of CPU and me
 [Recommendations](/docs/category/recommendations)
 
 </details>
-
+ -->
 
 
 </TabItem>
-  <TabItem value="Cost Governance" label="Cost Governance">
 
-
+<TabItem value="Cost Governance" label="Cost Governance">
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **RBAC Support** |
 | --- | --- | --- | --- | --- | --- |
 |Asset Governance | ✅  | ✅ | ✅ |   | ✅ |
 |Budgets | ✅  | ✅  | ✅  | ✅ | ✅ |
 
+<!-- 
 <details>
 <summary>Asset Governance</summary>
 
@@ -555,7 +551,7 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
   - GCP
   - Azure 
   - K8s 
-
+ßß
 * All budgets are linked to a perspectives, at least one perspective is required. 
 
 ### Supported Platforms
@@ -582,16 +578,14 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
 
 </details>
 
-
-
-
+-->
 </TabItem>
 </Tabs>
 
 :::info
 Harness CCM does not currently support AWS China regions.
 :::
-
+ 
 
 ## CCM on Harness Self-Managed Enterprise Edition
 
