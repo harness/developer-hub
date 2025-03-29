@@ -18,6 +18,35 @@ Harness CE is available in two ways:
 Feature availability on HCE SaaS and SMP are on par, with minor timeline changes in the SMP feature releases.
 :::
 
+```mermaid
+flowchart TD
+%% Nodes
+    A("fa:fa-shapes Harness CE ")
+    S("fab:fa-youtube Sandbox")
+    R{"Real Environment"}
+    B("fa:fa-comment-dots SaaS")
+    K(SMP)@{ shape: delay}
+
+%% Edge connections  between nodes
+    A -- Execute experiments in a sandbox --> S
+    A --> R
+    R --> B
+    R --> K
+
+%% Individual node styling. Try the visual editor toolbar for easier styling!
+    style A color:#FFFFFF, fill:#AAC853, stroke:#AA00FF
+    style S color:#FFFFFF, fill:#AA00FF, stroke:#AA00FF
+    style B color:#FFFFFF, stroke:#00C853, fill:#00C853
+    style K color:#FFFFFF, stroke:#2962FF, fill:#2962FF
+
+%% You can add notes with two "%" signs in a row!
+
+%% Click events directing to URLs
+    click A href "https://developer.harness.io/docs/chaos-engineering/concepts/chaos101"
+    click B href "https://developer.harness.io/docs/chaos-engineering/getting-started/saas/"
+    click K href "https://developer.harness.io/docs/chaos-engineering/getting-started/smp/"
+```
+
 ## SaaS
 HCE module is provided as service that you can use by either signing up or getting invited to a specific project. HCE provides you the assistance required to manage the cluster.
 You can also create a project if you have the necessary permissions.
