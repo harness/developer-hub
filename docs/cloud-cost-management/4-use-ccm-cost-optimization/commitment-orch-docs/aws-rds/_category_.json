@@ -1,5 +1,5 @@
 {
-    "label":"Commitment Orchestrator",
+    "label":"For AWS RDS Standard RIs",
     "position": 4,
     "collapsible":"true",
     "collapsed":"true",
@@ -9,3 +9,4 @@
        "title":"Commitment Orchestrator"
     }
     }
+ 
