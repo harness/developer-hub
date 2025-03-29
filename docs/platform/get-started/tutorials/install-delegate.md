@@ -61,10 +61,6 @@ For more information, go to [View account info and subscribe to downtime alerts]
 
 Ensure that you have access to a Kubernetes cluster. For the purposes of this tutorial, we will use `minikube`.
 
-import Delk8ssup from '/docs/platform/shared/delegate-install-k8s-supported-vernos.md'
-
-<Delk8ssup />
-
 <h4>Install minikube </h4>
 
 - On Windows
