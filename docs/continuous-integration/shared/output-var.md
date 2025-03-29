@@ -35,7 +35,8 @@ In the following YAML example, step `alpha` exports an output variable called `m
 * **64KB length limit:** If an output variable's length is greater than 64KB, steps can fail or truncate the output. If you need to export large amounts of data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin.md).
 * **Single line limit:** Output variables don't support multi-line output. Content after the first line is truncated. If you need to export multi-line data, consider [uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#upload-artifacts) or [exporting artifacts by email](/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin.md).
 * **Exit Codes:** In the event that an exit code is defined and set in the script, the output variables will not be available as an output from the step because it is a "forced" exit.  The output from the step will be empty which can be desired depending on the situation.
-This includes `exit 0` definitions.  Therefore, customers should not define an **exit 0 situation**, as "completing the script" to the end is what is expected as a "healthy" completion of the script.  
+This includes `exit 0` definitions.  Therefore, customers should not define an **exit 0 situation**, as "completing the script" to the end is what is expected as a "healthy" completion of the script. 
+* In a CI pipeline, if a Bash script exits with status code `0`, an error may be thrown, causing the pipeline execution to fail and preventing output variables from being populated. Enable this FF PLACEHOLDER for the output variables to be populated even when a Bash script exits with status code `0`.
 :::
 
 #### Create an output variable
