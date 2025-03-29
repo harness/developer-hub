@@ -8,9 +8,6 @@ redirect_from:
 - /docs/chaos-engineering/use-harness-ce/infrastructures/ddcr/proxy-support
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 This topic describes when Harness Network Proxy (HNP) is required, how you can install it, and configure DDCR and discovery HNP settings.
 
 When you have a restricted network and when you want all the outbound connections to go from a single node/cluster, you can use your own proxy or Harness Network Proxy (HNP).
@@ -61,8 +58,7 @@ helm upgrade --install chaos-agent-proxy harness-chaos/chaos-infra -n hce -f ove
 
 You can install HNP with or without using mTLS. Described below are sample configurations for both of them.
 
-<Tabs>
-<TabItem value="Without mTLS">
+### Without mTLS
 
 ```yaml
 tags:
@@ -71,9 +67,7 @@ global:
   serverAddress: https://app.harness.io
 ```
 
-</TabItem>
-
-<TabItem value="With mTLS">
+### With mTLS
 
 Go to [create client certificate](/docs/platform/delegates/secure-delegates/delegate-mtls-support/#configure-mtls-on-delegate) before configuring with mTLS.
 
@@ -101,9 +95,6 @@ agent-proxy:
     value: /etc/mtls/client.key
 ```
 
-</TabItem>
-</Tabs>
-
 ## HNP Configuration for Delegate-Driven Chaos Runner (DDCR)
 You can enable proxy settings in DDCR that enables you to restrict all the outbound traffic to go through the proxy.
 
@@ -111,13 +102,22 @@ DDCR supports standard proxy variables `HTTP_PROXY` , `HTTPS_PROXY`, and `NO_PRO
 
 In general, the Harness portal connection goes through the proxy and you will need to specify `NO_PROXY` which is the `kubernetes` service IP in the `default` namespace.
 
+- Go to **Environments** and select the environment that houses your Harness Delegate.
+
+    ![](./static/delegate/proj-env.png)
+
+- Select the Delegate you installed, and select the **`⋮`** icon against the name of the Delegate and click **Edit**.
+
+    ![](./static/delegate/select-edit.png)
+
+- Configure the proxy settings and click **Save**.
+
     ![](./static/delegate/proxy.png)
 
-Instead, you can also provide `PROXY_URL` setting that is used to communicate with the Harness portal.
+- Instead, you can also provide `PROXY_URL` setting that is used to communicate with the Harness portal.
 
-    ![](./static/delegate/mtls.png)
+      ![](./static/delegate/mtls.png)
 
-## HNP Configuration for Discovery Agent
 ## HNP Configuration for Discovery Agent
 
 You can enable proxy settings in Discovery Agent that enables you to restrict all the outbound traffic to go through the proxy.
@@ -126,8 +126,18 @@ Discovery Agent supports standard proxy variables `HTTP_PROXY` , `HTTPS_PROXY`, 
 
 In general, the Harness portal connection goes through the proxy and you will need to specify `NO_PROXY` which is Kubernetes service IP in default namespace.
 
+- Go to **Project Settings** -> **Discovery**.
+
+  ![](./static/delegate/proj-set.png)
+
+- Select the discovery agent you have created, and click **Edit**.
+
+    ![](./static/delegate/edit-discovery.png)
+
+- Configure values for Proxy.
+
     ![](./static/delegate/proxy.png)
 
-Instead, you can also provide `PROXY_URL` setting that is used to communicate with the Harness portal.
+- Instead, you can also provide `PROXY_URL` setting that is used to communicate with the Harness portal.
 
-    ![](./static/delegate/mtls.png)
+      ![](./static/delegate/mtls.png)
