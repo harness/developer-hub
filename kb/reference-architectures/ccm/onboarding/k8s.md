@@ -91,7 +91,7 @@ For creating all your CCM Kubernetes connectors it is recommended that you utili
 At a minimum you need to enable `VISIBILITY`. If you are planning to perform auto stopping in this cluster, you can also enable `OPTIMIZATION`.
 
 ```terraform
-resource "harness_platform_connector_kubernetes" "cluster-a" {
+resource "harness_platform_connector_kubernetes_cloud_cost" "cluster-a" {
   identifier  = "cluster_a_ccm"
   name        = "cluster-a-ccm"
 

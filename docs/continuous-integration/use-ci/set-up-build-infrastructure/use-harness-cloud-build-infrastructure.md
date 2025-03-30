@@ -59,7 +59,6 @@ Currently, macOS platforms for Harness Cloud are behind a feature flag with limi
 
 ## Requirements for connectors and secrets
 
-* You must use the built-in Harness Secret Manager to store connector credentials and other secrets.
 * All connectors must connect through the Harness Platform, not a delegate.
 * AWS connectors can't use IRSA or AssumeRole.
 * GCP and Azure connectors can't use authentication that inherits credentials from the delegate.

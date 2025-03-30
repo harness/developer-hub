@@ -11,19 +11,19 @@ helpdocs_is_published: true
 
 This section describes how to set up each of the external scanners supported by Harness STO.
 
-For more information about STO support, go to [What's supported in STO](/docs/security-testing-orchestration/whats-supported).
+For more information about STO support, go to [What's supported in STO](/docs/security-testing-orchestration/whats-supported/sto-deployments).
 
 
 ## Scanner categories supported by STO
 
-import StoSupportedCategories from './shared/_sto-supported-categories.md';
+import StoSupportedCategories from './shared/sto-supported-categories.md';
 
 <StoSupportedCategories />
 
 <!-- 
 ### Data ingestion methods supported by STO
 
-import StoSupportedMethods from './shared/_sto-supported-methods.md';
+import StoSupportedMethods from './shared/sto-supported-methods.md';
 
 <StoSupportedMethods />
 
@@ -33,20 +33,20 @@ The scanner, targets, and scan approach combinations are covered in the next sec
 
 ## Scanners supported by STO
 
-import StoSupportedScanners from './shared/_sto-supported-scanners.md';
+import StoSupportedScanners from './shared/sto-supported-scanners.md';
 
 <StoSupportedScanners />
 
 ##  Operating systems and architectures supported by STO
 
-import StoInfraSupport from '/docs/security-testing-orchestration/sto-techref-category/shared/_supported-infrastructures.md';
+import StoInfraSupport from '/docs/security-testing-orchestration/sto-techref-category/shared/supported-infrastructures.md';
 
 <StoInfraSupport />
 
 
 ## Ingestion formats supported by STO
 
-import StoSupportedFormats from './shared/_sto-supported-ingestion-formats.md';
+import StoSupportedFormats from './shared/sto-supported-ingestion-formats.md';
 
 <StoSupportedFormats />
 
@@ -69,7 +69,7 @@ This setting is optional and only needed if you want to force the STO to use a s
 
 The following scanners can perform container scanning without requiring a Docker-in-Docker background step.
 
-import WithoutDinDSupportedScanners from '/docs/security-testing-orchestration/sto-techref-category/shared/_without-dind-supported-scanners.md';
+import WithoutDinDSupportedScanners from '/docs/security-testing-orchestration/sto-techref-category/shared/without-dind-supported-scanners.md';
 
 <WithoutDinDSupportedScanners />
 
@@ -130,7 +130,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 <!-- 
 ### Scanner binaries used in STO container images
 
-import StoSupportedBinaries from './shared/_sto-supported-binaries.md';
+import StoSupportedBinaries from './shared/sto-supported-binaries.md';
 
 <StoSupportedBinaries />
 

@@ -130,21 +130,11 @@ Use the **S3-Compatible Object Store for Self-Managed Build Infrastructure** set
   ![GCP Connector](./static/s3-connector-config-default-settings-01.png)
 
 
-* **Cloud Storage Connector:** If you're using AWS/GCP, we recommend that you provide a connector that authenticates via OIDC with your object store. See below for supported authentication methods withing the connectors. 
+* **Cloud Storage Connector:** For AWS/GCP, provide a connector configured to authenticates via OIDC or IRSA (AWS) with your object store. 
 * **Endpoint URL:** S3-compatible storage URL.
 * **Region:** Geographical region where your storage is hosted. This is optional for some providers.
 * **Bucket Name:** The name of the bucket to use for Harness-managed caches.
 * **Access Key** and **Secret Key:** Access key and secret key to access your S3-compatible storage. NOTE: If you're using 'Cloud Storage Connector' (recommended) then there is no need to enter values for access/secret key fields.
-
-**The following images highlights the supported AWS and GCP connector settings:**
-
-  While we support Access Key, Secret key pair for AWS, we recommend using OIDC mechanism. Refer to the following image:
-  ![AWS Connector](./static/aws-connector-mechanism-overview-01.png)
-
-  While we support GCP Json Key, we recommend using OIDC mechanism. Refer to the following image:
-  ![GCP Connector](./static/gcp-connector-mechanism-overview-01.png)
-
-
 
 
 #### Upload Logs Via Harness

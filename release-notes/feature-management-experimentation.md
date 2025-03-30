@@ -13,7 +13,32 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: February 28, 2025
+#### Last updated: March 26, 2025
+
+
+## March 2025
+### 2025-03-26
+#### Feature flag impression toggle
+The feature flag impression toggle allows you more control over your generated impression volume, by switching flag impression tracking on/off per feature flag per environment.
+
+This feature allows you to streamline impressions sent to third party integrations, but  does not impact FME Monthly Tracked Keys nor billing.
+
+![Impression tracking toggle](./static/fme/impression-tracking-toggle.png)
+
+##### Related documentation
+- [Tracking impressions](https://help.split.io/hc/en-us/articles/360020585192-Impressions#tracking-impressions)
+
+### 2025-03-19
+#### AI settings
+The new AI settings page in Admin settings provides a toggle to enable/disable Release Agent and manage whether Release Agent has permissions to process experimentation data for experiment summarization and Q&A. This provides enhanced control over data privacy for AI features.
+
+![Admin settings - AI settings](./static/fme/admin-settings-ai-settings.png)
+
+Your data is protected by the [Harness privacy policy](https://www.harness.io/legal/privacy) and the [OpenAI Enterprise privacy policy](https://openai.com/enterprise-privacy/). For more information go to [AI Release Agent](https://help.split.io/hc/en-us/articles/21188803158157-AI-Release-Agent#privacy).
+
+##### Related documentation
+- [AI Release Agent](https://help.split.io/hc/en-us/articles/21188803158157-Switch-AI-assistant)
+
 ## February 2025
 ### 2025-02-28
 #### SDK Enhancements
@@ -23,7 +48,6 @@ The [Elixir Thin Client SDK](https://help.split.io/hc/en-us/articles/26988707417
 Thanks are due to the team at [Cars.com](https://www.cars.com/) for the initial implementation, which they contributed to the FME user community. The Harness engineering team then finalized the work, making it generally available as a Harness-supported FME SDK.
 
 ###### FME Thin Client SDK + Splitd Architecture
-
 FME Thin Client SDKs are known for their lightweight footprint and are always paired with Split Daemon (splitd). Splitd performs the storage and compute intensive operations and easily scales to high traffic volumes.
 
 ![Architecture Diagram - Thin SDK Client SDK and Split D](./static/fme/thin-sdksplitd-fme-server-diagram.png)
@@ -31,9 +55,8 @@ FME Thin Client SDKs are known for their lightweight footprint and are always pa
 Splitd can be set up locally to the consumer application or be deployed as a sidecar to the consumer application container. See the [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd) documentation for details.
 
 ##### Related documentation
-
-*   [Elixir Thin-Client SDK](https://help.split.io/hc/en-us/articles/26988707417869-Elixir-Thin-Client-SDK)
-*   [](https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd)[Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157)
+* [Elixir Thin-Client SDK](https://help.split.io/hc/en-us/articles/26988707417869-Elixir-Thin-Client-SDK)
+* [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd)
 
 ## January 2025
 ### 2025-01-08
@@ -44,10 +67,14 @@ To see the Metric summary and ask follow-up questions:
 1. Drill into a metric tile on a Metrics impact dashboard and click **Summarize**.
 2. After viewing the summary, type your follow-up question and click **Continue conversation in Release Agent**.
 3. Continue to ask additional follow-up questions if you would like, including suggestions for next steps.
+
 ![Image](./static/fme/continue-in-release-agent-01-1920x1040.png)
+
 ![Image](./static/fme/continue-in-release-agent-02.png)
+
 Note: The transition from "Switch" to "Release Agent" will take place gradually. For now, you'll still see **Ask Switch** in the lower left navigation of Harness Feature Management and Experimentation:<br />
 ![Image](./static/fme/ask-switch-in-left-nav.png)
+
 ##### Related documentation
 - [Metric details and trends](https://help.split.io/hc/en-us/articles/360025376251-Metric-details-and-trends)
 - [Switch AI assistant](https://help.split.io/hc/en-us/articles/21188803158157-Switch-AI-assistant)
@@ -61,11 +88,14 @@ Large segments support multiple use cases where bulk targeting of specific IDs i
 - Targeting any set of users based on attributes not available within the app at runtime.
 - Performing large-scale A/B tests on specific user bases, exported from external tools.
 Effective immediately, Enterprise tier customers may create and use Large segments containing up to one million (1,000,000) IDs. Significantly higher limits are available by request.
+
 ![Image](./static/fme/image-53.png)
 Learn more about Large segments and the ways they differ from Standard segments in the documentation:
 - [Create a segment](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment)
 - [Target segments](https://help.split.io/hc/en-us/articles/360020525252-Target-segments)
+
 Note: The initial release of Large segments is focused on client-side SDK usage only. Server-side SDKs do not yet support Large segments, but soon will. Until they are supported, evaluations of feature flags that target Large segments will return control on server-side SDKs.
+
 ##### Admin API Endpoints
 After familiarizing yourself with Large segments at the above links, you may find these UI and API equivalent documentation links handy for automating the steps via the Admin API:
 ###### Steps for creating and populating a Large segment using either UI or API
@@ -76,8 +106,9 @@ After familiarizing yourself with Large segments at the above links, you may fin
 - [UI steps](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment#adding-user-ids-to-a-segment) (step 3)
 - [API steps](https://docs.split.io/reference/createlargesegmentinenvironment)
 3. Add **user IDs** to a Large segment (to the definition created in step 2)
-- [UI steps](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment#file-import-for-large-segments) 
+- [UI steps](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment#file-import-for-large-segments)
 - [API steps](https://docs.split.io/reference/create-change-request#open-change-request-to-add-members-to-a-large-segment)
+
 ###### Adding an approval step via Admin API
 To add an approval step for Large segment creation or update when using the Admin API, reference this example:  [Open Change Request to add members to a Large Segment](https://docs.split.io/reference/create-change-request#open-change-request-to-add-members-to-a-large-segment).
 
@@ -89,20 +120,30 @@ Split FME now supports SemVer type attributes and suggested values in the attrib
 - Admins can create SemVer typed attribute names and suggested values.
 - Users can see the SemVer attribute names and suggested values when editing targeting rules.
 Attribute dictionary support reduces guesswork and manual errors when editing targeting rules.
+
 ###### **What you need to know in a nutshell:**
 - The [semver](https://semver.org/) standard calls for versions to be formatted as major.minor.patch
 - Split FME added [SemVer support on June 6th, 2024](https://www.split.io/releases/2024-06-06/) , eliminating the need to write regular expressions (i.e. regex) to target version ranges or "is a version less than or equal to x.y.z"
 - This update adds the benefits of standardized attribute names and suggested values delivered by our Attribute Dictionary.
+
 ###### **What SemVer attribute support looks like to an admin**:
 Admins can create a custom attribute of type "Semver" and optionally enter suggested values.
+
 ![Image](./static/fme/semver-admin-create-1920x1171.png)
+
 ###### **What SemVer attribute support looks like to a user**:
-Choose an attribute name from the attribute dictionary, such as "ios_version"
+Choose an attribute name from the attribute dictionary, such as "ios_version":
+
 ![Image](./static/fme/1-chose-a-semver-attribute-name-1920x901.png)
+
 If the chosen attribute is of type SemVer, the appropriate matchers are shown:
+
 ![Image](./static/fme/2-choose-a-semver-matcher-1920x888.png)
+
 If "is in list" is chosen as the matcher type, suggested values are shown:
+
 ![Image](./static/fme/3-choose-a-suggsted-value-1920x890.png)
+
 ###### **Related Documentation:**
 - [Creating individual custom attributes in Admin settings](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes#creating-individual-custom-attributes-in-admin-settings)
 - [Creating multiple custom attributes in Admin Settings](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes#creating-multiple-custom-attributes-in-admin-settings) (CSV upload)
@@ -113,7 +154,9 @@ If "is in list" is chosen as the matcher type, suggested values are shown:
 ##### Guardrail and Key Metric Alerts Now Shown in the Alerts Table
 Previously, the Alerts table on the Monitoring tab displayed Metric alerts only. Guardrail Metric alerts and Key Metric alerts generated email notifications to feature flag owners, but were not persisted in the UI.
 Now all three types of alerts are shown on each flag's Monitoring tab for any team member to see.  The table has been simplified to display the most valuable fields at a glance, reducing cognitive load. Details less critical for quick triage remain available under an info icon.
+
 ![Image](./static/fme/alerts-table-nov-2024.png)
+
 As a refresher, here is quick summary of the three alert types:
 
 * **Metric Alert**
@@ -135,12 +178,15 @@ As a refresher, here is quick summary of the three alert types:
 #### Better Together: Split + Harness
 ##### New Colors, Names for Organization and Workspace
 Starting on September 30th, we began a progressive rollout to update the Split UI, bringing it closer to the look of Harness:
+
 ![Image](./static/fme/better-together-color-changes.png)
+
 Beyond a change in color scheme, you will also see two changes to **terminology**:
 - **Workspaces** will now be known as **Projects** in the UI
 - **Organizations** will now be known as **Accounts** in the UI
 
 ![Image](./static/fme/admin-settings-new-nomenclature-1920x977.png)
+
 Note: These terminology changes are being made only to labels in the UI at this time. To avoid introducing a breaking change, the [Admin API](https://docs.split.io/reference/introduction) will continue to use the strings ws, workspace, organizationId, and orgId until further notice.
 
 ### 2024-09-12
@@ -193,7 +239,7 @@ Alerts are sent to flag owners whenever a guardrail metric moves significantly i
 
 As a reminder, Guardrail Metrics ([released 2024-06-14](https://www.split.io/releases/2024-06-14/)) ensure that an organization’s most crucial metrics are protected and monitored throughout every feature release and experiment by making their calculation automatic and mandatory for all flags that use the same traffic type as the metric.
 
-Metrics are set as guardrail metrics for your workspace on the Metric definition page. View the docs [here](https://help.split.io/hc/en-us/articles/22005565241101-Metrics#:~:text=Guardrail%20metrics%3A,impact%20is%20detected.)
+Metrics are set as guardrail metrics for your workspace on the Metric definition page. View the docs [here](https://help.split.io/hc/en-us/articles/22005565241101-Metrics#:~:text=Guardrail%20metrics%3A,impact%20is%20detected.).
 
 ## June 2024
 ### 2024-06-14
