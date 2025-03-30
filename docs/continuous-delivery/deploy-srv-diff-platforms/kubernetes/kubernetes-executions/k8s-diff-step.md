@@ -1,5 +1,5 @@
 ---
-title: Perform a Kubernetes Difference Check
+title: K8s Diff Step
 description: This topic describes how to compare the current live state deployed Kubernetes resources with the changes defined in a YAML.
 sidebar_position: 10
 ---
@@ -18,7 +18,7 @@ This feature is behind the feature flag `CDS_K8S_DIFF_STEP_SUPPORT`. Contact [Ha
 
 You must have the **diffutils** package installed on your system to use the `kubectl diff` command. This package provides the necessary utilities for comparing file differences.
 
-## When and Where to Use the K8s Diff Step
+## When and where to use the K8s Diff Step
 
 You can add the K8s Diff step anywhere in the Deploy stage. It runs before changes are applied, making it useful for reviewing potential modifications to Kubernetes resources.
 
@@ -102,6 +102,6 @@ You can also find the difference in the output of the step:
 
 ## K8s Diff Step Sample
 
-To see an example of how to deployK8s Diff Step using Harness, visit the [Harness Community Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/kubernetes-steps/diff-step).
+To see an example of how to use the K8s Diff Step, visit the [Harness Community Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/kubernetes-steps/diff-step).
 
 This repository provides a ready-to-use sample application and the necessary configuration files to help you get started quickly.
