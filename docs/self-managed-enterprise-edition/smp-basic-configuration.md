@@ -35,7 +35,6 @@ global:
   # -- License Configuration (Required)
   license:
     ng: "your-ng-license"    # Next Generation license key
-    cg: "your-cg-license"    # Optional: Classic license if needed
   
   # -- High Availability Configuration
   ha: true    # Set to true for production deployments
@@ -44,11 +43,6 @@ global:
   # -- Global Feature Flags
   features:
     enabled: true
-    flags:
-      BACKGROUND_VERIFICATION: true    # Enable background verification
-      CUSTOM_DASHBOARD: true          # Enable custom dashboards
-      GRAPHQL_ENABLED: true          # Enable GraphQL API
-      NEXT_GEN_ENABLED: true        # Enable Next Generation features
   
   # -- Module Enablement
   ci:
@@ -58,48 +52,7 @@ global:
   ccm:
     enabled: false          # Enable Cloud Cost Management
   sto:
-    enabled: false          # Enable Security Testing Orchestration
-  
-  # -- Database Configuration
-  database:
-    # MongoDB Settings
-    mongo:
-      installed: true        # Set to false for external MongoDB
-      hosts: []             # Required if installed: false
-      protocol: "mongodb"   # Connection protocol
-      extraArgs: ""         # Additional connection arguments
-      secretName: ""        # Secret containing credentials
-      userKey: ""          # Username key in secret
-      passwordKey: ""      # Password key in secret
-      
-    # PostgreSQL Settings
-    postgres:
-      installed: true       # Set to false for external PostgreSQL
-      hosts: ["hostname:5432"]
-      protocol: "postgres"
-      extraArgs: ""
-      secretName: "postgres-secret"
-      userKey: "user"
-      passwordKey: "password"
-      
-    # Redis Settings
-    redis:
-      installed: true       # Set to false for external Redis
-      hosts: ["hostname:6379"]
-      secretName: "redis-user-pass"
-      userKey: "username"
-      passwordKey: "password"
-      
-    # TimescaleDB Settings (Required for some features)
-    timescaledb:
-      installed: true
-      hosts: ["hostname:5432"]
-      sslEnabled: false
-      secretName: "tsdb-secret"
-      userKey: "username"
-      passwordKey: "password"
-      certName: "tsdb-cert"    # Required if sslEnabled: true
-      certKey: "cert"          # Required if sslEnabled: true
+    enabled: false          # Enable Security Testing Orchestration  
 ```
 
 ### Security Settings
@@ -171,167 +124,6 @@ global:
     minReplicas: 2
     maxReplicas: 5
     targetCPUUtilizationPercentage: 80
-```
-
-## Resource Profiles  
-
-This section details the resource requirements and recommendations for Harness SMP components. Proper resource allocation is crucial for optimal performance and stability.
-
-The resource profiles are designed to accommodate different deployment scales and workloads. Each profile provides specific resource allocations for CPU, memory, and storage requirements.
-
-### Selecting a Resource Profile
-Choose the appropriate profile based on your deployment needs:
-
-1. **Minimum Profile**: Development/Testing
-   - Up to 50 concurrent pipelines
-   - Team size: < 50 users
-   - Resource-constrained environments
-    
-        ```yaml
-            platform:
-                harness-manager:
-                    resources:
-                    limits:
-                        cpu: "1"
-                        memory: "4Gi"
-                    requests:
-                        cpu: "500m"
-                        memory: "2Gi"
-                        
-                gateway:
-                    resources:
-                    limits:
-                        cpu: "500m"
-                        memory: "1Gi"
-                    requests:
-                        cpu: "200m"
-                        memory: "512Mi"
-
-                ng-manager:
-                    resources:
-                    limits:
-                        cpu: "1"
-                        memory: "2Gi"
-                    requests:
-                        cpu: "500m"
-                        memory: "1Gi"
-        ```
-
-2. **Standard Profile**: Production/Medium Scale
-   - Up to 200 concurrent pipelines
-   - Team size: 50-200 users
-   - Typical enterprise deployments
-
-        ```yaml
-                platform:
-                    harness-manager:
-                        resources:
-                        limits:
-                            cpu: "2"
-                            memory: "8Gi"
-                        requests:
-                            cpu: "1"
-                            memory: "4Gi"
-                            
-                    gateway:
-                        resources:
-                        limits:
-                            cpu: "1"
-                            memory: "2Gi"
-                        requests:
-                            cpu: "500m"
-                            memory: "1Gi"
-
-                    ng-manager:
-                        resources:
-                        limits:
-                            cpu: "2"
-                            memory: "4Gi"
-                        requests:
-                            cpu: "1"
-                            memory: "2Gi"
-            ```
-
-
-3. **Performance Profile**: Large Scale Production
-   - 200+ concurrent pipelines
-   - Team size: 200+ users
-   - High-throughput requirements
-
-        ```yaml
-            platform:
-                harness-manager:
-                    resources:
-                    limits:
-                        cpu: "4"
-                        memory: "16Gi"
-                    requests:
-                        cpu: "2"
-                        memory: "8Gi"
-                        
-                gateway:
-                    resources:
-                    limits:
-                        cpu: "2"
-                        memory: "4Gi"
-                    requests:
-                        cpu: "1"
-                        memory: "2Gi"
-
-                ng-manager:
-                    resources:
-                    limits:
-                        cpu: "4"
-                        memory: "8Gi"
-                    requests:
-                        cpu: "2"
-                        memory: "4Gi"
-        ```
-
-### Installing with Resource Profiles
-
-You can easily install Harness with your desired resource profile using the Helm command. Choose from our predefined profiles (Minimum, Standard, Performance) or create your custom resource configuration.
-
-#### Using Predefined Profiles
-```bash
-# Add the Harness repository
-helm repo add harness https://harness.github.io/helm-charts
-helm repo update
-
-# Install using standard profile
-helm install my-release harness/harness-prod -n <namespace> -f your-override.yaml -f resource-profile-standard.yaml
-
-# Example with production namespace
-helm install harness harness/harness-prod -n harness -f values.yaml -f resource-profile-prod.yaml
-```
-
-#### Using Custom Profiles
-1. Create your resource override file (e.g., `my-resources.yaml`)
-2. Apply it during installation:
-```bash
-# Install with custom resources
-helm install my-release harness/harness-prod \
-  -n <namespace> \
-  -f your-override.yaml \
-  -f my-resources.yaml
-```
-
-### Upgrading Resource Profiles
-To modify resource allocations for an existing installation:
-
-#### Update Resources
-```bash
-# Upgrade with new resource profile
-helm upgrade my-release harness/harness-prod \
-  -n <namespace> \
-  -f your-override.yaml \
-  -f my-resources.yaml
-
-# Example with specific namespace
-helm upgrade harness harness/harness-prod \
-  -n harness \
-  -f values.yaml \
-  -f new-resource-profile.yaml
 ```
 
 ## Module Enablement
@@ -1108,14 +900,177 @@ monitoring:
 ```
 
 #### Usage Tracking
+
 ```yaml
-# Enable detailed usage tracking
-analytics:
-  enabled: true
-  tracking:
-    users: true
-    features: true
-    modules: true
+  # Enable detailed usage tracking
+  analytics:
+    enabled: true
+    tracking:
+      users: true
+      features: true
+      modules: true
+```    
+
+## Resource Profiles  
+
+This section details the resource requirements and recommendations for Harness SMP components. Proper resource allocation is crucial for optimal performance and stability.
+
+The resource profiles are designed to accommodate different deployment scales and workloads. Each profile provides specific resource allocations for CPU, memory, and storage requirements.
+
+### Selecting a Resource Profile
+Choose the appropriate profile based on your deployment needs:
+
+1. **Minimum Profile**: Development/Testing
+   - Up to 50 concurrent pipelines
+   - Team size: < 50 users
+   - Resource-constrained environments
+    
+        ```yaml
+            platform:
+                harness-manager:
+                    resources:
+                    limits:
+                        cpu: "1"
+                        memory: "4Gi"
+                    requests:
+                        cpu: "500m"
+                        memory: "2Gi"
+                        
+                gateway:
+                    resources:
+                    limits:
+                        cpu: "500m"
+                        memory: "1Gi"
+                    requests:
+                        cpu: "200m"
+                        memory: "512Mi"
+
+                ng-manager:
+                    resources:
+                    limits:
+                        cpu: "1"
+                        memory: "2Gi"
+                    requests:
+                        cpu: "500m"
+                        memory: "1Gi"
+        ```
+
+2. **Standard Profile**: Production/Medium Scale
+   - Up to 200 concurrent pipelines
+   - Team size: 50-200 users
+   - Typical enterprise deployments
+
+        ```yaml
+                platform:
+                    harness-manager:
+                        resources:
+                        limits:
+                            cpu: "2"
+                            memory: "8Gi"
+                        requests:
+                            cpu: "1"
+                            memory: "4Gi"
+                            
+                    gateway:
+                        resources:
+                        limits:
+                            cpu: "1"
+                            memory: "2Gi"
+                        requests:
+                            cpu: "500m"
+                            memory: "1Gi"
+
+                    ng-manager:
+                        resources:
+                        limits:
+                            cpu: "2"
+                            memory: "4Gi"
+                        requests:
+                            cpu: "1"
+                            memory: "2Gi"
+            ```
+
+
+3. **Performance Profile**: Large Scale Production
+   - 200+ concurrent pipelines
+   - Team size: 200+ users
+   - High-throughput requirements
+
+        ```yaml
+            platform:
+                harness-manager:
+                    resources:
+                    limits:
+                        cpu: "4"
+                        memory: "16Gi"
+                    requests:
+                        cpu: "2"
+                        memory: "8Gi"
+                        
+                gateway:
+                    resources:
+                    limits:
+                        cpu: "2"
+                        memory: "4Gi"
+                    requests:
+                        cpu: "1"
+                        memory: "2Gi"
+
+                ng-manager:
+                    resources:
+                    limits:
+                        cpu: "4"
+                        memory: "8Gi"
+                    requests:
+                        cpu: "2"
+                        memory: "4Gi"
+        ```
+
+### Installing with Resource Profiles
+
+You can easily install Harness with your desired resource profile using the Helm command. Choose from our predefined profiles (Minimum, Standard, Performance) or create your custom resource configuration.
+
+#### Using Predefined Profiles
+```bash
+# Add the Harness repository
+helm repo add harness https://harness.github.io/helm-charts
+helm repo update
+
+# Install using standard profile
+helm install my-release harness/harness-prod -n <namespace> -f your-override.yaml -f resource-profile-standard.yaml
+
+# Example with production namespace
+helm install harness harness/harness-prod -n harness -f values.yaml -f resource-profile-prod.yaml
+```
+
+#### Using Custom Profiles
+1. Create your resource override file (e.g., `my-resources.yaml`)
+2. Apply it during installation:
+```bash
+# Install with custom resources
+helm install my-release harness/harness-prod \
+  -n <namespace> \
+  -f your-override.yaml \
+  -f my-resources.yaml
+```
+
+### Upgrading Resource Profiles
+To modify resource allocations for an existing installation:
+
+#### Update Resources
+```bash
+# Upgrade with new resource profile
+helm upgrade my-release harness/harness-prod \
+  -n <namespace> \
+  -f your-override.yaml \
+  -f my-resources.yaml
+
+# Example with specific namespace
+helm upgrade harness harness/harness-prod \
+  -n harness \
+  -f values.yaml \
+  -f new-resource-profile.yaml
+```
 
 ## Feature Flags
 
@@ -1145,110 +1100,6 @@ platform:
       ENHANCED_GIT_EXPERIENCE: true
       LDAP_SSO_PROVIDER: true
       SAML_SSO_PROVIDER: true
-```
-
-## Module-Specific Feature Flags
-
-### CI Module Features
-```yaml
-ci:
-  ci-manager:
-    features:
-      ENABLE_STEP_DEBUGGER: true
-      ENABLE_REMOTE_DEBUGGING: false
-      ENABLE_CACHE_SHARING: true
-      ENABLE_CUSTOM_METRICS: true
-```
-
-### CD Module Features
-```yaml
-cd:
-  service:
-    features:
-      ENABLE_CANARY_DEPLOYMENT: true
-      ENABLE_BLUE_GREEN: true
-      ENABLE_CUSTOM_DEPLOYMENT: true
-      ENABLE_APPROVAL_GATES: true
-```
-
-### CCM Features
-```yaml
-ccm:
-  ce-nextgen:
-    features:
-      ENABLE_COST_EXPLORER: true
-      ENABLE_BUDGET_ALERTS: true
-      ENABLE_RECOMMENDATIONS: true
-      ENABLE_RESOURCE_OPTIMIZATION: true
-```
-
-### STO Features
-```yaml
-sto:
-  features:
-    ENABLE_SECURITY_TESTS: true
-    ENABLE_VULNERABILITY_SCANNING: true
-    ENABLE_COMPLIANCE_CHECKS: true
-    ENABLE_CUSTOM_POLICIES: true
-```
-
-## Environment-Specific Configurations
-
-### Development Environment
-```yaml
-global:
-  environment: "development"
-  features:
-    flags:
-      DEBUG_MODE: true
-      VERBOSE_LOGGING: true
-      MOCK_SERVICES: true
-```
-
-### Production Environment
-```yaml
-global:
-  environment: "production"
-  features:
-    flags:
-      DEBUG_MODE: false
-      VERBOSE_LOGGING: false
-      MOCK_SERVICES: false
-```
-
-## Feature Flag Categories
-
-### Security Features
-```yaml
-global:
-  security:
-    features:
-      ENABLE_IP_WHITELISTING: true
-      ENFORCE_2FA: true
-      SESSION_TIMEOUT: 30
-      PASSWORD_POLICY: true
-```
-
-### Performance Features
-```yaml
-global:
-  performance:
-    features:
-      ENABLE_CACHING: true
-      ENABLE_COMPRESSION: true
-      ENABLE_REQUEST_THROTTLING: true
-      MAX_CONCURRENT_OPERATIONS: 100
-```
-
-### UI/UX Features
-```yaml
-platform:
-  next-gen-ui:
-    features:
-      ENABLE_NEW_DASHBOARD: true
-      ENABLE_DARK_MODE: true
-      ENABLE_CUSTOM_THEMES: true
-      ENABLE_GUIDED_TOURS: true
 ```
 
 ## Auto Scaling 
@@ -1394,37 +1245,39 @@ This guide explains how to configure and customize dashboards in Harness SMP. Da
 ## Dashboard Types
 
 ### Next Generation Dashboards
+
 ```yaml
-platform:
-  ng-custom-dashboards:
-    enabled: true
-    features:
-      customization: true
-      sharing: true
-      export: true
-    resources:
-      limits:
-        cpu: "1"
-        memory: "2Gi"
-      requests:
-        cpu: "500m"
-        memory: "1Gi"
+  platform:
+    ng-custom-dashboards:
+      enabled: true
+      features:
+        customization: true
+        sharing: true
+        export: true
+      resources:
+        limits:
+          cpu: "1"
+          memory: "2Gi"
+        requests:
+          cpu: "500m"
+          memory: "1Gi"
 ```
 
 ### Looker Dashboards
+
 ```yaml
-looker:
-  enabled: true
-  configuration:
-    customization:
-      enabled: true
-      branding:
-        logo: "your-logo-url"
-        colors:
-          primary: "#0B5FFF"
-          secondary: "#2C3E50"
-    connections:
-      maxPoolSize: 50
-      queryTimeout: 300
+  looker:
+    enabled: true
+    configuration:
+      customization:
+        enabled: true
+        branding:
+          logo: "your-logo-url"
+          colors:
+            primary: "#0B5FFF"
+            secondary: "#2C3E50"
+      connections:
+        maxPoolSize: 50
+        queryTimeout: 300
 ```
 
