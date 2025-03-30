@@ -28,8 +28,8 @@ The specific steps and procedures to set up an external database with Harness va
 
 You can configure any of the following external databases with Harness Self-Managed Enterprise Edition:
 
-- [Cloud-based MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-mongodb-database.md)
-- [Self-managed MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb.md)
+- [Cloud-based MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-mongodb-database.md)
+- [Self-managed MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-self-managed-mongodb.md)
 - [Self-managed PostgreSQL](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database.md)
 - [Self-managed Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database.md)
 - [Self-managed TimescaleDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb.md)

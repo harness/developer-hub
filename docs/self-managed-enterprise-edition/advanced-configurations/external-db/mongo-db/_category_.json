@@ -1,0 +1,11 @@
+{
+    "label":"MongoDB databases",
+    "position": 1,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"MongoDB databases"
+    }
+ }
