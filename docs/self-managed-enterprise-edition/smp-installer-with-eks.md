@@ -9,39 +9,42 @@ sidebar_position: 5
 This guide provides step-by-step instructions for using the Harness SMP Installer to deploy Harness on Amazon EKS. The installer simplifies the deployment process by automating cluster preparation, dependency installation, and configuration.
 
 ### AWS Requirements
+
 ```yaml
-aws:
-  credentials:
-    type: "iam"  # or "access-key"
-    region: "us-west-2"
-  permissions:
-    - "eks:*"
-    - "ec2:*"
-    - "elasticloadbalancing:*"
-    - "autoscaling:*"
-    - "iam:*"
+  aws:
+    credentials:
+      type: "iam"  # or "access-key"
+      region: "us-west-2"
+    permissions:
+      - "eks:*"
+      - "ec2:*"
+      - "elasticloadbalancing:*"
+      - "autoscaling:*"
+      - "iam:*"
 ```
 
 ### Cluster Requirements
+
 ```yaml
-cluster:
-  kubernetes:
-    version: "1.24"
-    nodes:
-      count: 3
-      type: "t3.xlarge"
-  networking:
-    vpc:
-      new: true  # Set to false to use existing VPC
-      cidr: "10.0.0.0/16"
-    subnets:
-      public: 3
-      private: 3
+  cluster:
+    kubernetes:
+      version: "1.24"
+      nodes:
+        count: 3
+        type: "t3.xlarge"
+    networking:
+      vpc:
+        new: true  # Set to false to use existing VPC
+        cidr: "10.0.0.0/16"
+      subnets:
+        public: 3
+        private: 3
 ```
 
 ## Installation Methods
 
 ### 1. Interactive Installation
+
 ```bash
 # Download and run the installer
 curl -O https://harness.io/downloads/smp-installer-eks
@@ -62,32 +65,33 @@ chmod +x smp-installer-eks
 ## Configuration File
 
 ### Basic Configuration
+
 ```yaml
-# harness-config.yaml
-installer:
-  version: "1.0.0"
-  mode: "production"
+  # harness-config.yaml
+  installer:
+    version: "1.0.0"
+    mode: "production"
 
-cluster:
-  name: "harness-smp"
-  region: "us-west-2"
-  zones:
-    - "us-west-2a"
-    - "us-west-2b"
-    - "us-west-2c"
+  cluster:
+    name: "harness-smp"
+    region: "us-west-2"
+    zones:
+      - "us-west-2a"
+      - "us-west-2b"
+      - "us-west-2c"
 
-harness:
-  version: "1.0.0"
-  license:
-    ng: "your-ng-license"
-    looker: "your-looker-license"
-  
-  modules:
-    platform: true
-    ci: true
-    cd: true
-    ccm: true
-    sto: true
+  harness:
+    version: "1.0.0"
+    license:
+      ng: "your-ng-license"
+      looker: "your-looker-license"
+    
+    modules:
+      platform: true
+      ci: true
+      cd: true
+      ccm: true
+      sto: true
 ```
 
 ### Advanced Configuration
