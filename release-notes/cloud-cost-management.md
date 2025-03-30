@@ -17,7 +17,20 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Progressive deployment: Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview page** in Harness. In the new UI, go to Account Settings, Account Details, General, Account Details, and then Platform Service Versions. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+## April 2025
 
+### Version 1.46.2
+
+#### New features and enhancements
+- New Filters for Autostopping: We have added two new filters in the Autostopping page filter panel:
+    - Minimum Savings: This allows users to filter rules based on minimum savings threshold.
+    - Hide Disabled Rules: This filter is designed to help users manage and view only the active rules in their system by hiding disabled rules. [CCM-21788, CCM-21766]
+ 
+- Recommendation Preferences: We have introduced a new feature to enhance the personalization of recommendations: Recommendation Preferences. This allows users to create, apply, and save custom tuning preferences to better suit their usage. Users can now also select a default preset preference. This ensures that the chosen tuning preferences are consistently applied across all future recommendations removing the need for repeated manual adjustments. [CCM-20954]
+  
+#### Fixed Issues
+- - Anomaly Detection Timezone Fix: We have resolved an issue where anomalies appeared with a one-day delay due to a timezone mismatch. The chart implementation has been updated to reflect accurate timestamps. [CCM-21942]
+- Cloud Asset Governance Timezone Label: We have fixed a display issue where the "UTC" timezone label was incorrectly shown as "CUT" in enforcement logs. [CCM-21934]
 
 ## March 2025
 
