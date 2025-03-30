@@ -109,4 +109,7 @@
 
 /docs/self-managed-enterprise-edition/advanced-configurations/external-db/configure-aws-s3-for-pipeline-logs /docs/self-managed-enterprise-edition/advanced-configurations/external-db/minio/configure-aws-s3-for-pipeline-logs
 
+# advance configuration > External DB > TimescaleDB
+/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb/ /docs/self-managed-enterprise-edition/advanced-configurations/external-db/timescaledb/use-an-external-sm-timescaledb/
+
 # Redirects generated from Front Matter [sytem generated goes below here]:
