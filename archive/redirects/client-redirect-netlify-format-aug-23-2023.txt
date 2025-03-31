@@ -121,7 +121,6 @@ https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/cloudfor
 https://developer.harness.io/docs/first-gen/firstgen-fa-qs/docs/category/cicd-artifact-build-and-deploy-pipelines https://developer.harness.io/docs/category/faqs-fg
 https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployment-types/docs/category/iis-net-deployments https://developer.harness.io/docs/category/iis-net-deployments
 https://developer.harness.io/docs/chaos-engineering/configure-chaos-experiments/experiments/use-chaos-with-srm https://developer.harness.io/docs/chaos-engineering/integrations/use-chaos-with-srm
-https://developer.harness.io/docs/category/continuous-verification-1 https://developer.harness.io/docs/category/configure-cv
 https://developer.harness.io/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/install-the-error-tracking-agent https://developer.harness.io/docs/continuous-error-tracking/getting-started/cet-setup
 https://developer.harness.io/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/ https://developer.harness.io/docs/platform/Delegates/install-delegates/install-a-kubernetes-delegate
 https://developer.harness.io/docs/platform/Governance/Policy-as-code/docs/feature-flags/harness-policy-engine https://developer.harness.io/docs/feature-flags/harness-policy-engine

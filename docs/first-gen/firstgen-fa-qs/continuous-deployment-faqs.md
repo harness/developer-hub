@@ -205,7 +205,6 @@ The following topics will walk you through how Harness implements common deploym
 * [Google Cloud](/docs/category/google-cloud)
 * [Native Helm](/docs/category/native-helm-deployments)
 * [​IIS (.NET)](../continuous-delivery/dotnet-deployments/iis-net-deployment.md)
-* [​Kubernetes](/docs/category/kubernetes-deployments) (includes Helm, OpenShift, etc)
 * [Tanzu Application Service (TAS)](#tanzu_application_service_tas)
 * [​Traditional Deployments](../continuous-delivery/traditional-deployments/traditional-deployments-overview.md)
 * [Custom Deployments](/docs/category/custom-deployments)
@@ -755,8 +754,6 @@ For an overview of Harness' support for platforms, methodologies, and related te
 Harness takes the artifacts and Kubernetes manifests you provide and deploys them to the target Kubernetes cluster. You can simply deploy Kubernetes objects via manifests and you can provide manifests using remote sources and Helm charts.
 
 See the [Kubernetes Quickstart](../first-gen-quickstarts/kubernetes-quickstart.md) and [Kubernetes Deployments Overview](../continuous-delivery/concepts-cd/deployment-types/kubernetes-overview.md).
-
-For detailed instructions on using Kubernetes in Harness, see the [Kubernetes How-tos](/docs/category/kubernetes-deployments).
 
 #### What workloads can Harness deploy in a Kubernetes cluster?
 

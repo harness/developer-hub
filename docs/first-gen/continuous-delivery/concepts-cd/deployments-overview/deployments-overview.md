@@ -26,7 +26,6 @@ The following topics will walk you through how Harness implements common deploym
 - [Google Cloud](/docs/category/google-cloud)
 - [Native Helm](/docs/category/native-helm-deployments)
 - [​IIS (.NET)](../../dotnet-deployments/iis-net-deployment.md)
-- [​Kubernetes](/docs/category/kubernetes-deployments) (includes Helm, OpenShift, etc)
 - [Pivotal Cloud Foundry](../../pcf-deployments/pcf-tutorial-overview.md)
 - [​Traditional Deployments](../../traditional-deployments/traditional-deployments-overview.md)
 - [Custom Deployments](/docs/category/custom-deployments)

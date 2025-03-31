@@ -152,12 +152,6 @@ module.exports = {
       to: "/docs/category/iis-net-deployments",
     },
 
-    // Created by Sudheendra Katte to fix cv re-directs April 27th, 2023
-    {
-      from: "/docs/category/continuous-verification-1",
-      to: "/docs/category/configure-cv",
-    },
-
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/install-the-error-tracking-agent",
       to: "/docs/continuous-error-tracking/getting-started/cet-setup",

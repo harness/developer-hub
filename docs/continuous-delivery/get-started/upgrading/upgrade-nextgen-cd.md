@@ -107,8 +107,6 @@ Some CV features:
 - Next, Harness uses its AI/ML-driven verification capability to automatically validate deployment quality. This capability reduces risk and provides a safety net when code is deployed to production.
 - Integrations include Prometheus, Splunk, Google Cloud Operations, Datadog, and other leading log and metric providers.
 
-For details, go to [Continuous Verification](/docs/category/continuous-verification).
-
 ### Policy As Code
 
 - A flexible and customized platform for policy-based control across the software development lifecycle.
