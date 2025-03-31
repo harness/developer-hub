@@ -1515,12 +1515,6 @@ With the above Service Registry ARN specified in the ECS service definition, dep
 
 ### Support for circuit breaker configurations
 
-:::note
-
-Circuit breaker configuration can be applied to Harness ECS rolling and canary deployments only. **This feature is only available in Harness CD NextGen.**
-
-:::
-
 Harness ECS rolling and canary deployments support AWS [ECS circuit breaker configurations](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html).
 
 AWS ECS circuit breaker logic determines whether the deployment will fail if the service can't reach steady state. During deployment, the failure state is identified based on a threshold. Circuit breaker creates the threshold configuration with the desired instance count configuration internally.

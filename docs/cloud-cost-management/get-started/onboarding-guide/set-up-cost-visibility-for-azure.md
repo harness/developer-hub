@@ -29,7 +29,6 @@ After enabling CCM, it takes about 24 hours for the data to be available for vie
 
 ### Azure Connector requirements
 
-* The same connector cannot be used in NextGen and FirstGen. For information on creating an Azure connector in the FirstGen see [Set Up Cost Visibility for Azure](../../../first-gen/cloud-cost-management/setup-cost-visibility/set-up-cost-visibility-for-azure.md).
 * For CCM, Azure connectors are available only at the Account level in Harness.
 * You can create multiple Azure connectors for each Harness Account.
 * You can create multiple Azure connectors per Azure Tenant with unique subscription IDs. 

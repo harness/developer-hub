@@ -380,7 +380,6 @@ name: INIT_SCRIPT
 ```
 
 - After the installation of the binary, export it to PATH
-- Unlike FirstGen, variables are now not present for Helm2 and Helm3 for immutable delegates
 **Note : One can’t have the same delegate using v2 and v3 for Helm**
 
 Please read more on Helm2 in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/Helm/native-Helm-quickstart/#Helm-2-in-native-Helm)
@@ -468,17 +467,6 @@ To avoid this in the future, please make sure to perform any Helm Release upgrad
 This error usually occurs when running a Helm deployment on an expired delegate. You will run into errors in case of expired delegates. [Upgrade the delegate to the latest version](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) and retry the execution.
 
 
-### Does Harness support Helm hooks (excluding service hooks) similar to the support provided in First Gen?
-
-No, Harness does not support Helm hooks in Kubernetes deployments in the same way as in First Gen.
-
-The recommended approach in both First Gen and NextGen is to remove Helm hooks and integrate them as shell script steps within the workflow. This method is applicable in both generations of Harness.
-
-For unchanged utilization of Helm hooks, native Helm deployment can be chosen. However, native Helm's ability to process hooks and deploy simultaneously is limited. This limitation stems from Helm's post-render functionality, which prevents Harness from processing hooks effectively.
-
-For detailed instructions on integrating Helm charts in Kubernetes deployments with Harness, please refer to the Harness [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/kubernetes-deployments/use-Helm-chart-hooks-in-kubernetes-deployments/).
-
-
 ### Harness is pulling old Helm dependencies that are not in the Chart.yaml.
 
 Check the following:
@@ -511,18 +499,6 @@ For this use case within the shell script, you can simply reference credentials 
 ```export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n pod-test```
 
 With this, even when running the shell script on the delegate host, it can refer to the credentials of the K8s cloud provider which is used inside the infrastructure definition associated with the workflow.
-
-### What are the differences between Native Helm Deployment in FirstGen and NextGen Harness?
-
-Here are a few key differences between Native Helm Deployment in FirstGen and NextGen Harness:
-
-* Versioning: Harness NextGen supports versioning of Helm deployments. This allows you to track changes to your deployments and roll back to previous versions if necessary. Harness FirstGen does not support versioning of Helm deployments.
-* Rollback: Harness NextGen supports rollbacks of Helm deployments. This allows you to roll back to a previous version of your deployment if something goes wrong. Harness FirstGen does not support rollbacks of Helm deployments.
-* Helm 3: Harness NextGen supports Helm 3. Harness FirstGen supports both Helm 2 and Helm 3.
-
-#### Is the "Enable Native Helm steady state for jobs" option a default setting for the steady state check?
-
-This selection is solely for verifying the steady state of a Kubernetes Job deployed via the Helm chart.
 
 ### What is the CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG flag?
 

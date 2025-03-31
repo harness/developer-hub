@@ -1,17 +1,17 @@
 ---
-title: Git Experience vs Configuration as Code FAQs
-description: Learn about Git Experience in NextGen and Config as code in FirstGen.
+title: Git Experience FAQs
+description: Learn about Git Experience.
 sidebar_position: 8
 ---
 
-## What is Git Experience in NextGen?
+## What is Git Experience?
 
 - With the Git Experience, you can store configurations for resources, like pipelines and templates, in one of the following: 
   - Git repository
   - Harness database
 
 - You can edit any configuration saved in Git using the Harness UI.
-- You can store the following configurations in Git using the Git Experience in NextGen: 
+- You can store the following configurations in Git using the Git Experience: 
     - Pipelines
     - Templates
     - Input sets
@@ -22,38 +22,6 @@ sidebar_position: 8
 In the Git Experience, Git acts as the primary source of truth. As a result, Harness does not keep a record of any resources other than the pipeline name, identifier, and configuration required to retrieve the pipeline from Git. Moreover, Harness does not perform reconciliation or cross-synchronization of resources. Instead, it leverages the native capabilities of Git, such as branching, managing files in different repositories, and prioritizing the state of the file in Git above all other sources.
 
 For more information, go to [Git Experience](/docs/category/git-experience).
-
-
-## What is Configuration as Code in FirstGen?
-
-You can use Configuration as Code to configure pipelines, triggers, workflows, environments, and services and perform nearly all the same actions in YAML as in the Harness UI. With Configuration as Code, you can add and manage all configurations in Git. Harness stores your Git configuration in its database and automatically updates its local copy with any Git changes. Additionally, it receives updates from the UI and updates the database record, then synchronizes the changes with Git. 
-
-:::note
-You cannot choose a non-default branch to test changes for any entity. Also, configurations can only be managed in a central Git repository.
-:::
-
-:::important
-Configuration as Code is not the same as Git Experience.
-:::
-
-
-## Does the Configuration as Code support matrix include entities supported by Git Experience?
-
-Here is the comparison matrix for Harness FirstGen Continuous Deployment vs Harness NextGen Continuous Deployment:
-
-| **Feature**                    | **Configuration as Code** | **Git Experience** |
-|--------------------------------|---------------------------|--------------------|
-| **Service**                    | Yes                       | Yes                |
-| **Service Definition**         | Yes                       | Yes                |
-| **Environment**                | Yes                       | Yes                |
-| **Infrastructure Definition**  | Yes                       | Yes                |
-| **Trigger**                    | Yes                       | No                 |
-| **Pipeline**                   | Yes                       | Yes                |
-| **Input Set**                  | N/A                       | Yes                |
-| **Workflow**                   | Yes                       | N/A                |
-| **Templates**                  | Yes                       | Yes                |
-| **Application**                | Yes                       | N/A                |
-| **Infrastructure Provisioner** | Yes                       | N/A                |
 
 
 ## How does the Harness Git Experience compare to other products?
@@ -70,12 +38,6 @@ The nesting and relational constructs of Continuous Deployment entities make the
 | **Template**                  | Yes         | Yes        | No                 | No               | Yes         | No                |
 | **Input Set**                 | Yes         | No         | No                 | No               | No          | No                |
 
-
-## What is the difference between Git Experience and Config as Code?
-
-In FirstGen, Harness retained a copy of all the changes in its database to read all configurations. This means the changes you made in the UI or Git would first apply to the database before showing up in their respective destinations (i.e. UI or Git). These frequent changes caused sync conflicts with the Harness database and Git. 
-
-The Git Experience in NextGen is designed to have one source of truth which is Git. Harness only reads Git and pulls the latest or a specific branch. The Git Experience gives more flexibility in branching strategies and testing pipelines, templates, and input sets than the Configuration as Code experience in FirstGen.
 
 ## Why did Harness reduce the number of supported entities backed by Git?
 

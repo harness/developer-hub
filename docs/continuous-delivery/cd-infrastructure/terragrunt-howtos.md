@@ -105,7 +105,7 @@ For the Terraform versions supported by Terragrunt, go to [Terraform Version Com
 
 The Harness Delegate requires permissions according to the deployment platform and the operations of the Terragrunt and Terraform scripts.
 
-In some cases, access keys, secrets, and SSH keys are needed. You can add these in [Harness secrets management](/docs/first-gen/firstgen-platform/security/secrets-management/secret-management). You can then select them in the Terragrunt Provisioner step.
+In some cases, access keys, secrets, and SSH keys are needed. You can add these in [Harness secrets management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview). You can then select them in the Terragrunt Provisioner step.
 
 
 
@@ -651,7 +651,7 @@ count_of_null_resources = "7"
 file_message = "testing tvar"
 ```
 
-You can Harness [variable](/docs/platform/variables-and-expressions/harness-variables) and [secret](/docs/first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets) expressions in the inputs also.
+You can Harness [variable](/docs/platform/variables-and-expressions/harness-variables) and [secret](/docs/platform/secrets/add-file-secrets) expressions in the inputs also.
 
 
 ### Backend Configuration
