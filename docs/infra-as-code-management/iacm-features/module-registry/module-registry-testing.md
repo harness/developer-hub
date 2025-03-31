@@ -10,19 +10,17 @@ import TabItem from '@theme/TabItem';
 Module Registry Testing enables automated testing of your infrastructure modules through dedicated pipelines that don't consume workspace credits. This feature ensures your infrastructure modules are reliable and functional by automatically testing them when a Pull Request is created. It reduces the risk of broken modules reaching production and helps enforce testing as part of the review process.
 
 ## Common use case
-
-1. When you have a module and create a Pull Request (PR), it automatically triggers auto-generated testing pipelines
+1. When you [create a module](/docs/infra-as-code-management/iacm-features/module-registry/module-registry-creating) and open a [pull request (PR)](/docs/infra-as-code-management/pipelines/operations/pr-automation), it automatically triggers auto-generated testing pipelines
 2. These pipelines run at the project level scope, when you select the **use module registry** option, your testing pipelines will run and test your module executing [the `init`, `plan`, `apply`, and `destroy` commands](/docs/infra-as-code-management/pipelines/terraform-plugins).
 3. Upon successful test completion, your PR can proceed with the merge process
 
-## Types of Testing Pipelines
-
+## Types of testing pipelines
 As part of module registry testing, Harness creates two default pipelines per module:
 
-### 1. Integration Testing Pipeline
+<Tabs>
+<TabItem value="Integration testing pipeline">
 
 Integration testing verifies your module by:
-
 - Creating real infrastructure
 - Testing functionality
 - Destroying the infrastructure
@@ -31,21 +29,60 @@ Integration testing verifies your module by:
 Integration testing will use your repository's `examples/` folder.
 :::
 
-### 2. Tofu/Terraform Testing Pipeline
+#### File structure
+To enable integration testing, your module repository must include an `examples/` folder. Each test case should be in a separate subfolder, containing standard Terraform code (`main.tf`, `variables.tf`, `outputs.tf`, etc.).
 
-Tofu/Terraform testing requires either:
+```markdown
+module-repository/
+├── main.tf # Main module code
+├── variables.tf
+├── outputs.tf
+├── examples/ # REQUIRED FOR INTEGRATION TESTING
+│ ├── basic-example/ # Test case 1
+│ │ ├── main.tf
+│ │ ├── variables.tf (Optional)
+│ │ └── outputs.tf (Optional)
+│ └── advanced-example/ # Test case 2
+│ ├── main.tf
+│ ├── variables.tf (Optional)
+│ └── outputs.tf (Optional)
+└── README.md
+```
 
-- A `tests/` folder with a `test.tftest.hcl` file, **and/or**
+The pipeline will execute the [`init → plan → apply → destroy` commands](/docs/infra-as-code-management/pipelines/terraform-plugins) against your `main.tf` file in each subfolder.
+</TabItem>
+<TabItem value="Tofu/Terraform testing pipeline">
+
+Tofu/Terraform testing requires at least one of the following (and also supports both):
+- A `tests/` folder with a `test.tftest.hcl` file
 - A root-level `test.tftest.hcl` file
 
 :::info requirements
-
 - Do not use a workspace in testing pipelines. This will cause execution to fail.
-- `moduleId` must be configured as a runtime input in your pipeline.
-  :::
+- `moduleId: <+input>` must be configured as a runtime input in your pipeline.
+:::
 
-## Pipeline Configuration
+#### File structure
 
+```markdown
+module-repository/
+├── main.tf
+├── variables.tf
+├── outputs.tf
+├── test.tftest.hcl
+├── tests/ # Required for Tofu/Terraform testing
+│ ├── test.tftest.hcl
+└── README.md 
+```
+
+:::warning ignored files
+Files in other locations will be ignored.
+:::
+</TabItem>
+</Tabs>
+---
+
+## Pipeline configuration
 Key aspects of the testing pipelines:
 
 - Each pipeline contains a testing stage with a single step
@@ -55,80 +92,29 @@ Key aspects of the testing pipelines:
   - Instead, Harness uses a `moduleId` input and provides custom testing steps.
   - The `moduleId` is passed automatically using webhooks created during setup.
 
-### Branch Configuration
-
+### Branch configuration
 When defining a module, you configure a target branch. Any PRs created against this configured branch will trigger the associated testing pipelines.
 
-## Selecting a Connector
-
+## Selecting a connector
 When setting up integration testing, you must select a connector. This is necessary because:
-
 - Integration tests create and destroy real infrastructure
 - The connector provides the necessary credentials and access
 
-## Credit Usage
-
+:::tip credit usage
 Important note about credits:
-
 - Module testing pipelines do not consume workspace credits
 - If you use your own custom pipelines with workspaces instead of the testing pipelines, they will consume credits
 - If you define your own pipeline but do not use Harness-provided testing steps (e.g., you include a workspace stage), your pipeline **will consume credits**.
 - To avoid this, use the provided **Testing**, **Integration Testing**, or **Tofu/Terraform Testing** steps when building custom pipelines.
+:::
 
 | Scenario                                                          | Credit Usage                           |
 | ----------------------------------------------------------------- | -------------------------------------- |
 | Default testing pipelines or Custom pipelines using Harness steps | No credits consumed :white_check_mark: |
 | Custom pipelines using workspaces                                 | Credits consumed :x:                   |
 
-## File Structure Expectations
 
-### Integration Testing
-
-- You must have an `examples/` folder in your module repository.
-- Inside `examples/`, create subfolders for each test case.
-- Each subfolder must contain standard Terraform code (`main.tf`, `outputs.tf`, etc.).
-- The pipeline will execute the [`init → plan → apply → destroy` commands](/docs/infra-as-code-management/pipelines/terraform-plugins) against your `main.tf` file in each subfolder.
-
-```markdown
-module-repository/
-├── main.tf # Main module code
-├── variables.tf # Module variables
-├── outputs.tf # Module outputs
-├── examples/ # Required for integration testing
-│ ├── basic-example/ # Test case 1
-│ │ ├── main.tf # Uses the module
-│ │ ├── variables.tf # (Optional)
-│ │ └── outputs.tf # (Optional)
-│ └── advanced-example/ # Test case 2
-│ ├── main.tf # Uses the module
-│ ├── variables.tf # (Optional)
-│ └── outputs.tf # (Optional)
-└── README.md # Module documentation
-```
-
-### Tofu/Terraform Testing
-
-- Harness detects `test.tftest.hcl` in:
-  - The repository root, or
-  - Inside a `tests/` folder.
-
-```markdown
-module-repository/
-├── main.tf # Main module code
-├── variables.tf # Module variables
-├── outputs.tf # Module outputs
-├── test.tftest.hcl # Option 1: Root level test file
-└── tests/ # Option 2: Tests directory
-├── basic.tftest.hcl # Test file 1
-└── advanced.tftest.hcl # Test file 2
-```
-
-:::warning ignored files
-Files in other locations will be ignored.
-:::
-
-## Using Module Testing
-
+## Using module testing
 <Tabs>
 <TabItem value="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/b8ed4345-45b1-4b68-b3ff-09ed5ecc04d1" title="Automated Module Registry Testing with Harness IaCM" />
@@ -163,8 +149,8 @@ Pipelines using Harness testing steps **will not consume credits**. Custom logic
 :::
 </TabItem>
 </Tabs>
-
-## Get Started Today
+---
+## Get started today
 Ready to improve your module quality and reliability? Follow these next steps:
 
 1. **Set up your repository structure** using the patterns shown above
