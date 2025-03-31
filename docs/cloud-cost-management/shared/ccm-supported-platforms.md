@@ -1,14 +1,8 @@
-:::info
-CCM FirstGen support is discontinued as of **December 31, 2022**. To migrate to Next Gen, please create Next Gen connectors and delete any existing First Gen connectors.
-:::
 
 This topic provides the Harness Cloud Cost Management supported platforms and feature support matrix: 
 
-
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 <Tabs>
   <TabItem value="Cost Reporting" label="Cost Reporting">

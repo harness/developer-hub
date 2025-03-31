@@ -13,9 +13,9 @@ Harness Continuous Verification (CV) integrates with APM providers. By using mac
 
 To mark a running Continuous Verification step as successful, you can use Manual Intervention as a failure strategy. If the step exceeds the defined timeout for example, the manual intervention is triggered, and you can subsequently mark it as successful.
 
-### Do we have the functionality in NextGen for marking continuous verification errors as "Not a Risk" ?
+### Do we have the functionality to mark continuous verification errors as "Not a Risk" ?
 
-Yes, it is behind the feature flag `SRM_LOG_FEEDBACK_ENABLE_UI`. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/verify/cv-results/log-feedback/)
+Yes, it is behind the feature flag `SRM_LOG_FEEDBACK_ENABLE_UI`. Please read more on this in the following [Documentation](/docs/continuous-delivery/verify/cv-results/log-feedback/)
 
 
 ### What does the below error in the lambda function deployment signifies ?

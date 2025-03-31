@@ -272,21 +272,9 @@ Hourly granularity can be accessed only for the last seven days.
 
 In order to true up costs for Kubernetes, we wait until CUR data is also available. If data is not available even after 24 hours, contact [Harness Support](mailto:support@harness.io).
 
-#### Are connectors shared across Harness FirstGen and Harness NextGen?
-
-No, you must create separate connectors for Harness FirstGen and Harness NextGen.
-
-#### If I create a CCM connector in one Harness platform generation (Harness FirstGen or Harness NextGen), will the data obtained through that connector be visible in the other Harness platform generation?
-
-Yes, you can view your cloud cost data across Harness FirstGen and Harness NextGen.
-
 #### What is the limit on connectors per account?
 
 Currently, there is no limit to the number of connectors per account.
-
-#### Can I have the same connector (AWS/GCP/Azure) in Harness FirstGen and Harness NextGen?
-
-There is no restriction, but Harness recommends avoiding having the same connectors in FirstGen and NextGen.
 
 #### How frequently do we ingest AWS EC2/EBS metrics?
 
@@ -366,10 +354,6 @@ You can create up to 250 Perspectives in an account. See [Create cost perspectiv
 #### Will I be able to see tags in Perspectives?
 
 CCM unifies tags in AWS/GCP/Azure as labels in Perspectives.
-
-#### Can Perspectives be shared across FirstGen and NextGen?
-
-Yes, you can view the data across the FirstGen and NextGen.
 
 #### Why do I observe difference in costs between the Perspective and Dashboard data?
 

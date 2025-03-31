@@ -32,7 +32,7 @@ INFO   2019-02-15 10:53:33    Previous Successful Release is 4
 ```
 
 
-And in the logs of the **deployment** in the **prepare** section of the logs in Next Gen, (`Current release number is 7`, `Previous Successful Release is 6`):
+And in the logs of the **deployment** in the **prepare** section of the logs, (`Current release number is 7`, `Previous Successful Release is 6`):
 ```
 Manifests processed. Found following resources: 
 

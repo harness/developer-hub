@@ -128,11 +128,6 @@ See [Remove provisioned infrastructure with the Terraform Destroy step](/docs/c
 Terraform vars are exported as shell environment variables. The shell variables itself has a restriction in their naming coonvention that it should not contain hyphen and hence this is not supported.
 
 
-### In Harness FirstGen, how can I remove the old plan-file and start again with a fresh plan to make the workflow run successfully?
-
-You can [enable the Skip Terraform Refresh when inheriting Terraform plan option](https://developer.harness.io/docs/first-gen/continuous-delivery/Terraform-category/add-Terraform-scripts#option-2-skip-Terraform-refresh-when-inheriting-Terraform-plan).
-
-
 ### How can we assign Terraform output (e.g. VPC CIDR) to harness Pipeline or stage variable?
 
 We have implemented a feature for capturing the the output of the Apply step.
