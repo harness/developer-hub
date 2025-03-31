@@ -189,35 +189,6 @@ This article addresses some frequently asked questions about Harness Continuous 
 
 For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported Platforms and Technologies](../starthere-firstgen/supported-platforms.md).
 
-#### What can I deploy using Harness?
-
-Harness [supports all of the most common platforms](../starthere-firstgen/supported-platforms.md) and deployment use cases. For example, you can deploy applications to cloud platforms, VM images and auto scaling groups, CI/CD pipelines, and dynamically build infrastructure.
-
-Always start with the Quickstarts in [Start Here](/docs/category/quickstarts/). These will take you from novice to advanced Harness user in a matter of minutes.
-
-The following topics will walk you through how Harness implements common deployments according to platforms and scenarios:
-
-* [​AMI (Amazon Machine Image)](../continuous-delivery/aws-deployments/ami-deployments/ami-deployment.md)
-* [​AWS Elastic Container Service (ECS)](../continuous-delivery/aws-deployments/ecs-deployment/ecs-deployments-overview.md)
-* [AWS Lambda](/docs/category/aws-lambda-deployments)
-* [​Azure](/docs/category/azure-deployments-and-provisioning)
-* [CI/CD: Artifact Build and Deploy Pipelines](#cicd-artifact-build-and-deploy-pipelines)
-* [Google Cloud](/docs/category/google-cloud)
-* [Native Helm](/docs/category/native-helm-deployments)
-* [​IIS (.NET)](../continuous-delivery/dotnet-deployments/iis-net-deployment.md)
-* [Tanzu Application Service (TAS)](#tanzu_application_service_tas)
-* [​Traditional Deployments](../continuous-delivery/traditional-deployments/traditional-deployments-overview.md)
-* [Custom Deployments](/docs/category/custom-deployments)
-
-Also, other key platforms that help you make your CD powerful and efficient:
-
-* [Terraform](/docs/category/terraform)
-* [CloudFormation](/docs/category/aws-cloudformation)
-* [Configuration as Code](/docs/category/configuration-as-code) (work exclusively in YAML and sync with your Git repos)
-* [Harness GitOps](/docs/category/harness-git-based-how-tos)
-
-For topics on general CD modeling in Harness, see [Model Your CD Pipeline](/docs/category/model-your-cd-pipeline).
-
 #### What is a Service Instance in Harness?
 
 Harness licensing is determined by the services you deploy.

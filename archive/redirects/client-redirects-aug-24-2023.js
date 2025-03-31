@@ -604,11 +604,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/docs/category/cicd-artifact-build-and-deploy-pipelines",
-      to: "/docs/first-gen/continuous-delivery/concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview",
-    },
-
-    {
       from: "/docs/feature-flags/ff-sdks/client-sdks/docs/feature-flags/ff-creating-flag/create-a-project",
       to: "/docs/feature-flags/ff-creating-flag/create-a-project",
     },
@@ -626,11 +621,6 @@ module.exports = {
     {
       from: "/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference",
       to: "/docs/category/cloudformation",
-    },
-
-    {
-      from: "/docs/first-gen/firstgen-fa-qs/docs/category/cicd-artifact-build-and-deploy-pipelines",
-      to: "/docs/category/faqs-fg",
     },
 
     {

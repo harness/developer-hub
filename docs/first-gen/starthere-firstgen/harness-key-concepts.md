@@ -16,8 +16,6 @@ This topic describes the key concepts of Harness and its **End-to-End Software D
 
 First we'll look at platform and tool integration, and then how you can model a CD Pipeline in Harness.
 
-**Want to jump right in?** Use our [Quickstarts](/docs/category/quickstarts) and go from novice to advanced in minutes.
-
 ## Where Does Harness Fit In?
 
 The following image gives a quick glance at where some of the Harness modules fit in the Software Development Life Cycle (SDLC):
