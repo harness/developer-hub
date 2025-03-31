@@ -65,7 +65,7 @@ The FirstGen to NextGen CD upgrade will occur on the following dates:
   - The default experience for signing into Harness will be Harness CD NextGen.
 
 - TBD: FirstGen documentation removed from HDH.
-  - The majority of the documentation currently on the Harness Developer Hub (HDH) applies to Harness NextGen. FirstGen Docs will be removed from HDH April 2025.
+  - The majority of the documentation currently on the Harness Developer Hub (HDH) applies to Harness NextGen. FirstGen Docs will be removed from HDH 
 
 ## What's new in Harness NextGen?
 
