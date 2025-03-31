@@ -266,9 +266,6 @@ We support RSA for secret manager authentication. We can use Assume role using S
 
 No, this feature is yet to be supported. We suggest to use ssh key or user and password as datacenter as an alternative at the moment.
 
-### Is the design of Basic intended to incorporate that behavior, similar to what is done in first Gen, where Ecs revisions are not utilized in the same manner as ECS?
-
-Yes, the design of Basic includes that behavior because we manage the versions through the task name and handle versioning specifically for rollback purposes in first Gen, distinguishing it from the way Ecs revisions are managed. One needs to use rolling if they want harness to not perform the naming convention changes. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/)
 
 ### If we manually increase the task count in AWS directly? Or decrease as well, would it impact subsequent pipeline deployment?
 
@@ -284,10 +281,6 @@ While a functioning and stable delegate is imperative, it is advisable to priori
 **Note** 
 - Continuous Delivery cannot use the Platform based auth for all the connectors because the deployment jobs run on the delegate. Things like GitHub are feasible, but AWS, GCP, and Azure are not really possible because the credential exchange happens on the delegate
 
-
-### Is the design of Basic intended to incorporate that behavior, similar to what is done in first Gen, where Ecs revisions are not utilized in the same manner as ECS?
-
-Yes, the design of Basic includes that behavior because we manage the versions through the task name and handle versioning specifically for rollback purposes in first Gen, distinguishing it from the way Ecs revisions are managed. One needs to use rolling if they want harness to not perform the naming convention changes. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/)
 
 ### How can I reduce the number of AWS calls during deployment to mitigate issues?
 

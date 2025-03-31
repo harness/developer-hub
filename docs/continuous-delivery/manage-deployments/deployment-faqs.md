@@ -774,13 +774,6 @@ Yes, one can try to use a service deployment and use our `Custom Remote Manifest
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/)
 
 
-### Is there is an ECS DNS Blue/Green deployment similar to First-Gen in the Next Gen?
-
-In the next generation, we support the utilization of a `load balancer` with target groups for the switching between blue and green deployments.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-v2-summary/)
-For First-Gen reference read the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/aws-deployments/ecs-deployment/ecs-blue-green-workflows/#ecs-bluegreen-using-dns).
-
-
 ### When publishing an artifact, what is the specific interval for polling and can a user configure it ?
 
 Polling interval for publishing an artifact is `1 minute`. Harness don't allow to configure this by user
@@ -807,12 +800,6 @@ In run pipeline form and in triggers, if the input set is not applied, empty val
 For the input set to be added in Git, We require the pipeline to be on Git as well. Input sets are linked to the pipeline and get stored in the same repo and branch as the pipeline definition.
 
 Once you move your pipeline to Git, the option to create an input set on Git will also be available.
-
-
-### Does Harness Next Gen support the "Skip artifact version already deployed" parameter as present in First Gen?
-
-We do support "Skip artifact version already deployed" for WinRM SSH deployment. It is present under the advanced section of the pipeline.
-
 
 ### How do we resolve the issue when a pipeline is getting triggered twice though there is only one trigger?
 
@@ -1182,7 +1169,7 @@ You can use Webhook notifications to post the pipeline event to an endpoint and 
 Certainly! one has the flexibility to use the same cluster for both the Harness Delegate and containerized step group(s). However, it's important to note that this is not a requirement. Harness is designed to accommodate various deployment scenarios, allowing you to optimize resource utilization based on your specific needs. Feel free to configure your setup according to your preferences and resource allocation strategy.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups#important-notes)
 
-### Is there any way the user can have custom webhook trigger with placeholders for services, artifacts, tag to provide dynamic values in cURL to execute the pipeline like Next Gen triggers?
+### Is there any way the user can have custom webhook trigger with placeholders for services, artifacts, tag to provide dynamic values in cURL to execute the pipeline like triggers?
 
 Yes, one can use custom webhook triggers with placeholders for services, artifacts, and tags to provide dynamic values in cURL to execute the pipeline. You can pass in this data when the pipeline execution is triggered using a custom cURL trigger. Please read more on custom triggers in the following [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/)
 

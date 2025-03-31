@@ -192,15 +192,6 @@ You can only perform a rolling deployment strategy for Native Helm(no canary or 
 
 Please follow the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#Helm-chart-expressions).
 
-
-### What are the options for passing Helm flag in First Gen?
-
-Helm flags can be passed in first gen at workflow level under "Configure Helm deploy" Option. We can also pass command flags under service inside chart specification option.
-
-### What is the difference between Helm flag options at workflow level and service level in First Gen?
-
-The Helm flag configured at workflow level needs to be not command specific otherwise the command can fail. It will also be applied to all the Helm commands. The command flag passed at service level are tagged to a specific command. So they will be added only to that specific command. Hence here we can use command specific flags as well.
-
 ### Is there a way to avoid using Helm template command in Kubernetes Helm deployment?
 
 For kubernetes Helm we will always run the template command as this is how we get the rendered manifest. The workflow using kubernetes Helm perform the final deployment using the rendered manifest and kubectl commands.
