@@ -66,44 +66,6 @@ import { MODULES } from "@site/src/constants";
           link: "/docs/continuous-delivery/get-started/key-concepts",
         },
         {
-          title: "Upgrade to CD NextGen",
-          module: MODULES.cd,
-          description:
-            "Upgrade from CD FirstGen to NextGen.",
-          link: "/docs/category/upgrading-cd",
-          /*children: [
-            {
-              title: "Upgrade to NextGen",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd",
-            },
-            {
-              title: "Upgrade to service and environment V2",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2",
-            },
-            {
-              title: "FirstGen and NextGen parity matrix",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix",
-            },
-
-            {
-              title: "Upgrade FAQs",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq",
-            },
-          ]*/
-        },
-        {
           title: "Supported CD features and integrations",
           module: MODULES.cd,
           description:

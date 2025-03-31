@@ -4322,7 +4322,7 @@ The custom table being used should allow access to this table via web services.
 
   The instance deletion did not happen due to an incorrect condition. This condition now picks up the instances for deletion.
 
-- Users were unable to delete a [V1 environments](/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2). (CDS-57943, ZD-41828)
+- Users were unable to delete a V1 environment. (CDS-57943, ZD-41828)
 
   User can now delete V2 and V1 environments.
 

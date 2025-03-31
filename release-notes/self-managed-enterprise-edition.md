@@ -10670,7 +10670,7 @@ This release includes the following Harness module and component versions.
 - Missing task type support resulted in com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 873575 error. (CDS-57912)
   Harness has added the unsupported task type.
 
-- Users were unable to delete a [V1 environments](/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2). (CDS-57943, ZD-41828)
+- Users were unable to delete a V1 environments. (CDS-57943, ZD-41828)
 
   User can now delete V2 and V1 environments.
 

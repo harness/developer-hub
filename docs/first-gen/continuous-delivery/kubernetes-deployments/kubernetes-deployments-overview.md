@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/category/kubernetes).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/category/kubernetes).
 
 The following How-tos guide you through some common Kubernetes tasks.
 

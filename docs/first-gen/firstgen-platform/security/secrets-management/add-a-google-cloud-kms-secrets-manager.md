@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager).
 
 You can use Google [Cloud Key Management Service](https://cloud.google.com/kms/) (Cloud KMS) as your secrets manager. Once Google KMS is added as a Secrets Manager, you can create encrypted secrets in Google KMS and use them in your Harness account.
 

@@ -30,12 +30,6 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="Provision deployment infrastructure dynamically ">
 
-:::info
-
-Dynamic provisioning is only supported in [Service and Environments v1](/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2), and will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
-
-:::
-
 This tutorial will provision a CD stage's deployment infrastructure resources using the CloudFormation **Create Stack**, **Delete Stack**, and **Rollback Stack** steps, in the **Infrastructure section** before deployment.
 
 

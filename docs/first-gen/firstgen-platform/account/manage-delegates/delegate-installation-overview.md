@@ -14,7 +14,7 @@ import image_2 from './static/delegate-installation-overview-18.png'
 import image_3 from './static/delegate-installation-overview-19.png'
 
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
 
 This topic discusses general Delegate installation information. For Delegate requirements and limitations, see [Delegate Requirements and Limitations](delegate-requirements-and-limitations.md).
 

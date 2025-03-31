@@ -2323,12 +2323,7 @@ module.exports = {
       from: "/docs/continuous-delivery/cd-deployments-category/deployment-logs-and-limitations",
       to: "/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations",
     },
-
-    {
-      from: "/docs/continuous-delivery/onboard-cd/upgrading/upgrade-nextgen-cd",
-      to: "/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd",
-    },
-
+    
     {
       from: "/docs/continuous-delivery/cd-gitops/add-a-harness-git-ops-repository",
       to: "/docs/continuous-delivery/gitops/add-a-harness-git-ops-repository",

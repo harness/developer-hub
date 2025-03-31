@@ -2331,11 +2331,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/onboard-cd/upgrading/upgrade-nextgen-cd",
-      to: "/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd",
-    },
-
-    {
       from: "/docs/continuous-delivery/cd-gitops/add-a-harness-git-ops-repository",
       to: "/docs/continuous-delivery/gitops/add-a-harness-git-ops-repository",
     },

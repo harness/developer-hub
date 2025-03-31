@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](../../../../platform/templates/use-a-template.md).
+This content is for Harness FirstGen. Switch to [NextGen](../../../../platform/templates/use-a-template.md).
 
 Harness includes an account-wide Template Library, called the Shared Template Library, and an Application-wide Template Library.
 
