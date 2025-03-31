@@ -1,6 +1,6 @@
-module.exports = function () {
+export default function () {
   return {
-    name: "focusOnAnchor-plugin",
+    name: 'focusOnAnchor-plugin',
     injectHtmlTags() {
       return {
         postBodyTags: [
@@ -63,13 +63,26 @@ module.exports = function () {
   }
 };
 
-window.addEventListener("load", () => {
-    setTimeout(FocusOnAnchor, 500);
-    })
+   let previousUrl = "";
+              const observer = new MutationObserver(() => {
+                if (!previousUrl) {
+                  setTimeout(FocusOnAnchor, 2000);
+                }
+                if (location.href !== previousUrl) {
+                  previousUrl = location.href;
+                  FocusOnAnchor();
+                }
+              });
+  
+              observer.observe(document, { subtree: true, childList: true });
+
+// window.addEventListener("load", () => {
+//     setTimeout(FocusOnAnchor, 500);
+//     })
           </script>
           `,
         ],
       };
     },
   };
-};
+}
