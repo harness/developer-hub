@@ -151,6 +151,8 @@ Updating an application that contains a `valuesObject` while using an agent olde
 
 - Users can now include **clickable HTTP URLs** within Approval step messages in Harness pipelines. This enhancement improves usability by allowing approvers to directly access links from the approval step without needing to copy and paste URLs. (**CDS-88977**)
 
+- Harness now supports AWS deployments in the **Mexico region**. (**CDS-107704**)
+
 #### Behavior changes
 
 - Users can now **create, update, and delete tags** in **AWS Lambda** and **AWS ECS deployments**, ensuring that all specified tags in the YAML manifest are correctly propagated during the deployment process and accurately reflected in the AWS Console. (**CDS-107032**)
