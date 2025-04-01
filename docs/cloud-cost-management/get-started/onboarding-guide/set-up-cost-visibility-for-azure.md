@@ -120,7 +120,6 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
       4. In **Location**, select the region for your storage account.
       5. In **Container**, enter the container name where the report is to be stored.
       6. In **Directory**, enter the directory path where the export is to be stored.
-      7. 
       7. Make a note of the **Storage account** name. You need it while assigning permissions to the storage account.
       ![](static/set-up-cost-visibility-for-azure-07.png)
       8. Select **Create**. Your export report is listed in the **Exports** list.
