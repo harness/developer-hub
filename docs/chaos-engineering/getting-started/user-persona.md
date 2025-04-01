@@ -6,6 +6,7 @@ sidebar_position: 1
 
 This topic describes different user personas and their user journeys to achieve resilience in their application.
 
+## User Journey based on User Persona
 ```mermaid
 flowchart TD
 %% Personas by experience level
@@ -64,7 +65,10 @@ flowchart TD
 ```
 ---
 
+## User Journey based on SMP / SaaS
+
 As a beginner, once you have fulfilled the [prerequisites](https://developer.harness.io/docs/chaos-engineering/getting-started/prerequisites), Harness CE provides usage as Saas version or SMP version.
+
 
 ```mermaid
 flowchart TD
@@ -76,10 +80,11 @@ flowchart TD
   %% -------------------------------
   %% SaaS Journey
   subgraph SaaS_Flow [SaaS]
-    SaaS --> SaaS_Onboard["Sign Up / Connect Harness Account"]
-    SaaS_Onboard["Sign Up / Connect Harness Account"] --> Env["Create Environment"]
-    Env["Create Environment"] --> SaaS_Install["Install Kubernetes Agent"]
-    SaaS_Install --> SaaS_Targets["Connect Targets (Linux / Windows / VMware / Cloud / Kubernetes)"]
+    SaaS --> SaaS_Onboard["Sign Up / Connect Harness Account - this is the control plane"]
+    SaaS_Onboard["Sign Up / Connect Harness Account - this is the control plane"] --> del["Install Delegate"]
+    del --> connector["Add Connector"]
+    connector --> Env["Create Environment"]
+    Env["Create Environment"] --> SaaS_Targets["Connect Targets (Linux / Windows / VMware / Cloud / Kubernetes)"]
     SaaS_Targets --> SaaS_Experiments["Create Experiments"]
     SaaS_Experiments --> SaaS_Probes["Add Probes"]
     SaaS_Probes --> SaaS_Run["Run Experiments"]
@@ -92,10 +97,12 @@ flowchart TD
     SMP --> SMP_Install["Install SMP"]
     SMP_Install --> SMP_CP["Set up Control Plane"]
     SMP_Install --> SMP_EP["Set up Execution Plane"]
+    SMP_EP --> del_smp["Install Delegate"]
+    del_smp --> connector_smp["Add Connector"]
+    connector_smp --> SMP_Targets["Connect Targets (Linux / Windows / VMware / Cloud / Kubernetes)"]
     SMP_CP --> SMP_Project["Create Project"]
     SMP_Project --> SMP_RBAC["Set up RBACs"]
     SMP_Project --> SMP_Guard["Set up ChaosGuard"]
-    SMP_EP --> SMP_Targets["Connect Targets (Linux / Windows / VMware / Cloud / Kubernetes)"]
     SMP_Targets --> SMP_Experiments["Create Experiments"]
     SMP_Experiments --> SMP_Probes["Add Probes"]
     SMP_Probes --> SMP_Run["Run Experiments"]
@@ -113,13 +120,20 @@ flowchart TD
   style SMP_Run color:#45A7FD, stroke:#AA00FF
   style SMP_Probes color:#45A7FD, stroke:#AA00FF
   style Env color:#45A7FD, stroke:#AA00FF
-  style SaaS_Install color:#45A7FD, stroke:#AA00FF
   style SaaS_Experiments color:#45A7FD, stroke:#AA00FF
   style SaaS_Run color:#45A7FD, stroke:#AA00FF
   style SaaS_Probes color:#45A7FD, stroke:#AA00FF
   style SaaS_Targets color:#45A7FD, stroke:#AA00FF
   style SMP_Targets color:#45A7FD, stroke:#AA00FF
+  style del color:#45A7FD, stroke:#AA00FF
+  style connector color:#45A7FD, stroke:#AA00FF
+  style del_smp color:#45A7FD, stroke:#AA00FF
+  style connector_smp color:#45A7FD, stroke:#AA00FF
 
+  click del_smp "https://developer.harness.io/docs/platform/delegates/install-delegates/overview/"
+  click connector_smp "https://developer.harness.io/docs/category/cloud-providers"
+  click del "https://developer.harness.io/docs/platform/delegates/install-delegates/overview/"
+  click connector "https://developer.harness.io/docs/category/cloud-providers"
   click SMP_Install "https://developer.harness.io/docs/category/install"
   click SMP_Guard "https://developer.harness.io/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/govern-run"
   click SMP_RBAC "https://developer.harness.io/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/"
@@ -127,7 +141,6 @@ flowchart TD
   click SMP_Run "https://developer.harness.io/docs/chaos-engineering/use-harness-ce/experiments/run-schedule-exp"
   click SMP_Probes "https://developer.harness.io/docs/chaos-engineering/use-harness-ce/probes/use-probe"
   click Env "https://developer.harness.io/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#create-environment"
-  click SaaS_Install "https://developer.harness.io/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/installation"
   click SaaS_Experiments "https://developer.harness.io/docs/chaos-engineering/use-harness-ce/experiments/create-experiments"
   click SaaS_Run "https://developer.harness.io/docs/chaos-engineering/use-harness-ce/experiments/run-schedule-exp"
   click SaaS_Probes "https://developer.harness.io/docs/chaos-engineering/use-harness-ce/probes/use-probe"
