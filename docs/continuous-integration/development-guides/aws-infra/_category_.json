@@ -1,0 +1,12 @@
+{
+    "label":"Set Up AWS IRSA",
+    "position": 105,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Set Up AWS IRSA"
+    }
+ }
+ 
