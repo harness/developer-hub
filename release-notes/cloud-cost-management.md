@@ -25,8 +25,13 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 - New Filters for Autostopping: We have added two new filters in the Autostopping page filter panel:
     - Minimum Savings: This allows users to filter rules based on minimum savings threshold.
     - Hide Disabled Rules: This filter is designed to help users manage and view only the active rules in their system by hiding disabled rules. [CCM-21788, CCM-21766]
+
+ <DocImage path={require('./static/as-filters.png')} width="90%" height="90%" title="Click to view full-size image" />
  
 - Recommendation Preferences: We have introduced a new feature to enhance the personalization of recommendations: Recommendation Preferences. This allows users to create, apply, and save custom tuning preferences to better suit their usage. Users can now also select a default preset preference. This ensures that the chosen tuning preferences are consistently applied across all future recommendations removing the need for repeated manual adjustments. [CCM-20954]
+
+<DocImage path={require('./static/rec-pref.png')} width="90%" height="90%" title="Click to view full-size image" />
+<DocImage path={require('./static/manage-presets.png')} width="90%" height="90%" title="Click to view full-size image" />
   
 #### Fixed Issues
 - - Anomaly Detection Timezone Fix: We have resolved an issue where anomalies appeared with a one-day delay due to a timezone mismatch. The chart implementation has been updated to reflect accurate timestamps. [CCM-21942]
