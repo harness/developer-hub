@@ -79,11 +79,6 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Previously, when a GitX pipeline was deleted from the Harness UI but still modified in the SCM (e.g., GitHub), webhook events failed without displaying an error message. The UI and webhook logs did not indicate that the pipeline no longer existed, making it difficult to diagnose the issue. This issue has been resolved now, and an appropriate error message is displayed in the UI and webhook logs when attempting to update a deleted GitX pipeline.(**PIPE-25695**)
 
-
-
-
-
-
 ### Version 1.82.3
 
 #### New Features and Enhancements
