@@ -32,9 +32,22 @@ Create a dedicated namespace for Harness delegate during installation. For examp
 
 ### Step 2. Remove Cluster Role Binding 
 
-Remove the cluster role binding from the Delegate manifest, as shown in the diagram.
+Remove the cluster role binding from the Delegate manifest, as shown.
 
-    ![](./static/delegate/cluster.png)
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: harness-delegate-ng-cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: harness-delegate-ng
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+```
 
 ### Step 3. Create New Service Account 
 
@@ -53,8 +66,42 @@ Here, `chaos-delegate` refers to the name of the service account in the Delegate
 
 Attach the service account you created earlier to the Delegate YAML, as shown in the diagram.
 
-    ![](./static/delegate/attach.png)
-
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    harness.io/name: chaos-delegate
+  name: chaos-delegate
+  namespace: harness-delegate-ng
+spec:
+  replicas: 1
+  minReadySeconds: 120
+  selector:
+    matchLabels:
+      harness.io/name: chaos-delegate
+  template:
+    metadata:
+      labels:
+        harness.io/name: chaos-delegate
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "3460"
+        prometheus.io/path: "/api/metrics"
+    spec:
+      serviceAccountName: chaos-delegate
+      terminationGracePeriodSeconds: 3600
+      restartPolicy: Always
+      containers:
+        - image: harness/delegate:24.09.83900
+          imagePullPolicy: Always
+          name: delegate
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsUser: 0
+          ports:
+            - containerPort: 8080
+```
 ### Step 5. Apply RBAC
 
 Apply the below RBAC to configure the permissions to create chaos runners (that is, transient pods).
