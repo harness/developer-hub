@@ -39,7 +39,7 @@ When you click on an individual recommendation, you’ll be able to view a detai
 ### Azure VM Recommendations
 A highly effective way to reduce Azure VM costs is by optimizing VM utilization. By clicking on the Azure VM recommendation, you can view detailed information, as shown below:
 
-  <!-- ![](./static/azure-vm-recommendation-drilldown.png) -->
+  ![](./static/azure-vm-recommendation-drilldown.png)
 
 ### AWS EC2 Recommendations
 
@@ -49,16 +49,12 @@ A highly effective way to reduce Azure VM costs is by optimizing VM utilization.
 ![](./static/aws-ecs-recommendation-drilldown-one.png)
 
 ### Nodepool Recommendations
-<!-- ![](./static/nodepool-recommendation-drilldown.png) -->
+![](./static/nodepool-recommendation-drilldown.png)
 
 ### Workload Recommendations
-<!-- ![](./static/workload-recommendation-drilldown.png)
-![](./static/workload-recommendation-drilldown-two.png) -->
+![](./static/workload-recommendation-drilldown.png)
 
 ### Governance Recommendations
-
-<!-- ![](./static/governance-recommendation-drilldown.png) -->
-Harness runs certain policies behind the scenes to generate recommendations for your governance-enabled Azure subscriptions, AWS accounts and GCP projects. These policies not only help to cut costs but also increase the efficiency of your system. On the Governance Overview page, Harness showcases recommendations that will benefit you to save costs on associated resources. You can click on any recommendation to view its details.
 
 Please see the links below for details about Governance Recommendations:
 - [Azure](https://developer.harness.io/docs/category/governance-for-azure)
