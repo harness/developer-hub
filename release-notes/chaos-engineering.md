@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2025-03-04T10:00
+date: 2025-04-01T10:00
 sidebar_position: 5
 ---
 
