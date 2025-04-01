@@ -83,17 +83,74 @@ Files in other locations will be ignored.
 ---
 
 ## Pipeline configuration
+
+<Tabs>
+<TabItem value="Pipeline configuration">
 Key aspects of the testing pipelines:
 
-- Each pipeline contains a testing stage with a single step
+1. Testing stage and steps:
+- Each pipeline includes a dedicated testing stage with a single step designed for module testing.
+- The step utilizes a custom plugin (`IACMModuleTestPlugin`) to execute module-specific tests.
+
+2. Default testing pipeline:
 - You can select a default testing pipeline for your module
 - When a PR is created, your default pipeline automatically executes
-- You cannot use a **workspace** in a module testing pipeline. Doing so will cause the pipeline to fail.
-  - Instead, Harness uses a `moduleId` input and provides custom testing steps.
-  - The `moduleId` is passed automatically using webhooks created during setup.
+
+:::info workspace restrictions
+Workspaces cannot be used within a module testing pipeline. Attempting to use a workspace will result in the pipeline failing.
+Instead, Harness leverages the `moduleId` input to identify and test the specific module. This approach ensures precise targeting of modules during testing.
+:::
+
+3. Using the `moduleId` input:
+- The `moduleId` is passed automatically as part of the pipeline execution via webhooks set up during the module configuration process.
+- The `moduleId` is defined in the pipeline as a dynamic input using the `<+input>` expression. This allows for flexible and reusable pipeline configurations tailored to different modules.
+</TabItem>
+<TabItem value="YAML">
+
+The following YAML configuration demonstrates how to set up a testing pipeline using the `moduleId: <+input>` expression. This dynamic input ensures the pipeline targets the correct module during execution.
+
+```yaml
+pipeline:
+  name: iacm_integration_testing
+  identifier: iacm_integration_testing
+  projectIdentifier: project_77777
+  orgIdentifier: org_66666
+  description: Testing pipeline used for module testing using integration-test
+  stages:
+    - stage:
+        name: testing
+        identifier: testing
+        type: IACM
+        spec:
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          moduleId: <+input>
+          execution:
+            steps:
+              - step:
+                  type: IACMModuleTestPlugin
+                  name: IACMModuleTestPlugin_1
+                  identifier: IACMModuleTestPlugin_1
+                  spec:
+                    command: integration-test
+                  timeout: 100m
+```
+
+:::info key highlights
+- `moduleId: <+input>`: This dynamic input allows the pipeline to adapt to the specific module being tested. It is passed automatically via webhooks during setup.
+- `IACMModuleTestPlugin`: A custom plugin step that executes the `integration-test` command to ensure module-specific test coverage.
+- **Timeout:** Configured with a 100-minute timeout to accommodate extended test durations.
+:::
+
+</TabItem>
+</Tabs>
 
 ### Branch configuration
-When defining a module, you configure a target branch. Any PRs created against this configured branch will trigger the associated testing pipelines.
+When defining a module while [registering it in the module registry](/docs/infra-as-code-management/iacm-features/module-registry/#register-a-module), you configure a target branch. Any PRs created against this configured branch will trigger the associated testing pipelines.
 
 ## Selecting a connector
 When setting up integration testing, you must select a connector. This is necessary because:
@@ -150,6 +207,7 @@ Pipelines using Harness testing steps **will not consume credits**. Custom logic
 </TabItem>
 </Tabs>
 ---
+
 ## Get started today
 Ready to improve your module quality and reliability? Follow these next steps:
 
