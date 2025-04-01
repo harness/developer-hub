@@ -42,8 +42,8 @@ Make sure you know:
 ## Internet Access
 
 - Your clusters must be able to reach `app.harness.io` and other necessary endpoints.
-- Is whitelisting required?
-- If you're using a proxy or firewall, ensure [outbound access](https://developer.harness.io/docs/platform/networking/networking-overview/) is configured correctly.
+- Is [whitelisting](https://developer.harness.io/docs/platform/authentication/authentication-overview/#restrict-email-domains) required?
+- If you're using a proxy or firewall, ensure [outbound access](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips) is configured correctly.
 
 ## Permissions (RBAC)
 
@@ -56,7 +56,7 @@ Make sure you know:
 - You can scope permissions to a single namespace.
 - You can create [custom roles/serviceaccounts](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-iam-integration) on the cloud providers to inject chaos.
 - Would [service discovery](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/service-discovery/) and fault injection be restricted to a particular namespace? For example, node faults can't be executed in namespace mode.
-- Are approvals required to create roles with specific policies/permissions? Harness CE provides the minimal policy spec based on the resources and faults.
+- Are approvals required to create roles with [specific policies](https://developer.harness.io/docs/platform/governance/policy-as-code/sample-policy-use-case/)/permissions? Harness CE provides the minimal policy spec based on the resources and faults.
 
 :::info note
 - By default, chaos injection is cluster-scoped. Harness CE [discovers services](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/service-discovery/) and injects chaos on workloads across namespaces on a given cluster.
@@ -84,8 +84,8 @@ Make sure you know:
 
 ## Resource Constraints
 
-- Check if there are resource limits on all containers since Harness workloads require CPU and memory resources.
-- If you use quotas or limit ranges, ensure Harness can run within those constraints.
+- Check if there are [resource limits](https://developer.harness.io/docs/platform/account-license-limits/) on all containers since Harness workloads require CPU and memory resources.
+- If you use quotas or [limit ranges](https://developer.harness.io/docs/platform/rate-limits), ensure Harness can run within those constraints.
 
 ## Health Probes
 
