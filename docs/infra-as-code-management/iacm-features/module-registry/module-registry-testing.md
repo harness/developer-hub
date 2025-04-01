@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 Module Registry Testing automates testing for infrastructure modules, ensuring reliability and functionality while avoiding workspace credit consumption.
 
 ## Common use case
-1. When you [create a module](/docs/infra-as-code-management/iacm-features/module-registry/module-registry-creating) and open a [pull request (PR)](/docs/infra-as-code-management/pipelines/operations/pr-automation), auto-generated testing pipelines are triggered at the project level. These pipelines, configured with the **use module registry** option, execute the `init`, `plan`, `apply`, and `destroy` commands to validate your module. Upon successful completion, your PR can proceed to merge.
+1. When you [register a module](/docs/infra-as-code-management/iacm-features/module-registry/#register-a-module) and open a [pull request (PR)](/docs/infra-as-code-management/pipelines/operations/pr-automation), auto-generated testing pipelines are triggered at the project level. These pipelines, configured with the **use module registry** option, execute the `init`, `plan`, `apply`, and `destroy` commands to validate your module. Upon successful completion, your PR can proceed to merge.
 
 ## Types of testing pipelines
 As part of module registry testing, Harness creates two default pipelines per module:
