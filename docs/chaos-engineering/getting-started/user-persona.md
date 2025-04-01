@@ -67,7 +67,7 @@ flowchart TD
 
 ## User Journey based on SMP / SaaS
 
-As a beginner, once you have fulfilled the [prerequisites](https://developer.harness.io/docs/chaos-engineering/getting-started/prerequisites), Harness CE provides usage as Saas version or SMP version.
+As a beginner, once you have fulfilled the [prerequisites](https://developer.harness.io/docs/chaos-engineering/getting-started/prerequisites), Harness CE provides the usage as Saas version or SMP version. You can choose one one of these to inject chaos into your target application and build resilient applications.
 
 
 ```mermaid
