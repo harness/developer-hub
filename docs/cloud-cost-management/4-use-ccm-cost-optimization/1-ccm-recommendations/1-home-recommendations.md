@@ -28,41 +28,42 @@ To view recommendations, click on the **Recommendations** tab in the navigation 
 
 ### Open Recommendations
 
-  <!-- ![](./static/view-recommendations-page.png) -->
+  ![](./static/view-recommendations-page.png)
 
 ### Applied Recommendations
 
-  <!-- ![](./static/applied-recommendations-page.png) -->
+  ![](./static/applied-recommendations-page.png)
 
 When you click on an individual recommendation, you’ll be able to view a detailed breakdown of the recommendation, including relevant insights, suggested actions, and any supporting information.
 
 ### Azure VM Recommendations
 A highly effective way to reduce Azure VM costs is by optimizing VM utilization. By clicking on the Azure VM recommendation, you can view detailed information, as shown below:
+
   <!-- ![](./static/azure-vm-recommendation-drilldown.png) -->
 
 ### AWS EC2 Recommendations
 
-<!-- ![](./static/aws-ec2-recommendation-drilldown.png) -->
+![](./static/aws-ec-recommendation-drilldown.png)
 
 ### AWS ECS Recommendations
-<!-- ![](./static/aws-ecs-recommendation-drilldown-one.png) -->
-<!-- ![](./static/aws-ecs-recommendation-drilldown-two.png) -->
+![](./static/aws-ecs-recommendation-drilldown-one.png)
 
 ### Nodepool Recommendations
 <!-- ![](./static/nodepool-recommendation-drilldown.png) -->
 
 ### Workload Recommendations
-<!-- ![](./static/workload-recommendation-drilldown.png) -->
-<!-- ![](./static/workload-recommendation-drilldown-two.png) -->
+<!-- ![](./static/workload-recommendation-drilldown.png)
+![](./static/workload-recommendation-drilldown-two.png) -->
 
 ### Governance Recommendations
+
 <!-- ![](./static/governance-recommendation-drilldown.png) -->
 Harness runs certain policies behind the scenes to generate recommendations for your governance-enabled Azure subscriptions, AWS accounts and GCP projects. These policies not only help to cut costs but also increase the efficiency of your system. On the Governance Overview page, Harness showcases recommendations that will benefit you to save costs on associated resources. You can click on any recommendation to view its details.
 
 Please see the links below for details about Governance Recommendations:
-- [Azure]
-- [GCP]
-- [AWS]
+- [Azure](https://developer.harness.io/docs/category/governance-for-azure)
+- [GCP](https://developer.harness.io/docs/category/governance-for-gcp)
+- [AWS](https://developer.harness.io/docs/category/governance-for-aws)
 
 ## Ignore list
 You can put any EC2 instance, VM, Service, Nodepool, Workload, Governance recommendation in Ignored list. Adding resources to the Ignore list will stop Harness from displaying recommendations for those resources. You can view the Ignore list with details by clicking on "Manage Ignore List" on the overview page.
@@ -276,7 +277,6 @@ You can export your Recommendations as comma-separated values (CSV) files. Expor
 ### **Recommendations Filtering Support**  
 
 Harness provides filtering support for recommendations based on cloud account identifiers and Kubernetes attributes. This allows for better cost optimization insights while maintaining alignment with perspective-based RBAC settings.
-
 
 ### **Filtering Support for Recommendations**  
 
