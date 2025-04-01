@@ -122,11 +122,13 @@ With this configuration, the step generates the SBOM and stores it in the Artifa
 
 :::info
 
-SBOM generation supports all registries, including JFrog, Harbor, and K8s registry. Create a Docker Registry Connector and always specify the full artifact URL (`example: my-registry.com/my-image:tag`), including the domain.
+The SBOM generation step supports all registry types, including JFrog, Harbor, and Kubernetes registries. Create a Docker Registry Connector for the registry where your artifact is stored.
 
-Jfrog: `demo.jfrog.io/your-project/test-image`
+Enter the Image Name with Tag Format:
 
-Harbor: `demo.goharbor.io/your-project/test-image`
+JFrog: `</your-project/test-image>:tag`
+
+Harbor: `</your-project/test-image>:tag`
 
 :::
 
