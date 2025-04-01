@@ -1,5 +1,5 @@
 ---
-title: View and apply recommendations
+title: Overview
 description: Learn about the recommendations summary page and the various actions that you can perform on this page.
 # sidebar_position: 2
 ---
@@ -61,6 +61,83 @@ Please see the links below for details about Governance Recommendations:
 - [GCP](https://developer.harness.io/docs/category/governance-for-gcp)
 - [AWS](https://developer.harness.io/docs/category/governance-for-aws)
 
+## Recommendation Settings
+
+Recommendation settings allow users to customize how recommendations are generated and displayed within the platform. The recommendation settings are divided into two main sections: Preferences and Manage Presets.
+
+Click on "Settings" to view/edit the preferences and presets.
+
+### Preferences
+
+<DocImage path={require('./static/preferences.png')} width="70%" height="70%" title="Click to view full size image" />
+
+#### General Preferences:
+
+- Show Recommendations on Parent Resources - Enables recommendations for parent-level resources such as Nodepool, EC2, and ECS Services. This ensures users receive optimization suggestions for high-level infrastructure components.
+
+- Show Recommendations on Child Resources - Displays recommendations for individual workloads, allowing users to optimize specific application components rather than just the underlying infrastructure.
+
+- Show Recommendations on Resources Added to the Ignore List - If enabled, recommendations will still be displayed for resources that have been manually marked as ignored. 
+
+#### Resource Specific Preferences:
+
+Over here, users can select the presets for each resource type and also set the default time range. 
+
+### Manage Presets
+
+:::note
+By default, Harness CCM has default presets for all resources but users can tune recommendations using custom values. To set custom values, click on the recommendation and expand the "Tune Recommendations" section to configure the tuning parameters. 
+:::
+
+<DocImage path={require('./static/managepresets.png')} width="70%" height="70%" title="Click to view full size image" />
+
+This helps users to create and save customized configurations for their recommendations. These presets capture specific user preferences, such as tuning parameters for resource types like workloads, node pools, ECS, and EC2 instances.
+
+Users can fine-tune recommendations for different resource types by configuring specific tuning parameters and save presets. 
+
+| Resource Type | Tuning Parameters supported in Presets |
+| --- | --- |   
+| Workload | Quality of Service (QoS), Percentage Buffer for CPU/Memory |
+| Nodepool | Minimum Node Count, Percentage Buffer for CPU/Memory |
+| AWS EC2 | Show recommendation within the same instance family or across instance families |
+| AWS ECS | Buffer Percentage |
+
+#### K8s Workload
+
+- Quality of Service (QoS)
+- Percentage Buffer for CPU/Memory
+
+<DocImage path={require('./static/workload-preset.png')} width="70%" height="70%" title="Click to view full size image" />
+
+
+#### K8s Nodepool
+
+For nodepools, users can set the following parameters:
+
+- Minimum Node Count
+
+- Percentage Buffer for CPU/Memory
+
+<DocImage path={require('./static/nodepool-preset.png')} width="70%" height="70%" title="Click to view full size image" />
+
+#### Amazon ECS 
+
+For ECS workloads, users can configure:
+
+-  Percentage Buffer for CPU/Memory
+
+<DocImage path={require('./static/ecs-preset.png')} width="70%" height="70%" title="Click to view full size image" />
+
+#### Amazon EC2 
+
+For EC2 instances, users can choose how recommendations are displayed:
+
+- Within the Same Instance Family: Recommendations will suggest optimized instance types within the same instance family, ensuring workload compatibility and minimizing migration complexity.
+
+- Across Instance Families: Recommendations can suggest optimized instance types across different instance families, potentially unlocking greater cost savings and efficiency improvements.
+
+<DocImage path={require('./static/ec-preset.png')} width="70%" height="70%" title="Click to view full size image" />
+
 ## Ignore list
 You can put any EC2 instance, VM, Service, Nodepool, Workload, Governance recommendation in Ignored list. Adding resources to the Ignore list will stop Harness from displaying recommendations for those resources. You can view the Ignore list with details by clicking on "Manage Ignore List" on the overview page.
 
@@ -81,7 +158,7 @@ To apply recommendations, you need to raise a ticket in the ticketing tool that 
 
 4. Select **Save**.
 
-![](./static/ticketing-tool-selector.png)
+<DocImage path={require('./static/ticketing-tool-selector.png')} width="70%" height="70%" title="Click to view full size image" />
 
 
 :::note
@@ -111,7 +188,6 @@ import TabItem from '@theme/TabItem';
 * **Issue type** — Select a Jira issue type from the list of types in the Jira project you selected. Go to [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md).
 * **Ticket summary** — Add a summary of the issue.
 * **Description** — Add a description for the issue.
-
 
 
 </TabItem>
@@ -270,11 +346,11 @@ You can export your Recommendations as comma-separated values (CSV) files. Expor
 
 5. Click **Download**. The file is downloaded to your computer.
 
-### **Recommendations Filtering Support**  
+## Recommendations Filtering Support 
 
 Harness provides filtering support for recommendations based on cloud account identifiers and Kubernetes attributes. This allows for better cost optimization insights while maintaining alignment with perspective-based RBAC settings.
 
-### **Filtering Support for Recommendations**  
+### Filtering Support for Recommendations 
 
 - **AWS EC2**: Filtering is supported on AWS Account ID. Nested Cost Categories are not supported.  
 
