@@ -46,6 +46,10 @@ For other build tools or non-default cache locations, use Cache Intelligence wit
 
 When you use Cache Intelligence with Harness CI Cloud, the cache is stored in the Harness-managed environment. When running builds on self-managed infrastructure, you will need to provide your own storage. 
 
+:::note
+In the case of cache intelligence, blobs larger than 5 GB cannot be uploaded to the bucket using S3 upload. For blobs exceeding 5 GB, multi-part upload is required. This applies to both signed and unsigned URL flows.
+:::
+
 <Tabs>
 <TabItem value="cloud" label="Harness Cloud" default>
 

@@ -278,6 +278,10 @@ Here's an example of a pipeline that builds and tests a Go app. It includes step
             - /home/harness
 ```
 
+:::note
+In the case of cache intelligence, blobs larger than 5 GB cannot be uploaded to the bucket using S3 upload. For blobs exceeding 5 GB, multi-part upload is required. This applies to both signed and unsigned URL flows.
+:::
+
 ## Cache step logs
 
 When you run a pipeline with caching steps, you can observe and review build logs on the [Build details page](../viewing-builds.md).
