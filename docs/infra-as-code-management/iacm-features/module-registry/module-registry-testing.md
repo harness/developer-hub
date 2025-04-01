@@ -84,21 +84,21 @@ Files in other locations will be ignored.
 <TabItem value="Pipeline configuration">
 Key aspects of the testing pipelines:
 
-1. Testing stage and steps:
-- Each testing pipeline includes a dedicated testing stage with a single step using the `IACMModuleTestPlugin`. The `moduleId` input is dynamically passed via webhooks, ensuring precise targeting of modules during testing.
+**1. Testing stage and steps:**
+  - Each testing pipeline includes a dedicated testing stage with a single step using the `IACMModuleTestPlugin`. The `moduleId` input is dynamically passed via webhooks, ensuring precise targeting of modules during testing.
 
-2. Default testing pipeline:
-- You can select a default testing pipeline for your module
-- When a PR is created, your default pipeline automatically executes
+**2. Default testing pipeline:**
+  - You can select a default testing pipeline for your module
+  - When a PR is created, your default pipeline automatically executes
 
 :::info workspace restrictions
 Workspaces are not supported in module testing pipelines and will cause execution to fail. 
 Use the `moduleId` input instead for module-specific testing.
 :::
 
-3. Using the `moduleId` input:
-- The `moduleId` is passed automatically as part of the pipeline execution via webhooks set up during the module configuration process.
-- The `moduleId` is defined in the pipeline as a dynamic input using the `<+input>` expression. This allows for flexible and reusable pipeline configurations tailored to different modules.
+**3. Using the `moduleId` input:**
+    - The `moduleId` is passed automatically as part of the pipeline execution via webhooks set up during the module configuration process.
+  - The `moduleId` is defined in the pipeline as a dynamic input using the `<+input>` expression. This allows for flexible and reusable pipeline configurations tailored to different modules.
 </TabItem>
 <TabItem value="YAML">
 
@@ -140,9 +140,9 @@ pipeline:
 - `IACMModuleTestPlugin`: A custom plugin step that executes the `integration-test` command to ensure module-specific test coverage.
 - **Timeout:** Configured with a 100-minute timeout to accommodate extended test durations.
 :::
-
 </TabItem>
 </Tabs>
+---
 
 ### Branch configuration
 When defining a module while [registering it in the module registry](/docs/infra-as-code-management/iacm-features/module-registry/#register-a-module), you configure a target branch. Any PRs created against this configured branch will trigger the associated testing pipelines.
@@ -152,7 +152,9 @@ When setting up integration testing, you must select a connector. This is necess
 - Integration tests create and destroy real infrastructure
 - The connector provides the necessary credentials and access
 
-:::tip credit usage
+## Credit Usage
+
+:::tip avoid credit consumption
 Default testing pipelines or custom pipelines using Harness-provided steps (e.g., Integration Testing or Tofu/Terraform Testing) do not consume workspace credits. However, custom pipelines with workspaces or without Harness-provided steps will consume credits.
 :::
 
