@@ -7,12 +7,10 @@ sidebar_position: 50
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Module Registry Testing enables automated testing of your infrastructure modules through dedicated pipelines that don't consume workspace credits. This feature ensures your infrastructure modules are reliable and functional by automatically testing them when a Pull Request is created. It reduces the risk of broken modules reaching production and helps enforce testing as part of the review process.
+Module Registry Testing automates testing for infrastructure modules, ensuring reliability and functionality while avoiding workspace credit consumption.
 
 ## Common use case
-1. When you [create a module](/docs/infra-as-code-management/iacm-features/module-registry/module-registry-creating) and open a [pull request (PR)](/docs/infra-as-code-management/pipelines/operations/pr-automation), it automatically triggers auto-generated testing pipelines
-2. These pipelines run at the project level scope, when you select the **use module registry** option, your testing pipelines will run and test your module executing [the `init`, `plan`, `apply`, and `destroy` commands](/docs/infra-as-code-management/pipelines/terraform-plugins).
-3. Upon successful test completion, your PR can proceed with the merge process
+1. When you [create a module](/docs/infra-as-code-management/iacm-features/module-registry/module-registry-creating) and open a [pull request (PR)](/docs/infra-as-code-management/pipelines/operations/pr-automation), auto-generated testing pipelines are triggered at the project level. These pipelines, configured with the **use module registry** option, execute the `init`, `plan`, `apply`, and `destroy` commands to validate your module. Upon successful completion, your PR can proceed to merge.
 
 ## Types of testing pipelines
 As part of module registry testing, Harness creates two default pipelines per module:
@@ -30,7 +28,7 @@ Integration testing will use your repository's `examples/` folder.
 :::
 
 #### File structure
-To enable integration testing, your module repository must include an `examples/` folder. Each test case should be in a separate subfolder, containing standard Terraform code (`main.tf`, `variables.tf`, `outputs.tf`, etc.).
+To enable integration testing, include an `examples/` folder in your module repository. Each subfolder should contain standard Terraform code (e.g., `main.tf`, `variables.tf`, `outputs.tf`).
 
 ```markdown
 module-repository/
@@ -53,9 +51,7 @@ The pipeline will execute the [`init → plan → apply → destroy` commands](/
 </TabItem>
 <TabItem value="Tofu/Terraform testing pipeline">
 
-Tofu/Terraform testing requires at least one of the following (and also supports both):
-- A `tests/` folder with a `test.tftest.hcl` file
-- A root-level `test.tftest.hcl` file
+Tofu/Terraform testing requires a `test.tftest.hcl` file either at the root level or within a `tests/` folder. 
 
 :::info requirements
 - Do not use a workspace in testing pipelines. This will cause execution to fail.
@@ -89,16 +85,15 @@ Files in other locations will be ignored.
 Key aspects of the testing pipelines:
 
 1. Testing stage and steps:
-- Each pipeline includes a dedicated testing stage with a single step designed for module testing.
-- The step utilizes a custom plugin (`IACMModuleTestPlugin`) to execute module-specific tests.
+- Each testing pipeline includes a dedicated testing stage with a single step using the `IACMModuleTestPlugin`. The `moduleId` input is dynamically passed via webhooks, ensuring precise targeting of modules during testing.
 
 2. Default testing pipeline:
 - You can select a default testing pipeline for your module
 - When a PR is created, your default pipeline automatically executes
 
 :::info workspace restrictions
-Workspaces cannot be used within a module testing pipeline. Attempting to use a workspace will result in the pipeline failing.
-Instead, Harness leverages the `moduleId` input to identify and test the specific module. This approach ensures precise targeting of modules during testing.
+Workspaces are not supported in module testing pipelines and will cause execution to fail. 
+Use the `moduleId` input instead for module-specific testing.
 :::
 
 3. Using the `moduleId` input:
@@ -107,7 +102,7 @@ Instead, Harness leverages the `moduleId` input to identify and test the specifi
 </TabItem>
 <TabItem value="YAML">
 
-The following YAML configuration demonstrates how to set up a testing pipeline using the `moduleId: <+input>` expression. This dynamic input ensures the pipeline targets the correct module during execution.
+This YAML configuration demonstrates the use of ` moduleId: <+input>` as a dynamic input for module-specific testing. The `IACMModuleTestPlugin` step executes the `integration-test` command, ensuring comprehensive test coverage.
 
 ```yaml
 pipeline:
@@ -158,11 +153,7 @@ When setting up integration testing, you must select a connector. This is necess
 - The connector provides the necessary credentials and access
 
 :::tip credit usage
-Important note about credits:
-- Module testing pipelines do not consume workspace credits
-- If you use your own custom pipelines with workspaces instead of the testing pipelines, they will consume credits
-- If you define your own pipeline but do not use Harness-provided testing steps (e.g., you include a workspace stage), your pipeline **will consume credits**.
-- To avoid this, use the provided **Testing**, **Integration Testing**, or **Tofu/Terraform Testing** steps when building custom pipelines.
+Default testing pipelines or custom pipelines using Harness-provided steps (e.g., Integration Testing or Tofu/Terraform Testing) do not consume workspace credits. However, custom pipelines with workspaces or without Harness-provided steps will consume credits.
 :::
 
 | Scenario                                                          | Credit Usage                           |
@@ -211,8 +202,8 @@ Pipelines using Harness testing steps **will not consume credits**. Custom logic
 ## Get started today
 Ready to improve your module quality and reliability? Follow these next steps:
 
-1. **Set up your repository structure** using the patterns shown above
+1. **Set up your repository structure** using the examples above.
 2. [**Configure module testing**](#configure-module-testing) in your Harness IaCM account
-3. **Create your first PR** to see automated testing in action
+3. [**Create a PR**](/docs/infra-as-code-management/pipelines/operations/pr-automation) to see automated testing in action
 
 By implementing module testing, you'll catch issues earlier, ensure consistent behavior across environments, and build confidence in your infrastructure modules.
