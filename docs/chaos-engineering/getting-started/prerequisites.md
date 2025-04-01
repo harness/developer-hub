@@ -11,8 +11,7 @@ redirect_from:
 - /docs/chaos-engineering/getting-started/saas
 ---
 
-This topic describes generic prerequisites to be fulfilled before executing chaos experiments using Harness Chaos Engineering (SaaS). 
-
+This topic describes prerequisites to be fulfilled before executing chaos experiments (on various platforms, such as cloud, Windows, Linux, and so on) using Harness Chaos Engineering (SaaS). 
 
 ## Access to Harness
 
@@ -24,20 +23,20 @@ This topic describes generic prerequisites to be fulfilled before executing chao
 ## Target System (What You'll Test)
 
 - A running Kubernetes cluster where your app or infrastructure lives.
-- Compatible with platforms like GKE, AKS, EKS, or any Kubernetes setup.
+- If your target system is a Windows OS based machine or Linux machine, go to [Prerequisites for Windows OS](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/prerequisites) and [Permissions Required](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/windows/windows-chaos-permissions) and [Prerequisites for Linux](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/permissions). For VMware platform, go to [VMware - vCenter and Windows permissions](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/permissions) and [VMware - Linux permissions](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/linux/binary-installation) 
 
-## Kubernetes Platform Info
+
+## Platform Info
 
 Make sure you know:
 
-- Your Kubernetes version.
+- If your target system is [Kubernetes](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/) or cloud-based ([AWS](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/), [GCP](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/), or [Azure](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/azure/)), determine the Kubernetes version.
 - If you're using GKE, are you on **Standard** or **Autopilot**?
-- Harness experiments run from a control plane that connects to your target clusters.
-- A [delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview) is required to establish that connection.
+- Harness experiments run from a control plane that connects to your target clusters, hence a [delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview) is required to establish that connection.
 
 :::info note
 - If you want to inject chaos into your AWS resource, use [IRSA](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-iam-integration/), and set up your execution environment on EKS.
-- Harness Chaos Engineering supports injecting faults across different Kubernetes clusters from a single, centralized execution environment (cluster), if there is network connectivity (transient runners/pods on the target clusters).
+- Harness Chaos Engineering supports injecting faults across different Kubernetes clusters from a single, [centralized execution plane](https://developer.harness.io/docs/chaos-engineering/concepts/how-stuff-works/centralized-exec-plane) (cluster), if there is network connectivity (transient runners/pods on the target clusters).
 :::
 
 ## Internet Access
@@ -46,12 +45,16 @@ Make sure you know:
 - Is whitelisting required?
 - If you're using a proxy or firewall, ensure [outbound access](https://developer.harness.io/docs/platform/networking/networking-overview/) is configured correctly.
 
-## Kubernetes Permissions (RBAC)
+## Permissions (RBAC)
 
 - Harness needs permissions to create workloads in your target cluster.
+- The permissions required for Kubernetes or the cloud-based platform is linked below:
+    - [AWS permissions required](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/permissions)
+    - [GCP](https://developer.harness.io/docs/category/security-configuration)
+    - [Kubernetes permissions required](https://developer.harness.io/docs/category/permissions)
 - Use [sample RBAC policies](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/governance/rbac) to control access.
 - You can scope permissions to a single namespace.
-- You can create custom roles/serviceaccounts on the cloud providers to inject chaos.
+- You can create [custom roles/serviceaccounts](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-iam-integration) on the cloud providers to inject chaos.
 - Would [service discovery](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/service-discovery/) and fault injection be restricted to a particular namespace? For example, node faults can't be executed in namespace mode.
 - Are approvals required to create roles with specific policies/permissions? Harness CE provides the minimal policy spec based on the resources and faults.
 
@@ -71,7 +74,7 @@ Make sure you know:
 
 ## Security Policies
 
-- Ensure that security policies like Kyverno or OPA validate workloads during runtime.
+- Ensure that security policies like [Kyverno](https://developer.harness.io/docs/chaos-engineering/security/security-templates/kyverno-policies) or [OPA](https://developer.harness.io/docs/chaos-engineering/security/security-templates/opa) validate workloads during runtime.
 - Some chaos experiments (like container kill or network loss) require [privileged access, i.e ChaosGuard](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/).
 
 ## Service Mesh Considerations
@@ -88,19 +91,15 @@ Make sure you know:
 
 - Ensure your app has **liveness** and **readiness** probes.
 - Harness uses these to determine whether the app recovers after chaos is injected.
-- You can define [resilience probes](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/probes/) in your experiment.
+- Define [resilience probes](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/probes/) in your experiment.
 
 ## Observability Tools (Optional)
 
 - Harness can integrate with observability tools like Prometheus, Datadog, or New Relic.
 - Ensure your metrics systems (endpoints) are accessible from your cluster if you plan to use them.
 
-## Cloud-Specific Permissions
-
-Need permissions for cloud environments like AWS, GCP, or Azure?
-
-- Visit [Platform-Specifics](https://developer.harness.io/docs/chaos-engineering/platform-specifics/) to configure based on your platform.
-
 ---
 
-Next, [Run Your First Chaos Experiment](https://developer.harness.io/docs/chaos-engineering/getting-started/execute-your-first-chaos-experiment).
+## Next Steps
+
+- [Run Your First Chaos Experiment](https://developer.harness.io/docs/chaos-engineering/getting-started/execute-your-first-chaos-experiment)
