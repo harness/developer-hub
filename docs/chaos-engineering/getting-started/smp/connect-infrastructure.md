@@ -27,6 +27,17 @@ The above environment variables are set without providing any credentials. An ex
 http://<proxy-ip>:<proxy-port>
 ```
 
+To stream logs in real-time during experiment execution, configure the following environment variables with the subscriber:
+
+- `HTTP_PROXY` is set if you deploy the SMP control plane over HTTP.
+
+- `HTTPS_PROXY` is set if you deploy the SMP control plane over HTTPS or if you want to connect to [app.harness.io](https://app.harness.io).
+
+- `NO_PROXY` is set with the cluster IP of the cluster where you deploy the chaos infrastructure. This allows requests to be directed to the Kube API server directly instead of going through a proxy. In addition, the proxy may not be able to connect to the Kube API server if it is deployed outside the cluster.
+
+- `INDIRECT_UPLOAD`is set to "true" in the experiment manifest.
+
+
 :::tip
 - You can provide `HTTP_PROXY` and `HTTPS_PROXY` with endpoints that have credentials. For this, you have to first URL Encode the username and the password and provide them.
 - An example of a proxy with credentials:
