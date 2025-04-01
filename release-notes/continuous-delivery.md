@@ -55,6 +55,35 @@ Google Container Registry (GCR) is deprecated and scheduled to shut down on **Ma
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+### Version 1.83.x
+
+#### New Features and Enhancements
+
+- Improved log messages in ServiceNow Approval to enhance clarity and debugging. Currently, this feature is behind the feature flag `CDS_SNOW_IMPROVE_CONSOLE_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.(**CDS-97247**)
+
+- Users can now access Output Variables in the ServiceNow Approval step, including Ticket Type, Ticket Number, Approval Criteria, Rejection Criteria, hasApprovalCriteriaMet, and hasRejectionCriteriaMet. This enhances visibility and debugging.(**CDS-103752**)
+
+- Users can now manage Deployment Freeze Windows with granularity based on Environment Types, allowing for more fine-tuned control over deployment windows. Currently, this feature is behind the feature flag `CDS_DEPLOYMENT_FREEZE_GRANULAR_RBAC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-98570**)
+
+#### Fixed Issues
+
+- Previously, users creating health sources in monitored services using Datadog as the data source encountered an issue where the UI would crash upon selecting a dashboard, especially if the dashboard had an empty widget with no data. This issue has been resolved now. (**CDS-108084, ZD-79423**)
+
+- Previously, CD Trends data was missing after a certain date when selecting "Last 12 months" on the Licensing Page with specific license types. This issue occurred after a change in license type and has been resolved now. (**CDS-108153, ZD-80522**)
+
+- Previously, an NPE (Null Pointer Exception) occurred while retrieving the Helm Chart list when using the OCI Helm Connector with Anonymous Authentication. This issue has been resolved now. (**CDS-108374**)
+
+- Previously, the Harness delegate incorrectly used local container credentials instead of the OIDC access token when listing GCP projects via an OIDC-authenticated connector. This issue has been resolved now, behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`, ensuring the delegate lists projects correctly based on its IAM principal.Contact [Harness Support](mailto:support@harness.io) to enable the fix.(**CDS-108481**)
+
+- Previously, after deploying with Google Cloud Run steps, instance counts were not displayed in the Service Deployments Summary dashboard. This issue has been resolved now, ensuring that instance counts are correctly shown for Google Cloud Run deployments. (**CDS-108501**)
+
+- Previously, when a GitX pipeline was deleted from the Harness UI but still modified in the SCM (e.g., GitHub), webhook events failed without displaying an error message. The UI and webhook logs did not indicate that the pipeline no longer existed, making it difficult to diagnose the issue. This issue has been resolved now, and an appropriate error message is displayed in the UI and webhook logs when attempting to update a deleted GitX pipeline.(**PIPE-25695**)
+
+
+
+
+
+
 ### Version 1.82.3
 
 #### New Features and Enhancements
