@@ -120,6 +120,15 @@ import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifac
 
 With this configuration, the step generates the SBOM and stores it in the Artifact section of SCS. Optionally, you can attest to the generated SBOM, follow the instructions in the section below.
 
+:::info
+
+SBOM generation supports all registries, including JFrog, Harbor, and K8s registry. Create a Docker Registry Connector and always specify the full artifact URL (`example: my-registry.com/my-image:tag`), including the domain.
+
+Jfrog: `demo.jfrog.io/your-project/test-image`
+
+Harbor: `demo.goharbor.io/your-project/test-image`
+
+:::
 
 ### Attest the SBOM
 To configure attestation, in addition to the above configuration, you need to enable the SBOM Attestation checkbox in the SBOM Orchestration step. Enabling SBOM Attestation is optional and not required for SBOM generation. 
