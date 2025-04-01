@@ -63,6 +63,10 @@ Please see the links below for details about Governance Recommendations:
 
 ## Recommendation Settings
 
+:::note
+New Recommendation Preferences may take up to 24 hours to fully update across the platform. However, changes will be reflected immediately on the drill-down page, while the Overview page may take additional time to reflect updates.
+:::
+
 Recommendation settings allow users to customize how recommendations are generated and displayed within the platform. The recommendation settings are divided into two main sections: Preferences and Manage Presets.
 
 Click on "Settings" to view/edit the preferences and presets.
@@ -89,9 +93,19 @@ Over here, users can select the presets for each resource type and also set the 
 By default, Harness CCM has default presets for all resources but users can tune recommendations using custom values. To set custom values, click on the recommendation and expand the "Tune Recommendations" section to configure the tuning parameters. 
 :::
 
+
+This helps users to create and save customized configurations for their recommendations. These presets capture specific user preferences, such as tuning parameters for resource types like workloads, nodepools, ECS, and EC2 instances. 
+
+**Key Benefits:**
+
+- Time-Saving Automation - There is no longer any requirement to manually adjust settings each time recommendations are generated, reducing repetitive work.
+
+- Flexibility and Customization - Different presets can be created for various use cases, and users can apply the most suitable settings as needed.
+
+- Simplified User Experience - Managing preferences through presets enhances usability, making it easier to navigate and control recommendation settings.
+
 <DocImage path={require('./static/managepresets.png')} width="70%" height="70%" title="Click to view full size image" />
 
-This helps users to create and save customized configurations for their recommendations. These presets capture specific user preferences, such as tuning parameters for resource types like workloads, node pools, ECS, and EC2 instances.
 
 Users can fine-tune recommendations for different resource types by configuring specific tuning parameters and save presets. 
 
@@ -108,7 +122,6 @@ Users can fine-tune recommendations for different resource types by configuring 
 - Percentage Buffer for CPU/Memory
 
 <DocImage path={require('./static/workload-preset.png')} width="70%" height="70%" title="Click to view full size image" />
-
 
 #### K8s Nodepool
 
