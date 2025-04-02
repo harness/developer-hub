@@ -19,7 +19,7 @@ Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-
 :::
 
 :::note
-In the case of cache intelligence, blobs larger than 5 GB cannot be uploaded to the bucket using S3 upload. For blobs exceeding 5 GB, multi-part upload is required. This applies to both signed and unsigned URL flows.
+For blobs larger than 5 GB, multi-part upload is used for caching to storage, while standard uploads are used for blobs up to 5 GB.
 :::
 
 You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3** step, and restore it in the same stage or a following stage using the **Restore Cache From S3** step. You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.

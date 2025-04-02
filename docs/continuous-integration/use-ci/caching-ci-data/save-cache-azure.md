@@ -279,7 +279,7 @@ Here's an example of a pipeline that builds and tests a Go app. It includes step
 ```
 
 :::note
-In the case of cache intelligence, blobs larger than 5 GB cannot be uploaded to the bucket using S3 upload. For blobs exceeding 5 GB, multi-part upload is required. This applies to both signed and unsigned URL flows.
+For blobs larger than 5 GB, multi-part upload is used for caching to storage, while standard uploads are used for blobs up to 5 GB.
 :::
 
 ## Cache step logs

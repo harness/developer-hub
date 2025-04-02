@@ -26,7 +26,7 @@ You can't share access credentials or other [Text Secrets](/docs/platform/secret
 :::
 
 :::note
-In the case of cache intelligence, blobs larger than 5 GB cannot be uploaded to the bucket using S3 upload. For blobs exceeding 5 GB, multi-part upload is required. This applies to both signed and unsigned URL flows.
+For blobs larger than 5 GB, multi-part upload is used for caching to storage, while standard uploads are used for blobs up to 5 GB.
 :::
 
 This topic assumes you have created a pipeline and that you are familiar with the following:
