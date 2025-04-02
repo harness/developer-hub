@@ -108,6 +108,11 @@ Each scope provides access to its respective scope-level settings: **Account Set
 
 While the contents of these pages are the same, navigation 2.0 introduces a cleaned-up interface for simplified browsing and minimal distraction.
 
+Additionally, when hovering over the Project Settings button, a tile pop-up will display the full settings list. Clicking the button will open the settings page as usual.
+:::note
+This feature is behind the feature flag `CDS_SETTINGS_ACCORDION`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.  
+:::
+
 Account settings include:
 
 * General: Account Details, [Default Settings](/docs/platform/settings/default-settings), and SMTP configuration
