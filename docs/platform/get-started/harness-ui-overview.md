@@ -43,6 +43,11 @@ The left navigation for version 2.0 includes the following options.
 
 Your [scope](/docs/platform/role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes) is given at the top of the left navigation. Select the scope (**Account**, **Organization**, or **Project**) to change your scope.
 
+If you hover over the scope selector, a list of recent scopes will appear to choose from. Click the selector to view all scopes. 
+:::note
+This feature is behind the feature flag `CDS_RECENT_SCOPES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 You can change scope levels entirely (or example, drill down from organization or project scope) or select different entities at the same scope (such as a different project or organization).
 
 The remainder of the left nav updates based on the selected scope.
