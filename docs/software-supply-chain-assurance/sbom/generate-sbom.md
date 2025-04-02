@@ -122,7 +122,7 @@ With this configuration, the step generates the SBOM and stores it in the Artifa
 
 :::info
 
-The SBOM generation step supports all registry types, including JFrog, Harbor, and Kubernetes registries. Select the [Docker Registry Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
+The SBOM generation step supports all registry types, including JFrog, Harbor, and Kubernetes registries. Select the [Docker Registry Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker Registry where the artifact is stored.
 
 Enter the name of your image with tag, such as:
 
