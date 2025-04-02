@@ -4,6 +4,9 @@ description: Learn more about the execution history of a pipeline. Where to find
 sidebar_position: 7
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This topic describes how to navigate to the execution history of pipelines and what information is contained within.
 
 ## Where Can I Find Execution History?
@@ -69,7 +72,7 @@ Each pipeline execution displays the following information.
     - [Compare Pipeline](/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions/#compare-executions)
     - [Download Logs](/docs/platform/pipelines/executions-and-logs/download-logs)
 
-## Filter execution
+## Filter executions
 
 You can filter pipeline executions using the filters in the **Execution History** or **Execution** tabs.
 
@@ -77,7 +80,35 @@ You can filter pipeline executions using the filters in the **Execution History*
 
 You can filter pipeline execution based on **Status**, **Execution Mode**, **Trigger Type**, **Trigger Identifier**, **Timeframe**, **Deployment Type**, **Services**, **Environments**, **Artifacts** or **Build Type**.
 
+### Select your filters
+
+<Tabs>
+<TabItem value="Legacy Filter UI">
+
+You can use default filter options show at the top such as **Status**, **Pipelines**, or **Select Repository**, or use more filter options by clicking the filter icon next to **Select a Saved Filter**.
+
 ![](./static/execution_filter_2.png)
+
+Here you can click **+New Filter** to create and store filters for future use. 
+
+</TabItem>
+<TabItem value="New Filter UI">
+
+:::note
+
+You can use the new filter UI by enabling the feature flag `CDS_EXECUTION_LIST_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+:::
+
+You can use default filter options such as **My Executions**, **Status**, or **Timeframe**, or use more filter options by clicking the **+Add Filter** button.  
+
+![](./static/execution_filter_3.png)
+
+You can save your current filter settings by clicking **Save** and you can reference those saved filters by clicking the filter icon dropdown at the top right. 
+
+</TabItem>
+</Tabs>
+---
 
 ### Status
 
@@ -91,7 +122,7 @@ It includes:
 - Failed
 - Not Started 
 - Paused
-- Queueud
+- Queuud
 - Running
 - Success
 - Suspended
@@ -223,4 +254,3 @@ To avoid encountering this limitation:
 Apply additional filters, such as Status and Time Range, to narrow down the result set and reduce the number of executions listed.
 Refer to the [Pipeline Execution API](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getListOfExecutions) for more details.
 As an alternate, you can use the [Pipeline Execution Outline API](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getListOfExecutionsOutline).
-
