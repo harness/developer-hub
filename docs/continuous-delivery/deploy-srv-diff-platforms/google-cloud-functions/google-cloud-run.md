@@ -85,6 +85,27 @@ Harness supports the following methods for GCP authentication:
 - **Service Account**:  
    Create a GCP connector by providing a Service Account. For more details, refer to [Create a GCP connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp).  
 
+### Enable Cross-Project Access
+
+You can have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. With this feature, the connector will allow access to multiple GCP projects.
+
+**Prerequisite** : For OIDC-based connectors, the associated service account (SA) must have cross-project access.
+
+:::note
+Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Enable the checkbox **Enable Cross Project Access** during the GCP OIDC connector configuration. For more information on GCP OIDC connector configuration, refer [GCP OIDC Connector Settings](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#enable-cross-project-access).
+
+With this checkbox enabled, you will have the option to select the **Project** in the **Cluster details** in the **Infrastructure configuration**.
+
+**Project** is an optional field. 
+- If the project is selected, in the **Cluster** dropdown, only the clusters associated with the selected project will be listed.
+- If the project field is left blank, the **Cluster** dropdown will list all the clusters associated with the **Project Number** configured at the Connector Level.
+
+<div align="center">
+  <DocImage path={require('./static/oidc-cross-scope.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
 
 ## Configure the Execution
 
