@@ -632,7 +632,7 @@ The following table lists Harness support for metrics platforms (APMs).
 
 #### Logging Platforms
 
-Most logging platforms are also supported. See [Verification](/docs/category/continuous-verification).
+Most logging platforms are also supported.
 
 
 

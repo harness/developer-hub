@@ -193,6 +193,25 @@ This setting is supported in the following run types: Plan, Plan Only, Refresh, 
 
 Select the Terraform Cloud organization that includes the workspace you want to run.
 
+## Project (optional)
+
+Select the **Project** that includes the workspace you want to run. 
+
+:::note
+Currently, adding a project is behind the feature flag `CDS_TF_PROJECTS_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+This field is **optional**. If you populate it, the list of workspaces in the dropdown will be filtered to show only those associated with the selected project. 
+
+If left blank, all workspaces within the specified organization will be displayed.
+
+
+<div align="center">
+  <DocImage path={require('./static/project-filter.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+
+
 ## Terraform Workspace
 
 Select the workspace to run.

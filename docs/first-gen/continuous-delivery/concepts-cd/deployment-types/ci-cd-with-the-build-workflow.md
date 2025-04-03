@@ -16,7 +16,7 @@ Unlike other Workflow types, Build Workflows do not perform deployments. Build W
 
 Build Workflows enable you to model your entire CI/CD process in one place: Harness.
 
-This topic discusses the concept of a Harness CI/CD process using the Build Workflow. Use the [CI/CD: Artifact Build and Deploy Pipelines](/docs/category/cicd-artifact-build-and-deploy-pipelines) guide for a step-by-step walkthrough of a CI/CD deployment.
+This topic discusses the concept of a Harness CI/CD process using the Build Workflow.
 
 ### Without a Build Workflow
 
@@ -39,8 +39,6 @@ When you want to view your entire CI/CD flow in the Harness dashboard, use the B
 You can trigger a Pipeline in Harness in many ways, such as a code commit in your Git repository. The [Harness Trigger](../../model-cd-pipeline/triggers/add-a-trigger-2.md) will initiate a Pipeline in Harness with the Build Workflow as first stage in the Pipeline.
 
 ### Summary of CI/CD Pipeline
-
-The [CI/CD: Artifact Build and Deploy Pipelines](/docs/category/cicd-artifact-build-and-deploy-pipelines) guide provides a lengthy walkthrough of a CI/CD deployment, but let's look at a quick summary.
 
 Here is a simple Harness CI/CD Pipeline:
 
@@ -86,8 +84,3 @@ Harness Build Workflows build and collect a specific artifact version and pass i
 ### Notes
 
 Build Workflows do not use Harness Services. Consequently, Service variables and Service variable overrides cannot be used in a Build Workflow.
-
-### Next Steps
-
-Use the [CI/CD: Artifact Build and Deploy Pipelines](/docs/category/cicd-artifact-build-and-deploy-pipelines) guide to walk through a CI/CD deployment.
-
