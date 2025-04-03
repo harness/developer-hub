@@ -66,6 +66,10 @@ The image name should include the tag, or it defaults to the `latest` tag if uns
 * **ECR:** Input the FQN (fully-qualified name) of the artifact you want to use. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
 * **GCR:** Input the FQN (fully-qualified name) of the artifact you want to use. Images in repos must reference a path starting with the project Id that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
 
+:::warning
+Google Container Registry (GCR) is being deprecated. For more details, refer to the [Deprecation Notice](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+:::
+
 ### Entry Point
 
 Supply a list of arguments in `exec` format. Enter each argument separately.

@@ -62,6 +62,10 @@ import TabItem from '@theme/TabItem';
 
 Harness support multiple artifact registry providers, including Google Container Registry (GCR), AWS Elastic Container Registry (ECR), and Azure Container Registry (ACR).
 
+:::warning
+Google Container Registry (GCR) is being deprecated. For more details, refer to the [Deprecation Notice](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+:::
+
 Harness includes a platform-agnostic artifact registry type named Docker Registry. Use Docker Registry for images on any registry, including Docker Hub.
 
 1. Select the artifact repo provider where your images are stored.

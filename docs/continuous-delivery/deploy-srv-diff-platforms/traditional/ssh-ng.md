@@ -63,6 +63,9 @@ For Secure Shell, you can access artifacts from the following sources:
 - Nexus2
 - Azure Artifacts
 - GCR
+  :::warning
+  Google Container Registry (GCR) is being deprecated. For more details, refer to the [Deprecation Notice](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+  :::
 - ACR
 - Docker Registry (platform-agnostic)
 - Custom. If you select **Custom**, you will need to provide a Bash script.

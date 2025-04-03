@@ -1149,6 +1149,10 @@ To add an artifact from a Docker registry, do the following:
 
 ### Google Container Registry (GCR)
 
+:::warning
+Google Container Registry (GCR) is being deprecated. For more details, refer to the [Deprecation Notice](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+:::
+
 <details>
 <summary>Use GCR artifacts</summary>
 
