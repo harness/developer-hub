@@ -6,6 +6,7 @@ redirect_from:
 - /docs/chaos-engineering/technical-reference/security/security-templates/introduction
 - /docs/chaos-engineering/architecture-and-security/security/security-templates/introduction
 - /docs/category/security-policies
+- /docs/chaos-engineering/technical-reference/security/security-templates/
 ---
 
 This section introduces you to various security policies you can use with HCE.
