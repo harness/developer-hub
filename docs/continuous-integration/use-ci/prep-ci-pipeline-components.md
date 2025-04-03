@@ -27,7 +27,7 @@ You can run a pipeline manually or set up triggers to automatically run it on a 
 
 :::note
 
-By enabling the feature flag `CI_DYNAMIC_BRANCH_SELECTOR`, Git branches in the codebase branch selector will be dynamically populated when creating a new pipeline.
+By enabling the feature flag `CI_DYNAMIC_BRANCH_SELECTOR`, Git branches in the codebase branch selector will be dynamically populated when creating a new pipeline. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 :::
 
