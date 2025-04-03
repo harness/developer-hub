@@ -21,7 +21,7 @@ Consider the following scenario where the Perspective rule has a cost category:
 
 | **Cost category** | **Cost bucket** | **Shared Cost buckets** |
 | --- | --- | --- |
-| CC1 | <ul><li>B1 - AWS</li><li>B2- GCP</li></ul> | <ul><li>SB1 - AWS</li><li>SB2 - GCP</li> </ul>|
+| CC1 | <ul><li>B1 - AWS</li><li>B2- GCP</li></ul> | <ul><li>SB1 - AWS</li><li>SB2 - GCP</li></ul>|
 
 In this setup, if you group the Perspective by `AWS > Account`, the cost of B1 and SB1 are displayed against the respective AWS accounts. However, the total cost of the cost bucket B2, and the shared cost bucket SB2 in GCP are displayed under **No Account**. 
 
@@ -31,8 +31,8 @@ Consider the following scenario with two cost categories:
 
  **Cost category** | **Cost bucket** | **Shared cost buckets** |
 | --- | --- | --- |
-| CC1 | <ul><li>CB1 - AWS1 - $10, AWS7 - $20</li><li>CB2- AWS2 - $20</li></ul> | <ul><li>SB1 - AWS3 - $30</li><li>SB2 - AWS4 - $40</li> </ul>|
-| CC2 | <ul><li>CB3 - AWS1 - $10</li><li>CB4- AWS2 - $20</li></ul>| <ul><li>SB3 - AWS5 - $30</li><li>SB4 - AWS6 - $40</li> </ul>|
+| CC1 | <ul><li> CB1 - AWS1 - $10, AWS7 - $20 </li><li> CB2- AWS2 - $20 </li></ul> | <ul><li> SB1 - AWS3 - $30 </li><li> SB2 - AWS4 - $40 </li></ul>|
+| CC2 | <ul><li> CB3 - AWS1 - $10 </li><li> CB4- AWS2 - $20 </li></ul> | <ul><li> SB3 - AWS5 - $30 </li><li> SB4 - AWS6 - $40 </li></ul>|
 
 If you have added CC1 (CB1, CB2, and Unattributed) in your Perspective rule and grouped by the same cost category, then the Perspective displays the following costs:
 

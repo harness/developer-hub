@@ -14,9 +14,42 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 
 :::info
 
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
+Progressive deployment: Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview page** in Harness. In the new UI, go to Account Settings, Account Details, General, Account Details, and then Platform Service Versions. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
+
+
+## March 2025
+
+### Version 1.45.7
+
+#### New features and enhancements
+
+- (Beta) External Cost Data Ingestion: Harness Cloud Cost Management now supports External Cost Data Ingestion, enabling you to bring in cost data from third-party vendors using a standardized CSV format.
+Key Capabilities:
+
+- Ingest and analyze external costs using Perspectives, Budgets, Dashboards and Cost Categories
+- Support for FOCUS-formatted CSV files (20MB max per file)
+
+This feature is currently in Beta and behind a feature flag `CCM_EXTERNAL_DATA_INGESTION` . Please contact our support team for enablement. [CCM-21297]
+
+- Anomaly Comments Support: You can now add and view comments directly on the Anomalies Details page, making collaboration and investigation easier. [CCM-21384]
+
+- UI Fix for Rule Sets & Enforcements: Previously, if a user added multiple Rules or Rule Sets while creating Rule Sets or Enforcements, the button to proceed or save would be pushed off-screen, preventing the action. This issue is now resolved. [CCM-21512]
+
+- Date Range in UTC Format: Date ranges are now processed in UTC for anomaly drilldown chart, ensuring accurate time representation across time zones like IST and PST. This also ensures drilldown chart data is fetched correctly based on the selected time range. [CCM-21630]
+
+#### Fixed Issues
+
+- Fixed Incorrect Timestamps in Budget Monthly Breakdown: Previously, the [List Budgets](https://apidocs.harness.io/tag/Cloud-Cost-Budgets#operation/listBudgets) API returned monthly breakdowns with Unix timestamps for the year 2024 instead of the configured 2025 values. This issue has now been resolved, and the API returns accurate timestamps consistent with the UI configuration. [CCM-21657]
+
+### Version 1.43.5
+
+#### New features and enhancements
+- Improved Accessibility for Rule Set Creation: Previously, if a user added multiple Rules or Rule Sets while creating Rule Sets or Enforcements, the button to proceed or save would be pushed off-screen, preventing the action. This issue is now resolved. [CCM-21512]
+- Improved Error Handling for AutoStopping Pages: Previously, navigating away from a loading AutoStopping page caused aborted API calls to trigger error toasts. Now, toasts will only appear for valid errors.[CCM-21199]
+- Improved UI Behavior for User Dropdown in AutoStopping : Previously, users with access only to AutoStopping encountered an error in the UI due to missing permissions for listing other users. To enhance the experience, we have modified the implementation to **hide the user dropdown in filters** if the user does not have access to list other users. [CCM-19404]
+
 ## February 2025
 
 ### Version 1.42.4

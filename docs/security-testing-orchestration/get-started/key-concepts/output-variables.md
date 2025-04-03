@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 
-import StoConceptOutputVariables from '../shared/_output-variables.md';
+import StoConceptOutputVariables from '../shared/output-variables.md';
 
 
 <StoConceptOutputVariables />

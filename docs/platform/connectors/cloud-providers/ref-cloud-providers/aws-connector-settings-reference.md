@@ -489,7 +489,9 @@ Use the following Harness OIDC provider endpoint and OIDC audience settings to c
 
 These are the current supported deployment swimlanes for AWS OIDC:
 
-- ECS
+- AWS ECS
+- AWS ASG
+- AWS Lambda
 - Kubernetes
 - Terraform
 - CloudFormation
@@ -751,26 +753,11 @@ For more strategies, go to [Exponential Backoff And Jitter](https://aws.amazon.c
       </td>
     </tr>
     <tr>
-      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Delegate-based Support</strong></td>
-      <td style={{ border: '1px solid black', padding: '8px' }}>
-        The following Delegate-based connections are not supported using the OIDC connector:
-        <ul>
-          <li>SSH</li>
-          <li>WinRM</li>
-          <li>Spot</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
       <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Provisioner-based Support</strong></td>
       <td style={{ border: '1px solid black', padding: '8px' }}>
         The following provisioners are not supported using the OIDC connector:
         <ul>
-          <li>CloudFormation provisioner</li>
           <li>CDK provisioner</li>
-          <li>Terraform provisioner</li>
-          <li>Terraform Cloud provisioner</li>
-          <li>Terragrunt provisioner</li>
         </ul>
       </td>
     </tr>

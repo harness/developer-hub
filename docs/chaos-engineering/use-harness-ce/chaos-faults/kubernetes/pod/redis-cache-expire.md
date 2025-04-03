@@ -39,9 +39,9 @@ Redis cache expire determines the resilience of Redis-dependant applications aga
     <td> If your Redis server doesn't require authentication, directly provide the address. </td>
   </tr>
   <tr>
-    <td> KEY </td>
-    <td> The key to expire in the Redis cache. </td>
-    <td> For empty value, all the keys are expired. For more information, go to <a href="#key"> key</a>. </td>
+    <td> KEYS </td>
+    <td> Comma-separated list of keys that will be expired. </td>
+    <td> For empty value, all the keys are expired. </td>
   </tr>
   <tr>
     <td> DATABASE </td>
@@ -87,7 +87,7 @@ spec:
               value: ""
             - name: ADDRESS
               value: ""
-            - name: KEY
+            - name: KEYS
               value: ""
             - name: DATABASE
               value: "0"

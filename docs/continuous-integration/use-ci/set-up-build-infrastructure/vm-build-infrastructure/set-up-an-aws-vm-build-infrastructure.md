@@ -61,7 +61,7 @@ AWS Spot instances, of any kind, are not supported to use as self-managed build 
 
 ### Configure authentication for the EC2 instance
 
-The recommended authentication method is an [IAM role](https://console.aws.amazon.com/iamv2/home#/users) with an access key and secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)). You can use an access key and secret without an IAM role, but this is not recommended for security reasons.
+The recommended authentication method is an [IAM role](https://console.aws.amazon.com/iamv2/home#/users) on the VM instance, but using IAM user and access key and secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)) is also supported. It is best practice to use an IAM role over an access key and secret for security reasons.
 
 1. Create or select an IAM role for the primary VM instance. This IAM role must have CRUD permissions on EC2. This role provides the runner with temporary security credentials to create VMs and manage the build pool. For details, go to the Amazon documentation on [AmazonEC2FullAccess Managed policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2FullAccess.html).
 2. If you plan to run Windows builds, go to the AWS documentation for [additional configuration for Windows IAM roles for tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html#windows_task_IAM_roles). This additional configuration is required because containers running on Windows can't directly access the IAM profile on the host. For example, you must add the [AdministratorAccess policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to the IAM role associated with the access key and access secret.
@@ -82,7 +82,9 @@ The recommended authentication method is an [IAM role](https://console.aws.amazo
 2. In the Security Group's **Inbound Rules**, allow ingress on port 9079. This is required for security groups within the VPC.
 3. In the EC2 console, go to your EC2 VM instance's **Inbound Rules**, and allow ingress on port 22.
 4. If you want to run Windows builds and be able to RDP into your build VMs, you must also allow ingress on port 3389.
-5. Set up VPC firewall rules for the build instances on EC2.
+5. Outbound access to githubusercontent.com over 443, which is allowed by default in a typical security group
+6. Outbound access to googleapis.com over 443 to ship the task logs.  Can be avoided by using the account setting "Account Settings"->"Default Settings"->"Continuous Integration->"Upload Logs via Harness"
+7. Set up VPC firewall rules for the build instances on EC2.
 
 ### Install Docker and attach IAM role
 
@@ -174,8 +176,8 @@ instances:
       account:
         region: us-east-2 ## To minimize latency, use the same region as the delegate VM.
         availability_zone: us-east-2c ## To minimize latency, use the same availability zone as the delegate VM.
-        access_key_id: XXXXXXXXXXXXXXXXX
-        access_key_secret: XXXXXXXXXXXXXXXXXXX
+        access_key_id: XXXXXXXXXXXXXXXXX # Optional if using an IAM role
+        access_key_secret: XXXXXXXXXXXXXXXXXXX # Optional if using an IAM role
         key_pair_name: XXXXX
       ami: ami-051197ce9cbb023ea
       size: t2.nano

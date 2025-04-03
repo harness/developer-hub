@@ -75,6 +75,12 @@ This tutorial focuses on how to use templates with Harness CD pipelines. We will
 1. Select **Inline** and **Save** the Template.
 2. Go to **Templates** under **Project Setup** in the left navigation.
 
+:::info note
+Harness now supports storing Inline Entities in the Harness Git Repository.  
+For more details, refer to [Storing Inline Entities in Harness Git Repository](/docs/platform/git-experience/harness-code-inline.md).
+:::
+
+
 </TabItem>
 <TabItem value="Remote">
 

@@ -1,6 +1,8 @@
 ---
 id: windows-ec2-network-loss
 title: Windows EC2 Network Loss
+redirect_from:
+- /docs/chaos-engineering/technical-reference/chaos-faults/aws/windows-ec2-network-loss
 ---
 
 Windows EC2 network loss causes network packet loss on Windows VM for the target EC2 instance(s) using [Clumsy](https://jagt.github.io/clumsy/). It results in flaky access to the application. It checks the performance of the services running on the Windows VMs under the disrupted network loss conditions.

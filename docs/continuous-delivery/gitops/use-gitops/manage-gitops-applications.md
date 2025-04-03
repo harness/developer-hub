@@ -50,3 +50,43 @@ To create and save a filter, do the following:
 Then you're done!
 
 You can then load the filter each subsequent time by clicking the filter icon to the right of **Reset** and searching for your filter there. 
+
+## Ignore HPA Changes to Prevent Out-of-Sync Status
+
+When Horizontal Pod Autoscaler (HPA) is enabled, pod scaling can cause GitOps to detect unwanted differences and mark applications as out of sync. 
+
+To prevent this, configure the following in the application to ignore differences on replicas:
+
+```yaml
+ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+        - /spec/replicas
+    - group: apps
+      kind: StatefulSet
+      jsonPointers:
+        - /spec/replicas
+syncPolicy: 
+  syncOptions: 
+  - RespectIgnoreDifferences=true
+```
+
+Alternatively, you can add the following to the Argo ConfigMap:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  resource.customizations: |
+    apps/Deployment:^(app-with-hpa|hpa-enabled-.*|.*-autoscaled)$:
+      ignoreDifferences: |
+        jsonPointers:
+        - /spec/replicas
+```
+
+For more details, see:
+- [Argo CD Sync Options](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#respect-ignore-difference-configs)
+- [Argo CD Application Specification Reference](https://argo-cd.readthedocs.io/en/stable/user-guide/application-specification/)

@@ -1,5 +1,5 @@
 ---
-title: Tofu/Terraform plugin commands
+title: Tofu/Terraform Plugin Commands
 description: Explore how to use Tofu/Terraform commands within your pipelines effectively.
 sidebar_position: 10
 ---

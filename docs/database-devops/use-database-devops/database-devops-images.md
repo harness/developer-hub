@@ -12,10 +12,10 @@ Harness publishes `plugins/drone-liquibase` with `x.y.z-{liquibaseVersion}`, whe
 Here are some examples of Harness DB Devops images and their purposes:
 
 * `plugins/download-artifactory`: Used for downloading artifacts from Artifactory.
-* `plugins/drone-liquibase:1.0.0-4.27`: Default Liquibase plugin for database operations.
+* `plugins/drone-liquibase:1.1.0-4.27`: Default Liquibase plugin for database operations.
 * `harness/drone-git`: Used to clone Git repositories.
-* `plugins/drone-liquibase:1.0.0-4.27-mongo`: Liquibase plugin for MongoDB.
-* `plugins/drone-liquibase:1.0.0-4.27-spanner`: Liquibase plugin for Google Spanner.
+* `plugins/drone-liquibase:1.1.0-4.27-mongo`: Liquibase plugin for MongoDB.
+* `plugins/drone-liquibase:1.1.0-4.27-spanner`: Liquibase plugin for Google Spanner.
 
 ## Configure Harness DB Devops Image Versions
 
@@ -35,10 +35,10 @@ Response:
 ```json
 {
     "artifactoryTag": "plugins/download-artifactory:1.0.0",
-    "defaultTag": "plugins/drone-liquibase:1.0.0-4.27",
+    "defaultTag": "plugins/drone-liquibase:1.1.0-4.27",
     "gitCloneTag": "harness/drone-git:1.6.4-rootless",
-    "mongoTag": "plugins/drone-liquibase:1.0.0-4.27-mongo",
-    "spannerTag": "plugins/drone-liquibase:1.0.0-4.27-spanner"
+    "mongoTag": "plugins/drone-liquibase:1.1.0-4.27-mongo",
+    "spannerTag": "plugins/drone-liquibase:1.1.0-4.27-spanner"
 }
 ```
 
@@ -109,6 +109,7 @@ You can use credentialed access if you don't want the Harness Delegate to pull i
 
 Harness DBOps images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can pull Harness images from your own private registry. For instructions on each of these options, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md).
 
-### Override LiteEngine Image in DBOps
+### Override LiteEngine or CIAddOn Image in DBOps
 
 Refer to the [section](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#harness-ci-image-updates) to override using CI Apis
+For Using private registry for the above images, override the default harnessImage connector at AccountLevel, refer to [section](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#configure-harness-to-always-use-credentials-to-pull-harness-images)

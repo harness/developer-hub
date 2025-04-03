@@ -1,0 +1,14 @@
+{
+    "label": "What's supported",
+    "position": 9,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "What's supported"
+    },
+    "customProps": {
+        "helpdocs_category_id": "8nywcs2sa7"
+    }
+}
