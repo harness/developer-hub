@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::warning
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/get-started/key-concepts.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/get-started/key-concepts.md).
 :::
 
 This topic describes the key concepts of Harness and its **End-to-End Software Delivery Abstraction Model**.

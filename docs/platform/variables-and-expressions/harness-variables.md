@@ -610,12 +610,6 @@ In NextGen, the delimiter is `<+...>`, such as `<+approvedBy.name>`.
 
 :::
 
-For more information about migrating to NextGen, go to:
-
-- [Upgrade guide](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md)
-- [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
-- [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
-
 <details>
 <summary>AMI expressions</summary>
 

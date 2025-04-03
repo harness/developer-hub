@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). For information about delegates in Harness NextGen, see [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
+This content is for Harness FirstGen. For information about delegates in Harness NextGen, see [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
 
 Each task performed by a Harness deployment is assigned to a Delegate. Knowing which Delegate was used for a task can be useful when diagnosing issues, or when planning on infrastructure changes.
 

@@ -14,8 +14,6 @@ Currently, this feature is behind the Feature Flags `TIME_SCALE_CG_SYNC` and `CU
 
 :::
 
-The **FirstGen** custom dashboards in Harness NextGen display information for your [Harness FirstGen deployments](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md).
-
 Dashboards help you model and analyze business metrics and operational data. You can use this data to make data-driven business decisions. Using charts, data tables, and filters, Dashboards help you get the most useful services data.
 
 Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize deployments data across your Applications, Services, and Environment. Using the **Services (FirstGen) Dashboard** you can:
