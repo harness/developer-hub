@@ -1,6 +1,6 @@
 ---
-title: Configure ECG for AutoStopping Rules
-description: This topic describes how to configure ECG for AutoStopping Rules.
+title: Configure ECG on Linux for AutoStopping Rules
+description: This topic describes how to configure the ECG on Linux for AutoStopping Rules.
 sidebar_position: 50
 helpdocs_topic_id: ux8wo1l75q
 helpdocs_category_id: 6bw1qej23v
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to configure ECG for AutoStopping Rules. You can assume ECG as an **event emitter** for your rule. It sends usage records for the configured rules.
+This topic describes how to configure ECG on Linux for AutoStopping Rules. You can assume ECG as an **event emitter** for your rule. It sends usage records for the configured rules.
 
 When the ECG is configured to watch a workload, an AutoStopping Rule will not stop the resource until the workload finishes running. ECG comes with the following pre-installed watchers:
 
@@ -42,7 +42,7 @@ You can configure either metrics or process watcher for your rule.
 
 #### Step 1: Install the ECG Agent
 
-ECG is supported only for Unix-like machines. To install the agent,
+To install the agent,
 
 1. Download the ECG file from the S3 link:  
 [https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/ecg_1.2.0_linux_amd64.zip](https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/ecg_1.2.0_linux_amd64.zip)
@@ -78,7 +78,7 @@ For example in the following URL, the account ID is `1a2b3c`: `https://app.har
   a. In **AutoStopping Rules**, in **Summary of Rules**, click the rule for which you want to configure the ECG.
   b. Copy the hostname.
 
-![](./static/configure-ecg-for-auto-stopping-rules-00.png)
+![](./static/configure-ecg-hostname.png)
 
 3. [optional] **process**: A regex for the process to watch for. For example, if the process you want to watch is a simple python script `python trainmodel.py` we could specify `trainmodel.py`:
 
