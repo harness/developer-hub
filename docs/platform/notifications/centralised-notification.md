@@ -1,24 +1,24 @@
 ---
-title: Centralised notification for Pipeline
-description: Configure pipeline notification rules at one place
+title: Centralised notification
+description: Configure notifications based on specific rules and conditions in pipelines, delegates, and other Harness components to keep teams informed of critical events.
 sidebar_position: 3
 ---
 
 import PipeEvents from './static/set_pipeline_events.png';
 
-:::note
-Currently, the Centralised Notification feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`, and Pipeline specific notifications are behind `PIPE_CENTRALISED_NOTIFICATION`. You will need both these flags turned on to use this feature. Contact [Harness Support](mailto:support@harness.io) to enable them.
+:::info Note
+Currently, the Centralised Notification feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable them.
 :::
 
-With notifications management, you can configure notifications for the following resource types:
+Harness Centralized Notifications enable you to send notifications based on predefined rules and conditions across pipelines, delegates, and other Harness components. With notifications management, you can easily configure and manage alerts to stay informed about critical events in your workflows.
 
-1. Pipeline
-2. Delegate
+Centralized notifications can be configured for the following resource types:
+
+1. Pipeline 
+2. Delegate 
 3. Chaos Experiment 
 
-To receive notifications for specific events or conditions related to these resource types, you need to configure appropriate rules. While notifications can be set up for all the above resources, we will configure a centralised notification for Pipelines at a specific scope for now. 
-
-You can set up notification for Pipeline at all the [scopes](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): **Account**, **Organization** and **Project**. 
+To receive notifications for these resource types, You can configure rules and choose notification channels across [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): Account, Organization, or Project.
 
 ### **Account Level**
 
@@ -38,7 +38,13 @@ At the pipeline level, you can configure notifications for **All Pipelines**.
 
 ![](./static/project_level_notification_manage.png)
 
-## Setting Up Notifications Management
+## Configure centralized notification for Pipeline 
+
+:::info Note
+  Pipeline specific notifications are behind `PIPE_CENTRALISED_NOTIFICATION`. 
+:::
+
+### Setting Up Notifications Management
 
 In this example, we are going to discuss setting up notification management of Pipeline resource at Organization Level:-
 
