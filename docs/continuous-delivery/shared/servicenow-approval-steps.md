@@ -127,7 +127,16 @@ For example, `<+ticket.state.displayValue> == "New"` in the Approval Criteria,
 
 ### Output
 
-The **ServiceNow approval step** will provide outputs referencing the details of the step, such as `ticketType`, `ticketNumber`, `Approval Criteria`, `Rejection Criteria`, `Conditions`, `hasApprovalCriteriaMet`, and `hasRejectionCriteriaMet` regardless of whether the step is approved or rejected. These outputs can be used as **output variables** and referenced in subsequent steps or stages.
+Regardless of whether the step is approved or rejected, the **ServiceNow approval step** will provide outputs referencing the details of the step, such as:
+- `ticketType`
+- `ticketNumber`
+- `Approval Criteria`
+- `Rejection Criteria` 
+- `Conditions`
+- `hasApprovalCriteriaMet` 
+- `hasRejectionCriteriaMet`
+
+These outputs can be used as **output variables** and referenced in subsequent steps or stages.
 
 Here are a few expression examples that can be used to fetch the output values:
 
