@@ -25,7 +25,7 @@ This section will walk you through creating a Kubernetes Workflow in Harness and
 
 In this guide, the Workflow performs a simple Rolling Deployment, which is a Kubernetes Rolling Update. For a detailed explanation, see [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes.
 
-For information on other Workflow types, see [Kubernetes Deployments](/docs/category/kubernetes-deployments).To create a Rolling Workflow for Kubernetes, do the following:
+To create a Rolling Workflow for Kubernetes, do the following:
 
 1. In your Application, click **Workflows**.
 2. Click **Add Workflow**. The **Workflow** dialog appears.
