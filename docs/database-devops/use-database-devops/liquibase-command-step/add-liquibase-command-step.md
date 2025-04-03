@@ -1,7 +1,7 @@
 ---
 title: Add the Liquibase command step
 sidebar_label: Add the Liquibase command step
-description: Explaining how to add the Liquibase command step
+description: Explaining how to add the native Liquibase command step
 sidebar_position: 1
 ---
 
