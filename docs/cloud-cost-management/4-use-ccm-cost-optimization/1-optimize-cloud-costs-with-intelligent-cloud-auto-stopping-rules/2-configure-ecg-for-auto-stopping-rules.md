@@ -36,13 +36,14 @@ Process watcher watches for the existence of processes that match the supplied c
 condition = "python*"
 ```
 
-### Configure ECG
+## Configure ECG
 
 You can configure either metrics or process watcher for your rule.
 
+### For Unix-like machines
+
 #### Step 1: Install the ECG Agent
 
-ECG is supported only for Unix-like machines. To install the agent,
 
 1. Download the ECG file from the S3 link:  
 [https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/ecg_1.2.0_linux_amd64.zip](https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/ecg_1.2.0_linux_amd64.zip)
@@ -135,3 +136,44 @@ After making the configuration changes, restart the ECG process.
 ```
 sudo systemctl restart ecg
 ```
+
+
+### For Windows 
+
+Autostopping ECG provides the capability to track the user session and stop the VM once the user session is completed.
+
+To install ECG on Windows and track user session, please follow the steps below.
+
+1. Setup an Autostopping rule for the VM. Use this tutorial for reference.
+
+2. Login to the VM under Autostopping
+
+3. Download and unzip latest ECG. (Update this link if a new version is released) : https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/harness_autostop_ecg_windows_amd64.zip
+
+4. Open CMD as Administrator
+
+5. Make the binary a windows executable and move it to where it should live perminetly, it is recommended to create a folder for this:
+
+```
+mkdir C:\Users\Administrator\harness
+mv .\Downloads\harness_autostop_ecg_windows_amd64\harness_autostop_ecg_windows_amd64 C:\Users\Administrator\harness\harness_autostop_ecg_windows_amd64.exe
+```
+
+6. Run the following commands to set the environment variables at the system level needed for ECG
+
+- `setx ECG_ruleHostName "{host_name}" /M` - Replace `{host_name}` with Autostopping rule host name
+**Be sure and remove “https://” from the hostname**
+- `setx ECG_accountID "{account_id}" /M `- Replace `"{account_id}"` with Harness Account ID
+- `setx ECG_apiURL "https://app.harness.io/gateway/lw/api" /M`
+- `setx ECG_user_session_watch "true" /M`
+
+7. Install ECG using the following command. This will install ECG as a service on Windows.
+
+- Navigate into the folder where you placed the executable: `cd C:\Users\Administrator\harness`
+- Run `./harness_autostop_ecg_windows_amd64.exe install`
+- Verify the running in Windows services. A new service with the name `Harness Autostopping heart beat agent` will be listed under the services with the status Running
+- If it does not start, click `start`.
+![](./static/windows-ecg-one.png)
+
+![](./static/windows-ecg-two.png)
+- Logout from the current session, verify the VM is stopped after the idle time
