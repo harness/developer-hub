@@ -25,7 +25,6 @@ There are four trigger types in Harness:
 You can trigger pipelines in response to Git events that match specific payload conditions you set up in a Harness trigger. For example, when a pull request or push event occurs on a Git repo and your trigger settings match the payload conditions, a CI or CD pipeline can run.
 
 :::info important
-
 RBAC doesn't apply to Webhook triggers as the events occur on the repository side.
 
 :::
