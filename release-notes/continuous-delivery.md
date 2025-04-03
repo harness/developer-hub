@@ -117,6 +117,8 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Users can now fetch artifacts directly via the Harness Platform when the connector is set to connect through it, eliminating unnecessary delegate tasks. (**CDS-99989, ZD-68403**)
 
+- Users now has the ability to Select Connectivity mode to **Connect through Harness Platform** or **Connect through Harness Delegate** while creating Pipeline Notification. (**PIPE-25243**)
+
 #### Fixed Issues
 
 - Previously, users with Project Admin access were unable to clone an environment, encountering the error: `core_environment_view undefined in project Harness`. This issue is resolved now. (**CDS-107604, ZD-77786**)
