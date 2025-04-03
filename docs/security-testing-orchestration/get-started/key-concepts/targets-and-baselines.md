@@ -18,7 +18,7 @@ This topic discusses the following STO topics:
 ### Targets
 
 
-import StoConceptTargets from '../shared/_targets.md';
+import StoConceptTargets from '../shared/targets.md';
 
 
 <StoConceptTargets />
@@ -33,7 +33,7 @@ import StoConceptTargets from '../shared/_targets.md';
 ### Variants
 
 
-import StoConceptVariants from '/docs/security-testing-orchestration/get-started/shared/_variants.md';
+import StoConceptVariants from '/docs/security-testing-orchestration/get-started/shared/variants.md';
 
 
 <StoConceptVariants />
@@ -41,7 +41,7 @@ import StoConceptVariants from '/docs/security-testing-orchestration/get-started
 ### Baselines
 
 
-import StoConceptBaselines from '/docs/security-testing-orchestration/get-started/shared/_baselines.md';
+import StoConceptBaselines from '/docs/security-testing-orchestration/get-started/shared/baselines.md';
 
 
 <StoConceptBaselines />

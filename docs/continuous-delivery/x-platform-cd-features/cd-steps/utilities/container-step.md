@@ -7,6 +7,9 @@ redirect_from:
 canonical_url: https://www.harness.io/blog/container-pipelines
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 :::warning Recommendation 
 
 We recommend using Step Group and Run Step instead of Container Steps. The new supported method is a [run step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step) in a [containerized step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups). It leverages the new framework and has identical capabilities to our CI offering.
@@ -184,17 +187,47 @@ Currently, Harness can fetch containers from the following registries:
 
 You add the Container step in the CD stage **Execution** section. The Container step is supported in all the deployment strategies (rolling, blue green canary, custom). This step requires delegate version > 1.0.780xx.
 
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-
 <Tabs>
-  <TabItem value="Visual" label="Visual" default>
+  <TabItem value="Pipeline Studio" label="YAML">
 
-
-1. In the CD stage **Execution** section, select **Add Step**, and then select **Container**.
+1. In the CD stage **Execution** section, select **Add Step**, and then select **Container Step**.
 2. Enter the following settings and select **Apply Changes**.
+
+</TabItem>
+
+  <TabItem value="YAML" label="YAML">
+
+1. In **Pipeline Studio**, select **YAML**
+2. Paste the following YAML example and select **Save**:
+
+```yaml
+              - step:
+                  type: Container
+                  name: Test
+                  identifier: Test
+                  spec:
+                    connectorRef: Docker_Hub_with_Pwd
+                    image: maven:3.6.3-jdk-8
+                    command: echo "Run some smoke tests"
+                    shell: Sh
+                    infrastructure:
+                      type: KubernetesDirect
+                      spec:
+                        connectorRef: K8s_Cluster_1675446740237
+                        namespace: default
+                        resources:
+                          limits:
+                            cpu: "0.5"
+                            memory: 500Mi
+                    outputVariables: []
+                    envVariables: {}
+                  timeout: 1d
+```
+
+</TabItem>
+</Tabs>
+
+---
 
 ### Name
 
@@ -334,41 +367,11 @@ password=$DB_PASSWORD
 For example, you can set **Value** as an expression and reference the value of some other setting in the stage or pipeline.
 
 
-</TabItem>
-  <TabItem value="YAML" label="YAML">
+:::note
+**Allowed values** for environment variables are not currently supported in container step configuration.
 
-
-1. In **Pipeline Studio**, select **YAML**
-2. Paste the following YAML example and select **Save**:
-
-```yaml
-              - step:
-                  type: Container
-                  name: Test
-                  identifier: Test
-                  spec:
-                    connectorRef: Docker_Hub_with_Pwd
-                    image: maven:3.6.3-jdk-8
-                    command: echo "Run some smoke tests"
-                    shell: Sh
-                    infrastructure:
-                      type: KubernetesDirect
-                      spec:
-                        connectorRef: K8s_Cluster_1675446740237
-                        namespace: default
-                        resources:
-                          limits:
-                            cpu: "0.5"
-                            memory: 500Mi
-                    outputVariables: []
-                    envVariables: {}
-                  timeout: 1d
-```
-
-
-</TabItem>
-</Tabs>
-
+**Workaround**: To enforce allowed values, define a stage variable with constraints and reference that variable in the container step's environment variable field.
+:::
 
 ### Select the Operating System
 

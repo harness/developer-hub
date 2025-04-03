@@ -33,7 +33,6 @@ createImagePullSecret: true
 ```
 ### Next Steps
 
-* [Kubernetes Deployments](/docs/category/kubernetes-deployments)
 * [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md)
 * [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md)
 

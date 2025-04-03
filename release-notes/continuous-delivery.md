@@ -47,6 +47,25 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## March 2025
 
+### GitOps Version 1.28
+
+#### New Features and Enhancements
+
+- Users can now audit the manual changes to applications and manual AppSyncs for GitOps. Currently, this feature is behind the feature flag `GITOPS_AUDIT_TRAIL_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-106545**)
+
+#### Fixed Issues
+
+- Previously, the GitOps app resources action menu failed to honor label-based RBAC due to a missing resource identifier in the access check. Now, label-based RBAC is enforced correctly. (**CDS-107535**, **ZD-79513**)
+- Previously, the action buttons (Restart, Promote, Sync) for GitOps app resources were visible to users who lacked the required **GitOps app sync** permission. This was due to a missing permission check in the UI. While the actions failed as expected when executed, the buttons were still accessible, causing confusion. Now, the UI correctly enforces the permission check, and the action buttons are disabled for users without the **GitOps app sync** permission. (**CDS-105624**, **ZD-75858**, **ZD-79513**)
+- Resolved an issue where the `bearer_token` field in the [GitOps cluster resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_gitops_cluster) always reported a diff. It now behaves like GitOps repository passwords and will only report a diff when explicitly changed in the resource file. (**CDS-106112**)
+  :::note
+    Real-world changes to the token may not be reflected in the Terraform state, as the API returns a masked value for this field.
+  :::
+
+#### GitOps Agent Version 0.89.0
+
+- Introduced leader election logic to reduce load and mitigate performance issues in HA agents where all pods were previously sending updates. With this change, only the elected leader pod performs reconciliation updates, while all agent pods continue to process tasks. This requires permission to create a lease resource for leader election. New agents have these permissions by default, while older agents without them will fall back to the previous behavior where all pods send updates. (**CDS-99072**)
+
 :::warning Announcement 
 **Google Container Registry Deprecation Notice 📢**
 
@@ -54,6 +73,31 @@ Google Container Registry (GCR) is deprecated and scheduled to shut down on **Ma
 
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
+
+### Version 1.82.3
+
+#### New Features and Enhancements
+
+- Users can now select the Project that includes the workspace you want to run inside **Terraform Cloud Run Step**. Currently, this feature is behind the feature flag `CDS_TF_PROJECTS_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.  (**CDS-98549, ZD-63376**)
+
+- Users can now fetch Service Manifest source i.e Connector URL where manifest is stored using an expressions `<+manifests.MANIFEST_ID.store.connectorUrl>`. Currently, this feature is behind the feature flag `CDS_MANIFEST_CONNECTOR_URL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-107797**)
+
+- Users can now configure Custom `maxConcurrency` in multideployment stage in Harness. Currently, this feature is behind the feature flag `CDS_CUSTOM_MAX_CONCURRENCY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-72941, ZD-44794**)
+
+- Users can now leverage cross-project access with the GCP OIDC connector in both Kubernetes and native Helm environments. Currently, this feature is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-104508, ZD-77202**)
+
+- Users can now select the **Service** entity for both **On Run** and **On Save** event while creating policy set. Currently, this feature is behind the feature flag `CDS_ENABLE_SERVICE_ON_RUN_OPA_EVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-25407**)
+
+- Users can now easily review the headers set by Webhook triggers directly in the UI. (**PIPE-24648, ZD-77202**)
+
+- Harness now supports the latest Google Cloud APIs, ensuring your deployments stay up-to-date with GCP changes. (**CDS-102860, ZD-72653**)
+
+- Users can now add a native **K8s diff** step in CD pipelines, allowing them to preview changes before deployment. Currently, this feature is behind the feature flag `CDS_K8S_DIFF_STEP_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-91752**)
+
+#### Fixed Issues
+
+- Previously, the version data shown in the service summary page for each environment did not match the actual version deployed to the cluster. This was caused by incorrect update logic for the deployment info list used during instance synchronization in native Helm deployments. As a result, stale versions were being picked up and displayed in the UI. This issue is now resolved. The deployment version displayed in the service summary page correctly reflects the actual version deployed to the cluster. (**CDS-101458, ZD-78480**)
+
 
 ### Version 1.81.3
 
@@ -125,6 +169,8 @@ Updating an application that contains a `valuesObject` while using an agent olde
 - Users can now deploy Azure Web Apps with enhanced support for non-standard configurations and **Azure CLI-based workflows**, enabling greater flexibility and customization in deployments. This feature is available with Delegate version `85302` or later and is behind the feature flag `CDS_AZURE_CLI_WEBAPP_DEPLOYMENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-105696**)
 
 - Users can now include **clickable HTTP URLs** within Approval step messages in Harness pipelines. This enhancement improves usability by allowing approvers to directly access links from the approval step without needing to copy and paste URLs. (**CDS-88977**)
+
+- Harness now supports AWS deployments in the **Mexico region**. (**CDS-107704**)
 
 #### Behavior changes
 
