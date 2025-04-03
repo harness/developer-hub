@@ -13,6 +13,7 @@ import Feedback from '@site/src/components/Feedback';
 import styles from './index.module.scss';
 import { useColorMode } from '@docusaurus/theme-common';
 
+// auto merge test branch
 function HomePageAnimation() {
   const { colorMode } = useColorMode();
   return (
