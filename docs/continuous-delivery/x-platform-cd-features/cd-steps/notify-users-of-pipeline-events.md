@@ -572,11 +572,11 @@ Go to [send notifications using Slack](/docs/platform/notifications/send-notific
 
 ## Select Connectivity Mode
 
-Select the **Connectivity Mode**, you can choose to **Connect through Harness Platform** as well **Connect through Harness Delegate**.
+Under **Select the Connectivity Mode**, you can choose to **Connect through Harness Platform** or **Connect through Harness Delegate**.
 
 ![](./static/delegate-routing-support.png)
 
-When you select to **Connect through Harness Delegate**, and click on **Continue**, you will be asked to select the Delegate that this pipeline notification rule will use, in **Delegate Setup**.
+When you select **Connect through Harness Delegate**, and click on **Continue**, you will be asked to select the Delegate that this pipeline notification rule will use, in **Delegate Setup**.
 
 ![](./static/delegate-routing-setup.png)
 
