@@ -265,7 +265,7 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
             ```
 :::  
 
-## Mar 26, 2025, Version 0.27.0  <!-- Draft : Mar 26, 2025 -->
+## April 03, 2025, Version 0.27.0  <!-- Draft : April 03, 2025 -->
 
 This release includes the following Harness module and component versions.
 
@@ -284,10 +284,10 @@ This release includes the following Harness module and component versions.
 | STO Core                  | 1.129.3                                                                                      |
 | Test Intelligence Service | 1.42.1                                                                                       |
 | NG UI                     | 1.63.9                                                                                       |
-| LE NG                     | 1.5.5                                                                                        |
+| LE NG                     | 1.5.6                                                                                        |
 | Looker                    | 1.7.10                                                                                       |
 | Log Service               | 1.19.0                                                                                       |
-| Batch Processing          | 1.40.3                                                                                       |
+| Batch Processing          | 1.40.4                                                                                       |
 | Gateway                   | 1.42.4                                                                                       |
 | IaCM Manager              | 1.72.0                                                                                       |
 
@@ -302,6 +302,7 @@ gsutil -m cp \
   "gs://smp-airgap-bundles/harness-0.27.0/ce_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.27.0/cet_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.27.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.0/ff_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.27.0/platform_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.27.0/sto_images.tgz" \
   .
