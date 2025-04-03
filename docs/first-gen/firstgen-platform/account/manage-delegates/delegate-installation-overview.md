@@ -18,8 +18,6 @@ This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upg
 
 This topic discusses general Delegate installation information. For Delegate requirements and limitations, see [Delegate Requirements and Limitations](delegate-requirements-and-limitations.md).
 
-For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen).
-
 The following diagram shows how the Delegate enables Harness to integrate with all of your deployment resources:
 
 ![](./static/delegate-installation-overview-16.png)
