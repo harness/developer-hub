@@ -36,7 +36,9 @@ The following rules are available when adding branch rules. Some rules require a
 | **Block branch deletion** | This rule doesn't block users in the **Bypass List**. |
 | **Block force push** | This rule doesn't block users in the **Bypass List**. |
 | **Require pull request** | This rule doesn't block users in the **Bypass List**. |
+| **Enable default reviewers** | Automatically assigns default reviewers to new pull requests. Optionally, enforce a minimum number of approvals from default reviewers before merging. [Details](/docs/code-repository/config-repos/rules#default-reviewer). |
 | **Require a minimum number of reviewers** | You must specify the minimum number of reviewers. |
+| **Add Code Owners as reviewers** | This rule automatically adds relevant Code Owners as reviewers. |
 | **Require review from code owners** | This rule requires a [CODEOWNERS file](#codeowners) in your branches. If there is no CODEOWNERS file, Harness can't enforce the rule. |
 | **Require approval of new changes** | This rule requires that you *also* enable **Require a minimum number of reviewers** or **Require review from code owners** (or both). Without at least one of those additional rules, this rule has no effect. |
 | **Require resolution of change requests** | None. 
@@ -44,6 +46,22 @@ The following rules are available when adding branch rules. Some rules require a
 | **Require status checks to pass** | You must specify the checks that must pass. |
 | **Limit merge strategies** | You must select the allowed merge strategies. |
 | **Auto delete branch on merge** | None. |
+
+### Default Reviewer
+
+Default reviewers can be configured as part of branch protection rules. When enabled, specified default reviewers are automatically assigned to new pull requests.
+
+<DocImage path={require('/docs/code-repository/config-repos/assets/default-reviewer1.png')} />
+
+If a minimum number of approvals from default reviewers is required, the PR cannot be merged until at least that many approvals are received. This requirement is displayed in the Approvals section of the PR summary.
+
+<DocImage path={require('/docs/code-repository/config-repos/assets/default-reviewer2.png')} />
+
+Pull requests authored by a default reviewer will skip the required approval check if there aren’t enough remaining default reviewers to meet the condition. To enforce the approval requirement in such cases, consider adding more default reviewers.
+
+:::warning
+Updating the rule does not retroactively assign reviewers to existing PRs—it only applies at the time of PR creation.
+:::
 
 ## Toggle rules
 
@@ -61,11 +79,14 @@ You can toggle branch rules on and off.
 
 ## CODEOWNERS
 
-A CODEOWNERS file declares the users <!--and groups-->responsible for a repository or part of a repository.
+A CODEOWNERS file declares the users <!--and groups-->responsible for a repository or part of a repository. To use a `CODEOWNERS` file, create a new file named `CODEOWNERS` in one of the following locations in your repository:  
 
-Harness Code associates CODEOWNERS with PRs if a CODEOWNERS file is present in the repo, but Harness doesn't automatically add them as reviewers. This is intended to prevent reviewer spam when a change impacts files that don't necessarily need review from all CODEOWNERS. You can request reviews from individual CODEOWNERS, if desired. If a CODEOWNER independently chooses to review a PR, Harness adds them as a reviewer for record keeping purposes, as is the case with any independent review. If you enabled the CODEOWNER branch rule (**Require review from code owners**), then CODEOWNERS are handled as a policy checked against PR reviewers; if none of the reviewers are CODEOWNERS, then merging is blocked.
+- `CODEOWNERS` (at the root level)  
+- `.harness/CODEOWNERS`  
 
-Store your CODEOWNERS file in the root of your code repo, at `docs/CODEOWNERS`, or under `.harness`.
+Harness Code recognizes CODEOWNERS in a repository if a CODEOWNERS file is present but does not automatically add them as reviewers. This prevents unnecessary notifications when changes affect files that don’t require review from all CODEOWNERS. To auto-add CODEOWNERS as reviewers, enable the **Add Code Owners as reviewers** rule.
+
+You can still manually request reviews from specific CODEOWNERS. If a CODEOWNER voluntarily reviews a PR, Harness adds them as a reviewer for record-keeping, just like any other independent review. If the **Require review from code owners** branch rule is enabled, CODEOWNERS function as an approval policy—meaning a PR cannot be merged unless the changes have been approved by the required CODEOWNERS. This requirement is displayed in the Approvals section of the PR summary.
 
 ### CODEOWNERS syntax
 

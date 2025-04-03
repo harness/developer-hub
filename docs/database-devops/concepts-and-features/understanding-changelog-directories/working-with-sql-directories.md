@@ -114,3 +114,9 @@ create table test1 (
 insert into test1 (id, name) values (1, 'stephan');
 insert into test1 (id,  name) values (2, 'josh');
 
+--rollback delete from test1 where id in (1, 2);
+```
+
+:::caution 
+When using SQL format for your changelog files, rollback actions are required. For more information about implementing rollbacks, refer to [Automatic and Custom Rollback](../automatic-and-custom-rollback.md).
+:::
