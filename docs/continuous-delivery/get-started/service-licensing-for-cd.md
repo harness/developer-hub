@@ -121,9 +121,17 @@ Harness has introduced a significant update to its service tracking capabilities
 
 ## Customer FAQs for the improved Service Tracking
 
+### If I deploy a service but it generates 0 service instances, will it still count toward my active service usage?
+
+Yes. Even if your service doesn’t create any service instances, it will still be considered active because it was used in a Deploy stage. Harness will count and charge for 1 Active Service in this case.
+
+###  If my pipeline fails, will the service still count as active?
+
+Yes. Once you deploy a service, regardless of whether the pipeline succeeds or fails, that service is marked as active and will be included in your license usage.
+
 ### Will Service tracking improvements increase my costs?
 
- Your license consumption may increase since we are now tracking more deployable items and offering additional value. We are committed to working with you to adjust your contract to match your usage and needs. We are not using these increases to charge you more; we are just trying to better track license utilization across all customers.
+Your license consumption may increase since we are now tracking more deployable items and offering additional value. We are committed to working with you to adjust your contract to match your usage and needs. We are not using these increases to charge you more; we are just trying to better track license utilization across all customers.
 
 ###  Why has tracking for GitOps Services been introduced in the new service tracking improvements?
 
