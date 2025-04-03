@@ -12,8 +12,6 @@ This topic describes the concept of a Harness ECS deployment by describing the h
 
 For a quick tutorial, see [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md).
 
-For detailed instructions on using ECS in Harness, see the [AWS ECS How-tos](/docs/category/aws-ecs-deployments).
-
 ### Before You Begin
 
 Before learning about Harness ECS deployments, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
@@ -77,5 +75,3 @@ The following table lists the ECS components and where they are set up in Harnes
 Read the following topics to build on what you've learned:
 
 * [AWS ECS Quickstart](../../../first-gen-quickstarts/aws-ecs-deployments.md).
-* [AWS ECS How-tos](/docs/category/aws-ecs-deployments).
-
