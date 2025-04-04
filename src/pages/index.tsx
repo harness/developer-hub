@@ -13,25 +13,25 @@ import Feedback from '@site/src/components/Feedback';
 import styles from './index.module.scss';
 import { useColorMode } from '@docusaurus/theme-common';
 
-function HomePageAnimation() {
-  const { colorMode } = useColorMode();
-  return (
-    <BrowserOnly fallback={<div></div>}>
-      {() => {
-        const Lottie = require('lottie-react').default;
+// function HomePageAnimation() {
+//   const { colorMode } = useColorMode();
+//   return (
+//     <BrowserOnly fallback={<div></div>}>
+//       {() => {
+//         const Lottie = require('lottie-react').default;
 
-        return (
-          <Lottie
-            animationData={
-              colorMode === 'dark' ? allModuleAnimationDark : allModuleAnimation
-            }
-            loop={true}
-          />
-        );
-      }}
-    </BrowserOnly>
-  );
-}
+//         return (
+//           <Lottie
+//             animationData={
+//               colorMode === 'dark' ? allModuleAnimationDark : allModuleAnimation
+//             }
+//             loop={true}
+//           />
+//         );
+//       }}
+//     </BrowserOnly>
+//   );
+// }
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
