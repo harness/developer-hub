@@ -22,7 +22,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ### Target and variant
 
 ```mdx-code-block
-import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/target-variant.md';
 ```
 
 <StoLegacyTargetAndVariant />
@@ -58,7 +58,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 ### Ingestion file
 
 ```mdx-code-block
-import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
+import StoLegacyIngest from './shared/custom-scan/ingestion-file.md'; 
 ```
 
 <StoLegacyIngest />
@@ -66,7 +66,7 @@ import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md';
 ### Fail on Severity
 
 ```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 ```
 <StoSettingFailOnSeverity />

@@ -63,11 +63,3 @@ The following list describes the major steps of a Harness Helm deployment:
 | 7 | Create the Harness **Environment** and Infrastructure Definition for your target Kubernetes clusters, and any overrides. | Using the Harness Cloud Provider you set up, you can select the target Kubernetes cluster and namespace for your deployment.You can also override any Service settings, such as manifest values. This enables you to use a single Service with multiple Harness Environments. |
 | 8 | Create the Basic Helm deployment Harness **Workflow**. | The Workflow deploys the artifact(s) and Kubernetes workloads defined in the Harness Service Helm charts to the cluster and namespace in the Harness Infrastructure Definition. |
 | 9 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your Kubernetes CD: <br />&bull;&nbsp; [Workflows](../../model-cd-pipeline/workflows/workflow-configuration.md) <br />&bull;&nbsp;  [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md)  <br />&bull;&nbsp;  [Infrastructure Provisioners Overview](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md) |
-
-### Next Steps
-
-Read the following topics to build on what you've learned:
-
-* [Helm How-tos](/docs/category/native-helm-deployments)
-* Blog on Helm support in Harness Kubernetes deployments, [Helm Support for Harness Continuous Delivery](https://harness.io/2019/05/helm-support-for-harness-continuous-delivery/).
-

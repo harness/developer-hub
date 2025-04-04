@@ -176,10 +176,6 @@ const config: Config = {
               to: 'docs/open-source',
             },
             {
-              label: 'FirstGen',
-              to: 'docs/first-gen',
-            },
-            {
               label: 'FAQs',
               to: 'docs/faqs',
             },
@@ -460,27 +456,6 @@ const config: Config = {
         hideable: true,
         autoCollapseCategories: true,
       },
-    },
-    announcementBar: {
-      id: 'announcementBar_cd_announcement',
-      content:
-        "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>FirstGen Harness CD will be EOL on 12/30/2023 and EOS on 3/30/2024.</span> Learn more in our <a href='/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a>. Contact  <a href='https://support.harness.io' target='_self'>Harness Support</a> with questions or concerns.",
-      backgroundColor: '#FFF5ED',
-      textColor: '#000000',
-      isCloseable: true,
-    },
-    announcementBarByPath: {
-      // list all pathnames in Regular expressions format
-      pathRegExp: [
-        // paths for md-doc pages / global patterns
-        '^/docs/first-gen/continuous-delivery.*',
-        '^/docs/first-gen/first-gen-quickstarts.*',
-        '-fg.*',
-        'fg-.*',
-        'firstgen-.*',
-        'first-gen.*',
-        '-firstgen.*',
-      ],
     },
     utmCookie: {
       prefix: 'utm_',

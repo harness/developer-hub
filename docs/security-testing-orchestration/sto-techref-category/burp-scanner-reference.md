@@ -34,10 +34,10 @@ The recommended workflow is to add a Burp step to a Security or Build stage and 
 
 #### Scan Mode
 
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
-import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanMode from './shared/step-palette/scan/type.md';
+import StoSettingScanModeOrch from './shared/step-palette/scan/mode/orchestration.md';
+import StoSettingScanModeData from './shared/step-palette/scan/mode/extraction.md';
+import StoSettingScanModeIngest from './shared/step-palette/scan/mode/ingestion.md';
 
 <!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
@@ -47,7 +47,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from './shared/step-palette/scan/config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -80,28 +80,28 @@ The following configurations are available for Orchestration scans. These are [b
 
 ##### Type
 
-import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
+import StoSettingScanTypeInst     from './shared/step-palette/target/type/app.md';
 
 <StoSettingScanTypeInst />
 
 
 #### Target and variant detection 
 
-import StoSettingScanTypeAutodetectApp from './shared/step_palette/target/auto-detect/_app-instance.md';
+import StoSettingScanTypeAutodetectApp from './shared/step-palette/target/auto-detect/app-instance.md';
 
 <StoSettingScanTypeAutodetectApp/>
 
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from './shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
@@ -126,28 +126,28 @@ Use this setting to specify a specific scan to ingest. If this is not specified,
 
 #### Domain
 
-import StoSettingInstanceDomain from './shared/step_palette/instance/_domain.md';
+import StoSettingInstanceDomain from './shared/step-palette/instance/domain.md';
 
 <StoSettingInstanceDomain />
 
 
 #### Protocol
 
-import StoSettingInstanceProtocol from './shared/step_palette/instance/_protocol.md';
+import StoSettingInstanceProtocol from './shared/step-palette/instance/protocol.md';
 
 <StoSettingInstanceProtocol />
 
 
 #### Port
 
-import StoSettingInstancePort from './shared/step_palette/instance/_port.md';
+import StoSettingInstancePort from './shared/step-palette/instance/port.md';
 
 <StoSettingInstancePort />
 
 
 #### Path
 
-import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
+import StoSettingInstancePath from './shared/step-palette/instance/path.md';
 
 <StoSettingInstancePath />
 
@@ -166,31 +166,31 @@ You should create a Harness text secret with your encrypted token and reference 
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/file.md';
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 
 ### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
 
 ### Additional CLI flags
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+import StoSettingCliFlags from './shared/step-palette/all/cli-flags.md';
 
 <StoSettingCliFlags />
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />
 
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 

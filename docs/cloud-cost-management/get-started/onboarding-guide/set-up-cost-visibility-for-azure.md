@@ -108,7 +108,11 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
       2. In the **Storage account**, select the storage account where the data needs to be exported.
       3. In **Container**, enter the container name where the report is to be stored.
       4. In **Directory**, enter the directory path where the export is to be stored.
-      ![](static/set-up-cost-visibility-for-azure-06.png)
+      5. In **Format**, select **CSV**.
+      6. In **Compression type**, select **Gzip**. This can be any type, but we recommend **Gzip**.
+      7. File partitioning will already be enabled.
+      8. Tick mark the option for **Overwrite data**.
+      ![](static/create-new.png)
    2. If you select **Create new**, enter the following details:
       1. In **Subscription**, select the **Subscription** of your storage account.
       2. In the **Resource group**, select the group to place the storage account. You can also create a new resource group. A resource group is a container that holds related resources for an Azure solution.
