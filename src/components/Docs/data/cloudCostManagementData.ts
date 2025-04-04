@@ -73,7 +73,7 @@ import { MODULES } from "@site/src/constants";
             module: MODULES.ccm,
             description:
               "Manage all cloud commitments with Commitment Orchestrator",
-            link: "/docs/cloud-cost-management/use-ccm-cost-optimization/Commitment-orchestrator/overview",
+            link: "/docs/cloud-cost-management/use-ccm-cost-optimization/commitment-orch-docs",
           },
           {
             title: "Cost categories",
