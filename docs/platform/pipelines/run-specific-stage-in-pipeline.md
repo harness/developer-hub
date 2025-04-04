@@ -52,4 +52,6 @@ You can view the execution details in the pipeline's execution history.
 
 When [viewing execution details](/docs/category/execution-history-and-logs) for a previous pipeline run, you can select **Re-run** or **Re-run Stage** to rerun a single stage. If necessary, you're prompted to provide runtime inputs.
 
+You can select **Re-run Stage** even if Pipeline is Successful.
+
 ![](./static/run-specific-stage-in-pipeline-49.png)

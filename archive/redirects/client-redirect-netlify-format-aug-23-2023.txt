@@ -113,15 +113,10 @@ https://developer.harness.io/docs/continuous-delivery/cd-technical-reference/cd-
 https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store
 https://developer.harness.io/docs/continuous-delivery/onboard-cd/upgrading/upgrade-cd-v2 https://developer.harness.io/docs/category/upgrading-cd
 https://developer.harness.io/docs/category/cd-tutorials https://developer.harness.io/tutorials/cd-pipelines
-https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/docs/category/cicd-artifact-build-and-deploy-pipelines https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview
 https://developer.harness.io/docs/feature-flags/ff-sdks/client-sdks/docs/feature-flags/ff-creating-flag/create-a-project https://developer.harness.io/docs/feature-flags/ff-creating-flag/create-a-project
 https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/docs/platform/Connectors/Cloud-providers/add-aws-connector https://developer.harness.io/docs/category/cloudformation
-https://developer.harness.io/docs/first-gen/first-gen-quickstarts/docs/category/iis-net-deployments https://developer.harness.io/docs/category/iis-net-deployments
 https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference https://developer.harness.io/docs/category/cloudformation
-https://developer.harness.io/docs/first-gen/firstgen-fa-qs/docs/category/cicd-artifact-build-and-deploy-pipelines https://developer.harness.io/docs/category/faqs-fg
-https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployment-types/docs/category/iis-net-deployments https://developer.harness.io/docs/category/iis-net-deployments
 https://developer.harness.io/docs/chaos-engineering/configure-chaos-experiments/experiments/use-chaos-with-srm https://developer.harness.io/docs/chaos-engineering/integrations/use-chaos-with-srm
-https://developer.harness.io/docs/category/continuous-verification-1 https://developer.harness.io/docs/category/configure-cv
 https://developer.harness.io/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/install-the-error-tracking-agent https://developer.harness.io/docs/continuous-error-tracking/getting-started/cet-setup
 https://developer.harness.io/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/ https://developer.harness.io/docs/platform/Delegates/install-delegates/install-a-kubernetes-delegate
 https://developer.harness.io/docs/platform/Governance/Policy-as-code/docs/feature-flags/harness-policy-engine https://developer.harness.io/docs/feature-flags/harness-policy-engine

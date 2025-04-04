@@ -22,7 +22,7 @@ Fulfill the [prerequisites](/docs/chaos-engineering/getting-started/prerequisite
 
 ### Step 1: Identify the microservice to target
 
-1. Identify the microservice in your application that you will target, whose resources will be affected. In this guide, you will delete a Kubernetes pod from your application. [Pod delete](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-delete) is the simplest chaos experiment that is recommended as the firs steo since it has a small blast radius.
+1. Identify the microservice in your application that you will target, whose resources will be affected. In this guide, you will delete a Kubernetes pod from your application. [Pod delete](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-delete) is the simplest chaos experiment that is recommended as the first step since it has a small blast radius.
 
 The diagram below describes the high-level steps to inject chaos into your application.
 

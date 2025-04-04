@@ -619,10 +619,6 @@ If the **Search Keywords** settings in the verification provider settings are to
 
 To fix this, click **Guide from Example** several times. This will give you different field lists for the different applications until you find the correct field for the host name. Refreshing the browser can also pick up a new sample.
 
-### AWS AMI
-
-The following errors might occur when setting up and deploying AMIs in Harness. For deployment steps, see [AWS AMI Deployments](/docs/category/aws-ami-deployments).
-
 #### Auto Scaling Group Not Showing Up
 
 When you configure an [Infrastructure Definition](../continuous-delivery/model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition), the Infrastructure Definition **Auto Scale Group** setting is empty. This is expected behavior. Simply allow a few seconds for the drop-down to populate.

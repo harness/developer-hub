@@ -576,9 +576,6 @@ For information on **AWSApplicationAutoscalingECSServicePolicy**, see [Amazon EC
     ]  
 }
 ```
-### Policies Required: AWS AMI/ASG Deployments
-
-For details on these deployments, see [AWS AMI Quickstart](../../../first-gen-quickstarts/aws-ami-deployments.md) and [AMI How-tos](/docs/category/aws-ami-deployments).
 
 #### Provisioned and Static Hosts
 
