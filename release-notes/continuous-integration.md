@@ -100,7 +100,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 #### New features and enhancements
 
 - Added support for codebase cloning using commit SHA, supporting both long and short commit SHAs. (CI-13445)
-- The following features are now available to support multi-line output variables:
+- The following features are now available to support multi-line output variables via FF `CI_NEW_VERSION_GODOTENV`:
 
   - Multiline Output Variables: Now supported in CI steps with special character support (\n, \t, \r, \b), maintaining shell-like behavior.
 
