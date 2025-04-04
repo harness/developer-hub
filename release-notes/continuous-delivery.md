@@ -55,6 +55,20 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## April 2025
 
+### GitOps Version 1.29, GitOps Agent Version 0.90.0
+
+#### New Features and Enhancements
+
+- The Update GitOps Agent API now allows updating the agent Type. (**CDS-108182**)
+- The agent type `CONNECTED_ARGO_PROVIDER` is now deprecated, as it was intended as a temporary solution and is no longer in use or supported. It will be removed in a future release. You can update existing agents via the API or Terraform. If you're managing an agent in Terraform, be sure to update its type to `MANAGED_ARGO_PROVIDER`. Once the removal takes place, all agents using `CONNECTED_ARGO_PROVIDER` will be automatically migrated to `MANAGED_ARGO_PROVIDER` on the backend. This may impact your Terraform state if not updated beforehand. (**CDS-108182**)
+
+#### Fixed Issues
+
+- GitOps utilization for licensing (instances being counted), will no longer count orphaned resources, only resources being actively managed. (**CDS-108121**)
+- Resolved an issue that prevented the creation of GitOps repositories using GitOps App enterprise credentials from the UI. The problem was caused by an incorrect parameter in the UI request and missing backend handling for enterprise credentials. This has now been fixed. (**CDS-108058, ZD-80415, ZD-81644**)
+- The **Force** option in GitOps sync was not working as expected. The `--force` flag was not being applied during the app sync command due to a conflict in protos. This issue has now been resolved. (**CDS-107813, ZD-80067**)
+- Added protection against mapping argo project to multiple harness projects that may have happened in rare cases. (**CDS-106179**)
+
 ### Version 1.83.5
 
 #### New Features and Enhancements
