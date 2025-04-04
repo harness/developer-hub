@@ -92,6 +92,19 @@ You need Administrative privileges at the Account level (Account Admin role) to 
 
 </details>
 
+### STO Resource Group configuration limitation - RBAC
+STO is not currently listed as a **Resource** in the **Resource Groups** configuration UI. To allow users access to all STO resources, you must create or use a Resource Group with resources set to **All**. This requirement applies to all levels of the **Resource Scope**
+- Project
+- Organization
+- Account
+
+:::warning
+Using the **Specified** option in the Resource Group may lead to errors in displaying STO information or executing STO operations for assigned users.
+:::
+
+<DocImage path={require('/docs/security-testing-orchestration/get-started/static/sto-resource-group-rbac-limiation.png')} width="100%" height="100%" title="Click to view full size image" />
+
+
 ### Set up a build infrastructure for STO
 
 You need a Harness build infrastructure to run scans in STO. First, review [Operating systems and architectures supported by STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#supported-operating-systems-and-architectures). Then select the infrastructure you want to use: 

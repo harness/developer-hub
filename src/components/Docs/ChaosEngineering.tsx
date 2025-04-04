@@ -37,26 +37,43 @@ export default function CE() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness Chaos Engineering (HCE) provides the end-to-end tooling
-              required to achieve Continuous Resilience in your Software
-              Delivery Life Cycle. Using Harness CE, your developers, QA teams,
-              and SREs inject chaos experiments in a controlled fashion, either
-              to assert resilience against pre-determined faults or to find
-              weaknesses against them. Harness CE helps to achieve faster
-              incident response and recovery times, increase overall service
-              resilience, optimize costs, and result in an improved customer
-              experience.
+              <h3>Resilience Testing Made Easy</h3>
+              Harness Chaos Engineering (HCE) module provides an end-to-end tooling
+              to do the <strong>Resilience Testing</strong> in both lower and production environments.
+              Resilience measurement of the services can be automated such that informed 
+              decisions are taken in the change management process of the Software 
+              Delivery Life Cycle or SDLC. The practice of introducing, implementing,
+              and improvising the <strong>Resilience Testing</strong> is made easy by the chaos experimentation
+              process.
+
+              
+              <p>
+                <p>
+                Chaos experiments help in measuring the resilience of the services. 
+                Harness Chaos Engineering module comes with more than <strong>200</strong> different types
+                of out-of-the-box faults using which chaos experiments can be created and 
+                orchestrated in a few minutes. Chaos Experiments give out Resilience Score
+                as the outcome of a successful run which can be used to take informed decisions
+                by <strong>QA Engineers</strong> or <strong>Performance Test Engineers</strong> or <strong>SREs</strong> in their effort to improve
+                the resilience posture of their applications or business services.
+                </p>
+                
+              </p>
+
+              <p>
+               <h3>Resilience Posture</h3>
+               Resilience Posture of a module or an application or a business service is an indicator of 
+               how resilient the system is against perceived risks of failures in either software or
+               infrastructure or the third party systems. Harness Chaos Engineering helps in building
+               a process of automating the continuous or the on-demand measurement of Resiliene Posture.
+
+
+               The Resilience Posture helps in taking importance decisions while making deployment changes,
+               making new product releases, doing infrastructure upgrades and also acting as an external 
+               indicator of Reliability for end users and third party service providers.
+              </p>
             </p>
-            <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={
-                  colorMode === 'light'
-                    ? `${baseUrl}img/ce.svg`
-                    : `${baseUrl}img/CE_Landing_Page_dark_mode.svg`
-                }
-              />
-            </div>
+
           </div>
         </div>
       </div>

@@ -82,6 +82,5 @@ The **Harness** **Delegates** page provides a list of installed Delegates. The i
 
 ## See Also
 
-* For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen).
 * Delegate are used to provide credentials for some Harness [Cloud Providers](../manage-connectors/cloud-providers.md).
 

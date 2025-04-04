@@ -1,5 +1,5 @@
 ---
-title: Workspace settings
+title: Workspace Settings
 description: Learn about workspace settings and the information in your workspace tabs. 
 sidebar_position: 30
 ---
@@ -68,10 +68,6 @@ variable "db_password" {
 ### Activity History
 The Activity History tab logs actions performed within the workspace, such as 'plan' and 'apply' steps executed via pipelines.
 - **Usage:** Use this tab to track the success or failure of specific actions, aiding in troubleshooting and auditing.
----
-### Execution History
-This tab records the execution of full pipelines, such as Provision or Destroy, providing a comprehensive history of actions taken within the workspace.
-- **Usage:** It enables you to review past pipeline executions and understand the sequence and outcome of each step.
 ---
 ### State
 The State tab provides access to your complete infrastructure state file, offering critical insights into your current configuration and dependencies of your resources.

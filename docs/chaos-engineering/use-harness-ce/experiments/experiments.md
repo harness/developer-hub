@@ -8,28 +8,63 @@ redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score
 - /docs/chaos-engineering/features/experiments/resilience-score/
 - /docs/category/chaos-experiments-/
+- /docs/chaos-engineering/technical-reference/experiments/
 ---
 
-Harness Chaos Engineering (HCE) gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications.
+This topic describes chaos experiments, why it is required, the permissions required to execute a chaos experiment, and how the resilience score is determined based on the chaos experiment's execution.
 
-A **chaos experiment** is composed of chaos faults that are arranged in a specific order to create a failure scenario. The [chaos faults](#chaos-fault) target various aspects of an application, including the constituent microservices and underlying infrastructure. You can tune the parameters associated with these faults to impart the desired chaos behavior.
+## Prerequisites
 
-You can define the experiment using the Chaos Studio, that helps create new experiments using the guided UI or by uploading the workflow CR (custom resource) manifest.
+Before creating a chaos experiment, [create an environment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#create-environment) and [enable a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/). This is because a chaos experiment is executed on an infrastructure which is in turn housed in an environment.
 
-When an experiment fails, the failed step specifies the exact cause of failure for the experiment run. It contains an error code for the classification of the error, a phase to specify the execution phase during which the error occurred, and finally, the reason which is a user-friendly description of the error.
+## Introduction
+Harness Chaos Engineering gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios against which you can validate your applications.
 
-### Permissions required
+An experiment is created in an infrastructure, and an infrastructure is installed within an environment. 
+An environment represents your deployment scenario, wherein each environment may contain multiple chaos infrastructures. It helps isolate the various environments that the engineering, product owners, QA, and automation teams use under a single Harness project. 
+
+## What is a Chaos Experiment?
+A **chaos experiment** consists of chaos faults arranged in a specific order to create a failure scenario. The [chaos faults](#chaos-fault) target various aspects of an application, including the constituent microservices and underlying infrastructure. Tune the parameters associated with these faults to impart the desired chaos behavior.
+
+You can define the experiment using the Chaos Studio, that helps create new experiments using the guided UI.
+
+When an experiment fails, the failed step specifies the exact cause of failure for the experiment run. It contains an error code for the classification of the error, a phase to specify the execution phase during which the error occurred, and a user-friendly description of the error.
+
+Go to [Generic Pod Flow](/docs/chaos-engineering/concepts/how-stuff-works/generic-pod-flow) to understand the flow of control when a chaos experiment is executed.
+
+## Permissions Required
 
 Chaos experiments are executed in a chaos infrastructure, hence you need to have access to **create/edit** and **view** the **chaos infrastructure**. Go to **Project Settings** -> **Access Control** -> **Roles** and create a new role or ask your project admin to create an appropriate role.
 
 ![](./static/perms-reqd.png)
 
-:::tip
-- To create a chaos experiment, you need to [enable a chaos infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable). To enable an infrastructure, you need to [create an environment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#create-environment).
-- An environment represents your deployment scenario, wherein each environment may contain multiple chaos infrastructures. It helps isolate the various environments that the engineering, product owners, QA, and automation teams use under a single Harness project. - This allows for better segregation of mission-critical infrastructures with several attached dependencies from dev and staging infrastructures for their safety.
-:::
+## Flow of Control
 
-### Experiment Status
+The diagram below describes the flow of control when a chaos experiment is executed.
+
+	![flow of control](./static/create-experiments/experiment-sequence.png)
+
+**1. Initiating a Chaos Experiment**
+- You (the user) begin by creating a new chaos experiment in the **Chaos Control Plane**.
+- The Control Plane prompts the user to provide key details required for configuring the experiment:
+
+  - **Chaos Infrastructure:** Define the infrastructure where the experiment will be executed.
+  - **Faults and Tunables:** Configure tunables as required. Multiple faults can be added in any order.
+  - **Fault Probes:** Include probes beyond the default health check probe to validate specific hypotheses.
+  - **Fault Weights:** Assign weights to faults to indicate their impact relative to others. These weights help determine the experiment’s [**resilience score**](/docs/chaos-engineering/use-harness-ce/experiments/), a quantitative measure of system robustness.
+
+- Once all required inputs are provided, the experiment is created and ready for execution.
+
+**2. Executing the Chaos Experiment**
+- When the experiment is run, the **Chaos Control Plane** sends the experiment details to the target **chaos infrastructure**.
+- The infrastructure manages four key responsibilities during execution:
+
+  - **Fault Injection:** It interprets and injects the specified faults into the target resources. Depending on the experiment setup, multiple faults can be injected concurrently.
+  - **Probe Execution:** As faults are injected, the infrastructure runs the corresponding fault probes and records their results.
+  - **Log Streaming:** Real-time execution logs are continuously streamed and can be accessed in the **Chaos Control Plane** for monitoring and troubleshooting.
+  - **Result Transmission:** Once the experiment concludes, the infrastructure sends back execution results, including probe outcomes, to the Control Plane.
+
+## Experiment Status
 
 Experiment status describes the overall status of the experiment that depends on the status of the probe and the fault. The experiment status in a chaos experiment can be in 7 different states.
 
@@ -41,7 +76,7 @@ Experiment status describes the overall status of the experiment that depends on
 	- **Queued**: An experiment goes to the **queued** state before it is executed, that is when the task (or experiment) has not been picked up by the infrastructure subscriber (pod) yet. At this point, the task is placed in the queue and is waiting to be picked.
 	- **Stopped**: If an experiment was stopped by the user, the fault that was being executed then also stops (this results in the fault status being **stopped**). The subsequent faults associated with the experiment don't get executed either.
 
-#### Chaos Rollback
+### Chaos Rollback
 
 Chaos rollback ensures that all target resources in an experiment return to their steady state after the experiment concludes, maintaining the safety of all applications deployed on your machine.
 
@@ -53,37 +88,7 @@ Chaos rollback ensures that all target resources in an experiment return to thei
 
 The diagram below describes the flow of control in a chaos experiment.
 
-<details>
-<summary> Flow of control </summary>
-
-![](./static/experiments/experiment-sequence.png)
-
-</details>
-
-Below is the detailed description of the steps above.
-
-1. The user initiates the creation of a new chaos experiment in the Chaos Control Plane.
-2. The Control plane prompts the user to input the necessary information for creating the experiment, including:
-
-   * **Chaos Infrastructure:** Specify the chaos infrastructure that will be targeted during the experiment.
-   * **Fault and Fault Tunables:** Select fault templates from any connected chaos hubs and modify the tunables as needed. You can add multiple faults in any desired order.
-   * **Fault Probes:** Optionally, define additional probes on top of the default health check probe to validate custom hypothesis during the experiment.
-   * **Fault Weights:** Assign fault weights to indicate the importance of each fault relative to others in the experiment. These weights contribute to calculating the experiment's [**resilience score**](/docs/chaos-engineering/use-harness-ce/experiments/ ), a quantitative measure of the target environment's resilience when the experiment is performed.
-
-	Once all information is provided, the experiment is created and ready for execution.
-
-3. When the user runs the experiment, the Control Plane transmits the experiment data to the target chaos infrastructure. The infrastructure handles four key responsibilities during execution:
-
-   * **Inject Faults:** The infrastructure interprets the received faults and injects them into the target resource. Multiple faults may be injected simultaneously, depending on the experiment.
-   * **Execute Probes:** The infrastructure executes the respective fault probes as the faults are injected, storing the results.
-   * **Stream Logs:** Real-time logs of the experiment execution are streamed and can be retrieved as needed. These logs are accessible in the Chaos Control Plane.
-   * **Send Results:** Finally, the infrastructure sends the experiment execution results, including the probe results, back to the Chaos Control Plane.
-
-   The chaos experiment execution is then concluded.
-
-To get a hands-on experience, follow the respective links to [create](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments), [edit](/docs/chaos-engineering/use-harness-ce/experiments/edit-chaos-experiment), [halt and delete](/docs/chaos-engineering/use-harness-ce/experiments/halt-delete-experiments), [export](/docs/chaos-engineering/use-harness-ce/experiments/export-chaos-experiments) and [create alerts for experiment runs](/docs/chaos-engineering/use-harness-ce/experiments/alert-integration).
-
-## Determine the resilience of target environment using resilience score
+## Determine Resilience
 
 The **resilience score** is a quantitative measure of how resilient the target application is to a chaos experiment. It is determined by executing a chaos experiment.
 
@@ -91,8 +96,6 @@ The score is calculated based on:
 
 * The weight you give each fault in the experiment.
 * The success rate of the probes in each fault.
-
-This topic explains these elements, and gives an example resilience calculation.
 
 ### Fault Weight
 
@@ -112,12 +115,11 @@ The **probe success percentage** for a fault is the ratio of successful probes t
 
 Based on fault weights and probe success rates, you can calculate two types of resilience score (represented as a percentage):
 
-* **A fault's resilience** = fault weight * probe success percentage<br />
-* **The experiment's total resilience** = sum of all fault resilience / sum of all fault weights of the experiments
+* **Fault resilience** = fault weight * probe success percentage<br />
+* **Experiment resilience** = sum of all fault resilience / sum of all fault weights of the experiments
 
-Here's an example:
-
-* **Experiment A** runs, and includes 3 faults. Fault weights, number of probes, and probe success rates are as follows.
+Below is an example:
+**Experiment A** runs, and includes 3 faults. Fault weights, number of probes, and probe success rates are as follows.
 
    | Fault | Weight | Number<br />of probes | Probes<br />succeeded | Fault<br />resilience |
    |:----:|:---:|:---:|:-------:|:-------:|
@@ -126,8 +128,17 @@ Here's an example:
    | Fault3 | 8 | 4 | 3 (or 75%) | 600%   |
    |        | **Sum: 14** |  |    | **Sum: 1000%**   |
 <br />
-* **Experiment A's total resilience score**
+
+**Experiment A's total resilience score**
 
    Divide the sum of all fault resilience by the sum of all fault weights:
 
    **1000% / 14 = 71%**
+
+## Next Steps
+
+- [Create Experiment](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments)
+- [Edit Experiments](/docs/chaos-engineering/use-harness-ce/experiments/edit-chaos-experiment)
+- [Run Experiments](/docs/chaos-engineering/use-harness-ce/experiments/run-schedule-exp)
+- [Alerts for Experiments](/docs/chaos-engineering/use-harness-ce/experiments/alert-integration)
+- [Runtime Variable Support in Experiments](/docs/chaos-engineering/use-harness-ce/experiments/fault-template)

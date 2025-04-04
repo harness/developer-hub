@@ -25,7 +25,7 @@ You can scan container images using [Sysdig Vulnerability engine](https://docs.s
 - You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
 
@@ -40,9 +40,9 @@ The recommended workflow is to add a Sysdig step to a Security or Build stage an
 
 #### Scan Mode
 
-<!--  import StoSettingScanMode from './shared/step_palette/scan/_type.md'; -->
-import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+<!--  import StoSettingScanMode from './shared/step-palette/scan/type.md'; -->
+import StoSettingScanModeOrch from './shared/step-palette/scan/mode/orchestration.md';
+import StoSettingScanModeIngest from './shared/step-palette/scan/mode/ingestion.md';
 
 
 <!-- StoSettingScanMode / -->
@@ -52,7 +52,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from './shared/step-palette/scan/config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -62,15 +62,15 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
+import StoSettingScanTypeCont from './shared/step-palette/target/type/image.md';
 
 <StoSettingScanTypeCont />
 
 
 #### Target and Variant Detection 
 
-import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectContainer from './shared/step-palette/target/auto-detect/container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectContainer/>
 <StoSettingScanTypeAutodetectNote/>
@@ -78,14 +78,14 @@ import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from './shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
@@ -94,73 +94,73 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 #### Type
 
-import StoSettingImageType from './shared/step_palette/image/_type.md';
+import StoSettingImageType from './shared/step-palette/image/type.md';
 
 <StoSettingImageType />
 
 
 #### Domain
 
-import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
+import StoSettingImageDomain from './shared/step-palette/image/domain.md';
 
 <StoSettingImageDomain />
 
 
 #### Name
 
-import StoSettingImageName from './shared/step_palette/image/_name.md';
+import StoSettingImageName from './shared/step-palette/image/name.md';
 
 <StoSettingImageName />
 
 
 #### Tag
 
-import StoSettingImageTag from './shared/step_palette/image/_tag.md';
+import StoSettingImageTag from './shared/step-palette/image/tag.md';
 
 <StoSettingImageTag />
 
 
 #### Access ID
 
-import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
+import StoSettingImageAccessID from './shared/step-palette/image/access-id.md';
 
 <StoSettingImageAccessID />
 
 
 #### Access Token
 
-import StoSettingImageAccessToken from './shared/step_palette/image/_access-token.md';
+import StoSettingImageAccessToken from './shared/step-palette/image/access-token.md';
 
 <StoSettingImageAccessToken />
 
 
 #### Region  
 
-import StoSettingImageRegion from './shared/step_palette/image/_region.md';
+import StoSettingImageRegion from './shared/step-palette/image/region.md';
 
 <StoSettingImageRegion />
 
 
 ### Ingestion File
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 
 
 ### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
@@ -174,14 +174,14 @@ You can add a `tool_args` setting to run the scanner with specific command-line 
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from './shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
