@@ -191,7 +191,7 @@ To configure your MinIO servers, do the following:
 
 3. Attach the disk device name to the VM using `sudo lsblk`. For example:
 
-   ![](../static/attach-disk-device-name.png)
+   ![](./static/attach-disk-device-name.png)
 
 4. Run the following to format the disk.
 
