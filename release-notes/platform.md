@@ -107,6 +107,13 @@ The following deprecated API endpoints are longer supported:
 
 ## March 2025 
 
+### Version 1.83.x <!--April 2, 2025-->
+
+#### Fixed issues
+- Fixed: Ignored `docker.io` in image tag for delegate upgrade checks, as it is the default registry when not specified. [PL-61417]
+- Fixed an issue where the "New Project" button was incorrectly enabled after switching organizations, even for users without project creation permissions. Now, permissions are re-validated after scope switching, ensuring the button remains disabled when necessary. [PL-61225]
+- Fixed an issue on the Delegate Token listing page in Safari where tokens weren’t copied to the clipboard despite showing a success message. Tokens are now copied correctly. [PL-56230]
+
 ### Version 1.82.x <!--March 27, 2025-->
 #### Fixed issues
 - Fixed the error message displayed when LDAP login fails due to invalid credentials. [PL-60508]
