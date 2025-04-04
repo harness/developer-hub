@@ -22,6 +22,20 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## April 2025
+
+### Version v1.134.1
+
+<!-- 2025-04-05 -->
+
+#### New Features and Enhancements  
+- Switched to using the Harness GAR registry as the default source instead of DockerHub to avoid rate-limiting issues (STO-8669).
+
+#### Fixed Issues  
+- Fixed a bug where the `ListTickets` endpoint did not respect `projectID` and `orgID` scopes (STO-8628).
+- Fixed an issue in `Local OCI/Docker archive in this stage` image scans where the tar file name was incorrectly passed to the CLI instead of the image name (STO-8690, ZD-80330).
+- Resolved an issue where STO failed to parse the latest results from BlackDuckHub (STO-8718, ZD-81315).
+
 ## March 2025
 
 ### Version v1.130.6
