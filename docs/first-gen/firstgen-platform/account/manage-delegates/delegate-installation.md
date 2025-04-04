@@ -16,7 +16,7 @@ import image_3 from './static/delegate-installation-10.png'
 
 :::warning
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
 
 :::
 

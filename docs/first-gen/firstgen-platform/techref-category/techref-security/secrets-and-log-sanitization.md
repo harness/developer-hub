@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::warning
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](https://docs.harness.io).
+This content is for Harness FirstGen. Switch to [NextGen](https://docs.harness.io).
 :::
 
 Harness sanitizes deployment logs and any script outputs to mask text secret values.
