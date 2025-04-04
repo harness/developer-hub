@@ -7,22 +7,33 @@ sidebar_position: 22
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In Harness CI, you can build images without pushing them. For example, you can use your CI pipeline to test a Dockerfile from your codebase to verify that the resulting image is correct before you push it to your Docker repository.
+In Harness CI, you can build container images without pushing them. This is useful to validate your Dockerfile or check if the image builds successfully before pushing it to a registry.
 
-The build dry run configuration depends on your build infrastructure and the step or plugin you use for your build.
+The dry-run behavior **depends on the image build tool** used by your pipeline step — either **Kaniko** or **Buildx** — **not** on the infrastructure (Kubernetes, Harness Cloud, etc.).
 
-## Harness Cloud, local runner, or self-managed VM
+## Build tool behavior
 
-Use these instructions for build dry runs on Harness Cloud, self-managed VM, or local runner build infrastructure.
+| Build Tool | Dry Run Flag           | Notes                                                                 |
+|------------|------------------------|-----------------------------------------------------------------------|
+| Kaniko     | `PLUGIN_PUSH_ONLY=true`  | Default on Kubernetes unless overridden by feature flag              |
+| Buildx     | `PLUGIN_DRY_RUN=true`  | Used when DLC checkbox is enabled or feature flag switches to Buildx |
+
+**DLC checkbox**: Enabling this forces usage of Buildx regardless of infrastructure.
+
+**Kubernetes users**: You get Kaniko by default. If the Buildx feature flag is enabled, it switches to Buildx — even if the DLC checkbox is off.
+
+## Harness Cloud, Local Runner, or Self-managed VM
+
+These environments use Buildx by default. Add `PLUGIN_DRY_RUN=true` to trigger a dry run.
 
 <Tabs>
 <TabItem value="builtin" label="Built-in Build and Push steps" default>
 
-For built-in [Build and Push steps](/docs/category/build-and-push), you need to add a [**STAGE** variable](/docs/platform/pipelines/add-a-stage/#stage-variables) named `PLUGIN_DRY_RUN`.
+For built-in [Build and Push steps](/docs/category/build-and-push), add a [**STAGE** variable](/docs/platform/pipelines/add-a-stage/#stage-variables):
 
-1. In your CI pipeline, go to the **Build** stage that includes a [Build and Push step](/docs/category/build-and-push).
-2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
-3. Select **Add Variable** and enter the following:
+1. Go to the **Build** stage with the [Build and Push step](/docs/category/build-and-push).
+2. In the **Overview** tab, expand the **Advanced** section.
+3. Add a variable:
    * **Name:** `PLUGIN_DRY_RUN`
    * **Type:** **String**
    * **Value:** `true`
@@ -31,45 +42,47 @@ For built-in [Build and Push steps](/docs/category/build-and-push), you need to 
 </TabItem>
 <TabItem value="run" label="Run step">
 
-For build scripts executed in [Run steps](/docs/continuous-integration/use-ci/run-step-settings), refer to your build tool's documentation for dry run specifications.
+If you're using a [Run step](/docs/continuous-integration/use-ci/run-step-settings) with a custom script, follow the dry-run guidance from your specific build tool (e.g., `docker build`, `buildx build`, etc).
 
 </TabItem>
 </Tabs>
 
-## Kubernetes cluster build infrastructure
-
-Use these instructions for build dry runs on Kubernetes cluster build infrastructure.
+## Kubernetes Cluster Build Infrastructure
 
 <Tabs>
 <TabItem value="builtin" label="Built-in Build and Push steps" default>
 
-For the built-in [Build and Push steps](/docs/category/build-and-push), add the `PLUGIN_NO_PUSH` variable to the **Build and Push** step's **Environment Variables**.
+Kubernetes infra **uses Kaniko by default**. In this case, use the `PLUGIN_PUSH_ONLY` flag:
 
 ```yaml
-                    envVariables:
-                      PLUGIN_NO_PUSH: true
+envVariables:
+  PLUGIN_PUSH_ONLY: true
+```
+
+If your org has enabled the Buildx feature flag (or if DLC is enabled), use:
+
+```yaml
+envVariables:
+  PLUGIN_DRY_RUN: true
 ```
 
 </TabItem>
 <TabItem value="buildah" label="Buildah plugin (Plugin step)">
 
-The Buildah plugin is used to [build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot.md).
-
-To configure a build dry run with this plugin, add the following [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) to the stage where you run the Buildah plugin:
+For the Buildah plugin (used for non-root image builds), use:
 
 ```yaml
-        variables:
-          - name: PLUGIN_DRY_RUN
-            type: String
-            description: ""
-            required: false
-            value: "true"
+variables:
+  - name: PLUGIN_DRY_RUN
+    type: String
+    value: "true"
 ```
 
 </TabItem>
 <TabItem value="run" label="Run step">
 
-For build scripts executed in [Run steps](/docs/continuous-integration/use-ci/run-step-settings), refer to your build tool's documentation for dry run specifications.
+If you're using a custom build command in a [Run step](/docs/continuous-integration/use-ci/run-step-settings), refer to your tool's own dry-run mechanism.
 
 </TabItem>
 </Tabs>
+```
