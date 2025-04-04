@@ -27,6 +27,9 @@ Harness Incident Response (**IR**) allows teams to **automate incident resolutio
   - [Jira](./integrations/jira.md) - Issue tracking and updates
   - [ServiceNow](./integrations/servicenow.md) - Incident management
 
+- **Documentation and Collaboration**
+   [Confluence](./integrations/confluence.md) - Collaborative and historical documentation
+
 ## Getting Started
 
 1. [Create Your First Runbook](./create-runbook.md)
