@@ -313,6 +313,7 @@ gsutil -m cp \
 #### Harness Platform
 
 - Fixed an issue where changes to ResourceType in Notification Rules were not saved properly. Modifying ResourceType in an existing rule invalidated subsequent configurations. To prevent this, ResourceType is now disabled for editing in existing rules. [PL-60466]
+- Fixed an issue where cleanup jobs were registered as Patroni members, causing WAL cleanup failures due to inactive cluster members. Removed labels from cron jobs to enable independent deployment for cleanup. [PL-61372]
 
 #### Continuous Integration
 
