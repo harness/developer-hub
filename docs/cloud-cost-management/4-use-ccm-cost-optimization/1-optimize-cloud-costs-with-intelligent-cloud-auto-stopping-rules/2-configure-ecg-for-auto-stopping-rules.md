@@ -144,36 +144,55 @@ Autostopping ECG provides the capability to track the user session and stop the 
 
 To install ECG on Windows and track user session, please follow the steps below.
 
-1. Setup an Autostopping rule for the VM. Use this tutorial for reference.
+1. Setup an Autostopping rule for the VM in Harness using the [UI](https://developer.harness.io/docs/category/create-autostopping-rules) or [Terraform](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/autostopping_rule_vm).
 
-2. Login to the VM under Autostopping
+2. Login to the target Windows VM and open a Powershell session as Administrator
 
-3. Download and unzip latest ECG. (Update this link if a new version is released) : https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/harness_autostop_ecg_windows_amd64.zip
+3. Download and unzip the latest ECG release:
 
-4. Open CMD as Administrator
+```
+Invoke-WebRequest -Uri "https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/ecg/harness_autostop_ecg_windows_amd64.zip" -OutFile "./Downloads\harness_autostop_ecg_windows_amd64.zip"
 
-5. Make the binary a windows executable and move it to where it should live perminetly, it is recommended to create a folder for this:
+Expand-Archive -Path "./Downloads\harness_autostop_ecg_windows_amd64.zip" -DestinationPath "./Downloads\harness_autostop_ecg_windows_amd64"
+cd ecg_1.2.0_linux_amd64
+```
+
+4. Create a new folder and move the executable into it:
 
 ```
 mkdir C:\Users\Administrator\harness
 mv .\Downloads\harness_autostop_ecg_windows_amd64\harness_autostop_ecg_windows_amd64 C:\Users\Administrator\harness\harness_autostop_ecg_windows_amd64.exe
 ```
 
-6. Run the following commands to set the environment variables at the system level needed for ECG
+5. Configure the ECG by setting global environment variables on the machine:
 
-- `setx ECG_ruleHostName "{host_name}" /M` - Replace `{host_name}` with Autostopping rule host name
-**Be sure and remove “https://” from the hostname**
-- `setx ECG_accountID "{account_id}" /M `- Replace `"{account_id}"` with Harness Account ID
-- `setx ECG_apiURL "https://app.harness.io/gateway/lw/api" /M`
-- `setx ECG_user_session_watch "true" /M`
+```
+setx ECG_accountID "{account_id}" /M
+setx ECG_apiURL "https://app.harness.io/gateway/lw/api" /M
+setx ECG_ruleHostName "{host_name}" /M
+setx ECG_user_session_watch "true" /M
+```
 
-7. Install ECG using the following command. This will install ECG as a service on Windows.
+Where you should replace `{account_id}` with your Harness account id, and `{host_name}` with the hostname of your autostopping rule (without the `http://`)
 
-- Navigate into the folder where you placed the executable: `cd C:\Users\Administrator\harness`
-- Run `./harness_autostop_ecg_windows_amd64.exe install`
-- Verify the running in Windows services. A new service with the name `Harness Autostopping heart beat agent` will be listed under the services with the status Running
-- If it does not start, click `start`.
+![](./static/configure-ecg-for-auto-stopping-rules-00.png)
+
+If you use a non-standard Harness URL, you can change the `apiURL` accordingly.
+
+6. Finally install the ECG as a Windows service and start it
+
+```
+cd C:\Users\Administrator\harness
+./harness_autostop_ecg_windows_amd64.exe install
+Start-Service Harness-ecg
+```
+
+## Validation
+
+You can validate the service is running by opening `Services` in Windows and locating the `Harness Autostopping Heartbeat` service.
+
 ![](./static/windows-ecg-one.png)
 
-![](./static/windows-ecg-two.png)
-- Logout from the current session, verify the VM is stopped after the idle time
+You should also be able to see activity metrics being sent to Harness by looking at the logs on your autostopping rule in the CCM UI.
+
+The service should restart manually on reboot. Such that after a successful shutdown by Harness, when a user restarts the machine and logs in, the machine won't be deemed "idle" until all users have logged off the machine. The machine should shut off after the defined idle period on the rule.
