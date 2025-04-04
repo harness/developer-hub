@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-03-28T10:00
+date: 2025-04-04T10:00
 sidebar_position: 10
 ---
 
@@ -20,7 +20,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
-## March 2025
+## April 2025
 
 :::warning
 
@@ -92,6 +92,59 @@ We’re excited to introduce an updated UI for managing your Harness Continuous 
 This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
 
 :::
+
+### Version 1.73
+
+<!-- 2025-04-01 -->
+
+#### New features and enhancements
+
+- Added support for codebase cloning using commit SHA, supporting both long and short commit SHAs. (CI-13445)
+- The following features are now available to support multi-line output variables:
+
+  - Multiline Output Variables: Now supported in CI steps with special character support (\n, \t, \r, \b), maintaining shell-like behavior.
+
+  - Complete Output Support: Available for both output secrets and output strings.
+
+  - JSON Preservation: JSON can now be passed as-is without minification.
+
+For details, check out [this documentation](/docs/continuous-integration/use-ci/run-step-settings). (CI-15398)
+- Enhanced Azure Container Registry (ACR) authentication in `plugins/acr:20.18.8` by implementing comprehensive authentication methods (CI-16478):
+
+  - Added support for service principal authentication using both client secret and certificate.
+
+  -  Introduced OAuth token exchange for ACR and public URL support for artifacts.
+
+  - Maintains backward compatibility with direct username/password authentication while providing more secure and flexible options for enterprise deployments.
+
+  - Key improvements include Azure SDK integration, cross-platform certificate handling, and enhanced error management. This update significantly improves the plugin's capability to handle various authentication scenarios in enterprise environments. 
+- `plugins/kaniko-ecr:1.10.8`: Added three new flags to enhance the `kaniko-ecr` plugin's image handling capabilities (CI16588):
+
+  - `PLUGIN_PUSH_ONLY`: Enables pushing pre-built image tarball without running a build.
+
+  - `PLUGIN_SOURCE_TAR_PATH`: Used in conjunction with **push-only** mode.
+
+  - `PLUGIN_TAR_PATH`, `PLUGIN_DESTINATION_TAR_PATH`: Provides consistent naming with **source-tar-path**. These additions enable more flexible workflows by allowing separation of build and push operations. 
+- `plugins/buildx:1.2.0`: Included support for the new `PLUGIN_BUILDX_OPTIONS` flag, allowing users to pass custom options directly to buildx. (CI-16595)
+- Updated the default Docker connector for new accounts to point to GAR instead of using the account-level connector (id: harnessImage). (CI-16845)
+
+#### Fixed issues
+- Resolved an issue where some Harness-generated files were being downloaded to the `/harness` directory, causing errors in git operations. These files have been moved to the `tmp` directory to prevent population of the `/harness` directory. (ZD-80915, 81193, CI-16782)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`      | Changes described under new features and enhancements  | 1.16.76                | 1.16.79          |
+| `harness/ci-addon`      | Changes described under new features and enhancements  | rootless-1.16.76                | rootless-1.16.79          |
+| `harness/ci-lite-engine`      | Changes described under new features and enhancements  | 1.16.76                | 1.16.79          |
+| `harness/ci-lite-engine`      | Changes described under new features and enhancements  | rootless-1.16.76                | rootless-1.16.79          |
+| `plugin/buildx`      | Add support for Assume from Delegate for DLC self-hosted for GCP Connector  | 1.2.12                | 1.2.13          |
+| `plugin/buildx-ecr`      | Added support for Assume from Delegate for DLC self-hosted for GCP Connector  | 1.2.0                | 1.2.1          |
+| `plugin/buildx-acr`      | Enhanced Azure Container Registry (ACR) authentication  | 20.18.6                | 20.18.8          |
+| `plugin/kaniko-ecr`      | Added three new flags to enhance the `kaniko-ecr` plugin's image handling capabilities  | 1.10.7                | 1.10.8          |
+
+## March 2025
 
 ### Version 1.72
 
