@@ -32,7 +32,7 @@ This option is disabled for deployment types that do not support containerized s
 - Not all steps are supported in containerized step groups. You can see which steps are supported when you try to add steps in the containerized step group.
 - You can use the same cluster to run the Harness Delegate and the containerized step group(s), but it is not required.
 - Permissions configuration are inherited by a step within a step group. This logic has been updated over the course of Harness NextGen's lifespan. This has caused breaking changes for some users. To learn more about it, go to [Step Group Inheritance Logic](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step).
-
+- A containerized step group may fail when using a cross-account role if the delegate responsible for execution lacks the necessary permissions to assume the role. To resolve this, ensure that the delegate has the required permissions to assume the cross-account role.
 
 ## Add a containerized step group
 

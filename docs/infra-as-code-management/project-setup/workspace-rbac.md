@@ -1,5 +1,5 @@
 ---
-title: Role-based access control (RBAC)
+title: Role-Based Access Control (RBAC)
 description:  Learn how to apply permissions and access control on Workspace 
 sidebar_position: 20
 ---

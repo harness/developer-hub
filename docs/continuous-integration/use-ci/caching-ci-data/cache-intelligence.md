@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
 
-With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) feature, Harness automatically caches and restores software dependencies to speed up your builds - hassle free.
+With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) feature, Harness automatically caches and restores software dependencies to speed up your builds - hassle free.
 
 You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
@@ -173,6 +173,12 @@ Cache paths outside the `/harness` directory must _also_ be declared in [shared 
 Harness generates a cache key from a hash of the build lock file (such as `pom.xml`, `build.gradle`, or `package.json`) that Harness detects. If Harness detects multiple tools or multiple lock files, Harness combines the hashes to create the cache key.
 
 You can define custom cache keys if you don't want to use the default cache key naming behavior or you have a use case that requires defining custom cache keys, such as [caching in parallel stages](#cache-intelligence-in-parallel-stages).
+
+:::note
+When **Cache Intelligence** is enabled, the cache plugin automatically detects build tools and determines cache paths. If no cache key is provided, a default key (`default`) is used, and cache paths are stored under `<account_id>/default/path/to/directory`.  
+
+By default, you can specify only a cache path without a key, but this may cause issues during cache restoration in CI stages. To avoid unnecessary cache downloads, we recommend enabling the `CI_CACHE_SKIP_IF_KEY_EMPTY` feature flag. When enabled, **Cache Intelligence** will skip cache restoration and saving if cache paths are provided without a cache key.
+:::
 
 <Tabs>
 <TabItem value="Visual" label="Visual">

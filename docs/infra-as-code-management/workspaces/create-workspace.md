@@ -2,7 +2,7 @@
 title: Create a workspace
 description: Learn how to create a workspace.
 sidebar_position: 10
-sidebar_label: Create/clone a workspace
+sidebar_label: Create/Clone Workspace
 ---
 
 import Tabs from '@theme/Tabs';

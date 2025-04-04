@@ -12,34 +12,6 @@ This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upg
 
 The deployment guides walk you through setting up a specific deployment using Harness, such as ECS, Kubernetes, and Helm. They are written to provide you with everything you need to learn how to model your CD process in Harness.
 
-### Deployment Guides
-
-Always start with the [Quickstarts](/docs/category/quickstarts). These will take you from novice to advanced Harness user in a matter of minutes.
-
-The following topics will walk you through how Harness implements common deployments according to platforms and scenarios:
-
-- [​AMI (Amazon Machine Image)](../../aws-deployments/ami-deployments/ami-deployment.md)
-- [​AWS Elastic Container Service (ECS)](../../aws-deployments/ecs-deployment/ecs-deployments-overview.md)
-- [AWS Lambda](/docs/category/aws-lambda-deployments)
-- [​Azure](/docs/category/azure-deployments-and-provisioning)
-- [CI/CD: Artifact Build and Deploy Pipelines](/docs/category/cicd-artifact-build-and-deploy-pipelines)
-- [Google Cloud](/docs/category/google-cloud)
-- [Native Helm](/docs/category/native-helm-deployments)
-- [​IIS (.NET)](../../dotnet-deployments/iis-net-deployment.md)
-- [​Kubernetes](/docs/category/kubernetes-deployments) (includes Helm, OpenShift, etc)
-- [Pivotal Cloud Foundry](../../pcf-deployments/pcf-tutorial-overview.md)
-- [​Traditional Deployments](../../traditional-deployments/traditional-deployments-overview.md)
-- [Custom Deployments](/docs/category/custom-deployments)
-
-Also, other key platforms that help you make your CD powerful and efficient:
-
-- [Terraform](/docs/category/terraform)
-- [CloudFormation](/docs/category/aws-cloudformation)
-- [Configuration as Code](/docs/category/configuration-as-code) (work exclusively in YAML and sync with your Git repos)
-- [Harness GitOps](/docs/category/harness-git-based-how-tos)
-
-For topics on general CD modeling in Harness, see [Model Your CD Pipeline](/docs/category/model-your-cd-pipeline).
-
 ### Kubernetes or Native Helm?
 
 Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Here's the difference:

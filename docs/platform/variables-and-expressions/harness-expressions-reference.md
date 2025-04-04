@@ -641,6 +641,40 @@ You can select who can create and use these triggers within Harness. However, yo
 
 </details>
 
+### Fetch Original Executions Details when Rollback occurs
+
+Below are the expressions to fetch the original execution details when a rollback occurs, ensuring that the system can accurately reference the execution context from which the rollback is initiated:-
+
+* `<+pipeline.originalExecution.executionId>`
+* `<+pipeline.originalExecution.startTs>`
+* `+pipeline.originalExecution.endTs`
+* `<+pipeline.originalExecution.status>`
+* `<+pipeline.originalExecution.sequenceId>`
+* `<+pipeline.originalExecution.storeType>`
+* `+pipeline.originalExecution.branch>`
+* `<+pipeline.originalExecution.repo>`
+* `<+pipeline.originalExecution.triggeredBy>`
+* `<+pipeline.originalExecution.executionMode>`
+* `<+pipeline.originalExecution.tags>`
+* `<+pipeline.originalExecution.triggerType>`
+* `<+pipeline.originalExecution.name>`
+* `<+pipeline.originalExecution.identifier>`
+
+:::info note
+These expressions won't work when called during normal execution; they will only function correctly when invoked during a rollback execution of the original execution.
+:::
+
+## Notification Event Type Expression
+
+Below is the expression to fetch the notification event type:
+
+`<+notification.eventType>`
+
+:::info Note
+This expression is only supported for Custom Notification Templates.
+:::
+
+
 ## Handling Rollback Scenarios with `rollbackSteps`
 
 You can detect and handle rollback scenarios using various built-in expressions. One useful expression for stage-specific rollback handling is `rollbackSteps`, which helps determine if a stage is currently being rolled back, even when the pipeline itself may still be running in normal execution mode.

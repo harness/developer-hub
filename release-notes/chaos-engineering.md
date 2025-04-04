@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2025-02-19T10:00
+date: 2025-04-01T10:00
 sidebar_position: 5
 ---
 
@@ -20,7 +20,65 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## March 2025
+
+### Version 1.57.2
+
+#### Images required
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+
+- harness/chaos-ddcr:1.57.0
+- harness/chaos-log-watcher:1.57.0
+- harness/service-discovery-collector:0.37.1
+- docker.io/harness/chaos-ddcr-faults:1.57.0
+
+#### New features and enhancements
+
+- Replaces the large text blocks in the pod details and probes tabs with concise tooltips and "Learn More" links, directing users to relevant content in the Harness Developer Hub for improved readability and navigation. (CHAOS-7621, CHAOS-7619)
+
+- Adds support for targeting multiple keys in the [Linux Redis Cache Expire](/docs/chaos-engineering/use-harness-ce/chaos-faults/linux/redis-cache-expire) and [Kubernetes Redis Cache Expire](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/redis-cache-expire) faults.(CHAOS-7283)
+
+#### Fixed issues
+
+- Fixed an issue where services were not appearing on the application map in the Chaos module when the discovery agent was created through the Discovery page. (CHAOS-7743)
+
+- Fixed scrolling issue with the ChaosHubs side navigation bar. (CHAOS-7728)
+
+- Resolved an issue with the timeline view for an experiment with multiple probes, which showed incorrect probe information when user clicked any probe. (CHAOS-7718)
+
+- Resolved an issue in the experiment timeline view where all timestamps were unnecessarily converted to Unix milliseconds, even when already in Unix millisecond format. (CHAOS-7719)
+
 ## February 2025
+
+### Version 1.56.3
+
+#### Images required
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/image-registry#images-required).
+
+- harness/chaos-ddcr:1.56.0
+- harness/chaos-log-watcher:1.56.0
+- harness/service-discovery-collector:0.36.0
+- docker.io/harness/chaos-ddcr-faults:1.56.0
+
+#### New features and enhancements
+
+- Running timeline view in the **Execution View**: You can track the real-time execution of chaos experiments for improved visibility. (CHAOS-6672)
+
+- **Improved chaos infrastructure search navigation**: Searching for chaos infrastructure from the **Chaos Experiment** page now includes a search bar in the list view, making navigation easier when dealing with multiple entities. (CHAOS-7556)
+
+#### Fixed issues
+
+- Fixed issue that prevented auto-creation of experiments with unsupported kinds. (CHAOS-7600)
+
+- Linux Dynatrace probe details did not appear correctly during creation. This issue has been fixed. (CHAOS-7596)
+
+- Fixed caching issue when selecting chaos faults in Chaos Studio. (CHAOS-7595)
+
+- Resolved ChaosGuard failure for non-Kubernetes experiments. (CHAOS-7636)
+
+- Fix typo in category for template validation. (CHAOS-7692)
 
 ### Version 1.55.1
 
@@ -35,7 +93,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 #### New features and enhancements
 
-- Modified the Chaos Select Pipeline component to accept additional resources as properties and support allowed infrastructure types. (CHAOS-7035)
+- Modifies the Chaos Select Pipeline component to accept additional resources as properties and support allowed infrastructure types. (CHAOS-7035)
 
 #### Fixed issues
 
@@ -55,7 +113,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 
 #### New features and enhancements
 
-- Upgraded the base image for all chaos services from `UBI-8` to `UBI-9` to resolve vulnerabilities. (CHAOS-7504)
+- Upgrades the base image for all chaos services from `UBI-8` to `UBI-9` to resolve vulnerabilities. (CHAOS-7504)
 
 - Supports using a chaos fault template with boolean values. (CHAOS-7514)
 
