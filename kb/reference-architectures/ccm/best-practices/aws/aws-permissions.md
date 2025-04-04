@@ -28,7 +28,7 @@ No matter the feature you are using, when testing connector health in the UI Har
             "Action": "iam:SimulatePrincipalPolicy",
             "Effect": "Allow",
             "Resource": "arn:aws:iam::{AWS_ACCOUNT_ID}:role/{ROLE_NAME}",
-            "Sid": ""
+            "Sid": "test"
         }
     ],
     "Version": "2012-10-17"
@@ -258,11 +258,9 @@ Accounts where infrastructure is provisioned, usually every account except for t
 
 :::
 
-Autostopping has many ways to optimize resource usage and reduce costs. Across AWS, Azure, GCP and the different compute and routing products between them, there are many possible permissions needed. Based on your cloud platform, compute, and application architecture you can use the following information to build a least-privileged policy.
+Autostopping has many ways to optimize resource usage and reduce costs. Across the different compute and routing SKUs there are many possible permissions needed. Based on your compute and application architecture you can use the following information to build a least-privileged policy.
 
-### AWS
-
-#### EC2 with Fixed Schedules
+### EC2 with Fixed Schedules
 
 | Policy                | Usage                                                                                                                                        |
 |-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
@@ -271,7 +269,7 @@ Autostopping has many ways to optimize resource usage and reduce costs. Across A
 | ec2:StartInstances    | Start EC2                                                                                                                                    |
 | ec2:StopInstances     | Stop EC2                                                                                                                                     |
 
-#### Spot EC2 with Fixed schedules
+### Spot EC2 with Fixed schedules
 
 | Policy                                                                          | Usage                                                        |
 |---------------------------------------------------------------------------------|--------------------------------------------------------------|
@@ -281,7 +279,9 @@ Autostopping has many ways to optimize resource usage and reduce costs. Across A
 | ec2:RequestSpotInstances ec2:DescribeSpotInstanceRequests ec2:DescribeAddresses | Create spot VM during warm up                                |
 | ec2:RunInstances                                                                | Create on demand instance in case spot VM creation fails     |
 
-#### EC2 with ALB
+### EC2 with ALB
+
+Also requires actions listed under `EC2 with Fixed Schedules`
 
 | Policy                                              | Usage                                                                                                                                                                                       |
 |-----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -302,7 +302,7 @@ Autostopping has many ways to optimize resource usage and reduce costs. Across A
 | lambda:AddPermission                                | This is needed to allow the lambda Target Group to execute the lambda.                                                                                                                      |
 | elasticloadbalancing:RegisterTargets                | Required to add lambda to target group                                                                                                                                                      |
 
-#### ASG with Fixed schedules
+### ASG with Fixed schedules
 
 | Policy                                | Usage                                                                   |
 |---------------------------------------|-------------------------------------------------------------------------|
@@ -310,7 +310,11 @@ Autostopping has many ways to optimize resource usage and reduce costs. Across A
 | autoscaling:UpdateAutoScalingGroup    | Set the desired capacity of ASG during warm up and cool down operations |
 | ec2:DescribeSpotPriceHistory          | Get the spot price for savings computation                              |
 
-#### ASG with ALB
+### ASG with ALB
+
+This is a combination of permissions for `ASG with Fixed schedules` and `EC2 with ALB` policies.
+
+### RDS
 
 | Policy                  | Usage                         |
 |-------------------------|-------------------------------|
@@ -322,7 +326,7 @@ Autostopping has many ways to optimize resource usage and reduce costs. Across A
 | rds:StopDBInstance      | Stop RDS Instance             |
 | rds:StopDBCluster       | Stop RDS Cluster              |
 
-#### ECS with Fixed schedules
+### ECS with Fixed schedules
 
 | Policy                     | Usage                                                            |
 |----------------------------|------------------------------------------------------------------|
@@ -335,11 +339,11 @@ Autostopping has many ways to optimize resource usage and reduce costs. Across A
 | ecs:DescribeTaskDefinition | Describe ECS Task                                                |
 | ecs:DescribeTasks          | Describe ECS Tasks                                               |
 
-#### ECS with ALB
+### ECS with ALB
 
 This is a combination of permissions for `ECS with Fixed schedules` and `EC2 with ALB` policies.
 
-#### Provisioning Autostopping Proxy
+### Provisioning Autostopping Proxy
 
 | Policy                            | Usage                                                                                               |
 |-----------------------------------|-----------------------------------------------------------------------------------------------------|
@@ -357,3 +361,126 @@ This is a combination of permissions for `ECS with Fixed schedules` and `EC2 wit
 | ec2:DisassociateAddress           | Disassociate address while deleting proxy                                                           |
 | ec2:ReleaseAddress                | Release address while deleting proxy                                                                |
 | ec2:ModifyInstanceAttribute       | Modify security group of proxy VM if needed                                                         |
+
+### Fine-Grain Policy
+
+The following is an example policy JSON split out based on the statements above:
+
+```json
+{
+    "Statement": [
+        {
+            "Action": [
+                "ec2:DescribeInstances",
+                "ec2:CreateTags",
+                "ec2:StartInstances",
+                "ec2:StopInstances"
+            ],
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "scheduledEC2"
+        },
+        {
+            "Action": [
+                "ec2:DescribeVolumes",
+                "ec2:CreateImage",
+                "ec2:DescribeImages",
+                "ec2:TerminateInstances",
+                "ec2:DeregisterImage",
+                "ec2:DeleteSnapshot",
+                "ec2:RequestSpotInstances",
+                "ec2:DescribeSpotInstanceRequests",
+                "ec2:DescribeAddresses",
+                "ec2:RunInstances"
+            ],
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "scheduledSpotEC2"
+        },
+        {
+            "Action": [
+                "acm:ListCertificates",
+                "ec2:DescribeVpcs",
+                "ec2:DescribeSecurityGroups",
+                "elasticloadbalancing:DescribeLoadBalancers",
+                "iam:ListRoles",
+                "ec2:DescribeSubnets",
+                "elasticloadbalancing:CreateLoadBalancer",
+                "elasticloadbalancing:SetSecurityGroups",
+                "elasticloadbalancing:DescribeTargetGroups",
+                "elasticloadbalancing:CreateTargetGroup",
+                "elasticloadbalancing:AddTags",
+                "lambda:GetFunction",
+                "lambda:CreateFunction",
+                "iam:PassRole",
+                "lambda:AddPermission",
+                "elasticloadbalancing:RegisterTargets"
+            ],
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "albEC2"
+        },
+        {
+            "Action": [
+                "autoscaling:DescribeAutoScalingGroups",
+                "autoscaling:UpdateAutoScalingGroup",
+                "ec2:DescribeSpotPriceHistory"
+            ],
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "scheduledASG"
+        },
+        {
+            "Action": [
+                "rds:DescribeDBInstances",
+                "rds:DescribeDBClusters",
+                "rds:ListTagsForResource",
+                "rds:StartDBInstance",
+                "rds:StartDBCluster",
+                "rds:StopDBInstance",
+                "rds:StopDBCluster"
+            ],
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "rds"
+        },
+        {
+            "Action": [
+                "ecs:ListClusters",
+                "tag:GetResources",
+                "ecs:ListServices",
+                "ecs:ListTasks",
+                "ecs:DescribeServices",
+                "ecs:UpdateService",
+                "ecs:DescribeTaskDefinition",
+                "ecs:DescribeTasks"
+            ],
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "scheduledECS"
+        },
+        {
+            "Action": [
+                "ec2:DescribeInstanceTypeOfferings",
+                "ec2:DescribeKeyPairs",
+                "ec2:RunInstances",
+                "secretsmanager:GetSecretValue",
+                "ec2:AllocateAddress",
+                "ec2:DescribeVpcs",
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeSubnets",
+                "ec2:TerminateInstances",
+                "ec2:DescribeImages",
+                "ec2:AssociateAddress",
+                "ec2:DisassociateAddress",
+                "ec2:ReleaseAddress",
+                "ec2:ModifyInstanceAttribute"
+            ],
+            "Effect": "Allow",
+            "Resource": "*",
+            "Sid": "proxy"
+        }
+    ],
+    "Version": "2012-10-17"
+}
+```
