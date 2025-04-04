@@ -168,7 +168,7 @@ It includes:
 - Failed
 - Not Started 
 - Paused
-- Queuud
+- Queued
 - Running
 - Success
 - Suspended
