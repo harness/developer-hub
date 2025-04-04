@@ -3,7 +3,8 @@ title: Enhanced Output Variable Handling in CI Steps
 description: Learn about the new enhancements in CI steps, including multiline output variable support, improved output handling, JSON preservation, and updated best practices.
 sidebar_position: 50
 ---
-
+<details>
+<summary>Early access feature: Multi-line Output Variables</summary>
 - **Multiline Output Variables**: CI steps support multiline output variables, including special characters such as `\n`, `\t`, `\r`, `\b`, maintaining shell-like behavior.  
 - **Complete Output Support**: Output variables support both output secrets and output strings.  
 - **JSON Preservation**: JSON data can be passed as-is without automatic minification.  
