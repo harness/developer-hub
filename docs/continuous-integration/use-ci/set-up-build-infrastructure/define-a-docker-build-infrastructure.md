@@ -27,6 +27,12 @@ You can also use a [Kubernetes delegate](/docs/platform/delegates/install-delega
 
 :::
 
+:::tip
+
+The delegate install command uses the default authentication token for your Harness account. If you want to use a different token, you can create a token and then specify it in the delegate install command's `DELEGATE_TOKEN` flag.
+
+:::
+
 ## Set up a Linux local runner
 
 ### Prepare machines
@@ -41,46 +47,12 @@ Review the following requirements for local runner build infrastructures:
 
 ### Install the delegate
 
-1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
-
-   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
-
-2. Select **New Delegate** or **Install Delegate**.
-3. Select **Docker**.
-4. Enter a **Delegate Name**.
-5. Copy the delegate install command and modify it as follows:
+1. Refer to the [Delegate installation page](/docs/platform/delegates/install-delegates/overview).
+2. Copy the delegate install command and modify it as follows:
 
    * Add `--net=host` to the first line.
    * Add `-e DELEGATE_TAGS="DELEGATE_OS_ARCH"`, and replace `DELEGATE_OS_ARCH` with the tag corresponding to your Docker environment's architecture: `linux-amd64` or `linux-arm64`.
-
-   Here's an example of an install script for Linux arm64:
-
-   ```
-   docker run --cpus=1 --memory=2g --net=host \
-     -e DELEGATE_NAME=docker-delegate \
-     -e NEXT_GEN="true" \
-     -e DELEGATE_TYPE="DOCKER" \
-     -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-     -e DELEGATE_TOKEN=YOUR_API_TOKEN \
-     -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
-     -e DELEGATE_TAGS="linux-arm64" \
-     -e MANAGER_HOST_AND_PORT=https://app.harness.io/ harness/delegate:23.02.78306
-   ```
-
-6. Run the modified install command on your build host machine.
-
-:::tip
-
-The delegate install command uses the default authentication token for your Harness account. If you want to use a different token, you can create a token and then specify it in the delegate install command:
-
-1. In Harness, go to **Account Settings**, then **Account Resources**, and then select **Delegates**.
-2. Select **Tokens** in the header, and then select **New Token**.
-3. Enter a token name and select **Apply** to generate a token.
-4. Copy the token and paste it in the value for `DELEGATE_TOKEN`.
-
-:::
-
-For more information about delegates and delegate installation, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
+3. Run the modified install command on your build host machine.
 
 ### Install the Harness Docker Runner
 
@@ -129,47 +101,12 @@ Review the following requirements for local runner build infrastructures:
 
 ### Install the delegate
 
-1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
-
-   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
-
-2. Select **New Delegate** or **Install Delegate**.
-3. Select **Docker**.
-4. Enter a **Delegate Name**.
-5. Copy the delegate install command and modify it as follows:
+1. Refer to the [Delegate installation page](/docs/platform/delegates/install-delegates/overview).
+2. Copy the delegate install command and modify it as follows:
 
    * Add `-e DELEGATE_TAGS="DELEGATE_OS_ARCH"`, and replace `DELEGATE_OS_ARCH` with the tag corresponding to your Docker environment's architecture: `macos-amd64` or `macos-arm64`.
    * Add `-e RUNNER_URL=http://host.docker.internal:3000`.
-
-   Here's an example of an install script for macOS amd64:
-
-   ```
-   docker run --cpus=1 --memory=2g \
-     -e DELEGATE_NAME=docker-delegate \
-     -e NEXT_GEN="true" \
-     -e DELEGATE_TYPE="DOCKER" \
-     -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-     -e DELEGATE_TOKEN=YOUR_API_TOKEN \
-     -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
-     -e DELEGATE_TAGS="macos-amd64" \
-     -e RUNNER_URL=http://host.docker.internal:3000 \
-     -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.02.78306
-   ```
-
-6. Run the modified install command on your build host machine.
-
-:::tip
-
-The delegate install command uses the default authentication token for your Harness account. If you want to use a different token, you can create a token and then specify it in the delegate install command:
-
-1. In Harness, go to **Account Settings**, then **Account Resources**, and then select **Delegates**.
-2. Select **Tokens** in the header, and then select **New Token**.
-3. Enter a token name and select **Apply** to generate a token.
-4. Copy the token and paste it in the value for `DELEGATE_TOKEN`.
-
-:::
-
-For more information about delegates and delegate installation, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
+3. Run the modified install command on your build host machine.
 
 ### Install the Harness Docker Runner
 
@@ -239,14 +176,8 @@ Review the following requirements for Windows local runner build infrastructures
 
 ### Install the delegate
 
-1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
-
-   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
-
-2. Select **New Delegate** or **Install Delegate**.
-3. Select **Docker**.
-4. Enter a **Delegate Name**.
-5. Copy the delegate install command and modify it as follows:
+1. Refer to the [Delegate installation page](/docs/platform/delegates/install-delegates/overview).
+2. Copy the delegate install command and modify it as follows:
 
    * Add `-e DELEGATE_TAGS="windows-amd64"`.
    * Add `-e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000`.
@@ -257,35 +188,7 @@ Review the following requirements for Windows local runner build infrastructures
 
    :::
 
-   Here's an example of the delegate install script for a local runner Windows build infrastructure:
-
-   ```
-   docker run --cpus=1 --memory=2g \
-     -e DELEGATE_NAME=docker-delegate \
-     -e NEXT_GEN="true" \
-     -e DELEGATE_TYPE="DOCKER" \
-     -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
-     -e DELEGATE_TOKEN=YOUR_API_TOKEN \
-     -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
-     -e DELEGATE_TAGS="windows-amd64" \
-     -e RUNNER_URL=http://WINDOWS_MACHINE_HOSTNAME_OR_IP:3000 \
-     -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.02.78306
-   ```
-
-6. Run the modified install command on the Linux or macOS machine where you want to run the delegate.
-
-:::tip
-
-The delegate install command uses the default authentication token for your Harness account. If you want to use a different token, you can create a token and then specify it in the delegate install command:
-
-1. In Harness, go to **Account Settings**, then **Account Resources**, and then select **Delegates**.
-2. Select **Tokens** in the header, and then select **New Token**.
-3. Enter a token name and select **Apply** to generate a token.
-4. Copy the token and paste it in the value for `DELEGATE_TOKEN`.
-
-:::
-
-For more information about delegates and delegate installation, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
+3. Run the modified install command on the Linux or macOS machine where you want to run the delegate.
 
 ### Install the Harness Docker Runner
 
