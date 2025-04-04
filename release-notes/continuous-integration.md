@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-03-20T10:00
+date: 2025-03-28T10:00
 sidebar_position: 10
 ---
 
@@ -92,6 +92,21 @@ We’re excited to introduce an updated UI for managing your Harness Continuous 
 This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
 
 :::
+
+### Version 1.72
+
+<!-- 2025-03-24 -->
+
+#### New features and enhancements
+
+- Git branches are now populated when the **Run Pipeline** action is triggered for pipelines with Git clone enabled at the pipeline level. This feature is behind the feature flag `CI_DYNAMIC_BRANCH_SELECTOR`. (CI-16132)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`      | Implement savings for Build Cache in K8s  | 1.16.76                | 1.16.77          |
+| `harness/ci-lite-engine`      | Implement savings for Build Cache in K8s      | 1.16.76          | 1.16.77          |
 
 ### Version 1.71
 

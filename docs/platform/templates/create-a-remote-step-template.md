@@ -21,6 +21,11 @@ You can create a template and save it either in Harness or in a Git repository u
 
 ![](./static/create-a-remote-step-template-16.png)
 
+:::info note
+Harness now supports storing Inline Entities in the Harness Git Repository.  
+For more details, refer to [Storing Inline Entities in Harness Git Repository](/docs/platform/git-experience/harness-code-inline.md).
+:::
+
 This topic walks you through the steps to create a remote step template.
 
 ### Objectives

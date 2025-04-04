@@ -69,10 +69,10 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/continuousIntegrationData.ts @nofarblue @rustd @dewan-ahmed @SushrutHarness @shivloka-harness
 
 # CODE Docs
-/docs/code-repository/ @hitesharinga @dewan-ahmed
-/release-notes/code-repository.md @hitesharinga @dewan-ahmed
-/src/components/Roadmap/data/codeData.ts @hitesharinga @dewan-ahmed
-/src/components/Docs/data/codeRepositoryData.tsx @hitesharinga @dewan-ahmed
+/docs/code-repository/ @hitesharinga @dewan-ahmed @johannesHarness
+/release-notes/code-repository.md @hitesharinga @dewan-ahmed @johannesHarness
+/src/components/Roadmap/data/codeData.ts @hitesharinga @dewan-ahmed @johannesHarness
+/src/components/Docs/data/codeRepositoryData.tsx @hitesharinga @dewan-ahmed @johannesHarness
 
 # STO Docs
 /docs/security-testing-orchestration/ @tejakummarikuntla @priteshchandaliya
@@ -85,7 +85,7 @@ static/  @rohanmaharjan100 @wei-harness
 
 # CCM Docs
 /docs/cloud-cost-management/ @Rohit-Kaliki @joeyouss @iamanmolm @sdsingh07 @sandyydk @abhinavsingh-ccm @riyasyash
-/release-notes/cloud-cost-management.md @Rohit-Kaliki @joeyouss
+/release-notes/cloud-cost-management.md @Rohit-Kaliki @joeyouss @himanshu-jain-harness @suryanarayanan-venkatesan
 /src/components/Roadmap/data/ccmData.ts @Rohit-Kaliki @joeyouss @rajarshee-harness
 /src/components/Docs/data/cloudCostManagementData.ts @Rohit-Kaliki @joeyouss @rajarshee-harness
 
@@ -134,13 +134,13 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/faqs/self-managed-ee-faq/ @pratmit @abhishekharness @ivikramsahu
 
 # Pipeline Docs
-/docs/platform/pipelines/ @krishi0408 @vishal-av @SudarshanPurohit
-/docs/platform/git-experience/ @krishi0408 @vishal-av @prasadsatamharness
-/docs/platform/templates/ @krishi0408 @vishal-av @SudarshanPurohit
-/docs/platform/variables-and-expressions/ @krishi0408 @vishal-av @SudarshanPurohit
-/docs/platform/triggers/ @krishi0408 @vishal-av @SudarshanPurohit
-/docs/platform/approvals/ @krishi0408 @vishal-av 
-/docs/platform/connectors/ @krishi0408 @vishal-av
+/docs/platform/pipelines/ @krishi0408 @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
+/docs/platform/git-experience/ @krishi0408 @vishal-av @prasadsatamharness @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
+/docs/platform/templates/ @krishi0408 @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
+/docs/platform/variables-and-expressions/ @krishi0408 @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
+/docs/platform/triggers/ @krishi0408 @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
+/docs/platform/approvals/ @krishi0408 @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
+/docs/platform/connectors/ @krishi0408 @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneethoh
 
 # IDP Docs
 /docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness
