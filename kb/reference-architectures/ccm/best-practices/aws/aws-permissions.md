@@ -9,7 +9,7 @@ When creating a Harness IAM Role in AWS for CCM, there are many different permis
 
 To enable specific features on a connector you need to set a specific string in the `featuresEnabled` field (list) in the connector YAML. The keys for each feature are listed in the sections below.
 
-![](../../static/ccm-aws-connector-features.png)
+![](../../../static/ccm-aws-connector-features.png)
 
 ## Testing Permissions
 
