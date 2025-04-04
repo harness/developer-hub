@@ -30,7 +30,7 @@ Here is how you can rollback a database within Harness Database DevOps:
  7. After the rollback is complete, verify that the database schema has been reverted to the desired state. This may involve checking the schema structure and ensuring that any changes made after the specified tag have been undone.
 
 :::info
-You can refer to the Harness documentation detailing how to [Add a Liquibase command step](/docs/database-devops/use-database-devops/add-liquibase-command-step.md)
+You can refer to the Harness documentation detailing how to [Add a Liquibase command step](/docs/database-devops/use-database-devops/liquibase-command-step/add-liquibase-command-step.md)
 :::
 
 ## Rolling Back to a Previous Database State
