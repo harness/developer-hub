@@ -23,6 +23,12 @@ For example, you can automate your build and deploy services by adding a pipelin
 
 You can create a template and save it either in Harness or in a Git repository using the inline or remote option respectively.
 
+:::info note
+Harness now supports storing Inline Entities in the Harness Git Repository.  
+For more details, refer to [Storing Inline Entities in Harness Git Repository](/docs/platform/git-experience/harness-code-inline.md).
+:::
+
+
 This topic walks you through the steps to create a remote pipeline template.
 
 ## Permissions
@@ -155,6 +161,10 @@ To save your remote pipeline template to Git, do the following:
 6. Return to Harness and refresh the page. A **Template Updated** message opens.
 
    ![](./static/create-a-remote-pipeline-template-28.png)
+
+:::info note
+We have a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote. Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag.
+:::
 
 ## Next steps
 

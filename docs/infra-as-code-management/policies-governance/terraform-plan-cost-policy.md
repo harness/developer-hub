@@ -1,5 +1,5 @@
 ---
-title: Built-in policies
+title: Built-in Policies
 description: A guide to show you how to add a terraform plan cost policy
 sidebar_posiotion: 40
 ---

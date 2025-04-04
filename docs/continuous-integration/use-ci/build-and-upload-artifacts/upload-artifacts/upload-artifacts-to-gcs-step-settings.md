@@ -31,15 +31,15 @@ In your pipeline's **Build** stage, add an **Upload Artifacts to GCS** step and 
 Here is a YAML example of a minimum **Upload Artifacts to GCS** step.
 
 ```yaml
-              - step:
-                  type: GCSUpload
-                  name: upload report
-                  identifier: upload_report
-                  spec:
-                    connectorRef: YOUR_GCP_CONNECTOR_ID
-                    bucket: YOUR_GCS_BUCKET
-                    sourcePath: path/to/source
-                    target: path/to/upload/location
+- step:
+    type: GCSUpload
+    name: upload report
+    identifier: upload_report
+    spec:
+      connectorRef: YOUR_GCP_CONNECTOR_ID
+      bucket: YOUR_GCS_BUCKET
+      sourcePath: path/to/source
+      target: path/to/upload/location
 ```
 
 ### Upload Artifacts to GCS step settings
@@ -110,16 +110,16 @@ Configure the **Plugin** step settings as follows:
 Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
 
 ```yaml
-               - step:
-                  type: Plugin
-                  name: publish artifact metadata
-                  identifier: publish_artifact_metadata
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: plugins/artifact-metadata-publisher
-                    settings:
-                      file_urls: https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION
-                      artifact_file: artifact.txt
+- step:
+   type: Plugin
+   name: publish artifact metadata
+   identifier: publish_artifact_metadata
+   spec:
+     connectorRef: account.harnessImage
+     image: plugins/artifact-metadata-publisher
+     settings:
+       file_urls: https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH/ARTIFACT_NAME_WITH_EXTENSION
+       artifact_file: artifact.txt
 ```
 
 * `connectorRef`: Use the built-in Docker connector (`account.harness.Image`) or specify your own Docker connector.
@@ -289,24 +289,73 @@ pipeline:
 
 ## Download Artifacts from GCS
 
-You can use the [GCS Drone plugin](https://github.com/drone-plugins/drone-gcs) to download artifacts from GCS. This is the same plugin image that Harness CI uses to run the **Upload Artifacts to GCS** step. To do this,[add a Plugin step](../../use-drone-plugins/run-a-drone-plugin-in-ci.md) to your [CI pipeline](../../prep-ci-pipeline-components.md). For example:
+The **Upload Artifacts to GCS** step uses the [GCS Drone plugin](https://github.com/drone-plugins/drone-gcs). While the plugin’s default behavior is to upload files from the local harness build node to a specified GCS bucket, we can reverse this behavior for download purposes when needed.
+
+### Modes of the GCS Drone Plugin
+
+#### Default Operation (Upload Mode)
+By default (i.e. when `download` is `false`), the Drone-gcs plugin uploads files. In this mode, it treats:
+
+- `Source`: The local file system on the harness build node.
+- `Target`: The destination GCS bucket (extracted from the `Target` configuration).
+
+#### Download Mode
+When the `Download` flag is set to `true`, the plugin reverses its behavior:
+
+- `Source`: Now points to the GCS bucket (extracted from the `Source` configuration).
+- `Target`: The local file system where files will be downloaded, as defined by the `Target` configuration.
+
+### Download Options
+
+You can download artifacts from GCS by:
+
+- [Using the OOTB **Upload Artifacts to GCS** step](#use-the-ootb-step)
+- [Using `plugins/gcs` in a **Plugin Step** to download](#use-a-plugin-step)
+
+### Use the OOTB Step
+
+The OOTB **Upload Artifacts to GCS** step in CI is designed to perform upload operations by default. However, since the Drone plugins/gcs plugin supports downloads when the `PLUGIN_DOWNLOAD` variable is set to true, you can simply pass this stage variable to switch the operation mode.
+
+#### Configuration Steps
+
+1. Create a [GCP Connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
+
+  :::tip
+
+  This works with an OIDC enabled connector as well. To learn more, go to [Configure GCP with OIDC](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted)
+
+  :::
+
+2. Add a pipeline stage variable named `PLUGIN_DOWNLOAD` and set it `true`.
+3. Configure the pipeline. Add the **Upload Artifacts to GCS** step and select the GCP connector you created. 
+
+Example yaml:
 
 ```yaml
-              - step:
-                  type: Plugin
-                  name: download
-                  identifier: download
-                  spec:
-                    connectorRef: YOUR_DOCKER_CONNECTOR
-                    image: plugins/gcs
-                    settings:
-                      token: <+secrets.getValue("gcpserviceaccounttoken")>
-                      source: YOUR_BUCKET_NAME/DIRECTORY
-                      target: path/to/download/destination
-                      download: "true"
+- stage:
+    spec:
+      execution:
+        steps:
+          - step:
+              type: GCSUpload
+              name: GCSUpload_1
+              identifier: GCSUpload_1
+              spec:
+                connectorRef: gcp-oidc-connector
+                bucket: bucketName
+                sourcePath: YOUR_BUCKET_NAME/DIRECTORY
+                target: path/to/download/destination
+      variables:
+        - name: PLUGIN_DOWNLOAD
+          type: String
+          description: ""
+          required: false
+          value: "true"
 ```
 
-Configure the [Plugin step settings](../../use-drone-plugins/plugin-step-settings-reference.md) as follows:
+### Use a plugin step
+
+The complete [Plugin step settings](../../use-drone-plugins/plugin-step-settings-reference.md) can be configured as follows:
 
 | Keys | Type | Description | Value example |
 | - | - | - | - |
@@ -316,6 +365,73 @@ Configure the [Plugin step settings](../../use-drone-plugins/plugin-step-setting
 | `source` | String | The directory to download from your GCS bucket, specified as `BUCKET_NAME/DIRECTORY`. | `my_cool_bucket/artifacts` |
 | `target` | String | Path to the location where you want to store the downloaded artifacts, relative to the build workspace. | `artifacts` (downloads to `/harness/artifacts`) |
 | `download` | Boolean | Must be `true` to enable downloading. If omitted or `false`, the plugin attempts to upload artifacts instead. | `"true"` |
+
+For example:
+
+```yaml
+- step:
+    type: Plugin
+    name: download
+    identifier: download
+    spec:
+      connectorRef: YOUR_DOCKER_CONNECTOR
+      image: plugins/gcs
+      settings:
+        token: <+secrets.getValue("gcpserviceaccounttoken")>
+        source: YOUR_BUCKET_NAME/DIRECTORY
+        target: path/to/download/destination
+        download: "true"
+```
+
+#### Use a plugin step with OIDC
+
+To enable OIDC authentication and perform download operations, you need to enable the following feature flags:
+- `CI_SKIP_NON_EXPRESSION_EVALUATION`
+- `CI_ENABLE_OUTPUT_SECRETS`
+
+Contact [Harness Support](mailto:support@harness.io) to enable these feature flags.
+
+Then, create two plugin steps in your pipeline:
+
+1. Token Generation Step: This step uses the `plugins/gcp-oidc` image to generate an OIDC token and export it as output variable.
+2. Download Operation Step: This step uses the `plugins/gcs` image to perform the download, consuming the token generated in the previous step.
+
+Below is an example configuration:
+
+##### Plugin Step 1: Generate the OIDC token
+
+```yaml
+- step:
+    type: Plugin
+    name: generate-token
+    identifier: generate-token
+    spec:
+      connectorRef: account.harnessImage
+      image: plugins/gcp-oidc
+      settings:
+        project_id: 12345678
+        pool_id: 12345678
+        service_account_email_id: some-email@email.com
+        provider_id: service-account1
+        duration: 7200
+```
+
+##### Plugin Step 2: Execute the Download Operation
+
+```yaml
+- step:
+    type: Plugin
+    name: download
+    identifier: download
+    spec:
+      connectorRef: YOUR_DOCKER_CONNECTOR
+      image: plugins/gcs
+      settings:
+        token: <+steps.generate-token.output.outputVariables.GCLOUD_ACCESS_TOKEN>
+        source: YOUR_BUCKET_NAME/DIRECTORY
+        target: path/to/download/destination
+        download: "true"
+```
 
 ## Troubleshoot uploading artifacts
 

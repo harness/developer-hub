@@ -679,6 +679,19 @@ Add the Org, Repo Name, Branch and the File path relative to the root of the rep
 </TabItem>
 </Tabs>
 
+#### API Key Support
+Harness IDP now supports the use of a **Harness API Key** in the **Register Catalog** step.
+
+With this feature, users can configure the **API Key** by selecting the **"API Token"** field in the Harness UI. This option is available under **Advanced Settings** in the **Pipelines** tab. Enabling this ensures that the API Key is utilized for catalog registration in IDP.
+
+By integrating the API Key, the pipeline execution remains seamless, ensuring it functions correctly when triggered from another pipeline or through a trigger.
+
+![](./static/api-key-ngui.png)
+
+This step is optional. You can proceed with executing your pipeline without an API key. In that case, the user context will be used for catalog registration.
+
+#### Output Variable
+
 Following is the output variable of this step.
 
 1. **catalogInfoUrl** : The URL of the `catalog-info.yaml` stored in your git provider where you created the repo in the **CreateRepo step** eg; `https://github.com/org-name/repo-name/blob/code/catalog-info.yaml` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<<+pipeline.stages.idp.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>>`
@@ -863,10 +876,21 @@ This step is used to update the catalog metadata for your entities. For example,
 </TabItem>
 </Tabs>
 
+### 10. Run Step
+You can use the **Run step** to to run commands or scripts in your Harness Pipeline. 
+
+In order for the Run step to execute your commands, the build environment must have the necessary binaries for those commands. Depending on the stage's build infrastructure, Run steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries.
+
+Please refer to detailed steps and settings here to understand this step in detail: [Run Step Settings](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings#run-step-settings)
+
+### 11. Plugin Step
+You can use the **Plugin step** to run different plugins in your Harness Pipeline. 
+
+Please refer to detailed steps and settings here to understand this step in detail: [Plugin Step Settings](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference/)
+
 ## Example Pipeline
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
-
 
 ```YAML
 pipeline:
@@ -1030,7 +1054,7 @@ pipeline:
 </TabItem>
 </Tabs>
 
-## Specify the Harness IDP images used in your pipelines
+## Specify the Harness IDP Images used in your Pipeline
 
 You can use the Harness IDP `execution-config` API to specify or update the Harness IDP images used in your infrastructure by specifying image tags.
 
@@ -1039,6 +1063,19 @@ You can use the Harness IDP `execution-config` API to specify or update the Harn
 Certain steps are common across different stages in Harness Pipeline, but the images used in each of them is specific to the stage they are part of, like `Run Step`.
 
 :::
+
+Here's a list of Harness IDP images used in the IDP stage: 
+1. [``cookieCutter``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/cookiecutter): Used to take inputs for the cookiecutter template.
+2. [``createRepo``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createrepo): Used to create the repository in your git provider
+3. [``directPush``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/directpush): Used to push the service/application created using Cookiecutter step along with the catalog-info.yaml in the repo you created in previous step.
+4. [``registerCatalog``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/registercatalog?project=gcr-prod): Used to register the software component created in the Harness IDP Catalog. 
+5. [``slackNotify``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/slacknotify): Used to notify individual developers once the pipeline is executed successfully and your Software component is registered successfully in your Software Catalog.
+6. [``createResource``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createresource): Used to create Harness entities like projects, users, connectors, pipelines, secrets, etc.
+7. [``updateCatalogProperty``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/updatecatalogproperty): Used to update the catalog metadata for your entities
+8. [``createOrganisation``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createorganisation)
+9. [``createProject``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createproject)
+10. [``createCatalog``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createcatalog)
+
 
 API key authentication is required. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io/#section/Introduction/Authentication).
 

@@ -22,6 +22,8 @@ Harness can provision any resource that is supported by Terragrunt and the relat
 
 If you want to use Terraform without Terragrunt, Harness supports that, too. For more information, go to [Terraform how-tos](./terraform-infra/terraform-how-tos).
 
+We support using Terragrunt provisioning with an **OIDC-enabled AWS connector**, but it requires Delegate version `854xx` or later. For more information, refer to [AWS OIDC connector reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+
 ## Dynamic provisioning steps for different deployment types
 
 Each of the deployment types Harness supports (Kubernetes, AWS ECS, etc.) require that you map different Terragrunt script outputs to the Harness infrastructure settings in the pipeline stage.
@@ -87,6 +89,13 @@ terragrunt --version
 ```
 
 ### Supported Terragrunt and Terraform versions
+
+In Harness, Terragrunt is fully supported up to version 0.66.9
+
+Starting from 0.67.0, Terragrunt introduced a breaking change that may cause some issues because of new logging format. See [Terragrunt 0.67.0 breaking change](https://github.com/gruntwork-io/terragrunt/releases/tag/v0.67.0)
+
+If you are using Terragrunt 0.67.0 or higher, you need to enable the environment variable TERRAGRUNT_FORWARD_TF_STDOUT to maintain the previous logging behavior.
+This ensures that Terragrunt preserves its standard logging format, preventing disruptions in Harness pipelines.
 
 Terragrunt maintains a Terraform version compatibility table to help ensure that you have the correct versions of Terragrunt and Terraform running together.
 
@@ -517,7 +526,7 @@ source = "git::https://github.com/your-organization/your-private-module.git"
 ```
 :::tip
 
-The ability to authenticate with HTTPS is new! Here is a demo on its functionality:
+The ability to authenticate with HTTPS is new! The Minimum required delegate version is: 83401. Here is a demo on its functionality:
 
 <DocVideo src="https://www.loom.com/share/bb8b9e4996f14bf0a16839849b0b72e4?sid=3befc405-7c4d-4f21-afe0-c36e2962b566" />
 

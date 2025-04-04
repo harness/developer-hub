@@ -22,7 +22,7 @@ Below is the list of supported SAST scanners in Harness STO:
 1. **[Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)**
 2. **[Black Duck](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference)** (by Synopsys)  
 3. **[Brakeman](/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference)**
-4. **[Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference)**  
+4. **[Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference)**  
 5. **[Coverity](/docs/security-testing-orchestration/sto-techref-category/coverity-scanner-reference)**  
 6. **[CodeQL](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference)**  
 7. **[FOSSA](/docs/security-testing-orchestration/sto-techref-category/fossa-scanner-reference)**  

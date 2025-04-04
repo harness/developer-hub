@@ -498,6 +498,10 @@ You can also initiate a Sync or Refresh from the main GitOps page.
 - **Refresh** will pull the latest commit from Git and display whether the current Sync State is **Synced** or **Out of Sync**. It does not sync with the live cluster state. You can Refresh, then use App Diff to view the diff between the desired Git state with the live cluster state.
 - **Sync** will sync the desired Git state with the live cluster state.
 
+:::info note
+We currently do not support using [Harness expressions](/docs/platform/variables-and-expressions/harness-expressions-reference) in GitOps manifests.
+:::
+
 ## Application filters
 
 You can filter applications based on the following criteria:
