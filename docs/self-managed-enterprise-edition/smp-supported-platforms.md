@@ -2,7 +2,7 @@
 title: What's supported
 description: Platforms and technologies supported by the on-prem Harness Self-Managed Enterprise Edition
 sidebar_label: What's supported
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 Self-Managed Enterprise Edition allows organizations to leverage nearly all Harness modules and features available on Harness SaaS, ensuring a powerful and flexible on-premises experience. 

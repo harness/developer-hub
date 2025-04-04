@@ -2,7 +2,7 @@
 title: Use an external cloud-based MongoDB with your installation
 description: Learn how to use an external cloud-based MongoDB with Harness Self-Managed Enterprise Edition installations.
 sidebar_label: External cloud-based MongoDB
-sidebar_position: 20
+sidebar_position: 1
 redirect_from:
   - /tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database
 ---
