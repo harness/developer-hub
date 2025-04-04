@@ -57,10 +57,10 @@ It is recommended to add a Snyk step to the **Security** or **Build** stage and 
 #### Scan Mode
 
 
-import StoSettingScanMode from '../shared/step_palette/scan/_type.md';
+import StoSettingScanMode from '../shared/step-palette/scan/type.md';
 
-import StoSettingScanModeOrch  from '../shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeOrch  from '../shared/step-palette/scan/mode/orchestration.md';
+import StoSettingScanModeIngest from '../shared/step-palette/scan/mode/ingestion.md';
 
 
 <!-- StoSettingScanMode / -->
@@ -70,7 +70,7 @@ import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestio
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from '../shared/step-palette/scan/config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -82,10 +82,10 @@ import StoSettingProductConfigName from '../shared/step_palette/scan/_config-nam
 
 #### Type
 
-import StoSettingScanType from '../shared/step_palette/scan/_type.md';
+import StoSettingScanType from '../shared/step-palette/scan/type.md';
 
-import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md';
-import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
+import StoSettingScanTypeRepo from '../shared/step-palette/target/type/repo.md';
+import StoSettingScanTypeCont from '../shared/step-palette/target/type/image.md';
 
 
 <a name="scan-type"></a>
@@ -95,9 +95,9 @@ import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md
 
 #### Target and variant detection 
 
-import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
-import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from '../shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectContainer from '../shared/step-palette/target/auto-detect/container-image.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectContainer/>
@@ -106,7 +106,7 @@ import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto
 
 #### Name 
 
-import StoSettingTargetName from '../shared/step_palette/target/_name.md';
+import StoSettingTargetName from '../shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
@@ -115,7 +115,7 @@ import StoSettingTargetName from '../shared/step_palette/target/_name.md';
 #### Variant
 
 
-import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '../shared/step-palette/target/variant.md';
 
 
 
@@ -124,7 +124,7 @@ import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
 #### Workspace (_repository_)
 
 
-import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from '../shared/step-palette/target/workspace.md';
 
 
 <StoSettingTargetWorkspace  />
@@ -134,28 +134,28 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 
 #### Type
 
-import StoSettingImageType from '../shared/step_palette/image/_type.md';
+import StoSettingImageType from '../shared/step-palette/image/type.md';
 
 <StoSettingImageType />
 
 
 #### Domain
 
-import StoSettingImageDomain from '../shared/step_palette/image/_domain.md';
+import StoSettingImageDomain from '../shared/step-palette/image/domain.md';
 
 <StoSettingImageDomain />
 
 
 #### Name
 
-import StoSettingImageName from '../shared/step_palette/image/_name.md';
+import StoSettingImageName from '../shared/step-palette/image/name.md';
 
 <StoSettingImageName />
 
 
 #### Tag
 
-import StoSettingImageTag from '../shared/step_palette/image/_tag.md';
+import StoSettingImageTag from '../shared/step-palette/image/tag.md';
 
 <StoSettingImageTag />
 
@@ -165,20 +165,20 @@ import StoSettingImageTag from '../shared/step_palette/image/_tag.md';
 
 #### Access Token (_Orchestration scans_)
 
-import StoSettingAuthAccessToken from '../shared/step_palette/auth/_access-token.md';
+import StoSettingAuthAccessToken from '../shared/step-palette/auth/access-token.md';
 
 <StoSettingAuthAccessToken />
 
 
 ### Ingestion File
 
-import StoSettingIngestionFile from '../shared/step_palette/ingest/file.md';
+import StoSettingIngestionFile from '../shared/step-palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 
 ### Log Level
 
-import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '../shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
@@ -205,13 +205,13 @@ With these flags, the Snyk step scans recursively down the repository tree to a 
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '../shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
 ### Settings
 
-import StoSettingSettings from '../shared/step_palette/all/_settings.md';
+import StoSettingSettings from '../shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
@@ -312,14 +312,14 @@ To enable this behavior, add the setting `ingest_tool_severity` and set it to `t
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from '../shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from '../shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
