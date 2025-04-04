@@ -129,7 +129,7 @@ For details, check out [this documentation](/docs/continuous-integration/use-ci/
 - Updated the default Docker connector for new accounts to point to GAR instead of using the account-level connector (id: harnessImage). (CI-16845)
 
 #### Fixed issues
-- Resolved an issue where the `harness/plugin-build-tool.json` and `harness/plugin-cache-intel.json` files, used for telemetry purposes in CI to detect the build tools, were being downloaded to the `/harness` directory, causing errors in git operations. The metrics files have been moved to the `tmp` directory to prevent population of the `/harness` directory. (ZD-80915, 81193, CI-16782)
+- Resolved an issue where some Harness-generated files were being downloaded to the `/harness` directory, causing errors in git operations. These files have been moved to the `tmp` directory to prevent population of the `/harness` directory. (ZD-80915, 81193, CI-16782)
 
 #### Harness images updates
 
