@@ -15,9 +15,9 @@ This guide assumes you have CCM set up correctly for asset governance for at lea
 
 Create a pipeline in some Harness project. On the right hand side select "variables" and under "pipeline" and "custom variables" select "+ Add Variable". Create variables "account_id", "region", and "resource" all of type "runtime input". When creating a variable select the blue checkmark and select the purple "Runtime Input" icon to make it a runtime input.
 
-![](../static/ccm_asset_governance_pipeline_runtime.png)
+![](../../static/ccm_asset_governance_pipeline_runtime.png)
 
-![](../static/ccm_asset_governance_pipeline_variables.png)
+![](../../static/ccm_asset_governance_pipeline_variables.png)
 
 Create a new custom stage, and add a shell script step. In the script let's simply print out the variables we just created:
 
@@ -27,7 +27,7 @@ echo '<+pipeline.variables.region>'
 echo '<+pipeline.variables.resource>'
 ```
 
-![](../static/ccm_asset_governance_pipeline_script.png)
+![](../../static/ccm_asset_governance_pipeline_script.png)
 
 Next click on "Triggers" in the top right and select "+ New Trigger" and select the 'Custom' Webhook type. Give the trigger a name and click continue. Skip the conditions section by clicking continue. For the inputs to our three variables, enter the following:
 
@@ -35,11 +35,11 @@ Next click on "Triggers" in the top right and select "+ New Trigger" and select 
 - region: `<+trigger.header['region']>`
 - resource: `<+eventPayload>`
 
-![](../static/ccm_asset_governance_pipeline_trigger.png)
+![](../../static/ccm_asset_governance_pipeline_trigger.png)
 
 Click "Create Trigger". On the triggers screen, select the "WEBHOOK" icon and copy the webhook URL.  Store this URL somewhere, it will be used later.
 
-![](../static/ccm_asset_governance_pipeline_webhook.png)
+![](../../static/ccm_asset_governance_pipeline_webhook.png)
 
 ## Rule Setup
 
@@ -89,6 +89,6 @@ If you instead want to call the webhook once for every resource found, simply se
 
 Now when we run the rule (not in dry-run mode) and when a resource is found, asset governance will call our pipeline custom trigger and pass the metadata. Navigate to "Execution History" on the top right.  Click on one of the executions and see the information printed in the logs.
 
-![](../static/ccm_asset_governance_pipeline_result.png)
+![](../../static/ccm_asset_governance_pipeline_result.png)
 
 From here you can expand your pipeline to do any number of actions based on the information received. 
