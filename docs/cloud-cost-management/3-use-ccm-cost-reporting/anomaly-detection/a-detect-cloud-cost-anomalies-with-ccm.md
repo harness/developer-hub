@@ -96,3 +96,17 @@ The page contains:
   - Top resource changes: Top resources with major cost impact due to the anomaly with corresponsing cloud labels on the resources for additional metadata.
   - Section to submit feedback: Users can mark an anomaly as “True Expected”, “True Unexpected”, or “False”” to improve accuracy of the system for further anomaly detection.
 
+### Anomalies Filtering Support
+
+Harness provides filtering support for anomalies based on cloud account identifiers. This ensures that anomaly detection aligns with perspective-based access control (RBAC) settings.  
+
+#### Filtering Support by Cloud Provider  
+
+- **AWS**: Filtering supported on AWS Account ID. Nested Cost Categories are not supported.  
+
+- **GCP**: Filtering supported on GCP Project ID. Nested Cost Categories are not supported.  
+
+- **Azure**: Filtering supported on Azure Subscription ID. Nested Cost Categories are not supported.  
+
+
+
