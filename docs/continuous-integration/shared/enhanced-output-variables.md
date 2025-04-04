@@ -68,3 +68,4 @@ $str_value = @"
 ```  
 
 These best practices ensure proper handling of multiline strings across different environments while maintaining consistency in CI workflows.
+</details>
