@@ -148,7 +148,7 @@ You can use the new filter UI by enabling the feature flag `CDS_EXECUTION_LIST_F
 
 You can use default filter options such as **My Executions**, **Status**, or **Timeframe**, or use more filter options by clicking the **+Add Filter** button.  
 
-![](./static/execution_filter_3.png)
+![](./static/execution-filter-3.png)
 
 You can save your current filter settings by clicking **Save** and you can reference those saved filters by clicking the filter icon dropdown at the top right. 
 
