@@ -23,25 +23,50 @@ To set it up:
 
 To enable dashboards the following is the minimum configuration required.
 
-You can find `lookerPubDomain` in your DNS settings and the Looker license key from [Harness support team](mailto:support@harness.io)
+Looker is required for custom dashboards but is not enabled by default. To enable this feature, you can find `lookerPubDomain` in your DNS settings and the Looker license key from [Harness support team](mailto:support@harness.io)
 
 ```yaml
-global:
-  # required if SMP is installed in airgapped mode
-  airgap: true
-  ngcustomdashboard:
-    enabled: true
-ng-custom-dashboards:
-  config:
-    lookerPubDomain: 'looker.domain.tld'
-looker:
-  secrets:
-    lookerLicenseKey: XXXXXXXXXXXXXXXXXXXX
+  global:
     # required if SMP is installed in airgapped mode
-    lookerLicenseFile: |
-      XXXXXXXXXXXXXXXXXXXXXXXXXX
-      XXXXXXXXXXXXXXXXXXXXXXXXXX
+    airgap: true
+    ngcustomdashboard:
+      enabled: true
+  ng-custom-dashboards:
+    config:
+      lookerPubDomain: 'looker.domain.tld'
+  looker:
+    secrets:
+      lookerLicenseKey: XXXXXXXXXXXXXXXXXXXX
+      # required if SMP is installed in airgapped mode
+      lookerLicenseFile: |
+        XXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
+
+#### For Non-Air Gap Packages
+
+Harness will provide an access token to pull the Looker image from Docker Hub, along with a Looker license key and Docker Hub credentials to update your `override.yaml` file. You must replace your Looker license after deployment.
+
+Create a new secret and replace [YOUR-SECRET-NAME] in the YAML:
+
+```yaml
+  looker:
+    # -- replace looker license at runtime (after deployment)
+    image:
+      imagePullSecrets: [YOUR-SECRET-NAME]
+```
+For more details, refer to [documentation](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) on pulling images from a private registry.
+
+#### For Air Gap Packages
+
+Harness no longer includes the Looker image in air gap bundles. You can still request onboarding for custom dashboards. Upon request, Harness will generate an access token for pulling the Looker image from Docker Hub. Following this, Harness will provide you with the Looker license key and Docker Hub credentials.
+
+Harness has updated the `harness-airgap-images.sh` script in the Helm chart repository to support pushing the Looker image to a private registry. The script will prompt:
+  - Whether you want to install custom dashboards (`ng-dashboard`).
+  - Your Docker Hub credentials and image details.
+
+To get DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD, contact [Harness Support](mailto:support@harness.io). When asked for RELEASE_VERSION, enter the desired Helm chart version (e.g., 0.17.0). The script will then push the Looker image to your private repository.
+
 
 ### Looker Ingress/Istio Configuration  
 
