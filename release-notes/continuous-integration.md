@@ -108,7 +108,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 
   - JSON Preservation: JSON can now be passed as-is without minification.
 
-For details, check out this documentation. (CI-15398)
+For details, check out [this documentation](/docs/continuous-integration/use-ci/run-step-settings). (CI-15398)
 - Enhanced Azure Container Registry (ACR) authentication in `plugins/acr:20.18.8` by implementing comprehensive authentication methods (CI-16478):
 
   - Added support for service principal authentication using both client secret and certificate.
