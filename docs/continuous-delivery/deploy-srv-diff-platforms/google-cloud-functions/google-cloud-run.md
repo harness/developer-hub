@@ -91,17 +91,8 @@ You can have one connector scoped to multiple GCP projects, eliminating the need
 
 **Prerequisite** : For OIDC-based connectors, the associated service account (SA) must have cross-project access.
 
-:::note
-Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-Enable the checkbox **Enable Cross Project Access** during the GCP OIDC connector configuration. For more information on GCP OIDC connector configuration, refer [GCP OIDC Connector Settings](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#enable-cross-project-access).
-
-With this checkbox enabled, you will have the option to select the **Project** in the **Cluster details** in the **Infrastructure configuration**.
-
-**Project** is an optional field. 
-- If the project is selected, in the **Cluster** dropdown, only the clusters associated with the selected project will be listed.
-- If the project field is left blank, the **Cluster** dropdown will list all the clusters associated with the **Project Number** configured at the Connector Level.
+- **Project** (required): It can refer to a **different project** than the one configured in the connector, or the **same project**
+- **Region** (required): It indicates the region where the target GKE cluster is located.
 
 <div align="center">
   <DocImage path={require('./static/oidc-cross-scope.png')} width="50%" height="50%" title="Click to view full size image" />
