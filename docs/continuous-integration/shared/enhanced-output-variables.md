@@ -1,20 +1,15 @@
 ---
-title: Enhanced Output Variable Handling in Kubernetes CI Steps
-description: Learn about the new enhancements in Kubernetes CI steps, including multiline output variable support, improved output handling, JSON preservation, and updated best practices.
+title: Enhanced Output Variable Handling in CI Steps
+description: Learn about the new enhancements in CI steps, including multiline output variable support, improved output handling, JSON preservation, and updated best practices.
 sidebar_position: 50
 ---
-
-Kubernetes-based CI steps support enhanced output variable handling, including better support for special characters, increased output capacity, and improved compatibility with secrets and JSON data. 
-
-### Features  
-The following features are available in Kubernetes environments:  
 
 - **Multiline Output Variables**: CI steps support multiline output variables, including special characters such as `\n`, `\t`, `\r`, `\b`, maintaining shell-like behavior.  
 - **Complete Output Support**: Output variables support both output secrets and output strings.  
 - **JSON Preservation**: JSON data can be passed as-is without automatic minification.  
 - **Increased Output Variable Capacity**: The maximum output variable size is approximately **131,072 characters**, up from 65,536.  
 
-### Technical Limitations  
+#### Technical Limitations  
 - The **maximum size** of output variables is constrained by the operating system's `ARG_MAX` parameter, which limits command line arguments and environment variables.  
 - Exceeding this limit will result in the error:  
   ```shell
@@ -22,7 +17,7 @@ The following features are available in Kubernetes environments:
   ```  
 - This limitation is imposed by the operating system, not by the implementation of this feature.  
 
-### Behavior Changes: Current vs. New  
+#### Behavior Changes: Current vs. New  
 The following table outlines changes in how special characters are handled in output variables:  
 
 | Command             | Current Behavior | New Behavior |
@@ -34,9 +29,9 @@ The following table outlines changes in how special characters are handled in ou
 | `export out="\t"`  | `"\t"`           | Tab character |
 | `export out="\v"`  | `"\v"`           | Vertical tab |
 
-### Best Practices  
+#### Best Practices  
 
-#### **Python Shell**  
+**Python Shell**  
 For multiline strings in Python, use triple quotes (`"""` or `'''`) to maintain formatting properly.  
 
 **Step 1:** Export an output variable:  
@@ -52,7 +47,7 @@ os.environ["out"] = out
 str_value = """<+execution.steps.Step_name.output.outputVariables.out>"""
 ```  
 
-#### **PowerShell**  
+**PowerShell**  
 For PowerShell, use the `@"..."@` syntax to handle multiline strings effectively.  
 
 **Step 1:** Export an output variable:  

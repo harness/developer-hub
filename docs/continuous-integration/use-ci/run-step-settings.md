@@ -14,6 +14,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import EnhancedOutVar from '/docs/continuous-integration/shared/enhanced-output-variables.md';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
 You can use a **Run** step to run commands or scripts in a CI pipeline. Here are some examples of different ways you can use **Run** steps.
@@ -455,7 +456,7 @@ Variable values can be [fixed values, runtime inputs, or expressions](/docs/plat
 ### Output Variables
 
 <OutVar />
-
+<EnhancedOutVar/>
 <!--<details>
 <summary>Export output variables to stage or pipeline variables</summary>
 
