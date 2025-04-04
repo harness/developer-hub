@@ -92,7 +92,7 @@ You can have one connector scoped to multiple GCP projects, eliminating the need
 **Prerequisite** : For OIDC-based connectors, the associated service account (SA) must have cross-project access.
 
 - **Project** (required): It can refer to a **different project** than the one configured in the connector, or the **same project**
-- **Region** (required): It indicates the region where the target GKE cluster is located.
+- **Region** (required): It refers to the region where the container will be deployed.
 
 <div align="center">
   <DocImage path={require('./static/oidc-cross-scope.png')} width="50%" height="50%" title="Click to view full size image" />
