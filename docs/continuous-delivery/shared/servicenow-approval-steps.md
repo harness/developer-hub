@@ -125,6 +125,54 @@ For example, `<+ticket.state.displayValue> == "New"` in the Approval Criteria,
 
 `state` is a ticket field. You can use any ticket field.
 
+### Output
+
+Regardless of whether the step is approved or rejected, the **ServiceNow approval step** will provide outputs referencing the details of the step, such as:
+- `ticketType`
+- `ticketNumber`
+- `Approval Criteria`
+- `Rejection Criteria` 
+- `Conditions`
+- `hasApprovalCriteriaMet` 
+- `hasRejectionCriteriaMet`
+
+These outputs can be used as **output variables** and referenced in subsequent steps or stages.
+
+Here are a few expression examples that can be used to fetch the output values:
+
+- **ticketType**: `<+pipeline.stages.stage.spec.execution.steps.ServiceNowApproval_1.output.ticketType>`
+- **ticketNumber**: `<+pipeline.stages.stage.spec.execution.steps.ServiceNowApproval_1.output.ticketNumber>`
+- **approvalCriteria**: `<+pipeline.stages.stage.spec.execution.steps.ServiceNowApproval_1.output.approvalCriteria.type>`
+- **rejectionCriteria**: `<+pipeline.stages.stage.spec.execution.steps.ServiceNowApproval_1.output.rejectionCriteria.type>`
+
+<div align="center">
+<DocImage path={require('./static/snow-output-logs.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+### Logs
+
+You can also view detailed logs that describe why the validation **failed** or **succeeded** in the **ServiceNow approval step**.
+
+:::note
+
+Currently, viewing the detailed logs is behind the feature flag `CDS_SNOW_IMPROVE_CONSOLE_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+  
+Here are examples of logs for different scenarios:
+
+- **Log example for an approved step**:  
+   The logs will show the approval criteria on which the step was approved and the evaluating condition.  
+   ![](./static/snow-approval-logs.png)
+
+- **Log example for a rejected step**:  
+   The logs will show the rejection criteria on which the step was rejected and the evaluating condition.  
+   ![](./static/snow-rejection-logs.png)
+
+- **Log example for using JEXL expression in approval criteria**:  
+   The logs will show the JEXL expression on which the step will be approved or rejected and how the condition is evaluated.  
+   ![](./static/snow-approval-jexl-expression.png)
+
 ## Custom table support
 
 For details, go to **Custom table support** in [Create ServiceNow tickets in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages#custom-table-support).

@@ -16,8 +16,6 @@ This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upg
 
 This topic lists the limitations and requirements of the Harness Delegate.
 
-For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen).
-
 ## Delegate Limitations
 
 * **Deployment limits:** Deployment limits are set by account type**.** See [Harness Products and Editions](../../../starthere-firstgen/harness-editions.md).
