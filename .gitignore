@@ -25,7 +25,6 @@ yarn-error.log*
 yarn.lock
 *-lock.json
 .env
-*.lock
 
 # VS Code
 **/.vscode/
