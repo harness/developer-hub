@@ -1,22 +1,21 @@
-import React from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Link from "@docusaurus/Link";
-import clsx from "clsx";
-import styles from "./styles.module.scss";
-import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React from 'react';
+import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
+import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
-import { docsCards } from "./data/artifactRegistryData";
-import { useColorMode } from "@docusaurus/theme-common";
+import { useColorMode } from '@docusaurus/theme-common';
+import { docsCards } from './data/artifactRegistryData';
 export default function AR() {
   const { colorMode } = useColorMode();
-  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+  const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   return (
     <div className="container">
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img width={64} src={`${baseUrl}img/icon_artifact_registry.svg`} />
-            <h1>Artifact Registry (BETA)</h1>
+            <h1>Artifact Registry</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/kb">
@@ -57,6 +56,5 @@ export default function AR() {
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
     </div>
-    // </Layout>
   );
 }

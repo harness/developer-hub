@@ -177,6 +177,14 @@ The following sections cover common Terraform Plan step options.
 
 See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
+When working with Terraform in conjunction with Artifactory, ensure the following:
+
+**Paths in Variable Files:**
+Ensure that the paths specified in your configuration include the full path, including the repository name. For example, instead of specifying just `variables.tf`, specify the full path like `repo_name/variables.tf` to ensure accurate referencing.
+
+**File Archival:**
+The file should be archived into a `.zip` format before being uploaded to Artifactory. This ensures proper handling and file integrity when stored in the repository.
+
 ### AWS S3
 
 1. In **Region**, select the region where your bucket is stored.
@@ -215,7 +223,7 @@ source = "git::https://github.com/your-organization/your-private-module.git"
 
 :::tip
 
-The ability to authenticate with HTTPS is new! Here is a demo on its functionality:
+The ability to authenticate with HTTPS is new! The Minimum required delegate version is: 83401. Here is a demo on its functionality:
 
 <DocVideo src="https://www.loom.com/share/bb8b9e4996f14bf0a16839849b0b72e4?sid=3befc405-7c4d-4f21-afe0-c36e2962b566" />
 
@@ -311,7 +319,7 @@ See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-p
 1. In **Identifier**, enter an identifier, so you can refer to variables using expressions if needed.
 2. In **Region**, select the region where your bucket is stored.
 3. In **Bucket**, select the bucket where your Terraform var files are stored (all buckets from the selected region that are available to the connector will be fetched).
-4. In **File Paths**, add one or more file paths from the root of the bucket to the variable file.
+4. In **File Paths**, add one or more file paths from the root of the bucket to the variable file. Ensure the file is archived as a `.zip`, and the file paths should include the full path, including the repo.
 
    ![](./static/provision-infra-dynamically-with-terraform-10.png)
 

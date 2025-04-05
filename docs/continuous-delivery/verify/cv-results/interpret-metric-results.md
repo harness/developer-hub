@@ -113,7 +113,7 @@ You can customize the metrics summary view using the following filters:
 
 - **Health Source**: If multiple metric health sources are used in the verification process, you can use this filter to view the results specific to a particular health source.
 
-- **Raw** and **Normalized**: Use the **Normalized** filter option to view the metric data in a standardized form used by ML analysis. The system performs a normalization process for ML analysis by converting three adjacent minutes of metric data into a single data point.  
+- **Raw** and **Normalized**: Use the **Normalized** filter option to view the metric data in a standardized form used by ML analysis. The system performs a normalization process for ML analysis by converting three adjacent minutes of metric data into a single data point (an average of the adjacent minutes' data).
   Use the **Raw** filter option to see the metric data exactly as provided by the source, without any modifications.
   ![Normalized Data](static/normalizeddata.png)
 

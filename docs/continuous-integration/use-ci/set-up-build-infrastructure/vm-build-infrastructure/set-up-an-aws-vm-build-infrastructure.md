@@ -53,9 +53,15 @@ This is an advanced configuration. Before beginning, you should be familiar with
 
 These are the requirements to configure the AWS EC2 instance. This instance is the primary VM where you will host your Harness Delegate and runner.
 
+:::important
+
+AWS Spot instances, of any kind, are not supported to use as self-managed build infrastructure.
+
+:::
+
 ### Configure authentication for the EC2 instance
 
-The recommended authentication method is an [IAM role](https://console.aws.amazon.com/iamv2/home#/users) with an access key and secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)). You can use an access key and secret without an IAM role, but this is not recommended for security reasons.
+The recommended authentication method is an [IAM role](https://console.aws.amazon.com/iamv2/home#/users) on the VM instance, but using IAM user and access key and secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)) is also supported. It is best practice to use an IAM role over an access key and secret for security reasons.
 
 1. Create or select an IAM role for the primary VM instance. This IAM role must have CRUD permissions on EC2. This role provides the runner with temporary security credentials to create VMs and manage the build pool. For details, go to the Amazon documentation on [AmazonEC2FullAccess Managed policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2FullAccess.html).
 2. If you plan to run Windows builds, go to the AWS documentation for [additional configuration for Windows IAM roles for tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html#windows_task_IAM_roles). This additional configuration is required because containers running on Windows can't directly access the IAM profile on the host. For example, you must add the [AdministratorAccess policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to the IAM role associated with the access key and access secret.
@@ -76,7 +82,9 @@ The recommended authentication method is an [IAM role](https://console.aws.amazo
 2. In the Security Group's **Inbound Rules**, allow ingress on port 9079. This is required for security groups within the VPC.
 3. In the EC2 console, go to your EC2 VM instance's **Inbound Rules**, and allow ingress on port 22.
 4. If you want to run Windows builds and be able to RDP into your build VMs, you must also allow ingress on port 3389.
-5. Set up VPC firewall rules for the build instances on EC2.
+5. Outbound access to githubusercontent.com over 443, which is allowed by default in a typical security group
+6. Outbound access to googleapis.com over 443 to ship the task logs.  Can be avoided by using the account setting "Account Settings"->"Default Settings"->"Continuous Integration->"Upload Logs via Harness"
+7. Set up VPC firewall rules for the build instances on EC2.
 
 ### Install Docker and attach IAM role
 
@@ -168,8 +176,8 @@ instances:
       account:
         region: us-east-2 ## To minimize latency, use the same region as the delegate VM.
         availability_zone: us-east-2c ## To minimize latency, use the same availability zone as the delegate VM.
-        access_key_id: XXXXXXXXXXXXXXXXX
-        access_key_secret: XXXXXXXXXXXXXXXXXXX
+        access_key_id: XXXXXXXXXXXXXXXXX # Optional if using an IAM role
+        access_key_secret: XXXXXXXXXXXXXXXXXXX # Optional if using an IAM role
         key_pair_name: XXXXX
       ami: ami-051197ce9cbb023ea
       size: t2.nano
@@ -462,10 +470,27 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 </details>
 
+## AWS Fargate Limitations
+
+If you are running builds on AWS Fargate, please be aware of the following limitations.
+
+### Docker delegate on AWS ECS Fargate backed instance
+
+When operating ECS delegates on AWS Fargate, it's critical to note that AWS Fargate will terminate the delegate if the tasks running on the delegate exceed the infrastructure's specified limits. This is a limitation inherent in using infrastructure not owned by the customer. Harness Delegate cannot circumvent this restriction. However, ECS delegates operating on an EC2 instance do not have this issue. To avoid this limitation, consider using Kubernetes delegates where the infrastructure and associated YAML definitions address these issues.
+
+### Docker in Docker does not work with AWS Fargate
+
+AWS Fargate doesn't support the use of privileged containers. Privileged mode is required for DinD, thus, you cannot use DinD with AWS Fargate.
+
+### AWS Fargate does not support IAM roles
+
+Amazon requires the Amazon EKS Pod execution role to run pods on the AWS Fargate infrastructure. For more information, go to [Amazon EKS Pod execution IAM role](https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html) in the AWS documentation.
+
+If you deploy pods to Fargate nodes in an EKS cluster, and your nodes needs IAM credentials, you must configure IRSA in your AWS EKS configuration (and then select the Use IRSA option for your connector credentials in Harness). This is due to [Fargate limitations](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html#:~:text=The%20Amazon%20EC2%20instance%20metadata%20service%20(IMDS)%20isn%27t%20available%20to%20Pods%20that%20are%20deployed%20to%20Fargate%20nodes.).
+
 ## Troubleshoot AWS VM build infrastructure
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-managed VM build infrastructures, including:
-
+- [Optimize Windows VM runner](/docs/continuous-integration/troubleshoot-ci/optimize-windows-vm-runner)
 - [Build VM creation fails with no default VPC](/kb/continuous-integration/continuous-integration-faqs/#aws-build-vm-creation-fails-with-no-default-vpc)
 - [AWS VM builds stuck at the initialize step on health check](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-builds-stuck-at-the-initialize-step-on-health-check)
 - [Delegate connected but builds fail](/kb/continuous-integration/continuous-integration-faqs/#aws-vm-delegate-connected-but-builds-fail)
@@ -476,3 +501,5 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 - [How do I specify the disk size for a Windows instance in pool.yml?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
 - [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
 - [Can I limit memory and CPU for Run Tests steps running on self-managed VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for a broader list of frequently asked questions and answers.

@@ -63,8 +63,6 @@ const Facet: React.FC<FacetProps> = (props) => {
       !QueryCommonmodule &&
       controller.state.facetId == 'commonsource'
     ) {
-      console.log('no url facets');
-
       controller.toggleSelect({
         numberOfResults: 0,
         state: 'selected',
@@ -117,9 +115,13 @@ const Facet: React.FC<FacetProps> = (props) => {
                 disabled={state.isLoading}
               />
               <div>
-                {moduleIconAndColor[value.value]?.iconUrl && (
+                {controller.state.facetId == 'commonmodule' && (
                   <img
-                    src={moduleIconAndColor[value.value]?.iconUrl || ''}
+                    src={
+                      moduleIconAndColor[value.value]
+                        ? moduleIconAndColor[value.value].iconUrl
+                        : moduleIconAndColor['Harness Platform'].iconUrl
+                    }
                     alt={value.value}
                   />
                 )}

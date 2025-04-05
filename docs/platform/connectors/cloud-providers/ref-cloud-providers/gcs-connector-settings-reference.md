@@ -120,7 +120,7 @@ Currently, this feature is behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`.
 
 :::
 
-Select the **Connect through Harness Delegate for OIDC** option to allow Harness Delegate to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials. This option requires Harness Delegate version 24.03.82603 or later.
+Select the **Connect through Harness Delegate for OIDC** option to allow Harness Delegate to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials. This option requires Harness Delegate version 24.03.836xx or later.
 
 To connect to GCP with OIDC, you must configure an [OIDC identity provider](https://cloud.google.com/iam/docs/workload-identity-federation-with-other-providers) GCP and connect the service account with relevant permissions that Harness will use to operate in GCP. Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider.
 
@@ -128,6 +128,41 @@ To connect to GCP with OIDC, you must configure an [OIDC identity provider](http
    * OIDC audience: `https://iam.googleapis.com/projects/<YOUR_GCP_PROJECT_ID>/locations/global/workloadIdentityPools/<YOUR_WORKLOAD_POOL_ID>/providers/<YOUR_PROVIDER_ID>`
 
 If accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector. For instructions, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
+
+#### Enable Cross-Project Access
+
+You can now have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. With this feature, the connector will allow access to multiple GCP projects.
+
+:::note
+Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+<div align="center">
+  <DocImage path={require('./static/gcp-oidc-cross-project-access.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+Enable the checkbox **Enable Cross Project Access** during the GCP OIDC connector configuration.
+
+Note: This feature is supported when OIDC authentication is used and GKE infrastructure (Kubernetes or Helm) is selected. When the checkbox is enabled, the connector will allow access to multiple GCP projects for Kubernetes and Helm infrastructure types only.
+
+**Project Selection Flow**:
+    * Once the checkbox is enabled, the system will query the list of GCP projects accessible via the connector.
+    * The user will be prompted to select the target project (e.g., project2), in addition to the original project (project1).
+    * With both project values, relevant APIs will be invoked in the workflow using both projects.
+
+**Configuring the Project at the Infrastructure Level**
+
+To configure the **Project** at the infrastructure level, follow these steps:
+
+1. Navigate to **Project Settings** -> **Environment**, and select your desired Kubernetes environment.
+2. In the **Infrastructure Definition** section, choose **Deployment Type** as **Kubernetes** or **Helm Native** and **Infrastructure Type** as **Google Kubernetes Engine**.
+3. In the **Cluster Details** section:
+  - For the **Connector**: Select the previously configured GCP OIDC cluster with **Enable Cross Project Access** enabled. 
+  - **Project (optional)**: Select the Project you want to use in dropdown
+  - **Cluster**: The cluster dropdown will list all the cluster associated with the selected project
+  - **Namespace**: Enter the target namespace in target cluster.
+
+For more detailed instructions on using this for a Kubernetes infrastructure, refer to [Google Kubernetes Engine (GKE) for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure/#google-kubernetes-engine-gke).
 
 #### Custom Parameters 
 
@@ -187,12 +222,6 @@ Select how you want Harness to communicate with GCP. The available options depen
 #### Connect through Harness Platform
 
 With this option, Harness communicates with GCP through a direct, secure communication between Harness and GCP. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
-
-:::warning
-
-If you are using OIDC for your connection, you will not be able to connect to GCP through the Harness Platform. Please connect through a Harness Delegate.
-
-:::
 
 #### Connect through a Harness Delegate
 

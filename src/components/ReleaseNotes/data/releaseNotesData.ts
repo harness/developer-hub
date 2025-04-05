@@ -1,9 +1,7 @@
 import {
-    CardItem,
-    CardSections,
-    docType,
-  } from "@site/src/components/LandingPage/TutorialCard";
-  import { MODULES } from "@site/src/constants"
+  CardSections
+} from "@site/src/components/TutorialCard/TutorialCard";
+import { MODULES } from "@site/src/constants";
 
   
   /* Define the cards - start */
@@ -98,6 +96,13 @@ import {
             description:
               "",
             link: "/release-notes/feature-flags",
+          },
+          {
+            title: "Feature Management & Experimentation release notes",
+            module: MODULES.fme,
+            description:
+              "",
+            link: "/release-notes/feature-management-experimentation",
           },
           {
             title: "Infrastructure as Code Management release notes",

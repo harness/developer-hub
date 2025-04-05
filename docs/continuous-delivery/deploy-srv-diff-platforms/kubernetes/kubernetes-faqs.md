@@ -867,3 +867,53 @@ The artifacts data can be accessed through the execution details API, but only w
 ### Is there a public API available to retrieve the contents of the Tests tabs in a pipeline execution?
 Harness does not have a public API for retrieving the data from the Tests tab yet. One can view the network calls to `/ti-service` in the browser's network tab when loading the Tests page to access this information. However, this is not a public API, and using it requires obtaining a token from the UI, which is not recommended due to its frequent expiration and lack of backward compatibility.
 
+### How to list all resources included in a given Harness release?  
+
+It is possible to list all resources included in a given Harness release name using the Harness CLI. The release metadata is compressed using gzip (level 9), then base64 encoded and stored in the release config (or in a secret, in some cases).  
+
+The command `kubectl get config release-<+INFR_KEY> -n <k8s_namespace> | grep -e '[^ ]{300,}'` will print out the binary section of the config. This can then be stored in a variable and decoded.  
+
+Searching using release name labels works only partially because some Kubernetes resources, such as the Kubernetes Ingress object, do not have a release-name label associated with them.  
+
+For more details on Kubernetes releases and versioning, refer to the Harness Engineering documentation: [Kubernetes Releases and Versioning](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning/).
+
+
+### How to perform rollback/scale back up old pods once they have been deleted? As my use case to perform BR strategy as well rollback in case required.
+
+In the Blue-Green Stage scale-down step, once resources are deleted, they cannot be rolled back.  They should only be deleted when no longer required. For very specific scenarios where you need to scale down the stage environment with the chance of rolling it back in the future, we suggest explicitly adding the `{replicas}` field in the manifest. This ensures Harness keeps the replica count in the release history, as this field is updated in the manifest when the workloads are scaled. On rollback, we will have a history of the replica count, which we don't have in the current scenario as it was never explicitly defined in the manifest. If the `{replicas}` field is added to the manifest, then we uncheck the `{Delete Resources}` checkbox in the optional configuration of the K8sBlueGreenStageScaleDownStep.
+
+### How can we reliably confirm a Canary deployment if the new image runs in parallel without knowledge of the original stateless application? 
+
+A canary deployment starts a new version of an application while keeping the existing one running. However, if the new image is unaware of the previous state, additional steps are needed:
+- Implement state synchronization or session persistence.
+- Use feature flags to gradually roll out changes.
+- Ensure traffic shifting mechanisms are in place for controlled rollouts.
+
+### Why does my Kubernetes deployment fail due to resource limits?
+Resource limit errors occur when a pod exceeds the configured CPU or memory constraints. Adjust resource requests and limits in the deployment manifest.
+
+### How to monitor Kubernetes container restart counts?
+Kubernetes restart counts can be tracked using Prometheus metrics or by monitoring pod events with `kubectl get pods --watch`.
+
+### How to monitor Kubernetes container restart counts?
+Users can track container restarts by monitoring Kubernetes events and logs. Setting up Prometheus metrics or using `kubectl get pods --watch` can help.
+
+### How to configure Harness to monitor Kubernetes container restart counts for my service?
+Increasing CPU and memory resources on delegates can improve monitoring performance. Users may need to adjust configurations based on deployment size.
+
+### How to handle old release files in OpenShift under the configMap section when versioning deployments?
+Old config maps can be cleaned up without affecting rollbacks, but keeping the latest two versions is recommended.
+
+### How can I handle SSL verification issues in Git & SCM for Kubernetes deployments?
+
+If your **Kubernetes manifests** or **GitOps configurations** fail due to **SSL certificate errors**, you can disable SSL verification using the following flags:  
+
+**1. `GIT_SSL_NO_VERIFY`**  
+- **Purpose:** Disables SSL verification for Git operations.  
+- **Use Case:** Use this flag when **fetching manifests from a Git repository** with **self-signed SSL certificates**.  
+
+**2. `SCM_SKIP_SSL`**  
+- **Purpose:** Skips SSL verification for SCM (Source Code Management) interactions.  
+- **Use Case:** Use this flag when **connecting to SCM providers like GitHub/GitLab** with **invalid SSL certificates**.  
+
+Note: Disabling SSL verification reduces security, so use these flags only in trusted environments

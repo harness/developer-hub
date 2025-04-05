@@ -1,6 +1,6 @@
 ---
 title: Automating Extension Installation in Gitspace
-description: Learn more about how you can setup pre-installed extensions for your Gitspaces with "devcontainer.json".
+description: Learn more about how you can automate extension installation in your Gitspaces.
 sidebar_position: 6
 sidebar_label: Pre-installed Extensions
 ---

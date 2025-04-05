@@ -8,7 +8,7 @@ This topic describes the settings for the Email step available in Continuous Del
 
 The Email step lets you easily send emails to users and teams during a pipeline execution.
 
-![picture 1](./static/866775ef02f7cb3dc6394be155cba8ff7d8a041f7511f09203afc4c3e2cdc85a.png)
+![picture 1](./static/email-step.png)
 
 The Email step has the following features:
 
@@ -18,6 +18,7 @@ The Email step has the following features:
 - You can use this step as a [step template](/docs/platform/templates/run-step-template-quickstart) or as part of a [stage template](/docs/platform/templates/add-a-stage-template).
 - You can manage this step's configuration via [Harness Git Experience](/docs/platform/git-experience/git-experience-overview).
 - You can send emails to Harness users and users outside of Harness using the SMTP server in your Harness
+- Use input variables in the email step to customize the subject, body, and recipient list dynamically based on pipeline variables and context.
 
 ## Visual summary
 
@@ -67,9 +68,67 @@ For more information on runtime inputs and expressions, go to [fixed values, run
 
 The **Body** is a string field. You can enter in text and Harness expressions. Harness will resolve the expressions before sending the email.
 
-You can use HTML formatting in **Body**.
+- You can use HTML formatting in **Body**, such as `<br>` tags, for line breaks in the email body.
+- If the `CDS_EMAIL_USE_DEFAULT_FORMATTING` feature flag is enabled, new lines will not be auto-detected. Instead, you must explicitly define new lines using `<br>` tags or similar HTML formatting.
 
 For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs).
+
+<details>
+<summary>Example of using `<br>` tag in the email body.</summary>
+
+Below is an illustration of how you can insert `<br>` tags within the **Email Step** body:
+
+![](./static/email-step-example.png)
+
+**Pipeline YAML Example**:
+
+```yaml
+pipeline:
+  name: Email-test
+  identifier: emailtest
+  projectIdentifier: PROJECT_ID
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: s1
+        identifier: s1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: Email
+                  name: Email_1
+                  identifier: Email_1
+                  spec:
+                    to: RECIPIENT_EMAIL
+                    cc: ""
+                    subject: Pipeline status
+                    body: |-
+                      These are the pipeline details <br> <br>
+                      Pipeline name: <+pipeline.name> <br>
+                      Pipeline status: <+pipeline.status>. <br>
+                      Pipeline step identifier: <+step.identifier>
+                    inputVariables: []
+                  timeout: 10m
+        tags: {}
+
+```
+
+
+</details>
+
+## Using Input Variables
+
+You can use input variables in the Email Step to customize the subject, body, and recipient list with dynamic values from your pipeline.
+
+- **Subject**: Personalize the subject line using placeholders like `${pipeline.buildNumber}` or `${deployment.status}`.
+- **Body**: Insert dynamic content in the email body using pipeline variables.
+- **Recipients**: Define the recipient list dynamically with pipeline variables, such as sending emails to team members based on environment or role.
+
+You can use both predefined and custom pipeline variables in your emails. The Email Step also supports condition-based customization, allowing you to modify the email content based on pipeline states like success, failure, or approval.
 
 ## Sending emails to non-Harness users
 
@@ -114,4 +173,3 @@ Currently, Harness is unable to check whether the emails sent using the Email st
 If you are encountering issues with email delivery, please open a Harness support ticket.
 
 If you are using a custom email provider (as described in [Add SMTP configuration](/docs/platform/notifications/add-smtp-configuration/)) Harness will not have access to your emails. Please check your email provider and server log to determine the cause of the error.
-

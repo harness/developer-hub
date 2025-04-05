@@ -30,7 +30,7 @@ Optional comma separated list of Docker networks that are attached to every pipe
 
 Harness Open Source creates a temporary Docker network for steps during pipeline execution. Attach additional Docker networks to all steps in your pipelines by setting this variable.
 
-When setting this variable, [GITNESS_URL_CONTAINER](#gitness_url_container) must also be set based on the Gitness container name.
+When setting this variable, [GITNESS_URL_CONTAINER](#gitness_url_container) must also be set based on the container name.
 
 ```
 GITNESS_CI_CONTAINER_NETWORKS=networkA,networkB

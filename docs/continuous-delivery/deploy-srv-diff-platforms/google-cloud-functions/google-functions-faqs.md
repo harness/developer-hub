@@ -71,3 +71,9 @@ For more details, go to [Documentation](https://developer.harness.io/docs/contin
 ### Does Harness support using the GCP connector configured to inherit permissions for making additional calls to the registry?
 
 While the GCP connector inheriting permissions from the delegate can pull images, additional configurations may be needed to fetch the entry point. Also Harness uses the node pool's authentication configuration while pulling the image. Also Harness can't extract the secret and mount it under `imagePullSecrets` in this case. For more details, go to [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference#gcp-connector-settings)
+
+### What are the specific IAM permissions that Harness requires for the GCP service account?
+
+IAM roles depend on the GCP service being used with Harness. Commonly required permissions include:
+- **Kubernetes Engine Developer** (`roles/container.clusterAdmin`)
+- **Storage Object Viewer** (`roles/storage.objectViewer`)

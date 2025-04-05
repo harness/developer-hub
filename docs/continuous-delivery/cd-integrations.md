@@ -22,9 +22,29 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| CDS_TF_PROJECTS_SUPPORT | Enables users to select the Project that includes the workspace to run inside the **Terraform Cloud Run Step**, allowing better organization and precise workspace targeting. **This feature is in Limited GA** |
+| CDS_CUSTOM_MAX_CONCURRENCY | Enables users to configure a custom `maxConcurrency` value in multi-deployment stages in Harness, allowing greater control over parallelism in deployments. **This feature is in Limited GA**|
+| CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS | Enables users to leverage cross-project access with the GCP OIDC connector in both Kubernetes and native Helm environments. **This feature is in Limited GA**|
+| CDS_K8S_DIFF_STEP_SUPPORT | Enables users to add a native **K8s diff** step in CD pipelines, allowing them to preview changes before deployment. **This feature is in Limited GA**|
+| CDS_MANIFEST_CONNECTOR_URL | Enables users to fetch the Service Manifest source (i.e., Connector URL where the manifest is stored) using the expression `<+manifests.MANIFEST_ID.store.connectorUrl>`. **This feature is in Limited GA**|
+| CDS_REMOVE_COMMENTS_FROM_VALUES_YAML_WITH_ESCAPE_CHARACTERS | Enables proper handling of special characters in `values.yaml` by removing control characters such as `single (' )`, `double (")`, and `backslash (\)`, preventing pipeline failures. |
+| CDS_ENFORCE_GIT_EXPERIENCE | Enables users to enforce the **Git experience for environments, infrastructure, and overrides V2**, ensuring consistency across all components, similar to pipelines, inputs, and templates. **This feature is in Limited GA**|
+| CDS_TAS_ARTIFACT_BUNDLE_PRESERVE_PERMISSION_ON_EXTRACTION | Ensures that file permissions inside the `tar.gz` archive are retained when deploying **Artifact Bundles** for **NodeJS apps** to **PCF (Pivotal Cloud Foundry)**, preventing permission issues during application startup. **This feature is in Limited GA**|
+| CDS_AZURE_CLI_WEBAPP_DEPLOYMENT | Enables enhanced support for non-standard configurations and Azure CLI-based workflows for Azure Web App deployments. Available with Delegate version `85302` or later. **This feature is in Limited GA**|
+| CDS_HELM_DELETE_STEP | Enables a native **Helm Uninstall** step in the Deploy stage to uninstall Helm charts. **This feature is in Limited GA** |
+| CDS_ECS_MONITOR_TASK_STATUS | Enables Harness to accurately detect failures in **ECS Rolling Deployments**. **This feature is in Limited GA** |
+| PIPE_USE_HARNESS_CODE_FOR_INLINE_ENTITIES | Saves inline entities in the [Harness Code Repository](/docs/code-repository/get-started/onboarding-guide/) by default. **This feature is in Limited GA** |
+| PIPE_DYNAMIC_PIPELINES_EXECUTION | Allows users to dynamically execute pipelines by providing pipeline YAML configurations at runtime, without requiring pre-saved configurations in Harness. **This feature is in Limited GA** |
+| PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION | Introduces the `storeType` field in YAML templates to distinguish whether a template is stored **Inline** or **Remote**. **This feature is in Limited GA** |
+| OPA_IMPORT_FROM_GIT | Enables users to import OPA policies directly from Git. **This feature is in Limited GA** |
+| CDS_GITOPS_OPERATOR | Enables integration of the Harness GitOps Agent with the OpenShift Certified Vendor Catalog, allowing seamless use with OpenShift OperatorHub and Red Hat Marketplace. **This feature is in Limited GA** |
+| CDS_K8S_CUSTOM_YAML_PARSER | Enables support for Kubernetes sidecar containers as introduced in Kubernetes 1.28. This custom YAML parser addresses compatibility issues with the current Kubernetes Java SDK version 18.0.0, which lacks native support for sidecar configurations. **This feature is in Limited GA** |
+| CDS_SKIP_INSTANCES_V2 | Enables users to retry failed deployments on a subset of hosts when using traditional infrastructure. **This feature is in Limited GA** |
+| CDS_ASG_SKIP_INSTANCE_TERMINATION | Enables users to track the progress of launching new instances and terminating existing ones in AWS during a rolling deployment using the ASG Steady State Step in Harness. **This feature is in Limited GA**|
+| CDS_ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS | Enables users with dynamically generated load balancer configurations to successfully validate ECS Blue-Green deployment pipelines, resolving the previous validation failure. **This feature is in Limited GA** |
 | CDS_ARTIFACT_DISABLE_VALIDATION | Enables users to bypass primary and sidecar artifact consumption checks in the service of a **Deploy** stage. For more information, go to Harness [Skip Artifact Consumption for the Stage](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#skip-artifact-consumption-for-the-stage). **This feature is in Limited GA**  |
 | CDS_CROSS_SCOPED_ENV_GROUPS | Enables users to add environments created at Account and Orgainsation level to Environment Groups. For more information, go to Harness [Cross Scope Environment Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environment-groups#cross-scope-environment-groups). **This feature is in Limited GA** |
-| CDS_K8S_DETAILED_POD_LOGS | Enables users to view detailed logs of **Wait For Steady State** step in Kubernetes deployments. For more information, go to Harness [Detailed diagnostics for K8s Deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart#detailed-diagnostics-for-k8s-deployment). **This feature is in Limited GA** |
+| CDS_K8S_DETAILED_LOGS | Enables users to view detailed logs of **Wait For Steady State** step in Kubernetes deployments. For more information, go to Harness [Detailed diagnostics for K8s Deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart#detailed-diagnostics-for-k8s-deployment). **This feature is in Limited GA** |
 | CDS_SERVICE_OVERRIDES_2_0_YAML_V2_SUPPORT | Ensures that overrides from environment configuration YAML are ignored when Override V2 is enabled. <b> This feature is in Limited GA. </b> |
 | CDS_GOOGLE_CLOUD_RUN | Allows users to deploy artifacts to Google Cloud Run. <b> This feature is in Limited GA. </b> |
 | CDS_AZURE_FUNCTION | Allows users to deploy Azure Functions through Harness. <b> This feature is in Limited GA. </b> |
@@ -61,7 +81,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | ENV_GROUP_DEPLOYMENTS_IN_SERIAL | Enables users to use the serial deployment of environment groups. <b> This feature is in Limited GA. </b>|
 | PIE_SHOW_ALL_EXECUTIONS_FILTER | Enables users to lists all pipeline executions including retired and child executions in the Executions page. <b> This feature is GA. </b>|
 | CDS_DISABLE_FALLBACK_EXPRESSION_ENGINE | Enables users to leverage the updated expression resolution fallback logic, which now calls the fallback more effectively. <b> This feature is in Limited GA. </b> |
-| CDS_K8S_PATCH_STEP_NG | We have introduced a Patch step for Kubernetes deployments to make changes to specific resources or workloads in a Kubernetes cluster without affecting other fields. This step helps Spinnaker users migrate to Harness. Spinnaker has a stage type called Kubernetes Patch. <b>This feature flag is Limited GA.</b> |
 | GITOPS_AGENT_HELM_V2 | Enables you to download a helm-chart file for the Harness GitOps Agent. <b> This feature is GA. </b> |
 | CDS_GITOPS_LABELS_BASED_ACCESS_TO_APPS | Allow users to filter applications based on labels while creating a resource group for Gitops application. <b> This feature is in Limited GA. </b> |
 | GITOPS_MULTI_SOURCE_ENABLED | Enables users to support Multi-Source applications with ArgoCD in Harness GitOps. <b> This feature is in Limited GA. </b> |
@@ -104,8 +123,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CDS_ENABLE_SHELL_SCRIPT_FILE_REFERENCE | Enables the Shell Script step to support scripts from Harness File Store. <b>This feature is in Beta.</b> |
 | CDS_DISABLE_EVALUATE_EXPORT_VARIABLES | Enables exporting variables without evaluating them in the Command step. <b>This feature is in Beta.</b> |
 | CD_CONTAINER_STEP_DELEGATE_SELECTOR | Makes the Container step to respect the delegate selector configured at the pipeline. <b>This feature is in Beta.</b> |
-| CDS_REMOVE_TIME_BUCKET_GAPFILL_QUERY | Removes the usage of time bucket gapfill from CD. <b>This feature is in Beta.</b> |
-| CDS_TERRAGRUNT_USE_UNIQUE_DIRECTORY_BASE_DIR_NG | Enables a unique directory to support Terragrunt run-in-parallel. <b>This feature is in Beta.</b> |
 | OPA_AIDA_WIDGET | Enables <a href="/docs/platform/governance/policy-as-code/aida-for-policies">AIDA for OPA</a>. <b>This feature is in Beta.</b> |
 | PIE_SIMPLIFY_LOG_BASE_KEY | Reduces the length of the log base key. <b>This feature is in Beta.</b><br/>This feature requires delegate version 23.10.81010 or later.<br/>After enabling this feature flag, you must re-run your pipelines to apply the change.<br/>For more information, go to <a href="/docs/platform/pipelines/executions-and-logs/download-logs">Download execution logs</a>. |
 | PIE_ASYNC_FILTER_CREATION | Sets pipeline CRUD calls to filter creation asynchronously. <b>This feature is in Beta.</b> |
@@ -117,3 +134,9 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CDS_ASYNC_EXECUTABLE_USE_SELECTORS | When enabled the delegate selector priorities are correctly handled in Helm Blue/Green and Canary Deployment steps. <b>This is a Beta feature.</b> |
 | CDS_BLUE_GREEN_RESOURCE_FORMAT_FIX | When enabled it ensure correct resource formatting during Helm Blue-Green deployments. <b>This is a Beta feature.</b> |
 | CDS_NAV_MODULE_VISIBILITY | When enabled Admin users can hide unsubscribed modules from the sidebar, ensuring only subscribed modules are visible to team members. This helps streamline the user experience and prevents access to steps or features from unsubscribed modules. <b>This is a Beta feature.</b> |
+| GITOPS_FILTER_PANE_ENABLED | When enabled, GitOps users can create and save application filters in the GitOps Applications page. <b> This is a Beta feature </b> |
+| FF_PIE_SET_ADVISORS_PROCESSED | When enabled the calculation of `<+stage.CurrentStatus>` exclude steps where the failure strategy has not yet been triggered. This ensures that steps are not prematurely skipped due to transient failure states, resulting in more reliable execution. <b>This is a Beta feature.</b> |
+| CDS_EXECUTION_LIST_FILTERS | Enable this feature to improve filter UI on the execution list view. Use the new UI to add filter parameters, make custom filters, and save them, easier than before. **This is a Beta feature**. |
+| CDS_EXECUTION_LIST_CARD_VIEW | Enable this feature to improve the cards for the execution list view. This allows for other modules data to be displayed in each card on the list. **This is a Beta feature** |
+| CDS_RECENT_SCOPES | When enabled, hover over the scope selector to navigate to your five most recent scopes. Clicking the scope selector will continue to be the usual scope selection flow. **This is a Beta feature**. |
+| CDS_SETTINGS_ACCORDION | When enabled, a pop up tile will appear when hovering over **Project Settings** in the left navigation pane. **This is a Beta feature**. |

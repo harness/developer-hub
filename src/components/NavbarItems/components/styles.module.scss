@@ -4,7 +4,8 @@
   max-width: 220px;
 
   ul {
-    width: 220px;
+    min-width: 220px;
+    width: auto;
     position: absolute;
     z-index: 200;
     border: 1px solid var(--gray-300);
@@ -23,7 +24,6 @@
       line-height: 24px;
       height: 40px;
       white-space: pre;
-      overflow: auto;
       box-sizing: border-box;
       display: block;
       overflow: hidden;
@@ -513,9 +513,8 @@
       div {
         display: flex;
         justify-content: flex-start;
-        align-items: flex-start;
+        align-items: center;
         gap: 4px;
-        // background-color: yellow;
         max-height: 16px;
         img {
           width: 16px;
@@ -533,7 +532,6 @@
           flex-grow: 1;
           overflow: hidden;
           gap: 8px;
-          line-height: 12px;
         }
         span {
           color: var(--gray-900);

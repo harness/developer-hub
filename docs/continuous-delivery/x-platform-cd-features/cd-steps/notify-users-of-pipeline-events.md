@@ -525,12 +525,60 @@ The above JSON is for a specific stage, If you choose all stages three times the
 
 </Tabs>
 
+## Datadog notifications
+
+:::note
+Currently, the Datadog notifications feature is behind the feature flag `PIPE_DATADOG_NOTIFICATIONS`. Please, contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
+
+The Datadog Notifications in Harness allows you to send pipeline event notifications directly to your Datadog monitoring system using the [Events API (v1)](https://docs.datadoghq.com/api/latest/events/). 
+
+This integration helps you keep track of important pipeline updates within your existing monitoring workflows.
+
+### Prerequisites
+  
+  - **API Key for your Datadog account**: Generate an API key in Datadog by navigating to **Profile → Organization Settings → API Keys** or directly via the [API Keys page](https://app.datadoghq.com/organization-settings/api-keys).
+    
+  - **Datadog URL**: The specific Datadog instance URL for your account (e.g., `https://app.datadoghq.com` or your region-specific endpoint).
+
+### Configuration
+
+  - Give a name to your Datadog notification channel.
+
+  - Select Pipeline Events as per your requirements.
+
+  - Select Channel type as `Datadog(/v1/events API)` in Notification Method.
+
+    ![datadog-selection](./static/datadog-notification-1.png)
+
+  - Provide the Datadog URL and API key.
+
+    - Please provide the Datadog URL followed by `/api/v1/events` eg. `https://app.datadoghq.com/api/v1/events/`
+
+      ![datadog-API-and-URL](./static/datadog-api-conf.png)
+
+  - (Optional) Add headers if needed.
+
+  - Test and complete the setup.
+
+For details, check Datadog's documentation on [Events API (v1)](https://docs.datadoghq.com/api/latest/events/).
 
 ## Notify Slack channels in user groups
 
 If you have Harness user groups that have Slack webhooks set up in their **Notification Preferences**, you can select those groups and Harness will notify them in addition to the Email, Slack, or PagerDuty settings.
 
 Go to [send notifications using Slack](/docs/platform/notifications/send-notifications-using-slack) for more information.
+
+## Select Connectivity Mode
+
+Under **Select the Connectivity Mode**, you can choose to **Connect through Harness Platform** or **Connect through Harness Delegate**.
+
+![](./static/delegate-routing-support.png)
+
+When you select **Connect through Harness Delegate**, and click on **Continue**, you will be asked to select the Delegate that this pipeline notification rule will use, in **Delegate Setup**.
+
+![](./static/delegate-routing-setup.png)
 
 ## Enable or disable notification rules
 

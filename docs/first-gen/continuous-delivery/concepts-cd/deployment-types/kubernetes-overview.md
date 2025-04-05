@@ -8,13 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md).
 
 This topic describes the concept of a Harness Kubernetes deployment by describing the high-level steps involved.
 
 For a quick tutorial, see the [Kubernetes Quickstart](../../../first-gen-quickstarts/kubernetes-quickstart.md) tutorial.
-
-For detailed instructions on using Kubernetes in Harness, see the [Kubernetes How-tos](/docs/category/kubernetes-deployments).
 
 This guide covers new Harness Kubernetes Deployment **Version 2** features. <!-- TBD DOC-2411 For **Version 1** Kubernetes and Helm deployment features, see [Harness Kubernetes v1 FAQ ](https://docs.harness.io/article/dtu3ud1ok7-kubernetes-and-harness-faq). -->
 

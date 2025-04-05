@@ -219,7 +219,7 @@ source = "git::https://github.com/your-organization/your-private-module.git"
 
 :::tip
 
-The ability to authenticate with HTTPS is new! Here is a demo on its functionality:
+The ability to authenticate with HTTPS is new! The Minimum required delegate version is: 83401. Here is a demo on its functionality:
 
 <DocVideo src="https://www.loom.com/share/bb8b9e4996f14bf0a16839849b0b72e4?sid=3befc405-7c4d-4f21-afe0-c36e2962b566" />
 
@@ -538,6 +538,13 @@ Here's an example of decrypted Terraform JSON output:
 **Handling Sensitive Terraform Outputs**
 
 To extract specific values from the encrypted Terraform output, users can use tools like jq to parse and retrieve individual values from the JSON output.
+
+To parse a file using the jq tool, its content must be in a valid JSON format.
+
+For example, use the following command to extract the value for `test-output-name1`:
+```
+jq '.["test-output-name1"].value' file.json
+```
 
 ## Skip state storage
 

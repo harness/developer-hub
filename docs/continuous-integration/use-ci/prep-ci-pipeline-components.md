@@ -25,6 +25,12 @@ You can run a pipeline manually or set up triggers to automatically run it on a 
 5. If you want to use a [pipeline template](/docs/platform/templates/template), select **Start with Template**.
 6. Select **Start**.
 
+:::note
+
+By enabling the feature flag `CI_DYNAMIC_BRANCH_SELECTOR`, Git branches in the codebase branch selector will be dynamically populated when creating a new pipeline. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+:::
+
 You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure [pipeline settings](#pipeline-settings).
 
 :::tip
@@ -164,7 +170,7 @@ You can optimize your CI pipelines to make them faster, more efficient, and more
 
 ### Dependencies
 
-* [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md)
+* [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md)
 * [Caching and data sharing](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md)
 * [Dependency management strategies](/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies.md)
 

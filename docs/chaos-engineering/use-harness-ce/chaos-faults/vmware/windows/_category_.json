@@ -1,0 +1,13 @@
+{
+  "position": 6,
+  "label": "VMware - Windows",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"VMware - Windows"
+  },
+  "customProps": {
+    "description": "VMware faults executed on Windows agent"
+  }
+}

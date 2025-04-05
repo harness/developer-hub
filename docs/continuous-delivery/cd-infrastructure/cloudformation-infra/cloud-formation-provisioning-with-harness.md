@@ -38,6 +38,9 @@ Dynamic provisioning with CloudFormation is supported for most Harness integrati
 
 For more information, go to [Provision target deployment infrastructure dynamically with CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/provision-target-deployment-infra-dynamically-with-cloud-formation).
 
+We support using CloudFormation provisioning with an **OIDC-enabled AWS connector**, but it requires Delegate version `854xx` or later. For more information, refer to [AWS OIDC connector reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+
+
 ### Limitations
 
 Infrastructure provisioning is limited to specific infrastructure settings for the target environment.

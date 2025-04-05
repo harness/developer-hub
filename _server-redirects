@@ -82,9 +82,14 @@
 
 /docs/internal-developer-portal/roadmap/harness-vs-backstage /docs/internal-developer-portal/harness-vs-backstage
 /docs/category/self-service-flows/ /docs/category/self-service-workflows/
+/docs/category/get-started-with-idp/ /docs/internal-developer-portal/get-started/
 
 # Added by ivikramsahu on 08-01-2025 for renaming notifications to notification-and-banners
 
 /docs/category/notifications /docs/category/notifications-and-banners
+
+# Added by ivikramsahu on 08-02-2025 fixing the missing url by redirecting to code-repositories
+
+/docs/platform/connectors/ref-source-repo-provider/http-helm-repo-connector-settings-reference /docs/platform/connectors/code-repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference
 
 # Redirects generated from Front Matter [sytem generated goes below here]:

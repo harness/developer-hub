@@ -7,11 +7,7 @@ redirect_from:
   - /tutorials/platform/configure-oidc-gcp-wif-ci-hosted
 ---
 
-:::note
 
-Currently, the OIDC connectivity mode is compatible with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) only, and it is behind the feature flag  `PL_GCP_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 [GCP connectors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp) that use OpenID Connect (OIDC) allow Harness to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials. If accessing Google cloud resources, you can use [workload identity federation (WIF)](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector.
 
@@ -71,8 +67,6 @@ For example:
 
 1. [Create a pipeline](../use-ci/prep-ci-pipeline-components.md#create-a-harness-ci-pipeline) and [add a Build stage](../use-ci/set-up-build-infrastructure/ci-stage-settings.md#add-a-build-stage-to-a-pipeline).
 2. Configure the Build stage to [use Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#use-harness-cloud).
-
-   Currently, OIDC connectivity mode for GCP is supported for Harness Cloud build infrastructure only. OIDC-enabled GCP connectors only work in Build stages that use Harness Cloud build infrastructure.
 
 3. Add a [Build and Push to GAR step](../use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md) to the Build stage.
 

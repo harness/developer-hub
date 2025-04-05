@@ -28,7 +28,7 @@ The landing page of the Artifacts section provides a comprehensive list of all a
 * **Environments**: The environments where the artifact has been deployed with the count. 
 * **Vulnerabilities**: The vulnerabilities identified in the most recent scan of the digest. 
 
-<DocImage path={require('./static/artifacts-section/artifact-level-1.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/artifacts-overview-tab.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 #### Search and filter options
@@ -48,7 +48,7 @@ When you select an artifact, you can view the list of all its digests. For each 
 * **Vulnerabilities:** The count of vulnerabilities categorized by severity: Critical, High, Medium, and Low.
 
 
-<DocImage path={require('./static/artifacts-section/artifact-level-2.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/artifacts-digest.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 #### Search and filter options:
@@ -59,7 +59,7 @@ You can search for a specific digest or apply filters based on dependencies, lic
 ## Artifact Overview
 
 
-<DocImage path={require('./static/artifacts-section/artifact-overview.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/scs-fullview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 When you select an artifact’s digest, you can view a complete overview. This tab provides general information about the artifact and summarizes the following aspects concisely:
@@ -70,6 +70,7 @@ When you select an artifact’s digest, you can view a complete overview. This t
 * **SBOM Policy Violations:** Lists the SBOM policy violations for both allow-list and deny-list categories.
 * **Vulnerabilities:** Provides a summary of vulnerabilities found from the security scan, categorized by severity: critical, high, medium, and low.
 * **SLSA:** Shows the status of SLSA verification (passed/failed). You can also download the SLSA provenance from here.
+* **Artifact Signing and Verification:** Displays the artifact signing details and verification results, along with a link to view the logs.
 
 ### Chain of Custody
 The Chain of Custody provides a comprehensive and immutable record of an artifact's lifecycle throughout the software supply chain. It captures every significant event during the artifact's journey, allowing detailed traceability. These logs include events from stages such as **Build** (Harness CI), **Deploy**, and **Security** (actions from the Harness **STO** and **SCS** modules).
@@ -81,7 +82,7 @@ Each entry in the Chain of Custody contains relevant details about the artifact'
 - **Where**: The stage where the event occurred.  
 - **Why**: The purpose of the action, often linked to pipeline execution data.
 
-<DocImage path={require('./static/artifacts-section/artifact-chain-of-custody.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/scs-chainofcustody.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ## SBOM Tab
 
@@ -95,7 +96,7 @@ The SBOM tab presents details of all the dependencies within the artifact, inclu
 * **PURL:** Package URL.
 * **Supplier:** Source of the dependency.
 
-<DocImage path={require('./static/artifacts-section/artifact-sbom.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/scs-sbomtab.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 For more information about the levels of image dependencies, refer to the "[Label Components from Image](https://developer.harness.io/docs/software-supply-chain-assurance/label-components-from-image)" documentation.
@@ -120,7 +121,7 @@ The Deployments tab enables you to track the active deployments of your artifact
 * **Triggered By:** Details about the deployment trigger.
 
 
-<DocImage path={require('./static/artifacts-section/artifact-deployments.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/artifacts-deployments.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 #### Search and filter options
@@ -132,6 +133,6 @@ You can search for an environment or apply filters based on environment type and
 
 The Vulnerabilities tab presents the scan results performed on the artifact, consolidating findings from various scanning tools. This view categorizes all identified vulnerabilities by severity and allows filtering based on scanners and other details. The security scanning is facilitated by the Harness STO (Security Testing Orchestration) module.
 
-<DocImage path={require('./static/artifacts-section/artifact-vulnerabilities.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/artifacts-vulnerabilities.png')} width="100%" height="100%" title="Click to view full size image" />
 
 Refer to [view security test results](https://developer.harness.io/docs/category/view-security-test-results) in Harness STO documentation for more detailed information about the view and navigation.

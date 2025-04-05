@@ -197,7 +197,33 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
 
 
   </TabItem>
+  <TabItem value="helm" label="Helm delegate" delegate>
 
+  To enable mTLS on a Kubernetes delegate, you have to create a secret that will store `client.crt` and `client.key` files.
+
+  1. From the same folder where you have your `client.crt` and `client.key` files, run the following command to create the secret.
+
+      ```
+        kubectl create secret -n <delegate namespace> generic client-certificate \
+          --from-file client.crt=client.crt \
+          --from-file client.key=client.key
+      ```
+
+  2. In your helm command add the `mTLS.secretName` flag to enable the mTLS feature. Setting this flag will mount the secret as a volume to both Delegate and Upgrader compoentns and configure appropriate config options. For example
+      ```
+        helm upgrade -i helm-delegate --namespace <delegate namespace> --create-namespace \
+            harness-delegate/harness-delegate-ng \
+          --set delegateName=<delegate name> \
+          --set accountId=<account ID> \
+          --set delegateToken=<delegate token> \
+          --set managerEndpoint=https://<subdomain>.agent.harness.io \
+          --set delegateDockerImage=harness/delegate:yy.mm.verno \
+          --set mTLS.secretName=client-certificate \
+          --set replicas=1 \
+          --set upgrader.enabled=true
+      ```
+
+  </TabItem>
   <TabItem value="docker" label="Docker delegate">
     To enable mTLS on a Docker delegate, do the following:
 

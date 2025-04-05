@@ -472,13 +472,7 @@ For instructions, go to [Use IRSA](/docs/platform/connectors/cloud-providers/add
 
 Currently, OIDC authentication for AWS connectors is behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-Additionally, this option requires Harness Delegate version 24.03.82603 or later.
-
-:::
-
-:::warning
-
-If you are using OIDC for your connection, you will not be able to connect to AWS through the Harness Platform. Please connect through a Harness Delegate.
+Additionally, this option requires Harness Delegate version 24.03.836xx or later.
 
 :::
 
@@ -495,7 +489,9 @@ Use the following Harness OIDC provider endpoint and OIDC audience settings to c
 
 These are the current supported deployment swimlanes for AWS OIDC:
 
-- ECS
+- AWS ECS
+- AWS ASG
+- AWS Lambda
 - Kubernetes
 - Terraform
 - CloudFormation
@@ -743,16 +739,7 @@ For more strategies, go to [Exponential Backoff And Jitter](https://aws.amazon.c
       <th style={{ border: '1px solid black', padding: '8px' }}>Limitations</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Deployment Support</strong></td>
-      <td style={{ border: '1px solid black', padding: '8px' }}>
-        The following deployments are not supported using the OIDC connector:
-        <ul>
-          <li>AWS Serverless Lambda deployments</li>
-        </ul>
-      </td>
-    </tr>
+  <tbody> 
     <tr>
       <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Plugin-based Support</strong></td>
       <td style={{ border: '1px solid black', padding: '8px' }}>
@@ -766,38 +753,11 @@ For more strategies, go to [Exponential Backoff And Jitter](https://aws.amazon.c
       </td>
     </tr>
     <tr>
-      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Delegate-based Support</strong></td>
-      <td style={{ border: '1px solid black', padding: '8px' }}>
-        The following Delegate-based connections are not supported using the OIDC connector:
-        <ul>
-          <li>SSH</li>
-          <li>WinRM</li>
-          <li>Spot</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
       <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Provisioner-based Support</strong></td>
       <td style={{ border: '1px solid black', padding: '8px' }}>
         The following provisioners are not supported using the OIDC connector:
         <ul>
-          <li>CloudFormation provisioner</li>
           <li>CDK provisioner</li>
-          <li>Terraform provisioner</li>
-          <li>Terraform Cloud provisioner</li>
-          <li>Terragrunt provisioner</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td style={{ border: '1px solid black', padding: '8px' }}><strong>OIDC Manifest and Artifact Support</strong></td>
-      <td style={{ border: '1px solid black', padding: '8px' }}>
-        The following artifact and manifest sources are not supported using the OIDC connector:
-        <ul>
-          <li>AMI Artifact</li>
-          <li>ECR Artifact</li>
-          <li>S3 Artifact</li>
-          <li>S3 Manifest</li>
         </ul>
       </td>
     </tr>

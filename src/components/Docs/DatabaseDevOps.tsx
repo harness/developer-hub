@@ -1,23 +1,22 @@
-import React from "react";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Link from "@docusaurus/Link";
-import clsx from "clsx";
-import styles from "./styles.module.scss";
-import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React from 'react';
+import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
+import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
-import { docsCards } from "./data/databaseDevOpsData";
+import { docsCards } from './data/databaseDevOpsData';
 
-import { useColorMode } from "@docusaurus/theme-common";
+import { useColorMode } from '@docusaurus/theme-common';
 export default function FF() {
   const { colorMode } = useColorMode();
-  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+  const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   return (
     <div className="container">
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_dbdevops.svg`} />
-            <h1>Database DevOps (Beta)</h1>
+            <h1>Database DevOps</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/kb/database-devops">
@@ -52,13 +51,12 @@ export default function FF() {
                     ? `${baseUrl}img/dbdevops_landing_page_lightmode.svg`
                     : `${baseUrl}img/dbdevops_landing_page_darkmode.svg`
                 }
-              />{" "}
+              />{' '}
             </div>
           </div>
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
     </div>
-    // </Layout>
   );
 }

@@ -25,7 +25,7 @@ The RSPM feature in SCS offers details into:
 * **Software Bill of Materials (SBOM)**: Provides an in-depth look into the composition of the repository by providing a detailed list of dependencies. Additionally, it also offers the quality of the SBOM in various categories, utilizing a scoring system ranging from 0 to 10.
 
 
-<DocImage path={require('./get-started/static/get-started-step-7.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/rspm-screen.png')} width="100%" height="100%" title="Click to view full size image" />
 
 You can click on a repository in the “Code Repositories” section, and it will present all the details specific to each aspect of the repository.
 
@@ -38,10 +38,20 @@ To onboard your code repositories, refer to the [Get Started](./get-started) gui
 
 The RSPM feature in the Harness SCS module is currently supported only for **GitHub**. Harness plans to add support for other code repositories in the near future. To learn more about all supported integrations and their required permissions, please refer to the [Integrations and Permissions](./integrations-and-permissions)
 
+:::tip
+
+To efficiently onboard a large number of GitHub repositories, set up a single GitHub connector at the account level using [Harness APIs](https://apidocs.harness.io/tag/integration), which enables you to select and onboard repositories for specific projects and automatically create scan pipelines.
+
+:::
 ## Overview Tab
 
 The overview page provides a comprehensive summary of a specific code repository's security and risk posture. This page compiles all the crucial details in one place, offering a clear and concise view.
 
+:::note
+
+Scans will not run if **Git Experience** is enforced and the **Default Store Type for Entities** is set to remote in the account settings. Make sure these settings are configured correctly to enable scan execution.
+
+:::
 
 ### What is an Evaluation?
 
@@ -64,13 +74,13 @@ In this tab, you will find a list of rules applied to the repository, each accom
 
 Filters can help you narrow down the rules based on severity, including low, medium, high, and critical levels. You can filter the rules by their evaluation status, such as passed, failed, or all. 
 
-<DocImage path={require('./static/rspm-risk-and-compliance-tab.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/rspm-repo.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 
 By clicking on a specific evaluation status, you can access detailed information about the rule, including the reason for its failure and general remediation steps to help address the issues identified.
 
-<DocImage path={require('./static/rspm-rac-details.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/rspm-sideview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 
@@ -80,7 +90,7 @@ The SBOM section presents a comprehensive list of all the repository dependencie
 
 Filters are available to refine the list of dependencies, allowing users to find specific dependencies based on version, license, and package manager. Additionally, a search function enables users to locate dependencies based on the supplier. These filtering options make it easier to navigate through the dependencies and focus on particular aspects that may require attention.
 
-<DocImage path={require('./static/rspm-sbom-tab.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/rspm-sbom-view.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 
@@ -92,7 +102,7 @@ The Vulnerabilities tab presents the scan results performed on the repository, c
 The code repository is cloned in the Harness cloud for executing these scans, facilitated by the STO (Security Testing Orchestration) module
 :::
 
-<DocImage path={require('./static/rspm-vulnerabilities-tab.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('./static/rspm-vulnerabilities-view.png')} width="100%" height="100%" title="Click to view full size image" />
 
 The types of scans conducted include:
 1. Static Application Security Testing (SAST) using [Semgrep](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference/) 

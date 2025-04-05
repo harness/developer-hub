@@ -24,11 +24,11 @@ This topic explains how to set up and use bidirectional sync.
 ## Important notes
 
 - If users make changes on the Harness and Git side at the same time, precedence is given on a first come, first served basis.
-- Customers using the current unidirectional sync (Harness --> Git) functionality can migrate to bi-directional sync using the steps in this topic. The process involves enabling an account-level setting. 
 - If you make an invalid YAML change to the YAML in the Git repo file an **Invalid YAML Detected** error appears in the Harness UI. You can fix the invalid YAML in Harness or in the Git repo.
 - If your Git repo server is on-premise, it must have connectivity to Harness SaaS. 
 - Currently, only `.yaml` and `.yml` files are supported for bi-directional sync.
 - When configuring a webhook, you need to be the owner of the relevant git repository.
+- Bidirectional sync is not supported for Harness Code.
 
 
 ## Configure bi-directional sync
@@ -39,8 +39,12 @@ To enable bidirectional sync, you need to register webhooks for the repository w
 
 To facilitate the setup of entities with bidirectional sync, Harness provides banner notifications if an entity is not synced. Suppose you create a new remote entity in Harness without bidirectional sync enabled. In that case, you will see a banner on the entity creation page prompting you to set up a webhook to sync and track changes from Git to Harness. Below is an example of a remote pipeline without bidirectional sync enabled.
 
-:::info note
-When using Git Experience with GitHub in bidirectional sync mode, merging a commit with 300 or more files may cause some files to not sync properly in the GitEx cache. This is due to GitHub API limitations, which parse up to 300 files between two commits. Additionally, such large merges may contribute to hitting the GitHub API rate limit. It is recommended to keep the number of files in a single commit below 300 to ensure consistency and avoid potential rate limit issues.
+:::info Note: 300 File Limit
+When using Git Experience with GitHub in bidirectional sync mode, **merging a commit with 300 or more files may cause some files to not sync properly in the GitEx cache**. This is due to GitHub API limitations, which parse up to 300 files between two commits. Customers may see that the webhook payload lists a full list of files, but only 300 will be processed.  
+
+Additionally, such large merges has the potential to increase the possibility of hitting the GitHub API rate limit. This is due to the fact that each commit has three API calls correlated to each file transfer, and if multiple files across multiple pipelines are being committed at the same time, it can increase the possibility of a rate-limit situation.
+
+It is recommended to keep the number of files in a single commit below 300 to ensure consistency and avoid potential rate limit issues.
 :::
 
 

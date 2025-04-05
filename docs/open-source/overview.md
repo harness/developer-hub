@@ -15,8 +15,9 @@ Here’s a short overview of the capabilities:
 
 ## How is Harness Open Source related to Drone?
 
-Gitness was the next step in the evolution of [Drone](https://www.drone.io), from continuous integration to source code hosting, bringing code management and pipelines closer together. 
+Harness and Drone have merged, and the repository has been [renamed](https://github.com/harness/harness) to reflect this. If you are using **Drone 2.0**, you would upgrade to **Drone 3.0**, now known as Harness Open Source.
 
-Gitness then transformed into Harness Open Source, adding two new capabilities: [hosted development environments](/docs/open-source/gitspaces/overview) and [artifact registry](/docs/open-source/registries/overview). The goal is for Harness Open Source to eventually be at full parity with Drone in terms of pipeline capabilities, allowing users to seamlessly migrate from Drone to Harness Open Source.
+For users who need enterprise-grade features such as high availability (HA), role-based access control (RBAC), and governance, the paid offering of Harness Open Source is available as part of the Harness Platform.
 
-Until then, Drone development will continue in a [feature branch](https://github.com/harness/gitness/tree/drone).
+### Migration from Drone to Harness Open Source
+The migration process is designed to be seamless, with Harness handling the transition and required resourcing. If you are currently using Drone and looking to migrate, please contact your account team for details.

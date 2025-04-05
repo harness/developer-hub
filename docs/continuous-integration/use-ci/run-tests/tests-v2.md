@@ -5,6 +5,7 @@ sidebar_position: 3
 ---
 
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
+import EnhancedOutVar from '/docs/continuous-integration/shared/enhanced-output-variables.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -18,12 +19,12 @@ If this feature is not yet enabled in your account, please reach out to [Harness
 :::
 
 
-:::info
+:::note
 
-To use TI for Python, your codebase must be Python 3.
+* Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
+* To use TI for Python, the image for the step must have Python 3 installed and accessible. Additionally, Virtual Environments for Python (`venv`) are not supported by TI.
 
 :::
-
 
 ## Configure the Test step
 
@@ -166,6 +167,8 @@ When using **.Net**, make sure to enable log reporting when running the tests, e
 ### Output Variables
 
 <OutVar />
+
+<EnhancedOutVar/>
 
 ### Environment Variables
 

@@ -12,8 +12,6 @@ For a successfully blue green deployment, you will require this deployment step 
 
 :::note
 
-Currently, this feature is behind the feature flag `CDS_HELM_BG_STRATEGY`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
-
 Harness Delegate version 84300 or later is required for this feature.
 
 :::

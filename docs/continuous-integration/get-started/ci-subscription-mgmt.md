@@ -6,68 +6,49 @@ redirect_from:
   - /docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt
 ---
 
-import Admin from '/docs/continuous-integration/shared/subscription-add-billing-admin.md';
-import Cancel from '/docs/continuous-integration/shared/subscription-cancel.md';
-import Create from '/docs/continuous-integration/shared/subscription-create.md';
+<!-- ![](/docs/continuous-integration/get-started/static/ci_usage_overview.png) -->
+
+
 import Overview from '/docs/continuous-integration/shared/subscription-overview.md';
-import Billing from '/docs/continuous-integration/shared/subscription-update-billing.md';
-import Invoice from '/docs/continuous-integration/shared/subscription-view-invoice.md';
 import View from '/docs/continuous-integration/shared/subscription-view-subscriptions.md';
-import License from '/docs/continuous-integration/shared/subscription-view-usage.md';
+
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Overview />
-
-## Subscriptions
-
-You can view and manage your Harness CI subscription in your Harness **Account Settings**.
-
-### View subscriptions
 
 <View />
 
-From the **Subscriptions** page, you can:
 
-* [Upgrade your plan](#upgrade-your-plan).
-* [View subscription and license usage details](#license-usage).
+## View and manage subscriptions
 
-### Upgrade your plan
+To view and manage your Harness CI subscription in your Harness Account
+* Go to Account Settings, then select Subscriptions. 
+  * To view **CI subscriptions** details, on the Subscriptions page, select **Continuous Integration** in the **Licenses** tab.
+  * To view **Cloud Credits** usage, on the Subscriptions page, select **Cloud Credits** tab.
 
-<Create />
+### Continuous Integration License
 
-### Switch or downgrade your plan
+####  Developer 360 subscription
 
-You can upgrade from the Free plan to [Paid plans](https://www.harness.io/pricing) through the Harness Platform.
+Harness Continuous Integration module is using the Developer 360 subscription model. 
 
-If you would like to switch between paid plans or downgrade to the Free plan, you must contact the [Harness Sales team](https://www.harness.io/pricing?module=ci#).
+[Learn more Developer license model](/docs/platform/get-started/subscriptions-licenses/subscriptions/).
 
-### Cancel your subscription
+<DocImage path={require('/docs/continuous-integration/get-started/static/ci-user-license-overview.png')} />
 
-<Cancel />
+### Cloud Credits
 
-## Billing
+The Cloud Credits View in Harness provides a comprehensive overview of your cloud credit consumption and allocation. It enables you to track critical details such as your available credits, month-to-date usage, upcoming credit expiry dates, and any overages. 
 
-You can manage your payment method and billing admins in your Harness account.
+[Learn more about Cloud Credits page](/docs/platform/get-started/subscriptions-licenses/subscriptions/#cloud-credits).
 
-In the legacy navigation, go to **Account settings** and then select **Billing**. In nav 2.0, **Billing** is under the **Subscriptions** section.
+[Learn more about Harness Cloud billing](/docs/continuous-integration/get-started/ci-subscription-mgmt#harness-cloud-billing-and-cloud-credits).
 
-### Update your billing information
 
-<Billing />
+<DocImage path={require('/docs/continuous-integration/get-started/static/credits-usage-new-v2.png')} />
 
-### Add a billing admin
 
-<Admin />
-
-### Request an invoice
-
-<Invoice />
-
-## License and Cloud Credit usage
-
-<License />
 
 ## Harness Cloud billing and Cloud credits
 
@@ -136,7 +117,7 @@ Cloud credits can be consumed by all users within the account registered to run 
 
 ### Usage limits
 
-The following sections describe limits for concurrent stage execution on Harness Cloud, Storage used by [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) features, and network transfers. You can request request to increase concurrency, network transfer, or storage limits. For more information, contact Harness Sales or your account manager.
+The following sections describe limits for concurrent stage execution on Harness Cloud, Storage used by [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) features, and network transfers. You can request request to increase concurrency, network transfer, or storage limits. For more information, contact Harness Sales or your account manager.
 
 #### Concurrency
 
@@ -152,7 +133,7 @@ The following table lists concurrency limits for each OS type and plan tier.
 
 #### Storage
 
-Harness stores cached data when using cache optimizing [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) features, in Harness managed storage. The maximum amount of cache data that you can store depends on the plan you are subscribed to:
+Harness stores cached data when using cache optimizing [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) features, in Harness managed storage. The maximum amount of cache data that you can store depends on the plan you are subscribed to:
 
 * Free: 2 GB
 * Startup: 5 GB

@@ -3,18 +3,8 @@ import { Horizon } from "./roadmapData";
 export const codeData: Horizon = {
   
   Now: {
-    description: "Q4 2024, Nov-Jan 2025",
+    description: "Q1 2025, Feb-Apr 2025",
     feature: [
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Mentions",
-        description: "Mention users and groups in PR comments",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "User Group Support",
-        description: "Use user groups wherever users are supported: mentions, reviews, code owners, etc.",
-      },
       {
         tag: [{ value: "Security" }],
         title: "SSH Support",
@@ -26,14 +16,9 @@ export const codeData: Horizon = {
         description: "First-class support for Jira available in Atlassian Marketplace",
       },
       {
-        tag: [{ value: "Platform" }],
-        title: "Self-Managed Enterprise (SMP) Support",
-        description: "Host Harness DevOps platform on your own infrastructure, including Harness Code",
-      },
-      {
         tag: [{ value: "Governance" }],
-        title: "Open Policy Agent (OPA) Integration",
-        description: "Adding additional events for OPA enforcement",
+        title: "Default Branch Rules",
+        description: "Centrally manage all branch rules for all repositories in a project, org, or account",
       },
       {
         tag: [{ value: "Governance" }],
@@ -42,24 +27,24 @@ export const codeData: Horizon = {
       },
       {
         tag: [{ value: "Governance" }],
-        title: "Default Repository Settings",
-        description: "Centrally manage repository settings for all repositories in a project, org, or account",
+        title: "Push Rules",
+        description: "More push rules for branches to enforce compliance and security standards",
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Project, Org, and Account Pull Requests",
         description: "View, search, and filter all pull requests in a project, org, or account",
       },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Automatically Add Code Owners to Reviews",
+        description: "Enable automatically adding Code Owners to reviews",
+      },
     ],
   },
   Next: {
-    description: "Q1 2025, Feb-Apr 2025",
+    description: "Q2 2025, May-Jul 2025",
     feature: [
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Archive Repo",
-        description: "Mark a repo as archived to disable all future development",
-      },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Issue Tracking",
@@ -67,25 +52,39 @@ export const codeData: Horizon = {
       },
       {
         tag: [{ value: "Developer Experience" }],
-        title: "Pipeline view",
-        description: "Visualize all CI pipeline runs for a repository, branch, or pull request",
+        title: "Repo Insights",
+        description: "Summary insights for the repo based on downstream activity",
       },
-      
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Cross-Project Cloning",
+        description: "Enable pipelines to clone repos across various repositories in different projects",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Code Templates",
+        description: "Create templates of repositories to quickly generate a collection of repositories in a project",
+      },
+    ],
+  },
+  Later: {
+    description: "Q3 2025, Aug 2025 & beyond",
+    feature: [
       {
         tag: [{ value: "Harness AI" }],
         title: "Automated Code Suggestions",
         description: "",
       },
       {
-        tag: [{ value: "Harness AI" }],
-        title: "Root cause (RCA) Summary in Checks",
-        description: "Summarize status check logs directly in pull requests",
+        tag: [{ value: "Developer Experience" }],
+        title: "Pipeline view",
+        description: "Visualize all CI pipeline runs for a repository, branch, or pull request",
       },
-    ],
-  },
-  Later: {
-    description: "Q2 2025, May 2025 & beyond",
-    feature: [
+      {
+        tag: [{ value: "Governance" }],
+        title: "Open Policy Agent (OPA) Integration",
+        description: "Adding additional events for OPA enforcement",
+      },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Commit Graph",
@@ -101,6 +100,26 @@ export const codeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Archive Repo",
+        description: "Mark a repo as archived to disable all future development",
+      },
+      {
+        tag: [{ value: "Platform" }],
+        title: "Self-Managed Enterprise (SMP) Support",
+        description: "Host Harness DevOps platform on your own infrastructure, including Harness Code",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Mentions",
+        description: "Mention users and groups in PR comments",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "User Group Support",
+        description: "Use user groups wherever users are supported: mentions, reviews, code owners, etc.",
+      },
       {
         tag: [{ value: "Migrations" }],
         title: "Import all Repository Data",

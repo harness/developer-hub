@@ -62,6 +62,10 @@ Policies are written in the OPA policy language, Rego.
 * **Highly recommend:** Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
 * See [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) from OPA. The [Rego Cheatsheet](https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/) is also helpful to have on hand.
 
+:::info note
+Harness platform uses the Open Policy Agent (OPA) library version **0.62.0**. For more details, you can refer to [OPA v0.62.0](https://github.com/open-policy-agent/opa/tree/v0.62.0).
+:::
+
 ### Policy Editor
 
 Harness policies are written and tested using the built-in policy editor.
@@ -162,12 +166,19 @@ Soon, policies can be applied to more entities, such as Connectors, Services, En
 
 ### Pipelines
 
+:::info note
+Currently, **On Step Start** pipeline event is behind the feature flag `PIPE_IS_PRE_STEP_OPA_POLICY_EVALUATION_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 Policies are evaluated against Harness Pipelines. The input payload is an expanded version of the Pipeline YAML, including expanded references of stages/steps. 
 
 Policy Sets can be configured to be enforced automatically on these Pipeline events:
 
 * **On Save:** Policies are evaluated when the Pipeline is saved.
 * **On Run:** Policy sets are evaluated after the preflight checks.
+* **On Step Start:** Policy sets are evaluated when the step execution starts.
+
+![](./static/pipeline-events-opa.png)
 
 Severities:
 
@@ -175,6 +186,21 @@ Severities:
 * **On warning (Warn and Continue):** a message is shown and the action is completed.
 
 The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. See [Add a Governance Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline).
+
+### Templates
+
+Policy sets can be configured to be enforced automatically on templates during **On Save** event.
+
+Severities:
+
+* **On error (Error and Exit):** a message is shown and the action does not complete.
+* **On warning (Warn and Continue):** a message is shown and the action is completed.
+
+You can also create policy that allows you to validate if the template stored is Remote or Inline.
+
+:::info note
+We have a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote. Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag.
+:::
 
 ### Feature Flags
 
@@ -199,6 +225,28 @@ You can define a policy with the entity type Custom.
 The Custom entity type provides flexibility to enforce policy evaluations against any input payload during Pipeline execution. This is done using the Policy step. See [Add a Governance Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline).
 
 Custom entity types are open ended. There is no pre-set JSON schema that is used for Custom policies. The payload that the policy is evaluated against is determined by you (defined in the Policy step).
+
+### Service 
+
+:::info note
+Currently this feature is behind the feature flag `CDS_ENABLE_SERVICE_ON_RUN_OPA_EVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Policies can be apploed to the Service entity during **On Run** and **On Save** events.
+
+Checkout this interactive guide for selecting **Service** entity on Policy set:-
+
+<iframe
+	src="https://app.tango.us/app/embed/560906e2-d5dc-4df1-8a47-8f9da89b5932"
+	style={{minHeight:'640px'}}
+	sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin"
+	title="Creating a New ChaosHub and Connector in Harness"
+	width="100%"
+	height="100%"
+	referrerpolicy="strict-origin-when-cross-origin"
+	frameborder="0" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"
+	allowfullscreen="allowfullscreen"></iframe>
+
 
 ## Policy and Policy Set Hierarchy and Inheritance
 

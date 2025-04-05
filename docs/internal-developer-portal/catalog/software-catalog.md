@@ -4,7 +4,7 @@ description: Learn more about the software catalog in Harness IDP
 sidebar_position: 1
 sidebar_label: Overview
 redirect_from:
-  - /docs/internal-developer-portal/features/software-catalog
+  - /docs/internal-developer-portal/catalog/
 ---
 
 ![](./static/catalog-screenshot.png)
@@ -53,9 +53,8 @@ You can access catalog APIs to retrieve software components from the catalog, re
 Start by generating a Harness API Key as described in [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). Then, by using your Harness account ID and the API Key, you can make requests to the IDP catalog APIs as follows:
 
 ```
-curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations' \
---header 'x-api-key: {X_API_KEY}' \
---header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
+curl --location 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations' \
+--header 'x-api-key: <HARNESS_TOKEN>'
 ```
 
 To learn more about the available catalog APIs supported by Backstage, go to [API](https://backstage.io/docs/features/software-catalog/software-catalog-api/).

@@ -1,9 +1,7 @@
 import {
-    CardItem,
-    CardSections,
-    docType,
-  } from "@site/src/components/LandingPage/TutorialCard";
-  import { MODULES } from "@site/src/constants"
+  CardSections
+} from "@site/src/components/TutorialCard/TutorialCard";
+import { MODULES } from "@site/src/constants";
 
   /* Define the cards - start */
 
@@ -89,7 +87,7 @@ import {
             module: MODULES.ccm,
             description:
               "Identify unusual or unexpected changes in your cloud service expenses.",
-            link: "/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm",
+            link: "/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/a-detect-cloud-cost-anomalies-with-ccm",
           },
           {
             title: "CCM FAQs",

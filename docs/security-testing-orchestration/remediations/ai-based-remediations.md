@@ -18,12 +18,14 @@ Harness leverages state-of-the-art AI to streamline the triaging and resolution 
 
 <DocImage path={require('./static/Harness-AI-in-STO.png')} width="100%" height="100%" title="Click to view full size image" />
 
-Once you complete a security scan using the scanners in STO, you can access all the [scan results](/docs/security-testing-orchestration/dashboards/view-scan-results.md). For each identified security issue, Harness AI analyzes the details and provides specific remediation guidance. Key functionalities include:
+Once you complete a security scan using the scanners in STO, you can access all the [scan results](/docs/security-testing-orchestration/view-security-test-results/view-scan-results.md). For each identified security issue, Harness AI analyzes the details and provides specific remediation guidance. Key functionalities include:
 
 - **[View AI Remediation](#view-ai-remediations-for-security-issues):** Inside each issue, you'll find detailed steps for remediation provided by the Harness AI.
 - **[Edit Remediation](#edit-to-enhance-the-ai-remediations):** You can modify the AI suggestions and regenerate improved, context-specific advice tailored to the issue.
 - **[Create Pull Request](#create-pull-request-from-sto):** You can directly create a pull request with the remediation from STO, [available for supported code repositories and scanners](#configuration-for-code-suggestions-and-create-pull-request-features).
 - **[Make Code Suggestions](#make-code-suggestion-from-sto):** You can incorporate the remediation as code suggestions into an existing pull request, [available for supported code repositories and scanners](#configuration-for-code-suggestions-and-create-pull-request-features).
+
+<DocVideo src="https://youtu.be/h-Obqn2b9o4?si=nLu299rwZUfHODSH" />
 
 ## Important notes for Harness AI remediations in STO
 

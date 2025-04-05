@@ -489,6 +489,35 @@ deploymentConfiguration:
   minimumHealthyPercent: 100
 ```
 
+**ECS Tag Management Support**
+
+Harness also supports managing tags for Amazon ECS services. You can now create, update, or delete tags in your ECS service definition, allowing for better resource organization, automation, and management of your ECS deployments.
+
+
+<details>
+<summary>Sample yaml with tags</summary>
+
+```yaml
+launchType: FARGATE
+serviceName: myapp
+desiredCount: 1
+networkConfiguration:
+  awsvpcConfiguration:
+    securityGroups:
+      - <Security Group Id>
+    subnets:
+      - <Subnet Id>
+    assignPublicIp: ENABLED
+deploymentConfiguration:
+  maximumPercent: 200
+  minimumHealthyPercent: 100
+"tags": 
+  - "key": "Environment",
+  - "value": "Production"
+```
+
+</details>
+
 The ECS Service Definition is now added to the Service.
 
 ![](./static/ecs-deployment-tutorial-42.png)
@@ -802,6 +831,21 @@ You can see the same events in the AWS console for the ECS service:
 You can copy any of these and use them in later steps in your pipeline.
 
 ![](./static/ecs-deployment-tutorial-51.png)
+
+
+:::note  
+You can achieve more accurate failure detection for ECS Rolling Deployments in Harness. Harness evaluates both ECS task statuses and service steady-state statuses to determine deployment health.
+
+<div align="center">
+  <DocImage path={require('./static/ecs-steady-state-logs.png')} width="100%" height="100%" title="Click to view full size image" />
+</div>
+
+<div align="center">
+  <DocImage path={require('./static/ecs-steady-state-logs-2.png')} width="100%" height="100%" title="Click to view full size image" />
+</div>
+
+Currently, this feature is behind the feature flag `CDS_ECS_MONITOR_TASK_STATUS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 ## Review
 
@@ -1308,6 +1352,14 @@ Harness performs some validations before the deployment. Before the deployment, 
 - If the validations for the Blue and Green ECS services fail, Harness aborts the deployment. You must fix the issue by resetting the service in the AWS Management Console.
 
 - If you abort the deployment, the execution remains incomplete. During the next deployment, you must fix the configuration by resetting the ECS service in the AWS Management Console.
+
+:::note
+Harness is introducing a new feature flag: `CDS_ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS`. When enabled, the validation described above will only be performed if the target groups attached to the services match those attached to the Load Balancer specified in the deployment step. That will be available with the delegate version: `851xx`.
+
+This ensures that Harness leverages the configuration defined in the step, enhancing accuracy and consistency during deployment.
+
+Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag. 
+:::
 
 ### ECS Rollbacks
 

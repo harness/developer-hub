@@ -67,6 +67,33 @@ To fix this issue, perform the following steps:
 $ kubectl apply -f harness-chaos-enable.yml
 ```
 
+## Discovery Agent
+
+If the Discovery Agent is unable to discover services,
+  - Fetch the pods in the dedicated namespace in your target cluster. For example, if you have created a namespace `harness-chaos` in your target cluster, execute the following command to check the status of the pods.
+
+    ```
+    kubectl get pods -n harness-chaos
+    ```
+
+  - If you see a particular pod failing or in some erroneous state, get metadata of that particular pod.
+
+    ```
+    kubectl describe pod <Pod-Name> -n harness-chaos
+    ```
+
+  - View the logs of that particular pod.
+
+    ```
+    kubectl logs -f <Pod-Name> -n harness-chaos
+    ```
+
+If the logs suggest that no resources were found in the dedicated namespace, check the logs of delegates installed.
+
+    ```
+    kubectl get pods -n harness-delegate-ng
+    ```
+
 ## Probe related troubleshooting
 
 ### Environment variable and secret usage references in source mode of command probe

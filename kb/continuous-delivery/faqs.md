@@ -1525,14 +1525,6 @@ You're probably an administrator or you have the permission to [override freeze 
 
 This error typically indicates a permission issue related to the Git connector used in the pipeline. It often occurs when the credentials or tokens being used for Git access lack the necessary permissions to clone or access the specified repository. To resolve it, validate the authentication setup and ensure the provided credentials have the required permissions for the repository in question.
 
-#### What documents should I refer to when migrating from CG/FG to NG?
-
-- [Migrator tool GitHub repository](https://github.com/harness/migrator)
-- [Upgrade guide](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd)
-- [Feature Parity Matrix](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix)
-- [CDNG Upgrade Faq](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
-- [Recording for Project V/S Application](https://www.loom.com/share/62f698a3820e4542a471e4d40d41c686?sid=3dc6f3b9-9369-4133-9452-08795c597351)
-
 #### How to identify which stage executed again as part of re-run for failed pipeline?
 Navigate to the stage and you will able to see message “This stage has been re-executed.
 
@@ -2362,8 +2354,7 @@ One can use an example like `<+secrets.getValue(<+....OutputVariables.AppCredent
 Yes, the new Kubernetes Patch step enables users to apply specific configurations on deployments or post-deployment processes.
 To effectively employ this feature, it is imperative to fulfill the following prerequisites:
 - Ensure that your delegate version is 828xx or newer.
-- Enable the Feature Flag `CDS_K8S_PATCH_STEP_NG` within your operational environment.
-To learn more about this step, go to [Kubernetes Patch Step](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-patch-step).
+- To learn more about this step, go to [Kubernetes Patch Step](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-patch-step).
 
 
 #### How do I export deployments from the UI or the API?
@@ -2747,7 +2738,6 @@ In the next generation, we support the utilization of a `load balancer` with tar
 #### How can one tell if a service is v1 or v2 ?
 
 For V1 services, they only include a name, description, and tag. There is no service definition associated with these services. However V2 services consists of them all including `service definitions`, `manifest path` and `artifact` if one wants to pass an image in pipeline at runtime.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2)
 
 #### Does Harness have restrictions for running parallel jobs in trial accounts?
 

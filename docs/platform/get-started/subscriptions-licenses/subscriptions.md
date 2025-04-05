@@ -16,7 +16,7 @@ You can view and manage module subscription details as well as license informati
 
 ## Developer 360 subscriptions
 
-You can subscribe to Harness modules using the [Developer 360](https://www.harness.io/pricing) subscription model. The Developer 360 subscription offers three plans: **Free**, **Startup**, and **Enterprise**. All plans include [Harness AIDA](/docs/category/harness-aida), our AI Development Assistant.
+You can subscribe to Harness modules using the [Developer 360](https://www.harness.io/pricing) subscription model. The Developer 360 subscription offers three plans: **Free**, **Startup**, and **Enterprise**. All plans include [Harness AI](/docs/category/harness-ai), our AI Development Assistant.
 
 :::info
 This model spans all modules except Cloud Cost Management, which is on a *Cloud Spend* model.
@@ -92,7 +92,7 @@ SRM tracks **Service** license consumption, instead of **Developers**. All Servi
 <details>
 <summary>Chaos Engineering (CE) Services</summary>
 
-Chaos Engineering (CE) makes it easy to run chaos experiments across diverse services within an R&D organization, aimed at enhancing their resilience. A **Service** represents an autonomous software unit managed and tracked through Harness CD and GitOps. This typically maps to:
+Chaos Engineering (CE) makes it easy to run chaos experiments across diverse services within an R&D organization, aimed at enhancing their resilience. A **Service** represents an autonomous software unit managed and tracked through Harness CE. This typically maps to:
 
 - A service in Kubernetes.
 - A containerized service on a cloud (such as AWS ECS, Azure ACS, or Google Container Engine).
@@ -100,6 +100,8 @@ Chaos Engineering (CE) makes it easy to run chaos experiments across diverse ser
 - Five serverless functions in serverless environments.
 
 CE tracks **Service** license consumption, instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window.
+
+For more information about CE services and how they are tracked, go to [Service licensing for CE](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/license-consumption/).
 
 </details>
 
@@ -181,6 +183,24 @@ You can view and manage your Harness module subscriptions in your Harness **Acco
 ## Cloud credits
 
 <Cloud />
+
+## Developer 360 modules subscriptions
+
+For Developer 360 module subscriptions, you can view your subscription details on the Subscriptions page. In your Harness account, go to Account Settings, then select Subscriptions.
+
+On the Subscriptions page, select the Developer 360 modules.
+
+![dev-360-subs](../static/dev-360.png)
+
+Licenses are now based on developers. License Utilization shows the number of users over the number of licenses subscribed.
+
+![dev-360-1-subs](../static/dev-360-1.png)
+
+With the License Management, customers can directly assign user groups or service accounts to the respective module through this new subscription page. Customers can either assign All Account Users and Service Accounts or Select User Groups and Service Accounts to a specific module.
+
+![dev-360-2-subs](../static/dev-360-2.png)
+
+This is an honor system, where customers report licensed user groups and service accounts. There is no enforcement mechanism even if no users are assigned, modules will remain accessible to all users in the system.
 
 ## Manage subscriptions
 

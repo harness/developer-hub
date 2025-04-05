@@ -1,9 +1,7 @@
 import {
-    CardItem,
-    CardSections,
-    docType,
-  } from "@site/src/components/LandingPage/TutorialCard";
-  import { MODULES } from "@site/src/constants"
+  CardSections
+} from "@site/src/components/TutorialCard/TutorialCard";
+import { MODULES } from "@site/src/constants";
   
   /* Define the cards - start */
     
@@ -97,7 +95,7 @@ import {
               module: MODULES.sto,
               description:
                 "See all detected issues in your main branches, latest images, and other target baselines.",
-              link: "/docs/security-testing-orchestration/dashboards/sto-overview",
+              link: "/docs/security-testing-orchestration/view-security-test-results/sto-overview",
             },
             {
               title: "Create Jira tickets for detected issues",

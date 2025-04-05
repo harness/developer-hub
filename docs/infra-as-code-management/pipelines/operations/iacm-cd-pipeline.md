@@ -1,25 +1,31 @@
 ---
-title: Provision resources during deployment
+title: Provision Resources During Deployment
 description: Learn how to create a single pipeline to provision or update resources used during deployment.
 sidebar_position: 40
 ---
 
-You may want to have a single pipeline that provisions or updates resources used during deployment. To do this, you need to create a pipeline with the following stages:
+Create a single pipeline to provision or update resources during deployment. Here's how to set it up:
 
-*  An IaCM stage to provision or update resources.
+### Pipeline Stages Overview
+- **IaCM Stage:** This stage provisions or updates resources, setting the groundwork for your deployment.
+- **CD Stage:** This stage uses the resources provisioned in the IaCM stage to deploy your application.
 
-* A CD stage to perform deployments.
+Go to [CD steps, stages, and strategies](/docs/continuous-delivery/x-platform-cd-features/executions/stages-steps-strategies.md) for information about **CD stages**.
 
-For information about CD stages, go to [CD steps, stages, and strategies](/docs/continuous-delivery/x-platform-cd-features/executions/stages-steps-strategies.md).
+### Passing Variables Between Stages
+You can pass [variables](/docs/platform/variables-and-expressions/add-a-variable.md) from an IaCM pipeline to a CD stage. For example, pass the Kubernetes namespace as a value.
 
-You can pass [variables](/docs/platform/variables-and-expressions/add-a-variable.md) from an IaCM pipeline to CD. For example, you might want to pass the Kubernetes namespace as a value. 
-
-If you view an executed pipeline and select the **Apply** step, you will see that all the Terraform outputs are available as output expressions. You can copy an output expression and then use it in any subsequent step or stage in the pipeline, or even other pipelines.
+After executing a pipeline, select the **Apply** step to view all [OpenTofu](https://opentofu.org/)/Terraform outputs as output expressions. Copy these for use in subsequent steps or stages, even across different pipelines.
 
 ![Output](./static/output.png)
 
-The following example shows how to pass a variable from an IaCM stage to another stage. If you are interested in using the "bucket_name" as an input, you either copy the current value or the path to the variables, meaning that the value will be fetched at runtime.
+**Example of Passing a Variable:**
+To use the "bucket_name" as an input, copy the current value or the path to the variables. This ensures the value is fetched at runtime:
 
-`<+pipeline.stages.iacstage.spec.execution.steps.apply.output.outputVariables.bucket_name>`
+```bash
+<+pipeline.stages.iacstage.spec.execution.steps.apply.output.outputVariables.bucket_name>
+```
 
 ![Example of how to pass a variable](./static/shell-script.png)
+
+Explore additional options like [IaCM approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step) and [Pull Request Automation](/docs/infra-as-code-management/pipelines/operations/pr-automation) to enhance your workflows.

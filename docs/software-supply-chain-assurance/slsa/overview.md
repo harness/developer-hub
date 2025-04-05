@@ -8,7 +8,7 @@ redirect_from:
 
 Software supply chains, made up of all the code, people, systems, and processes that contribute to development and delivery of software artifacts,  are increasingly vulnerable to breaches and compromises, presenting significant security challenges for organizations. To protect against such breaches, The [Supply Chain Levels for Software Artifacts](https://slsa.dev) (SLSA, pronounced "salsa") provides an end-to-end framework for ensuring the integrity of software artifacts throughout software delivery. By adopting SLSA, organizations can proactively strengthen their software build and deployment processes and secure against critical tampering attacks. 
 
-What makes a framework like SLSA effective is its focus on provenance, which is a record of where software comes from (source, ingest, where it was pulled from, what are the build parameters). Provenance can be analyzed and verified for security purposes to ensure that there is no tampering.
+What makes a framework like SLSA effective is its focus on provenance, which is a record of where software comes from (source, ingest, where it was pulled from, what are the build parameters). Provenance will then be [signed and attested](/docs/software-supply-chain-assurance/get-started/key-concepts#attestation-and-verification). By signing the provenance, we add an extra layer of security to the pipeline, making it more resilient against supply chain attacks.
 
 With Harness SCS, organizations can achieve **SLSA Level 1, Level 2 and Level 3** compliance, adhering to all the prescriptive requirements according to the build track of [SLSA v1.0](https://slsa.dev/spec/v1.0/) specification.
 

@@ -1,92 +1,92 @@
-module.exports = function (context) {
+export default function (context) {
   return {
-    name: "feedback-plugin",
+    name: 'feedback-plugin',
     injectHtmlTags() {
-      const { siteConfig } = context;
-      const { baseUrl } = siteConfig;
-
       return {
         postBodyTags: [
           `
-          <script>           
-  function Feedback() {
-  const feedback = document.getElementsByClassName("feedback");
-  if (feedback[0]) {
-    return;
-  }
-  if (
-    !document.getElementsByClassName("theme-doc-footer docusaurus-mt-lg")[0]
-  ) {
-    return;
-  }
-  let wrapperSpan =  document.createElement("span");
-  wrapperSpan.classList.add("tool");
-  wrapperSpan.setAttribute("hover-tooltip", "Leave feedback to help us improve")
-  wrapperSpan.setAttribute("tooltip-position", "bottom")
-
-
-  let button = document.createElement("button");
-  let span = document.createElement("span");
-  let img = document.createElement("img");
-
-  span.textContent = "Feedback";
-  span.classList.add("feedback-span");
-
-  wrapperSpan.appendChild(button);
-  button.appendChild(img);
-  button.appendChild(span);
-  img.src = \`${baseUrl}img/icon_feedback.svg\`;
-  img.alt = "Feedback";
-  img.width = "24";
-  img.height = "24";
-  button.classList.add("feedback");
-  img.classList.add("feedback-img");
-  document
-    .getElementsByClassName("theme-doc-footer docusaurus-mt-lg")[0]
-    .appendChild(wrapperSpan);
-  button.addEventListener("click", handleClick);
-  function handleClick() {
-    try {
-      window._refinerQueue = window._refinerQueue || [];
-      function _refiner() {
-        _refinerQueue.push(arguments);
-      }
-      _refiner("setProject", "a61ea060-9e2a-11ec-b6a3-9d6ceaa4c99a");
-      (function () {
-        var a = document.createElement("script");
-        a.type = "text/javascript";
-        a.async = true;
-        a.src = "https://js.refiner.io/v001/client.js";
-        var b = document.getElementsByTagName("script")[0];
-        b.parentNode.insertBefore(a, b);
-      })();
-      _refiner("showForm", "9afbf970-3859-11ed-91de-cb8481e90a69", true);
-      _refiner("addToResponse", {
-        currentUrl: window.location.href,
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-}
-let previousUrl = "";
-const observer = new MutationObserver(function () {
-  if (previousUrl == "") {
-    setTimeout(Feedback, 2000);
-  }
-  if (location.href !== previousUrl) {
-    previousUrl = location.href;
-    Feedback();
-  }
-});
-const config = { subtree: true, childList: true };
-observer.observe(document, config);
-
-
-          </script>
-          `,
+            <script>
+              function Feedback() {  
+              (function loadRefiner() {
+                  if (window._refinerLoaded) return; // Prevent multiple loads
+                  window._refinerLoaded = true;
+                
+                  // Initialize Refiner queue before script loads
+                  window._refinerQueue = window._refinerQueue || [];
+                
+                  const script = document.createElement("script");
+                  script.type = "text/javascript";
+                  script.async = true;
+                  script.src = "https://js.refiner.io/v001/client.js";
+                
+                  const firstScript = document.getElementsByTagName("script")[0];
+                  firstScript.parentNode.insertBefore(script, firstScript);
+                })();
+                function _refiner() {
+                  _refinerQueue.push(arguments)
+                }
+                const feedback = document.getElementsByClassName("feedback");
+                if (feedback[0]) return;
+  
+                const footer = document.getElementsByClassName("theme-doc-footer docusaurus-mt-lg")[0];
+                if (!footer) return;
+  
+                // Create wrapper span
+                let wrapperSpan = document.createElement("span");
+                wrapperSpan.classList.add("tool");
+                wrapperSpan.setAttribute("hover-tooltip", "Leave feedback to help us improve");
+                wrapperSpan.setAttribute("tooltip-position", "bottom");
+  
+                // Create button
+                let button = document.createElement("button");
+                let span = document.createElement("span");
+                let img = document.createElement("img");
+  
+                span.textContent = "Feedback";
+                span.classList.add("feedback-span");
+  
+                // Append elements
+                wrapperSpan.appendChild(button);
+                button.appendChild(img);
+                button.appendChild(span);
+  
+                // Set image properties
+                img.src = \`/img/icon_feedback.svg\`;
+                img.alt = "Feedback";
+                img.width = "24";
+                img.height = "24";
+  
+                // Add classes
+                button.classList.add("feedback");
+                img.classList.add("feedback-img");
+  
+                // Handle button click
+                const handleClick = () => {
+                  _refiner("setProject", "a61ea060-9e2a-11ec-b6a3-9d6ceaa4c99a");
+                  _refiner("showForm", "9afbf970-3859-11ed-91de-cb8481e90a69", true);
+                  _refiner("addToResponse", { currentUrl: window.location.href });
+                };
+  
+                footer.appendChild(wrapperSpan);
+                button.addEventListener("click", handleClick);
+              }
+  
+              let previousUrl = "";
+              const observer = new MutationObserver(() => {
+                if (!previousUrl) {
+                  setTimeout(Feedback, 2000);
+                }
+                if (location.href !== previousUrl) {
+                  previousUrl = location.href;
+                  Feedback();
+                }
+              });
+  
+              observer.observe(document, { subtree: true, childList: true });
+            </script>
+            `,
         ],
       };
     },
   };
-};
+}

@@ -1,6 +1,6 @@
 import React from "react";
-import { CardItem, docType } from "../../LandingPage/TutorialCard";
-import { MODULES } from "../../../constants";
+import { MODULES } from "@site/src/constants";
+import { CardItem } from "@site/src/components/TutorialCard/TutorialCard";
 
 export const featureList: CardItem[] = [
   {
@@ -15,7 +15,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
     description: "Build faster and be more productive.",
-    link: "docs/category/get-started-with-ci",
+    link: "docs/continuous-integration/get-started/onboarding-guide",
   },
   {
     title: "Store Artifacts",
@@ -44,7 +44,7 @@ export const featureList: CardItem[] = [
     module: MODULES.iacm,
     icon: "img/icon_iacm.svg",
     description: <>Manage your infrastructure with ease.</>,
-    link: "docs/category/get-started-with-iacm",
+    link: "docs/infrastructure-as-code-management",
   },
   {
     title: "Release Faster with Feature Flags",
@@ -82,18 +82,25 @@ export const featureList: CardItem[] = [
     link: "docs/category/get-started-with-srm",
   },
   {
-    title: "Run Chaos Experiments",
+    title: "Resilience Testing",
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
-    description: <>Ensure application and infrastructure resilience.</>,
+    description: <>Measure the resilience posture of applications.</>,
     link: "docs/chaos-engineering/getting-started/",
+  },
+  {
+    title: "Revolutionize Incident Management",
+    module: MODULES.ir,
+    icon: "img/icon-ir.svg",
+    description: <>Focus on proactive issue prevention and accelerated resolution.</>,
+    link: "docs/incident-response",
   },
   {
     title: "Increase Developer Productivity",
     module: MODULES.idp,
     icon: "img/icon_idp.svg",
     description: <>A home for developers to create, manage, and explore software.</>,
-    link: "docs/category/get-started-with-idp",
+    link: "docs/internal-developer-portal/get-started",
   },
   {
     title: "Set up Cloud Development Environments",

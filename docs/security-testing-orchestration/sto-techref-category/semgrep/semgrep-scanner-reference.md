@@ -42,40 +42,13 @@ For a quick introduction, go to the [SAST code scans using Semgrep](/docs/securi
   You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your proxies using custom certificates. For more information, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
 - The following topics contain useful information for setting up scanner integrations in STO:
-   - [What's supported in STO](/docs/security-testing-orchestration/whats-supported)
+   - [What's supported in STO](/docs/security-testing-orchestration/whats-supported/sto-deployments)
    - [Security Testing Orchestration FAQs](/docs/faqs/security-testing-orchestration)
    - [Optimize STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines)
 
 
 
 ## Set-up workflows
- 
-<details>
-
-<summary>Add a built-in SAST scanner (easiest)</summary>
-
-To scan a code repository, you need [Harness Code Repository](/docs/code-repository) or a [Harness connector](/docs/category/code-repo-connectors) to your Git service. 
-
-
-#### Add the built-in SAST scanner
-
-Do the following:
-
-1. Add a **Build** or **Security** stage to your pipeline.
-2. Configure the stage to point to the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) you want to scan. 
-3. Go to the **Execution** tab, click **Add step**, and select the **SAST** built-in scanner.
-
-   <DocImage path={require('./static/add-built-in-sast-scanner.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
-
-4. Select **Semgrep** and then **Add scanner**.
-5. Save your pipeline and then click **Run**. 
-
-   The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results).
-
-
-</details>
-
-
 
 <details>
 
@@ -110,7 +83,7 @@ Do the following:
 
 Save your pipeline and then select **Run**. 
 
-The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results).
+The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 
 
 </details>
@@ -157,7 +130,7 @@ Add a Semgrep step to the stage and set it up as follows.
 
 Save your pipeline and then select **Run**. 
 
-The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results).
+The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
 
 
 </details>
@@ -172,9 +145,9 @@ The recommended workflow is to add a Semgrep step to a Security Tests or CI Buil
 
 #### Scan Mode
 
-import StoSettingScanModeOrch from '../shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeOrch from '../shared/step-palette/scan/mode/orchestration.md';
 
-import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeIngest from '../shared/step-palette/scan/mode/ingestion.md';
 
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
@@ -215,15 +188,15 @@ You can use this setting to select the set of Semgrep rulesets to include in you
 
 #### Type
 
-import StoSettingScanTypeRepo     from '../shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeRepo     from '../shared/step-palette/target/type/repo.md';
 
 <StoSettingScanTypeRepo />
 
 
 #### Target and variant detection
 
-import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from '../shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectNote/>
@@ -231,7 +204,7 @@ import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto
 
 #### Name
 
-import StoSettingTargetName from '../shared/step_palette/target/_name.md';
+import StoSettingTargetName from '../shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
@@ -239,14 +212,14 @@ import StoSettingTargetName from '../shared/step_palette/target/_name.md';
 
 #### Variant
 
-import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '../shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
 
 #### Workspace
 
-import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from '../shared/step-palette/target/workspace.md';
 
 <StoSettingTargetWorkspace  />
 
@@ -254,20 +227,20 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 
 ### Ingestion File
 
-import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from '../shared/step-palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 
 ### Access Token
 
-import StoSettingAuthAccessToken from '../shared/step_palette/auth/_access-token.md';
+import StoSettingAuthAccessToken from '../shared/step-palette/auth/access-token.md';
 
 <StoSettingAuthAccessToken />
 
 
 ### Log Level
 
-import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '../shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
@@ -281,7 +254,7 @@ Use this field to run the [`semgrep`](https://semgrep.dev/docs/cli-reference/) s
 
 With these flags, `semgrep` considers only ERROR severity rules and ignores files included in `.gitignore`. 
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />
 
@@ -289,29 +262,39 @@ import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '../shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
 ### Settings
 
-import StoSettingSettings from '../shared/step_palette/all/_settings.md';
+import StoSettingSettings from '../shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from '../shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from '../shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
+
+## Configure Semgrep as a Built-in Scanner  
+
+The Semgrep scanner is available as a [built-in scanner](/docs/security-testing-orchestration/set-up-scans/built-in-scanners) in STO. Configuring it as a built-in scanner enables the step to automatically perform scans using the free version without requiring any licenses. Follow these steps to set it up:  
+
+1. Search for **SAST** in the step palette or navigate to the **Built-in Scanners** section and select the **SAST** step.  
+2. Expand the **Additional CLI Flags** section if you want to configure optional CLI flags.  
+3. Click **Add Scanner** to save the configuration.  
+
+The scanner will automatically use the free version, detect scan targets, and can be further configured by clicking on the step whenever needed.
 
 ## Proxy settings
 

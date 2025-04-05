@@ -146,3 +146,23 @@ Yes, it's set to 16000.
 ### What is the data collection interval for Sumo Logic in Continuous Verification, and can it be configured?
 
 Data collection occurs once every minute for each metric or log query configured for a health source. The interval is standardized for all verifications and cannot be adjusted.
+
+### New Relic data collection task is failing with the following error:
+Error:
+"Data collection task failed with exception: JsonPathException: org.json.JSONException: JSONArray[0] not found."
+
+Cause and Resolution:
+This issue is caused by a change in the response format from New Relic. It is a known issue that has been addressed in Delegate version 850xx and later.
+
+### My Verify step is failing without any details. How can I find more information?
+
+You can check the execution logs to identify the root cause. This could help you determine if the failure is due to data collection issues or problems encountered during the analysis phase.
+
+
+### Do we have an option to refresh the bearer token automatically while using the Elastic connector?
+
+No, there is currently no option to refresh the bearer token automatically. Token refresh needs to be done manually.
+
+### Can we have multiple CV sources for verifying the same execution?
+
+Yes, you can configure multiple health sources as part of the monitored service. You can use both Log and Metric verification for the same execution to gather comprehensive data.

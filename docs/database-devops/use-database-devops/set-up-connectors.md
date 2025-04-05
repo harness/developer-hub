@@ -7,30 +7,53 @@ sidebar_position: 4
 
 This topic describes how to set up connectors within Harness DB DevOps. 
 
-## Setting Up Connectors for MongoDB
+## Setting Up Connectors for Databases
 
 ### JDBC Connectors
 
-The JDBC connector accepts the following:
+The JDBC connector accepts the following:  
+- **JDBC URL**: The database URL (**string**)  
+- **Username**: Username (**string / secret**)  
+- **Password**: Password (**secret**)  
 
- - **JDBC URL**: The database URL (**string**)
- - **Username**: Username (**string / secret**)
- - **Password**: Password (**secret**)
+It performs a test connection using a delegate with a delegate selector or any available delegate. Ensure the delegate has network access to the database.  
 
-It, then, performs a test connection using a delegate with a delegate selector or any available delegate. You should use a delegate that has network access to the database.
+The JDBC connector is used for connecting to your database instance.
 
-Just to highlight, the JDBC connector is for instance entity and for connecting to your database. 
+---
 
 #### URL Examples
 
-| Database | JDBC URL Format |
-|------------------|------------------------------------------------------|
-| `ORACLE` | `jdbc:oracle:thin:@//host:port/FREEPDB1` | 
-| `POSTGRES` | `jdbc:postgresql://host:port/dbName?sslmode=disable` |
-| `SQLSERVER` | `jdbc:sqlserver://host:port;trustServerCertificate=true;databaseName=master` | 
-| `MongoAtlasSQL` | `jdbc:mongodb://host:port%s?ssl=true&authSource=admin` |
-| `MYSQL` | `jdbc:mysql://host:port/db` |
-| `MONGODB` | `mongodb://host:port/dbName/?authSource=admin` |
+| Database           | JDBC URL Format                                                                                                                  |
+|--------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| **ORACLE**         | `jdbc:oracle:thin:@//{host}:{port}/{servicename}`                                                                                |
+| **POSTGRES**       | `jdbc:postgresql://{host}:{port}/{dbName}?sslmode=disable`                                                                       |
+| **SQLSERVER**      | `jdbc:sqlserver://{host}:{port};trustServerCertificate=true;databaseName={dbName}`                                               |
+| **MongoAtlasSQL**  | `jdbc:mongodb://{host}:{port}/{dbName}?ssl=true&authSource=admin`                                                                |
+| **MYSQL**          | `jdbc:mysql://{host}:{port}/{dbName}`                                                                                            |
+| **MONGODB**        | `mongodb://{host}:{port}/{dbName}/?authSource=admin`                                                                             |
+| **GOOGLE SPANNER** | `jdbc:cloudspanner:/projects/{project-id}/instances/{instance-id}/databases/{database-name}?lenient=true`                        |
+| **MongoDB SSL**    | `mongodb://{host}:{port}/{dbName}/?tls=true&authSource=admin`                                                                    |
+| **POSTGRES SSL**   | `jdbc:postgresql://{host}:{port}/{dbName}?ssl=true`                                                                              |
+| **SQLSERVER SSL**  | `jdbc:sqlserver://{host}:{port};databaseName={dbName};encrypt=true;trustServerCertificate=false;`                                |
+| **MYSQL SSL**      | `jdbc:mysql://{host}:{port}/{dbName}?useSSL=true`                                                                                |
+| **ORACLE SSL**     | `jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCPS)(HOST={host})(PORT={port}))(CONNECT_DATA=(SERVICE_NAME={servicename})))` |
+
+---
+
+## Setting Up Google Spanner
+
+Google Spanner uses a unique JDBC URL format and does not require a password for authentication. Instead, authentication is handled via **Service Account (SA)** credentials.
+
+### Prerequisites for Google Spanner
+
+1. **Authentication**:  
+   - **Google Service Account (GSA)** json key 
+   - The GSA must have the following roles:  
+     - `roles/spanner.databaseAdmin`  
+     - `roles/spanner.databaseUser`
+
+---
 
 ## Connector FAQs
 

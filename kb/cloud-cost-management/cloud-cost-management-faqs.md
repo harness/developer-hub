@@ -161,7 +161,7 @@ Currently, it's not supported. However, you can leverage dashboard for the same.
 
 When we ingest cloud data, we make certain modifications to the tags/labels. However, with cluster data, we ingest the labels without any alterations.
 
-More information can be found [here](../../docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws#analyze-aws-cost).
+More information can be found [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws/#analyze-aws-cost).
 
 ### Why does the dropdown in the GPU cost tracking perspective only show instance types that have already been used, and not all available GPU instance types across clouds?
 
@@ -579,6 +579,15 @@ The error is thrown as part of the periodic state sync job from Autostopping. Th
 ### How do you clone autostopping rules?
 
 To clone an autostopping rule, click on the three dots on the rule on the overview page, click Clone, select all the required elements to be cloned, and clone the rule.
+
+### Why is an RDS instance taking some time to start after being auto-stopped?
+This behavior is expected and stems from the nature of AWS's infrastructure. Starting and stopping certain RDS instances is inherently slower compared to EC2 instances, as confirmed in the AWS RDS documentation.
+
+To address this issue:
+- Increase the idle time duration: This ensures the database does not stop too frequently, allowing it to stay running for longer periods of inactivity, which reduces disruptions.
+- Implement an uptime schedule: For workloads with predictable usage patterns, scheduling instance availability can reduce startup delays while still maintaining cost savings.
+
+While these steps can improve the experience, the startup time itself cannot be reduced as it is dependent on AWS's underlying processes
 
 ## Dashboards
 

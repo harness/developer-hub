@@ -12,7 +12,6 @@ redirect_from:
 This topic introduces you to resilience probes, their importance, types, and generic properties.
 
 :::tip
-- For existing users, resilience probes are behind the feature flag `CHAOS_PROBE_ENABLED`. You also have the choice to upgrade to the new flow. Contact [Harness support](mailto:support@harness.io) to enable it or to upgrade to the new flow.
 - If you are a new customer, the feature flag is turned on by default and you will see the new flow of control in the resilience probes.
 :::
 

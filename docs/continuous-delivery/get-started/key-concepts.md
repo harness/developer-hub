@@ -112,6 +112,8 @@ Connectors contain the information necessary to integrate and work with 3rd part
 
 Harness uses Connectors at Pipeline runtime to authenticate and perform operations with a 3rd party tool.
 
+These connections are always done through a [Harness Delegate](#delegates) for deployment operations.
+
 For example, a GitHub Connector authenticates with a GitHub account and repo and fetches files as part of a deploy Stage.
 
 For example, go to:
@@ -137,6 +139,8 @@ Do not store secrets in plain text, objects, or any other Harness construct othe
 ## Delegates
 
 The Harness Delegate is a software service you install in your environment that connects to the Harness Manager and performs tasks using your container orchestration platforms, artifact repositories, monitoring systems, etc.
+
+For deployment operations, a Harness Delegate will always be used. 
 
 ### Credentials and permissions
 

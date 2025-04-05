@@ -194,6 +194,10 @@ For more information, go to the [Bash manual](https://www.gnu.org/software/bash
 
 In case of PowerShell, if the script executes on Delegate it requires the powershell binary to be installed as it is not shipped with delegate tools, see the [Install PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.3) for installation instructions.
 
+:::info note
+PowerShell version 7.5.0 and above are not supported. Users will encounter errors when using version 7.5.0 or later in the Harness delegate.
+:::
+
 ### Script
 
 The Bash or Powershell script.
@@ -883,4 +887,11 @@ The step might look like this:
 ```
 
 The `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}` line will get the `kubeconfig` from the Harness Delegate that is installed on the Kubernetes cluster.
+
+## FAQ's
+
+### How can I handle dynamic IP addresses when connecting to robots via SSH in Harness?
+
+Handling dynamic IP addresses when connecting to robots via SSH requires a mechanism to dynamically update the IP address in the SSH connector configuration.  A pre-processing step that fetches the IP address and updates the connector using expressions, or a shell script provisioner, could be used. For more information, refer [Harness Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning/).
+
 

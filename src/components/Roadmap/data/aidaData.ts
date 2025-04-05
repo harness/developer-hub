@@ -1,38 +1,122 @@
 import { Horizon } from "./roadmapData";
 export const aidaData: Horizon = {
   Now: {
-    description: "Q1 2024, Feb-Apr 2024",
-    feature: [
-
-    ],
-  },
-  Next: {
-    description: "Q2 2024, May-Jul 2024",
+    description: "Q1 2025, Feb-Apr 2025",
     feature: [
       {
         tag: [],
-        title: "Enterprise Code Generation",
-        description: "AI code generation specifically trained on customer code",
+        title: "Step Creation",
+        description: "Introduces the functionality for creating and managing pipeline steps.",
       },
       {
         tag: [],
-        title: "Integration Test Selection",
-        description: "Select integration tests corresponding to code changes reducing the overall test cycle time.",
+        title: "Stage Creation",
+        description: "Extends or refines stage creation features, building on initial stage-creation functionality.",
+      },
+      {
+        tag: [],
+        title: "Pipeline Creation",
+        description: "Enables creation and configuration of new pipelines for DevOps workflows.",
+      },
+      {
+        tag: [],
+        title: "Step Group Support",
+        description: "Support Step Group Creation in a Pipeline.",
+      },
+      {
+        tag: [],
+        title: "Reference Templates into Pipeline",
+        description: "Allows reference templates to be integrated into existing pipelines for standardized workflows.",
+      },
+      {
+        tag: [],
+        title: "Pipeline Data Support",
+        description: "Improves pipeline data handling, adding import of Git.",
+      },
+    ],
+  },
+  Next: {
+    description: "Q2 2025, May-Jul 2025",
+    feature: [
+      {
+        tag: [],
+        title: "Extended Customer Data",
+        description: "Extends the scope and detail of customer data handling.",
+      },
+      {
+        tag: [],
+        title: "Customer Data",
+        description: "Further enhancements or expansions to customer data capabilities.",
+      },
+      {
+        tag: [],
+        title: "Environment Context Shared Support",
+        description: "Enables sharing of environment context (config, variables) across different pipeline stages.",
+      },
+      {
+        tag: [],
+        title: "Enriched Context Shared Support",
+        description: "Provides richer context (metadata, logs, etc.) for better pipeline insights and collaboration.",
+      },
+      {
+        tag: [],
+        title: "Reformatting Chat Support",
+        description: "Improves chat interface and formatting for better user experience.",
+      },
+      {
+        tag: [],
+        title: "AI-Driven Navigation & Actions",
+        description: "Adds AI-based guidance or automation for navigating and performing actions within the system.",
+      },
+      {
+        tag: [],
+        title: "Chat UI & Chat Templates",
+        description: "Introduces or updates a chat-based UI, including predefined templates for quicker interactions.",
+      },
+      {
+        tag: [],
+        title: "Attachment Support",
+        description: "Allows users to attach files or documents within the chat or pipeline environment.",
+      },
+      {
+        tag: [],
+        title: "Create Slack Integration",
+        description: "Builds an integration with Slack for notifications or interactions with the AI DevOps Agent.",
+      },
+      {
+        tag: [],
+        title: "Add Chat Templates",
+        description: "Expands the library of chat templates for various use cases or user workflows.",
+      },
+      {
+        tag: [],
+        title: "Create Chat User Roles",
+        description: "Introduces role-based access or permissions within the chat environment.",
       },
     ],
   },
   Later: {
-    description: "Q3 2024+, Aug 2024 & beyond",
+    description: "Q3 2025+, Aug 2025 & beyond",
     feature: [
       {
         tag: [],
-        title: "Automatic Code Refactoring",
-        description: "Re-factor code to upgrade libraries, reduce complexity, etc.",
+        title: "CV AI",
+        description: "Implements computer vision (CV)–related AI features for image or document processing.",
       },
       {
         tag: [],
-        title: "Auto generate release notes",
-        description: "AI-generated release notes",
+        title: "OCR / Page Creation",
+        description: "Adds Optical Character Recognition (OCR) for extracting text from images/pages and creating records.",
+      },
+      {
+        tag: [],
+        title: "Launch V1 with Knowledge Base",
+        description: "Officially launches Version 1 of the AI DevOps Agent with integrated knowledge base.",
+      },
+      {
+        tag: [],
+        title: "Chat V2 with More “Legs”",
+        description: "Upgrades the chat feature to a second version, potentially with extended functionality or modules.",
       },
       {
         tag: [],
@@ -46,7 +130,7 @@ export const aidaData: Horizon = {
     feature: [
       {
         tag: [],
-        title: "Code Assistant",
+        title: "Harness AI Code Agent",
         description:
           "AI-powered code completion tool that assists developers with writing code by suggesting relevant snippets and solutions.",
       },
@@ -100,25 +184,25 @@ export const aidaData: Horizon = {
       },
       {
         tag: [],
-        title: "Policy As Code Assistant",
+        title: "Policy As Code Agent",
         description:
           "AI-generated rules for asset governance accompanied with detailed descriptions to optimize your cloud spend.",
       },
       {
         tag: [],
-        title: "Policy As Code Assistant (Cloud Assets)",
+        title: "Policy As Code Agent (Cloud Assets)",
         description:
           "AI-generated rules for asset governance accompanied with detailed descriptions to optimize your cloud spend.",
       },
       {
         tag: [],
-        title: "Policy As Code Assistant (Pipelines)",
+        title: "Policy As Code Agent (Pipelines)",
         description:
           "Automatically generate Open Policy Agent (OPA) Rego policies for Pipeline governance.",
       },
       {
         tag: [],
-        title: "Policy As Code Assistant (Pipelines)",
+        title: "Policy As Code Agent (Pipelines)",
         description:
           "Automatically generate Open Policy Agent (OPA) Rego policies for Pipeline governance.",
       },

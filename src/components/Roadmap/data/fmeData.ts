@@ -2,18 +2,50 @@ import { Horizon } from "./roadmapData";
 
 export const FmeData: Horizon = {
   Now: {
-    description: "Q4 2024, Nov 2024-Jan 2025",
+    description: "Q1 2025, Feb-Apr 2025",
     feature: [
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Split integration into Harness, Part 1",
+        description:
+          "Incorporate Split as a fully native Harness module. Existing customers migrated.",
+      },
       {
         tag: [{ value: "Targeting" }],
         title: "Flag impressions toggle",
         description: "Disable the flow of impressions for individual flags.",
       },
+      {
+        tag: [{ value: "Experimentation" }],
+        title: "Reimagined experimentation design",
+        description: "New workflow for designing experiments, decoupling experimentation analysis from flag monitoring use cases.",
+      },
+      {
+        tag: [{ value: "Experimentation" }],
+        title: "Reimagined experimentation dashboard",
+        description: "Tabular experiment results dashboard + new features like comparison of multiple treatments & sample size visualization.",
+      },
+      {
+        tag: [{ value: "Experimentation" }],
+        title: "Experiment sample population chart",
+        description: "See accumulation of sample population over time. Identify unexpected assignment or traffic level changes.",
+      },
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Authn and authz on Harness platform",
+        description: "Login, API scoping, and RBAC enhancements delivered by migration.",
+      },
     ],
   },
   Next: {
-    description: "Q1 2025, Feb-Apr 2025",
+    description: "Q2 2025, May-July 2025",
     feature: [
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Split integration into Harness, Part 2",
+        description:
+          "Migrate permission management to 100% Harness RBAC managed.",
+      },
       {
         tag: [{ value: "Targeting" }],
         title: "Flag prerequisites",
@@ -24,24 +56,17 @@ export const FmeData: Horizon = {
         tag: [{value: "Targeting"}, {value: "Better Together"}],
         title: "Rule-based segments",
         description:
-          "Assign feature availability for user groups based on different conditions, with all the power of Split targeting.",
+          "Assign feature availability for user groups based on different conditions, with all the power of FME targeting.",
       },
       {
-        tag: [{ value: "Better Together" }],
-        title: "Split integration into Harness",
-        description:
-          "Incorporate Split as a fully native Harness module.",
-      },
-      {
-        tag: [{ value: "Experimentation" }],
-        title: "Reimagined experimentation dashboard",
-        description:
-          "A new, refreshed view for experimentation results to help simplify data interpretation.",
+        tag: [{ value: "SDK" }],
+        title: "Remote evaluation client-side SDKs",
+        description: "No rules are exposed to client-side. Instead, these thin clients utilize a secure cloud service for flag evaluations.",
       },
     ],
   },
   Later: {
-    description: "Q2 2025+, May 2025 & beyond",
+    description: "Q3 2025+, Aug 2025 & beyond",
     feature: [
       {
         tag: [{ value: "Better Together" }],
@@ -55,13 +80,13 @@ export const FmeData: Horizon = {
       },
       {
         tag: [{ value: "SDK" }],
-        title: "Remote evaluation client-side SDKs",
-        description: "No rules are exposed to client-side. Instead, these thin clients utilize a secure cloud service for flag evaluations.",
-      },
-      {
-        tag: [{ value: "SDK" }],
         title: "Extend SDK support",
         description: "Support additional SDKs like Erlang.",
+      },
+      {
+        tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
+        title: "Expanded guardrail metric insights",
+        description: "Make data-driven decisions at every stage of your rollout, even if it doesn’t meet the requirements for statistical comparison.",
       },
     ],
   },
@@ -69,9 +94,27 @@ export const FmeData: Horizon = {
     description: "What has been released",
     feature: [
       {
+        tag: [{ value: "SDK" }],
+        title: "Elixir SDK",
+        description: "First of new SDKs to be added after joining Harness.",
+      },
+      {        
+        tag: [{value: "AI Agents"}],
+        title: "AI results interpretation conversation",
+        description:
+          "AI-generated metric results summary can be asked follow-up questions.",
+        link:"https://www.split.io/releases/2025-01-08/",
+      },
+      {
         tag: [{ value: "Targeting" }],
         title: "Large segments",
         description: "New segment type enabling large-scale audience targeting up to 1M keys. Even higher limits available by request.",
+        link:"https://www.split.io/releases/2025-01-07/",
+      },
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Access Split from within Harness app",
+        description: "Allow Harness customers to authenticate and access Split from the Harness application.",
       },
       {
         tag: [{ value: "Targeting" }],
@@ -80,15 +123,10 @@ export const FmeData: Horizon = {
         link:"https://www.split.io/releases/2024-12-06/",
       },
       {
-        tag: [{ value: "Better Together" }],
-        title: "Access Split from within Harness app",
-        description: "Allow Harness customers to authenticate and access Split from the Harness application.",
-      },
-      {
         tag: [{ value: "Monitoring" }],
         title: "Feature flag alerts on Monitoring tab",
-        description: "Show significance alerts on the monitoring tab, in addition to the threshold-based alerts shown now.",
-        link:"https://www.split.io/releases/#zzodil-2024-11-27",
+        description: "Show guardrail and key metric alerts on the monitoring tab, in addition to the threshold-based alerts shown prev.",
+        link:"https://www.split.io/releases/2024-11-27",
       },
       {
         tag: [{ value: "Measurement" }],
