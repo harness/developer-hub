@@ -52,6 +52,13 @@ Each integration type requires specific authentication setup to ensure secure co
 4. Enter your instance URL and credentials
 5. Set up incident mapping
 
+### [Confluence](./integrations/confluence.md)
+1. Navigate to **Settings** → **Connectors** → **Incident Response**
+2. Click **+ New Connector**
+3. Select **Confluence**
+4. Enter your instance URL and credentials
+5. Set up incident mapping
+
 ## Best Practices
 
 ### Security
@@ -101,3 +108,5 @@ Each integration type requires specific authentication setup to ensure secure co
 - Ticketing Systems
   - [Jira Integration](./integrations/jira.md)
   - [ServiceNow Integration](./integrations/servicenow.md)
+- Documentation and Collaboration Tools
+  - [Confluence Integration](./integrations/confluence.md)

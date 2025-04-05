@@ -32,3 +32,4 @@ yarn.lock
 
 # Local Netlify folder
 .netlify
+yarn.lock
