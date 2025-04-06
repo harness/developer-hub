@@ -13,15 +13,23 @@ import CommonNote from '../shared/common-note.md'
 
 This topic describes the [definition](#definition) and [schema](#schema) of the command probe. It also describes how to tune the probe in two modes: [inline mode](#inline-mode) and [source mode](#source-mode).
 
-The command probe allows you to run Bash commands and match the output as part of the entry or exit criteria. The intent behind this probe is to implement a non-standard and imperative way to express the hypothesis. For example, you can check for specific data within a database, parse the value out of a JSON blob that is dumped into a certain path, or check for the existence of a particular string in the service logs.
+The Command Probe lets you run Bash commands and check their output during /at the beginning / at the end / throughout a chaos experiment. It helps validate the results of a chaos experiment.
+
+For example, you can:
+
+- Check for specific data in a database
+- Read and parse a value from a JSON file
+- Look for a certain string in service logs
+
+This probe is great when standard checks aren’t enough and you need more flexibility to define your success conditions.
 
 :::info YAML only feature
-By default, this probe can be defined in inline mode from the user interface, where the command is run from within the experiment image. It can also be run in source mode, where the command execution is carried out from within a new pod whose image is specified. Inline mode is preferred for simple shell commands, and source mode is preferred when application-specific binaries are required.
+By default, this probe is defined in inline mode from the user interface, where the command is run from within the experiment image. It can also be run in source mode, where the command execution is carried out from within a new pod whose image is specified. Inline mode is preferred for simple shell commands, and source mode is preferred when application-specific binaries are required.
 :::
 
 ## Probe definition
 
-You can define the probe at **.spec.experiments[].spec.probe** path inside the chaos engine.
+You can define the probe at **.spec.experiments[].spec.probe** path inside the chaos engine in case you have installed a [dedicated chaos infrastructure](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/).
 
 ```yaml
 kind: Workflow
@@ -46,6 +54,9 @@ spec:
 :::tip
 The command probe expects you to provide a shell command to implement checks that are highly specific to the application use case.
 :::
+
+If you are using [Harness Delegate](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/), probe definition is done from the UI and the corresponding YAML is a minimized version of the configuration that you performed from the UI.
+
 
 ## Schema
 
