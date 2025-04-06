@@ -13,10 +13,6 @@ The Linux chaos infrastructure is installed as an executable binary on your Linu
 
 The **Control Plane** creates and manages chaos experiments and the **Execution Plane** runs these chaos experiments using the Linux infrastructure and sends back the results.
 
-The diagram below describes the interaction between the chaos control plane components and the execution plane component(s) for a Linux experiment. 
-
-![linux fault flow](../static/how-stuff-works/windows-workflow.png)
-
 ## 1. Poll Chaos Tasks
 
 Linux infrastructure polls the control plane to fetch the tasks. 
