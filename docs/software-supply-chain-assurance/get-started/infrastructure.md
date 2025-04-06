@@ -47,7 +47,7 @@ The following table shows SCS support for each infrastructure type.
             <td>MacOS</td>
             <td>arm64</td>
             <td align="center">❌ Not supported</td>
-            <td align="center">❌ Not supported</td>
+            <td align="center">✅ Supported</td>
             <td align="center">❌ Not supported</td>
             <td align="center">❌ Not supported</td>
         </tr>
