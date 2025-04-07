@@ -29,8 +29,8 @@ These release notes describe recent changes to Harness Supply Chain Security.
 #### Fixed Issues
 
 - Resolved an issue where signing an artifact using image name and digest created a new entry with an `@sha256` suffix instead of updating the existing entry (SCS-3404).
-- Fixed a bug where the Delete Integration API responded with 200 OK even for invalid integration IDs; it now returns an appropriate error(SCS-3339).
-- Fixed artifact verification failures caused by `signatureId` being overwritten during the verification step, causing the system to look for signature files in the wrong location (SCS - 3509 , ZD-78728).
+- Fixed a bug where the Delete Integration API responded with 200 OK even for invalid integration IDs; it now returns an appropriate error (SCS-3339).
+- Fixed artifact verification failures caused by `signatureId` being overwritten during the verification step, causing the system to look for signature files in the wrong location (SCS-3509 , ZD-78728).
 - Resolved CDXgen failures in restricted clusters by modifying the plugin to run in air-gapped mode, eliminating the need for external license fetch calls (SCS-3590).
 
 
