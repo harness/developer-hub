@@ -374,7 +374,7 @@ name: INIT_SCRIPT
 - Variables are not present for Helm2 and Helm3 for immutable delegates
 **Note : One can’t have the same delegate using v2 and v3 for Helm**
 
-Please read more on Helm2 in the following [Documentation](/docs/continuous-delivery/deploy-srv-diff-platforms/Helm/native-Helm-quickstart/#Helm-2-in-native-Helm)
+Please read more on Helm2 in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/Helm/native-Helm-quickstart/#Helm-2-in-native-Helm)
 
 
 ### Is it normal for the k8s delete step with the release name option to delete only specific entities, unlike Helm uninstall, when the chart was initially deployed using the native Helm option?
