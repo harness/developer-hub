@@ -108,11 +108,3 @@ When Harness finds the charts it displays the message `Found the chart at local 
 
 </details>
 <details>
-<summary>Support in Harness FirstGen and NextGen</summary>
-
-Local Helm charts are supported in both Harness FirstGen and NextGen. There is no difference in setup.
-
-Harness FirstGen does not include delegate selectors on many Workflow steps. Typically, you use infrastructure definition's cloud provider delegate Selectors to ensure that the delegate used for deployment has the local Helm chart installed. For more information, go to [Select Delegates with Selectors](/docs/first-gen/firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors).
-
-</details>
-

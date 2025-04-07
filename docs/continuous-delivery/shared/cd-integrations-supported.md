@@ -944,9 +944,9 @@ deny[msg] {
 Yes, you can update Jira issues and add Jira approval stages and steps using Harness.
 
 
-#### Does Harness provide Pause/Resume Pipeline functionality in NextGen ?
+#### Does Harness provide Pause/Resume Pipeline functionality?
 
-Yes, the Pause/Resume Pipeline functionality is provided behind the `FF: PIE_DEPRECATE_PAUSE_INTERRUPT_NG`. It is not planned to depricate the feature but due to feature complexity it is advisable to use the Harness Approval steps. 
+Yes, the Pause/Resume Pipeline functionality is provided behind the `FF: PIE_DEPRECATE_PAUSE_INTERRUPT_NG`. It is not planned to deprecate the feature but due to feature complexity it is advisable to use the Harness Approval steps. 
 Please read more on how to use Automated Harness Approval steps in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/#prevent-approval-by-pipeline-executor)
 
 

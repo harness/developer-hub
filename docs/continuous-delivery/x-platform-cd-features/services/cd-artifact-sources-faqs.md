@@ -65,11 +65,6 @@ Yes, in Harness, you can deploy the latest tag version to your artifact server. 
 
 The API call used to fetch a tag of an artifact from the GAR is `/v1/projects/{project}/locations/{region}/repositories/{repositories}/packages/{package}/versions?view=FULL`
 
-### What is the correct expression to reference artifact version in rollback phase?
-
-One can use the expression `rollbackArtifact.version` . This is a change from FirstGen to NextGen where rollback artifact version was getting automatically resolved
-Please find an example use case on this in our [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#pipeline-sample-setup---cicd)
-
 ### What image tag expression should be used for periodic deployment of a binary version triggered by cron?
 
 If it's not a custom trigger, use `<+trigger.artifact.build>` in the image tag field. Otherwise, reference the payload JSON to construct the expression.
@@ -88,9 +83,6 @@ If Artifact Triggers stop working, it's possible that the Perpetual Task assigne
 The expression `<+lastPublished.tag>` sorts the tags lexically rather than by the "created at" date. One can try replacing `<+lastPublished.tag>` with `<+trigger.artifact.build>` in the trigger's configuration ensures that it always fires using the latest collected tag.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#artifact-limits-and-display-in-the-harness-ui)
 
-### Does Harness support `Skip instances with the same artifact version already deployed` feature on NextGen?
-
-Yes, this feature parity to FirstGen is now available ! Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#targetting-specific-hosts-for-deployment)
 
 ### How to reference the tag of artifact in deploy stage.
 

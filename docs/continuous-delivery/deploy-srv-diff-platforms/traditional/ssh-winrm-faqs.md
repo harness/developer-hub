@@ -36,14 +36,10 @@ No, this feature is yet to be supported. We suggest to use ssh key or user and p
 
 No this is not supported as of now, as currently command step is only applicable in ssh/winrm type deployment
 
-### Is there a method available to implement a percentage-based repeat strategy for Shell Script Hosts similar to the functionality present in FirstGen?
+### Is there a method available to implement a percentage-based repeat strategy for Shell Script Hosts?
 
 For a rolling strategy, you specify the desired number of instances to deploy per phase. If you have multiple target hosts in a stage and wish to deploy a certain proportion of instances per phase, you can configure it accordingly. This allows for a flexible deployment approach where the number of instances per phase can be defined either as a count or a percentage.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#rolling)
-
-### Does Harness support "Skip instances with the same artifact version already deployed" feature on NextGen?
-
-Yes, this feature parity to FirstGen is now available ! Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#targetting-specific-hosts-for-deployment)
 
 ### Why am I getting the error "Host information is missing in Command Step"?
 

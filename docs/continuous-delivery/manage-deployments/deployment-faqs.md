@@ -73,13 +73,6 @@ However, apart from these differences, basic JSON documents are considered valid
 
 At the moment there is no dependency on the instance sync and infrastructure definition. Infrastructure definition is used only to generate infrastructure details. The instance sync is done for service and environment. Only in case if any these are deleted, the instance sync will stop and delete instances.
 
-:::info
-
-If you are using the default release name format in Harness FirstGen as `release-${infra.kubernetes.infraId}`, it's important to note that when migrating to Harness NextGen, you will need to replace `${infra.kubernetes.infraId}` with the new expression. In Harness NextGen, a similar expression `<+INFRA_KEY>` is available for defining release names. However, it's crucial to understand that these expressions will resolve to completely different values compared to the expressions used in Harness FirstGen.
-
-:::
-
-
 ### Is there an easy way to see all the recent deployments of a workflow that had run?
 
 You can use deployment filter and select the workflow and time range and you will able to see all the deployment for that workflow within that time range
@@ -180,13 +173,12 @@ Until any user-driven operation is performed, for example, reload-from-Git butto
 
 ### Can I customize the looping conditions and behavior?
 
-Yes, Harness NextGen often offers customization options to define the loop exit conditions, maximum iteration counts, sleep intervals between iterations, and more information [here](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
+Yes, Harness often offers customization options to define the loop exit conditions, maximum iteration counts, sleep intervals between iterations, and more information [here](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 
 
-### What are the use cases for utilizing looping strategy in Harness NextGen?
+### What are the use cases for utilizing looping strategy in Harness?
 
 Looping strategies are useful for scenarios like canary deployments, gradual rollouts, and validation checks where you want to keep iterating until you achieve the desired result.
-
 
 ### Zero results returned when trying to find deployment data from 2020.
 
@@ -647,14 +639,6 @@ Since the triggers are linked to pipelines, org ID and project ID is required pa
 ### How can I use canary with native helm deployment strategy?
 
 You can only perform a rolling deployment strategy for Native Helm(no canary or blue-green).
-
-
-### I am using AWS ASG template and would like to fetch "New ASG Name" while deployment/workflow/pipeline executes. Is it available in context? If yes then how can I get new asg name? 
-
-We support both old and new ASG names via variable, which should help you with this use case to run custom scripting if required on old ASG.
- 
-Both new and old ASG: $\{ami.newAsgName}, $\{ami.oldAsgName} documented here:
-https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/variables/built-in-variables-list#aws-amiasg-1
 
 
 ### Should the Fetch Instances step return only one instance for executing a trigger to an external orchestrator, such as Ansible or Puppet?
@@ -1596,15 +1580,10 @@ Service Entities can be configured with tags to categorize the same during deplo
 For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv/).
 
 
-### Is there a method available to implement a percentage-based repeat strategy for Shell Script Hosts similar to the functionality present in FirstGen?
+### Is there a method available to implement a percentage-based repeat strategy for Shell Script Hosts?
 
 For a rolling strategy, you specify the desired number of instances to deploy per phase. If you have multiple target hosts in a stage and wish to deploy a certain proportion of instances per phase, you can configure it accordingly. This allows for a flexible deployment approach where the number of instances per phase can be defined either as a count or a percentage.
 For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#rolling).
-
-
-### Does Harness support "Skip instances with the same artifact version already deployed" feature on NextGen?
-
-Yes, this feature parity to FirstGen is now available. For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#targetting-specific-hosts-for-deployment).
 
 
 ### How does Harness ensure that the tag fetched in the service step is consistently the latest for both triggers and manual executions?
@@ -1734,7 +1713,7 @@ In Harness, the `allowSimultaneousDeployments` setting in the infrastructure def
 
 ### What is a matrix looping strategy?
 
-A matrix is a looping strategy in Harness that iterates over a series of elements. It can be used in stages or steps to repeat a set of actions for each element in the matrix. Matrices can be one-dimensional or multi-dimensional and can be customized with maxConcurrency and nodeName settings. You can use expressions to reference matrix values in your steps. The current status and live status expressions can be used to retrieve the current execution status of looping strategies for nodes in a pipeline or stage. The Git Experience in NextGen supports storing matrix configurations in a Git repository.
+A matrix is a looping strategy in Harness that iterates over a series of elements. It can be used in stages or steps to repeat a set of actions for each element in the matrix. Matrices can be one-dimensional or multi-dimensional and can be customized with maxConcurrency and nodeName settings. You can use expressions to reference matrix values in your steps. The current status and live status expressions can be used to retrieve the current execution status of looping strategies for nodes in a pipeline or stage. The Git Experience in Harness supports storing matrix configurations in a Git repository.
 
 Sources: [Additional matrix examples](https://developer.harness.io/docs/platform/pipelines/looping-strategies/additional-matrix-examples), [Harness variables](https://developer.harness.io/docs/platform/variables-and-expressions/Harness-variables), [API](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 
@@ -1788,9 +1767,7 @@ Please read more on custom stages in the following [Documentation](https://devel
 
 ### What is the correct expression to reference artifact version in rollback phase?
 
-One can use the expression `rollbackArtifact.version` . This is a change from FirstGen to NextGen where rollback artifact version was getting automatically resolved
-Please find an example use case on this in our [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#pipeline-sample-setup---cicd)
-
+Use the expression `rollbackArtifact.version`.
 
 ### Is there a way to see which user acts on the wait step to mark it as a success or mark it as fail?
 
