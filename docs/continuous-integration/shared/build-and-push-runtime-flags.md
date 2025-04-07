@@ -4,6 +4,8 @@ import Tar from '/docs/continuous-integration/shared/build-and-push-local-tar.md
 
 These plugins have a number of additional runtime flags that you might need for certain use cases. For information about the flags, go to the [kaniko plugin documentation](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#additional-flags) and the [drone-docker plugin documentation](https://plugins.drone.io/plugins/docker).
 
+In **Environment Variables** for your step, add the environment variable `PLUGIN_BUILDX_OPTIONS` to pass any [supported options](https://docs.docker.com/reference/cli/docker/buildx/build/#options) to the buildx command used by the build and push steps.
+
 How you configure plugin runtime flags depends on your build infrastructure.
 
 <details>
