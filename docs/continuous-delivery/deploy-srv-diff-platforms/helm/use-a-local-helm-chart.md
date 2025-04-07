@@ -107,4 +107,3 @@ There is a slight difference in the logs for local and remote Helm charts. For e
 When Harness finds the charts it displays the message `Found the chart at local repo at path`.
 
 </details>
-<details>
