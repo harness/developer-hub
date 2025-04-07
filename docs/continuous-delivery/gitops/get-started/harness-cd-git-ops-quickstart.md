@@ -370,7 +370,7 @@ A GitOps Application collects the Repository (what you want to deploy), Cluster 
 <iframe 
   src="https://app.tango.us/app/embed/18d662e4-5c08-4d63-95a5-20ebac87b42e" 
   style={{minHeight:'640px'}} 
-  title="Creating a Harness GitOps Repository"
+  title="Creating a Harness GitOps Application"
   width="100%" 
   height="100%" 
   referrerpolicy="strict-origin-when-cross-origin" 
