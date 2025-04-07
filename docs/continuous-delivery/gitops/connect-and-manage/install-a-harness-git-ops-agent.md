@@ -113,7 +113,7 @@ In **Namespace**, enter the namespace where you want to install the Harness GitO
 
 If **Namespaced** is selected, the Harness GitOps agent is installed without cluster-scoped permissions, and it can access only those resources that are in its own namespace. You can select **Skip Crds** to not install Argo CD CRDs to avoid a collision if already installed. 
 
-Note that if you remove CRDs, you may loose your Argo CD objects like applications or projects.
+Note that if you remove CRDs from cluster, you will loose your instances of ArgoCD objects like applications, projects and application sets.
 
 Select **Next**. The **Helm Chart** and **YAML** deployment options appear.
 
@@ -263,11 +263,11 @@ Also, whenever new entities are created in mapped Argo CD projects, they are add
 
 For steps on setting up the mapping and import, go to [Map existing Argo projects](/docs/continuous-delivery/gitops/connect-and-manage/multiple-argo-to-single-harness#map-existing-argo-projects).
 
-## Default In-Cluster for Account-Level GitOps Agent
+## Default In-Cluster
+When you create a GitOps agent, a default in-cluster is automatically created. This in-cluster is special kind of cluster which doesnt have project set so it is always created on scope same as GitOps agent.
 
-When you create a GitOps agent at the account level, a default in-cluster is automatically created. This in-cluster is only visible on the Cluster page at the account level.
-- The default in-cluster is not visible at the organization or project level unless a project mapping is configured.
-- You cannot create another in-cluster at the account level since only one default in-cluster is allowed for an account-level GitOps agent.
+- You can remove in-cluster from Harness but that doesnt actually delete in-cluster as it is a special cluster object. If deleted, it can be recreated. 
+- For `Namespaced` agent `in-cluster` is not being created and option for adding `in-cluster` is disabled.
 
 ## Proxy support
 
@@ -649,7 +649,10 @@ For more information, go to [High Availability from ArgoCD](https://argo-cd.read
 
 ### Harness use cases
 
-With Harness GitOps, where multiple agents can run in a single UI, Harness is not bound to have just 1 instance per UI. Harness can have multiple agents deployed across different scopes/clusters that can handle more applications than ArgoCD.
+With Harness GitOps, multiple agents can run within a single Harness project. Harness is not limited to a single agent instance—you can deploy multiple agents across different scopes or clusters, enabling you to manage more applications and environments than a standard Argo CD setup.
+
+![](./static/gitops-agent-ui.png)
+
 
 **When to use Harness GitOps HA Agent?:**
 
