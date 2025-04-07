@@ -54,9 +54,11 @@ Invalid argument(s): Host information is missing in Command Step. Please make su
 If you are using the Command step, the `Repeat` looping strategy is required. The above error indicates that the Command step was ran without a `Repeat` looping strategy. To fix this, set the `Repeat` looping strategy for the Command step. For more information on the Command step and the supported looping strategies, go to [SSH and WinRM](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/#ssh-and-winrm) documentation.
 
 
-### Download artifact for winrm is not working while Nexus if Windows machine is behind proxy in Next Gen?
-Nexus is supported for NG but not in CG, so you can use custom powershell script something like below:
+### Download artifact for winrm is not working while Nexus if Windows machine is behind proxy?
+Nexus is supported, so you can use custom powershell script something like below:
+```
 Invoke-WebRequest -Uri "$\{URI}" -Headers $Headers -OutFile "$\{OUT_FILE}" -Proxy "$env:HTTP_PROXY"
+```
 
 ### How to give the user access to WinRM resources?
 Run command winrm configSDDL default and it should open the the dialogue, check if user configured for login already present in the last otherwise add the user

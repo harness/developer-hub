@@ -193,17 +193,6 @@ Looping strategies are useful for scenarios like canary deployments, gradual rol
 We have a 6 month data retention period as mentioned in [Documentation](https://www.Harness.io/pricing?module=cd#). 
 Deployments older that that are not available.
 
-<!---what's this
-
-
-### Currently we make use of this feature from FirstGen. Is there, or will there be an equivalent feature in Next Gen?
-
-Consider the below mentions :
-- Reference 1 : [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint/)
-- Reference 2 : You can Use Webhook notifications in NG to inform an external application of an event. Refer to this [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#webhook-notifications) 
-  
---->
-
 
 ### How to pass value to a variable manually while running from UI if same pipeline is configured to run via trigger and using variable from trigger?
 
@@ -307,12 +296,6 @@ We support having multiple condition check in the conditional execution. If you 
 ### Does Harness GitOps support rollback and roll-forward capabilities?
 
 Yes, Harness GitOps includes rollback and roll-forward capabilities. In case of deployment failures or issues, you can use Harness to automatically roll back to a previously known good state or roll forward to a fixed version.
-
-
-### Do we need to manually filter the API response to check if the pipeline was executed by a trigger in Next Gen?
-
-Yes,Harness NG uses REST APIs not graphql, this means that we need to review the api calls they are making and provide them the api endpoints that are parity. 
-
 
 ### How do I access one pipeline variables from another pipeline?
 
@@ -802,13 +785,6 @@ Yes, one can try to use a service deployment and use our `Custom Remote Manifest
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/)
 
 
-### Is there is an ECS DNS Blue/Green deployment similar to First-Gen in the Next Gen?
-
-In the next generation, we support the utilization of a `load balancer` with target groups for the switching between blue and green deployments.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-v2-summary/)
-For First-Gen reference read the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/aws-deployments/ecs-deployment/ecs-blue-green-workflows/#ecs-bluegreen-using-dns).
-
-
 ### When publishing an artifact, what is the specific interval for polling and can a user configure it ?
 
 Polling interval for publishing an artifact is `1 minute`. Harness don't allow to configure this by user
@@ -837,7 +813,7 @@ For the input set to be added in Git, We require the pipeline to be on Git as we
 Once you move your pipeline to Git, the option to create an input set on Git will also be available.
 
 
-### Does Harness Next Gen support the "Skip artifact version already deployed" parameter as present in First Gen?
+### Does Harness support the "Skip artifact version already deployed" parameter?
 
 We do support "Skip artifact version already deployed" for WinRM SSH deployment. It is present under the advanced section of the pipeline.
 
@@ -1211,15 +1187,15 @@ Certainly! one has the flexibility to use the same cluster for both the Harness 
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups#important-notes)
 
 
-### Is there a way to show instances over time in NextGen, similar to the current “Service instances over time” dashboard in First Gen?
+### Is there a way to show instances over time?
 
 Yes, the Instance view per service is visible in the Service Dashboard.
-For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#services-dashboard).
+For more details, go to [Services Dashboard](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#services-dashboard).
 
 
-### Is there any way the user can have custom webhook trigger with placeholders for services, artifacts, tag to provide dynamic values in cURL to execute the pipeline like Next Gen triggers?
+### Is there any way the user can have custom webhook trigger with placeholders for services, artifacts, tag to provide dynamic values in cURL to execute the pipeline?
 
-Yes, one can use custom webhook triggers with placeholders for services, artifacts, and tags to provide dynamic values in cURL to execute the pipeline. You can pass in this data when the pipeline execution is triggered using a custom cURL trigger. Please read more on custom triggers in the following [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/)
+Yes, one can use custom webhook triggers with placeholders for services, artifacts, and tags to provide dynamic values in cURL to execute the pipeline. You can pass in this data when the pipeline execution is triggered using a custom cURL trigger. For more information, go to [custom triggers](/docs/platform/triggers/trigger-deployments-using-custom-triggers/)
 
 
 ### How can we trigger a pipeline at specific time?
@@ -1284,9 +1260,7 @@ When deploying a Kubernetes application type, the system checks for a ```values.
 
 ### Does old version to K8S Server (eg. v1.11.10) service deploy get supported in Harness?
 
-Yes, if the deployment versions supported in First Gen was available, the NextGen will be available as well.
-For more information, go to [What's supported in Harness Platform](https://developer.harness.io/docs/platform/platform-whats-supported).
-
+Yes. For more information, go to [What's supported in Harness Platform](https://developer.harness.io/docs/platform/platform-whats-supported).
 
 ### Does Harness provide Salesforce Deployment Template?
 

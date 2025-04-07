@@ -192,15 +192,6 @@ You can only perform a rolling deployment strategy for Native Helm(no canary or 
 
 Please follow the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#Helm-chart-expressions).
 
-
-### What are the options for passing Helm flag in First Gen?
-
-Helm flags can be passed in first gen at workflow level under "Configure Helm deploy" Option. We can also pass command flags under service inside chart specification option.
-
-### What is the difference between Helm flag options at workflow level and service level in First Gen?
-
-The Helm flag configured at workflow level needs to be not command specific otherwise the command can fail. It will also be applied to all the Helm commands. The command flag passed at service level are tagged to a specific command. So they will be added only to that specific command. Hence here we can use command specific flags as well.
-
 ### Is there a way to avoid using Helm template command in Kubernetes Helm deployment?
 
 For kubernetes Helm we will always run the template command as this is how we get the rendered manifest. The workflow using kubernetes Helm perform the final deployment using the rendered manifest and kubectl commands.
@@ -468,11 +459,9 @@ To avoid this in the future, please make sure to perform any Helm Release upgrad
 This error usually occurs when running a Helm deployment on an expired delegate. You will run into errors in case of expired delegates. [Upgrade the delegate to the latest version](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) and retry the execution.
 
 
-### Does Harness support Helm hooks (excluding service hooks) similar to the support provided in First Gen?
+### Does Harness support Helm hooks (excluding service hooks)?
 
-No, Harness does not support Helm hooks in Kubernetes deployments in the same way as in First Gen.
-
-The recommended approach in both First Gen and NextGen is to remove Helm hooks and integrate them as shell script steps within the workflow. This method is applicable in both generations of Harness.
+The recommended approach is to remove Helm hooks and integrate them as shell script steps within the workflow. This method is applicable in both generations of Harness.
 
 For unchanged utilization of Helm hooks, native Helm deployment can be chosen. However, native Helm's ability to process hooks and deploy simultaneously is limited. This limitation stems from Helm's post-render functionality, which prevents Harness from processing hooks effectively.
 

@@ -359,9 +359,9 @@ You can take a specific file from the manifest and execute it separately (before
 No, Versioning is not done when declarative rollback is enabled. Please refer more on this in following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning/)
 
 
-###  Do we have the export manifests option in Next Gen like we have in First Gen?
+###  Do we have an export manifests option?
 
-No, we have a dry-run step, that will export manifest for customer to use in other steps, but there is no option to inherit manifest. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/k8s-dry-run/).
+No, we have a dry-run step, that will export manifest for customer to use in other steps, but there is no option to inherit manifest. Please refer more on this in the following [Documentation](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/k8s-dry-run/).
 
 ### How do I save the dry-run step rendered manifest?
 
@@ -685,19 +685,7 @@ Error: UPGRADE FAILED: unable to build kubernetes objects from current release m
 
 This error happens if you have recently upgraded your Kuberenetes Cluster without ensuring that your Helm Releases' API Versions are supported in the new Kubernetes Cluster version. When attempting to upgrade them after, Helm will throw the above error due to the deprecated API no longer existing in the current Kubernetes Cluster. To fix this, you'll need to upgrade the API Version on the Helm Release manually by following the steps in the [Helm Documentation](https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest).
 
-To avoid this in the future, please make sure to perform any Helm Release upgrades prior to upgrading your Kubernetes Cluster. A detailed list of deprecated and supported Kubernetes APIs can be found in the [Kubernetes Documentation](https://kubernetes.io/docs/reference/using-api/deprecation-guide/).
-
-
-### Does Harness support Helm hooks (excluding service hooks) similar to the support provided in First Gen?
-
-No, Harness does not support Helm hooks in Kubernetes deployments in the same way as in First Gen.
-
-The recommended approach in both First Gen and NextGen is to remove Helm hooks and integrate them as shell script steps within the workflow. This method is applicable in both generations of Harness.
-
-For unchanged utilization of Helm hooks, native Helm deployment can be chosen. However, native Helm's ability to process hooks and deploy simultaneously is limited. This limitation stems from Helm's post-render functionality, which prevents Harness from processing hooks effectively.
-
-For detailed instructions on integrating Helm charts in Kubernetes deployments with Harness, please refer to the Harness [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/kubernetes-deployments/use-helm-chart-hooks-in-kubernetes-deployments/).
-
+To avoid this in the future, please make sure to perform any Helm Release upgrades prior to upgrading your Kubernetes Cluster. A detailed list of deprecated and supported Kubernetes APIs can be found in the [Kubernetes Documentation](https://kubernetes.io/docs/reference/using-api/deprecation-guide/)
 
 ### Why aren't my old Kubernetes Resources not deleted when deploying a new version?
 
