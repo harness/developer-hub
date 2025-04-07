@@ -24,9 +24,9 @@ Review the notes below for details about recent changes to Harness Internal Deve
 | **prod0**   | ✅ Completed                        | March - v0.41.0             |                                                                                                                        
 | **prod1** | ✅ Completed                        | March - v0.41.0             |                                                                                                                      
 | **prod2**    | ✅ Completed                        | March - v0.41.0             |                                                                                                                      
-| **prod3**         | 🕒 Scheduled (This Week)                        | March - v0.41.0             | 
-| **prod4**         | 🕒 Scheduled (This Week)                    | March - v0.41.0              | 
-| **prodeu1**   | 🕒 Scheduled (This Week)                        | March - v0.41.0     |                                                                                               
+| **prod3**         | ✅ Completed                        | March - v0.41.0             | 
+| **prod4**         | ✅ Completed                    | March - v0.41.0              | 
+| **prodeu1**   | ✅ Completed                        | March - v0.41.0     |                                                                                      
 
 ## March - Version 0.41.0
 
@@ -34,6 +34,22 @@ Review the notes below for details about recent changes to Harness Internal Deve
 As we gear up for our major **IDP 2.0 release** (more details this week), this release focuses primarily on improving the efficiency of the product. **Version 0.41.0** includes several bug fixes and feature enhancements. All key details are mentioned below. 
 
 Also, stay tuned for more updates on our upcoming IDP 2.0 release.
+### [New Feature] GitHub App Support
+**[IDP-4827] | [Docs](/docs/internal-developer-portal/flows/harness-pipeline#idp-stage-1)**
+
+----
+This release adds support for **GitHub App authentication** in IDP Stage steps. Previously, only **Username-Password** authentication was available. Now, you can authenticate the Harness GitHub connector using a **GitHub App**. To use this authentication method, you need to create and install a GitHub App, fetch the app's installation ID and app ID, and create a private key for the app. Follow this [guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) for detailed steps. 
+
+![](./static/github-app-1.png)
+
+This applies to the following IDP Stage steps:
+1. [Git Clone](/docs/internal-developer-portal/flows/harness-pipeline#1-git-clone)
+2. [Create Repo](/docs/internal-developer-portal/flows/harness-pipeline#3-create-repo)
+3. [Direct Push](/docs/internal-developer-portal/flows/harness-pipeline#5-direct-push)
+4. [Register Catalog](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog) 
+
+👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/harness-pipeline#idp-stage-1).**
+
 
 ### [New Feature] Jenkins Plugin Upgrade
 **[IDP-4939] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/jenkins)**
