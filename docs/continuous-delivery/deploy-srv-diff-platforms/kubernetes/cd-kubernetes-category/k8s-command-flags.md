@@ -43,6 +43,7 @@ You can use this command in:
 - [K8s Apply](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step/)
 - [K8s Rollout Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollout-step/)
 
+For more information on `kubectl apply` command, refer [Kubernetes Documentation](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/)
 
 ### `kubectl delete`
 
@@ -59,6 +60,7 @@ The `kubectl delete` command is used to remove resources (e.g., pods, services, 
 You can use this command in the following step:
 - [K8s Delete step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources/)
 
+For more information on `kubectl delete` command, refer [Kubernetes Documentation](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_delete/)
 
 ### `kubectl rollout`
 
@@ -73,7 +75,7 @@ The `kubectl rollout` command is used to manage the rollout process of deploymen
 This command can be added in the following step:
 - [K8s Rollout step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollout-restart/)
 
-
+For more information on `kubectl rollout` command, refer [Kubernetes Documentation](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_rollout/)
 
 ### `kubectl patch`
 
@@ -91,3 +93,5 @@ The `kubectl patch` command allows you to modify an existing Kubernetes resource
 
 You can use this command in the following step:
 - [K8s Patch Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-patch-step/)
+
+For more information on `kubectl patch` command, refer [Kubernetes Documentation](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_patch/)
