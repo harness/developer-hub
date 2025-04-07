@@ -905,7 +905,7 @@ You can use the failure strategy to move the pipeline forward if the approval st
 On the approval step's advance section, go to failure strategy and use the mark as success to make the step successful and the pipeline will move to the next step.
 
 
-#### How does Harness NG rollback if something goes wrong in Production. Will it be automatically done or do we need to trigger anything manually?
+#### How does Harness rollback if something goes wrong in Production. Will it be automatically done or do we need to trigger anything manually?
 
 You can perform rollbacks manually, automatically, or use a hybrid option (triggering it automatically but requiring approval before it happens).
 Post-deployment rollback: This can be considered a manual approach, allowing you to rollback deployments that succeeded on technical criteria but that you want to roll back for other reasons. 

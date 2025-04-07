@@ -480,11 +480,6 @@ The CD License calculation uses the Active Services count and the number of Serv
 For more information, go to [Service-based licensing and usage for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd).
 
 
-### "Is there an equivalent option in NG for "Last Successfully Deployed" in triggers?"
-
-Yes. One can use the expression `<+lastPublished.tag> expression`. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#artifact-polling).
-
-
 ### How to pass the Environment and Infrastructure Definition as a string as a runtime parameter?
 You can use the expression \<+trigger.webhook.payload.ref> to get the branch name from the GitHub webhook payload and pass it as the Environment value. In your pipeline, go to the stage where you want to set the Environment value, click on the Environment dropdown, select Runtime Input, and then enter a name for the input. In the Value field, enter the expression \<+trigger.webhook.payload.ref>. 
  
@@ -1025,18 +1020,6 @@ You can use API to execute the pipeline [api](https://apidocs.Harness.io/tag/Pip
 In the created pipeline you can add a Jira update step with the required details to update the issue [Doc](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages/)
 
 
-### How can we calculate the instance of a service where number of pods change?
-
-We can calculate the service licenses and instances in following methods for CG and NG both.
-
-- List services deployed in the last 30 days. Service is considered in calculation even if it was part of any failed deployments
-- For every found service we find the 95th Percentile of the number of its service instances across a period of 30 days and it represents active service instances
-- Based on service instances we calculate the number of consumed licenses
-- 1 service license is equal to 20 active service instances
-
-Please find an example [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#example).
-
-
 ### I want to set up a chained pipeline in orgA/ProjectA with a pipeline in orgB/ProjectB. I want to restrict triggering the pipeline in orgB/ProjectB to only be possible through the pipeline in orgA/ProjectA. How can I implement this?
 
 We would suggest using RBAC to only allow a certain user with access to those pipelines with execute permission, because we need execute permissions for the parent and child pipelines to ensure successful execution.
@@ -1190,12 +1173,6 @@ You can make use of CRON based trigger to execute a pipeline
 ###  How to setup trigger for on new artifact for JFrog?
 
 You can create a docker connector(using jfrog details) and create a trigger on New artifact of type docker by selecting the jfrog connector created as first step.
-
-
-### What is the use of terraform-config-inspect binary in delegates?
-
-This binary is used for rendering the terraform code in the CG version and is not used for NG-related deployments.
-
 
 ### How does swapping work for AGS Blue Green deployment?
 
@@ -1389,7 +1366,7 @@ Harness works with JEXL, you can use Java string methods for various tasks. For 
 If the repository name doesn't always start with "PSS.CPN." but the prefix is always the same length, you can try a different method, like this: `<+<+eventPayload.repository.name>.substring(7)>`. This will skip the first seven characters of the string.
 
 
-### How does Harness NG rollback if something goes wrong in Production. Will it be automatically done or do we need to trigger anything manually?
+### How does Harness rollback if something goes wrong in Production. Will it be automatically done or do we need to trigger anything manually?
 
 You can perform rollbacks manually, automatically, or use a hybrid option (triggering it automatically but requiring approval before it happens).
 Post-deployment rollback: This can be considered a manual approach, allowing you to rollback deployments that succeeded on technical criteria but that you want to roll back for other reasons. 

@@ -177,18 +177,11 @@ The only way to publish data in the Artifacts tab is by providing a URL to a pub
  
 This URL can be used in the file_urls setting of the Artifact Metadata Publisher plugin to publish the artifact in the Artifacts tab. Another option is to use a different cloud storage provider that allows you to generate temporary URLs for private objects, such as Google Cloud Storage signed URLs or AWS S3 pre-signed URLs.
 
-### What is the equivalent variable for  $\{artifact.label.get(“labelkey)} In NG?
-
-You can use  `<+artifact.label.get(“labelkey”)>`
-
 ### Is it expected that, after pushing a new artifact to an initially empty Docker repository linked to a trigger, the trigger's status shifts from `pending` to `success` only triggering the pipeline upon the second push ?
 
 Upon creating or updating a trigger, there's a five to ten-minute delay before the polling job initiates and the trigger becomes operational. It's advised to wait for this duration before pushing the artifact, according to general recommendations from the deployment platform.
 After 5-10 mins of the trigger status turns success, any tag collected should trigger the pipeline.
 
-### Does Harness NG support the "Skip artifact version already deployed" parameter as present in CG?
-
-We do support "Skip artifact version already deployed" for WinRM SSH deployment. It is present under the advanced section of the pipeline.
 
 ### What is the artifact polling interval for triggers?
 
@@ -248,11 +241,6 @@ You can use variable expressions in artifact source templates to allow team memb
 
 We cannot provide an array directly to the custom artifact. It needs a root element to parse the json response.
 
-### Download artifact for winrm is not working while Nexus if windows machine is behind proxy in CG
-
-Nexus is supported for NG but not in CG, so you can use custom powershell script something like below:
-Invoke-WebRequest -Uri "$\{URI}" -Headers $Headers -OutFile "$\{OUT_FILE}" -Proxy "$env:HTTP_PROXY"
-
 ### How to get ECR image and tag information in the stage?
 You should be able to see the artifacts details in the service output of the execution, you can reference this value via expressions in the next stage.
 
@@ -286,7 +274,7 @@ You can go to Service under the project --> Summary will show you the details wi
 
 Except for the latest version of Nexus, it is in alphabetical order.
 
-### WinRM Download artifact is not working in NG after setting correct environment variables (HARNESS_ENV_PROXY and HTTP_PROXY).
+### WinRM Download artifact is not working after setting correct environment variables (HARNESS_ENV_PROXY and HTTP_PROXY).
 
 Make sure you're using delegate version 791xx and check in console logs if you are able to see Using HTTP_PROXY environment variable.
 
