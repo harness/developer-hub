@@ -2055,3 +2055,18 @@ Controlling the number of concurrently deployed services in a multi-service depl
 
 ### How can a user utilize a step template with a script to run across multiple hosts in parallel?
 Users migrating from Cloudbees can create multiple infrastructures with host names set as override variables. When selecting multiple infrastructures during execution, the pipeline runs the stage for each selected infrastructure.
+
+### What does "Notify only me about this Execution" mean on the Run Pipeline form?
+
+![](./static/run-pipeline-form-notify.png)
+
+When you select **Notify only me about this Execution** while running a pipeline, only you (the person triggering the pipeline) will receive email notifications for that specific run.
+You will get:
+- `PipelineStart` notification
+- `PipelineEnd` notification
+No one else (team members, channels, groups) will be notified — even if the pipeline normally has broader notification rules.
+
+
+
+
+
