@@ -55,6 +55,38 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## April 2025
 
+### Version 1.84.x
+
+#### New Features and Enhancements
+
+- We've upgraded our protocol buffer implementation from **protobuf-java** `3.15.5` to `4.28.3`. This significant version jump addresses known security vulnerabilities present in the older version while modernizing a critical component of our internal service communication infrastructure. This change operates entirely within Harness' internal architecture and requires no action from users. All functionality remains unchanged, with no modifications to user workflows or interfaces. (**CDS-104707**)
+- Users can now define and manage rewrite rules to control traffic routing in Kubernetes traffic routing configuration. Currently, this feature is behind the feature flag `CDS_K8S_TRAFFIC_ROUTE_REWRITE_RULE_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-103501**)
+- Users can now deploy Lambda artifacts larger than 50 MB directly from S3, bypassing the upload limit. If the content size exceeds 50 MB, the S3 path is passed directly to Lambda, allowing it to handle the upload. Note that the Lambda execution role must have access to the S3 bucket when working with large artifacts. (**CDS-74918, ZD-77784**)
+- ​Users can now trigger pipelines in GitLab upon the creation or pushing of tags. Currently, this feature is behind the feature flag `CDS_GITLAB_TRIGGER_TAG_EVENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-99762**)
+- ​Users can now utilize an optional checkbox for Kubernetes and Helm deployment types, enabling enhanced customization during deployments. Currently, this feature is behind the feature flag `CDS_OPTIONAL_VALUES_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+| Deployment Type | Manifest Type | Optional Field Render | Image |
+| --- | --- | --- | --- |
+| Kubernetes | K8s / Helm Chart | Under values.yaml field | ![](./static/image_dep1.png) |
+| Kubernetes/ Native Helm | Values YAML | under file field | ![](./static/image_dep2.png) |
+| `Native Helm | Helm Chart | Under values.yaml field | ![](./static/image_dep3.png) |
+
+In Overrides, File Path is added as optional.
+![](./static/override_imagedep.png)
+- Users can now enforce Oauth for commits by enbaling the setting **Enforce Oauth For Commits** in the Account Setting under **Git Experience**. (**PIPE-25432**)
+
+
+#### Fixed Issues
+
+- Previously, in the Deploy stage, selecting a runtime input for filtered Environment and Infrastructure would disappear from the UI, requiring YAML edits. Also, when using **All Match Type**, it incorrectly required all tags to be present on both Environment and Infrastructure. This issue has been resolved, and deprecated characters for tags in runtime input have been removed.(**CDS-108322,ZD-78208**)
+- Previously, during the first Helm deployment, if the deploy step failed, the rollback step would also fail because it attempted to roll back to version 0, which does not exist. This led to an error:
+`Error: release has no 0 version`. This issue has been resolved. The rollback step now correctly identifies the first deployment scenario and skips rollback when there is no previous release to revert to. (**CDS-108229,ZD-80929**)
+- Previously, in the Custom Health Source, switching between queries (e.g., from `Query1` to `Query2`) would incorrectly change the name of the selected query to match the other one. This happened because the `createdMetrics` prop was being mutated when passed, which caused both queries to display the same name.
+This issue has been resolved. Now, a copy of `createdMetrics` is passed instead of the original, preventing unintended mutation. Query names now remain intact when switching between them. (**CDS-108228,ZD-80365**)
+- Previously, editing a Monitored Service from a malformed URL resulted in a blank screen, preventing users from accessing or editing service configurations. This happened because the UI did not correctly handle URLs accessed via the Project Settings path, particularly for the CV module.
+This issue has been resolved. The Monitored Services page now supports opening via the CV module, in addition to CD, and renders the service correctly. For all other modules, the service remains read-only. (**CDS-108160,ZD-80779**)
+- Previously, GitOps pipeline steps did not support multiple steps of the same kind within a single stage. Steps like GitOps Sync would store their outputs at the stage scope, which caused Duplicate Key Exceptions—resulting in pipeline failures with the error: `Sweeping output with name gitopsSync is already saved.` This issue has been resolved. All GitOps steps (`SyncStep`, `MergePRStep`, `UpdateReleaseRepoStep`, `UpdateGitOpsAppStep`, and `FetchLinkedAppsStep`) now store outputs at both stage and step scopes. For backward compatibility, stage-scoped output contains data from the first step only. Users should use step-scoped outputs for accurate data when using multiple GitOps steps in a stage. (**CDS-108131**)
+
 ### Version 1.83.5
 
 #### New Features and Enhancements
