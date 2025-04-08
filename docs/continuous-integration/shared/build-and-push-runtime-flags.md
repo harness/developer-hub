@@ -146,8 +146,8 @@ This example demonstrates how to configure a Build and Push step with Docker sec
       tags:
         - ci-<+pipeline.executionId>
       envDockerSecrets:
-        a_user: USERNAME # Environment variable in format of key:value
-        a_pass: PASSWORD
+        USERNAME: a_user # Reference in Dockerfile:reference to env variable
+        PASSWORD: a_pass
       fileDockerSecrets:
         docker_user2: <+secrets.getValue("myusername")> # File secret defined in Harness
         docker_pass2: <+secrets.getValue("mydockerpass")>
@@ -155,10 +155,10 @@ This example demonstrates how to configure a Build and Push step with Docker sec
       caching: true
 ```
 
-The `envDockerSecrets` field allows you to define environment variables to securely pass sensitive information to the Docker build process.
+The `envDockerSecrets` field allows you to define Docker secrets that will be passed to the build process through environment variables.
 
-- Key: The name of the environment variable that will be exposed to the Docker build process.
-- Value: The secret value associated with the key. This can either be a plain text string or a reference to a secret managed securely in Harness.
+- Key: The reference ID that will be used to identify the secret in the Dockerfile (used with `--mount=type=secret,id=USERNAME`).
+- Value: The reference to the environment variable containing the secret value. If the value is a secret or contains a secret, Harness will implicitly create the environment variable for you.
 
 The `fileDockerSecrets` field allows you to mount secrets as files into the Docker build process. This is useful for passing configuration files, certificates, or other file-based sensitive data.
 
