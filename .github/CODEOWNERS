@@ -51,6 +51,7 @@ static/  @rohanmaharjan100 @wei-harness
 
 # Continuous Delivery Docs
 /docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta @shylajasun
+/docs/continuous-delivery/verify/ @M-Tsur @prasadsatamharness
 /release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta @shylajasun
 /src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av @thisrohangupta @shylajasun
 /src/components/Docs/data/continuousDeliveryData*  @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
@@ -100,11 +101,11 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/continuousErrorTrackingData.ts @M-Tsur
 /src/components/Docs/ContinuousErrorTracking.tsx @M-Tsur
 
-# SRM Docs
-/docs/service-reliability-management/ @sunilgupta-harness @umamukkara
-/release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara
-/src/components/Roadmap/data/srmData.ts @sunilgupta-harness
-/src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness
+# SRM & CV Docs
+/docs/service-reliability-management/ @sunilgupta-harness @umamukkara @ajeshbaby @M-Tsur
+/release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara @ajeshbaby
+/src/components/Roadmap/data/srmData.ts @sunilgupta-harness @ajeshbaby
+/src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness @ajeshbaby
 
 # Chaos Docs
 /docs/chaos-engineering/ @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness
