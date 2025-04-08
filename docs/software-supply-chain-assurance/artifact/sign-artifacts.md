@@ -21,7 +21,7 @@ Currently, this feature is behind the feature flag `SSCA_ARTIFACT_SIGNING`. Cont
 
 ## Artifact Signing process in SCS
 
-The Artifact Signing step retrieves the artifact from the container registry, signs it using [Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with a private key from a key pair, and generates a signature file `.sig`. Once the signature is successfully generated, it is pushed back to the same container registry alongside the artifact. This signature file is essential for verifying the artifact's integrity and authenticity. For more details on artifact verification, refer to the [Artifact Verification documentation](/docs/software-supply-chain-assurance/artifact//verify-signed-artifacts.md)
+For signing container images, the Artifact Signing step retrieves the artifact from the container registry, signs it using [Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with a private key from a key pair, and generates a signature file `.sig`. Once the signature is successfully generated, it is pushed back to the same container registry alongside the artifact. This signature file is essential for verifying the artifact's integrity and authenticity. For more details on artifact verification, refer to the [Artifact Verification documentation](/docs/software-supply-chain-assurance/artifact//verify-signed-artifacts.md)
 
 
 <DocImage path={require('./static/artifact-sign-excali.png')} width="70%" height="60%" />
@@ -65,16 +65,8 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 <Tabs>
 
-<TabItem value="har" label="HAR" default>
 
-* **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
-
-* **Image:** Enter the name of your image with tag, such as `imagename:tag`.
-
-</TabItem>
-
-
-  <TabItem value="dockerhub" label="DockerHub">
+  <TabItem value="dockerhub" label="DockerHub" default>
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
@@ -134,7 +126,7 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 
 
 
-<DocImage path={require('./static/artifact-signnning.png')} width="50%" height="50%" />
+<DocImage path={require('./static/artifact-sign.png')} width="50%" height="50%" />
 
 
 **Attach Signature to Artifact Registry** (Optional): By default, this option is unchecked which means the signature will not be uploaded to the artifact registry and checking this option will push the signature as a `.sig` file to the artifact registry.
@@ -158,7 +150,7 @@ Follow the instructions below to configure the Artifact Signing step for non-con
 
 **Manual:** Allows you to manually specify the artifact name and version.
 
-Non-container images can be signed using **cosign** or **cosign-with-secret-manager**, just like container images.
+Non-container images can be signed using **Cosign** or **Cosign with Secret Manager**, just like container images.
 
 <DocImage path={require('./static/non-container-signing.png')} width="50%" height="50%" />
 

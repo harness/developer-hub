@@ -48,17 +48,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 <Tabs>
 
-<TabItem value="har" label="HAR" default>
-
-* **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
-
-* **Image:** Enter the name of your image with tag, such as `imagename:tag`.
-
-</TabItem>
-
-
-
-  <TabItem value="dockerhub" label="DockerHub" >
+  <TabItem value="dockerhub" label="DockerHub" default >
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
@@ -110,12 +100,6 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 </Tabs>
 
-:::note
-
-Ensure that you use the same image that was used for artifact signing in the Artifact Signing step.
-
-:::
-
 You can verify the signed artifact with **Cosign** or **Cosign with Secret Manager**
 
 import CosignVerificationOptions from '/docs/software-supply-chain-assurance/shared/cosign-verification-options.md';
@@ -123,7 +107,7 @@ import CosignVerificationOptions from '/docs/software-supply-chain-assurance/sha
 <CosignVerificationOptions />
 
 
-<DocImage path={require('./static/artifact-verifyying.png')} width="50%" height="50%" />
+<DocImage path={require('./static/artifact-verify.png')} width="50%" height="50%" />
 
 
 ### Non-Container Images
@@ -138,7 +122,7 @@ To configure Artifact Verification for non-container images, provide the followi
 
 **Workspace Artifact Path:** Specify the exact artifact path used during the signing step.
 
-Non-container images can be verified using **cosign** or **cosign-with-secret-manager**, just like container images.
+Non-container images can be verified using **Cosign** or **Cosign with Secret Manager**, just like container images.
 
 <DocImage path={require('./static/non-container-verify.png')} width="50%" height="50%" />
 
