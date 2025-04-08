@@ -12,6 +12,6 @@ Archiving a repository will make it read-only and prevent any further changes to
 
 To archive a repository in Harness Code:
 
-3. Select the repository you want to archive.
-4. Go to **Settings** and select **Archive*.
-5. Follow the prompts to confirm archiving.
+1. Select the repository you want to archive.
+2. Go to **Settings** and select **Archive*.
+3. Follow the prompts to confirm archiving.
