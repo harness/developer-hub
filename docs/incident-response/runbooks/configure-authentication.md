@@ -5,9 +5,9 @@ sidebar_position: 3
 description: Learn how to set up and manage authentication for different runbook actions and integrations in Harness Incident Response.
 ---
 
-# Configure Authentication for Runbook Actions
+# Configure Authentication
 
-This guide explains how to configure authentication for various integrations used in Harness IR runbooks.
+This guide explains how to configure authentication for your Harness IR integrations. For information about setting up project-level connectors for runbook actions, see [Configure Project Connectors](./configure-project-connectors.md).
 
 ## Overview
 
@@ -49,13 +49,6 @@ Each integration type requires specific authentication setup to ensure secure co
 1. Navigate to **Settings** → **Connectors** → **Incident Response**
 2. Click **+ New Connector**
 3. Select **ServiceNow**
-4. Enter your instance URL and credentials
-5. Set up incident mapping
-
-### [Confluence](./integrations/confluence.md)
-1. Navigate to **Settings** → **Connectors** → **Incident Response**
-2. Click **+ New Connector**
-3. Select **Confluence**
 4. Enter your instance URL and credentials
 5. Set up incident mapping
 
@@ -108,5 +101,3 @@ Each integration type requires specific authentication setup to ensure secure co
 - Ticketing Systems
   - [Jira Integration](./integrations/jira.md)
   - [ServiceNow Integration](./integrations/servicenow.md)
-- Documentation and Collaboration Tools
-  - [Confluence Integration](./integrations/confluence.md)
