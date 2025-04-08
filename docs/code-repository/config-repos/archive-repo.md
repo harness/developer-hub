@@ -19,4 +19,4 @@ To archive a repository in Harness Code:
 2. Select **Repositories**.
 3. Select the repository you want to archive.
 4. Go to **Settings** and select **Archive*.
-5. Follow the prompts to confirm deletion.
+5. Follow the prompts to confirm archiving.
