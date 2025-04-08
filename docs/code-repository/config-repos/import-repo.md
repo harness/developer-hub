@@ -8,7 +8,7 @@ Repositories are where your code is stored. When developers make changes to code
 
 You can [create repositories directly in Harness Code](./create-repo.md) or import repositories from other Git SCM providers, such as GitHub, GitLab, BitBucket, and more. 
 
-Harness Code Repository provides an easy option in the UI to import git repositories directly into your account. You can also use the [`harness-migrate`](https://github.com/harness/harness-migrate) tool to seamlessly migrate all data from other Git SCM providers including: Pull Requests, Labels, Webhooks, and Branch Rules. The migration tool can also be used when your SCM is behind a firewall.
+Harness Code Repository provides an easy option in the UI to import git repositories directly into your account. This feature only imports the Git data of the repository. You can also use the [`harness-migrate`](https://github.com/harness/harness-migrate) tool to seamlessly migrate all data from other Git SCM providers. For details, refer to the [Migrate repositories](/docs/code-repository/config-repos/import-repo#migrate-repositories) section.
 
 - 
 
