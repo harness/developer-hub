@@ -63,16 +63,13 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Users can now define and manage rewrite rules to control traffic routing in Kubernetes traffic routing configuration. Currently, this feature is behind the feature flag `CDS_K8S_TRAFFIC_ROUTE_REWRITE_RULE_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-103501**)
 - Users can now deploy Lambda artifacts larger than 50 MB directly from S3, bypassing the upload limit. If the content size exceeds 50 MB, the S3 path is passed directly to Lambda, allowing it to handle the upload. Note that the Lambda execution role must have access to the S3 bucket when working with large artifacts. (**CDS-74918, ZD-77784**)
 - ​Users can now trigger pipelines in GitLab upon the creation or pushing of tags. Currently, this feature is behind the feature flag `CDS_GITLAB_TRIGGER_TAG_EVENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-99762**)
-- ​Users can now utilize an optional checkbox for Kubernetes and Helm deployment types, enabling enhanced customization during deployments. Currently, this feature is behind the feature flag `CDS_OPTIONAL_VALUES_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
-
-| Deployment Type | Manifest Type | Optional Field Render | Image |
-| --- | --- | --- | --- |
-| Kubernetes | K8s / Helm Chart | Under values.yaml field | ![](./static/image-dep1.png) |
-| Kubernetes/ Native Helm | Values YAML | under file field | ![](./static/image-dep2.png) |
-| `Native Helm | Helm Chart | Under values.yaml field | ![](./static/image-dep3.png) |
-
-In Overrides, File Path is added as optional.
-![](./static/override-imagedep.png)
+- ​Users can now utilize an optional checkbox for Kubernetes and Helm deployment types, enabling enhanced customization during deployments. 
+Supported Deployment Types:
+  - Kubernetes (K8s/Helm Chart): Optional field appears under the values.yaml section.
+  - Kubernetes/Native Helm (Values YAML): Optional checkbox appears under the File field.
+  - Native Helm (Helm Chart): Optional field is rendered under the values.yaml section.
+Overrides: The file path field can also be marked as Optional.
+Currently, this feature is behind the feature flag `CDS_OPTIONAL_VALUES_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-85487,CDS-106960,CDS-106961,CDS-106962**) 
 - Users can now enforce Oauth for commits by enbaling the setting **Enforce Oauth For Commits** in the Account Setting under **Git Experience**. (**PIPE-25432**)
 
 
