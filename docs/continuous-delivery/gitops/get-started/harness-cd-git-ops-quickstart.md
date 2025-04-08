@@ -616,12 +616,3 @@ To view audit events specifically for a GitOps Application, apply the filter **R
 You can view the status of GitOps Application in the Audit Trail Page.
 
 ![](./static/audit-trail-gitops.png)
-
-
-
-
-
-
-
-
-
