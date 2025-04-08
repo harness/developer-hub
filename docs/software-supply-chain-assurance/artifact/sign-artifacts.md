@@ -24,7 +24,7 @@ Currently, this feature is behind the feature flag `SSCA_ARTIFACT_SIGNING`. Cont
 The Artifact Signing step retrieves the artifact from the container registry, signs it using [Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with a private key from a key pair, and generates a signature file `.sig`. Once the signature is successfully generated, it is pushed back to the same container registry alongside the artifact. This signature file is essential for verifying the artifact's integrity and authenticity. For more details on artifact verification, refer to the [Artifact Verification documentation](/docs/software-supply-chain-assurance/artifact//verify-signed-artifacts.md)
 
 
-<DocImage path={require('./static/excali-sign.png')} width="70%" height="60%" />
+<DocImage path={require('./static/artifact-sign-excali.png')} width="70%" height="60%" />
 
 <!-- ## Requirements
 
@@ -38,7 +38,7 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 
 The Artifact Signing step allows you to sign your artifacts and optionally push the generated signature file `.sig` to the same artifact registry from which the artifact was retrieved.
 
-Artifact Signing step supports both **container** as well as **non-container images**.
+Artifact Signing step supports both [**container**](/docs/software-supply-chain-assurance/artifact/sign-artifacts#container-images) as well as [**non-container images**](/docs/software-supply-chain-assurance/artifact/sign-artifacts#non-container-images).
 
 ### Container Images
 
@@ -142,23 +142,23 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 
 ### Non-Container Images
 
-Artifacts aren't limited to container images. With Artifact Signing step you can sign the Non-container Images (such as Helm charts, JARs, WARs, and manifest files) where each artifact is signed uniquely by its digest (SHA), which is used during the verification step to ensure integrity and authenticity.
+Artifacts aren't limited to container images. With the Artifact Signing step, non-container images (such as Helm charts, JARs, WARs, and manifest files) can also be signed where each artifact is uniquely identified by its digest (SHA), which is used during the verification step to ensure integrity and authenticity.
 
-Follow the instructions below to configure the Artifact Signing step, for non-container images.
+Follow the instructions below to configure the Artifact Signing step for non-container images:
 
 **Name:** Provide a name for the signing step.
 
 **Artifact Source:** Select the Harness Local Stage as the source of the artifact.
 
-**Workspace Artifact Path:** Provide the exact path to the artifact within the workspace. Ensure that you run the custom step to pull the artifact into the workspace directory. 
+**Workspace Artifact Path:** Provide the exact path to the artifact within the workspace. Ensure that you run a custom step to pull the artifact into the workspace directory.
 
 **Target Detection:** Choose between Auto and Manual
 
-- Auto (default): Automatically sets the artifact name for the provided path.
+**Auto (default):** Automatically sets the artifact name from the provided path.
 
-- Manual: Allows you to manually specify the artifact name and version.
+**Manual:** Allows you to manually specify the artifact name and version.
 
-Now you can sign the non-container images using cosign or cosign with secret manager mentioned in the above just like artifact signing for the container images.
+Non-container images can be signed using **cosign** or **cosign-with-secret-manager**, just like container images.
 
 <DocImage path={require('./static/non-container-signing.png')} width="50%" height="50%" />
 
