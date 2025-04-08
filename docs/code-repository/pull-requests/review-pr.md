@@ -52,7 +52,7 @@ On the **Changes** tab, you can review the aggregated, latest code changes in th
 
 * Select the `+` **Add** icon to comment on a specific line.
 
-* To comment on multiple lines at once click th `+` and drag your mouse to select all relevant lines you want to comment on.
+* To comment on multiple lines at once, click the `+` **Add** icon and drag your mouse to select all relevant lines you want to comment on.
 
 * Select the **Expand All** icon view an entire file within the Changes context.
 
