@@ -202,7 +202,16 @@ A cluster is where your applications are deployed and is continuously compared t
 - By default, each agent is assigned a cluster (`in-cluster`) with API URL `kubernetes.default.svc`.
 - Namespaced agents don’t have cluster-wide access, so they require a service account with cluster-scope access to manage deployments.
 
-Only the Agent is needed for GitOps, but the Harness Delegate is needed for other Harness operations (RBAC, etc.). You can use the Agent cluster for both the Harness Delegate and the Agent, or just the Agent: 
+Only the GitOps Agent is required for GitOps operations. However, a [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) is required for other Harness operations such as [PR pipeline](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics) steps involving Git operations — for example:
+
+- **UpdateReleaseRepo**
+- **MergePR**
+- **RevertPR**
+- **FetchLinkedApps**
+
+You can deploy both the **GitOps Agent** and the Harness Delegate in the same cluster, or choose to deploy only the Agent if your use case is limited to GitOps-specific operations.
+
+The Delegate is not required for RBAC functionality in Harness GitOps.
 
 ![cluster with agent and delegate](static/cluster-agent-delegate.png)
 
