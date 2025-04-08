@@ -115,7 +115,7 @@ The following deprecated API endpoints are longer supported:
 - Fixed an issue on the Delegate Token listing page in Safari where tokens weren’t copied to the clipboard despite showing a success message. Tokens are now copied correctly. [PL-56230]
 
 #### New features and enhancements
-- Added support to configure Sumo Logic as a streaming destination to send Harness audit log data to an HTTP source in Sumo Logic. This feature is currently behind the feature flag `PL_ENABLE_SUMOLOGIC_AUDIT_STREAMING` and requires Harness Delegate version 85500 or later. [PL-58532]
+- Added support to configure [Sumo Logic as a streaming destination](/docs/platform/governance/audit-trail/audit-streaming/#configure-the-streaming-connector) to send Harness audit log data to an HTTP source in Sumo Logic. This feature is currently behind the feature flag `PL_ENABLE_SUMOLOGIC_AUDIT_STREAMING` and requires Harness Delegate version 85500 or later. [PL-58532]
 
 ### Version 1.82.x <!--March 27, 2025-->
 #### Fixed issues
