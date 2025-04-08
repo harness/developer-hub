@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 
 :::warning
 
-This feature will be deprecated on May 1, 2025 and replaced with an improved VM cluster manager. If you have any questions, please contact your account representative or [Harness Support](mailto:support@harness.io).
+This feature will be deprecated on Sep 1, 2025 and replaced with an improved VM cluster manager. If you have any questions, please contact your account representative or [Harness Support](mailto:support@harness.io).
 
 :::
 
