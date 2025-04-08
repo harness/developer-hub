@@ -168,7 +168,12 @@ At times, you might experience issues with the HEC connector. Here are some trou
 
 <TabItem value="sumo-logic" label="Sumo Logic">
   
-  
+  :::note
+
+  Currently, this feature is behind the feature flag `PL_ENABLE_SUMOLOGIC_AUDIT_STREAMING` and requires Harness Delegate version 85504 or later. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+  :::
+
   :::info **Prerequisites**
 
     1. Sumo Logic's [Access ID and Access Key](https://help.sumologic.com/docs/manage/security/access-keys/). An Access Key can have two scope types: [Default and Custom](https://help.sumologic.com/docs/manage/security/access-keys/#create-an-access-key). If selecting Custom, ensure you enable the permissions shown in the image below. 
