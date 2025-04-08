@@ -4,8 +4,21 @@ description: Learn how to validate changes of modules to ensure the reliability 
 sidebar_position: 50
 ---
 
+<CTABanner
+buttonText="Learn more"
+  title="Coming soon!"
+  tagline="Module Registry Testing is currently pending release and will be available soon!"
+  link="/docs/infra-as-code-management/iacm-features/module-registry/"
+  closable={true}
+  target="_blank"
+/>
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+:::warning
+**Module registry testing** is currently **pending release** and will be available soon!
+:::
 
 Modern infrastructure development relies on reusable modules to ensure consistency and scalability. However, without proper testing, modules can create risks such as regression, breaking existing functionality, and introducing security vulnerabilities.
 
