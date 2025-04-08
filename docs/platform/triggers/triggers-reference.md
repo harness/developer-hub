@@ -630,3 +630,42 @@ On the list of triggers for a pipeline, you can see when each trigger was last a
 **Activation** means the trigger was able to *request* pipeline execution; it doesn't mean that the webhook didn't work.
 
 **Failed** usually means the pipeline has a configuration issue that prevented the trigger from initiating a pipeline.
+
+## Activity History
+
+You can verify the payload received by the trigger in the Activity History section of the trigger.
+
+![](./static/activity-history-ui.png)
+
+If headers contain a key with any of the following names, its value will be masked as `****`.
+
+- `Authorization`
+- `Proxy-Authorization`
+- `X-Api-Key`
+- `X-Amz-Security-Token`
+- `X-Amz-Credential`
+- `Set-Cookie`
+- `Cookie`
+
+If the value of any header looks like a **bearer token, JWT token, or base64-encoded string**, the value will be masked as `****`.
+
+Examples:
+
+Given the following headers:
+```json
+{
+    "X-Api-Key": "auth-token",
+    "Authorization": "Bearer 12345abcde",
+    "custom-header": "custom-value",
+    "custom-header-with-jwt": "eyJ0e.sometokenbody.signature"
+}
+```
+The masked headers will look like this:
+```json
+{
+    "X-Api-Key": "****",
+    "Authorization": "****",
+    "custom-header": "custom-value",
+    "custom-header-with-jwt": "****"
+}
+```
