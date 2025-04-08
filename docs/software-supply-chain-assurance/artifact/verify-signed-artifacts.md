@@ -27,6 +27,10 @@ The artifact verification step ensures the authenticity of the signed artifact b
 
 The Artifact Verification step pulls the `.sig` file from the artifact registry and verifies it with the corresponding public key. In the artifact signing step, if you chosen not to push the `.sig` file to the registry, then for the artifact verification `.sig` file will instead be pulled from the Harness database . This process ensures that the artifact was signed by a trusted entity, thereby confirming its integrity and authenticity.
 
+Artifact Verification step supports both [container](/docs/software-supply-chain-assurance/artifact/sign-artifacts#container-images) as well as [non-container images](/docs/software-supply-chain-assurance/artifact/sign-artifacts#non-container-images).
+
+### Container Images
+
 You can search for **Artifact Verification** and add it to either the **Build** , **Deploy** or **Security** stage of a Harness pipeline
 
 Follow the instructions below to configure the Artifact Verification step.
@@ -120,6 +124,24 @@ import CosignVerificationOptions from '/docs/software-supply-chain-assurance/sha
 
 
 <DocImage path={require('./static/artifact-verifyying.png')} width="50%" height="50%" />
+
+
+### Non-Container Images
+
+Artifacts aren't limited to container images—signed non-container artifacts can also be verified. The unique identifier (digest SHA) generated during the signing step is used to locate and verify the artifact during the verification process.
+
+To configure artifact verification for non-container images, provide the following details:
+
+**Name:** Provide a name for the verification step.
+
+**Artifact Source:** Select the Harness Local Stage as the source of the artifact.
+
+**Workspace Artifact Path:** Specify the exact workspace artifact path used during the signing step. 
+
+Non-container images can be verified using cosign or cosign-with-secret-manager, just like container images, as mentioned above.
+
+<DocImage path={require('./static/non-container-verify.png')} width="50%" height="50%" />
+
 
 ## View Verified Artifacts
 
