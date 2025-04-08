@@ -126,7 +126,7 @@ Select Git events and, if applicable, one or more actions that will initiate the
 | **GitLab** | Merge Request | Select one or more of the following:<ul><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li><li>Sync</li></ul> |
 | | Merge Request Comment | Create |
 | | Push | GitLab push triggers respond to commit and tag creation actions by default. |
-| | Tag | When a tag is pushed or created in GitLab, a **pipeline is triggered**. |
+| | Tag | When a tag is pushed or created in GitLab, a pipeline is triggered.<br /><br />Currently, this feature is behind the feature flag `CDS_GITLAB_TRIGGER_TAG_EVENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. |
 | **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul><br/>This event type doesn't support PRs attempting to merge Bitbucket forked repos into the original, base repo if the base repo is configured as the pipeline's codebase. For more information, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines#troubleshoot-git-event-triggers). |
 | | Pull Request Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> Note that this event type is currently supported only for Bitbucket cloud, and not for Bitbucket on-premises triggers. |
 | | Push | Bitbucket Cloud push triggers respond to commit and tag creation actions by default. |
