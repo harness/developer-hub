@@ -32,7 +32,7 @@ Perform the following steps to add an AWS connector for AutoStopping Rules:
 5. Choose all the Cloud Cost Management features you want to enable for your AWS account including "Optimization by AutoStopping". 
       ![](./static/as-aws-five.png)
 
-6. For AutoStopping, there are several permissions that can be set up. On the next window, you will be asked to select the services for enabling AutoStopping with their relevant permissions.
+6. AutoStopping supports granular access controls to help you follow the principle of least privilege. In the next step, you’ll be prompted to select the specific services you want to enable AutoStopping for, along with only the necessary permissions required for each.
      ![](./static/as-aws-five.png)
       ![](./static/as-aws-four.png)
 
