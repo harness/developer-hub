@@ -8,6 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::info Important Note
+Google Cloud Run automatically scales your service based on incoming traffic. While you can configure minimum and maximum replicas, actual scaling is managed by Google depending on load.
+
+- Each new revision receives 100% of traffic by default, causing older revisions to scale down.
+- You can split traffic between revisions using the [Cloud Run UI](https://console.cloud.google.com/run).
+- To maintain multiple instances, set `min` and `max` replicas—but note that scaling still depends on real-time demand.
+:::
+
 import DeployContainer from './static/container-image-url.png';
 import ConfigureService from './static/cloud-run-configure.png';
 import ContainerConfig from './static/configure-container-vol-security.png';
