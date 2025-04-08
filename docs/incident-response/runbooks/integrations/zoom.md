@@ -21,10 +21,11 @@ Zoom integration enables your runbooks to:
 ## Setting Up the Zoom Connector
 
 ### Prerequisites
-- Zoom admin access
-- Harness Project Admin role
+Before configuring Zoom integration:
+1. [Configure a Zoom project connector](../configure-project-connectors.md#zoom-connector) for your project
+2. Ensure you have appropriate Zoom admin permissions
 
-### Step-by-Step Setup
+### Step-by-Step Setup for Organization Connector
 1. Navigate to **Account Settings** → **Connectors**
 2. Click **+ Add Connector**
 3. Select **Zoom**
