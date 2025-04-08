@@ -67,12 +67,12 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 | Deployment Type | Manifest Type | Optional Field Render | Image |
 | --- | --- | --- | --- |
-| Kubernetes | K8s / Helm Chart | Under values.yaml field | ![](./static/image_dep1.png) |
-| Kubernetes/ Native Helm | Values YAML | under file field | ![](./static/image_dep2.png) |
-| `Native Helm | Helm Chart | Under values.yaml field | ![](./static/image_dep3.png) |
+| Kubernetes | K8s / Helm Chart | Under values.yaml field | ![](./static/image-dep1.png) |
+| Kubernetes/ Native Helm | Values YAML | under file field | ![](./static/image-dep2.png) |
+| `Native Helm | Helm Chart | Under values.yaml field | ![](./static/image-dep3.png) |
 
 In Overrides, File Path is added as optional.
-![](./static/override_imagedep.png)
+![](./static/override-imagedep.png)
 - Users can now enforce Oauth for commits by enbaling the setting **Enforce Oauth For Commits** in the Account Setting under **Git Experience**. (**PIPE-25432**)
 
 
