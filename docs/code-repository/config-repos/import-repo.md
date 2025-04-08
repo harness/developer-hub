@@ -13,7 +13,7 @@ Harness Code Repository provides an easy option in the UI to import git reposito
 - 
 
 ## Migrate repositories
-Harness provides a CLI tool to fully migrate git repositories as well as all meta data associated with those repositores. Refer to the [tool's open source repository](https://github.com/harness/harness-migrate) for all available options. The migration tool can be run from a command line on your laptop or directly on your self-hosted SCM server to avoid potential networking issues or firewall restrictions. You can also run the migration tool in a CI/CD pipeline to automate the migration process.
+Harness provides a CLI tool to fully migrate git repositories as well as all meta data (including: Pull Requests, Labels, Webhooks, and Branch Rules) associated with those repositories. Refer to the [tool's open source repository](https://github.com/harness/harness-migrate) for all available options. The migration tool can be run from a command line on your laptop or directly on your self-hosted SCM server to avoid potential networking issues or firewall restrictions. You can also run the migration tool in a CI/CD pipeline to automate the migration process.
 
 ## Import repositories
 
