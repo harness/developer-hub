@@ -604,3 +604,15 @@ kubectl create namespace {namespace}
 * Read about how Harness GitOps approaches [Managing Kubernetes secrets in Git using Mozilla SOPS](/docs/continuous-delivery/gitops/use-gitops/sops).
 * Checkout this [sample](https://github.com/harness-community/Gitops-Samples/tree/main/Fetch-App-Sync) for Fetching App Details and Syncing App using Harness Pipeline.
 * Checkout this [sample](https://github.com/harness-community/Gitops-Samples/tree/main/Syncing-multiple-apps) for Syncing Multiple GitOps Applications.
+
+## Audit Event
+
+You can view audit events for GitOps in the Audit Trail page. These events include actions such as **Sync, Create, Update, or Delete** performed on a GitOps Application.
+
+To view audit events specifically for a GitOps Application, apply the filter **Resource Type: GitOps Application**.
+
+![](./static/gitops-filter-audit.png)
+
+You can view the status of GitOps Application in the Audit Trail Page.
+
+![](./static/audit-trail-gitops.png)
