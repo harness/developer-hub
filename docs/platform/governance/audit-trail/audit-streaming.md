@@ -170,7 +170,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
   
   :::note
 
-  Currently, this feature is behind the feature flag `PL_ENABLE_SUMOLOGIC_AUDIT_STREAMING` and requires Harness Delegate version 85504 or later. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+  Currently, this feature is behind the feature flag `PL_ENABLE_SUMOLOGIC_AUDIT_STREAMING` and requires Harness Delegate version 85500 or later. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
   :::
 
