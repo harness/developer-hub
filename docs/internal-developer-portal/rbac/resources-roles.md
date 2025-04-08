@@ -118,7 +118,12 @@ This role can create, edit, delete and view **all IDP Resources**.
 
 ![](./static/rbac-admin.png)
 
-### 2. IDP Platform Engineer
+### 2. IDP Platform Engineer [Deprecated]
+:::info
+This role has been deprecated and is no longer supported.
+All associated permissions and resources will continue to exist.
+We highly recommend using the **"IDP Admin"** role or creating your own custom roles tailored to your needs.
+:::
 
 This role can create, edit, delete and view IDP Plugins, Scorecards, Advanced configuration Resources.
 

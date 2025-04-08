@@ -16,7 +16,7 @@ import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-cat
 <br/>
 <br/>
 
-You can easily set up a Wiz step to run automated scans in a Harness pipeline. This step scans the container image you specify using the Wiz CLI. Then it correlates, deduplicates, and ingests the scan results into STO. You can see your scan results in the [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results) tab of the pipeline execution.
+You can easily set up a Wiz step to run automated scans in a Harness pipeline. This step scans the container image you specify using the Wiz CLI. Then it correlates, deduplicates, and ingests the scan results into STO. You can see your scan results in the [Security Tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) tab of the pipeline execution.
 
 ## Important notes for running Wiz scans in STO 
 
@@ -205,8 +205,8 @@ The recommended workflow is to add a Wiz step to a Security Tests or CI Build st
 
 #### Scan Mode
 
-import StoSettingScanModeOrch from '../shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeOrch from '../shared/step-palette/scan/mode/orchestration.md';
+import StoSettingScanModeIngest from '../shared/step-palette/scan/mode/ingestion.md';
 
 <!-- For container images: -->
 
@@ -226,7 +226,7 @@ For code repositories:
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from '../shared/step-palette/scan/config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -237,7 +237,7 @@ import StoSettingProductConfigName from '../shared/step_palette/scan/_config-nam
 
 #### Type
 
-import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
+import StoSettingScanTypeCont from '../shared/step-palette/target/type/image.md';
 
 <StoSettingScanTypeCont />
 
@@ -245,9 +245,9 @@ import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md
 
 #### Target and Variant Detection 
 
-<!-- import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md'; -->
-import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
-import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
+<!-- import StoSettingScanTypeAutodetectRepo from '../shared/step-palette/target/auto-detect/code-repo.md'; -->
+import StoSettingScanTypeAutodetectContainer from '../shared/step-palette/target/auto-detect/container-image.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step-palette/target/auto-detect/note.md';
 
 <!-- StoSettingScanTypeAutodetectRepo/ -->
 <StoSettingScanTypeAutodetectContainer/>
@@ -263,14 +263,14 @@ It is good practice to [specify a baseline](/docs/security-testing-orchestration
 
 #### Variant
 
-import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '../shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
 
 #### Workspace
 
-import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from '../shared/step-palette/target/workspace.md';
 
 <StoSettingTargetWorkspace  />
 
@@ -280,42 +280,42 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 
 #### Type
 
-import StoSettingImageType from '../shared/step_palette/image/_type.md';
+import StoSettingImageType from '../shared/step-palette/image/type.md';
 
 <StoSettingImageType />
 
 
 #### Domain
 
-import StoSettingImageDomain from '../shared/step_palette/image/_domain.md';
+import StoSettingImageDomain from '../shared/step-palette/image/domain.md';
 
 <StoSettingImageDomain />
 
 
 #### Name
 
-import StoSettingImageName from '../shared/step_palette/image/_name.md';
+import StoSettingImageName from '../shared/step-palette/image/name.md';
 
 <StoSettingImageName />
 
 
 #### Tag
 
-import StoSettingImageTag from '../shared/step_palette/image/_tag.md';
+import StoSettingImageTag from '../shared/step-palette/image/tag.md';
 
 <StoSettingImageTag />
 
 
 #### Access ID
 
-import StoSettingImageAccessID from '../shared/step_palette/image/_access-id.md';
+import StoSettingImageAccessID from '../shared/step-palette/image/access-id.md';
 
 <StoSettingImageAccessID />
 
 
 #### Access Token
 
-import StoSettingImageAccessToken from '../shared/step_palette/image/_access-token.md';
+import StoSettingImageAccessToken from '../shared/step-palette/image/access-token.md';
 
 <StoSettingImageAccessToken />
 
@@ -352,14 +352,14 @@ You should create a Harness text secret with your encrypted token and reference 
 
 ### Log Level
 
-import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '../shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
 
 ### Additional CLI flags
 
-import StoSettingCliFlags from '../shared/step_palette/all/_cli-flags.md';
+import StoSettingCliFlags from '../shared/step-palette/all/cli-flags.md';
 
 <StoSettingCliFlags />
 
@@ -371,7 +371,7 @@ Passing CLI flags is an advanced feature. Some flags might not work in the conte
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '../shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
@@ -381,14 +381,14 @@ You can add more settings to the scan step as needed.
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from '../shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from '../shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

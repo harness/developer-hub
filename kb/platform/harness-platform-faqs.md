@@ -3279,14 +3279,6 @@ Harness allows organizations to manage an IP allow list, enabling approved IP ad
 
 Harness manages data retention for exiting customers by implementing a straightforward process. Upon the expiration or offboarding of a customer account, all associated data is promptly removed from the system.
 
-### Is there a timeline of when I need to upgrade to NextGen?
-
-Yes. For more information, go to [Timeline](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/#timeline).
-
-### Is there a tool to migrate from FirstGen to NextGen?
-
-Yes. You can use the [migrator tool](https://harness.github.io/migrator/).
-
 ### What is cron job in the Kubernetes manifest, and why is it needed?
 
 The Kubernetes manifest has a component called upgrader. The upgrader is a cron job that runs every hour. Every time it runs, it makes a call to Harness Manager to determine which delegate version is published for the account. The cron job is required for the auto upgrade flow.

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart.md).
 
 The following troubleshooting steps should help address common issues.
 
@@ -33,7 +33,6 @@ createImagePullSecret: true
 ```
 ### Next Steps
 
-* [Kubernetes Deployments](/docs/category/kubernetes-deployments)
 * [Secrets Management](../../../firstgen-platform/security/secrets-management/secret-management.md)
 * [Continuous Verification](../../continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv.md)
 

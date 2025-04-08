@@ -127,12 +127,6 @@ See [Remove provisioned infrastructure with the Terraform Destroy step](/docs/c
 
 Terraform vars are exported as shell environment variables. The shell variables itself has a restriction in their naming coonvention that it should not contain hyphen and hence this is not supported.
 
-
-### In Harness FirstGen, how can I remove the old plan-file and start again with a fresh plan to make the workflow run successfully?
-
-You can [enable the Skip Terraform Refresh when inheriting Terraform plan option](https://developer.harness.io/docs/first-gen/continuous-delivery/Terraform-category/add-Terraform-scripts#option-2-skip-Terraform-refresh-when-inheriting-Terraform-plan).
-
-
 ### How can we assign Terraform output (e.g. VPC CIDR) to harness Pipeline or stage variable?
 
 We have implemented a feature for capturing the the output of the Apply step.
@@ -327,12 +321,6 @@ Terraform init command does not work if we run init for the same work directory 
 
 Harness supports the following Terraform versions: `v1.3.5, v1.1.9, v1.0.0, v0.15.5, v0.15.0 and v0.14.0`
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations#Terraform-version-support)
-
-
-### What is the use of Terraform-config-inspect binary in delegates?
-
-This binary is used for rendering the Terraform code in the CG version and is not used for NG-related deployments.
-
 
 ### What are the best possible ways to create harness deployment secrets, connectors, pipelines, etc?
 

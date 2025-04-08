@@ -22,6 +22,38 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## April 2025
+
+### Version v1.134.1
+
+<!-- 2025-04-05 -->
+
+#### New Features and Enhancements  
+- Switched to using the Harness GAR registry as the default source instead of DockerHub to avoid rate-limiting issues (STO-8669).
+
+#### Fixed Issues  
+- Fixed a bug where the `ListTickets` endpoint did not respect `projectID` and `orgID` scopes (STO-8628).
+- Fixed an issue in `Local OCI/Docker archive in this stage` image scans where the tar file name was incorrectly passed to the CLI instead of the image name (STO-8690, ZD-80330).
+- Resolved an issue where STO failed to parse the latest results from BlackDuckHub (STO-8718, ZD-81315).
+
+## March 2025
+
+### Version v1.130.6
+
+<!-- 2025-03-25 -->
+
+#### New Features and Enhancements  
+- Enhanced **[Security Tests Dashboard](/docs/security-testing-orchestration/dashboards/security-testing-dashboard)** performance by optimizing queries for faster and more efficient data loading; data load times are now significantly reduced (STO-8584).
+  <DocImage path={require('./static/sto-security-testing-dashboard-11306.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- Improved **Harness AI** error responses with additional context for better understanding (STO-8570).  
+
+#### Fixed Issues  
+- Fixed a regression that could cause early-access STO features, enabled for specific customers, to be disabled or hidden (STO-8624).  
+- Fixed an issue where the Gitleaks scanner was running in the wrong mode, causing Docker authentication to be ignored and leading to rate limit issues (STO-8611).  
+- Resolved a permission denied error that occurred when running STO steps in parallel with different users (STO-8560, ZD-77709).  
+- Fixed an issue where the **Request Exemption** button on the scan results page appeared disabled (STO-8596).
+
 ## February 2025
 
 ### Version 1.127.5
@@ -667,7 +699,7 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 
 #### New feature: OPA policies for Security Test results
 
-You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/dashboards/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
+You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
 
 This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
 
@@ -723,7 +755,7 @@ You can scan your code repositories using [Open Source Vulnerabilities (OSV)](ht
 
   - Previous behavior:
   
-    When [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results) showed scan results, it categorized issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant to the baseline specified at the time the page was loaded.
+    When [**Security Tests**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) showed scan results, it categorized issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant to the baseline specified at the time the page was loaded.
 
   - New behavior: 
   
