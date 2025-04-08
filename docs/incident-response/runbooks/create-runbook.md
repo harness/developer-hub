@@ -56,9 +56,6 @@ Choose from these integration categories:
 - **[Harness Pipelines](./integrations/harness-pipelines.md)**
   - Remediation workflows
   - Service management
-- **[Confluence](./integrations/confluence.md)**
-  - Collaborative documentaton
-  - Published learnings 
 
 ## Step 2: Configure Triggers
 
