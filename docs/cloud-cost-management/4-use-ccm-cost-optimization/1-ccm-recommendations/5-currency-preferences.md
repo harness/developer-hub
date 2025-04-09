@@ -32,10 +32,10 @@ CCM allows you to choose from the following list of currencies and displays the 
 
 You must integrate your cloud accounts with Harness CCM. For more information, refer to the following topics:
 
-* [Set up cost visibility for AWS](../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
-* [Set up cost visibility for Azure](../get-started/onboarding-guide/set-up-cost-visibility-for-azure.md)
-* [Set up cost visibility for GCP](../get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md)
-* [Set up cost visibility for Kubernetes](../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
+* [Set up cost visibility for AWS](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
+* [Set up cost visibility for Azure](../../get-started/onboarding-guide/set-up-cost-visibility-for-azure.md)
+* [Set up cost visibility for GCP](../../get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md)
+* [Set up cost visibility for Kubernetes](../../get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
 
 
 ## Set up your preferred currency 
@@ -46,8 +46,7 @@ To standardize the currency in which your cloud cost data is displayed, perform 
 2. Under **Setup**, click **Currency Preferences**.
 3. Select the currency from the **Currency followed on Cloud Cost Management** dropdown list.
 
- ![](./static/currency-preference-settings.png)
-
+<DocImage path={require('./static/currency-preference-settings.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 
 :::warning
@@ -67,8 +66,7 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
   
     The currency standardization process begins. A banner is displayed on the Overview page. The selected currency is applied to the last two years of data. The conversion factor used for the ongoing month is applied to the current month's data, while the conversion factor used for the previous month is applied to the historical data from the past two years.
 
-    ![](./static/overview-currency.png)
-
+<DocImage path={require('./static/overview-currency.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 
 ## Points to remember
@@ -76,7 +74,7 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
 * After configuring the currency settings, the currency symbol immediately changes to the preferred one. However, the cost data does not change and remains in the original currency. It may take up to 24 hours for the converted value to be displayed.
 * It may take up to 48 hours for data on the **Recommendations** page to be updated.
 
-  ![](./static/recommendations_currency.png)
+<DocImage path={require('./static/recommendations_currency.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 * Currency standardization is supported only within CCM. Note that the currency symbol in **Dashboards** is not changed, but the cost is displayed in the preferred currency.
 * You can configure these settings only for your cloud accounts. Contact Harness Support to view the Kubernetes cluster data in your preferred currency.
@@ -88,9 +86,9 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
 
 * For existing budgets and new budgets, you must manually update the **Specify Amount** field with the converted value in the selected currency. This is because a **Perspective** may be associated with multiple cloud accounts and therefore cannot be updated automatically.
 
-  ![](./static/budget-currency-preference-2.png)
+<DocImage path={require('./static/budget-currency-preference-2.png')} width="90%" height="90%" title="Click to view full-size image" />
 
-  ![](./static/budget-screen-alert-currency-preference.png)
+<DocImage path={require('./static/budget-screen-alert-currency-preference.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 
 
