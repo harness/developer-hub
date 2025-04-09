@@ -74,7 +74,7 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
 * After configuring the currency settings, the currency symbol immediately changes to the preferred one. However, the cost data does not change and remains in the original currency. It may take up to 24 hours for the converted value to be displayed.
 * It may take up to 48 hours for data on the **Recommendations** page to be updated.
 
-<DocImage path={require('./static/recommendations_currency.png')} width="90%" height="90%" title="Click to view full-size image" />
+<DocImage path={require('./static/recommendations-currency.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 * Currency standardization is supported only within CCM. Note that the currency symbol in **Dashboards** is not changed, but the cost is displayed in the preferred currency.
 * You can configure these settings only for your cloud accounts. Contact Harness Support to view the Kubernetes cluster data in your preferred currency.
