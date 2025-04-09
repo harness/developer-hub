@@ -1,9 +1,10 @@
 ---
 id: gcp-iam-integration
 title: Use IAM roles for authentication
-sidebar_position: 2
+sidebar_position: 20
 redirect_from:
-    - /docs/chaos-engineering/chaos-faults/gcp/gcp-iam-integration
+- /docs/chaos-engineering/chaos-faults/gcp/gcp-iam-integration
+- /docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/gcp-iam-integration
 ---
 
 This section describes the methods of providing service accounts to authenticate your GCP cluster to execute GCP chaos experiments.
