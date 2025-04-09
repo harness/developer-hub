@@ -105,7 +105,13 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## March 2025 
+## April 2025 
+
+### Version 1.84.x <!--April 9, 2025-->
+
+#### Fixed issues
+- Resolved an issue where the Auto Upgrade Indicator for Delegates was not displaying correctly in certain scenarios.[PL-61711]
+- To access a specific page in Audit Trails directly, users must either manually modify the URL or navigate sequentially using the Previous and Next buttons. [PL-61658]
 
 ### Version 1.83.x <!--April 2, 2025-->
 
@@ -116,6 +122,8 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 - Added support to configure [Sumo Logic as a streaming destination](/docs/platform/governance/audit-trail/audit-streaming/#configure-the-streaming-connector) to send Harness audit log data to an HTTP source in Sumo Logic. This feature is currently behind the feature flag `PL_ENABLE_SUMOLOGIC_AUDIT_STREAMING` and requires Harness Delegate version 85500 or later. [PL-58532]
+
+## March 2025 
 
 ### Version 1.82.x <!--March 27, 2025-->
 #### Fixed issues
