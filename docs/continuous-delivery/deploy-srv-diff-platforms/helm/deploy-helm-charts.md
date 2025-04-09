@@ -260,7 +260,7 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
   You can also select **Expression** and use [Harness expressions](/docs/platform/variables-and-expressions/harness-variables) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
 
-### Manifest Optional Values (Helm)
+### Manifest Optional Values
 
 You can now proceed with your Helm chart deployment without configuring a `values.yaml` file in the **manifest configuration** of a Helm service.
 
