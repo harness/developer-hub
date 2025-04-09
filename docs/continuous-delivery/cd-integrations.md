@@ -140,3 +140,9 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CDS_EXECUTION_LIST_CARD_VIEW | Enable this feature to improve the cards for the execution list view. This allows for other modules data to be displayed in each card on the list. **This is a Beta feature** |
 | CDS_RECENT_SCOPES | When enabled, hover over the scope selector to navigate to your five most recent scopes. Clicking the scope selector will continue to be the usual scope selection flow. **This is a Beta feature**. |
 | CDS_SETTINGS_ACCORDION | When enabled, a pop up tile will appear when hovering over **Project Settings** in the left navigation pane. **This is a Beta feature**. |
+| CDS_AWS_LAMBDA_ROLLBACK_V2 | When enabled, users can deploy Lambda artifacts larger than 50 MB stored in S3 **This is a Beta feature**. |
+| CDS_K8S_TRAFFIC_ROUTE_REWRITE_RULE_SUPPORT | When enabled, users can define and manage rewrite rules to control traffic routing in Kubernetes traffic routing configuration. **This is a Beta feature**. |
+| CDS_GITLAB_TRIGGER_TAG_EVENT | When enabled, u​sers can trigger pipelines in GitLab upon the creation or pushing of tags. **This is a Beta feature**. |
+| CDS_OPTIONAL_VALUES_YAML | When enabled, ​users can utilize an optional checkbox for Kubernetes and Helm deployment types while configuring manifest and overrides. **This is a Beta feature**. |
+| CDS_SNOW_IMPROVE_CONSOLE_LOGS | When enabled, ​users can see improved log messages in ServiceNow Approval that enhances clarity and helps in debugging **This is a Beta feature**. |
+| CDS_DEPLOYMENT_FREEZE_GRANULAR_RBAC | When enabled, users can manage Deployment Freeze Windows with granularity based on Environment Types, allowing for more fine-tuned control over deployment windows. **This is a Beta feature**. |
