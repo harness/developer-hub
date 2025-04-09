@@ -59,7 +59,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### Behaviour Changes
 
-- Users can now deploy Lambda artifacts larger than 50 MB directly from S3, bypassing the upload limit. If the content size exceeds 50 MB, the S3 path is passed directly to Lambda, allowing it to handle the upload. Note that the Lambda execution role must have access to the S3 bucket when working with large artifacts. Currently, this behaviour change is behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable this behvaiour change.   (**CDS-74918, ZD-77784**)
+- Users can now deploy Lambda artifacts larger than 50 MB stored in S3. Currently, this behaviour change is behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable this behvaiour change. (**CDS-74918, ZD-77784**)
 
 #### New Features and Enhancements
 
