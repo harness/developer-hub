@@ -272,7 +272,7 @@ To enable this option, go to the **Service Configuration**. Under the **Manifest
 
 Enable the **Optional** checkbox in the **Manifest Details** tab, below to the **Values.yaml** field.
 
-When enabled, the `values.yaml` file is no longer required. If it is provided, Harness will ignore it during deployment.
+When this option is enabled, the **Values YAML** is no longer required. If the file is missing from the specified path, the deployment will still proceed without it.
 
 <div align="center">
   <DocImage path={require('./static/helm-manifest-optional-values.png')} width="60%" height="60%" title="Optional values.yaml support" />
@@ -462,7 +462,7 @@ To enable this, click **Add Additional Override File** or edit an existing overr
 
 Enable the **Optional** checkbox in the **Manifest Details** tab, below to the **File Path** field.
 
-When this option is enabled, the override file is not required. If provided, it will be ignored during deployment.
+When this option is enabled, the **override file** is no longer required. If the file is missing from the specified path, the deployment will still proceed without it.
 
 <div align="center">
   <DocImage path={require('./static/helm-override-optional-value.png')} width="60%" height="60%" title="Optional override file support" />
