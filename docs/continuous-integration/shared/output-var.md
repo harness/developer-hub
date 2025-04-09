@@ -1,4 +1,3 @@
-
 Output variables expose values for use by other steps or stages in the pipeline.
 
 <details>
