@@ -36,22 +36,40 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 ### [New Feature] Granular permissions support for AWS Autostopping 
 **[CCM-21572] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector)**
 
-We have introduced **Granular permissions support for AWS Autostopping**. With this update, users can now select the specific AWS resource types they want to enable for Autostopping such as EC2, ASG, or RDS. Based on the selected resource types, only the minimal required set of permissions will be requested. This feature simplifies onboarding, and aligns with security best practices.
+We have introduced **Granular permissions support for AWS Autostopping**. With this update, users can now **select the specific AWS resource types they want to enable for Autostopping** such as EC2, ASG, or RDS. Based on the selected resource types, only the minimal required set of permissions will be requested. This feature simplifies onboarding, and aligns with security best practices.
+
+ <DocImage path={require('./static/as-granular-permissions-one.png')} width="90%" height="90%" title="Click to view full-size image" />
+ <DocImage path={require('./static/as-granular-permissions-two.png')} width="90%" height="90%" title="Click to view full-size image" />
+
 
 ### Feature Improvements
 -  Improved Recommendation Tracking: Users can now **specify estimated savings** when marking a recommendation as applied. Upon marking a recommendation as applied, users can now confirm whether the estimated savings matched the actual savings or enter the actual amount saved if different from the estimate. Additionally, after a recommendation has been applied, this savings data from the Applied Recommendations section can be edited. [CCM-21629]
 
--  Cost Categories Integration for Recommendations: The Filter panel in the Recommendations view now includes the option to filter by Cost Categories. This update is especially valuable for large-scale organizations that manage thousands of recommendations and require structured views to take meaningful action. This improvement allows for efficient sorting and quick isolation of recommendations based on relevant cost buckets and labels. [CCM-21439]
+ <DocImage path={require('./static/savings-rec.png')} width="90%" height="90%" title="Click to view full-size image" />
+  <DocImage path={require('./static/savings-rec-two.png')} width="90%" height="90%" title="Click to view full-size image" />
 
--  Recommendations Filter Revamp: The Filter panel in the Recommendations view has been updated to provide a more streamlined experience. As shown in the image below, the new design improves navigation and makes it easier to apply multiple filters. Please note that the existing **saved filters** will not populate in the respective fields on selection. To migrate filters, manual efforts will be required. [CCM-21438]
 
--  With the release of granular Autostopping permissions for the AWS connector, only those AWS resources for which the required granular permissions are present in the AWS connector will be available for selection. [CCM-21577]
+-  Cost Categories Integration for Recommendations: The **Filter panel** in the **Recommendations view** now includes the option to **filter by Cost Categories**. This update is especially valuable for large-scale organizations that manage **thousands of recommendations** and require structured views to take meaningful action. This improvement allows for efficient sorting and quick isolation of recommendations based on relevant cost buckets and labels. [CCM-21439]
+
+  <DocImage path={require('./static/cc-integration.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+-  Recommendations Filter Revamp: The **Filter panel** in the **Recommendations view** has been updated to provide a more streamlined experience. As shown in the image below, the new design improves navigation and makes it easier to apply multiple filters. Please note that the existing **saved filters** will not populate in the respective fields on selection. To migrate filters, manual efforts will be required. [CCM-21438]
+
+  <DocImage path={require('./static/rec-filter-revamp.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+-  With the release of **granular Autostopping permissions for the AWS connector**, only those AWS resources for which the required granular permissions are present in the AWS connector will be available for selection. [CCM-21577]
 
 ### Bug Fixes
 
 - For Budgets on Perspectives using Cost Categories with shared cost buckets, we’ve fixed an edge case where budget history data was not displaying in the UI. Budget computations are now accurately reflected to ensure complete visibility into historical usage and trends [CCM-22006]
 
 - We’ve enhanced the logic for converting Cloud Asset Governance Recommendation output from JSON to CSV by better handling of edge cases that previously caused issues in the CSV view. [CCM-21834]
+
+**Before**
+  <DocImage path={require('./static/json-fix-before.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+**After**
+  <DocImage path={require('./static/json-fix-after.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 ## April 2025 - Version 1.46.2
 
