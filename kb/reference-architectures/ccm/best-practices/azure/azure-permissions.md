@@ -43,7 +43,7 @@ Subscriptions where infrastructure is provisioned, usually all
 
 :::
 
-To let Harness collect inventory data (used in dashboards) you need to give read permissions to the subscription. You can do this by assigning the built in `Reader` role.
+To let Harness collect inventory data (used in dashboards) and Advisor recommendations you need to give read permissions to the subscription. You can do this by assigning the built in `Reader` role.
 
 ## Asset Governance
 
