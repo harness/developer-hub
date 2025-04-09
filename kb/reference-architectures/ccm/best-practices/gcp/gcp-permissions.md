@@ -77,7 +77,7 @@ OPTIMIZATION
 
 :::info When to enable
 
-Accounts where infrastructure is provisioned, usually every account except for the master/payer
+Projects where infrastructure is provisioned, usually all
 
 :::
 
