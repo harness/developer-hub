@@ -3104,17 +3104,21 @@ For more information, go to:
 
 ## Manifest Optional Values file
 
-You can now proceed with your deployment without configuring a `values.yaml` file in the **manifest configuration** of a Kubernetes service.
+You can now proceed with your deployment without configuring a `values.yaml` file or an override file in the **manifest configuration** of a Kubernetes service.
 
 :::note
 This feature is behind the feature flag `CDS_OPTIONAL_VALUES_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
-To enable this option, go to the **Service Configuration**. Under the **Manifest** section, click **Add Manifest** or edit the existing manifest.
+### Optional Values File
 
-Enable the **Optional** checkbox in the **Manifest Details** tab next to the `values.yaml` placeholder.
+To skip the `values.yaml` file:
 
-When this option is enabled, the `values.yaml` file is not required for deployment. If a file is provided, it will be ignored.
+1. Go to the **Service Configuration**.
+2. Under the **Manifest** section, click **Add Manifest** or edit the existing manifest.
+3. In the **Manifest Details** tab, enable the **Optional** checkbox next to the `values.yaml` placeholder.
+
+When this option is enabled, the **Values YAML** file is no longer required. If the file is missing from the specified path, the deployment will still proceed without it.
 
 <div align="center">
   <DocImage path={require('./static/k8s-manifest-optional-values.png')} width="60%" height="60%" title="Optional values.yaml support" />
@@ -3146,19 +3150,15 @@ Here is a sample of how the manifest would look when this checkbox is enabled. T
 ```
 </details>
 
-## Manifest Optional Override File
+### Optional Override File
 
-You can now proceed with your deployment without configuring an **override file** in the **manifest configuration** of a Kubernetes service.
+To skip the override file:
 
-:::note
-This feature is behind the feature flag `CDS_OPTIONAL_VALUES_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
+1. Go to the Service Configuration.
+2. Under the Manifest section, click Add Additional Override File or edit the existing override file.
+3. In the Manifest Details tab, enable the Optional checkbox next to the Add File placeholder.
 
-To enable this option, go to the **Service Configuration**. Under the **Manifest** section, click **Add Additional Override File** or edit the existing override file.
-
-Enable the **Optional** checkbox in the **Manifest Details** tab next to the **Add File** placeholder.
-
-When this option is enabled, the override file is not required for deployment. If a file is provided, it will be ignored.
+When this option is enabled, the **override file** is no longer required. If the file is missing from the specified path, the deployment will still proceed without it.
 
 <div align="center">
   <DocImage path={require('./static/k8s-override-optional-value.png')} width="60%" height="60%" title="Optional override file support" />
