@@ -415,6 +415,10 @@ const config: Config = {
               label: 'Partners',
               to: 'https://www.harness.io/partners',
             },
+            {
+              label: 'Style Guide',
+              to: '/docs/hdh/style-guide',
+            },
           ],
         },
         {

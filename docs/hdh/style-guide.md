@@ -38,18 +38,6 @@ Do not use please in documentation. We are an authority, and we can be friendly/
 
 -   YES: Run the pipeline again.
 
-For detailed grammar, punctuation, and style guidance, go to the [Harness Voice and Style Guide](https://docs.google.com/document/d/1_qPrWxpg7zjgje2JPjdfyZpbkWPIPcWUS0lFDkqBL3g/edit#heading=h.eunnttkz2q7c). While product-specific information is outdated, you'll find helpful information like:
-
--   Writing for global audiences (inclusive language, gender-neutral language, jargon, slang)
-
--   Avoiding anthropomorphism.
-
--   Date and number formats.
-
--   Punctuation usage.
-
--   And more.
-
 ### Present tense, active voice
 
 In general, write in the present tense. Users following instructions in the docs are usually following along in the app; therefore, they do those steps and experience the results of those steps in real time.
@@ -76,13 +64,19 @@ If we are giving an instruction for the user to go find the delegate on the Dele
 
 -   Find the delegate on the Delegates list.
 
-### Cultural sensitivity and inclusivity
+### Cultural sensitivity and inclusiveness
 
-Avoid cultural or regional biases, such as references to specific holidays or religions.
+Avoid cultural or regional biases, such as references to specific holidays or religions. Avoid language that is:
 
-- [Translation](https://developers.google.com/style/translation)
-
-- [Inclusive Documentation](https://developers.google.com/style/inclusive-documentation)
+- Ableist
+    - Recommended: `Deploying improperly will disrupt the service and cause outages.`
+    - Not Recommended: `Deploying improperly will cripple the service and cause outages.`
+- Gendered
+    - Recommended: `Make sure every person in charge of your devops platform is an admin.`
+    - Not Recommended: `Make sure every man in charge of your devops platform is an admin.`
+- Violent
+    - Recommended: `Please make sure to end stalled deployments.`
+    - Not Recommended: `Please make sure to kill stalled deployments.`
 
 ## Information architecture
 
@@ -116,7 +110,7 @@ Progressive disclosure means structuring content in such a way that your progres
 
 The primary example of this is the TOC where we use folders to create a hierarchy. At the top level are the modules as a whole, then there are high-level categories (ex. Get started/Usage/Troubleshooting), and then within those categories there are further divisions organizing the content.
 
-On individual pages, you can use tabs, details (collapsable sections), and headings to facilitate progressive disclosure.
+On individual pages, you can use tabs, details (collapsible sections), and headings to facilitate progressive disclosure.
 
 :::note
 
