@@ -40,7 +40,7 @@ To filter applications or their components by tags, do the following:
    Within a given tag, **inclusive OR logic** is *always* applied among the *values* you select. For example, if you select `env: dev` and `env: qa`, Harness will return components that have either tag value.
    When **only tags** are used to filter (without entering anything in the Name field), Harness applies **OR logic** between the selected tags. This means components that match *any* of the selected tags will be shown.
    However, when you filter using **both Name and Tags**, Harness applies **AND logic**—displaying only the components that match **both** the Name and the selected Tags.
-:::
+   :::
 
    The **Tags** field updates to display a running summary of your selections.
 
