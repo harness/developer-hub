@@ -79,6 +79,13 @@ For detailed instructions on managing your infrastructure state, visit [Provisio
 ### Configuration
 Derived from the initial setup steps of your workspace, including cost estimation settings, selected connectors, and default pipelines.
 - **Usage:** Provides a quick overview of your workspace's configuration, allowing for easy edits and updates.
+
+#### Advanced options
+Workspaces configuration advanced options offer the ability to configure additional settings for your workspace, including:
+- **Submodules:** Use submodules from your repository's `modules/` folder. 
+  Go to [Submodule Usage](/docs/infra-as-code-management/iacm-features/module-registry/root-sub-module-usage) for more information.
+- **Sparse checkout:** Provide paths to directories to do a sparse checkout on given patterns to clone specific directories from the repository.  
+  Refer to [git documentation](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set) for more details.
 ---
 ### CLI Integration
 This tab provides guidance on integrating the OpenTofu/Terraform CLI with Harness as a backend.
