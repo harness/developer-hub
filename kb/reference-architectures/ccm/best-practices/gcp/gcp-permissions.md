@@ -9,7 +9,7 @@ When assigning permissions to Harness' service account to GCP for CCM, there are
 
 To enable specific features on a connector you need to set a specific string in the `featuresEnabled` field (list) in the connector YAML. The keys for each feature are listed in the sections below.
 
-![](../../../static/ccm-aws-connector-features.png)
+![](../../../static/ccm-gcp-connector-features.png)
 
 ## Cost Ingestion
 
