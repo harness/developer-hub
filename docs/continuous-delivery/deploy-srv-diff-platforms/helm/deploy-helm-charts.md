@@ -260,6 +260,50 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
   You can also select **Expression** and use [Harness expressions](/docs/platform/variables-and-expressions/harness-variables) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
 
+### Manifest Optional Values (Helm)
+
+You can now proceed with your Helm chart deployment without configuring a `values.yaml` file in the **manifest configuration** of a Helm service.
+
+:::note
+This feature is behind the feature flag `CDS_OPTIONAL_VALUES_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+To enable this option, go to the **Service Configuration**. Under the **Manifests** section, click **Add Manifest** or edit the existing Helm chart.
+
+Enable the **Optional** checkbox in the **Manifest Details** tab, below to the **Values.yaml** field.
+
+When enabled, the `values.yaml` file is no longer required. If it is provided, Harness will ignore it during deployment.
+
+<div align="center">
+  <DocImage path={require('./static/helm-manifest-optional-values.png')} width="60%" height="60%" title="Optional values.yaml support" />
+</div>
+
+<details>
+<summary>Sample YAML</summary>
+
+Here is a sample of how the manifest would look when this checkbox is enabled. The `optionalValuesYaml` will be set to `true`.
+
+```yaml
+      manifests:
+        - manifest:
+            identifier: test
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: account.gitconnector
+                  gitFetchType: Branch
+                  paths:
+                    - path_to_manifest
+                  repoName: test
+                  branch: test
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+              optionalValuesYaml: true
+```
+</details>
+
 - **Skip Resource Versioning**: By default, Harness versions ConfigMaps and secrets deployed into Kubernetes clusters. In some cases, such as when using public manifests or Helm charts, you cannot add the annotation. When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and secrets for the resource. If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and secrets.
 - **Helm Command Flags**: You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart. Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
 - **Command Type**: Select the Helm command type you want to use. For example:
@@ -409,6 +453,43 @@ All files contain the same key:value pair. The values3.yaml key:value pair overr
 Your values.yaml file can use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 See [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
+
+### Optional Override File
+
+You can also proceed with your Helm deployment without configuring an **override file** in the **manifest configuration**.
+
+To enable this, click **Add Additional Override File** or edit an existing override file in the **Manifest** section of the Helm service.
+
+Enable the **Optional** checkbox in the **Manifest Details** tab, below to the **File Path** field.
+
+When this option is enabled, the override file is not required. If provided, it will be ignored during deployment.
+
+<div align="center">
+  <DocImage path={require('./static/helm-override-optional-value.png')} width="60%" height="60%" title="Optional override file support" />
+</div>
+
+<details>
+<summary>Sample YAML</summary>
+
+Here is a sample of how the Values config would look when this checkbox is enabled. The `optionalValuesYaml` will be set to `true`.
+
+```yaml
+
+- manifest:
+            identifier: values_test
+            type: Values
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: account.github_connector
+                  gitFetchType: Branch
+                  paths:
+                    - path_to_file
+                  branch: main
+              optionalValuesYaml: true
+```
+</details>
 
 ## Override chart values YAML in environment
 
