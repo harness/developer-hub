@@ -1,5 +1,5 @@
 ---
-title: GitOps Agent Metrics Server
+title: GitOps Agent Metrics
 description: Learn about enabling GitOps Agent Metrics
 sidebar_position: 10
 redirect_from:
