@@ -208,12 +208,20 @@ const config: Config = {
               to: 'university',
             },
             {
+              label: 'Code Repository',
+              to: 'university/cr',
+            },
+            {
               label: 'Continuous Integration',
               to: 'university/continuous-integration',
             },
             {
               label: 'Continuous Delivery & GitOps',
               to: 'university/continuous-delivery',
+            },
+            {
+              label: 'Infrastructure as Code Management',
+              to: 'university/iacm',
             },
             {
               label: 'Feature Flags',
@@ -232,8 +240,8 @@ const config: Config = {
               to: 'university/sto',
             },
             {
-              label: 'Software Engineering Insights',
-              to: 'university/sei',
+              label: 'Software Supply Chain',
+              to: 'university/scs',
             },
             {
               label: 'Chaos Engineering',
@@ -244,8 +252,8 @@ const config: Config = {
               to: 'university/idp',
             },
             {
-              label: 'Infrastructure as Code Management',
-              to: 'university/iacm',
+              label: 'Software Engineering Insights',
+              to: 'university/sei',
             },
             {
               label: 'Virtual Instructor-Led Calendar',
