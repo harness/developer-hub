@@ -18,7 +18,7 @@ The issue exemption workflow typically includes two stages:
 <DocImage path={require('./static/exemption-workflow.png')} width="70%" height="70%" title="Click to view full size image" />
 
 :::note 
-[Security Testing Developers](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) and [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) users can request exemptions, but only **Security Testing SecOps** users can approve them. Refer to [Permissions required for issue exemptions](#permissions-required-for-issue-exemptions) for more details.
+[Security Testing Developers](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) and [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) users can request exemptions, but only **Security Testing SecOps** users can approve them. Refer to [Permissions required for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
 ::: 
 
 ## When exemptions are useful

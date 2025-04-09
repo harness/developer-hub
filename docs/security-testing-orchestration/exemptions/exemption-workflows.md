@@ -11,7 +11,7 @@ import request_exemption from '../use-sto/static/request-exemption.png'
 import open_exemption_details from '../use-sto/static/open-exemption-details.png'
 import baseline_not_defined from '../use-sto/static/exemption-workflows-no-baseline-defined.png'
 
-Issue exemptions help unblock pipelines by allowing security teams to temporarily bypass specific security issues that would otherwise fail the build. To understand how exemptions fit into your security workflow, refer to the [issue exemptions workflow](/docs/security-testing-orchestration/exemptions/overview).
+Issue exemptions help unblock pipelines by allowing security teams to temporarily bypass specific security issues that would otherwise fail the build. To understand how exemptions fit into your security workflow, refer to the [issue exemptions workflow](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow).
 
 You can raise exemption requests at the [Project](#where-do-you-want-this-issue-to-be-exempted), [Pipeline](#where-do-you-want-this-issue-to-be-exempted), or [Target](#where-do-you-want-this-issue-to-be-exempted) level. While requests can only be raised at these specific scopes, reviewers have the option to approve them at the requested scope or at a broader scope, such as **Organization** or **Account**, during the approval process. For more details, refer to [Manage Issue Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions). To learn how to create a request, follow the steps in the sections below. To view submitted requests, see [View Issue Exemptions](#view-issue-exemptions).
 

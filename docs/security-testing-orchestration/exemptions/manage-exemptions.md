@@ -29,12 +29,12 @@ Expired and Rejected exemption requests with Organization or Account scope can o
 <DocImage path={require('./static/exemption-lifecycle-and-events.png')} width="90%" height="90%" title="Click to view full size image" />
 
 :::note
-Users with the **Security Testing SecOps** role can approve or manage issue exemption requests, but only if they have the **Approve/Reject** permission at the relevant scope (Project, Organization, or Account). Refer [Required permissions for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow) to learn more.
+Users with the **Security Testing SecOps** role can approve or manage issue exemption requests, but only if they have the **Approve/Reject** permission at the relevant scope (Project, Organization, or Account). Refer [Required permissions for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) to learn more.
 :::
 
 ## Approve, Reject, or Cancel an Exemption Request
 
-Each exemption request is associated with a specific scope, either a **Pipeline**, **Target**, or **Project**. Reviewers can approve the exemption at the requested scope or at a broader level, such as **Organization** or **Account**, as long as they have the appropriate permissions. Refer to the [**Required permissions for issue exemptions**](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
+Each exemption request is associated with a specific scope, either a **Pipeline**, **Target**, or **Project**. Reviewers can approve the exemption at the requested scope or at a broader level, such as **Organization** or **Account**, as long as they have the appropriate permissions. Refer to the [Required permissions for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
 
 <DocImage path={require('./static/manage-exemptions-overview.png')} width="90%" height="90%" title="Click to view full size image" />
 
@@ -71,8 +71,7 @@ You can approve the exemption at the requested scope or a higher one:
 You can configure whether users are allowed to approve or reject their own exemption requests. This setting is available under **Exemption Settings** on the **Default Settings** page at the project, organization, and account levels.
 
 :::note
-This setting is controlled by the feature flag `STO_EXEMPTION_SETTING`.  
-Contact [Harness Support](mailto:support@harness.io) to enable it.
+This setting is controlled by the feature flag `STO_EXEMPTION_SETTING`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
 
