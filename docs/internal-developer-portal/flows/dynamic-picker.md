@@ -617,18 +617,19 @@ properties:
 
 You can find the detailed docs on the [project's README](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/scaffolder-field-extensions/scaffolder-frontend-module-http-request-field).
 
-### POST Method Support
+### POST or PUT Method Support
 
-The **POST method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, etc.
+The **POST or PUT method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, etc. Please note that there is no restriction on any **HTTP method** type. 
 
 #### Key Elements:
-- **`method` field** - Used to specify the **POST** request method.
+- **`method` field** - Used to specify the **POST** or **PUT** request method. 
 - **`headers` field - `Content-Type`**: Specifies the request body's type.
   - In case of structured data (e.g., JSON) - `application/json` is used.
   - In case of plain text - `text/plain` is used.
 - **`body` field**: Contains the data sent to the API.
 
-Here's how the POST method is used to fetch and populate dynamic pickers within forms:
+#### POST Method Example: 
+Here's how the **POST method** is used to fetch and populate dynamic pickers within forms:
 
 ```YAML {10}
 custom1:
@@ -647,7 +648,25 @@ custom1:
         secret: "{{parameters.formdata}}"
 ```
 
-Using POST is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
+#### PUT Method Example: 
+```YAML {10}
+custom1:
+  title: Repository Collaborator
+  type: string
+  description: 
+  ui:field: SelectFieldFromApi
+  ui:options:
+    path: proxy/github-api/repos/{{parameters.ownerName}}/{{parameters.repoName}}/collaborators/{{parameters.gitUsername}}
+    valueSelector: full_name
+    request:
+      method: PUT
+      headers:
+        Content-Type: application/json
+      body:
+        permission: "{{parameters.permission}}"
+```
+
+Using these methods is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
 
 ### Parsing API Response using filters
 
