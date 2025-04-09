@@ -15,7 +15,6 @@ Issue exemptions help unblock pipelines by allowing security teams to temporaril
 
 You can raise exemption requests at the [Project](#where-do-you-want-this-issue-to-be-exempted), [Pipeline](#where-do-you-want-this-issue-to-be-exempted), or [Target](#where-do-you-want-this-issue-to-be-exempted) level. While requests can only be raised at these specific scopes, reviewers have the option to approve them at the requested scope or at a broader scope, such as **Organization** or **Account**, during the approval process. For more details, refer to [Manage Issue Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions). To learn how to create a request, follow the steps in the sections below. To view submitted requests, see [View Issue Exemptions](#view-issue-exemptions).
 
-
 <DocImage path={require('./static/request-exemption-overview.png')} width="80%" height="80%" title="Click to view full-size image" />
 
 :::note
