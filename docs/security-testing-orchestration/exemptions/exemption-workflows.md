@@ -13,12 +13,12 @@ import baseline_not_defined from '../use-sto/static/exemption-workflows-no-basel
 
 Issue exemptions help unblock pipelines by allowing security teams to temporarily bypass specific security issues that would otherwise fail the build. To understand how exemptions fit into your security workflow, refer to the [issue exemptions workflow](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow).
 
-You can raise exemption requests at the [Project](#where-do-you-want-this-issue-to-be-exempted), [Pipeline](#where-do-you-want-this-issue-to-be-exempted), or [Target](#where-do-you-want-this-issue-to-be-exempted) level. While requests can only be raised at these specific scopes, reviewers have the option to approve them at the requested scope or at a broader scope, such as **Organization** or **Account**, during the approval process. For more details, refer to [Manage Issue Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions). To learn how to create a request, follow the steps in the sections below. To view submitted requests, see [View Issue Exemptions](#view-issue-exemptions).
+You can submit issue exemption requests with the exemption scope set to [Project](#where-do-you-want-this-issue-to-be-exempted), [Pipeline](#where-do-you-want-this-issue-to-be-exempted), or [Target](#where-do-you-want-this-issue-to-be-exempted). While requests can only be raised at these specific scopes, reviewers have the option to approve them at the requested scope or at a broader scope, such as **Organization** or **Account**, during the approval process. For more details, refer to [Manage Issue Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions). To learn how to create a request, follow the steps in the sections below. To view submitted requests, see [View Issue Exemptions](#view-issue-exemptions).
 
 <DocImage path={require('./static/request-exemption-overview.png')} width="80%" height="80%" title="Click to view full-size image" />
 
 :::note
-Your role must have the necessary permissions (**Exemptions: View, Create/Edit**) to request exemptions. Refer [Permissions required for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
+To create an exemption request, you must have the necessary permissions (**Exemptions: View, Create/Edit**) at the Project level, or you can have the **Security Testing Developer** or **Security Testing SecOps** roles assigned. Refer [Permissions required for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
 :::
 
 ## Create Issue Exemptions
@@ -49,8 +49,9 @@ Specify where the exemption should apply:
 - **This Pipeline**: Exempts the issue only in the current pipeline. The issue is still reported in other pipelines or projects.  
 - **This Project**: Exempts the issue across all pipelines and targets within this project. Choose carefully, as the exemption applies broadly within the project.  
 
-> **Note:** While requests are limited to the above scopes, reviewers can approve exemptions at the **Organization** or **Account** level if needed.
-
+:::info
+While requests can only be created with the scopes mentioned above, reviewers can approve and apply them at the requested scope or at a higher scope - **Organization** or **Account**.
+:::
 #### For how long?
 
 Select the shortest practical time window for the exemption to limit the risk exposure.
@@ -92,10 +93,10 @@ You can view all exemption requests from the **Exemptions** section in the left 
 - The **[Account-level Exemptions](#view-exemptions-at-the-account-level)** section lists requests across projects from multiple organizations under the account.
 
 :::note
-The exemption requests you see at the Organization and Account levels are still subject to your project-level view permissions. Refer to [**Permissions for exemption requests**](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) to learn more.
+Exemption requests list you see at the **Organization** and **Account** views are still subject to your project-level view permissions. Refer to [Permissions for exemption requests](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) to learn more.
 :::
 
-In the Exemptions sections, the requests are displayed in tabs presenting their status, each request includes:
+In the **Exemptions** sections, the requests are displayed in tabs presenting their status, each request includes:
 
 - **Severity**: e.g., High  
 - **Issue**: e.g., `json5@2.2.0: Prototype Pollution`  
@@ -114,19 +115,21 @@ actions to *Reject* or *Cancel*.
 - **Rejected**: Displays *Requested by*, *Rejected by*, and options to *Reopen*, or *Approve* and *Cancel*.
 - **Expired**: Displays *Requested by*, with options to *Approve*, *Reopen*, or *Cancel*.
 
-For more information on how each request status and actions, refer to [Exemption Request Lifecycle](/docs/security-testing-orchestration/exemptions/manage-exemptions#issue-exemption-lifecycle). To learn how to act on these requests, see [Manage Issue Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions).
+:::tip
+For details on exemption request statuses and actions, refer [Exemption Request Lifecycle](/docs/security-testing-orchestration/exemptions/manage-exemptions#issue-exemption-lifecycle). To learn how to manage requests, [refer Manage Issue Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions).
+:::
 
 Clicking on an exemption request opens the **Exemption Details** pane, which provides a detailed overview of the request along with available actions (based on your permissions).
 
 <DocImage path={require('./static/exemption-details-side-pane.png')} width="80%" height="80%" title="Click to view full-size image" />
 
-This pane includes the following sections:
+This pane includes the following details:
 
-- **Issue Details:** Displays the issue ID, description, severity, and reason for exemption.
-- **Status and History:** Shows the current status of the exemption (e.g., Pending, Approved, Rejected, Expired) along with a history of events such as when it was requested, approved, or rejected.
+- **Issue Details:** Displays the issue title, severity, description, and scanner details.
+- **Exemption Status and History:** Shows the current status of the exemption (e.g., Pending, Approved, Rejected, Expired) along with a history of events such as when it was requested, approved, or rejected, etc.
 - **Occurrences:** Lists all the occurrences of the issue across different scans, and targets where it was detected.
 - **Targets Impacted** Displays all targets affected by the issue and where the exemption would be applied if approved.
-- **Response Actions:** If you have the [required permissions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions), you will see options to **Approve**, **Reject**, **Cancel** the request, depending on its current state.
+- **Response Actions:** If you have the [required permissions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions), you will see options to **Approve**, **Reject**, **Cancel**, or **Re-open** the request, depending on its current state.
 
 Use this view to fully assess the impact of the issue before taking action on the request.
 

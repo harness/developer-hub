@@ -18,7 +18,7 @@ The issue exemption workflow typically includes two stages:
 <DocImage path={require('./static/exemption-workflow.png')} width="70%" height="70%" title="Click to view full size image" />
 
 :::note 
-[Security Testing Developers](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) and [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) users can request exemptions, but only **Security Testing SecOps** users can approve them. Refer to [Permissions required for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
+[Security Testing Developers](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#default-roles-and-permissions) and [Security Testing SecOps](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#default-roles-and-permissions) users can request exemptions, but only **Security Testing SecOps** users can approve them. Refer to [Permissions required for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
 ::: 
 
 ## When exemptions are useful
@@ -39,7 +39,7 @@ import baseline_not_defined from '../use-sto/static/exemption-workflows-no-basel
 
 ## Required permissions for Issue Exemptions
 
-The table below outlines the permissions required at each scope for performing various exemption-related actions. These permissions are part of the **Exemptions** category in the STO role permissions.
+The table below outlines the permissions required at each scope(**Project, Organization, Account**) for performing various exemption-related actions. These permissions are part of the **Exemptions** category in the STO role permissions.
 
 To configure these permissions:
 1. Navigate to the **Project**, **Organization**, or **Account** settings in Harness.
@@ -51,35 +51,35 @@ To configure these permissions:
 
 ### Exemption permissions matrix
 
-| Action                     | Permission      | Project | Organization | Account | Notes                                                                                  |
+| Action                     | Permission      | Project | Org | Account | Notes                                                                                  |
 |-----------------------------|-----------------|---------|--------------|---------|----------------------------------------------------------------------------------------|
 | Create an Exemption Request         | Create/Edit     | ✅      | ❌           | ❌      | Can only be created at the project level.                                              |
-| View Exemptions Requests             | View            | ✅      | ❌           | ❌      | Viewing depends on project-level View access.                                          |
+| View Exemptions Requests             | View            | ✅      | ❌           | ❌      | Viewing is based entirely on project-level View permissions. Org/Account level View permissions are not required.|
 | Approve or Reject Exemption Requests | View            | ✅      | ❌           | ❌      | Required to access exemption requests.                                                 |
-|                             | Approve/Reject  | ✅      | ✅           | ✅      | Allows approving at project, org, or account level. Applies to all the projects and orgs even without direct access.         |
-| Re-open an Exemption Request        | View, Create/Edit | ✅    | ❌           | ❌      | Only possible for project-level requests. Cannot reopen org/account scoped exemptions. |
+|                             | Approve/Reject  | ✅      | ✅           | ✅      | 	Can approve/reject at the requested or higher scope (Org/Account). Exemption applies to all orgs/projects within that scope, even those the reviewer can't access.|
+| Re-open an Exemption Request        | View, Create/Edit | ✅    | ❌           | ❌      | Reopening is only allowed if the exemption scope is Project, Target, or Pipeline. If approved at Org or Account scope and marked Rejected or Expired, it can’t be reopened—only directly approved again from the status tab.|
 
 :::warning
 Assign `Approve/Reject` permissions carefully, especially at the **Organization** or **Account** level — since actions apply to all underlying scopes, even those the user may not directly manage.
 :::
 
-- **View** permissions at Organization or Account level are not functional for viewing exemptions.To view exemption requests across an entire organization or account, the user must have `View` permission on each individual project.
+- To view exemption requests across an entire organization or account, the user must have `View` permission on each individual project.
 - **Create/Edit** is relevant only at the **Project** level. It is used for creating, cancelling, or reopening exemption requests.
-- If an exemption with a scope of **Organization** or **Account** is **rejected or expired**, it **cannot be reopened**. It must be directly re-approved from the **Rejected** or **Expired** tab.
 - **Approve/Reject** permissions are required at the level where the exemption should be applied:
   - **Project-level**: Can approve only for that project.
-  - **Organization-level**: Can approve for all projects in the org, even without direct access.
-  - **Account-level**: Can approve for all organizations and projects in the account, even without access to each.
+  - **Organization-level**: Can approve for the entire organization. The exemption applies to all its projects, even those the reviewer doesn't have access to.
+  - **Account-level**: Can approve for the entire account. The exemption applies to all its organizations and their projects, even those the reviewer doesn't have access to.
 
 :::tip
 **Use "All Resources Including Child Scopes"**  
-  Instead of assigning View permission to each project manually, assign the role with a [resource group that includes all resources and child scopes](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/). This automatically provides access to all projects and organizations under the account for exemption viewing.
+  Instead of assigning View permission to each project manually, assign the role with a [resource group that includes all resources and child scopes](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/). This automatically provides access to all projects and organizations under the account for viewing the exemption requests.
 :::
 
-#### Default Roles and Permissions
+### Default Roles and Permissions
+Harness provides two RBAC roles specifically for STO users. Here’s how their permissions are set up for Exemptions feature:
 
-- **Security Testing Developer**: Includes `View` and `Create/Edit` at the Project level. Use this role for developers who need to raise exemption requests.
-- **Security Testing SecOps**: Includes `View`, `Create/Edit`, and `Approve/Reject` at all scopes. Use this role for users who review, approve, or reject exemption requests across projects, orgs, or the full account.
+- **Security Testing Developer**: Includes `View` and `Create/Edit`. Use this role for developers who need to raise exemption requests.
+- **Security Testing SecOps**: Includes `View`, `Create/Edit`, and `Approve/Reject`. Use this role for users who review, approve, or reject exemption requests across projects, orgs, or the full account.
 
 <!-- ## Important notes for exemptions in STO
 
