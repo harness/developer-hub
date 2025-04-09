@@ -104,7 +104,7 @@ Let's use the Prometheus query as an example to understand this process:
 
 By leveraging the SII, Harness Continuous Verification determines the pods that existed before and after the deployment by querying the monitoring solution. If a pod was present before and after, it is considered stable. If a pod is present after but not before, it is identified as a canary pod. The node determination is then made.
 
-![CV Nodes](static/cvfg_cvng/nodes.png)	
+![CV Nodes](./static/cvfg_cvng/nodes.png)	
 
 ### SII configuration tips
 
