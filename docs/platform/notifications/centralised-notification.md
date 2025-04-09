@@ -10,13 +10,14 @@ import PipeEvents from './static/set_pipeline_events.png';
 Currently, the Centralised Notification feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable them.
 :::
 
-Harness Centralized Notifications enable you to send notifications based on predefined rules and conditions across pipelines, delegates, and other Harness components. With notifications management, you can easily configure and manage alerts to stay informed about critical events in your workflows.
+Harness Centralized Notifications enable you to send notifications based on rules and conditions across pipelines, delegates, and other Harness modules. With notifications management, you can easily configure and manage alerts to stay informed about critical events in your workflows.
 
 Centralized notifications can be configured for the following resource types:
 
 1. Pipeline 
 2. Delegate 
-3. Chaos Experiment 
+3. Chaos Experiment
+4. 
 
 To receive notifications for these resource types, You can configure rules and choose notification channels across [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): Account, Organization, or Project.
 
