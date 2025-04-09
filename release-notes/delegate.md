@@ -87,6 +87,14 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## April 2025
+
+### Version 25.04.85600 <!-- April 9, 2025-->
+
+#### New features and improvements
+
+- Enhanced system stability and regular checks implemented to ensure reliability.
+
 ## March 2025
 
 ### Version 25.03.85504 <!-- March 27, 2025-->
