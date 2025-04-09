@@ -5,6 +5,8 @@ sidebar_position: 3
 ---
 
 import PipeEvents from './static/set_pipeline_events.png';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 :::info Note
 Currently, the Centralised Notification feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable them.
@@ -17,46 +19,39 @@ Centralized notifications can be configured for the following resource types:
 1. Pipeline 
 2. Delegate 
 3. Chaos Experiment
-4. 
+4. Service Level Objectives
 
-To receive notifications for these resource types, You can configure rules and choose notification channels across [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): Account, Organization, or Project.
+This article explains how to configure notifications for Pipelines and Delegates across different [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes): Account, Organization, and Project.
 
-### **Account Level**
+To configure notifications at the Account, Organization, or Project level:  
+ - For Account-level, go to Account Settings → General → Notification. 
 
-At account level, you will be able to configure notifications for pipelines across a **Specific Organization** or **All Organization**.
+   ![account-level](./static/account-resource-type.gif)
+ 
+ - For Organization or Project-level, go to the respective Organization/Project → select Organization/Project → Settings → General → Notification.
+ 
+   ![org-proj-level](./static/org-proj-resource-type.gif)
 
-![](./static/account_level_notification_management.png)
+Let’s walk through an example to set up notification management. In this example, we’ll configure notifications for Pipelines and Delegates, following the step-by-step guide below.
 
-### **Organization Level**
+For now, we’ll configure notifications at the Account level, but you can follow similar steps to configure them at the Organization or Project level as well.
 
-At Organization level, you will be able to configure notifications for pipeline across a **Specific Project** or **All Projects**.
+1. In Harness, go to **Account Settings**.
+2. Under **General**, select **Notifications Management**. 
 
-![](./static/organization_level_notification_manage.png)
+        ![account-level-notification](./static/Organization_setting_notification_management.png)
 
-### **Project Level**
+3. Under **Overview**, provide **Notification Name** and **Continue** to select Resource type. Based on your selection, choose the next option either **Pipeline** or **Delegate** from the tabs below.
 
-At the pipeline level, you can configure notifications for **All Pipelines**.
+        ![](./static/new-notification-setup.png)
 
-![](./static/project_level_notification_manage.png)
-
-## Configure centralized notification for Pipeline 
+<Tabs>
+<TabItem queryString="pipeline" value="Pipeline" Label="pipeline" default>
+## Centralized notification for Pipeline 
 
 :::info Note
   Pipeline specific notifications are behind `PIPE_CENTRALISED_NOTIFICATION`. 
 :::
-
-### Setting Up Notifications Management
-
-In this example, we are going to discuss setting up notification management of Pipeline resource at Organization Level:-
-
-1. In Harness, go to **Organization Settings**.
-2. Under **General**, select **Notifications Management**. 
-
-        ![](./static/Organization_setting_notification_management.png)
-
-3. Under **Overview**, provide **Notification Name** and **Continue** to select Resource type.
-
-        ![](./static/new-notification-setup.png)
 
 4. Under **Resources**, Select Resource Type as **Pipeline**. 
 
@@ -70,22 +65,37 @@ In this example, we are going to discuss setting up notification management of P
     
         ![](./static/resource_pipeline_condition.png)
 
-        Under events you can select the following **pipeline events**:-
-
-        1. Pipeline Start
-        2. Pipeline Success
-        3. Pipeline Failed
-        4. Stage Start
-        5. Stage Success
-        5. Stage Failed
-
         :::info note
-        Stage start/success/failed events will apply to all stages within a pipeline. There is no option to configure notifications for specific stages, if you want to do that you can configure it via [Pipeline level notification](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md).
+                Stage start/success/failed events will apply to all stages within a pipeline. There is no option to configure notifications for specific stages, if you want to do that you can configure it via [Pipeline level notification](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md).
         :::
 
         Under **Create Condition** provide, Condition Name and **Select Pipeline Events**. Click on **Continue** to set channel where you want to send the notification.
 
         <img src={PipeEvents} width="500"/>
+</TabItem>
+<TabItem value="Delegate" Label="delegate" default>
+## Centralized notification for Delegate 
+
+4. Under **Resources**, Select Resource Type as **Delegate**. Here, you can configure notifications for all Delegates by selecting the **Select All Delegates** option. 
+
+   Alternatively, you can target Delegates with specific tags—up to a maximum of **five tags** can be added, as shown below.
+
+   ![delegate-resource-type](./static/delegate-resource-type.png)
+
+5. Under **Condition** , select **+ Add Condition** to define delegate events based on which you want to be alerted.
+
+   ![delegate-condition](./static/delegate-condition.png)
+
+   Under **Create Condition**, provide a **Condition Name** and select the appropriate **Delegate Events**. There are three types of Delegate events that can be configured:
+    
+    - Delegate Disconnected.
+    - Delegate Expired.
+    - Delegate Expiring in 1 to 4 Weeks.
+
+   Click Continue to choose the channel where you want to send the notifications.
+
+</TabItem>
+</Tabs>
 
 6. Under **Set Channels**, **Select Channels** where you want notification to be sent.
 
@@ -113,7 +123,6 @@ In this example, we are going to discuss setting up notification management of P
 
         ![](./static/submit_notification.png)
 
-You can set up notification at [Account](#account-level) and [Project Level](#project-level) following the same steps outlined above.
 
 
 
