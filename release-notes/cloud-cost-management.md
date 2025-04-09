@@ -31,8 +31,6 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 ## April 2025 - Version 1.47.0
 
-### Version 1.46.2
-
 ### [New Feature] Granular permissions support for AWS Autostopping 
 **[CCM-21572] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector)**
 
