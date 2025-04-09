@@ -619,7 +619,11 @@ You can find the detailed docs on the [project's README](https://github.com/Road
 
 ### POST or PUT Method Support
 
-The **POST or PUT method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, etc. Please note that there is no restriction on any **HTTP method** type. 
+The **POST or PUT method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, etc. 
+
+:::info
+Kindly note that there are no restrictions on **HTTP methods**, except for the **DELETE** method, which is currently unsupported.
+:::
 
 #### Key Elements:
 - **`method` field** - Used to specify the **POST** or **PUT** request method. 
