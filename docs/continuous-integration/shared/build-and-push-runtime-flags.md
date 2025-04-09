@@ -41,12 +41,12 @@ This YAML example shows a Build and Push to GAR step with several `PLUGIN` envir
 
 ```yaml
 - step:
-    identifier: pushGCR
-    name: push GCR
+    identifier: pushGAR
+    name: push GAR
     type: BuildAndPushGAR ## Type depends the selected Build and Push step, such as Docker, GAR, ACR, and so on.
     spec: ## Some parts of 'step.spec' vary by Build and Push step type (Docker, GAR, ACR, etc).
-      connectorRef: GCR_CONNECTOR
-      host: "us.gcr.io"
+      connectorRef: GAR_CONNECTOR
+      host: "us-docker.pkg.dev/gar-prod-setup/harness-public"
       projectID: "some-gcp-project"
       imageName: "some-image-name"
       tags:
