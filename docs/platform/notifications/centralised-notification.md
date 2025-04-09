@@ -39,7 +39,7 @@ For now, we’ll configure notifications at the Account level, but you can follo
 1. In Harness, go to **Account Settings**.
 2. Under **General**, select **Notifications Management**. 
 
-        ![account-level-notification](./static/Organization_setting_notification_management.png)
+        ![account-level-notification](./static/organization-setting-notification-management.png)
 
 3. Under **Overview**, provide **Notification Name** and **Continue** to select Resource type. Based on your selection, choose the next option either **Pipeline** or **Delegate** from the tabs below.
 
