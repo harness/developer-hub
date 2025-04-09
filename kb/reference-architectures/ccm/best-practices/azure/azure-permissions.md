@@ -9,7 +9,7 @@ When adding the Harness service principal to your Azure tenant, there are many d
 
 To enable specific features on a connector you need to set a specific string in the `featuresEnabled` field (list) in the connector YAML. The keys for each feature are listed in the sections below.
 
-![](../../../static/ccm-aws-connector-features.png)
+![](../../../static/ccm-azure-connector-features.png)
 
 ## Cost Ingestion
 
