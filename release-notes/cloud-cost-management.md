@@ -43,7 +43,7 @@ We have introduced **Granular permissions support for AWS Autostopping**. With t
 
 -  Cost Categories Integration for Recommendations: The Filter panel in the Recommendations view now includes the option to filter by Cost Categories. This update is especially valuable for large-scale organizations that manage thousands of recommendations and require structured views to take meaningful action. This improvement allows for efficient sorting and quick isolation of recommendations based on relevant cost buckets and labels. [CCM-21439]
 
--  Recommendations Filter Revamp: The Filter panel in the Recommendations view has been updated to provide a more streamlined experience. As shown in the image below, the new design improves navigation and makes it easier to apply multiple filters. [CCM-21438]
+-  Recommendations Filter Revamp: The Filter panel in the Recommendations view has been updated to provide a more streamlined experience. As shown in the image below, the new design improves navigation and makes it easier to apply multiple filters. Please note that the existing **saved filters** will not populate in the respective fields on selection. To migrate filters, manual efforts will be required. [CCM-21438]
 
 -  With the release of granular Autostopping permissions for the AWS connector, only those AWS resources for which the required granular permissions are present in the AWS connector will be available for selection. [CCM-21577]
 
