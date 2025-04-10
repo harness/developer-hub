@@ -12,8 +12,10 @@ Build Intelligence is part of [Harness CI Intelligence](/docs/continuous-integra
 Build Intelligence is currently available for **Gradle** and **Bazel** build tools, with Maven support coming soon. Regardless of the programming language used in your projects, as long as you're building with a supported build tool, you can leverage Build Intelligence to optimize your builds.
 
 :::info
-Build Intelligence is now Generally Available (GA). 
+* Build Intelligence is now Generally Available (GA). 
 If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+* Build Intelligence currently supports Linux only (AMD and ARM). 
+* Build Intelligence currently supports Cloud and Kubernetes Build infrastructures only. 
 :::
 
  
@@ -72,7 +74,8 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
 
   <TabItem value="Self Hosted" label="Self Hosted" default>
   :::info
-    - Build Intelligence is only supported for Kubernetes on self-hosted build infrastructure. 
+   Build Intelligence is only supported for Kubernetes on self-hosted build infrastructure. 
+
   :::
 
   - When using a Build Intelligence with self-hosted infrastructure, an S3-compatible bucket is required for cache storage. Please visit [configure default S3-compatible object storage](/docs/platform/settings/default-settings.md#continuous-integration) for more information.

@@ -108,12 +108,29 @@ Using SBOM Orchestration step you can generate the SBOM for both Container image
 - **Registry Type**: Select **Harness Artifact Registry** or **Third-Party Artifact Registry**, based on where your artifact is stored.
 - **Source**: Select the **Source** by choosing either a supported container registry from the list or Repository if you are generating the SBOM for source code.
 
+:::warning Deprecation Alert
+
+Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the SBOM Orchestration step.
+
+:::
+
 import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifact-source.md';
 
 <ArtifactSource />
 
-With this configuration, the step generates the SBOM and stores it in the Artifact section of SCS. Optionally, you an attest to the generated SBOM, follow the instructions in the section below.
+With this configuration, the step generates the SBOM and stores it in the Artifact section of SCS. Optionally, you can attest to the generated SBOM, follow the instructions in the section below.
 
+:::info
+
+The SBOM generation step supports all registry types, including JFrog, Harbor, and Kubernetes registries. Select the [Docker Registry Connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker Registry where the artifact is stored.
+
+Enter the name of your image with tag, such as:
+
+JFrog: `</your-repo/test-image>:tag`
+
+Harbor: `</your-project/test-image>:tag`
+
+:::
 
 ### Attest the SBOM
 To configure attestation, in addition to the above configuration, you need to enable the SBOM Attestation checkbox in the SBOM Orchestration step. Enabling SBOM Attestation is optional and not required for SBOM generation. 

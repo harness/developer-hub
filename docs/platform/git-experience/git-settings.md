@@ -50,25 +50,32 @@ To enable this setting in Harness, do the following:
 
 ## Enforce Git Experience
 
-To ensure that your resource configurations are saved only in Git repositories, you can enforce Git experience in your Harness account.
-You can do this by enabling `Enforce git experience for pipelines and templates`.
+To ensure that your resource configurations are saved only in Git repositories, you can enforce the Git experience in your Harness account by enabling **Enforce Git Experience**.
 
 This setting applies to the following resources:
 
 * Pipelines
 * Templates
+* Service
+* Environments
+* Infrastructure
+* Overrides V2
 
 Harness disables inline pipelines and templates, and users can only create remote pipelines and templates after enabling this setting. You can still create inline input sets corresponding to existing inline pipelines.
+
+:::note
+Enforcing Git experience for **Services**, **Environments**, **Infrastructure**, and **Overrides V2** is currently gated behind the feature flag `CDS_ENFORCE_GIT_EXPERIENCE`
+:::
 
 To enable this setting in Harness, do the following:
 
 1. In Harness, go to the [scope](#scopes-and-refinement) where you want to enable the default connector settings. This setting is available at the account, organization, and project scope.
 
-   * To enable the **Enforce git experience for pipelines and templates** setting at the account scope, select **Account Settings**, select **Account Resources**, and then select **Default Settings**.
-   * To enable the **Enforce git experience for pipelines and templates** setting at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Default Settings**.
-   * To enable the **Enforce git experience for pipelines and templates** setting at the project scope, go to **Projects**, select the relevant project, and then select **Default Settings**.
+   * To enable the **Enforce git experience** setting at the account scope, select **Account Settings**, select **Account Resources**, and then select **Default Settings**.
+   * To enable the **Enforce git experience** setting at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Default Settings**.
+   * To enable the **Enforce git experience** setting at the project scope, go to **Projects**, select the relevant project, and then select **Default Settings**.
 2. Select **Git Experience**.
-3. Enable **Enforce git experience for pipelines and templates**.
+3. Enable **Enforce git experience**.
    After you enable this setting, it applies to all the scopes (account, organization, and project) in Harness.
 4. (Optional) For the account and project scopes, you can allow overrides. To override this setting in other scopes, select **Allow Overrides** beside the setting.
    This forces configurations at the applicable scope to be saved in Git repositories only. Users can, however, still create inline pipelines and templates at other levels.

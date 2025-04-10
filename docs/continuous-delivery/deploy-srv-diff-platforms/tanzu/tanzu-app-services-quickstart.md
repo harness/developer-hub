@@ -24,6 +24,9 @@ You'll learn how to:
    * Docker Registry 
    * Amazon S3
    * Google Container Registry (GCR)
+      :::warning
+      Google Container Registry (GCR) is being deprecated. For more details, refer to the [Deprecation Notice](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+      :::
    * Amazon Elastic Container Registry (ECR)
    * Azure Container Registry (ACR) 
    * Google Artifact Registry (GAR)

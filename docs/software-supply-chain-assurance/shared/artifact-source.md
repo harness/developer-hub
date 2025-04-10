@@ -1,7 +1,18 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+
 <Tabs>
+
+<TabItem value="har" label="HAR" default>
+
+* **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
+
+* **Image:** Enter the name of your image with tag, such as `imagename:tag`.
+
+</TabItem>
+
+
   <TabItem value="dockerhub" label="DockerHub" default>
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
@@ -19,18 +30,6 @@ import TabItem from '@theme/TabItem';
 * **Region:** The geographical location of your ECR repository.
 
 * **Account ID:** The unique identifier associated with your AWS account.
-
-</TabItem>
-
-<TabItem value="gcr" label="GCR" default>
-
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
-
-* **Image:** Enter the name of your image with tag for which you're generating the SBOM, example `docker-image:tag`.
-
-* **Host:** Enter your GCR Host name. The Host name is regional-based. For instance, a common Host name is `gcr.io`, which serves as a multi-regional hostname for the United States. 
-
-* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
 
 </TabItem>
 

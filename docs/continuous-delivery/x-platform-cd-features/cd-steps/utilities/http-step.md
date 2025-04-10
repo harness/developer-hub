@@ -205,9 +205,8 @@ During a capability check, the non-secret headers are used as is but the secret 
 This results in a `401 Unauthorized` response due to an incorrect api key. However, the capability check will be successful and the task will be assigned to the Harness Delegate. 
 
 :::info
-Using `<<<and>>>` in HTTP requests might result in bad requests on the server side. In such cases, follow these workarounds.
+Using `<<<and>>>` in HTTP requests might result in bad requests on the server side. In such cases, follow this workaround.
 
-* Use FF `CDS_NOT_USE_HEADERS_FOR_HTTP_CAPABILTY` to not use headers for capability checks.
 * Use Shell script to run cURL command and manually process the response. 
 
 :::

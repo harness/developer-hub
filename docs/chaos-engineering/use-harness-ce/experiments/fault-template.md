@@ -8,6 +8,10 @@ This topic describes how you can configure and use runtime variables in chaos ex
 
 Harness Chaos Engineering (CE) supports runtime variables when executing chaos experiments. By using runtime inputs, Harness dynamically constructs input fields for various tunables. These values are then passed to the chaos experiment during execution.
 
+## Feature Flag
+
+This is behind the feature flag `CHAOS_EXP_RUNTIMEINPUT_DEV`. Contact [Harness Support](mailto:support@harness.io) for more information.
+
 ## Create and Run Experiments
 
 You can execute chaos experiments using either static values or dynamic runtime values. 

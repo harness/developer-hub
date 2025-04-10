@@ -12,6 +12,9 @@ redirect_from:
   - /docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This topic describes how to use Harness GitOps to deploy services by syncing the Kubernetes manifests in your source repos with your target clusters.
 
 ## What is GitOps?
@@ -38,19 +41,19 @@ For a quick summary of Harness GitOps concepts, see [Harness GitOps Basics](/doc
 
 ## Before you begin
 
-* (Optional) **GitHub and DockerHub account:** this example uses a publicly available manifest in GitHub and a public Docker image. You will be using anonymous credentials for connection, but you can use your own credentials if you like.  
+* (Optional) **GitHub and DockerHub account:** this example uses a publicly available manifest in GitHub and a public Docker image. You will be using anonymous credentials for connection, but you can use your own credentials if you like.  
 We'll be using public manifests from [https://github.com/argoproj/argocd-example-apps](https://github.com/argoproj/argocd-example-apps).
 * **Target Kubernetes cluster:** you can use a cluster in any cloud platform. Harness makes a platform-agnostic connection to the cluster.
 
 * **Set up your Kubernetes Cluster:** you'll need a target Kubernetes cluster for the Harness GitOps Agent and deployment. Ensure your cluster meets the following requirements:
-  * **Number of nodes:** 2.
-  * **vCPUs, Memory, Disk Size:** the Harness GitOps Agent only needs 1vCPUs, 2GB memory, 20GB disk, but you'll also be running Kubernetes and the deployed service.  
+  * **Number of nodes:** 2.
+  * **vCPUs, Memory, Disk Size:** the Harness GitOps Agent only needs 1vCPUs, 2GB memory, 20GB disk, but you'll also be running Kubernetes and the deployed service.  
   A cluster with 2vCPUs, 8GB memory, 50GB disk is sufficient. In GKE, the **e2-standard-2** machine type is enough for this example.
-  * **Networking:** outbound HTTPS for the Harness connection to **app.harness.io**, **github.com**, and **hub.docker.com**. Allow TCP port 22 for SSH.
-  * A **Kubernetes service account** with the permissions need to create your desired state. The Harness GitOps Agent requires either `cluster-admin` or admin permissions in the target namespace:
+  * **Networking:** outbound HTTPS for the Harness connection to **app.harness.io**, **github.com**, and **hub.docker.com**. Allow TCP port 22 for SSH.
+  * A **Kubernetes service account** with the permissions need to create your desired state. The Harness GitOps Agent requires either `cluster-admin` or admin permissions in the target namespace:
   	+ Create Deployment, Service, StatefulSet, Network Policy, Service Account, Role, ClusterRole, RoleBinding, ClusterRoleBinding, ConfigMap, Secret.
   	+ Permission to apply CustomResourceDefinition.  
-  	For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
+  	For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
 
 :::note
 
@@ -230,6 +233,25 @@ GitOps Repositories store the source manifests you want to sync with destination
 
 In the Harness GitOps Repository setup, you select the Agent to use when synching state and provide the credentials to use when connecting to the Git repository.
 
+<Tabs>
+<TabItem value="Interactive Guide">
+
+<iframe 
+  src="https://app.tango.us/app/embed/589df13a-b1d7-4538-aef3-fcea4f179add" 
+  style={{minHeight:'640px'}} 
+  title="Creating a Harness GitOps Repository"
+  width="100%" 
+  height="100%" 
+  referrerpolicy="strict-origin-when-cross-origin" 
+  frameborder="0" 
+  webkitallowfullscreen="webkitallowfullscreen" 
+  mozallowfullscreen="mozallowfullscreen" 
+  allowfullscreen="allowfullscreen"></iframe>
+
+</TabItem>
+
+<TabItem value= "Step-by-Step">
+
 We will use a publicly available GitHub repo and manifests located at [https://github.com/argoproj/argocd-example-apps/tree/master/guestbook](https://github.com/argoproj/argocd-example-apps/tree/master/guestbook). We'll make an anonymous connection, so no GitHub credentials are required.
 
 1. In your Harness project, select **GitOps**, and then select **Settings**.
@@ -255,6 +277,10 @@ We will use a publicly available GitHub repo and manifests located at [https://g
 10. Select **Finish**. You now have a Harness GitOps Repository added.
 
 ![](./static/harness-cd-git-ops-quickstart-10.png)
+
+
+</TabItem>
+</Tabs>
 
 ## Step 3: Add a Harness GitOps cluster
 
@@ -303,7 +329,7 @@ subjects:
   name: harness-service-account  
   namespace: default
 ```
-To get a list of the SAs, run `kubectl get serviceAccounts`.
+To get a list of the SAs, run `kubectl get serviceAccounts`.
 
 Once you have the SA, use the following commands to get its token (replace `{SA name}` with the Service Account name and `{target namespace}` with the target namespace name, such as **default**):
 
@@ -334,7 +360,28 @@ Now that you have a Harness GitOps Agent, Repository, and Cluster set up, you're
 
 ## Step 4: Add a Harness GitOps application
 
-A GitOps Application syncs a source manifest with a target cluster using a GitOps Agent.
+GitOps Applications manage GitOps operations for a given desired state and its live instantiation.
+
+A GitOps Application collects the Repository (what you want to deploy), Cluster (where you want to deploy), and Agent (how you want to deploy). You define these entities and then select them when setting up your Application.
+
+<Tabs>
+<TabItem value="Interactive Guide">
+
+<iframe 
+  src="https://app.tango.us/app/embed/18d662e4-5c08-4d63-95a5-20ebac87b42e" 
+  style={{minHeight:'640px'}} 
+  title="Creating a Harness GitOps Application"
+  width="100%" 
+  height="100%" 
+  referrerpolicy="strict-origin-when-cross-origin" 
+  frameborder="0" 
+  webkitallowfullscreen="webkitallowfullscreen" 
+  mozallowfullscreen="mozallowfullscreen" 
+  allowfullscreen="allowfullscreen"></iframe>
+
+</TabItem>
+
+<TabItem value= "Step-by-Step">
 
 In the Application setup, you will select the Agent, Repository, and Cluster to use when synching state.
 
@@ -420,7 +467,11 @@ Click on **+ Add Source** to add the details of your next source.
    
     ![](./static/harness-cd-git-ops-quickstart-17.png)
 
+</TabItem>
+</Tabs>
+
 Now we can manually sync the Application.
+
 
 ## Step 5: Perform GitOps: sync the application to Git
 
@@ -498,6 +549,10 @@ You can also initiate a Sync or Refresh from the main GitOps page.
 - **Refresh** will pull the latest commit from Git and display whether the current Sync State is **Synced** or **Out of Sync**. It does not sync with the live cluster state. You can Refresh, then use App Diff to view the diff between the desired Git state with the live cluster state.
 - **Sync** will sync the desired Git state with the live cluster state.
 
+:::info note
+We currently do not support using [Harness expressions](/docs/platform/variables-and-expressions/harness-expressions-reference) in GitOps manifests.
+:::
+
 ## Application filters
 
 You can filter applications based on the following criteria:
@@ -520,7 +575,7 @@ You can delete an application from the main GitOps page. In the deletion prompt,
 
 Both **Foreground** and **Background** perform a cascading delete on the application.
 
-A cascading delete removes both the app and all its resources, rather than only the app and is the recommended way to completely delete an application.
+A cascading delete removes both the app and all its resources, rather than only the app and is the recommended way to completely delete an application.
 
 To perform a non-cascade delete, select the **Non-cascading** option.
 Please note that when performing a non-cascading delete, you need to make sure the finalizer is unset/removed and then delete the app. You can check the **Remove any existing finalizer** checkbox for this. However, deleting finalizers is not safe and should be used with caution.
@@ -529,7 +584,7 @@ Please note that when performing a non-cascading delete, you need to make sure t
 
 To delete the Harness GitOps Agent from your Kubernetes cluster, you delete the StatefulSet for the Agent. A StatefulSet ensures that the desired number of pods are running and available at all times. Deleting the pod without deleting the StatefulSet will result in the pod being recreated.
 
-For example, if you have the Agent pod name `gitops-agent-6877dbf7bf-wg6xv`, you can delete the StatefulSet with the following command:
+For example, if you have the Agent pod name `gitops-agent-6877dbf7bf-wg6xv`, you can delete the StatefulSet with the following command:
 
 `$ kubectl delete statefulset -n default gitops-agent-6877dbf7bf`
 
@@ -547,3 +602,17 @@ kubectl create namespace {namespace}
 * Next, try Harness GitOps using one of your own repos and target clusters.
 * Understand [Harness GitOps ApplicationSets](/docs/continuous-delivery/gitops/applicationsets/harness-git-ops-application-set-tutorial) and how you can use them with [Harness PR Pipelines](/docs/continuous-delivery/gitops/pr-pipelines/) to streamline GitOps across multiple environments.
 * Read about how Harness GitOps approaches [Managing Kubernetes secrets in Git using Mozilla SOPS](/docs/continuous-delivery/gitops/use-gitops/sops).
+* Checkout this [sample](https://github.com/harness-community/Gitops-Samples/tree/main/Fetch-App-Sync) for Fetching App Details and Syncing App using Harness Pipeline.
+* Checkout this [sample](https://github.com/harness-community/Gitops-Samples/tree/main/Syncing-multiple-apps) for Syncing Multiple GitOps Applications.
+
+## Audit Event
+
+You can view audit events for GitOps in the Audit Trail page. These events include actions such as **Sync, Create, Update, or Delete** performed on a GitOps Application.
+
+To view audit events specifically for a GitOps Application, apply the filter **Resource Type: GitOps Application**.
+
+![](./static/gitops-filter-audit.png)
+
+You can view the status of GitOps Application in the Audit Trail Page.
+
+![](./static/audit-trail-gitops.png)

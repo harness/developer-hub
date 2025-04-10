@@ -144,6 +144,10 @@ You can also specify [different values](/docs/chaos-engineering/concepts/chaos10
 
 1. On the next screen, copy the command to set up Linux chaos access, select **Done**, and then execute the copied command on your Linux machine.
 
+## Upgrade Infrastructure
+
+Go to [Upgrade Saas or SMP for Linux](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra#upgrade-linux-infrastructure) to upgrade your installation.
+
 ## Validate Installation
 
 After adding chaos infrastructure, Harness takes some time to set up all the chaos infrastructure resources. On the UI, if you navigate to **Environments** -> **Linux**, you can see the connection status is `CONNECTED`.

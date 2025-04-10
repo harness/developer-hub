@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart.md).
 
 Once you've added a Lambda Service to your Application, you can define Environments where your Service can be deployed. Within an Environment, you specify the following in an Infrastructure Definition:
 

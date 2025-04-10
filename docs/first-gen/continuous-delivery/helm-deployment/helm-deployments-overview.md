@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart).
 
 Harness supports Helm 2 and Helm v3. This guide will walk you through deploying a Docker image to a Kubernetes cluster using a Helm chart. This deployment scenario is very popular and a walkthrough of all the steps involved will help you set up this scenario in Harness for your own microservices and apps.
 
@@ -30,7 +30,7 @@ The following blog post walks you through creating a Helm 3 deployment from scra
 
 You can perform all of the steps in this guide using free accounts. You will need a Docker Hub account and a Google Cloud Platform account. Both offer free accounts.
 
-This document covers Harness Helm implementation. For Kubernetes implementation, see [Kubernetes Deployments](/docs/category/kubernetes-deployments).
+This document covers Harness Helm implementation. 
 
 #### Intended Audience
 

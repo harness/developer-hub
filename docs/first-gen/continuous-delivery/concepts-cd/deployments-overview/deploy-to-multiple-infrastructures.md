@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::warning
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/manage-deployments/deployment-concepts).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/continuous-delivery/manage-deployments/deployment-concepts).
 :::
 
 Most Harness customers deploy the same service to multiple infrastructures, such as infrastructures for different stages of the release process (QA, Prod) or in different regions. However, by default, Workflows only have one target infrastructure configured, defined as its Infrastructure Definition.

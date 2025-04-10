@@ -32,8 +32,6 @@ You can use Configuration as Code to configure pipelines, triggers, workflows, e
 You cannot choose a non-default branch to test changes for any entity. Also, configurations can only be managed in a central Git repository.
 :::
 
-For More details on the Harness First Gen Configuration as Code, go to [Configuration as Code](/docs/category/configuration-as-code).
-
 :::important
 Configuration as Code is not the same as Git Experience.
 :::

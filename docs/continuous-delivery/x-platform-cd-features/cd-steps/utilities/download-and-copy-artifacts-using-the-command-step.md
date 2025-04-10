@@ -139,9 +139,8 @@ For example, a destination path for a stage that deploys **todolist.war** using 
 `$HOME/tutorial-service-ssh2/ssh-tutorial-env/todolist.war`
 
 :::note
-
-Always use `$` in the beginning of the path when you reference an environment variables in a Command step.
-
+1. Always use `$` in the beginning of the path when you reference an environment variables in a Command step.
+2. Harness pipeline and stage variables are automatically added as environment variables during execution in the Command step.
 :::
 
 You can use any path on the target hosts you want. Harness will not create the path if it does not exist.
@@ -268,6 +267,12 @@ In **Script Input Variables**, you simply select **Expression** and paste the ex
 In your script, you declare the variable using the **Name** value.
 
 At deployment runtime, Harness will evaluate the expression and the variable will contain its output.
+
+:::info note
+When using Script Input Variables in a Command Step, avoid setting values that contain newlines.
+Harness retrieves environment variables using the `printenv` command and splits them by newline characters.
+If an input variable includes newlines, this parsing may break, leading to unexpected behavior during execution.
+:::
 
 ## Output variables
 
