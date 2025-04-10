@@ -5,6 +5,7 @@ sidebar_position: 3
 ---
 
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
+import EnhancedOutVar from '/docs/continuous-integration/shared/enhanced-output-variables.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -166,6 +167,8 @@ When using **.Net**, make sure to enable log reporting when running the tests, e
 ### Output Variables
 
 <OutVar />
+
+<EnhancedOutVar/>
 
 ### Environment Variables
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets).
 
 If you already have secrets created in a secrets manager such as HashiCorp Vault or AWS Secrets Manager, you do not need to re-create the existing secrets in Harness.
 

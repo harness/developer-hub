@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/azure-key-vault). 
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/secrets/secrets-management/azure-key-vault). 
 
 This topic outlines how to use [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) to maintain your Harness secrets. It includes these sections:
 

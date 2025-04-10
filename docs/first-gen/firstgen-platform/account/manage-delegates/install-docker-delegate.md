@@ -70,8 +70,3 @@ The **Delegates** page provides a list of installed Delegates. The information d
 * [Selectors](select-delegates-for-specific-tasks-with-selectors.md)
 * [Profiles](run-scripts-on-the-delegate-using-profiles.md)
 * [Scopes](scope-delegates-to-harness-components-and-commands.md)
-
-## See Also
-
-* For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen).
-

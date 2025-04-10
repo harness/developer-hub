@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager).
 
 You can use AWS Secrets Manager for your Harness secrets. AWS Secrets Manager differs from AWS KMS in that AWS Secrets Manager stores both secrets and encryption keys whereas with AWS KMS, Harness stores the secret in its Harness store and retrieves the encryption keys from KMS.
 
