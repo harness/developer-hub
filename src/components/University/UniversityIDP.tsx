@@ -10,7 +10,7 @@ import { ActivePage, getCertLevel } from "./LandingPage";
 import DeveloperCertificationExamDetails from "./data/idp-certification-developer-exam-details.md";
 import DeveloperCertificationReviewGuide from "./data/idp-certification-developer-review-guide.md";
 // import ArchitectCertificationReviewDetails from "./data/idp-certification-architect-review-guide.md";
-// import ArchitectCertificationExamDetails from "./data/id[-certification-architect-exam-details.md";
+// import ArchitectCertificationExamDetails from "./data/idp-certification-architect-exam-details.md";
 import IltCard from "./Card";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";

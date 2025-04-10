@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](../../faqs/harness-security-faqs.md).
+This content is for Harness FirstGen. Switch to [NextGen](../../faqs/harness-security-faqs.md).
 
 This article addresses some frequently asked questions about Harness security features.
 

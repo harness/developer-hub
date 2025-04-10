@@ -16,7 +16,7 @@ import image_3 from './static/delegate-installation-10.png'
 
 :::warning
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
 
 :::
 
@@ -25,8 +25,6 @@ The Harness Delegate is a service you run in your local network or VPC to connec
 As explained in [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md), when you set up Harness for the first time, you install a Harness Delegate in your target infrastructure (for example, Kubernetes cluster, ECS cluster, EC2 subnet, Pivotal Cloud Foundry space, etc). Once the Delegate is installed, you can set up the resources and model your release process.
 
 Most importantly, the Delegate performs all deployment operations.
-
-For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen).
 
 ## Limitations and Requirements
 

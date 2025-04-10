@@ -169,3 +169,13 @@ These settings are for [Harness SCS](/docs/software-supply-chain-assurance).
 ### Harness AI Development Assistant
 
 Enable this setting to use [Harness AI Development Assistant (AIDA)](/docs/platform/harness-aida/aida-overview/).
+
+### Visible Modules in this Account
+
+:::note
+
+This feature is currently behind the feature flag `CDS_NAV_MODULE_VISIBILITY`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
+
+:::
+
+Use this setting to enable/disable which modules are visible to all users of this account. 

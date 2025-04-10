@@ -22,9 +22,14 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| CDS_TF_PROJECTS_SUPPORT | Enables users to select the Project that includes the workspace to run inside the **Terraform Cloud Run Step**, allowing better organization and precise workspace targeting. **This feature is in Limited GA** |
+| CDS_CUSTOM_MAX_CONCURRENCY | Enables users to configure a custom `maxConcurrency` value in multi-deployment stages in Harness, allowing greater control over parallelism in deployments. **This feature is in Limited GA**|
+| CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS | Enables users to leverage cross-project access with the GCP OIDC connector in both Kubernetes and native Helm environments. **This feature is in Limited GA**|
+| CDS_K8S_DIFF_STEP_SUPPORT | Enables users to add a native **K8s diff** step in CD pipelines, allowing them to preview changes before deployment. **This feature is in Limited GA**|
+| CDS_MANIFEST_CONNECTOR_URL | Enables users to fetch the Service Manifest source (i.e., Connector URL where the manifest is stored) using the expression `<+manifests.MANIFEST_ID.store.connectorUrl>`. **This feature is in Limited GA**|
 | CDS_REMOVE_COMMENTS_FROM_VALUES_YAML_WITH_ESCAPE_CHARACTERS | Enables proper handling of special characters in `values.yaml` by removing control characters such as `single (' )`, `double (")`, and `backslash (\)`, preventing pipeline failures. |
-| CDS_ENFORCE_GIT_EXPERIENCE | Enables users to enforce the **Git experience for environments, infrastructure, and overrides V2**, ensuring consistency across all components, similar to pipelines, inputs, and templates. |
-| CDS_TAS_ARTIFACT_BUNDLE_PRESERVE_PERMISSION_ON_EXTRACTION | Ensures that file permissions inside the `tar.gz` archive are retained when deploying **Artifact Bundles** for **NodeJS apps** to **PCF (Pivotal Cloud Foundry)**, preventing permission issues during application startup. |
+| CDS_ENFORCE_GIT_EXPERIENCE | Enables users to enforce the **Git experience for environments, infrastructure, and overrides V2**, ensuring consistency across all components, similar to pipelines, inputs, and templates. **This feature is in Limited GA**|
+| CDS_TAS_ARTIFACT_BUNDLE_PRESERVE_PERMISSION_ON_EXTRACTION | Ensures that file permissions inside the `tar.gz` archive are retained when deploying **Artifact Bundles** for **NodeJS apps** to **PCF (Pivotal Cloud Foundry)**, preventing permission issues during application startup. **This feature is in Limited GA**|
 | CDS_AZURE_CLI_WEBAPP_DEPLOYMENT | Enables enhanced support for non-standard configurations and Azure CLI-based workflows for Azure Web App deployments. Available with Delegate version `85302` or later. **This feature is in Limited GA**|
 | CDS_HELM_DELETE_STEP | Enables a native **Helm Uninstall** step in the Deploy stage to uninstall Helm charts. **This feature is in Limited GA** |
 | CDS_ECS_MONITOR_TASK_STATUS | Enables Harness to accurately detect failures in **ECS Rolling Deployments**. **This feature is in Limited GA** |
@@ -131,3 +136,13 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | CDS_NAV_MODULE_VISIBILITY | When enabled Admin users can hide unsubscribed modules from the sidebar, ensuring only subscribed modules are visible to team members. This helps streamline the user experience and prevents access to steps or features from unsubscribed modules. <b>This is a Beta feature.</b> |
 | GITOPS_FILTER_PANE_ENABLED | When enabled, GitOps users can create and save application filters in the GitOps Applications page. <b> This is a Beta feature </b> |
 | FF_PIE_SET_ADVISORS_PROCESSED | When enabled the calculation of `<+stage.CurrentStatus>` exclude steps where the failure strategy has not yet been triggered. This ensures that steps are not prematurely skipped due to transient failure states, resulting in more reliable execution. <b>This is a Beta feature.</b> |
+| CDS_EXECUTION_LIST_FILTERS | Enable this feature to improve filter UI on the execution list view. Use the new UI to add filter parameters, make custom filters, and save them, easier than before. **This is a Beta feature**. |
+| CDS_EXECUTION_LIST_CARD_VIEW | Enable this feature to improve the cards for the execution list view. This allows for other modules data to be displayed in each card on the list. **This is a Beta feature** |
+| CDS_RECENT_SCOPES | When enabled, hover over the scope selector to navigate to your five most recent scopes. Clicking the scope selector will continue to be the usual scope selection flow. **This is a Beta feature**. |
+| CDS_SETTINGS_ACCORDION | When enabled, a pop up tile will appear when hovering over **Project Settings** in the left navigation pane. **This is a Beta feature**. |
+| CDS_AWS_LAMBDA_ROLLBACK_V2 | When enabled, users can deploy Lambda artifacts larger than 50 MB stored in S3 **This is a Beta feature**. |
+| CDS_K8S_TRAFFIC_ROUTE_REWRITE_RULE_SUPPORT | When enabled, users can define and manage rewrite rules to control traffic routing in Kubernetes traffic routing configuration. **This is a Beta feature**. |
+| CDS_GITLAB_TRIGGER_TAG_EVENT | When enabled, u​sers can trigger pipelines in GitLab upon the creation or pushing of tags. **This is a Beta feature**. |
+| CDS_OPTIONAL_VALUES_YAML | When enabled, ​users can utilize an optional checkbox for Kubernetes and Helm deployment types while configuring manifest and overrides. **This is a Beta feature**. |
+| CDS_SNOW_IMPROVE_CONSOLE_LOGS | When enabled, ​users can see improved log messages in ServiceNow Approval that enhances clarity and helps in debugging **This is a Beta feature**. |
+| CDS_DEPLOYMENT_FREEZE_GRANULAR_RBAC | When enabled, users can manage Deployment Freeze Windows with granularity based on Environment Types, allowing for more fine-tuned control over deployment windows. **This is a Beta feature**. |

@@ -10,7 +10,7 @@ canonical_url: https://www.harness.io/blog/getting-started-with-helm
 ---
 
 :::warning
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
+This content is for Harness FirstGen. Switch to [NextGen](../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
 :::
 
 This quickstart shows you how to deploy a publicly available Docker image to your Kubernetes cluster using Helm charts and a Canary Deployment strategy in Harness.

@@ -66,6 +66,10 @@ If you need to use either environment or Terraform variables during execution, s
 - **From Git Repo (Implicit)** Users can store ``.tfvar`` in the same folder as the Terraform code for the workspace.
 - **From Git Repo (Explicit)** Users can define a specific folder for ``.tfvar`` files (which can be different from the Terraform code's location). These files can be in the same or different repository as the Terraform code.
 
+:::info tfvar jexl support
+[JEXL expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) cannot be used to reference `tfvar` files.
+:::
+
 The values defined in line with the workspace will take precedence over the git configuration.
 
 ![Workspace variables](static/workspace-variables.png)

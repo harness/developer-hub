@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 :::warning
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](../../cloud-cost-management/get-started/key-concepts.md).
+This content is for Harness FirstGen. Switch to [NextGen](../../cloud-cost-management/get-started/key-concepts.md).
 
 :::
 
