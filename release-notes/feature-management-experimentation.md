@@ -18,7 +18,6 @@ These release notes describe recent changes to Harness Feature Management & Expe
 
 ## April 2025
 ### 2025-04-10
-
 #### Append impression properties
 The following SDKs now allow you to append properties to impressions for each `getTreatment` call: Browser, iOS, JavaScript, Node.js, React, and Redux. This provides additional context for in-product troubleshooting within Live tail or downstream external analysis.
 ##### Related documentation
