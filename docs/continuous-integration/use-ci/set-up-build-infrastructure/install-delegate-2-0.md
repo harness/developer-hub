@@ -11,7 +11,7 @@ This guide describes how to install the new Harness Delegate to local machines.
 
 :::info Important
 
-Harness Delegate 2.0 is under beta and can only be used for Mac Build, Android Build, and CI Stage Pipelines with limited sets of steps and connector support.
+Harness Delegate 2.0 is under **Beta** and can only be used for Mac Build, Android Build, and CI Stage Pipelines with limited sets of steps and connector support.
 
 :::
 
