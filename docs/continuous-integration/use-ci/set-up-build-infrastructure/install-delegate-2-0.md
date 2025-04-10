@@ -87,7 +87,7 @@ curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/p
 ```
 chmod +x harness-runner
 ```
-3. Start Runner as a service
+3. Start Delegate as a service
 ```
 ./harness-runner install --account=[Account ID] \
                        --token=[Delegate Token] \
@@ -106,7 +106,7 @@ curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/p
 ```
 chmod +x harness-runner
 ```
-3. Start Runner as a service
+3. Start Delegate as a service
 ```
 ./harness-runner install --account=[Account ID] \
                        --token=[Delegate Token] \
@@ -122,7 +122,12 @@ chmod +x harness-runner
 sudo curl --output harness-runner https://storage.googleapis.com/harness-qa-public/public/shared/runner/0.0.1/runner-linux-arm64
 ```
 
-2. Create a config.env file in the local folder
+2. Give it permission to execute
+```
+sudo chmod +x harness-runner
+```
+
+3. Create a config.env file in the local folder
 ```
 cat > config.env <<EOF
 NAME=[Name of the runner]
@@ -131,11 +136,6 @@ TOKEN=[Copy Delegate Token from Harness platform]
 URL=[MANAGER_HOST_AND_PORT]
 TAGS="linux-arm64"
 EOF
-```
-
-3. Give it permission to execute
-```
-sudo chmod +x harness-runner
 ```
 
 4. Start the delegate in the background
@@ -153,20 +153,20 @@ nohup ./harness-runner server --env-file config.env > nohup-runner.out 2>&1 &
 sudo curl --output harness-runner https://storage.googleapis.com/harness-qa-public/public/shared/runner/0.0.1/runner-linux-amd64
 ```
 
-2. Create a config.env file in the local folder
+2. Give it permission to execute
+```
+sudo chmod +x harness-runner
+```
+
+3. Create a config.env file in the local folder
 ```
 cat > config.env <<EOF
-NAME=[Name of the runner]
+NAME=[Name of the delegate]
 ACCOUNT_ID=[Your account ID]
 TOKEN=[Copy Delegate Token from Harness platform]
 URL=[MANAGER_HOST_AND_PORT]
 TAGS="linux-amd64"
 EOF
-```
-
-3. Give it permission to execute
-```
-sudo chmod +x harness-runner
 ```
 
 4. Start the delegate in the background
@@ -176,3 +176,37 @@ nohup ./harness-runner server --env-file config.env > nohup-runner.out 2>&1 &
 
 </TabItem>
 </Tabs>
+
+## Delegate Configuration
+
+### Set Max Stage Capacity
+
+With Harness Delegate 2.0, you can configure a limit for the maximum number of stages the delegate will be executing at a given time. When the delegate is handling tasks at full capacity, new tasks will be queued and picked up once the delegate's capacity is freed.
+
+In order to configure a max limit for number of stages executed by a delegate, you should add a `MAX_STAGES` variable in the delegate's `config.env` file. The value of the `MAX_STAGES` should be a positive integer.
+
+#### Example config.env
+
+If you wanted the runner to only execute up to 5 stages a time, set `MAX_STAGES=5`. For example:
+
+```
+ACCOUNT_ID="<ACCOUNT_ID>"
+TOKEN="<DELEGATE_TOKEN>"
+TAGS="<your delegate tags>"
+URL="<MANAGER_HOST_AND_PORT>"
+NAME="<your delegate name>"
+...
+MAX_STAGES=5
+```
+
+Here is where the `config.env` file is located for each installation method:
+- **MacOS**: The `config.env` file is located in `~/.harness-runner/config.env` (after you run the `./harness-runner` install command).
+- **Linux**: It is the same `config.env` file you created during delegate's installation.
+
+## Debugging
+
+### Logs
+
+You can find the delegate logs in the following files:
+- **MacOS**: `~/Library/Logs/harness.runner/stderr.log`
+- **Linux**: `nohup-runner.out`
