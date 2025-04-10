@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](../../../../platform/authentication/authentication-overview.md).
+This content is for Harness FirstGen. Switch to [NextGen](../../../../platform/authentication/authentication-overview.md).
 
 Administrators can use Authentication Settings to restrict access to an organization's Harness account. The options you choose will apply to all your account's users. These options include:
 

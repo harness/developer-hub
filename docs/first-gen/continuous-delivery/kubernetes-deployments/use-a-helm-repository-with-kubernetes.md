@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](../../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
+This content is for Harness FirstGen. Switch to [NextGen](../../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
 
 You can link remote Helm charts in a Helm Repository to your Harness Kubernetes Service, such as AWS S3, Google Cloud Storage (GCS), or a chart repo such as Bitnami.
 

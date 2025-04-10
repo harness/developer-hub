@@ -87,6 +87,9 @@ These integrations use Harness Connectors or Delegates for direct API-based inte
 - Opsgenie – Acknowledge alerts, add responders to incidents  
 - PagerDuty – Create incidents, add responders, manage on-call schedules  
 
+### Documentation and Collaboration
+- Confluence – Create, retrieve (as HTML), update, delete pages
+
 ### Incident Status & Reporting
 - Statuspage – Select components, update incidents  
 

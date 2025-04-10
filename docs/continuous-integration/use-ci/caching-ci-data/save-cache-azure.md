@@ -278,6 +278,10 @@ Here's an example of a pipeline that builds and tests a Go app. It includes step
             - /home/harness
 ```
 
+:::note
+For blobs larger than 5 GB, multi-part upload is used for caching to storage, while standard uploads are used for blobs up to 5 GB.
+:::
+
 ## Cache step logs
 
 When you run a pipeline with caching steps, you can observe and review build logs on the [Build details page](../viewing-builds.md).

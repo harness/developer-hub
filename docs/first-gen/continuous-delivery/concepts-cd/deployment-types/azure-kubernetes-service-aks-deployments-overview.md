@@ -8,13 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart.md).
 
 This topic describes the concept of a Harness Azure Kubernetes Service (AKS) deployment by describing the high-level steps involved.
-
-For a vendor-agnostic, Harness Kubernetes deployment, see our [Kubernetes Deployments Overview](kubernetes-overview.md) doc.For a quick tutorial, see the [Kubernetes Quickstart](../../../first-gen-quickstarts/kubernetes-quickstart.md).
-
-For detailed instructions on using AKS in Harness, see the [Azure How-tos](/docs/category/azure-deployments-and-provisioning).
 
 This guide covers new the **Version 2** features of Harness' Kubernetes implementation for AKS. <!-- TBD-2411 For Version 1 Kubernetes see [Harness Kubernetes v1 FAQ ](https://docs.harness.io/article/dtu3ud1ok7-kubernetes-and-harness-faq). --> For Helm deployment features, see [Helm Quickstart](../../../first-gen-quickstarts/helm-quickstart.md).
 
@@ -59,11 +55,3 @@ The following list describes the major steps of a Harness AKS deployment:
 | 6 | Create the Harness **Environment** and Infrastructure Definition for your target AKS cluster, and any overrides. | Using the Harness Cloud Provider you set up, you can select the target AKS cluster and namespace for your deployment.You can also override any Service settings, such as manifest values. This enables you to use a single Service with multiple Harness Environments. |
 | 7 | Create the Canary, Blue/Green, or Rollout deployment Harness **Workflow**. | The Workflow deploys the artifact(s) and Kubernetes workloads defined in the Harness Service to the cluster and namespace in the Harness Infrastructure Definition.See [Azure Workflows and Deployments](../../azure-deployments/aks-howtos/4-azure-workflows-and-deployments.md).For additional Workflows, see the vendor-agnostic steps in the following: <br />&bull;&nbsp; [Create a Kubernetes Canary Deployment](../../kubernetes-deployments/create-a-kubernetes-canary-deployment.md) <br />&bull;&nbsp; [Create a Kubernetes Blue/Green Deployment](../../kubernetes-deployments/create-a-kubernetes-blue-green-deployment.md) <br />&bull;&nbsp;  [Create a Kubernetes Rolling Deployment](../../kubernetes-deployments/create-a-kubernetes-rolling-deployment.md) |
 | 8 | Deploy the Workflow. | Once you've deployed a Workflow, learn how to improve your AKS CD: <br />&bull;&nbsp; [Workflows](../../model-cd-pipeline/workflows/workflow-configuration.md) <br />&bull;&nbsp; [Triggers](../../model-cd-pipeline/triggers/add-a-trigger-2.md) <br />&bull;&nbsp; [Infrastructure Provisioners Overview](../../model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md) |
-
-### Next Steps
-
-Read the following topics to build on what you've learned:
-
-* [Azure (AKS) How-tos](/docs/category/azure-deployments-and-provisioning)
-* [Kubernetes Quickstart](../../../first-gen-quickstarts/kubernetes-quickstart.md)
-

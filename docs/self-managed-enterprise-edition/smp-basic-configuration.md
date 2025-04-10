@@ -24,7 +24,7 @@ Before proceeding with the configuration, ensure you have:
 
 ### Global Settings
 
-The following parameters are configured in your `values.yaml`:
+The following parameters are configured in your `values.yaml`. 
 
 ```yaml
 global:
@@ -32,23 +32,19 @@ global:
   # This is the external URL that users will use to access Harness
   loadbalancerURL: "https://your-domain.example.com"
   
-  # -- License Configuration (Required)
-  license:
-    ng: "your-ng-license"    # Next Generation license key
-  
   # -- High Availability Configuration
   ha: true    # Set to true for production deployments
               # Deploys components with proper replicas for HA
-  
+
   # -- Global Feature Flags
   features:
     enabled: true
   
   # -- Module Enablement
-  ci:
-    enabled: false          # Enable Continuous Integration
   cd:
-    enabled: false          # Enable Continuous Delivery
+    enabled: true           # Enable Continuous Delivery
+  ci:
+    enabled: true           # Enable Continuous Integration
   ccm:
     enabled: false          # Enable Cloud Cost Management
   sto:
@@ -60,7 +56,7 @@ global:
 global:
   # -- SSL/TLS Configuration
   ssl:
-    enabled: true                # Enable SSL/TLS
+    enabled: false                # Enable if you have eligible SSL/TLS 
     certSecret: "harness-ssl-cert"  # Secret containing certificates
   
   # -- MongoDB SSL Configuration
@@ -86,44 +82,10 @@ global:
   ingress:
     enabled: false              # Enable Kubernetes Ingress
     className: "harness"
+    disableHostInIngress: false    
     tls:
-      enabled: true
+      enabled: false
       secretName: "harness-cert"
-```
-
-### Monitoring and Observability
-```yaml
-global:
-  # -- Monitoring Configuration
-  monitoring:
-    enabled: false              # Enable Prometheus metrics
-    path: /metrics             # Metrics endpoint
-    port: 8889                # Metrics port
-  
-  # -- Logging Configuration
-  logging:
-    level: INFO
-    format: json
-  
-  # -- Service Discovery
-  servicediscoverymanager:
-    enabled: false              # Enable service discovery
-```
-
-### Resource Management
-```yaml
-global:
-  # -- Pod Disruption Budget
-  pdb:
-    create: false               # Create PDB for components
-    minAvailable: "50%"        # Minimum available pods
-  
-  # -- Autoscaling Configuration
-  autoscaling:
-    enabled: true              # Enable HPA
-    minReplicas: 2
-    maxReplicas: 5
-    targetCPUUtilizationPercentage: 80
 ```
 
 ## Module Enablement
@@ -806,16 +768,9 @@ Add your NG license in the `values.yaml` file:
 ```yaml
 global:
   license:
-    ng: "your-ng-license-key"    # Required
-    cg: "your-cg-license-key"    # Optional: Only for classic features
+    ng: "your-ng-license-key"    
+    cg: "your-cg-license-key"    
 ```
-
-#### License Features
-- Access to core platform
-- Module enablement (CI/CD, CCM, STO, etc.)
-- User management
-- Pipeline execution
-- API access
 
 #### Obtaining a New License
 1. Contact [Harness Support](mailto:support@harness.io) team
@@ -920,10 +875,9 @@ The resource profiles are designed to accommodate different deployment scales an
 ### Selecting a Resource Profile
 Choose the appropriate profile based on your deployment needs:
 
-1. **Minimum Profile**: Development/Testing
+1. **Small Profile**: 
    - Up to 50 concurrent pipelines
    - Team size: < 50 users
-   - Resource-constrained environments
     
         ```yaml
             platform:
@@ -955,10 +909,9 @@ Choose the appropriate profile based on your deployment needs:
                         memory: "1Gi"
         ```
 
-2. **Standard Profile**: Production/Medium Scale
+2. **Medium Profile**: 
    - Up to 200 concurrent pipelines
    - Team size: 50-200 users
-   - Typical enterprise deployments
 
         ```yaml
                 platform:
@@ -991,10 +944,9 @@ Choose the appropriate profile based on your deployment needs:
             ```
 
 
-3. **Performance Profile**: Large Scale Production
+3. **Large Profile**: 
    - 200+ concurrent pipelines
    - Team size: 200+ users
-   - High-throughput requirements
 
         ```yaml
             platform:
@@ -1241,8 +1193,6 @@ global:
 ## Dashboards 
 
 This guide explains how to configure and customize dashboards in Harness SMP. Dashboards provide visibility into your deployment metrics, pipeline execution, cost analysis, and system health.
-
-## Dashboard Types
 
 ### Next Generation Dashboards
 

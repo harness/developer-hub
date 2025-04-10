@@ -18,14 +18,31 @@ Connectors allow Harness to connect to your deployment environments, such as Kub
 
 Perform the following steps to add an AWS connector for AutoStopping Rules:
 
-1. In **Cloud Costs**, click **New AutoStopping Rule**.
+1. In **Account Settings**, click **Integration for Cloud Cost**.
 
-  ![](./static/connect-to-an-aws-connector-00.png)
-2. In **AutoStopping Rules**, select **AWS**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping Rules.
+2. Click on **+New Cluster/Cloud Account**, select **AWS**. 
 
-  ![](./static/connect-to-an-aws-connector-01.png)
-3. Click **Connect to your AWS account** drop-down list and then click **New Connector**.
-4. See [Set up Cloud Cost Management for AWS](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md) for further instructions.
+3. Enter overview details like Connector Name, AWS account ID, etc. as shown below:
+     ![](./static/as-aws-one.png)
+
+
+4. Set Up Cost and Usage Report using the instructions shown on the screen.
+     ![](./static/as-aws-two.png)
+
+5. Choose all the Cloud Cost Management features you want to enable for your AWS account including "Optimization by AutoStopping". 
+      ![](./static/as-aws-five.png)
+
+6. AutoStopping supports granular access controls to help you follow the principle of least privilege. In the next step, you’ll be prompted to select the specific services you want to enable AutoStopping for, along with only the necessary permissions required for each.
+     ![](./static/as-aws-five.png)
+      ![](./static/as-aws-four.png)
+
+7. Click **Continue**.
+
+
+8. Create Cross Account Role. Follow the instructions shown on the screen.
+     ![](./static/as-aws-six.png)
+
+9. Save and Continue
 
 ### Next Steps
 

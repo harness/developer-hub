@@ -2,12 +2,6 @@ name: MarkDown and Image Filename Validation
 
 on:
   pull_request:
-    paths:
-      - '**/*.md'
-      - '**/*.jpg'
-      - '**/*.png'
-      - '**/*.jpeg'
-      - '**/*.svg'
 
 jobs:
   kebab-case-check:
@@ -33,7 +27,7 @@ jobs:
           failure_flag=0
 
           # Get changed files and filter only relevant ones
-          changed_files=$(git diff --name-only --diff-filter=d  HEAD^1 HEAD | grep -E '\.(md|jpg|png|jpeg|svg)$' | grep -E '^(docs|kb|community|roadmap|static|university|release-notes)/')
+          changed_files=$(git diff --name-only --diff-filter=d  HEAD^1 HEAD | grep -E '\.(md|jpg|png|jpeg|svg)$' | grep -E '^(docs|kb|community|roadmap|static|university|release-notes)/' || true)
 
           if [ -z "$changed_files" ]; then
             echo -e "${Green}No relevant files were changed in this PR.${Reset}"
