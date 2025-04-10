@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
 
 Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness applications. Some key points about Secrets Management:
 

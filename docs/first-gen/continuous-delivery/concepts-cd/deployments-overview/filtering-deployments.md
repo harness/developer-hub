@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments.md).
 
 You can filter deployments on the the Deployments page according to multiple criteria.
 

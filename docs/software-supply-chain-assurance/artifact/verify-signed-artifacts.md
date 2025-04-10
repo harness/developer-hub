@@ -27,6 +27,10 @@ The artifact verification step ensures the authenticity of the signed artifact b
 
 The Artifact Verification step pulls the `.sig` file from the artifact registry and verifies it with the corresponding public key. In the artifact signing step, if you chosen not to push the `.sig` file to the registry, then for the artifact verification `.sig` file will instead be pulled from the Harness database . This process ensures that the artifact was signed by a trusted entity, thereby confirming its integrity and authenticity.
 
+Artifact Verification step supports both [container](/docs/software-supply-chain-assurance/artifact/verify-signed-artifacts#container-images) as well as [non-container images](/docs/software-supply-chain-assurance/artifact/verify-signed-artifacts#non-container-images).
+
+### Container Images
+
 You can search for **Artifact Verification** and add it to either the **Build** , **Deploy** or **Security** stage of a Harness pipeline
 
 Follow the instructions below to configure the Artifact Verification step.
@@ -44,17 +48,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 <Tabs>
 
-<TabItem value="har" label="HAR" default>
-
-* **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
-
-* **Image:** Enter the name of your image with tag, such as `imagename:tag`.
-
-</TabItem>
-
-
-
-  <TabItem value="dockerhub" label="DockerHub" >
+  <TabItem value="dockerhub" label="DockerHub" default >
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
@@ -106,12 +100,6 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 </Tabs>
 
-:::note
-
-Ensure that you use the same image that was used for artifact signing in the Artifact Signing step.
-
-:::
-
 You can verify the signed artifact with **Cosign** or **Cosign with Secret Manager**
 
 import CosignVerificationOptions from '/docs/software-supply-chain-assurance/shared/cosign-verification-options.md';
@@ -119,7 +107,25 @@ import CosignVerificationOptions from '/docs/software-supply-chain-assurance/sha
 <CosignVerificationOptions />
 
 
-<DocImage path={require('./static/artifact-verifyying.png')} width="50%" height="50%" />
+<DocImage path={require('./static/artifact-verify.png')} width="50%" height="50%" />
+
+
+### Non-Container Images
+
+Artifacts aren't limited to container images. Signed non-container artifacts can also be verified where the unique identifier (digest SHA) generated during the signing step is used to locate and verify the artifact during the verification process.
+
+To configure Artifact Verification for non-container images, provide the following details:
+
+**Name:** Provide a name for the verification step.
+
+**Artifact Source:** Select the Harness Local Stage as the source of the artifact.
+
+**Workspace Artifact Path:** Specify the exact artifact path used during the signing step.
+
+Non-container images can be verified using **Cosign** or **Cosign with Secret Manager**, just like container images.
+
+<DocImage path={require('./static/non-container-verify.png')} width="50%" height="50%" />
+
 
 ## View Verified Artifacts
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/platform-whats-supported.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/platform-whats-supported.md).
 
 This topic lists Harness support for platforms, methodologies, and related technologies.
 
@@ -632,7 +632,7 @@ The following table lists Harness support for metrics platforms (APMs).
 
 #### Logging Platforms
 
-Most logging platforms are also supported. See [Verification](/docs/category/continuous-verification).
+Most logging platforms are also supported.
 
 
 

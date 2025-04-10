@@ -36,14 +36,10 @@ No, this feature is yet to be supported. We suggest to use ssh key or user and p
 
 No this is not supported as of now, as currently command step is only applicable in ssh/winrm type deployment
 
-### Is there a method available to implement a percentage-based repeat strategy for Shell Script Hosts similar to the functionality present in FirstGen?
+### Is there a method available to implement a percentage-based repeat strategy for Shell Script Hosts?
 
 For a rolling strategy, you specify the desired number of instances to deploy per phase. If you have multiple target hosts in a stage and wish to deploy a certain proportion of instances per phase, you can configure it accordingly. This allows for a flexible deployment approach where the number of instances per phase can be defined either as a count or a percentage.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#rolling)
-
-### Does Harness support "Skip instances with the same artifact version already deployed" feature on NextGen?
-
-Yes, this feature parity to FirstGen is now available ! Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#targetting-specific-hosts-for-deployment)
 
 ### Why am I getting the error "Host information is missing in Command Step"?
 
@@ -54,9 +50,11 @@ Invalid argument(s): Host information is missing in Command Step. Please make su
 If you are using the Command step, the `Repeat` looping strategy is required. The above error indicates that the Command step was ran without a `Repeat` looping strategy. To fix this, set the `Repeat` looping strategy for the Command step. For more information on the Command step and the supported looping strategies, go to [SSH and WinRM](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/#ssh-and-winrm) documentation.
 
 
-### Download artifact for winrm is not working while Nexus if Windows machine is behind proxy in Next Gen?
-Nexus is supported for NG but not in CG, so you can use custom powershell script something like below:
+### Download artifact for winrm is not working while Nexus if Windows machine is behind proxy?
+Nexus is supported, so you can use custom powershell script something like below:
+```
 Invoke-WebRequest -Uri "$\{URI}" -Headers $Headers -OutFile "$\{OUT_FILE}" -Proxy "$env:HTTP_PROXY"
+```
 
 ### How to give the user access to WinRM resources?
 Run command winrm configSDDL default and it should open the the dialogue, check if user configured for login already present in the last otherwise add the user
