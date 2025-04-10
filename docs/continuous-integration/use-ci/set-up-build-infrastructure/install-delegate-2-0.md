@@ -7,7 +7,7 @@ sidebar_position: 51
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide describes how to install the new Harness Delegate to local machines. 
+This guide describes how to install the new Harness Delegate to local machines. Skip to the [End to End Demo](#end-to-end-demo) if you want to watch video instructions for the new delegate installation.
 
 :::info Important
 
@@ -83,16 +83,23 @@ Download and install the correct binary for your OS.
 ```
 curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/0.0.1/runner-darwin-arm64'
 ```
+
 2. Give it permission to execute
 ```
 chmod +x harness-runner
 ```
-3. Start Delegate as a service
+
+3. Install the delegate and create the `config.env` file
 ```
 ./harness-runner install --account=[Account ID] \
                        --token=[Delegate Token] \
                        --url=[Harness URL]  \
                        --tags="macos-arm64"
+```
+
+4. Start the delegate as service.
+```
+./harness-runner start
 ```
 </TabItem>
 
@@ -102,16 +109,23 @@ chmod +x harness-runner
 ```
 curl --output harness-runner 'https://storage.googleapis.com/harness-qa-public/public/shared/runner/0.0.1/runner-darwin-amd64'
 ```
+
 2. Give it permission to execute
 ```
 chmod +x harness-runner
 ```
-3. Start Delegate as a service
+
+3. Install the delegate and create the `config.env` file
 ```
 ./harness-runner install --account=[Account ID] \
                        --token=[Delegate Token] \
                        --url=[Harness URL]  \
                        --tags="macos-amd64"
+```
+
+4. Start the delegate as service.
+```
+./harness-runner start
 ```
 </TabItem>
 
@@ -176,6 +190,13 @@ nohup ./harness-runner server --env-file config.env > nohup-runner.out 2>&1 &
 
 </TabItem>
 </Tabs>
+---
+
+Navigate to **Project Settings** > **Delegates**. You should see your new delegate in the delegates list.
+
+### Configure Pipeline Delegate
+
+Then, in order to use this delegate, simply [set your pipeline's build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#set-the-pipelines-build-infrastructure) as normal.
 
 ## Delegate Configuration
 
@@ -210,3 +231,9 @@ Here is where the `config.env` file is located for each installation method:
 You can find the delegate logs in the following files:
 - **MacOS**: `~/Library/Logs/harness.runner/stderr.log`
 - **Linux**: `nohup-runner.out`
+
+## End to End Demo
+
+This video walks through an end to end demo of the delegate installation, including usage and a pipeline execution.
+
+<DocVideo src="https://www.loom.com/share/1e292d0f51004882bfd5462ef0553222?sid=487e23cb-28fc-4d2e-ac66-07197fa7dafe" />
