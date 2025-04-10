@@ -13,8 +13,23 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: March 26, 2025
+#### Last updated: April 10, 2025
 
+
+## April 2025
+### 2025-04-10
+
+#### Append impression properties
+The following SDKs now allow you to append properties to impressions for each `getTreatment` call: Browser, iOS, JavaScript, Node.js, React, and Redux. This provides additional context for in-product troubleshooting within Live tail or downstream external analysis.
+##### Related documentation
+- [Browser SDK](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK#append-properties-to-impressions)
+- [Browser SDK Suite](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite#append-properties-to-impressions)
+- [iOS SDK](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#append-properties-to-impressions)
+- [iOS SDK Suite](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite#append-properties-to-impressions)
+- [JavaScript SDK](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#append-properties-to-impressions)
+- [Node.js SDK](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK#append-properties-to-impressions)
+- [React SDK](https://help.split.io/hc/en-us/articles/360038825091-React-SDK#append-properties-to-impressions)
+- [Redux SDK](https://help.split.io/hc/en-us/articles/360038851551-Redux-SDK#append-properties-to-impressions)
 
 ## March 2025
 ### 2025-03-26
