@@ -81,7 +81,7 @@ Manage your complete pipelines with features including:
 
 ### Continuous Integration (CI) & Continuous Deployment (CD) Support
 
-In addition to managing pipelines, the Harness AI DevOps Agent extends its capabilities to Continuous Integration (CI) & CD. Drawing from the features detailed in the [Harness AIDA RCA documentation](https://developer.harness.io/docs/platform/harness-aida/aida-ci) :contentReference[oaicite:0]{index=0}, the agent provides:
+In addition to managing pipelines, the Harness AI DevOps Agent extends its capabilities to Continuous Integration (CI) & CD. Drawing from the features detailed in the [Harness AIDA RCA documentation](/docs/platform/harness-aida/aida-ci), the agent provides:
 
 | **CI & CD Feature**                         | **Description**                                                                                             |
 |----------------------------------------|-------------------------------------------------------------------------------------------------------------|
