@@ -421,4 +421,21 @@ You can also see the difference between Original and Refreshed entity that shows
 7. After merging the PR, the Current Status will change to **Synced**.
 ![](./static/bulk-remote6.png)
 
+## Best practices
 
+While it is technically possible to run a pipeline without performing reconciliation after a template has been updated, this approach is not recommended. Here are key reasons why reconciliation should always be performed:
+
+- **Always uses the latest template version**: When a pipeline executes, it uses the latest version of the template irrespective of whether you reconciled the pipeline or not.
+- **Outdated or missing input values**: If reconciliation is not done, the inputs shown in the Pipeline Run form may be outdated or incomplete. For example:
+- Newly added input fields in the updated template won’t appear in the form.
+- Some values may be passed as null or retain older values that no longer align with the current template structure.
+- **Risk of unexpected behavior**: This can lead to null values or stale data being used in the pipeline run, potentially causing failures or unintended behavior in the step or stage execution.
+- **No validation warning during execution**: The pipeline executes without warnings about missing or incompatible inputs, which makes it harder to debug issues caused by outdated templates.
+
+
+### Recommendation
+Always click **Reconcile** when prompted after a template change before executing the pipeline. This ensures:
+
+- The pipeline inputs match the latest template structure.
+- Runtime inputs are updated and accurately reflected in the form.
+- Execution is predictable and stable.
