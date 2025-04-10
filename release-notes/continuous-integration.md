@@ -102,20 +102,29 @@ This update is currently being rolled out to customers, and we expect the rollou
 - Added support for remote debugging on macOS ARM64 systems when using Hosted VM infrastructure. (CI-16771)
 - Added multipart upload and download support to Cache Intelligence’s save and restore cache steps, significantly improving performance and reliability for large cache files.
 
-Introduced new configurable options to control multipart behavior:
+- Introduced new configurable options to control multipart behavior (CI-16493):
 
-  - `PLUGIN_ENABLE_MULTIPART`: Enable or disable multipart handling.
+    - `PLUGIN_ENABLE_MULTIPART`: Enable or disable multipart handling.
 
-  - `PLUGIN_MULTIPART_CHUNK_SIZE_MB`: Set chunk size (in MB) for each upload segment.
+    - `PLUGIN_MULTIPART_CHUNK_SIZE_MB`: Set chunk size (in MB) for each upload segment.
 
-  - `PLUGIN_MULTIPART_MAX_UPLOAD_SIZE_MB`: Define maximum size (in MB) for a multipart upload.
+    - `PLUGIN_MULTIPART_MAX_UPLOAD_SIZE_MB`: Define maximum size (in MB) for a multipart upload.
 
-  - `PLUGIN_MULTIPART_THRESHOLD_SIZE_MB`: Trigger multipart uploads only for files exceeding this size (in MB).
+    - `PLUGIN_MULTIPART_THRESHOLD_SIZE_MB`: Trigger multipart uploads only for files exceeding this size (in MB).
 
-(CI-16493)
 - Added an optional "Upload as Flat" configuration to the out-of-the-box JFrog Artifactory step. This allows users to explicitly set the `--flat` argument in the JFrog CLI by passing true or false as needed. (CI-15781)
 #### Fixed issues
 - Resolved an issue with private registry configuration in the default Harness image connector. Previously, while the Cache Server image was pulled from the specified private registry, the container entrypoint was still being fetched from DockerHub. The default entrypoint is now baked into the image, removing the DockerHub dependency and ensuring full compatibility with air-gapped environments. (CI-15799, ZD-76651, ZD-76970, ZD-77190, ZD-78321, ZD-79529)
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`      | Addressed an issue where NODE_OPTIONS env var was being populated even without enabling the FF.  | 1.16.79                | 1.16.80          |
+| `harness/ci-addon`      | Addressed an issue where NODE_OPTIONS env var was being populated even without enabling the FF.  | rootless-1.16.79                | rootless-1.16.80          |
+| `harness/ci-lite-engine`      | Addressed an issue where NODE_OPTIONS env var was being populated even without enabling the FF.  | 1.16.79                | 1.16.80          |
+| `harness/ci-lite-engine`      | Addressed an issue where NODE_OPTIONS env var was being populated even without enabling the FF.  | rootless-1.16.79                | rootless-1.16.80          |
+| `plugin/cache`      | Support large cache blobs for Cache Intelligence  | 1.9.5                | 1.9.6          |
+| `harness/harness-cache-server`      | Resolved an issue with private registry configuration in the default Harness image connector CI-15799  | 1.2.1                | 1.6.0          |
 
 ### Version 1.73
 
