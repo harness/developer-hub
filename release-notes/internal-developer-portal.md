@@ -81,7 +81,7 @@ This parameter specifies a regular expression pattern used to **securely overrid
 ----
 We’re excited to introduce support for the **Wiz Plugin** in this release!
 
-Wiz is a unified cloud security platform that offers powerful prevention and response capabilities, empowering security and development teams to build faster and more securely.
+**Wiz** is a unified cloud security platform that offers powerful prevention and response capabilities, empowering security and development teams to build faster and more securely.
 
 With this plugin, you can seamlessly integrate Wiz into your IDP, giving you real-time visibility into newly created issues along with their status and severity.
 
@@ -91,7 +91,7 @@ With this plugin, you can seamlessly integrate Wiz into your IDP, giving you rea
 **[IDP-4939] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/dx)**
 
 ----
-We’re excited to introduce support for the **DX Plugin** in this release!
+We’re excited to introduce support for the **DX Plugin** as well in this release!
 
 The DX Plugin is built to enhance the overall developer experience by streamlining the development process. It offers actionable insights, essential tools, and seamless integrations — all tailored to improve productivity and optimize your workflow.
 
