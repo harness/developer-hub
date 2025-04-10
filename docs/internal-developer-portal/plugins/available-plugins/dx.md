@@ -11,15 +11,13 @@ description: Easily view your Azure Pipelines within the Software Catalog.
 | **Type**       | Open-source plugin                                                            |
 
 ## Overview
-This plugin is designed to improve the overall developer experience and streamline the development process by offering insights, tools and integrations tailored to enhance the development workflow. 
-
-If you face any issues with the plugin, please contact the plugin creator team. 
+This plugin is designed to enhance the overall developer experience and streamline the development process by providing insights, tools, and integrations tailored to support your workflow.
 
 ## Configuration
-Here's how you can configure your DX Plugin: 
+Let's deep dive into the configuration details of this plugin: 
 
 ### Application Configuration YAML
-Under the Plugins tab in Admin, go to ``app-config.yaml`` and ``Edit YAML`` to configure this plugin: 
+Under the **"Plugins"** tab in your **"Configure"** settings, go to ``app-config.yaml`` and click on ``Edit YAML`` to configure this plugin. You can use the following YAML snippet as the application configuration YAML for this plugin: 
 
 ```YAML
 proxy:
@@ -44,16 +42,15 @@ proxy:
 ## Layout
 
 ## Annotations
-To configure the plugin for a service in the software catalog, set the following annotation in its catalog-info.yaml definition file:
+To configure the plugin for a service in the software catalog, add the following annotation to its ``catalog-info.yaml`` definition file:
 
 ```YAML
 metadata:
-  # ...
   annotations:
     github.com/project-slug: 'project-slug'
-  # ..
 ```
 
 ## Support
-The plugin is owned by **Roadie**. (More details needed)
+The plugin is owned by **Roadie**. If you encounter any issues, please reach out to the plugin creator team for assistance.
+
 

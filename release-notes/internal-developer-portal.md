@@ -73,6 +73,30 @@ This parameter specifies a regular expression pattern used to **securely overrid
 
 👉  **Read more about this feature [here](/docs/internal-developer-portal/plugins/available-plugins/jenkins).**
 
+
+
+### [New Plugin] Introducing Wiz Plugin
+**[IDP-4939] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/wiz)**
+
+----
+We’re excited to introduce support for the **Wiz Plugin** in this release!
+
+Wiz is a unified cloud security platform that offers powerful prevention and response capabilities, empowering security and development teams to build faster and more securely.
+
+With this plugin, you can seamlessly integrate Wiz into your IDP, giving you real-time visibility into newly created issues along with their status and severity.
+
+👉 **Read more about the plugin [here](/docs/internal-developer-portal/plugins/available-plugins/wiz).**
+
+### [New Plugin] Introducing DX Plugin
+**[IDP-4939] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/dx)**
+
+----
+We’re excited to introduce support for the **DX Plugin** in this release!
+
+The DX Plugin is built to enhance the overall developer experience by streamlining the development process. It offers actionable insights, essential tools, and seamless integrations — all tailored to improve productivity and optimize your workflow.
+
+👉 **Read more about the plugin [here](/docs/internal-developer-portal/plugins/available-plugins/dx).**
+
 ### Feature Improvements
 - Harness IDP now supports the use of a **Harness API Key** in the [Register Catalog step](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog) (IDP Stage). With this feature, users can configure the API Key by selecting the "API Token" field in the Harness UI. Enabling this ensures that the API Key is utilized for catalog registration in IDP. By integrating the API Key, the pipeline execution remains seamless, ensuring it functions correctly when triggered from another pipeline or through a trigger. **Learn more about the feature [here](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog)**. (Please note that this feature was a part of the NGUI release.)
 
