@@ -212,7 +212,7 @@ To resolve conflicts in the pipeline YAML, do the following:
 ## Bulk Reconciliation of templates
 
 :::info note
-Currently this feature is behind feature Flag `PIPE_BULK_RECONCILIATION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+Currently this feature is behind feature flag `PIPE_BULK_RECONCILIATION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
 :::
 
  When changes are made to the runtime inputs in a template—such as adding or removing inputs—and the template is referenced by multiple entities (like other templates, stages, or pipelines), you can trigger a **Bulk Reconciliation** directly from the template page. This process ensures that all dependent entities are synchronized with the updated template in a single operation.
