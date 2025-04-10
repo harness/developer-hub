@@ -35,7 +35,7 @@ Step 1: Enable the feature flag `SEMANTIC_SEARCH_ENABLED` in your Harness accoun
 Step 2: Make the following API call to start the indexing process for your repository:
 
 ```
-curl -X POST 'https://app.harness.io/gateway/code/api/v1/repos/ACCOUNT_ID/ORG_ID/PROJECT_ID/REPO_ID/+/semantic/index?accountIdentifier=ACCOUNT_ID' \
+curl -X POST 'https://app.harness.io/gateway/code/api/v1/repos/{repo-identifier}/semantic/index?accountIdentifier={account-identifier}&orgIdentifier={org-identifier}&projectIdentifier={project-identifier}' \
   -H 'X-Api-Key: YOUR_HARNESS_API_KEY' 
 ```
 
