@@ -115,7 +115,7 @@ Introduced new configurable options to control multipart behavior:
 (CI-16493)
 
 #### Fixed issues
-
+- Resolved an issue with private registry configuration in the default Harness image connector. Previously, while the Cache Server image was pulled from the specified private registry, the container entrypoint was still being fetched from DockerHub. The default entrypoint is now baked into the image, removing the DockerHub dependency and ensuring full compatibility with air-gapped environments. (CI-15799, ZD-76651, ZD-76970, ZD-77190, ZD-78321, ZD-79529)
 
 ### Version 1.73
 
