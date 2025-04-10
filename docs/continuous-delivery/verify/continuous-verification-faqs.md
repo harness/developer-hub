@@ -41,7 +41,6 @@ Please read more on this in the following [Documentation](https://developer.harn
 ### How does the log verification process manage user-provided search queries, specifically focusing on negative queries aimed at identifying errors or exceptions?
 
 Log verification takes in a user-provided search query. Queries should be negative queries that look at errors or exceptions. Typically, no more than 100 to 1000 errors in a minute.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv/#queries-and-limitations)
 
 ### Can I monitor CloudWatch Alarms for ECS autoscaling issues?
 

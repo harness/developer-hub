@@ -260,12 +260,6 @@ Yes, you can use the [expression](https://developer.harness.io/docs/platform/var
 
 Yes, You can setup a trigger based on the image tag changes on DockerHub repo as suggested in this[ doc.](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/)
 
-### Harness enabling auto-deployment
-
-To have automatic deployment in Harness, you can make use of triggers. On new artifact. 
-Refer this [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-a-time-schedule/)
-As soon as your build is complete and it publishes a new artifact you can setup a trigger on that and it will trigger a Harness Deployment. 
-
 ### How to view Deployment history (Artifact SHA) for a single service on an environment
 
 You can go to Service under the project --> Summary will show you the details with what artifact version and environment. 
