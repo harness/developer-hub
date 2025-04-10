@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 |----| --- | --- | --- | --- | --- | --- | --- |
 | **📊 Cost Reporting** | [Perspectives](/docs/category/perspectives) | Custom views to slice and dice cloud spend across business dimensions. | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **📊 Cost Reporting** | [Cost categories](/docs/category/cost-categories) | Group and analyze cloud costs based on user-defined categories. | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **📊 Cost Reporting** | [Dashboards](/docs/category/ccm-dashboards) | Visualize and track cloud cost trends, anomalies, and budgets in one place. | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **📊 Cost Reporting** | [Dashboards](/docs/category/bi-dashboards) | Visualize and track cloud cost trends, anomalies, and budgets in one place. | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **📊 Cost Reporting** | [Anomalies](/docs/category/anomalies) | Automatically detect unusual spikes or drops in your cloud spend. | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **💸 Cost Optimization** | [AutoStopping](/docs/category/autostopping-rules) | Automatically shut down idle resources to save costs. | ✅ | ✅ | ✅ | ✅ | ✅ |
 | **💸 Cost Optimization** | [Recommendations](/docs/category/recommendations) | Get actionable insights to right-size and optimize cloud resources. | ✅ | ✅ | ✅ | ✅ | ✅ |

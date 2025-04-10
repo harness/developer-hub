@@ -105,11 +105,11 @@ import { MODULES } from "@site/src/constants";
             link: "/docs/category/budgets",
           },
           {
-            title: "Dashboards",
+            title: "BI Dashboards",
             module: MODULES.ccm,
             description:
               "Turn cloud data into actionable insights and model, analyze, and visualize key metrics to drive smarter, data-informed business decisions.",
-            link: "/docs/category/ccm-dashboards",
+            link: "/docs/category/bi-dashboards",
           },
         ],
     },
