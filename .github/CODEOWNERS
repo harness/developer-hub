@@ -50,16 +50,16 @@ static/  @rohanmaharjan100 @wei-harness
 # data/*.ts @global-data-file-owners
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta @shylajasun
-/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta @shylajasun
-/src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av @thisrohangupta @shylajasun
+/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta 
+/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta 
+/src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av @thisrohangupta 
 /src/components/Docs/data/continuousDeliveryData*  @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
 # FirstGen CD Docs
-/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @thisrohangupta @shylajasun
+/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @thisrohangupta 
 # CD FAQs
-/docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @vishal-av @shylajasun
+/docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @vishal-av 
 # GitEx FAQs
-/docs/faqs/git-exp-vs-config-as-code/ @krishi0408 @SushrutHarness @vishal-av @shylajasun
+/docs/faqs/git-exp-vs-config-as-code/ @krishi0408 @SushrutHarness @vishal-av 
 
 
 # Continuous Integration Docs
