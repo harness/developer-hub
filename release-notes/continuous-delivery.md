@@ -57,10 +57,6 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ### Version 1.84.4
 
-#### Behaviour Changes
-
-- Users can now deploy Lambda artifacts larger than 50 MB stored in S3. Currently, this behaviour change is behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable this behvaiour change. (**CDS-74918, ZD-77784**)
-
 #### New Features and Enhancements
 
 - We've upgraded our protocol buffer implementation from **protobuf-java** `3.15.5` to `4.28.3`. This significant version jump addresses known security vulnerabilities present in the older version while modernizing a critical component of our internal service communication infrastructure. This change operates entirely within Harness' internal architecture and requires no action from users. All functionality remains unchanged, with no modifications to user workflows or interfaces. (**CDS-104707**)
