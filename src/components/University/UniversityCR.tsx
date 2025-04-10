@@ -287,7 +287,7 @@ export default function CertificationsCR() {
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to manage your
-                      applications with Code projects.
+                      applications with CR projects.
                     </div>
 
 
