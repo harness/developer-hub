@@ -12,8 +12,6 @@ This topic describes the concept of a Harness Build and Deploy Pipeline deployme
 
 For detailed instructions on using build and deploy pipelines in Harness, see
 
-* [Artifact Build and Deploy Pipelines How-tos](/docs/category/cicd-artifact-build-and-deploy-pipelines)
-
 ### Before You Begin
 
 Before learning about Build and Deploy Pipelines, you should have an understanding of [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md).
@@ -61,10 +59,3 @@ A simple Artifact Build and Deploy Deployment for a file-based artifact like a W
 #### AMI Example
 
 For an AMI Artifact Build and Deploy Pipeline, the only difference from the File-based Example is that the Harness Service is an AMI type and the Deploy Workflow deploys the AMI instances in an Auto Scaling Group.
-
-### Next Steps
-
-Read the following topics to build on what you've learned:
-
-* [Artifact Build and Deploy Pipelines How-tos](/docs/category/cicd-artifact-build-and-deploy-pipelines)
-

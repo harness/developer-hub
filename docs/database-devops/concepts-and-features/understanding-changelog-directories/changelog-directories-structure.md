@@ -18,6 +18,10 @@ The `includeAll` directive is a powerful feature that simplifies the management 
 3. **Predictable Ordering**: Files are processed in alphabetical order, making it easy to control execution sequence.
 4. **Reduced Human Error**: Eliminates the risk of accidentally omitting changelog files from the master list.
 
+:::warning Important Best Practice
+Each changeset should contain only one DML/SQL statement. This is especially crucial for proper rollback handling in databases like Oracle. Multiple statements in a single changeset can make rollbacks complex and potentially unreliable.
+:::
+
 Example usage in a master changelog:
 
 ```yaml

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).
 
 The first step in integrating your CloudFormation templates and processes is setting up the necessary Harness account components: Delegates, Cloud Providers, and Source Repo Providers.
 

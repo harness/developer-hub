@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Currently, this feature is behind the Feature Flag `PRUNE_KUBERNETES_RESOURCES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](../../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources.md).
+This content is for Harness FirstGen. Switch to [NextGen](../../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources.md).
 
 Changes to the manifests used in Harness Kubernetes deployments can result in orphaned resources you are unaware of.
 

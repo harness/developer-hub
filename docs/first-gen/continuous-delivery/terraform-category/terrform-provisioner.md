@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](https://harness.helpdocs.io/article/w6i5f7cpc9-terraform-how-tos).
+This content is for Harness FirstGen. Switch to [NextGen](https://harness.helpdocs.io/article/w6i5f7cpc9-terraform-how-tos).
 
 Harness has first-class support for HashiCorp [Terraform](https://www.terraform.io/) as an infrastructure provisioner.
 
