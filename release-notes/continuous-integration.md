@@ -95,6 +95,30 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 ### Version 1.73
 
+<!-- 2025-04-07 -->
+
+#### New features and enhancements
+- Added support for resolving secrets within Harness expressions, enabling nested constructs like `<+<+variable.org.artifactory_username>-<+secrets.getValue("org.artifactory_token")>>` to be evaluated correctly. (CI-16604, ZD-79809)
+- Added support for remote debugging on macOS ARM64 systems when using Hosted VM infrastructure. (CI-16771)
+- Added multipart upload and download support to Cache Intelligence’s save and restore cache steps, significantly improving performance and reliability for large cache files.
+
+Introduced new configurable options to control multipart behavior:
+
+  - `PLUGIN_ENABLE_MULTIPART`: Enable or disable multipart handling.
+
+  - `PLUGIN_MULTIPART_CHUNK_SIZE_MB`: Set chunk size (in MB) for each upload segment.
+
+  - `PLUGIN_MULTIPART_MAX_UPLOAD_SIZE_MB`: Define maximum size (in MB) for a multipart upload.
+
+  - `PLUGIN_MULTIPART_THRESHOLD_SIZE_MB`: Trigger multipart uploads only for files exceeding this size (in MB).
+
+(CI-16493)
+
+#### Fixed issues
+
+
+### Version 1.73
+
 <!-- 2025-04-01 -->
 
 #### New features and enhancements
