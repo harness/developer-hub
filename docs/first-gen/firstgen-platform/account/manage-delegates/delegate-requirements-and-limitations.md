@@ -10,13 +10,11 @@ helpdocs_is_published: true
 
 :::warning
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/delegates/delegate-concepts/delegate-requirements.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/delegates/delegate-concepts/delegate-requirements.md).
 
 :::
 
 This topic lists the limitations and requirements of the Harness Delegate.
-
-For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen).
 
 ## Delegate Limitations
 

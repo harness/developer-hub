@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/secrets/add-use-ssh-secrets).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/secrets/add-use-ssh-secrets).
 
 ou can add SSH keys for use in connecting to remote servers, such as an AWS EC2 instance.
 

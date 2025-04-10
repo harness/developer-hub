@@ -215,4 +215,5 @@ You can store overrides remotely in a repository. The steps below explains how t
 4. For infrastructure specific overrides the Infrastructure must be remote for the overrides to be moved to Git successfully.
 5. Users can clone service and environment overrides by copying the YAML configuration from an existing setup and reusing it with updated inputs.
 6. Users can replicate the same overrides across different Service-Environment combinations using the Clone option.
+7. You can select a Git branch other than the default branch to store your Overrides.
 :::

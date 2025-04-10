@@ -1517,7 +1517,7 @@ With the above Service Registry ARN specified in the ECS service definition, dep
 
 :::note
 
-Circuit breaker configuration can be applied to Harness ECS rolling and canary deployments only. **This feature is only available in Harness CD NextGen.**
+Circuit breaker configuration can be applied to Harness ECS rolling and canary deployments only.
 
 :::
 

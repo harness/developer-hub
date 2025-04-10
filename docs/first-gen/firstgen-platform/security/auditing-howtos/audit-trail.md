@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/governance/audit-trail/audit-trail.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/governance/audit-trail/audit-trail.md).
 
 Harness provides auditing of events for many Harness account, Applications, and Application components. The Audit Trail enables you to track and review all events in one place.
 

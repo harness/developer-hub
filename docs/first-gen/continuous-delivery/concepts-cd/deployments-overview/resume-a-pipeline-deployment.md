@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::warning
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/manage-deployments/deployment-concepts).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/continuous-delivery/manage-deployments/deployment-concepts).
 :::
 
 You can resume Pipeline deployment executions that meet the following criteria:

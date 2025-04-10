@@ -4,6 +4,8 @@ import Tar from '/docs/continuous-integration/shared/build-and-push-local-tar.md
 
 These plugins have a number of additional runtime flags that you might need for certain use cases. For information about the flags, go to the [kaniko plugin documentation](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#additional-flags) and the [drone-docker plugin documentation](https://plugins.drone.io/plugins/docker).
 
+In **Environment Variables** for your step, add the environment variable `PLUGIN_BUILDX_OPTIONS` to pass any [supported options](https://docs.docker.com/reference/cli/docker/buildx/build/#options) to the buildx command used by the build and push steps.
+
 How you configure plugin runtime flags depends on your build infrastructure.
 
 <details>
@@ -41,12 +43,12 @@ This YAML example shows a Build and Push to GAR step with several `PLUGIN` envir
 
 ```yaml
 - step:
-    identifier: pushGCR
-    name: push GCR
+    identifier: pushGAR
+    name: push GAR
     type: BuildAndPushGAR ## Type depends the selected Build and Push step, such as Docker, GAR, ACR, and so on.
     spec: ## Some parts of 'step.spec' vary by Build and Push step type (Docker, GAR, ACR, etc).
-      connectorRef: GCR_CONNECTOR
-      host: "us.gcr.io"
+      connectorRef: GAR_CONNECTOR
+      host: "us-docker.pkg.dev/gar-prod-setup/harness-public"
       projectID: "some-gcp-project"
       imageName: "some-image-name"
       tags:
@@ -144,8 +146,8 @@ This example demonstrates how to configure a Build and Push step with Docker sec
       tags:
         - ci-<+pipeline.executionId>
       envDockerSecrets:
-        a_user: USERNAME # Environment variable in format of key:value
-        a_pass: PASSWORD
+        USERNAME: a_user # Reference in Dockerfile:reference to env variable
+        PASSWORD: a_pass
       fileDockerSecrets:
         docker_user2: <+secrets.getValue("myusername")> # File secret defined in Harness
         docker_pass2: <+secrets.getValue("mydockerpass")>
@@ -153,10 +155,10 @@ This example demonstrates how to configure a Build and Push step with Docker sec
       caching: true
 ```
 
-The `envDockerSecrets` field allows you to define environment variables to securely pass sensitive information to the Docker build process.
+The `envDockerSecrets` field allows you to define Docker secrets that will be passed to the build process through environment variables.
 
-- Key: The name of the environment variable that will be exposed to the Docker build process.
-- Value: The secret value associated with the key. This can either be a plain text string or a reference to a secret managed securely in Harness.
+- Key: The reference ID that will be used to identify the secret in the Dockerfile (used with `--mount=type=secret,id=USERNAME`).
+- Value: The reference to the environment variable containing the secret value. If the value is a secret or contains a secret, Harness will implicitly create the environment variable for you.
 
 The `fileDockerSecrets` field allows you to mount secrets as files into the Docker build process. This is useful for passing configuration files, certificates, or other file-based sensitive data.
 

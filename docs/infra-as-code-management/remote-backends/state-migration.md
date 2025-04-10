@@ -31,6 +31,10 @@ Create a new `<filename>.tfvars` file in your local repository. This file will d
 - Workspace configurations
 - Provider settings
 
+:::info tfvar jexl support
+[JEXL expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) cannot be used to reference `tfvar` files.
+:::
+
 See the example below for reference:
 
 <details>
