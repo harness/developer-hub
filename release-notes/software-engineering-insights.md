@@ -277,7 +277,7 @@ This release does not include any early access features.
 #### Fixed issues
 
 * Fixed a bug that previously resulted in the incorrect display of the repository count ingested into the system for the GitHub integration (SEI-8748)
-* The issue with selecting columns in the open report view while using the HarnessCICD integration has now been resolved (SEI-1950)
+* The issue with selecting columns in the open report view while using the Harness CI/CD integration has now been resolved (SEI-1950)
 * Resolved an issue in the SCM Committers widget where clicking on a Contributor did not redirect to the Developer Scorecard (SEI-9021) (ZD-71647)
 
 ### Version 202410.1
