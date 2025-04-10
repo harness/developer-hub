@@ -201,6 +201,7 @@ The remaining cost for Account A1 will go to Bucket 1
 
 - This ordering behavior helps you intentionally segment cost across buckets.
 - Ensure your rules are specific and mutually exclusive when needed, to avoid unintentional gaps or overrides.
+- If Bucket 2 rules don’t match the criteria, or due to overlapping rules the data doesn’t appear, then the same cost bucket will not be visible in the dashboard either.
 
 ## See Also
 
