@@ -1,5 +1,5 @@
 ---
-title: Create a budget
+title: Create a Budget
 description: This topic describes how to create a new budget.
 # sidebar_position: 2
 helpdocs_topic_id: 08r3t4z0jo
