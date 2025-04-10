@@ -1,5 +1,5 @@
 ---
-title: Use cost categories 
+title: Use Cost Categories 
 description: This topic explains the uses of cost categories in perspectives and dashboards.
 # sidebar_position: 2
 helpdocs_topic_id: 6lle2diqeg
