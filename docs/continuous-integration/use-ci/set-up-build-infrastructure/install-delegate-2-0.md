@@ -9,7 +9,44 @@ import TabItem from '@theme/TabItem';
 
 This guide describes how to install the new Harness Delegate to local machines. 
 
-## Get Relevant Information
+:::info Important
+
+Harness Delegate 2.0 is under beta and can only be used for Mac Build, Android Build, and CI Stage Pipelines with limited sets of steps and connector support.
+
+:::
+
+:::note
+
+Please enable the following feature flags to use Delegate 2.0. To enable these flags, contact [Harness Support](mailto:support@harness.io)
+
+- `CI_V0_LOCAL_BUILDS_USE_RUNNER`
+- `PL_ENABLE_UNIFIED_TASK`
+- `PL_USE_RUNNER`
+
+:::
+
+## What's Supported
+
+### Supported Connectors
+
+| Connector          | Caveats                                                                 |
+|--------------------|-------------------------------------------------------------------------|
+| Docker Registry    | Only the DockerHub provider type                                        |
+| Github             | Does not work with Github App Auth                                      |
+| HashiCorp Vault    | Only AppRole and Token Auth; set Renewal Interval to 0 (zero)           |
+| AWS Secrets Manager| Only Access Key and IAM Role Credential Type                            |
+
+### Supported CI Steps
+
+| Step Name  | Caveats              |
+|------------|----------------------|
+| Initialize |                      |
+| Git Clone  | Only for Github      |
+| Run        |                      |
+
+## Delegate Installation Instructions
+
+### Get Relevant Information
 
 In order to install the delegate, you will need:
 - `ACCOUNT_ID`
@@ -18,15 +55,26 @@ In order to install the delegate, you will need:
 
 To get this information, do the following:
 
+<Tabs>
+<TabItem value="Interactive Guide">
+
+<DocVideo src="https://app.tango.us/app/embed/Get-Delegate-2-0-Credentials-41d069778e3e421d8791dd4dcc8ab793" title="Get Credentials for Delegate 2.0" />
+
+</TabItem>
+<TabItem value="Step-by-Step">
+
 1. In the left nav, click **Project Settings**.
 2. Under **Project-level Resources**, click **Delegates**.
 3. Click **+ New Delegate**.
 4. Choose **Docker** as your delegate type. 
 5. Copy `ACCOUNT_ID`, `DELEGATE_TOKEN`, and `MANAGER_HOST_AND_PORT` which can be found in the `docker run` command. This will be under the heading **Run the following command to install**.
 
-## Download and Install the Delegate
+</TabItem>
+</Tabs>
 
-### Download the Binary for your OS
+### Download and Install the Delegate
+
+Download and install the correct binary for your OS.
 
 <Tabs>
 <TabItem value="MacOS - arm64">
