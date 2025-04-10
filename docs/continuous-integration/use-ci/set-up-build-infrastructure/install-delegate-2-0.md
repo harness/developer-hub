@@ -1,5 +1,5 @@
 ---
-title: Install Harness Delegate 2.0
+title: Install Harness Delegate 2.0 (Beta)
 description: Learn how to install Harness Delegate 2.0 for local machines
 sidebar_position: 51
 ---
@@ -202,7 +202,7 @@ Then, in order to use this delegate, simply [set your pipeline's build infrastru
 
 ### Set Max Stage Capacity
 
-With Harness Delegate 2.0, you can configure a limit for the maximum number of stages the delegate will be executing at a given time. When the delegate is handling tasks at full capacity, new tasks will be queued and picked up once the delegate's capacity is freed.
+With Harness Delegate 2.0, you can configure a limit for the maximum number of stages the delegate will be executing at a given time. When the delegate is handling tasks at full capacity, new tasks will be queued and picked up once the delegate's capacity is freed.  
 
 In order to configure a max limit for number of stages executed by a delegate, you should add a `MAX_STAGES` variable in the delegate's `config.env` file. The value of the `MAX_STAGES` should be a positive integer.
 
