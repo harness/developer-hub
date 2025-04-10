@@ -51,7 +51,7 @@ We have introduced **Granular permissions support for AWS Autostopping**. With t
 
   <DocImage path={require('./static/cc-integration.png')} width="90%" height="90%" title="Click to view full-size image" />
 
--  Recommendations Filter Revamp: The **Filter panel** in the **Recommendations view** has been updated to provide a more streamlined experience. As shown in the image below, the new design improves navigation and makes it easier to apply multiple filters. Please note that the existing **saved filters** will not populate in the respective fields on selection. To migrate filters, manual efforts will be required. [CCM-21438]
+-  Recommendations Filter Revamp: The **Filter panel** in the **Recommendations view** has been updated to provide a more streamlined experience. As shown in the image below, the new design improves navigation and makes it easier to apply multiple filters. [CCM-21438]
 
   <DocImage path={require('./static/rec-filter-revamp.png')} width="90%" height="90%" title="Click to view full-size image" />
 
