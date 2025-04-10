@@ -93,7 +93,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 :::
 
-### Version 1.73
+### Version 1.74
 
 <!-- 2025-04-07 -->
 
@@ -113,7 +113,7 @@ Introduced new configurable options to control multipart behavior:
   - `PLUGIN_MULTIPART_THRESHOLD_SIZE_MB`: Trigger multipart uploads only for files exceeding this size (in MB).
 
 (CI-16493)
-
+- Added an optional "Upload as Flat" configuration to the out-of-the-box JFrog Artifactory step. This allows users to explicitly set the `--flat` argument in the JFrog CLI by passing true or false as needed. (CI-15781)
 #### Fixed issues
 - Resolved an issue with private registry configuration in the default Harness image connector. Previously, while the Cache Server image was pulled from the specified private registry, the container entrypoint was still being fetched from DockerHub. The default entrypoint is now baked into the image, removing the DockerHub dependency and ensuring full compatibility with air-gapped environments. (CI-15799, ZD-76651, ZD-76970, ZD-77190, ZD-78321, ZD-79529)
 
