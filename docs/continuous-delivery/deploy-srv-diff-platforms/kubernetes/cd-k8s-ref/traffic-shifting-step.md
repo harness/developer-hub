@@ -114,6 +114,42 @@ Before you begin, make sure you have an understanding of Istio and how it works 
             * **port**: 
                 * **Value**: Specify which port you want to match the incoming request port with.
 
+        * **Rewrite Rule**: A rewrite rule in a traffic shifting step refers to modifying the incoming request’s path or URL before it's forwarded to the backend service.
+
+        :::info note
+        Currently, the support for re-write rule feature is behind the feature flag `CDS_K8S_TRAFFIC_ROUTE_REWRITE_RULE_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+        :::
+
+        <div align="center">
+          <DocImage path={require('./static/add-rewrite-rule.png')} width="50%" height="50%" title="Click to view full size image" />
+        </div>
+
+        Here is a sample rewrite rule for reference. Note that each rule must begin with **`rewrite:`**.
+
+        <details>
+        <summary>Basic Path Rewrite Sample YAML</summary>
+
+        Add the following snippet in the **Rewrite** text box:
+        ```yaml
+            rewrite:
+              uri: /new-path
+        ```
+
+        Below is an example of the complete VirtualService YAML that gets compiled during execution:
+
+        ```yaml
+        http:
+          - match:
+              - uri:
+                  prefix: /old-path
+            rewrite:
+              uri: /new-path
+            route:
+              - destination:
+                  host: my-service
+        ```
+        </details>
+
         * **Destinations**: The filtered requests will be routed to these locations.
 
             * **Host**: Should be the name of the Kubernetes service resource.
