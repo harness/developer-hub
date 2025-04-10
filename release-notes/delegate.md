@@ -88,6 +88,11 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## April 2025
+### Version 25.02.85306 <!-- April 10, 2025-->
+
+#### Fixed issues
+
+- Fixed the dynamicHandlingOfRequestEnabled feature for the delegate. [PL-61578]  
 
 ### Version 25.04.85601 <!-- April 10, 2025-->
 
