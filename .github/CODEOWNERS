@@ -142,6 +142,9 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/platform/approvals/ @krishi0408 @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
 /docs/platform/connectors/ @krishi0408 @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneethoh
 
+# AI DevOps Docs
+/docs/platform/harness-aida/ @SushrutHarness @pratmit @thisrohangupta @krishi0408 @ivikramsahu @abhishekharness @vishal-av
+
 # IDP Docs
 /docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness
 /release-notes/internal-developer-portal.md @OrkoHunter @manishas @khushisharmaharness
