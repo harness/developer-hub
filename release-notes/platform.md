@@ -111,7 +111,7 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 - Resolved an issue where the Auto Upgrade Indicator for Delegates was not displaying correctly in certain scenarios.[PL-61711]
-- To access a specific page in Audit Trails directly, users must either manually modify the URL or navigate sequentially using the Previous and Next buttons. [PL-61658]
+- Resolved an issue that caused crashes during page navigation on the Audit Trail page. To access a specific page in the Audit Trails directly, users can either manually modify the URL or navigate through the available pages using the Previous and Next buttons. [PL-61658]
 
 ### Version 1.83.x <!--April 2, 2025-->
 
