@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 :::info Status: Work in Progress 🚧
 
-IDP 2.0 is launching soon! We're preparing to open early access **end of April 2025**. If you're interested in getting early access and shaping the future of Harness IDP, reach out at [idp-interest@harness.io](mailto:idp-interest@harness.io) or contact your Technical Program Manager. We will notify you as soon as IDP 2.0 is available!
+IDP 2.0 is launching soon! We will open early access tentatively in the **week of May 12th**. If you're interested in getting early access and shaping the future of Harness IDP, reach out at [idp-interest@harness.io](mailto:idp-interest@harness.io) or contact your Technical Program Manager. We will notify you as soon as IDP 2.0 is available to onboard!
 :::
 
 ## Summary
@@ -26,7 +26,7 @@ IDP 2.0 is launching soon! We're preparing to open early access **end of April 2
 - **Default Upgrade Behavior**: Entities will initially live at the **Account scope**. You can later organize them into Org/Project scopes as needed.
 - **Breaking Changes**: The **Catalog APIs** and **entity YAML definitions** have changed. If you’ve built automations or integrations, please review the [breaking changes](#breaking-changes).
 
-📬 **IDP 2.0 will be available in beta by late April.** Contact your Harness team or email [idp-interest@harness.io](mailto:idp-interest@harness.io) to request early access.
+📬 **IDP 2.0 will be available soon.** Contact your Harness team or email [idp-interest@harness.io](mailto:idp-interest@harness.io) to request early access.
 
 <DocVideo src="https://www.youtube.com/watch?v=9Rj-jJp3Ehc" />
 
@@ -343,9 +343,10 @@ Please review the breaking changes above and prepare for the upgrade. We will pr
 
 ## Timeline
 
-- IDP 2.0 beta by end of April 2025.
+- IDP 2.0 beta by mid-May 2025.
 - IDP 2.0 will be Generally Available by end of Q2 (July 2025)
-- All customers will be moved over to IDP 2.0 by August 2025 tentatively
+- All IDP 1.0 APIs are removed by end of Q3 (October 2025)
+- All customers will be moved over to IDP 2.0 by end of October 2025.
 
 <!-- ## FAQs -->
 
