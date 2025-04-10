@@ -18,7 +18,9 @@ The Harness AI DevOps Agent is enabled directly within the Harness UI—no separ
 | **2**    | Locate and enable the **Harness AI Setting**. | *[Enable setting screenshot placeholder]* |
 | **3**    | Once enabled, the DevOps Agent becomes active and ready for use. | |
 
-> **Note:** The DevOps Agent is available via the Harness UI only
+:::note
+The DevOps Agent is available via the Harness UI only
+:::
 
 ---
 
