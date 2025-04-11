@@ -99,8 +99,8 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 #### New features and enhancements
 - Added support for resolving secrets within Harness expressions, enabling nested constructs like `<+<+variable.org.artifactory_username>-<+secrets.getValue("org.artifactory_token")>>` to be evaluated correctly. (CI-16604, ZD-79809)
-- Added support for remote debugging on macOS ARM64 systems when using Hosted VM infrastructure. (CI-16771)
-- Added multipart upload and download support to Cache Intelligence’s save and restore cache steps, significantly improving performance and reliability for large cache files.
+- Added support for remote debugging on macOS ARM64 systems when using Harness Cloud VM infrastructure. (CI-16771)
+- Added multipart upload and download support to Cache Intelligence’s save and restore cache steps, significantly improving performance and reliability for large cache files. This update now supports files over 5GB, up to a maximum of 10GB.
 
 - Introduced new configurable options to control multipart behavior (CI-16493):
 
@@ -114,7 +114,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 - Added an optional "Upload as Flat" configuration to the out-of-the-box JFrog Artifactory step. This allows users to explicitly set the `--flat` argument in the JFrog CLI by passing true or false as needed. (CI-15781)
 #### Fixed issues
-- Resolved an issue with private registry configuration in the default Harness image connector. Previously, while the Cache Server image was pulled from the specified private registry, the container entrypoint was still being fetched from DockerHub. The default entrypoint is now baked into the image, removing the DockerHub dependency and ensuring full compatibility with air-gapped environments. (CI-15799, ZD-76651, ZD-76970, ZD-77190, ZD-78321, ZD-79529)
+- Fixed an issue where the default Harness image connector still depended on DockerHub, even when using a private registry. The image is now fully self-contained, ensuring compatibility with air-gapped environments. (CI-15799, ZD-76651, ZD-76970, ZD-77190, ZD-78321, ZD-79529)
 #### Harness images updates
 
 | **Image**                | **Change**                                      | **Previous version** | **New Version** |
