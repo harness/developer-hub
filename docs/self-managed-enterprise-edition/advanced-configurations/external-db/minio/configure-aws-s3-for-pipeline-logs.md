@@ -14,13 +14,13 @@ To use AWS S3, you must configure it as an external storage solution, which invo
 1. Navigate to the **S3 API page** in the AWS Console.  
 2. Create a **General Purpose Bucket** with your desired name and ensure **public access is disabled**. 
 
-    ![aws-s3-logs-1](../static/aws-s3-log-1.png)
+    ![aws-s3-logs-1](./static/aws-s3-log-1.png)
 
-    ![aws-s3-logs-2](../static/aws-s3-logs-2.png) 
+    ![aws-s3-logs-2](./static/aws-s3-logs-2.png) 
 
 3. After the bucket is created, go to the **Access Points** tab for that bucket.  
 
-    ![aws-s3-logs-2](../static/aws-s3-logs-3.png)
+    ![aws-s3-logs-2](./static/aws-s3-logs-3.png)
 
 4. Add a new access point and connect it to your VPC.
 
@@ -77,7 +77,7 @@ To create an AWS Access Key ID and Secret Access Key with limited permissions fo
    - **Route Tables**: Select the route tables associated with the private subnets of your VPC/EKS cluster
    - **Allow Full Access**: Enable this option.
 
-    ![aws-s3-logs-4](../static/aws-s3-logs-4.png)
+    ![aws-s3-logs-4](./static/aws-s3-logs-4.png)
 
 ### Validate Connectivity from EKS to S3
 

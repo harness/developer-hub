@@ -2,7 +2,7 @@
 | ----- | ----|
 | **1. Harness Delegates Management** | |
 | Understand and troubleshoot Delegate installation and connectivity | [Install a delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#install-a-delegate)|
-| Implement high availability for Harness Delegates  | [High availability](https://developer.harness.io/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database/#high-availability) |
+| Implement high availability for Harness Delegates  | [High availability](https://developer.harness.io/docs/self-managed-enterprise-edition/advanced-configurations/external-db/postgresql/use-an-external-postgres-database/#high-availability) |
 | Manage Delegate upgradability and customization using INIT_SCRIPT  | [Install a delegate with third-party tool custom binaries](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/) |
 | **2. Security Practices in Harness** ||
 | Apply the Principle of Least Privilege (PoLP) in Harness setup | [Manage roles](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/)|
