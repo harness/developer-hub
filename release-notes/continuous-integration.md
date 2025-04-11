@@ -104,7 +104,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 - Introduced new configurable options to control multipart behavior (CI-16493):
 
-    - `PLUGIN_ENABLE_MULTIPART`: Enable or disable multipart handling.
+    - `PLUGIN_ENABLE_MULTIPART`: Enable or disable multipart handling with a default value of `false`.
 
     - `PLUGIN_MULTIPART_CHUNK_SIZE_MB`: Set chunk size (in MB) for each upload segment.
 
@@ -119,10 +119,10 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 | **Image**                | **Change**                                      | **Previous version** | **New Version** |
 | ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
-| `harness/ci-addon`      | Addressed an issue where NODE_OPTIONS env var was being populated even without enabling the FF.  | 1.16.79                | 1.16.80          |
-| `harness/ci-addon`      | Addressed an issue where NODE_OPTIONS env var was being populated even without enabling the FF.  | rootless-1.16.79                | rootless-1.16.80          |
-| `harness/ci-lite-engine`      | Addressed an issue where NODE_OPTIONS env var was being populated even without enabling the FF.  | 1.16.79                | 1.16.80          |
-| `harness/ci-lite-engine`      | Addressed an issue where NODE_OPTIONS env var was being populated even without enabling the FF.  | rootless-1.16.79                | rootless-1.16.80          |
+| `harness/ci-addon`      | Work related for upcoming support for JavaScript with Test Intelligence.  | 1.16.79                | 1.16.80          |
+| `harness/ci-addon`      | Work related for upcoming support for JavaScript with Test Intelligence.  | rootless-1.16.79                | rootless-1.16.80          |
+| `harness/ci-lite-engine`      | Work related for upcoming support for JavaScript with Test Intelligence.  | 1.16.79                | 1.16.80          |
+| `harness/ci-lite-engine`      | Work related for upcoming support for JavaScript with Test Intelligence.  | rootless-1.16.79                | rootless-1.16.80          |
 | `plugin/cache`      | Support large cache blobs for Cache Intelligence  | 1.9.5                | 1.9.6          |
 | `harness/harness-cache-server`      | Resolved an issue with private registry configuration in the default Harness image connector CI-15799  | 1.2.1                | 1.6.0          |
 
