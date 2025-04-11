@@ -115,7 +115,7 @@ pipeline:
                   name: Run_1
                   identifier: Run_1
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: DOCKER_REGISTRY_CONNECTOR
                     image: alpine
                     shell: Sh
                     command: |-
@@ -129,11 +129,11 @@ pipeline:
                       EOF
               - step:
                   type: BuildAndPushECR
-                  name: BuildAndPushECR_1
+                  name: Build Docker Image
                   identifier: BuildAndPushECRBuildOnly
                   spec:
-                    connectorRef: AWS_CONNECTOR2_REF
-                    region: ap-southeast-2
+                    connectorRef: AWS_CONNECTOR_1
+                    region: REGION
                     account: "AWS_ACCOUNT_ID"
                     imageName: test-image
                     tags:
@@ -148,17 +148,38 @@ pipeline:
                   name: List Image Tar
                   identifier: Run_2
                   spec:
-                    connectorRef: account.harnessImage
+                    connectorRef: DOCKER_REGISTRY_CONNECTOR
                     image: alpine
                     shell: Sh
                     command: ls
+                contextType: Pipeline
+              - step:
+                  type: AquaTrivy
+                  name: Scan with Aqua Trivy
+                  identifier: AquaTrivy_1
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      type: container
+                      workspace: /harness/image.tar
+                      detection: manual
+                      name: test-image
+                      variant: new-<+pipeline.sequenceId>
+                    advanced:
+                      log:
+                        level: info
+                    privileged: true
+                    image:
+                      type: local_archive
+                contextType: Pipeline
               - step:
                   type: BuildAndPushECR
-                  name: BuildAndPushECRPushOnly
+                  name: Push to ECR
                   identifier: BuildAndPushECR_2
                   spec:
-                    connectorRef: AWS_CONNECTOR1_REF
-                    region: ap-southeast-2
+                    connectorRef: AWS_CONNECTOR_2
+                    region: REGION
                     account: "AWS_ACCOUNT_ID"
                     imageName: test-image
                     tags:
@@ -179,6 +200,7 @@ pipeline:
               namespace: default
               automountServiceAccountToken: true
               nodeSelector: {}
+              harnessImageConnectorRef: DOCKER_REGISTRY_CONNECTOR
               os: Linux
   projectIdentifier: PROJECT_ID
   orgIdentifier: ORG_ID
