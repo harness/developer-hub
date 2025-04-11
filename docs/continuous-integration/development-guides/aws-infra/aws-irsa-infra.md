@@ -19,7 +19,7 @@ In this blog, we will go step-by-step through the process of setting up an EKS c
 - A Harness account with access to the Continuous Integration module. If you are new to Harness, you can [sign up for free](https://app.harness.io/auth/#/signup/?&utm_campaign=ci-devrel).
 - AWS CLI configured with access keys.
 - kubectl installed and configured.
-- Eksctl for managing EKS clusters.
+- eksctl for managing EKS clusters.
 - IAM roles and policies for cross-account access.
 
 ## Design
