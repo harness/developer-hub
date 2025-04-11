@@ -40,13 +40,13 @@ New accounts on the team or enterprise plan must receive an invitation email fro
 </TabItem>
 <TabItem value="smp" label="Self-Managed Enterprise Edition">
 
-[Harness Self-Managed Enterprise Edition (aka SMP)](/docs/self-managed-enterprise-edition/get-started/onboarding-guide) is a self-managed, Kubernetes-native version of Harness Platform that runs on your own public or private cloud infrastructure.
+[Harness Self-Managed Enterprise Edition (aka SMP)](/docs/self-managed-enterprise-edition/smp-overview) is a self-managed, Kubernetes-native version of Harness Platform that runs on your own public or private cloud infrastructure.
 
 This option requires access to a Harness SMP license key as well as the ability to download the Harness SMP software (container images & Helm Chart). Contact [Harness Support](mailto:support@harness.io) if you do not have access to either the license key or the download location for your SMP account.
 
 When you have the license key and download location, install and configure a Harness SMP instance as explained in [Install Harness SMP using Helm Chart](/docs/self-managed-enterprise-edition/install/install-using-helm).
 
-Then [create your Harness SMP Account](/docs/self-managed-enterprise-edition/get-started/onboarding-guide#create-your-harness-account). After initial account creation, you can sign in to your Harness SMP account by navigating to `http://YOUR_DOMAIN_NAME/auth/#/signin`.
+Then create your Harness SMP Account. After initial account creation, you can sign in to your Harness SMP account by navigating to `http://YOUR_DOMAIN_NAME/auth/#/signin`.
 
 </TabItem>
 </Tabs>
