@@ -86,7 +86,8 @@ To see the Metric summary and ask follow-up questions:
 
 ![Image](./static/fme/continue-in-release-agent-02.png)
 
-Note: The transition from "Switch" to "Release Agent" will take place gradually. For now, you'll still see **Ask Switch** in the lower left navigation of Harness Feature Management and Experimentation:<br />
+Note: The transition from "Switch" to "Release Agent" will take place gradually. For now, you'll still see **Ask Switch** in the lower left navigation of Harness Feature Management and Experimentation:
+
 ![Image](./static/fme/ask-switch-in-left-nav.png)
 
 ##### Related documentation
