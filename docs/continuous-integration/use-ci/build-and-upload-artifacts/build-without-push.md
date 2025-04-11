@@ -17,6 +17,7 @@ Harness CI uses different build tools depending on the infrastructure and featur
 1. **Kubernetes (K8s) Environment**
 - **Default Build Tool**: `Kaniko`
 - **Required Setting**:
+    - Pass the following environment variable at a stage-level or step-level.
 ```bash
 PLUGIN_PUSH_ONLY=true
 ```
@@ -31,143 +32,46 @@ PLUGIN_DRY_RUN=true
 2. **Non-Kubernetes Environments (Cloud VMs or Local Runner)**
 - **Default Build Tool**: `Buildx`
 - **Required Setting**:
-```
+    - Pass the following environment variable at a **stage-level only**. This will not work at step-level.
+```bash
 PLUGIN_DRY_RUN=true
 ```
 
-## Harness Cloud, Local Runner, or Self-managed VM
+## Build, Scan, and Push on Kubernetes Infrastructure
 
-These environments use Buildx by default. Add `PLUGIN_DRY_RUN=true` to trigger a dry run.
+In this section, we'll demonstrate how you can build a docker image locally, save it as a tar file, scan it locally, and then push to ECR (Elastic Container Registry). 
 
-<Tabs>
-<TabItem value="builtin" label="Built-in Build and Push steps" default>
-
-For built-in [Build and Push steps](/docs/category/build-and-push), add a [**STAGE** variable](/docs/platform/pipelines/add-a-stage/#stage-variables):
-
-1. Go to the **Build** stage with the [Build and Push step](/docs/category/build-and-push).
-2. In the **Overview** tab, expand the **Advanced** section.
-3. Add a variable:
-   * **Name:** `PLUGIN_DRY_RUN`
-   * **Type:** **String**
-   * **Value:** `true`
-4. Save and run the pipeline.
-
-</TabItem>
-<TabItem value="run" label="Run step">
-
-If you're using a [Run step](/docs/continuous-integration/use-ci/run-step-settings) with a custom script, follow the dry-run guidance from your specific build tool (e.g., `docker build`, `buildx build`, etc).
-
-</TabItem>
-</Tabs>
-
-## Kubernetes Cluster Build Infrastructure
-
-<Tabs>
-<TabItem value="builtin" label="Built-in Build and Push steps" default>
-
-Kubernetes infra **uses Kaniko by default**. In this case, use the `PLUGIN_PUSH_ONLY` flag:
-
-```yaml
-envVariables:
-  PLUGIN_PUSH_ONLY: true
-```
-
-If your org has enabled the Buildx feature flag (or if DLC is enabled), use:
-
-```yaml
-envVariables:
-  PLUGIN_DRY_RUN: true
-```
-
-</TabItem>
-<TabItem value="buildah" label="Buildah plugin (Plugin step)">
-
-For the Buildah plugin (used for non-root image builds), use:
-
-```yaml
-variables:
-  - name: PLUGIN_DRY_RUN
-    type: String
-    value: "true"
-```
-
-</TabItem>
-<TabItem value="run" label="Run step">
-
-If you're using a custom build command in a [Run step](/docs/continuous-integration/use-ci/run-step-settings), refer to your tool's own dry-run mechanism.
-
-</TabItem>
-
-<TabItem value="ecr" label="Build and Push to ECR">
-
-Three new flags enhance the `kaniko-ecr` plugin's image handling capabilities:
-
-- `PLUGIN_PUSH_ONLY` – Enables pushing a pre-built image tarball without running a build.
-
-- `PLUGIN_SOURCE_TAR_PATH` – Used in conjunction with push-only mode to specify the source tarball.
-
-- `PLUGIN_TAR_PATH` (or `PLUGIN_DESTINATION_TAR_PATH`) – Use during the build only phase in conjunction with `PLUGIN_NO_PUSH` to set the output image tarball's name and location.
-
-To learn more, refer to the [plugin operation modes](https://github.com/drone/drone-kaniko/blob/main/README.md#operation-modes).
-
-These additions enable more flexible workflows by allowing the separation of build and push operations. Refer to the following pipeline example for building an image (build-only), then running a Trivy image scan, and then pushing the image (push-only).
+Refer to the following pipeline example for building an image (build-only), then running a Trivy image scan, and then pushing the image (push-only).
 
 ```YAML
 pipeline:
-  tags: {}
+  projectIdentifier: PROJECT_ID
+  orgIdentifier: ORG_ID
+  identifier: build_scan_push
+  name: build_scan_push
   stages:
     - stage:
-        name: test-artifact-linux-arm64
-        identifier: Pull
-        description: ""
+        name: build_scan_push
+        identifier: build_scan_push
         type: CI
         spec:
-          cloneCodebase: false
+          cloneCodebase: true
           execution:
             steps:
               - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    connectorRef: DOCKER_REGISTRY_CONNECTOR
-                    image: alpine
-                    shell: Sh
-                    command: |-
-                      cat <<EOF > Dockerfile
-                      # Use an official Alpine Linux as a base image
-                      FROM alpine:latest
-                      # Install basic packages
-                      RUN apk add --no-cache bash
-                      # Set the default command to run when starting the container
-                      CMD ["bash"]
-                      EOF
-              - step:
                   type: BuildAndPushECR
                   name: Build Docker Image
-                  identifier: BuildAndPushECRBuildOnly
+                  identifier: BuildOnly
                   spec:
-                    connectorRef: AWS_CONNECTOR_1
+                    connectorRef: AWS_CONNECTOR
                     region: REGION
-                    account: "AWS_ACCOUNT_ID"
+                    account: AWS_ACCOUNT_ID
                     imageName: test-image
                     tags:
                       - new-<+pipeline.sequenceId>
                     envVariables:
                       PLUGIN_NO_PUSH: "true"
                       PLUGIN_TAR_PATH: image.tar
-                  when:
-                    stageStatus: Success
-              - step:
-                  type: Run
-                  name: List Image Tar
-                  identifier: Run_2
-                  spec:
-                    connectorRef: DOCKER_REGISTRY_CONNECTOR
-                    image: alpine
-                    shell: Sh
-                    command: ls
-                contextType: Pipeline
               - step:
                   type: AquaTrivy
                   name: Scan with Aqua Trivy
@@ -191,23 +95,17 @@ pipeline:
               - step:
                   type: BuildAndPushECR
                   name: Push to ECR
-                  identifier: BuildAndPushECR_2
+                  identifier: push_only
                   spec:
-                    connectorRef: AWS_CONNECTOR_2
+                    connectorRef: AWS_CONNECTOR
                     region: REGION
-                    account: "AWS_ACCOUNT_ID"
+                    account: AWS_ACCOUNT_ID
                     imageName: test-image
                     tags:
                       - new-<+pipeline.sequenceId>
                     envVariables:
                       PLUGIN_PUSH_ONLY: "true"
                       PLUGIN_SOURCE_TAR_PATH: image.tar
-                      PLUGIN_LOG_LEVEL: debug
-                  when:
-                    stageStatus: Success
-          caching:
-            enabled: false
-            paths: []
           infrastructure:
             type: KubernetesDirect
             spec:
@@ -215,28 +113,25 @@ pipeline:
               namespace: default
               automountServiceAccountToken: true
               nodeSelector: {}
-              harnessImageConnectorRef: DOCKER_REGISTRY_CONNECTOR
               os: Linux
-  projectIdentifier: PROJECT_ID
-  orgIdentifier: ORG_ID
-  variables:
-    - name: awsAccess
-      type: Secret
-      description: ""
-      required: false
-      value: AWS_ACCESS_SECRET
-    - name: awsSecret
-      type: Secret
-      description: ""
-      required: false
-      value: AWS_SECRET_KEY
-  allowStageExecutions: true
-  identifier: PIPELINE_ID
-  name: PIPELINE_NAME
 ```
 
 This pipeline demonstrates a flexible, multi-stage container workflow using Kaniko with enhanced image tarball handling. It builds a Docker image, exports it as a tarball without pushing (`PLUGIN_NO_PUSH`), scans it for vulnerabilities using Aqua Trivy, and finally pushes the scanned image using `PLUGIN_PUSH_ONLY` and `PLUGIN_SOURCE_TAR_PATH`. The use of tarball-based workflows allows a clean separation between build and push stages, improving traceability and security posture.
-</TabItem>
 
-</Tabs>
-```
+These new flags enhance the plugin's image handling capabilities when pushing to Docker Registry or ECR:
+
+- `PLUGIN_PUSH_ONLY` – Enables pushing a pre-built image tarball without running a build.
+
+- `PLUGIN_SOURCE_TAR_PATH` – Used in conjunction with push-only mode to specify the source tarball.
+
+- `PLUGIN_TAR_PATH` (or `PLUGIN_DESTINATION_TAR_PATH`) – Use during the build only phase in conjunction with `PLUGIN_NO_PUSH` to set the output image tarball's name and location.
+
+To learn more, refer to the [plugin operation modes](https://github.com/drone/drone-kaniko/blob/main/README.md#operation-modes).
+
+These additions enable more flexible workflows by allowing the separation of build and push operations. 
+:::note
+- The following environment variables are currently supported when using Kaniko as a build tool. Buildx is not currently supported.
+- This is only supported for these **Build and Push** steps 
+    - **Build and Push to Docker Registry**
+    - **Build and Push to ECR**
+:::
