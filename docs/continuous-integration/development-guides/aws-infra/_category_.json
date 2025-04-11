@@ -1,5 +1,5 @@
 {
-    "label":"Set Up AWS IRSA",
+    "label":"Build Infrastructure",
     "position": 105,
     "collapsible":"true",
     "collapsed":"true",
