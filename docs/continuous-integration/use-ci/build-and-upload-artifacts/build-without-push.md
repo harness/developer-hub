@@ -1,26 +1,39 @@
 ---
-title: Build images without pushing
-description: You can build images without pushing them.
+title: Build-only or Push-only Options for Docker Images 
+description: You can build images without pushing them Or push a pre-built image without building.
 sidebar_position: 22
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In Harness CI, you can build container images without pushing them. This is useful to validate your Dockerfile or check if the image builds successfully before pushing it to a registry.
+There might be cases where you want to build a Docker image without pushing the image to an image registry. A common example is to build an image locally and scan the image for vulnerabilities and only push the image once it's scanned and verified. 
 
-The dry-run behavior **depends on the image build tool** used by your pipeline step — either **Kaniko** or **Buildx** — **not** on the infrastructure (Kubernetes, Harness Cloud, etc.).
+In Harness CI, you can build container images without pushing them. This can be achieved by passing an environment variable to the **Build and Push** steps to modify their default behavior, which is to build and push the image in the same step execution.
 
-## Build tool behavior
+The environment variable to use depends on the build tool used in the **Build and Push** steps. Refer to the table below to learn more.
 
-| Build Tool | Dry Run Flag           | Notes                                                                 |
-|------------|------------------------|-----------------------------------------------------------------------|
-| Kaniko     | `PLUGIN_PUSH_ONLY=true`  | Default on Kubernetes unless overridden by feature flag              |
-| Buildx     | `PLUGIN_DRY_RUN=true`  | Used when DLC checkbox is enabled or feature flag switches to Buildx |
-
-**DLC checkbox**: Enabling this forces usage of Buildx regardless of infrastructure.
-
-**Kubernetes users**: You get Kaniko by default. If the Buildx feature flag is enabled, it switches to Buildx — even if the DLC checkbox is off.
+Harness CI uses different build tools depending on the infrastructure and feature flags. Here’s how to configure your environment correctly for each scenario:
+1. **Kubernetes (K8s) Environment**
+- **Default Build Tool**: `Kaniko`
+- **Required Setting**:
+```bash
+PLUGIN_PUSH_ONLY=true
+```
+**Exceptions – When Buildx is Used Instead of Kaniko**: If any of the following are true, `Buildx` will be used instead of `Kaniko`:
+    - Feature flag `CI_USE_BUILDX_ON_K8` is enabled.
+    - Docker Layer Caching (DLC) is enabled in the step.
+  
+In these cases, use:
+```bash
+PLUGIN_DRY_RUN=true
+```
+2. **Non-Kubernetes Environments (Cloud VMs or Local Runner)**
+- **Default Build Tool**: `Buildx`
+- **Required Setting**:
+```
+PLUGIN_DRY_RUN=true
+```
 
 ## Harness Cloud, Local Runner, or Self-managed VM
 
