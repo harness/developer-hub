@@ -220,7 +220,7 @@ pipeline:
   name: PIPELINE_NAME
 ```
 
-This pipeline demonstrates a two-step Kaniko ECR workflow: first building and exporting a container image as a tarball, then pushing it separately using the `PLUGIN_PUSH_ONLY` flag. The `PLUGIN_TAR_PATH` is used during the build step to define the output tarball, while `PLUGIN_SOURCE_TAR_PATH` references it in the subsequent push-only step. This separation allows greater flexibility in CI pipelines where build and push stages need to be decoupled or run in different environments.
+This pipeline demonstrates a flexible, multi-stage container workflow using Kaniko with enhanced image tarball handling. It builds a Docker image, exports it as a tarball without pushing (`PLUGIN_NO_PUSH`), scans it for vulnerabilities using Aqua Trivy, and finally pushes the scanned image using `PLUGIN_PUSH_ONLY` and `PLUGIN_SOURCE_TAR_PATH`. The use of tarball-based workflows allows a clean separation between build and push stages, improving traceability and security posture.
 </TabItem>
 
 </Tabs>
