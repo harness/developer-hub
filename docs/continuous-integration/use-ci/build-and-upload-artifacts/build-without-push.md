@@ -95,6 +95,8 @@ Three new flags enhance the `kaniko-ecr` plugin's image handling capabilities:
 
 - `PLUGIN_TAR_PATH` (or `PLUGIN_DESTINATION_TAR_PATH`) – Use during the build only phase in conjunction with `PLUGIN_NO_PUSH` to set the output image tarball's name and location.
 
+To learn more, refer to the [plugin operation modes](https://github.com/drone/drone-kaniko/blob/main/README.md#operation-modes).
+
 These additions enable more flexible workflows by allowing the separation of build and push operations. Refer to the following pipeline example for building an image (build-only), then running a Trivy image scan, and then pushing the image (push-only).
 
 ```YAML
