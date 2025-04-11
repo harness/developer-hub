@@ -1,6 +1,6 @@
 ---
 title: Tutorial - Amazon EKS with IRSA and Harness Delegate Setup
-description: Build and publish a React Native iOS app to TestFlight using Fastlane in Harness CI.
+description: Set up an Amazon Elastic Kubernetes Service (EKS) cluster with IAM Roles for Service Accounts (IRSA) for cross-account integration.
 sidebar_position: 3
 ---
 
