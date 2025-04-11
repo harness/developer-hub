@@ -5,7 +5,7 @@ description: Improve developer experience with the DX plugin.
 
 | Plugin details |                                                                               |
 | -------------- | ----------------------------------------------------------------------------- |
-| **Created by** | Roadie                                                                      |
+| **Created by** | DX                                                                      |
 | **Category**   | Developer Experience                                                                         |
 | **Source**     | [GitHub](https://github.com/get-dx/backstage-plugin) |
 | **Type**       | Open-source plugin                                                            |
@@ -137,6 +137,7 @@ metadata:
 ```
 
 ## Support
-The plugin is owned by **Roadie**. If you encounter any issues, please reach out to the plugin creator team for assistance.
+The plugin is owned by **DX** and managed in this [repository](https://github.com/get-dx/backstage-plugin) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
+
 
 

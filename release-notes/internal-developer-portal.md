@@ -76,7 +76,7 @@ This parameter specifies a regular expression pattern used to **securely overrid
 
 
 ### [New Plugin] Introducing Wiz Plugin
-**[IDP-4939] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/wiz)**
+**[IDP-4868] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/wiz)**
 
 ----
 We’re excited to introduce support for the **Wiz Plugin** in this release!
@@ -88,7 +88,7 @@ With this plugin, you can seamlessly integrate Wiz into your IDP, giving you rea
 👉 **Read more about the plugin [here](/docs/internal-developer-portal/plugins/available-plugins/wiz).**
 
 ### [New Plugin] Introducing DX Plugin
-**[IDP-4939] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/dx)**
+**[IDP-4869] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/dx)**
 
 ----
 We’re excited to introduce support for the **DX Plugin** as well in this release!

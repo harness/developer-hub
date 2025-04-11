@@ -104,5 +104,6 @@ metadata:
 ```
 
 ## Support
-The plugin is owned by **Roadie**. If you encounter any issues, please reach out to the plugin creator team for assistance.
+The plugin is owned by **Roadie** and managed in this [repository](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-wiz) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
+
 
