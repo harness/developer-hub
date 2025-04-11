@@ -1,5 +1,5 @@
 ---
-title: Allowlist Harness domains and IPs
+title: Allowlist Harness Platform IPs and CIDR
 description: Harness SaaS Delegates only need outbound access to the Harness domain name (most commonly, app.harness.io) and, optionally, to logging.googleapis.com.
 sidebar_position: 1
 helpdocs_topic_id: ooelo06uy5
@@ -26,7 +26,7 @@ Users of the Harness Manager browser client need access to **app.harness.io** an
 
 If you are using a Harness vanity URL, like **mycompany.harness.io**, you can allowlist it also.
 
-## Allowlist Harness SaaS IPs
+## Allowlist Harness Platform IPs
 
 The following list is optional. You can allowlist these IPs if needed.
 
@@ -44,11 +44,11 @@ The following list is optional. You can allowlist these IPs if needed.
 Harness will not change IPs without 30 days notice to all customers. If a security emergency requires a change, all customers are notified.
 :::
 
-## Add Harness hosted IPs to the allowlist
+## Add Harness Platform IPs to the allowlist
 
 Access to Kubernetes clusters that are behind strict firewalls and are not accessible from the public internet is controlled through authorized IP addresses. To allow access to these clusters, Harness provides a list of IP addresses that need to be configured on the clusters.
 
-### Harness hosted GitOps IPs
+### Harness Platform GitOps IPs
 
 If you are using hosted GitOps agents to deploy on managed clusters, you must configure these clusters with a specific set of IP addresses to authorize access.
 
@@ -95,8 +95,36 @@ All the IPs are cloud NAT gateways and need to enable specific IPs instead of ra
 35.189.94.200/32
 34.141.112.174/32
 ```
+### Allowlisting for Access to On-Prem Services (Mac Platform)
 
-### Harness hosted Feature Flags IPs
+If you're running builds on Harness Cloud macOS machines, and require access to on-premises resources, please allowlist the following CIDR block:  `207.254.53.128/25`
+
+This will enable seamless communication between Harness Mac-based CI infrastructure and your on-prem services.
+
+Alternatively, you can also use [Secure connector](/docs/continuous-integration/secure-ci/secure-connect) for accessing your on-premises resources.
+
+### Allowlisting for Access to On-Prem Services (Linux Platform)
+
+Harness Cloud users utilizing hosted Linux infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration.
+
+CIDR Blocks:
+
+```
+15.204.17.0/24, 15.204.19.0/24, 15.204.23.0/24, 15.204.69.0/24, 15.204.70.0/24, 15.204.71.0/24, 51.81.128.0/24, 51.81.189.0/24
+```
+
+**Additional IPs to add to allowlist:**
+```
+34.94.194.45, 34.133.164.105, 35.184.10.123, 34.171.8.178, 34.172.44.211, 34.28.94.170, 34.75.255.154, 34.139.54.93, 35.231.172.154,  
+35.227.126.5, 35.231.234.224, 34.139.103.193, 34.139.148.112, 35.196.119.169, 34.73.226.43, 35.237.185.165, 34.162.90.200, 34.162.31.112,  
+34.162.177.5, 34.162.189.244, 34.162.184.1, 34.125.74.8, 34.125.80.89, 34.16.190.122, 34.125.82.12, 34.125.11.217, 35.197.35.30,  
+35.233.237.208, 34.83.94.29, 34.168.158.33, 34.168.20.8, 34.82.156.127, 34.83.1.152, 34.168.60.254, 34.82.65.138, 34.82.140.146,  
+34.127.6.209, 35.185.226.205, 35.247.24.71, 34.168.30.50, 35.233.132.196, 34.168.214.255, 34.102.103.7, 34.102.40.149, 34.102.16.205,  
+34.127.65.210, 35.233.172.173
+```
+If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
+
+### Harness Platform Feature Flags IPs
 
 With Feature Flags, the following IP can be added to the allowlist as needed.
 
