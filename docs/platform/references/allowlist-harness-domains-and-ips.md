@@ -1,5 +1,5 @@
 ---
-title: Allowlist Harness domains and IPs
+title: Allowlist Harness Platform IPs and CIDR
 description: Harness SaaS Delegates only need outbound access to the Harness domain name (most commonly, app.harness.io) and, optionally, to logging.googleapis.com.
 sidebar_position: 1
 helpdocs_topic_id: ooelo06uy5
@@ -26,7 +26,7 @@ Users of the Harness Manager browser client need access to **app.harness.io** an
 
 If you are using a Harness vanity URL, like **mycompany.harness.io**, you can allowlist it also.
 
-## Allowlist Harness SaaS IPs
+## Allowlist Harness Platform IPs
 
 The following list is optional. You can allowlist these IPs if needed.
 
@@ -44,11 +44,11 @@ The following list is optional. You can allowlist these IPs if needed.
 Harness will not change IPs without 30 days notice to all customers. If a security emergency requires a change, all customers are notified.
 :::
 
-## Add Harness hosted IPs to the allowlist
+## Add Harness Platform IPs to the allowlist
 
 Access to Kubernetes clusters that are behind strict firewalls and are not accessible from the public internet is controlled through authorized IP addresses. To allow access to these clusters, Harness provides a list of IP addresses that need to be configured on the clusters.
 
-### Harness hosted GitOps IPs
+### Harness Platform GitOps IPs
 
 If you are using hosted GitOps agents to deploy on managed clusters, you must configure these clusters with a specific set of IP addresses to authorize access.
 
@@ -124,7 +124,7 @@ CIDR Blocks:
 ```
 If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
 
-### Harness hosted Feature Flags IPs
+### Harness Platform Feature Flags IPs
 
 With Feature Flags, the following IP can be added to the allowlist as needed.
 
