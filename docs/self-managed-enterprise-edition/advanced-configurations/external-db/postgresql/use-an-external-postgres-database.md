@@ -54,7 +54,7 @@ Ensure the following:
 
 ## Architecture
 
-![PostgreSQL architecture](../static/postgresql-self-managed-architecture.png)
+![PostgreSQL architecture](./static/postgresql-self-managed-architecture.png)
 
 PostgreSQL streaming replication, the most common PostgreSQL replication, replicates the changes on a byte-by-byte level, creating an identical copy of the database in another server. It is based on the log shipping method. The write-ahead log (WAL) records are moved directly moved from one database server to be applied to another server.
 
@@ -72,7 +72,7 @@ To create a highly-available setup, there will be a DNS record that always point
 
 You can update the DNS record dynamically using a script or use the service discovery tool's built-in functionality.
 
-![PostgreSQL DNS](../static/postgresql-self-managed-dns.png)
+![PostgreSQL DNS](./static/postgresql-self-managed-dns.png)
 
 ## Set up PostgreSQL VMs
 
