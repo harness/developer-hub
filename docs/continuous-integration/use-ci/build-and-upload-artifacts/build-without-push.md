@@ -41,6 +41,13 @@ PLUGIN_DRY_RUN=true
 
 In this section, we'll demonstrate how you can build a docker image locally, save it as a tar file, scan it locally, and then push to ECR (Elastic Container Registry). 
 
+:::note
+- The following environment variables are currently supported when using `Kaniko` as a build tool. `Buildx` is not currently supported.
+- This is only supported for these **Build and Push** steps 
+    - **Build and Push to Docker Registry**
+    - **Build and Push to ECR**
+:::
+
 Refer to the following pipeline example for building an image (build-only), then running a Trivy image scan, and then pushing the image (push-only).
 
 ```YAML
@@ -118,7 +125,7 @@ pipeline:
 
 This pipeline demonstrates a flexible, multi-stage container workflow using Kaniko with enhanced image tarball handling. It builds a Docker image, exports it as a tarball without pushing (`PLUGIN_NO_PUSH`), scans it for vulnerabilities using Aqua Trivy, and finally pushes the scanned image using `PLUGIN_PUSH_ONLY` and `PLUGIN_SOURCE_TAR_PATH`. The use of tarball-based workflows allows a clean separation between build and push stages, improving traceability and security posture.
 
-These new flags enhance the plugin's image handling capabilities when pushing to Docker Registry or ECR:
+In the above pipeline, we demonstrated how these environment variables enhance the plugin's image handling capabilities when conditionally building and pushing to Docker Registry or ECR:
 
 - `PLUGIN_PUSH_ONLY` – Enables pushing a pre-built image tarball without running a build.
 
@@ -129,9 +136,3 @@ These new flags enhance the plugin's image handling capabilities when pushing to
 To learn more, refer to the [plugin operation modes](https://github.com/drone/drone-kaniko/blob/main/README.md#operation-modes).
 
 These additions enable more flexible workflows by allowing the separation of build and push operations. 
-:::note
-- The following environment variables are currently supported when using Kaniko as a build tool. Buildx is not currently supported.
-- This is only supported for these **Build and Push** steps 
-    - **Build and Push to Docker Registry**
-    - **Build and Push to ECR**
-:::
