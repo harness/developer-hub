@@ -25,10 +25,6 @@ You can't share access credentials or other [Text Secrets](/docs/platform/secret
 
 :::
 
-:::note
-For blobs larger than 5 GB, multi-part upload is used for caching to storage, while standard uploads are used for blobs up to 5 GB.
-:::
-
 This topic assumes you have created a pipeline and that you are familiar with the following:
 
 * [CI key concepts](../../get-started/key-concepts.md)
