@@ -119,6 +119,6 @@ To ensure proper functionality, configure your clusters with API access to the a
 If you have not yet configured your clusters with the required IP addresses, use the links provided below to complete the configuration for the listed clusters.
 
 - [GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/authorized-networks)
-- [EKS (Amazon Elastic Container Service)](https://repost.aws/knowledge-center/eks-lock-api-access-IP-addresses)
+- [EKS (Amazon Elastic Kubernetes Service)](https://repost.aws/knowledge-center/eks-lock-api-access-IP-addresses)
 - [AKS (Azure Kubernetes Service)](https://learn.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges)
 
