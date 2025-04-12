@@ -27,15 +27,22 @@ import { MODULES } from "@site/src/constants";
               "Platforms and technologies supported by the on-prem Harness Self-Managed Enterprise Edition.",
             link: "/docs/self-managed-enterprise-edition/smp-supported-platforms",
           },
+        ],
+      },
+      {
+        name: "Installation",
+        description:
+          "",
+        list: [
           {
-            title: "Install using Helm",
+            title: "Basic Configuration ",
             module: MODULES.platform,
             description:
-              "Learn how to use Helm to install Harness Self-Managed Enterprise Edition.",
-            link: "/docs/self-managed-enterprise-edition/install/install-using-helm",
+              "This topic describes Resource profiles, Module Enablement, outlining the basic configuration, key components and best practices for implementing Harness Self-Managed Enterprise Edition",
+            link: "/docs/self-managed-enterprise-edition/smp-basic-configuration",
           },
           {
-            title: "Install in an air-gapped environment",
+            title: "Helm Charts Configuration",
             module: MODULES.platform,
             description:
               "Learn how to use Helm to install in an air-gapped environment.",
