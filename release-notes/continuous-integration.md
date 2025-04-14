@@ -93,6 +93,39 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 :::
 
+### Version 1.74
+
+<!-- 2025-04-07 -->
+
+#### New features and enhancements
+- Added support for resolving secrets within Harness expressions, enabling nested constructs like `<+<+variable.org.artifactory_username>-<+secrets.getValue("org.artifactory_token")>>` to be evaluated correctly. (CI-16604, ZD-79809)
+- Added support for remote debugging on macOS ARM64 systems when using Harness Cloud VM infrastructure. (CI-16771)
+- Added multipart upload and download support to Cache Intelligence’s save and restore cache steps, significantly improving performance and reliability for large cache files. This update now supports files over 5GB, up to a maximum of 10GB.
+
+- Introduced new configurable options to control multipart behavior (CI-16493):
+
+    - `PLUGIN_ENABLE_MULTIPART`: Enable or disable multipart handling with a default value of `false`.
+
+    - `PLUGIN_MULTIPART_CHUNK_SIZE_MB`: Set chunk size (in MB) for each upload segment.
+
+    - `PLUGIN_MULTIPART_MAX_UPLOAD_SIZE_MB`: Define maximum size (in MB) for a multipart upload.
+
+    - `PLUGIN_MULTIPART_THRESHOLD_SIZE_MB`: Trigger multipart uploads only for files exceeding this size (in MB).
+
+- Added an optional "Upload as Flat" configuration to the out-of-the-box JFrog Artifactory step. This allows users to explicitly set the `--flat` argument in the JFrog CLI by passing true or false as needed. (CI-15781)
+#### Fixed issues
+- Fixed an issue where the default Harness image connector still depended on DockerHub, even when using a private registry. The image is now fully self-contained, ensuring compatibility with air-gapped environments. (CI-15799, ZD-76651, ZD-76970, ZD-77190, ZD-78321, ZD-79529)
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`      | Work related for upcoming support for JavaScript with Test Intelligence.  | 1.16.79                | 1.16.80          |
+| `harness/ci-addon`      | Work related for upcoming support for JavaScript with Test Intelligence.  | rootless-1.16.79                | rootless-1.16.80          |
+| `harness/ci-lite-engine`      | Work related for upcoming support for JavaScript with Test Intelligence.  | 1.16.79                | 1.16.80          |
+| `harness/ci-lite-engine`      | Work related for upcoming support for JavaScript with Test Intelligence.  | rootless-1.16.79                | rootless-1.16.80          |
+| `plugin/cache`      | Support large cache blobs for Cache Intelligence  | 1.9.5                | 1.9.6          |
+| `harness/harness-cache-server`      | Resolved an issue with private registry configuration in the default Harness image connector CI-15799  | 1.2.1                | 1.6.0          |
+
 ### Version 1.73
 
 <!-- 2025-04-01 -->
