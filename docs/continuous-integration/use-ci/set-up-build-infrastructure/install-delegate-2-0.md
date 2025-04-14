@@ -220,9 +220,9 @@ NAME="<your delegate name>"
 MAX_STAGES=5
 ```
 
-Here is where the `config.env` file is located for each installation method:
+Here is where the `config.env` file is located for each operating system:
 - **MacOS**: The `config.env` file is located in `~/.harness-runner/config.env` (after you run the `./harness-runner` install command).
-- **Linux**: It is the same `config.env` file you created during delegate's installation.
+- **Linux**: The `config.env` file is created by the user during step 3 of linux [runner installation](#download-and-install-the-delegate). The file will be where you created it at that point in time.
 
 ## Debugging
 
