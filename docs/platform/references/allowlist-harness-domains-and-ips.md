@@ -26,7 +26,7 @@ Users of the Harness Manager browser client need access to **app.harness.io** an
 
 If you are using a Harness vanity URL, like **mycompany.harness.io**, you can allowlist it also.
 
-## Allowlist Harness Platform IPs
+## Allowlist Harness SaaS IPs
 
 The following list is optional. You can allowlist these IPs if needed.
 
