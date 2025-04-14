@@ -18,7 +18,7 @@ While webhooks created at the repository level only apply to that specific repos
 
 You can create ad hoc webhooks to integrate your repository with other services, such as notification services or third party CI/CD providers.
 
-1. When viewing a repository or a list of repositories in a project, org or the account in Harness Code, go to **Webhooks**, and select **New Webhook**.
+1. When viewing a repository in Harness Code, go to **Webhooks**, and select **New Webhook**.
 2. Enter a webhook **Name** and optional **Description**.
 3. Enter your endpoint URL in the **Payload URL**.
 4. You can provide a **Secret** to sign the payload so the server can verify authenticity. If you provide a secret, the webhook call contains an `X-Harness-Signature` header.
