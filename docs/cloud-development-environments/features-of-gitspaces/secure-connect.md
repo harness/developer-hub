@@ -1,8 +1,8 @@
 ---
 title: Using Secure Connect for Gitspaces
 description: Learn more about how you use the secure connect integration to connect Harness to your privately-owned, on-prem assets. 
-sidebar_position: 3
-sidebar_label: Secure Connect
+sidebar_position: 5
+sidebar_label: Secure Connect (Only for Hosted)
 ---
 
 This guide explains how to enable and use **Secure Connect** for your Gitspaces. With Secure Connect, you can directly fetch and pull private Docker images from privately-hosted assets, such as internal Artifact Repositories and on-premises repositories.
