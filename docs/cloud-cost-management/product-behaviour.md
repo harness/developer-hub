@@ -55,13 +55,11 @@ CCM stops publishing cost data once the license expires.
 
 | Feature | Behavior on License Expiry |
 |--------|-----------------------------|
-| **Warmup/Cooldown Logic** | No disruption. |
 | **Savings Computation** | Affected due to lack of CCM data. |
 
 :::info
 **Visual Indicators:** Users will see **license expired** banners on UI to inform them of the status.
 :::
-
 
 When your Harness Cloud Cost Management (CCM) license transitions from an **Enterprise** or **Team** tier to the **Free Forever plan**, certain usage limits and feature restrictions are enforced to align with the free tier’s capabilities.
 
