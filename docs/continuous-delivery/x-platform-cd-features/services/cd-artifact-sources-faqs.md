@@ -315,3 +315,7 @@ To bypass artifact validation, select the **Skip Validation for the Stage** chec
 
 ### Is it possible to pass user artifacts from the service step to a Run step within a container-based step group of the same stage?
 The ability to pass artifacts between steps depends on the CI/CD system’s configuration. If the container-based step group operates like CI infrastructure, shared paths and file modifications within the container might persist across steps. However, if the artifact is downloaded temporarily, its lifecycle is limited to that step.
+
+### How do I generate a valid PLUGIN_TAR_PATH for the ECR step?
+
+The Build and Push to ECR step does not automatically generate a tarball. The PLUGIN_TAR_PATH environment variable is supported only in plugins/kaniko and must be manually set when using `plugins/kaniko-ecr`.
