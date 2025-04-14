@@ -99,18 +99,16 @@ All the IPs are cloud NAT gateways and need to enable specific IPs instead of ra
 
 When using Harness Cloud to run pipeline stages, you may need to connect to resources hosted in your private network — such as artifact repositories, internal APIs, or Git repositories (SCM). To enable this secure communication, your networking team can allowlist the IP ranges used by Harness Cloud infrastructure.
 
-This page provides the list of IP ranges to allowlist for both macOS and Linux hosted platforms. Alternatively, if allowlisting is not feasible or permitted by your security team, you can use [Secure connector](/docs/continuous-integration/secure-ci/secure-connect) to establish a secure tunnel to your on-premises environment.
+This page provides the list of IP ranges to allowlist for both macOS and Linux hosted platforms. Alternatively, if allowlisting is not feasible or permitted by your security team, you can use [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) to establish a secure tunnel to your on-premises environment.
 
 #### Harness Cloud Allowlisting for Mac Platform
 
-If you're running pipeline stages (e.g. for CI) on Harness Cloud macOS machines, and require access to on-premises resources, please allowlist the following CIDR block:  `207.254.53.128/25`
-
-This will enable seamless communication between Harness Mac-based CI infrastructure and your on-prem services.
+Harness Cloud users utilizing hosted **macOS** infrastructure, who rely on allowlisting for on-premises resource access, are requested to allowlist the following CIDR block:  `207.254.53.128/25`
 
 
 #### Harness Cloud Allowlisting for Linux Platform
 
-Harness Cloud users utilizing hosted Linux infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration.
+Harness Cloud users utilizing hosted **Linux** infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration.
 
 CIDR Blocks:
 
