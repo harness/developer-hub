@@ -32,7 +32,7 @@ Please enable the following feature flags to use Delegate 2.0. To enable these f
 | Connector          | Caveats                                                                 |
 |--------------------|-------------------------------------------------------------------------|
 | Docker Registry    | Only the DockerHub provider type                                        |
-| Github             | Does not work with Github App Auth                                      |
+| Github             | Does not work with Github App OAuth.                                    |
 | HashiCorp Vault    | Only AppRole and Token Auth; set Renewal Interval to 0 (zero)           |
 | AWS Secrets Manager| Only Access Key and IAM Role Credential Type                            |
 
