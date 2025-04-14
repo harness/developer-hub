@@ -95,15 +95,20 @@ All the IPs are cloud NAT gateways and need to enable specific IPs instead of ra
 35.189.94.200/32
 34.141.112.174/32
 ```
-### Allowlisting for Access to On-Prem Services (Mac Platform)
+### Harness Cloud Allowlisting for accessing self-hosted (On-Prem) services
 
-If you're running builds on Harness Cloud macOS machines, and require access to on-premises resources, please allowlist the following CIDR block:  `207.254.53.128/25`
+When using Harness Cloud to run pipeline stages, you may need to connect to resources hosted in your private network — such as artifact repositories, internal APIs, or Git repositories (SCM). To enable this secure communication, your networking team can allowlist the IP ranges used by Harness Cloud infrastructure.
+
+This page provides the list of IP ranges to allowlist for both macOS and Linux hosted platforms. Alternatively, if allowlisting is not feasible or permitted by your security team, you can use [Secure connector](/docs/continuous-integration/secure-ci/secure-connect) to establish a secure tunnel to your on-premises environment.
+
+#### Harness Cloud Allowlisting for Mac Platform
+
+If you're running pipeline stages (e.g. for CI) on Harness Cloud macOS machines, and require access to on-premises resources, please allowlist the following CIDR block:  `207.254.53.128/25`
 
 This will enable seamless communication between Harness Mac-based CI infrastructure and your on-prem services.
 
-Alternatively, you can also use [Secure connector](/docs/continuous-integration/secure-ci/secure-connect) for accessing your on-premises resources.
 
-### Allowlisting for Access to On-Prem Services (Linux Platform)
+#### Harness Cloud Allowlisting for Linux Platform
 
 Harness Cloud users utilizing hosted Linux infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration.
 
@@ -113,7 +118,8 @@ CIDR Blocks:
 15.204.17.0/24, 15.204.19.0/24, 15.204.23.0/24, 15.204.69.0/24, 15.204.70.0/24, 15.204.71.0/24, 51.81.128.0/24, 51.81.189.0/24
 ```
 
-**Additional IPs to add to allowlist:**
+##### Additional IPs to add to allowlist:
+
 ```
 34.94.194.45, 34.133.164.105, 35.184.10.123, 34.171.8.178, 34.172.44.211, 34.28.94.170, 34.75.255.154, 34.139.54.93, 35.231.172.154,  
 35.227.126.5, 35.231.234.224, 34.139.103.193, 34.139.148.112, 35.196.119.169, 34.73.226.43, 35.237.185.165, 34.162.90.200, 34.162.31.112,  
