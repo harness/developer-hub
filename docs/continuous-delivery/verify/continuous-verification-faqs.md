@@ -165,3 +165,13 @@ No, there is currently no option to refresh the bearer token automatically. Toke
 ### Can we have multiple CV sources for verifying the same execution?
 
 Yes, you can configure multiple health sources as part of the monitored service. You can use both Log and Metric verification for the same execution to gather comprehensive data.
+
+### On Continuous Verification, do we store any logs ingested from APMs or metric tools?
+
+Yes, logs ingested from APMs and metric tools are stored for audit purposes only—not for any ML or AI training.
+
+These logs follow Harness’s data retention policies:
+- Execution data (including verification logs) is retained for up to 6 months.
+[View data retention policy](https://developer.harness.io/docs/platform/references/data-retention/)
+- Audit trail data is retained for up to 2 years.
+[Learn more about audit trails](https://developer.harness.io/docs/platform/governance/audit-trail/)
