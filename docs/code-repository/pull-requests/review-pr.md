@@ -48,7 +48,11 @@ If you need to share a comment with someone else, you can mention them directly 
 </TabItem>
 <TabItem value="changes" label="Changes">
 
-<proposed changes>
+On the **Changes** tab, you can review the aggregated, latest code changes in the PR and add comments. You can add a comment to a single line or multiple lines. Within your comments you can @ mention other users to notify them about your comments or request their feedback. You can also add code suggestions directly to your review within comments using 
+
+---
+```suggestion
+<your changes here>
 
 * Select the `+` **Add** icon to comment on a specific line.
 
