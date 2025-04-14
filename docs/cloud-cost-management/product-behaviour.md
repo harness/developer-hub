@@ -23,24 +23,17 @@ At Harness, we strive to provide full transparency into how our Cloud Cost Manag
 
 ## Data Collection Behavior
 
-CCM stops publishing cost data once the license expires
+CCM stops publishing cost data once the license expires.
 
 | Feature | Behavior on License Expiry |
 |--------|-----------------------------|
-| **Kubernetes (K8s)** | Data continues to be collected via Perpetual Tasks running on the Delegate. |
 | **ECS** | Metric collection stops. |
 | **AWS, GCP, Azure** | Data syncing stops. |
 | **Historical Data** | All previously collected data (K8s, cloud data) is retained and remains accessible. |
 
-## Cloud Inventory
-
-- **Behavior:** Collection of cloud inventory data continues uninterrupted.
-- **Note:** There is **no enforcement** on cloud inventory collection during license expiry.
-
 ## What Happens When You Re-enable the License?
 
 - **Backfill Support:** We automatically re-run jobs from the point of license expiry and publish missing data (up to the last 15 days).
-- **K8s Data:** Jobs are re-run and backfilled.
 - **Cloud Data:** AWS, GCP, and Azure cost data for the **current month** is re-published.
 
 ## Recommendations
@@ -57,7 +50,6 @@ CCM stops publishing cost data once the license expires
 | **Budget Alerts** | Stopped. |
 | **Anomaly Alerts** | Stopped. |
 | **Scheduled Reports** | Stopped. |
-| **Dashboard Alerts & Reports** | Currently **not gated** by license checks. These may continue unless otherwise updated in the future. |
 
 ## AutoStopping
 
@@ -84,20 +76,17 @@ For organizations spending **less than $250,000/month**, CCM remains accessible 
 #### Kubernetes (K8s) Cost Visibility
 
 - **Cluster Limit:** The Free Forever plan supports cost visibility for up to **2 Kubernetes clusters**.
-- **Graceful Cleanup:**  
-  If more than 2 clusters were set up during your Enterprise/Team plan:
+- If more than 2 clusters were set up during your Enterprise/Team plan:
   - CCM will be **automatically disabled** on all clusters.
   - You will be able to **re-enable CCM manually** on up to 2 clusters of your choice.
 
 #### Dashboards
 
-- **CCM Dashboards Disabled:**  
-  All CCM-specific dashboards created during the Enterprise/Team plan will be **disabled** to comply with Free plan limits.
+- All CCM-specific dashboards created during the Enterprise/Team plan will be **disabled** to comply with Free plan limits.
 
 #### Historical Data Access
 
-- **30-Day Visibility Limit:**  
-      - Users on the Free Forever plan can access **only the past 30 days** of data.
+  - Users on the Free Forever plan can access **only the past 30 days** of data.
   - Attempts to view data beyond this range will be restricted.
 
 ## Want Full Access Again?
