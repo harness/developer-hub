@@ -200,7 +200,7 @@ To enable this feature, set the `nestedVirtualization` property to `true` as sho
 
 ### Allowlisting for Access to On-Prem Services (Mac and Linux Platforms)
 
-If you're running builds on Harness Cloud machines, and require access to on-premises resources, check out the [full allowlist for IP addresses and CIDR block](/docs/platform/references/allowlist-harness-domains-and-ips#add-harness-platform-ips-to-the-allowlist).
+If you're running builds on Harness Cloud machines, and require access to on-premises resources, check out the [full allowlist for IP addresses and CIDR block](/docs/platform/references/allowlist-harness-domains-and-ips#Harness-Cloud-Allowlisting-for-accessing-self-hosted-(On-Prem)-services).
 
 ### Harness Cloud best practices
 
