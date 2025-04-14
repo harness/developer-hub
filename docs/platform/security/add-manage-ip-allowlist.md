@@ -30,6 +30,7 @@ This topic explains how to set up an IP allowlist in Harness.
   - Calls corresponding to Identity providers.
   - API calls corresponding to Harness admin.
 - Harness uses an in-memory cache. All caches expire after 5 minutes. Every update takes 5 minutes because there are no manual cache updates.
+- Check out the [full allowlist for IP addresses and CIDR block](/docs/platform/references/allowlist-harness-domains-and-ips#allowlisting-for-access-to-on-prem-services-mac-platform).
 
 ## Add an allowlist
 
