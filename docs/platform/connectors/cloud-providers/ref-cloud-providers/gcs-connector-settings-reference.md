@@ -137,16 +137,11 @@ You can now have one connector scoped to multiple GCP projects, eliminating the 
 Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-<div align="center">
-  <DocImage path={require('./static/gcp-oidc-cross-project-access.png')} width="60%" height="60%" title="Click to view full size image" />
-</div>
 
-Enable the checkbox **Enable Cross Project Access** during the GCP OIDC connector configuration.
-
-Note: This feature is supported when OIDC authentication is used and GKE infrastructure (Kubernetes or Helm) is selected. When the checkbox is enabled, the connector will allow access to multiple GCP projects for Kubernetes and Helm infrastructure types only.
+Note: This feature is supported when OIDC authentication is used and GKE infrastructure (Kubernetes, Helm and Google Cloud Run) is selected. The connector will allow access to multiple GCP projects for Kubernetes, Helm and Google Cloud Run infrastructure types only.
 
 **Project Selection Flow**:
-    * Once the checkbox is enabled, the system will query the list of GCP projects accessible via the connector.
+    * With the **feature flag enabled**, the system will query the list of GCP projects accessible via the connector.
     * The user will be prompted to select the target project (e.g., project2), in addition to the original project (project1).
     * With both project values, relevant APIs will be invoked in the workflow using both projects.
 
@@ -157,7 +152,7 @@ To configure the **Project** at the infrastructure level, follow these steps:
 1. Navigate to **Project Settings** -> **Environment**, and select your desired Kubernetes environment.
 2. In the **Infrastructure Definition** section, choose **Deployment Type** as **Kubernetes** or **Helm Native** and **Infrastructure Type** as **Google Kubernetes Engine**.
 3. In the **Cluster Details** section:
-  - For the **Connector**: Select the previously configured GCP OIDC cluster with **Enable Cross Project Access** enabled. 
+  - For the **Connector**: Select the previously configured GCP OIDC cluster with the **feature flag enabled**. 
   - **Project (optional)**: Select the Project you want to use in dropdown
   - **Cluster**: The cluster dropdown will list all the cluster associated with the selected project
   - **Namespace**: Enter the target namespace in target cluster.
