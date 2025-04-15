@@ -48,7 +48,6 @@ Here’s the revised and concise version of your release notes for **IAC-Server 
 
 **Workspace Enhancements**
 - When updating workspaces, your custom pipelines are now preserved, ensuring they won’t be overwritten by project default pipelines. We’ve also resolved an issue with the Policy Sets modal not rendering properly. (IAC-3206)
-- If the `IACM_ACTIVITY_HISTORY` flag is enabled, the **Execution History** tab in the workspace view is now hidden and has been replaced with [the Activity History tab](/docs/infra-as-code-management/workspaces/workspace-tabs#activity-history). (IAC-3275)
 
 **User Experience Improvements**
 - Template creation now provides specific error messages for missing fields, helping you quickly identify and address issues. (IAC-3225)
@@ -56,7 +55,6 @@ Here’s the revised and concise version of your release notes for **IAC-Server 
 
 **Security and Configuration Updates**
 - mTLS support has been added to the IAC server to enhance secure communication. You can also configure optional TLS settings for the IAC server client. (IAC-3188, IAC-3197)
-- We’ve fixed an issue with the IAC-Server Istio virtual service configuration to ensure smoother operations. (IAC-3190)
 - Permission checks have been added to ensure you only access workspaces you are authorized to view. (IAC-3203)
 
 **New APIs and Features**
