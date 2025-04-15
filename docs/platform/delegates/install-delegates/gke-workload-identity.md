@@ -161,14 +161,14 @@ This section outlines the steps to configure GKE Workload Identity, allowing wor
 
 7. Update your Pod spec to schedule workloads on nodes with Workload Identity enabled and use the annotated Kubernetes service account.
 
-8. Redeploy the pod or delegate to apply the changes.
-
-   ```bash
+      ```bash
       spec:
          serviceAccountName: ksa
          nodeSelector:
             iam.gke.io/gke-metadata-server-enabled: "true"
-   ```
+      ```
+
+8. Redeploy the pod or delegate to apply the changes.
 
 ## Verify the Workload Identity configuration.
 
