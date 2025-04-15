@@ -95,11 +95,11 @@ All the IPs are cloud NAT gateways and need to enable specific IPs instead of ra
 35.189.94.200/32
 34.141.112.174/32
 ```
-### Harness Cloud Allowlisting for accessing self-hosted services
+### Harness Cloud Allowlisting for accessing resources in your private network
 
-When using Harness Cloud to run pipeline stages, you may need to connect to resources hosted in your private network — such as artifact repositories, internal APIs, or Git repositories (SCM). To enable this secure communication, your networking team can allowlist the IP ranges used by Harness Cloud infrastructure.
+When running pipeline stages on Harness Cloud, you may need to connect to internal resources that are not publicly accessible — such as artifact repositories, source code management systems (SCMs), or internal APIs. To enable secure communication between Harness Cloud infrastructure and your private network, your networking or security team can allowlist the relevant IP ranges used by Harness Cloud. 
 
-This page provides the list of IP ranges to allowlist for both macOS and Linux hosted platforms. Alternatively, if allowlisting is not feasible or permitted by your security team, you can use [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) to establish a secure tunnel to your on-premises environment.
+This page provides the list of IP ranges to allowlist for both macOS and Linux hosted platforms. Alternatively, if allowlisting is not feasible or permitted by your security team, you can use [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) to establish a secure tunnel to your environment.
 
 #### Harness Cloud Allowlisting for Mac Platform
 

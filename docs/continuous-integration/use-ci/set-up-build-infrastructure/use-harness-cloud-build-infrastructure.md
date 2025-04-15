@@ -202,7 +202,7 @@ To enable this feature, set the `nestedVirtualization` property to `true` as sho
 
 When running pipeline stages on Harness Cloud, you may need to connect to internal resources that are not publicly accessible — such as artifact repositories, source code management systems (SCMs), or internal APIs.
 
-To enable secure communication between Harness Cloud infrastructure and your private network, your networking or security team can allowlist the relevant IP ranges used by Harness Cloud. Alternatively, if allowlisting is not feasible or permitted by your security team, you can use [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) to establish a secure tunnel to your on-premises environment.
+To enable secure communication between Harness Cloud infrastructure and your private network, your networking or security team can allowlist the relevant IP ranges used by Harness Cloud. Alternatively, if allowlisting is not feasible or permitted by your security team, you can use [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) to establish a secure tunnel to your environment.
 
 For more information about allowlisting, please review the [full allowlist for IP addresses and CIDR block](/docs/platform/references/allowlist-harness-domains-and-ips#harness-cloud-allowlisting-for-accessing-resources-in-your-private-network).
 
