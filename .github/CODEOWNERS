@@ -140,7 +140,7 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/platform/variables-and-expressions/ @krishi0408 @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
 /docs/platform/triggers/ @krishi0408 @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
 /docs/platform/approvals/ @krishi0408 @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
-/docs/platform/connectors/ @krishi0408 @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneethoh
+/docs/platform/connectors/ @krishi0408 @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
 
 # IDP Docs
 /docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness
@@ -216,7 +216,7 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/KnowledgeBase/data/ @deepanshuHarness @jimin-harness @guna-harness
 
 #Armory KB
-/kb/armory @okosun-j @jimin-harness @deepanshuHarness @guna-harness
+/kb/armory @jimin-harness @deepanshuHarness @guna-harness
 
 # DB DevOps
 /kb/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness
