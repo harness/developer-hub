@@ -198,7 +198,7 @@ To enable this feature, set the `nestedVirtualization` property to `true` as sho
               size: xlarge # optional 
 ```
 
-### Allowlisting for Access to On-Prem Services (Mac and Linux Platforms)
+### Allowlisting for accessing resources in your private network
 
 If you're running builds on Harness Cloud machines, and require access to on-premises resources, check out the [full allowlist for IP addresses and CIDR block](/docs/platform/references/allowlist-harness-domains-and-ips#harness-cloud-allowlisting-for-accessing-resources-in-your-private-network).
 
