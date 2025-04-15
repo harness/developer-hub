@@ -99,15 +99,14 @@ To configure a delegate on Google Cloud Run:
 
             :::info Keeping Your Delegate Always Running on Google Cloud Run 
 
-                Google Cloud Run automatically scales your service based on incoming traffic. While this is great for optimizing resource usage, it can impact services like delegates that need to be always available.
-
-                - It scales your service up or down based on real-time traffic. You can configure `min` and `max` replicas, but actual scaling is still controlled by Google.
-                - When a new revision is deployed, it receives 100% of the traffic by default, causing older revisions to scale down. If there's no incoming traffic, Cloud Run may stop your container.
+                Google Cloud Run automatically scales your service based on real-time traffic, which helps optimize resources but can affect services like delegates that need to stay up.
+                
+                - You can set min and max replicas, but Google still manages the actual scaling based on demand.
+                - Each new revision gets 100% of the traffic by default, causing older ones to scale down.
+                - If there's no traffic, Cloud Run may stop the container.
 
                 To ensure your delegate remains active and always available:
 
-                - Set `min` and `max` replicas in your service configuration to maintain a baseline number of instances.
-                
                 - Add the following environment variables to keep the delegate running, as shown below:
                     
                     - `INIT_SCRIPT`: `nohup bash -c "while true; do curl -s https://<your-service-url>/api/health; sleep 30; done" &`
