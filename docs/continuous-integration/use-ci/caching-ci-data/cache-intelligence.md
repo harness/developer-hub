@@ -59,6 +59,8 @@ Harness doesn't limit the number of caches you can store, but, once you reach yo
 
 The cache retention window is 15 days, which resets whenever a cache is updated.
 
+For blobs larger than 5 GB, multi-part upload (enabled via FF `CI_ENABLE_MULTIPART`) is used for caching to storage, while standard uploads are used for blobs up to 5 GB.
+
 </TabItem>
 <TabItem value="sm" label="Self-managed build infrastructures">
 

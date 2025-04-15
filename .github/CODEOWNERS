@@ -50,16 +50,16 @@ static/  @rohanmaharjan100 @wei-harness
 # data/*.ts @global-data-file-owners
 
 # Continuous Delivery Docs
-/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta @shylajasun
-/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta @shylajasun
-/src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av @thisrohangupta @shylajasun
+/docs/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta 
+/release-notes/continuous-delivery.md @krishi0408 @SushrutHarness @vishal-av @pranaykaikini @prasadsatamharness @thisrohangupta 
+/src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @vishal-av @thisrohangupta 
 /src/components/Docs/data/continuousDeliveryData*  @krishi0408 @SushrutHarness @vishal-av @thisrohangupta
 # FirstGen CD Docs
-/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @thisrohangupta @shylajasun
+/docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @vishal-av @thisrohangupta 
 # CD FAQs
-/docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @vishal-av @shylajasun
+/docs/faqs/continuous-delivery-faqs @krishi0408 @SushrutHarness @vishal-av 
 # GitEx FAQs
-/docs/faqs/git-exp-vs-config-as-code/ @krishi0408 @SushrutHarness @vishal-av @shylajasun
+/docs/faqs/git-exp-vs-config-as-code/ @krishi0408 @SushrutHarness @vishal-av 
 
 
 # Continuous Integration Docs
@@ -101,10 +101,10 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/ContinuousErrorTracking.tsx @M-Tsur
 
 # SRM Docs
-/docs/service-reliability-management/ @sunilgupta-harness @umamukkara
-/release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara
-/src/components/Roadmap/data/srmData.ts @sunilgupta-harness
-/src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness
+/docs/service-reliability-management/ @sunilgupta-harness @umamukkara @M-Tsur
+/release-notes/service-reliability-management.md @sunilgupta-harness @umamukkara @M-Tsur
+/src/components/Roadmap/data/srmData.ts @sunilgupta-harness @M-Tsur
+/src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness @M-Tsur
 
 # Chaos Docs
 /docs/chaos-engineering/ @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness
@@ -141,6 +141,9 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/platform/triggers/ @krishi0408 @vishal-av @SudarshanPurohit @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
 /docs/platform/approvals/ @krishi0408 @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneeth
 /docs/platform/connectors/ @krishi0408 @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneethoh
+
+# AI DevOps Docs
+/docs/platform/harness-aida/ @SushrutHarness @pratmit @thisrohangupta @krishi0408 @ivikramsahu @abhishekharness @vishal-av
 
 # IDP Docs
 /docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness

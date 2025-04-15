@@ -12,6 +12,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 You can ingest custom issues from any scanning tool. STO supports a generic JSON format for ingesting data from unsupported scanners that cannot publish to SARIF.
 
 ### Important notes for importing data from unsupported scanners into STO
@@ -292,3 +295,153 @@ pipeline:
   identifier: custom_ingestion_JSON_test
   name: custom ingestion JSON test
 ```
+
+## jq filters
+
+You can use `jq` filters to transform scanner results into the format needed for ingestion. Find the specific filter for your scanner below. Save this filter to a file (e.g., `my_filter.jq`). Then, process the scan results by passing the filter file and the results file to `jq` like this:
+
+```Bash
+jq -f my_filter.jq scanner_output.json > formatted_results.json
+```
+
+This command uses the filter to generate the correctly formatted output.
+
+<Tabs>
+<TabItem value="Crowdstrike_Falcon" label="Crowdstrike Falcon" default>
+
+```json
+{
+  "meta": {
+    "subproduct": "CrowdStrike Falcon",
+    "key": ["issueName"]
+  },
+  "issues": [
+    .Vulnerabilities[] | {
+      "subproduct": "CrowdStrike Falcon",
+      "issueName": .Vulnerability.CVEID?,
+      "issueDescription": .Vulnerability.Details.description?,
+      "fileName": "\(.ImageInfo.Repository?):\(.ImageInfo.Tag?)",
+      "remediationSteps": (
+        if .Vulnerability.FixedVersions? != null and (.Vulnerability.FixedVersions? | length) > 0 then
+          "Upgrade to: " + (.Vulnerability.FixedVersions? | join(", "))
+        else
+          null
+        end
+      ),
+      "risk": .Vulnerability.Details.severity?,
+      "severity": (.Vulnerability.Details.cvss_v3_score.base_score? | tonumber? // null),
+      "status": "open",
+      "referenceIdentifiers": [
+        {
+          "type": "cve",
+          "id": .Vulnerability.CVEID?
+        }
+      ]
+    }
+  ]
+}
+```
+
+</TabItem>
+<TabItem value="mend_vs_sca" label="Mend v3 SCA">
+
+```json
+{
+  meta: {
+    key: [
+      "issueName",
+      "fileName"
+    ],
+    subproduct: "mend v3 sca"
+  },
+  issues: (
+    [
+      .. |
+      select(type == "object" and .vulnerabilities? != null) |
+      .vulnerabilities[] |
+      {
+        subproduct: "mend v3 sca",
+        issueName: .name,
+        issueDescription: (if .description then .description else "No description provided" end),
+        fileName: (input_filename // "unknown"),
+        remediationSteps: (.topFix.fixResolution // "No remediation steps provided"),
+        risk: (
+          if .severity == "HIGH" or .severity == "CRITICAL" then "high"
+          elif .severity == "MEDIUM" then "medium"
+          else "low"
+          end
+        ),
+        severity: (
+          if .score then .score
+          elif .severity == "CRITICAL" then 9
+          elif .severity == "HIGH" then 7
+          elif .severity == "MEDIUM" then 5
+          else 3
+          end
+        ),
+        status: "open",
+        referenceIdentifiers: [
+          {
+            type: (if (.name | startswith("CVE-")) then "cve"
+                  elif (.name | startswith("CWE-")) then "cwe"
+                  else "other" end),
+            id: (if (.name | startswith("CVE-")) then (.name | .[4:])
+                elif (.name | startswith("CWE-")) then (.name | .[4:])
+                else .name end)
+          }
+        ]
+      }
+    ] | unique_by(.issueName + .fileName)
+  )
+}
+```
+
+</TabItem>
+<TabItem value="mend_vs_sast" label="Mend v3 SAST">
+
+```json
+def get_reference_identifiers(issue_type):
+  [
+    (if issue_type.cwe != null and issue_type.cwe.url != "" then [{type: "cwe", id: (issue_type.cwe.url | split("/")[-1] | split(".")[0])}] else [] end),
+    (issue_type.references // [] | map({type: "reference", id: .}) | map(select(.id != ""))),
+    (if issue_type.pcidss != null and issue_type.pcidss.title != "" then [{type: "pcidss", id: issue_type.pcidss.title}] else [] end),
+    (if issue_type.nist != null and issue_type.nist.url != "" then [{type: "nist", id: issue_type.nist.url}] else [] end),
+    (if issue_type.hipaa != null and issue_type.hipaa.title != "" then [{type: "hipaa", id: issue_type.hipaa.title}] else [] end),
+    (if issue_type.hitrust != null and issue_type.hitrust.title != "" then [{type: "hitrust", id: issue_type.hitrust.title}] else [] end),
+    (if issue_type.owasp != null and issue_type.owasp.url != "" then [{type: "owasp", id: issue_type.owasp.url}] else [] end),
+    (if issue_type.owasp2021 != null and issue_type.owasp2021.url != "" then [{type: "owasp2021", id: issue_type.owasp2021.url}] else [] end),
+    (if issue_type.capec != null and issue_type.capec.url != "" then [{type: "capec", id: issue_type.capec.url}] else [] end),
+    (if issue_type.sansTop25 != null and issue_type.sansTop25.title != "" then [{type: "sansTop25", id: issue_type.sansTop25}] else [] end)
+  ] | add;
+
+def transform_issue(language; issue):
+  {
+    subproduct: language,
+    issueName: issue.type.name,
+    issueDescription: issue.type.description,
+    fileName: (issue.Findings // [] | map(.sharedStep.File) | .[0] // "Unknown"),
+    remediationSteps: (issue.type.recommendation | join("; ")),
+    risk: issue.type.risk | ascii_downcase,
+    severity: (issue.type.risk | ascii_downcase |
+      if . == "high" then 8
+      elif . == "medium" then 5
+      elif . == "low" then 2
+      else 0 end),
+    status: (issue.status // "open"),
+    referenceIdentifiers: get_reference_identifiers(issue.type)
+  };
+
+{
+  meta: {
+    key: ["issueName", "fileName"],
+    subproduct: "mend v3 SAST"
+  },
+  issues: [
+    .[] | .results[] | . as $outer |
+    $outer.results[] | transform_issue($outer.language; .)
+  ]
+}
+```
+
+</TabItem>
+</Tabs>

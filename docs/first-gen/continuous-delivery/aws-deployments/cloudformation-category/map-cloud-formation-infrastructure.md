@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos.md).
 
 To enable Harness to deploy to the provisioned infrastructure you defined in [Add CloudFormation Templates](add-cloud-formation-templates.md), you map outputs from your CloudFormation template to the Harness Infrastructure Definition settings Harness requires for provisioning.
 

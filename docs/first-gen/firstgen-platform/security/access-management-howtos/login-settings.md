@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](../../../../platform/authentication/two-factor-authentication.md).
+This content is for Harness FirstGen. Switch to [NextGen](../../../../platform/authentication/two-factor-authentication.md).
 
 Two-Factor Authentication (2FA) can be managed in two ways:
 

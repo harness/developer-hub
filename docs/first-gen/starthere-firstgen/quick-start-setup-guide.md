@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::warning
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/get-started/harness-ui-overview).
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/get-started/harness-ui-overview).
 :::
 
 Harness includes a built-in Tour that walks you through deploying the Harness Sample App
@@ -179,8 +179,3 @@ To see your deployed **To-Do List** app running in your browser, click the **Rol
 If the deployment timed out trying to set up the load balancer, it is most likely because the cloud account used for the Kubernetes cluster has reached its load balancer quota. For an example, see [Resource Quotas](https://cloud.google.com/compute/quotas) from Google Cloud.The **To-Do List** app opens in a new tab. Once you see the app, return to the browser tab for **Continuous Deployment**.
 
 The **To-Do List** app is deployed and running in your Kubernetes cluster. This tour is now complete.
-
-## Next Steps
-
-Now that you've installed the Harness Sample App, proceed to our [Tour Harness Manager](meet-harness.md) topic or one of the [Quickstarts](/docs/category/quickstarts).
-

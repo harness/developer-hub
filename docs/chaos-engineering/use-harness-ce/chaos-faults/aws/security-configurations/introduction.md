@@ -11,5 +11,5 @@ For example, if you wish to execute all AWS faults, you can use the [superset po
 
 ## Next steps
 
-* [AWS named profile](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile)
+* [AWS named profile](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile) or [IAM roles](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-iam-integration/)
 * [AWS superset policy to execute all faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/policy-for-all-aws-faults)

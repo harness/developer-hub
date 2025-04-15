@@ -129,6 +129,36 @@ To connect to GCP with OIDC, you must configure an [OIDC identity provider](http
 
 If accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector. For instructions, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
+#### Enable Cross-Project Access
+
+You can now have one connector scoped to multiple GCP projects, eliminating the need to create separate connectors for each project. With this feature, the connector will allow access to multiple GCP projects.
+
+:::note
+Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+
+Note: This feature is supported when OIDC authentication is used and GKE infrastructure (Kubernetes, Helm and Google Cloud Run) is selected. The connector will allow access to multiple GCP projects for Kubernetes, Helm and Google Cloud Run infrastructure types only.
+
+**Project Selection Flow**:
+    * With the **feature flag enabled**, the system will query the list of GCP projects accessible via the connector.
+    * The user will be prompted to select the target project (e.g., project2), in addition to the original project (project1).
+    * With both project values, relevant APIs will be invoked in the workflow using both projects.
+
+**Configuring the Project at the Infrastructure Level**
+
+To configure the **Project** at the infrastructure level, follow these steps:
+
+1. Navigate to **Project Settings** -> **Environment**, and select your desired Kubernetes environment.
+2. In the **Infrastructure Definition** section, choose **Deployment Type** as **Kubernetes** or **Helm Native** and **Infrastructure Type** as **Google Kubernetes Engine**.
+3. In the **Cluster Details** section:
+  - For the **Connector**: Select the previously configured GCP OIDC cluster with the **feature flag enabled**. 
+  - **Project (optional)**: Select the Project you want to use in dropdown
+  - **Cluster**: The cluster dropdown will list all the cluster associated with the selected project
+  - **Namespace**: Enter the target namespace in target cluster.
+
+For more detailed instructions on using this for a Kubernetes infrastructure, refer to [Google Kubernetes Engine (GKE) for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure/#google-kubernetes-engine-gke).
+
 #### Custom Parameters 
 
 You can add attribute conditions in your Workload Identity Pools under Workload Identity Federation. 

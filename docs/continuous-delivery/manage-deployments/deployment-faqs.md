@@ -73,13 +73,6 @@ However, apart from these differences, basic JSON documents are considered valid
 
 At the moment there is no dependency on the instance sync and infrastructure definition. Infrastructure definition is used only to generate infrastructure details. The instance sync is done for service and environment. Only in case if any these are deleted, the instance sync will stop and delete instances.
 
-:::info
-
-If you are using the default release name format in Harness FirstGen as `release-${infra.kubernetes.infraId}`, it's important to note that when migrating to Harness NextGen, you will need to replace `${infra.kubernetes.infraId}` with the new expression. In Harness NextGen, a similar expression `<+INFRA_KEY>` is available for defining release names. However, it's crucial to understand that these expressions will resolve to completely different values compared to the expressions used in Harness FirstGen.
-
-:::
-
-
 ### Is there an easy way to see all the recent deployments of a workflow that had run?
 
 You can use deployment filter and select the workflow and time range and you will able to see all the deployment for that workflow within that time range
@@ -180,29 +173,17 @@ Until any user-driven operation is performed, for example, reload-from-Git butto
 
 ### Can I customize the looping conditions and behavior?
 
-Yes, Harness NextGen often offers customization options to define the loop exit conditions, maximum iteration counts, sleep intervals between iterations, and more information [here](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
+Yes, Harness often offers customization options to define the loop exit conditions, maximum iteration counts, sleep intervals between iterations, and more information [here](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 
 
-### What are the use cases for utilizing looping strategy in Harness NextGen?
+### What are the use cases for utilizing looping strategy in Harness?
 
 Looping strategies are useful for scenarios like canary deployments, gradual rollouts, and validation checks where you want to keep iterating until you achieve the desired result.
-
 
 ### Zero results returned when trying to find deployment data from 2020.
 
 We have a 6 month data retention period as mentioned in [Documentation](https://www.Harness.io/pricing?module=cd#). 
 Deployments older that that are not available.
-
-<!---what's this
-
-
-### Currently we make use of this feature from FirstGen. Is there, or will there be an equivalent feature in Next Gen?
-
-Consider the below mentions :
-- Reference 1 : [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint/)
-- Reference 2 : You can Use Webhook notifications in NG to inform an external application of an event. Refer to this [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#webhook-notifications) 
-  
---->
 
 
 ### How to pass value to a variable manually while running from UI if same pipeline is configured to run via trigger and using variable from trigger?
@@ -308,12 +289,6 @@ We support having multiple condition check in the conditional execution. If you 
 
 Yes, Harness GitOps includes rollback and roll-forward capabilities. In case of deployment failures or issues, you can use Harness to automatically roll back to a previously known good state or roll forward to a fixed version.
 
-
-### Do we need to manually filter the API response to check if the pipeline was executed by a trigger in Next Gen?
-
-Yes,Harness NG uses REST APIs not graphql, this means that we need to review the api calls they are making and provide them the api endpoints that are parity. 
-
-
 ### How do I access one pipeline variables from another pipeline?
 
 Directly, it may not be possible. 
@@ -337,13 +312,6 @@ Passing values between child pipelines allows you to create dynamic and intercon
 
 You can save input sets in a different repo from the pipeline. All you need to do is go to ```Account Settings --> Account Resources --> Default Settings```
 Go under Git Experience and checkmark Allow different repo for Pipeline and InputSets. Now while trying to save the input you can save it in a different repo. 
-
-
-### Harness enabling auto-deployment.
-
-To have automatic deployment in Harness, you can make use of triggers. On new artifact. 
-Refer this [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-a-time-schedule/)
-As soon as your build is complete and it publishes a new artifact you can setup a trigger on that and it will trigger a Harness Deployment. 
 
 
 ### How to exit a workflow without marking it as failed.
@@ -505,11 +473,6 @@ The CD License calculation uses the Active Services count and the number of Serv
 For more information, go to [Service-based licensing and usage for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd).
 
 
-### "Is there an equivalent option in NG for "Last Successfully Deployed" in triggers?"
-
-Yes. One can use the expression `<+lastPublished.tag> expression`. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#artifact-polling).
-
-
 ### How to pass the Environment and Infrastructure Definition as a string as a runtime parameter?
 You can use the expression \<+trigger.webhook.payload.ref> to get the branch name from the GitHub webhook payload and pass it as the Environment value. In your pipeline, go to the stage where you want to set the Environment value, click on the Environment dropdown, select Runtime Input, and then enter a name for the input. In the Value field, enter the expression \<+trigger.webhook.payload.ref>. 
  
@@ -666,14 +629,6 @@ Since the triggers are linked to pipelines, org ID and project ID is required pa
 You can only perform a rolling deployment strategy for Native Helm(no canary or blue-green).
 
 
-### I am using AWS ASG template and would like to fetch "New ASG Name" while deployment/workflow/pipeline executes. Is it available in context? If yes then how can I get new asg name? 
-
-We support both old and new ASG names via variable, which should help you with this use case to run custom scripting if required on old ASG.
- 
-Both new and old ASG: $\{ami.newAsgName}, $\{ami.oldAsgName} documented here:
-https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/variables/built-in-variables-list#aws-amiasg-1
-
-
 ### Should the Fetch Instances step return only one instance for executing a trigger to an external orchestrator, such as Ansible or Puppet?
 
 Fetch instance should return the instance on which the artifact will be deployed.
@@ -802,13 +757,6 @@ Yes, one can try to use a service deployment and use our `Custom Remote Manifest
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/)
 
 
-### Is there is an ECS DNS Blue/Green deployment similar to First-Gen in the Next Gen?
-
-In the next generation, we support the utilization of a `load balancer` with target groups for the switching between blue and green deployments.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-v2-summary/)
-For First-Gen reference read the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/aws-deployments/ecs-deployment/ecs-blue-green-workflows/#ecs-bluegreen-using-dns).
-
-
 ### When publishing an artifact, what is the specific interval for polling and can a user configure it ?
 
 Polling interval for publishing an artifact is `1 minute`. Harness don't allow to configure this by user
@@ -837,7 +785,7 @@ For the input set to be added in Git, We require the pipeline to be on Git as we
 Once you move your pipeline to Git, the option to create an input set on Git will also be available.
 
 
-### Does Harness Next Gen support the "Skip artifact version already deployed" parameter as present in First Gen?
+### Does Harness support the "Skip artifact version already deployed" parameter?
 
 We do support "Skip artifact version already deployed" for WinRM SSH deployment. It is present under the advanced section of the pipeline.
 
@@ -1065,18 +1013,6 @@ You can use API to execute the pipeline [api](https://apidocs.Harness.io/tag/Pip
 In the created pipeline you can add a Jira update step with the required details to update the issue [Doc](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages/)
 
 
-### How can we calculate the instance of a service where number of pods change?
-
-We can calculate the service licenses and instances in following methods for CG and NG both.
-
-- List services deployed in the last 30 days. Service is considered in calculation even if it was part of any failed deployments
-- For every found service we find the 95th Percentile of the number of its service instances across a period of 30 days and it represents active service instances
-- Based on service instances we calculate the number of consumed licenses
-- 1 service license is equal to 20 active service instances
-
-Please find an example [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#example).
-
-
 ### I want to set up a chained pipeline in orgA/ProjectA with a pipeline in orgB/ProjectB. I want to restrict triggering the pipeline in orgB/ProjectB to only be possible through the pipeline in orgA/ProjectA. How can I implement this?
 
 We would suggest using RBAC to only allow a certain user with access to those pipelines with execute permission, because we need execute permissions for the parent and child pipelines to ensure successful execution.
@@ -1211,15 +1147,15 @@ Certainly! one has the flexibility to use the same cluster for both the Harness 
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups#important-notes)
 
 
-### Is there a way to show instances over time in NextGen, similar to the current “Service instances over time” dashboard in First Gen?
+### Is there a way to show instances over time?
 
 Yes, the Instance view per service is visible in the Service Dashboard.
-For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#services-dashboard).
+For more details, go to [Services Dashboard](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#services-dashboard).
 
 
-### Is there any way the user can have custom webhook trigger with placeholders for services, artifacts, tag to provide dynamic values in cURL to execute the pipeline like Next Gen triggers?
+### Is there any way the user can have custom webhook trigger with placeholders for services, artifacts, tag to provide dynamic values in cURL to execute the pipeline?
 
-Yes, one can use custom webhook triggers with placeholders for services, artifacts, and tags to provide dynamic values in cURL to execute the pipeline. You can pass in this data when the pipeline execution is triggered using a custom cURL trigger. Please read more on custom triggers in the following [Documentation](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/)
+Yes, one can use custom webhook triggers with placeholders for services, artifacts, and tags to provide dynamic values in cURL to execute the pipeline. You can pass in this data when the pipeline execution is triggered using a custom cURL trigger. For more information, go to [custom triggers](/docs/platform/triggers/trigger-deployments-using-custom-triggers/)
 
 
 ### How can we trigger a pipeline at specific time?
@@ -1230,12 +1166,6 @@ You can make use of CRON based trigger to execute a pipeline
 ###  How to setup trigger for on new artifact for JFrog?
 
 You can create a docker connector(using jfrog details) and create a trigger on New artifact of type docker by selecting the jfrog connector created as first step.
-
-
-### What is the use of terraform-config-inspect binary in delegates?
-
-This binary is used for rendering the terraform code in the CG version and is not used for NG-related deployments.
-
 
 ### How does swapping work for AGS Blue Green deployment?
 
@@ -1284,9 +1214,7 @@ When deploying a Kubernetes application type, the system checks for a ```values.
 
 ### Does old version to K8S Server (eg. v1.11.10) service deploy get supported in Harness?
 
-Yes, if the deployment versions supported in First Gen was available, the NextGen will be available as well.
-For more information, go to [What's supported in Harness Platform](https://developer.harness.io/docs/platform/platform-whats-supported).
-
+Yes. For more information, go to [What's supported in Harness Platform](https://developer.harness.io/docs/platform/platform-whats-supported).
 
 ### Does Harness provide Salesforce Deployment Template?
 
@@ -1431,7 +1359,7 @@ Harness works with JEXL, you can use Java string methods for various tasks. For 
 If the repository name doesn't always start with "PSS.CPN." but the prefix is always the same length, you can try a different method, like this: `<+<+eventPayload.repository.name>.substring(7)>`. This will skip the first seven characters of the string.
 
 
-### How does Harness NG rollback if something goes wrong in Production. Will it be automatically done or do we need to trigger anything manually?
+### How does Harness rollback if something goes wrong in Production. Will it be automatically done or do we need to trigger anything manually?
 
 You can perform rollbacks manually, automatically, or use a hybrid option (triggering it automatically but requiring approval before it happens).
 Post-deployment rollback: This can be considered a manual approach, allowing you to rollback deployments that succeeded on technical criteria but that you want to roll back for other reasons. 
@@ -1622,15 +1550,10 @@ Service Entities can be configured with tags to categorize the same during deplo
 For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv/).
 
 
-### Is there a method available to implement a percentage-based repeat strategy for Shell Script Hosts similar to the functionality present in FirstGen?
+### Is there a method available to implement a percentage-based repeat strategy for Shell Script Hosts?
 
 For a rolling strategy, you specify the desired number of instances to deploy per phase. If you have multiple target hosts in a stage and wish to deploy a certain proportion of instances per phase, you can configure it accordingly. This allows for a flexible deployment approach where the number of instances per phase can be defined either as a count or a percentage.
 For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#rolling).
-
-
-### Does Harness support "Skip instances with the same artifact version already deployed" feature on NextGen?
-
-Yes, this feature parity to FirstGen is now available. For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#targetting-specific-hosts-for-deployment).
 
 
 ### How does Harness ensure that the tag fetched in the service step is consistently the latest for both triggers and manual executions?
@@ -1760,7 +1683,7 @@ In Harness, the `allowSimultaneousDeployments` setting in the infrastructure def
 
 ### What is a matrix looping strategy?
 
-A matrix is a looping strategy in Harness that iterates over a series of elements. It can be used in stages or steps to repeat a set of actions for each element in the matrix. Matrices can be one-dimensional or multi-dimensional and can be customized with maxConcurrency and nodeName settings. You can use expressions to reference matrix values in your steps. The current status and live status expressions can be used to retrieve the current execution status of looping strategies for nodes in a pipeline or stage. The Git Experience in NextGen supports storing matrix configurations in a Git repository.
+A matrix is a looping strategy in Harness that iterates over a series of elements. It can be used in stages or steps to repeat a set of actions for each element in the matrix. Matrices can be one-dimensional or multi-dimensional and can be customized with maxConcurrency and nodeName settings. You can use expressions to reference matrix values in your steps. The current status and live status expressions can be used to retrieve the current execution status of looping strategies for nodes in a pipeline or stage. The Git Experience in Harness supports storing matrix configurations in a Git repository.
 
 Sources: [Additional matrix examples](https://developer.harness.io/docs/platform/pipelines/looping-strategies/additional-matrix-examples), [Harness variables](https://developer.harness.io/docs/platform/variables-and-expressions/Harness-variables), [API](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 
@@ -1814,9 +1737,7 @@ Please read more on custom stages in the following [Documentation](https://devel
 
 ### What is the correct expression to reference artifact version in rollback phase?
 
-One can use the expression `rollbackArtifact.version` . This is a change from FirstGen to NextGen where rollback artifact version was getting automatically resolved
-Please find an example use case on this in our [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#pipeline-sample-setup---cicd)
-
+Use the expression `rollbackArtifact.version`.
 
 ### Is there a way to see which user acts on the wait step to mark it as a success or mark it as fail?
 
@@ -2055,3 +1976,18 @@ Controlling the number of concurrently deployed services in a multi-service depl
 
 ### How can a user utilize a step template with a script to run across multiple hosts in parallel?
 Users migrating from Cloudbees can create multiple infrastructures with host names set as override variables. When selecting multiple infrastructures during execution, the pipeline runs the stage for each selected infrastructure.
+
+### What does "Notify only me about this Execution" mean on the Run Pipeline form?
+
+![](./static/run-pipeline-form-notify.png)
+
+When you select **Notify only me about this Execution** while running a pipeline, only you (the person triggering the pipeline) will receive email notifications for that specific run.
+You will get:
+- `PipelineStart` notification
+- `PipelineEnd` notification
+No one else (team members, channels, groups) will be notified — even if the pipeline normally has broader notification rules.
+
+
+
+
+

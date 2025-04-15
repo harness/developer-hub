@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/role-based-access-control/add-user-groups). 
+This content is for Harness FirstGen. Switch to [NextGen](/docs/platform/role-based-access-control/add-user-groups). 
 
 Harness provides Role-Based Access Control (RBAC) via User and User Group Account and Application permissions.
 

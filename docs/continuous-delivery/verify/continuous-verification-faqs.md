@@ -13,7 +13,7 @@ Harness Continuous Verification (CV) integrates with APM providers. By using mac
 
 To mark a running Continuous Verification step as successful, you can use Manual Intervention as a failure strategy. If the step exceeds the defined timeout for example, the manual intervention is triggered, and you can subsequently mark it as successful.
 
-### Do we have the functionality in NextGen for marking continuous verification errors as "Not a Risk" ?
+### Can we mark continuous verification errors as "Not a Risk"?
 
 Yes, it is behind the feature flag `SRM_LOG_FEEDBACK_ENABLE_UI`. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/verify/cv-results/log-feedback/)
 
@@ -41,7 +41,6 @@ Please read more on this in the following [Documentation](https://developer.harn
 ### How does the log verification process manage user-provided search queries, specifically focusing on negative queries aimed at identifying errors or exceptions?
 
 Log verification takes in a user-provided search query. Queries should be negative queries that look at errors or exceptions. Typically, no more than 100 to 1000 errors in a minute.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/what-is-cv/#queries-and-limitations)
 
 ### Can I monitor CloudWatch Alarms for ECS autoscaling issues?
 
@@ -166,3 +165,13 @@ No, there is currently no option to refresh the bearer token automatically. Toke
 ### Can we have multiple CV sources for verifying the same execution?
 
 Yes, you can configure multiple health sources as part of the monitored service. You can use both Log and Metric verification for the same execution to gather comprehensive data.
+
+### On Continuous Verification, do we store any logs ingested from APMs or metric tools?
+
+Yes, logs ingested from APMs and metric tools are stored for audit purposes only—not for any ML or AI training.
+
+These logs follow Harness’s data retention policies:
+- Execution data (including verification logs) is retained for up to 6 months.
+[View data retention policy](https://developer.harness.io/docs/platform/references/data-retention/)
+- Audit trail data is retained for up to 2 years.
+[Learn more about audit trails](https://developer.harness.io/docs/platform/governance/audit-trail/)
