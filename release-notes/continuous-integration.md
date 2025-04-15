@@ -93,6 +93,17 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 :::
 
+### Version 1.75
+
+<!-- 2025-04-14 -->
+
+#### New features and enhancements
+- Added support to select machine image for cloud infrastructure under **Stage** --> **Infrastructure** --> **Runtime** settings in the CI module. (CI-15648)
+- Enhanced the AWS authentication mechanism in the Drone S3 plugin (`plugins/s3:1.5.3`) to provide more reliable operation across diverse target environments. (CI-16855, ZD-81366)
+ 
+#### Fixed issues
+- Resolved an issue in Build Intelligence where an extra parenthesis was added in run steps for PowerShell containers. (CI-16922, ZD-81766)
+
 ### Version 1.74
 
 <!-- 2025-04-07 -->
