@@ -360,6 +360,13 @@ In the example expression above, we can create a test variable with this express
 
 For more information about using ternary operators in Harness, go to [Using Ternary Operators with Triggers](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
 
+#### Using isResolved and isUnresolved evaluation instead of null
+Customers may be considering using a ternary evaluations which will evaluate whether the expression `== null` or `!= null` as the condition.
+
+Teams should instead consider using the `isResolved` and `isUnresolved` operators.  Since a null value is actually a value that may be held by an expression, the intention of the condition may not be met.  This may cause conditions evaluate unexpectedly.  For example, if the intention is to check for the actual existence of the expression, and whether a value for that expression is available, a pipeline engineer may want to check using `isResolved()` instead.
+
+For more information, please visit [the following Harness Article about utilizing the evaluations](https://developer.harness.io/docs/platform/variables-and-expressions/harness-expressions-reference/#check-expression-isresolved-isunresolved-null-replacement).
+
 ### Expressions as strings
 
 If you want to treat an expression as a string, you wrap it in double quotes, with the exception of secrets expressions (such as `<+secrets.getValue()>`) and some JSON usage.
