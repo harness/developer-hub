@@ -88,6 +88,13 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## April 2025
+
+### Version 25.04.85602 <!-- April 15, 2025 -->
+
+#### Hotfix
+
+- Added Nullchecks to handle errors for customers using API token for dynatrace connectors. (CDS-109040)
+
 ### Version 25.02.85306 <!-- April 10, 2025-->
 
 #### Fixed issues
