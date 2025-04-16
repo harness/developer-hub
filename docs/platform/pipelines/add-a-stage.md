@@ -126,6 +126,12 @@ On the **Advanced** tab, you can configure:
 
 ## Add a Custom stage
 
+:::warning
+
+Custom stage executions will count towards service license consumption. Harness CD will consume 1 Service license for every 2000 custom stage executions. To learn more, go to [licensing for pipelines with no service](/docs/continuous-delivery/get-started/service-licensing-for-cd#pipelines-with-no-service)
+
+:::
+
 Harness has predefined stages for the most common release operations, such as Build (CI), Deploy (CD), and Approval stages. There are times when you need a stage to perform other operations that don't require the predefined settings of CI, CD, or Approval stages. For example, you might need a stage for ad hoc provisioning or to run jobs before a deployment stage. In these cases, you could use a Custom stage.
 
 Unlike the Build, Deploy, or Approval stages, the Custom stage has no predefined functionality or requirements. The Custom stage provides flexibility to support any use case outside of the standard stages.
