@@ -1,0 +1,25 @@
+.dynamic-markdown-selector {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  background: #fafbfc;
+}
+
+.dynamic-markdown-selector label {
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.dynamic-markdown-selector select {
+  margin-left: 10px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid #bdbdbd;
+}
+
+.dynamic-markdown-selector .markdown-content {
+  margin-top: 24px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
