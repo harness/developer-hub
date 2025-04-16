@@ -11,13 +11,13 @@ At Harness, we strive to provide full transparency into how our Cloud Cost Manag
 ## Harness CCM Pricing Plan Comparison
 
 
-|   | Free | Team | Enterprise |
-|---------|--------|-----------------------------|--------|
-| **Cloud Spend** | $250,000 | Buy as much as needed | Buy as much as needed |
-| **Clusters** | 2 | Unlimited | Unlimited|
-| **AutoStopping Rules** | 10 | Unlimited | Unlimited |
-| **Cost Perspectives** | 20 | Unlimited | Unlimited |
-| **Data Retention** | 30 days | 5 Years | 5 Years|
+|   | Free | Enterprise |
+|---------|--------|--------|
+| **Cloud Spend** | $250,000 | Buy as much as needed |
+| **Clusters** | 2 | Unlimited|
+| **AutoStopping Rules** | 10 |  Unlimited |
+| **Cost Perspectives** | 20 |  Unlimited |
+| **Data Retention** | 30 days | 5 Years|
 
 ## Harness Cloud Cost Management (CCM) Product Behavior on License Expiry
 
