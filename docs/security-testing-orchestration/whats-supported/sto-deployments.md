@@ -22,9 +22,9 @@ This document outlines the supported capabilities in Harness STO, including inte
 ## Harness Self-Managed Enterprise Edition (SMP)
 
 All [STO features](/docs/security-testing-orchestration/whats-supported/features) supported in [Harness SaaS](#harness-saas) are also supported in Self-Managed Enterprise Edition with the following exceptions:
-- Custom dashboards
 - Harness AI
-- You cannot run SaaS-based scans if there is no connectivity between Harness and the external SaaS environment.  
+- [Custom Dashboards](/docs/platform/dashboards/create-dashboards) is a licensed functionality on Self-Managed Enterprise Edition. Contact [Harness Support](mailto:support@harness.io) to obtain the license.
+- You cannot run SaaS-based scans if there is no connectivity between Harness and the external SaaS environment.
 
 ## Harness SMP in offline environments
 
