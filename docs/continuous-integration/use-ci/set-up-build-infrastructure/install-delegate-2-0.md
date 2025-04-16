@@ -94,7 +94,8 @@ chmod +x harness-runner
 ./harness-runner install --account=[Account ID] \
                        --token=[Delegate Token] \
                        --url=[Harness URL]  \
-                       --tags="macos-arm64"
+                       --tags="macos-arm64" \
+                       --name=[Your Delegate Name]
 ```
 
 4. Start the delegate as service.
@@ -120,7 +121,8 @@ chmod +x harness-runner
 ./harness-runner install --account=[Account ID] \
                        --token=[Delegate Token] \
                        --url=[Harness URL]  \
-                       --tags="macos-amd64"
+                       --tags="macos-amd64" \
+                       --name=[Your Delegate Name]
 ```
 
 4. Start the delegate as service.
@@ -144,7 +146,7 @@ sudo chmod +x harness-runner
 3. Create a config.env file in the local folder
 ```
 cat > config.env <<EOF
-NAME=[Name of the runner]
+NAME=[Name of the delegate]
 ACCOUNT_ID=[Your account ID]
 TOKEN=[Copy Delegate Token from Harness platform]
 URL=[MANAGER_HOST_AND_PORT]
@@ -193,6 +195,12 @@ nohup ./harness-runner server --env-file config.env > nohup-runner.out 2>&1 &
 ---
 
 Navigate to **Project Settings** > **Delegates**. You should see your new delegate in the delegates list.
+
+:::info
+
+If you don't set a name for your delegate, it will default to `harnessRunner`
+
+:::
 
 ### Configure Pipeline Delegate
 
