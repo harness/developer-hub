@@ -5,6 +5,14 @@ description: This topic talks about Harness cloud asset governance.
 # sidebar_position: 3
 ---
 
+:::tip [Latest Features Released in 1.48.1](/release-notes/cloud-cost-management#april-2025---version-1481)
+<Tabs>
+  <TabItem value="Improved Recommendation Tracking" label="Improved Recommendation Tracking">Users can now specify estimated savings when marking a recommendation as applied. Upon marking a recommendation as applied, users can now confirm whether the estimated savings matched the actual savings or enter the actual amount saved if different from the estimate. Additionally, after a recommendation has been applied, this savings data from the Applied Recommendations section can be edited. </TabItem>
+  <TabItem value="Cost Categories Integration" label="Cost Categories Integration">The Filter panel in the Recommendations view now includes the option to **filter by Cost Categories**. This update is especially valuable for large-scale organizations that manage thousands of recommendations and require structured views to take meaningful action. </TabItem>
+  <TabItem value="Recommendations Filter Revamp" label="Recommendations Filter Revamp">The Filter panel in the Recommendations view has been updated to provide a more streamlined experience.  </TabItem>
+</Tabs>
+:::
+
 The **Overview** page offers a consolidated summary of your organization's governance active enforcements, evaluations and cost savings resulting from rule evaluations.This provides a quick and easy way to monitor your cloud spend and ensure compliance with your governance policies. Additionally, you can access valuable recommendations for optimizing resource utilization, allowing you to achieve even greater cost savings.
 
 ## Asset Governance Overview

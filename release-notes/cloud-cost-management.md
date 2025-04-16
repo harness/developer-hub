@@ -28,6 +28,11 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 | **prod3**         |  ✅ Completed                         | April - v1.47.0    | 
 | **prod4**         |  ✅ Completed           | April - v1.47.0       | 
 | **prodeu1**   | ✅ Completed                           | April - v1.47.0     |      
+## April 2025 - Version 1.48.1
+
+### [New Feature] Alerts for Governance Rule Evaluations
+**[CCM-21921] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/3-gov-overview#alerts-for-governance-rule-evaluations)**
+
 
 ## April 2025 - Version 1.47.0
 
