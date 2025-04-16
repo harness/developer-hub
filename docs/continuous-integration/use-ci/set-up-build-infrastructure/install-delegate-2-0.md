@@ -198,6 +198,8 @@ Navigate to **Project Settings** > **Delegates**. You should see your new delega
 
 Then, in order to use this delegate, simply [set your pipeline's build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#set-the-pipelines-build-infrastructure) as normal.
 
+Most importantly, ensure that you have set **Local** for infrastructure and that the **Operating System** and **Architecture** match the delegate you installed in the [download and install delegate step](#download-and-install-the-delegate).
+
 ## Delegate Configuration
 
 ### Set Max Stage Capacity
