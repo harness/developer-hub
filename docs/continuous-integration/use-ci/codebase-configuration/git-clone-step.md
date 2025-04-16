@@ -179,7 +179,12 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 * [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ## Troubleshooting 
-* **SSH-keyscan timeout:** - If your [connector](#connector) uses SSH authentication, you can add a `PLUGIN_SSH_KEYSCAN_TIMEOUT` [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) to override the `ssh-keyscan` command's timeout limit (the default is `5s`).
+
+### SSH-keyscan timeout
+- If your [connector](#connector) uses SSH authentication, you can add a `PLUGIN_SSH_KEYSCAN_TIMEOUT` [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables) to override the `ssh-keyscan` command's timeout limit (the default is `5s`).
 Stage variables are configured in stage settings, not step settings.
 
 
+### Parallel container-less Git Clone steps are not supported
+
+Harness CI does not support container-less git steps in parallel. This could cause intermittent build failures. Please ensure your git clone steps are in sequence if using container-less build infrastructure.
