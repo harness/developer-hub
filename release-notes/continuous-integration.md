@@ -104,6 +104,14 @@ This update is currently being rolled out to customers, and we expect the rollou
 #### Fixed issues
 - Resolved an issue in Build Intelligence where an extra parenthesis was added in run steps for PowerShell containers. (CI-16922, ZD-81766)
 
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `plugins/kaniko-ecr`      | Regular image updates.  | 1.10.8                | 1.10.9          |
+| `plugins/s3`      | Fix S3 authentication to properly handle combined credential methods and role assumption  | 1.5.2                | 1.5.3          |
+| `plugins/artifactory`      | Enable containerless mode for artifactory plugin  | 1.7.3                | 1.7.4          |
+
 ### Version 1.74
 
 <!-- 2025-04-07 -->
