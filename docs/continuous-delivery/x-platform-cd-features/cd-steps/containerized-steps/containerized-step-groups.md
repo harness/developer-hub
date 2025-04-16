@@ -133,8 +133,11 @@ volumes:
 
 </details>
 
-**Additional Notes:**
-- You can only mount one volume per mount path.
+<div align="center">
+  <DocImage path={require('./static/mount-secrets-and-configmaps.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+**Additional Notes:** You can only mount one volume per mount path.
 
 ### Service Account Name
 
