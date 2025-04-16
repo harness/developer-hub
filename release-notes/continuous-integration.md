@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-04-04T10:00
+date: 2025-04-16T10:00
 sidebar_position: 10
 ---
 
@@ -92,6 +92,24 @@ We’re excited to introduce an updated UI for managing your Harness Continuous 
 This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
 
 :::
+
+### Version 1.75
+
+<!-- 2025-04-14 -->
+
+#### New features and enhancements
+- Enhanced the AWS authentication mechanism in the Drone S3 plugin (`plugins/s3:1.5.3`) to provide more reliable operation across diverse target environments. (CI-16855, ZD-81366)
+ 
+#### Fixed issues
+- Resolved an issue in Build Intelligence where an extra parenthesis was added in run steps for PowerShell containers. (CI-16922, ZD-81766)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `plugins/kaniko-ecr`      | Changes related to upcoming **Build and Push**  step improvements.  | 1.10.8                | 1.10.9          |
+| `plugins/s3`      | Fix S3 authentication to properly handle combined credential methods and role assumption  | 1.5.2                | 1.5.3          |
+| `plugins/artifactory`      | Enable containerless mode for artifactory plugin  | 1.7.3                | 1.7.4          |
 
 ### Version 1.74
 
