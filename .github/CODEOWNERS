@@ -107,14 +107,14 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness @M-Tsur
 
 # Chaos Docs
-/docs/chaos-engineering/ @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness
-/release-notes/chaos-engineering.md @neelanjan00 @SmritiSatya @Jonsy13
-/src/components/Roadmap/data/ceData.ts @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
-/src/components/Docs/data/chaosEngineeringData* @krishi0408 @neelanjan00 @SmritiSatya @vishal-av @SushrutHarness
+/docs/chaos-engineering/ @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness
+/release-notes/chaos-engineering.md @neelanjan00 @Jonsy13
+/src/components/Roadmap/data/ceData.ts @krishi0408 @neelanjan00 @vishal-av @SushrutHarness
+/src/components/Docs/data/chaosEngineeringData* @krishi0408 @neelanjan00 @vishal-av @SushrutHarness
 # Chaos FAQs
-/docs/faqs/chaos-engineering-faqs @neelanjan00 @SmritiSatya @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness
-/docs/faqs/static @neelanjan00 @SmritiSatya @Jonsy13 @Adarshkumar14 @ksatchit @umamukkara
-/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya @ksatchit @umamukkara
+/docs/faqs/chaos-engineering-faqs @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness
+/docs/faqs/static @neelanjan00 @Jonsy13 @Adarshkumar14 @ksatchit @umamukkara
+/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @ksatchit @umamukkara
 
 # Platform Docs
 /docs/platform/ @pratmit @krishi0408 @GokulBansal0 @abhishekharness @ivikramsahu
@@ -174,7 +174,7 @@ static/  @rohanmaharjan100 @wei-harness
 
 #FME Docs
 /src/components/Roadmap/data/fmeData.ts @dtk-DaveKarow @kleinjoshuaa @deej-split @harness-john
-/release-notes/feature-management-experimentation.md @dtk-DaveKarow @kleinjoshuaa @deej-split @HarnessTheChaos
+/release-notes/feature-management-experimentation.md @dtk-DaveKarow @harness-john @kleinjoshuaa @deej-split @HarnessTheChaos
 /release-notes/static/fme/ @dtk-DaveKarow @kleinjoshuaa @deej-split  @harness-john @HarnessTheChaos
 
 # SEI Docs
