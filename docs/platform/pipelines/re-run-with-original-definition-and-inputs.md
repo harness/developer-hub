@@ -61,7 +61,8 @@ But with this feature, when you go back to Execution ID: 1 and click **Re-run wi
 - The original YAML that was in place during that specific run.
 - The exact same inputs you provided back then.
 
-You don’t need to worry about any of the recent changes in the pipeline. This means you can always go back and rerun any historical execution with full confidence that you're reproducing it exactly as it was.
+You don’t need to worry about any recent changes to the pipeline. When you rerun using the original definition, Harness ensures you're reproducing the pipeline exactly as it was during that execution.
+However, note that reruns are subject to data retention policies. By default, execution data is retained for 30 days, unless your account has a custom retention setting. You can only rerun executions that are still available within this retention window.
 
 :::note
 Re-running Execution ID: 1 this way does not revert or affect the current pipeline state. The new YAML you used for Execution ID: 2 remains intact. You're simply running a point-in-time snapshot of the pipeline as it was.
