@@ -55,6 +55,38 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## April 2025
 
+### Version 1.85
+
+#### New Features and Enhancements
+
+- Harness now supports capturing **multiline output variables** from **Container steps** in CD pipelines, ensuring correct population and visibility in the Output tab. Currently, this feature is behind the feature flag `CI_ENABLE_MULTILINE_OUTPUTS_SECRETS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-95235, ZD-44567,72745**) 
+
+- Harness is introducing the **ECS Blue Green Traffic Shift** step to support weighted traffic shifting for ECS and Spot deployments, enabling gradual rollout strategies for ECS services with low task counts. Currently, this feature is behind the feature flag `CDS_ECS_TRAFFIC_SHIFT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-102609**) 
+
+- Harness now **enforces namespace consistency in Kubernetes and Helm deployments**, preventing users from overriding the infrastructure-defined namespace using custom CLI flags like `--namespace`. Currently, this feature is behind the feature flag `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-99904, ZD-67987,71082**) 
+
+- Harness now supports **mounting ConfigMaps and Kubernetes Secrets as volumes in CD Container steps**, enabling users to inject configuration and credentials without modifying container images. Currently, this feature is behind the feature flag `CDS_CONFIG_MAPS_AND_SECRETS_AS_VOLUME`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-95429**) 
+
+- Harness now supports **Helm deployments with CRDs** by enforcing `helm upgrade --install` behavior, enabling seamless deployment of resources that already exist outside the target namespace. Currently, this feature is behind the feature flag `CDS_SKIP_HELM_INSTALL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-85790**)
+
+- Harness now supports **re-running pipelines** with the original pipeline definition and inputs, enabling teams to accurately reproduce and debug historical executions. Currently, this feature is behind the feature flag `PIPE_USE_ORIGINAL_YAML_FOR_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-21837**)
+
+- Harness now **automatically creates webhooks for GitX resources**, improving pipeline performance by avoiding manual webhook setup and eliminating execution delays for resources like templates. This behavior is enabled by default for new accounts. If you do not want this feature enabled by default, you can turn on the feature flag `PIPE_DISABLE_AUTO_GITX_WEBHOOK_REGISTRATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-23197**)
+
+- Harness now ensures pipelines run with the latest Git-synced configurations by triggering Git sync before executing associated triggers. This prevents outdated configs from being used and eliminates the need for manual workarounds. Currently, this feature is behind the feature flag `PIE_PROCESS_TRIGGER_SEQUENTIALLY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-21521, ZD-69595,70083**)
+
+
+#### Fixed Issues
+
+- Previously, template reconciliation did not consistently load updated templates. This issue is resolved with improved validation and a reconciliation loader. (**PIPE-26008, ZD-80358**)
+- Previously, using execution-time inputs in the Build & Push step caused the Input Set creation page to fail. This issue is resolved, and the tags field fully supports runtime inputs. (**PIPE-26480, ZD-80504**)
+- Previously, deployment metrics in the Unified View and Deployment Dashboards were inconsistent; this issue is now resolved, and metrics now accurately reflect deployments across both deploy and custom stages. (**CDS-108215**)
+- Previously, editing a newly created environment override using a Custom Remote Store caused an error. This issue is now resolved, and the UI now handles edits gracefully without breaking. (**CDS-107112, ZD-78749**)
+- Previously, rollbacks were not triggered for user-initiated failures and approval rejections despite the configured rollback strategy. This issue is now resolved, and stage rollback now works as expected in these scenarios and the fix is behind feature flag `PIPE_ADD_ORIGINAL_FAILED_CHILDREN_TO_OUTPUT`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-26102, ZD-80129**)
+- Previously, users were unable to create AWS S3 OIDC connectors using the GovCloud region due to invalid identity token errors. This issue is now resolved, and OIDC connectors now support region-specific audience values for GovCloud. (**CDS-108206, ZD-80533**)
+- Previously, pipeline executions failed intermittently due to token generation errors caused by database connection issues during GitHub App authentication. This issue is now resolved, and token generation is stable across retries. (**PIPE-26414, ZD-81230**)
+- Previously, the GitOps Sync step logs displayed the default Harness URL instead of the configured vanity URL. This issue is now resolved, and both the Sync and Fetch Linked Apps steps now respect the account-level vanity URL setting. (**CDS-108906**)
+
 ### GitOps Version 1.29, GitOps Agent Version 0.90.0
 
 #### New Features and Enhancements
