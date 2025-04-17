@@ -129,7 +129,7 @@ const ModuleData: ModuleData[] = [
 
   {
     title: "Code Repository",
-    description: "SaaS release status: Limited GA, SMP release status: Not yet planned",
+    description: "SaaS release status: Limited GA, SMP release status: GA",
     module: MODULES.code,
     horizon: codeData,
   },
