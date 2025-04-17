@@ -265,6 +265,54 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
             ```
 :::  
 
+## April 17, 2025, Version 0.27.1 <!-- Draft : April 17, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.27.1](https://github.com/harness/helm-charts/releases/tag/harness-0.27.1)                 |
+| Air Gap Bundle            | [0.27.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.27.1) |
+| NG Manager                | 1.78.8                                                                                       |
+| CI Manager                | 1.67.5                                                                                       |
+| Pipeline Service          | 1.117.2                                                                                      |
+| Platform Service          | 1.55.0                                                                                       |
+| Access Control Service    | 1.76.1                                                                                       |
+| Delegate                  | 25.02.85305                                                                                  |
+| GitOps Service            | 1.26.4                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.129.3                                                                                      |
+| Test Intelligence Service | 1.42.1                                                                                       |
+| NG UI                     | 1.63.10                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.10                                                                                       |
+| Log Service               | 1.19.0                                                                                       |
+| Batch Processing          | 1.40.4                                                                                       |
+| Gateway                   | 1.42.4                                                                                       |
+| IaCM Manager              | 1.72.0                                                                                       |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.27.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.27.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+#### Harness Platform
+- Deprecated the ‘Account Edition’ column from the Account List View across Harness. This change is part of our ongoing effort to simplify the UI and reduce redundancy. [PL-61850]
+
 ## April 03, 2025, Version 0.27.0  <!-- Draft : April 03, 2025 -->
 
 This release includes the following Harness module and component versions.
