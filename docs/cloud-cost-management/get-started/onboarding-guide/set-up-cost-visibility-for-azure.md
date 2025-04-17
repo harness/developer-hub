@@ -90,6 +90,7 @@ import TabItem from '@theme/TabItem';
 
 ### Azure Billing Exports
 
+
 Billing export is used to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, etc.
 
 1. In **Azure Billing Exports**, select **Launch Azure Billing Exports**.
@@ -139,6 +140,18 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
    4. In **Report Name**, enter the export name.
    ![](static/set-up-cost-visibility-for-azure-11.png)
 8. Select **Continue**.
+
+:::note 
+Harness Cloud Cost Management supports two types of cost data exports from Microsoft Azure: Actual Cost and Amortized Cost
+
+| Feature                                 | Actual Cost ✅ | Amortized Cost ✅ |
+|-----------------------------------------|----------------|-------------------|
+| **Perspectives**                        | Supported      | Supported         |
+| **Dashboards**                          | Supported      | Supported         |
+| **Out-of-the-box Azure Cost Dashboard** | Supported      | **Not supported** ❌ |
+
+The out-of-the-box (OOTB) Azure Cost Dashboard displays only Actual Costs. Currently, it does not support changing the cost view to Amortized.
+:::
 
 ### Choose Requirements
 
