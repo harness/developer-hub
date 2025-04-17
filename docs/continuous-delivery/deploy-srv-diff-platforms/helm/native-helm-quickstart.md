@@ -189,6 +189,48 @@ For details on Harness provisioning, go to [Provisioning overview](/docs/continu
 12. In **Release Name**, enter **quickstart**.
 13. Select **Next**. The deployment strategy options appear.
 
+### Enforcing Namespace Consistency
+
+Helm deployments in Harness offer powerful packaging and templating capabilities, but with that flexibility comes a gap in namespace enforcement. By default, Helm allows users to deploy workloads into any namespace, regardless of what’s defined in the Infrastructure.
+
+This can lead to security and governance issues, especially in shared clusters where namespace isolation is critical.
+
+Helm does not perform strict validation against the namespace defined in the Infrastructure. Users can override the namespace in several ways—via chart templates, values files, or by passing the `--namespace` flag during Helm install or upgrade.
+
+:::note
+Currently, this feature is behind the feature flag `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This feature requires delegate version `856xx` or later.
+:::
+
+To enable this setting, go to:
+**Account** / **Org** / **Project Settings** → **Default Settings**
+Under the **Continuous Delivery** section, set the value to **True** for:
+**Enable Namespace validation from different sources with infrastructure level namespace**
+
+**How it's handled**
+
+Helm doesn't inherently block namespace overrides, so Harness enforces validation during execution when this feature flag is enabled.
+
+If a Helm chart tries to install resources into a namespace that doesn’t match the one defined in the Infrastructure, Harness will fail the deployment.
+
+This includes scenarios where:
+- The chart templates define a hardcoded namespace (`metadata.namespace`)
+- The `--namespace` flag is passed in install/upgrade arguments
+- Values passed into the chart result in a different namespace
+
+For example:
+- The Infrastructure is set to deploy into `secure-team-ns`.
+- A Helm chart includes a hardcoded namespace like `sandbox-test`.
+- During execution, the chart tries to install into s`andbox-test`.
+- With namespace validation enabled, Harness detects the mismatch and blocks the deployment.
+
+This prevents service owners or developers from bypassing namespace boundaries—ensuring that deployments stay confined to the approved environment.
+
+**Limitations**
+
+Currently, Helm Canary deployments are not supported with this namespace enforcement feature.
+
 ## Add a Helm Deployment step
 
 In this example, we're going to use a Rolling [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts).
