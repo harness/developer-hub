@@ -140,7 +140,7 @@ The **Custom Scan** step uses the `sto-plugin` image to launch the appropriate s
 
 To override the scanner image in a **Custom Scan** step, add the following settings in the **Additional Configuration** section of the **Custom Scan** step:
 
-* <strong><code>runner_registry_domain</code></strong>: The URL of the registry where the images are stored. The supported format is `<_domain_>/<_directory_>` (such as, gcr.io/gcr-prod). Do not include the scheme (such as http:// or https://).
+* <strong><code>runner_registry_domain</code></strong>: The URL of the registry where the images are stored. The supported format is `<_domain_>/<_directory_>` (such as, public.ecr.aws/r7c1u4s0/harness). Do not include the scheme (such as http:// or https://).
 * <strong><code>runner_registry_image_prefix</code></strong>: set this to `harness` (Do not change this setting)
 * <strong><code>runner_registry_username</code></strong>: The username of your registry
 * <strong><code>runner_registry_token</code></strong>: The token to access your registry
