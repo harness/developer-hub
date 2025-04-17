@@ -1,7 +1,7 @@
 ---
 title: Infrastructure as Code Management release notes
 sidebar_label: Infrastructure as Code Management
-date: 2025-02-12T17:00
+date: 2025-04-14T10:00
 tags: [Infrastructure as Code Management]
 sidebar_position: 17
 ---
@@ -34,6 +34,44 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
   parse='.resource.versionInfo.version | "IAC Manager version: \(.)"'>
 </HarnessApiData>
 ::: -->
+
+Here’s the revised and concise version of your release notes for **IAC-Server v1.126**, following the style of the IDP release notes and leaving room for examples and code snippets:
+
+---
+
+## March 2025
+### IAC-Server: Version 1.126
+<!-- Released on 18 March 2025 -->
+#### New Features and Enhancements
+**Sparse Checkout**
+- You can now select [the Sparse Checkout option in your workspace configuration](/docs/infra-as-code-management/workspaces/workspace-tabs#advanced-options) to specify patterns for selective repository checkout. (IAC-3194, IAC-3196)
+
+**Workspace Enhancements**
+- When updating workspaces, your custom pipelines are now preserved, ensuring they won’t be overwritten by project default pipelines. We’ve also resolved an issue with the Policy Sets modal not rendering properly. (IAC-3206)
+
+**User Experience Improvements**
+- Template creation now provides specific error messages for missing fields, helping you quickly identify and address issues. (IAC-3225)
+- The Monaco Diff editor now displays accurate before/after YAML views, ensuring a clearer understanding of changes. (IAC-3207)
+
+**Security and Configuration Updates**
+- mTLS support has been added to the IAC server to enhance secure communication. You can also configure optional TLS settings for the IAC server client. (IAC-3188, IAC-3197)
+- Permission checks have been added to ensure you only access workspaces you are authorized to view. (IAC-3203)
+
+**New APIs and Features**
+- A new API endpoint allows you to retrieve all resource changes across every stage of a pipeline execution, including workspace identifiers for better traceability. (IAC-3187)
+- You can now include a Module ID in IaCM pipeline steps, enabling more detailed tracking and configuration. (IAC-3339)
+- Module executions now return trigger information, giving you better insights into execution origins. (IAC-3192)
+
+**Other Enhancements**
+- Helm charts now use the `imagePullSecret` from your global settings, streamlining configuration management. (IAC-3219)
+- Storybook tooling has been added to support UI testing, making it easier to validate interface changes. (IAC-3291)
+- The prepare exec flow and default pipeline feature flags have been removed to simplify your workflows. (IAC-3295)
+
+#### Fixed Issues
+**Module Registry:** Sparse Checkout and submodule options are now hidden for repositories in the Module Registry, improving clarity and usability. (IAC-3277)
+**Sensitive Data Handling:** We’ve resolved an issue where non-sensitive data was incorrectly marked as sensitive in plans and state files, as well as during sensitive data pruning. (IAC-3261)
+**Cost Changes:** Fixed an issue where cost changes displayed duplicate items, ensuring accurate reporting. (IAC-3215)
+---
 
 ## February 2025
 ### IAC-Server: Version 1.116.0 & IAC-Manager: Version 1.61.4
