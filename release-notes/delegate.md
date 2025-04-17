@@ -88,6 +88,19 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## April 2025
+
+### Version 25.04.85604 <!-- April 16, 2025 -->
+
+#### Hotfix
+
+- Fixed Terraform Cloud Run with Refresh run-type to create a refresh-only run (CDS-109201)
+
+### Version 25.04.85602 <!-- April 15, 2025 -->
+
+#### Hotfix
+
+- Added Nullchecks to handle errors for customers using API token for dynatrace connectors. (CDS-109040)
+
 ### Version 25.02.85306 <!-- April 10, 2025-->
 
 #### Fixed issues
