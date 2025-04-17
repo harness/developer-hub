@@ -976,6 +976,8 @@ Kubernetes deployments in Harness give you more built-in control when it comes t
 
 :::note
 Currently, this feature is behind the feature flag `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This feature requires delegate version `856xx` or later.
 :::
 
 To enable this setting, go to:
