@@ -36,6 +36,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 #### New features and enhancements
 
 - Added support for Windows CPU stress on Windows dual socket servers. (CHAOS-7902)
+- Adds support for dynamic updates in Active Discovery and the Application Map after each discovery run—new services are added, removed services are marked accordingly, and resources from newly excluded namespaces are hidden, with their services shown as removed if referenced in the Application Map. (CHAOS-7745)
 - Added Windows global blackhole experiment to cause global blackhole chaos on a Windows VM. (CHAOS-7091)
 
 #### Fixed issues
