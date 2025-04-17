@@ -31,7 +31,7 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 ## April 2025 - Version 1.48.1
 
 ### [New Feature] Alerts for Governance Rule Evaluations
-**[CCM-21921] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/3-gov-overview#alerts-for-governance-rule-evaluations)**
+**[CCM-21921] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gov-overview#governance-alerts)**
 
 We’ve added Alerts in Cloud Assets Governance, allowing users to configure alerts based on Cloud Provider (AWS, GCP, Azure), Resource Type (Cloud Custodian-defined), Cloud Accounts, Minimum Number of Resources Found, Minimum Cost Impact, Email IDs, and the option to attach evaluation output as a .json file. 
 
