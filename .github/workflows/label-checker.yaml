@@ -13,7 +13,7 @@ jobs:
 
       - name: Check for forbidden labels
         run: |
-          FORBIDDEN_LABELS=("Do Not Merge" "Blocked / On hold","Draft")
+          FORBIDDEN_LABELS=("Do Not Merge" "Blocked / On hold" "Draft")
           LABELS=$(jq -r '.pull_request.labels[].name' "$GITHUB_EVENT_PATH")
 
           echo "Labels on this PR:"
