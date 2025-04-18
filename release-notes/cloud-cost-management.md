@@ -22,12 +22,30 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 | **Cluster**        | **Deployment Status** | **Release Version** | 
 | --------------------------- | -------------------------- | --------------- | 
-| **prod0**   | ✅ Completed                        | April - v1.47.0         |                                                                                                                        
-| **prod1** | ✅ Completed                        | April - v1.47.0         |                                                                                                                      
-| **prod2**    | ✅ Completed                 | April - v1.47.0       |                                                                                                                      
-| **prod3**         |  ✅ Completed                         | April - v1.47.0    | 
-| **prod4**         |  ✅ Completed           | April - v1.47.0       | 
-| **prodeu1**   | ✅ Completed                           | April - v1.47.0     |      
+| **prod0**   | ✅ Completed                        | April - v1.48.1         |                                                                                                                        
+| **prod1** | ✅ Completed                        | April - v1.48.1         |                                                                                                                      
+| **prod2**    | Scheduled                 | April - v1.48.1      |                                                                                                                      
+| **prod3**         |  Scheduled                  | April - v1.48.1    | 
+| **prod4**         |  Scheduled   | April - v1.48.1       | 
+| **prodeu1**   | Scheduled                        | April - v1.48.1    |      
+## April 2025 - Version 1.48.1
+
+### [New Feature] Alerts for Governance Rule Evaluations
+**[CCM-21921] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gov-overview#governance-alerts)**
+
+We’ve added Alerts in Cloud Assets Governance, allowing users to configure alerts based on Cloud Provider (AWS, GCP, Azure), Resource Type (Cloud Custodian-defined), Cloud Accounts, Minimum Number of Resources Found, Minimum Cost Impact, Email IDs, and the option to attach evaluation output as a .json file. 
+
+### Feature Improvements
+
+- Preferred Instance Families in Nodepool presets:  We’ve added support for saving Preferred Instance Families in Nodepool presets, along with Buffer and Minimum Node Count. Users can now select specific instance families per cloud provider and region, and these preferences will be considered when generating the next set of Nodepool recommendations.
+
+<DocImage path={require('./static/instance-families.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- Extend Warmup Period: We've improved the AutoStopping experience by introducing the Extend Warmup Period button. Previously, once a resource was manually started or warmed up via the AutoStopping rule page, users couldn’t extend its uptime during the active warm-up window. With this update, you can now extend the warm-up duration while the resource is still running, eliminating interruptions and giving you more control. 
+
+<DocImage path={require('./static/extend-one.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+<DocImage path={require('./static/extend-two.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 ## April 2025 - Version 1.47.0
 
