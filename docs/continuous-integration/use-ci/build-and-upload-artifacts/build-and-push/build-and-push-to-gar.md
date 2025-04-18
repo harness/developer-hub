@@ -18,7 +18,7 @@ You need:
 - A [GCP connector](#gcp-connector).
 
 :::note
-When using **Build and Push to GAR** steps, authentication through OIDC is only supported when building using BuildX. When building using Kaniko, OIDC is not supported. 
+OIDC-based authentication is supported in the **Build and Push to GAR** step only when using BuildX. When using Kaniko for building a Docker image, OIDC is not supported.
 :::
 
 ## Kubernetes cluster build infrastructures require root access
