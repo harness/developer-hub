@@ -55,6 +55,26 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## April 2025
 
+### GitOps Version 1.30, Agent Version 0.91
+
+#### Fixed Issues
+- When creating a repository that may already exist in the agent namespace, the error message has changed from
+  ```
+  repository with same url already exists, it may be created in different scope, or it may exist in project not mapped
+  ```
+  to
+  ```
+  repository with same url already exists in agent namespace "NAMESPACE", check repository project field and agent project mapping
+  ```
+  (**CDS-108351**, **ZD-80613**)
+- We’ve addressed a longstanding issue in the [GitOps Cluster Terraform](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_gitops_cluster) resource where the `bearer_token` field would consistently report a diff, even when no changes were made. This update aligns the handling of `bearer_token` with how GitOps repository passwords are managed. The field will now only report a diff if it is explicitly changed in the Terraform configuration. (**CDS-106112**)
+  :::note
+
+  Real-world changes to the token may not be reflected in the Terraform state due to API masking of this field. This behavior is consistent with the GitOps repository resource.
+
+  :::
+
+
 ### Version 1.85
 
 #### New Features and Enhancements
