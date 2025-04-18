@@ -1,6 +1,6 @@
 ---
-title: ECS Blue-Green Traffic shifting
-description: ECS Blue-Green Traffic shifting
+title: ECS Blue-Green Traffic Shifting Step
+description: ECS Blue-Green deployment strategy with native support for phased traffic shifting using ALB weighted target groups.
 sidebar_position: 5
 ---
 
@@ -33,13 +33,13 @@ To solve this, you can now configure **traffic shifting** between target groups 
 4. In the Execution strategies tab, select the **Blue Green** strategy and enable the checkbox **Add Traffic Shifting Steps** under the **Enable Traffic Shifting for ECS Deployment** section.
 
 
-Your Execution tab now includes a Blue Green step group with the **ECS Blue Green Create Service step** and **ECS Blue-Green Traffic Shifting** step.
+Your Execution tab now includes a Blue Green Deployment step group with the **ECS Blue Green Create Service step** and **ECS Blue-Green Traffic Shifting** step.
 
 <div align="center">
   <DocImage path={require('./static/traffic-shifting-1.png')} width="50%" height="50%" title="Click to view full size image" />
 </div>
 
-If you do not select the **Add Traffic Shifting Steps** checkbox, then you will have a **ECS Blue-Green Traffic Shifting step** with steps **Configure Blue Green Deployment** and **Configure Swap Target Groups**.
+If you do not select the **Add Traffic Shifting Steps** checkbox, then you will have a Blue Green Deployment step group with steps **Configure Blue Green Deployment** and **ECS Blue Green Swap Target Groups**.
 
 You can also use a blank canvas and manually add the **ECS Blue Green Create Service step** and **ECS Blue-Green Traffic Shifting** step to your stage.
 
@@ -128,7 +128,7 @@ The step adjusts traffic distribution between the **Stage Target Group** (where 
 
 - Weight `50` → 50% traffic to Stage Target Group, 50% to Prod Target Group.
 - Weight `70` → 70% to Stage Target Group, 30% to Prod Target Group.
-- Weight `100` →  Suppose you provide the weight as `100`, the step will route `100%` traffic to the **Prod Listener**.
+- Weight `100` →  Suppose you provide the weight as `100`, the step will route `100%` traffic to the **Stage target group**.
 
 
 The **Inherit** step updates blue and green tags only when 100% of the traffic is shifted to the Stage Target Group.  
@@ -316,7 +316,7 @@ For customers who want to implement progressive traffic shifting (e.g., 10% → 
 
 You can use ECS traffic shifting to gradually roll out and validate a new version of your service across different environments before promoting it to production:
 
-1. Deploy the new artifact to the ECS service and attach it to the **stage target group**.
+1. 1. Deploy the new version of the service once and attach it to the **Stage Target Group**.
 2. Keep the **prod target group** mapped to the existing (old) service.
 3. In lower environments, incrementally shift traffic to the new service version and validate using **CV (Continuous Verification)**, **approval steps**, or **custom scripts**.
 4. Once validated, deploy the new version in the production environment and mark the new service as the **blue** version.
@@ -329,14 +329,96 @@ This example outlines the basic flow you can follow when implementing ECS Blue-G
 2. Add an **ECS Traffic Shift** step (inherit or standalone) to begin shifting traffic incrementally.
 3. **(Optional)** Add an **approval step** to control progression between shifts.
 4. Repeat the **ECS Traffic Shift** steps to gradually increase traffic to 100%.
-5. **(Optional)** Manually disable the old service after the rollout is complete.
+
+## Sample pipeline YAML for Inherit traffic shifting step
+
+Below is a ready-to-use pipeline YAML that demonstrates how to configure the **Inherit traffic shifting mode** in an ECS Blue-Green deployment.
+
+<details>
+<summary>Sample pipeline YAML</summary>
+
+```yaml
+pipeline:
+  name: ecs-bluegreen-inherit-example
+  identifier: ecs_bluegreen_inherit_example
+  projectIdentifier: demo_project
+  orgIdentifier: demo_org
+  tags: {}
+  delegateSelectors:
+    - my-delegate
+  stages:
+    - stage:
+        name: ecs-inherit-stage
+        identifier: ecs_inherit_stage
+        type: Deployment
+        spec:
+          deploymentType: ECS
+          service:
+            serviceRef: <+input>
+            serviceInputs: <+input>
+          environment:
+            environmentRef: <+input>
+            deployToAll: false
+            environmentInputs: <+input>
+            serviceOverrideInputs: <+input>
+            infrastructureDefinitions: <+input>
+          execution:
+            steps:
+              - stepGroup:
+                  name: Blue Green Deployment
+                  identifier: blueGreenDeployment
+                  steps:
+                    - step:
+                        name: ECS Blue Green Create Service
+                        identifier: EcsBlueGreenCreateService
+                        type: EcsBlueGreenCreateService
+                        timeout: 10m
+                        spec:
+                          loadBalancer: <+input>
+                          prodListener: <+input>
+                          prodListenerRuleArn: <+input>
+                          isTrafficShift: true
+                          stageTargetGroupArn: <+input>
+                    - step:
+                        name: ECS Blue Green Traffic Shift
+                        identifier: EcsBlueGreenTrafficShift
+                        type: EcsBlueGreenTrafficShift
+                        timeout: 10m
+                        spec:
+                          ecsTrafficShiftWrapper:
+                            type: Inherit
+                            spec:
+                              weightPercentage: 70
+          rollbackSteps:
+            - step:
+                name: ECS Blue Green Rollback
+                identifier: EcsBlueGreenRollback
+                type: EcsBlueGreenRollback
+                timeout: 10m
+                spec: {}
+            - step:
+                name: Standalone Traffic Shift Rollback
+                identifier: StandAloneTrafficShiftRollback
+                type: StandAloneTrafficShiftRollback
+                timeout: 10m
+                spec: {}
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+```
+
+</details>
 
 ## Sample pipeline YAML for Standalone traffic shifting step
 
-<details>
-<summary>Sample YAML</summary>
+Below is a ready-to-use pipeline YAML that demonstrates how to configure the **Standalone traffic shifting mode** in an ECS Blue-Green deployment.
 
-Sample pipeline YAML for standalone traffic shifting step that does traffic shifting between...
+<details>
+<summary>Sample pipeline YAML</summary>
 
 ```yaml
 pipeline:
