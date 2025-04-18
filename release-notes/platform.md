@@ -107,6 +107,15 @@ The following deprecated API endpoints are longer supported:
 
 ## April 2025 
 
+### Version 1.85.x <!--April 16, 2025-->
+
+#### Fixed issues
+- Added support for using MinIO external secrets with Log Service. [PL-61107]
+
+#### New features and enhancements
+- Upgraded internal protocol buffer library from `protobuf-java` 3.15.5 to 4.28.3 to address security vulnerabilities and enhance service communication, with no impact on user experience or workflows. [PL-61208]
+- Introduced a maximum limit on role assignments per account based on license edition to safeguard system stability: 100 for Community and Free editions, and 75,000 for Team and Enterprise editions. [PL-58428]
+
 ### Version 1.84.x <!--April 9, 2025-->
 
 #### Fixed issues
