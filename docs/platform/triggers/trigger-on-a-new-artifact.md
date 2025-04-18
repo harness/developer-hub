@@ -42,6 +42,7 @@ import Variables from '/docs/platform/shared/variables-not-supported.md'
 
 You can use the following artifact providers to triggers pipelines:
 
+- [Harness Artifact Registry](/docs/artifact-registry/ar-webhooks)
 - ACR (Azure Container Registry)
 - Amazon Machine Image (AMI)
 - Amazon S3
