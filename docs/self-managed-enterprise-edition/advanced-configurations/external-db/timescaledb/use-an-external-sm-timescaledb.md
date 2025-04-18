@@ -2,7 +2,7 @@
 title: Use an external self-managed TimescaleDB with your installation
 description: Learn how to use an external self-managed TimescaleDB with Harness Self-Managed Enterprise Edition installations.
 sidebar_label: External self-managed TimescaleDB
-sidebar_position: 60
+sidebar_position: 1
 redirect_from:
   - /tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb
 ---
@@ -51,7 +51,7 @@ Ensure the following:
 
 ## Architecture
 
-![TimescaleDB architecture](../static/timescaledb-self-managed-architecture.png)
+![TimescaleDB architecture](./static/timescaledb-self-managed-architecture.png)
 
 TimescaleDB replication architecture uses the native replication capabilities of PostgreSQL to ensure high availability and fault tolerance. It employs a controller-worker configuration, where the controller node handles read and write operations, while the worker nodes act as standby databases for data replication.
 
@@ -67,7 +67,7 @@ To create a highly-available setup, there will be a DNS record that always point
 
 You can update the DNS record dynamically using a script or use the service discovery tool's built-in functionality.
 
-![TimescaleDB DNS](../static/self-managed-dns.png)
+![TimescaleDB DNS](./static/self-managed-dns.png)
 
 ## Set up TimescaleDB VMs on Debian-based systems
 
