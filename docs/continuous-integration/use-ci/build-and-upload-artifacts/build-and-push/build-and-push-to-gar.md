@@ -17,10 +17,8 @@ You need:
 - A [Harness CI pipeline](../../prep-ci-pipeline-components.md) with a [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md).
 - A [GCP connector](#gcp-connector).
 
-:::warning
-
-Using OIDC with GAR is not supported when using Kaniko. Access to the `.docker/config.json` file is required, and currently this isn't possible with an OIDC connection, GAR, and Kaniko.  
-
+:::note
+When using **Build and Push to GAR** steps, authentication through OIDC is only supported when building using BuildX. When building using Kaniko, OIDC is not supported. 
 :::
 
 ## Kubernetes cluster build infrastructures require root access
