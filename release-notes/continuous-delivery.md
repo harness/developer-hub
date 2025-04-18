@@ -55,6 +55,12 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## April 2025
 
+### GitOps Version 1.31, Agent Version 0.92
+
+#### GitOps Agent Version 0.92 Fixes
+
+- Previously, invalid application sets were flooding the GitOps agent with update events. This has been fixed. (**CDS-109042**) 
+
 ### GitOps Version 1.30, Agent Version 0.91
 
 #### Fixed Issues
