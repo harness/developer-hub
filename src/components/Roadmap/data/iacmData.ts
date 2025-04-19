@@ -58,7 +58,7 @@ export const IacmData: Horizon = {
     ],
   },
   Now: {
-    description: "Q4 2024, Nov 2024-Jan 2025",
+    description: "Q1 2025, Feb 2025-Apr 2025",
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
@@ -77,12 +77,6 @@ export const IacmData: Horizon = {
         title: "Variable Sets",
         description: "Define reusable collections of Terraform and environment variables, as well as connectors, that can be used across different workspaces. This feature makes it easy to manage variables centrally while maintaining security for sensitive data.",
       },
-
-    ],
-  },
-  Next: {
-    description: "Q1 2025, Feb 2025-Mar 2025",
-    feature: [
       {
         tag: [{ value: "Developer Experience" }],
         title: "CLI Integration",
@@ -100,6 +94,16 @@ export const IacmData: Horizon = {
     feature: [
       {
         tag: [],
+        title: "Terragrunt support",
+        description: "Supporting Terragrunt as an IaC provider",
+      },
+      {
+        tag: [],
+        title: "Native Ansible Support",
+        description: "Supporting Ansible as an IaC provider",
+      },
+      {
+        tag: [],
         title: "Harness CD integration",
         description: "Integration with CD allows IaCM users to link Resources with Services and Environments, giving end-to-end visibility",
       },
@@ -107,11 +111,6 @@ export const IacmData: Horizon = {
         tag: [],
         title: "Harness CCM Integration",
         description: "Integration with CCM allows IaCM users to have full visibility of costs associated with the resources being managed by IaCM",
-      },
-      {
-        tag: [],
-        title: "Native Ansible Support",
-        description: "Supporting Ansible as an IaC provider",
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -137,11 +136,6 @@ export const IacmData: Horizon = {
         tag: [],
         title: "AWS CloudFormation support",
         description: "Supporting AWS CloudFormation as an IaC provider",
-      },
-      {
-        tag: [],
-        title: "Terragrunt support",
-        description: "Supporting Terragrunt as an IaC provider",
       },
       {
         tag: [{ value: "Developer Experience" }],
