@@ -82,3 +82,10 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 18.    Enable **Allocate Static IP** if you need to assign an elastic IP address to make the instance publicly accessible. Update the DNS route to point to the public IP. You don't need to enable this field if it is pointing to a private IP provided the DNS resolves. For example, when the DNS resolution is done within the VPC.
 19.    Click **Save Load Balancer**.
+
+:::note
+Based on the routing rules defined in the Autostopping rules, load balancer rules will be created. Action Redirect is typically used when we want to redirect HTTP traffic to HTTPS, restructuring "www" with non-www(vice versa) and so on. Redirect URL is applicable only when action is Redirect. Redirect URL can be a different URL than server name."Path match" is similar to to forward/redirect the traffic to a target group based on path. For example /order forwards to micro service order-service  and /user forwards to micro-service user-service
+The routing done by the load balancer is based on multiple parameters like port, protocol, server name and path. Combination of all these parameters decides the target to which request will be forwarded/re-directed.
+When we add multiple instances under same Autostopping rule with HTTP traffic, we expect the instances to be replicas. All these instances will be added to single target group and LB will load balance the traffic between these.
+Dependencies are not affected by the routes. Based on the order in which dependencies are defined, resources will be started.
+:::
