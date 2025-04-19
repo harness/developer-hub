@@ -1,5 +1,5 @@
 ---
-title: Test Intelligence step
+title: Test Intelligence™ step
 description: Use the Test step to leverage Test Intelligence.
 sidebar_position: 3
 ---

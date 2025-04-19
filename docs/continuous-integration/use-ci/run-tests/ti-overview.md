@@ -1,5 +1,5 @@
 ---
-title: Test Intelligence (TI) overview
+title: Test Intelligence™ overview
 description: Reduce unit test time by running only relevant unit tests.
 sidebar_position: 2
 helpdocs_topic_id: 428cs02e6u
