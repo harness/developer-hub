@@ -31,7 +31,7 @@ Listed below are the images to download to use [image registry with Harness Dele
 - harness/chaos-ddcr:1.59.0
 - harness/chaos-log-watcher:1.59.0
 - harness/service-discovery-collector:0.39.0
-- docker.io/harness/chaos-ddcr-faults:1.59.0
+- harness/chaos-ddcr-faults:1.59.0
 
 #### New features and enhancements
 
