@@ -12,6 +12,7 @@ This FAQ page is designed to assist customers who are experiencing common issues
 
 ## Table of Contents
 
+- [Harness Exam, Testing, and Certification Policies](#harness-exam-testing-and-certification-policies)
 - [Exam gets "Stuck"](#exam-gets-stuck)
 - [Trouble with the Hands-On Exam](#trouble-with-the-hands-on-exam)
 - [Running out of time in Hands-On Exam](#running-out-of-time-in-hands-on-exam)
@@ -21,6 +22,93 @@ This FAQ page is designed to assist customers who are experiencing common issues
 - [Inquires about Instructor-Led Training ](#inquiries-about-instructor-led-training)
 - [Partners ](#partners)
 - [Contact Information](#contact-information)
+
+---
+
+# Harness Exam, Testing, and Certification Policies
+
+Harness is committed to maintaining the integrity and value of its Technical Certifications. All candidates must adhere to the following policies during their certification journey. By registering for or taking any Harness certification exam, you agree to abide by these policies and procedures.
+
+---
+
+## General Policies
+
+The following general policies apply to all Harness Technical Certification exams, regardless of level or product area:
+
+- All exams are **non-proctored** and **open book**.
+- Candidates are expected to take exams independently and without assistance from others.
+- Sharing, copying, or reproducing exam content in any form is strictly prohibited.
+- Certification status is granted based on successful completion of all exam requirements and adherence to these policies.
+
+---
+
+## Candidate Rights and Responsibilities
+
+Harness candidates have the right to a fair and equitable certification experience and are expected to uphold the highest ethical standards. All candidates are encouraged to:
+
+- Prepare for certification using Harness-provided training, documentation, and hands-on environments.
+- Understand the exam objectives and competencies being tested.
+- Protect their Harness Certification status by avoiding exam misconduct and reporting suspected violations.
+
+---
+
+## Confidentiality Agreement
+
+All exam content—including but not limited to questions, answers, labs, and diagrams—is the **confidential and proprietary property of Harness**. By taking any Harness certification exam, you agree to the following:
+
+- You will not share, reproduce, store, publish, or disclose any exam content in any form, online or offline.
+- You acknowledge that doing so may result in the **termination of your exam session**, **invalidation of results**, and/or a **lifetime ban from future certifications**.
+- You accept the terms outlined in the **Harness Certification and Confidentiality Agreement** before beginning your exam.
+
+Violation of this agreement is considered serious misconduct and will be investigated thoroughly.
+
+---
+
+## Candidate Code of Conduct
+
+Earning a Harness certification means more than passing an exam—it reflects a commitment to excellence and integrity. As a candidate, you agree to:
+
+- Take exams honestly, without unauthorized help or impersonation.
+- Not engage in or promote the use of “braindumps,” answer sharing, or cheat sites.
+- Avoid disclosing exam content or facilitating violations by others.
+- Report any known or suspected misconduct by emailing [certifications@harness.io](mailto:certifications@harness.io).
+
+Misconduct may result in exam disqualification, certification revocation, and bans from future participation.
+
+---
+
+## Exam Violations
+
+Prohibited behaviors include (but are not limited to):
+
+- Sharing exam questions or answers with others.
+- Collaborating with others during an exam.
+- Using automated tools to extract or scrape exam content.
+- Falsifying identity or impersonating another test-taker.
+
+Harness reserves the right to invalidate exam results, suspend certifications, and restrict access to exams if a violation is discovered or suspected.
+
+---
+
+## Impartiality and Fairness
+
+Harness strives to ensure all certification exams are fair, objective, and inclusive. Our exam development processes are:
+
+- Based on clearly defined job roles and real-world competencies.
+- Reviewed regularly to avoid bias or unintended barriers.
+- Open to feedback from the community to improve relevance and clarity.
+
+---
+
+## Privacy
+
+Harness values and respects your privacy. Your certification data, including exam results and contact information, will be processed according to our [Privacy Policy](https://www.harness.io/legal/privacy). This data will not be shared with third parties without your consent, except as required to deliver the exam or comply with legal obligations.
+
+---
+
+## Official Communication
+
+All communication related to your certification status, exam scheduling, and updates will be sent to the email address associated with your Harness training or certification account. You are responsible for keeping your contact information up to date to ensure timely receipt of notifications.
 
 ---
 
@@ -104,6 +192,8 @@ For the Admin and Architect level exams, we allow for up to two retakes on paid 
 - If you redeemed a coupon code, please re-apply the coupon code when retaking.
 
 ---
+
+
 
 ## Inquiries about Instructor-Led Training
 
