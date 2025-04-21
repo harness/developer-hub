@@ -1,6 +1,8 @@
 ---
 description: KB - Trigger Deployments when Pipelines Complete
 title: Trigger Deployments when Pipelines Complete in NextGen
+redirect_from:
+   - /kb/platform/articles/trigger-deployments-when-pipelines-complete-in-nextGen
 ---
 
 # Introduction
@@ -11,7 +13,7 @@ For example, you might create a Pipeline to test a deployment in one environment
 
 ## Problem Statement
 
-How can I trigger deployments or a pipeline after the completion of another pipeline, similar to the current generation feature "Trigger Deployments when Pipelines Complete"? https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-pipeline-completion
+How can I trigger deployments or a pipeline after the completion of another pipeline?
 
 ## Resolution
 
