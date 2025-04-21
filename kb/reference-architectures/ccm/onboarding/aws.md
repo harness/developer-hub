@@ -15,7 +15,7 @@ The first step is to [create a CUR](/docs/cloud-cost-management/get-started/onbo
 
 ![](../../static/aws-cur.png)
 
-There is a CloudFormation template or Terraform module to provision this role. [The CloudFormation stack is located here](https://github.com/harness/harness-core/blob/develop/ce-nextgen/awstemplate/prod/HarnessAWSTemplate.yaml), and the [Terraform module here](https://github.com/harness-community/terraform-aws-harness-ccm).
+There is a CloudFormation template or Terraform module to provision this role. [The CloudFormation stack is located here](https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/ngv1/HarnessAWSTemplate_V2.yaml), and the [Terraform module here](https://github.com/harness-community/terraform-aws-harness-ccm).
 
 For both the template and the module there are inputs you must specify for your setup:
 
@@ -27,9 +27,9 @@ For both the template and the module there are inputs you must specify for your 
 - Role name: The name of the AWS IAM role provisioned that will be granted access to the S3 bucket, and allow assumption from Harness
 - Enable billing: This provisions a policy that allows the role to access the S3 bucket given for the CUR data
   - See the `HarnessBillingMonitoringPolicy` in the template for the exact permissions included and modify as necessary.
-- (beta) Enable commitment read: (required for commitment orchestrator) This provisions a policy that gives access to read RI and savings plan data
+- Enable commitment read: (required for commitment orchestrator) This provisions a policy that gives access to read RI and savings plan data
   - See the `HarnessCommitmentReadPolicy` in the template for the exact permissions included and modify as necessary.
-- (beta) Enable commitment write: (required for commitment orchestrator to make purchases) This provisions a policy that gives access to purchase RI and savings plans
+- Enable commitment write: (required for commitment orchestrator to make purchases) This provisions a policy that gives access to purchase RI and savings plans
   - See the `HarnessCommitmentWritePolicy` in the template for the exact permissions included and modify as necessary.
 
 For the rest of the feature enablement inputs you should set these as false (disabled) in your payer account, because it is unlikely that you will have workloads running inside the payer account.
