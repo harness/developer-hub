@@ -1,12 +1,14 @@
 ---
 sidebar_position: 8
-description: Harness University FAQs 
-title: University Frequently Asked Questions (FAQ)
+description: Harness University Policeis & FAQs 
+title: University Policies & Frequently Asked Questions (FAQ)
+id: "policies-and-faqs"
 redirect_from:
   - /certifications/faqs
+  - /university/faqs
 ---
 
-# Harness University Frequently Asked Questions (FAQs)
+# Harness University Policies & Frequently Asked Questions (FAQs)
 
 This FAQ page is designed to assist customers who are experiencing common issues while attempting to complete Harness certifications on our platform. From resolving exam glitches to managing time during the hands-on exam, this guide aims to provide quick and effective solutions beyond our [Instructions](/university/instructions) section.
 
@@ -25,13 +27,13 @@ This FAQ page is designed to assist customers who are experiencing common issues
 
 ---
 
-# Harness Exam, Testing, and Certification Policies
+## Harness Exam, Testing, and Certification Policies
 
 Harness is committed to maintaining the integrity and value of its Technical Certifications. All candidates must adhere to the following policies during their certification journey. By registering for or taking any Harness certification exam, you agree to abide by these policies and procedures.
 
 ---
 
-## General Policies
+### General Policies
 
 The following general policies apply to all Harness Technical Certification exams, regardless of level or product area:
 
@@ -42,7 +44,7 @@ The following general policies apply to all Harness Technical Certification exam
 
 ---
 
-## Candidate Rights and Responsibilities
+### Candidate Rights and Responsibilities
 
 Harness candidates have the right to a fair and equitable certification experience and are expected to uphold the highest ethical standards. All candidates are encouraged to:
 
@@ -52,7 +54,7 @@ Harness candidates have the right to a fair and equitable certification experien
 
 ---
 
-## Confidentiality Agreement
+### Confidentiality Agreement
 
 All exam content—including but not limited to questions, answers, labs, and diagrams—is the **confidential and proprietary property of Harness**. By taking any Harness certification exam, you agree to the following:
 
@@ -64,7 +66,7 @@ Violation of this agreement is considered serious misconduct and will be investi
 
 ---
 
-## Candidate Code of Conduct
+### Candidate Code of Conduct
 
 Earning a Harness certification means more than passing an exam—it reflects a commitment to excellence and integrity. As a candidate, you agree to:
 
@@ -77,7 +79,7 @@ Misconduct may result in exam disqualification, certification revocation, and ba
 
 ---
 
-## Exam Violations
+### Exam Violations
 
 Prohibited behaviors include (but are not limited to):
 
@@ -90,7 +92,7 @@ Harness reserves the right to invalidate exam results, suspend certifications, a
 
 ---
 
-## Impartiality and Fairness
+### Impartiality and Fairness
 
 Harness strives to ensure all certification exams are fair, objective, and inclusive. Our exam development processes are:
 
@@ -100,13 +102,13 @@ Harness strives to ensure all certification exams are fair, objective, and inclu
 
 ---
 
-## Privacy
+### Privacy
 
 Harness values and respects your privacy. Your certification data, including exam results and contact information, will be processed according to our [Privacy Policy](https://www.harness.io/legal/privacy). This data will not be shared with third parties without your consent, except as required to deliver the exam or comply with legal obligations.
 
 ---
 
-## Official Communication
+### Official Communication
 
 All communication related to your certification status, exam scheduling, and updates will be sent to the email address associated with your Harness training or certification account. You are responsible for keeping your contact information up to date to ensure timely receipt of notifications.
 

@@ -264,8 +264,8 @@ const config: Config = {
               to: 'university/instructions',
             },
             {
-              label: 'FAQs',
-              to: 'university/faqs',
+              label: 'Policies & FAQs',
+              to: 'university/policies-and-faqs',
             },
           ],
         },
