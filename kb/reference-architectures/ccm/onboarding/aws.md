@@ -91,7 +91,7 @@ Enabling CCM for your payer account gets your cost data into Harness and enabled
 
 You should leverage the same template/module that you did for the payer account but with different inputs for the features you want to enable. You will be deploying the template/role into every non-payer account where you want to utilize the other CCM features.
 
-[The CloudFormation stack is located here]([https://github.com/harness/harness-core/blob/develop/ce-nextgen/awstemplate/prod/HarnessAWSTemplate.yaml](https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/ngv1/HarnessAWSTemplate_V2.yaml)), and the [Terraform module here](https://github.com/harness-community/terraform-aws-harness-ccm).
+[The CloudFormation stack is located here](https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/ngv1/HarnessAWSTemplate_V2.yaml), and the [Terraform module here](https://github.com/harness-community/terraform-aws-harness-ccm).
 
 For both the template and the module there are inputs you must specify for your setup:
 
