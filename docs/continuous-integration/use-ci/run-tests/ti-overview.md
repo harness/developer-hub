@@ -44,7 +44,7 @@ When you perform a pull request, TI uses the following metrics to select tests:
 
 TI is always up to date and syncs when you merge code to any branch. To ensure TI functions correctly for pull requests, the [Git webhook trigger](/docs/platform/triggers/triggers-reference/) must include at least the **merge** and/or **close** events. These events are critical for TI to update its call graph and commit data accurately after a pull request is finalized. The terminology and behavior vary slightly across SCM providers:
 
-- In GitHub, the **close** event covers both merged and non-merged pull requests.
+- In Harness Code and GitHub, the **close** event covers both merged and non-merged pull requests.
 
 - In GitLab, you must explicitly enable both **merge** and **close** events since they are treated as separate triggers.
 
