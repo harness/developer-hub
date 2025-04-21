@@ -4,31 +4,31 @@
 # Learn more at: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Global Owners of the HDH Repository
-*       @pratmit @wei-harness
+*       @pratmit @wei-harness @ivikramsahu @dewan-ahmed
 
 # Configuration Files in DS are JS.
-*.js    @wei-harness @rohanmaharjan100
-*.ts    @wei-harness @rohanmaharjan100
-*.jsx    @wei-harness @rohanmaharjan100
-*.tsx    @wei-harness @rohanmaharjan100
+*.js    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed
+*.ts    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed
+*.jsx    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed
+*.tsx    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed
 
 # Changes to Lock File
 *.lock  @wei-harness
 
 # Changes to Config Files
-*.ini  @wei-harness
-*.json  @wei-harness
-*.toml  @wei-harness
-*ignore @wei-harness
-/_server-redirect @wei-harness
+*.ini  @wei-harness @ivikramsahu @dewan-ahmed
+*.json  @wei-harness @ivikramsahu @dewan-ahmed
+*.toml  @wei-harness @ivikramsahu @dewan-ahmed
+*ignore @wei-harness @ivikramsahu @dewan-ahmed
+/_server-redirect @wei-harness @ivikramsahu @dewan-ahmed
 
 # Changes to Netlify Files
 /netlify/ @wei-harness
 
 # Contributing
-CONTRIBUTING.md @pratmit
-README.md @pratmit
-/docs/hdh/ @pratmit
+CONTRIBUTING.md @pratmit @ivikramsahu @dewan-ahmed
+README.md @pratmit @ivikramsahu @dewan-ahmed
+/docs/hdh/ @pratmit @ivikramsahu @dewan-ahmed
 
 # University
 /university/ @ravilach

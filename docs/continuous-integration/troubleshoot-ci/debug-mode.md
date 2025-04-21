@@ -26,7 +26,7 @@ Debug mode is available if the following conditions are met:
 
 * You have the feature flag `CI_REMOTE_DEBUG` enabled. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 * The build fails at a [Run step](../use-ci/run-step-settings.md) with a Bash, Shell, Python, or PowerShell Core (`pwsh`) script in a **Build** (`CI`) stage.
-* The build runs on a Linux-based OS on any [build infrastructure](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md) (Harness Cloud, a self-managed VM, a Kubernetes cluster, or a local runner).
+* The build runs on Linux or macOS [build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me). Windows is not currently supported. 
 
 Debug mode is never available for a pipeline's first build. You must run the pipeline at least once before you can run the build in debug mode.
 
