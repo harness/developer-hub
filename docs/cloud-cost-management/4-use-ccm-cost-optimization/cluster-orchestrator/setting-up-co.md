@@ -1,5 +1,5 @@
 ---
-title: Setting up Cluster Orchestrator for AWS EKS clusters (Beta)
+title: Enabling Cluster Orchestrator for AWS EKS clusters (Beta)
 description: This topic describes how to set up Cluster Orchestrator 
 # sidebar_position: 2
 helpdocs_topic_id: 
