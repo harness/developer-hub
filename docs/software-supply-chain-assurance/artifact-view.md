@@ -135,7 +135,7 @@ The Vulnerabilities tab presents the scan results performed on the artifact, con
 
 :::note
 
-To ensure vulnerability results appear on the Artifacts page, run STO scans on images that are pushed to Docker registry.Scanning images locally before publishing will result in a digest mismatch, preventing SCS from linking the vulnerability data. it’s important to scan only after the artifact has been published.
+To ensure vulnerability results appear on the Artifacts page, run STO scans on images that are pushed to Docker registry.Scanning images locally before publishing will result in a digest mismatch, preventing SCS from linking the vulnerability data.
 
 :::
 
