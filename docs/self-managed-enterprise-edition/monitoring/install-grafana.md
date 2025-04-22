@@ -45,7 +45,7 @@ Once port-forwarded, open [http://localhost:8080](http://localhost:8080) in your
 1. Go to **Settings > Data Sources**.
 2. Click **Add data source**.
 
-![Add Data Source](./static/monitor-harness-on-prem-prom1.png)
+![Add Data Source](../static/monitor-harness-on-prem-prom1.png)
 
 3. Select **Prometheus** as the data source type.
 
