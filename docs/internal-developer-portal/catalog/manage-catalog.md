@@ -20,8 +20,8 @@ Harness IDP 2.0 represents a major evolution of the Internal Developer Portal, b
 
 ## Creating Entities
 *Fundamentals of entities: types of entities, their backstage references, etc.*
+
 *API way of adding entities*
-*Creating different types of entities (components, etc.)*
 
 In **IDP 1.0**, users were required to update **Catalog YAML files** for every change, which made adoption more complex—especially for entities that needed frequent updates, such as infrastructure resources.
 
@@ -64,10 +64,13 @@ You can still create entities using your existing catalog YAML files. Harness wi
   :::
 
 1. You’ll be redirected to the **Visual View**. You can switch to the **YAML View** using the toggle at the top of the screen. This allows you to directly edit the entity's YAML definition.
+![](./static/yaml-way.png)
 2. If you’re using a **legacy Backstage YAML**, paste it into the YAML view. Harness will convert it into the **Harness-native format** automatically. You can then proceed to finalize and create the entity. Since the Visual and YAML views are **live-synced**, changes made in one view will reflect in the other.
+![](./static/yaml-conversion.png)
 
 :::info
 Note: **YAML validation** is automatically performed to ensure compatibility with the **Harness-native Catalog YAML model**. Any validation errors will be displayed in the Validation Logs.
+![](./static/yaml-validation.png)
 :::
 
 3. If needed, **configure a plugin** by referring to the plugin’s documentation and adding the appropriate **annotations** in the Catalog YAML.
@@ -103,7 +106,7 @@ Here’s how to do it:
 
 ![](./static/delete-entity.png)
 
-### Entity URL
+## Sharing Entities
 You can also copy the **entity URL** from the same dropdown menu and share it with others—provided they have the necessary access permissions.
 
 ![](./static/copy-url.png)
