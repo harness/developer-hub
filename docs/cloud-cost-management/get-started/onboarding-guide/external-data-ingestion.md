@@ -8,7 +8,7 @@ helpdocs_is_published: true
 
 External Cost Data Ingestion allows users to bring cost data from third-party vendors  such as Mongo, Snowflake, etc., into Harness Cloud Cost Management (CCM). This allows users to see unified visibility and analysis across their cloud and external spend. Instead of managing these costs in spreadsheets or siloed tools, users can now consolidate them in Harness CCM for a single source of truth across all the cloud and non-cloud spend.
 
-Harness provides a standard CSV-based ingestion format, called FOCUS, which allows you to map any third-party billing data into a consistent structure. Once uploaded, Harness ingests, validates, and processes the data, automatically generating default Perspective so you can immediately begin analyzing costs, tracking budgets, and organizing spend by teams, business units, or environments.
+Harness provides a standard CSV-based ingestion format, called [FOCUS](https://focus.finops.org/what-is-focus/), which allows you to map any third-party billing data into a consistent structure. Once uploaded, Harness ingests, validates, and processes the data, automatically generating default Perspective so you can immediately begin analyzing costs, tracking budgets, and organizing spend by teams, business units, or environments.
 
 :::info
 Note: This feature is currently in early access and behind  `CCM_EXTERNAL_DATA_INGESTION` feature flag. Please reach out to our support team to enable it.
@@ -58,6 +58,32 @@ Step 3: Users will be asked to asked to fill in necessary details as shown below
 
 ![](./static/step-two-external.png)
 ![](./static/step-three-external.png)
+
+## Report Format
+
+To ensure smooth and consistent ingestion of external data into our system, we require all incoming reports to follow the `FOCUSv1` specification for report formatting. Your report must include the following mandatory fields:
+
+| FOCUSv1 Field         | Comments                                                                 | Description                                                                                                                                                                                                 |
+|-----------------------|--------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| BillingAccountId      |                                                                          | The identifier assigned to a billing account by the provider. Example: `509679112041`.                                                                                                                      |
+| BillingAccountName    |                                                                          | The display name assigned to a billing account. Example: `harness-aws-ct-master`.                                                                                                                           |
+| BillingPeriodStart    | Must match invoice month during upload                                   | The inclusive start date and time of a billing period. Equivalent to AWS `billingperiodstartdate`. Must be in UTC and formatted using ISO 8601 standard.                                                   |
+| BillingPeriodEnd      | Equivalent to AWS `billingperiodenddate`                                 | The exclusive end date and time of a billing period. Must be in UTC and formatted using ISO 8601 standard to ensure consistency across time zones.                                                         |
+| ChargeCategory        | Must be one of: Usage, Purchase, Tax, Credit, Adjustment                 | Represents the highest-level classification of a charge based on the nature of how it is billed.                                                                                                            |
+| ChargePeriodStart     | Equivalent to usage start date                                           | The inclusive start date and time within a charge period. Must be in ISO 8601 format.                                                                                                                       |
+| ChargePeriodEnd       | Equivalent to usage end date                                             | The exclusive end date and time of a charge period. Must be in ISO 8601 format.                                                                                                                             |
+| ConsumedQuantity      |                                                                          | The amount of a given SKU consumed, based on the unit specified (e.g., hours, GB).                                                                                                                          |
+| EffectiveCost         |                                                                          | The final cost after applying discounts, credits, and amortization of any prepaid purchases.                                                                                                                |
+| ProviderName          | Should match the `ProviderType` used when setting up the integration     | The name of the service provider offering the resource (e.g., AWS, Azure, GCP, or third-party SaaS vendor).                                                                                                |
+| RegionName            |                                                                          | The name of the geographic region where the resource is provisioned or the service is provided.                                                                                                             |
+| ResourceId            |                                                                          | A unique identifier assigned to the resource by the provider.                                                                                                                                                |
+| ServiceName           |                                                                          | The name of the service offering (e.g., EC2, BigQuery, RDS, or a SaaS platform).                                                                                                                            |
+| SkuId                 |                                                                          | A unique identifier for the stock-keeping unit (SKU), used by providers to define a specific pricing construct.                                                                                            |
+| SubAccountId          |                                                                          | The identifier assigned to a sub-account or grouping of services/resources, often used for cost or access management. Example: `759984737373`.                                                             |
+| SubAccountName        |                                                                          | A human-readable name for a sub-account or resource grouping. Example: `harness-aws-sales`.                                                                                                                 |
+| Tags                  | JSON format                                                              | A set of key-value pairs used to categorize, organize, or filter resources. Supports both provider-defined and user-defined tags. Stored as JSON for flexible metadata use.                                |
+
+
 
 ### FAQs:
 Q: Which FeatureFlag needs to be enabled ?
