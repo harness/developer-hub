@@ -35,7 +35,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
 
-* **Image:** Enter the name of your image with tag, such as `imagename:tag`.
+* **Image:** Enter the name of your image with tag or digest, such as `imagename:tag` or `imagename@sha256:<digest>`.
 
 </TabItem>
 
@@ -51,13 +51,11 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Elastic container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image, example `my-docker-repo/my-artifact`.
+* **Image:** Enter the name of your image, example `my-docker-repo/my-artifact` or `my-docker-repo/my-artifact@sha256:<digest>`.
 
 * **Region:** The geographical location of your ECR repository, example `us-east-1`
 
 * **Account ID:** The unique identifier associated with your AWS account.
-
-* **Tag:** Enter the tag name of your image, example `latest`.
 
 
 </TabItem>
@@ -70,9 +68,8 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
 
-* **Image Name:** Enter the name of your image, example `repository-name/image`.
+* **Image Name:** Enter the name of your image with tag oe digest, example `repository-name/image:tag` or `repository-name@sha256:<digest>`.
 
-* **Tag:** Enter the tag name of your image, example `latest`.
 
 </TabItem>
 
@@ -80,11 +77,10 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
 
-* **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where   `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/acr`
+* **Image:** Enter your image details in the format <registry-login-server>/<repository>. The <registry-login-server> is a fully qualified name of your Azure Container Registry. It typically follows the format <registry-name>.azurecr.io, where <registry-name> is the name you have given to your container registry instance in Azure. Example input: automate.azurecr.io/<my-repo>:tag or you can use digest automate.azurecr.io/<my-repo>@sha256:<digest>
 
 * **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
 
-* **Tag:** Enter the tag name of your image, example `latest`.
 
 </TabItem>
 </Tabs>
