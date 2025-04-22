@@ -52,7 +52,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image using a tag or digest, example `my-docker-org/repo-name:tag` or `my-docker-org/repo-name@<+pipeline.stages.<YOUR_STAGE_NAME>.spec.execution.steps.<YOUR_BUILD_AND_PUSH_STEP_NAME>.artifact_<YOUR_BUILD_AND_PUSH_STEP_NAME>.stepArtifacts.publishedImageArtifacts[0].digest>`
+* **Image:** Enter the name of your image using a tag or digest, example `my-docker-org/repo-name:tag` or `my-docker-org/repo-name:digest`
 
 </TabItem>
 

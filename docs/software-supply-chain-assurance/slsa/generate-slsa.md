@@ -60,9 +60,8 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image, example `my-docker-org/repo-name`.
+* **Image:** Enter the name of your image using a tag or digest, example `my-docker-org/repo-name:tag` or `my-docker-org/repo-name:digest`
 
-* **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using an [Harness Expressions](/docs/platform/variables-and-expressions/harness-variables/). Refer to the workflows described below for detailed guidance.
 
 </TabItem>
 
@@ -141,7 +140,7 @@ Here’s an example of what the signed attestation would look like
 
 Additionally, you can perform Base64 decoding on the payload data to view your SLSA Provenance.
 For verifying the SLSA attestation, please refer to [Verify SLSA](/docs/software-supply-chain-assurance/slsa/verify-slsa) documentation.
-
+<!-- 
 ## SLSA Generation step configuration with Build and Push step
 When using the Harness CI **Build and Push** step for the image-building process, you can configure the **SLSA Generation** step to generate and attest to the Provenance. Follow the [SLSA Generation step configuration](#slsa-generation-step-configuration), for the **Artifact Digest** field, you can use [Harness Expressions](/docs/platform/variables-and-expressions/harness-variables/) to dynamically populate the digest of the image built during the **Build and Push** step.  
 
@@ -270,7 +269,7 @@ This step will fetch the digest of the image and exposes it as a variable `diges
 
 <DocImage path={require('./static/slsa-gen-run-step.png')} width="50%" height="50%" />  
 
-For performing the attestation, refer to the section [Attest SLSA Provenance](#attest-slsa-provenance)
+For performing the attestation, refer to the section [Attest SLSA Provenance](#attest-slsa-provenance) -->
 
 ## Run the pipeline
 
