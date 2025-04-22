@@ -84,7 +84,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
 
-* **Image:** Enter your image details in the format <registry-login-server>/<repository>. The <registry-login-server> is a fully qualified name of your Azure Container Registry. It typically follows the format <registry-name>.azurecr.io, where <registry-name> is the name you have given to your container registry instance in Azure. Example input: automate.azurecr.io/<my-repo>:tag or you can use digest automate.azurecr.io/<my-repo>@sha256:<digest>
+* **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format  `<registry-name>.azurecr.io`, where `<registry-name>` is the name you have given to your container registry instance in Azure. Example: `automate.azurecr.io/<my-repo>:tag` or you can use digest `automate.azurecr.io/<my-repo>@sha256:<digest>`
 
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 

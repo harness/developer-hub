@@ -77,7 +77,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
 
-* **Image:** Enter your image details in the format <registry-login-server>/<repository>. The <registry-login-server> is a fully qualified name of your Azure Container Registry. It typically follows the format <registry-name>.azurecr.io, where <registry-name> is the name you have given to your container registry instance in Azure. Example input: automate.azurecr.io/<my-repo>:tag or you can use digest automate.azurecr.io/<my-repo>@sha256:<digest>
+* **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where `<registry-name>` is the name you have given to your container registry instance in Azure. Example: `automate.azurecr.io/<my-repo>:tag` or you can use digest `automate.azurecr.io/<my-repo>@sha256:<digest>`
 
 * **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
 
