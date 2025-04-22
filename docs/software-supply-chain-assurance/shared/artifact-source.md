@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image using either a tag or a digest. For example: `my-docker-org/repo-name:tag` or `my-docker-org/repo-name:digest`
+* **Image:** Enter the name of your image using either a tag or a digest. For example: `my-docker-org/repo-name:tag` or `my-docker-org/repo-name@sha256:<digest>`
 
 
 </TabItem>
