@@ -73,7 +73,7 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 #### Upload as flat
 
-A boolean value that determines the file structure and hierarchy when uploading to artifactory. By default, this value is `true`.
+A boolean value that determines the file structure and hierarchy when uploading to Artifactory. By default, this value is `true`.
 
 If set to:
 - `true`: Artifacts or files are uploaded to the exact target path specified and their hierarchy in the source repository is ignored.
