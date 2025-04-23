@@ -107,6 +107,18 @@ The following deprecated API endpoints are longer supported:
 
 ## April 2025 
 
+### Version 1.86.x <!--April 23, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where future-dated cloud credits were not consumed when no current credits were available. Previously, this caused overage to be incorrectly updated. [PL-62134]
+- Addressed performance issue where FileStore page was slow when too many files were loaded at once. We’ve added virtualization so only a few files load at a time, making the page much faster and smoother. [PL-61880] 
+- Deprecated the ‘Account Edition’ column from the Account List View across Harness. This change is part of our ongoing effort to simplify the UI and reduce redundancy. [PL-61850]
+
+#### New features and enhancements
+
+- Pipeline notifications sent to Datadog are now tagged with `source:harness_notifications`, following the release of the [Harness Notifications integration](https://docs.datadoghq.com/integrations/harness_harness_notifications/) in Datadog. [PL-59888]
+
 ### Version 1.85.x <!--April 16, 2025-->
 
 #### Fixed issues
