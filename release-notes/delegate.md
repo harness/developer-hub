@@ -89,6 +89,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## April 2025
 
+### Version 25.04.85701 <!-- April 23, 2025 -->
+
+#### Hotfix
+
+- Enabled Task Support for CLOUDWATCH_LOGS_DATA_COLLECTION_TASK. (CDS-109384)  
+
 ### Version 25.04.85602 <!-- April 15, 2025 -->
 
 #### Hotfix
