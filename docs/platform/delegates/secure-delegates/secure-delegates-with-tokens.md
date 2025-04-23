@@ -97,15 +97,13 @@ To update and restart an existing Kubernetes delegate, do the following:
 
 Destroy the existing docker containers for the delegate and upgarder using `docker stop <container_name_or_id>` command. 
 
-You destroy and recreate the Docker container using the `docker-compose.yaml` file you downloaded originally.
-
 To update and restart an existing Docker delegate, do the following:
 
 1. Rerun the docker run command for the delegate with using the new token in the `DELEGATE_TOKEN` environment variable.
 
 2. Rerun the docker run command for the delegate upgrader with using the new token in the `UPGRADER_TOKEN` environment variable.
 
-   You can verify that the environment variable has the new token using `docker exec [container ID] env`.
+You can verify that the environment variable has the new token using `docker exec [container ID] env`.
 
 ## Option: Revoke tokens
 
