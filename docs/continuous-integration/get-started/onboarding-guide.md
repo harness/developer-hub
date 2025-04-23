@@ -28,7 +28,7 @@ This getting started guide will walk you through setting up a build pipeline for
 
 <Tabs>
 <TabItem value="Interactive Guide">
-<DocVideo src="https://app.tango.us/app/embed/Creating-a-Build-Pipeline-in-Harness-for-Go-Applications-e56c08cc4d5c40b0a6f7f8cf27a06a89" title="Create your first CI Pipeline" />
+<DocVideo src="https://app.tango.us/app/embed/e56c08cc-4d5c-40b0-a6f7-f8cf27a06a89?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create your first CI Pipeline"/>
 </TabItem>
 <TabItem value="Step-by-step">
 
