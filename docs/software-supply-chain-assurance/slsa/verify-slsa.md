@@ -95,6 +95,7 @@ import CosignVerificationOptions from '/docs/software-supply-chain-assurance/sha
 
 <CosignVerificationOptions />
 
+<DocImage path={require('./static/verify-slsa.png')} width="50%" height="50%" />
 
 ## Enforce Policies on SLSA Provenance
 
