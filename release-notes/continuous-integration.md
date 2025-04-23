@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-04-16T10:00
+date: 2025-04-23T10:00
 sidebar_position: 10
 ---
 
