@@ -65,6 +65,14 @@
     line-height: 1.6;
   }
   
+  /* Keep headings visible when navigated via hash links / TOC */
+  .dynamic-markdown-selector .markdown-content h2[id],
+  .dynamic-markdown-selector .markdown-content h3[id],
+  .dynamic-markdown-selector .markdown-content h4[id] {
+    /* Height of Docusaurus navbar (var fallback 70px) */
+    scroll-margin-top: var(--ifm-navbar-height, 70px);
+  }
+  
   .selector-divider {
     border: none;
     border-top: 1.5px solid #e0e0e0;
