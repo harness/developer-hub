@@ -895,3 +895,64 @@ Harness uses the delegate to query Kubernetes resources using the built-in Kuber
 Harness queries Kubernetes resources using the delegate and the built-in Kubernetes SDK—no in-cluster agent is required. This allows Harness to retrieve deployment logs, pod statuses, restart counts, and related data.
 
 If resource querying fails, it's typically because the delegate's Kubernetes service account lacks sufficient permissions. Most users grant read access to pods, events, and namespaces for this reason.
+
+### Can Harness CD be used to deploy to a Kubernetes cluster running version 1.14?
+Technically, it may work, but it is not recommended or officially supported by Harness due to the age of the version.
+
+### What is the minimum Kubernetes version required for Harness Delegate deployment?
+As per the documentation, the minimum required Kubernetes version for deploying a delegate is 1.25.
+
+### What Kubernetes versions are supported by Harness in the Self-Managed Enterprise Edition?
+Harness supports Kubernetes versions 1.27, 1.28, 1.29, and 1.30 in the Self-Managed Enterprise Edition.
+Reference
+
+### What happens if I try deploying a delegate into a Kubernetes cluster with version 1.14?
+Delegate installation will likely fail, as it does not meet the minimum version requirement of 1.25.
+
+### Is there any workaround to deploy to a Kubernetes 1.14 cluster using Harness CD?
+Yes, you can consider using a delegate installed outside the 1.14 cluster to communicate and deploy to it, provided the necessary access is configured.
+
+### Can a Harness SaaS account be used to deploy to older Kubernetes clusters like 1.14?
+Yes, but with limited support and potential compatibility issues due to deprecated APIs and tooling in older clusters.
+
+### What are the risks of using Kubernetes 1.14 with Harness CD?
+Potential risks include incompatibility, lack of support, and failure of deployments due to API changes and tool mismatches.
+
+### Why is Kubernetes 1.14 no longer supported by cloud providers?
+It is end-of-life, and cloud providers stop supporting older versions to ensure security, stability, and feature parity.
+
+### What is the recommended solution to ensure compatibility with Harness CD?
+Upgrade your Kubernetes cluster to a version officially supported by Harness, ideally 1.27 or higher.
+
+### Is it possible to deploy a Harness Delegate on a different machine or cluster than the target Kubernetes 1.14 cluster?
+Yes, as long as the delegate can connect securely to the 1.14 cluster (e.g., via kubeconfig).
+
+### Can I use a shell script or custom steps in Harness CD to deploy to Kubernetes 1.14?
+Yes, but you will lose out on native features like automatic service discovery, rollback, and tracking.
+
+### Will Harness support Kubernetes 1.14 in the future?
+Unlikely, as the version is several years out of support, and modern tooling has moved on from it.
+
+### Can Harness CLI or API be used for deployments in this scenario?
+Yes, Harness CLI or custom API integrations can help bridge the gap, but it’s a manual workaround.
+
+### Can GitOps with Harness work on Kubernetes 1.14?
+It might be possible with custom GitOps workflows, but Harness GitOps also relies on modern Kubernetes support.
+
+### Can we upgrade our delegate image to support 1.14?
+Delegate images are built to work with newer Kubernetes versions; downgrading is not supported and may cause unexpected issues.
+
+### What features of Harness CD may not work with Kubernetes 1.14?
+You may face issues with features like canary deployments, traffic shifting, native secrets management, and API integrations.
+
+### What is the Harness recommendation for legacy Kubernetes environments?
+Harness strongly recommends upgrading your Kubernetes environment to ensure reliable CI/CD operations.
+
+### How can we discuss this scenario in more detail with Harness?
+You can schedule a quick connect with the Harness support or solutions team to explore your specific use case.
+
+### Can I install Helm charts from Harness into a 1.14 cluster?
+Possibly, but only if the Helm version and chart compatibility match your cluster capabilities.
+
+### If my company cannot upgrade immediately, can we still use Harness CD temporarily with 1.14?
+You may be able to set up basic deployment flows using external delegates and manual scripting, but it's not a long-term solution.
