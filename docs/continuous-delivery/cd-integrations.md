@@ -22,6 +22,12 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`                          | Enables creation and reuse of customized notification body templates with dynamic inputs (e.g., pipeline variables, step outputs) across Slack, Email, Teams, Webhooks, and more. **This feature is in Limited GA.** |
+| `CDS_SUPPORT_HTTP_HEADER_HTTP_STEP`                           | Allows capturing HTTP response headers, including cookies, as output variables in the HTTP step for use in downstream steps. **This feature is in Limited GA.** |
+| `CDS_SUPPORT_TF_CLOUD_PLAN_REFRESH_TYPE`                      | Auto-approves Terraform Cloud runs of type **Refresh** when executed through Harness, streamlining plan execution. **This feature is in Limited GA.** |
+| `CDS_SCM_FIX_FOLDER_PATH`                                     | Fixes file copy issues in SCM integrations where a leading `/` in the source path caused only a single file to be copied instead of the entire directory. **This feature is in Limited GA.** |
+| `CDS_AWS_CONNECTOR_REF_CDK`                                   | Expands the OIDC payload for GCS Cache steps to include additional claims, enabling fine-grained access control using custom claim attributes. **This feature is in Limited GA.** |
+| `CDS_AWS_LAMBDA_ROLLBACK_V2`                                  | Allows deployment of AWS Lambda artifacts larger than 50 MB from S3 and supports version rollback using aliases. **This feature is in Limited GA.** |
 | `CI_ENABLE_MULTILINE_OUTPUTS_SECRETS`                         | Enables support for capturing multiline output variables from Container steps in CD pipelines, ensuring proper population and visibility in the Output tab. **This feature is in Limited GA.**                                                     |
 | `CDS_ECS_TRAFFIC_SHIFT`                                       | Introduces the ECS Traffic Shifting step to support weighted traffic shifting and Spot deployments, enabling gradual rollout strategies for ECS services with low task counts. **This feature is in Limited GA.**                                   |
 | `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE` | Enforces namespace consistency in Kubernetes and Helm deployments by preventing users from overriding the infrastructure-defined namespace using custom CLI flags like `--namespace`. **This feature is in Limited GA.**             |
