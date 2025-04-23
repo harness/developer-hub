@@ -91,6 +91,8 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 25.04.85700 <!--April 23, 2025-->
 
+#### Fixed issues
+
 - SSH command step now supports OIDC. [CDS-109225]  
 - Restored the skipping of Helm Canary delete step when namespace validation fails, and corrected namespace object handling to use the proper `name` field. [CDS-109155]  
 - Fixed the issue where readiness-related attributes were removed from the manifest by adding them to the allowlist to avoid unintended filtering. [CDS-109043]  
