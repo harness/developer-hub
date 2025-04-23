@@ -328,3 +328,18 @@ Workarounds:
 - Use an Organization-scoped or Account-scoped repository instead of a Project-scoped repository.
 - Configure repo-cred templates to manage authentication for project-level repositories.
 This is a known limitation in [ArgoCD](https://github.com/argoproj/argo-cd/issues/21016).
+
+### Does the Harness GitOps agent upgrade ArgoCD components by default?
+No, by default, the Harness GitOps agent does not upgrade ArgoCD components.
+
+### How can I enable the Harness GitOps agent to upgrade ArgoCD components?
+If you're using the GitOps Agent Helm chart, you can enable upgrades by setting upgradeAll: true under the upgrader section.
+
+### What does setting upgradeAll: true do in the GitOps Agent Helm chart?
+Setting upgradeAll: true ensures that the Harness GitOps agent also upgrades ArgoCD components to the required version.
+
+### Where do I configure the upgrade behavior for the GitOps agent?
+The upgrade behavior can be configured in the upgrader section of the GitOps Agent Helm chart values.
+
+### Is upgrading ArgoCD components mandatory for the Harness GitOps agent to function?
+No, upgrading ArgoCD components is not mandatory for basic functionality, but enabling it ensures version compatibility and access to new features.
