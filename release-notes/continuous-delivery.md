@@ -59,7 +59,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### New Features and Enhancements
 
-- Harness now supports **customized notification body templates** with dynamic inputs across Slack, Email, Teams, Webhooks, and more. Currently, this feature is behind the feature flag `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-24685**) 
+- Harness now supports **customized notifications** for **Webhook-based Centralized Notifications** and for **all types of Pipeline Notifications**. Currently, this feature is behind the feature flag `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**PIPE-24685**) 
 
 - Harness now supports capturing HTTP response headers, including cookies, as output variables in the HTTP step. Currently, this feature is behind the feature flag `CDS_SUPPORT_HTTP_HEADER_HTTP_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-95328**) 
 

@@ -22,7 +22,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
-| `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`                          | Enables creation and reuse of customized notification body templates with dynamic inputs (e.g., pipeline variables, step outputs) across Slack, Email, Teams, Webhooks, and more. **This feature is in Limited GA.** |
+| `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`                          | Enables customized notifications for all types of Pipeline Notifications and for Webhook-based Centralized Notifications. **This feature is in Limited GA.** |
 | `CDS_SUPPORT_HTTP_HEADER_HTTP_STEP`                           | Allows capturing HTTP response headers, including cookies, as output variables in the HTTP step for use in downstream steps. **This feature is in Limited GA.** |
 | `CDS_SUPPORT_TF_CLOUD_PLAN_REFRESH_TYPE`                      | Auto-approves Terraform Cloud runs of type **Refresh** when executed through Harness, streamlining plan execution. **This feature is in Limited GA.** |
 | `CDS_SCM_FIX_FOLDER_PATH`                                     | Fixes file copy issues in SCM integrations where a leading `/` in the source path caused only a single file to be copied instead of the entire directory. **This feature is in Limited GA.** |
