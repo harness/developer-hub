@@ -50,7 +50,9 @@ The IaCM Dashboard includes several tabs and settings to customize your experien
   - By **workspace tags**.
   - By **workspaces**.
 
-**Note Panel**: Displays modules in use by your workspaces, regardless of their origin (e.g., OpenTofu, Harness, RDS).
+:::tip module usage metrics
+Displays modules in use by your workspaces, regardless of their origin (e.g., OpenTofu, Harness, RDS).
+:::
 
 ### Settings
 - Customize dashboard behavior:
@@ -63,3 +65,6 @@ The IaCM Dashboard includes several tabs and settings to customize your experien
 - Quickly adjust your dashboard layout with predefined tile sizes:
   - **XL**: 1 Tile across.
   - **S**: 4 Tiles across.
+
+---
+Review your [workspace settings](/docs/infra-as-code-management/workspaces/workspace-tabs) and [IaCM best practices](/docs/infra-as-code-management/iacm-best-practices) for more information on how to get the most out of Harness IaCM.
