@@ -355,7 +355,7 @@ No, Harness doesn't support dynamic picking of instance families in node recomme
 
 #### Does Harness take into account Reserved Instances (RI) and Savings Plans when showing potential spend and savings?
 
-Yes, Harness considers RIs and Savings Plans to provide insights into potential spend and savings. 
+Harness Cloud Cost Management provides recommendations based on public pricing: on-demand and spot instance rates. This means that the potential spend and savings shown do not take into account any customer-specific discounts, Reserved Instances (RIs), or Savings Plans (SPs).
 
 ### Perspectives and Dashboards
 
@@ -387,7 +387,7 @@ To resolve any cost differences between the Perspective and Dashboard in Harness
 
 #### Do the recommendations consider our compute savings plan, RIs, and Savings Plans?
 
-No, the node pool recommendations do not take into account RI (Reserved Instances) and savings plans. The potential monthly spend and savings are calculated using a public pricing API and do not consider any discounts or savings from your compute savings plan.
+Harness Cloud Cost Management provides recommendations based on public pricing: on-demand and spot instance rates. This means that the potential spend and savings shown do not take into account any customer-specific discounts, Reserved Instances (RIs), or Savings Plans (SPs).
 
 #### Why do ECS clusters get added automatically to the default perspective while EKS clusters don't?
 
