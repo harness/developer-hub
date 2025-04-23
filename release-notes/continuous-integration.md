@@ -93,6 +93,22 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 :::
 
+### Version 1.76
+
+<!-- 2025-04-21 -->
+
+#### New features and enhancements
+- Added support to select machine image for cloud infrastructure under stage infrastructure settings in the CI module. (CI-15648)
+
+- [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect/) now supports the “Upload to GCS” out-of-the-box (OOTB) step. (CI-17124)
+
+- Implemented support for uploading to Artifactory in the MacOS CI Hosted Build pipeline. (CI-17118)
+
+#### Fixed issues
+- We identified an issue where builds marked as **Ignore Failed** were incorrectly appearing under **Failed Builds** in the **Overview** page. This has now been fixed, and such builds will no longer be shown in the failed list. The **See All** page continues to work as expected, with filters applied correctly based on user selection. (ZD-79234, CI-16440)
+
+- A 60-second timeout was added for log uploads from the addon service to the log service and a 5-second timeout for open. With this change, the pipeline continues execution even if log uploads fail due to storage full (though logs won’t be visible in the UI). (CI-16484, ZD-79557)
+
 ### Version 1.75
 
 <!-- 2025-04-14 -->
