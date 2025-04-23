@@ -24,7 +24,7 @@ Usually AutoStopping Rules listen to HTTP/HTTPS traffic or follow a schedule. On
 
 Metrics watcher is used to detect activity based on CPU and memory of the resource. If the CPU and memory values are above the configured threshold the ECG will send heartbeats to Harness for the configured rule.
 
-If you specify both CPU and memory, they will both need to be met to be concidered active.
+If you specify both CPU and memory, they will both need to be met to be considered active.
 
 ### Example
 
