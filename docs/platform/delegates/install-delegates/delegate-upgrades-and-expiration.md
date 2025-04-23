@@ -206,15 +206,18 @@ To disable auto-upgrade on an installed delegate image, do the following:
 Unlike Kubernetes delegates, where each delegate has a corresponding upgrader, the Docker Delegate upgrader can upgrade multiple Docker delegates. An upgrader is capable of upgrading Docker delegates whose value of the environment variable `DELEGATE_NAME` is same as the value of the upgrade’s `UPGRADER_WORKLOAD_NAME` environment variable.
 
 There are two ways to disable automatic upgrades for docker delegates:
+  
   1. By passing an environment variable (Recommended): Set `DISABLE_AUTO_UPGRADE` environment variable for the upgrader to true. By default this is set to false. This approach will disable the auto upgrades, however, the delegate health checks will remain unaffected.
      
      ```
       -e DISABLE_AUTO_UPGRADE=true
      ```  
-  You can set this in two ways:
-      a. By modifying the docker container's configuration (recommended for persistent changes): Stop the container using `docker stop <container_name_or_id>` , update the environment variable and restart the container using `docker start <container_name_or_id>`.
+    
+      You can set this in two ways:
       
-      b. Using docker exec (for temporary changes within a session): Enter the running container for upgrader using `docker exec -it <container_name_or_id> bash`, set the environment variable using  `export DISABLE_AUTO_UPGRADE=”true”`, and finally exiting the container through `exit` command. 
+        1. By modifying the docker container's configuration (recommended for persistent changes): Stop the container using `docker stop <container_name_or_id>` , update the environment variable and restart the container using `docker start <container_name_or_id>`.
+      
+        2. Using docker exec (for temporary changes within a session): Enter the running container for upgrader using `docker exec -it <container_name_or_id> bash`, set the environment variable using  `export DISABLE_AUTO_UPGRADE=”true”`, and finally exiting the container through `exit` command. 
   
   2. By killing the Docker Delegate upgrader container (Not recommended) : Stop the docker container using `docker stop <container_name_or_id>` . This will not only disable the auto upgrades but the upgrader will no longer be able to perform health checks on the delegates.
   
