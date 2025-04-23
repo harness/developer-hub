@@ -207,12 +207,15 @@ Unlike Kubernetes delegates, where each delegate has a corresponding upgrader, t
 
 There are two ways to disable automatic upgrades for docker delegates:
   1. By passing an environment variable (Recommended): Set `DISABLE_AUTO_UPGRADE` environment variable for the upgrader to true. By default this is set to false. This approach will disable the auto upgrades, however, the delegate health checks will remain unaffected.
+     
      ```
-    -e DISABLE_AUTO_UPGRADE=true
+      -e DISABLE_AUTO_UPGRADE=true
      ```  
-    You can set this in two ways:
+  You can set this in two ways:
       a. By modifying the docker container's configuration (recommended for persistent changes): Stop the container using `docker stop <container_name_or_id>` , update the environment variable and restart the container using `docker start <container_name_or_id>`.
+      
       b. Using docker exec (for temporary changes within a session): Enter the running container for upgrader using `docker exec -it <container_name_or_id> bash`, set the environment variable using  `export DISABLE_AUTO_UPGRADE=”true”`, and finally exiting the container through `exit` command. 
+  
   2. By killing the Docker Delegate upgrader container (Not recommended) : Stop the docker container using `docker stop <container_name_or_id>` . This will not only disable the auto upgrades but the upgrader will no longer be able to perform health checks on the delegates.
   
 ## Configure the delegate upgrade schedule
@@ -284,9 +287,11 @@ To configure the delegate upgrade schedule, do the following:
 To configure the delegate upgrade schedule for Docker delegates, do the following:
 1. In the docker run command for the upgrader, locate the `SCHEDULE` environment variable. 
 2. Configure the time period after which you want the upgrader to check for upgrades. For example, if you want to check after every 15 minutes, update the cron expression in the `SCHEDULE` environment variable:
-    ```
+    
+  ```
     -e SCHEDULE="0 */15 * * *" us-west1-docker.pkg.dev/gar-setup/docker/upgrader:latest
-    ``` 
+  ``` 
+
 3. Run the docker run command for the Docker delegate upgrader with the updated value of `SCHEDULE` environment variable. 
 
 ## Configure an optional registry mirror for delegate images
