@@ -40,6 +40,8 @@ The Artifact Signing step allows you to sign your artifacts and optionally push 
 
 Artifact Signing step supports both [**container**](/docs/software-supply-chain-assurance/artifact/sign-artifacts#container-images) as well as [**non-container images**](/docs/software-supply-chain-assurance/artifact/sign-artifacts#non-container-images).
 
+<DocImage path={require('./static/artifact-sign.png')} width="50%" height="50%" />
+
 ### Container Images
 
 You can search for **Artifact Signing** and add it to either the **Build** or **Security** stage of a Harness pipeline
@@ -124,10 +126,6 @@ You can securely sign the artifacts using **Cosign** or **Cosign with Secret Man
 import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shared/generate-cosign-artifact.md';
 
 <GenerateKeysPrerequisite />
-
-
-
-<DocImage path={require('./static/artifact-sign.png')} width="50%" height="50%" />
 
 
 **Attach Signature to Artifact Registry** (Optional): By default, this option is unchecked which means the signature will not be uploaded to the artifact registry and checking this option will push the signature as a `.sig` file to the artifact registry.

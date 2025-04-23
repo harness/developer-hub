@@ -65,6 +65,8 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 
 ## SBOM Orchestration step configuration
 
+<DocImage path={require('./static/sbomm-overvieww.png')} width="50%" height="50%" />
+
 You can use **SBOM Orchestration** step to generate an SBOM in either the **Build** or **Deploy** stage of a Harness pipeline.
 
 * In a **Build** stage, add the **SBOM Orchestration** step after the artifact (image) has been pushed to an artifact repository.
