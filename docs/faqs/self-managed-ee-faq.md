@@ -8,7 +8,7 @@ This topic addresses some frequently asked questions about Harness Self-Managed 
 
 ## How do I create my Harness account and my first project?
 
-You create your Harness account the first time you use Harness Self-Managed Enterprise Edition. You are automatically assigned the Harness user role, Account Admin. For more information, go to [Create your Harness account](/docs/self-managed-enterprise-edition/get-started/onboarding-guide#create-your-harness-account) and [Create your first project](/docs/self-managed-enterprise-edition/get-started/onboarding-guide#create-your-first-project) in the Onboarding guide.
+You create your Harness account the first time you use Harness Self-Managed Enterprise Edition. You are automatically assigned the Harness user role, Account Admin. For more information, check out the [Overview](/docs/self-managed-enterprise-edition/smp-overview) section.
 
 ## How do I deploy Harness modules?
 
@@ -46,7 +46,7 @@ For more information on supported features, go to [What's supported in Self-Mana
 
 Yes, the following tutorials are available for self-managed external database setup.
 
-- [Configure an external self-managed MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb/)
+- [Configure an external self-managed MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/mongo-db/use-an-external-self-managed-mongodb/)
 - [Configure an external self-managed TimescaleDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb/)
 - [Configure an external self-managed Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database/)
 - [Configure an external self-managed PostgreSQL](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database/)
