@@ -13,7 +13,7 @@ In the Artifact Registry in Harness, **Triggers** automate actions based on even
     - Executes when a new artifact is pushed to the registry.
     - Useful for automating deployments or notifying downstream systems.
 2. **Artifact Deletion**
-    - Triggers when a registry version is deleted.
+    - Triggers when an artifact version is deleted.
 ---
 A webhook sends a notification to your app when a new artifact is pushed to the registry, and the trigger in your CD build pipeline automatically starts a deployment or build process in response to that notification.
 To configure and use a webhook, you need to:
