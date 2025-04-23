@@ -12,7 +12,7 @@ Harness IaCM Dashboard provides a comprehensive view of your workspaces, offerin
 The IaCM Dashboard is designed to help you:
 
 - Visualize the **count of workspaces** by organization and project.
-- List **modules in use** and identify how many workspaces are using them. [Learn more about modules →](/docs/infra-as-code-management/modules/overview)
+- List **modules in use** and identify how many workspaces are using them. [Learn more about Harness module registry](docs/infra-as-code-management/iacm-features/module-registry/module-registry-code-structure)
 - Create visualizations based on **workspace tags** (e.g., "team:europe") to better understand resource allocation.
 ---
 
