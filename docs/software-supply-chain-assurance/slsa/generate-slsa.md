@@ -121,6 +121,8 @@ import CosignAttestationOptions from '/docs/software-supply-chain-assurance/shar
 
 <CosignAttestationOptions />
 
+<DocImage path={require('./static/slsa-tab.png')} width="50%" height="50%" />
+
 Here’s an example of what the signed attestation would look like
 
 ```
