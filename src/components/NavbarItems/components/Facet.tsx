@@ -73,8 +73,6 @@ const Facet: React.FC<FacetProps> = (props) => {
     }
     setTimeout(() => {
       if (existingFacets.length > 1) {
-        // console.log({ existingFacets });
-
         existingFacets.forEach((facet) => {
           if (controller.state.facetId == 'commonsource' && facet.facetId == 'commonsource') {
             controller.toggleSelect({
