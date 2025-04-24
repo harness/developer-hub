@@ -22,12 +22,20 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 | **Cluster**        | **Deployment Status** | **Release Version** | 
 | --------------------------- | -------------------------- | --------------- | 
-| **prod0**   | ✅ Completed                        | April - v1.48.1         |                                                                                                                        
-| **prod1** | ✅ Completed                        | April - v1.48.1         |                                                                                                                      
-| **prod2**    | Scheduled                 | April - v1.48.1      |                                                                                                                      
-| **prod3**         |  Scheduled                  | April - v1.48.1    | 
-| **prod4**         |  Scheduled   | April - v1.48.1       | 
-| **prodeu1**   | Scheduled                        | April - v1.48.1    |      
+| **prod0**   | ✅ Completed                        | April - v1.49.1         |                                                                                                                        
+| **prod1** | ✅ Completed                        | April - v1.49.1         |                                                                                                                      
+| **prod2**    |  ✅ Completed         | April - v1.48.1      |                                                                                                                      
+| **prod3**         |   ✅ Completed                     | April - v1.48.1    | 
+| **prod4**         |  ✅ Completed       | April - v1.48.1       | 
+| **prodeu1**   |  ✅ Completed                        | April - v1.48.1    |      
+
+
+## April 2025 - Version 1.49.1
+
+### Feature Improvements
+
+- Asset Governance Alert Fix: We've improved the alert update experience to ensure that only relevant resources and cloud accounts are displayed based on the selected cloud provider. This enhancement ensures a more accurate and streamlined configuration flow for Governance alerts. [CCM-22618]
+
 ## April 2025 - Version 1.48.1
 
 ### [New Feature] Alerts for Governance Rule Evaluations
