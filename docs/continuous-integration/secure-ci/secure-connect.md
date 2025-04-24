@@ -29,7 +29,7 @@ With Secure Connect for Harness CI Cloud, you can connect to your sensitive asse
 
 <figure>
 
-![Secure Connect architecture diagram](./static/secure-connect-arch3.png)
+![Secure Connect architecture diagram](./static/secure-connect-arch.png)
 
 <figcaption>To use Harness CI Cloud in firewalled environments, such as corporate networks, you enable a secure tunnel between the Harness Cloud network and your private network.</figcaption>
 </figure>
@@ -145,8 +145,9 @@ docker run -it \
    * [Bitbucket connectors](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
    * [Git connectors](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
    * [Docker connectors](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
-   * [GCP connectors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp)
+   * [GCP connectors (GAR and GCS)](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp)
    * [AWS connectors](/docs/platform/connectors/cloud-providers/add-aws-connector)
+   * [JFrog connectors (Artifactory)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference)
 
 ### Use Secure Connect environment variables to route other clients
 
