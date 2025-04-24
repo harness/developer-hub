@@ -6,7 +6,7 @@ description: "Learn how to use the IaCM Dashboard to gain insights into workspac
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness IaCM Dashboard provides a comprehensive view of your workspaces, offering metrics and details that aren't typically exposed elsewhere in the platform. By gathering workspace data and presenting it in an interactive format, the dashboard enables you to gain valuable insights into workspace usage, helping you make informed decisions.
+Harness Custom Dashboards provide a fully integrated BI experience powered by IaCM data, offering deep visibility into workspace metrics and insights not typically surfaced elsewhere in the platform.
 
 ## Use Cases
 The IaCM Dashboard is designed to help you:
@@ -14,6 +14,15 @@ The IaCM Dashboard is designed to help you:
 - Visualize the **count of workspaces** by organization and project.
 - List **modules in use** and identify how many workspaces are using them. [Learn more about Harness module registry](/docs/infra-as-code-management/iacm-features/module-registry/module-registry-code-structure)
 - Create visualizations based on **workspace tags** (e.g., "team:europe") to better understand resource allocation.
+- **Monitor provider compliance** across your infrastructure:
+  - Track what percentage of workspaces are using [**OpenTofu**](https://opentofu.org/) or Terraform.
+  - Identify projects using outdated or non-compliant provider versions
+  - Ensure standardization across cloud providers and tools
+
+:::tip OpenTofu migration
+Harness supports all OpenTofu versions, and Terraform MPL versions up to 1.5.x, any BSL versions (from 1.6.0) are not supported. 
+Follow this [**OpenTofu migration guide**](https://opentofu.org/docs/intro/migration/) to transition from Terraform to OpenTofu and leverage the benefits of this open-source alternative.
+:::
 ---
 
 <Tabs>
@@ -34,8 +43,12 @@ Follow these steps to download and share your reports:
 </Tabs>
 ---
 
-## Dashboard Tabs and Settings
-The IaCM Dashboard includes several tabs and settings to customize your experience. Here's an overview:
+## Dashboard Customization
+Harness Dashboards provide flexible customization options to tailor your analytics experience. Here's an overview of available features:
+
+:::tip Advanced Dashboard Features
+For comprehensive information on advanced dashboards capabilities, filters, and best practices, see the [Harness Dashboards documentation](/docs/category/harness-dashboards).
+:::
 
 ### Add
 - Options to add:
