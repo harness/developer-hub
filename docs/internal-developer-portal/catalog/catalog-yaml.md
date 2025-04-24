@@ -9,13 +9,6 @@ IDP 2.0 implements a Harness-native entity schema featuring targeted adjustments
 
 JSON Schemas for all Catalog entities are available through our API.
 
-#### Migrating to 2.0
-
-To simplify migration, we’ve developed an API that converts **Backstage Catalog YAML** to the **Harness Catalog YAML** format. This conversion is also available directly in the **user interface**—simply paste your Backstage Catalog YAML to automatically generate the corresponding Harness format.  
-You can [read more about converting your legacy Backstage YAMLs here](#).
-
-All existing Catalog entities and Workflows will be **automatically migrated** to IDP 2.0. Additionally, a new Git Experience tool will be available to help you **commit these converted definitions directly to their respective YAML files in Git**.
-
 #### ⨁ New fields
 
 - `orgIdentifier` (optional)
@@ -45,6 +38,13 @@ These fields define the entity's scope. For project-scoped entities, both fields
 
 - `metadata` continues to be flexible. You can define your own properties within metadata.
 - `annotations`, `description`, `tags`, `links`, `labels` etc. continue to be part of metadata.
+
+## Migrating to 2.0
+
+To simplify migration, we’ve developed an API that converts **Backstage Catalog YAML** to the **Harness Catalog YAML** format. This conversion is also available directly in the **user interface**—simply paste your Backstage Catalog YAML to automatically generate the corresponding Harness format.  
+You can [read more about converting your legacy Backstage YAMLs here](#).
+
+All existing Catalog entities and Workflows will be **automatically migrated** to IDP 2.0. Additionally, a new Git Experience tool will be available to help you **commit these converted definitions directly to their respective YAML files in Git**.
 
 ## Common to All Kinds: The Envelope
 
