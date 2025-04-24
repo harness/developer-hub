@@ -442,8 +442,6 @@ This feature is currently behind the feature flag `CDS_SUPPORT_HTTP_HEADER_HTTP_
 
 You can now access HTTP response headers—such as cookies—directly within your pipeline using the expression: `<+httpResponseHeaders.get('headerKey')>`
 
-Replace 'headerKey' with the specific header you wish to retrieve.
-
 Replace `'headerKey'` with the specific header you want to retrieve (e.g., `'set-cookie'`, `'content-type'`, or `'x-api-key'`).
 
 This expression can be used in:
