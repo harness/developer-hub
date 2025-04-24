@@ -457,15 +457,6 @@ Run services for integration in the background using a `docker-compose.yaml` fil
 
 Customers typically have a one-month lead time before the CI starts running the newer versions of images. This allows them to conduct necessary tests and security scans on the images before deployment.
 
-
-#### Can I export my entire FirstGen deployment history and audit trail from Harness?
-
-You can use the following Harness FirstGen APIs to download your FirstGen audit trial and deployment history:
-
-* [FirstGen Audit Trails API](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-audit-trails-api)
-* [FirstGen API](https://developer.harness.io/docs/category/harness-api-firstgen)
-
-
 #### Why does a remote input set need a commit message input?
 
 Harness requires a commit message so Harness can store the input set YAML in your Git Repo by making a commit to your Git repo.
@@ -1143,10 +1134,6 @@ No, it needs to be a different execution every time.
 
 No, we don’t have this capability.
 
-#### In Harness FirstGen, how can I remove the old plan-file and start again with a fresh plan to make the workflow run successfully?
-
-You can [enable the Skip Terraform Refresh when inheriting Terraform plan option](https://developer.harness.io/docs/first-gen/continuous-delivery/terraform-category/add-terraform-scripts#option-2-skip-terraform-refresh-when-inheriting-terraform-plan).
-
 #### For variables do we have options to intake parameters via dropdown or radio buttons etc ?
 
 Yes we do, here in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#supplying-runtime-inputs-during-execution) , with allowed values you can have multiple inputs to select from range of values allowed.
@@ -1405,7 +1392,7 @@ You can go to Service under the project --> Summary will show you the details wi
 #### Harness enabling auto-deployment.
 
 To have automatic deployment in Harness, you can make use of triggers. On new artifact. 
-Refer this [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-a-time-schedule/)
+Refer this [Documentation](/docs/platform/triggers/trigger-on-a-new-artifact)
 As soon as your build is complete and it publishes a new artifact you can setup a trigger on that and it will trigger a Harness Deployment. 
 
 #### Question about deployToAll yaml field, The pipeline yaml for the environment contains deployToAll field. What does that field do?
@@ -1448,7 +1435,8 @@ Yes, It works for config files added to the service and not any config file from
 
 #### Can we increase the Workflow Queue limit?
 
-No, for the Harness based locking on infrastructure, currently the max is 20 and its not configurable, since we allow only 1 concurrent execution per infra. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/workflow-queuing/#limitations).
+No, but you can manage your resources with [barriers, resources constraints, and queue steps](/docs/continuous-delivery/manage-deployments/controlling-deployments-with-barriers-resource-constraints-and-queue-steps).
+
 
 #### How to exit a workflow without marking it as failed?
 
@@ -1654,10 +1642,9 @@ You can use variable expressions in artifact source templates to allow team memb
 The namespace mentioned in the YAML file will have higher priority than the one mentioned in the infra definition.
 
 
-#### Is "Scope to Specific Services" for Infra definitions going to available for NG as well ?
+#### Can you "Scope to Specific Services" for Infra definitions?
 
-Yes, Scope to Specific Services for Infra definitions will be onboarded soon for Next-Gen as well.
-For how to use Scope to Specific Services in First-Gen, please follow this [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/environments/infrastructure-definitions/)
+Yes, you can [scope to specific services](/docs/continuous-delivery/x-platform-cd-features/environments/scope-infra-to-services/)
 
 
 #### Is it possible to use Harness for managing cluster updates like ingress and IAM roles in EKS, without the Infrastructure Definition targeting a specific namespace, and ensuring that my YAML files are applied as expected?
@@ -2243,31 +2230,6 @@ It is possible to create a shell script that sends notifications through Slack, 
 
 When you click on Delete Template option in the template , you will get all the version listed out and you will need to select the version to be deleted. 
 
-#### Is there a way to get all the services list present in harness along with their id's and other meta data via gql
-
-We have the API to get the services list based on ApplicationID. 
- 
-https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-services-api#fetch-the-list-of-services-for-a-given-application
-
-```
-{  
-  services(  
-    filters: [  
- { application: { operator: EQUALS, values: ["<applicationId>"] } }  
- ]  
-    limit: 1000  
-  ) {  
-    pageInfo {  
-      total  
-    }  
-    nodes {  
-      id  
-      name  
-    }  
-  }  
-}
-```
-
 #### Is there a way to prevent the "Get Started" prompt from popping up for newly transitioned teams coming over to NG?
 
 No, for now it not an optional event. We may include a feature flag on this in future.
@@ -2467,11 +2429,6 @@ YAML body is not required for it.
 #### Is the location of the state file independent of what delegate the pipeline runs on?
 
 Yes, the State file is present at Harness SaaS not on delegates.
-
-#### Is "Scope to Specific Services" for Infra definitions going to available for NG as well ?
-
-Yes, Scope to Specific Services for Infra definitions will be onboarded soon for Next-Gen as well.
-For how to use Scope to Specific Services in First-Gen, please follow this [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/environments/infrastructure-definitions/)
 
 #### How can one validate an issue while saving a pipeline ?
 
@@ -2711,13 +2668,6 @@ Yes, we can filter deployments if the environments used for the same are marked 
 #### Is there a way to get the name of the person triggering the execution?
 
 Yes, one can use the [expressions](ttps://developer.harness.io/docs/platform/variables-and-expressions/harness-variables) `<+pipeline.triggeredBy.email>` and `<+pipeline.triggeredBy.email>`.
-
-#### Does `workflow variables` in Current-Gen work same as `regular platform variables` in Next-Gen?
-
-For infomation about this, go to:
-* [Migrate variables and expressions from firstgen to nextgen](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrate-firstgen-expressions-to-nextgen).
-* [Workflow variables](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/add-workflow-variables-new-template/).
-* [Add and reference variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable).
 
 #### Does creating a CD stage with cleanup scripts cost usage of license ?
 

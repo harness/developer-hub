@@ -89,11 +89,16 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## April 2025
 
-### Version 25.04.85604 <!-- April 16, 2025 -->
+### Version 25.04.85701 <!--April 23, 2025-->
 
-#### Hotfix
+#### Fixed issues
 
-- Fixed Terraform Cloud Run with Refresh run-type to create a refresh-only run (CDS-109201)
+- SSH command step now supports OIDC. [CDS-109225]  
+- Restored the skipping of Helm Canary delete step when namespace validation fails, and corrected namespace object handling to use the proper `name` field. [CDS-109155]  
+- Fixed the issue where readiness-related attributes were removed from the manifest by adding them to the allowlist to avoid unintended filtering. [CDS-109043]  
+- Fixed folder path issues by stripping leading and trailing slashes; this fix is controlled by the feature flag `CDS_SCM_FIX_FOLDER_PATH`. [CDS-108947]  
+- Introduced an optional environment variable `HOST_NAME_COMMAND` to control the delegate's host name during registration with the backend. [PL-61219]
+- Enabled task support for `CLOUDWATCH_LOGS_DATA_COLLECTION_TASK` to enhance CloudWatch Logs data collection. [CDS-109384]
 
 ### Version 25.04.85602 <!-- April 15, 2025 -->
 

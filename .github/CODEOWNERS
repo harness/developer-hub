@@ -159,10 +159,10 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/softwareSupplyChainAssuranceData.tsx @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07
 
 # IACM Docs
-/docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez
-/release-notes/infrastructure-as-code-management.md @RickCraig @richardblack-Harness
-/src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
-/src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness
+/docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez @Rohit-Kaliki
+/release-notes/infrastructure-as-code-management.md @RickCraig @richardblack-Harness @Rohit-Kaliki
+/src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
+/src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
 
 # FF Docs
 /docs/feature-flags/ @HarnessTheChaos @laura-mannus

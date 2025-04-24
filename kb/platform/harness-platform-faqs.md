@@ -1249,10 +1249,6 @@ Harness doesn't have a regular upgrade schedule. For more information about dele
 
 You can also customize the kubectl binary version using `INIT_SCRIPT`.
 
-### Can we add a Custom Selector in the Harness Delegate chart for legacy delegates?
-
-For legacy delegates, Harness doesn't have a way to specify a delegate selector or delegate tags in the delegate Helm chart. There is an [API to get and update selectors for the delegates](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api).
-
 ### Why isn't the task_failed_total delegate metric reporting data despite step failure?
 
 The task failed is when something unhandled happens, like a NPE in a task or issue at framework level. A valid failure like shell script exited with error code is not a task failure. Prometheus only shows the metric which are at least once recorded.
@@ -2376,10 +2372,6 @@ For NextGen SCIM integration and to enable user groups, it is recommended to cre
 ### How events are generated on the Harness Platform?
 
 Audit Trail displays a record for each event of the Harness account, module, or entity. For more information, go to [Audit trail](/docs/platform/governance/audit-trail/).
-
-### How can we export all information related to FirstGen deployments, services, environment, etc.?
-
-Go to [Export deployment logs](/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/export-deployment-logs/) and [Use API audit trails](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-audit-trails-api/).
 
 ### Is any documentation available regarding Harness allowlists for Google GCP?
 

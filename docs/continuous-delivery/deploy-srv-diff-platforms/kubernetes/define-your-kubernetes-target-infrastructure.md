@@ -970,6 +970,34 @@ If you omit the `namespace` key and value from a manifest in your Service Defi
 
 :::
 
+### Enforcing Namespace Consistency
+
+Kubernetes deployments in Harness give you more built-in control when it comes to namespace consistency. If used correctly, you can prevent users from deploying resources into namespaces other than the one defined in the Infrastructure.
+
+:::note
+Currently, this feature is behind the feature flag `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This feature requires delegate version `856xx` or later.
+:::
+
+To enable this setting, go to:
+**Account** / **Org** / **Project Settings** → **Default Settings**
+Under the **Continuous Delivery** section, set the value to **True** for:
+**Enable Namespace validation from different sources with infrastructure level namespace**
+
+**How it's handled**
+
+Fortunately, Harness offers a way to enforce namespace checks—but it requires a bit of setup.
+
+If you configure the namespace explicitly in the deployment step (e.g., in a Rollout or Apply step), and this namespace conflicts with the one hardcoded in the manifest, Harness will fail the deployment. This acts as a validation layer.
+
+In other words:
+
+- You define the namespace in the Infra: `team-infra`
+- Someone hardcodes `rogue-namespace` in their manifest
+- You override the namespace again in the step: `team-infra`
+- Harness catches the mismatch and blocks the deployment
+
 ## Release Name
 
 The **Release name** setting is located in **Advanced** section of the **Cluster Details** in the Infrastructure Definition. You do not need to edit it.
