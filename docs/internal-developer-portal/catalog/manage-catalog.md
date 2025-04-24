@@ -18,6 +18,8 @@ Harness IDP 2.0 represents a major evolution of the Internal Developer Portal, b
 
 - **Revamped Catalog UI:** A fresh user experience featuring an updated Catalog table with filters, enhanced navigation, and a built-in entity creation interface.
 
+## Migrating to 2.0
+
 ## Creating Entities
 *Fundamentals of entities: types of entities, their backstage references, etc.*
 *converting legacy backstage YAML*
