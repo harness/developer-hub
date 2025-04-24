@@ -31,19 +31,38 @@ This topic explains how to set up and use bidirectional sync.
 - Bidirectional sync is not supported for Harness Code.
 
 
-## Bi-directional sync
+## Bi-directional Sync
 
-GitX supports bidirectional sync, capturing changes committed to Git via webhook events. Harness treats Git as the source of truth and uses cached data for all operations, including pipeline execution. This approach ensures fast and reliable execution of remote pipelines based on the latest committed changes.
+GitX supports bi-directional sync by capturing changes committed directly to Git using webhook events. Harness treats Git as the **source of truth**, and uses cached Git data for all operations—including pipeline execution. This ensures fast, consistent execution of remote pipelines based on the latest committed changes.
 
-By default, **Harness automatically creates webhooks for GitX resources** in new accounts, eliminating the need for manual setup and reducing delays caused by outdated pipeline configurations. This ensures that pipelines always run using the latest Git state without requiring additional user action.
+### Webhook Registration (Automatic)
 
-### Manual Webhook Setup for bi-directional sync
+Harness attempts to register webhooks automatically for GitX resources using the **Git connector** associated with the entity (e.g., pipeline, input set). This removes the need for most manual setup and helps prevent outdated pipeline configurations.
 
-The previous manual webhook setup method is still available behind the feature flag `PIPE_ENABLE_MANUAL_WEBHOOK_REGISTRATION`. If your team prefers to manage webhook creation manually, you can enable this flag.
+Automatic webhook registration follows these principles:
 
-To help set up entities with bidirectional sync, Harness would previously show banner notifications when a remote entity was created without a webhook. In such cases, users were prompted to register a webhook for syncing and tracking changes between Git and Harness.
+- Webhooks are registered using the **same connector** that was used to create the entity.
+- Registration is performed on a **best-effort basis**:
+  - If the connector has sufficient permissions (e.g., `admin:repo_hook` for GitHub), the webhook is created.
+  - If not, the operation is skipped, and users can manually register the webhook.
+- Harness does **not create duplicate webhooks**:
+  - A webhook is only registered if one doesn't already exist for the given entity.
+- Webhooks are registered at the **nearest matching scope**:
+  - For example, if an entity is created at the **org level**, the webhook is registered at the **org level**.
 
-All you need to do is click on **Setup Webhook**, and the webhook will be automatically registered for your repository.
+## Manual Webhook Setup for Bi-directional Sync
+
+There are two ways to manually set up a webhook when automatic registration is not preferred or not possible.
+
+### Option 1: Setup via Banner Prompt
+
+The previous manual webhook setup method is still available behind the feature flag `PIPE_DISABLE_AUTO_GITX_WEBHOOK_REGISTRATION`. If your team prefers to manage webhook creation manually, you can enable this flag.
+
+When enabled, Harness displays a **banner** for entities that do not yet have a webhook. To register:
+
+1. Click **Setup Webhook** on the banner.
+2. The webhook will be registered using the same Git connector used during entity creation.
+3. Upon success, you’ll see a confirmation message.
 
 ![](./static/webhook_register_pipelinestudio.png)
 
@@ -61,46 +80,43 @@ To successfully register a webhook, ensure that the Harness Git connector you us
 It is important to note that if you use a banner to set up the webhook, it will use the same connector that was used during the entity creation to create the webhook. Therefore, ensure that the connector has adequate permissions.
 :::
 
-If webhook is registered successfully you will see below message:-
-
 ![](./static/success_webhook_registered.png)
 
-Please note that webhooks will be created on the same level as the entity.
 
-To see your newly registered webhook go to, **Project Settings** > **Project-level Resources** > **Webhooks** and you will see the webhook registered for your repository.
+To view registered webhooks:  
+**Project Settings** → **Project-level Resources** → **Webhooks**
 
 ![](./static/webhook_register_page.png)
 
-You can see the list of Git events in Harness. Learn more about [Git Sync Activity](./git-sync-health-page.md)
+You can also explore [Git Sync Activity](./git-sync-health-page.md) to track webhook events.
 
-If you want to setup webhook manually refer to the below. 
+### Option 2: Manual Setup via Webhooks Page
 
-### Manually Setup Webhook
+If you want full control over webhook setup or if banner setup was skipped:
 
-You can follow below steps to manually register webhook for your entity if you do not want to do it via banner automatically:-
+#### Choose the Scope
+- **Account Level:**  
+  `Account Settings → Account-level Resources → Webhooks → New Webhook`
+- **Organization Level:**  
+  `Organization Resources → Organization-level Resources → Webhooks → New Webhook`
+- **Project Level:**  
+  `Project Settings → Project-level Resources → Webhooks → New Webhook`
 
+#### Webhook Configuration Steps
 
- In Harness, do one the following, depending on the scope at which you want to create a webhook: 
+1. In **Git Connector**, select or create a [Git Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
+2. In **Repository**, select the Git repo where your Harness entities are stored.
+3. In **Folder Path**, specify the directory (e.g., `.harness/`). This is optional.
 
-  - To configure a webhook at the account scope, go to **Account Settings** > **Account-level Resources** > **Webhooks**, and then select **New Webhook**.
-  - To configure a webhook at the organization scope, go to **Organization Resources** > **Organization-level Resources** > **Webhooks**, and then select **New Webhook**.
-  - To configure a webhook at the project scope, go to **Project Settings** > **Project-level Resources** > **Webhooks**, and then select **New Webhook**.
-
-1. In **Git Connector**, select or create a [Harness Git Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) for your repo.
-2. In **Repository**, select the repo where you are going to store the Harness entities, such as pipelines.
-3. In **Folder Path**, enter the path to the location in the repo that stores your Harness entities. Typically, the path starts with `.harness` and is followed by subfolders.
-   
-   ![picture 1](static/794c4a80c5fb3a9d9c3e290781ce64fa99bd788ea8106f786d1d75776dae164a.png)  
-
-   The **Folder Path** setting is optional. If you omit a folder path, Harness will sync everything in the repo.
-
-4. Select **Add**. The webhook is added. You can navigate to your repo webhook settings to see the new webhook.
+   ![Folder Path Example](static/794c4a80c5fb3a9d9c3e290781ce64fa99bd788ea8106f786d1d75776dae164a.png)
 
 :::info
-The `.harness` folder is tracked by default for all webhooks.
+Harness tracks the `.harness` folder by default in all webhooks.
 :::
 
-In the **Webhooks** page, you can see the **Events** tab. Once you have synched an entity with the Git repo, the Git events are displayed here. You can view Git event Ids for troubleshooting.
+4. Click **Add** to register the webhook.
+
+Once synced, Git events appear in the **Events** tab under **Webhooks**, including event IDs for troubleshooting.
 
 ### Sync a Harness entity
 
