@@ -359,6 +359,30 @@ Harness is able to track the deployed Helm Chart in the Services dashboard. All 
 
 This feature will be available for users on delegate version 810xx. Please ensure the delegate is up to date before opting into this feature.
 
+## Deploy Helm Charts with CRDs 
+
+Harness now supports deploying Helm charts that include Custom Resource Definitions (CRDs) which may already exist outside the target namespace. This enhancement enables the use of the `helm upgrade --install` command to avoid common CRD-related installation errors.
+
+:::note
+This feature is currently behind the feature flag `CDS_SKIP_HELM_INSTALL`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+Requires delegate version `856xx` or later.
+:::
+
+<div align="center">
+  <DocImage path={require('./static/helm-crd-support.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+Once enabled, you’ll see a new checkbox titled **Use Upgrade with Install** in the Helm deployment step configuration.
+
+This option:
+
+- Supports fixed values, runtime inputs, and expressions.
+- Works with both Helm v2 and Helm v3.
+- Continues to support custom CLI flags.
+
+This checkbox is available for **Native Helm deployment steps**, including **Rolling Deploy**, **Canary**, and **Blue-Green** deployments.
+
 ## Native Helm notes
 
 Please review the following notes.
