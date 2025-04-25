@@ -19,6 +19,16 @@ The tokens to replace in your changelog are described using the `${property-name
 The supported format includes alphanumeric characters, +, -, . , and _. Example `${property+name}`
 :::
 
+
+:::important 
+**Minimum versions required**
+- db-devops-service - 1.35.x
+- drone-liquibase - plugins/drone-liquibase:1.2.0-4.27
+- drone-liquibase-mongo - plugins/drone-liquibase:1.2.0-4.27-mongo
+- drone-liquibase-spanner - plugins/drone-liquibase:1.2.0-4.27-spanner 
+:::
+
+
 ## Uses
 1. Environment-specific Names
 2. Reusability
