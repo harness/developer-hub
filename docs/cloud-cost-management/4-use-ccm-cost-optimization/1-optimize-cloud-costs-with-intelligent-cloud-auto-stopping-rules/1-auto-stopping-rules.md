@@ -1,11 +1,7 @@
 ---
-title: AutoStopping Rules overview
+title: Introduction to AutoStopping
 description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle.
-sidebar_position: 10
-helpdocs_topic_id: wzr5tz0ero
-helpdocs_category_id: 2yrql0zhj0
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 1
 canonical_url: https://www.harness.io/blog/cloud-autostopping
 ---
 import Tabs from '@theme/Tabs';
