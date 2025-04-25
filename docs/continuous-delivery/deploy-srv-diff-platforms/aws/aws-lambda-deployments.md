@@ -763,11 +763,37 @@ rollbackSteps:
       spec: {}
 ```
 
-### Limitation
+### Rollback for Artifacts Larger Than 50 MB
 
-Currently, if the artifact size is greater than 50 MB and is stored in Amazon S3, the deployment will succeed with delegate version `855xx` or later, but rollback will **fail** for such deployments.
+:::note
+Currently, this feature is behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-A resolution for this limitation will be available with delegate version `857xx` or later.
+This features requires delegate version `857xx` or later.
+:::
+
+#### Prerequisites
+
+Ensure that the IAM role or user associated with the deployment has the following **AWS Lambda permissions** to manage function aliases:
+
+- `lambda:CreateAlias` – Allows creation of a new alias.
+- `lambda:UpdateAlias` – Allows updating an existing alias to point to a different version.
+- `lambda:DeleteAlias` – Allows deletion of an alias.
+
+
+Harness uses **Lambda function aliases** to support rollback workflows. On deployment, an alias is created or updated to point to the latest function version. If a rollback is triggered, the alias is redirected to the previously deployed version—ensuring a seamless rollback experience.
+
+**Use Cases:**
+
+- **Use Case 1**:  
+  If you deploy an artifact larger than 50 MB **without** enabling the feature flag, the deployment will succeed, but rollback will **fail**. Harness cannot trace previous artifact versions in this mode.
+
+- **Use Case 2**:  
+  If the feature flag is enabled and this is your **first deployment**, Harness creates new aliases. Since there’s no version history, a rollback will effectively do nothing.
+
+- **Use Case 3**:  
+  If the feature flag is enabled and this is **not your first deployment**, Harness can track previous versions. On rollback, the alias is pointed to the previously deployed version, restoring the earlier state successfully.
+
+With the feature flag enabled and the appropriate permissions in place, you can deploy Lambda artifacts of any size from S3, with Harness managing deployment and rollback reliably.
 
 ## Lambda Functions Deployment Sample 
 
