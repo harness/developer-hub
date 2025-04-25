@@ -1,7 +1,7 @@
 ---
 title: Catalog Entity Reference
 description: Detailed documentation on Catalog Entity Reference
-sidebar_label: Catalog Entity Reference
+sidebar_label: Catalog Entity Reference [1.0]
 sidebar_position: 11
 ---
 

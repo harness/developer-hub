@@ -1,7 +1,7 @@
 ---
 title: Service Onboarding using Scripts on Catalog
 description: Detailed documentation of the Service Onboarding Scripts 
-sidebar_label: Service Onboarding Scripts
+sidebar_label: Service Onboarding Scripts [1.0]
 sidebar_position: 11
 ---
 

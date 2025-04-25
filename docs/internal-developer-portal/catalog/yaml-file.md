@@ -1,8 +1,8 @@
 ---
-title: Entity YAMLs for Catalog
+title: Entity YAMLs for Catalog [1.0]
 description: Various types of supported YAML types. 
-sidebar_position: 4
-sidebar_label: YAML File Format 
+sidebar_position: 6
+sidebar_label: YAML File Format [1.0]
 ---
 ## Introduction
 
