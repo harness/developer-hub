@@ -29,8 +29,11 @@ databaseChangeLog:
   - includeAll:
       path: db/changelog/releases/
       errorIfMissingOrEmpty: true
-      relativeToChangelogFile: true
 ```
+
+:::note
+The path specified in includeAll should be relative to the location of the changelog file that contains this statement.
+:::
 
 :::tip
 Use a consistent naming convention for your changelog files (e.g., `001-feature-name.yaml`, `002-feature-name.yaml`) to ensure they are processed in the intended order when using `includeAll` as the files are processed in **alphabetical order**.
