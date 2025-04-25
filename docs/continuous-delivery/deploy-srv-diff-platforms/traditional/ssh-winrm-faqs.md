@@ -92,3 +92,18 @@ No, you need to write a custom script where you can get the previous version and
 
 ### How do I reference privateIp for an EC2 instance while using a ssh type deployment?
 You can make use of ```<+instance.properties.privateIp>``` for all available variables under instance properties. You can print  ```<+instance.properties.*>``` and confirm this list. 
+
+### How can I select a random host from a list before deployment in Harness?
+You can capture the host details in a prior step, then use a shell script to apply randomness to the list and select one host randomly.
+
+### Can I use shell scripts within Harness pipeline steps?
+Yes, Harness allows you to run shell scripts as steps in your pipeline, which you can use for logic such as host selection or preprocessing.
+
+### How do I pass the randomly selected host to later steps in the deployment?
+After selecting the host in the shell script, you can use a Harness output expression to publish and reference the selected host value in subsequent steps.
+
+### Is it possible to use output variables from a shell script in Harness pipelines?
+Yes, Harness supports output variables from shell script steps, which can be referenced using expressions like <<+stepIdentifier>.<+outputVariableName>>.
+
+### Why is it useful to randomize host selection during deployments?
+Random host selection can be used for canary-style rollouts, load testing, or targeting non-deterministic environments, helping simulate real-world scenarios.
