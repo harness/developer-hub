@@ -19,6 +19,20 @@ You can set up custom notification template for Pipeline notification at followi
 
 ## Setting Up Notifications Template
 
+:::info note
+1. Custom Notification templates will work only for webhook notifications.
+2. Custom Notification templates support usage of template variables.
+3. Custom Notification templates will be an inline entity, meaning they cannot be stored in Git.
+4. All Pipeline and Stage-level variables are supported. If an expression cannot be resolved, it will return an empty string.
+```json
+{
+  "pipeline name": "pipeline",
+  "stage name": "",
+  "stage type": ""
+}
+```
+:::
+
 <Tabs>
 <TabItem value="Interactive guide">
 
@@ -135,7 +149,7 @@ Custom notification templates are supported **only for webhook notification meth
 
 Once applied, the custom template overrides the default webhook payload sent during pipeline execution.
 
-### Variables in the Notification Template
+## Variables in the Notification Template
 
 Notification templates support **runtime inputs**, which must be provided when configuring a notification rule—whether at the **Centralized Notification Service (CNS)** level or the **pipeline** level.
 
@@ -145,24 +159,46 @@ Use the following expression format to reference these variables in your templat
 
 You can also access the event type that triggered the notification using: `<+notification.eventType>`
 
-### Reconciliation of Notification Rules
+## Reconciliation of Notification Rules
 
-If you update a notification template by adding more input variables **after it has already been used** in a notification rule (either in **Centralized Notifications** or at the **pipeline** level), here’s how the reconciliation process works:
+If you update a notification template by **adding new runtime variables** after it has already been attached to a notification rule, you may need to reconcile the rule to ensure those inputs are provided during execution.
 
-- When you go to run the pipeline, a **warning message** will appear on the Run dialog:
-  **Entities referenced in this pipeline have been updated. Please reconcile and save the pipeline to run the latest version.**
+### Pipeline-level Notifications (via CNT tab)
 
-  You can still proceed to run the pipeline, but any newly added variables will default to an **empty string** unless resolved.
+When a template used in a **pipeline-level notification rule configured through the Notify (CNT) tab** is updated, a **warning message** will appear when you attempt to run the pipeline:
 
-- Clicking **Reconcile** and saving the pipeline or the notification rule will update the YAML with the new variables, but it will **not resolve** the runtime values. These values will still default to empty strings during execution.
+> "Entities referenced in this pipeline have been updated. Please reconcile and save the pipeline to run the latest version."
 
-- To **fully reconcile** and provide values for the new inputs:
-  1. Edit the notification rule (either in CNS or pipeline Notify tab).
-  2. Keep all current settings as-is until you reach the **Templates** tab.
-  3. Reselect the **same notification template**.
-  4. A pop-up will appear prompting you to **enter values** for the new runtime variables.
+You can still proceed with the run, but any newly added variables will default to an **empty string** unless resolved.
 
-This ensures your notification rule is up to date with the latest version of the template and that all required inputs are correctly resolved.
+To fully reconcile the rule with the latest version of the template, you need to **reselect the template** and **provide values** for the new inputs:
+
+1. Go to the **Notify** tab in the pipeline.
+2. Edit the notification rule.
+3. Navigate to the **Templates** tab.
+4. Reselect the **same notification template**.
+5. A prompt will appear asking you to **enter values** for the new runtime variables.
+
+This updates the pipeline YAML to reference the latest template version and ensures all required inputs are captured.
+
+### Centralized Notifications (CNS)
+
+In **Centralized Notification rules**, no warning appears when you update a template. However, if a template has changes or new input variables, you can view all the impacted references in the **Referenced By** section of the template.
+
+To fully reconcile the rule with the latest version of the template, you’ll still need to **reselect the template** and **provide values** for the new inputs.
+
+Steps:
+
+1. Go to **Notification Management** under Project/Org/Account Settings.
+2. Edit the existing notification rule.
+3. In the **Notification Templates** step, reselect the same template.
+4. A prompt will appear for you to enter values for the newly added runtime variables.
+
+This process ensures that all new inputs are captured and the rule remains valid.
+
+---
+
+By re-selecting the updated template in either case, you ensure your rule is aligned with the latest version and that all runtime inputs are explicitly provided.
 
 ## YAML Structure
 
@@ -191,6 +227,33 @@ template:
       - name: var1
         value: <+input>
         type: string
+```
+
+Pipeline YAML Using the Notification Template
+
+You can reference this notification template from your pipeline YAML as follows: 
+
+```yaml
+notificationRules:
+    - name: notify_demo
+      identifier: notify_demo
+      pipelineEvents:
+        - type: PipelineStart
+        - type: PipelineEnd
+      notificationMethod:
+        type: Webhook
+        spec:
+          webhookUrl: https://your/webhook/url
+      enabled: true
+      template:
+        versionLabel: v1
+        templateRef: sample_notification_template
+        templateInputs:
+          variables:
+            - name: var1
+              type: string
+              value: test_val
+
 ```
 
 ## Sample JSON Response
