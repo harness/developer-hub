@@ -8,6 +8,10 @@ sidebar_position: 10
 
 Harness now supports [automatic upgrades for Docker delegates](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#docker-delegate) using the **Docker Delegate Upgrader**. If you have already running Docker delegates, you can use the script provided below to enable the upgrader for your delegates.
 
+:::info
+The following approach will only be applicable to Docker delegates that were brought up directly using the `docker run` command and not for the ones that were started using **Docker Compose**, **Docker Swarm** etc.
+:::
+
 ## How It Works
 
 This script performs the following actions:
