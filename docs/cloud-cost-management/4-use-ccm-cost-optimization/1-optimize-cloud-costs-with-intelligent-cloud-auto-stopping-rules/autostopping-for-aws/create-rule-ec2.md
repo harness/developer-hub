@@ -1,209 +1,198 @@
 ---
-title: AWS
-description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle.
-# sidebar_position: 3
+title: Create AutoStopping Rules for AWS EC2
+description: Set up AutoStopping to automatically manage EC2 instances based on usage patterns and reduce cloud costs.
+sidebar_position: 3
 helpdocs_topic_id: 7025n9ml7z
 helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-# Create AutoStopping Rules for AWS
+## Overview
 
-AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.
-
-## Before you begin
-
-- [Create an AWS Connector for Autostopping Rules](../1-add-connectors/connect-to-an-aws-connector.md)
-- [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md)
-- [AutoStopping Rules Overview](../1-auto-stopping-rules.md)
+AutoStopping Rules for EC2 automatically start and stop your non-production EC2 instances based on actual usage, ensuring you only pay for resources when they're needed. This guide walks you through setting up AutoStopping for EC2 instances.
 
 ## Prerequisites
 
-- Ensure that you have AWS EC2 VMs or Auto Scaling Groups created.
-- Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
-- Permissions to create a cross-account role. See [AWS Access Permissions](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#aws-access-permissions).
-- To create an AutoStopping rule using an AutoStopping proxy load balancer:
-  - You must provide the required permissions to Harness to create a VM in your AWS account.
-  - You must provide the required permissions to read the secrets and fetch the certificates stored in the secret for TLS-based flows.
-  - Ensure that you reserve some IPs if you intend to allocate elastic IP while creating an AutoStopping proxy.
+### Required Accounts and Connectors
+- [AWS Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws) with appropriate permissions
+- AWS account with EC2 instances or Auto Scaling Groups
 
-## How Spot orchestration works?
+### Required Permissions
+- Access to AWS Cost and Usage Reports (CUR)
+- Permissions to create cross-account IAM roles
+- For proxy-based setup: permissions to create VMs and read secrets in your AWS account
 
-For spot instances, periodic snapshots are taken every two minutes. A snapshot is also taken before the instance is shut down. It is important to note here that only the last three successful snapshots are kept, while the rest are deleted. When an interruption occurs, or when the next activity after idleness occurs, the last known snapshot is used to create a new spot instance. If there is no available spot capacity, we fall back to an on-demand instance. AWS spot instance creation API is used to create a new spot instance.
+### Recommended Reading
+- [AutoStopping Overview](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-overview)
+- [Load Balancer Setup](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/load-balancer) (for HTTP/HTTPS access)
+- [AutoStopping Proxy Setup](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/autostopping-proxy) (for SSH/RDP access)
 
-When there is idleness, the spot instance, along with the root EBS volume, is terminated after a successful snapshot is taken (snapshots in AWS are incremental, so subsequent snapshots after the first one are very fast). When a new spot instance is created, the root EBS volume is recreated from the most recent successful snapshot and the additional EBS volumes are reattached. As a result, there is no data loss. All network interfaces and metadata are also saved. As a result, even though it's a new spot instance, the user sees it to be the same machine.
+## How AutoStopping Works with EC2
 
-## Visual summary
-
-This section provides an overview of AutoStopping Rules.
 <DocVideo src="https://youtu.be/lNf_P5sHTcE" />
 
-## AutoStopping architecture
+### Architecture
 
-Here is an AutoStopping architecture for AWS resources:
+![AutoStopping Architecture for AWS](./static/create-autostopping-rules-aws-88.png)
 
-![](./static/create-autostopping-rules-aws-88.png)
+AutoStopping for EC2 works by:
 
-## Add a Cloud provider
+1. **Monitoring usage** of your EC2 instances
+2. **Automatically stopping** instances after a period of inactivity
+3. **Instantly restarting** instances when traffic is detected
+4. **Redirecting users** to a waiting page during instance startup
 
-Perform the following steps to link your AWS cloud account to Harness.
+### Spot Instance Support
 
-1. In **Cloud Costs**, click **New AutoStopping Rule**.
-   ![](./static/create-autostopping-rules-aws-89.png)
-2. In **AutoStopping Rules**, select **AWS**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
+AutoStopping includes intelligent spot instance orchestration that:
 
-   ![](./static/create-autostopping-rules-aws-90.png)
+- Takes snapshots every 2 minutes and before shutdown
+- Maintains the last 3 successful snapshots
+- Uses snapshots to recreate instances after interruptions
+- Falls back to on-demand instances when spot capacity isn't available
+- Preserves data by reattaching EBS volumes and network interfaces
 
-3. If you have already linked your AWS account and want to use that account, then select the AWS account from the **Connect to your AWS account** drop-down list.
-4. If you have not added your cloud account, click **Connect to your AWS account** drop-down list and then click **New Connector**. For the detailed steps, see [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md).
+## Creating an AutoStopping Rule for EC2
 
-   ![](./static/create-autostopping-rules-aws-91.png)
+### Step 1: Connect to AWS
 
-## Add a new AutoStopping rule
+1. In Harness, navigate to **Cloud Costs** module
+2. Click **New AutoStopping Rule**
+   ![Create new rule](./static/create-autostopping-rules-aws-89.png)
+3. Select **AWS** as your cloud provider
+   ![Select AWS](./static/create-autostopping-rules-aws-90.png)
+4. Choose an existing AWS connector or click **New Connector** to create one
+   ![Select connector](./static/create-autostopping-rules-aws-91.png)
 
-Perform the following steps to add a new AWS AutoStopping rule:
+### Step 2: Define Your AutoStopping Rule
 
-- Configuration: In this step, do the following:
-  - Step: Define an AutoStopping Rule
-  - Step: Select the Resources to be Managed by the AutoStopping Rule
-    - Option 1: Select EC2 VM(s)
-    - Option 2: Select Auto Scaling Groups
-    - Option 3: Select Kubernetes Clusters
-    - Option 4: Select ECS Service
-    - Option 5: Select RDS Instances
-  - (Optional) Step: Set Up Advanced Configuration
-- Setup Access: In this step, do the following:
-  - Setup Access for TCP workload or SSH/RDP
-  - Setup Access for HTTP/HTTPS workload
-- Review: Verify the configurations.
+1. Enter a **Name** for your rule
+2. Set the **Idle Time** - how long an instance should be inactive before stopping
+3. Choose whether to use **Spot Instances** for cost savings
 
-### Define an AutoStopping rule
+```mermaid
+flowchart LR
+    A[Define Rule] --> B[Select Resources]
+    B --> C[Configure Access]
+    C --> D[Advanced Settings]
+    D --> E[Review & Save]
+    style A fill:#cce5ff,stroke:#004085
+    style B fill:#d4edda,stroke:#155724
+    style C fill:#fff3cd,stroke:#856404
+```
 
-Perform the following steps to get started with AutoStopping Rule.
+### Step 3: Select EC2 Resources to Manage
 
-1. In **Cloud Costs,** in **AutoStopping Rules**, click **New AutoStopping Rule**.
-2. In the cloud account type, select **AWS**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
-3. Select your AWS account from the **Connect to your AWS account** drop-down list and click **Next**. If you have not added an AWS cloud account, see [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md).
+1. In the resource selection screen, choose **Instances** (EC2)
+   
+   ![Select EC2 instances](./static/create-autostopping-rules-aws-95.png)
 
-   ![](./static/create-autostopping-rules-aws-92.png)
+2. Filter instances by:
+   - **Region** - Select the AWS region(s) where your instances are located
+   - **Tags** - Filter instances by specific AWS tags
+   - **Instance Name** - Search for specific instance names
 
-4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
-5. In **Idle time**, enter the idle time in minutes. This is the time duration for which the AutoStopping rule waits before stopping the idle instances.
+3. Select the instances you want to manage with AutoStopping
 
-After the idle time elapses:
+4. Click **Add Selected** to include them in your rule
 
-- For Spot Instances, a snapshot is taken, and then the instances are terminated. See **How Spot Orchestration Works?** section.
+### Step 4: Configure Access Method
 
-- On-Demand Instances are shut down without a snapshot.
+Choose how users will access your EC2 instances:
 
-![](./static/create-autostopping-rules-aws-93.png)
+#### Option A: HTTP/HTTPS Access (Load Balancer)
 
-### Select the resources to be managed by the AutoStopping Rule
+For web applications or services that use HTTP/HTTPS:
 
-Select the cloud resources that you want to manage using this rule. AutoStopping Rule monitors the selected resources and stop them when they are idle beyond the configured idle time. You can select any of the following:
+1. Select **DNS Link** in the access setup screen
+2. Choose an existing load balancer or [create a new one](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/load-balancer)
+3. Configure routing:
+   - Port mappings
+   - Health check settings
+   - URL configuration (auto-generated or custom)
 
-- Instances
-- Auto Scaling Groups
-- Kubernetes Cluster
-- ECS Service
-- RDS Instance
+#### Option B: SSH/RDP Access (AutoStopping Proxy)
 
-#### Option 1: Select EC2 VM(s)
+For direct server access via SSH or RDP:
 
-Add instance/s to be managed by your AutoStopping rule.
+1. Select **SSH/RDP** in the access setup screen
+2. Download the Harness CLI for your operating system
+3. Use the provided commands to connect to your instances
 
-:::note
-You can add multiple instances to a single Rule. However, all the VMs should be part of the same region.
-:::
+```bash
+# For SSH access
+harness ssh --host <hostname> --user <username> --config lwc.toml
 
-1. Select **Instances** and click **Add an Instance**.
-2. Select the instances that you want to manage using the AutoStopping rules. You can use the search option to search the instances.
+# For RDP access
+harness rdp --host <hostname>
+```
 
-   ![](./static/create-autostopping-rules-aws-94.png)
+### Step 5: Advanced Configuration (Optional)
 
-3. After selecting the instances, click **Add selected**.
-4. You can convert the fulfillment type of your selected instances. Select **Spot** or **On-Demand**.
+#### Scheduling Options
 
-#### Option 2: Select Auto Scaling Groups
+Create fixed schedules to automatically start or stop your instances at specific times:
 
-Add an Auto Scaling Group to be managed by the AutoStopping rule.
+1. Click **Add Fixed Schedule**
+2. Configure schedule parameters:
+   - **Name** - Identify your schedule
+   - **Start/End Time** - When the schedule should begin and end
+   - **Recurring Pattern** - Daily, weekly, or custom patterns
+   - **Action** - Keep resources up or down during the scheduled period
 
-:::note
-You can add only one Auto Scaling Group to a rule.
-:::
+![Fixed schedule configuration](./static/create-autostopping-rules-aws-98.png)
 
-1. Select **Auto scaling groups** and click **Add a auto-scaling group**.
-2. Select the Auto Scaling Group that you want to manage using the AutoStopping rule. You can also use the search option to find the Auto Scaling Group.
+#### Dependencies
 
-   ![](./static/create-autostopping-rules-aws-95.png)
+Link your rule to other AutoStopping rules when resources depend on each other:
 
-3. After selecting the Auto Scaling Group, click **Add selected**.
-4. You can convert the fulfillment type of your selected Auto Scaling Group. Enter the number of instances for **Spot** and **On-Demand**. Depending on the size of your Auto Scaling group, you can specify the values for each fulfillment type. The total number of Spot and On-Demand instances should always be equal to or less than the maximum capacity of the group.
+1. Click **Add Dependency**
+2. Select the rule your instances depend on
+3. Choose the dependency type (startup or shutdown)
 
-If the maximum capacity of your group is 3, then you can enter the ratio of your instances like the following:
+### Step 6: Review and Save
 
-| **On-Demand** | **Spot** |
-| ------------- | -------- |
-| 1             | 2        |
-| 2             | 1        |
-| 0             | 3        |
-| 3             | 0        |
+1. Review all your configuration settings
+2. Click **Save Rule** to create your AutoStopping rule
 
-In this example, all the instances are of On-Demand type.
+Your rule will appear in the AutoStopping Rules dashboard where you can monitor its status and savings.
 
-![](./static/create-autostopping-rules-aws-96.png)
+## Using Your AutoStopping Rule
 
-#### Option 3: Select Kubernetes Clusters
+### Accessing EC2 Instances
 
-Add a cluster to be managed by the AutoStopping Rule.
+#### Via HTTP/HTTPS
 
-1. Select **Kubernetes Cluster** and then click **Add a cluster**.
-2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules. If you wish to create a new connector for the Kubernetes cluster, see [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md).
-3. Once you have finished selecting the Kubernetes cluster, click **Add selected**.
+Use the URL configured in your rule to access your web applications. When instances are stopped:
 
-:::note
-If you select a Kubernetes cluster, follow the steps in [Create AutoStopping Rules for Kubernetes Cluster](../4-create-auto-stopping-rules/create-autostopping-rules-for-kubernetes.md).
-:::
+1. Users are shown a waiting page
+2. Instances are automatically started
+3. Users are redirected once the application is ready
 
-#### Option 4: Select ECS Service
+#### Via SSH/RDP
 
-Add an ECS Service to be managed by the AutoStopping Rule. See [Create AutoStopping Rules for Amazon ECS](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-ecs.md).
+Use the Harness CLI to connect to your instances:
 
-#### Option 5: Select RDS Instances
+```bash
+# For SSH access
+harness ssh --host <hostname> --user <username> --config lwc.toml
 
-Add the RDS instance to be managed by this Autostopping Rule.
+# For RDP access
+harness rdp --host <hostname>
+```
 
-1. Select **RDS instances** and then click **Add RDS instances**.
-2. Select a region from the **All Regions** drop-down list to see all the databases.
-3. Select the RDS instance for which you want to implement the AutoStopping Rule and click **Add Selected**.
+### Monitoring and Managing Your Rule
 
-   ![](./static/create-autostopping-rules-aws-97.png)
+- Track instance status and savings in the AutoStopping Rules dashboard
+- Edit or delete your rule as needed
+- Use the Harness CLI for advanced management and troubleshooting
 
-## (Optional) Step: Set Up Advanced Configuration
+### Troubleshooting
 
-In this step, you can configure the following settings:
-
-### Hide progress page
-
-Toggle the button to disable the display of progress page during instances' warming up process. This option is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping. By hiding the progress page, the first response of warming up a rule after a downtime will be delayed until the intended service is up and running.
-
-![](./static/create-autostopping-rules-for-kubernetes-83.png)
-
-### Dry Run
-
-Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](../4-create-auto-stopping-rules/autostopping-dry-run-mode.md).
-
-### Add Dependency
-
-Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For example for an application server dependant on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependant on the Rule managing the database server.
-
-1. In **Dependencies**, click **add dependency** to add a dependency on any existing rule.
-2. Select the rule from the **RULES** drop-down list.
-3. In **DELAY IN SECS**, enter the number of seconds that rule should wait after warming up the dependent rule. For example, you have Rule 1 dependent on Rule 2 and you have set 5 seconds delay. In that case, when the request is received to warm up Rule 1, then first Rule 2 (dependent rule) is warmed up, and then there is a delay of 5 seconds before warming up Rule 1.
-4. Once you're done with all the configurations, click **Next**.
-
-### Fixed Schedules
+- Check the AutoStopping Rules dashboard for error messages or alerts
+- Verify instance status and configuration in the AWS console
+- Contact Harness support for assistance with troubleshooting or configuration issues
 
 Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period.
 
@@ -481,8 +470,8 @@ In Review, verify all the configuration details and click **Save Rule**. To edit
 
 Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](autostopping-dashboard.md).
 
-### Next Steps
+## Next Steps
 
-- [Create AutoStopping Rules for a Kubernetes Cluster](create-autostopping-rules-for-kubernetes.md)
-- [Use AutoStopping Rules Summary Page](autostopping-dashboard.md)
-- [Use AutoStopping Proxy as downstream to ALB](create-autostopping-proxy-as-downstream-alb.md)
+- [Monitor your AutoStopping rules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-rules-overview-page) to track savings
+- [Set up AutoStopping for Auto Scaling Groups](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/create-rule-asg)
+- [Configure AutoStopping for Kubernetes](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-kubernetes/connector)

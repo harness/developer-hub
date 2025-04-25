@@ -1,7 +1,7 @@
 ---
-title: Azure AutoStopping proxy
+title:  Setting Up Azure AutoStopping proxy
 description: This topic describes how to create an AutoStopping proxy for Azure.
-# sidebar_position: 3
+sidebar_position: 1
 ---
 
 # Create an AutoStopping proxy for Azure
@@ -15,8 +15,7 @@ For HTTP(S) traffic, the AutoStopping proxy provides Layer-7 load balancing and 
 The AutoStopping proxy runs in a VM and uses the Envoy proxy, an open-source solution that has been thoroughly tested. One proxy VM can handle traffic to multiple AutoStopping-controlled VMs.
 
 
-  ![](./static/autostopping-proxy-architecture-diagram.png)
-
+<DocImage path={require('./static/autostopping-proxy-architecture-diagram.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 Perform the following steps to create an AutoStopping proxy for your cloud resources in Azure:
 

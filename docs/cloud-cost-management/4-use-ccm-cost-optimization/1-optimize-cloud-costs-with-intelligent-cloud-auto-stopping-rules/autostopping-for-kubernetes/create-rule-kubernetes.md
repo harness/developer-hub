@@ -1,5 +1,5 @@
 ---
-title: Kubernetes cluster
+title: AutoStopping for Kubernetes Clusters
 description: This topic describes how to create an AutoStopping Rules for a Kubernetes cluster.
 # sidebar_position: 5
 helpdocs_topic_id: 1r80jdz2f9

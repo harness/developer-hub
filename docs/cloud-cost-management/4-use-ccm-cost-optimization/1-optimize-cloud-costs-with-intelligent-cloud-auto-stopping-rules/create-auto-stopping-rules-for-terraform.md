@@ -2,10 +2,6 @@
 title: Create AutoStopping Rules with Terraform
 description: Describes how to create an AutoStopping Rules for Terraform.
 # sidebar_position: 6
-helpdocs_topic_id: 90zwlg096d
-helpdocs_category_id: biypfy9p1i
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 # Create AutoStopping Rules with Terraform
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.

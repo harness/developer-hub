@@ -1,7 +1,7 @@
 ---
-title: RDS
+title: AutoStopping for AWS RDS
 description: This topic describes how to create AutoStopping Rules for Amazon Relational Database Service (RDS).
-# sidebar_position: 7
+sidebar_position: 6
 helpdocs_topic_id: ryk2e3ujpn
 helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false

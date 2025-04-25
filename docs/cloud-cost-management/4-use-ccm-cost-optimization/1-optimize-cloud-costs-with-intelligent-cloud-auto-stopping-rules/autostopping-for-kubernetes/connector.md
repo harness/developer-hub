@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Connector
+title: Setting up Kubernetes Connector
 description: This topic describes how to create a Kubernetes connector for AutoStopping Rules.
 # sidebar_position: 2
 helpdocs_topic_id: dfwoqnacnw

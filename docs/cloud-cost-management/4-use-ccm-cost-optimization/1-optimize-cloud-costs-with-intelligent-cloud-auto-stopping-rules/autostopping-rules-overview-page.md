@@ -1,11 +1,7 @@
 ---
 title: AutoStopping Rules Overview page
 description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. This topic describes how to use AutoStopping Dashboard.
-# sidebar_position: 2
-helpdocs_topic_id: ehmi6kiynl
-helpdocs_category_id: biypfy9p1i
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 5
 ---
 
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.

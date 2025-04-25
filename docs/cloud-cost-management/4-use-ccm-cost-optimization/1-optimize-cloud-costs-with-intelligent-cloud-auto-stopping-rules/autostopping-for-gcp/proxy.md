@@ -1,7 +1,7 @@
 ---
-title: GCP AutoStopping proxy 
+title: Setting Up GCP AutoStopping proxy 
 description: This topic describes how to create an AutoStopping proxy for GCP.
-# sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Create an AutoStopping proxy for GCP

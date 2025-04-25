@@ -1,7 +1,7 @@
 ---
-title: Azure
+title:  AutoStopping for Azure VMs
 description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle.
-# sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: r5x5pvuqfn
 helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false

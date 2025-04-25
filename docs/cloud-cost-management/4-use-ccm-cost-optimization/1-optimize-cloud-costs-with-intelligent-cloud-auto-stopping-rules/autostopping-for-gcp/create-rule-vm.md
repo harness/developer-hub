@@ -1,9 +1,7 @@
 ---
-title: GCP
+title: AutoStopping for GCP VMs
 description: This topic describes how to create an AutoStopping Rule for GCP.
-# sidebar_position: 4
-helpdocs_topic_id: 4brkwfy8yt
-helpdocs_category_id: biypfy9p1i
+sidebar_position: 2
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

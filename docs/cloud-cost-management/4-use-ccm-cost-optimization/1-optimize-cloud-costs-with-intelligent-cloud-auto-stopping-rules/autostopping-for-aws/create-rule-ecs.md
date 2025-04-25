@@ -1,7 +1,7 @@
 ---
-title: AWS ECS
+title: AutoStopping for AWS ECS
 description: This topic describes how to create an AutoStopping Rules for Amazon ECS.
-# sidebar_position: 8
+sidebar_position: 5
 helpdocs_topic_id: r6y5h5i6r1
 helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
