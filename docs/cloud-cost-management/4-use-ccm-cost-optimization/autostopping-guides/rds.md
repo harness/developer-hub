@@ -42,7 +42,7 @@ For more information, go to [AutoStopping Proxy for AWS](/docs/cloud-cost-manage
 2. Under **Setup**, select **Load Balancers**.
 3. Select **Create New Load Balancer**.
 4. Select **AWS**.
-5. Choose an existing connector or [create a new one](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector).
+5. Choose an existing connector or create a new one.
 6. Select **Continue**.
 7. Select **Create AutoStopping Proxy**.
 8. Select **Continue**.

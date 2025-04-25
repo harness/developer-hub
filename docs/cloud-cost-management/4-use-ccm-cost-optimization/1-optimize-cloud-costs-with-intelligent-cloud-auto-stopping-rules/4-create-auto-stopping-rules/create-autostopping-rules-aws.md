@@ -56,7 +56,7 @@ Perform the following steps to link your AWS cloud account to Harness.
    ![](./static/create-autostopping-rules-aws-90.png)
 
 3. If you have already linked your AWS account and want to use that account, then select the AWS account from the **Connect to your AWS account** drop-down list.
-4. If you have not added your cloud account, click **Connect to your AWS account** drop-down list and then click **New Connector**. For the detailed steps, see [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md).
+4. If you have not added your cloud account, click **Connect to your AWS account** drop-down list and then click **New Connector**. For the detailed steps, see [Connect to an AWS Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws).
 
    ![](./static/create-autostopping-rules-aws-91.png)
 
@@ -159,7 +159,7 @@ In this example, all the instances are of On-Demand type.
 Add a cluster to be managed by the AutoStopping Rule.
 
 1. Select **Kubernetes Cluster** and then click **Add a cluster**.
-2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules. If you wish to create a new connector for the Kubernetes cluster, see [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md).
+2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules. If you wish to create a new connector for the Kubernetes cluster, see [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes).
 3. Once you have finished selecting the Kubernetes cluster, click **Add selected**.
 
 :::note

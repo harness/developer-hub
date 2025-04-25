@@ -17,11 +17,6 @@ An Application Load Balancer (ALB) makes routing decisions at the application la
 This topic describes how to create a new application load balancer for creating AutoStopping Rules for AWS. 
 
 
-## Before You Begin
-
-* [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md)
-* [Create AutoStopping Rules for AWS](../4-create-auto-stopping-rules/create-autostopping-rules-aws.md)
-
 ## Why do You Need a Load Balancer?
 
 AutoStopping integrates with the cloud provider's native load balancing technologies (Application Load Balancer, Azure AppGateway, etc.) to provide start and stop capability for the AutoStopping-managed cloud services.

@@ -13,7 +13,7 @@ Azure Application Gateway is a web traffic load balancer that enables you to man
 
 ### Before You Begin
 
-* [Connect to an Azure Connector](../1-add-connectors/add-azure-connector.md)
+* [Connect to an Azure Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure)
 * [Create AutoStopping Rules for Azure](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
 
 ## Create a New Application Gateway

@@ -13,7 +13,7 @@ AutoStopping Rules make sure that your non-production resources run only when us
 
 ## Before you begin
 
-* [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md)
+* [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes)
 * [AutoStopping Rules Overview](../1-auto-stopping-rules.md)
 
 ## Kubernetes Coverage
