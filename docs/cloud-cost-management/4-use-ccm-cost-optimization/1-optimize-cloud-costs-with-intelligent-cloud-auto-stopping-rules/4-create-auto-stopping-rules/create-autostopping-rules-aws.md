@@ -14,8 +14,8 @@ AutoStopping Rules make sure that your non-production resources run only when us
 
 ## Before you begin
 
-- [Create an AWS Connector for Autostopping Rules](../1-add-connectors/connect-to-an-aws-connector.md)
-- [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md)
+- [Create an AWS Connector for Autostopping Rules](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
+- [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes)
 - [AutoStopping Rules Overview](../1-auto-stopping-rules.md)
 
 ## Prerequisites
@@ -84,7 +84,7 @@ Perform the following steps to get started with AutoStopping Rule.
 
 1. In **Cloud Costs,** in **AutoStopping Rules**, click **New AutoStopping Rule**.
 2. In the cloud account type, select **AWS**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
-3. Select your AWS account from the **Connect to your AWS account** drop-down list and click **Next**. If you have not added an AWS cloud account, see [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md).
+3. Select your AWS account from the **Connect to your AWS account** drop-down list and click **Next**. If you have not added an AWS cloud account, see [Connect to an AWS Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws).
 
    ![](./static/create-autostopping-rules-aws-92.png)
 

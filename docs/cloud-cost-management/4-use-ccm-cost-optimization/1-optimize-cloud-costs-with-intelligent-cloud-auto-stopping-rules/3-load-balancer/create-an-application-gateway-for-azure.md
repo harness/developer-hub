@@ -66,7 +66,7 @@ Perform the following steps to create a new Application Gateway in Azure.
 
 3. If you have already linked your Azure account and want to use that account, then select the Azure account from the list.
 
-4. If you have not added your cloud account, click **New Connector**. For the detailed steps, see [Connect to an Azure Connector](../1-add-connectors/add-azure-connector.md).  
+4. If you have not added your cloud account, click **New Connector**. For the detailed steps, see [Connect to an Azure Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure).  
 
   ![](./static/create-an-application-gateway-for-azure-04.png)
   
