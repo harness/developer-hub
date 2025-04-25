@@ -43,13 +43,9 @@ Jira tickets can only be created for targets that have baselines configured. For
    1. **Scope**: Choose where the ticket should apply:
       - **This Target** – Creates a ticket for all instances of the issue in the selected target.
       - **This Project** – Creates a ticket for all instances of the issue across all targets within the project.
-
    2. **Jira Project**: Select the Jira project where the issue should be created. This list is populated based on your configured Jira connector.
-
    3. **Issue Type**: Choose the type of Jira issue to create.
-
    4. **Title**: Enter a title for the Jira ticket.
-
    5. **Notes**: (Optional) Add any additional context or information relevant to the issue.
 
 :::info
