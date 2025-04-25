@@ -1,7 +1,7 @@
 ---
-title: Register a Software Component in Catalog
+title: Register a Software Component in Catalog [1.0]
 description: Create a Software Component and register it in Software Catalog
-sidebar_position: 2
+sidebar_position: 5
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />

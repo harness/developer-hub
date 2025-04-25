@@ -1,8 +1,8 @@
 ---
 title: System Model
 description: Organize the various software components, services, and tools
-sidebar_position: 5
-sidebar_label: System Model
+sidebar_position: 6
+sidebar_label: System Model [1.0]
 redirect_from:
   - /docs/internal-developer-portal/get-started/system-model
 ---

@@ -1,5 +1,5 @@
 ---
-title: Manage Catalog
+title: Manage Catalog [2.0]
 description: Create a Software Component and register it in Software Catalog
 sidebar_position: 2
 ---
@@ -24,6 +24,7 @@ Harness IDP 2.0 represents a major evolution of the Internal Developer Portal, b
 *Fundamentals of entities: types of entities, their backstage references, etc.*
 *converting legacy backstage YAML*
 *API way of adding entities*
+*Adding user groups/users*
 
 In **IDP 1.0**, users were required to update **Catalog YAML files** for every change, which made adoption more complex—especially for entities that needed frequent updates, such as infrastructure resources.
 
