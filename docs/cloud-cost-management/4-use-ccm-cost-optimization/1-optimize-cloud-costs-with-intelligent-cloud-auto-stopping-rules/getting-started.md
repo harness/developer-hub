@@ -105,7 +105,11 @@ Next, you'll need to set up a proxy or load balancer that will intercept and man
 
 ## Step 3: Configure AutoStopping Rules
 
-Finally, you'll create and configure AutoStopping Rules through the Harness CCM UI to define when resources should be stopped and started.
+You can create AutoStopping Rules with two methods:
+
+1. **Using Terraform**: For detailed instructions, see [Create AutoStopping Rules for Terraform](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-terraform/).
+
+2. **Using the Harness UI**: 
 
 <Tabs>
   <TabItem value="aws" label="AWS">
