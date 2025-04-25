@@ -19,7 +19,6 @@ Harness Delegate 2.0 is under **Beta** and can only be used for Mac Build, Andro
 
 Please enable the following feature flags to use Delegate 2.0. To enable these flags, contact [Harness Support](mailto:support@harness.io)
 
-- `CI_V0_LOCAL_BUILDS_USE_RUNNER`
 - `PL_ENABLE_UNIFIED_TASK`
 - `PL_USE_RUNNER`
 
@@ -203,6 +202,8 @@ If you don't set a name for your delegate, it will default to `harnessRunner`
 :::
 
 ### Configure Pipeline Delegate
+
+For the CI stages that you want to use the new delegate, you will need to [define the stage variable](/docs/platform/variables-and-expressions/add-a-variable/#define-variables) `HARNESS_CI_INTERNAL_ROUTE_TO_RUNNER` and set it to `true`.
 
 Then, in order to use this delegate, simply [set your pipeline's build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#set-the-pipelines-build-infrastructure) as normal.
 
