@@ -96,6 +96,56 @@ The Testing Terminal lets you test the policy against real inputs while you're d
 
 ![](./static/harness-governance-overview-10.png)
 
+### Policy Packages
+
+Harness Policy As Code uses Open Policy Agent (OPA) as the central service to store and enforce policies for the different entities and processes across the Harness platform. OPA uses Rego as its policy languages.
+
+Policies in this language are organized into [modules](https://www.openpolicyagent.org/docs/latest/policy-language/#modules) that can imported as [packages](https://www.openpolicyagent.org/docs/latest/policy-language/#packages) to other policies. 
+
+This feature is available in Harness and allows you to use and import policy packages from across scopes, including policies created in your project, org, or account. 
+
+#### Define a package
+
+To define a package, use the keyword `package` followed by your package name. For example:
+
+```
+package example1
+```
+
+#### Import a package
+
+To import a package, use the keyword `import` followed by `data.<package_name>`. For example:
+
+```
+import data.example1
+```
+
+You can import a package from any accessible scope.
+
+#### Policy Package Example
+
+For example, you can define a function in an policy in your org as follows:
+
+```
+package org1
+
+is_even_number(x) {
+  x % 2 == 0
+}
+```
+
+and then you can import this policy into your project's policy as follows:
+
+```
+package project1
+
+import data.org1
+
+deny["Number is even"] {
+  org1.is_even_number(10)
+}
+```
+
 ### Policy Input Payload User Metadata
 
 The input payload contains user metadata for the user that initiated the event. Metadata includes roles, groups, etc, and is added to every evaluation automatically. For example:
