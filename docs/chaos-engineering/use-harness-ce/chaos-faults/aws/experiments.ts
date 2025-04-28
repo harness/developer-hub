@@ -23,6 +23,13 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "VPC route misconfiguration",
+    description:
+        "VPC route misconfiguration causes network issues due to misconfiguration on the route table associated with the target VPC.",
+    tags: ['vpc', 'route tables'],
+    category: "aws",
+  },
+  {
     name: "DynamoDB replication pause",
     description:
       "DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.",
