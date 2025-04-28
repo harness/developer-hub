@@ -1,11 +1,11 @@
 {
-   "label": "Monitoring with SMP",
-   "position": 48,
+   "label": "Monitoring",
+   "position": 44,
    "collapsible": "true",
    "collapsed": "true",
    "className": "default",
    "link": {
       "type": "generated-index",
-      "title": "Monitoring with Harness Self-Managed Enterprise Edition"
+      "title": "Monitoring with Self-Managed Enterprise Edition"
    }
 }
