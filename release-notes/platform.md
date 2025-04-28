@@ -118,6 +118,7 @@ The following deprecated API endpoints are longer supported:
 #### New features and enhancements
 
 - Implicit tag (delegate name) is now supported for delegate version override. [PL-62335]
+- Support for adding Delegate Configurations (legacy feature) from the Resource Groups page has been removed. [PL-60603]
 
 ### Version 1.86.x <!--April 23, 2025-->
 
