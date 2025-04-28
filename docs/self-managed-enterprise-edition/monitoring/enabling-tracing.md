@@ -29,7 +29,7 @@ The tracing setup for Harness leverages OpenTelemetry to capture distributed tra
 
 <figure>
 
-![Tracing Arch Placeholder](../static/Tempo-Otel-Arch.png.png)
+![Tracing Arch Placeholder](../static/tempo-otel-arch.png)
 
 <figcaption> Overview of Tracing Architecture for Harness Self-Managed Enterprise Edition.</figcaption>
 
@@ -96,7 +96,7 @@ helm install tempo-distributed grafana/tempo-distributed -f tempo.yaml -n tempo
 
 <figure>
 
-![Configure-Tempo-In-Grafana](../static/Tempo-Setup.png)
+![Configure-Tempo-In-Grafana](../static/tempo-setup.png)
 
 <figcaption> Configure Tempo in Grafana</figcaption>
 
@@ -138,7 +138,7 @@ Once traces flow from Harness services through the OTel Collector and are stored
 
 <figure>
 
-![Example 1a](../static/Trace-example-1a.png)
+![Example 1a](../static/trace-example-1a.png)
 
 <figcaption> Example of browsing traces</figcaption>
 
@@ -146,7 +146,7 @@ Once traces flow from Harness services through the OTel Collector and are stored
 
 <figure>
 
-![Example 1b](../static/Trace-example-1b.png)
+![Example 1b](../static/trace-example-1b.png)
 
 <figcaption> Example of browsing traces</figcaption>
 
