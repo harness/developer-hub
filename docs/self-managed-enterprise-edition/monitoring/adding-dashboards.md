@@ -1,7 +1,7 @@
 ---
 title: Add Dashboards using Grafana Operator
 description: Manage Grafana dashboards and datasources declaratively in Kubernetes with Grafana Operator, Helm, and CRDs, enabling easy versioning, automation, and maintenance of observability for Harness modules. 
-sidebar_position: 2
+sidebar_position: 5
 ---
 
 ## Overview
