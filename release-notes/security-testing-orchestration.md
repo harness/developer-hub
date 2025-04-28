@@ -22,6 +22,31 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## April 2025
+
+### Version v1.136.1
+
+<!-- 2025-04-18 -->
+
+#### New Features and Enhancements  
+- Updated the Jira ticket creation dialog to dynamically fetch and display all required fields for ticket creation (STO-8521).
+
+#### Fixed Issues  
+- Fixed an issue where the CVSS score of issues did not match the severity label in some cases (STO-8807).
+- Fixed an issue where Harness AI failed to present remediation details if the cloned codebase did not match the ingested scan result’s repository; remediation is now shown correctly for the ingested repo (STO-8664).
+
+### Version v1.134.1
+
+<!-- 2025-04-05 -->
+
+#### New Features and Enhancements  
+- Switched to using the Harness GAR registry as the default source instead of DockerHub to avoid rate-limiting issues (STO-8669).
+
+#### Fixed Issues  
+- Fixed a bug where the `ListTickets` endpoint did not respect `projectID` and `orgID` scopes (STO-8628).
+- Fixed an issue in `Local OCI/Docker archive in this stage` image scans where the tar file name was incorrectly passed to the CLI instead of the image name (STO-8690, ZD-80330).
+- Resolved an issue where STO failed to parse the latest results from BlackDuckHub (STO-8718, ZD-81315).
+
 ## March 2025
 
 ### Version v1.130.6
@@ -53,7 +78,9 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 #### Fixed Issues
 - Fixed an issue where unsupported connectors were listed when configuring the Container Registry field in STO steps; the list now only displays supported connectors for selection (STO-8398, ZD-75006).
 - Fixed an issue where remediation calculations were skipped due to an internal race condition; this now ensures accurate remediation trends in the **Remediation Over Time** graph on the **Security Testing Dashboard** (STO-8456).
+
   <DocImage path={require('./static/sto-11275-remediation-fix.png')} width="50%" height="50%" title="Click to view full size image" />
+
 - Fixed AI remediation steps failing with a 403 error when triggered by a project admin; added support for eligible scopes like project and org (STO-8483, ZD-76591).  
 - Fixed an issue preventing users from canceling an issue exemption; users with the necessary privileges can now cancel issue exemptions without issues.
 

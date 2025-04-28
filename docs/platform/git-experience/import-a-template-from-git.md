@@ -18,11 +18,6 @@ You can create Templates in Harness in the following ways:
 * Create a remote Template and save its configuration in Git.
 * Import a Template from Git and save its configuration in Git.
 
-:::info note
-Harness now supports storing Inline Entities in the Harness Git Repository.  
-For more details, refer to [Storing Inline Entities in Harness Git Repository](/docs/platform/git-experience/harness-code-inline.md).
-:::
-
 This topic explains how to import a Template from your Git repo to Harness.
 
 ### Before you begin

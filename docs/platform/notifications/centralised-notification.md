@@ -99,6 +99,10 @@ In this example, we are going to discuss setting up notification management of P
                 ![delegate-mode](./static/delegate-setup.png)
 
             Once the connectivity mode is configured, select the [**Channel Type**](/docs/platform/notifications/notification-settings#configure-pipeline-notifications) and add details related to the channel type to proceed.
+            
+            :::note
+            If you select the Connectivity Mode as "Connect through a Harness Delegate" and Channel Type as "Email", ensure to add an [SMTP configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration) to which the Harness delegate has access. If this is not done, then the Email notifications will fail.
+            :::
 
                 ![](./static/create-new-channel.png)
 

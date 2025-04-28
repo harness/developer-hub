@@ -39,8 +39,7 @@ Currently, we don't have any facility to do the web app deployment in the custom
 
 ### How does the newly introduced support for Azure Logs as a Health Source in Harness contribute to service monitoring, particularly through the utilization of Cloud Metrics and Cloud Logs ? 
 
-Harness has now launched support for Azure Logs Support as a Health Source for CV and has enabled for all accounts . Users can use Cloud Metrics and Cloud Logs to monitor their deployed service. This was a feature parity item with Harness First Gen. One may also follow the same in our [Documentation](https://developer.harness.io/docs/service-reliability-management/monitored-service/health-source/azurelogs/).
-
+Harness has now launched support for Azure Logs Support as a Health Source for CV and has enabled for all accounts. Users can use Cloud Metrics and Cloud Logs to monitor their deployed service. One may also follow the same in our [Documentation](https://developer.harness.io/docs/service-reliability-management/monitored-service/health-source/azurelogs/).
 
 ### Does the Azure connector support service principles?
 

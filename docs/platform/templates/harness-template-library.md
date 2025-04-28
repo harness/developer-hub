@@ -12,7 +12,7 @@ The Harness Template Library enables you to standardize and distribute reusable 
 
 To demonstrate how to create, configure, and use HTTP step templates, this topic adds an HTTP template to a [CD pipeline](/docs/category/cd-and-gitops-tutorials), but you can add HTTP step templates to other pipelines that support this step type.
 
-This topic assumes you're familiar with [Harness' key concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md).
+This topic assumes you're familiar with [Harness' key concepts](/docs/platform/get-started/key-concepts).
 
 ### Objectives
 
@@ -40,12 +40,6 @@ To create a inline step template from the project scope, do the following:
 7. In **Version Label**, enter a version for the template.​
 8. Under **How do you want to set up your template?**, select **Inline**.
 9. Click **Start**. The **Step Library** panel opens.
-
-:::info note
-Harness now supports storing Inline Entities in the Harness Git Repository.  
-For more details, refer to [Storing Inline Entities in Harness Git Repository](/docs/platform/git-experience/harness-code-inline.md).
-:::
-
 
 ### Step 2: Add step parameters
 

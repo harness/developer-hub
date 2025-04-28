@@ -43,6 +43,11 @@ The left navigation for version 2.0 includes the following options.
 
 Your [scope](/docs/platform/role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes) is given at the top of the left navigation. Select the scope (**Account**, **Organization**, or **Project**) to change your scope.
 
+If you hover over the scope selector, a list of recent scopes will appear to choose from. Click the selector to view all scopes. 
+:::note
+This feature is behind the feature flag `CDS_RECENT_SCOPES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 You can change scope levels entirely (or example, drill down from organization or project scope) or select different entities at the same scope (such as a different project or organization).
 
 The remainder of the left nav updates based on the selected scope.
@@ -102,6 +107,11 @@ Visibility depends on your permissions.
 Each scope provides access to its respective scope-level settings: **Account Settings**, **Organization Settings**, and **Project Settings**.
 
 While the contents of these pages are the same, navigation 2.0 introduces a cleaned-up interface for simplified browsing and minimal distraction.
+
+Additionally, when hovering over the Project Settings button, a tile pop-up will display the full settings list. Clicking the button will open the settings page as usual.
+:::note
+This feature is behind the feature flag `CDS_SETTINGS_ACCORDION`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.  
+:::
 
 Account settings include:
 
@@ -241,3 +251,18 @@ To customize navigation in navigation 2.0:
 
 </TabItem>
 </Tabs>
+---
+
+### Customize Account-Wide Navigation
+
+:::note
+
+This feature is currently behind the feature flag `CDS_NAV_MODULE_VISIBILITY`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
+
+:::
+
+Admins can also edit which modules are visible to all users using the [Visible Modules in this Account](/docs/platform/settings/default-settings/#visible-modules-in-this-account) default setting. 
+
+Access this setting by going to **Account Settings** > **Default Settings** > **Visible Modules in this Account**.
+
+

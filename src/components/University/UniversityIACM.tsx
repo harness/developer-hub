@@ -17,17 +17,17 @@ import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
-    img: `${url}img/cert_dev_iacm_badge.svg`,
+    img: `${url}img/cert-dev-iacm-badge.svg`,
     alt: "Harness Certified Expert - Developer",
     type: certType.developer,
   },
   {
-    img: `${url}img/cert_adm_iacm_badge.svg`,
+    img: `${url}img/cert-adm-iacm-badge.svg`,
     alt: "Harness Certified Expert - Administrator",
     type: certType.administrator,
   },
   {
-    img: `${url}img/cert_arc_iacm_badge.svg`,
+    img: `${url}img/cert-arc-iacm-badge.svg`,
     alt: "Harness Certified Expert - Architect",
     type: certType.architect,
   },
@@ -283,7 +283,7 @@ export default function CertificationsIACM() {
                       Infrastucture as Code Management - Developer
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_dev_iacm_badge.svg`}
+                      src={`${baseUrl}img/cert-dev-iacm-badge.svg`}
                       alt="Harness Certified Expert - IaCM Developer"
                       className={styles.badge}
                     />
@@ -355,7 +355,7 @@ export default function CertificationsIACM() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_adm_iacm_badge.svg`}
+                      src={`${baseUrl}img/cert-adm-iacm-badge.svg`}
                       alt="Harness Certified Expert - IDP Administrator"
                       className={styles.badge}
                     />
@@ -443,7 +443,7 @@ export default function CertificationsIACM() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_arc_iacm_badge.svg`}
+                      src={`${baseUrl}img/cert-arc-iacm-badge.svg`}
                       alt="Harness Certified Expert - IaCM Architect"
                       className={styles.badge}
                     />

@@ -105,7 +105,34 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## March 2025 
+## April 2025 
+
+### Version 1.86.x <!--April 23, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where future-dated cloud credits were not consumed when no current credits were available. Previously, this caused overage to be incorrectly updated. [PL-62134]
+- Addressed a performance issue where the FileStore page was slow when too many files were loaded at once. We’ve added virtualization so that only a few files load at a time, making the page much faster and smoother. [PL-61880] 
+- Deprecated the ‘Account Edition’ column from the Account List View across Harness. This change is part of our ongoing effort to simplify the UI and reduce redundancy. [PL-61850]
+
+#### New features and enhancements
+
+- Pipeline notifications sent to Datadog are now tagged with `source:harness_notifications`, following the release of the [Harness Notifications integration](https://docs.datadoghq.com/integrations/harness_harness_notifications/) in Datadog. [PL-59888]
+
+### Version 1.85.x <!--April 16, 2025-->
+
+#### Fixed issues
+- Added support for using MinIO external secrets with Log Service. [PL-61107]
+
+#### New features and enhancements
+- Upgraded internal protocol buffer library from `protobuf-java` 3.15.5 to 4.28.3 to address security vulnerabilities and enhance service communication, with no impact on user experience or workflows. [PL-61208]
+- Introduced a maximum limit on role assignments per account based on license edition to safeguard system stability: 100 for Community and Free editions, and 75,000 for Team and Enterprise editions. [PL-58428]
+
+### Version 1.84.x <!--April 9, 2025-->
+
+#### Fixed issues
+- Resolved an issue where the Auto Upgrade Indicator for Delegates was not displaying correctly in certain scenarios.[PL-61711]
+- Resolved an issue that caused crashes during page navigation on the Audit Trail page. To access a specific page in the Audit Trails directly, users can either manually modify the URL or navigate through the available pages using the Previous and Next buttons. [PL-61658]
 
 ### Version 1.83.x <!--April 2, 2025-->
 
@@ -113,6 +140,11 @@ The following deprecated API endpoints are longer supported:
 - Fixed: Ignored `docker.io` in image tag for delegate upgrade checks, as it is the default registry when not specified. [PL-61417]
 - Fixed an issue where the "New Project" button was incorrectly enabled after switching organizations, even for users without project creation permissions. Now, permissions are re-validated after scope switching, ensuring the button remains disabled when necessary. [PL-61225]
 - Fixed an issue on the Delegate Token listing page in Safari where tokens weren’t copied to the clipboard despite showing a success message. Tokens are now copied correctly. [PL-56230]
+
+#### New features and enhancements
+- Added support to configure [Sumo Logic as a streaming destination](/docs/platform/governance/audit-trail/audit-streaming/#configure-the-streaming-connector) to send Harness audit log data to an HTTP source in Sumo Logic. This feature is currently behind the feature flag `PL_ENABLE_SUMOLOGIC_AUDIT_STREAMING` and requires Harness Delegate version 85500 or later. [PL-58532]
+
+## March 2025 
 
 ### Version 1.82.x <!--March 27, 2025-->
 #### Fixed issues
@@ -2964,7 +2996,7 @@ Delegate version: 22.12.77802
 
 - You can now refer to existing secrets of Azure Key Vault, AWS secret manager, and GCP secret manager. (PL-29915)
 
-  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](/docs/first-gen/firstgen-platform/security/secrets-management/reference-existing-secrets/).
+  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets).
 
 - You can now use the Git client to commit changes while creating or updating pipelines using Bitbucket on-prem as the Git provider. (PIE-6423)
 

@@ -87,11 +87,42 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## April 2025
+
+### Version 25.04.85701 <!--April 23, 2025-->
+
+#### Fixed issues
+
+- SSH command step now supports OIDC. [CDS-109225]  
+- Restored the skipping of Helm Canary delete step when namespace validation fails, and corrected namespace object handling to use the proper `name` field. [CDS-109155]  
+- Fixed the issue where readiness-related attributes were removed from the manifest by adding them to the allowlist to avoid unintended filtering. [CDS-109043]  
+- Fixed folder path issues by stripping leading and trailing slashes; this fix is controlled by the feature flag `CDS_SCM_FIX_FOLDER_PATH`. [CDS-108947]  
+- Introduced an optional environment variable `HOST_NAME_COMMAND` to control the delegate's host name during registration with the backend. [PL-61219]
+- Enabled task support for `CLOUDWATCH_LOGS_DATA_COLLECTION_TASK` to enhance CloudWatch Logs data collection. [CDS-109384]
+
+### Version 25.04.85602 <!-- April 15, 2025 -->
+
+#### Hotfix
+
+- Added Nullchecks to handle errors for customers using API token for dynatrace connectors. (CDS-109040)
+
+### Version 25.02.85306 <!-- April 10, 2025-->
+
+#### Fixed issues
+
+- Fixed the dynamicHandlingOfRequestEnabled feature for the delegate. [PL-61578]  
+
+### Version 25.04.85601 <!-- April 10, 2025-->
+
+#### New features and improvements
+
+- Enhanced system stability and regular checks implemented to ensure reliability.
+
 ## March 2025
 
 ### Version 25.03.85504 <!-- March 27, 2025-->
 
-### Fixed Issues
+#### Fixed Issues
 
 - Fixed an issue where the Harness delegate incorrectly used local container credentials instead of the OIDC access token when listing GCP projects via an OIDC-authenticated connector. This is now resolved behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`, ensuring the delegate lists projects correctly based on its IAM principal. [CDS-108481]
 

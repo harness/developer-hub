@@ -130,7 +130,7 @@ Use the **S3-Compatible Object Store for Self-Managed Build Infrastructure** set
   ![GCP Connector](./static/s3-connector-config-default-settings-01.png)
 
 
-* **Cloud Storage Connector:** For AWS/GCP, provide a connector configured to authenticates via OIDC or IRSA (AWS) with your object store. 
+* **Cloud Storage Connector:** Provide an [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector/) or [GCP connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp) configured to authenticate with your object store. 
 * **Endpoint URL:** S3-compatible storage URL.
 * **Region:** Geographical region where your storage is hosted. This is optional for some providers.
 * **Bucket Name:** The name of the bucket to use for Harness-managed caches.
@@ -169,3 +169,13 @@ These settings are for [Harness SCS](/docs/software-supply-chain-assurance).
 ### Harness AI Development Assistant
 
 Enable this setting to use [Harness AI Development Assistant (AIDA)](/docs/platform/harness-aida/aida-overview/).
+
+### Visible Modules in this Account
+
+:::note
+
+This feature is currently behind the feature flag `CDS_NAV_MODULE_VISIBILITY`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
+
+:::
+
+Use this setting to enable/disable which modules are visible to all users of this account. 
