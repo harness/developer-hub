@@ -107,6 +107,18 @@ The following deprecated API endpoints are longer supported:
 
 ## April 2025 
 
+### Version 1.87.x <!--April 28, 2025-->
+
+#### Fixed issues
+
+- Added more logs in secret deletion flow to monitor cases where remote deletion fails. [PL-62118]
+- Used enhanced secretId parsing to account for dynamic secret references. [PL-62089]
+- Email text overflow is now wrapped to prevent overlapping with the date column. [PL-6022]
+
+#### New features and enhancements
+
+- Implicit tag (delegate name) is now supported for delegate version override. [PL-62335]
+
 ### Version 1.86.x <!--April 23, 2025-->
 
 #### Fixed issues
