@@ -1,9 +1,7 @@
 ---
-
-# Add Dashboards using Grafana Operator
-
-Grafana Operator offers a declarative way to manage dashboards and datasources in your Kubernetes environment. When paired with Helm and properly structured CRDs, this approach makes it easy to version, automate, and maintain your observability setup for Harness modules.
-
+title: Add Dashboards using Grafana Operator
+description: Manage Grafana dashboards and datasources declaratively in Kubernetes with Grafana Operator, Helm, and CRDs, enabling easy versioning, automation, and maintenance of observability for Harness modules. 
+sidebar_position: 2
 ---
 
 ## Overview
@@ -16,8 +14,6 @@ Harness provides curated dashboards for multiple modules such as CI, CD, STO, Pl
 - Automatically sync dashboards into your Grafana instance.
 
 This guide walks you through installing the operator, connecting it to a running Grafana instance, and syncing dashboards from the Harness open-source dashboards repository.
-
----
 
 ## Install Grafana Operator
 
@@ -32,8 +28,6 @@ helm upgrade -i grafana-operator oci://ghcr.io/grafana/helm-charts/grafana-opera
 ```
 
 > This creates the operator in the `grafana` namespace, which will monitor and reconcile Grafana-related custom resources. 
-
----
 
 ## Connect the Operator to Grafana
 
@@ -82,20 +76,18 @@ To install Harness-maintained dashboards and automatically sync them into your G
 
 1. Clone the dashboards repo:
 
-```bash
-git clone https://github.com/harness/harness-dashboards.git
-cd harness-dashboards/chart
-```
+    ```bash
+      git clone https://github.com/harness/harness-dashboards.git
+      cd harness-dashboards/chart
+    ```
 
 2. Install dashboards using Helm:
 
-```bash
-helm install harness-dashboards . -n grafana
-```
+    ```bash
+      helm install harness-dashboards . -n grafana
+    ```
 
 Once deployed, the Grafana Operator will sync these resources into your Grafana instance. The dashboards will be organized under a top-level folder titled **Harness**, containing subfolders for each module (e.g., Platform, CI, CD) and further grouped by services.
-
----
 
 ## Summary
 
