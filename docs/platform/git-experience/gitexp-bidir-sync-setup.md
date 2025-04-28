@@ -33,9 +33,11 @@ This topic explains how to set up and use bidirectional sync.
 
 ## Bi-directional Sync
 
-GitX supports bi-directional sync by capturing changes committed directly to Git using webhook events. Harness treats Git as the **source of truth**, and uses cached Git data for all operations—including pipeline execution. This ensures fast, consistent execution of remote pipelines based on the latest committed changes.
+GitX supports **bi-directional sync** by capturing changes committed directly to Git using webhook events. With bi-directional sync enabled, Harness treats its own cached copy of Git data as the source of truth, and uses this cached data for all operations—including pipeline execution. 
 
-### Webhook Registration (Automatic)
+This ensures fast, consistent execution of remote pipelines based on the latest committed changes received through webhooks.
+
+## Webhook Registration
 
 Harness attempts to register webhooks automatically for GitX resources using the **Git connector** associated with the entity (e.g., pipeline, input set). This removes the need for most manual setup and helps prevent outdated pipeline configurations.
 
@@ -52,17 +54,17 @@ Automatic webhook registration follows these principles:
 
 ## Manual Webhook Setup for Bi-directional Sync
 
-There are two ways to manually set up a webhook when automatic registration is not preferred or not possible.
+There are three ways to manually set up a webhook when automatic registration is not preferred or not possible.
 
-### Option 1: Setup via Banner Prompt
+### Setup Webhook via Banner Prompt
 
-The previous manual webhook setup method is still available behind the feature flag `PIPE_DISABLE_AUTO_GITX_WEBHOOK_REGISTRATION`. If your team prefers to manage webhook creation manually, you can enable this flag.
+When an entity is not set up for bidirectional sync (that is, no webhook is registered for the corresponding Git repo or file path), Harness displays a **banner** to simplify webhook registration.
 
-When enabled, Harness displays a **banner** for entities that do not yet have a webhook. To register:
+To register a webhook:
 
 1. Click **Setup Webhook** on the banner.
-2. The webhook will be registered using the same Git connector used during entity creation.
-3. Upon success, you’ll see a confirmation message.
+2. Harness automatically registers the webhook using the same Git connector that was used when the entity was created.
+3. Upon success, a confirmation message appears.
 
 ![](./static/webhook_register_pipelinestudio.png)
 
@@ -90,7 +92,7 @@ To view registered webhooks:
 
 You can also explore [Git Sync Activity](./git-sync-health-page.md) to track webhook events.
 
-### Option 2: Manual Setup via Webhooks Page
+### Setup via Webhooks Page
 
 If you want full control over webhook setup or if banner setup was skipped:
 
