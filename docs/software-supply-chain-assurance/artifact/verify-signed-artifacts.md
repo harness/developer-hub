@@ -29,6 +29,8 @@ The Artifact Verification step pulls the `.sig` file from the artifact registry 
 
 Artifact Verification step supports both [container](/docs/software-supply-chain-assurance/artifact/verify-signed-artifacts#container-images) as well as [non-container images](/docs/software-supply-chain-assurance/artifact/verify-signed-artifacts#non-container-images).
 
+<DocImage path={require('./static/artifact-verify.png')} width="50%" height="50%" />
+
 ### Container Images
 
 You can search for **Artifact Verification** and add it to either the **Build** , **Deploy** or **Security** stage of a Harness pipeline
@@ -105,9 +107,6 @@ You can verify the signed artifact with **Cosign** or **Cosign with Secret Manag
 import CosignVerificationOptions from '/docs/software-supply-chain-assurance/shared/cosign-verification-options.md';
 
 <CosignVerificationOptions />
-
-
-<DocImage path={require('./static/artifact-verify.png')} width="50%" height="50%" />
 
 
 ### Non-Container Images

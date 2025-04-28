@@ -434,6 +434,30 @@ You can also use ​JSON and XML functors in the values for the output variable.
 
 See [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
 
+## Accessing HTTP Response Headers
+
+:::note
+This feature is currently behind the feature flag `CDS_SUPPORT_HTTP_HEADER_HTTP_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+You can now access HTTP response headers—such as cookies—directly within your pipeline using the expression: `<+httpResponseHeaders.get('headerKey')>`
+
+Replace `'headerKey'` with the specific header you want to retrieve (e.g., `'set-cookie'`, `'content-type'`, or `'x-api-key'`).
+
+This expression can be used in:
+- **Output variables**
+- **Step conditions**
+- **Assertions**  
+  Example: `<+httpResponseHeaders.get('status-code')> == 400`
+
+### Security Considerations
+- **Header values are not printed in logs** to protect sensitive data.
+- **Only header names are shown** in logs.
+- **All header names are normalized to lowercase**  
+(e.g., `'Content-Type'` becomes `'content-type'`).
+
+However, full header details—including values—are available in the **step output section** in the Harness UI.
+
 ## Simulate load by running steps in parallel
 
 You can use multiple HTTP steps in parallel to simulate load.

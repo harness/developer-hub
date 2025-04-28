@@ -13,7 +13,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
   const [inputValue, setInputValue] = useState(controller.state.value);
   const [isUrlParamsLoaded, setIsUrlParamsLoaded] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
-
+  const [showSuggestions, setShowSuggestions] = useState(true);
   useEffect(() => {
     controller.subscribe(() => setState(controller.state));
     const url = new URL(window.location.href);
@@ -34,9 +34,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
       case 'ArrowDown':
         event.preventDefault();
         setHighlightedIndex(
-          highlightedIndex === null
-            ? 0
-            : (highlightedIndex + 1) % suggestionCount
+          highlightedIndex === null ? 0 : (highlightedIndex + 1) % suggestionCount,
         );
         break;
       case 'ArrowUp':
@@ -44,15 +42,14 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
         setHighlightedIndex(
           highlightedIndex === null
             ? suggestionCount - 1
-            : (highlightedIndex - 1 + suggestionCount) % suggestionCount
+            : (highlightedIndex - 1 + suggestionCount) % suggestionCount,
         );
         break;
       case 'Enter':
         if (highlightedIndex !== null && state.suggestions[highlightedIndex]) {
           event.preventDefault();
-          controller.selectSuggestion(
-            state.suggestions[highlightedIndex].rawValue
-          );
+          controller.selectSuggestion(state.suggestions[highlightedIndex].rawValue);
+          setShowSuggestions(false);
           props.onSearch(state.suggestions[highlightedIndex].rawValue);
           setHighlightedIndex(null);
         } else {
@@ -63,9 +60,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
       case ' ':
         if (highlightedIndex !== null && state.suggestions[highlightedIndex]) {
           event.preventDefault();
-          controller.selectSuggestion(
-            state.suggestions[highlightedIndex].rawValue
-          );
+          controller.selectSuggestion(state.suggestions[highlightedIndex].rawValue);
           props.onSearch(state.suggestions[highlightedIndex].rawValue);
           setHighlightedIndex(null);
         }
@@ -86,13 +81,14 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
             setInputValue(e.target.value);
             setIsUrlParamsLoaded(false);
             setHighlightedIndex(null);
+            setShowSuggestions(true);
           }}
           onKeyDown={handleKeyDown}
           type="search"
         />
         <i className="fa-solid fa-magnifying-glass"></i>
       </div>
-      {!isUrlParamsLoaded && state.suggestions.length > 0 && (
+      {!isUrlParamsLoaded && state.suggestions.length > 0 && showSuggestions && (
         <ul>
           {state.suggestions.map((suggestion, index) => {
             const value = suggestion.rawValue;
@@ -108,6 +104,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
                   controller.selectSuggestion(value);
                   props.onSearch(suggestion.rawValue);
                   setHighlightedIndex(null);
+                  setShowSuggestions(false);
                 }}
                 onKeyDown={handleKeyDown}
                 className={isHighlighted ? styles.highlighted : ''}

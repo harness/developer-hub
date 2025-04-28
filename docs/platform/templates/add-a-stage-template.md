@@ -44,12 +44,6 @@ To create a stage template, do the following:
 
     You can now add stage parameters.
 
-:::info note
-Harness now supports storing Inline Entities in the Harness Git Repository.  
-For more details, refer to [Storing Inline Entities in Harness Git Repository](/docs/platform/git-experience/harness-code-inline.md).
-:::
-
-
 ### Step 2: Add stage parameters
 
 This example uses the Deploy stage. The Deploy stage type is a CD stage that enables you to deploy any service to your target environment. 

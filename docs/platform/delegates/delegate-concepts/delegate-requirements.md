@@ -74,7 +74,7 @@ gRPC connections are not required for delegate version 23.12.81803 and later.
 
 If you do not enable gRPC connections, the following limitation applies:
 
-* [Cloud Cost Management (CCM)](/docs/category/cloud-cost-management) does not collect events.
+* [Cloud Cost Management (CCM)](/docs/cloud-cost-management) does not collect events.
 
 ## Add certificates and other software to the delegate
 
