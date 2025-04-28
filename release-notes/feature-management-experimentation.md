@@ -44,6 +44,7 @@ The following SDKs now allow you to append properties to impressions for each `g
 - [Browser SDK Suite](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite#append-properties-to-impressions)
 - [iOS SDK](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#append-properties-to-impressions)
 - [iOS SDK Suite](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite#append-properties-to-impressions)
+- [Java SDK](https://help.split.io/hc/en-us/articles/360020405151-Java-SDK#append-properties-to-impressions)
 - [JavaScript SDK](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#append-properties-to-impressions)
 - [Node.js SDK](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK#append-properties-to-impressions)
 - [React SDK](https://help.split.io/hc/en-us/articles/360038825091-React-SDK#append-properties-to-impressions)
