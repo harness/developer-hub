@@ -13,10 +13,28 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: April 10, 2025
+#### Last updated: April 30, 2025
 
 
 ## April 2025
+### [New Feature] Experiments
+----
+#### 2025-04-30
+
+Experiments measure events and display metric results charts on a dashboard. Experiments take an assignment source, such as a feature flag targeting rule.
+
+![Experiment metric details page](./static/fme/experiment-metric-details-avg-purchase-amount.png)
+
+Key metrics, Supporting metrics, and account-wide Guardrail metrics can be added to experiments and can generate alerts when significant metric impact is detected between experiment variations.
+
+Every experiment displays a health check to help you validate underlying data and confirm the integrity of observed results.
+
+Experimental results will persist past the experiment end date to allow your team to refer back to the evidence behind your data-driven feature decisions.
+
+#### Related documentation
+- [Experiments](https://help.split.io/hc/en-us/articles/35511708088077-Experiments)
+- [Experiment health check](https://help.split.io/hc/en-us/articles/35928892585741-Experiment-health-check)
+
 ### [New Feature] Append impression properties
 ----
 #### 2025-04-10
