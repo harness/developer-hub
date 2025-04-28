@@ -155,7 +155,7 @@ Docker delegate upgrader is not supported if the delegate images are configured 
 
 The Docker Delegate upgrader makes use of Docker volume mount `-v /var/run/docker.sock:/var/run/docker.sock \`. Through this it mounts the Docker socket file from the host to the same path inside the delegate upgrader container. This enables the delegate upgrader container to communicate with the Docker daemon and perform tasks related to upgrade. 
 
-The Docker upgrader is scheduled to upgrade the delegate every one hour by default. This is done through the SCHEDULE environment variable. `-e SCHEDULE="0 */1 * * *" us-west1-docker.pkg.dev/gar-setup/docker/upgrader:latest`. According to the configured schedule, the upgrader searches for Docker delegates whose environment variable, `DELEGATE_NAME`, matches the value of the environment variable `UPGRADER_WORKLOAD_NAME`. When it identifies eligible Docker delegates where the latest version of the published image for the account differs from the delegate's current version, it proceeds to upgrade those delegates.
+The Docker upgrader is scheduled to upgrade the delegate every one hour by default. This is done through the SCHEDULE environment variable. `-e SCHEDULE="0 */1 * * *"`. According to the configured schedule, the upgrader searches for Docker delegates whose environment variable, `DELEGATE_NAME`, matches the value of the environment variable `UPGRADER_WORKLOAD_NAME`. When it identifies eligible Docker delegates where the latest version of the published image for the account differs from the delegate's current version, it proceeds to upgrade those delegates.
 
 In case of a successful upgrade, the old container is stopped within a 1 hour timeout by default and a new container is brought up with the upgraded delegate version. If you would like to customize the timeout to a different value, set the `CONTAINER_STOP_TIMEOUT` environment variable in the `docker run` command for the upgrader. For example, pass the following as environment variable to configure Docker Delegate upgrader timeout to 45 minutes: `-e CONTAINER_STOP_TIMEOUT=2700`.
 
@@ -203,23 +203,13 @@ To disable auto-upgrade on an installed delegate image, do the following:
 
 ### Docker Delegate
 
-Unlike Kubernetes delegates, where each delegate has a corresponding upgrader, the Docker Delegate upgrader can upgrade multiple Docker delegates. An upgrader is capable of upgrading Docker delegates whose value of the environment variable `DELEGATE_NAME` is same as the value of the upgrade’s `UPGRADER_WORKLOAD_NAME` environment variable.
+The Docker Delegate upgrader can upgrade multiple Docker delegates. An upgrader is capable of upgrading Docker delegates whose value of the environment variable `DELEGATE_NAME` is same as the value of the upgrader’s `UPGRADER_WORKLOAD_NAME` environment variable.
 
-There are two ways to disable automatic upgrades for docker delegates:
-  
-  1. By passing an environment variable (Recommended): Set `DISABLE_AUTO_UPGRADE` environment variable for the upgrader to true. By default this is set to false. This approach will disable the auto upgrades, however, the delegate health checks will remain unaffected.
+If you do not need auto-upgrade capabilities, the upgrader can still be used to perform health checks on the delegate. This can be achieved by passing an environment variable `DISABLE_AUTO_UPGRADE` to the upgrader and setting it to true. By default this is set to false.
      
      ```
       -e DISABLE_AUTO_UPGRADE=true
      ```  
-    
-      You can set this in two ways:
-      
-        1. By modifying the docker container's configuration (recommended for persistent changes): Stop the container using `docker stop <container_name_or_id>` , update the environment variable and restart the container using `docker start <container_name_or_id>`.
-      
-        2. Using docker exec (for temporary changes within a session): Enter the running container for upgrader using `docker exec -it <container_name_or_id> bash`, set the environment variable using  `export DISABLE_AUTO_UPGRADE=”true”`, and finally exiting the container through `exit` command. 
-  
-  2. By killing the Docker Delegate upgrader container (Not recommended) : Stop the docker container using `docker stop <container_name_or_id>` . This will not only disable the auto upgrades but the upgrader will no longer be able to perform health checks on the delegates.
   
 ## Configure the delegate upgrade schedule
 
@@ -289,10 +279,10 @@ To configure the delegate upgrade schedule, do the following:
 
 To configure the delegate upgrade schedule for Docker delegates, do the following:
 1. In the docker run command for the upgrader, locate the `SCHEDULE` environment variable. 
-2. Configure the time period after which you want the upgrader to check for upgrades. For example, if you want to check after every 15 minutes, update the cron expression in the `SCHEDULE` environment variable:
+2. Configure the time period after which you want the upgrader to check for upgrades as a cron expression. For example, if you want to check after every 15 minutes, update the cron expression in the `SCHEDULE` environment variable:
     
   ```
-    -e SCHEDULE="0 */15 * * *" us-west1-docker.pkg.dev/gar-setup/docker/upgrader:latest
+    -e SCHEDULE="0 */15 * * *"
   ``` 
 
 3. Run the docker run command for the Docker delegate upgrader with the updated value of `SCHEDULE` environment variable. 
