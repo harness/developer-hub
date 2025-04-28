@@ -60,7 +60,7 @@ import { MODULES } from "@site/src/constants";
             module: MODULES.platform,
             description:
               "Learn how to monitor the infrastructure of your installation.",
-            link: "/docs/category/monitoring-with-smp",
+            link: "/docs/category/monitoring",
           },
           {
             title: "Back up and restore",
