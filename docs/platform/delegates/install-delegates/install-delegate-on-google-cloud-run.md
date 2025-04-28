@@ -105,9 +105,7 @@ To configure a delegate on Google Cloud Run:
                 - Each new revision gets 100% of the traffic by default, causing older ones to scale down.
                 - If there's no traffic, Cloud Run may stop the container.
 
-                To ensure your delegate remains active and always available:
-
-                - Add the following environment variables to keep the delegate running, as shown below:
+                To ensure your delegate remains active and is always available, add the following environment variables:
                     
                     - `INIT_SCRIPT`: `nohup bash -c "while true; do curl -s https://<your-service-url>/api/health; sleep 30; done" &`
                         
