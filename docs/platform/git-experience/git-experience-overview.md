@@ -188,9 +188,11 @@ Harness has improved Git synchronization behavior to ensure that pipeline execut
 Currently, this feature is behind the feature flag `PIE_PROCESS_TRIGGER_SEQUENTIALLY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-Previously, when a pipeline YAML file was updated in Git, a trigger event could initiate execution before the Git update was complete. This could result in pipelines running outdated configurations.
+Previously, when a pipeline YAML file was updated in Git, a trigger event could initiate execution before the Git update was complete. This would result in pipelines running outdated configurations.
 
-With this improvement, Git updates are now processed sequentially. Harness completes the file update first, and then triggers the pipeline execution. This ensures that pipelines always run with the latest configuration from Git.
+With this improvement, Git updates are now processed sequentially. Harness completes the file update first, and then triggers the pipeline execution, ensuring that pipelines always run with the latest configuration from Git.
+
+If the Git event payload contains a large number of file changes, the GitX update may take slightly longer, and because execution is sequential, the trigger execution might experience a small delay.
 
 For more information on triggers, go to [Set up Git triggers with Git Experience](/docs/platform/triggers/triggers-overview/).
 
