@@ -100,7 +100,7 @@ The Workspace Wizard UI has been updated to improve usability and streamline the
 For more information, check out the [Module Registry Documentation](/docs/infra-as-code-management/iacm-features/module-registry).
 
 ### IAC-Manager: Version 1.57.0
-- **OpenTofu/Terraform import:** Harness Pipelines now support the [tofu/terraform import](/docs/infra-as-code-management/pipelines/terraform-plugins/#import) command, allowing you to bring existing infrastructure under IaC control.
+- **OpenTofu/Terraform import:** Harness Pipelines now support the [tofu/terraform import](/docs/infra-as-code-management/cli-commands/terraform-plugins/#import) command, allowing you to bring existing infrastructure under IaC control.
 
 <details>
 <summary>IaCM 2024 Release Notes</summary>
