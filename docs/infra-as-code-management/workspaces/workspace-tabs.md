@@ -1,5 +1,5 @@
 ---
-title: Workspace settings
+title: Workspace Settings
 description: Learn about workspace settings and the information in your workspace tabs. 
 sidebar_position: 30
 ---
@@ -69,10 +69,6 @@ variable "db_password" {
 The Activity History tab logs actions performed within the workspace, such as 'plan' and 'apply' steps executed via pipelines.
 - **Usage:** Use this tab to track the success or failure of specific actions, aiding in troubleshooting and auditing.
 ---
-### Execution History
-This tab records the execution of full pipelines, such as Provision or Destroy, providing a comprehensive history of actions taken within the workspace.
-- **Usage:** It enables you to review past pipeline executions and understand the sequence and outcome of each step.
----
 ### State
 The State tab provides access to your complete infrastructure state file, offering critical insights into your current configuration and dependencies of your resources.
 - **Usage:** Utilize this tab to conduct audits and maintain consistency across your infrastructure setup, ensuring alignment with your desired state.
@@ -83,6 +79,13 @@ For detailed instructions on managing your infrastructure state, visit [Provisio
 ### Configuration
 Derived from the initial setup steps of your workspace, including cost estimation settings, selected connectors, and default pipelines.
 - **Usage:** Provides a quick overview of your workspace's configuration, allowing for easy edits and updates.
+
+#### Advanced options
+Workspaces configuration advanced options offer the ability to configure additional settings for your workspace, including:
+- **Submodules:** Use submodules from your repository's `modules/` folder. 
+  Go to [Submodule Usage](/docs/infra-as-code-management/iacm-features/module-registry/root-sub-module-usage) for more information.
+- **Sparse checkout:** Provide paths to directories to do a sparse checkout on given patterns to clone specific directories from the repository.  
+  Refer to [git documentation](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set) for more details.
 ---
 ### CLI Integration
 This tab provides guidance on integrating the OpenTofu/Terraform CLI with Harness as a backend.

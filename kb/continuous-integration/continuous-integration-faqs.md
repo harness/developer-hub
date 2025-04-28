@@ -535,6 +535,22 @@ If the delegate is unable to connect to the created build farm with [Istio MTLS 
 
 For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
 
+### Why aren't Harness CI Steps like Git clone inheriting my proxy settings from the Delegate, and how can I configure a proxy for these steps?
+
+CI steps such as Git Clone don't automatically inherit the proxy settings configured on the Harness Delegate. This is because these steps run inside separate build pods, and proxy-related environment variables need to be explicitly passed down to those pods.
+
+To ensure your CI steps work with your proxy setup, you must configure the following environment variables on the Delegate:
+
+`PROXY_HOST`
+
+`PROXY_PORT`
+
+`PROXY_SCHEME`
+
+These variables allow Harness to propagate the proxy configuration to build pods so that operations like cloning a Git repository can route through the correct proxy.
+
+For a complete list of variables and instructions on setting up proxy configurations for your Delegate, refer to the [Configure delegate proxy settings documentation](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings/)
+
 ### If my pipeline consists of multiple CI stages, are all the steps across different stages executed within the same build pod?
 
 No. Each CI stage execution triggers the creation of a new build pod. The steps within a stage are then carried out within the stage's dedicated pod. If your pipeline has multiple CI stages, distinct build pods are generated for each individual stage.
@@ -2385,7 +2401,7 @@ Replace `LABEL_KEY` with your label's actual key.
 
 ### Why does the parallel execution of build and push steps fail when using Buildx on Kubernetes?
 
-When using Buildx on Kubernetes (enabled by feature flags), running multiple build-and-push steps in parallel can result in failures due to race conditions. This issue arises from how Docker-in-Docker works within Kubernetes pods.
+When using Buildx on Kubernetes, either enabled by feature flags or in the build and push steps when the Docker Layer Caching option is checked, running multiple build-and-push steps in parallel may result in failures due to race conditions. This issue arises from how Docker-in-Docker works within Kubernetes pods.
 
 The failure occurs when either of the following feature flags are enabled:
 

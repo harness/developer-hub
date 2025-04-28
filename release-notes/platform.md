@@ -22,36 +22,36 @@ These release notes describe recent changes to Harness Platform.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
-
 ## Important feature change notice
 
 :::warning Important Update: Change in Default Container Registry for Harness Images
 
-Starting **April 1, 2025**, Docker Hub will enforce [stricter limits](https://docs.docker.com/docker-hub/usage/) on image pulls for unauthenticated and free users. This change may impact access to Harness container images.
+**Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
+on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. if you are using the default `harnessImage` with anonymous access, pipeline failures may occur. 
 
-To ensure uninterrupted availability, better performance, and enhanced security, we are transitioning to **Google Artifact Registry (GAR)** as our default public registry for Harness images.
+To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
+* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
+* **Pull images anonymously from alternative registries**: switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
+* **Private registry**: Pull images from your own private registry.
 
-**What is changing?**
-- Currently, Harness images are pulled from Docker Hub by default with anonymous access.
-- Moving forward (starting **March 24, 2025**), all Harness container images will be pulled from GAR by default to improve performance, security, and scalability.
-
-**Do you need to take action?**
-- **No immediate action is required** for most customers.
-- However, if your organization restricts access to **Google Artifact Registry (GAR)**, consider one of the following options to avoid disruptions:
-  1. Whitelist GAR to allow seamless access to Harness images.
-  2. Configure Harness to use authenticated access instead of anonymous pulls from Docker Hub.
-  3. Set up a [registry mirror](https://docs.docker.com/docker-hub/mirror/) to pull Harness images instead of relying on Docker Hub.
-  4. Continue using Docker Hub if the restrictions do not affect you. Contact [Harness Support](mailto:support@harness.io) to configure Docker Hub as the default registry.
-
-**Images moving to GAR**
-
-The following Harness images will now be pulled from GAR by default:
-- [Harness Delegate images](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types)
+The `harnessImage` connector configuration is used for pulling Harness images as described in the below articles: 
 - [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci)
 - [Harness STO images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images#harness-sto-images-list)
 - [Harness IDP images](https://developer.harness.io/docs/internal-developer-portal/flows/harness-pipeline/#specify-the-harness-idp-images-used-in-your-pipelines)
 
-:::
+[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
+
+Additionally, **starting April 1, 2025, all [Harness delegate images](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-image-types) will be pulled from Google Artifact Registry (GAR)** by default to improve performance, security, and scalability.
+
+GAR Path `us-docker.pkg.dev/gar-prod-setup/harness-public/harness/<IMAGE>:<TAG>`
+
+If your organization restricts access to Google Artifact Registry (GAR), consider one of the following options to avoid disruptions:
+* Whitelist GAR to allow seamless access to Harness images.
+* Configure Harness to use authenticated access instead of anonymous pulls from Docker Hub.
+* Set up a registry mirror to pull Harness images instead of relying on Docker Hub.
+* We will continue to publish the image to DockerHub, you can continue using Docker Hub if the restrictions do not affect you. 
+
+::: 
 
 :::danger Breaking Changes 
    **Introducing a new set of permissions while deprecating the existing (EXPERIMENTAL) one.**  
@@ -125,6 +125,70 @@ The following deprecated API endpoints are longer supported:
 - [GET | PUT | POST | DELETE] api/resourcegroup/\{identifier}
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
+
+## April 2025 
+
+### Version 1.86.x <!--April 23, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where future-dated cloud credits were not consumed when no current credits were available. Previously, this caused overage to be incorrectly updated. [PL-62134]
+- Addressed a performance issue where the FileStore page was slow when too many files were loaded at once. We’ve added virtualization so that only a few files load at a time, making the page much faster and smoother. [PL-61880] 
+- Deprecated the ‘Account Edition’ column from the Account List View across Harness. This change is part of our ongoing effort to simplify the UI and reduce redundancy. [PL-61850]
+
+#### New features and enhancements
+
+- Pipeline notifications sent to Datadog are now tagged with `source:harness_notifications`, following the release of the [Harness Notifications integration](https://docs.datadoghq.com/integrations/harness_harness_notifications/) in Datadog. [PL-59888]
+
+### Version 1.85.x <!--April 16, 2025-->
+
+#### Fixed issues
+- Added support for using MinIO external secrets with Log Service. [PL-61107]
+
+#### New features and enhancements
+- Upgraded internal protocol buffer library from `protobuf-java` 3.15.5 to 4.28.3 to address security vulnerabilities and enhance service communication, with no impact on user experience or workflows. [PL-61208]
+- Introduced a maximum limit on role assignments per account based on license edition to safeguard system stability: 100 for Community and Free editions, and 75,000 for Team and Enterprise editions. [PL-58428]
+
+### Version 1.84.x <!--April 9, 2025-->
+
+#### Fixed issues
+- Resolved an issue where the Auto Upgrade Indicator for Delegates was not displaying correctly in certain scenarios.[PL-61711]
+- Resolved an issue that caused crashes during page navigation on the Audit Trail page. To access a specific page in the Audit Trails directly, users can either manually modify the URL or navigate through the available pages using the Previous and Next buttons. [PL-61658]
+
+### Version 1.83.x <!--April 2, 2025-->
+
+#### Fixed issues
+- Fixed: Ignored `docker.io` in image tag for delegate upgrade checks, as it is the default registry when not specified. [PL-61417]
+- Fixed an issue where the "New Project" button was incorrectly enabled after switching organizations, even for users without project creation permissions. Now, permissions are re-validated after scope switching, ensuring the button remains disabled when necessary. [PL-61225]
+- Fixed an issue on the Delegate Token listing page in Safari where tokens weren’t copied to the clipboard despite showing a success message. Tokens are now copied correctly. [PL-56230]
+
+#### New features and enhancements
+- Added support to configure [Sumo Logic as a streaming destination](/docs/platform/governance/audit-trail/audit-streaming/#configure-the-streaming-connector) to send Harness audit log data to an HTTP source in Sumo Logic. This feature is currently behind the feature flag `PL_ENABLE_SUMOLOGIC_AUDIT_STREAMING` and requires Harness Delegate version 85500 or later. [PL-58532]
+
+## March 2025 
+
+### Version 1.82.x <!--March 27, 2025-->
+#### Fixed issues
+- Fixed the error message displayed when LDAP login fails due to invalid credentials. [PL-60508]
+- Fixed an issue in the authentication flow between the delegate and manager. Previously, if a delegate sent an expired JWT token, it would receive a **token revoked** exception instead of a **token expired** exception. This behavior has now been corrected. [PL-61313]
+- Updated Cloud Credits routing to exclude the module prefix, resolving navigation issues. Users can now access Cloud Credits seamlessly while navigating through a module. [PL-61140]
+
+#### New features and enhancements
+- Enhanced service account inheritance, allowing a single service account at the account level to be inherited at the project or organization level. This enables users to manage all resources with a single service account. To enable this functionality, use the feature flag `PL_ENABLE_SERVICE_ACCOUNT_HIERARCHY`. [PL-58311,PL-61532]
+
+### Version 1.81.x <!--March 20, 2025-->
+#### Fixed issues
+- Enhanced the error message when attempting to delete a connected delegate. [PL-46692]
+- Fixed the Service Account API to support both `filterType` as `INCLUDE_INHERITED_SERVICE_ACCOUNTS` and a search term with a specified value. [PL-60938]
+
+#### New features and enhancements
+- Starting April 01, 2025, Harness will transition to Google Artifact Registry (GAR) as the default public registry. All Harness container images will be pulled from GAR by default, as Docker Hub will enforce stricter limits on public image pulls starting April 01, 2025. [PL-60930]
+- Added support to send [Central notifications through Delegate](/docs/platform/notifications/centralised-notification/#setting-up-notifications-management). Users can now select the connectivity mode as either Harness Platform or Harness Delegate when creating a central notification channel. [PL-57851]
+
+
+### Version 1.80.x <!--March 10, 2025-->
+#### New features and enhancements
+- Added Feature flag `EXPONENTIAL_INTERVAL_TASK_REBROADCAST` to enable exponential increase in delegate re-broadcast intervals. [PL-60477] 
 
 ## February 2025
 
@@ -2953,7 +3017,7 @@ Delegate version: 22.12.77802
 
 - You can now refer to existing secrets of Azure Key Vault, AWS secret manager, and GCP secret manager. (PL-29915)
 
-  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](/docs/first-gen/firstgen-platform/security/secrets-management/reference-existing-secrets/).
+  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets).
 
 - You can now use the Git client to commit changes while creating or updating pipelines using Bitbucket on-prem as the Git provider. (PIE-6423)
 

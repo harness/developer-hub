@@ -2,7 +2,7 @@ import { Horizon } from "./roadmapData";
 
 export const CeData: Horizon = {
   Now: {
-    description: "Q4 2024, Nov 2024-Jan 2025",
+    description: "Q1 2025, Feb 2025 - May 2025",
     feature: [
       {
         tag: [{ value: "Security" }],
@@ -37,7 +37,7 @@ export const CeData: Horizon = {
     ],
   },
   Next: {
-    description: "Q1 2024, Feb 2025 -Apr 2025",
+    description: "Q2 2025, Jun 2025 - Aau 2025",
     feature: [
       {
         tag: [{ value: "Chaos platform" }],
@@ -51,13 +51,18 @@ export const CeData: Horizon = {
       },
       {
         tag: [{ value: "Chaos integrations" }],
-        title: "Resilience probes for Splunk and AppDynamics",
-        description: "Score chaos experiments based on the monitors setup inside Splunk and AppDynamics.",
+        title: "Generic Resilience Probe support for all APMs",
+        description: "Create Resilience Probes for any generic APM as a template and iterate from there.",
       },
       {
-        tag: [{ value: "Chaos faults" }],
-        title: "Application Chaos Faults for Kafka and Redis on Kubernetes ",
-        description: "Application specific faults for Kafka and Redis on the Kubernetes platform.",
+        tag: [{ value: "Chaos orchestration" }],
+        title: "Templates support for Chaos Experiments ",
+        description: "Scale up the adoption using end to end templates of chaos experiments that include probes and actions.",
+      },
+      {
+        tag: [{ value: "Chaos platform" }],
+        title: "Extend the AI support for non-k8s targets ",
+        description: "Provide a list of identified risks and corresponding recommendations for mitigation on Linux, Windows and major cloud platforms .",
       },
       {
         tag: [{ value: "Chaos integrations" }],
@@ -67,12 +72,12 @@ export const CeData: Horizon = {
     ],
   },
   Later: {
-    description: "Q1 2025+, Q2 2025 and beyond ",
+    description: "Q2 2025+, Q3 2025 and beyond ",
     feature: [
       {
-        tag: [{ value: "Chaos faults" }],
-        title: "Chaos Faults for DDoS on Kubernetes",
-        description: "Chaos experiments to test if a target HTTP endpoint can be breached using DDoS.",
+        tag: [{ value: "Chaos platform" }],
+        title: "Agentic AI support for chaos orchestration",
+        description: "Interact with the other AI agents to derive the chaos recommendations.",
       },
       {
         tag: [{ value: "Chaos platform" }],
@@ -90,9 +95,9 @@ export const CeData: Horizon = {
         description: "Use GenAI for creating new resilience probes and also to generate insights around them.",
       },
       {
-        tag: [{ value: "Chaos integrations" }],
-        title: "Integrate with load generation tools",
-        description: "Run load tests as chaos experiments to achieve the parallel effect of chaos and load.",
+        tag: [{ value: "Chaos faults" }],
+        title: "Security chaos ",
+        description: "Provide out of the box faults for resilience validation around security.",
       },
     ],
   },

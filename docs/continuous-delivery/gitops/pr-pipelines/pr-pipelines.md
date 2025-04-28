@@ -1,6 +1,6 @@
 ---
-title: Create Harness GitOps PR pipelines
-description: Learn how to create PR pipelines with Harness GitOps.
+title: Manage Environment Changes with Harness GitOps PR Pipelines
+description: Learn how to create and run PR pipelines in Harness GitOps to update environment-specific configuration files.
 sidebar_position: 2
 canonical_url: https://www.harness.io/blog/gitops-the-push-and-pull-approach
 ---
@@ -15,6 +15,7 @@ This topic builds on the ApplicationSet created in [Harness GitOps ApplicationSe
 
 It is also recommended that you go through the [basics of Harness PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics.md) before proceeding further.
 
+Check out [this example using ApplicationSet with PR Pipelines](./pr-pipeline-application-set.md) to get started with ApplicationSet with Harness GitOps PR Pipelines.
 :::
 
 When you deploy a Harness PR pipeline, you indicate the target environment application and the `config.json` keys/values you want changed. Harness creates the pull request in your Git repo and merges it for you. Once complete, the target environment application has the new keys/values.
@@ -353,4 +354,3 @@ Now your PR pipeline is ready.
   ![](static/harness-git-ops-application-set-tutorial-60.png)
 
 Congratulations! Your PR Pipeline was successful.
-

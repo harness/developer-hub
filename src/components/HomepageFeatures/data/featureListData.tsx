@@ -15,7 +15,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
     description: "Build faster and be more productive.",
-    link: "docs/category/get-started-with-ci",
+    link: "docs/continuous-integration/get-started/onboarding-guide",
   },
   {
     title: "Store Artifacts",
@@ -58,7 +58,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ccm,
     icon: "img/icon_ccm.svg",
     description: <>Achieve cost transparency and cut costs.</>,
-    link: "docs/category/get-started-with-ccm",
+    link: "docs/cloud-cost-management",
   },
   {
     title: "Orchestrate Security Tests",

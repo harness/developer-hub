@@ -18,45 +18,6 @@ import { MODULES } from "@site/src/constants";
           description:
             "A self-service onboarding guide for Harness CD & GitOps.",
           link: "/docs/continuous-delivery/cd-onboarding/new-user/onboarding-path",
-          // @Roshni: sample code for the sub categories -->
-          /*children: [
-            {
-              title: "CD pipeline basics",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/get-started/key-concepts",
-            },
-            {
-              title: "CD pipeline modelling overview",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview",
-            },
-            {
-              title: "Integrate CD with other Harness modules",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/get-started/integrating-cd-other-modules",
-            },
-            {
-              title: "Server based licensing and usage",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/get-started/service-licensing-for-cd",
-            },
-            {
-              title: "CD ecosystem",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/cd-integrations",
-            },
-          ]*/
-          // <-- sample code end
         },
         {
           title: "Key concepts",
@@ -64,44 +25,6 @@ import { MODULES } from "@site/src/constants";
           description:
             "Learn the key concepts needed to automate service deployments on your infrastructure.",
           link: "/docs/continuous-delivery/get-started/key-concepts",
-        },
-        {
-          title: "Upgrade to CD NextGen",
-          module: MODULES.cd,
-          description:
-            "Upgrade from CD FirstGen to NextGen.",
-          link: "/docs/category/upgrading-cd",
-          /*children: [
-            {
-              title: "Upgrade to NextGen",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd",
-            },
-            {
-              title: "Upgrade to service and environment V2",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2",
-            },
-            {
-              title: "FirstGen and NextGen parity matrix",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix",
-            },
-
-            {
-              title: "Upgrade FAQs",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq",
-            },
-          ]*/
         },
         {
           title: "Supported CD features and integrations",
@@ -319,36 +242,6 @@ import { MODULES } from "@site/src/constants";
           description:
             "Use DORA and other advanced metrics for deployments.",
           link: "/docs/category/monitor-deployments",
-          /*children: [
-            {
-              title: "CD dashboard",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments",
-            },
-            {
-              title: "DORA metrics dashboard",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/monitor-deployments/dora-metrics-dashboard",
-            },
-            {
-              title: "Deployment dashboard (FirstGen)",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/monitor-deployments/view-deployments-current-gen-dashboard",
-            },
-            {
-              title: "Service dashboard (FirstGen)",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/monitor-deployments/view-services-current-gen-dashboard",
-            },
-          ]*/  
         },
         {
           title: "Provision infrastructure",

@@ -212,7 +212,7 @@ To add Kubernetes manifests to your service, do the following:
 
     If you are using a values.yaml file and it's in the same repo as your manifests, in **Values YAML**, click **Add File**.
 
-15. Enter the path to the values.yaml file from the root of the repo.
+15. Enter the path to the **values.yaml** file from the root of the repo.
 
     Here's an example with the manifest and values.yaml file added.
 
@@ -221,6 +221,11 @@ To add Kubernetes manifests to your service, do the following:
     If you use multiple files, the highest priority is given from the last file, and the lowest priority to the first file. For example, if you have 3 files and the second and third files contain the same key:value as the first file, the third file's key:value overrides the second and first files.
 
     ![](./static/kubernetes-services-02.png)
+
+    :::note
+    Alternatively, you can proceed **without configuring a `values.yaml` file**.  
+    For more information, refer to [Manifest Optional Values](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services#manifest-optional-values-file).
+    :::
 
 16. Click **Submit**. The manifest is added to **Manifests**.
 
@@ -259,6 +264,11 @@ To add a Values YAML file, do the following:
     - For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
     - In **File Path**, enter the path to the values.yaml file in the repo.
 
+    :::note
+    You can also proceed without configuring a `values.yaml` file.  
+    For more information, refer to [Manifest Optional Values](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services#manifest-optional-values-file).
+    :::
+
 You can enter multiple values file paths by clicking **Add File**. At runtime, Harness will compile the files into one values file.
 
 If you use multiple files, the highest priority is given from the last file, and the lowest priority to the first file. For example, if you have 3 files and the second and third files contain the same key:value as the first file, the third file's key:value overrides the second and first files.
@@ -291,6 +301,8 @@ See [Ignore a manifest file during deployment](/docs/continuous-delivery/deploy-
 - You can hardcode your artifact in your manifests, our add your artifact source to your **Service Definition** and then reference it in your manifests.
 
 </details>
+
+---
 
 ### Helm Charts
 
@@ -1148,6 +1160,10 @@ To add an artifact from a Docker registry, do the following:
 </details>
 
 ### Google Container Registry (GCR)
+
+:::warning
+Google Container Registry (GCR) is being deprecated. For more details, refer to the [Deprecation Notice](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+:::
 
 <details>
 <summary>Use GCR artifacts</summary>
@@ -3085,6 +3101,91 @@ For more information, go to:
 
 - [Propagating CD services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services)
 - [Add and override values YAML files](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files)
+
+## Manifest Optional Values file
+
+You can now proceed with your deployment without configuring a `values.yaml` file or an override file in the **manifest configuration** of a Kubernetes service.
+
+:::note
+This feature is behind the feature flag `CDS_OPTIONAL_VALUES_YAML`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+### Optional Values File
+
+To skip the `values.yaml` file:
+
+1. Go to the **Service Configuration**.
+2. Under the **Manifest** section, click **Add Manifest** or edit the existing manifest.
+3. In the **Manifest Details** tab, enable the **Optional** checkbox next to the `values.yaml` placeholder.
+
+When this option is enabled, the **Values YAML** file is no longer required. If the file is missing from the specified path, the deployment will still proceed without it.
+
+<div align="center">
+  <DocImage path={require('./static/k8s-manifest-optional-values.png')} width="60%" height="60%" title="Optional values.yaml support" />
+</div>
+
+<details>
+<summary>Sample YAML</summary>
+
+Here is a sample of how the manifest would look when this checkbox is enabled. The `optionalValuesYaml` will be set to `true`.
+
+```yaml
+      manifests:
+        - manifest:
+            identifier: test
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: account.gitconnector
+                  gitFetchType: Branch
+                  paths:
+                    - path_to_manifest
+                  repoName: test
+                  branch: test
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+              optionalValuesYaml: true
+```
+</details>
+
+### Optional Override File
+
+To skip the override file:
+
+1. Go to the Service Configuration.
+2. Under the Manifest section, click Add Additional Override File or edit the existing override file.
+3. In the Manifest Details tab, enable the Optional checkbox next to the Add File placeholder.
+
+When this option is enabled, the **override file** is no longer required. If the file is missing from the specified path, the deployment will still proceed without it.
+
+<div align="center">
+  <DocImage path={require('./static/k8s-override-optional-value.png')} width="60%" height="60%" title="Optional override file support" />
+</div>
+
+<details>
+<summary>Sample YAML</summary>
+
+Here is a sample of how the Values config would look when this checkbox is enabled. The `optionalValuesYaml` will be set to `true`.
+
+```yaml
+
+- manifest:
+            identifier: values_test
+            type: Values
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: account.github_connector
+                  gitFetchType: Branch
+                  paths:
+                    - path_to_file
+                  branch: main
+              optionalValuesYaml: true
+```
+</details>
 
 ## Next steps
 

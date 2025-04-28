@@ -167,9 +167,8 @@ import TabItem from '@theme/TabItem';
 8. Select **Save & Continue**. Harness validates the connection.
 
 :::note
-
-Credentials Template is not supported for OCI Helm repository.
-
+- Credentials Template is not supported for OCI Helm repository.
+- Currently, when adding an application with a Helm-based source configured via OCI, the application wizard does not automatically load the available charts. This is a limitation from Argo CD. As a workaround, users must manually specify the chart details when configuring the application.
 :::
 
 

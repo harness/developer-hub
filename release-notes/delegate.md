@@ -87,6 +87,95 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## April 2025
+
+### Version 25.04.85701 <!--April 23, 2025-->
+
+#### Fixed issues
+
+- SSH command step now supports OIDC. [CDS-109225]  
+- Restored the skipping of Helm Canary delete step when namespace validation fails, and corrected namespace object handling to use the proper `name` field. [CDS-109155]  
+- Fixed the issue where readiness-related attributes were removed from the manifest by adding them to the allowlist to avoid unintended filtering. [CDS-109043]  
+- Fixed folder path issues by stripping leading and trailing slashes; this fix is controlled by the feature flag `CDS_SCM_FIX_FOLDER_PATH`. [CDS-108947]  
+- Introduced an optional environment variable `HOST_NAME_COMMAND` to control the delegate's host name during registration with the backend. [PL-61219]
+- Enabled task support for `CLOUDWATCH_LOGS_DATA_COLLECTION_TASK` to enhance CloudWatch Logs data collection. [CDS-109384]
+
+### Version 25.04.85602 <!-- April 15, 2025 -->
+
+#### Hotfix
+
+- Added Nullchecks to handle errors for customers using API token for dynatrace connectors. (CDS-109040)
+
+### Version 25.02.85306 <!-- April 10, 2025-->
+
+#### Fixed issues
+
+- Fixed the dynamicHandlingOfRequestEnabled feature for the delegate. [PL-61578]  
+
+### Version 25.04.85601 <!-- April 10, 2025-->
+
+#### New features and improvements
+
+- Enhanced system stability and regular checks implemented to ensure reliability.
+
+## March 2025
+
+### Version 25.03.85504 <!-- March 27, 2025-->
+
+#### Fixed Issues
+
+- Fixed an issue where the Harness delegate incorrectly used local container credentials instead of the OIDC access token when listing GCP projects via an OIDC-authenticated connector. This is now resolved behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`, ensuring the delegate lists projects correctly based on its IAM principal. [CDS-108481]
+
+### Version 25.03.85503 <!-- March 27, 2025-->
+
+#### Fixed issues
+
+- Added a validation check to ensure the correct client is used for OC. [CDS-107476]
+- Added support for an optional values.yml file in Helm charts. [CDS-108183]
+- Added support for anonymous authentication in Helm OCI. [CDS-108311]  
+
+
+### Version 25.03.85405 <!--  March 21, 2025 -->
+
+#### Hotfix
+
+- Fixed the slot deployment timeout issue in azure deployments [CDS-108129]
+
+### Version 25.03.85403 <!-- March 19, 2025 -->
+
+#### Fixed issues
+
+- Fixed the repository check during the test connection for GitHub App-based connectors. Now, connectors with an invalid repository will not pass the test connection. Only valid repositories will be accepted. [PIPE-24905]
+
+- Fixed an issue where GCP credential configurations could fail to process correctly in certain scenarios. [CDS-107114]
+
+- Resolved a UI crash that occurred when editing a newly created Manifest override using a Custom Remote Store. [CDS-107112]
+
+- Added support for regex patterns in ECR artifact sources. [CDS-106566]
+
+- Added support for deploying Azure WebApps using Azure CLI. This feature is available behind the Feature Flag: `CDS_AZURE_CLI_WEBAPP_DEPLOYMENT`. [CDS-107533]
+
+- Improved the file extraction process to preserve file permissions and symlinks. Previously, these attributes were not retained. This change is controlled by the Feature Flag: `CDS_TAS_ARTIFACT_BUNDLE_PRESERVE_PERMISSION_ON_EXTRACTION`. [CDS-106309]
+
+- Fixed an issue where the load balancer’s forward stickiness configuration was being reset during ECS Blue-Green deployments. Now, all stickiness settings remain unchanged. [CDS-99881]
+
+- Updated the error message for Google Cloud Function deployments that fail to reach a steady state. The message now reads: "Function couldn’t achieve steady state." instead of the previous wording. [CDS-102219]
+
+#### New features and improvements
+
+- Updated tags in AWS Lambda and ECS deployments based on the provided configuration. [CDS-97430]
+
+
+### Version 25.02.85305 <!--  March 21, 2025 -->
+
+#### Hotfix
+
+- Fixed the slot deployment timeout issue in azure deployments [CDS-108129]
+  
+- Fixed the runtime input regex filtering for ECR artifacts [CDS-106566]
+
+- Fix the aws library upgrade issue for AWS serverless lambda deployment [CDS-107585]
+
 ## February 2025
 
 ### Version 24.08.83706 <!--  Feb 26, 2025 -->
@@ -108,6 +197,18 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Added a new API to send Git details in requests, ensuring services are fetched from the correct branch. [CDS-106242]
 
+### Version 25.02.85201 <!-- February 17, 2025 -->
+
+#### New features and improvements
+
+- Enhanced system stability and regular checks implemented to ensure reliability.
+
+### Version 24.12.84709 <!-- February 12, 2025 -->
+
+#### New features and improvements
+
+- Enhanced system stability and regular checks implemented to ensure reliability.
+
 ## January 2025
 
 ### Version 24.10.84107 <!-- January 31, 2025 -->
@@ -115,6 +216,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 #### Hotfix
 
 - Fixed a bug where socket files during git operations were not cleaned. (PIPE-24724)
+
+### Version 25.01.85000 <!-- January 28, 2025 -->
+
+#### New features and improvements
+
+- Enhanced system stability and regular checks implemented to ensure reliability.
 
 ### Version 24.12.84708 <!-- January 16, 2025 -->
 

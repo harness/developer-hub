@@ -125,7 +125,7 @@ These workflows are covered in [Add Security Testing roles](/docs/security-testi
 
 ## How do I set up a CheckMarx scan step in YAML?
 
-Here's an example. See also the [Checkmarx scanner reference](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference).
+Here's an example. See also the [Checkmarx scanner reference](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarx-scanner-reference).
 
 ```yaml
 - step:
@@ -175,7 +175,7 @@ No, you can run STO as a standalone product. STO supports integrations with exte
 
 STO supports running scans on Harness Cloud, Kubernetes, Docker, and VMs. STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me) to orchestrate scans and ingest issues.
 
-For more information, go to [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported#sto-support-by-ci-build-infrastructure-type) > Harness SaaS > Build Infrastructure.
+For more information, go to [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported/sto-deployments#sto-support-by-ci-build-infrastructure-type) > Harness SaaS > Build Infrastructure.
 
 ## How does STO deduplicate detected issues?
 

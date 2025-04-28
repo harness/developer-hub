@@ -460,11 +460,8 @@ This section addresses some frequently asked questions about [Harness intelligen
 
 #### What are the supported cloud services that AutoStopping works with?
 
-We continuously update the list of services that work with AutoStopping. Here is the current list of supported services across the cloud. For more information, see [Non-cluster support](../first-gen/cloud-cost-management/concepts-ccm/b-cloud-cost-management-overview.md#feature-support-matrix) and [Cluster support](../first-gen/cloud-cost-management/concepts-ccm/b-cloud-cost-management-overview.md#supported-kubernetes-management-platform).
+We continuously update the list of services that work with AutoStopping. Here is the current list of supported services across the cloud. For more information, see [what's supported](/docs/cloud-cost-management/whats-supported).
 
-
-
-|  |  |
 | --- | --- |
 | **Cloud Provider** | **AutoStopping - Supported Services** |
 | AWS | EC2AutoScaling GroupsKubernetes Clusters (EKS)ECS ServiceRDS Instances |

@@ -78,6 +78,17 @@ If you select the **Delete namespace** option, Harness will delete the namespace
 
 Ensure that you are not deleting a namespace that is used by other deployments.
 
+## Advanced Settings
+
+See the following:
+
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Command Flags](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/k8s-command-flags/)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
 ### Example: Deleting a Deployment
 
 Here is an example of the log from a Delete command:

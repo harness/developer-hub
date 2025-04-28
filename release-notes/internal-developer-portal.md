@@ -1,5 +1,5 @@
 ---
-title: Internal Developer Portal release notes
+title: Internal Developer Portal Release Notes
 sidebar_label: Internal Developer Portal
 date: 2024-12-11T22:00
 sidebar_position: 12
@@ -16,6 +16,107 @@ Review the notes below for details about recent changes to Harness Internal Deve
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## 📌 Release Deployment Status by Cluster
+
+| **Cluster**        | **Deployment Status** | **Release Version** | 
+| --------------------------- | -------------------------- | --------------- | 
+| **prod0**   | ✅ Completed                        | March - v0.41.0             |                                                                                                                        
+| **prod1** | ✅ Completed                        | March - v0.41.0             |                                                                                                                      
+| **prod2**    | ✅ Completed                        | March - v0.41.0             |                                                                                                                      
+| **prod3**         | ✅ Completed                        | March - v0.41.0             | 
+| **prod4**         | ✅ Completed                    | March - v0.41.0              | 
+| **prodeu1**   | ✅ Completed                        | March - v0.41.0     |                                                                                      
+
+## March - Version 0.41.0
+
+<!-- March 25, 2025-->
+As we gear up for our major **IDP 2.0 release** (more details this week), this release focuses primarily on improving the efficiency of the product. **Version 0.41.0** includes several bug fixes and feature enhancements. All key details are mentioned below. 
+
+Also, stay tuned for more updates on our upcoming IDP 2.0 release.
+### [New Feature] GitHub App Support
+**[IDP-4827] | [Docs](/docs/internal-developer-portal/flows/harness-pipeline#idp-stage-1)**
+
+----
+This release adds support for **GitHub App authentication** in IDP Stage steps. Previously, only **Username-Password** authentication was available. Now, you can authenticate the Harness GitHub connector using a **GitHub App**. To use this authentication method, you need to create and install a GitHub App, fetch the app's installation ID and app ID, and create a private key for the app. Follow this [guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) for detailed steps. 
+
+![](./static/github-app-1.png)
+
+This applies to the following IDP Stage steps:
+1. [Git Clone](/docs/internal-developer-portal/flows/harness-pipeline#1-git-clone)
+2. [Create Repo](/docs/internal-developer-portal/flows/harness-pipeline#3-create-repo)
+3. [Direct Push](/docs/internal-developer-portal/flows/harness-pipeline#5-direct-push)
+4. [Register Catalog](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog) 
+
+👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/harness-pipeline#idp-stage-1).**
+
+
+### [New Feature] Jenkins Plugin Upgrade
+**[IDP-4939] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/jenkins)**
+
+----
+With this release, we've upgraded the **Jenkins Plugin** to its latest version. With this upgrade, support for **additional parameters** in your plugin backend configuration has been added. If you already have the plugin enabled, you can now optionally include these new parameters as needed. Here's what these parameters do:
+
+#### 1. [`projectCountLimit`](/docs/internal-developer-portal/plugins/available-plugins/jenkins#1-projectcountlimit)
+This parameter sets the **maximum number of Jenkins projects (jobs)** that the plugin will process or retrieve for a given Jenkins instance. It helps manage performance and load by limiting the number of projects fetched.
+#### Example:
+```yaml
+jenkins:
+  baseUrl: https://jenkins.example.com
+  username: backstage-bot
+  projectCountLimit: 100
+  apiKey: 123456789abcdef0123456789abcedf012
+```
+
+#### 2. [`allowedBaseUrlOverrideRegex`](/docs/internal-developer-portal/plugins/available-plugins/jenkins#2-allowedbaseurloverrideregex)
+This parameter specifies a regular expression pattern used to **securely override the `baseUrl`** defined in the configuration using values from the catalog annotations. This provides flexibility while adding security, ensuring only approved URLs can override the base configuration.
+
+👉  **Read more about this feature [here](/docs/internal-developer-portal/plugins/available-plugins/jenkins).**
+
+
+
+### [New Plugin] Introducing Wiz Plugin
+**[IDP-4868] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/wiz)**
+
+----
+We’re excited to introduce support for the **Wiz Plugin** in this release!
+
+**Wiz** is a unified cloud security platform that offers powerful prevention and response capabilities, empowering security and development teams to build faster and more securely.
+
+With this plugin, you can seamlessly integrate Wiz into your IDP, giving you real-time visibility into newly created issues along with their status and severity.
+
+👉 **Read more about the plugin [here](/docs/internal-developer-portal/plugins/available-plugins/wiz).**
+
+### [New Plugin] Introducing DX Plugin
+**[IDP-4869] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/dx)**
+
+----
+We’re excited to introduce support for the **DX Plugin** as well in this release!
+
+The DX Plugin is built to enhance the overall developer experience by streamlining the development process. It offers actionable insights, essential tools, and seamless integrations — all tailored to improve productivity and optimize your workflow.
+
+👉 **Read more about the plugin [here](/docs/internal-developer-portal/plugins/available-plugins/dx).**
+
+### Feature Improvements
+- Harness IDP now supports the use of a **Harness API Key** in the [Register Catalog step](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog) (IDP Stage). With this feature, users can configure the API Key by selecting the "API Token" field in the Harness UI. Enabling this ensures that the API Key is utilized for catalog registration in IDP. By integrating the API Key, the pipeline execution remains seamless, ensuring it functions correctly when triggered from another pipeline or through a trigger. **Learn more about the feature [here](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog)**. (Please note that this feature was a part of the NGUI release.)
+
+### Bug Fixes
+- Added support for **Mermaid diagrams** in TechDocs by integrating the Mermaid Plugin. Customers can now easily add Mermaid diagrams within TechDocs. Here's the [documentation](https://developer.harness.io/docs/internal-developer-portal/techdocs/techdocs-bestpractices/#1-using-mermaid-for-diagrams) to learn more about this use-case. [IDP-4844]
+- Resolved an issue causing scorecard custom checks to fail incorrectly, even when in a successful state. Fixed by addressing **JEXL check** failures. [IDP-5002]
+- Fixed an issue causing the **"title" field** to appear faded for **read-only parameters** (ui:readonly: true). Previously, users couldn't clearly view fields marked as read-only. [IDP-4766]
+
+  **Before Fix:**
+ ![](./static/internal-developer-portal/beforefix.png)
+
+  **After Fix:**
+ ![](./static/internal-developer-portal/afterfix.png)
+
+- Fixed a **regex validation** issue occurring while configuring the ``baseUrl`` in the **SonarQube plugin**. This issue was thoroughly investigated and resolved. [IDP-4948]
+- Fixed an issue preventing users from adding **arbitrary input values** when their preferred option wasn't listed in dynamic picker dropdown values. Users can now input arbitrary values into the dynamic picker field. [IDP-4872]
+- Resolved a validation logic issue for **Scorecard checks** when using **Harness Code**. Corrected by fixing the parser logic. [IDP-4937]
+- Resolved a **redirection URL** issue occurring when an account with a **vanity URL** enabled IDP. Added support for multiple hosts to fix this issue. [IDP-4415]
+- Fixed a bug that allowed users to create **duplicate scorecards** using identifiers that already exist. This issue is now resolved. [IDP-4192]
+
 
 ## February - Version 0.40.0
 

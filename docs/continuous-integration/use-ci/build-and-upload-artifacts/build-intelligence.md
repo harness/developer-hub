@@ -7,13 +7,15 @@ sidebar_position: 7
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Build Intelligence is part of [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence), a suite of features in Harness CI designed to improve build times. By storing these outputs remotely and retrieving them when inputs haven't changed, Build Intelligence avoids unnecessary rebuilds, significantly accelerating the build process and enhancing efficiency.
+Build Intelligence is part of [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence), a suite of features in Harness CI designed to improve build times. By storing these outputs remotely and retrieving them when inputs haven't changed, Build Intelligence avoids unnecessary rebuilds, significantly accelerating the build process and enhancing efficiency.
 
 Build Intelligence is currently available for **Gradle** and **Bazel** build tools, with Maven support coming soon. Regardless of the programming language used in your projects, as long as you're building with a supported build tool, you can leverage Build Intelligence to optimize your builds.
 
 :::info
-Build Intelligence is now Generally Available (GA). 
+* Build Intelligence is now Generally Available (GA). 
 If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+* Build Intelligence currently supports Linux only (AMD and ARM). 
+* Build Intelligence currently supports Cloud and Kubernetes Build infrastructures only. 
 :::
 
  
@@ -53,13 +55,11 @@ Below is an example of a CI stage using Build Intelligence:
                 command: ./gradlew build --profile  # '--profile' is optional but advised for gradle
 ```
 
+You can also enable or disable Build Intelligence based on an expression directly in the YAML. For example, you can conditionally set whether Build Intelligence is on or off using a pipeline variable expression like `<+pipeline.variables.someVar>`.
+
 <Tabs>
   <TabItem value="Cloud" label="Harness Cloud" default>
 
-
-:::info
-- If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) to enable feature flags `CI_CACHE_ENABLED` and `CI_ENABLE_BUILD_CACHE_HOSTED_VM`. 
-:::
 
 The cache storage limit depends on your subscription plan type. Please visit [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#usage-limits) page to learn more about usage limits.
 
@@ -74,16 +74,70 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
 
   <TabItem value="Self Hosted" label="Self Hosted" default>
   :::info
-    - Build Intelligence is only supported for Kubernetes on self-hosted build infrastructure. 
-  - To use Build Intelligence with self-hosted builds the following feature flags need to be enabled: 
-  `CI_CACHE_ENABLED` and `CI_ENABLE_BUILD_CACHE_K8` 
-  - To authenticate to your S3 bucket using OIDC, feature flags `PL_GCP_OIDC_AUTHENTICATION` for GCP or `CDS_AWS_OIDC_AUTHENTICATION` for AWS are required.
-  
-  Contact [Harness Support](mailto:support@harness.io) to enable the feature, if not already available in your account.
+   Build Intelligence is only supported for Kubernetes on self-hosted build infrastructure. 
+
   :::
 
   - When using a Build Intelligence with self-hosted infrastructure, an S3-compatible bucket is required for cache storage. Please visit [configure default S3-compatible object storage](/docs/platform/settings/default-settings.md#continuous-integration) for more information.
-  - By default, Build Intelligence step that configures a proxy on port 8082. Ability to configure this port, if needed, is coming soon.  
+  - By default, the Build Intelligence step configures a proxy on port 8082. However, for self-hosted setups, you can configure this port by setting the stage variable `CACHE_SERVICE_HTTPS_BIND`.
+
+Example Pipeline YAML:
+
+```YAML
+pipeline:
+  tags: {}
+  projectIdentifier: YOUR_PROJECT_ID
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CONNECTOR_REF
+        build: <+input>
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: false
+          buildIntelligence:
+            enabled: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: k8
+              namespace: harness-delegate-ng
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: gradle:8.1.1-jdk17
+                    shell: Sh
+                    command: |-
+                      ./gradlew build
+        variables:
+          - name: MAVEN_URL
+            type: String
+            description: ""
+            required: false
+            value: https://your-artifactory-domain/artifactory/your-repository/
+          - name: CACHE_SERVICE_HTTPS_BIND
+            type: String
+            description: "Custom port for self-hosted Build Intelligence proxy"
+            required: false
+            value: "8284"  # Example custom port
+  identifier: YOUR_PIPELINE_ID
+  name: YOUR_PIPELINE_NAME
+```
+
   - By default, the Build Intelligence plugin is downloaded from Maven Central. If your environment does not have access to Maven Central or you prefer using a custom Maven repository, you can configure this by setting a stage variable named `MAVEN_URL`. See [Build Intelligence plugin](https://central.sonatype.com/artifact/io.harness/gradle-cache/overview ) 
 
 
@@ -116,4 +170,4 @@ This is currently supported with Gradle build tool only .
 
 ![Build Intelligence Savings](./static/build-intelligence-savings.png)
 
-Visit [Intelligence Savings](/docs/continuous-integration/get-started/harness-ci-intelligence#intelligence-savings) for more information.
+Visit [Intelligence Savings](/docs/continuous-integration/use-ci/harness-ci-intelligence#intelligence-savings) for more information.

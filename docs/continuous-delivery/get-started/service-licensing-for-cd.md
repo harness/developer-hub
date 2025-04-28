@@ -95,8 +95,10 @@ Harness CD consumes 1 Service License for each active custom service.
 Harness allows custom deployments, where no service is associated with the deployment. This can happen when a pipeline execution only runs infrastructure provisioning steps, only performs shell script executions, or runs a custom stage with the environment configured, but no service. In all these scenarios, lack of service config means Harness loses the default license tracking. In these scenarios:
 
 ```TEXT
-Harness CD consumes 1 Service License for every 2000 pipeline executions of such custom stages.
+Harness CD consumes 1 Service License for every 2000 executions of such custom stages.
 ```
+
+Therefore, custom stages are more than a logical division; each custom stage will count as 1 pipeline execution. For example, if a pipeline has two custom stages, then executing that pipeline will use 2 executions in relation to service license consumption.
 
 ## Subscription Page Walkthrough
 
@@ -121,9 +123,17 @@ Harness has introduced a significant update to its service tracking capabilities
 
 ## Customer FAQs for the improved Service Tracking
 
+### If I deploy a service but it generates 0 service instances, will it still count toward my active service usage?
+
+Yes. Even if your service doesn’t create any service instances, it will still be considered active because it was used in a Deploy stage. Harness will count and charge for 1 Active Service in this case.
+
+###  If my pipeline fails, will the service still count as active?
+
+Yes. Once you deploy a service, regardless of whether the pipeline succeeds or fails, that service is marked as active and will be included in your license usage.
+
 ### Will Service tracking improvements increase my costs?
 
- Your license consumption may increase since we are now tracking more deployable items and offering additional value. We are committed to working with you to adjust your contract to match your usage and needs. We are not using these increases to charge you more; we are just trying to better track license utilization across all customers.
+Your license consumption may increase since we are now tracking more deployable items and offering additional value. We are committed to working with you to adjust your contract to match your usage and needs. We are not using these increases to charge you more; we are just trying to better track license utilization across all customers.
 
 ###  Why has tracking for GitOps Services been introduced in the new service tracking improvements?
 

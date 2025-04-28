@@ -205,9 +205,8 @@ During a capability check, the non-secret headers are used as is but the secret 
 This results in a `401 Unauthorized` response due to an incorrect api key. However, the capability check will be successful and the task will be assigned to the Harness Delegate. 
 
 :::info
-Using `<<<and>>>` in HTTP requests might result in bad requests on the server side. In such cases, follow these workarounds.
+Using `<<<and>>>` in HTTP requests might result in bad requests on the server side. In such cases, follow this workaround.
 
-* Use FF `CDS_NOT_USE_HEADERS_FOR_HTTP_CAPABILTY` to not use headers for capability checks.
 * Use Shell script to run cURL command and manually process the response. 
 
 :::
@@ -434,6 +433,30 @@ The FQN will resolve to the variable value at execution runtime.
 You can also use ​JSON and XML functors in the values for the output variable. For example, `<+json.select("data.attributes.version_pins.mvn-service://new-construction-api", httpResponseBody)>`.
 
 See [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
+
+## Accessing HTTP Response Headers
+
+:::note
+This feature is currently behind the feature flag `CDS_SUPPORT_HTTP_HEADER_HTTP_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+You can now access HTTP response headers—such as cookies—directly within your pipeline using the expression: `<+httpResponseHeaders.get('headerKey')>`
+
+Replace `'headerKey'` with the specific header you want to retrieve (e.g., `'set-cookie'`, `'content-type'`, or `'x-api-key'`).
+
+This expression can be used in:
+- **Output variables**
+- **Step conditions**
+- **Assertions**  
+  Example: `<+httpResponseHeaders.get('status-code')> == 400`
+
+### Security Considerations
+- **Header values are not printed in logs** to protect sensitive data.
+- **Only header names are shown** in logs.
+- **All header names are normalized to lowercase**  
+(e.g., `'Content-Type'` becomes `'content-type'`).
+
+However, full header details—including values—are available in the **step output section** in the Harness UI.
 
 ## Simulate load by running steps in parallel
 

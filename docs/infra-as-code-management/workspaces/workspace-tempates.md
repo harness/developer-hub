@@ -2,11 +2,24 @@
 title: Create a Workspace Template 
 description: Learn how to create and manage workspace templates for standardized configurations.
 sidebar_position: 60
-sidebar_label: Workspace templates
+sidebar_label: Workspace Templates
 ---
 
-import Tabs from '@theme/Tabs';  
-import TabItem from '@theme/TabItem';  
+<CTABanner
+buttonText="Learn more"
+  title="Coming soon!"
+  tagline="Workspace Templates are currently pending release and will be available soon!"
+  link="/docs/infra-as-code-management/workspaces/workspace-templates/"
+  closable={true}
+  target="_blank"
+/>
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+:::warning
+**Workspace templates** are currently **pending release** and will be available soon!
+:::
  
 With workspace templates, you can standardize workspace configurations across your projects by predefining essential variables, configuration settings, and other workspace options. This helps streamline workspace setup, ensuring consistency and reducing manual configuration efforts. 
 

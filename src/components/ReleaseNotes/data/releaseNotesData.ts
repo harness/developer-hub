@@ -98,6 +98,13 @@ import { MODULES } from "@site/src/constants";
             link: "/release-notes/feature-flags",
           },
           {
+            title: "Feature Management & Experimentation release notes",
+            module: MODULES.fme,
+            description:
+              "",
+            link: "/release-notes/feature-management-experimentation",
+          },
+          {
             title: "Infrastructure as Code Management release notes",
             module: MODULES.iacm,
             description:
@@ -159,27 +166,6 @@ import { MODULES } from "@site/src/constants";
             description:
               "Harness publishes security advisories for every release on the Harness Trust Center.",
             link: "https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card",
-          },
-        ],
-      },
-      {
-        name: "FirstGen release notes",
-        description:
-          "",
-        list: [
-          {
-            title: "FirstGen SaaS release notes",
-            module: MODULES.platform,
-            description:
-              "",
-            link: "/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes",
-          },
-          {
-            title: "FirstGen Self-Managed Enterprise Edition release notes",
-            module: MODULES.platform,
-            description:
-              "",
-            link: "/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes",
           },
         ],
       },
