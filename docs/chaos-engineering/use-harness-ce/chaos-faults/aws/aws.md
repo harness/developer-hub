@@ -77,7 +77,7 @@ The AZ blackhole causes network blackhole by isolating traffic in specific avail
 
 ### VPC route misconfiguration
 
-The vpc route misconfiguration chaos causes network connectivity issues across regions due to the misconfiguration on the routes of the route table associated with the target VPC.
+The vpc route misconfiguration chaos causes network issues due to the misconfiguration of the route table associated with the targeted VPC.
 
 <Accordion color="green">
 <summary>Use cases</summary>
