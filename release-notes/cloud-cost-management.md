@@ -55,7 +55,7 @@ We’ve added Alerts in Cloud Assets Governance, allowing users to configure ale
 
 <DocImage path={require('./static/extend-two.png')} width="90%" height="90%" title="Click to view full-size image" />
 
-## April 2025 - Version 1.47.0
+## April 2025 - Version 1.47.2
 
 ### [New Feature] Granular permissions support for AWS Autostopping 
 **[CCM-21572] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector)**
@@ -82,6 +82,8 @@ We have introduced **Granular permissions support for AWS Autostopping**. With t
   <DocImage path={require('./static/rec-filter-revamp.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 -  With the release of **granular Autostopping permissions for the AWS connector**, only those AWS resources for which the required granular permissions are present in the AWS connector will be available for selection. [CCM-21577]
+
+-  Improved Budget Start Date Validation: To ensure accurate budget tracking, we've added validation to prevent the creation of new budgets with a start date later than the 28th of any month. [CCM-22132]
 
 ### Bug Fixes
 
