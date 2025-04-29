@@ -108,7 +108,9 @@ After creating your policy, add it to a Policy Set before applying it to your Va
 
     click **New Variable**.  
 
-    Try using a variable name denied by your policy, e.g., **"helloworld"**."
+    ![new-variable](./static/opa-new-variable.gif)
+
+    Try using a variable name denied by your policy, e.g., **"helloworld"**.
 
     Based on your selection in the Policy Evaluation criteria, you will either receive a warning or an error.
 
