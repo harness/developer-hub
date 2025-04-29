@@ -17,19 +17,27 @@ These release notes describe recent changes to Harness Feature Management & Expe
 
 
 ## April 2025
-### [New Feature] Experiments
+### [New Feature] Experiments Dashboard
 ----
 #### 2025-04-30
 
-Experiments measure events and display metric results charts on a dashboard. Experiments take an assignment source, such as a feature flag targeting rule.
+Harness Feature Management & Experimentation now offers a new Experiments Dashboard designed to simplify the creation and analysis of experiments.
 
-![Experiment metric details page](./static/fme/experiment-metric-details-avg-purchase-amount.png)
+The new Experiments Dashboard improves the experiment setup process, supports concurrent analysis of multiple treatments, and introduces an intuitive metric table layout for reviewing experiment results.
 
-Key metrics, Supporting metrics, and account-wide Guardrail metrics can be added to experiments and can generate alerts when significant metric impact is detected between experiment variations.
+Key enhancements include:
 
-Every experiment displays a health check to help you validate underlying data and confirm the integrity of observed results.
+* A dedicated experiment creation workflow with smart defaults to streamline setup.
+* A redesigned results dashboard for easier interpretation of metrics and impact trends.
+* Support for analyzing multiple treatments in a single view.
+* Decoupling of experiments from feature flag lifecycle management, enabling faster flag cleanup and reducing technical debt.
 
-Experimental results will persist past the experiment end date to allow your team to refer back to the evidence behind your data-driven feature decisions.
+This release makes it easier for teams to run experiments without requiring deep technical expertise, while providing advanced users with greater visibility and flexibility during analysis.
+
+![Experiments dashboard](./static/fme/experiments-dashboard.png)
+![Experiment - Standard discount](./static/fme/experiments-dashboard-standard-discount.png)
+![Experiments configuration](./static/fme/experiments-dashboard-configuration.png)
+![Experiments metric charts](./static/fme/experiments-dashboard-metric-charts.gif)
 
 #### Related documentation
 - [Experiments](https://help.split.io/hc/en-us/articles/35511708088077-Experiments)
