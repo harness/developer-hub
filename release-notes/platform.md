@@ -119,6 +119,7 @@ The following deprecated API endpoints are longer supported:
 
 - Implicit tag (delegate name) is now supported for delegate version override. [PL-62335]
 - Support for adding Delegate Configurations (legacy feature) from the Resource Groups page has been removed. [PL-60603]
+- Added support for governing scope variables with Open Policy Agent (OPA) policies in Harness, behind the feature flag `PL_ENABLE_OPA_FOR_VARIABLES`. [PL-61504]
 
 ### Version 1.86.x <!--April 23, 2025-->
 
