@@ -73,7 +73,7 @@ After creating your policy, add it to a Policy Set before applying it to your Va
 
 1. Click **Add Policy** in **Policy evaluation criteria**.  
 
-   Select the policy from the list. 
+   Select the policy from the list, Click **Apply**.
 
     ![select-opa-policy](./static/select-opa-for-variable.png) 
 
@@ -90,7 +90,7 @@ After creating your policy, add it to a Policy Set before applying it to your Va
             ![warn-continue](./static/opa-warn-error.png)
     :::
     
-    Click **Apply**, and then click **Finish**.
+    Click **Finish**.
 
 ### Step 4: Policy Enforcement.
 
@@ -104,7 +104,7 @@ After creating your policy, add it to a Policy Set before applying it to your Va
 
   You can add a [Variable](/docs/platform/variables-and-expressions/add-a-variable#define-variables) from any module in your Project in Project setup, or in your Organization, or Account Resources. 
 
-1. "Go to **Account Settings** → **Account-level resources** → **Variables**
+1. Go to **Account Settings** → **Account-level resources** → **Variables**
 
     click **New Variable**.  
 
