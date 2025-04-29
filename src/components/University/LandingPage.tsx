@@ -9,9 +9,9 @@ import { university } from "./data/certificationsData";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
-const devFeatures = ["Free Plan When Available"];
-const administratorFeatures = ["Enterprise Plan"];
-const adminFeatures = ["Enterprise Plan"];
+const devFeatures = ["Based on Free Plan When Available"];
+const administratorFeatures = ["Based on Enterprise Plan"];
+const adminFeatures = ["Based on Enterprise Plan"];
 
 export enum ActivePage {
   Certifications = "Certifications",
