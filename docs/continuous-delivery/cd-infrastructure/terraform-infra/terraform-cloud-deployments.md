@@ -143,6 +143,29 @@ The Terraform Cloud Run step can perform the following run types.
 
 </details>
 
+### Plan with Refresh Command
+
+Harness supports running a Refresh plan for Terraform Enterprise (TFE) runs without auto-approval.
+
+When you select the Refresh option in the Terraform Cloud Run step, Harness triggers a refresh plan in TFE and waits for manual approval before proceeding.
+You can review and approve or reject the refresh plan either within Harness (using an Approval Step) or directly in the TFE UI.
+
+If no approval action is taken within the configured timeout, the pipeline fails and the run is marked as expired.
+
+:::note
+Currently, this feature is behind the feature flag `CDS_SUPPORT_TF_CLOUD_PLAN_REFRESH_TYPE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+To use this feature:
+- In the Terraform Cloud Run step, set Run Type to Plan.
+- Then select the Refresh option to initiate a refresh plan without auto-approval.
+
+
+<div align="center">
+  <DocImage path={require('./static/tfe-plan-refresh.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+
 ## Provisioner Identifier
 
 This setting is supported in the following run types: Plan, Apply, Plan Only, Plan and Apply, Plan and Destroy.
