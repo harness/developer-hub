@@ -238,7 +238,7 @@ In this example, we're going to use a Rolling [deployment strategy](/docs/contin
 1. Select **Rolling**, and select **Apply**.
 2. The **Helm Deployment** step is added to **Execution**.
 
-## Configure Command Flags at Step Level
+## Command Flags at Step Level
 
 You can optionally override or add native Helm command parameters directly in the Helm Deploy step. This provides greater flexibility to customize Helm CLI behavior without modifying the Service definition.
 
