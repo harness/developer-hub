@@ -433,7 +433,8 @@ You can use mid-run input along with [allowed values](#allowed-values) and [defa
 ### Upload files as runtime input
 
 :::info note
-Currently, this feature is behind the feature flag `PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature
+1. This feature is behind the feature flag `PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature
+2. This feature is available only on Harness SaaS and is not supported on SMP.
 :::
 
 Harness allows you to upload files as a runtime input during pipeline execution using the `File Upload step` in a custom stage.
