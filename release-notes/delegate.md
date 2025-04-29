@@ -40,12 +40,6 @@ For more details on UBI9, please refer to the [UBI9 Release Notes](https://docs.
 
 :::
 
-:::info **Delegate Security Update**
-Added a critical security fix in harness secret manager for handling identities with CD workflows.
-If you are running delegates version below 799xx and using Terraform/Terragrunt features, upgrade to delegate version 799x or above immediately. Go to the [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) to update the delegates.
-
-:::
-
 :::danger Kubernetes Manifest impact on Delegate
 Delegate version 24.08.83702 is affected due to rendering logic of Kubernetes Manifest in certain cases only. If you are using this version, please upgrade to version 24.08.83704 to resolve the issue
 :::
@@ -86,6 +80,13 @@ Six months after a delegate image is released, the delegate reaches End of Suppo
 For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
+
+# Release Notes categories
+1. [Delegate image release notes](#delegate-image-release-notes)
+2. [Delegate Helm Chart release notes](#delegate-helm-chart-release-notes)
+3. [Delegate Upgrader release notes](#delegate-upgrader-release-notes)
+
+# Delegate image release notes
 
 ## April 2025
 
@@ -2101,3 +2102,24 @@ This release introduces the following security enhancements:
 Harness NextGen release 78214 includes no changed features or fixes for the Harness Delegate.
 
 </details>
+
+# Delegate Helm Chart release notes
+
+## April 2025
+
+### Version 1.0.24
+
+#### New features and improvements
+- Added option in helm chart to configure imagePullSecrets for Upgrader CronJob. The option is configured with `--set upgrader.imagePullSecret=<my_secret_name>` [PL-61783]
+
+# Delegate Upgrader release notes
+
+## April 2025
+
+### Version 1.6.0
+
+#### Fixed issues
+- Fixed an issue where the delegate images were being pulled from GAR even though a registry mirror was configured. [PL-62342]
+
+#### New features and improvements
+- Added support for automatic upgrades for Docker delegates brought up using the `docker run` command. [PL-41879]
