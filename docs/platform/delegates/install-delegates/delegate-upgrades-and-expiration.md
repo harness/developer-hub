@@ -358,7 +358,7 @@ Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup
       -H 'x-api-key: YOUR_API_KEY_HERE'
     ```
     :::note 
-      For updating delegates successfully through delegate override, ensure both the delegate and the upgrader are running with the same token. In other words, ensure that the value of `DELEGATE_TOKEN` and `UPGRADER_TOKEN` is same.
+      For updating delegates successfully through scope level delegate override, ensure both the delegate and the upgrader are running with the same token. In other words, ensure that the value of `DELEGATE_TOKEN` and `UPGRADER_TOKEN` is same.
     :::
 
     **API Parameters**
