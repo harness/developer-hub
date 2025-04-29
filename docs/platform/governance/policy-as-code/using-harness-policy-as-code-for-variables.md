@@ -94,19 +94,19 @@ After creating your policy, add it to a Policy Set before applying it to your Va
 
 ### Step 4: Policy Enforcement.
 
-1. Now, your Policy Set is automatically set to Enforced, to make it unenforced, toggle off the **Enforced** button.
+    Now, your Policy Set is automatically set to Enforced, to make it unenforced, toggle off the **Enforced** button.
 
     ![opa-variable](./static/opa-enforce-variable.png)
 
 ### Step 5: Apply a Policy to a Service Account
 
-  After creating your Policy Set and adding policies, apply it to a Variable.
+    After creating your Policy Set and adding policies, apply it to a Variable.
 
-  You can add a [Variable](/docs/platform/variables-and-expressions/add-a-variable#define-variables) from any module in your Project in Project setup, or in your Organization, or Account Resources. 
+    You can add a [Variable](/docs/platform/variables-and-expressions/add-a-variable#define-variables) from any module in your Project in Project setup, or in your Organization, or Account Resources. 
 
 1. Go to **Account Settings** → **Account-level resources** → **Variables**
 
-    click **New Variable**.  
+    Click **New Variable**.  
 
     ![new-variable](./static/opa-new-variable.gif)
 
