@@ -109,15 +109,15 @@ static/  @rohanmaharjan100 @wei-harness
 # Chaos Docs
 /docs/chaos-engineering/ @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness
 /release-notes/chaos-engineering.md @neelanjan00 @Jonsy13
-/src/components/Roadmap/data/ceData.ts @krishi0408 @neelanjan00 @vishal-av @SushrutHarness
-/src/components/Docs/data/chaosEngineeringData* @krishi0408 @neelanjan00 @vishal-av @SushrutHarness
+/src/components/Roadmap/data/ceData.ts @neelanjan00 @vishal-av @SushrutHarness
+/src/components/Docs/data/chaosEngineeringData* @neelanjan00 @vishal-av @SushrutHarness
 # Chaos FAQs
 /docs/faqs/chaos-engineering-faqs @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness
 /docs/faqs/static @neelanjan00 @Jonsy13 @Adarshkumar14 @ksatchit @umamukkara
 /kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @ksatchit @umamukkara
 
 # Platform Docs
-/docs/platform/ @pratmit @krishi0408 @GokulBansal0 @abhishekharness @ivikramsahu
+/docs/platform/ @pratmit @GokulBansal0 @abhishekharness @ivikramsahu
 /release-notes/delegate.md @pratmit @abhishekharness @anshul-harness @ivikramsahu
 /release-notes/platform.md @pratmit @GokulBansal0 @abhishekharness @ivikramsahu
 /release-notes/self-managed-enterprise-edition.md @pratmit @abhishekharness @ivikramsahu @anshul-harness @raviyadalam 
@@ -143,7 +143,7 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/platform/connectors/ @vishal-av @anshul-harness @rohitk-h @prasadsatamharness @navaneeth @shylajasun @SushrutHarness
 
 # AI DevOps Docs
-/docs/platform/harness-aida/ @SushrutHarness @pratmit @thisrohangupta @krishi0408 @ivikramsahu @abhishekharness @vishal-av
+/docs/platform/harness-aida/ @SushrutHarness @pratmit @thisrohangupta @ivikramsahu @abhishekharness @vishal-av
 
 # IDP Docs
 /docs/internal-developer-portal/ @OrkoHunter @manishas @khushisharmaharness
