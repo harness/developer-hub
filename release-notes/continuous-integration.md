@@ -29,7 +29,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 To ensure reliability when using Linux/ARM cloud machines, we've expanded our infrastructure to include machines in additional regions.
 
 **Action Required:**
-If your pipelines use Linux/ARM Cloud machines, require access to on-premises resources and rely on IP allowlisting, please make sure to include the following new IPs:
+If your pipelines use Linux/ARM Cloud machines, require access to on-premises resources and rely on IP allowlisting, please make sure to allowlist the following new IPs:
 ```
 34.143.191.93, 34.142.250.64, 34.126.140.239, 34.124.243.76, 34.124.141.152, 34.141.177.40, 34.32.206.247
 35.204.0.244, 34.13.223.178, 34.91.227.239
