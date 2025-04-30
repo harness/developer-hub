@@ -8,25 +8,19 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-## Overview
-
-AutoStopping Rules for EC2 automatically start and stop your non-production EC2 instances based on actual usage, ensuring you only pay for resources when they're needed. This guide walks you through setting up AutoStopping for EC2 instances.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ## Prerequisites
 
-### Required Accounts and Connectors
 - [AWS Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws) with appropriate permissions
-- AWS account with EC2 instances or Auto Scaling Groups
+- AWS account with EC2 instances
+- AWS [Proxy](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/autostopping-proxy) or [Load Balancer](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/load-balancer)
 
 ### Required Permissions
 - Access to AWS Cost and Usage Reports (CUR)
 - Permissions to create cross-account IAM roles
 - For proxy-based setup: permissions to create VMs and read secrets in your AWS account
-
-### Recommended Reading
-- [AutoStopping Overview](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-overview)
-- [Load Balancer Setup](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/load-balancer) (for HTTP/HTTPS access)
-- [AutoStopping Proxy Setup](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/autostopping-proxy) (for SSH/RDP access)
 
 ## How AutoStopping Works with EC2
 
@@ -55,51 +49,59 @@ AutoStopping includes intelligent spot instance orchestration that:
 
 ## Creating an AutoStopping Rule for EC2
 
-### Step 1: Connect to AWS
-
-1. In Harness, navigate to **Cloud Costs** module
+1. In Harness, navigate to **Cloud Costs** module -> **AutoStopping Rules**
 2. Click **New AutoStopping Rule**
-   ![Create new rule](./static/create-autostopping-rules-aws-89.png)
-3. Select **AWS** as your cloud provider
-   ![Select AWS](./static/create-autostopping-rules-aws-90.png)
-4. Choose an existing AWS connector or click **New Connector** to create one
-   ![Select connector](./static/create-autostopping-rules-aws-91.png)
+3. Select **AWS** as your cloud provider. Choose an existing AWS connector or click **New Connector** to [create one](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws). 
 
-### Step 2: Define Your AutoStopping Rule
+After this, there are 3 simple steps to set up your AutoStopping rule:
+
+<Tabs>
+<TabItem value="configuration" label="Step 1: Configuration">
 
 1. Enter a **Name** for your rule
 2. Set the **Idle Time** - how long an instance should be inactive before stopping
-3. Choose whether to use **Spot Instances** for cost savings
+3. In the **Resources to be managed by the AutoStopping rules** section, select "EC2 VMs". Post this, specify how you would like the resources to be handled once idle for the specified Idle Time: Shut Down or Hibernate. 
+4. Add instances to be managed by the AutoStopping rule. AutoStopping Rules can manage multiple VMs as long as they are all within the same cloud provider region.
+5. Choose to convert the selected instance(s) to spot or remain on-demand. 
+6. Set up Advanced Configuration: 
+    - Hide Progress Page: This is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping.
+    - Dry-Run: Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to Evaluate AutoStopping rules in dry-run mode.
+    - Dependencies: Link your rule to other AutoStopping rules when resources depend on each other.
+    - Fixed Schedules: Create fixed schedules to automatically start or stop your instances at specific times. 
 
-```mermaid
-flowchart LR
-    A[Define Rule] --> B[Select Resources]
-    B --> C[Configure Access]
-    C --> D[Advanced Settings]
-    D --> E[Review & Save]
-    style A fill:#cce5ff,stroke:#004085
-    style B fill:#d4edda,stroke:#155724
-    style C fill:#fff3cd,stroke:#856404
-```
 
-### Step 3: Select EC2 Resources to Manage
+:::note
+The fixed schedule takes precedence over the defined AutoStopping Rule.
+:::
 
-1. In the resource selection screen, choose **Instances** (EC2)
-   
-   ![Select EC2 instances](./static/create-autostopping-rules-aws-95.png)
 
-2. Filter instances by:
-   - **Region** - Select the AWS region(s) where your instances are located
-   - **Tags** - Filter instances by specific AWS tags
-   - **Instance Name** - Search for specific instance names
-
-3. Select the instances you want to manage with AutoStopping
-
-4. Click **Add Selected** to include them in your rule
-
-### Step 4: Configure Access Method
+</TabItem>
+<TabItem value="access" label="Step 2: Setup Access">
 
 Choose how users will access your EC2 instances:
+
+- **Set up Access for HTTP/HTTPS workload**: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
+- **Setup Access for TCP workload or SSH/RDP**: If the underlying applications running on the resources managed by AutoStopping Rule are accessed via TCP, SSH or RDP.
+- You could skip this step for now and use the CLI to set up access. Go to [Use the Harness CLI to access resources through SSH/RDP](create-autostopping-rules-aws.md#use-the-harness-cli-to-access-resources-through-sshrdp) for details.
+
+## Set up access for TCP workload or SSH/RDP
+
+Setting up access for TCP workload or SSH/RDP allows AutoStopping to detect activity and idleness, and ensure that the database is up and running only when you need it. Use the AutoStopping Proxy URL (IP/Hostname of the Proxy and a unique autogenerated port number) for this AutoStopping Rule when you connect to the RDS database using any database client. The Proxy URL is generated when you save the AutoStopping Rule.
+If you need to access the resources managed by this AutoStopping rule using TCP or SSH/RDP HTTPS URL, you need to perform the following steps:
+
+![](./static/aws-set-up-tcp.png)
+
+1. Choose an AutoStopping Proxy load balancer from the **Specify AutoStopping Proxy** dropdown list to set up access.
+2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated based on the security group.
+3. Specify the source port numbers and the target TCP ports your application is listening to. If the source port is not specified, a random port will be generated at the backend. This auto-generated port will continue to be used as long as the target port remains unchanged or unless the user explicitly modifies the source port.
+4. Click **Next**.
+
+## Set up access for HTTP/HTTPS workload
+
+If you need to access the resources managed by this AutoStopping rule using an HTTP or HTTPS URL, you need to perform the following steps:
+
+Choose an Application Load Balancer or an AutoStopping Proxy load balancer from the dropdown list to set up access.
+
 
 #### Option A: HTTP/HTTPS Access (Load Balancer)
 
@@ -128,35 +130,15 @@ harness ssh --host <hostname> --user <username> --config lwc.toml
 harness rdp --host <hostname>
 ```
 
-### Step 5: Advanced Configuration (Optional)
+</TabItem>
+<TabItem value="review" label="Step 3: Review">
 
-#### Scheduling Options
+In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.
 
-Create fixed schedules to automatically start or stop your instances at specific times:
+Your AutoStopping rule is listed under the AutoStopping Rules dashboard.
 
-1. Click **Add Fixed Schedule**
-2. Configure schedule parameters:
-   - **Name** - Identify your schedule
-   - **Start/End Time** - When the schedule should begin and end
-   - **Recurring Pattern** - Daily, weekly, or custom patterns
-   - **Action** - Keep resources up or down during the scheduled period
-
-![Fixed schedule configuration](./static/create-autostopping-rules-aws-98.png)
-
-#### Dependencies
-
-Link your rule to other AutoStopping rules when resources depend on each other:
-
-1. Click **Add Dependency**
-2. Select the rule your instances depend on
-3. Choose the dependency type (startup or shutdown)
-
-### Step 6: Review and Save
-
-1. Review all your configuration settings
-2. Click **Save Rule** to create your AutoStopping rule
-
-Your rule will appear in the AutoStopping Rules dashboard where you can monitor its status and savings.
+</TabItem>
+</Tabs>
 
 ## Using Your AutoStopping Rule
 
@@ -194,68 +176,9 @@ harness rdp --host <hostname>
 - Verify instance status and configuration in the AWS console
 - Contact Harness support for assistance with troubleshooting or configuration issues
 
-Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period.
-
-In certain scenarios, you would not want your resources to go down or up. For example, every Friday at 5 p.m. you want your `ABC` resource to go down. You can schedule downtime for your `ABC` resource. During this window, the resource is forced to go down regardless of the defined rule. You can choose to specify uptime for your resources in the same way.
-
-:::note
-The fixed schedule takes precedence over the defined AutoStopping Rule.
-:::
-
 :::note
 Harness executes scheduled rules using [Dkron](https://dkron.io/), an open-source workload automation service.
 :::
-
-To create a fixed schedule for your rule, do the following:
-
-1. In **Fixed Schedules**, click **Add Fixed Schedule**.
-
-   ![](./static/create-autostopping-rules-aws-98.png)
-
-2. In **New Fixed Schedule**, enter a **Name** for your schedule.
-3. In **Type**, select the type for your schedule. You can schedule an **Uptime** or **Downtime** for your rule. As per your schedule, the resources go up or down.
-4. Select the **Time Zone** from the drop-down list.
-5. In **Set schedule period**, use the date picker to set the start and end time for your schedule.
-   1. In **Begins on**, select the start date and time for your schedule. You can select a date and specify the time.
-   2. In **Ends on**, select the end date and time for your schedule. You can select a date and specify the time. Ensure that **Never ends** checkbox is unselected to set the end time.
-   If you don't specify an end time, the schedule continues to run until you manually update the settings or remove the schedule.
-6. Select the checbox **Never ends** if you do not want to set end time for your schedule.
-7. You can also set a recurring schedule for the rule. If you want to set a recurring schedule, in **Uptime/Downtime in the selected period**, in **Repeats**, select the repeat frequency.
-   1. Select which days of the week you'd like your schedule to repeat. You can choose any day between Sunday and Saturday.
-   2. Select **Everyday**, to set the schedule for all seven days of the week.
-   3. Set your repeat schedule's beginning and ending time. In the **Time** field, specify the start and end time for the fixed schedule.
-   4. Select **All Day**, if you wish to set your schedule for the entire day. If you choose All Day for your schedule, you won't be able to choose a start and end time.
-   **Example 1**:  
-   In the following example, resources are up every Mon, Tue, Wed starting from 12:00 a.m. on February 14, 2022 till April 30, at 10:00 p.m.
-   ![](./static/create-autostopping-rules-aws-99.png)
-   **Example 2**:  
-   In the following example, resources are down every day (all day) starting from 12:00 a.m. on February 14, 2022 till April 30, at 12:00 a.m.
-   ![](./static/create-autostopping-rules-aws-100.png)
-8. Click **Apply**.
-
-Now that you have the AutoStopping rule configured, define how you would want to access the underlying application running on the resources managed by this Rule. You can use either of the following or both the methods depending on your requirement:
-
-- **Set up Access for HTTP/HTTPS workload**: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
-- **Setup Access for TCP workload or SSH/RDP**: If the underlying applications running on the resources managed by AutoStopping Rule are accessed via TCP, SSH or RDP.
-- You could skip this step for now and use the CLI to set up access. Go to [Use the Harness CLI to access resources through SSH/RDP](create-autostopping-rules-aws.md#use-the-harness-cli-to-access-resources-through-sshrdp) for details.
-
-## Set up access for TCP workload or SSH/RDP
-
-Setting up access for TCP workload or SSH/RDP allows AutoStopping to detect activity and idleness, and ensure that the database is up and running only when you need it. Use the AutoStopping Proxy URL (IP/Hostname of the Proxy and a unique autogenerated port number) for this AutoStopping Rule when you connect to the RDS database using any database client. The Proxy URL is generated when you save the AutoStopping Rule.
-If you need to access the resources managed by this AutoStopping rule using TCP or SSH/RDP HTTPS URL, you need to perform the following steps:
-
-![](./static/aws-set-up-tcp.png)
-
-1. Choose an AutoStopping Proxy load balancer from the **Specify AutoStopping Proxy** dropdown list to set up access.
-2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated based on the security group.
-3. Specify the source port numbers and the target TCP ports your application is listening to. If the source port is not specified, a random port will be generated at the backend. This auto-generated port will continue to be used as long as the target port remains unchanged or unless the user explicitly modifies the source port.
-4. Click **Next**.
-
-## Set up access for HTTP/HTTPS workload
-
-If you need to access the resources managed by this AutoStopping rule using an HTTP or HTTPS URL, you need to perform the following steps:
-
-Choose an Application Load Balancer or an AutoStopping Proxy load balancer from the dropdown list to set up access.
 
 ### Use an Application Load Balancer
 
@@ -464,14 +387,5 @@ harness rdp --host default-test-rdp-1.abc1000test.lightwingtest.com --internal-i
 
 Click **Next**.
 
-### Review
 
-In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.
 
-Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](autostopping-dashboard.md).
-
-## Next Steps
-
-- [Monitor your AutoStopping rules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-rules-overview-page) to track savings
-- [Set up AutoStopping for Auto Scaling Groups](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/create-rule-asg)
-- [Configure AutoStopping for Kubernetes](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-kubernetes/connector)
