@@ -24,6 +24,25 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::warning
 
+**Network Allowlisting Update for Cloud Linux/ARM**
+
+To ensure reliability when using Linux/ARM cloud machines, we've expanded our infrastructure to include machines in additional regions.
+
+**Action Required:**
+If your pipelines use Linux/ARM Cloud machines, require access to on-premises resources and rely on IP allowlisting, please make sure to include the following new IPs:
+```
+34.143.191.93, 34.142.250.64, 34.126.140.239, 34.124.243.76, 34.124.141.152, 34.141.177.40, 34.32.206.247
+35.204.0.244, 34.13.223.178, 34.91.227.239
+```
+
+Please visit [new subscription page](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#allowlisting-for-accessing-resources-in-your-private-network) for full list of IPs.
+
+If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
+
+:::
+
+:::warning
+
 **Action Required: Avoid Docker Hub Rate Limits**
 
 **Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
@@ -53,24 +72,7 @@ To ensure uninterrupted service, we recommend completing these updates by April 
 For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
 :::
 
-:::warning
 
-**Network Allowlisting Update for Cloud Linux/ARM**
-
-To improve reliability when using Linux/ARM cloud machines, we've expanded our infrastructure to include fallback machines in additional regions.
-
-**Action Required:**
-If your pipelines use Linux/ARM Cloud machines, require access to on-premises resources and rely on IP allowlisting, please make sure to include the following new IPs:
-```
-34.143.191.93, 34.142.250.64, 34.126.140.239, 34.124.243.76, 34.124.141.152, 34.141.177.40, 34.32.206.247
-35.204.0.244, 34.13.223.178, 34.91.227.239
-```
-
-Please visit [new subscription page](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#allowlisting-for-accessing-resources-in-your-private-network) for full list of IPs.
-
-If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
-
-:::
 
 :::note
 
