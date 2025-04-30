@@ -92,7 +92,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 #### Hotfix
 
-- In Case of ECS deployments now it will fetch all the listeners attached, in which the required listener should be present.
+- For ECS deployments, the system will now fetch all attached listeners, and the required listener is expected to be present among them.
 
 ### Version 25.04.85701 <!--April 23, 2025-->
 
