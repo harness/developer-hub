@@ -164,11 +164,11 @@ This update is currently being rolled out to customers, and we expect the rollou
   - Key improvements include Azure SDK integration, cross-platform certificate handling, and enhanced error management. This update significantly improves the plugin's capability to handle various authentication scenarios in enterprise environments. 
   - `plugins/kaniko-ecr:1.10.8`: Added three new flags to enhance the `kaniko-ecr` plugin's image handling capabilities (CI16588):
 
-  - `PLUGIN_PUSH_ONLY`: Enables pushing pre-built image tarball without running a build.
+    - `PLUGIN_PUSH_ONLY`: Enables pushing pre-built image tarball without running a build.
 
-  - `PLUGIN_SOURCE_TAR_PATH`: Used in conjunction with **push-only** mode.
+    - `PLUGIN_SOURCE_TAR_PATH`: Used in conjunction with **push-only** mode.
 
-  - `PLUGIN_TAR_PATH`, `PLUGIN_DESTINATION_TAR_PATH`: Provides consistent naming with **source-tar-path**. These additions enable more flexible workflows by allowing separation of build and push operations. 
+    - `PLUGIN_TAR_PATH`, `PLUGIN_DESTINATION_TAR_PATH`: Provides consistent naming with **source-tar-path**. These additions enable more flexible workflows by allowing separation of build and push operations. 
 - `plugins/buildx:1.2.0`: Included support for the new `PLUGIN_BUILDX_OPTIONS` flag, allowing users to pass custom options directly to buildx. (CI-16595)
 - Updated the default Docker connector for new accounts to point to GAR instead of using the account-level connector (id: harnessImage). (CI-16845)
 
