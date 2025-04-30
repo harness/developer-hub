@@ -115,7 +115,7 @@ Once you've completed configuring the settings for the Trellis Factors, click on
 
 When a new Collection is created, it is automatically associated with the Trellis Factors at the Account Level by default. However, you can customize the Trellis factors for a specific Collection:
 
-* In your **Harnesss Account**, select your **Project**.
+* In your **Harness Account**, select your **Project**.
 * Select **Collections** in the left-navigation menu.
 * Select the **Collection** where you want to customize the **Trellis Factors** contributing to the **Trellis Metric** calculations.
 * Enable the **Trellis Contributor Scoring** option (if disabled).

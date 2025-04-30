@@ -26,7 +26,6 @@ After enabling CCM, it takes about 24 hours for the data to be available for vie
 
 ## Before you begin
 
-* The same connector cannot be used in NextGen and FirstGen. For information on creating a GCP connector in the FirstGen see [Set Up Cost Visibility for GCP](../../../first-gen/cloud-cost-management/setup-cost-visibility/enable-cloud-efficiency-for-google-cloud-platform-gcp.md).
 * Review [Required permissions and roles](https://cloud.google.com/iam/docs/understanding-custom-roles#required_permissions_and_roles) to create an IAM role at the organization level
 * Ensure that you have the following permissions to enable and configure the export of Google Cloud billing data to a BigQuery dataset:
 	+ **Billing Account Administrator** role for the target Cloud Billing account
@@ -108,6 +107,18 @@ You need to enter Dataset Name in Harness.
 12. Enter the **Table Name** in Harness.
 13. Select **Continue**.
 
+:::info 
+⚠️ GCP Billing Export Table Limitations and CMEK Restrictions
+When setting up a connector for GCP Billing Export, keep the following limitations and guidelines in mind:
+
+- GCP does not support copying data across regions if the source table uses CMEK.
+- GCP also does not allow copying data from Materialized Views.
+- If your organization enforces CMEK policies, consider creating a new dataset without CMEK enabled specifically for the integration.
+- It is recommended to create the dataset in the US region, as it offers the most compatibility with GCP billing export operations.
+- Use datasets with default (Google-managed) encryption when configuring the connector.
+
+:::
+
 ### Choose Requirements
 
 Select the Cloud Cost Management features that you would like to use on your GCP account.
@@ -180,6 +191,8 @@ The connection is validated and verified in this step. After successfully testin
 Your connector is now listed in the **Connectors**.
 
 <DocImage path={require('./static/set-up-cost-visibility-for-gcp-13.png')} width="50%" height="50%" title="Click to view full size image" />
+
+
 
 ### Next Steps
 

@@ -17,43 +17,122 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Progressive deployment: Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview page** in Harness. In the new UI, go to Account Settings, Account Details, General, Account Details, and then Platform Service Versions. This section displays the current version of Cloud Cost Management (CCM) running on your account.
 
 :::
-## April 2025
 
-### Version 1.46.2
+## 📌 Release Deployment Status by Cluster
 
-#### New features and enhancements
+| **Cluster**        | **Deployment Status** | **Release Version** | 
+| --------------------------- | -------------------------- | --------------- | 
+| **prod0**   | ✅ Completed                        | April - v1.49.1         |                                                                                                                        
+| **prod1** | ✅ Completed                        | April - v1.49.1         |                                                                                                                      
+| **prod2**    |  ✅ Completed         | April - v1.48.1      |                                                                                                                      
+| **prod3**         |   ✅ Completed                     | April - v1.48.1    | 
+| **prod4**         |  ✅ Completed       | April - v1.48.1       | 
+| **prodeu1**   |  ✅ Completed                        | April - v1.48.1    |      
+
+
+## April 2025 - Version 1.49.1
+
+### Feature Improvements
+
+- Asset Governance Alert Fix: We've improved the alert update experience to ensure that only relevant resources and cloud accounts are displayed based on the selected cloud provider. This enhancement ensures a more accurate and streamlined configuration flow for Governance alerts. [CCM-22618]
+
+## April 2025 - Version 1.48.1
+
+### [New Feature] Alerts for Governance Rule Evaluations
+**[CCM-21921] | [Docs](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gov-overview#governance-alerts)**
+
+We’ve added Alerts in Cloud Assets Governance, allowing users to configure alerts based on Cloud Provider (AWS, GCP, Azure), Resource Type (Cloud Custodian-defined), Cloud Accounts, Minimum Number of Resources Found, Minimum Cost Impact, Email IDs, and the option to attach evaluation output as a .json file. 
+
+### Feature Improvements
+
+- Preferred Instance Families in Nodepool presets:  We’ve added support for saving Preferred Instance Families in Nodepool presets, along with Buffer and Minimum Node Count. Users can now select specific instance families per cloud provider and region, and these preferences will be considered when generating the next set of Nodepool recommendations.
+
+<DocImage path={require('./static/instance-families.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- Extend Warmup Period: We've improved the AutoStopping experience by introducing the Extend Warmup Period button. Previously, once a resource was manually started or warmed up via the AutoStopping rule page, users couldn’t extend its uptime during the active warm-up window. With this update, you can now extend the warm-up duration while the resource is still running, eliminating interruptions and giving you more control. 
+
+<DocImage path={require('./static/extend-one.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+<DocImage path={require('./static/extend-two.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+## April 2025 - Version 1.47.2
+
+### [New Feature] Granular permissions support for AWS Autostopping 
+**[CCM-21572] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector)**
+
+We have introduced **Granular permissions support for AWS Autostopping**. With this update, users can now **select the specific AWS resource types they want to enable for Autostopping** such as EC2, ASG, or RDS. Based on the selected resource types, only the minimal required set of permissions will be requested. This feature simplifies onboarding, and aligns with security best practices.
+
+ <DocImage path={require('./static/as-granular-permissions-one.png')} width="90%" height="90%" title="Click to view full-size image" />
+ <DocImage path={require('./static/as-granular-permissions-two.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+
+### Feature Improvements
+-  Improved Recommendation Tracking: Users can now **specify estimated savings** when marking a recommendation as applied. Upon marking a recommendation as applied, users can now confirm whether the estimated savings matched the actual savings or enter the actual amount saved if different from the estimate. Additionally, after a recommendation has been applied, this savings data from the Applied Recommendations section can be edited. [CCM-21629]
+
+ <DocImage path={require('./static/savings-rec.png')} width="90%" height="90%" title="Click to view full-size image" />
+  <DocImage path={require('./static/savings-rec-two.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+
+-  Cost Categories Integration for Recommendations: The **Filter panel** in the **Recommendations view** now includes the option to **filter by Cost Categories**. This update is especially valuable for large-scale organizations that manage **thousands of recommendations** and require structured views to take meaningful action. This improvement allows for efficient sorting and quick isolation of recommendations based on relevant cost buckets and labels. [CCM-21439]
+
+  <DocImage path={require('./static/cc-integration.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+-  Recommendations Filter Revamp: The **Filter panel** in the **Recommendations view** has been updated to provide a more streamlined experience. As shown in the image below, the new design improves navigation and makes it easier to apply multiple filters. [CCM-21438]
+
+  <DocImage path={require('./static/rec-filter-revamp.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+-  With the release of **granular Autostopping permissions for the AWS connector**, only those AWS resources for which the required granular permissions are present in the AWS connector will be available for selection. [CCM-21577]
+
+-  Improved Budget Start Date Validation: To ensure accurate budget tracking, we've added validation to prevent the creation of new budgets with a start date later than the 28th of any month. [CCM-22132]
+
+### Bug Fixes
+
+- For Budgets on Perspectives using Cost Categories with shared cost buckets, we’ve fixed an edge case where budget history data was not displaying in the UI. Budget computations are now accurately reflected to ensure complete visibility into historical usage and trends [CCM-22006]
+
+- We’ve enhanced the logic for converting Cloud Asset Governance Recommendation output from JSON to CSV by better handling of edge cases that previously caused issues in the CSV view. [CCM-21834]
+
+**Before**
+  <DocImage path={require('./static/json-fix-before.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+**After**
+  <DocImage path={require('./static/json-fix-after.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+## April 2025 - Version 1.46.2
+
+### [New Feature] Recommendation Preferences
+**[CCM-20954] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations#recommendation-settings)**
+
+We have introduced a new feature to enhance the personalization of recommendations: **Recommendation Preferences**. This allows users to create, apply, and save custom tuning preferences to better suit their usage. Users can now also select a default preset preference. This ensures that the chosen tuning preferences are consistently applied across all future recommendations removing the need for repeated manual adjustments. 
+
+<DocImage path={require('./static/rec-pref.png')} width="90%" height="90%" title="Click to view full-size image" />
+<DocImage path={require('./static/manage-presets.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+#### Feature Improvements
 - New Filters for Autostopping: We have added two new filters in the Autostopping page filter panel:
     - Minimum Savings: This allows users to filter rules based on minimum savings threshold.
     - Hide Disabled Rules: This filter is designed to help users manage and view only the active rules in their system by hiding disabled rules. [CCM-21788, CCM-21766]
 
  <DocImage path={require('./static/as-filters.png')} width="90%" height="90%" title="Click to view full-size image" />
- 
-- Recommendation Preferences: We have introduced a new feature to enhance the personalization of recommendations: Recommendation Preferences. This allows users to create, apply, and save custom tuning preferences to better suit their usage. Users can now also select a default preset preference. This ensures that the chosen tuning preferences are consistently applied across all future recommendations removing the need for repeated manual adjustments. [CCM-20954]
-
-<DocImage path={require('./static/rec-pref.png')} width="90%" height="90%" title="Click to view full-size image" />
-<DocImage path={require('./static/manage-presets.png')} width="90%" height="90%" title="Click to view full-size image" />
   
 #### Fixed Issues
-- - Anomaly Detection Timezone Fix: We have resolved an issue where anomalies appeared with a one-day delay due to a timezone mismatch. The chart implementation has been updated to reflect accurate timestamps. [CCM-21942]
+- Anomaly Detection Timezone Fix: We have resolved an issue where anomalies appeared with a one-day delay due to a timezone mismatch. The chart implementation has been updated to reflect accurate timestamps. [CCM-21942]
 - Cloud Asset Governance Timezone Label: We have fixed a display issue where the "UTC" timezone label was incorrectly shown as "CUT" in enforcement logs. [CCM-21934]
 
-## March 2025
+## March 2025 - Version 1.45.7
 
-### Version 1.45.7
-
-#### New features and enhancements
-
-- (Beta) External Cost Data Ingestion: Harness Cloud Cost Management now supports External Cost Data Ingestion, enabling you to bring in cost data from third-party vendors using a standardized CSV format.
-Key Capabilities:
+### [New Feature]  (Beta) External Cost Data Ingestion
+**[CCM-20954] | [Docs](/docs/cloud-cost-management/get-started/onboarding-guide/external-data-ingestion)**
+Harness Cloud Cost Management now supports External Cost Data Ingestion, enabling you to bring in cost data from third-party vendors using a standardized CSV format.
+**Key Capabilities:**
 
 - Ingest and analyze external costs using Perspectives, Budgets, Dashboards and Cost Categories
 - Support for FOCUS-formatted CSV files (20MB max per file)
 
 This feature is currently in Beta and behind a feature flag `CCM_EXTERNAL_DATA_INGESTION` . Please contact our support team for enablement. [CCM-21297]
 
-- Anomaly Comments Support: You can now add and view comments directly on the Anomalies Details page, making collaboration and investigation easier. [CCM-21384]
+#### Feature Improvements
 
-- UI Fix for Rule Sets & Enforcements: Previously, if a user added multiple Rules or Rule Sets while creating Rule Sets or Enforcements, the button to proceed or save would be pushed off-screen, preventing the action. This issue is now resolved. [CCM-21512]
+- Anomaly Comments Support: You can now add and view comments directly on the Anomalies Details page, making collaboration and investigation easier. [CCM-21384]
 
 - Date Range in UTC Format: Date ranges are now processed in UTC for anomaly drilldown chart, ensuring accurate time representation across time zones like IST and PST. This also ensures drilldown chart data is fetched correctly based on the selected time range. [CCM-21630]
 
@@ -61,9 +140,9 @@ This feature is currently in Beta and behind a feature flag `CCM_EXTERNAL_DATA_I
 
 - Fixed Incorrect Timestamps in Budget Monthly Breakdown: Previously, the [List Budgets](https://apidocs.harness.io/tag/Cloud-Cost-Budgets#operation/listBudgets) API returned monthly breakdowns with Unix timestamps for the year 2024 instead of the configured 2025 values. This issue has now been resolved, and the API returns accurate timestamps consistent with the UI configuration. [CCM-21657]
 
-### Version 1.43.5
+## March 2025 - Version 1.43.5
 
-#### New features and enhancements
+#### Feature Improvements
 - Improved Accessibility for Rule Set Creation: Previously, if a user added multiple Rules or Rule Sets while creating Rule Sets or Enforcements, the button to proceed or save would be pushed off-screen, preventing the action. This issue is now resolved. [CCM-21512]
 - Improved Error Handling for AutoStopping Pages: Previously, navigating away from a loading AutoStopping page caused aborted API calls to trigger error toasts. Now, toasts will only appear for valid errors.[CCM-21199]
 - Improved UI Behavior for User Dropdown in AutoStopping : Previously, users with access only to AutoStopping encountered an error in the UI due to missing permissions for listing other users. To enhance the experience, we have modified the implementation to **hide the user dropdown in filters** if the user does not have access to list other users. [CCM-19404]

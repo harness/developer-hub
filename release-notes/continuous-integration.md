@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-04-04T10:00
+date: 2025-04-23T10:00
 sidebar_position: 10
 ---
 
@@ -93,6 +93,69 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 :::
 
+### Version 1.76
+
+<!-- 2025-04-21 -->
+
+#### New features and enhancements
+- [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect/) now supports the “Upload to GCS” and "Upload Artifacts to JFrog" out-of-the-box (OOTB) steps. (CI-17124)
+
+#### Fixed issues
+- We identified an issue where builds marked as **Ignore Failed** were incorrectly appearing under **Failed Builds** in the **Overview** page. This has now been fixed, and such builds will no longer be shown in the failed list. The **See All** page continues to work as expected, with filters applied correctly based on user selection. (ZD-79234, CI-16440)
+
+- Fixed pipeline execution failure when log service was unreachable by adding timeouts. (CI-16484, ZD-79557)
+
+### Version 1.75
+
+<!-- 2025-04-14 -->
+
+#### New features and enhancements
+- Enhanced the AWS authentication mechanism in the Drone S3 plugin (`plugins/s3:1.5.3`) to provide more reliable operation across diverse target environments. (CI-16855, ZD-81366)
+ 
+#### Fixed issues
+- Resolved an issue in Build Intelligence where an extra parenthesis was added in run steps for PowerShell containers. (CI-16922, ZD-81766)
+
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `plugins/kaniko-ecr`      | Changes related to upcoming **Build and Push**  step improvements.  | 1.10.8                | 1.10.9          |
+| `plugins/s3`      | Fix S3 authentication to properly handle combined credential methods and role assumption  | 1.5.2                | 1.5.3          |
+| `plugins/artifactory`      | Enable containerless mode for artifactory plugin  | 1.7.3                | 1.7.4          |
+
+### Version 1.74
+
+<!-- 2025-04-07 -->
+
+#### New features and enhancements
+- Added support for resolving secrets within Harness expressions, enabling nested constructs like `<+<+variable.org.artifactory_username>-<+secrets.getValue("org.artifactory_token")>>` to be evaluated correctly. (CI-16604, ZD-79809)
+- Added support for remote debugging on macOS ARM64 systems when using Harness Cloud VM infrastructure. (CI-16771)
+- Added multipart upload and download support to Cache Intelligence’s save and restore cache steps, significantly improving performance and reliability for large cache files. This update now supports files over 5GB, up to a maximum of 10GB.
+
+- Introduced new configurable options to control multipart behavior (CI-16493):
+
+    - `PLUGIN_ENABLE_MULTIPART`: Enable or disable multipart handling with a default value of `false`.
+
+    - `PLUGIN_MULTIPART_CHUNK_SIZE_MB`: Set chunk size (in MB) for each upload segment.
+
+    - `PLUGIN_MULTIPART_MAX_UPLOAD_SIZE_MB`: Define maximum size (in MB) for a multipart upload.
+
+    - `PLUGIN_MULTIPART_THRESHOLD_SIZE_MB`: Trigger multipart uploads only for files exceeding this size (in MB).
+
+- Added an optional "Upload as Flat" configuration to the out-of-the-box JFrog Artifactory step. This allows users to explicitly set the `--flat` argument in the JFrog CLI by passing true or false as needed. (CI-15781)
+#### Fixed issues
+- Fixed an issue where the default Harness image connector still depended on DockerHub, even when using a private registry. The image is now fully self-contained, ensuring compatibility with air-gapped environments. (CI-15799, ZD-76651, ZD-76970, ZD-77190, ZD-78321, ZD-79529)
+#### Harness images updates
+
+| **Image**                | **Change**                                      | **Previous version** | **New Version** |
+| ------------------------ | ----------------------------------------------- | -------------------- | --------------- |
+| `harness/ci-addon`      | Work related for upcoming support for JavaScript with Test Intelligence.  | 1.16.79                | 1.16.80          |
+| `harness/ci-addon`      | Work related for upcoming support for JavaScript with Test Intelligence.  | rootless-1.16.79                | rootless-1.16.80          |
+| `harness/ci-lite-engine`      | Work related for upcoming support for JavaScript with Test Intelligence.  | 1.16.79                | 1.16.80          |
+| `harness/ci-lite-engine`      | Work related for upcoming support for JavaScript with Test Intelligence.  | rootless-1.16.79                | rootless-1.16.80          |
+| `plugin/cache`      | Support large cache blobs for Cache Intelligence  | 1.9.5                | 1.9.6          |
+| `harness/harness-cache-server`      | Resolved an issue with private registry configuration in the default Harness image connector CI-15799  | 1.2.1                | 1.6.0          |
+
 ### Version 1.73
 
 <!-- 2025-04-01 -->
@@ -100,7 +163,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 #### New features and enhancements
 
 - Added support for codebase cloning using commit SHA, supporting both long and short commit SHAs. (CI-13445)
-- The following features are now available to support multi-line output variables via FF `CI_NEW_VERSION_GODOTENV`:
+- The following features are now available to support multi-line output variables via FF `CI_ENABLE_MULTILINE_OUTPUTS_SECRETS`:
 
   - Multiline Output Variables: Now supported in CI steps with special character support (\n, \t, \r, \b), maintaining shell-like behavior.
 

@@ -25,12 +25,6 @@ You can run a pipeline manually or set up triggers to automatically run it on a 
 5. If you want to use a [pipeline template](/docs/platform/templates/template), select **Start with Template**.
 6. Select **Start**.
 
-:::note
-
-By enabling the feature flag `CI_DYNAMIC_BRANCH_SELECTOR`, Git branches in the codebase branch selector will be dynamically populated when creating a new pipeline. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-
-:::
-
 You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure [pipeline settings](#pipeline-settings).
 
 :::tip
@@ -91,6 +85,12 @@ To make pipelines more versatile, you can create [templates](/docs/category/temp
 CI pipelines build and test code that is pulled from a Git code repository. When you add a **Build** stage to a CI pipeline, you specify the Git account and repository where your code is stored. The codebase declared in the first stage in a pipeline becomes the pipeline's default codebase. You can use this codebase for later stages in the pipeline, or you can use multiple codebases in the same pipeline. For more information, go to [Configure codebases](/docs/category/configure-codebases/).
 
 Harness uses [code repo connectors](/docs/category/code-repo-connectors) to connect to Git repositories.
+
+:::note
+
+By enabling the feature flag `CI_DYNAMIC_BRANCH_SELECTOR`, Git branches in the codebase branch selector will be dynamically populated when running a pipeline. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+:::
 
 ### Build infrastructure
 

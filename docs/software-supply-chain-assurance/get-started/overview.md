@@ -36,10 +36,10 @@ To realize the objectives, the SCS module offers the following features:
 
 * [Repository security posture management](../repository-security-posture-management-rspm)
 * Comply with security compliance standards
-    * [CIS Benchmarks](../manage-risk-and-compliance/standards-and-rule-definitions#cis-benchmarks)
-    * [OWASP Top 10 CI/CD Risks](../manage-risk-and-compliance/standards-and-rule-definitions#owasp-top-10-cicd-security-risks)
+    * [CIS Benchmarks](https://www.cisecurity.org/benchmark/software-supply-chain-security)
+    * [OWASP Top 10 CI/CD Risks](https://owasp.org/www-project-top-10-ci-cd-security-risks/)
 * [SLSA Build Level 1, Level 2 and Level 3.](https://developer.harness.io/docs/software-supply-chain-assurance/slsa/overview)
-* [SBOM generation and management.](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/overview)
+* [SBOM generation and management.](/docs/software-supply-chain-assurance/sbom/generate-sbom.md)
 * [Govern the usage of open source with SBOM policy enforcement.](https://developer.harness.io/docs/software-supply-chain-assurance/sbom-policies/overview)
 * [Remediate issues related to risk & compliance and zero-day exploits.](https://developer.harness.io/docs/software-supply-chain-assurance/remediation-tracker/overview)
 

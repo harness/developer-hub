@@ -8,6 +8,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 canonical_url: https://www.harness.io/blog/cloud-autostopping
 ---
+import Tabs from '@theme/Tabs';
+
+import TabItem from '@theme/TabItem';
+
+
+:::tip [Latest Features Released in 1.47.0](/release-notes/cloud-cost-management#april-2025---version-1470)
+<Tabs>
+  <TabItem value="Granular permissions support for AWS Autostopping">We have introduced Granular permissions support for AWS Autostopping. With this update, users can now select the specific AWS resource types they want to enable for Autostopping such as EC2, ASG, or RDS. Based on the selected resource types, only the minimal required set of permissions will be requested.  </TabItem>
+</Tabs>
+:::
 
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions. With AutoStopping Rules configured:
 

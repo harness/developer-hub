@@ -12,17 +12,11 @@ Harness enables you to add templates to create re-usable logic and Harness entit
 
 When you create a template, you can save it in Harness (**Inline**) or in a Git repository (**Remote**).
 
-:::info note
-Harness now supports storing Inline Entities in the Harness Git Repository.  
-For more details, refer to [Storing Inline Entities in Harness Git Repository](/docs/platform/git-experience/harness-code-inline.md).
-:::
-
-
 ![](./static/create-a-remote-stage-template-87.png)
 
 Templates stored in Git repos are referred to as *remote templates*. This topic demonstrates how to create, configure, and use remote templates by creating a remote [stage template](./add-a-stage-template.md).
 
-This topic assumes you have an understanding of [Harness' key concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) and [Harness templates](template.md).
+This topic assumes you have an understanding of [Harness' key concepts](/docs/platform/get-started/key-concepts) and [Harness templates](template.md).
 
 You can view all your templates in Harness, under **Templates**, based on their scope. The templates list is also referred to as the *Template Library*.
 

@@ -59,7 +59,7 @@ spec:
               value: "2"
             - name: DURATION
               value: "120"
-            - name: LIB_IMAGE
+            - name: BYOC_HELPER_IMAGE
               value: "<lib image with ssh binary>"
             - name: COMMAND
               value: "/bin/sh"

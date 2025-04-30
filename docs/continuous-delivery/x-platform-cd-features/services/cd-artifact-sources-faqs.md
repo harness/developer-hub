@@ -260,12 +260,6 @@ Yes, you can use the [expression](https://developer.harness.io/docs/platform/var
 
 Yes, You can setup a trigger based on the image tag changes on DockerHub repo as suggested in this[ doc.](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/)
 
-### Harness enabling auto-deployment
-
-To have automatic deployment in Harness, you can make use of triggers. On new artifact. 
-Refer this [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-a-time-schedule/)
-As soon as your build is complete and it publishes a new artifact you can setup a trigger on that and it will trigger a Harness Deployment. 
-
 ### How to view Deployment history (Artifact SHA) for a single service on an environment
 
 You can go to Service under the project --> Summary will show you the details with what artifact version and environment. 
@@ -321,3 +315,7 @@ To bypass artifact validation, select the **Skip Validation for the Stage** chec
 
 ### Is it possible to pass user artifacts from the service step to a Run step within a container-based step group of the same stage?
 The ability to pass artifacts between steps depends on the CI/CD system’s configuration. If the container-based step group operates like CI infrastructure, shared paths and file modifications within the container might persist across steps. However, if the artifact is downloaded temporarily, its lifecycle is limited to that step.
+
+### How do I generate a valid PLUGIN_TAR_PATH for the ECR step?
+
+The Build and Push to ECR step does not automatically generate a tarball. The PLUGIN_TAR_PATH environment variable is supported only in plugins/kaniko and must be manually set when using `plugins/kaniko-ecr`.

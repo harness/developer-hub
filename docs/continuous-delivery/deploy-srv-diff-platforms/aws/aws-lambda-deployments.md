@@ -763,6 +763,12 @@ rollbackSteps:
       spec: {}
 ```
 
+### Limitation
+
+Currently, if the artifact size is greater than 50 MB and is stored in Amazon S3, the deployment will succeed with delegate version `855xx` or later, but rollback will **fail** for such deployments.
+
+A resolution for this limitation will be available with delegate version `857xx` or later.
+
 ## Lambda Functions Deployment Sample 
 
 To see an example of how to deploy Lambda Functions using Harness, visit the [Harness Community Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/aws-lambda).

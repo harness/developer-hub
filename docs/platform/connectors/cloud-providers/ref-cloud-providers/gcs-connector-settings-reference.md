@@ -104,7 +104,7 @@ Select this option to allow the connector to inherit its authentication credenti
 <summary>Learn more about credential inheritance</summary>
 
 * **IAM role inheritance:** The connector inherits the GCP IAM role assigned to the delegate in GCP, such a Harness Kubernetes delegate running in Google Kubernetes Engine (GKE). Make sure the delegate has the IAM roles that your connector needs.
-* **GCP workload identity:** If you installed the Harness [Kubernetes delegate](../../../../first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate.md) in a Kubernetes cluster in GKE that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, then the Google Cloud Platform (GCP) connector inherits these credentials if it uses that delegate.
+* **GCP workload identity:** If you installed the Harness [legacy Kubernetes delegate](/docs/platform/delegates/install-delegates/install-a-kubernetes-delegate) in a Kubernetes cluster in GKE that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, then the Google Cloud Platform (GCP) connector inherits these credentials if it uses that delegate.
 * **Role and policy changes:** If you find that the IAM role associated with your GCP connector don't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the Harness Delegate that your GCP connector is using. You may need to wait up to five minutes for the change to take effect.
 * **See also:**
   * [Add a Google Cloud Platform (GCP) connector](../../../connectors/cloud-providers/connect-to-google-cloud-platform-gcp.md)
@@ -137,16 +137,11 @@ You can now have one connector scoped to multiple GCP projects, eliminating the 
 Currently, the Cross-Project Access feature for GCP OIDC connectors is behind the feature flag `CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-<div align="center">
-  <DocImage path={require('./static/gcp-oidc-cross-project-access.png')} width="60%" height="60%" title="Click to view full size image" />
-</div>
 
-Enable the checkbox **Enable Cross Project Access** during the GCP OIDC connector configuration.
-
-Note: This feature is supported when OIDC authentication is used and GKE infrastructure (Kubernetes or Helm) is selected. When the checkbox is enabled, the connector will allow access to multiple GCP projects for Kubernetes and Helm infrastructure types only.
+Note: This feature is supported when OIDC authentication is used and GKE infrastructure (Kubernetes, Helm and Google Cloud Run) is selected. The connector will allow access to multiple GCP projects for Kubernetes, Helm and Google Cloud Run infrastructure types only.
 
 **Project Selection Flow**:
-    * Once the checkbox is enabled, the system will query the list of GCP projects accessible via the connector.
+    * With the **feature flag enabled**, the system will query the list of GCP projects accessible via the connector.
     * The user will be prompted to select the target project (e.g., project2), in addition to the original project (project1).
     * With both project values, relevant APIs will be invoked in the workflow using both projects.
 
@@ -157,7 +152,7 @@ To configure the **Project** at the infrastructure level, follow these steps:
 1. Navigate to **Project Settings** -> **Environment**, and select your desired Kubernetes environment.
 2. In the **Infrastructure Definition** section, choose **Deployment Type** as **Kubernetes** or **Helm Native** and **Infrastructure Type** as **Google Kubernetes Engine**.
 3. In the **Cluster Details** section:
-  - For the **Connector**: Select the previously configured GCP OIDC cluster with **Enable Cross Project Access** enabled. 
+  - For the **Connector**: Select the previously configured GCP OIDC cluster with the **feature flag enabled**. 
   - **Project (optional)**: Select the Project you want to use in dropdown
   - **Cluster**: The cluster dropdown will list all the cluster associated with the selected project
   - **Namespace**: Enter the target namespace in target cluster.
