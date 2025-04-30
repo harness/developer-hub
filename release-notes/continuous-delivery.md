@@ -61,7 +61,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Harness now supports configuring Helm native command flags directly at the step level. Currently, this feature is behind the feature flag `CDS_HELM_STEP_COMMAND_FLAGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-101899**) 
 
-- Users can now avoid printing the entire script content in the console log before the output of a Tanzu command. (**CDS-101641, ZD-71075**)
+- Users can now avoid printing the entire script content in the console log before the output of **Tanzu Command Step**. (**CDS-101641, ZD-71075**)
 
 - Users can now configure `AND` or `OR` logic when filtering hosts by attributes in Physical Data Center (PDC) infrastructure definitions. Currently, this feature is behind the feature flag `CDS_PDC_HOST_ATTRIBUTES_MATCHING_CRITERIA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-92584**)
 
