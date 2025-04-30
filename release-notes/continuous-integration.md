@@ -162,7 +162,7 @@ This update is currently being rolled out to customers, and we expect the rollou
   - Maintains backward compatibility with direct username/password authentication while providing more secure and flexible options for enterprise deployments.
 
   - Key improvements include Azure SDK integration, cross-platform certificate handling, and enhanced error management. This update significantly improves the plugin's capability to handle various authentication scenarios in enterprise environments. 
-  - `plugins/kaniko-ecr:1.10.8`: Added three new flags to enhance the `kaniko-ecr` plugin's image handling capabilities (CI16588):
+  - `plugins/kaniko-ecr:1.10.8`: Added three new flags to enhance the `kaniko-ecr` plugin's image handling capabilities (CI-16588):
 
     - `PLUGIN_PUSH_ONLY`: Enables pushing pre-built image tarball without running a build.
 
