@@ -780,7 +780,6 @@ Ensure that the IAM role or user associated with the deployment has the followin
 - `lambda:UpdateAlias` – Allows updating an existing alias to point to a different version.
 - `lambda:DeleteAlias` – Allows deletion of an alias.
 
-
 Harness uses **Lambda function aliases** to support rollback workflows. During deployment, Harness creates or updates an alias to point to the latest function version. If a rollback is triggered, the alias is redirected to the previously deployed version—restoring the last known good state.
 
 :::info
