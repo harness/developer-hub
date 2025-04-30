@@ -96,7 +96,7 @@ native services?}
       - Makes the proxy publicly accessible
       - Remember to update your DNS records to point to this IP
 
-<DocImage path={require('./static/aws-proxy-two.png')} width="70%" height="70%" title="Click to view full-size image" />
+<!-- <DocImage path={require('./static/aws-proxy-two.png')} width="70%" height="70%" title="Click to view full-size image" /> -->
 
 ### AWS Secrets Manager Configuration
 
