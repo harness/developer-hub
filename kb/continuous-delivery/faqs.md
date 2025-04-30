@@ -3236,6 +3236,31 @@ As per the current design, there's no native step for this but user can write a 
 
 The rollback option is only available for the deployment stage, So you can only be able to see in the deployment stage.
 
+#### How do I enable matrix labels by name, and what happens when I do?
+1. To enable matrix labels by name in your project, organization, or account:
+1. Navigate to Account Settings, Organization Settings, or Project Settings.
+1. Select Default Settings.
+1. Expand the Pipeline Settings section.
+1. Set Enable Matrix Labels By Name to True.
+1. Click Save.
+1. When you enable matrix labels by name, Harness will use the names of the matrix indices (e.g., svc1, env1) as the labels for the matrix stages, making the stage names more descriptive and readable.
+
+
+#### How do I reference a sidecar artifact in my Kubernetes manifest in Harness?
+To reference a sidecar artifact in your Kubernetes manifest:
+Add the sidecar artifact to your Harness service under Artifacts.
+Use the expression <+artifacts.sidecars.[sidecar_identifier].imagePath> in your manifest to refer to the sidecar image.
+Ensure that the sidecar artifact is correctly referenced in your values.yaml file, for example:
+image2: <+artifacts.sidecars.sidecar1.imagePath>
+
+#### Are there any limitations or restrictions when using the Kubernetes Patch step?
+One limitation of the Kubernetes Patch step is that rollbacks are not possible for patched resources. While you can patch the resources incrementally, the rollback will only apply to the original deployment state, not the patched version. This means that if a patch introduces an issue, you won’t be able to directly revert to the patched resource's previous state using the rollback feature.
+
+#### How can I make my Kubernetes manifests reusable and dynamic with Go templating in Harness?
+Go templating allows you to dynamically inject values into your Kubernetes manifests using placeholders. By referencing variables in a values.yaml file, such as container images, stage names, and namespaces, you can ensure that your manifests adapt to different environments or configurations without hardcoding specific values. Harness utilizes built-in variables to replace these placeholders during deployment, making your Kubernetes configuration flexible and reusable across various stages and environments.
+
+#### What should I do if I am using private container images in my Kubernetes manifests with Harness?
+When working with private container images, you can securely reference the required image credentials by using the imagePullSecret variable in your values.yaml file. Harness will then use this secret to access the private registry during deployment. This approach simplifies the process of managing private artifacts while maintaining security by using dynamic templates in your manifests without needing to hardcode sensitive data like credentials.
 
 ### Infrastructure provisioning FAQs
 
