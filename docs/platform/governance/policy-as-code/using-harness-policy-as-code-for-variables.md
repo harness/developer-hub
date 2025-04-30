@@ -8,6 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::note Feature flag details
+
+ This feature is currently behind the feature flag `PL_ENABLE_OPA_FOR_VARIABLES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 Harness provides governance and compliance controls through integration with Open Policy Agent (OPA), Policy Management, and Rego policies.
 
 You can define and enforce custom policies on Variables across account, organization, and project [scopes](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). These policies will be evaluated during the **On Save** event (when a Variable is created or updated). This ensures that Variable configurations meet your organization's security, naming, or value standards before they are persisted.
