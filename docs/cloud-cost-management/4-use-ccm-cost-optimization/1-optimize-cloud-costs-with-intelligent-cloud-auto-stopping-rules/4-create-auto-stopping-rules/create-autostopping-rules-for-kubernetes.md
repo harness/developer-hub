@@ -13,7 +13,7 @@ AutoStopping Rules make sure that your non-production resources run only when us
 
 ## Before you begin
 
-* [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md)
+* [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes)
 * [AutoStopping Rules Overview](../1-auto-stopping-rules.md)
 
 ## Kubernetes Coverage
@@ -52,7 +52,7 @@ You can select any of the following cloud account types:
 3. If you have already linked your cloud account and want to use that account, then select your cloud account from the drop-down list.
 4. If you have not added your cloud account, click **Connect to your** ***Cloud Account*** drop-down list. The name of the drop-down list depends on the cloud account type selection. If you select AWS, then the label reads as **Connect to your AWS account**.  
   
-For the detailed steps, see the [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md).
+For the detailed steps, see the [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes).
 
 ## Add a new AutoStopping rule
 
@@ -66,7 +66,7 @@ Perform the following steps to get started with AutoStopping Rule.
 2. In the cloud account type, select your cloud account. For example, **AWS**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
 3. Select your cloud account from the **Connect to your** ***Cloud Account*** drop-down list. The name of the drop-down list depends on the cloud account type selection. If you select AWS, then the label reads as **Connect to your AWS account**.  
   
-For the detailed steps, see [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md).
+For the detailed steps, see [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes).
 
   ![](./static/create-autostopping-rules-for-kubernetes-82.png)
 
@@ -78,7 +78,7 @@ For the detailed steps, see [Create a Kubernetes Connector for AutoStopping Rule
 Select the Kubernetes workload that you want to manage using this rule. AutoStopping Rule will monitor the selected resources and stop them when they are idle beyond the configured idle time.
 
 1. Select **Kubernetes Cluster** and then click **Add a cluster**.
-2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules. If you wish to create a new connector for the Kubernetes cluster, see [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md).
+2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules. If you wish to create a new connector for the Kubernetes cluster, see [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes).
 3. Once you have finished selecting the Kubernetes cluster, click **Add selected**.
 
 ## (Optional) Set up Advanced Configuration

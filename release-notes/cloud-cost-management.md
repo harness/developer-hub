@@ -58,7 +58,7 @@ We’ve added Alerts in Cloud Assets Governance, allowing users to configure ale
 ## April 2025 - Version 1.47.2
 
 ### [New Feature] Granular permissions support for AWS Autostopping 
-**[CCM-21572] | [Docs](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector)**
+**[CCM-21572]**
 
 We have introduced **Granular permissions support for AWS Autostopping**. With this update, users can now **select the specific AWS resource types they want to enable for Autostopping** such as EC2, ASG, or RDS. Based on the selected resource types, only the minimal required set of permissions will be requested. This feature simplifies onboarding, and aligns with security best practices.
 
