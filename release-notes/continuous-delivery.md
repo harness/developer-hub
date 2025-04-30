@@ -63,8 +63,6 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Users can now avoid printing the entire script content in the console log before the output of a Tanzu command. (**CDS-101641, ZD-71075**)
 
-- Users can now ensure that failed OPA policy evaluations in Terraform Enterprise are correctly recognized in Harness.  Currently, this feature is behind the feature flag `CDS_TF_POLICY_EVALUATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-97468, ZD-63823,75769**)
-
 - Users can now configure `AND` or `OR` logic when filtering hosts by attributes in Physical Data Center (PDC) infrastructure definitions. Currently, this feature is behind the feature flag `CDS_PDC_HOST_ATTRIBUTES_MATCHING_CRITERIA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-92584**)
 
 #### Fixed Issues
