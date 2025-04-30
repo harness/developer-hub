@@ -120,6 +120,17 @@ Harness displays which Delegates performed each task in the Details of each step
 
 ![](./static/continuous-delivery-faqs-01.png)
 
+#### What does the FibonacciBackOff - SocketTimeoutException: Connect timed out error mean?
+This error means the Harness Delegate can't reach the Manager endpoint, likely due to:
+Wrong Manager URL in the delegate YAML
+Network/firewall blocking port 443
+DNS issues or manager downtime
+Fix:
+Verify MANAGER_HOST_AND_PORT is correct
+Run curl or telnet to check connectivity from the node
+Ensure port 443 is open and DNS resolves the manager URL
+The delegate retries using a Fibonacci delay. Fix the network/config and it’ll reconnect automatically.
+
 #### Can I restrict deployments to specific User Groups?
 
 Yes, you can enable the Role permission Pipeline Execute and then apply that Role to specific User Groups.
