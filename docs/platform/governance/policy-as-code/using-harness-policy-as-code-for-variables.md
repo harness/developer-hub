@@ -48,7 +48,7 @@ You can define and enforce custom policies on Variables across account, organiza
 
         ![sample-opa-policy](./static/sample-policy.gif)
 
-    **Test** your policy against a sample input, and then click **Save**.
+4. **Test** your policy against a sample input, and then click **Save**.
 
 ### Step 2: Add the Policy to a Policy Set
 
