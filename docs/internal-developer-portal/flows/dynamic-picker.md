@@ -617,9 +617,9 @@ properties:
 
 You can find the detailed docs on the [project's README](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/scaffolder-field-extensions/scaffolder-frontend-module-http-request-field).
 
-### POST or PUT Method Support
+### POST and PUT Method Support
 
-The **POST or PUT method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, etc. 
+The **POST/PUT method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, etc. 
 
 :::info
 Kindly note that there are no restrictions on **HTTP methods**, except for the **DELETE** method, which is currently unsupported.
@@ -655,19 +655,25 @@ custom1:
 #### PUT Method Example: 
 ```YAML {10}
 custom1:
-  title: Repository Collaborator
+  title: Repository Topics
   type: string
-  description: 
+  description: Select or update repository topics
   ui:field: SelectFieldFromApi
   ui:options:
-    path: proxy/github-api/repos/{{parameters.ownerName}}/{{parameters.repoName}}/collaborators/{{parameters.gitUsername}}
-    valueSelector: full_name
+    path: proxy/github-api/repos/{{parameters.gitusername}}/{{parameters.repoName}}/topics
+    arraySelector: names
     request:
       method: PUT
       headers:
+        Accept: application/vnd.github+json
         Content-Type: application/json
       body:
-        permission: "{{parameters.permission}}"
+        names:
+          - ci
+          - harness
+          - devops
+          - monitoring
+          - github
 ```
 
 Using these methods is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
