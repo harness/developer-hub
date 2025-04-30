@@ -42,7 +42,7 @@ If you have any questions or need assistance with the allowlisting process, plea
 :::
 
 :::warning
-
+ 
 **Action Required: Avoid Docker Hub Rate Limits**
 
 **Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
