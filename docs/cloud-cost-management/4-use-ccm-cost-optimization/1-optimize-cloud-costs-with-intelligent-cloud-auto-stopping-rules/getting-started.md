@@ -119,7 +119,7 @@ You can create AutoStopping Rules with two methods:
       <li>Follow the guided setup to configure</li>
       <li>Review and activate your rule</li>
     </ol>
-    <p><a href="docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws">Detailed AWS AutoStopping Configuration →</a></p>
+    <p><a href="/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws">Detailed AWS AutoStopping Configuration →</a></p>
   </TabItem>
   
   <TabItem value="azure" label="Azure">
