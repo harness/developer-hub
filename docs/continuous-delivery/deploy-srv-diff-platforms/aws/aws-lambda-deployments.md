@@ -766,7 +766,8 @@ rollbackSteps:
 ### Rollback for Artifacts Larger Than 50 MB
 
 :::note
-Currently, this feature is behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+Rollback support for artifacts larger than 50 MB stored in S3 is currently behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 This features requires delegate version `857xx` or later.
 :::
@@ -780,7 +781,13 @@ Ensure that the IAM role or user associated with the deployment has the followin
 - `lambda:DeleteAlias` – Allows deletion of an alias.
 
 
-Harness uses **Lambda function aliases** to support rollback workflows. On deployment, an alias is created or updated to point to the latest function version. If a rollback is triggered, the alias is redirected to the previously deployed version—ensuring a seamless rollback experience.
+Harness uses **Lambda function aliases** to support rollback workflows. During deployment, Harness creates or updates an alias to point to the latest function version. If a rollback is triggered, the alias is redirected to the previously deployed version—restoring the last known good state.
+
+:::info
+Harness manages aliases only for deployments performed through Harness. Creating the alias that points to the latest deployed version is also gated by the same feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. 
+
+Harness tracks only the versions deployed via Harness, and rollback is supported only for these deployments. These aliases are used exclusively for rollback operations.
+:::
 
 **Use Cases:**
 
