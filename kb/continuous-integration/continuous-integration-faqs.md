@@ -385,6 +385,23 @@ By default, a built-in step runs inside a container within the build VM.
 
 You could update the deafult docker connector `harnessImage` and point it to the Harness internal GAR/ECR as mentioned in the [doc](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
 
+### How can we upgrade .NET7 to .NET8 in Harness cloud windows VM?
+
+If a specific version of the dotnet is not available in the build VM preinstalled, you could add the necessary commands to install it in a run step. For example, if you want to install dotnet 8, you could use the below commands.
+
+```
+Invoke-WebRequest -Uri https://download.visualstudio.microsoft.com/download/pr/93961dfb-d1e0-49c8-9230-abcba1ebab5a/811ed1eb63d7652325727720edda26a8/dotnet-sdk-8.0.100-win-x64.exe -OutFile "C:\Users\installer\Downloads\dotnet.exe"
+Start-Process -FilePath C:\Users\installer\Downloads\dotnet.exe -ArgumentList "/quiet", "/norestart" -Wait
+```
+
+### Can we configure a custom docker network where the step containers will be attached in cloud VM?
+
+Currently, we can not configure a custom docker network where the step container will be attached.
+
+### When we start a container from a run step in Harness cloud build, how can the run step container connect to the application running in the new container?
+
+You could add the flag ```--network drone``` to your command that start the custom container so that it connects the container to the existing network in the cloud VM named ```drone``` where the step containers are already connected. Once the custom container is started, you can access the application at ```<container_name>:<port>``` from the run step.
+
 ## Kubernetes clusters
 
 ### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
@@ -677,6 +694,62 @@ Yes, we need to have one stage running on ARM and another stage running on AMD t
 ### Does Harness CI support AKS 1.28.3 version?
 
 Yes
+
+### Why the CI build pod gets evicted after 23Hrs:59min?
+
+It is expected as the maximum time a build on k8s cluster can be executed is 24 hours, and the pod will be removed after exceeding this time.
+
+### Can we change the default maximum execution time of a CI stage from 24 hours?
+
+Currently it is not supported to extend the default timeout of the CI stage execution.
+
+### Im using a Harness expression to reference a secret in a run step. If the secret can not be fetched, Why the execution is failing at the init step with the secret not found error instead of failing during the run step execution?
+
+All the secrets used in a CI stage will be resolved during the init step as we will be creating the corresponding kubernetes secrets and those secrets need to be referenced in the build pod YAML. Any issues with fetching secret will be flagged in the init step.
+
+### Why the init step in the CI stage execution is failing with the error "Secrets Manager can't find the specified secret. (Service: AWSSecretsManager; Status Code: 400; Error Code: ResourceNotFoundException"?
+
+It could happen when you are referencing a Harness secret saved in AWS secret manager but the delegate used for the CI stage execution doesn't have enough permission to fetch the secret from the AWS secret manager. We need to ensure that the delegate used in the CI stage execution has enough permission to fetch the secret.
+
+### How can we mount a specific file from the node onto the build pod during the execution of the CI stage?
+
+You could mount a host path volume as detailed in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#volumes).
+
+### Why is the build-and-push step using Kaniko in some executions but Buildx in others when the build is running in kubernetes cluster?
+
+By default the build step will use kaniko but when the DLC is enabled in the step, it will use buildx to perform the build.
+
+### Do we need to explicitly enable the privilaged mode option in the build step when buildx is used?
+
+No, the privilaged mode will be automatically enabled when buildx is used in the build step.
+
+### Is there a way to configure the request field for the step container in the build pod, since the resource override configured in the UI is applied as the limit, while the request value for each step container remains very low?
+
+The build pod resources are calculated dynamically, and all step containers have a minimal default request value that cannot be modified. More details about the resource allocation can be reffered in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/).
+
+### When we configure the delegate to mount a cert bundle in the build pod, does Harness create separate Kubernetes secrets for each certificate within the bundle?
+
+yes, we create separate Kubernetes secrets for each certificate within the bundle.
+
+### Why is the UI throwing the error "Run step with Kubernetes infra can't have empty connector field" when we change the infrastructure from cloud to kubernetes?
+
+When the the CI stage is configured to run on cloud, you have the option to skip the image and connector field in the run step so that the step will directly run on the VM. However this field is mandatory when the build is running in kubernetes cluster as the commands can only be executed inside the step container.
+
+### Do we need to have a delegate running in our infra to be able to run build in Harness cloud?
+
+No, a delegate in your infra is not required to execute builds in Harness Cloud as the builds run entirely within Harness-managed infrastructure.
+
+### Why is the build and push step failing with the error "error resolving dockerfile path: copying dockerfile: copying file: write /kaniko/Dockerfile: copy_file_range: is a directory"?
+
+This could happen when we configure a custom dockerfile location in the build and push step however dockerfile name is not included in the path. We need to include the dockerfile name in the path.
+
+### Does the Dockerfile always need to come from the codebase, or can it be created as part of the execution?
+
+The Dockerfile doesn't necessarily need to be present in the codebase. You can create the Dockerfile in a run step during execution before the build and push step is executed.
+
+### Why is the docker installed on build VM is failing to spin up the containers with the errors "network unreachable" and "overlapping ipv4" as soon as the docker version is upgraded to v27?
+
+This could be due to a [known issue](https://github.com/moby/moby/pull/48089 ) reported with docker version v27 which has already been fixed in the version 27.0.3. Upgrading to the latest Docker version should resolve this issue.
 
 ## Self-signed certificates
 
@@ -1216,6 +1289,18 @@ For manual tag builds, you need to enter the tag manually at runtime.
 
 Yes. Refer to the **Pre Fetch Command** under the
 [Configure Codebase](../../docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#pre-fetch-command) or [Git Clone step](../../docs/continuous-integration/use-ci/codebase-configuration/git-clone-step#pre-fetch-command) documentation to specify any additional Git commands to run before fetching the code.
+
+### The implicit git clone step is taking more time while running "git fetch". How can we get verbose logs in the git clone step?
+
+You could add a stage variable ```GIT_TRACE``` with the value 1 to generate more detailed logs and gain insight into what is happening during the process.
+
+### Why is the git clone step or any Harness built in step failing with the error "msg=cannot clone the plugin error=authentication required\nfailed to add item" when the build is running in Harness cloud?
+
+This could happen if there is a pipeline/stage variable with the name ```GITHUB_TOKEN``` and it has an incorrect/expired token as value. If you configure pipeline/stage variable, make sure that it has a valid token or try to use a different name for the variable.
+
+### Is there a native way to configure the PR trigger not to start the pipeline when there is conflict in the PR?
+
+Merge conflicts are only detected during the git clone step when attempting to merge the PR and it cannot be identified from the incoming payload.
 
 ## SCM status updates and PR checks
 
@@ -1779,6 +1864,10 @@ Test Intelligence doesn't split tests. Instead, Test Intelligence selects specif
 
 For additional time savings, you can [apply test splitting in addition to Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2). This can further reduce your test time by splitting the selected tests into parallel workloads.
 
+### Does the test step also run test splits if the intelligence mode option is enabled?
+
+In addition to enabling the intelligence mode, we would also need to set the parellelism with more than 1 for the test split to work.
+
 ## Test Intelligence
 
 ### How do I use Test Intelligence?
@@ -1900,6 +1989,18 @@ pom.xml allows using environment variable references with syntax like below:
 `${env.VARIABLE_NAME}`
 
 You can not directly use harness expression in pom.xml but you can use harness expression to pass the values to environment variables which then in turn can be used in pom.xml.
+
+### Does the test step upload the call graph during every execution?
+
+yes, the call graph will be uploaded during every execution.
+
+### How can we view the list of tests selected for a specific execution by the Test Intelligence agent?
+
+The selected test will be displayed in the step logs under ```Running tests selected by test intelligence:```.
+
+### What is the commid ID displayed under "using reference commit:" in the step logs of the test step?
+
+The commit ID shown under 'using reference commit:' in the test step logs refers to the latest commit that contains a call graph. This commit is used as the baseline to determine which tests need to be executed.
 
 ## Script execution
 
@@ -2134,6 +2235,14 @@ Since this stage variable accessible to all the steps, currently it is not suppo
 
 You could append the directory name in the target path which should create a folder with the same name in the artifactory and the files will be uploaded inside this directory
 
+### Can we use the Harnes default SMTP server when using the drone plugin "drone-email" in a CI stage?
+
+No, the Harness SMTP server can not be used in the plugin "drone-email".
+
+### How can we upload artifacts to azure storage from a CI stage as there isn't built in step available for this?
+
+We could use the [drone plugin](https://github.com/drone-plugins/drone-azure-storage?tab=readme-ov-file) to achive this.
+
 ## Workspaces, shared volumes, and shared paths
 
 ### What is a workspace in a CI pipeline?
@@ -2280,6 +2389,22 @@ When the user clones a pipeline with caching steps, the cache keys generated by 
 
 ### How can user ensure correct cache handling when cloning pipelines with Save Cache to GCS?
 Enable separators (/) for GCS cache keys by setting `PLUGIN_ENABLE_SEPARATOR: true` in your pipeline's stage variables.
+
+### How is the cache intelligence detecting the build tool for bazel? are we checking for only "WORKSPACE" or we are also checking "MODULE"?
+
+Currently ```WORKSPACE``` is the only file that we will check in the codebase to determine whether the build tool is bazel. However the team is working on checking the existence of ```MODULE``` too while auto-detecting the build tool in the future release.
+
+### Is there a way to conditionally enable the cache intelligence at the stage level during the execution? 
+
+Currently, it is not supported to turn on/off cache intelligence at the stage level during the execution based on a runtime input However you could disable the cache intelligence at the stage level and use the explicit cache steps where the conditional execution based on a runtime input is supported.
+
+### Can we configure the archive format when enabiling the cache intelligence at the stage level?
+
+Archive format can not be configured when we enable the cache intelligence at the stage level However it can be configured in the explit cache/restore steps.
+
+### If cache intelligence is enabled at the stage level and explicit cache steps are also defined, are both executed, or does one take precedence?
+
+Both implicit and explit cache steps will be executed.
 
 ## Background steps and service dependencies
 
