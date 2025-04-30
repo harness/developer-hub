@@ -21,9 +21,7 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
-### Delegate Base Image Migration
-
-:::info
+:::info Delegate Base Image Migration
 
 Harness is planning to update the base image for its Delegate from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4`, as UBI-8 reached end-of-life on May 31st, 2024. No further updates, patches, or fixes will be provided for UBI-8, so this migration ensures continued security and compatibility. This change will take effect starting **January 6, 2025**.
 
@@ -81,12 +79,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
-# Release Notes categories
+## Release Notes categories
 1. [Delegate image release notes](#delegate-image-release-notes)
 2. [Delegate Helm Chart release notes](#delegate-helm-chart-release-notes)
 3. [Delegate Upgrader release notes](#delegate-upgrader-release-notes)
 
-# Delegate image release notes
+## Delegate image release notes
 
 ## April 2025
 
@@ -2103,7 +2101,7 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 </details>
 
-# Delegate Helm Chart release notes
+## Delegate Helm Chart release notes
 
 ## April 2025
 
@@ -2112,7 +2110,7 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 #### New features and improvements
 - Added option in helm chart to configure imagePullSecrets for Upgrader CronJob. The option is configured with `--set upgrader.imagePullSecret=<my_secret_name>` [PL-61783]
 
-# Delegate Upgrader release notes
+## Delegate Upgrader release notes
 
 ## April 2025
 
@@ -2122,4 +2120,4 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 - Fixed an issue where the delegate images were being pulled from GAR even though a registry mirror was configured. [PL-62342]
 
 #### New features and improvements
-- Added support for automatic upgrades for Docker delegates brought up using the `docker run` command. [PL-41879]
+- Added support for [automatic upgrades](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#docker-delegate) for Docker delegates brought up using the `docker run` command. [PL-41879]
