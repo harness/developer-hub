@@ -160,14 +160,13 @@ IDP 2.0 introduces fundamental architectural changes, API modifications, and ent
 
 ### API Changes (Backstage Catalog APIs → Harness Catalog APIs)
 
-All Catalog and Workflow APIs are now delivered directly through Harness Platform APIs, ensuring responses properly incorporate Role-Based Access Control (RBAC) and entity scope considerations. The Backstage native APIs, including entity registration and refresh functionality, are no longer available in version 2.0.
+IDP 2.0 brings new Catalog and Workflow APIs which are part of Harness Platform APIs, ensuring responses properly incorporate Role-Based Access Control (RBAC) and entity scope considerations.
 
-- Complete create/read/update/delete operations are accessible via Harness APIs
-- New endpoints provide scope-aware operations aligned with Harness RBAC
-- Any automation or custom processes utilizing Backstage-related APIs will require updates to implement the newer CRUD APIs
-- Catalog Ingestion APIs remain functional as before, though RBAC will now be enforced on updated entities
+The [IDP 1.0 APIs](./api-refernces/public-api.md) for registering a new entity, refreshing and unregistering a location are now marked deprecated in IDP 2.0. However, they will continue to be available until August 2025 for customers to migrate. Note that the IDP 1.0 APIs will not support RBAC and can only work with entities at Account scope.
 
-We will provide detailed documentation on the newer API docs and provide sample scripts using the newer Catalog APIs.
+The new API Documentation will be published at [Harness API Docs](https://apidocs.harness.io/) once IDP 2.0 is released on production.
+
+Catalog Ingestion APIs remain functional as before, though RBAC will now be enforced on updated entities
 
 ### Entity YAML Definition
 
@@ -312,9 +311,9 @@ The IDP 1.0 "Access Control" page within the IDP Configure view has been removed
 
 ### Pipeline Step: Create Catalog and Register Catalog steps
 
-The "Create Catalog" and "Register Catalog" steps previously used in IDP pipelines have been deprecated. These relied on creating a YAML file, committing and pushing it to Git, then using the URL to register it in IDP Catalog.
+The "Create Catalog" and "Register Catalog" steps previously used in IDP pipelines have been marked deprecated. They rely on creating a YAML file, committing and pushing it to Git, then using the URL to register it in IDP Catalog using IDP 1.0 APIs.
 
-You can now directly use Harness IDP Catalog APIs to register new entities using YAML definitions without Git operations. A dedicated step for this functionality will be available soon.
+You can now directly use Harness IDP Catalog APIs to register new entities using YAML definitions without Git operations. We will provide a sample pipeline using the new APIs. A dedicated step for this functionality will be available soon.
 
 ## Before You Upgrade (Checklist)
 

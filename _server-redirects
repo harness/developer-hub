@@ -92,4 +92,7 @@
 
 /docs/platform/connectors/ref-source-repo-provider/http-helm-repo-connector-settings-reference /docs/platform/connectors/code-repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference
 
+# Added by ravilach on 04-24-2025 for Broken CI Category
+/docs/category/troubleshoot-ci /docs/category/troubleshoot-harness-ci
+
 # Redirects generated from Front Matter [sytem generated goes below here]:

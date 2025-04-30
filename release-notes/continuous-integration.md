@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-04-16T10:00
+date: 2025-04-23T10:00
 sidebar_position: 10
 ---
 
@@ -24,6 +24,25 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::warning
 
+**Network Allowlisting Update for Cloud Linux/ARM**
+
+To ensure reliability when using Linux/ARM cloud machines, we've expanded our infrastructure to include machines in additional regions.
+
+**Action Required:**
+If your pipelines use Linux/ARM Cloud machines, require access to on-premises resources and rely on IP allowlisting, please make sure to allowlist the following new IPs:
+```
+34.143.191.93, 34.142.250.64, 34.126.140.239, 34.124.243.76, 34.124.141.152, 34.141.177.40, 34.32.206.247
+35.204.0.244, 34.13.223.178, 34.91.227.239
+```
+
+Please visit [new subscription page](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#allowlisting-for-accessing-resources-in-your-private-network) for full list of IPs.
+
+If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
+
+:::
+
+:::warning
+ 
 **Action Required: Avoid Docker Hub Rate Limits**
 
 **Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
@@ -53,35 +72,7 @@ To ensure uninterrupted service, we recommend completing these updates by April 
 For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
 :::
 
-:::warning
 
-**Network allowlisting Update for Hosted (Cloud) Linux Infrastructure**
-
-Harness Cloud users utilizing hosted Linux infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration.
-
-To ensure uninterrupted connectivity and functionality for your CI builds, please add to allowlist the following IP range in your network settings by **March 15th, 2025**:
-
-CIDR Blocks:
-
-```
-15.204.17.0/24, 15.204.19.0/24, 15.204.23.0/24, 15.204.69.0/24, 15.204.70.0/24, 15.204.71.0/24, 51.81.128.0/24, 51.81.189.0/24
-```
-
-**Additional IPs to add to allowlist:**
-```
-34.94.194.45, 34.133.164.105, 35.184.10.123, 34.171.8.178, 34.172.44.211, 34.28.94.170, 34.75.255.154, 34.139.54.93, 35.231.172.154,  
-35.227.126.5, 35.231.234.224, 34.139.103.193, 34.139.148.112, 35.196.119.169, 34.73.226.43, 35.237.185.165, 34.162.90.200, 34.162.31.112,  
-34.162.177.5, 34.162.189.244, 34.162.184.1, 34.125.74.8, 34.125.80.89, 34.16.190.122, 34.125.82.12, 34.125.11.217, 35.197.35.30,  
-35.233.237.208, 34.83.94.29, 34.168.158.33, 34.168.20.8, 34.82.156.127, 34.83.1.152, 34.168.60.254, 34.82.65.138, 34.82.140.146,  
-34.127.6.209, 35.185.226.205, 35.247.24.71, 34.168.30.50, 35.233.132.196, 34.168.214.255, 34.102.103.7, 34.102.40.149, 34.102.16.205,  
-34.127.65.210, 35.233.172.173
-```
-
-**We will begin transitioning to the new IP range gradually from March 15th, 2025, to March 30th, 2025**. During this period, ensure both the old and new IP configurations are set to ensure a seamless transition.
-
-If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
-
-:::
 
 :::note
 
@@ -92,6 +83,18 @@ We’re excited to introduce an updated UI for managing your Harness Continuous 
 This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
 
 :::
+
+### Version 1.76
+
+<!-- 2025-04-21 -->
+
+#### New features and enhancements
+- [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect/) now supports the “Upload to GCS” and "Upload Artifacts to JFrog" out-of-the-box (OOTB) steps. (CI-17124)
+
+#### Fixed issues
+- We identified an issue where builds marked as **Ignore Failed** were incorrectly appearing under **Failed Builds** in the **Overview** page. This has now been fixed, and such builds will no longer be shown in the failed list. The **See All** page continues to work as expected, with filters applied correctly based on user selection. (ZD-79234, CI-16440)
+
+- Fixed pipeline execution failure when log service was unreachable by adding timeouts. (CI-16484, ZD-79557)
 
 ### Version 1.75
 
@@ -150,17 +153,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 #### New features and enhancements
 
-- Added support for codebase cloning using commit SHA, supporting both long and short commit SHAs. (CI-13445)
-- The following features are now available to support multi-line output variables via FF `CI_ENABLE_MULTILINE_OUTPUTS_SECRETS`:
-
-  - Multiline Output Variables: Now supported in CI steps with special character support (\n, \t, \r, \b), maintaining shell-like behavior.
-
-  - Complete Output Support: Available for both output secrets and output strings.
-
-  - JSON Preservation: JSON can now be passed as-is without minification.
-
-For details, check out [this documentation](/docs/continuous-integration/use-ci/run-step-settings). (CI-15398)
-- Enhanced Azure Container Registry (ACR) authentication in `plugins/acr:20.18.8` by implementing comprehensive authentication methods (CI-16478):
+  - Added support for codebase cloning using commit SHA, supporting both long and short commit SHAs. (CI-13445)
 
   - Added support for service principal authentication using both client secret and certificate.
 
@@ -169,13 +162,13 @@ For details, check out [this documentation](/docs/continuous-integration/use-ci/
   - Maintains backward compatibility with direct username/password authentication while providing more secure and flexible options for enterprise deployments.
 
   - Key improvements include Azure SDK integration, cross-platform certificate handling, and enhanced error management. This update significantly improves the plugin's capability to handle various authentication scenarios in enterprise environments. 
-- `plugins/kaniko-ecr:1.10.8`: Added three new flags to enhance the `kaniko-ecr` plugin's image handling capabilities (CI16588):
+  - `plugins/kaniko-ecr:1.10.8`: Added three new flags to enhance the `kaniko-ecr` plugin's image handling capabilities (CI-16588):
 
-  - `PLUGIN_PUSH_ONLY`: Enables pushing pre-built image tarball without running a build.
+    - `PLUGIN_PUSH_ONLY`: Enables pushing pre-built image tarball without running a build.
 
-  - `PLUGIN_SOURCE_TAR_PATH`: Used in conjunction with **push-only** mode.
+    - `PLUGIN_SOURCE_TAR_PATH`: Used in conjunction with **push-only** mode.
 
-  - `PLUGIN_TAR_PATH`, `PLUGIN_DESTINATION_TAR_PATH`: Provides consistent naming with **source-tar-path**. These additions enable more flexible workflows by allowing separation of build and push operations. 
+    - `PLUGIN_TAR_PATH`, `PLUGIN_DESTINATION_TAR_PATH`: Provides consistent naming with **source-tar-path**. These additions enable more flexible workflows by allowing separation of build and push operations. 
 - `plugins/buildx:1.2.0`: Included support for the new `PLUGIN_BUILDX_OPTIONS` flag, allowing users to pass custom options directly to buildx. (CI-16595)
 - Updated the default Docker connector for new accounts to point to GAR instead of using the account-level connector (id: harnessImage). (CI-16845)
 

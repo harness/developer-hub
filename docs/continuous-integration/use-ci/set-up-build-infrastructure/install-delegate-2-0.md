@@ -1,11 +1,17 @@
 ---
-title: Install Harness Delegate 2.0 (Beta)
+title: Install Harness Delegate 2.0 (Closed Beta)
 description: Learn how to install Harness Delegate 2.0 for local machines
 sidebar_position: 51
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+:::warning Closed Beta
+
+Delegate 2.0 is currently in closed beta, and is available for select customers only. Access is determined by the product team, and is based on current [supported use cases and steps](#whats-supported). 
+
+:::
 
 This guide describes how to install the new Harness Delegate to local machines. Skip to the [End to End Demo](#end-to-end-demo) if you want to watch video instructions for the new delegate installation.
 
@@ -19,7 +25,6 @@ Harness Delegate 2.0 is under **Beta** and can only be used for Mac Build, Andro
 
 Please enable the following feature flags to use Delegate 2.0. To enable these flags, contact [Harness Support](mailto:support@harness.io)
 
-- `CI_V0_LOCAL_BUILDS_USE_RUNNER`
 - `PL_ENABLE_UNIFIED_TASK`
 - `PL_USE_RUNNER`
 
@@ -40,9 +45,9 @@ Please enable the following feature flags to use Delegate 2.0. To enable these f
 
 | Step Name  | Caveats              |
 |------------|----------------------|
-| Initialize |                      |
 | Git Clone  | Only for Github      |
 | Run        |                      |
+| Docker Build and Push |           |
 
 ## Delegate Installation Instructions
 
@@ -94,7 +99,8 @@ chmod +x harness-runner
 ./harness-runner install --account=[Account ID] \
                        --token=[Delegate Token] \
                        --url=[Harness URL]  \
-                       --tags="macos-arm64"
+                       --tags="macos-arm64" \
+                       --name=[Your Delegate Name]
 ```
 
 4. Start the delegate as service.
@@ -120,7 +126,8 @@ chmod +x harness-runner
 ./harness-runner install --account=[Account ID] \
                        --token=[Delegate Token] \
                        --url=[Harness URL]  \
-                       --tags="macos-amd64"
+                       --tags="macos-amd64" \
+                       --name=[Your Delegate Name]
 ```
 
 4. Start the delegate as service.
@@ -144,7 +151,7 @@ sudo chmod +x harness-runner
 3. Create a config.env file in the local folder
 ```
 cat > config.env <<EOF
-NAME=[Name of the runner]
+NAME=[Name of the delegate]
 ACCOUNT_ID=[Your account ID]
 TOKEN=[Copy Delegate Token from Harness platform]
 URL=[MANAGER_HOST_AND_PORT]
@@ -194,9 +201,19 @@ nohup ./harness-runner server --env-file config.env > nohup-runner.out 2>&1 &
 
 Navigate to **Project Settings** > **Delegates**. You should see your new delegate in the delegates list.
 
+:::info
+
+If you don't set a name for your delegate, it will default to `harnessRunner`
+
+:::
+
 ### Configure Pipeline Delegate
 
-Then, in order to use this delegate, simply [set your pipeline's build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#set-the-pipelines-build-infrastructure) as normal.
+For the CI stages that you want to use the new delegate with, [define the stage variable](/docs/platform/variables-and-expressions/add-a-variable/#define-variables) `HARNESS_CI_INTERNAL_ROUTE_TO_RUNNER` and set it to `true`.
+
+Then, in order for the pipeline to select this delegate, [set your pipeline's build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#set-the-pipelines-build-infrastructure) as normal.
+
+Most importantly, ensure that you have set `Local` as the **Infrastructure** and that the **Operating System** and **Architecture** match the delegate you installed in the [download and install delegate step](#download-and-install-the-delegate).
 
 ## Delegate Configuration
 
