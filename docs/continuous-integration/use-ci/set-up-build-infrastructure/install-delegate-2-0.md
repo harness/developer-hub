@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 :::warning Closed Beta
 
-Delegate 2.0 is currently in closed beta, and is available for select customers only. Selection is done by the product team, and is based on current [supported use cases and steps](#whats-supported). 
+Delegate 2.0 is currently in closed beta, and is available for select customers only. Access is determined by the product team, and is based on current [supported use cases and steps](#whats-supported). 
 
 :::
 
