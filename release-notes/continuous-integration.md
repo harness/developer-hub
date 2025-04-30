@@ -55,29 +55,18 @@ For more information see [Google Container Registry deprecation notice](https://
 
 :::warning
 
-**Network allowlisting Update for Hosted (Cloud) Linux Infrastructure**
+**Network Allowlisting Update for Cloud Linux/ARM**
 
-Harness Cloud users utilizing hosted Linux infrastructure, who rely on allowlisting for on-premises resource access, are requested to update their configuration.
+To improve reliability when using Linux/ARM cloud machines, we've expanded our infrastructure to include fallback machines in additional regions.
 
-To ensure uninterrupted connectivity and functionality for your CI builds, please add to allowlist the following IP range in your network settings by **March 15th, 2025**:
-
-CIDR Blocks:
-
+**Action Required:**
+If your pipelines use Linux/ARM Cloud machines, require access to on-premises resources and rely on IP allowlisting, please make sure to include the following new IPs:
 ```
-15.204.17.0/24, 15.204.19.0/24, 15.204.23.0/24, 15.204.69.0/24, 15.204.70.0/24, 15.204.71.0/24, 51.81.128.0/24, 51.81.189.0/24
-```
-
-**Additional IPs to add to allowlist:**
-```
-34.94.194.45, 34.133.164.105, 35.184.10.123, 34.171.8.178, 34.172.44.211, 34.28.94.170, 34.75.255.154, 34.139.54.93, 35.231.172.154,  
-35.227.126.5, 35.231.234.224, 34.139.103.193, 34.139.148.112, 35.196.119.169, 34.73.226.43, 35.237.185.165, 34.162.90.200, 34.162.31.112,  
-34.162.177.5, 34.162.189.244, 34.162.184.1, 34.125.74.8, 34.125.80.89, 34.16.190.122, 34.125.82.12, 34.125.11.217, 35.197.35.30,  
-35.233.237.208, 34.83.94.29, 34.168.158.33, 34.168.20.8, 34.82.156.127, 34.83.1.152, 34.168.60.254, 34.82.65.138, 34.82.140.146,  
-34.127.6.209, 35.185.226.205, 35.247.24.71, 34.168.30.50, 35.233.132.196, 34.168.214.255, 34.102.103.7, 34.102.40.149, 34.102.16.205,  
-34.127.65.210, 35.233.172.173
+34.143.191.93, 34.142.250.64, 34.126.140.239, 34.124.243.76, 34.124.141.152, 34.141.177.40, 34.32.206.247
+35.204.0.244, 34.13.223.178, 34.91.227.239
 ```
 
-**We will begin transitioning to the new IP range gradually from March 15th, 2025, to March 30th, 2025**. During this period, ensure both the old and new IP configurations are set to ensure a seamless transition.
+Please visit [new subscription page](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#allowlisting-for-accessing-resources-in-your-private-network) for full list of IPs.
 
 If you have any questions or need assistance with the allowlisting process, please [contact Harness Support](https://support.harness.io/).
 
