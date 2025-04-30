@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 :::warning Closed Beta
 
-Delegate 2.0 is currently in closed beta, and is available for select customers only.
+Delegate 2.0 is currently in closed beta, and is available for select customers only. Selection is done by the product team, and is based on current [supported use cases and steps](#whats-supported). 
 
 :::
 
@@ -45,9 +45,9 @@ Please enable the following feature flags to use Delegate 2.0. To enable these f
 
 | Step Name  | Caveats              |
 |------------|----------------------|
-| Initialize |                      |
 | Git Clone  | Only for Github      |
 | Run        |                      |
+| Docker Build and Push |           |
 
 ## Delegate Installation Instructions
 
