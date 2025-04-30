@@ -157,8 +157,8 @@ The **Advanced** tab contains settings for [delegate selectors](/docs/platform/d
 :::note
 For Kubernetes infrastructure, the maximum limit on stage timeout has been updated to 35 days (previously 24 hours).
 
+
 :::
-You can modify other settings applicable to 
 
 :::info
 
