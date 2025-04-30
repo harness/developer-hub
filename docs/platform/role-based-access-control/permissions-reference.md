@@ -18,7 +18,7 @@ helpdocs_is_published: true
     |---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
     | **Notifications Rules and Notification Channels** | <li>View (`core_notification_view`)</li><li>Edit (`core_notification_edit`)</li><li>Delete (`core_notification_delete`)</li> |
 
-    However, in an upcoming release, these permissions will become non-operational. They will be replaced with separate new permissions: 
+    However, starting from June 12, 2025, these permissions will become non-operational. They will be replaced with separate new permissions: 
 
         | **Resource**              | **New Permissions**                                                                                                                                       |
         |---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
