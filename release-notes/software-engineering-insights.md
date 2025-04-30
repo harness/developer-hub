@@ -24,6 +24,20 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## April 2025
 
+### Version 202504.2
+
+#### Early access features
+
+* You can now configure your GitHub integration to filter data using GitHub Organizations and GitHub Teams making it easier to align your SEI insights with your org structure.
+  * This filtering is available only during initial setup and post-configuration setup experience of the GitHub integration.
+  * The feature is currently in **BETA** and requires the SEI_GITHUB_REPO_SELECTION_ENABLED & SEI_GITHUB_REPO_SELECTION_ENABLED feature flag. To request early access, please contact, please contact [Harness Support](/docs/software-engineering-insights/sei-support).
+
+#### Fixed issues
+
+* Fixed a bug that was preventing correct sorting in drilldown views across sprint tracking widgets. (SEI-10607)
+* We resolved an issue where clicking into a ticket from a PR details view would sometimes lead to an empty screen. The correct ticket/work-item data will now appear as expected. (SEI-11418)
+* Fixed the issue where data in the Jira Releases widget was displayed incorrectly due to local timezone variations. All data is now consistently shown in UTC.  (SEI-11603)
+
 ### Version 202504.1
 
 #### New features & enhancements
@@ -38,6 +52,8 @@ These release notes describe recent changes to Harness Software Engineering Insi
 ## March 2025
 
 ### Version 202503.2.1
+
+#### Hotfixes
 
 * Resolved an issue where the SCM PRs, SCM Rework, and SCM Coding Days reports were not respecting collection-level filters. The applied filters will now correctly reflect in the report outputs. (SEI-11160) (ZD-81229)
 * Added support for OAuth-based authentication across all SEI integrations for accounts using a Vanity URL. (SEI-11227)
