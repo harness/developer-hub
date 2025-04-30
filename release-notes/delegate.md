@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## April 2025
 
+### Version 25.04.85702 <!-- April 15, 2025 -->
+
+#### Hotfix
+
+- In Case of ECS deployments now it will fetch all the listeners attached, in which the required listener should be present.
+
 ### Version 25.04.85701 <!--April 23, 2025-->
 
 #### Fixed issues
