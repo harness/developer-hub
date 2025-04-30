@@ -1086,7 +1086,7 @@ const sidebars: SidebarsConfig = {
       },
       {
         type: "category",
-        label: "AutoStopping Rules",
+        label: "AutoStopping",
         link: {
           type: "generated-index",
         },
