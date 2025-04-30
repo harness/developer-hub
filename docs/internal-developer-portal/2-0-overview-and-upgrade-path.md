@@ -164,7 +164,7 @@ IDP 2.0 brings new Catalog and Workflow APIs which are part of Harness Platform 
 
 The [IDP 1.0 APIs](./api-refernces/public-api.md) for registering a new entity, refreshing and unregistering a location are now marked deprecated in IDP 2.0. However, they will continue to be available until August 2025 for customers to migrate. Note that the IDP 1.0 APIs will not support RBAC and can only work with entities at Account scope.
 
-The new API Documentation will be published at [Harness API Docs](apidocs.harness.io) once IDP 2.0 is released on production.
+The new API Documentation will be published at [Harness API Docs](https://apidocs.harness.io/) once IDP 2.0 is released on production.
 
 Catalog Ingestion APIs remain functional as before, though RBAC will now be enforced on updated entities
 
