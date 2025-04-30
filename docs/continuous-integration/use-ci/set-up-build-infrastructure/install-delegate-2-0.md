@@ -32,10 +32,6 @@ Please enable the following feature flags to use Delegate 2.0. To enable these f
 
 ## What's Supported
 
-### Supported Stages
-
-- CI Stage
-
 ### Supported Connectors
 
 | Connector          | Caveats                                                                 |
