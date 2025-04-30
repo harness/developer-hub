@@ -153,17 +153,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 #### New features and enhancements
 
-- Added support for codebase cloning using commit SHA, supporting both long and short commit SHAs. (CI-13445)
-- The following features are now available to support multi-line output variables via FF `CI_ENABLE_MULTILINE_OUTPUTS_SECRETS`:
-
-  - Multiline Output Variables: Now supported in CI steps with special character support (\n, \t, \r, \b), maintaining shell-like behavior.
-
-  - Complete Output Support: Available for both output secrets and output strings.
-
-  - JSON Preservation: JSON can now be passed as-is without minification.
-
-For details, check out [this documentation](/docs/continuous-integration/use-ci/run-step-settings). (CI-15398)
-- Enhanced Azure Container Registry (ACR) authentication in `plugins/acr:20.18.8` by implementing comprehensive authentication methods (CI-16478):
+  - Added support for codebase cloning using commit SHA, supporting both long and short commit SHAs. (CI-13445)
 
   - Added support for service principal authentication using both client secret and certificate.
 
@@ -172,7 +162,7 @@ For details, check out [this documentation](/docs/continuous-integration/use-ci/
   - Maintains backward compatibility with direct username/password authentication while providing more secure and flexible options for enterprise deployments.
 
   - Key improvements include Azure SDK integration, cross-platform certificate handling, and enhanced error management. This update significantly improves the plugin's capability to handle various authentication scenarios in enterprise environments. 
-- `plugins/kaniko-ecr:1.10.8`: Added three new flags to enhance the `kaniko-ecr` plugin's image handling capabilities (CI16588):
+  - `plugins/kaniko-ecr:1.10.8`: Added three new flags to enhance the `kaniko-ecr` plugin's image handling capabilities (CI16588):
 
   - `PLUGIN_PUSH_ONLY`: Enables pushing pre-built image tarball without running a build.
 
