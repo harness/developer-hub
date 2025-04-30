@@ -154,6 +154,8 @@ If no approval action is taken within the configured timeout, the pipeline fails
 
 :::note
 Currently, this feature is behind the feature flag `CDS_SUPPORT_TF_CLOUD_PLAN_REFRESH_TYPE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This features requires delegate version `857xx` or later.
 :::
 
 To use this feature:
