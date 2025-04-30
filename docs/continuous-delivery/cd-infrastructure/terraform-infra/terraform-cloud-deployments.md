@@ -147,7 +147,7 @@ The Terraform Cloud Run step can perform the following run types.
 
 Harness supports running a Refresh plan for Terraform Enterprise (TFE) runs without auto-approval.
 
-When you select the Refresh option in the Terraform Cloud Run step, Harness triggers a refresh plan in TFE and waits for manual approval before proceeding.
+When you select **Plan** run-type with **Refresh** option in the Terraform Cloud Run step, Harness triggers a refresh plan in TFE and waits for manual approval before proceeding.
 You can review and approve or reject the refresh plan either within Harness (using an Approval Step) or directly in the TFE UI.
 
 If no approval action is taken within the configured timeout, the pipeline fails and the run is marked as expired.
