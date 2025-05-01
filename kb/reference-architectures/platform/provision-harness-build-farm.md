@@ -8,7 +8,7 @@ The first thing we need to do is make sure we have connectors to resolve Terrafo
 
 ### GitHub
 
-We will be leveraging the [AWS EKS Module for Terraform]() to provision our build cluster so we need a connector that can resolve this repo. If you already have one in your Harness account you can skip this step. Otherwise, go to account/org/project settings and create a new "GitHub" connector.
+We will be leveraging the [AWS EKS Module for Terraform](https://github.com/terraform-aws-modules/terraform-aws-eks) to provision our build cluster so we need a connector that can resolve this repo. If you already have one in your Harness account you can skip this step. Otherwise, go to account/org/project settings and create a new "GitHub" connector.
 
 We can chose the "Repository" type and enter the full URL to the EKS module code `https://github.com/terraform-aws-modules/terraform-aws-eks`.
 
