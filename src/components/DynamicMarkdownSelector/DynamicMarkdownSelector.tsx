@@ -2,20 +2,6 @@
  * DynamicMarkdownSelector Component
  *
  * Renders a row of selectable tiles. When a tile is selected, it renders an imported MDX module from src/content.
- *
- * Props:
- *   options: Record<string, string>
- *     - Each key is a tab label (e.g. Docker), and each value is the path relative to src/content (e.g. '/artifact-registry/docker.mdx').
- *
- * Usage Example:
- *
- * <DynamicMarkdownSelector
- *   options={{
- *     Docker: '/artifact-registry/docker.mdx',
- *     Maven: '/artifact-registry/maven.mdx',
- *     Python: '/artifact-registry/python.mdx',
- *   }}
- * />
  */
 
 declare var require: {
@@ -30,10 +16,10 @@ declare var require: {
 import React, { useState, useEffect } from "react";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import DocVideo from '@site/src/components/DocVideo';
+import DocVideo from "@site/src/components/DocVideo";
 import "./DynamicMarkdownSelector.css";
 
-// Load MDX modules from src/content (must use .default when importing via require.context)
+// Load MDX modules from src/content
 const mdxCtx = require.context("@site/src/content", true, /\.mdx?$/);
 
 const mdxMap: Record<string, React.ComponentType<any>> = {};
@@ -43,14 +29,13 @@ mdxCtx.keys().forEach((key: string) => {
 });
 
 export interface DynamicMarkdownSelectorProps {
-  options: Record<string, string>; // { label: '/artifact-registry/docker.mdx' }
+  options: Record<string, string>;
 }
 
 const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ options }) => {
   const labels = Object.keys(options);
   const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, "");
 
-  // 1. Get selection from hash on first load
   const getInitialSelected = () => {
     const hash = window.location.hash.replace("#", "");
     const match = labels.find((label) => normalize(label) === normalize(hash));
@@ -59,16 +44,17 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
 
   const [selected, setSelected] = useState(getInitialSelected());
   const [ContentComp, setContentComp] = useState<React.ComponentType<any> | null>(null);
+  const [toc, setToc] = useState<{ id: string; text: string; level: number }[]>([]);
 
-  // If no hash is present, update the URL to reflect the default tab
-useEffect(() => {
-  if (!window.location.hash) {
-    const normalized = normalize(selected);
-    window.history.replaceState(null, "", `#${normalized}`);
-  }
-}, []);
+  // If no hash present, set it to the default tab
+  useEffect(() => {
+    if (!window.location.hash) {
+      const normalized = normalize(selected);
+      window.history.replaceState(null, "", `#${normalized}`);
+    }
+  }, []);
 
-  // 2. Load MDX component based on current tab
+  // Load the MDX component when tab changes
   useEffect(() => {
     const path = options[selected];
     const entry = mdxMap[path];
@@ -79,7 +65,38 @@ useEffect(() => {
     }
   }, [selected, options]);
 
-  // 3. Update hash manually without triggering a loop
+  // Scroll to heading in hash when content renders or hash changes
+  useEffect(() => {
+    const scrollToHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        setTimeout(() => {
+          const el = document.getElementById(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 0);
+      }
+    };
+    window.addEventListener("hashchange", scrollToHash);
+    setTimeout(scrollToHash, 0);
+    return () => window.removeEventListener("hashchange", scrollToHash);
+  }, [ContentComp]);
+
+  // Build TOC from rendered headings
+  useEffect(() => {
+    const headings = Array.from(
+      document.querySelectorAll(".markdown-content h2, .markdown-content h3, .markdown-content h4")
+    );
+    const newToc = headings.map((el) => ({
+      id: el.id,
+      text: el.textContent || "",
+      level: parseInt(el.tagName[1], 10),
+    }));
+    setToc(newToc);
+  }, [ContentComp]);
+
+  // Update tab and hash when button clicked
   const handleTabClick = (label: string) => {
     setSelected(label);
     window.history.replaceState(null, "", `#${normalize(label)}`);
@@ -100,6 +117,18 @@ useEffect(() => {
           </button>
         ))}
       </div>
+
+      {toc.length > 0 && (
+        <nav className="runtime-toc">
+          <ul>
+            {toc.map((h) => (
+              <li key={h.id} className={`level-${h.level}`}>
+                <a href={`#${h.id}`}>{h.text}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
 
       <div className="markdown-content">
         {ContentComp && <ContentComp components={{ Tabs, TabItem, DocVideo }} />}
