@@ -38,7 +38,7 @@ By impersonating a user, admins can see exactly what that user sees and perform 
 
     ![end-impersonate-session](./static/end-impersonate.png)
 
-### Impersonation Session Logs
+### Impersonation session audit events
 
 All impersonation activities are recorded in the Audit Trail. To view them, go to **Account Settings** > **Security and Governance** > **Audit Trail**. 
 
