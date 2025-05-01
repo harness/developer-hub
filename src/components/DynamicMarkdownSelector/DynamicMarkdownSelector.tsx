@@ -1,50 +1,56 @@
-/*
+/**
  * DynamicMarkdownSelector Component
  *
- * Renders a row of selectable tiles. When a tile is selected, it fetches and displays markdown content from a corresponding path.
+ * Renders a row of selectable tiles. When a tile is selected, it renders an imported MDX module from src/content.
  *
  * Props:
  *   options: Record<string, string>
- *     - An object where each key is a label for a selector tile, and each value is a URL/path to a markdown file.
+ *     - Each key is a tab label (e.g. Docker), and each value is the path relative to src/content (e.g. '/artifact-registry/docker.mdx').
  *
  * Usage Example:
  *
- * import { DynamicMarkdownSelector } from './DynamicMarkdownSelector';
- *
  * <DynamicMarkdownSelector
  *   options={{
- *     Docker: '/docs/artifact-registry/docker.md',
- *     Maven: '/docs/artifact-registry/maven.md',
- *     Python: '/docs/artifact-registry/python.md',
+ *     Docker: '/artifact-registry/docker.mdx',
+ *     Maven: '/artifact-registry/maven.mdx',
+ *     Python: '/artifact-registry/python.mdx',
  *   }}
  * />
  */
 
+declare var require: {
+  context(
+    directory: string,
+    useSubdirectories?: boolean,
+    regExp?: RegExp,
+    mode?: string
+  ): any;
+};
+
 import React, { useState, useEffect } from "react";
-import ReactMarkdown from "react-markdown";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import DocVideo from '@site/src/components/DocVideo';
 import "./DynamicMarkdownSelector.css";
 
+// Load MDX modules from src/content (must use .default when importing via require.context)
+const mdxCtx = require.context("@site/src/content", true, /\.mdx?$/);
+
+const mdxMap: Record<string, React.ComponentType<any>> = {};
+mdxCtx.keys().forEach((key: string) => {
+  const normalized = '/' + key.replace('./', '');
+  mdxMap[normalized] = mdxCtx(key).default;
+});
+
 export interface DynamicMarkdownSelectorProps {
-  options: Record<string, string>;
+  options: Record<string, string>; // { label: '/artifact-registry/docker.mdx' }
 }
 
-const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
-  options,
-}) => {
+const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ options }) => {
   const labels = Object.keys(options);
-
-  // Helper to normalize hash and label for comparison
   const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, "");
 
-  // Create slug from heading text (same algo used in TOC & rendered headings)
-  const slugify = (str: string) =>
-    str
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9\s-]/g, "")
-      .replace(/\s+/g, "-");
-
-  // Get initial selection from hash, or default to first label
+  // 1. Get selection from hash on first load
   const getInitialSelected = () => {
     const hash = window.location.hash.replace("#", "");
     const match = labels.find((label) => normalize(label) === normalize(hash));
@@ -52,77 +58,32 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
   };
 
   const [selected, setSelected] = useState(getInitialSelected());
-  const [markdown, setMarkdown] = useState("");
-  const [toc, setToc] = useState<{ id: string; text: string; level: number }[]>([]);
+  const [ContentComp, setContentComp] = useState<React.ComponentType<any> | null>(null);
 
-  // Update selection if hash changes
-  useEffect(() => {
-    const onHashChange = () => {
-      const hash = window.location.hash.replace("#", "");
-      const match = labels.find(
-        (label) => normalize(label) === normalize(hash)
-      );
-      if (match) setSelected(match);
-    };
-    window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
-  }, [labels]);
-
-  // Update hash in URL when selection changes
-  useEffect(() => {
+  // If no hash is present, update the URL to reflect the default tab
+useEffect(() => {
+  if (!window.location.hash) {
     const normalized = normalize(selected);
-    if (normalized !== window.location.hash.replace("#", "")) {
-      window.location.hash = normalized;
-    }
-  }, [selected]);
+    window.history.replaceState(null, "", `#${normalized}`);
+  }
+}, []);
 
+  // 2. Load MDX component based on current tab
   useEffect(() => {
-    const fetchMarkdown = async () => {
-      const path = options[selected];
-      try {
-        const response = await fetch(path);
-        const text = await response.text();
-        setMarkdown(text);
-      } catch (e) {
-        setMarkdown("Error loading content.");
-      }
-    };
-    fetchMarkdown();
+    const path = options[selected];
+    const entry = mdxMap[path];
+    if (entry) {
+      setContentComp(() => entry);
+    } else {
+      setContentComp(() => () => <p>Could not find content for <code>{path}</code>.</p>);
+    }
   }, [selected, options]);
 
-  useEffect(() => {
-    const scrollToHash = () => {
-      const hash = window.location.hash.replace("#", "");
-      if (hash) {
-        // Try scrolling after a tick, to ensure DOM is updated
-        setTimeout(() => {
-          const el = document.getElementById(hash);
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }, 0);
-      }
-    };
-    window.addEventListener("hashchange", scrollToHash);
-    // Run once after new markdown loads
-    setTimeout(scrollToHash, 0);
-    return () => window.removeEventListener("hashchange", scrollToHash);
-  }, [markdown]);
-
-  // Build TOC whenever markdown string changes
-  useEffect(() => {
-    const headingRegex = /^(#{2,6})\s+(.*)$/gm; // capture headings ## and deeper
-    const newToc: { id: string; text: string; level: number }[] = [];
-
-    let match;
-    while ((match = headingRegex.exec(markdown)) !== null) {
-      const level = match[1].length; // number of # signs
-      const text = match[2].trim();
-      const id = slugify(text);
-      newToc.push({ id, text, level });
-    }
-    setToc(newToc);
-  }, [markdown]);
+  // 3. Update hash manually without triggering a loop
+  const handleTabClick = (label: string) => {
+    setSelected(label);
+    window.history.replaceState(null, "", `#${normalize(label)}`);
+  };
 
   return (
     <div className="dynamic-markdown-selector">
@@ -132,60 +93,18 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
           <button
             key={label}
             className={`selector-tile${selected === label ? " selected" : ""}`}
-            onClick={() => setSelected(label)}
+            onClick={() => handleTabClick(label)}
             type="button"
           >
             <span>{label}</span>
           </button>
         ))}
       </div>
-      {/* Right‑hand runtime TOC */}
-      {toc.length > 0 && (
-        <nav className="runtime-toc">
-          <ul>
-            {toc.map((h) => (
-              <li key={h.id} className={`level-${h.level}`}>
-                <a href={`#${h.id}`}>{h.text}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
+
       <div className="markdown-content">
-        <ReactMarkdown
-          components={{
-            h2: ({ node, children, ...props }) => {
-              const text = Array.isArray(children) ? children.join(" ") : String(children);
-              const id = slugify(text);
-              return (
-                <h2 id={id} {...props}>
-                  {children}
-                </h2>
-              );
-            },
-            h3: ({ node, children, ...props }) => {
-              const text = Array.isArray(children) ? children.join(" ") : String(children);
-              const id = slugify(text);
-              return (
-                <h3 id={id} {...props}>
-                  {children}
-                </h3>
-              );
-            },
-            h4: ({ node, children, ...props }) => {
-              const text = Array.isArray(children) ? children.join(" ") : String(children);
-              const id = slugify(text);
-              return (
-                <h4 id={id} {...props}>
-                  {children}
-                </h4>
-              );
-            },
-          }}
-        >
-          {markdown}
-        </ReactMarkdown>
+        {ContentComp && <ContentComp components={{ Tabs, TabItem, DocVideo }} />}
       </div>
+
       <hr className="selector-divider" />
     </div>
   );
