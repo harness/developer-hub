@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::note Feature Flag details
-    This feature is currently behind the `PL_ENABLE_USER_IMPERSONATION` feature flag and is only available to users with the Account Admin role. Contact [Harness Support](support@harness.io) to enable the feature.
+    This feature is currently behind the `PL_ENABLE_USER_IMPERSONATION` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 User Impersonation allows administrators to temporarily access and act as another user, including other admins without needing their password. This feature is especially useful for troubleshooting, and verifying permissions across environments.
