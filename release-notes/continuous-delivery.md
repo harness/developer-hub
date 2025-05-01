@@ -55,6 +55,28 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## April 2025
 
+### Version 1.87.0
+
+#### New Features and Enhancements
+
+- Harness now supports configuring Helm native command flags directly at the step level. Currently, this feature is behind the feature flag `CDS_HELM_STEP_COMMAND_FLAGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-101899**) 
+
+- Users can now avoid printing the entire script content in the console log before the output of **Tanzu Command Step**. (**CDS-101641, ZD-71075**)
+
+- Users can now configure `AND` or `OR` logic when filtering hosts by attributes in Physical Data Center (PDC) infrastructure definitions. Currently, this feature is behind the feature flag `CDS_PDC_HOST_ATTRIBUTES_MATCHING_CRITERIA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-92584**)
+
+#### Fixed Issues
+
+- Previously, during ECS deployments, the Prepare Rollback stage could fail to find the listener in the target group, even when it existed in the AWS load balancer. The issue is resolved. (**CDS-109457, ZD-83135**)
+- Previously, the Terraform Cloud step could fail during the Apply stage with a null pointer exception, even when the apply completed successfully. The issue is resolved. (**CDS-109411, ZD-83143**)
+- Previously, users with Environment Create permissions were unable to import environments from Git, even though they could create environments from the UI. The issue is resolved. (**CDS-109288, ZD-81920**)
+- Previously, services could incorrectly report running instances even after the corresponding release was deleted, blocking further deletion via Terraform. The issue is resolved. (**CDS-108684, ZD-81599**)
+- Previously, keywords in execution logs could be incorrectly masked if a secret value matched common characters (e.g., a single letter). The issue is resolved. (**CDS-108477, ZD-81012,81111**)
+- Previously, the OIDC token sent during the GCS Cache step did not include all required claims, such as connector name and ID, limiting the ability to enforce fine-grained access control. The issue is resolved. (**CDS-108066**)
+- Previously, when inserting a step inside a containerized template, the Add Step menu incorrectly displayed invalid step types like Shell Script, which are not supported in containerized contexts. The issue is resolved. (**CDS-109096**)
+- Previously, when configuring Auto Approval in a step template with both TimeZone and Time as runtime inputs, the UI became unresponsive during editing, preventing the Apply button from working and blocking dialog closure. The issue is resolved. (**PIPE-26566, ZD-82092**)
+- Previously, runtime stage variables in templates did not show options to configure single-select or multi-select inputs when referenced in a pipeline, even with the relevant feature flag enabled. The issue is resolved. (**CDS-108690**)
+
 ### GitOps Version 1.31, Agent Version 0.92
 
 #### GitOps Agent Version 0.92 Fixes
