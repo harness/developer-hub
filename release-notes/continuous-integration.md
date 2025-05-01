@@ -89,37 +89,43 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 <!-- 2025-04-28 -->
 
-## April 2025
-
 #### New features and enhancements
 
-- Enhanced support for push-only mode in `Build and push` steps - customers can now push local Docker images created in previous steps using push-only mode. This includes support for re-tagging to simplify pushing a local image to multiple container registries. [Learn more](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push/) 
+
+
+- **Build and Cache Intelligence is now enabled by default for newly created CI stages**, with opt-out support.
+Newly created CI stages will now have [Build Intelligence](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence/) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/) automatically enabled to improve build performance through caching. These defaults can now be managed in [CI Default Settings](/docs/platform/settings/default-settings#continuous-integration), allowing customers to disable either feature if they prefer. 
+
+
+- **Support was added to allow push-only mode in `Build and push` steps** - customers can now push local Docker images created in previous steps using push-only mode. This includes support for re-tagging to simplify pushing a local image to multiple container registries. [Learn more](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push/) 
 (CI-17211). 
 
-- Multiline support improved for output variables and secrets - Previously, certain multiline variables containing nested double quotes were not rendered correctly, resulting in unexpected escape characters. This has been fixed by encoding the output using Base64 for accurate restoration. Using output variables and secrets requires enabling  `CI_ENABLE_MULTILINE_OUTPUTS_SECRETS` feature flag (CI-17167, ZD-83514).
+- **Improved Multiline support for output variables and secrets** - Previously, certain multiline variables containing nested double quotes were not rendered correctly, resulting in unexpected escape characters. This has been fixed by encoding the output using Base64 for accurate restoration. Using output variables and secrets requires enabling  `CI_ENABLE_MULTILINE_OUTPUTS_SECRETS` feature flag (CI-17167, ZD-83514).
 
-- When using cache-related Intelligence features (Build Intelligence, Cache Intelligence or Docker Layer Caching) with self-hosted builds on Kubernetes infrastructure, AWS and GCP connectors used for default storage now support all available authentication methods (CI-16581). 
-
+- **AWS and GCP connectors used for default caching storage now fully supported on K8S** - When using cache-related Intelligence features (Build Intelligence, Cache Intelligence or Docker Layer Caching) with self-hosted builds on Kubernetes infrastructure, WS and GCP connectors used for default storage now support all available authentication methods (CI-16581). 
 
 
 #### Fixed issues
 
-- Fixed an issue where all <+codebase> expressions (e.g., commitSha, repoUrl, branch) resolved to null when the pipeline used 
-CommitSha as the build type. Expressions now resolve correctly in these cases (CI-17163, ZD-82770).
+- Fixed an issue where all `<+codebase>` expressions (e.g., commitSha, repoUrl, branch) resolved to null when the pipeline used CommitSha as the build type. Expressions now resolve correctly in these cases (CI-17163, ZD-82770).
 
 - Fixed an issue where when using a template containing a Git Clone step, users were unable to set the repository or provider (CI-17230, ZD-82967).
 
 - Fixed ECR login failure when using PLUGIN_PUSH_ONLY and PLUGIN_SOURCE_TAR_PATH to push and existing image. The `plugins/kaniko-ecr:1.11.0` plugin now correctly handles ECR authentication when pushing tarballs without rebuilding the Dockerfile. (CI-17122, ZD-82370)
 
-- Fixed an issue where where <+codebase> expressions (e.g., commitSha, repoUrl, branch) were incorrectly resolving to null
+- Fixed an issue where where `<+codebase>` expressions (such as commitSha, repoUrl, branch) were incorrectly resolving to null
 when using CommitSha as the build type (CI-17163, ZD-82770).
+
+- Resolved an issue where logs for certain steps were intermittently missing in CI pipelines, particularly in SMP environments Additional logging has been introduced in the ci-addon image to help with visibility and troubleshooting. (CI-17262)
+
+
 
 
 | **Image**                    | **Change**                                                                                   | **Previous version** | **New Version** |
 |-----------------------------|----------------------------------------------------------------------------------------------|----------------------|-----------------|
-| `harness/ci-addon`          | Support for secret passing for Clone Script secrets as runtime variables.                   | 1.16.80              | 1.16.81         |
+| `harness/ci-addon`          | Improved handling of secrets used during clone script execution. | 1.16.80              | 1.16.81         |
 | `harness/ci-addon:rootless` | Same as above for rootless variant.                                                          | 1.16.80              | 1.16.81         |
-| `harness/ci-lite-engine`    | Support for secret passing for Clone Script secrets as runtime variables.                   | 1.16.80              | 1.16.81         |
+| `harness/ci-lite-engine`    | Improved handling of secrets used during clone script execution.  | 1.16.80              | 1.16.81         |
 | `harness/ci-lite-engine:rootless` | Same as above for rootless variant.                                                      | 1.16.80              | 1.16.81         |
 | `harness/harness-cache-server` | Support for IAM authentication with GCS connectors on delegates for Build Intelligence.   | 1.6.0                | 1.7.0           |
 | `plugins/kaniko-ecr`        | Fix ECR login issue when using `PLUGIN_PUSH_ONLY` and `PLUGIN_SOURCE_TAR_PATH`.             | 1.10.9               | 1.11.0          |
@@ -128,6 +134,9 @@ when using CommitSha as the build type (CI-17163, ZD-82770).
 | `plugins/buildx-gar`        | Same as above, applied to GAR-specific plugin.                                               | 1.2.14               | 1.2.16          |
 | `plugins/cache`             | Improved S3 authentication with better handling of credential and role assumption logic.     | 1.9.6                | 1.9.7           |
 
+
+
+## April 2025
 
 ### Version 1.76
 

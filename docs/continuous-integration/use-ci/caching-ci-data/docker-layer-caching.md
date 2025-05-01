@@ -22,7 +22,9 @@ You can use DLC with any [build infrastructure](/docs/continuous-integration/use
 
 :::info
 
-Docker Layer Caching is now Generally Available (GA). 
+* Docker Layer Caching is now Generally Available (GA). 
+* Cache Intelligence is currently supported on Cloud and Kubernetes build infrastructure only. 
+
 
 If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 :::

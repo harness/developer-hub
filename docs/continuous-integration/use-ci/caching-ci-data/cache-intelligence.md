@@ -14,8 +14,9 @@ With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integr
 
 You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
-:::note
-Cache Intelligence is now Generally Available (GA). 
+:::info
+* Cache Intelligence is now Generally Available (GA). 
+* Cache Intelligence is currently supported on Cloud and Kubernetes build infrastructure only. 
 If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 :::
 

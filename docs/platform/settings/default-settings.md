@@ -117,11 +117,27 @@ If this setting is enabled **Skip Pre Flight** will be checked by default.
 
 ### Continuous Integration
 
-#### S3-Compatible Object Store for Self-Managed Build Infrastructure
+#### Build Intelligence
 
-:::note
-S3-Compatible Object Store for Self-Managed Build Infrastructure will appear in Default Settings page in case any of the [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) caching features for self-hosted build is enabled in the account.
-:::
+- **Automatically Enable Build Intelligence** - This setting applies only to newly created CI stages. When set to `True`, CI stages will be automatically be set to use Build Intelligence (users will have the option to enable/disable the feature in stage settings as well). Using Build Intelligence requires S3-compatible storage to be set in Default Settings for self-hosted builds.
+
+- **Maven Repository URL** - Applicable only in self-hosted builds. By default, the Build Intelligence plugin is downloaded from Maven Central. If you prefer using a custom Maven repository, provide a different URL.
+
+- **Cache Server Port** - Applicable only in self-hosted builds. Enter port to for the cache service proxy, in case th default port, 8082, cannot be used. 
+
+Learn more about [Build Intelligence](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence/).
+
+
+#### Cache Intelligence
+
+- **Automatically Enable Cache Intelligence** - This setting applies only to newly created CI stages. When set to `True`, CI stages will be automatically be set to use Cache Intelligence (users will have the option to enable/disable the feature in stage settings as well). Using Cache Intelligence requires S3-compatible storage to be set in Default Settings for self-hosted builds.
+
+- **Always Override** - Enable cache override to always update the cache, regardless of cache changes. This is useful if you have infrequent builds and want to ensure your cache remains fresh.
+
+Learn more about [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/).
+
+
+#### S3-Compatible Object Store for Self-Managed Build Infrastructure
 
 To use [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) caching features (Build Intelligence,  Docker layer caching, and Build Intelligence) with [self-managed build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), you must provide S3-compatible object store where Harness can store and manage your caches.
 
