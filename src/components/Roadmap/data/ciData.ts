@@ -41,7 +41,12 @@ export const CiData: Horizon = {
         title: "Push Docker Image plugin",
         description: "Introducing a new plugin for securely pushing  a local Docker images or a tar file to registries. This complements the build-only mode, allowing users to scan local images before pushing.",
       },
-,
+      {
+        tag: [{ value: "AI DevOps" }],
+        title: "AI DevOps driven Build pipelines",
+        description: "Using the Harness AI DevOps Agent, Harness will help generate CI pipelines.",
+        link: "https://developer.harness.io/docs/platform/harness-aida/ai-devops#pipeline-orchestration",
+      },
     ],
   },
   Next: {
@@ -88,11 +93,6 @@ export const CiData: Horizon = {
         tag: [{ value: "Integrations" }, { value: "Mobile" }],
         title: "Native integration with Fastlane",
         description: "Simplify building and publishing iOS and Android applications with native Fastlane integration",
-      },
-      {
-        tag: [{ value: "AIDA" }],
-        title: "AIDA driven Build pipelines",
-        description: "Using Harness AIDA, Harness will help generate and CI pipelines.",
       },
       {
         tag: [{ value: "Mobile" }],
