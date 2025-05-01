@@ -30,7 +30,7 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 * You can now configure your GitHub integration to filter data using GitHub Organizations and GitHub Teams making it easier to align your SEI insights with your org structure.
   * This filtering is available only during initial setup and post-configuration setup experience of the GitHub integration.
-  * The feature is currently in **BETA** and requires the SEI_GITHUB_REPO_SELECTION_ENABLED & SEI_GITHUB_REPO_SELECTION_ENABLED feature flag. To request early access, please contact, please contact [Harness Support](/docs/software-engineering-insights/sei-support).
+  * The feature is currently in **BETA** and requires the SEI_GITHUB_REPO_SELECTION_ENABLED & SEI_GITHUB_REPO_SELECTION_ENABLED feature flag. To request early access, please contact [Harness Support](/docs/software-engineering-insights/sei-support).
 
 #### Fixed issues
 
