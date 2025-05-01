@@ -1,6 +1,6 @@
 ---
 title: User Impersonation
-description: Learn how to securely access and perform actions on behalf of other users for troubleshooting, with full audit logging and a time-limited session.
+description: Learn how to impersonate a user and perform actions on their behalf.
 sidebar_position: 60
 helpdocs_topic_id: hyoe7qcaz6
 helpdocs_category_id: w4rzhnf27d
