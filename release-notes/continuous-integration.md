@@ -107,8 +107,6 @@ Newly created CI stages will now have [Build Intelligence](/docs/continuous-inte
 
 #### Fixed issues
 
-- Fixed an issue where all `<+codebase>` expressions (e.g., commitSha, repoUrl, branch) resolved to null when the pipeline used CommitSha as the build type. Expressions now resolve correctly in these cases (CI-17163, ZD-82770).
-
 - Fixed an issue where when using a template containing a Git Clone step, users were unable to set the repository or provider (CI-17230, ZD-82967).
 
 - Fixed ECR login failure when using PLUGIN_PUSH_ONLY and PLUGIN_SOURCE_TAR_PATH to push and existing image. The `plugins/kaniko-ecr:1.11.0` plugin now correctly handles ECR authentication when pushing tarballs without rebuilding the Dockerfile. (CI-17122, ZD-82370)
