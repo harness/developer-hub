@@ -21,9 +21,7 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
-### Delegate Base Image Migration
-
-:::info
+:::info Delegate Base Image Migration
 
 Harness is planning to update the base image for its Delegate from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4`, as UBI-8 reached end-of-life on May 31st, 2024. No further updates, patches, or fixes will be provided for UBI-8, so this migration ensures continued security and compatibility. This change will take effect starting **January 6, 2025**.
 
@@ -37,12 +35,6 @@ Harness is planning to update the base image for its Delegate from `redhat/ubi8-
 **Action Required**: If you use an `init_script` or a custom Dockerfile for your Delegate image, please incorporate these updates to avoid compatibility issues.
 
 For more details on UBI9, please refer to the [UBI9 Release Notes](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html-single/9.0_release_notes/index).
-
-:::
-
-:::info **Delegate Security Update**
-Added a critical security fix in harness secret manager for handling identities with CD workflows.
-If you are running delegates version below 799xx and using Terraform/Terragrunt features, upgrade to delegate version 799x or above immediately. Go to the [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) to update the delegates.
 
 :::
 
@@ -87,7 +79,20 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## Release Notes categories
+1. [Delegate image release notes](#delegate-image-release-notes)
+2. [Delegate Helm Chart release notes](#delegate-helm-chart-release-notes)
+3. [Delegate Upgrader release notes](#delegate-upgrader-release-notes)
+
+## Delegate image release notes
+
 ## April 2025
+
+### Version 25.04.85702 <!-- April 15, 2025 -->
+
+#### Hotfix
+
+- For ECS deployments, the system will now fetch all attached listeners, and the required listener is expected to be present among them.
 
 ### Version 25.04.85701 <!--April 23, 2025-->
 
@@ -2101,3 +2106,24 @@ This release introduces the following security enhancements:
 Harness NextGen release 78214 includes no changed features or fixes for the Harness Delegate.
 
 </details>
+
+## Delegate Helm Chart release notes
+
+## April 2025
+
+### Version 1.0.24
+
+#### New features and improvements
+- Added option in helm chart to configure imagePullSecrets for Upgrader CronJob. The option is configured with `--set upgrader.imagePullSecret=<my_secret_name>` [PL-61783]
+
+## Delegate Upgrader release notes
+
+## April 2025
+
+### Version 1.6.0
+
+#### Fixed issues
+- Fixed an issue where the delegate images were being pulled from GAR even though a registry mirror was configured. [PL-62342]
+
+#### New features and improvements
+- Added support for [automatic upgrades](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#docker-delegate) for Docker delegates brought up using the `docker run` command. [PL-41879]

@@ -1,7 +1,7 @@
 ---
-title: Use Harness Policy As Code for connectors
-description: Describes steps to add policies to Connectors.
-sidebar_position: 5
+title: Policy as Code for connectors
+description: Learn how to use policies for connectors.
+sidebar_position: 70
 helpdocs_topic_id: 4kuokatvyw
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false

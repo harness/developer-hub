@@ -77,6 +77,12 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Previously, when configuring Auto Approval in a step template with both TimeZone and Time as runtime inputs, the UI became unresponsive during editing, preventing the Apply button from working and blocking dialog closure. The issue is resolved. (**PIPE-26566, ZD-82092**)
 - Previously, runtime stage variables in templates did not show options to configure single-select or multi-select inputs when referenced in a pipeline, even with the relevant feature flag enabled. The issue is resolved. (**CDS-108690**)
 
+### GitOps Version 1.31, Agent Version 0.92
+
+#### GitOps Agent Version 0.92 Fixes
+
+- Previously, invalid application sets were flooding the GitOps agent with update events. This has been fixed. (**CDS-109042**) 
+
 ### Version 1.86.1
 
 #### New Features and Enhancements
@@ -89,7 +95,9 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Harness now auto-approves Terraform Cloud runs of type **Refresh** by default. Currently, this feature is behind the feature flag `CDS_SUPPORT_TF_CLOUD_PLAN_REFRESH_TYPE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-98552**)
 
-- Users can now deploy Lambda artifacts larger than 50 MB stored in S3. Currently, this behavior change is behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable this behavior change. (**CDS-74918, ZD-77784**)
+#### Behavior changes
+
+- Users can now deploy Lambda artifacts larger than 50 MB stored in S3. Currently, this feature is behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable this behavior change. (**CDS-74918, ZD-77784**)
 
 #### Fixed Issues
 

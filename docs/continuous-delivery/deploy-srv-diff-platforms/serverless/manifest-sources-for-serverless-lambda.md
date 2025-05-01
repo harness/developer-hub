@@ -35,7 +35,7 @@ Below describes setting configuration parameters for AWS S3 bucket as a manifest
 
 #### Manifest Source
 
-1. **AWS Connector**: Your [AWS Connector](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector/). Add or create one here.
+1. **AWS Connector**: Your [AWS Connector](/docs/platform/connectors/cloud-providers/add-aws-connector). Add or create one here.
 
 #### Manifest Details
 

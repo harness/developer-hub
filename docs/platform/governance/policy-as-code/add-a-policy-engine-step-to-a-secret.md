@@ -1,7 +1,7 @@
 ---
-title: Use Harness Policy as Code for secrets
-description: Add a Policy step to your Secret.
-sidebar_position: 4
+title: Policy as Code for secrets
+description: Learn how to use policy as code for secrets.
+sidebar_position: 60
 helpdocs_topic_id: ozw30qez44
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false

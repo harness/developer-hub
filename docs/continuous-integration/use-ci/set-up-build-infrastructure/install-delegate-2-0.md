@@ -1,11 +1,17 @@
 ---
-title: Install Harness Delegate 2.0 (Beta)
+title: Install Harness Delegate 2.0 (Closed Beta)
 description: Learn how to install Harness Delegate 2.0 for local machines
 sidebar_position: 51
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+:::warning Closed Beta
+
+Delegate 2.0 is currently in closed beta, and is available for select customers only. Access is determined by the product team, and is based on current [supported use cases and steps](#whats-supported). 
+
+:::
 
 This guide describes how to install the new Harness Delegate to local machines. Skip to the [End to End Demo](#end-to-end-demo) if you want to watch video instructions for the new delegate installation.
 
@@ -39,9 +45,9 @@ Please enable the following feature flags to use Delegate 2.0. To enable these f
 
 | Step Name  | Caveats              |
 |------------|----------------------|
-| Initialize |                      |
 | Git Clone  | Only for Github      |
 | Run        |                      |
+| Docker Build and Push |           |
 
 ## Delegate Installation Instructions
 

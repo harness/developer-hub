@@ -152,11 +152,6 @@ export const CdData: Horizon = {
       },
       {
         tag: [{value: "Miscellaneous"}],
-        title: "Project movement across Organisations",
-        description: "Users can move projects from one organization to another.",
-      },
-      {
-        tag: [{value: "Miscellaneous"}],
         title: "OIDC Authentication - Hashicorp deployment types",
         description: "Users can enable OIDC authentication for HashiCorp deployment types.",
       },

@@ -85,22 +85,9 @@ The Kubernetes delegate is set up using the `harness-delegate.yaml` file you dow
 
 To update and restart an existing Kubernetes delegate, do the following:
 
-1. Edit the `harness-delegate.yaml` file you downloaded originally with the new token and then run `kubectl apply -f harness-delegate.yaml` to restart the delegate pods.
+1. Edit the `harness-delegate.yaml` file you downloaded originally.
 
-2. Paste the token into the delegate `spec` of the `Secret`, in the `UPGRADER_TOKEN` field.
-
-   ```yaml
-   ...
-   ---
-
-   apiVersion: v1
-   kind: Secret
-   ...
-   type: Opaque
-   data:
-     UPGRADER_TOKEN: "[enter new token here]"
-   ...
-   ```
+2. Update `DELEGATE_TOKEN` and `UPGRADER_TOKEN` fields with the new token..
 
 3. Run `kubectl apply -f harness-delegate.yaml`.
 
@@ -108,34 +95,15 @@ To update and restart an existing Kubernetes delegate, do the following:
 
 ### Docker delegate
 
-You destroy and recreate the Docker container using the `docker-compose.yaml` file you downloaded originally.
+Destroy the existing docker containers for the delegate and upgarder using `docker stop <container_name_or_id>` command. 
 
 To update and restart an existing Docker delegate, do the following:
 
-1. Paste the token in the delegate settings:
+1. Rerun the docker run command for the delegate with using the new token in the `DELEGATE_TOKEN` environment variable.
 
-   ```yaml
-   version: "3.7"
-   services:
-     harness-ng-delegate:
-       restart: unless-stopped
-       deploy:
-         resources:
-           limits:
-             cpus: "0.5"
-             memory: 2048M
-       image: harness/delegate:yy.mm.verno
-       environment:
-         - ACCOUNT_ID=12345678910
-         - ACCOUNT_SECRET=[enter new token here]
-         - MANAGER_HOST_AND_PORT=https://app.harness.io
-         - WATCHER_STORAGE_URL=https://app.harness.io/public/pro
-   ...
-   ```
+2. Rerun the docker run command for the delegate upgrader with using the new token in the `UPGRADER_TOKEN` environment variable.
 
-2. Create a new container: `docker-compose -f docker-compose.yaml up -d`.
-
-   You can verify that the environment variable has the new token using `docker exec [container ID] env`.
+You can verify that the environment variable has the new token using `docker exec [container ID] env`.
 
 ## Option: Revoke tokens
 

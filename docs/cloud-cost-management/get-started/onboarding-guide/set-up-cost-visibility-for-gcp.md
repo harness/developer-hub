@@ -160,13 +160,21 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
 
    <img src={dataset_permissions} alt="Entering the dataset name." height="50%" width="50%" />
 
-   :::info
+:::info
 
-   To enable AutoStopping rules, you need to add more permissions.
+To add AutoStopping permissions:
 
-   For more information, go to [Create a GCP Connector for AutoStopping Rules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/create-a-gcp-connector-for-auto-stopping-rules).
+1. Navigate to the IAM & Admin page on the GCP console.
+2. Click **IAM** on the right pane.
+3. Click **Add** in the PERMISSION tab.
+4. In the **Add Principals to [Project name]** window, enter the service principal.
+5. Select the required roles and click **Save**.
 
-   :::
+When a connector is created, a service account is created in Harness' GCP project that is unique for each customer. This service account is created only once per customer. You need to assign two roles to this service account in the GCP project that they are connecting to Harness CCM:
+
+* **Compute Admin** - Assign this role to Harness' service account. This allows Harness CCM to be able to perform AutoStopping actions such as starting and stopping of VMs and Instance groups. Also, GCP AutoStopping involves the usage of a custom VM with configurations as per your preference (instance type configuration). This requires access to create and launch a VM in which a custom load balancer for AutoStopping is installed.
+* **Secret Manager Secret Accessor** - Assign this role if you intend to use TLS/HTTPS in the routing configurations of the AutoStopping Rule. You need to upload the certificate's private key and the public certificate as secrets in GCP. Harness needs access to these secrets to be able to configure the custom load balancer. This role provides access to only the particular versions of the secrets, provided the complete path is entered during the creation of the custom load balancer. It does not let Harness view or list all the secrets in your GCP project. You can also add additional protection in the GCP on your end to provide conditional access to secrets as necessary. For example, provide access to Harness' service account to versions of only those secrets with a naming convention like "Harness-".
+:::
 
 9. Select **Continue** in Harness.
 

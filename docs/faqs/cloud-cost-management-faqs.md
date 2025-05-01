@@ -16,7 +16,7 @@ This article addresses some frequently asked questions about Harness Cloud Cost 
 
 No. You can create an AWS connector in the master or linked account. CCM requires one connector per AWS account (master or linked).
 
-It is recommended to create a CUR at the master account to avoid the CUR creation step for each linked account. For more information, see [AWS connector requirements](../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md) and [Cost and Usage Reports (CUR) and CCM requirements](../cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements).
+It is recommended to create a CUR at the master account to avoid the CUR creation step for each linked account. For more information, see [AWS connector requirements](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws) and [Cost and Usage Reports (CUR) and CCM requirements](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur-and-ccm-requirements).
 
 #### What kind of access does Harness CCM need to the cost and usage reports (CUR)?
 
