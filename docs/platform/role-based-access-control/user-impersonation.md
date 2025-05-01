@@ -28,7 +28,7 @@ By impersonating a user, admins can see exactly what that user sees and perform 
 
     ![impersonate-reason](./static/reason-impersonate.png)
 
-4. The session begins with a banner displayed at the top of the page. It lasts for 30 minutes, during which you'll have the same access as the user being impersonated.
+4. The impersonation session lasts 30 minutes. A banner at the top of the screen shows the remaining time for the session.
 
     ![impersonate-popup](./static/session-popup.png)
 
