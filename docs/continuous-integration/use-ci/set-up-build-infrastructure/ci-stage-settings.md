@@ -66,6 +66,16 @@ These settings are for the [Harness SCS module](/docs/software-supply-chain-assu
 
 [Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. There are many uses for these variables. For example, stage variables are inherently available to steps as environment variables.
 
+#### Stage Timeout
+By default Harness applies a stage timeout. This helps avoid endless pipeline loops or long-running failures.
+
+The maximum stage timeout limit has now been increased from 24 hours to 35 days. This is useful for long-running jobs like ML training or large test suites. Step and pipeline timeout defaults remain the same.
+
+:::note
+To set stage timeouts of up to 35 days on Kubernetes, enable the following feature flag and update the stage settings:
+CI_ENABLE_LONG_TIMEOUTS
+:::
+
 ## Infrastructure
 
 These settings are found on the **Infrastructure** tab after adding a stage to a pipeline.
@@ -153,15 +163,6 @@ The **Execution** tab is where you add steps to the stage. For details about dif
 ## Advanced
 
 The **Advanced** tab contains settings for [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md), [conditional executions](/docs/platform/pipelines/step-skip-condition-settings), [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), and [failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps). 
-In addition to the settings mentioned above, you can add a stage timeout.
-By default, Harness CI sets an 8-hour timeout for both steps and stages. This helps stop pipelines that get stuck in an endless loop or long-running failure.
-The maximum stage timeout has now been increased from 24 hours to 35 days. This is useful for long-running jobs like ML training or large test suites. Step and pipeline timeout defaults remain the same.
-
-:::note
-This change is implemented for Kubernetes infrastructure only. To use long stage timeouts, the following feature flag must be enabled for your account:
-CI_ENABLE_LONG_TIMEOUTS
-:::
-
 
 :::info
 
