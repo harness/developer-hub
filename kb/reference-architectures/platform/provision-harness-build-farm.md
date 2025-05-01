@@ -283,6 +283,6 @@ Make sure the `delegate_selectors` match the name you gave the delegate.
 
 Now you can create a new IaCM pipeline, but when you get to the `Infrastructure` selection, select `Kubernetes`, find the connector we created, and select a namespace (that exists already) to run our pipelines in.
 
-![](../static/iacm-build-infra-con-1.png)
+![](../static/iacm-build-infra-infra-0.png)
 
 This infrastructure can be used for IaCM, CI, and any container-based pipeline executions. You also now have a delegate deployed which is used in many different areas of Harness.
