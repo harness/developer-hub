@@ -139,7 +139,7 @@ Learn more about [Cache Intelligence](/docs/continuous-integration/use-ci/cachin
 
 #### S3-Compatible Object Store for Self-Managed Build Infrastructure
 
-To use [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) caching features (Build Intelligence,  Docker layer caching, and Build Intelligence) with [self-managed build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), you must provide S3-compatible object store where Harness can store and manage your caches.
+To use [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence.md) caching features (Build Intelligence, Docker layer caching, and Cache Intelligence) with [self-managed build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), you must provide S3-compatible object store where Harness can store and manage your caches.
 
 Use the **S3-Compatible Object Store for Self-Managed Build Infrastructure** settings to connect your S3-compatible object store to your Harness account. If you want to define different object store for individual organizations or projects, you must [allow overrides](#allow-overrides) and then change these settings at the lower scopes.
 
