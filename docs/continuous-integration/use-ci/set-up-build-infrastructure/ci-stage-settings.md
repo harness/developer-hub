@@ -67,12 +67,11 @@ These settings are for the [Harness SCS module](/docs/software-supply-chain-assu
 [Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are available to all steps in the stage. There are many uses for these variables. For example, stage variables are inherently available to steps as environment variables.
 
 #### Stage Timeout
-By default Harness applies a stage timeout to ensure pipelines don't run indefinitely.
-The maximum limit on stage timeout has now been increased from 24 hours to 35 days. This is useful for long-running jobs like ML training or large test suites. Step and pipeline timeout defaults remain the same.
+By default Harness applies a timeout (of 1 hour) on CI stages to ensure pipelines don't run indefinitely. Users can increase stage timeout to a maximum of 24 hours.
 
 :::note
-To set stage timeouts of up to 35 days on Kubernetes, enable the following feature flag and update the stage settings:
-CI_ENABLE_LONG_TIMEOUTS
+On Kubernetes infrastructure, when the CI_ENABLE_LONG_TIMEOUTS feature flag is enabled, the maximum timeout can now be  set to 35 days. This is especially useful for long running jobs lile ML training or large test suites.
+
 :::
 
 ## Infrastructure
