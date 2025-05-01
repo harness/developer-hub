@@ -86,7 +86,7 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
   // Build TOC from rendered headings
   useEffect(() => {
     const headings = Array.from(
-      document.querySelectorAll(".markdown-content h2, .markdown-content h3, .markdown-content h4")
+      document.querySelectorAll(".markdown-content h2")
     );
     const newToc = headings.map((el) => ({
       id: el.id,
