@@ -238,6 +238,49 @@ In this example, we're going to use a Rolling [deployment strategy](/docs/contin
 1. Select **Rolling**, and select **Apply**.
 2. The **Helm Deployment** step is added to **Execution**.
 
+## Command Flags at Step Level
+
+You can optionally override or add native Helm command parameters directly in the Helm Deploy step. This provides greater flexibility to customize Helm CLI behavior without modifying the Service definition.
+
+:::note
+This feature is currently behind the feature flag `CDS_HELM_STEP_COMMAND_FLAGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+Command Flags at the step level are supported for **Helm v3** only.
+:::
+
+### How to Configure Command Flags
+
+1. In your pipeline, add or edit a **Helm Deploy** step.
+2. Navigate to the **Advanced** tab.
+3. Locate the **Command Flags** field.
+4. Add one or more Helm command flags as needed.
+5. Save the step.
+
+During execution, Harness applies the specified flags to the corresponding Helm commands.
+
+### Behavior and Precedence
+
+| Configuration Location | Behavior |
+|:------------------------|:---------|
+| Step and Service | **Step-level flags take precedence.** Service-level flags are used, unless overridden at the step level. |
+| Step only | **Step-level flags are used.** |
+| Service only | **Service-level flags are used.** |
+
+There is no merging of flags between step and service levels. Step-level flags fully override service-level flags for the same command.
+
+### Example
+
+To perform a server-side dry-run without modifying the Service:
+
+- In the Helm Deploy step, add:
+  ```bash
+  --dry-run --server
+  ```
+
+**Additional Resources**
+
+For a full list of supported Helm v3 command flags, refer to the [Helm CLI Command Reference](https://helm.sh/docs/helm/)
+
 ## Environment Variables
 
 Native Helm Deploy and Native Helm Rollback steps support setting environment variables.

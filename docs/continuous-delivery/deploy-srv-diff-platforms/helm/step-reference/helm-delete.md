@@ -76,6 +76,18 @@ Currently, this feature is behind the feature flag `CDS_HELM_DELETE_STEP`. Conta
 
 - **Environment Variables**: Add any environment variables here.
 
+### Advanced Options
+
+See the following:
+
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+* [Command Flags](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart#configure-command-flags-at-step-level)
+
+
 ## Limitations
 
 - **Helm v2 is not supported**.
