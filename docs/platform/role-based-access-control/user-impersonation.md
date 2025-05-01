@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
+:::note Feature Flag details
     This feature is currently behind the `PL_ENABLE_USER_IMPERSONATION` feature flag and is only available to users with the Account Admin role. Contact [Harness Support](support@harness.io) to enable the feature.
 :::
 
