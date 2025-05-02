@@ -369,15 +369,15 @@ Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup
 
     **API Parameters**
 
-    | **Parameter**       | **Required** | **Description**                                                                     | **Use Case**                                                                                                       |
-    |---------------------|--------------|-------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
-    | `delegateTag`       | Yes          | Custom delegate image version to override the existing delegate version | -                                                                                                                   |
-    | `accountIdentifier` | Yes          | Harness account Id (`Account Settings → Account Details → Account Id`)             | Used to update all delegates in an Account, including child scopes |
-    | `orgIdentifier`     | No           | Id assigned when creating the organization                                         | Used to updated all delegates in an organization including child scopes                     |
-    | `projectIdentifier` | No           | Id assigned when creating the project                                              | Used to update all delegates in a specific project                                                                 |
-    | `tags`              | No           | [Tag](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags) assigned when creating the delegate                                        | Used to update delegates with specific tags                               |
-    | `validTillNextRelease`| No | If set to true, your custom image version will be overridden when new delegate is released | - |
-    | `validForDays` | No | Days after which your custom image version will be overridden | - |
+    | **Parameter**          | **Required** | **Description**                                                                                                                                              | **Use Case**                                                            |
+    |------------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+    | `delegateTag`          | Yes          | Custom delegate image version to override the existing delegate version                                                                                      | -                                                                       |
+    | `accountIdentifier`    | Yes          | Harness account Id (`Account Settings → Account Details → Account Id`)                                                                                       | Used to update all delegates in an Account, including child scopes      |
+    | `orgIdentifier`        | No           | Id assigned when creating the organization                                                                                                                   | Used to updated all delegates in an organization including child scopes |
+    | `projectIdentifier`    | No           | Id assigned when creating the project                                                                                                                        | Used to update all delegates in a specific project                      |
+    | `tags`                 | No           | Delegate name or [tag](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags) assigned when creating the delegate | Used to update delegates with specific name or tags                     |
+    | `validTillNextRelease` | No           | If set to true, your custom image version will be overridden when new delegate is released                                                                   | -                                                                       |
+    | `validForDays`         | No           | Days after which your custom image version will be overridden                                                                                                | -                                                                       |
 
     :::note
         1. At max, there can only be two override entries corresponding to a combination of query params: `accountIdentifier`, `orgIdentifier` (if present), and `projectIdentifier`(if present): one with `tags` and one without `tags`. If the same combination of parameters is used with a different value of `tags` or `delegateTag`, then the existing entry will get updated. 
