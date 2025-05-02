@@ -20,7 +20,7 @@ These release notes describe recent changes to Harness Continuous Integration.
 
 :::
 
-## April 2025
+
 
 :::warning
 
@@ -83,6 +83,57 @@ We’re excited to introduce an updated UI for managing your Harness Continuous 
 This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
 
 :::
+
+## May 2025
+### Version 1.77
+
+<!-- 2025-04-28 -->
+
+#### New features and enhancements
+
+- **Build Intelligence and Cache Intelligence are now enabled by default for newly created CI stages**, with opt-out support.
+Newly created CI stages will now have [Build Intelligence](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence/) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/) automatically enabled to improve build performance through caching. New [CI Default Settings](/docs/platform/settings/default-settings#continuous-integration) are now available, allowing customers to disable either feature if they prefer. 
+
+- **Node20 is now supported when using `Action` step** for running GitHub Actions on Harness Cloud. This functionality is currently behind the feature flag `CI_GHA_USE_NEKTOS_V2`. Please reach out to support if you wish to enable it (CI-17217).
+
+- **Support was added to allow push-only mode in `Build and Push` steps** - customers can now push local Docker images created in previous steps using push-only mode. This includes support for re-tagging to simplify pushing a local image to multiple container registries. [Learn more](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push/) (CI-17211). 
+
+- **Improved Multiline support for output variables and secrets** - Previously, certain multiline variables containing nested double quotes were not rendered correctly, resulting in unexpected escape characters. This has been fixed by encoding the output using Base64 for accurate restoration. Using output variables and secrets requires enabling  `CI_ENABLE_MULTILINE_OUTPUTS_SECRETS` feature flag. Please reach out to support if you wish to enable it (CI-17167, ZD-83514).
+
+- **AWS and GCP connectors used for default caching storage now fully supported on K8S** - When using cache-related Intelligence features (Build Intelligence, Cache Intelligence or Docker Layer Caching) with self-hosted builds on Kubernetes infrastructure, AWS and GCP connectors used for default storage now support all available authentication methods (CI-16581). 
+
+
+#### Fixed issues
+
+- Fixed an issue where when using a template containing a Git Clone step, users were unable to set the repository or provider values (CI-17230, ZD-82967).
+
+- Fixed ECR login failure when using `PLUGIN_PUSH_ONLY` and `PLUGIN_SOURCE_TAR_PATH` to push and existing image. The `plugins/kaniko-ecr:1.11.0` plugin now correctly handles ECR authentication when pushing tarballs without rebuilding the Dockerfile. (CI-17122, ZD-82370)
+
+- Fixed an issue where where `<+codebase>` expressions (such as commitSha, repoUrl, branch) were incorrectly resolving to null
+when using CommitSha as the build type (CI-17163, ZD-82770).
+
+- Resolved an issue where logs for certain steps were intermittently missing in CI pipelines, particularly in SMP environments Additional logging has been introduced in the ci-addon image to help with visibility and troubleshooting (CI-17262).
+
+
+
+#### Harness images updates
+
+| **Image**                    | **Change**                                                                                   | **Previous version** | **New Version** |
+|-----------------------------|----------------------------------------------------------------------------------------------|----------------------|-----------------|
+| `harness/ci-addon`          | Improved handling of secrets used during clone script execution. | 1.16.80              | 1.16.81         |
+| `harness/ci-addon:rootless` | Same as above for rootless variant.                                                          | 1.16.80              | 1.16.81         |
+| `harness/ci-lite-engine`    | Improved handling of secrets used during clone script execution.  | 1.16.80              | 1.16.81         |
+| `harness/ci-lite-engine:rootless` | Same as above for rootless variant.                                                      | 1.16.80              | 1.16.81         |
+| `harness/harness-cache-server` | Support for IAM authentication with GCS connectors on delegates for Build Intelligence.   | 1.6.0                | 1.7.0           |
+| `plugins/kaniko-ecr`        | Fix ECR login issue when using `PLUGIN_PUSH_ONLY` and `PLUGIN_SOURCE_TAR_PATH`.             | 1.10.9               | 1.11.0          |
+| `plugins/buildx`            | Support for push-only mode with re-tagging and source image override across registries.     | 1.2.2                | 1.3.0           |
+| `plugins/buildx-ecr`        | Same as above, applied to ECR-specific plugin.                                               | 1.2.14               | 1.2.16          |
+| `plugins/buildx-gar`        | Same as above, applied to GAR-specific plugin.                                               | 1.2.14               | 1.2.16          |
+| `plugins/cache`             | Improved S3 authentication with better handling of credential and role assumption logic.     | 1.9.6                | 1.9.7           |
+
+
+
+## April 2025
 
 ### Version 1.76
 
