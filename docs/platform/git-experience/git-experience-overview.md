@@ -192,7 +192,7 @@ Previously, a pipeline trigger could run before the latest Git update was proces
 
 Note that for large Git payloads, this may introduce a small delay in trigger execution.
 
-:::info
+:::info note
 This improvement applies only when bidirectional sync is enabled, where Harness uses its internal cache as the source of truth. In such cases, delayed Git updates could cause pipelines to run outdated configurations. This fix ensures Git updates are processed before execution triggers.
 
 If bidirectional sync is not enabled, Git is already the source of truth and this issue does not occur.
