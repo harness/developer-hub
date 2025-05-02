@@ -17,7 +17,8 @@ You can use Cache Intelligence with any [build infrastructure](/docs/continuous-
 :::info
 * Cache Intelligence is now Generally Available (GA). 
 * Cache Intelligence is currently supported on Cloud and Kubernetes build infrastructure only. 
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+* Cache Intelligence is enabled by default for newly created CI stages. This is configurable in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration) 
+
 :::
 
 
@@ -282,6 +283,9 @@ For example, here is a pipeline with two Build (`CI`) stages using Cache Intelli
 ## Enable cache override
 
 The cache override allows you to force push the cache even if the cache key hasn't changed.
+
+* By default, cache override is set to `true`, regardless of cache changes. This is useful if you have infrequent builds and want to ensure your cache remains fresh. You can change the default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration) Enable cache override to always update the cache
+
 
 To configure the cache override, add `override: true | false` to `stage.spec.caching`.
 

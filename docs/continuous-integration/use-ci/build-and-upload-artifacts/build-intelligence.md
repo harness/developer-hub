@@ -13,9 +13,11 @@ Build Intelligence is currently available for **Gradle** and **Bazel** build too
 
 :::info
 * Build Intelligence is now Generally Available (GA). 
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+* Build Intelligence is enabled by default for newly created CI stages. This is configurable in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
 * Build Intelligence currently supports Linux only (AMD and ARM). 
 * Build Intelligence currently supports Cloud and Kubernetes Build infrastructures only. 
+
+
 :::
 
  
@@ -74,9 +76,10 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
 
   <TabItem value="Self Hosted" label="Self Hosted" default>
   :::info
-   Build Intelligence is only supported for Kubernetes on self-hosted build infrastructure. 
-
+   - Build Intelligence is only supported for Kubernetes on self-hosted build infrastructure. 
+   - By default, Build Intelligence uses port 8082, and downloads the Build Intelligence plugin from Maven Central. You can change this default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
   :::
+
 
   - When using a Build Intelligence with self-hosted infrastructure, an S3-compatible bucket is required for cache storage. Please visit [configure default S3-compatible object storage](/docs/platform/settings/default-settings.md#continuous-integration) for more information.
   - By default, the Build Intelligence step configures a proxy on port 8082. However, for self-hosted setups, you can configure this port by setting the stage variable `CACHE_SERVICE_HTTPS_BIND`.
@@ -85,7 +88,6 @@ Example Pipeline YAML:
 
 ```YAML
 pipeline:
-  tags: {}
   projectIdentifier: YOUR_PROJECT_ID
   orgIdentifier: default
   properties:
@@ -97,7 +99,6 @@ pipeline:
     - stage:
         name: build
         identifier: build
-        description: ""
         type: CI
         spec:
           cloneCodebase: true
@@ -126,7 +127,6 @@ pipeline:
         variables:
           - name: MAVEN_URL
             type: String
-            description: ""
             required: false
             value: https://your-artifactory-domain/artifactory/your-repository/
           - name: CACHE_SERVICE_HTTPS_BIND
