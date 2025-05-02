@@ -22,6 +22,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| `CDS_SERVICE_DASHBOARD_SIMPLIFICATION` | Improves Service Dashboard load time by optimizing API calls and relocating certain data to enhance performance. The service dashboard graph has been moved to the Analytics tab. Users can switch between the **Service** and **Analytics** tabs at the top right of the **Service Dashboard** page. **This feature is in Limited GA.** |
 | `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`                          | Enables customized notifications for all types of Pipeline Notifications and for Webhook-based Centralized Notifications. **This feature is in Limited GA.** |
 | `CDS_SUPPORT_HTTP_HEADER_HTTP_STEP`                           | Allows capturing HTTP response headers, including cookies, as output variables in the HTTP step for use in downstream steps. **This feature is in Limited GA.** |
 | `CDS_SUPPORT_TF_CLOUD_PLAN_REFRESH_TYPE`                      | Auto-approves Terraform Cloud runs of type **Refresh** when executed through Harness, streamlining plan execution. **This feature is in Limited GA.** |
