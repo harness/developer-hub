@@ -37,6 +37,10 @@ The **Services** dashboard provides an overview of all the services and service 
 
 <DocImage path={require('./static/monitor-cd-deployments-19.png')} width="60%" height="60%" title="Click to view full size image" />
 
+:::note
+Harness has simplified the Service Dashboard to improve load times and overall performance. The graph previously shown in the top of the dashboard is now available under the **Analytics** tab. You can switch between the **Service** and **Analytics** tabs at the top right of the **Service Dashboard** page. This update is behind the feature flag `CDS_SERVICE_DASHBOARD_SIMPLIFICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 ## Individual service dashboards
 
 Click a service in the **Total Services** table to drill down and show more service details:
