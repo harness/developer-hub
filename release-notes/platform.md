@@ -107,6 +107,19 @@ The following deprecated API endpoints are longer supported:
 
 ## April 2025 
 
+### Version 1.87.x <!--April 28, 2025-->
+
+#### Fixed issues
+
+- Used enhanced secretId parsing to account for dynamic secret references. [PL-62089]
+- Email text overflow is now wrapped to prevent overlapping with the date column. [PL-6022]
+
+#### New features and enhancements
+
+- Implicit tag (delegate name) is now supported for delegate version override. [PL-62335]
+- Support for adding Delegate Configurations (legacy feature) from the Resource Groups page has been removed. [PL-60603]
+- Added support for governing scope Variables in Harness using Open Policy Agent (OPA) policies, enabling fine-grained control over variable creation and editing. This feature is currently behind the feature flag `PL_ENABLE_OPA_FOR_VARIABLES`. [PL-61504]
+
 ### Version 1.86.x <!--April 23, 2025-->
 
 #### Fixed issues
