@@ -16,6 +16,10 @@ User Impersonation allows account administrators to temporarily act as another u
 
 By impersonating a user, admins can see exactly what that user sees and perform actions on their behalf, ensuring a more accurate and efficient support or testing process. 
 
+### Prerequisite
+
+- A user must have the Account Admin role to impersonate other users.
+
 ### How to Impersonate a User
 
 1. Navigate to **Account Settings**, **Access Control** and select **Users**.
@@ -40,6 +44,8 @@ By impersonating a user, admins can see exactly what that user sees and perform 
 
 ### Impersonation session audit events
 
+The "Start impersonation" audit event is triggered at the beginning of an impersonation session, while the "End impersonation" audit event occurs when the session concludes or times out.
+
 All audit events fired during the impersonation session are tagged with the impersonator and impersonated user details. These can be viewed in the [Audit Trail](/docs/platform/governance/audit-trail/) page. 
 
 The Action column shows the activity, while the User column indicates who was impersonated and by whom.
@@ -48,13 +54,14 @@ The Action column shows the activity, while the User column indicates wh
 
 :::info Important Note    
 
-    **The following actions are disabled during an impersonation session to ensure security and control:**
+    The impersonation option is only available under Account Settings > Access Control >  Users. It is not accessible from the Users page at the Organization or Project level. 
 
+    **The following actions are disabled during an impersonation session to ensure security and control:**
+    
     - You cannot impersonate yourself.  
     - Signing out, switching accounts, and changing passwords are not allowed.  
     - Creating, editing, or deleting Personal Access Tokens (PATs) is disabled.  
     - Managing Two-Factor Authentication (2FA) is also restricted.
-
 :::
 
 
