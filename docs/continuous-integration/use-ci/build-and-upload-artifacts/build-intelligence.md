@@ -77,7 +77,7 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
   <TabItem value="Self Hosted" label="Self Hosted" default>
   :::info
    - Build Intelligence is only supported for Kubernetes on self-hosted build infrastructure. 
-   - By default, Build Intelligence uses port 8082, and downloads the Build Intelligence plugin from Maven Central. You can change modify the default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
+   - By default, Build Intelligence uses port 8082, and downloads the Build Intelligence plugin from Maven Central. You can change the default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
   :::
 
 

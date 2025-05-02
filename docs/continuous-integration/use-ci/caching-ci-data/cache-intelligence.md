@@ -284,7 +284,9 @@ For example, here is a pipeline with two Build (`CI`) stages using Cache Intelli
 
 The cache override allows you to force push the cache even if the cache key hasn't changed.
 
-* By default, cache override is set to `true`, regardless of cache changes. This is useful if you have infrequent builds and want to ensure your cache remains fresh. You can change the default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration) Enable cache override to always update the cache
+:::note
+By default, cache override is set to `true` regardless of cache changes. This is useful if you have infrequent builds and want to ensure your cache remains fresh. You can change the default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
+:::
 
 
 To configure the cache override, add `override: true | false` to `stage.spec.caching`.

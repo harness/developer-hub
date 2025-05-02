@@ -123,7 +123,7 @@ If this setting is enabled **Skip Pre Flight** will be checked by default.
 
 - **Maven Repository URL** - Applicable only in self-hosted builds. By default, the Build Intelligence plugin is downloaded from Maven Central. If you prefer using a custom Maven repository, provide a different URL.
 
-- **Cache Server Port** - Applicable only in self-hosted builds. Enter port to for the cache service proxy, in case th default port, 8082, cannot be used. 
+- **Cache Server Port** - Applicable only in self-hosted builds. Enter port to for the cache service proxy, in case the default port, 8082, cannot be used. 
 
 Learn more about [Build Intelligence](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence/).
 
