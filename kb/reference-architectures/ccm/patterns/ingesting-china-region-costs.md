@@ -5,9 +5,9 @@ description: Set up AWS and Azure China region cost ingestion
 
 # Overview
 
-Unlike normal setup of AWS and Azure cost ingestion, because of the hard seperation of cloud providers China regions, you cannot simple create a role, export, and ingest cost through a Harness connector.
+Unlike normal setup of AWS and Azure cost ingestion, because of the hard seperation of cloud provider's China regions, you cannot simply create a role, export, and ingest cost through a Harness connector.
 
-To ingest cost from this region you will need to create cost exports, sync the exports to a global region location, and then create a connector to ingest the exports.
+To ingest cost from a China region, you will need to create cost exports, sync the exports to a global region location, and then create a connector to ingest the exports.
 
 ## Create cost exports
 
