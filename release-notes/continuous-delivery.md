@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2025-04-03T10:00:00
+date: 2025-05-02T10:00:00
 sidebar_position: 8
 ---
 
@@ -55,7 +55,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## April 2025
 
-### Version 1.87.0
+### Version 1.87.3
 
 #### New Features and Enhancements
 
