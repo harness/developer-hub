@@ -1,7 +1,7 @@
 ---
-title: Developer Efficiency
+title: Efficiency
 description: Measure developer efficiency by tracking the key DORA metrics
-sidebar_label: Developer Efficiency
+sidebar_label: Efficiency
 sidebar_position: 15
 ---
 
