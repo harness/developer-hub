@@ -1,16 +1,17 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide walks you through creating a Docker Artifact Registry in Harness, configuring an upstream proxy, and managing Docker images.
+This guide will help you **create a Docker Artifact Registry** in Harness, **configure an upstream proxy**, and **manage Docker images**.
 
 ## Prerequisites
 - Ensure you have Docker CLI installed and configured on your local machine.
 - Access to a Harness account with appropriate permissions to create registries and connectors. ￼
 
+---
 ## Create a Docker Artifact Registry
 <Tabs>
 <TabItem value="Interactive Guide">
-<DocVideo src="https://app.tango.us/app/embed/21a8f737-f90b-4864-a3b9-0538f80be7a5?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create a Docker Artifact Registry in Harness" />
+<DocVideo src="https://app.tango.us/app/embed/21a8f737-f90b-4864-a3b9-0538f80be7a5?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create a Docker Artifact Registry in Harness" />
 </TabItem>
 <TabItem value="Step-by-Step">
 
@@ -27,14 +28,13 @@ This guide walks you through creating a Docker Artifact Registry in Harness, con
 This registry will serve as your private Docker registry within Harness. 
 :::
 
+---
 ## Configure an Upstream Proxy (Optional)
 An upstream proxy allows your registry to fetch Docker images from external sources if they are not available locally. 
 
 <Tabs>
 <TabItem value="Interactive Guide">
-
-<DocVideo src="https://app.tango.us/app/embed/21a8f737-f90b-4864-a3b9-0538f80be7a5?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create a Docker Artifact Registry in Harness" />
-
+<DocVideo src="https://app.tango.us/app/embed/f9437754-7cdf-4c19-9c94-9932c7e1a46a?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create Upstream Proxy Configuration" />
 </TabItem>
 <TabItem value="Step-by-Step">
 
@@ -49,6 +49,7 @@ An upstream proxy allows your registry to fetch Docker images from external sour
 This setup ensures that if a Docker image isn’t found in your Harness registry, it can be retrieved from the specified external source.
 :::
 
+---
 ## Push & Pull images
 ### Authenticate Docker CLI with Harness Registry
 1. In your Harness Docker Artifact Registry, click on Setup Client.
@@ -81,4 +82,5 @@ docker pull <harness-registry-url>/your-image:tag
 This command retrieves the Docker image from your Harness registry to your local environment.
 :::
 
+---
 By following this guide, you can effectively set up and manage a Docker Artifact Registry within Harness, streamlining your container image workflows.
