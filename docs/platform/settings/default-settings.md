@@ -119,7 +119,7 @@ If this setting is enabled **Skip Pre Flight** will be checked by default.
 
 #### Build Intelligence
 
-- **Automatically Enable Build Intelligence** - This setting applies only to newly created CI stages. When set to `True`, CI stages will be automatically be set to use Build Intelligence (users will have the option to enable/disable the feature in stage settings as well). Using Build Intelligence requires S3-compatible storage to be set in Default Settings for self-hosted builds.
+- **Automatically Enable Build Intelligence** - This setting applies only to newly created CI stages. When set to `True`, CI stages will be set with Build Intelligence Intelligence enabled (users will still have the option to enable/disable the feature in stage settings as well). Using Build Intelligence requires S3-compatible storage to be set in Default Settings for self-hosted builds.
 
 - **Maven Repository URL** - Applicable only in self-hosted builds. By default, the Build Intelligence plugin is downloaded from Maven Central. If you prefer using a custom Maven repository, provide a different URL.
 
@@ -130,7 +130,7 @@ Learn more about [Build Intelligence](/docs/continuous-integration/use-ci/build-
 
 #### Cache Intelligence
 
-- **Automatically Enable Cache Intelligence** - This setting applies only to newly created CI stages. When set to `True`, CI stages will be automatically be set to use Cache Intelligence (users will have the option to enable/disable the feature in stage settings as well). Using Cache Intelligence requires S3-compatible storage to be set in Default Settings for self-hosted builds.
+- **Automatically Enable Cache Intelligence** - This setting applies only to newly created CI stages. When set to `True`, CI stages will be set with Cache Intelligence enabled (users will still have the option to enable/disable the feature in stage settings as well). Using Cache Intelligence requires S3-compatible storage to be set in Default Settings for self-hosted builds.
 
 - **Always Override** - Enable cache override to always update the cache, regardless of cache changes. This is useful if you have infrequent builds and want to ensure your cache remains fresh.
 

@@ -77,12 +77,12 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
   <TabItem value="Self Hosted" label="Self Hosted" default>
   :::info
    - Build Intelligence is only supported for Kubernetes on self-hosted build infrastructure. 
-   - By default, Build Intelligence uses port 8082, and downloads the Build Intelligence plugin from Maven Central. You can change this default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
+   - By default, Build Intelligence uses port 8082, and downloads the Build Intelligence plugin from Maven Central. You can change modify the default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
   :::
 
 
   - When using a Build Intelligence with self-hosted infrastructure, an S3-compatible bucket is required for cache storage. Please visit [configure default S3-compatible object storage](/docs/platform/settings/default-settings.md#continuous-integration) for more information.
-  - By default, the Build Intelligence step configures a proxy on port 8082. However, for self-hosted setups, you can configure this port by setting the stage variable `CACHE_SERVICE_HTTPS_BIND`.
+  - By default, the Build Intelligence step configures a proxy on port 8082. However, for self-hosted setups, you can configure the port by setting the stage variable `CACHE_SERVICE_HTTPS_BIND`, or in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
 
 Example Pipeline YAML:
 
@@ -138,7 +138,7 @@ pipeline:
   name: YOUR_PIPELINE_NAME
 ```
 
-  - By default, the Build Intelligence plugin is downloaded from Maven Central. If your environment does not have access to Maven Central or you prefer using a custom Maven repository, you can configure this by setting a stage variable named `MAVEN_URL`. See [Build Intelligence plugin](https://central.sonatype.com/artifact/io.harness/gradle-cache/overview ) 
+  - By default, the Build Intelligence plugin is downloaded from Maven Central. If your environment does not have access to Maven Central or you prefer using a custom Maven repository, you can configure this by setting a stage variable named `MAVEN_URL`, or in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration). See [Build Intelligence plugin](https://central.sonatype.com/artifact/io.harness/gradle-cache/overview ) 
 
 
 
