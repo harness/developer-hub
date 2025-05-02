@@ -91,11 +91,10 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 #### New features and enhancements
 
-
-
 - **Build and Cache Intelligence is now enabled by default for newly created CI stages**, with opt-out support.
 Newly created CI stages will now have [Build Intelligence](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence/) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/) automatically enabled to improve build performance through caching. These defaults can now be managed in [CI Default Settings](/docs/platform/settings/default-settings#continuous-integration), allowing customers to disable either feature if they prefer. 
 
+- **Node20 is now supported when using `Action` step** for running GitHub Actions on Harness Cloud. SUpport is currently behind the feature flag `CI_GHA_USE_NEKTOS_V2`, please reach out to support if you wish to enable it (CI-17217).
 
 - **Support was added to allow push-only mode in `Build and push` steps** - customers can now push local Docker images created in previous steps using push-only mode. This includes support for re-tagging to simplify pushing a local image to multiple container registries. [Learn more](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push/) 
 (CI-17211). 
