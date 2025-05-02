@@ -38,9 +38,11 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 
         | **Status**       | **Description**                                               |
         |------------------|---------------------------------------------------------------|
-        | **ACTIVE**       | RBAC is enforced by default.                                  |
-        | **INACTIVE**     | Deprecated and no longer supported by Harness.                |
         | **EXPERIMENTAL** | Permissions are enabled and usable, but RBAC is not enforced. |
+        | **ACTIVE**       | RBAC is enforced by default.                                  |
+        | **DEPRECATED**   | RBAC remains enforced and it can still be assigned to roles.  |
+        | **INACTIVE**     | No longer supported by Harness.                               |
+        
 :::
 
 ## Administrative Functions
