@@ -27,7 +27,7 @@ helpdocs_is_published: true
 
     If any automation relies on these `core_notification_view/edit/delete` permissions, we recommend updating them accordingly.
 
-    **Note:** The existing permissions are experimental and will be deprecated. The new permissions will be released in the **ACTIVE** state with RBAC enforced.
+    **Note:** The existing legacy notification permissions are deprecated and will soon be moved to an inactive state. The new permissions will be released in the ACTIVE state with RBAC enforced.
 :::
 
 
