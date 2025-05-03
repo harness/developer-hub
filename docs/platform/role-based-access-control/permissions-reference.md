@@ -54,14 +54,27 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Default Settings | <ul><li>Create/Edit</li></ul> | Active |
 | Projects | <ul><li>View (`core_project_view`)</li><li>Create (`core_project_create`)</li><li>Edit (`core_project_edit`)</li><li>Delete (`core_project_delete`)</li></ul> | Active |
 | User Groups | <ul><li>View (`core_usergroup_view`)</li><li>Manage: Create, edit, and delete user groups (`core_usergroup_manage`)</li></ul> | Active |
-| Service Accounts | <ul><li>View (`core_serviceaccount_view`)</li><li>Create/Edit (`core_serviceaccount_edit`)</li><li>Delete (`core_serviceaccount_delete`)</li><li>Manage: Create, edit, and delete API keys and tokens for service accounts (`core_serviceaccount_manageapikey`)</li></ul> | Active |
+| Service Accounts | <ul><li>View (`core_serviceaccount_view`)</li><li>Create/Edit (`core_serviceaccount_edit`)</li><li>Delete (`core_serviceaccount_delete`)</li><li>Manage: Create, edit, and delete API keys and tokens for service accounts (`core_serviceaccount_manageapikey`)</li><li>List Service Accounts (`core_serviceaccount_list`)</li></ul> | Active |
 | Organizations | Available at the account and org [scopes](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_organization_view`)</li><li>Create (`core_organization_create`)</li><li>Edit (`core_organization_edit`)</li><li>Delete (`core_organization_delete`)</li></ul> | Active |
 | Roles | <ul><li>View (`core_role_view`)</li><li>Create/Edit (`core_role_edit`)</li><li>Delete (`core_role_delete`)</li></ul> | Active |
 | Streaming Destination | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_streamingDestination_view`)</li><li>Create/Edit (`core_streamingDestination_edit`)</li><li>Delete (`core_streamingDestination_delete`)</li></ul> | Experimental |
-| Banners | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_banner_view`)</li><li>Create/Edit (`core_banner_edit`)</li><li>Delete (`core_banner_delete`)</li></ul> | Experimental |
-| Users | <ul><li>View (`core_user_view`)</li><li>Manage: Edit and delete users (`core_user_manager`)</li><li>Invite: Add users by inviting them to Harness (`core_user_invite`)</li></ul> | Active |
+| Banners | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_banner_view`)</li><li>Create/Edit (`core_banner_edit`)</li><li>Delete (`core_banner_delete`)</li></ul> | Active |
+| Users | <ul><li>View (`core_user_view`)</li><li>Manage: Edit and delete users (`core_user_manager`)</li><li>Invite: Add users by inviting them to Harness (`core_user_invite`)</li><li>Impersonate Users (`core_user_impersonate`)</li></ul> | Active |
 | Authentication Settings | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_authsetting_view`)</li><li>Create/Edit (`core_authsetting_edit`)</li><li>Delete (`core_authsetting_delete`)</li></ul> | Active |
+| SMTP Configuration | <ul><li>View (`core_smtp_view`)</li><li>Create/Edit (`core_smtp_edit`)</li><li>Delete (`core_smtp_delete`)</li></ul> | Active |
+| Certificates | <ul><li>View (`core_certificate_view`)</li><li>Create/Edit (`core_certificate_edit`)</li><li>Delete (`core_certificate_delete`)</li></ul> | Active |
+| Account Management | <ul><li>View (`core_account_view`)</li><li>Edit (`core_account_edit`)</li></ul> | Active |
+| Licenses | <ul><li>View (`core_license_view`)</li><li>Edit (`core_license_edit`)</li></ul> | Active |
+| Audit | <ul><li>View (`core_audit_view`)</li></ul> | Active |
+| Deployment Freezes | <ul><li>Manage (`core_deploymentfreeze_manage`)</li><li>Global (`core_deploymentfreeze_global`)</li></ul> | Active |
+| Providers | <ul><li>View (`core_provider_view`)</li><li>Create/Edit (`core_provider_edit`)</li><li>Delete (`core_provider_delete`)</li></ul> | Experimental |
 
+## Monitoring
+
+| Resource | Permissions | Status |
+| --- | --- | --- |
+| Monitoring Agents | <ul><li>View (`monitoring_monitoringagent_view`)</li><li>Create (`monitoring_monitoringagent_create`)</li><li>Edit (`monitoring_monitoringagent_edit`)</li><li>Delete (`monitoring_monitoringagent_delete`)</li></ul> | Experimental |
+| Service Level Objectives | <ul><li>View (`iro_iromanager_view`)</li><li>Create (`iro_iromanager_create`)</li><li>Edit (`iro_iromanager_edit`)</li><li>Delete (`iro_iromanager_delete`)</li></ul> | Experimental |
 
 ## Environment Groups
 
@@ -119,12 +132,22 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Resource | Permissions | Status |
 | --- | --- | --- |
 | Remediation Tracker | <ul><li>View (`ssca_remediationtracker_view`)</li><li>Create/Edit (`ssca_remediationtracker_edit`)</li><li>Close (`ssca_remediationtracker_close`)</li></ul> | Active |
+| Exemption | <ul><li>Create (`sto_exemption_create`)</li></ul> | Active |
+| Enforcement Exemption | <ul><li>View (`ssca_enforcementexemption_view`)</li><li>Create/Edit (`ssca_enforcementexemption_edit`)</li><li>Delete (`ssca_enforcementexemption_delete`)</li><li>Review (`ssca_enforcementexemption_review`)</li></ul> | Inactive |
 
 ## Webhooks
 
 | Resource | Permissions | Status |
 | --- | --- | --- |
 | Webhooks | <ul><li>View (`core_gitxWebhooks_view`)</li><li>Create/Edit (`core_gitxWebhooks_edit`)</li><li>Delete (`core_gitxWebhooks_delete`)</li></ul> | Active |
+
+## Notifications
+
+| Resource | Permissions | Status |
+| --- | --- | --- |
+| Notification Rules | <ul><li>View (`core_notificationrule_view`)</li><li>Create/Edit (`core_notificationrule_edit`)</li><li>Delete (`core_notificationrule_delete`)</li></ul> | ACTIVE |
+| Notification Channels | <ul><li>View (`core_notificationchannel_view`)</li><li>Create/Edit (`core_notificationchannel_edit`)</li><li>Delete (`core_notificationchannel_delete`)</li></ul> | EXPERIMENTAL |
+| Legacy Notifications | <ul><li>View (`core_notification_view`)</li><li>Create/Edit (`core_notification_edit`)</li><li>Delete (`core_notification_delete`)</li></ul> | DEPRECATED |
 
 ## Input Sets
 
@@ -141,7 +164,10 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Chaos Infrastructure | <ul><li>View (`chaos_chaosinfrastructure_view`)</li><li>Create/Edit (`chaos_chaosinfrastructure_edit`)</li><li>Delete (`chaos_chaosinfrastructure_delete`)</li></ul> | Active |
 | Chaos Gameday | <ul><li>View (`chaos_chaosgameday_view`)</li><li>Create/Edit (`chaos_chaosgameday_edit`)</li><li>Delete (`chaos_chaosgameday_delete`)</li></ul> | Active |
 | Chaos Hub | <ul><li>View: View Chaos experiments and Chaos scenarios (`chaos_chaoshub_view`)</li><li>Create/Edit: Connect to ChaosHub Git repo (`chaos_chaoshub_edit`)</li><li>Delete: Disconnect ChaosHub Git repo (`chaos_chaoshub_delete`)</li></ul> | Active |
-| Chaos Experiment | <ul><li>View (`chaos_chaosexperiment_view`)</li><li>Create/Edit (`chaos_chaosexperiment_edit`)</li><li>Delete (`chaos_chaosexperiment_delete`)</li><li>Execute (`chaos_chaosexperiment_execute`)</li></ul> | Active |
+| Chaos Experiment | <ul><li>View (`chaos_chaosexperiment_view`)</li><li>Create/Edit (`chaos_chaosexperiment_edit`)</li><li>Delete (`chaos_chaosexperiment_delete`)</li><li>Execute (`chaos_chaosexperiment_execute`)</li><li>Execute Pipeline (`chaos_chaosexperiment_executepipeline`)</li></ul> | Active |
+| Chaos Probe | <ul><li>View (`chaos_chaosprobe_view`)</li><li>Create/Edit (`chaos_chaosprobe_edit`)</li><li>Delete (`chaos_chaosprobe_delete`)</li></ul> | Active |
+| Chaos Security Governance | <ul><li>View (`chaos_chaossecuritygovernance_view`)</li><li>Create/Edit (`chaos_chaossecuritygovernance_edit`)</li><li>Delete (`chaos_chaossecuritygovernance_delete`)</li></ul> | Active |
+| Chaos Image Registry | <ul><li>View (`chaos_chaosimageregistry_view`)</li><li>Create/Edit (`chaos_chaosimageregistry_edit`)</li></ul> | Active |
 
 ### Cloud Cost Management
 
@@ -155,13 +181,20 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | AutoStopping Rules | <ul><li>View (`ccm_autoStoppingRule_view`)</li><li>Create/Edit (`ccm_autoStoppingRule_edit`)</li><li>Delete (`ccm_autoStoppingRule_delete`)</li></ul> | Active |
 | Budgets | <ul><li>View (`ccm_budget_view`)</li><li>Create/Edit (`ccm_budget_edit`)</li><li>Delete (`ccm_budget_delete`)</li></ul> | Active |
 | Load Balancer | <ul><li>View (`ccm_loadBalancer_view`)</li><li>Create/Edit (`ccm_loadBalancer_edit`)</li><li>Delete (`ccm_loadBalancer_delete`)</li></ul> | Active |
-| Data Scope (CCM_DATA_SCOPE) | <ul><li>View (`ccm_dataScope_view`)</li></ul> | Active |
+| Data Scope | <ul><li>View (`ccm_dataScope_view`)</li></ul> | Active |
+| Anomalies | <ul><li>View (`ccm_anomalies_view`)</li></ul> | Active |
+| Recommendations | <ul><li>View (`ccm_recommendations_view`)</li><li>Manage (`ccm_recommendations_manage`)</li></ul> | Active |
+| Commitment Orchestrator | <ul><li>View (`ccm_commitmentOrchestrator_view`)</li><li>Edit (`ccm_commitmentOrchestrator_edit`)</li></ul> | Active |
+| Cluster Orchestrator | <ul><li>View (`ccm_clusterOrchestrator_view`)</li><li>Edit (`ccm_clusterOrchestrator_edit`)</li></ul> | Experimental |
+| Cloud Asset Governance Rule | <ul><li>View (`ccm_cloudAssetGovernanceRule_view`)</li><li>Create/Edit (`ccm_cloudAssetGovernanceRule_edit`)</li><li>Delete (`ccm_cloudAssetGovernanceRule_delete`)</li><li>Execute (`ccm_cloudAssetGovernanceRule_execute`)</li></ul> | Active |
+| Cloud Asset Governance Rule Set | <ul><li>View (`ccm_cloudAssetGovernanceRuleSet_view`)</li><li>Create/Edit (`ccm_cloudAssetGovernanceRuleSet_edit`)</li><li>Delete (`ccm_cloudAssetGovernanceRuleSet_delete`)</li></ul> | Active |
+| Cloud Asset Governance Enforcement | <ul><li>View (`ccm_cloudAssetGovernanceEnforcement_view`)</li><li>Create/Edit (`ccm_cloudAssetGovernanceEnforcement_edit`)</li><li>Delete (`ccm_cloudAssetGovernanceEnforcement_delete`)</li></ul> | Active |
 
 ### Code Repository
 
 | Resource | Permissions | Status |
 | --- | --- | --- |
-| Repository | <ul><li>View (`code_repo_view`)</li><li>Create/Edit (Create repositories and edit repository settings, such as descriptions, webhooks, and rules) (`code_repo_edit`)</li><li>Delete (`code_repo_delete`)</li><li>Push (Repository contributor permissions, such as committing, pushing, creating/deleting branches, creating/deleting tags) (`code_repo_push`)</li><li>Report commit check : Report a Status Check Result on a Commit (`code_repo_reportCommitCheck`)</li><li>Review PR: Review Pull Requests in a Code Repository (`code_repo_review`)</li></ul> | Active |
+| Repository | <ul><li>View (`code_repo_view`)</li><li>Create/Edit (Create repositories and edit repository settings, such as descriptions, webhooks, and rules) (`code_repo_edit`)</li><li>Delete (`code_repo_delete`)</li><li>Push (Repository contributor permissions, such as committing, pushing, creating/deleting branches, creating/deleting tags) (`code_repo_push`)</li><li>Report commit check : Report a Status Check Result on a Commit (`code_repo_reportCommitCheck`)</li><li>Review PR: Review Pull Requests in a Code Repository (`code_repo_review`)</li><li>Create Repository (`code_repo_create`)</li></ul> | Active |
 
 ### Feature Flags
 
@@ -169,6 +202,10 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | --- | --- | --- |
 | Feature flags | <ul><li>View (`ff_featureflag_view`)</li><li>Toggle: Turn Feature Flags on/off (`ff_featureflag_toggle`)</li><li>Create/Edit Flag (`ff_featureflag_edit`)</li><li>Edit Rule (`ff_featureflag_rulesEdit`)</li><li>Edit Configuration (`ff_featureflag_configEdit`)</li><li>Delete (`ff_featureflag_delete`)</li></ul> | Active |
 | Target Management | <ul><li>View: View Targets and Target Groups (`ff_targetgroup_view`)</li><li>Create/Edit: Create and edit Targets and Target Groups to control visibility of a variation of a Feature Flag (`ff_targetgroup_edit`)</li><li>Delete: Delete Targets and Target Groups (`ff_targetgroup_delete`)</li></ul> | Active |
+| Feature Flag | <ul><li>Create (`ff_featureflag_create`)</li></ul> | Active |
+| Target | <ul><li>View (`ff_target_view`)</li></ul> | Active |
+| Environment | <ul><li>View (`ff_environment_view`)</li><li>Edit (`ff_environment_edit`)</li><li>Target Group Edit (`ff_environment_targetGroupEdit`)</li></ul> | Active |
+| Proxy API Keys | <ul><li>View (`ff_proxyapikey_view`)</li><li>Create (`ff_proxyapikey_create`)</li><li>Edit (`ff_proxyapikey_edit`)</li><li>Delete (`ff_proxyapikey_delete`)</li><li>Rotate (`ff_proxyapikey_rotate`)</li></ul> | Active |
 
 ### GitOps
 
@@ -187,6 +224,8 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Resource | Permissions | Status |
 | --- | --- | --- |
 | IACM Workspaces | <ul><li>View (`iac_workspace_view`)</li><li>Create/Edit (`iac_workspace_edit`)</li><li>Delete (`iac_workspace_delete`)</li><li>Create/Edit Variables (`iac_workspace_editvariable`)</li><li>Delete Variables (`iac_workspace_deletevariable`)</li><li>Approve (`iac_workspace_approve`)</li><li>Access State (`iac_workspace_accessstate`)</li></ul> | Active |
+| Registry | <ul><li>View (`iac_registry_view`)</li><li>Create/Edit (`iac_registry_edit`)</li><li>Delete (`iac_registry_delete`)</li></ul> | Active |
+| Variable Sets | <ul><li>View (`iac_variableset_view`)</li><li>Create/Edit (`iac_variableset_edit`)</li><li>Delete (`iac_variableset_delete`)</li></ul> | Experimental |
 
 ### Service Reliability
 
@@ -216,6 +255,8 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Catalog Access Policies | <ul><li>View (`idp_catalogaccesspolicy_view`)</li><li>Create (`idp_catalogaccesspolicy_create`)</li><li>Edit (`idp_catalogaccesspolicy_edit`)</li><li>Delete (`idp_catalogaccesspolicy_delete`)</li></ul> | Active |
 | Integrations | <ul><li>View (`idp_integration_view`)</li><li>Create (`idp_integration_create`)</li><li>Edit (`idp_integration_edit`)</li><li>Delete (`idp_integration_delete`)</li></ul> | Active |
 | Advanced Configurations | <ul><li>View (`idp_advancedconfiguration_view`)</li><li>Create/Edit (`idp_advancedconfiguration_edit`)</li><li>Delete (`idp_advancedconfiguration_delete`)</li></ul> | Active |
+| Catalog | <ul><li>View (`idp_catalog_view`)</li><li>Create/Edit (`idp_catalog_edit`)</li><li>Delete (`idp_catalog_delete`)</li></ul> | Active |
+| Workflow | <ul><li>View (`idp_workflow_view`)</li><li>Create/Edit (`idp_workflow_edit`)</li><li>Delete (`idp_workflow_delete`)</li><li>Execute (`idp_workflow_execute`)</li></ul> | Active |
 
 ### Continuous Error Tracking
 
@@ -232,3 +273,28 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Schemas | <ul><li>View (`dbops_schema_view`)</li><li>Create/Edit (`dbops_schema_edit`)</li><li>Delete (`dbops_schema_delete`)</li></ul> | Active |
 | Instances | <ul><li>View (`dbops_instance_view`)</li><li>Create/Edit (`dbops_instance_edit`)</li><li>Delete (`dbops_instance_delete`)</li></ul> | Active |
 
+## Artifact Management
+
+| Resource | Permissions | Status |
+| --- | --- | --- |
+| Artifact Registry | <ul><li>View (`artifact_artregistry_view`)</li><li>Create/Edit (`artifact_artregistry_edit`)</li><li>Delete (`artifact_artregistry_delete`)</li><li>Upload Artifact (`artifact_artregistry_uploadartifact`)</li><li>Download Artifact (`artifact_artregistry_downloadartifact`)</li><li>Delete Artifact (`artifact_artregistry_deleteartifact`)</li></ul> | Active |
+
+### Software Engineering Insights
+
+| Resource | Permissions | Status |
+| --- | --- | --- |
+| SEI Collections | <ul><li>View (`sei_seicollections_view`)</li><li>Create (`sei_seicollections_create`)</li><li>Edit (`sei_seicollections_edit`)</li><li>Delete (`sei_seicollections_delete`)</li></ul> | Active |
+| SEI Configuration Settings | <ul><li>View (`sei_seiconfigurationsettings_view`)</li><li>Create (`sei_seiconfigurationsettings_create`)</li><li>Edit (`sei_seiconfigurationsettings_edit`)</li><li>Delete (`sei_seiconfigurationsettings_delete`)</li></ul> | Active |
+| SEI Insights | <ul><li>View (`sei_seiinsights_view`)</li><li>Create (`sei_seiinsights_create`)</li><li>Edit (`sei_seiinsights_edit`)</li><li>Delete (`sei_seiinsights_delete`)</li></ul> | Active |
+
+### Feature Management and Experimentation
+
+| Resource | Permissions | Status |
+| --- | --- | --- |
+| FME Environment | <ul><li>View (`fme_fmeenvironment_view`)</li><li>Create/Edit (`fme_fmeenvironment_edit`)</li><li>SDK API Key View (`fme_fmeenvironment_sdkApiKeyView`)</li><li>SDK API Key Edit (`fme_fmeenvironment_sdkApiKeyEdit`)</li><li>Data Export View (`fme_fmeenvironment_dataExportView`)</li><li>Data Export Edit (`fme_fmeenvironment_dataExportEdit`)</li></ul> | Active |
+| FME Feature Flag | <ul><li>View (`fme_fmefeatureflag_view`)</li><li>Create/Edit (`fme_fmefeatureflag_edit`)</li></ul> | Active |
+| FME Experiment | <ul><li>View (`fme_fmeexperiment_view`)</li><li>Create/Edit (`fme_fmeexperiment_edit`)</li></ul> | Active |
+| FME Segment | <ul><li>View (`fme_fmesegment_view`)</li><li>Create/Edit (`fme_fmesegment_edit`)</li></ul> | Active |
+| FME Large Segment | <ul><li>View (`fme_fmelargesegment_view`)</li><li>Create/Edit (`fme_fmelargesegment_edit`)</li></ul> | Active |
+| FME Metric | <ul><li>View (`fme_fmemetric_view`)</li><li>Create/Edit (`fme_fmemetric_edit`)</li></ul> | Active |
+| FME Traffic Type | <ul><li>View (`fme_fmetraffictype_view`)</li><li>Create/Edit (`fme_fmetraffictype_edit`)</li></ul> | Active |
