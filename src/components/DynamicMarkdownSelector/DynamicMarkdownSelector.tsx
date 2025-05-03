@@ -1,7 +1,7 @@
 /**
  * DynamicMarkdownSelector Component
  *
- * Renders a row of selectable tiles. When a tile is selected, it renders an imported MDX module from src/content.
+ * Renders a row of selectable tiles. When a tile is selected, it renders an imported MD module from docs/<module>/content.
  */
 
 declare var require: {
@@ -19,7 +19,7 @@ import TabItem from "@theme/TabItem";
 import DocVideo from "@site/src/components/DocVideo";
 import "./DynamicMarkdownSelector.css";
 
-// Load MDX modules from docs/<module>/content
+// Load MD modules from docs/<module>/content
 const mdxCtx = require.context("@site/docs", true, /\/content\/.*\.md$/);
 
 const mdxMap: Record<string, React.ComponentType<any>> = {};
@@ -29,7 +29,7 @@ mdxCtx.keys().forEach((key: string) => {
 });
 
 export interface DynamicMarkdownSelectorProps {
-  options: Record<string, string>;
+  options: Record<string, string>; // e.g. { "Docker": "/docs/artifact-registry/content/docker.md" }
 }
 
 const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ options }) => {
@@ -37,7 +37,7 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
   const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, "");
 
   const getInitialSelected = () => {
-    const hash = window.location.hash.replace("#", "");
+    const hash = typeof window !== 'undefined' ? window.location.hash.replace("#", "") : "";
     const match = labels.find((label) => normalize(label) === normalize(hash));
     return match || labels[0];
   };
@@ -46,15 +46,13 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
   const [ContentComp, setContentComp] = useState<React.ComponentType<any> | null>(null);
   const [toc, setToc] = useState<{ id: string; text: string; level: number }[]>([]);
 
-  // If no hash present, set it to the default tab
   useEffect(() => {
-    if (!window.location.hash) {
+    if (typeof window !== 'undefined' && !window.location.hash) {
       const normalized = normalize(selected);
       window.history.replaceState(null, "", `#${normalized}`);
     }
   }, []);
 
-  // Load the MDX component when tab changes
   useEffect(() => {
     const path = options[selected];
     const entry = mdxMap[path];
@@ -65,9 +63,9 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
     }
   }, [selected, options]);
 
-  // Scroll to heading in hash when content renders or hash changes
   useEffect(() => {
     const scrollToHash = () => {
+      if (typeof window === 'undefined') return;
       const hash = window.location.hash.replace("#", "");
       if (hash) {
         setTimeout(() => {
@@ -83,11 +81,8 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
     return () => window.removeEventListener("hashchange", scrollToHash);
   }, [ContentComp]);
 
-  // Build TOC from rendered headings
   useEffect(() => {
-    const headings = Array.from(
-      document.querySelectorAll(".markdown-content h2")
-    );
+    const headings = Array.from(document.querySelectorAll(".markdown-content h2"));
     const newToc = headings.map((el) => ({
       id: el.id,
       text: el.textContent || "",
@@ -96,10 +91,11 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
     setToc(newToc);
   }, [ContentComp]);
 
-  // Update tab and hash when button clicked
   const handleTabClick = (label: string) => {
     setSelected(label);
-    window.history.replaceState(null, "", `#${normalize(label)}`);
+    if (typeof window !== 'undefined') {
+      window.history.replaceState(null, "", `#${normalize(label)}`);
+    }
   };
 
   return (
