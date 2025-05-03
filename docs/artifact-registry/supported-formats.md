@@ -10,6 +10,6 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
 
 <DynamicMarkdownSelector
   options={{
-    Docker: '/artifact-registry/content/_shared/docker-quickstart.md',
+    Docker: '/artifact-registry/content/docker-quickstart.md',
   }}
 />  
