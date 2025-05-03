@@ -19,8 +19,8 @@ import TabItem from "@theme/TabItem";
 import DocVideo from "@site/src/components/DocVideo";
 import "./DynamicMarkdownSelector.css";
 
-// Load MDX modules from src/content
-const mdxCtx = require.context("@site/src/content", true, /\.mdx?$/);
+// Load MDX modules from docs/<module>/content
+const mdxCtx = require.context("@site/docs", true, /\.mdx?$/);
 
 const mdxMap: Record<string, React.ComponentType<any>> = {};
 mdxCtx.keys().forEach((key: string) => {

@@ -22,16 +22,17 @@ This guide will help you **create a Docker Artifact Registry** in Harness, **con
     - Your registry name must start with a letter and can include `lowercase alphanumerics`, `_`, `.` and `-`.
 5. Optionally, add a Description and Labels for better organization.
 6. Click **Create Registry** to finalize.
+
 </TabItem>
 </Tabs>
 
 :::info private Docker registry
-This registry will serve as your private Docker registry within Harness. 
+This registry will serve as your private Docker registry within Harness.
 :::
 
 ---
 ## Configure an Upstream Proxy (Optional)
-An upstream proxy allows your registry to fetch Docker images from external sources if they are not available locally. 
+An upstream proxy allows your registry to fetch Docker images from external sources if they are not available locally.
 
 <Tabs>
 <TabItem value="configure-upstream-interactive" label="Interactive Guides">
@@ -41,6 +42,7 @@ An upstream proxy allows your registry to fetch Docker images from external sour
 
 ### Configure the upstream proxy in your registry
 <DocVideo src="https://app.tango.us/app/embed/e228e016-f58c-4281-8f7f-39a7cb652f46?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Configure Upstream in Docker Registry" />
+
 </TabItem>
 <TabItem value="configure-upstream-step-by-step" label="Step-by-Step">
 
@@ -55,8 +57,10 @@ An upstream proxy allows your registry to fetch Docker images from external sour
 3. Under **Advanced (Optional)**, select **Configure Upstream**.
 4. Select from the list of compatible proxies to add them to your registry.
 5. Click **Save** to save the configuration.
+
 </TabItem>
 </Tabs>
+
 :::info upstream proxy caching
 If a Docker image isn’t found in your Harness registry, the upstream proxy fetches it from an external registry like Docker Hub, reducing duplication and improving image resolution.
 :::

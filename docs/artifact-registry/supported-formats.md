@@ -10,7 +10,7 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
 
 <DynamicMarkdownSelector
   options={{
-    Docker: '/artifact-registry/supported-formats/docker-quickstart.mdx', 
-    Maven: '/artifact-registry/supported-formats/maven-quickstart.mdx'
+    Docker: '/artifact-registry/content/supported-formats/docker-quickstart.md',
+    Maven: '/artifact-registry/content/supported-formats/maven-quickstart.md',
   }}
-/>
+/>  
