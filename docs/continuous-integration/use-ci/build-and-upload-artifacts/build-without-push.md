@@ -22,21 +22,29 @@ The table below summarizes build tools Harness picks by default.
 Enable the `CI_USE_BUILDX_ON_K8` flag to use Buildx instead of Kaniko on Kubernetes.
 :::
 
-In the following sections, we will cover build and push workflows as listed below: 
+## What are these Build Tools?
+**Kaniko** is a tool to build container images from a Dockerfile inside a container or Kubernetes pod. It runs as a standalone executable in containers without privileged mode, eliminating the need for Docker-in-Docker setups, enhancing security and simplifying **kubernetes** workflows. It performs builds directly by executing Dockerfile instructions and assembling the layers without Docker itself.
+
+**BuildX** is a Docker CLI plugin that extends Docker's build capabilities using BuildKit (Docker's builder). It relies on a Docker daemon to perform builds. It interacts directly with Docker. BuildX can operate in two modes:
+- With Docker Daemon: Often requires a Docker-in-Docker (DinD) or privileged access when used inside containers or kubernetes environment.
+- Daemonless mode: BuildX supports daemonless builds using container runtimes like `containerd` or remote builders requiring additional configuration. This is supported on both Kubernetes or VM based environment, but is more commonly used in Kubernetes and less needed in VMs.
+BuildX, however, offers better support for caching (Docker Layer Caching in Harness), multi-platform builds, other buildkit features like secret mounting, output options - tarball or oci image. This also integrates better with a local Docker setup or in VM based environments. 
+
+In the sections below, we will cover the following build and push image workflows: 
 - Build-only
 - Push-only
-- Push-only as tarball using BuildX
 - Build once and push to multiple registries
 - Build, scan and push image as a tarball using Kaniko
 
 ## Build-only
-This mode builds a Docker image without pushing it to a registry. For instance, you might build an image locally and store it as an artifact or scan it for vulnerabilities.
+This mode builds a Docker image locally without pushing it to a registry. For instance, you might build an image locally and store it as an artifact or scan it for vulnerabilities in another step.
 
 ### Setup
-- As mentioned in the note above, enabling the `CI_USE_BUILDX_ON_K8` feature flag will switch to buildx irrespective of the infrastructure
+- Enable `CI_USE_BUILDX_ON_K8` feature flag to use buildx irrespective of the infrastructure
+- Choose the relevant native Build and Push step in the Harness CI Step Palette 
 - Set the `PLUGIN_NO_PUSH` environment variable to `true` at the stage or step level
-- Choose from a native Build and Push step in the Harness  CI Step Palette 
-
+- If you want to build a tarball archive instead of the standard docker OCI, you would need to pass a destination and image name (e.g. /folder/image.tar) to `PLUGIN_TAR_PATH` environment variable.
+- Set the `PLUGIN_DAEMON_OFF` to `true` to run Buildx tool in the daemonless mode as in Kubernetes or Cloud.
 <Tabs>
 <TabItem value="Cloud" label="Harness Cloud" default>
 
@@ -119,15 +127,17 @@ pipeline:
 ```
 </TabItem>
 </Tabs>
-The examples above demonstrate build-only mode with Docker registry. You can apply the same to other registries using the native build and push steps in the Harness CI step palette with the same environment variables.
+The examples above demonstrate build-only mode with Docker registry. You can apply the same to other registries using the appropriate native build and push steps in the Harness CI step palette with the same environment variable.
 
 ## Push-only
 This mode pushes a pre-built Docker image without building it again. This is useful after scanning or other validation steps.
 
 ### Setup
-- As mentioned in the note above, enabling the `CI_USE_BUILDX_ON_K8` feature flag will switch to buildx irrespective of the infrastructure
-- Set the `PLUGIN_PUSH_ONLY` environment variable to `true` at the step level
-This will ensure the build and push step will pick up the image built in the stage to push to the registry
+- Enable `CI_USE_BUILDX_ON_K8` feature flag to use buildx irrespective of the infrastructure
+- Choose the relevant native Build and Push step in the Harness CI Step Palette 
+- Set the `PLUGIN_PUSH_ONLY` environment variable to `true` at the step level to ensure the build and push step will pick up the image built to push to the registry
+- If you built a tarball archive earlier, set the `PLUGIN_SOURCE_TAR_PATH` pointing correctly to the source folder of that image and name. (e.g. /folder/image.tar)
+- Set the `PLUGIN_DAEMON_OFF` to `true` to run Buildx tool in the daemonless mode in Kubernetes or Cloud
 <Tabs>
 <TabItem value="Cloud" label="Harness Cloud" default>
 
@@ -166,8 +176,7 @@ pipeline:
                         caching: true
                         envVariables:
                           PLUGIN_NO_PUSH: "true"
-                  - parallel:
-                      - step:
+                  - step:
                           identifier: BuildAndPushDockerRegistry_2
                           type: BuildAndPushDockerRegistry
                           name: Docker Push only
@@ -180,19 +189,6 @@ pipeline:
                               PLUGIN_PUSH_ONLY: "true"
                           when:
                             stageStatus: Success
-                      - step:
-                          identifier: BuildAndPushECR_1
-                          type: BuildAndPushECR
-                          name: BuildAndPushECR_1
-                          spec:
-                            connectorRef: CONNECTOR
-                            region: REGION
-                            account: ACCOUNT
-                            imageName: IMAGE_NAME
-                            tags:
-                              - new-nopush-<+pipeline.sequenceId>-build-x
-                            envVariables:
-                              PLUGIN_PUSH_ONLY: "true"
 ```
 </TabItem>
 <TabItem value="Kubernetes" label="Kubernetes">
@@ -236,55 +232,46 @@ pipeline:
                         caching: true
                         envVariables:
                           PLUGIN_NO_PUSH: "true"
-                  - parallel:
-                      - step:
-                          identifier: BuildAndPushDockerRegistry_2
-                          type: BuildAndPushDockerRegistry
-                          name: Docker Push only
-                          spec:
-                            connectorRef: CONNECTOR
-                            repo: REPO_NAME
-                            tags:
-                              - new-nopush-<+pipeline.sequenceId>-build-x
-                            envVariables:
-                              PLUGIN_PUSH_ONLY: "true"
-                          when:
-                            stageStatus: Success
-                      - step:
-                          identifier: BuildAndPushECR_1
-                          type: BuildAndPushECR
-                          name: BuildAndPushECR_1
-                          spec:
-                            connectorRef: CONNECTOR
-                            region: REGION
-                            account: ACCOUNT
-                            imageName: IMAGE_NAME
-                            tags:
-                              - new-nopush-<+pipeline.sequenceId>-build-x
-                            envVariables:
-                              PLUGIN_PUSH_ONLY: "true"
+                  - step:
+                      identifier: BuildAndPushDockerRegistry_2
+                      type: BuildAndPushDockerRegistry
+                      name: Docker Push only
+                      spec:
+                        connectorRef: CONNECTOR
+                        repo: REPO_NAME
+                        tags:
+                          - new-nopush-<+pipeline.sequenceId>-build-x
+                        envVariables:
+                          PLUGIN_PUSH_ONLY: "true"
+                      when:
+                        stageStatus: Success
+                      
 ```
 </TabItem>
 </Tabs>
 
 ## Build Once and Push to Multiple Registries in Parallel
-This mode builds an image once and push it simultaneously to multiple registries(ECR, GAR, ACR and Docker).
+This mode builds an image once and push it simultaneously to multiple registries(ECR, GAR, ACR and Docker). Once an image is built, the native build and push steps expect a distinct tag for each of the images being pushed. Harness retags the image before pushing it to the registry.
 
 ### Setup
 :::note
-This workflow is supported only using Buildx.
+This workflow is currently supported using Buildx only.
 :::
-- You build the image in a step with the `PLUGIN_NO_PUSH` environment variable
-- Create 4 native build and push steps to push with the `PLUGIN_PUSH_ONLY` environment variable and set the `PLUGIN_SOURCE_IMAGE` environment variable so Harness can retag these images appropriately before pushing
+- Build an image in a native **Build and Push** step with the `PLUGIN_NO_PUSH` environment variable
+- Set `PLUGIN_BUILDX_LOAD` environment variable to true. This makes the image available in the local docker daemon
+- Create 4 native build and push steps (in series or parallel) to with the `PLUGIN_PUSH_ONLY` environment variable set to `true`
+- Set the `PLUGIN_SOURCE_IMAGE` environment variable with an appropriate name, so Harness can retag the image before pushing
+- Set the `PLUGIN_DAEMON_OFF` to `true` to run Buildx tool in the daemonless mode in Kubernetes or Cloud
 
 **Key Environment Variables**
 
 | **Environment Variable** | **Description**                                                                                |
 |--------------------------|------------------------------------------------------------------------------------------------|
-| `PLUGIN_NO_PUSH`         | Set this at stage or step level to skip image push pushing after build                         |
+| `PLUGIN_NO_PUSH`         | Set this at the step level to skip image push                         |
 | `PLUGIN_BUILDX_LOAD`     | Loads the built image into the local Docker daemon (required for reuse).                       |
 | `PLUGIN_PUSH_ONLY`       | Pushes the built image without rebuilding.                                                     |
 | `PLUGIN_SOURCE_IMAGE`    | Specifies the name and tag of the image for retagging before pushing to registries.            |
+| `PLUGIN_DAEMON_OFF`      | Runs the 
 
 Let us look at how this workflow is supported on different infrastructures: Harness cloud, Kubernetes
 <Tabs>
@@ -423,317 +410,20 @@ pipeline:
 </TabItem>
 </Tabs>
 
-## Push Only as Tarball (BuildX)
-This mode picks up an image saved in TAR archive format and pushes that to one or more registries. In some CI workflows, users prefer to build an image and export it as a TAR archive, then scan or validate the image offline, and only push it once validated.
+## Build, Scan, and Push (using Kaniko)
+
+Lastly, putting all of this together, this mode demonstrates how you can build a docker image locally, save it as a tar file, scan it, and then push to ECR (Elastic Container Registry). 
 
 ### Setup
+- Build an image in a native **Build and Push** step with the `PLUGIN_NO_PUSH` environment variable
 
-- Security: Run image scans before pushing to production.
-- Traceability: Store and archive artifacts before pushing.
-- Cross-stage separation: Build in one stage, push in another.
-- Registry agnostic: Push the same built artifact to DockerHub, ECR, GAR, ACR, etc.
-
-<Tabs> 
-<TabItem value="cloud" label="Harness Cloud" default>
-
-- No need to manually start Docker Daemon (DinD).
-- daemon_off=true is optional but recommended for consistency.
-- Uses native container runtimes with Buildx available by default.
-
-```YAML
-pipeline:
-  identifier: cloud_tar_push
-  name: Cloud TAR Push Only
-  projectIdentifier: PROJECT_ID
-  orgIdentifier: ORG_ID
-  stages:
-    - stage:
-        identifier: build_push_tar_cloud
-        type: CI
-        name: Cloud TAR Push
-        spec:
-          cloneCodebase: false
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-              - parallel:
-                  - step:
-                      identifier: BuildGAR
-                      type: BuildAndPushDockerRegistry
-                      name: GAR Build Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        repo: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_NO_PUSH: "true"
-                          PLUGIN_TAR_PATH: garimage.tar
-
-                  - step:
-                      identifier: BuildECR
-                      type: BuildAndPushECR
-                      name: ECR Build Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        region: REGION
-                        account: AWS_ACCOUNT_ID
-                        imageName: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_NO_PUSH: "true"
-                          PLUGIN_TAR_PATH: ecrimage.tar
-
-                  - step:
-                      identifier: BuildDocker
-                      type: BuildAndPushDockerRegistry
-                      name: Docker Build Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        repo: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_NO_PUSH: "true"
-                          PLUGIN_TAR_PATH: dockerimage.tar
-
-                  - step:
-                      identifier: BuildACR
-                      type: BuildAndPushDockerRegistry
-                      name: ACR Build Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        repo: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_NO_PUSH: "true"
-                          PLUGIN_TAR_PATH: acrimage.tar
-
-              - parallel:
-                  - step:
-                      identifier: PushGAR
-                      type: BuildAndPushDockerRegistry
-                      name: GAR Push Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        repo: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_PUSH_ONLY: "true"
-                          PLUGIN_SOURCE_TAR_PATH: garimage.tar
-
-                  - step:
-                      identifier: PushECR
-                      type: BuildAndPushECR
-                      name: ECR Push Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        region: REGION
-                        account: AWS_ACCOUNT_ID
-                        imageName: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_PUSH_ONLY: "true"
-                          PLUGIN_SOURCE_TAR_PATH: ecrimage.tar
-
-                  - step:
-                      identifier: PushDocker
-                      type: BuildAndPushDockerRegistry
-                      name: Docker Push Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        repo: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_PUSH_ONLY: "true"
-                          PLUGIN_SOURCE_TAR_PATH: dockerimage.tar
-
-                  - step:
-                      identifier: PushACR
-                      type: BuildAndPushDockerRegistry
-                      name: ACR Push Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        repo: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_PUSH_ONLY: "true"
-                          PLUGIN_SOURCE_TAR_PATH: acrimage.tar
-
-```
-</TabItem>
-<TabItem value="Kubernetes" label="Kubernetes">
-
-- PLUGIN_DAEMON_OFF=true is mandatory to bypass the Docker socket.
-
-```YAML
-pipeline:
-  identifier: k8s_tar_push
-  name: Kubernetes TAR Push Only
-  projectIdentifier: PROJECT_ID
-  orgIdentifier: ORG_ID
-  stages:
-    - stage:
-        identifier: build_push_tar_k8s
-        type: CI
-        name: K8s TAR Push
-        spec:
-          cloneCodebase: false
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: CONNECTOR
-              namespace: default
-              automountServiceAccountToken: true
-              os: Linux
-              nodeSelector: {}
-          execution:
-            steps:
-              - parallel:
-                  - step:
-                      identifier: BuildGAR
-                      type: BuildAndPushDockerRegistry
-                      name: GAR Build Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        repo: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_NO_PUSH: "true"
-                          PLUGIN_TAR_PATH: garimage.tar
-                          PLUGIN_DAEMON_OFF: "true"
-
-                  - step:
-                      identifier: BuildECR
-                      type: BuildAndPushECR
-                      name: ECR Build Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        region: REGION
-                        account: AWS_ACCOUNT_ID
-                        imageName: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_NO_PUSH: "true"
-                          PLUGIN_TAR_PATH: ecrimage.tar
-                          PLUGIN_DAEMON_OFF: "true"
-
-                  - step:
-                      identifier: BuildDocker
-                      type: BuildAndPushDockerRegistry
-                      name: Docker Build Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        repo: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_NO_PUSH: "true"
-                          PLUGIN_TAR_PATH: dockerimage.tar
-                          PLUGIN_DAEMON_OFF: "true"
-
-                  - step:
-                      identifier: BuildACR
-                      type: BuildAndPushDockerRegistry
-                      name: ACR Build Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        repo: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_NO_PUSH: "true"
-                          PLUGIN_TAR_PATH: acrimage.tar
-                          PLUGIN_DAEMON_OFF: "true"
-
-              - parallel:
-                  - step:
-                      identifier: PushGAR
-                      type: BuildAndPushDockerRegistry
-                      name: GAR Push Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        repo: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_PUSH_ONLY: "true"
-                          PLUGIN_SOURCE_TAR_PATH: garimage.tar
-                          PLUGIN_DAEMON_OFF: "true"
-
-                  - step:
-                      identifier: PushECR
-                      type: BuildAndPushECR
-                      name: ECR Push Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        region: REGION
-                        account: AWS_ACCOUNT_ID
-                        imageName: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_PUSH_ONLY: "true"
-                          PLUGIN_SOURCE_TAR_PATH: ecrimage.tar
-                          PLUGIN_DAEMON_OFF: "true"
-
-                  - step:
-                      identifier: PushDocker
-                      type: BuildAndPushDockerRegistry
-                      name: Docker Push Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        repo: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_PUSH_ONLY: "true"
-                          PLUGIN_SOURCE_TAR_PATH: dockerimage.tar
-                          PLUGIN_DAEMON_OFF: "true"
-
-                  - step:
-                      identifier: PushACR
-                      type: BuildAndPushDockerRegistry
-                      name: ACR Push Only
-                      spec:
-                        connectorRef: CONNECTOR
-                        repo: REPO
-                        tags:
-                          - <+pipeline.sequenceId>-buildx
-                        envVariables:
-                          PLUGIN_PUSH_ONLY: "true"
-                          PLUGIN_SOURCE_TAR_PATH: acrimage.tar
-                          PLUGIN_DAEMON_OFF: "true"
-
-```
-</TabItem>
-</Tabs>
-
-## Build, Scan, and Push
-
-Adding it all together, in this section, we'll demonstrate how you can build a docker image locally, save it as a tar file, scan it, and then push to ECR (Elastic Container Registry). 
-
-### Setup
 This mode uses the following environment variables in the step configuration to 
 | **Environment Variable** | **Description**                                                                                 |
 |---------------------------|------------------------------------------------------------------------------------------------|
-| `PLUGIN_NO_PUSH`          | Set this at step level to skip image push                                                      |
-| `PLUGIN_TAR_PATH`         | Specifies name and destination of the image TAR archive to be saved.                           |
-| `PLUGIN_PUSH_ONLY`        | Pushes the built image without rebuilding.                                                     |
-| `PLUGIN_SOURCE_TAR_PATH`  | Specifies the directory and name of the image TAR file to push.                                |
+| `PLUGIN_NO_PUSH`          | Set this at step level to skip pushing image being built to the registry                       |
+| `PLUGIN_TAR_PATH`         | Used during the build only phase in conjunction with `PLUGIN_NO_PUSH` to set the output image tarball's name and location.                                                                             |
+| `PLUGIN_PUSH_ONLY`        | Pushes the image built in the step earlier without rebuilding.                                 |
+| `PLUGIN_SOURCE_TAR_PATH`  | Specifies the directory and name of the image tarball to push. Harness will pick up the tarball image from this location and push it to the registry.                                                                                                     |
 
 Refer to the following pipeline example for building an image (build-only), then running a Trivy image scan, and then pushing the image to multiple registries in parallel(push-only).
 
