@@ -127,6 +127,47 @@ This error ocurrs if there's no scan target in the Scanner configuration. To fix
 
 An enhancement has been made to ensure the orchestration step always downloads results for the branch specified in the step, instead of downloading results only for main or master branches. For more information, go to the [STO 1.83.1 release notes](https://developer.harness.io/release-notes/security-testing-orchestration#version-1831).
 
+What types of scans does the CheckmarxOne step perform in Harness STO?
+The CheckmarxOne step supports SAST (Static Application Security Testing), Secret Scanning, Software Composition Analysis (SCA), and Infrastructure as Code (IaC) scanning. These scans help detect code vulnerabilities, hardcoded secrets, third-party library issues, and IaC misconfigurations.
+
+Can I use CheckmarxOne with private registries or non-root containers?
+Yes. While root access is required to inject custom certificates into scan images, you can use custom STO images and pipelines configured for non-root users by pulling images from private registries. See Harness documentation on STO image customization for setup instructions.
+
+What is the difference between Orchestration, Extraction, and Ingestion scan modes?
+Orchestration: Runs the scan and processes results end-to-end.
+
+Extraction: Pulls results from an external service before processing.
+
+Ingestion: Reads and processes results from a local file.
+Each mode has its own use case depending on where and how scan results are generated.
+
+How does the ‘Fail on Severity’ setting impact my pipeline execution?
+If vulnerabilities of the specified severity (e.g., HIGH, CRITICAL) or higher are detected, the pipeline automatically fails. You can choose from CRITICAL, HIGH, MEDIUM, LOW, INFO, or NONE to determine the threshold for pipeline failure.
+
+How do I configure proxy settings for CheckmarxOne scans in Harness Cloud?
+Harness supports proxy configuration using Secure Connect by auto-setting HTTPS_PROXY, HTTP_PROXY, and NO_PROXY variables. You can also manually define these in the step settings to route or exclude specific traffic during scans.
+
+Can I customize the Snyk scan behavior using CLI flags in Harness STO?
+Yes, the Snyk step allows passing custom CLI flags like --all-projects or --detection-depth=3 to modify scan behavior. However, this is considered an advanced feature, and not all flags may function correctly within the STO context, especially ones tied to specific build tools.
+
+What are the supported container image sources for Snyk scanning in STO?
+The Snyk step supports scanning images from Docker v2 registries, AWS ECR, Jfrog Artifactory, as well as local images or archives created during the pipeline. Each source requires proper configuration of the image name, tag, registry domain, and connector credentials.
+
+What causes the "Shallow clone detected" error in SonarQube scans?
+This error occurs if your pipeline's codebase depth is set to a shallow clone. SonarQube requires full repo history to generate blame information. To resolve this, set the depth to 0 (full clone) in the pipeline's Git clone settings.
+
+What resource allocation is recommended for SonarQube scans in STO?
+Ingestion scans typically require 500Mi memory.
+
+Orchestration and Extraction scans require at least 2GB of memory to ensure optimal performance.
+You can configure memory and CPU limits under Set Container Resources in the SonarQube step settings.
+
+How can I configure quality gates in SonarQube to fail a Harness STO pipeline?
+SonarQube quality gate failures appear as Info severity issues with the type EXTERNAL_POLICY.
+
+You can enforce policy-based pipeline failures using OPA policies in Harness, such as Security Tests - External Policy Failures.
+
+Ensure the SonarQube access token has Browse Project or Administer permissions to retrieve quality gate results.
 
 
 
