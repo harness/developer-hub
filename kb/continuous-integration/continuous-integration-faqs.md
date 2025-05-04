@@ -2703,6 +2703,25 @@ If it is operating as expected, the Kaniko CLI will show the following in the CL
 /kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=destination/repo:1.0 --snapshotMode=redo --digest-file=/kaniko/digest-file --ignore-path=/opt/nodejs
 ```
 
+How to send email attachment using harness?
+
+To send attachments using harness, One can use harness email plugin step. For more info on this - https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin/
+
+1. What is the purpose of the Artifact Metadata Publisher plugin in a CI pipeline?
+
+The Artifact Metadata Publisher plugin allows you to publish artifact URLs on the Artifacts tab of the Build details page, making it easier to access artifacts such as reports or binaries directly from the Harness UI.
+
+2. Can I use the Artifact Metadata Publisher plugin with AWS S3, and how does it compare to the S3 Upload and Publish plugin?
+
+Yes, you can use the Artifact Metadata Publisher with S3. However, the S3 Upload and Publish plugin combines both uploading and publishing in a single step, making it more efficient for S3 workflows.
+
+3. How do I configure the file_urls setting in the Artifact Metadata Publisher plugin?
+
+You can configure file_urls as a single URL string or a list of URLs. To label each link, use the format name:::url, separating the display name and URL with triple colons (:::). This helps clearly identify each artifact on the UI.
+
+4. What should I do if my artifact is in a private bucket and not publicly accessible for artifact Metadata Publisher plugin?
+If the artifact is in a private bucket, use a console view URL (like the AWS S3 console URL) so that users can access the artifact if they have the appropriate login credentials. Public URLs are not required but provide more convenience.
+
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 
