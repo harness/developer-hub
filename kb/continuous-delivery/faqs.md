@@ -3236,6 +3236,45 @@ As per the current design, there's no native step for this but user can write a 
 
 The rollback option is only available for the deployment stage, So you can only be able to see in the deployment stage.
 
+### What types of messages can I send using the Slack Notify step?
+
+You can send two types of messages using the Slack Notify step: plain text messages or Slack Block notifications. Text messages can be a fixed value, runtime input, or expression, while Slack Block notifications allow you to send structured messages (e.g., headers, buttons) in a predefined format.
+
+### What Jira field types are supported in the Create Jira step?
+
+Harness supports Jira fields of the following types: User, Option, Array, Any, Number, Date, and String. Complex fields like attachments or issue links are not supported and must be set using an HTTP step.
+
+### How can I link a new Jira issue to a parent ticket in the Jira Create step?
+
+You can link to a parent ticket by adding the Parent field under Optional Configuration > Fields, and setting the value to the parent issue key (e.g., TJI-47890). This allows you to create sub-tasks or link the new issue under a parent issue.
+
+### How does Harness handle Jira fields with date and time values?
+
+Harness supports dynamic date/time expressions using functions like currentDate() and currentTime(). You can modify these with methods such as .plusDays(), .plusMonths(), etc., to populate custom date fields dynamically in the Jira issue.
+
+### Why am I unable to assign users in the Jira Create step?
+
+This is likely due to permission restrictions in Jira. Fields like Assignee or Reporter must be editable and searchable in your Jira instance. Refer to Atlassian’s documentation if users are not showing up in these fields.
+
+### Why don’t Resource Constraints apply to Custom stages by default?
+
+Resource Constraints depend on the presence of a service + infrastructure combination, which Custom stages do not use. For Custom stages, you should use Barriers or Queue steps to manage synchronization or execution control.
+
+### Can I use Barriers across multiple pipelines to synchronize their execution?
+
+No, Barriers are scoped only to a single pipeline. You cannot use a Barrier defined in one pipeline within another pipeline.
+
+### What’s the difference between Resource Constraints and Queue steps in Harness?
+
+Resource Constraints prevent simultaneous deployments to the same service + infrastructure within a pipeline, whereas Queue steps control the execution order across multiple pipeline executions, even across different projects, using a custom resource key.
+
+
+### What happens if one service fails during parallel multi-service deployments?
+If services are deployed in parallel, a failure in one service will not affect the others. Each service-environment combination is treated independently. However, if deployed in serial, a failure may halt the stage and trigger rollback before the next service is deployed.
+
+### How does max concurrency impact performance and reliability in high-scale multi-service deployments?
+Max concurrency throttles parallel deployments to avoid overloading infrastructure or delegates. Harness calculates concurrency automatically, but you can set a custom limit using the CDS_CUSTOM_MAX_CONCURRENCY feature flag for tighter control.
+
 
 ### Infrastructure provisioning FAQs
 
