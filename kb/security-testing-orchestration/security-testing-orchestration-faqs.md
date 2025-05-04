@@ -169,5 +169,14 @@ You can enforce policy-based pipeline failures using OPA policies in Harness, su
 
 Ensure the SonarQube access token has Browse Project or Administer permissions to retrieve quality gate results.
 
+How does STO determine the current baseline when using a RegEx?
+When using a RegEx baseline, STO identifies the most recently scanned variant that matches the regular expression as the current baseline. This makes it easy to track the introduction or remediation of vulnerabilities as new release branches are created and scanned over time.
+
+What precautions should I take when creating a RegEx baseline?
+Ensure that your variant naming scheme is consistent so the RegEx accurately matches the intended branches or images. STO uses the re2 syntax for regular expressions. Harness recommends thoroughly testing your RegEx patterns to prevent misclassification of variants or failed comparisons.
+
+Is it possible to automate scan report exports in Harness STO pipelines?
+Yes, you can automate scan result exports by adding a Run step to your pipeline after the last security scan. This step uses the Harness API to generate and email a PDF report based on the specified dashboard and execution ID. For more info on this - https://developer.harness.io/docs/security-testing-orchestration/view-security-test-results/export-scan-results
+
 
 
