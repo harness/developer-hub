@@ -110,6 +110,7 @@ export const DbdData: Horizon = {
           "Allow referencing properties from a database instance inside the JDBC URL of a database connector.",
         tag: [{ value: "Orchestration" }],
       }
+    ]
   },
   "Future": {
     description: "typically > 6 months out",
