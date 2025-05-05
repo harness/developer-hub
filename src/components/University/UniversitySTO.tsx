@@ -290,7 +290,7 @@ export default function CertificationsSTO() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness STO Free/Team
+                      <strong>Product version: </strong> Harness STO Free
                       Plans
                     </span>
                   </div>
@@ -357,8 +357,8 @@ export default function CertificationsSTO() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness STO Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness STO Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -432,8 +432,8 @@ export default function CertificationsSTO() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness STO Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness STO Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
