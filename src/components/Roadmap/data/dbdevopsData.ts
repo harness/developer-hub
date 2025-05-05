@@ -1,5 +1,5 @@
 import { Horizon } from "./roadmapData";
-export const DbdData: Horizon = {
+export const dbdevopsData: Horizon = {
   "Recently Delivered": {
     description: "What has been released in the last ~2 Quarters",
     feature: [
