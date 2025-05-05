@@ -110,8 +110,7 @@ The following deprecated API endpoints are longer supported:
 ### Version 1.88.x <!--May 5, 2025-->
 
 #### Fixed issues
-- When users who weren't logged in clicked on a deep link, they were sometimes taken to the homepage after logging in instead of the page they wanted to visit. This has now been fixed. Users will be correctly redirected to their intended page after login.
-[PL-61939]
+- Resolved an issue where unauthenticated users were redirected to the homepage after login instead of their intended deep link destination. [PL-61939]
 
 #### New features and enhancements
 - Support for adding Delegate Configurations (legacy feature) from the Resource Groups page has been removed. [PL-60603]
