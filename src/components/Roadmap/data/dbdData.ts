@@ -5,8 +5,8 @@ export const DbdData: Horizon = {
     feature: [
       {
         title: "Spanner for Google SQL",
-        description: "Added support for the Google SQL version of the Gogle spanned database as a supported database type.",
-        tag: [{ value: "Database Support" }, {value: "Q1"}],
+        description: "Added support for the Google SQL version of the Google spanner database as a supported database type.",
+        tag: [{ value: "Integrations" }, {value: "Q1"}],
         link:"https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/#setting-up-google-spanner"
       },
       {
@@ -16,7 +16,7 @@ export const DbdData: Horizon = {
           "Visibility into shcema name and db instance in the pipeline execution list. Must enable the feature flag: CDS_EXECUTION_LIST_CARD_VIEW",
       },
       {
-        tag: [{ value: "Changelog" }, {value: "Q1"}],
+        tag: [{ value: "Integrations" }, {value: "Q1"}],
         title: "Custom Script Source",
         description: "It is now possible to read a changelog via a custom script in addition to from git or artifactory.",
       },
@@ -81,171 +81,104 @@ export const DbdData: Horizon = {
     description: "Variable Branch Override",
     feature: [
       {
-        title: "Allow branch to be read from a pipeline variable",
+        title: "Allow DB Instance branch to be read from a pipeline variable",
         description:
-          "Configure Sumo Logic as a streaming destination in Harness to send audit log data to your Sumo Logic hostel collectors.",
-        tag: [{ value: "Audit Trail" }],
+          "Allow a DB Instance to read the branch it deploys from from a pipeline variable. This is useful for deploying feature branches..",
+        tag: [{ value: "Orchestration" }],
       },
       {
-        title: "Audit events for expired API token",
+        title: "Log Size (Phase 2)",
         description:
-          "Dedicated event for expiry of API tokens allowing for easy debugging.",
-        tag: [{ value: "Audit Trail" }],
+          "Change how we transport prieview SQL from the build pod back to harness to remove the SQL size limit",
+        tag: [{ value: "Orchestration" }],
       },
       {
-        title: "Granular RBAC Permissions for User Groups",
+        title: "Licensing",
         description:
-          "Granular permissions for User Groups to provide users more control while creating different roles.",
-        tag: [{ value: "Access Control" }],
+          "Implement a subscription UI for Harness Database DevOps",
+        tag: [{ value: "Governance" }],
       },
       {
-        title: "Impersonate a user",
+        title: "Kerberos Auth",
         description:
-          "Ability to impersonate a user allowing an impersonator to perform actions on the user behalf. This helps admins ensure that all users have desired access to resources.",
-        tag: [{ value: "Access Control" }],
+          "Support Kerberos Auth for Oracle and MSSQL",
+        tag: [{ value: "Integrations" }],
       },
       {
-        title: "Granular RBAC Permissions for Dashboards",
+        title: "Variablized JDBC URL",
         description:
-          "Granular permissions for Dashboards to provide users more control while creating different roles.",
-        tag: [{ value: "Access Control" }, { value: "Dashboards" }],
-      },
-      {
-        title: "Auto save Dashboard",
-        description:
-          "Auto save progress made on dashboards.",
-        tag: [{ value: "Dashboards" }],
-      },
-      {
-        title: "Copy tiles from a dashboard",
-        description:
-          "Copy tile from one dashboard and use it in another dashboard.",
-        tag: [{ value: "Dashboards" }],
-      },
-      {
-        title: "Access control for Dashboard: Schedule Delivery",
-        description:
-          "Copy tile from one dashboard and use it in another dashboard.",
-        tag: [{ value: "Dashboards" }, { value: "Access Control" }],
-      },
-      {
-        title: "Auto upgrade Harness Docker Delegate",
-        description:
-          "",
-        tag: [{ value: "Delegate" }],
-      },
-      {
-        title: "High availability support for Harness Docker Delegate",
-        description:
-          "",
-        tag: [{ value: "Delegate" }],
-      },
-      {
-        title: "Send notifications through Delegate",
-        description:
-          "Receive central or pipeline notifications exclusively through Delegates or a designated delegate.",
-        tag: [{ value: "Delegate" }],
-      },
-      {
-        title: "Policy as Code for Variables",
-        description:
-          "Support for Variables as an entity to store and enforce policies for variables and processes across the Harness platform.",
-        tag: [{ value: "Policy" }],
-      },
-      {
-        title: "Customized notification body text",
-        description:
-          "Create and manage customized notification body text",
-        tag: [{ value: "Notify" }],
-      },
-      {
-        title: "Send high frequency notifications",
-        description:
-          "",
-        tag: [{ value: "Notify" }],
-      },
-      {
-        title: "List UI Improvements",
-        description:
-          "Revamping and optimizing the list view feature in our application's user interface across all modules",
-        tag: [{ value: "UI" }],
-      },
-      {
-        tag: [{value: "Pipeline"}],
-        title: "Pipeline Data Retention",
-        description:
-          "Extended Data Retention, Data Archiving, and Compliance capabilities",
-      },
-      {
-        tag: [{ value: "Pipeline" }, { value: "Template" }],
-        title: "Template Library",
-        description: "Open Source repository for Pipeline Templates",
-      },
-      {
-        tag: [{value: "Pipeline"}],
-        title: "Flexible Templates that Support User-Injected Steps",
-        description: "Users can pull a template into their pipeline and inject a step into it.",
-      },
-      {
-        tag: [{value: "Pipeline"}],
-        title: "Bulk Reconciliation when a User Update a Template ",
-        description: "When a user updates a template, they can now bulk update each pipeline referring to the template.",
-      },
-      {
-        tag: [{ value: "Pipeline" }],
-        title: "Priority Queue for Pipeline Execution",
-        description: "",
-      },
-      {
-        tag: [],
-        title: "Console log line limit",
-        description: "Ability to increase the console log line limits",
-      },
-      {
-        tag: [{ value: "SMP" }],
-        title: "Supported modules",
-        description:
-          "Supply Chain Security - Beta, Infrastructure as Code Mgmt - Beta",
-      },
-      {
-        tag: [],
-        title: "Auto Discovery of Entities in Git",
-        description: "When an entity is created in Git it is created in Harness as well.",
-      },
-    ],
+          "Allow referencing properties from a database instance inside the JDBC URL of a database connector.",
+        tag: [{ value: "Orchestration" }],
+      }
   },
   "Future": {
     description: "typically > 6 months out",
     feature: [
       {
-        title: "Export audit trail as CSV",
+        title: "Native Flyway Support",
         description:
-          "Export audit trail as a CSV directly from Harness UI.",
-        tag: [{ value: "Audit Trail" }],
+          "Add native support for using Flyway instead of liquibase",
+        tag: [{ value: "Integrations" }],
       },
       {
-        tag: [{ value: "Policy" }],
-        title: "Policy to govern projects",
-        description:
-          "Support to allow policy to govern projects",
+        title: "Support for Snowflake",
+        description: "Add support for Snowflake as a supported database type.",
+        tag: [{ value: "Integrations" }],
+        link:"https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/#setting-up-google-spanner"
       },
       {
-        tag: [{ value: "SMP" }],
-        title: "Supported modules",
-        description:
-          "Internal Developer Portal",
+        title: "Spanner for postgresql",
+        description: "Add support for the postgres version of the Google spanner database as a supported database type.",
+        tag: [{ value: "Integrations" }],
       },
       {
-        title: "Custom Login Message for SMP",
-        description:
-          "Add a custom message on the login screen in SMP. Typically used for Legal disclaimers.",
-        tag: [{ value: "SMP" }],
+        title: "Spanner for AWS Redshift",
+        description: "Add support for the AWS Redshift database as a supported database type.",
+        tag: [{ value: "Integrations" }],
       },
       {
-        title: "Move Project between Organizations",
+        title: "Spanner for Google BigQuery",
+        description: "Add support for the Google BigQueryt database as a supported database type.",
+        tag: [{ value: "Integrations" }],
+      },
+      {
+        title: "Spanner for Couchbase",
+        description: "Add support for the Couchbase database as a supported database type.",
+        tag: [{ value: "Integrations" }],
+      },
+      {
+        title: "Spanner for Teradata",
+        description: "Add support for the Teradata database as a supported database type.",
+        tag: [{ value: "Integrations" }],
+      },
+      {
+        title: "Spanner for YugabyteDB",
+        description: "Add support for the YugabyteDB database as a supported database type.",
+        tag: [{ value: "Integrations" }],
+      },
+      {
+        tag: [{ value: "Governance" }],
+        title: "Governance for MongoDB",
         description:
-          "Move a project from one org to another to support scenarios like ownership change.",
-        tag: [],
+          "Governance for MongoDB",
+      },
+      {
+        tag: [{ value: "Core Features" }],
+        title: "Anonymized Queries",
+        description:
+          "Allow developers to run ad-hoc read queries against DBs, with an ab ility to anonymize results",
+      },
+      {
+        title: "DB Provisioning",
+        description:
+          "integrate to Harness IACM to simplify DB provisioning and handling of ephemeral database environments.",
+        tag: [{ value: "Core Features" }],
+      },
+      {
+        title: "Drift Detection",
+        description:
+          "Detect and surface schema differences between a database and its expected state",
+        tag: [{ value: "Core Features" }],
       },
       {
         title: "Increased in Data Retention period",
