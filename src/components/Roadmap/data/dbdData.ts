@@ -78,10 +78,10 @@ export const DbdData: Horizon = {
     ],
   },
   "Next": {
-    description: "Next planned work items, ~6 months out",
+    description: "Variable Branch Override",
     feature: [
       {
-        title: "Audit logs streaming on Sumo Logic",
+        title: "Allow branch to be read from a pipeline variable",
         description:
           "Configure Sumo Logic as a streaming destination in Harness to send audit log data to your Sumo Logic hostel collectors.",
         tag: [{ value: "Audit Trail" }],
