@@ -110,11 +110,14 @@ The following deprecated API endpoints are longer supported:
 ### Version 1.88.x <!--May 5, 2025-->
 
 #### Fixed issues
+
 - Resolved an issue where unauthenticated users were redirected to the homepage after login instead of their intended deep link destination. [PL-61939]
+- Fixed error messaging for non-inline secrets created via YAML to ensure accurate status on the secret listing page. [PL-62270]
+
 
 #### New features and enhancements
+
 - Support for adding Delegate Configurations (legacy feature) from the Resource Groups page has been removed. [PL-60603]
-- Fixed error messaging for non-inline secrets created via YAML to ensure accurate status on the secret listing page. [PL-62270]
 
 ## April 2025 
 
