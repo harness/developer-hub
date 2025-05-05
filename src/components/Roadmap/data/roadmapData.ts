@@ -59,6 +59,12 @@ const ModuleData: ModuleData[] = [
     horizon: CdData,
   },
   {
+    title: "Database DevOps",
+    description: "SaaS release status: GA, SMP release status: GA",
+    module: MODULES.dbd,
+    horizon: DbdData,
+  },
+  {
     title: "Continuous Integration",
     description: "SaaS release status: GA, SMP release status: GA",
     module: MODULES.ci,
