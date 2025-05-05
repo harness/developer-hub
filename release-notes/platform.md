@@ -115,7 +115,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 - Support for adding Delegate Configurations (legacy feature) from the Resource Groups page has been removed. [PL-60603]
--
+- Fixed error messaging for non-inline secrets created via YAML to ensure accurate status on the secret listing page. [PL-62270]
 
 ## April 2025 
 
