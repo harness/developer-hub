@@ -49,7 +49,36 @@ export const platformData: Horizon = {
     ],
   },
   Now: {
-    description: "Q1 2025, Feb 2025 - Apr 2025",
+    description: "Currently under active development, next ~1 quarter",
+    feature: [
+      {
+        title: "Log Size phase 1",
+        description:
+          "Add compression to preview step logs to increase maximum supported SQL size beyond 64kb by approximately 5x.",
+        tag: [{ value: "Orchestration" }],
+      },
+      {
+        title: "Connector Secrets",
+        description:
+          "Add option to pass secrets to build pods without going through a Kubernetes secret object",
+        tag: [{ value: "Governance" }],
+      },
+      {
+        title: "Finish Governance",
+        description:
+          "Various enhancement on our policy enforcement to support known customer-specific policies",
+        tag: [{ value: "Governance" }],
+      },
+      {
+        title: "Change Audits",
+        description:
+          "Visibility into database changes and the history of applying them across numerous Database DevOps screens",
+        tag: [{ value: "Visibility" }],
+      }
+    ],
+  },
+  Next: {
+    description: "Next planned work items, ~6 months out",
     feature: [
       {
         title: "Audit logs streaming on Sumo Logic",
@@ -185,8 +214,8 @@ export const platformData: Horizon = {
       },
     ],
   },
-  Later: {
-    description: "Q2 2025+, May 2025 & beyond",
+  Future: {
+    description: "typically > 6 months out",
     feature: [
       {
         title: "Export audit trail as CSV",
