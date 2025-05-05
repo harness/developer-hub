@@ -49,7 +49,7 @@ export const DbdevopsData: Horizon = {
     ],
   },
   "Now": {
-    description: "Currently under active development, next ~1 quarter",
+    description: "Currently under active development, next ~1 Quarter",
     feature: [
       {
         title: "Log Size phase 1",
@@ -78,10 +78,10 @@ export const DbdevopsData: Horizon = {
     ],
   },
   "Next": {
-    description: "Variable Branch Override",
+    description: "What we'll build next, next ~2 Quarters",
     feature: [
       {
-        title: "Allow DB Instance branch to be read from a pipeline variable",
+        title: "Variable Branch Override",
         description:
           "Allow a DB Instance to read the branch it deploys from from a pipeline variable. This is useful for deploying feature branches..",
         tag: [{ value: "Orchestration" }],
