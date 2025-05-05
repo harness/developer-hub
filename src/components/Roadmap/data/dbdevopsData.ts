@@ -5,7 +5,7 @@ export const DbdevopsData: Horizon = {
     feature: [
       {
         title: "Spanner for Google SQL",
-        description: "Added support for the Google SQL version of the Google spanner database as a supported database type.",
+        description: "Added support for the Google SQL version of the Google Spanner database as a supported database type.",
         tag: [{ value: "Integrations" }, {value: "Q1"}],
         link:"https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/#setting-up-google-spanner"
       },
@@ -13,19 +13,19 @@ export const DbdevopsData: Horizon = {
         tag: [{ value: "Visibility" }, {value: "Q1"}],
         title: "DB in Execution List",
         description:
-          "Visibility into shcema name and db instance in the pipeline execution list. Must enable the feature flag: CDS_EXECUTION_LIST_CARD_VIEW",
+          "Visibility into schema name and db instance in the pipeline execution list. Must enable the feature flag: CDS_EXECUTION_LIST_CARD_VIEW",
       },
       {
         tag: [{ value: "Integrations" }, {value: "Q1"}],
         title: "Custom Script Source",
-        description: "It is now possible to read a changelog via a custom script in addition to from git or artifactory.",
+        description: "It is now possible to read a changelog via a custom script in addition to from git or artifactory connectors.",
       },
       {
         tag: [{ value: "Changelog" }, {value: "Q1"}],
         title: "Support Property Overrides",
         link:"https://developer.harness.io/docs/database-devops/concepts-and-features/subs-properties-in-changelogs",
         description:
-          "ability to define changelog property overrides on database instances, and reference them within your changelog",
+          "ability to define changelog property overrides on database instances, and reference them within your changelog.",
       },
       {
         tag: [{ value: "Governance" }, {value: "Q4"}],
@@ -43,16 +43,16 @@ export const DbdevopsData: Horizon = {
         tag: [{ value: "Orchestration" }],
         title: "Rollback to Start of Deployment",
         description:
-          "Provide easy ability for pipeline to rollback applied changes from the same pipeline",
+          "Provide easy ability for pipeline to rollback applied changes from the same pipeline.",
         link: "https://developer.harness.io/docs/database-devops/use-database-devops/rollback-for-database-schemas#rolling-back-to-a-previous-database-state"
       }
     ],
   },
   "Now": {
-    description: "Currently under active development, next ~1 Quarter",
+    description: "Currently under active development, ~ current quarter",
     feature: [
       {
-        title: "Log Size phase 1",
+        title: "Log Size (Phase 1)",
         description:
           "Add compression to preview step logs to increase maximum supported SQL size beyond 64kb by approximately 5x.",
         tag: [{ value: "Orchestration" }],
@@ -78,12 +78,12 @@ export const DbdevopsData: Horizon = {
     ],
   },
   "Next": {
-    description: "What we'll build next, next ~2 Quarters",
+    description: "What we'll build next, next ~2 quarters",
     feature: [
       {
         title: "Variable Branch Override",
         description:
-          "Allow a DB Instance to read the branch it deploys from from a pipeline variable. This is useful for deploying feature branches..",
+          "Allow a DB Instance to read the branch it deploys to from a pipeline variable. This is useful for deploying feature branches.",
         tag: [{ value: "Orchestration" }],
       },
       {
@@ -128,32 +128,32 @@ export const DbdevopsData: Horizon = {
         link:"https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/#setting-up-google-spanner"
       },
       {
-        title: "Spanner for postgresql",
+        title: "Support for Spanner for postgresql",
         description: "Add support for the postgres version of the Google spanner database as a supported database type.",
         tag: [{ value: "Integrations" }],
       },
       {
-        title: "Spanner for AWS Redshift",
+        title: "Support for AWS Redshift",
         description: "Add support for the AWS Redshift database as a supported database type.",
         tag: [{ value: "Integrations" }],
       },
       {
-        title: "Spanner for Google BigQuery",
-        description: "Add support for the Google BigQueryt database as a supported database type.",
+        title: "Support for Google BigQuery",
+        description: "Add support for the Google BigQuery database as a supported database type.",
         tag: [{ value: "Integrations" }],
       },
       {
-        title: "Spanner for Couchbase",
+        title: "Support for Couchbase",
         description: "Add support for the Couchbase database as a supported database type.",
         tag: [{ value: "Integrations" }],
       },
       {
-        title: "Spanner for Teradata",
+        title: "Support for Teradata",
         description: "Add support for the Teradata database as a supported database type.",
         tag: [{ value: "Integrations" }],
       },
       {
-        title: "Spanner for YugabyteDB",
+        title: "Support for YugabyteDB",
         description: "Add support for the YugabyteDB database as a supported database type.",
         tag: [{ value: "Integrations" }],
       },
@@ -161,13 +161,13 @@ export const DbdevopsData: Horizon = {
         tag: [{ value: "Governance" }],
         title: "Governance for MongoDB",
         description:
-          "Governance for MongoDB",
+          "Ability to write rego policies when deploying to MongoDB",
       },
       {
         tag: [{ value: "Core Features" }],
         title: "Anonymized Queries",
         description:
-          "Allow developers to run ad-hoc read queries against DBs, with an ab ility to anonymize results",
+          "Allow developers to run ad-hoc read queries against DBs, with an ability to anonymize results",
       },
       {
         title: "DB Provisioning",
