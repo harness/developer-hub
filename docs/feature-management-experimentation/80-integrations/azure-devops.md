@@ -1,6 +1,6 @@
 ---
-title: Azure Split Experimentation
-sidebar_label: Azure Split Experimentation
+title: Azure DevOps
+sidebar_label: Azure DevOps
 description: ""
 ---
 
