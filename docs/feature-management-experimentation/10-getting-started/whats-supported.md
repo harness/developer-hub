@@ -7,7 +7,7 @@ sidebar_position: 1
 
 This topic lists platform and technologies supported by Harness Feature Management & Experimentation (FME).
 
-For more information about FME features and functionality, go to the [Harness FME overview](/docs/feature-management-experimentation/getting-started/docs/overview.md).
+For more information about FME features and functionality, go to the [Harness FME overview](/docs/feature-management-experimentation/10-getting-started/docs/overview.md).
 
 For information about upcoming and recently released features, go to the [Harness FME product roadmap](https://developer.harness.io/roadmap/#fme).
 

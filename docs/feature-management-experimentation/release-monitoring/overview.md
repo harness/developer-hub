@@ -10,7 +10,7 @@ This document provides an overview of Release Monitoring and how it can be used 
 
 Release Monitoring is a capability that Harness FME provides with our powerful statistics, monitoring, and alerting engine. 
 
-![Overview of Release Monitoring](./static/release_monitoring.png)
+![Overview of Release Monitoring](./static/release-monitoring.png)
 
 There are five key components of Release Monitoring:
 
