@@ -99,7 +99,7 @@ Learn more about the [Harness platform hierarchy](https://developer.harness.io/d
 
 All core entities can exist at different scopes, but their permissions and access levels depend on the RBAC settings you apply. With granular RBAC, you can define custom roles with specific permissions for Catalog and Workflows (Create, Edit, Read, Delete, Execute), and organize them into reusable resource groups. These permissions are fully aligned with the existing Harness RBAC framework.
 
-With IDP 2.0, you can create entities at any scope: **Account**, **Org**, or **Project**. Here's how entities and scopes link together in IDP 2.0:
+With IDP 2.0, you can create resources at any scope: **Account**, **Org**, or **Project**. Here's how resources and scopes link together in IDP 2.0:
 
 | **Resource**   | **Account scope** | **Org scope** | **Project scope** | **Notes**                                                                                                  |
 | -------------- | ----------------- | ------------- | ----------------- | ---------------------------------------------------------------------------------------------------------- |
