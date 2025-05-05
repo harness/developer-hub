@@ -89,7 +89,7 @@ export const DbdevopsData: Horizon = {
       {
         title: "Log Size (Phase 2)",
         description:
-          "Change how we transport prieview SQL from the build pod back to harness to remove the SQL size limit",
+          "Change how we transport preview SQL from the build pod back to harness to remove the SQL size limit",
         tag: [{ value: "Orchestration" }],
       },
       {
