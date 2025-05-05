@@ -15,7 +15,7 @@ import { platformData } from "./platformData";
 import { aidaData } from "./aidaData";
 import { codeData } from "./codeData";
 import { CdeData } from "./cdeData"; 
-import { DbdevopsData } from "./dbdData"; 
+import { DbdevopsData } from "./dbdevopsData"; 
 
 
 export interface ModuleData {
