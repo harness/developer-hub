@@ -1,7 +1,7 @@
 ---
-title: Role-based access control (RBAC)
+title: Role-based access control (RBAC) [1.0]
 description: Learn how to create roles with required permissions and assign them to users and user groups.
-sidebar_position: 1
+sidebar_position: 4
 ---
 
 ## Introduction
