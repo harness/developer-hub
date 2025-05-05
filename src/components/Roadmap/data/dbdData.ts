@@ -1,5 +1,5 @@
 import { Horizon } from "./roadmapData";
-export const platformData: Horizon = {
+export const dbdData: Horizon = {
   "Recently Delivered": {
     description: "What has been released in the last ~2 Quarters",
     feature: [
