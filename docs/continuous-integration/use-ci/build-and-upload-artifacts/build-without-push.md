@@ -9,10 +9,11 @@ import TabItem from '@theme/TabItem';
 
 Each organization may have different workflows to build and push Docker images. One common scenario is to build an image locally, scan it for vulnerabilities, and push only after a successful scan.
 
-Harness CI now supports these workflows by passing environment variables to adjust the default behavior of the native **Build and Push steps**. Harness uses two build tools to build and push images - BuildX and Kaniko. Harness makes this selection based on the build infrastructure. You also have the option to pick one of these build tools.
+Harness CI now supports these workflows by passing environment variables to adjust the default behavior of the native **Build and Push steps**. Based on the selected build infrastructure Harness uses one of two build tools to build and push images- Kaniko or BuildX. You now have the option to pick one of these build tools.
+Before we dive into the workflows supported by Harness, lets look at why you would choose one build tool over another.
 
 **Kaniko** is used to build container images from a Dockerfile inside a container or Kubernetes pod.
-- Runs without privileged mode (more secure)
+- Runs without privileged mode (granting same capabilities as the host machine - making it a root-level container)
 - Default choice for Kubernetes environments
 - Executes Dockerfile instructions directly
 
@@ -38,7 +39,7 @@ This mode builds a Docker image locally without pushing it to a registry. For in
 - Choose the relevant native Build and Push step in the Harness CI Step Palette
 - Set these environment variables:
   - `PLUGIN_NO_PUSH`: `true` (skips pushing the image)
-  - `PLUGIN_TAR_PATH`: `Path for saving the image` (e.g. /folder/image.tar)
+  - `PLUGIN_TAR_PATH`: `Path for saving the image as tar archive` (e.g. /folder/image.tar)
   - `PLUGIN_DEAEMON_OFF`: `true` (for daemonless BuildX mode)
 
 Following is a reference `build-only` YAML snippet:
@@ -86,18 +87,16 @@ Following is a reference `build-only` YAML snippet:
         envVariables:
           PLUGIN_NO_PUSH: "true"
   - step:
-          identifier: BuildAndPushDockerRegistry_2
-          type: BuildAndPushDockerRegistry
-          name: Docker Push only
-          spec:
-            connectorRef: CONNECTOR
-            repo: REPO_NAME
-            tags:
-              - new-nopush-<+pipeline.sequenceId>-build-x
-            envVariables:
-              PLUGIN_PUSH_ONLY: "true"
-          when:
-            stageStatus: Success
+      identifier: BuildAndPushDockerRegistry_2
+      type: BuildAndPushDockerRegistry
+      name: Docker Push only
+      spec:
+        connectorRef: CONNECTOR
+        repo: REPO_NAME
+        tags:
+          - new-nopush-<+pipeline.sequenceId>-build-x
+        envVariables:
+          PLUGIN_PUSH_ONLY: "true"
 ```
 The examples above demonstrate push-only mode to Dockerhub on Harness Cloud. You can apply the same to other registries using the appropriate native build and push steps in the Harness CI step palette with the same environment variables.
 
