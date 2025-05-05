@@ -181,22 +181,16 @@ export const DbdData: Horizon = {
         tag: [{ value: "Core Features" }],
       },
       {
-        title: "Increased in Data Retention period",
+        title: "Impact Analysis",
         description:
-          "Support for increased data retention for Audit logs & Pipeline logs.",
-        tag: [],
+          "Automatically analyze changes against db metadata before applying to surface possible unintended consequences.",
+        tag: [{ value: "Core Features" }],
       },
       {
-        tag: [{ value: "Pipeline" }, { value: "Insights" }],
-        title: "Pipeline Analytics",
-        description: "",
-      },
-      {
-        tag: [{ value: "Pipeline" }],
-        title: "DAG Support For Pipeline",
-        description:
-          "Enable complex flows such as parallel execution, stage grouping, etc.",
-      },   
+        tag: [{ value: "Core Features" }],
+        title: "Linting",
+        description: "Automatically lint changelogs and sql before application",
+      }
     ],
   }, 
 };
