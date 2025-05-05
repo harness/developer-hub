@@ -11,12 +11,16 @@ Each organization may have different workflows to build and push Docker images. 
 
 Harness CI now supports these workflows by passing environment variables to adjust the default behavior of the native **Build and Push steps**. Harness uses two build tools to build and push images - BuildX and Kaniko. Harness makes this selection based on the build infrastructure. You also have the option to pick one of these build tools.
 
-**Kaniko** is used to build container images from a Dockerfile inside a container or Kubernetes pod. It runs as a standalone executable in containers without privileged mode, eliminating the need for Docker-in-Docker setups, enhancing security and simplifying **kubernetes** workflows. It performs builds directly by executing Dockerfile instructions and assembling the layers without Docker itself.
+**Kaniko** is used to build container images from a Dockerfile inside a container or Kubernetes pod.
+- Runs without privileged mode (more secure)
+- Default choice for Kubernetes environments
+- Executes Dockerfile instructions directly
 
-**BuildX** is a Docker CLI plugin that extends Docker's build capabilities using BuildKit (Docker's builder). It relies on a Docker daemon to perform builds. It interacts directly with Docker. BuildX can operate in two modes:
-- With Docker Daemon: Often requires a Docker-in-Docker (DinD) or privileged access when used inside containers or kubernetes environment.
-- Daemonless mode: BuildX supports daemonless builds using container runtimes like `containerd` or remote builders requiring additional configuration. This is supported on both Kubernetes or VM based environment, but is more commonly used in Kubernetes and less needed in VMs.
-BuildX, however, offers better support for caching (Docker Layer Caching in Harness), multi-platform builds, other buildkit features like secret mounting, output options - tarball or oci image. This also integrates better with a local Docker setup or in VM based environments.
+**BuildX** is a Docker CLI plugin that extends Docker's build capabilities using BuildKit (Docker's builder). It relies on a Docker daemon to perform builds. 
+- It is better for caching, multi-platform builds
+- It works in two modes:
+  - With Docker Daemon (may require Docker-in-Docker) 
+  - Daemonless mode (using containerd or remote builders)
 :::note
 By default, Harness uses Kaniko for Kubernetes builds. To use BuildX instead, enable the `CI_USE_BUILDX_ON_K8` feature flag.
 :::
@@ -105,22 +109,12 @@ This mode builds an image once and pushes it simultaneously to multiple registri
 This workflow currently only works with Buildx.
 :::
 - Build an image in a native **Build and Push** step with the the following environment variables:
-  - `PLUGIN_NO_PUSH`: `true` 
-  - `PLUGIN_BUILDX_LOAD`: `true`
+  - `PLUGIN_NO_PUSH`: `true` (Skips pushing the image during build)
+  - `PLUGIN_BUILDX_LOAD`: `true` (Loads the image into the local Docker daemon, so buildx can pick it up in the subsequent steps)
 - Create separate push steps with:
-  - `PLUGIN_PUSH_ONLY`: `true`
-  - `PLUGIN_SOURCE_IMAGE`: `Name of the image to retag before pushing`
+  - `PLUGIN_PUSH_ONLY`: `true` (Pushes without rebuilding)
+  - `PLUGIN_SOURCE_IMAGE`: `Name of the image to retag before pushing` (Harness distinctly retags these images as required by the native step)
   - `PLUGIN_DAEMON_OFF`: `true` (BuildX in daemonless mode)
-
-**Key Environment Variables**
-
-| **Environment Variable** | **Description**                                                                                |
-|--------------------------|------------------------------------------------------------------------------------------------|
-| `PLUGIN_NO_PUSH`         | Set this at the step level to skip image push                         |
-| `PLUGIN_BUILDX_LOAD`     | Loads the built image into the local Docker daemon (required for reuse).                       |
-| `PLUGIN_PUSH_ONLY`       | Pushes the built image without rebuilding.                                                     |
-| `PLUGIN_SOURCE_IMAGE`    | Specifies the name and tag of the image for retagging before pushing to registries.            |
-| `PLUGIN_DAEMON_OFF`      | Runs BuildX in daemonless mode
 
 Let us look at how this workflow is supported in Harness
 
@@ -178,10 +172,10 @@ Following is a complete workflow to build, scan for vulnerabilities and then pus
 
 ### Setup
 - Build an image in a native **Build and Push** step with the following environment variables:
-  - `PLUGIN_NO_PUSH`: `true` (skip pushing during build)
+  - `PLUGIN_NO_PUSH`: `true` (skip pushing the image during build)
   - `PLUGIN_TAR_PATH`: `Path for saving the image` (e.g. /folder/image.tar)
 - Push the image with the native **Build and Push** step with the following environment variables:
-  - `PLUGIN_PUSH_ONLY`: `true` (skips building)
+  - `PLUGIN_PUSH_ONLY`: `true` (Pushes without rebuilding)
   - `PLUGIN_SOURCE_TAR_PATH`: `Path to your previously built image` (e.g. /folder/image.tar)
 
 Refer to the following pipeline example:
