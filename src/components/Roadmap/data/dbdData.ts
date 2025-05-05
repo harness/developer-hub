@@ -1,6 +1,6 @@
 import { Horizon } from "./roadmapData";
 export const platformData: Horizon = {
-  Recently Delivered: {
+  "Recently Delivered": {
     description: "What has been released in the last ~2 Quarters",
     feature: [
       {
@@ -48,7 +48,7 @@ export const platformData: Horizon = {
       }
     ],
   },
-  Now: {
+  "Now": {
     description: "Currently under active development, next ~1 quarter",
     feature: [
       {
@@ -77,7 +77,7 @@ export const platformData: Horizon = {
       }
     ],
   },
-  Next: {
+  "Next": {
     description: "Next planned work items, ~6 months out",
     feature: [
       {
@@ -214,7 +214,7 @@ export const platformData: Horizon = {
       },
     ],
   },
-  Future: {
+  "Future": {
     description: "typically > 6 months out",
     feature: [
       {
