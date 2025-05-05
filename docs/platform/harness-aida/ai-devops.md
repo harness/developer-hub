@@ -7,6 +7,17 @@ sidebar_position: 53
 
 The **Harness AI DevOps Agent** streamlines your DevOps processes by enabling you to create and edit steps, stages, and pipelines with ease. Leveraging the power of Large Language Models, the agent provides intelligent suggestions, automates repetitive tasks, and now generates and integrates OPA Rego policies to help you meet your compliance standards.
 
+:::info AI Models
+
+The AI DevOps Agents use the following AI models to facilitate your DevOps tasks:
+
+- DevOps Agent: Claude 3.7 Sonnet
+- Support Agent: OpenAI GPT-4o
+- OPA Agent: OpenAI GPT-4o
+- Error Analyzer: OpenAI GPT-4o
+
+:::
+
 ## Installation and Setup
 
 The Harness AI DevOps Agent is enabled directly within the Harness UI—no separate installation on an external tool or marketplace is required. Follow these steps to activate the agent:
