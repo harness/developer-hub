@@ -105,6 +105,18 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## May 2025
+
+### Version 1.88.x <!--May 5, 2025-->
+
+#### Fixed issues
+- When users who weren't logged in clicked on a deep link, they were sometimes taken to the homepage after logging in instead of the page they wanted to visit. This has now been fixed. Users will be correctly redirected to their intended page after login.
+[PL-61939]
+
+#### New features and enhancements
+- Support for adding Delegate Configurations (legacy feature) from the Resource Groups page has been removed. [PL-60603]
+-
+
 ## April 2025 
 
 ### Version 1.87.x <!--April 28, 2025-->
@@ -117,7 +129,6 @@ The following deprecated API endpoints are longer supported:
 #### New features and enhancements
 
 - Implicit tag (delegate name) is now supported for delegate version override. [PL-62335]
-- Support for adding Delegate Configurations (legacy feature) from the Resource Groups page has been removed. [PL-60603]
 - Added support for governing scope Variables in Harness using Open Policy Agent (OPA) policies, enabling fine-grained control over variable creation and editing. This feature is currently behind the feature flag `PL_ENABLE_OPA_FOR_VARIABLES`. [PL-61504]
 
 ### Version 1.86.x <!--April 23, 2025-->
