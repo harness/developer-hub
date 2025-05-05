@@ -74,3 +74,7 @@ The Harness AI DevOps Agent also enhances compliance by generating and integrati
 | **Seamless Policy Integration**           | Integrate generated policies into your existing workflows to ensure adherence to compliance standards.      |
 
 This feature helps maintain robust security and compliance postures by ensuring that your pipelines adhere to industry standards.
+
+### Video Demo
+
+<DocVideo src="https://www.loom.com/share/b07b9609119f4168b948739154d9a863?sid=d5fd1172-569f-4e59-b2dc-867b551ba108" title="AI DevOps Agent Demo" />
