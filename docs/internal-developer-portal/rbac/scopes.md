@@ -69,6 +69,10 @@ Resource groups either include **All Resources** (all resources of a given type)
 - Catalog
 - Workflow
 - Layouts
+- Scorecards
+- Integrations
+- Plugins
+- Advanced Configuration
 
 This means as per the permissions defined in the role you select and grant to the principal, you can manage and select the resource group (set of resources) you want to apply the role on for the principal. 
 
