@@ -283,11 +283,11 @@ This release includes the following Harness module and component versions.
 | Change Data Capture       | 1.41.0                                                                                       |
 | STO Core                  | 1.135.0                                                                                      |
 | Test Intelligence Service | 1.44.0                                                                                       |
-| NG UI                     | 1.70.2                                                                                       |
+| NG UI                     | 1.70.3                                                                                       |
 | LE NG                     | 1.5.6                                                                                        |
 | Looker                    | 1.7.11                                                                                       |
 | Log Service               | 1.19.0                                                                                       |
-| Batch Processing          | 1.44.2                                                                                       |
+| Batch Processing          | 1.44.3                                                                                       |
 | Gateway                   | 1.42.4                                                                                       |
 | IaCM Manager              | 1.72.0                                                                                       |
 
