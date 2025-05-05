@@ -145,7 +145,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 
 | Resource | Permissions | Status |
 | --- | --- | --- |
-| Notification Rules | <ul><li>View (`core_notificationrule_view`)</li><li>Create/Edit (`core_notificationrule_edit`)</li><li>Delete (`core_notificationrule_delete`)</li></ul> | ACTIVE |
+| Notification Rules | <ul><li>View (`core_notificationrule_view`)</li><li>Create/Edit (`core_notificationrule_edit`)</li><li>Delete (`core_notificationrule_delete`)</li></ul> | EXPERIMENTAL |
 | Notification Channels | <ul><li>View (`core_notificationchannel_view`)</li><li>Create/Edit (`core_notificationchannel_edit`)</li><li>Delete (`core_notificationchannel_delete`)</li></ul> | EXPERIMENTAL |
 | Legacy Notifications | <ul><li>View (`core_notification_view`)</li><li>Create/Edit (`core_notification_edit`)</li><li>Delete (`core_notification_delete`)</li></ul> | DEPRECATED |
 
