@@ -7,7 +7,7 @@ sidebar_position: 60
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Drift occurs when the actual resources in your cloud environment differ from those defined in your Terraform or OpenTofu state file. This usually happens when someone makes manual changes — for example, modifying a resource directly in the cloud console instead of updating it through code.
+Drift occurs when the actual resources in your cloud environment differ from those defined in your OpenTofu or Terraform state file. This usually happens when someone makes manual changes — for example, modifying a resource directly in the cloud console instead of updating it through code.
 
 Harness IaCM helps detect and highlight these discrepancies, enabling you to quickly reconcile the real infrastructure with your configuration. This is typically done using a provisioning pipeline, which ensures that your Git-based configuration is the source of truth.
 
@@ -63,10 +63,10 @@ You can also run drift detection by configuring a plugin step in your pipeline Y
     identifier: drift_or_refresh
     type: Plugin
     spec:
-      connectorRef: <your_terraform_or_tofu_image_connector>
+      connectorRef: <your_tofu_or_terraform_image_connector>
       image: plugins/harness-tofu # or plugins/harness-terraform
       settings:
-        command: detect-drift or plan-refresh-only
+        command: detect-drift # plan-refresh-only
       environmentVariables:
         PLUGIN_WORKSPACE: <your_workspace_id>
 ```
