@@ -8,7 +8,7 @@ There are three required filters for analysis:
 - **Targeting rule.** If you are using a special targeting rule, select the one that corresponds to the traffic you want to gain insight into. By default, Harness FME selects the default rule, which is the last rule in the Targeting section of your feature flag definition.
 - **Treatments.** Select two treatments to compare, so you can understand how one treatment is performing against another. For example, you would select “on” as the treatment and “off” as the baseline for an on/off feature flag.
 
-Optionally, you can filter the metrics displayed by metric tag, metric owner, or metric result. For more information, see the [Metrics](/docs/feature-management-experimentation/release-monitoring/metrics/overview#metric-list) documentation.
+Optionally, you can filter the metrics displayed by metric tag, metric owner, or metric result. For more information, see the [Metrics](.././metrics/overview#metric-list) documentation.
 
 ## Selecting a version
 

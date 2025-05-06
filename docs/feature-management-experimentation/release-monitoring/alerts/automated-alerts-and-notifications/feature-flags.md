@@ -17,7 +17,7 @@ To enable or disable alert notifications for a specific feature flag, do the fol
 
 1. Next to the feature flag name, click on the gear icon, and select **Alerts setup**.
 
-1. Note that feature flag alerts can only be enabled for all production environments at this time. (You can change the Environment type to **Production** when you edit an environment in Admin settings, accessed via the top button in the left navigation panel.) For more information about environments, see the [Environments](/hc/en-us/articles/360019915771) guide.
+1. Note that feature flag alerts can only be enabled for all production environments at this time. (You can change the Environment type to **Production** when you edit an environment in Admin settings, accessed via the top button in the left navigation panel.) For more information about environments, see the [Environments](https://help.split.io/hc/en-us/articles/360019915771) guide.
 
 1. Under Alert conditions, check the box **When a key metric reaches significance** to turn the feature flag’s alerting on. This means that an alert will be immediately triggered whenever one of this feature flag’s key metrics reaches a desired or undesired impact. Unchecking the box will turn the feature flag’s alerting off.
 
@@ -63,7 +63,7 @@ When you receive an alert, you can view the feature flag in the Harness FME UI a
 
 ### Metric alerting
 
-Toggling a feature flag’s alerting on or off will not disable metric alerting, which is defined and enabled on a metric’s Alert policy tab. It is possible that a metric simultaneously triggers a feature flag alert and a metric alert if it is selected as a key metric for a feature flag and if the thresholds in both alert definitions are reached. To define metric alert policies, review the [Configuring metric alerting](/hc/en-us/articles/19832312225293) guide.
+Toggling a feature flag’s alerting on or off will not disable metric alerting, which is defined and enabled on a metric’s Alert policy tab. It is possible that a metric simultaneously triggers a feature flag alert and a metric alert if it is selected as a key metric for a feature flag and if the thresholds in both alert definitions are reached. To define metric alert policies, review the [Configuring metric alerting](https://help.split.io/hc/en-us/articles/19832312225293) guide.
 
 ### Alert baseline treatment and treatment distribution
 
@@ -75,7 +75,7 @@ Clicking the **Recalculate metrics** button on the Metrics impact tab in the fea
 
 ## Troubleshooting feature flag alerts
 
-For troubleshooting an alert that did not fire as expected, refer to the [Troubleshooting alerting](/hc/en-us/articles/19832825482637) guide.
+For troubleshooting an alert that did not fire as expected, refer to the [Troubleshooting alerting](https://help.split.io/hc/en-us/articles/19832825482637) guide.
 
 
 To understand the impact of your feature flags, you need to know when critical changes are occurring. Harness FME gives you the ability to create alerts that actively check for a degradation in your metrics. Alerts that fired are displayed both on the Targeting and Alerts tab on the feature flag page.

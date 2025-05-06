@@ -17,7 +17,7 @@ Release Monitoring alerts are designed to work seamlessly with your existing wor
 
 ### Alert policies
 
-Control how and when alerts trigger by creating an [alert policy]((.././alerts/al). Define thresholds, notification rules, and alert behaviors that match your team's processes.
+Control how and when alerts trigger by creating an [alert policy](.././alerts/alert-policies). Define thresholds, notification rules, and alert behaviors that match your team's processes.
 
 ### Monitoring window
 
