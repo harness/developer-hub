@@ -65,6 +65,7 @@ export const IacmData: Horizon = {
         tag: [{ value: "Developer Experience" }],
         title: "CLI Integration",
         description: "Having the ability to run Workspace-related pipelines directly from CLI",
+        link: "/docs/infra-as-code-management/workspaces/cli-integration",
       },
       {
         tag: [{ value: "Security" },{ value: "Enterprise" }],
