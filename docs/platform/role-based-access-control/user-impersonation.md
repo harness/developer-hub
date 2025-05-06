@@ -59,10 +59,11 @@ The Action column shows the activity, while the User column indicates wh
     **The following actions are disabled during an impersonation session to ensure security and control:**
     
     - You cannot impersonate yourself.  
-    - Signing out, switching accounts, and changing passwords are not allowed.  
-    - Creating, editing, or deleting Personal Access Tokens (PATs) is disabled.  
+    - Account-related actions such as signing out, switching accounts, changing the default account, or resetting passwords are disabled.
+    - Viewing all impersonated users' accounts is not permitted.
+    - You cannot create, edit, or delete Personal Access Tokens (PATs).  
     - Managing Two-Factor Authentication (2FA) is restricted.
-    - Public access and IP allowlist is also not permitted.
+    - Public access and configuring IP allowlists are also disallowed.
 :::
 
 
