@@ -6,6 +6,12 @@ export const IacmData: Horizon = {
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
+        title: "Looker Dashboard",
+        description: "IaCM provides a Looker dashboard that allows you to monitor the state of your resources and track the cost of your resources",
+        link: "/docs/infra-as-code-management/reports-insights/dashboards",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
         title: "Default Pipelines",
         description: "Users will have the ability to assign pipelines to different Terraform/OpenTofu operations, making it easier to control the automation for each Workspace update",
         link: "/docs/infra-as-code-management/pipelines/default-pipelines",
@@ -59,7 +65,7 @@ export const IacmData: Horizon = {
         tag: [{ value: "Developer Experience" }],
         title: "Module Registry",
         description: "Private Module Registry to test and publish approved modules",
-        link: "/docs/category/module-registry",
+        link: "/docs/infra-as-code-management/iacm-features/module-registry",
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -78,6 +84,12 @@ export const IacmData: Horizon = {
     description: "Q2 2025, May 2025-July 2025",
     feature: [
       {
+        tag: [{ value: "Developer Experience" }],
+        title: "Module Registry Testing",
+        description: "Automate the validation and testing of modules in isolated environments before publishing, ensuring only high-quality, compliant modules are available in the private Module Registry.",
+        link: "/docs/infra-as-code-management/iacm-features/module-registry/module-registry-testing",
+      },
+      {
         tag: [{ value: "Simplify Onboarding" }],
         title: "Workspace templates",
         description: "Users will be able to create Workspaces that will inherit cost, OPA, and other configurations from templates, simplifying onboarding and enforcing best practices",
@@ -86,7 +98,7 @@ export const IacmData: Horizon = {
       {    
         tag: [{ value: "Developer Experience" }],
         title: "Variable Sets",
-        description: "Define reusable collections of Terraform and environment variables, as well as connectors, that can be used across different workspaces. This feature makes it easy to manage variables centrally while maintaining security for sensitive data.",
+        description: "Define reusable collections of OpenTofu/Terraform and environment variables, as well as connectors, that can be used across different workspaces. This feature makes it easy to manage variables centrally while maintaining security for sensitive data.",
       },
       {
         tag: [{ value: "Developer Experience" }],
