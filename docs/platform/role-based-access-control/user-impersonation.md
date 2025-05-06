@@ -61,7 +61,8 @@ The Action column shows the activity, while the User column indicates wh
     - You cannot impersonate yourself.  
     - Signing out, switching accounts, and changing passwords are not allowed.  
     - Creating, editing, or deleting Personal Access Tokens (PATs) is disabled.  
-    - Managing Two-Factor Authentication (2FA) is also restricted.
+    - Managing Two-Factor Authentication (2FA) is restricted.
+    - Public access and IP allowlist is also not permitted.
 :::
 
 
