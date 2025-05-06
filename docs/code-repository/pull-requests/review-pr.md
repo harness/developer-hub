@@ -24,7 +24,7 @@ When reviewers leave comments on your PR, you can reply and resolve comments on 
 
 ## Submit reviews
 
-When you review a PR, you can leave feedback, request changes, or approve the PR.
+When you review a PR, you can leave feedback, mention other users to collaborate, request changes, or approve the PR.
 
 1. In Harness Code, go to the repository where you need to review a pull request.
 2. Go to **Pull Requests**, and select the PR you need to review.
@@ -43,14 +43,16 @@ On the **Conversation** tab, you can read the PR description, comment history (i
 
 You can add images and videos to your PR comments. Videos must be 10MB or less. Harness Code supports and tests the following video file formats: `.3gpp`, `.avi`, `.flv`, `.mkv`, `.mov`, `.mp4`, and `.webm`. Other formats might work, but support isn't guaranteed.
 
-If you need to share a comment with someone else, you can copy the PR comment's direct link.
+If you need to share a comment with someone else, you can mention them directly with `@username` or  you can copy the PR comment's direct link.
 
 </TabItem>
 <TabItem value="changes" label="Changes">
 
-On the **Changes** tab, you can review the aggregated, latest code changes in the PR and add line-by-line comments.
+On the **Changes** tab, you can review the aggregated, latest code changes in the PR and add comments. You can add a comment to a single line or multiple lines. Within your comments you can @ mention other users to notify them about your comments or request their feedback. You can also add code suggestions directly to your review comments by using the `suggestion` keyword, enclosed within triple backticks.
 
 * Select the `+` **Add** icon to comment on a specific line.
+
+* To comment on multiple lines at once, click the `+` **Add** icon and drag your mouse to select all relevant lines you want to comment on.
 
 * Select the **Expand All** icon view an entire file within the Changes context.
 

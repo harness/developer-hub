@@ -13,7 +13,7 @@ Azure Application Gateway is a web traffic load balancer that enables you to man
 
 ### Before You Begin
 
-* [Connect to an Azure Connector](../1-add-connectors/add-azure-connector.md)
+* [Connect to an Azure Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure)
 * [Create AutoStopping Rules for Azure](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
 
 ## Create a New Application Gateway
@@ -66,7 +66,7 @@ Perform the following steps to create a new Application Gateway in Azure.
 
 3. If you have already linked your Azure account and want to use that account, then select the Azure account from the list.
 
-4. If you have not added your cloud account, click **New Connector**. For the detailed steps, see [Connect to an Azure Connector](../1-add-connectors/add-azure-connector.md).  
+4. If you have not added your cloud account, click **New Connector**. For the detailed steps, see [Connect to an Azure Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure).  
 
   ![](./static/create-an-application-gateway-for-azure-04.png)
   

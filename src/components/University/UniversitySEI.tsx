@@ -290,8 +290,8 @@ export default function CertificationsSEI() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SEI Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness SEI Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -362,8 +362,8 @@ export default function CertificationsSEI() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SEI Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness SEI Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -450,8 +450,8 @@ export default function CertificationsSEI() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SEI Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness SEI Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>

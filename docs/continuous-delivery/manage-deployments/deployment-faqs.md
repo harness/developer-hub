@@ -314,13 +314,6 @@ You can save input sets in a different repo from the pipeline. All you need to d
 Go under Git Experience and checkmark Allow different repo for Pipeline and InputSets. Now while trying to save the input you can save it in a different repo. 
 
 
-### Harness enabling auto-deployment.
-
-To have automatic deployment in Harness, you can make use of triggers. On new artifact. 
-Refer this [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/triggers/trigger-a-deployment-on-a-time-schedule/)
-As soon as your build is complete and it publishes a new artifact you can setup a trigger on that and it will trigger a Harness Deployment. 
-
-
 ### How to exit a workflow without marking it as failed.
 
 You can add a failure strategy in the deploy stage by either ignoring the failure for the shell script or getting a manual intervention where you can mark that step as a success. 

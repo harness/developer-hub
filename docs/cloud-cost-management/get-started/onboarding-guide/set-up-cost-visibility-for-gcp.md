@@ -26,7 +26,6 @@ After enabling CCM, it takes about 24 hours for the data to be available for vie
 
 ## Before you begin
 
-* The same connector cannot be used in NextGen and FirstGen. For information on creating a GCP connector in the FirstGen see [Set Up Cost Visibility for GCP](../../../first-gen/cloud-cost-management/setup-cost-visibility/enable-cloud-efficiency-for-google-cloud-platform-gcp.md).
 * Review [Required permissions and roles](https://cloud.google.com/iam/docs/understanding-custom-roles#required_permissions_and_roles) to create an IAM role at the organization level
 * Ensure that you have the following permissions to enable and configure the export of Google Cloud billing data to a BigQuery dataset:
 	+ **Billing Account Administrator** role for the target Cloud Billing account
@@ -108,6 +107,18 @@ You need to enter Dataset Name in Harness.
 12. Enter the **Table Name** in Harness.
 13. Select **Continue**.
 
+:::info 
+⚠️ GCP Billing Export Table Limitations and CMEK Restrictions
+When setting up a connector for GCP Billing Export, keep the following limitations and guidelines in mind:
+
+- GCP does not support copying data across regions if the source table uses CMEK.
+- GCP also does not allow copying data from Materialized Views.
+- If your organization enforces CMEK policies, consider creating a new dataset without CMEK enabled specifically for the integration.
+- It is recommended to create the dataset in the US region, as it offers the most compatibility with GCP billing export operations.
+- Use datasets with default (Google-managed) encryption when configuring the connector.
+
+:::
+
 ### Choose Requirements
 
 Select the Cloud Cost Management features that you would like to use on your GCP account.
@@ -149,13 +160,21 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
 
    <img src={dataset_permissions} alt="Entering the dataset name." height="50%" width="50%" />
 
-   :::info
+:::info
 
-   To enable AutoStopping rules, you need to add more permissions.
+To add AutoStopping permissions:
 
-   For more information, go to [Create a GCP Connector for AutoStopping Rules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/create-a-gcp-connector-for-auto-stopping-rules).
+1. Navigate to the IAM & Admin page on the GCP console.
+2. Click **IAM** on the right pane.
+3. Click **Add** in the PERMISSION tab.
+4. In the **Add Principals to [Project name]** window, enter the service principal.
+5. Select the required roles and click **Save**.
 
-   :::
+When a connector is created, a service account is created in Harness' GCP project that is unique for each customer. This service account is created only once per customer. You need to assign two roles to this service account in the GCP project that they are connecting to Harness CCM:
+
+* **Compute Admin** - Assign this role to Harness' service account. This allows Harness CCM to be able to perform AutoStopping actions such as starting and stopping of VMs and Instance groups. Also, GCP AutoStopping involves the usage of a custom VM with configurations as per your preference (instance type configuration). This requires access to create and launch a VM in which a custom load balancer for AutoStopping is installed.
+* **Secret Manager Secret Accessor** - Assign this role if you intend to use TLS/HTTPS in the routing configurations of the AutoStopping Rule. You need to upload the certificate's private key and the public certificate as secrets in GCP. Harness needs access to these secrets to be able to configure the custom load balancer. This role provides access to only the particular versions of the secrets, provided the complete path is entered during the creation of the custom load balancer. It does not let Harness view or list all the secrets in your GCP project. You can also add additional protection in the GCP on your end to provide conditional access to secrets as necessary. For example, provide access to Harness' service account to versions of only those secrets with a naming convention like "Harness-".
+:::
 
 9. Select **Continue** in Harness.
 
@@ -180,6 +199,8 @@ The connection is validated and verified in this step. After successfully testin
 Your connector is now listed in the **Connectors**.
 
 <DocImage path={require('./static/set-up-cost-visibility-for-gcp-13.png')} width="50%" height="50%" title="Click to view full size image" />
+
+
 
 ### Next Steps
 

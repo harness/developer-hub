@@ -22,7 +22,7 @@ const Roadmap = () => {
     { value: 'ff', name: 'Feature Flags', icon: 'icon_ff.svg' },
     {
       value: 'fme',
-      name: 'Feature Mgmt & Experimentation',
+      name: 'Feature Management & Experimentation',
       icon: 'icon_fme.svg',
     },
     { value: 'ccm', name: 'Cloud Cost Management', icon: 'icon_ccm.svg' },

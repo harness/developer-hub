@@ -37,7 +37,9 @@ To filter applications or their components by tags, do the following:
 6. To retrieve Harness entities that match a given tag with any value, select the **Any Value** checkbox to the tag's right. To match only one or more specific values, select the checkboxes to their left.
 
    :::info note 
-   Within a given tag, inclusive OR search logic is *always* applied among the *values* you select. (Remember that each tag can take only one value on a given application or component—so a restrictive AND search for two or more values would always return zero results.) The search logic among your selected *Tags* is either OR or AND—depending on your **Match** [setting](#tags_search_logic). 
+   Within a given tag, **inclusive OR logic** is *always* applied among the *values* you select. For example, if you select `env: dev` and `env: qa`, Harness will return components that have either tag value.
+   When **only tags** are used to filter (without entering anything in the Name field), Harness applies **OR logic** between the selected tags. This means components that match *any* of the selected tags will be shown.
+   However, when you filter using **both Name and Tags**, Harness applies **AND logic**—displaying only the components that match **both** the Name and the selected Tags.
    :::
 
    The **Tags** field updates to display a running summary of your selections.

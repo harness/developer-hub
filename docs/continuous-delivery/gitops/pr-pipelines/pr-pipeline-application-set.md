@@ -12,6 +12,20 @@ This approach ensures consistency, reduces manual effort, and enables streamline
 
 Learn more about [Application Set](https://developer.harness.io/docs/continuous-delivery/gitops/applicationsets/appset-basics).
 
+We have multiple ways of creating Application Set in GitOps:-
+
+- Git Generator
+- List Generator
+- Cluster Generator
+- Matrix Generator
+- Merge generator
+- SCM Provider generator
+- Pull Request generator
+- Cluster Decision Resource generator
+- Plugin Generator
+
+Learn more about each [Generator Type](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Generators/). We are going to discuss creating Application Set by using Git Generator.
+
 ---
 
 

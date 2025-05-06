@@ -289,8 +289,8 @@ export default function CertificationsIDP() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness IDP Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -361,8 +361,8 @@ export default function CertificationsIDP() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness IDP Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -449,8 +449,8 @@ export default function CertificationsIDP() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness IDP Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness IDP Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>

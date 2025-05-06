@@ -22,6 +22,10 @@ This topic describes how to create a new budget.
 
 ## Create a New Budget
 
+
+:::note
+Budgets' start date cannot be later than the 28th of any month. 
+:::
 Perform the following steps to create a budget:
 
 1. Navigate to the **Cloud Cost Management** module and click **Budgets.**

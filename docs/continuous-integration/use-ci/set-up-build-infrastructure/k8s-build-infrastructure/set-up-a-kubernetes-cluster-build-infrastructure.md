@@ -22,16 +22,13 @@ You can use a Kubernetes cluster build infrastructure for **Build** stages in Ha
 2. [Create a Kubernetes cluster connector and install the Harness Delegate.](#create-a-kubernetes-cluster-connector-and-install-the-delegate)
 3. [Configure the build infrastructure in Harness.](#configure-the-build-infrastructure-in-harness)
 
-<details>
-<summary>Architecture diagram</summary>
+### Architecture diagram
 
 The following diagram shows the architecture of a kubernetes cluster build infrastructure. You interact with the Harness Platform through your browser. The Harness Delegate, which is installed in your Kubernetes cluster, manages communication between the Harness Platform and the Kubernetes pod where the pipeline's build farm is running. While the pipeline runs, the build farm communicates with your codebase, such as GitHub, and container registry, such as Docker Hub.
 
 ![](../static/ci-pipeline-quickstart-13.png)
 
 You must install the Harness Delegate in the same cluster you use for the build farm. The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
-
-</details>
 
 <details>
 <summary>Video summary</summary>

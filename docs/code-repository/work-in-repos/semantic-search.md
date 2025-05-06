@@ -26,6 +26,22 @@ To get more accurate results from semantic search:
 * Ask specific questions with details of what you need.
 * Combine broader semantic searches with targeted [keyword searches](/docs/code-repository/work-in-repos/keyword-search) to find the exact code you need.
 
+## How to enable Semantic Code Search
+
+To use Semantic Search, you need to enable the feature flag and trigger indexing for your repository.
+
+Step 1: Enable the feature flag `SEMANTIC_SEARCH_ENABLED` in your Harness account.
+
+Step 2: Make the following API call to start the indexing process for your repository:
+
+```
+curl -X POST 'https://app.harness.io/gateway/code/api/v1/repos/{repo-identifier}/semantic/index?accountIdentifier={account-identifier}&orgIdentifier={org-identifier}&projectIdentifier={project-identifier}' \
+  -H 'X-Api-Key: YOUR_HARNESS_API_KEY' 
+```
+
+:::note
+After triggering indexing, it may take a little time before semantic search is fully functional. If you try to search too early, you might see a temporary 500 error.
+:::
 ### Use Harness Harness AI for semantic searches of your code
 
 ![An example of semantic code search with Harness Harness AI](./static/semanticsearch.gif)

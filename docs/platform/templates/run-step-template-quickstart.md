@@ -12,7 +12,7 @@ The Harness Template Library enables you to standardize and create step template
 
 To demonstrate how to create, configure, and use step templates, this topic adds a CD Run step template to a [CD pipeline](/docs/category/cd-and-gitops-tutorials). You can also create templates for [CI Run steps](/docs/continuous-integration/use-ci/run-step-settings) or any other step type in Harness.
 
-This topic assumes you're familiar with [Harness' key concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md).
+This topic assumes you're familiar with [Harness' key concepts](/docs/platform/get-started/key-concepts).
 
 ### Objectives
 
@@ -37,12 +37,6 @@ To create a inline step template from the project scope, do the following:
 7. In **Version Label**, enter the version of the stage, for example, `v1`. Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
 8. Under **How do you want to set up your template?**, select **Inline**.
 9. Select **Start**. The **Step Library** panel opens.
-
-:::info note
-Harness now supports storing Inline Entities in the Harness Git Repository.  
-For more details, refer to [Storing Inline Entities in Harness Git Repository](/docs/platform/git-experience/harness-code-inline.md).
-:::
-
 
 ### Step 2: Add step parameters
 

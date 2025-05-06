@@ -96,5 +96,7 @@
 
 /docs/self-managed-enterprise-edition/get-started/onboarding-guide /docs/self-managed-enterprise-edition/smp-overview
 /docs/category/get-started-with-smp /docs/self-managed-enterprise-edition/get-started-with-smp
+# Added by ravilach on 04-24-2025 for Broken CI Category
+/docs/category/troubleshoot-ci /docs/category/troubleshoot-harness-ci
 
 # Redirects generated from Front Matter [sytem generated goes below here]:

@@ -111,11 +111,11 @@ const sidebars: SidebarsConfig = {
           id: "instructions",
           className: "sidebar-ilt-instructions",
         },
-        // FAQs
+        // Policies and FAQs
         {
           type: "doc",
-          label: "FAQs",
-          id: "faqs",
+          label: "Policies & FAQs",
+          id: "policies-and-faqs",
           className: "sidebar-faqs",
         },
       ],

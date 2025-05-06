@@ -17,17 +17,17 @@ import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
-    img: `${url}img/cert_dev_scs_badge.svg`,
+    img: `${url}img/cert-dev-scs-badge.svg`,
     alt: "Harness Certified Expert - Developer",
     type: certType.developer,
   },
   {
-    img: `${url}img/cert_adm_scs_badge.svg`,
+    img: `${url}img/cert-adm-scs-badge.svg`,
     alt: "Harness Certified Expert - Administrator",
     type: certType.administrator,
   },
   {
-    img: `${url}img/cert_arc_scs_badge.svg`,
+    img: `${url}img/cert-arc-scs-badge.svg`,
     alt: "Harness Certified Expert - Architect",
     type: certType.architect,
   },
@@ -274,13 +274,13 @@ export default function CertificationsSCS() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_dev_scs_badge.svg`}
+                      src={`${baseUrl}img/cert-dev-scs-badge.svg`}
                       alt="Harness Certified Expert - SCS Developer"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SCS Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness SCS Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -350,13 +350,13 @@ export default function CertificationsSCS() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_adm_scs_badge.svg`}
+                      src={`${baseUrl}img/cert-adm-scs-badge.svg`}
                       alt="Harness Certified Expert - SCS Administrator"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SCS Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness SCS Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -438,13 +438,13 @@ export default function CertificationsSCS() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_arc_scs_badge.svg`}
+                      src={`${baseUrl}img/cert-arc-scs-badge.svg`}
                       alt="Harness Certified Expert - SCS Architect"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SCS Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness SCS Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
