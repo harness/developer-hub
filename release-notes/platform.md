@@ -54,24 +54,26 @@ If your organization restricts access to Google Artifact Registry (GAR), conside
 ::: 
 
 :::danger Breaking Changes 
-   **Introducing a new set of permissions while deprecating the existing (EXPERIMENTAL) one.**  
+   **Introducing a new set of permissions, while marking existing DEPRECATED permissions as INACTIVE.**  
 
     Currently, **Notification Rules** and **Notification Channels** are governed by a single set of permissions:
 
-    | **Resource**                                      | **Permissions**                                                                                                              |
-    |---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-    | **Notifications Rules and Notification Channels** | <li>View (`core_notification_view`)</li><li>Edit (`core_notification_edit`)</li><li>Delete (`core_notification_delete`)</li> |
+    | **Resource**                                      | **Permissions**                                                                                                              | **Current status** | **New status** |
+    |---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|--------------------|----------------|
+    | **Notifications Rules and Notification Channels** | <li>View (`core_notification_view`)</li><li>Edit (`core_notification_edit`)</li><li>Delete (`core_notification_delete`)</li> | DEPRECATED             | INACTIVE     |
+
 
     However, starting from June 12, 2025, these permissions will become non-operational. They will be replaced with separate new permissions: 
 
-        | **Resource**              | **New Permissions**                                                                                                                                       |
-        |---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-        | **Notification Rules**    | <li>View (`core_notificationrule_view`)</li><li>Edit (`core_notificationrule_edit`)</li><li>Delete (`core_notificationrule_delete`)</li>     |
-        | **Notification Channels** | <li>View (`core_notificationchannel_view`)</li><li>Edit (`core_notificationchannel_edit`)</li><li>Delete (`core_notificationchannel_delete`)</li> |
+    | **Resource**              | **New Permissions**                                                                                                                               | **Current status** | **New status** |
+    |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|----------------|
+    | **Notification Rules**    | <li>View (`core_notificationrule_view`)</li><li>Edit (`core_notificationrule_edit`)</li><li>Delete (`core_notificationrule_delete`)</li>          | EXPERIMENTAL       | ACTIVE         |
+    | **Notification Channels** | <li>View (`core_notificationchannel_view`)</li><li>Edit (`core_notificationchannel_edit`)</li><li>Delete (`core_notificationchannel_delete`)</li> | EXPERIMENTAL       | ACTIVE         |
+
 
     If any automation relies on these `core_notification_view/edit/delete` permissions, we recommend updating them accordingly.
 
-    **Note:** The existing legacy notification permissions are deprecated and will soon be moved to an inactive state. The new permissions will be released in the ACTIVE state with RBAC enforced.
+    **Note:** The existing legacy notification permissions are DEPRECATED and will soon be moved to an INACTIVE state. The new permissions will be released in the ACTIVE state with RBAC enforced.
 :::
 
 :::info important
