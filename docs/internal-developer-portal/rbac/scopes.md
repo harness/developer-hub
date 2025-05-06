@@ -63,9 +63,10 @@ In Harness IDP, principals refer to the entities taking action in the system i.e
 - [**User Groups**](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups): User groups contain multiple Harness users. Roles and resource groups are assigned to groups. The permissions and access granted by the assigned roles and resource groups are applied to all group members. You can create user groups at all scopes. Learn more about [managing and creating user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) here. 
 
 ### Resource Groups
-A resource group is a set of Harness resources that a principal can access. You can create resource groups at all [scopes](#scopes). Resource groups are assigned along with roles to principals. [Roles](#roles) grant permissions (what actions can be taken) and resource groups grant access (what objects can be acted on). 
+A resource group is a set of Harness resources that a principal can access. Resource groups are scope-specific, and you can create them at any scope. For example, a resource group created at the project scope is only available in that project. Resource groups are assigned along with roles to principals. [Roles](#roles) grant permissions (what actions can be taken) and resource groups grant access (what objects can be acted on). 
 
-Resource groups either include **All Resources** (all resources of a given type) or **Named Resources** (specific, individual resources). For Harness IDP, you can manage the following resources for a principal: 
+Resource groups either include **All Resources** (all resources of a given type) or **Named Resources** (specific, individual resources). For Harness IDP, you can manage the following resources for a principal:
+//table
 - Catalog
 - Workflow
 - Layouts
@@ -77,6 +78,10 @@ Resource groups either include **All Resources** (all resources of a given type)
 This means as per the permissions defined in the role you select and grant to the principal, you can manage and select the resource group (set of resources) you want to apply the role on for the principal. 
 
 Harness has built-in resource groups at each scope, and you can create custom resource groups. For more information, go to [Manage resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups).
+
+In addition to the scope at which you create the resource group, each resource group includes **Resource Scope** options that control the scope of access within the resource group's overall scope. For example, if you create a resource group at the org level, you can allow access to all projects under that organization, or you can select specific projects.
+
+The scope at which you create a resource group determines which Resource Scope options you can apply to that group. For example, if you create a resource group at the project scope, it is impossible to select org or account Resource Scopes for that resource group. To learn more about **Resource Scopes**, go to [Scopes and Refinement](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/#scopes-and-refinement). 
 
 ### Roles
 Roles are sets of [permissions](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference) that allow or deny specific operations on resources. Roles are applied together with resource groups to create a complete set of permissions and access.
