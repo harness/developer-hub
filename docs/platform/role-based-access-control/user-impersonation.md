@@ -36,7 +36,7 @@ By impersonating a user, admins can see exactly what that user sees and perform 
 
     ![impersonate-popup](./static/session-popup.png)
 
-5. To end the impersonation session, click **End Session**. If no action is taken, the session will automatically expire after 30 minutes.
+5. To end the impersonation session midway, click **End Session**. 
 
 6. When the session ends, a prompt appears giving you the option to either **Restart Session** or **Quit**.
 
