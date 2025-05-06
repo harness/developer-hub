@@ -305,6 +305,7 @@ gsutil -m cp \
   "gs://smp-airgap-bundles/harness-0.28.0/ff_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.28.0/platform_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.28.0/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.0/iacm_images.tgz" \
   .
 ```
 
