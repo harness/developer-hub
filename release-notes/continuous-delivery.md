@@ -347,7 +347,7 @@ Updating an application that contains a `valuesObject` while using an agent olde
 
 #### Behavior changes
 
-- Users can now **create, update, and delete tags** in **AWS Lambda** and **AWS ECS deployments**, ensuring that all specified tags in the YAML manifest are correctly propagated during the deployment process and accurately reflected in the AWS Console. (**CDS-107032**)
+- Users can now **create, update, and delete tags** in **AWS Lambda** and **AWS ECS deployments**, ensuring that all specified tags in the YAML manifest are correctly propagated during the deployment process and accurately reflected in the AWS Console. Currently, this feature is behind the Feature Flag `CDS_AWS_LAMBDA_ECS_TAG_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**CDS-107032**)
 
 - Users can now leverage the **Plugin Info** section in Service for **Serverless Deployments** to define runtime environment details and dependencies. To automatically use the latest images, leave Container Configuration at the step level empty and configure Plugin Info at the service level. (**CDS-99161**)
 
