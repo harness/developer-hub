@@ -20,11 +20,11 @@ There are five key components of Release Monitoring:
 
 1. **Split ingests the performance and behavioral data.**
 
-   This includes the impression data, which is already sent by the Harness FME SDKs. This also includes performance and error event data. This [event](https://help.split.io/hc/en-us/articles/360020585772-Events) data can be sent from any source, though it is likely easiest to come from [Harness FME Suite](https://help.split.io/hc/en-us/sections/22701959913229-Client-side-Suites) or Harness FME’s [RUM agents](https://help.split.io/hc/en-us/sections/12619161404685-Client-side-Agents). The Harness FME Suite allows you to import both the SDK and the RUM agent together.  The RUM agents automatically send events that can be used for measuring performance, errors and can be extended with custom events and listeners that can be used to build any metric that matters to you.
+   This includes the impression data, which is already sent by the FME SDKs. This also includes performance and error event data. This [event](https://help.split.io/hc/en-us/articles/360020585772-Events) data can be sent from any source, though it is likely easiest to come from the [FME SDK Suite](https://help.split.io/hc/en-us/sections/22701959913229-Client-side-Suites) or [FME RUM agents](https://help.split.io/hc/en-us/sections/12619161404685-Client-side-Agents). The FME SDK Suite allows you to import both the SDK and the RUM agent together.  The RUM agents automatically send events that can be used for measuring performance, errors and can be extended with custom events and listeners that can be used to build any metric that matters to you.
 
 1. **Split monitors your metrics**
 
-   Metrics are used to compute the impact of a feature. If you are using the Harness FME Suite or RUM agent, Harness FME will auto-create out-of-the-box metrics for events received by our platform. Review the help page for each individual agent to see the specific metrics its events will create. Metrics can also be manually created based upon what guardrails and other detected effects would be harmful (or helpful) to your business.  For more information on how to build metrics within Harness FME, please see this article from our help center: [Metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics). 
+   Metrics are used to compute the impact of a feature. If you are using the FME SDK Suite or RUM agent, Harness FME will auto-create out-of-the-box metrics for events received by our platform. Review the help page for each individual agent to see the specific metrics its events will create. Metrics can also be manually created based upon what guardrails and other detected effects would be harmful (or helpful) to your business.  For more information on how to build metrics within Harness FME, please see this article from our help center: [Metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics). 
 
 1. **The flag uses a percentage based rollout**
 
@@ -40,8 +40,8 @@ Here is a table of how to much effort to implement each of the components of Rel
 
 | Lift  | Performance Event Data | Metrics | Percentage Based Rollouts | Understand Impact |
 |------ |------------------------|---------|---------------------------|-------------------|
-| Low   | Automatic events sent by Harness FME RUM Agents or Harness FME Suite | Out of the Box Metrics | Percentage based rollout against all traffic | Choose key metrics for a flag |
-| Medium| Use custom events tracked by either Harness FME SDK or RUM agents OR configure 3rd party integration to send performance and business events | Build your own metrics | Percentage based rollout to a sub-group either by attributes or segment | Choose key metrics and set Metric alerting |
+| Low   | Automatic events sent by FME RUM Agents or FME SDK Suite | Out of the Box Metrics | Percentage based rollout against all traffic | Choose key metrics for a flag |
+| Medium| Use custom events tracked by either the FME SDK or RUM agents OR configure 3rd party integration to send performance and business events | Build your own metrics | Percentage based rollout to a sub-group either by attributes or segment | Choose key metrics and set Metric alerting |
 | More  | Pull performance events out of APM platforms and send to Harness FME and also send business events |  |  |  |
 
 ## Why use Release Monitoring
@@ -60,11 +60,11 @@ Release Monitoring enables you to see beyond the sea of data from your APM tools
 
 Split’s provided Suite or RUM agents, when installed, will automatically send events to Harness FME that can be used to monitor and keep abreast of the impact of individual features on performance metrics, ensuring that you are aware and able to monitor features as they roll out. The agents can also be used to send important business events and used to build business metrics. Allowing business and performance metrics to be monitored together. This 360 degree view of the business is extremely valuable.
 
-When Harness FME receives an event for the first time from any Harness FME Suite (or Harness FME RUM agent), metrics are automatically generated that build upon the data. 
+When Harness FME receives an event for the first time from any FME SDK Suite (or FME RUM agent), metrics are automatically generated that build upon the data. 
 
 Of course, using the events automatically generated by the agents you can also create your own metrics and send additional events of interest. 
 
-A metric using the default error event produced by the Harness FME Suite (or RUM agent) could be as straightforward as the below example:
+A metric using the default error event produced by the FME SDK Suite (or RUM agent) could be as straightforward as the below example:
 
 <img src="https://help.split.io/hc/article_attachments/26506002719501" alt="metric_error_event_example.png" width="400" />
 
@@ -84,7 +84,7 @@ try {
 }
 ```
 
-While agents do not exist yet for the server side SDKs, it is entirely possible, and even expected, that server side feature flags can affect the user experience on client devices. So even if you are only using Server Side Harness FME SDKs, you can still get value from the current Harness FME RUM agents. And of course you can always send these events to Harness FME using [other methods](https://help.split.io/hc/en-us/articles/360020585772-Events). 
+While agents do not exist yet for the server side SDKs, it is entirely possible, and even expected, that server side feature flags can affect the user experience on client devices. So even if you are only using Server Side FME SDKs, you can still get value from the current FME RUM agents. And of course you can always send these events to Harness FME using [other methods](https://help.split.io/hc/en-us/articles/360020585772-Events). 
 
 ### Key metrics
 
@@ -103,5 +103,5 @@ For example - here is an example alert policy that could be combined with the me
 This alert will fire if there is a 5% or more difference between the baseline treatment and any of the other treatments in the undesired direction. This allows you to take fast action and rollback or kill the feature before rolling it out further. 
 
 :::note
-You do not explicitly need to use the Harness FME Suite (or RUM Agents) if you have your own way of sending performance metric data to Harness FME. However, it has been our experience that performance metric data on a user by user basis is difficult to extract from common APM monitoring tools.
+You do not explicitly need to use the FME SDK Suite (or RUM Agents) if you have your own way of sending performance metric data to Harness FME. However, it has been our experience that performance metric data on a user by user basis is difficult to extract from common APM monitoring tools.
 :::

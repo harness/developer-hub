@@ -11,7 +11,7 @@ To power your analytics and experimentation, you need to send events to Harness 
 
 For more information about sending event data to Harness FME, see the [Setup](/docs/feature-management-experimentation/release-monitoring/events/setup) documentation.
 
-The API and integration routes allow you to ingest event data from existing sources (i.e. take advantage of telemetry from existing instrumentation or analytics). The Harness FME Suite and RUM Agents will automatically collect event data when installed in a client side application. Use the `track` method if you want to explicitly add instrumentation code to your application to record events.
+The API and integration routes allow you to ingest event data from existing sources (i.e. take advantage of telemetry from existing instrumentation or analytics). The FME SDK Suite and RUM Agents will automatically collect event data when installed in a client side application. Use the `track` method if you want to explicitly add instrumentation code to your application to record events.
 
 Events received by Harness FME can then be aggregated to produce metrics. To learn more, review the [Metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics) guide.
 
@@ -33,11 +33,11 @@ Each event contains the following fields:
 | Traffic type ID and name | Traffic type of the key registering the event. This is the traffic type in Harness FME of the event. Note that you may have the same event tracked from multiple traffic types if doing experimentation on different traffic types. |
 | Value | Value to be used in creating the metric. This is optional and if it’s not passed in, the value registers as zero. |
 
-## Using the RUM agent or Harness FME Suite
+## Using the RUM agent or FME SDK Suite
 
-This is one of the simplest approaches to getting started sending events. Harness FME's RUM agent or Harness FME Suite, when installed, will automatically collect events and automatically create metrics. If you are already using the Harness FME SDK in your application on the client side, you can upgrade to using the Harness FME Suite and take advantage of the events automatically generated. Even if you are only using Harness FME on your application backend, you can still take advantage of our Client Side Harness FME RUM agents. Harness FME will join across based upon the user or anonymous key sent to the RUM agent on the front end with the SDK on the back end to be able to compute the metric impact. 
+This is one of the simplest approaches to getting started sending events. Harness FME's RUM agent or FME SDK Suite, when installed, will automatically collect events and automatically create metrics. If you are already using the FME SDK in your application on the client side, you can upgrade to using the FME SDK Suite and take advantage of the events automatically generated. Even if you are only using Harness FME on your application backend, you can still take advantage of our Client Side FME RUM agents. Harness FME will join across based upon the user or anonymous key sent to the RUM agent on the front end with the SDK on the back end to be able to compute the metric impact. 
 
-For more information on the specific installation instructions, events captured and metrics automatically created, please refer to our help documentation for your selected [RUM agent](https://help.split.io/hc/en-us/sections/12619161404685-Client-side-Agents) or [Harness FME Suite](https://help.split.io/hc/en-us/sections/22701959913229-Client-side-Suites).
+For more information on the specific installation instructions, events captured and metrics automatically created, please refer to our help documentation for your selected [RUM agent](https://help.split.io/hc/en-us/sections/12619161404685-Client-side-Agents) or [FME SDK Suite](https://help.split.io/hc/en-us/sections/22701959913229-Client-side-Suites).
 
 ## Using the SDK track method
 
@@ -119,7 +119,7 @@ Using the events API makes sense when you have a stream of events from some othe
 
 If you are already tracking user events with some other system and it offers some kind of webhook, one common approach is to use a serverless function like AWS lambda to transform events from that webhook into Harness FME's format and send those events across to Harness FME. 
 
-Another possible use case would be the scenario where you have a system that cannot or will not be running the Harness FME SDK but still needs to track events. The advantage of using the events API over the SDK is that almost every single programming language has the ability to make HTTP API calls. So any internet connected application can send events to Harness FME with this method.
+Another possible use case would be the scenario where you have a system that cannot or will not be running the FME SDK but still needs to track events. The advantage of using the events API over the SDK is that almost every single programming language has the ability to make HTTP API calls. So any internet connected application can send events to Harness FME with this method.
 
 There is no rate limit on the events API. It can handle any volume of load of events. However, it is recommended to keep individual payload sizes under 1 megabyte.
 

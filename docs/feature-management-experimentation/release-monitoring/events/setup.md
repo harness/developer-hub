@@ -6,7 +6,7 @@ Measure the impact of your feature rollout on your customer experience by sendin
 
 Event data can be sent to Harness FME in one of four ways:
 
-* Install Harness FME's [RUM Agent](https://help.split.io/hc/en-us/sections/12619161404685-Client-side-Agents) or [Harness FME Suite](https://help.split.io/hc/en-us/sections/22701959913229-Client-side-Suites) which will auto-collect performance event data when installed in a client-side application
+* Install Harness FME's [RUM Agent](https://help.split.io/hc/en-us/sections/12619161404685-Client-side-Agents) or [FME SDK Suite](https://help.split.io/hc/en-us/sections/22701959913229-Client-side-Suites) which will auto-collect performance event data when installed in a client-side application
 * Call Harness FME's SDK `track` method (example below) to explicitly add instrumentation code to your application to record events
 * Post a JSON body to Harness FME's [`events` API](https://docs.split.io/reference#events-overview) to ingest events data from existing sources
 * Harness FME integrations with [Segment](https://help.split.io/hc/en-us/articles/360020742532-Segment), [mParticle](https://help.split.io/hc/en-us/articles/360038306272-mParticle-), [Sentry](https://help.split.io/hc/en-us/articles/360029879431-Sentry), [Amazon S3](https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3), or [Google Analytics](https://help.split.io/hc/en-us/articles/360040838752-Google-Analytics) to ingest events data from existing sources
