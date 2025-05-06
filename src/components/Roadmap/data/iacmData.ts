@@ -6,6 +6,12 @@ export const IacmData: Horizon = {
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
+        title: "Looker Dashboard",
+        description: "IaCM provides a Looker dashboard that allows you to monitor the state of your resources and track the cost of your resources",
+        link: "/docs/infra-as-code-management/reports-insights/dashboards",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
         title: "Default Pipelines",
         description: "Users will have the ability to assign pipelines to different Terraform/OpenTofu operations, making it easier to control the automation for each Workspace update",
         link: "/docs/infra-as-code-management/pipelines/default-pipelines",
@@ -55,16 +61,33 @@ export const IacmData: Horizon = {
         title: "Custom arguments support",
         description: "Users will have the flexibility to modify which arguments will be used during execution, allowing additional customization",
       },
-    ],
-  },
-  Now: {
-    description: "Q4 2024, Nov 2024-Jan 2025",
-    feature: [
       {
         tag: [{ value: "Developer Experience" }],
         title: "Module Registry",
         description: "Private Module Registry to test and publish approved modules",
-        link: "/docs/category/module-registry",
+        link: "/docs/infra-as-code-management/iacm-features/module-registry",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "CLI Integration",
+        description: "Having the ability to run Workspace-related pipelines directly from CLI",
+        link: "/docs/infra-as-code-management/workspaces/cli-integration",
+      },
+      {
+        tag: [{ value: "Security" },{ value: "Enterprise" }],
+        title: "SMP (on-prem)",
+        description: "Supporting implementing IaCM in private environments",
+      },
+    ],
+  },
+  Now: {
+    description: "Q2 2025, May 2025-July 2025",
+    feature: [
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Module Registry Testing",
+        description: "Automate the validation and testing of modules in isolated environments before publishing, ensuring only high-quality, compliant modules are available in the private Module Registry.",
+        link: "/docs/infra-as-code-management/iacm-features/module-registry/module-registry-testing",
       },
       {
         tag: [{ value: "Simplify Onboarding" }],
@@ -75,34 +98,38 @@ export const IacmData: Horizon = {
       {    
         tag: [{ value: "Developer Experience" }],
         title: "Variable Sets",
-        description: "Define reusable collections of Terraform and environment variables, as well as connectors, that can be used across different workspaces. This feature makes it easy to manage variables centrally while maintaining security for sensitive data.",
+        description: "Define reusable collections of OpenTofu/Terraform and environment variables, as well as connectors, that can be used across different workspaces. This feature makes it easy to manage variables centrally while maintaining security for sensitive data.",
       },
-
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Provider Registry",
+        description: "Centralized provider repository where users can discover, download, and use providers that enable Terraform to interact with APIs and services",
+      },
     ],
   },
   Next: {
-    description: "Q1 2025, Feb 2025-Mar 2025",
+    description: "Q3 2025, Aug 2025-Oct 2025",
     feature: [
       {
-        tag: [{ value: "Developer Experience" }],
-        title: "CLI Integration",
-        description: "Having the ability to run Workspace-related pipelines directly from CLI",
+        tag: [],
+        title: "Terragrunt support",
+        description: "Supporting Terragrunt as an IaC provider",
       },
       {
-        tag: [{ value: "Security" },{ value: "Enterprise" }],
-        title: "SMP (on-prem)",
-        description: "Supporting implementing IaCM in private environments",
+        tag: [],
+        title: "Native Ansible Support",
+        description: "Supporting Ansible as an IaC provider",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Ephemeral environments",
+        description: "Users will be able to control the TTL configuration of each managed Workspace",
       },
     ],
   },
   Later: {
-    description: "Q2 2025+ & beyond",
+    description: "Q4 2025+ & beyond",
     feature: [
-      {
-        tag: [],
-        title: "Harness CD integration",
-        description: "Integration with CD allows IaCM users to link Resources with Services and Environments, giving end-to-end visibility",
-      },
       {
         tag: [],
         title: "Harness CCM Integration",
@@ -110,8 +137,13 @@ export const IacmData: Horizon = {
       },
       {
         tag: [],
-        title: "Native Ansible Support",
-        description: "Supporting Ansible as an IaC provider",
+        title: "Infrastructure AI Agent",
+        description: "An agentic AI experience that proactively accelerates and automates infrastructure management and optimization with minimal human intervention.",
+      },
+      {
+        tag: [],
+        title: "Harness CD integration",
+        description: "Integration with CD allows IaCM users to link Resources with Services and Environments, giving end-to-end visibility",
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -124,11 +156,6 @@ export const IacmData: Horizon = {
         description: "This feature will speed up execution time by caching libraries and containers that are frequently used",
       },
       {
-        tag: [{ value: "Developer Experience" }],
-        title: "Ephemeral environments",
-        description: "Users will be able to control the TTL configuration of each managed Workspace",
-      },
-      {
         tag: [],
         title: "CDK Support",
         description: "Supporting CDK as an IaC provider",
@@ -137,16 +164,6 @@ export const IacmData: Horizon = {
         tag: [],
         title: "AWS CloudFormation support",
         description: "Supporting AWS CloudFormation as an IaC provider",
-      },
-      {
-        tag: [],
-        title: "Terragrunt support",
-        description: "Supporting Terragrunt as an IaC provider",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Provider Registry",
-        description: "Centralized provider repository where users can discover, download, and use providers that enable Terraform to interact with APIs and services",
       },
     ],
   },
