@@ -93,11 +93,6 @@ export const IacmData: Horizon = {
         title: "Provider Registry",
         description: "Centralized provider repository where users can discover, download, and use providers that enable Terraform to interact with APIs and services",
       },
-      {
-        tag: [],
-        title: "Native Ansible Support",
-        description: "Supporting Ansible as an IaC provider",
-      },
     ],
   },
   Next: {
@@ -109,20 +104,25 @@ export const IacmData: Horizon = {
         description: "Supporting Terragrunt as an IaC provider",
       },
       {
+        tag: [],
+        title: "Native Ansible Support",
+        description: "Supporting Ansible as an IaC provider",
+      },
+      {
         tag: [{ value: "Developer Experience" }],
         title: "Ephemeral environments",
         description: "Users will be able to control the TTL configuration of each managed Workspace",
-      },
-      {
-        tag: [],
-        title: "Harness CCM Integration",
-        description: "Integration with CCM allows IaCM users to have full visibility of costs associated with the resources being managed by IaCM",
       },
     ],
   },
   Later: {
     description: "Q4 2025+ & beyond",
     feature: [
+      {
+        tag: [],
+        title: "Harness CCM Integration",
+        description: "Integration with CCM allows IaCM users to have full visibility of costs associated with the resources being managed by IaCM",
+      },
       {
         tag: [],
         title: "Infrastructure AI Agent",
