@@ -11,15 +11,15 @@ Release Monitoring offers two mechanisms for receiving alerts during a feature r
 
 | Category             | Definition  |
 |----------------------|-------------|
-| **Feature flag alerts** | Fires when a feature flag causes a statistically significant change in one of its associated metrics. Triggered by key metrics (primary measure of success/failure) or guardrail metrics (used to catch regressions in performance, stability, etc.). <br /><br /> All feature flag alerts require a baseline treatment, a percentage-based rollout rule, and a key or guardrail metric attached to the flag. For more information, see [feature flag alerts](.././alerts/feature-flags). |
-| **Metric alerts**    | Fires when a specific metric crosses a defined threshold. These alerts are independent of any feature flag and are managed through alert policies. For more information, see [key and guardrail metric alerts](.././alerts/metrics). |
+| **Key metric alerts**    | Alerts that fire when a specific metric crosses a defined threshold, regardless of any feature flag. These alerts are configured and managed through metric alert policies and are independent of experimentation. For more information, see [key metric alerts](./metrics). |
+| **Guardrail metric alerts** | Alerts that fire when a feature flag causes a statistically significant change in an associated guardrail or key metric. These alerts are specific to flags and are part of experimentation-based alerting (also called significance alerts). Guardrail metrics are used to detect regressions (such as in performance or stability), while key metrics measure primary success or failure. <br /><br /> To trigger this type of alert, a feature flag must have a baseline treatment, a percentage-based rollout, and at least one attached metric. For more information, see [guardrail metric alerts](./guardrail-metrics). |
 
 ## Alert notifications
 
 To receive notifications when alerts are triggered:
 
 1. Set up your notification channels, such as Slack or email.
-1. Configure [alert policies](.././alerts/policies) for the metrics you want to monitor.
+1. Configure [alert policies](../alert-policies) for the metrics you want to monitor.
 1. Enable feature flag alerts by assigning key or guardrail metrics to a flag and setting a baseline treatment.
 
 ## Understanding when an alert doesn't fire 

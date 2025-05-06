@@ -1,5 +1,5 @@
 ---
-title: Key and guardrail metric alerts
+title: Key metric alerts
 sidebar_position: 10
 ---
 

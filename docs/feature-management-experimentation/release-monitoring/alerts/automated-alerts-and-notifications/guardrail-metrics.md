@@ -1,5 +1,5 @@
 ---
-title: Feature flag alerts
+title: Guardrail metric alerts
 sidebar_position: 20
 ---
 

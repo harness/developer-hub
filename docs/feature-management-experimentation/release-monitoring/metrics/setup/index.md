@@ -5,7 +5,7 @@ sidebar_position: 10
 
 ### Create a metric, monitor, and measure the impact
 
-You can create a [metric](.././metrics/overview), monitor, and measure impact in six steps: 
+You can create a [metric](../), monitor, and measure impact in six steps: 
 
 1. [Define your metric name and information](#define-your-metric-name-and-information)
 2. [Define your metric definition](#define-your-metric-definition)
@@ -16,15 +16,15 @@ You can create a [metric](.././metrics/overview), monitor, and measure impact in
 
 ### Define your metric name and information 
 
-Once you are sending us event data, to create your first metric, click on the metrics icon in the left navigation and click the **Create metric** button. Enter your metric name. We recommend describing what you intend to measure with a unique and recognizable name. Similar to feature flags, you can easily specify meta information for your new metric such as name, description, owners, and tags. This information can help you and your team manage your metrics. Learn more about [creating a metric](.././metrics/overview#create-a-metric). 
+Once you are sending us event data, to create your first metric, click on the metrics icon in the left navigation and click the **Create metric** button. Enter your metric name. We recommend describing what you intend to measure with a unique and recognizable name. Similar to feature flags, you can easily specify meta information for your new metric such as name, description, owners, and tags. This information can help you and your team manage your metrics. Learn more about [creating a metric](../#create-a-metric). 
 
 ### Define your metric definition 
 
-When defining the metric definition, determine the winning direction. If increasing this metric is good for your business and customer experience, select *increase*. If not, select *decrease*. The traffic type applies to the event type associated with the metric. Select traffic type `user`. To get started, select *count of events per user* and select an event you sent. Learn more about [defining your metric](.././metrics/overview#common-metrics).  
+When defining the metric definition, determine the winning direction. If increasing this metric is good for your business and customer experience, select *increase*. If not, select *decrease*. The traffic type applies to the event type associated with the metric. Select traffic type `user`. To get started, select *count of events per user* and select an event you sent. Learn more about [defining your metric](../categories/).  
 
 ### Create an alert policy 
 
-An alert policy allows you to configure a degradation threshold for your metric. If the feature flag causes the metric to go below or above that threshold you are alerted by your configured notification channel. Learn more about [creating an alert policy](.././metrics/overview#configure-an-alert-policy).
+An alert policy allows you to configure a degradation threshold for your metric. If the feature flag causes the metric to go below or above that threshold you are alerted by your configured notification channel. Learn more about [creating an alert policy](../#configure-an-alert-policy).
 
 ### Manage alerts
 
