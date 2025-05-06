@@ -154,6 +154,7 @@ jobs:
            HARNESS_PROJECT_ID: Exploratory
            HARNESS_API_KEY: ${{ secrets.SCS_API_KEY }}
            TARGET: <image-name>:<tag>
+           SBOM_FILE_PATH: <path_to_sbom_file>
            VERIFY: true
            KMS_KEY: 'vault-key'
          

@@ -148,6 +148,7 @@ jobs:
            HARNESS_API_KEY: ${{ secrets.SCS_API_KEY }}
            TARGET: <image-name>:<tag>
            VERIFY: true
+           POLICY_SET_REF: <path_to_policy_set>
            KMS_KEY: 'vault-key'
 
 ```
