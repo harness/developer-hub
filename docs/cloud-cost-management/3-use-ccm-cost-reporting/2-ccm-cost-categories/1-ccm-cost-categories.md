@@ -8,6 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Tabs from '@theme/Tabs';
+
+import TabItem from '@theme/TabItem';
+
+
+:::tip [Latest Features Released in 1.50.0](/release-notes/cloud-cost-management#april-2025---version-1470)
+<Tabs>
+  <TabItem value="LabelV2" label="LabelV2">We’re moving from the older flattened Labels (stored in STRUCT format) to Labels V2, where labels are stored in a JSON format, directly aligning with how cloud providers (like AWS and Azure) deliver tag data. LabelV2 can be used as a filter in perspectives, as a GROUP BY operand in perspectives graph and in specifying rules when creating a Perspective and in Budgets and Cost Categories. The main goal of LabelsV2 is to give you full visibility into your original cloud tag keys, exactly as they appear in your AWS, Azure, or GCP environments. </TabItem>
+</Tabs>
+:::
+
 Cost categories provide an understanding of where and how your money is being spent. Cost categories allow you to take data across multiple sources and attribute it to business contexts, such as departments, teams, and other spend categories. For example, if your business is organized by teams with multiple accounts, you can create a Cost Category named Teams and map costs to each team from all your accounts. The cost category called Teams shows you what each team is spending across AWS, GCP, Clusters, etc. You could drill down further into the cost data available for every item in your cost category. For example, in a cost category called Teams, you could view cost data for a particular team (cost bucket) such as Operations. You can then use Cost Categories in CCM Perspectives to filter across accounts, products, etc.
 
 Apart from viewing costs based purely on different data sources (AWS, GCP, Clusters, etc.) without context, cost categories allow you to view spending across these data sources according to different business contexts and help you gain useful insights.
