@@ -128,6 +128,20 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## May 2025
+
+### Version 1.88.x <!--May 5, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where unauthenticated users were redirected to the homepage after login instead of their intended deep link destination. [PL-61939]
+- Fixed error messaging for non-inline secrets created via YAML to ensure accurate status on the secret listing page. [PL-62270]
+
+#### New features and enhancements
+
+- Support for adding Delegate Configurations (legacy feature) from the Resource Groups page has been removed. [PL-60603]
+- New Audit Event for API Token Expiry: Harness now logs an audit event whenever an API token expires. This enhancement improves visibility and traceability of token lifecycle events, supporting stronger security auditing. [PL-62394]
+
 ## April 2025 
 
 ### Version 1.87.x <!--April 28, 2025-->
@@ -140,7 +154,6 @@ The following deprecated API endpoints are longer supported:
 #### New features and enhancements
 
 - Implicit tag (delegate name) is now supported for delegate version override. [PL-62335]
-- Support for adding Delegate Configurations (legacy feature) from the Resource Groups page has been removed. [PL-60603]
 - Added support for governing scope Variables in Harness using Open Policy Agent (OPA) policies, enabling fine-grained control over variable creation and editing. This feature is currently behind the feature flag `PL_ENABLE_OPA_FOR_VARIABLES`. [PL-61504]
 
 ### Version 1.86.x <!--April 23, 2025-->
