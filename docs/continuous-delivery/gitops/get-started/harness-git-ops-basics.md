@@ -154,8 +154,6 @@ A Harness GitOps service is the same as any other Harness service. A service rep
 
 For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
-GitOps services can be generated when using [AppSets](#applicationsets) or created manually by the user.
-
 ### Service instance
 
 Service instances represent the dynamic instantiation of a service you sync via Harness GitOps.
