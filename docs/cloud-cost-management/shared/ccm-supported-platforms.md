@@ -45,6 +45,8 @@ AWS is the only supported installation infrastructure. If you do not install Har
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | 
 |Asset governance | ❌ | ❌ | ❌ | ❌ | 
 |Perspective Preferences| ✅ | ✅ | ✅ | ✅ |
+|Commitment Orchestrator | ❌ | ❌ | ❌ | ❌ | 
+|Cluster Orchestrator | ❌ | ❌ | ❌ | ❌ | 
 
 
 ### Air-Gapped environment
@@ -61,6 +63,8 @@ AWS is the only supported installation infrastructure. If you do not install Har
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | 
 |Asset governance | ❌ | ❌ | ❌ | ❌ | 
 |Perspective Preferences| ✅ | ❌  | ❌  | ✅ | 
+|Commitment Orchestrator | ❌ | ❌ | ❌ | ❌ | 
+|Cluster Orchestrator | ❌ | ❌ | ❌ | ❌ | 
 
 :::note
 - Margin Obfuscation is not supported on Harness SMP. For others, it is behind a feature flag `CCM_MSP`. To enable the feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io)
