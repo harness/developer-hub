@@ -124,13 +124,13 @@ export const FmeData: Horizon = {
         title: "AI results interpretation conversation",
         description:
           "AI-generated metric results summary can be asked follow-up questions.",
-        link:"https://www.split.io/releases/2025-01-08/",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-release-agent-ai-chatbot",
       },
       {
         tag: [{ value: "Targeting" }],
         title: "Large segments",
         description: "New segment type enabling large-scale audience targeting up to 1M keys. Even higher limits available by request.",
-        link:"https://www.split.io/releases/2025-01-07/",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-targeting---large-segments",
       },
       {
         tag: [{ value: "Better Together" }],
@@ -141,31 +141,31 @@ export const FmeData: Horizon = {
         tag: [{ value: "Targeting" }],
         title: "SemVer attribute dictionary support",
         description: "Support SemVer type attributes and suggested values in the attribute dictionary to streamline entry & reduce risk of errors.",
-        link:"https://www.split.io/releases/2024-12-06/",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-12-06",
       },
       {
         tag: [{ value: "Monitoring" }],
         title: "Feature flag alerts on Monitoring tab",
         description: "Show guardrail and key metric alerts on the monitoring tab, in addition to the threshold-based alerts shown prev.",
-        link:"https://www.split.io/releases/2024-11-27",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-11-27",
       },
       {
         tag: [{ value: "Measurement" }],
         title: "Monitoring tab: feature traffic insights",
         description: "Analyze flag traffic in real time to understand trends and ensure proper targeting configuration.",
-        link:"https://www.split.io/releases/2024-09-12",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-09-12",
       },
       {
         tag: [{ value: "Alerting" }, {value: "Experimentation"}],
         title: "Significance alerting for guardrail metrics",
         description: "Automatically receive alerts on any guardrail metric without manual configuration.",
-        link:"https://www.split.io/releases/2024-09-04/",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-09-04",
       },
       {
         tag: [{ value: "Targeting" }],
         title: "Semantic version targeting",
         description: "Easily define targeting rules for new features using the native semantic version matcher.",
-        link:"https://www.split.io/releases/2024-06-06",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-06-06",
       },
       {
         tag: [{ value: "Measurement" }, {value: "SDK"}],
@@ -177,7 +177,7 @@ export const FmeData: Horizon = {
         tag: [{ value: "Measurement" }, {value: "Experimentation"}],
         title: "Guardrail metrics",
         description: "A new category of metrics that can be used to protect every release and improve metric organization.",
-        link:"https://www.split.io/releases/2024-06-14/",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#2024-06-14",
       },
       {
         tag: [{ value: "SDK" }, {value: "Security"}],
