@@ -79,7 +79,7 @@ This feature helps maintain robust security and compliance postures by ensuring 
 
 <DocVideo src="https://www.loom.com/share/b07b9609119f4168b948739154d9a863?sid=d5fd1172-569f-4e59-b2dc-867b551ba108" title="AI DevOps Agent Demo" />
 
-## Data Storage Policies
+## Data Storage and Privacy Policies
 
 Harness AI is designed with strict data privacy and security principles. This section explains what data is used, how it is handled, and how it is discarded when you interact with the DevOps Agent or any AI-powered features in Harness. No configuration is necessary to ensure your privacy since Harness applies strict privacy defaults:
 
@@ -88,6 +88,10 @@ Harness AI is designed with strict data privacy and security principles. This se
 - Fallback mechanisms are only used when necessary and are compliant with strict retention policies.
 
 This section discusses these policies in greater detail. 
+
+### Data Privacy and Subscription Terms
+
+For a full legal breakdown of AI privacy at Harness, see: [AI Data Privacy](https://www.harness.io/legal/harness-ai-data-privacy) & [Subscription Terms 2025](https://www.harness.io/legal/subscription-terms-2025)  
 
 ### No Data Use
 
