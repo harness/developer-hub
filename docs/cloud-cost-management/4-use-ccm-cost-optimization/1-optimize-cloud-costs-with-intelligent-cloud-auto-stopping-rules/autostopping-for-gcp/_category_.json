@@ -1,6 +1,6 @@
 {
-    "label":"AutoStopping for AWS",
-    "position": 3,
+    "label":"AutoStopping for GCP",
+    "position": 4,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",

@@ -1,5 +1,5 @@
 ---
-title: Create AutoStopping Rules for AWS EC2
+title: AutoStopping Rules for AWS EC2
 description: Set up AutoStopping to automatically manage EC2 instances based on usage patterns and reduce cloud costs.
 sidebar_position: 3
 helpdocs_topic_id: 7025n9ml7z
@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 ## Prerequisites
 
-- [AWS Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws) with appropriate permissions
+- [AWS Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
 - AWS account with EC2 instances
 - AWS [Proxy](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/autostopping-proxy) or [Load Balancer](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/load-balancer)
 

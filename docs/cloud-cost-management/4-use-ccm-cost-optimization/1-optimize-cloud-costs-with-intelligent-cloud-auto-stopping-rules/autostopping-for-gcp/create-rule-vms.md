@@ -1,26 +1,22 @@
 ---
-title: AutoStopping for AWS AutoScaling Groups (ASGs)
-description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle.
-sidebar_position: 4
+title: AutoStopping Rules for GCE VMs
+description: This topic describes how to create an AutoStopping Rule for GCP.
+sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Prerequisites
+   * You must provide the required permissions to Harness to create an instance in your GCP account.
+   * You must provide the required permissions to read the secrets and fetch the certificates stored in the secret for TLS-based flows.
+   * Ensure that you reserve some IPs if you intend to allocate elastic IP while creating an AutoStopping proxy.
 
-* Read the following topics in [Set up Cloud Cost Management for AWS](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md): 
-
-    * Access to CUR. See Cost and Usage Reports (CUR) and CCM Requirements.
-    * Permissions to create a cross-account role. See AWS Access Permissions.
-    * Permissions for AWS Resource Optimization Using AutoStopping Rules. See AWS resource optimization using AutoStopping rules.
-* The database that will be onboarded must be able to start and stop. Harness AutoStopping cannot manage certain DB instances, such as serverless ones, because they cannot be started or stopped.
-
-## Creating an AutoStopping Rule for ASG
+## Creating an AutoStopping Rule for RDS
 
 1. In Harness, navigate to **Cloud Costs** module -> **AutoStopping Rules**
 2. Click **New AutoStopping Rule**
-3. Select **AWS** as your cloud provider. Choose an existing AWS connector or click **New Connector** to [create one](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws). 
+3. Select **GCP** as your cloud provider. Choose an existing GCP connector or click **New Connector** to [create one](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp). 
 
 After this, there are 3 simple steps to set up your AutoStopping rule:
 
@@ -29,10 +25,9 @@ After this, there are 3 simple steps to set up your AutoStopping rule:
 
 1. Enter a **Name** for your rule
 2. Set the **Idle Time** - how long an instance should be inactive before stopping
-3. In the **Resources to be managed by the AutoStopping rules** section, select "ASG". 
-4. Click on **+ Add a auto-scaling group** and select the ASG you want to onboard.
-5. Choose the on-demand vs spot ratio for your Auto Scaling group. Please notes, Mixed instance policy needs to be enabled for the ASG.
-6.  Set up Advanced Configuration: 
+3. In the **Resources to be managed by the AutoStopping rules** section, select "Compute Engine VM(s)". 
+4. Click on **+ Add an instance**. Add the instances that you want to manage by this rule.
+5.  Set up Advanced Configuration: 
     - Hide Progress Page: This is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping.
     - Dry-Run: Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to Evaluate AutoStopping rules in dry-run mode.
     - Dependencies: Link your rule to other AutoStopping rules when resources depend on each other.
@@ -42,7 +37,7 @@ After this, there are 3 simple steps to set up your AutoStopping rule:
 </TabItem>
 <TabItem value="access" label="Step 2: Setup Access">
 
-Choose how users will access your ASG instances:
+Choose how users will access your VM instances:
 
 - **Setup Access for TCP workload or SSH/RDP**: If the underlying applications running on the resources managed by AutoStopping Rule are accessed via TCP, SSH or RDP.
 - You could skip this step for now and use the CLI to set up access. Go to [Use the Harness CLI to access resources through SSH/RDP](create-autostopping-rules-aws.md#use-the-harness-cli-to-access-resources-through-sshrdp) for details.
@@ -57,12 +52,9 @@ If you need to access the resources managed by this AutoStopping rule using TCP 
 - **Set up Access for HTTP/HTTPS workload**: 
 If you need to access the resources managed by this AutoStopping rule using an HTTP or HTTPS URL, you need to perform the following steps:
 
-1. Choose an existing ALB or an AutoStopping Proxy load balancer from the dropdown list to set up access or create a [new ALB](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/load-balancer) or an [AutoStopping Proxy](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/autostopping-proxy)
-2. Specify port configuration for the application load balancer or proxy.
-3. (Optional) Configure health check for the application load balancer.
-4. (Optional) Specify the URL used to access the resources.
-5. Custom Exclusions / Inclusions: You can specify to exclude or include certain types of HTTP/HTTPS traffic from being considered as activity and consequently warm-up AutoStopping Rules
+1. Choose an existing AutoStopping Proxy from the dropdown list to set up access or create a [new one](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/autostopping-proxy)
 6. Click **Next**.
+
 
 </TabItem>
 <TabItem value="review" label="Step 3: Review">
@@ -74,4 +66,5 @@ Your AutoStopping rule is listed under the AutoStopping Rules dashboard.
 
 </TabItem>
 </Tabs>
+
 
