@@ -7,20 +7,24 @@ sidebar_position: 60
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Drift occurs when the actual resources in your cloud environment differ from those defined in your OpenTofu or Terraform state file. This usually happens when someone makes manual changes — for example, modifying a resource directly in the cloud console instead of updating it through code.
+Drift occurs when the actual state of managed infrastructure differs from the desired configuration defined in your OpenTofu/Terraform code and recorded in the state file. Drift can happen when someone manually modifies an existing resource, or when another process outside OpenTofu/Terraform changes managed infrastructure. For example, a resource’s attributes may be updated directly in the cloud console or by another automation system, causing a mismatch between the recorded state and the real-world configuration.
 
 Harness IaCM helps detect and highlight these discrepancies, enabling you to quickly reconcile the real infrastructure with your configuration. This is typically done using a provisioning pipeline, which ensures that your Git-based configuration is the source of truth.
 
-:::info Example: Detecting manually created resources
-Suppose you have a pipeline that provisions an **SQS queue**. The pipeline runs `init`, `plan`, and `apply`, and the queue is successfully created.
-Later, someone manually adds an **EC2 instance** in the same environment. When you re-run the pipeline or execute a **Detect Drift** operation, Harness identifies that the EC2 instance is not in your code or state and flags it as drift.
+:::info Example: Detecting changes to managed resources
+Suppose you have a pipeline that provisions an **SQS queue**. The pipeline runs `init`, `plan`, and `apply`, and the queue is successfully created and tracked in the OpenTofu/Terraform state.
+
+Later, someone manually modifies the queue's configuration, for example, by changing its visibility timeout, or deletes the queue entirely in the cloud provider console. When you re-run the pipeline or execute a **Detect Drift** operation, Harness uses OpenTofu/Terraform to compare the real state of that resource with what's recorded in the state file and flags the mismatch as drift.
+
+Drift detection only applies to resources that are already tracked in the state file. Resources created entirely outside of OpenTofu/Terraform, and never imported, won't be detected as drift.
+:::
 
 As an operator, you have a few options:
-- **Import** the EC2 instance into your state file if you want to manage it as code.
-- **Delete** it if it was created unintentionally.
-- **Ignore** it if it’s a known but unmanaged resource.
+- Delete the modified or manually altered resource if it’s no longer needed.
+- Revert the manual change to realign the resource with what’s defined in code.
+- Ignore the drift if the change is acceptable, but understand it creates a misalignment with your declared infrastructure.
 
-If you want to reconcile the state without applying pending configuration changes, use a `plan-refresh-only` step.
+Use a `plan-refresh-only` step to reconcile the state without applying other pending code changes.
 :::
 
 ---
