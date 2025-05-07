@@ -18,16 +18,24 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 :::
 
-## 📌 Release Deployment Status by Cluster
+## May 2025 - Version 1.50.0
 
-| **Cluster**        | **Deployment Status** | **Release Version** | 
-| --------------------------- | -------------------------- | --------------- | 
-| **prod0**   | ✅ Completed                        | April - v1.49.1         |                                                                                                                        
-| **prod1** | ✅ Completed                        | April - v1.49.1         |                                                                                                                      
-| **prod2**    |  ✅ Completed         | April - v1.48.1      |                                                                                                                      
-| **prod3**         |   ✅ Completed                     | April - v1.48.1    | 
-| **prod4**         |  ✅ Completed       | April - v1.48.1       | 
-| **prodeu1**   |  ✅ Completed                        | April - v1.48.1    |      
+### [New Feature] LabelV2
+
+We're rolling out **LabelsV2**, a major enhancement to how labels (tags) are handled and displayed across the platform, delivering **better visibility**, **performance**, and **alignment with cloud-native formats**.
+
+#### Key Benefits
+
+* Improved Query Performance
+* Native JSON label support
+* Accurate and original label visibility
+* Simplified data pipeline and future scalability
+
+**:warning: Action Required**
+
+Users will need to manually **update their Perspectives, Cost Categories, and Dashboards** to use the new LabelsV2 format.
+
+<DocImage path={require('./static/labelsv2.png')} width="90%" height="90%" title="Click to view full-size image" />
 
 
 ## April 2025 - Version 1.49.1
