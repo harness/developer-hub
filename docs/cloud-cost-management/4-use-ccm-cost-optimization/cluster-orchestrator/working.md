@@ -1,21 +1,18 @@
 ---
-title: "Working of Cluster Orchestrator for AWS EKS (Beta)"
+title: "Overview"
 description: How Cluster Orchestrator works and how it's different from other solutions.
-# sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-## Working of Cluster Orchestrator
 Cluster Orchestrator primarily performs the action of node provisioning based on workload and pod requirements and removing those nodes when the load and demand declines. But what makes it powerful and flexible is its ability to determine the type of instances or nodes to bring up (whether Spot, or On-Demand) coupled with its built-in Spot instance orchestration capabilities.
 
 ### Spot Instance Orchestration: A High-Level Overview of Cluster Orchestrator's Working
 
-
 <DocImage path={require('./static/working-spot.png')} width="90%" height="90%" title="Click to view full size image" />
-
 
 Spot instances offer **discounts of up to 90% for the same performance of On-Demand instances**, which makes them a great option for cost savings. But, as discussed previously, their availability is subject to Amazon's two-minute interruption notice. This is where **Cluster Orchestrator's Spot instance orchestration** comes into play. 
 
