@@ -8,6 +8,18 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Tabs from '@theme/Tabs';
+
+import TabItem from '@theme/TabItem';
+
+
+:::tip [Latest Features Released in 1.50.0](/release-notes/cloud-cost-management#april-2025---version-1470)
+<Tabs>
+  <TabItem value="LabelV2" label="LabelV2">We’re moving from the older flattened Labels (stored in STRUCT format) to Labels V2, where labels are stored in a JSON format, directly aligning with how cloud providers (like AWS and Azure) deliver tag data. LabelV2 can be used as a filter in perspectives, as a GROUP BY operand in perspectives graph and in specifying rules when creating a Perspective and in Budgets and Cost Categories. The main goal of LabelsV2 is to give you full visibility into your original cloud tag keys, exactly as they appear in your AWS, Azure, or GCP environments. </TabItem>
+</Tabs>
+:::
+
+
 You can add business context to your Harness Cloud Cost Management (CCM) data using perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 
 ### Before You Begin
@@ -65,7 +77,8 @@ You can create a Perspective for your resources using rules and filters. The fil
 * **Cluster**: Total cost, Cost trend, Idle cost, and Unallocated cost for each cluster.
 * **Region**: Each AWS, GCP, or Azure region you're currently running services in.
 * **Product**: Each of your active products with its cloud costs.
-* **Label**: Costs organized by the Kubernetes labels used in the workload manifests. In GCP, it refers to each [label](https://cloud.google.com/resource-manager/docs/creating-managing-labels) that you are using to organize your Google Cloud instances.
+* **Label** and **LabelV2**: Costs organized by the cloud labels that you are using to organize your Cloud instances.
+
 
 ### Preview
 
@@ -132,6 +145,38 @@ Perform the following steps to create a Perspective:
 If you've added labels and cluster rules in the perspective builder section, it's considered a cluster perspective, hence all cluster labels are considered. In this case, data from cloud service providers such as GCP, Azure, and AWS are not considered. However, if you have applied a label that belongs to the cloud provider data, and you want to view the cluster data as well, then you have to add a Cloud Provider filter.
 :::
 
+## View Perspectives
+
+You can view any perspective by clicking on it. The perspective overview page provides a comprehensive dashboard with the following information:
+
+### Key Metrics
+- **Total Cost**: Current accumulated cost for the selected time period
+- **Forecasted Cost**: Projected spending based on current usage patterns
+- **Cost Recommendations**: Suggestions for optimizing your cloud spending
+- **Budget Status**: Visual indicators of budget utilization (if budgets are configured)
+
+### Cost Visualization
+The interactive cost graph can be customized using the **Group By** feature with the following options:
+
+- **Cost Categories**: Group costs by your defined cost categories
+- **Cloud Provider**: View costs by cloud service provider (AWS, Azure, GCP) with provider-specific options
+- **Region**: Break down costs by geographical regions
+- **Product**: Analyze costs by specific cloud products and services
+- **Label**: Group by traditional cloud provider tags
+- **Label V2**: Group by enhanced labeling system
+- **None**: View aggregated costs without grouping
+
+### General Preferences
+
+You can customize your perspective view with the following display preferences:
+
+- **Show Others**: Consolidates smaller cost items that fall outside your top spending categories into a single "Others" category. This helps maintain a clean visualization while still accounting for all costs.
+
+- **Show Top N Items**: By default, the visualization shows the top 12 items in each category. You can adjust this setting to show more or fewer items based on your analysis needs.
+
+- **Show Anomalies**: Highlights unusual spending patterns or sudden cost changes in your visualization. This feature helps you quickly identify potential issues or unexpected charges that may require investigation.
+
+- **Show Negative Cost**: Displays credits, refunds, and adjustments as negative values in your cost reports. This provides a complete picture of your actual spending, including any cost reductions from discounts, credits, or billing adjustments.
 
 ## Budgets, Reports, and Alerts
 For details on adding Budgets, Reports, and Alerts go to:
