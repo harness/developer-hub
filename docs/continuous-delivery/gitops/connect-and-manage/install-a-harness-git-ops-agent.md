@@ -269,7 +269,11 @@ When you create a GitOps agent, a default in-cluster is automatically created. T
 - You can remove in-cluster from Harness but that doesnt actually delete in-cluster as it is a special cluster object. If deleted, it can be recreated. 
 - For `Namespaced` agent `in-cluster` is not being created and option for adding `in-cluster` is disabled.
 
-## Proxy support
+## Advanced Options
+
+The Harness GitOps Agent can be configured with advanced options during creation. This section goes through those options.
+
+### Proxy support
 
 The Harness GitOps Agent can work on environments where traffic is routed through a proxy. 
 
@@ -346,7 +350,7 @@ spec:
    .. rest of agent YAML ...
 ```
 
-### Proxy setup for testing
+#### Proxy setup for testing
 
 Use the following YAML example to install proxy in any other environment.
    
@@ -426,6 +430,14 @@ spec:
 ```
 
 </details>
+
+### Helm Secrets Path Traversal
+
+This feature allows Helm to traverse file paths containing dots (e.g. `/../`). This is disabled by default due to security risks, so please enable this with caution. 
+
+To do so, check the **Enable Helm Secrets Path Traversal** check box under the **Advanced** settings dropdown when creating your agent, as pictured below. 
+
+  ![](./static/enable-helm-secrets-checkbox.png)
 
 ## GitOps Auto Updater Job
 
