@@ -8,14 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Setting Up AWS Application Load Balancer (ALB)
+
 ## Overview
 
 An AWS Application Load Balancer (ALB) serves as the entry point for HTTP/HTTPS traffic to your AutoStopping-managed resources. It intelligently routes requests and works with AutoStopping to start and stop resources based on traffic patterns.
-
-## Before You Begin
-
-* [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md)
-* [Create AutoStopping Rules for AWS](../4-create-auto-stopping-rules/create-autostopping-rules-aws.md)
 
 ## How AWS Load Balancer Works with AutoStopping
 
@@ -49,72 +46,73 @@ Each load balancer requires a domain name (e.g., `*.autostopping.example.com`) t
 - A domain name you can configure (either in Route 53 or another DNS provider)
 - [AWS Connector configured in Harness](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
 
-### Step 1: Start the Load Balancer Creation Process
+You can create a Load Balancer in two ways:
+1. During the AutoStopping rule setup flow
+2. From the AutoStopping overview page
 
-1. In Harness, navigate to **Cloud Costs** module
-2. Click **New AutoStopping Rule**
-3. Select **AWS** as your cloud provider
+### Option 1: Creating a Load Balancer During Rule Setup
 
-![Select AWS provider](./static/create-load-balancer-aws-15.png)
+After following Step 1 from the [Create AutoStopping Rule](/docs/cloud-cost-management/use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/create-rule-ec2) guide, you will be directed to the "Setup Access" screen:
 
-### Step 2: Connect to AWS
+1. Choose either **TCP Workload** or **HTTP/HTTPS Workload**
+2. Click **Create new AutoStopping Proxy** (or select an existing load balancer from the dropdown)
+3. Fill in the required details:
+   - Select your DNS provider: **Route 53** (must be in the same AWS account as your resources) or **Others**
+   - Enter a domain name for your load balancer
 
-1. Select an existing AWS connector from the dropdown, or click **New Connector** to create one
-2. Click **Continue**
-3. Select the resources you want to manage with AutoStopping
-4. Click **Continue**
-5. In **Setup Access**, select **DNS Link**
-6. Click **New Load Balancer**
+<DocImage path={require('./static/alb-one.png')} width="50%" height="50%" title="Click to view full size image" />
 
-![Create new load balancer](./static/create-load-balancer-aws-19.png)
+4. Configure additional settings:
+   - Select the AWS region for deployment
+   - Choose an SSL certificate
+   - Select the VPC for deployment
+   - Choose appropriate security groups
 
-### Step 3: Configure Load Balancer
+<DocImage path={require('./static/alb-two.png')} width="50%" height="50%" title="Click to view full size image" />
 
-1. Enter a name for your load balancer
-2. Choose your DNS configuration method:
+5. Click **Save Load Balancer**
 
-#### Option A: Using AWS Route 53 (Recommended)
+   ![Save load balancer](./static/create-load-balancer-aws-22.png)
+   
+Your load balancer is now ready to use with AutoStopping rules.
 
-:::note
-This option requires that Route 53 is in the same AWS account as your resources.
-:::
+### Option 2: Creating a Load Balancer from the AutoStopping Homepage
 
-1. Select **Route 53** as your DNS provider
-2. Choose the appropriate Route 53 hosted zone
-   ![Select Route 53 hosted zone](./static/create-load-balancer-aws-20.png)
-3. Enter a subdomain prefix (e.g., `autostopping`)
-   ![Enter domain name](./static/create-load-balancer-aws-21.png)
-4. Click **Continue**
+1. In the AutoStopping overview page, click **Load Balancers** in the top right
+2. Select cloud provider **AWS**
+3. Choose a cloud connector or create a new one
+4. Click **Create Application Load Balancer**
+5. Fill in the required details:
+   - Select your DNS provider: **Route 53** (must be in the same AWS account as your resources) or **Others**
+   - Enter a domain name for your load balancer
 
-#### Option B: Using Other DNS Providers
+<DocImage path={require('./static/alb-one.png')} width="50%" height="50%" title="Click to view full size image" />
 
-1. Select **Others** as your DNS provider
-2. Enter the full domain name (e.g., `autostopping.yourcompany.com`)
-3. Click **Continue**
+6. Configure additional settings:
+   - Select the AWS region for deployment
+   - Choose an SSL certificate
+   - Select the VPC for deployment
+   - Choose appropriate security groups
 
-### Step 4: Configure AWS Settings
+<DocImage path={require('./static/alb-two.png')} width="50%" height="50%" title="Click to view full size image" />
 
-1. Select the AWS region for deployment
-2. Choose an SSL certificate
-3. Select the VPC for deployment
-4. Select appropriate security groups
+7. Click **Save Load Balancer**
 
-### Step 5: Save and Finalize
-
-1. Click **Save Load Balancer**
    ![Save load balancer](./static/create-load-balancer-aws-22.png)
 
-2. If using Route 53, Harness automatically creates the necessary DNS record:
-   ```
-   A record: *.autostopping.yourdomain.com → [ALB DNS address]
-   ```
-
-3. If using another DNS provider, you'll need to manually create a CNAME record:
-   - Go to your DNS provider's management console
-   - Create a wildcard CNAME record: `*.autostopping.yourcompany.com → [ALB DNS address]`
-   - For detailed instructions, see [AWS DNS CNAME documentation](https://docs.aws.amazon.com/managedservices/latest/ctexguide/ex-dirserv-cname-record-add-col.html)
-
 Your load balancer is now ready to use with AutoStopping rules.
+
+:::note DNS Configuration
+If using **Route 53**, Harness automatically creates the necessary DNS record:
+```
+A record: *.autostopping.yourdomain.com → [ALB DNS address]
+```
+
+If using **another DNS provider**, you'll need to manually create a CNAME record:
+1. Go to your DNS provider's management console
+2. Create a wildcard CNAME record: `*.autostopping.yourcompany.com → [ALB DNS address]`
+3. For detailed instructions, see [AWS DNS CNAME documentation](https://docs.aws.amazon.com/managedservices/latest/ctexguide/ex-dirserv-cname-record-add-col.html)
+:::
 
 ## Updating the Lambda Function
 
@@ -146,12 +144,10 @@ The current version is `aws-proxymanager-0.1.3.zip`
 :::
 
 1. [Download the latest code package](https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/aws-proxymanager-0.1.3.zip)
-2. In AWS Console, navigate to Lambda → Functions and find your function
+2. In AWS Console, navigate to **Lambda** → **Functions** and find your function
 3. Select the **Code** tab
+
    <DocImage path={require('./static/lambda-function-code.png')} width="50%" height="50%" title="Click to view full size image" />
+
 4. Click **Upload from** → **.zip file**
 5. Select the downloaded zip file and click **Save**
-
-## Next Steps
-
-- [Create AutoStopping rules](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/autostopping-for-aws/create-rule-ec2) for your AWS resources
