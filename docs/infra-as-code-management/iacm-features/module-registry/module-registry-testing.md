@@ -59,7 +59,7 @@ module-repository/
 └── README.md
 ```
 
-Harness provides an out-of-the-box pipeline for integration testing that will execute the [`init → plan → apply → destroy` commands](/docs/infra-as-code-management/pipelines/terraform-plugins) against your `main.tf` file in each subfolder. If you require customization, you can amend the pipeline or select your own custom pipeline.
+Harness provides an out-of-the-box pipeline for integration testing that will execute the [`init → plan → apply → destroy` commands](/docs/infra-as-code-management/cli-commands/terraform-plugins) against your `main.tf` file in each subfolder. If you require customization, you can amend the pipeline or select your own custom pipeline.
 </TabItem>
 <TabItem value="Tofu/Terraform testing pipeline">
 
