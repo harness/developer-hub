@@ -53,15 +53,15 @@ After this, there are 3 simple steps to set up your AutoStopping rule:
 3. In the **Resources to be managed by the AutoStopping rules** section, select "ECS Service". 
 4. Click on **Add an ECS Service**. In **Select ECS Service**, select one of the following options:
    * ECS Service Name: If you chose **ECS Service Name**, select a region and a cluster to see all of their services:
-  1. Select the region where your cluster is hosted from the **Select Region** dropdown list.
-  2. Select your cluster from the **Select Cluster** dropdown list.
-  3. Select the ECS Service where you want to enable the AutoStopping Rule. 
-  4. Click **Add Selected**.
+      - Select the region where your cluster is hosted from the **Select Region** dropdown list.
+      - Select your cluster from the **Select Cluster** dropdown list.
+      - Select the ECS Service where you want to enable the AutoStopping Rule. 
+      - Click **Add Selected**.
    
    * ECS Service Tags: If you chose **ECS Service Tags**, select the region, cluster, and the tag associated with the service. Once you create a rule using this option, the rule is applied automatically to the most recently created ECS service using the tag. 
-   1. Select the region where your cluster is hosted from the **Select Region** dropdown list.
-   2. Select your cluster from the **Select Cluster** dropdown list.
-   3. Select the tag key and the tag value from the dropdown lists. If you want to learn how to add tags to your service, go to [Tagging your Amazon ECS Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html).
+      - Select the region where your cluster is hosted from the **Select Region** dropdown list.
+      - Select your cluster from the **Select Cluster** dropdown list.
+      - Select the tag key and the tag value from the dropdown lists. If you want to learn how to add tags to your service, go to [Tagging your Amazon ECS Resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html).
 
 6. Specify Desired Task Count: In **Desired Task Count**, specify the desired task count for the selected ECS service. This is the number of tasks that Harness will instantiate when your service is up and running. For more information, see [Amazon ECS service quotas](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html).
 
@@ -77,7 +77,6 @@ After this, there are 3 simple steps to set up your AutoStopping rule:
 
 :::note
 You can skip this step if you are creating an AutoStopping Rule for an ECS Service that does not have a load balancer associated with it.  
-
 :::
 
 A DNS link allows you to access the resources managed by the AutoStopping rule using an HTTP or HTTPS URL. To create a DNS Link, you need to:
@@ -93,8 +92,7 @@ A DNS link allows you to access the resources managed by the AutoStopping rule u
 
 #### Select a Load Balancer
 
-1. In **Setup Access**, select **DNS Link**.
-2. Select the load balancer from the drop-down list. The associated load balancer with your ECS service is listed.
+Select the load balancer from the drop-down list. The associated load balancer with your ECS service is listed.
    
      ![](./static/create-auto-stopping-rules-for-ecs-07.png)
 
@@ -132,4 +130,3 @@ Your AutoStopping rule is listed under the AutoStopping Rules dashboard.
 </TabItem>
 </Tabs>
 
-:::note
