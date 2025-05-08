@@ -1,6 +1,6 @@
 # Filtering your metrics
 
-Split provides the ability to filter your metric results, so you can analyze impact with greater depth and precision. 
+Harness FME provides the ability to filter your metric results, so you can analyze impact with greater depth and precision. 
 
 There are three required filters for analysis:
 

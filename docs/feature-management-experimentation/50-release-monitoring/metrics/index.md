@@ -47,7 +47,7 @@ To create a metric, do the following:
 
 ## Metric types
 
-Split supports the following custom metric types. Metrics are calculated per traffic type key (e.g. per user). This means that each individual key's contribution is calculated and adds a single data point to the distribution of the metric result, so each key has equal weighting in the result.
+Harness FME supports the following custom metric types. Metrics are calculated per traffic type key (e.g. per user). This means that each individual key's contribution is calculated and adds a single data point to the distribution of the metric result, so each key has equal weighting in the result.
 
 In the table below, we assume the traffic type selected for the metric is `user`.
 

@@ -5,7 +5,7 @@ sidebar_position: 40
 
 Attribution is the process by which Harness FME measures the influence of a feature on a user metric and allows you to run accurate experiments. Attribution correlates events with one of the treatments of the Harness FME for which metrics are being calculated. 
 
-Split combines event data you send to Harness FME with the assignment data collected by the getTreatment call of the FME SDK to determine whether the event was influenced by the feature. The correlation is done via the key (id) that is present in an [impression](https://help.split.io/hc/en-us/articles/360020585192) (a record of which treatment was assigned to a key) and the key in an event. 
+Harness FME combines event data you send to Harness FME with the assignment data collected by the getTreatment call of the FME SDK to determine whether the event was influenced by the feature. The correlation is done via the key (id) that is present in an [impression](https://help.split.io/hc/en-us/articles/360020585192) (a record of which treatment was assigned to a key) and the key in an event. 
 
 If the timestamp in the event is later than the timestamp in the impression, the event is attributed to whatever treatment was assigned to the key specified in the event. Regardless of the specific mechanism by which you send events to Harness FME, those events must contain a key from the same domain (traffic type) for which you are calling getTreatment and an Epoch UTC timestamp in milliseconds. 
 
@@ -13,13 +13,13 @@ For some methods of sending events, such as the FME SDK track method, those fiel
 
 ## Event attribution
 
-Split's attribution functionality associates events with treatments to measure the relative performance of those treatments. Any event that occurs after the timestamp of the first impression a user generates for a Harness FME is attributed to the treatment that was assigned, and for measurement the user is grouped with all the other users who had treatments assigned by the same targeting rule.
+FME's attribution functionality associates events with treatments to measure the relative performance of those treatments. Any event that occurs after the timestamp of the first impression a user generates for a Harness FME is attributed to the treatment that was assigned, and for measurement the user is grouped with all the other users who had treatments assigned by the same targeting rule.
 
 The targeting rule is important because metric impact is only assessed between treatments that were assigned by the same rule. The rule is identified by the label field of the impression. Essentially a user’s events are attributed to a specific label/treatment pair.
 
 The following example describes how Harness FME attributes events when a user's rule does not change during the version, which is the most common scenario.
 
-Split identifies when a user first is assigned a treatment, and attributes all events after that first impression to the treatment assigned. The following is an illustration of this attribution following a single user's activity.
+FME identifies when a user first is assigned a treatment, and attributes all events after that first impression to the treatment assigned. The following is an illustration of this attribution following a single user's activity.
 
 <img src="https://help.split.io/hc/article_attachments/360021818792" alt="Attribution___exclusion_1_.png" width="1000" />
 
@@ -81,16 +81,16 @@ It is possible to analyze data across feature flag versions by selecting the cus
 
 ## Data retention
 
-Split retains the impression and event data by which we measure experiments for ninety days. If a version of a Harness FME is older than 90 days, Harness FME uses the last ninety days of data when calculating metrics for that Harness FME version. 
+Harness FME retains the impression and event data by which we measure experiments for ninety days. If a version of a Harness FME is older than 90 days, Harness FME uses the last ninety days of data when calculating metrics for that Harness FME version. 
 
-:::note 
+:::warning 
 Be aware that if you trigger a recalculation of Harness FME versions that are older than 90 days, the metric data you’re currently looking at could disappear. You should instead [share your results](https://help.split.io/hc/en-us/articles/360059696231-Share-Results).
 :::
 
 
 ## Metric calculation flexibility 
 
-Split’s attribution model uses event timestamps to associate a user’s action with the treatment they were served prior to that timestamp. The events do not have to be delivered to Harness FME contemporaneously. This makes the system flexible enough to handle the fact that teams often realize during a feature release or experiment that they're interested in measuring metrics that were not defined in Harness FME at the beginning of the experiment. 
+FME's attribution model uses event timestamps to associate a user’s action with the treatment they were served prior to that timestamp. The events do not have to be delivered to Harness FME contemporaneously. This makes the system flexible enough to handle the fact that teams often realize during a feature release or experiment that they're interested in measuring metrics that were not defined in Harness FME at the beginning of the experiment. 
 
 * **Events do not need to be sent from the FME SDK or synchronously when they occur.** You may want to measure a feature with events from systems not directly associated with a feature flag. For example, you may have a backend order processing system with useful information about business events. As long as you have an EPOCH UTC msec timestamp of when the event occurred and the key for which getTreatment calls were made (the key with which you wish to associate the event), you can send [the events](https://help.split.io/hc/en-us/articles/360020585772-Events) to Harness FME anytime during the Harness FME version you are measuring. This allows us to receive data in batch and attribute them to experiments using the rules described above, that is , matching keys and the timestamp when the event occurred with whatever treatment was served to the key prior to that time.
 

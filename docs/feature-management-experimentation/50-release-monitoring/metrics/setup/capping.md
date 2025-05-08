@@ -4,7 +4,7 @@ With metric capping, teams can reduce the impact outliers and bots on their data
 
 ## Overview
 
-Split receives all raw events in the time frame of a version of a feature flag.
+Harness FME receives all raw events in the time frame of a version of a feature flag.
 
 At the time of metric calculation, the aggregation of the raw events per user (or account or other traffic type) is capped at the defined metric cap, which is set by the user for that metric.
 
