@@ -12,7 +12,7 @@ This guide will help you **create a Maven Artifact Registry** in Harness, **conf
 ## Create a Maven Artifact Registry
 <Tabs>
 <TabItem value="interactive" label="Interactive Guide">
-<DocVideo src="https://app.tango.us/app/embed/a2f6cbb9-17da-49e4-b26a-2f5cf44d8442?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create a Maven Artifact Registry in Harness"/>
+<DocVideo src="https://app.tango.us/app/embed/511932ac-8ac1-4db9-ab6a-3296e6974949?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Creating a New Maven Artifact Registry" />
 </TabItem>
 <TabItem value="step" label="Step-by-Step">
 
