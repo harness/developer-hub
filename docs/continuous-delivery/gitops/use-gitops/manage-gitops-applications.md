@@ -4,6 +4,8 @@ description: Learn how to find and manage GitOps applications.
 sidebar_position: 35
 ---
 
+
+GOOGLY MOOGLY THIS IS A PRLY
 You can manage your applications through the **Applications** found in **GitOps Overview** page. 
 
 <DocVideo src="https://app.tango.us/app/embed/Navigating-GitOps-to-Access-Applications-in-Harness-cad0aa3f8abd4f1d96af0e482c51729e" title="Navigating GitOps to Access Applications in Harness" />
@@ -51,6 +53,7 @@ Then you're done!
 
 You can then load the filter each subsequent time by clicking the filter icon to the right of **Reset** and searching for your filter there. 
 
+## Ignore HPA Changes to Prevent Out-of-Sync Status
 
 When Horizontal Pod Autoscaler (HPA) is enabled, pod scaling can cause GitOps to detect unwanted differences and mark applications as out of sync. 
 
