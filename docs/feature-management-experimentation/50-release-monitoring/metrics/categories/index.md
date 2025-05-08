@@ -24,4 +24,4 @@ Have a metric or category you'd like to see included? Please let us know!
 | [**Sessions**](https://www.harness.io/harness-devops-academy/sessions) | Construct engagement metrics such as session start and end, entry and exit rates, and session length. |
 | [**Shopping Cart**](https://www.harness.io/harness-devops-academy/shopping-cart) | Track changes to a shopping cart to measure cart size, value, completion, and abandonment metrics. |
 
-For more information about metric categories, see the [Metrics](/docs/feature-management-experimentation/release-monitoring/overview) documentation.
+For more information about metric categories, see the [Metrics](/docs/feature-management-experimentation/50-release-monitoring/overview.md) documentation.
