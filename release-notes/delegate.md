@@ -93,8 +93,8 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 #### Fixed issues
 
 - Enabled support for AWS Secret Manager in GovCloud regions using region-specific STS endpoints. [PL-61526]
-- Reverted secret-splitting logic; use [regex](https://developer.harness.io/docs/platform/delegates/manage-delegates/hide-logs-using-regex/) for secret masking instead. [CDS-108477]
-- Connector validation token now includes connector name and ID. [CDS-108066]
+- The secret-splitting logic has been reverted. Please use [regex-based masking](https://developer.harness.io/docs/platform/delegates/manage-delegates/hide-logs-using-regex/) to hide secrets in logs instead [CDS-108477]
+- The OIDC token used for connector validation now includes the connector's name and ID. [CDS-108066]
 
 ### Version 25.04.85703 <!-- May 2, 2025 -->
 
