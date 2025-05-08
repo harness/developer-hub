@@ -51,7 +51,6 @@ Then you're done!
 
 You can then load the filter each subsequent time by clicking the filter icon to the right of **Reset** and searching for your filter there. 
 
-## Ignore HPA Changes to Prevent Out-of-Sync Status
 
 When Horizontal Pod Autoscaler (HPA) is enabled, pod scaling can cause GitOps to detect unwanted differences and mark applications as out of sync. 
 
