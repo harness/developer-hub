@@ -14,10 +14,21 @@ flexibility in database migration scripts.
 It decouples your database migration logic from environment-specific values, making the whole process of versioning and 
 deploying database changes far more efficient and scalable.
 
+:::important
+**Minimum versions required**
+- db-devops-service - 1.35.x
+- drone-liquibase - plugins/drone-liquibase:1.2.0-4.27
+- drone-liquibase-mongo - plugins/drone-liquibase:1.2.0-4.27-mongo
+- drone-liquibase-spanner - plugins/drone-liquibase:1.2.0-4.27-spanner
+:::
+
+
 :::info
 The tokens to replace in your changelog are described using the `${property-name}` syntax.
 The supported format includes alphanumeric characters, +, -, . , and _. Example `${property+name}`
 :::
+
+
 
 ## Uses
 1. Environment-specific Names

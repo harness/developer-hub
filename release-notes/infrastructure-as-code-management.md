@@ -35,6 +35,13 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 </HarnessApiData>
 ::: -->
 
+## May - IAC Server Version v1.143.0
+<!-- Released on 5 May 2025 -->
+### Feature Improvements: 
+- **Scoped Repository Selection in Module Registry:** You can now select Harness repositories from both the organization and project scopes when registering a module. This enhancement gives you greater flexibility and control over where your modules are sourced from—making it easier to share and reuse IaC code across teams.
+
+👉 Get started by [registering a module](/docs/infra-as-code-management/iacm-features/module-registry#register-a-module).
+
 ## April - IAC Server Version 1.138.0
 <!-- Released on 4 April 2025 -->
 

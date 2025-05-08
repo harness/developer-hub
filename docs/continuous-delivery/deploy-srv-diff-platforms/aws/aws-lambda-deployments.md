@@ -199,6 +199,10 @@ In Harness, you use a JSON configuration file to define the AWS Lambda you wish 
 
 **Harness Support for Tag Management**
 
+:::note
+Currently, the tag management feature is behind the feature flag `CDS_AWS_LAMBDA_ECS_TAG_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 Harness supports managing AWS Lambda function tags, allowing users to create, update, and delete tags as part of their function definition. Tags help with resource organization, cost allocation, and security policies.
 
 The minimal requirements for an AWS Lambda function definition are:
