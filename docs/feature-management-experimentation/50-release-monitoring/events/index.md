@@ -59,7 +59,7 @@ The following is an example in Java.
 Other SDK languages each have specific syntax that need to be followed on their own help pages. Refer to our [SDK section](https://help.split.io/hc/en-us/articles/360033557092-SDK-overview) of our help documentation for more information about using the `track` call for your selected SDK.
 :::
 
-```java
+```java title="Java"
 // If you would like to send an event without a value 
 boolean trackEvent = client.track("key", "TRAFFIC_TYPE", "EVENT_TYPE");
 // Example
@@ -153,30 +153,7 @@ Below is a sample event `checkout.click` showing the event properties with Harne
 
 #### JSON
 
-```json
-{
- "eventTypeId": "checkout.click",
- "environmentName": "Production",
- "trafficTypeName": "user",
- "timestamp": 1557936519990,
- "value": 0,
- "source": "Segment",
- "foreignId": "ajs-85cb03f2f34af1426d9a2128146ab832",
- <b>"properties": {
-   "category": "guest",
-   "packaging_fees": 25.08,
-   "discount_saving": 4,
-   "label": "necklace",
-   "login_id": null,
-   "page_version": "unit_page",
-   "total_tax": 32.00,
-   "total_cost": 945.69,
-   "type": "button",
-   "package": "luxury",
-   "visitor_id": null
- }</b>
-}
-```
+<pre>\{<br />  "eventTypeId": "checkout.click",<br />  "environmentName": "Production",<br />  "trafficTypeName": "user",<br />  "timestamp": 1557936519990,<br />  "value": 0,<br />  "source": "Segment",<br />  "foreignId": "ajs-85cb03f2f34af1426d9a2128146ab832",<br />  <strong>"properties": \{ <br />    "category": "guest",<br />    "packaging_fees": 25.08,<br />    "discount_saving": 4,<br />    "label": "necklace",<br />    "login_id": null,<br />    "page_version": "unit_page",<br />    "total_tax": 32.00,<br />    "total_cost": 945.69,<br />    "type": "button",<br />    "package": "luxury",<br />    "visitor_id": null<br />  \} </strong><br />}<br /></pre>
 
 You can view the event properties being sent for a given event type using the [Live tail functionality in Data hub](https://help.split.io/hc/en-us/articles/360044867032).
 

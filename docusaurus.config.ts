@@ -452,7 +452,7 @@ const config: Config = {
     prism: {
       theme: themes.github,
       darkTheme: themes.vsDark,
-      additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git'],
+      additionalLanguages: ['yaml', 'json', 'bash', 'python', 'git', 'java'],
     },
     colorMode: {
       defaultMode: 'light',

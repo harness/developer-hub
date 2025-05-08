@@ -13,7 +13,7 @@ Event data can be sent to Harness FME in one of four ways:
 
 Below is an example of calling the track method of the SDK in JavaScript. See links above for the API and integration routes.
 
-```javascript
+```javascript title="JavaScript"
 // parameters
 var queued = client.track('TRAFFIC_TYPE', 'EVENT_TYPE'), eventValue);
 // Example
@@ -57,7 +57,7 @@ This convention groups related events together when sorted alphabetically and he
 
 ## Efficiency with events
 
-Events can be optimized to ensure that you’re getting the most value out of the events that you send to Harness FME. On a technical level filtering events is easiest when using the track method of the SDK as that is code that can be accessed and reasoned about. Other integrations that may be easy to filter with are the [S3 integration](https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3) or the [Events API](https://docs.split.io/reference/events-overview) - in either case the filtering would have to be done before any data is sent to those integrations.
+Events can be optimized to ensure that you’re getting the most value out of the events that you send to Harness FME. On a technical level filtering events is easiest when using the track method of the SDK as that is code that can be accessed and reasoned about. Other integrations that may be easy to filter with are the [S3 integration](https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3) or the [Events API](https://docs.split.io/reference/events-overview) — in either case the filtering would have to be done before any data is sent to those integrations.
 
 ### Filtering events by business requirements
 
