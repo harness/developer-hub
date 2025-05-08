@@ -1,25 +1,101 @@
 ---
-title: Enabling Cluster Orchestrator for AWS EKS clusters (Beta)
-description: This topic describes how to set up Cluster Orchestrator 
-# sidebar_position: 2
+title: Getting Started with Cluster Orchestrator
+description: Learn how to enable and configure Cluster Orchestrator for your EKS clusters
+sidebar_position: 1
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-To enable Cluster Orchestrator for AWS EKS clusters associated with your account, follow these two simple steps:
+:::note
+This feature is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
 
-### Step 1: Enable feature flag
+# Getting Started
 
-Currently, this early access feature is behind a feature flag . Contact [Harness Support](mailto:support@harness.io) to enable the feature. After it is enabled, you can see it directly in the navigation bar.
+Learn how to enable Cluster Orchestrator to optimize costs by managing AWS Spot instances and providing workload-driven autoscaling.
+
+## Prerequisites
+
+- AWS EKS cluster with Metrics Server installed
+- Harness Kubernetes connector configured
+- AWS account and EKS cluster admin access
+
+:::tip
+No connector? See [Kubernetes connector setup](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
+:::
+
+## Quick Start
+
+1. Log in to [Harness](https://app.harness.io) and go to **Cloud Costs** → **Cluster Orchestrator**
+2. Locate your EKS cluster and click **Enable**
+3. Choose an installation method:
+   - **kubectl** (recommended) 
+   - **Helm** (advanced) - [Details](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co#helm-based-installation)
 
 
-Currently Cluster Orchestrator can be set up using two methods:
-a. Helm Based installation
-b. Script based installation via CCM UI and kubectl
+## Onboarding using CCM UI (via kubectl)
 
-## Helm-based Installation
+
+### Step 1: Navigate to Cluster Orchestrator in the Cloud Costs Module
+
+Click on Cluster Orchestrator from the navigation bar. Once you click on it, you will be taken to the home page, where you can see all the clusters associated with your account. 
+
+For each cluster, you can see the following information:
+- Name of the cluster
+- Region of the cluster
+- Number of nodes associated with the cluster
+- CPU
+- Memory
+- Potential spend of the cluster
+- Savings realized
+- Whether the Cluster Orchestrator is enabled for the particular cluster
+
+On this page, you can also see the total cost of the clusters and the spot savings.
+<DocImage path={require('./static/overview.png')} width="100%" height="100%" title="Click to view full size image" />
+
+### Step 2: Enable the Cluster Orchestrator for a Selected Cluster
+
+For a given cluster, click on the enable option, which will take you to the enablement screen. To enable the Cluster Orchestrator for the particular cluster, there are two steps to complete:
+
+#### Step A: Cluster Permissions
+
+You will be asked to run a shell script in your terminal and verify the connection. Upon successfully establishing the connection, click on the next step to configure.
+<DocImage path={require('./static/step-one.png')} width="90%" height="90%" title="Click to view full size image" />
+
+#### Step B: Orchestrator Configuration
+
+Cluster Orchestrator allows you to choose Cluster Preferences and Spot Preferences.
+
+**Cluster Preferences:**
+
+- Bin-Packing: 
+    -  Pod Eviction by Harness: To optimize resources, nodes may be evicted before consolidation. Enabling pod eviction ensures workloads are safely rescheduled to maintain performance and availability while freeing up underutilized resources. Users can set single replica eviction of workload as On or Off.
+
+    - Resource Utilization Thresholds: This is used to set minimum CPU and memory usage levels to determine when a node is considered underutilized. This helps balance cost savings and performance by ensuring nodes are consolidated only when their resources fall below the specified thresholds.
+
+- Node Disruption Using Karpenter: This option can be utilised to activate Karpenter's node disruption management to optimize resource utilization and maintain application stability. Cluster orchestrator provders three optional settings here:
+    - Node deletion criteria: The setting ensures that the nodes are deleted either when they are empty or under utilised as set by the user
+    - Node deletion delay: The setting ensures that the nodes with no pods are deleted after a specified time and the delay time can be set by the user
+    - Disruption Budgets: This feature allows users to define limits on the percentage of nodes that can be disrupted at any given time. This option comes with an added setting of selecting the reason and enabling or disabling budget scheduling
+
+- TTL for Karpenter Nodes: The Time-to-Live (TTL) setting for Karpenter nodes defines the maximum lifespan of a node before it is eligible for deletion, regardless of its resource utilization. By setting a TTL, users can ensure that idle or unnecessary nodes are automatically cleaned up after a specified time period, even if they are not underutilized or empty. This helps in avoiding resource sprawl, ensuring that unused nodes don’t linger indefinitely, and optimizing the overall cost and resource usage within the cluster.
+
+<DocImage path={require('./static/step-two.png')} width="110%" height="110%" title="Click to view full size image" />
+
+**Spot Preferences:**
+
+Cluster Orchestrator allows users to set **Base On-Demand Capacity**, which can be further split into percentages to determine how much should be used by Spot and On-Demand instances. You can also choose the distribution strategy between **Least-Interrupted** or **Cost-optimized** and can define spot-ready for all workloads or spot-ready workloads. 
+
+Users can also enable reverse fallback retry. When spot nodes are interrupted, they are automatically replaced with on-demand nodes to maintain application stability. Once spot capacity becomes available again, the system will perform a reverse fallback, replacing the on-demand node with a spot node. Users can select the retry interval to define how often the system checks for spot capacity and performs the reverse fallback.
+
+Once all the details are filled in, click on the **"Complete Enablement"** button to enable Cluster Orchestrator for the cluster.
+
+<DocImage path={require('./static/step-three.png')} width="110%" height="110%" title="Click to view full size image" />
+
+
+## Onboarding via Helm
 
 ### Prerequisites
 
@@ -32,6 +108,9 @@ b. Script based installation via CCM UI and kubectl
 The Terraform script sets up the required infrastructure, including AWS IAM roles, subnets, security groups, and Harness service accounts, for the Harness CCM Cluster Orchestrator. Ensure you complete this step first before moving on to the Helm installation.
 
 #### Terraform Template
+
+<details>
+<summary>Click to expand Terraform template</summary>
 
 ```hcl
 terraform {
@@ -349,8 +428,9 @@ output "eks_cluster_node_role_arn" {
 output "harness_cluster_orchestrator_id" {
   value = harness_cluster_orchestrator.cluster_orchestrator.id
 }
-
 ```
+
+</details>
 
 #### Terraform Outputs
 
@@ -384,6 +464,9 @@ Please note, after running the Terraform script, the API key will not be printed
 
 Replace the placeholders in the command with values from the Terraform outputs and your specific configuration:
 
+<details>
+<summary>Click to expand Helm install command</summary>
+
 ```bash
 helm install harness-ccm-cluster-orchestrator --namespace kube-system harness-ccm-cluster-orchestrator/harness-ccm-cluster-orchestrator \
 --set harness.accountID="<harness_account_id>" \
@@ -398,6 +481,8 @@ helm install harness-ccm-cluster-orchestrator --namespace kube-system harness-cc
 --set clusterOrchestrator.id="<cluster_orchestrator_id>"
 ```
 
+</details>
+
 :::info
 
 If your cluster does not have a OIDC provider arn, use this :-
@@ -407,113 +492,61 @@ eksctl utils associate-iam-oidc-provider --region <your_cluster_region> --cluste
 ```
 :::
 
-## Installation via kubectl
 
-### Step 1: Navigate to Cluster Orchestrator in the Cloud Costs Module
+## Complete Enablement
 
-Click on Cluster Orchestrator from the navigation bar. Once you click on it, you will be taken to the home page, where you can see all the clusters associated with your account. 
+1. Review all your configuration settings
+2. Click **Complete Enablement** to finalize the setup
 
-For each cluster, you can see the following information:
-- Name of the cluster
-- Region of the cluster
-- Number of nodes associated with the cluster
-- CPU
-- Memory
-- Potential spend of the cluster
-- Savings realized
-- Whether the Cluster Orchestrator is enabled for the particular cluster
-
-On this page, you can also see the total cost of the clusters and the spot savings.
-<DocImage path={require('./static/overview.png')} width="100%" height="100%" title="Click to view full size image" />
-
-### Step 2: Enable the Cluster Orchestrator for a Selected Cluster
-
-For a given cluster, click on the enable option, which will take you to the enablement screen. To enable the Cluster Orchestrator for the particular cluster, there are two steps to complete:
-
-#### Step A: Cluster Permissions
-
-You will be asked to run a shell script in your terminal and verify the connection. Upon successfully establishing the connection, click on the next step to configure.
-<DocImage path={require('./static/step-one.png')} width="90%" height="90%" title="Click to view full size image" />
-
-#### Step B: Orchestrator Configuration
-
-Cluster Orchestrator allows you to choose Cluster Preferences and Spot Preferences.
-
-**Cluster Preferences:**
-
-- Bin-Packing: 
-    -  Pod Eviction by Harness: To optimize resources, nodes may be evicted before consolidation. Enabling pod eviction ensures workloads are safely rescheduled to maintain performance and availability while freeing up underutilized resources. Users can set single replica eviction of workload as On or Off.
-
-    - Resource Utilization Thresholds: This is used to set minimum CPU and memory usage levels to determine when a node is considered underutilized. This helps balance cost savings and performance by ensuring nodes are consolidated only when their resources fall below the specified thresholds.
-
-- Node Disruption Using Karpenter: This option can be utilised to activate Karpenter's node disruption management to optimize resource utilization and maintain application stability. Cluster orchestrator provders three optional settings here:
-    - Node deletion criteria: The setting ensures that the nodes are deleted either when they are empty or under utilised as set by the user
-    - Node deletion delay: The setting ensures that the nodes with no pods are deleted after a specified time and the delay time can be set by the user
-    - Disruption Budgets: This feature allows users to define limits on the percentage of nodes that can be disrupted at any given time. This option comes with an added setting of selecting the reason and enabling or disabling budget scheduling
-
-- TTL for Karpenter Nodes: The Time-to-Live (TTL) setting for Karpenter nodes defines the maximum lifespan of a node before it is eligible for deletion, regardless of its resource utilization. By setting a TTL, users can ensure that idle or unnecessary nodes are automatically cleaned up after a specified time period, even if they are not underutilized or empty. This helps in avoiding resource sprawl, ensuring that unused nodes don’t linger indefinitely, and optimizing the overall cost and resource usage within the cluster.
-
-<DocImage path={require('./static/step-two.png')} width="110%" height="110%" title="Click to view full size image" />
-
-**Spot Preferences:**
-
-Cluster Orchestrator allows users to set **Base On-Demand Capacity**, which can be further split into percentages to determine how much should be used by Spot and On-Demand instances. You can also choose the distribution strategy between **Least-Interrupted** or **Cost-optimized** and can define spot-ready for all workloads or spot-ready workloads. 
-
-Users can also enable reverse fallback retry. When spot nodes are interrupted, they are automatically replaced with on-demand nodes to maintain application stability. Once spot capacity becomes available again, the system will perform a reverse fallback, replacing the on-demand node with a spot node. Users can select the retry interval to define how often the system checks for spot capacity and performs the reverse fallback.
-
-Once all the details are filled in, click on the **"Complete Enablement"** button to enable Cluster Orchestrator for the cluster.
-
-<DocImage path={require('./static/step-three.png')} width="110%" height="110%" title="Click to view full size image" />
-
- <!-- <iframe 
-     src="https://app.tango.us/app/embed/feb3c2ac-4897-49c7-84fa-e6c36bd1bcd4" 
-     title="Set up Commitment Orchestrator" 
-     style={{minHeight:'640px'}}
-     width="100%" 
-     height="100%" 
-     referrerpolicy="strict-origin-when-cross-origin" 
-     frameborder="0" 
-     webkitallowfullscreen="webkitallowfullscreen" 
-     mozallowfullscreen="mozallowfullscreen" 
-     allowfullscreen="allowfullscreen"></iframe> -->
-
-After the setup is complete, Cluster Orchestrator supports three screens to show information about your cluster:
-
-#### Overview Page for Cluster Orchestrator Enabled Clusters
-
-The overview page shows all the information about:
-- Cluster Spend
-- Cluster Details
-- Nodes Breakdown
-- Nodes
-- Pods
-- CPU Breakdown
-- Memory Breakdown
-
-<DocImage path={require('./static/overview-two.png')} width="90%" height="90%" title="Click to view full size image" />
-
-#### Overview of Workloads in the Cluster
-
-This page contains all the information about the workloads associated with the cluster including their:
-- Namespace
-- Replicas
-- Distribution of Replicas
-- Total Cost of each workload.
-
-<DocImage path={require('./static/workloads.png')} width="90%" height="90%" title="Click to view full size image" />
-
-#### Overview of Nodes in the Cluster
-
-This page contains all the information about the nodes associated with the cluster, including:
-- the Number of Workloads
-- Instance Types
-- Fulfillment
-- CPU
-- Memory
-- Age
-- Status
-
-Additionally, you can see the details of all nodes.
-<DocImage path={require('./static/nodes.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('./static/step-three.png')} width="90%" height="90%" title="Complete Enablement" />
 
 
+## What to Expect After Enablement
+
+After successfully enabling Cluster Orchestrator, you'll have access to three main views:
+
+### 1. Cluster Overview
+
+Provides comprehensive information about your cluster including:
+- Cluster spend and potential savings
+- Node distribution (on-demand vs. spot)
+- CPU and memory utilization
+- Cost breakdown by namespace
+
+<DocImage path={require('./static/overview-two.png')} width="90%" height="90%" title="Cluster Overview" />
+
+
+### 2. Workloads View
+
+Shows detailed information about all workloads running in your cluster:
+- Namespace distribution
+- Replica count and distribution (on-demand vs. spot)
+- Cost per workload
+- Resource requests and limits
+
+### 3. Nodes View
+
+Displays information about all nodes in your cluster:
+- Instance types and distribution
+- Fulfillment method (on-demand vs. spot)
+- Resource utilization
+- Age and status
+
+## Troubleshooting
+
+If you encounter issues during the enablement process:
+
+1. Verify that your Kubernetes connector has the necessary permissions
+2. Ensure the Metrics Server is properly installed in your cluster
+3. Check AWS IAM permissions for spot instance management
+4. Review the Cluster Orchestrator logs in the Harness UI
+
+For additional assistance, contact [Harness Support](mailto:support@harness.io).
+
+## Next Steps
+
+Now that you've successfully enabled Cluster Orchestrator, you can learn more about:
+
+- [AWS Spot Instance Management](/docs/cloud-cost-management/4-use-ccm-cost-optimization/cluster-orchestrator/aws-spot-instances)
+- [Advanced Configuration Options](/docs/cloud-cost-management/4-use-ccm-cost-optimization/cluster-orchestrator/advanced-configuration)
+- [Monitoring and Optimization](/docs/cloud-cost-management/4-use-ccm-cost-optimization/cluster-orchestrator/monitoring)
