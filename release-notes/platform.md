@@ -139,7 +139,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
-- Support for adding Delegate Configurations (legacy feature) from the Resource Groups page has been removed. [PL-60603]
+- Delegate Configurations have been removed from the Resource Group configuration UI to reduce clutter and simplify the interface.[PL-60603]
 - New Audit Event for API Token Expiry: Harness now logs an audit event whenever an API token expires. This enhancement improves visibility and traceability of token lifecycle events, supporting stronger security auditing. [PL-62394]
 
 ## April 2025 
