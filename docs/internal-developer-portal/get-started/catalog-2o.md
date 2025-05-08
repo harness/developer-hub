@@ -13,7 +13,7 @@ This guide will take you through the key changes for Software Catalog in IDP 2.0
 ## What’s new for Software Catalog in IDP 2.0?
 Harness IDP 2.0 represents a major evolution of the Internal Developer Portal, built on a Harness-native data model designed for enterprise-scale environments and robust access control. Here's what’s changing in IDP 2.0 for the Software Catalog:
 
-- **Harness-native Platform Hierarchy:** Catalog entities and workflows now support Account, Org, and Project scopes, with built-in, fine-grained RBAC.
+- **Harness-native Platform Hierarchy:** Catalog entities now support Account, Org, and Project scopes, with built-in, fine-grained RBAC.
 
 - **No YAML Required:** Create and modify entities directly within the UI—no need to manage YAML files or deal with Git operations.
 
@@ -77,5 +77,21 @@ Note: **YAML validation** is automatically performed to ensure compatibility wit
 ## Populate your Catalog
 
 ## Delete an Entity
+You can also **delete** any existing entity from the Software Catalog.
+
+Here’s how to do it:
+1. Navigate to your Catalog and select the entity you want to delete.
+2. In the entity details view, click the three-dot menu in the top-right corner.
+3. From the dropdown, select Delete. The entity will be removed from the catalog.
+
+## Use RBAC with your Catalog
+
+## Next Steps 
+Now that you've created an entity, populated your Catalog and also deleted an entity - you're well versed with the basics of a Software Catalog. Here's what you can do next to understand and start using Catalog: 
+1. Understand and read through the Catalog Data Model if not done already to understand the Catalog entities. 
+2. Read through and form an understanding of the Catalog YAML. 
+3. Populate your Catalog at scale by following the guide here.
+4. You can also configure and manage a custom Catalog UI. 
+
 
 
