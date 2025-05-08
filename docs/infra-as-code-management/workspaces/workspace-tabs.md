@@ -27,7 +27,7 @@ This tab includes three subtabs:
 - **Data Sources:** External values fetched at runtime (e.g., existing VPCs, AMIs). These are now extracted from the state file for easier visibility.
 - **Outputs:** Values exposed by your modules, typically used to pass data between pipeline stages or systems.
 
-Use this tab to validate state, inspect dependencies, and troubleshoot issues—without digging through raw state files.
+Use this tab to validate state, inspect dependencies, and troubleshoot issues, without digging through raw state files.
 ---
 ### Variables
 The Variables tab is populated from the variables defined within your infrastructure code, commonly in your `variables.tf` file.
