@@ -70,6 +70,7 @@ Users will need to manually **update their Perspectives, Cost Categories, and Da
 
 - Asset Governance Alert Fix: We've improved the alert update experience to ensure that only relevant resources and cloud accounts are displayed based on the selected cloud provider. This enhancement ensures a more accurate and streamlined configuration flow for Governance alerts. [CCM-22618]
 
+
 ## April 2025 - Version 1.48.1
 
 ### [New Feature] Alerts for Governance Rule Evaluations
