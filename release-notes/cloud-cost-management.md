@@ -64,8 +64,6 @@ Users will need to manually **update their Perspectives, Cost Categories, and Da
 ### Bug Fixes
 - We have resolved an issue where, in the **Setup HTTP/HTTPS** step while creating an **AS Rule**, clicking the **Proxy** option first and then closing it would cause the **LB** option to incorrectly open the **Proxy** dialog. It will now always open the correct dialog. [CCM-22677]
 
-- 
-
 ## April 2025 - Version 1.49.1
 
 ### Feature Improvements
