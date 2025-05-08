@@ -38,7 +38,7 @@ Event type names must meet the following requirements:
 * Start with a letter, number, or left-bracket (`[`)
 * Contain only letters, numbers, hyphens (`-`), underscores (`_`), brackets (`[]`), or periods (`.`)
 
-For more information, see the [Events](https://help.split.io/hc/en-us/articles/360020585772-Events) documentation.
+For more information, see the [Events](../) documentation.
 
 ### Recommended naming convention
 
