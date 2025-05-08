@@ -14,6 +14,7 @@ declare var require: {
 };
 
 import React, { useState, useEffect } from "react";
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import DocVideo from "@site/src/components/DocVideo";
@@ -99,39 +100,43 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
   };
 
   return (
-    <div className="dynamic-markdown-selector">
-      <hr className="selector-divider" />
-      <div className="selector-tiles">
-        {labels.map((label) => (
-          <button
-            key={label}
-            className={`selector-tile${selected === label ? " selected" : ""}`}
-            onClick={() => handleTabClick(label)}
-            type="button"
-          >
-            <span>{label}</span>
-          </button>
-        ))}
-      </div>
-
-      {toc.length > 0 && (
-        <nav className="runtime-toc">
-          <ul>
-            {toc.map((h) => (
-              <li key={h.id} className={`level-${h.level}`}>
-                <a href={`#${h.id}`}>{h.text}</a>
-              </li>
+    <BrowserOnly>
+      {() => (
+        <div className="dynamic-markdown-selector">
+          <hr className="selector-divider" />
+          <div className="selector-tiles">
+            {labels.map((label) => (
+              <button
+                key={label}
+                className={`selector-tile${selected === label ? " selected" : ""}`}
+                onClick={() => handleTabClick(label)}
+                type="button"
+              >
+                <span>{label}</span>
+              </button>
             ))}
-          </ul>
-        </nav>
+          </div>
+
+          {toc.length > 0 && (
+            <nav className="runtime-toc">
+              <ul>
+                {toc.map((h) => (
+                  <li key={h.id} className={`level-${h.level}`}>
+                    <a href={`#${h.id}`}>{h.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
+          <div className="markdown-content">
+            {ContentComp && <ContentComp components={{ Tabs, TabItem, DocVideo }} />}
+          </div>
+
+          <hr className="selector-divider" />
+        </div>
       )}
-
-      <div className="markdown-content">
-        {ContentComp && <ContentComp components={{ Tabs, TabItem, DocVideo }} />}
-      </div>
-
-      <hr className="selector-divider" />
-    </div>
+    </BrowserOnly>
   );
 };
 
