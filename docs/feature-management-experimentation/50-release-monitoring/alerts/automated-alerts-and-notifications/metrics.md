@@ -13,7 +13,7 @@ Alert policies can only be created for metrics that are measured per traffic typ
 
 To create an alert policy:
 
-1. Create a new metric or navigate to the metric that you want to be alerted of a change. For more about creating a metric, refer to the [Creating a metric](https://help.split.io/hc/en-us/articles/360020586132-Create-a-metric) guide. 
+1. Create a new metric or navigate to the metric that you want to be alerted of a change. For more information about creating a metric, refer to the [Creating a metric](https://help.split.io/hc/en-us/articles/9652327065485-Setting-up-and-using-metrics#creating-a-metric) guide. 
 
 2. Once you select the metric to create a new alert policy for, click the **Alert policy** tab by the Metric definition tab. If there are no policies available, click the **Create alert policy** button.
 
