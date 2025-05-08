@@ -1015,7 +1015,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "category",
-          label: "Release Monitoring",
+          label: "Release monitoring",
           link: {
             type: "generated-index",
             slug: "feature-management-experimentation/release-monitoring",
