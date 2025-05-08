@@ -707,12 +707,12 @@ This checks if the entire pipeline is in rollback mode.
 
 You can reference any connector’s attributes (name, identifier, type, spec fields, etc.) via JEXL in account, organisation and project‐level scopes. When no scope is specified, the project scope is assumed.
 
-`<+connectors.get("org.artifactory").name>` : Retrieves the display name configured for the connector
+`<+connector.get("artifactory").name>` : Retrieves the display name configured for the project-scoped connector.
 
-`<+connectors.get("org.artifactory").identifier>` : Returns the unique identifier used to reference this connector
+`<+connector.get("org.artifactory").identifier>` : Returns the unique identifier used to reference this organisation-scoped connector.
 
-`<+connectors.get("org.artifactory").type>` : Indicates the connector type (e.g., **AWS**, **Artifactory**, etc)
+`<+connector.get("org.artifactory").type>` : Indicates the connector type (e.g., **AWS**, **Artifactory**, etc) at organisation scope.
 
-`<+connectors.get("org.artifactory").spec.username>` : Fetches the username field from the connector’s spec
+`<+connector.get("org.artifactory").spec.username>` : Fetches the username field from the organisation-scoped connector’s spec.
 
-`<+connectors.get("org.artifactory").spec.passwordRef>` : Retrieves the secret reference for the connector’s password
+`<+connector.get("account.artifactory").spec.passwordRef>` : Retrieves the secret reference for the account-scoped connector’s password.
