@@ -5,8 +5,8 @@ sidebar_position: 10
 
 A metric alert policy allows you to configure a degradation threshold for your metrics. If the metric exceeds the threshold in an undesired direction, you are alerted by your configured notification channel. 
 
-:::note
-Alert policies can only be created for metrics that are measured per traffic type, rather than those that are measured across the traffic type you are using.
+:::info
+Alert policies can only be created for metrics that are measured per traffic type, rather than those that are measured across all traffic type keys.
 :::
 
 ## Create a metric alert policy
@@ -17,7 +17,7 @@ To create an alert policy:
 
 2. Once you select the metric to create a new alert policy for, click the **Alert policy** tab by the Metric definition tab. If there are no policies available, click the **Create alert policy** button.
 
-   <img src="https://help.split.io/hc/article_attachments/12488519234445" alt="create-new-alert-policy.png" width="1000" />
+   <img src="https://help.split.io/hc/article_attachments/19832342556557" alt="create-new-alert-policy.png" width="1000" />
 
  3. Fill in the fields as follows:
 
@@ -29,7 +29,9 @@ To create an alert policy:
 
   * **1st alert condition area** An alert policy can have multiple alert conditions. Each alert condition relates to a particular environment. 
 
-    **Note: You are limited to one alert policy per environment.**
+    :::note
+    You are limited to one alert policy per environment.
+    :::
 
  * In the Choose your environment field, select the environment you want to apply the alert condition to. If you already have an alert condition for a particular environment, this is not available in the environment menu list when you create a second alert condition. 
 
@@ -45,8 +47,8 @@ To create an alert policy:
 
 When an alert is triggered for a metric, the people you've selected in this section receive an email with the following format:
 
-**Subject:** "Split Alert Fired: `Feature Flag Name` has caused `Metric Name` to degrade by `X`%" <br />
-**Body:** "Split has detected a degradation of `X`% on your `Metric Name` Metric.
+**Subject:** "Alert Fired: `Feature Flag Name` has caused `Metric Name` to degrade by `X`%" <br />
+**Body:** "Harness Feature Management & Experimentation has detected a degradation of `X`% on your `Metric Name` metric.
 
 Here are the details:
 * Feature flag: (name and link to feature flag)
@@ -60,4 +62,4 @@ Please either kill the feature flag or dismiss this alert in the Harness FME use
 
 -The Harness FME Team
 
-You are receiving this email because you were set as one of the people to be notified on this Alert Policy: (name and link to Alert Policy). If you don't want to receive these emails, please remove yourself from the list of people to be notified on the Alert policy page." 
+You are receiving this email because you were set as one of the people to be notified on this Alert Policy: (name and link to Alert Policy). If you don't want to receive these emails, please remove yourself from the list of people to be notified on the Alert policy page."

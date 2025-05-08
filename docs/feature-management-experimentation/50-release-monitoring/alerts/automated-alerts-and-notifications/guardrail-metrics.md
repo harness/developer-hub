@@ -5,7 +5,7 @@ sidebar_position: 20
 
 Feature flag alerts provide immediate feedback about a feature flag’s key metrics. An alert will fire when a desired or undesired impact is detected. You can choose key metrics for each feature flag and specify which feature flag should alert you about its key metrics. This allows you to take quick action on insights that may be especially useful to your team.
 
-To check if you have feature flag alerting enabled for your account, in the Harness FME UI click **My work** in the left navigation menu and click into a feature flag. Then click on the gear icon next to the flag name. If you see the **Alerts setup** menu item, you have feature flag alerting enabled for your account.
+To check if you have feature flag alerting enabled for your account, in Harness FME click **My work** in the left navigation menu and click into a feature flag. Then click on the gear icon next to the flag name. If you see the **Alerts setup** menu item, you have feature flag alerting enabled for your account.
 
 ## Setting up feature flag alerting
 
@@ -29,27 +29,18 @@ To enable or disable alert notifications for a specific feature flag, do the fol
 
 When a statistically significant impact is detected on a key metric of a feature flag an email is sent in the following format:
 
-Subject: "Good News/Alert: (Feature Flag Name) had a positive/negative impact on (Metric Name)"
+**Subject:** "Good News/Alert: `Feature Flag Name` had a positive/negative impact on `Metric Name`" <br />
+**Body:** "Harness Feature Management & Experimentation has detected a(n) DESIRED/UNDESIRED improvement/degradation of `X`% on your `Metric Name` metric.
 
-Body: "Split has detected a(n) DESIRED/UNDESIRED improvement/degradation of X% on your (Metric Name) metric.
-
-Feature flag: (name and link to feature flag)
-
-Metric: (name and link to metric)
-
-Category:
-
-Environment:
-
-Baseline treatment:
-
-Baseline metric value:
-
-Comparison treatment:
-
-Comparison metric value
-
-Relative impact: X% in the DESIRED/UNDESIRED direction
+* Feature flag: (name and link to feature flag)
+* Metric: (name and link to metric)
+* Category:
+* Environment:
+* Baseline treatment:
+* Baseline metric value:
+* Comparison treatment:
+* Comparison metric value
+* Relative impact: X% in the DESIRED/UNDESIRED direction
 
 \-The Harness FME Team
 
@@ -77,10 +68,9 @@ Clicking the **Recalculate metrics** button on the Metrics impact tab in the fea
 
 For troubleshooting an alert that did not fire as expected, refer to the [Troubleshooting alerting](https://help.split.io/hc/en-us/articles/19832825482637) guide.
 
-
 To understand the impact of your feature flags, you need to know when critical changes are occurring. Harness FME gives you the ability to create alerts that actively check for a degradation in your metrics. Alerts that fired are displayed both on the Targeting and Alerts tab on the feature flag page.
 
-<img src="https://help.split.io/hc/article_attachments/15099766001549" alt="managing-alerts.png" width="1000" />
+<img src="https://help.split.io/hc/article_attachments/19832326547597" alt="managing-alerts.png" width="1000" />
 
 
 ## Alert details
