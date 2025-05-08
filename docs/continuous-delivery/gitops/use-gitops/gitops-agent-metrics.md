@@ -6,6 +6,12 @@ redirect_from:
   - /docs/continuous-delivery/gitops/create-cluster-with-iam
 ---
 
+:::info
+
+GitOps Agent Metrics are only available with GitOps Service Version 1.30 and Agent version 0.91 and onwards. Please ensure that you are up-to-date if you are unable to find or use GitOps Agent Metrics.
+
+:::
+
 ## Enabling GitOps Agent Metrics Server
 The GitOps Agent exposes internal metrics on port `2112` at the `/metrics` endpoint. These metrics are useful for monitoring the performance and health of the agent, and can be scraped using tools like [Prometheus](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/running-exporters.md).
 
