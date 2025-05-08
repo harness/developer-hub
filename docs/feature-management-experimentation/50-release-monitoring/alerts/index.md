@@ -13,6 +13,14 @@ With alerts, you can:
 
 Release Monitoring alerts are designed to work seamlessly with your existing workflows, ensuring you stay informed and in control during every stage of a release or experiment.
 
+## Determine an alert type
+
+| **Alert type**                                  | **How it's triggered**                                     | **Fires on**       | **Configured for**             | **Environment support** | **Needs to be linked to a flag/experiment?**                  |
+|-------------------------------------------------|------------------------------------------------------------|--------------------|--------------------------------|-------------------------|---------------------------------------------------------------|
+| **Key metric alert (manual)**                   | Manually configured threshold is crossed.                  | Degradations only  | A specific key metric          | Any environment         | &check;                                                       |
+| **Guardrail metric alert (automatic)**          | Statistically significant impact detected (threshold = 0). | Good or bad impact | Global guardrail metric        | Production only         | &#10060;                                                      |
+| **Feature flag significance alert (automatic)** | Statistically significant impact detected (threshold = 0). | Good or bad impact | Key metric or guardrail metric | Production only         | &check; for key metrics <br /> &#10060; for guardrail metrics |
+
 ## Configure alerts
 
 ### Alert policies

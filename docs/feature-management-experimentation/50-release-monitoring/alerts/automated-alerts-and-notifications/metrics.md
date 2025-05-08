@@ -3,13 +3,15 @@ title: Key metric alerts
 sidebar_position: 10
 ---
 
-A metric alert policy allows you to configure a degradation threshold for your metrics. If the metric exceeds the threshold in an undesired direction, you are alerted by your configured notification channel. 
+A key metric alert policy allows you to configure a degradation threshold for a specific metric tied to a feature flag or experiment. If the metric exceeds the threshold in an undesired direction, you are alerted by your configured notification channel, even if the metric is not added to the percentage rollout or experiment. 
+
+Key metrics are manually configured and support degradations only. For automatic alerting on guardrail metrics and statistical significance, see [Guardrail metric alerts](./guardrail-metrics)
+
+## Create a metric alert policy
 
 :::info
 Alert policies can only be created for metrics that are measured per traffic type, rather than those that are measured across all traffic type keys.
 :::
-
-## Create a metric alert policy
 
 To create an alert policy:
 
