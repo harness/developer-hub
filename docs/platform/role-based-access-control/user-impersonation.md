@@ -52,19 +52,26 @@ The Action column shows the activity, while the User column indicates wh
 
     ![audit-trail](./static/audit-trail.png)
 
-:::info Important Note    
+:::caution Important Note
 
-    The impersonation option is only available under Account Settings > Access Control >  Users. It is not accessible from the Users page at the Organization or Project level. 
+1. The Impersonate User option is available only at the Account level:
+    - Navigate to Account Settings → Access Control → Users.
+    - This option is not available from the Users page at the Organization or Project level.
 
-    **The following actions are disabled during an impersonation session to ensure security and control:**
-    
-    - You cannot impersonate yourself.  
-    - Account-related actions such as signing out, switching accounts, changing the default account, or resetting passwords are disabled.
-    - Viewing all impersonated users' accounts is not permitted.
-    - You cannot create, edit, or delete Personal Access Tokens (PATs).  
-    - Managing Two-Factor Authentication (2FA) is restricted.
-    - Public access and configuring IP allowlists are also disallowed.
+2. To maintain security and control, the following actions are disabled during an impersonation session:
+    - Self-impersonation.  
+    - Account-related actions such as:
+        - Signing out.  
+        - Switching accounts.  
+        - Changing the default account.  
+        - Resetting passwords.  
+    - Viewing all impersonated users' accounts.  
+    - Creating, editing, or deleting Personal Access Tokens (PATs).  
+    - Managing Two-Factor Authentication (2FA).  
+    - Accessing public endpoints or configuring the IP allowlist.
+
 :::
+
 
 
 
