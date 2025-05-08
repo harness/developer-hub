@@ -4,8 +4,7 @@ description: Learn how to find and manage GitOps applications.
 sidebar_position: 35
 ---
 
-
-GOOGLY MOOGLY THIS IS A PRLY
+Hello please work this timem. 
 You can manage your applications through the **Applications** found in **GitOps Overview** page. 
 
 <DocVideo src="https://app.tango.us/app/embed/Navigating-GitOps-to-Access-Applications-in-Harness-cad0aa3f8abd4f1d96af0e482c51729e" title="Navigating GitOps to Access Applications in Harness" />
