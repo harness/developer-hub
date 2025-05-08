@@ -18,11 +18,11 @@ There are five key components of Release Monitoring:
    
    To measure impact, Harness FME requires a feature flag to be created in the Harness FME Web console and placed into code. 
 
-1. **Split ingests the performance and behavioral data.**
+1. **Harness FME ingests the performance and behavioral data**
 
    This includes the impression data, which is already sent by the FME SDKs. This also includes performance and error event data. This [event](https://help.split.io/hc/en-us/articles/360020585772-Events) data can be sent from any source, though it is likely easiest to come from the [FME SDK Suite](https://help.split.io/hc/en-us/sections/22701959913229-Client-side-Suites) or [FME RUM agents](https://help.split.io/hc/en-us/sections/12619161404685-Client-side-Agents). The FME SDK Suite allows you to import both the SDK and the RUM agent together.  The RUM agents automatically send events that can be used for measuring performance, errors and can be extended with custom events and listeners that can be used to build any metric that matters to you.
 
-1. **Split monitors your metrics**
+1. **Harness FME monitors your metrics**
 
    Metrics are used to compute the impact of a feature. If you are using the FME SDK Suite or RUM agent, Harness FME will auto-create out-of-the-box metrics for events received by our platform. Review the help page for each individual agent to see the specific metrics its events will create. Metrics can also be manually created based upon what guardrails and other detected effects would be harmful (or helpful) to your business.  For more information on how to build metrics within Harness FME, please see this article from our help center: [Metrics](https://help.split.io/hc/en-us/articles/22005565241101-Metrics). 
 
@@ -36,7 +36,7 @@ There are five key components of Release Monitoring:
 
 ### Release Monitoring components
 
-Here is a table of how to much effort to implement each of the components of Release Monitoring - from lowest to highest lift:
+The following table shows the amount of effort needed to implement the components of Release Monitoring — from lowest to highest lift:
 
 | Lift  | Performance Event Data | Metrics | Percentage Based Rollouts | Understand Impact |
 |------ |------------------------|---------|---------------------------|-------------------|
@@ -46,19 +46,19 @@ Here is a table of how to much effort to implement each of the components of Rel
 
 ## Why use Release Monitoring
 
-Software engineering teams are constantly building and delivering features. State of the art in the industry is the progressive rollout - ensuring that released features are slowly ramped up and released to minimize the potential for service disruption and ensure the feature is positively impacting metrics before being released to everyone. 
+Software engineering teams are constantly building and delivering features. State of the art in the industry is the progressive rollout — ensuring that released features are slowly ramped up and released to minimize the potential for service disruption and ensure the feature is positively impacting metrics before being released to everyone. 
 
 Teams want to release software safely and know who is getting impacted if there is a service degradation. Commonly for this use case, teams will employ an application performance monitoring (APM) solution. APM tools can tell you if there has been a degradation, but if you are doing progressive rollouts of features, it may be difficult to separate the signal from the noise. 
 
-For example  - if there is a catastrophic 10% increase in crash percentage when a new feature is rolled out to 5% of customers, that 0.5% crash increase rate across your entire population might just be chalked up to noise and not even noticed- until 20, 30 or even 50% of customers are having the app crash more frequently, reducing the quality of their experience and harming their affinity towards your product and services. 
+For example, if there is a catastrophic 10% increase in crash percentage when a new feature is rolled out to 5% of customers, that 0.5% crash increase rate across your entire population might just be chalked up to noise and not even noticed — until 20, 30 or even 50% of customers are having the app crash more frequently, reducing the quality of their experience and harming their affinity towards your product and services. 
 
-This becomes exceptionally more complex when you have multiple different features in various stages of rollout. Harness FME handles the data analysis on a feature by feature impact analysis - offering you the knowledge of which feature specifically is affecting your metrics. If you have two features at 50% rollout and your APM tells you that application crashes have increased - you may not know which feature is causing the majority of this negative impact. Harness FME’s Release Monitoring capability gives you the tools to do this. 
+This becomes exceptionally more complex when you have multiple different features in various stages of rollout. Harness FME handles the data analysis on a feature by feature impact analysis, offering you the knowledge of which feature specifically is affecting your metrics. If you have two features at 50% rollout and your APM tells you that application crashes have increased, you may not know which feature is causing the majority of this negative impact. Harness FME’s Release Monitoring capability gives you the tools to do this. 
 
 ## What Release Monitoring enables
 
-Release Monitoring enables you to see beyond the sea of data from your APM tools and business analytics tools - letting you focus on the value and performance effects from each individual feature. 
+Release Monitoring enables you to see beyond the sea of data from your APM tools and business analytics tools — letting you focus on the value and performance effects from each individual feature. 
 
-Split’s provided Suite or RUM agents, when installed, will automatically send events to Harness FME that can be used to monitor and keep abreast of the impact of individual features on performance metrics, ensuring that you are aware and able to monitor features as they roll out. The agents can also be used to send important business events and used to build business metrics. Allowing business and performance metrics to be monitored together. This 360 degree view of the business is extremely valuable.
+FME Suite or RUM agents, when installed, will automatically send events to Harness FME that can be used to monitor and keep abreast of the impact of individual features on performance metrics, ensuring that you are aware and able to monitor features as they roll out. The agents can also be used to send important business events and used to build business metrics. Allowing business and performance metrics to be monitored together. This 360 degree view of the business is extremely valuable.
 
 When Harness FME receives an event for the first time from any FME SDK Suite (or FME RUM agent), metrics are automatically generated that build upon the data. 
 
@@ -93,9 +93,9 @@ Getting an alert when a metric reaches significance can be as easy as setting th
 <img src="https://help.split.io/hc/article_attachments/26506008761997" alt="add_as_key_metric_action.png" width="300" />
 <p></p>
 
-Additionally, created metrics can be attached to an [Alert policy](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) - allowing you to be notified instantly via email under the situation of a metric degradation - allowing you to rollback or consider further analysis of the situation. This full end to end solution, from the feature toggle, to the statistical significance calculation, through to the alerting, gives enormous value for teams looking to move fast without breaking things. 
+Additionally, created metrics can be attached to an [Alert policy](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting) — allowing you to be notified instantly via email under the situation of a metric degradation — allowing you to rollback or consider further analysis of the situation. This full end to end solution, from the feature toggle, to the statistical significance calculation, through to the alerting, gives enormous value for teams looking to move fast without breaking things. 
 
-For example - here is an example alert policy that could be combined with the metric shown above:
+Here is an example alert policy that could be combined with the metric shown above:
 
 <img src="https://help.split.io/hc/article_attachments/26506008763405" alt="alert_policy_example.png" width="800" />
 <p></p>
