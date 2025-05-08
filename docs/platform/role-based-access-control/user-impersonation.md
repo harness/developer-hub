@@ -24,7 +24,7 @@ By impersonating a user, admins can see exactly what that user sees and perform 
 
 1. Navigate to **Account Settings**, **Access Control** and select **Users**.
 
-2. Check for a user you want to impersonate, click on the vertical Ellipsis icon on the right, and select **Impersonate user**.
+2. For the user you want to impersonate, click the vertical ellipsis icon (:) on the right, and select **Impersonate User**.
 
     ![impersonate-user](./static/user-impersonate-option.png)
 
