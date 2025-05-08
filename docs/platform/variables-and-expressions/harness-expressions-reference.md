@@ -702,3 +702,17 @@ This checks if the entire pipeline is in rollback mode.
 #### Detecting Post-Execution Rollback
 
 `isPostProdRollback=<+<+pipeline.executionMode> == "POST_EXECUTION_ROLLBACK">`
+
+## Connector Type Variable
+
+You can reference any connector’s attributes (name, identifier, type, spec fields, etc.) via JEXL in account, organisation and project‐level scopes. When no scope is specified, the project scope is assumed.
+
+`<+connectors.get("org.artifactory").name>` : Retrieves the display name configured for the connector
+
+`<+connectors.get("org.artifactory").identifier>` : Returns the unique identifier used to reference this connector
+
+`<+connectors.get("org.artifactory").type>` : Indicates the connector type (e.g., **AWS**, **Artifactory**, etc)
+
+`<+connectors.get("org.artifactory").spec.username>` : Fetches the username field from the connector’s spec
+
+`<+connectors.get("org.artifactory").spec.passwordRef>` : Retrieves the secret reference for the connector’s password
