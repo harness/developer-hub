@@ -18,10 +18,10 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 :::
 
-## May 2025 - Version 1.50.0
+## May 2025 - Version 1.50.2
 
 ### [New Feature] LabelV2
-**[CCM-22075] | [Docs](http://localhost:3000`/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#important-migration-from-label-to-labelv2)**
+**[CCM-22075] | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#important-migration-from-label-to-labelv2)**
 
 We're rolling out **LabelsV2**, a major enhancement to how labels (tags) are handled and displayed across the platform, delivering **better visibility**, **performance**, and **alignment with cloud-native formats**.
 
@@ -61,12 +61,17 @@ Users will need to manually **update their Perspectives, Cost Categories, and Da
 
 <DocImage path={require('./static/roles-rbac.png')} width="90%" height="90%" title="Click to view full-size image" />
 
+### Bug Fixes
+- We have resolved an issue where, in the **Setup HTTP/HTTPS** step while creating an **AS Rule**, clicking the **Proxy** option first and then closing it would cause the **LB** option to incorrectly open the **Proxy** dialog. It will now always open the correct dialog. [CCM-22677]
+
+- 
 
 ## April 2025 - Version 1.49.1
 
 ### Feature Improvements
 
 - Asset Governance Alert Fix: We've improved the alert update experience to ensure that only relevant resources and cloud accounts are displayed based on the selected cloud provider. This enhancement ensures a more accurate and streamlined configuration flow for Governance alerts. [CCM-22618]
+
 
 ## April 2025 - Version 1.48.1
 
