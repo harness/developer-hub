@@ -1,5 +1,5 @@
 ---
-title: Create perspectives
+title: Overview
 description: Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 sidebar_position: 1
 helpdocs_topic_id: dvspc6ub0v
@@ -251,4 +251,41 @@ There are no limits as to how many folders can be made.
 :::
 
 
+## Important: Migration from Label to LabelV2
+
+Harness is transitioning from the traditional Label system to the enhanced LabelV2 system. **Support for the legacy Label system will be discontinued in the coming months**.
+
+### Required Action
+
+- **AWS Labels**: Immediate migration required. You must update all AWS label references to use LabelV2.
+- **GCP, Azure, and Cluster Labels**: After AWS label migration is complete, Harness CCM will automatically handle these migrations.
+
+### How to Migrate
+
+1. **Identify affected components**:
+   - Review all Perspectives that use Label-based grouping or filtering
+   - Check all Cost Categories that reference Labels in their rules
+
+2. **Update each component**:
+   - Edit each Perspective or Cost Category
+   - Locate all instances where you've defined rules, filters, or grouping using Labels
+   - Change the selection from "Label" to "LabelV2"
+   - Save your changes
+
+3. **Verify your updates**:
+   - After migration, confirm that your cost data appears correctly
+   - Ensure all previously configured label-based filters work as expected
+
+Kindly follow the steps below: 
+  <iframe 
+     src="https://app.tango.us/app/embed/44d091fd-3177-44a1-b575-1a5a8febf36d" 
+     title="Migrating Label to LabelV2" 
+     style={{minHeight:'480px'}}
+     width="100%" 
+     height="100%" 
+     referrerpolicy="strict-origin-when-cross-origin" 
+     frameborder="0" 
+     webkitallowfullscreen="webkitallowfullscreen" 
+     mozallowfullscreen="mozallowfullscreen" 
+     allowfullscreen="allowfullscreen"></iframe>    
 
