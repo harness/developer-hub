@@ -18,18 +18,6 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 :::
 
-## 📌 Release Deployment Status by Cluster
-
-| **Cluster**        | **Deployment Status** | **Release Version** | 
-| --------------------------- | -------------------------- | --------------- | 
-| **prod0**   | ✅ Completed                        | April - v1.49.1         |                                                                                                                        
-| **prod1** | ✅ Completed                        | April - v1.49.1         |                                                                                                                      
-| **prod2**    |  ✅ Completed         | April - v1.48.1      |                                                                                                                      
-| **prod3**         |   ✅ Completed                     | April - v1.48.1    | 
-| **prod4**         |  ✅ Completed       | April - v1.48.1       | 
-| **prodeu1**   |  ✅ Completed                        | April - v1.48.1    |      
-
-
 
 ## May 2025 - Version 1.50.2
 
