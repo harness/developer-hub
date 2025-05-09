@@ -120,6 +120,6 @@ export const moduleList: CardItem[] = [
     module: MODULES.ata,
     icon: 'img/logo-ata.svg',
     description: <>Use data-led insights to remove bottlenecks and improve productivity.</>,
-    link: 'docs/software-engineering-insights',
+    link: 'docs/ai-test-automation',
   },
 ];
