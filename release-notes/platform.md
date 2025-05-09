@@ -53,6 +53,29 @@ If your organization restricts access to Google Artifact Registry (GAR), conside
 
 ::: 
 
+:::danger Breaking Changes 
+   **Introducing a new set of permissions, while marking existing DEPRECATED permissions as INACTIVE.**  
+
+    Currently, **Notification Rules** and **Notification Channels** are governed by a single set of permissions:
+
+    | **Resource**                                      | **Permissions**                                                                                                              | **Current status** | **New status** |
+    |---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|--------------------|----------------|
+    | **Notifications Rules and Notification Channels** | <li>View (`core_notification_view`)</li><li>Edit (`core_notification_edit`)</li><li>Delete (`core_notification_delete`)</li> | DEPRECATED             | INACTIVE     |
+
+
+    However, starting from June 12, 2025, these permissions will become non-operational. They will be replaced with separate new permissions: 
+
+    | **Resource**              | **New Permissions**                                                                                                                               | **Current status** | **New status** |
+    |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|----------------|
+    | **Notification Rules**    | <li>View (`core_notificationrule_view`)</li><li>Edit (`core_notificationrule_edit`)</li><li>Delete (`core_notificationrule_delete`)</li>          | EXPERIMENTAL       | ACTIVE         |
+    | **Notification Channels** | <li>View (`core_notificationchannel_view`)</li><li>Edit (`core_notificationchannel_edit`)</li><li>Delete (`core_notificationchannel_delete`)</li> | EXPERIMENTAL       | ACTIVE         |
+
+
+    If any automation relies on these `core_notification_view/edit/delete` permissions, we recommend updating them accordingly.
+
+    **Note:** The existing legacy notification permissions are DEPRECATED and will soon be moved to an INACTIVE state. The new permissions will be released in the ACTIVE state with RBAC enforced.
+:::
+
 :::info important
 This is a notification for a feature change aimed at enhancing your experience with Harness. Here's what you need to know:
 
@@ -105,6 +128,20 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## May 2025
+
+### Version 1.88.x <!--May 5, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where unauthenticated users were redirected to the homepage after login instead of their intended deep link destination. [PL-61939]
+- Fixed error messaging for non-inline secrets created via YAML to ensure accurate status on the secret listing page. [PL-62270]
+
+#### New features and enhancements
+
+- Delegate Configurations have been removed from the Resource Group configuration UI to reduce clutter and simplify the interface.[PL-60603]
+- New Audit Event for API Token Expiry: Harness now logs an audit event whenever an API token expires. This enhancement improves visibility and traceability of token lifecycle events, supporting stronger security auditing. [PL-62394]
+
 ## April 2025 
 
 ### Version 1.87.x <!--April 28, 2025-->
@@ -117,7 +154,6 @@ The following deprecated API endpoints are longer supported:
 #### New features and enhancements
 
 - Implicit tag (delegate name) is now supported for delegate version override. [PL-62335]
-- Support for adding Delegate Configurations (legacy feature) from the Resource Groups page has been removed. [PL-60603]
 - Added support for governing scope Variables in Harness using Open Policy Agent (OPA) policies, enabling fine-grained control over variable creation and editing. This feature is currently behind the feature flag `PL_ENABLE_OPA_FOR_VARIABLES`. [PL-61504]
 
 ### Version 1.86.x <!--April 23, 2025-->

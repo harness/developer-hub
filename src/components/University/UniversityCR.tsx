@@ -280,7 +280,7 @@ export default function CertificationsCR() {
                     />
                     <span className={styles.productVersion}>
                       <strong>Product version: </strong> Harness Free
-                      Plan
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -355,8 +355,8 @@ export default function CertificationsCR() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -443,8 +443,8 @@ export default function CertificationsCR() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>

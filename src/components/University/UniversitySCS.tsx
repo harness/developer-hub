@@ -279,8 +279,8 @@ export default function CertificationsSCS() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SCS Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness SCS Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -355,8 +355,8 @@ export default function CertificationsSCS() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SCS Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness SCS Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -443,8 +443,8 @@ export default function CertificationsSCS() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SCS Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness SCS Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>

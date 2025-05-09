@@ -20,8 +20,14 @@ If you are new to Harness IaCM, check out the [onboarding guide](/docs/infra-as-
 This document walks through each tab of a workspace, explaining its data, settings, and usage to help you configure and manage your workspace effectively.
 
 ### Resources
-The Resources tab compiles information from the infrastructure code associated with your workspace. It lists all provisioned resources, such as servers and databases.
-- **Usage:** This tab helps you monitor and manage the resources provisioned by your pipelines, providing insights into the current state and configuration of each resource.
+The Resources tab surfaces infrastructure state from OpenTofu/Terraform in a structured and readable format. It lists all managed resources, referenced data sources, and exposed outputs defined in your workspace configuration.
+
+This tab includes three subtabs:
+- **Resources:** Infrastructure components actively provisioned and managed by OpenTofu/Terraform.
+- **Data Sources:** External values fetched at runtime (e.g., existing VPCs, AMIs). These are now extracted from the state file for easier visibility.
+- **Outputs:** Values exposed by your modules, typically used to pass data between pipeline stages or systems.
+
+Use this tab to validate state, inspect dependencies, and troubleshoot issues, without digging through raw state files.
 ---
 ### Variables
 The Variables tab is populated from the variables defined within your infrastructure code, commonly in your `variables.tf` file.

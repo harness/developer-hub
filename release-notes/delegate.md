@@ -86,6 +86,22 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## Delegate image release notes
 
+## May 2025
+
+### Version 25.05.85801 <!--May 5, 2025-->
+
+#### Fixed issues
+
+- Enabled support for AWS Secret Manager in GovCloud regions using region-specific STS endpoints. [PL-61526]
+- The secret-splitting logic has been reverted. Please use [regex-based masking](https://developer.harness.io/docs/platform/delegates/manage-delegates/hide-logs-using-regex/) to hide secrets in logs instead [CDS-108477]
+- The OIDC token used for connector validation now includes the connector's name and ID. [CDS-108066]
+
+### Version 25.04.85703 <!-- May 2, 2025 -->
+
+#### Hotfix
+
+- ASG steady state step will succeed if no instance refresh found.
+
 ## April 2025
 
 ### Version 25.04.85702 <!-- April 15, 2025 -->

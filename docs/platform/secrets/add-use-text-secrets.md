@@ -186,6 +186,10 @@ When the pipeline runs, the resulting decoded output is not sanitized because it
 
 ![](../secrets/static/add-use-text-secrets-52.png)
 
+:::info
+Secrets are not masked in the step summary. They are only masked in step output and execution logs.
+:::
+
 ## Line breaks and shell-interpreted characters
 
 You can reference secrets in scripts, but text secrets with line breaks or other special characters might interfere with script execution.
