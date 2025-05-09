@@ -85,6 +85,35 @@
   line-height: 1.6;
 }
 
+.runtime-toc {
+  margin: 24px 0;
+  padding-left: 0;
+}
+
+.runtime-toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.runtime-toc li {
+  margin-bottom: 6px;
+}
+
+.runtime-toc li.level-3 {
+  padding-left: 16px;
+  font-size: 0.95em;
+}
+
+.runtime-toc a {
+  text-decoration: none;
+  color: #1976d2;
+}
+
+.runtime-toc a:hover {
+  text-decoration: underline;
+}
+
 .dynamic-markdown-selector .markdown-content h2[id],
 .dynamic-markdown-selector .markdown-content h3[id],
 .dynamic-markdown-selector .markdown-content h4[id] {

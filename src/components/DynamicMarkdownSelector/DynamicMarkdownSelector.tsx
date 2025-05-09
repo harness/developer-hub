@@ -52,6 +52,7 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
   const [selected, setSelected] = useState(getInitialSelected());
   const [ContentComp, setContentComp] = useState<React.ComponentType<any> | null>(null);
   const [search, setSearch] = useState("");
+  const [toc, setToc] = useState<{ id: string; text: string; level: number }[]>([]);
 
   // Update selection if hash changes
   useEffect(() => {
@@ -65,6 +66,16 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
   }, [labels]);
+
+  useEffect(() => {
+    const headings = Array.from(document.querySelectorAll(".markdown-content h2"));
+    const newToc = headings.map((el) => ({
+      id: el.id,
+      text: el.textContent || "",
+      level: parseInt(el.tagName[1], 10),
+    }));
+    setToc(newToc);
+  }, [ContentComp]);
 
   // Update hash in URL when selection changes
   useEffect(() => {
@@ -138,7 +149,17 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
               })}
             </div>
           </div>
-
+          {toc.length > 0 && (
+            <nav className="runtime-toc">
+              <ul>
+                {toc.map((h) => (
+                  <li key={h.id} className={`level-${h.level}`}>
+                    <a href={`#${h.id}`}>{h.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
           <div className="markdown-content">
             {ContentComp && <ContentComp components={{ Tabs, TabItem, DocVideo }} />}
           </div>
