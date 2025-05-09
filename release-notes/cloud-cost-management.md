@@ -18,17 +18,51 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 :::
 
-## 📌 Release Deployment Status by Cluster
 
-| **Cluster**        | **Deployment Status** | **Release Version** | 
-| --------------------------- | -------------------------- | --------------- | 
-| **prod0**   | ✅ Completed                        | April - v1.49.1         |                                                                                                                        
-| **prod1** | ✅ Completed                        | April - v1.49.1         |                                                                                                                      
-| **prod2**    |  ✅ Completed         | April - v1.48.1      |                                                                                                                      
-| **prod3**         |   ✅ Completed                     | April - v1.48.1    | 
-| **prod4**         |  ✅ Completed       | April - v1.48.1       | 
-| **prodeu1**   |  ✅ Completed                        | April - v1.48.1    |      
+## May 2025 - Version 1.50.2
 
+### [New Feature] LabelV2
+**[CCM-22075]**
+
+We're rolling out **LabelsV2**, a major enhancement to how labels (tags) are handled and displayed across the platform, delivering **better visibility**, **performance**, and **alignment with cloud-native formats**.
+
+#### Key Benefits
+
+* Improved Query Performance
+* Accurate and original label visibility
+
+**:warning: Action Required**
+
+Users will need to manually **update their Perspectives, Cost Categories, and Dashboards** to use the new LabelsV2 format. 
+
+<DocImage path={require('./static/labelsv2.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+### Feature Improvements
+
+- We’ve added support for saving Preferred Instance Families in Nodepool presets, along with Buffer and Minimum Node Count. Users can now select specific instance families per cloud provider and region, and these preferences will be considered when generating the next set of Nodepool recommendations. [CCM-21987]
+
+<DocImage path={require('./static/nodepool-changes.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+- **Granular RBAC for Governance Alerts**: You can now assign granular permissions for Governance Alerts to specific resource groups and roles, enabling more precise access control. [CCM-21921]
+  
+  **For Resource Groups:**
+  1. Navigate to **Account Settings** > **Access Control** > **Resource Groups**
+  2. Select an existing Resource Group or create a new one
+  3. Enable the **Cloud Asset Governance Alerts** permission
+  4. Choose between **All** alerts or **Specified** alerts for more granular control
+
+  <DocImage path={require('./static/rg-granular.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+  **For Roles:**
+  1. Navigate to **Account Settings** > **Access Control** > **Roles**
+  2. Select an existing Role or create a new one
+  3. Enable the **Cloud Asset Governance Alerts** permission
+  4. Assign specific permissions such as **View** or **Edit/Delete**
+
+<DocImage path={require('./static/roles-rbac.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+### Bug Fixes
+- We have resolved an issue where, in the **Setup HTTP/HTTPS** step while creating an **AS Rule**, clicking the **Proxy** option first and then closing it would cause the **LB** option to incorrectly open the **Proxy** dialog. It will now always open the correct dialog. [CCM-22677]
 
 ## April 2025 - Version 1.49.1
 
