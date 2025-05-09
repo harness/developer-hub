@@ -83,6 +83,24 @@ We’re excited to introduce an updated UI for managing your Harness Continuous 
 This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
 
 :::
+### Version 1.78
+
+<!-- 2025-05-05 -->
+
+#### Fixed issues
+
+- Fixed an issue when using parallelism with TI agent downloaded to shared location like /harness/ while being concurrently accessed by other pods downloading files(e.g., Python or Ruby) causing race conditions, resulting in failed downloads or file writes. Files are now written to temporary locations to reduce contention and improve reliability. (CI-16502)
+
+- Fixed an issue when using parallelism with TI where multiple pods could be writing callgraph data simultaneously could cause partial or incomplete file. Callgraphs are now written to pod-specific folders to prevent conflicts. (CI-16277)
+
+- Fixed an issue where containerless CI steps with binary dependencies required cloning the step repository to download binaries. The binary paths are now managed directly in the CI Manager configuration, removing the need for GitHub cloning and improving reliability. (CI-17150)
+
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/ci-addon`          | Improved handling of file downloads when using parallelism. | 1.16.84              | 1.16.85.1       |
+| `harness/ci-lite-engine`    | Improved handling of file downloads when using parallelism. | 1.16.84              | 1.16.85.1       |
 
 ## May 2025
 ### Version 1.77
