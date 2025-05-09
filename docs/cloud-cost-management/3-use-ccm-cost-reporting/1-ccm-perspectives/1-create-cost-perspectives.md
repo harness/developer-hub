@@ -150,21 +150,38 @@ If you've added labels and cluster rules in the perspective builder section, it'
 You can view any perspective by clicking on it. The perspective overview page provides a comprehensive dashboard with the following information:
 
 ### Key Metrics
-- **Total Cost**: Current accumulated cost for the selected time period
-- **Forecasted Cost**: Projected spending based on current usage patterns
-- **Cost Recommendations**: Suggestions for optimizing your cloud spending
+- **[Total Cost](https://developer.harness.io/docs/cloud-cost-management/get-started/key-concepts#total-cost)**: Current accumulated cost for the selected time period
+- **[Forecasted Cost](https://developer.harness.io/docs/cloud-cost-management/get-started/key-concepts#forecasted-cost)**: Projected spending based on current usage patterns
+- **[Cost Recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations)**: Suggestions for optimizing your cloud spending
 - **Budget Status**: Visual indicators of budget utilization (if budgets are configured)
 
 ### Cost Visualization
-The interactive cost graph can be customized using the **Group By** feature with the following options:
+The interactive cost graph allows you to organize and segment your cost data using the **Group By** function. This grouping functionality determines how your costs are categorized and displayed in the visualization. You can group your data by any of the following dimensions:
 
-- **Cost Categories**: Group costs by your defined cost categories
+- **[Cost Categories](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories)**: Group costs by your defined cost categories
 - **Cloud Provider**: View costs by cloud service provider (AWS, Azure, GCP) with provider-specific options
 - **Region**: Break down costs by geographical regions
 - **Product**: Analyze costs by specific cloud products and services
-- **Label**: Group by traditional cloud provider tags
-- **Label V2**: Group by enhanced labeling system
+- **Label**: Group by Harness-normalized cloud provider tags
+- **Label V2**: Group by same labels exactly as they appear in your AWS, Azure, or GCP environments
 - **None**: View aggregated costs without grouping
+
+:::info
+### Understanding the Difference: Label vs. LabelV2
+
+- **Label (Legacy)**: Uses a flattened STRUCT format that normalizes cloud provider tags
+- **LabelV2 (New)**: Stores labels in JSON format, preserving the original structure from cloud providers
+
+**Key Benefits of LabelV2:**
+- **Original tags**: Displays your original cloud tag keys exactly as they appear in AWS, Azure, or GCP
+- **Improved Performance**: Enhanced data processing and query performance
+
+LabelV2 provides complete visibility into your cloud tags without any normalization or modification, allowing for more accurate cost allocation and reporting aligned with your cloud provider's native tagging structure.
+
+**Harness CCM is transitioning from the traditional Label system to the enhanced LabelV2 system. Support for the legacy Label system will be discontinued in the coming months.**
+
+Please [see the steps here](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#important-migration-from-label-to-labelv2) to migrate labels from `Label` to `LabelV2`.
+:::
 
 ### General Preferences
 
@@ -253,7 +270,7 @@ There are no limits as to how many folders can be made.
 
 ## Important: Migration from Label to LabelV2
 
-Harness is transitioning from the traditional Label system to the enhanced LabelV2 system. **Support for the legacy Label system will be discontinued in the coming months**.
+Harness CCM is transitioning from the traditional Label system to the enhanced LabelV2 system. **Support for the legacy Label system will be discontinued in the coming months**.
 
 ### Required Action
 
