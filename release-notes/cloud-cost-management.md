@@ -41,12 +41,11 @@ We're rolling out **LabelsV2**, a major enhancement to how labels (tags) are han
 #### Key Benefits
 
 * Improved Query Performance
-* Usage of JSON data type to simplify data pipeline
 * Accurate and original label visibility
 
 **:warning: Action Required**
 
-Users will need to manually **update their Perspectives, Cost Categories, and Dashboards** to use the new LabelsV2 format.
+Users will need to manually **update their Perspectives, Cost Categories, and Dashboards** to use the new LabelsV2 format. 
 
 <DocImage path={require('./static/labelsv2.png')} width="90%" height="90%" title="Click to view full-size image" />
 
