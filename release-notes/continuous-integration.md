@@ -89,11 +89,9 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 #### Fixed issues
 
-- Fixed an issue when using parallelism with TI agent downloaded to shared location like /harness/ while being concurrently accessed by other pods downloading files(e.g., Python or Ruby) causing race conditions, resulting in failed downloads or file writes. Files are now written to temporary locations to reduce contention and improve reliability. (CI-16502)
+- Fixed issues where multiple processes downloading or uploading data at the same time could cause errors, the Test Intelligence step should now handle parallelism accurately and reliably. (CI-16502, CI-16277)
 
-- Fixed an issue when using parallelism with TI where multiple pods could be writing callgraph data simultaneously could cause partial or incomplete file. Callgraphs are now written to pod-specific folders to prevent conflicts. (CI-16277)
-
-- Fixed an issue where containerless CI steps with binary dependencies required cloning the step repository to download binaries. The binary paths are now managed directly in the CI Manager configuration, removing the need for GitHub cloning and improving reliability. (CI-17150)
+- Fixed an issue where certain steps required downloading binaries from external sources, causing delays. Now, this process is faster and more reliable by removing this overhead. (CI-17150)
 
 #### Harness images updates
 
