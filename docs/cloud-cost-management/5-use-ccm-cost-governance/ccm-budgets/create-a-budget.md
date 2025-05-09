@@ -8,16 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import Tabs from '@theme/Tabs';
-
-import TabItem from '@theme/TabItem';
-
-
-:::tip [Latest Features Released in 1.50.0](/release-notes/cloud-cost-management#april-2025---version-1470)
-<Tabs>
-  <TabItem value="LabelV2" label="LabelV2">We’re moving from the older flattened Labels (stored in STRUCT format) to Labels V2, where labels are stored in a JSON format, directly aligning with how cloud providers (like AWS and Azure) deliver tag data. LabelV2 can be used as a filter in perspectives, as a GROUP BY operand in perspectives graph and in specifying rules when creating a Perspective and in Budgets and Cost Categories. The main goal of LabelsV2 is to give you full visibility into your original cloud tag keys, exactly as they appear in your AWS, Azure, or GCP environments. </TabItem>
-</Tabs>
-:::
 
 Harness CCM Budgets allow you to set custom budgets and receive alerts when your costs exceed (or are forecasted to exceed) your budget.
 
