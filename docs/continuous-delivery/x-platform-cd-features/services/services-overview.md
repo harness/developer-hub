@@ -8,9 +8,7 @@ A Harness service represents what you're deploying.
 
 Harness services are deployed to Harness environments. Select **Environments** to see the environments in this project.
 
-In **Manage Services**, you can create, update, and delete your services' settings. For example, a service's variables and its manifest and artifact details.
-
-In **Dashboard**, you can view service statistics such as deployment frequency, failure rate, and so on.
+Select **Services** to see the service list for your project. From this dashboard, you can create new services and monitor your existing ones.
 
 ## Creating services
 

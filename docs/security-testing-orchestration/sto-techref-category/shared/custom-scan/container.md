@@ -69,9 +69,6 @@ app.harness.io/registry
 ```
 us-east1-docker.pkg.dev
 ```
-```
-us.gcr.io
-```
 
 #### Container project
 

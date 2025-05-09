@@ -19,7 +19,6 @@ This section provides a clear overview of the Supported features, integrations, 
 * [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported/sto-deployments)
 * [Service Reliability Management](/docs/service-reliability-management/srm-whats-supported)
 * [Supply Chain Security (Beta)](/docs/software-supply-chain-assurance/ssca-supported)
-* [Infrastructure as Code Management](/docs/infrastructure-as-code-management)
 * [Code Repository](/docs/code-repository)
 
 For more details on the supported features of other Harness modules, visit [Harness Supported platforms and technologies](/docs/platform/platform-whats-supported.md).

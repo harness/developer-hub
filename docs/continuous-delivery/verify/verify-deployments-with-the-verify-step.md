@@ -44,22 +44,22 @@ You can set up Harness CV by adding a Verify step to a pipeline. The following a
 - **Load Test**: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent, and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment.
 
 
-### Sensitivity
+## Sensitivity
 
 You can set the sensitivity option as **High**, **Medium**, or **Low**. When the sensitivity is set to **High**, any anomaly, no matter how small, will be treated as a verification failure. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
 
 
-### Duration
+## Duration
 
 Harness uses the data points within this duration for analysis. For instance, if you select 10 minutes, Harness analyzes the first 10 minutes of your log or APM data. Harness recommends you choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
 
 
-### Artifact tag
+## Artifact tag
 
 Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Service artifacts expressions](/docs/platform/variables-and-expressions/harness-variables.md#service-artifacts-expressions).
 
 
-### Fail on no analysis. 
+## Fail on no analysis. 
    
 You can configure the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
@@ -67,9 +67,56 @@ The Verify step also includes a metric-level option to fail the Verify step when
 
 To enable the metric-level fail-on-no-analysis option, in the configuration pane of your Verify step, select **Step Parameters**, expand **Optional**, and select **Fail if any custom metrics has no analysis**.
 
-### Health source
+## Health source
 
 Harness CV monitors health trend deviations using logs and metrics obtained from the health source, such as APM and logging tools, via a monitored service. A health source is an APM or logging tool that monitors and aggregates data in your deployment environment. You can add multiple health sources.
+
+## Service Instance Identifier (SII)
+
+The Service Instance Identifier (SII) is a feature used in Harness Continuous Verification to identify [new or changed nodes](/docs/continuous-delivery/verify/cv-results/interpret-metric-results#nodes-section) during a deployment. It acts as a filter to pinpoint metrics related to what has been deployed. Harness Continuous Verification uses the SII to calculate the deployed components based on observed metrics. This is particularly useful in scenarios like canary deployments, where the SII helps determine which nodes are stable and which nodes represent the canary in the current phase of analysis.
+
+### Use SII in Harness Continuous Verification
+
+Here's an example of how to set up Harness Continuous Verification with a 5-minute analysis window using a [Prometheus Health Source](/docs/continuous-delivery/verify/configure-cv/health-sources/prometheus) for a rolling deployment to a Kubernetes endpoint. This example also demonstrates using SII to filter and identify specific deployments.
+
+PromQL:
+
+```
+max(
+    CV_Counter_Example_total    {
+   	 app="harness-cv-prom-example"
+})
+```
+
+SII: `pod`
+
+#### Query execution process
+
+Let's use the Prometheus query as an example to understand this process:
+ 
+1. Queries the SII (in this case, pod) to list all possible pods within the specified time range.
+   
+   `/api/v1/label/**pod**/values?start=1685548800&end=1685549100&match[]={app="harness-cv-prom-example"}`
+
+2. Retrieves the PromQL metric values by iterating over the returned SII results for each pod.
+   
+   `api/v1/label/**app**/values?start=1685548800&end=1685549100&match[]={app="harness-cv-prom-example"}`
+
+By leveraging the SII, Harness Continuous Verification determines the pods that existed before and after the deployment by querying the monitoring solution. If a pod was present before and after, it is considered stable. If a pod is present after but not before, it is identified as a canary pod. The node determination is then made.
+
+![CV Nodes](./static/nodes.png)	
+
+### SII configuration tips
+
+The purpose of the SII is to determine what has been deployed from a monitoring system. Different monitoring systems handle this differently, depending on how the system is configured and how labeling is applied to the deployed resources. In the [query execution process](#query-execution-process), iterating over the SII is necessary. However, with other monitoring solutions, the process may vary, but the end result is the same: gathering information about what was available before and after deployment for node determination.
+
+#### Potential SII’s
+
+| **SII**       | **Usage**                                                                             |
+|---------------|-------------------------------------------------------------------------------------|
+| pod/podname   | Kubernetes                                                                          |
+| containername | ECS                                                                                 |
+| version       | When resources for deployment are tagged with versions, utilizing the version as SII can be an effective way to filter and identify specific deployments. |
 
 
 ## Next steps

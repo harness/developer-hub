@@ -23,10 +23,11 @@ Review the notes below for details about recent changes to Harness Internal Deve
 | --------------------------- | -------------------------- | --------------- | 
 | **prod0**   | ✅ Completed                        | March - v0.41.0             |                                                                                                                        
 | **prod1** | ✅ Completed                        | March - v0.41.0             |                                                                                                                      
-| **prod2**    | ✅ Completed                        | March - v0.41.0             |                                                                                                                      
-| **prod3**         | 🕒 Scheduled (This Week)                        | March - v0.41.0             | 
-| **prod4**         | 🕒 Scheduled (This Week)                    | March - v0.41.0              | 
-| **prodeu1**   | 🕒 Scheduled (This Week)                        | March - v0.41.0     |                                                                                               
+| **prod2**    | ✅ Completed                        | March - v0.41.0             |
+| **prod3** | ✅ Completed | March – v0.41.0 |
+| **prod4** | ✅ Completed | March – v0.41.0 |
+| **prodeu1** | ✅ Completed | March – v0.41.0 |
+
 
 ## March - Version 0.41.0
 
@@ -34,6 +35,22 @@ Review the notes below for details about recent changes to Harness Internal Deve
 As we gear up for our major **IDP 2.0 release** (more details this week), this release focuses primarily on improving the efficiency of the product. **Version 0.41.0** includes several bug fixes and feature enhancements. All key details are mentioned below. 
 
 Also, stay tuned for more updates on our upcoming IDP 2.0 release.
+### [New Feature] GitHub App Support
+**[IDP-4827] | [Docs](/docs/internal-developer-portal/flows/harness-pipeline#idp-stage-1)**
+
+----
+This release adds support for **GitHub App authentication** in IDP Stage steps. Previously, only **Username-Password** authentication was available. Now, you can authenticate the Harness GitHub connector using a **GitHub App**. To use this authentication method, you need to create and install a GitHub App, fetch the app's installation ID and app ID, and create a private key for the app. Follow this [guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) for detailed steps. 
+
+![](./static/github-app-1.png)
+
+This applies to the following IDP Stage steps:
+1. [Git Clone](/docs/internal-developer-portal/flows/harness-pipeline#1-git-clone)
+2. [Create Repo](/docs/internal-developer-portal/flows/harness-pipeline#3-create-repo)
+3. [Direct Push](/docs/internal-developer-portal/flows/harness-pipeline#5-direct-push)
+4. [Register Catalog](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog) 
+
+👉  **Read more about this feature [here](/docs/internal-developer-portal/flows/harness-pipeline#idp-stage-1).**
+
 
 ### [New Feature] Jenkins Plugin Upgrade
 **[IDP-4939] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/jenkins)**
@@ -56,6 +73,30 @@ jenkins:
 This parameter specifies a regular expression pattern used to **securely override the `baseUrl`** defined in the configuration using values from the catalog annotations. This provides flexibility while adding security, ensuring only approved URLs can override the base configuration.
 
 👉  **Read more about this feature [here](/docs/internal-developer-portal/plugins/available-plugins/jenkins).**
+
+
+
+### [New Plugin] Introducing Wiz Plugin
+**[IDP-4868] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/wiz)**
+
+----
+We’re excited to introduce support for the **Wiz Plugin** in this release!
+
+**Wiz** is a unified cloud security platform that offers powerful prevention and response capabilities, empowering security and development teams to build faster and more securely.
+
+With this plugin, you can seamlessly integrate Wiz into your IDP, giving you real-time visibility into newly created issues along with their status and severity.
+
+👉 **Read more about the plugin [here](/docs/internal-developer-portal/plugins/available-plugins/wiz).**
+
+### [New Plugin] Introducing DX Plugin
+**[IDP-4869] | [Docs](/docs/internal-developer-portal/plugins/available-plugins/dx)**
+
+----
+We’re excited to introduce support for the **DX Plugin** as well in this release!
+
+The DX Plugin is built to enhance the overall developer experience by streamlining the development process. It offers actionable insights, essential tools, and seamless integrations — all tailored to improve productivity and optimize your workflow.
+
+👉 **Read more about the plugin [here](/docs/internal-developer-portal/plugins/available-plugins/dx).**
 
 ### Feature Improvements
 - Harness IDP now supports the use of a **Harness API Key** in the [Register Catalog step](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog) (IDP Stage). With this feature, users can configure the API Key by selecting the "API Token" field in the Harness UI. Enabling this ensures that the API Key is utilized for catalog registration in IDP. By integrating the API Key, the pipeline execution remains seamless, ensuring it functions correctly when triggered from another pipeline or through a trigger. **Learn more about the feature [here](/docs/internal-developer-portal/flows/harness-pipeline#6-register-catalog)**. (Please note that this feature was a part of the NGUI release.)
@@ -279,11 +320,12 @@ This feature enhances security by using dedicated API keys, eliminating the need
 
 👉 Read more about the feature [here](/docs/internal-developer-portal/flows/worflowyaml#authentication).
 
-### [New Feature] POST Method support for Dynamic Pickers
+### [New Feature] POST or PUT Method support for Dynamic Pickers
 [IDP-4292]
 
-Workflow Dynamic Pickers now supports the **POST method**, extending beyond just GET requests.
-This feature is useful for fetching data using **GraphQL APIs**, calling **Lambda functions** with POST requests and handling APIs that require **large inputs via POST**.
+Workflow Dynamic Pickers now supports the **POST or PUT method**, extending beyond just GET requests.
+Kindly note that there are no restrictions on **HTTP methods**, except for the **DELETE** method, which is currently unsupported.
+This feature is useful for fetching data using **GraphQL APIs**, calling **Lambda functions** with POST or PUT requests and handling APIs that require **large inputs via POST**.
 
 Here’s how you can define the POST method:
 ```YAML

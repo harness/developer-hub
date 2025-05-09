@@ -120,7 +120,7 @@ The `spec` parameters define which Action to use, the Action settings, and envir
 The following cases *always* require environment variables (`env`):
 
 * [Private Action repos](#private-action-repositories)
-* [Duplicate Actions](#duplicate-actions)
+* [Parallel Actions](#parallel-actions)
 * [Actions requiring a defined working directory](#actions-requiring-a-defined-working-directory)
 
 :::tip Tips
@@ -154,7 +154,7 @@ The following cases *always* require environment variables (`env`):
    The following cases *always* require environment variables:
 
    * [Private Action repos](#private-action-repositories)
-   * [Duplicate Actions](#duplicate-actions)
+   * [Parallel Actions](#parallel-actions)
    * [Actions requiring a defined working directory](#actions-requiring-a-defined-working-directory)
 
 6. Optionally, you can set the **Timeout**. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
@@ -275,7 +275,7 @@ For more information about configuring the Action step's settings, go to the [Ac
 </TabItem>
 </Tabs>
 
-### Duplicate Actions
+### Parallel Actions
 
 If you run multiple instances of the same GitHub Action, either in parallel or with a looping strategy, you must set the `XDG_CACHE_HOME` environment variable.
 

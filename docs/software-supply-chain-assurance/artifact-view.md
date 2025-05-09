@@ -133,6 +133,12 @@ You can search for an environment or apply filters based on environment type and
 
 The Vulnerabilities tab presents the scan results performed on the artifact, consolidating findings from various scanning tools. This view categorizes all identified vulnerabilities by severity and allows filtering based on scanners and other details. The security scanning is facilitated by the Harness STO (Security Testing Orchestration) module.
 
+:::note
+
+To ensure vulnerability results appear on the Artifacts page, run STO scans on images that are pushed to Docker registry.Scanning images locally before publishing will result in a digest mismatch, preventing SCS from linking the vulnerability data.
+
+:::
+
 <DocImage path={require('./static/artifacts-vulnerabilities.png')} width="100%" height="100%" title="Click to view full size image" />
 
 Refer to [view security test results](https://developer.harness.io/docs/category/view-security-test-results) in Harness STO documentation for more detailed information about the view and navigation.

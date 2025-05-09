@@ -1,0 +1,18 @@
+# contains route tables by tag for given region
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vpc-route-misconfiguration
+    spec:
+      components:
+        env:
+        # target route tables by tag for the chaos
+        - name: TARGET_ROUTE_TABLE_TAG
+          value: 'type=chaos'
+        - name: VPC_ID
+          value: 'vpc-21312'

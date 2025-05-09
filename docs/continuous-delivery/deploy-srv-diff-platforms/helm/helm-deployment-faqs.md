@@ -465,9 +465,6 @@ The recommended approach is to remove Helm hooks and integrate them as shell scr
 
 For unchanged utilization of Helm hooks, native Helm deployment can be chosen. However, native Helm's ability to process hooks and deploy simultaneously is limited. This limitation stems from Helm's post-render functionality, which prevents Harness from processing hooks effectively.
 
-For detailed instructions on integrating Helm charts in Kubernetes deployments with Harness, please refer to the Harness [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/kubernetes-deployments/use-Helm-chart-hooks-in-kubernetes-deployments/).
-
-
 ### Harness is pulling old Helm dependencies that are not in the Chart.yaml.
 
 Check the following:

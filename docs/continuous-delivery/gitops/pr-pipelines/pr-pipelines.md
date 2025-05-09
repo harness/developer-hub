@@ -1,6 +1,6 @@
 ---
-title: Create Harness GitOps PR pipelines
-description: Learn how to create PR pipelines with Harness GitOps.
+title: Manage Environment Changes with Harness GitOps PR Pipelines
+description: Learn how to create and run PR pipelines in Harness GitOps to update environment-specific configuration files.
 sidebar_position: 2
 canonical_url: https://www.harness.io/blog/gitops-the-push-and-pull-approach
 ---
@@ -15,6 +15,7 @@ This topic builds on the ApplicationSet created in [Harness GitOps ApplicationSe
 
 It is also recommended that you go through the [basics of Harness PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics.md) before proceeding further.
 
+Check out [this example using ApplicationSet with PR Pipelines](./pr-pipeline-application-set.md) to get started with ApplicationSet with Harness GitOps PR Pipelines.
 :::
 
 When you deploy a Harness PR pipeline, you indicate the target environment application and the `config.json` keys/values you want changed. Harness creates the pull request in your Git repo and merges it for you. Once complete, the target environment application has the new keys/values.
@@ -164,6 +165,28 @@ In **Manifest Details**, enter the following settings and then click **Submit**.
 6. In the top-right corner, select **Save**.
 
 You have now successfully configured a Harness service for your PR pipeline.
+
+### GitOps Services Dashboard
+
+:::note 
+
+This feature is behind the feature flag `GITOPS_APPSYNCS_ON_SERVICE_DASHBOARD`. Please contact [Harness Support](mailto:support@harness.io) to enable this flag.
+
+:::
+
+GitOps applications will appear on the [services dashboard](/docs/continuous-delivery/x-platform-cd-features/services/services-overview). 
+
+You can access the service list page by navigating to the **Continuous Delivery** module and selecting **Services**. You should see a list of all your services, including your GitOps services and the one you created in the previous step. 
+
+Selecting a GitOps Service will take you to the service's dashboard. In this dashboard you can see the pipelines that use the service. You can also switch the view using the sliding selector pictured below to see a list of applications associated with the service. 
+
+   ![](./static/pipeline-applications-selector.png)
+
+:::warning Limitation
+
+This application dashboard only shows aggregates, so it has a delay of one day as Harness aggregates the appsyncs at the end of each day.
+
+:::
 
 ## Configure variables in a Harness service/environment (optional)
 
@@ -353,4 +376,3 @@ Now your PR pipeline is ready.
   ![](static/harness-git-ops-application-set-tutorial-60.png)
 
 Congratulations! Your PR Pipeline was successful.
-

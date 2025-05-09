@@ -285,7 +285,7 @@ export default function CertificationsChaos() {
                     />
                     <span className={styles.productVersion}>
                       <strong>Product version: </strong> Harness Chaos
-                      Engineering Free/Team Plans
+                      Engineering Paid Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -358,7 +358,7 @@ export default function CertificationsChaos() {
                     />
                     <span className={styles.productVersion}>
                       <strong>Product version: </strong> Harness CE
-                      Enterprise Plan
+                      Paid Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -436,7 +436,7 @@ export default function CertificationsChaos() {
                     />
                     <span className={styles.productVersion}>
                       <strong>Product version: </strong> Harness Chaos
-                      Engineering Enterprise Plan
+                      Engineering Paid Plans
                     </span>
                   </div>
                   <div className={styles.right}>

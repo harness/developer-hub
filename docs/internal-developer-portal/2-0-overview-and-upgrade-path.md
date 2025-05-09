@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 :::info Status: Work in Progress 🚧
 
-IDP 2.0 is launching soon! We're preparing to open early access **end of April 2025**. If you're interested in getting early access and shaping the future of Harness IDP, reach out at [idp-interest@harness.io](mailto:idp-interest@harness.io) or contact your Technical Program Manager. We will notify you as soon as IDP 2.0 is available!
+IDP 2.0 is launching soon! We will open early access tentatively in the **week of May 12th**. If you're interested in getting early access and shaping the future of Harness IDP, reach out at [idp-interest@harness.io](mailto:idp-interest@harness.io) or contact your Technical Program Manager. We will notify you as soon as IDP 2.0 is available to onboard!
 :::
 
 ## Summary
@@ -26,7 +26,7 @@ IDP 2.0 is launching soon! We're preparing to open early access **end of April 2
 - **Default Upgrade Behavior**: Entities will initially live at the **Account scope**. You can later organize them into Org/Project scopes as needed.
 - **Breaking Changes**: The **Catalog APIs** and **entity YAML definitions** have changed. If you’ve built automations or integrations, please review the [breaking changes](#breaking-changes).
 
-📬 **IDP 2.0 will be available in beta by late April.** Contact your Harness team or email [idp-interest@harness.io](mailto:idp-interest@harness.io) to request early access.
+📬 **IDP 2.0 will be available soon.** Contact your Harness team or email [idp-interest@harness.io](mailto:idp-interest@harness.io) to request early access.
 
 <DocVideo src="https://www.youtube.com/watch?v=9Rj-jJp3Ehc" />
 
@@ -160,14 +160,13 @@ IDP 2.0 introduces fundamental architectural changes, API modifications, and ent
 
 ### API Changes (Backstage Catalog APIs → Harness Catalog APIs)
 
-All Catalog and Workflow APIs are now delivered directly through Harness Platform APIs, ensuring responses properly incorporate Role-Based Access Control (RBAC) and entity scope considerations. The Backstage native APIs, including entity registration and refresh functionality, are no longer available in version 2.0.
+IDP 2.0 brings new Catalog and Workflow APIs which are part of Harness Platform APIs, ensuring responses properly incorporate Role-Based Access Control (RBAC) and entity scope considerations.
 
-- Complete create/read/update/delete operations are accessible via Harness APIs
-- New endpoints provide scope-aware operations aligned with Harness RBAC
-- Any automation or custom processes utilizing Backstage-related APIs will require updates to implement the newer CRUD APIs
-- Catalog Ingestion APIs remain functional as before, though RBAC will now be enforced on updated entities
+The [IDP 1.0 APIs](./api-refernces/public-api.md) for registering a new entity, refreshing and unregistering a location are now marked deprecated in IDP 2.0. However, they will continue to be available until August 2025 for customers to migrate. Note that the IDP 1.0 APIs will not support RBAC and can only work with entities at Account scope.
 
-We will provide detailed documentation on the newer API docs and provide sample scripts using the newer Catalog APIs.
+The new API Documentation will be published at [Harness API Docs](https://apidocs.harness.io/) once IDP 2.0 is released on production.
+
+Catalog Ingestion APIs remain functional as before, though RBAC will now be enforced on updated entities
 
 ### Entity YAML Definition
 
@@ -312,9 +311,9 @@ The IDP 1.0 "Access Control" page within the IDP Configure view has been removed
 
 ### Pipeline Step: Create Catalog and Register Catalog steps
 
-The "Create Catalog" and "Register Catalog" steps previously used in IDP pipelines have been deprecated. These relied on creating a YAML file, committing and pushing it to Git, then using the URL to register it in IDP Catalog.
+The "Create Catalog" and "Register Catalog" steps previously used in IDP pipelines have been marked deprecated. They rely on creating a YAML file, committing and pushing it to Git, then using the URL to register it in IDP Catalog using IDP 1.0 APIs.
 
-You can now directly use Harness IDP Catalog APIs to register new entities using YAML definitions without Git operations. A dedicated step for this functionality will be available soon.
+You can now directly use Harness IDP Catalog APIs to register new entities using YAML definitions without Git operations. We will provide a sample pipeline using the new APIs. A dedicated step for this functionality will be available soon.
 
 ## Before You Upgrade (Checklist)
 
@@ -343,9 +342,10 @@ Please review the breaking changes above and prepare for the upgrade. We will pr
 
 ## Timeline
 
-- IDP 2.0 beta by end of April 2025.
+- IDP 2.0 beta by mid-May 2025.
 - IDP 2.0 will be Generally Available by end of Q2 (July 2025)
-- All customers will be moved over to IDP 2.0 by August 2025 tentatively
+- All IDP 1.0 APIs are removed by end of Q3 (October 2025)
+- All customers will be moved over to IDP 2.0 by end of October 2025.
 
 <!-- ## FAQs -->
 

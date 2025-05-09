@@ -249,6 +249,12 @@ While you can simply declare a variable in your script using a Harness expressio
 * You can more easily identify and manage the Harness expressions used in your script.
 * You can template your script.
 
+:::info note
+When using Script Input Variables in a Shell Script step, avoid setting values that contain newlines.
+Harness retrieves environment variables using the `printenv` command and splits them by newline characters.
+If an input variable includes newlines, this parsing may break, leading to unexpected behavior during execution.
+:::
+
 ### Script output variables
 
 To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.

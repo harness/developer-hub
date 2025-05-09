@@ -500,7 +500,7 @@ Currently, this feature is behind the feature flag `CDS_CUSTOM_MAX_CONCURRENCY`.
 This will allow you to control how many services can be deployed concurrently during the multi-service deployment.
 
 <div align="center">
-  <DocImage path={require('./static/custom-max-concurrency.png')} width="60%" height="60%" title="Click to view full size image" />
+  <DocImage path={require('./static/custom-max-concurrency.png')} width="70%" height="70%" title="Click to view full size image" />
 </div>
 
 **Example Use Case**

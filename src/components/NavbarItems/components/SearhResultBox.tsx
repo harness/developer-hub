@@ -99,6 +99,7 @@ const SearchResultBox = forwardRef<HTMLDivElement, SearchResultBoxProps>(
         setResultsPerPageController(resultsPerPageController);
       }
       Initialize();
+      localStorage.setItem('coveo-facet', JSON.stringify([]));
     }, []);
 
     useEffect(() => {
@@ -148,7 +149,6 @@ const SearchResultBox = forwardRef<HTMLDivElement, SearchResultBoxProps>(
 
       setTimeout(() => {
         const shareLinkValues = extractSelectedFacets(engine.state.facetSet);
-        // console.log(shareLinkValues);
 
         const queryString = generateQueryString(shareLinkValues);
         const rootUrl = window.location.href.split('/').slice(0, 3).join('/');

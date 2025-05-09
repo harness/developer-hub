@@ -290,7 +290,7 @@ export default function CertificationsCI() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness CI Free/Team
+                      <strong>Product version: </strong> Harness CI Free
                       Plans
                     </span>
                   </div>
@@ -371,8 +371,8 @@ export default function CertificationsCI() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness CI Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness CI Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -455,8 +455,8 @@ export default function CertificationsCI() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness CI Enterprise
-                      Plan
+                      <strong>Product version: </strong> Harness CI Paid
+                      Plans
                     </span>
                   </div>
                   <div className={styles.right}>
