@@ -16,6 +16,20 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "AZ blackhole",
+    description:
+        "AZ blackhole causes network blackhole by isolating traffic in specific availability zones across an entire region.",
+    tags: ['zone', 'blackhole'],
+    category: "aws",
+  },
+  {
+    name: "VPC route misconfiguration",
+    description:
+        "VPC route misconfiguration causes network issues due to misconfiguration on the route table associated with the target VPC.",
+    tags: ['vpc', 'route tables'],
+    category: "aws",
+  },
+  {
     name: "DynamoDB replication pause",
     description:
       "DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.",
@@ -338,10 +352,24 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "Lambda inject status code",
+    description:
+        "Lambda inject status code simulates runtime erroneous HTTP status codes in Lambda function responses for a certain duration.",
+    tags: ['lambda', 'runtime', 'update'],
+    category: "aws",
+  },
+  {
     name: "Lambda update role permission",
     description:
       "  Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function.",
     tags: ['lambda', 'role', 'permission'],
+    category: "aws",
+  },
+  {
+    name: "Lambda modify response body",
+    description:
+        "Lambda modify response body modifies the response body of a Lambda function at runtime, simulating unexpected output alterations. This interrupt the flow of the given function.",
+    tags: ['lambda', 'runtime', 'function'],
     category: "aws",
   },
   {

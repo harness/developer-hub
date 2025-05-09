@@ -212,7 +212,7 @@ To resolve conflicts in the pipeline YAML, do the following:
 ## Bulk Reconciliation of templates
 
 :::info note
-Currently this feature is behind Feature Flag `PIPE_BULK_RECONCILIATION`. Please contact Harness Support(mailto:support@harness.io) to enable this FF.
+Currently this feature is behind feature flag `PIPE_BULK_RECONCILIATION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
 :::
 
  When changes are made to the runtime inputs in a template—such as adding or removing inputs—and the template is referenced by multiple entities (like other templates, stages, or pipelines), you can trigger a **Bulk Reconciliation** directly from the template page. This process ensures that all dependent entities are synchronized with the updated template in a single operation.
@@ -305,7 +305,137 @@ Clicking on **Details** will show the individual status of each reconciled entit
 Important Points for Bulk Reconciliation
 - Only inline entities and direct references to templates are supported.
 - The user triggering the bulk reconciliation must have **Pipeline Edit** permissions for the entities being updated.
--  The username of the individual who triggered the bulk reconciliation will appear in audit logs for update events.
--  You can select up to 25 entities in a single bulk reconciliation.
+- The username of the individual who triggered the bulk reconciliation will appear in audit logs for update events.
+- You can select up to 25 entities in a single bulk reconciliation.
 :::
 
+## Understanding Bulk Reconciliation for Remote Entities
+
+:::info note
+Currently, this feature is behind the feature flag `PIPE_BULK_RECONCILIATION_PHASE2`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+:::
+
+### Scenario
+
+You have a Remote Step Template defined as follows:
+```yaml
+template:
+  name: step_test
+  identifier: step_test
+  versionLabel: v1
+  type: Step
+  projectIdentifier: test
+  orgIdentifier: default
+  tags: {}
+  spec:
+    timeout: 10s
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: echo hello
+      environmentVariables: []
+      outputVariables: []
+```
+This Step Template is referenced in a Remote Stage Template:
+
+```yaml
+template:
+  name: stage_test
+  identifier: stage_test
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: Krishika_test_autocreation
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: step1
+              identifier: step1
+              template:
+                templateRef: step_test
+                versionLabel: v1
+                templateInputs:
+                  type: ShellScript
+                  timeout: 10s
+```
+Now, you make a change in the Step Template — updating the `timeout` field from a fixed value to a runtime input — and commit the update to a new branch:
+
+```yaml
+template:
+  name: step_test
+  identifier: step_test
+  versionLabel: v1
+  type: Step
+  projectIdentifier: test
+  orgIdentifier: default
+  tags: {}
+  spec:
+    timeout: <+input>
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: echo hello
+      environmentVariables: []
+      outputVariables: []
+```
+### Reconciliation Flow
+
+1. After committing the changes, click on **Referencing Entities**.
+
+![](./static/bulk-remote1.png)
+
+2. The Stage Template that references the updated Step Template will appear as **Out of Sync**.
+
+![](./static/bulk-remote2.png)
+
+3. Select the out-of-sync entity and click **Update**.
+
+4. As the update progresses, the Current Status will change to **In Progress**.
+
+![](./static/bulk-remote3.png)
+
+5. Once the PR is created, the Current Status will change to **Pending PR**.
+
+![](./static/bulk-remote4.png)
+
+6. Click on **Pending PR** to view and open the pull request. Click **View PR** to navigate to the repository and merge it into your default branch, where all entities are stored.
+
+![](./static/bulk-remote5.png)
+
+You can also see the difference between Original and Refreshed entity that shows what changes are made.
+
+7. After merging the PR, the Current Status will change to **Synced**.
+![](./static/bulk-remote6.png)
+
+## Best practices
+
+While it is technically possible to run a pipeline without performing reconciliation after a template has been updated, this approach is not recommended. Here are key reasons why reconciliation should always be performed:
+
+- **Always uses the latest template version**: When a pipeline executes, it uses the latest version of the template irrespective of whether you reconciled the pipeline or not.
+- **Outdated or missing input values**: If reconciliation is not done, the inputs shown in the Pipeline Run form may be outdated or incomplete. For example:
+- Newly added input fields in the updated template won’t appear in the form.
+- Some values may be passed as null or retain older values that no longer align with the current template structure.
+- **Risk of unexpected behavior**: This can lead to null values or stale data being used in the pipeline run, potentially causing failures or unintended behavior in the step or stage execution.
+- **No validation warning during execution**: The pipeline executes without warnings about missing or incompatible inputs, which makes it harder to debug issues caused by outdated templates.
+
+
+### Recommendation
+Always click **Reconcile** when prompted after a template change before executing the pipeline. This ensures:
+
+- The pipeline inputs match the latest template structure.
+- Runtime inputs are updated and accurately reflected in the form.
+- Execution is predictable and stable.

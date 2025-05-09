@@ -20,8 +20,14 @@ If you are new to Harness IaCM, check out the [onboarding guide](/docs/infra-as-
 This document walks through each tab of a workspace, explaining its data, settings, and usage to help you configure and manage your workspace effectively.
 
 ### Resources
-The Resources tab compiles information from the infrastructure code associated with your workspace. It lists all provisioned resources, such as servers and databases.
-- **Usage:** This tab helps you monitor and manage the resources provisioned by your pipelines, providing insights into the current state and configuration of each resource.
+The Resources tab surfaces infrastructure state from OpenTofu/Terraform in a structured and readable format. It lists all managed resources, referenced data sources, and exposed outputs defined in your workspace configuration.
+
+This tab includes three subtabs:
+- **Resources:** Infrastructure components actively provisioned and managed by OpenTofu/Terraform.
+- **Data Sources:** External values fetched at runtime (e.g., existing VPCs, AMIs). These are now extracted from the state file for easier visibility.
+- **Outputs:** Values exposed by your modules, typically used to pass data between pipeline stages or systems.
+
+Use this tab to validate state, inspect dependencies, and troubleshoot issues, without digging through raw state files.
 ---
 ### Variables
 The Variables tab is populated from the variables defined within your infrastructure code, commonly in your `variables.tf` file.
@@ -69,10 +75,6 @@ variable "db_password" {
 The Activity History tab logs actions performed within the workspace, such as 'plan' and 'apply' steps executed via pipelines.
 - **Usage:** Use this tab to track the success or failure of specific actions, aiding in troubleshooting and auditing.
 ---
-### Execution History
-This tab records the execution of full pipelines, such as Provision or Destroy, providing a comprehensive history of actions taken within the workspace.
-- **Usage:** It enables you to review past pipeline executions and understand the sequence and outcome of each step.
----
 ### State
 The State tab provides access to your complete infrastructure state file, offering critical insights into your current configuration and dependencies of your resources.
 - **Usage:** Utilize this tab to conduct audits and maintain consistency across your infrastructure setup, ensuring alignment with your desired state.
@@ -83,6 +85,13 @@ For detailed instructions on managing your infrastructure state, visit [Provisio
 ### Configuration
 Derived from the initial setup steps of your workspace, including cost estimation settings, selected connectors, and default pipelines.
 - **Usage:** Provides a quick overview of your workspace's configuration, allowing for easy edits and updates.
+
+#### Advanced options
+Workspaces configuration advanced options offer the ability to configure additional settings for your workspace, including:
+- **Submodules:** Use submodules from your repository's `modules/` folder. 
+  Go to [Submodule Usage](/docs/infra-as-code-management/iacm-features/module-registry/root-sub-module-usage) for more information.
+- **Sparse checkout:** Provide paths to directories to do a sparse checkout on given patterns to clone specific directories from the repository.  
+  Refer to [git documentation](https://git-scm.com/docs/git-sparse-checkout#_internalscone_pattern_set) for more details.
 ---
 ### CLI Integration
 This tab provides guidance on integrating the OpenTofu/Terraform CLI with Harness as a backend.

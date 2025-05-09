@@ -44,6 +44,20 @@ If you have created a connector and a Harness Delegate earlier, you can find the
 
     b. While creating a Kubernetes connector, select or [create a new Delegate](/docs/platform/delegates/install-delegates/overview/#install-the-helm-chart). Once your Delegate shows up in the list, enter its name in the search bar, and select **Save and Continue**. This will test your connection and describe if it was a success or no. Contact [Harness Support](mailto:support@harness.io) if you encounter issues with the verification.
 
+4. To **Enable Chaos** and use **Configure Advanced Settings (Optional)**, navigate to **Environments** and **Enable Chaos** on the infrastructure you created earlier.
+
+    ![](./static/delegate/enable-chaos.png)
+
+5. Choose between **Beginner** or **Expert** and click **Go**. 
+
+    ![](./static/delegate/beginner.png)
+
+6. You can choose to provide additional configurations in the **Configure Advanced Settings (Optional)** section to configure [chaos runner and Discovery Agent](/docs/platform/service-discovery/customize-agent) and click **Go**. This creates application maps and chaos experiments for you.
+
+    ![](./static/delegate/advanced-settings.png)
+
+
+
 :::tip
 - Ensure your Delegate version is `24.09.83900` or above to support executing chaos experiments using DDCR. 
 - Currently, DDCR (or Harness Delegate) can only be installed to execute Kubernetes-based faults. This means you can only create Kubernetes connectors.
@@ -54,7 +68,7 @@ If you have created a connector and a Harness Delegate earlier, you can find the
 
 ## Harness Terraform Provider
 
-You can [create Harness Delegate (DDCR)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/chaos_infrastructure) using [Harness Terraform provider](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider-overview/).
+Go to [create Harness Delegate (DDCR)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/chaos_infrastructure) to create a Harness Delegate using [Harness Terraform provider](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider-overview/).
 
 ## Next Steps
 

@@ -180,6 +180,26 @@ Changes made on either the Git repo or Harness are synched automatically.
 
 For more information, go to [Set up bidirectional sync for Git Experience](/docs/platform/git-experience/gitexp-bidir-sync-setup).
 
+### Improved Git Synchronization for Pipeline Execution
+
+Harness has improved Git synchronization behavior to ensure that pipeline executions always use the latest YAML configurations.
+
+:::note
+Currently, this feature is behind the feature flag `PIE_PROCESS_TRIGGER_SEQUENTIALLY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Previously, a pipeline trigger could run before the latest Git update was processed, leading to inconsistent executions. Now, with sequential processing, Harness completes the Git update first and then runs the pipeline. This guarantees that the latest YAML configuration is always used.
+
+Note that for large Git payloads, this may introduce a small delay in trigger execution.
+
+:::info
+This improvement applies only when bidirectional sync is enabled, where Harness uses its internal cache as the source of truth. In such cases, delayed Git updates could cause pipelines to run outdated configurations. This fix ensures Git updates are processed before execution triggers.
+
+If bidirectional sync is not enabled, Git is already the source of truth and this issue does not occur.
+:::
+
+For more information on triggers, go to [Set up Git triggers with Git Experience](/docs/platform/triggers/triggers-overview/).
+
 ### What can I do with Harness Git Experience?
 
 Harness Git Experience helps you do the following:

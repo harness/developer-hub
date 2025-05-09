@@ -154,6 +154,11 @@ permissions:
         <td> Default: `ingress`. For more information, go to <a href="#advanced-fault-tunables">service direction </a>.</td>
       </tr>
       <tr>
+        <td> DATA_DIRECTION </td>
+        <td> API payload type, request or response </td>
+        <td> Default: `request`. For more information, go to <a href="#advanced-fault-tunables">data direction </a></td>
+      </tr>
+      <tr>
         <td> DESTINATION_PORTS </td>
         <td> Comma-separated list of the destination service or host ports for which `egress` traffic should be affected. </td>
         <td> Default: 80,443. For more information, go to <a href="#destination-ports">destination ports</a>. </td>
@@ -353,6 +358,7 @@ To enable HTTPS support for both incoming and outgoing traffic between the targe
 
 - `PROXY_PORT`: Port where the proxy listens for requests and responses.
 - `SERVICE_DIRECTION`: Direction of the flow of control, either `ingress` or `egress`.
+- `DATA_DIRECTION`: API payload type, request, or response. It supports `request`, `response` values.
 - `NETWORK_INTERFACE`: Network interface used for the proxy.
 
 The following YAML snippet illustrates the use of this environment variable:
@@ -383,6 +389,9 @@ spec:
             # provide the connection type
             - name: SERVICE_DIRECTION
               value: 'ingress'
+            # provide the payload type
+            - name: DATA_DIRECTION
+              value: 'request'
             # provide the network interface
             - name: NETWORK_INTERFACE
               value: 'eth0'

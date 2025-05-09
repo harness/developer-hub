@@ -66,12 +66,17 @@ This topic lists resource types relevant to [RBAC in Harness](./rbac-in-harness.
 | `CCM_CLOUD_ASSET_GOVERNANCE_RULE` |cloudAssetGovernanceRule|
 | `CCM_CLOUD_ASSET_GOVERNANCE_RULE_SET`  |cloudAssetGovernanceRuleSet|
 | `CCM_CLOUD_ASSET_GOVERNANCE_RULE_ENFORCEMENT`  |cloudAssetGovernanceEnforcement|
+| `CCM_DATA_SCOPE` |dataScope|
+| `CCM_CLUSTER_ORCHESTRATOR` |clusterOrchestrator|
+| `CCM_CLOUD_ASSET_GOVERNANCE_OVERVIEW` |cloudAssetGovernanceOverview|
+| `CCM_CLOUD_ASSET_GOVERNANCE_ALERT` |cloudAssetGovernanceAlert|
 | `SMTP`  |smtp|
 | `SETTING`  |setting|
 | `DEPLOYMENTFREEZE`  |deploymentfreeze|
 | `STREAMING_DESTINATION` | streamingDestination|
 | `DOWNTIME`  |downtime|
-| `IDP_SETTINGS` |  idpsettings|
+| `IDP_CATALOG` | catalog|
+| `IDP_WORKFLOW` | workflow|
 | `IDP_PLUGIN`   | plugin|
 | `IDP_SCORECARD`  |   scorecard|
 | `IDP_LAYOUT`   |  layout|
@@ -80,16 +85,51 @@ This topic lists resource types relevant to [RBAC in Harness](./rbac-in-harness.
 | `IDP_ADVANCED_CONFIGURATION`  |   advancedconfiguration|
 | `CODE_REPOSITORY` |  repo|
 | `NETWORK_MAP` |  networkmap|
+| `CHAOS_IMAGE_REGISTRY` |chaosimageregistry|
+| `CHAOS_PROBE` |chaosprobe|
 | `CHAOS_SECURITY_GOVERNANCE` |chaossecuritygovernance|
 | `CET_AGENT` |  agents|
 | `CET_TOKEN`  | token|
 | `CET_CRITICAL_EVENT` | criticalevent|
 | `IAC_WORKSPACE`  | workspace|
+| `IAC_REGISTRY` | registry|
+| `IAC_VARIABLE_SET` | variableset|
 | `SEI_CONFIGURATION_SETTINGS` |seiconfigurationsettings|
 | `SEI_COLLECTIONS`  |  seicollections|
 | `SEI_INSIGHTS`  |  seiinsights|
+| `SEI_PANORAMA` |seipanorama|
 | `CCM_ANOMALIES`  |  anomalies|
 | `CCM_RECOMMENDATIONS`  |  recommendations|
 | `CCM_COMMITMENT_ORCHESTRATOR` |commitmentOrchestrator|
+| `NOTIFICATION` |notification|
+| `NOTIFICATION_CHANNEL` |notificationchannel|
+| `NOTIFICATION_RULE` |notificationrule|
+| `SSCA_REMEDIATION_TRACKER` |remediationtracker|
+| `SSCA_ENFORCEMENT_EXEMPTION` |enforcementexemption|
+| `GITX_WEBHOOKS` |gitxWebhooks|
+| `CERTIFICATE` |certificate|
+| `ACCESS_POLICIES` |accessPolicies|
+| `MONITORING_AGENT` |monitoringagent|
+| `IRO_MANAGER` |iromanager|
+| `IRO_ALERT` |alert|
+| `IRO_ALERT_RULE` |alertrule|
+| `IRO_INCIDENT` |incident|
+| `IRO_CONNECT_WORKSPACE` |iroworkspace|
+| `IRO_RUNBOOK` |runbook|
+| `METRIC_SOURCE` |metricsource|
+| `ARTIFACT_REGISTRY` |artregistry|
+| `PROVIDER` |provider|
+| `FME_ENVIRONMENT` |fmeenvironment|
+| `FME_TRAFFIC_TYPE` |fmetraffictype|
+| `FME_FEATURE_FLAG` |fmefeatureflag|
+| `FME_SEGMENT` |fmesegment|
+| `FME_LARGE_SEGMENT` |fmelargesegment|
+| `FME_METRIC` |fmemetric|
+| `FME_EXPERIMENT` |fmeexperiment|
+| `DB_SCHEMA` |schema|
+| `DB_INSTANCE` |instance|
+| `HAR_REGISTRY` |harregistry|
+| `RELEASES` |releases|
 | `INPUT_SET` |  inputset|
 | `BANNER` | banner |
+| `GITOPS_APPLICATIONSET` |applicationset|

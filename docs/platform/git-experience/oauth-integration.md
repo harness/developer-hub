@@ -171,6 +171,22 @@ Invalid combinations include:
 2. `https://app.harness.io/<YOUR_SUBDOMAIN>`
 
 
+## Enforce OAuth for commits
+
+You can enforce OAuth for commits pushed from Harness to your Git provider.
+
+To enable this setting:-
+
+Navigate to **Account Settings** -> **General** -> **Default Setting** -> **Git Experience** -> **Enable OAuth for Commits**
+
+![](./static/enforce-auth-for-commit.png)
+
+If this setting is enabled but OAuth is not configured for your account, any attempt to commit changes from Harness to Git will fail, and you'll see an error like this:
+
+![](./static/oauth-error-setting.png)
+
+To resolve this, you must [Configure Oauth for your Git Provider](#configure-oauth-for-git-provider) before making any changes.
+
 
 
 

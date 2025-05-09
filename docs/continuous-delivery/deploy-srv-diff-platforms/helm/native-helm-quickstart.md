@@ -189,12 +189,97 @@ For details on Harness provisioning, go to [Provisioning overview](/docs/continu
 12. In **Release Name**, enter **quickstart**.
 13. Select **Next**. The deployment strategy options appear.
 
+### Enforcing Namespace Consistency
+
+Helm deployments in Harness offer powerful packaging and templating capabilities, but with that flexibility comes a gap in namespace enforcement. By default, Helm allows users to deploy workloads into any namespace, regardless of what’s defined in the Infrastructure.
+
+This can lead to security and governance issues, especially in shared clusters where namespace isolation is critical.
+
+Helm does not perform strict validation against the namespace defined in the Infrastructure. Users can override the namespace in several ways—via chart templates, values files, or by passing the `--namespace` flag during Helm install or upgrade.
+
+:::note
+Currently, this feature is behind the feature flag `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This feature requires delegate version `856xx` or later.
+:::
+
+To enable this setting, go to:
+**Account** / **Org** / **Project Settings** → **Default Settings**
+Under the **Continuous Delivery** section, set the value to **True** for:
+**Enable Namespace validation from different sources with infrastructure level namespace**
+
+**How it's handled**
+
+Helm doesn't inherently block namespace overrides, so Harness enforces validation during execution when this feature flag is enabled.
+
+If a Helm chart tries to install resources into a namespace that doesn’t match the one defined in the Infrastructure, Harness will fail the deployment.
+
+This includes scenarios where:
+- The chart templates define a hardcoded namespace (`metadata.namespace`)
+- The `--namespace` flag is passed in install/upgrade arguments
+- Values passed into the chart result in a different namespace
+
+For example:
+- The Infrastructure is set to deploy into `secure-team-ns`.
+- A Helm chart includes a hardcoded namespace like `sandbox-test`.
+- During execution, the chart tries to install into s`andbox-test`.
+- With namespace validation enabled, Harness detects the mismatch and blocks the deployment.
+
+This prevents service owners or developers from bypassing namespace boundaries—ensuring that deployments stay confined to the approved environment.
+
+**Limitations**
+
+Currently, Helm Canary deployments are not supported with this namespace enforcement feature.
+
 ## Add a Helm Deployment step
 
 In this example, we're going to use a Rolling [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts).
 
 1. Select **Rolling**, and select **Apply**.
 2. The **Helm Deployment** step is added to **Execution**.
+
+## Command Flags at Step Level
+
+You can optionally override or add native Helm command parameters directly in the Helm Deploy step. This provides greater flexibility to customize Helm CLI behavior without modifying the Service definition.
+
+:::note
+This feature is currently behind the feature flag `CDS_HELM_STEP_COMMAND_FLAGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+Command Flags at the step level are supported for **Helm v3** only.
+:::
+
+### How to Configure Command Flags
+
+1. In your pipeline, add or edit a **Helm Deploy** step.
+2. Navigate to the **Advanced** tab.
+3. Locate the **Command Flags** field.
+4. Add one or more Helm command flags as needed.
+5. Save the step.
+
+During execution, Harness applies the specified flags to the corresponding Helm commands.
+
+### Behavior and Precedence
+
+| Configuration Location | Behavior |
+|:------------------------|:---------|
+| Step and Service | **Step-level flags take precedence.** Service-level flags are used, unless overridden at the step level. |
+| Step only | **Step-level flags are used.** |
+| Service only | **Service-level flags are used.** |
+
+There is no merging of flags between step and service levels. Step-level flags fully override service-level flags for the same command.
+
+### Example
+
+To perform a server-side dry-run without modifying the Service:
+
+- In the Helm Deploy step, add:
+  ```bash
+  --dry-run --server
+  ```
+
+**Additional Resources**
+
+For a full list of supported Helm v3 command flags, refer to the [Helm CLI Command Reference](https://helm.sh/docs/helm/)
 
 ## Environment Variables
 
@@ -316,6 +401,30 @@ When you want to deploy a commodity Helm Chart (ElasticSearch, Prometheus, etc.)
 Harness is able to track the deployed Helm Chart in the Services dashboard. All chart information is also available to view in the Services dashboard. 
 
 This feature will be available for users on delegate version 810xx. Please ensure the delegate is up to date before opting into this feature.
+
+## Deploy Helm Charts with CRDs 
+
+Harness now supports deploying Helm charts that include Custom Resource Definitions (CRDs) which may already exist outside the target namespace. This enhancement enables the use of the `helm upgrade --install` command to avoid common CRD-related installation errors.
+
+:::note
+This feature is currently behind the feature flag `CDS_SKIP_HELM_INSTALL`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+Requires delegate version `856xx` or later.
+:::
+
+<div align="center">
+  <DocImage path={require('./static/helm-crd-support.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+Once enabled, you’ll see a new checkbox titled **Use Upgrade with Install** in the Helm deployment step configuration.
+
+This option:
+
+- Supports fixed values, runtime inputs, and expressions.
+- Works with both Helm v2 and Helm v3.
+- Continues to support custom CLI flags.
+
+This checkbox is available for **Native Helm deployment steps**, including **Rolling Deploy**, **Canary**, and **Blue-Green** deployments.
 
 ## Native Helm notes
 

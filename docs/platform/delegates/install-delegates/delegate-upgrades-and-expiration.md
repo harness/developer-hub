@@ -4,25 +4,23 @@ description: Explains the auto-upgrade feature and the delegate expiration polic
 sidebar_position: 9
 ---
 
-The Harness Delegate for Kubernetes and Helm supports automatic upgrades. Harness recommends that you enable automatic upgrades for your Kubernetes delegates. With automatic upgrades, you always have the most recent version of the delegate.
+The Harness Delegate supports automatic upgrades. It is recommended that you enable automatic upgrades for your delegate to ensure it remains updated with the latest version.
 
 Delegate upgrades do not affect pipelines unless the shutdown timeout is reached. Before an upgrade is performed, the delegate finishes the tasks that are underway. The delegate then shuts down. As part of the shutdown process, there is a 10 minute timeout by default. You can configure this setting. For more information, go to [Graceful delegate shutdown](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process/).
 
 :::info
-The automatic upgrade feature is enabled by default for the Kubernetes manifest, Terraform, and Helm installation options. However, the automatic upgrade feature is not supported for the Docker installation option.
+The automatic upgrade feature is enabled by default for the Kubernetes manifest, Terraform, and Helm installation options. For Docker delegates, you need to run a separate command to enable auto-upgrader.
 :::
 
-## How automatic upgrade works in the Kubernetes manifest
+## How automatic upgrade works 
+
+### Kubernetes manifest Delegate
 
 The Kubernetes manifest has a component called `upgrader`. The `upgrader` is a cron job that runs every hour by default. Every time it runs, it sends a request to Harness Manager to determine which delegate version is published for the account. The API returns a payload, such as `harness/delegate:yy.mm.verno`. If the delegate that was involved in this upgrade cron job does not have the same image as what the API returns, the `kubectl set image` command runs to perform a default rolling deployment of the delegate replicas with the newer image.
 
 To prevent the installation of the automatic upgrade feature, remove the `CronJob` section before you apply the manifest.
 
 You can also change the time when the upgrade cron job runs by updating the `schedule`. For configuration details, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
-
-:::info
-User information is not propagated when a delegate is started from external sources. All delegate operations are recorded under the SYSTEM user in the audit trail, especially during the scale-up and scale-down processes. The **Action** column displays actions when a delegate is created, updated, or upserted. For more information about the audit trail, go to [View audit trail](/docs/platform/governance/audit-trail/).
-:::
 
 <details>
 <summary>Example Kubernetes manifest</summary>
@@ -132,7 +130,47 @@ spec:
 
 </details>
 
-### Determine if automatic upgrade is enabled
+### Docker Delegate
+
+:::note Feature flag details
+
+ The Docker Delegate Upgrader is currently behind the feature flag `PL_SHOW_AUTO_UPGRADE_FOR_DOCKER_DELEGATE`, which must be enabled to access this functionality. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+The Docker Delegate upgrader is responsible for two tasks: upgrading the Docker images used for running Docker delegates and performing health checks on those delegates.
+
+:::info Note
+Docker delegate upgrader is not supported if the delegate images are configured to be pulled from a private registry. If you attempt to run a Docker upgrader for these delegates, only health checks will be performed; automatic upgrades will not occur.
+:::
+
+<details>
+<summary>Example Docker delegate upgrader command</summary>
+
+```
+  docker run  --cpus=0.1 --memory=100m \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -e ACCOUNT_ID=<account_ID> \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io \
+  -e UPGRADER_WORKLOAD_NAME=docker-delegate \
+  -e UPGRADER_TOKEN=<delegate_token> \
+  -e SCHEDULE="0 */1 * * *" us-west1-docker.pkg.dev/gar-setup/docker/upgrader:latest
+```
+
+</details>
+
+The Docker Delegate upgrader makes use of Docker volume mount `-v /var/run/docker.sock:/var/run/docker.sock \`. Through this it mounts the Docker socket file from the host to the same path inside the delegate upgrader container. This enables the delegate upgrader container to communicate with the Docker daemon and perform tasks related to upgrade. 
+
+The Docker upgrader is scheduled to upgrade the delegate every one hour by default. This is done through the SCHEDULE environment variable. `-e SCHEDULE="0 */1 * * *"`. According to the configured schedule, the upgrader searches for Docker delegates whose environment variable, `DELEGATE_NAME`, matches the value of the environment variable `UPGRADER_WORKLOAD_NAME`. When it identifies eligible Docker delegates where the latest version of the published image for the account differs from the delegate's current version, it proceeds to upgrade those delegates.
+
+In case of a successful upgrade, the old container is stopped within a 1 hour timeout by default and a new container is brought up with the upgraded delegate version. If you would like to customize the timeout to a different value, set the `CONTAINER_STOP_TIMEOUT` environment variable in the `docker run` command for the upgrader. For example, pass the following as environment variable to configure Docker Delegate upgrader timeout to 45 minutes: `-e CONTAINER_STOP_TIMEOUT=2700`.
+
+
+:::info
+User information is not propagated when a delegate is started from external sources. All delegate operations are recorded under the SYSTEM user in the audit trail, especially during the scale-up and scale-down processes. The **Action** column displays actions when a delegate is created, updated, or upserted. For more information about the audit trail, go to [View audit trail](/docs/platform/governance/audit-trail/).
+:::
+
+## Determine if automatic upgrade is enabled
 
 When a delegate is installed, it may take up to an hour by default to determine if the `upgrader` was removed during installation. During that time, the delegate shows a status of **DETECTING**.
 
@@ -148,9 +186,11 @@ When the delegate is first installed, the Delegates list page displays an **Auto
 
 ![Auto-upgrade on](static/auto-upgrade-on.png)
 
-### Disable automatic upgrade on an installed delegate image
+## Disable automatic upgrade
 
 If you disable automatic upgrades, then you have to manually upgrade the delegate regularly to prevent a loss of backward compatibility.
+
+### Kubernetes manifest Delegate
 
 To disable auto-upgrade on an installed delegate image, do the following:
 
@@ -167,13 +207,25 @@ To disable auto-upgrade on an installed delegate image, do the following:
       - suspend: true
    ```
 
-### Configure the delegate upgrade schedule
+### Docker Delegate
+
+The Docker Delegate upgrader can upgrade multiple Docker delegates. An upgrader is capable of upgrading Docker delegates whose value of the environment variable `DELEGATE_NAME` is same as the value of the upgrader’s `UPGRADER_WORKLOAD_NAME` environment variable.
+
+If you do not need auto-upgrade capabilities, the upgrader can still be used to perform health checks on the delegate. This can be achieved by passing an environment variable `DISABLE_AUTO_UPGRADE` to the upgrader and setting it to true. By default this is set to false.
+     
+     ```
+      -e DISABLE_AUTO_UPGRADE=true
+     ```  
+  
+## Configure the delegate upgrade schedule
 
 Harness recommends a default schedule of 60 minutes, but suggests a range between one and 90 minutes for optimal performance.
 
 :::info important
 If you set the value outside of this range, upgrades will still work as expected. However, if the frequency exceeds 90 minutes, Harness will not be able to detect any auto-upgrades, and the UI will display that auto-upgrades are turned `OFF`.
 :::
+
+### Kubernetes manifest Delegate
 
 To configure the delegate upgrade schedule, do the following:
 
@@ -229,7 +281,19 @@ To configure the delegate upgrade schedule, do the following:
 
    The schedule change for the cron job will take effect immediately, and the next upgrade run will follow the new schedule. If you have made any other changes to the YAML file, such as updating the image, configuration, environment variables, and so on, those changes will take effect during the next run.
 
-### Configure an optional registry mirror for delegate images
+### Docker Delegate
+
+To configure the delegate upgrade schedule for Docker delegates, do the following:
+1. In the docker run command for the upgrader, locate the `SCHEDULE` environment variable. 
+2. Configure the time period after which you want the upgrader to check for upgrades as a cron expression. For example, if you want to check after every 15 minutes, update the cron expression in the `SCHEDULE` environment variable:
+    
+  ```
+    -e SCHEDULE="0 */15 * * *"
+  ``` 
+
+3. Run the docker run command for the Docker delegate upgrader with the updated value of `SCHEDULE` environment variable. 
+
+## Configure an optional registry mirror for delegate images
 
 If you use Docker pull through registry cache (`https://docs.docker.com/docker-hub/mirror/`), you can configure `upgrader` to use an optional registry mirror for your delegate images.
 
@@ -299,17 +363,21 @@ Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup
       'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<ACCOUNT_ID>&delegateTag=<IMAGE_VERSION>&orgIdentifier=<ORGANIZATION_ID>&projectIdentifier=<PROJECT_ID>&tags=<T1>,tags=<T2>,tags=<T3>&validTillNextRelease=false&validForDays=180' \
       -H 'x-api-key: YOUR_API_KEY_HERE'
     ```
+    :::note 
+      For updating delegates successfully through scope level delegate override, ensure both the delegate and the upgrader are running with the same token. In other words, ensure that the value of `DELEGATE_TOKEN` and `UPGRADER_TOKEN` is same.
+    :::
+
     **API Parameters**
 
-    | **Parameter**       | **Required** | **Description**                                                                     | **Use Case**                                                                                                       |
-    |---------------------|--------------|-------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
-    | `delegateTag`       | Yes          | Custom delegate image version to override the existing delegate version | -                                                                                                                   |
-    | `accountIdentifier` | Yes          | Harness account Id (`Account Settings → Account Details → Account Id`)             | Used to update all delegates in an Account, including child scopes |
-    | `orgIdentifier`     | No           | Id assigned when creating the organization                                         | Used to updated all delegates in an organization including child scopes                     |
-    | `projectIdentifier` | No           | Id assigned when creating the project                                              | Used to update all delegates in a specific project                                                                 |
-    | `tags`              | No           | [Tag](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags) assigned when creating the delegate                                        | Used to update delegates with specific tags                               |
-    | `validTillNextRelease`| No | If set to true, your custom image version will be overridden when new delegate is released | - |
-    | `validForDays` | No | Days after which your custom image version will be overridden | - |
+    | **Parameter**          | **Required** | **Description**                                                                                                                                              | **Use Case**                                                            |
+    |------------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+    | `delegateTag`          | Yes          | Custom delegate image version to override the existing delegate version                                                                                      | -                                                                       |
+    | `accountIdentifier`    | Yes          | Harness account Id (`Account Settings → Account Details → Account Id`)                                                                                       | Used to update all delegates in an Account, including child scopes      |
+    | `orgIdentifier`        | No           | Id assigned when creating the organization                                                                                                                   | Used to updated all delegates in an organization including child scopes |
+    | `projectIdentifier`    | No           | Id assigned when creating the project                                                                                                                        | Used to update all delegates in a specific project                      |
+    | `tags`                 | No           | Delegate name or [tag](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#delegate-tags) assigned when creating the delegate | Used to update delegates with specific name or tags                     |
+    | `validTillNextRelease` | No           | If set to true, your custom image version will be overridden when new delegate is released                                                                   | -                                                                       |
+    | `validForDays`         | No           | Days after which your custom image version will be overridden                                                                                                | -                                                                       |
 
     :::note
         1. At max, there can only be two override entries corresponding to a combination of query params: `accountIdentifier`, `orgIdentifier` (if present), and `projectIdentifier`(if present): one with `tags` and one without `tags`. If the same combination of parameters is used with a different value of `tags` or `delegateTag`, then the existing entry will get updated. 

@@ -1249,10 +1249,6 @@ Harness doesn't have a regular upgrade schedule. For more information about dele
 
 You can also customize the kubectl binary version using `INIT_SCRIPT`.
 
-### Can we add a Custom Selector in the Harness Delegate chart for legacy delegates?
-
-For legacy delegates, Harness doesn't have a way to specify a delegate selector or delegate tags in the delegate Helm chart. There is an [API to get and update selectors for the delegates](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api).
-
 ### Why isn't the task_failed_total delegate metric reporting data despite step failure?
 
 The task failed is when something unhandled happens, like a NPE in a task or issue at framework level. A valid failure like shell script exited with error code is not a task failure. Prometheus only shows the metric which are at least once recorded.
@@ -1835,6 +1831,16 @@ This identifier is required for Harness to link old and new pod life cycles prop
 
 Protection details are below for artifact sources related to SSH/WinRm in NextGen:
 
+### SSH Secrets Fails with Error `Failed to get session due to [Client: JSCH] - Encryption algorithms on the host are not compatible with algorithms on the delegate`
+The following error usually occurs with an encryption mismatch on the secret.  As an example, customers may be generating an incorrect encryption on their `ssh-keygen` command, or may be utilizing an encryption that is not compatible with their destination server.
+
+Customer should bash into their delegate, and attempt to run `ssh -vvv -i '/path/to/keyfileondelegate' username@server`, where the keyfile is saved onto the delegate and can be referenced as a path.
+
+If there is an incompatibility, the customer may see an error message similar to the following, which indicates an expecation of a SHA1 key.
+`Unable to negotiate with <ipaddress> port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1`
+
+Please note that our delegates JSCH are updated, and may not support legacy SHA keys that pose security hazards such as SHA1 keys.  
+
 #### Artifactory
 
 To download artifacts from Artifactory to the delegate, Harness uses `org.jfrog.artifactory.client:artifactory-java-client-api:jar:2.9.1`.
@@ -2366,10 +2372,6 @@ For NextGen SCIM integration and to enable user groups, it is recommended to cre
 ### How events are generated on the Harness Platform?
 
 Audit Trail displays a record for each event of the Harness account, module, or entity. For more information, go to [Audit trail](/docs/platform/governance/audit-trail/).
-
-### How can we export all information related to FirstGen deployments, services, environment, etc.?
-
-Go to [Export deployment logs](/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/export-deployment-logs/) and [Use API audit trails](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-audit-trails-api/).
 
 ### Is any documentation available regarding Harness allowlists for Google GCP?
 
@@ -3278,14 +3280,6 @@ Harness allows organizations to manage an IP allow list, enabling approved IP ad
 ### How does Harness handle data retention for exiting customers?
 
 Harness manages data retention for exiting customers by implementing a straightforward process. Upon the expiration or offboarding of a customer account, all associated data is promptly removed from the system.
-
-### Is there a timeline of when I need to upgrade to NextGen?
-
-Yes. For more information, go to [Timeline](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/#timeline).
-
-### Is there a tool to migrate from FirstGen to NextGen?
-
-Yes. You can use the [migrator tool](https://harness.github.io/migrator/).
 
 ### What is cron job in the Kubernetes manifest, and why is it needed?
 

@@ -28,7 +28,7 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
 
 ## Install a delegate
 
-1. Install a Kubernetes delegate. For steps to install a Kubernetes delegate, go to [Delegate YAML Quickstart](/docs/first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate/).
+1. Install a Kubernetes delegate. For steps to install a Kubernetes delegate, go to [legacy kubernetes delegate](/docs/platform/delegates/install-delegates/install-a-kubernetes-delegate).
 2. Download the YAML.
 3. Modify the `INIT_SCRIPT` section in the YAML to include the following value:
 
@@ -735,7 +735,7 @@ These options are all available in the [Harness Docs](/docs/platform/delegates/i
 
 ### Create the connectors and secrets first
 
-Make sure the [connectors](/docs/first-gen/firstgen-platform/account/manage-connectors/harness-connectors/) are created in Harness. You can create them and manage them via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_github) or in the UI.
+Make sure the [connectors](/docs/category/connectors) are created in Harness. You can create them and manage them via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_github) or in the UI.
 
 ![Connector](https://github.com/thisrohangupta/changelog/blob/master/terraform-provider/assets/connector.png)
 

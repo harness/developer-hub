@@ -42,6 +42,12 @@ The UI displays a detailed error message to assist in resolving the issue quickl
 - No Resources in Evaluation: The rule was evaluated, but there were no resources found.
 - Savings Below Threshold: A recommendation was generated, but the potential savings were calculated to be less than $10.
 
+## Alerts
+
+You can configure alerts to notify you for rule evaluations based on the following parameters:
+
+<DocImage path={require('../static/gcp-alert.png')} width="80%" height="80%" title="Click to view full size image" />
+
 ## Recommendations
 
 ### Granular Recommendations

@@ -305,7 +305,17 @@ For examples of all methods, see [Add a Pipeline Notification Strategy](../x-pla
 </TabItem>
 </Tabs>
 
+### Freeze Window Alert Message
 
+You will now see an alert message when an account admin or a user with freeze override permissions triggers a pipeline during a freeze window.
+
+The alert explicitly informs you that:
+- A freeze window is active.
+- The pipeline can be initiated and will not be aborted because you have freeze override permissions.
+
+<div align="center">
+  <DocImage path={require('./static/deployment-freeze-alert.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
 
 ## Enabling and disabling freeze windows
 
@@ -329,6 +339,58 @@ When you enable the setting, you are freezing all deployments. This overrides an
 When you enable this setting you will see **Freeze enabled on all deployments for this `[Account/Organization/Project]` from [duration]**.
 
 ![global freeze](../cd-deployments-category/static/deployment-freeze-global.png)
+
+## Role-based Access to Freeze Windows by Environment Type
+
+:::info
+Currently, the **Role-based Access to Freeze Windows by Environment Type** feature is behind the feature flag `CDS_DEPLOYMENT_FREEZE_GRANULAR_RBAC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Harness now supports **granular access control** for managing Deployment Freeze Windows based on **environment types** for **Production** and **Pre-Production**.
+
+Previously, access to Deployment Freeze Windows could only be controlled at a higher level (e.g., across all environments). Now, you can assign specific roles to freeze deployments **only in production** or **only in pre-production** environments.
+
+**How It Works**
+
+### Creating the Resource Group for Deployment Freeze
+
+1. Navigate to **Project Settings → Access Control → Resource Groups**.
+2. Click **+ New Resource Group** to create a new resource group.
+3. Provide a name and save the resource group.
+4. In the resource group, scroll to the **Shared Resources** section and select **Deployment Freeze**.
+5. Under scope, select the **By Env Type** checkbox.
+6. Click **+ Add**, then choose the environment types: **Production** or **Pre-Production**.
+7. Click **Add 1 Deployment Freeze Type** to confirm.
+8. Save the resource group.
+
+![](./static/rbac-freeze-window.png)
+
+👉 For more info, refer to the [Resource Groups](/docs/platform/role-based-access-control/add-resource-groups/) documentation.
+
+
+### Adding the Resource Group to a Role
+
+1. Navigate to **Project Settings → Access Control → Roles**.
+2. Click **+ New Role** to create a new role.
+3. Under **Permissions**, select **Shared Resources**.
+4. Choose the permissions required: **Manage**, **Override**, or **Global**, based on the privileges needed.
+5. Click **Apply Changes** to save the role.
+
+
+### Assigning the Role to Users or User Groups
+
+1. Navigate to **Project Settings → Access Control → Users / User Groups**.
+2. Select the user or user group to assign the role to.
+3. Go to the **Role Bindings** tab and click **Manage Role Bindings**.
+4. Click **+ Add**, select the previously created role, and save it.
+
+
+### Creating or Enabling a Freeze Window
+
+Users will now be allowed to create or enable a deployment freeze window **only if they have the necessary permissions** for the specified environment type.
+
+- For example, a user with resource group access to the **Pre-Production** environment type can only manage freeze windows for **Pre-Production** environments.
+- Similarly, a user with access to **Production** can only manage freeze windows for **Production** environments.
 
 ## Deployment freeze best practices
 

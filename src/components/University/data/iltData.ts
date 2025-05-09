@@ -8,7 +8,7 @@ export const ilt: IltCardItem[] = [
     type: type.user,
     description:
       "Self-paced hands-on, prerequisite course to all module-specific ILT courses.",
-    version: "Enterprise Plan of any module",
+    version: "Paid Plans of any module",
     link: "https://university-registration.harness.io/introduction-to-the-harness-platform",
     tileType: tileType.preReq,
     cardType: cardType.ILT,
@@ -19,7 +19,7 @@ export const ilt: IltCardItem[] = [
     type: type.user,
     description:
       "Deep dive into advanced Continus Delivery concepts using Kubernetes as the deployment infrastructure.",
-    version: "Harness CD & GitOps Enterprise Plan",
+    version: "Harness CD & GitOps Paid Plans",
     link: "https://university-registration.harness.io/ilt-continuous-delivery-gitops",
     tileType: tileType.normal,
     cardType: cardType.ILT,
@@ -30,7 +30,7 @@ export const ilt: IltCardItem[] = [
     type: type.user,
     description:
       "Deep dive into advanced Continus Integration concepts focused on containerization.",
-    version: "Harness CI Enterprise Plan",
+    version: "Harness CI Paid Plans",
     link: "https://university-registration.harness.io/ilt-continuous-integration",
     tileType: tileType.normal,
     cardType: cardType.ILT,
@@ -41,7 +41,7 @@ export const ilt: IltCardItem[] = [
     type: type.user,
     description:
       "Deep dive into advanced Security Testing Ochestration concepts using multiple scanning technologies.",
-    version: "Harness STO Enterprise Plan",
+    version: "Harness STO Paid Plans",
     link: "https://university-registration.harness.io/ilt-security-testing-orchestration",
     tileType: tileType.normal,
     cardType: cardType.ILT,
@@ -52,7 +52,7 @@ export const ilt: IltCardItem[] = [
     type: type.user,
     description:
       "Deep dive into advanced Software Engineering Insights concepts across the SDLC.",
-    version: "Harness SEI Enterprise Plan",
+    version: "Harness SEI Paid Plans",
     link: "https://university-registration.harness.io/ilt-software-engineering-insights",
     tileType: tileType.normal,
     cardType: cardType.ILT,
@@ -63,7 +63,7 @@ export const ilt: IltCardItem[] = [
     type: type.user,
     description:
       "Deep dive into advanced Cloud Cost Management concepts supporting FinOps.",
-    version: "Harness CCM Enterprise Plan",
+    version: "Harness CCM Paid Plans",
     link: "https://university-registration.harness.io/ilt-cloud-cost-management",
     tileType: tileType.normal,
     cardType: cardType.ILT,
@@ -74,7 +74,7 @@ export const ilt: IltCardItem[] = [
     type: type.user,
     description:
       "Deep dive into advanced IaC orchestration and management concepts.",
-    version: "Harness IaCM Enterprise Plan",
+    version: "Harness IaCM Paid Plans",
     link: "https://university-registration.harness.io/ilt-infrastructure-as-code-management",
     tileType: tileType.normal,
     cardType: cardType.ILT,
@@ -85,7 +85,7 @@ export const ilt: IltCardItem[] = [
     type: type.user,
     description:
       "Deep dive into advanced IDP and developer self-service concepts.",
-    version: "Harness IDP Enterprise Plan",
+    version: "Harness IDP Paid Plans",
     link: "https://university-registration.harness.io/ilt-internal-developer-portal",
     tileType: tileType.normal,
     cardType: cardType.ILT,
@@ -96,7 +96,7 @@ export const ilt: IltCardItem[] = [
     type: type.user,
     description:
       "Deep dive into chaos engineering and concepts supporting testing.",
-    version: "Harness CE Enterprise Plan",
+    version: "Harness CE Paid Plans",
     link: "https://university-registration.harness.io/instructor-led-training-for-harness-chaos-engineering",
     tileType: tileType.normal,
     cardType: cardType.ILT,

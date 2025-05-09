@@ -90,7 +90,7 @@ const ModuleData: ModuleData[] = [
   },
   {
     title: "Supply Chain Security",
-    description: "SaaS release status: GA, SMP release status: BETA",
+    description: "SaaS release status: GA, SMP release status: GA",
     module: MODULES.ssca,
     horizon: SscaData,
   },
@@ -126,10 +126,10 @@ const ModuleData: ModuleData[] = [
     module: MODULES.iacm,
     horizon: IacmData,
   },
-
+ 
   {
     title: "Code Repository",
-    description: "SaaS release status: Limited GA, SMP release status: Not yet planned",
+    description: "SaaS release status: GA, SMP release status: GA",
     module: MODULES.code,
     horizon: codeData,
   },

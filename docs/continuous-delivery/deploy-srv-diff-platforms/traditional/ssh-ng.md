@@ -29,6 +29,10 @@ An SSH deployment involves configuring the following:
 4. Select the deployment strategy.
 5. Run the pipeline and review.
 
+:::info
+We support using SSH with an **OIDC-enabled AWS connector**, but it requires Delegate version `854xx` or later. For more information, refer to [AWS OIDC connector reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+:::
+
 ## SSH stages
 
 To start a SSH deployment, create a new pipeline and add a stage for **Secure Shell** deployments.
@@ -59,6 +63,9 @@ For Secure Shell, you can access artifacts from the following sources:
 - Nexus2
 - Azure Artifacts
 - GCR
+  :::warning
+  Google Container Registry (GCR) is being deprecated. For more details, refer to the [Deprecation Notice](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+  :::
 - ACR
 - Docker Registry (platform-agnostic)
 - Custom. If you select **Custom**, you will need to provide a Bash script.
@@ -88,9 +95,6 @@ Harness includes connectors for all the major artifact repositories. In this exa
 
 ![](static/ssh-ng-171.png)
 
-:::info
-Currently Delegate-based connections are not supported using the OIDC connector for SSH deployments.
-:::
 
 ### Set up artifact location and details
 
