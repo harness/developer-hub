@@ -705,14 +705,20 @@ This checks if the entire pipeline is in rollback mode.
 
 ## Connector Type Variable
 
-You can reference any connector’s attributes (name, identifier, type, spec fields, etc.) via JEXL in account, organisation and project‐level scopes. When no scope is specified, the project scope is assumed.
+You can reference any connector’s attributes (name, identifier, type, spec fields, etc.) via JEXL in **account**, **organisation** and **project**-level scopes. When no scope is specified, the project scope is assumed.
 
-`<+connector.get("artifactory").name>` : Retrieves the display name configured for the project-scoped connector.
+### Scope Resolution
 
-`<+connector.get("org.artifactory").identifier>` : Returns the unique identifier used to reference this organisation-scoped connector.
+Connector lookups follow a three-tier hierarchy—**account**, **organization**, then **project**—based on the prefix you provide:
 
-`<+connector.get("org.artifactory").type>` : Indicates the connector type (e.g., **AWS**, **Artifactory**, etc) at organisation scope.
+- **Account scope**: Use the `account.` prefix to explicitly fetch an account-level connector. For example:
+  - `<+connector.get("account.myConnector").type>`
+  - `<+connector.get("account.artifactory").spec.passwordRef>`
 
-`<+connector.get("org.artifactory").spec.username>` : Fetches the username field from the organisation-scoped connector’s spec.
+- **Organization scope**: Use the `org.` prefix to target an org-level connector. For example:
+   - `<+connector.get("org.myConnector").identifier>`
+   - `<+connector.get("org.artifactory").type>`
 
-`<+connector.get("account.artifactory").spec.passwordRef>` : Retrieves the secret reference for the account-scoped connector’s password.
+- **Project level (no prefix)**: For project-level connectors, there is no need to specify any prefix. For example:
+   - `<+connector.get("myConnector").name>`
+   - `<+connector.get("artifactory").spec.passwordRef>` 
