@@ -89,9 +89,9 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 #### Fixed issues
 
-- Fixed issues where multiple processes downloading or uploading data at the same time could cause errors, the Test Intelligence step should now handle parallelism accurately and reliably. (CI-16502, CI-16277)
+- Fixed issues when using Test Intelligence step where multiple processes downloading or uploading data at the same time could cause errors, this step should now handle parallelism accurately and reliably. (CI-16502, CI-16277)
 
-- Fixed an issue where certain steps required downloading binaries from external sources, causing delays. Now, this process is faster and more reliable by removing this overhead. (CI-17150)
+- Fixed an issue for certain steps that need binary files dependencies (containerless) from external sources, causing delays. Now, the download is handled separately eliminating overhead, improving speed and reliability. (CI-17150)
 
 #### Harness images updates
 
