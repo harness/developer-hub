@@ -3,9 +3,9 @@ title: Guardrail metric alerts
 sidebar_position: 20
 ---
 
-A guardrail metric alert policy allows you to monitor key safety and quality-of-service metrics that protect your customer experience. If a guardrail metric exceeds a defined threshold in an undesired direction, you’re notified so you can take immediate action to mitigate harm.
+Guardrail metric alerts automatically notify you when a feature flag causes a statistically significant change in a key safety or quality-of-service metric. These metrics protect your customer experience during a rollout by detecting regressions in critical areas such as performance, reliability, or customer behavior.
 
-Guardrail metrics help ensure that changes such as feature flags or experiments don’t cause unintended regressions in critical areas like performance, reliability, or customer behavior.
+Unlike manual alert policies, guardrail alerts are triggered based on statistical significance, not predefined thresholds. To use guardrail metric alerts, you must create a guardrail metric and run a percentage-based rollout.
 
 :::info
 Guardrail alerts can only be created for metrics that are measured per traffic type, not for metrics aggregated across all traffic types.
@@ -37,7 +37,7 @@ To create a guardrail alert policy:
 
    * In the Choose your environment field, select the environment you want to apply the alert condition to. If you already have an alert condition for a particular environment, this is not available in the environment menu list when you create a second alert condition. 
 
-   * In the Set alert threshold field, add a degradatation threshold in the form of a relative percentage threshold or absolute value threshold. The degradation direction is assumed to be the opposite of the desired direction of the metric. Guardrail metrics often degrade when values increase (e.g. error rate or latency) or decrease unexpectedly (e.g. revenue or engagement). Learn more in the [Choosing your degradation threshold for alerting](https://help.split.io/hc/en-us/articles/360030908431-Choosing-your-degradation-threshold-for-alerting) guide.
+   * In the Set alert threshold field, add a degradation threshold in the form of a relative percentage threshold or absolute value threshold. The degradation direction is assumed to be the opposite of the desired direction of the metric. Guardrail metrics often degrade when values increase (e.g. error rate or latency) or decrease unexpectedly (e.g. revenue or engagement). Learn more in the [Choosing your degradation threshold for alerting](https://help.split.io/hc/en-us/articles/360030908431-Choosing-your-degradation-threshold-for-alerting) guide.
 
    * In the Define alert notification channel field, configure who to notify if an alert is fired. As default, the metric owner is selected. You can also select the emails of any group as well as add emails using the freeform section. 
 
@@ -55,7 +55,7 @@ When an alert is triggered for a guardrail metric, the people you've selected in
 Here are the details:
 * Feature flag: (name and link to feature flag)
 * Alert Policy: (name and link to alert policy)
-* Metric: (name and link to guadrail metric)
+* Metric: (name and link to guardrail metric)
 * Baseline Value:
 * Treatment Value:
 * Impact %:

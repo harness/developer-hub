@@ -7,12 +7,12 @@ Automated alerts in Release Monitoring notify you and your team when your featur
 
 ## Alert types
 
-Release Monitoring offers two mechanisms for receiving alerts during a feature rollout:
+You can monitor metrics during a rollout by using either manual alert policies or automatic significance alerts. The table below compares how each alert type works and when it's triggered.
 
-| Category             | Definition  |
-| --- | --- |
-| **Key metric alerts**    | Alerts that fire when a specific metric crosses a defined threshold, regardless of any feature flag. These alerts are configured and managed through metric alert policies and are independent of experimentation. For more information, see [key metric alerts](./metrics). |
-| **Guardrail metric alerts** | Alerts that fire when a feature flag causes a statistically significant change in an associated guardrail or key metric. These alerts are specific to flags and are part of experimentation-based alerting (also called significance alerts). Guardrail metrics are used to detect regressions (such as in performance or stability), while key metrics measure primary success or failure. <br /><br /> To trigger this type of alert, a feature flag must have a baseline treatment, a percentage-based rollout, and at least one attached metric. For more information, see [guardrail metric alerts](./guardrail-metrics). |
+| **Category** | **Definition** |
+|---|---|
+| **Metric alert policies** | Manual alerts that fire when any metric crosses a defined threshold, regardless of feature flag or experiment. These are configured by users and support degradations (or bad impact) only. For more information, see [alert policies](../alert-policies). |
+| **Feature flag significance alerts** | Automatic alerts that fire when a feature flag causes a statistically significant change in a metric linked to the flag. Supported for **guardrail metrics** (global) and **key metrics** (flag-specific) in production environments only. For more information, see [guardrail metric alerts](./guardrail-metrics) and [key metric alerts](./metrics). |
 
 Feature flag alerts provide immediate feedback about a feature flag’s key metrics. An alert will fire when a desired or undesired impact is detected. You can choose key metrics for each feature flag and specify which feature flag should alert you about its key metrics. This allows you to take quick action on insights that may be especially useful to your team.
 
