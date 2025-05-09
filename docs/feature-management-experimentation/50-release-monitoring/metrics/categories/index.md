@@ -3,25 +3,14 @@ title: Metric categorization
 sidebar_position: 20
 ---
 
-## Common metrics
+## Metric categories
 
-This section outlines common metrics and how to create them in Harness FME, empowering you to effectively measure impact and run experiments. You'll find a breakdown of various metrics, including conversions, page views, and more. These metrics are designed to help you build impactful products and drive business growth.
+Metrics are assigned to one of the following categories:
 
-Each section contains information about event tracking, example metric definitions, and helpful links to both Harness FME and external resources. We aim to explain not only how to track these metrics, but also why they matter.
+* **None:** By default, metrics are not assigned to a category. You can add an uncategorized metric to the Supporting metrics on a feature flag's [Metrics impact tab](https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab), for any feature flag that shares the metric's traffic type. (You can also add a Supporting metric to a feature flag's Key metrics.)
 
-Have a metric or category you'd like to see included? Please let us know!
+* **Guardrail metrics:** Select this category for the business, performance, or user experience metrics that your organization cares most about and wants to ensure are protected during every feature release and experiment. Guardrail metrics adhere to account-wide alerting settings: For a percentage release (controlled using a feature flag targeting rule that distributes treatments by percentage) an alert will be fired when a statistically significant impact is detected. Guardrail metrics appear on the [Metrics impact tab](https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab) of all feature flags that share the metric's traffic type. (You can also add a Guardrail metric to a feature flag's Key metrics.)
 
-| **Metric Guide** | **Description** |
-|------------------|-----------------|
-| [**Conversions**](https://www.harness.io/harness-devops-academy/conversions) | Map, measure, and improve the conversion rate of key user workflows. |
-| [**Errors**](https://www.harness.io/harness-devops-academy/errors) | Measuring errors alongside feature flags leads to faster issue identification, response, and resolution. |
-| [**Inputs**](https://www.harness.io/harness-devops-academy/inputs) | Track user-entered fields and forms such as radio buttons, checkboxes, sliders, and dropdowns. |
-| [**Interactions**](https://www.harness.io/harness-devops-academy/interactions) | Measure clicks, hover states, scroll depth, and other user interactions. |
-| [**Page Load Performance**](https://www.harness.io/harness-devops-academy/page-load-performance) | Use on-page events such as page load timing and load failures to understand performance. |
-| [**Page Views**](https://www.harness.io/harness-devops-academy/page-views) | Use page view counts and rates in conjunction with other metrics to construct ratios and funnels. |
-| [**Rage Clicks**](https://www.harness.io/harness-devops-academy/rage-clicks) | Identify areas of user frustration by measuring rapidly repeated clicks on an element or area of the screen. |
-| [**Satisfaction**](https://www.harness.io/harness-devops-academy/satisfaction) | Use feedback response rates, occurrence rates, and scores to understand user happiness. |
-| [**Sessions**](https://www.harness.io/harness-devops-academy/sessions) | Construct engagement metrics such as session start and end, entry and exit rates, and session length. |
-| [**Shopping Cart**](https://www.harness.io/harness-devops-academy/shopping-cart) | Track changes to a shopping cart to measure cart size, value, completion, and abandonment metrics. |
-
-For more information about metric categories, see the [Metrics](/docs/feature-management-experimentation/50-release-monitoring/overview.md) documentation.
+:::tip 
+For any metric, custom alerting can be set up on the metric's [Alert policy tab](https://help.split.io/hc/en-us/articles/19832312225293-Configuring-metric-alerting). Alerting can also be activated at the feature flag level on a feature flag's Metrics impact tab by adding a metric as a Key metric. Go to [Configuring feature flag alerting](https://help.split.io/hc/en-us/articles/19832711328397-Configuring-feature-flag-alerting) to learn more.
+:::
