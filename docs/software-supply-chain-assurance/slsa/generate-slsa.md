@@ -30,7 +30,7 @@ The configuration for SLSA Generation and attestation previously handled in the 
 ## SLSA Generation step configuration
 The **SLSA Generation** step enables you to generate SLSA Provenance and optionally attest it. The generated provenance is saved in the [Artifact section](../artifact-view.md) in SCS, while the attestation file is pushed to the configured container registry. This step should be configured immediately after completing your image-building process, as the image digest is required for provenance generation and attestation.
 
-<DocImage path={require('./static/slsa-tab.png')} width="50%" height="50%" />
+<DocImage path={require('./static/slsa-step.png')} width="50%" height="50%" />
 
 Follow the instructions below to configure the **SLSA Generation** step.
 
