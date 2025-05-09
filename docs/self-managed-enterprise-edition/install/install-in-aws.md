@@ -1,7 +1,7 @@
 ---
 title: Install in a demo/non-prod environment in AWS
 description: Learn how to install Harness Self-Managed Enterprise Edition in AWS.
-sidebar_position: 15
+sidebar_position: 1
 sidebar_label: Install in AWS
 ---
 
