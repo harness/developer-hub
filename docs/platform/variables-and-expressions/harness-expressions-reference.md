@@ -335,7 +335,12 @@ Services represent your microservices and other workloads. Each service contains
 
 * `<+service.gitOpsEnabled>`: Resolves to a Boolean value to indicate whether [the GitOps option](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart) is enabled (`true`) or not (`false`).
 
-Harness supports expressions to check if a value is resolved instead of relying on null checks. The expression `<+expression.isResolved(<+pipeline.variables.var1>)>` verifies whether a variable resolves to a non-null value. Similarly, `<+expression.isUnresolved(<+pipeline.variables.var1>)>` can be used to check if a variable remains unresolved. It is recommended to use these expressions instead of `<+<+pipeline.variables.var1> != null>` for more reliable evaluation in pipelines.
+#### Check expression isResolved isUnresolved null replacement
+Harness supports expressions to check if a value is resolved instead of relying on null checks. 
+
+The expression `<+expression.isResolved(<+pipeline.variables.var1>)>` verifies whether a variable resolves to a non-null value. Similarly, `<+expression.isUnresolved(<+pipeline.variables.var1>)>` can be used to check if a variable remains unresolved. It is recommended to use these expressions instead of `<+<+pipeline.variables.var1> != null>` for more reliable evaluation in pipelines.
+
+These expressions only will evaluated variables, and does not evaluate secrets resolution. 
 
 #### Custom service-level variables
 
