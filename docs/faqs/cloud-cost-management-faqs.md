@@ -296,8 +296,6 @@ All inventory metrics are pulled in once every hour.
 
 CCM has a data retention policy per edition. After this period, the data is deleted and no longer available.
 
-
-
 |  |  |  |
 | --- | --- | --- |
 | **Free** | **Team** | **Enterprise** |
@@ -306,6 +304,19 @@ CCM has a data retention policy per edition. After this period, the data is dele
 :::note 
 The hourly granularity of cluster data is retained for 14 days. After 14 days, CCM retains daily granularity of the data.
 :::
+
+
+### What are the recommended resource allocations for different delegate cluster sizes?
+
+thering fine-grain metrics in the cluster is memory intensive.  In an effort to ensure we don't run out of memory and terminate the pod, the following sizing guidelines are recommended:
+
+| # Nodes in the Cluster | CPU (Cores) | MEM (Mi)  |
+| -----------------------| ----------- | --------- |
+|        `<= 100`        |      1      |    3814   |
+|       `101 - 200`      |      2      |    7629   |
+|       `201 - 300`      |      3      |   11444   |
+|       `301 - 400`      |      4      |   15258   |
+|       `401 - 500`      |      5      |   19073   |
 
 ## On-premises
 
