@@ -51,19 +51,20 @@ To create a guardrail alert policy:
 
 When an alert is triggered for a guardrail metric, the people you've selected in this section receive an email with the following format:
 
-**Subject:** "Alert Fired: `Feature Flag Name` has caused `Metric Name` to degrade by `X`%"  
-**Body:** "Harness Feature Management & Experimentation has detected a degradation on your `Metric Name` guardrail metric.
+**Subject:** "Good News!/Alert: `Feature Flag Name` had a positive/negative impact on `Metric Name`<br />
+**Body:** "**Good News!/Alert: `Feature Flag Name` had a positive/negative impact on `Metric Name`**
 
-Here are the details:
-* Feature flag: (name and link to feature flag)
-* Alert Policy: (name and link to alert policy)
-* Metric: (name and link to guardrail metric)
-* Baseline Value:
-* Treatment Value:
-* Impact %:
-* Threshold %:
-Please either kill the feature flag or dismiss this alert in the Harness FME user interface.
+Split has detected a(n) DESIRED/UNDESIRED improvement/degradation of `X`% on your `Metric Name` metric.
 
-—The Harness FME Team
+Feature flag: (name and link to feature flag)<br />
+Metric: (name and link to metric)<br />
+Environment:<br />
+Baseline treatment:<br />
+Baseline metric value:<br />
+Comparison treatment:<br />
+Comparison metric value:<br />
+Relative Impact: `X`% in the DESIRED/UNDESIRED direction<br />
 
-You are receiving this email because you were set as one of the people to be notified on this Alert Policy: (name and link to Alert Policy). If you don't want to receive these emails, please remove yourself from the list of people to be notified on the Alert policy page."
+-The Split Team
+
+Visit the Split application to view the feature flag's metric impact (or kill the feature flag)."
