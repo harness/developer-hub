@@ -4,4 +4,4 @@ metadata:
   name: rac-config-files
 data:
   config.json: |
-    {{ .Files.Get "my-helm-chart/files/config.json" | indent 4 }}
+    {{ .Files.Get "files/config.json" | indent 4 }}
