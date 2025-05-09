@@ -64,22 +64,24 @@ Let's try creating a **Workflow** using both the methods:
 
 1. You’ll be redirected to the **Visual View**. You can switch to the **YAML View** using the toggle at the top of the screen. This allows you to directly edit the Workflow's YAML definition.
 2. If you’re using a **legacy Backstage YAML**, paste it into the YAML view. Harness will convert it into the **Harness-native format** automatically. You can then proceed to finalize and create the Workflow. Since the Visual and YAML views are **live-synced**, changes made in one view will reflect in the other.
-3. You can make changes to the **Workflow YAML** and configure it accordingly. You can configure different inputs, add backend actions and outputs to configure the Workflow. Read more about the components of a Workflow and Workflow YAML here. 
+3. You can select the scope of the Workflow by either switching to the **Visual View** and selecting the scope from there. Or you can add **projectId** or **orgId** in the YAML to specify the project / org scope of the Workflow. Read more about the same here. 
+4. You can make changes to the **Workflow YAML** and configure it accordingly. You can configure different inputs, add backend actions and outputs to configure the Workflow. Read more about the components of a Workflow and Workflow YAML here. 
 
 :::info
 Note: **YAML validation** is automatically performed to ensure compatibility with the **Harness-native Catalog YAML model**. Any validation errors will be displayed in the Validation Logs.
 :::
 
-4. Once all details are complete, click **“Create Workflow”** to finalize and register your Workflow in the catalog.
+5. Once all details are complete, click **“Create Workflow”** to finalize and register your Workflow in the catalog.
   </TabItem>
 </Tabs>
 
 
 ## Execute Workflows
-Once you've created a Workflow, you can **execute** the Workflow by going to the Workflow details page. You can find the respective Workflow from the Catalog
+Once you've created a Workflow, you can **execute** the Workflow by going to the Workflow details page. You can access the Workflow from two places: 
+1. You can find the respective Workflow from the Catalog, and click on it to go to the Workflow details page. Click on "Launch" from there to execute the Workflow. 
+2. You can go to the "Workflows" page and access the Workflow from there. Click on "Launch" to execute the Workflow. 
 
 ## Delete a Workflow
-
-## Use RBAC with Workflows
+You can also delete a Workflow by going to the **Workflows** page, clicking on the three dots on the top right corner of the Workflow you want to delete and selecting "Delete Workflow". 
 
 ## Next Steps

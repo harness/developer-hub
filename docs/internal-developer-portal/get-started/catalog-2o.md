@@ -68,9 +68,10 @@ Let's try creating a **Component** in the Catalog using both the methods:
 Note: **YAML validation** is automatically performed to ensure compatibility with the **Harness-native Catalog YAML model**. Any validation errors will be displayed in the Validation Logs.
 ![](./static/yaml-validation.png)
 :::
+3. You can select the scope of the Workflow by either switching to the **Visual View** and selecting the scope from there. Or you can add **projectId** or **orgId** in the YAML to specify the project / org scope of the Workflow. Read more about the same here. 
 
-3. If needed, **configure a plugin** by referring to the plugin’s documentation and adding the appropriate **annotations** in the Catalog YAML.
-4. Once all details are complete, click **“Create Component”** to finalize and register your entity in the catalog.
+4. If needed, **configure a plugin** by referring to the plugin’s documentation and adding the appropriate **annotations** in the Catalog YAML.
+5. Once all details are complete, click **“Create Component”** to finalize and register your entity in the catalog.
   </TabItem>
 </Tabs>
 
@@ -83,8 +84,6 @@ Here’s how to do it:
 1. Navigate to your Catalog and select the entity you want to delete.
 2. In the entity details view, click the three-dot menu in the top-right corner.
 3. From the dropdown, select Delete. The entity will be removed from the catalog.
-
-## Use RBAC with your Catalog
 
 ## Next Steps 
 Now that you've created an entity, populated your Catalog and also deleted an entity - you're well versed with the basics of a Software Catalog. Here's what you can do next to understand and start using Catalog: 
