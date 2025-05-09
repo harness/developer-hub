@@ -112,6 +112,8 @@ You can create alerts by defining the following parameters:
   3. Enable the **Cloud Asset Governance Alerts** permission
   4. Assign specific permissions such as **View** or **Edit/Delete**
 
+ <DocImage path={require('./static/rbac-alerts.png')} width="90%" height="90%" title="Click to view full-size image" />
+
 
 ## Cost Correlation
 
