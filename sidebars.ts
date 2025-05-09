@@ -1043,7 +1043,7 @@ const sidebars: SidebarsConfig = {
           type: "link",
           label: "Release Notes",
           className: "sidebar-Release_Notes",
-          href: "https://www.split.io/releases/",
+          href: "/release-notes/feature-management-experimentation/",
           customProps: {
             description: "Learn about recent changes to Harness products.",
           },
