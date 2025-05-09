@@ -1,6 +1,6 @@
 ---
-title: Get started with Artifact Registry
-description: Build a Registry with Harness
+title: Get started with AI Test Automation
+description: Build an end-to-end test for a workflow
 sidebar_position: 20
 sidebar_label: Get Started
 ---
@@ -8,106 +8,77 @@ sidebar_label: Get Started
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The Harness Artifact Registry module allows you to quickly and easily store your digital artifacts. 
+Harness AI Test Automation is an AI-powered testing platform designed to streamline test creation and maintenance for software development teams. The tool uses generative AI to transform plain text test cases into automated tests, and implements self-healing mechanisms that automatically update tests when application interfaces or workflows change, reducing the manual overhead of test maintenance.
+
 
 Getting started with Artifact Registry follows these steps:
-- [Create a registry](/docs/artifact-registry/get-started/quickstart#create-a-registry)
-- [Create an upstream proxy](/docs/artifact-registry/get-started/quickstart#create-an-upstream-proxy)
-- [Connect the upstream proxy to the registry](/docs/artifact-registry/get-started/quickstart#connect-the-upstream-proxy)
-- [Use you registry](/docs/artifact-registry/get-started/quickstart#use-a-registry)
+- [Create your first test](/docs/ai-test-automation/get-started/quickstart#create-your-first-test)
+- [Create a login task](/docs/ai-test-automation/get-started/quickstart#create-a-login-task)
 
 ## Prerequisite
-Depending on your package manager, e.g. Docker, Helm or Maven, you may need to use its associated dependencies like the Docker CLI. 
+Your application must be accessible from the public cloud. For testing applications behind a corporate firewall please contact Harness support. 
 
-## Create a registry
-<Tabs>
-<TabItem value="Interactive guide">
-<DocVideo src="https://app.tango.us/app/embed/e3650c96-80e9-414d-aba1-64cb0d4db24d" title="Create an Artifact Registry" />
-</TabItem>
-<TabItem value="Step-by-step">
+## Sign-up
 
-1. Select **+ New Artifact Registry** under the **Registries** tab. 
-2. Select a [registry type](/docs/artifact-registry/whats-supported#supported-registry-types).
-3. Enter a **Registry Name** and, optionally, a **Description** or **Labels**.
-    :::tip
-    This registry name must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
-    :::
-4. Select **Create Registry**.
-</TabItem>
-</Tabs>
+This document assumes that you already have an account with Harness. Login using your harness account and select AI test Automation from the module selector. 
+
+### Select or Add a Project
+
+Select the project where you want to add your tests. If one doesn't exist then create a new project. Once a project is created and you select AI Test Automation, you will be prompted to add your test environment
+
+###
 ---
 
-## Create an upstream proxy
-An **Upstream Proxy** in an Artifact Registry is a configuration that enables the registry to retrieve artifacts from an external or remote registry. If a requested artifact is not available locally, the registry forwards the request to the upstream proxy to fetch it. 
+## Create your first test
 
-:::info upstream proxy usage
-Upstream proxies are commonly used to manage dependencies. During a build, if an open-source dependency is not already cached in the upstream proxy, it will be fetched from a public repository. This ensures access to necessary dependencies while optimizing retrieval speed and reducing redundant downloads.
-:::
+After you have signed up, the first step would be to create an AI powered test.
 
-To create one, follow these steps: 
-<Tabs>
-<TabItem value="Interactive guide">
-<DocVideo src="https://app.tango.us/app/embed/4d59383b-7b7d-4355-acb7-1eed4ca657f0" title="Create an Upstream Proxy in Harness Artifact Registry" />
-</TabItem>
-<TabItem value="Step-by-step">
+![](./static/create-test-1.png)
 
-1. Select the dropdown next to **+ New Artifact Registry**, and then select **Upstream Proxy**.
-2. Enter the **Upstream Proxy Key**. This is the identifier or name for the proxy within Harness and is chosen by you. 
-   
-   :::tip allowed characters
-    This proxy key must start with a letter and can only contain lowercase alphanumerics, `_`, `.` and `-`
-   :::
+The `Create Test` button sets up a test pod where you can author your test while interacting with the browser.
 
-3. For the source, e.g. **Docker Hub**.
-4. Choose your **Authentication** method. 
-    - In cases where you use public images, select **Anonymous**.
-5. Select **Create Upstream Proxy**.
-</TabItem>
-</Tabs>
----
+![](./static/create-test-2.png)
 
-### Connect the upstream proxy
-After creating an upstream proxy, you need to set it in your artifact registry. To do so, follow these steps:
+Before you can start recording your test, check the Start URL. This should be the url pointing to your app. If needed update the URL and click on the create test button. You will now be on the `Interactive AI trainer` and you can start recording your test.
 
-<Tabs>
-<TabItem value="Interactive guide">
-<DocVideo src="https://app.tango.us/app/embed/4294875b-384e-4558-839c-3f96c225a928" title="Configuring Upstream in Harness Workspaces" />
-</TabItem>
-<TabItem value="Step-by-step">
+![](./static/create-test-3.png)
 
-1. In the registry we created above, select **Configuration**.
-2. Open the **Advanced (Optional)** dropdown menu. 
-3. Select **Configure Upstream**.
-4. Under **Available upstream proxies**, you will see a list of available upstream proxies. Select as many as you would like. 
-5. Under **Selected proxies**, you will see an ordered list of selected proxies for this registry. When the registry receives a request, the proxies will be *queried in order* from top to bottom.
-6. Click **Save** in the top right corner. 
-</TabItem>
-</Tabs>
+Once on the trainer, you can interact with the browser or may also choose to enter a natural language prompt and start authoring a test.
 
-## Use a registry
-Next, use the registry we created. To do so, we will pull an artifact from the proxy, tag it, and add it to our registry. 
+![](./static/create-test-4.png)
 
-<Tabs>
-<TabItem value="Interactive guide">
-<DocVideo src="https://app.tango.us/app/embed/a6085408-4187-4d5d-90cd-08e4a2ee193d" title="Use an Artifact Registry" />
-</TabItem>
-<TabItem value="Step-by-step">
+Once you are done, save the test and give it a name 
 
-1. Click Setup Client.
-2. Select Generate Token to generate a token to use as your password when logging into your package e.g. Docker or Maven
-3. Follow the remained on-screen instruction by running the command in your terminal to pull an image and then push it to your registry.
-</TabItem>
-</Tabs>
+![](./static/create-test-5.png)
 
-:::info pull an image
-When you pull an artifact, the system first checks the local registry. If the artifact is not found, it automatically queries the upstream proxy. The proxy then attempts to retrieve the artifact from the designated external source, if available. This process ensures seamless access to artifacts, even if they are not initially stored in the local registry.
-:::
+If you choose to run the test after save, it will be executed and you can follow the execution on the test run page 
 
-Now, you should see the artifact appear in your docker registry as well as the **Artifacts** tab in the left navigation panel.
-That concludes the quick start guide! You should now have enough to get started with Artifact Registry. 
+![](./static/create-test-6.png)
 
-## See Also
-To learn more go to:
+## Create a login task
 
-- [Configure Registries](/docs/artifact-registry/manage-registries/configure-registry)
-- [Manage Artifacts](/docs/artifact-registry/manage-artifacts/artifact-management)
+If your application requires authentication, you may wonder how can you avoid adding the login steps into your test every time. Harness AI Test Automation provides the ability to add a login task that is automatically called when a test is either created or executed. You just need to create it once and add your login credentials.&#x20;
+
+![](./static/create-login-task-1.png)
+
+Once the `Create a login task` button is clicked then you will be present with the following modal, where you will have to enter a few details. Keep in mind this is a one time creation and the experience is very similar to creating a test.
+
+![](./static/create-login-task-2.png)
+
+In the above screen, you will enter a task name ( e.g. Login task) and a Login URL. For a majority of application the application base URL is used for logging into the app, so no change is necessary. In the subsequent step, you can enter the username, password or any other details like an OTP etc.
+
+![](./static/create-login-task-3.png)
+
+The task should have all the steps that are necessary to login to your application.
+
+![](./static/create-login-task-4.png)
+
+It is always a good idea to add an assertion at the end of the login task to make sure the login is successful. 
+
+![](./static/create-login-task-5.png)
+
+Once the login task is created, you will be able to automatically add it to your tests
+
+![](./static/create-login-task-6.png)
+
+Once you have created your login task and created your first test, you should be in a position to add more tests. Once you have a handful of tests, create a test suite and run your tests together. 

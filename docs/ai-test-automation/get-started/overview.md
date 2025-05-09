@@ -7,54 +7,57 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::info 
-To enable Harness Artifact Registry in your account, contact your sales representative or reach out to the team at [ar-interest@harness.io](mailto:support@harness.io).
+To enable Harness AI Test Automation in your account, contact your sales representative or reach out to the team at [ata-interest@harness.io](mailto:support@harness.io).
 :::
 
-**Harness Artifact Registry** is a centralized registry designed to store, manage, and organize software artifacts—such as binaries, container images, libraries, or other build outputs—that are essential for development and deployment processes. It provides developers with a secure and efficient way to store, version, and distribute these artifacts, while supporting key capabilities like access control, dependency management, and vulnerability scanning to ensure reliability and security across software delivery pipelines.  
+**Harness AI Test Automation** is your Generative AI-powered software quality platform. By leveraging the power of Generative AI and user behavioral analytics, Harness AI Test Automation can automate test authoring and maintenance, autonomously detect errors and visual regressions, and generate tests based on user sessions.
+
+### No-Code, AI-powered Test Authoring
+
+Ditch the lengthy, complex code-based frameworks. With Relicx, you can author tests in a fraction of the time using our low-code test authoring. Capture steps automatically through Relicx Cloud and write test cases in plain text using AI prompts. Our self-healing tests adapt to UI and workflow changes, slashing the time you spend on test maintenance​.
 
 ## Key Features
 
-- **Universal Artifact Management**:
-    - Manage and store all artifact types in a single, unified platform.
-    - Generic file support for storing raw or custom artifacts.
+### 1. Create End-to-end Tests in Minutes
+- Leverages no-code platforms for test creation
+- Utilizes natural language prompts to generate comprehensive test suites
 
-- **Advanced Search and Insights**: 
-    - Use AI-powered semantic search to quickly find artifacts using contextual information. 
-    - Gain visibility into usage patterns and artifact consumption across teams.
+### 2. AI-Powered Test Healing
+- Automatically detects and adapts to UI changes
+- Maintains test stability without manual intervention
 
-- **Upstream Proxy Support**: 
-    - Proxy and cache open-source software (OSS) dependencies to reduce latency and ensure availability. 
-    - Simplify dependency management while controlling access to external repositories.
+### 3. Intent-Based Testing
+- Allows defining desired outcomes in natural language
+- Enables AI to handle complex test implementation details
 
-- **Fine-Grained Access Control**
-    - Role-based access control (RBAC) to secure artifacts at every stage of their lifecycle.
-    - Enforce policies for artifact creation, usage, and deletion.
+### 4. CI/CD Pipeline Integration
+- Seamlessly triggers test suites within continuous integration workflows
+- Automates test execution across development and deployment stages
 
-- **Built-In Vulnerability Scanning**
-    - Detect vulnerabilities in stored artifacts automatically with built in integrations with the [Harness Supply Chain Security module](/docs/software-supply-chain-assurance/).
-    - Stay compliant with security standards and ensure artifact integrity.
+## Benefits
 
-- **Artifact Cleanup Policies**
-    - Automate artifact cleanup to optimize storage and reduce costs.
-    - Define rules to retain only the artifacts you need based on age, usage, or tags.
+### 1. Test Creation Benefits
+- Enables non-technical team members to create high-quality tests
+- Dramatically reduces the time and expertise required for test development
 
-- **End-to-End Governance**
-    - Comprehensive tracking of artifact history, from creation to retirement.
-    - Ensure compliance with enterprise standards through customizable policies.
+### 2. Test Maintenance Benefits
+- Minimizes manual effort in maintaining and updating test scripts
+- Reduces test script breakages caused by UI or application changes
 
-## Benefits of Harness Artifact Registry
+### 3. Testing Efficiency Benefits
+- Accelerates overall software testing and release processes
+- Improves test coverage and reliability with AI-driven approaches
 
-- **AI Powered Universal Artifact Management**:
-    - Manage and store all your artifacts in a single unified platform.
-    - Quickly locate what you need with advanced AI-driven search capabilities that understand context and meaning.
+### 4. Pipeline Integration Benefits
+- Ensures consistent and automated quality checks
+- Streamlines collaboration between development and QA teams
 
-- **Seamless CI/CD Integration**:
-    - Integrated with Harness Pipelines to enable efficient, developer-friendly workflows.
-    - Automate artifact handling during builds, tests, and deployments.
+### Future Potential
+- Automatically generate test cases from user flows
+- Discover test scenarios based on functional requirements and documentation
 
-- **Easy Onboarding and Adoption**: 
-    - Leverage the power of the Harness Platform for seamless onboarding and rapid adoption. Our intuitive interface and integration capabilities make it easy to get started and use effectively.
+## See Harness AI Test Automation in action&#x20;
 
-- **Enterprise-Grade Scalability**:
-    - Harness Artifact Registry is built to handle massive volumes of artifacts with lightning-fast performance, ensuring your development and deployment processes scale effortlessly.
+### **How to author e2e tests with natural language prompts ?**
 
+<iframe src="https://www.loom.com/embed/fb9f3cb6346b4f708e91a529edcc1613?sid=0c2007dc-2521-48bd-80f0-456300aef1ab" width="800" height="450" frameborder="0" allowfullscreen></iframe>

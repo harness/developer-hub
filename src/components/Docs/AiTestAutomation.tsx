@@ -14,7 +14,7 @@ export default function AR() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
-            <img width={64} src={`${baseUrl}img/aida-logo.svg`} />
+            <img width={64} src={`${baseUrl}img/logo-ata.svg`} />
             <h1>AI Test Automation</h1>
           </div>
           <div className={styles.btnContainer}>
@@ -29,29 +29,17 @@ export default function AR() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              HarnessAI Test Automation is a universal hub for all your artifacts, regardless of
-              type. By centralizing artifact management in one secure location, we're streamlining
-              the process of handling multiple registries across various platforms and tools.
+              Harness AI Test Automation is a cutting-edge Generative AI-powered platform that revolutionizes software quality. By eliminating the complexity of traditional test automation, it empowers teams to create, execute, and maintain tests effortlessly. With AI-driven automation, it accelerates development cycles, reduces maintenance overhead, and ensures higher-quality software releases.
             </p>
             <p>
-              Artifact Registry enables developers to centrally store artifacts and build
-              dependencies. With Artifact Registry, developers can:
+              <b> How Harness AI Test Automation Transforms Software Testing: </b>
             </p>
             <ul>
-              <li>
-                <b>Centralize and Organize</b>: Manage all your software artifacts (build outputs,
-                container images, dependencies) in one secure, scalable location.{' '}
-              </li>
-              <li>
-                <b>Automate and Accelerate</b>: Effortlessly integrate artifact management into your
-                CI/CD pipelines, speeding up builds and deployments.{' '}
-              </li>
-              <li>
-                <b>Govern and Secure</b>: Ensure compliance, enforce quality standards, and protect
-                your software supply chain.{' '}
-              </li>
+            <li><b>10× Faster Test Creation</b>: The no-code, Generative AI-powered platform enables anyone to generate high-quality test cases within minutes, significantly reducing the time required for test authoring</li>
+            <li><b>70% Less Test Maintenance</b>: AI-driven test execution and self-healing capabilities minimize the burden of test maintenance, ensuring robust and reliable automated testing with minimal manual intervention.</li>
+            <li><b>5× Faster Release Cycles</b>: By automating end-to-end testing, Harness AI Test Automation accelerates software delivery, enabling teams to release high-quality applications more frequently and with confidence.</li>
             </ul>
-
+           
             <div className={styles.illustrationContainer}>
               {/* <img
                 className={styles.illustration}

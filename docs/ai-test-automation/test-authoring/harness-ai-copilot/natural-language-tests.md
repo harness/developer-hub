@@ -1,3 +1,8 @@
+---
+title: Natural Language Tests
+description: Natural Language Tests
+sidebar_position: 40
+---
 Step into the future of test authoring with Relicx Copilot, the revolutionary feature that harnesses the power of Generative AI. Experience the ease and efficiency of creating robust and resilient tests in minutes using natural language, eliminating the worry of test breakage as your application evolves.
 
 ### How to author Copilot tasks  during interactive authoring ?

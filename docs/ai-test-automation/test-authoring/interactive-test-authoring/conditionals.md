@@ -1,3 +1,8 @@
+---
+title: Conditionals
+description: Conditionals
+sidebar_position: 25
+---
 These conditionals allow users to define different execution paths in a test based on a specied condition. A test can use a combination of IF, ELSE IF, ELSE and END IF. If the IF doesn't have a corresponding END IF then the user cannot save the test. Such errors are highlighted in red.
 
 ## IF / ELSE IF

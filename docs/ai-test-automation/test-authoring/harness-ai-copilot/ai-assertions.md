@@ -1,3 +1,8 @@
+---
+title: AI Assertions
+description: AI Assertions
+sidebar_position: 10
+---
 **Relicx** introduces a new type of assertion where the tester can ask a question that our AI evaluates as either True or False. If it is True, the test continues to execute otherwise it stops. In the section below we will show you a couple of examples where the “Copilot query assertion” can be used effectively. This approach proves advantageous as it eliminates the need for users to write complex code to accomplish similar outcomes.
 
 ***

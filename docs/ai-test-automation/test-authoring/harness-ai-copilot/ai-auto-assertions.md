@@ -1,3 +1,8 @@
+---
+title: AI Auto Assertions
+description: AI Auto Assertions
+sidebar_position: 20
+---
 With Relicx Copilot Auto Assertions, you can bid farewell to the tedious task of manually writing assertions. After each step in your test, Relicx's AI engine will automatically generate and suggest relevant assertions for you. As you navigate through your app and record your test steps, Relicx intelligently assesses the state and content of each page, providing you with one or more recommended assertions
 
 Here's the best part: These AI assertions are pre-verified, ensuring they work seamlessly right from the start. When you accept these suggestions, you can trust that they will function flawlessly. And when it's time to execute your test, the assertions will be executed just like any other step, ensuring comprehensive validation of your application's functionality.

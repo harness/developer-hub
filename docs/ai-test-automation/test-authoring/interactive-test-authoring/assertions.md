@@ -1,3 +1,8 @@
+---
+title: Assertions
+description: Assertions
+sidebar_position: 30
+---
 Assertions are a very important components of a test. They make a test robust and are the right way to determine whether your application is working as desired. Relicx supports a variety of assertions. In this section below we will describe each of them&#x20;
 
 ## Assert Visual Assert

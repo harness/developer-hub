@@ -1,3 +1,8 @@
+---
+title: User Actions
+description: User Actions
+sidebar_position: 20
+---
 In interactive authoring of tests, as the user interacts with their application, Relicx automatically records each user action and creates a sequence of steps that represent the user activity. While the user actions are captured as is, the user can also add assertions to ensure test steps are executed as expected.&#x20;
 
 In the following section, we will provide an overview of all the supported user actions. For Assertions please review the [Assertions](./Assertions.md) section
