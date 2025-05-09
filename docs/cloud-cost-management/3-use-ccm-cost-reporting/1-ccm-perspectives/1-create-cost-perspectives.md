@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 import Tabs from '@theme/Tabs';
 
-import TabItem from '@them/TabItem';
+import TabItem from '@theme/TabItem';
 
 
 :::tip Latest Features Released in 1.50.2
