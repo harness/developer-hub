@@ -91,7 +91,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 - Fixed issues when using Test Intelligence step where multiple processes downloading or uploading data at the same time could cause errors, this step should now handle parallelism accurately and reliably. (CI-16502, CI-16277)
 
-- Fixed an issue where containerless steps had external download dependencies to improve speed and reliability. This feature is available behind the feature flag `CI_REMOVE_PLUGIN_CLONE_DEPENDENCY_CONTAINERLESS`. (CI-17150)
+- Fixed an issue where containerless steps had external download dependencies to, improve speed and reliability. This feature is available behind the feature flag `CI_REMOVE_PLUGIN_CLONE_DEPENDENCY_CONTAINERLESS`. (CI-17150)
 
 #### Harness images updates
 
