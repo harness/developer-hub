@@ -55,6 +55,13 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## May 2025
 
+### GitOps Version 1.32, GitOps Agent 0.93
+
+#### Fixed Issues
+
+- Previously, the API for listing repositories on the agent returned all repositories on the agent; now, it only returns repositories that respect the project mapping. (**CDS-109479**, **ZD-82623**)
+- Previously, invalid application sets were flooding the GitOps Agent with update events. This has been fixed. (**CDS-109042**)
+
 ### Version 1.88
 
 #### New Features and Enhancements
