@@ -7,6 +7,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import RiskProfile from '/docs/continuous-delivery/verify/shared/risk-profile.md'
 
 :::important
 If you are using an aggregation operator in your Sumo Logic metrics query, then you must include the service instance identifier dimension.
@@ -85,35 +86,7 @@ If you select **Continuous Verification (Applied to the pipelines in the Continu
 <details>
 <summary><b>Risk Profile settings</b></summary>
 
-
-#### Risk Profile
-  
-:::note
-The **Risk Profile** section is only visible if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment**) or **Service Health** in the **Assign** section.
-:::
-
-1. Under **Risk Category**, select one of the following options:
-  - **Errors**
-  - **Infrastructure**
-  - **Performance/Throughput**
-  - **Performance/Other**
-  - **Performance/Response Time**
-
-2. Under **Deviation Compared To Baseline**, select the following settings to measure your service's behavior and calculate deviations from the health source:
-
-- **Higher counts = higher risk**
-- **Lower counts = higher risk**
-
-  Note that you can select multiple options.
-
-
-#### Map service instance identifier
-
-:::note
-The **Map service instance identifier** section is only visible if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment**) in the **Assign** section.
-:::
-
-In **Service Instance Identifier (only needed for CV)**, specify the service instance identifier, which represents a dynamically created service that you deploy using Harness. The default value is `_sourceHost`.
+<RiskProfile />
 
 #### Advanced (Optional)
 
@@ -163,7 +136,7 @@ To set fail-fast thresholds for CV, follow these steps:
 
 #### Define a query
 
-1. In the **Query** field, enter the log query and select **Run Query** to execute it. This displays a sample record in the **Records** field, allowing you to confirm the accuracy of the query you've constructed. For the verification process to be effective, the query should be designed to accurately extract error logs specific to the service.```
+1. In the **Query** field, enter the log query and select **Run Query** to execute it. This displays a sample record in the **Records** field, allowing you to confirm the accuracy of the query you've constructed. For the verification process to be effective, the query should be designed to accurately extract error logs specific to the service.
 2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed which include a timestamp, the host where the log was recorded, and the log message itself. These three properties are critical for accurate verification, so it's important to check their accuracy. If the host information doesn't match the actual instance of your service, you should review the mapping provided for the **Service Instance Identifier**.
 
 <details>
