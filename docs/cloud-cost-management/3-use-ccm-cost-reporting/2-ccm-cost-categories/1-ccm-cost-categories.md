@@ -12,10 +12,11 @@ import Tabs from '@theme/Tabs';
 
 import TabItem from '@theme/TabItem';
 
-
-:::tip [Latest Features Released in 1.50.0](/release-notes/cloud-cost-management#april-2025---version-1470)
+:::tip Latest Features Released in 1.50.2
 <Tabs>
-  <TabItem value="LabelV2" label="LabelV2">We’re moving from the older flattened Labels (stored in STRUCT format) to Labels V2, where labels are stored in a JSON format, directly aligning with how cloud providers (like AWS and Azure) deliver tag data. LabelV2 can be used as a filter in perspectives, as a GROUP BY operand in perspectives graph and in specifying rules when creating a Perspective and in Budgets and Cost Categories. The main goal of LabelsV2 is to give you full visibility into your original cloud tag keys, exactly as they appear in your AWS, Azure, or GCP environments. </TabItem>
+  <TabItem value="LabelV2" label="LabelV2">We’re moving from the older flattened Labels (stored in STRUCT format) to Labels V2, where labels are stored in a JSON format, directly aligning with how cloud providers deliver tag data. LabelV2 can be used in place of Label in filter in perspectives, as a GROUP BY operand in perspectives graph and in specifying rules when creating a Perspective and Cost Categories. The main goal of LabelsV2 is to give you full visibility into your original cloud tag keys, exactly as they appear in your AWS, Azure, or GCP environments.
+  For Perspectives and Cost Categories using Label, **[migration to LabelV2 is REQUIRED for AWS compulsorily](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories#important-migration-from-label-to-labelv2)**. For new Perspectives and Cost Categories using Label, **use LabelV2 and not Label**.</TabItem>
+
 </Tabs>
 :::
 
@@ -161,3 +162,83 @@ In **Manage Unallocated Costs**, you can choose to show or ignore unallocated co
 Save the cost category. Now, you can view the cost bucket details in a cost category on the **Cost Categories** page.
 
 ![](./static/cost-bucket-details.png)
+
+
+## Important: Migration from Label to LabelV2
+
+Harness CCM is transitioning from the traditional Label system to the enhanced LabelV2 system. **Support for the legacy Label system will be discontinued in the coming months**.
+
+### Required Action
+
+- **AWS Labels**: Immediate migration required. You must update all AWS label references to use LabelV2.
+- **GCP, Azure, and Cluster Labels**: After AWS label migration is complete, Harness CCM will automatically handle these migrations.
+
+### How to Migrate
+
+#### **Via UI:**
+
+1. **Identify affected Cost Categories**:
+   - Review all Cost Categories that use AWS Labels
+
+2. **Update each component**:
+   - Edit each Cost Category
+   - Locate all instances where you've defined rules, filters, or grouping using Labels
+   - Change the selection from "Label" to "LabelV2"
+   - Save your changes
+
+3. **Verify your updates**:
+   - After updating the Cost Category, confirm that your cost data appears correctly
+   - Ensure all previously configured label-based filters work as expected
+
+Kindly follow the steps below: 
+
+<iframe 
+     src="https://app.tango.us/app/embed/5969bd17-7d02-468b-80f6-5eace7e1ffdd" 
+     title="Migrating Label to LabelV2" 
+     style={{minHeight:'480px'}}
+     width="100%" 
+     height="100%" 
+     referrerpolicy="strict-origin-when-cross-origin" 
+     frameborder="0" 
+     webkitallowfullscreen="webkitallowfullscreen" 
+     mozallowfullscreen="mozallowfullscreen" 
+     allowfullscreen="allowfullscreen"></iframe>    
+
+#### **Via API:**
+
+Earlier every request had the label field as:
+
+```json
+                {
+                    field": {
+                        "fieldId": "labels.value",
+                        "fieldName": "key1",
+                        "identifier": "LABEL_V2",
+                        "identifierName": "Label v2"
+                    },
+                    "operator": "IN",
+                    "values": [
+                        "value1"
+                    ]
+                }
+```
+
+Now the request has the labelV2 field as:
+
+```json
+                {
+                    field": {
+                        "fieldId": "labels.value",
+                        "fieldName": "key1",
+                        "identifier": "LABEL",
+                        "identifierName": "Label"
+                    },
+                    "operator": "IN",
+                    "values": [
+                        "value1"
+                    ]
+                } 
+```
+Please refer the following API docs for details:
+- [Create a Cost Category](https://apidocs.harness.io/tag/Cloud-Cost-Cost-Categories#operation/createBusinessMapping)
+- [Update a Cost Category](https://apidocs.harness.io/tag/Cloud-Cost-Cost-Categories#operation/updateBusinessMapping)
