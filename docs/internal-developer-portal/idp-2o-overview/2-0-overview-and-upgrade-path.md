@@ -103,3 +103,10 @@ The lifecycle of IDP Self Service Workflows can now easily be managed:
 - Can easily be promoted from dev-only (project) to org-wide (Org or Account) usage as they mature.
 
 This supports safer rollout of IDP automation across environments and teams.
+
+## Timeline
+
+- IDP 2.0 beta by mid-May 2025.
+- IDP 2.0 will be Generally Available by end of Q2 (July 2025)
+- All IDP 1.0 APIs are removed by end of Q3 (October 2025)
+- All customers will be moved over to IDP 2.0 by end of October 2025.
