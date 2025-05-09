@@ -1,23 +1,28 @@
-configMap:
-  authConfig:
-    tenant: "NewTenant"
-    loginApiUrl: "newLoginUrl"
-    restApiUrl: "newRestApiUrl"
-    ssoFlag: false
-    userIdleTime: 1000
-    userIdleTimeOut: 400
-    tokenExpFirstWarningMinutes: 30
-    tokenExpSecondWarningMinutes: 10
-    auth:
-      issuer: "newIssuer"
-      clientId: "NEW_CLIENT_ID"
-      redirectUri: "newRedirectUri"
-      dummyClientSecret: "newSecret"
-      logoutUrl: "newLogoutUrl"
-      idpLogoutUrl: "newIdpLogoutUrl"
-      requireHttps: true
-      idpApiKey: "NEW_API_KEY"
-      interceptUrls: ["newOrigin"]
-      responseType: "token"
-      autoRefresh: false
-      listenToToken: "id_token"
+{
+  "configMap": {
+    "authConfig": {
+      "tenant": "NewTenant",
+      "loginApiUrl": "newLoginUrl",
+      "restApiUrl": "newRestApiUrl",
+      "ssoFlag": false,
+      "userIdleTime": 1000,
+      "userIdleTimeOut": 400,
+      "tokenExpFirstWarningMinutes": 30,
+      "tokenExpSecondWarningMinutes": 10,
+      "auth": {
+        "issuer": "newIssuer",
+        "clientId": "NEW_CLIENT_ID",
+        "redirectUri": "newRedirectUri",
+        "dummyClientSecret": "newSecret",
+        "logoutUrl": "newLogoutUrl",
+        "idpLogoutUrl": "newIdpLogoutUrl",
+        "requireHttps": true,
+        "idpApiKey": "NEW_API_KEY",
+        "interceptUrls": ["newOrigin"],
+        "responseType": "token",
+        "autoRefresh": false,
+        "listenToToken": "id_token"
+      }
+    }
+  }
+}
