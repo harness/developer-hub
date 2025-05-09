@@ -83,6 +83,22 @@ We’re excited to introduce an updated UI for managing your Harness Continuous 
 This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
 
 :::
+### Version 1.78
+
+<!-- 2025-05-05 -->
+
+#### Fixed issues
+
+- Fixed issues when using Test Intelligence step where multiple processes downloading or uploading data at the same time could cause errors, this step should now handle parallelism accurately and reliably. (CI-16502, CI-16277)
+
+- Fixed an issue where containerless steps had external download dependencies to, improve speed and reliability. This feature is available behind the feature flag `CI_REMOVE_PLUGIN_CLONE_DEPENDENCY_CONTAINERLESS`. (CI-17150)
+
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/ci-addon`          | Improved handling of file downloads when using parallelism. | 1.16.84              | 1.16.85.1       |
+| `harness/ci-lite-engine`    | Improved handling of file downloads when using parallelism. | 1.16.84              | 1.16.85.1       |
 
 ## May 2025
 ### Version 1.77
