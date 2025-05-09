@@ -3,7 +3,7 @@ title: Guardrail metric alerts
 sidebar_position: 20
 ---
 
-Guardrail metric alerts automatically notify you when a feature flag causes a statistically significant change in a key safety or quality-of-service metric. These metrics protect your customer experience during a rollout by detecting regressions in critical areas such as performance, reliability, or customer behavior.
+Guardrail metric alerts automatically notify you when a feature flag causes a statistically significant change in a key safety or quality-of-service metric. These metrics protect your customer experience during a rollout by detecting degradation in critical areas such as performance, reliability, or customer behavior.
 
 Unlike manual alert policies, guardrail alerts are triggered based on statistical significance, not predefined thresholds. To use guardrail metric alerts, you must create a guardrail metric and run a percentage-based rollout.
 
@@ -11,11 +11,13 @@ Unlike manual alert policies, guardrail alerts are triggered based on statistica
 Guardrail alerts can only be created for metrics that are measured per traffic type, not for metrics aggregated across all traffic types.
 :::
 
+Guardrail metrics are a specialized type of key metric. While both key and guardrail metrics can trigger automatic alerts during percentage rollouts, guardrail alerts are specifically designed to flag degradation in critical safety or quality metrics. On the other hand, key metrics track feature success or failure more broadly.
+
 ## Create a guardrail metric alert policy
 
 To create a guardrail alert policy:
 
-1. Create a new guardrail metric or navigate to an existing one that you want to monitor for regressions. Click the Edit icon next to the **Metric category** field, select `Guardrail metrics`, and click **Apply**. For more information about creating a guardrail metric, refer to the [Creating a metric](https://help.split.io/hc/en-us/articles/9652327065485-Setting-up-and-using-metrics#creating-a-metric) guide.
+1. Create a new guardrail metric or navigate to an existing one that you want to monitor for degradation. Click the Edit icon next to the **Metric category** field, select `Guardrail metrics`, and click **Apply**. For more information about creating a guardrail metric, refer to the [Creating a metric](https://help.split.io/hc/en-us/articles/9652327065485-Setting-up-and-using-metrics#creating-a-metric) guide.
 
 2. Once you select the guardrail metric to create a new alert policy for, click the **Alert policy** tab next to the Metric definition tab. If there are no existing policies, click **Create alert policy**.
 

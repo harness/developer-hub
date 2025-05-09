@@ -7,9 +7,13 @@ Key metrics represent important indicators of feature success or failure. You ca
 
 * Manual alert policies: Configure a degradation threshold for a specific metric tied to a feature flag or experiment. If the metric exceeds the threshold in an undesired direction, your configured notification channel alerts you. This type of alert does not require the metric to be part of a percentage rollout or experiment.
 
+  :::note
+  This alert type is only available for key metrics and is not supported for guardrail metrics.
+  :::
+
 * Automatic significance alerts: If a key metric is linked to a percentage-based rollout, Release Monitoring automatically detects and alerts on statistically significant changes to that metric during the rollout. 
 
-For automatic alerts on guardrail metrics, see [Guardrail metric alerts](./guardrail-metrics).
+Both key and guardrail metrics can trigger automatic alerts based on statistically significant changes during percentage rollouts. However, guardrail metrics are designed to detect regressions in safety or quality metrics, while key metrics typically track success indicators. For automatic alerts on guardrail metrics, see [Guardrail metric alerts](./guardrail-metrics).
 
 ## Create a metric alert policy
 
