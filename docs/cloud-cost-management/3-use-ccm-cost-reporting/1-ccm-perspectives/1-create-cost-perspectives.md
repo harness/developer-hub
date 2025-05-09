@@ -10,12 +10,12 @@ helpdocs_is_published: true
 
 import Tabs from '@theme/Tabs';
 
-import TabItem from '@theme/TabItem';
+import TabItem from '@them/TabItem';
 
 
 :::tip Latest Features Released in 1.50.2
 <Tabs>
-  <TabItem value="LabelV2" label="LabelV2">We’re moving from the older flattened Labels (stored in STRUCT format) to Labels V2, where labels are stored in a JSON format, directly aligning with how cloud providers deliver tag data. This will improve the load time of the Perspective or Cost Category which are powered by LabelV2. LabelV2 can be used in place of Label in filter in perspectives, as a GROUP BY operand in perspectives graph and in specifying rules when creating a Perspective and Cost Categories. The main goal of LabelsV2 is to give you full visibility into your original cloud tag keys, exactly as they appear in your AWS, Azure, or GCP environments.
+  <TabItem value="LabelV2" label="LabelV2">We’re moving from the older Label to LabelV2. This will improve the load time of the Perspective or Cost Category which are powered by LabelV2. LabelV2 can be used in place of Label in filter in perspectives, as a GROUP BY operand in perspectives graph and in specifying rules when creating a Perspective and Cost Categories. The main goal of LabelsV2 is to give you full visibility into your original cloud tag keys, exactly as they appear in your AWS, Azure, or GCP environments.
   For Perspectives and Cost Categories using Label, **[migration to LabelV2 is REQUIRED for AWS compulsorily](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#important-migration-from-label-to-labelv2)**. For new Perspectives and Cost Categories using Label, **use LabelV2 and not Label**.</TabItem>
 
 </Tabs>
@@ -171,8 +171,8 @@ The interactive cost graph allows you to organize and segment your cost data usi
 :::info
 ### Understanding the Difference: Label vs. LabelV2
 
-- **Label (Legacy)**: Uses a STRUCT format that normalizes AWS tags. GCP, Azure and Clusters tags are not normalized.
-- **LabelV2 (New)**: Stores labels in JSON format, preserving the original structure from AWS similar to how GCP, Azure and Cluster tags are stored.
+- **Label (Legacy)**: Normalizes AWS tags. GCP, Azure and Clusters tags are not normalized.
+- **LabelV2 (New)**: Preserves the original structure from AWS similar to how GCP, Azure and Cluster tags are stored.
 
 **Key Benefits of LabelV2:**
 - **Original tags**: Displays your original cloud tag keys exactly as they appear in AWS, Azure, or GCP
