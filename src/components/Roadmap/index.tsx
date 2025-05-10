@@ -14,6 +14,7 @@ const Roadmap = () => {
     { value: 'code', name: 'Code Repository', icon: 'icon_code.svg' },
     { value: 'ci', name: 'Continuous Integration', icon: 'icon_ci.svg' },
     { value: 'cd', name: 'Continuous Delivery & GitOps', icon: 'icon_cd.svg' },
+    { value: 'dbdevops', name: 'Database DevOps', icon: 'icon_dbdevops.svg' },
     {
       value: 'iacm',
       name: 'Infrastructure as Code Management',
