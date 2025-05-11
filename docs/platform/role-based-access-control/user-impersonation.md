@@ -58,7 +58,9 @@ The Action column shows the activity, while the User column indicates wh
     - Navigate to Account Settings → Access Control → Users.
     - This option is not available from the Users page at the Organization or Project level.
 
-2. To maintain security and control, the following actions are disabled during an impersonation session:
+2. The user being impersonated has logged in at least once.
+
+3. To maintain security and control, the following actions are disabled during an impersonation session:
     - Self-impersonation.  
     - Account-related actions such as:
         - Signing out.  
@@ -69,7 +71,6 @@ The Action column shows the activity, while the User column indicates wh
     - Creating, editing, or deleting Personal Access Tokens (PATs).  
     - Managing Two-Factor Authentication (2FA).  
     - Accessing public endpoints or configuring the IP allowlist.
-
 :::
 
 
