@@ -2,7 +2,7 @@
 title: Harness IDP 2.0 Overview
 description: Comprehensive guide to Harness IDP 2.0 — explore the new Harness-native data model, platform RBAC, Git Experience, and improved UX for internal developer portals. Includes migration strategy, feature compatibility, and rollout details for upgrading from IDP 1.0.
 sidebar_position: 1
-sidebar_label: What is IDP 2.0?
+sidebar_label: Understand the Key Features
 redirect_from: docs/internal-developer-portal/2-0-overview-and-upgrade-path
 ---
 
@@ -104,9 +104,171 @@ The lifecycle of IDP Self Service Workflows can now easily be managed:
 
 This supports safer rollout of IDP automation across environments and teams.
 
-## Timeline
+## Breaking Changes in IDP 2.0
+
+### API Changes (Backstage Catalog APIs → Harness Catalog APIs)
+
+All Catalog and Workflow APIs are now delivered directly through Harness Platform APIs, ensuring responses properly incorporate Role-Based Access Control (RBAC) and entity scope considerations. The Backstage native APIs, including entity registration and refresh functionality, are no longer available in version 2.0.
+
+- Complete create/read/update/delete operations are accessible via Harness APIs
+- New endpoints provide scope-aware operations aligned with Harness RBAC
+- Any automation or custom processes utilizing Backstage-related APIs will require updates to implement the newer CRUD APIs
+- Catalog Ingestion APIs remain functional as before, though RBAC will now be enforced on updated entities
+
+We will provide detailed documentation on the newer API docs and provide sample scripts using the newer Catalog APIs.
+
+### Entity YAML Definition
+
+IDP 2.0 implements a Harness-native entity schema featuring targeted adjustments to previous Backstage-style YAML configurations. These changes primarily introduce scope concepts (project, organization, or account) while enhancing readability based on user feedback.
+
+For convenience, we've developed an API that converts Backstage catalog YAML to Harness catalog YAML format. This conversion is also available in the user interface—simply paste a Backstage Catalog YAML to automatically convert it to Harness Catalog YAML.
+
+JSON Schemas for all Catalog entities are available through our API.
+
+All existing Catalog entities and Workflows will be automatically converted upon migration to IDP 2.0. Additionally, we will provide a tool to commit these converted definitions to their corresponding YAML files in Git through the new Git Experience.
+
+#### ⨁ New fields
+
+- `orgIdentifier` (optional)
+- `projectIdentifier` (optional)
+
+These fields define the entity's scope. For project-scoped entities, both fields will be present. For organization-scoped entities, only `orgIdentifier` will appear. Account-level entities will have the scope automatically assigned to the account.
+
+#### ♻️ Updated fields
+
+- `metadata.name` becomes `identifier`
+  - This aligns with Harness Entity YAML definitions and enhances UX consistency. Moved to root level due to its importance to entity definition.
+- `metadata.title` becomes `name`
+  - Aligned with Harness Entity YAML definitions and moved to root level to reflect its critical importance.
+- `spec.type` becomes `type`
+  - Relocated to root level as it is fundamental to entity definition. The `kind` and `type` fields define entity behavior and should appear together.
+- `spec.owner` becomes `owner`
+  - Moved to root level to emphasize its significance. IDP Catalog addresses ownership challenges, warranting prominent placement of this field.
+
+#### ⊖ Removed fields
+
+- `metadata.namespace`
+  - Previously used in Backstage for scoping (typically set as default). With the introduction of Harness Platform Hierarchy, `namespace` becomes redundant. Scope is now determined using `projectIdentifier` and `orgIdentifier`.
+- `spec.system` and `spec.domain`
+  - These fields previously helped organize components within systems. Since entities will now exist within Harness projects and organizations, these structures will replace System and Domain functionality.
+
+#### Unchanged fields
+
+- `metadata` continues to be flexible. You can define your own properties within metadata.
+- `annotations`, `description`, `tags`, `links`, `labels` etc. continue to be part of metadata.
+
+#### YAML Comparison
+
+<Tabs>
+  <TabItem value="idp-1" label="IDP 1.0 (Backstage YAML)">
+
+```yaml
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: artist
+  title: Artist Service
+  description:
+  annotations:
+    jira/project-key: artistweb
+  tags:
+    - java
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      icon: dashboard
+      type: admin-dashboard
+spec:
+  type: service
+  lifecycle: production
+  owner: artist-relations-team
+  system: public-websites
+```
+
+</TabItem>
+
+<TabItem value="idp-2" label="IDP 2.0 (Harness YAML)" default>
+  ```yaml
+  apiVersion: harness.io/v1
+  identifier: artist-service
+  name: Artist Service
+  kind: Component
+  type: service
+  projectIdentifier: public-websites
+  orgIdentifier: default
+  owner: group:artist-relations-team
+  metadata:
+    description:
+    annotations:
+      jira/project-key: artistweb
+    tags:
+      - java
+    links:
+      - url: https://admin.example-org.com
+        title: Admin Dashboard
+        icon: dashboard
+        type: admin-dashboard
+  spec:
+    lifecycle: production
+  ```
+  </TabItem>
+</Tabs>
+
+### Deprecated YAML files
+
+Existing Backstage YAML files will no longer be valid in IDP 2.0 due to the structural changes outlined above.
+For existing entities, use Harness Git Experience APIs to create corresponding YAML files in a new repository. For new entities, users will have the option to use inline or remote definitions during entity creation.
+
+### Entity Reference Structure Changes
+
+Entity references maintain similar structure with one key difference: `namespace` is replaced by the Harness scope identifier.
+
+The format changes from `[kind]:[namespace]/identifier` to `[kind]:[scope]/identifier`.
+Scope can be one of:
+
+- `account`
+- `account.orgId` (for organization-level entities)
+- `account.orgId.projectId` (for project-level entities)
+
+This applies to all relationships including `dependsOn`, `subComponentOf`, `providesApis`, entity references in Catalog Ingestion APIs, and any other YAML-based entity references.
+
+### Hidden Tags Removed (Use RBAC Instead)
+
+The "hidden" or "private" tags previously used to restrict entity visibility to owners are now deprecated in favor of Harness RBAC.
+Entities should be created at the appropriate scope (Project, Organization, Account) with properly configured roles, users, and user groups to establish the required permissions.
+For example, to restrict a set of Components to a specific team, create them at a Project scope and assign only that team as Project Viewers.
+
+### System and Domain Entities Removed
+
+`System` and `Domain` entities have been removed. These often duplicated Harness Project and Organization structures, respectively.
+
+To group entities within a project, you may create a Component with `type: system` (or another suitable type) and use `spec.subComponentOf` in child components to establish relationships in the Catalog.
+
+Ensure the Sub Components card is available in the "Dependencies" or "Overview" tab to visualize these relationships.
+
+<!-- (TODO: Provide Layout YAML for customers who might have removed it) -->
+
+### Register/Catalog-Import → Redirects to UI Flow
+
+The Catalog Import page at `/catalog-import` is deprecated as entities must now be created using the new data model. Users will be guided through an intuitive "Create Entity" workflow in the UI, eliminating the need to write raw YAML before registering entities.
+
+You should remove this page from your sidebar by using the "Layout & Appearance" page inside "IDP Configure" view.
+
+### Old Catalog Access Control page is deprecated
+
+The IDP 1.0 "Access Control" page within the IDP Configure view has been removed. Please use Harness Platform RBAC instead. Administrators can assign permissions to users/groups via roles scoped to Account/Organization/Project, or create custom roles with specific permissions.
+
+### Pipeline Step: Create Catalog and Register Catalog steps
+
+The "Create Catalog" and "Register Catalog" steps previously used in IDP pipelines have been deprecated. These relied on creating a YAML file, committing and pushing it to Git, then using the URL to register it in IDP Catalog.
+
+You can now directly use Harness IDP Catalog APIs to register new entities using YAML definitions without Git operations. A dedicated step for this functionality will be available soon.
+
+## Timeline (to be updated)
 
 - IDP 2.0 beta by mid-May 2025.
 - IDP 2.0 will be Generally Available by end of Q2 (July 2025)
 - All IDP 1.0 APIs are removed by end of Q3 (October 2025)
 - All customers will be moved over to IDP 2.0 by end of October 2025.
+
+## Next Steps (tbd)
