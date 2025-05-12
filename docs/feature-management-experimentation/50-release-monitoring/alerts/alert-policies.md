@@ -7,11 +7,11 @@ An alert policy allows you to configure a degradation threshold for your metric.
 
 ## Alert policy sensitivity
 
-There are two configurable parameters for feature monitoring - the length of the monitoring window and the degradation threshold. These can be changed in the [Monitor and Experiment Settings](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings) section of your admin panel. By adjusting these parameters you can tailor the coverage and sensitivity of feature monitoring alerts in the way that best suits your organization and metrics. See [this article](https://help.split.io/hc/en-us/articles/360035504952-Choosing-your-monitoring-settings) for a more in depth discussion on factors to consider when choosing these settings. 
+There are two configurable parameters for feature monitoring — the length of the monitoring window and the degradation threshold. These can be changed in the [Monitor and Experiment Settings](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings) section of your admin panel. By adjusting these parameters you can tailor the coverage and sensitivity of feature monitoring alerts in the way that best suits your organization and metrics. See [this article](https://help.split.io/hc/en-us/articles/360035504952-Choosing-your-monitoring-settings) for a more in depth discussion on factors to consider when choosing these settings. 
 
 ## Sensitivity calculators
 
-As with any statistical test in experimentation, we can't detect everything - each metric will only have the power to detect degradations larger than a given size. Smaller degradations will not be distinguishable from natural noise and variations in your data. 
+As with any statistical test in experimentation, we can't detect everything — each metric will only have the power to detect degradations larger than a given size. Smaller degradations will not be distinguishable from natural noise and variations in your data. 
 
 The calculators below can be used to help you calculate what range of degradations you can expect to be able to detect for a given sample size and set of metric characteristics. If your metric is a count, sum, average or ratio metric, use the [first calculator for means metrics](#calculator-for-means). Otherwise, if your metric is a percent of unique users metric, use the [second calculator for proportions](#calculator-for-proportions).
 

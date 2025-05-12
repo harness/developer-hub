@@ -84,7 +84,7 @@ try {
 }
 ```
 
-While agents do not exist yet for the server side SDKs, it is entirely possible, and even expected, that server side feature flags can affect the user experience on client devices. So even if you are only using Server Side FME SDKs, you can still get value from the current FME RUM agents. And of course you can always send these events to Harness FME using [other methods](https://help.split.io/hc/en-us/articles/360020585772-Events). 
+While agents do not exist yet for the server-side SDKs, it is entirely possible, and even expected, that server-side feature flags can affect the user experience on client devices. So even if you are only using Server-side FME SDKs, you can still get value from the current FME RUM agents. And of course you can always send these events to Harness FME using [other methods](https://help.split.io/hc/en-us/articles/360020585772-Events). 
 
 ### Key metrics
 
@@ -103,5 +103,5 @@ Here is an example alert policy that could be combined with the metric shown abo
 This alert will fire if there is a 5% or more difference between the baseline treatment and any of the other treatments in the undesired direction. This allows you to take fast action and rollback or kill the feature before rolling it out further. 
 
 :::note
-You do not explicitly need to use the FME SDK Suite (or RUM Agents) if you have your own way of sending performance metric data to Harness FME. However, it has been our experience that performance metric data on a user by user basis is difficult to extract from common APM monitoring tools.
+You do not explicitly need to use the FME SDK Suite (or RUM Agents) if you have your own way of sending performance metric data to Harness FME. However, it has been our experience that performance metric data on a user-by-user basis is difficult to extract from common APM monitoring tools.
 :::
