@@ -15,8 +15,8 @@ import TabItem from '@theme/TabItem';
 
 :::tip Latest Features Released in 1.50.2
 <Tabs>
-  <TabItem value="LabelV2" label="LabelV2">We’re moving from the older Label to LabelV2. This will improve the load time of the Perspective or Cost Category which are powered by LabelV2. LabelV2 can be used in place of Label in filter in perspectives, as a GROUP BY operand in perspectives graph and in specifying rules when creating a Perspective and Cost Categories. The main goal of LabelsV2 is to give you full visibility into your original cloud tag keys, exactly as they appear in your AWS, Azure, GCP or Cluster environments.
-  For Perspectives and Cost Categories using Label, **[migration to LabelV2 is REQUIRED for AWS compulsorily](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#important-migration-from-label-to-labelv2)**. For new Perspectives and Cost Categories, **use LabelV2 and not Label**.</TabItem>
+  <TabItem value="Label V2" label="Label V2">We’re moving from the older `Label` to `Label V2`. This will improve the load time of the Perspective or Cost Category which are powered by `Label V2`. `Label V2` can be used in place of `Label` in filter in perspectives, as a GROUP BY operand in perspectives graph and in specifying rules when creating a Perspective and Cost Categories. The main goal of `Label V2` is to give you full visibility into your original cloud tag keys, exactly as they appear in your AWS, Azure, GCP or Cluster environments.
+  For Perspectives and Cost Categories using `Label`, **[migration to `Label V2` is REQUIRED for AWS compulsorily](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#important-migration-from-label-to-labelv2)**. For new Perspectives and Cost Categories, **use `Label V2` and not `Label`**.</TabItem>
 
 </Tabs>
 :::
@@ -79,7 +79,7 @@ You can create a Perspective for your resources using rules and filters. The fil
 * **Cluster**: Total cost, Cost trend, Idle cost, and Unallocated cost for each cluster.
 * **Region**: Each AWS, GCP, or Azure region you're currently running services in.
 * **Product**: Each of your active products with its cloud costs.
-* **Label** and **LabelV2**: Costs organized by the cloud and K8s labels that you are using to organize your Cloud instances.
+* **Label** and **Label V2**: Costs organized by the cloud and K8s labels that you are using to organize your Cloud instances.
 
 
 ### Preview
@@ -169,7 +169,7 @@ The interactive cost graph allows you to organize and segment your cost data usi
 - **None**: View aggregated costs without grouping
 
 :::info
-### Understanding the Difference: Label vs. LabelV2
+### Understanding the Difference: Label vs. Label V2
 
 - **`Label` (Legacy)**: Normalizes AWS tags. GCP, Azure and Clusters tags are not normalized.
 - **`Label V2` (New)**: Preserves the original structure from AWS similar to how GCP, Azure and Cluster tags are stored.
@@ -182,7 +182,7 @@ The interactive cost graph allows you to organize and segment your cost data usi
 
 After `Label V2`, AWS labels are stored as-is without any normalization.
 
-**Harness CCM is transitioning from the traditional Label system to the enhanced LabelV2 system. Support for the legacy Label system will be discontinued in the coming months.**
+**Harness CCM is transitioning from the traditional `Label` system to the enhanced `Label V2` system. Support for the legacy `Label` system will be discontinued in the coming months.**
 
 Please [see the steps here](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#important-migration-from-label-to-labelv2) to migrate labels from `Label` to `Label V2`.
 :::
@@ -270,13 +270,13 @@ There are no limits as to how many folders can be made.
 :::
 
 
-## Important: Migration from Label to LabelV2
+## Important: Migration from `Label` to `Label V2`
 
-Harness CCM is transitioning from the traditional Label system to the enhanced LabelV2 system. **Support for the legacy Label system will be discontinued in the coming months**.
+Harness CCM is transitioning from the traditional Label system to the enhanced Label V2 system. **Support for the legacy Label system will be discontinued in the coming months**.
 
 ### Required Action
 
-- **AWS Labels**: Immediate migration required. You must update all AWS label references to use LabelV2.
+- **AWS Labels**: Immediate migration required. You must update all AWS `Label` references to use `Label V2`.
 - **GCP, Azure, and Cluster Labels**: After AWS label migration is complete, Harness CCM will automatically handle these migrations.
 
 ### How to Migrate
@@ -289,7 +289,7 @@ Harness CCM is transitioning from the traditional Label system to the enhanced L
 2. **Update each component**:
    - Edit each Perspective
    - Locate all instances where you've defined rules, filters, or grouping using AWS Labels
-   - Change the selection from "Label" to "LabelV2"
+   - Change the selection from "Label" to "Label V2"
    - Save your changes
 
 3. **Verify your updates**:
@@ -299,7 +299,7 @@ Harness CCM is transitioning from the traditional Label system to the enhanced L
 Kindly follow the steps below: 
   <iframe 
      src="https://app.tango.us/app/embed/44d091fd-3177-44a1-b575-1a5a8febf36d" 
-     title="Migrating Label to LabelV2" 
+     title="Migrating Label to Label V2" 
      style={{minHeight:'480px'}}
      width="100%" 
      height="100%" 
