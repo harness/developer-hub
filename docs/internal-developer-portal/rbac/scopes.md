@@ -103,6 +103,8 @@ For IDP, resource groups can include:
 * Plugins
 * Advanced Configuration
 
+![](./static/resource-group-2.png)
+
 You can select which resources to include in a group based on the role you want to assign. Harness provides built-in resource groups at every scope, but you can also create custom ones. [Learn more about resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups).
 
 #### Resource Group Scope

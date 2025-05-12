@@ -6,27 +6,31 @@ sidebar_label: Upgrading to IDP 2.0
 ---
 If you’re using Harness IDP 1.0, this guide will walk you through everything you need to know before upgrading to IDP 2.0—what’s new, what to watch out for, and how to make the switch smoothly without disrupting your current setup.
 
-### flowchart with the 6 phase migration process
+![](./static/upgrade-2o.png)
 
 ## Before You Upgrade (Checklist)
 
-Before initiating your upgrade to IDP 2.0, ensure that you carefully go through the following checklist. This will help you understand the major changes and plan a smooth migration.
+Before upgrading to **IDP 2.0**, carefully review the checklist below to understand key changes and ensure a smooth and well-planned migration.
 
-1. **Review Breaking Changes**: 
-   Begin by thoroughly reviewing the [Breaking Changes](#breaking-changes) guide. IDP 2.0 introduces some major changes that differ significantly from the IDP 1.0 setup.
+1. **Review Breaking Changes**
+   Begin by thoroughly reviewing the [Breaking Changes](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md#breaking-changes-in-idp-20) guide. IDP 2.0 introduces several major updates that significantly differ from the IDP 1.0 architecture and workflows.
 
-2. **Assess Impacted Areas**:
-   After reviewing the breaking changes, evaluate how these changes impact your current IDP 1.0 setup. For example, Harness IDP 2.0 introduces a Harness-native Data Model and removes certain entities like **System** and **Domain**, which may affect your existing structure if not reviewed properly.
+2. **Assess Impacted Areas**
+   Evaluate how these changes affect your current setup. For example, IDP 2.0 introduces a new Harness-native Data Model and removes entities like **System** and **Domain**.
 
-3. **Use a Test Account First**: 
-   If you're not ready to upgrade in your production environment immediately, we strongly recommend exploring IDP 2.0 features in a dedicated test account. This provides a safe environment to try these new features and understand the changes in detail. If you don’t have a test account, reach out to [Harness Support](https://support.harness.io).
+3. **Use a Test Account**
+   Test IDP 2.0 in a dedicated account before upgrading in your production environment. If you need access, contact [Harness Support](https://support.harness.io).
 
-4. **Understand Key Use-Cases**:
-   Identify the core use-cases where IDP 2.0 could provide the most value to your existing IDP setup. Start with these prioritized areas during implementation. Gradual adoption helps your teams get familiar with the new workflows while minimizing disruption.
+4. **Focus on Key Use Cases**
+   Identify core use cases where IDP 2.0 adds the most value and start implementation there. A gradual rollout ensures smoother adoption.
+
+5. **Talk to the Harness IDP Team for Specific Use Cases**: We’re excited to launch IDP 2.0 and want to make your transition as smooth as possible. If you have specific use cases or want to better understand how IDP 2.0 can support your team, feel free to reach out to the Harness IDP team [here].
 
 ## Upgrade Path & Rollout Strategy
 
 To help ensure a seamless transition from IDP 1.0 to 2.0, follow the structured six-phase upgrade process outlined below. Before you begin, make sure you’ve completed the prerequisite checklist above.
+
+We’re excited to launch IDP 2.0 and want to make your transition as smooth as possible. If you want to **prepare and start assessing IDP 2.0** for your needs, please feel free to **schedule a call** with the **Harness IDP team**. Reach out to us here. 
 
 ### Phase 1: Prepare & Assess
 
@@ -98,7 +102,6 @@ In addition to new capabilities, it’s important to understand which features f
 
 * Once the feature flag is enabled, your existing entities will automatically migrate to the new Harness-native data model at the **Account** level.
 * To reorganize entities under a different scope (e.g., Project or Org), you will need to:
-
   * Delete the entity from the Account scope
   * Re-create it under the desired scope
 * The same applies to workflows not yet ready for global use.
@@ -118,18 +121,23 @@ In addition to new capabilities, it’s important to understand which features f
 * Monitor for issues or regressions, and collect feedback from early users.
 * IDP 1.0 fallback is supported during the migration window, so you can switch back temporarily if needed while completing validation.
 
-
 ## Unlock These Features with the IDP 2.0 Upgrade
 
 By upgrading to IDP 2.0, you gain access to:
 
-* A new Harness-native Data Model
-* Granular platform-level RBAC and improved security
-* Rich Git Experience with branch-aware syncing and inline YAML
-* UI-based workflows and catalog entity management
-* Scorecards with Catalog integration
-* Enhanced search experience (in progress)
-* Entity CRUD APIs and future Terraform support
+* Harness-native Platform Hierarchy
+* Granular platform-level RBAC
+* Bi-direction Git sync of entity YAML files
+* Easier automation without manual YAML operations
+* New Catalog & Workflow UI
+* and many more exciting features. 
+
+To learn more about the New Features, go to [What's New in IDP 2.0? (Feature Highlights)](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md#whats-new-in-idp-20-feature-highlights)
+
+## Timeline
+- IDP 2.0 will be Generally Available by end of Q2 (July 2025)
+- All IDP 1.0 APIs are removed by end of Q3 (October 2025)
+- All customers will be moved over to IDP 2.0 by end of October 2025.
 
 
 <!-- ## FAQs -->

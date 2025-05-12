@@ -2,17 +2,12 @@
 title: Harness IDP 2.0 Overview
 description: Comprehensive guide to Harness IDP 2.0 — explore the new Harness-native data model, platform RBAC, Git Experience, and improved UX for internal developer portals. Includes migration strategy, feature compatibility, and rollout details for upgrading from IDP 1.0.
 sidebar_position: 1
-sidebar_label: Understand the Key Features
+sidebar_label: IDP 2.0 Overview
 redirect_from: docs/internal-developer-portal/2-0-overview-and-upgrade-path
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-:::info Status: Work in Progress 🚧
-
-IDP 2.0 is launching soon! We will open early access tentatively in the **week of May 12th**. If you're interested in getting early access and shaping the future of Harness IDP, reach out at [idp-interest@harness.io](mailto:idp-interest@harness.io) or contact your Technical Program Manager. We will notify you as soon as IDP 2.0 is available to onboard!
-:::
 
 ## Summary
 
@@ -264,11 +259,7 @@ The "Create Catalog" and "Register Catalog" steps previously used in IDP pipelin
 
 You can now directly use Harness IDP Catalog APIs to register new entities using YAML definitions without Git operations. A dedicated step for this functionality will be available soon.
 
-## Timeline (to be updated)
-
-- IDP 2.0 beta by mid-May 2025.
+## Timeline
 - IDP 2.0 will be Generally Available by end of Q2 (July 2025)
 - All IDP 1.0 APIs are removed by end of Q3 (October 2025)
 - All customers will be moved over to IDP 2.0 by end of October 2025.
-
-## Next Steps (tbd)
