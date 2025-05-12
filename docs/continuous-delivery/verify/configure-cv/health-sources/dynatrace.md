@@ -99,7 +99,7 @@ This feature is behind the feature flag `CDS_CV_DYNATRACE_GRAIL_LOGS_ENABLED`. C
 
 13. Next, complete the field mapping for the **Timestamp Identifier**, **Service Instance Identifier**, and **Message Identifier**. To do so, hit the `+` button icon and select the relevant field from the log that appears. 
 
-    ![](./static/verify-deployment-dynatrace-grail-2.png)
+    ![](./static/field-mapping.png)
 
 14. Click **Submit**. The health source is displayed in the verify step!
 
