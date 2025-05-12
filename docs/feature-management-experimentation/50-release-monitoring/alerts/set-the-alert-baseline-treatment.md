@@ -2,7 +2,7 @@
 title: Set the alert baseline treatment
 sidebar_label: Set the alert baseline treatment
 description: ""
-sidebar_position: 40
+sidebar_position: 30
 ---
 
 <p>

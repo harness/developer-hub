@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting alerts
-sidebar_position: 50
+sidebar_position: 80
 ---
 
 In rare cases, you may find that a metric degradation alert or feature flag significance alert did not fire as you expected. The chart below is designed to help you determine the cause and help you make any needed adjustments. It outlines the required conditions for metric and feature flag alerts.

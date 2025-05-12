@@ -16,7 +16,7 @@ You can create a [metric](../), monitor, and measure impact in six steps:
 
 ### Define your metric name and information 
 
-Once you are sending us event data, to create your first metric, click on the metrics icon in the left navigation and click the **Create metric** button. Enter your metric name. We recommend describing what you intend to measure with a unique and recognizable name. Similar to feature flags, you can easily specify meta information for your new metric such as name, description, owners, and tags. This information can help you and your team manage your metrics. Learn more about [creating a metric](../#create-a-metric). 
+Once you are sending us event data, to create your first metric, click on the metrics icon in the left navigation and click the **Create metric** button. Enter your metric name. We recommend describing what you intend to measure with a unique and recognizable name. Similar to feature flags, you can easily specify meta information for your new metric such as name, description, owners, and tags. This information can help you and your team manage your metrics. Learn more about [creating a metric](#create-a-metric). 
 
 ### Define your metric definition 
 
@@ -24,7 +24,7 @@ When defining the metric definition, determine the winning direction. If increas
 
 ### Create an alert policy 
 
-An alert policy allows you to configure a degradation threshold for your metric. If the feature flag causes the metric to go below or above that threshold you are alerted by your configured notification channel. Learn more about [creating an alert policy](../#configure-an-alert-policy).
+An alert policy allows you to configure a degradation threshold for your metric. If the feature flag causes the metric to go below or above that threshold you are alerted by your configured notification channel. Learn more about [creating an alert policy](../../alerts/alert-policies).
 
 ### Manage alerts
 

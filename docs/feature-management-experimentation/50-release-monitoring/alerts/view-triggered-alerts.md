@@ -1,6 +1,6 @@
 ---
-title: Viewing triggered alerts 
-sidebar_position: 20
+title: View triggered alerts 
+sidebar_position: 70
 ---
 
 This section lists all alerts that have triggered for this feature flag, either from metric alert policies or automated feature flag alerts on key and guardrail metrics.

@@ -1,5 +1,5 @@
 ---
-title: Alerts
+title: Alerts and Monitoring
 sidebar_position: 50
 ---
 
@@ -21,6 +21,7 @@ Release Monitoring alerts are designed to work seamlessly with your existing wor
 | **Significance alert (automatic) – Guardrail metric** | Statistically significant impact detected (threshold = 0). | Good or bad impact | Guardrail metric            | Production only         | &#10060;                                     |
 | **Manual metric alert policy (any metric)**           | Manually configured threshold is crossed.                  | Degradations only  | Any metric with a policy    | Any environment         | &#10060; (optional)                          |
 
+Manual alerts fire when any metric crosses a defined threshold, regardless of feature flag or experiment. These are configured by users and support degradations (or bad impact) only. For more information, see [alert policies](../alerts/alert-policies).
 
 ## Configure alerts
 
@@ -28,11 +29,15 @@ Release Monitoring alerts are designed to work seamlessly with your existing wor
 
 Control how and when alerts trigger by creating an [alert policy](.././alerts/alert-policies). Define thresholds, notification rules, and alert behaviors that match your team's processes.
 
-### Monitoring window
+#### Monitoring window
 
-Set the time window over which metric performance is evaluated. [Monitoring windows](.././alerts/monitoring-window) help you tune sensitivity and reduce alert noise.
+Set the time window over which metric performance is evaluated for alert policies. [Monitoring windows](.././alerts/alert-policies/monitoring-window) help you tune sensitivity and reduce alert noise by limiting the period during which alerts are automatically triggered based on observed metric degradations.
 
 Harness FME continues to monitor and alert your team of a metric degradation for up to 28 days after a version change. The default monitor window is 24 hours. Administrators can change the monitor window under the [Monitor and experiment settings](https://help.split.io/hc/en-us/articles/360020640752).
+
+:::note
+The monitoring window only applies to alert policies. If the monitoring window is set to 24 hours, Release Monitoring stops evaluating metrics for alert triggering after 24 hours from the version change. However, significance-based alerts (those triggered by re-running calculations during deeper analysis or user-initiated recalculations) can still trigger beyond the monitoring window.
+::: 
 
 ### Alert baseline treatment
 
@@ -40,13 +45,12 @@ Compare metrics against a [baseline treatment](.././alerts/set-the-alert-baselin
 
 ## Manage alerts
 
-When an alert fires, you can dismiss the alert if no action is needed or kill the flag directly from the flag page to stop traffic.
+When an alert fires, you can access the [alert details](./view-triggered-alerts.md) and kill the flag directly from the flag page to stop traffic.
 
 | **Action** | **Description** |
 | ---- | ---- | 
 | Kill feature flag | If you decide to kill a feature flag due to an alert, the [default treatment](https://help.split.io/hc/en-us/articles/360020528192-Default-treatment) overrides the existing targeting rules and is returned for all customers. |
-| Dismiss alert | If you decide to dismiss an alert, this alert is silenced for the remainder of the monitor window.|
 
 ### Troubleshooting alerts
 
-Fix common configuration or delivery issues, verify metric inputs, and fine tune thresholds for better alert performance.
+Fix common configuration or delivery issues, verify metric inputs, and fine tune thresholds for better alert performance. For more information, see [Troubleshooting alerts](./troubleshooting).

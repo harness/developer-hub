@@ -7,12 +7,35 @@ Automated alerts in Release Monitoring notify you and your team when your featur
 
 ## Alert types
 
-You can monitor metrics during a rollout by using either manual alert policies or automatic significance alerts. The table below compares how each alert type works and when it's triggered.
+You can monitor metrics during a rollout by using automatic significance alerts. Significance alerts are automatic alerts that fire when a feature flag causes a statistically significant change in a metric linked to the flag. These alerts are supported for **guardrail metric alerts** (global) and **key metric alerts** (flag-specific) in production environments only.
 
-| **Category** | **Definition** |
-|---|---|
-| **Metric alert policies** | Manual alerts that fire when any metric crosses a defined threshold, regardless of feature flag or experiment. These are configured by users and support degradations (or bad impact) only. For more information, see [alert policies](../alert-policies). |
-| **Feature flag significance alerts** | Automatic alerts that fire when a feature flag causes a statistically significant change in a metric linked to the flag. Supported for **guardrail metrics** (global) and **key metrics** (flag-specific) in production environments only. For more information, see [guardrail metric alerts](./guardrail-metrics) and [key metric alerts](./metrics). |
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs queryString="tab-number">
+<TabItem value="1" label="Guardrail Metrics">
+
+Guardrail metric alerts automatically notify you when a feature flag causes a statistically significant change in a key safety or quality-of-service metric. These metrics protect your customer experience during a rollout by detecting degradation in critical areas such as performance, reliability, or customer behavior.
+
+Unlike manual alert policies, guardrail alerts are triggered based on statistical significance, not predefined thresholds. To use guardrail metric alerts, you must create a guardrail metric and run a percentage-based rollout.
+
+:::info
+Guardrail alerts can only be created for metrics that are measured per traffic type, not for metrics aggregated across all traffic types.
+:::
+
+Guardrail metrics are a specialized type of key metric. While both key and guardrail metrics can trigger automatic alerts during percentage rollouts, guardrail alerts are specifically designed to flag degradation in critical safety or quality metrics. On the other hand, key metrics track feature success or failure more broadly.
+
+</TabItem>
+<TabItem value="2" label="Key Metrics">
+
+Key metrics represent important indicators of feature success or failure. You can use them to trigger automatic alerts during a feature rollout. 
+
+If a key metric is linked to a percentage-based rollout, Release Monitoring automatically detects and alerts on statistically significant changes to that metric during the rollout. 
+
+Both key and guardrail metrics can trigger automatic alerts based on statistically significant changes during percentage rollouts. However, guardrail metrics are designed to detect regressions in safety or quality metrics, while key metrics typically track success indicators. 
+
+</TabItem>
+</Tabs>
 
 Feature flag alerts provide immediate feedback about a feature flag’s key metrics. An alert will fire when a desired or undesired impact is detected. You can choose key metrics for each feature flag and specify which feature flag should alert you about its key metrics. This allows you to take quick action on insights that may be especially useful to your team.
 
