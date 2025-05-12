@@ -110,8 +110,6 @@ With IDP 2.0, you can create resources at any scope: **Account**, **Org**, or **
 | **Plugins**    | ✅                 | ❌             | ❌                 | Plugins can be created and configured only at the Account scope.                                           |
 
 
-*Recommendations*
-
 ## Relations
 
 The following is a non-exhaustive list of actively used relations.
