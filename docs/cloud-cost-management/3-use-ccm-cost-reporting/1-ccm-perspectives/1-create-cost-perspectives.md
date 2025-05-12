@@ -377,7 +377,7 @@ Now:
                 }
 ```
 
-In short, wherever you see `LABEL` in "identifier", replace it with `LABEL_V2`.
+In short, wherever you see `LABEL` in "identifier", replace it with `LABEL_V2` alongwith "identifierName" .
 
 Please refer the following API docs for details:
 - [Create a Perspective](https://apidocs.harness.io/tag/Cloud-Cost-Perspectives#operation/createPerspective)
