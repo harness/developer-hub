@@ -15,7 +15,7 @@ All new metrics are available only from gitops-agent version 0.91.0 and upwards.
 ## Enabling GitOps Agent Metrics Server
 The GitOps Agent exposes internal metrics on port `2112` at the `/metrics` endpoint. These metrics are useful for monitoring the performance and health of the agent, and can be scraped using tools like [Prometheus](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/running-exporters.md).
 
-### Metrics Feature Overview
+
 Metrics are enabled by default in the GitOps agent:- 
 
 - Metrics are served from the agent’s container on port `2112` at `/metrics`.
@@ -52,7 +52,7 @@ helm install harness-agent <chart-path> \
   --set agent.metrics.serviceMonitor.enabled=true
 ```
 
-#### If You Are Using Kubernetes Manifests
+#### If You used kubernetes manifest to directly install the agent
 To expose the metrics port `(2112)` manually, apply the following Kubernetes Service manifest in the same namespace as your GitOps agent:
 ```yaml
 apiVersion: v1
@@ -74,6 +74,7 @@ spec:
   selector:
     app.kubernetes.io/name: harness-gitops-agent
 ```
+
 Once the service is created, you can test locally by port-forwarding:
 ```bash
 kubectl port-forward svc/gitops-agent-metrics 2112:2112 -n <your-agent-namespace>
