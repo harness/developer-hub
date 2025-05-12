@@ -104,11 +104,11 @@ Most basic scale issues can be tackled with a combination of either HA(high avai
 The gitops agent has 3 concurrent worker pools controlled by the env vars, `GITOPS_AGENT_NUM_FETCHERS`, `GITOPS_AGENT_NUM_PROCESSORS`, `GITOPS_AGENT_NUM_RESPONDERS`. 
 The **FETCHER** fetches a task from harness, hands it to a **PROCESSOR** and then the result is picked up by a **RESPONDER** and sent back to harness.
 
-`task_receiver_channel_blocked_time` observes the time tasks spend waiting for a **PROCESSOR** to pick them up.
+`task_receiver_channel_blocked_time` observes the time tasks spend within the agent waiting for a **PROCESSOR** worker to pick them up.
 
-`task_response_sender_channel_blocked_time` observes the time a completed task spends waiting for a **RESPONDER** to send its response back to harness.
+`task_response_sender_channel_blocked_time` observes the time a completed task spends within the agent waiting for a **RESPONDER** worker to send its response back to harness.
 
-`task_execution_time` is the time a **PROCESSOR** actually spent on the task, i.e. it is the time in between the above two channels once a **PROCESSOR** picks up a task.
+`task_execution_time` is the time a **PROCESSOR** worker actually spent on the task, i.e. it is the time in between the above two channels once a **PROCESSOR** picks up a task.
 
 `task_complete_processing_time` is the overall time spent by the task within the agent. 
 This time is broken down further into 3 parts:
