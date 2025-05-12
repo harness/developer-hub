@@ -5,349 +5,135 @@ sidebar_label: Helm Charts for GKE
 sidebar_position: 2
 ---
 
-# Helm Charts Guide for Google Kubernetes Engine (GKE)
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<DocsTag  backgroundColor= "#4279fd" text="Harness Demo Feature"  textColor="#ffffff"/>
 
 ## Overview
 This guide provides detailed instructions for deploying Harness SMP on Google Kubernetes Engine (GKE) using Helm charts. It covers GKE-specific configurations, requirements, and best practices.
 
-## Prerequisites
+For Helm installation instructions, go to [Helm installation](/docs/self-managed-enterprise-edition/install/install-using-helm) or the Harness Helm chart [readme](https://github.com/harness/helm-charts/tree/main?tab=readme-ov-file#harness-helm-charts).
 
-### GKE Cluster Requirements
-```yaml
-gke:
-  version: "1.24"  # Minimum Kubernetes version
-  nodes:
-    minCount: 3
-    machineType: "e2-standard-4"
-    zones: 3
-```
+### Prerequisites
 
-### Required Tools
-- Google Cloud SDK
-- kubectl (matching GKE version)
-- Helm v3.x
-- gcloud CLI
+This topic assumes you have experience with GCP, such as setting up projects, namespaces, and clusters.
 
-### IAM Requirements
-```yaml
-iam:
-  serviceAccount:
-    roles:
-      - roles/container.admin
-      - roles/storage.admin
-      - roles/monitoring.admin
-      - roles/logging.admin
-```
+In addition to a Harness account, you need the following:
 
-## Installation Steps
+- Access to Helm charts
+- An external static IP address
 
-### 1. Add Harness Repository
-```bash
-helm repo add harness https://harness.github.io/helm-charts
-helm repo update
-```
+<Tabs>
+<TabItem value="GCP">
 
-### 2. Create GKE-specific values file
-```yaml
-# gke-values.yaml
-global:
-  ha:
-    enabled: true
-    provider: "gcp"
-  
-  storageClass: "standard-rwo"
-  
-  gcp:
-    project: "your-project-id"
-    region: "us-central1"
-    zone: "us-central1-a"
-    
-  loadbalancer:
-    type: "gclb"
-    annotations:
-      cloud.google.com/load-balancer-type: "External"
-      networking.gke.io/v1beta1.FrontendConfig: "harness-frontend-config"
+To install in GCP manually, you first reserve your static IP, then install Harness Self-Managed Enterprise Edition.
 
-platform:
-  bootstrap:
-    database:
-      mongodb:
-        persistence:
-          storageClass: "standard-rwo"
-          size: "100Gi"
-      postgresql:
-        persistence:
-          storageClass: "standard-rwo"
-          size: "50Gi"
-```
+### Reserve an external static IP
 
-### 3. Install Harness
-```bash
-kubectl create namespace harness
-helm install harness harness/harness \
-  -n harness \
-  -f gke-values.yaml
-```
+To reserve an external static IP in GCP, do the following:
 
-## GKE-Specific Configurations
+1. Go to your GCP project.
+2. Select **VPC network**. The VPC networks page opens.
+3. In the left nav, select **IP addresses**. The IP addresses page opens.
+4. Select **Reserve External Static IP Address**, then select the following.
+   1. **Network Service Tier:** Premium.
+   2. **IP Version:** IPv4.
+   3. **Type:** Regional.
 
-### Storage Classes
-```yaml
-storage:
-  class: "standard-rwo"
-  encryption:
-    enabled: true
-    kmsKeyName: "projects/your-project/locations/global/keyRings/harness/cryptoKeys/data-key"
-  provisioner:
-    type: "pd-standard"
-```
+      :::info
+      Make sure the IP address is in the same region as your cluster. Make a note of or copy the IP address. You'll need it later in the installation process.
+      :::
 
-### Network Policies
-```yaml
-networkPolicies:
-  enabled: true
-  vpc:
-    network: "default"
-    subnetwork: "default"
-  additionalPolicies:
-    - name: "allow-monitoring"
-      podSelector:
-        matchLabels:
-          role: monitoring
-      ingress:
-        - from:
-            - namespaceSelector:
-                matchLabels:
-                  name: monitoring
-```
+5. Select **Reserve**.
 
-### GCP Service Integration
-```yaml
-gcp:
-  integration:
-    enabled: true
-    serviceAccount:
+### Install Harness Self-Managed Enterprise Edition in GCP
+
+1. Create a new cluster or use an existing one.
+
+2. Create a new namespace:
+
+   1. Set your Kubernetes context to the GCP project you are using.
+
+   2. Run the following
+
+      ```
+      kubectl create ns <namespace name>
+      ```
+
+3. Download the latest charts from the Harness Helm chart [repo](https://github.com/harness/helm-charts/releases).
+
+    :::info
+    Charts are located under **Assets**. The file name looks like `harness-0.15.0.tgz`.
+    :::
+
+4. Extract the `*.tgz` file.
+
+5. Open the `override-demo.yaml` file in a file editor.
+
+6. Add your external static IP address in the following fields.
+
+   ```yaml
+   loadbalancerURL: http://xx.xx.xx.xx
+   ```
+
+   ```yaml
+   loadBalancerIP: xx.xx.xx.xx
+   ```
+
+7. Set the following fields.
+
+   ```yaml
+   loadbalancerURL: http://xx.xx.xx.xx
+     ingress:
+       # --- Enable Nginx ingress controller gateway
+       enabled: true
+       annotations: {}
+       loadBalancerIP: 34.136.145.137
+       className: "harness"
+       loadBalancerEnabled: true
+       useSelfSignedCert: false
+       ingressGatewayServiceUrl: ''
+       hosts:
+         - ""
+   ```
+
+8. Search for "nginx:", and set `create:` to `true`.
+
+   ```yaml
+    nginx:
       create: true
-      annotations:
-        iam.gke.io/gcp-service-account: "harness@your-project.iam.gserviceaccount.com"
-    services:
-      - storage
-      - monitoring
-      - logging
-      - cloudkms
-```
+   ```
 
-## High Availability Configuration
+9. Search for "defaultbackend:", and set `create:` to `true`.
 
-### Multi-Zone Deployment
-```yaml
-global:
-  ha:
-    enabled: true
-    zones:
-      - us-central1-a
-      - us-central1-b
-      - us-central1-c
-    
-platform:
-  topology:
-    distribution:
-      enabled: true
-      antiAffinity:
-        type: "hard"
-```
+   ```yaml
+    defaultbackend:
+      create: true
+   ```
 
-### Backup and Recovery
-```yaml
-backup:
-  enabled: true
-  provider: "gcp"
-  gcs:
-    bucket: "harness-backup"
-    location: "us-central1"
-  schedule: "0 2 * * *"
-  retention:
-    days: 30
-```
+10. Save the file and exit.
 
-## Security Configuration
+11. Run the following from your terminal.
 
-### Cloud KMS Integration
-```yaml
-security:
-  encryption:
-    provider: "gcp"
-    kms:
-      enabled: true
-      keyName: "projects/your-project/locations/global/keyRings/harness/cryptoKeys/data-key"
-      location: "global"
-```
+    ```
+    helm install <YOUR_RELEASE_NAME> <path to Harness directory> -n <YOUR_NAMESPACE_NAME> -f override.demo.yaml
+    ```
 
-### Pod Security Policies
-```yaml
-podSecurityPolicy:
-  enabled: true
-  policies:
-    - name: restricted
-      spec:
-        privileged: false
-        seLinux:
-          rule: RunAsAny
-        runAsUser:
-          rule: MustRunAsNonRoot
-        fsGroup:
-          rule: RunAsAny
-```
+    for example:
 
-## Monitoring and Logging
+    ```
+    helm install test-release harness/ -n smp-test -f harness/override-demo.yaml
+    ```
 
-### Cloud Operations Integration
-```yaml
-monitoring:
-  cloudOperations:
-    enabled: true
-    project: "your-project-id"
-    logName: "harness-platform"
-    metrics:
-      enabled: true
-      prefix: "harness"
-```
+12. After the installation is complete, paste the `loadbalancerURL` in your browser's address bar, and then sign in to the Harness UI.
+13. Complete to the post-install next steps.
 
-### Prometheus Configuration
-```yaml
-prometheus:
-  serviceMonitor:
-    enabled: true
-    namespace: monitoring
-  alertmanager:
-    enabled: true
-    alertmanagerSpec:
-      storage:
-        volumeClaimTemplate:
-          spec:
-            storageClassName: standard-rwo
-```
+</TabItem>
 
-## Performance Optimization
+</Tabs>
 
-### Node Pools
-```yaml
-nodePools:
-  - name: platform
-    machineType: e2-standard-4
-    minCount: 3
-    maxCount: 10
-    labels:
-      role: platform
-  - name: workload
-    machineType: e2-standard-8
-    minCount: 2
-    maxCount: 20
-    labels:
-      role: workload
-```
+import Postinstall from '/docs/self-managed-enterprise-edition/shared/post-install-next-steps.md';
 
-### Resource Quotas
-```yaml
-quotas:
-  enabled: true
-  specs:
-    - name: compute-resources
-      hard:
-        requests.cpu: "30"
-        requests.memory: 100Gi
-        limits.cpu: "40"
-        limits.memory: 120Gi
-```
+<Postinstall />
 
-## Troubleshooting
-
-### Common Issues
-
-1. **Storage Issues**
-```yaml
-storage:
-  debug:
-    enabled: true
-    provisioner:
-      logs: true
-```
-
-2. **Network Connectivity**
-```yaml
-networking:
-  diagnostics:
-    enabled: true
-    tools:
-      - tcpdump
-      - netcat
-```
-
-3. **Pod Scheduling**
-```yaml
-scheduling:
-  debug:
-    enabled: true
-    events: true
-```
-
-## Maintenance
-
-### Upgrade Process
-```yaml
-upgrade:
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 25%
-  hooks:
-    pre:
-      - backup
-      - healthcheck
-    post:
-      - validation
-```
-
-### Backup Strategy
-```yaml
-backup:
-  gcs:
-    enabled: true
-    bucket: "harness-backup"
-    location: "us-central1"
-  schedule:
-    full: "0 0 * * 0"
-    incremental: "0 0 * * 1-6"
-```
-
-## Cost Optimization
-
-### Resource Management
-```yaml
-resources:
-  optimization:
-    enabled: true
-    preemptibleNodes:
-      enabled: true
-      maxPercentage: 50
-    autoScaling:
-      enabled: true
-      targetCPUUtilization: 70
-```
-
-### Storage Optimization
-```yaml
-storage:
-  optimization:
-    enabled: true
-    retention:
-      enabled: true
-      days: 30
-    compression:
-      enabled: true
-```
-
-## Additional Resources
-- [GKE Documentation](https://cloud.google.com/kubernetes-engine/docs)
-- [Harness GCP Integration](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcp-connector-reference/)
-- [GCP Best Practices](https://cloud.google.com/kubernetes-engine/docs/best-practices)
