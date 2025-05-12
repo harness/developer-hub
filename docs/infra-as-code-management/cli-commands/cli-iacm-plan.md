@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 Building upon [Harness robust CLI capabilities](/docs/platform/automation/cli/examples/), the IaCM module introduces the `harness iacm plan` command to simplify the process of planning infrastructure changes locally Designed for developers working with local OpenTofu or Terraform files, `harness iacm plan` ensures secure execution and seamless integration with Harness pipelines.
 
 :::info Key Features
-- **Local Execution with Remote Security:** Eliminate the need for storing secrets locally. The `harness iacm plan` command securely stores secrets within Harness, combining the convenience of local development with enterprise-grade security.
+- **Local Execution with Remote Security:** Eliminate the need for storing secrets locally. When you run the `harness iacm plan` command, secrets configured in the associated Harness workspace are used during execution—combining local convenience with centralized, secure secret management.
 - **Pipeline-Triggered Execution:** The command integrates seamlessly with Harness pipelines. When triggered, the pipeline references your local code changes instead of pulling from a Git repository. Perfect for developers iterating on local changes.
 - **Default Plan Pipelines:** The CLI utilizes default plan pipelines configured in your workspace. If no default is set, users are guided to configure one in their workspace settings.
 - **Guardrails for Safety:**
@@ -47,7 +47,7 @@ harness iacm plan --org-id <orgname> --project-id <projectName> --workspace-id <
 ```
 
 :::tip configuration file
-Simplify execution by setting up the `.harness/workspace.yaml` file to automatically provide the required arguments:
+Simplify execution by adding a `.harness/workspace.yaml` file at the root of your project (or the root of the workspace path). This file automatically supplies required arguments, reducing the need for manual input.
 ```yaml
 org: <orgname>
 project: <projectName>
