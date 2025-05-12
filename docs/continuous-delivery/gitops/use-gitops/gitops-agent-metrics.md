@@ -82,7 +82,7 @@ Visit `http://localhost:2112/metrics` to confirm the metrics endpoint is accessi
 
 ### Available Metrics
 
-| Metric Name | Type | Description | Min. Req. Agent Version
+| Metric Name | Type | Description | Min. Req. Agent Version |
 | --- | --- | --- | --- |
 | `entities_count` | Gauge | Number of entities being managed by the GitOps agent, labeled by entity type. | v0.91.0 |
 | `task_complete_processing_time` | Histogram | Time a task spends in the agent from fetch to response.  | v0.91.0 |
