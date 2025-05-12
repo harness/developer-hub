@@ -124,8 +124,11 @@ For example if there are sporadic issues with tasks not completing properly and 
 ### Understanding Histogram Metrics
 
 Most metrics are histograms and include these vectors below corresponding to each metric:
+
 `_count`: Number of samples.
+
 `_sum`: Sum of all samples.
+
 `_bucket`: Buckets representing value ranges.
 
 To calculate averages for example:
