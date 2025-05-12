@@ -18,29 +18,22 @@ Harness IDP 2.0 represents a major evolution of the Internal Developer Portal, b
 
 - **Revamped Catalog UI:** A fresh user experience featuring an updated Catalog table with filters, enhanced navigation, and a built-in entity creation interface.
 
-## Migrating to 2.0
-
 ## Creating Entities
-*Fundamentals of entities: types of entities, their backstage references, etc.*
-*converting legacy backstage YAML*
-*API way of adding entities*
-*Adding user groups/users*
+With IDP 2.0, we are moving towards a Harness-native Data Model designed for enterprise scale and access control. There are different entities within the Harness-native Data Model. To learn more about the Harness IDP entities, go to [Data Model](/docs/internal-developer-portal/catalog/data-model.md#harness-idp-entities) 
 
-In **IDP 1.0**, users were required to update **Catalog YAML files** for every change, which made adoption more complex—especially for entities that needed frequent updates, such as infrastructure resources.
-
-In **IDP 2.0**, you can create new entities directly from the **Harness IDP UI** —eliminating the need to manually manage YAML files. With this release, **"inline entities"** are fully supported, allowing you to manage the entire entity lifecycle through the UI or APIs—no Git operations required. This makes it easier for any developer to onboard into the portal without learning Backstage-specific YAML conventions.
+There are two ways to add and create a new entity in your catalog:
+- **Create an entity via the Harness IDP UI**:
+Use the **Harness UI** to create entities directly—no YAML required. This method offers a streamlined, code-free experience for adding entities.
+- **Create an entity using your catalog YAML**:
+You can still create entities using your **existing catalog YAML** files. Harness will automatically convert **legacy Backstage YAML** into the new Harness Catalog Entity Model and register the corresponding entity.
 
 ![](./static/create-entity-1.png)
 
-In IDP 2.0, there are two ways to add and create a new entity in your catalog:
-- **Create an entity via the Harness IDP UI**:
-Use the Harness UI to create entities directly—no YAML required. This method offers a streamlined, code-free experience for adding entities.
-- **Create an entity using your catalog YAML**:
-You can still create entities using your existing catalog YAML files. Harness will automatically convert legacy Backstage YAML into the new Harness Catalog Entity Model and register the corresponding entity.
 
-<Tabs>
-  <TabItem value="UI" label="Harness IDP UI">
-  To create a new entity, navigate to the Harness IDP portal and click on **“Create”** from the side-bar menu. Choose the desired entity type, and follow these steps:
+### Harness IDP UI
+In **IDP 2.0**, you can now create new entities directly from the **Harness IDP UI** —eliminating the need to manually manage YAML files. With this release, **"inline entities"** are fully supported, allowing you to manage the entire entity lifecycle through the UI or APIs—no Git operations required. This makes it easier for any developer to onboard into the portal without learning Backstage-specific YAML conventions.
+
+To create a new entity, navigate to the Harness IDP portal and click on **“Create”** from the side-bar menu. Choose the desired entity type, and follow these steps:
   1. You’ll be redirected to the **"Visual View"**, where you can input entity details and begin the creation process.
   2. Enter the required entity information. The **Visual view** is synced in real-time with the **YAML view** for full transparency.
   ![](./static/create-entity-2.png)
@@ -58,9 +51,9 @@ You can still create entities using your existing catalog YAML files. Harness wi
   ![](./static/plugins-entity.png)
   6. Once everything is set, click **“Create Component”** to finalize and create the entity.
   ![](./static/yaml-view.png)
-  </TabItem>
-  <TabItem value="YAML" label="Catalog YAML">
-  With Harness **IDP 2.0**, we're introducing the **Harness-native Catalog Entity Model**. Learn more about the new system model here. To create a new entity, navigate to the Harness IDP portal and click **“Create”** from the side-bar menu.
+
+### Catalog YAML
+You can also use the [Catalog YAML](/docs/internal-developer-portal/catalog/catalog-yaml.md) to create entities in Harness IDP. With IDP 2.0, you are required to follow the new Harness-native Data Model and structure when defining entities in Catalog YAML. If you have existing entities defined using **legacy Backstage YAML**, you can still use them—Harness will automatically convert them into the Harness-native Data Model format. Learn more about the new data model here. To create a new entity, navigate to the Harness IDP portal and click **“Create”** from the side-bar menu.
   
   :::info
   If you have a **legacy Backstage YAML**, you can still use it to create an entity. Harness will automatically convert it into the native **Catalog Entity Model** format.
@@ -75,14 +68,14 @@ You can still create entities using your existing catalog YAML files. Harness wi
 Note: **YAML validation** is automatically performed to ensure compatibility with the **Harness-native Catalog YAML model**. Any validation errors will be displayed in the Validation Logs.
 ![](./static/yaml-validation.png)
 :::
+3. You can define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#orgidentifier)** directly in the YAML to set the project or organization scope.
+![](./static/scope-entity.png)
 
-3. If needed, **configure a plugin** by referring to the plugin’s documentation and adding the appropriate **annotations** in the Catalog YAML.
-4. Once all details are complete, click **“Create Component”** to finalize and register your entity in the catalog.
-  </TabItem>
-</Tabs>
+4. If needed, **configure a plugin** by referring to the plugin’s documentation and adding the appropriate **annotations** in the Catalog YAML.
+5. Once all details are complete, click **“Create Component”** to finalize and register your entity in the catalog.
 
 ## Editing Entities
-You can now modify your entities directly from the **Harness IDP UI**, removing the dependency on manually editing the ``catalog-info.yaml`` file in your Git repository. This streamlines the update process and makes entity management much easier.
+You can now modify your entities directly from the **Harness IDP UI**, removing the dependency on manually editing the Catalog YAML file in your Git repository. This streamlines the update process and makes entity management much easier.
 
 To edit an entity:
 1. Navigate to the **Catalog** and select the entity you want to modify.
