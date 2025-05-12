@@ -15,6 +15,7 @@ import { platformData } from "./platformData";
 import { aidaData } from "./aidaData";
 import { codeData } from "./codeData";
 import { CdeData } from "./cdeData"; 
+import { DbdevopsData } from "./dbdevopsData"; 
 
 
 export interface ModuleData {
@@ -57,6 +58,12 @@ const ModuleData: ModuleData[] = [
     description: "SaaS release status: GA, SMP release status: GA",
     module: MODULES.cd,
     horizon: CdData,
+  },
+  {
+    title: "Database DevOps",
+    description: "SaaS release status: GA, SMP release status: GA",
+    module: MODULES.dbdevops,
+    horizon: DbdevopsData,
   },
   {
     title: "Continuous Integration",
