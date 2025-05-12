@@ -133,6 +133,7 @@ Harness IDP provides a predefined role called **IDP Admin**, which grants full p
 To configure RBAC in Harness IDP, follow these steps:
 
 1. Go to your administrative settings and select the desired scope (Account, Org, or Project). Choose the specific Organization or Project where you want to configure RBAC, and navigate to its respective settings.
+![](./static/choose-scope.png)
 2. [Create roles](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles) with appropriate permissions.
 3. [Create resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups) for targeted access control.
 4. [Create user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) and [add users](https://developer.harness.io/docs/platform/role-based-access-control/add-users).
