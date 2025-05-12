@@ -33,6 +33,7 @@ In addition to the registry types above, support for the following registries wi
 - **RPM:** Red Hat package management.
 - **Ruby:** RubyGems support.
 - **Conan:** C/C++ package manager.
+- **Alpine:** For Alpine Linux packages.
 
 ## Platform Support
 Harness Artifact Registry (HAR) is seamlessly integrated with the Harness Platform, offering you robust features and capabilities.
