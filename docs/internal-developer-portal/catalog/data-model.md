@@ -11,10 +11,10 @@ With IDP 2.0, we are moving towards a **Harness-native Data Model** designed for
 
 This data model focuses on the key aspects in the following manner:
 
-* **Entities**: Describes the types of entities that can exist in the Harness-native Data Model.
 * **Scopes**: Explains the scopes available in the new data model and how entities are mapped to them.
+* **Entities**: Describes the types of entities that can exist in the Harness-native Data Model.
 
-*Diagram on linking entities and scopes*
+![](./static/data-model.png)
 
 Let's dive deeper into how entities and scopes come together in the Harness-native data model.
 
@@ -34,19 +34,19 @@ Let's explore these core entities and their usage in detail!
 
 A **Component** is a piece of software, such as a mobile feature, website, backend service, or data pipeline (list not exhaustive). A component can be tracked in source control or use existing open-source or commercial software. It can implement APIs for other components to consume. In turn, it might consume APIs implemented by other components or directly depend on components or resources attached to it at runtime.
 
-For more details on how to use this entity, please refer to the detailed docs here.
+For more details on how to use this entity, please refer to the [detailed docs](/docs/internal-developer-portal/catalog/catalog-yaml.md#kind-component) here.
 
 ### API
 
 An **API** describes an interface that can be exposed by a component. APIs can be defined using formats such as OpenAPI, AsyncAPI, GraphQL, gRPC, or others. They are implemented by components and form boundaries between them. APIs might be defined using an RPC IDL (e.g., Protobuf, GraphQL), a data schema (e.g., Avro, TFRecord), or as code interfaces. In all cases, APIs exposed by components need to be in a known machine-readable format to enable tooling and analysis.
 
-For more details on how to use this entity, please refer to the detailed docs here.
+For more details on how to use this entity, please refer to the [detailed docs](/docs/internal-developer-portal/catalog/catalog-yaml.md#kind-api) here.
 
 ### Resource
 
 A **Resource** describes infrastructure components required for a system to operate—such as BigTable databases, Pub/Sub topics, S3 buckets, or CDNs. Modeling them alongside components and systems helps visualize infrastructure footprint and enables tooling around them.
 
-For more details on how to use this entity, please refer to the detailed docs here.
+For more details on how to use this entity, please refer to the [detailed docs](/docs/internal-developer-portal/catalog/catalog-yaml.md#kind-resource) here.
 
 ### Workflow
 
@@ -54,7 +54,7 @@ Workflows enable developer self-service by automating manual tasks and processes
 
 A Workflow is divided into three key components: Frontend, Backend, and Outputs. **Frontend** defines the input fields required for the workflow. **Backend** configures the actions to be triggered and the orchestration pipelines to be executed. **Outputs** specify the output variables to be shown to developers after execution. You can configure your workflow's frontend and backend by defining specific inputs, actions, and orchestration pipelines.
 
-For more details on how to use this entity, please refer to the detailed docs here.
+For more details on how to use this entity, please refer to the [detailed docs](/docs/internal-developer-portal/flows/overview.md) here.
 
 ## Harness Platform Entities
 
@@ -78,6 +78,8 @@ IDP 2.0 follows a three-level hierarchical structure. The three levels, or scope
 
 You can configure permissions for each scope. This helps delegate responsibilities to different teams and allows efficient organization and management of resources by providing granular access control that is flexible, scalable, and easy to manage.
 
+Learn more about the [Harness platform hierarchy](https://developer.harness.io/docs/platform/get-started/key-concepts/#account).
+
 ### Account Scope
 
 The **Account Scope** is the highest level. It is your Harness account and encompasses all resources within your subscription. Entities created at the account scope are accessible platform-wide. Permissions for entities or resources created at this level can be modified using granular RBAC and shared across user groups.
@@ -92,8 +94,6 @@ The **Organization Scope** contains related projects, resources, and users withi
 
 The **Project Scope** includes resources for a specific team or project. It enables the creation and management of entities specific to a particular project, separate from the larger organization and account. Entities created at this scope are only available within that project and scoped to the teams that own them.
 <img width="431" alt="Image" src="https://github.com/user-attachments/assets/e1192086-0bc6-45c2-a869-133dd2aff600" />
-
-Learn more about the [Harness platform hierarchy](https://developer.harness.io/docs/platform/get-started/key-concepts/#account).
 
 ## Resources & Scopes
 
