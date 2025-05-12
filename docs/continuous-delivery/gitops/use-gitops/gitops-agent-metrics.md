@@ -12,19 +12,21 @@ All new metrics are available only from gitops-agent version 0.91.0 and upwards.
 
 :::
 
-## Enabling GitOps Agent Metrics Server
+## Overview
 The GitOps Agent exposes internal metrics on port `2112` at the `/metrics` endpoint. These metrics are useful for monitoring the performance and health of the agent, and can be scraped using tools like [Prometheus](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/running-exporters.md).
 
 
-Metrics are enabled by default in the GitOps agent:- 
+Metrics are enabled by default in the GitOps agent and exposed through a Kubernetes Service:- 
 
 - Metrics are served from the agent’s container on port `2112` at `/metrics`.
-- If these metrics are not exposed by default, so you must explicitly [expose](#enabling-gitops-agent-metrics-server) this port.
+- If these metrics are not exposed by default, so you must explicitly [expose](#exposing-metrics-for-scraping) this port.
 - All metrics reset when the GitOps agent pod restarts.
 
-### Exposing Metrics for Scraping
+## Exposing Metrics for Scraping
 
-#### If You Are Using Helm
+This is already done in the default agent installation but here are the configs that control the exposing of metrics for agent.
+
+### Values overrides for helm-based agent installation
 
 1. **Enable metrics service** by setting the following value in your Helm overrides file:
 ```yaml
@@ -52,7 +54,7 @@ helm install harness-agent <chart-path> \
   --set agent.metrics.serviceMonitor.enabled=true
 ```
 
-#### If You used kubernetes manifest to directly install the agent
+### If agent is installed Kubernetes manifests directly
 To expose the metrics port `(2112)` manually, apply the following Kubernetes Service manifest in the same namespace as your GitOps agent:
 ```yaml
 apiVersion: v1
@@ -81,7 +83,7 @@ kubectl port-forward svc/gitops-agent-metrics 2112:2112 -n <your-agent-namespace
 ```
 Visit `http://localhost:2112/metrics` to confirm the metrics endpoint is accessible.
 
-### Available Metrics
+## Available Metrics
 
 | Metric Name | Type | Description | Min. Req. Agent Version |
 | --- | --- | --- | --- |
@@ -101,7 +103,7 @@ Most basic scale issues can be tackled with a combination of either HA(high avai
 
 :::
 
-#### Useful information about task metrics
+### Useful information about task metrics
 The gitops agent has 3 concurrent worker pools controlled by the env vars, `GITOPS_AGENT_NUM_FETCHERS`, `GITOPS_AGENT_NUM_PROCESSORS`, `GITOPS_AGENT_NUM_RESPONDERS`. 
 The **FETCHER** fetches a task from harness, hands it to a **PROCESSOR** and then the result is picked up by a **RESPONDER** and sent back to harness.
 
@@ -137,7 +139,7 @@ To calculate averages for example:
 rate(task_complete_processing_time_sum[5m]) / rate(task_complete_processing_time_count[5m])
 ```
 
-### Example Prometheus Queries (PromQL)
+## Example Prometheus Queries (PromQL)
 
 Based on the above explanations you may also set alerts as required here.
 
