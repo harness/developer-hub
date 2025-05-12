@@ -30,6 +30,7 @@ Before you install Harness Self-Managed Enterprise Edition, you must create a te
 To create a test cluster using eksctl, do the following:
 
 1. Install and configure eksctl. For more information, go to [Installation](https://eksctl.io/installation/) in the eksctl documentation.
+
 2. Save the following to a `sample-demo-cluster.yaml` file.
 
     ```yaml
@@ -60,7 +61,7 @@ To create a test cluster using eksctl, do the following:
           albIngress: true
           appMesh: false
           appMeshPreview: false
-          autoScaler: false
+          autoScaler: true
           awsLoadBalancerController: true
           certManager: false
           cloudWatch: false
@@ -123,9 +124,51 @@ To create a test cluster using eksctl, do the following:
 
 4. Currently, eksctl doesn't have a simple methodology to attach the Amazon EBS CSI driver necessary for create the required Persistent Volumes (PVs). Do the following to create the required PVs:
 
-   1. Create an IAM role for your EKS cluster to utilize the EBS CSI Driver.
+   1. Create an IAM role for your EKS cluster to enable the use of the EBS CSI Driver. You can do this either through the AWS Console or by using the `eksctl` command, as shown below.
+
+      ```
+        eksctl create iamserviceaccount \
+        --name ebs-csi-controller-sa \
+        --namespace <namespace-your-choice> \
+        --cluster <your-cluster-name> \
+        --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
+        --approve \
+        --role-name AmazonEKS_EBS_CSI_DriverRole \
+        --region <your-region>
+      ```
 
    2. Enable the EBS CSI Driver for your EKS cluster.
+
+      2.1 Associate OIDC Provider (if not done yet)
+    
+        ```     
+          eksctl utils associate-iam-oidc-provider \
+          --region <your-region> \
+          --cluster <your-cluster-name> \
+          --approve
+        ```
+      2.2 Install EBS CSI Driver
+
+        If you're using Amazon EKS add-ons:
+
+        ```
+          aws eks create-addon \
+          --cluster-name <your-cluster-name> \
+          --addon-name aws-ebs-csi-driver \
+          --service-account-role-arn arn:aws:iam::156272853481:role/AmazonEKS_EBS_CSI_DriverRole \
+          --region <your-region>
+        ```
+
+        Or via eksctl:
+
+        ```
+          eksctl create addon \
+          --name aws-ebs-csi-driver \
+          --cluster <your-cluster-name>  \
+          --service-account-role-arn arn:aws:iam::156272853481:role/AmazonEKS_EBS_CSI_DriverRole \
+          --force \
+          --region <your-region>
+        ```
 
 eksctl should automatically configure a Kubernetes config for your kubectl within your terminal session. If not, ensure you have a connection to your new cluster. For more information, go to [Getting started with Amazon EKS – AWS Management Console and AWS CLI](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html#eks-configure-kubectl) in the AWS EKS documentation.
 
@@ -134,39 +177,39 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
 1. Create a namespace for your deployment.
 
    ```
-   kubectl create namespace harness
+   kubectl create namespace harness-aws
    ```
 
-2. Download the latest [Harness Helm charts](https://github.com/harness/helm-charts/releases). The harness charts will look like `harness-<version_number>`.
+2. Download the latest [Harness Helm charts](https://github.com/harness/helm-charts/releases). The harness charts will look like `harness-<version_number>.tgz`.
 
-3. Open the `harness/values.yaml` file in any editor, and modify the following values.
+3. Open the `harness/values.yaml` file in any editor or create a new override file, and modify the following values.
 
-  ```yaml
-    global:
-      ingress:
-        enabled: "true"
-  ```
+    ```yaml
+      global:
+        ingress:
+          enabled: "true"
+    ```
 
-  Search for `loadbalancerURL` in `global` config set to "" 
+    Search for `loadbalancerURL` in `global` config set to "" 
 
-  ```yaml
-    global:
-      loadbalancerURL: ""
-  ```
+    ```yaml
+      global:
+        loadbalancerURL: ""
+    ```
 
-  Search for `hosts` in `global.ingress` set to ""
+    Search for `hosts` in `global.ingress` set to ""
 
-  ```yaml
-    global:
-      ingress:
-        hosts: ""
+    ```yaml
+      global:
+        ingress:
+          hosts: ""
 
-  ```
+    ```
 
 4. Install the Helm chart.
 
     ```
-    helm install harness harness/ -f override-demo.yaml -n harness
+      helm install harness harness/ -f override-demo.yaml -n harness
     ```
 
    AWS EKS can create and attach Elastic Load Balancers as a Kubernetes Resource. For more information, go to [Application load balancing on Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html) in the EKS documentation. 
@@ -483,35 +526,36 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
     harness-ingress-controller   LoadBalancer   10.100.130.107   af5b132b743fb4318947b24581119f1b-1454307465.us-east-2.elb.amazonaws.com   10254:32709/TCP,80:32662/TCP,443:32419/TCP   38s
     ```
 
-7. Open the `harness/values.yaml` file in any editor and modify the following values.
+8. Open the `harness/values.yaml` file in any editor and modify the following values.
 
-  ```yaml
-    global:
-      ingress:
-        enabled: "true" 
-  ```
+    ```yaml
+      global:
+        ingress:
+          enabled: "true" 
+    ```
 
-  and update your `loadbalancerURL` and `hosts` as shown below
+    Update your `loadbalancerURL` and `hosts` as shown below:
 
-  ```yaml
-    global:
-      loadbalancerURL: "https://<YOUR_ELB_ADDRESS>"
-  ```
+    ```yaml
+      global:
+        loadbalancerURL: "https://<YOUR_ELB_ADDRESS>"
+    ```
 
-  ```yaml
-    global:
-      ingress:
-        hosts: "<YOUR_ELB_ADDRESS>"
-  ```
+    ```yaml
+      global:
+        ingress:
+          hosts: "<YOUR_ELB_ADDRESS>"
+    ```
 
-8. Upgrade the Helm deployment, applying your new ELB as the load balancer to your configuration.
+9. Upgrade the Helm deployment, applying your new ELB as the load balancer to your configuration.
 
    ```
     helm upgrade harness harness/ -f override-demo.yaml -n harness
    ```
 
-9.  Navigate to the sign up UI at `https://<YOUR_ELB_ADDRESS>/auth/#/signup` to create your admin user.
-10. Complete to the post-install next steps.
+10.  Navigate to the sign up UI at `https://<YOUR_ELB_ADDRESS>/auth/#/signup` to create your admin user.
+
+11. Complete to the post-install next steps.
 
 import Postinstall from '/docs/self-managed-enterprise-edition/shared/post-install-next-steps.md';
 

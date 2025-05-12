@@ -24,9 +24,9 @@ Before proceeding with the configuration, ensure you have:
 
 ## Basic Configuration Parameters
 
-This YAML provides the essential configuration required to get your Self-Managed Platform (SMP) up and running quickly. It includes the minimum set of parameters needed to deploy and access the platform in your environment. 
+This YAML file has the basic settings you need to start using the Self-Managed Platform (SMP) quickly. It includes the minimum required details to install and access the platform in your setup.
 
-Ideal for initial setup and testing, this configuration can later be extended using `values.yaml` based on your infrastructure.
+It's a good starting point for setup or testing, and you can later update it with more settings using the values.yaml file from the [Harness Helm charts](https://github.com/harness/helm-charts/releases) (available in the harness-[version].tgz package) to fit your environment.
 
 ```yaml
 global:
@@ -59,7 +59,7 @@ global:
 
 ## Module Enablement
 
-To enable and configure different modules in Harness SMP. Each module provides specific functionality and can be enabled based on your requirements.
+Harness modules are separate parts of the platform, each designed for a specific purpose. To use them in Self-Managed Harness (SMP), choose the module as per your requirement from the list below and add it to your YAML file.
 
 The Platform module is the core of Harness and includes essential services. It is always enabled by default and cannot be disabled. Other modules (such as CD, CI, etc.) can be toggled on or off using `enabled: true/false` flags.
 
@@ -115,7 +115,7 @@ To configure AWS Application Load Balancer (ALB) and AWS Network Load Balancer (
   **1. Create Namespace**
   
   ```bash
-    kubectl create namespace harness
+    kubectl create namespace harness-alb
   ```
 
   **2. Configure ALB**
