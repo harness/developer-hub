@@ -26,7 +26,7 @@ Metrics are enabled by default in the GitOps agent and exposed through a Kuberne
 
 This is already done in the default agent installation but here are the configs that control the exposing of metrics for agent.
 
-### Values overrides for helm-based agent installation
+### Values overrides for Helm-based Agent Installation
 
 1. **Enable metrics service** by setting the following value in your Helm overrides file:
 ```yaml
@@ -54,7 +54,7 @@ helm install harness-agent <chart-path> \
   --set agent.metrics.serviceMonitor.enabled=true
 ```
 
-### If agent is installed Kubernetes manifests directly
+### For Agent installed through Kubernetes manifests directly
 To expose the metrics port `(2112)` manually, apply the following Kubernetes Service manifest in the same namespace as your GitOps agent:
 ```yaml
 apiVersion: v1
@@ -114,9 +114,10 @@ The **FETCHER** fetches a task from harness, hands it to a **PROCESSOR** and the
 `task_execution_time` is the time a **PROCESSOR** worker actually spent on the task, i.e. it is the time in between the above two channels once a **PROCESSOR** picks up a task.
 
 `task_complete_processing_time` is the overall time spent by the task within the agent. 
-This time is broken down further into 3 parts:
+This is the sum of the above 3 metrics:
 
 `task_receiver_channel_blocked_time + task_execution_time + task_response_sender_channel_blocked_time` 
+
 This sum usually is equal to `task_complete_processing_time` for each task.
 
 This information can be used to debug instances where the obvious reason why the gitops agent is taking too long is not clear.
