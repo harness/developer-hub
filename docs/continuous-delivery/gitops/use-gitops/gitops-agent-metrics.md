@@ -19,7 +19,7 @@ The GitOps Agent exposes internal metrics on port `2112` at the `/metrics` endpo
 Metrics are enabled by default in the GitOps agent and exposed through a Kubernetes Service:- 
 
 - Metrics are served from the agent’s container on port `2112` at `/metrics`.
-- If these metrics are not exposed by default, so you must explicitly [expose](#exposing-metrics-for-scraping) this port.
+- If these metrics are not exposed by default, you must explicitly [expose](#exposing-metrics-for-scraping) this port.
 - All metrics reset when the GitOps agent pod restarts.
 
 ## Exposing Metrics for Scraping
@@ -87,7 +87,7 @@ Visit `http://localhost:2112/metrics` to confirm the metrics endpoint is accessi
 
 | Metric Name | Type | Description | Min. Req. Agent Version |
 | --- | --- | --- | --- |
-| `entities_count` | Gauge | Number of entities being managed by the GitOps agent, labeled by entity type. | v0.91.0 |
+| `entities_count` | Gauge | Number of entities being managed by the GitOps agent, grouped by label "entity_type". | v0.91.0 |
 | `task_complete_processing_time` | Histogram | Time a task spends in the agent from fetch to response.  | v0.91.0 |
 | `http_request_duration` | Histogram | Time taken to complete HTTP requests to Harness. | v0.91.0 |
 | `http_request_payload_size` | Histogram | Size (in bytes) of payloads sent in HTTP requests. | v0.91.0 |
