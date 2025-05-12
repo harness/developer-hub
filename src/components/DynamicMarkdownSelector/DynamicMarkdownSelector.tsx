@@ -1,8 +1,9 @@
-/**
- * DynamicMarkdownSelector Component
- *
- * Renders a row of selectable tiles. When a tile is selected, it renders an imported MD module from docs/<module>/content.
- */
+import React, { useState, useEffect } from "react";
+import BrowserOnly from "@docusaurus/BrowserOnly";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import DocVideo from "@site/src/components/DocVideo";
+import "./DynamicMarkdownSelector.css";
 
 declare var require: {
   context(
@@ -13,74 +14,58 @@ declare var require: {
   ): any;
 };
 
-import React, { useState, useEffect } from "react";
-import BrowserOnly from '@docusaurus/BrowserOnly';
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-import DocVideo from "@site/src/components/DocVideo";
-import "./DynamicMarkdownSelector.css";
-
-// Load MD modules from docs/<module>/content
 const mdxCtx = require.context("@site/docs", true, /\/content\/.*\.md$/);
-
 const mdxMap: Record<string, React.ComponentType<any>> = {};
 mdxCtx.keys().forEach((key: string) => {
-  const normalized = '/' + key.replace('./', '');
+  const normalized = "/" + key.replace("./", "");
   mdxMap[normalized] = mdxCtx(key).default;
 });
 
 export interface DynamicMarkdownSelectorProps {
-  options: Record<string, string>; // e.g. { "Docker": "/docs/artifact-registry/content/docker.md" }
+  options: Record<
+    string,
+    {
+      path: string;
+      logo?: string;
+    }
+  >;
 }
 
+// Determine column count for visual balance
+const getGridColumns = (count: number): number => {
+  if (count <= 5) return count;
+  if (count <= 10) return Math.ceil(count / 2);
+  if (count <= 15) return Math.ceil(count / 3);
+  return 5;
+};
+
 const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ options }) => {
-  const labels = Object.keys(options);
   const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, "");
+  const labels = Object.keys(options).sort((a, b) => a.localeCompare(b));
 
   const getInitialSelected = () => {
-    const hash = typeof window !== 'undefined' ? window.location.hash.replace("#", "") : "";
+    const hash = typeof window !== "undefined" ? window.location.hash.replace("#", "") : "";
     const match = labels.find((label) => normalize(label) === normalize(hash));
     return match || labels[0];
   };
 
   const [selected, setSelected] = useState(getInitialSelected());
   const [ContentComp, setContentComp] = useState<React.ComponentType<any> | null>(null);
+  const [search, setSearch] = useState("");
   const [toc, setToc] = useState<{ id: string; text: string; level: number }[]>([]);
 
+  // Update selection if hash changes
   useEffect(() => {
-    if (typeof window !== 'undefined' && !window.location.hash) {
-      const normalized = normalize(selected);
-      window.history.replaceState(null, "", `#${normalized}`);
-    }
-  }, []);
-
-  useEffect(() => {
-    const path = options[selected];
-    const entry = mdxMap[path];
-    if (entry) {
-      setContentComp(() => entry);
-    } else {
-      setContentComp(() => () => <p>Could not find content for <code>{path}</code>.</p>);
-    }
-  }, [selected, options]);
-
-  useEffect(() => {
-    const scrollToHash = () => {
-      if (typeof window === 'undefined') return;
+    const onHashChange = () => {
       const hash = window.location.hash.replace("#", "");
-      if (hash) {
-        setTimeout(() => {
-          const el = document.getElementById(hash);
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }, 0);
-      }
+      const match = labels.find(
+        (label) => normalize(label) === normalize(hash)
+      );
+      if (match) setSelected(match);
     };
-    window.addEventListener("hashchange", scrollToHash);
-    setTimeout(scrollToHash, 0);
-    return () => window.removeEventListener("hashchange", scrollToHash);
-  }, [ContentComp]);
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, [labels]);
 
   useEffect(() => {
     const headings = Array.from(document.querySelectorAll(".markdown-content h2"));
@@ -92,31 +77,78 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
     setToc(newToc);
   }, [ContentComp]);
 
-  const handleTabClick = (label: string) => {
-    setSelected(label);
-    if (typeof window !== 'undefined') {
-      window.history.replaceState(null, "", `#${normalize(label)}`);
+  // Update hash in URL when selection changes
+  useEffect(() => {
+    const path = options[selected]?.path;
+    const entry = mdxMap[path];
+    setContentComp(() =>
+      entry ? entry : () => <p>Could not find content for <code>{path}</code>.</p>
+    );
+  }, [selected, options]);
+
+  useEffect(() => {
+    const hash = normalize(selected);
+    if (typeof window !== "undefined") {
+      window.history.replaceState(null, "", `#${hash}`);
     }
-  };
+  }, [selected]);
+
+  const filteredLabels = labels.filter((label) =>
+    label.toLowerCase().includes(search.toLowerCase())
+  );
+
+  // Determine which labels to show and how many columns
+  const showSearch = labels.length > 12;
+  const displayLabels = showSearch ? filteredLabels : labels;
+  const columns = getGridColumns(displayLabels.length);
 
   return (
     <BrowserOnly>
       {() => (
         <div className="dynamic-markdown-selector">
           <hr className="selector-divider" />
-          <div className="selector-tiles">
-            {labels.map((label) => (
-              <button
-                key={label}
-                className={`selector-tile${selected === label ? " selected" : ""}`}
-                onClick={() => handleTabClick(label)}
-                type="button"
-              >
-                <span>{label}</span>
-              </button>
-            ))}
+          <div className="selector-panel">
+            {showSearch && (
+              <input
+                type="text"
+                placeholder="Search formats..."
+                className="format-search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            )}
+            <div
+              className="selector-grid"
+              style={{
+                gridTemplateColumns: `repeat(${columns}, minmax(140px, 1fr))`,
+              }}
+            >
+              {displayLabels.map((label) => {
+                const entry = options[label];
+                return (
+                  <button
+                    key={label}
+                    className={`selector-card${selected === label ? " selected" : ""}`}
+                    onClick={() => setSelected(label)}
+                    type="button"
+                  >
+                    {entry.logo ? (
+                      <div className="selector-entry">
+                        <img
+                          src={`/provider-logos/${entry.logo}`}
+                          alt={`${label} logo`}
+                          className="selector-icon"
+                        />
+                        <span>{label}</span>
+                      </div>
+                    ) : (
+                      <span className="selector-entry no-logo">{label}</span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-
           {toc.length > 0 && (
             <nav className="runtime-toc">
               <ul>
@@ -128,11 +160,9 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ optio
               </ul>
             </nav>
           )}
-
           <div className="markdown-content">
             {ContentComp && <ContentComp components={{ Tabs, TabItem, DocVideo }} />}
           </div>
-
           <hr className="selector-divider" />
         </div>
       )}

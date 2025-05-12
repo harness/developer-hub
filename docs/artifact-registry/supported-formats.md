@@ -10,8 +10,14 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
 
 <DynamicMarkdownSelector
   options={{
-    Docker: "/artifact-registry/content/docker-quickstart.md",
-    Maven: "/artifact-registry/content/maven-quickstart.md",
+    Docker: {
+      path: "/artifact-registry/content/docker-quickstart.md",
+      logo: "docker-logo.svg"
+    },
+    Maven: {
+      path: "/artifact-registry/content/maven-quickstart.md",
+      logo: "maven-logo.svg"
+    },
   }}
 />
 

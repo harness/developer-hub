@@ -26,7 +26,7 @@ This guide will help you **create a Docker Artifact Registry** in Harness, **con
 </TabItem>
 </Tabs>
 
-:::info private Docker registry
+:::info private docker registry
 This registry will serve as your private Docker registry within Harness.
 :::
 
