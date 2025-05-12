@@ -20,11 +20,12 @@ These are the currently supported registry types.
 - **Gradle:** Streamline your build automation.
 - **SBT (Scala Build Tool):** Tailored for Scala and Java projects.
 
+### Beta
+- **Python:** For all your Python packages.
+- **NPM:** JavaScript package management.
 
 ### Coming Soon
 In addition to the registry types above, support for the following registries will be coming soon!
-- **NPM:** JavaScript package management.
-- **Python:** For all your Python packages.
 - **Go:** Support for Go modules.
 - **NuGet:** .NET package manager.
 - **Debian:** For Debian packages.
