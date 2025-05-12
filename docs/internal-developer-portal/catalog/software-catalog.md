@@ -1,5 +1,5 @@
 ---
-title: Software Catalog Overview
+title: Software Catalog Overview [1.0]
 description: Learn more about the software catalog in Harness IDP
 sidebar_position: 1
 sidebar_label: Overview

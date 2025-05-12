@@ -1,7 +1,7 @@
 ---
 title: How to Add User Groups Directly in the Catalog
 description: Detailed instructions on how to add user groups directly into the IDP Catalog   
-sidebar_label: Ingest User Groups in Catalog
+sidebar_label: Ingest User Groups in Catalog [1.0]
 sidebar_position: 10
 redirect_from:
   - docs/internal-developer-portal/catalog/add-users-in-catalog
