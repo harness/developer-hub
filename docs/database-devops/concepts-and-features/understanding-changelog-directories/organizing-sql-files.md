@@ -1,15 +1,13 @@
 ---
 title: Working with SQL File Directories
 description: Working with SQL File Directories
-sidebar_position: 2
+sidebar_position: 3
 ---
 
-# Working with SQL File Directories
-
-This guide explains how to effectively manage SQL file directories. A well-organized SQL file directory structure is crucial for maintaining database changes
+A well-structured SQL file directory ensures consistent, traceable, and collaborative database change management with Harness DBOps. This guide walks through best practices for organizing SQL changelogs, structuring includeAll blocks, and writing maintainable formatted SQL changesets.
 
 :::tip
-Consider this as an example implementation of our changelog directory structure. For more detailed information about different directory organization patterns and best practices, refer to [Changelog Directory Structure](./changelog-directories-structure.md).
+Consider this as an example implementation of our changelog directory structure.
 :::
 
 ## SQL File Directory Organization
@@ -27,10 +25,10 @@ db/
  │   └── release-2/
  │       ├── 001-add-payment-table.sql
  │       └── 002-alter-users-table.sql
- └──
+ └── application/
 ```
 
-Here the example of above files are as follows:
+Below are sample contents for the files referenced in the folder structure above :
 
 **db/master.yaml**
 ``` yaml
@@ -43,6 +41,9 @@ databaseChangeLog:
       path: changes/release-2/
       relativeToChangelogFile: true
 ```
+
+### Formatted SQL
+In Harness DBOps, we allow seamless integration of formatted SQL files, enabling you to track database changes effectively. Similar to other tools, Harness DBOps uses metadata in the SQL files to help identify and manage changes.
 
 ```SQL
 --liquibase formatted sql
@@ -59,6 +60,7 @@ CREATE INDEX idx_users_mobile ON users(mobile_number);
 ```
 
 SQL files in Liquibase require special comments that contain metadata for tracking changes. Every Liquibase SQL file must begin with the following comment to indicate it contains these structured comments.
+
 ```sql
 --liquibase formatted sql 
 ```
@@ -78,8 +80,9 @@ Notice:
 Using space in author name is not recommended. Prefer to use dot/dash separated names.
 :::
 
-### How to use the include and includeAll tags
-Use the include or includeAll tags in a formatted SQL root changelog to reference other changelog files.
+### `include` and `includeAll` tags
+Liquibase provides two primary tags for referencing other changelog files in your root changelog: include and includeAll. The `include` tag allows you to include a single SQL file in your changelog, while `includeAll` allows you to include multiple SQL files in your changelog.
+
 ```sql
 --liquibase formatted sql
 
@@ -90,15 +93,16 @@ Use the include or includeAll tags in a formatted SQL root changelog to referenc
 --includeAll: changes/release-2/
 ```
 
+Use `includeAll` for releases or environments where speed and scalability are prioritized and Use `include` when explicit control and maintainability are needed, especially in controlled isolated environments.
+
 ### Changeset
 Each changeset in a formatted SQL file begins with a comment of the form:
 ```sql
 --changeset author:id attribute1:value1 attribute2:value2 [...]
 ```
-The changeset comment is followed by one or more SQL statements, separated by semicolons or by the value of the `endDelimiter` attribute.
 
 ### Rollback actions
-Your changesets may include statements to be applied when rolling back the changeset. Rollback statements have the following format:
+If you need to roll back a change, you can specify rollback actions directly in the changeset. These actions will be executed when the changeset is rolled back.
 
 ```sql
 --liquibase formatted sql
@@ -120,3 +124,5 @@ insert into test1 (id,  name) values (2, 'josh');
 :::caution 
 When using SQL format for your changelog files, rollback actions are required. For more information about implementing rollbacks, refer to [Automatic and Custom Rollback](../automatic-and-custom-rollback.md).
 :::
+
+A clear and consistent SQL file structure allow teams to manage database changes with properly formatted SQL files. By following the best practices for directory organization, changeset formatting, spacing, and rollback definitions, you can ensure your changelogs are well-structured, maintainable, and CI/CD-ready.
