@@ -4,8 +4,10 @@ description: Create a Software Component and register it in Software Catalog
 sidebar_position: 3
 ---
 
+Harness IDP 2.0 marks a significant evolution of the Internal Developer Portal, introducing a Harness-native data model tailored for enterprise-scale environments and strong access control. As we transition to this new model, **legacy Backstage YAML** will no longer be supported. Going forward, only the **Harness-native data model** schema will be used and referenced. This guide walks you through the new **Harness-native YAML schema** and outlines the key changes from the previous schema.
+
 ## What's new in IDP 2.0?
-IDP 2.0 implements a Harness-native entity schema featuring targeted adjustments to previous Backstage-style YAML configurations. These changes primarily introduce scope concepts (project, organization, or account) while enhancing readability based on user feedback.
+IDP 2.0 implements a **Harness-native entity schema** featuring targeted adjustments to previous Backstage-style YAML configurations. These changes primarily introduce scope concepts (project, organization, or account) while enhancing readability based on user feedback.
 
 JSON Schemas for all Catalog entities are available through our API.
 
@@ -39,24 +41,29 @@ These fields define the entity's scope. For project-scoped entities, both fields
 - `metadata` continues to be flexible. You can define your own properties within metadata.
 - `annotations`, `description`, `tags`, `links`, `labels` etc. continue to be part of metadata.
 
-## Migrating to 2.0
+## Converting Existing Entity YAMLs
 
-To simplify migration, we’ve developed an API that converts **Backstage Catalog YAML** to the **Harness Catalog YAML** format. This conversion is also available directly in the **user interface**—simply paste your Backstage Catalog YAML to automatically generate the corresponding Harness format.  
-You can [read more about converting your legacy Backstage YAMLs here](#).
+If you have entities defined using legacy Backstage YAML (from IDP 1.0), you can easily convert them to the new Harness-native data model schema. There are two ways to perform this conversion:
 
-All existing Catalog entities and Workflows will be **automatically migrated** to IDP 2.0. Additionally, a new Git Experience tool will be available to help you **commit these converted definitions directly to their respective YAML files in Git**.
+1. **Using the Harness IDP UI:**
+   Navigate to the **[Harness IDP UI](/docs/internal-developer-portal/catalog/manage-catalog.md#harness-idp-ui)** and open the **YAML view** while creating an entity. Paste your legacy Backstage Catalog YAML, and the system will automatically generate the corresponding Harness-native Catalog YAML.
+   Learn more in the **[Catalog YAML View documentation](/docs/internal-developer-portal/catalog/manage-catalog.md#catalog-yaml)**.
+
+2. **Using the YAML Conversion API:**
+   To streamline migration, we’ve also introduced an API that converts Backstage Catalog YAML to the Harness-native format. \[Read more here.]
+
+All existing Catalog entities will be **automatically migrated** to IDP 2.0, and their associated YAML files will be deprecated. Additionally, a new Git Experience tool will soon be available, allowing you to **commit the converted definitions directly to YAML files in your Git repository**.
+
+![YAML Conversion Preview](./static/yaml-conversion.png)
+
 
 ## Common to All Kinds: The Envelope
 
-The root object of your Catalog YAML file follows a standard structure. Below are the core properties that can be included in your Catalog YAML, as defined in **IDP 2.0**:
-
----
+The root object of your **Catalog YAML** file follows a standard structure. Below are the core properties that can be included in your Catalog YAML, as defined in **IDP 2.0**:
 
 ### `apiVersion`
 
-The `apiVersion` field specifies the version of the specification format that the entity conforms to. It plays a critical role in ensuring compatibility and evolution of the entity schema over time. This field is **mandatory** for every entity definition, as it allows the parser to correctly interpret the structure and content of the entity.
-
-#### 🔄 What’s New with IDP 2.0?
+The `apiVersion` field specifies the **version of the specification format** that the entity conforms to. It plays a critical role in ensuring compatibility and evolution of the entity schema over time. This field is **mandatory** for every entity definition, as it allows the parser to correctly interpret the structure and content of the entity.
 
 With IDP 2.0, we've introduced a Harness-native entity schema. As part of this change, all entities now use an `apiVersion` prefixed with `harness.io/`.
 
@@ -72,21 +79,15 @@ apiVersion: harness.io/v1
 
 The `kind` field defines the **high-level** type of entity being described in the YAML file. When combined with `apiVersion`, it helps the parser understand how to interpret the rest of the entity’s structure and behavior. This field is also **mandatory** for every entity definition.
 
-#### 🔄 Changes to `kind` in IDP 2.0
+With **IDP 2.0**, you can define the following `kind` types in your Catalog YAML:
 
-With **IDP 2.0**, we've introduced several key updates to the `kind` property to align with the new Harness-native schema:
+* `kind: Component`
+* `kind: API`
+* `kind: Resource`
+* `kind: Workflow`
 
-1. **`Template → Workflow`**  
-   `kind: Template` has been renamed to `kind: Workflow`. During migration, all existing entities using `kind: Template` will be automatically updated to `kind: Workflow`.
-
-2. **Deprecated: `System` → Use `Project`**  
-   The `kind: System` entity is now deprecated and replaced with `kind: Project`, better reflecting the Harness project-scoping model.
-
-3. **Deprecated: `Domain` → Use `Org`**  
-   The `kind: Domain` entity has been deprecated and replaced with `kind: Org`, aligning with the organizational hierarchy in Harness.
-
-4. **Deprecated: `Location`**  
-   The `kind: Location` entity is no longer supported. Previously used in IDP 1.0 to reference YAML paths, it often caused conflicts during refresh operations. With all entities now natively managed in Harness, this is obsolete.
+Each kind represents a different type of entity within the Harness-native data model.
+[Read more about the different entity kinds here.](/docs/internal-developer-portal/catalog/catalog-yaml.md#entity-kinds)
 
 ---
 
@@ -96,7 +97,6 @@ The `identifier` field is a **unique, machine-readable** reference for the entit
 
 | **Property**            | **Description**                                                                                       |
 |------------------------|-------------------------------------------------------------------------------------------------------|
-| **Reference in IDP 1.0** | `metadata.name` becomes `identifier`: moved to root level and aligned with Harness Entity YAML.      |
 | **Uniqueness**         | Must be **unique** per `kind` (case-sensitive).                                                      |
 | **Required**           | ✅ Yes, this field is **mandatory** for all entities.                                                 |
 
@@ -104,7 +104,7 @@ This field can be reused after an entity is deleted. It must adhere to the forma
 
 All entity references across the platform use the `identifier`.
 
-Example usage:
+**Example usage:**
 
 ```yaml
 identifier: artist
@@ -114,17 +114,16 @@ identifier: artist
 
 ### `name`
 
-The `name` field represents the display name of the entity shown in the UI.
+The `name` field represents the **display name of the entity** shown in the UI.
 
 | **Property**            | **Description**                                                                                   |
 |------------------------|---------------------------------------------------------------------------------------------------|
-| **Reference in IDP 1.0** | `metadata.title` becomes `name`: moved to root level for better alignment with Harness YAML.      |
 | **Uniqueness**         | Not required to be unique.                                                                        |
 | **Required**           | ❌ No, this field is **optional**.                                                                |
 
 This field supports explanatory or user-friendly strings and may contain special characters.
 
-Example usage:
+**Example usage:**
 
 ```yaml
 name: Artist Service
@@ -134,9 +133,7 @@ name: Artist Service
 
 ### `type`
 
-In IDP 2.0, `spec.type` becomes `type` and is relocated to the root level due to its importance. This field represents the type of entity (e.g., website, service, library, API, etc).
-
-The `kind` and `type` fields together define entity behavior and should always appear together.
+The `type` field represents the type of entity (e.g., website, service, library, API, etc). The `kind` and `type` fields together define entity behavior and should always appear together.
 
 While the catalog accepts any string value here, organizations should maintain a consistent taxonomy. Common examples include:
 
@@ -144,7 +141,7 @@ While the catalog accepts any string value here, organizations should maintain a
 2. `website` - a frontend web application  
 3. `library` - a reusable software component (e.g., npm module, Java library)
 
-Example usage:
+**Example usage:**
 
 ```yaml
 type: service
@@ -154,11 +151,9 @@ type: service
 
 ### `projectIdentifier`
 
-In IDP 2.0, `spec.system` becomes `projectIdentifier`. Legacy **System** entities are now mapped to Harness Projects.
+In IDP 2.0, legacy **System** entities are now mapped to Harness Projects. Thus the `projectIdentifier` field indicates which **project the entity belongs to**. It is **optional** for Org or Account-scope entities, but **required** for those created at the Project scope.
 
-This field indicates which Project the entity belongs to. It is **optional** for Org or Account-scope entities, but **required** for those created at the Project scope.
-
-Example usage:
+**Example usage:**
 
 ```yaml
 projectIdentifier: public-websites
@@ -168,11 +163,9 @@ projectIdentifier: public-websites
 
 ### `orgIdentifier`
 
-In IDP 2.0, `spec.domain` becomes `orgIdentifier`. Legacy **Domain** entities are now mapped to Harness Orgs.
+In IDP 2.0, legacy **Domain** entities are now mapped to Harness Orgs. Thus the field `orgIdentifier` indicates which **Org the entity belongs to**.
 
-This field indicates which Org the entity belongs to.
-
-Example usage:
+**Example usage:**
 
 ```yaml
 orgIdentifier: default
@@ -182,7 +175,7 @@ orgIdentifier: default
 
 ### `owner`
 
-`spec.owner` is now `owner` and maps to Harness Users or User Groups depending on the scope.
+The `owner` field indicates the owner of that entity and maps to Harness Users or User Groups depending on the scope.
 
 While `owner` is not mandatory, it is **strongly recommended** to associate entities with logical owning teams.
 
@@ -194,15 +187,17 @@ While `owner` is not mandatory, it is **strongly recommended** to associate enti
 
 ### `metadata`
 
-A container for auxiliary data that is not part of the entity’s specification. Additional metadata helps enhance platform-level processing or categorization.
+A container for auxiliary data that is not part of the entity’s specification. Additional metadata helps enhance platform-level processing or categorization. See individual entity kind sections for specific structure guidelines. 
+
+Please refer to this guide to learn more about [``metadata``](https://backstage.io/docs/features/software-catalog/descriptor-format#common-to-all-kinds-the-metadata). 
 
 ---
 
 ### `spec`
 
-Defines the actual specification data that describes the entity. This is the core configuration and varies depending on the `kind`. See individual sections for specific structure guidelines.
+Defines the actual specification data that describes the entity. This is the core configuration and varies depending on the `kind`. See individual entity kind sections for specific structure guidelines.
 
-## Entity Types
+## Entity Kinds
 
 ### Kind: Component  
 A **Component** describes a software component. It is typically closely tied to the source code that constitutes the component and is what a developer would typically consider a “unit of software,” usually with a distinct deployable or linkable artifact.
