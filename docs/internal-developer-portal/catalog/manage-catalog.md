@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 The **Software Catalog** is a centralized registry for all your software assets — including components, services, websites, libraries, data pipelines, and more.
 Think of it as a curated directory of all your **entities**, helping you efficiently track ownership, metadata, and dependencies across your entire software ecosystem.
 
-## What’s new for this feature in IDP 2.0?
+## What’s new for Catalog in IDP 2.0?
 Harness IDP 2.0 represents a major evolution of the Internal Developer Portal, built on a Harness-native data model designed for enterprise-scale environments and robust access control. Here's what’s changing in IDP 2.0 for the Software Catalog:
 
 - **Harness-native Platform Hierarchy:** Catalog entities and workflows now support Account, Org, and Project scopes, with built-in, fine-grained RBAC.
@@ -108,3 +108,7 @@ You can also copy the **entity URL** from the same dropdown menu and share it wi
 ![](./static/copy-url.png)
 
 ## Using Scopes & Filters
+With the revamped **Catalog UI**, you can now use various scopes and filters to efficiently track all your applications, services, and other entities. It offers intuitive filtering and a streamlined way to access and manage everything within your Catalog. This update also introduces visibility into scorecard data and scope-level details—right within the Catalog—so you get deeper insights without navigating away.
+
+![](./static/catalog-ui.png)
+
