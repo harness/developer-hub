@@ -200,17 +200,20 @@ To start getting your commitment coverage information you can provide read-only 
     "Statement": [
         {
             "Action": [
+                "ec2:DescribeReservedInstancesOfferings",
+                "ce:GetSavingsPlansUtilization",
+                "ce:GetReservationUtilization",
+                "ec2:DescribeInstanceTypeOfferings",
+                "ce:GetDimensionValues",
+                "ce:GetSavingsPlansUtilizationDetails",
+                "ec2:DescribeReservedInstances",
+                "ce:GetReservationCoverage",
+                "ce:GetSavingsPlansCoverage",
                 "savingsplans:DescribeSavingsPlans",
                 "organizations:DescribeOrganization",
-                "ec2:DescribeReservedInstancesOfferings",
-                "ec2:DescribeReservedInstances",
-                "ec2:DescribeInstanceTypeOfferings",
-                "ce:GetSavingsPlansUtilizationDetails",
-                "ce:GetSavingsPlansUtilization",
-                "ce:GetSavingsPlansCoverage",
-                "ce:GetReservationUtilization",
-                "ce:GetReservationCoverage",
-                "ce:GetDimensionValues"
+                "ce:GetCostAndUsage",
+                "rds:DescribeReservedDBInstancesOfferings",
+                "pricing:GetProducts"
             ],
             "Effect": "Allow",
             "Resource": "*",
@@ -229,11 +232,13 @@ Once you set up the orchestrator and are ready to approve recommendations, you c
         {
             "Action": [
                 "ec2:PurchaseReservedInstancesOffering",
-                "ec2:ModifyReservedInstances",
                 "ec2:GetReservedInstancesExchangeQuote",
+                "ec2:AcceptReservedInstancesExchangeQuote",
                 "ec2:DescribeReservedInstancesModifications",
-                "ec2:DescribeInstanceTypeOfferings",
-                "ec2:AcceptReservedInstancesExchangeQuote"
+                "ec2:ModifyReservedInstances",
+                "savingsplans:DescribeSavingsPlansOfferings",
+                "savingsplans:CreateSavingsPlan",
+                "rds:PurchaseReservedDBInstancesOffering"
             ],
             "Effect": "Allow",
             "Resource": "*",
