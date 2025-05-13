@@ -18,6 +18,10 @@ Learn how to set up and manage all supported Artifact Registry formats within Ha
       path: "/artifact-registry/content/maven-quickstart.md",
       logo: "maven-logo.svg"
     },
+    Generic: {
+      path: "/artifact-registry/content/generic-quickstart.md",
+      logo: "generic-logo.svg"
+    }
   }}
 />
 
