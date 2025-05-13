@@ -1,96 +1,218 @@
 ---
-title: Get Started with Catalog [2.0]
+title: Get Started with Catalog
 sidebar_position: 3
-sidebar_label: Get Started with Catalog [2.0]
+sidebar_label: Get Started with Catalog
+redirect_from: /docs/internal-developer-portal/get-started/register-a-new-software-component.md
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The **Software Catalog** is a centralized registry for all your software assets — including components, services, websites, libraries, data pipelines, and more. Think of it as a curated directory of all your **entities**, helping you efficiently track ownership, metadata, and dependencies across your entire software ecosystem.
 
-This guide will take you through the key changes for Software Catalog in IDP 2.0 and a basic journey of navigating through the Catalog by creating an entity and populating your Catalog. 
+<Tabs queryString="version">
+<TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
 
-## What’s new for Software Catalog in IDP 2.0?
-Harness IDP 2.0 represents a major evolution of the Internal Developer Portal, built on a Harness-native data model designed for enterprise-scale environments and robust access control. Here's what’s changing in IDP 2.0 for the Software Catalog:
+The **Software Catalog** is a centralized registry of all your software assets — including components, services, websites, libraries, data pipelines, and more. Think of it as a curated directory of your **entities**, helping you efficiently track ownership, metadata, and dependencies across your software ecosystem.
 
-- **Harness-native Platform Hierarchy:** Catalog entities now support Account, Org, and Project scopes, with built-in, fine-grained RBAC.
+This guide walks you through the key changes introduced in IDP 2.0 and explains how to navigate the Catalog by creating and managing entities.
 
-- **No YAML Required:** Create and modify entities directly within the UI—no need to manage YAML files or deal with Git operations.
+## What’s New in IDP 2.0?
 
-- **Revamped Catalog UI:** A fresh user experience featuring an updated Catalog table with filters, enhanced navigation, and a built-in entity creation interface.
+Harness IDP 2.0 introduces a major upgrade to the Software Catalog. Built on a Harness-native data model, it is designed to support enterprise-scale needs with robust access control. Key improvements include:
+
+* **Harness-native Platform Hierarchy:** Entities now support Account, Org, and Project scopes with fine-grained RBAC controls.
+* **No YAML Required:** Entities can be created and managed entirely via the UI—no manual YAML editing or GitOps needed.
+* **Revamped UI:** A modern interface featuring updated Catalog tables, advanced filtering, smooth navigation, and inline entity creation.
 
 ## Prerequisites
-Before getting started with Software Catalog in IDP 2.0, ensure you have the following prerequisites: 
-- **IDP 2.0** is deployed behind the `IDP_2_0` Feature Flag in Harness IDP. Please ensure you have enabled the same in your account before you get started with the IDP 2.0 features. To enable this feature, contact Harness Support.
-- You must an understanding of the IDP 2.0 Catalog Data Model and Catalog YAML. 
 
-## Create an Entity 
-In IDP 2.0, you can create new entities directly from the Harness IDP UI —eliminating the need to manually manage YAML files. With this release, "inline entities" are fully supported, allowing you to manage the entire entity lifecycle through the UI or APIs—no Git operations required. Learn more about Harness IDP entities and scopes here in the Catalog Data Model. 
+Before using the Software Catalog in IDP 2.0, ensure:
 
-There are two ways for you to add and create a new entity in your catalog:
-- **Create an entity via the Harness IDP UI**: Use the Harness UI to create entities directly—no YAML required. This method offers a streamlined, code-free experience for adding entities.
-- **Create an entity using your catalog YAML**: You can still create entities using your existing catalog YAML files. Harness will automatically convert legacy Backstage YAML into the new Harness Catalog Entity Model and register the corresponding entity.
+* **IDP 2.0** is enabled behind the `IDP_2_0` Feature Flag. Contact Harness Support to enable it on your account.
+* You are familiar with the **Catalog Data Model** and **Catalog YAML** structure.
 
-Let's try creating a **Component** in the Catalog using both the methods: 
+## Create an Entity
 
-<Tabs>
-  <TabItem value="UI" label="Harness IDP UI">
-  To create a new **Component** entity, navigate to the Harness IDP portal and click on **“Create”** from the side-bar menu. Choose **Component** from the panel, and follow these steps:
-  1. You’ll be redirected to the **"Visual View"**, where you can input entity details and begin the creation process.
-  2. Enter the required entity information. The **Visual view** is synced in real-time with the **YAML view** for full transparency.
-  3. Define the **entity scope** — choose whether the entity should reside at the Account, Project, or Organization level. For this use-case, let's select the Account scope. Read more about Catalog RBAC.
-  4. Click on **“Review YAML”** to view the auto-generated YAML. Since there's a live sync between the Visual and YAML views, changes in one will reflect in the other. 
-  
-  :::info
-  **Note:** **YAML validation** is performed to ensure compatibility with the **Harness-native Catalog YAML** model. Any errors will be shown in the Validation logs.
+In IDP 2.0, entity creation is simplified with full UI support and optional YAML-based creation. Entities are now “inline,” which means their entire lifecycle can be managed through the UI or API, without Git integration.
 
-  ![](./static/yaml-validation.png)
-  :::
+There are two ways to create a new entity:
 
-  5. If needed, **configure a plugin** by referring to its documentation and adding the required annotations in the Catalog YAML.
-  ![](./static/plugins-entity.png)
-  6. Once everything is set, click **“Create Component”** to finalize and create the entity.
-  ![](./static/yaml-view.png)
+* **Via the Harness IDP UI** – A no-code, user-friendly method.
+* **Using Catalog YAML** – Ideal for teams preferring YAML-based workflows or migrating from Backstage.
+
+Let’s walk through both methods using a **Component** entity as an example:
+
+  <Tabs groupId="creating Entity">
+    <TabItem value="UI" label="Harness IDP UI">
+
+To create a **Component** via the UI:
+
+1. Navigate to the Harness IDP portal and click **“Create”** in the sidebar.
+2. Select **Component** from the available options.
+3. You’ll enter the **Visual View**, where you can fill out entity details interactively.
+4. Specify the **Entity Scope** (Account, Org, or Project). For this example, choose **Account scope**. [Read more about Catalog RBAC](#).
+5. Click **“Review YAML”** to view the synchronized YAML. Changes in the Visual View reflect live in the YAML View.
+
+6) If applicable, configure a plugin by referring to its documentation and adding the necessary **annotations** in the Catalog YAML.
+
+![](./static/plugins-entity.png)
+
+7. Once completed, click **“Create Component”** to finalize and register the entity.
+
+![](./static/yaml-view.png)
+
   </TabItem>
+
   <TabItem value="YAML" label="Catalog YAML">
-  To create a new entity using the Catalog YAML, navigate to the Harness IDP portal and click **“Create”** from the side-bar menu. Choose **Component** from the panel.
-  
-  :::info
-  If you have a **legacy Backstage YAML**, you can still use it to create an entity. Harness will automatically convert it into the native **Catalog Entity Model** format.
-  :::
 
-1. You’ll be redirected to the **Visual View**. You can switch to the **YAML View** using the toggle at the top of the screen. This allows you to directly edit the entity's YAML definition.
-![](./static/yaml-way.png)
-2. If you’re using a **legacy Backstage YAML**, paste it into the YAML view. Harness will convert it into the **Harness-native format** automatically. You can then proceed to finalize and create the entity. Since the Visual and YAML views are **live-synced**, changes made in one view will reflect in the other.
-![](./static/yaml-conversion.png)
+To create a Component using Catalog YAML:
 
-:::info
-Note: **YAML validation** is automatically performed to ensure compatibility with the **Harness-native Catalog YAML model**. Any validation errors will be displayed in the Validation Logs.
-![](./static/yaml-validation.png)
-:::
-3. You can select the scope of the Workflow by either switching to the **Visual View** and selecting the scope from there. Or you can add **projectId** or **orgId** in the YAML to specify the project / org scope of the Workflow. Read more about the same here. 
+1. Navigate to **Create** in the sidebar, and select **Component**.
+2. In the **Visual View**, switch to **YAML View** via the toggle at the top.
+   ![](./static/yaml-way.png)
+3. Paste your existing Backstage YAML if available. Harness will auto-convert it into the native format.
+   ![](./static/yaml-conversion.png)
 
-4. If needed, **configure a plugin** by referring to the plugin’s documentation and adding the appropriate **annotations** in the Catalog YAML.
-5. Once all details are complete, click **“Create Component”** to finalize and register your entity in the catalog.
+4) Specify the **Entity Scope** either in YAML (`projectId`, `orgId`) or via the Visual View.
+5) Add any plugin configurations by including the relevant **annotations**.
+6) Click **“Create Component”** to complete the process and register your entity.
+
   </TabItem>
 </Tabs>
 
-## Populate your Catalog
+---
+
+## Populate Your Catalog
+
+To scale your catalog, continue adding components, APIs, resources, and workflows using either the UI or YAML method. This helps you centralize visibility and access for your teams.
+
+---
 
 ## Delete an Entity
-You can also **delete** any existing entity from the Software Catalog.
 
-Here’s how to do it:
-1. Navigate to your Catalog and select the entity you want to delete.
-2. In the entity details view, click the three-dot menu in the top-right corner.
-3. From the dropdown, select Delete. The entity will be removed from the catalog.
+You can remove any entity from the Catalog using the steps below:
 
-## Next Steps 
-Now that you've created an entity, populated your Catalog and also deleted an entity - you're well versed with the basics of a Software Catalog. Here's what you can do next to understand and start using Catalog: 
-1. Understand and read through the Catalog Data Model if not done already to understand the Catalog entities. 
-2. Read through and form an understanding of the Catalog YAML. 
-3. Populate your Catalog at scale by following the guide here.
-4. You can also configure and manage a custom Catalog UI. 
+1. Open the Software Catalog and locate the entity to delete.
+2. Click the three-dot menu on the entity card or details view.
+3. Select **Delete** from the dropdown. The entity will be permanently removed.
 
+---
+
+## Next Steps
+
+Now that you've learned how to create, populate, and delete Catalog entities, here’s what to explore next:
+
+1. Deep dive into the **Catalog Data Model** to understand entity types and relationships.
+2. Learn the structure of **Catalog YAML** and how to author compliant definitions.
+3. Follow the [guide to scale your Catalog](#) across teams and services.
+4. Customize and manage a **custom Catalog UI** for tailored workflows.
+
+</TabItem>
+<TabItem value="IDP 1.0" label="IDP 1.0">
+## Introduction
+
+In Harness IDP, software components represent entities within your organization's ecosystem, such as services, libraries, APIs, or other resources. These components are defined in a `catalog-info.yaml` file, which describes their metadata, ownership, relationships, and lifecycle.
+
+Let's start by adding your software components to IDP. To do this, create a `catalog-info.yaml` file in your Git repository and register its URL to add the component to your catalog.
+
+<DocVideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
+
+## Create a new catalog-info.yaml
+
+1. To add a software component, you need to create a `catalog-info.yam` file in its repository. In the case of a mono-repo, this file should be created at the root of the repository. While the file can technically reside anywhere (e.g., `.harness/catalog-info.yaml`), placing it in a standard location ensures consistency. You can use the following YAML code as a template:
+
+```YAML
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-new-service
+  description: Description of my new service
+  tags:
+    - java
+  links:
+    - url: https://admin.example-org.com
+      title: Admin Dashboard
+      icon: dashboard
+      type: admin-dashboard
+spec:
+  type: service
+  lifecycle: production
+  owner: team-a
+  system: project-x
+```
+
+Following are the key fields that you must update:
+
+- `metadata.name`. This should be a unique name for your component. Usually, it is the name of the service.
+- `metadata.description` - A description for your new component.
+- `spec.type` - The new software component could be a `service`, `library`, `website`, or any other type.
+- `spec.owner` - The user group identifier of the team that owns the component.
+
+2. Once the file is created in your Git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml`.
+
+## Register the software component
+
+1. Next, navigate to your Harness IDP module, and from the left navigation menu, select **Register**.
+
+![](./static/register-url.png)
+
+<Tabs queryString="Git-Provider">
+<TabItem value="other-git-provider" label="Other Git Providers">
+
+2. Enter the URL to your new `catalog-info.yaml`.
+
+![](static/url-on-register-page.png)
+
+</TabItem>
+<TabItem value="harness-code-repo-enabled" label="Harness Code Repository">
+
+2. Copy the URL for `catalog-info.yaml` and paste it on the field to Register the component. 
+
+![](./static/register-software-component-hcr.gif)
+
+</TabItem>
+</Tabs>
+
+3. Select **Import**.
+
+![](static/finished-state.png)
+
+The new component will be available in your catalog.
+
+![](static/imported-entity.png)
+ 
+
+## Delete/Unregister Software Components
+
+1. Navigate to the Catalog page and select Component under Kind. Here, we will deregister the software component registered above.
+
+![](./static/navigate-componenet-new.png)
+
+2. Select the component name you want to Unregister from the list
+3. Now on the component overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+
+![](./static/unregister-entity.png)
+
+4. Now on the Dialog box select **Unregister Location**.
+
+![](./static/Unregister-location.png)
+
+5. This will delete the software component.
+
+## Troubleshooting 
+
+#### Failed to register
+
+If, after registering an entity, you're unable to find the same in your catalog, check the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab, wait a few minutes for registration to complete. If it's under the **Failed** tab. Try re-registering the entity.
+
+![](./static/devtools.png)
+
+#### Missing required fields/Invalid YAML schema.
+
+In case of a `InputError`, check for `missingProperty` details and add the required property to your `catalog-info.yaml`.
+
+![](./static/invalid-schema.png)
+</TabItem>
+</Tabs>
 
 
