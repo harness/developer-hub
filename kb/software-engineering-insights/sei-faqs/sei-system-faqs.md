@@ -50,3 +50,22 @@ Now you can switch between existing BA profiles from the profile selection optio
 ### What is the idle session timeout, and is there a non-idle session timeout?
 
 The idle session timeout is currently set to 3 hours. This means that when a user is inactive for 3 hours, the user interface (UI) will automatically log them out and terminate their session.
+
+
+### How can I control access to Software Engineering Insights (SEI) at the project level?
+You can control access to SEI at the project level using Role-Based Access Control (RBAC). SEI supports restrictions for collections and Insights within specific projects.
+
+### Is it possible to restrict SEI permissions to avoid granting account-wide access to all users?
+Yes, SEI allows you to restrict permissions at the project level to prevent granting access across all projects. This ensures alignment with your organization’s access policies.
+
+### What is the recommended approach for mapping infrastructure IDs with workflow stages in SEI 1.0?
+In SEI 1.0, we recommend continuing to use the existing configuration to map infrastructure IDs with the appropriate workflow stage when working with profiles.
+
+### Are there any planned improvements in SEI 2.0 related to mapping infrastructure IDs?
+Yes, in SEI 2.0, we plan to bring asset definitions entirely into the team settings. This change aligns directly with the use case of mapping infrastructure IDs and should significantly simplify the setup process moving forward.
+
+### How can I change the permissions for product groups so they can only manage specific collections in Harness?
+To limit product groups' access to specific collections, create a resource group at the project level and add the required collections to it. Then, assign this resource group to the user group. Ensure that you do not provide view access at the account level, but only at the project level for the resource group.
+
+### Why doesn't the project-level permission setup for collections and insights work for Workflows in SEI?
+Currently, only collections, insights, and configuration are supported for RBAC in SEI at the project level. Workflows fall under configuration and are managed at the account level, so the project-level permission does not apply to workflows.
