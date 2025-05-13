@@ -1,8 +1,8 @@
 ---
-title: Manage Catalog UI [2.0]
+title: Manage Catalog UI
 description: Detailed description on how to create and add information on Additional Info Card in Overview age of software components
 sidebar_position: 4
-sidebar_label: Manage Catalog UI [2.0]
+sidebar_label: Manage Catalog UI
 redirect_from: 
   - /docs/internal-developer-portal/catalog/add-links-docs.md
   - /docs/internal-developer-portal/catalog/custom-card.md
