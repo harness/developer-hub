@@ -17,6 +17,29 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 :::
 
+
+
+## May 2025
+
+### Version: 1.31.0
+
+#### New features and enhancements
+
+- SLSA generation and verification steps now support both image tags and digests, enhancing traceability and artifact validation across pipelines.
+Note: When modifying existing pipelines, you must manually remove the digest from the YAML configuration to ensure compatibility with the updated functionality.
+
+- Added [API support](https://apidocs.harness.io/tag/Integration-Step-Config) for the VM to configure step resources and settings (e.g., syft, cdxgen, CycloneDX, SPDX) at the account, org, or project level.
+
+- Added native support for Vault integration in Harness Cloud to securely inject and manage secrets during pipeline executions.
+
+
+#### Fixed Issues
+
+- Fixed a bug where the license filters (e.g., contains, starts with) were not functioning as expected on the Artifacts page.
+- When integrations were manually edited and saved, the scheduled nextIterations were being skipped. This has been fixed by updating the nextIterations upon manual edits ( ZD-82987, ZD-83068).
+- Resolved an issue where repositories onboarded via API were not being displayed on the integration page.
+- Fixed an issue where, if an image name included a digest, the Supply Chain and Artifacts pages displayed the digest instead of the corresponding tag.
+
 ## April 2025
 
 ### Version: 1.29.0
