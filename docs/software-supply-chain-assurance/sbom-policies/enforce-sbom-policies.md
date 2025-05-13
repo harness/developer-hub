@@ -41,12 +41,6 @@ The **SBOM Policy Enforcement** step has the following settings:
 
 * **Source**: Select the Source by choosing either a supported container registry from the list or Repository.
 
-:::warning Deprecation Alert
-
-Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the SBOM Policy Enforcement step.
-
-:::
-
 import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifact-source.md';
 
 <ArtifactSource />
