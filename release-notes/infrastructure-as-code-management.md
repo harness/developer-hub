@@ -1,7 +1,7 @@
 ---
 title: Infrastructure as Code Management release notes
 sidebar_label: Infrastructure as Code Management
-date: 2025-04-14T10:00
+date: 2025-05-13T10:00
 tags: [Infrastructure as Code Management]
 sidebar_position: 17
 ---
