@@ -49,7 +49,7 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 - Artifact signing and verification steps now support non-container artifacts (such as Helm charts, JARs, WARs, and manifest files) enhancing artifact integrity and security before deployment.
 - Added [API support](https://apidocs.harness.io/tag/Integration-Step-Config) to configure step resources and settings (e.g., syft, cdxgen, CycloneDX, SPDX) at the account, org, or project level, with options to run steps in parallel or sequentially. 
-- Registry domain URLs for artifacts stored in JFrog and Kubernetes registries no longer need to be specified, as the domain is already included in the connector URL. In all SCS steps only the image name is required.
+- Registry domain URLs for artifacts stored in JFrog and Kubernetes registries no longer need to be specified, as the domain is already included in the connector URL. In all SCS steps only the image name is required
  
 Example:
 
