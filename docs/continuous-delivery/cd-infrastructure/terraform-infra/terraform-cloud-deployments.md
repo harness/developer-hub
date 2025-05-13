@@ -324,7 +324,7 @@ cat <+policyChecksJson."id">
 
 ## Open Policy Agent (OPA) policy support
 
-Harness now fetches and evaluates Open Policy Agent (OPA) policies **alongside** Sentinel policies in your Terraform Cloud Run step. Any **mandatory** OPA policy failure will automatically fail the pipeline stage.
+Harness now fetches and evaluates Open Policy Agent (OPA) policies **alongside** Sentinel policies in your Terraform Cloud Run step. 
 
 :::note
 Currently, this feature is behind the feature flag `CDS_TF_POLICY_EVALUATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -332,9 +332,17 @@ Currently, this feature is behind the feature flag `CDS_TF_POLICY_EVALUATION`. C
 
 **Behavior**
 - When the flag is enabled, Harness invokes the Terraform Cloud **Task Stages** and **Policy Evaluations** APIs to pull down both Sentinel and OPA policy results.  
-- Results for OPA policies appear under a new **Open Policy Agent (OPA)** section in the step logs—immediately below the existing **Policy Check** section.  
+- Results for OPA policies appear under a **Policy Evaluation** section in the step logs.
 - **Enforcement levels**: OPA policies support two enforcement types—**Advisory** (warnings only, run continues) and **Mandatory** (fail the run unless overridden).  
 - **Override support**: For policies marked as `overridable`, you can let the run continue despite a mandatory OPA failure by selecting the **Continue on Soft Mandatory Policy evaluation result** checkbox in the Terraform Cloud Run step UI (or via the corresponding API action).
+
+:::info 
+Any **mandatory** OPA policy failure will automatically fail the pipeline stage.
+:::
+
+:::warning
+**Policy checks** are deprecated and will be permanently removed in August 2025. We recommend that you start using policy evaluations to avoid disruptions. [Learn more](https://developer.hashicorp.com/terraform/cloud-docs/api-docs/policy-checks)
+:::
 
 ## Terraform Cloud Rollback step
 
