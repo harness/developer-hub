@@ -41,9 +41,9 @@ The **SBOM Policy Enforcement** step has the following settings:
 
 * **Source**: Select the Source by choosing either a supported container registry from the list or Repository.
 
-:::warning Deprecation Alert
+:::note
 
-Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the SBOM Policy Enforcement step.
+When modifying the existing SLSA steps, you must manually remove the digest from the YAML configuration to ensure compatibility with the updated functionality.
 
 :::
 

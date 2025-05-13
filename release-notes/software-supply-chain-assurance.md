@@ -25,20 +25,21 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 #### New features and enhancements
 
-- SLSA generation and verification steps now support both image tags and digests, enhancing traceability and artifact validation across pipelines.
-Note: When modifying existing pipelines, you must manually remove the digest from the YAML configuration to ensure compatibility with the updated functionality.
+- SLSA generation and verification steps now support both image tag and digest, enhancing traceability and artifact integrity validation across pipelines.
+
+  **Note**: When modifying the existing SLSA steps, you must manually remove the digest from the YAML configuration to ensure compatibility with the updated functionality.
 
 - Added [API support](https://apidocs.harness.io/tag/Integration-Step-Config) for the VM to configure step resources and settings (e.g., syft, cdxgen, CycloneDX, SPDX) at the account, org, or project level.
 
-- Added native support for Vault integration in Harness Cloud to securely inject and manage secrets during pipeline executions.
+- Added support for Vault integration in Harness Cloud to securely manage secrets during pipeline executions.
 
 
 #### Fixed Issues
 
-- Fixed a bug where the license filters (e.g., contains, starts with) were not functioning as expected on the Artifacts page.
-- When integrations were manually edited and saved, the scheduled nextIterations were being skipped. This has been fixed by updating the nextIterations upon manual edits ( ZD-82987, ZD-83068).
-- Resolved an issue where repositories onboarded via API were not being displayed on the integration page.
-- Fixed an issue where, if an image name included a digest, the Supply Chain and Artifacts pages displayed the digest instead of the corresponding tag.
+- Fixed a bug where the license filters (e.g., contains, starts with) were not functioning as expected on the Artifacts page (SCS-3308).
+- Fixed an issue where manually edited and saved integrations were skipping their scheduled next Iterations.This has been resolved by updating next Iterations upon manual edits. ( ZD-82987, ZD-83068) (SCS-3708).
+- Resolved issue where repositories onboarded via API were not being displayed on the integration page (SCS-3642).
+- Fixed issue in the SBOM Orchestration step where, if an image name included a digest, the Supply Chain tab and Artifacts page displayed the digest in the corresponding tag field(SCS-3675).
 
 ## April 2025
 
