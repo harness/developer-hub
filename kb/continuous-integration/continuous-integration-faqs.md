@@ -1893,7 +1893,7 @@ If the same code is used in multiple pipelines, it would leverage the existing c
 With this in mind, unless there are changes to [the relevant code or test](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview/#how-does-test-intelligence-work), Test Intelligence will end up skipping the tests
 
 This can be observed with the following log
-![image](../static/testintelligence-blank.png)
+![image](./static/testintelligence-blank.png)
 
 
 
