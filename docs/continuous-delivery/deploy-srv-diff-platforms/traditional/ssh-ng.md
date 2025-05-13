@@ -151,7 +151,7 @@ Write down hosts as a comma separated list.
 
 ### Filtering Hosts by Attributes
 
-This setting is available when you select **Select preconfigured hosts from Physical Data Center** under select hosts and select **Filter by host attributes**
+This setting is available when you pick **Select preconfigured hosts from Physical Data Center** under **Select hosts** and select **Filter by host attributes**
 
 :::note
 Currently, this feature is behind the feature flag `CDS_PDC_HOST_ATTRIBUTES_MATCHING_CRITERIA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -174,7 +174,7 @@ Under **Preview Hosts**, you can see what hosts match the condition.
 <details>
 <summary>Example of how filtering hosts by attributes works</summary>
 
-Suppose you have two hosts specified in your physical data centre
+Suppose you have two hosts specified in your physical data center
 
 ```json
 // Host‑1
