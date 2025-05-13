@@ -43,7 +43,7 @@ This table summarizes the environment variables used across different **Build-on
 | `PLUGIN_TAR_PATH`            | Used when in build-only mode to provide a path for in which to save the tarball image (if exporting as a `.tar` file).                                                                    |  BuildX + Kaniko                                     |
 | `PLUGIN_SOURCE_TAR_PATH`     |  Used when in push-only mode, to provide a Path to a local tarball image to be pushed.                                                                                                       |  BuildX + Kaniko                                     |
 | `PLUGIN_SOURCE_IMAGE`        | Used when in push-only mode, in case you need to retag and push.                                                                                    |  BuildX + Kaniko                                     |
-| `PLUGIN_DAEMON_OFF`          | Runs BuildX in daemonless mode, commonly used for Kubernetes builds in conjunction with a docker daemon provisioned in a Background step (DIND)| BuildX only                    |
+| `PLUGIN_DAEMON_OFF`          | Runs BuildX in daemonless mode, commonly used for Kubernetes builds in conjunction with a docker daemon provisioned in a Background step (DIND).| BuildX only                    |
 
 In the sections below, we will cover the following build and push image workflows: 
 - Build-only
@@ -68,31 +68,19 @@ This mode builds a Docker image locally without pushing it to a registry. For in
   - `PLUGIN_TAR_PATH`: `Path for saving the image as tar archive (Optional)` (e.g. /folder/image.tar) - if you choose to build a tarball image
 
 ```YAML
-  runtime:
-  type: Cloud
-  spec: {}
-  stages:
-    - stage:
-        name: build_scan_push
-        identifier: build_scan_push
-        type: CI
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
-              - step: null
-                identifier: BuildAndPushDockerRegistry_1
-                type: BuildAndPushDockerRegistry
-                name: docker build only
-                spec:
-                  connectorRef: CONNECTOR
-                  repo: REPO_NAME
-                  tags:
-                    - new-nopush-<+pipeline.sequenceId>-build-x
-                  caching: true
-                  envVariables:
-                    PLUGIN_NO_PUSH: 'true'
-
+  - step: 
+      type: BuildAndPushDockerRegistry
+      name: docker build only
+      identifier: BuildAndPushDockerRegistry_1
+      spec:
+        connectorRef: YOUR_DOCKER_CONNECTOR
+        repo: YOUR_DOCKER_REPO_NAME
+        tags:
+          - v.-<+pipeline.sequenceId>
+        caching: true #DLC on - required for using BuildX builder.
+        envVariables:
+          PLUGIN_NO_PUSH: 'true' # build-only mode
+          PLUGIN_TAR_PATH: /PATH/TO/TAR # (optional) set in case you wish to export a tarball file. 
 ```
 </TabItem>
 <TabItem value="Kubernetes" label="Kubernetes">
