@@ -115,7 +115,7 @@ To configure AWS Application Load Balancer (ALB) and AWS Network Load Balancer (
   **1. Create Namespace**
   
   ```bash
-    kubectl create namespace harness-alb
+  kubectl create namespace harness-alb
   ```
 
   **2. Configure ALB**
@@ -198,7 +198,7 @@ To configure AWS Application Load Balancer (ALB) and AWS Network Load Balancer (
   ```bash
   kubectl get ingress -n harness
   ```
-  > Note the ADDRESS field, which will be your ALB DNS name.
+  > Note the ADDRESS field will be your ALB DNS name.
 
   **6. Update Configuration**
   
