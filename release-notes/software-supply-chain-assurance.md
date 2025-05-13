@@ -37,7 +37,7 @@ These release notes describe recent changes to Harness Supply Chain Security.
 #### Fixed Issues
 
 - Fixed a bug where the license filters (e.g., contains, starts with) were not functioning as expected on the Artifacts page (SCS-3308).
-- Fixed an issue where manually edited and saved integrations were skipping their scheduled next Iterations.This has been resolved by updating next Iterations upon manual edits. ( ZD-82987, ZD-83068) (SCS-3708).
+- Fixed an issue where manually edited and saved integrations were skipping their scheduled next Iterations.This has been resolved by updating next Iterations upon manual edits. ( [ZD-82987](https://support.harness.io/hc/en-us/requests/82987), [ZD-83068](https://support.harness.io/hc/en-us/requests/83068)) (SCS-3708).
 - Resolved issue where repositories onboarded via API were not being displayed on the integration page (SCS-3642).
 - Fixed issue in the SBOM Orchestration step where, if an image name included a digest, the Supply Chain tab and Artifacts page displayed the digest in the corresponding tag field(SCS-3675).
 

@@ -41,11 +41,6 @@ The **SBOM Policy Enforcement** step has the following settings:
 
 * **Source**: Select the Source by choosing either a supported container registry from the list or Repository.
 
-:::note
-
-When modifying the existing SLSA steps, you must manually remove the digest from the YAML configuration to ensure compatibility with the updated functionality.
-
-:::
 
 import ArtifactSource from '/docs/software-supply-chain-assurance/shared/artifact-source.md';
 
