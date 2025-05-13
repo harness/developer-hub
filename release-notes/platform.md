@@ -130,6 +130,14 @@ The following deprecated API endpoints are longer supported:
 
 ## May 2025
 
+### Version 1.89.x <!--May 13, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where the value for a reference-type secret was missing during policy evaluation. With this fix, the value is now passed correctly, ensuring that policy evaluation is no longer skipped.[PL-62417]
+- Resolved a problem where deleted variables did not reflect correctly in Resource Groups. Now, if a variable is deleted, it will also be removed from any associated Resource Groups.[PL-60850]
+- Updated the **User Group APIV2** to align with actual API behavior. The `UserInfo` object sample response previously listed all attributes; it now correctly displays only the subset of fields returned by the API. [PL-62617] 
+
 ### Version 1.88.x <!--May 5, 2025-->
 
 #### Fixed issues
