@@ -9,12 +9,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import RiskProfile from '/docs/continuous-delivery/verify/shared/risk-profile.md'
 
-:::important
-When creating a Dynatrace query:
-- Mark the service as a key request.
-- Ensure that the entity selector for metrics is a service or service method.
-:::
-
 import BeforeYouBegin from '/docs/continuous-delivery/verify/configure-cv/health-sources/static/before-you-begin.md';
 
 <BeforeYouBegin />
