@@ -11,7 +11,7 @@ redirect_from:
 
 ## Introduction
 
-In this tutorial we will be using the catalog metadata ingestion APIs to add additional metadata for the software components in the catalog, display them in the component overview page using [additional info card](/docs/internal-developer-portal/catalog/custom-card) and track the values ingested using [Scorecard](https://developer.harness.io/docs/internal-developer-portal/scorecards/custom-data-sources). 
+In this tutorial we will be using the catalog metadata ingestion APIs to add additional metadata for the software components in the catalog, display them in the component overview page using [additional info card](/docs/internal-developer-portal/catalog/catalog-ui.md#adding-an-additional-info-card) and track the values ingested using [Scorecard](https://developer.harness.io/docs/internal-developer-portal/scorecards/custom-data-sources). 
 
 <DocImage path={require('./static/ccp-usecase.png')} />
 
@@ -213,7 +213,7 @@ In case you want to display the same information you have ingested on your Overv
 ![](./static/add-additional-info-card.png)
 
 
-2. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/custom-card)
+2. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/catalog-ui.md#adding-an-additional-info-card)
 
 ![](./static/additional-info-card-new.png)
 
