@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## Enable Tracing in Harness Services
 
-The following Harness services support OpenTelemetry tracing:
+The following Harness services(Platform, CD, CI, IACM, SSCA) support OpenTelemetry tracing:
 
 - access-control, harness-manager, ng-manager, platform-service, pipeline-service, ci-manager, sto-manager, cv-nextgen, iacm-manager, audit-event-streaming, debezium-service, template-service, idp-service, ssca-manager.
 
