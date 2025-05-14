@@ -141,7 +141,8 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Secure" }, { value: "beta" }],
         title: "Secure Connect",
-        description: "Enables encrypted, secure tunnel between the Harness Cloud network and your private network, to safely use Harness Cloud build infrastructure with privately-hosted assets, such as internal artifacts repositories and code repositories.",
+        description: "Enables an encrypted, secure tunnel between the Harness Cloud network and your private network, allowing you to safely use Harness Cloud infrastructure with privately-hosted assets such as internal artifact or code repositories."
+      ,
       },
 
 
