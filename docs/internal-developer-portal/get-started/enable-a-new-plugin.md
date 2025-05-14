@@ -1,5 +1,5 @@
 ---
-title: Enable a plugin
+title: Enable a Plugin
 description: Learn how to enable a plugin in Harness IDP and use it in your software catalog.
 sidebar_position: 4
 redirect_from:

@@ -10,6 +10,10 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="version">
 <TabItem value="IDP 2.0 (New)" label="IDP 2.0 (New)">
 
+:::tip For IDP 2.0 Customers
+If you're using Harness IDP 2.0, please ensure you have reviewed the [IDP 2.0 Overview guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md) and are familiar with the key steps for [upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md). To enable IDP 2.0, you must raise a support ticket to activate the `IDP_2_0` feature flag for your account.
+:::
+
 **Service and Infrastructure onboarding** in today’s world is slow, manual and tedious. Developers often spend days—or even weeks—setting up new software and completing Day-2 operations. This inefficiency arises from either waiting for ticket resolutions (TicketOps) or manually handling repetitive tasks, which results in a poor developer experience and decreased productivity.
 
 Harness IDP addresses these challenges with **Self-Service Workflows**.
@@ -28,16 +32,16 @@ Harness IDP 2.0 represents a major evolution of the Internal Developer Portal, b
 
 - **No YAML Required:** Create and modify Workflows directly within the UI—no need to manage YAML files or deal with Git operations
 
-## Prerequisites
+## Prerequisites (IDP 2.0)
 Before getting started with **Workflows** in IDP 2.0, ensure you have the following prerequisites: 
-- **IDP 2.0** is deployed behind the `IDP_2_0` Feature Flag in Harness IDP. Please ensure you have enabled the same in your account before you get started with the IDP 2.0 features. To enable this feature, contact Harness Support.
-- You must have an understanding of **Managing Workflows** and **Workflow YAML** to understand the components of a Workflow.
-- You can/should have a Harness Pipeline. This serves as an orchestrator for Self Service Workflows. Read more about setting up Harness IDP Pipelines here. 
+* You have reviewed the **[IDP 2.0 Overview](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** and **[Upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)** guide. 
+* **IDP 2.0** is enabled behind the `IDP_2_0` Feature Flag. Contact **[Harness Support](https://support.harness.io)** to enable it on your account.
+* You should have a clear understanding of **[Managing Workflows](/docs/internal-developer-portal/flows/manage-workflow-2o.md)** and **[Workflow YAML](/docs/internal-developer-portal/flows/worflowyaml.md)** to effectively configure and use the components of a Workflow.
+* It's recommended to have a **Harness Pipeline** in place, which acts as the orchestrator for Self-Service Workflows.
+  Learn more about **[setting up Harness IDP Pipelines here](/docs/internal-developer-portal/flows/harness-pipeline.md)**.
 
-## Create a Harness IDP Pipeline
-
-## Create a Workflow
-In IDP 2.0, you can create **Workflows** directly from the Harness IDP UI —eliminating the need to manually manage YAML files. With this release, "inline workflows" are fully supported, allowing you to manage the entire workflow lifecycle through the UI or APIs—no Git operations required. Learn more about Self Service Workflows here. 
+## Create a Workflow (IDP 2.0)
+In IDP 2.0, you can create **Workflows** directly from the Harness IDP UI —eliminating the need to manually manage YAML files. With this release, "inline workflows" are fully supported, allowing you to manage the entire workflow lifecycle through the UI or APIs—no Git operations required. Learn more about **[Self Service Workflows](/docs/internal-developer-portal/flows/overview.md)** here. 
 
 There are two ways for you to add and create a new Workflow in your IDP:
 - **Create a Workflow via the Harness IDP UI**: Use the Harness UI to create Workflows directly—no YAML required. This method offers a streamlined, code-free experience for adding entities.
@@ -50,9 +54,12 @@ Let's try creating a **Workflow** using both the methods:
   To create a new **Workflow**, navigate to the Harness IDP portal and click on **“Create”** from the side-bar menu. Choose **Workflow** from the panel, and follow these steps:
   1. You’ll be redirected to the **"Visual View"**, where you can input basic Workflow details and begin the creation process.
   2. Enter the required Workflow information. The **Visual view** is synced in real-time with the **YAML view** for full transparency.
-  3. Define the **Workflow scope** — choose whether the Workflow should reside at the Account, Project, or Organization level. For this use-case, let's select the Account scope. Read more about Workflow RBAC.
+  ![](./static/workflow-1.png)
+  3. Define the **Workflow scope** — choose whether the Workflow should reside at the Account, Project, or Organization level. For this use-case, let's select the Account scope. Read more about [Workflow RBAC](/docs/internal-developer-portal/rbac/workflow-rbac.md).
+  ![](./static/workflow-scope.png)
   4. Click on **“Review YAML”** to view the auto-generated YAML. Since there's a live sync between the Visual and YAML views, changes in one will reflect in the other. 
-  5. You can make changes to the Workflow YAML and configure it accordingly. You can configure different inputs, add backend actions and outputs to configure the Workflow. Read more about the components of a Workflow and Workflow YAML here. 
+  5. You can configure your Workflow by editing the YAML directly—add inputs, backend actions, and outputs as needed. This allows you to fully customize the Workflow behavior. Learn more about the [components of a Workflow](/docs/internal-developer-portal/flows/worflowyaml.md#components-of-workflow-yaml) and its [YAML structure](/docs/internal-developer-portal/flows/worflowyaml.md#workflow-yaml-definition) here.  
+  ![](./static/workflow-yaml.png)
   
   :::info
   **Note:** **YAML validation** is performed to ensure compatibility with the **Harness-native Data Model**. Any errors will be shown in the Validation logs.
@@ -67,8 +74,11 @@ Let's try creating a **Workflow** using both the methods:
   :::
 
 1. You’ll be redirected to the **Visual View**. You can switch to the **YAML View** using the toggle at the top of the screen. This allows you to directly edit the Workflow's YAML definition.
+![](./static/yaml-view-workflows.png)
 2. If you’re using a **legacy Backstage YAML**, paste it into the YAML view. Harness will convert it into the **Harness-native format** automatically. You can then proceed to finalize and create the Workflow. Since the Visual and YAML views are **live-synced**, changes made in one view will reflect in the other.
-3. You can select the scope of the Workflow by either switching to the **Visual View** and selecting the scope from there. Or you can add **projectId** or **orgId** in the YAML to specify the project / org scope of the Workflow. Read more about the same here. 
+![](./static/workflow-yaml-conversion.png)
+3. Define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#orgidentifier)** directly in the YAML to set the project or organization scope.
+![](./static/workflow-scope.png)
 4. You can make changes to the **Workflow YAML** and configure it accordingly. You can configure different inputs, add backend actions and outputs to configure the Workflow. Read more about the components of a Workflow and Workflow YAML here. 
 
 :::info
@@ -79,21 +89,43 @@ Note: **YAML validation** is automatically performed to ensure compatibility wit
   </TabItem>
 </Tabs>
 
+## Execute Workflows (IDP 2.0)
 
-## Execute Workflows
-Once you've created a Workflow, you can **execute** the Workflow by going to the Workflow details page. You can access the Workflow from two places: 
-1. You can find the respective Workflow from the Catalog, and click on it to go to the Workflow details page. Click on "Launch" from there to execute the Workflow. 
-2. You can go to the "Workflows" page and access the Workflow from there. Click on "Launch" to execute the Workflow. 
+Once you've created a Workflow in IDP 2.0, you can **execute** it from the Workflow details page. There are two ways to access the Workflow:
 
-## Delete a Workflow
-You can also delete a Workflow by going to the **Workflows** page, clicking on the three dots on the top right corner of the Workflow you want to delete and selecting "Delete Workflow". 
+1. **From the Catalog**:
+   * Navigate to the Catalog and locate the relevant Workflow.
+   * Click on the Workflow to open its details page.
+   * Click **Launch** to execute the Workflow.
 
-## Next Steps
+![](./static/execute-workflows-1.png)
+
+2. **From the Workflows Page**:
+   * Go to the **Workflows** section from the main navigation.
+   * Find and select the desired Workflow.
+   * Click **Launch** to execute it.
+
+![](./static/execute-workflows-2.png)
+
+## Delete a Workflow (IDP 2.0)
+To delete a Workflow:
+* Go to the **Workflows** page.
+* Locate the Workflow you want to remove.
+* Click the **three-dot menu** (•••) in the top-right corner of the Workflow card.
+* Select **Delete Workflow** from the dropdown.
+
+![](./static/delete-workflow.png)
+
+
+## Next Steps (IDP 2.0)
+Now that you've learned how to create and manage a Workflow, here's what to explore next:
+1. Deep dive into the [Workflow YAML](/docs/internal-developer-portal/flows/worflowyaml.md)
+2. Learn how to configure [Inputs](/docs/internal-developer-portal/flows/flows-input.md), [Actions](/docs/internal-developer-portal/flows/custom-actions.md) and [Outputs](/docs/internal-developer-portal/flows/outputs.md) in a Workflow. 
+3. Explore how to [setup a Harness IDP Pipeline](/docs/internal-developer-portal/flows/harness-pipeline.md).
+4. Learn how to [configure RBAC](/docs/internal-developer-portal/rbac/workflow-rbac.md) for Workflows.
 
 </TabItem>
 <TabItem value="IDP 1.0" label="IDP 1.0">
-
-## Introduction
 
 This quickstart tutorial will guide you through setting up a Workflow in IDP to automate GitHub repository onboarding for users. While this tutorial uses GitHub as the git provider, the same steps can be applied to other git providers as well.
 
@@ -103,7 +135,7 @@ We now have a [new Workflows homepage](/docs/internal-developer-portal/layout-an
 
 :::
 
-## Pre-requisite
+## Prerequisites (IDP 1.0)
 
 ### Add Connector
 
@@ -119,7 +151,7 @@ Make sure the Connector URL used here is pointed towards the org where you want 
 
 :::
 
-### Create Harness Pipeline with IDP Stage
+### Create Harness Pipeline with IDP Stage (IDP 1.0)
 
 A Harness Pipeline serves as an orchestrator for IDP Workflows. 
 
@@ -181,7 +213,7 @@ curl -L \
 ```
 
 
-## Create Workflow
+## Create Workflow (IDP 1.0)
 
 The Workflow is defined in a YAML file named `workflow.yaml`. The [syntax](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates) of the template definition is owned by [backstage.io](https://backstage.io/docs/features/software-templates/writing-templates) while the workflow runs on a Harness pipeline of your choice.
 
@@ -276,7 +308,7 @@ parameters:
 
 11. Copy the above Workflow file in your git provider, replace the value of `input.url` under `steps` with the Harness pipeline URL you created and save it as `workflow.yaml`. 
 
-## Register Workflow in IDP
+## Register Workflow in IDP (IDP 1.0)
 
 12. In the left navigation, select **Workflows**, and then select **Register New Workflow**.
 
@@ -294,7 +326,7 @@ parameters:
 
 ![](static/workflowquickstart.png)
 
-## Use Workflows to Create a Repo
+## Use Workflows to Create a Repo (IDP 1.0)
 
 16. Once you're on the entity page for Workflow, **Launch the Workflow**.
 
@@ -310,7 +342,7 @@ parameters:
 
 ![](static/create-repo-run.png)
 
-## Delete the Workflow
+## Delete the Workflow (IDP 1.0)
 
 If you want to unregister or delete the Workflow follow the steps mentioned [here](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#deleteunregister-template). 
 
