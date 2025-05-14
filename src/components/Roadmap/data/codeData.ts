@@ -6,7 +6,7 @@ export const codeData: Horizon = {
     description: "Q2 2025, May-July 2025",
     feature: [
       {
-        tag: [{ value: "Security" }],
+        tag: [{ value: "Secure" }],
         title: "SSH Support",
         description: "Support for Git operations via SSH.",
       },
@@ -23,22 +23,22 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Integrations" }],
         title: "Atlassian Jira Marketplace Application",
-        description: "First-class support for Jira in Atlassian Marketplace, allowing users to surface relevant commits and PRs in Jira issues.",
+        description: "First-class support for Jira with Atlassian Marketplace application, allowing users to surface relevant commits and PRs in Jira issues.",
       },
       {
         tag: [{ value: "Governance" }],
         title: "Enforce Signed-Commits",
-        description: "Ensure that all repository commits are signed by a known developer",
+        description: "Ensure that all repository commits are signed by a known developer.",
       },
       {
         tag: [{ value: "Governance" }],
         title: "Push Rules",
-        description: "Introducing protection push rules for repositories to enforce compliance and security standards",
+        description: "Introduce push protection rules to enforce compliance and security standards.",
       },
       {
         tag: [{ value: "Governance" }],
         title: "Tag Rules",
-        description: "Introducing protection rules for tags to enforce compliance and security standards",
+        description: "Introduce tag protection rules to enforce compliance and security standards.",
       },
  
     ],
@@ -53,14 +53,14 @@ export const codeData: Horizon = {
         description: "Harness Code Repository will support repository forking, allowing developers to create isolated copies of repositories for experimentation, collaboration, or contributing back via pull requests—without impacting the main repository."
       },
       {
-        tag: [{ value: "Reliable" }],
+        tag: [{ value: "Developer Experience" }, { value: "Reliability" }],
         title: "Merge Queue for Pull Requests",
-        description: "Harness Code will support a merge queue to boosts development velocity by automatically managing pull request merges into busy branches, ensuring each change is validated and preventing broken or incompatible commits from reaching the target branch."
+        description: "Harness Code will support a merge queue to boost development velocity by automatically managing pull request merges into busy branches, ensuring each change is validated and preventing broken or incompatible commits from reaching the target branch."
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Repo Insights",
-        description: "Summary insights including PR and commits metrics and security scanning results.",
+        description: "Summary insights including PR and commit metrics and security scanning results.",
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -80,7 +80,7 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Harness AI" }],
         title: "Automated Code Review",
-        description: "AI powered code review suggestions to improve developer efficiency.",
+        description: "AI-powered code review suggestions to improve developer efficiency.",
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -89,7 +89,7 @@ export const codeData: Horizon = {
       },
       {
         tag: [{ value: "Developer Experience" }],
-        title: "Pipeline view",
+        title: "Pipeline View",
         description: "Visualize all CI pipeline runs for a repository, branch, or pull request.",
       },
       {
@@ -105,12 +105,12 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Developer Experience" }],
         title: "Commit Graph",
-        description: "Visualize git commit-graph within code repository",
+        description: "Visualize the Git commit graph within the code repository.",
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Chat Integration",
-        description: "Integrate Slack and MS Teams with Pull Request workflow.",
+        description: "Integrate Slack and MS Teams with the Pull Request workflow.",
       },
     ],
   },
