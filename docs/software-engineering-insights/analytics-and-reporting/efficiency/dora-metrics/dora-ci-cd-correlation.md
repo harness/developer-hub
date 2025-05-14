@@ -113,95 +113,50 @@ For more complex setups, particularly those involving multiple tools or requirin
 
 Implementing this involves creating a [Custom CI/CD integration](/docs/software-engineering-insights/setup-sei/configure-integrations/custom-cicd/sei-custom-cicd-integration) in SEI and adding custom script logic to your Jenkins pipeline. This script sends build artifact information to SEI via a POST request.
 
-Here's an example of how you might implement this in your Jenkins pipeline:
+We suggest a standardized, maintainable approach:
 
-```bash
-pipeline {
-    agent any
+* Use Jenkins environment variables (e.g. `env.JOB_NAME`, `env.BUILD_NUMBER`) to dynamically construct payloads
+* Follow a reusable script pattern that can be copied across jobs or teams
+* Ensure all required fields are captured, to enable proper correlation across CI, CD, and SCM in SEI
+* Ensure unique build execution i.e. `job_full_name + build_number` must be globally unique across Jenkins instances.
 
-    tools {
-        // Reference the Docker installation configured in Jenkins Global Tool Configuration
-        dockerTool 'docker-latest'
-    }
-    stages {
-        stage ('Git checkout') {
-            steps {
-                script {
-                    git branch: 'main', credentialsId: 'github_pass', url: 'https://github.com/levelops/GHA-Test'
-                    echo 'checkout jenkins-rnd repo'
-                }
-            }
-        }
-        stage ('Login to Docker Image') {
-            steps {
-                sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
-                echo 'Logged into docker successfully'
-            }
-        }
-        stage ('Build Docker Image') {
-            steps {
-                echo 'Building docker image...'
-                sh "docker build -f python-jenkins/Dockerfile -t py-sample-image-dp ."
-                echo 'Docker image is built'
-            }
-        }
-        stage ('Run Docker Image') {
-            steps {
-                echo 'Running docker image...'
-                sh "docker run py-sample-image-dp"
-            }
-        }
-        stage ('Tag Docker Image') {
-            steps {
-                echo 'Tagging docker image...'
-                sh "docker tag py-sample-image-dp:latest ${DOCKER_USER}/jenkins-poc-declarative-pipeline:${BUILD_NUMBER}"
-                echo 'Provided tag to docker image'
-            }
-        }
-        stage ('Publish Docker image') {
-            steps {
-                echo 'Publishing docker image to hub...'
-                sh "docker push ${DOCKER_USER}/jenkins-poc-declarative-pipeline:${BUILD_NUMBER}"
-                echo 'Docker image is successfully published to docker hub'
-            }
-        }
-        
-        stage ('List Shas') {
-            steps {
-                 script {
-                    def GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
-                    echo  GIT_COMMIT_HASH  
-                 }
-            }
-        }
-        
-        stage ('Submit Execution to SEI') {
-            steps {
-                script {
-                    def apiUrl = "https://app.harness.io/gratis/sei/api/v1/custom-cicd"
-                    def repoUrl = "<SCM_REPOSITORY_URL>"
-                    def instanceUrl = "<JENKINS_INSTANCE_URL>"
-                    def location = "registry.hub.docker.com/<DOCKER_HUB_REPOSITORY>"
-                    def instanceId = '<SEI_CICD_INSTANCE_ID>'
-                    def apiKey = 'Apikey <YOUR_OWN_SEI_API_KEY>'
-                    def buildNumber = env.BUILD_NUMBER
-                    def b_number = buildNumber.toLong()
-                    def GIT_COMMIT_SHAS = <LIST_OF_COMMIT_SHAS_BETWEEN_CURRENT_AND_LAST_SUCCESSFULL_BUILD>
-                    def startTime = <BUILD_START_TIME>
-                    
-                    def payload = '{ \"pipeline\": \"jenkins-declarative-pipeline\", \"user_id\": \"nishith\", \"repo_url\": \"'+repoUrl+'\", \"start_time\": '+ startTime +', \"result\": \"success\", \"duration\": 77000, \"build_number\": '+b_number+', \"instance_guid\": \"'+instanceId+'\", \"instance_name\": \"jenkins-integration-13\", \"instance_url\": \"'+inUrl+'\", \"job_run\": null, \"job_full_name\": \"jenkins-declarative-pipeline\", \"qualified_name\": \"jenkins-declarative-pipeline\", \"branch_name\": \"main\", \"module_name\": null, \"scm_commit_ids\": [ <GIT_COMMIT_SHAS_AS_LIST> ], \"job_run_params\": [ { \"type\": \"StringParameterValue\", \"name\": \"version\", \"value\": 1 }, { \"type\": \"StringParameterValue\", \"name\": \"revision\", \"value\": 1 } ], \"ci\": true, \"cd\": false, \"artifacts\": [ { \"input\": false, \"output\": true, \"type\": \"container\", \"location\": \"'+location+'\", \"name\": \"jenkins-poc-declarative-pipeline\", \"qualifier\": \"'+b_number+'\" } ] }'
-                    
-                    sh "curl -X POST ${apiUrl} --header 'Accept: application/json, text/plain, */*' --header 'Referer: https://app.harness.io/gratis/sei/api' --header 'sec-ch-ua-mobile: ?0' --header 'authorization: ${apiKey}' --header 'Content-Type: application/json' --data '${payload}'"
-                
-                    echo 'Pushed execution detail to SEI...'
-                }
-            }
-        }
-    }
+:::info
+Note that if you have multiple jenkins instances, connect with [Harness Engineering](/docs/software-engineering-insights/sei-support) to get unique instance IDs for each instance.
+:::
+
+To ensure accurate mapping in SEI, your payload must include the following fields:
+
+| Field            | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| `pipeline`       | Name of your Jenkins job. Note that if your pipeline/job names are dynamic, use `env.JOB_NAME` |
+| `job_full_name`  | Full Jenkins job path (use `env.JOB_NAME`)                                 |
+| `qualified_name` | Same as `job_full_name`                                                     |
+| `build_number`   | Jenkins build number (`env.BUILD_NUMBER`)                                  |
+| `user_id`        | Committer or trigger user                                                   |
+| `instance_name`  | Name of the Jenkins instance                                                |
+| `instance_guid`  | Unique ID assigned by Harness for the instance                             |
+| `instance_url`   | Jenkins base URL                                                            |
+| `start_time`     | Epoch (milliseconds) of job start                                           |
+| `duration`       | Duration in milliseconds                                                    |
+| `result`         | Job result: `"success"`, `"failure"`, etc.                                  |
+| `scm_commit_ids` | List of Git SHAs                                                            |
+| `ci` / `cd`      | Set flags appropriately (boolean)                                           |
+| `artifacts`      | Metadata about deployed or built artifacts                                  |
+
+#### Artifact Metadata
+
+```json
+{
+  "input": boolean,
+  "output": boolean,
+  "type": "artifact_type",
+  "location": "<ARTIFACT_LOCATION>",
+  "name": "<ARTIFACT_NAME>",
+  "qualifier": "<ARTIFACT_QUALIFIER>"
 }
 ```
 
-After setting up this custom integration, you'll need to configure Harness CD to consume the artifact information you've sent to SEI. The following details are required to be met in order to set the correlation between Harness CI and Harness CD.
+After setting this up, you'll need to configure Harness CD to consume the artifact information you've sent to SEI. The following details are required to be met in order to set the correlation between Jenkins and Harness CD.
 
 * In your pipeline ensure that you’re using the **Deploy Stage** in Harness CD for artifact deployment.
 
@@ -271,126 +226,50 @@ If you use custom CI/CD tools or Jenkins as both your CI and CD tool but want to
 
 This API can be used to send information related to the artifacts generated during the CI process and those deployed during the CD process. Artifacts act as the mandatory reference point to correlate CI and CD stages when measuring Lead Time.
 
-### Send CI pipeline data to SEI
-
-Here's an example request on how you can send the CD pipeline data i.e. the artifact deployed as part of the CD deployment pipeline execution to SEI.
-
-```bash
-curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \
---header 'Authorization: ApiKey <HARNESS_SEI_API_KEY>' \
---header 'Content-Type: application/json' \
---data '{
-    "instance_guid": "<INSTANCE_GUID>",
-    "job_full_name": "<JOB_FULL_NAME>",
-    "build_number": "<BUILD_NUMBER>",
-    "pipeline": "<PIPELINE_NAME>",
-    "project_name": "<PROJECT_NAME>",
-    "user_id": "<USER_ID>",
-    "repo_url": "<REPO_URL>",
-    "start_time": <START_TIME>,
-    "result": "<RESULT_STATUS>",
-    "duration": <DURATION_IN_MS>,
-    "instance_name": "<INSTANCE_NAME>",
-    "instance_url": "<INSTANCE_URL>",
-    "job_run": null,
-    "qualified_name": "<QUALIFIED_NAME>",
-    "branch_name": "<BRANCH_NAME>",
-    "module_name": null,
-    "scm_commit_ids": [
-        "<COMMIT_ID_1>", "<COMMIT_ID_2>"
-    ],
-    "ci": true,
-    "cd": false,
-    "artifacts": [
-        {
-            "input": false,
-            "output": true,
-            "type": "container",
-            "location": "<ARTIFACT_LOCATION>",
-            "name": "<ARTIFACT_NAME>",
-            "qualifier": "<ARTIFACT_QUALIFIER>"
-        }
-    ],
-    "web_url": "<WEB_URL>"
-}'
-```
-
-### Send CD pipeline data to SEI
-
-Here's an example request on how you can send the CD pipeline data i.e. the artifact information deployed as part of the CD pipeline execution to SEI.
-
-```bash
-curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \
---header 'Authorization: ApiKey <HARNESS_SEI_API_KEY>' \
---header 'Content-Type: application/json' \
---data '{
-    "instance_guid": "<INSTANCE_GUID>",
-    "job_full_name": "<JOB_FULL_NAME>",
-    "build_number": "<BUILD_NUMBER>",
-    "pipeline": "<PIPELINE_NAME>",
-    "project_name": "<PROJECT_NAME>",
-    "user_id": "<USER_ID>",
-    "repo_url": "<REPO_URL>",
-    "start_time": <START_TIME>,
-    "result": "<RESULT_STATUS>",
-    "duration": <DURATION_IN_MS>,
-    "instance_name": "<INSTANCE_NAME>",
-    "instance_url": "<INSTANCE_URL>",
-    "job_run": null,
-    "qualified_name": "<QUALIFIED_NAME>",
-    "branch_name": "<BRANCH_NAME>",
-    "module_name": null,
-    "scm_commit_ids": [
-        "<COMMIT_ID_1>", "<COMMIT_ID_2>"
-    ],
-    "ci": false,
-    "cd": true,
-    "artifacts": [
-        {
-            "input": true,
-            "output": false,
-            "type": "container",
-            "location": "<ARTIFACT_LOCATION>",
-            "name": "<ARTIFACT_NAME>",
-            "qualifier": "<ARTIFACT_QUALIFIER>"
-        }
-    ],
-    "web_url": "<WEB_URL>"
-}'
-```
-
 ### Payload
 
-The payload for both CI and CD data submissions contains several required fields. Here’s a breakdown:
+We suggest a standardized, maintainable approach:
 
-| Field | Data Type | Description |
-| - | - | - |
-| `instance_guid` | string | [UUID (Universally Unique Identifier)](/docs/software-engineering-insights/setup-sei/configure-integrations/custom-cicd/sei-custom-cicd-integration#step-2-generate-a-cicd-instance-guid-associated-with-that-integration) for the CI/CD instance. |
-| `job_full_name` | string | A human-readable identifier for the job, often the same as the pipeline name. |
-| `build_number` | integer | The build number associated with the job execution. |
-| `pipeline` | string | The name of the CI/CD job. |
-| `project_name` | string | Name of the project in which the pipeline is running. |
-| `user_id` | integer | User identifier in string |
-| `repo_url` | string | The URL of the repository related to the job. |
-| `start_time` | integer | Job start time in epoch milliseconds. |
-| `result` | string | The result of the job, either `SUCCESS` or `FAILURE`. |
-| `duration` | integer | Job duration in milliseconds. |
-| `instance_name` | string | The identifier for the CI/CD instance (not the UUID). |
-| `instance_url` | string | URL of the CI/CD tool instance. |
-| `job_run` | object | Information about the job run, including stages, steps, and their results. |
-| `qualified_name` | string | A qualified name for the job, typically the same as the pipeline name. |
-| `branch_name` | string | The branch where the build is triggered |
-| `module_name` | string | Only applicable to Jenkins |
-| `scm_commit_ids` | array of strings | An array of commit ids related to the deployment |
-| `ci` and `cd` | boolean | One is true and the other is false, depending on whether this is for a CI job or a CD job. |
-| `artifacts` | array of objects | An array of information about the job run, including input, output, type, location, name, qualifier, hash, and metadata. |
-| `input` | boolean | False for CI and True for CD |
-| `output` | boolean | True for CI and False for CD |
-| `type` | string | Type of the artifact |
-| `location` | string | URL/location of the output artifact. |
-| `name` | string | Name of the artifact (unique) |
-| `qualifier` | string | Unique version or qualifier for the artifact. (name and qualifier are usually same for non-container based artifacts) |
-| `web_url` | string | Contains the pipeline execution URL |
+* Use Jenkins environment variables (e.g. `env.JOB_NAME`, `env.BUILD_NUMBER`) to dynamically construct payloads
+* Follow a reusable script pattern that can be copied across jobs or teams
+* Ensure all required fields are captured, to enable proper correlation across CI, CD, and SCM in SEI
+* Ensure unique build execution i.e. `job_full_name + build_number` must be globally unique across Jenkins instances.
+
+:::info
+Note that if you have multiple jenkins instances, connect with [Harness Engineering](/docs/software-engineering-insights/sei-support) to get unique instance IDs for each instance.
+:::
+
+To ensure accurate mapping in SEI, your payload must include the following fields:
+
+| Field            | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| `pipeline`       | Name of your Jenkins job. Note that if your pipeline/job names are dynamic, use `env.JOB_NAME` |
+| `job_full_name`  | Full Jenkins job path (use `env.JOB_NAME`)                                 |
+| `qualified_name` | Same as `job_full_name`                                                     |
+| `build_number`   | Jenkins build number (`env.BUILD_NUMBER`)                                  |
+| `user_id`        | Committer or trigger user                                                   |
+| `instance_name`  | Name of the Jenkins instance                                                |
+| `instance_guid`  | Unique ID assigned by Harness for the instance                             |
+| `instance_url`   | Jenkins base URL                                                            |
+| `start_time`     | Epoch (milliseconds) of job start                                           |
+| `duration`       | Duration in milliseconds                                                    |
+| `result`         | Job result: `"success"`, `"failure"`, etc.                                  |
+| `scm_commit_ids` | List of Git SHAs                                                            |
+| `ci` / `cd`      | Set flags based on the pipeline type (boolean)                                           |
+| `artifacts`      | Metadata about deployed or built artifacts                                  |
+
+#### Artifact Metadata
+
+```json
+{
+  "input": boolean,
+  "output": boolean,
+  "type": "artifact_type",
+  "location": "<ARTIFACT_LOCATION>",
+  "name": "<ARTIFACT_NAME>",
+  "qualifier": "<ARTIFACT_QUALIFIER>"
+}
+```
 
 For more information refer to the documentation on setting up [Custom CI/CD integration](/docs/software-engineering-insights/setup-sei/configure-integrations/custom-cicd/sei-custom-cicd-integration). It is recommended to configure the custom CI/CD integration with assistance from [Harness Support](mailto:support@harness.io) to ensure the configuration meets the requirements for CI/CD correlation in lead time.
 
