@@ -134,6 +134,151 @@ Write down hosts as a comma separated list.
 
 :::
 
+### Filtering Hosts by Attributes
+
+This setting is available when you pick **Select preconfigured hosts from Physical Data Center** under **Select hosts** and select **Filter by host attributes**
+
+:::note
+Currently, this feature is behind the feature flag `CDS_PDC_HOST_ATTRIBUTES_MATCHING_CRITERIA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can control whether multiple host‑attribute filters are combined with **OR (match any)** or **AND (match all)** logic.
+
+**Any (default)** – a host is selected if at least one filter condition matches (existing behavior).
+
+**All** – a host is selected only if every filter condition matches.
+
+Specific Attribute: This is where you specify the condition on which the match criteria is checked with. You can specify attributes like region, type, name, etc.
+
+<div align="center">
+  <DocImage path={require('./static/pdc-specify-host.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+<details>
+<summary>Example of how filtering hosts by attributes works</summary>
+
+Suppose you have two hosts specified in your physical data center
+
+```json
+// Host‑1
+{
+  "hostname": "ec2-00-00-01.compute-1.amazonaws.com",
+  "hostAttribute": {
+    "region": "us-east-1",
+    "name": "node-1"
+  }
+}
+
+// Host‑2
+{
+  "hostname": "ec2-00-00-02.compute-1.amazonaws.com",
+  "hostAttribute": {
+    "region": "us-west",
+    "name": "node-5"
+  }
+}
+```
+
+Scenario 1: `matchCriteria: ALL`
+
+**YAML Example for `matchCriteria: ALL`**
+
+```yaml
+infrastructureDefinition:
+  name: pdc
+  identifier: pdc
+  orgIdentifier: default
+  projectIdentifier: project_id
+  environmentRef: env_id
+  deploymentType: Ssh
+  type: Pdc
+  spec:
+    connectorRef: abc
+    credentialsRef: credentials_ref
+    hostFilter:
+      type: HostAttributes
+      spec:
+        value:
+          region: us-east-1
+          name: node-1
+        matchCriteria: ALL
+  allowSimultaneousDeployments: false
+```
+
+- **matchCriteria: ALL** means that **both** conditions must be true for the host to be selected (both `region=us-east-1` **and** `name=node-1`).
+
+**Host‑1**
+- `region`: us-east-1 (matches)
+- `name`: node-1 (matches)
+
+**Selected**: Host‑1 meets both conditions, so it **matches**.
+
+**Host‑2**
+- `region`: us-west (does not match `us-east-1`)
+- `name`: node-5 (does not match `node-1`)
+
+**Not Selected**: Host‑2 does not meet **both** conditions, so it **does not match**.
+
+**Summary for `ALL`**:  
+- **Host‑1** is selected because both `region` and `name` match.  
+- **Host‑2** is not selected because neither `region` nor `name` match.
+
+---
+
+Scenario 2: `matchCriteria: ANY`
+
+**YAML Example for `matchCriteria: ANY`**
+
+```yaml
+infrastructureDefinition:
+  name: pdc
+  identifier: pdc
+  orgIdentifier: default
+  projectIdentifier: project_id
+  environmentRef: env_ref
+  deploymentType: Ssh
+  type: Pdc
+  spec:
+    connectorRef: abc
+    credentialsRef: credentials_ref
+    hostFilter:
+      type: HostAttributes
+      spec:
+        value:
+          region: us-east-1
+          name: node-1
+        matchCriteria: ANY
+  allowSimultaneousDeployments: false
+
+```
+
+- **matchCriteria: ANY** means that **either** condition must be true for the host to be selected (either `region=us-east-1` **or** `name=node-1`).
+
+**Host‑1**
+- `region`: us-east-1 (matches)
+- `name`: node-1 (matches)
+
+**Selected**: Host‑1 meets both conditions, so it **matches**.
+
+**Host‑2**
+- `region`: us-west (does not match `us-east-1`)
+- `name`: node-5 (does not match `node-1`)
+
+**Not Selected**: Host‑2 does not meet either condition, so it **does not match**.
+
+**Summary for `ANY`**:  
+- **Host‑1** is selected because **both** `region` and `name` match.  
+- **Host‑2** is not selected because neither `region` nor `name` matches.
+
+---
+
+Key Takeaways:
+
+- **matchCriteria: ALL**: The host is selected only if **both** conditions are true.
+- **matchCriteria: ANY**: The host is selected if **either** of the conditions is true.
+
+</details>
+
 ### Pre-existing infrastructure
 
 Let's look at an example of setting up an Infrastructure Definition for a pre-existing infrastructure.
