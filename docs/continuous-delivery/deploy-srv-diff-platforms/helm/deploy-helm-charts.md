@@ -683,9 +683,9 @@ Helm chart deployments support versioning and rollback in the same way as standa
 For more information, go to [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
 
 :::info
-**Each canary+full deploy increments** the Helm revision by **2** (e.g. `v1 → v3`).
+**Deployment sequence**: Harness first runs a canary release, then a full release. Helm bumps the revision by 1 on each step, so together they advance it by 2 (e.g. `v1 → v2` [canary] then `v2 → v3` [full]).
 
-On rollback, Harness subtracts 2 from the current revision (e.g. `v3 – 2 = v1`) to restore the last stable release, skipping the deleted canary (`v2`).
+**Rollback**: To revert, Harness subtracts 2 from the current revision (e.g. `v3 – 2 = v1`), skipping the now-deleted canary revision (`v2`).
 :::
 
 ## Trigger the pipeline on a new chart version
