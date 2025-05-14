@@ -8,7 +8,7 @@ This topic addresses some frequently asked questions about Harness Self-Managed 
 
 ## How do I create my Harness account and my first project?
 
-You create your Harness account the first time you use Harness Self-Managed Enterprise Edition. You are automatically assigned the Harness user role, Account Admin. For more information, go to [Create your Harness account](/docs/self-managed-enterprise-edition/get-started/onboarding-guide#create-your-harness-account) and [Create your first project](/docs/self-managed-enterprise-edition/get-started/onboarding-guide#create-your-first-project) in the Onboarding guide.
+You create your Harness account the first time you use Harness Self-Managed Enterprise Edition. You are automatically assigned the Harness user role, Account Admin.
 
 ## How do I deploy Harness modules?
 
