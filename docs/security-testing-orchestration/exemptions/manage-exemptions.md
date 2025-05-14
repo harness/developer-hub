@@ -74,12 +74,7 @@ Always review the **Exemption Details** and consider the **Requested Duration** 
 
 #### Users Can Approve Their Own Exemptions
 
-You can configure whether users are allowed to approve or reject their own exemption requests. This setting is available under **Exemption Settings** on the **Default Settings** page at the **Project**, **Organization**, and **Account** levels.
-
-:::note
-This setting is controlled by the feature flag `STO_EXEMPTION_SETTING`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
-
+You can control whether users are allowed to approve or reject their own exemption requests. This option is available under **Exemption Settings** on the **Default Settings** page at the **Project**, **Organization**, and **Account** levels. To configure this setting, you must have Admin-level permissions at the respective scope.
 
 ### Reject an Exemption Request
 

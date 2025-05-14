@@ -59,12 +59,6 @@ Follow the instructions below to configure the Artifact Signing step.
 * **Artifact Source**: Select the source container registry (e.g., DockerHub, ACR, ECR, etc.).
 
 
-:::warning Deprecation Alert
-
-Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the Artifact Signing step
-
-:::
-
 <Tabs>
 
 

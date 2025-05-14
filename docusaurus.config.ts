@@ -490,7 +490,7 @@ const config: Config = {
         id: 'release-notes',
         path: 'release-notes',
         routeBasePath: 'release-notes',
-        exclude: ['**/shared/**', '**/static/**'],
+        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         sidebarPath: require.resolve('./sidebars-release-notes.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
         async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {

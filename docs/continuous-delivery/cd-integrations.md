@@ -22,6 +22,9 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| `CDS_TEXTAREA_FOR_OVERRIDE_VARIABLES` | Harness now supports viewing full variable values in the Override tab. Users can see and edit entire override values without truncation. **This feature is in Limited GA.** |
+| `CDS_TF_POLICY_EVALUATION` | Harness now fetches Terraform Enterprise OPA policy evaluation results and fails the pipeline stage when a policy evaluation fails, ensuring pipelines correctly enforce OPA policy compliance. **This feature is in Limited GA.** |
+| `CDS_AWS_LAMBDA_ECS_TAG_SUPPORT` | Users can now **create, update, and delete tags** in **AWS Lambda** and **AWS ECS deployments**, ensuring that all specified tags in the YAML manifest are correctly propagated during the deployment process and accurately reflected in the AWS Console. **This feature is in Limited GA.** |
 | `CDS_SERVICE_DASHBOARD_SIMPLIFICATION` | Improves Service Dashboard load time by optimizing API calls and relocating certain data to enhance performance. The service dashboard graph has been moved to the Analytics tab. Users can switch between the **Service** and **Analytics** tabs at the top right of the **Service Dashboard** page. **This feature is in Limited GA.** |
 | `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`                          | Enables customized notifications for all types of Pipeline Notifications and for Webhook-based Centralized Notifications. **This feature is in Limited GA.** |
 | `CDS_SUPPORT_HTTP_HEADER_HTTP_STEP`                           | Allows capturing HTTP response headers, including cookies, as output variables in the HTTP step for use in downstream steps. **This feature is in Limited GA.** |

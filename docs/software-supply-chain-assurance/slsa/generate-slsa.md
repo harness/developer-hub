@@ -30,17 +30,17 @@ The configuration for SLSA Generation and attestation previously handled in the 
 ## SLSA Generation step configuration
 The **SLSA Generation** step enables you to generate SLSA Provenance and optionally attest it. The generated provenance is saved in the [Artifact section](../artifact-view.md) in SCS, while the attestation file is pushed to the configured container registry. This step should be configured immediately after completing your image-building process, as the image digest is required for provenance generation and attestation.
 
-<DocImage path={require('./static/slsa-tab.png')} width="50%" height="50%" />
+<DocImage path={require('./static/slsa-step.png')} width="50%" height="50%" />
 
 Follow the instructions below to configure the **SLSA Generation** step.
 
 - Search and add the **SLSA Generation** step to your pipeline. It is important to place this step immediately after the steps that complete your image-building process, as it requires the artifact digest as input.
 - **Artifact Source**: Configure your artifact source by selecting from the options available in the dropdown menu. You can choose from **DockerHub**, **ECR**, **ACR**, or **GAR**. Select the corresponding artifact source tab below for detailed instructions on configuration.
 
-:::warning Deprecation Alert
+:::info
 
 
-Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the SLSA Generation step.
+When modifying the existing SLSA steps, you must manually remove the digest from the YAML configuration to ensure compatibility with the updated functionality.
 
 :::
 

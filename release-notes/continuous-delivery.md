@@ -53,6 +53,38 @@ Google Container Registry (GCR) is deprecated and scheduled to shut down on **Ma
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+## May 2025
+
+### GitOps Version 1.32, GitOps Agent 0.93
+
+#### Fixed Issues
+
+- Previously, the API for listing repositories on the agent returned all repositories on the agent; now, it only returns repositories that respect the project mapping. (**CDS-109479**, **ZD-82623**)
+- Previously, invalid application sets were flooding the GitOps Agent with update events. This has been fixed. (**CDS-109042**)
+
+### Version 1.88
+
+#### New Features and Enhancements
+
+- Harness now supports viewing full variable values in the Override tab. Users can see and edit entire override values without truncation. Currently, this feature is behind the feature flag `CDS_TEXTAREA_FOR_OVERRIDE_VARIABLES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-92714**)
+
+- Harness now supports native binding of the Tanzu Application Service (TAS) Autoscaler service to your application during rolling deployments. (**CDS-101502**)
+
+- Harness now fetches Terraform Enterprise OPA policy evaluation results and fails the pipeline stage when a policy evaluation fails, ensuring pipelines correctly enforce OPA policy compliance. Currently, this feature is behind the feature flag `CDS_TF_POLICY_EVALUATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.(**CDS-97468, ZD-63823,75769**)
+
+#### Fixed Issues
+
+- Previously, the ASG Wait for Steady State step would error out with **No instance refreshes found for ASG** if the Instance Refresh completed before the step began due to a race condition. The issue is resolved. (**CDS-109659**)
+- Previously, if a serverless deployment pipeline was configured with S3 as the manifest source and the Harness image connector set to ECR, the `download-aws-s3` image wasn’t present in ECR, causing the initialization step to fail with a **not found** error. The issue is resolved. (**CDS-109537, ZD-83368**)
+- Previously, the Terraform Cloud Run step intermittently failed in Harness when running in plan‑only mode, even though the plan completed successfully in Terraform Cloud—causing the step to error out. The issue is resolved. (**CDS-109508, ZD-83111**)
+- Previously, if you added an AwsLambdaFunctionDefinition manifest via the YAML editor in service overrides (Harness File Store), the UI would break with an error and you couldn’t revert the change. The issue is resolved. (**CDS-109383, ZD-83146**)
+- Previously, disabling container log checking for Azure App Service (Web App) deployments had no effect and the log streamer would still initialize even when skipping steady state. The issue is resolved. (**CDS-109381, ZD-82885**)
+- Previously, infrastructure created via webhook auto‑creation did not trigger OPA policy evaluation even when the CDS_OPA_CD_ENTITIES_GOVERNANCE feature flag was enabled, allowing resources to bypass governance checks. The issue is resolved. (**CDS-109227, ZD-82519**)
+- Previously, after successfully deploying an application to an Azure App Service (Web App), the deployment pipeline did not receive the success signal and would time out, blocking further stages. The issue is resolved. (**CDS-109166, ZD-82534**)
+- Previously, event relay triggers failed to initialise when using HMAC authentication for project‑level webhooks—pipelines would not trigger despite valid HMAC signatures. The issue is resolved. (**CDS-109041, ZD-82328**)
+- Previously, if the ASG Wait for Steady State step began after an instance refresh had already completed on a newly created ASG, the step would error out with “No instance refreshes found for ASG” due to a race condition. The issue is resolved. (**CDS-109659**)
+- 
+
 ## April 2025
 
 ### Version 1.87.3

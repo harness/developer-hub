@@ -1,58 +1,57 @@
-/*
- * DynamicMarkdownSelector Component
- *
- * Renders a row of selectable tiles. When a tile is selected, it fetches and displays markdown content from a corresponding path.
- *
- * Props:
- *   options: Record<string, string>
- *     - An object where each key is a label for a selector tile, and each value is a URL/path to a markdown file.
- *
- * Usage Example:
- *
- * import { DynamicMarkdownSelector } from './DynamicMarkdownSelector';
- *
- * <DynamicMarkdownSelector
- *   options={{
- *     Docker: '/docs/artifact-registry/docker.md',
- *     Maven: '/docs/artifact-registry/maven.md',
- *     Python: '/docs/artifact-registry/python.md',
- *   }}
- * />
- */
-
 import React, { useState, useEffect } from "react";
-import ReactMarkdown from "react-markdown";
+import BrowserOnly from "@docusaurus/BrowserOnly";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import DocVideo from "@site/src/components/DocVideo";
 import "./DynamicMarkdownSelector.css";
 
+declare var require: {
+  context(
+    directory: string,
+    useSubdirectories?: boolean,
+    regExp?: RegExp,
+    mode?: string
+  ): any;
+};
+
+const mdxCtx = require.context("@site/docs", true, /\/content\/.*\.md$/);
+const mdxMap: Record<string, React.ComponentType<any>> = {};
+mdxCtx.keys().forEach((key: string) => {
+  const normalized = "/" + key.replace("./", "");
+  mdxMap[normalized] = mdxCtx(key).default;
+});
+
 export interface DynamicMarkdownSelectorProps {
-  options: Record<string, string>;
+  options: Record<
+    string,
+    {
+      path: string;
+      logo?: string;
+    }
+  >;
 }
 
-const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
-  options,
-}) => {
-  const labels = Object.keys(options);
+// Determine column count for visual balance
+const getGridColumns = (count: number): number => {
+  if (count <= 5) return count;
+  if (count <= 10) return Math.ceil(count / 2);
+  if (count <= 15) return Math.ceil(count / 3);
+  return 5;
+};
 
-  // Helper to normalize hash and label for comparison
+const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({ options }) => {
   const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, "");
+  const labels = Object.keys(options).sort((a, b) => a.localeCompare(b));
 
-  // Create slug from heading text (same algo used in TOC & rendered headings)
-  const slugify = (str: string) =>
-    str
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9\s-]/g, "")
-      .replace(/\s+/g, "-");
-
-  // Get initial selection from hash, or default to first label
   const getInitialSelected = () => {
-    const hash = window.location.hash.replace("#", "");
+    const hash = typeof window !== "undefined" ? window.location.hash.replace("#", "") : "";
     const match = labels.find((label) => normalize(label) === normalize(hash));
     return match || labels[0];
   };
 
   const [selected, setSelected] = useState(getInitialSelected());
-  const [markdown, setMarkdown] = useState("");
+  const [ContentComp, setContentComp] = useState<React.ComponentType<any> | null>(null);
+  const [search, setSearch] = useState("");
   const [toc, setToc] = useState<{ id: string; text: string; level: number }[]>([]);
 
   // Update selection if hash changes
@@ -68,126 +67,106 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
     return () => window.removeEventListener("hashchange", onHashChange);
   }, [labels]);
 
+  useEffect(() => {
+    const headings = Array.from(document.querySelectorAll(".markdown-content h2"));
+    const newToc = headings.map((el) => ({
+      id: el.id,
+      text: el.textContent || "",
+      level: parseInt(el.tagName[1], 10),
+    }));
+    setToc(newToc);
+  }, [ContentComp]);
+
   // Update hash in URL when selection changes
   useEffect(() => {
-    const normalized = normalize(selected);
-    if (normalized !== window.location.hash.replace("#", "")) {
-      window.location.hash = normalized;
-    }
-  }, [selected]);
-
-  useEffect(() => {
-    const fetchMarkdown = async () => {
-      const path = options[selected];
-      try {
-        const response = await fetch(path);
-        const text = await response.text();
-        setMarkdown(text);
-      } catch (e) {
-        setMarkdown("Error loading content.");
-      }
-    };
-    fetchMarkdown();
+    const path = options[selected]?.path;
+    const entry = mdxMap[path];
+    setContentComp(() =>
+      entry ? entry : () => <p>Could not find content for <code>{path}</code>.</p>
+    );
   }, [selected, options]);
 
   useEffect(() => {
-    const scrollToHash = () => {
-      const hash = window.location.hash.replace("#", "");
-      if (hash) {
-        // Try scrolling after a tick, to ensure DOM is updated
-        setTimeout(() => {
-          const el = document.getElementById(hash);
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }, 0);
-      }
-    };
-    window.addEventListener("hashchange", scrollToHash);
-    // Run once after new markdown loads
-    setTimeout(scrollToHash, 0);
-    return () => window.removeEventListener("hashchange", scrollToHash);
-  }, [markdown]);
-
-  // Build TOC whenever markdown string changes
-  useEffect(() => {
-    const headingRegex = /^(#{2,6})\s+(.*)$/gm; // capture headings ## and deeper
-    const newToc: { id: string; text: string; level: number }[] = [];
-
-    let match;
-    while ((match = headingRegex.exec(markdown)) !== null) {
-      const level = match[1].length; // number of # signs
-      const text = match[2].trim();
-      const id = slugify(text);
-      newToc.push({ id, text, level });
+    const hash = normalize(selected);
+    if (typeof window !== "undefined") {
+      window.history.replaceState(null, "", `#${hash}`);
     }
-    setToc(newToc);
-  }, [markdown]);
+  }, [selected]);
+
+  const filteredLabels = labels.filter((label) =>
+    label.toLowerCase().includes(search.toLowerCase())
+  );
+
+  // Determine which labels to show and how many columns
+  const showSearch = labels.length > 12;
+  const displayLabels = showSearch ? filteredLabels : labels;
+  const columns = getGridColumns(displayLabels.length);
 
   return (
-    <div className="dynamic-markdown-selector">
-      <hr className="selector-divider" />
-      <div className="selector-tiles">
-        {labels.map((label) => (
-          <button
-            key={label}
-            className={`selector-tile${selected === label ? " selected" : ""}`}
-            onClick={() => setSelected(label)}
-            type="button"
-          >
-            <span>{label}</span>
-          </button>
-        ))}
-      </div>
-      {/* Right‑hand runtime TOC */}
-      {toc.length > 0 && (
-        <nav className="runtime-toc">
-          <ul>
-            {toc.map((h) => (
-              <li key={h.id} className={`level-${h.level}`}>
-                <a href={`#${h.id}`}>{h.text}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+    <BrowserOnly>
+      {() => (
+        <div className="dynamic-markdown-selector">
+          <hr className="selector-divider" />
+          <div className="selector-panel">
+            {showSearch && (
+              <input
+                type="text"
+                placeholder="Search formats..."
+                className="format-search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            )}
+            <div
+              className="selector-grid"
+              style={{
+                gridTemplateColumns: `repeat(${columns}, minmax(140px, 1fr))`,
+              }}
+            >
+              {displayLabels.map((label) => {
+                const entry = options[label];
+                return (
+                  <button
+                    key={label}
+                    className={`selector-card${selected === label ? " selected" : ""}`}
+                    onClick={() => setSelected(label)}
+                    type="button"
+                  >
+                    {entry.logo ? (
+                      <div className="selector-entry">
+                        <img
+                          src={`/provider-logos/${entry.logo}`}
+                          alt={`${label} logo`}
+                          className="selector-icon"
+                        />
+                        <span>{label}</span>
+                      </div>
+                    ) : (
+                      <span className="selector-entry no-logo">{label}</span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          {toc.length > 0 && (
+            <nav className="runtime-toc">
+              <ul>
+                {toc.map((h) => (
+                  <li key={h.id} className={`level-${h.level}`}>
+                    <a href={`#${h.id}`}>{h.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+          <div className="markdown-content">
+            {ContentComp && <ContentComp components={{ Tabs, TabItem, DocVideo }} />}
+          </div>
+          <hr className="selector-divider" />
+        </div>
       )}
-      <div className="markdown-content">
-        <ReactMarkdown
-          components={{
-            h2: ({ node, children, ...props }) => {
-              const text = Array.isArray(children) ? children.join(" ") : String(children);
-              const id = slugify(text);
-              return (
-                <h2 id={id} {...props}>
-                  {children}
-                </h2>
-              );
-            },
-            h3: ({ node, children, ...props }) => {
-              const text = Array.isArray(children) ? children.join(" ") : String(children);
-              const id = slugify(text);
-              return (
-                <h3 id={id} {...props}>
-                  {children}
-                </h3>
-              );
-            },
-            h4: ({ node, children, ...props }) => {
-              const text = Array.isArray(children) ? children.join(" ") : String(children);
-              const id = slugify(text);
-              return (
-                <h4 id={id} {...props}>
-                  {children}
-                </h4>
-              );
-            },
-          }}
-        >
-          {markdown}
-        </ReactMarkdown>
-      </div>
-      <hr className="selector-divider" />
-    </div>
+    </BrowserOnly>
   );
 };
 

@@ -5,6 +5,9 @@ redirect_from:
     - /docs/continuous-delivery/verify/configure-cv/verify-deployments-with-dynatrace
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 :::important
 When creating a Dynatrace query:
 - Mark the service as a key request.
@@ -21,6 +24,8 @@ This option is available only if you have configured the service and environment
 
 A Health Source is basically a mapping of a Harness Monitored Service to the Service in a deployment environment monitored by an APM or logging tool.
 
+### Define Health Source
+
 In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
 
 ![](./static/verify-deployments-with-dynatrace-14.png)
@@ -33,8 +38,22 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
    ![](./static/verify-deployments-with-dynatrace-15.png)
 
 5. After selecting the connector, click **Apply Selected**. The Connector is added to the Health Source.
-6. In **Select Feature**, a Dynatrace feature is selected by default.
-7. Click **Next**. The **Customize Health Source** settings appear.
+6. In **Select Feature** you can either choose **Full Stack Observability: APM** or **Dynatrace Grail Logs**. Your choice here will change which configuration options you see next. 
+
+:::info
+
+Dynatrace Grail Logs are behind the feature flag `CDS_CV_DYNATRACE_GRAIL_LOGS_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+:::
+
+### Configuration
+
+Depending on your feature choice, do the following configuration steps.
+
+<Tabs>
+<TabItem value="Full Stack Observability: APM">
+
+7. Click **Next**. The **Configuration** settings appear.
    
    The subsequent steps in **Customize Health Source** depend on the Health Source type you selected.
    
@@ -59,6 +78,33 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 20. Click **Submit**. The Health Source is displayed in the Verify step.
 
 You can add one or more Health Sources for each APM or logging provider.
+
+</TabItem>
+<TabItem value="Dynatrace Grail Logs">
+
+:::info
+
+This feature is behind the feature flag `CDS_CV_DYNATRACE_GRAIL_LOGS_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+:::
+
+7. Click **Next**. The **Configuration** settings will appear. You should see one button, **+ Add Query**.
+8. Click **+ Add Query**.
+9. Choose a **Query name** and click **Submit**.
+10. Under **Define Query**, enter your [query](https://docs.dynatrace.com/docs/discover-dynatrace/references/dynatrace-query-language). This query can also be a runtime input or expression.
+11. After writing your fixed input query, click **Validate** to ensure your query is valid.
+12. Then click **Run Query**. The query must be validated first from the previous step. 
+
+    ![](./static/verify-deployment-dynatrace-grail-1.png)
+
+13. Next, complete the field mapping for the **Timestamp Identifier**, **Service Instance Identifier**, and **Message Identifier**. To do so, hit the `+` button icon and select the relevant field from the log that appears. 
+
+    ![](./static/field-mapping.png)
+
+14. Click **Submit**. The health source is displayed in the verify step!
+
+</TabItem>
+</Tabs>
 
 ### Sample Dynatrace queries
 

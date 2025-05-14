@@ -95,6 +95,26 @@ You can create alerts by defining the following parameters:
 | **Email Recipients**              | Enter one or more email addresses to receive alert notifications. |
 | **Attach Evaluation Output**      | Enable this to **attach a `.json` file** containing the full evaluation output in the email. Useful for automated analysis or deep dives. |
 
+
+- **Granular RBAC for Governance Alerts**: You can assign granular permissions for Governance Alerts to specific resource groups and roles, enabling more precise access control. 
+  
+  **For Resource Groups:**
+  1. Navigate to **Account Settings** > **Access Control** > **Resource Groups**
+  2. Select an existing Resource Group or create a new one
+  3. Enable the **Cloud Asset Governance Alerts** permission
+  4. Choose between **All** alerts or **Specified** alerts for more granular control
+  
+  <DocImage path={require('./static/rg-granular.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+  **For Roles:**
+  1. Navigate to **Account Settings** > **Access Control** > **Roles**
+  2. Select an existing Role or create a new one
+  3. Enable the **Cloud Asset Governance Alerts** permission
+  4. Assign specific permissions such as **View** or **Edit/Delete**
+
+ <DocImage path={require('./static/rbac-alerts.png')} width="90%" height="90%" title="Click to view full-size image" />
+
+
 ## Cost Correlation
 
 ### What’s supported

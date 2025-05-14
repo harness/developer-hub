@@ -1901,6 +1901,18 @@ pom.xml allows using environment variable references with syntax like below:
 
 You can not directly use harness expression in pom.xml but you can use harness expression to pass the values to environment variables which then in turn can be used in pom.xml.
 
+### Tests with Test Intelligence enabled are not showing any data results, despite having worked previously
+When Test Intelligence is first run, a call graph is generated based on the published branch and commit ID.  This is associated specifically with the branch and commit ID, even across pipelines, to allow Test Intelligence to be as efficient as possible.  
+
+If the same code is used in multiple pipelines, it would leverage the existing callgraph, if one already exists, allowing TI to help developers reduce the number of necessary tests they have to go through.
+
+With this in mind, unless there are changes to [the relevant code or test](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview/#how-does-test-intelligence-work), Test Intelligence will end up skipping the tests
+
+This can be observed with the following log
+![image](./static/testintelligence-blank.png)
+
+
+
 ## Script execution
 
 ### Does Harness CI support script execution?

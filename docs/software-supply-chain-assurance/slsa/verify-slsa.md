@@ -24,10 +24,9 @@ The SLSA Verification step has the following fields:
 * **Name**: Enter a name for the step.
 * **Registry Type**: Choose your registry from the list of supported items.
 
-:::warning Deprecation Alert
+:::info
 
-
-Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the SLSA Verification step.
+When modifying the existing SLSA steps, you must manually remove the digest from the YAML configuration to ensure compatibility with the updated functionality.
 
 :::
 

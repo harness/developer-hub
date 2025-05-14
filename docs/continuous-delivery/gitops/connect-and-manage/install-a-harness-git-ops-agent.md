@@ -269,7 +269,11 @@ When you create a GitOps agent, a default in-cluster is automatically created. T
 - You can remove in-cluster from Harness but that doesnt actually delete in-cluster as it is a special cluster object. If deleted, it can be recreated. 
 - For `Namespaced` agent `in-cluster` is not being created and option for adding `in-cluster` is disabled.
 
-## Proxy support
+## Advanced Options
+
+The Harness GitOps Agent can be configured with advanced options during creation. This section goes through those options.
+
+### Proxy support
 
 The Harness GitOps Agent can work on environments where traffic is routed through a proxy. 
 
@@ -346,7 +350,7 @@ spec:
    .. rest of agent YAML ...
 ```
 
-### Proxy setup for testing
+#### Proxy setup for testing
 
 Use the following YAML example to install proxy in any other environment.
    
@@ -426,6 +430,14 @@ spec:
 ```
 
 </details>
+
+### Helm Secrets Path Traversal
+
+This feature allows Helm to traverse file paths containing dots (e.g. `/../`). This is disabled by default due to security risks, so please enable this with caution. 
+
+To do so, check the **Enable Helm Secrets Path Traversal** check box under the **Advanced** settings dropdown when creating your agent, as pictured below. 
+
+  ![](./static/enable-helm-secrets-checkbox.png)
 
 ## GitOps Auto Updater Job
 
@@ -550,7 +562,7 @@ Here are some answers to commonly asked GitOps Agent questions.
 
 | GitOps Agent version | Packaged Argo CD version | Supported Argo CD versions                    | Redis version       | Haproxy version |
 | -------------------- | ------------------------ | --------------------------------------------- | ------------------- | --------------- |
-| 0.86.2 - 0.91.0      | v2.13.5                  | 2.9.4, 2.10.10, 2.10.14, 2.13.2, 2.13.5       | redis:7.4.1-alpine  | 2.9.4-alpine    |
+| 0.86.2 - 0.93.0      | v2.13.5                  | 2.9.4, 2.10.10, 2.10.14, 2.13.2, 2.13.5       | redis:7.4.1-alpine  | 2.9.4-alpine    |
 | 0.84.2 - 0.85.0      | v2.13.2                  | 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14, 2.13.2 | redis:7.4.1-alpine  | 2.9.4-alpine    |
 | 0.83.0               | v2.10.14                 | v2.8.2, 2.9.0, 2.9.3, 2.9.4, 2.10.10, 2.10.14 | redis:7.2.4-alpine  | 2.6.14-alpine   |
 | 0.82.0               | RELEASE BURNED           | RELEASE BURNED                                | RELEASE BURNED      | N/A             |

@@ -305,6 +305,7 @@ gsutil -m cp \
   "gs://smp-airgap-bundles/harness-0.28.0/ff_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.28.0/platform_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.28.0/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.0/iacm_images.tgz" \
   .
 ```
 
@@ -11317,7 +11318,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
 - You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana. (SMP-766)
 
-  For more information, go to [Monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem).
+  For more information, go to [Monitoring](/docs/category/monitoring).
 
 - Deployments load static files from the application server and no longer attempt to connect to static.harness.io. (SMP-851)
 
