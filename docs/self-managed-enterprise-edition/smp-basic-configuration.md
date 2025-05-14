@@ -8,7 +8,7 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness Self-Managed Enterprise Edition gives organizations full control over their software delivery setup. This section explains how to set it up using Helm and kubectl. It covers how to enable Resource Profiles and Modules, along with the basic configuration steps, key components, and best practices.
+Harness Self-Managed Enterprise Edition (SMP) provides organizations with full control over their software delivery infrastructure. This section explains how to set up SMP, including how to enable Resource Profiles and Modules. It also covers basic configuration steps, key components, and recommended best practices.
 
 ## Prerequisites
 
@@ -40,7 +40,7 @@ However, you can scale [resources](#resource-profiles) up or down based on your 
         cd <your-target-directory>/harness
       ```
 
-3. Copy the `yaml` and save it as `smp-demo-install.yaml` to create a custom override file. You can further customize the smp-demo-install.yaml file by updating additional configuration parameters available in the default values.yaml file included in the downloaded chart. 
+3. Create a custom override file named `smp-demo-install.yaml`, and copy the YAML configuration provided below into it. You can further customize this file by updating additional configuration parameters available in the default `values.yaml` file included with the downloaded Helm chart.
 
     This file contains an extensive list of configurable options that enable additional features and fine-tune your Harness SMP deployment.
 
@@ -176,7 +176,7 @@ This enables seamless routing of traffic to your Harness services while maintain
                 name: harness-ingress
                 namespace: harness-alb
                 annotations:
-                  service.beta.kubernetes.io/aws-load-balancer-type: "external"
+                  service.beta.kubernetes.io/aws-load-balancer-type: "internal"
                   service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
                   service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
               spec:
@@ -200,27 +200,33 @@ This enables seamless routing of traffic to your Harness services while maintain
             kubectl apply -f alb-config.yaml
           ```
 
-      - To configure an ALB within the override file, create a `harness-alb-demo.yaml` file and use the YAML configuration provided below. Ensure that the required modules from values.yaml are included as needed.
+      - To configure an ALB within the override file, create a `harness-alb-demo.yaml` file and use the YAML configuration provided below. Ensure that the required modules from `values.yaml` are included as needed.
 
             ```yaml
               global:
                 # Enable ingress
                 ingress:
                   enabled: true
-                  className: "alb"
-                  annotations:
-                    kubernetes.io/ingress.class: alb
-                    alb.ingress.kubernetes.io/scheme: internet-facing
-                    alb.ingress.kubernetes.io/target-type: ip
-                    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-                    alb.ingress.kubernetes.io/ssl-redirect: '443'
-                  
+                  className: "alb"                  
                 # Load balancer configuration
-                loadbalancerURL: "https://<YOUR-ALB-DNS>"  # Update this
-                
+                loadbalancerURL: "https://<YOUR-ALB-DNS>"  # Update this                
                 # Host configuration
                 hosts:
                   - "<YOUR-ALB-DNS>"  # Update this
+
+              platform:
+                bootstrap:
+                  networking:
+                    nginx:
+                      service:
+                        annotations:
+                          kubernetes.io/ingress.class: alb
+                          alb.ingress.kubernetes.io/scheme: internet-facing
+                          alb.ingress.kubernetes.io/target-type: ip
+                          alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+                          alb.ingress.kubernetes.io/ssl-redirect: '443'
+                      loadBalancerEnabled: true
+                      create: true
             ```
 
   3. Add the Harness Helm repository, update the repo index, and install Harness Helm chart with your custom values-override.yaml file.
@@ -319,10 +325,7 @@ This enables seamless routing of traffic to your Harness services while maintain
                 ingress:
                   enabled: true
                   className: "nlb"
-                  annotations:
-                    service.beta.kubernetes.io/aws-load-balancer-type: nlb
-                    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
-                  
+                                
                 # Host configuration
                 hosts:
                   - "<YOUR-NLB-DNS>"  # Update this
@@ -331,6 +334,17 @@ This enables seamless routing of traffic to your Harness services while maintain
                 tls:
                   enabled: true
                   secretName: harness-tls
+
+                              platform:
+                bootstrap:
+                  networking:
+                    nginx:
+                      service:
+                        annotations:
+                          service.beta.kubernetes.io/aws-load-balancer-type: nlb
+                          service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+                      loadBalancerEnabled: true
+                      create: true
             ```
   3. Add the Harness Helm repository, update the repo index, and install Harness Helm chart with your custom values-override.yaml file.
 
@@ -474,32 +488,47 @@ To add or update your `NG` license, update in the `values.yaml` file.
 
 To add or update your `looker` license, update in the `values.yaml` file.
 
-   ```bash
+   ```yaml  
       #Enable looker license in values.yaml
         looker:
           secrets:
             lookerLicenseKey: XXXXXXXXXXXXXXXXXXXX
    ```
 
-To Verify Looker activation and more about Looker licensing, click [here](/docs/self-managed-enterprise-edition/advanced-configurations/configure-custom-dashboards#configuration).
+To Verify activation and more about Looker licensing, click [here](/docs/self-managed-enterprise-edition/advanced-configurations/configure-custom-dashboards#configuration).
 
-## Resource Profiles  
+## Resource Profiles 
 
 This section outlines the resource requirements and the proper allocation of resources to ensure optimal performance and stability.
 
-The resource profiles cater to different deployment scales and workloads, specifying the necessary CPU, memory, and storage allocations for each profile.
+The resource profiles are designed to support different deployment scales and workloads, with predefined allocations for CPU, memory, and storage.
 
-- **Small Profile** : Supports up to 50 concurrent pipelines and is designed for teams with fewer than 50 users.
-- **Medium Profile**: Supports up to 200 concurrent pipelines and is designed for teams of 50 to 200 users.
-- **Large Profile**: Supports over 200 concurrent pipelines and is designed for teams of 200 or more users.
+#### Available Resource Profiles
 
-These resource profiles can be found in the [Harness GitHub Helm chart](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true) once you download it. You can use `override-small.yaml` for the Small profile, `override-medium.yaml` for the Medium profile, and `override-large.yaml` for the Large profile. 
+| **Profile** | **Concurrent Pipelines** | **Recommended Team Size** |
+| ----------- | ------------------------ | ------------------------- |
+| **Small**   | Up to 50                 | Fewer than 50 users       |
+| **Medium**  | Up to 200                | 50–200 users              |
+| **Large**   | Over 200                 | 200+ users                |
 
-While these are standard YAML files designed for easy access and installation, you can also check out `override-demo.yaml`, `override-prod.yaml`, and `override-perf.yaml`, each tailored for different use cases.
+#### Where to Find These Profiles
+
+These resource profiles are available in the [Harness GitHub Helm chart](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true) once downloaded.
+
+| **Profile Type** | **YAML File**          |
+| ---------------- | ---------------------- |
+| Small            | `override-small.yaml`  |
+| Medium           | `override-medium.yaml` |
+| Large            | `override-large.yaml`  |
+| Demo             | `override-demo.yaml`   |
+| Production       | `override-prod.yaml`   |
+| Performance      | `override-perf.yaml`   |
+
+The standard `override-*.yaml` files are built for quick access and installation. You can further customize them based on your environment and use case.
   
 ### Installing Resource Profiles
 
-To install SMP with your desired resource profile using the Helm command, you can either choose from our predefined profiles or create a custom resource configuration as described above.
+To install SMP with your desired resource profile, you can either choose from our predefined profiles or create a custom resource configuration as described above.
 
 To begin with the resource profile, first add the Harness Helm repository and update the repo index.
 
@@ -513,10 +542,7 @@ To begin with the resource profile, first add the Harness Helm repository and up
 
     ```bash
       # Install using medium profile
-        helm install my-release harness/harness-prod -n <namespace> -f your-override.yaml -f resource-profile-medium.yaml
-
-      # Example with production namespace
-        helm install harness harness/harness-prod -n my-namespace-prod -f values.yaml -f resource-profile-prod.yaml
+        helm install my-release harness/harness-prod -n <namespace> -f your-override.yaml -f override-medium.yaml
     ```
 
 2. Custom Profiles

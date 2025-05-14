@@ -8,80 +8,87 @@ sidebar_position: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<DocsTag  backgroundColor= "#4279fd" text="Harness Demo Feature"  textColor="#ffffff"/>
+This guide provides step-by-step instructions to install the Harness Self-Managed Enterprise Edition on Google Kubernetes Engine (GKE). You’ll configure key components such as ingress, load balancer settings, and the necessary Kubernetes resources using Helm charts. 
 
-## Overview
-This guide provides detailed instructions for deploying Harness SMP on Google Kubernetes Engine (GKE) using Helm charts. It covers GKE-specific configurations, requirements, and best practices.
-
-For Helm installation instructions, go to [Helm installation](/docs/self-managed-enterprise-edition/install/install-using-helm) or the Harness Helm chart [readme](https://github.com/harness/helm-charts/tree/main?tab=readme-ov-file#harness-helm-charts).
+By the end of this guide, you will have a fully functioning Harness instance running on your GKE cluster, ready for use in your environment.
 
 ### Prerequisites
 
-This topic assumes you have experience with GCP, such as setting up projects, namespaces, and clusters.
+Before you start, make sure you have:
 
-In addition to a Harness account, you need the following:
-
-- Access to Helm charts
-- An external static IP address
+- Experience with GCP (projects, clusters, and namespaces).
+- A Harness account.
+- Access to the [Harness Helm charts](https://github.com/harness/helm-charts/releases).
+- An external static IP address in the same region as your cluster.
 
 <Tabs>
 <TabItem value="GCP">
 
-To install in GCP manually, you first reserve your static IP, then install Harness Self-Managed Enterprise Edition.
+### Step 1: Reserve an external static IP
 
-### Reserve an external static IP
+To manually install in GCP, first reserve a static external IP address, then proceed with installing Harness Self-Managed Enterprise Edition.
 
-To reserve an external static IP in GCP, do the following:
+1. Go to your GCP project and navigate to VPC network.
 
-1. Go to your GCP project.
-2. Select **VPC network**. The VPC networks page opens.
-3. In the left nav, select **IP addresses**. The IP addresses page opens.
-4. Select **Reserve External Static IP Address**, then select the following.
-   1. **Network Service Tier:** Premium.
-   2. **IP Version:** IPv4.
-   3. **Type:** Regional.
+2. Select IP addresses in the left nav and choose Reserve External Static IP Address.
 
-      :::info
-      Make sure the IP address is in the same region as your cluster. Make a note of or copy the IP address. You'll need it later in the installation process.
-      :::
+3. Configure the following:
+   * Network Service Tier: Premium
+   * IP Version: IPv4
+   * Type: Regional
 
-5. Select **Reserve**.
+> **Ensure the IP address is in the same region as your cluster. Make a note of or copy the IP address for later use.**
 
-### Install Harness Self-Managed Enterprise Edition in GCP
+5. Select Reserve to finalize.
 
-1. Create a new cluster or use an existing one.
+### Step 2: Create a GKE Cluster
 
-2. Create a new namespace:
+1. Go to the GKE section, navigate to **Kubernetes Engine** → **Clusters** in your [Google Cloud Console](https://console.cloud.google.com/kubernetes/clusters)
 
-   1. Set your Kubernetes context to the GCP project you are using.
+2. Click "Create", Choose **"Standard"** for full control (not Autopilot).
 
-   2. Run the following
+3. Configure your Cluster Basics
 
+   - **Name** your cluster (e.g., `my-cluster`)
+   - Select your **Region** (e.g., `us-central1`)
+   - Choose the **Release Channel** (e.g., `Regular`)
+   - Click "Create" to save your Cluster.
+
+4. Configure the Default Node Pool, Scroll to the **"Default node pool"** section:
+
+   - Set the **Machine type** (e.g., `e2-standard-2`)
+   - Under **Size**, set:
+     - **Minimum number of nodes**: `0`
+     - **Maximum number of nodes**: `20`
+   - Enable the checkbox for **Enable autoscaling**
+
+5. Click "Create", GCP will begin provisioning your cluster with autoscaling configured.
+
+### Step 3: Install Self-Managed Enterprise Edition in GKE
+
+1. Set your Kubernetes context to the GCP project you are using.
+
+      ```bash
+      kubectl config get-contexts
       ```
-      kubectl create ns <namespace name>
+
+   Select your GCP project from the list and use the below command to set the context 
+
+      ```bash
+      kubectl config use-context <GCP-project context>
       ```
 
-3. Download the latest charts from the Harness Helm chart [repo](https://github.com/harness/helm-charts/releases).
+2. Create a Kubernetes namespace for your SMP deployment
 
-    :::info
-    Charts are located under **Assets**. The file name looks like `harness-0.15.0.tgz`.
-    :::
-
-4. Extract the `*.tgz` file.
-
-5. Open the `override-demo.yaml` file in a file editor.
-
-6. Add your external static IP address in the following fields.
-
-   ```yaml
-   loadbalancerURL: http://xx.xx.xx.xx
+   ```bash
+   kubectl create ns <namespace name>
    ```
 
-   ```yaml
-   loadBalancerIP: xx.xx.xx.xx
-   ```
+3. Download the latest Helm chart from the [Harness GitHub Releases page](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true). Under the **Assets** section, locate and download the `harness-<release-version>.tgz` file.
 
-7. Set the following fields.
+4. Open the `override-demo.yaml` file in a file editor.
+
+5. Add your external static IP address in the following fields.
 
    ```yaml
    loadbalancerURL: http://xx.xx.xx.xx
@@ -98,37 +105,35 @@ To reserve an external static IP in GCP, do the following:
          - ""
    ```
 
-8. Update `nginx`, and set `create:` to `true`.
+6. Update `nginx`, and set `create:` to `true`.
 
    ```yaml
     nginx:
       create: true
    ```
 
-9. Update `defaultbackend:`, and set `create:` to `true`.
+7. Update `defaultbackend:`, and set `create:` to `true`.
 
    ```yaml
     defaultbackend:
       create: true
    ```
 
-10. Save the file and exit.
+8. Save the file and exit.
 
-11. Run the following from your terminal.
+9. Run the following from your terminal.
 
-    ```
+    ```bash
     helm install <YOUR_RELEASE_NAME> <path to Harness directory> -n <YOUR_NAMESPACE_NAME> -f override.demo.yaml
     ```
 
     For example:
 
-    ```
+    ```bash
     helm install test-release harness/ -n smp-test -f harness/override-demo.yaml
     ```
 
-12. After the installation is complete, paste the `loadbalancerURL` in your browser's address bar, and then sign in to the Harness UI.
-
-13. Complete to the post-install next steps.
+10. After the installation is complete, open the `loadbalancerURL` in your browser to access and sign in to the Harness UI.
 
 </TabItem>
 

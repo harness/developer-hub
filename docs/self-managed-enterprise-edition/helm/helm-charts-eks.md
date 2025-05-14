@@ -8,30 +8,72 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<DocsTag  backgroundColor= "#4279fd" text="Harness Demo Feature"  textColor="#ffffff"/>
+:::note Important Note
+  If you are using Kubernetes 1.3x, make sure to specify the storage class in helm chart as mentioned in [supported Kubernetes versions](/docs/self-managed-enterprise-edition/smp-supported-platforms#supported-kubernetes-versions).
+:::
 
-## Overview
-This guide provides detailed instructions for deploying Harness SMP on Amazon Elastic Kubernetes Service (EKS) using Helm charts. It covers EKS-specific configurations, requirements, and best practices.
+This guide offers step-by-step instructions for deploying Harness Self-Managed Platform (SMP) on Amazon EKS using Helm charts. It includes EKS-specific prerequisites, configuration details, and best practices to ensure a secure, reliable, and optimized deployment.
 
 ### Prerequisites
 
-This topic assumes you have experience with AWS, such as setting up projects, namespaces, and clusters.
+1. AWS Account: You must have access to an AWS account with necessary IAM permissions to:
+    - Create EKS clusters and node groups.
+    - Create and attach IAM roles and policies.
+    - Provision VPC, subnets, and security groups.
+    - Create and manage IAM OIDC providers and service accounts.
+2. `kubectl` 
+3 [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+4 [eksctl](https://eksctl.io/introduction/#installation)
+5. Helm 3.x
 
-In addition to a Harness account, you need the following:
+:::note
+  You can create a cluster using the AWS Management Console, but in this section, we’ll use the AWS CLI (`aws configure`) and `eksctl` to create the cluster. Make sure both tools are installed and configured before proceeding.
+:::
 
-- Access to an AWS project
-- Access to Helm charts
-- An elastic IP address
+### Step 1: Configure AWS CLI 
 
-Before you install Harness Self-Managed Enterprise Edition, you must create a test cluster.
+1. Open your terminal and run the following command, it will ask for AWS credentials:
 
-### Create a test cluster
+    ```bash
+    aws configure
+    ```
 
-To create a test cluster using eksctl, do the following:
+2. Enter your AWS credentials when prompted:
 
-1. Install and configure eksctl. For more information, go to [Installation](https://eksctl.io/installation/) in the eksctl documentation.
+    :::info
+      - **Access Key ID** and **Secret Access Key**: You can generate these from your [AWS IAM Console](https://console.aws.amazon.com/iam/home#/security_credentials).
+      - **Default region name**: Choose the AWS region where you want to deploy the cluster (e.g., `us-east-1`).
+      - **Default output format**: Recommended to use `json`.
+    :::
 
-2. Save the following to a `sample-demo-cluster.yaml` file.
+    ```bash
+    AWS Access Key ID [None]: YOUR_ACCESS_KEY
+    AWS Secret Access Key [None]: YOUR_SECRET_KEY
+    Default region name [None]: YOUR_REGION
+    Default output format [None]: json
+    ```
+    or alternatively, you can export them as environment variables using the following commands:
+
+      ```bash
+      export AWS_ACCESS_KEY_ID=YOUR_ACCESS_KEY
+      export AWS_SECRET_ACCESS_KEY=YOUR_SECRET_KEY
+      export AWS_DEFAULT_REGION=YOUR_REGION
+      ```
+
+3. To verify and confirm your configuration, run the following command:
+
+   ```bash
+    aws sts get-caller-identity
+   ```
+
+    This command should return your AWS account information when configured correctly.
+    If you encounter any issues, refer to the [official AWS CLI configuration documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) for guidance.
+
+### Step 2: Create a Cluster
+
+  To provision a new EKS cluster for your SMP environment, use the following `eksctl` configuration YAML. This file sets up a cluster named `my-smp-test` in the `us-east-2` region with managed node groups, essential IAM policies, and networking settings required for running Harness Self-Managed Platform. 
+  
+  It is pre-configured with defaults suited for sandbox or testing purposes, but you can modify the values (like cluster name, region, tags, and CIDR) as needed.
 
     ```yaml
     accessConfig:
@@ -111,7 +153,7 @@ To create a test cluster using eksctl, do the following:
       skipEndpointCreation: false
     vpc:
       autoAllocateIPv6: false
-      cidr: 192.168.0.0/16
+      cidr: <YOUR-CIDR> # for example, 192.168.0.0/16
       clusterEndpoints:
         privateAccess: false
         publicAccess: true
@@ -120,13 +162,14 @@ To create a test cluster using eksctl, do the following:
         gateway: Single
     ```
 
-3. Modify any values as needed, such as the region and availability zones to which you want to deploy or any tagging that you want to apply.
+### Step 3: Configure Amazon EBS CSI driver
 
-4. Currently, eksctl doesn't have a simple methodology to attach the Amazon EBS CSI driver necessary for create the required Persistent Volumes (PVs). Do the following to create the required PVs:
+  Currently, `eksctl` does not provide a built-in way to automatically attach the Amazon EBS CSI driver, which is required for provisioning Persistent Volumes (PVs). To ensure your cluster can dynamically create the necessary PVs, follow the steps below to manually set up the EBS CSI driver.
 
-   1. Create an IAM role for your EKS cluster to enable the use of the EBS CSI Driver. You can do this either through the AWS Console or by using the `eksctl` command, as shown below.
 
-      ```
+   1. Create an IAM role for your EKS cluster to enable the use of the EBS CSI driver. You can do this either through the AWS Management Console or by using the `eksctl` command, as shown below.
+
+      ```bash
         eksctl create iamserviceaccount \
         --name ebs-csi-controller-sa \
         --namespace <namespace-your-choice> \
@@ -139,19 +182,20 @@ To create a test cluster using eksctl, do the following:
 
    2. Enable the EBS CSI Driver for your EKS cluster.
 
-      2.1 Associate OIDC Provider (if not done yet)
-    
-        ```     
-          eksctl utils associate-iam-oidc-provider \
-          --region <your-region> \
-          --cluster <your-cluster-name> \
-          --approve
-        ```
+      2.1. Associate OIDC Provider (if not done yet)
+          
+          ```bash    
+            eksctl utils associate-iam-oidc-provider \
+            --region <your-region> \
+            --cluster <your-cluster-name> \
+            --approve
+          ```
+
       2.2 Install EBS CSI Driver
 
         If you're using Amazon EKS add-ons:
 
-        ```
+        ```bash
           aws eks create-addon \
           --cluster-name <your-cluster-name> \
           --addon-name aws-ebs-csi-driver \
@@ -159,9 +203,9 @@ To create a test cluster using eksctl, do the following:
           --region <your-region>
         ```
 
-        Or via eksctl:
+        Or via `eksctl`:
 
-        ```
+        ```bash
           eksctl create addon \
           --name aws-ebs-csi-driver \
           --cluster <your-cluster-name>  \
@@ -169,18 +213,37 @@ To create a test cluster using eksctl, do the following:
           --force \
           --region <your-region>
         ```
+    
+      2.3 Update Trust Relationship in IAM
 
-eksctl should automatically configure a Kubernetes config for your kubectl within your terminal session. If not, ensure you have a connection to your new cluster. For more information, go to [Getting started with Amazon EKS – AWS Management Console and AWS CLI](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html#eks-configure-kubectl) in the AWS EKS documentation.
+        To enable a Kubernetes service account to assume an IAM role using OIDC authentication, you need to update the IAM role's trust policy, which can be done through the AWS CLI or AWS console by modifying the trust relationship.
 
-### Install Harness Self-Managed Enterprise Edition in AWS EKS
+        Login to AWS Management Console, navigate to IAM, select the role you need to update within Roles move to Trust relationships tab and add the below json
+
+        ```json
+          {
+              "Effect": "Allow",
+              "Principal": {
+                  "Federated": "arn:aws:iam::<ACCOUNT_ID>:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/<PROVIDER_ID>"
+              },
+              "Action": "sts:AssumeRoleWithWebIdentity",
+              "Condition": {
+                  "StringEquals": {
+                      "oidc.eks.<YOUR-AWS-REGION>.amazonaws.com/id/<PROVIDER_ID>:sub": "system:serviceaccount:<namespace>:<service-account-name>"
+                  }
+              }
+          }
+        ```
+
+### Step 4: Install Self-Managed Enterprise Edition in AWS EKS
 
 1. Create a namespace for your deployment.
 
-   ```
+   ```bash
    kubectl create namespace harness-aws
    ```
 
-2. Download the latest [Harness Helm charts](https://github.com/harness/helm-charts/releases). The harness charts will look like `harness-<version_number>.tgz`.
+2. Download the latest Helm chart from the [Harness GitHub Releases page](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true). Under the **Assets** section, locate and download the `harness-<release-version>.tgz` file.
 
 3. Open the `harness/values.yaml` file in any editor or create a new override file, and modify the following values.
 
@@ -205,14 +268,15 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
           hosts: ""
 
     ```
-
 4. Install the Helm chart.
 
-    ```
-      helm install harness harness/ -f override-demo.yaml -n harness
+    ```bash
+      helm install harness harness/ -f override-demo.yaml -n harness-aws
     ```
 
+:::info
    AWS EKS can create and attach Elastic Load Balancers as a Kubernetes Resource. For more information, go to [Application load balancing on Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html) in the EKS documentation. 
+:::
 
 5. Save the following reference in `loadbalancer.yaml` file and apply it into your cluster.
   
@@ -509,13 +573,13 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
       ```
 
       ```
-      kubectl create -f loadbalancer.yaml -n harness
+      kubectl create -f loadbalancer.yaml -n harness-aws
       ```
 
 6. Get the ELB URL.
 
-   ```
-   kubectl get service -n harness
+   ```bash
+   kubectl get service -n harness-aws
    ```
 
 7. Make a note of the `EXTERNAL-IP` for the `harness-ingress-controller`. It should look like `<string>.us-east-2.elb.amazonaws.com`.
@@ -523,7 +587,7 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
    ```
     NAME                         TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)                                      AGE
     default-backend              ClusterIP      10.100.54.229    <none>                                                                    80/TCP                                       38s
-    harness-ingress-controller   LoadBalancer   10.100.130.107   af5b132b743fb4318947b24581119f1b-1454307465.us-east-2.elb.amazonaws.com   10254:32709/TCP,80:32662/TCP,443:32419/TCP   38s
+    harness-ingress-controller   LoadBalancer   10.100.130.107   af5b132b743fb4XXXXXXX24581119f1b-1454307465.us-east-2.elb.amazonaws.com   10254:32709/TCP,80:32662/TCP,443:32419/TCP   38s
     ```
 
 8. Open the `harness/values.yaml` file in any editor and modify the following values.
@@ -549,11 +613,11 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
 
 9. Upgrade the Helm deployment, applying your new ELB as the load balancer to your configuration.
 
-   ```
-    helm upgrade harness harness/ -f override-demo.yaml -n harness
+   ```bash
+    helm upgrade harness harness/ -f override-demo.yaml -n harness-aws
    ```
 
-10.  Navigate to the sign up UI at `https://<YOUR_ELB_ADDRESS>/auth/#/signup` to create your admin user.
+10. Navigate to the sign up UI at `https://<YOUR_ELB_ADDRESS>/auth/#/signup` to create your admin user.
 
 11. Complete to the post-install next steps.
 
