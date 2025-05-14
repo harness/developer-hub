@@ -113,11 +113,15 @@ Here is an example of the YAML for a **Restore Cache from GCS** step.
 
 ### Avoiding Prefix Collisions During Restore
 
-To prevent prefix collisions during cache restoration, use the featue flag `PLUGIN_STRICT_KEY_MATCHING` (default: `true`).
+To prevent prefix collisions and ensure successful cache restoration, use the featue flag `PLUGIN_STRICT_KEY_MATCHING` (default: `true`).
 
 - Strict Mode (Default): Only restores from exact key matches, preventing unexpected collisions and ensuring accurate cache restoration.
 
 - Flexible Mode (PLUGIN_STRICT_KEY_MATCHING=false): Processes all entries that start with the specified prefix, which may result in multiple paths being restored.
+
+:::warning
+Using Flexible Mode (i.e., setting `PLUGIN_STRICT_KEY_MATCHING` to **false**) may result in unexpected behavior as multiple paths might be restored. The recommended setting is **true**.
+:::
 
 Additional Recommendations:
 
