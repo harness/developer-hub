@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { SearchBox as SearchBoxController } from '@coveo/headless';
 import styles from './styles.module.scss';
 
@@ -9,6 +9,7 @@ interface SearchBoxProps {
 
 const SearchBox: React.FC<SearchBoxProps> = (props) => {
   const { controller } = props;
+  const suggestionRef = useRef<HTMLUListElement | null>(null);
   const [state, setState] = useState(controller.state);
   const [inputValue, setInputValue] = useState(controller.state.value);
   const [isUrlParamsLoaded, setIsUrlParamsLoaded] = useState(false);
@@ -26,6 +27,18 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
       setIsUrlParamsLoaded(true);
     }
   }, []);
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (suggestionRef.current && !suggestionRef.current.contains(event.target as Node)) {
+      setShowSuggestions(false);
+    }
+  };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     const suggestionCount = state.suggestions.length;
@@ -55,6 +68,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
         } else {
           controller.submit();
           props.onSearch(inputValue);
+          setInputValue(state.value);
         }
         break;
       case ' ':
@@ -75,21 +89,24 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
       <div className={styles.searchBox}>
         <input
           placeholder="search ..."
-          value={state.value}
+          value={inputValue}
           onChange={(e) => {
-            controller.updateText(e.target.value);
             setInputValue(e.target.value);
-            setIsUrlParamsLoaded(false);
-            setHighlightedIndex(null);
-            setShowSuggestions(true);
+            console.log('search', e.target.value);
+            if (e.target.value.trim() !== '') {
+              controller.updateText(e.target.value);
+              setIsUrlParamsLoaded(false);
+              setHighlightedIndex(null);
+              setShowSuggestions(true);
+            }
           }}
           onKeyDown={handleKeyDown}
-          type="search"
+          type="text"
         />
         <i className="fa-solid fa-magnifying-glass"></i>
       </div>
       {!isUrlParamsLoaded && state.suggestions.length > 0 && showSuggestions && (
-        <ul>
+        <ul ref={suggestionRef}>
           {state.suggestions.map((suggestion, index) => {
             const value = suggestion.rawValue;
             const isHighlighted = index === highlightedIndex;
@@ -103,6 +120,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
                 onClick={() => {
                   controller.selectSuggestion(value);
                   props.onSearch(suggestion.rawValue);
+                  setInputValue(suggestion.rawValue);
                   setHighlightedIndex(null);
                   setShowSuggestions(false);
                 }}
