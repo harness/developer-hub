@@ -48,8 +48,8 @@ You can configure your workflow's **frontend** and **backend** by defining speci
 - Get started with [**setting up your workflow’s backend using Harness Pipelines**](docs/internal-developer-portal/flows/harness-pipeline.md).  
 
 
-### [Registering Workflows](/docs/internal-developer-portal/flows/manage-workflows.md)
-Once your `workflow.yaml` is ready, you can **register a new workflow** directly in Harness IDP. Refer to this [**detailed guide**](/docs/internal-developer-portal/flows/manage-workflows.md) to learn how to create and manage your workflows seamlessly from Harness IDP.
+### [Registering Workflows](/docs/internal-developer-portal/flows/manage-workflow-2o.md)
+Once your `workflow.yaml` is ready, you can **register a new workflow** directly in Harness IDP. Refer to this [**detailed guide**](/docs/internal-developer-portal/flows/manage-workflow-2o.md) to learn how to create and manage your workflows seamlessly from Harness IDP.
 
 
 ## Key Capabilities
