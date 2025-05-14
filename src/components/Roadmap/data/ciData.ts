@@ -16,7 +16,7 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Kubernetes" }],
-        title: "Generic Pod Spec Customization for Kubernetes Infrastructure",
+        title: "Pod Spec Customization for Kubernetes Infrastructure",
         description: "Harness will enhance the `podSpecOverlay` field to support full Kubernetes Pod YAML customization. This enables users to apply custom attributes such as security contexts, topology spread constrains and so on, offering fine-grained control for compliance, performance, and platform-specific requirements.",
       }, 
       {

@@ -8,7 +8,7 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Security" }],
         title: "SSH Support",
-        description: "Support for Git operations via SSH",
+        description: "Support for Git operations via SSH.",
       },
       {
         tag: [{ value: "Integrations" }],
@@ -22,8 +22,8 @@ export const codeData: Horizon = {
       },
       {
         tag: [{ value: "Integrations" }],
-        title: "Jira Support",
-        description: "First-class support for Jira in Atlassian Marketplace, allowing users to surface relevant commits and PRs in Jira issues",
+        title: "Atlassian Jira Marketplace Application",
+        description: "First-class support for Jira in Atlassian Marketplace, allowing users to surface relevant commits and PRs in Jira issues.",
       },
       {
         tag: [{ value: "Governance" }],
@@ -65,12 +65,12 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Developer Experience" }],
         title: "Issue Tracking",
-        description: "Plan and track all developer-related work across your projects in Harness Code",
+        description: "Plan and track all developer-related work across your projects in Harness Code.",
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Code Templates",
-        description: "Create templates of repositories to quickly generate a collection of repositories in a project",
+        description: "Create templates of repositories to quickly generate a collection of repositories in a project.",
       },
     ],
   },
@@ -80,17 +80,17 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Harness AI" }],
         title: "Automated Code Review",
-        description: "AI powered code review suggestions to improve developer efficiency",
+        description: "AI powered code review suggestions to improve developer efficiency.",
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Cross-Project Cloning",
-        description: "Enable pipelines to clone repos across various repositories in different projects",
+        description: "Enable pipelines to clone repos across various repositories in different projects.",
       },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Pipeline view",
-        description: "Visualize all CI pipeline runs for a repository, branch, or pull request",
+        description: "Visualize all CI pipeline runs for a repository, branch, or pull request.",
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -100,7 +100,7 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Governance" }],
         title: "Enhance Open Policy Agent (OPA) Integration",
-        description: "Introduce additional events for OPA enforcement",
+        description: "Introduce additional events for OPA enforcement.",
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -110,7 +110,7 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Developer Experience" }],
         title: "Chat Integration",
-        description: "Integrate Slack and MS Teams with Pull Request workflow",
+        description: "Integrate Slack and MS Teams with Pull Request workflow.",
       },
     ],
   },
@@ -145,12 +145,12 @@ export const codeData: Horizon = {
       {
         tag: [{ value: "Platform" }],
         title: "Self-Managed Enterprise (SMP) Support",
-        description: "Host Harness DevOps platform on your own infrastructure, including Harness Code",
+        description: "Host Harness DevOps platform on your own infrastructure, including Harness Code.",
       },
       {
         tag: [{ value: "Migrations" }],
         title: "Migrate all Repository Data",
-        description: "Migrate pull requests, comments, labels, and other metadata from SCM providers",
+        description: "Migrate pull requests, comments, labels, and other metadata from SCM providers.",
       },     
     ],
   },
