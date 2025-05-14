@@ -7,17 +7,17 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Fast" }],
         title: "Build Intelligence for Maven",
-        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. Support will be added for Maven build tool, for both Cloud ans self-hosted builds.",
+        description: "Build Intelligence accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch. Support will be added for Maven build tool, for both Cloud and self-hosted builds.",
       },
       {
         tag: [{ value: "Fast" }],
         title: "Test Intelligence for JavaScript-based languages with Cypress",
-        description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related the code changes made.",
+        description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related to the code changes made.",
       },
       {
         tag: [{ value: "Kubernetes" }],
         title: "Pod Spec Customization for Kubernetes Infrastructure",
-        description: "Harness will enhance the `podSpecOverlay` field to support full Kubernetes Pod YAML customization. This enables users to apply custom attributes such as security contexts, topology spread constrains and so on, offering fine-grained control for compliance, performance, and platform-specific requirements.",
+        description: "Harness will enhance the `podSpecOverlay` field to support full Kubernetes Pod YAML customization. This enables users to apply custom attributes such as security contexts, topology spread constraints and so on, offering fine-grained control for compliance, performance, and platform-specific requirements.",
       }, 
       {
         tag: [{ "value": "Usability" }],
@@ -32,7 +32,7 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Cloud" }],
         title: "Save/Restore Cache Steps with Harness Cloud Storage",
-        description: "New Save and Restore Cache steps will be introduced to complement Cache Intelligence, giving users more control and flexibility over caching behavior, such as the ability to use cache key calculated withing the stage.",
+        description: "New Save and Restore Cache steps will be introduced to complement Cache Intelligence, giving users more control and flexibility over caching behavior, such as the ability to use a cache key calculated within the stage.",
       }, 
     ],
   },
@@ -52,7 +52,7 @@ export const CiData: Horizon = {
       {
         tag: [{value: "Insights"}],
         title: "Test Insights",
-        description: "Harness can help users visualize their test executions for their failures, success, and other metrics, providing meaningful insights",
+        description: "Harness can help users to visualize test results across success, failure, and other key metrics.",
       },
       {
         tag: [{ value: "Secure" }],
@@ -79,7 +79,7 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Integrations" }, { value: "Mobile" }],
         title: "Native integration with Fastlane",
-        description: "Simplify building and publishing iOS and Android applications with native Fastlane integration",
+        description: "Simplify building and publishing iOS and Android applications with native Fastlane integration.",
       },
       {
         tag: [{ value: "Mobile" }],
@@ -95,7 +95,7 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Fast" }, {value: "beta" }],
         title: "Test Intelligence for JavaScript-based languages with Jest",
-        description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related the code changes made.",
+        description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related to the code changes made.",
       },
       {
         tag: [{ value: "Fast" }, {value: "beta" }],
@@ -105,16 +105,17 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Fast" }],
         title: "Default Settings for Cache Intelligence and Build Intelligence",
-        description: "Introduced Default Setting to select whether Cache Intelligence and Build Intelligence should be enabled automatically when creating newCI stage. By default, the features are enabled to optimize for speed.",
+        description: "Introduced default settings to control whether Cache Intelligence and Build Intelligence are enabled automatically when creating a new CI stage.",
       },
       {
         tag: [{ value: "Cloud" }],
         title: "Using external secret managers with Harness Cloud",
-        description: "This enhancement allows users to securely integrate with external secret management systems like HashiCorp Vault, providing greater flexibility for managing sensitive data.",
+        description: "Enables an encrypted, secure tunnel between the Harness Cloud network and your private network, allowing you to safely use Harness Cloud infrastructure with privately-hosted assets such as internal artifact or code repositories."
+      ,
       }, 
       {
         tag: [{ value: "Integrations" }],
-        title: "Improvements for Build and Push steps ",
+        title: "Improvements for Build and Push steps",
         description: "Enhancing the Build and Push steps with a 'build-only' and 'push-only' mode, allowing for local vulnerability scans. These improvements make it easier to accomplish the build-local scan-and-push flow, or building once and pushing to multiple Docker registries.",
       },
       {
@@ -130,15 +131,15 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Fast" }],
         title: "Simplify usage of Test Intelligence with new Test step",
-        description: "Simplify the configuration and utilization of Test Intelligence with, making it easier for teams to speed up their builds.",
+        description: "Simplify the configuration and usage of Test Intelligence, making it easier for teams to speed up their builds.",
       },
       {
         tag: [{ value: "Fast" }],
         title: "Test Intelligence for C# ",
-        description: "Accelerate testing cycles of C# C# (.Net Core 6.0+) applications with Test Intelligence, selectively running only tests that cover the code changes made.",
+        description: "Accelerate testing cycles of C# (.NET Core 6.0+) applications with Test Intelligence, selectively running only tests that cover the code changes made.",
       },  
       {
-        tag: [{ value: "Secure" }, { value: "Beta" }],
+        tag: [{ value: "Secure" }, { value: "beta" }],
         title: "Secure Connect",
         description: "Enables encrypted, secure tunnel between the Harness Cloud network and your private network, to safely use Harness Cloud build infrastructure with privately-hosted assets, such as internal artifacts repositories and code repositories.",
       },
