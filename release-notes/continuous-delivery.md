@@ -63,10 +63,6 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Harness now displays the Helm chart versions for both current and rollback artifacts during post-production rollbacks—replacing **N/A** with the actual version numbers in the UI. (**CDS-109098**)
 
--  Harness now supports concurrent pipeline execution settings at the organization and project levels, enabling administrators to control the maximum number of active pipeline runs per scope. (**PIPE-15840**)
-
-- Harness now supports displaying the full branch name in the **Run** dialog by expanding the dialog to the full available width, preventing truncation of long branch names. (**PIPE-26551**)
-
 - Harness now supports alphabetically sorting the list of Projects, Organizations, and Accounts when configuring Approver User Groups. (**CDS-95935**)
 
 - Harness now supports publishing deployment data to custom dashboards so customers can retrieve a list of services by deployment strategy.
