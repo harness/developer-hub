@@ -4,4 +4,31 @@ metadata:
   name: rac-config-files
 data:
   config.json: |
-    {{ .Files.Get "./config.json" | indent 4 }}
+    {
+  "configMap": {
+    "authConfig": {
+      "tenant": "NewTenant",
+      "loginApiUrl": "newLoginUrl",
+      "restApiUrl": "newRestApiUrl",
+      "ssoFlag": false,
+      "userIdleTime": 1000,
+      "userIdleTimeOut": 300,
+      "tokenExpFirstWarningMinutes": 30,
+      "tokenExpSecondWarningMinutes": 10,
+      "auth": {
+        "issuer": "newIssuer",
+        "clientId": "NEW_CLIENT_ID",
+        "redirectUri": "newRedirectUri",
+        "dummyClientSecret": "newSecret",
+        "logoutUrl": "newLogoutUrl",
+        "idpLogoutUrl": "newIdpLogoutUrl",
+        "requireHttps": true,
+        "idpApiKey": "NEW_API_KEY",
+        "interceptUrls": ["newOrigin"],
+        "responseType": "token",
+        "autoRefresh": false,
+        "listenToToken": "id_token"
+      }
+    }
+  }
+}
