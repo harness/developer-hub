@@ -7,7 +7,7 @@ sidebar_position: 60
 
 Mutually exclusive experiments are experiments that share no user traffic. The goal of mutually excluding experiments is to ensure that a single user cannot participate in more than one experiment at the same time. Mutually exclusive experiments run simultaneously but in isolation from each other.
 
-Generally speaking, when you run experiments with feature flags, you are testing feature variations (Split feature flag treatments) against a baseline. The baseline is your set of metric results for your base case (when a new feature is off). You typically compare the results of each feature variation (treatment)  against your base case metrics (baseline) to see how the treatment performs. 
+Generally speaking, when you run experiments with feature flags, you are testing feature variations (FME feature flag treatments) against a baseline. The baseline is your set of metric results for your base case (when a new feature is off). You typically compare the results of each feature variation (treatment)  against your base case metrics (baseline) to see how the treatment performs. 
 
 While, in most cases, experiments can run concurrently and share user traffic without interfering with one another, you may choose to run some of your experiments in mutual exclusion. This may be because you anticipate interactions between variations (treatments) of different experiments, or because a variation (treatment) of one experiment would disrupt a consistent baseline for another experiment. Mutually excluding the experiments keeps your baseline and feature experiences consistent (free of the variations of another experiment), which may in some cases lead to more accurate results.
 

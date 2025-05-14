@@ -11,9 +11,9 @@ How do I ensure that once a treatment is assigned to a particular key (user id),
 
 Because each instance of the SDK is an independent targeting engine with no local record of the treatment previously assigned to a key, to achieve this goal it is necessary to somehow maintain state, so that a user is always assigned the same treatment they saw the first time they visited, even if a change to the rollout plan would flip the user to another treatment, or if the value of an attribute associated with a user changed such that they switched to a different targeting rule. One example of when it would be desirable to maintain consistency is a feature flag that controls the value associated with an offer of some sort, such as the interest rate for a loan or a promotional discount on a product.
 
-### Split's targeting engine
+### FME's targeting engine
 
-Split computes treatments very quickly. In Java, for instance, treatments are computed on the order of a few hundred microseconds. This means Harness FME can be used in the most performance-intensive components of your application.
+FME computes treatments very quickly. In Java, for instance, treatments are computed on the order of a few hundred microseconds. This means Harness FME can be used in the most performance-intensive components of your application.
 
 To achieve this speed, Harness FME by design, does not retain state. Specifically, after Harness FME assigns a treatment to a user, it does not remember what was assigned. Given the scale of our customers' use cases, retaining a history of every treatment assigned to every key would negatively impact the requirements for speed and size efficiency in our SDKs.
 

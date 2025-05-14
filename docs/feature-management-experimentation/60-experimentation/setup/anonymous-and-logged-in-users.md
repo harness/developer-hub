@@ -7,7 +7,7 @@ sidebar_position: 70
 
 ### Introduction
 
-One of the most frequent questions asked by Split's customers is How do I deal with anonymous and logged-in users? This article addresses the most common concerns around this subject as it applies to experimentation, with practical steps to take to maintain the integrity of your experiments. This article concentrates on experimentation, but for our feature flag customers who want to know how to maintain consistency when working with anonymous and logged-in users, see this [video](https://help.split.io/hc/en-us/articles/360029915971-Consistent-experience-from-anonymous-to-logged-In).
+One of the most frequent questions asked by FME's customers is How do I deal with anonymous and logged-in users? This article addresses the most common concerns around this subject as it applies to experimentation, with practical steps to take to maintain the integrity of your experiments. This article concentrates on experimentation, but for our feature flag customers who want to know how to maintain consistency when working with anonymous and logged-in users, see this [video](https://help.split.io/hc/en-us/articles/360029915971-Consistent-experience-from-anonymous-to-logged-In).
 
 First, some terminology and assumptions. By an anonymous user, we mean an id (i.e. key) assigned in the absence of other identifying information. For a browser-based application this may be generated each session, or stored in a cookie for repeated use. In the case of a mobile application, it could be an id returned from a call such as iOS's identifierForVendor. 
 

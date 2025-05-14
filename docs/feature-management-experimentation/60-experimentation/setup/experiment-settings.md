@@ -57,7 +57,7 @@ A commonly used value for the significance threshold is 0.05 (5%). With this thr
 
 The minimum sample size (MSS) is the number of samples required in each treatment before we calculate statistical results for your metrics. By default, the minimum sample size for all testing methods is 355, and we recommend using this for most situations. For the fixed horizon testing method, this number must be at least 10 samples. For sequential testing, it must be at least 100.
 
-For the t-test used in Split's statistics to be reliable, the data must follow an approximately normal distribution. The central limit theorem (CLT) shows that the mean of a variable has an approximately normal distribution if the sample size is large enough.
+For the t-test used in FME's statistics to be reliable, the data must follow an approximately normal distribution. The central limit theorem (CLT) shows that the mean of a variable has an approximately normal distribution if the sample size is large enough.
 
 You can reduce the default minimum sample size of 355 if you need results for smaller sample sizes. For metrics with skewed distributions your results may be less reliable when you have small sample sizes.
 

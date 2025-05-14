@@ -7,7 +7,7 @@ A metric measures [events](https://help.split.io/hc/en-us/articles/360020585772)
 
 Metric results are calculated for each treatment of a feature flag that shares the same traffic type as the metric and has a percentage targeting rule applied. Impact can be calculated between a selected comparison treatment and baseline treatment within a feature flag. Results are displayed on the [Metrics impact tab](https://help.split.io/hc/en-us/articles/360020844451) of the feature flag.
 
-Refer to our [Guide to Product Metrics](https://help.split.io/hc/en-us/articles/360058405992-Metrics-Guide) to learn about many common metrics and how to create them in Split.
+Refer to our [Guide to Product Metrics](https://help.split.io/hc/en-us/articles/360058405992-Metrics-Guide) to learn about many common metrics and how to create them in FME.
 
 ## Metric types
 

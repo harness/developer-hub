@@ -50,7 +50,7 @@ You can manually run calculations on-demand by clicking the Recalculate button. 
 Reasons you may choose to recalculate metrics:
 * If you create or modify a metric after the last updated metric impact calculation, recalculate to get the latest results.
 * If you assign a metric to the Key metrics or Supporting metrics groups, recalculate to populate results for those metrics.
-* If the current version of this feature flag was created more than 28 days ago, recalculate to update results with the most recent data. Note that Split’s data retention period is 90 days. The influence of data points prior to 90 days are lost, even if the feature flag version is older than 90 days.
+* If the current version of this feature flag was created more than 28 days ago, recalculate to update results with the most recent data. Note that FME’s data retention period is 90 days. The influence of data points prior to 90 days are lost, even if the feature flag version is older than 90 days.
 
 The Recalculate button will be disabled when:
 

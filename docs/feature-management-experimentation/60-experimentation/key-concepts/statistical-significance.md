@@ -15,7 +15,7 @@ The impact you see could be the result of a typical fluctuation in the metric in
 
 Choosing the right significance threshold should balance the confidence you want to have in the impact not being by chance and the number of samples (traffic) that you receive.
 
-Learn more below about testing for a significant impact, the methodologies, and default configurations used in Split. If your account's risk tolerance is lower, or your traffic volumes are of scale, learn more about [changing statistical settings](https://help.split.io/hc/en-us/articles/360020640752) in Split.
+Learn more below about testing for a significant impact, the methodologies, and default configurations used in FME. If your account's risk tolerance is lower, or your traffic volumes are of scale, learn more about [changing statistical settings](https://help.split.io/hc/en-us/articles/360020640752) in FME.
 
 
 ## Two-tailed test
@@ -46,13 +46,13 @@ With modern telemetry systems, it is easy to check the change in a metric at any
 
 The target sample size at which you should evaluate the experimental results is based on what size of effect is meaningful (the minimum detectable effect), the variance of the underlying data, and the rate at which it is acceptable to miss this effect when it is actually present (the power threshold). 
 
-In Split, you can customize the significance threshold and power thresholds.
+In FME, you can customize the significance threshold and power thresholds.
 
-Learn more about interpreting your metrics impact and configuring your statistical settings in Split.
+Learn more about interpreting your metrics impact and configuring your statistical settings in FME.
 
 ## Normal distribution
  
-Robust experiments rely on the means of treatment and control groups, which are assumed to be normally distributed. The *central limit theorem (CLT)* shows that the mean of a variable has an approximately normal distribution if the sample size is large enough. We apply the [rule of thumb](http://bit.ly/expRulesOfThumb) that the minimum number of independent and identically distributed observations needed to safely assume that the means have a normal distribution is 355 for each treatment. Hence, by default we require a sample size of at least 355 in each treatment before we calculate significance for your metrics. You can change this minimum sample size requirement in the [Monitor and Experiment settings](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings) section in Split.
+Robust experiments rely on the means of treatment and control groups, which are assumed to be normally distributed. The *central limit theorem (CLT)* shows that the mean of a variable has an approximately normal distribution if the sample size is large enough. We apply the [rule of thumb](http://bit.ly/expRulesOfThumb) that the minimum number of independent and identically distributed observations needed to safely assume that the means have a normal distribution is 355 for each treatment. Hence, by default we require a sample size of at least 355 in each treatment before we calculate significance for your metrics. You can change this minimum sample size requirement in the [Monitor and Experiment settings](https://help.split.io/hc/en-us/articles/360020640752-Monitor-and-experiment-settings) section in FME.
 
 ## Alert Policy Statistics 
 
