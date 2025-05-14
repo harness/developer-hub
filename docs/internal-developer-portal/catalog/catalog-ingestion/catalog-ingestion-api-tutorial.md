@@ -19,7 +19,7 @@ In this tutorial we will be using the catalog metadata ingestion APIs to add add
 
 ## Pre-requisites
 
-1. You must have components registered in your software catalog. If you don't have any components registered, follow this [tutorial](/docs/internal-developer-portal/catalog/register-software-component) to register one. We recommend you to register [this software component](https://github.com/harness-community/idp-samples/blob/main/example-catalog-info/tutorial-catalog-ingestion.yaml) for this tutorial.
+1. You must have components registered in your software catalog. If you don't have any components registered, follow this [tutorial](/docs/internal-developer-portal/catalog/manage-catalog.md) to register one. We recommend you to register [this software component](https://github.com/harness-community/idp-samples/blob/main/example-catalog-info/tutorial-catalog-ingestion.yaml) for this tutorial.
 
 ## Add a new metadata
 

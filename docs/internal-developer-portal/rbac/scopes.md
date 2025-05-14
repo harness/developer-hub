@@ -213,7 +213,7 @@ Workflows being a catalog entity has a corresponding `workflow.yaml` or `templat
 
 ### Hide Workflows
 
-You can hide the workflows, suggested using while the workflow is in development phase, by using the same tags used to [hide catalog entities](/docs/internal-developer-portal/rbac/resources-roles#hide-catalog-entities). 
+You can hide the workflows, suggested using while the workflow is in development phase, by using the same tags used to [hide catalog entities](/docs/internal-developer-portal/rbac/scopes.md#hide-catalog-entities). 
 
 ## Managing Pipelines RBAC for Workflows
 

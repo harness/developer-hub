@@ -138,7 +138,7 @@ Although it's possible to name catalog entity descriptor files however you wish,
 
 :::
 
-Follow the instructions [here](/docs/internal-developer-portal/catalog/how-to-create-idp-yaml) to understand more on how to write a `catalog-info.yaml`
+Follow the instructions [here](/docs/internal-developer-portal/catalog/catalog-yaml.md) to understand more on how to write a `catalog-info.yaml`
 
 ### Save the file:
 

@@ -19,8 +19,8 @@ Workflows enable developer self-service by automating manual tasks and processes
 ## Workflow Basics 
 Let’s get started with the fundamental steps to **understand, build, and configure a Workflow** from scratch.  
 
-### [Get Started with Workflows](/docs/internal-developer-portal/get-started/workflow-quickstart.md)
-Ready to start using Workflows? Follow our [**Quickstart Guide**](/docs/internal-developer-portal/get-started/workflow-quickstart.md) and **create your first Workflow** in just a few minutes.
+### [Get Started with Workflows](/docs/internal-developer-portal/get-started/workflows-2o.md)
+Ready to start using Workflows? Follow our [**Quickstart Guide**](/docs/internal-developer-portal/get-started/workflows-2o.md) and **create your first Workflow** in just a few minutes.
 
 1. **Register the Workflow** using the `workflow.yaml` file configuration.  
 2. **Execute the Workflow** by providing input details as defined in the configuration.  
