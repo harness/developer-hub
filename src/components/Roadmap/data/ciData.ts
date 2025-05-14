@@ -86,12 +86,12 @@ export const CiData: Horizon = {
         title: "MobileOps",
         description: "Solutions to simplify and streamline mobile device testing, helping teams improve the efficiency and reliability of their mobile development workflows.",
       }
-    ],
+    ], 
   },
   Released: {
     description: "What has been released",
     feature: [
-
+ 
       {
         tag: [{ value: "Fast" }, {value: "beta" }],
         title: "Test Intelligence for JavaScript-based languages with Jest",
