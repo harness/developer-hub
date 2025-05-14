@@ -38,11 +38,6 @@ To learn more, see [Manage Roles](https://developer.harness.io/docs/platform/rol
 
 ![](./static/workflows-permissions.png)
 
-## Recommendations for Using RBAC with Workflows
-
-* Use **project-level roles** to scope Workflow creation or execution access to specific teams.
-* Use **org or account-level roles** if you want users to access or execute Workflows across multiple projects or orgs.
-
 ## Workflow RBAC Example
 
 ### Configure RBAC for Project-Level Workflow Execution

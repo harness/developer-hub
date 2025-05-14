@@ -37,11 +37,6 @@ These permissions can be configured when [creating a custom role](/docs/platform
 
 <img width="850" alt="Image" src="https://github.com/user-attachments/assets/28bbaebe-a480-4141-b118-250c45771bc5" />
 
-## Recommendations for Using RBAC in Catalog
-
-* **Shared services** should be created in a **shared project**.
-* **Private services** should be created in a **private project**.
-
 ## Catalog RBAC Example
 
 ### Configure RBAC for Account-Level Catalog Entity Creation

@@ -126,20 +126,18 @@ Once the feature flag is enabled, your account will undergo the following change
 * Like workflows, existing `catalog-info.yaml` files will no longer be linked. These can be retained for reference or discarded.
 * Once the **Git Experience** is released, you’ll be able to commit these entities to a Git repository as YAML files.
 
-**Entity Cleanup & Restructuring:**
+**Action Items:**
 
-* For **private or shared services**, reorganize them into appropriate **Projects or Org scopes**:
+1. **Entity Cleanup & Restructuring:**
+    * For **private or shared services**, reorganize them into appropriate **Projects or Org scopes**:
+      * Copy the entity YAML.
+      * Recreate it under the desired scope (e.g., Project).
+      * Delete the original Account-level entity.
 
-  * Copy the entity YAML.
-  * Recreate it under the desired scope (e.g., Project).
-  * Delete the original Account-level entity.
-
-**Configure Catalog RBAC:** (Learn more about configuring [Catalog RBAC](/docs/internal-developer-portal/rbac/catalog-rbac.md))
-
-* To control access to these entities:
-
-  * Start setting up **Catalog RBAC**.
-  * Define appropriate roles and permissions for users who need access to account-level catalog entities.
+2. **Configure Catalog RBAC:** (Learn more about configuring [Catalog RBAC](/docs/internal-developer-portal/rbac/catalog-rbac.md))
+    * To control access to these entities:
+      * Start setting up **Catalog RBAC**.
+      * Define appropriate roles and permissions for users who need access to account-level catalog entities.
 
 
 #### 🔧 Move to Newer APIs (Post-Migration)
@@ -171,17 +169,32 @@ After upgrading to IDP 2.0, you can begin using the **newer API endpoints**. Alt
 
 ## Unlock These Features with the IDP 2.0 Upgrade
 
+Upgrading to IDP 2.0 gives you access to powerful new capabilities, including:
 
-By upgrading to IDP 2.0, you gain access to:
+* **Harness-native Platform Hierarchy**
+* **Granular, platform-level RBAC**
+* **Bi-directional Git sync for entity YAML files**
+* **Simplified automation without manual YAML management**
+* **Redesigned Catalog & Workflow UI**
+* *...and many more exciting features!*
 
-* Harness-native Platform Hierarchy
-* Granular platform-level RBAC
-* Bi-direction Git sync of entity YAML files
-* Easier automation without manual YAML operations
-* New Catalog & Workflow UI
-* and many more exciting features. 
+To explore these new features in detail, go to [IDP 2.0 Feature Highlights](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md#whats-new-in-idp-20-feature-highlights).
 
-To learn more about the New Features, go to [What's New in IDP 2.0? (Feature Highlights)](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md#whats-new-in-idp-20-feature-highlights)
+### Try Out the New Features in IDP 2.0
+
+Here's how you can get hands-on with the new IDP 2.0 functionality:
+
+1. Get familiar with the **[Harness-native Data Model](/docs/internal-developer-portal/catalog/data-model.md)**
+2. Learn about the new **[Catalog YAML structure](/docs/internal-developer-portal/catalog/catalog-yaml.md)**
+3. **[Manage Catalog](/docs/internal-developer-portal/catalog/manage-catalog.md)**
+   * Create entities directly from the Harness UI
+   * Edit, share, and delete entities with ease
+4. **[Manage Workflows](/docs/internal-developer-portal/flows/manage-workflow-2o.md)**
+   * Create and configure workflows directly from the UI
+5. Understand the **[Scopes, Roles, and Permissions](/docs/internal-developer-portal/rbac/scopes.md)** hierarchy in IDP 2.0
+6. Configure **[Catalog RBAC](/docs/internal-developer-portal/rbac/catalog-rbac.md)**
+7. Set up **[Workflow RBAC](/docs/internal-developer-portal/rbac/workflow-rbac.md)**
+
 
 
 <!-- ## FAQs -->
