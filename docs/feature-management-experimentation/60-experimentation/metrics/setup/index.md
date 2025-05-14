@@ -24,7 +24,7 @@ When defining the metric definition, determine the winning direction. If increas
 
 ### Create an alert policy 
 
-An alert policy allows you to configure a degradation threshold for your metric. If the feature flag causes the metric to go below or above that threshold you are alerted by your configured notification channel. Learn more about [creating an alert policy](../../alerts/alert-policies).
+An alert policy allows you to configure a degradation threshold for your metric. If the feature flag causes the metric to go below or above that threshold you are alerted by your configured notification channel. Learn more about [creating an alert policy](../alert-policies).
 
 ### Manage alerts
 

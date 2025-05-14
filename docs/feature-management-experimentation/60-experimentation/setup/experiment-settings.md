@@ -7,7 +7,7 @@ The following describes how to set your experiment settings.
 
 ## Testing methods
 
-Split supports sequential testing and fixed horizon methods. For more information, refer to the [Sequential vs. Fixed horizon testing](./key-concepts/fixed-horizon) documentation.
+Split supports sequential testing and fixed horizon methods. For more information, refer to the [Sequential vs. Fixed horizon testing](../key-concepts/fixed-horizon) documentation.
 
 ### Using sequential testing
 
@@ -88,7 +88,7 @@ The review period has no direct impact on the metrics, neither the ingestion of 
 
 Analyzing multiple metrics per experiment can substantially increase your chances of seeing a false positive result if not accounted for. Our multiple comparison corrections feature applies a correction to your results so that the overall chance of a significant metric being a false positive is never larger than your significance threshold. For example, with the default significance threshold of 5%, you can be confident that at least 95% of all the changes without meaningful impacts don't incorrectly show as statistically significant. This guarantee applies regardless of how many metrics you have.
 
-With this setting applied, the significance of your metrics, and their p-values and error margins, is automatically adjusted to include this correction. This correction is immediately applied to all tests, including previously completed ones. Refer to [Multiple comparison corrections guide](./key-concepts/multiple-comparison-correction) to learn more.
+With this setting applied, the significance of your metrics, and their p-values and error margins, is automatically adjusted to include this correction. This correction is immediately applied to all tests, including previously completed ones. Refer to [Multiple comparison corrections guide](../key-concepts/multiple-comparison-correction) to learn more.
 
 ## Recommendations and trade-offs
 

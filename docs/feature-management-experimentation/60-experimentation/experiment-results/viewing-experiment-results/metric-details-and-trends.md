@@ -44,7 +44,7 @@ On the impact snapshot chart, you can analyze data for ___key metrics___ using [
 * **Run more data-driven experiments.** Iterate on your next hypotheses or run follow-up experiments using the insights gained on what worked or didn’t in past experiments.
 
 :::info 
-[Multiple comparison correction](../key-concepts/multiple-comparison-correction) is not applied to dimensional analysis.
+[Multiple comparison correction](../../key-concepts/multiple-comparison-correction) is not applied to dimensional analysis.
 :::
 
 Before you can select a _dimension_ to analyze on the metric Impact snapshot, you need to send a corresponding _[event property](https://help.split.io/hc/en-us/articles/360020585772-Events#event-properties)_, for the event measured by the metric. (You can set event properties in code when you call the FME SDK's `track` method.) An Admin also needs to [configure dimensions and values](https://help.split.io/hc/en-us/articles/14824241665421-Using-dimensional-analysis#configuring-dimensions-and-values) to show them in the Select a dimension dropdown.
