@@ -1,0 +1,11 @@
+{
+    "label": "AWS Spot Elastigroup",
+    "position": "3",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "AWS Spot"
+    }
+  }
