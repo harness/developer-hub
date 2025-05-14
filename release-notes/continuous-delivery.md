@@ -55,6 +55,33 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## May 2025
 
+### Version 1.89.0
+
+#### New Features and Enhancements
+
+- Harness now supports including the service name and environment in the subject line of EMAIL notifications, making them searchable and context-rich. Currently, this feature is behind the feature flag `PIPE_STAGE_NOTIFICATION_ENV_SVC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-83691**)
+
+- Harness now displays the Helm chart versions for both current and rollback artifacts during post-production rollbacks—replacing **N/A** with the actual version numbers in the UI. (**CDS-109098**)
+
+-  Harness now supports concurrent pipeline execution settings at the organization and project levels, enabling administrators to control the maximum number of active pipeline runs per scope. (**PIPE-15840**)
+
+- Harness now supports displaying the full branch name in the **Run** dialog by expanding the dialog to the full available width, preventing truncation of long branch names. (**PIPE-26551**)
+
+- Harness now supports alphabetically sorting the list of Projects, Organizations, and Accounts when configuring Approver User Groups. (**CDS-95935**)
+
+- Harness now supports publishing deployment data to custom dashboards so customers can retrieve a list of services by deployment strategy.
+
+- Harness is introducing the **Elastigroup Blue Green Traffic Shift** step to support weighted traffic shifting for Spot Elastigroup deployments, enabling gradual rollout strategies for services with low task counts. Currently, this feature is behind the feature flag `CDS_SPOT_TRAFFIC_SHIFT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-100276**)
+
+#### Fixed Issues
+
+- Previously, the stage status label on the execution page banner would appear truncated on smaller resolution screens. The issue is resolved. (**PIPE-26698**)
+- Previously, the Insert Step configuration in older pipeline templates would not render correctly in the UI, even with the relevant feature flags enabled. The issue is resolved, and Insert Step now renders correctly in the Overview tab for updated pipeline templates with new stage versions. (**PIPE-26956, ZD-82769**)
+- Previously, when using an expression to define the repository name in the Clone Codebase step, the Branch Name field in the run form would get stuck in an infinite loading state, preventing users from selecting or typing a branch. The issue is resolved. (**CDS-109785, ZD-83118**)
+- Previously, the `CF_HOME` environment variable was changing after each `cf auth` command in subsequent tasks. This issue was caused by broken handling of login details across operations. The issue is resolved. (**CDS-108472, ZD-81227**)
+- Previously, adding an AwsLambdaFunctionDefinition manifest via YAML in the service override configuration caused the UI to break, displaying an error message and preventing further changes. The issue is resolved. (**CDS-109383, ZD-83146**)
+- Previously, the AWS CDK plugin did not properly support the AWS_SESSION_TOKEN environment variable when using temporary credentials from AWS STS AssumeRole. The issue is resolved. (**CDS-109505, ZD-83221**)
+
 ### GitOps Version 1.32, GitOps Agent 0.93
 
 #### Fixed Issues
@@ -62,7 +89,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Previously, the API for listing repositories on the agent returned all repositories on the agent; now, it only returns repositories that respect the project mapping. (**CDS-109479**, **ZD-82623**)
 - Previously, invalid application sets were flooding the GitOps Agent with update events. This has been fixed. (**CDS-109042**)
 
-### Version 1.88
+### Version 1.88.4
 
 #### New Features and Enhancements
 
@@ -166,7 +193,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Harness now supports capturing **multiline output variables** from **Container steps** in CD pipelines, ensuring correct population and visibility in the Output tab. Currently, this feature is behind the feature flag `CI_ENABLE_MULTILINE_OUTPUTS_SECRETS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-95235, ZD-44567,72745**) 
 
-- Harness is introducing the **ECS Blue Green Traffic Shift** step to support weighted traffic shifting for ECS and Spot deployments, enabling gradual rollout strategies for ECS services with low task counts. Currently, this feature is behind the feature flag `CDS_ECS_TRAFFIC_SHIFT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-102609**) 
+- Harness is introducing the **ECS Blue Green Traffic Shift** step to support weighted traffic shifting for ECS deployments, enabling gradual rollout strategies for ECS services with low task counts. Currently, this feature is behind the feature flag `CDS_ECS_TRAFFIC_SHIFT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-102609**) 
 
 - Harness now **enforces namespace consistency in Kubernetes and Helm deployments**, preventing users from overriding the infrastructure-defined namespace using custom CLI flags like `--namespace`. Currently, this feature is behind the feature flag `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-99904, ZD-67987,71082**) 
 
