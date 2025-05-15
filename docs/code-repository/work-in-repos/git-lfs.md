@@ -70,6 +70,6 @@ Harness Code supports Git LFS operations over HTTPS only.
 
 :::note
 
-If you clone a repository via SSH, Git LFS operations still require authentication over HTTPS.
+If you clone a repository via SSH, Git LFS operations will happen over HTTPS seamlessly as pure Git LFS SSH-based transfer is not supported. 
 
 :::
