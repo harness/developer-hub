@@ -32,35 +32,6 @@ Harness DBOps offers multiple methods to generate changelogs for your database. 
 ## Setup Changelog
 
 <Tabs>
-<TabItem value="Generate Changelog Command">
-You can create a changelog by using the `generate-changelog` command. This method is useful if you want to generate a changelog based on the current state of your database. This approach allows you to create a changelog file that reflects the current state of your database schema.
-
-### Steps to Create a Changelog with the `generate-changelog` Command
-
-1. Under `DBOps` in the Harness UI, navigate to `DB Schema`.
-2. Click on the `Add DB Schema` button.
-![Create DB Schema](../static/db-devops-create-dbschema.png)
-3. Click on the `Add DB Instance` button.
-4. Go to `Pipeline` and click on the `Create a Pipeline` button.
-5. Click on the `Add Stage` button and select `custom stage`.
-6. In the `Stage` section, create `Add Step Group` as the stage type.
-:::warning note 
-Toggle on the "Enable container based execution".
-:::
-7. In the `Step Group` section, select `Add Step` as the step type. Under "DB DevOps", select `Liquibase Command` as the step type.
-8. By default the name is "LiquibaseCommand_1".
-![Configure Command](../static/db-devops-liquibase-command.png)
-- **Select DB Schema**: The DB Schema we created on Step 2.
-- **Select DB Instance**: The Instance we created on Step 3.
-- **Command**: The command to be executed. In this case, we will use `generate-changelog` to generate a changelog file.
-- **Command Arguments(Optional)**: The command arguments are optional and can be used to pass additional parameters to the command. For example, you can use the `--changelogFile` argument to specify the path to the changelog file.
-9. Click `Apply Changes` and Save the Pipeline.
-10. Click on the `Run` button to run the pipeline.
-11. Once the pipeline is executed successfully, you will find the changelog file in the specified path.
-
-![Generate Changelog](../static/db-devops-generate-changelog.png)
-
-</TabItem>
 <TabItem value="Using existing SQL files">
 
 You can create a changelog by pointing to SQL files in your git repository. This method is useful if you have existing SQL scripts that you want to use as changelogs.
@@ -83,10 +54,39 @@ databaseChangeLog:
       relativeToChangelogFile: true
 ```
 </TabItem>
+
+<TabItem value="Generate Changelog Command">
+You can create a changelog by using the `generate-changelog` command. This method is useful if you want to generate a changelog based on the current state of your database. This approach allows you to create a changelog file that reflects the current state of your database schema.
+
+### Steps to Create a Changelog with the `generate-changelog` Command
+
+1. Under `DBOps` in the Harness UI, navigate to `DB Schema`.
+2. Click on the `Add DB Schema` button.
+![Create DB Schema](../static/db-devops-create-dbschema.png)
+3. Click on the `Add DB Instance` button.
+4. Go to `Pipeline` and click on the `Create a Pipeline` button.
+5. Click on the `Add Stage` button and select `custom stage`.
+6. In the `Stage` section, create `Add Step Group` as the stage type.
+:::warning note 
+Toggle on the "Enable container based execution".
+:::
+7. In the `Step Group` section, select `Add Step` as the step type. Under "DB DevOps", select `Liquibase Command` as the step type.
+8. By default the name is "LiquibaseCommand_1".
+![Configure Command](../static/db-devops-liquibase-command.png)
+- **Select DB Schema**: The DB Schema we created on Step 2.
+- **Select DB Instance**: The Instance we created on Step 3.
+- **Command**: The command to be executed. In this case, we will use `generate-changelog` to generate a changelog file.
+9. Click `Apply Changes` and Save the Pipeline.
+10. Click on the `Run` button to run the pipeline.
+11. Once the pipeline is executed successfully, you will find the changelog file in the specified path.
+
+![Generate Changelog](../static/db-devops-generate-changelog.png)
+
+</TabItem>
 </Tabs>
 
 ## How changesets work
-A changeset is the smallest deployable unit of change to a database. When using DB DevOps changesets acan be applied or rolled back individually. Which changesets have been applied are tracked inside that database in the `databasechangelog` tracking table. A changeset looks somthing like this:
+A changeset is the smallest deployable unit of change to a database. When using DB DevOps changesets a can be applied or rolled back individually. Which changesets have been applied are tracked inside that database in the `databasechangelog` tracking table. A changeset looks somthing like this:
 
 ```yaml
 databaseChangeLog:

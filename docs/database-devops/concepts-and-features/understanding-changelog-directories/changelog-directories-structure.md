@@ -45,6 +45,7 @@ databaseChangeLog:
   - includeAll:
       path: db/changelog/releases/
       errorIfMissingOrEmpty: true
+      relativeToChangelogFile: true
 ```
 
 :::note

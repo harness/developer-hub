@@ -1,6 +1,24 @@
 ---
-title: Working with SQL File Directories
-description: Working with SQL File Directories
+title: Working with SQL Files
+description: Working with SQL Files
+keywords:
+  - sql files
+  - sql changelogs
+  - liquibase
+  - database devops
+  - db devops
+  - harness db devops
+  - harness database devops
+  - harness dbops
+  - harness database
+  - harness db
+  - harness devops
+  - continuous integration
+  - continuous delivery
+  - ci cd
+  - sql file structure
+  - sql queries
+sidebar_label: Working with SQL Files
 sidebar_position: 3
 ---
 
@@ -42,8 +60,8 @@ databaseChangeLog:
       relativeToChangelogFile: true
 ```
 
-### Formatted SQL
-In Harness DBOps, we allow seamless integration of formatted SQL files, enabling you to track database changes effectively. Similar to other tools, Harness DBOps uses metadata in the SQL files to help identify and manage changes.
+### Liquibase Formatted SQL files
+In Harness DBOps, we allow seamless integration of liquibase formatted SQL files, enabling you to track database changes effectively. Similar to other tools, Harness DBOps uses metadata in the SQL files to help identify and manage changes.
 
 ```SQL
 --liquibase formatted sql
@@ -125,4 +143,4 @@ insert into test1 (id,  name) values (2, 'josh');
 When using SQL format for your changelog files, rollback actions are required. For more information about implementing rollbacks, refer to [Automatic and Custom Rollback](../automatic-and-custom-rollback.md).
 :::
 
-A clear and consistent SQL file structure allow teams to manage database changes with properly formatted SQL files. By following the best practices for directory organization, changeset formatting, spacing, and rollback definitions, you can ensure your changelogs are well-structured, maintainable, and CI/CD-ready.
+A clear and consistent SQL file structure allow teams to manage database changes with properly liquibase formatted SQL files. By following the best practices for directory organization, changeset formatting, spacing, and rollback definitions, you can ensure your changelogs are well-structured, maintainable, and CI/CD-ready.
