@@ -652,18 +652,18 @@ Harness has two ways of performing Helm Steady State Checks for Native Helm Depl
 
 ### Helm Test Support
 
-Harness now lets you run your chart’s built-in tests immediately after deployment. Charts that include helm.sh/hook: test jobs under templates/ can be validated with a single checkbox:
+Harness now lets you run your chart’s built-in tests immediately after deployment. Charts that include `helm.sh/hook: test jobs` under templates can be validated with a single checkbox.
 
 :::note
 Currently, this feature is behind the feature flag `CDS_ENABLE_RUN_HELM_CHART_TESTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-- Where to find it: In any Native Helm Deploy step, enable Run Helm Test.
-- What it does: After `helm upgrade --install…`, Harness will invoke helm test `<release-name>`.
-- Pass/fail: Your test containers must exit 0 for success—failures mark the step (and stage) as failed.
-- Skip logging: If you leave the box unchecked, Harness logs “Helm test skipped” and proceeds.
+- Where to find it: In any Native Helm Deploy step, enable **Run Chart Tests**.
+- What it does: After `helm upgrade --install ...`, Harness will invoke `helm test <release-name>`.
+- Pass/fail: Your test containers must exit 0 for success. Failures will mark the step (and stage) as failed.
+- Skip logging: If you leave the box unchecked, Harness logs **Helm test skipped** and proceeds.
 
-For more information on Helm Chart Tests, refer [Helm documentation](https://helm.sh/docs/topics/chart_tests/)
+For more information on Helm Chart Tests, go to the [Helm documentation](https://helm.sh/docs/topics/chart_tests/)
 
 #### Disabled Setting - Native Helm steady state for jobs - Default Mode
 
