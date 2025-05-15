@@ -12,4 +12,4 @@ Once you've [created an experiment](../../setup/), you can assign up to 10 key m
 1. Search for key metrics to add by using the search bar or select individual key metrics.
 1. Click **Save**. 
 
-![Manage key metrics](../../static/key-metrics.png)
+![Manage key metrics](./static/key-metrics.png)

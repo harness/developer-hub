@@ -12,4 +12,4 @@ Once you've [created an experiment](../../setup/), you can assign up to 100 supp
 1. Search for supporting metrics to add by using the search bar or select individual supporting metrics.
 1. Click **Save**. 
 
-![Manage supporting metrics](../../static/supporting-metrics.png)
+![Manage supporting metrics](./static/supporting-metrics.png)
