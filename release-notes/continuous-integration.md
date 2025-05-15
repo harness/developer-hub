@@ -99,10 +99,10 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 | **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
 |-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
-| `harness/ci-addon`          | Change the delimiter from double colon to pipe in the script failure message. | 1.16.86              | 1.16.87       |
-| `harness/ci-lite-engine`    | Change the delimiter from double colon to pipe in the script failure message. | 1.16.86              | 1.16.87       |
+| `harness/ci-addon`          |  Improved plugin error handling - handle empty error_category and changed the delimiter from double colon (::) to pipe (||). | 1.16.86              | 1.16.87       |
+| `harness/ci-lite-engine`    |  Improved plugin error handling - handle empty error_category and changed the delimiter from double colon (::) to pipe (||). | 1.16.86              | 1.16.87       |
 | `harness/drone-git`    | Convert drone-git to binary to avoid cloning in containerless mode | 1.6.7              | 1.6.9       |
-| `plugins/artifactory`    | Change the delimiter from double colon to pipe in the script failure message. | 1.7.4              | 1.7.5       |
+| `plugins/artifactory`    |  Updated the error message in the **Upload Artifacts to JFrog** step to clarify when a connector lacks upload permissions. | 1.7.4              | 1.7.5       |
 
 ### Version 1.78
 
