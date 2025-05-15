@@ -61,6 +61,13 @@ import { MODULES } from "@site/src/constants"
             "Actionable results analysis for data-driven development",
           link: "/docs/feature-management-experimentation/experimentation",
         },*/
+        {
+          title: "Account settings",
+          module: MODULES.fme,
+          description:
+            "Manage projects, environments, and user access for scalable experimentation",
+          link: "/docs/feature-management-experimentation/account-settings",
+        },
       ],
     },
     {
