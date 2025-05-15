@@ -1,6 +1,6 @@
 ---
 title: Alerts and Monitoring
-sidebar_position: 50
+sidebar_position: 60
 ---
 
 Release Monitoring provides a flexible alerting system to help teams monitor the impact of feature flags and experiments in real time. By configuring automated alerts on key or guardrail metrics, teams can quickly detect regressions, respond to issues, and protect customer experience during rollouts.
