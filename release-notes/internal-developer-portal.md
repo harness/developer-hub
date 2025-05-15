@@ -124,12 +124,12 @@ You’re right — **IDP 2.0 is a significant upgrade**. But we’ve ensured the
 
 To help you plan and adopt with confidence, we’ve created:
 
-* A detailed **[IDP 2.0 Overview Guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)**
-* A comprehensive **[Step-by-Step Upgrade Handbook](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)**
+* A detailed **[IDP 2.0 Overview Guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path)**
+* A comprehensive **[Step-by-Step Upgrade Handbook](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o)**
 
 Upgrading to IDP 2.0 is a **structured 6-phase process**, and our team is here to guide you every step of the way.
 
-📘 [Access the Upgrade Guide](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)
+📘 [Access the Upgrade Guide](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o)
 
 📩 Ready to start? [Raise a Support Ticket](https://support.harness.io)
 
