@@ -35,7 +35,7 @@ Why not just use function calls for each API?
 
 ## Requirements
 
-* **Harness API Token:** Generate one through the Harness UI. Learn more: [Manage API Keys](/docs/category/api-keys)
+* **Harness API Token:** Generate one through the Harness UI. Learn more: [Manage API Keys](/docs/platform/automation/api/add-and-manage-api-keys/)
 * **Go 1.23 or later:** Ensure **Go** is installed on your system.
 
 **Video Walkthrough:** [Installation and Setup]
