@@ -1,10 +1,10 @@
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 const doYourCustomStuff = () => {
+  console.log('ABC');
+
   const navbar__items = document.querySelector('.navbar__items');
-  const navbar__sidebar__close = document.querySelector(
-    '.navbar-sidebar__close'
-  );
+  const navbar__sidebar__close = document.querySelector('.navbar-sidebar__close');
   const navbar__inner = document.querySelector('.navbar__inner');
 
   const searchBoxMain = navbar__inner.querySelector('#coveo-search-main');
@@ -12,6 +12,7 @@ const doYourCustomStuff = () => {
   if (searchBoxMain) {
     searchBoxMain.classList.add('main-nav-coveo');
   }
+  if (document.getElementById('search-button')) return;
 
   const searchButton = document.createElement('i');
   searchButton.setAttribute('id', 'search-button');
@@ -23,13 +24,9 @@ const doYourCustomStuff = () => {
       const navbar__toggle = document.querySelectorAll('.navbar__toggle');
       if (navbar__toggle) {
         navbar__toggle[0].addEventListener('click', () => {
-          const navbar__sidebar__items = document.querySelectorAll(
-            '.navbar-sidebar__items'
-          );
+          const navbar__sidebar__items = document.querySelectorAll('.navbar-sidebar__items');
           if (navbar__sidebar__items[0]) {
-            navbar__sidebar__items[0].classList.add(
-              'navbar-sidebar__items--show-secondary'
-            );
+            navbar__sidebar__items[0].classList.add('navbar-sidebar__items--show-secondary');
           }
         });
       }
@@ -44,13 +41,9 @@ const doYourCustomStuff = () => {
         navbar__sidebar.classList.add('navbar-sidebar--show');
       }
 
-      const navbar__sidebar__items = document.querySelectorAll(
-        '.navbar-sidebar__items'
-      );
+      const navbar__sidebar__items = document.querySelectorAll('.navbar-sidebar__items');
       if (navbar__sidebar__items[0]) {
-        navbar__sidebar__items[0].classList.remove(
-          'navbar-sidebar__items--show-secondary'
-        );
+        navbar__sidebar__items[0].classList.remove('navbar-sidebar__items--show-secondary');
       }
     });
   }
@@ -69,10 +62,10 @@ const doYourCustomStuff = () => {
 
 if (ExecutionEnvironment.canUseDOM) {
   window.addEventListener('load', () => {
-    setInterval(doYourCustomStuff, 500);
-    // setTimeout(() => {
-    //   clearInterval(interval);
-    //   interval = 0;
-    // }, 2000);
+    let interval = setInterval(doYourCustomStuff, 500);
+    setTimeout(() => {
+      clearInterval(interval);
+      interval = 0;
+    }, 5000);
   });
 }
