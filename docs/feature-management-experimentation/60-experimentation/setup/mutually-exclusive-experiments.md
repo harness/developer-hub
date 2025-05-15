@@ -21,7 +21,7 @@ Con:
 
 * More time is required to reach sufficient traffic volumes for mutually exclusive experiments to produce reliable statistical results.
 
-Split’s experimentation advisors are prepared to assist our customers in setting effective concurrent and progressive experimentation strategies. [Contact us](mailto:support@split.io) to discuss your options and create an effective experimentation plan.
+Harness FME experimentation advisors are prepared to assist our customers in setting effective concurrent and progressive experimentation strategies. [Contact us](mailto:support@split.io) to discuss your options and create an effective experimentation plan.
 
 ## Creating mutually exclusive experiments 
 

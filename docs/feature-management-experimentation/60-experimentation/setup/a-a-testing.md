@@ -9,7 +9,7 @@ Everyone understands the value of A/B testing an application, where one compares
 
 The primary goal is to validate your experimental setup, where you do not see any statistically significant results. We expect for them to be inconclusive. If the results of an A/A test show consistent statistically significant differences between the behaviors of two groups of users exposed to the same treatment, then there is probably something wrong with your targeting or telemetry that should be addressed before trusting the results of any subsequent A/B tests.
 
-A second benefit of A/A testing is to collect baselines for all your metrics of a particular traffic type. Since the A/A test will presumably apply to all users, averaging together the metric values for the two groups will give you metric baselines only for users where getTreatment is called. So let’s say you decide to call getTreatment on app load, the baselines will relate to users who have subsequently been randomly bucketed into a treatment, rather than simply on the page where a change has been made.
+A second benefit of A/A testing is to collect baselines for all your metrics of a particular traffic type. Since the A/A test will presumably apply to all users, averaging together the metric values for the two groups will give you metric baselines only for users where `getTreatment` is called. So let’s say you decide to call `getTreatment` on app load, the baselines will relate to users who have subsequently been randomly bucketed into a treatment, rather than simply on the page where a change has been made.
 
 In addition to double checking the effectiveness and accuracy of your implementation, and tracking the number of conversions to establish a baseline, an A/A test can also assist in monitoring your on-page conversions, track data inputs for your sample size calculations (e.g. standard deviation), and help to prevent false positives in your results.
 
@@ -81,7 +81,7 @@ That’s it! You have now successfully run an A/A test and should feel confident
 
 ### Why do I see significance in my A/A test?
 
-Harness FME's platform has sophisticated features in place to detect false positives and detect issues in setup or with the data. These features include [sample ratio mismatch checks](https://help.split.io/hc/en-us/articles/360020636472-Sample-ratio-check), [multiple comparison corrections](https://help.split.io/hc/en-us/articles/360037852431-Multiple-comparison-correction), and [FME's approach to statistics](https://help.split.io/hc/en-us/articles/360042265892-Split-s-approach-to-statistics).
+Harness FME has sophisticated features in place to detect false positives and detect issues in setup or with the data. These features include [sample ratio mismatch checks](https://help.split.io/hc/en-us/articles/360020636472-Sample-ratio-check), [multiple comparison corrections](https://help.split.io/hc/en-us/articles/360037852431-Multiple-comparison-correction), and [FME's approach to statistics](https://help.split.io/hc/en-us/articles/360042265892-Split-s-approach-to-statistics).
 
 However, there is always a possibility that a statistically significant difference will be detected. This doesn't necessarily mean something went wrong and that your telemetry is suspect.
 

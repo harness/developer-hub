@@ -18,13 +18,13 @@ Setting up an experiment follows these steps:
 1. Navigate to the Experiments section on your navigation panel and click **+Create experiment**.
 
 2. Give your experiment a name and designate an assignment source by selecting a feature flag and environment:
-    * Choose a feature flag that has targeting active (not killed).
-    * Choose an environment for which the feature flag definition is initiated (valid environments are enabled in the dropdown).
+   * Choose a feature flag that has targeting active (not killed).
+   * Choose an environment for which the feature flag definition is initiated (valid environments are enabled in the dropdown).
 
 3. Define the scope of your experiment by setting a start and end time, a baseline treatment, comparison treatments, and a targeting rule.
 
-    * Choose a start date on or after the date the feature flag was created.
-    * The targeting rule can be any rule with percentage distribution (other rules are disabled in the dropdown). The `default rule` listed in the Targeting rule dropdown is the last rule in the Targeting rules section of a feature flag definition.
+   * Choose a start date on or after the date the feature flag was created.
+   * The targeting rule can be any rule with percentage distribution (other rules are disabled in the dropdown). The `default rule` listed in the Targeting rule dropdown is the last rule in the Targeting rules section of a feature flag definition.
 
       :::note
       Based on your feature flag definition, the following fields are pre-populated by default: the start time is the timestamp of the flag’s current version, the end time is determined by your default review period, the baseline treatment is the flag’s default treatment, and the comparison treatments are all other treatments defined by the flag.

@@ -25,7 +25,7 @@ Dimensions are parameters or characteristics that provide context to your data (
 
 ## How it works
 
-Split leverages your event property data across all sources, enabling you to develop a set of dimensions to break down your data. Even if you send event data from your application and another source (e.g., Segment or S3) if there’s consistency within your event and property naming, Harness FME handles the attribution to calculate your metrics appropriately.
+FME leverages your event property data across all sources, enabling you to develop a set of dimensions to break down your data. Even if you send event data from your application and another source (e.g., Segment or S3) if there’s consistency within your event and property naming, Harness FME handles the attribution to calculate your metrics appropriately.
 
 You can configure which event properties you want to set as a dimension for your account. For each dimension, you can select an event property and set the values Harness FME is going to review and attribute accordingly. Once you configure these dimensions, Harness FME periodically reviews event data streams, identifies any unique property values for those dimensions specified, and calculates your metrics based upon attributed activity to these unique event property values.
 

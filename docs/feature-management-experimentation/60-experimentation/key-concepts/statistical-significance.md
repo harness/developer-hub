@@ -24,7 +24,7 @@ The role of a statistics engine is to determine the likelihood that the sample d
 
 Diving a bit deeper into statistics, this can be formalized through hypothesis testing. In a hypothesis test, a test statistic is computed from the treatment and baseline treatment distributions. The test statistic can be calculated using a technique known as the *t-test*. 
 
-Split uses a two-sided test to detect differences between your baseline and your treatment in both directions.
+Harness FME uses a two-sided test to detect differences between your baseline and your treatment in both directions.
 
 Next, the p-value is computed, which is the probability of observing a t at least as extreme as we observed.
 

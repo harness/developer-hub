@@ -3,7 +3,7 @@ title: Overview
 sidebar_position: 10
 ---
 
-Experiments measure the success of your website, application, backend performance, etc. Experiment metric results tell you if your new features are improving, degrading, or having no effect on your application users’ experience.
+Experiments measure the success of your website, application, back-end performance, etc. Experiment metric results tell you if your new features are improving, degrading, or having no effect on your application users’ experience.
 
 Experiments take in your experimental control variables, measure events, and display the results. Your experiment will show you if the data is in correct ratios (a passing health check), the running time has completed, and the results are conclusive, equipping you with data to drive your product decisions.
 

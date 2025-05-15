@@ -23,7 +23,7 @@ If you are using both user and anonymous traffic types for targeting, a best pra
 
 #### Feature flags
 
-When creating a feature flag, you choose which type of id (i.e., traffic type) will be passed to getTreatment for that feature flag. The factors that influence the decision of what traffic type to choose are:
+When creating a feature flag, you choose which type of id (i.e., traffic type) will be passed to `getTreatment` for that feature flag. The factors that influence the decision of what traffic type to choose are:
 
 - Which traffic types can be exposed to the feature?
 - Over what population do you want to test your feature?

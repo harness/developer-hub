@@ -9,12 +9,12 @@ Measure the impact of your feature rollout on your customer experience by sendin
 
 Event data can be sent to Harness FME in one of four ways:
 
-* Install Harness FME's [RUM Agent](https://help.split.io/hc/en-us/sections/12619161404685-Client-side-Agents) or [FME SDK Suite](https://help.split.io/hc/en-us/sections/22701959913229-Client-side-Suites) which will auto-collect performance event data when installed in a client-side application
-* Call Harness FME's SDK `track` method (example below) to explicitly add instrumentation code to your application to record events
+* Install a Harness FME [RUM Agent](https://help.split.io/hc/en-us/sections/12619161404685-Client-side-Agents) or [FME SDK Suite](https://help.split.io/hc/en-us/sections/22701959913229-Client-side-Suites) which will auto-collect performance event data when installed in a client-side application
+* Call an FME SDK `track` method (example below) to explicitly add instrumentation code to your application to record events
 * Post a JSON body to Harness FME's [`events` API](https://docs.split.io/reference#events-overview) to ingest events data from existing sources
 * Harness FME integrations with [Segment](https://help.split.io/hc/en-us/articles/360020742532-Segment), [mParticle](https://help.split.io/hc/en-us/articles/360038306272-mParticle-), [Sentry](https://help.split.io/hc/en-us/articles/360029879431-Sentry), [Amazon S3](https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3), or [Google Analytics](https://help.split.io/hc/en-us/articles/360040838752-Google-Analytics) to ingest events data from existing sources
 
-Below is an example of calling the track method of the SDK in JavaScript. See links above for the API and integration routes.
+Below is an example of calling the `track` method of the SDK in JavaScript. See links above for the API and integration routes.
 
 ```javascript title="JavaScript"
 // parameters
@@ -56,15 +56,15 @@ This convention groups related events together when sorted alphabetically and he
 
 ## Efficiency with events
 
-Events can be optimized to ensure that you’re getting the most value out of the events that you send to Harness FME. On a technical level filtering events is easiest when using the track method of the SDK as that is code that can be accessed and reasoned about. Other integrations that may be easy to filter with are the [S3 integration](https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3) or the [Events API](https://docs.split.io/reference/events-overview) — in either case the filtering would have to be done before any data is sent to those integrations.
+Events can be optimized to ensure that you’re getting the most value out of the events that you send to Harness FME. On a technical level filtering events is easiest when using the `track` method of the SDK as that is code that can be accessed and reasoned about. Other integrations that may be easy to filter with are the [S3 integration](https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3) or the [Events API](https://docs.split.io/reference/events-overview) — in either case the filtering would have to be done before any data is sent to those integrations.
 
 ### Filtering events by business requirements
 
-One recommended approach is to write up business requirements for the experimentation program and use those business requirements to understand what events are needed to track. From that point onwards you can send just those events to Harness FME. If you decide later on that more events are needed then past events that have been stored in another system can be sent as well. Harness FME will appropriately attribute events from the past as long as the keys, timestamps, and traffic types match up with keys and versions of feature flags. New metrics can be created and the existing data stored in Harness FME’s backend can be attributed even if they hadn't been used before. Computing the impact of the experiment once new data is loaded is a simple click of the **recalculate** button on the metrics impact tab.
+One recommended approach is to write up business requirements for the experimentation program and use those business requirements to understand what events are needed to track. From that point onwards you can send just those events to Harness FME. If you decide later on that more events are needed then past events that have been stored in another system can be sent as well. Harness FME will appropriately attribute events from the past as long as the keys, timestamps, and traffic types match up with keys and versions of feature flags. New metrics can be created and the existing data stored in Harness FME’s back end can be attributed even if they hadn't been used before. Computing the impact of the experiment once new data is loaded is a simple click of the **recalculate** button on the metrics impact tab.
 
 ### Filtering events by keys
 
-If using pooling or sampling on MTKs, ensure that you are also doing the same filtering on events so that keys not being experimented with don’t have events sent to Harness FME either. Filtering events alone by keys is also possible. If there is a desire to reduce the event count and leave the MTK count alone (such as for getTreatment calls for a percentage based rollout) then filtering events by keys can be done. Fewer MTKs will enter the experiment (as many will have their events dropped) - but this may be ok if only testing for large effects or if the volume is significant enough that experiments are sufficiently powered even with the smaller population.
+If using pooling or sampling on MTKs, ensure that you are also doing the same filtering on events so that keys not being experimented with don’t have events sent to Harness FME either. Filtering events alone by keys is also possible. If there is a desire to reduce the event count and leave the MTK count alone (such as for `getTreatment` calls for a percentage based rollout) then filtering events by keys can be done. Fewer MTKs will enter the experiment (as many will have their events dropped) — but this may be ok if only testing for large effects or if the volume is significant enough that experiments are sufficiently powered even with the smaller population.
 
 :::danger
 Do not filter random events. This will cause partial event chains and inconsistent data.
@@ -73,7 +73,7 @@ Do not filter random events. This will cause partial event chains and inconsiste
 
 ## Using the RUM agent or FME SDK Suite
 
-This is one of the simplest approaches to getting started sending events. Harness FME's RUM agent or FME SDK Suite, when installed, will automatically collect events and automatically create metrics. If you are already using the FME SDK in your application on the client side, you can upgrade to using the FME SDK Suite and take advantage of the events automatically generated. Even if you are only using Harness FME on your application backend, you can still take advantage of our Client Side FME RUM agents. Harness FME will join across based upon the user or anonymous key sent to the RUM agent on the front end with the SDK on the back end to be able to compute the metric impact. 
+This is one of the simplest approaches to getting started sending events. A Harness FME RUM agent or FME SDK Suite, when installed, will automatically collect events and automatically create metrics. If you are already using the FME SDK in your application on the client side, you can upgrade to using the FME SDK Suite and take advantage of the events automatically generated. Even if you are only using Harness FME on your application back end, you can still take advantage of our Client Side FME RUM agents. Harness FME will join across based upon the user or anonymous key sent to the RUM agent on the front end with the SDK on the back end to be able to compute the metric impact. 
 
 For more information on the specific installation instructions, events captured and metrics automatically created, please refer to our help documentation for your selected [RUM agent](https://help.split.io/hc/en-us/sections/12619161404685-Client-side-Agents) or [FME SDK Suite](https://help.split.io/hc/en-us/sections/22701959913229-Client-side-Suites).
 
@@ -81,8 +81,8 @@ For more information on the specific installation instructions, events captured 
 
 Use the `track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an event type. Calling `track` through one of our SDKs is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your Harness FMEs on your users’ actions and metrics. In the following examples, you can see that the `.track()` method can take up to five arguments. The proper data type and syntax for each are the following:
 
-* **key:** The `key` variable used in the `getTreatment` call and firing this track event. The expected data type is **String**.
-* **TRAFFIC_TYPE:** The traffic type of the key in the track call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Harness FME.
+* **key:** The `key` variable used in the `getTreatment` call and firing this `track` event. The expected data type is **String**.
+* **TRAFFIC_TYPE:** The traffic type of the key in the `track` call. The expected data type is **String**. You can only pass values that match the names of [traffic types](https://help.split.io/hc/en-us/articles/360019916311-Traffic-type) that you have defined in your instance of Harness FME.
 * **EVENT_TYPE:** The event type that this event should correspond to. The expected data type is **String**. Full requirements on this argument are:
      * Contains 63 characters or fewer.
      * Starts with a letter or number.
@@ -123,18 +123,18 @@ boolean trackEvent = client.track("john@doe.com", "user", "page_load_time", 83.3
 
 This method generally is best for two use cases:
 
-* You are new to event tracking and experimentation in general. If Harness FME is the first time you are tracking events, then using Harness FME's track method is a great way to start.
-* You already have one or more tools that do tracking and have a wrapped function that calls all of your trackers. In this case, it would be straightforward just to add Harness FME's track method to that function.
+* You are new to event tracking and experimentation in general. If Harness FME is the first time you are tracking events, then using an FME SDK `track` method is a great way to start.
+* You already have one or more tools that do tracking and have a wrapped function that calls all of your trackers. In this case, it would be straightforward just to add the `track` method to that function.
 
-When using the track method we strongly recommend wrapping the function. If you are in the first use case and early on your experimentation journey, it is important to ensure a quality code architecture and as such wrapping the track call allows further extensibility to other applications that you may be tracking with later on.
+When using the `track` method we strongly recommend wrapping the function. If you are in the first use case and early on your experimentation journey, it is important to ensure a quality code architecture and as such wrapping the `track` call allows further extensibility to other applications that you may be tracking with later on.
 
 ### Level of effort using the track method
 
 The following explains the level of effort you can expect when using this method to send events to Harness FME.
 
-Using the track method requires that you call this function for each of the events you want to track. This would include multiple traffic types and every event that you may want to use to measure the impact of a feature flag treatment. If you are already tracking events using other systems, you can include Harness FME's track method in a wrapped call with your other trackers. 
+Using the `track` method requires that you call this function for each of the events you want to track. This would include multiple traffic types and every event that you may want to use to measure the impact of a feature flag treatment. If you are already tracking events using other systems, you can include the `track` method in a wrapped call with your other trackers. 
 
-If you are already using a system for tracking events and Harness FME has an events integration with that system, Harness FME would recommend that approach over using the track method. 
+If you are already using a system for tracking events and Harness FME has an events integration with that system, Harness FME would recommend that approach over using the `track` method. 
 
 ## Using the events API
 

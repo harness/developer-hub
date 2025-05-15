@@ -7,7 +7,7 @@ The following describes how to set your experiment settings.
 
 ## Testing methods
 
-Split supports sequential testing and fixed horizon methods. For more information, refer to the [Sequential vs. Fixed horizon testing](../key-concepts/fixed-horizon) documentation.
+Harness FME supports sequential testing and fixed horizon methods. For more information, refer to the [Sequential vs. Fixed horizon testing](../key-concepts/fixed-horizon) documentation.
 
 ### Using sequential testing
 

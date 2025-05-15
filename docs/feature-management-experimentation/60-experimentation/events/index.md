@@ -27,8 +27,8 @@ Each event contains the following fields:
 | Key | The key ID of the traffic type used for firing the event. This must match with the traffic type key used for generating impressions when `getTreatment` is called in order for metrics to calculate impact successfully. |
 | Properties | Map of key-value pairs that is used to filter your metrics or for the value in sum and average metrics. |
 | Reception timestamp | Time the impression was received by Harness FME. |
-| SDK and version | Language and version of the SDK that is used to capture the event. This is only populated when using Harness FME's track method. |
-| Source | Source of the event if captured via Harness FME's RUM agent or through an integration. |
+| SDK and version | Language and version of the SDK that is used to capture the event. This is only populated when using Harness FME's `track` method. |
+| Source | Source of the event if captured via a Harness FME RUM agent or through an integration. |
 | Timestamp | Time the event was captured. |
 | Traffic type ID and name | Traffic type of the key registering the event. This is the traffic type in Harness FME of the event. Note that you may have the same event tracked from multiple traffic types if doing experimentation on different traffic types. |
 | Value | Value to be used in creating the metric. This is optional and if it’s not passed in, the value registers as zero. |

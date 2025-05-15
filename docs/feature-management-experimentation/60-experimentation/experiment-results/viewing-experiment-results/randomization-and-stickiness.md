@@ -11,39 +11,39 @@ How do I ensure that once a treatment is assigned to a particular key (user id),
 
 Because each instance of the SDK is an independent targeting engine with no local record of the treatment previously assigned to a key, to achieve this goal it is necessary to somehow maintain state, so that a user is always assigned the same treatment they saw the first time they visited, even if a change to the rollout plan would flip the user to another treatment, or if the value of an attribute associated with a user changed such that they switched to a different targeting rule. One example of when it would be desirable to maintain consistency is a feature flag that controls the value associated with an offer of some sort, such as the interest rate for a loan or a promotional discount on a product.
 
-### FME's targeting engine
+### Harness FME targeting engine
 
-FME computes treatments very quickly. In Java, for instance, treatments are computed on the order of a few hundred microseconds. This means Harness FME can be used in the most performance-intensive components of your application.
+Hareness FME SDKs compute treatments very quickly. In Java, for instance, treatments are computed on the order of a few hundred microseconds. This means Harness FME can be used in the most performance-intensive components of your application.
 
-To achieve this speed, Harness FME by design, does not retain state. Specifically, after Harness FME assigns a treatment to a user, it does not remember what was assigned. Given the scale of our customers' use cases, retaining a history of every treatment assigned to every key would negatively impact the requirements for speed and size efficiency in our SDKs.
+To achieve this speed, FME by design, does not retain state. Specifically, after FME assigns a treatment to a user, it does not remember what was assigned. Given the scale of our customers' use cases, retaining a history of every treatment assigned to every key would negatively impact the requirements for speed and size efficiency in our SDKs.
 
-For feature flags that use traffic allocation or percentage rollouts, Harness FME uses a deterministic hashing algorithm to ensure that we give end users a consistent experience where they do not change treatments.  As long as a feature flag's targeting rules and the values passed for the attributes used in those rules do not change, the user gets the exact same treatment every single time.
+For feature flags that use traffic allocation or percentage rollouts, FME uses a deterministic hashing algorithm to ensure that we give end users a consistent experience where they do not change treatments.  As long as a feature flag's targeting rules and the values passed for the attributes used in those rules do not change, the user gets the exact same treatment every single time.
 
 Of course, if you change the feature flag's targeting rules, some users may be moved from one treatment to another. This could happen if they fall under a different rule or if the percentages in a rule are changed. That is the intent for an overwhelming number of use cases but is not ideal in some scenarios.
 
-More information on how Harness FME's deterministic hashing and its targeting engine work can be found [here](https://help.split.io/hc/en-us/articles/360043397251-Split-and-consistent-assignment-of-treatments) and [here](https://help.split.io/hc/en-us/articles/360030024391-How-does-Split-ensure-a-consistent-user-experience).
+More information on how Harness FME deterministic hashing and targeting engine work can be found [here](https://help.split.io/hc/en-us/articles/360043397251-Split-and-consistent-assignment-of-treatments) and [here](https://help.split.io/hc/en-us/articles/360030024391-How-does-Split-ensure-a-consistent-user-experience).
 
 ## Experiment implications
 
-This solution will maintain the assignment of a treatment to a particular id across changes in a feature flag's rollout plan, but those changes will create a new version of the flag and reset the metrics. Because the solution caches the original treatment rather than call getTreatment for subsequent visits, a sticky user's behavior will not be counted in the metrics of the new version. However as long as the definition of the feature flag does not change, caching the original treatment for a visitor based on attributes whose values subsequently change will attribute that user's subsequent behaviors to whatever rule and treatment applied on the original call to getTreatment.
+This solution will maintain the assignment of a treatment to a particular id across changes in a feature flag's rollout plan, but those changes will create a new version of the flag and reset the metrics. Because the solution caches the original treatment rather than call `getTreatment` for subsequent visits, a sticky user's behavior will not be counted in the metrics of the new version. However as long as the definition of the feature flag does not change, caching the original treatment for a visitor based on attributes whose values subsequently change will attribute that user's subsequent behaviors to whatever rule and treatment applied on the original call to getTreatment.
 
 ## The solution
 
 ### Saving state
 
-The core functionality necessary to make treatments sticky regardless of changes to a feature flag's rules is the ability to store state; in this case the treatment returned by the first call to getTreatment to a flag for a particular user id and set of attributes. How you store this state is up to you; feasible approaches depend on where you are calling getTreatment, the traffic type of the feature flag, and whether or not you are interested in sticky treatments to deal with the case of a known user’s attribute values changing over the lifetime of a flag. 
+The core functionality necessary to make treatments sticky regardless of changes to a feature flag's rules is the ability to store state; in this case the treatment returned by the first call to `getTreatment` to a flag for a particular user id and set of attributes. How you store this state is up to you; feasible approaches depend on where you are calling getTreatment, the traffic type of the feature flag, and whether or not you are interested in sticky treatments to deal with the case of a known user’s attribute values changing over the lifetime of a flag. 
 
 The latter situation is the simplest. If you are passing attribute values for a given id (key) to pass to getTreatment, you must have some system in which you are associating attributes with that known user id. In this case, store the original treatment for the id in that same system.
 
-If the getTreatment call is server side, then conceivably you have some sort of caching server, like Redis available where you can maintain an association between the id and the original treatment for the feature flag returned from getTreatment.
+If the `getTreatment` call is server side, then conceivably you have some sort of caching server, like Redis available where you can maintain an association between the id and the original treatment for the feature flag returned from getTreatment.
 
-Anonymous traffic type feature flags on the client side have the most potential problems, particularly for browsers. You can cache the original treatment in a cookie or in local storage, but there is no guarantee that the user of the browser won’t clear that cookie or local storage value. Of course you typically have that same issue with the id you are passing to getTreatment for an anonymous traffic type feature flag, so it’s problematic, but not disastrous.
+Anonymous traffic type feature flags on the client side have the most potential problems, particularly for browsers. You can cache the original treatment in a cookie or in local storage, but there is no guarantee that the user of the browser won’t clear that cookie or local storage value. Of course you typically have that same issue with the id you are passing to `getTreatment` for an anonymous traffic type feature flag, so it’s problematic, but not disastrous.
 
 Because the problem domain here is extensive, aside from the few general suggestions given above, this article assumes that you have come up with a scheme for storing state that works for your particular situation.
 
 ### Logic
 
-So once you have a plan for storing state associated with a user id, how do you structure the code around the getTreatment call for the feature flag where the initially assigned treatment should remain sticky?
+So once you have a plan for storing state associated with a user id, how do you structure the code around the `getTreatment` call for the feature flag where the initially assigned treatment should remain sticky?
 
 ```java
 /* Check for stored state for this feature flag for the given key */
@@ -58,7 +58,7 @@ if (existingTreatment != null) {
 }
 ```
 
-This pseudo code assumes that the variables key, featureFlagName, and attributes have been initialized with the appropriate values. The server-side SDK variant of the getTreatment call is used here. For a client-side SDK you will have specified the key at initialization time.
+This pseudo code assumes that the variables key, featureFlagName, and attributes have been initialized with the appropriate values. The server-side SDK variant of the `getTreatment` call is used here. For a client-side SDK you will have specified the key at initialization time.
 
 ### A refinement
 
@@ -86,4 +86,4 @@ if (getTreatment(key, "new_feature_experiment_sticky", attributes) == "on") {
 
 ### Limitations
 
-This technique cannot be used for feature flags using dynamic config, unless the program caches the configuration information in addition to the treatment name. And then one would not be able to change the configuration info in the feature flag definition and have it updated while the treatment remained sticky. This limitation could be worked around by having a well-known individually targeted user id for each treatment and then calling getTreatment with the appropriate individually targeted user_id for the cached treatment.
+This technique cannot be used for feature flags using dynamic config, unless the program caches the configuration information in addition to the treatment name. And then one would not be able to change the configuration info in the feature flag definition and have it updated while the treatment remained sticky. This limitation could be worked around by having a well-known individually targeted user id for each treatment and then calling `getTreatment` with the appropriate individually targeted user_id for the cached treatment.

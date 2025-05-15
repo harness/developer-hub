@@ -11,7 +11,9 @@ For more information about the Metric impact tab, refer to the [Metric impact](h
 On a Desired, Undesired, or Inconclusive impact metric card, you can see the range that the _**impact lies between**_. The two values are the statistically calculated extreme values for your impact. The smaller the range between the extreme values, the higher the confidence in the predictability of the feature impact on the metric.
 :::
 
-## Desired
+## Metric card states
+
+### Desired
 
 <img src="https://help.split.io/hc/article_attachments/11115840814221" alt="desired.png" width="600" />
 
@@ -21,7 +23,7 @@ When a metric card displays **Desired** and is green, it is because of the follo
 * The p-value is less than the defined significance threshold of 0.05 or your account-wide significance setting. In this case, there is evidence that the treatment selected had a different impact on the metric than the baseline treatment selected.
 * The metric had sufficient power. Data was collected from enough users to satisfy the desired minimum detectable effect and default power threshold.
 
-## Undesired
+### Undesired
 
 <img src="https://help.split.io/hc/article_attachments/11115616956941" alt="undesired.png" width="600" />
 
@@ -31,7 +33,7 @@ When a metric card displays **Undesired** and is red, it is because of the follo
 * The p-value is less than the defined significance threshold of 0.05 or your account-wide significance setting. In this case, there is evidence that the treatment selected had a different impact on the metric than the baseline treatment selected.
 * The metric had sufficient power. Data was collected from enough users to satisfy the desired minimum detectable effect and default power threshold.
 
-## Inconclusive
+### Inconclusive
 
 <img src="https://help.split.io/hc/article_attachments/11115610979469" alt="inconclusive.png" width="600" />
 
@@ -41,7 +43,7 @@ A metric card displays **Inconclusive** if the metric impact is undecided. The c
 * The observed effect is less than the defined effect threshold. In this case, the observed effect doesn't meet the desired minimum detectable effect. Refer to the [Sample size and sensitivity calculators](https://help.split.io/hc/en-us/articles/360034040851-Sample-size-and-sensitivity-calculators) guide for more information about detectable effect sizes using our calculators.
 * The range goes from a negative to a positive range. It’s inconclusive because the impact could be positive or negative.
 
-## Baseline value equals zero
+### Baseline value equals zero
 
 <img src="https://help.split.io/hc/article_attachments/11262320897037" alt="baseline_metric_value_zero.png" width="600" />
 
@@ -92,7 +94,7 @@ A metric card displays **Not available** for the reasons given in the following 
 | The calculation has not yet run for this flag. | The calculation runs within the first 15 minutes of a change in the feature flag's version. If it has been 15 minutes and you still see this issue, contact [support@split.io](mailto:support@split.io). Automatic calculations are run for feature flag versions which include a percentage targeting rule. Click the **Recalculate metrics** button to run on-demand calculations at any time. |
 | The metric either created or modified after the metrics impact was last updated. | The duration between updates scales with the length of the version. At the beginning of a version, calculations are run every 15 minutes for definitions updated in the past hour. The time between these calculations increases incrementally through the duration of a version. Feature flags update every hour for the first 12 hours and then alternate hours until it has been running for 24 hours. The calculation schedule then moves to daily until day 14 of a feature flag version. Final calculations run on days 21 and 28 of a feature flag version. The older the experiment, the less likely that the data collected in the last few hours can move the metric. Click the **Recalculate metrics** button to rerun your calculations. | 
 | No users have an impression for at least one of the treatments. | This message appears if you are comparing two treatments and one of the treatments has no samples. Ensure that the version and targeting rule you selected is serving traffic to both treatments. |
-| No users have met the metric's *filter by* condition for at least one of the treatments. | This message appears if the metric has a filter criteria in its definition, for example, measure this metric for users who clicked this button. Ensure that the customers who are in the treatment and firing the track event used in the metrics calculation have also fired the filter event. |
+| No users have met the metric's *filter by* condition for at least one of the treatments. | This message appears if the metric has a filter criteria in its definition, for example, measure this metric for users who clicked this button. Ensure that the customers who are in the treatment and firing the `track` event used in the metrics calculation have also fired the filter event. |
 | This metric is an average, but no events associated with this metric have been received for any user for at least one of the treatments. | This message appears when you are looking at the average value and Harness FME hasn't received any events to take an average on. Ensure that you are sending the event that you want the average value for. |
 | This metric is a ratio, but no events associated with the denominator have been received for any user for at least one of the treatments. | This message appears when you are calculating the ratio of two events and Harness FME hasn't received any events for the denominator. Ensure that you are sending your events properly. |
 | No users have an impression for the treatment. | This message appears if you are looking at a single treatment with no baseline and there are no samples. Ensure that the version and targeting rule you selected are serving traffic to the treatment you selected. |

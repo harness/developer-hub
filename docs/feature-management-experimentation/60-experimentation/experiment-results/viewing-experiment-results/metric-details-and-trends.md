@@ -3,40 +3,43 @@ title: Metric details and trends
 sidebar_position: 20
 ---
 
-Validate your metric by understanding its value and impact over time, dispersion, and sample population. You can click **View more** on a metric card on the Metrics impact tab to understand its trend over time and statistical information. In addition, you can:
+Validate your metric by understanding its value and impact over time, dispersion, and sample population.
+
+## Feature flag Metric impact tab
+
+You can click **View more** on a metric card on a Metrics impact tab to understand its trend over time and statistical information. In addition, you can:
 
 * Review the Impact snapshot chart for an up-to-date, aggregated view of the expected impact over baseline for each treatment and an estimated range for that impact
-
 * Select more treatments, to compare the impact against the baseline in the Impact over time chart
-
 * Review the aggregated metric value for all treatments in the Values over time chart
 
 The charts and tables are reflective of what you preselect within the Metrics impact tab, such as the feature flag version, targeting rule, treatment, and baseline chosen for comparison. 
 
-## Accessing metric line charts and tables
+### Accessing metric line charts and tables
 
 To access metric line charts and tables:
 
 1. From the left navigation panel, select **Feature flags**.
-2. In the Feature flags panel, select your desired feature flag. 
-2. Click the Metrics impact tab in your feature flag, in the Key metrics area, click the metric you want to analyze.
-3. Select the desired chart to review.
+1. In the Feature flags panel, select your desired feature flag. 
+1. Click the Metrics impact tab in your feature flag.
+1. In the Key metrics area, click the metric you want to analyze.
+1. Select the desired chart to review.
 
-## Metric meta data
+### Metric metadata
 
 The metric meta section displays the meta information associated with that metric such as owner, tags, and description. 
 
-## Line charts
+### Line charts
 
 You can view line chart data for a feature flag version. Hover over a point on the line chart to update the values in the table. 
 
 Before analyzing line charts, make sure the filters you are interested in are applied on the feature flag Metrics impact tab (e.g., the feature flag version, targeting rule, or baseline).
 
-### Viewing impact snapshot
+#### Viewing impact snapshot
 
 The Impact snapshot chart shows an up-to-date, aggregated view of the expected impact over the baseline for each feature treatment (variation) and an estimated range for that impact. 
 
-#### Dimensional analysis
+##### Dimensional analysis
 
 On the impact snapshot chart, you can analyze data for ___key metrics___ using [dimensional analysis](https://help.split.io/hc/en-us/articles/14824241665421-Using-dimensional-analysis). This allows you to:
 
@@ -59,7 +62,7 @@ Admins can choose the dimension values that are shown in the Underlying data tab
 
 If you have questions or concerns about your impact snapshot, contact [Support](mailto:support@split.io). 
 
-## Viewing impact over time
+#### Viewing impact over time
 
 The Impact over time chart allows you to visualize the aggregated value of the metric in each treatment of a feature flag. The chart represents the cumulative impact and is based on all the data Harness FME has received up until the last calculation update. You can hover over a point on the chart to update the values in the table.
 
@@ -68,19 +71,19 @@ To view impact over time:
 1. Select a baseline treatment on the Metrics impact tab.
 2. Select treatments for comparison in the underlying data table.
 
-   <img src="https://help.split.io/hc/article_attachments/360043113532" alt="underlying_data_treatments.png" width="500" />
+   <img src="https://help.split.io/hc/article_attachments/360043113532" alt="underlying_data_treatments.png" width="700" />
 
-## Viewing value over time
+#### Viewing value over time
 
 The Values over time chart allows you to visualize the average value of the metric for each treatment of your feature flag. You can also view how the estimated range of the metric value has changed over time.
 
-<img src="https://help.split.io/hc/article_attachments/360043113692" alt="values_over_time.png" width="500" />
+<img src="https://help.split.io/hc/article_attachments/360043113692" alt="values_over_time.png" width="750" />
 
-## Metric tables
+### Metric tables
  
 The following section describes the tables shown on the metric details page below the three time charts.
 
-### Impact 
+#### Impact 
 
 All criteria are necessary and sufficient to view your data when you select a treatment and a baseline treatment. A statistical comparison is made with the analyzed metric. A description of these columns are shown below.
 
@@ -90,11 +93,11 @@ All criteria are necessary and sufficient to view your data when you select a tr
 | **Error Margin** | The chance (dependent on your account's default significance threshold) that the interval between the mean +/- the error margin contains the true metric value. | 
 | **P-value** | The probability of seeing a result at least as extreme as the result we observed, if the null hypothesis were true.| 
 
-### Viewing metric dispersion 
+#### Viewing metric dispersion 
 
 The information displayed within the metric dispersion section of the table is dependent on the type of metric you are analyzing. When available, you can understand the minimum, maximum, median, and the 95th percentile of your metric. The metrics dispersion allows you to measure the spread of your data, or the variability in your sample. This section also includes the absolute total contributing to the metric value. For example, if you are measuring the count of purchases per user, you can see the actual count of purchases in each treatment and the uplift between the treatments. The table below highlights which columns is available based on the type of metric you are analyzing and those which show as N/A.
 
-|  | **Total / Average / Contributors ** | **Mean** | **Stdev** | **Min** | **Median** | **95th Percentile** | **Max** |
+|  | Total / Average / Contributors | Mean | Stdev | Min | Median | 95th Percentile | Max |
 | --- | --- | --- | --- | --- | --- |--- | --- | 
 | **PER USER** | | | | | | | | 
 | Count of events per user | yes | yes | yes | yes | yes | yes | yes | 
@@ -109,7 +112,7 @@ The information displayed within the metric dispersion section of the table is d
 | Ratio of two events per user | yes | N/A | N/A | N/A | N/A | N/A | N/A | 
 | Count of unique users | yes | N/A | N/A | N/A | N/A | N/A | N/A | 
 
-| **Title** | **Description** | 
+| Title | Description | 
 | --- | --- | 
 | **Mean**| The mean is equal to the sum of all the data points in the data set, divided by the number of contributors in the data set.| 
 | **Stdev** | The standard deviation represents the variance of the data set as compared to the mean.| 
@@ -118,11 +121,11 @@ The information displayed within the metric dispersion section of the table is d
 | **Max** | The largest data point in the data set.| 
 | **95th percentile** | 95% of the time, the metric value is at or below this value.|
 
-### Sample population 
+#### Sample population 
 
 This section of the table provides information about the metric's sample population. A description of these columns are listed below: 
 
-| **Title** | **Description** |
+| Title | Description |
 | --- | --- | 
 | **In treatment** | The number of unique user keys that were served a treatment, and in some cases sent an event measured by the metric. | 
 | **Excluded** | The number of unique user keys excluded from the analysis. For more information, see the Exclusions section in [Attribution and exclusion](https://help.split.io/hc/en-us/articles/360018432532-Attribution-and-exclusion#potential-complications). | 

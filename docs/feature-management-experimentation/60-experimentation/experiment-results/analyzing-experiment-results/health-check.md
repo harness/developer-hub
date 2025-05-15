@@ -24,9 +24,9 @@ When you click the **See details** link on the Health Check popup, you will see 
 ## Seasonality effect completeness (for sequential testing)
 
 ### Possible values
- * <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" /> Seasonality effect complete
- * <img src="https://help.split.io/hc/article_attachments/35737082048269" alt="experiment_health_check_warning_heart.svg" width="24" /> Seasonality effect incomplete
- * <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" /> Experimental review period not started
+ * <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Seasonality effect complete
+ * <img src="https://help.split.io/hc/article_attachments/35737082048269" alt="experiment_health_check_warning_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Seasonality effect incomplete
+ * <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Experimental review period not started
  
 ### Importance of seasonality effect completeness
 
@@ -46,9 +46,9 @@ The seasonality effect will be complete when the experiment has run to the exper
 ## Experimental review period completeness (for fixed horizon testing)
 
 ### Possible values
- * <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" /> Experimental review period complete
- * <img src="https://help.split.io/hc/article_attachments/35737082048269" alt="experiment_health_check_warning_heart.svg" width="24" /> Experimental review period incomplete
- * <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" /> Experimental review period not started
+ * <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Experimental review period complete
+ * <img src="https://help.split.io/hc/article_attachments/35737082048269" alt="experiment_health_check_warning_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Experimental review period incomplete
+ * <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Experimental review period not started
 
 ### Importance of experimental review completeness
 
@@ -66,9 +66,9 @@ The experimental review period will be complete when the experiment has run to t
 ## Sample ratio
 
 ### Possible values
- * <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" /> Sample ratio is valid
- * <img src="https://help.split.io/hc/article_attachments/35759078118157" alt="experiment_health_check_error_heart.svg" width="24" /> Sample ratio mismatch detected
- * <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" /> Sample ratio not applicable
+ * <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Sample ratio is valid
+ * <img src="https://help.split.io/hc/article_attachments/35759078118157" alt="experiment_health_check_error_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Sample ratio mismatch detected
+ * <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Sample ratio not applicable
 
 ### Importance of sample ratio
 
@@ -86,10 +86,10 @@ Look for a design flaw in the experiment that might be preventing random samplin
 ## Number of sample exclusions
 
 ### Possible values
-* <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" /> No exclusions made
-* <img src="https://help.split.io/hc/article_attachments/35737082048269" alt="experiment_health_check_warning_heart.svg" width="24" /> 2% of sample excluded
-* <img src="https://help.split.io/hc/article_attachments/35759078118157" alt="experiment_health_check_error_heart.svg" width="24" /> n% of sample excluded
-* <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" /> Exclusions not applicable
+* <img src="https://help.split.io/hc/article_attachments/35736723897741" alt="experiment_health_check_healthy_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> No exclusions made
+* <img src="https://help.split.io/hc/article_attachments/35737082048269" alt="experiment_health_check_warning_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> 2% of sample excluded
+* <img src="https://help.split.io/hc/article_attachments/35759078118157" alt="experiment_health_check_error_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> n% of sample excluded
+* <img src="https://help.split.io/hc/article_attachments/35736723898509" alt="experiment_health_check_blank_heart.svg" width="24" style={{verticalAlign: 'middle'}} /> Exclusions not applicable
 
 ### Importance of the sample exclusions percentage
 
