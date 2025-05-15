@@ -1,12 +1,12 @@
 ---
 title: Spot Elastigroup
 description: Deploy a Spot Elastigroup using Harness CD.
-sidebar_position: 5
+sidebar_position: 1
 ---
 
 :::info
 
-Currently, Spot Elastigroup support is behind the feature flag `SPOT_ELASTIGROUP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, Spot Elastigroup support is behind the feature flag `CDS_SPOT_ELASTIGROUP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
