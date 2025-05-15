@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## May 2025
 
+### Version 25.04.85704 <!--May 15, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where `RESOURCE_EXHAUSTED: Quota exceeded` errors were repeatedly logged; these entries are now skipped in delegate logs. [PL-61945]
+
 ### Version 25.05.85801 <!--May 5, 2025-->
 
 #### Fixed issues
