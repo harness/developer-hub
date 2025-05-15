@@ -29,6 +29,112 @@ Review the notes below for details about recent changes to Harness Internal Deve
 | **prodeu1** | ✅ Completed | March – v0.41.0 |
 
 
+## 🚀 May - Releasing Harness IDP 2.0
+<!-- May 15, 2025-->
+
+### IDP: Reimagined for Enterprise-Scale Adoption 
+
+We’re thrilled to announce the **BETA release of Harness IDP 2.0** — a big step forward in how developer portals are imagined, built, and adopted at scale.
+
+**Harness IDP 2.0** isn’t just an upgrade — it’s a complete rebuild of Developer Portals to support adoption at enterprise scale, bring in stronger access control, and a better developer experience. With foundational changes across architecture, security, scalability, and usability, IDP 2.0 marks a new chapter in how internal developer platforms are **built, used and managed.**
+
+<DocVideo src="https://www.youtube.com/watch?v=9Rj-jJp3Ehc" />
+
+### Why IDP 2.0?
+
+Harness IDP started as an all-in-one platform to improve the developer experience, built on top of Backstage. While **IDP 1.0** worked well, we saw that as our enterprise customers grew, they faced new challenges at scale — which led us to rethink what an **enterprise-ready IDP** truly looks like. 
+
+#### Key Gaps we identified in IDP 1.0:
+
+* **Lack of Granular RBAC:** No ability to restrict or control who can view or edit specific Catalog entities or Workflows. 
+* **No Controlled Workflow Rollout:** No way to gradually test and release IDP Workflows with a staged rollout without impacting everyone in the organization. 
+* **Manual YAML Management:** Managing YAML files manually for every update made it hard to adopt, especially for frequently changing entities like infrastructure resources.
+* **Single Git Connector Bottleneck:** One Git integration for all updates led to rate-limiting issues.
+* **Disconnected from Harness Platform Hierarchy:** System and Domain hierarchy in Backstage didn’t align with how our customers structure teams and projects in Harness.
+* **Outdated Catalog UX:** The previous UI didn’t cater to large-scale catalog management needs.
+* **Issues with Location Entities:** YAML Locations often caused refresh and sync conflicts.
+
+Each of these challenges played a key role in shaping IDP 2.0 — a version built to scale, adapt, and empower developers across enterprises.
+
+### What’s New in IDP 2.0?
+
+Harness IDP 2.0 introduces core improvements across **architecture, security, scalability**, and **developer experience**, making it easier than ever to manage and scale your internal developer portal.
+
+#### 🔐 **Platform Hierarchy & Granular RBAC**
+
+Catalog entities and Workflows can now be created at the **Account**, **Organization**, and **Project** scopes. By default, entities at the Account scope are accessible platform-wide, while Project-level entities are scoped to the teams that own them. This allows teams to manage their own components while sharing approved workflows across the org.
+
+You can define custom roles with fine-grained permissions (Create, Edit, Read, Delete, Execute) using Harness’s native RBAC system and reusable resource groups.
+
+![](./static/internal-developer-portal/workflow-scope.png)
+
+#### 🧩 **UI-Driven Catalog Creation (No YAML Required)**
+
+This feature allows you to create and manage entities **directly from the UI** with guided forms and **live YAML previews** (with real-time sync).
+Standardized defaults and dropdowns reduce errors and onboarding time — no need to learn Backstage YAML.
+
+![](./static/internal-developer-portal/ui-way-creation.png)
+
+#### 🖥️ **Improved UX & Scalability**
+
+The **Catalog and Workflow UIs** have been completely rebuilt for better visibility and usability:
+
+* Scope-based filters allow users to narrow down to their team’s view.
+* Catalog table supports search, sorting and pagination.
+* Scorecards are now natively integrated into the Catalog view.
+* Entity pages show scope, ownership, and references cleanly in the header.
+
+![](./static/internal-developer-portal/catalog-new-ui.png)
+
+#### ⚙️ **Enhanced Workflow Management**
+
+Workflows can now be rolled out **progressively** across scopes:
+
+* Create at Project, Org or Account scopes
+* Controlled by RBAC with Execute permissions
+* Supports staged rollout of Workflows
+
+These updates collectively make IDP 2.0 more powerful, scalable, and user-friendly — built for enterprises looking to adopt developer portals at scale.
+
+#### 🔄 **Native Harness Git Experience**
+
+IDP 2.0 introduces native **Git support** for all catalog entities, enabling real-time, bi-directional sync:
+- Edit the entity YAML in Git, and the changes reflect in IDP.
+- Modify the entity in IDP UI or API, and it updates Git (via direct push or a pull request using OAuth as well as API keys).
+- Choose between an inline entity (no YAML file) or a remote entity (YAML lives in your Git provider) depending on your preference.
+- Updates are instant via webhooks—no more periodic polling.
+- Supports multiple branches and version history for audit and rollback.
+
+### For Existing IDP 1.0 Customers: Why Upgrade?
+
+If you're already using Harness IDP 1.0, here’s why switching to 2.0 is worth it:
+
+* **Harness-native Platform Hierarchy**: Catalog entities and Workflows now support Account, Org, and Project scopes, with built-in granular RBAC.
+* **Native Git Experience**: Bi-directional Git sync of entity YAML files with real-time updates and support for Git branches.
+* Easier automation without YAML file: Entities can now be created and modified inline without having to deal with the YAML file git operations and its complexities.
+* **New Catalog & Workflow UI**: Newer UX, brand new Catalog table with filters and built-in entity creation UX.
+* **Backstage Plugin Support**: Continue using existing plugins without any changes.
+* **Automatic Upgrade**: IDP 2.0 can be enabled via a feature flag. Your existing entities will be automatically upgraded to the new model.
+* **Default Upgrade Behavior**: Entities will initially live at the Account scope. You can later organize them into Org/Project scopes as needed.
+
+Harness IDP 2.0 is purpose-built for teams ready to scale adoption across the organization — without compromising control or experience.
+
+### Ready to Upgrade?
+You’re right — **IDP 2.0 is a significant upgrade**. But we’ve ensured the transition is smooth and well-supported.
+
+To help you plan and adopt with confidence, we’ve created:
+
+* A detailed **[IDP 2.0 Overview Guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)**
+* A comprehensive **[Step-by-Step Upgrade Handbook](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)**
+
+Upgrading to IDP 2.0 is a **structured 6-phase process**, and our team is here to guide you every step of the way.
+
+📘 [Access the Upgrade Guide](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md)
+
+📩 Ready to start? [Raise a Support Ticket](https://support.harness.io)
+
+**Ready to onboard? Let’s get started.**
+
 ## March - Version 0.41.0
 
 <!-- March 25, 2025-->

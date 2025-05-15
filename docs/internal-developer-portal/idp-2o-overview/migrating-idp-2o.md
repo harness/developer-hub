@@ -1,8 +1,8 @@
 ---
-title: Upgrading to IDP 2.0
+title: IDP 2.0 Upgrade Handbook
 description: Comprehensive guide to Harness IDP 2.0 — explore the new Harness-native data model, platform RBAC, Git Experience, and improved UX for internal developer portals. Includes migration strategy, feature compatibility, and rollout details for upgrading from IDP 1.0.
 sidebar_position: 3
-sidebar_label: Upgrading to IDP 2.0
+sidebar_label: IDP 2.0 Upgrade Handbook
 ---
 If you’re using Harness IDP 1.0, this guide will walk you through everything you need to know before upgrading to IDP 2.0—what’s new, what to watch out for, and how to make the switch smoothly without disrupting your current setup.
 
