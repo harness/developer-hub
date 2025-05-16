@@ -27,7 +27,7 @@ export const CiData: Horizon = {
       {
         tag: [{ value: "Cloud" }],
         title: "Additional VM images for macOS and Linux with Harness Cloud",
-        description: "We're expanding our Cloud offering to support multiple VM images for macOS and Linux, giving users the flexibility to choose from a predefined set of images. This allows teams to run builds on both the latest and previous stable OS versions, ensuring compatibility with different environments",
+        description: "We're expanding our Cloud offering to support multiple VM images for macOS and Linux, giving users the flexibility to choose from a predefined set of images. This allows teams to run builds on both the latest and previous stable OS versions, ensuring compatibility with different environments.",
       }, 
       {
         tag: [{ value: "Cloud" }],
