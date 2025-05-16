@@ -8,17 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note Feature Flag details
-    This feature is currently behind the `PL_ENABLE_USER_IMPERSONATION` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::note Feature availability
+    User Impersonation is a [Beta](/docs/platform/get-started/release-status#beta-limited-ga-and-ga-definitions) feature and is currently behind the `PL_ENABLE_USER_IMPERSONATION` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-User Impersonation allows account administrators to temporarily act as another user in the account, including other admins without needing their password. This feature is especially useful for troubleshooting, and verifying permissions across environments.
+User Impersonation allows account administrators to temporarily act as another user in the account, including other admins without needing their password. This feature is especially useful for troubleshooting, and verifying if a user has the intended set of permissions.
 
-By impersonating a user, admins can see exactly what that user sees and perform actions on their behalf, ensuring a more accurate and efficient support or testing process. 
+By impersonating a user, Account admins can see exactly what that user sees and perform actions on their behalf.
 
 ### Prerequisite
 
-- A user must have the Account Admin role to impersonate other users.
+- A user must have the [Account Admin role](/docs/platform/role-based-access-control/add-manage-roles/#platform-roles) to impersonate other users.
 
 ### How to Impersonate a User
 
@@ -44,7 +44,7 @@ By impersonating a user, admins can see exactly what that user sees and perform 
 
 ### Impersonation session audit events
 
-The "Start impersonation" audit event is triggered at the beginning of an impersonation session, while the "End impersonation" audit event occurs when the session concludes or times out.
+The `Start impersonation` audit event is triggered at the beginning of an impersonation session, while the `End impersonation` audit event occurs when the session concludes or times out.
 
 All audit events fired during the impersonation session are tagged with the impersonator and impersonated user details. These can be viewed in the [Audit Trail](/docs/platform/governance/audit-trail/) page. 
 
@@ -54,23 +54,21 @@ The Action column shows the activity, while the User column indicates wh
 
 :::caution Important Note
 
-1. The Impersonate User option is available only at the Account level:
-    - Navigate to Account Settings → Access Control → Users.
-    - This option is not available from the Users page at the Organization or Project level.
-
-2. The user being impersonated has logged in at least once.
-
-3. To maintain security and control, the following actions are disabled during an impersonation session:
-    - Self-impersonation.  
+1. The Impersonate User option is available only at the Account scope.
+2. Only users that have logged in at least once can be impersonated.
+3. The following are not supported during an impersonation session:
+    - [Software Engineering Insights](/docs/software-engineering-insights)
+    - Self-impersonation
+    - Creating, editing, or deleting [API Keys or Access Tokens](/docs/platform/automation/api/add-and-manage-api-keys/)
     - Account-related actions such as:
-        - Signing out.  
-        - Switching accounts.  
-        - Changing the default account.  
-        - Resetting passwords.  
-    - Viewing all impersonated users' accounts.  
-    - Creating, editing, or deleting Personal Access Tokens (PATs).  
-    - Managing Two-Factor Authentication (2FA).  
-    - Accessing public endpoints or configuring the IP allowlist.
+        - Viewing list of accounts for an impersonated user 
+        - Switching accounts
+        - Changing the default account
+        - Signing out
+        - Resetting passwords
+        - Managing [Two-Factor Authentication (2FA)](/docs/platform/authentication/two-factor-authentication/)
+        - Changing state of [public access](/docs/platform/pipelines/executions-and-logs/allow-public-access-to-executions) or managing [IP allowlist](/docs/platform/security/add-manage-ip-allowlist/)
+    
 :::
 
 
