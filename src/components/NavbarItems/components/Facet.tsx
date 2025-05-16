@@ -11,6 +11,10 @@ const Facet: React.FC<FacetProps> = (props) => {
   const { controller, toggleClicked } = props;
   const [state, setState] = useState(controller.state);
   const [open, setOpen] = useState(true);
+
+  if (!controller) {
+    return null;
+  }
   useEffect(() => {
     const unsubscribe = controller.subscribe(() => {
       setState(controller.state);
@@ -120,7 +124,6 @@ const Facet: React.FC<FacetProps> = (props) => {
   };
 
   function handleFacetSelect(value, facetId) {
-    // console.log(value, facetId);
     const newFacet = {
       facetId: facetId,
       value: value.value,
