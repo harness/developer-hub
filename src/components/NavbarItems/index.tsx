@@ -9,7 +9,7 @@ const CoveoSearch = () => {
   const [searchValue, setSearchValue] = useState('');
   const [searchBoxController, setSearchBoxController] = useState<any>(null);
   const [engine, setEngine] = useState<SearchEngine | null>(null);
-
+  const [version, setVersion] = useState(0);
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -25,6 +25,7 @@ const CoveoSearch = () => {
           setEngine(newEngine);
           const SearchBoxController = buildSearchBox(newEngine);
           setSearchBoxController(SearchBoxController);
+          setVersion((v) => v + 1);
         }
       } catch (error) {
         console.error('Error initializing Coveo:', error);
@@ -55,13 +56,15 @@ const CoveoSearch = () => {
   };
 
   if (!engine || !searchBoxController) {
-    return <></>;
-  } else {
-    <div key={engine.state.configuration.accessToken}>
+    return null;
+  }
+
+  return (
+    <div key={version}>
       <SearchBox controller={searchBoxController} onSearch={handleSearch} />
       <SearchResultBox ref={searchBoxRef} open={open} engine={engine} searchValue={searchValue} />
-    </div>;
-  }
+    </div>
+  );
 };
 
 export default CoveoSearch;
