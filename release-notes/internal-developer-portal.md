@@ -442,12 +442,11 @@ This feature enhances security by using dedicated API keys, eliminating the need
 
 👉 Read more about the feature [here](/docs/internal-developer-portal/flows/worflowyaml#authentication).
 
-### [New Feature] POST Method support for Dynamic Pickers
+### [New Feature] POST or PUT Method support for Dynamic Pickers
 
-[IDP-4292]
-
-Workflow Dynamic Pickers now supports the **POST method**, extending beyond just GET requests.
-This feature is useful for fetching data using **GraphQL APIs**, calling **Lambda functions** with POST requests and handling APIs that require **large inputs via POST**.
+Workflow Dynamic Pickers now supports the **POST or PUT method**, extending beyond just GET requests.
+Kindly note that there are no restrictions on **HTTP methods**, except for the **DELETE** method, which is currently unsupported.
+This feature is useful for fetching data using **GraphQL APIs**, calling **Lambda functions** with POST or PUT requests and handling APIs that require **large inputs via POST**.
 
 Here’s how you can define the POST method:
 
@@ -1292,7 +1291,7 @@ Since last release, we have released some interesting docs and video tutorials t
 
 - **Video Tutorial:** [How to use self-service-onboarding](https://youtu.be/0GoK3SD1rxs?si=1Z28hvZ9nihYtdmL), [How to register your software components in Software Catalog](https://youtu.be/YgtIMDGMzJE?si=wiFzozj8Zo9dEEOF)
 - **Tutorial:** [How to add API docs in Harness IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/add-api-docs)
-- **Docs:** [Software System Model](/docs/internal-developer-portal/catalog/data-model), [API Spec Reference](https://developer.harness.io/docs/category/api-references)
+- **Docs:** [Software System Model](/docs/internal-developer-portal/catalog/system-model), [API Spec Reference](https://developer.harness.io/docs/category/api-references)
 
 #### New features and enhancements
 
@@ -1340,7 +1339,7 @@ Post-Limited GA, we've taken your genius tips and mixed them into the Internal D
 
 - **Blogs:** [Got Monorepos Instead of Microservices? This is How Harness IDP Has Got You Covered](https://www.harness.io/blog/mono-repos-harness-idp)
 - **Video Tutorial:** [Scorecards](https://youtu.be/jvLDdWS3rFE?si=EBoE9TXh4HCVNU3i)
-- **Tutorial:** [How to register Software Components in Catalog](/docs/internal-developer-portal/get-started/catalog-2o)
+- **Tutorial:** [How to register Software Components in Catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component)
 - **Docs:** [Scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard) and [Data Sources](https://developer.harness.io/docs/internal-developer-portal/features/checks-datasources)
 
 #### New features and enhancements
