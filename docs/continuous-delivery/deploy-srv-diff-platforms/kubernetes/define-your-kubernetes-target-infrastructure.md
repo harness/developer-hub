@@ -410,7 +410,7 @@ Use the [harness_platform_infrastructure](https://registry.terraform.io/provider
 :::info
 **EKS Execution Authentication Token Refresh**
 
-By default, AWS EKS issues an authentication token with a 15-minute time-to-live. Long-running API calls will fail once this token expires because the built-in `aws-iam-authenticator` does not automatically refresh it. For more info, refer [kubernetes-client/java/issues/2438](https://github.com/kubernetes-client/java/issues/2438)
+By default, AWS EKS issues an authentication token with a 15-minute time-to-live. Long-running API calls will fail once this token expires because the `aws-iam-authenticator` does not automatically refresh it. For more info, refer [kubernetes-client/java/issues/2438](https://github.com/kubernetes-client/java/issues/2438)
 
 Harness provides an opt-in fix via the feature flag `CDS_K8S_EKS_REFRESH_EXEC_AUTH_TOKEN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 
