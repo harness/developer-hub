@@ -35,7 +35,7 @@ export default async (req: Request, context: Context): Promise<Response> => {
   }
 
   const postData = {
-    validFor: 900000 , //valid for 15 mins
+    validFor: 12*60*60*1000, //valid for 12hrs
     userIds: [
       {
         name: 'guest',

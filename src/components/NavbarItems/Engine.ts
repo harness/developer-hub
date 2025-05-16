@@ -22,8 +22,8 @@ const getCoveoToken = async () => {
     const item = {
       token: data.token,
       orgId: data.id,
-      expiry: Date.now() + 13 * 60 * 1000, // 13 mins from now
-      // expiry: Date.now() + 11 * 60 * 60 * 1000 + 5 * 60 * 1000, // 11hrs 55 mins from now
+      // expiry: Date.now() + 13 * 60 * 1000, // 13 mins from now
+      expiry: Date.now() + 11 * 60 * 60 * 1000 + 5 * 60 * 1000, // 11hrs 55 mins from now
     };
     localStorage.setItem('coveo_token', JSON.stringify(item));
     return item;
