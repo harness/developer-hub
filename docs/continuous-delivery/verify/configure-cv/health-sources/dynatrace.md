@@ -7,6 +7,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import RiskProfile from '/docs/continuous-delivery/verify/shared/risk-profile.md'
 
 :::important
 When creating a Dynatrace query:
@@ -69,12 +70,16 @@ Depending on your feature choice, do the following configuration steps.
 15. In **Metric**, choose the desired metric from the list.
 16. Click **Fetch Records** to retrieve data for the provided query.
 17. In **Assign**, choose the services for which you want to apply the metric. Available options are:
-	* Continuous Verification
-	* Health Score
-	* SLI
-18. In **Risk Category**, select a risk type.
-19. In **Deviation Compared to Baseline**, select one of the options based on the selected risk type.
-    ![](./static/verify-deployments-with-dynatrace-17.png)
+    
+    If you select **Continuous Verification** or **Service Health**, you will need to configure a risk profile. Expand the following block to learn more. 
+
+   <details>
+   <summary><b>Risk Profile settings</b></summary>
+   
+   <RiskProfile />
+
+   </details>
+
 20. Click **Submit**. The Health Source is displayed in the Verify step.
 
 You can add one or more Health Sources for each APM or logging provider.
