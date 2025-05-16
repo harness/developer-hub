@@ -1,6 +1,6 @@
 ---
 title: Attribution and exclusion
-sidebar_position: 40
+sidebar_position: 50
 ---
 
 Attribution is the process by which Harness FME measures the influence of a feature on a user metric and allows you to run accurate experiments. Attribution correlates events with one of the treatments of the Harness FME for which metrics are being calculated. 
