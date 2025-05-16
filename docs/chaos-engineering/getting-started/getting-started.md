@@ -1,6 +1,5 @@
 ---
-title: Get started with HCE
-sidebar_position: 1
+title: Get started with Harness CE
 sidebar_label: Get Started with Harness CE
 description: Get started
 ---
@@ -15,28 +14,28 @@ Harness CE is available in two ways:
 2. SMP (Self-Managed Platform)
 
 :::tip
-Feature availability on HCE SaaS and SMP are on par, with minor timeline changes in the SMP feature releases.
+Feature availability on Harness CE SaaS and SMP are on par, with minor timeline changes in the SMP feature releases.
 :::
 
 ## SaaS
-HCE module is provided as service that you can use by either signing up or getting invited to a specific project. HCE provides you the assistance required to manage the cluster.
+Harness CE module is provided as service that you can use by either signing up or getting invited to a specific project. Harness CE provides you the assistance required to manage the cluster.
 You can also create a project if you have the necessary permissions.
 The control plane (set of microservices that help the domain function) is hosted by [Harness](https://app.harness.io).
 For more information on how to use SaaS, go to [SaaS documentation](/docs/chaos-engineering/getting-started/saas/)
-For a video tutorial, go to [Get started with HCE](https://youtu.be/0Xgwp-s-VpY).
+For a video tutorial, go to [Get started with Harness CE](https://youtu.be/0Xgwp-s-VpY).
 
 ## SMP
 You will need to create, manage and maintain your clusters. You will be responsible for providing permissions to projects and handling the issues associated with them.
 The control plane is hosted within your domain, for example, `harness.your-domain.io`.
 Contact [Harness Support](mailto:support@harness.io) and [SMP documentation](/docs/chaos-engineering/getting-started/smp/) for more information.
 
-### HCE and LitmusChaos
+### Harness CE and LitmusChaos
 
 <details>
-<summary> HCE and LitmusChaos </summary>
+<summary> Harness CE and LitmusChaos </summary>
 
-## Common capabilities of HCE and LitmusChaos
-Following are the common features between Litmus and HCE:
+## Common capabilities of Harness CE and LitmusChaos
+Following are the common features between Litmus and Harness CE:
 
 1. Scalable platform
 2. Declarative chaos fault architecture
@@ -49,9 +48,9 @@ Following are the common features between Litmus and HCE:
 9. Scheduling chaos experiments
 10. Resilience probes
 
-## Additional capabilities of HCE
+## Additional capabilities of Harness CE
 
-HCE module has the following additional capabilities:
+Harness CE has the following additional capabilities:
 
 1. [Kubelet density chaos fault](/docs/chaos-engineering/use-harness-ce/chaos-faults/kube-resilience/kubelet-density)
 2. [VMware chaos faults](/docs/chaos-engineering/use-harness-ce/chaos-faults/vmware/)
@@ -71,32 +70,32 @@ HCE module has the following additional capabilities:
 
 ## Integrations with other Harness modules
 
-In addition to the above features, HCE integrates with these Harness modules:
+In addition to the above features, Harness CE integrates with these Harness modules:
 
-- Continuous Delivery (CD): Go to [Use HCE with CD](/docs/chaos-engineering/integrations/hce-and-cd/chaos-cd).
-- Feature Flags (FF): Go to [Use HCE with FF](/docs/chaos-engineering/integrations/chaos-ff).
-- Service Reliability Management: Go to [Use HCE SRM](/docs/chaos-engineering/integrations/use-chaos-with-srm).
+- Continuous Delivery (CD): Go to [Use Harness CE with CD](/docs/chaos-engineering/integrations/hce-and-cd/chaos-cd).
+- Feature Flags (FF): Go to [Use Harness CE with FF](/docs/chaos-engineering/integrations/chaos-ff).
+- Service Reliability Management: Go to [Use Harness CE SRM](/docs/chaos-engineering/integrations/use-chaos-with-srm).
 - Execute experiments as pipelines: Go to [Pipelines with Chaos experiments](/docs/chaos-engineering/integrations/pipeline-exec).
 
-## HCE free plans
-[Harness](https://harness.io) offers a free hosted LitmusChaos if you are trying to get started with LitmusChaos or Chaos Engineering in general. The HCE free plan is a free-forever plan that has features equivalent to LitmusChaos, and also bundles Harness platform features such as RBAC and hosted logging— all for free.
+## Harness CE free plans
+[Harness](https://harness.io) offers a free hosted LitmusChaos if you are trying to get started with LitmusChaos or Chaos Engineering in general. The Harness CE free plan is a free-forever plan that has features equivalent to LitmusChaos, and also bundles Harness platform features such as RBAC and hosted logging— all for free.
 
-Sign up at [app.harness.io](https://app.harness.io) to get started with a free plan for either the hosted HCE or the hosted LitmusChaos.
+Sign up at [app.harness.io](https://app.harness.io) to get started with a free plan for either the hosted Harness CE or the hosted LitmusChaos.
 
 :::info important
-The HCE free plan replaces [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). New sign ups are not being accepted at [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). Users on that platform are advised to move to the HCE free plan before August 31, 2023. For free support on migration, contact [Harness](https://harness.io) Support.
+The Harness CE free plan replaces [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). New sign ups are not being accepted at [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). Users on that platform are advised to move to the Harness CE free plan before August 31, 2023. For free support on migration, contact [Harness](https://harness.io) Support.
 :::
 
-## HCE versus LitmusChaos
+## Harness CE versus LitmusChaos
 
-This section describes the differences between Harness Chaos Engineering (HCE) and the open-source CNCF incubation project, LitmusChaos.
+This section describes the differences between Harness Chaos Engineering (Harness CE) and the open-source CNCF incubation project, LitmusChaos.
 
 ### Chaos orchestration
 <table>
     <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
    <tr>
         <td>Centralized chaos portal</td>
@@ -176,7 +175,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
     <td><b>Feature</b></td>
     <td><b>Litmus</b></td>
-    <td><b>HCE</b></td>
+    <td><b>Harness CE</b></td>
  </tr>
  <tr>
     <td><b>SaaS</b></td>
@@ -216,7 +215,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
   <tr>
         <td>UI support for chaos experiments CRUD</td>
@@ -270,7 +269,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Rest/GraphQL APIs</td>
@@ -325,7 +324,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
     <td><b>Feature</b></td>
     <td><b>Litmus</b></td>
-    <td><b>HCE (SaaS)</b></td>
+    <td><b>Harness CE (SaaS)</b></td>
   </tr>
   <tr>
     <td><b>Username-based authentication</b></td>
@@ -360,7 +359,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
     <td><b>Feature</b></td>
     <td><b>Litmus</b></td>
-    <td><b>HCE (SaaS)</b></td>
+    <td><b>Harness CE (SaaS)</b></td>
   </tr>
     <tr>
         <td>Auto discover the target services with relationship on Kubernetes</td>
@@ -390,7 +389,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
     <td><b>Feature</b></td>
     <td><b>Litmus</b></td>
-    <td><b>HCE (SaaS)</b></td>
+    <td><b>Harness CE (SaaS)</b></td>
   </tr>
     <tr>
         <td>RBACs around ChaosHub</td>
@@ -444,7 +443,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
     <td><b>Feature</b></td>
     <td><b>Litmus</b></td>
-    <td><b>HCE (SaaS)</b></td>
+    <td><b>Harness CE (SaaS)</b></td>
   </tr>
     <tr>
         <td>Two-factor authentication</td>
@@ -493,7 +492,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
 <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Integration with Harness Continuous Deployment Pipelines</td>
@@ -558,7 +557,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
      <tr>
         <td>Native resilience probe for Prometheus </td>
@@ -584,7 +583,7 @@ Go to [Pod faults](/docs/category/pod) for more information.
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
      <tr>
         <td>Container kill</td>
@@ -761,7 +760,7 @@ Go to [Node faults](/docs/category/node) for more information.
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Kubelet service kill</td>
@@ -821,7 +820,7 @@ Go to [Node faults](/docs/category/node) for more information.
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>HTTP API faults with URL filters </td>
@@ -842,7 +841,7 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/use-harness-ce/chaos-faults
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>ALB AZ down</td>
@@ -1109,7 +1108,7 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/use-harness-ce/chaos-faults
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Lambda delete function concurrency</td>
@@ -1165,7 +1164,7 @@ Go to [Chaos faults for GCP](/docs/chaos-engineering/use-harness-ce/chaos-faults
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>GCP disk loss</td>
@@ -1201,7 +1200,7 @@ Got to [Chaos faults for Azure](/docs/chaos-engineering/use-harness-ce/chaos-fau
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Azure instance stop</td>
@@ -1248,7 +1247,7 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/use-harness-ce/chaos-fau
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>VMware VM power off</td>
@@ -1387,7 +1386,7 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/use-harness-ce/chaos-fau
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Latency</td>
@@ -1429,7 +1428,7 @@ Go to [Chaos faults for load](/docs/chaos-engineering/use-harness-ce/chaos-fault
     <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>K6 loadgen </td>
@@ -1468,7 +1467,7 @@ Go to [Chaos faults for Linux](/docs/chaos-engineering/use-harness-ce/chaos-faul
     <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Linux API block </td>
@@ -1628,7 +1627,7 @@ Go to [Chaos faults for Linux](/docs/chaos-engineering/use-harness-ce/chaos-faul
     <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Windows CPU stress </td>
@@ -1655,7 +1654,7 @@ Go to [Chaos faults for Linux](/docs/chaos-engineering/use-harness-ce/chaos-faul
     <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>Harness CE (SaaS)</b></td>
     </tr>
     <tr>
         <td>CF app container kill </td>
