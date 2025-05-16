@@ -326,7 +326,7 @@ However, we are currently working on introducing the concept of creating custom 
 | Entity CRUD APIs                     | ❌      | ✅      | Entities can be created, updated, and deleted using Harness APIs.                                                                                                                                              |
 | Catalog Ingestion APIs               | ✅      | ✅      |                                                                                                                                                                                                                |
 | Terraform Provider                   | ❌      | Planned |                                                                                                                                                                                                                |
-| Terraform Provider                   | ❌       | Planned |                                                              |
+| Custom User Groups | ✅ | Planned |  | 
 
 ## Timeline
 - IDP 2.0 will be Generally Available by end of Q2 (July 2025)
