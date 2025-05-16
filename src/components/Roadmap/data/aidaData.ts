@@ -24,11 +24,6 @@ export const aidaData: Horizon = {
         description: "Enables the creation and configuration of services for your DevOps workflows",
       },
       {
-        tag: [{value: "Entity Creation"}],
-        title: "Infrastructure Configuration",
-        description: "Enables the configuration of infrastructure in your environments for your DevOps workflows",
-      },
-      {
         tag: [{value: "Entity Reference"}],
         title: "Reference Existing Templates",
         description: "Enables the use of existing templates when generating new pipelines or DevOps resources with the AI agent",
@@ -63,35 +58,25 @@ export const aidaData: Horizon = {
         title: "Documentation and Support Agent in AI Chat",
         description: "Access documentation and the support agent via AI chat.",
       },
-      {
-        tag: [],
-        title: "Pipeline Data Support",
-        description: "Improves pipeline data handling, adding import of Git.",
-      },
     ],
   },
   Next: {
     description: "Q3 2025, Aug-Oct 2025",
     feature: [
       {
-        tag: [],
-        title: "Extended Customer Data",
-        description: "Extends the scope and detail of customer data handling.",
+        tag: [{value: "Entity Creation"}],
+        title: "Infrastructure Configuration",
+        description: "Enables the configuration of infrastructure in your environments for your DevOps workflows",
       },
       {
         tag: [],
-        title: "Customer Data",
-        description: "Further enhancements or expansions to customer data capabilities.",
+        title: "Recommendations based on Pipeline Data",
+        description: "Enables the AI to offer recommendations based on a user's existing pipeline data.",
       },
       {
         tag: [],
-        title: "Environment Context Shared Support",
-        description: "Enables sharing of environment context (config, variables) across different pipeline stages.",
-      },
-      {
-        tag: [],
-        title: "Enriched Context Shared Support",
-        description: "Provides richer context (metadata, logs, etc.) for better pipeline insights and collaboration.",
+        title: "Shared Context Support",
+        description: "Enables rich context (environment context, config, variables, metadata, logs, etc.) sharing across pipeline stages..",
       },
       {
         tag: [],
@@ -105,8 +90,8 @@ export const aidaData: Horizon = {
       },
       {
         tag: [],
-        title: "Chat UI & Chat Templates",
-        description: "Introduces or updates a chat-based UI, including predefined templates for quicker interactions.",
+        title: "Harness AI Workflows",
+        description: "Enables the chat to engage with multiple Harness Agents to complete user tasks.",
       },
       {
         tag: [],
@@ -118,21 +103,16 @@ export const aidaData: Horizon = {
         title: "Create Slack Integration",
         description: "Builds an integration with Slack for notifications or interactions with the AI DevOps Agent.",
       },
-      {
-        tag: [],
-        title: "Add Chat Templates",
-        description: "Expands the library of chat templates for various use cases or user workflows.",
-      },
-      {
-        tag: [],
-        title: "Create Chat User Roles",
-        description: "Introduces role-based access or permissions within the chat environment.",
-      },
     ],
   },
   Later: {
     description: "Q4 2025+, Nov 2025 & beyond",
     feature: [
+      {
+        tag: [],
+        title: "Pipeline Data Support",
+        description: "Improves pipeline data handling, adding import of Git.",
+      },
       {
         tag: [],
         title: "CV AI",
@@ -147,11 +127,6 @@ export const aidaData: Horizon = {
         tag: [],
         title: "Launch V1 with Knowledge Base",
         description: "Officially launches Version 1 of the AI DevOps Agent with integrated knowledge base.",
-      },
-      {
-        tag: [],
-        title: "Chat V2 with More “Legs”",
-        description: "Upgrades the chat feature to a second version, potentially with extended functionality or modules.",
       },
       {
         tag: [],
@@ -213,18 +188,6 @@ export const aidaData: Horizon = {
       },
       {
         tag: [],
-        title: "Pipeline Generation",
-        description:
-          "Automatically generate pipelines for source code repositories.",
-      },
-      {
-        tag: [],
-        title: "Pipeline Generation",
-        description:
-          "Automatically generate pipelines for source code repositories.",
-      },
-      {
-        tag: [],
         title: "Harness Support",
         description:
           "Helps users understand the product, troubleshoot failures/exceptions/security vulnerabilities by leveraging documentation, community articles, internal/external knowledge base articles.",
@@ -246,12 +209,6 @@ export const aidaData: Horizon = {
         title: "Policy As Code Agent (Cloud Assets)",
         description:
           "AI-generated rules for asset governance accompanied with detailed descriptions to optimize your cloud spend.",
-      },
-      {
-        tag: [],
-        title: "Policy As Code Agent (Pipelines)",
-        description:
-          "Automatically generate Open Policy Agent (OPA) Rego policies for Pipeline governance.",
       },
       {
         tag: [],
