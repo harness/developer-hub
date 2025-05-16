@@ -5,7 +5,7 @@ sidebar_position: 10
 sidebar_label: "View and manage issues"
 ---
 
-After performing security scans in your pipelines, you can review identified issues from the **Issues** section in STO. This section consolidates issues impacting your project's configured baselines, providing a comprehensive list of security issues found in your **Project**.
+After performing security scans in your pipelines, you can review the identified issues from the **[Issues](#navigate-to-issues-section)** section at the **Project** level. This section provides a consolidated view of all security issues affecting your configured baselines, providing a comprehensive list of issue identified across scans in the selected **Project**. **Issues** section is currently available only at the **Project** level. Support for **Organization** and **Account** levels will be available soon.
 
 :::note
 This feature is behind the feature flag `STO_ALL_ISSUES_PAGE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -20,7 +20,7 @@ From the **Issues** section, you can:
 - [Create Jira tickets from issues](/docs/security-testing-orchestration/jira-integrations)
 - [Request issue exemptions](/docs/security-testing-orchestration/exemptions/exemption-workflows)
 
-:::note
+:::info
 The **Issues** section displays only the issues impacting your project's [baselines](https://developer.harness.io/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines/). If your project has no targets or baselines configured, this page will not present the issues, even if scans have been executed against non-baseline targets.
 :::
 
