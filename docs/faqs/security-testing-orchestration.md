@@ -119,7 +119,7 @@ Harness supports two RBAC roles specifically for STO users. You can customize th
 
 * **Developer** role — Permissions needed for developer workflows.
 
-* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions.
+* **AppSec** role — Permissions needed for Application Security or Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions.
 
 These workflows are covered in [Add Security Testing roles](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles).
 

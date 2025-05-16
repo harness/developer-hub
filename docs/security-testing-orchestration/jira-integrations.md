@@ -17,7 +17,7 @@ Harness STO allows you to create individual Jira tickets for security issues det
 
 :::note
 - This feature is **not supported** in Self-Managed Enterprise Edition.  
-- It is supported for both [Security Testing Developer](https://docs.platform/role-based-access-control/add-manage-roles/#module-specific-roles) and [Security Testing SecOps](https://docs.platform/role-based-access-control/add-manage-roles/#module-specific-roles) roles.  
+- It is supported for both [Security Testing Developer](https://docs.platform/role-based-access-control/add-manage-roles/#module-specific-roles) and [Security Testing AppSec](https://docs.platform/role-based-access-control/add-manage-roles/#module-specific-roles) roles.  
 
 This integration has a separate setup path that is unrelated to other Jira-related integrations in Harness pipelines. To open Jira tickets for security findings in STO, you must set up the integration as documented below. You cannot use other Jira workflows to create Jira tickets in STO. For example, you cannot integrate Jira with STO using Custom steps with Jira Create or other related steps.
 :::
