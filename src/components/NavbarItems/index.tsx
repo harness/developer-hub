@@ -56,14 +56,12 @@ const CoveoSearch = () => {
 
   if (!engine || !searchBoxController) {
     return <></>;
-  }
-
-  return (
+  } else {
     <div key={engine.state.configuration.accessToken}>
       <SearchBox controller={searchBoxController} onSearch={handleSearch} />
       <SearchResultBox ref={searchBoxRef} open={open} engine={engine} searchValue={searchValue} />
-    </div>
-  );
+    </div>;
+  }
 };
 
 export default CoveoSearch;
