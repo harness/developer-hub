@@ -30,8 +30,8 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 #### New Features and Enhancements
 - Added support for the setting `ingest_tool_severity: true` in the **Checkmarx One**, **Anchore**, and **Prisma Cloud** steps. When added, STO will use the severity provided directly by the scanner instead of calculating it based on CVSS scores (STO-8776, STO-8778, STO-8779).
-- Renamed the STO default role from `Security Testing SecOps Role` to `Security Testing AppSec Role` (STO-7392).
-- Modified SonarQube step to include privileges for creating and using the Sonar cache (STO-8889).
+- Renamed the built-in STO role from `Security Testing SecOps` to `Security Testing AppSec` (STO-7392).
+- Added support for the SonarQube step to include privileges for creating and using the Sonar cache (STO-8889).
 
 #### Fixed Issues
 - Fixed an issue in the Snyk step where the filename and upgrade version were missing in some cases (STO-8914).
