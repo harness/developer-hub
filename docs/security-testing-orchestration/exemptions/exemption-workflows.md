@@ -26,7 +26,7 @@ Support for **Exemptions** at **Organization** and **Account** level is is contr
 <DocImage path={require('./static/request-exemption-overview.png')} width="80%" height="80%" title="Click to view full-size image" />
 
 :::note
-To create an exemption request, you must have the necessary permissions (**Exemptions: View, Create/Edit**) at the Project level, or you can have the **Security Testing Developer** or **Security Testing SecOps** roles assigned. Refer [Permissions required for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
+To create an exemption request, you must have the necessary permissions (**Exemptions: View, Create/Edit**) at the Project level, or you can have the **Security Testing Developer** or **Security Testing AppSec** roles assigned. Refer [Permissions required for issue exemptions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions) for more details.
 :::
 
 ## Create Exemption Request for an Issue
@@ -80,7 +80,7 @@ Add a link to supporting documentation, source code, or any relevant resource th
 After completing the form, click **Create Request** to submit the exemption.
 
 Once the exemption request is submitted:
-- Inform your **Security Testing SecOps** reviewer.  
+- Inform your **Security Testing AppSec** reviewer.  
 - Ensure they have enough context and links to make a well-informed decision.
 
 ## Create Exemption Request for Occurrences within Issue
