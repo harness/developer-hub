@@ -122,7 +122,7 @@ Filter issues by severity levels. Multiple selections are allowed.
 - Low
 - Info
 
-### Status
+### Exemption Status
 
 Filter issues by exemption status. Multiple selections are allowed.
 
