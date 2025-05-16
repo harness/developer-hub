@@ -7,13 +7,13 @@ sidebar_position: 54
 
 The Harness Model Context Protocol (MCP) Server enables integration with Harness tools, providing endpoints for pipelines, pull requests, and more. This guide outlines the installation, configuration, and usage of the MCP server.
 
-## Introduction to MCP Server
+## Introduction
 
 ### What is MCP?
 
-MCP (Model Context Protocol) is an **open standard for AI agents to interact with tools and services** using a unified protocol. Instead of building custom adapters or connectors for each tool, MCP provides a consistent interface that allows AI agents to communicate seamlessly with various tools, including Harness services.
+MCP (Model Context Protocol) is an open standard for AI agents to interact with tools and services using a unified protocol. Instead of building custom adapters or connectors for each tool, MCP provides a consistent interface that allows AI agents to communicate seamlessly with various tools, including Harness services.
 
-**In simpler terms:** MCP standardizes how AI agents talk to software tools, enabling interoperability without requiring custom code for each integration.
+In simpler terms: MCP standardizes how AI agents talk to software tools, enabling interoperability without requiring custom code for each integration.
 
 ### Why MCP?
 
@@ -38,16 +38,14 @@ Why not just use function calls for each API?
 * **Harness API Token:** Generate one through the Harness UI. Learn more: [Manage API Keys](/docs/platform/automation/api/add-and-manage-api-keys/)
 * **Go 1.23 or later:** Ensure **Go** is installed on your system.
 
-**Video Walkthrough:** [Installation and Setup]
+### Video Walkthrough (Installation and Setup)
 
 <DocVideo src="https://www.loom.com/share/b7c5d77b1f7f4f55a779758971eefe78?sid=146f737a-3922-4bf2-8485-9c7c51154cc8" />
----
 
 ## Installation
 
-1. **Install the MCP Server:**
+Follow the installation walkthrough to install the MCP Server:
 
-   * Follow the installation walkthrough: Install MCP Server
   <DocVideo src="https://www.loom.com/share/1374d6bdd887475db2bb2a8853747609?sid=5b4f0d64-8c0b-455a-802f-d0d4cd266edf" />
 
 ## Configuration
@@ -148,7 +146,7 @@ HARNESS_API_KEY=your_api_key \
 
 ## Authentication
 
-Set the `HARNESS_API_KEY` environment variable for authentication.
+Set the `HARNESS_API_KEY` environment variable for authentication. Learn more: [Manage API Keys](/docs/platform/automation/api/add-and-manage-api-keys/).
 
 ```bash
 export HARNESS_API_KEY=<your_api_key>
