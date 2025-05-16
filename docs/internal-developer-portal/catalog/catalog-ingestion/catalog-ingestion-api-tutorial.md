@@ -11,7 +11,7 @@ redirect_from:
 
 ## Introduction
 
-In this tutorial we will be using the catalog metadata ingestion APIs to add additional metadata for the software components in the catalog, display them in the component overview page using [additional info card](/docs/internal-developer-portal/catalog/catalog-ui.md#adding-an-additional-info-card) and track the values ingested using [Scorecard](https://developer.harness.io/docs/internal-developer-portal/scorecards/custom-data-sources). 
+In this tutorial we will be using the catalog metadata ingestion APIs to add additional metadata for the software components in the catalog, display them in the component overview page using [additional info card](/docs/internal-developer-portal/catalog/catalog-ui.md#adding-an-additional-info-card) and track the values ingested using [Scorecard](https://developer.harness.io/docs/internal-developer-portal/scorecards/custom-data-sources).
 
 <DocImage path={require('./static/ccp-usecase.png')} />
 
@@ -25,7 +25,7 @@ In this tutorial we will be using the catalog metadata ingestion APIs to add add
 
 ### Using cURL Command
 
-- Use the following command to add a new metadata `codeCoverageScore` to the `warehouse` component. 
+- Use the following command to add a new metadata `codeCoverageScore` to the `warehouse` component.
 
 ```cURL
 curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/entity/' \
@@ -48,7 +48,7 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/ent
 
 ### Using Harness Pipeline
 
-- We recommend the use of following Harness Pipeline to add a new metadata `codeCoverageScore` to the `warehouse` component. While using the following pipeline YAML make sure to add the `x-api-key` as pipeline variable of type secret and name `apikey`. 
+- We recommend the use of following Harness Pipeline to add a new metadata `codeCoverageScore` to the `warehouse` component. While using the following pipeline YAML make sure to add the `x-api-key` as pipeline variable of type secret and name `apikey`.
 
 <details>
 <summary>Harness Pipeline</summary>
@@ -141,13 +141,14 @@ pipeline:
       required: false
       value: x-api-key
 ```
+
 </details>
 
 ![](./static/add-secret.png)
 
 ## Schedule a Cron to Update the Catalog Metadata
 
-- If you use the cURL command or the python script to auto-update the metadata on regular intervals you need to configure a cron job. 
+- If you use the cURL command or the python script to auto-update the metadata on regular intervals you need to configure a cron job.
 
 - In case you're using Harness Pipeline use a trigger to update the data ingested on regular intervals. Create a pipeline trigger of type **Cron** to schedule an hourly trigger.
 
@@ -155,7 +156,6 @@ pipeline:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 <Tabs queryString="use-metadata-info">
 <TabItem value="scorecard" label="Code Coverage Scorecard">
@@ -166,13 +166,13 @@ In case you want to track the information you have ingested using Scorecards, fo
 
 1. Go to the **Scorecards** and under **Admin** and select **Checks** from the top nav.
 
-2. Now select **Create Custom Check** and add a New Custom Check to check the code coverage score, select the data source as **Catalog Info YAML** and data point as **Evaluate Expression(JEXL)**. 
+2. Now select **Create Custom Check** and add a New Custom Check to check the code coverage score, select the data source as **Catalog Info YAML** and data point as **Evaluate Expression(JEXL)**.
 
-3. Add the **jexl** to be evaluated as `<+metadata.codeCoverageScore>` and **operator** `Greater than or equal to` from the dropdown and add the **value** as `50` 
+3. Add the **jexl** to be evaluated as `<+metadata.codeCoverageScore>` and **operator** `Greater than or equal to` from the dropdown and add the **value** as `50`
 
 ![](./static/create-check.gif)
 
-4. Now you can create a scorecard using the Custom Check you have created above. 
+4. Now you can create a scorecard using the Custom Check you have created above.
 
 ![](./static/create-score-card.gif)
 
@@ -191,7 +191,7 @@ In case you want to display the same information you have ingested on your Overv
 
 ![](./static/navigate-catalog-entities.png)
 
-2. Now Select **Edit Layout** for component **Service** and add the following under Overview card. 
+2. Now Select **Edit Layout** for component **Service** and add the following under Overview card.
 
 ![](./static/navigate-component.png)
 
@@ -211,7 +211,6 @@ In case you want to display the same information you have ingested on your Overv
 ```
 
 ![](./static/add-additional-info-card.png)
-
 
 2. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/catalog-ui.md#adding-an-additional-info-card)
 
