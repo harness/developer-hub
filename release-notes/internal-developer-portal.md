@@ -21,13 +21,106 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Cluster**        | **Deployment Status** | **Release Version** | 
 | --------------------------- | -------------------------- | --------------- | 
-| **prod0**   | ✅ Completed                        | March - v0.41.0             |                                                                                                                        
-| **prod1** | ✅ Completed                        | March - v0.41.0             |                                                                                                                      
-| **prod2**    | ✅ Completed                        | March - v0.41.0             |
-| **prod3** | ✅ Completed | March – v0.41.0 |
-| **prod4** | ✅ Completed | March – v0.41.0 |
-| **prodeu1** | ✅ Completed | March – v0.41.0 |
+| **prod0**   | ✅ Completed                        | May - 2025.05.v1             |                                                                                                                        
+| **prod1** | ✅ Completed                        | May - 2025.05.v1             |                                                                                                                      
+| **prod2**    | ✅ Completed                        | May - 2025.05.v1             |                                                                                                                      
+| **prod3**         | ✅ Completed                        | May - 2025.05.v1             | 
+| **prod4**         | ✅ Completed                    | May - 2025.05.v1              | 
+| **prodeu1**   | ✅ Completed                        | May - 2025.05.v1     |                                                                                      
 
+## 🚀 Releasing Harness IDP 2.0 BETA - May [2025.05.v1]
+<!-- May 15, 2025-->
+
+### IDP: Reimagined for Enterprise-Scale Adoption 
+
+We’re thrilled to announce the **BETA release of Harness IDP 2.0** — a big step forward in how Harness IDP is imagined, built, and adopted at scale.
+
+**Harness IDP 2.0** isn’t just an upgrade — it’s a complete rebuild of Harness IDP to support adoption at enterprise scale, bring in stronger access control, and a better developer experience. With foundational changes across architecture, security, scalability, and usability, IDP 2.0 marks a new chapter in how Harness IDP is **built, used and managed.**
+
+<DocVideo src="https://www.youtube.com/watch?v=9Rj-jJp3Ehc" />
+
+### Why IDP 2.0?
+
+Harness IDP started as an all-in-one platform to improve the developer experience, built on top of Backstage. While **IDP 1.0** worked well, we saw that as our enterprise customers grew, they faced new challenges at scale — which led us to rethink what an **enterprise-ready IDP** truly looks like. These challenges included limited access control, lack of gradual workflow rollout, the burden of managing YAML files manually, Git rate-limiting issues due to a single connector, and a Catalog UI that couldn’t handle large-scale use cases. The system hierarchy also didn’t align with how customers structure their teams within the Harness platform.
+
+**IDP 2.0** directly addresses these issues. It introduces more **granular access control**, **smoother rollout** capabilities, **easier entity updates without manual YAMLs**, better Git integration, and a redesigned Catalog experience. With these improvements, IDP 2.0 is ready to support enterprise teams with the flexibility and scale they need.
+
+
+### What’s New in IDP 2.0?
+
+Harness IDP 2.0 introduces core improvements across **architecture, security, scalability**, and **developer experience**, making it easier than ever to manage and scale your internal developer portal.
+
+#### 🔐 **Platform Hierarchy & Granular RBAC**
+
+**[Learn more](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#platform-hierarchy--granular-rbac) | [Docs](/docs/internal-developer-portal/rbac/scopes.md)**
+
+---
+
+Catalog entities and Workflows can now be created at the **Account**, **Organization**, and **Project** scopes. By default, entities at the Account scope are accessible platform-wide, while Project-level entities are scoped to the users that are added to the Project. This allows teams to manage their own components while sharing approved workflows across the org.
+
+You can define custom roles with fine-grained permissions (Create, Edit, Read, Delete, Execute) using Harness’s native RBAC system and reusable resource groups.
+
+![](./static/internal-developer-portal/workflow-scope.png)
+
+#### 🧩 **UI-Driven Catalog Creation**
+
+**[Learn more](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#ui-driven-catalog-entity-creation) | [Docs](/docs/internal-developer-portal/catalog/manage-catalog#creating-entities-idp-20)**
+
+---
+
+This feature allows you to create and manage entities **directly from the UI** with guided forms and **live YAML previews** (with real-time sync).
+Standardized defaults and dropdowns reduce errors and onboarding time.
+
+![](./static/internal-developer-portal/ui-way-creation.png)
+
+#### 🖥️ **Improved UX & Scalability**
+
+**[Learn more](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#improved-scalability--ux) | [Docs](/docs/internal-developer-portal/catalog/manage-catalog#using-scopes--filters-idp-20)**
+
+---
+
+The **Catalog and Workflow UIs** have been completely rebuilt for better visibility and usability:
+
+* Scope-based filters allow users to narrow down to their team’s view.
+* Catalog table supports search, sorting and pagination.
+* Scorecards are now natively integrated into the Catalog view.
+* Entity pages show scope, ownership, and references cleanly in the header.
+
+![](./static/internal-developer-portal/catalog-new-ui.png)
+
+#### 🔄 **New APIs for direct Catalog entity creation & updates**
+
+**[Learn more](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#api-changes-backstage-catalog-apis--harness-catalog-apis) | [API Docs](https://apidocs.harness.io/tag/Entities)**
+
+---
+IDP 2.0 introduces new APIs for direct Catalog entity creation and updates, ensuring responses properly incorporate Role-Based Access Control (RBAC) and entity scope considerations.
+
+- Complete create/read/update/delete operations are accessible via Harness APIs
+- New endpoints provide scope-aware operations aligned with Harness RBAC
+- Catalog Ingestion APIs remain functional as before, though RBAC will now be enforced on updated entities
+
+### For Existing IDP 1.0 Customers: Why Upgrade?
+
+If you're already using Harness IDP 1.0, here’s why switching to 2.0 is worth it:
+
+* **Harness-native Platform Hierarchy**: Catalog entities and Workflows now support Account, Org, and Project scopes, with built-in granular RBAC.
+* **Easier automation without YAML file**: Entities can now be created and modified inline without having to deal with the YAML file git operations and its complexities.
+* **New Catalog & Workflow UI**: Newer UX, brand new Catalog table with filters and built-in entity creation UX.
+* **Backstage Plugin Support**: Continue using existing plugins without any changes.
+* **Automatic Upgrade**: IDP 2.0 can be enabled via a feature flag. Your existing entities will be automatically upgraded to the new model.
+* **Default Upgrade Behavior**: Entities will initially live at the Account scope. You can later organize them into Org/Project scopes as needed.
+
+Harness IDP 2.0 is purpose-built for teams ready to scale adoption across the organization — without compromising control or experience.
+
+### Ready to Upgrade?
+You’re right — **IDP 2.0 is a significant upgrade**. But we’ve ensured the transition is smooth and well-supported.
+
+To help you plan and adopt with confidence, we’ve created:
+
+* A detailed **[IDP 2.0 Overview Guide](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path)**
+* A comprehensive **[Step-by-Step Upgrade Handbook](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o)**
+
+Upgrading to IDP 2.0 is a **structured 6-step process**, and our team is here to guide you every step of the way.
 
 ## March - Version 0.41.0
 
@@ -320,12 +413,11 @@ This feature enhances security by using dedicated API keys, eliminating the need
 
 👉 Read more about the feature [here](/docs/internal-developer-portal/flows/worflowyaml#authentication).
 
-### [New Feature] POST or PUT Method support for Dynamic Pickers
+### [New Feature] POST Method support for Dynamic Pickers
 [IDP-4292]
 
-Workflow Dynamic Pickers now supports the **POST or PUT method**, extending beyond just GET requests.
-Kindly note that there are no restrictions on **HTTP methods**, except for the **DELETE** method, which is currently unsupported.
-This feature is useful for fetching data using **GraphQL APIs**, calling **Lambda functions** with POST or PUT requests and handling APIs that require **large inputs via POST**.
+Workflow Dynamic Pickers now supports the **POST method**, extending beyond just GET requests.
+This feature is useful for fetching data using **GraphQL APIs**, calling **Lambda functions** with POST requests and handling APIs that require **large inputs via POST**.
 
 Here’s how you can define the POST method:
 ```YAML
@@ -1173,7 +1265,7 @@ Since last release, we have released some interesting docs and video tutorials t
 
 - **Video Tutorial:** [How to use self-service-onboarding](https://youtu.be/0GoK3SD1rxs?si=1Z28hvZ9nihYtdmL), [How to register your software components in Software Catalog](https://youtu.be/YgtIMDGMzJE?si=wiFzozj8Zo9dEEOF)
 - **Tutorial:** [How to add API docs in Harness IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/add-api-docs)
-- **Docs:** [Software System Model](/docs/internal-developer-portal/catalog/system-model), [API Spec Reference](https://developer.harness.io/docs/category/api-references)
+- **Docs:** [Software System Model](/docs/internal-developer-portal/catalog/data-model), [API Spec Reference](https://developer.harness.io/docs/category/api-references)
 
 #### New features and enhancements
 
@@ -1221,7 +1313,7 @@ Post-Limited GA, we've taken your genius tips and mixed them into the Internal D
 
 - **Blogs:** [Got Monorepos Instead of Microservices? This is How Harness IDP Has Got You Covered](https://www.harness.io/blog/mono-repos-harness-idp)
 - **Video Tutorial:** [Scorecards](https://youtu.be/jvLDdWS3rFE?si=EBoE9TXh4HCVNU3i)
-- **Tutorial:** [How to register Software Components in Catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component)
+- **Tutorial:** [How to register Software Components in Catalog](/docs/internal-developer-portal/get-started/catalog-2o)
 - **Docs:** [Scorecards](https://developer.harness.io/docs/internal-developer-portal/features/scorecard) and [Data Sources](https://developer.harness.io/docs/internal-developer-portal/features/checks-datasources)
 
 #### New features and enhancements
