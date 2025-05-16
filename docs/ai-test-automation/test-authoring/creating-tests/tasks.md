@@ -5,7 +5,7 @@ sidebar_position: 40
 ---
 Tasks are reusable functions designed to perform a series of commonly used steps. In AI Test Automation, there are two types of tasks: **Login tasks** and **General tasks**. Login tasks, the most frequently used, are designed to capture credentials and are automatically included in any test during its creation and execution. General tasks, on the other hand, are manually added by the test creator, who selects them from a list of available tasks.
 
-Login tasks ([Create a login task](<./../../GETTING STARTED/Create a login task.md>) ) are created through interactive authoring, while General tasks are defined by selecting a series of consecutive steps in the test details page.&#x20;
+Login tasks ([Create a login task](<./../../get-started/quickstart.md#create-a-login-task>) ) are created through interactive authoring, while General tasks are defined by selecting a series of consecutive steps in the test details page.&#x20;
 
 Once a test is created and you think a set of consecutive steps will be reused in various other tests then you can simply select the steps and create a task. Once the task is created you can add the task to any new test in interactive authoring or during Editing.&#x20;
 
@@ -30,6 +30,11 @@ Once added, simply click on the `Continue` button at the top of the step panel t
 :::image{src="https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/6Lo7SgKWiXU1qVJlu1Uqp_image.png" signedSrc="https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/6Lo7SgKWiXU1qVJlu1Uqp_image.png" size="56" width="426" height="740" position="center" caption}
 
 :::
+
+Here is a video explaining how tasks can be created
+
+<iframe src="https://www.loom.com/embed/ed40cb4ed4854df79ddf44964fe5fd4e?sid=ce56db9e-9693-4806-92b6-93face064f3c" width="960" height="540" frameborder="0" allowfullscreen></iframe>
+
 
 ## Parameters in Tasks
 

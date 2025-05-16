@@ -30,15 +30,15 @@ Harness AI Test Automation waits for all network pending requests to be complete
 
 ## Flag Network Pending Validation Issues
 
-If any network load requests fail to complete within 30 seconds, Relicx flags them as validation issues. This allows you to identify potential problems with network dependencies affecting the reliability of your tests.
+If any network load requests fail to complete within 30 seconds, Harness AIT flags them as validation issues. This allows you to identify potential problems with network dependencies affecting the reliability of your tests.
 
 ## Ignore Third-Party Requests
 
-Harness AI Test Automation automatically ignores multiple third-party requests made by applications, such as requests to Google Analytics. However, if your tests encounter navigation pending failures on a third-party site not automatically ignored by Relicx, you can manually add it to the ignore list.
+Harness AI Test Automation automatically ignores multiple third-party requests made by applications, such as requests to Google Analytics. However, if your tests encounter navigation pending failures on a third-party site not automatically ignored by Harness AIT, you can manually add it to the ignore list.
 
 ## Scrolls
 
-Harness AI Test Automation ensures that elements being scrolled into view are properly brought into focus, emulating human interaction. To achieve this, Relicx may need to locate the element using Smart Selectors, resulting in slightly longer scroll times. This additional work guarantees thorough testing and prevents misleading results.
+Harness AI Test Automation ensures that elements being scrolled into view are properly brought into focus, emulating human interaction. To achieve this, Harness AIT may need to locate the element using Smart Selectors, resulting in slightly longer scroll times. This additional work guarantees thorough testing and prevents misleading results.
 
 ## Automatic Validation
 
@@ -49,4 +49,4 @@ Automatic Validation, while not exclusively related to Resilient mode, is an imp
 - Create Smaller Tests: Breaking down complex tests into smaller, focused ones improves test maintainability and reduces the likelihood of errors.
 - Use Auto-Login: Decouple login steps by utilizing auto-login features. This enables tests to start from a logged-in state consistently, reducing the reliance on login steps and improving test efficiency.
 
-By following these best practices and leveraging the resilience features of Relicx, you can create more robust and dependable test scripts that deliver accurate results.
+By following these best practices and leveraging the resilience features of Harness AIT, you can create more robust and dependable test scripts that deliver accurate results.

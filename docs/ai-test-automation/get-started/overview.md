@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::info 
-To enable Harness AI Test Automation in your account, contact your sales representative or reach out to the team at [ata-interest@harness.io](mailto:support@harness.io).
+To enable Harness AI Test Automation in your account, contact your sales representative or reach out to the team at [ait-interest@harness.io](mailto:support@harness.io).
 :::
 
 **Harness AI Test Automation** is your Generative AI-powered software quality platform. By leveraging the power of Generative AI and user behavioral analytics, Harness AI Test Automation can automate test authoring and maintenance, autonomously detect errors and visual regressions, and generate tests based on user sessions.

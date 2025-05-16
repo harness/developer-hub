@@ -79,5 +79,5 @@ export const MODULE_ICON = {
     [MODULES.armory]: 'img/icon_armory.svg',
     [MODULES.opensource]: 'img/icon_opensource.svg',
     [MODULES.fme]: 'img/icon_fme.svg',
-    [MODULES.ata]: 'img/aida-logo.svg',
+    [MODULES.ata]: 'img/logo-ata.svg',
 }

@@ -12,7 +12,6 @@ Harness AI Test Automation (referred as AIT) allows users to Validate their test
 If you have created a new test, it will be marked as a Draft after creation. You can select the Test and click on the **VALIDATE TEST** button in the Upper Right corner. This will run the test for the first time to help you validate any data and parametrization issues. Once the validation run is successful, the test can be activated.
 
 ![](./static/validate-test.png)
-:::
 
 Clicking on the VALIDATE TEST will bring up the test run modal, where you can specify
 
