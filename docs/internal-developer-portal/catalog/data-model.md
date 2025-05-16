@@ -1,6 +1,6 @@
 ---
 title: Data Model
-description: Organize the various software components, services, and tools
+description: Learn more about the entities, scopes and hierarchy in the IDP Data Model. 
 sidebar_position: 5
 sidebar_label: Data Model 
 redirect_from:
@@ -29,7 +29,7 @@ This data model focuses on the key aspects in the following manner:
 
 Let's dive deeper into how entities and scopes come together in the Harness-native data model.
 
-## Harness IDP Entities
+## Harness IDP Entities [IDP 2.0]
 
 There are different entities within our Harness IDP data model. However, software is modeled in the Harness IDP Catalog using three core entities:
 
@@ -67,7 +67,7 @@ A Workflow is divided into three key components: Frontend, Backend, and Outputs.
 
 For more details on how to use this entity, please refer to the [detailed docs](/docs/internal-developer-portal/flows/overview.md) here.
 
-## Harness Platform Entities
+## Harness Platform Entities [IDP 2.0]
 
 We also support Harness Platform Entities - Users and User Groups.
 
@@ -83,7 +83,7 @@ You can [add users manually](https://developer.harness.io/docs/platform/role-bas
 
 Harness includes some [built-in user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups), and you can [create user groups manually](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#create-user-groups-manually), through [inheritance](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#create-groups-by-inheritance), or via [automated provisioning](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#use-automated-provisioning). You can create user groups at all scopes.
 
-## Scopes & Hierarchy
+## Scopes & Hierarchy [IDP 2.0]
 
 IDP 2.0 follows a three-level hierarchical structure. The three levels, or scopes, are **Account**, **Organization**, and **Project**. Entities can be explicitly created at any scope.
 
@@ -106,7 +106,7 @@ The **Organization Scope** contains related projects, resources, and users withi
 The **Project Scope** includes resources for a specific team or project. It enables the creation and management of entities specific to a particular project, separate from the larger organization and account. Entities created at this scope are only available within that project and scoped to the teams that own them.
 <img width="431" alt="Image" src="https://github.com/user-attachments/assets/e1192086-0bc6-45c2-a869-133dd2aff600" />
 
-## Resources & Scopes
+## Resources & Scopes [IDP 2.0]
 
 All core entities can exist at different scopes, but their permissions and access levels depend on the RBAC settings you apply. With granular RBAC, you can define custom roles with specific permissions for Catalog and Workflows (Create, Edit, Read, Delete, Execute), and organize them into reusable resource groups. These permissions are fully aligned with the existing Harness RBAC framework.
 
@@ -121,7 +121,7 @@ With IDP 2.0, you can create resources at any scope: **Account**, **Org**, or **
 | **Plugins**    | ✅                 | ❌             | ❌                 | Plugins can be created and configured only at the Account scope.                                           |
 
 
-## Relations
+## Relations [IDP 2.0]
 
 The following is a non-exhaustive list of actively used relations.
 
@@ -192,7 +192,6 @@ spec:
 
 </TabItem>
 <TabItem value="IDP 1.0" label="IDP 1.0">
-## Introduction
 
 The Harness Internal Developer Portal's systems model is based on the [Backstage System Model](https://backstage.io/docs/features/software-catalog/system-model). It helps to manage and understand complex software ecosystems. This model is important for DevOps and microservices, where many connected parts can be hard to manage.
 
@@ -200,14 +199,14 @@ The System Model in Harness IDP helps us manage dependencies by organizing softw
 
 ![](static/intro-system.png)
 
-## Example Architecture
+## Example Architecture [IDP 1.0]
 
 Let's create a map of a city-like software ecosystem. The IDP's service catalog is like a central hub, organizing and sharing important information about the software assets. This ecosystem, with its interconnected neighborhoods (Domains), buildings (Systems), services (APIs), establishments (Components), and utilities (Resources), mirrors the complex yet structured world of software development and operations. 
 
 By using the Harness IDP System Model, we can effectively manage and maintain the dependencies within Harness IDP Catalog. It structures around five key concepts: Domains, Systems, APIs, Components, and Resources.
 
 
-## Harness IDP System Model
+## Harness IDP System Model [IDP 1.0]
 
 ### Components and Dependencies
 
@@ -343,7 +342,7 @@ type: cloud-service
 name: cloud-storage
 ```
 
-## Relations
+## Relations [IDP 1.0]
 
 This is a (non-exhaustive) list of relations that are known to be in active use.
 
@@ -428,7 +427,7 @@ spec:
 ...
 ```
 
-## Definitions and Reference
+## Definitions and Reference [IDP 1.0]
 
 ### 1. Domain
 #### Definition: 
@@ -469,8 +468,6 @@ Resources are the infrastructure elements required for a system's operation, inc
 To support the operational needs of systems, allowing for a clear visualization of resource usage and facilitating targeted tooling development.
 #### Example: 
 Cloud storage buckets and CDN services used by a video streaming system.
-
-## Conclusion 
 
 In everyday situations, utilizing a systems model such as Backstage's involves creating a central catalog or storage location. This catalog contains all information regarding systems, parts, and their connections. This dependency management in IDP Catalog System Model, enables developers to have service onboarding using seamless integrations.
 

@@ -1,6 +1,6 @@
 ---
 title: Harness IDP 2.0 Overview
-description: Comprehensive guide to Harness IDP 2.0 — explore the new Harness-native data model, platform RBAC, Git Experience, and improved UX for internal developer portals. Includes migration strategy, feature compatibility, and rollout details for upgrading from IDP 1.0.
+description: Comprehensive overview guide to Harness IDP 2.0. 
 sidebar_position: 1
 sidebar_label: IDP 2.0 Overview
 redirect_from: docs/internal-developer-portal/2-0-overview-and-upgrade-path
@@ -36,8 +36,6 @@ IDP 2.0 is an ongoing project under active iteration. Here is the most recent st
 - **Automatic Upgrade**: IDP 2.0 can be enabled via a feature flag. Your existing entities will be automatically upgraded to the new model.
 - **Default Upgrade Behavior**: Entities will initially live at the **Account scope**. You can later organize them into Org/Project scopes as needed.
 - **Breaking Changes**: The **Catalog APIs** and **entity YAML definitions** have changed. If you’ve built automations or integrations, please review the [breaking changes](#breaking-changes).
-
-📬 **IDP 2.0 will be available soon.** Contact your Harness team or email [idp-interest@harness.io](mailto:idp-interest@harness.io) to request early access.
 
 <DocVideo src="https://www.youtube.com/watch?v=9Rj-jJp3Ehc" />
 
