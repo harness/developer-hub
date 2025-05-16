@@ -48,19 +48,14 @@ export const codeData: Horizon = {
     feature: [
 
       {
-        tag: [{ value: "Secure" }],
+        tag: [{ value: "Developer Experience" }],
         title: "Support for Forked Repositories",
-        description: "Harness Code Repository will support repository forking, allowing developers to create isolated copies of repositories for experimentation, collaboration, or contributing back via pull requests—without impacting the main repository."
+        description: "Harness Code Repository will support repository forking, allowing developers to create isolated copies of repositories for experimentation, collaboration, or contributing back via pull requests — without impacting the main repository."
       },
       {
         tag: [{ value: "Developer Experience" }, { value: "Reliability" }],
         title: "Merge Queue for Pull Requests",
         description: "Harness Code will support a merge queue to boost development velocity by automatically managing pull request merges into busy branches, ensuring each change is validated and preventing broken or incompatible commits from reaching the target branch."
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Repo Insights",
-        description: "Summary insights including PR and commit metrics and security scanning results.",
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -81,6 +76,11 @@ export const codeData: Horizon = {
         tag: [{ value: "Harness AI" }],
         title: "Automated Code Review",
         description: "AI-powered code review suggestions to improve developer efficiency.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Repo Insights",
+        description: "Summary insights including PR and commit metrics and security scanning results.",
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -118,7 +118,7 @@ export const codeData: Horizon = {
     description: "What has been released",
     feature: [
       {
-        tag: [{ value: "Scalable" }],
+        tag: [{ value: "Scalable" }, { value: "Developer Experience" }],
         title: "Git LFS (Large File Storage) Support",
         description: "Harness Code Repository will support Git LFS, enabling efficient versioning and storage of large binary files such as media, datasets, and compiled assets within Git."
       },
