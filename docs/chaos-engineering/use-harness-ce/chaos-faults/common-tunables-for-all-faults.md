@@ -231,3 +231,37 @@ spec:
         - name: DEFAULT_HEALTH_CHECK
           value: 'false'
 ```
+
+### Status check timeout
+
+Status check timeout is a configuration parameter that defines the maximum duration the chaos experiment will wait for a resource (like an application under test or a node) to reach the desired state (e.g., Running, Ready) before proceeding.
+
+- If the resource doesn't attain the expected state within this timeframe, the experiment may be marked as failed.
+
+The following YAML snippet illustrates its usage:
+
+[embedmd]:# (./static/manifest/common/status-check-timeout.yaml yaml)
+```yaml
+# contains status check timeout for the experiment pod
+# it will set this timeout as upper bound while checking application status, node status in experiments
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: pod-delete-sa
+  experiments:
+  - name: pod-delete
+    spec:
+      components:
+        # status check timeout for the experiment pod
+        statusCheckTimeouts:
+          delay: 2
+          timeout: 300
+```
