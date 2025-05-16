@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2025-01-21T08:09:25
+date: 2025-05-16T08:09:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -27,7 +27,27 @@ Follow this template to sort your release notes into the correct headline:
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: February 13, 2025
+#### Last updated: May 16, 2025
+
+## March 2025
+
+### Relay Proxy
+
+#### Version 2.0.10.
+
+**Fixed Issues**:
+
+- Resolved an issue where the REDIS_DB environment variable was not passed to the Redis client, causing the default DB to be used regardless of configuration
+- Updated third-party dependencies to address security vulnerabilities identified by scanners.
+
+
+#### Version 2.0.9
+
+**New features and enhancements**:
+
+- Added support for rotating auth secrets without downtime or requiring SDK restarts.
+Previously, updating the AUTH_SECRET invalidated existing SDK tokens. Now, you can assign a new AUTH_SECRET and move the old one to LEGACY_SECRETS. The Proxy will accept tokens signed with both. Once all SDKs are using tokens signed with the new secret, you can remove the legacy value.
+
 
 ## February 2025
 
