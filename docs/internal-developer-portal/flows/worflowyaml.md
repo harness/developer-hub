@@ -309,6 +309,9 @@ Authentication using the user session token is **no longer required** in case yo
 
 ## Example YAML
 Here's an example of a single-page workflow:
+<Tabs>
+<TabItem value="IDP 1.0">
+
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
@@ -393,6 +396,89 @@ spec:
       - title: Pipeline Details
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
+</TabItem>
+<TabItem value="IDP 2.0">
+```YAML
+apiVersion: harness.io/v1
+kind: Workflow
+type: service
+identifier: reactapp
+name: Create a new service
+owner: d.p@harness.io
+spec:
+  output:
+    links:
+      - title: Pipeline Details
+        url: ${{ steps.trigger.output.PipelineUrl }}
+  parameters:
+    - title: Service Details
+      required:
+        - project_name
+        - template_type
+        - public_template_url
+        - repository_type
+        - repository_description
+        - repository_default_branch
+        - direct_push_branch
+        - slack_id
+      properties:
+        token:
+          title: Harness Token
+          type: string
+          ui:widget: password
+          ui:field: HarnessAuthToken
+        projectId:
+          title: Project Identifier
+          description: Harness Project Identifier
+          type: string
+          ui:field: HarnessProjectPicker
+        template_type:
+          title: Type of the Template
+          type: string
+          description: Type of the Template
+        public_template_url:
+          title: Give a Public template URL
+          type: string
+          description: Give a Public Cookiecutter Template
+        repository_type:
+          type: string
+          title: Repository Type
+          enum:
+            - public
+            - private
+          default: Public
+        repository_description:
+          type: string
+          title: Add a description to your repo
+          description: Auto-generated using Self-Service-Flow of Harness-IDP
+        owner:
+          title: Choose an Owner for the Service
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+  steps:
+    - id: trigger
+      name: Creating your react app
+      action: trigger:harness-custom-pipeline
+      input:
+        url: https://app.harness.io/ng/account/account_id/module/idp/orgs/org_id/projects/project_id/pipelines/pipeline_id/pipeline-studio/?storeType=INLINE
+        inputset:
+          project_name: ${{ parameters.project_name }}
+          template_type: ${{ parameters.template_type }}
+          public_template_url: ${{ parameters.public_template_url }}
+        apikey: ${{ parameters.token }}
+metadata:
+  description: A Workflow to create a new service
+  tags:
+    - nextjs
+    - react
+    - javascript
+```
+</TabItem>
+</Tabs>
+
  ## Workflows Playground
 :::caution
 The Workflows Playground **does not render accurate previews** for **advanced user inputs** and **complex use cases** such as conditional fields or complex input formats. It is recommended to use the editor only for **lightweight input previews**. For accurate validation of **advanced inputs**, test the Workflow Form Inputs in an **actual Workflow execution**. 

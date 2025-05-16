@@ -67,7 +67,7 @@ IDP 2.0 resources can be created at any scope—**Account**, **Organization**, o
 | **Catalog**    | View, Create/Edit, Delete          | ✅                 | ✅             | ✅                 | Core entities like **Component**, **API**, **Resource** can be managed at all scopes. |
 | **Workflows**  | View, Create/Edit, Delete, Execute | ✅                 | ✅             | ✅                 | Workflows can be created and executed at all scopes.                                  |
 | **Scorecards** | View, Create/Edit, Delete          | ✅                 | ❌             | ❌                 | Currently supported only at Account scope.                                            |
-| **Layouts**    | View, Create/Edit                  | ✅                 | ❌             | ❌                 | Currently supported only at Account scope.                                            |
+| **Layouts**    | View, Create/Edit                  | ✅                 | Partial             | Partial                 | Workflow Groups are supported at the Project and Org scopes. Other Layout functions are currently only supported at the Account scope.                                            |
 | **Plugins**    | View, Create/Edit, Toggle, Delete  | ✅                 | ❌             | ❌                 | Only supported at the Account scope.                                                  |
 
 ## Configure RBAC for Account-Level Catalog Entity Creation
