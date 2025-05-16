@@ -59,11 +59,6 @@ export const codeData: Horizon = {
       },
       {
         tag: [{ value: "Developer Experience" }],
-        title: "Issue Tracking",
-        description: "Plan and track all developer-related work across your projects in Harness Code.",
-      },
-      {
-        tag: [{ value: "Developer Experience" }],
         title: "Code Templates",
         description: "Create templates of repositories to quickly generate a collection of repositories in a project.",
       },
@@ -91,6 +86,11 @@ export const codeData: Horizon = {
         tag: [{ value: "Developer Experience" }],
         title: "Pipeline View",
         description: "Visualize all CI pipeline runs for a repository, branch, or pull request.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Issue Tracking",
+        description: "Plan and track all developer-related work across your projects in Harness Code.",
       },
       {
         tag: [{ value: "Developer Experience" }],
