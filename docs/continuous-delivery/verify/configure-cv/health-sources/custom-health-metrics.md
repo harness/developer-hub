@@ -66,7 +66,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 13. In **Deviation compared to Baseline**, select one of the options based on the selected risk type. Available options are:
 	* **Higher value is higher risk** - Select this option if a high value of the selected risk type is a risk.
 	* **Lower value is higher risk** - Select this option if lower value of the selected risk type is a risk.
-14``.  Click **Submit**.
+14.  Click **Submit**.
 
 ### Option: Custom Health Logs
 
