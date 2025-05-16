@@ -1,5 +1,5 @@
 ---
-title: Enable documentation for your Component
+title: Enable Documentation for your Component
 description: Learn how you can enable the TechDocs plugin to show your Markdown docs on the Docs tab of the catalog page.
 sidebar_position: 6
 sidebar_label: Enable Documentation for your Component
@@ -7,7 +7,7 @@ sidebar_label: Enable Documentation for your Component
 
 ## Introduction
 
-Now that you have [added your software components](/docs/internal-developer-portal/get-started/register-a-new-software-component) to the catalog, [enabled plugins](/docs/internal-developer-portal/get-started/enable-a-new-plugin) and [created a scorecard](/docs/internal-developer-portal/get-started/scorecard-quickstart) it's time to include documentation. By default, the **Docs** tab in the catalog does not display documentation for new components. This tutorial will show you how to quickly publish Markdown documentation to the **Docs** tab.
+Now that you have [added your software components](/docs/internal-developer-portal/get-started/catalog-2o.md) to the catalog, [enabled plugins](/docs/internal-developer-portal/get-started/enable-a-new-plugin) and [created a scorecard](/docs/internal-developer-portal/get-started/scorecard-quickstart) it's time to include documentation. By default, the **Docs** tab in the catalog does not display documentation for new components. This tutorial will show you how to quickly publish Markdown documentation to the **Docs** tab.
 
 ![](static/docs-empty.png)
 
