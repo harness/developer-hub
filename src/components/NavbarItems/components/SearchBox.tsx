@@ -67,7 +67,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
           setHighlightedIndex(null);
         } else {
           controller.submit();
-          props.onSearch(inputValue);
+          props.onSearch(inputValue.trim());
           setInputValue(state.value);
         }
         break;
@@ -92,15 +92,15 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
           value={inputValue}
           onChange={(e) => {
             setInputValue(e.target.value);
-            console.log('search', e.target.value);
-            if (e.target.value.trim() !== '') {
-              controller.updateText(e.target.value);
-              setIsUrlParamsLoaded(false);
-              setHighlightedIndex(null);
-              setShowSuggestions(true);
-            }
+            controller.updateText(e.target.value);
+            setIsUrlParamsLoaded(false);
+            setHighlightedIndex(null);
+            setShowSuggestions(true);
           }}
-          onKeyDown={handleKeyDown}
+          onKeyDown={(e) => {
+            if (inputValue.trim() == '') return;
+            handleKeyDown(e);
+          }}
           type="text"
         />
         <i className="fa-solid fa-magnifying-glass"></i>

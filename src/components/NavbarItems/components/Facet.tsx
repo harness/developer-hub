@@ -120,7 +120,6 @@ const Facet: React.FC<FacetProps> = (props) => {
   };
 
   function handleFacetSelect(value, facetId) {
-    // console.log(value, facetId);
     const newFacet = {
       facetId: facetId,
       value: value.value,
