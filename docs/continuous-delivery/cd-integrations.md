@@ -22,6 +22,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 | Flag | Description |
 | --- | --- |
+| `CDS_K8S_EKS_REFRESH_EXEC_AUTH_TOKEN` | Enables users to automatically refresh expired A**WS EKS authentication tokens** (ExecCredential) during long-running API calls, preventing failures from the default 15-minute TTL. **This feature is in Limited GA.**|
 | `CDS_SPOT_TRAFFIC_SHIFT` | Enables users to perform weighted traffic shifting for Spot Elastigroup deployments via the new **Elastigroup Blue Green Traffic Shift step**, supporting gradual rollout strategies for services with low task counts. **This feature is in Limited GA.**|
 | `PIPE_STAGE_NOTIFICATION_ENV_SVC` | Enables users to include the service name and environment in the subject line of EMAIL notifications, making them searchable and context-rich. **This feature is in Limited GA.** |
 | `CDS_TEXTAREA_FOR_OVERRIDE_VARIABLES` | Harness now supports viewing full variable values in the Override tab. Users can see and edit entire override values without truncation. **This feature is in Limited GA.** |
