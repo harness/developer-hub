@@ -28,7 +28,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 | **prod4**         | ✅ Completed                    | March - v0.41.0              | 
 | **prodeu1**   | ✅ Completed                        | March - v0.41.0     |                                                                                      
 
-## 🚀 May - Releasing Harness IDP 2.0
+## 🚀 May - Releasing Harness IDP 2.0 BETA
 <!-- May 15, 2025-->
 
 ### IDP: Reimagined for Enterprise-Scale Adoption 

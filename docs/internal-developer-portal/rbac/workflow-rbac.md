@@ -1,6 +1,6 @@
 ---
 title: Workflows RBAC 
-description: Learn how to create roles with required permissions and assign them to users and user groups.
+description: Learn how to configure Workflows RBAC. 
 sidebar_position: 3
 ---
 :::info For IDP 1.0 Customers
@@ -48,6 +48,10 @@ To learn more, see [Manage Roles](https://developer.harness.io/docs/platform/rol
 ![](./static/workflows-permissions.png)
 
 ## Workflow RBAC Example
+
+You can access **Administrative Settings** from your Harness UI directly using the sidenavbar. 
+
+<DocVideo src="https://app.tango.us/app/embed/1dcbc9e9-70f4-49e7-bbec-6a2c94c97ae7" title="Create the IDP Catalog Create Role" />
 
 ### Configure RBAC for Project-Level Workflow Execution
 

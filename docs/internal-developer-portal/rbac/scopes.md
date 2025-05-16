@@ -1,6 +1,6 @@
 ---
 title: Scopes, Roles & Permission 
-description: Learn how to create roles with required permissions and assign them to users and user groups.
+description: Learn more about the scopes, roles and permissions hierarchy in IDP. 
 sidebar_position: 1
 redirect_from: /docs/internal-developer-portal/rbac/resources-roles.md
 ---
@@ -22,7 +22,7 @@ To learn more about the entities, permissions, and different scopes we've introd
 
 ![](./static/data-model.png)
 
-## Scopes
+## Scopes (IDP 2.0)
 
 IDP 2.0 follows a three-level hierarchical structure. The three levels, or scopes, are **Account**, **Organization**, and **Project**. IDP resources can be explicitly created at any of these scopes. Learn more about the [Harness platform hierarchy](https://developer.harness.io/docs/platform/get-started/key-concepts/#account).
 
@@ -46,7 +46,7 @@ The **Project Scope** includes resources for a specific team or initiative. It e
 
 <img width="431" alt="Image" src="https://github.com/user-attachments/assets/e1192086-0bc6-45c2-a869-133dd2aff600" />
 
-## Permissions & Resources
+## Permissions & Resources (IDP 2.0)
 
 All IDP resources can exist at different scopes, but their permissions and access levels depend on the RBAC settings you apply. With granular RBAC, you can use predefined roles or define custom roles with specific permissions and organize them into reusable resource groups. These permissions are fully aligned with the existing Harness RBAC framework.
 
@@ -63,7 +63,7 @@ With IDP 2.0, you can create resources at any scope: **Account**, **Org**, or **
 You can configure RBAC for each resource with different permissions and create reusable resource groups to apply those permissions. Learn more about [Platform RBAC](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/).
 
 
-## RBAC Components
+## RBAC Components (IDP 2.0)
 
 IDP 2.0 utilizes Platform Hierarchy and RBAC to provide fine-grained control over IDP resources. There are three [key components](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-components) for Harness RBAC:
 
@@ -141,7 +141,7 @@ Harness IDP provides a predefined role called **IDP Admin**, which grants full p
 <img width="800" alt="Image" src="https://github.com/user-attachments/assets/e7d9c33f-013e-417e-8a23-353c6fa8b0ab" />
 
 
-## RBAC Workflow in Harness IDP
+## RBAC Workflow in Harness IDP (IDP 2.0)
 
 To configure RBAC in Harness IDP, follow these steps:
 
@@ -157,7 +157,7 @@ To configure RBAC in Harness IDP, follow these steps:
 <TabItem value="IDP 1.0" label="IDP 1.0">
 Role-based access control ([RBAC](https://www.harness.io/blog/rbac)) lets you control who can access your resources and what actions they can perform on the resources. 
 
-## Access Control for Software Catalog
+## Access Control for Software Catalog (IDP 1.0)
 
 ### Edit Access
 
@@ -197,7 +197,7 @@ spec:
   owner: team-a
 ```
 
-## Access Control for Self Service Workflows
+## Access Control for Self Service Workflows (IDP 1.0)
 
 ### View Access
 
@@ -215,7 +215,7 @@ Workflows being a catalog entity has a corresponding `workflow.yaml` or `templat
 
 You can hide the workflows, suggested using while the workflow is in development phase, by using the same tags used to [hide catalog entities](/docs/internal-developer-portal/rbac/scopes.md#hide-catalog-entities). 
 
-## Managing Pipelines RBAC for Workflows
+## Managing Pipelines RBAC for Workflows (IDP 1.0)
 
 While creating a Workflow for new service or developer onboarding, that use Harness Pipeline as an orchestrator, you often want everyone added to your account to have the ability to execute the Workflow i.e., run the Harness Pipeline. You also don't want to add every single user individually, especially if you have thousands of users. Using the "Assign Role Bindings" option under **Project Settings → Access Control → User Group** page, you can assign the **[Pipeline Executor role](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/#roles-and-resource-groups-work-together)** to everyone by using default user groups such as All Account Users or All Organization Users, without granting elevated permissions like Pipeline Edit or Pipeline Delete.
 
@@ -226,7 +226,7 @@ Here's a video tutorial on the Pipelines RBAC.
 <DocVideo src="https://www.youtube.com/embed/ySVEGtQ2uWU?si=fRL2SeYEP4W4ftqt" />
 
 
-## Platform Level RBAC 
+## Platform Level RBAC (IDP 1.0)
 
 To do this Harness provides a logical structure comprising of **Account**, **Organization** and **Project** that naturally aligns with how most organizations are structured and **Harness IDP is an Account Level module**.
 
@@ -251,7 +251,7 @@ When a **User** or a **User Group** is associated with a **Role** and a **Resour
 
 ![](./static/resource-group.png)
 
-## Roles
+## Roles (IDP 1.0)
 
 Roles are sets of [permissions](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference) that allow or deny specific operations on objects (resources). Roles are applied together with resource groups to create a complete set of permissions and access.
 

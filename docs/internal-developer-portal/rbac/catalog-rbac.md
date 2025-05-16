@@ -1,6 +1,6 @@
 ---
 title: Catalog RBAC
-description: Learn how to create roles with required permissions and assign them to users and user groups.
+description: Learn how to configure Catalog RBAC. 
 sidebar_position: 2
 ---
 import Tabs from '@theme/Tabs';
@@ -56,14 +56,18 @@ This example shows how to configure RBAC to allow full control over Catalog enti
 In this example, we use:
 
 * A custom role: **IDP Catalog Create**
-* A custom resource group: **All Catalog Create Resources**
-* A custom user group: **Catalog Create Users**
+* *(Optional)* A custom resource group: **All Catalog Create Resources**
+* *(Optional)* A custom user group: **Catalog Create Users**
 
 The **All Catalog Create Resources** group exists at the **Account scope** and provides **Create/Edit** access to all Catalog entities across the account, including all organizations and projects. The **IDP Catalog Create** role includes the **Create/Edit** permission for Catalog resources.
 
+You can access **Administrative Settings** from your Harness UI directly using the sidenavbar. 
+
+<DocVideo src="https://app.tango.us/app/embed/1dcbc9e9-70f4-49e7-bbec-6a2c94c97ae7" title="Create the IDP Catalog Create Role" />
+
 ---
 
-#### Step 1: Create the IDP Catalog Create Role
+#### Step 1: Create the IDP Catalog Creator Role
 <Tabs>
 <TabItem value="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/d3160dfc-3011-462f-a877-da804d730609" title="Create the IDP Catalog Create Role" />
@@ -83,7 +87,7 @@ The **All Catalog Create Resources** group exists at the **Account scope** and p
 
 ---
 
-#### Step 2: Create a custom Resource Group
+#### *(Optional)* Step 2: Create a custom Resource Group
 <Tabs>
 <TabItem value="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/e6962da9-989b-4885-b697-63c265b74d1d" title="Create the IDP Catalog Create Role" />
@@ -105,7 +109,7 @@ The **All Catalog Create Resources** group exists at the **Account scope** and p
 
 ---
 
-#### Step 3: Create the "Catalog Create Users" User Group
+#### *(Optional)* Step 3: Create the "Catalog Create Users" User Group
 
 <Tabs>
 <TabItem value="Interactive guide">

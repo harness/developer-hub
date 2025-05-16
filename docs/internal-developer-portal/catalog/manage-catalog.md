@@ -1,6 +1,6 @@
 ---
 title: Manage Catalog
-description: Create a Software Component and register it in Software Catalog
+description: Learn more about creating and managing your Catalog entities. 
 sidebar_position: 2
 redirect_from: /docs/internal-developer-portal/catalog/register-software-component.md
 ---
@@ -26,7 +26,7 @@ Harness IDP 2.0 represents a major evolution of the Internal Developer Portal, b
 
 - **Revamped Catalog UI:** A fresh user experience featuring an updated Catalog table with filters, enhanced navigation, and a built-in entity creation interface.
 
-## Creating Entities
+## Creating Entities [IDP 2.0]
 With IDP 2.0, we are moving towards a Harness-native Data Model designed for enterprise scale and access control. There are different entities within the Harness-native Data Model. To learn more about the Harness IDP entities, go to [Data Model](/docs/internal-developer-portal/catalog/data-model.md#harness-idp-entities) 
 
 There are two ways to add and create a new entity in your catalog:
@@ -82,7 +82,7 @@ Note: **YAML validation** is automatically performed to ensure compatibility wit
 4. If needed, **configure a plugin** by referring to the plugin’s documentation and adding the appropriate **annotations** in the Catalog YAML.
 5. Once all details are complete, click **“Create Component”** to finalize and register your entity in the catalog.
 
-## Editing Entities
+## Editing Entities [IDP 2.0]
 You can now modify your entities directly from the **Harness IDP UI**, removing the dependency on manually editing the Catalog YAML file in your Git repository. This streamlines the update process and makes entity management much easier.
 
 To edit an entity:
@@ -100,7 +100,7 @@ This opens the **Entity Inspector**, where you can review both the Raw YAML and 
 ![](./static/entity-inspector.png)
 
 
-## Deleting Entities 
+## Deleting Entities [IDP 2.0]
 You can also **delete** any existing entity from the Software Catalog.
 
 Here’s how to do it:
@@ -110,12 +110,12 @@ Here’s how to do it:
 
 ![](./static/delete-entity.png)
 
-## Sharing Entities
+## Sharing Entities [IDP 2.0]
 You can also copy the **entity URL** from the same dropdown menu and share it with others—provided they have the necessary access permissions.
 
 ![](./static/copy-url.png)
 
-## Using Scopes & Filters
+## Using Scopes & Filters [IDP 2.0]
 With the revamped **Catalog UI**, you can now use various scopes and filters to efficiently track all your applications, services, and other entities. It offers intuitive filtering and a streamlined way to access and manage everything within your Catalog. This update also introduces visibility into scorecard data and scope-level details—right within the Catalog—so you get deeper insights without navigating away.
 
 ![](./static/catalog-ui.png)
@@ -126,7 +126,7 @@ With the revamped **Catalog UI**, you can now use various scopes and filters to 
 
 <DocVideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
 
-## Create an IDP YAML
+## Create an IDP YAML [IDP 1.0]
 
 The **IDP YAML** is a crucial descriptor file that provides metadata about the software components you register within our IDP. It serves as a blueprint, detailing essential information about each component, such as its name, description, owner, and other related metadata. This file ensures that our portal accurately represents and organizes the software components, making it easier for teams to discover and understand the tools and services available.
 
@@ -140,7 +140,7 @@ Although it's possible to name catalog entity descriptor files however you wish,
 
 Follow the instructions [here](/docs/internal-developer-portal/catalog/catalog-yaml.md) to understand more on how to write a `catalog-info.yaml`
 
-### Save the file:
+### Save the File
 
 Save the file with the recommended name `idp.yaml or catalog-info.yaml` and upload it on your file in your Git repository. If it is a mono-repo, navigate to its directory and create a `idp.yaml` at the root of the directory. The file can technically live anywhere (for example, `.harness/idp.yaml`).
 
@@ -167,7 +167,7 @@ spec:
   system: project-x
 ```
 
-## Register with Harness IDP:
+## Register with Harness IDP [IDP 1.0]
 
 To register this component with Harness IDP, you'll need to submit this YAML file to the appropriate **API** endpoint or Register the existing component using **UI**.
 
@@ -213,7 +213,7 @@ The new component is available in your catalog.
 
 ![](./static/imported-entity.png)
 
-## Further Reading
+## Further Reading [IDP 1.0]
 
 For those looking to expand their knowledge and explore more advanced methods of registering software components on Harness IDP, consider the following:
 

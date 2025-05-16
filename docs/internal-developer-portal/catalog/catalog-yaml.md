@@ -1,6 +1,6 @@
 ---
 title: Understand Catalog YAML 
-description: Create a Software Component and register it in Software Catalog
+description: Understand the basics of Catalog YAML.
 sidebar_position: 3
 redirect_from: 
   - /docs/internal-developer-portal/catalog/yaml-file.md
@@ -54,7 +54,7 @@ These fields define the entity's scope. For project-scoped entities, both fields
 - `metadata` continues to be flexible. You can define your own properties within metadata.
 - `annotations`, `description`, `tags`, `links`, `labels` etc. continue to be part of metadata.
 
-## Converting Existing Entity YAMLs
+## Converting Existing Entity YAMLs [IDP 2.0]
 
 If you have entities defined using legacy Backstage YAML (from IDP 1.0), you can easily convert them to the new Harness-native data model schema. There are two ways to perform this conversion:
 
@@ -70,7 +70,7 @@ All existing Catalog entities will be **automatically migrated** to IDP 2.0, and
 ![YAML Conversion Preview](./static/yaml-conversion.png)
 
 
-## Common to All Kinds: The Envelope
+## Common to All Kinds: The Envelope [IDP 2.0]
 
 The root object of your **Catalog YAML** file follows a standard structure. Below are the core properties that can be included in your Catalog YAML, as defined in **IDP 2.0**:
 
@@ -210,7 +210,7 @@ Please refer to this guide to learn more about [``metadata``](https://backstage.
 
 Defines the actual specification data that describes the entity. This is the core configuration and varies depending on the `kind`. See individual entity kind sections for specific structure guidelines.
 
-## Entity Kinds
+## Entity Kinds [IDP 2.0]
 
 ### Kind: Component  
 A **Component** describes a software component. It is typically closely tied to the source code that constitutes the component and is what a developer would typically consider a “unit of software,” usually with a distinct deployable or linkable artifact.
@@ -444,11 +444,10 @@ However, with Harness IDP 2.0 managing all entities internally, this entity type
 
 </TabItem>
 <TabItem value="IDP 1.0" label="IDP 1.0">
-## Introduction
 
 In this documentation we describe the YAML format and semantics of catalog entities. Although it's possible to name catalog entity descriptor files however you wish, we recommend that you name them `catalog-info.yaml`. More detailed instructions regarding this can be found in the [Descriptor Format of Catalog Entities](https://backstage.io/docs/features/software-catalog/descriptor-format)
 
-## Support for Harness Account Variables
+## Support for Harness Account Variables [IDP 1.0]
 
 In the context of Harness IDP you can use all the **[custom account variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#define-variables)** and **[account scoped built-in variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-expressions-reference)** in IDP YAML.
 
@@ -463,8 +462,8 @@ spec:
   type: <+account.identifier>
   lifecycle: <+variable.account.orgIdentifier> <+variable.account.projectIdentifier>
 ```
-
-## Kind: Component
+## Entity Kinds [IDP 1.0]
+### Kind: Component
 
 The template given below is an example used for self-service onboarding using the [Harness Custom Field extensions](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#harness-specific-custom-actions)
 
@@ -493,7 +492,7 @@ spec:
   system: public-websites
 ```
 
-## Kind: Template
+### Kind: Template
 
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
@@ -606,11 +605,11 @@ spec:
 
 ```
 
-## Kind: API
+### Kind: API
 
 We have detailed descriptions here on the [how to add API docs](https://developer.harness.io/docs/internal-developer-portal/get-started/add-api-docs#example-for-different-use-cases).
 
-## Kind: Group
+### Kind: Group
 
 A group describes an organizational entity, such as for example a team, a business unit, or a loose collection of people in an interest group. Members of these groups are modeled in the catalog as kind `User`. In Harness IDP, this entity could also be referenced as **[Harness User Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/)**
 
@@ -633,7 +632,7 @@ spec:
   members: [jdoe]
   ```
 
-## Kind: User
+### Kind: User
 
 A user describes a person, such as an employee, a contractor, or similar. Users belong to User Group entities in the catalog or the [Harness User Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/).
 
@@ -650,7 +649,7 @@ spec:
   memberOf: [team-b, employees]
 ```
 
-## Kind: Resource
+### Kind: Resource
 
 A resource describes the infrastructure a system needs to operate, like BigTable databases, Pub/Sub topics, S3 buckets or CDNs. Modelling them together with components and systems allows visualizing resource footprint, and create tooling around them.
 
@@ -668,7 +667,7 @@ spec:
   system: artist-engagement-portal
 ```
 
-## Kind: System
+### Kind: System
 
 
 A system is a collection of resources and components. The system may expose or consume one or several APIs. It is viewed as abstraction level that provides potential consumers insights into exposed features without needing a too detailed view into the details of all components. This also gives the owning team the possibility to decide about published artifacts and APIs.
@@ -686,7 +685,7 @@ spec:
   domain: artists
 ```
 
-## Kind: Domain
+### Kind: Domain
 
 A Domain groups a collection of systems that share terminology, domain models, business purpose, or documentation, i.e. form a bounded context.
 
@@ -702,7 +701,7 @@ spec:
   owner: artist-relations-team
 ```
 
-## Kind: Location
+### Kind: Location
 
 A location is a marker that references other places to look for catalog data.
 
@@ -720,7 +719,7 @@ spec:
     - http://github.com/myorg/myproject/org-data-dump/catalog-info-consultants.yaml
 ```
 
-## Create an IDP YAML or `catalog-info.yaml`
+## Create an IDP YAML or `catalog-info.yaml` [IDP 1.0]
 
 The **IDP YAML or catalog-info.yaml** is a crucial descriptor file that provides metadata about the software components you register within our IDP. It serves as a blueprint, detailing essential information about each component, such as its name, description, owner, and other related metadata. This file ensures that our portal accurately represents and organizes the software components, making it easier for teams to discover and understand the tools and services available.
 

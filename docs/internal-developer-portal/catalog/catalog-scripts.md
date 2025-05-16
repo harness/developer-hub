@@ -1,9 +1,13 @@
 ---
 title: Service Onboarding using Scripts on Catalog
 description: Detailed documentation of the Service Onboarding Scripts 
-sidebar_label: Service Onboarding Scripts [1.0]
+sidebar_label: Service Onboarding Scripts
 sidebar_position: 11
 ---
+
+:::info
+These scripts are **only valid for IDP 1.0**. Updated scripts for IDP 2.0 will be available soon. 
+:::
 
 ## Scripts to create new services, register new services 
 
