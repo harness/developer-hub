@@ -415,7 +415,7 @@ By default, AWS EKS issues an authentication token with a 15-minute time-to-live
 Harness provides an opt-in fix via the feature flag `CDS_K8S_EKS_REFRESH_EXEC_AUTH_TOKEN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 
 - **What it does**  
-  Checks the token’s expiration timestamp in the `ExecCredential` response and automatically requests a new token when the old one expires.
+  Checks the token’s expiration timestamp in the `ExecCredential` response and automatically refreshes the token.
 - **Why it matters**  
   Prevents unexpected failures on long-running Kubernetes executions against EKS clusters.
 
