@@ -1,9 +1,8 @@
 ---
-title: Harness MCP Server
+title: Harness MCP Server (Coming Soon)
 description: A unified interface for AI agents to interact with Harness tools and services using the Model Context Protocol (MCP).
 sidebar_position: 54
 ---
-# Harness MCP Server
 
 The Harness Model Context Protocol (MCP) Server enables integration with Harness tools, providing endpoints for pipelines, pull requests, and more. This guide outlines the installation, configuration, and usage of the MCP server.
 
@@ -173,23 +172,16 @@ export HARNESS_API_KEY=<your_api_key>
 | `HARNESS_READ_ONLY`  | Read-only mode   |
 | `HARNESS_BASE_URL`   | Base URL         |
 
-## MCP Server Endpoints Overview
+## MCP Server Tool Sets Overview
 
-### Pipelines Toolset
+[MCP Tools](https://modelcontextprotocol.io/docs/concepts/tools#overview) allow servers to expose executable functions that can be invoked by clients and used by LLMs to perform actions. At Harness, we have split our tools into the following tool sets:
 
-| Tool             | Description           |
-| ---------------- | --------------------- |
-| `get_pipeline`   | Get pipeline details  |
-| `list_pipelines` | List all pipelines    |
-| `get_execution`  | Get execution details |
+  - Pipelines Tool Set
+  - Pull Requests Tool Set
+  - Repositories Tool Set
+  - Logs Tool Set
 
-### Pull Requests Toolset
-
-| Tool                  | Description    |
-| --------------------- | -------------- |
-| `get_pull_request`    | Get PR details |
-| `list_pull_requests`  | List all PRs   |
-| `create_pull_request` | Create a PR    |
+This list will be continuously changing and growing. For a full list of tools visit the MCP repo at [MCP Server](https://github.com/harness/mcp-server?tab=readme-ov-file#tools).
 
 ## Use Case Demo
 
