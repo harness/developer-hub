@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 :::info
-This feature is **only available in IDP 1.0**. We've deprecated this in IDP 2.0. 
+This feature is **only available in IDP 1.0**. Custom user groups will be available soon in IDP 2.0. 
 :::
 
 The Catalog in Harness IDP also supports addition of [organizational entities](https://backstage.io/docs/features/software-catalog/system-model#organizational-entities) like **user groups** directly, independent of their presence on the Harness Platform. These entities can be registered as `kind: Group` in the catalog as an YAML. Note that our recommendation is to use the [Harness Platform Access Control](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/) for ingesting Users and User Groups into Harness IDP.
