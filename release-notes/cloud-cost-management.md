@@ -21,10 +21,10 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 ## May 2025 - Version 1.50.2
 
-### [New Feature] LabelV2
-**[CCM-22075]**
+### [New Feature] Label V2
+**[CCM-22075]** | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#important-migration-from-label-to-labelv2)
 
-We're rolling out **LabelsV2**, a major enhancement to how labels (tags) are handled and displayed across the platform, delivering **better visibility**, **performance**, and **alignment with cloud-native formats**.
+We're rolling out **Label V2**, a major enhancement to how labels (tags) are handled and displayed across the platform, delivering **better visibility**, **performance**, and **alignment with cloud-native formats**.
 
 #### Key Benefits
 
@@ -69,6 +69,7 @@ Users will need to manually **update their Perspectives, Cost Categories, and Da
 ### Feature Improvements
 
 - Asset Governance Alert Fix: We've improved the alert update experience to ensure that only relevant resources and cloud accounts are displayed based on the selected cloud provider. This enhancement ensures a more accurate and streamlined configuration flow for Governance alerts. [CCM-22618]
+
 
 ## April 2025 - Version 1.48.1
 
