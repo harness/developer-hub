@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::info For IDP 1.0 Customers
-This RBAC guide is applicable **only to IDP 2.0 customers**, as the RBAC Harness platform hierarchy is available exclusively in IDP 2.0.
+This RBAC guide is applicable **only to IDP 2.0 customers**, as the RBAC and project/org hierarchy is available exclusively in IDP 2.0.
 * To learn how to upgrade, refer to the [IDP 2.0 Upgrade Guide](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o.md).
 * If you're using **IDP 1.0** and want to implement access control, please refer to the [Access Control Guide for IDP 1.0](#permissions--resource-scopes).
 :::
@@ -82,7 +82,7 @@ In this example, we use:
 
 The **All Catalog Create Resources** group exists at the **Account scope** and provides **Create/Edit** access to all Catalog entities across the account, including all organizations and projects. The **IDP Catalog Create** role includes the **Create/Edit** permission for Catalog resources.
 
-You can access **Administrative Settings** from your Harness UI directly using the sidenavbar. 
+You can access **Administrative Settings** from your Harness UI directly using the sidenavbar.
 
 <DocVideo src="https://app.tango.us/app/embed/1dcbc9e9-70f4-49e7-bbec-6a2c94c97ae7" title="Access Admin Settings" />
 ---

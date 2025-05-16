@@ -52,7 +52,7 @@ Harness IDP 2.0 introduces core improvements across **architecture, security, sc
 
 #### 🔐 **Platform Hierarchy & Granular RBAC**
 
-**[Learn more](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#platform-hierarchy--granular-rbac) | [Docs](/docs/internal-developer-portal/rbac/scopes.md)**
+**[Learn more](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#platform-hierarchy--granular-rbac) | [Docs](/docs/internal-developer-portal/rbac/scopes)**
 
 ---
 
