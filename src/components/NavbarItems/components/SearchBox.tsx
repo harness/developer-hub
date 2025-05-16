@@ -16,7 +16,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
   const [showSuggestions, setShowSuggestions] = useState(true);
   useEffect(() => {
-    controller.subscribe(() => setState(controller.state));
+    const unsubscribe = controller.subscribe(() => setState(controller.state));
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
     const query = params.get('q');
@@ -26,6 +26,7 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
       props.onSearch(query);
       setIsUrlParamsLoaded(true);
     }
+    return unsubscribe;
   }, []);
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -59,44 +60,39 @@ const SearchBox: React.FC<SearchBoxProps> = (props) => {
         );
         break;
       case 'Enter':
-        if (highlightedIndex !== null && state.suggestions[highlightedIndex]) {
-          event.preventDefault();
+        const selected = highlightedIndex !== null ? state.suggestions[highlightedIndex] : null;
+        event.preventDefault();
+        if (selected) {
           controller.selectSuggestion(state.suggestions[highlightedIndex].rawValue);
-          setShowSuggestions(false);
           props.onSearch(state.suggestions[highlightedIndex].rawValue);
-          setHighlightedIndex(null);
+          setInputValue(state.suggestions[highlightedIndex].rawValue);
         } else {
           controller.submit();
-          props.onSearch(inputValue.trim());
+          props.onSearch(inputValue);
           setInputValue(state.value);
         }
+        setShowSuggestions(false);
+        setHighlightedIndex(null);
         break;
-      case ' ':
-        if (highlightedIndex !== null && state.suggestions[highlightedIndex]) {
-          event.preventDefault();
-          controller.selectSuggestion(state.suggestions[highlightedIndex].rawValue);
-          props.onSearch(state.suggestions[highlightedIndex].rawValue);
-          setHighlightedIndex(null);
-        }
-        break;
+
       default:
         break;
     }
   };
-
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+    controller.updateText(e.target.value);
+    setIsUrlParamsLoaded(false);
+    setHighlightedIndex(null);
+    setShowSuggestions(true);
+  };
   return (
     <div className={styles.searchBoxMain} id="coveo-search-main">
       <div className={styles.searchBox}>
         <input
           placeholder="search ..."
           value={inputValue}
-          onChange={(e) => {
-            setInputValue(e.target.value);
-            controller.updateText(e.target.value);
-            setIsUrlParamsLoaded(false);
-            setHighlightedIndex(null);
-            setShowSuggestions(true);
-          }}
+          onChange={handleInputChange}
           onKeyDown={(e) => {
             if (inputValue.trim() == '') return;
             handleKeyDown(e);
