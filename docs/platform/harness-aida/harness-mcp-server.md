@@ -61,10 +61,9 @@ Why not just use function calls for each API?
       "command": "/path/to/harness-mcp-server",
       "args": ["stdio"],
       "env": {
-        "HARNESS_API_KEY": "***",
-        "HARNESS_ACCOUNT_ID": "l7B_kbSEQD2wjrM7PShm5w",
-        "HARNESS_ORG_ID": "PROD",
-        "HARNESS_PROJECT_ID": "Harness_Commons",
+        "HARNESS_API_KEY": "your_api_key",
+        "HARNESS_DEFAULT_ORG_ID": "your_org_id",
+        "HARNESS_DEFAULT_PROJECT_ID": "your_project_id",
         "HARNESS_BASE_URL": "<if-needed>"
       }
     }
@@ -83,10 +82,9 @@ Why not just use function calls for each API?
       "command": "/path/to/harness-mcp-server",
       "args": ["stdio"],
       "env": {
-        "HARNESS_API_KEY": "***",
-        "HARNESS_ACCOUNT_ID": "l7B_kbSEQD2wjrM7PShm5w",
-        "HARNESS_ORG_ID": "PROD",
-        "HARNESS_PROJECT_ID": "Harness_Commons",
+        "HARNESS_API_KEY": "your_api_key",
+        "HARNESS_DEFAULT_ORG_ID": "your_org_id",
+        "HARNESS_DEFAULT_PROJECT_ID": "your_project_id",
         "HARNESS_BASE_URL": "<if-needed>"
       }
     }
@@ -105,10 +103,9 @@ Why not just use function calls for each API?
       "command": "/path/to/harness-mcp-server",
       "args": ["stdio"],
       "env": {
-        "HARNESS_API_KEY": "***",
-        "HARNESS_ACCOUNT_ID": "l7B_kbSEQD2wjrM7PShm5w",
-        "HARNESS_ORG_ID": "PROD",
-        "HARNESS_PROJECT_ID": "Harness_Commons",
+        "HARNESS_API_KEY": "your_api_key",
+        "HARNESS_DEFAULT_ORG_ID": "your_org_id",
+        "HARNESS_DEFAULT_PROJECT_ID": "your_project_id",
         "HARNESS_BASE_URL": "<if-needed>"
       }
     }
@@ -122,9 +119,8 @@ Why not just use function calls for each API?
 
 ```bash
 HARNESS_API_KEY=your_api_key \
-HARNESS_ACCOUNT_ID=your_account_id \
-HARNESS_ORG_ID=your_org_id \
-HARNESS_PROJECT_ID=your_project_id \
+HARNESS_DEFAULT_ORG_ID=your_org_id \
+HARNESS_DEFAULT_PROJECT_ID=your_project_id \
 ./cmd/harness-mcp-server/harness-mcp-server stdio
 ```
 
@@ -147,7 +143,6 @@ go build -o cmd/harness-mcp-server/harness-mcp-server ./cmd/harness-mcp-server
 
 ```bash
 HARNESS_API_KEY=your_api_key \
-HARNESS_ACCOUNT_ID=your_account_id \
 ./cmd/harness-mcp-server/harness-mcp-server stdio
 ```
 
@@ -174,9 +169,8 @@ export HARNESS_API_KEY=<your_api_key>
 | Variable             | Description      |
 | -------------------- | ---------------- |
 | `HARNESS_API_KEY`    | API key          |
-| `HARNESS_ACCOUNT_ID` | Account ID       |
-| `HARNESS_ORG_ID`     | Org ID           |
-| `HARNESS_PROJECT_ID` | Project ID       |
+| `HARNESS_DEFAULT_ORG_ID`     | Org ID           |
+| `HARNESS_DEFAULT_PROJECT_ID` | Project ID       |
 | `HARNESS_TOOLSETS`   | Enabled toolsets |
 | `HARNESS_READ_ONLY`  | Read-only mode   |
 | `HARNESS_BASE_URL`   | Base URL         |
