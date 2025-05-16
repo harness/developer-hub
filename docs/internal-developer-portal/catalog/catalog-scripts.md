@@ -6,7 +6,7 @@ sidebar_position: 11
 ---
 
 :::info
-These scripts are **only valid for IDP 1.0**. Updated scripts for IDP 2.0 will be available soon. 
+These scripts are **only valid for IDP 1.0**. Updated scripts for IDP 2.0 will be available soon. If you're interested to use these right now, you can use the new [Entities APIs](https://apidocs.harness.io/tag/Entities).
 :::
 
 ## Scripts to create new services, register new services 
