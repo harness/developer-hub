@@ -417,7 +417,7 @@ Harness provides an opt-in fix via the feature flag `CDS_K8S_EKS_REFRESH_EXEC_AU
 - **What it does**  
   Checks the token’s expiration timestamp in the `ExecCredential` response and automatically requests a new token when the old one expires.
 - **Why it matters**  
-  Prevents unexpected failures on long-running Kubernetes operations against EKS clusters.
+  Prevents unexpected failures on long-running Kubernetes executions against EKS clusters.
 
 With this flag enabled, your EKS-based workflows will seamlessly refresh expired tokens and continue without interruption.  
 :::
