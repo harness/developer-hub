@@ -55,6 +55,16 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## May 2025
 
+### GitOps Version 1.33.1, GitOps Agent Version 0.94
+
+#### New Features and Enhancements
+
+- This agent release includes an Argo upgrade. The packaged ArgoCD version has been upgraded from v2.13.5 to v2.14.9.
+
+#### Fixed Issues
+
+- Multiple high severity vulnerabilities have been found and fixed. (**CDS-107721**, **ZD-79011**)
+
 ### Version 1.89.4
 
 #### New Features and Enhancements
