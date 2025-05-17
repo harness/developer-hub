@@ -1,5 +1,5 @@
 ---
-title: Build-only or Push-only Options for Docker Images 
+title: Build-only and Push-only Options for Docker Images 
 description: You can build images without pushing them Or push a pre-built image without building.
 sidebar_position: 22
 ---
@@ -11,7 +11,8 @@ Each organization may have different workflows to build and push Docker images. 
 
 Harness CI now supports these workflows by passing environment variables to adjust the default behavior of the native **Build and Push steps**. The build and push steps may work with either Kaniko or BuildX plugins under the hood, and the plugin used will impact the environment variables passed to the steps. 
 
-Before we dive into the workflows supported by Harness, lets look at why you would choose one build tool over another.
+Before diving into the supported workflows, let’s quickly review the differences between Kaniko and BuildX, and how Harness chooses between them.
+
 
 **Kaniko** is used to build container images from a Dockerfile inside a container or Kubernetes pod.
 - Runs without privileged mode (granting same capabilities as the host machine - making it a root-level container)
@@ -25,15 +26,36 @@ Before we dive into the workflows supported by Harness, lets look at why you wou
   - With Docker Daemon (may require Docker-in-Docker) 
   - Daemonless mode (using containerd or remote builders)
 
+### How Harness Chooses Between BuildX and Kaniko
+Harness automatically selects the builder to be used by the **Build and Push steps** based on your infrastructure type and settings:
+| **Environment**               | **Default Behavior**                                                           | **When BuildX Plugin Is Used**                                             |
+| ----------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| **Non-Kubernetes (Cloud, VMs, etc)**             | Uses **Docker CLI** (`docker build`, `docker push`) | ✅ **BuildX** is used when **Docker Layer Caching (DLC)** is enabled, BuildX plugin is used    |
+| **Kubernetes** | Uses **Kaniko**                                                                | ✅ **BuildX** is used when **DLC** is enabled or `CI_USE_BUILDX_ON_K8` feature flag is enabled |
 
-:::note
-By default, Harness uses Kaniko when running `Build and Push` steps in Kubernetes build infrastructure. To use BuildX instead, enable the `CI_USE_BUILDX_ON_K8` feature flag, or check the Docker Layer Caching (DLC) checkbox in the build and push steps. When DLC is used, the Build and Push steps will default to BuildX, even if the feature flag is disabled. 
-:::
 
 
-## Environment Variables Overview
 
-This table summarizes the environment variables used across different **Build-only**, **Push-only**, **Build Once and Push to Many**, and **Build, Scan, and Push** workflows in **Harness CI**.
+## Using Environment Variables to Control Build and Push Behavior
+
+
+Harness CI supports flexible Docker workflows across different environments and use cases — from building-only to scanning and pushing images to multiple registries. These workflows are powered by a set of environment variables that modify the behavior of our native Build and Push steps.
+
+
+### Supported Workflows at a Glance
+
+| **Workflow**          | **Supported Builders** | **Use Case**                                 |
+| --------------------- | ---------------------- | -------------------------------------------- |
+| Build-only            | Kaniko, BuildX         | Build, scan, and store image without pushing |
+| Push-only             | Kaniko, BuildX         | Push pre-built or scanned image              |
+| Build once, push many | BuildX only            | Push same image to multiple registries       |
+| Build, scan, push     | Kaniko, BuildX         | Secure builds with vulnerability scanning    |
+
+
+Each workflow is controlled by specific environment variables, depending on the builder used (Kaniko or BuildX). The table below outlines the key variables and how they apply.
+
+### Supported Environment Variables
+
 
 | **Environment Variable**     | **Description**                                                                                                                                 | **Supported builder**  |
 |------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------ |------------------------|
@@ -45,28 +67,30 @@ This table summarizes the environment variables used across different **Build-on
 | `PLUGIN_SOURCE_IMAGE`        | Used when in push-only mode, in case you need to retag and push.                                                                                | BuildX               |
 | `PLUGIN_DAEMON_OFF`          | Runs BuildX in daemonless mode, commonly used for Kubernetes builds in conjunction with a docker daemon provisioned in a Background step (DIND).| BuildX only          |
 
-In the sections below, we will cover the following build and push image workflows: 
-- Build-only
-- Push-only
-- Build once and push to multiple registries
-- Build, scan and push image as a tarball using Kaniko
+
+
+The following sections provide step-by-step examples for the following scenarios:
+- **Build-only**: Build an image without pushing it.
+- **Push-only**: Push a pre-built image.
+- **Build once, push to multiple registries**: Push the same image to several registries in parallel.
+- **Build, scan, and push**: Secure your image before pushing it.
 
 ## Build-only
-This mode builds a Docker image locally without pushing it to a registry. For instance, you might build an image locally and store it as an artifact or scan it for vulnerabilities in another step.
+In build-only mode, you build a Docker image locally without pushing it to a registry. The resulting image can be either loaded into the local Docker image store (BuildX) or saved as a tarball file (both BuildX and Kaniko), which can then be scanned or reused in later steps. This is useful for workflows that require image validation or vulnerability scanning before pushing.
 
 <Tabs>
 <TabItem value="BuildX" label="BuildX" default>
 
- Following are reference snippets in `build-only` mode using BuildX on **Harness Cloud** and **Kubernetes**
+ Following are reference snippets in `build-only` mode using BuildX or Kaniko:
 
 <Tabs>
 <TabItem value="Cloud" label="Cloud">
 
-#### Setup
-- Set the following environment variables:
-  - `PLUGIN_NO_PUSH`: `true` (skips pushing the image)
-  - `PLUGIN_BUILDX_LOAD`: `true` - loads the image into local Docker Daemon
-  - `PLUGIN_TAR_PATH`: `Path for saving the image as tar archive (Optional)` (e.g. /folder/image.tar) - if you choose to build a tarball image
+  - Ensure Docker Layer Caching (DLC) is enabled, for BuildX to be used.
+  - Use the following environment variables:
+    - `PLUGIN_NO_PUSH`: `true` - skips pushing the image.
+    - `PLUGIN_BUILDX_LOAD`: `true` - loads the image into local Docker Daemon.
+    - `PLUGIN_TAR_PATH`: Path for saving the image as tar archive (Optional) (e.g. /folder/image.tar) - if you choose to build a tarball image.
 
 ```YAML
   - step: 
@@ -77,7 +101,7 @@ This mode builds a Docker image locally without pushing it to a registry. For in
         connectorRef: YOUR_DOCKER_CONNECTOR
         repo: YOUR_DOCKER_REPO_NAME
         tags:
-          - v.-<+pipeline.sequenceId>
+          - v.<+pipeline.sequenceId>
         caching: true #DLC on - required for using BuildX builder.
         envVariables:
           PLUGIN_NO_PUSH: 'true' # build-only mode
@@ -87,13 +111,13 @@ This mode builds a Docker image locally without pushing it to a registry. For in
 </TabItem>
 <TabItem value="Kubernetes" label="Kubernetes">
 
-To use BuildX on Kubernetes ensure either Docker Layer Caching (DLC) is enabled or the `CI_USE_BUILDX_ON_K8` feature flag is enabled.
-
-#### Setup
-- Set the following environment variables:
-  - `PLUGIN_NO_PUSH`: `true` (skips pushing the image)
-  - `PLUGIN_TAR_PATH`: `Path for saving the image as tar archive (Optional)` (e.g. /folder/image.tar) - if you choose to build a tarball image
-  - `PLUGIN_DEAEMON_OFF`: `true` (for daemonless BuildX mode)
+- To use BuildX on Kubernetes ensure either Docker Layer Caching (DLC) is enabled or the `CI_USE_BUILDX_ON_K8` feature flag is enabled.
+- Use a background step with a Docker container(DinD).
+- add `/var/run` to your stage's shared paths. 
+- Use the following environment variables:
+  - `PLUGIN_NO_PUSH`: `true`  - skips pushing the image.
+  - `PLUGIN_TAR_PATH`: `Path for saving the image as tar archive` (e.g. /folder/image.tar) 
+  - `PLUGIN_DAEMON_OFF`: `true` - for daemonless BuildX mode - needed for leveraging DIND background service. 
   - `PLUGIN_BUILDX_LOAD`: `true` - required when running a build on **Harness Cloud** (the resulting image is loaded into local Docker image store to make it available in subsequent steps)
 
 :::note
@@ -112,8 +136,6 @@ stages:
           spec:
             connectorRef: CONNECTOR
             namespace: default
-            automountServiceAccountToken: true
-            nodeSelector: {}
             os: Linux
         execution:
           steps:
@@ -128,12 +150,12 @@ stages:
             - step:
                 identifier: BuildAndPushDockerRegistry_1
                 type: BuildAndPushDockerRegistry
-                name: docker build only
+                name: Build only
                 spec:
                   connectorRef: CONNECTOR
                   repo: REPO_NAME
                   tags:
-                    - nopush-<+pipeline.sequenceId>-build-x
+                    - v-<+pipeline.sequenceId>
                   envVariables:
                     PLUGIN_NO_PUSH: "true"
                     PLUGIN_BUILDX_LOAD: "true"
@@ -238,7 +260,7 @@ To use BuildX on Kubernetes ensure either Docker Layer Caching (DLC) is enabled 
 - Set these environment variables:
   - `PLUGIN_PUSH_ONLY`: `true` (skips building)
   - `PLUGIN_SOURCE_TAR_PATH`: `Path to your previously built image (Optional)` (e.g. /folder/image.tar) - if you built a tarball image
-  - `PLUGIN_DEAEMON_OFF`: `true` (for daemonless BuildX mode)
+  - `PLUGIN_DAEMON_OFF`: `true` (for daemonless BuildX mode)
 
 :::note
 When the `PLUGIN_DAEMON_OFF` environment variable set to `true`, a background step with a Docker container(DinD) is required, as shown in the snippet below
@@ -285,14 +307,14 @@ stage:
 
 This works when:
 A previous step (in the stage) built the image and cached it in a shared volume or DinD.
-The image being pushed must already be present in the DinD daemon started in Background_1.
+The image must be available in the Docker daemon started in the Background_1 step (via DinD)..
 </TabItem>
 </Tabs>
 </TabItem>
 
 <TabItem value="Kaniko" label="Kaniko">
 
-Following is a reference build-only YAML snippet using Kaniko on **Kubernetes**
+Following is a reference push-only YAML snippet using Kaniko on **Kubernetes**
 
 #### Setup
 Set these environment variables:
@@ -423,11 +445,11 @@ execution:
 ```
 Summarizing the snippet above:
 - DinD runs in background and exposes /var/run/docker.sock
-- Build step creates an image (without pushing) and tags it as myorg/myapp:new-<+pipeline.sequenceId>-buildx
+- Build step creates an image (without pushing) and tags it as myorg/myapp:new-`<+pipeline.sequenceId>`-buildx
 - Parallel steps push the same built image to:
   - Docker Registry
   - Amazon ECR
-
+ 
 
 </TabItem>
 
@@ -517,7 +539,7 @@ When the `PLUGIN_DAEMON_OFF` environment variable set to `true`, it is recommend
 ```
 Summarizing the snippet above:
 - DinD runs in background and exposes /var/run/docker.sock
-- Build step creates an image (without pushing) and tags it as myorg/myapp:new-<+pipeline.sequenceId>-buildx
+- Build step creates an image (without pushing) and tags it as myorg/myapp:new-`<+pipeline.sequenceId>`-buildx
 - Parallel steps push the same built image to:
   - Docker Registry
   - Amazon ECR
