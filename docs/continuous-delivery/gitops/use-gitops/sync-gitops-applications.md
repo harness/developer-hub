@@ -83,3 +83,42 @@ To sync a specific source:
 To terminate an in-progress sync, go to the application for the syncing app and locate the **Terminate Sync** button in the top right corner of the UI. Replace the **Sync** button when a sync is in progress.
 
 ![](./static/terminate_sync.png)
+
+## Bulk Sync and Refresh
+
+:::note 
+
+This feature is behind the feature flag `GITOPS_BULK_ACTIONS_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+:::
+
+:::info Minimum Version
+
+This feature requires GitOps agent version of 0.93 or higher. Please ensure you have the correct agent version. 
+
+Having the incorrect version will result in your bulk syncs timing out after three minutes.
+
+:::
+
+You can bulk sync or refresh your applications from the application page. In your GitOps project, go to **Deployments** > **GitOps** > **Applications** to get to your applications page.
+
+Click the **Bulk Sync** button in the top left to sync many applications at once or click **Refresh** in the top right. The following screen will appear for bulk sync, and a very similar screen will appear for refresh:
+
+![](./static/bulk-sync-reference.png)
+
+In the top left you can select all the applications on the page, or you can select applications individually from the list shown.
+
+On the right you can modify your sync or refresh options. These options will apply to all the applications selected. 
+
+Once you've selected your applications and options, click **Bulk Sync** or **Bulk Refresh**. 
+
+:::warning Batch Size
+
+The recommended batch size is 100 applications. To sync more than 100 applications, increase the `GITOPS_AGENT_NUM_PROCESSORS` value in the config by 1 for every additional 100 applications. For example, set it to 2 for 200 applications.
+
+:::
+
+#### Required Permissions
+- Bulk Sync: User must have the `gitops app sync` permission.
+- Bulk Refresh: User must have the `gitops app view` permission.
+
