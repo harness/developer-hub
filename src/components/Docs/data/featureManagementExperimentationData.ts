@@ -46,7 +46,7 @@ import { MODULES } from "@site/src/constants"
           description:
             "Flag variations, canary releases, and gradual rollouts",
           link: "/docs/feature-management-experimentation/feature-management",
-        },/*
+        },
         {
           title: "Release monitoring",
           module: MODULES.fme,
@@ -60,7 +60,7 @@ import { MODULES } from "@site/src/constants"
           description:
             "Actionable results analysis for data-driven development",
           link: "/docs/feature-management-experimentation/experimentation",
-        },*/
+        },
       ],
     },
     {
