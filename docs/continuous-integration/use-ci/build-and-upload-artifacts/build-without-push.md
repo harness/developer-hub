@@ -14,17 +14,21 @@ Harness CI now supports these workflows by passing environment variables to adju
 Before diving into the supported workflows, let’s quickly review the differences between Kaniko and BuildX, and how Harness chooses between them.
 
 
-**Kaniko** is used to build container images from a Dockerfile inside a container or Kubernetes pod.
-- Runs without privileged mode (granting same capabilities as the host machine - making it a root-level container)
-- **Default** choice for Kubernetes environments
-- Executes Dockerfile instructions directly
+## Build Tools Used by Harness
+Harness CI uses two tools to build container images, depending on your infrastructure and step configuration: Kaniko and BuildX.
 
-**BuildX** is a Docker CLI plugin that extends Docker's build capabilities using BuildKit (Docker's builder). It relies on a Docker daemon to perform builds. 
-- Better for caching and multi-platform builds
-- **Default** choice for non kubernetes environments
-- Works in two modes:
-  - With Docker Daemon (may require Docker-in-Docker) 
-  - Daemonless mode (using containerd or remote builders)
+### Kaniko
+- Kaniko builds images from a Dockerfile inside a container/Kubernetes pod.
+- Executes Dockerfile instructions without needing a Docker daemon.
+- Commonly used in Kubernetes environments.
+- Does not require privileged mode.
+- Requires root access inside the container (If your stage is configured with `runAsNonRoot: true`, set Run as User to 0 in the Build and Push step to allow Kaniko to function).
+
+### BuildX
+- BuildX is a Docker CLI plugin that extends Docker’s build capabilities using BuildKit.
+- Enables Docker Layer Caching (DLC) and multi-platform builds.
+- Requires a Docker daemon or BuildKit backend (e.g., Docker-in-Docker or containerd)
+- Used automatically when DLC is enabled or specific feature flags are set.
 
 ### How Harness Chooses Between BuildX and Kaniko
 Harness automatically selects the builder to be used by the **Build and Push steps** based on your infrastructure type and settings:
@@ -33,7 +37,7 @@ Harness automatically selects the builder to be used by the **Build and Push ste
 | **Non-Kubernetes (Cloud, VMs, etc)**             | Uses **Docker CLI** (`docker build`, `docker push`) | ✅ **BuildX** is used when **Docker Layer Caching (DLC)** is enabled, BuildX plugin is used    |
 | **Kubernetes** | Uses **Kaniko**                                                                | ✅ **BuildX** is used when **DLC** is enabled or `CI_USE_BUILDX_ON_K8` feature flag is enabled |
 
-
+To enable the `CI_USE_BUILDX_ON_K8` feature flag, contact [Harness Support](mailto:support@harness.io)
 
 
 ## Using Environment Variables to Control Build and Push Behavior
@@ -190,10 +194,8 @@ stages:
         infrastructure:
           type: KubernetesDirect
           spec:
-            connectorRef: K8S_CONNECTOR_REF
+            connectorRef: K8S_CONNECTOR
             namespace: default
-            automountServiceAccountToken: true
-            nodeSelector: {}
             os: Linux
         execution:
           - step:
