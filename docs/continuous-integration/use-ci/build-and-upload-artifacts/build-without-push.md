@@ -69,7 +69,7 @@ Each workflow is controlled by specific environment variables, depending on the 
 | `PLUGIN_TAR_PATH`            | Used when in build-only mode to provide a path for in which to save the tarball image (if exporting as a `.tar` file).                          | BuildX + Kaniko      |
 | `PLUGIN_SOURCE_TAR_PATH`     | Used when in push-only mode, to provide a Path to a local tarball image to be pushed.                                                           | BuildX + Kaniko      |
 | `PLUGIN_SOURCE_IMAGE`        | Used when in push-only mode, in case you need to retag and push.                                                                                | BuildX               |
-| `PLUGIN_DAEMON_OFF`          | Runs BuildX in daemonless mode, commonly used for Kubernetes builds in conjunction with a docker daemon provisioned in a Background step (DIND).| BuildX only          |
+| `PLUGIN_DAEMON_OFF`          | Runs BuildX in daemonless mode, commonly used for Kubernetes builds in conjunction with a docker daemon provisioned in a Background step (DinD).| BuildX only          |
 
 
 
@@ -120,8 +120,8 @@ In build-only mode, you build a Docker image locally without pushing it to a reg
 - Add `/var/run` to your stage's shared paths (under Stage > Overview > Shared Paths, as shown in the snippet below).
 - Use the following environment variables:
   - `PLUGIN_NO_PUSH`: `true`  - skips pushing the image.
-  - `PLUGIN_TAR_PATH`: `Path for saving the image as tar archive` (e.g. /folder/image.tar) 
-  - `PLUGIN_DAEMON_OFF`: `true` - for daemonless BuildX mode - needed for leveraging DIND background service. 
+  - `PLUGIN_TAR_PATH`: Path for saving the image as tar archive (e.g. /folder/image.tar) 
+  - `PLUGIN_DAEMON_OFF`: `true` - for daemonless BuildX mode - needed for leveraging DinD background service. 
   - `PLUGIN_BUILDX_LOAD`: `true` - required when running a build on **Harness Cloud** (the resulting image is loaded into local Docker image store to make it available in subsequent steps)
 
 :::note
@@ -160,6 +160,7 @@ stages:
                   repo: REPO_NAME
                   tags:
                     - v.<+pipeline.sequenceId>
+                  caching: true
                   envVariables:
                     PLUGIN_NO_PUSH: "true"
                     PLUGIN_BUILDX_LOAD: "true"
@@ -177,9 +178,7 @@ stages:
 
 Following is a reference `build-only` YAML snippet using Kaniko on **Kubernetes**
 
-#### Setup
-
-- Set the following environment variables:
+- Use the following environment variables:
   - `PLUGIN_NO_PUSH`: `true` (skips pushing the image)
   - `PLUGIN_TAR_PATH`: Path for saving the image as tar archive (Required). (e.g. /folder/image.tar)
 
@@ -247,10 +246,13 @@ execution:
           repo: REPO_NAME
           tags:
             - v.<+pipeline.sequenceId>
+          caching: true
           envVariables:
             PLUGIN_PUSH_ONLY: "true"
 
 ```
+The examples above demonstrate push-only mode to Dockerhub on Harness Cloud. You can apply the same to other registries using the appropriate native build and push steps in the Harness CI step palette with the same environment variables.
+When you build a traditional OCI image, the step uses properties like `tags`, `registry` and `repo` to properly push the image built.
 
 </TabItem>
 <TabItem value="Kubernetes" label="Kubernetes">
@@ -298,6 +300,7 @@ stage:
               repo: REPO_NAME
               tags:
                 - v.<+pipeline.sequenceId>
+              caching: true # not needed for push-only if `CI_USE_BUILDX_ON_K8` feature flag is enabled 
               envVariables:
                 PLUGIN_PUSH_ONLY: "true"
     sharedPaths:
@@ -306,19 +309,18 @@ stage:
 
 This works when:
 A previous step (in the stage) built the image and cached it in a shared volume or DinD.
-The image must be available in the Docker daemon started in the Background_1 step (via DinD)..
+The image must be available in the Docker daemon started in the Background_1 step (via DinD).
 </TabItem>
 </Tabs>
 </TabItem>
 
 <TabItem value="Kaniko" label="Kaniko">
 
-Following is a reference push-only YAML snippet using Kaniko on **Kubernetes**
+The following is a reference push-only YAML snippet using Kaniko on **Kubernetes**
 
-#### Setup
-Set these environment variables:
+Use these environment variables:
 - `PLUGIN_PUSH_ONLY`: `true` (skips building)
-- `PLUGIN_SOURCE_TAR_PATH`: Path to your previously built image (e.g. /folder/image.tar) - if you built a tarball image
+- `PLUGIN_SOURCE_TAR_PATH`: Path to your previously built image (e.g. /folder/image.tar)
 
 ```YAML
 pipeline:
@@ -338,8 +340,6 @@ pipeline:
             spec:
               connectorRef: K8S_CONNECTOR_REF
               namespace: default
-              automountServiceAccountToken: true
-              nodeSelector: {}
               os: Linux
           execution:
             steps:
@@ -375,13 +375,11 @@ pipeline:
 </TabItem>
 </Tabs>
 
-The examples above demonstrate push-only mode to Dockerhub on Harness Cloud. You can apply the same to other registries using the appropriate native build and push steps in the Harness CI step palette with the same environment variables.
-When you build a traditional OCI image, the step uses properties like `tags`, `registry` and `repo` to properly push the image built.
+
 
 ## Build Once and Push to Multiple Registries in Parallel
 This mode builds an image once and pushes it simultaneously to multiple registries(ECR, GAR, ACR and Docker) in parallel. Once an image is built, the native build and push steps expect a distinct tag for each of the images being pushed. Harness retags the image before pushing it to the registry.
 
-### Setup
 :::note
 This workflow currently only works with **BuildX**.
 :::
@@ -412,7 +410,8 @@ execution:
           connectorRef: DOCKER_CONNECTOR
           repo: myorg/myapp
           tags:
-            - v.<+pipeline.sequenceId>-buildx
+            - v.<+pipeline.sequenceId>
+          caching: true
           envVariables:
             PLUGIN_NO_PUSH: "true"
     - parallel:
@@ -424,10 +423,10 @@ execution:
               connectorRef: DOCKER_CONNECTOR
               repo: myorg/myapp
               tags:
-                - v.<+pipeline.sequenceId>-buildx
+                - v.<+pipeline.sequenceId>
+              caching: true
               envVariables:
                 PLUGIN_PUSH_ONLY: "true"
-                PLUGIN_SOURCE_IMAGE: myorg/myapp:v.<+pipeline.sequenceId>-buildx
         - step:
             identifier: push_to_ecr
             type: BuildAndPushECR
@@ -438,19 +437,14 @@ execution:
               account: AWS_ACCOUNT_ID
               imageName: myapp
               tags:
-                - v.<+pipeline.sequenceId>-buildx
+                - v.<+pipeline.sequenceId>
+              caching: true 
               envVariables:
                 PLUGIN_PUSH_ONLY: "true"
-                PLUGIN_SOURCE_IMAGE: myorg/myapp:v.<+pipeline.sequenceId>-buildx
+                PLUGIN_SOURCE_IMAGE: myorg/myapp:v.<+pipeline.sequenceId>
 
 ```
-Summarizing the snippet above:
-- DinD runs in background and exposes /var/run/docker.sock
-- Build step creates an image (without pushing) and tags it as myorg/myapp:new-`<+pipeline.sequenceId>`-buildx
-- Parallel steps push the same built image to:
-  - Docker Registry
-  - Amazon ECR
- 
+
 
 </TabItem>
 
@@ -461,10 +455,10 @@ When the `PLUGIN_DAEMON_OFF` environment variable set to `true`, it is recommend
 :::
 - Build an image in a native **Build and Push** step with the the following environment variables:
   - `PLUGIN_NO_PUSH`: `true` (Skips pushing the image during build)
-  - `PLUGIN_BUILDX_LOAD`: `true` (Required in Kubernetes or when using non-default drivers. The resulting image is loaded into local Docker image store to make it available in subsequent steps)
+  - `PLUGIN_BUILDX_LOAD`: `true` (Required) The resulting image is loaded into local Docker image store to make it available in subsequent steps.
 - Create separate push steps with:
   - `PLUGIN_PUSH_ONLY`: `true` (Pushes without rebuilding)
-  - `PLUGIN_SOURCE_IMAGE`: `Name of the image to retag before pushing` (Harness distinctly retags these images as required by the native step)
+  - `PLUGIN_SOURCE_IMAGE`: Name of the image to retag before pushing. **Note: retag is only needed when the Type of the step used in build-only mode id different than the Type of the step used in push-only mode** (e.g. if you build with `BuildAndPushDockerRegistry` and push with `BuildAndPushECR` then retag will be needed).
   - `PLUGIN_DAEMON_OFF`: `true` (BuildX in daemonless mode)
 
 ```YAML
@@ -500,7 +494,7 @@ When the `PLUGIN_DAEMON_OFF` environment variable set to `true`, it is recommend
               connectorRef: DOCKER_CONNECTOR
               repo: myorg/myapp
               tags:
-                - v.<+pipeline.sequenceId>-buildx
+                - v.<+pipeline.sequenceId>
               envVariables:
                 PLUGIN_NO_PUSH: "true"
                 PLUGIN_BUILDX_LOAD: "true"
@@ -514,10 +508,9 @@ When the `PLUGIN_DAEMON_OFF` environment variable set to `true`, it is recommend
                   connectorRef: DOCKER_CONNECTOR
                   repo: myorg/myapp
                   tags:
-                    - v.<+pipeline.sequenceId>-buildx
+                    - v.<+pipeline.sequenceId>
                   envVariables:
                     PLUGIN_PUSH_ONLY: "true"
-                    PLUGIN_SOURCE_IMAGE: myorg/myapp:v.<+pipeline.sequenceId>-buildx
                     PLUGIN_DAEMON_OFF: "true"
             - step:
                 identifier: push_to_ecr
@@ -529,10 +522,10 @@ When the `PLUGIN_DAEMON_OFF` environment variable set to `true`, it is recommend
                   account: AWS_ACCOUNT_ID
                   imageName: myapp
                   tags:
-                    - v.<+pipeline.sequenceId>-buildx
+                    - v.<+pipeline.sequenceId>
                   envVariables:
                     PLUGIN_PUSH_ONLY: "true"
-                    PLUGIN_SOURCE_IMAGE: myorg/myapp:v.<+pipeline.sequenceId>-buildx
+                    PLUGIN_SOURCE_IMAGE: myorg/myapp:v.<+pipeline.sequenceId>
                     PLUGIN_DAEMON_OFF: "true"
 
     sharedPaths:
@@ -540,26 +533,26 @@ When the `PLUGIN_DAEMON_OFF` environment variable set to `true`, it is recommend
 ```
 Summarizing the snippet above:
 - DinD runs in background and exposes /var/run/docker.sock
-- Build step creates an image (without pushing) and tags it as myorg/myapp:new-`<+pipeline.sequenceId>`-buildx
+- Build step creates an image (without pushing) and tags it as `v.<+pipeline.sequenceId>`
 - Parallel steps push the same built image to:
   - Docker Registry
-  - Amazon ECR
+  - Amazon ECR - `only push_to_ecr` step uses `PLUGIN_SOURCE_IMAGE` for retag, as it was build by a build ans push step of a different Type.
 
 
 </TabItem>
 </Tabs>
 
-## Build, Scan, and Push (using Kaniko)
+## Build, Scan, and Push (using Kaniko on K8S)
 
 Following is a complete workflow to build, scan for vulnerabilities and then push the image. This example is using Kaniko, but the same can be achieved using BuildX
 
 ### Setup
 - Build an image in a native **Build and Push** step with the following environment variables:
   - `PLUGIN_NO_PUSH`: `true` (skip pushing the image during build)
-  - `PLUGIN_TAR_PATH`: `Path for saving the image` (e.g. /folder/image.tar)
+  - `PLUGIN_TAR_PATH`: Path for saving the image (e.g. /folder/image.tar)
 - Push the image with the native **Build and Push** step with the following environment variables:
   - `PLUGIN_PUSH_ONLY`: `true` (Pushes without rebuilding)
-  - `PLUGIN_SOURCE_TAR_PATH`: `Path to your previously built image` (e.g. /folder/image.tar)
+  - `PLUGIN_SOURCE_TAR_PATH`: Path to your previously built image (e.g. /folder/image.tar)
 
 Refer to the following pipeline example:
 
