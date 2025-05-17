@@ -1,7 +1,7 @@
 ---
 title: Install in Google Cloud Platform (GCP)
 description: Learn how to install Harness Self-Managed Enterprise Edition in GCP.
-sidebar_position: 20
+sidebar_position: 2
 sidebar_label: Install in GCP
 ---
 
