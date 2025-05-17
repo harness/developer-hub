@@ -1,8 +1,3 @@
----
-title: Attribution and exclusion
-sidebar_position: 20
----
-
 Attribution is the process by which Harness FME measures the influence of a feature on a user metric and allows you to run accurate experiments. Attribution correlates events with one of the treatments of the feature flag for which metrics are being calculated. 
 
 Harness FME combines event data you send to Harness FME with the assignment data collected by the getTreatment call of the FME SDK to determine whether the event was influenced by the feature. The correlation is done via the key (id) that is present in an [impression](https://help.split.io/hc/en-us/articles/360020585192) (a record of which treatment was assigned to a key) and the key in an event. 
