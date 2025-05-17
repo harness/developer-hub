@@ -117,7 +117,7 @@ In build-only mode, you build a Docker image locally without pushing it to a reg
 
 - To use BuildX on Kubernetes ensure either Docker Layer Caching (DLC) is enabled or the `CI_USE_BUILDX_ON_K8` feature flag is enabled.
 - Use a background step with a Docker container(DinD).
-- add `/var/run` to your stage's shared paths. 
+- Add `/var/run` to your stage's shared paths (under Stage > Overview > Shared Paths, as shown in the snippet below).
 - Use the following environment variables:
   - `PLUGIN_NO_PUSH`: `true`  - skips pushing the image.
   - `PLUGIN_TAR_PATH`: `Path for saving the image as tar archive` (e.g. /folder/image.tar) 
@@ -159,7 +159,7 @@ stages:
                   connectorRef: CONNECTOR
                   repo: REPO_NAME
                   tags:
-                    - v-<+pipeline.sequenceId>
+                    - v.<+pipeline.sequenceId>
                   envVariables:
                     PLUGIN_NO_PUSH: "true"
                     PLUGIN_BUILDX_LOAD: "true"
@@ -181,7 +181,7 @@ Following is a reference `build-only` YAML snippet using Kaniko on **Kubernetes*
 
 - Set the following environment variables:
   - `PLUGIN_NO_PUSH`: `true` (skips pushing the image)
-  - `PLUGIN_TAR_PATH`: `Path for saving the image as tar archive (Required)` (e.g. /folder/image.tar)
+  - `PLUGIN_TAR_PATH`: Path for saving the image as tar archive (Required). (e.g. /folder/image.tar)
 
 ```YAML
 stages:
@@ -208,7 +208,7 @@ stages:
                 account: AWS_ACCOUNT_ID
                 imageName: test-image
                 tags:
-                  - new-<+pipeline.sequenceId>
+                  - v.<+pipeline.sequenceId>
                 envVariables:
                   PLUGIN_NO_PUSH: "true"
                   PLUGIN_TAR_PATH: image.tar
@@ -227,10 +227,10 @@ This mode pushes a pre-built Docker image without building it again. Ideally use
 <Tabs>
 <TabItem value="Cloud" label="Cloud">
 
-#### Setup
-- Set these environment variables:
+- Ensure Docker Layer Caching (DLC) is enabled, for BuildX to be used.
+- Use these environment variables:
   - `PLUGIN_PUSH_ONLY`: `true` (skips building)
-  - `PLUGIN_SOURCE_TAR_PATH`: `Path to your previously built image` (e.g. /folder/image.tar) - if you built a tarball image
+  - `PLUGIN_SOURCE_TAR_PATH`: Path to your previously built image (e.g. /folder/image.tar) - if you built a tarball image
 
 ```YAML
 runtime:
@@ -246,22 +246,21 @@ execution:
           connectorRef: CONNECTOR
           repo: REPO_NAME
           tags:
-            - push-only-<+pipeline.sequenceId>-build-x
+            - v.<+pipeline.sequenceId>
           envVariables:
             PLUGIN_PUSH_ONLY: "true"
 
 ```
-The `PLUGIN_PUSH_ONLY` variable ensures the BuildAndPushDockerRegistry step does not perform a build — it just pushes an image (which must already exist locally).
 
 </TabItem>
 <TabItem value="Kubernetes" label="Kubernetes">
 
-To use BuildX on Kubernetes ensure either Docker Layer Caching (DLC) is enabled or the `CI_USE_BUILDX_ON_K8` feature flag is enabled.
-
-#### Setup
+- Ensure either Docker Layer Caching (DLC) is enabled or the `CI_USE_BUILDX_ON_K8` feature flag is enabled, for BuildX to be used.
+- Use a background step with a Docker container(DinD).
+- Add `/var/run` to your stage's shared paths (under Stage > Overview > Shared Paths, as shown in the snippet below).
 - Set these environment variables:
   - `PLUGIN_PUSH_ONLY`: `true` (skips building)
-  - `PLUGIN_SOURCE_TAR_PATH`: `Path to your previously built image (Optional)` (e.g. /folder/image.tar) - if you built a tarball image
+  - `PLUGIN_SOURCE_TAR_PATH`: Path to your previously built image (Optional). (e.g. /folder/image.tar) - if you built a tarball image
   - `PLUGIN_DAEMON_OFF`: `true` (for daemonless BuildX mode)
 
 :::note
@@ -279,8 +278,6 @@ stage:
       spec:
         connectorRef: CONNECTOR
         namespace: default
-        automountServiceAccountToken: true
-        nodeSelector: {}
         os: Linux
     execution:
       steps:
@@ -300,7 +297,7 @@ stage:
               connectorRef: CONNECTOR
               repo: REPO_NAME
               tags:
-                - push-only-<+pipeline.sequenceId>-build-x
+                - v.<+pipeline.sequenceId>
               envVariables:
                 PLUGIN_PUSH_ONLY: "true"
     sharedPaths:
@@ -321,7 +318,7 @@ Following is a reference push-only YAML snippet using Kaniko on **Kubernetes**
 #### Setup
 Set these environment variables:
 - `PLUGIN_PUSH_ONLY`: `true` (skips building)
-- `PLUGIN_SOURCE_TAR_PATH`: `Path to your previously built image` (e.g. /folder/image.tar) - if you built a tarball image
+- `PLUGIN_SOURCE_TAR_PATH`: Path to your previously built image (e.g. /folder/image.tar) - if you built a tarball image
 
 ```YAML
 pipeline:
@@ -356,7 +353,7 @@ pipeline:
                     account: AWS_ACCOUNT_ID
                     imageName: test-image
                     tags:
-                      - new-<+pipeline.sequenceId>
+                      - v.<+pipeline.sequenceId>
                     envVariables:
                       PLUGIN_NO_PUSH: "true"
                       PLUGIN_TAR_PATH: image.tar
@@ -370,7 +367,7 @@ pipeline:
                     account: AWS_ACCOUNT_ID
                     imageName: test-image
                     tags:
-                      - new-<+pipeline.sequenceId>
+                      - v.<+pipeline.sequenceId>
                     envVariables:
                       PLUGIN_PUSH_ONLY: "true"
                       PLUGIN_SOURCE_TAR_PATH: image.tar
@@ -397,7 +394,9 @@ Let us look at how this workflow is supported in Harness Cloud and Kubernetes
   - `PLUGIN_NO_PUSH`: `true` (Skips pushing the image during build)
 - Create separate push steps with:
   - `PLUGIN_PUSH_ONLY`: `true` (Pushes without rebuilding)
-  - `PLUGIN_SOURCE_IMAGE`: `Name of the image to retag before pushing` (Harness distinctly retags these images as required by the native step)  
+  - `PLUGIN_SOURCE_IMAGE`: Name of the image to retag before pushing. **Note: retag is only needed when the Type of the step used in build-only mode id different than the Type of the step used in push-only mode** (e.g. if you build with `BuildAndPushDockerRegistry` and push with `BuildAndPushECR` then retag will be needed).
+
+   
 
 ```YAML
 runtime:
@@ -413,7 +412,7 @@ execution:
           connectorRef: DOCKER_CONNECTOR
           repo: myorg/myapp
           tags:
-            - new-<+pipeline.sequenceId>-buildx
+            - v.<+pipeline.sequenceId>-buildx
           envVariables:
             PLUGIN_NO_PUSH: "true"
     - parallel:
@@ -425,10 +424,10 @@ execution:
               connectorRef: DOCKER_CONNECTOR
               repo: myorg/myapp
               tags:
-                - new-<+pipeline.sequenceId>-buildx
+                - v.<+pipeline.sequenceId>-buildx
               envVariables:
                 PLUGIN_PUSH_ONLY: "true"
-                PLUGIN_SOURCE_IMAGE: myorg/myapp:new-<+pipeline.sequenceId>-buildx
+                PLUGIN_SOURCE_IMAGE: myorg/myapp:v.<+pipeline.sequenceId>-buildx
         - step:
             identifier: push_to_ecr
             type: BuildAndPushECR
@@ -439,10 +438,10 @@ execution:
               account: AWS_ACCOUNT_ID
               imageName: myapp
               tags:
-                - new-<+pipeline.sequenceId>-buildx
+                - v.<+pipeline.sequenceId>-buildx
               envVariables:
                 PLUGIN_PUSH_ONLY: "true"
-                PLUGIN_SOURCE_IMAGE: myorg/myapp:new-<+pipeline.sequenceId>-buildx
+                PLUGIN_SOURCE_IMAGE: myorg/myapp:v.<+pipeline.sequenceId>-buildx
 
 ```
 Summarizing the snippet above:
@@ -501,7 +500,7 @@ When the `PLUGIN_DAEMON_OFF` environment variable set to `true`, it is recommend
               connectorRef: DOCKER_CONNECTOR
               repo: myorg/myapp
               tags:
-                - new-<+pipeline.sequenceId>-buildx
+                - v.<+pipeline.sequenceId>-buildx
               envVariables:
                 PLUGIN_NO_PUSH: "true"
                 PLUGIN_BUILDX_LOAD: "true"
@@ -515,10 +514,10 @@ When the `PLUGIN_DAEMON_OFF` environment variable set to `true`, it is recommend
                   connectorRef: DOCKER_CONNECTOR
                   repo: myorg/myapp
                   tags:
-                    - new-<+pipeline.sequenceId>-buildx
+                    - v.<+pipeline.sequenceId>-buildx
                   envVariables:
                     PLUGIN_PUSH_ONLY: "true"
-                    PLUGIN_SOURCE_IMAGE: myorg/myapp:new-<+pipeline.sequenceId>-buildx
+                    PLUGIN_SOURCE_IMAGE: myorg/myapp:v.<+pipeline.sequenceId>-buildx
                     PLUGIN_DAEMON_OFF: "true"
             - step:
                 identifier: push_to_ecr
@@ -530,10 +529,10 @@ When the `PLUGIN_DAEMON_OFF` environment variable set to `true`, it is recommend
                   account: AWS_ACCOUNT_ID
                   imageName: myapp
                   tags:
-                    - new-<+pipeline.sequenceId>-buildx
+                    - v.<+pipeline.sequenceId>-buildx
                   envVariables:
                     PLUGIN_PUSH_ONLY: "true"
-                    PLUGIN_SOURCE_IMAGE: myorg/myapp:new-<+pipeline.sequenceId>-buildx
+                    PLUGIN_SOURCE_IMAGE: myorg/myapp:v.<+pipeline.sequenceId>-buildx
                     PLUGIN_DAEMON_OFF: "true"
 
     sharedPaths:
@@ -589,7 +588,7 @@ pipeline:
                     account: AWS_ACCOUNT_ID
                     imageName: test-image
                     tags:
-                      - new-<+pipeline.sequenceId>
+                      - v.<+pipeline.sequenceId>
                     envVariables:
                       PLUGIN_NO_PUSH: "true"
                       PLUGIN_TAR_PATH: image.tar
@@ -605,7 +604,7 @@ pipeline:
                       workspace: /harness/image.tar
                       detection: manual
                       name: test-image
-                      variant: new-<+pipeline.sequenceId>
+                      variant: v.<+pipeline.sequenceId>
                     advanced:
                       log:
                         level: info
@@ -623,7 +622,7 @@ pipeline:
                     account: AWS_ACCOUNT_ID
                     imageName: test-image
                     tags:
-                      - new-<+pipeline.sequenceId>
+                      - v.<+pipeline.sequenceId>
                     envVariables:
                       PLUGIN_PUSH_ONLY: "true"
                       PLUGIN_SOURCE_TAR_PATH: image.tar
@@ -632,8 +631,6 @@ pipeline:
             spec:
               connectorRef: K8S_CONNECTOR_REF
               namespace: default
-              automountServiceAccountToken: true
-              nodeSelector: {}
               os: Linux
 ```
 
