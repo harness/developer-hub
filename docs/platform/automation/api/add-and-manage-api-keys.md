@@ -14,7 +14,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
+import TokenExpiry from './static/token-expiry.png';
 
 
 Harness APIs use API keys to authenticate requests. You can create API keys for either your personal account or a [service account](/docs/platform/role-based-access-control/add-and-manage-service-account). API keys for personal accounts can be created only at the account level, whereas service account API keys can be created at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
@@ -242,10 +242,13 @@ Use these steps to delete an API key and all of its tokens. To delete individual
 
 When creating a token, you can choose how long it stays active. You can set it to expire in 30, 90, or 180 days — or pick a custom date. If you don't want it to expire, select No expiration.
 
+<img src={TokenExpiry} width="400"/>
+
 To set the expiration, Go to Profile Overview → My API Keys → Token.
 
 You can set expiration for both User tokens and Service Account tokens.
 
 :::note
   Token expiration events are recorded in the audit trail logs. Expiration is checked every 5 minutes, so there may be a delay of up to 5 minutes between when a token expires and when the event is logged.
+  ![expired-token-audit](./static/expired-token-audit.png)
 :::
