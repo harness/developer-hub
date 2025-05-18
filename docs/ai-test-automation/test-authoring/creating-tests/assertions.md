@@ -22,7 +22,14 @@ Used for ensuring visual elements display correctly.
 | **Advanced options** | Set a threshold that determines the sensitivity of comparison |
 | **Return value** | True or False |
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/BCl2tErCt7cE0tLaS0iBW_visual-assert.png)
+<DocImage
+  path={require('./static/visual-assert.png')}
+  alt="Assert Script Success"
+  title="Click to view full size image"
+  width={400}
+  height={400}
+/>
+
 
 ### User Question
 
@@ -35,7 +42,13 @@ Uses AI to verify user questions about the current page.
 | **Advanced options** | None |
 | **Return value** | True or False |
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/cyvM5mKZNag6HqHd5VAw2_ai-question.png)
+<DocImage
+  path={require('./static/ai-question.png')}
+  alt="Assert Script Success"
+  title="Click to view full size image"
+  width={400}
+  height={400}
+/>
 
 ### Wait for Text
 
@@ -48,8 +61,13 @@ Verifies if specific text exists within a time limit.
 | **Advanced options** | • Maximum time to wait in ms: typically 30000• Reload attempts: typically 0• Retry delay in ms: typically 5000• Target picker: used to update the object |
 | **Return value** | True or False |
 
-
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/6ZaCLZ52EHtR4hTDTE2zj_waitfortext.png)
+<DocImage
+  path={require('./static/waitfortext.png')}
+  alt="Assert Script Success"
+  title="Click to view full size image"
+  width={400}
+  height={800}
+/>
 
 ### Object is Visible
 
@@ -96,7 +114,13 @@ Runs a custom script as part of test execution.
 | **Script Type** | JavaScript or Puppeteer |
 | **Return value** | True or False |
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/_tLnb8grXngMP4DtRU4e5_assert-script-success-puppeteer.png)
+<DocImage
+  path={require('./static/assert-script-success-puppeteer.png')}
+  alt="Assert Script Success"
+  title="Click to view full size image"
+  width={400}
+  height={900}
+/>
 
 Harness AIT supports two types of scripts:
 
@@ -115,4 +139,10 @@ Verifies if the current URL matches expected criteria.
 | **Advanced options** | None |
 | **Return value** | True or False |
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/mcxa_aIo04_eZ3EOFjWGT_assert-url.png)
+<DocImage
+  path={require('./static/assert-url.png')}
+  alt="Assert URL"
+  title="Click to view full size image"
+  width={350}
+  height={600}
+/>

@@ -23,11 +23,11 @@ Used to create conditional branches in test execution.
 | **Return value** | TRUE or FALSE |
 
 <DocImage
-  src='https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/o56O06L092IXEUaEj6rXy_if.png'
-  width = "400"
-  Height = "1000"
-  alt="Conditional"
+  path={require('./static/if.png')}
+  alt="IF conditional"
   title="Click to view full size image"
+  width={400}
+  height={800}
 />
 
 ### ELSE

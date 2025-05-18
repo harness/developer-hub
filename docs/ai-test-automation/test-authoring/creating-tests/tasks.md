@@ -9,27 +9,40 @@ Login tasks ([Create a login task](<./../../get-started/quickstart.md#create-a-l
 
 Once a test is created and you think a set of consecutive steps will be reused in various other tests then you can simply select the steps and create a task. Once the task is created you can add the task to any new test in interactive authoring or during Editing.&#x20;
 
-:::image{src="https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/l2N0736xGEvF67hmnMWis_image-20241108-202239.png" signedSrc="https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/l2N0736xGEvF67hmnMWis_image-20241108-202239.png" size="58" width="1032" height="900" position="center" caption}
 
-:::
+<DocImage
+  path={require('./static/create-task.png')}
+  alt="Create a task"
+  title="Click to view full size image"
+  width={400}
+  height={400}
+/>
 
 ## Adding a task to a test&#x20;
 
 During test authoring, you can add a task to a test by selecting one from the list.&#x20;
 
 
+<DocImage
+  path={require('./static/add-task.png')}
+  alt="Add a task"
+  title="Click to view full size image"
+  width={400}
+  height={400}
+/>
 
-:::image{src="https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/XP82-5vLsGqbA4qriH8sG_image.png" signedSrc="https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/XP82-5vLsGqbA4qriH8sG_image.png" size="60" width="602" height="606" position="center" caption}
-
-:::
 
 Once added, simply click on the `Continue` button at the top of the step panel to execute all the task steps and make it part of the test definition&#x20;
 
 
 
-:::image{src="https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/6Lo7SgKWiXU1qVJlu1Uqp_image.png" signedSrc="https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/6Lo7SgKWiXU1qVJlu1Uqp_image.png" size="56" width="426" height="740" position="center" caption}
-
-:::
+<DocImage
+  path={require('./static/continue-task.png')}
+  alt="Continue to execute"
+  title="Click to view full size image"
+  width={600}
+  height={900}
+/>
 
 Here is a video explaining how tasks can be created
 
@@ -56,7 +69,11 @@ To set the task level default simply edit the value on the parameters modal as s
 
 
 
-:::image{src="https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/6p6looCiuTFh43QWk_NPK_image-20241114-001857.png" signedSrc="https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/6p6looCiuTFh43QWk_NPK_image-20241114-001857.png" size="64" width="645" height="447" position="center" caption}
-
-:::
+<DocImage
+  path={require('./static/task-default.png')}
+  alt="Continue to execute"
+  title="Click to view full size image"
+  width={600}
+  height={500}
+/>
 

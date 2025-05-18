@@ -66,7 +66,13 @@ Used to navigate to specific URLs.
 | **Advanced options** | `BASE_URL` translation: Set to `True` or `False` depending on URL type. For external URLs, set to `False` |
 | **Return value** | None |
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/Oo4HjL1XneoZ60H0W6k0b_screenshot-2023-06-15-at-42256-pm.png)
+<DocImage
+  path={require('./static/navigate.png')}
+  alt="set-parameter"
+  title="Click to view full size image"
+  width={350}
+  height={450}
+/>
 
 ### Wait for Time
 
@@ -79,7 +85,13 @@ Creates a timed pause in test execution.
 | **Advanced options** | No |
 | **Return value** | None |
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/HbDNDbU6pAAsDDQargHEw_screenshot-2023-06-15-at-52144-pm.png)
+<DocImage
+  path={require('./static/wait-for-time.png')}
+  alt="set-parameter"
+  title="Click to view full size image"
+  width={450}
+  height={400}
+/>
 
 ### Reload
 
@@ -103,7 +115,13 @@ Adjusts the screen dimensions for testing responsive designs.
 | **Advanced options** | No |
 | **Return value** | None |
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/ylRF-4Uem_Npw00v_azbv_screenshot-2023-06-15-at-44445-pm.png) 
+<DocImage
+  path={require('./static/viewport.png')}
+  alt="viewport"
+  title="Click to view full size image"
+  width={500}
+  height={450}
+/> 
 
 ### Key Press
 
@@ -116,7 +134,13 @@ Simulates keyboard input.
 | **Advanced options** | No |
 | **Return value** | None |
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/E8ku1ubUKNJjX2lJArB8z_screenshot-2023-06-15-at-44747-pm.png) 
+<DocImage
+  path={require('./static/keypress.png')}
+  alt="keypress"
+  title="Click to view full size image"
+  width={500}
+  height={450}
+/>
 
 ### Mouse Over
 
@@ -128,8 +152,6 @@ Simulates hovering over elements.
 | **Parameter options** | None |
 | **Advanced options** | No |
 | **Return value** | None |
-
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/HbDNDbU6pAAsDDQargHEw_screenshot-2023-06-15-at-52144-pm.png)
 
 
 ### Double Click
@@ -165,4 +187,10 @@ Creates dynamic variables for test execution.
 | **Advanced options** | Set context as `Run time`, `App`, or `Test Suite` |
 | **Return value** | None |
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/HcSGeR1AbU7u1d7-UYJYL_screenshot-2023-06-15-at-54617-pm.png)
+<DocImage
+  path={require('./static/set-parameter.png')}
+  alt="set-parameter"
+  title="Click to view full size image"
+  width={500}
+  height={750}
+/>
