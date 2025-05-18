@@ -20,12 +20,23 @@ Here is a short video demonstration of Auto Assertions
 
 In the test below the user clicks on the “Checking” link which expands the menu on the side bar and then the user clicks on “View Checking” 
 
-![](https://lh4.googleusercontent.com/K4Cm_-WmrMbjx5uEPNSdaJZ5g9zcw88oEI8RhUqIwXRERZeKYGRHNf4KP0ZXYkXrp4SjDqvdK2xvZoShiYlin9tEVCo3Y8VjdTuJEpue5WaZEna2Po9HDKvYw2-ZUgIQhLX9e2kt4auGLDsM0RnsI0s)
+<DocImage
+  path={require('./static/auto-assertion-1.png')}
+  alt="Assert Script Success"
+  title="Click to view full size image"
+  width={800}
+  height={600}
+/>
 
 As you can see on the screenshot above right below the highlighted step, there are two assertions that Relicx recommended. I reviewed  and accepted one of them by clicking on the “Add Assertion” button below. 
 
 Once the assertion is accepted, you will see it as a regular step in the test as show below 
 
-
-![](https://lh6.googleusercontent.com/pk6dTAXBTozrxLhCR6TaZ1Fbq-Q9s3Y2XNuN__A-LVsoRutwD3fE951GjNNVY4_SPFhGc-2E1pKxry9N7S7jzvEpzAtV0hjOL-rZkkF8t9ti6vy7-WI7ueriCNKcrWKdGGY5n9OBGuKrgtRyLizy5ro)
+<DocImage
+  path={require('./static/auto-assertion-2.png')}
+  alt="Assert Script Success"
+  title="Click to view full size image"
+  width={600}
+  height={800}
+/>
 

@@ -9,11 +9,23 @@ Step into the future of test authoring with Harness AI, the revolutionary featur
 
 Here we simply instruct Harness AI to perform a specific task and it figures out the required steps. Here in the example below we have asked Copilot to deposit $40 to the savings account&#x20;
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/JFV3ctmS1Zd6VNTv2MOmh_copilot-step-ia-1-.png)
+<DocImage
+  path={require('./static/copilot-step-ia-1.png')}
+  alt="Copilot IA"
+  title="Click to view full size image"
+  width={800}
+  height={600}
+/>
 
 The Copilot parses the steps and then performs the required action without any supervision. Once the task is done, Copilot returns back the control to the user and the user can either ask the Copilot to proceed or continue to author the test interactively.&#x20;
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/2ZxPMFHqHvXl-3h4mD4a5_copilot-step-ia-2.png)
+<DocImage
+  path={require('./static/copilot-step-ia-2.png')}
+  alt="Copilot IA"
+  title="Click to view full size image"
+  width={800}
+  height={600}
+/>
 
 Here we see the steps on the left that Copilot had recorded to perform the task assigned "Deposit $40 to savings account"
 
