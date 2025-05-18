@@ -16,11 +16,16 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-Harness APIs use API keys to authenticate requests. You can create API keys for your personal account or for [service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account). Personal account API keys can be created only at the account scope, while service account API keys can be created at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-After creating an API key, you must add tokens to the key, and then you use the tokens in your API requests or where ever else you need to supply an API key for authentication. Each API key can have multiple tokens.
+Harness APIs use API keys to authenticate requests. You can create API keys for either your personal account or a [service account](/docs/platform/role-based-access-control/add-and-manage-service-account). API keys for personal accounts can be created only at the account level, whereas service account API keys can be created at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-Keys and tokens inherit the permissions of the account they are created under. If you create an API key under your personal account, then the key and tokens have the same permissions as your account. If you create an API key under a service account, then the key and tokens have the same permissions as the service account. You must be an Account Admin (or equivalent) to create service accounts and API keys for service accounts.
+After creating an API key, you must add one or more tokens to it. These tokens are then used in your API requests or anywhere else an API key is required for authentication. Each API key can have multiple tokens.
+
+API keys and their tokens inherit the permissions of the account under which they are created. If the API key is created under your personal account, it will have the same permissions as your account. If it is created under a service account, it will inherit the permissions of that service account.
+
+:::note
+ To create service accounts and their API keys, you must have Account Admin privileges (or an equivalent role).
+:::
 
 ## Create personal API keys and tokens
 
@@ -38,7 +43,8 @@ Use these steps to create an API key and personal access token (PAT) for your pe
 
    ![](./static/api-quickstart-03.png)
 
-7. If you want to set an expiration date for the token, select **Set Expiration Date** and enter an expiration date in `mm/dd/yyyy` format.
+7. To set an expiration date for the token, select Set Expiration Date and enter the date in mm/dd/yyyy format. For more information about [token expiration](#expire-tokens), see the section below.
+
 8. Select **Generate Token** and copy the token.
 
    :::warning
@@ -232,3 +238,14 @@ Use these steps to delete an API key and all of its tokens. To delete individual
 </TabItem>
 </Tabs>
 
+## Expire tokens
+
+When creating a token, you can choose how long it stays active. You can set it to expire in 30, 90, or 180 days — or pick a custom date. If you don't want it to expire, select No expiration.
+
+To set the expiration, Go to Profile Overview → My API Keys → Token.
+
+You can set expiration for both User tokens and Service Account tokens.
+
+:::note
+  Token expiration events are recorded in the audit trail logs. Expiration is checked every 5 minutes, so there may be a delay of up to 5 minutes between when a token expires and when the event is logged.
+:::
