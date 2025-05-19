@@ -1,7 +1,7 @@
 ---
 title: Amazon EKS
 description: This guide provides detailed instructions for deploying the Harness Self-Managed Enterprise Edition on Elastic Kubernetes Service (EKS).
-sidebar_label: Helm Charts for EKS
+sidebar_label: Amazon EKS
 sidebar_position: 1
 ---
 
@@ -71,7 +71,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
 
 ### Step 2: Create a Cluster
 
-  To provision a new EKS cluster for your SMP environment, use the following `eksctl` configuration YAML. This file sets up a cluster named `my-smp-test` in the `us-east-2` region with managed node groups, essential IAM policies, and networking settings required for running Harness Self-Managed Platform. 
+  To provision a new EKS cluster for your SMP environment, use the following `eksctl` configuration YAML. This file sets up a cluster named `create-smp-aws` in the `us-east-2` region with managed node groups, essential IAM policies, and networking settings required for running Harness Self-Managed Platform. 
   
   It is pre-configured with defaults suited for sandbox or testing purposes, but you can modify the values (like cluster name, region, tags, and CIDR) as needed.
 
@@ -116,7 +116,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
       instanceSelector: {}
       instanceType: t3.2xlarge
       labels:
-        alpha.eksctl.io/cluster-name: my-smp-test # Modify this label to match the kubernetes name
+        alpha.eksctl.io/cluster-name: create-smp-aws # Modify this label to match the kubernetes name
         alpha.eksctl.io/nodegroup-name: standard-workers
       maxSize: 9
       minSize: 4
@@ -271,7 +271,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
 4. Install the Helm chart.
 
     ```bash
-      helm install harness harness/ -f override-demo.yaml -n harness-aws
+      helm install harness harness/ -f <override-file>.yaml -n harness-aws
     ```
 
 :::info
