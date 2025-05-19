@@ -13,7 +13,7 @@ To use the Splunk Observability probe, you need:
 * Access to the Splunk Observability API from the kubernetes execution plane
 * An API token for authentication
 
-### Steps to configure the Splunk Observability Resilience Probe:
+### Steps to configure
 
 1. In Resilience probe section under chaos module, click on New Probe button
 

@@ -14,7 +14,7 @@ To use the Prometheus APM probe, you need:
 * Access to the Prometheus API endpoint from the kubernetes execution plane
 * Proper configuration of your application to expose metrics to Prometheus
 
-### Steps to configure the Prometheus Resilience Probe:
+### Steps to configure
 
 1. In Resilience probe section under chaos module, click on New Probe button
 

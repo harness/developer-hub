@@ -13,7 +13,7 @@ To use the AppDynamics probe, you need:
 * Access to the AppDynamics API from the kubernetes execution plane
 * Authentication credentials (either basic auth or OAuth token)
 
-### Steps to configure the AppDynamics Resilience Probe:
+### Steps to configure
 
 1. In Resilience probe section under chaos module, click on New Probe button
 
