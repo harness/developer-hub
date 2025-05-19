@@ -1,5 +1,5 @@
 ---
-title: Harness MCP Server (Coming Soon)
+title: Harness MCP Server
 description: A unified interface for AI agents to interact with Harness tools and services using the Model Context Protocol (MCP).
 sidebar_position: 54
 ---
