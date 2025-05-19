@@ -260,6 +260,17 @@ Below is a breakdown of each Advanced Option exposed in the Template Studio:
 - List one or more delegate tags  
 - If left empty, any delegate is eligible
 
+**Example YAML**
+
+```yaml
+spec:
+  timeout: 10m
+  allowStageExecutions: true
+  fixedInputsOnRerun: true
+  delegateSelectors:
+    - your-delegate
+```
+
 :::info
 When you instantiate pipelines from this template in Pipeline Studio, these four settings appear under the **Advanced** tab as **read-only** (to faithfully reflect your template). Any instance-specific options—such as **Public access** or **Dynamic execution settings**—are shown below in the same tab as editable metadata fields. Don’t overlook those! 
 :::
