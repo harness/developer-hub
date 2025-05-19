@@ -54,6 +54,8 @@ Because we are leveraging the module source as our codebase, we need to configur
 
 [You can view the module inputs here](https://github.com/terraform-aws-modules/terraform-aws-eks?tab=readme-ov-file#inputs) and the README also includes many examples of EKS patterns.
 
+![](../static/iacm-build-infra-workspace-4.png)
+
 Below is an attempt at a minimum-input set to get an EKS cluster deployed:
 
 ```
