@@ -130,6 +130,20 @@ The following deprecated API endpoints are longer supported:
 
 ## May 2025
 
+### Version 1.90.x <!-- May 19, 2025>
+
+#### Fixed issues
+
+- Fixed an issue where users couldn’t create, edit, or delete custom dashboards and folders due to incorrect permission checks. These actions now work as expected based on the assigned permissions. [PL-62667]
+- Fixed an issue where updating users in an SCIM-managed group caused an error. This behavior was inconsistent with the Terraform provider. Now, instead of throwing an error, the system ignores the incoming user data and retains the existing users when saving the group. [PL-62492] 
+- Fixed an issue where the Terraform provider version is no longer hardcoded in the installation command. It will now be automatically selected based on the delegate's configuration. [PL-61735]
+
+#### New Feature and Enhancement 
+
+- SMP customers can now see the chart version in the Harness UI under Account Details. [PL-62579]
+- All SMP services now support custom Istio gateway. [PL-61322]
+- SMP services now supports Istio and virtual services for better traffic control and routing. [PL-59078]
+
 ### Version 1.89.x <!--May 13, 2025-->
 
 #### Fixed issues
