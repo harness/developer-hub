@@ -226,7 +226,7 @@ To define execution strategies, do the following:
 
 ## Advanced Options
 
-After defining a pipeline template, you can configure a set of **Advanced Options** in **Template Studio**. These settings control how downstream pipelines behave and execute, but are managed centrally at the template level. Metadata fields (name, identifier, tags, description, etc.) no longer appear in this editor.
+After defining a pipeline template, you can configure a set of **Advanced Options** in **Template Studio**. These settings control how downstream pipelines behave and execute, but are managed centrally at the template level. Metadata fields ([Public access](/docs/platform/pipelines/executions-and-logs/allow-public-access-to-executions/) and [Dynamic execution settings](/docs/platform/pipelines/dynamic-execution-pipeline/)) no longer appear in this editor.
 
 Below is a breakdown of each Advanced Option exposed in the Template Studio:
 
