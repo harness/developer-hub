@@ -9,9 +9,13 @@ As discussed here, users can set up sequencing and execute tests in sequence or 
 
 Set the sequence of the rest of the tests as you need. Some may run in parallel and some in sequence. Then end the test suite with a clean up test that has the highest sequence number.&#x20;
 
-
-
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/pSq0QSXr96LThLObHiOjX_image.png)
+<DocImage
+  path={require('./static/setting-up-test-suite.png')}
+  alt="Setting up setup and teardown"
+  title="Click to view full size image"
+  width={1000}
+  height={300}
+/>
 
 In this image above the setup test has a sequence of `-10` while the teardown has a sequence of `60` .&#x20;
 

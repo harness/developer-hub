@@ -91,17 +91,35 @@ Here we can see that we can have different iterations, and different data within
 
 When we execute a suite, we can upload a JSON file that drives the execution of the tests in the file. 
 
+<DocImage
+  path={require('./static/image3.png')}
+  alt="Assert Script Success"
+  title="Click to view full size image"
+  width={600}
+  height={800}
+/>
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/fBx1WuOIIkdDJ0UxV4BAk_image3.png)
 
 ### Data driven test results
 
 When our test suite has finished executing, the report will display each of the test iterations separately so you can view them each as their own test report
 
-
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/vQeX4sAiCfuT_XMbwVlN5_image5.png)
+<DocImage
+  path={require('./static/image5.png')}
+  alt="Assert Script Success"
+  title="Click to view full size image"
+  width={600}
+  height={600}
+/>
 
 If you click through to one of them you will see a regular test report, you can always view the parameters tab to understand the values used in a particular iteration
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/Imh0WhtKusg2NU5Of0RpV_image1.png)
+<DocImage
+  path={require('./static/image1.png')}
+  alt="Assert Script Success"
+  title="Click to view full size image"
+  width={600}
+  height={600}
+/>
+
 

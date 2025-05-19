@@ -17,13 +17,25 @@ To view all of the existing Test Suites, select the "Suites" tab on the Test lis
 
 A test suite can be executed against any of the parent application's test environments. Tests in the suite are run with defaulse parameters and can be bulk edited when preparing to run the suite.&#x20;
 
-![](./static/run-test-suite.png)
+<DocImage
+  path={require('./static/run-test-suite.png')}
+  alt="Assert Script Success"
+  title="Click to view full size image"
+  width={600}
+  height={800}
+/>
 
 ## Sequencing
 
 By defaults the sequence number for tests in a test suite are denoted the be "50". This just means that the order of execution for that test does not matter. However, if a user desires to execute tests in a sequential order, they can change what number is executed first through the pencil icon next to "SEQ NO" in the Details page of the Test Suite. The maximum number of parallel test executions can also be changed here, the default for this value is "5".
 
-![](./static/test-suite-sequencing.png)
+<DocImage
+  path={require('./static/test-suite-sequencing.png')}
+  alt="Assert Script Success"
+  title="Click to view full size image"
+  width={800}
+  height={800}
+/>
 
 ### Scheduling and Notifications
 

@@ -29,7 +29,13 @@ Once the Tunnel is saved, you will be prompted to **copy the docker command** or
 
 Copy this command and execute it on a Terminal window to initiate the container. Docker will download the image from the repository and run this container. Make sure to run this command on a machine that can communicate to the internet ( i.e. Harness Cloud) and is also not shutdown frequently. The connection will be lost once container is shutdown or it is no longer running.
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/v497LZex91ERvdUYOG6Nc_tunnel-5.png)
+<DocImage
+  path={require('./static/tunnel-5.png')}
+  alt="Tunnel install"
+  title="Click to view full size image"
+  width={1000}
+  height={200}
+/>
 
 Once the container is running, you can refresh the Tunnels page and see the green status icon next to it.&#x20;
 

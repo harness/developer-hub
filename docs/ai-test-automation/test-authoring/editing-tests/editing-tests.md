@@ -7,7 +7,13 @@ sidebar_position: 10
 
 There may be many reasons when users want to Edit a test. Under the "Edit Test" view users can Add, Edit or Delete Test Steps, Set Parameters or add new Assertions.
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/IHVG8hfw-dwXTlivMcfZM_edit-test-1.png)
+<DocImage
+  path={require('./static/edit-test-1.png')}
+  alt="Edit Options"
+  title="Click to view full size image"
+  width={1000}
+  height={175}
+/>
 
 This allows users to customize and existing test for application or business rule changes or if there something that specifically needs to be validated that has not automatically been done so.
 
@@ -23,7 +29,13 @@ In the Live Edit mode there are three things that users should pay attention to
 
 **Step Over - **This button allows the user to execute one step at a time when a breakpoint is set.
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/MwlLwJuJVuuM4Fl6c_eB5_edit-2-options.png)
+<DocImage
+  path={require('./static/edit-2-options.png')}
+  alt="Edit Options"
+  title="Click to view full size image"
+  width={400}
+  height={200}
+/>
 
 # Quick Edit mode
 
@@ -33,27 +45,66 @@ If the user wants to make small changes to the test like reselecting a target or
 
 Under the "Edit Test" view a user can edit any predefined step by choosing the pencil when hovering over the test step. A step can also be added above or below by hovering over this test edit pencil.
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/qah3hRqzjNXcl5i5gUpHA_01-edit-test.png)
+<DocImage
+  path={require('./static/01-edit-test.png')}
+  alt="Edit a Step"
+  title="Click to view full size image"
+  width={600}
+  height={650}
+/>
 
 Under the `Edit Command bar` , a user can choose from a list of available actions like the `Wait for Time` as shown in the image below
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/RSqDuNBqivl1ZzIGib0hC_image.png)
+<DocImage
+  path={require('./static/edit-menu.png')}
+  alt="Edit a Step"
+  title="Click to view full size image"
+  width={450}
+  height={500}
+/>
 
 If the user doesn't want to invoke the `Live Test Edit` they can even use the quick edit mode to pick a new target element. The "Pick Target Element"  allows you to visually choose the target for your User Action or Assertion by highlighting the desired element in the screenshot of your application.
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/y_uqfccqkSUSLiTALpWCO_image.png)
+<DocImage
+  path={require('./static/edit-command.png')}
+  alt="Edit a Step"
+  title="Click to view full size image"
+  width={1000}
+  height={400}
+/>
 
 # Inline Parameters
 
 Test Parameters can be changed in the Edit Test view in two locations, either directly in the test step itself or in the Params& Config View. The Parameter for the Text value can be static or defined at the environment level, which can be seen the example below:
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/RAKkTmO5J1Dc3TH_ulm91_image.png)
+<DocImage
+  path={require('./static/inline-parameters.png')}
+  alt="Inline Parameters"
+  title="Click to view full size image"
+  width={400}
+  height={600}
+/>
 
 To see all the Parameters at once for a given Test, chose the "Params & Config" button, here you can adjust values as well as see a drop down of options for pre-defined values.
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/Fog_M2AWs159-L3mXQ4_y_image.png)
+<DocImage
+  path={require('./static/param-config.png')}
+  alt="Param and Config"
+  title="Click to view full size image"
+  width={550}
+  height={200}
+/>
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/lekF3qbqcJzpIIkgZLaU2_image.png)
+ Once clicked you will see all the parameters associated with the test
+
+<DocImage
+  path={require('./static/parameter-values.png')}
+  alt="Parameter Values"
+  title="Click to view full size image"
+  width={400}
+  height={400}
+/>
+
 
 After changes are complete, be sure to "Apply" the new steps and Validate your test to ensure it runs properly.
 
@@ -61,6 +112,12 @@ After changes are complete, be sure to "Apply" the new steps and Validate your t
 
 Harness AIT allows a user to archive a test if they want to remove it from a list.
 
-![](https://archbee-image-uploads.s3.amazonaws.com/TK24Pi0IzdXKBLm-pUBmm/7lNxxEubnIHICAw9u8FAD_image.png)
+<DocImage
+  path={require('./static/archive.png')}
+  alt="Archive a Test"
+  title="Click to view full size image"
+  width={400}
+  height={400}
+/>
 
 Archiving gives you the option to restore a test if needed. However, you need to reach out to Harness support to restore the test back. The tests are permanently deleted once the TTL policy kicks in.
