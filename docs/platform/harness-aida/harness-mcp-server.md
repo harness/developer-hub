@@ -180,14 +180,23 @@ export HARNESS_API_KEY=<your_api_key>
   - Pull Requests Tool Set
   - Repositories Tool Set
   - Logs Tool Set
+  - Artifact Registries Tool Set
 
 This list will be continuously changing and growing. For a full list of tools visit the MCP repo at [MCP Server](https://github.com/harness/mcp-server?tab=readme-ov-file#tools).
 
-## Use Case Demo
+## Use Cases
+
+### Using Tools Demo
 
 Watch the use case demo for a walkthrough of MCP server functionality:
 
 <DocVideo src="https://www.loom.com/share/be336ce0d64649299a4631e81e1405f7?sid=6a68772b-e65d-4b22-ae38-e1ebb1fc6552" />
+
+### Using Artifact Registry Tools Demo
+
+Watch this demo to see the use of Artifact Registry tools in action. 
+
+<DocVideo src="https://www.loom.com/share/1fb5694359204d7ab62688f899cd427e?sid=669f2ec4-9170-4804-88ea-d357ad38cb44" />
 
 ## References
 
