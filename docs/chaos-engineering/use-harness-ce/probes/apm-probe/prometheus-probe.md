@@ -16,18 +16,18 @@ To use the Prometheus APM probe, you need:
 
 ### Steps to configure
 
-1. In Resilience probe section under chaos module, click on New Probe button
+1. In Resilience probe section under chaos module, click on **New Probe** button
 
     ![Create Prometheus Probe](./static/prometheus-probe/create-prometheus-probe.png)
 
-2. Select the APM Probe
-3. Provide the name of the probe and select Prometheus under APM Type
+2. Select the **APM Probe**
+3. Provide the name of the probe and select **Prometheus** under APM Type
 
     ![Select Prometheus Probe](./static/prometheus-probe/select-prometheus-probe.png)
 
 4. Under Prometheus connector select connector
 
-5. In Connector settings, you can either choose an existing connector or click New Connector.
+5. In Connector settings, you can either choose an existing connector or click **New Connector**
 
     ![Create Prometheus Connector](./static/prometheus-probe/prometheus-connector.png)
 
@@ -35,25 +35,27 @@ To use the Prometheus APM probe, you need:
 
     ![Prometheus Credentials](./static/prometheus-probe/prometheus-credentials.png)
 
-7. Select the delegate and verify the connection and click on Finish
+7. Select the delegate and verify the connection and click on **Finish**
 
     ![Delegate](./static/prometheus-probe/delegate.png)
 
-8. Now connector is created and selected, click on Configure Details
+8. Now connector is created and selected, click on **Configure Details**
 
     ![Configure Details](./static/prometheus-probe/configure-details.png)
 
 9. Under Probe Properties pass the value of required parameters
    * **TLS Config**:
-     * It offers a mechanism to validate TLS certifications for the Prometheus server. You can supply the cacert or the client certificate and client key to perform the validation. Alternatively, you have the option to enable the insecureSkipVerify check to bypass certificate validation.
-     * **CA File**: The caFile holds the file path of the CA certificates utilized for server TLS verification
-     * **Cert File**: The certFile holds the file path of the client certificates utilized for TLS verification
-     * **Key File**: The keyFile holds the file path of the client key utilized for TLS verification
-     * **Insecure Skip Verify**: The insecureSkipVerify skip the tls certificates checks
+     * It offers a mechanism to validate TLS certifications for the Prometheus server. You can supply the `cacert` or the client certificate and client key to perform the validation. Alternatively, you have the option to enable the `insecureSkipVerify` check to bypass certificate validation.
+     * For more details, refer to [Prometheus TLS configuration documentation](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tls_config).
+     * **CA File**: The `caFile` holds the file path of the CA certificates utilized for server TLS verification
+     * **Cert File**: The `certFile` holds the file path of the client certificates utilized for TLS verification
+     * **Key File**: The `keyFile` holds the file path of the client key utilized for TLS verification
+     * **Insecure Skip Verify**: The `insecureSkipVerify` setting skips the TLS certificates checks
    * **Query**:
-     * The query contains the promql query to extract out the desired prometheus metrics via running it on the given prometheus endpoint
+     * The query contains the PromQL query to extract out the desired Prometheus metrics via running it on the given Prometheus endpoint
      * Please Note that all the double quotes need to be parsed in the provided query.
      * **Example**: `avg_over_time(probe_duration_seconds{job=\"prometheus-blackbox-exporter\",instance=\"frontend.boutique.svc.cluster.local:80\"}[60s:1s])*1000`
+     * For more details, refer to [Prometheus PromQL documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/)
 
     ![Prometheus Query](./static/prometheus-probe/prometheus-query.png)
 
@@ -65,4 +67,4 @@ To use the Prometheus APM probe, you need:
 
     ![Run Properties](./static/prometheus-probe/run-properties.png)
 
-12. Then click on Create Probe
+12. Then click on **Create Probe**

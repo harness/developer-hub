@@ -15,17 +15,17 @@ To use the Splunk Observability probe, you need:
 
 ### Steps to configure
 
-1. In Resilience probe section under chaos module, click on New Probe button
+1. In Resilience probe section under chaos module, click on **New Probe** button
 
     ![Create Splunk Probe](./static/splunk-probe/create-splunk-probe.png)
 
-2. Select the APM Probe
-3. Provide the name of the probe and select Splunk Observability under APM Type
+2. Select the **APM Probe**
+3. Provide the name of the probe and select **Splunk Observability** under APM Type
 
     ![Select Splunk Observability Probe](./static/splunk-probe/select-splunk-probe.png)
 
 4. Under Splunk Observability connector select connector
-5. In Connector settings, you can either choose an existing connector or click New Connector.
+5. In Connector settings, you can either choose an existing connector or click **New Connector**
 
     ![Create Splunk Connector](./static/splunk-probe/create-splunk-connector.png)
 
@@ -45,7 +45,7 @@ To use the Splunk Observability probe, you need:
    * **Splunk Observability Query**:
      * The Splunk Observability Query input is a string that specifies the search criteria for the metric time series (MTS) you want to retrieve. It follows a specific syntax that allows you to search for metrics, dimensions, properties, and tags
      * **Example query**: `sf_metric:cpu.utilization AND host.name:gke-default-pool-667be17c-t588.c.test.internal`
-     * For more details refer to query section in Splunk Observability doc
+     * For more details refer to query section in [Splunk Observability doc](https://dev.splunk.com/observability/reference/api/retrieve_timeserieswindow/latest)
    * **LookBack Window (In Minutes)**:
      * The lookback window refers to the time range from a specified number of minutes ago up to the current moment, over which data is aggregated
 
@@ -59,4 +59,4 @@ To use the Splunk Observability probe, you need:
 
     ![Run Properties](./static/splunk-probe/run-properties.png)
 
-12. Then click on Create Probe
+12. Then click on **Create Probe**

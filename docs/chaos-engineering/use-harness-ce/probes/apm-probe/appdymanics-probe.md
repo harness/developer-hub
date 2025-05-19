@@ -15,19 +15,19 @@ To use the AppDynamics probe, you need:
 
 ### Steps to configure
 
-1. In Resilience probe section under chaos module, click on New Probe button
+1. In Resilience probe section under chaos module, click on **New Probe** button
 
     ![Create AppDynamics Probe](./static/appdynamics-probe/create-appdynamics-probe.png)
 
-2. Select the APM Probe
+2. Select the **APM Probe**
 
-3. Provide the name of the probe and select Appdynamics under APM Type
+3. Provide the name of the probe and select **AppDynamics** under APM Type
 
     ![Select AppDynamics Probe](./static/appdynamics-probe/select-appdynamics-probe.png)
     
-4. Under Appdynamics connector select connector
+4. Under AppDynamics connector select connector
 
-5. In Connector settings, you can either choose an existing connector or click New Connector.
+5. In Connector settings, you can either choose an existing connector or click **New Connector**
 
     ![AppDynamics Connector](./static/appdynamics-probe/appdynamics-connector.png)
 
@@ -35,21 +35,21 @@ To use the AppDynamics probe, you need:
 
     ![AppDynamics Connector](./static/appdynamics-probe/controller-credentials.png)
 
-7. Select the delegate and verify the connection and click on Finish
+7. Select the delegate and verify the connection and click on **Finish**
 
     ![Delegate](./static/appdynamics-probe/delegate.png)
 
-8. Now connector is created and selected, click on Configure Details
+8. Now connector is created and selected, click on **Configure Details**
 
     ![Configure Details](./static/appdynamics-probe/configure-details.png)
 
-9. Under Probe Properties, Pass the value of AppDynamics Metric Full Path and Lookback Window
+9. Under Probe Properties, Pass the value of **AppDynamics Metric Full Path** and **Lookback Window**
 
     ![AppDynamics Lookback Window](./static/appdynamics-probe/lookback-window.png)
 
    * **AppDynamics Metric Full Path**:
      * A metric full path in AppDynamics is the complete hierarchical string that uniquely identifies a specific metric within an application for use in dashboards, alerts, and API queries
-     * You can get the Metric Full Path from the Browse Metrics section in AppDynamics controller, For more details refer to Appdynamics doc.
+     * You can get the Metric Full Path from the Browse Metrics section in AppDynamics controller. For more details, refer to [AppDynamics docs](https://docs.appdynamics.com/appd/23.x/latest/en/appdynamics-essentials/metrics-and-graphs/metric-browser).
      * **Examples**:
        * `Application Infrastructure Performance|Root|Individual Nodes|boutique/adservice-54d59c5594-gggb9|Hardware Resources|CPU|%Busy`
        * `Application Infrastructure Performance|Root|Individual Nodes|boutique/adservice-54d59c5594-gggb9|Hardware Resources|Memory|Used (MB)`
@@ -68,7 +68,7 @@ To use the AppDynamics probe, you need:
 
     ![Create probe](./static/appdynamics-probe/create-probe.png)
 
-12. Then click on Create Probe
+12. Then click on **Create Probe**
 
 
 
