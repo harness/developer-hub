@@ -296,11 +296,11 @@ This section explains how to configure Google Cloud Load Balancer for Harness SM
 
 4. Install Harness
 
-  ```bash
-    helm install harness harness/ \
-      -n harness-gcp  \
-      -f harness-smp-gcp.yaml
-  ```
+    ```bash
+      helm install harness harness/ \
+        -n harness-gcp  \
+        -f harness-smp-gcp.yaml
+    ```
 
 5. To access Harness UI, navigate to `http://<YOUR-IP-ADDRESS-or-DNS>` in your browser.
 
