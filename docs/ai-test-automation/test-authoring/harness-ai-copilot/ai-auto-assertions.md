@@ -28,7 +28,7 @@ In the test below the user clicks on the “Checking” link which expands the m
   height={600}
 />
 
-As you can see on the screenshot above right below the highlighted step, there are two assertions that Relicx recommended. I reviewed  and accepted one of them by clicking on the “Add Assertion” button below. 
+As you can see on the screenshot above right below the highlighted step, there are two assertions that Harness AI recommended. I reviewed  and accepted one of them by clicking on the “Add Assertion” button below. 
 
 Once the assertion is accepted, you will see it as a regular step in the test as show below 
 

@@ -37,7 +37,7 @@ Uses AI to verify user questions about the current page.
 
 | Feature | Description |
 |---------|-------------|
-| **Description** | Uses AI to verify questions about specific pages (e.g., "Am I on the dashboard page?"). Relicx AI evaluates the question and returns True or False. |
+| **Description** | Uses AI to verify questions about specific pages (e.g., "Am I on the dashboard page?"). Harness AI evaluates the question and returns True or False. |
 | **Parameter options** | Question: Input your question (ensure it can be answered with True or False) |
 | **Advanced options** | None |
 | **Return value** | True or False |
