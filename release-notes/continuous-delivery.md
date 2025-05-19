@@ -78,7 +78,11 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Previously, adding an AwsLambdaFunctionDefinition manifest via YAML in the service override configuration caused the UI to break, displaying an error message and preventing further changes. The issue is resolved. (**CDS-109383, ZD-83146**)
 - Previously, the AWS CDK plugin did not properly support the AWS_SESSION_TOKEN environment variable when using temporary credentials from AWS STS AssumeRole. The issue is resolved. (**CDS-109505, ZD-83221**)
 
-### GitOps Version 1.32, GitOps Agent 0.93
+### GitOps Version 1.32, GitOps Agent Version 0.93
+
+#### New Features and Enhancements
+
+- Applications can now be [synced and refreshed using bulk actions](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications#bulk-sync-and-refresh). On the applications page, there are two new buttons: **Bulk Sync** and **Refresh**. Currently, this feature is behind the feature flag `GITOPS_BULK_ACTIONS_ENABLED `. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-58485**)
 
 #### Fixed Issues
 
