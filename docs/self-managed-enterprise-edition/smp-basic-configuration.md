@@ -45,13 +45,13 @@ This enables seamless routing of traffic to your Harness services while maintain
   1. Create Namespace
 
       ```bash
-        kubectl create namespace harness-alb
+        kubectl create namespace <harness-namespace>
       ```
 
   2. To retrieve the ALB DNS Name, Run the following command:
 
       ```bash
-        kubectl get ingress -n harness-alb
+        kubectl get ingress -n <harness-namespace>
       ```
   > The value in the **ADDRESS** column is the DNS name of your Application Load Balancer (ALB).
 
@@ -90,7 +90,7 @@ This enables seamless routing of traffic to your Harness services while maintain
             kubectl apply -f alb-config.yaml
           ```
 
-      - To configure an ALB within the override file, create a `harness-alb-demo.yaml` file and use the YAML configuration provided below. Ensure that the required modules from `values.yaml` are included as needed.
+      - To configure an ALB within the override file, create a `harness-smp-demo.yaml` file and use the YAML configuration provided below. Ensure that the required modules from `values.yaml` are included as needed.
 
             ```yaml
               global:
@@ -119,12 +119,12 @@ This enables seamless routing of traffic to your Harness services while maintain
                       create: true
             ```
 
-  4. Update the `harness-alb-demo.yaml` file with your ALB DNS name, then upgrade your Helm release.
+  4. Update the `harness-smp-demo.yaml` file with your ALB DNS name, then upgrade your Helm release.
     
         ```bash
-          helm upgrade harness <your-path>/harness/ \
-            -n harness-alb \
-            -f harness-alb-demo.yaml
+          helm upgrade harness harness/ \
+            -n <harness-namespace> \
+            -f harness-smp-demo.yaml
         ```
 
   </TabItem>
@@ -140,13 +140,13 @@ This enables seamless routing of traffic to your Harness services while maintain
   1. Create Namespace
 
       ```bash
-        kubectl create namespace harness-nlb
+        kubectl create namespace <harness-namespace>
       ```
 
   2. To retrieve the ALB DNS Name, Run the following command:
 
       ```bash
-        kubectl get ingress -n harness-nlb
+        kubectl get ingress -n <harness-namespace>
       ```
   > The value in the **ADDRESS** column is the DNS name of your Application Load Balancer (ALB).
 
@@ -186,7 +186,7 @@ This enables seamless routing of traffic to your Harness services while maintain
             kubectl apply -f nlb-config.yaml
           ```
 
-      - To configure an NLB within the override file, create a `harness-nlb-demo.yaml` file and use the YAML configuration provided below. Ensure that the required modules from values.yaml are included as needed.
+      - To configure an NLB within the override file, create a `harness-smp-demo.yaml` file and use the YAML configuration provided below. Ensure that the required modules from values.yaml are included as needed.
 
             ```yaml
               global:
@@ -219,13 +219,8 @@ This enables seamless routing of traffic to your Harness services while maintain
                       create: true
             ```
 
-  4. Update the `harness-nlb-demo.yaml` file with your ALB DNS name, then upgrade your Helm release.
-    
-        ```bash
-        helm upgrade harness <your-path>/harness/ \
-          -n harness-nlb \
-          -f harness-nlb-demo.yaml
-        ```
+  4. Update the `harness-smp-demo.yaml` file with your ALB DNS name, then upgrade your Helm release.
+
   </TabItem>
 </Tabs>
 
@@ -262,12 +257,12 @@ This section explains how to configure Google Cloud Load Balancer for Harness SM
 1. Create Namespace
 
     ```bash
-      kubectl create namespace harness-gcp 
+      kubectl create namespace <harness-namespace>
     ```
 
 2. [Download](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true) and Extract the Helm Chart, Untar the downloaded chart to a desired directory.
 
-3. Configure Load Balancer, create a `harness-smp-gcp.yaml`, then copy and save the YAML content provided below.
+3. Configure Load Balancer, create a `harness-smp-demo.yaml`, then copy and save the YAML content provided below.
 
       ```yaml
         global:
@@ -294,13 +289,7 @@ This section explains how to configure Google Cloud Load Balancer for Harness SM
             create: true
       ```
 
-4. Install Harness
-
-    ```bash
-      helm install harness harness/ \
-        -n harness-gcp  \
-        -f harness-smp-gcp.yaml
-    ```
+4. Update the `harness-smp-demo.yaml` file with your ALB DNS name, then upgrade your Helm release.
 
 5. To access Harness UI, navigate to `http://<YOUR-IP-ADDRESS-or-DNS>` in your browser.
 
@@ -314,7 +303,7 @@ However, you can scale [resources](#resource-profiles) up or down based on your 
 
 2. Extract the Helm chart by unpacking the `.tgz` file into your desired directory.
 
-3. Create a custom override file named `smp-demo-install.yaml`, and copy the YAML configuration provided below into it. You can further customize this file by updating additional configuration parameters available in the default `values.yaml` file included with the downloaded Helm chart.
+3. Create a custom override file named `harness-smp-demo.yaml`, and copy the YAML configuration provided below into it. You can further customize this file by updating additional configuration parameters available in the default `values.yaml` file included with the downloaded Helm chart.
 
     ```yaml
       global:
@@ -343,25 +332,19 @@ However, you can scale [resources](#resource-profiles) up or down based on your 
             secretName: harness-cert
     ```
 
-4. Create a Kubernetes Namespace for SMP installation.
+4. Install the chart using your custom override file.
 
     ```bash
-      kubectl create namespace harness-demo
-    ```
-
-5. Install the chart using your custom override file.
-
-    ```bash
-      helm install harness ./ -n harness-demo -f smp-demo-install.yaml
+      helm install harness ./ -n <harness-namespace> -f harness-smp-demo.yaml
     ```  
 
-6. Verify pods status.
+5. Verify pods status.
 
     ```bash
-      kubectl get pods -n harness-demo
+      kubectl get pods -n <harness-namespace>
     ```
 
-7. If all steps above have been completed successfully and the services are running, you can access the Harness SMP UI at:
+6. If all steps above have been completed successfully and the services are running, you can access the Harness SMP UI at:
 
     ```bash
       http://<your-loadbalancer-ip>/auth/#/signup
@@ -403,7 +386,7 @@ The modules such as CI, CD, CCM, Chaos, etc. can be included or excluded by sett
 
 ## Licenses
 
-A **license** defines the level of access and usage limits for using different features or modules of the platform, such as CI, CD, CCM, etc. It determines what services are available, how many resources (like developers or pipelines) you can use, and for how long.
+A license defines the level of access and usage limits for using different features or modules of the platform, such as CI, CD, CCM, etc. It determines what services are available, how many resources (like developers or pipelines) you can use, and for how long.
 
 Harness Self-Managed Platform has two types of licenses:
   - Next Generation (NG): To enable the Core Platform and its modules on SMP.
@@ -458,5 +441,5 @@ You can later override the configuration based on specific requirements.
 
     ```bash
       # Update using small profile
-        helm upgrade -i harness harness/ -n harness-demo -f your-override.yaml -f override-small.yaml
+        helm upgrade -i harness harness/ -n <harness-namespace> -f your-override.yaml -f override-small.yaml
     ```
