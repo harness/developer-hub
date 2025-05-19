@@ -119,9 +119,9 @@ export const featureList: CardItem[] = [
   {
     title: 'Manage AI Test Automation',
     module: MODULES.ata,
-    icon: 'img/icon-ata.svg',
-    description: <>Use data-led insights to manage AI test.</>,
-    link: 'docs/category/get-started-with-sei',
+    icon: 'img/logo-ata.svg',
+    description: <>End to End testing powered by Generative AI</>,
+    link: 'docs/ai-test-automation/get-started/quickstart',
   },
   {
     title: "Administer Harness Platform",
