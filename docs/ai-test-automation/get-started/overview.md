@@ -14,7 +14,7 @@ To enable Harness AI Test Automation in your account, contact your sales represe
 
 ### No-Code, AI-powered Test Authoring
 
-Ditch the lengthy, complex code-based frameworks. With Relicx, you can author tests in a fraction of the time using our low-code test authoring. Capture steps automatically through Relicx Cloud and write test cases in plain text using AI prompts. Our self-healing tests adapt to UI and workflow changes, slashing the time you spend on test maintenance​.
+Ditch the lengthy, complex code-based frameworks. With Harness AI Test Automation, you can author tests in a fraction of the time using our low-code test authoring. Capture steps automatically through Harness Cloud and write test cases in plain text using AI prompts. Our self-healing tests adapt to UI and workflow changes, slashing the time you spend on test maintenance​.
 
 ## Key Features
 
@@ -56,7 +56,7 @@ Ditch the lengthy, complex code-based frameworks. With Relicx, you can author te
 - Automatically generate test cases from user flows
 - Discover test scenarios based on functional requirements and documentation
 
-## See Harness AI Test Automation in action&#x20;
+## See Harness AI Test Automation in action
 
 ### **How to author e2e tests with natural language prompts ?**
 
