@@ -136,8 +136,6 @@ This enables seamless routing of traffic to your Harness services while maintain
   **Prerequisites**
 
   - EKS cluster with [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html#lbc-overview) installed.
-  - `kubectl` access to your cluster
-  - Helm installed
 
   **Installation Steps**
 
@@ -248,9 +246,7 @@ This enables seamless routing of traffic to your Harness services while maintain
 
 **Prerequisites**
 
-  - EKS cluster
-  - `kubectl` access to your cluster
-  - Helm installed
+  - EKS cluster with [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html#lbc-overview) installed.
 
 **Installation Steps**
 
@@ -372,9 +368,6 @@ This section explains how to configure Google Cloud Load Balancer for Harness SM
 
 **Prerequisites**
 
-- GKE cluster
-- `kubectl` access to your cluster
-- Helm 3.x installed
 - Static IP address in GCP (optional but recommended)
 
 **Installation**
