@@ -11,7 +11,7 @@
       "restApiUrl": "asdjn",
       "ssoFlag": true,
       "userIdleTime": 900,
-      "userIdleTimeOut": 300,
+      "userIdleTimeOut": 900,
       "tokenExpFirstWarningMinutes": 15,
       "tokenExpSecondWarningMinutes": 5,
       "auth": {
