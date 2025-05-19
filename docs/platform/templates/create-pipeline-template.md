@@ -241,7 +241,7 @@ Below is a breakdown of each Advanced Option exposed in the Template Studio:
 **Allow selective stage(s) executions?**  
 > • Yes / No
 
-**Description:** Controls whether users can pick and choose which stages to run:
+**Description:** Controls whether users can pick and choose which stages to run.
 
 
 **3. Re-run Settings**
