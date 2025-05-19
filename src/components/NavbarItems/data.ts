@@ -163,7 +163,7 @@ export const moduleIconAndColor = {
   },
   'AI Test Automation': {
     iconUrl:
-      'https://cdn.prod.website-files.com/6222ca42ea87e1bd1aa1d10c/666730eaefeed82bad545d10_Subtract.svg',
+      'https://developer.harness.io/img/logo-ata.svg',
     colors: {
       border: '--mod-aida-200',
       backgroundColor: '--mod-aida-100',
