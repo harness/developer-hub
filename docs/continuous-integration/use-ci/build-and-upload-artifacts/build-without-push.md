@@ -94,7 +94,7 @@ In build-only mode, you build a Docker image locally without pushing it to a reg
   - Use the following environment variables:
     - `PLUGIN_NO_PUSH`: `true` - skips pushing the image.
     - `PLUGIN_BUILDX_LOAD`: `true` - loads the image into local Docker Daemon.
-    - `PLUGIN_TAR_PATH`: Path for saving the image as tar archive (Optional) (e.g. /folder/image.tar) - if you choose to build a tarball image.
+    - `PLUGIN_TAR_PATH`: Path for saving the image as tar archive (Optional) (e.g. /folder/image.tar) - the image will be saved with the name provided. If a folder isn't provided, the image will be saved in the current working directory
 
 ```YAML
   - step: 
@@ -120,9 +120,9 @@ In build-only mode, you build a Docker image locally without pushing it to a reg
 - Add `/var/run` to your stage's shared paths (under Stage > Overview > Shared Paths, as shown in the snippet below).
 - Use the following environment variables:
   - `PLUGIN_NO_PUSH`: `true`  - skips pushing the image.
-  - `PLUGIN_TAR_PATH`: Path for saving the image as tar archive (e.g. /folder/image.tar) 
+  - `PLUGIN_TAR_PATH`: Path for saving the image as tar archive (e.g. /folder/image.tar) - the image will be saved with the name provided. If a folder isn't provided, the image will be saved in the current working directory
   - `PLUGIN_DAEMON_OFF`: `true` - for daemonless BuildX mode - needed for leveraging DinD background service. 
-  - `PLUGIN_BUILDX_LOAD`: `true` - required when running a build on **Harness Cloud** (the resulting image is loaded into local Docker image store to make it available in subsequent steps)
+  - `PLUGIN_BUILDX_LOAD`: `true` - required when building an image (the resulting image is loaded into local Docker image store to make it available in subsequent steps)
 
 :::note
 When the `PLUGIN_DAEMON_OFF` environment variable set to `true`, a background step with a Docker container(DinD) is required, as shown in the snippet below
@@ -392,8 +392,7 @@ Let us look at how this workflow is supported in Harness Cloud and Kubernetes
   - `PLUGIN_NO_PUSH`: `true` (Skips pushing the image during build)
 - Create separate push steps with:
   - `PLUGIN_PUSH_ONLY`: `true` (Pushes without rebuilding)
-  - `PLUGIN_SOURCE_IMAGE`: Name of the image to retag before pushing. **Note: retag is only needed when the Type of the step used in build-only mode id different than the Type of the step used in push-only mode** (e.g. if you build with `BuildAndPushDockerRegistry` and push with `BuildAndPushECR` then retag will be needed).
-
+  - `PLUGIN_SOURCE_IMAGE`: `myorg/myapp:v.<+pipeline.sequenceId>` - Source Image with tag - will be used to retag when image is built once and pushed to multiple repositories
    
 
 ```YAML
@@ -458,7 +457,7 @@ When the `PLUGIN_DAEMON_OFF` environment variable set to `true`, it is recommend
   - `PLUGIN_BUILDX_LOAD`: `true` (Required) The resulting image is loaded into local Docker image store to make it available in subsequent steps.
 - Create separate push steps with:
   - `PLUGIN_PUSH_ONLY`: `true` (Pushes without rebuilding)
-  - `PLUGIN_SOURCE_IMAGE`: Name of the image to retag before pushing. **Note: retag is only needed when the Type of the step used in build-only mode id different than the Type of the step used in push-only mode** (e.g. if you build with `BuildAndPushDockerRegistry` and push with `BuildAndPushECR` then retag will be needed).
+  - `PLUGIN_SOURCE_IMAGE`: `myorg/myapp:v.<+pipeline.sequenceId>` - Source Image with tag - will be used to retag when image is built once and pushed to multiple repositories
   - `PLUGIN_DAEMON_OFF`: `true` (BuildX in daemonless mode)
 
 ```YAML
@@ -538,7 +537,6 @@ Summarizing the snippet above:
   - Docker Registry
   - Amazon ECR - `only push_to_ecr` step uses `PLUGIN_SOURCE_IMAGE` for retag, as it was build by a build ans push step of a different Type.
 
-
 </TabItem>
 </Tabs>
 
@@ -594,7 +592,7 @@ pipeline:
                     config: default
                     target:
                       type: container
-                      workspace: /harness/image.tar
+                      workspace: image.tar
                       detection: manual
                       name: test-image
                       variant: v.<+pipeline.sequenceId>
