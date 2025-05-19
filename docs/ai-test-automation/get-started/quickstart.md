@@ -10,10 +10,12 @@ import TabItem from '@theme/TabItem';
 
 Harness AI Test Automation is an AI-powered testing platform designed to streamline test creation and maintenance for software development teams. The tool uses generative AI to transform plain text test cases into automated tests, and implements self-healing mechanisms that automatically update tests when application interfaces or workflows change, reducing the manual overhead of test maintenance.
 
-
-Getting started with Artifact Registry follows these steps:
+Getting started with AI Test Automation follows these steps:
 - [Create your first test](/docs/ai-test-automation/get-started/quickstart#create-your-first-test)
 - [Create a login task](/docs/ai-test-automation/get-started/quickstart#create-a-login-task)
+
+Note: If you are an existing Relicx customer, please continue to refer to 
+[Relicx documentation](https://docs.relicx.ai/)
 
 ## Prerequisite
 Your application must be accessible from the public cloud. For testing applications behind a corporate firewall please contact Harness support. 
@@ -57,7 +59,7 @@ If you choose to run the test after save, it will be executed and you can follow
 
 ## Create a login task
 
-If your application requires authentication, you may wonder how can you avoid adding the login steps into your test every time. Harness AI Test Automation provides the ability to add a login task that is automatically called when a test is either created or executed. You just need to create it once and add your login credentials.&#x20;
+If your application requires authentication, you may wonder how can you avoid adding the login steps into your test every time. Harness AI Test Automation provides the ability to add a login task that is automatically called when a test is either created or executed. You just need to create it once and add your login credentials;
 
 ![](./static/create-login-task-1.png)
 
