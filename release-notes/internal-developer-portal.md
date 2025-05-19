@@ -442,7 +442,7 @@ This feature enhances security by using dedicated API keys, eliminating the need
 
 👉 Read more about the feature [here](/docs/internal-developer-portal/flows/worflowyaml#authentication).
 
-### [New Feature] POST Method support for Dynamic Pickers
+### [New Feature] POST & PUT Method support for Dynamic Pickers
 [IDP-4292]
 
 Workflow Dynamic Pickers now supports the **POST method**, extending beyond just GET requests.
