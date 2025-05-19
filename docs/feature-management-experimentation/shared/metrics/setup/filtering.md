@@ -14,7 +14,7 @@ Each time a feature flag definition is changed in any way, Harness FME creates a
 
 Select a version of the feature flag to see your metric results calculated for the lifetime of that version.
 
-<img src="/docs/feature-management-experimentation/50-release-monitoring/static/metrics/applying_filters_selecting_a_version.png" alt="applying_filters_selecting_a_version.png" width="700" />
+<img src="/docs/feature-management-experimentation/50-release-monitoring/static/metrics/applying-filters-selecting-a-version.png" alt="applying-filters-selecting-a-version.png" width="700" />
 
 ### Which changes trigger a new version?
 
@@ -49,7 +49,7 @@ To start using custom dates on your analysis, do the following:
 1. Select your feature flag and then click the **Metrics impact** tab.
 2. In the **View impact for** menu list, select **Custom dates**.
  
-   <img src="/docs/feature-management-experimentation/50-release-monitoring/static/metrics/view_impact_for_custom_dates.png" alt="view_impact_for_custom_dates.png" width="700" />
+   <img src="/docs/feature-management-experimentation/50-release-monitoring/static/metrics/view-impact-for-custom-dates.png" alt="view-impact-for-custom_dates.png" width="700" />
 
 3. Select the desired start date for your analysis. You can set a datetime granularity down to the minute. The time is displayed in your device’s local time. If you see grayed out dates, it means either the feature flag was not yet created, or it is beyond our data retention period of 90 days.
 
@@ -57,7 +57,7 @@ To start using custom dates on your analysis, do the following:
 
 5. To start calculations for that period and get results, click the Generate results button. This operation may take 5-10 minutes for a small experiment, and 30 minutes or more for big experiments.
 
-   <img src="/docs/feature-management-experimentation/50-release-monitoring/static/metrics/generate_results_button.png" alt="generate_results_button.png" width="700" />
+   <img src="/docs/feature-management-experimentation/50-release-monitoring/static/metrics/generate-results-button.png" alt="generate-results-button.png" width="700" />
 
 ### Scenarios to be aware of
 
