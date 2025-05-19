@@ -71,7 +71,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
 
 ### Step 2: Create a Cluster
 
-  To provision a new EKS cluster for your SMP environment, use the following `eksctl` configuration YAML. This file sets up a cluster named `create-smp-aws` in the `us-east-2` region with managed node groups, essential IAM policies, and networking settings required for running Harness Self-Managed Platform. 
+  To provision a new EKS cluster for your SMP environment, use the following `eksctl` configuration YAML. This file sets up a cluster named `smp-aws-cl` in the `us-east-2` region with managed node groups, essential IAM policies, and networking settings required for running Harness Self-Managed Platform. 
   
   It is pre-configured with defaults suited for sandbox or testing purposes, but you can modify the values (like cluster name, region, tags, and CIDR) as needed.
 
@@ -116,7 +116,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
       instanceSelector: {}
       instanceType: t3.2xlarge
       labels:
-        alpha.eksctl.io/cluster-name: create-smp-aws # Modify this label to match the kubernetes name
+        alpha.eksctl.io/cluster-name: smp-aws-cl # Modify this label to match the kubernetes name
         alpha.eksctl.io/nodegroup-name: standard-workers
       maxSize: 9
       minSize: 4
@@ -138,7 +138,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
       volumeType: gp3
     metadata:
       # Modify these tags/metadata to your needs
-      name: my-smp-test
+      name: smp-aws-cl
       region: us-east-2
       # Change these tags to anything that would be helpful for your accounting
       tags:
