@@ -22,9 +22,9 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
     - Provision VPC, subnets, and security groups.
     - Create and manage IAM OIDC providers and service accounts.
 2. `kubectl` 
-3 [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
-4 [eksctl](https://eksctl.io/introduction/#installation)
-5. Helm 3.x
+3. [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+4. [`eksctl`](https://eksctl.io/introduction/#installation)
+5. Helm Installed.
 
 :::note
   You can create a cluster using the AWS Management Console, but in this section, we’ll use the AWS CLI (`aws configure`) and `eksctl` to create the cluster. Make sure both tools are installed and configured before proceeding.
@@ -147,7 +147,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
         purpose: sandbox-lab
         scope: smp-test
       # Currently this is the latest version of K8S supported by Harness SMP
-      version: "1.27"
+      version: "1.31"
     privateCluster:
       enabled: false
       skipEndpointCreation: false
@@ -191,19 +191,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
             --approve
           ```
 
-      2.2 Install EBS CSI Driver
-
-        If you're using Amazon EKS add-ons:
-
-        ```bash
-          aws eks create-addon \
-          --cluster-name <your-cluster-name> \
-          --addon-name aws-ebs-csi-driver \
-          --service-account-role-arn arn:aws:iam::156272853481:role/AmazonEKS_EBS_CSI_DriverRole \
-          --region <your-region>
-        ```
-
-        Or via `eksctl`:
+      2.2 Install EBS CSI Driver:
 
         ```bash
           eksctl create addon \
@@ -240,7 +228,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
 1. Create a namespace for your deployment.
 
    ```bash
-   kubectl create namespace harness-aws
+   kubectl create namespace <harness-namespace>
    ```
 
 2. Download the latest Helm chart from the [Harness GitHub Releases page](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true). Under the **Assets** section, locate and download the `harness-<release-version>.tgz` file.
@@ -271,7 +259,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
 4. Install the Helm chart.
 
     ```bash
-      helm install harness harness/ -f <override-file>.yaml -n harness-aws
+      helm install harness harness/ -f <override-file>.yaml -n <harness-namespace>
     ```
 
 :::info
@@ -573,13 +561,13 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
       ```
 
       ```
-      kubectl create -f loadbalancer.yaml -n harness-aws
+      kubectl create -f loadbalancer.yaml -n <harness-namespace>
       ```
 
 6. Get the ELB URL.
 
    ```bash
-   kubectl get service -n harness-aws
+   kubectl get service -n <harness-namespace>
    ```
 
 7. Make a note of the `EXTERNAL-IP` for the `harness-ingress-controller`. It should look like `<string>.us-east-2.elb.amazonaws.com`.
@@ -614,7 +602,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
 9. Upgrade the Helm deployment, applying your new ELB as the load balancer to your configuration.
 
    ```bash
-    helm upgrade harness harness/ -f override-demo.yaml -n harness-aws
+    helm upgrade harness harness/ -f override-demo.yaml -n <harness-namespace>
    ```
 
 10. Navigate to the sign up UI at `https://<YOUR_ELB_ADDRESS>/auth/#/signup` to create your admin user.
