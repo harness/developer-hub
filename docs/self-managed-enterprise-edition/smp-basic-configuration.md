@@ -21,6 +21,289 @@ Before you begin, ensure the following requirements are met:
 
 For obtaining a license, please contact [Harness Support](mailto:support@harness.io).
 
+## Load Balancer
+
+### Amazon Elastic Kubernetes Service (EKS)
+
+These section will guide you through configuring AWS Application Load Balancer (ALB) and Network Load Balancer (NLB) for Harness by overriding the YAML configuration file. 
+
+This enables seamless routing of traffic to your Harness services while maintaining high availability and performance. 
+
+:::tip
+  ALB is recommended for HTTP/HTTPS traffic and provides advanced routing capabilities. NLB is recommended when you need extreme performance, static IPs, or handling of non-HTTP/HTTPS protocols
+:::
+
+<Tabs>
+  <TabItem value="ALB" label="AWS Application Load Balancer (ALB)" default>
+   
+  **Prerequisites**
+
+  - EKS cluster with [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html#lbc-overview) installed.
+
+  **Installation Steps**
+
+  1. Create Namespace
+
+      ```bash
+        kubectl create namespace harness-alb
+      ```
+
+  2. To retrieve the ALB DNS Name, Run the following command:
+
+      ```bash
+        kubectl get ingress -n harness-alb
+      ```
+  > The value in the **ADDRESS** column is the DNS name of your Application Load Balancer (ALB).
+
+  3. Configure a standalone ALB or modify the override file.
+
+      - To create a standalone ALB, create a file named `alb-config.yaml`, then copy and save the YAML content provided below.
+
+            ```yaml
+              apiVersion: v1
+              kind: Service
+              metadata:
+                name: harness-ingress
+                namespace: harness-alb
+                annotations:
+                  service.beta.kubernetes.io/aws-load-balancer-type: "external"
+                  service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+                  service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+              spec:
+                type: LoadBalancer
+                ports:
+                  - port: 80
+                    targetPort: 80
+                    protocol: TCP
+                    name: http
+                  - port: 443
+                    targetPort: 443
+                    protocol: TCP
+                    name: https
+                selector:
+                  app: harness-ng
+            ```
+
+        Apply the configuration:
+        
+          ```bash
+            kubectl apply -f alb-config.yaml
+          ```
+
+      - To configure an ALB within the override file, create a `harness-alb-demo.yaml` file and use the YAML configuration provided below. Ensure that the required modules from `values.yaml` are included as needed.
+
+            ```yaml
+              global:
+                # Enable ingress
+                ingress:
+                  enabled: true
+                  className: "alb"                  
+                # Load balancer configuration
+                loadbalancerURL: "https://<YOUR-ALB-DNS>"  # Update this                
+                # Host configuration
+                hosts:
+                  - "<YOUR-ALB-DNS>"  # Update this
+
+              platform:
+                bootstrap:
+                  networking:
+                    nginx:
+                      service:
+                        annotations:
+                          kubernetes.io/ingress.class: alb
+                          alb.ingress.kubernetes.io/scheme: internet-facing
+                          alb.ingress.kubernetes.io/target-type: ip
+                          alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+                          alb.ingress.kubernetes.io/ssl-redirect: '443'
+                      loadBalancerEnabled: false
+                      create: true
+            ```
+
+  4. Update the `harness-alb-demo.yaml` file with your ALB DNS name, then upgrade your Helm release.
+    
+        ```bash
+          helm upgrade harness <your-path>/harness/ \
+            -n harness-alb \
+            -f harness-alb-demo.yaml
+        ```
+
+  </TabItem>
+
+  <TabItem value="NLB" label="AWS Network Load Balancer (NLB)" default>
+
+**Prerequisites**
+
+  - EKS cluster with [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html#lbc-overview) installed.
+
+**Installation Steps**
+
+  1. Create Namespace
+
+      ```bash
+        kubectl create namespace harness-nlb
+      ```
+
+  2. To retrieve the ALB DNS Name, Run the following command:
+
+      ```bash
+        kubectl get ingress -n harness-nlb
+      ```
+  > The value in the **ADDRESS** column is the DNS name of your Application Load Balancer (ALB).
+
+  3. Configure a standalone NLB or modify the override file.
+
+      - To create a standalone NLB, create a file named `nlb-config.yaml`, then copy and save the YAML content provided below.
+
+            ```yaml
+              apiVersion: v1
+              kind: Service
+              metadata:
+                name: harness-nlb
+                namespace: harness
+                annotations:
+                  service.beta.kubernetes.io/aws-load-balancer-type: "external"
+                  service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+                  service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+                  service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+              spec:
+                type: LoadBalancer
+                ports:
+                  - port: 80
+                    targetPort: 80
+                    protocol: TCP
+                    name: http
+                  - port: 443
+                    targetPort: 443
+                    protocol: TCP
+                    name: https
+                selector:
+                  app: harness-ng
+            ```
+
+        Apply the configuration:
+        
+          ```bash
+            kubectl apply -f nlb-config.yaml
+          ```
+
+      - To configure an NLB within the override file, create a `harness-nlb-demo.yaml` file and use the YAML configuration provided below. Ensure that the required modules from values.yaml are included as needed.
+
+            ```yaml
+              global:
+                # Load balancer configuration
+                loadbalancerURL: "https://<YOUR-NLB-DNS>"  # Update this
+                
+                # Enable ingress
+                ingress:
+                  enabled: true
+                  className: "nlb"
+                                
+                # Host configuration
+                hosts:
+                  - "<YOUR-NLB-DNS>"  # Update this
+
+                # TLS configuration
+                tls:
+                  enabled: true
+                  secretName: harness-tls
+
+                              platform:
+                bootstrap:
+                  networking:
+                    nginx:
+                      service:
+                        annotations:
+                          service.beta.kubernetes.io/aws-load-balancer-type: nlb
+                          service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+                      loadBalancerEnabled: false
+                      create: true
+            ```
+
+  4. Update the `harness-nlb-demo.yaml` file with your ALB DNS name, then upgrade your Helm release.
+    
+        ```bash
+        helm upgrade harness <your-path>/harness/ \
+          -n harness-nlb \
+          -f harness-nlb-demo.yaml
+        ```
+  </TabItem>
+</Tabs>
+
+5. Verify your installation by ensuring all services are running, then retrieve the Ingress endpoint and use it to access the SMP UI.
+
+  - Check your `kubectl` Services
+
+      ```bash
+      kubectl get svc -n <harness-namespace>
+      ```
+
+  -  Check Ingress
+  
+      ```bash
+      kubectl get ingress -n <harness-namespace>
+      ```
+
+  - Check and verify your external IP address or DNS name to ensure access to the SMP UI.
+
+      ```bash
+      https://<YOUR-IP-or-ALB/NLB-DNS>/    
+      ```
+
+### Google Kubernetes Engine (GKE)
+
+This section explains how to configure Google Cloud Load Balancer for Harness SMP on Google Kubernetes Engine (GKE).
+
+**Prerequisites**
+
+- Static IP address in GCP (optional but recommended)
+
+**Installation**
+
+1. Create Namespace
+
+    ```bash
+      kubectl create namespace harness-gcp 
+    ```
+
+2. [Download](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true) and Extract the Helm Chart, Untar the downloaded chart to a desired directory.
+
+3. Configure Load Balancer, create a `harness-smp-gcp.yaml`, then copy and save the YAML content provided below.
+
+      ```yaml
+        global:
+          # Load balancer configuration
+          loadbalancerURL: "http://<YOUR-IP-ADDRESS>"
+          
+          # Ingress configuration
+          ingress:
+            enabled: true
+            annotations: {}
+            loadBalancerIP: "<YOUR-IP-ADDRESS>"
+            className: "harness"
+            loadBalancerEnabled: true
+            useSelfSignedCert: false
+            hosts:
+              - ""
+
+          # Enable NGINX
+          nginx:
+            create: true
+
+          # Enable default backend
+          defaultbackend:
+            create: true
+      ```
+
+4. Install Harness
+
+  ```bash
+    helm install harness harness/ \
+      -n harness-gcp  \
+      -f harness-smp-gcp.yaml
+  ```
+
+5. To access Harness UI, navigate to `http://<YOUR-IP-ADDRESS-or-DNS>` in your browser.
+
 ## Configuration and Installation
 
 The Harness Self-Managed Platform (SMP) is deployed using Helm charts, allowing you to customize the deployment through YAML override files. This section provides a minimal configuration to help you get started quickly. 
@@ -117,310 +400,6 @@ The modules such as CI, CD, CCM, Chaos, etc. can be included or excluded by sett
       iacm:
         enabled: false
   ```
-
-## Load Balancer
-
-### Amazon Elastic Kubernetes Service (EKS)
-
-These section will guide you through configuring AWS Application Load Balancer (ALB) and Network Load Balancer (NLB) for Harness by overriding the YAML configuration file. 
-
-This enables seamless routing of traffic to your Harness services while maintaining high availability and performance. 
-
-:::tip
-  ALB is recommended for HTTP/HTTPS traffic and provides advanced routing capabilities. NLB is recommended when you need extreme performance, static IPs, or handling of non-HTTP/HTTPS protocols
-:::
-
-<Tabs>
-  <TabItem value="ALB" label="AWS Application Load Balancer (ALB)" default>
-   
-  **Prerequisites**
-
-  - EKS cluster with [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html#lbc-overview) installed.
-
-  **Installation Steps**
-
-  1. Create Namespace
-
-      ```bash
-        kubectl create namespace harness-alb
-      ```
-
-  2. Configure a standalone ALB or modify the override file.
-
-      - To create a standalone ALB, create a file named `alb-config.yaml`, then copy and save the YAML content provided below.
-
-            ```yaml
-              apiVersion: v1
-              kind: Service
-              metadata:
-                name: harness-ingress
-                namespace: harness-alb
-                annotations:
-                  service.beta.kubernetes.io/aws-load-balancer-type: "internal"
-                  service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
-                  service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
-              spec:
-                type: LoadBalancer
-                ports:
-                  - port: 80
-                    targetPort: 80
-                    protocol: TCP
-                    name: http
-                  - port: 443
-                    targetPort: 443
-                    protocol: TCP
-                    name: https
-                selector:
-                  app: harness-ng
-            ```
-
-        Apply the configuration:
-        
-          ```bash
-            kubectl apply -f alb-config.yaml
-          ```
-
-      - To configure an ALB within the override file, create a `harness-alb-demo.yaml` file and use the YAML configuration provided below. Ensure that the required modules from `values.yaml` are included as needed.
-
-            ```yaml
-              global:
-                # Enable ingress
-                ingress:
-                  enabled: true
-                  className: "alb"                  
-                # Load balancer configuration
-                loadbalancerURL: "https://<YOUR-ALB-DNS>"  # Update this                
-                # Host configuration
-                hosts:
-                  - "<YOUR-ALB-DNS>"  # Update this
-
-              platform:
-                bootstrap:
-                  networking:
-                    nginx:
-                      service:
-                        annotations:
-                          kubernetes.io/ingress.class: alb
-                          alb.ingress.kubernetes.io/scheme: internet-facing
-                          alb.ingress.kubernetes.io/target-type: ip
-                          alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-                          alb.ingress.kubernetes.io/ssl-redirect: '443'
-                      loadBalancerEnabled: true
-                      create: true
-            ```
-
-  3. Add the Harness Helm repository, update the repo index, and install Harness Helm chart with your custom values-override.yaml file.
-
-      ```bash
-
-        # Add Harness repository
-          
-          helm repo add harness https://harness.github.io/helm-charts
-          helm repo update
-
-        # Install Harness
-          
-          helm install harness <your-path>/harness/ \
-            -n harness-alb \
-            -f harness-alb-demo.yaml 
-      ```
-
-4. To retrieve the ALB DNS Name, Run the following command:
-
-      ```bash
-        kubectl get ingress -n harness-alb
-      ```
-> The value in the **ADDRESS** column is the DNS name of your Application Load Balancer (ALB).
-
-5. Update the `harness-alb-demo.yaml` file with your ALB DNS name, then upgrade your Helm release.
-  
-      ```bash
-        helm upgrade harness <your-path>/harness/ \
-          -n harness-alb \
-          -f harness-alb-demo.yaml
-      ```
-
-  </TabItem>
-
-  <TabItem value="NLB" label="AWS Network Load Balancer (NLB)" default>
-
-**Prerequisites**
-
-  - EKS cluster with [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html#lbc-overview) installed.
-
-**Installation Steps**
-
-  1. Create Namespace
-
-      ```bash
-        kubectl create namespace harness-nlb
-      ```
-
-  2. Configure a standalone NLB or modify the override file.
-
-      - To create a standalone NLB, create a file named `nlb-config.yaml`, then copy and save the YAML content provided below.
-
-            ```yaml
-              apiVersion: v1
-              kind: Service
-              metadata:
-                name: harness-nlb
-                namespace: harness
-                annotations:
-                  service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
-                  service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
-                  service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
-                  service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
-              spec:
-                type: LoadBalancer
-                ports:
-                  - port: 80
-                    targetPort: 80
-                    protocol: TCP
-                    name: http
-                  - port: 443
-                    targetPort: 443
-                    protocol: TCP
-                    name: https
-                selector:
-                  app: harness-ng
-            ```
-
-        Apply the configuration:
-        
-          ```bash
-            kubectl apply -f nlb-config.yaml
-          ```
-
-      - To configure an NLB within the override file, create a `harness-nlb-demo.yaml` file and use the YAML configuration provided below. Ensure that the required modules from values.yaml are included as needed.
-
-            ```yaml
-              global:
-                # Load balancer configuration
-                loadbalancerURL: "https://<YOUR-NLB-DNS>"  # Update this
-                
-                # Enable ingress
-                ingress:
-                  enabled: true
-                  className: "nlb"
-                                
-                # Host configuration
-                hosts:
-                  - "<YOUR-NLB-DNS>"  # Update this
-
-                # TLS configuration
-                tls:
-                  enabled: true
-                  secretName: harness-tls
-
-                              platform:
-                bootstrap:
-                  networking:
-                    nginx:
-                      service:
-                        annotations:
-                          service.beta.kubernetes.io/aws-load-balancer-type: nlb
-                          service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
-                      loadBalancerEnabled: true
-                      create: true
-            ```
-
-3. To retrieve the ALB DNS Name, Run the following command:
-
-      ```bash
-        kubectl get ingress -n harness-nlb
-      ```
-> The value in the **ADDRESS** column is the DNS name of your Application Load Balancer (ALB).
-
-4. Update the `harness-nlb-demo.yaml` file with your ALB DNS name, then upgrade your Helm release.
-  
-      ```bash
-        helm upgrade harness <your-path>/harness/ \
-          -n harness-nlb \
-          -f harness-nlb-demo.yaml
-      ```
-  </TabItem>
-</Tabs>
-
-5. Verify your installation by ensuring all services are running, then retrieve the Ingress endpoint and use it to access the SMP UI.
-
-  - Check your `kubectl` Services
-
-    ```bash
-      kubectl get svc -n <harness-namespace>
-    ```
-
-  -  Check Ingress
-  
-    ```bash
-      kubectl get ingress -n <harness-namespace>
-    ```
-
-  - Check and verify your external IP address or DNS name to ensure access to the SMP UI.
-
-    ```bash
-      https://<YOUR-IP-or-ALB/NLB-DNS>/    
-    ```
-
-### Google Kubernetes Engine (GKE)
-
-This section explains how to configure Google Cloud Load Balancer for Harness SMP on Google Kubernetes Engine (GKE).
-
-**Prerequisites**
-
-- Static IP address in GCP (optional but recommended)
-
-**Installation**
-
-1. Create Namespace
-
-    ```bash
-      kubectl create namespace harness-gcp 
-    ```
-
-2. [Download](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true) and Extract the Helm Chart, Untar the downloaded chart to a desired directory.
-
-      ```bash
-        tar -xzf harness-<release-version>.tgz -C <your-target-directory>
-        cd <your-target-directory>/harness
-      ```
-
-3. Configure Load Balancer, create a `harness-smp-gcp.yaml`, then copy and save the YAML content provided below.
-
-      ```yaml
-        global:
-          # Load balancer configuration
-          loadbalancerURL: "http://<YOUR-IP-ADDRESS>"
-          
-          # Ingress configuration
-          ingress:
-            enabled: true
-            annotations: {}
-            loadBalancerIP: "<YOUR-IP-ADDRESS>"
-            className: "harness"
-            loadBalancerEnabled: true
-            useSelfSignedCert: false
-            hosts:
-              - ""
-
-          # Enable NGINX
-          nginx:
-            create: true
-
-          # Enable default backend
-          defaultbackend:
-            create: true
-      ```
-
-4. Install Harness
-
-  ```bash
-    helm install harness harness/ \
-      -n harness-gcp  \
-      -f harness-smp-gcp.yaml
-  ```
-
-5. To access Harness UI, navigate to `http://<YOUR-IP-ADDRESS-or-DNS>` in your browser.
 
 ## Licenses
 
