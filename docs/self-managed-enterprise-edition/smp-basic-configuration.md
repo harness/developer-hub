@@ -354,7 +354,7 @@ However, you can scale [resources](#resource-profiles) up or down based on your 
 
 Modules are functionalities of the Harness Platform, each designed for a specific use. In the Self-Managed Platform (SMP), you can control which modules are active by updating the YAML.
 
-The modules such as CI, CD, CCM, Chaos, etc. can be included or excluded by setting their values to `true` or `false` in the `smp-demo-install.yaml` override file. 
+The modules such as CI, CD, CCM, Chaos, etc. can be included or excluded by setting their values to `true` or `false` in the `harness-smp-demo.yaml` override file. 
 
   ```yaml
     global:
