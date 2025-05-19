@@ -380,7 +380,7 @@ const config: Config = {
             },
             {
               label: 'AI Test Automation',
-              to: 'https://www.harness.io/products/ai-native-software-delivery#ai-test-automation',
+              to: 'https://www.harness.io/products/ai-test-automation',
             },
           ],
         },

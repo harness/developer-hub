@@ -10,7 +10,7 @@ sidebar_position: 20
 
 In interactive authoring of tests, Harness AIT automatically records each user action as you interact with your application. These actions create a sequence of steps that represent your activity. While user actions are captured automatically, you can also add assertions to ensure test steps execute as expected.
 
-This document provides an overview of all supported user actions. For information on assertions, please review the [Assertions](./Assertions.md) section.
+This document provides an overview of all supported user actions. For information on assertions, please review the [Assertions](./assertions.md) section.
 
 ## Supported Actions
 
