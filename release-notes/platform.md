@@ -130,7 +130,7 @@ The following deprecated API endpoints are longer supported:
 
 ## May 2025
 
-### Version 1.90.x <!-- May 19, 2025>
+### Version 1.90.x <!-- May 19, 2025-->
 
 #### Fixed issues
 
