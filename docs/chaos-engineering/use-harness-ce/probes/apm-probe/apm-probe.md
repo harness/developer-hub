@@ -22,5 +22,7 @@ APM probes are used when your application is being monitored by an APM system. T
 | [App Dynamics](./appdymanics-probe.md) | YES | NO | NO | NO |
 | [Splunk Observability](./splunk-probe.md) | YES | NO | NO | NO |
 
-Note: Kubernetes HD means the Kubernetes infrastructure that is driven by Harness Delegate.
+:::info note
+Kubernetes HD means the Kubernetes infrastructure that is driven by Harness Delegate.
+:::
 
