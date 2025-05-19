@@ -141,8 +141,8 @@ The following deprecated API endpoints are longer supported:
 #### New Feature and Enhancement 
 
 - SMP customers can now see the chart version in the Harness UI under Account Details. [PL-62579]
-- All SMP services now support custom Istio gateway. [PL-61322]
-- SMP services now supports Istio and virtual services for better traffic control and routing. [PL-59078]
+- All SMP services now support a custom Istio gateway. [PL-61322]
+- All SMP services now support Istio and Virtual Services. [PL-59078]
 
 ### Version 1.89.x <!--May 13, 2025-->
 
