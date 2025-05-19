@@ -84,15 +84,19 @@ static/  @rohanmaharjan100 @wei-harness
 /docs/faqs/security-testing-orchestration/ @tejakummarikuntla
 
 # CCM Docs
-/docs/cloud-cost-management/ @Rohit-Kaliki @joeyouss @iamanmolm @sdsingh07 @sandyydk @abhinavsingh-ccm @riyasyash
-/release-notes/cloud-cost-management.md @Rohit-Kaliki @joeyouss @himanshu-jain-harness @suryanarayanan-venkatesan
-/src/components/Roadmap/data/ccmData.ts @Rohit-Kaliki @joeyouss @rajarshee-harness
-/src/components/Docs/data/cloudCostManagementData.ts @Rohit-Kaliki @joeyouss @rajarshee-harness
+
+/docs/cloud-cost-management/3-use-ccm-cost-reporting @joeyouss @sdsingh07 @rajarshee-harness
+/docs/cloud-cost-management/4-use-ccm-cost-optimization @joeyouss @sandyydk @riyasyash @rajarshee-harness @josephdlopez @jyotiarora-harness @shalinlk
+/docs/cloud-cost-management/5-use-ccm-cost-governance @joeyouss @iamanmolm @rajarshee-harness @josephdlopez @sdsingh07
+/docs/cloud-cost-management/ @joeyouss @josephdlopez
+/release-notes/cloud-cost-management.md @joeyouss @rajarshee-harness @josephdlopez 
+/src/components/Roadmap/data/ccmData.ts @joeyouss @rajarshee-harness
+/src/components/Docs/data/cloudCostManagementData.ts @joeyouss @rajarshee-harness
 
 # FirstGen CCM Docs
-/docs/category/cloud-cost-management/ @Rohit-Kaliki @joeyouss
+/docs/category/cloud-cost-management/ @josephdlopez @joeyouss
 # CCM FAQs
-/docs/faqs/cloud-cost-management-faqs/ @Rohit-Kaliki @joeyouss
+/docs/faqs/cloud-cost-management-faqs/ @josephdlopez @joeyouss
 
 # CET Docs
 /docs/continuous-error-tracking/ @M-Tsur
