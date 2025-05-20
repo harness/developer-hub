@@ -356,10 +356,7 @@ Updating an application that contains a `valuesObject` while using an agent olde
 
 - Users can now **Uninstall Helm charts** using a native Helm Uninstall step in the Deploy stage. Currently, this setting is behind the Feature Flag `CDS_HELM_DELETE_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**CDS-98454**)
 
-- Previously, when there was an extreme load on the agent, a Get Application API call could take approximately 30 seconds to complete. This was fixed in two ways:
-  - A new parameter, `fetchFromHarness`, was introduced in the Get Application API. This setting, when set to `true`, will fetch an application directly from Harness. This is currently fallback if the task times out on the GitOps Agent. Use this with caution as it may not return the latest state of the application.
-  - The GitOps Agent Helm Chart has new values to configure the number of task processors: `numFetchers`, `numResponders`, and `numProcessors`. These control the number of task processing routines on the agent and are helpful if there is a high concurrent load on a specific agent.
-  - (**CDS-106863**, **ZD-78359**)
+- Users can now trigger Harness pipelines natively when **pushing a tag to GitHub**, enabling seamless automation and enhanced integration for tag-based workflows. (**CDS-70773**)
 
 - Users can now rely on Harness to accurately detect failures in **ECS Rolling Deployments**. Currently, this setting is behind the Feature Flag `CDS_ECS_MONITOR_TASK_STATUS`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag. (**CDS-107046**)
 
