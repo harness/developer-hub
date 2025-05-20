@@ -1,6 +1,8 @@
 ---
 title: Spot Elastigroup
 description: Deploy a Spot Elastigroup using Harness CD.
+redirect_from:
+  - /docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment
 sidebar_position: 1
 ---
 

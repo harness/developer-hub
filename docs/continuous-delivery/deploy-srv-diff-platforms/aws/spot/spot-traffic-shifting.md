@@ -14,7 +14,7 @@ Currently, this feature is behind the feature flag `CDS_SPOT_TRAFFIC_SHIFT`. Con
 
 Unlike ASG Blue-Green (which uses the Auto Scaling API to adjust weights on a single listener rule), Spot Elastigroup Blue-Green requires you to define distinct listener rules (or listeners) for prod and stage target groups. During deployment, Harness updates those rules to shift traffic incrementally.
 
-You can configure **traffic shifting** between target groups attached to the same listener rule, giving you the flexibility to:
+You can configure traffic shifting between target groups attached to the same listener rule, giving you the flexibility to:
 
 - Use multiple target groups in a **single rule** with configurable traffic distribution across target groups.
 - Test new versions incrementally in dev and then production environments.
@@ -27,7 +27,7 @@ You can configure **traffic shifting** between target groups attached to the sam
 - **Safe rollback**: Revert to original routing by restoring listener rules.  
 - **Flexible topology**: Use either two rules on one listener or two separate listeners.
 
-## Set up a Elastigroup Blue-Green Traffic Shifting Step Group
+## Set up Elastigroup Blue-Green Traffic Shifting
 
 1. Add an Spot stage to your pipeline.
 2. Add a Harness Spot Elastigroup service in the stage Service. For more information, refer [Adding an Elastigroup Service](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-deployment#add-a-harness-service)
@@ -132,7 +132,7 @@ In the **Traffic Shifting** configuration, you have the option to either:
 - **Inherit** the configuration from the previous **Elastigroup Blue Green Traffic Shift step** using the **Inherit** checkbox, or  
 - Select the **Standalone** checkbox to define a new configuration.
 
-### Inherit
+#### Inherit
 
 When **Inherit** is selected:
 
@@ -168,7 +168,7 @@ Sample YAML
   ```
 </details>
 
-### Standalone
+#### Standalone
 
 When the **Standalone** checkbox is selected:
 
@@ -260,26 +260,11 @@ Rollback behavior depends on the mode used:
 
 In both cases, the original forward configuration is restored in the event of a failure or rollback trigger, using the appropriate rollback step for each mode.
 
-## Comparison: Traditional Blue-Green vs. Traffic Shifting
+## Limitations
 
-### Traditional Blue-Green Deployment (Pre-Traffic Shifting)
-
-- Requires two separate listener rules (typically configured on different ports)
-- New version is deployed to the Stage target group associated with a different listener rule (commonly mapped to a separate port)
-- After manual/automated validation, a Swap Target Groups step is used to direct 100% traffic to the new version
-- You cannot test the new version on live production traffic until after the swap
-- Swap is atomic—no gradual rollout or partial traffic shift
-
-### Blue-Green Deployment with Traffic Shifting (New Flow)
-
-- Uses a single listener rule with weighted target groups
-- New version is deployed to a target group under the same listener rule as the old version
-- Allows progressive traffic rollout (e.g., 10% → 50% → 100%) using Elastigroup Traffic Shift step
-- Eliminates need for separate ports or manual AWS CLI scripts
-- Enables staged rollout with approval gates, monitoring, and rollback safety
-- No Swap step needed—transition to full traffic is handled by adjusting target group weights
-
-Note: This new traffic-shifting approach makes Blue-Green deployments safer, more controlled, and production-traffic-aware.
+- For supported target group weights and configuration options, refer to the [AWS ALB Listener Rules documentation](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html).
+- Maximum of 5 target groups per rule (AWS limitation).
+- **Swap** step and **Auto Scaling during swap** are not supported.
 
 ## General Solution Pattern for Traffic Shifting
 
@@ -293,11 +278,30 @@ For customers who want to implement progressive traffic shifting (e.g., 10% → 
 - Use **Elastigroup Traffic Shift** steps to adjust traffic incrementally (e.g., 10%, 50%, 100%) with optional approval gates between shifts.
 - Finalize with a full cut-over to the stage target group, which is tagged as **BLUE** when traffic reaches 100%.
 
-## Limitations
 
-- For supported target group weights and configuration options, refer to the [AWS ALB Listener Rules documentation](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html).
-- Maximum of 5 target groups per rule (AWS limitation).
-- **Swap** step and **Auto Scaling during swap** are not supported.
+<details>
+<summary>Comparison: Traditional Blue-Green vs. Traffic Shifting</summary>
+
+**Traditional Blue-Green Deployment (Pre-Traffic Shifting)**
+
+- Requires two separate listener rules (typically configured on different ports)
+- New version is deployed to the Stage target group associated with a different listener rule (commonly mapped to a separate port)
+- After manual/automated validation, a Swap Target Groups step is used to direct 100% traffic to the new version
+- You cannot test the new version on live production traffic until after the swap
+- Swap is atomic—no gradual rollout or partial traffic shift
+
+**Blue-Green Deployment with Traffic Shifting (New Flow)**
+
+- Uses a single listener rule with weighted target groups
+- New version is deployed to a target group under the same listener rule as the old version
+- Allows progressive traffic rollout (e.g., 10% → 50% → 100%) using Elastigroup Traffic Shift step
+- Eliminates need for separate ports or manual AWS CLI scripts
+- Enables staged rollout with approval gates, monitoring, and rollback safety
+- No Swap step needed—transition to full traffic is handled by adjusting target group weights
+
+Note: This new traffic-shifting approach makes Blue-Green deployments safer, more controlled, and production-traffic-aware.
+
+</details>
 
 ## Example Use Case: Controlled Traffic Shifting Across Environments
 
