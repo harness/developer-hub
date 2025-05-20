@@ -69,7 +69,17 @@ You can refresh the codebase index by clicking on `...` at the top of your chat 
 
 ### Context providers
 
-You can use [context providers](https://docs.continue.dev/customize/context-providers) to feed the agent content as context for the query. Harness supports the use of these context providers and you can use them with the code agent.  
+Context providers allow you to feed relevant content to the agent as input context for your queries. Harness supports several context providers, which can be used alongside the code agent to improve response accuracy.
+
+Examples include:
+
+- @Codebase: Reference the most relevant snippets from your codebase.
+
+- @File: Reference any file in your current workspace.
+
+- @Search: Reference the results of a codebase search, similar to what you'd see in VS Code search.
+
+To explore all available context providers, type `@` in the **Harness extension → Open Chat** window.
 
 ## Troubleshooting
 
