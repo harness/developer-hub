@@ -238,7 +238,7 @@ Use these steps to delete an API key and all of its tokens. To delete individual
 </TabItem>
 </Tabs>
 
-## Expire tokens
+## Token Expiry
 
 When creating a token, you can choose how long it stays active. You can set it to expire in 30, 90, or 180 days — or pick a custom date. If you don't want it to expire, select No expiration.
 
@@ -249,6 +249,5 @@ To set the expiration, Go to Profile Overview → My API Keys → Token.
 You can set expiration for both User tokens and Service Account tokens.
 
 :::note
-  Token expiration events are recorded in the audit trail logs. Expiration is checked every 5 minutes, so there may be a delay of up to 5 minutes between when a token expires and when the event is logged.
-  ![expired-token-audit](./static/expired-token-audit.png)
+  Token expiration events are recorded in the audit logs. Expiration is checked every 5 minutes, so there may be a delay of up to 5 minutes between when a token expires and when the event is logged.
 :::
