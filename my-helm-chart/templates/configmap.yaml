@@ -6,36 +6,27 @@ data:
   config.json: |
     {
       "authConfig": {
-        "tenant": "OIDP",
-        "loginApiUrl": "ksdn",
-        "restApiUrl": "asdjn",
-        "ssoFlag": true,
-        "userIdleTime": 900,
-        "userIdleTimeOut": 900,
-        "tokenExpFirstWarningMinutes": 15,
-        "tokenExpSecondWarningMinutes": 5,
+        "tenant": "{{ .Values.authConfig.tenant }}",
+        "loginApiUrl": "{{ .Values.authConfig.loginApiUrl }}",
+        "restApiUrl": "{{ .Values.authConfig.restApiUrl }}",
+        "ssoFlag": {{ .Values.authConfig.ssoFlag }},
+        "userIdleTime": {{ .Values.authConfig.userIdleTime }},
+        "userIdleTimeOut": {{ .Values.authConfig.userIdleTimeOut }},
+        "tokenExpFirstWarningMinutes": {{ .Values.authConfig.tokenExpFirstWarningMinutes }},
+        "tokenExpSecondWarningMinutes": {{ .Values.authConfig.tokenExpSecondWarningMinutes }},
         "auth": {
-          "issuer": "asdj",
-          "clientId": "ADMINCONSOLE_NEXTGEN_DEV",
-          "redirectUri": "asd",
-          "dummyClientSecret": "d0744e740ec90042800bbca0d76d0eca87fa",
-          "logoutUrl": "asdb",
-          "idpLogoutUrl": "asdjb",
-          "requireHttps": false,
-          "idpApiKey": "FIS",
-          "interceptUrls": ["origin"],
-          "responseType": "code",
-          "autoRefresh": true,
-          "listenToToken": "access_token"
+          "issuer": "{{ .Values.authConfig.auth.issuer }}",
+          "clientId": "{{ .Values.authConfig.auth.clientId }}",
+          "redirectUri": "{{ .Values.authConfig.auth.redirectUri }}",
+          "dummyClientSecret": "{{ .Values.authConfig.auth.dummyClientSecret }}",
+          "logoutUrl": "{{ .Values.authConfig.auth.logoutUrl }}",
+          "idpLogoutUrl": "{{ .Values.authConfig.auth.idpLogoutUrl }}",
+          "requireHttps": {{ .Values.authConfig.auth.requireHttps }},
+          "idpApiKey": "{{ .Values.authConfig.auth.idpApiKey }}",
+          "interceptUrls": [{{ join "," (pluck "interceptUrls" .Values.authConfig.auth | first | quote) }}],
+          "responseType": "{{ .Values.authConfig.auth.responseType }}",
+          "autoRefresh": {{ .Values.authConfig.auth.autoRefresh }},
+          "listenToToken": "{{ .Values.authConfig.auth.listenToToken }}"
         }
       }
     }
-
-
-
-
-
-
-
-
-
