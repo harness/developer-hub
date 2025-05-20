@@ -65,6 +65,8 @@ We have added support for replacement schedules with options: **Always, Never, o
 
 <DocImage path={require('./static/edit-instance.jpeg')} width="50%" height="50%" title="Click to view full-size image" />
 
+- **Validation Enhancements for Cost Categories**: To prevent naming conflicts we’ve added new validations following which **Cost Buckets and Shared Costs** cannot have the **same name** within the same Cost Category. A validation check has been added to ensure Cost Bucket names are unique within a Cost Category, regardless of case sensitivity. Similarly, Shared Cost names must also be unique within the same Cost Category (case-insensitive check). [CCM-21900]
+
 ### Bug Fixes
 
 - The [Harness API for Nodepool Recommendations](https://apidocs.harness.io/tag/Cloud-Cost-Recommendations#operation/listRecommendations) previously did not return the Account ID in the response. This issue has now been fixed, and the API will include the Account ID as part of the response payload. [CCM-21082]
