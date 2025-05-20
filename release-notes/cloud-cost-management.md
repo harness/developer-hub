@@ -71,7 +71,7 @@ We have added support for replacement schedules with options: **Always, Never, o
 
 - The [Harness API for Nodepool Recommendations](https://apidocs.harness.io/tag/Cloud-Cost-Recommendations#operation/listRecommendations) previously did not return the Account ID in the response. This issue has now been fixed, and the API will include the Account ID as part of the response payload. [CCM-21082]
 
-- **Improved Accuracy in Cost Category Anomaly Detection:** We’ve improved how cost category rules are applied to anomaly filters within Perspectives. This update ensures that anomalies tied to cost category rules ( combinations of AND/OR conditions) are shown more accurately. [CCM-21712]
+- **Improved Accuracy in Cost Category Anomaly Detection:** We’ve improved how cost category rules are applied to anomaly filters within Perspectives. Specifically, OR filters were incorrectly being converted to AND filters, which resulted in the expected anomalies not appearing in the Perspective view. We have fixed this and this update ensures that anomalies tied to cost category rules ( combinations of AND/OR conditions) are shown accurately. [CCM-21712]
 
 - **UI enhancement for Governance Recommendations**: We’ve resolved an issue in the Governance Recommendations’ Resource Breakdown tab where Azure Resource IDs were overflowing into adjacent cells. The text now wraps onto the next line to maintain proper layout. [CCM-22850]
 
