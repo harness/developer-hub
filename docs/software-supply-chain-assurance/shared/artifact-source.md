@@ -19,6 +19,12 @@ import TabItem from '@theme/TabItem';
 
 * **Image:** Enter the name of your image using either a tag or a digest. For example: `my-docker-org/repo-name:tag` or `my-docker-org/repo-name@sha256:<digest>`
 
+:::note
+
+Unlike other artifact sources, JFrog Artifactory requires additional permissions for attestation. The connector’s user or token must have `Read`, `Annotate`, `Create/Deploy`, and `Delete` permissions.
+
+:::
+
 
 </TabItem>
 
