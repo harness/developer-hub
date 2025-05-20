@@ -5,28 +5,28 @@ metadata:
 data:
   config.json: |
    {
-  "authConfig": {
-    "tenant": "{{ .Values.configMap.authConfig.tenant }}",
-    "loginApiUrl": "{{ .Values.configMap.authConfig.loginApiUrl }}",
-    "restApiUrl": "{{ .Values.configMap.authConfig.restApiUrl }}",
-    "ssoFlag": {{ .Values.configMap.authConfig.ssoFlag }},
-    "userIdleTime": {{ .Values.configMap.authConfig.userIdleTime }},
-    "userIdleTimeOut": {{ .Values.configMap.authConfig.userIdleTimeOut }},
-    "tokenExpFirstWarningMinutes": {{ .Values.configMap.authConfig.tokenExpFirstWarningMinutes }},
-    "tokenExpSecondWarningMinutes": {{ .Values.configMap.authConfig.tokenExpSecondWarningMinutes }},
-    "auth": {
-      "issuer": "{{ .Values.configMap.authConfig.auth.issuer }}",
-      "clientId": "{{ .Values.configMap.authConfig.auth.clientId }}",
-      "redirectUri": "{{ .Values.configMap.authConfig.auth.redirectUri }}",
-      "dummyClientSecret": "{{ .Values.configMap.authConfig.auth.dummyClientSecret }}",
-      "logoutUrl": "{{ .Values.configMap.authConfig.auth.logoutUrl }}",
-      "idpLogoutUrl": "{{ .Values.configMap.authConfig.auth.idpLogoutUrl }}",
-      "requireHttps": {{ .Values.configMap.authConfig.auth.requireHttps }},
-      "idpApiKey": "{{ .Values.configMap.authConfig.auth.idpApiKey }}",
-      "interceptUrls": {{ .Values.configMap.authConfig.auth.interceptUrls | toJson }},
-      "responseType": "{{ .Values.configMap.authConfig.auth.responseType }}",
-      "autoRefresh": {{ .Values.configMap.authConfig.auth.autoRefresh }},
-      "listenToToken": "{{ .Values.configMap.authConfig.auth.listenToToken }}"
+    "authConfig": {
+      "tenant": "OIDP",
+      "loginApiUrl": "ksdn",
+      "restApiUrl": "asdjn",
+      "ssoFlag": true,
+      "userIdleTime": 900,
+      "userIdleTimeOut": 900,
+      "tokenExpFirstWarningMinutes": 15,
+      "tokenExpSecondWarningMinutes": 5,
+      "auth": {
+        "issuer": "asdj",
+        "clientId": "ADMINCONSOLE_NEXTGEN_DEV",
+        "redirectUri": "asd",
+        "dummyClientSecret": "d0744e740ec90042800bbca0d76d0eca87fa",
+        "logoutUrl": "asdb",
+        "idpLogoutUrl": "asdjb",
+        "requireHttps": false,
+        "idpApiKey": "FIS",
+        "interceptUrls": ["origin"],
+        "responseType": "code",
+        "autoRefresh": true,
+        "listenToToken": "access_token"
     }
   }
 }
