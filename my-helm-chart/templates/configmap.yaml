@@ -3,4 +3,5 @@ kind: ConfigMap
 metadata:
   name: rac-config-files
 data:
-  config.json: {{ .Values.myconfig }}
+  config.json: |-
+    {{ toYaml .Values.myconfig | indent 2 }}
