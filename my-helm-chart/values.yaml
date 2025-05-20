@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: myrepo/myapp
+  repository: library/nginx
   tag: latest
 
 service:
