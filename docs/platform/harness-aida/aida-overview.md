@@ -84,7 +84,10 @@ Currently supported languages and versions include:
 
 ### Does Harness support LLM-powered translation? 
 
-Yes. Harness AI uses powerful LLMs like GPT-4 and Gemini Flash to generate and adapt code.
+Yes. Harness AI uses powerful LLMs to generate and adapt code like the following:
+    - OpenAI GPT-4o
+    - Google Gemini Flash
+    - Claude 3.7 Sonnet
 
 ### Are domain-specific use cases supported?
 
@@ -94,7 +97,7 @@ Yes. Harness AI supports domain-specific tasks such as DevOps policy creation, Y
 
 Harness AI offers comprehensive runtime awareness capabilities that go far beyond code completion—empowering developers and DevOps teams to manage, automate, and optimize their software delivery processes with precision. We proudly support a comprehensive variety of runtime interaction features, fully integrated into the Harness platform and IDE-based workflows.
 
-### Which of the following application delivery features do you support?
+### Which application delivery features do you support?
 
 Harness AI is designed to supercharge developer productivity by bringing intelligent automation directly into the IDE. It supports the following set of application delivery features that help teams move from idea to deployment faster, with less friction and higher confidence.
 
