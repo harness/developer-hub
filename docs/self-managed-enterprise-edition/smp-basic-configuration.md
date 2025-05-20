@@ -60,7 +60,7 @@ This enables seamless routing of traffic to your Harness services while maintain
               kind: Service
               metadata:
                 name: harness-ingress
-                namespace: harness-alb
+                namespace: harness
                 annotations:
                   service.beta.kubernetes.io/aws-load-balancer-type: "external"
                   service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
@@ -282,7 +282,7 @@ This section explains how to configure Google Cloud Load Balancer for Harness SM
 
 ## Installation
 
-To begin the fresh installation, follow the detailed steps outlined below:
+To start a fresh installation, ensure the IP address or DNS you plan to use is available and not in use by another application. Follow the steps below to proceed
 
 1. Download the latest Helm chart from the [Harness GitHub Releases page](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true). Under the **Assets** section, locate and download the `harness-<release-version>.tgz` file.
 
