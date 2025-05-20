@@ -86,6 +86,7 @@ Depending on your feature choice, do the following configuration steps.
    
    <RiskProfile />
 
+For Dynatrace, the only possible values of the SII are your entity selectors. 
     :::note
 
     The ability to set a SII is behind the feature flag `CDS_CV_DYNATRACE_CANARY_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
