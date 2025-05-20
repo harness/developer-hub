@@ -72,9 +72,8 @@ To ensure uninterrupted service, we recommend completing these updates by April 
 For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
 :::
 
+
 :::note
-
-
 
 **New UI for License Management in Harness CI**
 
