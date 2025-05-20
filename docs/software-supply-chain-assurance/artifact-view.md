@@ -130,7 +130,7 @@ You can search for an environment or apply filters based on environment type and
 
 :::note 
 
-Harness SCS currently supports the following three deployment types: Kubernetes, Native Helm, and Amazon ECS.
+Harness SCS provides support for tracking artifact deployments to Kubernetes, Native Helm, and Amazon ECS.
 
 :::
 
