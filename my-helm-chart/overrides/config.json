@@ -1,29 +1,7 @@
 myconfig: |-
 {
-  "authConfig": {
-    "tenant": "OIDP",
-    "loginApiUrl": "ksdn",
-    "restApiUrl": "asdjn",
-    "ssoFlag": true,
-    "userIdleTime": 900,
-    "userIdleTimeOut": 900,
-    "tokenExpFirstWarningMinutes": 15,
-    "tokenExpSecondWarningMinutes": 5,
-    "auth": {
-      "issuer": "asdj",
-      "clientId": "ADMINCONSOLE_NEXTGEN_DEV",
-      "redirectUri": "asd",
-      "dummyClientSecret": "d0744e740ec90042800bbca0d76d0eca87fa",
-      "logoutUrl": "asdb",
-      "idpLogoutUrl": "asdjb",
-      "requireHttps": false,
-      "idpApiKey": "FIS",
-      "interceptUrls": [
-        "origin"
-      ],
-      "responseType": "code",
-      "autoRefresh": true,
-      "listenToToken": "access_token"
-    }
+  \"authConfig\": {
+    \"tenant\": \"OIDP\",
+    \"loginApiUrl\": \"ksdn\"
   }
 }
