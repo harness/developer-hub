@@ -1,4 +1,4 @@
-myconfig:|
+myconfig: |-
 {
   "authConfig": {
     "tenant": "OIDP",
