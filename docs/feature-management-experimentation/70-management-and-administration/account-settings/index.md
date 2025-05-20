@@ -8,7 +8,7 @@ Account settings define how users interact with your projects, which environment
 | Page             | Description |
 |------------------|-------------|
 | [API keys](./api-keys) | Create and manage credentials to authenticate programmatic access to the Harness FME API. |
-| [Users](./users) | Add, remove, and manage individual users in your FME account. |
+| [Users](./users) | Add, remove, and manage individual users in your Harness account. |
 | [Groups](./groups) | Organize users into groups to manage access and permissions at scale. |
 | [Traffic types](./traffic-types) | Define the type of entity (user, account, device) used to evaluate feature flags and experiments. |
 | [Environments](./environments) | Create isolated environments (e.g., staging, production) for controlled flag rollouts and testing. |
