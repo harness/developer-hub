@@ -1140,6 +1140,17 @@ figure p {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.sidebar-ata > div > a::before,
+.sidebar-ata > a::before {
+  content: ' ';
+  display: inline-block;
+  height: 24px;
+  min-width: 24px;
+  margin-right: 16px;
+  background-image: url('/img/logo-ata.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 
 .sidebar-cd > div > a::before,
 .sidebar-cd > a::before {
@@ -1565,6 +1576,9 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
 }
 .opensource:hover {
   border-color: var(--mod-opensource-200) !important;
+}
+.ai-test-automation:hover {
+  border-color: var(--mod-aida-200) !important;
 }
 
 /***********************   navbar css ***********/

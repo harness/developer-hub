@@ -73,7 +73,6 @@ For more information see [Google Container Registry deprecation notice](https://
 :::
 
 
-
 :::note
 
 **New UI for License Management in Harness CI**
