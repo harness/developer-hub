@@ -13,8 +13,8 @@ In Harness FME, there are three types of keys:
 
 * **Admin** type API Keys are used for access to Harness FME's [Admin API endpoints](https://docs.split.io/reference).
 
-:::danger Keep your Server-side and Admin keys private
-Never expose Admin and Server-side keys in untrusted contexts. Do not put your Server-side or Admin API keys in client-side JavaScript or mobile SDKs. FME has special browser keys that you can use in client-side JavaScript, Android, and iOS.
+:::danger Keep your server-side and Admin keys private
+Never expose Admin and server-side keys in untrusted contexts. Do not put your server-side or Admin API keys in client-side JavaScript or mobile SDKs. FME has special browser keys that you can use in client-side JavaScript, Android, and iOS.
 If you accidentally expose your API key, revoke it in the **APIs** tab in **Account settings**. 
 
 Be sure to copy your API Key once it's generated. For security purposes, you won’t see the key again.
@@ -29,7 +29,7 @@ To manage your API keys, go to the **API keys** tab in your **Admin Settings** p
 * Revoke existing API keys
 * Clone existing API keys
 
-### Adding Server-side and Client-side API keys
+### Adding server-side and client-side API keys
 
 To add one of these API keys, do the following: 
 
@@ -45,7 +45,7 @@ To add one of these API keys, do the following:
 
 4. Enter a name for this API Key to let other users know what it’s used for.
 
-5. Select Server-side or Client-side as the type depending if you use this key to get treatments for a back end service or your user interface.
+5. Select **Server-side** or **Client-side** as the type depending if you use this key to get treatments for a back end service or your user interface.
 
 6. Select one environment that the key has access to fetch a feature flag  and segment information from.
 
@@ -244,7 +244,7 @@ Response:
 
 #### Using the FME UI to manage scopes
 
-You can also use the Admin settings section in the FME UI to create an Admin API key that is scoped to specific environment(s). At this time, you cannot use this UI to specify a specific role or project scope. Note that all SDK API keys are inherently scoped to a single environment.
+You can also use the Admin settings section in the Harness FME to create an Admin API key that is scoped to specific environment(s). At this time, you cannot use this UI to specify a specific role or project scope. Note that all SDK API keys are inherently scoped to a single environment.
 
 <img src="https://help.split.io/hc/article_attachments/30838480167437" alt="managing_api_key_roles_and_scopes_create_admin_api_key.png" width="600" />
 

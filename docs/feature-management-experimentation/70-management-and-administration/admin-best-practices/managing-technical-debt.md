@@ -36,13 +36,13 @@ If an engineer accidentally turns off a flag from the flag debt group, customer 
 
 ## How to reduce flag debt
 
-Clearly, flag debt hygiene is critical to the successful use of feature flags. In the post linked above by Pete Hodgson, he summarizes a number of strategies for maintaining a manageable number of flags in your code. The following is a summary of those recommendations, an explanation of how we see customers approaching these strategies, and an additional recommendation from Split.
+Clearly, flag debt hygiene is critical to the successful use of feature flags. In the post linked above by Pete Hodgson, he summarizes a number of strategies for maintaining a manageable number of flags in your code. The following is a summary of those recommendations, an explanation of how we see customers approaching these strategies, and an additional recommendation from the Harness FME team.
 
-### Create a cleanup ticket when you create the flag
+### Create a clean-up ticket when you create the flag
 
-At a bare minimum, a common sense approach to managing flag debt is to create a cleanup ticket for the flag in your issue tracking system (e.g. Jira) at the same time when you introduce that flag in the code.
+At a bare minimum, a common sense approach to managing flag debt is to create a clean-up ticket for the flag in your issue tracking system (e.g. Jira) at the same time when you introduce that flag in the code.
 
-Assign the cleanup ticket to yourself or your product manager. Once a ticket is in the system, the retirement can be tracked and prioritized in a future sprint. This approach doesn’t solve the problem of engineering having the bandwidth to prioritize feature flag cleanup tickets, but it does at least start tracking the problem and giving teams a mechanism to manage flag debt.
+Assign the clean-up ticket to yourself or your product manager. Once a ticket is in the system, the retirement can be tracked and prioritized in a future sprint. This approach doesn’t solve the problem of engineering having the bandwidth to prioritize feature flag clean-up tickets, but it does at least start tracking the problem and giving teams a mechanism to manage flag debt.
 
 Harness FME helps with this process, by enabling you to [associate a Jira ticket](https://docs.split.io/docs/jira) with a feature flag. Harness FME then updates the Jira ticket as a feature flag's status changes. That way, you know in Jira when it’s time to clean-up the code for that feature flag.
 
@@ -62,15 +62,15 @@ Harness FME has a variety of these approaches on our product roadmap, and we are
 
 The problem of flag debt is a tragedy of the commons. Individual engineers or teams can create limitless flags for their own benefit while ruining the collective experience of the entire organization. This is because the incremental benefit of creating a new flag far outweighs the incremental pain of a flag that needs to be retired.
 
-This third strategy addresses the problem by localizing the pain of an un-retired flag to the team that created it. If we limit the number of flags a single team can create at any point in time, sooner or later the team is going to hit this limit. At that point, they will be forced to retire older flags – whether using expiration date or a cleanup ticket – before they could add the next flag.
+This third strategy addresses the problem by localizing the pain of an un-retired flag to the team that created it. If we limit the number of flags a single team can create at any point in time, sooner or later the team is going to hit this limit. At that point, they will be forced to retire older flags – whether using expiration date or a clean-up ticket – before they could add the next flag.
 
-Harness FME has granular [permissions](https://docs.split.io/docs/permissions) that enable you to set owners for flags, both individuals and groups. And, [tagging](https://docs.split.io/docs/tags) in Harness FME can be used to designate certain feature flags associated with specific teams in a searchable and less restrictive way. Easily see how many feature flags a current team has, and manage to a target goal by using Split.
+Harness FME has granular [permissions](https://docs.split.io/docs/permissions) that enable you to set owners for flags, both individuals and groups. And, [tagging](https://docs.split.io/docs/tags) in Harness FME can be used to designate certain feature flags associated with specific teams in a searchable and less restrictive way. Easily see how many feature flags a current team has, and manage to a target goal by using Harness FME.
 
 ### Clean up flags based on activity
 
-Finally, at Split, we have found that just knowing whether a feature flag is active is very helpful in identifying flag debt that is ready to be cleaned up.
+Finally, at Harness, we have found that just knowing whether a feature flag is active is very helpful in identifying flag debt that is ready to be cleaned up.
 
-Harness FME customers are able to very quickly see which feature flags no longer have any traffic being routed to them. This is a clear sign that a feature rollout our experiment is complete, and is an easy way to audit which flags are ready to be retired. In addition, Harness FME can easily show which feature flags have not been modified in over 30 days. For feature flags that are for the purpose of feature release or experimentation, this is a good signal that the release may be done or the experimentation complete. The combination of tagging feature flags based on type (long-term vs. short-term), plus these activity metrics, go a long way in identifying flag debt for cleanup.
+Harness FME customers are able to very quickly see which feature flags no longer have any traffic being routed to them. This is a clear sign that a feature rollout our experiment is complete, and is an easy way to audit which flags are ready to be retired. In addition, Harness FME can easily show which feature flags have not been modified in over 30 days. For feature flags that are for the purpose of feature release or experimentation, this is a good signal that the release may be done or the experimentation complete. The combination of tagging feature flags based on type (long-term vs. short-term), plus these activity metrics, go a long way in identifying flag debt for clean up.
 
 ## Conclusion
 

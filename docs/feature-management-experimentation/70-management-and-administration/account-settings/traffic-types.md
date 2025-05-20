@@ -15,7 +15,7 @@ Customize traffic types to your particular use cases. You should have a traffic 
 
 It is also possible, but much less common, for a traffic type to identify something other than a visitor. For instance, a realty site might use *listing* as a traffic type if they wanted to explore the possibility of having a single visitor see different appearances for different property listings. For that traffic type, the code passes to *getTreatment* the id of the listing being displayed.
 
-For some feature flags, you may want to randomize by sessionId rather than userId, so session is another possible traffic type. Because there will be more sessions than users, with this traffic type, you end up with a higher number of unique keys being sent to Split.
+For some feature flags, you may want to randomize by sessionId rather than userId, so session is another possible traffic type. Because there will be more sessions than users, with this traffic type, you end up with a higher number of unique keys being sent to Harness.
 
 ## Traffic Types and Impressions
 
@@ -27,9 +27,9 @@ When evaluating a feature flag it is implied that the key you provided is of the
 
 ## Traffic Types and Events
 
-A traffic type must be specified when sending events. When using a Server Side SDK there is no specific key associated with the SDK instance so for every treatment evaluation you need to pass in the key, and for every event that is tracked you need to pass both the key and the traffic type. 
+A traffic type must be specified when sending events. When using a server-side SDK there is no specific key associated with the SDK instance so for every treatment evaluation you need to pass in the key, and for every event that is tracked you need to pass both the key and the traffic type. 
 
-Client side SDKs are typically tied to one or a handful of keys (typically keys for different traffic types, like my userId, userAccountId, etc). That’s why you don’t need to specify the key when evaluating flags or tracking events. You can optionally pass a traffic type when instantiating a client so you don’t need to specify the traffic type every time you track an event using that client. It has no implications in terms of feature flag evaluations or their corresponding impressions’ traffic type.
+Client-side SDKs are typically tied to one or a handful of keys (typically keys for different traffic types, like my userId, userAccountId, etc). That’s why you don’t need to specify the key when evaluating flags or tracking events. You can optionally pass a traffic type when instantiating a client so you don’t need to specify the traffic type every time you track an event using that client. It has no implications in terms of feature flag evaluations or their corresponding impressions’ traffic type.
 
 ## Customizing a traffic type
 

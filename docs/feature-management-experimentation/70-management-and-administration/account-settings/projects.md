@@ -13,7 +13,7 @@ The following objects are also located in a project. Refer object model map belo
 * [Event types](https://help.split.io/hc/en-us/articles/360020585772-Track-events)
 * [API keys](https://help.split.io/hc/en-us/articles/360019916211-API-keys)  
 
-When you onboard different business units to Split, you can add up to 20 projects within your account to allow each team to have a separated space to manage their experiments and feature flags. You can manage your projects from your Admin Settings page. Here, you can add new projects or edit existing ones. 
+When you onboard different business units to Harness FME, you can add up to 20 projects within your account to allow each team to have a separated space to manage their experiments and feature flags. You can manage your projects from your Admin Settings page. Here, you can add new projects or edit existing ones. 
 
 <img src="https://help.split.io/hc/article_attachments/30797526728845" alt="projects_diagram.png" width="800" />
 
@@ -30,7 +30,7 @@ To create a project, do the following:
 4. Enter a name for the project.
 5. On the Required comments checkbox, optionally check whether you’re requiring titles and comments for feature flags, segments, and metric changes.
 
-   :::note
+   :::info[note]
    When you check this box, it affects approval flows.
    :::
 
@@ -56,7 +56,7 @@ When you are viewing a project, you can edit a project by doing the following:
 5. In the Name field, optionally change the name.
 6. On the Required comments checkbox, optionally check whether you’re requiring titles and comments for feature flags, segments, and metric changes.
 
-   :::note
+   :::info[note]
    When you check this box, it affects the approval flows.
    :::
 

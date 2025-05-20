@@ -11,9 +11,8 @@ We recommend creating tags that are specific to your workflow. Here are some ide
 * **By feature release.** Identify all of the feature flags associated with a particular release using tags such as _reporting_, _new permissioning_, or _contact database migration_.
 * **By feature flag type.** Identify all the feature flags associated with paywalls or those that are permanent versus temporary, using tags such as _paywall_, _permanent_, or _temporary_.
 
-:::note
+:::info[note]
 Be aware of the following:
-
 * **Tag names of tags are case sensitive.**
 * **Tags are shared across projects, so avoid giving them sensitive names you don't want all users in all projects to see.**
 :::

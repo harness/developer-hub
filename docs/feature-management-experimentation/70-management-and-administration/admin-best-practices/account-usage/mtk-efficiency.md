@@ -15,7 +15,7 @@ If a user with the key “John” sees three different feature flags within a mo
 
 There are a few reasons why the MTK count might be significantly different from expected site traffic:
 
-### getTreatment calls when the SDK is not ready
+### `getTreatment`&nbsp;calls when the SDK is not ready
 
 If there are getTreatment calls happening when the SDK is not ready, all of those impressions get sent to Harness FME. If some of those happen to be for feature flags that don’t exist, then those will still be counted as impressions. This could potentially increase MTK count if these are for anonymous flags and the user navigates away before hitting any other flags.
 
@@ -34,13 +34,13 @@ treatment = client.getTreatment('SPLIT_NAME');
 
 Notice here that there is no block until ready. All code examples provided by FME on our Help Center include the best practice of blocking until ready. If not blocking, this will cause extra MTKs if done on feature flags that have been deleted from FME’s UI but still remain in code. Normally, deleting a flag from the UI would mean that the SDK does not recognize the flag and will not compute anything. However, when the SDK is not ready, it does not know which flags are configured or not configured, so it sends everything to FME’s backend, counting as MTKs.
 
-### getTreatment calls on killed flags or flags with 0% traffic allocation
+### `getTreatment`&nbsp;calls on killed flags or flags with 0% traffic allocation
 
 A feature flag that is killed or ramped down to 0% allocation still evaluates treatments, and those MTKs still get sent back to FME. To resolve this, the flag will have to be removed from code so that getTreatment is not called for them.
 
 *Example Scenario:*
 
-A team is working on a new feature. After putting it into production, they immediately notice a significant performance degradation and proceed to kill the feature flag. Killing the flag does not stop the evaluation of the flag - those <span class="mark">getTreatment</span> calls still count as MTKs.
+A team is working on a new feature. After putting it into production, they immediately notice a significant performance degradation and proceed to kill the feature flag. Killing the flag does not stop the evaluation of the flag — those <span class="mark">getTreatment</span> calls still count as MTKs.
 
 ### Automated testing or load testing tools
 

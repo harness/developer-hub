@@ -42,7 +42,7 @@ To set up permissions, do the following:
   
         When setting change permissions for a particular flag or segment in an environment, the owners and the user making the change are automatically added as editors, along with the account's administrators.
 
-        :::note
+        :::info[note]
         The administrators group is always added as an editor when permissions are enabled, both at the environment level or at the feature flag, segment, and metric levels.
         :::
 
@@ -70,7 +70,7 @@ To set up permissions, do the following:
         * **Allow KILLs without approvals.** Allows anyone with access to the environment to KILL a feature flag without additional approvals.
         * **Allow administrators to skip approvals.** Specifically applies to editing feature flags and segments and only gives the Admins access to make updates without approval. All other users need to submit an approval for change. 
     
-      :::note 
+      :::info[note] 
       For either option, you can check Allow kills without approval which allows users to kill a feature flag without submitting for approval. If Allow kills without approval is not selected, then admins still need to go through the KILL and restore approvals in the same environment, even if Allow Admins to skip approval is selected.
       :::
 

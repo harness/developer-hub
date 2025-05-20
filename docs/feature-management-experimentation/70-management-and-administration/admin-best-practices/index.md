@@ -31,7 +31,7 @@ For example:
 
 ## Organizing feature flags
 
-Split's user interface can get crowded, and we are constantly trying to improve this experience. Below are some tips to help stay organized as a team.
+Harness FME user interface can get crowded, and we are constantly trying to improve this experience. Below are some tips to help stay organized as a team.
 
 **Tags**: Add tags to feature flags to associate them with projects, teams, features. For example, multiple feature flags for the same feature should all utilize the same tag for better filtering. You may want to indicate where the feature is built. Tags are case sensitive, and lowercase is recommended. For example:
 

@@ -7,7 +7,7 @@ A group is a convenient way to manage a collection of users in your account. Use
 
 ## About default administrator group
 
-When you set up Split, the Administrators group is automatically created.  Administrators are the only users that can access advanced administrative features, e.g., account settings, traffic type setup, team management, environment setup, API tokens and integrations.
+When you set up Harness FME, the Administrators group is automatically created.  Administrators are the only users that can access advanced administrative features, e.g., account settings, traffic type setup, team management, environment setup, API tokens and integrations.
 
 ## Creating a group
  
