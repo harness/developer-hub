@@ -61,6 +61,12 @@ import { MODULES } from "@site/src/constants"
             "Actionable results analysis for data-driven development",
           link: "/docs/feature-management-experimentation/experimentation",
         },*/
+      ],
+    },
+    {
+      name: "Help and more",
+      description: "",
+      list: [
         {
           title: "Account settings",
           module: MODULES.fme,
@@ -68,12 +74,6 @@ import { MODULES } from "@site/src/constants"
             "Manage projects, environments, and user access for scalable experimentation",
           link: "/docs/feature-management-experimentation/account-settings",
         },
-      ],
-    },
-    {
-      name: "Help and more",
-      description: "",
-      list: [
         {
           title: "Harness FME support",
           module: MODULES.fme,

@@ -37,20 +37,6 @@ Administrators can do this by going to Admin settings > Users and then clicking 
 
 After you force a session to reset, the affected team member is automatically logged out of Harness FME. This user must sign in again and complete two-factor authentication if it has been set up.
 
-## FAQs
- 
-### I've deleted or can't find the authenticator app used to enable two-factor authentication. How can I log in? 
-
-If you lose your phone or no longer have access to the authentication app used during setup, use one of the recovery codes provided when you set up two-factor authentication for your account.
-
-You can use any of these codes to access your account. **Note that each recovery code can only be used once.**
-
-<img src="https://help.split.io/hc/article_attachments/15734847198861" alt="recovery_codes.png" width="600" />
-
-:::note
-While the recovery codes allow you to access Harness FME in an emergency, you should contact your team's Administrator to disable two-factor authentication and then complete the setup process again. If you do not have access to the recovery codes, your team's administrator can disable two-factor authentication for your account.
-:::
-
 ## Deactivate or reactivate a user
 
 Administrators can take a number of actions to help manage users in their Harness FME account.
@@ -87,3 +73,17 @@ An administrator can unblock users in Admin settings.
 1. From the left navigation pane, click the project switcher at the bottom and select **Admin settings**.
 1. Click **Users**.
 1. If the user's status is blocked, click **Unblock** next to the username. The user’s status changes to **Active**.
+
+## FAQs
+ 
+### I've deleted or can't find the authenticator app used to enable two-factor authentication. How can I log in? 
+
+If you lose your phone or no longer have access to the authentication app used during setup, use one of the recovery codes provided when you set up two-factor authentication for your account.
+
+You can use any of these codes to access your account. **Note that each recovery code can only be used once.**
+
+<img src="https://help.split.io/hc/article_attachments/15734847198861" alt="recovery_codes.png" width="600" />
+
+:::note
+While the recovery codes allow you to access Harness FME in an emergency, you should contact your team's Administrator to disable two-factor authentication and then complete the setup process again. If you do not have access to the recovery codes, your team's administrator can disable two-factor authentication for your account.
+:::
