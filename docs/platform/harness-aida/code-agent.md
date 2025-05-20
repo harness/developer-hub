@@ -114,11 +114,10 @@ No, Harness AI Code Agent does not store any of your code or personal data. The 
 ### Which Large Language Models does Harness AI Code Agent utilize?
 Harness AI Code Agent utilizes advanced Large Language Models such as OpenAI's gpt-4 and Gemini Flash. These models are designed to understand and generate human-like text, enabling the code agent to provide accurate and contextually relevant code suggestions and explanations.
 
-
 ### What programming languages does Harness AI Code Agent support?
 Harness AI Code Agent supports a wide range of programming languages including but not limited to JavaScript, Python, Java, C#, Ruby, Go, and TypeScript. The tool is designed to understand the syntax and semantics of these languages, enabling it to provide accurate code suggestions and generation tailored to the specific language being used.
 
-### What is language server and how does it work?
+### What is a language server and how does it work?
 The language server is component of Harness AI Code Agent that runs on the user's machine and communicates with the IDE. The role of the language server is to generate the context that is needed to respond to user queries by gathering and processing information from the current open tabs and files in the workspace. The language server is also responsible for generating and sending requests to the Harness AI backend.
 
 ### What context information is used by the chat feature?
