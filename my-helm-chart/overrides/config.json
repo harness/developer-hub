@@ -1,0 +1,10 @@
+{
+  "apiVersion": "v1",
+  "kind": "ConfigMap",
+  "metadata": {
+    "name": "rac-config-files"
+  },
+  "data": {
+    "config.json": "{\n  \"authConfig\": {\n    \"tenant\": \"OIDP\",\n    \"loginApiUrl\": \"ksdn\",\n    \"restApiUrl\": \"asdjn\",\n    \"ssoFlag\": true,\n    \"userIdleTime\": 900,\n    \"userIdleTimeOut\": 900,\n    \"tokenExpFirstWarningMinutes\": 15,\n    \"tokenExpSecondWarningMinutes\": 5,\n    \"auth\": {\n      \"issuer\": \"asdj\",\n      \"clientId\": \"ADMINCONSOLE_NEXTGEN_DEV\",\n      \"redirectUri\": \"asd\",\n      \"dummyClientSecret\": \"d0744e740ec90042800bbca0d76d0eca87fa\",\n      \"logoutUrl\": \"asdb\",\n      \"idpLogoutUrl\": \"asdjb\",\n      \"requireHttps\": false,\n      \"idpApiKey\": \"FIS\",\n      \"interceptUrls\": [\"origin\"],\n      \"responseType\": \"code\",\n      \"autoRefresh\": true,\n      \"listenToToken\": \"access_token\"\n    }\n  }\n}"
+  }
+}
