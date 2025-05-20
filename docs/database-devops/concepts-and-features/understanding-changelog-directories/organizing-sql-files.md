@@ -77,11 +77,14 @@ CREATE TABLE users (
 CREATE INDEX idx_users_mobile ON users(mobile_number);
 ```
 
-SQL files in Liquibase require special comments that contain metadata for tracking changes. Every Liquibase SQL file must begin with the following comment to indicate it contains these structured comments.
+SQL files in Liquibase require special comments that contain metadata for tracking changes. Every Liquibase SQL file must begin with the following comment to indicate it contains these structured comments. 
 
-```sql
---liquibase formatted sql 
-```
+:::info note
+In the above example SQL Schema, the comments:
+
+1. `--liquibase formatted sql` - Required at the top of every SQL file to indicate it contains Liquibase metadata
+2. `--changeset --changeset stephen-atwell:1` - Defines a changeset with the **specified author** (stephen-atwell) and **ID**(1) which is unique within the changelog file. This comment is similar to YAML changesets.
+:::
 
 ### Spacing
 It is a best practice not to include a space before `--liquibase formatted sql`. Formatting variations may cause the Liquibase parser to return an error. When specifying changeset attributes in a formatted SQL changelog, any attribute value that contains spaces must be quoted. For example:
@@ -99,19 +102,25 @@ Using space in author name is not recommended. Prefer to use dot/dash separated 
 :::
 
 ### `include` and `includeAll` tags
-Liquibase provides two primary tags for referencing other changelog files in your root changelog: include and includeAll. The `include` tag allows you to include a single SQL file in your changelog, while `includeAll` allows you to include multiple SQL files in your changelog.
+Liquibase provides two primary tags for referencing other changelog files in your root changelog: include and includeAll. The `include` tag allows you to include a single SQL file in your changelog: 
 
 ```sql
 --liquibase formatted sql
 
 --changeset stephen-atwell:1
 --include: changes/release-1/001-create-users-table.sql
+```
+
+While `includeAll` allows you to include multiple SQL files in your changelog:
+```sql
+--liquibase formatted sql
 
 --changeset stephen-atwell:2
 --includeAll: changes/release-2/
 ```
-
+:::info 
 Use `includeAll` for releases or environments where speed and scalability are prioritized and Use `include` when explicit control and maintainability are needed, especially in controlled isolated environments.
+:::
 
 ### Changeset
 Each changeset in a formatted SQL file begins with a comment of the form:
