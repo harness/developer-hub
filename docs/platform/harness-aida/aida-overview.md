@@ -90,10 +90,9 @@ Yes. Harness AI uses powerful LLMs like GPT-4 and Gemini Flash to generate and a
 
 Yes. Harness AI supports domain-specific tasks such as DevOps policy creation, YAML generation, and semantic validation using specialized language models. This ensures high relevance and accuracy for industry-specific needs.
 
-### Which runtime awareness features are supported?
+### Does Harness AI support runtime awareness features?
 
-Yes, we support all of them. 
-Harness AI offers comprehensive runtime awareness capabilities that go far beyond code completion—empowering developers and DevOps teams to manage, automate, and optimize their software delivery processes with precision. We proudly support all of the listed runtime interaction features, fully integrated into the Harness platform and IDE-based workflows.
+Harness AI offers comprehensive runtime awareness capabilities that go far beyond code completion—empowering developers and DevOps teams to manage, automate, and optimize their software delivery processes with precision. We proudly support a comprehensive variety of runtime interaction features, fully integrated into the Harness platform and IDE-based workflows.
 
 ### Which of the following application delivery features do you support?
 
