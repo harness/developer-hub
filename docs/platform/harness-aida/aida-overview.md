@@ -14,8 +14,8 @@ To enable module-specific AI features in your Harness account, do the following:
 
 1. Go to **Account Settings**.
 2. Select **Account Resources**, then select **Default Settings**.
-3. Select the **Harness AI ** tile.
-4. Enable the **Harness AI ** setting.
+3. Select the **Harness AI** tile.
+4. Enable the **Harness AI** setting.
 5. Optional: Select **Allow Overrides** if you want to be able to enable/disable AI for individual projects.
 
 #### Navigation 2.0
@@ -23,7 +23,7 @@ To enable module-specific AI features in your Harness account, do the following:
 1. Go to **Account Settings**.
 2. Under **General**, select **Default Settings**. 
 3. Select the **Harness AI** tile.
-4. Enable the **Harness AI ** setting.
+4. Enable the **Harness AI** setting.
 5. Optional: Select **Allow Overrides** if you want to be able to enable/disable Harness AI for individual projects.
 
 For more information about navigation 2.0, go to [Harness navigation 2.0](https://developer.harness.io/docs/platform/get-started/harness-ui-overview/#harness-navigation-version-20).
@@ -62,6 +62,26 @@ Harness AI can generate in widely used languages such as English, Dutch, Spanish
 
 Yes. Harness AI provides advanced code translation capabilities powered by large language models (LLMs). You can easily convert logic from one programming language to another using natural language prompts—directly within your IDE. For example, you can say, *“Convert this Python script to Java”* or *“Refactor this C++ logic into Go.”*
 
+Our system achieves high-fidelity translations through specialized models that understand language-specific idioms and framework equivalences.
+Currently supported languages and versions include:
+
+| Programming Language                | Version                                    |
+| ----------------------------------- | ------------------------------------------ |
+| Java                                | 8, 11, 17, 21                              |
+| Python                              | 2.7, 3.6-3.12                              |
+| JavaScript/TypeScript               | ES6+, TypeScript 4.x-5.x                   |
+| C#                                  | .NET Framework 4.x, .NET Core 3.x, .NET 5+ |
+| C/C++ (C11/C14/C17, C++11/14/17/20) | C11/C14/C17, C++11/14/17/20                |
+| COBOL (IBM Enterprise COBOL)        | IBM Enterprise COBOL                       |
+| FORTRAN (77, 90, 2003, 2008)        | 77, 90, 2003, 2008                         |
+| Go (1.16+)                          | 1.16+                                      |
+| Rust (2018, 2021 editions)          | 2018, 2021 editions                        |
+| Ruby (2.x, 3.x)                     | 2.x, 3.x                                   |
+| PHP (5.x, 7.x, 8.x)                 | 5.x, 7.x, 8.x                              |
+| Kotlin (1.4+)                       | 1.4+                                       |
+| Swift (5.x)                         | 5.x                                        |
+
+
 ### Does Harness support LLM-powered translation? 
 
 Yes. Harness AI uses powerful LLMs like GPT-4 and Gemini Flash to generate and adapt code.
@@ -90,27 +110,6 @@ Harness AI is designed to supercharge developer productivity by bringing intelli
 ### What agentic features does Harness support?
 
 Harness AI natively supports event-based triggers like commits, bug creation, or test failures. These workflows can be configured through integrations with Git hooks, issue trackers, or CI/CD pipelines—allowing organizations to build automated assistants that react to defined events.
-
-### How effectively does Harness AI support the transformation of code between different programming languages?
-
-Harness AI excels at code transformation with semantic preservation across multiple language paradigms. Our system achieves high-fidelity translations through specialized models that understand language-specific idioms and framework equivalences.
-Currently supported languages and versions include:
-
-| Programming Language                | Version                                    |
-| ----------------------------------- | ------------------------------------------ |
-| Java                                | 8, 11, 17, 21                              |
-| Python                              | 2.7, 3.6-3.12                              |
-| JavaScript/TypeScript               | ES6+, TypeScript 4.x-5.x                   |
-| C#                                  | .NET Framework 4.x, .NET Core 3.x, .NET 5+ |
-| C/C++ (C11/C14/C17, C++11/14/17/20) | C11/C14/C17, C++11/14/17/20                |
-| COBOL (IBM Enterprise COBOL)        | IBM Enterprise COBOL                       |
-| FORTRAN (77, 90, 2003, 2008)        | 77, 90, 2003, 2008                         |
-| Go (1.16+)                          | 1.16+                                      |
-| Rust (2018, 2021 editions)          | 2018, 2021 editions                        |
-| Ruby (2.x, 3.x)                     | 2.x, 3.x                                   |
-| PHP (5.x, 7.x, 8.x)                 | 5.x, 7.x, 8.x                              |
-| Kotlin (1.4+)                       | 1.4+                                       |
-| Swift (5.x)                         | 5.x                                        |
 
 ### Does Harness support multi-modal input for debugging to identify the source?
 

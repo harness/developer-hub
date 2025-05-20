@@ -67,6 +67,10 @@ You can refresh the codebase index by clicking on `...` at the top of your chat 
  You can enhance the code agent's capabilities by adding references to specific files or libraries that are relevant to your query to get a more specific response. In order to add references, simply type `@' in the chat window and a pop-up will appear allowing you to select the files or libraries you want to reference.
 ![An example of AIDA code autocompletion](./static/ca_file_tag.png)
 
+### Context providers
+
+You can use [context providers](https://docs.continue.dev/customize/context-providers) to feed the agent content as context for the query. Harness supports the use of these context providers and you can use them with the code agent.  
+
 ## Troubleshooting
 
 ### Networking Issues
