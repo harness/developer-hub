@@ -41,15 +41,12 @@ Why not just use function calls for each API?
 
 <DocVideo src="https://www.loom.com/share/b7c5d77b1f7f4f55a779758971eefe78?sid=146f737a-3922-4bf2-8485-9c7c51154cc8" />
 
-## Installation
-
-Follow the installation walkthrough to install the MCP Server:
-
-  <DocVideo src="https://www.loom.com/share/1374d6bdd887475db2bb2a8853747609?sid=5b4f0d64-8c0b-455a-802f-d0d4cd266edf" />
 
 ## Configuration
 
 ### Windsurf Configuration
+
+#### Using Source
 
 ```json
 {
@@ -62,6 +59,39 @@ Follow the installation walkthrough to install the MCP Server:
         "HARNESS_DEFAULT_ORG_ID": "your_org_id",
         "HARNESS_DEFAULT_PROJECT_ID": "your_project_id",
         "HARNESS_BASE_URL": "<if-needed>"
+      }
+    }
+  }
+}
+```
+
+#### Using Docker
+
+```json
+{
+  "mcpServers": {
+    "harness": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "HARNESS_API_KEY",
+        "-e",
+        "HARNESS_DEFAULT_ORG_ID",
+        "-e",
+        "HARNESS_DEFAULT_PROJECT_ID",
+        "-e",
+        "HARNESS_BASE_URL",
+        "harness/mcp-server",
+        "stdio"
+      ],
+      "env": {
+        "HARNESS_API_KEY": "<YOUR_API_KEY>",
+        "HARNESS_DEFAULT_ORG_ID": "<YOUR_ORG_ID>",
+        "HARNESS_DEFAULT_PROJECT_ID": "<YOUR_PROJECT_ID>",
+        "HARNESS_BASE_URL": "<YOUR_BASE_URL>"
       }
     }
   }
@@ -95,19 +125,36 @@ Follow the installation walkthrough to install the MCP Server:
 
 ```json
 {
-  "mcpServers": {
-    "harness": {
-      "command": "/path/to/harness-mcp-server",
-      "args": ["stdio"],
-      "env": {
-        "HARNESS_API_KEY": "your_api_key",
-        "HARNESS_DEFAULT_ORG_ID": "your_org_id",
-        "HARNESS_DEFAULT_PROJECT_ID": "your_project_id",
-        "HARNESS_BASE_URL": "<if-needed>"
+  "mcp": {
+    "servers": {
+      "harness": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "YjJmMGNkNDAyOGQ2YWQ4ZjI2MzA4NzMxNTlhOTgyNWQ=",
+          "-e",
+          "HARNESS_DEFAULT_ORG_ID",
+          "-e",
+          "HARNESS_DEFAULT_PROJECT_ID",
+          "-e",
+          "HARNESS_BASE_URL",
+          "harness/mcp-server",
+          "stdio"
+        ],
+        "env": {
+          "HARNESS_API_KEY": "<YOUR_API_KEY>",
+          "HARNESS_DEFAULT_ORG_ID": "<YOUR_ORG_ID>",
+          "HARNESS_DEFAULT_PROJECT_ID": "<YOUR_PROJECT_ID>",
+          "HARNESS_BASE_URL": "<YOUR_BASE_URL>"
+        }
       }
     }
   }
 }
+
 ```
 
 [VS Code MCP Guide](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)
@@ -142,6 +189,20 @@ go build -o cmd/harness-mcp-server/harness-mcp-server ./cmd/harness-mcp-server
 HARNESS_API_KEY=your_api_key \
 ./cmd/harness-mcp-server/harness-mcp-server stdio
 ```
+
+### Use Docker Image
+
+Alternatively, you can use the pre-built Docker image:
+
+```
+docker run -i --rm \
+  -e HARNESS_API_KEY=your_api_key \
+  -e HARNESS_DEFAULT_ORG_ID=your_org_id \
+  -e HARNESS_DEFAULT_PROJECT_ID=your_project_id \
+  -e HARNESS_BASE_URL=your_base_url \
+  harness/mcp-server stdio
+```
+
 
 ## Authentication
 
