@@ -49,6 +49,12 @@ export const FmeData: Horizon = {
         description: "No rules are exposed to client-side. Instead, these thin clients utilize a secure cloud service for flag evaluations.",
       },
       {
+        tag: [{value: "Targeting"}, {value: "Better Together"}],
+        title: "Flag prerequisites",
+        description:
+          "Top level flag dependencies enforced (new) as well as within rules (existing).",
+      },
+      {
         tag: [{ value: "Experimentation" }],
         title: "Warehouse-native experimentation",
         description: "Experiment directly on impressions & events in your data warehouse.",
@@ -57,12 +63,6 @@ export const FmeData: Horizon = {
         tag: [{ value: "Better Together" }],
         title: "Automated release pipelines",
         description: "Leverage Harness pipelines for feature flags to automate release processes.",
-      },
-      {
-        tag: [{ value: "Targeting" }],
-        title: "Flag prerequisites",
-        description:
-          "Top level flag dependencies enforced (new) as well as within rules (existing).",
       },
     ],
   },
