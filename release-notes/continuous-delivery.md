@@ -55,6 +55,30 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## May 2025
 
+### Version 1.90.0
+
+#### New Features and Enhancements
+
+- Users can now manually trigger a status refresh for Jira, ServiceNow, and Custom Approval steps using the Refresh button in the UI. This enhancement allows on-demand evaluation of approval conditions, reducing the need to wait for scheduled polling intervals.  Currently, this feature is behind the feature flag `CDS_REFRESH_IN_JIRA_SERVICENOW_APPROVALS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-81994, ZD-52261,54622**)
+
+- Harness now supports custom webhook trigger execution via the Queue Service, improving reliability and scalability. This ensures that webhook triggers are processed efficiently, even under high load, without one customer’s activity impacting others. Currently, this feature is behind the feature flag `PIPE_ENABLE_QUEUED_BASED_CUSTOM_TRIGGERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.(**PIPE-21872**) 
+
+- Users can now view **Pipeline Metadata settings** directly in Pipeline Studio when using a Pipeline Template. Additionally, only the Advanced Settings defined in the template YAML are shown, providing a clearer, read-only view of relevant configuration options. (**PIPE-25136**) 
+
+#### Fixed Issues
+
+- Previously, logs for the ServiceNow approval step did not display timezone information alongside time values, leading to confusion during change window evaluations.This issue us resolved. The logs now clearly show the time with timezone context to improve clarity and troubleshooting. (**CDS-110383, ZD-84604**)
+- Previously, recreating a deleted project with the same name and attempting to create a pipeline filter with a reused name resulted in an error, due to filters not being fully cleaned up on project deletion. The issue is resolved. (**PIPE-27095, ZD-83933**)
+- Previously, deployments to Azure Functions using a private Docker registry could fail due to missing environment variables and incorrect image path handling in the slot configuration. These issues caused image pull failures and required manual updates to work around. The issues are now resolved. (**CDS-109816, ZD-82474**)
+- Previously, the notifications section on the Account Overview page showed stale or incorrect job statuses and did not display active executions from non-CD modules like CI. Additionally, clicking a notification did not always redirect to the correct pipeline view. These issues are resolved. (**PIPE-26930, ZD-83413**)
+- Previously, Service PreHooks were not triggered for Kubernetes CronJob workloads during the Wait for Steady State phase, though they worked for other workload types like Deployments and StatefulSets. This issue is resolved. PreHooks now execute correctly for CronJobs. This behavior is behind the feature flag `CDS_ENABLE_STEADY_STATE_CHECK_WITHOUT_MANAGED_WORKLOADS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-109379, ZD-83017**)
+- Previously, editing a global environment override could crash the UI, especially when using a custom remote store. This issue is resolved. (**CDS-107112, ZD-78749**)
+- Previously, users were unable to input key:value tags at runtime using the UI form; the values could only be provided via the YAML editor. This issue is resolved. (**CDS-110294, ZD-84446**)
+- Previously, users with both Pipeline Execute and Environment Rollback permissions were unable to access the rollback option due to incorrect resource identifiers being used in permission checks. The issue is resolved. (**CDS-110399, ZD-83656**)
+- Previously, the UI for the Terraform Cloud Run step did not support setting step variables as runtime inputs, limiting the ability to templatize the step. This issue is resolved. (**CDS-109805, ZD-83793**)
+- Previously, secrets appeared to be referenced by environments even after removal, causing confusion in the UI. This issue is resolved. A new feature flag, `CDS_OVERRIDES_DISABLE_ENV_API_UPDATES`, ensures environment variables and overrides defined in YAML are shown accurately in the configuration view.  Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-109066, ZD-82141**)
+- Previously, when the environment type was updated in Git (e.g., from Pre-Prod to Prod), the change was not reflected on the Overview page in Harness, leading to inconsistent information. This issue is resolved. A tooltip has also been added to clarify the display behavior for environments synced from Git. (**CDS-108719, ZD-81687,82526**)
+
 ### Version 1.89.4
 
 #### New Features and Enhancements
