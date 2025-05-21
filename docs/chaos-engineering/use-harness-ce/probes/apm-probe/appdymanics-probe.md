@@ -35,6 +35,10 @@ To use the AppDynamics probe, you need:
 
     ![AppDynamics Connector](./static/appdynamics-probe/controller-credentials.png)
 
+   :::info note
+   If you select **API Client** as the authentication type, ensure that the API client has at minimum the **Applications & Dashboards Viewer (Default)** role assigned.
+   :::
+
 7. Select the delegate and verify the connection and click on **Finish**
 
     ![Delegate](./static/appdynamics-probe/delegate.png)
