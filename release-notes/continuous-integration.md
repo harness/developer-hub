@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-04-23T10:00
+date: 2025-05-21T10:00
 sidebar_position: 10
 ---
 
@@ -84,6 +84,28 @@ This update is currently being rolled out to customers, and we expect the rollou
 :::
 
 ## May 2025
+
+### Version 1.80
+
+<!-- 2025-05-19 -->
+
+#### Fixed issues
+
+- Fixed an issue where build stages misinterpreted environment variables containing commas, causing incorrect parsing of buildx options. The `plugins/buildx:1.3.1` plugin now supports the `PLUGIN_BUILDX_OPTIONS_SEMICOLON` variable to allow semicolon-delimited input for options containing commas. (CI-17379, ZD-83477)
+  
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/ci-addon`          | Regular image updates  | 1.16.87              | 1.16.88       |
+| `harness/ci-lite-engine`    |  Regular image updates | 1.16.87              | 1.16.88       |
+| `harness/drone-git`    | Regular image updates | 1.6.8              | 1.6.9       |
+| `harness/harness-cache-server`    |  Regular image updates | 1.7.0              | 1.7.1       |
+| `plugins/buildx`    |  Regular image updates | 1.3.0              | 1.3.1       |
+| `plugins/buildx-ecr`    |  Regular image updates | 1.2.16              | 1.2.17       |
+| `plugins/buildx-acr`    |  Regular image updates | 1.2.16              | 1.2.17       |
+| `plugins/buildx-gar`    |  Regular image updates | 1.2.16              | 1.2.17       |
+| `kaniko-gar`    |  Regular image updates | kaniko-gar:1.10.1              | kaniko-gar:1.11.1       |
 
 ### Version 1.79
 
