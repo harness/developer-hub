@@ -1,0 +1,14 @@
+	{
+  "label": "Troubleshooting",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Troubleshooting",
+      "description": "This section describes some known issues and solutions to common pain points you might encounter while working with Harness DB DevOps."
+   },
+  "customProps": {
+    "description": "Solutions to common pain points and known issues."
+  },
+    "position": 70
+}
