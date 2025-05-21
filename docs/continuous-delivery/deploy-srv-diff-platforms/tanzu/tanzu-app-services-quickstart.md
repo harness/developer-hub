@@ -37,7 +37,6 @@ You'll learn how to:
 * Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization/). 
 * Your Harness Delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it.
 * For the test connection in the connector, Harness uses the CF SDK to get the list of organizations. If the credentials are correct, you get a list of organizations. Otherwise, the connection fails. For more information, see the [Cloud Foundry documentation](https://apidocs.cloudfoundry.org/196/organizations/list_all_organizations.html).
-* **Native Autoscaler Binding** : Harness now automatically binds your existing Autoscaler service instance to your TAS application during the Rolling Deploy step if it isn’t already bound. This eliminates the need for a post-deploy `cf bind-service` script.
 
 ## Connect to a TAS provider
 
@@ -780,6 +779,42 @@ The deployment was successful.
 
 In your project's **Deployments**, you can see the deployment listed.
 
+## TAS Autoscaler Integration
+
+Harness supports native integration with [TAS Autoscaler](https://docs.cloudfoundry.org/concepts/autoscaler.html) during Rolling Deployments.
+
+:::info Prerequisite
+Harness expects the Autoscaler service to be created and bound to the application **before** deployment.  
+Harness automatically runs the `configure-autoscaling` command to attach autoscaling policies to the application during deployment.
+:::
+
+1. Create the Autoscaler Service
+
+Use a TAS Command step in your pipeline to create the Autoscaler service instance:
+
+```bash
+cf create-service autoscaler autoscaler-plan harness-autoscaler
+```
+
+2. Reference the Service in the Manifest
+Update your manifest.yml file to include the Autoscaler under the services section. This ensures the service is bound to the application at deploy time.
+
+```yaml
+Copy
+Edit
+applications:
+  - name: dummy-app
+    memory: 256M
+    instances: 1
+    services:
+      - harness-autoscaler
+```
+This binding step is essential. Without it, Harness will not attach the Autoscaler service, and autoscaling policies will not be configured.
+
+Once these steps are complete, Harness will automatically:
+- Detect the bound Autoscaler service.
+- Execute the configure-autoscaling command during the Rolling Deploy step.
+This streamlines your workflow by eliminating the need for manual service binding or post-deploy configuration.
 
 ## Next steps
 
