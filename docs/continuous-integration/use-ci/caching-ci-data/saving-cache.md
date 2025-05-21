@@ -129,7 +129,7 @@ Additional Recommendations:
 
 **Key Naming**: Avoid using cache keys where one key is a prefix of another. Ensure cache key templates are distinct to prevent collisions.
 
-**Bucket Cleanup**: If collisions occur, clean up the problematic entries in the GCS bucket by removing folders with the duplicated key structure.
+**Bucket Cleanup**: If collisions occur, clean up the problematic entries in the S3 bucket by removing folders with the duplicated key structure.
 
 ### Save Cache to S3 step settings
 
