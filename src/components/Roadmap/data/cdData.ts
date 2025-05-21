@@ -108,24 +108,19 @@ export const CdData: Horizon = {
         description: "Adds filters to AppSync history in the Service Dashboard, including date range, application name, and sync status—enabling easier tracking and analysis of GitOps synchronization events.",
       },
       {
-        tag: [{value: "CV"}],
-        title: "Health Source as part of Service",
-        description: "Users can configure Health Sources as part of the Service setup.",
-      },
-      {
-        tag: [{value: "CV"}],
-        title: "Canary Verification for Dynatrace HealthSource ",
+        tag: [{value: "Continuous Verification"}],
+        title: "Canary Verification for Dynatrace Health source ",
         description: "Users can use Canary Verification with Dynatrace HealthSource.",
       },
       {
-        tag: [{value: "CV"}],
-        title: "Support for Dynatrace Grail as Healthsource",
+        tag: [{value: "Continuous Verification"}],
+        title: "Support for Dynatrace Grail as Health source",
         description: "Users can configure Dynatrace Grail as a health source in Harness.",
       },
       {
-        tag: [{value: "CV"}],
-        title: "Value Realisation for CV",
-        description: "",
+        tag: [{value: "Continuous Verification"}],
+        title: "Support for AWS Cloudwatch Logs as a Health source",
+        description: "Users can configure AWS Cloudwatch logs as a health source in Harness.",
       },
       {
         tag: [{value: "Miscellaneous"}],
