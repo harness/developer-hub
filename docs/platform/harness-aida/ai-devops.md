@@ -64,6 +64,12 @@ Manage your complete pipelines with features including:
 - **Intelligent Pipeline Creation:** Automatically generate pipelines based on project context.
 - **Seamless Editing:** Modify pipelines quickly to adapt to evolving requirements.
 
+#### Pipeline Generation Demo
+
+For a demo of the Harness DevOps Agent generating pipelines, see the following: 
+
+<DocVideo src="https://www.loom.com/share/b07b9609119f4168b948739154d9a863?sid=d5fd1172-569f-4e59-b2dc-867b551ba108" title="AI DevOps Agent Demo" />
+
 ### Policy Generation and Integration
 
 The Harness AI DevOps Agent also enhances compliance by generating and integrating policies. This capability allows you to:
@@ -78,6 +84,7 @@ This feature helps maintain robust security and compliance postures by ensuring 
 ### Error Analyzer
 
 The Harness Error Analyzer feature helps developers identify the root cause of issues and provides remediation guidance on how to fix them. By analyzing pipeline logs and the Harness pipeline context, it is able to process and interpret relevant information.
+
     - Troubleshoot your pipeline errors
     - Receive proposed fixes for your pipeline errors
 
@@ -86,10 +93,6 @@ The Harness Error Analyzer feature helps developers identify the root cause of i
 For a demo of the error analyzer, see the following:
 
 <DocVideo src="https://www.loom.com/share/f4ae8141f74c4b8f9e80b174acaee7d2?sid=73a0dd74-0a5e-4fd5-9f5c-b776d2985604" />
-
-### Video Demo
-
-<DocVideo src="https://www.loom.com/share/b07b9609119f4168b948739154d9a863?sid=d5fd1172-569f-4e59-b2dc-867b551ba108" title="AI DevOps Agent Demo" />
 
 ## Data Storage and Privacy Policies
 
