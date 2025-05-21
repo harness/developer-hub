@@ -781,7 +781,7 @@ In your project's **Deployments**, you can see the deployment listed.
 
 ## TAS Autoscaler Integration
 
-Harness supports native integration with [TAS Autoscaler](https://docs.cloudfoundry.org/concepts/autoscaler.html) during Rolling Deployments.
+Harness supports native integration with [TAS Autoscaler](https://techdocs.broadcom.com/us/en/vmware-tanzu/platform/tanzu-platform-for-cloud-foundry/6-0/tpcf/autoscaler-using-autoscaler.html) during Rolling Deployments.
 
 :::info Prerequisite
 Harness expects the Autoscaler service to be created and bound to the application **before** deployment.  
