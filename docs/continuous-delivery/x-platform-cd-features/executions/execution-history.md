@@ -207,6 +207,21 @@ Filter pipeline execution based on Execution mode:-
 - **All**: It lists the old retries as well for the retried executions along with the default ones.
 - **Rollback**: It only lists those executions which were executed in the rollback mode.
 
+You can also reference it in your pipeline expressions using `<+pipeline.executionMode>`.
+
+| Value    | Description                                          |
+|----------|------------------------------------------------------|
+| `NORMAL` | A standard, forward pipeline execution.              |
+| `ROLLBACK` | The pipeline is running its rollback sequence.     |
+
+
+:::tip
+**Tip:** In your conditional execution, you can use this expression:
+```yaml
+when: <+pipeline.executionMode> == "ROLLBACK"
+```
+:::
+
 ### Trigger type
 
 Filter pipeline execution based on type of trigger.
