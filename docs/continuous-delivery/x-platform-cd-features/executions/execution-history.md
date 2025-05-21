@@ -207,7 +207,7 @@ Filter pipeline execution based on Execution mode:-
 - **All**: It lists the old retries as well for the retried executions along with the default ones.
 - **Rollback**: It only lists those executions which were executed in the rollback mode.
 
-You can also reference it in your pipeline expressions using `<+pipeline.executionMode>`.
+You can also reference execution mode in your pipeline using the expression `<+pipeline.executionMode>`.
 
 | Value    | Description                                          |
 |----------|------------------------------------------------------|
