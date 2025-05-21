@@ -115,14 +115,14 @@ You will have to re-tag everything if you:
 
 Reducing cost isn’t a one-time event. Engineering and finance need constant feedback to innovate and change. Hence **Cloud Cost Management**.
 
-**After we’ve identified our costs, will Continuous Efficiency help us reduce them?**
+**After we’ve identified our costs, will Harness CCM help us reduce them?**
 
-Budgeting and alert thresholds are built into CE, with more features on the way.
+Budgeting and alert thresholds are built into CCM, with more features on the way.
 
 **Can your tool create custom reports and alerts?**
 
-Yes. CE provides alerts, reports, and forecasts you can fine-tune.
+Yes. CCM provides alerts, reports, and forecasts you can fine-tune.
 
 **I know my cloud platform is accurate, how do I know your tool is accurate?**
 
-CE uses the same cost and usage report as your cloud platform.
+CCM uses the same cost and usage report as your cloud platform.
