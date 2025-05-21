@@ -143,6 +143,7 @@ The following deprecated API endpoints are longer supported:
 - SMP customers can now see the chart version in the Harness UI under Account Details. [PL-62579]
 - All SMP services now support a custom Istio gateway. [PL-61322]
 - All SMP services now support Istio and Virtual Services. [PL-59078]
+- **User Impersonation**: Account Administrators can now securely impersonate users to troubleshoot access issues and ensure the right permissions are in place. This eliminates guesswork and helps validate user experiences by allowing admins to temporarily access and perform actions on a user's behalf. This feature is currently behind the feature flag: `PL_ENABLE_USER_IMPERSONATION`.
 
 ### Version 1.89.x <!--May 13, 2025-->
 
