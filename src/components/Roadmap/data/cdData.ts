@@ -2,7 +2,7 @@ import routesChunkNames from "@generated/routesChunkNames";
 import { Horizon } from "./roadmapData";
 export const CdData: Horizon = {
   "Now": {
-    description: "Q1 2025, Feb 2025 - Apr 2025",
+    description: "Q2 2025, Feb 2025 - Apr 2025",
     feature: [
       {
         tag: [{value: "OIDC"}],
@@ -15,80 +15,78 @@ export const CdData: Horizon = {
         description: "Users can utilize OIDC authentication for Azure connectors.",
       },
       {
-        tag: [{value: "Deployment"}],
-        title: "Blue Green with traffic shifting in ECS & ASG deployments",
-        description: "Users can implement Blue-Green deployments with traffic shifting for ECS and ASG, enabling seamless rollouts with minimal downtime.",
+        tag: [{value: "K8s/Helm Deployment"}],
+        title: "Drift Detection in K8s",
+        description: "Users can detect and remediate configuration drift in Kubernetes deployments.",
       },
       {
-        tag: [{value: "Deployment"}],
-        title: "Automatic Image Discovery for Serverless plugins",
-        description: "Users can automatically discover and use container images for Serverless plugins, simplifying deployment and version management.",
+        tag: [{value: "K8s/Helm Deployment"}],
+        title: "Declarative Rollback – Secrets and ConfigMap Versioning",
+        description: "Improves declarative rollback by restoring support for secrets and configmaps versioning. Ensures workloads are redeployed when these resources change, preventing drift and runtime issues.",
       },
       {
-        tag: [{value: "Deployment"}],
-        title: "Helm deployments with CRD support",
-        description: "Users can deploy Helm charts with Custom Resource Definitions (CRDs).",
+        tag: [{ value: "TAS/ECS Deployment" }],
+        title: "Per-Connector Perpetual Tasks for TAS and ECS",
+        description: "Migrates TAS and ECS swimlanes to use a single perpetual task per connector instead of one per service infrastructure, improving scalability and reducing resource consumption.",
       },
       {
-        tag: [{value: "Deployment"}],
-        title: "Kubectl diff step",
-        description: "Users can leverage the Kubectl diff step to preview changes before applying them.",
+        tag: [{ value: "Connectors" }],
+        title: "AWS Connector Support via SMP in Air-Gapped Environments",
+        description: "Enables AWS Connector communication through Self-Managed Platform (SMP) in air-gapped environments, improving connectivity and support for restricted networks.",
       },
       {
-        tag: [{value: "Deployment"}],
-        title: "Helm Namespace overrides",
-        description: "Users can override the default namespace in Helm deployments.",
+        tag: [{ value: "Core" }],
+        title: "Dynamic Expression Support for Environment Group Looping",
+        description: "Enables pipelines to dynamically loop over a list of Environment Group names at runtime, supporting sequential or parallel deployments without predefined stages.",
       },
       {
-        tag: [{value: "Deployment"}],
-        title: "AWS Service Health Polling Mechanism",
-        description: "Users can monitor AWS service instance health using a polling mechanism.",
+        tag: [{ value: "K8s/Helm Deployment" }],
+        title: "Namespace Segmentation for Shared K8s Clusters",
+        description: "Improves support for namespace-level isolation in shared Kubernetes clusters without relying on static service account tokens, enabling secure and scalable multi-team access management.",
       },
       {
-        tag: [{value: "Core"}],
-        title: "Native Event Listener in Pipeline configuration",
-        description: "Users can configure a native event listener step to control pipeline execution, allowing it to proceed or fail based on real-time events.",
-      },
-      {
-        tag: [{value: "Core"}],
-        title: "Native Slack Step support in Pipeline configuration(CD & Custom Stage)",
-        description: "Users can integrate a native Slack step within pipeline configurations for CD and Custom Stages, enabling real-time notifications and collaboration.",
-      },
-      {
-        tag: [{value: "Core"}],
-        title: "Custom max concurrency for multi service deployments",
-        description: "Users can define custom max concurrency limits for multi-service deployments, ensuring controlled rollout and optimized resource utilization.",
+        tag: [{ value: "Traditional Deployment" }],
+        title: "Artifact Download Support in WinRM Copy Command",
+        description: "Enables artifact download as part of the 'Copy' command in WinRM deployments. Facilitates secure transfers via delegate when target hosts cannot access external artifact repositories.",
       },
 
 
       {
         tag: [{value: "Pipeline"}],
-        title: "Customised Notifications",
-        description: "Users can customize the body of notifications sent by Harness for all pipeline events.",
-      },
-      {
-        tag: [{value: "Pipeline"}],
-        title: "Bulk Reconciliation of Pipelines with Templates",
-        description: "Users can reconcile multiple pipelines with updated templates in bulk.",
-      },
-      {
-        tag: [{value: "Pipeline"}],
-        title: "Integration with DataDog",
-        description: "Users can integrate Harness pipelines with DataDog for real-time monitoring, logging, and performance insights.",
-      },
-      {
-        tag: [{value: "Pipeline"}],
-        title: "Dynamic Pipeline execution",
-        description: "Users can generate pipelines dynamically and execute them in Harness.",
+        title: "Fine Grained Concurrency Management.",
+        description: "",
       },
 
-      
       {
-        tag: [{value: "Usability"}],
-        title: "Dark Theme",
-        description: "Users can use a Dark Theme option in Harness Platform for customizable interface experience.",
+        tag: [{ value: "Pipeline" }],
+        title: "Self-Healing System Expansion",
+        description: "Enhances orchestration engine resilience by supporting idempotent event processing, reprocessing failed executions, and graph generation recovery—reducing the impact of crashes, bugs, and network issues.",
       },
-    
+      {
+        tag: [{ value: "Pipeline" }],
+        title: "Trigger-Specific Failure Notifications",
+        description: "Adds support for notifications when triggers fail to execute, enabling teams to promptly address issues like missing input sets or template changes before pipeline execution.",
+      },
+      {
+        tag: [{ value: "Pipeline" }],
+        title: "Manual Stage Execution Control",
+        description: "Introduces support for manually triggering each pipeline stage, providing GitLab-style control over multi-service deployments. Enhances flexibility by decoupling stage execution from automatic progression.",
+      },
+      {
+        tag: [{ value: "Git Experience" }],
+        title: "Audit Trail for Nested Git-Backed Entities",
+        description: "Adds visibility into commit ID and branch information for nested entities like Service, Infrastructure, and Environment used in remote pipeline executions—enabling complete audit trails for Git-backed deployments.",
+      },
+      {
+        tag: [{ value: "Pipeline" }],
+        title: "ClickHouse as Log Service Database",
+        description: "Migrates log storage from Redis to ClickHouse to improve scalability, performance, and cost-efficiency. Enhances log retention, streaming reliability, and simplifies log API complexity for high-throughput workloads.",
+      },
+      {
+        tag: [{ value: "Pipeline" }],
+        title: "Sunset Debezium Service and Adopt Kafka Connect",
+        description: "Replaces custom embedded Debezium CDC logic with Kafka Connect and standard Debezium connectors, enabling centralized, scalable, and fault-tolerant change data capture across services.",
+      },
       {
         tag: [{value: "GitOps"}],
         title: "Native Application Sets Support",
@@ -104,8 +102,11 @@ export const CdData: Horizon = {
         title: "Harness Secrets support in Applications",
         description: "Users can securely manage and utilize Harness Secrets within GitOps applications.",
       },
-
-      
+      {
+        tag: [{ value: "GitOps" }],
+        title: "Filters for AppSync History in Service Dashboard",
+        description: "Adds filters to AppSync history in the Service Dashboard, including date range, application name, and sync status—enabling easier tracking and analysis of GitOps synchronization events.",
+      },
       {
         tag: [{value: "CV"}],
         title: "Health Source as part of Service",
@@ -126,57 +127,17 @@ export const CdData: Horizon = {
         title: "Value Realisation for CV",
         description: "",
       },
-
-
-      {
-        tag: [{value: "OPA"}],
-        title: "Repo Import and Package Support",
-        description: "",
-      },
-      {
-        tag: [{value: "OPA"}],
-        title: "Support for runtime contexts",
-        description: "Users can create and enforce OPA policies that adapt to runtime contexts.",
-      },      
-      {
-        tag: [{value: "OPA"}],
-        title: "Improve OPA Onboarding Wizard",
-        description: "Users can leverage OPA onboarding wizard to simplify policy creation, configuration, and enforcement.",
-      },
-
-
       {
         tag: [{value: "Miscellaneous"}],
         title: "Integration with Harness Code",
         description: "Users can automate the creation and configuration of Git repositories and ArgoCD resources using YAML specifications for a streamlined GitOps workflow.",
       },
-      {
-        tag: [{value: "Miscellaneous"}],
-        title: "OIDC Authentication - Hashicorp deployment types",
-        description: "Users can enable OIDC authentication for HashiCorp deployment types.",
-      },
-
-      {
-        tag: [{value: "Migrator"}],
-        title: "Jenkins -> Harness ",
-        description: "Users can migrate from Jenkins to Harness.",
-      }
       
     ],
   },
   "Next": {
-    description: "Q2 2025, May 2025 - July 2025",
+    description: "Q3 2025, May 2025 - July 2025",
     feature: [
-      {
-        tag: [{value: "K8s/Helm Deployment"}],
-        title: "Drift Detection in K8s",
-        description: "Users can detect and remediate configuration drift in Kubernetes deployments.",
-      },
-      {
-        tag: [{value: "K8s/Helm Deployment"}],
-        title: "Helm CRD Support",
-        description: "Users can deploy and manage Custom Resource Definitions (CRDs) with Helm.",
-      },
       {
         tag: [{value: "K8s/Helm Deployment"}],
         title: "Improved Error diagnostics for K8S deployments",
@@ -222,19 +183,34 @@ export const CdData: Horizon = {
         title: "Trigger Notifications.",
         description: "",
       },
+
+
       {
         tag: [{value: "Pipeline"}],
-        title: "Fine Grained Concurrency Management.",
-        description: "",
+        title: "Integration with DataDog",
+        description: "Users can integrate Harness pipelines with DataDog for real-time monitoring, logging, and performance insights.",
       },
-
 
       {
-        tag: [{value: "Usability"}],
-        title: "Dark Theme",
-        description: "Users can use a Dark Theme option in Harness Platform for customizable interface experience.",
+        tag: [{value: "OPA"}],
+        title: "Repo Import and Package Support",
+        description: "",
       },
-
+      {
+        tag: [{value: "OPA"}],
+        title: "Support for runtime contexts",
+        description: "Users can create and enforce OPA policies that adapt to runtime contexts.",
+      },      
+      {
+        tag: [{value: "OPA"}],
+        title: "Improve OPA Onboarding Wizard",
+        description: "Users can leverage OPA onboarding wizard to simplify policy creation, configuration, and enforcement.",
+      },
+      {
+        tag: [{value: "Miscellaneous"}],
+        title: "OIDC Authentication - Hashicorp deployment types",
+        description: "Users can enable OIDC authentication for HashiCorp deployment types.",
+      },
       {
         tag: [{value: "GitOps"}],
         title: "Argo Rollout Support",
@@ -266,7 +242,6 @@ export const CdData: Horizon = {
         title: "New Healthsource - CloudWatch",
         description: "Users can configure Amazon CloudWatch as a health source.",
       },
-
       {
         tag: [{value: "OPA"}],
         title: "OPA for Continuous Verification",
@@ -281,11 +256,16 @@ export const CdData: Horizon = {
         tag: [{value: "OPA"}],
         title: "Template verification",
         description: "Users can validate and enforce OPA policies for templates.",
+      },
+      {
+        tag: [{value: "Migrator"}],
+        title: "Jenkins -> Harness ",
+        description: "Users can migrate from Jenkins to Harness.",
       }
     ],
   },
   "Later": {
-    description: "Q3 2025+, August 2025 & Beyond",
+    description: "Q4 2025+, August 2025 & Beyond",
     feature: [
       {
         tag: [{value: "Continuous Verification"}],
@@ -329,34 +309,84 @@ export const CdData: Horizon = {
     feature: [
       {
         tag: [{value: "Deployment"}],
-        title: "Azure Functions",
-        description: "Users can deploy Azure Functions.",
-        link:"https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-function-tutorial/"
+        title: "Blue Green with traffic shifting in ECS deployments",
+        description: "Users can implement Blue-Green deployments with traffic shifting for ECS and ASG, enabling seamless rollouts with minimal downtime.",
+        link: "https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/traffic-shifting"
       },
       {
         tag: [{value: "Deployment"}],
-        title: "Google Cloud Run Support",
-        description: "Users can deploy to Google Cloud Run.",
-        link:"https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-cloud-run/"
+        title: "Automatic Image Discovery for Serverless plugins",
+        description: "Users can automatically discover and use container images for Serverless plugins, simplifying deployment and version management.",
+        link: "https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/k8s-diff-step/"
+      },
+      {
+        tag: [{value: "Deployment"}],
+        title: "Helm deployments with CRD support",
+        description: "Users can deploy Helm charts with Custom Resource Definitions (CRDs).",
+        link: "https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart#deploy-helm-charts-with-crds"
+      },
+      {
+        tag: [{value: "Deployment"}],
+        title: "Kubectl diff step",
+        description: "Users can leverage the Kubectl diff step to preview changes before applying them.",
+        link: "https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/k8s-diff-step/"
+      },
+      {
+        tag: [{value: "Deployment"}],
+        title: "Helm Namespace overrides",
+        description: "Users can override the default namespace in Helm deployments.",
+        link: ""
+      },
+      {
+        tag: [{value: "Deployment"}],
+        title: "AWS Service Health Polling Mechanism",
+        description: "Users can monitor AWS service instance health using a polling mechanism.",
+        link: "https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#steady-state-step"
+      },
+      {
+        tag: [{value: "Core"}],
+        title: "Native Event Listener in Pipeline configuration",
+        description: "Users can configure a native event listener step to control pipeline execution, allowing it to proceed or fail based on real-time events.",
+        link: "https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/event-listener-step/"
+      },
+
+      {
+        tag: [{value: "Core"}],
+        title: "Native Slack Step support in Pipeline configuration(CD & Custom Stage)",
+        description: "Users can integrate a native Slack step within pipeline configurations for CD and Custom Stages, enabling real-time notifications and collaboration.",
+        link: "https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/slack-notify-step/"
+      },
+      {
+        tag: [{value: "Core"}],
+        title: "Custom max concurrency for multi service deployments",
+        description: "Users can define custom max concurrency limits for multi-service deployments, ensuring controlled rollout and optimized resource utilization.",
+        link: "https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv/#custom-max-concurrency"
       },
       {
         tag: [{value: "Pipeline"}],
-        title: "Flexible Templates Phase II",
-        description: "Users can reference dynamically inserted stages/steps in pipeline templates",
-        link:"https://developer.harness.io/docs/platform/templates/inject-step-stage-templates/"
+        title: "Customised Notifications",
+        description: "Users can customize the body of notifications sent by Harness for all pipeline events.",
+        link: "https://developer.harness.io/docs/platform/templates/customized-notification-template/"
+      },
+
+      {
+        tag: [{value: "Pipeline"}],
+        title: "Bulk Reconciliation of Pipelines with Templates",
+        description: "Users can reconcile multiple pipelines with updated templates in bulk.",
+        link : "https://developer.harness.io/docs/platform/templates/reconcile-pipeline-templates/"
+      },
+
+      {
+        tag: [{value: "Pipeline"}],
+        title: "Dynamic Pipeline execution",
+        description: "Users can generate pipelines dynamically and execute them in Harness.",
+        link : "https://developer.harness.io/docs/platform/pipelines/dynamic-execution-pipeline/"
       },
       {
-        tag: [{value: "OPA"}],
-        title: "Service, Environment, Overrides w/ OPA",
-        description: "Users can create and enforce OPA policies for CD entities such as Services, Environments, Overrides, and Infrastructure definitions",
-        link:"https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/opa-policies-for-cd-entities/"
+        tag: [{value: "Usability"}],
+        title: "Dark Theme",
+        description: "Users can use a Dark Theme option in Harness Platform for customizable interface experience.",
       },
-      {
-        tag: [{value: "GitOps"}],
-        title: "Improved Application Filtering",
-        description: "Users can filter applications using live search functionality, and wildcard search is also supported for application labels. ",
-        link:"https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/manage-gitops-applications/"
-      }
     ]
   }
 };
