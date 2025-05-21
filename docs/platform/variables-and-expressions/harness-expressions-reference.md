@@ -707,3 +707,23 @@ This checks if the entire pipeline is in rollback mode.
 #### Detecting Post-Execution Rollback
 
 `isPostProdRollback=<+<+pipeline.executionMode> == "POST_EXECUTION_ROLLBACK">`
+
+## Connector Type Variable
+
+You can reference any connector’s attributes (name, identifier, type, spec fields, etc.) via JEXL in **account**, **organisation** and **project**-level scopes. When no scope is specified, the project scope is assumed.
+
+### Scope Resolution
+
+Connector lookups follow a three-tier hierarchy—**account**, **organization**, then **project**—based on the prefix you provide:
+
+- **Account scope**: Use the `account.` prefix to explicitly fetch an account-level connector. For example:
+  - `<+connector.get("account.myConnector").type>`
+  - `<+connector.get("account.artifactory").spec.passwordRef>`
+
+- **Organization scope**: Use the `org.` prefix to target an org-level connector. For example:
+   - `<+connector.get("org.myConnector").identifier>`
+   - `<+connector.get("org.artifactory").type>`
+
+- **Project level (no prefix)**: For project-level connectors, there is no need to specify any prefix. For example:
+   - `<+connector.get("myConnector").name>`
+   - `<+connector.get("artifactory").spec.passwordRef>` 

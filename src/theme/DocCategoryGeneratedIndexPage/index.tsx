@@ -27,14 +27,6 @@ function DocCategoryGeneratedIndexPageMetadata({
   categoryGeneratedIndex,
 }: Props): JSX.Element {
   const location = useLocation();
-
-  // if (CanonocalLookup[location.pathname]) {
-  //   console.log({
-  //     path: location.pathname,
-  //     href: CanonocalLookup[location.pathname],
-  //   });
-  // }
-
   return (
     <>
       <Head>

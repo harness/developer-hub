@@ -73,7 +73,6 @@ For more information see [Google Container Registry deprecation notice](https://
 :::
 
 
-
 :::note
 
 **New UI for License Management in Harness CI**
@@ -83,6 +82,27 @@ We’re excited to introduce an updated UI for managing your Harness Continuous 
 This update is currently being rolled out to customers, and we expect the rollout to be fully complete by mid-March.
 
 :::
+
+## May 2025
+
+### Version 1.79
+
+<!-- 2025-05-12 -->
+
+#### Fixed issues
+
+- Updated the error message in the Artifactory step to clarify when a connector lacks upload permissions. (CI-15073)
+    - Fix available in `drone-artifactory` plugin v1.7.5.
+  
+#### Harness images updates
+
+| **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
+|-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
+| `harness/ci-addon`          |  Improved plugin error handling - handle empty error_category and changed the delimiter from double colon (::) to pipe. | 1.16.86              | 1.16.87       |
+| `harness/ci-lite-engine`    |  Improved plugin error handling - handle empty error_category and changed the delimiter from double colon (::) to pipe. | 1.16.86              | 1.16.87       |
+| `harness/drone-git`    | Convert drone-git to binary to avoid cloning in containerless mode | 1.6.7              | 1.6.9       |
+| `plugins/artifactory`    |  Updated the error message in the **Upload Artifacts to JFrog** step to clarify when a connector lacks upload permissions. | 1.7.4              | 1.7.5       |
+
 ### Version 1.78
 
 <!-- 2025-05-05 -->
@@ -100,7 +120,6 @@ This update is currently being rolled out to customers, and we expect the rollou
 | `harness/ci-addon`          | Improved handling of file downloads when using parallelism. | 1.16.84              | 1.16.85.1       |
 | `harness/ci-lite-engine`    | Improved handling of file downloads when using parallelism. | 1.16.84              | 1.16.85.1       |
 
-## May 2025
 ### Version 1.77
 
 <!-- 2025-04-28 -->

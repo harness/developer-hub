@@ -18,13 +18,69 @@ Progressive deployment: Harness deploys changes to Harness SaaS clusters on a pr
 
 :::
 
+## May 2025 - Version 1.51.4
+
+### [New Feature] Replacement Schedules
+**[CCM-21859]**
+
+We have added support for replacement schedules with options: **Always, Never, or Custom**. Users can now define specific windows (e.g., Tuesdays and Fridays, 9 PM–11:59 PM IST) for bin packing operations. Currently this is only available for "Harness Pod Eviction". During these scheduled periods, node replacements and system updates may occur, temporarily affecting workload availability. So it is advisable to choose time windows that minimize impact on critical operations.
+
+<DocImage path={require('./static/replacement-schedules.jpeg')} width="90%" height="90%" title="Click to view full-size image" />
+
+### Feature Improvements
+
+- **Added validation for Cost Category rules during save and update operations:** The system now constructs and dry-runs queries based on the defined cost bucket rules to identify any invalid rules before saving. As a result of this additional validation step, you may experience a slight delay during Cost Category save or update actions. [CCM-21901]
+
+- **Added support for quarterly reports in Perspectives:** Previously, only monthly and annual reporting options were available. With the new quarterly option, users can now receive more balanced and actionable insights per quarter.
+
+<DocImage path={require('./static/quarterly-report.jpeg')} width="50%" height="50%" title="Click to view full-size image" />
+
+- **Nodepool Recommendations UI changes**:  "Largest Resource Requirements" has been renamed to "Minimum Resource Requirements".The positions of Preferred and Minimum resource requirements have been swapped in the UI for better clarity and consistency. Preferred resource requirements will always be greater than Minimum resource requirements. We have also added tooltips on the UI to make the UI more user-friendly. [CCM-22826]
+
+<DocImage path={require('./static/ui-enhance.jpeg')} width="50%" height="50%" title="Click to view full-size image" />
+
+- **Traffic analysis chart on resource level for AutoStopping Rules**: We’ve introduced a new interactive chart to help you better understand resource activity and idleness over the past 30 days. It is available on every AutoStopping rule page to make it easy for users to analyze trends at a glance. 
+
+<DocImage path={require('./static/traffic-analysis.png')} width="50%" height="50%" title="Click to view full-size image" />
+
+- **More Options for Date Ranges**: We’ve added support for additional shorter time ranges on the Governance Evaluations page, including:
+  - Last 1 Minute
+  - Last 5 Minutes
+  - Last 10 Minutes
+  - Last 15 Minutes
+  - Last 30 Minutes
+  - Last 45 Minutes
+  - Last 1 Hour
+  - Last 3 Hours
+  - Last 6 Hours
+  - Last 12 Hours
+  - Last 1 Day
+  - Last 2 Days
+  - Last 7 Days
+  - Last 30 Days.
+
+<DocImage path={require('./static/dates-gov.png')} width="50%" height="50%" title="Click to view full-size image" />
+
+- **Editing Instance Families**: We’ve added support for editing Instance Families for regions that have already been added in the create/update Nodepool preset flow.
+
+<DocImage path={require('./static/edit-instance.jpeg')} width="50%" height="50%" title="Click to view full-size image" />
+
+### Bug Fixes
+
+- The [Harness API for Nodepool Recommendations](https://apidocs.harness.io/tag/Cloud-Cost-Recommendations#operation/listRecommendations) previously did not return the Account ID in the response. This issue has now been fixed, and the API will include the Account ID as part of the response payload. [CCM-21082]
+
+- **Improved Accuracy in Cost Category Anomaly Detection:** We’ve improved how cost category rules are applied to anomaly filters within Perspectives. This update ensures that anomalies tied to cost category rules ( combinations of AND/OR conditions) are shown more accurately. [CCM-21712]
+
+- **UI enhancement for Governance Recommendations**: We’ve resolved an issue in the Governance Recommendations’ Resource Breakdown tab where Azure Resource IDs were overflowing into adjacent cells. The text now wraps onto the next line to maintain proper layout. [CCM-22850]
+
+
 
 ## May 2025 - Version 1.50.2
 
-### [New Feature] LabelV2
-**[CCM-22075]**
+### [New Feature] Label V2
+**[CCM-22075]** | [Docs](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#important-migration-from-label-to-labelv2)
 
-We're rolling out **LabelsV2**, a major enhancement to how labels (tags) are handled and displayed across the platform, delivering **better visibility**, **performance**, and **alignment with cloud-native formats**.
+We're rolling out **Label V2**, a major enhancement to how labels (tags) are handled and displayed across the platform, delivering **better visibility**, **performance**, and **alignment with cloud-native formats**.
 
 #### Key Benefits
 
@@ -39,7 +95,7 @@ Users will need to manually **update their Perspectives, Cost Categories, and Da
 
 ### Feature Improvements
 
-- We’ve added support for saving Preferred Instance Families in Nodepool presets, along with Buffer and Minimum Node Count. Users can now select specific instance families per cloud provider and region, and these preferences will be considered when generating the next set of Nodepool recommendations. [CCM-21987]
+- **Preferred Instance Families:** We’ve added support for saving Preferred Instance Families in Nodepool presets, along with Buffer and Minimum Node Count. Users can now select specific instance families per cloud provider and region, and these preferences will be considered when generating the next set of Nodepool recommendations. [CCM-21987]
 
 <DocImage path={require('./static/nodepool-changes.png')} width="90%" height="90%" title="Click to view full-size image" />
 
@@ -69,6 +125,7 @@ Users will need to manually **update their Perspectives, Cost Categories, and Da
 ### Feature Improvements
 
 - Asset Governance Alert Fix: We've improved the alert update experience to ensure that only relevant resources and cloud accounts are displayed based on the selected cloud provider. This enhancement ensures a more accurate and streamlined configuration flow for Governance alerts. [CCM-22618]
+
 
 ## April 2025 - Version 1.48.1
 

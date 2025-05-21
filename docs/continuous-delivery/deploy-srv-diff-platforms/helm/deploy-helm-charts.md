@@ -650,6 +650,21 @@ You deployment is successful.
 
 Harness has two ways of performing Helm Steady State Checks for Native Helm Deployment types (Helm Deployments managed by Helm). Depending on your use case and needs you can opt into either option via the setting. By default, Harness will perform a Helm Steady State Check on the deployed resources however, the mechanism of how Harness' does it differs based on the setting.
 
+### Helm Test Support
+
+Harness now lets you run your chart’s built-in tests immediately after deployment. Charts that include `helm.sh/hook: test jobs` under templates can be validated with a single checkbox.
+
+:::note
+Currently, this feature is behind the feature flag `CDS_ENABLE_RUN_HELM_CHART_TESTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+- Where to find it: In any Native Helm Deploy step, enable **Run Chart Tests**.
+- What it does: After `helm upgrade --install ...`, Harness will invoke `helm test <release-name>`.
+- Pass/fail: Your test containers must exit 0 for success. Failures will mark the step (and stage) as failed.
+- Skip logging: If you leave the box unchecked, Harness logs **Helm test skipped** and proceeds.
+
+For more information on Helm Chart Tests, go to the [Helm documentation](https://helm.sh/docs/topics/chart_tests/)
+
 #### Disabled Setting - Native Helm steady state for jobs - Default Mode
 
 Harness will check for the steady state of the deployed resources via the ConfigMap Harness generates to manage and track the deployment. The limitation of this method, is we do not track Kubernetes Jobs objects that are being created as part of the deployment and wait for them to reach a steady state.
@@ -681,6 +696,12 @@ Done
 Helm chart deployments support versioning and rollback in the same way as standard Kubernetes deployments.
 
 For more information, go to [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
+
+:::info
+**Deployment sequence**: Harness first runs a canary release, then a full release. Helm bumps the revision by 1 on each step, so together they advance it by 2 (e.g. `v1 → v2` [canary] then `v2 → v3` [full]).
+
+**Rollback**: To revert, Harness subtracts 2 from the current revision (e.g. `v3 – 2 = v1`), skipping the now-deleted canary revision (`v2`).
+:::
 
 ## Trigger the pipeline on a new chart version
 

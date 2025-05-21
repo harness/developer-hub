@@ -1,13 +1,13 @@
 ---
 title: Harness AI DevOps Agent
-description: Harness AI DevOps Agent unlock your pipeline productivity
+description: Harness AI DevOps Agent unlocks your pipeline productivity.
 sidebar_position: 53
 ---
-# Harness AI DevOps Agent Documentation
+# Harness AI DevOps Agent
 
-The **Harness AI DevOps Agent** streamlines your DevOps processes by enabling you to create and edit steps, stages, and pipelines with ease. Leveraging the power of Large Language Models, the agent provides intelligent suggestions, automates repetitive tasks, and now generates and integrates OPA Rego policies to help you meet your compliance standards.
+The **Harness AI DevOps Agent** streamlines your DevOps processes by enabling you to create and edit steps, stages, and pipelines with ease. Leveraging the power of large language models, the agent provides intelligent suggestions, automates repetitive tasks, and now generates and integrates OPA Rego policies to help you meet your compliance standards.
 
-:::info AI Models
+:::note AI Models
 
 The AI DevOps Agents use the following AI models to facilitate your DevOps tasks:
 
@@ -28,7 +28,7 @@ The Harness AI DevOps Agent is enabled directly within the Harness UI—no separ
 4. Optionally, enable **Allow Overrides**. This will allow orgs and projects in the account to optionally override this setting and disable the agent.
 
 :::note
-The DevOps Agent is available via the Harness UI only
+The DevOps Agent is only available via the Harness UI.
 :::
 
 ## Using Harness AI DevOps Agent: Main Features
@@ -53,8 +53,8 @@ Harness AI DevOps Agent enables you to create new steps or edit existing ones.
 
 Configure stages to logically group related steps in your pipelines. The agent supports:
 
-- Creating any stage type on the pipeline
-- Creates any steps within the stage with schema validation
+- Creating any stage type within a pipeline.
+- Creating any steps within the stage with schema validation.
 - Configuring advanced settings like failure strategy, conditional executions, and delegate selectors.
 
 ### Pipeline Orchestration
@@ -85,13 +85,13 @@ Harness AI is designed with strict data privacy and security principles. This se
 
 - Training is disabled across all AI integrations.
 - Data is not persisted or exposed to model providers beyond inference.
-- Fallback mechanisms are only used when necessary and are compliant with strict retention policies.
+- Fallback mechanisms are used only when necessary and are compliant with strict retention policies.
 
 This section discusses these policies in greater detail. 
 
 ### Data Privacy and Subscription Terms
 
-For a full legal breakdown of AI privacy at Harness, see: [AI Data Privacy](https://www.harness.io/legal/harness-ai-data-privacy) & [Subscription Terms 2025](https://www.harness.io/legal/subscription-terms-2025)  
+For a full legal breakdown of AI privacy at Harness, see: [AI Data Privacy](https://www.harness.io/legal/harness-ai-data-privacy) & [Subscription Terms 2025](https://www.harness.io/legal/subscription-terms-2025).
 
 ### No Data Use
 
@@ -130,7 +130,7 @@ No, Harness AI is not available for SMP.
 
 ### Who is the AI DevOps Agent available to?
 
-Enterprise Licenses (including Dev360, Service, SI, Users) are entitled to AI DevOps free of charge. Any module that has access to pipelines with be entitled to AI DevOps - not just CI or CD. This includes all Harness modules except for CCM. The scope of AI DevOps Agent will be restricted to the license you have. For example, a CI-only customer cannot create a CD stage.
+Enterprise Licenses (including Dev360, Service, SI, Users) are entitled to AI DevOps free of charge. Any module that has access to pipelines will be entitled to AI DevOps - not just CI or CD. This includes all Harness modules except for CCM. The scope of the AI DevOps Agent will be restricted to the license you have. For example, a CI-only customer cannot create a CD stage.
 
 ### Where can I submit feedback?
 

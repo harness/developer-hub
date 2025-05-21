@@ -56,6 +56,10 @@ You can [configure Secure Connect](#configure-secure-connect) in minutes. If you
 
 2\. Deploy the following Kubernetes manifest by saving it as `secure-connect.yaml` in your firewalled environment, then run `kubectl apply -f secure-connect.yaml`. The placement of the client depends on which assets need to securely connect to Harness and your environment's network configuration. The client uses Basic authentication for security. If basic auth credentials are not specified in the manifest, Harness generates them using SHA256.
 
+:::info
+The API key must be base64-encoded before being added to the Secret.
+:::
+
 ```yaml
  ---
  apiVersion: v1

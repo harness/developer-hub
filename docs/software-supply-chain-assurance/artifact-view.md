@@ -128,6 +128,11 @@ The Deployments tab enables you to track the active deployments of your artifact
 
 You can search for an environment or apply filters based on environment type and policy violations to quickly find the required data.
 
+:::note 
+
+Harness SCS provides support for tracking artifact deployments to Kubernetes, Native Helm, and Amazon ECS.
+
+:::
 
 ## Vulnerabilities Tab
 
