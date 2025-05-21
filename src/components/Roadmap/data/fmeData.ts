@@ -21,12 +21,6 @@ export const FmeData: Horizon = {
         description: "Decorate impression records with properties to use in downstream processing. Ongoing support for additional SDKs being developed and released.",
       },
       {
-        tag: [{ value: "Targeting" }],
-        title: "Flag prerequisites",
-        description:
-          "Top level flag dependencies enforced (new) as well as within rules (existing).",
-      },
-      {
         tag: [{value: "Targeting"}, {value: "Better Together"}],
         title: "Rule-based segments",
         description:
@@ -63,6 +57,12 @@ export const FmeData: Horizon = {
         tag: [{ value: "Better Together" }],
         title: "Automated release pipelines",
         description: "Leverage Harness pipelines for feature flags to automate release processes.",
+      },
+      {
+        tag: [{ value: "Targeting" }],
+        title: "Flag prerequisites",
+        description:
+          "Top level flag dependencies enforced (new) as well as within rules (existing).",
       },
     ],
   },
