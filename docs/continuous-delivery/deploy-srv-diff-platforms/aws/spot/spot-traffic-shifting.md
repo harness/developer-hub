@@ -4,15 +4,11 @@ description: Elastigroup Blue-Green deployment strategy with native support for 
 sidebar_position: 2
 ---
 
-Harness supports gradual traffic shifting during Spot Elastigroup Blue-Green deployments by updating ELB listener rules rather than relying on ASG weighting. With this approach, you can split traffic between **prod** and **stage** target groups on the same listener or across multiple listeners, enabling controlled roll-outs and easy rollback.
-
-:::note
-Currently, this feature is behind the feature flag `CDS_SPOT_TRAFFIC_SHIFT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
+Harness supports gradual traffic shifting during Spot Elastigroup Blue-Green deployments by updating AWS ALB listener rules. Similar to ECS deployments, this lets you gradually shift traffic between prod and stage target groups—on the same listener or across multiple listeners—without relying on Auto Scaling Group behavior.
 
 ## Overview
 
-Unlike ASG Blue-Green (which uses the Auto Scaling API to adjust weights on a single listener rule), Spot Elastigroup Blue-Green requires you to define distinct listener rules (or listeners) for prod and stage target groups. During deployment, Harness updates those rules to shift traffic incrementally.
+In Spot Elastigroup Blue-Green deployments, you must define distinct listener rules (or listeners) for prod and stage target groups. During deployment, Harness updates these listener rules to incrementally shift traffic—similar to how ECS Blue-Green traffic shifting works with ALB weighted target groups.
 
 You can configure traffic shifting between target groups attached to the same listener rule, giving you the flexibility to:
 
@@ -45,7 +41,7 @@ If you do not select the **Add Traffic Shifting Steps** checkbox, then your exec
 You can also use a blank canvas strategy and manually add the **Elastigroup Blue Green Setup** and **Elastigroup Blue Green Traffic Shift** steps to your stage.
 
 :::info
-You cannot have a **Elastigroup Swap Route** step and a **Elastigroup Swap Route** within the same stage as it uses the same configure step which is the **Elastigroup Blue Green Setup**.
+In Spot Elastigroup deployments, a single stage can include multiple load balancer configurations. Some load balancers can use traffic shifting—handled by the **Elastigroup Blue Green Traffic Shift** step—while others can use the traditional **Elastigroup Swap Route** step. All load balancer configurations are defined through the **Elastigroup Blue Green Setup** step.
 :::
 
 ### Configure the Elastigroup Blue Green Stage Setup step.
@@ -56,23 +52,28 @@ You cannot have a **Elastigroup Swap Route** step and a **Elastigroup Swap Route
 - In **Instances**, select: 
        * **Same as already running instances**: Replicate the already running instances.
        * **Fixed**: Enter **Min Instances**, **Max Instances**, and **Desired Instances**.
-- In **Connected Cloud Provider**, you can override the connector and region you selected in the service configuration. 
+- In Connected Cloud Provider, specify the AWS connector and region to use for this deployment.
+   This configuration is not inherited from the service or infrastructure definition. You must explicitly define the AWS connector and region in this step. 
 - In **AWS Load Balancer Configuration**, select **Add** to add the ELB configuration/ edit the existing configuration: 
        * **AWS Load Balancer**: Select the load balancer to use.
        
        Select the checkbox **Use Shift Traffic** to enable the **Elastigroup Blue Green Traffic Shift** to the ELB listener
        
-       * **Prod Listener**: Select the listener to use for prod traffic.
-       * **Prod Listener Rule ARN**: Select the ARN for the prod listener rule.
-       * **Stage Target Group ARN**: Select the target group where the new service version will be deployed.
+       
+       * **Prod Listener**: Select the AWS Application Load Balancer (ALB) listener you want to use for production traffic.
+
+       * **Prod Listener Rule ARN**: Select the listener rule that forwards traffic to both the production and stage target groups. This rule supports weighted target group configurations for traffic shifting.
+
+       * **Stage Target Group ARN**: Select the target group where the new version of your service will be deployed during the Blue-Green rollout.
+
+       The specified listener rule must reference exactly two target groups: one for the existing (production) service and one for the new (stage) service. This field identifies the stage target group in that rule.
 
 <div align="center">
   <DocImage path={require('./static/spot-ts-2.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
 
 :::info
-If this checkbox is not selected, the **Elastigroup Blue Green Traffic Shift** step will not be available.
-:::
+If the Use Shift Traffic checkbox is not selected for any of the Load Balancer Configurations, the **Elastigroup Blue Green Traffic Shift** step will not be included in the pipeline execution flow.:::
 
 You can have multiple **AWS Load Balancer Configuration** based on your use-case and and can choose if you want to use traffic shifting step for the ELB listener or not.
 
@@ -145,9 +146,13 @@ The step adjusts traffic distribution between the **Stage Target Group** (where 
 - Weight `70` → 70% to Stage Target Group, 30% to Prod Target Group.
 - Weight `100` →  Suppose you provide the weight as `100`, the step will route `100%` traffic to the **Stage target group**.
 
+At this point, the **Inherit** step also performs a renaming operation:
 
-The **Inherit** step updates blue and green tags only when 100% of the traffic is shifted to the Stage Target Group.  
-In this case, the new service deployed is tagged as **BLUE**. For any lower weight, tagging does not occur.
+- The new (stage) Elastigroup is renamed to match the **App Name** configured in the **Elastigroup Blue Green Traffic Shift** step.
+- The old (prod) Elastigroup is renamed with a suffix to indicate it’s no longer active.
+
+This renaming only happens when 100% of the traffic has been shifted to the stage target group.  
+If the weight is less than 100%, the Elastigroup names remain unchanged.
 
 <details>
 <summary>Sample YAML</summary>
@@ -185,7 +190,7 @@ You must not reuse the same listener rule that is specified in the **Elastigroup
 Harness uses the delegate to locate the load balancers and list them in Elastic Load Balancer.
 If you do not see your load balancer, ensure that the delegate can connect to AWS cluster.
 
-- **Listener**: Select the ELB listener to associate with this deployment.
+- **Listener ARN**: Select the ELB listener to associate with this deployment.
 
 - **Listener Rule ARN**: Choose the Listener Rule ARN that defines the routing of traffic to the appropriate target group.
 
@@ -228,13 +233,13 @@ Sample YAML
 ```
 </details>
 
-The **Standalone** step does not assign blue or green tags to the associated Spot Elastigroup services.
+The **Standalone** step does not perform any renaming of the associated Spot Elastigroup services, regardless of the traffic weight specified.
 
 ## Rollback Behavior
 
 When you run the **Elastigroup Blue-Green Traffic Shifting** step, the system stores the initial configuration as **Prepare Rollback Data** before execution begins.
 
-- In **Inherit mode**, if the step fails mid-execution, the rollback is handled by the **Elastigroup Rollback** step, which restores the traffic weights and blue/green tag assignments using the stored rollback data.
+- In **Inherit mode**, if the step fails mid-execution, the rollback is handled by the **Elastigroup Rollback** step, which restores the traffic weights and names of the Elastigroups using the stored rollback data.
 
 - In **Standalone mode**, during the first execution of each listener rule, the system captures the original forward configuration as part of the rollback data. If a failure occurs, the **Standalone Traffic Shift Rollback** step restores the original forward configuration for all affected listener rules.
 
@@ -264,7 +269,11 @@ In both cases, the original forward configuration is restored in the event of a 
 
 - For supported target group weights and configuration options, refer to the [AWS ALB Listener Rules documentation](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html).
 - Maximum of 5 target groups per rule (AWS limitation).
-- **Swap** step and **Auto Scaling during swap** are not supported.
+- **Auto Scaling during swap** is not supported.
+
+:::info
+The **Swap** step can be used alongside the **Traffic Shift** step in the same stage, especially in scenarios with multiple load balancer configurations.
+:::
 
 ## General Solution Pattern for Traffic Shifting
 
@@ -276,7 +285,7 @@ For customers who want to implement progressive traffic shifting (e.g., 10% → 
 - In lower environments, shift traffic to the stage target group using the **Standalone Traffic Shift** step with the dev listener rule.
 - In production, use **Inherit mode** to gradually increase traffic to the new service version via the stage target group.
 - Use **Elastigroup Traffic Shift** steps to adjust traffic incrementally (e.g., 10%, 50%, 100%) with optional approval gates between shifts.
-- Finalize with a full cut-over to the stage target group, which is tagged as **BLUE** when traffic reaches 100%.
+- When traffic reaches 100%, the associated Spot Elastigroup is renamed to the **App Name** specified in the Blue-Green Traffic Shift step.
 
 
 <details>
@@ -307,10 +316,10 @@ Note: This new traffic-shifting approach makes Blue-Green deployments safer, mor
 
 You can use Elastigroup traffic shifting to gradually roll out and validate a new version of your service across different environments before promoting it to production:
 
-1. 1. Deploy the new version of the service once and attach it to the **Stage Target Group**.
+1. Deploy the new version of the service once and attach it to the **Stage Target Group**.
 2. Keep the **prod target group** mapped to the existing (old) service.
 3. In lower environments, incrementally shift traffic to the new service version and validate using **CV (Continuous Verification)**, **approval steps**, or **custom scripts**.
-4. Once validated, deploy the new version in the production environment and mark the new service as the **blue** version.
+4. When 100% of the traffic is shifted, the new service is renamed to match the configured **App Name**.
 
 ## Example Use Case: Step-by-Step Flow for Gradual Traffic Shifting
 
