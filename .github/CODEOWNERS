@@ -107,14 +107,14 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/serviceReliabilityManagementData.ts @sunilgupta-harness @M-Tsur
 
 # Chaos Docs
-/docs/chaos-engineering/ @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness
-/release-notes/chaos-engineering.md @neelanjan00 @Jonsy13
+/docs/chaos-engineering/ @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
+/release-notes/chaos-engineering.md @neelanjan00 @Jonsy13 @Ashutosh-Bhadauriya
 /src/components/Roadmap/data/ceData.ts @neelanjan00 @vishal-av @SushrutHarness
 /src/components/Docs/data/chaosEngineeringData* @neelanjan00 @vishal-av @SushrutHarness
 # Chaos FAQs
-/docs/faqs/chaos-engineering-faqs @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness
-/docs/faqs/static @neelanjan00 @Jonsy13 @Adarshkumar14 @ksatchit @umamukkara
-/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @ksatchit @umamukkara
+/docs/faqs/chaos-engineering-faqs @neelanjan00 @shovanmaity @Jonsy13 @Saranya-jena @Adarshkumar14 @ispeakc0de @amityt @uditgaurav @S-ayanide @vanshBhatia-A4k9 @ksatchit @umamukkara @SarthakJain26 @SahilKr24 @utkarsh-code-harness @Ashutosh-Bhadauriya
+/docs/faqs/static @neelanjan00 @Jonsy13 @Adarshkumar14 @ksatchit @umamukkara @Ashutosh-Bhadauriya
+/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @ksatchit @umamukkara @Ashutosh-Bhadauriya
 
 # Platform Docs
 /docs/platform/ @pratmit @GokulBansal0 @abhishekharness @ivikramsahu
@@ -195,8 +195,8 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas @khushisharmaharness
 
 # IR Docs
-/docs/incident-response/ @ryantaylor16 @Kmonkeyjam
-/release-notes/incident-response @ryantaylor16 @Kmonkeyjam
+/docs/incident-response/ @ryantaylor16 @Kmonkeyjam @vasundharashukla
+/release-notes/incident-response @ryantaylor16 @Kmonkeyjam @vasundharashukla
 
 # AI QA Assistant Docs
 /docs/ai-qa-assistant/ 

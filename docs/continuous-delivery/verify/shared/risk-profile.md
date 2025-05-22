@@ -22,7 +22,9 @@ The **Risk Profile** section is only visible if you have selected **Continuous V
 #### Map service instance identifier
 
 :::note
-The **Map service instance identifier** section is only visible if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment**) in the **Assign** section.
+The **Map service instance identifier** (SII) section is only visible if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment**) in the **Assign** section.
 :::
 
 In **Service Instance Identifier (only needed for CV)**, specify the service instance identifier, which represents a dynamically created service that you deploy using Harness. The default value is `_sourceHost`.
+
+When doing canary deployments, ensure that the SII can be used to identify the canary instance of the service, or CV will not work properly."

@@ -44,7 +44,7 @@ Follow the instructions below to configure the Artifact Verification step.
 
 <Tabs>
 
-  <TabItem value="dockerhub" label="DockerHub" default >
+  <TabItem value="dockerhub" label="Docker Registry" default >
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 

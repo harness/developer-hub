@@ -88,7 +88,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## May 2025
 
-### Version 25.05.85902 <!--May 19, 2025-->
+### Version 25.05.85902 <!--May 22, 2025-->
 
 #### Fixed issues
 
@@ -97,6 +97,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 - Fixed an issue where the MergePR step failed when using GitHub account URLs without a repository name. The step now correctly handles these URLs. [CDS-107526]
 - Fixed an issue where the UI would crash when editing a newly created Manifest override using a Custom Remote Store. [CDS-107112] 
 - Improved error handling for the MergePR step to provide clearer feedback when a pull request merge fails. [CDS-109239]
+
+### Version 25.05.85805 <!--May 21, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where fetch gitlab branch was not working if the branch name had a forward slash in it. [CI-17618]
 
 ### Version 25.05.85804 <!--May 15, 2025-->
 
