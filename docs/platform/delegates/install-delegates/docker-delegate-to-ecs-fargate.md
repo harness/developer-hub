@@ -270,6 +270,15 @@ The above steps to [deploy a delegate to ECS](#deploy-a-delegate-to-amazon-ecs) 
 
 To access the module, go to [Harness Community GitHub](https://github.com/harness-community/terraform-aws-harness-delegate-ecs-fargate).
 
+:::warning Disclaimer: Community-Maintained Resource
+The Terraform module is hosted in a community-maintained GitHub repository and is provided as-is for reference.
+- This solution is not officially supported or maintained by Harness.
+- It may be outdated and might not support features like Auto-Upgrades.
+- Users are advised to treat this as sample/example code only.
+
+For production use, we strongly recommend using officially supported deployment methods such as Docker or Kubernetes which offer full support and maintenance from Harness.
+:::
+
 ```terraform
 module "delegate" {
   source                    = "git::https://github.com/harness-community/terraform-aws-harness-delegate-ecs-fargate.git"
