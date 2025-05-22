@@ -97,10 +97,9 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 | **Image**                    | **Change**                                                 | **Previous version** | **New Version** |
 |-----------------------------|-------------------------------------------------------------|----------------------|-----------------|
-| `harness/ci-addon`          | Regular image updates  | 1.16.87              | 1.16.88       |
-| `harness/ci-lite-engine`    |  Regular image updates | 1.16.87              | 1.16.88       |
-| `harness/drone-git`    | Regular image updates | 1.6.8              | 1.6.9       |
-| `harness/harness-cache-server`    |  Regular image updates | 1.7.0              | 1.7.1       |
+| `harness/ci-addon`          | Added support to parse Maven build cache metrics for savings reporting.  | 1.16.87              | 1.16.88       |
+| `harness/ci-lite-engine`    |  Added support to parse Maven build cache metrics for savings reporting. | 1.16.87              | 1.16.88       |
+| `harness/harness-cache-server`    |  Added support to parse Maven build cache metrics for savings reporting. | 1.7.0              | 1.7.1       |
 | `plugins/buildx`    |  Updated buildx image version to support semi-colon delimited options | 1.3.0              | 1.3.1       |
 | `plugins/buildx-ecr`    |  Updated buildx image version to support semi-colon delimited options | 1.2.16              | 1.2.17       |
 | `plugins/buildx-acr`    |  Updated buildx image version to support semi-colon delimited options | 1.2.16              | 1.2.17       |
