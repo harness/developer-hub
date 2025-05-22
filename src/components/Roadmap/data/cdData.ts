@@ -10,11 +10,6 @@ export const CdData: Horizon = {
         description: "Users can utilize OIDC authentication for AWS connectors.",
       },
       {
-        tag: [{value: "OIDC"}],
-        title: "Support for Azure",
-        description: "Users can utilize OIDC authentication for Azure connectors.",
-      },
-      {
         tag: [{value: "K8s/Helm Deployment"}],
         title: "Drift Detection in K8s",
         description: "Users can detect and remediate configuration drift in Kubernetes deployments.",
@@ -49,7 +44,11 @@ export const CdData: Horizon = {
         title: "Artifact Download Support in WinRM Copy Command",
         description: "Enables artifact download as part of the 'Copy' command in WinRM deployments. Facilitates secure transfers via delegate when target hosts cannot access external artifact repositories.",
       },
-
+      {
+        tag: [{value: "Service/Environments"}],
+        title: "Template support for Manifest definitions",
+        description: "Users can leverage templates for manifest definitions, enabling reusable and consistent configurations across deployments.",
+      },
 
       {
         tag: [{value: "Pipeline"}],
@@ -133,26 +132,7 @@ export const CdData: Horizon = {
   "Next": {
     description: "Q3 2025, May 2025 - July 2025",
     feature: [
-      {
-        tag: [{value: "K8s/Helm Deployment"}],
-        title: "Improved Error diagnostics for K8S deployments",
-        description: "Users can leverage enhanced error diagnostics for Kubernetes deployments.",
-      },
-      {
-        tag: [{value: "Traditional Deployment"}],
-        title: "Matrix support for SSH Deployments",
-        description: "Users can leverage matrix deployment strategy for SSH deployments.",
-      },
-      {
-        tag: [{value: "Service/Environments"}],
-        title: "Service Groups support for multiple deployments",
-        description: "Users can define and manage service groups to streamline multiple deployments.",
-      },
-      {
-        tag: [{value: "Service/Environments"}],
-        title: "Template support for Manifest definitions",
-        description: "Users can leverage templates for manifest definitions, enabling reusable and consistent configurations across deployments.",
-      },
+    
       {
         tag: [{value: "Approvals"}],
         title: "Native events for Approvals",
