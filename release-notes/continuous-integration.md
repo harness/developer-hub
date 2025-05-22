@@ -101,11 +101,11 @@ This update is currently being rolled out to customers, and we expect the rollou
 | `harness/ci-lite-engine`    |  Regular image updates | 1.16.87              | 1.16.88       |
 | `harness/drone-git`    | Regular image updates | 1.6.8              | 1.6.9       |
 | `harness/harness-cache-server`    |  Regular image updates | 1.7.0              | 1.7.1       |
-| `plugins/buildx`    |  Regular image updates | 1.3.0              | 1.3.1       |
-| `plugins/buildx-ecr`    |  Regular image updates | 1.2.16              | 1.2.17       |
-| `plugins/buildx-acr`    |  Regular image updates | 1.2.16              | 1.2.17       |
-| `plugins/buildx-gar`    |  Regular image updates | 1.2.16              | 1.2.17       |
-| `kaniko-gar`    |  Regular image updates | kaniko-gar:1.10.1              | kaniko-gar:1.11.1       |
+| `plugins/buildx`    |  Updated buildx image version to support semi-colon delimited options | 1.3.0              | 1.3.1       |
+| `plugins/buildx-ecr`    |  Updated buildx image version to support semi-colon delimited options | 1.2.16              | 1.2.17       |
+| `plugins/buildx-acr`    |  Updated buildx image version to support semi-colon delimited options | 1.2.16              | 1.2.17       |
+| `plugins/buildx-gar`    |  Updated buildx image version to support semi-colon delimited options | 1.2.16              | 1.2.17       |
+| `kaniko-gar`    |  drone-kaniko gar plugin now supports push-only operation on an image  | kaniko-gar:1.10.1              | kaniko-gar:1.11.1       |
 
 ### Version 1.79
 
