@@ -56,7 +56,7 @@ First we need to add an environment variable for setting the target AWS region:
 
 | **Name** | **Value** |
 | --- | --- |
-| AWS_REGION | us-west-2 |
+| AWS_REGION | `us-west-2` |
 
 ![](../static/iacm-build-infra-workspace-5.png)
 
@@ -68,13 +68,13 @@ Below is an attempt at a minimum-input set to get an EKS cluster deployed:
 
 | **Name** | **Value** |
 | --- | --- |
-| cluster_name | harness-build-infra |
-| cluster_version | 1.32 |
-| cluster_endpoint_public_access | true |
-| vpc_id | vpc-123 |
-| subnet_ids | ["subnet-123456"] |
-| enable_cluster_creator_admin_permissions | true |
-| eks_managed_node_groups | {"one":{"desired_size":1,"instance_types":["t3.small"],"max_size":1,"min_size":1,"name":"node-group-1"}} |
+| cluster_name | `harness-build-infra` |
+| cluster_version | `1.32` |
+| cluster_endpoint_public_access | `true` |
+| vpc_id | `vpc-123` |
+| subnet_ids | `["subnet-123456"]` |
+| enable_cluster_creator_admin_permissions | `true` |
+| eks_managed_node_groups | `{"one":{"desired_size":1,"instance_types":["t3.small"],"max_size":1,"min_size":1,"name":"node-group-1"}}` |
 
 ![](../static/iacm-build-infra-workspace-4.png)
 
