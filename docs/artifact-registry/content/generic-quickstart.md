@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Use a Generic repository to store raw files like test reports and configuration files.
+Use a Generic repository to store raw files like `zip`, `war` and `tar` files, test reports and configuration files.
 While it is not necessarily used for binaries, you can store binaries as well.
 
 ## Prerequisites
