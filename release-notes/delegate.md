@@ -88,6 +88,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## May 2025
 
+### Version 25.05.85805 <!--May 21, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where fetch gitlab branch was not working if the branch name had a forward slash in it. [CI-17618]
+
 ### Version 25.05.85804 <!--May 15, 2025-->
 
 #### Fixed issues
