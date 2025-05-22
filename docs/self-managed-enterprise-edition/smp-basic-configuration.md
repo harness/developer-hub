@@ -239,18 +239,26 @@ This section explains how to configure Google Cloud Load Balancer for Harness SM
 
 **Prerequisites**
 
-- A static external IP address reserved in your GCP project, not in use by any other application.
-- Download the latest release of the [Helm Chart](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true) and unpack the `.tgz` archive. 
+* A [static external IP address](https://cloud.google.com/compute/docs/ip-addresses/configure-static-external-ip-address) reserved in your GCP project and not in use by any other application.
+* The [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) installed and configured to use the `gcloud` CLI.
+* A GKE cluster set up and accessible from your local machine.
+* The latest release of the [Harness Helm Chart](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true) downloaded and the `.tgz` archive extracted.
 
 **Installation**
 
-1. Create Namespace
+1. Set your Kubernetes context to the cluster in your GCP project.  
+
+    ```bash
+    kubectl config use-context <gke_[project_id]_[region]_[cluster-name]>
+    ```
+
+2. Create Namespace
 
     ```bash
     kubectl create namespace <harness-namespace>
     ```
 
-2. Open the `values.yaml` file from the extracted Helm chart directory, update the parameters listed below and replace the `<YOUR-IP-ADDRESS-OR-HOST>` with the static external IP address reserved.
+3. Open the `values.yaml` file from the extracted Helm chart directory, update the parameters listed below and replace the `<YOUR-IP-ADDRESS-OR-HOST>` with the static external IP address reserved.
 
       ```yaml
         global:
@@ -261,8 +269,9 @@ This section explains how to configure Google Cloud Load Balancer for Harness SM
           ingress:
             className: "harness"          
             enabled: true
-            hosts:
-              - "<YOUR-IP-ADDRESS-OR-HOST>"
+            hosts: ""
+            tls:
+              enabled: false
 
           # Enable NGINX
           nginx:
@@ -276,9 +285,28 @@ This section explains how to configure Google Cloud Load Balancer for Harness SM
           defaultbackend:
             create: true
       ```
-:::note
- To apply the configuration changes, you may need to install or upgrade the Helm chart as described in the [installation and upgrade](#install-and-upgrades) section below.   
-:::
+
+4. Apply changes to your cluster using the command below.
+
+    :::tip
+      You can use [resource profiles](#resource-profiles) as per your resouce requirement similar to what i have used below. 
+    :::
+
+    ```bash
+    helm upgrade -i <release-name> ../harness/ -n <harness-namespace> -f values.yaml -f override-<profile>.yaml
+    ```
+
+5. Check that your pods are up and running:
+
+    ```bash
+    kubectl get pods -n <harness-namespace>
+    ```
+
+6. Once all your pods and services are running, you can access the application via your IP or URL in a browser:
+
+    ```bash
+    http://<YOUR-IP-ADDRESS-OR-HOST>
+    ```
 
 ## Installation
 
