@@ -16,7 +16,7 @@ This guide explains how secrets (like registry credentials, clone script secrets
 
 In Harness DBOps pipelines, secrets like container registry credentials, database passwords, and script tokens are needed to run your workflows. By default, these secrets are stored as Kubernetes Secrets and attached to the pods when they run.
 
-However, For organizations with stricter compliance requirements or a desire to minimize secrets exposure, this feature lets you pass secrets directly to containers only when they’re needed—without saving them in pod specs, Kubernetes manifests.
+However, For organizations with stricter compliance requirements or a desire to minimize secrets exposure, this feature lets you pass secrets directly to containers only when they’re needed, without saving them in pod specs, Kubernetes manifests.
 
 :::info note
 Once the step is completed, the pods are terminated, and the secrets are removed from memory. This means that even if someone gains access to the pod, they won't be able to retrieve the secrets.
