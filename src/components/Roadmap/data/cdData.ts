@@ -78,11 +78,6 @@ export const CdData: Horizon = {
       },
       {
         tag: [{ value: "Pipeline" }],
-        title: "ClickHouse as Log Service Database",
-        description: "Migrates log storage from Redis to ClickHouse to improve scalability, performance, and cost-efficiency. Enhances log retention, streaming reliability, and simplifies log API complexity for high-throughput workloads.",
-      },
-      {
-        tag: [{ value: "Pipeline" }],
         title: "Sunset Debezium Service and Adopt Kafka Connect",
         description: "Replaces custom embedded Debezium CDC logic with Kafka Connect and standard Debezium connectors, enabling centralized, scalable, and fault-tolerant change data capture across services.",
       },
