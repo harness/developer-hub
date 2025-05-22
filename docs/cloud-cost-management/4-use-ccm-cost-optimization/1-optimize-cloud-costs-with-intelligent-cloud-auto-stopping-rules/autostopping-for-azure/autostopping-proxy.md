@@ -1,7 +1,7 @@
 ---
 title: Azure AutoStopping proxy
 description: This topic describes how to create an AutoStopping proxy for Azure.
-# sidebar_position: 3
+sidebar_position: 1
 ---
 
 # Create an AutoStopping proxy for Azure

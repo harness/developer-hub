@@ -1,9 +1,7 @@
 ---
 title: Azure Application Gateway 
 description: Describes how to create a new Application Gateway for Azure.
-# sidebar_position: 2
-helpdocs_topic_id: d43tsblpma
-helpdocs_category_id: k8xq40kf08
+sidebar_position: 2
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
