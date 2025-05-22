@@ -34,10 +34,6 @@ Navigate to the IaCM module and workspaces, then create a new workspace. Give it
 
 ![](../static/iacm-build-infra-workspace-0.png)
 
-Select the AWS connector you created, and what Terraform distribution to use.
-
-![](../static/iacm-build-infra-workspace-1.png)
-
 [Navigate to the module repository](https://github.com/terraform-aws-modules/terraform-aws-eks) and take a look at the most recent release.
 
 ![](../static/iacm-build-infra-workspace-2.png)
@@ -46,46 +42,41 @@ Then select `Third-party Git Provider` and select the connector we created for t
 
 ![](../static/iacm-build-infra-workspace-3.png)
 
+Select the AWS connector you created, and what Terraform distribution to use.
+
+![](../static/iacm-build-infra-workspace-1.png)
+
 Click `Save` to create the workspace.
 
 ### Add Variables
 
 Because we are leveraging the module source as our codebase, we need to configure the module via inputs (variables) in our workspace. 
 
-[You can view the module inputs here](https://github.com/terraform-aws-modules/terraform-aws-eks?tab=readme-ov-file#inputs) and the README also includes many examples of EKS patterns.
+First we need to add an environment variable for setting the target AWS region:
 
-![](../static/iacm-build-infra-workspace-4.png)
+| **Name** | **Value** |
+| --- | --- |
+| AWS_REGION | us-west-2 |
+
+![](../static/iacm-build-infra-workspace-5.png)
+
+Next we set TF variables for the inputs to the module.
+
+[You can view the module inputs here](https://github.com/terraform-aws-modules/terraform-aws-eks?tab=readme-ov-file#inputs) and the README also includes many examples of EKS patterns.
 
 Below is an attempt at a minimum-input set to get an EKS cluster deployed:
 
-```
-cluster_name = "harness-build-infra
-cluster_version = "1.32"
+| **Name** | **Value** |
+| --- | --- |
+| cluster_name | harness-build-infra |
+| cluster_version | 1.32 |
+| cluster_endpoint_public_access | true |
+| vpc_id | vpc-123 |
+| subnet_ids | ["subnet-123456"] |
+| enable_cluster_creator_admin_permissions | true |
+| eks_managed_node_groups | {"one":{"desired_size":1,"instance_types":["t3.small"],"max_size":1,"min_size":1,"name":"node-group-1"}} |
 
-# networking
-cluster_endpoint_public_access = true
-vpc_id = "vpc-123"
-subnet_ids = [
-  "subnet-123456"
-]
-
-# permissions
-## give yourself access to the cluster
-enable_cluster_creator_admin_permissions = true
-
-# compute
-eks_managed_node_groups = {
-  one = {
-    name = "node-group-1"
-
-    instance_types = ["t3.small"]
-
-    min_size     = 1
-    max_size     = 1
-    desired_size = 1
-  }
-}
-```
+![](../static/iacm-build-infra-workspace-4.png)
 
 ### Bootstrap with Terraform
 
