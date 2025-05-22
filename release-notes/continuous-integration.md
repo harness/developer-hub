@@ -105,7 +105,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 | `plugins/buildx-ecr`    |  Updated buildx image version to support semi-colon delimited options. | 1.2.16              | 1.2.17       |
 | `plugins/buildx-acr`    |  Updated buildx image version to support semi-colon delimited options. | 1.2.16              | 1.2.17       |
 | `plugins/buildx-gar`    |  Updated buildx image version to support semi-colon delimited options. | 1.2.16              | 1.2.17       |
-| `kaniko-gar`    |  drone-kaniko gar plugin now supports push-only operation on an image.  | kaniko-gar:1.10.1              | kaniko-gar:1.11.1       |
+| `kaniko-gar`    |  drone-kaniko gar plugin now supports push-only operation on an image.  | 1.10.1              | 1.11.1       |
 
 ### Version 1.79
 
