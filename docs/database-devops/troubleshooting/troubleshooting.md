@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 This guide outlines common issues encountered while using Harness Database DevOps and their corresponding solutions.
 
 
-## 1. `searchPath` Parameter Issue
+## 1. searchPath Parameter Issue
  
 When working with a changelog file that includes other changelog files, Liquibase might throw an error due to improper handling of file paths. This can occur when the "file" path is not set correctly: 
 
@@ -44,21 +44,11 @@ databaseChangeLog:
 ```
 This way, Liquibase can correctly resolve the paths to the included changelogs, and the error should be resolved.
 
-## 2. JDBC Connection Timeout
+:::info Important Note
+Liquibase uses the full path to the changelog file as part of the identifier of unique change ids. If your changelog has already been applied to an existing database, and your changelog path needs to change, you can add a change of type ''- logicalFilePath: example-changelog.yaml' to specify the path to the changelog that should be used for uniquely identifying change IDs.
+:::
 
-Harness DB DevOps fails to establish a JDBC connection within the default timeout period. This can occur especially with databases like MSSQL that may take longer to start up.
-
-**Error Message**:
-
-![Connection TimeOut](./static/db-devops-issue-jdbc.png)
-
-**How to Solve**:
-
-- Ensure the database instance is up and reachable over the network.
-- Consider increasing the timeout value if your database takes longer to initialize.
-- For MSSQL, consider a startup window of up to 20 minutes.
-
-## 3. `changelog.yaml` does not exist
+## 2. changelog.yaml does not exist
 
 Liquibase throws this error when it cannot find the changelog file. This can occur when the path is incorrect or the file is missing.
 
@@ -71,7 +61,7 @@ Liquibase throws this error when it cannot find the changelog file. This can occ
 - Ensure the filename and path in your configuration exactly match the file in your repository or working directory.
 - Cross-check for typos or incorrect directory structures.
 
-## 4. Could not find `databaseChangeLog` node
+## 3. Could not find databaseChangeLog node
 
 This error comes up when Harness DB DevOps cannot find the `databaseChangeLog` node in the changelog file. This can occur if the file is not formatted correctly or is missing the required node. This issue typically surfaces when the changelog file contains unexpected content. 
 
@@ -105,9 +95,13 @@ if [ ! -d "db" ]; then
 fi
 ```
 
-## 5.  ImagePullError of `alpine/curl:latest`
+## 4.  ImagePullError of alpine/curl:latest
 
-When using the Custom Script step to set up a DB schema in a pipeline with the default container registry (Harness Docker Registry), you may encounter an `ImagePullError` for the `alpine/curl:latest` image. This happens as the image available in the specified default docker registry contains only related to Harness Platform.
+This error is generally limited to Custom Script steps. 
+
+When using the Custom Script step to set up a DB schema in a pipeline with the default image registry (Harness Docker Registry), you may encounter an `ImagePullError` for the `alpine/curl:latest` image. This happens as the image available in the specified default image registry contains only related to Harness Platform.
+
+However, you may also encounter the `ImagePullError` in other steps if your configured image repository does not contain the required out-of-the-box Drone images (e.g., alpine/curl, plugins/git, etc.). In such cases, these base images must be manually added to your image registry.
 
 **Error Message**:
 
@@ -115,9 +109,9 @@ When using the Custom Script step to set up a DB schema in a pipeline with the d
 
 **How to Solve**:
 
-Ensure you are using the correct container registry for your environment. Follow the official [Harness documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) to configure this custom Docker Registry. Make sure that in the new Docker Registry Connector, the `alpine/curl:latest` image is available.
+Ensure you are using the correct container registry for your environment. Follow the official [Harness documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) to configure this custom image Registry. Make sure that in the new registry Connector, the `alpine/curl:latest` image is available.
 
-## 6. Authentication Error: could not read Username
+## 5. Authentication Error: could not read Username
 
 While adding a remote repository and pushing changes in a pipeline or shell environment, you may encounter an authentication error. This typically occurs when the credentials for the remote repository are not set up in a specified manner.
 
@@ -134,7 +128,7 @@ Use a properly formatted Git URL that includes:
 
 **Example** for a properly formatted URL:
 ```sh
-git remote add origin https://my.email%40gmail.com:<+secrets.getValue("PAT_TOKEN")>@gitlab.com/Sonichigo/generate-changelog.git
+git remote add origin https://my.email%40gmail.com:<+secrets.getValue("PAT_TOKEN")>@gitlab.com/<John_Doe>/changelog.git
 git push -u origin main
 ```
 :::info note
