@@ -59,7 +59,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 #### New features and enhancements
 
-- **Adjustable VM Pool initialization timeout for Windows deployments** - Virtual machines may have differing startup and initialization durations across operating systems, which can lead to timeout errors in VM Pools. You can now customize the VM initialization timeout in the CI Default Settings to ensure sufficient time to initialize.
+- **Adjustable VM Pool initialization timeout for Windows deployments** - Virtual machines may have differing startup and initialization durations across operating systems, which can lead to timeout errors in VM Pools. You can now adjust the VM initialization timeout to ensure sufficient time to initialize. (CI-15143, ZD-70731)
 
 #### Fixed issues
 
