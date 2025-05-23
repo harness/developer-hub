@@ -4,31 +4,31 @@
 # Learn more at: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Global Owners of the HDH Repository
-*       @pratmit @wei-harness @ivikramsahu @dewan-ahmed
+*       @pratmit @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
 
 # Configuration Files in DS are JS.
-*.js    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed
-*.ts    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed
-*.jsx    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed
-*.tsx    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed
+*.js    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed @SushrutHarness
+*.ts    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed @SushrutHarness
+*.jsx    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed @SushrutHarness
+*.tsx    @wei-harness @rohanmaharjan100 @ivikramsahu @dewan-ahmed @SushrutHarness
 
 # Changes to Lock File
 *.lock  @wei-harness
 
 # Changes to Config Files
-*.ini  @wei-harness @ivikramsahu @dewan-ahmed
-*.json  @wei-harness @ivikramsahu @dewan-ahmed
-*.toml  @wei-harness @ivikramsahu @dewan-ahmed
-*ignore @wei-harness @ivikramsahu @dewan-ahmed
-/_server-redirect @wei-harness @ivikramsahu @dewan-ahmed
+*.ini  @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
+*.json  @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
+*.toml  @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
+*ignore @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
+/_server-redirect @wei-harness @ivikramsahu @dewan-ahmed @SushrutHarness
 
 # Changes to Netlify Files
 /netlify/ @wei-harness
 
 # Contributing
-CONTRIBUTING.md @pratmit @ivikramsahu @dewan-ahmed
-README.md @pratmit @ivikramsahu @dewan-ahmed
-/docs/hdh/ @pratmit @ivikramsahu @dewan-ahmed
+CONTRIBUTING.md @pratmit @ivikramsahu @dewan-ahmed @SushrutHarness
+README.md @pratmit @ivikramsahu @dewan-ahmed @SushrutHarness
+/docs/hdh/ @pratmit @ivikramsahu @dewan-ahmed @SushrutHarness
 
 # University
 /university/ @ravilach
