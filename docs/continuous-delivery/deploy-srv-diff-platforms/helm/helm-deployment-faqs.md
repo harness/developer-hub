@@ -569,8 +569,5 @@ If a namespace doesn’t exist, using the `--create-namespace` flag can resolve 
 ### How to resolve the issue where a user reports an issue when deploying a Helm chart in a specific namespace?
 Users facing namespace errors should remove namespace objects from their manifest templates or ensure Helm correctly scopes installation to the specified namespace. 
 
-### How to resolve the issue where a user reports an issue when deploying a Helm chart in a specific namespace?
-Users facing namespace errors should remove namespace objects from their manifest templates or ensure Helm correctly scopes installation to the specified namespace. 
-
 ### Why does Helm uninstall runs after a failed initial deployment in Helm Deployment step?
 Helm recommends purging the initial release if any failure happens: [https://github.com/helm/helm/issues/3353#issuecomment-358367529](https://github.com/helm/helm/issues/3353#issuecomment-358367529). Hence, Harness purges the release if the first ever release fails in Helm Deployment step. If this is not done, then the user would be manually required to clean up the failed release, otherwise all subsequent releases would fail. Harness helps users avoid this manual effort and purges the failed initial release in this case.
