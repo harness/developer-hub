@@ -5,24 +5,9 @@ export const CdData: Horizon = {
     description: "Q2 2025, Feb 2025 - Apr 2025",
     feature: [
       {
-        tag: [{value: "OIDC"}],
+        tag: [{value: "Connectors"}],
         title: "Support for AWS",
         description: "Users can utilize OIDC authentication for AWS connectors.",
-      },
-      {
-        tag: [{value: "K8s/Helm Deployment"}],
-        title: "Drift Detection in K8s",
-        description: "Users can detect and remediate configuration drift in Kubernetes deployments.",
-      },
-      {
-        tag: [{value: "K8s/Helm Deployment"}],
-        title: "Declarative Rollback – Secrets and ConfigMap Versioning",
-        description: "Improves declarative rollback by restoring support for secrets and configmaps versioning. Ensures workloads are redeployed when these resources change, preventing drift and runtime issues.",
-      },
-      {
-        tag: [{ value: "TAS/ECS Deployment" }],
-        title: "Per-Connector Perpetual Tasks for TAS and ECS",
-        description: "Migrates TAS and ECS swimlanes to use a single perpetual task per connector instead of one per service infrastructure, improving scalability and reducing resource consumption.",
       },
       {
         tag: [{ value: "Connectors" }],
@@ -30,14 +15,19 @@ export const CdData: Horizon = {
         description: "Enables AWS Connector communication through Self-Managed Platform (SMP) in air-gapped environments, improving connectivity and support for restricted networks.",
       },
       {
-        tag: [{ value: "Core" }],
-        title: "Dynamic Expression Support for Environment Group Looping",
-        description: "Enables pipelines to dynamically loop over a list of Environment Group names at runtime, supporting sequential or parallel deployments without predefined stages.",
+        tag: [{value: "K8s/Helm Deployment"}],
+        title: "Declarative Rollback – Secrets and ConfigMap Versioning",
+        description: "Improves declarative rollback by restoring support for secrets and configmaps versioning. Ensures workloads are redeployed when these resources change, preventing drift and runtime issues.",
       },
       {
-        tag: [{ value: "K8s/Helm Deployment" }],
+        tag: [{ value: "K8s/Helm " }],
         title: "Namespace Segmentation for Shared K8s Clusters",
         description: "Improves support for namespace-level isolation in shared Kubernetes clusters without relying on static service account tokens, enabling secure and scalable multi-team access management.",
+      },
+            {
+        tag: [{ value: "AWS Deployment" }],
+        title: "Canary Support for Native Lambda Deployments",
+        description: "Enables Canary deployment strategy for AWS Lambda Native deployments, allowing incremental traffic shifting and verification of new functions before full rollout.",
       },
       {
         tag: [{ value: "Traditional Deployment" }],
@@ -45,11 +35,15 @@ export const CdData: Horizon = {
         description: "Enables artifact download as part of the 'Copy' command in WinRM deployments. Facilitates secure transfers via delegate when target hosts cannot access external artifact repositories.",
       },
       {
+        tag: [{ value: "Service/Environments" }],
+        title: "Dynamic Expression Support for Environment Group Looping",
+        description: "Enables pipelines to dynamically loop over a list of Environment Group names at runtime, supporting sequential or parallel deployments without predefined stages.",
+      },
+      {
         tag: [{value: "Service/Environments"}],
         title: "Template support for Manifest definitions",
         description: "Users can leverage templates for manifest definitions, enabling reusable and consistent configurations across deployments.",
       },
-
       {
         tag: [{value: "Pipeline"}],
         title: "Fine Grained Concurrency Management.",
@@ -127,27 +121,28 @@ export const CdData: Horizon = {
   "Next": {
     description: "Q3 2025, May 2025 - July 2025",
     feature: [
-    
+      
       {
-        tag: [{value: "Approvals"}],
-        title: "Native events for Approvals",
-        description: "Users can leverage native events to trigger and manage approval workflows.",
+        tag: [{value: "K8s/Helm Deployment"}],
+        title: "Drift Detection in K8s",
+        description: "Users can detect and remediate configuration drift in Kubernetes deployments.",
       },
       {
-        tag: [{value: "Approvals"}],
-        title: "Native Slack Approval",
-        description: "Users can approve or reject pipeline executions directly from Slack.",
+        tag: [{value: "OIDC"}],
+        title: "Support for Azure",
+        description: "Users can utilize OIDC authentication for Azure connectors.",
       },
       {
-        tag: [{value: "Approvals"}],
-        title: "Custom data type support in JIRA Create/Update",
-        description: "Users can define and use custom data types when creating or updating JIRA issues.",
+        tag: [{ value: "TAS/ECS Deployment" }],
+        title: "Per-Connector Perpetual Tasks for TAS and ECS",
+        description: "Migrates TAS and ECS swimlanes to use a single perpetual task per connector instead of one per service infrastructure, improving scalability and reducing resource consumption.",
       },
       {
         tag: [{value: "Pipeline"}],
         title: "Manually managed Pipeline Stages",
         description: "Users can manually control the execution of specific pipeline stages.",
       },
+
       {
         tag: [{value: "Pipeline"}],
         title: "Trigger Notifications.",
@@ -166,16 +161,7 @@ export const CdData: Horizon = {
         title: "Repo Import and Package Support",
         description: "",
       },
-      {
-        tag: [{value: "OPA"}],
-        title: "Support for runtime contexts",
-        description: "Users can create and enforce OPA policies that adapt to runtime contexts.",
-      },      
-      {
-        tag: [{value: "OPA"}],
-        title: "Improve OPA Onboarding Wizard",
-        description: "Users can leverage OPA onboarding wizard to simplify policy creation, configuration, and enforcement.",
-      },
+
       {
         tag: [{value: "Miscellaneous"}],
         title: "OIDC Authentication - Hashicorp deployment types",
@@ -211,6 +197,16 @@ export const CdData: Horizon = {
         tag: [{value: "CV"}],
         title: "New Healthsource - CloudWatch",
         description: "Users can configure Amazon CloudWatch as a health source.",
+      },
+            {
+        tag: [{value: "OPA"}],
+        title: "Support for runtime contexts",
+        description: "Users can create and enforce OPA policies that adapt to runtime contexts.",
+      },      
+      {
+        tag: [{value: "OPA"}],
+        title: "Improve OPA Onboarding Wizard",
+        description: "Users can leverage OPA onboarding wizard to simplify policy creation, configuration, and enforcement.",
       },
       {
         tag: [{value: "OPA"}],
