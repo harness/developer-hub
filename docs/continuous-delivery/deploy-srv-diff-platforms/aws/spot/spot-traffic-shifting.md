@@ -73,7 +73,8 @@ In Spot Elastigroup deployments, a single stage can include multiple load balanc
 </div>
 
 :::info
-If the Use Shift Traffic checkbox is not selected for any of the Load Balancer Configurations, the **Elastigroup Blue Green Traffic Shift** step will not be included in the pipeline execution flow.:::
+If the Use Shift Traffic checkbox is not selected for any of the Load Balancer Configurations, the **Elastigroup Blue Green Traffic Shift** step will not be included in the pipeline execution flow.
+:::
 
 You can have multiple **AWS Load Balancer Configuration** based on your use-case and and can choose if you want to use traffic shifting step for the ELB listener or not.
 
