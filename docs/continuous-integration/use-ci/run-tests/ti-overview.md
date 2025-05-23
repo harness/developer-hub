@@ -21,7 +21,11 @@ Testing is an important part of Continuous Integration (CI). Testing safeguards 
 
 Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. You can also use parallelism (test splitting) with TI to further optimize your test times.
 
-You can used Test Intelligence with  **Python**, **Java** , **Ruby**, **C#**, **Kotlin**, or **Scala** programming languages
+You can used Test Intelligence with  **Python**, **Java** , **Ruby**, **C#**, **Kotlin**, or **Scala** programming languages.
+
+:::note
+- Test Intellience for **JavaScript with Jest**, and **Kotest** in now avaiable in beta. Please reach out to Harness through support or your account representative if you wish to join the beta program.
+:::
 
 :::info
 - Test Intelligence is now Generally Available (GA). 
@@ -75,7 +79,7 @@ We recommend using [**Test**](./tests-v2.md) Step (Test Intelligence v2) to run 
 
 
 
-For instructions on using the Test Intelligence (v2), go to: [Test Intelligence step](./tests-v2.md)
+**For instructions on using the Test Intelligence (v2), go to: [Test Intelligence step](./tests-v2.md)**
 
 For instructions on using the Test Intelligence (v1), go to:
 
