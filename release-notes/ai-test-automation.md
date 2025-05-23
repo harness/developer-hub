@@ -43,7 +43,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 - **Validation Improvements**: Navigation issues now generate validation warnings instead of failing tests entirely
 - **Test Suite Status**: Enhanced test suite status calculation to account for AWS Batch level failures
 
-## 🔧 Infrastructure & Performance
+## Infrastructure & Performance
 
 ### AWS Batch Optimizations
 - **Retry Logic**: Set AWS Batch level retries to 2 for improved reliability
@@ -57,7 +57,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 - **Network Capture**: Changed default value of `disableAllNetworkCapture` to false for better debugging
 - **Tunnel Prioritization**: Prioritized tunnel usage over static IP connections
 
-## 🐛 Bug Fixes & Stability
+## Bug Fixes & Stability
 
 ### UI & User Experience
 - **Modal Improvements**: Added error modals for validation failures in IA/IE
@@ -78,7 +78,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 - **API Logging**: Enhanced request and response logging for API calls
 - **Validation Count**: Removed validation failures from issues count for cleaner metrics
 
-## 🔐 Security & Configuration
+## Security & Configuration
 
 ### Authentication & Access
 - **SSO Integration**: Added test-sso-secret to local development environment
@@ -90,7 +90,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 - **Configuration Overrides**: Ensured IA/IE respects step-level configuration overrides
 - **Placeholder Updates**: Updated placeholders throughout the system for better clarity
 
-## 📊 Monitoring & Notifications
+## Monitoring & Notifications
 
 ### Slack Integration
 - **Environment Context**: Added environment information to Slack notifications
@@ -103,7 +103,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 - **Backend Status Computation**: Ensured effective test suite run status is computed in backend
 - **Warning Icon**: Fixed warning icon sizing issues in UI
 
-## 🛠️ Development & Maintenance
+## Development & Maintenance
 
 ### Build & Deployment
 - **Build Fixes**: Multiple build issue resolutions and optimizations
