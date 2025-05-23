@@ -1,6 +1,6 @@
 ---
 title: Projects
-sidebar_position: 60
+sidebar_position: 10
 ---
 
 Projects allow you to separately manage your feature flags and experiments across your different business units, product lines, and applications. When you first create your account, you're  provided with one project named Default. This project has two [environments](https://help.split.io/hc/en-us/articles/360019915771) and one [traffic type](https://help.split.io/hc/en-us/articles/360019916311) created underneath it. You can rename and edit these environments and traffic types and add more to the Default project. 

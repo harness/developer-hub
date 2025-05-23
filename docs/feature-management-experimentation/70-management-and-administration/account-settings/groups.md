@@ -1,6 +1,6 @@
 ---
 title: Groups
-sidebar_position: 30
+sidebar_position: 40
 ---
 
 A group is a convenient way to manage a collection of users in your account. Use groups to grant administrative controls and grant environment-, feature flag-, or segment-level controls.

@@ -1,6 +1,6 @@
 ---
 title: Environments
-sidebar_position: 50
+sidebar_position: 60
 ---
 
 Environments allow you to manage your feature flag throughout your development lifecycle, from local development to staging and production.

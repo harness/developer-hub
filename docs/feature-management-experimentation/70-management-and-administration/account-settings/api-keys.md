@@ -1,6 +1,6 @@
 ---
 title: API keys
-sidebar_position: 10
+sidebar_position: 20
 ---
 
 FME [SDKs](https://help.split.io/hc/en-us/articles/360033557092-SDK-overview) and [Admin API](https://docs.split.io/reference) both require API keys for authentication.
