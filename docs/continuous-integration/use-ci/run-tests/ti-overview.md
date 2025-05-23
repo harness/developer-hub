@@ -24,7 +24,7 @@ Harness Test Intelligence (TI) improves unit test time by running only the unit 
 You can used Test Intelligence with  **Python**, **Java** , **Ruby**, **C#**, **Kotlin**, or **Scala** programming languages.
 
 :::tip Test Intelligence Beta
-- Test Intelligence for **JavaScript (Jest)** and **Kotest** is now available in **beta**. If you're interested in joining the beta program, please contact Harness support or your account representative.
+Test Intelligence for **JavaScript (Jest)** and **Kotest** is now available in **beta**. If you're interested in joining the beta program, please contact Harness support or your account representative.
 :::
 
 :::info
