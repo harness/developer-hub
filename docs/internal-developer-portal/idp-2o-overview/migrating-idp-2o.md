@@ -91,7 +91,7 @@ Once you’re confident about upgrading:
 
 ### Phase 4: Upgrade
 
-Once the feature flag is enabled, your account will undergo the following changes:
+Once the feature flag is enabled, **after about 5-10 mins**, your account will see the following changes:
 
 #### 🗂️ Migration to Harness-native Data Model
 
