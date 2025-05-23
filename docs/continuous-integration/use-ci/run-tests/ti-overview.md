@@ -23,13 +23,11 @@ Harness Test Intelligence (TI) improves unit test time by running only the unit 
 
 You can used Test Intelligence with  **Python**, **Java** , **Ruby**, **C#**, **Kotlin**, or **Scala** programming languages.
 
-:::note
-- Test Intellience for **JavaScript with Jest**, and **Kotest** in now avaiable in beta. Please reach out to Harness through support or your account representative if you wish to join the beta program.
+:::tip Test Intelligence Beta
+- Test Intelligence for **JavaScript (Jest)** and **Kotest** is now available in **beta**. If you're interested in joining the beta program, please contact Harness support or your account representative.
 :::
 
 :::info
-- Test Intelligence is now Generally Available (GA). 
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
 
 - Test Intelligence applies to unit testing only. For other types of tests, [use Run steps](../run-step-settings.md).
 
@@ -73,7 +71,7 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **T
 
 :::tip
 
-We recommend using [**Test**](./tests-v2.md) Step (Test Intelligence v2) to run your tests. This is a newer, simplified version of Test Intelligence, where you do not need to change your test commands - Test Intelligence will be automatically configured for you in runtime, making it easier to use.
+**We recommend using [**Test**](./tests-v2.md) Step (Test Intelligence v2)** to run your tests. This is a newer, simplified version of Test Intelligence, where you do not need to change your test commands - Test Intelligence will be automatically configured for you in runtime, making it easier to use.
 
 :::
 

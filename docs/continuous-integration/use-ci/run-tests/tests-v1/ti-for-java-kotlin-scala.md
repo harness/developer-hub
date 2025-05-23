@@ -9,7 +9,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::info
+:::warning
 
 This page contains instructions for using  Test Intelligence (v1) with the **Run Tests** step. 
 
