@@ -105,10 +105,10 @@ If you get an error about an unrecognized `refreshenv` command, you might need t
 
 Optionally set the following environment variables:
 
-| Variable Name | Description |
-| ------------- | ----------- |
-| `HEALTH_CHECK_TIMEOUT` | Integer. Set a time out (in minutes) for the health check. Works only for Mac and Linux. For example, `HEALTH_CHECK_TIMEOUT=6` would set a 6 minute timeout. |
-| `HEALTH_CHECK_WINDOWS_TIMEOUT` | Integer. Set a time out (in minutes) for the health check. Works only for Windows. For example, `HEALTH_CHECK_WINDOWS_TIMEOUT=6` would set a 6 minute timeout. |
+| Variable Name | Description | Default |
+| ------------- | ----------- | ------- |
+| `HEALTH_CHECK_TIMEOUT` | Integer. Set a time out (in minutes) for the health check. Works only for Mac and Linux. For example, `HEALTH_CHECK_TIMEOUT=6` would set a 6 minute timeout. | 3 |
+| `HEALTH_CHECK_WINDOWS_TIMEOUT` | Integer. Set a time out (in minutes) for the health check. Works only for Windows. For example, `HEALTH_CHECK_WINDOWS_TIMEOUT=6` would set a 6 minute timeout. | 5 |
 
 ## Configure the Drone pool on the AWS VM
 
