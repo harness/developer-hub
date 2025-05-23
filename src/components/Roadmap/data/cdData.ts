@@ -40,11 +40,6 @@ export const CdData: Horizon = {
         description: "Enables pipelines to dynamically loop over a list of Environment Group names at runtime, supporting sequential or parallel deployments without predefined stages.",
       },
       {
-        tag: [{value: "Service/Environments"}],
-        title: "Template support for Manifest definitions",
-        description: "Users can leverage templates for manifest definitions, enabling reusable and consistent configurations across deployments.",
-      },
-      {
         tag: [{value: "Pipeline"}],
         title: "Fine Grained Concurrency Management.",
         description: "",
