@@ -6,13 +6,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The Import Proxy feature helps organizations to take control of their proxy deployment. Rather than relying on the default auto-provisioned proxy, customers can deploy their own Proxy instance using a hardened custom Amazon Machine Image (AMI) and then import them into Harness CCM's Autostopping feature. s
+The Import Proxy feature helps organizations to take control of their proxy deployment. Rather than relying on the default auto-provisioned proxy, customers can deploy their own Proxy instance using a hardened custom Amazon Machine Image (AMI) and then import them into Harness CCM's Autostopping feature. 
 
 ## Steps to use
 
 1. Log into Amazon EC2 portal and launch EC2 instance using hardened AMI.
-2. In the "User Data" section, paste the cloud-init script provided by Harness
+2. Please select both V1 and V2 from the dropdown in metadata version. 
 
+<DocImage path={require('./static/metadata.png')} width="50%" height="50%" title="Click to view full-size image" />
+
+3. In the "User Data" section, paste the cloud-init script provided by Harness.
 
 <details>
 <summary><strong>Cloud-Init script for Ubuntu AMIs</strong></summary>
