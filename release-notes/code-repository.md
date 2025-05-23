@@ -1,7 +1,7 @@
 ---
 title: Code Repository release notes
 sidebar_label: Code Repository
-date: 2024-04-02T10:00
+date: 2025-05-23T10:00
 sidebar_position: 7
 ---
 
@@ -20,6 +20,39 @@ These release notes describe recent changes to Harness Code Repository.
 
 :::
 
+
+## May 2025
+
+<!-- May 20, 2025 -->
+
+### Version 1.42.x
+
+#### New features and enhancements
+
+* Added backend support for managing GPG keys by pulling the latest changes from Harness Open Source. (CODE-2548)
+
+#### Fixed Issues 
+
+* Improved error handling for **Semantic Search** activation by returning more informative 500 error responses. (CODE-3819)
+
+#### Maintenance
+
+* Upgraded the Go version to address security and stability concerns. (CODE-3859)
+
+<!-- May 13, 2025 -->
+
+### Version 1.41.x
+
+#### New features and enhancements
+
+* Added missing parameters to the OpenAPI specification for the **List Commits** API. This improves compatibility with OpenAPI-based tooling and enhances integration accuracy. (CODE-3821)
+
+* The **Commit** API now includes new file SHAs in its response, enabling better tracking of file-level changes during commit operations. (CODE-3530)
+
+#### Maintenance
+
+* Updated the **code-api** submodule to version `1.40` to align with backend service improvements and ensure compatibility across components. (CODE-3815)
+ 
 ## January 2025
 
 <!-- 24 Jan 24 -->
