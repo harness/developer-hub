@@ -41,38 +41,6 @@ If you have any questions or need assistance with the allowlisting process, plea
 
 :::
 
-:::warning
- 
-**Action Required: Avoid Docker Hub Rate Limits**
-
-**Starting April 1, 2025, Docker Hub is enforcing [stricter rate limits](https://docs.docker.com/docker-hub/usage/)
-on public image pulls**. By default, Harness uses anonymous access to pull images, which may lead to failures due to these limits. To prevent disruptions, you can modify your configuration to avoid rate limiting by considering the following options:
-
-* **Use authenticated access**: Configure Harness to always use credentials instead of anonymous access.
-* **Pull images anonymously from alternative registries**: switch to Google Container Registry (GCR) or Amazon ECR, where different rate limits apply, to avoid restrictions.
-* **Private registry**: Pull images from your own private registry.
-
-[Learn more about configuring authentication and alternative registries](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector). 
-
-:::
-
-:::warning
-
-**Action Required: Migration from GCR to GAR**
-
-Google Container Registry (GCR) is being decommissioned. 
-
-* As part of this change, support for the **Build and Push to GCR step in Harness CI will be discontinued**. Customers currently using this step need to **transition to the Build and Push to Google Artifact Registry (GAR)** step to continue building and pushing container images without interruption.
-* Customers that have configured HarnessImage Connector to pull [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) form GCR, need to update the connector configurations to the [new Google Artifact Registry URL](http://us-docker.pkg.dev/gar-prod-setup/harness-public)
-
-To ensure uninterrupted service, we recommend completing these updates by April 22, 2025.
-* After March 18, 2025, writing images to Google Container Registry (GCR) will no longer be possible.
-* After April 22, 2025, reading images from GCR will also be disabled.
-
-For more information see [Google Container Registry deprecation notice](https://cloud.google.com/container-registry/docs/deprecations/container-registry-deprecation).
-:::
-
-
 :::note
 
 **New UI for License Management in Harness CI**
@@ -88,6 +56,10 @@ This update is currently being rolled out to customers, and we expect the rollou
 ### Version 1.80
 
 <!-- 2025-05-19 -->
+
+#### New features and enhancements
+
+- **Adjustable VM Pool initialization timeout for Windows deployments** - Virtual machines may have differing startup and initialization durations across operating systems, which can lead to timeout errors in VM Pools. You can now adjust the VM initialization timeout to ensure sufficient time to initialize. (CI-15143, ZD-70731)
 
 #### Fixed issues
 
