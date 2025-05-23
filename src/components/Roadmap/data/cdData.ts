@@ -2,7 +2,7 @@ import routesChunkNames from "@generated/routesChunkNames";
 import { Horizon } from "./roadmapData";
 export const CdData: Horizon = {
   "Now": {
-    description: "Q2 2025, Feb 2025 - Apr 2025",
+    description: "Q2 2025, May 2025 - July 2025",
     feature: [
       {
         tag: [{value: "Connectors"}],
@@ -114,7 +114,7 @@ export const CdData: Horizon = {
     ],
   },
   "Next": {
-    description: "Q3 2025, May 2025 - July 2025",
+    description: "Q3 2025, Aug 2025 - Oct 2025",
     feature: [
       
       {
@@ -166,11 +166,6 @@ export const CdData: Horizon = {
         tag: [{value: "GitOps"}],
         title: "Argo Rollout Support",
         description: "Users can leverage Argo Rollouts for deployments.",
-      },
-      {
-        tag: [{value: "GitOps"}],
-        title: "Notifications Support",
-        description: "Users can enable notifications for GitOps events.",
       },
       {
         tag: [{value: "GitOps"}],
@@ -226,7 +221,7 @@ export const CdData: Horizon = {
     ],
   },
   "Later": {
-    description: "Q4 2025+, August 2025 & Beyond",
+    description: "Q4 2025+, Nev 2025 & Beyond",
     feature: [
       {
         tag: [{value: "Continuous Verification"}],
