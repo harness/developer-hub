@@ -13,11 +13,17 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 
 
-  <TabItem value="dockerhub" label="DockerHub" default>
+  <TabItem value="dockerhub" label="Docker Registry" default>
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
 * **Image:** Enter the name of your image using either a tag or a digest. For example: `my-docker-org/repo-name:tag` or `my-docker-org/repo-name@sha256:<digest>`
+
+:::note
+
+Unlike other artifact sources, JFrog Artifactory requires additional permissions for attestation. The connector’s user or token must have `Read`, `Annotate`, `Create/Deploy`, and `Delete` permissions.
+
+:::
 
 
 </TabItem>

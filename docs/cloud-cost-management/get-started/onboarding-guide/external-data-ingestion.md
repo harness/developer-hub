@@ -94,7 +94,7 @@ A: `CCM_EXTERNAL_DATA_INGESTION``
 
 Q: When this is going GA ?
 
-A: Dates are not confirmed yet. We expect early/mid Q2 as the GA date.
+A: Dates are not confirmed yet. We expect mid Q3 / early Q4 as the GA date.
 
 Q: Are there default perspectives for this ?
 
@@ -125,6 +125,3 @@ Q: My file sizes are more than 20MB. What should I do ?
 
 A: Its advisable to keep the file sizes under 20MB. Tools to split into multiple CSVs can be used as well. In future, we might increase the limit. 
 
-Q: What are other system limits ?
-
-A: Currently, no limits on number of files per invoice period, no limits on number of files per provider or account, no limits on concurrent uploads.

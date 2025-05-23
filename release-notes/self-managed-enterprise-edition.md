@@ -253,17 +253,19 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
             ```
 
       2.  Upgrading from 0.26.x to newer versions:
-          - Set `archive_minio_secret: false`
-          - Prevents ArgoCD from overwriting the existing secret
-  
-            ```yaml
+          - Add `Prune=false` annotation to the resource using the following command
+          ```yaml
+          kubectl annotate secret timescaledb-backup-minio -n <namespace> argocd.argoproj.io/sync-options='Prune=false'
+          ```
+          - Set `archive_minio_secret: false`, this prevents ArgoCD from overwriting the existing secret
+          ```yaml
               platform:
                 bootstrap:
                   database:
                     timescaledb:
                       archive_minio_secret: false
             ```
-:::  
+:::
 
 ## April 29, 2025, Version 0.28.0 <!-- Draft : April 28, 2025 -->
 
@@ -11318,7 +11320,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
 - You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana. (SMP-766)
 
-  For more information, go to [Monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem).
+  For more information, go to [Monitoring](/docs/category/monitoring).
 
 - Deployments load static files from the application server and no longer attempt to connect to static.harness.io. (SMP-851)
 

@@ -335,7 +335,12 @@ Services represent your microservices and other workloads. Each service contains
 
 * `<+service.gitOpsEnabled>`: Resolves to a Boolean value to indicate whether [the GitOps option](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart) is enabled (`true`) or not (`false`).
 
-Harness supports expressions to check if a value is resolved instead of relying on null checks. The expression `<+expression.isResolved(<+pipeline.variables.var1>)>` verifies whether a variable resolves to a non-null value. Similarly, `<+expression.isUnresolved(<+pipeline.variables.var1>)>` can be used to check if a variable remains unresolved. It is recommended to use these expressions instead of `<+<+pipeline.variables.var1> != null>` for more reliable evaluation in pipelines.
+#### Check expression isResolved isUnresolved null replacement
+Harness supports expressions to check if a value is resolved instead of relying on null checks. 
+
+The expression `<+expression.isResolved(<+pipeline.variables.var1>)>` verifies whether a variable resolves to a non-null value. Similarly, `<+expression.isUnresolved(<+pipeline.variables.var1>)>` can be used to check if a variable remains unresolved. It is recommended to use these expressions instead of `<+<+pipeline.variables.var1> != null>` for more reliable evaluation in pipelines.
+
+These expressions only will evaluated variables, and does not evaluate secrets resolution. 
 
 #### Custom service-level variables
 
@@ -702,3 +707,23 @@ This checks if the entire pipeline is in rollback mode.
 #### Detecting Post-Execution Rollback
 
 `isPostProdRollback=<+<+pipeline.executionMode> == "POST_EXECUTION_ROLLBACK">`
+
+## Connector Type Variable
+
+You can reference any connector’s attributes (name, identifier, type, spec fields, etc.) via JEXL in **account**, **organisation** and **project**-level scopes. When no scope is specified, the project scope is assumed.
+
+### Scope Resolution
+
+Connector lookups follow a three-tier hierarchy—**account**, **organization**, then **project**—based on the prefix you provide:
+
+- **Account scope**: Use the `account.` prefix to explicitly fetch an account-level connector. For example:
+  - `<+connector.get("account.myConnector").type>`
+  - `<+connector.get("account.artifactory").spec.passwordRef>`
+
+- **Organization scope**: Use the `org.` prefix to target an org-level connector. For example:
+   - `<+connector.get("org.myConnector").identifier>`
+   - `<+connector.get("org.artifactory").type>`
+
+- **Project level (no prefix)**: For project-level connectors, there is no need to specify any prefix. For example:
+   - `<+connector.get("myConnector").name>`
+   - `<+connector.get("artifactory").spec.passwordRef>` 

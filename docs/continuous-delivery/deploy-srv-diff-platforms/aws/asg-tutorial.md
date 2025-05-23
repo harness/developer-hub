@@ -4,7 +4,7 @@ description: Deploy an ASG using Harness CD.
 sidebar_position: 1
 ---
 
-This topic explains how to deploy new AWS Auto Scale Groups (ASGs) and instances to Amazon Elastic Compute Cloud (EC2) using Harness.
+This topic explains how to deploy Amazon EC2 workloads by orchestrating Auto Scaling Group (ASG) deployments using Harness. Harness manages the creation and rollout of new ASGs based on existing AMIs, while AWS handles the instance provisioning.
 
 ## Deployment summary
 

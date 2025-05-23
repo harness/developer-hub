@@ -88,6 +88,34 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## May 2025
 
+### Version 25.05.85903 <!--May 22, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue in the Kubernetes Rolling step where the steady state check was skipped if no managed workload was present. A new flow now allows hooks to run without this check, and the change is gated by the feature flag `CDS_ENABLE_STEADY_STATE_CHECK_WITHOUT_MANAGED_WORKLOADS`. [CDS-109379]
+- Fixed an issue where clicking the **Run** button in the UI triggered an unnecessary `onSave` OPA policy call. If this call failed, pipeline inputs wouldn't render. This has now been fixed by removing the `onSave` call from the `getPipelineByIdentifier` API. If needed, the old behavior can be restored by enabling the feature flag `PIPE_DISABLE_OPA_ON_SAVE_BLOCKING_FOR_PIPELINE_RUN`. [PIPE-26614]
+- Fixed an issue where the MergePR step failed when using GitHub account URLs without a repository name. The step now correctly handles these URLs. [CDS-107526]
+- Fixed an issue where the UI would crash when editing a newly created Manifest override using a Custom Remote Store. [CDS-107112] 
+- Improved error handling for the MergePR step to provide clearer feedback when a pull request merge fails. [CDS-109239]
+
+### Version 25.05.85805 <!--May 21, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where fetch gitlab branch was not working if the branch name had a forward slash in it. [CI-17618]
+
+### Version 25.05.85804 <!--May 15, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where `RESOURCE_EXHAUSTED: Quota exceeded` errors were repeatedly logged; these entries are now skipped in delegate logs. [PL-61945]
+
+### Version 25.05.85803 <!--May 15, 2025-->
+
+#### Fixed issues
+
+- Introduces the Feature Flag: CDS_K8S_MASK_SECRETS_IN_WRAPUP_LOGS to mask secrets in wrap up logs by breaking describe command logs by their resource.
+
 ### Version 25.05.85801 <!--May 5, 2025-->
 
 #### Fixed issues

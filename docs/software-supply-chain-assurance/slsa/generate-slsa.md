@@ -30,17 +30,17 @@ The configuration for SLSA Generation and attestation previously handled in the 
 ## SLSA Generation step configuration
 The **SLSA Generation** step enables you to generate SLSA Provenance and optionally attest it. The generated provenance is saved in the [Artifact section](../artifact-view.md) in SCS, while the attestation file is pushed to the configured container registry. This step should be configured immediately after completing your image-building process, as the image digest is required for provenance generation and attestation.
 
-<DocImage path={require('./static/slsa-tab.png')} width="50%" height="50%" />
+<DocImage path={require('./static/slsa-step.png')} width="50%" height="50%" />
 
 Follow the instructions below to configure the **SLSA Generation** step.
 
 - Search and add the **SLSA Generation** step to your pipeline. It is important to place this step immediately after the steps that complete your image-building process, as it requires the artifact digest as input.
-- **Artifact Source**: Configure your artifact source by selecting from the options available in the dropdown menu. You can choose from **DockerHub**, **ECR**, **ACR**, or **GAR**. Select the corresponding artifact source tab below for detailed instructions on configuration.
+- **Artifact Source**: Configure your artifact source by selecting from the options available in the dropdown menu. You can choose from **Docker Registry**, **ECR**, **ACR**, or **GAR**. Select the corresponding artifact source tab below for detailed instructions on configuration.
 
-:::warning Deprecation Alert
+:::info
 
 
-Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the SLSA Generation step.
+When modifying the existing SLSA steps, you must manually remove the digest from the YAML configuration to ensure compatibility with the updated functionality.
 
 :::
 
@@ -54,11 +54,17 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 </TabItem>
 
-  <TabItem value="dockerhub" label="DockerHub">
+  <TabItem value="dockerhub" label="Docker Registry">
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
 * **Image:** Enter the name of your image using a tag or digest, example `my-docker-org/repo-name:tag` or `my-docker-org/repo-name@sha256:<digest>`
+
+:::note
+
+Unlike other artifact sources, JFrog Artifactory requires additional permissions for attestation. The connector’s user or token must have `Read`, `Annotate`, `Create/Deploy`, and `Delete` permissions.
+
+:::
 
 
 </TabItem>

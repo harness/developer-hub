@@ -1,7 +1,7 @@
 ---
 title: Infrastructure as Code Management release notes
 sidebar_label: Infrastructure as Code Management
-date: 2025-04-14T10:00
+date: 2025-05-13T10:00
 tags: [Infrastructure as Code Management]
 sidebar_position: 17
 ---
@@ -35,10 +35,10 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 </HarnessApiData>
 ::: -->
 
-## May - IAC Server Version v1.143.0
+## May - IAC Server Version v1.143.0 & v1.145.0
 <!-- Released on 5 May 2025 -->
 ### Feature Improvements: 
-- **Scoped Repository Selection in Module Registry:** You can now select Harness repositories from both the organization and project scopes when registering a module. This enhancement gives you greater flexibility and control over where your modules are sourced from—making it easier to share and reuse IaC code across teams.
+- **Scoped Repository Selection in Module Registry:** Project-scoped repositories can now be used at the organization and account levels in the Module Registry. This enhancement gives you greater flexibility and control over where your modules are sourced from—making it easier to share and reuse IaC code across teams. (IAC-3476, IAC-3485)
 
 👉 Get started by [registering a module](/docs/infra-as-code-management/iacm-features/module-registry#register-a-module).
 

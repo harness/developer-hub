@@ -59,20 +59,20 @@ Follow the instructions below to configure the Artifact Signing step.
 * **Artifact Source**: Select the source container registry (e.g., DockerHub, ACR, ECR, etc.).
 
 
-:::warning Deprecation Alert
-
-Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the Artifact Signing step
-
-:::
-
 <Tabs>
 
 
-  <TabItem value="dockerhub" label="DockerHub" default>
+  <TabItem value="dockerhub" label="Docker Registry" default>
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
 * **Image:** Enter the name of your image using a tag or digest, example `my-docker-org/repo-name:tag` or `my-docker-org/repo-name@sha256:<digest>`
+
+:::note
+
+Unlike other artifact sources, JFrog Artifactory requires additional permissions for attestation. The connector’s user or token must have `Read`, `Annotate`, `Create/Deploy`, and `Delete` permissions.
+
+:::
 
 
 </TabItem>
