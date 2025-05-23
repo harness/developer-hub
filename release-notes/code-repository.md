@@ -27,10 +27,6 @@ These release notes describe recent changes to Harness Code Repository.
 
 ### Version 1.42.x
 
-#### New features and enhancements
-
-* Added backend support for managing GPG keys by pulling the latest changes from Harness Open Source. (CODE-2548)
-
 #### Fixed Issues 
 
 * Improved error handling for **Semantic Search** activation by returning more informative 500 error responses. (CODE-3819)
