@@ -44,40 +44,46 @@ The default CCM Viewer Role has read-only permissions on all CCM resources.
 The following table describes the Permissions enabled in the default Harness Roles, including the two CCM default Roles.
 
 
-| **CCM Resource** | **Permission** | **Account Admin** | **Account Viewer** | **Account Basic** | **CCM Admin** | **CCM Viewer** | **What a User can do?** |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Recommendations | Recommendations: View | Y | Y | N | Y | Y | View the Recommendations irrespective of Perspective View Permission |
-| Anomalies | Anomalies: View | Y | Y | N | Y | Y | View the Anomalies irrespective of Perspective View Permission |
-| Currency Preference | Currency Preference: View | Y | Y | N | Y | Y | View the set currency perferences |
-| Currency Preference | Currency Preference: Edit | Y | N | N | Y | N | Edit the currency perferences |
-| Overview Page | Overview | Y | Y | N | Y | Y | View the Overview page |
-| Cost Categories | Cost Categories: View | Y | Y | N | Y | Y | View all the cost categories |
-| Cost Categories | Cost Categories: Edit | Y | N | N | Y | N | Create a new cost category and edit existing cost categories |
-| Cost Categories | Cost Categories: Delete | Y | N | N | Y | N | Delete a cost category |
-| Folders | Folders: View | Y | Y | N | Y | Y | View all the folders |
-| Folders | Folders: Edit | Y | N | N | Y | N | Create a new folder, clone/edit existing folders |
-| Folders | Folders: Delete | Y | N | N | Y | N | Delete a folder |
-| Cloud Asset Governance Rule Sets | Cloud Asset Governance Rule Sets: View | Y | Y | N | Y | Y | View the cloud asset governance rule sets |
-| Cloud Asset Governance Rule Sets | Cloud Asset Governance Rule Sets: Edit | Y | N | N | Y | N | Create a new cloud asset governance rule set or edit existing |
-| Cloud Asset Governance Rule Sets | Cloud Asset Governance Rule Sets: Delete | Y | N | N | Y | N | Delete a cloud asset governance rule set |
-| Perspectives | Perspectives: View | Y | Y | N | Y | Y | View all the perspectives |
-| Perspectives | Perspectives: Edit | Y | N | N | Y | N | Create a new perspective, clone/edit an existing a perspective and move the perspective to a different folder |
-| Perspectives | Perspectives: Delete | Y | N | N | Y | N | Delete a perspective |
-| Cloud Asset Governance Rules | Cloud Asset Governance Rules: View | Y | Y | N | Y | Y | View the cloud asset governance rules |
-| Cloud Asset Governance Rules | Cloud Asset Governance Rules: Edit | Y | N | N | Y | N | Create a new cloud asset governance rule or edit existing |
-| Cloud Asset Governance Rules | Cloud Asset Governance Rules: Delete | Y | N | N | Y | N | Delete a cloud asset governance rule |
-| Cloud Asset Governance Rules | Cloud Asset Governance Rules: Execute | Y | N | N | Y | N | Execute a cloud asset governance rule |
-| Auto Stopping Rules | AutoStopping Rules: View | Y | Y | N | Y | Y | View all the AutoStopping rules |
-| Auto Stopping Rules | AutoStopping Rules: Edit | Y | N | N | Y | N | Create a new AutoStopping rule and edit existing rules |
-| Auto Stopping Rules | AutoStopping Rules: Delete | Y | N | N | Y | N | Delete an AutoStopping rule |
-| Budgets | Budgets: View | Y | Y | N | Y | Y | View the budgets page |
-| Budgets | Budgets: Edit | Y | N | N | Y | N | Create a perspective budget and edit existing |
-| Budgets | Budgets: Delete | Y | N | N | Y | N | Delete a budget |
-| Load Balancer | Load Balancer: View | Y | Y | N | Y | Y | View all the load balancers |
-| Load Balancer | Load Balancer: Edit | Y | N | N | Y | N | Create a new load balancer and edit configuration of existing load balancers |
-| Load Balancer | Load Balancer: Delete | Y | N | N | Y | N | Delete a load balancer |
-| Cloud Asset Governance Enforcements | Cloud Asset Governance Enforcements: View | Y | Y | N | Y | Y | View the cloud asset governance enforcements |
-| Cloud Asset Governance Enforcements | Cloud Asset Governance Enforcements: Edit | Y | N | N | Y | N | Create a new cloud asset governance enforcement or edit existing |
-| Cloud Asset Governance Enforcements | Cloud Asset Governance Enforcements: Delete | Y | N | N | Y | N | Delete a cloud asset governance enforcement |
-| Commitments | Commitments: View | Y | N | N | Y | Y | View Commitment dashboards and Summary |
-| Commitments | Commitments: Edit | Y | N | N | Y | N | Setup Commitments |
+| **CCM Resource** | **Permission** | **Account Admin** | **Account Viewer** | **Account Basic** | **CCM Admin** | **CCM Viewer** | **What a User can do?** | **Granular RBAC** |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Recommendations | Recommendations: View | ✅ | ✅ | ❌ | ✅ | ✅ | View the Recommendations irrespective of Perspective View Permission | |
+| Anomalies | Anomalies: View | ✅ | ✅ | ❌ | ✅ | ✅ | View the Anomalies irrespective of Perspective View Permission | |
+| Currency Preference | Currency Preference: View | ✅ | ✅ | ❌ | ✅ | ✅ | View the set currency perferences | |
+| Currency Preference | Currency Preference: Edit | ✅ | ❌ | ❌ | ✅ | ❌ | Edit the currency perferences | |
+| Overview Page | Overview | ✅ | ✅ | ❌ | ✅ | ✅ | View the Overview page | |
+| Cost Categories | Cost Categories: View | ✅ | ✅ | ❌ | ✅ | ✅ | View all the cost categories | |
+| Cost Categories | Cost Categories: Edit | ✅ | ❌ | ❌ | ✅ | ❌ | Create a new cost category and edit existing cost categories | |
+| Cost Categories | Cost Categories: Delete | ✅ | ❌ | ❌ | ✅ | ❌ | Delete a cost category | |
+| Folders | Folders: View | ✅ | ✅ | ❌ | ✅ | ✅ | View all the folders | |
+| Folders | Folders: Edit | ✅ | ❌ | ❌ | ✅ | ❌ | Create a new folder, clone/edit existing folders | |
+| Folders | Folders: Delete | ✅ | ❌ | ❌ | ✅ | ❌ | Delete a folder | |
+| Cloud Asset Governance Rule Sets | Cloud Asset Governance Rule Sets: View | ✅ | ✅ | ❌ | ✅ | ✅ | View the cloud asset governance rule sets | |
+| Cloud Asset Governance Rule Sets | Cloud Asset Governance Rule Sets: Edit | ✅ | ❌ | ❌ | ✅ | ❌ | Create a new cloud asset governance rule set or edit existing | |
+| Cloud Asset Governance Rule Sets | Cloud Asset Governance Rule Sets: Delete | ✅ | ❌ | ❌ | ✅ | ❌ | Delete a cloud asset governance rule set | |
+| Perspectives | Perspectives: View | ✅ | ✅ | ❌ | ✅ | ✅ | View all the perspectives | |
+| Perspectives | Perspectives: Edit | ✅ | ❌ | ❌ | ✅ | ❌ | Create a new perspective, clone/edit an existing a perspective and move the perspective to a different folder | |
+| Perspectives | Perspectives: Delete | ✅ | ❌ | ❌ | ✅ | ❌ | Delete a perspective | |
+| Cloud Asset Governance Rules | Cloud Asset Governance Rules: View | ✅ | ✅ | ❌ | ✅ | ✅ | View the cloud asset governance rules | |
+| Cloud Asset Governance Rules | Cloud Asset Governance Rules: Edit | ✅ | ❌ | ❌ | ✅ | ❌ | Create a new cloud asset governance rule or edit existing | |
+| Cloud Asset Governance Rules | Cloud Asset Governance Rules: Delete | ✅ | ❌ | ❌ | ✅ | ❌ | Delete a cloud asset governance rule | |
+| Cloud Asset Governance Rules | Cloud Asset Governance Rules: Execute | ✅ | ❌ | ❌ | ✅ | ❌ | Execute a cloud asset governance rule | |
+| Auto Stopping Rules | AutoStopping Rules: View | ✅ | ✅ | ❌ | ✅ | ✅ | View all the AutoStopping rules | |
+| Auto Stopping Rules | AutoStopping Rules: Edit | ✅ | ❌ | ❌ | ✅ | ❌ | Create a new AutoStopping rule and edit existing rules | |
+| Auto Stopping Rules | AutoStopping Rules: Delete | ✅ | ❌ | ❌ | ✅ | ❌ | Delete an AutoStopping rule | |
+| Budgets | Budgets: View | ✅ | ✅ | ❌ | ✅ | ✅ | View the budgets page | |
+| Budgets | Budgets: Edit | ✅ | ❌ | ❌ | ✅ | ❌ | Create a perspective budget and edit existing | |
+| Budgets | Budgets: Delete | ✅ | ❌ | ❌ | ✅ | ❌ | Delete a budget | |
+| Load Balancer | Load Balancer: View | ✅ | ✅ | ❌ | ✅ | ✅ | View all the load balancers | |
+| Load Balancer | Load Balancer: Edit | ✅ | ❌ | ❌ | ✅ | ❌ | Create a new load balancer and edit configuration of existing load balancers | |
+| Load Balancer | Load Balancer: Delete | ✅ | ❌ | ❌ | ✅ | ❌ | Delete a load balancer | |
+| Cloud Asset Governance Enforcements | Cloud Asset Governance Enforcements: View | ✅ | ✅ | ❌ | ✅ | ✅ | View the cloud asset governance enforcements | |
+| Cloud Asset Governance Enforcements | Cloud Asset Governance Enforcements: Edit | ✅ | ❌ | ❌ | ✅ | ❌ | Create a new cloud asset governance enforcement or edit existing | |
+| Cloud Asset Governance Enforcements | Cloud Asset Governance Enforcements: Delete | ✅ | ❌ | ❌ | ✅ | ❌ | Delete a cloud asset governance enforcement | |
+| Commitments | Commitments: View | ✅ | ❌ | ❌ | ✅ | ✅ | View Commitment dashboards and Summary | |
+| Commitments | Commitments: Edit | ✅ | ❌ | ❌ | ✅ | ❌ | Setup Commitments | |
+
+
+Understanding RBAC in CCM:
+
+- CCM has RBAC on 2 levels: Global and Granular. 
+- 3 main concepts: 
