@@ -28,15 +28,33 @@ The AI Test Automation feature works by executing comprehensive test suites at s
 1. Navigate to your Harness CD pipeline configuration
 2. Select the deployment stage where you want to add verification
 
-![](./static/add-step.png)
+<DocImage
+  path={require('./static/add-step.png')}
+  alt="Add step"
+  title="Click to view full size image"
+  width={800}
+  height={400}
+/>
 
 3. Add a new step and select "AI Test Automation" from the available options
 
-![](./static/step-library.png)
+<DocImage
+  path={require('./static/step-library.png')}
+  alt="Step Library"
+  title="Click to view full size image"
+  width={400}
+  height={600}
+/>
 
 4. Configure your test suite settings 
 
-![](./static/inputs-selected.png) 
+<DocImage
+  path={require('./static/inputs-selected.png')}
+  alt="Step Library"
+  title="Click to view full size image"
+  width={400}
+  height={800}
+/>
 
 5. Save your pipeline configuration
 
