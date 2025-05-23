@@ -1,6 +1,6 @@
 ---
 title: Tags
-sidebar_position: 20
+sidebar_position: 30
 ---
 
 Use tags to organize and manage feature flags, segments, and metrics across the FME user interface. Tags can isolate a particular team or feature release, for example, _reporting team_, _front end_, or _geo search release_.

@@ -1,6 +1,6 @@
 ---
 title: Administration best practices
-sidebar_position: 10
+sidebar_position: 40
 ---
 
 ## Organization and naming conventions
