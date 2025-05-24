@@ -13,13 +13,13 @@ import TabItem from '@theme/TabItem';
 
 You can use this **Test Intelligence** step, also known as the **Test** step, to run unit tests with **Python**, **Ruby**, **Java** , **C#** , **Scala** and **Kotlin** programming languages.
 
-:::info
-Test Intelligence is now Generally Available (GA). 
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+
+:::tip Test Intelligence Beta
+Test Intelligence for **JavaScript (Jest)** and **Kotest** is now available in **beta**. If you're interested in joining the beta program, please contact [Harness Support](https://support.harness.io) or your account representative.
 :::
 
 
-:::note
+:::info
 
 * Test Intelligence requires that the code is cloned into the default workspace directory, `/harness/`. If the code is placed elsewhere, Test Intelligence will not function correctly.
 * To use TI for Python, the image for the step must have Python 3 installed and accessible. Additionally, Virtual Environments for Python (`venv`) are not supported by TI.
