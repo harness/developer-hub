@@ -1,6 +1,6 @@
 ---
 title: Permissions
-sidebar_position: 70
+sidebar_position: 40
 ---
 
 In the Harness FME application, you can enable permissions by environment, feature flags, segment, or metric, which limits the actions that non-editors can take.

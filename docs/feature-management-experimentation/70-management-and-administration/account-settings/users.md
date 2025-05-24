@@ -1,6 +1,6 @@
 ---
 title: Users
-sidebar_position: 30
+sidebar_position: 20
 ---
 
 For increased login security, you can add two-factor authentication (2FA) for your Harness FME account. With 2FA enabled, Harness FME asks you to enter a verification code after authentication.

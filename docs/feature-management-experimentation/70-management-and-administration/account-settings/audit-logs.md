@@ -1,6 +1,6 @@
 ---
 title: Audit logs
-sidebar_position: 90
+sidebar_position: 50
 ---
 
 ## Overview

@@ -1,6 +1,6 @@
 ---
 title: Traffic types
-sidebar_position: 50
+sidebar_position: 10
 ---
 
 When you create a feature flag, you must specify a traffic type. The traffic type denotes the nature of the keys that are passed to *getTreatment* for that feature flag. Does the key identify a known logged-in user? A device? Is the key a uuid generated for an anonymous visitor and stored in a cookie on the visitor’s browser?
