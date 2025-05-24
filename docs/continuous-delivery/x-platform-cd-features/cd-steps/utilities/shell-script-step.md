@@ -34,6 +34,18 @@ If you must use `var`, you can use single quotes and `get()` when referencing
 
 Instead of using `<+test.var>` use `<+test.get('var')>`.
 
+:::info
+
+**Escaping the Pipe `(|)` Symbol**
+
+In PowerShell, the pipe symbol `(|)` is used to pass output between cmdlets. You don't need to escape it when using it for piping commands.
+
+However, if you're including the pipe symbol inside a string, PowerShell may try to interpret it as a pipeline, which can cause errors. In such cases, escape it using `^|`.
+
+Example: `echo "Get-Process ^| Sort-Object"`
+Use escaping to prevent PowerShell from treating it as an actual pipeline.
+:::
+
 ### Stopping scripts after failures
 
 The shell script command will continue to process through the script even if a script step fails. To prevent this, you can simply include instructions to stop on failure in your script. For example:
