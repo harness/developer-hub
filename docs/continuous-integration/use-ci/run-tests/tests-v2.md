@@ -15,7 +15,7 @@ You can use this **Test Intelligence** step, also known as the **Test** step, to
 
 
 :::tip Test Intelligence Beta
-Test Intelligence for **JavaScript (Jest)** and **Kotest** is now available in **beta**. If you're interested in joining the beta program, please contact Harness support or your account representative.
+Test Intelligence for **JavaScript (Jest)** and **Kotest** is now available in **beta**. If you're interested in joining the beta program, please contact [Harness Support](https://support.harness.io) or your account representative.
 :::
 
 
