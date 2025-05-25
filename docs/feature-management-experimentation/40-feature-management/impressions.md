@@ -74,7 +74,7 @@ See [this page](https://help.split.io/hc/en-us/articles/35323687042573-Is-the-fe
 You can view incoming impressions in [Live tail](https://help.split.io/hc/en-us/articles/360044867032-Live-tail) within a feature flag's page or the Data hub, and export them based on query criteria in the Data hub's [Data export tab](https://help.split.io/hc/en-us/articles/360048120112-Export-data). If you do not see impressions arriving in Harness, ensure that your SDK is installed and functioning as expected. Tips for this are included in the [Live tail](https://help.split.io/hc/en-us/articles/360044867032-Live-tail) article. Contact us at [support@split.io](mailto:support@split.io) if you have any issues. 
 
 :::important
-Harness retains impression data for 90 days. Contact the [team at Harness FME](support@split.io) to learn more.
+Harness retains impression data for 90 days. Contact the [team at Harness FME](mailto:support@split.io) to learn more.
 :::
 
 ## Targeting rule label
