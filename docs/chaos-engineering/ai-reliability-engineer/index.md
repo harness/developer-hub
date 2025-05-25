@@ -10,9 +10,12 @@ The AI Reliability Engineer feature enhances your chaos engineering capabilities
 
 ## Key Features
 
-- **Automated Reliability Analysis**: Leverage AI to automatically analyze system behavior during chaos experiments
-- **Intelligent Fault Detection**: Identify potential failure points before they impact production
-<!-- - **Autonomous Remediation**: Configure AI-driven autonomous remediation for common failure scenarios -->
+- **AI Recommendations**: Get intelligent recommendations for experiments and probes based on analysis of your clusters
+- **Automated Issue Detection**: Identify potential issues like network latency, memory hogs, and insufficient replicas
+- **Suggested Fixes**: Receive specific remediation suggestions like increasing timeout duration or adjusting application replicas
+- **One-Click Remediation**: Fix identified issues directly from the UI with a single click
+- **AI Pipeline Generation**: Create chaos pipelines with AI assistance, including Kubernetes rollout deployments and pod-focused tests
+- **Continuous Learning**: AI continuously improves recommendations based on your environment and experiment results
 
 ## Getting Started
 
