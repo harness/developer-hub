@@ -10,7 +10,7 @@ sidebar_position: 1
 
 ### Question
 
-I noticed an info banner when adding a Split feature flag targeting rule that uses the **SemVer** (Semantic Version) matcher. How can I confirm that the Split SDK version that I am using in my code base will support the [SemVer matcher](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes#semver-attributes)?
+In Harness FME, I noticed an info banner when adding a feature flag targeting rule that uses the **SemVer** (Semantic Version) matcher. How can I confirm that the Harness FME SDK version that I am using in my codebase will support the [SemVer matcher](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes#semver-attributes)?
 
 <p>
   <img src="https://help.split.io/hc/article_attachments/35177699381261" alt="does_my_sdk_support_semver_menu.png" />
@@ -18,7 +18,7 @@ I noticed an info banner when adding a Split feature flag targeting rule that us
 
 ### Answer
 
-Please refer to the following table to check that your Split SDK version or optional infrastructure version supports SemVer.
+Please refer to the following table to check that your Harness FME SDK version or optional infrastructure version supports SemVer.
 
 | **SDK or Infra** | **Version that supports SemVer** |
 | --- | --- |
@@ -28,9 +28,9 @@ Please refer to the following table to check that your Split SDK version or opti
 | iOS SDK Suite | 1.2.0 and later |
 | **Client-side SDKs** | |
 | Android SDK | 4.1.0 and later |
-| Angular SDK | 3.0.0 and later |
+| Angular utilities | 3.0.0 and later |
 | Browser SDK | 0.14.0 and later |
-| Flutter SDK | 0.1.9 and later |
+| Flutter plugin | 0.1.9 and later |
 | iOS SDK | 2.25.0 and later |
 | JavaScript SDK | 10.26.0 and later |
 | React SDK | 1.12.0 and later |
@@ -40,7 +40,7 @@ Please refer to the following table to check that your Split SDK version or opti
 | Go SDK | 6.6.0 and later |
 | Java SDK | 4.12.0 and later |
 | .NET SDK | 7.9.0 and later |
-| Node SDK | 10.26.0 and later |
+| Node.js SDK | 10.26.0 and later |
 | PHP SDK | 7.3.0 and later |
 | PHP Thin Client SDK | See SplitD version |
 | Python SDK | 9.7.0 and later |
