@@ -39,7 +39,7 @@ The Split + FullStory integration uses out-of-the-box features of both products.
 
 2. Add a custom impression listener to report Split impressions to FullStory’s custom events API. As highlighted in red above, the FullStory custom event API is called for a “split_evaluation” event, passing the entire impression data as properties for that event. The impression data includes the name of the feature flag evaluated and the treatment the user received.
 
-If you’re not familiar with the Split Javascript SDK configuration, visit Split's [Javascript documentation](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK) for more information.
+If you’re not familiar with the Split Javascript SDK configuration, visit Split's [Javascript documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) for more information.
 
 ### Verify split_evaluation events are arriving in FullStory
 

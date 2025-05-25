@@ -98,4 +98,4 @@ Please make sure to update the JSON with the relevant API Key, Redis host, port 
 
 ##See also
 
-For more information on setup and configuration, see [Split Synchronizer runbook](https://help.split.io/hc/en-us/articles/360018343391-Split-Synchronizer-Runbook).
+For more information on setup and configuration, see [Split Synchronizer runbook](/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/split-sync-runbook).

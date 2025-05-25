@@ -10,7 +10,7 @@ sidebar_position: 7
 
 By default, all FME SDKs have default configuration that allows them to process a heavy load of generated Impressions and Events. These config parameters values are documented in the help section of each SDK.
 
-For example, if we take a look at the [Java SDK](https://help.split.io/hc/en-us/articles/360020405151-Java-SDK), the Configuration section has the following parameters and their default values for posting impressions:
+For example, if we take a look at the [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk), the Configuration section has the following parameters and their default values for posting impressions:
 
 ```
 impressionsRefreshRate = 60 (seconds)

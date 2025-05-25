@@ -15,7 +15,7 @@ With custom attributes, you can create dynamic targeted feature rollout plans us
 * Sensitive information (e.g., customer purchase size or customer status)
 
 :::tip
-Consider using [segments](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) (instead of attributes) if the users in a segment would not change multiple times in a day or the grouping of users needs to be standardized across your Harness account (e.g., key accounts, internal or outsourced QA teams, or company employees).
+Consider using [segments](/docs/feature-management-experimentation/feature-management/segments) (instead of attributes) if the users in a segment would not change multiple times in a day or the grouping of users needs to be standardized across your Harness account (e.g., key accounts, internal or outsourced QA teams, or company employees).
 :::
 
 ## Creating custom attributes
@@ -34,7 +34,7 @@ This article refers to the **IF** dropdown menu in a feature flag’s attribute 
  No matter how attributes are created ([within attribute-based feature flag targeting rules](#creating-custom-attributes-within-feature-flag-targeting-rules), [in Admin Settings](#creating-custom-attributes-in-admin-settings), or [using the Split API](#creating-custom-attributes-or-writing-custom-attribute-values-using-api-endpoints)), for feature flags with targeting rules that use custom attributes, _the way attribute values are populated in your code and passed to the ‘getTreatment’ function call (to evaluate a feature flag) is the same_.
 :::
 
-To see how to pass attributes with feature flag evaluation requests in your code, refer to the relevant language-specific article in our [SDK Documentation](https://help.split.io/hc/en-us/articles/360033557092-SDK-overview#supported-sdks).
+To see how to pass attributes with feature flag evaluation requests in your code, refer to the relevant language-specific article in our [SDK Documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/).
 
 ### Creating custom attributes within feature flag targeting rules
 
@@ -124,7 +124,7 @@ As with attributes [created in Admin settings](#creating-custom-attributes-in-ad
 
 ## Using custom attributes in feature flag targeting
 
-After you [create a feature flag](https://help.split.io/hc/en-us/articles/9058495582349-Create-a-feature-flag) you can **use** (and also **create**) custom attributes in your [targeting rules](https://help.split.io/hc/en-us/articles/360020791591-Targeting-customers). To add an attribute-based targeting rule to a feature flag:
+After you [create a feature flag](/docs/feature-management-experimentation/feature-management/create-a-feature-flag) you can **use** (and also **create**) custom attributes in your [targeting rules](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting). To add an attribute-based targeting rule to a feature flag:
 
 1. In Harness FME, on the Definition tab of a feature flag, in the Targeting rules area, click the **Add attribute based targeting rules** button. The **IF** field/dropdown menu appears.
 
@@ -265,7 +265,7 @@ For example, use an attribute 'os_version' of type SemVer to give users that hav
 :::
 
 :::info[SemVer attributes and SDK compatibility]
-See [this page](https://help.split.io/hc/en-us/articles/27337626547341-Does-my-SDK-version-support-SemVer) to verify compatibility of FME SDK or Split optional infrastructure. For older SDK versions that do not support SemVer, the `control` treatment will be returned and a special impression will be created. See the _[Control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment)_ help page for more information.
+See [this page](/docs/feature-management-experimentation/feature-management/faqs/does-my-sdk-version-support-semver) to verify compatibility of FME SDK or Split optional infrastructure. For older SDK versions that do not support SemVer, the `control` treatment will be returned and a special impression will be created. See the _[Control treatment](/docs/feature-management-experimentation/feature-management/control-treatment)_ help page for more information.
 :::
 
 ### Set attributes

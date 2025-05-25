@@ -10,7 +10,7 @@ sidebar_position: 0
 
 ### Question
 
-The feature flag [**Impression tracking** toggle](https://help.split.io/hc/en-us/articles/360020585192-Impressions#toggle-impression-tracking-on-or-off) allows me to control my generated impressions (feature flag evaluation data) for a given feature flag definition. The toggle setting is detected by new Harness FME SDK versions, but older SDK versions will not detect the setting (impressions will be sent to Harness servers).
+The feature flag [**Impression tracking** toggle](/docs/feature-management-experimentation/feature-management/impressions#toggle-impression-tracking-on-or-off) allows me to control my generated impressions (feature flag evaluation data) for a given feature flag definition. The toggle setting is detected by new Harness FME SDK versions, but older SDK versions will not detect the setting (impressions will be sent to Harness servers).
 
 How can I confirm that the FME SDK version that I am using in my codebase will not send impressions for a feature flag definition that has impression tracking turned off (as shown below)?
 

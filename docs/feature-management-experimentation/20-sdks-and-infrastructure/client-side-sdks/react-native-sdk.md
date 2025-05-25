@@ -133,7 +133,7 @@ Configure the SDK with the SDK key for the FME environment that you would like t
  
 ### Basic use
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment). 
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment). 
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready, as shown below. We set the client to listen for the `SDK_READY` event triggered by the SDK before asking for an evaluation. 
 
@@ -190,7 +190,7 @@ LogBox.ignoreLogs(['Setting a timer']);
 
 ### Attribute syntax 
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -359,7 +359,7 @@ treatments = client.getTreatmentsByFlagSets(flagSets);
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `getTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
 
 This method returns an object with the structure below:
 
@@ -658,7 +658,7 @@ For testing, a developer can put code behind feature flags on their development 
 
 Define the feature flags you want to use in the `features` object map. All `getTreatment` calls for a feature flag now only return the one treatment (and config, if defined) that you have defined in the map. You can then change the treatment as necessary for your testing. To update a treatment or a config, or to add or remove feature flags from the mock cache, update the properties of the `features` object you've provided. The SDK simulates polling for changes and updates from it. Do not assign a new object to the `features` property because the SDK has a reference to the original object and will not detect the change.
 
-Any feature that is not provided in the `features` map returns the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK was asked to evaluate them.
+Any feature that is not provided in the `features` map returns the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK was asked to evaluate them.
 
 You can use the additional configuration parameters below when instantiating the SDK in `localhost` mode.
 
@@ -1225,7 +1225,7 @@ factory.UserConsent.getStatus() === factory.UserConsent.Status.DECLINED;
 
 ### Usage with React SDK
 
-The [React SDK](https://help.split.io/hc/en-us/articles/360038825091-React-SDK) is a wrapper around the JavaScript SDK that provides a more React-friendly API based on React components and hooks. You can use the React Native SDK with the React SDK in your React Native application following this [Usage Guide](https://help.split.io/hc/en-us/articles/360038825091-React-SDK#usage-with-react-native).
+The [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk) is a wrapper around the JavaScript SDK that provides a more React-friendly API based on React components and hooks. You can use the React Native SDK with the React SDK in your React Native application following this [Usage Guide](https://help.split.io/hc/en-us/articles/360038825091-React-SDK#usage-with-react-native).
 
 ## Example apps
 

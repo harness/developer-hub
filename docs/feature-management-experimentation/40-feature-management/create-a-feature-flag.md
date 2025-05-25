@@ -32,7 +32,7 @@ To create a feature flag, do the following:
     * **Owners.** By default, a user creating a feature flag is an owner along with the Admin group. You can add more users or groups as owners for your feature flag. Use owners to organize a feature flag to those *owned by me* for filtering and notification purposes, and to grant edit permissions in environments that [restrict who can edit](https://help.split.io/hc/en-us/articles/360020579052-Permissions).
     * **Tags.** Optionally add one or more [tags](https://help.split.io/hc/en-us/articles/360020839151) to categorize a feature flag or associate it with a particular team, feature release, area of your product, or other internal structure. Tags are useful for filtering lists and rollout boards. Be aware that tags are case sensitive.
     * **Description.** Optionally provide a description of a feature flag. The description explains the flag’s purpose and what functionality is controlled. If the flag being used for an experiment, use this to provide information about the experiment objective.
-    * **External objects.** Optionally associate a feature flag with one or more external objects, if a compatible integration is configured. Examples of integrations include [Jira](https://help.split.io/hc/en-us/articles/360059317892-Jira-Cloud) and [Azure DevOps](https://help.split.io/hc/en-us/articles/4408032964493-Azure-DevOps).
+    * **External objects.** Optionally associate a feature flag with one or more external objects, if a compatible integration is configured. Examples of integrations include [Jira](/docs/feature-management-experimentation/integrations/jira-cloud) and [Azure DevOps](/docs/feature-management-experimentation/integrations/azure-devops).
 
 4. Click the **Create feature flag** button to create your feature flag. Your new flag is displayed. 
 
@@ -40,4 +40,4 @@ To create a feature flag, do the following:
 
 ## Next step
 
-After you have created your feature flag, you can [define treatments and targeting rules](https://help.split.io/hc/en-us/articles/360020791591-Targeting-customers) for your feature flag.
+After you have created your feature flag, you can [define treatments and targeting rules](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting) for your feature flag.

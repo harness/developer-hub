@@ -29,10 +29,10 @@ If you set your exposure to 50/50 then users put in buckets 0-49 will be subject
 
 ## Order of Treatment
 
-The order in which you set your treatments can also have an impact on ensuring a consistent experience.  This is described in more detail [here](https://help.split.io/hc/en-us/articles/360030117011-Why-setting-the-order-of-treatments-matters).
+The order in which you set your treatments can also have an impact on ensuring a consistent experience.  This is described in more detail [here](/docs/feature-management-experimentation/feature-management/best-practices/why-setting-the-order-of-treatments-matters).
 
 ## Traffic Type
 
 As noted above, you can set the granularity of your targets using traffic type.  You can target users using a UUID, usually something that is created by them logging into your site.  If the user is anonymous, you can use a cookie or session ID or device ID.  But in that case you have a chance that the same user may not come back using the same browser or device, in which case it's impossible to make sure they get the same experience.
 
-If you want [everyone in an account to get the same experience](https://help.split.io/hc/en-us/articles/360029718252-Best-practices-when-targeting-an-account-or-organization) you can use an account ID.  In that case, if you do 50/50 distribution keep in mind that because the accounts will be randomly distributed it's possible that more big accounts (with lots of individual users) will fall into one side of that 50/50 feature flag.  For experimentation purposes that means the actual end user count could be much higher than 50% on that side.
+If you want [everyone in an account to get the same experience](/docs/feature-management-experimentation/feature-management/best-practices/best-practices-when-targeting-an-account-or-organization) you can use an account ID.  In that case, if you do 50/50 distribution keep in mind that because the accounts will be randomly distributed it's possible that more big accounts (with lots of individual users) will fall into one side of that 50/50 feature flag.  For experimentation purposes that means the actual end user count could be much higher than 50% on that side.

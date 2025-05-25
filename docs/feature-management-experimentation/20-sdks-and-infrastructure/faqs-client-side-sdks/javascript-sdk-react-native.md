@@ -30,4 +30,4 @@ Install the class using the command below, this will fix the issue
 npm install util
 ```
 
-As of July 29th 2021, our [React Native SDK](https://help.split.io/hc/en-us/articles/4406066357901-React-Native-SDK) is available.
+As of July 29th 2021, our [React Native SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk) is available.

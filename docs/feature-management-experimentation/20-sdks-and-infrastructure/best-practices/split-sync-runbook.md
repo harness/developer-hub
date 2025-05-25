@@ -15,13 +15,13 @@ The Split Synchronizer coordinates the sending and receiving of data to a remote
 
 <img src="https://help.split.io/hc/article_attachments/26627625828365" />
 
-For more information on configuring the Synchronizer, refer to the [<u>Split Synchronizer guide</u>](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer-proxy).
+For more information on configuring the Synchronizer, refer to the [<u>Split Synchronizer guide</u>](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer).
 
 The synchronizer runs as a standalone process in dedicated or shared servers, which doesn’t affect the performance of your code or Split’s SDKs. The following are best practices as it relates to running the Synchronizer.
 
 ## SDKs
 
-**Alerting on CONTROL treatment** In spite of CONTROL being a known treatment, when an application starts to suddenly report the CONTROL treatment, it's a sign of something wrong when evaluating splits. We recommend setting up an impressions listener that uses StatsD metrics for the CONTROL treatment. For information about impressions listener for Split Sync refer to the [<u>Split Synchronizer</u>](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer#listener) guide.
+**Alerting on CONTROL treatment** In spite of CONTROL being a known treatment, when an application starts to suddenly report the CONTROL treatment, it's a sign of something wrong when evaluating splits. We recommend setting up an impressions listener that uses StatsD metrics for the CONTROL treatment. For information about impressions listener for Split Sync refer to the [<u>Split Synchronizer</u>](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer#listener) guide.
 
 **Logs.** We recommend reporting and alerting on errors coming from FME logs. Anything labeled as error or exception from the logs should be of concern. One way to isolate FME logs is to direct them to a custom location following the logging instructions for each SDK.
 
@@ -85,7 +85,7 @@ We recommend the following alerts:
 - **Redis.** Keep CPU under 50% utilization. Memory should remain under safe limits, 60 or 70% should be ok, but make sure to monitor the rate of growth. Running at all times at 70% constant utilization could be ok, however if the rate of growth is 10% every 5 minutes that will likely be a problem, and a sign that Split Sync is not able to keep up with evicting data. If Redis memory continues to increase, try the following procedure:
 
   - Stop Split Sync
-    [<u>gracefully</u>](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer-proxy#service-shutdown)
+    [<u>gracefully</u>](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer#service-shutdown)
     to avoid losing data.
 
   - Increase by two (2) the number of threads dedicated to post impressions. Config key: impressionsThreads.
@@ -94,7 +94,7 @@ We recommend the following alerts:
 
   - Repeat if the memory consumption remains in an increasing pattern.
 
-Alerting on CONTROL treatment can also be set at the Split Synchronizer level by setting an impression listener described in the [<u>Split Synchronizer guide.</u>](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer-proxy#listener) This approach is similar to the SDK as described at the top of this runbook, but from the Synchronizer standpoint.
+Alerting on CONTROL treatment can also be set at the Split Synchronizer level by setting an impression listener described in the [<u>Split Synchronizer guide.</u>](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer#listener) This approach is similar to the SDK as described at the top of this runbook, but from the Synchronizer standpoint.
 
 ### Health check monitors
 
@@ -374,7 +374,7 @@ Upgrading the Synchronizer
 To upgrade the Synchronizer, do the following:
 
 - Stop Split Sync
-  [<u>gracefully</u>](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer-proxy#service-shutdown)
+  [<u>gracefully</u>](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer#service-shutdown)
 
 - Upgrade Split Sync binary
 

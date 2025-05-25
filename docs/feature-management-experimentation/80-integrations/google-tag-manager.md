@@ -14,7 +14,7 @@ description: ""
 
 When you use Google Tag Manager for tracking and analytics, which is powered by [Google Universal Analytics (GA) library](https://developers.google.com/analytics/devguides/collection/analyticsjs), you can configure the Split SDK's Google Analytics (GA) integration to automatically track these events (or a desired subset) into Split to feed our stats engine.
 
-To integrate Split's [Google Analytics to Split integration](https://help.split.io/hc/en-us/articles/360040838752-Google-Analytics#google-analytics-to-split), configure the integration when you instantiate the SDK and a GA plugin, which is required for your selected trackers. This allows you to pick up events that are generated and processed by GA (with multiple customization options) and send the events to Split.
+To integrate Split's [Google Analytics to Split integration](/docs/feature-management-experimentation/integrations/google-analytics#google-analytics-to-split), configure the integration when you instantiate the SDK and a GA plugin, which is required for your selected trackers. This allows you to pick up events that are generated and processed by GA (with multiple customization options) and send the events to Split.
 
 When you use [Google Tag Manager](https://support.google.com/tagmanager/answer/6107124) or [Global Site Tag (gtag.js)](https://developers.google.com/analytics/devguides/collection/gtagjs) to set up your Universal Analytics configuration, trackers are created with dynamic names. 
 
@@ -61,7 +61,7 @@ To do this, you need to require the `splitTracker` plugin for the desired tracke
 
 ## Injecting the Split SDKs through a GTM tag
 
-You can leverage GTM as a way to integrate the Split Browser SDK in a site and reference it from other custom tags. By using the Split [JavaScript SDK](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK) (the one used on this example) or the [Browser SDK](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK), Split can be integrated with Google Tag Manager with minimal effort. This methodology works with both UA and GA4.
+You can leverage GTM as a way to integrate the Split Browser SDK in a site and reference it from other custom tags. By using the Split [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) (the one used on this example) or the [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk), Split can be integrated with Google Tag Manager with minimal effort. This methodology works with both UA and GA4.
 
 ### Sending Split to Google Tag Manager's data layer
 

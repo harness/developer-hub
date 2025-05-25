@@ -46,7 +46,7 @@ pip install 'splitio_client[cpphash]==10.2.0'
 Starting in version `8.0.0`, readiness has been migrated to a two part implementation. See below for syntax changes you must make if upgrading your SDK to the newest version.
 :::
 
-When the SDK is instantiated in `in-memory` mode, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK doesn't fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the SDK is instantiated in `in-memory` mode, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK doesn't fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready.
 Since version `8.0.0` This is done by calling the `.block_until_ready()` method in the factory object.
@@ -167,7 +167,7 @@ Since version `2.0.0` of the split-synchronizer, we use a more efficient scheme 
 
 #### 2. Set up the Split Synchronizer
 
-Set up the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) to sync data to a Redis cache. Follow the steps in the [set up article](https://help.split.io/hc/en-us/articles/360019686092), then come back to this doc and go to step 3 to instantiate the client, below.
+Set up the [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) to sync data to a Redis cache. Follow the steps in the [set up article](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer), then come back to this doc and go to step 3 to instantiate the client, below.
 
 #### 3. Instantiate the SDK factory client with Redis enabled
 
@@ -452,7 +452,7 @@ For further reading about uwsgi decorators and postfork you can take a look at t
 
 After you instantiate the SDK factory client, you can start using the `get_treatment` method of the SDK factory client to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you want to serve the feature to.
 
-From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
@@ -489,7 +489,7 @@ If the `key` attribute is something other than `string`, Python SDK returns `CON
 
 ### Attribute syntax
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `get_treatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `get_treatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `get_treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -617,7 +617,7 @@ print(treatments)
 
 ### Get Treatments with Configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `get_treatment_with_config` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `get_treatment_with_config` method.
 
 This method will return an object containing the treatment and associated configuration.
 

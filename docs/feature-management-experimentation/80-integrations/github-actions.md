@@ -12,7 +12,7 @@ description: ""
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a continuous integration and continous delivery (CI/CD) platform. GitHub Actions allows you to trigger workflows that execute a series of commands on your GitHub repository files. 
 
-The Split Feature Flags Evaluator Github Action integrates the Split SDK into your existing GitHub workflows. This GitHub Action uses the [Split Node.js SDK](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK) to evaluate feature flags and outputs the feature flag treatment results for use later in the workflow.
+The Split Feature Flags Evaluator Github Action integrates the Split SDK into your existing GitHub workflows. This GitHub Action uses the [Split Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk) to evaluate feature flags and outputs the feature flag treatment results for use later in the workflow.
 
 The [Split Feature Flags Evaluator GitHub Action](https://github.com/marketplace/actions/split-software-feature-flags-evaluator) is a community-supported integration. We do our best to ensure that we share only high-quality community integrations and solutions but we do not work on these projects directly, nor can we guarantee that they’re consistently maintained.
 

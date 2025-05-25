@@ -15,7 +15,7 @@ With Split, rules are evaluated from the top down.
 3. Targeting rules - specific subsets of users targeted by attributes
 4. The final rule, which is labeled as "Serve" or "Distribute treatments as follows" in the UI - users not individually targeted and not targeted by a targeting rule. This is a "catch-all" which assigns treatments for the remaining population not previously excluded or targeted.
 
-As with rules, the order of treatments matters.  For example, if you have 3 (or more) treatments you’ll want to think through order based on how you want things to change as you change percentages, particularly if you want to maintain a consistent user experience, as described [here](https://help.split.io/hc/en-us/articles/360030024391-How-does-Split-ensure-a-consistent-user-experience).
+As with rules, the order of treatments matters.  For example, if you have 3 (or more) treatments you’ll want to think through order based on how you want things to change as you change percentages, particularly if you want to maintain a consistent user experience, as described [here](/docs/feature-management-experimentation/feature-management/faqs/ensure-a-consistent-user-experience).
 
 Let's use changing the default rule as an example, with `status_quo`, `treatment1`, `treatment2` set to 33/33/34.  You want to move everyone out of 'status_quo' and set `treatment2` to 67%.
 
@@ -61,7 +61,7 @@ Let's say you have more than three treatments.  In this case, the `status_quo` w
   </tbody>
 </table>
 
-One way to 'move' users between multivariate treatments while only removing users from `treatment2` is to take advantage of [Dynamic Configuration](https://help.split.io/hc/en-us/articles/360026943552-Attach-configurations-to-your-treatments), assuming you can represent the differences between treatments using a set of configured values.  In this case, you'd set the configuration of `treatment2` to the `status_quo` settings, which would give them the `status_quo` experience.
+One way to 'move' users between multivariate treatments while only removing users from `treatment2` is to take advantage of [Dynamic Configuration](/docs/feature-management-experimentation/feature-management/dynamic-configurations), assuming you can represent the differences between treatments using a set of configured values.  In this case, you'd set the configuration of `treatment2` to the `status_quo` settings, which would give them the `status_quo` experience.
 
 | Even Distribution |	Buckets |	Dynamic Config |
 | --- | --- | --- |

@@ -99,38 +99,38 @@ Using Split involves using one of our SDKs. The Split team builds and maintains 
 
 | **SDK** | **API Key/Type** | **Links** |
 | --- | --- | --- | 
-| Android | client-side | [Docs](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK) & [GitHub](https://github.com/splitio/android-client) | 
-| Angular utilities | client-side | [Docs](https://help.split.io/hc/en-us/articles/6495326064397-Angular-utilities) & [GitHub](https://github.com/splitio/angular-sdk-plugin) |
-| Browser | client-side | [Docs](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK) & [GitHub](https://github.com/splitio/javascript-browser-client) |
-| Flutter plugin | client-side | [Docs](https://help.split.io/hc/en-us/articles/8096158017165-Flutter-plugin) & [GitHub](https://github.com/splitio/flutter-sdk-plugin) |
-| iOS | client-side | [Docs](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK) & [GitHub](https://github.com/splitio/ios-client) | 
-| JavaScript | client-side | [Docs](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK) & [GitHub](https://github.com/splitio/javascript-client) | 
+| Android | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk) & [GitHub](https://github.com/splitio/android-client) | 
+| Angular utilities | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/angular-utilities) & [GitHub](https://github.com/splitio/angular-sdk-plugin) |
+| Browser | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk) & [GitHub](https://github.com/splitio/javascript-browser-client) |
+| Flutter plugin | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin) & [GitHub](https://github.com/splitio/flutter-sdk-plugin) |
+| iOS | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk) & [GitHub](https://github.com/splitio/ios-client) | 
+| JavaScript | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) & [GitHub](https://github.com/splitio/javascript-client) | 
 | React | client-side | [Docs](https://help.split.io/hc/en-us/articles/360038825091) & [GitHub](https://github.com/splitio/react-client) | 
-| React Native | client-side | [Docs](https://help.split.io/hc/en-us/articles/4406066357901-React-Native-SDK) & [GitHub](https://github.com/splitio/react-native-client) |
+| React Native | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk) & [GitHub](https://github.com/splitio/react-native-client) |
 | Redux | client-side | [Docs](https://help.split.io/hc/en-us/articles/360038851551) & [GitHub](https://github.com/splitio/redux-client) | 
-| Elixir Thin-Client | server-side | [Docs](https://help.split.io/hc/en-us/articles/26988707417869-Elixir-Thin-Client-SDK) & [GitHub](https://github.com/splitio/elixir-thin-client) |
-| GO | server-side | [Docs](https://help.split.io/hc/en-us/articles/360020093652-Go-SDK) & [GitHub](https://github.com/splitio/go-client) | 
-| Java | server-side | [Docs](https://help.split.io/hc/en-us/articles/360020405151-Java-SDK) & [GitHub](https://github.com/splitio/java-client) |
-| .NET | server-side | [Docs](https://help.split.io/hc/en-us/articles/360020240172--NET-SDK) & [GitHub](https://github.com/splitio/.net-core-client) | 
-| Node.js | server-side | [Docs](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK) & [GitHub](https://github.com/splitio/javascript-client) | 
-| PHP | server-side | [Docs](https://help.split.io/hc/en-us/articles/360020350372-PHP-SDK) & [GitHub](https://github.com/splitio/php-client) | 
-| PHP Thin-Client | server-side | [Docs](https://help.split.io/hc/en-us/articles/18305128673933-PHP-Thin-Client-SDK) & [GitHub](https://github.com/splitio/php-thin-client) |
-| Python | server-side | [Docs](https://help.split.io/hc/en-us/articles/360020359652-Python-SDK) & [GitHub](https://github.com/splitio/python-client) | 
-| Ruby | server-side | [Docs](https://help.split.io/hc/en-us/articles/360020673251-Ruby-SDK) & [GitHub](https://github.com/splitio/ruby-client) | 
+| Elixir Thin-Client | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/elixir-thin-client-sdk) & [GitHub](https://github.com/splitio/elixir-thin-client) |
+| GO | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk) & [GitHub](https://github.com/splitio/go-client) | 
+| Java | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk) & [GitHub](https://github.com/splitio/java-client) |
+| .NET | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk) & [GitHub](https://github.com/splitio/.net-core-client) | 
+| Node.js | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk) & [GitHub](https://github.com/splitio/javascript-client) | 
+| PHP | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-sdk) & [GitHub](https://github.com/splitio/php-client) | 
+| PHP Thin-Client | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-thin-client-sdk) & [GitHub](https://github.com/splitio/php-thin-client) |
+| Python | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk) & [GitHub](https://github.com/splitio/python-client) | 
+| Ruby | server-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk) & [GitHub](https://github.com/splitio/ruby-client) | 
 
 ## Evaluator service
 
-For languages with no native SDK support, Split offers the Split Evaluator, a small service capable of evaluating all available features for a given customer via a REST endpoint. This service is available as a Docker container for ease of installation and is compatible with popular framework like Kubernetes when it comes to supporting standard health checks to achieve reliable uptimes. Learn more about the [Split evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator).
+For languages with no native SDK support, Split offers the Split Evaluator, a small service capable of evaluating all available features for a given customer via a REST endpoint. This service is available as a Docker container for ease of installation and is compatible with popular framework like Kubernetes when it comes to supporting standard health checks to achieve reliable uptimes. Learn more about the [Split evaluator](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator).
 
 ## Synchronizer service
 
-By default, FME SDKs keep segment and feature flag definitions synchronized in an in-memory cache for speed at evaluating feature flags. However, some languages do not have a native capability to keep a shared local cache of this data to properly serve treatments. For these cases, we built Split Synchronizer to maintain an external cache like Redis. To learn more, read about [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer).
+By default, FME SDKs keep segment and feature flag definitions synchronized in an in-memory cache for speed at evaluating feature flags. However, some languages do not have a native capability to keep a shared local cache of this data to properly serve treatments. For these cases, we built Split Synchronizer to maintain an external cache like Redis. To learn more, read about [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer).
 
 ## Proxy service
 
 Split Proxy enables you to deploy a service in your own infrastructure that behaves like Harness servers and is used by both server-side and client-side SDKs to synchronize the flags without directly connecting to Split's backend.
 
-This tool reduces connection latencies between the SDKs and the Split server, and can be used when a single connection is required from a private network to the outside for security reasons. To learn more, read about [Split Proxy](https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy).
+This tool reduces connection latencies between the SDKs and the Split server, and can be used when a single connection is required from a private network to the outside for security reasons. To learn more, read about [Split Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy).
 
 ## Supported agents
 
@@ -138,6 +138,6 @@ Split's real user monitoring (RUM) agents collect detailed information about you
 
 | **Agent** | **API Key/Type** | **Docs** |
 | --- | --- | --- |
-| Android | client-side | [Docs](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent) |
-| iOS | client-side | [Docs](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent) |
-| Browser | client-side | [Docs](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-Agent) |
+| Android | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent) |
+| iOS | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent) |
+| Browser | client-side | [Docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent) |

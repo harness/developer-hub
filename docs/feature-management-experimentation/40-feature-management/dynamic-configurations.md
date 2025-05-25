@@ -65,18 +65,18 @@ The Harness FME platform stringifies the entered JSON and provides it as a strin
 ## SDK usage and programmatic configuration updates
 
 To find out how to use the configurationsin your code, look through the documentation for the language for your project:
-* Android [docs](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#get-treatments-with-configurations) 
-* Go [docs](https://help.split.io/hc/en-us/articles/360020093652#get-treatments-with-configurations) 
-* iOS [docs](https://help.split.io/hc/en-us/articles/360020401491#get-treatments-with-configurations)
-* Java [docs](https://help.split.io/hc/en-us/articles/360020405151#get-treatments-with-configurations)
-* JavaScript [docs](https://help.split.io/hc/en-us/articles/360020448791#get-treatments-with-configurations)
-* .NET [docs](https://help.split.io/hc/en-us/articles/360020240172#get-treatments-with-configurations)
-* Node.js [docs](https://help.split.io/hc/en-us/articles/360020564931#get-treatments-with-configurations)
-* PHP [docs](https://help.split.io/hc/en-us/articles/360020350372#get-treatments-with-configurations)
-* Python [docs](https://help.split.io/hc/en-us/articles/360020359652#get-treatments-with-configurations)
-* Ruby [docs](https://help.split.io/hc/en-us/articles/360020673251#get-treatments-with-configurations) 
+* Android [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#get-treatments-with-configurations) 
+* Go [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk#get-treatments-with-configurations) 
+* iOS [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#get-treatments-with-configurations)
+* Java [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#get-treatments-with-configurations)
+* JavaScript [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#get-treatments-with-configurations)
+* .NET [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk#get-treatments-with-configurations)
+* Node.js [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#get-treatments-with-configurations)
+* PHP [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-sdk#get-treatments-with-configurations)
+* Python [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#get-treatments-with-configurations)
+* Ruby [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk#get-treatments-with-configurations) 
 
-All the configurations that are configurable in our user interface are also editable using our Admin APIs. Refer to examples on how to include configurations in changes to roll out plans [in our APIs](https://docs.split.io/v2/reference#create-split-definition-in-environment)
+All the configurations that are configurable in our user interface are also editable using our Admin APIs. Refer to examples on how to include configurations in changes to roll out plans [in our APIs](https://docs.split.io/v2/reference#create-split-definition-in-environment).
 
 ## Data validation and switching formats
 

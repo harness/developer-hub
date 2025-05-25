@@ -40,7 +40,7 @@ Starting version 5.0.0, .Ready is deprecated and migrated to the following imple
 Call `SplitClient.BlockUntilReady(int milliseconds)` or `SplitManager.BlockUntilReady(int milliseconds)`.
 :::
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready. This is done by using `.BlockUntilReady(int milliseconds)` method as part of the instantiation process of the SDK factory client as shown below. Do this all as a part of the startup sequence of your application. If SDK is not ready after the specified time, the SDK fails to initialize and throws a `TimeoutException` error.
 
@@ -74,7 +74,7 @@ Now you can start asking the SDK to evaluate treatments for your customers.
 
 After you instantiate the SDK factory client, you can use the `GetTreatment` method of the SDK factory client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you are serving the feature to.
 
-Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 <Tabs>
 <TabItem value="GetTreatment">
@@ -119,7 +119,7 @@ else
 
 ### Attribute syntax
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `GetTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `GetTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `GetTreatment` call. These attributes are compared and evaluated against the attributes used in the Rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -268,7 +268,7 @@ You can also use the [Split Manager](#manager) to get all of your treatments at 
 
 ### Get Treatments with Configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `GetTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `GetTreatmentWithConfig` method.
 
 This method returns an object containing the treatment and associated configuration.
 
@@ -516,7 +516,7 @@ To use the .Net SDK with Redis, you need to set up the Split Synchronizer and in
 
 ### Producer
 
-Refer to our [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) documents and follow the steps there to get everything set to sync data to your Redis cache. After you do that, come back to set up the Consumer.
+Refer to our [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) documents and follow the steps there to get everything set to sync data to your Redis cache. After you do that, come back to set up the Consumer.
 
 ### Consumer
 
@@ -662,7 +662,7 @@ catch (Exception ex)
 
 :::warning[The KeyHashTag Parameter]
 The KeyHashTag is a required parameter. If left empty, the SDK will by default use "\{SPLITIO\}" as the KeyHashTag value. The KeyHashTag value is added to the user prefix to improve SDK performance in Redis Cluster.
-You should use the same KeyHashTag value in the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer) app synching to the same Redis cluster.
+You should use the same KeyHashTag value in the [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) app synching to the same Redis cluster.
 :::
 
 ## Localhost mode
@@ -746,7 +746,7 @@ catch (Exception ex)
 
 In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given feature flag, the treatment specified in the file is returned for every customer.
 
-`GetTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `features` map returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK is asked to evaluate them.
+`GetTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `features` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
 
 The format of this file is two columns separated by a whitespace. The left column is the feature flag name, and the right column is the treatment name. Here is a sample `.split` file.
 

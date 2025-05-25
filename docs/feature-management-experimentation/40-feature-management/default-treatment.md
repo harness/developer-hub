@@ -38,7 +38,7 @@ your default treatment should always be one that exposes fully tested and safe c
 * At the start of a percentage rollout, we recommend choosing the safest treatment for your customers as the default treatment (that is, **'off'** or **'old version'**).
 * At the end of a percentage rollout (at 100% rolled out), you may want to make the new experience the default in case the feature is accidentally killed before being removed.
 
-To set this treatment, refer to the [Target customers](https://help.split.io/hc/en-us/articles/360020791591-Target-customers) guide.
+To set this treatment, refer to the [Target customers](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting) guide.
 :::
 
 -->

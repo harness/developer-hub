@@ -17,7 +17,7 @@ A segment is a pre-defined list of user IDs (user keys) that a feature flag can 
 * be created and edited via the Split API
 * [sync with any Amplitude Cohort](https://www.split.io/product/integrations/amplitude/)
 
-Segments are best for targeting relatively fixed or specific groups of users that you can easily identify, like individual accounts. If you would like to learn about more dynamic targeting, refer to the [Custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes) guide.
+Segments are best for targeting relatively fixed or specific groups of users that you can easily identify, like individual accounts. If you would like to learn about more dynamic targeting, refer to the [Custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes) guide.
 
 For feature releases, you can use segments to:
 

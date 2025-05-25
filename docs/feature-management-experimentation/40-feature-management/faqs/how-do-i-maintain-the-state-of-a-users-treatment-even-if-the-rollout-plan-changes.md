@@ -18,7 +18,7 @@ Split is designed to be imperceptibly fast in computing treatments. In Java, for
 
 To achieve this speed, Split is designed to not retain state. Specifically, after Split serves a treatment to a user, it does not “remember” what was served. Given the scale of our customer use cases, retaining the combination of customer/key/flag/treatment will negatively impact the requirement for speed in our SDKs.
 
-Split ensures that we give end-users a “sticky” experience and don’t change treatments because the SDK uses a deterministic hashing algorithm. You can understand the details [here](https://help.split.io/hc/en-us/articles/360030024391). As long as a feature flag’s targeting definition does not change, the user gets the exact same treatment every single time.
+Split ensures that we give end-users a “sticky” experience and don’t change treatments because the SDK uses a deterministic hashing algorithm. You can understand the details [here](/docs/feature-management-experimentation/feature-management/faqs/ensure-a-consistent-user-experience). As long as a feature flag’s targeting definition does not change, the user gets the exact same treatment every single time.
 
 Of course, if you make changes to the feature flag targeting definition, some users may be given a different treatment by moving from one treatment to another. This could happen if they fall under a different rule or if the percentages in a rule are changed. That is the intent for an overwhelming number of use cases but is not ideal in some scenarios.
 

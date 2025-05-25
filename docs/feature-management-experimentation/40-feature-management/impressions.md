@@ -66,12 +66,12 @@ When impression tracking is off, you will see "Impression tracking off" at the t
 <img src="https://help.split.io/hc/article_attachments/35322655221389" alt="impressions_tracking_visual_cues" />
 
 :::info[Impression tracking toggle and SDK compatibility]
-See [this page](https://help.split.io/hc/en-us/articles/35323687042573-Is-the-feature-flag-impression-toggle-supported-by-my-SDK-version) to verify compatibility of FME SDK or optional infrastructure. Older SDK versions that do not support the **Impression tracking** toggle will not detect the toggle on/off setting and will send impressions to Harness servers.
+See [this page](/docs/feature-management-experimentation/feature-management/faqs/is-the-feature-flag-impression-toggle-supported) to verify compatibility of FME SDK or optional infrastructure. Older SDK versions that do not support the **Impression tracking** toggle will not detect the toggle on/off setting and will send impressions to Harness servers.
 :::
 
 ## Viewing impressions in Harness
 
-You can view incoming impressions in [Live tail](https://help.split.io/hc/en-us/articles/360044867032-Live-tail) within a feature flag's page or the Data hub, and export them based on query criteria in the Data hub's [Data export tab](https://help.split.io/hc/en-us/articles/360048120112-Export-data). If you do not see impressions arriving in Harness, ensure that your SDK is installed and functioning as expected. Tips for this are included in the [Live tail](https://help.split.io/hc/en-us/articles/360044867032-Live-tail) article. Contact us at [support@split.io](mailto:support@split.io) if you have any issues. 
+You can view incoming impressions in [Live tail](/docs/feature-management-experimentation/feature-management/live-tail) within a feature flag's page or the Data hub, and export them based on query criteria in the Data hub's [Data export tab](/docs/feature-management-experimentation/feature-management/export-data). If you do not see impressions arriving in Harness, ensure that your SDK is installed and functioning as expected. Tips for this are included in the [Live tail](/docs/feature-management-experimentation/feature-management/live-tail) article. Contact us at [support@split.io](mailto:support@split.io) if you have any issues. 
 
 :::important
 Harness retains impression data for 90 days. Contact the [team at Harness FME](mailto:support@split.io) to learn more.
@@ -97,10 +97,10 @@ Usually, a treatment is served because the customer matched a particular rule. I
  
 | **Special case** | **Treatment served** | **Targeting rule label** |
 | --- | --- | --- |
-| Feature flag was killed | [Default](https://help.split.io/hc/en-us/articles/360020528192) | `killed` |
-| No rule matched | [Default](https://help.split.io/hc/en-us/articles/360020528192) | `no rule matched` |
-| Feature flag was not found, for example, it may not have been downloaded by the SDK yet | [Control](https://help.split.io/hc/en-us/articles/360020528072) | `definition not found` |
-| There was an exception while evaluating treatment | [Control](https://help.split.io/hc/en-us/articles/360020528072) | `exception`  |
+| Feature flag was killed | [Default](/docs/feature-management-experimentation/feature-management/default-treatment) | `killed` |
+| No rule matched | [Default](/docs/feature-management-experimentation/feature-management/default-treatment) | `no rule matched` |
+| Feature flag was not found, for example, it may not have been downloaded by the SDK yet | [Control](/docs/feature-management-experimentation/feature-management/control-treatment) | `definition not found` |
+| There was an exception while evaluating treatment | [Control](/docs/feature-management-experimentation/feature-management/control-treatment) | `exception`  |
 
 If your impression tables are showing *not available*, consider upgrading your SDK and ensure that labels are enabled in the SDK configurations.
 
@@ -113,15 +113,15 @@ Additionally, if you don’t want to send a customer UUID to Harness as the key,
 ## Integrations for impression data
 
 Use our integrations to push FME feature flag impression data to your existing platforms or your data warehouse for a comprehensive view of user engagement and other key use metrics. Integration documentation is available for the following:
-- [Amazon S3](https://help.split.io/hc/en-us/articles/360053674072-Amazon-S3)
-- [Amplitude](https://help.split.io/hc/en-us/articles/360046658932-Amplitude)
-- [Full Story](https://help.split.io/hc/en-us/articles/360045937831-FullStory)
-- [Google Analytics](https://help.split.io/hc/en-us/articles/360040838752-Google-Analytics)
-- [Heap](https://help.split.io/hc/en-us/articles/360035207311-Heap)
-- [NewRelic](https://help.split.io/hc/en-us/articles/360020695432-New-Relic)
-- [Mixpanel](https://help.split.io/hc/en-us/articles/360045503191-Mixpanel)
-- [mParticle](https://help.split.io/hc/en-us/articles/360038306272-mParticle-)
-- [Quantum-Metric](https://help.split.io/hc/en-us/articles/4423968122381-Quantum-Metric)
-- [SmartBear Bugsnag](https://help.split.io/hc/en-us/articles/5709939011085-Bugsnag)
-- [Segment](https://help.split.io/hc/en-us/articles/360020742532)
+- [Amazon S3](/docs/feature-management-experimentation/integrations/amazon-s3)
+- [Amplitude](/docs/feature-management-experimentation/integrations/amplitude)
+- [Full Story](/docs/feature-management-experimentation/integrations/fullstory)
+- [Google Analytics](/docs/feature-management-experimentation/integrations/google-analytics)
+- [Heap](/docs/feature-management-experimentation/integrations/heap)
+- [NewRelic](/docs/feature-management-experimentation/integrations/new-relic)
+- [Mixpanel](/docs/feature-management-experimentation/integrations/mixpanel)
+- [mParticle](/docs/feature-management-experimentation/integrations/mparticle)
+- [Quantum-Metric](/docs/feature-management-experimentation/integrations/quantummetric)
+- [SmartBear Bugsnag](/docs/feature-management-experimentation/integrations/bugsnag)
+- [Segment](/docs/feature-management-experimentation/integrations/segment)
 - [Webhook (outgoing)](https://help.split.io/hc/en-us/articles/360020700232)

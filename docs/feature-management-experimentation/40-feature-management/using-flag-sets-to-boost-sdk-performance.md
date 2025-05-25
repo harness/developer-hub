@@ -33,17 +33,17 @@ To use flag sets you need to:
 
    All SDKs and the Split Evaluator support flag sets. To find out how to use flag sets in your code, look through the documentation for the language of your project:
 
-    * Android [docs](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#flag-sets) 
-    * Go [docs](https://help.split.io/hc/en-us/articles/360020093652#flag-sets) 
-    * iOS [docs](https://help.split.io/hc/en-us/articles/360020401491#flag-sets)
-    * Java [docs](https://help.split.io/hc/en-us/articles/360020405151#flag-sets)
-    * JavaScript [docs](https://help.split.io/hc/en-us/articles/360020448791#flag-sets)
-    * .NET [docs](https://help.split.io/hc/en-us/articles/360020240172#flag-sets)
-    * Node.js [docs](https://help.split.io/hc/en-us/articles/360020564931#flag-sets)
-    * PHP [docs](https://help.split.io/hc/en-us/articles/360020350372#flag-sets)
-    * Python [docs](https://help.split.io/hc/en-us/articles/360020359652#flag-sets)
-    * Ruby [docs](https://help.split.io/hc/en-us/articles/360020673251#flag-sets) 
-    * Split Evaluator [docs](https://help.split.io/hc/en-us/articles/360020037072#flag-sets)
+    * Android [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk) 
+    * Go [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk) 
+    * iOS [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk)
+    * Java [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk)
+    * JavaScript [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk)
+    * .NET [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk)
+    * Node.js [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk)
+    * PHP [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-sdk)
+    * Python [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk)
+    * Ruby [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk) 
+    * Split Evaluator [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator)
 
 4. Stay within the limits of your tier
 
@@ -55,5 +55,5 @@ To use flag sets you need to:
    | per feature flag definition * | Service | 3 | 3 | 5 | 5 | 5 |
    | filtered by a single SDK instance | Service | 10 | 10 | 10 | 10 | 10 |
 
-* An FME feature flag can have a definition for each Environment in your Project. For more information see [Create a feature flag](https://help.split.io/hc/en-us/articles/9058495582349-Create-a-feature-flag).
+* An FME feature flag can have a definition for each Environment in your Project. For more information see [Create a feature flag](/docs/feature-management-experimentation/feature-management/create-a-feature-flag).
 
