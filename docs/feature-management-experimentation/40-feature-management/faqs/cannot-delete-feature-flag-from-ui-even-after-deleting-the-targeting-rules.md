@@ -5,7 +5,7 @@ sidebar_position: 7
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360041111652-Cannot-delete-feature-flag-from-UI-even-after-deleting-the-targeting-rules <br /> ✘ images still hosted on help.split.io </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360041111652-Cannot-delete-feature-flag-from-UI-even-after-deleting-the-targeting-rules <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 ### Issue

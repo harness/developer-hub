@@ -5,7 +5,7 @@ sidebar_position: 3
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360039415491--NET-Core-VB-using-Split-SDK-example </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360039415491--NET-Core-VB-using-Split-SDK-example </button>
 </p>
 
 Example: Basic code to use FME .NET SDK 6.0.1

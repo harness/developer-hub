@@ -6,7 +6,7 @@ sidebar_position: 9
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes <br /> ✘ images still hosted on help.split.io </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 With custom attributes, you can create dynamic targeted feature rollout plans using any end-user criteria or dimension that is known at runtime. Custom attributes can be used to represent:

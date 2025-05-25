@@ -5,7 +5,7 @@ sidebar_position: 2
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/13998631077901-SDK-validation-checklist </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/13998631077901-SDK-validation-checklist </button>
 </p>
 
 The SDK validation checklist helps you ensure that the SDK is implemented according to FME best practices. This document describes the guidelines for incorporating the SDK into your software application in all supported languages. The main purpose is to define the general guidelines, checks, and validations that can be useful for developers and software architects to avoid common mistakes or oversights and to ensure optimal performance of the SDK. This guide covers recommendations in the following areas:

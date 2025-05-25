@@ -4,7 +4,7 @@ sidebar_label: Android RUM Agent
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent </button>
 </p>
 
 import Tabs from '@theme/Tabs';

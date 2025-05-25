@@ -4,7 +4,7 @@ sidebar_label: Elixir Thin Client SDK
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/26988707417869-Elixir-Thin-Client-SDK </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/26988707417869-Elixir-Thin-Client-SDK </button>
 </p>
 
 import Tabs from '@theme/Tabs';

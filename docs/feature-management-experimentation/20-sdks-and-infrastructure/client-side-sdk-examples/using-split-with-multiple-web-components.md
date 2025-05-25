@@ -5,7 +5,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/17187557200525-Using-Split-with-multiple-web-components-and-a-single-factory-instance </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/17187557200525-Using-Split-with-multiple-web-components-and-a-single-factory-instance </button>
 </p>
 
 ## Using FME SDK in a micro frontend environment

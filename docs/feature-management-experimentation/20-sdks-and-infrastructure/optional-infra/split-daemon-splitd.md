@@ -5,7 +5,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd </button>
 </p>
 
 Splitd is a daemon that communicates with the Harness servers. It keeps an up-to-date snapshot of the FME definitions for a specific FME environment. The rollout plan is accessed by a FME Thin SDK instance (via splitd) to consume feature flags in your code.

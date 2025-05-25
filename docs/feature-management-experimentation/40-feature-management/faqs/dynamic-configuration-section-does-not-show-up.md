@@ -5,7 +5,7 @@ sidebar_position: 2
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360058278392-Dynamic-configuration-section-does-not-show-up <br /> ✘ images still hosted on help.split.io </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360058278392-Dynamic-configuration-section-does-not-show-up <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
 ### Issue:
