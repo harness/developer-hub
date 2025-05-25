@@ -55,11 +55,11 @@ npm install --save @splitsoftware/splitio-browserjs
 <!-- Choose the preferred script tag, you don't need both -->
 
 <!-- Slim build, smaller footprint -->
-<script src="//cdn.split.io/sdk/split-browser-1.1.0.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.2.0.min.js"></script>
 
 <!-- Full build, bigger footprint but all modules are exposed and usable,
 including fetch polyfill -->
-<script src="//cdn.split.io/sdk/split-browser-1.1.0.full.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.2.0.full.min.js"></script>
 ```
 </TabItem>
 </Tabs>
@@ -500,11 +500,11 @@ In the case that a bad input has been provided, you can read more about our [SDK
 var queued = client.track('TRAFFIC_TYPE', 'EVENT_TYPE', eventValue, { properties });
 
 // Example with both a value and properties
-var properties = {package : "premium", admin : true, discount : 50};
+var properties = { package : "premium", admin : true, discount : 50 };
 var queued = client.track('user', 'page_load_time', 83.334, properties);
 
 // Example with only properties
-var properties = {package : "premium", admin : true, discount : 50};
+var properties = { package : "premium", admin : true, discount : 50 };
 var queued = client.track('user', 'page_load_time', null, properties);
 ```
 </TabItem>
@@ -514,11 +514,11 @@ var queued = client.track('user', 'page_load_time', null, properties);
 const queued: boolean = client.track('TRAFFIC_TYPE', 'EVENT_TYPE', eventValue, , { properties });
 
 // Example with both a value and properties
-const properties = {package : "premium", admin : true, discount : 50};
-const queued = client.track('user', 'page_load_time', 83.334, properties);
+const properties: SplitIO.Properties = { package: "premium", admin: true, discount: 50 };
+const queued: boolean = client.track('user', 'page_load_time', 83.334, properties);
 
 // Example with only properties
-const properties = {package : "premium", admin : true, discount : 50};
+const properties = { package: "premium", admin: true, discount: 50 };
 const queued = client.track('user', 'page_load_time', null, properties);
 ```
 </TabItem>
@@ -626,7 +626,9 @@ This `InLocalStorage` function accepts an optional object with options described
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- |
-| prefix | An optional prefix for your data, to avoid collisions. | `SPLITIO` |
+| prefix | An optional prefix for your data, to avoid collisions. This prefix is prepended to the existing "SPLITIO" localStorage prefix. | `SPLITIO` |
+| expirationDays | Number of days before cached data expires if it was not updated. If cache expires, it is cleared when the SDK is initialized. | 10 |
+| clearOnInit | When set to `true`, the SDK clears the cached data on initialization unless it was cleared within the last 24 hours. This 24-hour window is not configurable. If the cache is cleared (whether due to expiration or `clearOnInit`), both the 24-hour period and the `expirationDays` period are reset. | false |
 
 These pluggable caches are always available on NPM, but if using the CDN you need the full bundle. Refer to the [Import the SDK into your project](#1-import-the-sdk-into-your-project) section for more information.
 
@@ -640,7 +642,9 @@ var factory = window.splitio.SplitFactory({
   },
   // Same as SplitFactory, InLocalStorage is exposed on the global splitio object
   storage: window.splitio.InLocalStorage({
-    prefix: 'MY_PREFIX'
+    prefix: 'MY_PREFIX',
+    expirationDays: 10,
+    clearOnInit: false
   })
 });
 
@@ -689,7 +693,7 @@ If you define just a string as the value for a feature flag name, any config ret
 <Tabs>
 <TabItem value="JavaScript (using CDN bundle)">
 ```javascript
-<script src="//cdn.split.io/sdk/split-browser-1.1.0.full.min.js"></script>
+<script src="//cdn.split.io/sdk/split-browser-1.2.0.full.min.js"></script>
 
 var sdk = splitio.SplitFactory({
   core: {

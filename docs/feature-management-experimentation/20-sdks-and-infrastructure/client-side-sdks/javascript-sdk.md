@@ -40,7 +40,7 @@ npm install --save @splitsoftware/splitio
 </TabItem>
 <TabItem value="CDN bundle">
 ```html
-<script src="//cdn.split.io/sdk/split-11.1.0.min.js"></script>
+<script src="//cdn.split.io/sdk/split-11.2.0.min.js"></script>
 ```
 </TabItem>
 </Tabs>
@@ -489,43 +489,23 @@ In the case that a bad input has been provided, you can read more about our SDK'
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
 ```javascript
-// If you have only passed the key to the SDK
-var queued = client.track('TRAFFIC_TYPE', 'EVENT_TYPE', eventValue, { properties });
 // Example with both a value and properties
-var properties = {package : "premium", admin : true, discount : 50};
+var properties = { package: "premium", admin: true, discount: 50 };
 var queued = client.track('user', 'page_load_time', 83.334, properties);
 
 // Example with only properties
-var properties = {package : "premium", admin : true, discount : 50};
-var queued = client.track('user', 'page_load_time', null, properties);
-
-// Example with both a value and properties
-var properties = {package : "premium", admin : true, discount : 50};
-var queued = client.track('user', 'page_load_time', 83.334, properties);
-
-// Example with only properties
-var properties = {package : "premium", admin : true, discount : 50};
+var properties = { package: "premium", admin: true, discount: 50 };
 var queued = client.track('user', 'page_load_time', null, properties);
 ```
 </TabItem>
 <TabItem value="TypeScript">
-```javascript
-// If you have only passed the key to the SDK
-const queued: boolean = client.track('TRAFFIC_TYPE', 'EVENT_TYPE', eventValue, , { properties });
+```typescript
 // Example with both a value and properties
-const properties = {package : "premium", admin : true, discount : 50};
-const queued = client.track('user', 'page_load_time', 83.334, properties);
+const properties: SplitIO.Properties = { package: "premium", admin: true, discount: 50 };
+const queued: boolean = client.track('user', 'page_load_time', 83.334, properties);
 
 // Example with only properties
-const properties = {package : "premium", admin : true, discount : 50};
-const queued = client.track('user', 'page_load_time', null, properties);
-
-// Example with both a value and properties
-const properties = {package : "premium", admin : true, discount : 50};
-const queued = client.track('user', 'page_load_time', 83.334, properties);
-
-// Example with only properties
-const properties = {package : "premium", admin : true, discount : 50};
+const properties = { package: "premium", admin: true, discount: 50 };
 const queued = client.track('user', 'page_load_time', null, properties);
 ```
 </TabItem>
@@ -554,7 +534,9 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | sync.enabled | Controls the SDK continuous synchronization flags. When `true`, a running SDK processes rollout plan updates performed in Harness FME (default). When `false`, it fetches all data from the Harness FME servers only upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
 | sync.requestOptions.getHeaderOverrides | A callback function that can be used to override the Authentication header or append new headers to the SDK's HTTP(S) requests. | undefined |
 | storage.type | Storage type to be used by the SDK. Possible values are `MEMORY` and `LOCALSTORAGE`. | `MEMORY` |
-| storage.prefix | An optional prefix for your data to avoid collisions. This prefix is prepended to the existing SPLITIO localStorage prefix. | `SPLITIO` |
+| storage.prefix | Only applies to the `LOCALSTORAGE` storage type. An optional prefix for your data to avoid collisions. This prefix is prepended to the existing "SPLITIO" localStorage prefix. | `SPLITIO` |
+| storage.expirationDays | Only applies to the `LOCALSTORAGE` storage type. Number of days before cached data expires if it was not updated. If cache expires, it is cleared when the SDK is initialized. | 10 |
+| storage.clearOnInit | Only applies to the `LOCALSTORAGE` storage type. When set to `true`, the SDK clears the cached data on initialization unless it was cleared within the last 24 hours. This 24-hour window is not configurable. If the cache is cleared (whether due to expiration or `clearOnInit`), both the 24-hour period and the `expirationDays` period are reset. | false |
 | debug | Either a boolean flag or log level string ('ERROR', 'WARN', 'INFO', or 'DEBUG'). See [logging](#logging) for details. | false |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK falls back to the polling mechanism. If false, the SDK polls for changes as usual without attempting to use streaming. | true |
 | userConsent | User consent status used to control the tracking of events and impressions. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. See [User consent](#user-consent) for details. | `GRANTED` |
@@ -593,7 +575,9 @@ var sdk = SplitFactory({
   },
   storage: {
     type: 'LOCALSTORAGE',
-    prefix: 'MYPREFIX'
+    prefix: 'MYPREFIX',
+    expirationDays: 10,
+    clearOnInit: false
   },
   streamingEnabled: true,
   debug: false
@@ -631,7 +615,9 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
   },
   storage: {
     type: 'LOCALSTORAGE',
-    prefix: 'MYPREFIX'
+    prefix: 'MYPREFIX',
+    expirationDays: 10,
+    clearOnInit: false
   },
   streamingEnabled: true,
   debug: false

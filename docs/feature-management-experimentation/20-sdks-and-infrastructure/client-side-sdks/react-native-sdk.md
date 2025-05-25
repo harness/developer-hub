@@ -535,25 +535,22 @@ In the case that a bad input has been provided, you can read more about our SDK'
 var queued = client.track('TRAFFIC_TYPE', 'EVENT_TYPE', eventValue, { properties });
 
 // Example with both a value and properties
-var properties = {package : "premium", admin : true, discount : 50};
+var properties = { package : "premium", admin : true, discount : 50 };
 var queued = client.track('user', 'page_load_time', 83.334, properties);
 
 // Example with only properties
-var properties = {package : "premium", admin : true, discount : 50};
+var properties = { package : "premium", admin : true, discount : 50 };
 var queued = client.track('user', 'page_load_time', null, properties);
 ```
 </TabItem>
 <TabItem value="TypeScript">
 ```typescript
-// The expected parameters are:
-const queued: boolean = client.track('TRAFFIC_TYPE', 'EVENT_TYPE', eventValue, , { properties });
-
 // Example with both a value and properties
-const properties = {package : "premium", admin : true, discount : 50};
-const queued = client.track('user', 'page_load_time', 83.334, properties);
+const properties: SplitIO.Properties = { package: "premium", admin: true, discount: 50 };
+const queued: boolean = client.track('user', 'page_load_time', 83.334, properties);
 
 // Example with only properties
-const properties = {package : "premium", admin : true, discount : 50};
+const properties = { package: "premium", admin: true, discount: 50 };
 const queued = client.track('user', 'page_load_time', null, properties);
 ```
 </TabItem>

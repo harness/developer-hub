@@ -54,7 +54,7 @@ yarn add @splitsoftware/splitio-react
 <TabItem value="CDN bundle">
 ```html
 <!-- Don't forget to include React script tags before the SDK. More details at https://reactjs.org/docs/add-react-to-a-website.html#step-2-add-the-script-tags  -->
-<script src="//cdn.split.io/sdk/splitio-react-2.0.1.min.js"></script>
+<script src="//cdn.split.io/sdk/splitio-react-2.1.0.min.js"></script>
 ```
 </TabItem>
 </Tabs>
@@ -641,7 +641,7 @@ function MyComponent() {
 ```
 </TabItem>
 <TabItem value="useSplitClient hook">
-```javascript
+```typescript
 import { useTrack } from '@splitsoftware/splitio-react';
 
 function MyComponent() {

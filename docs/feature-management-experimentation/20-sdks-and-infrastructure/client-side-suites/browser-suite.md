@@ -39,7 +39,7 @@ yarn add @splitsoftware/browser-suite
 </TabItem>
 <TabItem value="CDN bundle">
 ```html
-<script src="//cdn.split.io/sdk/browser-suite-2.0.0.min.js"></script>
+<script src="//cdn.split.io/sdk/browser-suite-2.1.0.min.js"></script>
 ```
 </TabItem>
 </Tabs>
@@ -673,7 +673,9 @@ This `InLocalStorage` function accepts an optional object with options described
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- |
-| prefix | An optional prefix for your data, to avoid collisions. | `SPLITIO` |
+| prefix | An optional prefix for your data, to avoid collisions. This prefix is prepended to the existing "SPLITIO" localStorage prefix. | `SPLITIO` |
+| expirationDays | Number of days before cached data expires if it was not updated. If cache expires, it is cleared when the SDK is initialized. | 10 |
+| clearOnInit | When set to `true`, the SDK clears the cached data on initialization unless it was cleared within the last 24 hours. This 24-hour window is not configurable. If the cache is cleared (whether due to expiration or `clearOnInit`), both the 24-hour period and the `expirationDays` period are reset. | false |
 
 <Tabs>
 <TabItem value="With ES Modules">
@@ -686,7 +688,9 @@ const suite = SplitSuite({
     key: 'key'
   },
   storage: InLocalStorage({
-    prefix: 'MY_PREFIX'
+    prefix: 'MY_PREFIX',
+    expirationDays: 10,
+    clearOnInit: false
   })
 });
 
@@ -857,7 +861,8 @@ type SplitView = {
     [treatmentName: string]: string
   },
   defaultTreatment: string,
-  sets: Array<string>
+  sets: Array<string>,
+  impressionsDisabled: boolean
 }
 ```
 </TabItem>

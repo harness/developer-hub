@@ -756,7 +756,8 @@ type SplitView = {
     [treatmentName: string]: string
   },
   defaultTreatment: string,
-  sets: Array<string>
+  sets: Array<string>,
+  impressionsDisabled: boolean
 }
 ```
 </TabItem>
