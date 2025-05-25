@@ -46,13 +46,13 @@ When impression tracking is toggled off, feature flag evaluations return treatme
 
 * **Monitoring** for the feature flag definition does not populate the Traffic over time chart. The unique keys evaluated per treatment are not shown.
 
-* **Alerting** is disabled, because metrics are not calculated for events attributed to the feature flag definition.
+* **Metric impact** does not show metric results, because events are not attributed to treatments and metrics are not calculated.
 
-* **Metric impact** for the feature flag definition does not show metric results.
+* **Alerting** is disabled because metrics are not calculated.
 
 * **Live tail** for the feature flag definition does not show incoming impressions.
 
-* **Data export** does not include feature flag evaluation data for flag definitions when track impressions was toggled off. Only impressions created while track impressions was toggled on are retrieved and exported.
+* **Data export** does not include feature flag evaluation data for flag definitions when impression tracking was toggled off. Only impressions created while impression tracking was toggled on are retrieved and exported.
 
 Toggling impressions on or off does not impact your [MTKs](https://help.split.io/hc/en-us/articles/26978089134349-MTK-Usage-and-Comparing-Counts#what-is-an-mtk) (the number of unique keys for which you evaluate feature flags in a month) or [Account usage data](https://help.split.io/hc/en-us/articles/360034159232-Account-usage-data#usage-data).
 
