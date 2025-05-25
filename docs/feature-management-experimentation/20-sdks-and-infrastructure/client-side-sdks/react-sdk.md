@@ -26,7 +26,7 @@ Although these components are still working, we recommend migrating to the `Spli
 
 ## Language support
 
-The React SDK requires React 16.8.0 or above, since it uses **React Hooks API** introduced in that version.
+The Harness FME React SDK requires React 16.8.0 or above, since it uses the **React Hooks API** introduced in that version.
 
 The SDK supports all major web browsers. It was built to support ES5 syntax but it depends on native support for ES6 `Promise`, `Map`, and `Set` objects, so these objects need to be **polyfilled** if they are not available in your target browsers, like IE 11.
 
@@ -54,7 +54,7 @@ yarn add @splitsoftware/splitio-react
 <TabItem value="CDN bundle">
 ```html
 <!-- Don't forget to include React script tags before the SDK. More details at https://reactjs.org/docs/add-react-to-a-website.html#step-2-add-the-script-tags  -->
-<script src="//cdn.split.io/sdk/splitio-react-2.1.1.min.js"></script>
+<script src="//cdn.split.io/sdk/splitio-react-2.2.0.min.js"></script>
 ```
 </TabItem>
 </Tabs>
@@ -623,12 +623,12 @@ If the `SplitFactoryProvider` component is created with a `config` prop, then th
 
 ## Track
 
-Use the `client.track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Tracking events through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your features on your users' actions and metrics.
+Use the `useTrack` hook to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Tracking events through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your features on your users' actions and metrics.
 
-[Learn more](https://help.split.io/hc/en-us/articles/360020585772) about using track events in feature flags.
+Learn more about using [tracking events](https://help.split.io/hc/en-us/articles/360020585772) in Harness FME.
 
 To track events, you must follow two steps:
-1. Retrieve the `client.track` method, which is available through the `useTrack` hook or the `useSplitClient` hook.
+1. Retrieve the client's `track` method, which is available through the `useTrack` hook or the `useSplitClient` hook.
 2. Execute the `track` method call, passing in the traffic type and event info as arguments.
 
 In the examples below, you can see that tracking events can take up to four arguments. The proper data type and syntax for each are:
@@ -648,7 +648,7 @@ In case a bad input is provided, you can read more about our [SDK's expected beh
 
 Remember that:
 - You must follow [React Hook rules](https://react.dev/reference/rules/rules-of-hooks) when using the `useTrack` or `useSplitClient` hooks, i.e., they must be invoked at the top level of your component or in custom hooks.
-- The `client.track` method doesn't require the client to be ready, but it implies a side effect. Therefore, it should be invoked [outside the component render phase](https://react.dev/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render), such as in a `useEffect` hook or an event handler.
+- The client's `track` method doesn't require the client to be ready, but it implies a side effect. Therefore, it should be invoked [outside the component render phase](https://react.dev/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render), such as in a `useEffect` hook or an event handler.
 
 <Tabs>
 <TabItem value="useTrack hook">
@@ -1074,7 +1074,8 @@ function MyComponentWithFlags(props) {
   }
 
 }
-```</TabItem>
+```
+</TabItem>
 <TabItem value="Using SplitClient component (deprecated)">
 ```javascript
 import { SplitFactoryProvider, SplitClient } from '@splitsoftware/splitio-react';
@@ -1152,6 +1153,7 @@ While you could potentially access the JavaScript SDK factory client from the Sp
 * For `SDK_READY_FROM_CACHE`, you can set the `updateOnSdkReadyFromCache` parameter. 
 * For `SDK_READY_TIMED_OUT`, you can set the `updateOnSdkTimedout` parameter.
 * For `SDK_UPDATE`, you can set the `updateOnSdkUpdate` parameter.
+
 The default value for all these parameters is `true`.
 
 The `useSplitClient` and `useSplitTreatments` hooks return the SDK factory client and treatment evaluations respectively, together with a set of **status properties** to conditionally render the component.
@@ -1243,6 +1245,19 @@ const App = () => (
 ```
 </TabItem>
 </Tabs>
+
+Default values for `updateOnSdk<Event>` options can be overwritten at the `SplitFactoryProvider` component level, and will apply to all child components.
+
+```javascript title="Hooks"
+const App = () => (
+  <SplitFactoryProvider 
+    config={sdkConfig} 
+    updateOnSdkUpdate={false} // overwrite default value for `updateOnSdkUpdate` option to `false` for all child components 
+  >
+    <MyApp />
+  </SplitFactoryProvider>
+);
+```
 
 You can also access the `SplitContext` directly in your components for checking the readiness state of the client. Via the React [`useContext`](https://react.dev/reference/react/useContext) function, you can access the value of the `SplitContext` as shown below:
 
