@@ -29,8 +29,8 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ### **Harness Platform Integration**
 
-* **AI Test Automation Module**: AI Test Automation is now available as a native module within the Harness platform  
-* **Unified Access**: Harness users can now access AI Test Automation directly from within the Harness platform interface
+* **AI Test Automation Module**: AI Test Automation is now available as a native module within the Harness platform.  
+* **Unified Access**: Harness users can now access AI Test Automation directly from within the Harness platform interface.
 
 <DocImage
   path={require('./static/ai-test-automation-menu.png')}
@@ -42,7 +42,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 
 
-* **Pipeline Studio Integration**: AI Test Automation can now be added to Harness CD Pipelines using a graphical no-code interface, enabling test suites to launch as part of Harness CD pipeline workflows
+* **Pipeline Studio Integration**: AI Test Automation can now be added to Harness CD Pipelines using a graphical no-code interface, enabling test suites to launch as part of Harness CD pipeline workflows.
 
 
 <DocImage
@@ -62,7 +62,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ### **Test Suite Management**
 
-* **Complete Run History**: Full test suite run history is now available in the test suite details → history tab, providing comprehensive visibility into past executions
+* **Complete Run History**: Full test suite run history is now available in the test suite details → history tab, providing comprehensive visibility into past executions.
 
 ### AI & Testing Improvements
 
