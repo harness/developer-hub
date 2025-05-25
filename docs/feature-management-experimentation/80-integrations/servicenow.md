@@ -18,9 +18,9 @@ The ServiceNow integration enables enterprise organizations to improve operation
 
 The following is the supported ServiceNow version:
 
-Service Now ITSM Pro product/plan
-Platform version: Rome / SanDiego / Tokyo versions
-DevOps plugin: 1.35.1
+Product/plan: Service Now ITSM Pro
+Platform version: Rome and later versions
+DevOps plugin: 1.35.1 and later versions
 
 ## Setting up in Split
 
