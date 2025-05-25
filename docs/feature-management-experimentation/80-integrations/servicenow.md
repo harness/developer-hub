@@ -8,8 +8,6 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/5524203735181-ServiceNow </button>
 </p>
 
-**Note: The ServiceNow integration is in beta.**
-
 The ServiceNow integration enables enterprise organizations to improve operational efficiencies by streamlining and automating change management processes. Specifically, it allows you to manage projects, teams and customer interactions by customizing approvals, which helps reduce errors and ensure compliance without slowing your release process. With this integration:
 
 * If your organization manages changes in ServiceNow, when you make required approvals in Split, all approvals are forwarded to ServiceNow so that change requests are recorded and approved in one place.
