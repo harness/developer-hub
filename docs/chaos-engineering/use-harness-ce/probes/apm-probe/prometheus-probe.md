@@ -18,7 +18,7 @@ To use the Prometheus APM probe, you need:
 
 Follow along with this interactive guide to learn how to configure Prometheus probe:
 
-<DocVideo src="https://app.tango.us/app/embed/87f20060-9449-4ac1-84ef-e69eefa35e87?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create APM Probe in Prometheus" />
+<DocVideo src="https://app.tango.us/app/embed/87f20060-9449-4ac1-84ef-e69eefa35e87?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create Prometheus APM Probe" />
 
 ### Steps to configure
 

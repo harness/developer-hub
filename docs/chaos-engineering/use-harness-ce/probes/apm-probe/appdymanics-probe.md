@@ -17,7 +17,7 @@ To use the AppDynamics probe, you need:
 
 Follow along with this interactive guide to learn how to configure AppDynamics probe:
 
-<DocVideo src="https://app.tango.us/app/embed/8a20f18d-a78a-4d2f-ac8c-5aef92a4243e?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create APM Probe in Harness" />
+<DocVideo src="https://app.tango.us/app/embed/8a20f18d-a78a-4d2f-ac8c-5aef92a4243e?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create AppDynamics APM Probe" />
 
 ### Steps to configure
 

@@ -17,7 +17,7 @@ To use the Splunk Observability probe, you need:
 
 Follow along with this interactive guide to learn how to configure Splunk Observability probe:
 
-<DocVideo src="https://app.tango.us/app/embed/e1f8d801-e55a-4e1d-a831-75b1d1a48142?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create APM Probe in Splunk" />
+<DocVideo src="https://app.tango.us/app/embed/e1f8d801-e55a-4e1d-a831-75b1d1a48142?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create Splunk Observability APM Probe" />
 
 ### Steps to configure
 
