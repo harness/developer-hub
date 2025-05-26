@@ -29,7 +29,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 :::
 
 
-## Burp Suite step settings
+## Burp Suite Enterprise Edition step settings
 
 The recommended workflow is to add a **Burp Suite Enterprise Edition** step to a **Security** or **Build** stage and then configure it as described below.
 
@@ -124,10 +124,10 @@ The access token used to log in to a specific product in the scanner. This is re
 You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 ### URL Scope
-You can define the URL Scope by the following modes
-
 <Tabs>
 <TabItem value="default" label="Default" default>
+
+To configure the URL Scope using the **Default Scope**, set the following fields as described below:
 
 ### Instance
 
@@ -170,6 +170,8 @@ The access token to log in to the instance you want to scan. In most cases, this
 
 </TabItem>
 <TabItem value="detailed" label="Detailed Scope">
+
+To configure the URL Scope using **Detailed Scope**, you must set the following fields as described. For more information, refer to the Burp Suite documentation on [Detailed Scope Configuration](https://portswigger.net/burp/documentation/dast/user-guide/scanning-webapps-and-apis/setting-site-scope).
 
 ### Instance
 
