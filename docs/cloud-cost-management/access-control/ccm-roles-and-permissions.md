@@ -9,6 +9,7 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/access-control/ccm-roles-and-permissions
 ---
+import PermissionsViewer from '@site/src/components/PermissionsViewer';
 
 # CCM Roles and Permissions
 Harness RBAC includes Roles and Permissions that enable you to control access to the CCM resources in your Harness account.
@@ -87,3 +88,13 @@ Understanding RBAC in CCM:
 
 - CCM has RBAC on 2 levels: Global and Granular. 
 - 3 main concepts: 
+
+## Granular RBAC
+
+Granular RBAC allows you to control permissions at a more detailed level. Below is a component that helps you visualize the exact permissions needed for specific features:
+
+
+
+<PermissionsViewer />
+
+
