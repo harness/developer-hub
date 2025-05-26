@@ -38,7 +38,15 @@ After installing the Harness extension and completing the login process, you can
 Harness AI Code Agent offers four key features: Code Generation, Chat feature and Inline Editing. Below, we provide a detailed explanation of each feature.
 
 ### Code Generation
+
+**Watch Harness AI Code Agent in Action**.
+
+<DocVideo src="https://www.youtube.com/embed/G8IlWLCpkVM" />
+
+> In this demo, see how Harness AI Code Agent helps scaffold, complete, and iterate on real Django code—all inside VS Code. Think of it as your AI pair programmer.
+
 Code generation works by showing real-time inline code suggestions. The suggestions are generated based on the context of the code being written, and additional information such as relevant files and code snippets in the workspace.
+
 Once a suggestion is shown to the user, they can accept it fully or word by word, allowing for customization before finalizing the code.
 ![An example of AI code autocompletion](./static/code_gen.gif)
 
