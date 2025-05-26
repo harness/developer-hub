@@ -906,6 +906,21 @@ The step might look like this:
 
 The `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}` line will get the `kubeconfig` from the Harness Delegate that is installed on the Kubernetes cluster.
 
+## Hidden/Invisible Characters
+An issue customers may experience are unexplained phenomenon within their scripts due to hidden or invisible characters. These characters often appear when pasting from non-plain text resources, and can cause errors in how the script operates.   Harness has a function to display invisible characters which is enabled by default.
+
+End users should see a highlighted space within their scripts, if an invisible character is contained:
+![](./static/invisiblechr-01.png)
+
+They can then manage and see what character is contained by hovering over the highlight and selecting to `adjust settings`
+![](./static/invisiblechr-hover.png)
+
+If a selection was accidentally made, the person can then make adjustments by right-clicking within the script space and selecting the `Command Palette`.
+![](./static/invisiblechr-cmdplt.png)
+
+A dialog box will appear, allowing the user to search for the ability to toggle how the highlighting will be set.
+![](./static/invisiblechr-toggle.png)
+
 ## FAQ's
 
 ### How can I handle dynamic IP addresses when connecting to robots via SSH in Harness?
