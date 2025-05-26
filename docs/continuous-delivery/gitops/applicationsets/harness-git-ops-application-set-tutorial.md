@@ -111,3 +111,21 @@ If you configure automatic syncing in the ApplicationSet template, then the appl
       syncPolicy:  
         automated: {}
 ```
+
+## Troubleshooting
+
+### ArgoCD AppSet “Degraded” Status with Project-Scoped Repos
+
+**What you see**  
+You’ll find your GitOps ApplicationSet marked **Degraded**, with errors such as:  
+- `unable to checkout git repo … authentication required:`  
+- `Repository not found`  
+- `ApplicationGenerationFromParamsError`
+
+**Why it happens**  
+ArgoCD v2.x doesn’t support ApplicationSets using **project-scoped** repo credentials. If your repository secret includes a `data.project` field, the AppSet controller can’t authenticate and fetch your manifests — so it stays Degraded.
+
+**How to fix it**  
+1. Edit your Git repository Secret in the ArgoCD namespace.  
+2. Remove the `data.project` key (so it isn’t limited to a single ArgoCD project).  
+3. Save and let ArgoCD reconcile. Your ApplicationSet should recover and deploy normally.
