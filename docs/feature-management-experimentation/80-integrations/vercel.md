@@ -41,9 +41,13 @@ To set up the Split SDK in the code of your Vercel project, follow the steps bel
 
 1. Install the required packages by running the `npm install` command.
 
+<ul>
+
 ```bash
 npm install @splitsoftware/splitio-browserjs @splitsoftware/vercel-integration-utils @vercel/edge-config
 ```
+
+</ul>
 
 2. Instantiate the SDK within your Vercel Edge Function or Middleware. The Split SDK client must run in _partial consumer_ mode and be initialized with the Edge Config wrapper. See our [example](https://github.com/splitio/vercel-integration-utils/tree/main/example/pages/api/get-treatment.js) on GitHub. Note that the `core.initializationKey` passed to the `SplitFactory` constructor is your client-side API key for your Split environment. (In the [Split Management Console](https://app.split.io), in your Admin Settings, click on API keys and select the SDK API Keys tab. Find the keys for your Split project and environment, and make sure you choose a client-side API key.)
 

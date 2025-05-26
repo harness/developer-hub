@@ -64,8 +64,8 @@ When configured properly, data begins flowing in Segment as a `track` type with 
     * **Enable track**: When enabled, events captured in Segment is sent to Split. Map your event data using the field mapping below.
         * **eventTypeId**: This field can be customized, but is most likely maps to the event field in the segment track call.
         * **Value**: Optionally, if you want to create a sum or average metric, be sure to send this field.
-    * **Track named pages**: Track events to Split for page method calls that have a name associated with them, e.g., page(‘signup’) translated to view_signup_page.
-    * **Track named screens**: Tracks events to Split for screen method calls that have a name associated with them, e.g., screen(‘signup’) translated to viewed_signup_screen.
+    * **Track named pages**: Track events to Split for page method calls that have a name associated with them, e.g. page(‘signup’) translated to view_signup_page.
+    * **Track named screens**: Tracks events to Split for screen method calls that have a name associated with them, e.g. screen(‘signup’) translated to viewed_signup_screen.
 6. Once you’ve configured the above fields, click **Save**.
 7. Your integration is now configured. Copy the key or click **Enable with Segment**.
 
@@ -95,8 +95,8 @@ When configured properly, data begins flowing in Segment as a `track` type with 
     * **Enable track**: When enabled, events captured in Segment are sent to Split.  Map your event data using the field mapping below.
         * **eventTypeId**: this field can be customized, but is most likely maps to the event field in the segment track call.
         * **Value**: Optionally, if you want to create a sum or average metric, be sure to send this field.
-    * **Track named pages**: Track events to Split for page method calls that have a name associated with them, e.g., page(‘signup’) translated to view_signup_page.
-    * **Track named screens**: Tracks events to Split for screen method calls that have a name associated with them, e.g., screen(‘signup’) translated to viewed_signup_screen.
+    * **Track named pages**: Track events to Split for page method calls that have a name associated with them, e.g. page(‘signup’) translated to view_signup_page.
+    * **Track named screens**: Tracks events to Split for screen method calls that have a name associated with them, e.g. screen(‘signup’) translated to viewed_signup_screen.
 6. Once you’ve configured the above fields, click **Save**.
 7. Your integration is now configured. Copy the webhook URL and secret provided.
 

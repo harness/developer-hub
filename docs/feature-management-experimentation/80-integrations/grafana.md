@@ -22,23 +22,32 @@ The Split audit log webhook is a node.js lambda, which is designed to be deploye
 
 1. Clone the [Split Grafana repository](https://github.com/splitio/split2grafana) in an empty directory.
 2. In the directory, carefully copy your Grafana API key into a file called GRAFANA_API_KEY (I used admin role key).
-3. Copy the host and port of your Grafana server into a file called GRAFANA_URL. 
+3. Copy the host and port of your Grafana server into a file called GRAFANA_URL.
 
-Copy the host and port of your Grafana server into a file called GRAFANA_URL. For example: 
-http://your.grafana.host.or.ip:3000
+   For example: http://your.grafana.host.or.ip:3000
 
-3000 is the default port. Change this to the proper host and port of your Grafana server. The host must be accessible from AWS. Local installs won’t be visible to the integration lambda.
+   The default port is `3000`. Change this to the proper host and port of your Grafana server. The host must be accessible from AWS. Local installs won’t be visible to the integration lambda.
 
-**Note: Be sure you don’t copy or add a trailing slash. If you add an extra space or trailing slash at the end of the line, or empty lines after, the key won’t be recognized and the integration fails to run correctly. In addition, the file names must precisely be the names as shown above, including being all caps.**
+    :::info[Note]
+    Be sure you don’t copy or add a trailing slash. If you add an extra space or trailing slash at the end of the line, or empty lines after, the key won’t be recognized and the integration fails to run correctly. In addition, the file names must precisely be the names as shown above, including being all caps.
+    :::
 
 4. From this directory, use a terminal to do the following.  If npm is not installed, you must install it:
 
+<ul>
+
+```
   > npm install 
   > zip -r grafana.zip *
+```
 
 The grafana.zip now includes the index.js, the Grafana key and url files, and a full node_modules directory.
 
-**Note: You can also "brew install npm" on OSX. Follow the instructions to install npm for other operating systems.**
+:::info[Note]
+You can also "brew install npm" on OSX. Follow the instructions to install npm for other operating systems.
+:::
+
+</ul>
 
 ## Creating an annotation query for tag split
 

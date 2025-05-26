@@ -31,9 +31,14 @@ In Jenkins Plugin Manager page, under Available tab, enter **Split Admin** to fi
    If the Admin API call return code is 429 (throttled), the plugin will sleep for 5 seconds then retry the request, max retried are capped at 10.
 
 4. Plugin use Apache Log4j class for logging. Debug level will log every HTTP request headers and body and response payload returned. To enable Debug logging, create a new logger in **Manage Jenkins->System Log->New Log Recorder**, set the logger class to below, and set the Log level to **ALL**.
+
+<ul>
+
 ```
 io.split.jenkins.plugins
 ```
+
+</ul>
 
 ### Supported Tasks
 

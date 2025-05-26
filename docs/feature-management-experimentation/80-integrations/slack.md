@@ -8,16 +8,20 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020997851-Slack <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-**Note: The following Slack integration is in beta. If you'd like to be included in this, contact [support@split.io](mailto:support@split.io).**
+:::info[Note]
+The following Slack integration is in beta. If you'd like to be included in this, contact [support@split.io](mailto:support@split.io).
+:::
 
 The Slack integration allows teams to stay up to date on changes they care about in Split. By combining Split's rollout capabilities with Slack, you can:
 
 * Keep your team notified about feature flag and segment changes
-* Subscribe to the changes you care about by filtering notifications by Split project, environment, type (e.g., feature flag and segment), and action (e.g., create, update, delete)
+* Subscribe to the changes you care about by filtering notifications by Split project, environment, type (e.g. feature flag and segment), and action (e.g. create, update, delete)
 
 With this integration, as a Slack user, you can subscribe channels to notifications based on filters that they set. Once these filters are set up by that user, any Slack user in that channel can see any event that exists that meets the filter criteria in that channel. In addition, you can see notifications relevant to you, specifically in the Split Slack App on the messages tab.
 
-**Note: If you are having trouble completing the integration, contact [support@split.io](mailto:support@split.io).**
+:::tip
+If you are having trouble completing the integration, contact [support@split.io](mailto:support@split.io).
+:::
 
 ## Setting up in Split
 
@@ -44,7 +48,7 @@ To set up in Slack, do the following:
 
 1. When you open Slack, a welcome message indicating that you successfully installed the Split app on the Slack workspace appears in the App’s home section:
 
-   ![](./static/slack-welcome-message.png)
+   <div style={{maxWidth:700}}> ![](./static/slack-welcome-message.png) </div>
 
 2. Click the **Configure** button. The Configure Split App modal appears.
 
@@ -52,7 +56,7 @@ To set up in Slack, do the following:
 
 3. Enter the Split token that you generated when you set up on the Split side and click the **Submit** button. Slack displays the following:
 
-   ![](./static/slack-notifications.png)
+   <div style={{maxWidth:700}}> ![](./static/slack-notifications.png) </div>
 
 ## Using Split commands
 

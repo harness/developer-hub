@@ -61,7 +61,7 @@ After setting up the Split application, you can set up the integration in Servic
 2. In the ServiceNow application, at the top left of the page, select **All** to access the navigation.
 3. Search for tools and select **Create New**. The Create DevOps tool page appears.
 4. In the tool page, enter the following:
-    * In the Tool name field, enter a human recognizable name (e.g., splitdemotool).
+    * In the Tool name field, enter a human recognizable name (e.g. splitdemotool).
     * In the Tool integration field, enter **Split IO** and select the provided option. 
     * In the Tool URL field, enter **https://api.split.io **.
     * In the Tool username field, optionally enter any username you want.

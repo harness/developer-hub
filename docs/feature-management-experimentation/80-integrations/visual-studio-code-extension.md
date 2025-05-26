@@ -30,7 +30,7 @@ To install the VSCode extension, do the following:
 
 To connect Visual Studio Code to your Split account, do the following:
 
-:::info[Note]
+:::info[Authentication token]
 A Split admin needs to add the VSCode extension into the Split marketplace and generate the token that you need to complete this section. Contact your Split admin for a copy of the token.
 :::
 
@@ -42,10 +42,12 @@ A Split admin needs to add the VSCode extension into the Split marketplace and g
 6. Enter the Split token you copied in the field and click the **Authenticate** button.
 7. Paste the token into the Extension field at the top of VSCode extension. All your feature flags within your Split projects now display within the extension.
 
-**Note: To reconfigure the extension at any time, run the “Split: Authenticate” command from the command palette by using one of the following commands:**
-
+:::tip
+To reconfigure the extension at any time, run the “Split: Authenticate” command from the command palette by using one of the following commands:
 * **For PCs, use ctrl+shift+p**
 * **For Macs, use ⌘+shift+p.**
+
+:::
 
 All your Split projects are now available within VSCode.
 

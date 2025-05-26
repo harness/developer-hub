@@ -14,12 +14,12 @@ Basic code sample to use Split's JavaScript SDK to attach feature flag names and
 
 ### Environment
 
-* Split Javascript SDK 10.9.0
-* SessionCam Web Javascript Snippet
+* Split JavaScript SDK 10.9.0
+* SessionCam Web JavaScript Snippet
 
 ### How to use
 
-* The code below implements both Split and SessionCam's Javascript libraries, assuming both libraries are loaded in the header section
+* The code below implements both Split and SessionCam's JavaScript libraries, assuming both libraries are loaded in the header section
 * The Split SDK is wrapped with the class SplitIO
   * Make sure to update the key and authorizationKeyfields in the factory initialization
 * Split treatments are calculated for a list of feature flag names defined in an array variable splitNames

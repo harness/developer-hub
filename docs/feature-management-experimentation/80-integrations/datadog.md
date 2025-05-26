@@ -49,4 +49,6 @@ This Split integration automatically enriches your RUM data with a feature flag 
 
 To get started, refer to [Getting Started with Feature Flag Data in RUM](https://docs.datadoghq.com/real_user_monitoring/guide/setup-feature-flag-data-collection/?tab=npm#split-integration) to set up data collection for your feature flags with this Split integration and monitor your feature flags to turn them off or roll them back in case of any issues without causing negative user experiences.
 
-**Note: The Using Split with Datadog RUM integration has been tested by Split but is owned and maintained by Datadog. For more information, contact Datadog support.**
+:::info[Note]
+The Using Split with Datadog RUM integration has been tested by Split but is owned and maintained by Datadog. For more information, contact Datadog support.
+:::

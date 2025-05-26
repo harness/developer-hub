@@ -16,8 +16,8 @@ Split impressions describe the treatment that each user receives when a feature 
 
 To connect Heap to Split, you need the following, 
 
-* Split’s Javascript SDK evaluating feature flag treatments' client side
-* Heap’s Web Javascript snippet
+* Split’s JavaScript SDK evaluating feature flag treatments' client side
+* Heap’s Web JavaScript snippet
 
 ## How to use
 
@@ -41,7 +41,7 @@ A prefix of "split." is added to each feature flag name in the below example to 
 
 Click a pageview event and view event properties.
 
-![](./static/heap-event-properties.png)
+<div style={{maxWidth:500}}> ![](./static/heap-event-properties.png) </div>
 
 ### Analyze Heap data by Split treatments 
 

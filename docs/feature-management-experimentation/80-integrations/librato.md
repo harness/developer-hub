@@ -33,19 +33,15 @@ If you have trouble completing the integration, contact us at [support@split.io]
 
 ## In Split
 
-![](./static/librato-split1.png)
+1. Go to **Admin Settings**. click **Integrations** and navigate to the **Marketplace**.
 
-6. Go to **Admin Settings**:
-    1. Click **Integrations**
-    2. Select your workspace, and navigate to the **Marketplace** 
+   ![](./static/librato-split1.png)
 
-     ![](./static/librato-split2.png)
+2. Click **Add** next to **Librato** and select a workspace.
 
-7. Click **Add** next to **Librato**.
+   ![](./static/librato-split2.png)
 
-   ![](./static/librato-split3.png)
-
-8. Paste the **Username** and **API Key** you copied in step 5.
-9. Click **Save**.
+3. Paste the **Username** and **API Key** you copied in step 5.
+4. Click **Save**.
 
 Split notifications should now be flowing into Librato. If you have any issues with this integration, contact [support@split.io](mailto:support@split.io).

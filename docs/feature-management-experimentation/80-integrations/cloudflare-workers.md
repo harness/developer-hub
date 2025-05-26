@@ -12,7 +12,7 @@ Running applications or business logic in a serverless environment has become pr
 
 ## Split’s Cloudflare Workers
 
-Cloudflare Workers is a serverless application platform that runs on Cloudflare’s global cloud. Our JavaScript SDK runs on it by utilizing Cloudflare Workers’s stateful APIs, e.g., [Durable Objects store](https://developers.cloudflare.com/workers/runtime-apis/durable-objects/). This is done using the following three components:
+Cloudflare Workers is a serverless application platform that runs on Cloudflare’s global cloud. Our JavaScript SDK runs on it by utilizing Cloudflare Workers’s stateful APIs, e.g. [Durable Objects store](https://developers.cloudflare.com/workers/runtime-apis/durable-objects/). This is done using the following three components:
 
 * The storage wrapper 
 * The [Split JavaScript Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-javascript-synchronizer-tools)

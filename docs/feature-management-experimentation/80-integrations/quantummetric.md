@@ -18,8 +18,8 @@ Use Quantum Metric’s segment builder to identify sessions with a specific feat
 
 To connect Quantum Metric with Split, you need:
 
-* Quantum Metric API recording Javascript installed
-* Split Javascript SDK 10.15.0 + to be installed
+* Quantum Metric API recording JavaScript installed
+* Split JavaScript SDK 10.15.0 + to be installed
 
 ## How to use
 
@@ -31,7 +31,9 @@ The following sections explain how to install both your Split and your Quantum M
 
 Quantum Metric must provision a *qsm* script for *Split Test* events as follows:
 
-**Note:** This script cannot be configured from the customer’s user interface. It needs to be provisioned by a Quantum Metric CSE.
+:::note
+This script cannot be configured from the customer’s user interface. It needs to be provisioned by a Quantum Metric CSE.
+:::
 
 Quantum Metric injects JavaScript into the customer’s page. The JavaScript listens for API traffic, and the Split bulk impressions endpoint in particular. When the Split SDK calls the bulk endpoint to pass impressions to Split, the Quantum Metric JavaScript inspects the payload and creates a new Split Test event for each impression. Because the Split SDK changed its JSON naming, the technique only works with Split SDK 10.15.0+.
 
@@ -79,7 +81,7 @@ To successfully integrate the two products, you should model your own Split init
 
 Split SDK needs to get the session ID from Quantum Metric. It then must track a new ‘qmreplay’ event to associate the Quantum Metric linkback with the session.
 ```javascript
-	<script type="text/javascript">
+<script type="text/javascript">
 	(function() {
 	    var qtm = document.createElement('script'); qtm.type = 'text/javascript'; qtm.async = 1;
 	    qtm.src = 'https://cdn.quantummetric.com/qscripts/quantum-split.js';

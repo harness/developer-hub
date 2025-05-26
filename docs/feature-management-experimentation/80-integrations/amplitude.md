@@ -38,7 +38,6 @@ Within your Amplitude account, set up Split as a data source. Copy your Amplitud
 
 You can repeat this process depending on how many environments and traffic types you want to configure.
 
-
 ## Sending Split impressions to Amplitude (Alternative)
 
 There are some situations where the recommended approach to send Split impressions to Amplitude is not preferred. One example is when the same impression is expected to be sent frequently. Amplitude bills by event volume so each impression counts against your organization's event quota.
@@ -59,11 +58,13 @@ If you are using an id in Amplitude other than that of a known user, you should 
 
 #### Step 2: Update your code to use the Amplitude Identify API
 
-You have several options to do this. There are interfaces to the identify API in all of the Amplitude SDKs. For example, see [Amplitude's documentation](https://www.docs.developers.amplitude.com/data/sdks/javascript/#set-a-user-property) for the Javascript SDK.
+You have several options to do this. There are interfaces to the identify API in all of the Amplitude SDKs. For example, see [Amplitude's documentation](https://www.docs.developers.amplitude.com/data/sdks/javascript/#set-a-user-property) for the JavaScript SDK.
 
 Below are three examples of using the [HTTP API](https://www.docs.developers.amplitude.com/analytics/apis/identify-api/#keys-for-the-event-argument) to do this. This can be called from any language, frontend or backend.
 
 1. This can be set up as an [impression listener](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator#impression-listener) that accepts the Amplitude API Key, the user ID, the Split feature flag name, and the treatment value. Other than the Amplitude API Key, these are all accessible as properties of the data object passed into the impression listener. `data.impression.keyName` is the name of the user ID being evaluated in the getTreatment call. `data.impression.feature` is the name of the feature flag, which will be used as the property. `data.impression.treatment` is the name of the treatment received. You will want to use an appropriate and easy to understand naming convention for the property, such as keeping the name being identical to the Split feature flag name. If there are only a subset of Split feature flags that you would like to attach as user properties, this could be run outside of the impression listener only for the Split feature flag treatments received.
+
+<ul>
 
 ```javascript
 function amplitudeIdentify(amplitudeApiKey, userId, splitName, treatment) {
@@ -89,9 +90,14 @@ function amplitudeIdentify(amplitudeApiKey, userId, splitName, treatment) {
         .catch(error => console.log('error', error));
 }
 ```
+
+</ul>
+
 2. Running as an impression listener should only be used for calling the identify API with additional properties that are available from the frontend that you need. The next option we will go over is a more robust approach. The code below outlines the creation of a service that can utilize Split's [impressions webhook](https://help.split.io/hc/en-us/articles/360020700232-Webhook-impressions) using a Node.js script.
 
-The piece of Node.js code below requires the express and axios libraries.
+   The piece of Node.js code below requires the express and axios libraries.
+
+<ul>
 
 ```javascript
 const express = require("express");
@@ -150,7 +156,11 @@ app.listen(port, () => {
 });
 ```
 
+</ul>
+
 3. You could also implement this using a serverless function, such as AWS Lambda. This code below can be used as an AWS lambda function. Note that Lambdas are limited to running 15 minutes. Split webhooks run every 10 seconds. Each call of the Identify API takes around 250ms to run when the Lambda is warm. That means that if you have more than ~20,000 Split feature flags evaluated per minute during bursts, the Lambda may time out. Other more sophisticated approaches like queuing using SQS, or falling back to running your own service like the Node.js code above, may be more appropriate.
+
+<ul>
 
 ```javascript
 var axios = require("axios");
@@ -205,6 +215,8 @@ exports.handler = async (impressions) => {
 };
 ```
 
+</ul>
+
 User properties will show up on the User Look-up screen to be used for further analysis and processing in Amplitude. You do not need to pass all of the properties at once. In the examples above, each Split feature flag sends a single property as individual Identify calls, but all properties sent to Amplitude will be associated with the user.
 
 ## Exporting Amplitude cohorts for Split targeting
@@ -213,6 +225,8 @@ With Amplitude’s Split integration, you can export your Amplitude cohorts and 
 
 ## Sending Amplitude events to Split
 
-**Note: This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, contact the [contributor](https://github.com/dbmartin00).**
+:::info[Note]
+This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, contact the [contributor](https://github.com/dbmartin00).
+:::
 
 This integration extracts events from Amplitude via the API, transforms them to the Split event format, and then sends these events to Split via the API. Refer to the [Github repository](https://github.com/dbmartin00/amplitude2split) for instructions on how to install this integration.

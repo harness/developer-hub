@@ -20,7 +20,7 @@ If you have trouble completing the integration, contact us at [support@split.io]
 
 2. Select the **API Keys** option.
 
-   <div style={{maxWidth:300}}> ![](./static/new-relic-step2.png) </div>
+   <div style={{maxWidth:400}}> ![](./static/new-relic-step2.png) </div>
 
 3. Select **Create a key**.
 
@@ -28,7 +28,7 @@ If you have trouble completing the integration, contact us at [support@split.io]
 
 4. Create an **Ingest - Licence** key. 
 
-   <div style={{maxWidth:300}}> ![](./static/new-relic-step4.png) </div>
+   <div style={{maxWidth:400}}> ![](./static/new-relic-step4.png) </div>
 
 5. Ensure you have copied down your Account ID (the number next to "**Account:**") and the key for use in Split.
 

@@ -63,9 +63,13 @@ Once the integration is installed, you can do either of the following:
 
     ![](./static/jira-cloud-connect-a-feature-flag.png)
 
-**Tip:** You can connect multiple flags to an issue and multiple issues to a flag.
+:::tip
+You can connect multiple flags to an issue and multiple issues to a flag.
+:::
 
-**Note: You must select a Split project that has been configured in the Jira integration setup. A Jira instance is 1:1 with a Split account, and the integration can be configured for one or more projects.**
+:::info[Note]
+You must select a Split project that has been configured in the Jira integration setup. A Jira instance is 1:1 with a Split account, and the integration can be configured for one or more projects.
+:::
 
 ## Viewing your connections
  
@@ -87,7 +91,9 @@ Once you’ve connected feature flags to issues, you can do either of the follow
 
   ![](./static/jira-cloud-rollout-details.png)
 
-**Note: Since you can navigate to the feature flag, we no longer send and store all of the changes in Jira.**
+   :::info[Note]
+   Since you can navigate to the feature flag, we no longer send and store all of the changes in Jira.
+   :::
  
 ## Disconnecting an issue
  

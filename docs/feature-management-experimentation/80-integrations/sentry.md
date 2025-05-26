@@ -41,11 +41,11 @@ For each Sentry project that you want to integrate with Split, you will need cop
 
    Accept the Installation:
 
-   ![](./static/sentry-accept-install.png)
+   <div style={{maxWidth:600}}> ![](./static/sentry-accept-install.png) </div>
 
    Copy the Installation ID to paste into Split:
 
-   ![](./static/sentry-installation-id.png)
+   <div style={{maxWidth:600}}> ![](./static/sentry-installation-id.png) </div>
 
 2. Copy your Sentry Organization Name. You can access this by clicking **Settings** in the left nav of your Sentry dashboard then clicking **General Settings** under the Organization section.
 
@@ -195,7 +195,7 @@ Let's walk through what a Sentry integration setup might look like if you're usi
 
 #### 1. Sentry Exception Logs
 
-Below is an example exception that you might log via the Sentry JS SDK
+Below is an example exception that you might log via the Sentry JS SDK.
 
 ```js
 import * as Sentry from '@Sentry/browser';
@@ -225,7 +225,7 @@ Below is a screenshot of how you could then configure your integration in Split'
 
 Since you have multiple traffic types mapped, we will create one track event in Split for each mapping you've set. The events will be very similar except the `trafficTypeName` and `key` will be different based off of your mappings. Below is a JSON representation of the events that would then be logged in Split from the sample exception example above.
 
-Sample Track event for your user traffic type
+Sample Track event for your user traffic type:
 
 ```json
 {

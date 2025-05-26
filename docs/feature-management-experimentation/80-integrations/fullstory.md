@@ -18,8 +18,8 @@ Follow the guide for your type of integration to proceed with installation. Segm
 
 To connect FullStory with Split, you need:
 
-* FullStory API recording Javascript installed
-* Split Javascript SDK 10.12.1 or later installed
+* FullStory API recording JavaScript installed
+* Split JavaScript SDK 10.12.1 or later installed
 * AWS lambda experience recommended
 * Node.js developer experience recommended
 
@@ -37,7 +37,7 @@ The Split + FullStory integration uses out-of-the-box features of both products.
 
 2. Add a custom impression listener to report Split impressions to FullStory’s custom events API. As highlighted in red above, the FullStory custom event API is called for a “split_evaluation” event, passing the entire impression data as properties for that event. The impression data includes the name of the feature flag evaluated and the treatment the user received.
 
-If you’re not familiar with the Split Javascript SDK configuration, visit Split's [Javascript documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) for more information.
+If you’re not familiar with the Split JavaScript SDK configuration, visit Split's [JavaScript documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) for more information.
 
 ### Verify split_evaluation events are arriving in FullStory
 
@@ -45,11 +45,11 @@ To verify events are arriving in FullStory, do the following:
 
 1. On the session playback screen, look for the split_evaluation event.
 
-   <div style={{maxWidth:600}}>![](./static/fullstory-split-evaluation-event.png)</div>
+   <div style={{maxWidth:600}}> ![](./static/fullstory-split-evaluation-event.png) </div>
 
 2. If you have many events, search for split_evaluation using the **Filter events** function.
 
-   <div style={{maxWidth:600}}>![](./static/fullstory-filter-events.png)</div>
+   <div style={{maxWidth:600}}> ![](./static/fullstory-filter-events.png) </div>
 
 ### Create a segment based on a treatment received
 
@@ -57,19 +57,19 @@ Once you have split_evaluation events, create a new FullStory segment that conta
 
 1. From the FullStory home page, click to create a new segment.
 
-   <div style={{maxWidth:300}}>![](./static/fullstory-create-new-segment.png)</div>
+   <div style={{maxWidth:300}}> ![](./static/fullstory-create-new-segment.png) </div>
 
 2. Under API events, click **split_evaluation**.
 
-   <div style={{maxWidth:300}}>![](./static/fullstory-api-events.png)</div>
+   <div style={{maxWidth:300}}> ![](./static/fullstory-api-events.png) </div>
 
 3. Build an Event filter for any feature flag and treatment you’ve integrated.
 
-   <div style={{maxWidth:600}}>![](./static/fullstory-event-filter.png)</div>
+   <div style={{maxWidth:600}}> ![](./static/fullstory-event-filter.png) </div>
 
   In this example, the segment shows sessions where there is a getTreatment call to “multivariant_demo” and the user received “v3” as their treatment.
 
-   <div style={{maxWidth:500}}>![](./static/fullstory-segment.png)</div>
+   <div style={{maxWidth:500}}> ![](./static/fullstory-segment.png) </div>
 
 You can now play back and review specific customer experiences. Every session in this playlist showed v3 of the multivariant_demo feature flag.
 
@@ -87,9 +87,11 @@ This transforms into the corresponding Split event:
 
 <div style={{maxWidth:600}}> ![](./static/fullstory-corresponding-fs-split-event.png) </div>
 
-**Note: If you want a Split value, you must put the value in a split{} section, as shown in the example above.**
+:::info[Note]
+If you want a Split value, you must put the value in a split{} section, as shown in the example above.
+:::
 
-```
+```json
 split: {
   value: 42
 }, // etc.
@@ -103,18 +105,26 @@ To install the FullStory events webhook, do the following:
 
 2. Inside the directory, copy your API keys (carefully) into files with the following names:
    * SPLIT_API_KEY (server-side API key for your desired environment)
-   * FULLSTORY_API_KEY (I used admin)
+   * FULLSTORY_API_KEY (I used admin)<br /><br />
 
-**Important: The files must precisely have these names. An extra space at the end of the line or empty lines after it could cause issues later. **
+   :::important
+   The files must precisely have these names. An extra space at the end of the line or empty lines after it could cause issues later.
+   :::
 
 3. From this same directory:
+
+<ul>
 
 ```
 > npm install 
 > zip -r fullstory.zip *
 ```
 
-**Note: If you have brew installed, you can perform a "brew install npm" on OSX. Follow the instructions to install npm for other operating systems described in [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). The fullstory.zip should include the index.js, the key files, and a full node_modules directory.**
+</ul>
+
+:::info[Brew]
+**If you have brew installed, you can perform a "brew install npm" on OSX. Follow the instructions to install npm for other operating systems described in [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). The fullstory.zip should include the index.js, the key files, and a full node_modules directory.**
+:::
 
 ## Installing the FullStory events webhook
 
@@ -130,7 +140,9 @@ A single node.js lambda does the work for the integration, using only the filesy
 
 5. Use the FullStory webhook test button to make sure you get back a 200 response from your lambda.
 
-**Note: When testing, it can sometimes take 5 to 10 minutes for FS.event calls to propagate to Split. Try reloading your page after a minute to accelerate the event publishing.**
+:::info[Testing]
+**When testing, it can sometimes take 5 to 10 minutes for FS.event calls to propagate to Split. Try reloading your page after a minute to accelerate the event publishing.**
+:::
 
 ## Debugging
 
