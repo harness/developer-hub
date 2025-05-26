@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-05-21T10:00
+date: 2025-05-27T10:00
 sidebar_position: 10
 ---
 
@@ -52,6 +52,15 @@ This update is currently being rolled out to customers, and we expect the rollou
 :::
 
 ## May 2025
+
+### Version 1.81
+
+<!-- 2025-05-26 -->
+
+#### Fixed issues
+
+- Fixed an issue where steps on Kubernetes infrastructure would incorrectly expire after 24 hours, even when a longer timeout was configured. The system now correctly honors extended timeouts as specified in the pipeline stage or step settings. (CI-15102, ZD-72737)
+- Fixed an issue where pod cleanup requests were sent to an incorrect delegate when multiple delegates across clusters shared the same selector tag. This occurred specifically when pipelines were aborted during the init step, preventing Harness from receiving Pod IP information required for capability checks. The fix bypasses the connectivity check when no IP is available and introduces a dry-run pod deletion as a capability check. (CI-17241, ZD-83069)
 
 ### Version 1.80
 
