@@ -8,10 +8,6 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::note Important Note
-  If you are using Kubernetes 1.3x, make sure to specify the storage class in your override file as mentioned in [supported Kubernetes versions](/docs/self-managed-enterprise-edition/smp-supported-platforms#supported-kubernetes-versions).
-:::
-
 This guide offers step-by-step instructions for deploying Harness Self-Managed Platform (SMP) on Amazon EKS using Helm charts. It includes EKS-specific prerequisites, configuration details, and best practices to ensure a secure, reliable, and optimized deployment.
 
 ### Prerequisites
@@ -71,7 +67,15 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
 
 ### Step 2: Create a Cluster
 
-  To provision a new EKS cluster for your SMP environment, use the following `eksctl` configuration YAML. This file sets up a cluster named `smp-aws-cl` in the `us-east-2` region with managed node groups, essential IAM policies, and networking settings required for running Harness Self-Managed Platform. 
+  :::note
+  Before creating the cluster, make sure a VPC and Elastic IPs are available for provisioning the SMP cluster.
+  :::
+
+1. 1. Download the latest Helm chart from the [Harness GitHub Releases page](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true). Under the **Assets** section, locate and download the `harness-<release-version>.tgz` file.
+
+2. Navigate to the extracted path and create a new YAML file using the configuration below. It will create an EKS cluster for your SMP environment. 
+  
+  This configuration sets up a cluster named `<CLUSTER-NAME>` in the `<REGION>` region with managed node groups, essential IAM policies, and networking settings required for running Harness Self-Managed Platform. 
   
   It is pre-configured with defaults suited for sandbox or testing purposes, but you can modify the values (like cluster name, region, tags, and CIDR) as needed.
 
@@ -116,7 +120,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
       instanceSelector: {}
       instanceType: t3.2xlarge
       labels:
-        alpha.eksctl.io/cluster-name: smp-aws-cl # Modify this label to match the kubernetes name
+        alpha.eksctl.io/cluster-name: <CLUSTER-NAME> # Modify this label to match the kubernetes name
         alpha.eksctl.io/nodegroup-name: standard-workers
       maxSize: 9
       minSize: 4
@@ -139,11 +143,11 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
     metadata:
       # Modify these tags/metadata to your needs
       name: smp-aws-cl
-      region: us-east-2
+      region: <REGION>
       # Change these tags to anything that would be helpful for your accounting
       tags:
         cluster: smp-test
-        owner: <your-name>
+        owner: <YOUR-NAME>
         purpose: sandbox-lab
         scope: smp-test
       # Currently this is the latest version of K8S supported by Harness SMP
@@ -162,12 +166,28 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
         gateway: Single
     ```
 
+2. Check your Kubernetes context and ensure it’s set to use your AWS configuration.
+
+    ```bash
+    kubectl config current-context
+    ```
+    If AWS config is not set, run the following command
+
+      ```bash
+      aws eks --region=<YOUR-REGION> update-kubeconfig --cluster=<YOUR-CLUSTER-NAME>
+      ```
+
 ### Step 3: Configure Amazon EBS CSI driver
 
   Currently, `eksctl` does not provide a built-in way to automatically attach the Amazon EBS CSI driver, which is required for provisioning Persistent Volumes (PVs). To ensure your cluster can dynamically create the necessary PVs, follow the steps below to manually set up the EBS CSI driver.
 
+   1. Create a namespace for your deployment.
 
-   1. Create an IAM role for your EKS cluster to enable the use of the EBS CSI driver. You can do this either through the AWS Management Console or by using the `eksctl` command, as shown below.
+      ```bash
+      kubectl create namespace <harness-namespace>
+      ``` 
+
+   2. Create an IAM role for your EKS cluster to enable the use of the EBS CSI driver. You can do this either through the AWS Management Console or by using the `eksctl` command, as shown below.
 
       ```bash
         eksctl create iamserviceaccount \
@@ -180,9 +200,9 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
         --region <your-region>
       ```
 
-   2. Enable the EBS CSI Driver for your EKS cluster.
+   3. Enable the EBS CSI Driver for your EKS cluster.
 
-      2.1. Associate OIDC Provider (if not done yet)
+      3.1. Associate OIDC Provider (if not done yet)
           
           ```bash    
             eksctl utils associate-iam-oidc-provider \
@@ -191,7 +211,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
             --approve
           ```
 
-      2.2 Install EBS CSI Driver:
+      3.2 Install EBS CSI Driver:
 
         ```bash
           eksctl create addon \
@@ -202,7 +222,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
           --region <your-region>
         ```
     
-      2.3 Update Trust Relationship in IAM
+      3.3 Update Trust Relationship in IAM
 
         To enable a Kubernetes service account to assume an IAM role using OIDC authentication, you need to update the IAM role's trust policy, which can be done through the AWS CLI or AWS console by modifying the trust relationship.
 
@@ -225,48 +245,57 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
 
 ### Step 4: Install Self-Managed Enterprise Edition in AWS EKS
 
-1. Create a namespace for your deployment.
+:::note Important Note
+  If you are using Kubernetes 1.3x, make sure to specify the storage class in your override file as mentioned in [supported Kubernetes versions](/docs/self-managed-enterprise-edition/smp-supported-platforms#supported-kubernetes-versions).
+:::
 
-   ```bash
-   kubectl create namespace <harness-namespace>
-   ```
-
-2. Download the latest Helm chart from the [Harness GitHub Releases page](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true). Under the **Assets** section, locate and download the `harness-<release-version>.tgz` file.
-
-3. Open the `harness/values.yaml` file in any editor or create a new override file, and modify the following values.
+1. Open the `harness/values.yaml` file in any editor or create a new override file, and modify the following values.
 
     ```yaml
       global:
+        #Add storageClass if you are using k8s version 1.30 or above
+        storageClass: "gp2"
+        storageClassName: "gp2"        
         ingress:
           enabled: "true"
-    ```
-
-    Search for `loadbalancerURL` in `global` config set to "" 
-
-    ```yaml
-      global:
+          hosts: ""
+          tls:
+            enabled: false
+        
+        defaultbackend:
+        # -- Create will deploy a default backend into your cluster
+          create: true
+        
         loadbalancerURL: ""
     ```
 
-    Search for `hosts` in `global.ingress` set to ""
-
-    ```yaml
-      global:
-        ingress:
-          hosts: ""
-
-    ```
-4. Install the Helm chart.
+2. Install the Helm chart.
 
     ```bash
-      helm install harness harness/ -f <override-file>.yaml -n <harness-namespace>
+      helm install <release-name> <path-to-directory> -f <override-file>.yaml -n <harness-namespace>
+    ```
+
+3. Check and confirm that all PersistentVolumeClaims are attached to the databases in your namespace:
+
+    ```bash
+    kubectl get pvc -n hs-smp-elb
+    ```
+
+4. Attach the PersistentVolumeClaims by patching each with the 'gp2 or gp3' StorageClass in your Harness namespace using the command below
+
+    ```bash
+    kubectl get pvc -n <harness-namespace> -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | \
+    while read pvc; do
+      echo "Patching $pvc with gp2..."
+      kubectl patch pvc "$pvc" -n <harness-namespace> --type='merge' -p '{"spec":{"storageClassName":"gp2"}}'
+    done
     ```
 
 :::info
    AWS EKS can create and attach Elastic Load Balancers as a Kubernetes Resource. For more information, go to [Application load balancing on Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html) in the EKS documentation. 
 :::
 
-5. Save the following reference in `loadbalancer.yaml` file and apply it into your cluster.
+3. Save the following reference in `loadbalancer.yaml` file and apply it into your cluster.
   
      ```yaml
        ---
@@ -564,13 +593,13 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
       kubectl create -f loadbalancer.yaml -n <harness-namespace>
       ```
 
-6. Get the ELB URL.
+4. Get the ELB URL.
 
    ```bash
    kubectl get service -n <harness-namespace>
    ```
 
-7. Make a note of the `EXTERNAL-IP` for the `harness-ingress-controller`. It should look like `<string>.us-east-2.elb.amazonaws.com`.
+5. Make a note of the `EXTERNAL-IP` for the `harness-ingress-controller`. It should look like `<string>.us-east-2.elb.amazonaws.com`.
 
    ```
     NAME                         TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)                                      AGE
@@ -578,31 +607,20 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
     harness-ingress-controller   LoadBalancer   10.100.130.107   af5b132b743fb4XXXXXXX24581119f1b-1454307465.us-east-2.elb.amazonaws.com   10254:32709/TCP,80:32662/TCP,443:32419/TCP   38s
     ```
 
-8. Open the `harness/values.yaml` file in any editor and modify the following values.
-
-    ```yaml
-      global:
-        ingress:
-          enabled: "true" 
-    ```
-
-    Update your `loadbalancerURL` and `hosts` as shown below:
+6. Open the `harness/values.yaml` file in any editor and update your `loadbalancerURL` and `hosts` as shown below:
 
     ```yaml
       global:
         loadbalancerURL: "https://<YOUR_ELB_ADDRESS>"
-    ```
-
-    ```yaml
-      global:
         ingress:
           hosts: "<YOUR_ELB_ADDRESS>"
+          enabled: "true" 
     ```
 
 9. Upgrade the Helm deployment, applying your new ELB as the load balancer to your configuration.
 
    ```bash
-    helm upgrade harness harness/ -f override-demo.yaml -n <harness-namespace>
+    helm upgrade <release-name> <path-to-directory>/ -f override-demo.yaml -n <harness-namespace>
    ```
 
 10. Navigate to the sign up UI at `https://<YOUR_ELB_ADDRESS>/auth/#/signup` to create your admin user.
