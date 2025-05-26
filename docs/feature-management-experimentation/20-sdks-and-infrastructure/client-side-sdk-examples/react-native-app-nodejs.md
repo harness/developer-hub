@@ -5,7 +5,7 @@ sidebar_position: 4
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360043632911-React-Native-App-using-Split-NodeJS-SDK-example </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360043632911-React-Native-App-using-Split-NodeJS-SDK-example </button>
 </p>
 
 Example: Basic example for React Native app project using JavaScript SDK 

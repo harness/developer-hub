@@ -5,7 +5,7 @@ sidebar_position: 2
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025281872-Moving-Feature-Flags-to-a-Service </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025281872-Moving-Feature-Flags-to-a-Service </button>
 </p>
 
 

@@ -5,7 +5,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360038143771-SDK-versioning-policy, www.split.io link:  https://www.split.io/blog/serverless-applications-powered-split-feature-flags/  <br /> ✘ images hosted on www.split.io <br /> ✘ links to www.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360038143771-SDK-versioning-policy, www.split.io link:  https://www.split.io/blog/serverless-applications-powered-split-feature-flags/  <br /> ✘ images hosted on www.split.io <br /> ✘ links to www.split.io </button>
 </p>
 
 

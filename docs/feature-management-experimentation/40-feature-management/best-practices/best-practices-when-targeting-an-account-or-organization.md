@@ -7,7 +7,7 @@ sidebar_position: 4
 import Link from "@docusaurus/Link";
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360029718252-Best-practices-when-targeting-an-account-or-organization </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360029718252-Best-practices-when-targeting-an-account-or-organization </button>
 </p>
 
 Traffic types that target using a key for accounts or organizations (or schools or hospitals or...) as opposed to individual users are most often based on managing entitlements or for B2B applications.  Of course, you can also target based on a department, plant, location or any level of granularity for which you have an associated key.  We'll use 'account' as a proxy for all of the above.

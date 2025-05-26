@@ -4,7 +4,7 @@ sidebar_label: PHP Thin Client SDK
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/18305128673933-PHP-Thin-Client-SDK </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/18305128673933-PHP-Thin-Client-SDK </button>
 </p>
 
 import Tabs from '@theme/Tabs';

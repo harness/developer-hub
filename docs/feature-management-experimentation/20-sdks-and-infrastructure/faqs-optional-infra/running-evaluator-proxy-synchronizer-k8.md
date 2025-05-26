@@ -5,7 +5,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/17239031215629-Running-Split-Evaluator-Split-Proxy-or-Split-Synchronizer-with-Kubernetes </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/17239031215629-Running-Split-Evaluator-Split-Proxy-or-Split-Synchronizer-with-Kubernetes </button>
 </p>
 
 Harness FME provides three containerized applications that can be run on your own infrastructure. These apps can handle specific use cases for feature flagging and experimentation with our SDKs and APIs.

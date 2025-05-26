@@ -5,7 +5,7 @@ sidebar_position: 3
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025918571-Troubleshooting </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360025918571-Troubleshooting </button>
 </p>
 
 When you integrate FME SDKs, consider the following to make sure that you have the correct set up depending on your use case, customers, security considerations, and architecture.

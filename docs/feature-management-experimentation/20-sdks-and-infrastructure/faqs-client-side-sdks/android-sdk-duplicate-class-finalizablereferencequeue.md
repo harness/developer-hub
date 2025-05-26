@@ -5,7 +5,7 @@ sidebar_position: 15
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360043275811-Android-SDK-Duplicate-class-FinalizableReferenceQueue-DirectLoader-in-modules-checkstyle-5-3-all-jar-and-guava-18-0-jars </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360043275811-Android-SDK-Duplicate-class-FinalizableReferenceQueue-DirectLoader-in-modules-checkstyle-5-3-all-jar-and-guava-18-0-jars </button>
 </p>
 
 ## Issue

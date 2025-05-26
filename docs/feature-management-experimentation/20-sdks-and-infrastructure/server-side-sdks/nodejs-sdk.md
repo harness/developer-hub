@@ -4,7 +4,7 @@ sidebar_label: Node.js SDK
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK </button>
 </p>
 
 import Tabs from '@theme/Tabs';

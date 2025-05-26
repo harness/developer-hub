@@ -6,7 +6,7 @@ sidebar_position: 3
 
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360018343391-Split-Synchronizer-runbook <br /> ✘ image still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360018343391-Split-Synchronizer-runbook <br /> ✘ image still hosted on help.split.io </button>
 </p>
 
 This article includes best practices for running a Split Synchronizer v5.0.0. By default, Split’s SDKs keep segment and feature flag data synchronized as users navigate across disparate systems, treatments and conditions. However, some languages don’t have a native capability to keep a shared local cache of this data to properly serve treatments.

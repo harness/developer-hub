@@ -5,7 +5,7 @@ sidebar_position: 12
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360015543171-Node-js-with-React-Redux-Project-using-Split-JavaScript-SDK-example </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360015543171-Node-js-with-React-Redux-Project-using-Split-JavaScript-SDK-example </button>
 </p>
 
 Example: Basic Code to use JavaScript SDK 10.3.3

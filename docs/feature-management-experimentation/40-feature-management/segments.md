@@ -6,7 +6,7 @@ sidebar_position: 6
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment </button>
 </p>
 
 Segments are lists of user IDs that can you can create and share across your feature flags in an environment. You can segment your customer base and target these segments in your release process.

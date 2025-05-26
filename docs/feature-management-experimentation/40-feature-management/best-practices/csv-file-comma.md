@@ -5,7 +5,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360042835732-How-to-upload-CSV-file-that-contain-IDs-with-comma-character-to-new-segment </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360042835732-How-to-upload-CSV-file-that-contain-IDs-with-comma-character-to-new-segment </button>
 </p>
 
 ### Question

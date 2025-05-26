@@ -5,7 +5,7 @@ sidebar_position: 3
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/6115354360077-NodeJS-SDK-Using-getTreatment-in-localhost-mode-does-not-work-with-then-and-catch-blocks </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/6115354360077-NodeJS-SDK-Using-getTreatment-in-localhost-mode-does-not-work-with-then-and-catch-blocks </button>
 </p>
 
 ## Issue

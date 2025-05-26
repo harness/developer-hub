@@ -5,7 +5,7 @@ sidebar_position: 2
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360050549072-Synchronizer-returns-500-HTTP-error-when-used-in-proxy-mode </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360050549072-Synchronizer-returns-500-HTTP-error-when-used-in-proxy-mode </button>
 </p>
 
 ## Issue

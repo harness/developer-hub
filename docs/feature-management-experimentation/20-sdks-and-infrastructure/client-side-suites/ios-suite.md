@@ -4,7 +4,7 @@ sidebar_label: iOS Suite
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite </button>
 </p>
 
 This guide provides detailed information about our iOS Suite, an SDK designed to leverage the full power of FME. The iOS Suite is built on top of the [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk) and the [iOS RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent), offering a unified solution, optimized for iOS development.

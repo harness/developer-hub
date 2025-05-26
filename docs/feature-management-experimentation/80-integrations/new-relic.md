@@ -5,7 +5,7 @@ description: ""
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020695432-New-Relic </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020695432-New-Relic </button>
 </p>
 
 New Relic provides real-time application performance management. Integrate Split data into New Relic to monitor and measure the performance impact of Split changes.

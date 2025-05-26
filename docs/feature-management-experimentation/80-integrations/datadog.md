@@ -5,7 +5,7 @@ description: ""
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4822553169933-Datadog </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4822553169933-Datadog </button>
 </p>
 
 Datadog is a cloud-hosted monitoring and analytics platform for development and operations teams. Integrate Split data into Datadog to monitor and measure the performance impact of Split changes. If you are having trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).

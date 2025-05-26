@@ -5,7 +5,7 @@ sidebar_position: 17
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360007501871-Ruby-Why-do-CLOSE-WAIT-TCP-connections-in-Puma-not-go-down-as-expected </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360007501871-Ruby-Why-do-CLOSE-WAIT-TCP-connections-in-Puma-not-go-down-as-expected </button>
 </p>
 
 

@@ -5,7 +5,7 @@ sidebar_position: 3
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360048788451-How-to-inject-a-certificate-into-Synchronizer-Docker-image </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360048788451-How-to-inject-a-certificate-into-Synchronizer-Docker-image </button>
 </p>
 
 ## Question
