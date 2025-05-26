@@ -163,7 +163,7 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/softwareSupplyChainAssuranceData.tsx @sunilgupta-harness @tejakummarikuntla @pranay-harness @lavakush07
 
 # IACM Docs
-/docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @scottyw-harness @nassergonzalez @Rohit-Kaliki
+/docs/infra-as-code-management/ @RickCraig @richardblack-Harness @allofthesepeople @nassergonzalez @Rohit-Kaliki
 /release-notes/infrastructure-as-code-management.md @RickCraig @richardblack-Harness @Rohit-Kaliki
 /src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
 /src/components/Docs/data/iacmData.ts @RickCraig @richardblack-Harness @Rohit-Kaliki
@@ -199,8 +199,8 @@ static/  @rohanmaharjan100 @wei-harness
 /src/components/Docs/data/cloudDevelopmentEnvironmentData.ts @manishas @khushisharmaharness
 
 # IR Docs
-/docs/incident-response/ @ryantaylor16 @Kmonkeyjam @vasundharashukla
-/release-notes/incident-response @ryantaylor16 @Kmonkeyjam @vasundharashukla
+/docs/incident-response/ @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
+/release-notes/incident-response @ryantaylor16 @Kmonkeyjam @Vasundhara-Shukla
 
 # AI QA Assistant Docs
 /docs/ai-qa-assistant/ 
@@ -229,4 +229,4 @@ static/  @rohanmaharjan100 @wei-harness
 /kb/database-devops/ @stephenatwell @HarnessTheChaos @archit-harness @anshul-harness @ankittiwari-harness
 
 #Reference Architectures
-/kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness
+/kb/reference-architectures @RajiKoppala @rssnyder @suranc @venkat65-harness @brandon-harness @goodrum-harness
