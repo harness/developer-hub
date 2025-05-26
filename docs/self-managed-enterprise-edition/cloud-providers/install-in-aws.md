@@ -71,102 +71,102 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
   Before creating the cluster, make sure a VPC and Elastic IPs are available for provisioning the SMP cluster.
   :::
 
-1. 1. Download the latest Helm chart from the [Harness GitHub Releases page](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true). Under the **Assets** section, locate and download the `harness-<release-version>.tgz` file.
+1. Download the latest Helm chart from the [Harness GitHub Releases page](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true). Under the **Assets** section, locate and download the `harness-<release-version>.tgz` file.
 
 2. Navigate to the extracted path and create a new YAML file using the configuration below. It will create an EKS cluster for your SMP environment. 
   
-  This configuration sets up a cluster named `<CLUSTER-NAME>` in the `<REGION>` region with managed node groups, essential IAM policies, and networking settings required for running Harness Self-Managed Platform. 
-  
-  It is pre-configured with defaults suited for sandbox or testing purposes, but you can modify the values (like cluster name, region, tags, and CIDR) as needed.
+    This configuration sets up a cluster named `<CLUSTER-NAME>` in the `<REGION>` region with managed node groups, essential IAM policies, and networking settings required for running Harness Self-Managed Platform. 
+    
+    It is pre-configured with defaults suited for sandbox or testing purposes, but you can modify the values (like cluster name, region, tags, and CIDR) as needed.
 
-    ```yaml
-    accessConfig:
-      authenticationMode: API_AND_CONFIG_MAP
-    apiVersion: eksctl.io/v1alpha5
-     # Modify these to the region of interest
-     # Might need to modify again if your eksctl command says an AZ is unavailable for EKS nodes
-    availabilityZones:
-    - us-east-2a
-    - us-east-2b
-    - us-east-2c
-    cloudWatch:
-      clusterLogging: {}
-    iam:
-      vpcResourceControllerPolicy: true
-      withOIDC: true
-    kind: ClusterConfig
-    kubernetesNetworkConfig:
-      ipFamily: IPv4
-    managedNodeGroups:
-    - amiFamily: AmazonLinux2
-      desiredCapacity: 7
-      disableIMDSv1: true
-      disablePodIMDS: false
+      ```yaml
+      accessConfig:
+        authenticationMode: API_AND_CONFIG_MAP
+      apiVersion: eksctl.io/v1alpha5
+      # Modify these to the region of interest
+      # Might need to modify again if your eksctl command says an AZ is unavailable for EKS nodes
+      availabilityZones:
+      - us-east-2a
+      - us-east-2b
+      - us-east-2c
+      cloudWatch:
+        clusterLogging: {}
       iam:
-        withAddonPolicies:
-          albIngress: true
-          appMesh: false
-          appMeshPreview: false
-          autoScaler: true
-          awsLoadBalancerController: true
-          certManager: false
-          cloudWatch: false
-          ebs: true
-          efs: false
-          externalDNS: false
-          fsx: false
-          imageBuilder: false
-          xRay: false
-      instanceSelector: {}
-      instanceType: t3.2xlarge
-      labels:
-        alpha.eksctl.io/cluster-name: <CLUSTER-NAME> # Modify this label to match the kubernetes name
-        alpha.eksctl.io/nodegroup-name: standard-workers
-      maxSize: 9
-      minSize: 4
-      name: standard-workers
-      privateNetworking: false
-      releaseVersion: ""
-      securityGroups:
-        withLocal: null
-        withShared: null
-      ssh:
-        allow: false
-        publicKeyPath: ""
-      tags:
-        alpha.eksctl.io/nodegroup-name: standard-workers
-        alpha.eksctl.io/nodegroup-type: managed
-      volumeIOPS: 3000
-      volumeSize: 80
-      volumeThroughput: 125
-      volumeType: gp3
-    metadata:
-      # Modify these tags/metadata to your needs
-      name: smp-aws-cl
-      region: <REGION>
-      # Change these tags to anything that would be helpful for your accounting
-      tags:
-        cluster: smp-test
-        owner: <YOUR-NAME>
-        purpose: sandbox-lab
-        scope: smp-test
-      # Currently this is the latest version of K8S supported by Harness SMP
-      version: "1.31"
-    privateCluster:
-      enabled: false
-      skipEndpointCreation: false
-    vpc:
-      autoAllocateIPv6: false
-      cidr: <YOUR-CIDR> # for example, 192.168.0.0/16
-      clusterEndpoints:
-        privateAccess: false
-        publicAccess: true
-      manageSharedNodeSecurityGroupRules: true
-      nat:
-        gateway: Single
-    ```
+        vpcResourceControllerPolicy: true
+        withOIDC: true
+      kind: ClusterConfig
+      kubernetesNetworkConfig:
+        ipFamily: IPv4
+      managedNodeGroups:
+      - amiFamily: AmazonLinux2
+        desiredCapacity: 7
+        disableIMDSv1: true
+        disablePodIMDS: false
+        iam:
+          withAddonPolicies:
+            albIngress: true
+            appMesh: false
+            appMeshPreview: false
+            autoScaler: true
+            awsLoadBalancerController: true
+            certManager: false
+            cloudWatch: false
+            ebs: true
+            efs: false
+            externalDNS: false
+            fsx: false
+            imageBuilder: false
+            xRay: false
+        instanceSelector: {}
+        instanceType: t3.2xlarge
+        labels:
+          alpha.eksctl.io/cluster-name: <CLUSTER-NAME> # Modify this label to match the kubernetes name
+          alpha.eksctl.io/nodegroup-name: standard-workers
+        maxSize: 9
+        minSize: 4
+        name: standard-workers
+        privateNetworking: false
+        releaseVersion: ""
+        securityGroups:
+          withLocal: null
+          withShared: null
+        ssh:
+          allow: false
+          publicKeyPath: ""
+        tags:
+          alpha.eksctl.io/nodegroup-name: standard-workers
+          alpha.eksctl.io/nodegroup-type: managed
+        volumeIOPS: 3000
+        volumeSize: 80
+        volumeThroughput: 125
+        volumeType: gp3
+      metadata:
+        # Modify these tags/metadata to your needs
+        name: smp-aws-cl
+        region: <REGION>
+        # Change these tags to anything that would be helpful for your accounting
+        tags:
+          cluster: smp-test
+          owner: <YOUR-NAME>
+          purpose: sandbox-lab
+          scope: smp-test
+        # Currently this is the latest version of K8S supported by Harness SMP
+        version: "1.31"
+      privateCluster:
+        enabled: false
+        skipEndpointCreation: false
+      vpc:
+        autoAllocateIPv6: false
+        cidr: <YOUR-CIDR> # for example, 192.168.0.0/16
+        clusterEndpoints:
+          privateAccess: false
+          publicAccess: true
+        manageSharedNodeSecurityGroupRules: true
+        nat:
+          gateway: Single
+      ```
 
-2. Check your Kubernetes context and ensure it’s set to use your AWS configuration.
+3. Check your Kubernetes context and ensure it’s set to use your AWS configuration.
 
     ```bash
     kubectl config current-context
@@ -295,7 +295,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
    AWS EKS can create and attach Elastic Load Balancers as a Kubernetes Resource. For more information, go to [Application load balancing on Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html) in the EKS documentation. 
 :::
 
-3. Save the following reference in `loadbalancer.yaml` file and apply it into your cluster.
+5. Save the following reference in `loadbalancer.yaml` file and apply it into your cluster.
   
      ```yaml
        ---
@@ -593,13 +593,13 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
       kubectl create -f loadbalancer.yaml -n <harness-namespace>
       ```
 
-4. Get the ELB URL.
+6. Get the ELB URL.
 
    ```bash
    kubectl get service -n <harness-namespace>
    ```
 
-5. Make a note of the `EXTERNAL-IP` for the `harness-ingress-controller`. It should look like `<string>.us-east-2.elb.amazonaws.com`.
+7. Make a note of the `EXTERNAL-IP` for the `harness-ingress-controller`. It should look like `<string>.us-east-2.elb.amazonaws.com`.
 
    ```
     NAME                         TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)                                      AGE
@@ -607,7 +607,7 @@ This guide offers step-by-step instructions for deploying Harness Self-Managed P
     harness-ingress-controller   LoadBalancer   10.100.130.107   af5b132b743fb4XXXXXXX24581119f1b-1454307465.us-east-2.elb.amazonaws.com   10254:32709/TCP,80:32662/TCP,443:32419/TCP   38s
     ```
 
-6. Open the `harness/values.yaml` file in any editor and update your `loadbalancerURL` and `hosts` as shown below:
+8. Open the `harness/values.yaml` file in any editor and update your `loadbalancerURL` and `hosts` as shown below:
 
     ```yaml
       global:
