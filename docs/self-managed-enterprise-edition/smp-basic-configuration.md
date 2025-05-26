@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 Harness Self-Managed Enterprise Edition (SMP) gives organizations complete control over their software delivery infrastructure. This guide walks you through the setup process, including enabling Resource Profiles and Modules, along with essential configuration steps.
 
-SMP is deployed using Helm charts, offering flexibility through YAML override files. Here, you'll find a basic configuration to get you up and running quickly.
+SMP is deployed using Helm charts, with customizable options through YAML override files to help you get started quickly.
 
 ## Prerequisites
 
@@ -67,7 +67,7 @@ For obtaining a license, please contact [Harness Support](mailto:support@harness
 5. Install the chart.
 
     :::tip
-      If you're installing SMP for the first time, we recommend using the `override-small.yaml` file, which is optimized for minimal resource requirements to help you get started. You can also learn more about [resource profiles here](#resource-profiles).
+    If you're installing SMP for the first time, we recommend using the `override-small.yaml` file, which is optimized for minimal resource requirements to help you get started. You can also learn more about [resource profiles here](#resource-profiles).
     :::
 
     ```bash
