@@ -17,6 +17,12 @@ The AI Reliability Engineer feature enhances your chaos engineering capabilities
 - **AI Pipeline Generation**: Create chaos pipelines with AI assistance, including Kubernetes rollout deployments and pod-focused tests
 - **Continuous Learning**: AI continuously improves recommendations based on your environment and experiment results
 
+## Interactive Setup Guide
+
+Follow along with this interactive guide to enable and configure AI Reliability Engineer:
+
+<DocVideo src="https://app.tango.us/app/embed/9f4cb748-7bcd-46e9-b4f0-e7757cd90c65?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Enable AI Reliability Engineer in Harness" />
+
 ## Getting Started
 
 ### 1. Enable the Feature Flag
