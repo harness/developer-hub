@@ -35,33 +35,25 @@ For each Sentry project that you want to integrate with Split, you will need cop
 
 1. Install the Split Integration by navigating to Organization Settings > Integrations and clicking "Install" on that page. Accept and Install the integration and make sure to copy down the Installation ID that then gets shown.
 
-Select the Split Integration:
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/360041487792/split_integration_in_sentry.png" alt="split_integration_in_sentry.png" />
-  </p>
+   Select the Split Integration:
 
-Accepting the Installation:
-   <p>
-     <img src="https://help.split.io/hc/article_attachments/360042055291" alt="sentry_accept_install.png" />
-   </p>
+   ![](./static/sentry-split-integration.png)
 
-Copy the Installation ID to paste into Split:
+   Accept the Installation:
 
-   <p>
-     <img src="https://help.split.io/hc/article_attachments/360042055311/sentry_installation_id.png" alt="sentry_installation_id.png" />
-   </p>
+   ![](./static/sentry-accept-install.png)
+
+   Copy the Installation ID to paste into Split:
+
+   ![](./static/sentry-installation-id.png)
 
 2. Copy your Sentry Organization Name. You can access this by clicking **Settings** in the left nav of your Sentry dashboard then clicking **General Settings** under the Organization section.
 
-    <p>
-      <img src="https://help.split.io/hc/article_attachments/360031986191/Sentry_Org_Slug.png" alt="Sentry_Org_Slug.png" />
-    </p>
+   ![](./static/sentry-org-slug.png)
 
 3. Copy your Sentry Project Slug. You can access this by clicking **Settings** in the left nav of your Sentry dashboard, then click **Projects** under the Organization section. Select your desired project from the list there and you can then grab the Project Slug from the **General Settings** section.
 
-    <p>
-      <img src="https://help.split.io/hc/article_attachments/360031994772/Sentry_Project_Slug.png" alt="Sentry_Project_Slug.png" />
-    </p>
+   ![](./static/sentry-project-slug.png)
 
 ### In Split
 
@@ -69,48 +61,39 @@ Copy the Installation ID to paste into Split:
 2. Click **Integrations** and navigate to the Marketplace tab.
 3. Find Sentry in the integration list, click **Add** and select the Split project for which you would like to configure the integration.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/16367533955469" alt="sentry.png" />
-</p>
+   ![](./static/sentry-splitadmin.png)
 
 4. Configure the Sentry integration as follows:
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/16367655118477" alt="sentry-integration.png" />
-</p>
+   ![](./static/sentry-integration.png)
 
    * **Map Environments**. Select how exceptions from your environment(s) in Sentry should flow into your Split environment(s). You can create a mapping for each environment you have in the Split project you're configuring this integration for. Use the '+' and '-' buttons to configure as many mappings as you want.
 
-The left side of the mappings are text fields where you should enter the exact names of your environments as you use them in your Sentry implementation when you log it in your code.
+      The left side of the mappings are text fields where you should enter the exact names of your environments as you use them in your Sentry implementation when you log it in your code.
 
-For example, assume you have the following Sentry configuration within your application:
+      For example, assume you have the following Sentry configuration within your application:
 
-```javascript
-import * as Sentry from '@sentry/browser';
-Sentry.init({
-  environment: 'staging',
-})
-```
+      <pre>import * as Sentry from '@sentry/browser';<br />Sentry.init(\{<br />  environment: 'staging',<br />\})</pre>
 
-Since the `environment` property is set to "staging", you would type "staging" into Split
+        Since the `environment` property is set to "staging", you would type "staging" into Split
 
-The right side of the mapping(s) are menu lists of all the environments in your project in Split. Select the Split environment(s) that you want to map to each Sentry environment. 
+        The right side of the mapping(s) are menu lists of all the environments in your project in Split. Select the Split environment(s) that you want to map to each Sentry environment. 
 
-  * **Map Identities**. Determine how exceptions from your Project in Sentry should be mapped to different Split traffic types. You can create a mapping for each traffic type you have in the Split project you're configuring this integration for. Use the '+' and '-' buttons to configure as many mappings as you want. 
+    * **Map Identities**. Determine how exceptions from your Project in Sentry should be mapped to different Split traffic types. You can create a mapping for each traffic type you have in the Split project you're configuring this integration for. Use the '+' and '-' buttons to configure as many mappings as you want. 
 
-The left side of the mapping(s) are text fields where you should enter in the exact key and path in your Sentry exceptions for your keys as you use them in your [Sentry implementation](https://docs.sentry.io/platforms/javascript/enriching-events/identify-user/) when you log it in your code. For example, if you had used the exact syntax shown in the linked Sentry article in your code, you would want to type "data.erroruser.id" into this field in Split. For more context, take a look through the example data mappings below as well as Sentry's example webhook errors [here](https://docs.sentry.io/workflow/integrations/integration-platform/webhooks/#error).
+      The left side of the mapping(s) are text fields where you should enter in the exact key and path in your Sentry exceptions for your keys as you use them in your [Sentry implementation](https://docs.sentry.io/platforms/javascript/enriching-events/identify-user/) when you log it in your code. For example, if you had used the exact syntax shown in the linked Sentry article in your code, you would want to type "data.erroruser.id" into this field in Split. For more context, take a look through the example data mappings below as well as Sentry's example webhook errors [here](https://docs.sentry.io/workflow/integrations/integration-platform/webhooks/#error).
 
-The right side of the mapping(s) are drop down fields of all the traffic types in your project in Split. Select the Split traffic type(s) that you want to map to each Sentry identity. 
+      The right side of the mapping(s) are drop down fields of all the traffic types in your project in Split. Select the Split traffic type(s) that you want to map to each Sentry identity. 
 
-   * **Sentry Installation ID**. Paste the Installation ID here that you copied from above in Sentry's pop up modal.
+      * **Sentry Installation ID**. Paste the Installation ID here that you copied from above in Sentry's pop up modal.
 
-   * **Sentry Organization**. Paste the Organization name here that you copied from above in Sentry.
+      * **Sentry Organization**. Paste the Organization name here that you copied from above in Sentry.
 
-   * **Sentry Project Slug**. Paste the Project Slug here that you copied from above in Sentry.
+      * **Sentry Project Slug**. Paste the Project Slug here that you copied from above in Sentry.
 
-Once you've configured the above fields, click **Save**. Split will then create a Service Hook for you on your Sentry project. At this point, your integration is now configured. Exceptions should start flowing in as track events and you will be able to define metrics as you need!
+    * **Capture Culprit as separate Event**. If you have have specific Sentry Issues that come up consistently and want to be able to create metrics based on a specifc Sentry Issue - select this checkbox to capture an extra event for each exception sent from Sentry.
 
-**Capture Culprit as separate Event**. If you have have specific Sentry Issues that come up consistently and want to be able to create metrics based on a specifc Sentry Issue - select this checkbox to capture an extra event for each exception sent from Sentry.    
+    Once you've configured the above fields, click **Save**. Split will then create a Service Hook for you on your Sentry project. At this point, your integration is now configured. Exceptions should start flowing in as track events and you will be able to define metrics as you need!
 
 ## Example data mappings
 
@@ -166,9 +149,7 @@ Sentry.captureException(x);
 
 Below is a screenshot of how you could then configure your integration in Split's dashboard.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/16368425755789" alt="sentry-integration-example.png" />
-</p>
+![](./static/sentry-integration-example-setup.png)
 
 #### 3. Split Track Events
 
@@ -238,9 +219,7 @@ Sentry.captureException(x);
 
 Below is a screenshot of how you could then configure your integration in Split's dashboard.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/16368425755789" alt="sentry-integration-example.png" />
-</p>
+![](./static/sentry-integration-example-setup.png)
 
 #### 3. Split Track Events
 

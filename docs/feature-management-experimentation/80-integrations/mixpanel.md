@@ -51,9 +51,7 @@ Note that AWS Lambda functions ought to be installed with a POST method on the A
 
 Use the Mixpanel LiveView to verify that your Split events are arriving as expected.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360060465652/split_mixpanel.png" alt="split_mixpanel.png" />
-</p>
+![](./static/mixpanel.png)
 
 The distinct_id is the Split impression's key - the identifier with which getTreatment was evaluated. If Mixpanel has more events with the same distinct_id, you will be able to join against that data and use Split impressions to further understand your customer behavior by building cohorts.
 

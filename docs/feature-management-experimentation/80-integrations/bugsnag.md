@@ -17,9 +17,7 @@ The Bugsnag community integration with Split lets you identify which feature fla
 **Correlate user impact with feature releases.** Once you configure Split with Bugsnag, you can set up alerts in Bugsnag to monitor how your feature flags and experiments are influencing user behavior in your application, allowing you to decide whether to roll out or roll back features in Split. 
 **Gain actionable insights.** Use Bugsnag’s Feature Dashboard to determine if unusual error activity in the application is connected to a feature flag. You can isolate errors that occur when a feature flag is enabled, so you can see what’s happening and troubleshoot your errors. Log into Split to adjust the feature flag definition.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/5709949405965/bugsnag-error.png" alt="bugsnag-error.png" />
-</p>
+![BugSnag Error](./static/bugsnag-error.png)
 
 ## Supported SDKs
 

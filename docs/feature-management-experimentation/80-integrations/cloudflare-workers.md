@@ -1,6 +1,6 @@
 ---
-title: Cloudflare Workders
-sidebar_label: Cloudflare Workders
+title: Cloudflare Workers
+sidebar_label: Cloudflare Workers
 description: ""
 ---
 
@@ -26,9 +26,7 @@ In regards to tracked events and impressions data, in _partial consumer_ mode, t
 
 The following data flow diagram shows an overall architecture of how the different components are orchestrated in the Cloudflare Workers serverless environment:
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/4601174766989/cloudflare-worker.png" alt="cloudflare-worker.png" />
-</p>
+![Cloudflare Workers data flow diagram](./static/cloudflare-workers.png)
 
 ## Getting started 
 

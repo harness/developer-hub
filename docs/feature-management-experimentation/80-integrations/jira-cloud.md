@@ -30,9 +30,7 @@ To set up in Split, do the following:
 
 5. Click **copy** to copy the Split token to the clipboard. You can now use this token to configure the Jira Cloud.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360092262211" alt="jira_cloud_in_split.png" width="607" height="268" />
-</p>
+   ![](./static/jira-cloud-in-split.png)
 
 **Note: If your Split projects have set [project view permissions](https://help.split.io/hc/en-us/articles/12621628930445-Project-view-permissions), ensure that the projects you want to use with this integration grant access to the Admin API Key that you just generated in this section.**
 
@@ -46,9 +44,7 @@ To set up in Jira, do the following:
 
 3. Enter the token you copied and click **Save**.
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/360092262251" alt="Jira_configure_integration.png" width="638" />
-  </p>
+   ![](./static/jira-cloud-configure-integration.png)
 
 With the app configured, you can connect Split feature flags to Jira issues.
 
@@ -60,16 +56,12 @@ Once the integration is installed, you can do either of the following:
 
 * **From Jira:** In the right hand column of an issue, click **More fields** to expand the section and then **Releases +**. When you click the plus sign, you can either create a feature flag or connect to an existing flag.
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/4402634745869" alt="jira_feature_flag.png" width="290" />
-  </p>
+   <div style={{maxWidth:300}}> ![](./static/jira-cloud-feature-flag.png) </div>
 
   * Selecting Create feature flag takes you to your Split account and the standard feature flag creation dialog opens, with the current Jira ticket entered. 
   * Selecting Connect feature flag takes you to a new dialog box that allows you to choose a feature flag.
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/31167782949901" alt="jira connect split.png" />
-  </p>
+    ![](./static/jira-cloud-connect-a-feature-flag.png)
 
 **Tip:** You can connect multiple flags to an issue and multiple issues to a flag.
 
@@ -85,21 +77,15 @@ Once you’ve connected feature flags to issues, you can do either of the follow
  
   If you have multiple flags, hovering over the status indicator shows the status of all flags. If you have only one flag, hovering over the status displays information about the rollout plan. 
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/4402634550669" alt="multiple flags.png" />
-  </p>
+  ![](./static/jira-cloud-multiple-flags.png)
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/4402634551437" alt="one flag.png" />
-  </p>
+  ![](./static/jira-cloud-one-flag.png)
 
   If you click on the flag name or the text telling you how many flags there are, a dialog box opens with a link to the flag, the primary environment, the status of each flag, and the last time the flag was saved.
  
   For Rollout details, if you only use the Default rule, it shows you the percentage that is allocated to the same treatment you chose for the Default treatment. Otherwise, it shows you the number of rules that you have on the flag. 
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/4402634551693" alt="rollout details.png" />
-  </p>
+  ![](./static/jira-cloud-rollout-details.png)
 
 **Note: Since you can navigate to the feature flag, we no longer send and store all of the changes in Jira.**
  

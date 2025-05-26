@@ -41,17 +41,13 @@ A prefix of "split." is added to each feature flag name in the below example to 
 
 Click a pageview event and view event properties.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360060466152/split_heap_1.png" alt="split_heap_1.png" />
-</p>
+![](./static/heap-event-properties.png)
 
 ### Analyze Heap data by Split treatments 
 
 Create a graph of the count of page views filtering by Split feature flag names and treatments. Group by the flag name to see the count by treatment.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360060628531/split_heap_2.png" alt="split_heap_2.png" />
-</p>
+![](./static/heap-graph.png)
 
 ## Code
 

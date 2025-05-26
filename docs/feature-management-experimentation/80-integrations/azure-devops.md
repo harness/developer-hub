@@ -24,9 +24,7 @@ Within Split, you can view your Azure work items connected to each feature flag 
 
 The following flowchart shows how this integration works:
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/4408873417357/split-azure_flow.png" alt="split-azure_flow.png" /><br />
-</p>
+![Azure DevOps Split Flow](./static/azure-devops-split-flow.png)
 
 ## Set up in Split 
 

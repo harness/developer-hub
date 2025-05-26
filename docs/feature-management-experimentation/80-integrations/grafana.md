@@ -10,9 +10,7 @@ description: ""
 
 You can send audit log notifications to Grafana as chart annotations. This Split audit log webhook abridges notifications into chart annotations for Grafana. The annotations are tagged as 'split' so that a Grafana user can put an annotation query on any dashboard to see Split notifications. You can read about [Grafana Chart Annotations](https://grafana.com/docs/grafana/latest/developers/http_api/annotations/). A single node.js lambda does the work for the integration, using only the filesystem (for API keys) and the Axios HTTP client. The integration receives audit log notifications, abridges them into new annotations, and calls the Grafana annotation API to create new annotations.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/12398239153677" alt="annotations.png" />
-</p>
+![](./static/grafana-chart.png)
 
 ## Prerequisites
 
@@ -48,9 +46,7 @@ You must create an annotation query for tag 'split' on the dashboards for where 
 
 The following shows you an example of what you see when you click the Preview in dashboard button:
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/12398239153677" alt="annotations.png" />
-</p>
+![](./static/grafana-annotations.png)
 
 ## Installing in AWS 
 

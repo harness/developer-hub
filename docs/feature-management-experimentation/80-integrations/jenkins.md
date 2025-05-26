@@ -8,101 +8,102 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044691592-Jenkins <br /> ✘ images still hosted on help.split.io </button>
 </p>
 
-Jira Software offers flexible issue and project tracking, and the Split for Jira integration allows you to connect feature flags and Jira issues from either Jira or Split, and view details in both Jira and Split. With this bidirectional connection, you can track rollouts with an associated issue in Jira and issues tied to a feature flag in Split. If you are tracking source code changes and deployments in Jira, you will be able to go from feature flag to issue to code change or deployment details in as few as three clicks.
+## Split Jenkins Plugin
+Jenkins plugin uses Split Admin REST API to create, update, and delete feature flags as part of test automation and build workflow. Reference to Split Admin API can be found [here](https://docs.split.io/reference).
 
-:::info[Jira Cloud only]
-This integration only works with Jira Cloud product offerings and does not work with Jira Server. 
-:::
+### Installation
+In Jenkins Plugin Manager page, under Available tab, enter **Split Admin** to find the plugin and install it.
 
-If you are having trouble completing the integration please contact us at [support@split.io](email:support@split.io).
+![](./static/jenkins-plugin-manager.png)
 
-## Setting up in Split
+### How to use
 
-To set up in Split, do the following:
+1. Store the Split Admin API Key in Split Admin API Key edit box found in Manage Jenkins-> Configure System page.
 
-1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
-3. Locate the Jira Cloud integration, click **Add** and select the Split project and associated environments you want to connect to Jira Cloud.
+   ![](./static/jenkins-configuration.png)
 
-   **Note:** You can select multiple Split projects but only one environment per project.
+2. To use the plugin in Jenkins Jobs, under the Configure section of the job, click **Add build step** and select **Split Admin Task**.
 
-4. Click **Save** to generate a token. The token that is generated is a Split Admin API key.
+   ![](./static/jenkins-splitadmin-task.png)
 
-5. Click **copy** to copy the Split token to the clipboard. You can now use this token to configure the Jira Cloud.
+3. Select a task from the available options, see below for supported tasks, fill out the fields that are required for each task and click **Save**.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360092262211" alt="jira_cloud_in_split.png" width="607" height="268" />
-</p>
+   If the Admin API call return code is 429 (throttled), the plugin will sleep for 5 seconds then retry the request, max retried are capped at 10.
 
-**Note: If your Split projects have set [project view permissions](https://help.split.io/hc/en-us/articles/12621628930445-Project-view-permissions), ensure that the projects you want to use with this integration grant access to the Admin API Key that you just generated in this section.**
+4. Plugin use Apache Log4j class for logging. Debug level will log every HTTP request headers and body and response payload returned. To enable Debug logging, create a new logger in **Manage Jenkins->System Log->New Log Recorder**, set the logger class to below, and set the Log level to **ALL**.
+```
+io.split.jenkins.plugins
+```
 
-## Setting up in Jira
+### Supported Tasks
 
-To set up in Jira, do the following:
+* **Create Feature Flag From YAML File:** This task will read a given YAML file populated with feature flags containing treatments, individually targeted keys, dynamic configs and percentages for default rule, see YAML format section below. The plugin will check if feature flags and flag definitions exist in the given project/environment, if not, the subtask is skipped, the fields below are required: `Project Name` `Environment Name` `Traffic Type Name`.
+   If there are missing fields for feature flags in YAML file, the plugin will attempt to complete the definitions automatically, see examples in YAML format section.
 
-1. In the [Atlassian Marketplace] (https://marketplace.atlassian.com/apps/1224872/split-for-jira?hosting=cloud&tab=overview), install Split for Jira in your Jira Cloud instance.
+* **Create Feature Flag:** This task will create a new feature flag. The fields below are required. The plugin will check if the feature flag exists in the given project. If it exists, the task is skipped with no errors returned: `Project Name` `Split Name` `Traffic Type Name`.
 
-2. Within **Apps** in Jira Cloud, and after the Split for Jira app is installed, click **Configure integration** in the side menu under Split.
+* **Add Feature Flag To Environment:** This task will add new definitions to an environment of an existing feature flag. The fields below are required. The plugin will check if feature flag definitions exist in the given environment. If it exists, the task is skipped with no errors returned: `Project Name` `Environment Name` `Split Name` `Split Definitions`. The definitions field should match the JSON structure accepted by Split Admin API, see the [API reference](https://docs.split.io/reference#create-split-definition-in-environment) for more info.
 
-3. Enter the token you copied and click **Save**.
+* **Add Key To Individual target:** This task will add new key to a treatment's individual target section of an existing feature flag definitions. The fields below are required: `Project Name` `Environment Name` `Split Name` `Treatment Name` `Individual target Key`.
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/360092262251" alt="Jira_configure_integration.png" width="638" height="393" />
-  </p>
+* **Kill Feature Flag:** This task will perform "Kill" action on a given feature flag in an environment. The fields below are required: `Project Name` `Environment Name` `Split Name`.
 
-With the app configured, you can connect Split feature flags to Jira issues.
+* **Remove Feature Flag Definition:** This task will delete feature flag definitions in a given environment. The fields below are required. The plugin will check if feature flag definitions exists in the given environment. If it does not, the task is skipped with no errors returned: `Project Name` `Environment Name` `Split Name`.
 
-## Connecting feature flags and issues
- 
-Once the integration is installed, you can do either of the following:
-  
-* **From Split:** Navigate to the Integrations tab of the feature flag and click the **Connect Jira Issue** button. Enter the desired issue number.
+* **Delete Feature Flag:** This task will delete a feature flag that does not have any definitions in any environment, the fields below are required, the plugin will check if the feature flag exists in the given project, if it does not, the task is skipped, no errors returned: `Project Name` `Split Name`.
 
-* **From Jira:** In the right hand column of an issue, click **More fields** to expand the section and then **Releases +**. When you click the plus sign, you can either create a feature flag or connect to an existing flag.
+#### YAML format
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/4402634745869" alt="jira_feature_flag.png" width="290" height="156" />
-  </p>
+```yaml
+- feature_flag_name:
+     treatment: "treatment_applied_to_this_entry"
+     keys: "single_key_or_list"
+     percentage: "integer between (0-100)"
+```
 
-  * Selecting Create feature flag takes you to your Split account and the standard feature flag creation dialog opens, with the current Jira ticket entered. 
-  * Selecting Connect feature flag takes you to a new dialog box that allows you to choose a feature flag.
+##### Examples
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/31167782949901" alt="jira connect split.png" />
-  </p>
+The feature flag below has 3 treatments (on/off/unallocated), only on treatment contains Individual target id key1. For default rule, on is set to 80%, off is set to 10%, the plugin will assign the last 10% to unallocated treatment.
 
-**Tip:** You can connect multiple flags to an issue and multiple issues to a flag.
+```yaml
+- percentage_less_100_flag:
+    treatment: "on"
+    keys: ["key1"]
+    percentage: "80"
+- percentage_less_100_flag:
+    treatment: "off"
+    percentage: "10"
+- percentage_less_100_flag:
+    treatment: "unallocated"
+```
 
-**Note: You must select a Split project that has been configured in the Jira integration setup. A Jira instance is 1:1 with a Split account, and the integration can be configured for one or more projects.**
+The feature flag below contains only treatments, no percentages specified for default rule, the plugin will set the first treatment to 100% for default rule.
+```yaml
+- no_rule_flag:
+    treatment: "on"
+- no_rule_flag:
+    treatment: "off"
+```
 
-## Viewing your connections
- 
-Once you’ve connected feature flags to issues, you can do either of the following:
- 
-* **In Split:** You see all attached issues on the Integrations tab of each feature flag.
- 
-* **In Jira:** You see either the name of the flag or the number of flags to which that issue is connected. On the right hand side, it indicates if the feature flags are active in the primary environment, which is selected for each Split project when the integration is set up.
- 
-  If you have multiple flags, hovering over the status indicator shows the status of all flags. If you have only one flag, hovering over the status displays information about the rollout plan. 
+The feature flag below contains only one treatments, no percentages specified for default rule, the plugin will add second treatment with name SecondTreatment, and set the first treatment to 100% for default rule.
+```yaml
+- one_treatment_flag:
+    treatment: "one"
+```
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/4402634550669" alt="multiple flags.png" />
-  </p>
+The feature flag below has two treatments with their dynamic configs, treatment off has two keys in the Individual target section, default rule has only on treatment set to 50%, the plugin will add off with 50%.
+```yaml
+- correct_data_flag:
+    treatment: "on"
+    config: "{\\\"desc\\\" : \\\"this applies only to ON treatment\\\"}"
+    percentage: "50"
+- correct_data_flag:
+    treatment: "off"
+    keys: ["key1", "key2"]
+    config: "{\\\"desc\\\" : \\\"this applies only to ON treatment\\\"}"
+```
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/4402634551437" alt="one flag.png" />
-  </p>
-
-  If you click on the flag name or the text telling you how many flags there are, a dialog box opens with a link to the flag, the primary environment, the status of each flag, and the last time the flag was saved.
- 
-  For Rollout details, if you only use the Default rule, it shows you the percentage that is allocated to the same treatment you chose for the Default treatment. Otherwise, it shows you the number of rules that you have on the flag. 
-
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/4402634551693" alt="rollout details.png" />
-  </p>
-
-**Note: Since you can navigate to the feature flag, we no longer send and store all of the changes in Jira.**
- 
-## Disconnecting an issue
- 
-You can disconnect an issue from a feature flag, on the Integrations tab of the flag.
+The feature flag below only has the name, no other information is given, the plugin will add on and off treatments, and set default rule to off with 100%
+```yaml
+- no_treatment_flag:
+```

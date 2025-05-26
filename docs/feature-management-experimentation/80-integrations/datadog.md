@@ -14,14 +14,11 @@ Datadog is a cloud-hosted monitoring and analytics platform for development and 
  
 1. Go to **Integrations** and click **APIs**.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/16538703447437" alt="datadog-api-selection.png" width="450" />
-</p>
+   <div style={{maxWidth:500}}>![Datadog API selection](./static/datadog-api-selection.png)</div>
+
 2. Click **Create API Key**.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/16538703454605" alt="create-datadog-api-key.png" width="563" />
-</p>
+   ![Create Datadog API key](./static/datadog-api-key.png)
 
 3. Copy the API key that you just created.
 
@@ -30,9 +27,8 @@ Datadog is a cloud-hosted monitoring and analytics platform for development and 
 1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/15666257081229" alt="Screen_Shot_2023-05-10_at_2.04.06_PM.png" />
-</p>
+
+   ![Split Admin settings](./static/datadog-splitadmin.png)
 
 3. Click **Add** next to Datadog and select the Split project for which you would like to configure the integration. The Split Datadog interface appears.
 4. In the Environment field, specify the environment from where you want audit logs sent to Datadog.

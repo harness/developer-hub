@@ -85,9 +85,7 @@ The best approach to obtaining a reference to the Split client within Google Tag
 
 After you utilize the data layer, we define a new variable within Google Tag Manager called Split client set to the data layer variable `split_client`. This enables us to reference the Split client within our tags in Google Tag Manager.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/7941674934413/define-variable.png" alt="define-variable.png" />
-</p>
+![](./static/google-tag-manager-define-variable.png)
 
 ### Referencing the Split client in tags within Google Tag Manager
 
@@ -104,9 +102,7 @@ Once you define the new variable, we create a new custom HTML tag which includes
 
 As we add other tags to Google Tag Manager, we always want to repeat this pattern of first setting the local variable `client` to the Google Tag Manager variable `{{Split Client}}`.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/7941688506637/set-local-variable.png" alt="set-local-variable.png" />
-</p>
+![](./static/google-tag-manager-set-local-variable.png)
 
 ### Advanced topics
 

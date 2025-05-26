@@ -22,7 +22,7 @@ This guide explains how you can set up and test different configurations within 
 
 Before you begin, within your mParticle account, set up Split using the Integration Directory to receive your API key and secret. Copy and save these 2 strings. Refer to [mParticle documentation](https://docs.mparticle.com/integrations/split/feed/) for more information. 
 
-<img src="https://help.split.io/hc/article_attachments/360046876712/Screen_Shot_2020-01-10_at_2.13.41_PM.png" alt="Screen_Shot_2020-01-10_at_2.13.41_PM.png" />
+![](./static/mparticle.png)
 
 ### In Split 
 

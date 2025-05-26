@@ -12,9 +12,7 @@ description: ""
 
 Dynatrace is a versatile monitoring solution for applications, services, and infrastructures. This integration uses a feature flag audit trail webhook to post annotations on tagged Dynatrace hosts, services, applications, and more. Using this integration, Dynatrace users see a feature flag change reflected in Dynatrace and identify when a change has impacted an entity, including complete details about the change, and a link to Split for further investigation.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360092158631/overview.png" alt="overview.png" />
-</p>
+![Dynatrace overview](./static/dynatrace-overview.png)
 
 ## Prerequisites
 
@@ -68,9 +66,7 @@ To register your AWS Lambda with Split, follow the Split instructions for creati
 
 ### Configure Dynatrace
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360092158651/tag.png" alt="tag.png" />
-</p>
+![Dynatrace tag](./static/dynatrace-tag.png)
 
 In the Dynatrace user interface, find the hosts, services, applications, and other entities that you want to annotate.
 
@@ -83,9 +79,7 @@ Use Dynatrace's advanced tagging functionality to automatically apply tags to la
 
 To indicate a rule change, charts show grey dots. Each annotation comes with details in the events table.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360092170452/chart.png" alt="chart.png" />
-</p>
+![Dynatrace chart](./static/dynatrace-chart.png)
 
 ### How it works
 

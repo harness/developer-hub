@@ -18,24 +18,18 @@ If you are having trouble completing the integration, contact us at [support@spl
 2. Go to [https://papertrailapp.com/systems/setup](https://papertrailapp.com/systems/setup).
 3. Copy the log destination ([host] and [port] information) required for this integration.
 
-<p>
-	<img src="https://help.split.io/hc/article_attachments/360017382611/Papertrail_LogInfo.png" alt="Papertrail_LogInfo.png" />
-</p>
+   ![](./static/papertrail-loginfo.png)
 
 ## In Split
 
 1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
 2. Click **Integrations** and navigate to the Marketplace tab.
 
-<p>
-    <img src="https://help.split.io/hc/article_attachments/15666661728397" alt="Screen_Shot_2023-05-10_at_2.18.44_PM.png" />
-</p>
+   ![](./static/papertrail-splitadmin.png)
 
 3. Find Papertrail in the integrations list, click **Add** and select the Split project for which you would like to configure the integration.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/15666662894733" alt="Screen_Shot_2023-05-10_at_2.18.57_PM.png" />
-</p>
+   ![](./static/papertrail-integration.png)
 
 4. Paste the log destination you copied in step 3 of the Papertrail instructions.
 5. Click **Save**.

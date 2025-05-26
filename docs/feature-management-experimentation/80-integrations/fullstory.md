@@ -31,9 +31,7 @@ The following sections explain how to integrate FullStory impressions into Split
 
 The Split + FullStory integration uses out-of-the-box features of both products.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360061296432/code.png" alt="code.png" width="514" height="276" />
-</p>
+<div style={{maxWidth:700}}> ![](./static/fullstory-code.png) </div>
  
 1. Associate the FullStory recording with the same key used for Split `getTreatment` evaluations by calling FS.identify. In the listing above, the user_id is shared by the FS.identify API call and the Split SDK configuration key (shown in blue).
 
@@ -47,15 +45,11 @@ To verify events are arriving in FullStory, do the following:
 
 1. On the session playback screen, look for the split_evaluation event.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360061430331/split_evaluation_event.png" alt="split_evaluation_event.png" />
-</p>
+   <div style={{maxWidth:600}}>![](./static/fullstory-split-evaluation-event.png)</div>
 
-  2. If you have many events, search for split_evaluation using the **Filter events** function.
+2. If you have many events, search for split_evaluation using the **Filter events** function.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360061265172/filter_events.png" alt="filter_events.png" />
-</p>
+   <div style={{maxWidth:600}}>![](./static/fullstory-filter-events.png)</div>
 
 ### Create a segment based on a treatment received
 
@@ -63,27 +57,19 @@ Once you have split_evaluation events, create a new FullStory segment that conta
 
 1. From the FullStory home page, click to create a new segment.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360061430291/create_new_segment.png" alt="create_new_segment.png" />
-</p> 
+   <div style={{maxWidth:300}}>![](./static/fullstory-create-new-segment.png)</div>
 
 2. Under API events, click **split_evaluation**.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360061265092/api_events.png" alt="api_events.png" />
-</p>
+   <div style={{maxWidth:300}}>![](./static/fullstory-api-events.png)</div>
 
 3. Build an Event filter for any feature flag and treatment you’ve integrated.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360061265152/event_filter.png" alt="event_filter.png" />
-</p>
+   <div style={{maxWidth:600}}>![](./static/fullstory-event-filter.png)</div>
 
   In this example, the segment shows sessions where there is a getTreatment call to “multivariant_demo” and the user received “v3” as their treatment.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360061430311/segment.png" alt="segment.png" />
-</p>
+   <div style={{maxWidth:500}}>![](./static/fullstory-segment.png)</div>
 
 You can now play back and review specific customer experiences. Every session in this playlist showed v3 of the multivariant_demo feature flag.
 
@@ -95,15 +81,11 @@ Send FullStory events to Split to use in experimentation. FullStory events are r
 
 Using the FullStory events webhook, you can pass FullStory events to Split to use for measurement, alerts, and experimentation. Events are the result of an FS.event() call from the FullStory SDK, for example:
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/12587207079181" alt="FS_event.png" />
-</p>
+<div style={{maxWidth:600}}> ![](./static/fullstory-fs-event.png) </div>
 
 This transforms into the corresponding Split event:
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/12587337868429" alt="corresponding-fs-split-event.png" />
-</p>
+<div style={{maxWidth:600}}> ![](./static/fullstory-corresponding-fs-split-event.png) </div>
 
 **Note: If you want a Split value, you must put the value in a split{} section, as shown in the example above.**
 
@@ -158,5 +140,4 @@ Use [Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/moni
 
 This is a third-party integration that has been tested by Split. Split does not own or maintain this integration. For more information, contact the [contributor](mailto:david.martin@split.io).
 
-To learn more about all our integrations, check out our integrations page. If you’d like a demo of Split or help to implement any of our integrations, contact [support@split.io](email:support@split.io).
-
+To learn more about all our integrations, check out our integrations page. If you’d like a demo of Split or help to implement any of our integrations, contact [support@split.io](mailto:support@split.io).

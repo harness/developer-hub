@@ -38,39 +38,33 @@ To send the same event into multiple environments within Split, duplicate the ev
 
 ### Create Amazon S3 bucket
 
-**Note: Follow this step only if you do not already have an S3 bucket. If you already have one created, find your Bucket ARN and move to the next step.**
+:::tip
+Follow this step only if you do not already have an S3 bucket. If you already have one created, find your Bucket ARN and move to the next step.
+:::
 
 1. Sign in to the AWS Management Console and open the [Amazon S3 console](https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fs3%2F%3Fstate%3DhashArgs%2523%26isauthcode%3Dtrue&client_id=arn%3Aaws%3Aiam%3A%3A015428540659%3Auser%2Fs3&forceMobileApp=0&code_challenge=ncyvgDnr9uUmgDd1AlgF-WOMiiEb7H_FL1qzwp_CKi8&code_challenge_method=SHA-256).
 
 2. Click **Create bucket**.
 3. Create a unique bucket name. All other settings are optional.
-4. Click **Save**. Note your Bucket ARN.
+4. Click **Save**. Note your Bucket ARN. 
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/360079550832/Create_Bucket__2_.png" alt="Create_Bucket__2_.png" />
-  </p>
+   ![](./static/amazon-s3-create-bucket.png)
 
 ### Create an SNS topic
 
 1. Navigate to the Amazon SNS console and click **Create topic**.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360079707271/Create_Topic__1_.png" alt="Create_Topic__1_.png" />
-</p>
+   ![](./static/amazon-s3-topic1.png)
 
 2. Under Details, select **Type** and then **Standard**.
 3. Create a **Name** for your SNS topic, e.g. "split-events".
 
-  <p>
-   <img src="https://help.split.io/hc/article_attachments/360079550852/Create_Topic__2_.png" alt="Create_Topic__2_.png" />
-  </p>
+   ![](./static/amazon-s3-topic2.png)cle_attachments/360079550852/Create_Topic__2_.png" alt="Create_Topic__2_.png" />
 
 4. Click **Save**. Note the SNS Topic ARN.
 5. Navigate to your SNS topic and click **Edit**.
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/360079707291/Create_Topic__3_.png" alt="Create_Topic__3_.png" />
-  </p>
+   ![](./static/amazon-s3-topic3.png)
 
 6. Navigate to Access policy.
 7. Edit the JSON snippet by adding the following snippet as a new statement. Do not replace the full snippet. Be sure to update the JSON snippet with your SNS Topic ARN, your AWS Account ID, and your Bucket ARN.
@@ -102,26 +96,20 @@ To send the same event into multiple environments within Split, duplicate the ev
 1. In the Amazon S3 console, navigate to your S3 bucket.
 2. Under Event notifications, click **Create event notification**.
 
-  <p> 
-    <img src="https://help.split.io/hc/article_attachments/360079707331/Event_Notifications__1_.png" alt="Event_Notifications__1_.png" />
-  </p>
+   ![](./static/amazon-s3-event-notification1.png)
   
 3. Enter an **Event name**.
-4. Under Suffix, add the suffix for your compression type, e.g., *.parquet.gz* or *.snappy.parquet*.
+4. Under Suffix, add the suffix for your compression type, e.g. *.parquet.gz* or *.snappy.parquet*.
 5. Optionally specify a Prefix like "_events/_".
 6. Under Event types, select **All object create events**.
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/360079550872/Event_Notifications__2_.png" alt="Event_Notifications__2_.png" />
-  </p>
+   ![](./static/amazon-s3-event-notification2.png)
 
 7. Under Destination > Destination, select **SNS topic**. Under Specify SNS topic, select **Choose from your SNS topics**. Find your SNS topic created in the previous section.
 8. Optionally enter the SNS topic ARN if you cannot find your topic in the list.
 9. Click **Save changes**.
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/360079707351/Event_Notifications__3_.png" alt="Event_Notifications__3_.png" />
-  </p>
+   ![](./static/amazon-s3-event-notification3.png)
 
 ### Configure integration in Split (inbound)
 
@@ -134,9 +122,7 @@ To send the same event into multiple environments within Split, duplicate the ev
 7. Under Paste SNS topic ARN, provide the SNS topic ARN from above.
 8. Under Paste status folder location, provide the file path for status files.
 
-  <p> 
-    <img src="https://help.split.io/hc/article_attachments/360079707371/split_integration.png" alt="split_integration.png" />
-  </p>
+   ![](./static/amazon-s3-integration.png)
 
 9. Click **Save**.
 10. Navigate back to your Amazon S3 integration. Split has generated the Notification endpoint URL and Role ARN fields.
@@ -180,30 +166,23 @@ To send the same event into multiple environments within Split, duplicate the ev
         ]
     }
  ```   
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360079550892/S3_Bucket_Policy.png" alt="S3_Bucket_Policy.png" />
-</p>
+
+![](./static/amazon-s3-bucket-policy.png)
 
 ### Update SNS topic subscriptions
 
 1. Navigate to the Amazon SNS console and find your SNS topic created above. Click **Create Subscription**.
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/360079707391/Topic_Subscription__1_.png" alt="Topic_Subscription__1_.png" />
-  </p>
+   ![](./static/amazon-s3-subscription1.png)
 
 2. Under Details, enter your Topic ARN.
 3. Under Protocol, select **HTTPS**.
 4. Under Endpoint, enter the Notification endpoint URL generated by Split.
 5. Click **Create subscription**. On the confirmation page, confirm that Check status is "confirmed” and Protocol is “https."
 
-  <p>
-    <img src="https://help.split.io/hc/article_attachments/360079550912/Subscription__2_.png" alt="Subscription__2_.png" />
-  </p>
-  
-  <p>
-  <img src="https://help.split.io/hc/article_attachments/360079550932/Subscription__3_.png" alt="Subscription__3_.png" />
-  </p>
+   ![](./static/amazon-s3-subscription2.png)
+
+   ![](./static/amazon-s3-subscription3.png)
 
 ### About the status file
 
@@ -239,11 +218,12 @@ this is what each segment of the S3 key means:
 
 Be aware that Split does not edit status files once they are generated and sent to your bucket. Subsequent status reports on files uploaded in the future are reported in newly generated files.
 
-**Notes:** 
+:::note 
 
-* **It is possible that a single input file can have status entries spread across different ..._report.status files. The status of one input file must confined to one status file, but there are instances, e.g., larger input files where the status of one input file can be distributed across multiple status files.** 
+* **It is possible that a single input file can have status entries spread across different ..._report.status files. The status of one input file must confined to one status file, but there are instances, e.g. larger input files where the status of one input file can be distributed across multiple status files.** 
 
 * **Status files are generated only if there are new files that have been uploaded to the S3 input bucket or there are still individual records from input files that haven’t had their status reported.**
+:::
 
 #### Status file content
 
@@ -276,11 +256,14 @@ The following table describes each value:
 
 Every unique combination of the above constitutes an individual StatusEntry object in a resulting status JSON file. StatusEntry is an individual JSON object with the above listed seven key-value pairs. Be aware that we don’t record the number of rows in each original input file. If you want to write a script to ingest the status files and check if all rows of an input file are properly ingested by our integration, you must keep track of the original input file’s total number of rows and cross check against the values sent back within the status files.
 
-**Note: originalCreationTime and entryId are included for the following reasons:**
+:::info
 
-  * **We only guarantee at least once delivery of each StatusEntry. In rare cases, between status files sent one after the other, there could be some duplicate entries. Split has added information to enable you to identify which ones are duplicates.**
+  `originalCreationTime` and `entryId` are included for the following reasons:
 
-  * **Every triplet of fileName, originalCreationTime, and entryId should be unique. If there are entries in status file 1 and status file 2 with duplicate triplets, then one of them is a duplicate status entry object. This is especially relevant if you have logic that ingests status files and sums the returned number of rows ingested or not ingested by filename.**
+  * We only guarantee at least once delivery of each StatusEntry. In rare cases, between status files sent one after the other, there could be some duplicate entries. Split has added information to enable you to identify which ones are duplicates.
+
+  * Every triplet of `fileName`, `originalCreationTime`, and `entryId` should be unique. If there are entries in status file 1 and status file 2 with duplicate triplets, then one of them is a duplicate status entry object. This is especially relevant if you have logic that ingests status files and sums the returned number of rows ingested or not ingested by filename.
+:::
 
 The following is an example of a labeled mock status file. Assume since the last status report file was written, we uploaded files named fileA and fileB:
 
@@ -352,8 +335,9 @@ The following is an example of a labeled mock status file. Assume since the last
 65}
 ```
 
-**Note: The INVALID_SCHEMA StatusEntry example for fileC doesn’t mean that this file only had one row in it. We don't record the number of rows in files with invalid schemas. The value under numberOfRows can be ignored for StatusEntry objects with INVALID_SCHEMA error codes.**
-
+:::info[Note]
+The `INVALID_SCHEMA` StatusEntry example for fileC doesn’t mean that this file only had one row in it. We don't record the number of rows in files with invalid schemas. The value under numberOfRows can be ignored for StatusEntry objects with `INVALID_SCHEMA` error codes.
+:::
 
 ### About warning codes
 
@@ -365,7 +349,7 @@ Any rows with an error code associated with are not uploaded into our final data
 
 | **Error code** | **Description** | 
 | --- | --- |
-| INVALID_ENVIRONMENT_IDt| Event has an environmentId that is not found under the current integration.| 
+| INVALID_ENVIRONMENT_ID| Event has an environmentId that is not found under the current integration.| 
 | REQUIRED_FIELDS_NULL | Required fields for an event that should be non-null are null.|
 | INTEGRATION_CONFIG_NOT_FOUND| Integration configuration not found in the database. Possible causes are: <br /> * An integration could have been deleted by another user. <br /> * There is an error internal to Split. | 
 | INVALID_SCHEMA | Input file schema is incorrect. Possible causes are: <br /> * The required field not found in input filed. <br /> * Field within input file is incorrect data type. <br /> **Note: The schema validation checks are now more restrictive. Previously, there were scenarios where customers could upload files where a field was an int type but our spec calls for a double. To improve performance and reliability, we expect the types to be exact and will not do these type of conversions, and will instead not upload those rows and return this error code for the affected file.**|
@@ -398,15 +382,16 @@ To connect your AWS S3 bucket to Split, you need:
 4. Under Send impressions to S3, click **Add configuration**.
 5. Under Select environment, select the Split environments that receive S3 data.
 6. Under Paste S3 bucket name, enter the name of your unique S3 bucket name.
-   <p> 
-    <img src="https://help.split.io/hc/article_attachments/360084151671/Outbound_S3_-_Split_UI.png" alt="Outbound_S3_-_Split_UI.png" />
-   </p> 
+
+   ![](./static/amazon-s3-outbound-s3-split-ui.png)
 
 7. Under Provide the write location in your S3 bucket, optionally put the S3 prefix you’d like the impressions files to be saved to. If no value is provided, files are saved to the root directory of your provided S3 bucket. 
 8. Under Select file format, select the desired format for your impressions files.
 9. Under Select file compression type, select the desired file compression format for your impression files.
  
-  **Note: The list only displays compression methods that are compatible with your chosen file format.**
+   :::info[Note]
+   The list only displays compression methods that are compatible with your chosen file format.
+   :::
 
 10. Click **Save**. Note your role ARN generated by Split.
 
@@ -454,7 +439,9 @@ To connect your AWS S3 bucket to Split, you need:
 
 If your S3 bucket is encrypted using an AWS KMS key (SSE-KMS), optionally update the policy to allow Split's AWS ARN to encrypt data using the KMS key you have chosen. 
 
-**Note: If your S3 bucket is using an Amazon S3 key for encryption (SSE-S3), then the following is not necessary.**
+:::tip
+If your S3 bucket is using an Amazon S3 key for encryption (SSE-S3), then the following is not necessary.
+:::
 
 1. In the [Amazon S3 console](https://signin.aws.amazon.com/signin?redirect_uri=https://console.aws.amazon.com/s3/?state=hashArgs%2523&isauthcode=true&client_id=arn:aws:iam::015428540659:user/s3&forceMobileApp=0&code_challenge=ncyvgDnr9uUmgDd1AlgF-WOMiiEb7H_FL1qzwp_CKi8&code_challenge_method=SHA-256)​, navigate to the Key Management Service (KMS) dashboard.
 2. Navigate to the KMS key being used for your encrypted S3 bucket.

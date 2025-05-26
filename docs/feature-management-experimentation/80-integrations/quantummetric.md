@@ -62,18 +62,14 @@ You can now create a JavaScript event in the Event settings of the Quantum Metri
 2. Click **Add event**. The Create event module appears.
 3. From the list, select **JavaScript**. The JavaScript configuration is now available.
 
-    <p>
-    <img src="https://help.split.io/hc/article_attachments/4423977896845/edit-event.png" alt="edit-event.png" width="441" /><br />
-    </p>
+   <div style={{maxWidth:500}}> ![](./static/quantummetric-edit-event.png) </div>
 
 4. In the Frequency field, select how many times an event is triggered.
 5. In the Events name field, select **Split Test**.
 6. In the Abbr. field, enter **ST** for Split Test.
 7. In the Event Description field, optionally enter a description.
 
-     <p>
-      <img src="https://help.split.io/hc/article_attachments/4423969455117/edit-event-frequency.png" alt="edit-event-frequency.png" width="470" />
-     </p>
+   <div style={{maxWidth:500}}> ![](./static/quantummetric-edit-event-frequency.png) </div>
 
 ### Install with Split
 
@@ -162,9 +158,7 @@ The Split SDK loops and waits for the Quantum Metric API to be available. Then, 
 
 Once you have the Split SDK configured with Quantum Metric, impressions display with Quantum Metric sessions identifiers in the Live tail view of Split. In addition, the Live tail for events show *qmreplay* events with the linkback to Quantum Metric in a property:
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/4423969498253/qmreplay_events.png" alt="qmreplay_events.png" />
-</p>
+   ![](./static/quantummetric-replay-events.png)
 
 On Quantum Metric user interface, use Session Segment to filter for replays by your feature flags and treatments.
 

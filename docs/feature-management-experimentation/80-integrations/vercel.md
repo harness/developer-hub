@@ -16,9 +16,7 @@ Developers can incorporate serverless code that runs in the Edge Runtime on the 
 
 The following diagram shows the architecture of the Split integration for Vercel.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/17938432737037" alt="vercel_deployment_diagram.png" />
-</p>
+![Vercel Split integration architecture diagram](./static/vercel-architecture-diagram.png)
 
 The Split Integration for Vercel writes the Split rollout plan (the set of feature flags and segment definitions) to the Edge Config instance of your application, and keeps this data synchronized. The Edge Config wrapper is an adapter that connects the Split SDK with the Edge Config, allowing the Split SDK to rapidly evaluate feature flags. The Split SDK sends tracked events and impressions data to Split Cloud.
 
