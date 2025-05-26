@@ -8,257 +8,29 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness Self-Managed Enterprise Edition (SMP) provides organizations with full control over their software delivery infrastructure. This section explains how to set up SMP, including how to enable Resource Profiles and Modules. It also covers basic configuration steps, key components, and recommended best practices.
+Harness Self-Managed Enterprise Edition (SMP) gives organizations complete control over their software delivery infrastructure. This guide walks you through the setup process, including enabling Resource Profiles and Modules, along with essential configuration steps.
 
-The Harness Self-Managed Platform (SMP) is deployed using Helm charts, allowing you to customize the deployment through YAML override files. This section provides a minimal configuration to help you get started quickly. 
+SMP is deployed using Helm charts, offering flexibility through YAML override files. Here, you'll find a basic configuration to get you up and running quickly.
 
 ## Prerequisites
 
-Before you begin, ensure the following requirements are met:
+Before starting this guide, you must complete the following steps:
 
-  * Kubernetes cluster (EKS, GKE, or AKS) with configured [Load Balancer](#load-balancer) IP or a DNS entry.
-  * Helm installed.
-  * `kubectl` configured with access to your cluster.
-  * Valid Harness license keys.
+* A Kubernetes cluster (EKS, GKE, or AKS) with a configured Load Balancer IP or a DNS entry.
+* Helm installed on your local machine.
+* Command-line tools (e.g., `eksctl`, `gcloud`, or `az`) for AWS, Google Cloud, or Azure, respectively.
+* `kubectl` configured with access to your Kubernetes cluster.
+* A valid Harness license key.
 
 For obtaining a license, please contact [Harness Support](mailto:support@harness.io).
 
-## Load Balancer
+## Installation
 
-### Amazon Elastic Kubernetes Service (EKS)
+1. Download the latest Helm chart from the [Harness GitHub Releases page](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true). Under the **Assets** section, locate and download the `harness-<release-version>.tgz` file.
 
-These section will guide you through configuring AWS Application Load Balancer (ALB) and Network Load Balancer (NLB) for Harness by overriding the YAML configuration file. 
+2. Extract the Helm chart by unpacking the `.tgz` file into your desired directory.
 
-This enables seamless routing of traffic to your Harness services while maintaining high availability and performance. 
-
-:::tip
-  ALB is recommended for HTTP/HTTPS traffic and provides advanced routing capabilities. NLB is recommended when you need extreme performance, static IPs, or handling of non-HTTP/HTTPS protocols
-:::
-
-<Tabs>
-  <TabItem value="ALB" label="AWS Application Load Balancer (ALB)" default>
-   
-  **Prerequisites**
-
-  - EKS cluster with [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html#lbc-overview) installed.
-  - Download the latest release of the [Helm Chart](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true) and unpack the `.tgz` archive.
-
-  **Installation Steps**
-
-  1. Create Namespace
-
-      ```bash
-      kubectl create namespace <harness-namespace>
-      ```
-
-  2. Configure a standalone ALB or modify the override file.
-
-      - To create a standalone ALB, create a file named `alb-config.yaml`, then copy and save the YAML content provided below.
-
-            ```yaml
-              apiVersion: v1
-              kind: Service
-              metadata:
-                name: harness-ingress
-                namespace: harness
-                annotations:
-                  service.beta.kubernetes.io/aws-load-balancer-type: "external"
-                  service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
-                  service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
-              spec:
-                type: LoadBalancer
-                ports:
-                  - port: 80
-                    targetPort: 80
-                    protocol: TCP
-                    name: http
-                  - port: 443
-                    targetPort: 443
-                    protocol: TCP
-                    name: https
-                selector:
-                  app: harness-ng
-            ```
-
-        Apply the configuration:
-        
-          ```bash
-            kubectl apply -f alb-config.yaml
-          ```
-
-      - To configure an ALB using an override file, follow the steps below:
-
-          - Retrieve the ALB DNS name using the command below: 
-
-            ```bash
-            kubectl get ingress -n <harness-namespace>
-            ```
-            Identify the EXTERNAL-IP of the `harness-ingress-controller` from the response, which will resemble `<string>.<aws-region>.elb.amazonaws.com`. Note this value, as it will be used later as the ALB DNS name.
-
-            ```bash 
-            NAME                         TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)                                      AGE
-            default-backend              ClusterIP      10.100.54.229    <none>                                                                    80/TCP                                       38s
-            harness-ingress-controller   LoadBalancer   10.100.130.107   af5b132b743fbXXXXXXXb24581119f1b-1454307465.us-east-2.elb.amazonaws.com   10254:32709/TCP,80:32662/TCP,443:32419/TCP   38s
-            ```
-
-          - Open the `values.yaml` file from the extracted Helm chart directory, update the parameters listed below and replace the ALB DNS name with the one retrieved in the previous step.  
-
-            ```yaml
-              global:
-                # Enable ingress
-                ingress:
-                  enabled: true
-                  className: "alb"                  
-                # Load balancer configuration
-                loadbalancerURL: "https://<YOUR-ALB-DNS>"  # Update this                
-                # Host configuration
-                hosts:
-                  - "<YOUR-ALB-DNS>"  # Update this
-
-              platform:
-                bootstrap:
-                  networking:
-                    nginx:
-                      service:
-                        annotations:
-                          kubernetes.io/ingress.class: alb
-                          alb.ingress.kubernetes.io/scheme: internet-facing
-                          alb.ingress.kubernetes.io/target-type: ip
-                          alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-                          alb.ingress.kubernetes.io/ssl-redirect: '443'
-                      loadBalancerEnabled: false
-                      create: true
-            ```
-        
-  </TabItem>
-
-  <TabItem value="NLB" label="AWS Network Load Balancer (NLB)" default>
-
-**Prerequisites**
-
-  - EKS cluster with [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html#lbc-overview) installed.
-  - Download the latest release of the [Helm Chart](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true) and unpack the `.tgz` archive.
-
-**Installation Steps**
-
-  1. Create Namespace
-
-      ```bash
-      kubectl create namespace <harness-namespace>
-      ```
-
-  2. Configure a standalone NLB or modify the override file.
-
-      - To create a standalone NLB, create a file named `nlb-config.yaml`, then copy and save the YAML content provided below.
-
-            ```yaml
-              apiVersion: v1
-              kind: Service
-              metadata:
-                name: harness-nlb
-                namespace: harness
-                annotations:
-                  service.beta.kubernetes.io/aws-load-balancer-type: "external"
-                  service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
-                  service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
-                  service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
-              spec:
-                type: LoadBalancer
-                ports:
-                  - port: 80
-                    targetPort: 80
-                    protocol: TCP
-                    name: http
-                  - port: 443
-                    targetPort: 443
-                    protocol: TCP
-                    name: https
-                selector:
-                  app: harness-ng
-            ```
-
-        Apply the configuration:
-        
-          ```bash
-            kubectl apply -f nlb-config.yaml
-          ```
-
-      - To configure an NLB using an override file, follow the steps below:
-
-          - Retrieve the NLB DNS name using the command below: 
-
-            ```bash
-            kubectl get ingress -n <harness-namespace>
-            ```
-            From the response, identify the EXTERNAL-IP of the `harness-ingress-controller`, which will resemble `<string>.<aws-region>.elb.amazonaws.com`. Note this value, as it will be used later as the NLB DNS name.
-
-            ```bash 
-            NAME                         TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)                                      AGE
-            default-backend              ClusterIP      10.100.54.229    <none>                                                                    80/TCP                                       38s
-            harness-ingress-controller   LoadBalancer   10.100.130.107   af5b132b743fbXXXXXXXb24581119f1b-1454307465.us-east-2.elb.amazonaws.com   10254:32709/TCP,80:32662/TCP,443:32419/TCP   38s
-            ```
-
-          - Open the `values.yaml` file from the extracted Helm chart directory, update the parameters listed below and replace the NLB DNS name with the one retrieved in the previous step.  
-
-            ```yaml
-              global:
-                # Load balancer configuration
-                loadbalancerURL: "https://<YOUR-NLB-DNS>"  # Update this
-                
-                # Enable ingress
-                ingress:
-                  enabled: true
-                  className: "nlb"
-                                
-                # Host configuration
-                hosts:
-                  - "<YOUR-NLB-DNS>"  # Update this
-
-                # TLS configuration
-                tls:
-                  enabled: true
-                  secretName: harness-tls
-
-                              platform:
-                bootstrap:
-                  networking:
-                    nginx:
-                      service:
-                        annotations:
-                          service.beta.kubernetes.io/aws-load-balancer-type: external
-                          service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
-                      loadBalancerEnabled: false
-                      create: true
-            ```
-  </TabItem>
-</Tabs> 
-
-### Google Kubernetes Engine (GKE)
-
-This section explains how to configure Google Cloud Load Balancer for Harness SMP on Google Kubernetes Engine (GKE).
-
-**Prerequisites**
-
-* A [static external IP address](https://cloud.google.com/compute/docs/ip-addresses/configure-static-external-ip-address) reserved in your GCP project and not in use by any other application.
-* The [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) installed and configured to use the `gcloud` CLI.
-* A GKE cluster set up and accessible from your local machine.
-* The latest release of the [Harness Helm Chart](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true) downloaded and the `.tgz` archive extracted.
-
-**Installation**
-
-1. Set your Kubernetes context to the cluster in your GCP project.  
-
-    ```bash
-    kubectl config use-context <gke_[project_id]_[region]_[cluster-name]>
-    ```
-
-2. Create Namespace
-
-    ```bash
-    kubectl create namespace <harness-namespace>
-    ```
-
-3. Open the `values.yaml` file from the extracted Helm chart directory, update the parameters listed below and replace the `<YOUR-IP-ADDRESS-OR-HOST>` with the static external IP address reserved.
+3. Navigate to the extracted directory, open the `values.yaml` file, and update the following parameters.
 
       ```yaml
         global:
@@ -269,7 +41,7 @@ This section explains how to configure Google Cloud Load Balancer for Harness SM
           ingress:
             className: "harness"          
             enabled: true
-            hosts: ""
+            hosts: "<YOUR-IP-ADDRESS-OR-HOST>"
             tls:
               enabled: false
 
@@ -286,81 +58,32 @@ This section explains how to configure Google Cloud Load Balancer for Harness SM
             create: true
       ```
 
-4. Apply changes to your cluster using the command below.
+4. Create Namespace.
+
+    ```bash
+    kubectl create ns <harness-namespace>
+    ```
+
+5. Install the chart.
 
     :::tip
-      You can use [resource profiles](#resource-profiles) as per your resouce requirement similar to what i have used below. 
+      If you're installing SMP for the first time, we recommend using the `override-small.yaml` file, which is optimized for minimal resource requirements to help you get started. You can also learn more about [resource profiles here](#resource-profiles).
     :::
 
     ```bash
-    helm upgrade -i <release-name> ../harness/ -n <harness-namespace> -f values.yaml -f override-<profile>.yaml
-    ```
+    helm install <release-name> ./<path-to-directory/> -n <harness-namespace> -f override-small.yaml
+    ```  
 
-5. Check that your pods are up and running:
+6. Check the pod status to ensure that SMP is up and running.
 
     ```bash
     kubectl get pods -n <harness-namespace>
     ```
 
-6. Once all your pods and services are running, you can access the application via your IP or URL in a browser:
-
-    ```bash
-    http://<YOUR-IP-ADDRESS-OR-HOST>
-    ```
-
-## Installation
-
-To start a fresh installation, ensure the IP address or DNS you plan to use is available and not in use by another application. Follow the steps below to proceed
-
-1. Download the latest Helm chart from the [Harness GitHub Releases page](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true). Under the **Assets** section, locate and download the `harness-<release-version>.tgz` file.
-
-2. Extract the Helm chart by unpacking the `.tgz` file into your desired directory.
-
-3. Navigate to the extracted directory, open the `values.yaml` file, and update the following parameters.
-
-    ```yaml
-      global:
-        # -- Provide your URL for your intended load balancer
-        loadbalancerURL: http://<YOUR-IP-ADDRESS-OR-HOST>
-        # Enable Harness modules
-        ci:
-          enabled: true
-        cd:
-          enabled: true
-
-        ingress:
-          className: "harness"
-          enabled: true
-          # -- add global.ingress.ingressGatewayServiceUrl in hosts if global.ingress.ingressGatewayServiceUrl is not empty.
-          hosts:
-            - ''
-          # -- set to ingress controller's k8s service FQDN for internal routing. eg "internal-nginx.default.svc.cluster.local"
-          # If not set, internal request routing would happen via global.loadbalancerUrl
-          ingressGatewayServiceUrl: "http://harness-ingress-controller"
-          objects:
-            # -- annotations to be added to ingress Objects
-            annotations: {}
-          tls:
-            enabled: false
-            secretName: harness-cert
-    ```
-
-4. Install the chart.
-
-    ```bash
-      helm install harness ./ -n <harness-namespace> -f values.yaml
-    ```  
-
-5. Verify pods status.
-
-    ```bash
-      kubectl get pods -n <harness-namespace>
-    ```
-
 6. If all steps above have been completed successfully and the services are running, you can access the Harness SMP UI at:
 
     ```bash
-      http://<YOUR-IP-ADDRESS-OR-HOST>/auth/#/signup
+    http://<YOUR-IP-ADDRESS-OR-HOST>/auth/#/signup
     ```
 
 ## Module Enablement
@@ -432,11 +155,9 @@ To verify activation and learn more about Looker licensing or for Airgapped inst
 
 ## Resource Profiles 
 
-This section outlines the resource requirements and the proper allocation of resources to ensure optimal performance and stability.
-
 The resource profiles are designed to support different deployment scales and workloads, with predefined allocations for CPU, memory, and storage.
 
-#### Available Resource Profiles
+**Available Resource Profiles**
 
 | **Profile** | **Concurrent Pipelines** | **Recommended Team Size** | **YAML File**          |
 |-------------|--------------------------|---------------------------|------------------------|
@@ -444,15 +165,13 @@ The resource profiles are designed to support different deployment scales and wo
 | **Medium**  | Up to 200                | 50–200 users              | `override-medium.yaml` |
 | **Large**   | Over 200                 | 200+ users                | `override-large.yaml`  |
 
-These resource profiles are available in the [Harness GitHub Helm chart](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true) once downloaded. The standard `override-*.yaml` files are built for quick access and installation. You can further customize them based on your environment and use case.
+These resource profiles are included in the Harness [Helm chart](https://github.com/harness/helm-charts/releases?q=harness-0&expanded=true) once downloaded. The standard `override-<*>.yaml` files are designed for quick access and installation, but you can further customize them to suit your environment and specific use case.
   
 ### Install and Upgrades 
 
-To install or upgrade SMP with your desired resource profile, you can choose from the predefined profiles described above. Start by selecting the `override-small.yaml` file and updating it as shown below. 
-
-You can later override the configuration based on specific requirements.
+To install or upgrade SMP with your desired resource profile, select one of the predefined profiles mentioned above. Then, use the command below after updating the placeholders for `<release-name>`, `<harness-namespace>`, `<custom-override>` (if applicable), and a resource profile like `<override-*>`, based on your infrastructure.
 
     ```bash
-      # Update using small profile
-        helm upgrade -i harness harness/ -n <harness-namespace> -f your-override.yaml -f override-small.yaml
+    # Update using small profile
+    helm upgrade -i <release-name> <path-to-directory>/ -n <harness-namespace> -f <custom-override.yaml> -f <override-*>.yaml
     ```
