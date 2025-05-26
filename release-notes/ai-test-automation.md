@@ -22,96 +22,63 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## May 2025
 
-## Major Features & Enhancements
+# Relicx Release Summary \- Harness Platform Integration
+**Production Release: May 22, 2025**
 
-### Harness Integration Improvements
-- **Enhanced Harness Integration**: Added comprehensive support for exposing RelicX as part of Harness platform with improved authentication and setup APIs
-- **Harness Identifiers**: Added Harness identifiers to application and organization entities for better integration
-- **Webhook Integration**: Updated Harness webhook URLs to include gateway and routing IDs for improved connectivity
-- **App Synchronization**: Automatic app name updates in RelicX when Harness project names are changed
-- **Multi-Organization Support**: Fixed issues with same applications being created across multiple organizations
+## New Features
 
-### AI & LLM Enhancements
-- **Google Vertex Claude 3.7**: Enabled Google Vertex AI with Claude 3.7 support
-- **Enhanced AI Assertions**: Fixed non-English character issues in AI assertion screenshots
-- **Contextual AI**: Added 'use page HTML as context' flag to 'User Question' functionality in conditional statements
-- **LLM Response Handling**: Improved JSON response handling when LLM services are not responding properly
+### **Harness Platform Integration**
 
-### Test Execution & Validation
-- **Step-Level Navigation**: Added step-level wait configurations for navigation
-- **Smart Selector Fallbacks**: Enhanced XPath overrides to respect fallback-to-smart-selector configurations
-- **Validation Improvements**: Navigation issues now generate validation warnings instead of failing tests entirely
-- **Test Suite Status**: Enhanced test suite status calculation to account for AWS Batch level failures
+* **AI Test Automation Module**: AI Test Automation is now available as a native module within the Harness platform.  
+* **Unified Access**: Harness users can now access AI Test Automation directly from within the Harness platform interface.
 
-## Infrastructure & Performance
+<DocImage
+  path={require('./static/ai-test-automation-menu.png')}
+  alt="AI Test Automation menu"
+  title="Click to view full size image"
+  width={1080}
+  height={600}
+/>
 
-### AWS Batch Optimizations
-- **Retry Logic**: Set AWS Batch level retries to 2 for improved reliability
-- **Throttling Handling**: Added retry mechanisms for throttled AWS Batch requests
-- **Resource Management**: Increased IA (Interactive Automation) pods to 14 to avoid pod starvation
-- **Pod Size Configuration**: Added documentation for AWS Batch pod size permutations
 
-### Caching & Performance
-- **Asset Caching**: Enabled assets caching for test sessions by default
-- **Selective Caching**: Added ability to disable cache for specific organizations
-- **Network Capture**: Changed default value of `disableAllNetworkCapture` to false for better debugging
-- **Tunnel Prioritization**: Prioritized tunnel usage over static IP connections
 
-## Bug Fixes & Stability
+* **Pipeline Studio Integration**: AI Test Automation can now be added to Harness CD Pipelines using a graphical no-code interface, enabling test suites to launch as part of Harness CD pipeline workflows.
 
-### UI & User Experience
-- **Modal Improvements**: Added error modals for validation failures in IA/IE
-- **Loading States**: Removed infinite spinning wheels from various UI components
-- **Tab Management**: Fixed application page resetting to script tab when creating environments
-- **App Switching**: Fixed UI not automatically switching to newly created applications
-- **Edit Step Issues**: Resolved edit step opening select command sidebar unexpectedly
 
-### Test Execution Fixes
-- **Assert Not Exists**: Fixed assertion logic for non-existent targets to pass correctly
-- **Framework Errors**: Resolved race condition causing framework errors in Cast mode
-- **Wait for Text**: Improved event handling to get all events since the start index of the last step
-- **Regex Pattern Handling**: Tests no longer fail when regex patterns take longer than expected
-- **Test Suite Abortion**: Fixed test suite abortion functionality
+<DocImage
+  path={require('./static/ai-test-automation-pipeline.png')}
+  alt="AI Test Automation menu"
+  title="Click to view full size image"
+  width={1080}
+  height={600}
+/>
 
-### Data & API Improvements
-- **Filter Metadata**: Added test suite ID and environment ID as filter fields
-- **API Logging**: Enhanced request and response logging for API calls
-- **Validation Count**: Removed validation failures from issues count for cleaner metrics
+### **AWS Batch Test Execution Infrastructure**
 
-## Security & Configuration
+* **Enhanced Scalability**: New test suite execution infrastructure based on AWS Batch for improved performance and scalability  
+* **Better Resource Management**: Optimized resource allocation and retry mechanisms for more reliable test execution
 
-### Authentication & Access
-- **SSO Integration**: Added test-sso-secret to local development environment
-- **Token Handling**: Cleaned up unnecessary error logs for non-Harness tokens
-- **Multi-App Security**: Fixed security issues preventing same app creation across multiple organizations
+## **Enhancements**
 
-### Environment Management
-- **Environment Filtering**: Added environment ID as a test suite run filter field
-- **Configuration Overrides**: Ensured IA/IE respects step-level configuration overrides
-- **Placeholder Updates**: Updated placeholders throughout the system for better clarity
+### **Test Suite Management**
 
-## Monitoring & Notifications
+* **Complete Run History**: Full test suite run history is now available in the test suite details → history tab, providing comprehensive visibility into past executions.
 
-### Slack Integration
-- **Environment Context**: Added environment information to Slack notifications
-- **URL Improvements**: Fixed Slack integration URLs to show full paths
-- **Updated Invite Links**: Updated Slack workspace invitation URLs
+### AI & Testing Improvements
 
-### Status & Reporting
-- **Test Suite History**: Added filtration capabilities to test suite run history page
-- **Warning Status**: Test suite validation logic now recognizes `DONE_WITH_WARNINGS` status
-- **Backend Status Computation**: Ensured effective test suite run status is computed in backend
-- **Warning Icon**: Fixed warning icon sizing issues in UI
+* **Google Vertex Claude 3.7**: Upgraded AI engine support for better test automation  
+* **Enhanced AI Assertions**: Improved AI assertion capabilities with better context handling  
+* **Multi-language Support**: Fixed non-English character handling in AI-generated screenshots
 
-## Development & Maintenance
+### Quality Improvements
 
-### Build & Deployment
-- **Build Fixes**: Multiple build issue resolutions and optimizations
-- **Window Changes**: Removed problematic window-related changes
-- **Error Handling**: Improved error handling for fetch request failures
-- **Information Logging**: Stopped excessive information logging in UI
+* **UI/UX Refinements**: Enhanced modal displays, loading states, and navigation workflows  
+* **Test Execution Stability**: Improved assertion logic and validation handling  
+* **Integration Reliability**: Better error handling and recovery for platform connectivity  
+* **Performance Optimization**: Asset caching and network capture improvements  
+* **Enhanced Slack Integration**: Improved notifications with environment context and better URL formatting
 
-### Code Quality
-- **Asset Bot Checks**: Added safety checks before caching assets with asset bot
-- **Race Condition Fixes**: Resolved various race conditions in the codebase
-- **API Call Optimization**: Fixed multiple unnecessary API calls to setupHarnessApp
+---
+
+**This release marks a significant milestone, bringing AI Test Automation directly into the Harness platform ecosystem while delivering improved scalability and comprehensive test management capabilities.**
+
