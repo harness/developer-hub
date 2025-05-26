@@ -112,6 +112,10 @@ const config: Config = {
               to: 'docs/continuous-integration',
             },
             {
+              label: 'AI Test Automation',
+              to: 'docs/ai-test-automation',
+            },
+            {
               label: 'Artifact Registry',
               to: 'docs/artifact-registry',
             },
@@ -176,10 +180,6 @@ const config: Config = {
               to: 'docs/open-source',
             },
             {
-              label: 'FirstGen',
-              to: 'docs/first-gen',
-            },
-            {
               label: 'FAQs',
               to: 'docs/faqs',
             },
@@ -212,12 +212,20 @@ const config: Config = {
               to: 'university',
             },
             {
+              label: 'Code Repository',
+              to: 'university/cr',
+            },
+            {
               label: 'Continuous Integration',
               to: 'university/continuous-integration',
             },
             {
               label: 'Continuous Delivery & GitOps',
               to: 'university/continuous-delivery',
+            },
+            {
+              label: 'Infrastructure as Code Management',
+              to: 'university/iacm',
             },
             {
               label: 'Feature Flags',
@@ -236,8 +244,8 @@ const config: Config = {
               to: 'university/sto',
             },
             {
-              label: 'Software Engineering Insights',
-              to: 'university/sei',
+              label: 'Software Supply Chain',
+              to: 'university/scs',
             },
             {
               label: 'Chaos Engineering',
@@ -248,8 +256,8 @@ const config: Config = {
               to: 'university/idp',
             },
             {
-              label: 'Infrastructure as Code Management',
-              to: 'university/iacm',
+              label: 'Software Engineering Insights',
+              to: 'university/sei',
             },
             {
               label: 'Virtual Instructor-Led Calendar',
@@ -260,8 +268,8 @@ const config: Config = {
               to: 'university/instructions',
             },
             {
-              label: 'FAQs',
-              to: 'university/faqs',
+              label: 'Policies & FAQs',
+              to: 'university/policies-and-faqs',
             },
           ],
         },
@@ -370,6 +378,10 @@ const config: Config = {
               label: 'Software Engineering Insights',
               to: 'https://www.harness.io/products/software-engineering-insights',
             },
+            {
+              label: 'AI Test Automation',
+              to: 'https://www.harness.io/products/ai-test-automation',
+            },
           ],
         },
         {
@@ -414,6 +426,10 @@ const config: Config = {
             {
               label: 'Partners',
               to: 'https://www.harness.io/partners',
+            },
+            {
+              label: 'Style Guide',
+              to: '/docs/hdh/style-guide',
             },
           ],
         },
@@ -461,27 +477,6 @@ const config: Config = {
         autoCollapseCategories: true,
       },
     },
-    announcementBar: {
-      id: 'announcementBar_cd_announcement',
-      content:
-        "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>FirstGen Harness CD will be EOL on 12/30/2023 and EOS on 3/30/2024.</span> Learn more in our <a href='/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a>. Contact  <a href='https://support.harness.io' target='_self'>Harness Support</a> with questions or concerns.",
-      backgroundColor: '#FFF5ED',
-      textColor: '#000000',
-      isCloseable: true,
-    },
-    announcementBarByPath: {
-      // list all pathnames in Regular expressions format
-      pathRegExp: [
-        // paths for md-doc pages / global patterns
-        '^/docs/first-gen/continuous-delivery.*',
-        '^/docs/first-gen/first-gen-quickstarts.*',
-        '-fg.*',
-        'fg-.*',
-        'firstgen-.*',
-        'first-gen.*',
-        '-firstgen.*',
-      ],
-    },
     utmCookie: {
       prefix: 'utm_',
     },
@@ -503,7 +498,7 @@ const config: Config = {
         id: 'release-notes',
         path: 'release-notes',
         routeBasePath: 'release-notes',
-        exclude: ['**/shared/**', '**/static/**'],
+        exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         sidebarPath: require.resolve('./sidebars-release-notes.js'),
         editUrl: 'https://github.com/harness/developer-hub/tree/main',
         async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {

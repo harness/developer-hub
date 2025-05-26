@@ -60,7 +60,7 @@ import { MODULES } from "@site/src/constants";
             module: MODULES.platform,
             description:
               "Learn how to monitor the infrastructure of your installation.",
-            link: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",
+            link: "/docs/category/monitoring",
           },
           {
             title: "Back up and restore",

@@ -268,6 +268,12 @@ In your script, you declare the variable using the **Name** value.
 
 At deployment runtime, Harness will evaluate the expression and the variable will contain its output.
 
+:::info note
+When using Script Input Variables in a Command Step, avoid setting values that contain newlines.
+Harness retrieves environment variables using the `printenv` command and splits them by newline characters.
+If an input variable includes newlines, this parsing may break, leading to unexpected behavior during execution.
+:::
+
 ## Output variables
 
 Output Variables have a maximum size of 512KB. To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.

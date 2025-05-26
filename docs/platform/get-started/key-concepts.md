@@ -206,7 +206,3 @@ Harness FirstGen and Harness NextGen are two versions of the Harness product sui
 
 * Harness FirstGen is the legacy or earlier version of Harness. It covers common platforms but didn't include all Harness modules.
 * Harness NextGen is Harness' new version with a redesigned experience and new Continuous Integration, Feature Flags, Security Testing Orchestration, Service Reliability Management, Cloud Cost Management, and Chaos Engineering modules.
-
-The majority of the documentation on the Harness Developer Hub (HDH) applies to Harness NextGen. Until all FirstGen accounts are migrated, you can find the [FirstGen documentation on HDH](/docs/first-gen). The documentation in all other sections applies only to NextGen features.
-
-For more information, go to the [Upgrade guide](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md).

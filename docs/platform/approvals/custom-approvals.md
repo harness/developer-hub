@@ -233,6 +233,26 @@ Run the pipeline.
 
 When the Custom Approval step is reached, you can see its approval and rejection criteria.
 
+## Manual Refresh During Execution
+
+You can do a **manual status refresh** in the Pipeline Studio Execution view.
+
+When the step is waiting for a response from custom ticketing system, you can use the **Refresh** button to immediately fetch the **latest status of the approval ticket** instead of waiting for the polling interval.
+
+:::note
+Currently, this feature is behind the feature flag `CDS_REFRESH_IN_JIRA_SERVICENOW_APPROVALS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Use the refresh option when:
+- The approval condition in ticketing system was updated after the step began execution.
+- You need quicker response handling for fast-track approvals such as incident mitigations or emergency changes.
+
+To use the refresh button:
+- Execute a pipeline with a Custom approval step.
+- In the Pipeline Studio Execution view, locate the approval step.
+- If the step is in a waiting state, click the Refresh button.
+- The step will re-evaluate the condition and proceed if the criteria are met.
+
 ## YAML example
 
 Here's the YAML for a pipeline that demonstrates how to set up a Custom Approval stage and step.

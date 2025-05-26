@@ -40,7 +40,9 @@ You can use any Docker image from any Docker registry, including Docker images f
   <figcaption>Configuring GCR Container Registry and Image settings.</figcaption>
   </figure>
 
-
+:::warning
+Google Container Registry (GCR) is being deprecated. For more details, refer to the [Deprecation Notice](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+:::
 
 ## Shell and Command
 

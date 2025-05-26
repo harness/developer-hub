@@ -51,7 +51,41 @@ Then you're done!
 
 You can then load the filter each subsequent time by clicking the filter icon to the right of **Reset** and searching for your filter there. 
 
-## Ignore HPA Changes to Prevent Out-of-Sync Status
+## Application Management Dashboard
+
+After you select an application, you will see the application dashboard:
+
+![](./static/manage-application-dashboard.png)
+
+* **Git details:** you can see the Git commit used as the source for the sync. Clicking the commit Ids opens the commit in the source provider.
+* **Deployment:** the deployments dashboard shows when the Application was deployed (synced).
+* **Resource View:** displays the desired to target state mapping of each Kubernetes object.
+  The **Resource View** lets you inspect the live target infrastructure by:
+	+ **Name:** Kubernetes object names.
+	+ **Kind:** Kubernetes object types.
+	+ **Health Status:** the health status of the Application. For example, is it syncing correctly (Healthy)?
+	+ **Sync Status:** sort Kubernetes objects by their sync status.
+
+  Select any item to see:
+    - **Overview**: An overview of the resources properties, such as name, namespace, or sync status.
+    - **Events**: Any events emitted by the pod.
+    - **Logs**: The logs of the resource. These logs are searchable, copyable, and downloadable. You can also view the log tail by clicking on the down arrow in the bottom right corner (click image below).
+    <div align="center">
+      <DocImage path={require('./static/log-tail-down-arrow.png')} width="50%" height="50%" title="Click to view full size image" />
+    </div>
+    - **Manifest**: The manifest of the resource.
+    - **Diff**: The diff between the source manifest and application if they are out of sync.
+
+
+* **App Details:** displays the settings of the Application. You can edit the settings and apply your changes, including the **Sync Options & Policy**.
+* **Sync Status:** displays all of the sync operations performed by the Application.
+* **Manifest:** displays the manifest of the Application. This is not the same as the source manifest in the Git source repo.  
+You can edit the manifest in **Manifest** and the changes are synced in the target infrastructure, but when you do a full sync from your source repo the state of the source repo overwrites any changes made in **Manifest**.
+* **App Diff:** displays a diff against the live state in the cluster and desired state in Git. 
+
+## Application Configuration Options
+
+### Ignore HPA Changes to Prevent Out-of-Sync Status
 
 When Horizontal Pod Autoscaler (HPA) is enabled, pod scaling can cause GitOps to detect unwanted differences and mark applications as out of sync. 
 

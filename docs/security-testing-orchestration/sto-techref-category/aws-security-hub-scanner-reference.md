@@ -34,8 +34,8 @@ The default workflow is to add an AWS Security Hub step to a Build or Security s
 
 #### Scan Mode
 
-import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeData from './shared/step-palette/scan/mode/extraction.md';
+import StoSettingScanModeIngest from './shared/step-palette/scan/mode/ingestion.md';
 
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
@@ -43,7 +43,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from './shared/step-palette/scan/config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -52,8 +52,8 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-import StoSettingScanTypeConfig  from './shared/step_palette/target/type/_config.md';
-import StoSettingScanTypeInst    from './shared/step_palette/target/type/_app.md';
+import StoSettingScanTypeConfig  from './shared/step-palette/target/type/config.md';
+import StoSettingScanTypeInst    from './shared/step-palette/target/type/app.md';
 
 
 <StoSettingScanTypeInst />
@@ -64,21 +64,21 @@ import StoSettingScanTypeInst    from './shared/step_palette/target/type/_app.md
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from './shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
 
 ### Ingestion File 
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/file.md';
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 
@@ -106,7 +106,7 @@ Your AWS region.
 
 ### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
@@ -114,7 +114,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 

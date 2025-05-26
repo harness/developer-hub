@@ -43,9 +43,9 @@ The recommended workflow is to add a CheckmarxOne step to a **Security** or **Bu
 
 
 #### Scan Mode
-import StoSettingScanModeOrch from '../shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeDataload from '../shared/step_palette/scan/mode/_extraction.md';
-import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeOrch from '../shared/step-palette/scan/mode/orchestration.md';
+import StoSettingScanModeDataload from '../shared/step-palette/scan/mode/extraction.md';
+import StoSettingScanModeIngest from '../shared/step-palette/scan/mode/ingestion.md';
 
 <StoSettingScanModeOrch />
 <StoSettingScanModeDataload />   
@@ -62,7 +62,7 @@ import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestio
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from '../shared/step-palette/scan/config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -70,42 +70,42 @@ import StoSettingProductConfigName from '../shared/step_palette/scan/_config-nam
 
 #### Type
 
-import StoSettingScanTypeRepo     from '../shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeRepo     from '../shared/step-palette/target/type/repo.md';
 
 <StoSettingScanTypeRepo />
 
 
 #### Target and variant detection 
 
-import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from '../shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectNote/>
 
 #### Name 
 
-import StoSettingTargetName from '../shared/step_palette/target/_name.md';
+import StoSettingTargetName from '../shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
 
 #### Variant
 
-import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '../shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
 #### Workspace
 
-import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from '../shared/step-palette/target/workspace.md';
 
 <StoSettingTargetWorkspace  />
 
 
 ### Ingestion File
 
-import StoSettingIngestionFile from '../shared/step_palette/ingest/file.md';
+import StoSettingIngestionFile from '../shared/step-palette/ingest/file.md';
 
 <StoSettingIngestionFile  />
 
@@ -117,13 +117,13 @@ import StoSettingIngestionFile from '../shared/step_palette/ingest/file.md';
 
 #### Domain
 
-import StoSettingAuthDomain from '../shared/step_palette/auth/_domain.md';
+import StoSettingAuthDomain from '../shared/step-palette/auth/domain.md';
 
 <StoSettingAuthDomain />
 
 #### Access ID
 
-import StoSettingAuthAccessID from '../shared/step_palette/auth/_access-id.md';
+import StoSettingAuthAccessID from '../shared/step-palette/auth/access-id.md';
 
 <StoSettingAuthAccessID />
 
@@ -132,7 +132,7 @@ For **Access ID**, you can use an existing OAuth client in Checkmarx or create a
 
 #### Access Token
 
-import StoSettingAuthAccessToken from '../shared/step_palette/auth/_access-token.md';
+import StoSettingAuthAccessToken from '../shared/step-palette/auth/access-token.md';
 
 <StoSettingAuthAccessToken />
 
@@ -153,7 +153,7 @@ For **Access ID**, you can use an existing OAuth client in Checkmarx or create a
 
 #### Project Name
 
-import StoSettingToolProjectName from '../shared/step_palette/tool/project/_name.md';
+import StoSettingToolProjectName from '../shared/step-palette/tool/project/name.md';
 
 <StoSettingToolProjectName />
 
@@ -162,14 +162,14 @@ If the specified project does not exist, the step will create a new project usin
 
 ### Log Level
 
-import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '../shared/step-palette/all/log-level.md';
 
 <StoSettingLogLevel />
 
 
 #### Fail on Severity
 
-import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '../shared/step-palette/all/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
@@ -177,14 +177,14 @@ import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severi
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from '../shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from '../shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

@@ -15,6 +15,8 @@ In this document, we'll explore how to verify SLSA Provenance attestation and en
 ## Verify SLSA Attestation
 
 In the Harness SCS, the SLSA verification step is responsible for verifying the attested provenance and applying policies. To incorporate this, navigate to either the build or deploy stage of your pipeline and add the "SLSA Verification" step. When adding this to a deploy stage, ensure it's placed within a [container step group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/).
+
+<DocImage path={require('./static/verify-slsa.png')} width="50%" height="50%" />
     
 
 The SLSA Verification step has the following fields:
@@ -22,10 +24,9 @@ The SLSA Verification step has the following fields:
 * **Name**: Enter a name for the step.
 * **Registry Type**: Choose your registry from the list of supported items.
 
-:::warning Deprecation Alert
+:::info
 
-
-Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the SLSA Verification step.
+When modifying the existing SLSA steps, you must manually remove the digest from the YAML configuration to ensure compatibility with the updated functionality.
 
 :::
 
@@ -35,17 +36,15 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
 
-* **Image:** Enter the name of your image with tag, such as `imagename:tag`.
+* **Image:** Enter the name of your image with tag or digest, such as `imagename:tag` or `imagename@sha256:<digest>`.
 
 </TabItem>
 
-  <TabItem value="dockerhub" label="DockerHub" default>
+  <TabItem value="dockerhub" label="Docker Registry" default>
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image, example `my-docker-org/repo-name`.
-
-* **Tag:** Enter the tag name of your image, example `latest`.
+* **Image:** Enter the name of your image using a tag or digest, example `my-docker-org/repo-name:tag` or `my-docker-org/repo-name@sha256:<digest>`.
 
 </TabItem>
 
@@ -53,13 +52,11 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Elastic container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image, example `my-docker-repo/my-artifact`.
+* **Image:** Enter the name of your image, example `my-docker-repo/my-artifact` or `my-docker-repo/my-artifact@sha256:<digest>`.
 
 * **Region:** The geographical location of your ECR repository, example `us-east-1`
 
 * **Account ID:** The unique identifier associated with your AWS account.
-
-* **Tag:** Enter the tag name of your image, example `latest`.
 
 
 </TabItem>
@@ -72,9 +69,8 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
 
-* **Image Name:** Enter the name of your image, example `repository-name/image`.
+* **Image Name:** Enter the name of your image with tag oe digest, example `repository-name/image:tag` or `repository-name@sha256:<digest>`.
 
-* **Tag:** Enter the tag name of your image, example `latest`.
 
 </TabItem>
 
@@ -82,11 +78,10 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
 
-* **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where   `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/acr`
+* **Image:** Enter your image details in the format `<registry-login-server>/<repository>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where `<registry-name>` is the name you have given to your container registry instance in Azure. Example: `automate.azurecr.io/<my-repo>:tag` or you can use digest `automate.azurecr.io/<my-repo>@sha256:<digest>`
 
 * **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
 
-* **Tag:** Enter the tag name of your image, example `latest`.
 
 </TabItem>
 </Tabs>
@@ -100,6 +95,7 @@ The attestation verification process requires the corresponding **public key** o
 import CosignVerificationOptions from '/docs/software-supply-chain-assurance/shared/cosign-verification-options.md';
 
 <CosignVerificationOptions />
+
 
 
 ## Enforce Policies on SLSA Provenance

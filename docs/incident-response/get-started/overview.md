@@ -123,7 +123,7 @@ Harness IR integrates with various monitoring, alerting, and collaboration tools
 
 ### API-Based Integrations:
 - **Communication & Collaboration:**
-  - Slack, Microsoft Teams, Zoom.
+  - Slack, Microsoft Teams, Zoom, and Confluence.
 - **Incident Response Automation:**
   - PagerDuty, OpsGenie, Harness Pipelines.
 - **Feature Flagging & Deployment Control:**

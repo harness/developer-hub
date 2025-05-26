@@ -21,9 +21,10 @@ Currently, this feature is behind the feature flag `SSCA_ARTIFACT_SIGNING`. Cont
 
 ## Artifact Signing process in SCS
 
-The Artifact Signing step retrieves the artifact from the container registry, signs it using [Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with a private key from a key pair, and generates a signature file `.sig`. Once the signature is successfully generated, it is pushed back to the same container registry alongside the artifact. This signature file is essential for verifying the artifact's integrity and authenticity. For more details on artifact verification, refer to the [Artifact Verification documentation](/docs/software-supply-chain-assurance/artifact//verify-signed-artifacts.md)
+For signing container images, the Artifact Signing step retrieves the artifact from the container registry, signs it using [Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with a private key from a key pair, and generates a signature file `.sig`. Once the signature is successfully generated, it is pushed back to the same container registry alongside the artifact. This signature file is essential for verifying the artifact's integrity and authenticity. For more details on artifact verification, refer to the [Artifact Verification documentation](/docs/software-supply-chain-assurance/artifact//verify-signed-artifacts.md)
 
-<DocImage path={require('./static/excali-sign.png')} width="70%" height="60%" />
+
+<DocImage path={require('./static/artifact-sign-excali.png')} width="70%" height="60%" />
 
 <!-- ## Requirements
 
@@ -36,6 +37,12 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 ## Artifact Signing step configuration
 
 The Artifact Signing step allows you to sign your artifacts and optionally push the generated signature file `.sig` to the same artifact registry from which the artifact was retrieved.
+
+Artifact Signing step supports both [**container**](/docs/software-supply-chain-assurance/artifact/sign-artifacts#container-images) as well as [**non-container images**](/docs/software-supply-chain-assurance/artifact/sign-artifacts#non-container-images).
+
+<DocImage path={require('./static/artifact-sign.png')} width="50%" height="50%" />
+
+### Container Images
 
 You can search for **Artifact Signing** and add it to either the **Build** or **Security** stage of a Harness pipeline
 
@@ -52,28 +59,21 @@ Follow the instructions below to configure the Artifact Signing step.
 * **Artifact Source**: Select the source container registry (e.g., DockerHub, ACR, ECR, etc.).
 
 
-:::warning Deprecation Alert
-
-Google Container Registry (GCR) has been deprecated and shut down. As a result, we no longer support GCR for the Artifact Signing step
-
-:::
-
 <Tabs>
 
-<TabItem value="har" label="HAR" default>
 
-* **Registry:** Select the Harness Registry configured for the Harness Artifact Registry where your artifact is stored.
-
-* **Image:** Enter the name of your image with tag, such as `imagename:tag`.
-
-</TabItem>
-
-
-  <TabItem value="dockerhub" label="DockerHub">
+  <TabItem value="dockerhub" label="Docker Registry" default>
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image using a tag or digest, example `my-docker-org/repo-name:tag` or you can use the digest `my-docker-org/repo-name@sha256:<digest>`
+* **Image:** Enter the name of your image using a tag or digest, example `my-docker-org/repo-name:tag` or `my-docker-org/repo-name@sha256:<digest>`
+
+:::note
+
+Unlike other artifact sources, JFrog Artifactory requires additional permissions for attestation. The connector’s user or token must have `Read`, `Annotate`, `Create/Deploy`, and `Delete` permissions.
+
+:::
+
 
 </TabItem>
 
@@ -108,7 +108,7 @@ Google Container Registry (GCR) has been deprecated and shut down. As a result, 
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
 
-* **Image:**: Enter the name of your image using tag or digest, example `repository-name/image:tag` or you can use digest `repository-name/image:digest`.
+* **Image:**: Enter the name of your image using tag or digest, example `repository-name/image:tag` or you can use digest `repository-name/@sha256:<digest>`.
 
 * **Artifact Digest:** Specify the digest of your artifact. After building your image using the [Build and Push](#slsa-generation-step-configuration-with-build-and-push-step) step or a [Run](#slsa-generation-step-configuration-with-run-step) step, save the digest in a variable. You can then reference it here using a Harness expression. Refer to the workflows described below for detailed guidance.
 
@@ -128,11 +128,30 @@ import GenerateKeysPrerequisite from '/docs/software-supply-chain-assurance/shar
 <GenerateKeysPrerequisite />
 
 
-
-<DocImage path={require('./static/artifact-signnning.png')} width="50%" height="50%" />
-
-
 **Attach Signature to Artifact Registry** (Optional): By default, this option is unchecked which means the signature will not be uploaded to the artifact registry and checking this option will push the signature as a `.sig` file to the artifact registry.
+
+
+### Non-Container Images
+
+Artifacts aren't limited to container images. With the Artifact Signing step, non-container images (such as Helm charts, JARs, WARs, and manifest files) can also be signed where each artifact is uniquely identified by its digest (SHA), which is used during the verification step to ensure integrity and authenticity.
+
+Follow the instructions below to configure the Artifact Signing step for non-container images:
+
+**Name:** Provide a name for the signing step.
+
+**Artifact Source:** Select the Harness Local Stage as the source of the artifact.
+
+**Workspace Artifact Path:** Provide the exact path to the artifact within the workspace. Ensure that you run a custom step to pull the artifact into the workspace directory.
+
+**Target Detection:** Choose between Auto and Manual
+
+**Auto (default):** Automatically sets the artifact name from the provided path.
+
+**Manual:** Allows you to manually specify the artifact name and version.
+
+Non-container images can be signed using **Cosign** or **Cosign with Secret Manager**, just like container images.
+
+<DocImage path={require('./static/non-container-signing.png')} width="50%" height="50%" />
 
 ## View Signed Artifacts
 

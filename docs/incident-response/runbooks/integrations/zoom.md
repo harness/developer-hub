@@ -18,22 +18,26 @@ Zoom integration enables your runbooks to:
 - Share meeting recordings
 - Track attendance
 
-## Connector-Based Integration
+## Setting Up the Zoom Connector
 
 ### Prerequisites
-- Zoom admin access
-- OAuth credentials
-- Harness Project Admin role
+Before configuring Zoom integration:
+1. [Configure a Zoom project connector](../configure-project-connectors.md#zoom-connector) for your project
+2. Ensure you have appropriate Zoom permissions
 
-### Setup Steps
-1. Navigate to **Settings** → **Connectors**
-2. Click **+ New Connector**
+### Step-by-Step Setup for Organization Connector
+
+1. Navigate to **Account Settings** → **Connectors**
+2. Click **+ Add Connector**
 3. Select **Zoom**
-4. Configure OAuth:
-   - Client ID
-   - Client Secret
-   - Account-level token
-5. Test connection
+4. Enter a connector name in the format: `[Organization Name] - Zoom Connector`
+5. In the Authorization step:
+   - Choose between OAuth (recommended) or Account ID and Secret (default)
+   - For OAuth: Click "Sign in with Zoom" and authorize access
+6. For Connectivity Mode:
+   - Verify "Connect through the Harness Platform" is selected
+   - Click Continue
+7. Complete the setup process
 
 ### Required Permissions
 - Meeting:Write
@@ -41,41 +45,59 @@ Zoom integration enables your runbooks to:
 - User:Read
 - Group:Read
 
-## Using Zoom in Runbooks
+## Using the Zoom Connector
+
+### Creating a Zoom Meeting Runbook
+1. Create a new runbook or edit an existing one
+2. Add a new Action
+3. From the Action Picker, select **Create Zoom Meeting**
+4. No additional configuration is required - the default Zoom connector will be used
+
+### Executing the Runbook
+1. Open an existing incident or create a new one
+2. Navigate to the Runbooks tab
+3. Click **Execute a Runbook**
+4. Select your runbook with the Zoom meeting action
+5. Click the run/play icon to execute
+6. View the results in the incident timeline
+
+## Disabling the Connector
+
+### Remove from Zoom Marketplace
+1. Go to the [Zoom Marketplace](https://marketplace.zoom.us)
+2. Navigate to **Manage → Installed Apps**
+3. Locate the Harness app
+4. Click **Remove** or **Uninstall**
+5. Confirm the removal
+6. Verify in Harness:
+   - Navigate to **Account Settings** → **Connectors**
+   - Confirm the Zoom connector is no longer listed
+   - Check that related secrets have been automatically removed
+
+## Zoom Actions and Features
 
 ### Create Incident Bridge
-```yaml
-- Action Type: Zoom
-  Operation: Create Meeting
-  Topic: "P1 Incident - [incident.service]"
-  Agenda: "Incident Response Bridge for [incident.id]"
-  Settings:
-    JoinBeforeHost: true
-    WaitingRoom: false
-    AutoRecording: "cloud"
-```
+When adding a Zoom action to your runbook, you can configure:
+- Meeting Topic (e.g., "P1 Incident - [service name]")
+- Meeting Agenda
+- Meeting Settings:
+  - Allow participants to join before host
+  - Enable/disable waiting room
+  - Set up automatic cloud recording
 
-### Schedule Follow-up
-```yaml
-- Action Type: Zoom
-  Operation: Schedule Meeting
-  Topic: "Incident [incident.id] Review"
-  StartTime: "[incident.resolved_time + 1 day]"
-  Duration: 30
-  Participants: ["@incident.owner", "@incident.team"]
-```
+### Schedule Follow-up Meeting
+You can schedule follow-up meetings by configuring:
+- Meeting Topic
+- Start Time (can use incident resolution time + offset)
+- Duration
+- Participant List (can include incident owner and team members)
 
-### Update Meeting
-```yaml
-- Action Type: Zoom
-  Operation: Update Meeting
-  MeetingId: "[zoom.meeting_id]"
-  Settings:
-    EnableBreakout: true
-    Rooms:
-      - Name: "Technical Discussion"
-      - Name: "Stakeholder Updates"
-```
+### Update Existing Meeting
+Modify meeting settings such as:
+- Enable/disable breakout rooms
+- Add or remove participants
+- Update meeting security settings
+- Modify recording settings
 
 ## Best Practices
 
@@ -104,18 +126,6 @@ Zoom integration enables your runbooks to:
 2. Add response team
 3. Enable recording
 4. Share meeting link
-
-### Status Updates
-1. Schedule regular updates
-2. Invite stakeholders
-3. Prepare agenda
-4. Share previous recording
-
-### Post-Incident Review
-1. Schedule retrospective
-2. Invite participants
-3. Share incident timeline
-4. Record discussions
 
 ## Troubleshooting
 

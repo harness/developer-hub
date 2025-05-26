@@ -519,12 +519,6 @@ When managing templates inline in Harness, your templates are stored in the Harn
 
 You can set the template version used in a pipeline when you build out the pipeline. You can set any version of the template to be the stable version, and you can configure all pipelines that reference the template to use the **Always reference from Stable** option.
 
-:::info note
-Harness now supports storing Inline Entities in the Harness Git Repository.  
-For more details, refer to [Storing Inline Entities in Harness Git Repository](/docs/platform/git-experience/harness-code-inline.md).
-:::
-
-
 ### Create a new version of an inline template
 
 Harness recommends that you manage template versions primarily in the UI. This ensures that you can see the changes between updates to an existing version of the template.

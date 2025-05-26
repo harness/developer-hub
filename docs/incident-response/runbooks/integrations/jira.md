@@ -7,7 +7,7 @@ description: Learn how to integrate Jira with Harness Incident Response Runbooks
 
 # Jira Integration for Runbooks
 
-Harness Incident Response integrates with Jira through a Connector-based approach, enabling automated ticket management and incident tracking.
+Harness Incident Response integrates with Jira through a Connector-based approach, enabling automated ticket management and incident tracking. While organization-level connectors are configured here, you'll also need to set up project-level connectors to ensure proper attribution of runbook actions.
 
 ## Overview
 
@@ -18,7 +18,9 @@ Jira integration enables your runbooks to:
 - Automate workflow transitions
 - Sync incident updates bidirectionally
 
-## Connector-Based Integration
+## Organization-Level Connector Setup
+
+The following steps describe how to configure Jira at the organization level. For project-level connector configuration required for runbooks, see [Configure Project Connectors](../configure-project-connectors.md).
 
 ### Prerequisites
 - Jira admin access
@@ -219,6 +221,6 @@ The following features are planned for future releases:
 
 ## Next Steps
 
-- [Configure ServiceNow Integration](./servicenow.md)
-- [Configure Teams Integration](./teams.md)
-- [Return to Runbook Overview](../runbooks.md)
+* [Configure Project Connectors](../configure-project-connectors.md) - Set up project-level Jira connectors for runbook actions
+* [Create a Runbook](../create-runbook.md) - Start creating runbooks with Jira actions
+* [Configure Authentication](../configure-authentication.md) - Learn more about authentication options

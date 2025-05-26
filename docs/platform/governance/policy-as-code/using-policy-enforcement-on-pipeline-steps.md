@@ -1,7 +1,7 @@
 ---
-title: Use Harness Policy As Code to enforce policies on steps
-description: Enforce policies on pipeline steps.
-sidebar_position: 8
+title: Enforce policies on steps
+description: Learn how to use policy as code to enforce policies on pipeline steps.
+sidebar_position: 5
 helpdocs_topic_id: vb6ilyz194
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false

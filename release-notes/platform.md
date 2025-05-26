@@ -53,6 +53,29 @@ If your organization restricts access to Google Artifact Registry (GAR), conside
 
 ::: 
 
+:::danger Breaking Changes 
+   **Introducing a new set of permissions, while marking existing DEPRECATED permissions as INACTIVE.**  
+
+    Currently, **Notification Rules** and **Notification Channels** are governed by a single set of permissions:
+
+    | **Resource**                                      | **Permissions**                                                                                                              | **Current status** | **New status** |
+    |---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|--------------------|----------------|
+    | **Notifications Rules and Notification Channels** | <li>View (`core_notification_view`)</li><li>Edit (`core_notification_edit`)</li><li>Delete (`core_notification_delete`)</li> | DEPRECATED             | INACTIVE     |
+
+
+    However, starting from June 12, 2025, these permissions will become non-operational. They will be replaced with separate new permissions: 
+
+    | **Resource**              | **New Permissions**                                                                                                                               | **Current status** | **New status** |
+    |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|----------------|
+    | **Notification Rules**    | <li>View (`core_notificationrule_view`)</li><li>Edit (`core_notificationrule_edit`)</li><li>Delete (`core_notificationrule_delete`)</li>          | EXPERIMENTAL       | ACTIVE         |
+    | **Notification Channels** | <li>View (`core_notificationchannel_view`)</li><li>Edit (`core_notificationchannel_edit`)</li><li>Delete (`core_notificationchannel_delete`)</li> | EXPERIMENTAL       | ACTIVE         |
+
+
+    If any automation relies on these `core_notification_view/edit/delete` permissions, we recommend updating them accordingly.
+
+    **Note:** The existing legacy notification permissions are DEPRECATED and will soon be moved to an INACTIVE state. The new permissions will be released in the ACTIVE state with RBAC enforced.
+:::
+
 :::info important
 This is a notification for a feature change aimed at enhancing your experience with Harness. Here's what you need to know:
 
@@ -105,7 +128,104 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
+## May 2025
+
+### Version 1.90.x <!-- May 19, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where users couldn’t create, edit, or delete custom dashboards and folders due to incorrect permission checks. These actions now work as expected based on the assigned permissions. [PL-62667]
+- Fixed an issue where updating users in an SCIM-managed group caused an error. This behavior was inconsistent with the Terraform provider. Now, instead of throwing an error, the system ignores the incoming user data and retains the existing users when saving the group. [PL-62492] 
+- Fixed an issue where the Terraform provider version is no longer hardcoded in the installation command. It will now be automatically selected based on the delegate's configuration. [PL-61735]
+
+#### New Feature and Enhancement 
+
+- SMP customers can now see the chart version in the Harness UI under Account Details. [PL-62579]
+- All SMP services now support a custom Istio gateway. [PL-61322]
+- All SMP services now support Istio and Virtual Services. [PL-59078]
+- **User Impersonation**: Account Administrators can now securely impersonate users to troubleshoot access issues and ensure the right permissions are in place. This eliminates guesswork and helps validate user experiences by allowing admins to temporarily access and perform actions on a user's behalf. This feature is currently behind the feature flag: `PL_ENABLE_USER_IMPERSONATION`. [PL-43425]
+
+### Version 1.89.x <!--May 13, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where the value for a reference-type secret was missing during policy evaluation. With this fix, the value is now passed correctly, ensuring that policy evaluation on values is honoured. [PL-62417]
+- Resolved an issue where deleted variables did not reflect correctly in Resource Groups. Now, if a variable is deleted, it will also be removed from any associated Resource Groups. [PL-60850]
+- Updated the API docs for [**User Group APIV2** API](https://apidocs.harness.io/tag/User-Group/#operation/getUserGroupV2) to correctly reflect the subset of fields returned in the response. [PL-62617] 
+
+### Version 1.88.x <!--May 5, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where unauthenticated users were redirected to the homepage after login instead of their intended deep link destination. [PL-61939]
+- Fixed error messaging for non-inline secrets created via YAML to ensure accurate status on the secret listing page. [PL-62270]
+
+#### New features and enhancements
+
+- Delegate Configurations have been removed from the Resource Group configuration UI to reduce clutter and simplify the interface.[PL-60603]
+- New Audit Event for API Token Expiry: Harness now logs an audit event whenever an API token expires. This enhancement improves visibility and traceability of token lifecycle events, supporting stronger security auditing. [PL-62394]
+
+## April 2025 
+
+### Version 1.87.x <!--April 28, 2025-->
+
+#### Fixed issues
+
+- Used enhanced secretId parsing to account for dynamic secret references. [PL-62089]
+- Email text overflow is now wrapped to prevent overlapping with the date column. [PL-6022]
+
+#### New features and enhancements
+
+- Implicit tag (delegate name) is now supported for delegate version override. [PL-62335]
+- Added support for governing scope Variables in Harness using Open Policy Agent (OPA) policies, enabling fine-grained control over variable creation and editing. This feature is currently behind the feature flag `PL_ENABLE_OPA_FOR_VARIABLES`. [PL-61504]
+
+### Version 1.86.x <!--April 23, 2025-->
+
+#### Fixed issues
+
+- Resolved an issue where future-dated cloud credits were not consumed when no current credits were available. Previously, this caused overage to be incorrectly updated. [PL-62134]
+- Addressed a performance issue where the FileStore page was slow when too many files were loaded at once. We’ve added virtualization so that only a few files load at a time, making the page much faster and smoother. [PL-61880] 
+- Deprecated the ‘Account Edition’ column from the Account List View across Harness. This change is part of our ongoing effort to simplify the UI and reduce redundancy. [PL-61850]
+
+#### New features and enhancements
+
+- Pipeline notifications sent to Datadog are now tagged with `source:harness_notifications`, following the release of the [Harness Notifications integration](https://docs.datadoghq.com/integrations/harness_harness_notifications/) in Datadog. [PL-59888]
+
+### Version 1.85.x <!--April 16, 2025-->
+
+#### Fixed issues
+- Added support for using MinIO external secrets with Log Service. [PL-61107]
+
+#### New features and enhancements
+- Upgraded internal protocol buffer library from `protobuf-java` 3.15.5 to 4.28.3 to address security vulnerabilities and enhance service communication, with no impact on user experience or workflows. [PL-61208]
+- Introduced a maximum limit on role assignments per account based on license edition to safeguard system stability: 100 for Community and Free editions, and 75,000 for Team and Enterprise editions. [PL-58428]
+
+### Version 1.84.x <!--April 9, 2025-->
+
+#### Fixed issues
+- Resolved an issue where the Auto Upgrade Indicator for Delegates was not displaying correctly in certain scenarios.[PL-61711]
+- Resolved an issue that caused crashes during page navigation on the Audit Trail page. To access a specific page in the Audit Trails directly, users can either manually modify the URL or navigate through the available pages using the Previous and Next buttons. [PL-61658]
+
+### Version 1.83.x <!--April 2, 2025-->
+
+#### Fixed issues
+- Fixed: Ignored `docker.io` in image tag for delegate upgrade checks, as it is the default registry when not specified. [PL-61417]
+- Fixed an issue where the "New Project" button was incorrectly enabled after switching organizations, even for users without project creation permissions. Now, permissions are re-validated after scope switching, ensuring the button remains disabled when necessary. [PL-61225]
+- Fixed an issue on the Delegate Token listing page in Safari where tokens weren’t copied to the clipboard despite showing a success message. Tokens are now copied correctly. [PL-56230]
+
+#### New features and enhancements
+- Added support to configure [Sumo Logic as a streaming destination](/docs/platform/governance/audit-trail/audit-streaming/#configure-the-streaming-connector) to send Harness audit log data to an HTTP source in Sumo Logic. This feature is currently behind the feature flag `PL_ENABLE_SUMOLOGIC_AUDIT_STREAMING` and requires Harness Delegate version 85500 or later. [PL-58532]
+
 ## March 2025 
+
+### Version 1.82.x <!--March 27, 2025-->
+#### Fixed issues
+- Fixed the error message displayed when LDAP login fails due to invalid credentials. [PL-60508]
+- Fixed an issue in the authentication flow between the delegate and manager. Previously, if a delegate sent an expired JWT token, it would receive a **token revoked** exception instead of a **token expired** exception. This behavior has now been corrected. [PL-61313]
+- Updated Cloud Credits routing to exclude the module prefix, resolving navigation issues. Users can now access Cloud Credits seamlessly while navigating through a module. [PL-61140]
+
+#### New features and enhancements
+- Enhanced service account inheritance, allowing a single service account at the account level to be inherited at the project or organization level. This enables users to manage all resources with a single service account. To enable this functionality, use the feature flag `PL_ENABLE_SERVICE_ACCOUNT_HIERARCHY`. [PL-58311,PL-61532]
 
 ### Version 1.81.x <!--March 20, 2025-->
 #### Fixed issues
@@ -114,6 +234,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 - Starting April 01, 2025, Harness will transition to Google Artifact Registry (GAR) as the default public registry. All Harness container images will be pulled from GAR by default, as Docker Hub will enforce stricter limits on public image pulls starting April 01, 2025. [PL-60930]
+- Added support to send [Central notifications through Delegate](/docs/platform/notifications/centralised-notification/#setting-up-notifications-management). Users can now select the connectivity mode as either Harness Platform or Harness Delegate when creating a central notification channel. [PL-57851]
 
 
 ### Version 1.80.x <!--March 10, 2025-->
@@ -2947,7 +3068,7 @@ Delegate version: 22.12.77802
 
 - You can now refer to existing secrets of Azure Key Vault, AWS secret manager, and GCP secret manager. (PL-29915)
 
-  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](/docs/first-gen/firstgen-platform/security/secrets-management/reference-existing-secrets/).
+  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets).
 
 - You can now use the Git client to commit changes while creating or updating pipelines using Bitbucket on-prem as the Git provider. (PIE-6423)
 

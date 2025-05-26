@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 The **Custom Scan** step enables you to configure supported scanners that don't yet have their own dedicated step in the Harness Step Library.
 
-import CustomScannersThatUseCustomStep from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_scanners-that-use-custom-scan-step.md';
+import CustomScannersThatUseCustomStep from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/scanners-that-use-custom-scan-step.md';
 
 <CustomScannersThatUseCustomStep />
 
@@ -31,7 +31,7 @@ import CustomScannersThatUseCustomStep from '/docs/security-testing-orchestratio
 <details>
 <summary>Orchestration/extraction workflows</summary>
 
-import CustomScanWorkflowRepo from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_workflow.md';
+import CustomScanWorkflowRepo from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/workflow.md';
 
 <CustomScanWorkflowRepo />
 
@@ -40,7 +40,7 @@ import CustomScanWorkflowRepo from '/docs/security-testing-orchestration/sto-tec
 <details>
 <summary>Ingestion workflows</summary>
 
-import CustomScanWorkflowIngest from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_workflow-ingest-only.md';
+import CustomScanWorkflowIngest from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/workflow-ingest-only.md';
 
 <CustomScanWorkflowIngest />
 
@@ -175,57 +175,57 @@ For supported values, go to the relevant step configuration.
 
 ### Target and variant
 
-import CustomScanTargetVariant from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_target-variant.md';
+import CustomScanTargetVariant from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/target-variant.md';
 
 <CustomScanTargetVariant />
 
 ### Code repositories 
 
-import CustomScanRepo from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_repo.md';
+import CustomScanRepo from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/repo.md';
 
 <CustomScanRepo />
 
 ### Container image 
 
-import CustomScanContainer from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_container.md';
+import CustomScanContainer from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/container.md';
 
 <CustomScanContainer />
 
 ### Application instances 
 
-import CustomScanAppInstance from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_dast.md';
+import CustomScanAppInstance from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/dast.md';
 
 <CustomScanAppInstance />
 
 ### Configurations 
 
-import CustomScanAppConfig from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_config.md';
+import CustomScanAppConfig from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/config.md';
 
 <CustomScanAppConfig />
 
 ### Ingestion file
 
-import CustomScanIngest from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_ingestion-file.md';
+import CustomScanIngest from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/ingestion-file.md';
 
 <CustomScanIngest />
 
 ### Fail on Severity
 
-import CustomScanFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_fail-on-severity.md';
+import CustomScanFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/fail-on-severity.md';
 
 <CustomScanFailOnSeverity />
 
 
 ## Additional Configuration
 
-import ScannerRefAdditionalConfigs from '/docs/security-testing-orchestration/sto-techref-category/shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from '/docs/security-testing-orchestration/sto-techref-category/shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ## Advanced settings
 
-import ScannerRefAdvancedSettings from '/docs/security-testing-orchestration/sto-techref-category/shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from '/docs/security-testing-orchestration/sto-techref-category/shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

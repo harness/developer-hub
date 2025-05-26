@@ -207,6 +207,25 @@ If a parameter is specified both in the values file and as a parameter or file p
 
 Once your GitOps application is updated, you can use the GitOps Sync step to deploy your changes.
 
+#### Rollback for Update GitOps App Step
+
+:::note
+
+This feature is behind the feature flag `CDS_GITOPS_ENABLE_UPDATE_GITOPS_APP_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable this flag.
+
+:::
+
+In order to rollback this step, you will need to add another **Update GitOps App Step** to the rollback phase of this stage.
+
+1. Click on the **Execution / Rollback** toggle in the top right of the studio.
+
+  ![](./static/toggle-rollback.png)
+
+2. Add a **Update GitOps App Step**. This step does not need to be configured and will not use step parameters; it will automatically call the last successful revision and update the manifest accordingly. 
+
+3. Add a [**GitOps Sync**](#gitops-sync-step) step. This will sync the application to match the manifest that was updated during the rollback in the previous step.
+
+
 #### Update GitOps App step for multi-source applications
 
 :::note

@@ -69,3 +69,20 @@ To enable Vulnerability Scanning:
 You can enable OPA policies for your Harness Code repos with Harness Policy As Code. You can configure policies for the **Repository** entity type to enforce those policies on your Harness Code repos.
 
 For more information and instructions, go to [Harness Policy as Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview.md).
+
+## Verify Committer and User Match
+
+This security setting in Harness Code Repository enforces commit email verification. This setting can be enabled under **Repository** → **Manage Repository** → **Security**.
+
+<DocImage path={require('/docs/code-repository/config-repos/assets/verify-committer-email.png')} />
+
+When enabled, users can only push new commits if the committer email matches their email on their Harness user account. If the committer email does not match, the push is blocked.
+
+:::note
+
+Users can still create and push a new branch with commits that were not authored by them, as long as those commits already exist in the repository.
+
+:::
+
+
+

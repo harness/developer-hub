@@ -177,6 +177,14 @@ The following sections cover common Terraform Plan step options.
 
 See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
+When working with Terraform in conjunction with Artifactory, ensure the following:
+
+**Paths in Variable Files:**
+Ensure that the paths specified in your configuration include the full path, including the repository name. For example, instead of specifying just `variables.tf`, specify the full path like `repo_name/variables.tf` to ensure accurate referencing.
+
+**File Archival:**
+The file should be archived into a `.zip` format before being uploaded to Artifactory. This ensures proper handling and file integrity when stored in the repository.
+
 ### AWS S3
 
 1. In **Region**, select the region where your bucket is stored.

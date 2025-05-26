@@ -34,6 +34,18 @@ If you must use `var`, you can use single quotes and `get()` when referencing
 
 Instead of using `<+test.var>` use `<+test.get('var')>`.
 
+:::info
+
+**Escaping the Pipe `(|)` Symbol**
+
+In PowerShell, the pipe symbol `(|)` is used to pass output between cmdlets. You don't need to escape it when using it for piping commands.
+
+However, if you're including the pipe symbol inside a string, PowerShell may try to interpret it as a pipeline, which can cause errors. In such cases, escape it using `^|`.
+
+Example: `echo "Get-Process ^| Sort-Object"`
+Use escaping to prevent PowerShell from treating it as an actual pipeline.
+:::
+
 ### Stopping scripts after failures
 
 The shell script command will continue to process through the script even if a script step fails. To prevent this, you can simply include instructions to stop on failure in your script. For example:
@@ -248,6 +260,12 @@ While you can simply declare a variable in your script using a Harness expressio
 
 * You can more easily identify and manage the Harness expressions used in your script.
 * You can template your script.
+
+:::info note
+When using Script Input Variables in a Shell Script step, avoid setting values that contain newlines.
+Harness retrieves environment variables using the `printenv` command and splits them by newline characters.
+If an input variable includes newlines, this parsing may break, leading to unexpected behavior during execution.
+:::
 
 ### Script output variables
 

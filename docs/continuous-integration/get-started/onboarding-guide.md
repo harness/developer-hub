@@ -28,7 +28,7 @@ This getting started guide will walk you through setting up a build pipeline for
 
 <Tabs>
 <TabItem value="Interactive Guide">
-<DocVideo src="https://app.tango.us/app/embed/Creating-a-Build-Pipeline-in-Harness-for-Go-Applications-e56c08cc4d5c40b0a6f7f8cf27a06a89" title="Create your first CI Pipeline" />
+<DocVideo src="https://app.tango.us/app/embed/e56c08cc-4d5c-40b0-a6f7-f8cf27a06a89?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create your first CI Pipeline"/>
 </TabItem>
 <TabItem value="Step-by-step">
 
@@ -94,9 +94,9 @@ Congratulations on running your first CI pipeline!
 
 Explore the documentation to learn what your Harness CI pipelines can do.
 
-* [Build images, push images, and upload artifacts.](../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact)
+* [Build images, push images, and upload artifacts.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact)
 * [Use caching](/docs/category/share-and-cache-ci-data) and [manage dependencies](/docs/category/manage-dependencies).
-* Run [scripts](../use-ci/run-step-settings.md) and [tests](/docs/category/run-tests).
-* [Use plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) and [write your own plugins](../use-ci/use-drone-plugins/custom_plugins.md).
+* Run [scripts](/docs/continuous-integration/use-ci/run-step-settings.md) and [tests](/docs/category/run-tests).
+* [Use plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins.md) and [write your own plugins](/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins.md).
 * [Explore CI Tutorials and Code Samples](/docs/category/tutorials-and-code-samples) for your use case.
 * [Find the right build infrastructure for you](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).

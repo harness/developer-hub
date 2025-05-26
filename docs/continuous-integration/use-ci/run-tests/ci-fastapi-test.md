@@ -98,7 +98,7 @@ Optionally, you can build the project and test it locally before running tests i
 
 ## Prepare the pipeline
 
-1. Create a [Harnesss CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
+1. Create a [Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 2. Add a [Build stage](../set-up-build-infrastructure/ci-stage-settings), and select the GitHub connector you created in [Prepare the codebase](#prepare-the-codebase).
 3. You can use any [build infrastructure](/docs/category/set-up-build-infrastructure). To follow along with this tutorial,use either Harness Cloud build infrastructure or a Kubernetes cluster build infrastructure.
 

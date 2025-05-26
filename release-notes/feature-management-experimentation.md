@@ -13,23 +13,114 @@ import HarnessApiData from '../src/components/HarnessApiData/index.tsx';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: March 19, 2025
+#### Last updated: May 23, 2025
+
+
+## April 2025
+### [New Feature] Experiments Dashboard
+----
+#### 2025-04-30
+
+Harness Feature Management & Experimentation now offers a new Experiments Dashboard designed to simplify the creation and analysis of experiments.
+
+The new Experiments Dashboard improves the experiment setup process, supports concurrent analysis of multiple treatments, and introduces an intuitive metric table layout for reviewing experiment results.
+
+Key enhancements include:
+
+* A dedicated experiment creation workflow with smart defaults to streamline setup.
+* A redesigned results dashboard for easier interpretation of metrics and impact trends.
+* Support for analyzing multiple treatments in a single view.
+* Decoupling of experiments from feature flag lifecycle management, enabling faster flag cleanup and reducing technical debt.
+
+This release makes it easier for teams to run experiments without requiring deep technical expertise, while providing advanced users with greater visibility and flexibility during analysis.
+
+![Experiments dashboard](./static/fme/experiments-dashboard.png)
+![Experiment - Standard discount](./static/fme/experiments-dashboard-standard-discount.png)
+![Experiments configuration](./static/fme/experiments-dashboard-configuration.png)
+![Experiments metric charts](./static/fme/experiments-dashboard-metric-charts.gif)
+
+#### Related documentation
+- [Experiments](https://help.split.io/hc/en-us/articles/35511708088077-Experiments)
+- [Experiment health check](https://help.split.io/hc/en-us/articles/35928892585741-Experiment-health-check)
+
+### [New Feature] Centralized control for React SDK flag update behavior
+----
+#### 2025-04-16
+
+You can now configure how your React application responds to SDK lifecycle events using new props on the `<SplitFactoryProvider>` component. This allows you to set default reactivity behavior for all components in the application, reducing the need to configure each hook individually. 
+
+This is especially useful for use cases like suppressing UI updates during onboarding flows or session transactions. For example, setting `updateOnSdkUpdate={false}` at the root level (i.e., the `<SplitFactoryProvider>` component) disables updates of the `useSplitTreatments` hook triggered by flag changes until re-enabled.
+
+The following options are supported:
+
+- `updateOnSdkReady`
+- `updateOnSdkReadyFromCache`
+- `updateOnSdkTimedout`
+- `updateOnSdkUpdate`
+
+These settings apply to all nested hooks and components unless explicitly overridden.
+
+For example:
+
+```javascript
+const App = () => (
+  <SplitFactoryProvider 
+    config={sdkConfig} 
+    updateOnSdkUpdate={false} // Disables SDK_UPDATE-triggered re-renders for all child components
+  >
+    <MyApp />
+  </SplitFactoryProvider>
+);
+```
+
+#### Related documentation
+- [React SDK](https://help.split.io/hc/en-us/articles/360038825091-React-SDK#subscribe-to-events)
+
+### [New Feature] Append impression properties
+----
+#### 2025-04-10
+The following SDKs now allow you to append properties to impressions for each `getTreatment` call: Browser, iOS, JavaScript, Node.js, React, and Redux. This provides additional context for in-product troubleshooting within Live tail or downstream external analysis.
+#### Related documentation
+- [Browser SDK](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK#append-properties-to-impressions)
+- [Browser SDK Suite](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite#append-properties-to-impressions)
+- [iOS SDK](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK#append-properties-to-impressions)
+- [iOS SDK Suite](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite#append-properties-to-impressions)
+- [Java SDK](https://help.split.io/hc/en-us/articles/360020405151-Java-SDK#append-properties-to-impressions)
+- [JavaScript SDK](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#append-properties-to-impressions)
+- [Node.js SDK](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK#append-properties-to-impressions)
+- [React SDK](https://help.split.io/hc/en-us/articles/360038825091-React-SDK#append-properties-to-impressions)
+- [Redux SDK](https://help.split.io/hc/en-us/articles/360038851551-Redux-SDK#append-properties-to-impressions)
+
 ## March 2025
-### 2025-03-19
-#### AI settings
+### [New Feature] Feature flag impression toggle
+----
+#### 2025-03-26
+The feature flag impression toggle allows you more control over your generated impression volume, by switching flag impression tracking on/off per feature flag per environment.
+
+This feature allows you to streamline impressions sent to third party integrations, but  does not impact FME Monthly Tracked Keys nor billing.
+
+![Impression tracking toggle](./static/fme/impression-tracking-toggle.png)
+
+#### Related documentation
+- [Tracking impressions](https://help.split.io/hc/en-us/articles/360020585192-Impressions#tracking-impressions)
+
+### [New Feature] AI settings
+----
+#### 2025-03-19
 The new AI settings page in Admin settings provides a toggle to enable/disable Release Agent and manage whether Release Agent has permissions to process experimentation data for experiment summarization and Q&A. This provides enhanced control over data privacy for AI features.
 
 ![Admin settings - AI settings](./static/fme/admin-settings-ai-settings.png)
 
 Your data is protected by the [Harness privacy policy](https://www.harness.io/legal/privacy) and the [OpenAI Enterprise privacy policy](https://openai.com/enterprise-privacy/). For more information go to [AI Release Agent](https://help.split.io/hc/en-us/articles/21188803158157-AI-Release-Agent#privacy).
 
-##### Related documentation
+#### Related documentation
 - [AI Release Agent](https://help.split.io/hc/en-us/articles/21188803158157-Switch-AI-assistant)
 
 ## February 2025
-### 2025-02-28
-#### SDK Enhancements
-##### Elixir SDK General Availability
+### [New SDK] Elixir SDK
+----
+#### 2025-02-28
+#### Elixir SDK General Availability
 The [Elixir Thin Client SDK](https://help.split.io/hc/en-us/articles/26988707417869-Elixir-Thin-Client-SDK) enables developers to integrate Harness FME feature flagging and event tracking directly into their Elixir applications. Leveraging [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd), this lightweight SDK provides highly performant first-class FME support within Elixir.
 
 Thanks are due to the team at [Cars.com](https://www.cars.com/) for the initial implementation, which they contributed to the FME user community. The Harness engineering team then finalized the work, making it generally available as a Harness-supported FME SDK.
@@ -46,8 +137,9 @@ Splitd can be set up locally to the consumer application or be deployed as a sid
 * [Split Daemon (splitd)](https://help.split.io/hc/en-us/articles/18305269686157-Split-Daemon-splitd)
 
 ## January 2025
-### 2025-01-08
-#### Release Agent (AI Chatbot)
+### [New Feature] Release Agent (AI Chatbot)
+----
+#### 2025-01-08
 ##### AI-Generated Summary Now Supports Follow-Up Questions
 The "Switch" AI chatbot in Harness Feature Management and Experimentation (FME) has been renamed to "Release Agent" and now supports follow-up questions after you click "Summarize" in metric details.
 To see the Metric summary and ask follow-up questions:
@@ -59,16 +151,17 @@ To see the Metric summary and ask follow-up questions:
 
 ![Image](./static/fme/continue-in-release-agent-02.png)
 
-Note: The transition from "Switch" to "Release Agent" will take place gradually. For now, you'll still see **Ask Switch** in the lower left navigation of Harness Feature Management and Experimentation:<br />
+Note: The transition from "Switch" to "Release Agent" will take place gradually. For now, you'll still see **Ask Switch** in the lower left navigation of Harness Feature Management and Experimentation:
+
 ![Image](./static/fme/ask-switch-in-left-nav.png)
 
 ##### Related documentation
 - [Metric details and trends](https://help.split.io/hc/en-us/articles/360025376251-Metric-details-and-trends)
 - [Switch AI assistant](https://help.split.io/hc/en-us/articles/21188803158157-Switch-AI-assistant)
 
-### 2025-01-07
-#### Targeting
-##### Large segments
+### [New Feature] Targeting - Large segments
+----
+#### 2025-01-07
 Harness Feature Management and Experimentation (FME) now supports "Large segments" (lists of targeting IDs) that can contain more than 100,000 IDs.
 Large segments support multiple use cases where bulk targeting of specific IDs is required:
 - Communicating with more than 100,000 specific customers in-app after an incident.

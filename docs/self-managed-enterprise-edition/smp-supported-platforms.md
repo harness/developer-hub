@@ -19,7 +19,6 @@ This section provides a clear overview of the Supported features, integrations, 
 * [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported/sto-deployments)
 * [Service Reliability Management](/docs/service-reliability-management/srm-whats-supported)
 * [Supply Chain Security (Beta)](/docs/software-supply-chain-assurance/ssca-supported)
-* [Infrastructure as Code Management](/docs/infrastructure-as-code-management)
 * [Code Repository](/docs/code-repository)
 
 For more details on the supported features of other Harness modules, visit [Harness Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
@@ -33,7 +32,9 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 ## Supported functionality
 * [Self-signed certificates](/docs/self-managed-enterprise-edition/install/install-using-helm/#use-self-signed-certificates-with-helm-based-installations)
 * [Air-gap mode](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment)
-* [Infrastructure monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem)
+* Infrastructure monitoring
+    - [Prometheus](/docs/self-managed-enterprise-edition/monitoring/install-prometheus).
+    - [Grafana](/docs/self-managed-enterprise-edition/monitoring/install-grafana)
 * [Backup and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
 * [External Database](./advanced-configurations/external-db/configure-external-databases)
 * [Disaster Recovery](./advanced-configurations/set-up-disaster-recovery)

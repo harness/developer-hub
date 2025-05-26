@@ -11,9 +11,13 @@ Harness Open Source Artifact Registry support a variety of registry types, and n
 These are the currently supported registry types. 
 - Docker
 - Helm
+- Generic
+- Maven
+- Python
+- NPM
 
 ## Coming Soon
 
 In addition to the registry types above, support for the following registries will be coming soon!
-- Generic
-- Maven
+- NuGet
+- RPM

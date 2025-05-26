@@ -5,9 +5,9 @@ sidebar_position: 3
 description: Learn how to set up and manage authentication for different runbook actions and integrations in Harness Incident Response.
 ---
 
-# Configure Authentication for Runbook Actions
+# Configure Authentication
 
-This guide explains how to configure authentication for various integrations used in Harness IR runbooks.
+This guide explains how to configure authentication for your Harness IR integrations. For information about setting up project-level connectors for runbook actions, see [Configure Project Connectors](./configure-project-connectors.md).
 
 ## Overview
 

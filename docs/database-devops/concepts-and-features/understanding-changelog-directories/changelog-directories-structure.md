@@ -18,6 +18,10 @@ The `includeAll` directive is a powerful feature that simplifies the management 
 3. **Predictable Ordering**: Files are processed in alphabetical order, making it easy to control execution sequence.
 4. **Reduced Human Error**: Eliminates the risk of accidentally omitting changelog files from the master list.
 
+:::warning Important Best Practice
+Each changeset should contain only one DML/SQL statement. This is especially crucial for proper rollback handling in databases like Oracle. Multiple statements in a single changeset can make rollbacks complex and potentially unreliable.
+:::
+
 Example usage in a master changelog:
 
 ```yaml
@@ -25,8 +29,11 @@ databaseChangeLog:
   - includeAll:
       path: db/changelog/releases/
       errorIfMissingOrEmpty: true
-      relativeToChangelogFile: true
 ```
+
+:::note
+The path specified in includeAll should be relative to the location of the changelog file that contains this statement.
+:::
 
 :::tip
 Use a consistent naming convention for your changelog files (e.g., `001-feature-name.yaml`, `002-feature-name.yaml`) to ensure they are processed in the intended order when using `includeAll` as the files are processed in **alphabetical order**.

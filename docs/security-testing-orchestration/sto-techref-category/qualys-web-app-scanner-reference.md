@@ -13,7 +13,7 @@ You can ingest your application scan results from Qualys Web Application Scannin
 
 ## Workflow description
 
-import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+import CustomScanWorkflowIngest from './shared/custom-scan/workflow-ingest-only.md';
 
 <CustomScanWorkflowIngest />
 
@@ -94,7 +94,7 @@ default
 
 ### Target and variant
 
-import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
@@ -123,7 +123,7 @@ import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 ### Ingestion file
 
 
-import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
+import StoLegacyIngest from './shared/custom-scan/ingestion-file.md'; 
 
 
 <StoLegacyIngest />
@@ -132,7 +132,7 @@ import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md';
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/custom-scan/fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
