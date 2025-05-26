@@ -13,9 +13,7 @@ Use FME's dependency matcher when you want one feature flag to depend on the eva
 
 Let's say we have two feature flags with the second depending on the evaluation of the first. In this example, we would like 20% of customers who receive the on treatment for the *new_test* feature flag to evaluate to on for the *advance_new_feed* feature flag while the other 80% should evaluate to *off*.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/30744262565133" alt="target_with_dependencies.png" width="537" />
-</p>
+![](./static/target-with-dependencies.png)
 
 FME's dependency matcher is located in the condition string to meet your most granular targeting needs.
 

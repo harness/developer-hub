@@ -12,9 +12,7 @@ sidebar_position: 1
 
 In Harness FME, I noticed an info banner when adding a feature flag targeting rule that uses the **SemVer** (Semantic Version) matcher. How can I confirm that the Harness FME SDK version that I am using in my codebase will support the [SemVer matcher](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes#semver-attributes)?
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/35177699381261" alt="does_my_sdk_support_semver_menu.png" />
-</p>
+![](./static/does-my-sdk-version-support-semver.png)
 
 ### Answer
 

@@ -1179,9 +1179,7 @@ SplitClientConfig config = builder.build();
 
 The following shows an example output:
 
-<p>
-  <img src="/hc/article_attachments/15254428148877" alt="android_log_example.png" />
-</p>
+![](./static/android-sdk-log-example.png)
 
 ## Advanced use cases
 

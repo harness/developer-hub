@@ -11,9 +11,7 @@ sidebar_position: 4
 
 Every feature you want to release in FME has at least two treatments. In the simplest case, these are **on** and **off**. You can edit the treatment's name and description as well as add additional treatments at any time. 
 
- <p>
-  <img src="https://help.split.io/hc/article_attachments/30744395568525" alt="edit_treatments.png" width="638" />
-</p>
+![](./static/edit-treatments.png)
 
 :::note
 You can only create a maximum of 20 treaments.

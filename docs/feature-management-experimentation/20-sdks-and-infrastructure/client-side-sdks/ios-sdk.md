@@ -731,9 +731,7 @@ To enable SDK logging, the `logLevel` setting is available in `SplitClientConfig
 
 The following shows an example output:
 
-<p>
-  <img src="/hc/article_attachments/15254306501901" alt="ios_log_example.png" />
-</p>
+![](../static/ios-sdk-log-example.png)
 
 ## Advanced use cases
 

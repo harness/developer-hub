@@ -1257,9 +1257,7 @@ Unlike a Web app or a traditional server process, code running in a stateless en
 
 To optimize latency, externalize the state of the SDK in a data storage available on the same infrastructure where SDKs are instantiated and instruct the SDKs to "consume" data from that storage instead of fetching it from Harness FME servers. This is known as consumer mode, which has two variants, *consumer* and *partial consumer*, as illustrated in the following diagram.
 
-<p>
-  <img src="/hc/article_attachments/4421718137101/sdk_modes.png" alt="sdk_modes.png" />
-</p>
+![SDK consumer mode architecture diagram](./static/sdk-consumer-mode-architecture-diagram.png)
 
 #### Synchronizing FME data on your storage
 

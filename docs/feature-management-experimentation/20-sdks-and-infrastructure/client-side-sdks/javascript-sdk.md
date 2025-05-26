@@ -1024,7 +1024,7 @@ sdk.Logger.setLogLevel('WARN');
 
 Example output is shown below. 
 
-<p><img src="/hc/article_attachments/360016301591/7694b46-Captura_de_pantalla_2017-05-05_a_las_13.04.08.png" alt="7694b46-Captura_de_pantalla_2017-05-05_a_las_13.04.08.png" /></p>
+![](../static/javascript-sdk-log-example.png)
 
 :::info[Note]
 For more information on using the logging framework in SDK versions prior to 9.2, refer to [https://github.com/visionmedia/debug](https://github.com/visionmedia/debug).

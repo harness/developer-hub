@@ -1083,7 +1083,7 @@ factory.Logger.setLogLevel('WARN');
 
 Example output is shown below.
 
-<p><img src="/hc/article_attachments/360016427052/f517ed3-Logs_output.png" alt="f517ed3-Logs_output.png" /></p>
+![](../static/javascript-sdk-log-example.png)
 
 :::info[Note]
 For more information on using the logging framework in SDK versions prior to 9.2, visit [https://github.com/visionmedia/debug](https://github.com/visionmedia/debug).

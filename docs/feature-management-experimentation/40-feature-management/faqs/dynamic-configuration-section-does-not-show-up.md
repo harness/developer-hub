@@ -17,6 +17,4 @@ This issue is typically caused by the Split user interface using an old page con
 
 To confirm the root cause, open an Incognito browser window and access app.split.io. If the dynamic config section show up, then make sure to clear the browser cache. for example in Chrome, goto Chrome Settings->Clear Browsing Data, then check **Cookies and other site data** box, then click clear.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/15730877894925" alt="does_my_sdk_support_semver_menu.png" />
-</p>
+![](./static/dynamic-configuration-section.png)

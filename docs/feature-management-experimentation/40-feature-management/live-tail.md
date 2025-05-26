@@ -17,9 +17,7 @@ The Live tail functionality within Data hub gives development teams a single pla
 
 This feature allows teams, for example, to check if a feature flag is being evaluated properly or events are being received from data integrations.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/15871798585613" alt="data-hub.png" />
-</p>
+![](./static/live-tail.png)
 
 ## Query impressions 
 

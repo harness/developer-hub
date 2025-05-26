@@ -14,9 +14,7 @@ The feature flag [**Impression tracking** toggle](/docs/feature-management-exper
 
 How can I confirm that the FME SDK version that I am using in my codebase will not send impressions for a feature flag definition that has impression tracking turned off (as shown below)?
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/35322655221389" alt="impressions_tracking_visual_cues" />
-</p>
+![](../static/impressions-tracking-visual-cues.png)
 
 ###  Answer
 

@@ -23,9 +23,7 @@ To use flag sets you need to:
 
    For example, given three flags named `experiment_1`, `experiment_2` and `experiment_3`, the flag definition scoped to the Production environment for `experiment_1` can be associated with the flag set `backend`, while the definitions scoped to the Production environment for `experiment_2` and `experiment_3` can be associated with the flag set `frontend`.
 
-   <p class="wysiwyg-indent4">
-      <img src="https://help.split.io/hc/article_attachments/30744719369229" alt="using_flag_sets_to_boost_sdk_performance.png" width="646" />
-   </p>
+    ![](./static/using-flagsets-to-boost-sdk-performance.png)
 
 3. Configure your SDK to filter by flag set
 

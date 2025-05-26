@@ -14,9 +14,7 @@ This tool reduces connection latencies between the SDKs and Harness FME servers,
 
 ### Architecture
 
-<p>
-  <img src="/hc/article_attachments/360015774891/c4793bf-split-sync_proxy_arch.png" alt="Proxy architecture" />
-</p>
+![](./static/split-proxy-architecture.png)
 
 ## Setup
 
@@ -495,13 +493,9 @@ Returns a binary snapshot file that can be used with the snapshot environment va
 
 Split Proxy has a web admin user interface out of the box that exposes all available endpoints. Browse to `/admin/dashboard` to see it.
 
-<p>
-  <img src="/hc/article_attachments/30652145699469" alt="proxy_dashboard_main.png" />
-</p>
+![](./static/split-proxy-dashboard-main.png)
 
-<p>
-  <img src="/hc/article_attachments/30652167894669" alt="proxy_dashboard_stats.png" />
-</p>
+![](./static/split-proxy-dashboard-stats.png)
 
 The dashboard is organized into four sections for easy visualization:
 
@@ -524,9 +518,8 @@ The dashboard is organized into four sections for easy visualization:
 * **SDK stats**: Metrics numbers and a latency graph, measured between SDKs requests integration and proxy
 * **Split stats**: Metrics numbers and a latency graph, measured between proxy requests integration with Harness servers
 * **Data inspector**: Cached data showing feature flags and segments; filters to find keys and feature flag definitions
-<p>
-  <img src="/hc/article_attachments/30652167897229" alt="proxy_dashboard_data.png" />
-</p>
+
+![](./static/split-proxy-dashboard-data.png)
 
 :::warning[Dashboard refresh rate]
 The dashboard numbers are committed every 60 seconds. The `Logged Errors`, `Last Errors Log` tiles, and `Data inspector` section are populated each time the dashboard is refreshed. 
@@ -538,12 +531,8 @@ For Impressions and Events Queue size, the numbers are refreshed every 10 second
 
 The `split-proxy` service can catch a `kill sig` command and start a graceful shutdown, flushing all cached data progressively. Additionally, you can perform `graceful stop` and `force stop (kill -9)` with one click from the admin dashboard.
 
-<p>
-  <img src="/hc/article_attachments/360022859052/sync5.png" alt="sync5.png" />
-</p>
+![](./static/split-proxy-shutdown.png)
 
 If you configure a Slack channel and a Slack Webhook URL, an alert is sent to the channel when an initialization or shutdown is performed.
 
-<p>
-  <img src="/hc/article_attachments/360022859012/sync6.png" alt="sync6.png" />
-</p>
+![](./static/split-synchronizer-slack.png)

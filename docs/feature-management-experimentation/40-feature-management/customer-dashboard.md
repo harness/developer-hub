@@ -15,9 +15,7 @@ The customer dashboard provides feature flag, segment, and attribute information
 
 The first tab shows the treatments that are served to that customer for each feature flag in your project. Note that attributes of a customer key remain private to our SDKs, feature flags which use attributes for targeting do not show an expected treatment. 
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/15843004057741" alt="customer-dashboard.png" width="586" />
-</p>
+![](./static/traffic-key-dashboard.png)
 
 ## Segments 
 

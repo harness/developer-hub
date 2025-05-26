@@ -57,13 +57,20 @@ When impression tracking is toggled off, feature flag evaluations return treatme
 Toggling impressions on or off does not impact your [MTKs](https://help.split.io/hc/en-us/articles/26978089134349-MTK-Usage-and-Comparing-Counts#what-is-an-mtk) (the number of unique keys for which you evaluate feature flags in a month) or [Account usage data](https://help.split.io/hc/en-us/articles/360034159232-Account-usage-data#usage-data).
 
 To turn impression tracking on or off:
-1. Click the ellipses menu on a feature flag Definition tab, and select the **Track impressions** menu item.<br /> <img src="https://help.split.io/hc/article_attachments/35053650715533" alt="impressions_track_impressions_menu.png" />
-2. Click the **Impression tracking** toggle and click **Save**.<br /> <img src="https://help.split.io/hc/article_attachments/35323674270733" alt="impressions_track_impressions_menu.png" />
+
+1. Click the ellipses menu on a feature flag Definition tab, and select the **Track impressions** menu item.
+
+   ![](./static/impressions-track-impressions-menu.png)
+
+2. Click the **Impression tracking** toggle and click **Save**.
+
+   ![](./static/impressions-toggle.png)
+
 3. On the feature flag Definition tab, click **Review changes** and click **Save**.
 
 When impression tracking is off, you will see "Impression tracking off" at the top right of the feature flag definition page. The arrows will also be grayed out (shown with tooltip) on the the feature flag definition card.
 
-<img src="https://help.split.io/hc/article_attachments/35322655221389" alt="impressions_tracking_visual_cues" />
+![](./static/impressions-tracking-visual-cues.png)
 
 :::info[Impression tracking toggle and SDK compatibility]
 See [this page](/docs/feature-management-experimentation/feature-management/faqs/is-the-feature-flag-impression-toggle-supported) to verify compatibility of FME SDK or optional infrastructure. Older SDK versions that do not support the **Impression tracking** toggle will not detect the toggle on/off setting and will send impressions to Harness servers.

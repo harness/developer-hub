@@ -62,9 +62,7 @@ Starting with split-sync v5.0.0, we've introduced a new approach to impressions 
 
 ### Architecture
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360015774871" alt="Split Synchronizer architecture diagram" />
-</p>
+![](./static/split-proxy-architecture.png)
 
 ## Setup
 
@@ -863,13 +861,9 @@ Returns a JSON object describing whether the servers the synchronizer depends on
 
 Split-sync has a web admin UI out of the box that exposes all available endpoints. Browse to `/admin/dashboard` to see it.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/31811643591693" alt="split_synchronizer_dashboard_main.png" />
-</p>
+![](./static/split-synchronizer-dashboard-main.png)
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/31811626953101" alt="split_synchronizer_dashboard_stats.png" />
-</p>
+![](./static/split-synchronizer-dashboard-stats.png)
 
 The dashboard is organized in four sections for ease of visualization:
 
@@ -896,9 +890,8 @@ The dashboard is organized in four sections for ease of visualization:
 * **SDK stats:** Metrics numbers and a latency graph, measured between SDKs requests integration and proxy.
 * **Data inspector:** Cached data showing feature flags and segments; filters to find keys and feature flag definitions.
 * **Queue Manager:** expose sizes of Impressions and Events queues.
-<p>
-  <img src="https://help.split.io/hc/article_attachments/31811643600013.png" alt="split_synchronizer_dashboard_queue_manager.png" />
-</p>
+
+![](./static/split-synchronizer-dashboard-queue-manager.png)
 
 :::warning[Dashboard refresh rate]
 The dashboard numbers are committed every 60 seconds. The `Logged Errors`, `Last Errors Log` tiles, and the `Data inspector` section are populated each time the dashboard is refreshed.
@@ -909,12 +902,8 @@ For Impressions and Events Queue size the numbers are refreshed every 10 seconds
 
 The `split-sync` service can catch a `kill sig` command and start a graceful shutdown, flushing all cached data progressively. Additionally, you can perform `graceful stop` and `force stop (kill -9)` with one click from the admin dashboard.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360022859052" alt="split_synchronizer_stop_button.png" />
-</p>
+![](./static/split-proxy-shutdown.png)
 
 If you have configured a Slack channel and the Slack Webhook URL, an alert is sent to the channel when and initialization or shutdown is performed.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360022859012" alt="split_synchronizer_slack.png" />
-</p>
+![](./static/split-synchronizer-slack.png)

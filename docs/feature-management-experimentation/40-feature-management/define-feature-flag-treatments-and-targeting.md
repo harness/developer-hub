@@ -29,9 +29,7 @@ Initiating your feature flag definition for a given environment will create an i
 
 If a feature flag definition is not initiated for an environment, the following page appears:
 
-<p class="wysiwyg-indent4">
-  <img src="https://help.split.io/hc/article_attachments/30743834991629" alt="create_a_feature_flag_environment.png" width="1000" />
-</p>
+![](./static/create-a-feature-flag-initiate-environment.png)
 
 To initiate your feature flag definition for an environment, do one of the following:
 
@@ -40,9 +38,7 @@ To initiate your feature flag definition for an environment, do one of the follo
 
 Once the feature flag definition exists for a given environment, the feature flag definition tab will show treatments and targeting rules similar to the following:
 
-<p class="wysiwyg-indent4">
-  <img src="https://help.split.io/hc/article_attachments/30743227189645" alt="targeting-main-view.png" width="850" />
-</p>
+![](./static/define-feature-flag-treatments-and-targeting-main-view.png)
 
 You will be able to modify the feature flag treatments, dynamic configurations, and targeting rules before saving. This allows you to configure your feature flag for a given environment.
 
@@ -88,9 +84,7 @@ In the Individual targets area, you can:
 
 Click the **Add new individual target** button to assign a selected treatment to individual users or segments (e.g., a QA team, internal team, or a limited beta), as shown below.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/32101070992397" alt="targeting_customers_individual.png" width="850" />
-</p>
+![](./static/define-feature-flag-treatments-and-targeting-individual.png)
 
 ### Targeting rules
 
@@ -108,7 +102,7 @@ In the Targeting rules area, you can:
 
     * Optionally select **Distribute treatments as follows** and define a ___percentage distribution___ to [randomly distribute](/docs/feature-management-experimentation/feature-management/faqs/ensure-a-consistent-user-experience) users and segments between your feature flag treatments (variations) based on the percentages you decide. This is also called a _percentage rollout_, as shown below.
 
-  <img src="https://help.split.io/hc/article_attachments/32101075980941" alt="targeting_customers_attribute_based.png" width="850" />
+   ![](./static/define-feature-flag-treatments-and-targeting-attribute-based.png)
 
 :::tip[Tip: Distribute treatments by percentage to enable experimentation]
 If you have at least one targeting rule with ___percentage distribution___, then you can ___compare metric results between feature flag treatments___ (on the [Metrics impact tab](https://help.split.io/hc/en-us/articles/360020844451-Metrics-impact-tab)).

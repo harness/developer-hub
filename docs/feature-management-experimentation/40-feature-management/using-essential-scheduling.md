@@ -19,7 +19,7 @@ To use feature flag scheduling, do the following:
 
 1. After you make changes to a feature flag, the **When is this change going into effect** option in the Change summary page appears:
 
-    <img src="https://help.split.io/hc/article_attachments/15635722714765" width="583" />
+    ![](./static/using-essential-scheduling.png)
 
 2. Select when changes made to the feature flag go into effect as follows:
   * **Immediately.** The feature flag goes into effect immediately. Note: This depends on the environment. If the environment doesn’t require approvals, the change goes live immediately. If approvals are required, the change goes live immediately after it’s approved.

@@ -70,15 +70,19 @@ To create a custom attribute that will appear as a User Attribute in your featur
    :::important[Syntax]
    The attribute ID must start with a letter followed by a combination of dashes(-), underscores(_), letters(a-z A-Z), or numbers(0-9).
    :::
-1. In the Name field, enter a descriptive name (e.g., Amount in customer’s cart at checkout).
-2. In the Description field, optionally enter a description of the attribute.
-3. In the Type dropdown, select an attribute value type (e.g., String to represent text values, Boolean to represent true or false values, etc.). Note that SemVer attributes should not be created as type String in Admin settings. Doing so will prevent you from choosing the SemVer matcher type in Harness FME. Instead, create a new custom attribute within a feature flag's attribute-based targeting rule.
+6. In the Name field, enter a descriptive name (e.g., Amount in customer’s cart at checkout).
+7. In the Description field, optionally enter a description of the attribute.
+8. In the Type dropdown, select an attribute value type (e.g., String to represent text values, Boolean to represent true or false values, etc.).
+
+   ![](./static/target-with-custom-attributes-ios-version.png)
 
    :::tip
-   When you select the String attribute type, you can create a list of suggested values to match against in your attribute based targeting rules.
+   When you select the Semver or String attribute type, you can create a list of suggested values to match against. These suggested values will appear in Split UI when you are creating your feature flag attribute based targeting rules.
    :::
 
-4. Click the **Create** button. A new custom attribute is created and displayed on the Attributes page.
+   ![](./static/target-with-custom-attributes-semver-suggested.png)
+
+9. Click the **Create** button. A new custom attribute is created and displayed on the Attributes page.
 
 #### Creating multiple custom attributes in Admin Settings
 
@@ -117,8 +121,8 @@ To create multiple custom attributes that will appear as User Attributes in your
 
 You can create custom attributes for use in feature flag targeting rules by using the following Split API endpoints:
 
-__[Save attribute](https://docs.split.io/reference/save-attribute):__ Create or overwrite a custom attribute associated with a project and traffic type.
-__[Save identity](https://docs.split.io/reference/save-identity):__ Create or overwrite a single user ID object (and its custom attribute values).
+* __[Save attribute](https://docs.split.io/reference/save-attribute):__ Create or overwrite a custom attribute associated with a project and traffic type.
+* __[Save identity](https://docs.split.io/reference/save-identity):__ Create or overwrite a single user ID object (and its custom attribute values).
 
 As with attributes [created in Admin settings](#creating-custom-attributes-in-admin-settings), the attributes created using the Split API will will be associated with a project and traffic type and will appear as **User Attributes** in Harness FME.
 
@@ -128,57 +132,45 @@ After you [create a feature flag](/docs/feature-management-experimentation/featu
 
 1. In Harness FME, on the Definition tab of a feature flag, in the Targeting rules area, click the **Add attribute based targeting rules** button. The **IF** field/dropdown menu appears.
 
-    <p>
-     <img src="https://help.split.io/hc/article_attachments/30742702211469" alt="target_with_custom_attributes_using_custom_attributes_01.png" width="1000" />
-    </p> 
+   ![](./static/target-with-custom-attributes-using-custom-attributes-01.png)
 
 2. Choose a **User Attribute** (custom attribute):
-  Choose a custom attribute from the **IF** dropdown menu’s **User Attributes** section. 
-    
-    <p>
-     <img src="https://help.split.io/hc/article_attachments/30742676299405" alt="target_with_custom_attributes_using_custom_attributes_02_user_attribute.png" width="1000" />
-    </p> 
+  Choose a custom attribute from the **IF** dropdown menu’s **User Attributes** section.
+
+   ![](./static/target-with-custom-attributes-using-custom-attributes-02-new-attribute.png)
     
     Or **create a new custom attribute**:
   You can also directly click within the **IF** field, type a new custom attribute ID, and click **New attribute “your new ID”** to create a new custom attribute.
-    
-    <p>
-     <img src="https://help.split.io/hc/article_attachments/30742702239501" alt="target_with_custom_attributes_using_custom_attributes_02_new_attribute.png" width="1000" />
-    </p> 
+
+   ![](./static/target-with-custom-attributes-using-custom-attributes-02-user-attribute.png)
 
 3. Select a matcher to evaluate the attribute values passed in from your source code. For more information about matchers and how they evaluate values, see the [Custom attribute types and matchers](#custom-attribute-types-and-matchers) section below.
 
-    <p>
-     <img src="https://help.split.io/hc/article_attachments/30742702246541" alt="target_with_custom_attributes_using_custom_attributes_03.png" width="1000" />
-    </p> 
+   ![](./static/target-with-custom-attributes-using-custom-attributes-03.png)
+
+You can also directly click within the IF field, type a new custom attribute ID, and click New attribute “your new ID” to create a new custom attribute.
 
 4. Complete the targeting rule by filling in the values to match against and choosing the treatment(s) to serve.
 
-    <p>
-     <img src="https://help.split.io/hc/article_attachments/30742676318349" alt="target_with_custom_attributes_using_custom_attributes_04.png" width="1000" />
-    </p> 
+    ![](./static/target-with-custom-attributes-using-custom-attributes-04.png)
 
    Additional examples:
 
     Serve the `on` treatment for users with custom attribute `app_version` greater than or equal to 16.0.0:
-    <p>
-     <img src="https://help.split.io/hc/article_attachments/30742702256013" alt="target_with_custom_attributes_using_custom_attributes_04_app_version.png" width="1000" />
-    </p> 
+
+    ![](./static/target-with-custom-attributes-using-custom-attributes-04-app-version.png)
 
     Serve the `on` treatment for users with custom attribute `age` greater than or equal to 20:
-    <p>
-     <img src="https://help.split.io/hc/article_attachments/30742702262413" alt="target_with_custom_attributes_using_custom_attributes_04_age.png" width="1000" />
-    </p> 
+
+    ![](./static/target-with-custom-attributes-using-custom-attributes-04-age.png)
  
     Serve the `on` treatment for users with custom attribute `deal_size` between 500,000 and 10,000,000:
-    <p> 
-      <img src="https://help.split.io/hc/article_attachments/30742702269965" alt="target_with_custom_attributes_using_custom_attributes_04_deal_size.png" width="1000" />
-    </p>
+
+    ![](./static/target-with-custom-attributes-using-custom-attributes-04-deal-size.png)
   
     Serve the `on` treatment for users with custom attribute `registered_date` on or after a specified date:
-    <p>
-     <img src="https://help.split.io/hc/article_attachments/30742702274317" alt="target_with_custom_attributes_using_custom_attributes_04_date.png" width="1000" />
-    </p>
+
+    ![](./static/target-with-custom-attributes-using-custom-attributes-04-date.png)
   
 ## How feature flag targeting rules with custom attributes are evaluated
 
@@ -216,7 +208,7 @@ This section describes attribute matchers (comparison operators) that are availa
 
 :::tip
  In Harness FME, on a feature flag's Definition tab, the **IF** dropdown menu is also an input field. In the **IF** dropdown field you can:
-* ___Enter a new attribute ID.__ When you enter a new custom attribute ID, the **Select matcher** dropdown menu will show **_all of the attribute matchers_**. 
+* ___Enter a new attribute ID.___ When you enter a new custom attribute ID, the **Select matcher** dropdown menu will show **_all of the attribute matchers_**. 
 
 * ___Select a User Attribute.___ When you select an existing User Attribute, the **Select matcher** dropdown menu will show **_a subset of matchers based on the selected attribute type_**. _Note that the '**User Attributes**' label contains the traffic type name (selected when the feature flag was created), so another traffic type name may be shown instead of '**User**'._
 :::

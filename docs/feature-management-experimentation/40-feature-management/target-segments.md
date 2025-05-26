@@ -24,25 +24,21 @@ Server-side SDKs do not yet support Large segments, but soon will. Until they ar
 ## Individual targeting rules
 
 You can target segments in individual targeting rules. These rules assign a treatment to the segment. In the following example, the feature flag will serve **on** to all user IDs in the given segments.
-<p>
-  <img src="https://help.split.io/hc/article_attachments/32100446480653" alt="target_segments_individual_targets.png" width="1000" />
-</p>
+
+![](./static/target-segments-individual-targets.png)
 
 After you select a segment, you can see the segment type indicated by the input pill icon in the To segments field.
-<p>
-  <img src="https://help.split.io/hc/article_attachments/32100456862989" alt="target_segments_to_segments_input.png" width="800" />
-</p>
+
+![](./static/target-segments-to-segments-input.png)
 
 ## Attribute based targeting rules
 
 You can also target Standard segments and Large segments in attribute based targeting rules. The following example is equivalent to the individual targeting rule shown above.
-<p>
-  <img src="https://help.split.io/hc/article_attachments/32100456870797" alt="target_segments_attribute_based_targeting.png" width="800" />
-</p>
+
+![](./static/target-segments-attribute-based-targeting.png)
 
 You can also use ___percentage distribution___ to randomly distribute treatments among the user IDs in a segment, as shown below.
-<p>
-  <img src="https://help.split.io/hc/article_attachments/32100446478349" alt="target_segments_attribute_percentage_distribution.png" width="800" />
-</p>
+
+![](./static/target-segments-percentage-distribution.png)
 
 See [Targeting rules](/docs/feature-management-experimentation/feature-management/define-feature-flag-treatments-and-targeting#targeting-rules) for more information on feature flag targeting, percentage distribution, and rules' evaluation order.

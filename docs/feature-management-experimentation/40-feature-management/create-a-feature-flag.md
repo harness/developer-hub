@@ -19,7 +19,7 @@ To create a feature flag, do the following:
 
 2. Click the **Create feature flag** button to create a new feature flag.
 
-    <img src="https://help.split.io/hc/article_attachments/30743834986125" alt="create_a_feature_flag.png" width="800" />
+    ![](./static/create-a-feature-flag.png)
 
 3. Enter the following information for your new feature flag to help you and your team manage your feature flags and customize them to your team's workflow:
 
@@ -36,7 +36,7 @@ To create a feature flag, do the following:
 
 4. Click the **Create feature flag** button to create your feature flag. Your new flag is displayed. 
 
-    <img src="https://help.split.io/hc/article_attachments/30743834991629" alt="create_a_feature_flag_environment.png" width="1000" />
+    ![](./static/create-a-feature-flag-initiate-environment.png)
 
 ## Next step
 

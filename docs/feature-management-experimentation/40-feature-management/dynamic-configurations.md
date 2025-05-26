@@ -37,9 +37,8 @@ To set up dynamic configuration, do the following:
 
 If you select **Key-value pairs** as your format, attach one or more configurations to each of your treatments as follows:
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/15628296249229" />
-</p>
+
+![](./static/dynamic-configurations-key-value-pairs.png)
 
 1. In the Enter a key field, enter the keys that you want your code to check for (e.g., color, font size, message copy). You can add more keys as desired.
 2. In the Enter a value field,  enter the values for each of your keys. (e.g., green, size 16, Buy now!).
@@ -53,9 +52,7 @@ If you select **Key-value pairs** as your format, attach one or more configurati
 
 Select JSON as your format to get a JSON editor for each of your treatments as follows:
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/15628275774605" />
-</p>
+![](./static/dynamic-configurations-json.png)
 
 1. In the JSON editor, enter valid JSON into the editor. Basic JSONlinting is done and nested JSON objects are permitted.
 2. Click to expand or collapse when editing if you have a large JSON object entered as a configuration.
