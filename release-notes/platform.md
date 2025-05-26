@@ -130,6 +130,17 @@ The following deprecated API endpoints are longer supported:
 
 ## May 2025
 
+### Version 1.91.x <!-- May 27, 2025-->
+
+#### Fixed issues
+
+- Fixed an issue where direct navigation links did not trigger sign-in page when accessed without an active session. [PL-62933]
+- Fixed an issue where banner buttons displayed cut-off or missing text when multiple banners were created. The button rendering and styling logic has been updated for consistent UI display. Added validation on the `callToActions` field in the Banner entity API to allow up to 2 entries, with each entry’s key limited to 15 characters to ensure consistency across platforms. [PL-62794]
+      
+      :::danger Breaking Changes 
+      Changes introduced in [PL-62794] may affect users who have built automation based on the previous behavior. If your workflows depend on the current implementation, please review and update your automation to align with the new changes.
+      :::
+
 ### Version 1.90.x <!-- May 19, 2025-->
 
 #### Fixed issues
