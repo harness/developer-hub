@@ -513,18 +513,18 @@ During and after pipeline runs, you can find step logs on the [Build details pag
 If your pipeline runs tests, you can [view test reports](./run-tests/viewing-tests.md) on the Build details page.
 
 ## Hidden/Invisible Characters
-An issue customers may experience are unexplained phenomenon within their scripts due to hidden or invisible characters. These characters often appear when pasting from non-plain text resources, and can cause errors in how the script operates.   Harness has a function to display invisible characters which is enabled by default.
+Customers may occasionally encounter unexplained behavior in their scripts caused by hidden or invisible characters. These characters often appear when copying and pasting from non-plain-text sources and can lead to unexpected script errors. Harness includes a feature to display invisible characters, which is enabled by default.
 
-End users should see a highlighted space within their scripts, if an invisible character is contained:
+When invisible characters are present, users will see a highlighted space in their scripts.
 ![](./static/invisiblechr-01.png)
 
-They can then manage and see what character is contained by hovering over the highlight and selecting to `adjust settings`
+They can hover over the highlight to view the character and click "Adjust settings" to manage the display.
 ![](./static/invisiblechr-hover.png)
 
-If a selection was accidentally made, the person can then make adjustments by right-clicking within the script space and selecting the `Command Palette`.
+If a selection was accidentally made, the user can right-click within the script area and open the **Command Palette**.
 ![](./static/invisiblechr-cmdplt.png)
 
-A dialog box will appear, allowing the user to search for the ability to toggle how the highlighting will be set.
+A dialog box will appear, allowing the user to search for and toggle the setting that controls how invisible characters are highlighted.
 ![](./static/invisiblechr-toggle.png)
 
 ## Troubleshoot script execution (Run steps)
