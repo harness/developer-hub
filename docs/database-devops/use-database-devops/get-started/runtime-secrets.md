@@ -112,7 +112,6 @@ To understand how to add and reference file secrets in Harness pipelines, refer 
 - Secrets are not stored in Kubernetes or pod specs.
 - Enhanced security as secrets only live in memory for the duration of execution.
 - Reduced surface area for secret leakage or misuse.
-- With the ability to inject secrets at runtime, teams no longer need to hardcode sensitive values or manage additional Kubernetes constructs like imagePullSecrets in every pod definition.
 
 :::info Note
 These benefits are realized only when runtime secret injection settings are explicitly enabled in the Database DevOps module under Account Settings.
