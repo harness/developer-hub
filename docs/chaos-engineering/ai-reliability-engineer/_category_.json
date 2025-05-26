@@ -1,9 +1,9 @@
 {
   "position": 8,
-  "label": "AI Reliability Engineer",
+  "label": "AI Reliability Agent",
   "collapsible": "true",
   "collapsed": "true",
   "customProps": {
-    "description": "This section describes how you can use AI Reliability Engineer to enhance the resilience of your applications."
+    "description": "This section describes how you can use AI Reliability Agent to enhance the resilience of your applications."
   }
 }
