@@ -6,7 +6,7 @@ sidebar_position: 19
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044867032-Live-tail <br /> ✘ images still hosted on help.split.io </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044867032-Live-tail </button>
 </p>
 
 The Live tail functionality within Data hub gives development teams a single place to view and query all impression and event data. With Live tail, development teams can:

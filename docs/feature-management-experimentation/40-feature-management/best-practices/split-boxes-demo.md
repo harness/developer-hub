@@ -9,7 +9,7 @@ sidebar_position: 5
 import Link from "@docusaurus/Link";
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360039405371-Split-Boxes-Demo  <br /> ✘ images still hosted on help.split.io </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360039405371-Split-Boxes-Demo </button>
 </p>
 
 The Split Boxes demo is a tool to help users understand the interaction between rules and the impact of various features. It's a simple visualization that allows you to see the impact of individually targeting, custom attribution, limit exposure, and dynamic configuration.
@@ -18,7 +18,7 @@ The Split Boxes demo is a tool to help users understand the interaction between 
 
 Each box represents a user ID.  
 
-![](https://help.split.io/hc/article_attachments/26801689779725)
+![](./static/split-boxes-demo.png)
 
 You can individually target using the cell location, such as b8 or j5.  You can also create a segment that includes any of the available values.
 

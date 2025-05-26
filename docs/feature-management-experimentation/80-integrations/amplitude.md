@@ -5,7 +5,7 @@ description: ""
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360046658932-Amplitude <br /> ✘ images still hosted on help.split.io </button>
+  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360046658932-Amplitude </button>
 </p>
 
 Amplitude is a product intelligence platform that helps teams convert, engage, and retain customers. Split provides multiple integration options to send impression data from the Split platform as a data source to Amplitude, export Amplitude cohorts to be used in Split for targeting, or extract Amplitude events to be used as events in Split.
