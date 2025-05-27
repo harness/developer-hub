@@ -50,10 +50,10 @@ CreateBoxSplit Default Production user front_end_choose_boxes 9enxxxxxxxxxxxxxxx
 
 In Chrome, to see feature flag changes immediately you should Disable cache for the Network in the browser's Developer Tools.
 
-![](https://help.split.io/hc/article_attachments/360048654411)
+![](./static/split-boxes-chrome.png)
 
-[CreateBoxSplit.sh.zip](https://help.split.io/hc/en-us/article_attachments/360048733612)
+<br />
 
-[Boxes_split.txt](https://help.split.io/hc/en-us/article_attachments/10304905177869)
-
-[Boxes.htm](https://help.split.io/hc/en-us/article_attachments/26801650994957)
+[CreateBoxSplit.sh.zip](./shared/create-box-split.sh.zip) &emsp; | 1 KB<br />
+[Boxes_split.txt](./shared/boxes-split.txt) <font color='grey'> _(right-click > **Save Link As...**)_ </font> &emsp; | 658 Bytes<br />
+[Boxes.htm](./shared/boxes.htm) <font color='grey'> _(right-click > **Save Link As...**)_ </font> &emsp; | 8 KB<br />
