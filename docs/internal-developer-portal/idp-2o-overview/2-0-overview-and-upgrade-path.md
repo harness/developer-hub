@@ -18,7 +18,7 @@ IDP 2.0 is an ongoing project under active iteration. Here is the most recent st
 | **RBAC and Project/Org Hierarchy**                   | ✅ (Ready to onboard)                               |
 | **Git Experience (YAML files in Git)**               | ⏳ WIP (expected to be available in next 3-4 weeks) |
 | **New System Entity for grouping**                   | ⏳ WIP (expected to be available in next 4-6 weeks) |
-| **Custom User Groups and custom metadata ingestion** | ⏳ WIP (expected to be available in next 4-6 weeks) |
+| **Custom User Groups**                               | ⏳ WIP (expected to be available in next 4-6 weeks) |
 | **Project/Org filters in Scorecards**                | ⏳ WIP (expected to be available in next 4-6 weeks) |
 
 :::
