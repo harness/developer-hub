@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 Build Intelligence is part of [Harness CI Intelligence](/docs/continuous-integration/use-ci/harness-ci-intelligence), a suite of features in Harness CI designed to improve build times. By storing these outputs remotely and retrieving them when inputs haven't changed, Build Intelligence avoids unnecessary rebuilds, significantly accelerating the build process and enhancing efficiency.
 
-Build Intelligence is currently available for **Gradle**,  **Bazel** and **Maven** build tools. Regardless of the programming language used in your projects, as long as you're building with a supported build tool, you can leverage Build Intelligence to optimize your builds.
+Build Intelligence is currently available for **Gradle**, **Bazel** and **Maven** build tools. Regardless of the programming language used in your projects, as long as you're building with a supported build tool, you can leverage Build Intelligence to optimize your builds.
 
 :::tip Build Intelligence with Maven (Beta)
 **Build Intelligence is now available in beta** for the Maven build tool (version 3.9+). To join the beta program, please contact [Harness Support](https://support.harness.io) or your account representative.
