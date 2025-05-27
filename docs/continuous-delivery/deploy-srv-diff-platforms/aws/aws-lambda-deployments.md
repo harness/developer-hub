@@ -786,22 +786,31 @@ Ensure that the IAM role or user associated with the deployment has the followin
 
 Harness uses **Lambda function aliases** to support rollback workflows. During deployment, Harness creates or updates an alias to point to the latest function version. If a rollback is triggered, the alias is redirected to the previously deployed version—restoring the last known good state.
 
+![](./static/alias-latest.png)
+
+![](./static/alias-version.png)
+
 :::info
 Harness manages aliases only for deployments performed through Harness. Creating the alias that points to the latest deployed version is also gated by the same feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. 
 
 Harness tracks only the versions deployed via Harness, and rollback is supported only for these deployments. These aliases are used exclusively for rollback operations.
 :::
 
-**Use Cases:**
+**Process and Function**
 
-- **Use Case 1**:  
+- **Artifacts Larger than 50 MB**:  
   If you deploy an artifact larger than 50 MB **without** enabling the feature flag, the deployment will succeed, but rollback will **fail**. Harness cannot trace previous artifact versions in this mode.
 
-- **Use Case 2**:  
+  Please note that even if you are not using Artifacts larger than 50MB, the Rollback process will remain the same, and will utilize Aliases
+
+- **Initial Rollout**:  
   If the feature flag is enabled and this is your **first deployment**, Harness creates new aliases. Since there’s no version history, a rollback will effectively do nothing.
 
-- **Use Case 3**:  
+- **Alias and Rollback Cycle**:  
   If the feature flag is enabled and this is **not your first deployment**, Harness can track previous versions. On rollback, the alias is pointed to the previously deployed version, restoring the earlier state successfully.
+
+- **Enabling flag for Pre-Existing Lambda Deployments**:  
+  Customers can also enable this feature flag if they already have deployments enabled.  The next deployment will then be tagged with the alias, and then, the process will follow the same flow.
 
 With the feature flag enabled and the appropriate permissions in place, you can deploy Lambda artifacts of any size from S3, with Harness managing deployment and rollback reliably.
 
