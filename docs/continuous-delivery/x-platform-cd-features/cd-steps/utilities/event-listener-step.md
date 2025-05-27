@@ -87,6 +87,30 @@ This step is available in **Deploy Stages** and **Custom Stages**.
 </TabItem>
 </Tabs>
 
+## Using Input and Output Variables in Success Criteria
+
+You can also use input variables defined in the **Event Listener step configuration** to evaluate incoming payloads dynamically.
+
+### Referencing Input Variables
+
+Use this format to reference an input variable:
+
+```yaml
+<+spec.inputVariables.inputVarA>
+```
+
+Valid: `<+spec.inputVariables.inputVarA>`
+Invalid: `$inputVar` (shell-style syntax is not supported)
+
+For example, to compare an input variable with a payload field:
+
+`<+event.payload.action> == <+spec.inputVariables.inputVarA>`
+
+### Referencing Output Variables
+
+To compare event payloads with a known output or expression from another step:
+
+`<+event.payload.someField> == <+someOtherStep.output.outputVarB>`
 
 ## Use Cases
 
