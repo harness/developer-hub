@@ -1,8 +1,8 @@
 ---
-title: Quickstart Guide
+title: Hosted Gitspaces
 description: Get Started with Harness CDE (Gitspaces)
 sidebar_position: 2
-sidebar_label: Quickstart Guide
+sidebar_label: Hosted Gitspaces
 redirect_from: /docs/cloud-development-environments/introduction/beta-usage
 ---
 
