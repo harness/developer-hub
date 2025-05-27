@@ -273,9 +273,9 @@ This release includes the following Harness module and component versions.
 
 | **Name**                  | **Version**                                                                                  |
 |---------------------------|----------------------------------------------------------------------------------------------|
-| Helm Chart                | [0.28.0](https://github.com/harness/helm-charts/releases/tag/harness-0.28.0)                 |
-| Air Gap Bundle            | [0.28.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.28.0) |
-| NG Manager                | 1.84.5                                                                                      |
+| Helm Chart                | [0.28.1](https://github.com/harness/helm-charts/releases/tag/harness-0.28.1)                 |
+| Air Gap Bundle            | [0.28.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.28.1) |
+| NG Manager                | 1.84.4                                                                                      |
 | CI Manager                | 1.74.4                                                                                       |
 | Pipeline Service          | 1.123.2                                                                                      |
 | Platform Service          | 1.61.0                                                                                      |
@@ -289,7 +289,7 @@ This release includes the following Harness module and component versions.
 | LE NG                     | 1.8.0                                                                                        |
 | Looker                    | 1.7.11                                                                                       |
 | Log Service               | 1.19.1                                                                                       |
-| Batch Processing          | 1.44.3                                                                                       |
+| Batch Processing          | 1.44.4                                                                                       |
 | Gateway                   | 1.42.7                                                                                       |
 | IaCM Manager              | 1.72.0                                                                                       |
 
