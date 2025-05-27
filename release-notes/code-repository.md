@@ -27,13 +27,9 @@ These release notes describe recent changes to Harness Code Repository.
 
 ### Version 1.42.x
 
-#### Fixed Issues 
+#### New features and enhancements 
 
-* Improved error handling for **Semantic Search** activation by returning more informative 500 error responses. (CODE-3819)
-
-#### Maintenance
-
-* Upgraded the Go version to address security and stability concerns. (CODE-3859)
+* Added support for partial and shallow Git clones to improve performance and reduce footprint when cloning large multi-service repositories.
 
 <!-- May 13, 2025 -->
 
@@ -41,13 +37,9 @@ These release notes describe recent changes to Harness Code Repository.
 
 #### New features and enhancements
 
-* Added missing parameters to the OpenAPI specification for the **List Commits** API. This improves compatibility with OpenAPI-based tooling and enhances integration accuracy. (CODE-3821)
+* Added support to display the merge method used when merging a pull request.
 
-* The **Commit** API now includes new file SHAs in its response, enabling better tracking of file-level changes during commit operations. (CODE-3530)
-
-#### Maintenance
-
-* Updated the **code-api** submodule to version `1.40` to align with backend service improvements and ensure compatibility across components. (CODE-3815)
+* Added support to indicate if rules were bypassed during pull request merge.
  
 ## January 2025
 
