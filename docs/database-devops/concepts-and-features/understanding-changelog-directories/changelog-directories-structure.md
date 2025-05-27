@@ -97,7 +97,7 @@ databaseChangeLog:
 databaseChangeLog:
   - changeSet:
       id: 1
-      author: stephen-atwell
+      author: john-doe
       changes:
         - createTable:
             tableName: accounts
@@ -121,7 +121,7 @@ databaseChangeLog:
 databaseChangeLog:
   - changeSet:
       id: 003
-      author: stephen-atwell
+      author: john-doe
       changes:
         - createIndex:
             indexName: idx_on_id
@@ -183,7 +183,7 @@ A simplified structure with one main changelog (recommended for small projects):
 databaseChangeLog:
   - changeSet:
       id: "001"
-      author: stephen-atwell
+      author: john-doe
       changes:
         - createTable:
             tableName: users
@@ -200,7 +200,7 @@ databaseChangeLog:
   
   - changeSet:
       id: "002"
-      author: stephen-atwell
+      author: john-doe
       changes:
         - addColumn:
             tableName: users
@@ -312,6 +312,7 @@ Choose your changelog structure based on the size of your project, team setup, a
 | Small or early-stage projects               | Single Changelog          | Simple to maintain, easy to follow, minimal setup                        |
 | Growing teams or increasing complexity      | Release- or Feature-based | Enables modularity, better collaboration, and easier tracking of changes |
 | Large apps with multiple microservices      | Entity/Service-based      | Allows separation of concerns and team-specific ownership                |
+| No existing app branching (single mainline) | One main branch with Contexts |  Use one main branch and let Liquibase contexts (e.g., `dev`, `qa`, `prod`) decide which changesets should run in each environment. This method is cleaner, easier to manage, and follows modern development practices. |
 | Shared schema with some env-specific tweaks | Directory-based           | Maintains consistency while allowing environment-level customization     |
 
 

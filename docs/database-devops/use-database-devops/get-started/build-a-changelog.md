@@ -61,7 +61,7 @@ If you need an order other than alphabetical, or want to leverage advanced featu
 databaseChangeLog:
   - changeSet:
       id: execute-specific-sql-file
-      author: sonichigo
+      author: john-doe
       changes:
         - sqlFile:
             path: sql/specific_script.sql
@@ -75,11 +75,10 @@ databaseChangeLog:
   - includeAll:
       path: sql/existing-scripts
       relativeToChangelogFile: true
-      
   # Then run additional changesets after all the SQL files
   - changeSet:
       id: additional-changes-after-sql-files
-      author: sonichigo
+      author: john-doe
       changes:
         - createTable:
             tableName: new_feature_table
@@ -90,6 +89,25 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
 ```
+
+For customers who want to define rollback logic, you can specify a second SQL file to run on rollback by adding a `rollback` section in the changeset that points to the rollback script. This approach helps safely undo changes if a changeset needs to be rolled back
+
+```yaml
+databaseChangeLog:
+  - changeSet:
+      id: add-new-table
+      author: john-doe
+      changes:
+        - sqlFile:
+            path: sql/add_new_table.sql
+            relativeToChangelogFile: true
+      rollback:
+        - sqlFile:
+            path: sql/drop_new_table.sql
+            relativeToChangelogFile: true
+```
+
+**Rollback SQL scripts**, allow you to explicitly define how to undo the changes made by your main SQL file. This is especially important for complex schema changes that cannot be automatically reversed.
 </TabItem>
 
 
@@ -156,7 +174,7 @@ You can commit the generated changelog file to your git repository using the `Ru
 </TabItem>
 </Tabs>
 
-## How changesets work
+## How Changesets Works ?
 A changeset is the smallest deployable unit of change to a database. When using database DevOps practices, changesets can be applied or rolled back individually. Which changesets have been applied are tracked inside the database itself in a tracking table called  `databasechangelog`. 
 
 A changeset looks somthing like this:
@@ -165,7 +183,7 @@ A changeset looks somthing like this:
 databaseChangeLog:
   - changeSet:
       id: product-table
-      author: animesh
+      author: john-doe
       labels: products-api 
       comment: Creating product table for REST API
       changes:
@@ -190,6 +208,10 @@ databaseChangeLog:
                   defaultValue: 0.00
 ```
 
-The change management system only executes new changesets or those with modified checksums and records successful executions in the tracking table. If a changeset fails, it will not be recorded in the tracking table, and you can re-run it later. This allows for easy rollback and re-application of changesets as needed.
+By default, the system runs only new changesets or those that have been changed. When a changeset runs successfully, it gets recorded in a special tracking table in your database,this ensures it won’t run again. If the changeset fails, nothing is recorded so that you can fix the issue and try again later. Also, each changeset runs inside a single database transaction, which means if something in the changeset fails, all changes are automatically rolled back, keeping your database clean and consistent.
+
+:::info important note
+Oracle commits changes automatically after every SQL command. In that case, if something fails halfway through a changeset, part of it might still be committed. To avoid issues, Harness recommends keeping only one DML operation (like an `INSERT`, `UPDATE`, or `DELETE`) per changeset when using Oracle.
+:::
 
 The database tracking table is used by default, and can be overridden by setting the `database-changelog-table-name` global parameter.

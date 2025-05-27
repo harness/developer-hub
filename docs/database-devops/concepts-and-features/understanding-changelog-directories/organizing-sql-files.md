@@ -66,14 +66,14 @@ In Harness DBOps, we allow seamless integration of liquibase formatted SQL files
 ```SQL
 --liquibase formatted sql
 
---changeset stephen-atwell:1
+--changeset john-doe:1
 CREATE TABLE users (
       id INT PRIMARY KEY,
       name VARCHAR(255),
       mobile_number VARCHAR(255)
 );
 
---changeset stephen-atwell:2
+--changeset john-doe:2
 CREATE INDEX idx_users_mobile ON users(mobile_number);
 ```
 
@@ -83,13 +83,13 @@ SQL files in Liquibase require special comments that contain metadata for tracki
 In the above example SQL Schema, the comments:
 
 1. `--liquibase formatted sql` - Required at the top of every SQL file to indicate it contains Liquibase metadata
-2. `--changeset --changeset stephen-atwell:1` - Defines a changeset with the **specified author** (stephen-atwell) and **ID**(1) which is unique within the changelog file. This comment is similar to YAML changesets.
+2. `--changeset --changeset john-doe:1` - Defines a changeset with the **specified author** (john-doe) and **ID**(1) which is unique within the changelog file. This comment is similar to YAML changesets.
 :::
 
 ### Spacing
 It is a best practice not to include a space before `--liquibase formatted sql`. Formatting variations may cause the Liquibase parser to return an error. When specifying changeset attributes in a formatted SQL changelog, any attribute value that contains spaces must be quoted. For example:
 ```sql
---changeset stephen-atwell:add_columns context:"production" labels:"schema-update critical"
+--changeset john-doe:add_columns context:"production" labels:"schema-update critical"
 ALTER TABLE users ADD COLUMN first_name VARCHAR(50);
 ALTER TABLE users ADD COLUMN last_name VARCHAR(50);
 ```
@@ -107,7 +107,7 @@ Liquibase provides two primary tags for referencing other changelog files in you
 ```sql
 --liquibase formatted sql
 
---changeset stephen-atwell:1
+--changeset john-doe:1
 --include: changes/release-1/001-create-users-table.sql
 ```
 
@@ -115,7 +115,7 @@ While `includeAll` allows you to include multiple SQL files in your changelog:
 ```sql
 --liquibase formatted sql
 
---changeset stephen-atwell:2
+--changeset john-doe:2
 --includeAll: changes/release-2/
 ```
 :::info 
@@ -134,14 +134,14 @@ If you need to roll back a change, you can specify rollback actions directly in 
 ```sql
 --liquibase formatted sql
 
---changeset stephen-atwell:1
+--changeset john-doe:1
 create table test1 (  
     id int primary key,
     name varchar(255)  
 );  
 --rollback drop table test1; 
 
---changeset stephen-atwell:2 
+--changeset john-doe:2 
 insert into test1 (id, name) values (1, 'stephan');
 insert into test1 (id,  name) values (2, 'josh');
 
