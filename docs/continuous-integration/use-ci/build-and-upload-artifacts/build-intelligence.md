@@ -11,6 +11,10 @@ Build Intelligence is part of [Harness CI Intelligence](/docs/continuous-integra
 
 Build Intelligence is currently available for **Gradle** and **Bazel** build tools, with Maven support coming soon. Regardless of the programming language used in your projects, as long as you're building with a supported build tool, you can leverage Build Intelligence to optimize your builds.
 
+:::tip Build Intelligence with Maven (Beta)
+**Build Intelligence is now available in beta** for the Maven build tool (version 3.9+). To join the beta program, please contact [Harness Support](https://support.harness.io) or your account representative.
+:::
+
 :::info
 * Build Intelligence is now Generally Available (GA). 
 * Build Intelligence is enabled by default for newly created CI stages. This is configurable in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
