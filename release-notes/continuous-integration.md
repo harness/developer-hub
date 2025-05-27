@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2025-05-21T10:00
+date: 2025-05-27T10:00
 sidebar_position: 10
 ---
 
@@ -52,6 +52,28 @@ This update is currently being rolled out to customers, and we expect the rollou
 :::
 
 ## May 2025
+
+### Version 1.81
+
+<!-- 2025-05-26 -->
+
+#### New features and enhancements
+
+- The following features are now available in beta:
+
+    - [Build Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence) for the Maven build tool (version 3.9+). 
+
+    - [Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview) for JavaScript (Jest) and Kotest.
+
+  To join the beta program, please contact [Harness Support](https://support.harness.io) or your account representative.
+
+- Previously, CI stage timeouts for Kubernetes infrastructure were limited to a maximum of 24 hours. Some stages, however, require longer timeouts. Harness CI now supports stage timeouts of up to 35 days for Kubernetes-based CI stages. To enable this functionality, set the desired timeout value (greater than 24 hours) in the **Overview** section of the CI stage. (CI-15102, ZD-72737)
+
+  This feature is behind the feature flag `CI_ENABLE_MAX_TIMEOUT_K8`. 
+
+#### Fixed issues
+
+- Fixed an issue where pod cleanup requests were sent to an incorrect delegate when multiple delegates across clusters shared the same selector tag. This occurred specifically when pipelines were aborted during the init step, preventing Harness from receiving Pod IP information required for capability checks. The fix bypasses the connectivity check when no IP is available and introduces a dry-run pod deletion as a capability check. (CI-17241, ZD-83069)
 
 ### Version 1.80
 
