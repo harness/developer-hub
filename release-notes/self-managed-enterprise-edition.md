@@ -311,6 +311,146 @@ gsutil -m cp \
   .
 ```
 
+### Fixed issues
+
+#### Harness Platform
+
+- Updated the API docs for [**User Group APIV2** API](https://apidocs.harness.io/tag/User-Group/#operation/getUserGroupV2) to correctly reflect the subset of fields returned in the response. [PL-62617] 
+- Fixed an issue where the value for a reference-type secret was missing during policy evaluation. With this fix, the value is now passed correctly, ensuring that policy evaluation on values is honoured. [PL-62417]
+- Fixed error messaging for non-inline secrets created via YAML to ensure accurate status on the secret listing page. [PL-62270]
+- Resolved an issue where future-dated cloud credits were not consumed when no current credits were available. Previously, this caused overage to be incorrectly updated. [PL-62134]
+- Used enhanced secretId parsing to account for dynamic secret references. [PL-62089]
+- Resolved an issue where unauthenticated users were redirected to the homepage after login instead of their intended deep link destination. [PL-61939]
+- Addressed a performance issue where the FileStore page was slow when too many files were loaded at once. We’ve added virtualization so that only a few files load at a time, making the page much faster and smoother. [PL-61880] 
+- Deprecated the ‘Account Edition’ column from the Account List View across Harness. This change is part of our ongoing effort to simplify the UI and reduce redundancy. [PL-61850]
+- Fixed an issue where AWS Secret Manager connectors failed for GovCloud regions due to incorrect STS endpoint resolution. [PL-61526]
+- Fixed an issue where only one Google Cloud Run delegate could register per account by introducing the HOST_NAME_COMMAND environment variable to avoid hostname conflicts.
+- Resolved an issue where deleted variables did not reflect correctly in Resource Groups. Now, if a variable is deleted, it will also be removed from any associated Resource Groups. [PL-60850]
+- Fixed an issue in the module license view where long email addresses overlapped the date column; email text now wraps correctly. [PL-60222]
+
+#### Continuous Integration
+
+- Fixed an issue where Harness Cloud appeared under Infrastructure for the CI module in SMP environments. [CI-17250]
+
+#### Continuous Delivery
+
+- Fixed an issue where template reconciliation did not consistently load updated templates; this is now resolved with improved validation and a reconciliation loader. [PIPE-26008, ZD-80358]
+- Fixed an issue where using execution-time inputs in the Build & Push step caused the Input Set creation page to fail; the tags field now fully supports runtime inputs. [PIPE-26480, ZD-80504]
+- Fixed an issue where deployment metrics in the Unified View and Deployment Dashboards were inconsistent; metrics now accurately reflect deployments across both deploy and custom stages. [CDS-108215]
+- Fixed an issue where editing a newly created environment override using a Custom Remote Store caused an error; the UI now handles edits gracefully. [CDS-107112, ZD-78749]
+- Fixed an issue where rollbacks were not triggered for user-initiated failures and approval rejections despite the configured rollback strategy. This fix is behind the feature flag `PIPE_ADD_ORIGINAL_FAILED_CHILDREN_TO_OUTPUT`. Contact [Harness Support](mailto:support@harness.io) to enable it. [PIPE-26102, ZD-80129]
+- Fixed an issue where users could not create AWS S3 OIDC connectors using the GovCloud region due to identity token errors; OIDC connectors now support region-specific audience values. [CDS-108206, ZD-80533]
+- Fixed an issue where pipeline executions failed intermittently due to token generation errors during GitHub App authentication; token generation is now stable across retries. [PIPE-26414, ZD-81230]
+- Fixed an issue where the GitOps Sync step logs displayed the default Harness URL instead of the configured vanity URL; Sync and Fetch Linked Apps steps now respect vanity URL settings. [CDS-108906]
+- Fixed an issue where syncing GitOps applications with zero resources from the Harness UI failed due to a validation error; such configurations are now supported. [CDS-109108, ZD-82181]
+- Fixed an issue where the TAS Rolling Deploy step ignored `readiness-health-check` properties in `manifest.yml`; these properties are now preserved. [CDS-109043, ZD-82190]
+- Fixed an issue where copying files with a source path that included a leading `/` caused only a single file to copy instead of the full directory. This fix is behind the feature flag `CDS_SCM_FIX_FOLDER_PATH`. Contact [Harness Support](mailto:support@harness.io) to enable it. [CDS-108947, ZD-82070]
+- Fixed an issue where dark mode was not consistently applied in shell script editors and the file store. [PIPE-26634, ZD-82468]
+- Fixed an issue where the OIDC payload for the GCS Cache step lacked claims for fine-grained access control. This fix is behind the feature flag `CDS_AWS_CONNECTOR_REF_CDK`. Contact [Harness Support](mailto:support@harness.io) to enable it. [CDS-108066]
+- Fixed an issue during ECS deployments where the Prepare Rollback stage failed to find the listener in the target group. [CDS-109457, ZD-83135]
+- Fixed an issue where the Terraform Cloud step could fail during Apply due to a null pointer exception, even when apply succeeded. [CDS-109411, ZD-83143]
+- Fixed an issue where users with Environment Create permissions couldn't import environments from Git despite UI permissions. [CDS-109288, ZD-81920]
+- Fixed an issue where services showed running instances even after the release was deleted, blocking further deletion via Terraform. [CDS-108684, ZD-81599]
+- Fixed an issue where keywords in logs were incorrectly masked if secrets matched common characters like single letters. [CDS-108477, ZD-81012, ZD-81111]
+- Fixed an issue where inserting a step inside a containerized template displayed unsupported step types like Shell Script. [CDS-109096]
+- Fixed an issue where configuring Auto Approval in a step template with TimeZone and Time as runtime inputs caused the UI to become unresponsive. [PIPE-26566, ZD-82092]
+- Fixed an issue where runtime stage variables in templates did not show options to configure single-select or multi-select inputs. [CDS-108690]
+- Fixed an issue where the ASG Wait for Steady State step errored out with "No instance refreshes found" due to a race condition. [CDS-109659]
+- Fixed an issue where serverless pipelines using S3 and ECR failed due to missing `download-aws-s3` image in ECR. [CDS-109537, ZD-83368]
+- Fixed an issue where Terraform Cloud Run step intermittently failed in plan-only mode. [CDS-109508, ZD-83111]
+- Fixed an issue where adding an AwsLambdaFunctionDefinition manifest via YAML in service overrides broke the UI. [CDS-109383, ZD-83146]
+- Fixed an issue where disabling container log checking for Azure App Service had no effect; logs were initialized regardless. [CDS-109381, ZD-82885]
+- Fixed an issue where infrastructure created via webhook auto-creation skipped OPA evaluation even with the feature flag enabled. [CDS-109227, ZD-82519]
+- Fixed an issue where Azure App Service deployments succeeded but the success signal was not sent to the pipeline, causing a timeout. [CDS-109166, ZD-82534]
+- Fixed an issue where event relay triggers failed with valid HMAC signatures for project-level webhooks. [CDS-109041, ZD-82328]
+- Fixed an issue where the ASG Wait for Steady State step failed when instance refresh completed before the step began. [CDS-109659]
+- Fixed an issue where the stage status label on execution page banner was truncated on small screens. [PIPE-26698]
+- Fixed an issue where Insert Step configuration in older templates did not render correctly in the UI. [PIPE-26956, ZD-82769]
+- Fixed an issue where using expressions in the repository name of the Clone Codebase step caused the Branch Name field to load indefinitely. [CDS-109785, ZD-83118]
+- Fixed an issue where the `CF_HOME` environment variable changed after each `cf auth` command. [CDS-108472, ZD-81227]
+- Fixed an issue where the AWS CDK plugin did not support `AWS_SESSION_TOKEN` with temporary STS credentials. [CDS-109505, ZD-83221]
+- Fixed an issue where OPA policy evaluation blocked input set rendering during pipeline execution. A feature flag `PIPE_DISABLE_OPA_ON_SAVE_BLOCKING_FOR_PIPELINE_RUN` is available to revert behavior. [PIPE-26614]
+- Fixed an issue where a default deviation setting was applied while configuring a health source. [CDS-109866]
+- Fixed an issue where navigating back to the query setup page after configuring a CloudWatch health source caused a page refresh error. [CDS-109427]
+- Fixed an issue where GitOps pull request merges failed with `JSONObject["code"]` not found error. [CDS-109239]
+- Fixed an issue where using an OIDC connector to download an S3 artifact in SSH deployments caused a `webIdentityToken must not be null` error. [CDS-109225]
+- Fixed an issue where selecting Helm Canary Deploy from the UI incorrectly created a Kubernetes Canary step in the template. [CDS-109072]
+
+#### Chaos Engineering 
+
+- Fixed an issue that was causing runtime input-based fault additions to fail in Kubernetes (Harness Infrastructure) experiments when using a private image registry with a secret. The system now correctly handles secrets during fault creation in these scenarios. [CHAOS-8006]
+- Added an index on the environment_id field to improve query performance and reduce latency for operations involving environment-specific data. [CHAOS-7726]
+- Updated the title header on the Getting Started page from a question format ("Create Chaos Experiments on your ______?") to a clear statement: "Create Chaos Experiments on your Infrastructure" for better readability and user experience. [CHAOS-7802]
+- Resolved a goroutine leak in chaos-manager by properly closing response bodies, preventing memory spikes and unbounded memory usage. [CHAOS-7972]
+- Corrected the experiment count display in Bulk Run on HCE-SaaS UI by replacing the hardcoded value with a dynamic variable to reflect the actual number of selected experiments. [CHAOS-7818]
+
+#### GitOps
+
+- Fixed an issue where the API for listing repositories on the agent returned all repositories instead of only those respecting project mapping. [CDS-109479, ZD-82623]
+- Fixed an issue where invalid application sets were flooding the GitOps Agent with update events. [CDS-109042]
+- Fixed an issue where invalid application sets were flooding the GitOps agent with update events. [CDS-109042]
+
+#### Supply Chain Security
+
+- Fixed an issue where the AI Enhance button was overlapping with the step ID; the overlap has now been resolved [SSCA-3629].
+
+### New Features and Enhancements
+
+#### Harness Platform
+
+- New Audit Event for API Token Expiry: Harness now logs an audit event whenever an API token expires. This enhancement improves visibility and traceability of token lifecycle events, supporting stronger security auditing. [PL-62394]
+- Implicit tag (delegate name) is now supported for delegate version override. [PL-62335]
+- Added support for handling TOKEN_EXPIRED outbox events to generate audit entries when expired tokens are deleted. [PL-62044]
+- Added support for governing scope Variables in Harness using Open Policy Agent (OPA) policies, enabling fine-grained control over variable creation and editing. This feature is currently behind the feature flag `PL_ENABLE_OPA_FOR_VARIABLES`. [PL-61504]
+- Delegate Configurations have been removed from the Resource Group configuration UI to reduce clutter and simplify the interface.[PL-60603]
+
+#### Continuous Delivery
+
+- Harness now supports capturing **multiline output variables** from **Container steps** in CD pipelines, ensuring correct population and visibility in the Output tab. Currently, this feature is behind the feature flag `CI_ENABLE_MULTILINE_OUTPUTS_SECRETS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-95235, ZD-44567,72745]
+- Harness is introducing the **ECS Blue Green Traffic Shift** step to support weighted traffic shifting for ECS deployments, enabling gradual rollout strategies for ECS services with low task counts. Currently, this feature is behind the feature flag `CDS_ECS_TRAFFIC_SHIFT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-102609]
+- Harness now **enforces namespace consistency in Kubernetes and Helm deployments**, preventing users from overriding the infrastructure-defined namespace using custom CLI flags like `--namespace`. Currently, this feature is behind the feature flag `CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-99904, ZD-67987,71082]
+- Harness now supports **mounting ConfigMaps and Kubernetes Secrets as volumes in CD Container steps**, enabling users to inject configuration and credentials without modifying container images. Currently, this feature is behind the feature flag `CDS_CONFIG_MAPS_AND_SECRETS_AS_VOLUME`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-95429]
+- Harness now supports **Helm deployments with CRDs** by enforcing `helm upgrade --install` behavior, enabling seamless deployment of resources that already exist outside the target namespace. Currently, this feature is behind the feature flag `CDS_SKIP_HELM_INSTALL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-85790]
+- Harness now supports **re-running pipelines** with the original pipeline definition and inputs, enabling teams to accurately reproduce and debug historical executions. Currently, this feature is behind the feature flag `PIPE_USE_ORIGINAL_YAML_FOR_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [PIPE-21837]
+- Harness now **automatically creates webhooks for GitX resources**, improving pipeline performance by avoiding manual webhook setup and eliminating execution delays for resources like templates. This behavior is enabled by default for new accounts. [PIPE-23197]
+- Harness now ensures pipelines run with the latest Git-synced configurations by triggering Git sync before executing associated triggers. This prevents outdated configs from being used and eliminates the need for manual workarounds. Currently, this feature is behind the feature flag `PIE_PROCESS_TRIGGER_SEQUENTIALLY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [PIPE-21521, ZD-69595,70083]
+- Harness now supports **customized notifications** for **Webhook-based Centralized Notifications** and for **all types of Pipeline Notifications**. Currently, this feature is behind the feature flag `PIPE_CUSTOM_NOTIFICATION_TEMPLATES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Custom Notification templates](/docs/platform/templates/customized-notification-template/). [PIPE-24685]
+- Harness now supports capturing HTTP response headers, including cookies, as output variables in the HTTP step. Currently, this feature is behind the feature flag `CDS_SUPPORT_HTTP_HEADER_HTTP_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Accessing HTTP Response Headers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/#accessing-http-response-headers). [CDS-95328]
+- Harness now provides an API endpoint to fetch the latest deployment status of a service. [CDS-100872]
+- Harness now auto-approves Terraform Cloud runs of type **Refresh** by default. Currently, this feature is behind the feature flag `CDS_SUPPORT_TF_CLOUD_PLAN_REFRESH_TYPE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Plan with Refresh Command](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments/#plan-with-refresh-command). [CDS-98552]
+- Harness now supports configuring Helm native command flags directly at the step level. Currently, this feature is behind the feature flag `CDS_HELM_STEP_COMMAND_FLAGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Command Flags at Step Level](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart/#command-flags-at-step-level). [CDS-101899]
+- Users can now avoid printing the entire script content in the console log before the output of **Tanzu Command Step**. For more information, refer to [Disable Script Logging](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-command-step/#disable-script-logging). [CDS-101641, ZD-71075]
+- Users can now configure `AND` or `OR` logic when filtering hosts by attributes in Physical Data Center (PDC) infrastructure definitions. Currently, this feature is behind the feature flag `CDS_PDC_HOST_ATTRIBUTES_MATCHING_CRITERIA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Filtering Hosts by Attributes](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#filtering-hosts-by-attributes). [CDS-92584]
+- Harness now supports viewing full variable values in the Override tab. Users can see and edit entire override values without truncation. Currently, this feature is behind the feature flag `CDS_TEXTAREA_FOR_OVERRIDE_VARIABLES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-92714]
+- Harness now supports native binding of the Tanzu Application Service (TAS) Autoscaler service to your application during rolling deployments. For more information, refer to [TAS Autoscaler Integration](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart#tas-autoscaler-integration). [CDS-101502]
+- Harness now fetches Terraform Enterprise OPA policy evaluation results and fails the pipeline stage when a policy evaluation fails, ensuring pipelines correctly enforce OPA policy compliance. Currently, this feature is behind the feature flag `CDS_TF_POLICY_EVALUATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Open Policy Agent (OPA) policy support](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments/#open-policy-agent-opa-policy-support). [CDS-97468, ZD-63823,75769]
+- Harness now supports including the service name and environment in the subject line of EMAIL notifications, making them searchable and context-rich. Currently, this feature is behind the feature flag `PIPE_STAGE_NOTIFICATION_ENV_SVC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. [CDS-83691]
+- Harness now displays the Helm chart versions for both current and rollback artifacts during post-production rollbacks—replacing **N/A** with the actual version numbers in the UI. [CDS-109098]
+- Harness now supports alphabetically sorting the list of Projects, Organizations, and Accounts when configuring Approver User Groups. [CDS-95935]
+- Harness is introducing the **Elastigroup Blue Green Traffic Shift** step to support weighted traffic shifting for Spot Elastigroup deployments, enabling gradual rollout strategies for services with low task counts. Currently, this feature is behind the feature flag `CDS_SPOT_TRAFFIC_SHIFT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [Elastigroup Blue-Green Traffic Shifting Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-traffic-shifting/). [CDS-100276]
+- The Kubernetes Java client used by Harness has been upgraded from version `18.0.0` to `22.0.1-legacy`. This update addresses known security vulnerabilities in the older version and adds compatibility with newer Kubernetes versions. [CDS-105300]
+
+#### Chaos Engineering 
+
+- Added support for Windows CPU stress on Windows dual socket servers. [CHAOS-7902]
+- Added support for dynamic updates in Active Discovery and the Application Map after each discovery run—new services are added, removed services are marked accordingly, and resources from newly excluded namespaces are hidden, with their services shown as removed if referenced in the Application Map. [CHAOS-7745]
+- Added Windows global blackhole experiment to cause global blackhole chaos on a Windows VM. [CHAOS-7091]
+- Listed below are the images to download to use image registry with Harness Delegate.
+  - `harness/chaos-ddcr:1.59.0`
+  - `harness/chaos-log-watcher:1.59.0`
+  - `harness/service-discovery-collector:0.39.0`
+  - `harness/chaos-ddcr-faults:1.59.0`
+
+#### GitOps
+
+- Applications can now be [synced and refreshed using bulk actions](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications#bulk-sync-and-refresh). On the applications page, there are two new buttons: **Bulk Sync** and **Refresh**. Currently, this feature is behind the feature flag `GITOPS_BULK_ACTIONS_ENABLED `. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-58485**)
+
+### Behavior changes
+
+#### Continuous Delivery
+
+- Users can now deploy Lambda artifacts larger than 50 MB stored in S3. Currently, this feature is behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable this behavior change. For more information, refer to [AWS Lambda Rollback Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments/#rollback-for-artifacts-larger-than-50-mb). [CDS-74918, ZD-77784]
+
 
 ## April 29, 2025, Version 0.28.0 <!-- Draft : April 28, 2025 -->
 
