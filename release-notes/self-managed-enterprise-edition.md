@@ -273,24 +273,24 @@ This release includes the following Harness module and component versions.
 
 | **Name**                  | **Version**                                                                                  |
 |---------------------------|----------------------------------------------------------------------------------------------|
-| Helm Chart                | [0.28.1](https://github.com/harness/helm-charts/releases/tag/harness-0.28.1)                 |
-| Air Gap Bundle            | [0.28.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.28.1) |
-| NG Manager                | 1.84.4                                                                                      |
+| Helm Chart                | [0.28.0](https://github.com/harness/helm-charts/releases/tag/harness-0.28.0)                 |
+| Air Gap Bundle            | [0.28.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.28.0) |
+| NG Manager                | 1.84.5                                                                                      |
 | CI Manager                | 1.74.4                                                                                       |
 | Pipeline Service          | 1.123.2                                                                                      |
 | Platform Service          | 1.61.0                                                                                      |
-| Access Control Service    | 1.82.1                                                                                      |
+| Access Control Service    | 1.82.2                                                                                      |
 | Delegate                  | 25.04.85602                                                                                  |
-| GitOps Service            | 1.30.1                                                                                       |
-| Change Data Capture       | 1.41.0                                                                                       |
+| GitOps Service            | 1.30.2                                                                                       |
+| Change Data Capture       | 1.41.3                                                                                       |
 | STO Core                  | 1.135.0                                                                                      |
 | Test Intelligence Service | 1.44.0                                                                                       |
 | NG UI                     | 1.70.3                                                                                       |
-| LE NG                     | 1.5.6                                                                                        |
+| LE NG                     | 1.8.0                                                                                        |
 | Looker                    | 1.7.11                                                                                       |
-| Log Service               | 1.19.0                                                                                       |
+| Log Service               | 1.19.1                                                                                       |
 | Batch Processing          | 1.44.3                                                                                       |
-| Gateway                   | 1.42.4                                                                                       |
+| Gateway                   | 1.42.7                                                                                       |
 | IaCM Manager              | 1.72.0                                                                                       |
 
 **Alternative air gap bundle download method**
