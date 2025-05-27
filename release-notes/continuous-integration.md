@@ -59,6 +59,14 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 #### New features and enhancements
 
+The following features are now available in beta:
+
+- [Build Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence) for the Maven build tool (version 3.9+). 
+
+- [Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview) for JavaScript (Jest) and Kotest.
+
+To join the beta program, please contact [Harness Support](https://support.harness.io) or your account representative.
+
 - Previously, CI stage timeouts for Kubernetes infrastructure were limited to a maximum of 24 hours. Some stages, however, require longer timeouts. Harness CI now supports stage timeouts of up to 35 days for Kubernetes-based CI stages. To enable this functionality, set the desired timeout value (greater than 24 hours) in the **Overview** section of the CI stage.
 
 This feature is behind the feature flag `CI_ENABLE_MAX_TIMEOUT_K8`.
