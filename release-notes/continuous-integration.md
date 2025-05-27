@@ -59,7 +59,11 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 #### New features and enhancements
 
-- Previously, CI stage timeouts were limited to a maximum of 24 hours. Some customers, however, require pipelines to run for longer durations. Harness CI now supports stage timeouts of up to 35 days. To enable this functionality, set the desired timeout value (greater than 24 hours) in the **Overview** section of the CI stage and enable the feature flag `CI_ENABLE_MAX_TIMEOUT_K8`. (CI-15102, ZD-72737)
+- Previously, CI stage timeouts were limited to a maximum of 24 hours. Some stages, however, require longer timeouts. Harness CI now supports stage timeouts of up to 35 days. To enable this functionality, set the desired timeout value (greater than 24 hours) in the **Overview** section of the CI stage.
+
+This feature is behind the feature flag `CI_ENABLE_MAX_TIMEOUT_K8`.
+
+(CI-15102, ZD-72737)
 
 #### Fixed issues
 
