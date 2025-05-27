@@ -100,6 +100,7 @@ Use this format to reference an input variable:
 ```
 
 Valid: `<+spec.inputVariables.inputVarA>`
+
 Invalid: `$inputVar` (shell-style syntax is not supported)
 
 For example, to compare an input variable with a payload field:
