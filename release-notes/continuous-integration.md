@@ -57,9 +57,12 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 <!-- 2025-05-26 -->
 
+#### New features and enhancements
+
+- Previously, CI stage timeouts were limited to a maximum of 24 hours. Some customers, however, require pipelines to run for longer durations. Harness CI now supports stage timeouts of up to 35 days. To enable this functionality, set the desired timeout value (greater than 24 hours) in the **Overview** section of the CI stage and enable the feature flag `CI_ENABLE_MAX_TIMEOUT_K8`. (CI-15102, ZD-72737)
+
 #### Fixed issues
 
-- Fixed an issue where steps on Kubernetes infrastructure would incorrectly expire after 24 hours, even when a longer timeout was configured. The system now correctly honors extended timeouts as specified in the pipeline stage or step settings. (CI-15102, ZD-72737)
 - Fixed an issue where pod cleanup requests were sent to an incorrect delegate when multiple delegates across clusters shared the same selector tag. This occurred specifically when pipelines were aborted during the init step, preventing Harness from receiving Pod IP information required for capability checks. The fix bypasses the connectivity check when no IP is available and introduces a dry-run pod deletion as a capability check. (CI-17241, ZD-83069)
 
 ### Version 1.80
