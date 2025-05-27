@@ -56,6 +56,7 @@ Configure the SDK with the SDK key for the FME environment that you would like t
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import io.split.android.client.SplitClient;
 import io.split.android.client.SplitClientConfig;
@@ -82,8 +83,10 @@ SplitFactory splitFactory = SplitFactoryBuilder.build(sdkKey, key, config, getAp
 // Get client instance
 SplitClient client = splitFactory.client();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 import io.split.android.client.SplitClient
 import io.split.android.client.SplitClientConfig
@@ -110,6 +113,7 @@ val splitFactory: SplitFactory =
 // Get client instance
 val client: SplitClient = splitFactory.client()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -124,6 +128,7 @@ To make sure the SDK is properly loaded before asking it for a treatment, wait u
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
   client.on(SplitEvent.SDK_READY, new SplitEventTask() {
     @Override
@@ -158,8 +163,10 @@ client.on(SplitEvent.SDK_READY_TIMED_OUT, new SplitEventTask() {
 }  
 
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
   client.on(SplitEvent.SDK_READY, object : SplitEventTask() {
 
@@ -194,6 +201,7 @@ client.on(SplitEvent.SDK_READY_TIMED_OUT, new SplitEventTask() {
     }
 })
 ```
+
 </TabItem>
 </Tabs>
 
@@ -201,6 +209,7 @@ Also, a `SDK_READY_FROM_CACHE` event is available, which allows to be aware of w
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 client.on(SplitEvent.SDK_READY_FROM_CACHE, new SplitEventTask() {
   @Override
@@ -224,8 +233,10 @@ client.on(SplitEvent.SDK_READY_FROM_CACHE, new SplitEventTask() {
   
 });
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 client.on(SplitEvent.SDK_READY_FROM_CACHE, object : SplitEventTask() {
     override fun onPostExecution(client: SplitClient) {
@@ -248,6 +259,7 @@ client.on(SplitEvent.SDK_READY_FROM_CACHE, object : SplitEventTask() {
     }
 })
 ```
+
 </TabItem>
 </Tabs>
 
@@ -267,6 +279,7 @@ The `getTreatment` method supports five types of attributes: strings, numbers, d
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import java.util.Map;
 import java.util.HashMap;
@@ -291,8 +304,10 @@ if (treatment.equals("on")) {
     // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 
 val attributes = mapOf(
@@ -316,6 +331,7 @@ when (client.getTreatment("FEATURE_FLAG_NAME", attributes)) {
     }
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -337,6 +353,7 @@ See below the definitions for the API which is exposed on the `client`:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 public interface AttributesManager {
     /**
@@ -376,8 +393,10 @@ public interface AttributesManager {
     boolean clearAttributes();
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 interface AttributesManager {
     /**
@@ -415,6 +434,7 @@ interface AttributesManager {
     fun clearAttributes(): Boolean
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -422,6 +442,7 @@ Refer to the example below to see how to use these methods:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import java.util.Map;
 import java.util.HashMap;
@@ -450,8 +471,10 @@ import java.util.Date;
   // Remove all attributes
   boolean result = client.clearAttributes();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // Set multiple attributes
 client.setAttributes(
@@ -477,6 +500,7 @@ val result = client.removeAttribute("deal_size")
 // Remove all attributes
 val result = client.clearAttributes()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -489,6 +513,7 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 List<String> featureFlagNames = Lists.newArrayList("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2");
 Map<String, String> treatments = client.getTreatments(featureFlagNames, null);
@@ -505,8 +530,10 @@ Map<String, String> treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSe
 // }
 
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val featureFlagNames: List<String> = listOf("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2")
 val treatments: Map<String, String> = client.getTreatments(featureFlagNames, null)
@@ -522,6 +549,7 @@ val treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets)
 //   "FEATURE_FLAG_NAME_2": "visa"
 // }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -535,19 +563,23 @@ This method takes the exact same set of arguments as the standard `getTreatment`
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitResult result = cli.getTreatmentWithConfig("new_boxes", attributes);
 Gson gson = new Gson();
 Map map = gson.fromJson(result.config(), Map.class);
 String treatment = result.treatment();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val result: SplitResult = client.getTreatmentWithConfig("new_boxes", attributes)
 val config: String = result.config()
 val treatment: String = result.treatment()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -555,6 +587,7 @@ If you need to get multiple evaluations at once, you can also use the `getTreatm
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 
 List<String> flagNames = Lists.newArrayList("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2");
@@ -571,8 +604,10 @@ Map<String, SplitResult> treatmentsByFlagSets = client.getTreatmentsWithConfigBy
 //   "FEATURE_FLAG_NAME_2": { "treatment": "visa", "config": "{ \"color\":\"red\" }" }
 // }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val flagNames: List<String> = listOf("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2")
 val treatments: Map<String, SplitResult> = client.getTreatmentsWithConfig(flagNames, null)
@@ -588,6 +623,7 @@ val treatmentsByFlagSets = client.getTreatmentsWithConfigByFlagSets(flagSetNames
 //   "FEATURE_FLAG_NAME_2": { "treatment": "visa", "config": "{ \"color\":\"red\" }" }
 // }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -600,7 +636,8 @@ You can append properties to an impression by passing an object of key-value pai
 Three types of properties are supported: strings, numbers, and booleans.
 
 <Tabs groupId="java-kotlin-choice">
-<TabItem value="Java">
+<TabItem value="java" label="Java">
+
 ```java
 // Create a Map for properties
 Map<String, Object> properties = new HashMap<>();
@@ -614,8 +651,10 @@ EvaluationOptions evaluationOptions = new EvaluationOptions(properties);
 // Get treatment using the evaluation options
 String treatment = client.getTreatment("FEATURE_FLAG_NAME", evaluationOptions);
 ```
+
 </TabItem>
-<TabItem value="Kotlin">
+<TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // Create a Map for properties
 val properties = mapOf(
@@ -630,6 +669,7 @@ val evaluationOptions = EvaluationOptions(properties)
 // Get treatment using the evaluation options
 val treatment = client.getTreatment("FEATURE_FLAG_NAME", evaluationOptions)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -639,14 +679,18 @@ It is good practice to call the `destroy` method before your app shuts down or i
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 client.destroy();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 client.destroy()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -675,6 +719,7 @@ In case a bad input is provided, refer to the [Track events](https://help.split.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 // Event without a value
 boolean trackEvent = client.track("TRAFFIC_TYPE", "EVENT_TYPE");
@@ -716,8 +761,10 @@ properties.put("discount", 50);
 
 boolean trackEvent = client.track("john@doe.com", "user", "page_load_time", null, properties);
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // Event without a value
 val trackEvent = client.track("user", "page_load_time")
@@ -757,6 +804,7 @@ val trackEvent = client.track(
     )
 )
 ```
+
 </TabItem>
 </Tabs>
 
@@ -799,6 +847,7 @@ To set each of the parameters defined above, use the syntax below.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import io.split.android.client.*;
 import java.util.Arrays;
@@ -828,8 +877,10 @@ SplitFactory splitFactory = SplitFactoryBuilder.build(sdkKey, k, config, getAppl
 // Get client instance
 SplitClient client = splitFactory.client();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val splitFilter: SplitFilter = SplitFilter.bySet(listOf("frontend"))
 
@@ -854,6 +905,7 @@ val splitFactory: SplitFactory = SplitFactoryBuilder
 
 val client: SplitClient = splitFactory.client()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -894,6 +946,7 @@ In this mode, the SDK loads the yaml file from a resource bundle file at the ass
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import io.split.android.client.SplitClient;
 import io.split.android.client.SplitFactoryBuilder;
@@ -905,8 +958,10 @@ Key k = new Key(matchingKey);
 
 SplitClient client = SplitFactoryBuilder.build("localhost", k, getApplicationContext()).client();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 import io.split.android.client.SplitFactoryBuilder
 import io.split.android.client.api.Key
@@ -920,6 +975,7 @@ val client = SplitFactoryBuilder.build(
     applicationContext
 ).client()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -944,12 +1000,15 @@ Use the Split Manager to get a list of feature flags available to the SDK factor
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_API_KEY");
 SplitManager manager = splitFactory.manager();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val splitFactory: SplitFactory = SplitFactoryBuilder.build(
     "api_key",
@@ -959,6 +1018,7 @@ val splitFactory: SplitFactory = SplitFactoryBuilder.build(
 
 val manager: SplitManager = splitFactory.manager()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -966,6 +1026,7 @@ The Manager then has the following methods available.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 /**
  * Retrieves the feature flags that are currently registered with the
@@ -989,8 +1050,10 @@ SplitView split(String SplitName);
  */
 List<String> splitNames();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 /**
  * Retrieves the feature flags that are currently registered with the
@@ -1013,7 +1076,9 @@ fun split(SplitName: String): SplitView?
  * @return a List of String (feature flag names) or empty
  */
 fun splitNames(): List<String>
+
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1021,6 +1086,7 @@ The `SplitView` object referenced above has the following structure.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 public class SplitView {
     public String name;
@@ -1034,8 +1100,10 @@ public class SplitView {
     public boolean impressionsDisabled;
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 class SplitView(
     var name: String?,
@@ -1048,6 +1116,7 @@ class SplitView(
     var impressionsDisabled: Boolean
 )
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1059,6 +1128,7 @@ The SDK sends the generated impressions to the impression listener right away. B
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitClientConfig config = SplitClientConfig.builder()
                         .impressionListener(new MyImpressionListener())
@@ -1080,8 +1150,10 @@ class MyImpressionListener implements ImpressionListener {
     }
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 class MyImpressionListener : ImpressionListener {
     override fun log(impression: Impression) {
@@ -1100,6 +1172,7 @@ val config = SplitClientConfig.builder()
     .impressionListener(MyImpressionListener())
     .build()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1107,6 +1180,7 @@ In regards with the data available here, refer to the `Impression` objects inter
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
     String key();
     String bucketingKey();
@@ -1118,8 +1192,10 @@ In regards with the data available here, refer to the `Impression` objects inter
     Map<String, Object> attributes();
     Long previousTime();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
     key(): String?
     bucketingKey(): String?
@@ -1131,6 +1207,7 @@ In regards with the data available here, refer to the `Impression` objects inter
     attributes(): Map<String, Any?>?
     previousTime(): Long?
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1152,14 +1229,18 @@ The flush() method sends the data stored in memory (impressions and events) to t
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 client.flush();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 client.flush()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1193,6 +1274,7 @@ You can do this using the example below:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 // Create factory
 Key key = new Key("anonymous_user");
@@ -1223,8 +1305,10 @@ userClient.on(SplitEvent.SDK_READY, new SplitEventTask() {
     }
 });
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // Create factory
 val key = Key("anonymous_user")
@@ -1253,6 +1337,7 @@ userClient.on(SplitEvent.SDK_READY, object : SplitEventTask() {
     }
 })
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1273,14 +1358,17 @@ An event is an extension of a SplitEventTask.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 public class SplitEventTask {
     public void onPostExecution(SplitClient client) { }
     public void onPostExecutionView(SplitClient client) { }
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 open class SplitEventTask {
 
@@ -1293,6 +1381,7 @@ open class SplitEventTask {
     }
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1304,6 +1393,7 @@ The syntax to listen for an event can be seen below.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 client.on(SplitEvent.SDK_READY, new SplitEventTask() {
   @Override
@@ -1356,8 +1446,10 @@ client.on(SplitEvent.SDK_READY_UPDATE, new SplitEventTask() {
   }
 });
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 client.on(SplitEvent.SDK_READY, object : SplitEventTask() {
     override fun onPostExecution(client: SplitClient) {
@@ -1402,6 +1494,7 @@ client.on(SplitEvent.SDK_UPDATE, object : SplitEventTask() {
     }
 })
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1469,6 +1562,7 @@ To set the SDK to require pinned certificates for specific hosts, add the `Certi
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import io.split.android.client.network.CertificatePinningConfiguration;
 import io.split.android.client.SplitClientConfig;
@@ -1496,8 +1590,10 @@ SplitClientConfig config = SplitClientConfig.builder()
     // you can add other configuration properties here
     .build();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 import io.split.android.client.network.CertificatePinningConfiguration
 import io.split.android.client.SplitClientConfig
@@ -1526,5 +1622,6 @@ val config = SplitClientConfig.builder()
     .build()
 
 ```
+
 </TabItem>
 </Tabs>

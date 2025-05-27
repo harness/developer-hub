@@ -28,19 +28,26 @@ You can import the Suite into your project by installing the NPM package.
 
 <Tabs>
 <TabItem value="NPM (recommended)">
+
 ```bash
 npm install --save @splitsoftware/browser-suite
 ```
+
 </TabItem>
 <TabItem value="Yarn">
+
 ```bash
 yarn add @splitsoftware/browser-suite
 ```
+
 </TabItem>
 <TabItem value="CDN bundle">
+
 ```html
 <script src="//cdn.split.io/sdk/browser-suite-2.1.0.min.js"></script>
+
 ```
+
 </TabItem>
 </Tabs>
 
@@ -56,6 +63,7 @@ In your code, instantiate the Suite client as shown below.
 
 <Tabs>
 <TabItem value="Using ES modules">
+
 ```javascript
 import { SplitSuite } from '@splitsoftware/browser-suite';
 
@@ -73,8 +81,10 @@ const suite = SplitSuite({
 // And get the client instance you'll use
 const client = suite.client();
 ```
+
 </TabItem>
 <TabItem value="Using CommonJS">
+
 ```javascript
 var SplitSuite = require('@splitsoftware/browser-suite').SplitSuite;
 
@@ -92,8 +102,10 @@ var suite = SplitSuite({
 // And get the client instance you'll use
 var client = suite.client();
 ```
+
 </TabItem>
 <TabItem value="Using CDN bundle">
+
 ```javascript
 // Instantiate the Suite. CDN exposes a splitio object globally,
 // with a reference to the SplitSuite (as well as any extra modules)
@@ -111,6 +123,7 @@ var suite = splitio.SplitSuite({
 // And get the client instance you'll use
 var client = suite.client();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -148,8 +161,10 @@ client.on(client.Event.SDK_READY, function() {
   }
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 client.on(client.Event.SDK_READY, function() {
   const treatment: SplitIO.Treatment = client.getTreatment('FEATURE_FLAG_NAME');
@@ -163,6 +178,7 @@ client.on(client.Event.SDK_READY, function() {
   }
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -207,8 +223,10 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 const attributes: SplitIO.Attributes = {
   // date attributes are handled as `millis since epoch`
@@ -231,6 +249,7 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -281,6 +300,7 @@ var result = client.removeAttribute('permissions');
 var result = client.clearAttributes();
 
 ```
+
 </TabItem>
 </Tabs>
 
@@ -312,6 +332,7 @@ treatments = client.getTreatmentsByFlagSets(flagSets);
 //   FEATURE_FLAG_NAME_2: 'visa'
 // }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
 
@@ -333,6 +354,7 @@ treatments = client.getTreatmentsByFlagSets(flagSets);
 //   FEATURE_FLAG_NAME_2: 'visa'
 // }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -351,14 +373,17 @@ var TreatmentResult = {
   String config; // or null if there is no config for the treatment
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 type TreatmentResult = {
   treatment: string,
   config: string | null
 };
 ```
+
 </TabItem>
 </Tabs>
 
@@ -380,8 +405,10 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 const treatmentResult: SplitIO.TreatmentWithConfig = client.getTreatmentWithConfig('FEATURE_FLAG_NAME', attributes);
 const configs = JSON.parse(treatmentResult.config);
@@ -395,6 +422,7 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -423,8 +451,10 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets(flagSets);
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 // Getting treatments by feature flag names
 const flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
@@ -445,6 +475,7 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets(flagSets);
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -458,6 +489,7 @@ Three types of properties are supported: strings, numbers, and booleans.
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 const evaluationOptions = {
   properties: { 
@@ -469,8 +501,10 @@ const evaluationOptions = {
 
 const treatment = client.getTreatment('FEATURE_FLAG_NAME', undefined, evaluationOptions);
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 const evaluationOptions: SplitIO.EvaluationOptions = {
   properties: { 
@@ -482,6 +516,7 @@ const evaluationOptions: SplitIO.EvaluationOptions = {
 
 const treatment: string = client.getTreatment('FEATURE_FLAG_NAME', undefined, evaluationOptions);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -508,6 +543,7 @@ The Suite RUM agent's `track` method sends events for all the identities configu
 
 <Tabs>
 <TabItem value="Track per identity (client's track)">
+
 ```javascript
 var client = suite.client();
 
@@ -522,8 +558,10 @@ var queued = client.track('user', 'page_load_time', 83.334, properties);
 var properties = { package : "premium", admin : true, discount : 50 };
 var queued = client.track('user', 'page_load_time', null, properties);
 ```
+
 </TabItem>
 <TabItem value="Track for all identities (RUM agent's track)">
+
 ```javascript
 var SplitRumAgent = suite.rumAgent();
 
@@ -538,6 +576,7 @@ var queued = SplitRumAgent.track('page_load_time', 83.334, properties);
 var properties = { package : "premium", admin : true, discount : 50 };
 var queued = SplitRumAgent.track('page_load_time', null, properties);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -561,6 +600,7 @@ suite.destroy().then(function() {
   document.location.replace('another_page');
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -617,6 +657,7 @@ To set each of the parameters defined above, use the following syntax:
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 var suite = SplitSuite({
   startup: {
@@ -657,8 +698,10 @@ var suite = SplitSuite({
   }
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 const suite: ISuiteSDK = SplitSuite({
   startup: {
@@ -699,6 +742,7 @@ const suite: ISuiteSDK = SplitSuite({
   }
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -716,6 +760,7 @@ This `InLocalStorage` function accepts an optional object with options described
 
 <Tabs>
 <TabItem value="With ES Modules">
+
 ```javascript
 import { SplitSuite, InLocalStorage } from '@splitsoftware/browser-suite';
 
@@ -734,6 +779,7 @@ const suite = SplitSuite({
 // Now use the Suite as usual
 const client = suite.client();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -758,6 +804,7 @@ If you define just a string as the value for a feature flag name, any config ret
 
 <Tabs>
 <TabItem value="Using ES modules">
+
 ```javascript
 import { SplitSuite } from '@splitsoftware/browser-suite';
 
@@ -787,6 +834,7 @@ client.on(client.Event.SDK_READY, () => {
   const t3 = client.getTreatmentWithConfig('navigation_bar_changes');
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -811,8 +859,10 @@ manager.once(manager.Event.SDK_READY, function() {
   // Once it's ready, use the manager
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 const suite: ISuiteSDK = SplitSuite({
   core: {
@@ -827,6 +877,7 @@ manager.once(manager.Event.SDK_READY, function() {
   // Once it's ready, use the manager
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -834,6 +885,7 @@ The Manager has the following methods available:
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 /**
  * Returns the feature flag registered within the SDK that matches this name.
@@ -856,8 +908,10 @@ var splitViewsList = manager.splits();
  */
 var splitNamesList = manager.names();
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 /**
  * Returns the feature flag registered within the SDK that matches this name.
@@ -880,6 +934,7 @@ const splitViewsList: SplitIO.SplitViews = manager.splits();
  */
 const splitNamesList: SplitIO.SplitNames = manager.names();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -887,6 +942,7 @@ The `SplitView` object referenced above has the following structure:
 
 <Tabs>
 <TabItem value="TypeScript">
+
 ```typescript
 type SplitView = {
   name: string,
@@ -902,6 +958,7 @@ type SplitView = {
   impressionsDisabled: boolean
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -941,8 +998,10 @@ var suite = SplitSuite({
   }
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 class MyImprListener implements SplitIO.IImpressionListener {
   logImpression(impressionData: SplitIO.ImpressionData) {
@@ -960,6 +1019,7 @@ const suite: ISuiteSDK = SplitSuite({
   }
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -973,6 +1033,7 @@ To trim as many bits as possible from the user application builds, we divided th
 
 <Tabs>
 <TabItem value="ES Modules">
+
 ```javascript
 import { SplitSuite, DebugLogger } from '@splitsoftware/browser-suite';
 
@@ -984,8 +1045,10 @@ const suite = SplitSuite({
   debug: DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
 });
 ```
+
 </TabItem>
 <TabItem value="CommonJS">
+
 ```javascript
 var splitio = require('@splitsoftware/browser-suite');
 
@@ -997,6 +1060,7 @@ var suite = splitio.SplitSuite({
   debug: splitio.DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1025,6 +1089,7 @@ Suite logging can also be globally enabled via a localStorage value by opening y
 // Acceptable values are 'DEBUG', 'INFO', 'WARN', 'ERROR' and 'NONE'
 // Other acceptable values are 'on', 'enable' and 'enabled', which are equivalent to 'DEBUG' log level
 localStorage.splitio_debug = 'on' <enter>
+
 ```
 
 ## Advanced use cases
@@ -1075,8 +1140,10 @@ user_client.track('account', 'PAGELOAD', 7.86);
 // or track events for users
 account_client.track('user', 'ACCOUNT_CREATED');
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 const suite: ISuiteSDK = SplitSuite({
   core: {
@@ -1111,6 +1178,7 @@ user_client.track('account', 'PAGELOAD', 7.86);
 // or track events for users
 account_client.track('user', 'ACCOUNT_CREATED');
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1168,8 +1236,10 @@ client.once(client.Event.SDK_READY_FROM_CACHE, function () {
   // Keep in mind that data might be stale, this is NOT a replacement of SDK_READY.
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 function whenReady() {
   const treatment: SplitIO.Treatment = client.getTreatment('YOUR_SPLIT');
@@ -1205,6 +1275,7 @@ client.once(client.Event.SDK_READY_FROM_CACHE, function () {
   // Keep in mind that data might be stale, this is NOT a replacement of SDK_READY.
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1221,6 +1292,7 @@ There are three possible initial states:
 
 <Tabs>
 <TabItem value="User consent: initial config, getter and setter">
+
 ```javascript
 var suite = SplitSuite({
   core: {
@@ -1246,6 +1318,7 @@ suite.UserConsent.setStatus(false); // Consent status changed from 'GRANTED' to 
 suite.UserConsent.getStatus() === suite.UserConsent.Status.DECLINED;
 
 ```
+
 </TabItem>
 </Tabs>
 

@@ -118,18 +118,22 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="getTreatments">
+
 ```php
 $treatments = $client->getTreatments('key', 'bucketingKey', ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'], null);
 
 echo json_encode($treatments);
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsByFlagSet">
+
 ```php
 $treatments = $client->getTreatmentsByFlagSet('key', 'bucketingKey', 'backend', null);
 
 echo json_encode($treatments);
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsByFlagSets">
 
@@ -138,6 +142,7 @@ $treatments = $client->getTreatmentsByFlagSets('key', 'bucketingKey', ['backend'
 
 echo json_encode($treatments);
 ```
+
 </TabItem>
 </Tabs>
 

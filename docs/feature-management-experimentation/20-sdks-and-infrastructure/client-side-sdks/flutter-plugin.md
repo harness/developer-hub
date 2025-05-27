@@ -162,6 +162,7 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="getTreatments">
+
 ```dart
 const featureFlagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
 var treatments = {};
@@ -170,8 +171,10 @@ _split.client(onReady: (client) async {
   treatments = await client.getTreatments(featureFlagNames);
 });
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsByFlagSet">
+
 ```dart
 var treatments = {};
 
@@ -179,8 +182,10 @@ _split.client(onReady: (client) async {
   treatments = await client.getTreatmentsByFlagSet('frontend');
 });
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsByFlagSets">
+
 ```dart
 var treatments = {};
 
@@ -188,6 +193,7 @@ _split.client(onReady: (client) async {
   treatments = await client.getTreatmentsByFlagSets('frontend', 'client_side');
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -226,6 +232,7 @@ If you need to get multiple evaluations at once, you can also use the `getTreatm
 
 <Tabs>
 <TabItem value="getTreatmentsWithConfig">
+
 ```dart
 SplitResult result = await client.getTreatmentsWithConfig('FEATURE_FLAG_NAME');
 var configs = result.config;
@@ -239,8 +246,10 @@ if (treatment == 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsWithConfigByFlagSet">
+
 ```dart
 SplitResult result = await client.getTreatmentsWithConfigByFlagSet('frontend');
 var configs = result.config;
@@ -254,8 +263,10 @@ if (treatment == 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsWithConfigByFlagSets">
+
 ```dart
 SplitResult result = await client.getTreatmentsWithConfigByFlagSets(['frontend', 'client_side']);
 var configs = result.config;
@@ -269,6 +280,7 @@ if (treatment == 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -602,6 +614,7 @@ public class CustomApplication extends Application {
         android:label="my_app"
         android:name=".CustomApplication"
         android:icon="@mipmap/ic_launcher">
+
 ```
 
 2. Add the Android SDK dependency to your project's `build.gradle` file.

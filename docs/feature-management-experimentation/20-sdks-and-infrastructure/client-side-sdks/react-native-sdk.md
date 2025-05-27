@@ -36,19 +36,25 @@ Install the package in your project:
 
 <Tabs>
 <TabItem value="With NPM">
+
 ```bash
 npm install @splitsoftware/splitio-react-native
 ```
+
 </TabItem>
 <TabItem value="With Yarn">
+
 ```bash
 yarn add @splitsoftware/splitio-react-native
 ```
+
 </TabItem>
 <TabItem value="With Expo CLI">
+
 ```bash
 expo install @splitsoftware/splitio-react-native
 ```
+
 </TabItem>
 </Tabs>
 
@@ -78,27 +84,9 @@ globalThis.EventSource = RNEventSource;
 
 ### 2. Instantiate the SDK and create a new SDK factory client
 
-<Tabs>
-<TabItem value="TypeScript (with ES modules)">
-```typescript
-import { SplitFactory } from '@splitsoftware/splitio-react-native';
- 
-// Instantiate the SDK
-const factory: SplitIO.IBrowserSDK = SplitFactory({ 
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    // key represents your internal user id, or the account id that 
-    // the user belongs to. 
-    // This could also be a cookie you generate for anonymous users
-    key: 'key'
-  }
-});
- 
-// And get the client instance you'll use
-const client: SplitIO.IBrowserClient = factory.client();
-```
-</TabItem>
-<TabItem value="JavaScript (with CommonsJS)">
+<Tabs groupId="java-type-script">
+<TabItem value="JavaScript" label="JavaScript (with CommonJS)">
+
 ```javascript
 var SplitFactory = require('@splitsoftware/splitio-react-native').SplitFactory;
  
@@ -116,6 +104,28 @@ var factory = SplitFactory({
 // And get the client instance you'll use
 var client = factory.client();
 ```
+
+</TabItem>
+<TabItem value="TypeScript" label="TypeScript (with ES modules)">
+
+```typescript
+import { SplitFactory } from '@splitsoftware/splitio-react-native';
+ 
+// Instantiate the SDK
+const factory: SplitIO.IBrowserSDK = SplitFactory({ 
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    // key represents your internal user id, or the account id that 
+    // the user belongs to. 
+    // This could also be a cookie you generate for anonymous users
+    key: 'key'
+  }
+});
+ 
+// And get the client instance you'll use
+const client: SplitIO.IBrowserClient = factory.client();
+```
+
 </TabItem>
 </Tabs>
 
@@ -143,6 +153,7 @@ Then use an if-else-if block as shown below and insert the code for the differen
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 client.on(client.Event.SDK_READY, function() {
   var treatment = client.getTreatment("FEATURE_FLAG_NAME");
@@ -156,8 +167,10 @@ client.on(client.Event.SDK_READY, function() {
   }
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 client.on(client.Event.SDK_READY, function() {
   const treatment: SplitIO.Treatment = client.getTreatment("FEATURE_FLAG_NAME");
@@ -171,6 +184,7 @@ client.on(client.Event.SDK_READY, function() {
   }
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -229,8 +243,10 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 const attributes: SplitIO.Attributes = {
   // date attributes are handled as `millis since epoch`
@@ -253,6 +269,7 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -303,6 +320,7 @@ var result = client.removeAttribute('permissions');
 var result = client.clearAttributes();
 
 ```
+
 </TabItem>
 </Tabs>
 
@@ -334,8 +352,10 @@ treatments = client.getTreatmentsByFlagSets(flagSets);
 //   FEATURE_FLAG_NAME_2: 'visa'
 // }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 // Getting treatments by feature flag names
 const flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
@@ -354,6 +374,7 @@ treatments = client.getTreatmentsByFlagSets(flagSets);
 //   FEATURE_FLAG_NAME_2: 'visa'
 // }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -372,14 +393,17 @@ var TreatmentResult = {
   String config; // or null if there is no config for the treatment
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 type TreatmentResult = {
   treatment: string,
   config: string | null
 };
 ```
+
 </TabItem>
 </Tabs>
 
@@ -403,8 +427,10 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 const treatmentResult: SplitIO.TreatmentWithConfig = client.getTreatmentWithConfig('FEATURE_FLAG_NAME', attributes);
 const configs = JSON.parse(treatmentResult.config);
@@ -418,6 +444,7 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -447,8 +474,10 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets(flagSets);
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 // Getting treatments by feature flag names
 const featureFlagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
@@ -470,6 +499,7 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets(flagSets);
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -497,6 +527,7 @@ user_client.destroy().then(function() {
   document.location.replace('another_page');
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -542,8 +573,10 @@ var queued = client.track('user', 'page_load_time', 83.334, properties);
 var properties = { package : "premium", admin : true, discount : 50 };
 var queued = client.track('user', 'page_load_time', null, properties);
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 // Example with both a value and properties
 const properties: SplitIO.Properties = { package: "premium", admin: true, discount: 50 };
@@ -553,6 +586,7 @@ const queued: boolean = client.track('user', 'page_load_time', 83.334, propertie
 const properties = { package: "premium", admin: true, discount: 50 };
 const queued = client.track('user', 'page_load_time', null, properties);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -617,8 +651,10 @@ var sdk = SplitFactory({
   debug: false
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 const sdk: SplitIO.IBrowserSDK = SplitFactory({
   startup: {
@@ -649,6 +685,7 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
   debug: false
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -673,6 +710,7 @@ If you define just a string as the value for a feature flag name, any config ret
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio-react-native';
 
@@ -702,8 +740,10 @@ client.on(client.Event.SDK_READY, function() {
   var t3 = client.getTreatmentWithConfig('navigation_bar_changes') 
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 import { SplitFactory } from '@splitsoftware/splitio-react-native';
 
@@ -733,6 +773,7 @@ client.on(client.Event.SDK_READY, () => {
   const t3: SplitIO.Treatment = client.getTreatmentWithConfig('navigation_bar_changes');
 });
 ```
+
 </TabItem>
 </Tabs> 
 
@@ -788,8 +829,10 @@ manager.once(manager.Event.SDK_READY, function() {
   // Once it's ready, use the manager
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 const factory: SplitIO.IBrowserSDK = SplitFactory({ 
   core: {
@@ -804,6 +847,7 @@ manager.once(manager.Event.SDK_READY, function() {
   // Once it's ready, use the manager
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -835,8 +879,10 @@ var splitViewsList = manager.splits();
  */
 var splitNamesList = manager.names();
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 /**
  * Returns the feature flag registered with the SDK of this name.
@@ -860,6 +906,7 @@ const splitViewsList: SplitIO.SplitViews = manager.splits();
  */
 const splitNamesList: SplitIO.SplitNames = manager.names();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -898,9 +945,10 @@ There are two additional keys on this object, `ip` and `hostname`. They are not 
 ## Implement custom impression listener
 
 Here is an example of how implement a custom impression listener.
- 
+
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 function logImpression(impressionData) {
   // do something with the impression data.
@@ -916,8 +964,10 @@ var factory = SplitFactory({
   }
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 class MyImprListener implements SplitIO.IImpressionListener {
   logImpression(impressionData: SplitIO.ImpressionData) {
@@ -935,6 +985,7 @@ const factory: SplitIO.IBrowserSDK = SplitFactory({
   }
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -947,21 +998,9 @@ Even though the SDK does not fail if there is an exception in the listener, do n
 To trim as many bits as possible from the user application builds, we divided the logger in implementations that contain the log messages for each log level: `ErrorLogger`, `WarnLogger`, `InfoLogger`, and `DebugLogger`. Higher log level options contain the messages for the lower ones, with DebugLogger containing them all.
 Thus, to enable descriptive SDK logging you need to plug in a logger instance as shown below:
 
-<Tabs>
-<TabItem value="Logger instance (TypeScript)">
-```javascript
-import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-react-native';
- 
-const sdk: SplitIO.IBrowserSDK = SplitFactory({ 
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  debug: DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
-});
-```
-</TabItem>
-<TabItem value="Logger instance (JavaScript)">
+<Tabs groupId="java-type-script">
+<TabItem value="JavaScript" label="Logger instance (JavaScript)">
+
 ```javascript
 var splitio = require('@splitsoftware/splitio-react-native');
  
@@ -973,6 +1012,22 @@ var sdk = splitio.SplitFactory({
   debug: splitio.DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
 });
 ```
+
+</TabItem>
+<TabItem value="TypeScript" label="Logger instance (TypeScript)">
+
+```javascript
+import { SplitFactory, DebugLogger } from '@splitsoftware/splitio-react-native';
+ 
+const sdk: SplitIO.IBrowserSDK = SplitFactory({ 
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: DebugLogger() // other options are `InfoLogger`, `WarnLogger` and `ErrorLogger`
+});
+```
+
 </TabItem>
 </Tabs>
 
@@ -981,9 +1036,29 @@ You can also enable the SDK logging via a boolean or log level value as `debug` 
 However, in any case where the proper logger instance is not plugged in, instead of a human readable message you'll get a code and optionally some params for the log itself. 
 While these logs would be enough for the Split support team, if you find yourself in a scenario where you need to parse this information, you can check the constant files in our javascript-commons repository (where you have tags per version if needed) under the [logger folder](https://github.com/splitio/javascript-commons/blob/master/src/logger/).
 
+<Tabs groupId="java-type-script">
+<TabItem value="JavaScript" label="Logger API (JavaScript)">
 
-<Tabs>
-<TabItem value="Logger API (TypeScript)">
+```javascript
+var splitio = require('@splitsoftware/splitio-react-native');
+ 
+var sdk = splitio.SplitFactory({
+  core: {
+    authorizationKey: 'YOUR_SDK_KEY',
+    key: 'key'
+  },
+  debug: true // other options are 'ERROR', 'WARN', 'INFO' and 'DEBUG
+});
+ 
+// Or you can use the Logger API methods which have an immediate effect.
+sdk.Logger.setLogLevel('WARN'); // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'
+sdk.Logger.enable(); // equivalent to `setLogLevel('DEBUG')`
+sdk.Logger.disable(); // equivalent to `setLogLevel('NONE')`
+```
+
+</TabItem>
+<TabItem value="TypeScript" label="Logger API (TypeScript)">
+
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio-react-native';
  
@@ -1000,24 +1075,7 @@ sdk.Logger.setLogLevel('WARN'); // Acceptable values are: 'DEBUG', 'INFO', 'WARN
 sdk.Logger.enable(); // equivalent to `setLogLevel('DEBUG')`
 sdk.Logger.disable(); // equivalent to `setLogLevel('NONE')`
 ```
-</TabItem>
-<TabItem value="Logger API (JavaScript)">
-```javascript
-var splitio = require('@splitsoftware/splitio-react-native');
- 
-var sdk = splitio.SplitFactory({
-  core: {
-    authorizationKey: 'YOUR_SDK_KEY',
-    key: 'key'
-  },
-  debug: true // other options are 'ERROR', 'WARN', 'INFO' and 'DEBUG
-});
- 
-// Or you can use the Logger API methods which have an immediate effect.
-sdk.Logger.setLogLevel('WARN'); // Acceptable values are: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'NONE'
-sdk.Logger.enable(); // equivalent to `setLogLevel('DEBUG')`
-sdk.Logger.disable(); // equivalent to `setLogLevel('NONE')`
-```
+
 </TabItem>
 </Tabs>
 
@@ -1067,8 +1125,10 @@ user_client.track('account', 'PAGELOAD', 7.86);
 // or track events for users
 account_client.track('user', 'ACCOUNT_CREATED');
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 const sdk: SplitIO.IBrowserSDK = SplitFactory({
   core: {
@@ -1102,6 +1162,7 @@ user_client.track('account', 'PAGELOAD', 7.86);
 // or track events for users
 account_client.track('user', 'ACCOUNT_CREATED');
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1150,8 +1211,10 @@ client.on(client.Event.SDK_UPDATE, function () {
   console.log('The SDK has been updated!');
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 function whenReady() {
   const treatment: SplitIO.Treatment = client.getTreatment('YOUR_FEATURE_FLAG');
@@ -1180,6 +1243,7 @@ client.on(client.Event.SDK_UPDATE, () => {
   console.log('The SDK has been updated!');
 });
 ```
+
 </TabItem>
 </Tabs>
 

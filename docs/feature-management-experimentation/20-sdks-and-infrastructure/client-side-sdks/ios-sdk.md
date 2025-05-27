@@ -129,19 +129,23 @@ Starting from version 2.24.5, it is possible to configure the handler to run in 
 
 <Tabs>
 <TabItem value="Running in Background">
+
 ```swift
 client?.on(event: SplitEvent.sdkReadyFromCache, runInBackground: true) {
   // Handler code
 }
 ```
+
 </TabItem>
 <TabItem value="Custom Queue">
+
 ```swift
 let customQueue = DispatchQueue(label: "custom-queue")
 client?.on(event: SplitEvent.sdkReadyFromCache, queue: customQueue) {
   // Handler code
 }
 ```
+
 </TabItem>
 </Tabs>
 

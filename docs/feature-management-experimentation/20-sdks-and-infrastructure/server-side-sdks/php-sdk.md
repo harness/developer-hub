@@ -149,25 +149,31 @@ In some instances, you may want to evaluate treatments for multiple feature flag
  
 <Tabs>
 <TabItem value="getTreatments">
+
 ```php
 $treatments = $splitClient->getTreatments('key', ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2']);
  
 echo json_encode($treatments);
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsByFlagSet">
+
 ```php
 $treatments = $splitClient->getTreatmentsByFlagSet('key', 'backend');
  
 echo json_encode($treatments);
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsByFlagSets">
+
 ```php
 $treatments = $splitClient->getTreatmentsByFlagSets('key', ['backend', 'server_side']);
  
 echo json_encode($treatments);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -191,6 +197,7 @@ If you need to get multiple evaluations at once, you can also use the `getTreatm
 
 <Tabs>
 <TabItem value="getTreatmentsWithConfig">
+
 ```php
 $TreatmentResults = $splitClient->getTreatmentsWithConfig('KEY', array('FEATURE_FLAG_NAME_1' 'FEATURE_FLAG_NAME_2'), attributes);
 // TreatmentResults will have the following form: 
@@ -201,8 +208,10 @@ $TreatmentResults = $splitClient->getTreatmentsWithConfig('KEY', array('FEATURE_
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsWithConfigByFlagSet">
+
 ```php
 $treatments = $splitClient->getTreatmentsWithConfigByFlagSet('KEY', 'backend')
 // $treatments will have the following form: 
@@ -213,8 +222,10 @@ $treatments = $splitClient->getTreatmentsWithConfigByFlagSet('KEY', 'backend')
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsWithConfigByFlagSets">
+
 ```php
 $treatments = $splitClient->getTreatmentsWithConfigByFlagSets('KEY', ['backend', 'server_side'])
 // $treatments will have the following form: 
@@ -225,6 +236,7 @@ $treatments = $splitClient->getTreatmentsWithConfigByFlagSets('KEY', ['backend',
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 </Tabs>
 

@@ -44,14 +44,18 @@ The library is published using `npm`, so you can install it in your project with
 
 <Tabs>
 <TabItem value="npm">
+
 ```bash
 npm install --save @splitsoftware/splitio-sync-tools
 ```
+
 </TabItem>
 <TabItem value="yarn">
+
 ```bash
 yarn add @splitsoftware/splitio-sync-tools
 ```
+
 </TabItem>
 </Tabs>
 
@@ -59,6 +63,7 @@ yarn add @splitsoftware/splitio-sync-tools
 
 <Tabs>
 <TabItem value="CommonJS">
+
 ```javascript
 const { Synchronizer } = require('@splitsoftware/splitio-sync-tools');
 
@@ -76,8 +81,10 @@ synchronizer.execute().then(() => {
   console.log('Single-run synchronization finished');
 });
 ```
+
 </TabItem>
 <TabItem value="ES modules">
+
 ```javascript
 import { Synchronizer } from '@splitsoftware/splitio-sync-tools';
 
@@ -95,6 +102,7 @@ await synchronizer.execute();
 
 console.log('Single-run synchronization finished');
 ```
+
 </TabItem>
 </Tabs>
 
@@ -143,6 +151,7 @@ const synchronizer = new Synchronizer({
   debug: true
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -152,6 +161,7 @@ If you need to use a network proxy, you can provide a custom [Node.js HTTPS Agen
 
 <Tabs>
 <TabItem value="Example using the HTTPS Proxy Agent NPM library">
+
 ```javascript
 // Install with `npm install https-proxy-agent`
 const { HttpsProxyAgent } = require('https-proxy-agent');
@@ -168,6 +178,7 @@ const synchronizer = new Synchronizer({
   }
 });
 ```
+
 </TabItem>
 </Tabs>
 

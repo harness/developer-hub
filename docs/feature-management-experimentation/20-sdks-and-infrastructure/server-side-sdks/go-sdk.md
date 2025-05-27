@@ -163,6 +163,7 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="Treatments">
+
 ```go
 splitClient := factory.Client()
 treatments := splitClient.Treatments(
@@ -175,18 +176,23 @@ for featureFlag, treatment := range treatments {
 	fmt.Printf("Treatment for feature flag %s is %s\n", featureFlag, treatment)
 }
 ```
+
 </TabItem>
 <TabItem value="TreatmentsByFlagSet">
+
 ```go
 splitClient := factory.Client()
 treatments := splitClient.TreatmentsByFlagSet("KEY", "backend", nil)
 ```
+
 </TabItem>
 <TabItem value="TreatmentsByFlagSets">
+
 ```go
 splitClient := factory.Client()
 treatments := splitClient.TreatmentsByFlagSets("KEY", []string{"backend", "server_side"}, nil)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -216,6 +222,7 @@ If you need to get multiple evaluations at once, you can also use the `Treatment
 
 <Tabs>
 <TabItem value="TreatmentsWithConfig">
+
 ```go
 TreatmentResults := splitClient.TreatmentsWithConfig("KEY", []string{"FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2"}, attributes)
 // TreatmentResults will have the following form: 
@@ -226,16 +233,21 @@ TreatmentResults := splitClient.TreatmentsWithConfig("KEY", []string{"FEATURE_FL
 //                  config: "{ 'copy' : 'better copy'}}",
 // }	
 ```
+
 </TabItem>
 <TabItem value="TreatmentsWithConfigByFlagSet">
+
 ```go
 TreatmentResults := splitClient.TreatmentsWithConfigByFlagSet("KEY", "backend", attributes)
 ```
+
 </TabItem>
 <TabItem value="TreatmentsWithConfigByFlagSets">
+
 ```go
 TreatmentResults := splitClient.TreatmentsWithConfigByFlagSets("KEY", []string{"backend", "server_side"}, attributes)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -488,6 +500,7 @@ The following splitFile is a JSON that represents a SplitChange:
 
 <Tabs>
 <TabItem value="SplitChange Schema">
+
 ```go
 type SplitChangesDTO struct {
 	Till   int64      `json:"till"`
@@ -495,8 +508,10 @@ type SplitChangesDTO struct {
 	Splits []SplitDTO `json:"splits"`
 }
 ```
+
 </TabItem>
 <TabItem value="Split Schema">
+
 ```go
 type SplitDTO struct {
 	ChangeNumber          int64             `json:"changeNumber"`
@@ -513,8 +528,10 @@ type SplitDTO struct {
 	Configurations        map[string]string `json:"configurations"`
 }
 ```
+
 </TabItem>
 <TabItem value="JSON example">
+
 ```json
 {
   "splits": [
@@ -608,6 +625,7 @@ type SplitDTO struct {
   "till": 1660326991072
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -617,6 +635,7 @@ The provided segment directory must have the JSON files of the corresponding seg
 
 <Tabs>
 <TabItem value="SegmentChange Schema">
+
 ```go
 type SegmentChangesDTO struct {
 	Name    string   `json:"name"`
@@ -626,8 +645,10 @@ type SegmentChangesDTO struct {
 	Till    int64    `json:"till"`
 }
 ```
+
 </TabItem>
 <TabItem value="JSON example">
+
 ```json
 {
   "name": "segment_1",
@@ -640,6 +661,7 @@ type SegmentChangesDTO struct {
   "till": 1585948850110
 }
 ```
+
 </TabItem>
 </Tabs>
 

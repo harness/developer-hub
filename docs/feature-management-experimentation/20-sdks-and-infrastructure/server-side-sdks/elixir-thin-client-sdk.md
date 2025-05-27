@@ -28,6 +28,7 @@ The package can be installed by adding `split_thin_sdk` to your list of dependen
 
 <Tabs>
 <TabItem value="mix.exs">
+
 ```elixir
 def deps do
   [
@@ -35,6 +36,7 @@ def deps do
   ]
 end
 ```
+
 </TabItem>
 </Tabs>
 
@@ -59,6 +61,7 @@ To start the Elixir Thin SDK, you need to start its supervisor, either in your A
 
 <Tabs>
 <TabItem value="Supervised Child">
+
 ```elixir
 defmodule MyApp.Application do
   use Application
@@ -74,8 +77,10 @@ defmodule MyApp.Application do
   end
 end
 ```
+
 </TabItem>
 <TabItem value="Independent Supervisor">
+
 ```elixir
 defmodule MyApp.Application do
   use Application
@@ -92,6 +97,7 @@ defmodule MyApp.Application do
   end
 end
 ```
+
 </TabItem>
 </Tabs>
 
@@ -151,25 +157,31 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="get_treatments">
+
 ```elixir
 treatments = Split.get_treatments("key", ["FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2"], nil);
 
 IO.inspect(treatments);
 ```
+
 </TabItem>
 <TabItem value="get_treatments_by_flag_set">
+
 ```elixir
 treatments = Split.get_treatments_by_flag_set("key", "backend", nil);
 
 IO.inspect(treatments);
 ```
+
 </TabItem>
 <TabItem value="get_treatments_by_flag_sets">
+
 ```elixir
 treatments = Split.get_treatments_by_flag_sets("key", ["backend", "server_side"], nil);
 
 IO.inspect(treatments);
 ```
+
 </TabItem>
 </Tabs>
 

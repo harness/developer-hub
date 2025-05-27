@@ -78,6 +78,7 @@ Then use an if-else-if block as shown below and insert the code for the differen
 
 <Tabs>
 <TabItem value="GetTreatment">
+
 ```csharp
 // The KEY here represents the ID of the user/account/etc you're trying to evaluate a treatment for
 var treatment = sdk.GetTreatment("KEY","FEATURE_FLAG_NAME");
@@ -95,8 +96,10 @@ else
     // insert your control treatment code here
 }
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentAsync">
+
 ```csharp
 // The KEY here represents the ID of the user/account/etc you're trying to evaluate a treatment for
 var treatment = await sdk.GetTreatmentAsync("KEY","FEATURE_FLAG_NAME");
@@ -114,6 +117,7 @@ else
     // insert your control treatment code here
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -133,6 +137,7 @@ The `GetTreatment` method supports five types of attributes: strings, numbers, d
 
 <Tabs>
 <TabItem value="GetTreatment">
+
 ```csharp
 using Splitio.Services.Client.Classes;
 
@@ -174,8 +179,10 @@ else
     // insert your control treatment code here
 }
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentAsync">
+
 ```csharp
 using Splitio.Services.Client.Classes;
 
@@ -217,6 +224,7 @@ else
     // insert your control treatment code here
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -229,38 +237,50 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="GetTreatments">
+
 ```csharp
 var featureFlagNames = new List<string> { "FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2" };
 var result = client.GetTreatments("KEY", featureFlagNames);
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsByFlagSet">
+
 ```csharp
 var result = client.GetTreatmentsByFlagSet("KEY", "backend");
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsByFlagSets">
+
 ```csharp
 var flagSets = new List<string> { "backend", "server_side" };
 var result = client.GetTreatmentsByFlagSets("KEY", flagSets);
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsAsync">
+
 ```csharp
 var featureFlagNames = new List<string> { "FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2" };
 var result = await client.GetTreatmentsAsync("KEY", featureFlagNames);
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsByFlagSetAsync">
+
 ```csharp
 var result = await client.GetTreatmentsByFlagSetAsync("KEY", "backend");
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsByFlagSetsAsync">
+
 ```csharp
 var flagSets = new List<string> { "backend", "server_side" };
 var result = await client.GetTreatmentsByFlagSetsAsync("KEY", flagSets);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -278,18 +298,22 @@ This method takes the exact same set of arguments as the standard `GetTreatment`
 
 <Tabs>
 <TabItem value="GetTreatmentWithConfig">
+
 ```csharp
 var featureFlagResult = splitClient.GetTreatmentWithConfig("KEY", "FEATURE_FLAG_NAME");
 var config = JsonConvert.DeserializeObject(featureFlagResult.Config);
 var treatment = featureFlagResult.Treatment;
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentWithConfigAsync">
+
 ```csharp
 var featureFlagResult = await splitClient.GetTreatmentWithConfigAsync("KEY", "FEATURE_FLAG_NAME");
 var config = JsonConvert.DeserializeObject(featureFlagResult.Config);
 var treatment = featureFlagResult.Treatment;
 ```
+
 </TabItem>
 </Tabs>
 
@@ -297,38 +321,50 @@ If you need to get multiple evaluations at once, you can also use the `GetTreatm
 
 <Tabs>
 <TabItem value="GetTreatmentsWithConfig">
+
 ```csharp
 var featureFlagNames = new List<string> { "FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2" };
 var featureFlagResults = splitClient.GetTreatmentsWithConfig("KEY", featureFlagNames);
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsWithConfigByFlagSet">
+
 ```csharp
 var featureFlagResults = splitClient.GetTreatmentsWithConfigByFlagSet("KEY", "backend");
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsWithConfigByFlagSets">
+
 ```csharp
 var flagSets = new List<string> { "backend", "server_side" };
 var featureFlagResults = splitClient.GetTreatmentsWithConfigByFlagSets("KEY", flagSets);
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsWithConfigAsync">
+
 ```csharp
 var featureFlagNames = new List<string> { "FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2" };
 var featureFlagResults = await splitClient.GetTreatmentsWithConfigAsync("KEY", featureFlagNames);
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsWithConfigByFlagSetAsync">
+
 ```csharp
 var featureFlagResults = await splitClient.GetTreatmentsWithConfigByFlagSetAsync("KEY", "backend");
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsWithConfigByFlagSetsAsync">
+
 ```csharp
 var flagSets = new List<string> { "backend", "server_side" };
 var featureFlagResults = await splitClient.GetTreatmentsWithConfigByFlagSetsAsync("KEY", flagSets);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -340,14 +376,18 @@ If a manual shutdown is required, call the `client.Destroy()` method.
 
 <Tabs>
 <TabItem value="Destroy">
+
 ```csharp
 client.Destroy();
 ```
+
 </TabItem>
 <TabItem value="DestroyAsync">
+
 ```csharp
 await client.DestroyAsync();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -379,6 +419,7 @@ In case a bad input is provided, refer to the [Events](https://help.split.io/hc/
 
 <Tabs>
 <TabItem value="Track">
+
 ```csharp
 // If you would like to send an event without a value
 bool success = client.Track("KEY", "TRAFFIC_TYPE", "EVENT_TYPE");
@@ -414,8 +455,10 @@ var properties = new Dictionary<string, object>
 
 bool trackEvent = client.Track("john@doe.com", "user", "page_load_time", properties: properties);
 ```
+
 </TabItem>
 <TabItem value="TrackAsync">
+
 ```csharp
 // If you would like to send an event without a value
 bool success = await client.TrackAsync("KEY", "TRAFFIC_TYPE", "EVENT_TYPE");
@@ -451,6 +494,7 @@ var properties = new Dictionary<string, object>
 
 bool trackEvent = await client.TrackAsync("john@doe.com", "user", "page_load_time", properties: properties);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -773,6 +817,7 @@ The Manager has the following methods available.
 
 <Tabs>
 <TabItem value="Manager interface">
+
 ```csharp
 /**
 * Retrieves the feature flags that are currently registered with the
@@ -796,8 +841,10 @@ SplitView Split(string splitName);
 */
 List<String> SplitNames();
 ```
+
 </TabItem>
 <TabItem value="Manager interface async">
+
 ```csharp
 /**
 * Retrieves the feature flags that are currently registered with the
@@ -821,6 +868,7 @@ Task<SplitView> SplitAsync(string splitName);
 */
 Task<List<String>> SplitNamesAsync();
 ```
+
 </TabItem>
 </Tabs>
 

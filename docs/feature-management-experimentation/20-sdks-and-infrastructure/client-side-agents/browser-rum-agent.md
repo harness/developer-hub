@@ -58,14 +58,19 @@ FME's RUM Agent is delivered as a NPM package and as a script UMD bundle hosted 
 
 <Tabs>
 <TabItem value="NPM package (recommended)">
+
 ```bash
 npm install --save @splitsoftware/browser-rum-agent
 ```
+
 </TabItem>
 <TabItem value="CDN bundle">
+
 ```html
 <script src="https://cdn.split.io/rum-agent/browser-rum-agent-1.0.0.min.js"></script>
+
 ```
+
 </TabItem>
 </Tabs>
 
@@ -75,6 +80,7 @@ You can initialize the Browser RUM Agent in your code as shown below.
 
 <Tabs>
 <TabItem value="Using ES modules (NPM package)">
+
 ```javascript
 import { SplitRumAgent } from '@splitsoftware/browser-rum-agent';
 
@@ -85,8 +91,10 @@ SplitRumAgent
     { key: 'another_key', trafficType: 'another_traffic_type' }
   ]);
 ```
+
 </TabItem>
 <TabItem value="Using CommonJS (NPM package)">
+
 ```javascript
 const { SplitRumAgent } = require('@splitsoftware/browser-rum-agent');
  
@@ -97,8 +105,10 @@ SplitRumAgent
     { key: 'another_key', trafficType: 'another_traffic_type' }
   ]);
 ```
+
 </TabItem>
 <TabItem value="Using script tags (CDN version)">
+
 ```html
 <!-- Add the following script tags as high as possible in the `<head>` section of the main page -->
 <script src="https://cdn.split.io/rum-agent/browser-rum-agent-1.0.0.min.js"></script>
@@ -111,6 +121,7 @@ SplitRumAgent
     ]);
 </script>
 ```
+
 </TabItem>
 </Tabs>
 
@@ -118,6 +129,7 @@ Alternatively, you can initialize the Agent in two parts. First, import the Agen
 
 <Tabs>
 <TabItem value="Using CommonJS (NPM package)">
+
 ```javascript
 import { SplitRumAgent } from '@splitsoftware/browser-rum-agent';
 SplitRumAgent.setup('YOUR_SDK_KEY');
@@ -125,8 +137,10 @@ SplitRumAgent.setup('YOUR_SDK_KEY');
 // In a different file or part of your code, where the identities are available:
 SplitRumAgent.addIdentity({ key: 'user_id', trafficType: 'user' });
 ```
+
 </TabItem>
 <TabItem value="Using script tags (CDN version)">
+
 ```html
 <script src="https://cdn.split.io/rum-agent/browser-rum-agent-1.0.0.min.js"></script>
 <script>
@@ -138,6 +152,7 @@ SplitRumAgent.addIdentity({ key: 'user_id', trafficType: 'user' });
   window.SplitRumAgent.addIdentity({ key: 'user_id', trafficType: 'user' });
 </script>
 ```
+
 </TabItem>
 </Tabs>
 
@@ -172,19 +187,23 @@ Event collectors are available when using the NPM package, or with a "full" vers
 
 <Tabs>
 <TabItem value="Using ES modules (NPM package)">
+
 ```javascript
 import { SplitRumAgent, routeChanges } from '@splitsoftware/browser-rum-agent';
 
 SplitRumAgent.register(routeChanges());
 ```
+
 </TabItem>
 <TabItem value="Using script tags (CDN version)">
+
 ```html
 <script src="https://cdn.split.io/rum-agent/browser-rum-agent-1.0.0.full.min.js"></script>
 <script>
   SplitRumAgent.register(SplitRumAgent.routeChanges());
 </script>
 ```
+
 </TabItem>
 </Tabs>
 
@@ -408,6 +427,7 @@ If you want to avoid this, you can load the Agent asynchronously by [lazy loadin
 
 <Tabs>
 <TabItem value="Dynamic import (NPM package)">
+
 ```javascript
 import('@splitsoftware/browser-rum-agent').then(({ SplitRumAgent }) => {
   SplitRumAgent
@@ -417,8 +437,10 @@ import('@splitsoftware/browser-rum-agent').then(({ SplitRumAgent }) => {
   console.error('Error loading Agent', err);
 });
 ```
+
 </TabItem>
 <TabItem value="Async script tag (CDN version)">
+
 ```html
 <script async src="https://cdn.split.io/rum-agent/browser-rum-agent-1.0.0.min.js" onload="setupRumAgent()"></script>
 <script>
@@ -429,6 +451,7 @@ import('@splitsoftware/browser-rum-agent').then(({ SplitRumAgent }) => {
   }
 </script>
 ```
+
 </TabItem>
 </Tabs>
 

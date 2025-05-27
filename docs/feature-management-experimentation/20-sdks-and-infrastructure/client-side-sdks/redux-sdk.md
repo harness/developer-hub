@@ -40,14 +40,18 @@ The SDK is published using `npm`, so it's fully integrated with your workflow. Y
 
 <Tabs>
 <TabItem value="NPM">
+
 ```bash
 npm install --save @splitsoftware/splitio-redux
 ```
+
 </TabItem>
 <TabItem value="Yarn">
+
 ```bash
 yarn add @splitsoftware/splitio-redux
 ```
+
 </TabItem>
 </Tabs>
 
@@ -61,6 +65,7 @@ For Server-Side Rendering, the Redux documentation [suggests](https://redux.js.o
 
 <Tabs>
 <TabItem value="Client Side with Redux Toolkit">
+
 ```javascript
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { splitReducer, initSplitSdk } from '@splitsoftware/splitio-redux';
@@ -89,8 +94,10 @@ store.dispatch(initSplitSdk({ config: sdkBrowserConfig }));
 
 export default store;
 ```
+
 </TabItem>
 <TabItem value="Client Side with Redux">
+
 ```javascript
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk'; // Requirement for asynchronous actions
@@ -121,8 +128,10 @@ store.dispatch(initSplitSdk({ config: sdkBrowserConfig }));
 
 export default store;
 ```
+
 </TabItem>
 <TabItem value="Server Side">
+
 ```javascript
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk'; // Requirement for asynchronous actions
@@ -154,6 +163,7 @@ export default function storeCreator() {
   return store;
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -173,6 +183,7 @@ The SDK via its reducer keeps a portion of the store state up to date. The state
 
 <Tabs>
 <TabItem value="Split state shape">
+
 ```javascript
 {
   // 'splitio' is the key where the Split reducer is expected to be mounted.
@@ -215,6 +226,7 @@ The SDK via its reducer keeps a portion of the store state up to date. The state
   }
 }
 ```
+
 </TabItem>
 </Tabs>
  
@@ -233,6 +245,7 @@ After the SDK is ready, you can use the SDK to evaluate feature flags.
 
 <Tabs>
 <TabItem value="Providing onReady callback">
+
 ```javascript
 import { initSplitSdk } from '@splitsoftware/splitio-redux';
 
@@ -246,8 +259,10 @@ store.dispatch(initSplitSdk({
   onReady: onReadyCallback
 }));
 ```
+
 </TabItem>
 <TabItem value="Using isReady flag on the state">
+
 ```javascript
 // You should have already initialized the SDK.
 let isSplitReady = false;
@@ -267,8 +282,10 @@ const handleChange = () => {
 // Note: If you're using react-redux you could do this via mapStateToProps. Read more below!
 store.subscribe(handleChange);
 ```
+
 </TabItem>
 <TabItem value="Using initSplitSdk returned promise">
+
 ```javascript
 import { initSplitSdk } from '@splitsoftware/splitio-redux';
 
@@ -279,8 +296,10 @@ function onReadyCallback() {
 // initSplitSdk action creator would return a promise. If the SDK is ready already the promise will be resolved by this time.
 store.dispatch(initSplitSdk({ config: sdkConfig })).then(onReadyCallback);
 ```
+
 </TabItem>
 <TabItem value="Using isReady property from the selector result">
+
 ```javascript
 import { initSplitSdk, selectStatus } from '@splitsoftware/splitio-redux';
 
@@ -290,6 +309,7 @@ store.dispatch(initSplitSdk({ config: sdkConfig }));
 // Use the selector to get the isReady flag from the state.
 const { isReady } = selectStatus(store.getState().splitio);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -299,6 +319,7 @@ If the SDK is not ready when you dispatch the `getTreatments` action, the librar
 
 <Tabs>
 <TabItem value="Client side (browser)">
+
 ```javascript
 import { getTreatments } from '@splitsoftware/splitio-redux';
 
@@ -307,8 +328,10 @@ store.dispatch(getTreatments({ splitNames: ['feature_flag_1'] }));
 // Or a list of feature flags.
 store.dispatch(getTreatments({ splitNames: ['feature_flag_2', 'feature_flag_3'] }));
 ```
+
 </TabItem>
 <TabItem value="Server side (Node.js/SSR)">
+
 ```javascript
 import { getTreatments } from '@splitsoftware/splitio-redux';
 
@@ -317,6 +340,7 @@ store.dispatch(getTreatments({ splitNames: ['feature_flag_1'], key: 'key' }));
 // Or a list of feature flags.
 store.dispatch(getTreatments({ splitNames: ['feature_flag_2', 'feature_flag_3'], key: 'key' }));
 ```
+
 </TabItem>
 </Tabs>
 
@@ -324,6 +348,7 @@ After feature flag treatments are part of the state, use the `splitio.treatments
 
 <Tabs>
 <TabItem value="Client side (browser)">
+
 ```javascript
 // Import treatment value selector.
 import { selectTreatmentAndStatus } from '@splitsoftware/splitio-redux');
@@ -345,8 +370,10 @@ if (isReady) {
 const splitTreatments = store.getState().splitio.treatments;
 const treatment = splitTreatments['key']['feature_flag_1'].treatment;
 ```
+
 </TabItem>
 <TabItem value="Server side (Node.js/SSR)">
+
 ```javascript
 // Import treatment value selector.
 import { selectTreatmentAndStatus } from '@splitsoftware/splitio-redux');
@@ -366,6 +393,7 @@ if (treatment === 'on') {
 const splitTreatments = store.getState().splitio.treatments;
 const treatment = splitTreatments['key']['feature_flag_1'].treatment;
 ```
+
 </TabItem>
 </Tabs>
 
@@ -387,6 +415,7 @@ The SDK supports five types of attributes: strings, numbers, dates, booleans, an
 
 <Tabs>
 <TabItem value="Client side (browser)">
+
 ```javascript
 import { selectTreatmentAndStatus, getTreatments } from '@splitsoftware/splitio-redux');
 
@@ -416,8 +445,10 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="Server side (Node.js/SSR)">
+
 ```javascript
 import { selectTreatmentAndStatus, getTreatments } from '@splitsoftware/splitio-redux');
 
@@ -447,6 +478,7 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -458,14 +490,18 @@ You can also evaluate multiple feature flags at once using flag sets. In that ca
 
 <Tabs>
 <TabItem value="Evaluating by feature flag names">
+
 ```javascript
 store.dispatch(getTreatments({ splitNames: ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'] }));
 ```
+
 </TabItem>
 <TabItem value="Evaluating by flag sets">
+
 ```javascript
 store.dispatch(getTreatments({ flagSets: ['frontend', 'client_side'] }));
 ```
+
 </TabItem>
 </Tabs>
 
@@ -481,6 +517,7 @@ const treatments = {
   FEATURE_FLAG_NAME_2: selectTreatmentAndStatus(store.getState().splitio, 'FEATURE_FLAG_NAME_2').treatment
 };
 ```
+
 </TabItem>
 </Tabs>
 
@@ -492,12 +529,14 @@ Each evaluation entry loaded into the state under the `treatments` key will have
 
 <Tabs>
 <TabItem value="TypeScript">
+
 ```typescript
 type TreatmentWithConfig = {
   treatment: string,
   config: string | null
 };
 ```
+
 </TabItem>
 </Tabs>
 
@@ -507,6 +546,7 @@ The `selectTreatmentWithConfigAndStatus` selector takes the exact same set of ar
 
 <Tabs>
 <TabItem value="Client side (browser)">
+
 ```javascript
 // Import treatment with config selector.
 import { selectTreatmentWithConfigAndStatus } from '@splitsoftware/splitio-redux');
@@ -529,8 +569,10 @@ if (treatment === 'on') {
 const splitTreatments = store.getState().splitio.treatments;
 const treatmentResult = splitTreatments['key']['feature_flag_1'];
 ```
+
 </TabItem>
 <TabItem value="Server side (Node.js/SSR)">
+
 ```javascript
 // Import treatment with config selector.
 import { selectTreatmentWithConfigAndStatus } from '@splitsoftware/splitio-redux');
@@ -553,6 +595,7 @@ if (treatment === 'on') {
 const splitTreatments = store.getState().splitio.treatments;
 const treatmentResult = splitTreatments['key']['feature_flag_1'];
 ```
+
 </TabItem>
 </Tabs>
 
@@ -564,8 +607,9 @@ You can append properties to an impression by passing an object of key-value pai
 
 Three types of properties are supported: strings, numbers, and booleans.
 
-<Tabs groupId="client-server-side">
+<Tabs>
 <TabItem value="Client side (browser)">
+
 ```javascript
 const properties = { 
   package: "premium", 
@@ -576,8 +620,10 @@ const properties = {
 // You can pass the properties with any getTreatments action using the `properties` key of the parameters.
 store.dispatch(getTreatments({ splitNames: ['feature_flag_1'], properties: properties }));
 ```
+
 </TabItem>
 <TabItem value="Server side (Node.js/SSR)">
+
 ```javascript
 const properties = { 
   package: "premium", 
@@ -588,6 +634,7 @@ const properties = {
 // You can pass the properties with any getTreatments action using the `properties` key of the parameters.
 store.dispatch(getTreatments({ splitNames: ['feature_flag_1'], key: 'key', properties: properties }));
 ```
+
 </TabItem>
 </Tabs>
 
@@ -598,6 +645,7 @@ This function can be used as an action creator to update the `splitio` slice.
 
 <Tabs>
 <TabItem value="Client side (browser)">
+
 ```javascript
 import { destroySplitSdk } from '@splitsoftware/splitio-redux';
 
@@ -610,8 +658,10 @@ store.dispatch(destroySplitSdk()).then(() => {
   console.log(store.getState().splitio.isDestroyed); // prints `true`
 });
 ```
+
 </TabItem>
 <TabItem value="Server side (Node.js/SSR)">
+
 ```javascript
 import { destroySplitSdk } from '@splitsoftware/splitio-redux';
 
@@ -627,6 +677,7 @@ function serverClose() {
 });
 
 ```
+
 </TabItem>
 </Tabs>
 
@@ -658,6 +709,7 @@ It is important to mention that this method does not interact with the Redux sto
 
 <Tabs>
 <TabItem value="Client side (browser)">
+
 ```javascript
 import { track } from '@splitsoftware/splitio-redux';
 
@@ -678,8 +730,10 @@ const queued = track({ trafficType: 'user', eventType: 'page_load_time' });
 // Example for a different key than the one provided in the SDK config
 const queued = track({ key: ACCOUNT_ID, trafficType: 'account', eventType: 'page_load_time' });
 ```
+
 </TabItem>
 <TabItem value="Server side (Node.js/SSR)">
+
 ```javascript
 import { track } from '@splitsoftware/splitio-redux';
 
@@ -697,6 +751,7 @@ const queued = track({ key: USER_ID, trafficType: 'user', eventType: 'page_load_
 // Most basic event you can track would require key, trafficType and eventType (just skip the value or properties params if you don't have any associated with your event)
 const queued = track({ key: USER_ID, trafficType: 'user', eventType: 'page_load_time' });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -741,6 +796,7 @@ const config = {
 
 store.dispatch(initSplitSdk({ config: sdkConfig }));
 ```
+
 </TabItem>
 </Tabs> 
 
@@ -754,6 +810,7 @@ You can access the manager functionality through the exposed `getSplitNames`, `g
 
 <Tabs>
 <TabItem value="TypeScript">
+
 ```typescript
 import { getSplitNames, getSplit, getSplits } from '@splitsoftware/splitio-redux'
 
@@ -795,6 +852,7 @@ type SplitView = {
   impressionsDisabled: boolean
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -802,6 +860,7 @@ Example usage:
 
 <Tabs>
 <TabItem value="Client side (Browser)">
+
 ```javascript
 import { getSplitNames, initSplitSdk, getTreatments } from '@splitsoftware/splitio-redux';
 
@@ -814,8 +873,10 @@ function onReadyCallback() {
   store.dispatch(getTreatments({ splitNames: myFeatureFlags }));
 }
 ```
+
 </TabItem>
 <TabItem value="Server side (Node.js/SSR)">
+
 ```javascript
 import { getSplitNames, initSplitSdk, getTreatments } from '@splitsoftware/splitio-redux';
 
@@ -834,6 +895,7 @@ function requestHandler(params) {
   store.dispatch(getTreatments({ key: params.key, splitNames: myFeatureNames })); // Load the treatments and configs into the store.
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -859,6 +921,7 @@ You can implement a custom impression listener as shown in the example below.
  
 <Tabs>
 <TabItem value="Client side (Browser)">
+
 ```javascript
 import { initSplitSdk } from '@splitsoftware/splitio-redux';
 
@@ -879,8 +942,10 @@ const sdkBrowserConfig = {
 
 store.dispatch(initSplitSdk({ config: sdkBrowserConfig }));
 ```
+
 </TabItem>
 <TabItem value="Server side (Node.js/SSR)">
+
 ```javascript
 import { initSplitSdk } from '@splitsoftware/splitio-redux';
 
@@ -900,6 +965,7 @@ const sdkNodeConfig = {
 
 store.dispatch(initSplitSdk({ config: sdkNodeConfig }));
 ```
+
 </TabItem>
 </Tabs>
 
@@ -927,6 +993,7 @@ You can do this by providing a new key to be used when triggering evaluations or
  
 <Tabs>
 <TabItem value="Client side (Browser)">
+
 ```javascript
 import { initSplitSdk, getTreatments, track, selectTreatmentAndStatus, selectTreatmentWithConfigAndStatus } from '@splitsoftware/splitio-redux';
 
@@ -959,6 +1026,7 @@ function onReadyCallback() {
   const userTreatmentAndConfig = selectTreatmentWithConfigAndStatus(store.getState().splitio, 'feature_flag_2', 'CUSTOMER_USER_ID').treatment;
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -979,6 +1047,7 @@ Besides managing `SDK_READY` on initialization, as explained in the [basic use](
 
 <Tabs>
 <TabItem value="Client and Server side">
+
 ```javascript
 import { initSplitSdk } from '@splitsoftware/splitio-redux';
 
@@ -1008,6 +1077,7 @@ store.dispatch(initSplitSdk({
   onUpdate: onUpdateCallback;
 }));
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1015,6 +1085,7 @@ You can also access the readiness state of any SDK factory client with the `sele
 
 <Tabs>
 <TabItem value="Retrieve client status">
+
 ```javascript
 import { selectStatus, selectTreatmentAndStatus } from '@splitsoftware/splitio-redux';
 
@@ -1024,6 +1095,7 @@ const { isReady, isReadyFromCache, isTimedout, hasTimedout, isDestroyed, lastUpd
 // Readiness properties are also available in the selector result.
 const { isReady, isReadyFromCache, isTimedout, hasTimedout, isDestroyed, lastUpdate, treatment } = selectTreatmentAndStatus(store.getState().splitio, 'feature_flag_1', USER_ID);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1031,10 +1103,12 @@ You can also do this from the store directly.
 
 <Tabs>
 <TabItem value="Retrieve client status directly from store">
+
 ```javascript
 // Accessing the status of the main client from the splitio slice of state
 const { isReady, isReadyFromCache, hasTimedout, isDestroyed } = store.getState().splitio;
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1044,6 +1118,7 @@ When `evalOnUpdate` is explicitly set to true, the given treatment will be re-ev
 
 <Tabs>
 <TabItem value="Client side (Browser)">
+
 ```javascript
   // The results for feature_flag_1 and feature_flag_2 will be re-evaluated whenever an update is processed,
   // and updated in the Redux store if they changed.
@@ -1051,6 +1126,7 @@ When `evalOnUpdate` is explicitly set to true, the given treatment will be re-ev
   // feature flag names an evalOnUpdate as false (to override the behavior).
   store.dispatch(getTreatments({ splitNames: ['feature_flag_1', 'feature_flag_2'], evalOnUpdate: true }));
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1060,6 +1136,7 @@ Keep in mind that if there was no cache previously loaded on the browser or the 
 
 <Tabs>
 <TabItem value="Client side (Browser)">
+
 ```javascript
   // The results for feature_flag_1 and feature_flag_2 will be evaluated when the Sdk is ready or an update is processed.
   // However only feature_flag_1 will be evaluated also if the Sdk is ready from cache.
@@ -1082,6 +1159,7 @@ Keep in mind that if there was no cache previously loaded on the browser or the 
     ...
   }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1126,6 +1204,7 @@ export default connectSplit((state) => {
   return state['my_key_for_split_reducer'];
 })(MyComponent);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1160,6 +1239,7 @@ const FeatureFlagTogglerFromCustomStateKey = connectToggler('myFeatureFlag', key
   return state['my_key_for_split_reducer'];
 })(ComponentOn, ComponentDefault);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1180,8 +1260,10 @@ store.dispatch(initSplitSdk({ config: sdkBrowserConfig }));
 
 splitSdk.factory.UserConsent.getStatus();
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 import { splitSdk, initSplitSdk, ... } from '@splitsoftware/splitio-redux';
 
@@ -1190,6 +1272,7 @@ store.dispatch(initSplitSdk({ config: sdkBrowserConfig }));
 
 (splitSdk.factory as SplitIO.IBrowserSDK).UserConsent.getStatus();
 ```
+
 </TabItem>
 </Tabs>
 

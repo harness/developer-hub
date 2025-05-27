@@ -18,14 +18,18 @@ This guide provides detailed information about our Ruby SDK. All of our SDKs are
 
 <Tabs>
 <TabItem value="Ruby">
+
 ```ruby
 gem install splitclient-rb -v '~> 8.5.0'
 ```
+
 </TabItem>
 <TabItem value="JRuby">
+
 ```ruby
 gem install splitclient-rb -v '~> 8.5.0'
 ```
+
 </TabItem>
 </Tabs>
 
@@ -198,22 +202,28 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="get_treatments">
+
 ```ruby
 attributes = {}
 split_client.get_treatments('key', ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'], attributes)
 ```
+
 </TabItem>
 <TabItem value="getTreatments_by_flag_set">
+
 ```ruby
 attributes = {}
 treatments = split.get_treatments_by_flag_set('key', 'backend', attributes)
 ```
+
 </TabItem>
 <TabItem value="getTreatments_by_flag_sets">
+
 ```ruby
 attributes = {}
 treatments = split.get_treatments_by_flag_sets('key', ['backend', 'server_side'], attributes)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -241,6 +251,7 @@ These methods take the exact same arguments as the [get_treatments](#multiple-ev
 
 <Tabs>
 <TabItem value="get_treatments_with_config">
+
 ```ruby
 
 feature_flag_names = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2']
@@ -252,8 +263,10 @@ feature_flag_results = client.get_treatments_with_config('KEY', feature_flag_nam
  ##   'FEATURE_FLAG_NAME_2': ('v2', '{"copy": "better copy"}')
  ## }
 ```
+
 </TabItem>
 <TabItem value="get_treatments_with_config_by_flag_set">
+
 ```ruby
 attributes = {}
 result = split.get_treatments_with_config_by_flag_set('key', 'backend', attributes)
@@ -263,8 +276,10 @@ result.each do |feature_flag, treatment_with_config|
  puts "Feature: #{feature_flag}, Treatment: #{treatment}, Config: #{configs}"
 end
 ```
+
 </TabItem>
 <TabItem value="get_treatments_with_config_by_flag_sets">
+
 ```ruby
 attributes = {}
 result = split.get_treatments_with_config_by_flag_sets('key', ['backend', 'server_side'], attributes)
@@ -274,6 +289,7 @@ result.each do |feature_flag, treatment_with_config|
  puts "Feature: #{feature_flag}, Treatment: #{treatment}, Config: #{configs}"
 end
 ```
+
 </TabItem>
 </Tabs>
 

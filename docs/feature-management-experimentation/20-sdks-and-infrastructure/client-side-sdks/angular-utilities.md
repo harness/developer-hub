@@ -142,6 +142,7 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="Treatments">
+
 ```javascript
 const flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
 
@@ -153,8 +154,10 @@ const treatments: SplitIO.Treatments = this.splitService.getTreatments(flagNames
 //   FEATURE_FLAG_NAME_2: 'visa'
 // }
 ```
+
 </TabItem>
 <TabItem value="TreatmentsByFlagSet">
+
 ```javascript
 
 const treatments: SplitIO.Treatments = this.splitService.getTreatmentsByFlagSet('frontend');
@@ -165,8 +168,10 @@ const treatments: SplitIO.Treatments = this.splitService.getTreatmentsByFlagSet(
 //   FEATURE_FLAG_NAME_2: 'visa'
 // }
 ```
+
 </TabItem>
 <TabItem value="TreatmentsByFlagSets">
+
 ```javascript
 const flagSetNames = ['frontend', 'client_side'];
 
@@ -178,6 +183,7 @@ const treatments: SplitIO.Treatments = this.splitService.getTreatmentsByFlagSets
 //   FEATURE_FLAG_NAME_2: 'visa'
 // }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -212,6 +218,7 @@ If you need to get multiple evaluations at once, you can also use the `getTreatm
 
 <Tabs>
 <TabItem value="getTreatmentsWithConfig">
+
 ```javascript
 const featureFlagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
 
@@ -225,8 +232,10 @@ const treatmentResults: SplitIO.TreatmentsWithConfig = this.splitService.getTrea
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsWithConfigByFlagSet">
+
 ```javascript
 const treatmentResults: SplitIO.TreatmentsWithConfig = this.splitService.getTreatmentsWithConfigByFlagSet('frontend');
 
@@ -238,8 +247,10 @@ const treatmentResults: SplitIO.TreatmentsWithConfig = this.splitService.getTrea
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsWithConfigByFlagSets">
+
 ```javascript
 const flagSetsNames = ['frontend', 'client_side'];
 
@@ -253,6 +264,7 @@ const treatmentResults: SplitIO.TreatmentsWithConfig = this.splitService.getTrea
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 </Tabs>
 

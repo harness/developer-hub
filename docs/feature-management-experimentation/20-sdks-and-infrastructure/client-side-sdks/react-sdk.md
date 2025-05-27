@@ -42,20 +42,27 @@ You can import the SDK into your project using one of the following three method
 
 <Tabs>
 <TabItem value="NPM (recommended)">
+
 ```bash
 npm install --save @splitsoftware/splitio-react
 ```
+
 </TabItem>
 <TabItem value="Yarn">
+
 ```bash
 yarn add @splitsoftware/splitio-react
 ```
+
 </TabItem>
 <TabItem value="CDN bundle">
+
 ```html
 <!-- Don't forget to include React script tags before the SDK. More details at https://reactjs.org/docs/add-react-to-a-website.html#step-2-add-the-script-tags  -->
 <script src="//cdn.split.io/sdk/splitio-react-2.2.0.min.js"></script>
+
 ```
+
 </TabItem>
 </Tabs>
 
@@ -88,8 +95,10 @@ const App = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 <TabItem value="JavaScript">
+
 ```javascript
 // The npm package exposes the different components and functions of the library as named exports.
 const { SplitFactoryProvider } = require('@splitsoftware/splitio-react');
@@ -112,8 +121,10 @@ const App = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 // The npm package exposes the different components and functions of the library as named exports.
 import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
@@ -136,6 +147,7 @@ const App: React.ComponentType = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 </Tabs>
 
@@ -199,6 +211,7 @@ Similarly to the vanilla JS SDK, React SDK supports the ability to evaluate flag
 
 <Tabs>
 <TabItem value="With useSplitTreatments hook">
+
 ```javascript
 import { useSplitTreatments } from '@splitsoftware/splitio-react';
 import MyComponentV1 from './MyComponentV1';
@@ -229,8 +242,10 @@ function MyComponentToggle (props) {
 
 export default MyComponentToggle;
 ```
+
 </TabItem>
 <TabItem value="With SplitTreatments component (deprecated)">
+
 ```javascript
 import { SplitTreatments } from '@splitsoftware/splitio-react';
 import MyComponentV1 from './MyComponentV1';
@@ -266,6 +281,7 @@ export default class MyComponentToggle extends React.Component {
   }
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -288,6 +304,7 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="Flag sets with useSplitTreatments hook">
+
 ```javascript
 import { useSplitTreatments } from '@splitsoftware/splitio-react';
 import MyComponentV1 from './MyComponentV1';
@@ -317,8 +334,10 @@ function MyComponentToggle (props) {
 
 export default MyComponentToggle;
 ```
+
 </TabItem>
 <TabItem value="Flag sets with SplitTreatments component (deprecated)">
+
 ```javascript
 import { SplitTreatments } from '@splitsoftware/splitio-react';
 import MyComponentV1 from './MyComponentV1';
@@ -352,6 +371,7 @@ export default class MyComponentToggle extends React.Component {
   }
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -394,8 +414,10 @@ const ComponentWithTreatments = () => {
     <LoadingComponent />
 };
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 const attributes: SplitIO.Attributes = {
   // date attributes are handled as `millis since epoch`
@@ -422,6 +444,7 @@ const ComponentWithTreatments = () => {
     <LoadingComponent />
 };
 ```
+
 </TabItem>
 </Tabs>
 
@@ -441,6 +464,7 @@ To use these methods, refer to the example below:
 
 <Tabs>
 <TabItem value="Using the hooks">
+
 ```javascript
 import { SplitFactoryProvider, useSplitClient, useSplitTreatments } from '@splitsoftware/splitio-react';
 
@@ -502,8 +526,10 @@ function MyComponent(props) {
 
 }
 ```
+
 </TabItem>
 <TabItem value="Using SplitClient component (deprecated)">
+
 ```javascript
 import { SplitFactoryProvider, SplitClient, SplitTreatments } from '@splitsoftware/splitio-react';
 
@@ -573,6 +599,7 @@ class MyComponent extends React.Component {
   }
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -586,6 +613,7 @@ Three types of properties are supported: strings, numbers, and booleans.
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 const properties = { 
   package: "premium", 
@@ -599,8 +627,10 @@ const MyComponent = () => {
   return (...);
 };
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 const properties: SplitIO.Properties = { 
   package: "premium", 
@@ -614,6 +644,7 @@ const MyComponent = () => {
   return (...);
 };
 ```
+
 </TabItem>
 </Tabs>
 
@@ -652,6 +683,7 @@ Remember that:
 
 <Tabs>
 <TabItem value="useTrack hook">
+
 ```javascript
 import { useTrack } from '@splitsoftware/splitio-react';
 
@@ -681,8 +713,10 @@ function MyComponent() {
   return <button onClick={() => track('user', 'login_click')}>Login</button>
 }
 ```
+
 </TabItem>
 <TabItem value="useSplitClient hook">
+
 ```typescript
 import { useTrack } from '@splitsoftware/splitio-react';
 
@@ -709,6 +743,7 @@ function MyComponent() {
   return <button onClick={() => client.track('user', 'login_click')}>Login</button>
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -735,6 +770,7 @@ If you define just a string as the value for a feature flag name, the config ret
 
 <Tabs>
 <TabItem value="Jest test with React Testing Library">
+
 ```javascript
 import React from "react";
 // React testing library: https://www.npmjs.com/package/@testing-library/react
@@ -783,8 +819,10 @@ describe('MyApp', () => {
   });
 });
 ```
+
 </TabItem>
 <TabItem value="Jest test with Enzyme">
+
 ```javascript
 import React from 'react';
 // Enzyme testing utility: https://www.npmjs.com/package/enzyme
@@ -835,8 +873,10 @@ describe('MyApp', () => {
   });
 });
 ```
+
 </TabItem>
 <TabItem value="Jest test with React Test Renderer">
+
 ```javascript
 import React from 'react';
 // React Test Renderer: https://reactjs.org/docs/test-renderer.html
@@ -887,6 +927,7 @@ describe('MyApp', () => {
   });
 });
 ```
+
 </TabItem>
 </Tabs> 
 
@@ -908,8 +949,10 @@ if (isReady) {
   const flagNames = manager.names();
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 import { useSplitManager } from '@splitsoftware/splitio-react';
 
@@ -921,6 +964,7 @@ if (isReady) {
   const flagNames: SplitIO.SplitNames = manager.names();
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -972,8 +1016,10 @@ const App = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
 
@@ -1001,6 +1047,7 @@ const App: React.ComponentType = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1030,6 +1077,7 @@ See some examples below:
 
 <Tabs>
 <TabItem value="Using the hooks">
+
 ```javascript
 import { SplitFactoryProvider, useSplitClient } from '@splitsoftware/splitio-react';
 
@@ -1075,8 +1123,10 @@ function MyComponentWithFlags(props) {
 
 }
 ```
+
 </TabItem>
 <TabItem value="Using SplitClient component (deprecated)">
+
 ```javascript
 import { SplitFactoryProvider, SplitClient } from '@splitsoftware/splitio-react';
 
@@ -1131,6 +1181,7 @@ class MyComponentWithFlags extends React.Component {
   }
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1170,6 +1221,7 @@ Find an example below:
 
 <Tabs>
 <TabItem value="Hooks">
+
 ```javascript
 function MyApp() {
   // Evaluates feature flags for the main client bound to the key passed in the factory config.
@@ -1202,8 +1254,10 @@ const App = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 <TabItem value="Components & HOCs (deprecated)">
+
 ```javascript
 function MyApp({ isReady, isReadyFromCache, isTimedout, hasTimedout, lastUpdate, factory, client }) {
   return (
@@ -1243,6 +1297,7 @@ const App = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1275,8 +1330,10 @@ const MyComponent = () => {
     <Loading />
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 import { useContext } from 'react';
 import { SplitContext, ISplitContextValues } from "@splitsoftware/splitio-react";
@@ -1288,6 +1345,7 @@ const MyComponent: React.ComponentType = () => {
     <Loading />
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1295,6 +1353,7 @@ The `SplitContext` value object has the following structure:
 
 <Tabs>
 <TabItem value="JavaScript/TypeScript">
+
 ```typescript
 interface SplitContextValue {
   factory: SplitIO.IBrowserSDK,
@@ -1307,6 +1366,7 @@ interface SplitContextValue {
   lastUpdate: number,
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1326,6 +1386,7 @@ Usage for SSR is shown in the following code examples:
 
 <Tabs>
 <TabItem value="Vanilla SSR">
+
 ```javascript
 // App.jsx
 const myConfig = { ... }; // SDK configuration object
@@ -1361,8 +1422,10 @@ import { App } from './App'
 const domNode = document.getElementById('root');
 const root = hydrateRoot(domNode, <App />);
 ```
+
 </TabItem>
 <TabItem value="Next.js using Pages Router">
+
 ```javascript
 // pages/index.jsx
 export const getServerSideProps = (async () => {
@@ -1379,8 +1442,10 @@ export default function Page(props) {
   );
 };
 ```
+
 </TabItem>
 <TabItem value="Next.js using App Router (v13+)">
+
 ```javascript
 // SDK components are traditional "Client" components, so you need to use the 'use client' directive to nest with Server components 
 // https://nextjs.org/docs/app/building-your-application/rendering/client-components
@@ -1442,6 +1507,7 @@ export const MyComponentWithFeatureFlags = (props) => {
     <Loading {...props} />
 };
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1451,6 +1517,7 @@ The React SDK can be used in React Native applications by combining it with the 
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio-react-native';
 import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
@@ -1470,6 +1537,7 @@ const App = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 </Tabs>
 
