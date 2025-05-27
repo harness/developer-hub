@@ -275,23 +275,24 @@ This release includes the following Harness module and component versions.
 |---------------------------|----------------------------------------------------------------------------------------------|
 | Helm Chart                | [0.29.0](https://github.com/harness/helm-charts/releases/tag/harness-0.29.0)                 |
 | Air Gap Bundle            | [0.29.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.29.0) |
-| NG Manager                | 1.89.5                                                                                      |
-| CI Manager                | 1.79.1                                                                                      |
+| NG Manager                | 1.89.5                                                                                       |
+| CI Manager                | 1.79.1                                                                                       |
 | Pipeline Service          | 1.128.1                                                                                      |
-| Platform Service          | 1.66.0                                                                                     |
-| Access Control Service    | 1.87.0                                                                                      |
+| Platform Service          | 1.66.0                                                                                       |
+| Access Control Service    | 1.87.0                                                                                       |
 | Delegate                  | 25.05.85801                                                                                  |
 | GitOps Service            | 1.32.2                                                                                       |
 | Change Data Capture       | 1.44.0                                                                                       |
-| STO Core                  | 1.140.1                                                                                     |
-| Test Intelligence Service | 1.45.0                                                                                      |
+| STO Core                  | 1.140.1                                                                                      |
+| Test Intelligence Service | 1.45.0                                                                                       |
 | NG UI                     | 1.75.3                                                                                       |
-| LE NG                     | 1.6.0                                                                                       |
+| LE NG                     | 1.6.0                                                                                        |
 | Looker                    | 1.7.11                                                                                       |
-| Log Service               | 1.19.1                                                                                      |
-| Batch Processing          | 1.48.2                                                                                      |
+| Log Service               | 1.19.1                                                                                       |
+| Batch Processing          | 1.48.2                                                                                       |
 | Gateway                   | 1.48.1                                                                                       |
-| IaCM Manager              | 1.76.0                                                                                      |
+| IaCM Manager              | 1.76.0                                                                                       |
+
 
 **Alternative air gap bundle download method**
 
@@ -451,6 +452,55 @@ gsutil -m cp \
 
 - Users can now deploy Lambda artifacts larger than 50 MB stored in S3. Currently, this feature is behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable this behavior change. For more information, refer to [AWS Lambda Rollback Step](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments/#rollback-for-artifacts-larger-than-50-mb). [CDS-74918, ZD-77784]
 
+## May 27, 2025, Version 0.28.1 <!-- Draft : May 27, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.28.1](https://github.com/harness/helm-charts/releases/tag/harness-0.28.1)                 |
+| Air Gap Bundle            | [0.28.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.28.1) |
+| NG Manager                | 1.84.4                                                                                       |
+| CI Manager                | 1.74.4                                                                                       |
+| Pipeline Service          | 1.123.2                                                                                      |
+| Platform Service          | 1.61.0                                                                                       |
+| Access Control Service    | 1.82.2                                                                                       |
+| Delegate                  | 25.04.85602                                                                                  |
+| GitOps Service            | 1.30.2                                                                                       |
+| Change Data Capture       | 1.41.3                                                                                       |
+| STO Core                  | 1.135.0                                                                                      |
+| Test Intelligence Service | 1.44.0                                                                                       |
+| NG UI                     | 1.70.3                                                                                       |
+| LE NG                     | 1.8.0                                                                                        |
+| Looker                    | 1.7.11                                                                                       |
+| Log Service               | 1.19.1                                                                                       |
+| Batch Processing          | 1.44.4                                                                                       |
+| Gateway                   | 1.42.7                                                                                       |
+| IaCM Manager              | 1.72.0                                                                                       |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.28.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/iacm_images.tgz" \
+  .
+```
+
+### New Features and Enhancements
+
+#### Harness Platform
+
+- Harness now upgrades jQuery to a safe version, addressing CVE-2020-11023 and preventing potential cross-site scripting (XSS) when passing HTML containing `<option>` elements into jQuery manipulation methods. [PL-62754, ZD-82195]
 
 ## April 29, 2025, Version 0.28.0 <!-- Draft : April 28, 2025 -->
 
