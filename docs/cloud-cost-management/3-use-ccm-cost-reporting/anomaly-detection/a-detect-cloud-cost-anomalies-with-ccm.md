@@ -13,6 +13,12 @@ Infrastructure changes, the introduction of new services, or inefficient resourc
 
 Harness CCM leverages advanced detection mechanisms to monitor cost anomalies across your Kubernetes clusters and cloud accounts. This feature acts as a safeguard for managing cloud costs effectively. Additionally, it includes built-in alerting capabilities, sending notifications through notification channels including email and Slack to ensure stakeholders are informed as soon as anomalies are detected.
 
+Currently, anomalies are detected at the following scope:
+
+- AWS: Account, Service, Usage Type
+- GCP: Project, Product, SKU
+- Azure: Subscription, Meter Category, Resource Group
+
 <DocImage path={require('../static/anomalies-overview.png')} width="80%" height="80%" title="Click to view full size image" />
 
 ## Anomaly workflows
