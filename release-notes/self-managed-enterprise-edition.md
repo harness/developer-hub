@@ -267,6 +267,56 @@ Harness Helm charts are now signed to ensure they are secure and trustworthy. Cl
             ```
 :::
 
+## May 27, 2025, Version 0.28.1 <!-- Draft : May 27, 2025 -->
+
+This release includes the following Harness module and component versions.
+
+| **Name**                  | **Version**                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| Helm Chart                | [0.28.1](https://github.com/harness/helm-charts/releases/tag/harness-0.28.1)                 |
+| Air Gap Bundle            | [0.28.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.28.1) |
+| NG Manager                | 1.84.4                                                                                      |
+| CI Manager                | 1.74.4                                                                                       |
+| Pipeline Service          | 1.123.2                                                                                      |
+| Platform Service          | 1.61.0                                                                                      |
+| Access Control Service    | 1.82.1                                                                                      |
+| Delegate                  | 25.04.85602                                                                                  |
+| GitOps Service            | 1.30.1                                                                                       |
+| Change Data Capture       | 1.41.0                                                                                       |
+| STO Core                  | 1.135.0                                                                                      |
+| Test Intelligence Service | 1.44.0                                                                                       |
+| NG UI                     | 1.70.3                                                                                       |
+| LE NG                     | 1.5.6                                                                                        |
+| Looker                    | 1.7.11                                                                                       |
+| Log Service               | 1.19.0                                                                                       |
+| Batch Processing          | 1.44.3                                                                                       |
+| Gateway                   | 1.42.4                                                                                       |
+| IaCM Manager              | 1.72.0                                                                                       |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.28.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.28.1/iacm_images.tgz" \
+  .
+```
+
+### New Features and Enhancements
+
+#### Harness Platform
+
+- Harness now upgrades jQuery to a safe version, addressing CVE-2020-11023 and preventing potential cross-site scripting (XSS) when passing HTML containing `<option>` elements into jQuery manipulation methods. [PL-62754, ZD-82195]
+
 ## April 29, 2025, Version 0.28.0 <!-- Draft : April 28, 2025 -->
 
 This release includes the following Harness module and component versions.
