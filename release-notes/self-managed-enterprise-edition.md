@@ -442,6 +442,14 @@ gsutil -m cp \
   - `harness/service-discovery-collector:0.39.0`
   - `harness/chaos-ddcr-faults:1.59.0`
 
+#### Cloud Cost Management
+
+- Added support for quarterly reports in Perspectives: Previously, only monthly and annual reporting options were available. With the new quarterly option, users can now receive more balanced and actionable insights per quarter.
+- Nodepool Recommendations UI changes: **Largest Resource Requirements** has been renamed to **Minimum Resource Requirements**.The positions of Preferred and Minimum resource requirements have been swapped in the UI for better clarity and consistency. Preferred resource requirements will always be greater than Minimum resource requirements. We have also added tooltips on the UI to make the UI more user-friendly. [CCM-22826]
+- Preferred Instance Families: We’ve added support for saving Preferred Instance Families in Nodepool presets, along with Buffer and Minimum Node Count. Users can now select specific instance families per cloud provider and region, and these preferences will be considered when generating the next set of Nodepool recommendations. [CCM-21987]
+- Cost Categories Integration for Recommendations: The Filter panel in the Recommendations view now includes the option to filter by Cost Categories. This update is especially valuable for large-scale organizations that manage thousands of recommendations and require structured views to take meaningful action. This improvement allows for efficient sorting and quick isolation of recommendations based on relevant cost buckets and labels. [CCM-21439]
+- Improved Budget Start Date Validation: To ensure accurate budget tracking, we've added validation to prevent the creation of new budgets with a start date later than the 28th of any month. [CCM-22132]
+
 #### GitOps
 
 - Applications can now be [synced and refreshed using bulk actions](/docs/continuous-delivery/gitops/use-gitops/sync-gitops-applications#bulk-sync-and-refresh). On the applications page, there are two new buttons: **Bulk Sync** and **Refresh**. Currently, this feature is behind the feature flag `GITOPS_BULK_ACTIONS_ENABLED `. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (**CDS-58485**)
