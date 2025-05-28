@@ -61,6 +61,8 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - Harness now supports automatic EKS token refresh during deployments, addressing issues caused by AWS’s 15-minute token TTL. Currently, this feature is behind the feature flag `CDS_K8S_EKS_REFRESH_EXEC_AUTH_TOKEN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.For more information, refer to [EKS Execution Authentication Token Refresh](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure/#aws-elastic-kubernetes-service-eks). (**CDS-100948, ZD-78817**)
 
+- Harness now supports filtering services by deployment strategy in custom dashboards. (CDS-105276)
+
 #### Fixed Issues
 
 - Previously, the `<+step.uuid>` expression resolved to the `setupId` instead of the actual `uuid`, making it difficult to retrieve the correct node ID via the Execution Graph API. A new expression has been introduced to accurately return the `uuid`. The issue is resolved. (**PIPE-27454, ZD-84916**)
