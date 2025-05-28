@@ -1628,6 +1628,7 @@ When using the V2 Docker registry API, authentication issues can arise due to ho
 
 Here’s the key difference:
 
+
 - **Username/Password Authentication**: When using a username and password, the generated token often lacks the necessary scope details (e.g., actions like `push` and `pull`). This can cause issues when trying to authenticate with the registry during build and push steps.
   
 - **Personal Access Token (PAT) Authentication**: A PAT provides more detailed scope information in the authentication headers, ensuring the correct access levels for pushing and pulling images. With a PAT, the JWT scope is properly set, allowing seamless authentication for build and push operations.
@@ -1665,6 +1666,9 @@ In this example, the `actions` (pull, push) and the repository name are correctl
 
 To avoid authentication issues, it's recommended to either use a PAT when configuring build and push steps for Docker registries with the V2 API or, if using a username and password, switch to the V1 API.
 
+### Authentication issues (toomanyrequests: You have reached your unauthenticated pull rate limit.) despite setting a Docker Connector with Valid Credentials
+Customers may encounter the `toomanyrequests: You have reached your unauthenticated pull rate limit.` error for their Build and Push steps (ECR, Docker, etc) despite having a valid Docker Connector set and credentials.  
+This is due to utilizing the v2 registry API for a private repository pull.  Please see the above [information that goes into detail about how and why this occurs and what to do](#why-build-and-push-steps-dont-support-v2-api-urls).
 
 ### How can user access the secrets as files in a Docker build without writing them to layers?
 The **build and push** steps used to build Docker images have a context field. Users can use the context field in the build and push steps to mount the current directory at `/harness`. By copying your files to a specific directory and then mounting them, you can avoid writing secrets into the Docker image layers.
