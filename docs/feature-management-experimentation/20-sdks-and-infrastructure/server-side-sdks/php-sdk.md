@@ -58,7 +58,7 @@ We recommend instantiating the SDK factory once as a singleton and reusing it th
 
 Use the code snippet below to instantiate the client in your code base. You need to provide your Redis details and your SDK API key.
 
-Configure the SDK with the SDK API key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK API key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 Do all of this as a part of the startup sequence of your application. 
  
