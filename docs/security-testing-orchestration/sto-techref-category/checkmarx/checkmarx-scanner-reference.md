@@ -16,11 +16,15 @@ redirect_from:
 
 The Checkmarx step in Harness STO enables you to scan your code for security vulnerabilities, you can perform Checkmarx **CxSAST**, **CxSCA**, and **CxOSA** scanning in [Orchestration](#scan), [Ingestion](#scan) and [Extraction](#scan) modes of STO. This document will guide you through understanding the fields, configuring them, and providing any necessary information for setting up the step.
 
-### Root access requirements
+:::info
+- You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+- STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
-<StoRootRequirements />
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
+
+<StoMoreInfo />
+:::
 
 ## Checkmarx step settings
 

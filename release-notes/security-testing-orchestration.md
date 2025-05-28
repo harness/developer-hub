@@ -29,7 +29,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 <!-- 2025-05-17 -->
 
 #### New Features and Enhancements
-- Added support for the setting `ingest_tool_severity: true` in the **[Checkmarx One](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference)**, **[Anchore](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference)**, and **[Prisma Cloud](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference)** steps. When added, STO will use the severity provided directly by the scanner instead of calculating it based on CVSS scores (STO-8776, STO-8778, STO-8779).
+- Added support for the setting `ingest_tool_severity: true` in the **[Checkmarx One](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference#use-scanner-provided-severity)**, **[Anchore](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#use-scanner-provided-severity)**, and **[Prisma Cloud](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference#use-scanner-provided-severity)** steps. When added, STO will use the severity provided directly by the scanner instead of calculating it based on CVSS scores (STO-8776, STO-8778, STO-8779).
 - Renamed the built-in STO role from `Security Testing SecOps` to `Security Testing AppSec`. This is not a breaking change and remains fully backward compatible (STO-7392).
 - Added support for the SonarQube step to include privileges for creating and using the Sonar cache (STO-8889).
 
