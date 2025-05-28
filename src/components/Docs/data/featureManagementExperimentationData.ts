@@ -53,14 +53,14 @@ import { MODULES } from "@site/src/constants"
           description:
             "Measure KPIs, performance metrics, and alerting for your feature variations",
           link: "/docs/feature-management-experimentation/release-monitoring",
-        },/*
+        },
         {
           title: "Experimentation",
           module: MODULES.fme,
           description:
             "Actionable results analysis for data-driven development",
           link: "/docs/feature-management-experimentation/experimentation",
-        },*/
+        },
       ],
     },
     {
