@@ -51,7 +51,7 @@ You can configure dimensions at the Admin level. You have a limit of twenty dime
 
 ## Viewing dimensionality
 
-View your dimensions in the Impact snapshot graph. This graph provides you an up-to-date, aggregated view of the expected impact over baseline for each treatment and an estimated range for that impact. For more information about the graph, refer to the [Line chart section](https://help.split.io/hc/en-us/articles/360025376251-Metric-details-and-trends#line-charts) of the Metric details and trends guide.
+View your dimensions in the Impact snapshot graph. This graph provides you with an up-to-date, aggregated view of the impact and confidence interval broken out by dimension over baseline for each treatment. For more information about the graph, refer to the [Line chart section](https://help.split.io/hc/en-us/articles/360025376251-Metric-details-and-trends#line-charts) of the Metric details and trends guide.
 
 ## Editing dimensions
 

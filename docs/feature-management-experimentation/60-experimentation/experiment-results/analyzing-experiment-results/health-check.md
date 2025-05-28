@@ -5,19 +5,19 @@ sidebar_position: 40
 
 ## Experiment health check
 
-The experiment health check provides an at-a-glance view of the sample data entering your experiment. When your health check is green (showing a green heart icon with a checkmark), you can be confident that your metric calculations are trustworthy and reflective of the true value of your metrics for each experiment variation.
+The experiment health check provides an at-a-glance view of the integrity of your experiment's exposure data before you interpret the results. When all checks are passed (showing a green heart icon with a checkmark), you can be assured that your experiment has collected enough clean, reliable, and correctly attributed data and that the metric results are ready to review.
 
 <img src="https://help.split.io/hc/article_attachments/35737119980301" alt="experiment_health_check_popup.png" width="400" />
 
 The Health Check is found at the top left of an Experiment page, and shows how experiment data conforms to the following criteria:
-* **Seasonality effect completeness (for sequential testing):** A healthy experiment has run for its defined time duration, so the likelihood of a seasonality effect is small.
+* **Seasonality effect completeness (for sequential testing):** Your experiment has run long enough to capture a full seasonality cycle, as defined by your organization, reducing the risk that results are influenced by short-term seasonal effects.
 * **Experimental review period completeness (for fixed horizon testing):** Fixed horizon testing is designed to identify subtle effects that are detectable only over a longer period of time, so peeking is strongly discouraged until the experimental period is complete (at which time the value will be healthy, showing the green heart symbol).
-* **Sample ratio:** In a healthy experiment, the actual percentage of samples per experiment variation is in ratio with the targeting percentages. Sample ratio agreement shows that the experiment’s variation assignments are truly random, not affected by unanticipated factors.
-* **Number of sample exclusions:** When the experiment is healthy, few samples are excluded from the experiment calculations. (Exclusions can happen when targeting rules change and keys are reallocated. In this case, some keys are excluded to avoid vacillating between experiment variations, because they would not be reflective of a single variation. A high number of exclusions can affect the experiment and indicates that metric results should be interpreted with caution.)
+* **Sample ratio:** The observed sample split in your experiment treatments closely aligns with the expected targeting percentages, indicating that samples are being randomly and evenly assigned across variations as intended.
+* **Sample exclusions:** A healthy experiment has no to low exclusions, ideally with fewer than 2% of samples  excluded from any variant. Exclusions can occur when targeting rules change, leading to reallocation and the removal of samples that might otherwise switch between treatments. A high exclusion rate may compromise result reliability and should be reviewed before interpreting metrics.
 
 # Health check details
 
-The health check details can help you validate your interpretation of experimental statistics. Details also help you understand the severity of any failed check and lead you to the next steps to troubleshoot.
+You can drill into your experiment's health check to view detailed breakdowns of each check. These details clarify what each check evaluates, help you assess the severity of any issues, and guide your next steps for troubleshooting. Clicking the **See details** link in the Health check pop-up opens a slide-out panel with information on your experiment's duration (seasonality period for Sequential Testing and experimental review period for Fixed Horizon), sample ratio alignment, and exclusion rates. The possible values for these criteria and additional userful references are described in the sections below.
 
 When you click the **See details** link on the Health Check popup, you will see a slide out modal with your seasonality effect / experimental review period, sample ratio, and sample exclusion details. The possible values for these criteria and additional useful references are described in the sections below.
 
@@ -30,11 +30,11 @@ When you click the **See details** link on the Health Check popup, you will see 
  
 ### Importance of seasonality effect completeness
 
-While sequential testing is designed to accrue results incrementally, seasonality patterns (such as weekend or holiday spikes or dips in user activity, daily network bandwidth changes, etc.) can affect data. The seasonality effect completeness result tells you if your experiment time duration is complete.
+While sequential testing is designed to accrue results incrementally, seasonality patterns (such as weekend or holiday spikes or dips in user activity, daily network bandwidth changes, etc.) can affect data. 
 
 ### Troubleshooting steps
 
-The seasonality effect will be complete when the experiment has run to the experiment end date. As a best practice, you can carefully evaluate that your experiment duration correctly spans one or more seasonality cycles.
+The seasonality effect is considered complete when the experiment has run for at least the seasonality period defined in your organization's experiment settings. As a best practice, ensure that your experiment spans one or more full seasonality cycles to reduce the risk of time-based bias in your results.
 
 #### Useful references:
 * [Reviewing metrics during an experiment](https://help.split.io/hc/en-us/articles/360021867572-Reviewing-metrics-during-an-experiment)
@@ -72,7 +72,7 @@ The experimental review period will be complete when the experiment has run to t
 
 ### Importance of sample ratio
 
-The meaningful analysis of an experiment depends on the impartial distribution of samples between the variations. If the samples are not selected truly at random, then experimental results may be caused by the method used to select the samples and not the change being tested.
+Accurate experiment results rely on the unbiased distribution of users across all variations. If the sample assignment is not truly random, differences in outcomes may be caused by the way users were allocated rather than by the change being tested. This can compromise the validity of your results.
 
 ### Troubleshooting steps
 
