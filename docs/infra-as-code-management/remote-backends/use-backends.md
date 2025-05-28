@@ -8,25 +8,16 @@ sidebar_label: Use Existing Remote State
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness Infrastructure as Code Management (IaCM) supports reusing existing remote state backends such as AWS S3, Google Cloud Storage (GCS), or Azure Blob Storage. This guide shows how to configure your `backends.tf` file to point to an existing remote state without migrating it to Harness-managed storage. We'll use OpenTofu as the recommended framework and demonstrate how to trigger provisioning through Harness Plan and Apply steps.
+Harness IaCM lets you reuse existing remote state backends—such as **AWS S3**, **Google Cloud Storage (GCS)**, or **Azure Blob Storage**—without migrating to Harness-managed storage. Just point your `backends.tf` file to your existing backend, and Harness will use it directly with OpenTofu.
 
-## Overview
-If you already manage your Terraform/OpenTofu state remotely, you can continue doing so within IaCM. Simply configure your workspace to use the same `backends.tf` as before. Harness will honor this configuration and interact with the remote state directly.
-
-This is ideal when:
-
-* You are onboarding to IaCM but want to keep existing remote state untouched.
-* You have a team already using AWS S3, GCS, or Azure Blob backends.
-* You need to maintain compatibility with external systems or CI pipelines that also access the state.
+This approach is ideal if you're onboarding to IaCM, already use remote backends, or need compatibility with other systems or CI pipelines.
 
 ## Prerequisites
-Before proceeding, ensure the following:
-
-* Your repository contains a valid `backends.tf` file.
-* Your existing remote state file (e.g., `.tfstate`) is accessible and versioned.
-* Harness has read/write access to the remote backend.
-* You use the [Plan and Apply steps](https://developer.harness.io/docs/infra-as-code-management/workspaces/provision-workspace/) in your pipeline, not custom script steps.
-* Backend authentication credentials (e.g. for GCS, S3, Azure) are configured via environment variables in the Harness Workspace.
+- Your repository contains a valid `backends.tf` file.
+- Your existing remote state file (e.g., `.tfstate`) is accessible and versioned.
+- Harness has read/write access to the remote backend.
+- You use the [Plan and Apply steps](https://developer.harness.io/docs/infra-as-code-management/workspaces/provision-workspace/) in your pipeline, not custom script steps.
+- Backend authentication credentials (e.g. for GCS, S3, Azure) are configured via environment variables in the Harness Workspace.
 
 ## Example backends 
 <Tabs>
@@ -76,9 +67,8 @@ terraform {
 </TabItem>
 </Tabs>
 
-## Pipeline Configuration
-
-You can use OpenTofu-specific steps in your pipeline to provision the workspace:
+## Pipeline Configuration & Testing
+To provision your workspace with an existing remote backend, configure your pipeline using OpenTofu steps as shown below:
 
 ```yaml
 steps:
@@ -96,48 +86,35 @@ steps:
       identifier: Apply
 ```
 
-> These steps automatically run in the context of your workspace and pick up the `backends.tf` file present in your repo.
+If your workspace requires OpenTofu/Terraform or environment variables, [add them in your workspace settings](/docs/infra-as-code-management/project-setup/input-variables).
 
-## How to Test
-
-1. Push your `backends.tf` file to the repository connected to your workspace.
-2. Add required environment variables in the Workspace settings.
-3. Run the Init step in your pipeline.
-4. Verify the logs show successful initialization of the remote backend.
-5. Trigger the Plan step to verify that changes are calculated against the existing state.
-6. Apply the changes using the Apply step.
+**To test your setup:**  
+Run your pipeline to execute the `init`, `plan`, and `apply` steps (and any approval plugins you've configured). See [IaCM Setup pipeline](/docs/infra-as-code-management/get-started/#add-a-pipeline) for more details.
+- Check the logs during the approval or apply step to verify successful initialization of the remote backend.
+- Ensure your `backends.tf` file is present in the repository connected to your workspace.
 
 ## State Locking Considerations
-
 Each remote backend implements its own locking mechanism:
 
-* **S3** uses DynamoDB for locking.
-* **GCS** relies on object metadata.
-* **Azure Blob** uses blob leases.
+- **S3** uses DynamoDB for locking.
+- **GCS** relies on object metadata.
+- **Azure Blob** uses blob leases.
 
 OpenTofu handles lock acquisition and release during pipeline execution. There is **no additional locking layer in IaCM**—locks are managed entirely by OpenTofu based on the backend settings.
 
-## Troubleshooting
-
+## Troubleshooting & Best Practices
 | Issue                              | Recommendation                                                                                              |
 | ---------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `Error acquiring the state lock`   | Ensure no other process (e.g. local Terraform CLI) is holding a lock.                                       |
 | Permission denied                  | Check that your Harness connector or environment variables have full access to the backend bucket or table. |
 | Plan step fails with missing state | Confirm that the key or prefix in `backends.tf` matches the remote path.                                    |
 
-## Best Practices
-
-* Use versioned buckets and lock tables for safe collaboration.
-* Keep `backends.tf` in version control but avoid hardcoding secrets.
-* Define backend authentication via environment variables in the Harness UI.
-* Validate that only one process accesses the state at a time to avoid corruption.
+- Use versioned buckets and lock tables for safe collaboration.
+- Keep `backends.tf` in version control but avoid hardcoding secrets.
+- Define backend authentication via environment variables in the Harness UI.
+- Validate that only one process accesses the state at a time to avoid corruption.
 
 ## Related Links
-
-* [Provision a Workspace](https://developer.harness.io/docs/infra-as-code-management/workspaces/provision-workspace)
-* [IaCM Best Practices](https://developer.harness.io/kb/reference-architectures/iacm/iacm-best-practices)
-* [OpenTofu](https://opentofu.org/)
-
----
-
-Need help? Reach out via [Harness Support](https://harness.io/support/) or join the community Slack to connect with IaCM experts.
+- [Provision a Workspace](/docs/infra-as-code-management/workspaces/provision-workspace)
+- [IaCM Best Practices](/kb/reference-architectures/iacm/iacm-best-practices)
+- [OpenTofu](https://opentofu.org/)
