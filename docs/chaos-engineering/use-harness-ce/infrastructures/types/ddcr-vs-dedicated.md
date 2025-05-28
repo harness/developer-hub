@@ -15,7 +15,7 @@ This section compares the characteristics of Delegate-Driven Chaos Infrastructur
   </tr>
   <tr>
     <td>Involves installing <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr#what-is-ddcr"><strong>Delegates</strong> </a>, a service used to connect to <strong>artifact repositories, collaboration tools, verification systems</strong>, and more.</td>
-    <td>Involves <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#using-dedicated-chaos-infrastructure">setting up</a> a separate, dedicated environment for running chaos experiments.</td>
+    <td>Involves <a href="https://developer.harness.io/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes">setting up</a> a separate, dedicated environment for running chaos experiments.</td>
   </tr>
   <tr>
     <td>Leverages the <strong>existing infrastructure</strong>, allowing chaos experiments to be run without requiring a separate setup, eliminating the need of CRDs.</td>

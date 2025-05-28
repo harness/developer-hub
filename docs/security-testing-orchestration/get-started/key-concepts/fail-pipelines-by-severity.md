@@ -12,7 +12,7 @@ You can set up your pipelines to fail automatically if a scan step detects any i
 ## Basic workflow to fail pipelines by severity in STO
 
 
-import StoConceptFailOnSeverity from '../../sto-techref-category/shared/step_palette/all/_fail-on-severity.md';
+import StoConceptFailOnSeverity from '../../sto-techref-category/shared/step-palette/all/fail-on-severity.md';
 
 
 

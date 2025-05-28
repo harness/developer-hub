@@ -74,6 +74,13 @@ Let’s create a new folder called *CD\_Manifests* for three manifests (*deploym
 You can create a single folder and save all of the manifest files in that folder. Or you can store the *values.yaml* file in a folder that is separate from a *Templates* folder where the *deployment.yaml*, *service.yaml*, and *namespace.yaml* files are stored.
 :::
 
+:::note
+When using special characters like `single (' )`, `double (")`, or `backslashes (\)` in the `values.yaml` file, the parser adds control characters, causing the pipeline to fail.  
+
+These special characters can be handled by enabling the feature flag `CDS_REMOVE_COMMENTS_FROM_VALUES_YAML_WITH_ESCAPE_CHARACTERS`.  Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 To access sample manifest files:
 
 1. In **Manifests**, select **Add Manifest**.

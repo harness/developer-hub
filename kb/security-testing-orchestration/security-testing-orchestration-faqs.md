@@ -40,7 +40,7 @@ SARIF (Static Analysis Results Interchange Format) is an open data format suppor
 1. Secret Scanning
 1. DAST (Dynamic Application Security Testing)
 1. Container Scanning
-For more details, go to [What's supported](/docs/security-testing-orchestration/whats-supported/).
+For more details, go to [What's supported](/docs/security-testing-orchestration/whats-supported/sto-deployments/).
 
 
 ## What are the requirements for STO to ingest scan results in JSON format?

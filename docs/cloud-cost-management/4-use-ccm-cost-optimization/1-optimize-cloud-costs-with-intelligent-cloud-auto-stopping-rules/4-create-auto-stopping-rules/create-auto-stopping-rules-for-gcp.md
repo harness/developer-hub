@@ -12,11 +12,6 @@ AutoStopping Rules make sure that your non-production resources run only when us
 
 This topic describes how to create AutoStopping Rules for GCP.
 
-## Before you begin
-
-* [Create a GCP Connector for AutoStopping Rules](../1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md)
-* [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md)
-* [AutoStopping Rules Overview](../1-auto-stopping-rules.md)
 
 ## Prerequisites
 To create an AutoStopping rule using an AutoStopping proxy load balancer: 
@@ -36,7 +31,7 @@ Perform the following steps to link your GCP cloud account to Harness.
 2. In **AutoStopping Rules**, select **GCP**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping Rules.
    
 3. If you have already linked your GCP account and want to use that account, then select the GCP account from the **Connect to your GCP account** drop-down list.
-4. If you have not added your cloud account, click **Connect to your GCP account** drop-down list and then click **New Connector**. For the detailed steps, see [Create a GCP Connector for AutoStopping Rules](../1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md).
+4. If you have not added your cloud account, click **Connect to your GCP account** drop-down list and then click **New Connector**.
 
 ## Add a new AutoStopping rule
 
@@ -48,7 +43,7 @@ Perform the following steps to get started with AutoStopping Rule.
 
 1. In **Cloud Costs,** in **AutoStopping Rules**, click **New AutoStopping Rule**.
 2. In the cloud account type, select **GCP**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
-3. Select your GCP account from the **Connect to your GCP account** drop-down list and click **Next**. If you have not added a GCP cloud account, see [Create a GCP Connector for AutoStopping Rules](../1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md).
+3. Select your GCP account from the **Connect to your GCP account** drop-down list and click **Next**.
 4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
 5. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
 
@@ -73,7 +68,7 @@ You can add multiple instances to a single Rule. However, all the VMs should be 
 ### Option 2: Select Kubernetes Cluster
 
 1. Select **Kubernetes Cluster** and then click **Add a cluster**.
-2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules. If you wish to create a new connector for the Kubernetes cluster, see [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md).
+2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules or create a new one.
 3. Once you have finished selecting the Kubernetes cluster, click **Add selected**.
 
 ## (Optional) Set up advanced configuration

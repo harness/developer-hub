@@ -197,16 +197,28 @@ The API takes a JSON object as input that defines the configuration settings for
 
 In Harness, you use a JSON configuration file to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API.
 
+**Harness Support for Tag Management**
+
+:::note
+Currently, the tag management feature is behind the feature flag `CDS_AWS_LAMBDA_ECS_TAG_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Harness supports managing AWS Lambda function tags, allowing users to create, update, and delete tags as part of their function definition. Tags help with resource organization, cost allocation, and security policies.
+
 The minimal requirements for an AWS Lambda function definition are:
 
 - Function Name (`FunctionName`): A unique name for your Lambda function.
 - Runtime (`Runtime`): The programming language and version that your function code is written in. Lambda supports multiple programming languages, including Node.js, Python, Java, C#, and Go.
 - Handler (`Handler`): The name of the function within your code that Lambda should call when the function is invoked.
 - AWS IAM role (`Role`): The IAM role that the function should use to access other AWS services or resources. You can create an IAM role specifically for the Lambda function, or you can reuse an existing IAM role if it has the necessary permissions.
+- Tags (Optional): key-value pairs used for organizing resources, applying policies, and cost allocation.
 
 For a full list of supported fields, go to [AWS Lambda Create Function Request](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html).
 
 Harness supports all of the popular Git platforms for storing your function definition files.
+
+<details>
+<summary>Sample Lambda function</summary>
 
 Here is a NodeJS hello world function example:
 
@@ -218,6 +230,28 @@ Here is a NodeJS hello world function example:
   "role": "<YOUR_AWS_ARN>"
 }
 ```
+</details>
+
+<details>
+<summary>Sample Lambda function with tags</summary>
+
+Here is a NodeJS hello world function with tags example:
+
+```json
+{
+  "runtime": "nodejs14.x",
+  "functionName": "Hello_World",
+  "handler": "handler.hello",
+  "role": "<YOUR_AWS_ARN>",
+  "tags": {
+    "Environment": "Production",
+    "Project": "test-project",
+    "Owner": "DevOps"
+  }
+}
+```
+
+</details>
 
 :::note
 
@@ -287,6 +321,8 @@ Typically, you will use Harness to deploy a new function and its future versions
 To update an existing function, the function definition you supply Harness must have a `FunctionName` that matches the name of the function you are updating in AWS and follow the [Create Function API](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-FunctionName) conventions.
 
 You do not need to use the function ARN in the `FunctionName` of the function definition.
+
+Tag updates: If you need to modify the metadata for your function, you can update the tags without redeploying the function.
 
 ### Sample service YAML
 
@@ -730,6 +766,44 @@ rollbackSteps:
       timeout: 10m
       spec: {}
 ```
+
+### Rollback for Artifacts Larger Than 50 MB
+
+:::note
+
+Rollback support for artifacts larger than 50 MB stored in S3 is currently behind the feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This features requires delegate version `857xx` or later.
+:::
+
+#### Prerequisites
+
+Ensure that the IAM role or user associated with the deployment has the following **AWS Lambda permissions** to manage function aliases:
+
+- `lambda:CreateAlias` – Allows creation of a new alias.
+- `lambda:UpdateAlias` – Allows updating an existing alias to point to a different version.
+- `lambda:DeleteAlias` – Allows deletion of an alias.
+
+Harness uses **Lambda function aliases** to support rollback workflows. During deployment, Harness creates or updates an alias to point to the latest function version. If a rollback is triggered, the alias is redirected to the previously deployed version—restoring the last known good state.
+
+:::info
+Harness manages aliases only for deployments performed through Harness. Creating the alias that points to the latest deployed version is also gated by the same feature flag `CDS_AWS_LAMBDA_ROLLBACK_V2`. 
+
+Harness tracks only the versions deployed via Harness, and rollback is supported only for these deployments. These aliases are used exclusively for rollback operations.
+:::
+
+**Use Cases:**
+
+- **Use Case 1**:  
+  If you deploy an artifact larger than 50 MB **without** enabling the feature flag, the deployment will succeed, but rollback will **fail**. Harness cannot trace previous artifact versions in this mode.
+
+- **Use Case 2**:  
+  If the feature flag is enabled and this is your **first deployment**, Harness creates new aliases. Since there’s no version history, a rollback will effectively do nothing.
+
+- **Use Case 3**:  
+  If the feature flag is enabled and this is **not your first deployment**, Harness can track previous versions. On rollback, the alias is pointed to the previously deployed version, restoring the earlier state successfully.
+
+With the feature flag enabled and the appropriate permissions in place, you can deploy Lambda artifacts of any size from S3, with Harness managing deployment and rollback reliably.
 
 ## Lambda Functions Deployment Sample 
 

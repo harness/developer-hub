@@ -25,10 +25,10 @@ If you need to disable dynamic execution for the account, you can do so at any t
 2. Pipeline Level Setting 
 
 :::info note
-The pipeline-level setting for dynamic execution will only be visible once the Account-Level Setting is enabled
+To execute a pipeline dynamically, the pipeline must already exist in the UI. The pipeline-level setting for dynamic execution will only be visible once the Account-Level Setting is enabled. 
 :::
 
-After enabling the account setting, you must enable the pipeline-level setting:
+After enabling the account setting, you must enable the pipeline-level setting in your pipeline:
 
 Navigate to **Advanced Options** -> **Dynamic Execution Settings (optional)** -> **Enable Allow Dynamic Execution for Pipeline**
 
@@ -61,13 +61,31 @@ curl --location 'https://app.harness.io/gateway/pipeline/api/v1/orgs/default/pro
     "yaml": ""
 }'
 ```
+### YAML Format Requirement
+
+To execute a pipeline dynamically, the YAML should follow the required format as shown in the [example](#example) below.
+
+### Example
+
+```
+curl --location 'https://app.harness.io/gateway/pipeline/api/v1/orgs/default/projects/Krishika_CD_Samples/pipelines/Deploy_Web_Application/execute/dynamic' \
+--header 'accept: */*' \
+--header 'content-type: application/json' \
+--header 'origin: https://app.harness.io' \
+--header 'Harness-Account: ACCOUNT_ID' \
+--header 'x-api-key: HARNESS_API_KEY' \
+--data '{
+    "yaml": "pipeline:\n  name: Deploy_Web_Application\n  identifier: Deploy_Web_Application\n  projectIdentifier: Krishika_CD_Samples\n  orgIdentifier: default\n  tags: {}\n  stages:\n    - stage:\n        name: Build_Web_App\n        identifier: Build_Web_App\n        description: \"\"\n        type: CI\n        spec:\n          cloneCodebase: false\n          caching:\n            enabled: true\n          buildIntelligence:\n            enabled: true\n          platform:\n            os: Linux\n            arch: Amd64\n          runtime:\n            type: Cloud\n            spec: {}\n          execution:\n            steps:\n              - step:\n                  type: Run\n                  name: Run_1\n                  identifier: Run_1\n                  spec:\n                    shell: Sh\n                    command: echo \"Building Web App\"\n    - stage:\n        name: Deploy_Web_App\n        identifier: Deploy_Web_App\n        description: \"\"\n        type: Deployment\n        spec:\n          deploymentType: Kubernetes\n          service:\n            serviceRef: k8s_service\n            serviceInputs:\n              serviceDefinition:\n                type: Kubernetes\n                spec:\n                  artifacts:\n                    primary:\n                      primaryArtifactRef: <+input>\n                      sources: <+input>\n          environment:\n            environmentRef: k8sdemoenv\n            deployToAll: false\n            infrastructureDefinitions:\n              - identifier: k8sdemoinfra\n          execution:\n            steps:\n              - step:\n                  name: Rollout Deployment\n                  identifier: rolloutDeployment\n                  type: K8sRollingDeploy\n                  timeout: 10m\n                  spec:\n                    skipDryRun: false\n                    pruningEnabled: false\n              - step:\n                  type: ShellScript\n                  name: ShellScript_1\n                  identifier: ShellScript_1\n                  spec:\n                    shell: Bash\n                    executionTarget: {}\n                    source:\n                      type: Inline\n                      spec:\n                        script: echo \"Web App Deployed\"\n                    environmentVariables: []\n                    outputVariables: []\n                  timeout: 10m\n            rollbackSteps:\n              - step:\n                  name: Rollback Rollout Deployment\n                  identifier: rollbackRolloutDeployment\n                  type: K8sRollingRollback\n                  timeout: 10m\n                  spec:\n                    pruningEnabled: false\n        tags: {}\n        failureStrategies:\n          - onFailure:\n              errors:\n                - AllErrors\n              action:\n                type: StageRollback"
+}'
+
+```
 
 Upon successful execution, the API returns the following response:
 
 ```json
 {
     "execution_details": {
-        "execution_id": "EXECUTION_ID",
+        "execution_id": "xD908VCSQVaP3Zo14tEI8g",
         "status": "RUNNING"
     }
 }

@@ -34,7 +34,7 @@ You'll learn how to:
 
 Review the following:
 
-* [Harness key concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md)
+* [Harness key concepts](/docs/platform/get-started/key-concepts)
 * [Templates overview](template.md)
 
 ### Permissions

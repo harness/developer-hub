@@ -12,7 +12,7 @@ sidebar_position: 190
 You can ingest scan results from [Fossa](https://www.fossa.com). For a description of the high-level workflow, go to [Run an ingestion scan in an STO Pipeline](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline).
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 
 <StoMoreInfo />
@@ -30,9 +30,9 @@ The recommended workflow is to add a Fossa step to a Security Tests or CI Build 
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanMode from './shared/step-palette/scan/type.md';
 
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeIngest from './shared/step-palette/scan/mode/ingestion.md';
 
 
 
@@ -42,7 +42,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from './shared/step-palette/scan/config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -54,9 +54,9 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-import StoSettingScanType from './shared/step_palette/scan/_type.md';
-import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
-import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
+import StoSettingScanType from './shared/step-palette/scan/type.md';
+import StoSettingScanTypeRepo     from './shared/step-palette/target/type/repo.md';
+import StoSettingScanTypeCont from './shared/step-palette/target/type/image.md';
 
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
@@ -64,8 +64,8 @@ import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md'
 
 #### Target and Variant Detection 
 
-import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from './shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectNote/>
@@ -73,21 +73,21 @@ import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from './shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
 
 #### Workspace (_repository_)
 
-import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from './shared/step-palette/target/workspace.md';
 
 <StoSettingTargetWorkspace  />
 
@@ -100,7 +100,7 @@ The Fossa JSON results file to ingest.
 ### Log Level
 
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 
 
@@ -111,7 +111,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 
 <StoSettingFailOnSeverity />
@@ -121,14 +121,14 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from './shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

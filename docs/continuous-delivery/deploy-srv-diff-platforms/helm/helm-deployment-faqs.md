@@ -192,15 +192,6 @@ You can only perform a rolling deployment strategy for Native Helm(no canary or 
 
 Please follow the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#Helm-chart-expressions).
 
-
-### What are the options for passing Helm flag in First Gen?
-
-Helm flags can be passed in first gen at workflow level under "Configure Helm deploy" Option. We can also pass command flags under service inside chart specification option.
-
-### What is the difference between Helm flag options at workflow level and service level in First Gen?
-
-The Helm flag configured at workflow level needs to be not command specific otherwise the command can fail. It will also be applied to all the Helm commands. The command flag passed at service level are tagged to a specific command. So they will be added only to that specific command. Hence here we can use command specific flags as well.
-
 ### Is there a way to avoid using Helm template command in Kubernetes Helm deployment?
 
 For kubernetes Helm we will always run the template command as this is how we get the rendered manifest. The workflow using kubernetes Helm perform the final deployment using the rendered manifest and kubectl commands.
@@ -380,13 +371,13 @@ name: INIT_SCRIPT
 ```
 
 - After the installation of the binary, export it to PATH
-- Unlike FirstGen, variables are now not present for Helm2 and Helm3 for immutable delegates
+- Variables are not present for Helm2 and Helm3 for immutable delegates
 **Note : One can’t have the same delegate using v2 and v3 for Helm**
 
 Please read more on Helm2 in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/Helm/native-Helm-quickstart/#Helm-2-in-native-Helm)
 
 
-### Is it normal for the k8sdelete step with the release name option to delete only specific entities, unlike Helm uninstall, when the chart was initially deployed using the native Helm option?
+### Is it normal for the k8s delete step with the release name option to delete only specific entities, unlike Helm uninstall, when the chart was initially deployed using the native Helm option?
 
 The current behavior is as expected. Initially, only Kubernetes delete with the release name label was supported. However, a feature request has been made to support Helm uninstall or delete, which would be a separate type of step.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources/)
@@ -468,16 +459,11 @@ To avoid this in the future, please make sure to perform any Helm Release upgrad
 This error usually occurs when running a Helm deployment on an expired delegate. You will run into errors in case of expired delegates. [Upgrade the delegate to the latest version](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) and retry the execution.
 
 
-### Does Harness support Helm hooks (excluding service hooks) similar to the support provided in First Gen?
+### Does Harness support Helm hooks (excluding service hooks)?
 
-No, Harness does not support Helm hooks in Kubernetes deployments in the same way as in First Gen.
-
-The recommended approach in both First Gen and NextGen is to remove Helm hooks and integrate them as shell script steps within the workflow. This method is applicable in both generations of Harness.
+The recommended approach is to remove Helm hooks and integrate them as shell script steps within the workflow. This method is applicable in both generations of Harness.
 
 For unchanged utilization of Helm hooks, native Helm deployment can be chosen. However, native Helm's ability to process hooks and deploy simultaneously is limited. This limitation stems from Helm's post-render functionality, which prevents Harness from processing hooks effectively.
-
-For detailed instructions on integrating Helm charts in Kubernetes deployments with Harness, please refer to the Harness [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/kubernetes-deployments/use-Helm-chart-hooks-in-kubernetes-deployments/).
-
 
 ### Harness is pulling old Helm dependencies that are not in the Chart.yaml.
 
@@ -511,14 +497,6 @@ For this use case within the shell script, you can simply reference credentials 
 ```export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n pod-test```
 
 With this, even when running the shell script on the delegate host, it can refer to the credentials of the K8s cloud provider which is used inside the infrastructure definition associated with the workflow.
-
-### What are the differences between Native Helm Deployment in FirstGen and NextGen Harness?
-
-Here are a few key differences between Native Helm Deployment in FirstGen and NextGen Harness:
-
-* Versioning: Harness NextGen supports versioning of Helm deployments. This allows you to track changes to your deployments and roll back to previous versions if necessary. Harness FirstGen does not support versioning of Helm deployments.
-* Rollback: Harness NextGen supports rollbacks of Helm deployments. This allows you to roll back to a previous version of your deployment if something goes wrong. Harness FirstGen does not support rollbacks of Helm deployments.
-* Helm 3: Harness NextGen supports Helm 3. Harness FirstGen supports both Helm 2 and Helm 3.
 
 #### Is the "Enable Native Helm steady state for jobs" option a default setting for the steady state check?
 
@@ -590,3 +568,6 @@ If a namespace doesn’t exist, using the `--create-namespace` flag can resolve 
 
 ### How to resolve the issue where a user reports an issue when deploying a Helm chart in a specific namespace?
 Users facing namespace errors should remove namespace objects from their manifest templates or ensure Helm correctly scopes installation to the specified namespace. 
+
+### Why does Helm uninstall runs after a failed initial deployment in Helm Deployment step?
+Helm recommends purging the initial release if any failure happens: [https://github.com/helm/helm/issues/3353#issuecomment-358367529](https://github.com/helm/helm/issues/3353#issuecomment-358367529). Hence, Harness purges the release if the first ever release fails in Helm Deployment step. If this is not done, then the user would be manually required to clean up the failed release, otherwise all subsequent releases would fail. Harness helps users avoid this manual effort and purges the failed initial release in this case.

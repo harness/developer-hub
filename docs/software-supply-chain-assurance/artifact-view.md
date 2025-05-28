@@ -128,10 +128,21 @@ The Deployments tab enables you to track the active deployments of your artifact
 
 You can search for an environment or apply filters based on environment type and policy violations to quickly find the required data.
 
+:::note 
+
+Harness SCS provides support for tracking artifact deployments to Kubernetes, Native Helm, and Amazon ECS.
+
+:::
 
 ## Vulnerabilities Tab
 
 The Vulnerabilities tab presents the scan results performed on the artifact, consolidating findings from various scanning tools. This view categorizes all identified vulnerabilities by severity and allows filtering based on scanners and other details. The security scanning is facilitated by the Harness STO (Security Testing Orchestration) module.
+
+:::note
+
+To ensure vulnerability results appear on the Artifacts page, run STO scans on images that are pushed to Docker registry.Scanning images locally before publishing will result in a digest mismatch, preventing SCS from linking the vulnerability data.
+
+:::
 
 <DocImage path={require('./static/artifacts-vulnerabilities.png')} width="100%" height="100%" title="Click to view full size image" />
 

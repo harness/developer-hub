@@ -122,9 +122,11 @@ Select Git events and, if applicable, one or more actions that will initiate the
 | | Push | GitHub push triggers respond to commit and tag creation actions by default. |
 | | Release | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li><li>Prerelease</li><li>Publish</li><li>Release</li><li>Unpublish</li></ul> |
 | | Issue Comment (Only comments on pull requests are supported.) | Select one or more of the following:<ul><li>Created</li><li>Deleted</li><li>Edited</li></ul> |
+| | Create | When a new branch or tag is created, GitHub sends a webhook event. Reconfigure the pipeline with this **Create** event type to trigger the pipeline. |
 | **GitLab** | Merge Request | Select one or more of the following:<ul><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li><li>Sync</li></ul> |
 | | Merge Request Comment | Create |
 | | Push | GitLab push triggers respond to commit and tag creation actions by default. |
+| | Tag | When a tag is pushed or created in GitLab, a pipeline is triggered.<br /><br />Currently, this feature is behind the feature flag `CDS_GITLAB_TRIGGER_TAG_EVENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. |
 | **Bitbucket** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li><li>Decline</li></ul><br/>This event type doesn't support PRs attempting to merge Bitbucket forked repos into the original, base repo if the base repo is configured as the pipeline's codebase. For more information, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines#troubleshoot-git-event-triggers). |
 | | Pull Request Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> Note that this event type is currently supported only for Bitbucket cloud, and not for Bitbucket on-premises triggers. |
 | | Push | Bitbucket Cloud push triggers respond to commit and tag creation actions by default. |
@@ -629,3 +631,42 @@ On the list of triggers for a pipeline, you can see when each trigger was last a
 **Activation** means the trigger was able to *request* pipeline execution; it doesn't mean that the webhook didn't work.
 
 **Failed** usually means the pipeline has a configuration issue that prevented the trigger from initiating a pipeline.
+
+## Activity History
+
+You can verify the payload received by the trigger in the Activity History section of the trigger.
+
+![](./static/activity-history-ui.png)
+
+If headers contain a key with any of the following names, its value will be masked as `****`.
+
+- `Authorization`
+- `Proxy-Authorization`
+- `X-Api-Key`
+- `X-Amz-Security-Token`
+- `X-Amz-Credential`
+- `Set-Cookie`
+- `Cookie`
+
+If the value of any header looks like a **bearer token, JWT token, or base64-encoded string**, the value will be masked as `****`.
+
+Examples:
+
+Given the following headers:
+```json
+{
+    "X-Api-Key": "auth-token",
+    "Authorization": "Bearer 12345abcde",
+    "custom-header": "custom-value",
+    "custom-header-with-jwt": "eyJ0e.sometokenbody.signature"
+}
+```
+The masked headers will look like this:
+```json
+{
+    "X-Api-Key": "****",
+    "Authorization": "****",
+    "custom-header": "custom-value",
+    "custom-header-with-jwt": "****"
+}
+```

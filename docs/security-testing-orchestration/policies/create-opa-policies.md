@@ -7,7 +7,7 @@ redirect_from:
   - /docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa
 ---
 
-You can use [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) to write and enforce policies against your [security tests](/docs/security-testing-orchestration/dashboards/view-scan-results), and to stop your pipelines if a security test has any issues that violate those policies. 
+You can use [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) to write and enforce policies against your [security tests](/docs/security-testing-orchestration/view-security-test-results/view-scan-results), and to stop your pipelines if a security test has any issues that violate those policies. 
 
 You can use Harness Policy as Code to enforce policies such as:
 

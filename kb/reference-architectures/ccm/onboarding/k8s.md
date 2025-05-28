@@ -52,6 +52,7 @@ When deploying a delegate, it is recommended that you name the delegate either t
 - The delegate pod needs a minimum of 1 vCPU and 2G of memory.
   - For larger clusters, more resources are needed. Requirements TBD by engineering at this time.
 - The delegate will need outbound internet access to `https://app.harness.io`
+- For sending logs to Harness for support and troubleshooting the delegate will also need outbound access to `logging.googleapis.com`.
 
 ## Connectors
 
@@ -91,7 +92,7 @@ For creating all your CCM Kubernetes connectors it is recommended that you utili
 At a minimum you need to enable `VISIBILITY`. If you are planning to perform auto stopping in this cluster, you can also enable `OPTIMIZATION`.
 
 ```terraform
-resource "harness_platform_connector_kubernetes" "cluster-a" {
+resource "harness_platform_connector_kubernetes_cloud_cost" "cluster-a" {
   identifier  = "cluster_a_ccm"
   name        = "cluster-a-ccm"
 

@@ -10,7 +10,7 @@ This topic describes the permissions required to execute chaos experiments when 
 
 ## Prerequisites
 
-- The Delegate must be installed within your centralized infrastructure.
+- The [Delegate must be installed](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/installation) within your centralized infrastructure.
 - Ensure network connectivity between the centralized infrastructure and the target cluster infrastructure where chaos experiments will be executed.
 
 The diagram below describes how the Harness environment and your (user) environment communicate with the help of Harness Delegate to execute chaos experiments.
@@ -111,6 +111,17 @@ roleRef:
   name: chaosrunner-pod-role
   apiGroup: rbac.authorization.k8s.io
 ```
+
+#### Generate Service Account Token
+
+Use the following kubectl command to get a SA bound token:
+
+```yaml
+kubectl -n harness-delegate-chaos get secret chaos-sa-secret -o jsonpath='{.data.token}' | base64 --decode
+```
+
+Here, `chaos-sa-secret` is the actual name of the token secret and `harness-delegate-chaos` is the namespace of the token secret, so change it accordingly.
+
 
 ### Step 2. Create Kubernetes Connector
 
@@ -230,7 +241,11 @@ To discover the resources and run chaos, use the permissions (described below) i
       - get
     ``` 
 
-### Step 4a. Access All Namespaces
+### Step 4: Onboard Namespaces
+
+You can onboard [all namespaces](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/centralized-delegate#access-all-namespaces) or [specific namespaces (one or more)](/docs/chaos-engineering/use-harness-ce/infrastructures/types/ddcr/centralized-delegate#access-specific-namespace) to inject chaos.
+
+#### Access All Namespaces
 
 You can provide access to all the namespaces by creating a role binding in the application namespace.
 
@@ -249,7 +264,7 @@ You can provide access to all the namespaces by creating a role binding in the a
       namespace: harness-delegate-chaos
     ```
 
-### Step 4b. Onboard Namespace
+#### Access Specific Namespace
 
 To onboard a namespace, create a RoleBinding in the application namespace (for example, `app1`, `app2`, and so on.)
 
@@ -283,6 +298,6 @@ Create Harness infrastructure definition using the same Kubernetes cluster conne
 
 ### Step 6. Edit Infrastructure 
 
-Edit the infrastructure you created in [step 5](#step-5-create-harness-infrastructure-definition) to provide the details of the dedicated namespace that was created. This is the namespace where the chaos runner is launched along with the Service Account to ensure that experiments are executed with relevant permissions.
+Follow this step only after [enabling chaos](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding) on the infrastructure. Edit the infrastructure you created in [step 5](#step-5-create-harness-infrastructure-definition) to provide the details of the dedicated namespace that was created. This is the namespace where the chaos runner is launched along with the Service Account to ensure that experiments are executed with relevant permissions.
 
     ![service account used](./static/delegate/sa-3.png)

@@ -7,10 +7,6 @@ Autocreation is a feature that allows you to automatically create entities in Ha
 
 This differs from [moving inline entities to Git](https://developer.harness.io/docs/platform/git-experience/move-inline-entities-to-git/) and [enabling bidirectional sync](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup/) as for this case, customers would be initially creating objects from the Harness UI rather than initiating from Git, and do not have to follow a directory structure for the objects being saved in the Git Repo.
 
-:::info note
-Currently this feature is behind the feature flag `PIE_GITX_AUTOCREATION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
-
 ## Pre-requisites of Autocreation
 
 - Register the webhook for your repository where you are adding your files remotely. The scope of the webhook should match the entity it's trying to create. For example, a project-level webhook can only create entities within the same project, whereas an account-level webhook can create entities across multiple projects and the organizations.

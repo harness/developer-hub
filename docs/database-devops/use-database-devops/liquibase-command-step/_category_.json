@@ -1,0 +1,12 @@
+{
+    "label": "Liquibase Command Step",
+    "collapsible": "true",
+    "collapsed": "true",
+    "link":{
+        "type":"generated-index",
+        "title":"Native Liquibase Command Step"
+     },
+    "customProps": {
+      "description": "Native Liquibase Command Step and use cases associated this step"
+    }
+  }

@@ -104,8 +104,10 @@ With Harness Cloud, your builds run on Harness-managed machines, and you can sta
 
 Some Harness CI features are not compatible with all build infrastructures or platforms. New features are rolled out for Harness Cloud first before being enabled for other build infrastructures.
 
+
 | Feature | Harness Cloud | Self-managed local runner | Self-managed Kubernetes cluster | Self-managed AWS/GCP/Azure VMs |
 | - | - | - | - | - |
+| [Build Intelligence](docs/continuous-integration/use-ci/build-and-upload-artifacts/build-intelligence.md) | ✅ Supported - Linux only | ❌ Not supported | ✅ Supported - Linux only  | ❌ Not supported|
 | [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |

@@ -32,9 +32,9 @@ Go to [workspace statuses](/docs/infra-as-code-management/workspaces/worksace-st
 :::warning pending release
 The new workspace wizard is currently pending release and will be available soon!
 :::
-<DocVideo src="https://app.tango.us/app/embed/cfb68b54-eb46-42af-a622-5b76c9270598" title="Creating a New Workspace in Harness" />
+<DocVideo src="https://app.tango.us/app/embed/cfb68b54-eb46-42af-a622-5b76c9270598?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create a IaCM Workspace in Harness" />
 </TabItem>
-<TabItem value="Step-by-step" default>
+<TabItem value="Step-by-step">
 
 To create a new workspace, follow these steps:
 1. Sign in to [app.harness.io](https://app.harness.io).
@@ -65,6 +65,10 @@ If you need to use either environment or Terraform variables during execution, s
 - **Inline** Users can define Terraform variables within the workspace. Variables can be either String, [hcl](https://developer.hashicorp.com/terraform/language/syntax/configuration), [Secret](/docs/category/secrets), or a reference to another variable, using [JEXL expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) (can be in the same or a different workspace, or from the pipeline).
 - **From Git Repo (Implicit)** Users can store ``.tfvar`` in the same folder as the Terraform code for the workspace.
 - **From Git Repo (Explicit)** Users can define a specific folder for ``.tfvar`` files (which can be different from the Terraform code's location). These files can be in the same or different repository as the Terraform code.
+
+:::info tfvar jexl support
+[JEXL expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) cannot be used to reference `tfvar` files.
+:::
 
 The values defined in line with the workspace will take precedence over the git configuration.
 

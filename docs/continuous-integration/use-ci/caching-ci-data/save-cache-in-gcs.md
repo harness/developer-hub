@@ -111,6 +111,24 @@ Here is an example of the YAML for a **Restore Cache from GCS** step.
 </TabItem>
 </Tabs>
 
+### Avoiding Prefix Collisions During Restore
+
+To prevent prefix collisions and ensure successful cache restoration, use the featue flag `PLUGIN_STRICT_KEY_MATCHING` (default: `true`).
+
+- Strict Mode (Default): Only restores from exact key matches, preventing unexpected collisions and ensuring accurate cache restoration.
+
+- Flexible Mode (PLUGIN_STRICT_KEY_MATCHING=false): Processes all entries that start with the specified prefix, which may result in multiple paths being restored.
+
+:::warning
+Using Flexible Mode (i.e., setting `PLUGIN_STRICT_KEY_MATCHING` to **false**) may result in unexpected behavior as multiple paths might be restored. The recommended setting is **true**.
+:::
+
+Additional Recommendations:
+
+**Key Naming**: Avoid using cache keys where one key is a prefix of another. Ensure cache key templates are distinct to prevent collisions.
+
+**Bucket Cleanup**: If collisions occur, clean up the problematic entries in the GCS bucket by removing folders with the duplicated key structure.
+
 ### GCS save and restore cache step settings
 
 The **Save Cache to GCS** and **Restore Cache from GCS** steps have the following settings. Depending on the stage's build infrastructure, some settings might be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using these steps in a stage with VM or Harness Cloud build infrastructure.

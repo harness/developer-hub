@@ -28,6 +28,7 @@ For details on running Terraform configuration files locally on the delegate, go
 - The workspace in Terraform Cloud should be configured and connected to the configuration files repo. Execution mode should be set to **Remote**. Currently, Harness can be used only for running executions in the workspace.
 - User/role permissions required by the target platform (AWS, GCP, etc) in order to perform tasks: You should create an API token in Terraform Cloud that can be used in the Harness connector that connects Harness to Terraform Cloud. You can create **User** or **Team API** tokens. Organization tokens can’t be used for run creation. For more information about the required privileges, review the [API tokens access levels](https://developer.hashicorp.com/terraform/cloud-docs/users-teams-organizations/api-tokens#access-levels) from HashiCorp.
 - You can add Terraform Cloud steps in any CD or Custom stage.
+- We support using Terraform Cloud provisionor with an **OIDC-enabled AWS connector**, but it requires Delegate version `854xx` or later. For more information, refer to [AWS OIDC connector reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 ## Harness connector
 
@@ -142,6 +143,31 @@ The Terraform Cloud Run step can perform the following run types.
 
 </details>
 
+### Plan with Refresh Command
+
+Harness supports running a Refresh plan for Terraform Enterprise (TFE) runs without auto-approval.
+
+When you select **Plan** run-type with **Refresh** option in the Terraform Cloud Run step, Harness triggers a refresh plan in TFE and waits for manual approval before proceeding.
+You can review and approve or reject the refresh plan either within Harness (using an Approval Step) or directly in the TFE UI.
+
+If no approval action is taken within the configured timeout, the pipeline fails and the run is marked as expired.
+
+:::note
+Currently, this feature is behind the feature flag `CDS_SUPPORT_TF_CLOUD_PLAN_REFRESH_TYPE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This features requires delegate version `857xx` or later.
+:::
+
+To use this feature:
+- In the Terraform Cloud Run step, set Run Type to Plan.
+- Then select the Refresh option to initiate a refresh plan without auto-approval.
+
+
+<div align="center">
+  <DocImage path={require('./static/tfe-plan-refresh.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+
 ## Provisioner Identifier
 
 This setting is supported in the following run types: Plan, Apply, Plan Only, Plan and Apply, Plan and Destroy.
@@ -191,6 +217,25 @@ Select the Harness Terraform Cloud connector to use when running this step. Ensu
 This setting is supported in the following run types: Plan, Plan Only, Refresh, Plan and Apply, Plan and Destroy.
 
 Select the Terraform Cloud organization that includes the workspace you want to run.
+
+## Project (optional)
+
+Select the **Project** that includes the workspace you want to run. 
+
+:::note
+Currently, adding a project is behind the feature flag `CDS_TF_PROJECTS_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+This field is **optional**. If you populate it, the list of workspaces in the dropdown will be filtered to show only those associated with the selected project. 
+
+If left blank, all workspaces within the specified organization will be displayed.
+
+
+<div align="center">
+  <DocImage path={require('./static/project-filter.png')} width="60%" height="60%" title="Click to view full size image" />
+</div>
+
+
 
 ## Terraform Workspace
 
@@ -267,7 +312,6 @@ For example:
 cat <+terraformCloudPlanJson."id">
 ```
 
-
 ### Print policy checks
 
 Use the expression `<+policyChecksJson."id">` to print the Sentinel checks involved in the run.
@@ -277,6 +321,30 @@ For example:
 ```
 cat <+policyChecksJson."id">
 ```
+
+## Open Policy Agent (OPA) policy support
+
+Harness now fetches and evaluates **Open Policy Agent (OPA)** policies alongside **Sentinel** policies in your Terraform Cloud Run step. 
+
+:::note
+Currently, this feature is behind the feature flag `CDS_TF_POLICY_EVALUATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+### Behavior
+- When the flag is enabled, Harness invokes the Terraform Cloud **Task Stages** and **Policy Evaluations** APIs to pull down both Sentinel and OPA policy results.  
+- Results for OPA policies appear under a **Policy Evaluation** section in the step logs.
+- **Enforcement levels**: OPA policies support two enforcement types—**Advisory** (warnings only, run continues) and **Mandatory** (fail the run unless overridden).  
+- **Override support**: For policies marked as `overridable`, you can let the run continue despite a mandatory OPA failure by selecting the **Continue on Soft Mandatory Policy evaluation result** checkbox in the Terraform Cloud Run step UI (or via the corresponding API action).
+
+For more information on **Open Policy Agent (OPA)** policies, refer [Terraform documentation](https://www.openpolicyagent.org/docs/latest/terraform/)
+
+:::info 
+Any **mandatory** OPA policy failure will automatically fail the pipeline stage.
+:::
+
+:::warning
+**Policy checks** are deprecated and will be permanently removed in August 2025. We recommend that you start using policy evaluations to avoid disruptions. [Learn more](https://developer.hashicorp.com/terraform/cloud-docs/api-docs/policy-checks)
+:::
 
 ## Terraform Cloud Rollback step
 

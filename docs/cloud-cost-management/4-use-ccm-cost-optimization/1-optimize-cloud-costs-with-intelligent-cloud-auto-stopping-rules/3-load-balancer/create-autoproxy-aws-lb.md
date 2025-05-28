@@ -23,7 +23,7 @@ Perform the following steps to create an AutoStopping proxy for your resources i
 2. Under **Setup**, click **Load Balancers**.
 3. Click **Create New Load Balancer**.
 4. Select **AWS**.
-5. Choose an existing connector or [create a new one](../1-add-connectors/connect-to-an-aws-connector.md).
+5. Choose an existing connector or create a new one.
 6. Click **Continue**.
 7. Click **Create AutoStopping Proxy**. 
 8. Click **Continue**.

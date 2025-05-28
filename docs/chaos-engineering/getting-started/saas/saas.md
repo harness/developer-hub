@@ -22,7 +22,7 @@ Fulfill the [prerequisites](/docs/chaos-engineering/getting-started/prerequisite
 
 ### Step 1: Identify the microservice to target
 
-1. Identify the microservice in your application that you will target, whose resources will be affected. In this guide, you will delete a Kubernetes pod from your application. [Pod delete](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-delete) is the simplest chaos experiment that is recommended as the firs steo since it has a small blast radius.
+1. Identify the microservice in your application that you will target, whose resources will be affected. In this guide, you will delete a Kubernetes pod from your application. [Pod delete](/docs/chaos-engineering/use-harness-ce/chaos-faults/kubernetes/pod/pod-delete) is the simplest chaos experiment that is recommended as the first step since it has a small blast radius.
 
 The diagram below describes the high-level steps to inject chaos into your application.
 
@@ -86,7 +86,7 @@ You can also select one of the environments from the list of environments if you
 </TabItem>
 <TabItem value= "Step-by-Step">
 
-4. After you create an environment, add an infrastructure to it. Select **+New Infrastructure**. This guide uses a Harness Delegate to execute the experiment. Go to [enable chaos using Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#enable-chaos) to install a Harness Delegate. Ensure you have access to your Kubernetes cluster via [kubectl](https://kubernetes.io/docs/reference/kubectl/) to apply the manifests from your terminal.
+4. After you create an environment, add an infrastructure to it. Select **+New Infrastructure**. This guide uses a Harness Delegate to execute the experiment. Go to [enable chaos using Delegate](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/kubernetes#install-dedicated-chaos-infrastructure) to install a Harness Delegate. Ensure you have access to your Kubernetes cluster via [kubectl](https://kubernetes.io/docs/reference/kubectl/) to apply the manifests from your terminal.
 
 	![New Chaos Infrastructure](./static/first-chaos/new-chaos-infrastructure.png)
 

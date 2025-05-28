@@ -8,9 +8,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::note
-Beta Notice for Secure Connect on Harness Cloud
+Limited GA Notice for Secure Connect on Harness Cloud
 
-Secure Connect for Harness Cloud is currently in beta and may not yet be fully stable. Its functionality and performance are subject to change, and some issues may occur during use.
+Secure Connect for Harness Cloud is currently in Limited GA. Its functionality and performance are subject to change, and some issues may occur during use.
 
 To enable Secure Connect for Harness Cloud, ensure the feature flag `CI_SECURE_TUNNEL` is active. Please contact Harness Support for assistance with enabling this feature.
 
@@ -29,7 +29,7 @@ With Secure Connect for Harness CI Cloud, you can connect to your sensitive asse
 
 <figure>
 
-![Secure Connect architecture diagram](./static/secure-connect-arch3.png)
+![Secure Connect architecture diagram](./static/secure-connect-arch.png)
 
 <figcaption>To use Harness CI Cloud in firewalled environments, such as corporate networks, you enable a secure tunnel between the Harness Cloud network and your private network.</figcaption>
 </figure>
@@ -55,6 +55,10 @@ You can [configure Secure Connect](#configure-secure-connect) in minutes. If you
 <TabItem value="Kubernetes" label="Kubernetes" default>
 
 2\. Deploy the following Kubernetes manifest by saving it as `secure-connect.yaml` in your firewalled environment, then run `kubectl apply -f secure-connect.yaml`. The placement of the client depends on which assets need to securely connect to Harness and your environment's network configuration. The client uses Basic authentication for security. If basic auth credentials are not specified in the manifest, Harness generates them using SHA256.
+
+:::info
+The API key must be base64-encoded before being added to the Secret.
+:::
 
 ```yaml
  ---
@@ -145,8 +149,9 @@ docker run -it \
    * [Bitbucket connectors](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
    * [Git connectors](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
    * [Docker connectors](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
-   * [GCP connectors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp)
+   * [GCP connectors (GAR and GCS)](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp)
    * [AWS connectors](/docs/platform/connectors/cloud-providers/add-aws-connector)
+   * [JFrog connectors (Artifactory)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference)
 
 ### Use Secure Connect environment variables to route other clients
 
