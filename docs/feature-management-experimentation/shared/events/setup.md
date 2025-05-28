@@ -32,7 +32,7 @@ Event type names must meet the following requirements:
 * Start with a letter, number, or left-bracket (`[`)
 * Contain only letters, numbers, hyphens (`-`), underscores (`_`), brackets (`[]`), or periods (`.`)
 
-For more information, see the [Events](../) documentation.
+For more information, see the [Events](/docs/feature-management-experimentation/release-monitoring/events/) documentation.
 
 ### Recommended naming convention
 
