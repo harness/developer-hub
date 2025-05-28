@@ -114,5 +114,6 @@ export const university: CardItem[] = [
       "Secure your SDLC and align them with industry-standard risk frameworks.",
     link: "/university/scs",
     SPT_available: true,
+    ILT_available: true,
   },
 ];
