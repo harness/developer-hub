@@ -10,7 +10,7 @@ sidebar_label: Android Suite
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide provides detailed information about our Android Suite, an SDK designed to leverage the full power of FME. The Android Suite is built on top of the [Android SDK](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK) and the [Android RUM Agent](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent), offering a unified solution, optimized for Android development.
+This guide provides detailed information about our Android Suite, an SDK designed to leverage the full power of FME. The Android Suite is built on top of the [Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk) and the [Android RUM Agent](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent), offering a unified solution, optimized for Android development.
 
 The Suite provides the all-encompassing essential programming interface for working with your FME feature flags, as well as capabilities for automatically tracking performance measurements and user events. Code currently using Android SDK or Android RUM Agent can be easily upgraded to Android Suite, which is designed as a drop-in replacement.
 
@@ -40,6 +40,7 @@ In your code, instantiate the Suite client as shown below.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 // SDK key
 String sdkKey = "YOUR_SDK_KEY";
@@ -59,8 +60,10 @@ SplitSuite suite = SplitSuiteBuilder.build(sdkKey, k, config, getApplicationCont
 // Get Split Client instance
 SplitClient client = suite.client();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // SDK key
 val sdkKey = "YOUR_SDK_KEY"
@@ -81,6 +84,7 @@ val splitFactory: SplitSuite =
 // Get Split Client instance
 val client: SplitClient = splitFactory.client()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -92,13 +96,13 @@ When the Suite is instantiated, it starts synchronizing feature flag and segment
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the Suite with the SDK key for the Split environment that you would like to access. The SDK key is available in the Split UI, on your Admin settings page, API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the Suite with the SDK key for the Split environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ## Using the Suite
 
 ### Basic use
 
-When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the Suite is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data. If the Suite is asked to evaluate which treatment to show to a user for a specific feature flag while in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the Suite does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 To make sure the Suite is properly loaded before asking it for a treatment, block until the Suite is ready, as shown below. We set the client to listen for the `SDK_READY` event triggered by the Suite before asking for an evaluation.
 
@@ -106,8 +110,9 @@ After the `SDK_READY` event fires, you can use the `getTreatment` method to retu
 
 You can use an if-else statement as shown below and insert the code for the different treatments that you defined in the Split user interface. Remember to handle the client returning control, for example, in the final else statement.
 
-<Tabs>
-<TabItem value="Java">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
 ```java
 client.on(SplitEvent.SDK_READY, new SplitEventTask() {
 
@@ -130,8 +135,10 @@ client.on(SplitEvent.SDK_READY, new SplitEventTask() {
     }
 });
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 client.on(SplitEvent.SDK_READY, object : SplitEventTask() {
 
@@ -154,12 +161,13 @@ client.on(SplitEvent.SDK_READY, object : SplitEventTask() {
         }
     }
 ```
+
 </TabItem>
 </Tabs>
 
 ### Attribute syntax
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the Suite's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the Suite's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in the Split user interface to decide whether to show the `on` or `off` treatment to this account.
 
@@ -171,8 +179,9 @@ The `getTreatment` method has a number of variations that are described below. E
 * **Booleans:** Use type `java.lang.Boolean`.
 * **Sets:** Use type `java.util.Collection`.
 
-<Tabs>
-<TabItem value="Java">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
 ```java
 Map<String, Object> attributes = new HashMap<String, Object>();
 attributes.put("plan_type", "growth");
@@ -193,8 +202,10 @@ if (treatment.equals("on")) {
     // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val attributes = mapOf(
     "plan_type" to "growth",
@@ -217,6 +228,7 @@ when (client.getTreatment("FEATURE_FLAG_NAME", attributes)) {
     }
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -238,6 +250,7 @@ To use these methods, refer to the example below:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 // Prepare a Map with several attributes
 Map<String, Object> attributes = new HashMap<String, Object>();
@@ -257,8 +270,10 @@ boolean result = client.removeAttribute("deal_size");
 // Remove all attributes
 boolean result = client.clearAttributes();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // Set multiple attributes
 client.setAttributes(
@@ -279,6 +294,7 @@ val result = client.removeAttribute("deal_size")
 // Remove all attributes
 val result = client.clearAttributes()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -289,8 +305,9 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 * `getTreatmentsByFlagSet`: Evaluate all flags that are part of the provided set name and are cached on the Suite instance.
 * `getTreatmentsByFlagSets`: Evaluate all flags that are part of the provided set names and are cached on the Suite instance.
 
-<Tabs>
-<TabItem value="Java">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
 ```java
 // Getting treatments by feature flag names
 List<String> featureFlagNames = Lists.newArrayList("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2");
@@ -309,8 +326,10 @@ Map<String, String> treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSe
 //   "FEATURE_FLAG_NAME_2": "visa"
 // }
 ```
+
 </TabItem>
-<TabItem value="Kotlin">
+<TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // Getting treatments by feature flag names
 val featureFlagNames: List<String> = listOf("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2")
@@ -329,38 +348,44 @@ val treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets)
 //   "FEATURE_FLAG_NAME_2": "visa"
 // }
 ```
+
 </TabItem>
 </Tabs>
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `getTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `getTreatmentWithConfig` method.
 
 This method will return an object with the structure below:
 
-<Tabs>
-<TabItem value="Java">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
 ```java
 SplitResult result = client.getTreatmentWithConfig("new_boxes", attributes);
 
 String config = result.config();
 String treatment = result.treatment();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val result: SplitResult = client.getTreatmentWithConfig("new_boxes", attributes)
 
 val config: String = result.config()
 val treatment: String = result.treatment()
 ```
+
 </TabItem>
 </Tabs>
 
 As you can see from the object structure, the config is a stringified version of the configuration JSON defined in the Split user interface. If there is no configuration defined for a treatment, the Suite returns `null` for the config parameter. This method takes the exact same set of arguments as the standard `getTreatment` method. See below for examples on proper usage:
 
-<Tabs>
-<TabItem value="Java">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
 ```java
 SplitResult treatmentResult = client.getTreatmentWithConfig("FEATURE_FLAG_NAME", attributes);
 String configs = treatmentResult.config();
@@ -374,8 +399,10 @@ if (treatment.equals("on")) {
   // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val treatmentResult: SplitResult = client.getTreatmentWithConfig("FEATURE_FLAG_NAME", attributes)
 val configs: String? = treatmentResult.config()
@@ -393,13 +420,15 @@ when (client.getTreatment("FEATURE_FLAG_NAME", attributes)) {
     }
 }
 ```
+
 </TabItem>
 </Tabs>
 
 If you need to get multiple evaluations at once, you can also use the `getTreatmentsWithConfig` methods. These methods take the exact same arguments as the [getTreatments](#multiple-evaluations-at-once) methods but return a mapping of feature flag names to TreatmentResults instead of strings. See example usage below:
 
-<Tabs>
-<TabItem value="Java">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
 ```java
 // Getting treatments by feature flag names
 List<String> featureFlagNames = Lists.newArrayList("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2");
@@ -418,8 +447,10 @@ Map<String, String> treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSe
 //   "FEATURE_FLAG_NAME_2": "visa"
 // }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // Getting treatments by feature flag names
 val featureFlagNames: List<String> = listOf("FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2")
@@ -438,6 +469,7 @@ val treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets)
 //   "FEATURE_FLAG_NAME_2": "visa"
 // }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -464,8 +496,9 @@ The `suite.track()` method sends events **_for all the identities_** configured 
 
 Tracking per identity using `client.track()`:
 
-<Tabs>
-<TabItem value="Java">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
 ```java
 SplitClient client = suite.client();
 
@@ -486,8 +519,10 @@ properties.put("admin", true);
 properties.put("discount", 50L);
 client.track("user", "screen_load_time", properties);
 ```
+
 </TabItem>
-<TabItem value="Kotlin">
+<TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val client = suite.client()
 
@@ -510,6 +545,7 @@ val properties = mapOf(
 )
 client.track("user", "screen_load_time", properties)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -517,6 +553,7 @@ Tracking for all identities using `suite.track()`:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 
 // The expected parameters are:
@@ -536,8 +573,10 @@ properties.put("admin", true);
 properties.put("discount", 50L);
 suite.track("screen_load_time", null, properties);
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // The expected parameters are:
 suite.track('EVENT_TYPE', eventValue, eventProperties)
@@ -558,6 +597,7 @@ val properties = mapOf(
 )
 suite.track("screen_load_time", null, properties);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -567,16 +607,20 @@ The `client.track()` methods return a boolean value of `true` or `false` to indi
 
 It is good practice to call the `destroy` method before your app shuts down or is destroyed, as this method gracefully shuts down the Suite by stopping all background threads, clearing caches, closing connections, and flushing the remaining unpublished impressions.
 
-<Tabs>
-<TabItem value="Java">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
 ```java
 suite.destroy();
 ```
+
 </TabItem>
-<TabItem value="Kotlin">
+<TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 suite.destroy()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -639,6 +683,7 @@ To set each of the parameters defined above, use the following syntax:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitSuite suite = SplitSuiteBuilder.build(
     sdkKey,
@@ -656,8 +701,10 @@ SplitSuite suite = SplitSuiteBuilder.build(
         .build(),
     applicationContext);
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val suite: SplitSuite = SplitSuiteBuilder.build(
     sdkKey,
@@ -675,6 +722,7 @@ val suite: SplitSuite = SplitSuiteBuilder.build(
         .build(),
     applicationContext)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -686,6 +734,7 @@ The format for defining the definitions is as follows:
 
 <Tabs>
 <TabItem value="YAML">
+
 ```yaml
 ## - feature_name:
 ##     treatment: "treatment_applied_to_this_entry"
@@ -705,6 +754,7 @@ The format for defining the definitions is as follows:
     keys: ["key_1", "key_2"]
     config: "{\"desc\" : \"this overrides multiple keys and returns off treatment for those keys\"}"
 ```
+
 </TabItem>
 </Tabs>
 
@@ -719,6 +769,7 @@ In this mode, the Split Suite loads the yaml file from a resource bundle file at
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import io.split.android.client.SplitClient;
 import io.split.android.client.SplitFactoryBuilder;
@@ -730,8 +781,10 @@ Key key = new Key(matchingKey);
 
 SplitClient client = SplitSuiteBuilder.build("localhost", key, getApplicationContext()).client();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 import io.split.android.client.SplitFactoryBuilder
 import io.split.android.client.api.Key
@@ -745,6 +798,7 @@ val client = SplitSuiteBuilder.build(
     applicationContext
 ).client()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -754,12 +808,15 @@ Use the Split Manager to get a list of feature flags available to the SDK client
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitFactory splitFactory = SplitFactoryBuilder.build("YOUR_API_KEY");
 SplitManager manager = splitFactory.manager();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val splitFactory: SplitFactory = SplitFactoryBuilder.build(
     "api_key",
@@ -769,6 +826,7 @@ val splitFactory: SplitFactory = SplitFactoryBuilder.build(
 
 val manager: SplitManager = splitFactory.manager()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -776,6 +834,7 @@ The Manager then has the following methods available.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 /**
  * Retrieves the feature flags that are currently registered with the
@@ -799,8 +858,10 @@ SplitView split(String SplitName);
  */
 List<String> splitNames();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 /**
  * Retrieves the feature flags that are currently registered with the
@@ -823,7 +884,9 @@ fun split(SplitName: String): SplitView?
  * @return a List of String (feature flag names) or empty
  */
 fun splitNames(): List<String>
+
 ```
+
 </TabItem>
 </Tabs>
 
@@ -831,6 +894,7 @@ The `SplitView` object referenced above has the following structure.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 public class SplitView {
     public String name;
@@ -843,8 +907,10 @@ public class SplitView {
     public List<String> sets;
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 class SplitView(
     var name: String?,
@@ -856,6 +922,7 @@ class SplitView(
     var sets: List<String>
 )
 ```
+
 </TabItem>
 </Tabs>
 
@@ -867,6 +934,7 @@ The Suite sends the generated impressions to the impression listener right away.
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitClientConfig config = SplitClientConfig.builder()
                         .impressionListener(new MyImpressionListener())
@@ -888,8 +956,10 @@ class MyImpressionListener implements ImpressionListener {
     }
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 class MyImpressionListener : ImpressionListener {
     override fun log(impression: Impression) {
@@ -908,6 +978,7 @@ val config = SplitClientConfig.builder()
     .impressionListener(MyImpressionListener())
     .build()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -915,6 +986,7 @@ In regards with the data available here, refer to the `Impression` objects inter
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
     String key();
     String bucketingKey();
@@ -926,8 +998,10 @@ In regards with the data available here, refer to the `Impression` objects inter
     Map<String, Object> attributes();
     Long previousTime();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
     key(): String?
     bucketingKey(): String?
@@ -939,6 +1013,7 @@ In regards with the data available here, refer to the `Impression` objects inter
     attributes(): Map<String, Any?>?
     previousTime(): Long?
 ```
+
 </TabItem>
 </Tabs>
 
@@ -960,14 +1035,18 @@ The `flush` method sends the data stored in memory (impressions and events track
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 client.flush();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 client.flush()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -995,8 +1074,9 @@ FME supports the ability to create multiple clients, one for each user ID. Each 
 
 You can do this with the example below:
 
-<Tabs>
-<TabItem value="Java">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
 ```java
 // Create factory
 Key key = new Key("anonymous_user");
@@ -1023,8 +1103,10 @@ userClient.on(SplitEvent.SDK_READY, new SplitEventTask() {
     }
 });
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // Create factory
 val key = Key("anonymous_user")
@@ -1049,6 +1131,7 @@ userClient.on(SplitEvent.SDK_READY, object : SplitEventTask() {
     }
 })
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1069,22 +1152,26 @@ You can listen for four different events from the Suite.
 
 To define what is executed after each event, create an extension of `SplitEventTask`.
 
-<Tabs>
-<TabItem value="Java">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
 ```java
 public class SplitEventTask {
     public void onPostExecution(SplitClient client) { }
     public void onPostExecutionView(SplitClient client) { }
 }
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 open class SplitEventTask {
     open fun onPostExecution(client: SplitClient) { }
     open fun onPostExecutionView(client: SplitClient) { }
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1094,6 +1181,7 @@ The syntax to listen for each event is shown below:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 client.on(SplitEvent.SDK_READY, new SplitEventTask() {
   @Override
@@ -1139,8 +1227,10 @@ client.on(SplitEvent.SDK_READY_UPDATE, new SplitEventTask() {
   }
 });
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 client.on(SplitEvent.SDK_READY, object : SplitEventTask() {
     override fun onPostExecution(client: SplitClient) {
@@ -1178,6 +1268,7 @@ client.on(SplitEvent.SDK_UPDATE, object : SplitEventTask() {
     }
 })
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1192,8 +1283,9 @@ There are three possible initial states:
  * `'DECLINED'`: the user declines consent for tracking events and impressions. The Suite does not send them to Harness FME servers.
  * `'UNKNOWN'`: the user neither grants nor declines consent for tracking events and impressions. The Suite tracks them in its internal storage, and eventually either sends them or not if the consent status is updated to `'GRANTED'` or `'DECLINED'` respectively. The status can be updated at any time with the `setUserConsent` Suite method.
 
-<Tabs>
-<TabItem value="Java">
+<Tabs groupId="java-kotlin-choice">
+<TabItem value="java" label="Java">
+
 ```java
 // Overwrites the initial consent status of the Suite instance, which is 'GRANTED' by default.
 // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
@@ -1218,8 +1310,10 @@ if (suite.getUserConsent() == UserConsent.DECLINED) {
     Log.i(TAG, "USER CONSENT UNKNOWN");
 }
 ```
+
 </TabItem>
-<TabItem value="Kotlin">
+<TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // Overwrites the initial consent status of the Suite instance, which is 'GRANTED' by default.
 // 'UNKNOWN' status represents that the user has neither granted nor declined consent for tracking data, 
@@ -1244,6 +1338,7 @@ if (suite.getUserConsent() == UserConsent.DECLINED) {
     Log.i(TAG, "USER CONSENT UNKNOWN")
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1262,6 +1357,7 @@ To set the SDK to require pinned certificates for specific hosts, add the `Certi
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 import io.split.android.client.network.CertificatePinningConfiguration;
 import io.split.android.client.SplitClientConfig;
@@ -1290,8 +1386,10 @@ SplitClientConfig config = SplitClientConfig.builder()
     .build();
 
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 import io.split.android.client.network.CertificatePinningConfiguration
 import io.split.android.client.SplitClientConfig
@@ -1320,6 +1418,7 @@ val config = SplitClientConfig.builder()
     .build()
 
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1331,6 +1430,7 @@ You can further configure the RUM agent passing a `SplitSuiteConfiguration` obje
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 // Optionally create feature flagging configuration
 SplitClientConfig splitClientConfig = SplitClientConfig
@@ -1355,8 +1455,10 @@ SplitSuite suite = SplitSuiteBuilder.build(
     splitSuiteConfiguration,
     applicationContext);
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // Optionally create feature flagging configuration
 val splitClientConfig: SplitClientConfig = SplitClientConfig
@@ -1382,5 +1484,6 @@ val suite: SplitSuite = SplitSuiteBuilder.build(
     applicationContext
 )
 ```
+
 </TabItem>
 </Tabs>

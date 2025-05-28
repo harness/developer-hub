@@ -24,15 +24,20 @@ The JDBC connector is used for connecting to your database instance.
 
 #### URL Examples
 
-| Database       | JDBC URL Format                                                                 |
-|----------------|---------------------------------------------------------------------------------|
-| **ORACLE**     | `jdbc:oracle:thin:@//host:port/FREEPDB1`                                        |
-| **POSTGRES**   | `jdbc:postgresql://host:port/dbName?sslmode=disable`                            |
-| **SQLSERVER**  | `jdbc:sqlserver://host:port;trustServerCertificate=true;databaseName=master`    |
-| **MongoAtlasSQL** | `jdbc:mongodb://host:port%s?ssl=true&authSource=admin`                        |
-| **MYSQL**      | `jdbc:mysql://host:port/db`                                                    |
-| **MONGODB**    | `mongodb://host:port/dbName/?authSource=admin`                                 |
-| **GOOGLE SPANNER** | `jdbc:cloudspanner:/projects/{project-id}/instances/{instance-id}/databases/{database-name}?lenient=true` |
+| Database           | JDBC URL Format                                                                                                                  |
+|--------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| **ORACLE**         | `jdbc:oracle:thin:@//{host}:{port}/{servicename}`                                                                                |
+| **POSTGRES**       | `jdbc:postgresql://{host}:{port}/{dbName}?sslmode=disable`                                                                       |
+| **SQLSERVER**      | `jdbc:sqlserver://{host}:{port};trustServerCertificate=true;databaseName={dbName}`                                               |
+| **MongoAtlasSQL**  | `jdbc:mongodb://{host}:{port}/{dbName}?ssl=true&authSource=admin`                                                                |
+| **MYSQL**          | `jdbc:mysql://{host}:{port}/{dbName}`                                                                                            |
+| **MONGODB**        | `mongodb://{host}:{port}/{dbName}/?authSource=admin`                                                                             |
+| **GOOGLE SPANNER** | `jdbc:cloudspanner:/projects/{project-id}/instances/{instance-id}/databases/{database-name}?lenient=true`                        |
+| **MongoDB SSL**    | `mongodb://{host}:{port}/{dbName}/?tls=true&authSource=admin`                                                                    |
+| **POSTGRES SSL**   | `jdbc:postgresql://{host}:{port}/{dbName}?ssl=true`                                                                              |
+| **SQLSERVER SSL**  | `jdbc:sqlserver://{host}:{port};databaseName={dbName};encrypt=true;trustServerCertificate=false;`                                |
+| **MYSQL SSL**      | `jdbc:mysql://{host}:{port}/{dbName}?useSSL=true`                                                                                |
+| **ORACLE SSL**     | `jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCPS)(HOST={host})(PORT={port}))(CONNECT_DATA=(SERVICE_NAME={servicename})))` |
 
 ---
 
@@ -43,7 +48,7 @@ Google Spanner uses a unique JDBC URL format and does not require a password for
 ### Prerequisites for Google Spanner
 
 1. **Authentication**:  
-   - Authentication is done via **Kubernetes Service Account (KSA)** linked to a **Google Service Account (GSA)**.  
+   - **Google Service Account (GSA)** json key 
    - The GSA must have the following roles:  
      - `roles/spanner.databaseAdmin`  
      - `roles/spanner.databaseUser`

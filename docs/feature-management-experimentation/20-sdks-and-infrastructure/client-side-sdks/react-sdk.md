@@ -10,7 +10,7 @@ sidebar_label: React SDK
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide provides detailed information about our React SDK. This library is built on top of our regular [JavaScript SDK](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK) to ease the integration in React applications by providing a set of components and custom hooks based on the React Hooks API, so you can interact with the underneath SDK and work towards any use cases. All of our SDKs are open source. Go to our [React SDK GitHub repository](https://github.com/splitio/react-client) to see the source code.
+This guide provides detailed information about our React SDK. This library is built on top of our regular [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) to ease the integration in React applications by providing a set of components and custom hooks based on the React Hooks API, so you can interact with the underneath SDK and work towards any use cases. All of our SDKs are open source. Go to our [React SDK GitHub repository](https://github.com/splitio/react-client) to see the source code.
 
 :::info[Migrating from v1.x to v2.x]
 Refer to the [migration guide](https://github.com/splitio/react-client/blob/development/MIGRATION-GUIDE.md) for information on upgrading to v2.x.
@@ -26,7 +26,7 @@ Although these components are still working, we recommend migrating to the `Spli
 
 ## Language support
 
-The React SDK requires React 16.8.0 or above, since it uses **React Hooks API** introduced in that version.
+The Harness FME React SDK requires React 16.8.0 or above, since it uses the **React Hooks API** introduced in that version.
 
 The SDK supports all major web browsers. It was built to support ES5 syntax but it depends on native support for ES6 `Promise`, `Map`, and `Set` objects, so these objects need to be **polyfilled** if they are not available in your target browsers, like IE 11.
 
@@ -42,20 +42,27 @@ You can import the SDK into your project using one of the following three method
 
 <Tabs>
 <TabItem value="NPM (recommended)">
+
 ```bash
 npm install --save @splitsoftware/splitio-react
 ```
+
 </TabItem>
 <TabItem value="Yarn">
+
 ```bash
 yarn add @splitsoftware/splitio-react
 ```
+
 </TabItem>
 <TabItem value="CDN bundle">
+
 ```html
 <!-- Don't forget to include React script tags before the SDK. More details at https://reactjs.org/docs/add-react-to-a-website.html#step-2-add-the-script-tags  -->
-<script src="//cdn.split.io/sdk/splitio-react-2.0.1.min.js"></script>
+<script src="//cdn.split.io/sdk/splitio-react-2.2.0.min.js"></script>
+
 ```
+
 </TabItem>
 </Tabs>
 
@@ -88,8 +95,10 @@ const App = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 <TabItem value="JavaScript">
+
 ```javascript
 // The npm package exposes the different components and functions of the library as named exports.
 const { SplitFactoryProvider } = require('@splitsoftware/splitio-react');
@@ -112,8 +121,10 @@ const App = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 // The npm package exposes the different components and functions of the library as named exports.
 import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
@@ -136,6 +147,7 @@ const App: React.ComponentType = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 </Tabs>
 
@@ -183,22 +195,23 @@ Feel free to dive into the declaration files if IntelliSense is not enough!
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ## Using the SDK
 
 ### Get treatments with configurations
 
-When the SDK is instantiated, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the SDK is instantiated, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready, as shown below. We provide the `isReady` boolean prop based on the client that will be used by the component. Internally we listen for the `SDK_READY` event triggered by given SDK factory client to set the value of `isReady`.
 
-After the `isReady` prop is set to true, you can use the SDK. The `useSplitTreatments` hook returns the proper treatments based on the `names` prop value passed to it and the `core.key` value you passed in the config when instantiating the SDK. Then use the `treatments` property to access the treatment values as well as the corresponding [dynamic configurations](https://help.split.io/hc/en-us/articles/360026943552) that you defined in Harness FME. Remember to handle the client returning control as a safeguard.
+After the `isReady` prop is set to true, you can use the SDK. The `useSplitTreatments` hook returns the proper treatments based on the `names` prop value passed to it and the `core.key` value you passed in the config when instantiating the SDK. Then use the `treatments` property to access the treatment values as well as the corresponding [dynamic configurations](/docs/feature-management-experimentation/feature-management/dynamic-configurations) that you defined in Harness FME. Remember to handle the client returning control as a safeguard.
 
 Similarly to the vanilla JS SDK, React SDK supports the ability to evaluate flags based on cached content when using [LOCALSTORAGE](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#configuration) as storage type. In this case, the `isReadyFromCache` prop will change to true almost instantly since access to the cache is synchronous, allowing you to consume flags earlier on components that are critical to your UI. Keep in mind that the data might be stale until `isReady` prop is true. Read more [below](#subscribe-to-events-and-changes).
 
 <Tabs>
 <TabItem value="With useSplitTreatments hook">
+
 ```javascript
 import { useSplitTreatments } from '@splitsoftware/splitio-react';
 import MyComponentV1 from './MyComponentV1';
@@ -229,8 +242,10 @@ function MyComponentToggle (props) {
 
 export default MyComponentToggle;
 ```
+
 </TabItem>
 <TabItem value="With SplitTreatments component (deprecated)">
+
 ```javascript
 import { SplitTreatments } from '@splitsoftware/splitio-react';
 import MyComponentV1 from './MyComponentV1';
@@ -266,6 +281,7 @@ export default class MyComponentToggle extends React.Component {
   }
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -288,6 +304,7 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="Flag sets with useSplitTreatments hook">
+
 ```javascript
 import { useSplitTreatments } from '@splitsoftware/splitio-react';
 import MyComponentV1 from './MyComponentV1';
@@ -317,8 +334,10 @@ function MyComponentToggle (props) {
 
 export default MyComponentToggle;
 ```
+
 </TabItem>
 <TabItem value="Flag sets with SplitTreatments component (deprecated)">
+
 ```javascript
 import { SplitTreatments } from '@splitsoftware/splitio-react';
 import MyComponentV1 from './MyComponentV1';
@@ -352,12 +371,13 @@ export default class MyComponentToggle extends React.Component {
   }
 }
 ```
+
 </TabItem>
 </Tabs>
 
 ### Attribute syntax
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK needs to be passed an attribute map at runtime. In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the underlying `getTreatmentsWithConfig` or `getTreatmentsWithConfigByFlagSets` call, whether you are evaluating using the `names` or `flagSets` property respectively. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account. The SDK supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK needs to be passed an attribute map at runtime. In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the underlying `getTreatmentsWithConfig` or `getTreatmentsWithConfigByFlagSets` call, whether you are evaluating using the `names` or `flagSets` property respectively. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account. The SDK supports five types of attributes: strings, numbers, dates, booleans, and sets. The proper data type and syntax for each are:
 
 * **Strings:** Use type String.
 * **Numbers:** Use type Number.
@@ -394,8 +414,10 @@ const ComponentWithTreatments = () => {
     <LoadingComponent />
 };
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 const attributes: SplitIO.Attributes = {
   // date attributes are handled as `millis since epoch`
@@ -422,6 +444,7 @@ const ComponentWithTreatments = () => {
     <LoadingComponent />
 };
 ```
+
 </TabItem>
 </Tabs>
 
@@ -441,6 +464,7 @@ To use these methods, refer to the example below:
 
 <Tabs>
 <TabItem value="Using the hooks">
+
 ```javascript
 import { SplitFactoryProvider, useSplitClient, useSplitTreatments } from '@splitsoftware/splitio-react';
 
@@ -501,8 +525,11 @@ function MyComponent(props) {
   }
 
 }
-```</TabItem>
+```
+
+</TabItem>
 <TabItem value="Using SplitClient component (deprecated)">
+
 ```javascript
 import { SplitFactoryProvider, SplitClient, SplitTreatments } from '@splitsoftware/splitio-react';
 
@@ -572,6 +599,52 @@ class MyComponent extends React.Component {
   }
 }
 ```
+
+</TabItem>
+</Tabs>
+
+### Append properties to impressions
+
+[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time an evaluation is done using the `useSplitTreatments` hook. These impressions are periodically sent back to Split's servers for feature monitoring and experimentation.
+
+You can append properties to an impression by passing an object of key-value pairs to the `useSplitTreatments` hook. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
+
+Three types of properties are supported: strings, numbers, and booleans.
+
+<Tabs groupId="java-type-script">
+<TabItem value="JavaScript">
+
+```javascript
+const properties = { 
+  package: "premium", 
+  admin: true, 
+  discount: 50 
+};
+
+const MyComponent = () => {
+  const { treatments, isReady, ... } = useSplitTreatments({ names: [featureName], properties: properties });
+
+  return (...);
+};
+```
+
+</TabItem>
+<TabItem value="TypeScript">
+
+```typescript
+const properties: SplitIO.Properties = { 
+  package: "premium", 
+  admin: true, 
+  discount: 50 
+};
+
+const MyComponent = () => {
+  const { treatments, isReady, ... } = useSplitTreatments({ names: [featureName], properties: properties });
+
+  return (...);
+};
+```
+
 </TabItem>
 </Tabs>
 
@@ -581,12 +654,12 @@ If the `SplitFactoryProvider` component is created with a `config` prop, then th
 
 ## Track
 
-Use the `client.track` method to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Tracking events through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your features on your users' actions and metrics.
+Use the `useTrack` hook to record any actions your customers perform. Each action is known as an `event` and corresponds to an `event type`. Tracking events through one of our SDKs or via the API is the first step to getting experimentation data into Harness FME and allows you to measure the impact of your features on your users' actions and metrics.
 
-[Learn more](https://help.split.io/hc/en-us/articles/360020585772) about using track events in feature flags.
+Learn more about using [tracking events](https://help.split.io/hc/en-us/articles/360020585772) in Harness FME.
 
 To track events, you must follow two steps:
-1. Retrieve the `client.track` method, which is available through the `useTrack` hook or the `useSplitClient` hook.
+1. Retrieve the client's `track` method, which is available through the `useTrack` hook or the `useSplitClient` hook.
 2. Execute the `track` method call, passing in the traffic type and event info as arguments.
 
 In the examples below, you can see that tracking events can take up to four arguments. The proper data type and syntax for each are:
@@ -606,10 +679,11 @@ In case a bad input is provided, you can read more about our [SDK's expected beh
 
 Remember that:
 - You must follow [React Hook rules](https://react.dev/reference/rules/rules-of-hooks) when using the `useTrack` or `useSplitClient` hooks, i.e., they must be invoked at the top level of your component or in custom hooks.
-- The `client.track` method doesn't require the client to be ready, but it implies a side effect. Therefore, it should be invoked [outside the component render phase](https://react.dev/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render), such as in a `useEffect` hook or an event handler.
+- The client's `track` method doesn't require the client to be ready, but it implies a side effect. Therefore, it should be invoked [outside the component render phase](https://react.dev/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render), such as in a `useEffect` hook or an event handler.
 
 <Tabs>
 <TabItem value="useTrack hook">
+
 ```javascript
 import { useTrack } from '@splitsoftware/splitio-react';
 
@@ -639,9 +713,11 @@ function MyComponent() {
   return <button onClick={() => track('user', 'login_click')}>Login</button>
 }
 ```
+
 </TabItem>
 <TabItem value="useSplitClient hook">
-```javascript
+
+```typescript
 import { useTrack } from '@splitsoftware/splitio-react';
 
 function MyComponent() {
@@ -667,6 +743,7 @@ function MyComponent() {
   return <button onClick={() => client.track('user', 'login_click')}>Login</button>
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -680,7 +757,7 @@ For testing, a developer can put code behind feature flags on their development 
 
 When instantiating the SDK in localhost mode, your `authorizationKey` is `"localhost"`. Define the feature flags you want to use in the `features` object map. All `useSplitTreatments` calls for a feature flag return the treatment (and config, if defined) that you have defined in the map. You can then change the treatment as necessary for your testing. If you want to update a treatment or a config, or to add or remove feature flags from the mock cache, update the properties of the `features` object you've provided. The SDK simulates polling for changes and updates from the `features` object. Do not assign a new object to the `features` property because the SDK has a reference to the original object and will not detect the change.
 
-Any feature that is not provided in the `features` map returns the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK is asked to evaluate them. Use the following additional configuration parameters when instantiating the SDK in `localhost` mode:
+Any feature that is not provided in the `features` map returns the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them. Use the following additional configuration parameters when instantiating the SDK in `localhost` mode:
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- | 
@@ -693,6 +770,7 @@ If you define just a string as the value for a feature flag name, the config ret
 
 <Tabs>
 <TabItem value="Jest test with React Testing Library">
+
 ```javascript
 import React from "react";
 // React testing library: https://www.npmjs.com/package/@testing-library/react
@@ -741,8 +819,10 @@ describe('MyApp', () => {
   });
 });
 ```
+
 </TabItem>
 <TabItem value="Jest test with Enzyme">
+
 ```javascript
 import React from 'react';
 // Enzyme testing utility: https://www.npmjs.com/package/enzyme
@@ -793,8 +873,10 @@ describe('MyApp', () => {
   });
 });
 ```
+
 </TabItem>
 <TabItem value="Jest test with React Test Renderer">
+
 ```javascript
 import React from 'react';
 // React Test Renderer: https://reactjs.org/docs/test-renderer.html
@@ -845,6 +927,7 @@ describe('MyApp', () => {
   });
 });
 ```
+
 </TabItem>
 </Tabs> 
 
@@ -866,8 +949,10 @@ if (isReady) {
   const flagNames = manager.names();
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 import { useSplitManager } from '@splitsoftware/splitio-react';
 
@@ -879,6 +964,7 @@ if (isReady) {
   const flagNames: SplitIO.SplitNames = manager.names();
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -930,8 +1016,10 @@ const App = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
 
@@ -959,6 +1047,7 @@ const App: React.ComponentType = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 </Tabs>
 
@@ -988,6 +1077,7 @@ See some examples below:
 
 <Tabs>
 <TabItem value="Using the hooks">
+
 ```javascript
 import { SplitFactoryProvider, useSplitClient } from '@splitsoftware/splitio-react';
 
@@ -1032,8 +1122,11 @@ function MyComponentWithFlags(props) {
   }
 
 }
-```</TabItem>
+```
+
+</TabItem>
 <TabItem value="Using SplitClient component (deprecated)">
+
 ```javascript
 import { SplitFactoryProvider, SplitClient } from '@splitsoftware/splitio-react';
 
@@ -1088,6 +1181,7 @@ class MyComponentWithFlags extends React.Component {
   }
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1110,6 +1204,7 @@ While you could potentially access the JavaScript SDK factory client from the Sp
 * For `SDK_READY_FROM_CACHE`, you can set the `updateOnSdkReadyFromCache` parameter. 
 * For `SDK_READY_TIMED_OUT`, you can set the `updateOnSdkTimedout` parameter.
 * For `SDK_UPDATE`, you can set the `updateOnSdkUpdate` parameter.
+
 The default value for all these parameters is `true`.
 
 The `useSplitClient` and `useSplitTreatments` hooks return the SDK factory client and treatment evaluations respectively, together with a set of **status properties** to conditionally render the component.
@@ -1126,6 +1221,7 @@ Find an example below:
 
 <Tabs>
 <TabItem value="Hooks">
+
 ```javascript
 function MyApp() {
   // Evaluates feature flags for the main client bound to the key passed in the factory config.
@@ -1158,8 +1254,10 @@ const App = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 <TabItem value="Components & HOCs (deprecated)">
+
 ```javascript
 function MyApp({ isReady, isReadyFromCache, isTimedout, hasTimedout, lastUpdate, factory, client }) {
   return (
@@ -1199,8 +1297,22 @@ const App = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 </Tabs>
+
+Default values for `updateOnSdk<Event>` options can be overwritten at the `SplitFactoryProvider` component level, and will apply to all child components.
+
+```javascript title="Hooks"
+const App = () => (
+  <SplitFactoryProvider 
+    config={sdkConfig} 
+    updateOnSdkUpdate={false} // overwrite default value for `updateOnSdkUpdate` option to `false` for all child components 
+  >
+    <MyApp />
+  </SplitFactoryProvider>
+);
+```
 
 You can also access the `SplitContext` directly in your components for checking the readiness state of the client. Via the React [`useContext`](https://react.dev/reference/react/useContext) function, you can access the value of the `SplitContext` as shown below:
 
@@ -1218,8 +1330,10 @@ const MyComponent = () => {
     <Loading />
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```typescript
 import { useContext } from 'react';
 import { SplitContext, ISplitContextValues } from "@splitsoftware/splitio-react";
@@ -1231,6 +1345,7 @@ const MyComponent: React.ComponentType = () => {
     <Loading />
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1238,6 +1353,7 @@ The `SplitContext` value object has the following structure:
 
 <Tabs>
 <TabItem value="JavaScript/TypeScript">
+
 ```typescript
 interface SplitContextValue {
   factory: SplitIO.IBrowserSDK,
@@ -1250,6 +1366,7 @@ interface SplitContextValue {
   lastUpdate: number,
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1269,6 +1386,7 @@ Usage for SSR is shown in the following code examples:
 
 <Tabs>
 <TabItem value="Vanilla SSR">
+
 ```javascript
 // App.jsx
 const myConfig = { ... }; // SDK configuration object
@@ -1304,8 +1422,10 @@ import { App } from './App'
 const domNode = document.getElementById('root');
 const root = hydrateRoot(domNode, <App />);
 ```
+
 </TabItem>
 <TabItem value="Next.js using Pages Router">
+
 ```javascript
 // pages/index.jsx
 export const getServerSideProps = (async () => {
@@ -1322,8 +1442,10 @@ export default function Page(props) {
   );
 };
 ```
+
 </TabItem>
 <TabItem value="Next.js using App Router (v13+)">
+
 ```javascript
 // SDK components are traditional "Client" components, so you need to use the 'use client' directive to nest with Server components 
 // https://nextjs.org/docs/app/building-your-application/rendering/client-components
@@ -1385,6 +1507,7 @@ export const MyComponentWithFeatureFlags = (props) => {
     <Loading {...props} />
 };
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1394,6 +1517,7 @@ The React SDK can be used in React Native applications by combining it with the 
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio-react-native';
 import { SplitFactoryProvider } from '@splitsoftware/splitio-react';
@@ -1413,6 +1537,7 @@ const App = () => (
   </SplitFactoryProvider>
 );
 ```
+
 </TabItem>
 </Tabs>
 

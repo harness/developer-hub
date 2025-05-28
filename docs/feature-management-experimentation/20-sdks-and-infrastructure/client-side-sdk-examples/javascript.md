@@ -10,4 +10,4 @@ sidebar_position: 15
 
 If it’s a JavaScript framework, Split almost certainly supports it. Whether it’s the hot new library out of the world’s largest social network or a project you’ve spun up at home, Split’s JavaScript SDK should work.
 
-Check out our [Languages](https://www.split.io/product/languages/) section for a high-level look at our JavaScript SDK, or dive into Split’s [JavaScript documentation](https://docs.split.io/docs/javascript-sdk-overview) for more. In particular, at the bottom of that article you will find some [example apps](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK#example-apps).
+Check out our [Languages](https://www.split.io/product/languages/) section for a high-level look at our JavaScript SDK, or dive into Split’s [JavaScript documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) for more. In particular, at the bottom of that article you will find some [example apps](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#example-apps).

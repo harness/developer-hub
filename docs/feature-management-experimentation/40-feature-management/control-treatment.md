@@ -6,7 +6,7 @@ sidebar_position: 13
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020528072-Control-treatment <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020528072-Control-treatment </button>
 </p>
 
 The **control** treatment is a reserved treatment in FME. You cannot create a treatment named **control**. The **control** treatment is returned by the SDK in the following scenarios:
@@ -25,7 +25,7 @@ The **control** treatment is a reserved treatment in FME. You cannot create a tr
 * **The SDK evaluated an unsupported targeting rule.** FME SDKs are distributed as versioned packages to be consumed by applications. As new targeting rules are added to feature flags in Harness FME, the FME SDKs are also updated to support the new targeting rules. If an SDK encounters a new targeting rule that it cannot evaluate, it returns the **control** treatment for that feature flag evaluation. In this case, a special FME feature flag evaluation impression is generated with a targeting rule label of "targeting rule type unsupported by sdk". This impression is sent to Harness cloud and can be seen in Live tail in Data hub.
 
 :::info[SDK upgrade may be needed for SemVer rules support]
-SemVer (Semantic Version) targeting rules are supported by FME SDKs rolled out in May 2024 or later. Refer to this [FAQ doc](https://help.split.io/hc/en-us/articles/27337626547341-Does-my-SDK-version-support-SemVer) to see minimum FME SDK versions for SemVer support.
+SemVer (Semantic Version) targeting rules are supported by FME SDKs rolled out in May 2024 or later. Refer to this [FAQ doc](/docs/feature-management-experimentation/feature-management/faqs/does-my-sdk-version-support-semver) to see minimum FME SDK versions for SemVer support.
 :::
 
 :::tip[Tip]

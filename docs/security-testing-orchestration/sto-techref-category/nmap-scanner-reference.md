@@ -5,7 +5,7 @@ sidebar_label: Nmap (Network Mapper) step configuration
 sidebar_position: 270
 ---
 
-<DocsTag   text="Instance scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#instance-scanners"  />
+<DocsTag   text="DAST scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/whats-supported/scanners#dynamic-application-security-testing---dast-scanners"/>
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
@@ -19,7 +19,7 @@ You can scan your application instances and ingest results from [Nmap](https://n
 - STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
 
@@ -34,11 +34,11 @@ The recommended workflow is to add an Nmap step to a Security or Build stage and
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanMode from './shared/step-palette/scan/type.md';
 
-import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeOrch from './shared/step-palette/scan/mode/orchestration.md';
 
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeIngest from './shared/step-palette/scan/mode/ingestion.md';
 
 
 
@@ -49,7 +49,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from './shared/step-palette/scan/config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -86,20 +86,20 @@ Accepted values(s):
 
 #### Type
 
-import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
+import StoSettingScanTypeInst     from './shared/step-palette/target/type/app.md';
 
 <StoSettingScanTypeInst />
 
 
 #### Target and variant detection 
 
-import StoSettingScanTypeAutodetectApp from './shared/step_palette/target/auto-detect/_app-instance.md';
+import StoSettingScanTypeAutodetectApp from './shared/step-palette/target/auto-detect/app-instance.md';
 
 <StoSettingScanTypeAutodetectApp/>
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from './shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
@@ -107,7 +107,7 @@ import StoSettingTargetName from './shared/step_palette/target/_name.md';
 #### Variant
 
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
@@ -120,7 +120,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 #### Domain
 
 
-import StoSettingInstanceDomain from './shared/step_palette/instance/_domain.md';
+import StoSettingInstanceDomain from './shared/step-palette/instance/domain.md';
 
 
 <StoSettingInstanceDomain />
@@ -131,7 +131,7 @@ import StoSettingInstanceDomain from './shared/step_palette/instance/_domain.md'
 #### Protocol
 
 
-import StoSettingInstanceProtocol from './shared/step_palette/instance/_protocol.md';
+import StoSettingInstanceProtocol from './shared/step-palette/instance/protocol.md';
 
 
 
@@ -143,7 +143,7 @@ import StoSettingInstanceProtocol from './shared/step_palette/instance/_protocol
 #### Port
 
 
-import StoSettingInstancePort from './shared/step_palette/instance/_port.md';
+import StoSettingInstancePort from './shared/step-palette/instance/port.md';
 
 
 
@@ -155,7 +155,7 @@ import StoSettingInstancePort from './shared/step_palette/instance/_port.md';
 #### Path
 
 
-import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
+import StoSettingInstancePath from './shared/step-palette/instance/path.md';
 
 
 
@@ -169,7 +169,7 @@ import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
 #### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 
 
@@ -180,7 +180,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 ### Log Level
 
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 
 
@@ -193,35 +193,35 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 Use this field to run the [Nmap scanner](https://nmap.org/book/man-briefoptions.html) with specific command-line arguments. For example, the following flag includes IPv6 tests: `-6`.
 
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />
 
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 
 <StoSettingFailOnSeverity />
 
 ### Settings
 
-import StoSettingSettings from './shared/step_palette/all/_settings.md';
+import StoSettingSettings from './shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from './shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
@@ -237,7 +237,7 @@ You can set up Nmap scans using a Custom Scan step, but this is a legacy functio
 #### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -269,7 +269,7 @@ import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 #### Ingestion file 
 
 
-import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
+import StoLegacyIngest from './shared/custom-scan/ingestion-file.md'; 
 
 
 <StoLegacyIngest />

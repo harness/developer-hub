@@ -18,14 +18,18 @@ This guide provides detailed information about our Ruby SDK. All of our SDKs are
 
 <Tabs>
 <TabItem value="Ruby">
+
 ```ruby
 gem install splitclient-rb -v '~> 8.5.0'
 ```
+
 </TabItem>
 <TabItem value="JRuby">
+
 ```ruby
 gem install splitclient-rb -v '~> 8.5.0'
 ```
+
 </TabItem>
 </Tabs>
 
@@ -36,13 +40,13 @@ Since version 2.0.0 of the split-synchronizer, we use a more efficient scheme to
 
 ### 2. Instantiate the SDK and create a new SDK factory client
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block it until the SDK is ready. You can do this by using the `block_until_ready` method of the SDK factory client (or Manager) as part of the instantiation process of the SDK as shown below. Do this as a part of the startup sequence of your application.
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ```ruby title="Ruby" 
 require 'splitclient-rb'
@@ -130,7 +134,7 @@ end
 By doing the above, the SDK recreates the threads for each new worker and prevents the master process (that doesn't handle requests) from needlessly querying the service.
 
 :::danger[Server spawning method]
-If you are running NGINX with `thread_spawn_method = 'smart'`, use our Redis integration with the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer) or contact [support@split.io](mailto:support@split.io) for alternatives to run FME.
+If you are running NGINX with `thread_spawn_method = 'smart'`, use our Redis integration with the [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) or contact [support@split.io](mailto:support@split.io) for alternatives to run FME.
 :::
 
 ## Using the SDK
@@ -139,7 +143,7 @@ If you are running NGINX with `thread_spawn_method = 'smart'`, use our Redis int
 
 After you instantiate the SDK factory client, you can start using the `get_Treatment` method of the SDK factory client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `KEY` attribute that corresponds to the end user that you want to serve the feature to.
 
-From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 ```ruby title="Ruby" 
 ## The key here represents the ID of the user, account, etc. you're trying to evaluate a treatment for
@@ -156,7 +160,7 @@ end
 
 ### Attribute syntax
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `get_treatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `get_treatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `get_treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -198,22 +202,28 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="get_treatments">
+
 ```ruby
 attributes = {}
 split_client.get_treatments('key', ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'], attributes)
 ```
+
 </TabItem>
 <TabItem value="getTreatments_by_flag_set">
+
 ```ruby
 attributes = {}
 treatments = split.get_treatments_by_flag_set('key', 'backend', attributes)
 ```
+
 </TabItem>
 <TabItem value="getTreatments_by_flag_sets">
+
 ```ruby
 attributes = {}
 treatments = split.get_treatments_by_flag_sets('key', ['backend', 'server_side'], attributes)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -221,7 +231,7 @@ You can also use the [Split Manager](#manager) if you want to get all of your tr
 
 ### Get Treatments with Configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `get_treatment_with_config` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `get_treatment_with_config` method.
 
 This method will return an object containing the treatment and associated configuration.
 
@@ -241,6 +251,7 @@ These methods take the exact same arguments as the [get_treatments](#multiple-ev
 
 <Tabs>
 <TabItem value="get_treatments_with_config">
+
 ```ruby
 
 feature_flag_names = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2']
@@ -252,8 +263,10 @@ feature_flag_results = client.get_treatments_with_config('KEY', feature_flag_nam
  ##   'FEATURE_FLAG_NAME_2': ('v2', '{"copy": "better copy"}')
  ## }
 ```
+
 </TabItem>
 <TabItem value="get_treatments_with_config_by_flag_set">
+
 ```ruby
 attributes = {}
 result = split.get_treatments_with_config_by_flag_set('key', 'backend', attributes)
@@ -263,8 +276,10 @@ result.each do |feature_flag, treatment_with_config|
  puts "Feature: #{feature_flag}, Treatment: #{treatment}, Config: #{configs}"
 end
 ```
+
 </TabItem>
 <TabItem value="get_treatments_with_config_by_flag_sets">
+
 ```ruby
 attributes = {}
 result = split.get_treatments_with_config_by_flag_sets('key', ['backend', 'server_side'], attributes)
@@ -274,6 +289,7 @@ result.each do |feature_flag, treatment_with_config|
  puts "Feature: #{feature_flag}, Treatment: #{treatment}, Config: #{configs}"
 end
 ```
+
 </TabItem>
 </Tabs>
 
@@ -398,7 +414,7 @@ To use the Ruby SDK with Redis, set up the Split Synchronizer and instantiate th
 
 #### Split Synchronizer
 
-Follow the steps in our [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) document to get everything set to sync data to your Redis cache. After you do that, you can set up the SDK in consumer mode.
+Follow the steps in our [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) document to get everything set to sync data to your Redis cache. After you do that, you can set up the SDK in consumer mode.
 
 #### Consumer Mode
 
@@ -481,7 +497,7 @@ In the example given, a call to `get_treatment` passing `john_doe` as the key re
     config: {'desc': 'this applies only to ON and only for john_doe and jane_doe. The rest will receive OFF'}
 ```
 
-Any feature that is not provided in the `split_file` markup map returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK is asked to evaluate them.
+Any feature that is not provided in the `split_file` markup map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
 
 By default, changes in the file are not automatically picked up without restarting the client. To have the client automatically pick up changes to the file, specify `reload_rate` as the interval in seconds at which changes are picked up. Here is an example of specifying both `split_file` and `reload_rate`.
 

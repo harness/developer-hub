@@ -272,7 +272,7 @@ You can use [**Single Selection Mode**](#allow-multi-selection-and-single-select
 
 When writing pipelines in YAML, you can define Single Selection in allowed values by appending the `.selectOneFrom()` method to `<+input>`. For example: `<+input>.selectOneFrom(a,b,c)`.
 
-:::important note
+:::info note
 When using secrets as runtime inputs and configuring allowed values, the UI will not display an option for single selection. By default, only one value can be selected for a secret during runtime. 
 :::
 
@@ -290,7 +290,7 @@ You must have a role with **Pipeline Execute** [permission](/docs/platform/role-
 
 ### Support for Expressions in Allowed Values of Runtime Inputs
 
-:::info note
+:::note
 Currently, this feature is behind FF `PIE_RESOLVE_EXECUTION_INPUT_EXPRESSION`. Please Contact [Harness Support](mailto:support@harness.io).
 :::
 
@@ -388,7 +388,7 @@ The expression `<+pipeline.stages.custom_1.spec.execution.steps.ShellScript_1.ou
 The final expression resolved to `<+input>.executionInput().allowedValues(123,v1,v2,v3)`, which is essentially a list of values.
 
 
-:::note
+:::info note
 - **Resolution of Expressions in the Execution Input Tab**: In the Execution Input tab, expressions allow dynamic values from earlier stages to be used in subsequent stages, providing runtime options based on prior outputs.
 
 - **Handling of Comma-Separated Values**: If resolved values contain commas, they will automatically convert into a list. If multiple expressions are present, they will be concatenated by default, forming a combined list.
@@ -432,8 +432,10 @@ You can use mid-run input along with [allowed values](#allowed-values) and [defa
 
 ### Upload files as runtime input
 
-:::info note
-Currently, this feature is behind the feature flag `PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature
+:::note
+This feature is behind the feature flag `PIPE_ENABLE_FILE_UPLOAD_AS_RUNTIME_INPUT`. Please contact [Harness support](mailto:support@harness.io) to enable this feature.
+
+This feature is available only on **Harness SaaS** and is not supported on Self-Managed Platform (SMP).
 :::
 
 Harness allows you to upload files as a runtime input during pipeline execution using the `File Upload step` in a custom stage.
@@ -450,7 +452,7 @@ Click the button to `Select files`.
 
 Once files are selected, click `Upload` to confirm the selection. Uploaded files will then be displayed, and `Submit` can be clicked to complete the process.
 
-:::note
+:::info note
 Users with `pipeline execution` RBAC permissions can upload and download files.
 :::
 
@@ -487,7 +489,7 @@ accountId/runtimeFileInputData/pipelineExecutionId/nodeExecutionId/fileName.exte
 
 You can extract the file path name from the step execution logs or directly via Output Variable.
 
-:::note
+:::info note
 **Important Notes for Uploading Files as Runtime Input:**
 
 1. The total combined file size must not exceed 100 MB.

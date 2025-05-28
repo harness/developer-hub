@@ -5,8 +5,12 @@ description: ""
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/16469873148173-Vercel <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/16469873148173-Vercel </button>
 </p>
+
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
 
 [Vercel](https://vercel.com/) is an advanced hosting and deployment platform for modern web applications.
 
@@ -16,9 +20,7 @@ Developers can incorporate serverless code that runs in the Edge Runtime on the 
 
 The following diagram shows the architecture of the Split integration for Vercel.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/17938432737037" alt="vercel_deployment_diagram.png" />
-</p>
+![Vercel Split integration architecture diagram](./static/vercel-architecture-diagram.png)
 
 The Split Integration for Vercel writes the Split rollout plan (the set of feature flags and segment definitions) to the Edge Config instance of your application, and keeps this data synchronized. The Edge Config wrapper is an adapter that connects the Split SDK with the Edge Config, allowing the Split SDK to rapidly evaluate feature flags. The Split SDK sends tracked events and impressions data to Split Cloud.
 
@@ -43,9 +45,13 @@ To set up the Split SDK in the code of your Vercel project, follow the steps bel
 
 1. Install the required packages by running the `npm install` command.
 
+<ul>
+
 ```bash
 npm install @splitsoftware/splitio-browserjs @splitsoftware/vercel-integration-utils @vercel/edge-config
 ```
+
+</ul>
 
 2. Instantiate the SDK within your Vercel Edge Function or Middleware. The Split SDK client must run in _partial consumer_ mode and be initialized with the Edge Config wrapper. See our [example](https://github.com/splitio/vercel-integration-utils/tree/main/example/pages/api/get-treatment.js) on GitHub. Note that the `core.initializationKey` passed to the `SplitFactory` constructor is your client-side API key for your Split environment. (In the [Split Management Console](https://app.split.io), in your Admin Settings, click on API keys and select the SDK API Keys tab. Find the keys for your Split project and environment, and make sure you choose a client-side API key.)
 

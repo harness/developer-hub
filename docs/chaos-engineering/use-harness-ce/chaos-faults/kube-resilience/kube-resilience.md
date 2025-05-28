@@ -4,6 +4,7 @@ title: Chaos faults for Kube resilience
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/kube-resilience
 - /docs/chaos-engineering/chaos-faults/kube-resilience
+- /docs/chaos-engineering/technical-reference/chaos-faults/security-chaos/kube-security-cis/
 ---
 
 ## Introduction

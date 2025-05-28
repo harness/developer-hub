@@ -5,7 +5,7 @@ sidebar_position: 1
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/17231291207309-Best-practices-for-integrating-Split-feature-flags-into-a-serverless-environment </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/17231291207309-Best-practices-for-integrating-Split-feature-flags-into-a-serverless-environment </button>
 </p>
 
 In serverless environments, data persistence is best handled by externalizing state. This avoids the performance hit of "cold starts" where processes have to load and cache data before they can perform. This is the case with feature flagging SDKs as well.
@@ -29,15 +29,15 @@ Some advantages of this architecture include:
 
 Some of the main providers for serverless architecture include, Amazon: [AWS Lambda](https://aws.amazon.com/lambda/); Google: [Cloud Functions](https://cloud.google.com/functions/); and Microsoft: [Azure Functions](https://azure.microsoft.com/en-us/services/functions/). Regardless of which provider you may choose, you will still reap the benefits of feature flagging without real servers.
 
-In this blog post, we’ll focus on AWS lambda with functions written in JavaScript running on [Node.js](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK). Additionally we’ll highlight one approach to interacting with FME feature flags on a serverless application. It’s worth noting that there are several ways in which one can interact with FME on a serverless application, but we will highlight just one of them in this post.
+In this blog post, we’ll focus on AWS lambda with functions written in JavaScript running on [Node.js](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk). Additionally we’ll highlight one approach to interacting with FME feature flags on a serverless application. It’s worth noting that there are several ways in which one can interact with FME on a serverless application, but we will highlight just one of them in this post.
 
 ### Externalizing state
 
 If we are using Lambda functions in Amazon AWS, the best approach would be to use ElastiCache (Redis flavor) as an in-memory external data store, where we can store our feature rules that will be used by the FME SDKs running on Lambda functions to generate the feature flags.
 
-One way to achieve this is to set up the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer), a background service created to synchronize FME information for multiple SDKs onto an external cache, Redis. To learn more about Split Synchronizer, check out our recent blog post.
+One way to achieve this is to set up the [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer), a background service created to synchronize FME information for multiple SDKs onto an external cache, Redis. To learn more about Split Synchronizer, check out our recent blog post.
 
-On the other hand, the FME Node.js SDK has a [built-in Redis integration](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK#state-sharing-redis-integration) that can be used to communicate with a Redis ElastiCache cluster. The diagram below illustrates the set up:
+On the other hand, the FME Node.js SDK has a [built-in Redis integration](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#state-sharing-with-redis) that can be used to communicate with a Redis ElastiCache cluster. The diagram below illustrates the set up:
 
 ![](https://www.split.io/wp-content/uploads/split-redis-elasticache-architecture.jpg)
 Redis holds FME definitions which are kept in sync by the Split Synchronizer and used by lambda functions​
@@ -50,7 +50,7 @@ Start by going to the [ElastiCache console](https://console.aws.amazon.com/elast
 Selecting Redis as the ElastiCache engine
 
 ### Step 2: Run Split Synchronizer as a Docker Container Using ECS
-The next step would be to deploy the Split Synchronizer on ECS (in [synchronizer mode](https://help.split.io/hc/en-us/articles/360019686092-Split-synchronizer)) using the existing [Split Synchronizer Docker image](https://hub.docker.com/r/splitsoftware/split-synchronizer/). Refer to this guide on how to [deploy docker containers](https://aws.amazon.com/getting-started/tutorials/deploy-docker-containers/).
+The next step would be to deploy the Split Synchronizer on ECS (in [synchronizer mode](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer)) using the existing [Split Synchronizer Docker image](https://hub.docker.com/r/splitsoftware/split-synchronizer/). Refer to this guide on how to [deploy docker containers](https://aws.amazon.com/getting-started/tutorials/deploy-docker-containers/).
 
 Now from the [EC2 Container Service (ECS) console](https://console.aws.amazon.com/ecs/) create an ECS cluster within the same VPC as before. As a next step create the task definition that will be used on the service by going to the Task Definitions page. This is where docker image repository will be specified, including any environment variables that will be required.
 
@@ -89,7 +89,7 @@ Step-by-step of an example function:
 
 1. Go to the working directory of the project and install the `@splitsoftware/splitio` package.
 2. Create an `index.js` file. Require the `@splitsoftware/splitio` package there.
-3. Instantiate the SDK client on [consumer mode](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK#state-sharing-redis-integration) making sure it points to the correct Redis cluster (we’ll use an env variable for this in the next step). Don’t set a prefix for storage configurations unless same prefix was used for the Synchronizer.
+3. Instantiate the SDK client on [consumer mode](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#state-sharing-with-redis) making sure it points to the correct Redis cluster (we’ll use an env variable for this in the next step). Don’t set a prefix for storage configurations unless same prefix was used for the Synchronizer.
 4. Write whatever code is required but export the function as `handler`.
 
 One important thing to note — as async storage is used, async calls to the API will be received.

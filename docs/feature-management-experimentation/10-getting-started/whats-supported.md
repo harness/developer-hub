@@ -19,15 +19,15 @@ The following table lists the server-side FME SDKs that Harness supports.
 
 | SDK | Documentation |
 | ---- | --- |
-| [Go](https://github.com/splitio/go-client) | [Go SDK reference](https://help.split.io/hc/en-us/articles/360020093652-Go-SDK) |
-| [Elixir Thin Client](https://github.com/splitio/elixir-thin-client) | [Elixir Thin Client SDK reference](https://help.split.io/hc/en-us/articles/26988707417869-Elixir-Thin-Client-SDK) |
-| [Java](https://github.com/splitio/java-client) | [Java SDK reference](https://help.split.io/hc/en-us/articles/360020405151-Java-SDK) |
-| [.NET](https://github.com/splitio/dotnet-client) | [.NET SDK Reference](https://help.split.io/hc/en-us/articles/360020240172--NET-SDK)                   |
-| [Node.js](https://github.com/splitio/javascript-client) | [Node.js SDK Reference](https://help.split.io/hc/en-us/articles/360020564931-Node-js-SDK) |
-| [PHP](https://github.com/splitio/php-client) | [PHP SDK reference](https://help.split.io/hc/en-us/articles/360020350372-PHP-SDK) |
-| [PHP Thin Client](https://github.com/splitio/php-thin-client) | [PHP Thin Client SDK reference](https://help.split.io/hc/en-us/articles/18305128673933-PHP-Thin-Client-SDK) |
-| [Python](https://github.com/splitio/python-client) | [Python SDK reference](https://help.split.io/hc/en-us/articles/360020359652-Python-SDK) |
-| [Ruby](https://github.com/splitio/ruby-client) | [Ruby SDK reference](https://help.split.io/hc/en-us/articles/360020673251-Ruby-SDK) |
+| [Go](https://github.com/splitio/go-client) | [Go SDK reference](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk) |
+| [Elixir Thin Client](https://github.com/splitio/elixir-thin-client) | [Elixir Thin Client SDK reference](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/elixir-thin-client-sdk) |
+| [Java](https://github.com/splitio/java-client) | [Java SDK reference](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk) |
+| [.NET](https://github.com/splitio/dotnet-client) | [.NET SDK Reference](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk) |
+| [Node.js](https://github.com/splitio/javascript-client) | [Node.js SDK Reference](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk) |
+| [PHP](https://github.com/splitio/php-client) | [PHP SDK reference](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-sdk) |
+| [PHP Thin Client](https://github.com/splitio/php-thin-client) | [PHP Thin Client SDK reference](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-thin-client-sdk) |
+| [Python](https://github.com/splitio/python-client) | [Python SDK reference](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk) |
+| [Ruby](https://github.com/splitio/ruby-client) | [Ruby SDK reference](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk) |
 
 ## Supported client-side SDKs
 
@@ -35,15 +35,15 @@ The following table lists the client-side FME SDKs that Harness supports.
 
 | SDK | Documentation |
 | ---- | --- |
-| [Android](https://github.com/splitio/android-client) | [Android SDK reference](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK) |
-| [Angular utilities](https://github.com/splitio/angular-sdk-plugin) | [Angular utilities reference](https://help.split.io/hc/en-us/articles/6495326064397-Angular-utilities) |
-| [JavaScript Browser](https://github.com/splitio/javascript-browser-client) | [JavaScript Browser SDK Reference](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK) |
-| [Flutter plugin](https://github.com/splitio/flutter-sdk-plugin) | [Flutter plugin Reference](https://help.split.io/hc/en-us/articles/8096158017165-Flutter-plugin) |
-| [iOS](https://github.com/splitio/ios-client) | [iOS SDK reference](https://help.split.io/hc/en-us/articles/360020401491-iOS-SDK) |
-| [Javascript](https://github.com/splitio/javascript-client) | [Javascript SDK reference](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK) |
-| [React](https://github.com/splitio/react-client) | [React SDK reference](hhttps://help.split.io/hc/en-us/articles/360038825091-React-SDK) |
-| [React Native](https://github.com/splitio/react-native-client) | [React Native SDK reference](https://help.split.io/hc/en-us/articles/4406066357901-React-Native-SDK) |
-| [Redux](https://github.com/splitio/redux-client) | [Redux SDK reference](https://help.split.io/hc/en-us/articles/360038851551-Redux-SDK) |
+| [Android](https://github.com/splitio/android-client) | [Android SDK reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk) |
+| [Angular utilities](https://github.com/splitio/angular-sdk-plugin) | [Angular utilities reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/angular-utilities) |
+| [JavaScript Browser](https://github.com/splitio/javascript-browser-client) | [JavaScript Browser SDK Reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk) |
+| [Flutter plugin](https://github.com/splitio/flutter-sdk-plugin) | [Flutter plugin Reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin) |
+| [iOS](https://github.com/splitio/ios-client) | [iOS SDK reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk) |
+| [Javascript](https://github.com/splitio/javascript-client) | [Javascript SDK reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) |
+| [React](https://github.com/splitio/react-client) | [React SDK reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk) |
+| [React Native](https://github.com/splitio/react-native-client) | [React Native SDK reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-native-sdk) |
+| [Redux](https://github.com/splitio/redux-client) | [Redux SDK reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/redux-sdk) |
 
 ## Supported RUM Agents and SDK Suites
 
@@ -51,23 +51,23 @@ RUM Agents collect Real User Monitoring events and send these events to Harness.
 
 | FME SDK Suite | FME SDK Suite documentation | RUM Agent documentation |
 | ---- | --- | --- |
-| [Android](https://github.com/splitio/android-client) | [Android SDK Suite reference](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite) | [Android RUM Agent reference](https://help.split.io/hc/en-us/articles/18530305949837-Android-RUM-Agent) |
-| [iOS](https://github.com/splitio/ios-client) | [iOS SDK Suite reference](https://help.split.io/hc/en-us/articles/26408115004429-iOS-Suite) | [iOS RUM Agent reference](https://help.split.io/hc/en-us/articles/22545155055373-iOS-RUM-Agent) |
-| [JavaScript Browser](https://github.com/splitio/javascript-browser-client) | [JavaScript Browser SDK Suite Reference](https://help.split.io/hc/en-us/articles/22622277712781-Browser-Suite) | [JavaScript Browser RUM Agent reference](https://help.split.io/hc/en-us/articles/360030898431-Browser-RUM-Agent) |
+| [Android](https://github.com/splitio/android-client) | [Android SDK Suite reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite) | [Android RUM Agent reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent) |
+| [iOS](https://github.com/splitio/ios-client) | [iOS SDK Suite reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite) | [iOS RUM Agent reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent) |
+| [JavaScript Browser](https://github.com/splitio/javascript-browser-client) | [JavaScript Browser SDK Suite Reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite) | [JavaScript Browser RUM Agent reference](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent) |
 
 ## Split Evaluator
 
-For languages where there is no native SDK support, Harness offers the [Split Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator), a small service capable of evaluating some or all available FME features for a given customer via a REST endpoint.
+For languages where there is no native SDK support, Harness offers the [Split Evaluator](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator), a small service capable of evaluating some or all available FME features for a given customer via a REST endpoint.
 
 ## Split Synchronizer
 
-The [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer) service is built for languages that do not have a native capability to keep a shared local cache, which is needed to evaluate FME feature flags.
+The [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) service is built for languages that do not have a native capability to keep a shared local cache, which is needed to evaluate FME feature flags.
 
 This tool coordinates the sending and receiving of data to a remote datastore that all of your processes can share. Out of the box, Split Synchronizer supports Redis as a remote datastore. The Synchronizer service runs as a standalone process in dedicated or shared servers and it does not affect the performance of your code or FME SDKs.
 
 ## Split Proxy
 
-The [Split Proxy](https://help.split.io/hc/en-us/articles/4415960499213-Split-Proxy) enables you to deploy a service in your own infrastructure that behaves like Harness servers and is used by both server-side and client-side SDKs to synchronize the flags without connecting to Harness FME's actual backend directly.
+The [Split Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy) enables you to deploy a service in your own infrastructure that behaves like Harness servers and is used by both server-side and client-side SDKs to synchronize the flags without connecting to Harness FME's actual backend directly.
 
 This tool reduces connection latencies from the SDKs to the Harness servers transparently, and when a single connection is required from a private network to the outside for security reasons.
 

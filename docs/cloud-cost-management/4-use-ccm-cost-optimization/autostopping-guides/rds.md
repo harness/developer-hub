@@ -42,7 +42,7 @@ For more information, go to [AutoStopping Proxy for AWS](/docs/cloud-cost-manage
 2. Under **Setup**, select **Load Balancers**.
 3. Select **Create New Load Balancer**.
 4. Select **AWS**.
-5. Choose an existing connector or [create a new one](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector).
+5. Choose an existing connector or create a new one.
 6. Select **Continue**.
 7. Select **Create AutoStopping Proxy**.
 8. Select **Continue**.
@@ -76,7 +76,7 @@ This section walks you through the steps to configure an AutoStopping rule for y
 
 1. In **Cloud Costs**, in **AutoStopping Rules**, select **New AutoStopping Rule**.
 2. In the cloud account type, select **AWS**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
-3. Select your AWS account from the **Connect to your AWS account** dropdown list and select **Next**. If you have not added an AWS cloud account, go to [Connect to an AWS Connector](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector).
+3. Select your AWS account from the **Connect to your AWS account** dropdown list and select **Next**. If you have not added an AWS cloud account, go to [Connect to an AWS Connector](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws).
 
    <DocImage path={require('./static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-75.png')} width="60%" height="60%" title="Click to view full size image" />
 

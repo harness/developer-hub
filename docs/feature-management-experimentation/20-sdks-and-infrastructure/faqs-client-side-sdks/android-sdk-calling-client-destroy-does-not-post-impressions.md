@@ -5,7 +5,7 @@ sidebar_position: 10
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360049698832-Calling-client-Destory-does-not-post-impressions-in-Android-SDK </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360049698832-Calling-client-Destory-does-not-post-impressions-in-Android-SDK </button>
 </p>
 
 ## Issue

@@ -5,7 +5,7 @@ sidebar_position: 4
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360047489331-How-can-you-tell-what-treatment-a-user-sees <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360047489331-How-can-you-tell-what-treatment-a-user-sees </button>
 </p>
 
 There are three primary use cases for determining who is seeing which treatment:
@@ -20,7 +20,7 @@ In this image, you can see that the user will see the 'on' treatment for the adm
 
 ### Caveats:
 
-* This view will only show you treatments for feature flags that are not using [attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes) for targeting. This is because for data privacy reasons, Split does not copy attribute values to the Split cloud. So, we do not know the value of a specific attribute for a given user key (user ID).
+* This view will only show you treatments for feature flags that are not using [attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes) for targeting. This is because for data privacy reasons, Split does not copy attribute values to the Split cloud. So, we do not know the value of a specific attribute for a given user key (user ID).
 * The key is just for demonstration purposes. It will typically be a database id or a cookie id.
 
 ### How to get to the key page:

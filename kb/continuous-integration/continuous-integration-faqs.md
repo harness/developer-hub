@@ -535,6 +535,22 @@ If the delegate is unable to connect to the created build farm with [Istio MTLS 
 
 For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
 
+### Why aren't Harness CI Steps like Git clone inheriting my proxy settings from the Delegate, and how can I configure a proxy for these steps?
+
+CI steps such as Git Clone don't automatically inherit the proxy settings configured on the Harness Delegate. This is because these steps run inside separate build pods, and proxy-related environment variables need to be explicitly passed down to those pods.
+
+To ensure your CI steps work with your proxy setup, you must configure the following environment variables on the Delegate:
+
+`PROXY_HOST`
+
+`PROXY_PORT`
+
+`PROXY_SCHEME`
+
+These variables allow Harness to propagate the proxy configuration to build pods so that operations like cloning a Git repository can route through the correct proxy.
+
+For a complete list of variables and instructions on setting up proxy configurations for your Delegate, refer to the [Configure delegate proxy settings documentation](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings/)
+
 ### If my pipeline consists of multiple CI stages, are all the steps across different stages executed within the same build pod?
 
 No. Each CI stage execution triggers the creation of a new build pod. The steps within a stage are then carried out within the stage's dedicated pod. If your pipeline has multiple CI stages, distinct build pods are generated for each individual stage.
@@ -1884,6 +1900,18 @@ pom.xml allows using environment variable references with syntax like below:
 `${env.VARIABLE_NAME}`
 
 You can not directly use harness expression in pom.xml but you can use harness expression to pass the values to environment variables which then in turn can be used in pom.xml.
+
+### Tests with Test Intelligence enabled are not showing any data results, despite having worked previously
+When Test Intelligence is first run, a call graph is generated based on the published branch and commit ID.  This is associated specifically with the branch and commit ID, even across pipelines, to allow Test Intelligence to be as efficient as possible.  
+
+If the same code is used in multiple pipelines, it would leverage the existing callgraph, if one already exists, allowing TI to help developers reduce the number of necessary tests they have to go through.
+
+With this in mind, unless there are changes to [the relevant code or test](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview/#how-does-test-intelligence-work), Test Intelligence will end up skipping the tests
+
+This can be observed with the following log
+![image](./static/testintelligence-blank.png)
+
+
 
 ## Script execution
 

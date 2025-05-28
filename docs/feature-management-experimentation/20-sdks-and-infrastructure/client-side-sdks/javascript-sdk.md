@@ -34,14 +34,19 @@ You can import the SDK into your project using either of the three methods below
 
 <Tabs>
 <TabItem value="NPM (recommended)">
+
 ```bash
 npm install --save @splitsoftware/splitio
 ```
+
 </TabItem>
 <TabItem value="CDN bundle">
+
 ```html
-<script src="//cdn.split.io/sdk/split-11.1.0.min.js"></script>
+<script src="//cdn.split.io/sdk/split-11.2.0.min.js"></script>
+
 ```
+
 </TabItem>
 </Tabs>
 
@@ -49,6 +54,7 @@ npm install --save @splitsoftware/splitio
 
 <Tabs>
 <TabItem value="JavaScript (using CDN)">
+
 ```javascript
 // Instantiate the SDK. CDN will expose splitio globally 
 var factory = splitio({ 
@@ -64,8 +70,10 @@ var factory = splitio({
 // And get the client instance you'll use
 var client = factory.client();
 ```
+
 </TabItem>
 <TabItem value="JavaScript">
+
 ```javascript
 var SplitFactory = require('@splitsoftware/splitio').SplitFactory;
  
@@ -83,8 +91,10 @@ var factory = SplitFactory({
 // And get the client instance you'll use
 var client = factory.client();
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 // Use the import let = require syntax on TS.
 import { SplitFactory } from '@splitsoftware/splitio';
@@ -103,6 +113,7 @@ const factory: SplitIO.IBrowserSDK = SplitFactory({
 // And get the client instance you'll use
 const client: SplitIO.IBrowserClient = factory.client();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -119,14 +130,14 @@ Feel free to dive into the declaration files if IntelliSense is not enough.
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients.  See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 
 ## Using the SDK
  
 ### Basic use
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment). 
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds, depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it's in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment). 
 
 To make sure the SDK properly loads before asking it for a treatment, block until the SDK is ready, as shown below. We set the client to listen for the `SDK_READY` event triggered by the SDK before asking for an evaluation. 
 
@@ -134,6 +145,7 @@ After the `SDK_READY` event fires, you can use the `getTreatment` method to retu
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 client.on(client.Event.SDK_READY, function() {
   var treatment = client.getTreatment('FEATURE_FLAG_NAME');
@@ -147,8 +159,10 @@ client.on(client.Event.SDK_READY, function() {
   }
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 client.on(client.Event.SDK_READY, function() {
   const treatment: SplitIO.Treatment = client.getTreatment('FEATURE_FLAG_NAME');
@@ -162,12 +176,13 @@ client.on(client.Event.SDK_READY, function() {
   }
 });
 ```
+
 </TabItem>
 </Tabs>
 
 ### Attribute syntax 
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -181,6 +196,7 @@ The `getTreatment` method has a number of variations that are described below. E
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 var attributes = {
   // date attributes are handled as `millis since epoch`
@@ -205,8 +221,10 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 const attributes: SplitIO.Attributes = {
   // date attributes are handled as `millis since epoch`
@@ -229,6 +247,7 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -286,6 +305,7 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 // Getting treatments by feature flag names
 var flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
@@ -304,8 +324,10 @@ treatments = client.getTreatmentsByFlagSets(flagSets);
 //   FEATURE_FLAG_NAME_2: 'visa'
 // }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 // Getting treatments by feature flag names
 const flagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
@@ -324,31 +346,36 @@ treatments = client.getTreatmentsByFlagSets(flagSets);
 //   FEATURE_FLAG_NAME_2: 'visa'
 // }
 ```
+
 </TabItem>
 </Tabs>
 
 ### Get Treatments with Configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), use the `getTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), use the `getTreatmentWithConfig` method.
 
 This method returns an object with the structure below:
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 var TreatmentResult = {
   String treatment;
   String config; // or null if there is no config for the treatment
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 type TreatmentResult = {
   treatment: string,
   config: string | null
 };
 ```
+
 </TabItem>
 </Tabs>
 
@@ -358,6 +385,7 @@ This method takes the exact same set of arguments as the standard `getTreatment`
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 var treatmentResult = client.getTreatmentWithConfig('FEATURE_FLAG_NAME', attributes);
 var configs = JSON.parse(treatmentResult.config);
@@ -371,8 +399,10 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 const treatmentResult: SplitIO.TreatmentWithConfig = client.getTreatmentWithConfig('FEATURE_FLAG_NAME', attributes);
 const configs = JSON.parse(treatmentResult.config);
@@ -386,6 +416,7 @@ if (treatment === 'on') {
   // insert control code here
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -393,6 +424,7 @@ If you need to get multiple evaluations at once, you can also use the `getTreatm
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 // Getting treatments by feature flag names
 var featureFlagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
@@ -414,8 +446,10 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets(flagSets);
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 // Getting treatments by feature flag names
 const featureFlagNames = ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'];
@@ -437,6 +471,48 @@ treatmentResults = client.getTreatmentsWithConfigByFlagSets(flagSets);
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
+</TabItem>
+</Tabs>
+
+### Append properties to impressions
+
+[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Split's servers for feature monitoring and experimentation.
+
+You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
+
+Three types of properties are supported: strings, numbers, and booleans.
+
+<Tabs groupId="java-type-script">
+<TabItem value="JavaScript">
+
+```javascript
+const evaluationOptions = {
+  properties: { 
+    package: "premium", 
+    admin: true, 
+    discount: 50 
+  }
+};
+
+const treatment = client.getTreatment('FEATURE_FLAG_NAME', undefined, evaluationOptions);
+```
+
+</TabItem>
+<TabItem value="TypeScript">
+
+```typescript
+const evaluationOptions: SplitIO.EvaluationOptions = {
+  properties: { 
+    package: "premium", 
+    admin: true, 
+    discount: 50 
+  }
+};
+
+const treatment: string = client.getTreatment('FEATURE_FLAG_NAME', undefined, evaluationOptions);
+```
+
 </TabItem>
 </Tabs>
 
@@ -488,46 +564,30 @@ In the case that a bad input has been provided, you can read more about our SDK'
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
-// If you have only passed the key to the SDK
-var queued = client.track('TRAFFIC_TYPE', 'EVENT_TYPE', eventValue, { properties });
 // Example with both a value and properties
-var properties = {package : "premium", admin : true, discount : 50};
+var properties = { package: "premium", admin: true, discount: 50 };
 var queued = client.track('user', 'page_load_time', 83.334, properties);
 
 // Example with only properties
-var properties = {package : "premium", admin : true, discount : 50};
-var queued = client.track('user', 'page_load_time', null, properties);
-
-// Example with both a value and properties
-var properties = {package : "premium", admin : true, discount : 50};
-var queued = client.track('user', 'page_load_time', 83.334, properties);
-
-// Example with only properties
-var properties = {package : "premium", admin : true, discount : 50};
+var properties = { package: "premium", admin: true, discount: 50 };
 var queued = client.track('user', 'page_load_time', null, properties);
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
-```javascript
-// If you have only passed the key to the SDK
-const queued: boolean = client.track('TRAFFIC_TYPE', 'EVENT_TYPE', eventValue, , { properties });
+
+```typescript
 // Example with both a value and properties
-const properties = {package : "premium", admin : true, discount : 50};
-const queued = client.track('user', 'page_load_time', 83.334, properties);
+const properties: SplitIO.Properties = { package: "premium", admin: true, discount: 50 };
+const queued: boolean = client.track('user', 'page_load_time', 83.334, properties);
 
 // Example with only properties
-const properties = {package : "premium", admin : true, discount : 50};
-const queued = client.track('user', 'page_load_time', null, properties);
-
-// Example with both a value and properties
-const properties = {package : "premium", admin : true, discount : 50};
-const queued = client.track('user', 'page_load_time', 83.334, properties);
-
-// Example with only properties
-const properties = {package : "premium", admin : true, discount : 50};
+const properties = { package: "premium", admin: true, discount: 50 };
 const queued = client.track('user', 'page_load_time', null, properties);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -554,7 +614,9 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 | sync.enabled | Controls the SDK continuous synchronization flags. When `true`, a running SDK processes rollout plan updates performed in Harness FME (default). When `false`, it fetches all data from the Harness FME servers only upon init, which ensures a consistent experience during a user session and optimizes resources when these updates are not consumed by the app. | true |
 | sync.requestOptions.getHeaderOverrides | A callback function that can be used to override the Authentication header or append new headers to the SDK's HTTP(S) requests. | undefined |
 | storage.type | Storage type to be used by the SDK. Possible values are `MEMORY` and `LOCALSTORAGE`. | `MEMORY` |
-| storage.prefix | An optional prefix for your data to avoid collisions. This prefix is prepended to the existing SPLITIO localStorage prefix. | `SPLITIO` |
+| storage.prefix | Only applies to the `LOCALSTORAGE` storage type. An optional prefix for your data to avoid collisions. This prefix is prepended to the existing "SPLITIO" localStorage prefix. | `SPLITIO` |
+| storage.expirationDays | Only applies to the `LOCALSTORAGE` storage type. Number of days before cached data expires if it was not updated. If cache expires, it is cleared when the SDK is initialized. | 10 |
+| storage.clearOnInit | Only applies to the `LOCALSTORAGE` storage type. When set to `true`, the SDK clears the cached data on initialization unless it was cleared within the last 24 hours. This 24-hour window is not configurable. If the cache is cleared (whether due to expiration or `clearOnInit`), both the 24-hour period and the `expirationDays` period are reset. | false |
 | debug | Either a boolean flag or log level string ('ERROR', 'WARN', 'INFO', or 'DEBUG'). See [logging](#logging) for details. | false |
 | streamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK falls back to the polling mechanism. If false, the SDK polls for changes as usual without attempting to use streaming. | true |
 | userConsent | User consent status used to control the tracking of events and impressions. Possible values are `GRANTED`, `DECLINED`, and `UNKNOWN`. See [User consent](#user-consent) for details. | `GRANTED` |
@@ -563,6 +625,7 @@ To set each of the parameters defined above, use the following syntax:
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 var sdk = SplitFactory({
   startup: {
@@ -593,14 +656,18 @@ var sdk = SplitFactory({
   },
   storage: {
     type: 'LOCALSTORAGE',
-    prefix: 'MYPREFIX'
+    prefix: 'MYPREFIX',
+    expirationDays: 10,
+    clearOnInit: false
   },
   streamingEnabled: true,
   debug: false
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 const sdk: SplitIO.IBrowserSDK = SplitFactory({
   startup: {
@@ -631,12 +698,15 @@ const sdk: SplitIO.IBrowserSDK = SplitFactory({
   },
   storage: {
     type: 'LOCALSTORAGE',
-    prefix: 'MYPREFIX'
+    prefix: 'MYPREFIX',
+    expirationDays: 10,
+    clearOnInit: false
   },
   streamingEnabled: true,
   debug: false
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -646,7 +716,7 @@ For testing, a developer can put code behind feature flags on their development 
 
 When instantiating the SDK in localhost mode, your `authorizationKey` is `localhost`. Define the feature flags you want to use in the `features` object map. All `getTreatment` calls for a feature flag now only return the one treatment (and config, if defined) that you have defined in the map.
 
-Any feature that is not provided in the `features` map returns the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK was asked to evaluate them.
+Any feature that is not provided in the `features` map returns the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK was asked to evaluate them.
 
 You can use the additional configuration parameters below when instantiating the SDK in `localhost` mode.
 
@@ -660,8 +730,10 @@ To use the SDK in localhost mode, replace the SDK key on `authorizationKey` prop
 If you define just a string as the value for a feature flag name, any config returned by our SDKs are always null. If you use a map, we return the specified treatment and the specified config (which can also be null).
 
 
-<Tabs>
-<TabItem value="JavaScript (using CDN)">
+
+<Tabs groupId="java-type-script">
+<TabItem value="JavaScript" label="JavaScript (using CDN)">
+
 ```javascript
 var sdk = splitio({
   core: {
@@ -698,8 +770,10 @@ client.on(client.Event.SDK_READY_FROM_CACHE, function() {
   var t1 = client.getTreatment('reporting_v2') 
 }
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 const sdk: SplitIO.IBrowserSDK = SplitFactory({
   core: {
@@ -736,6 +810,7 @@ client.on(client.Event.SDK_READY_FROM_CACHE, () => {
   const t1: SplitIO.Treatment = client.getTreatment('reporting_v2') 
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -743,6 +818,7 @@ You can then change the feature flags as necessary for your testing, by mutating
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 // The SDK keeps a reference to the `features` object map, so you can mutate the object as follows to emit SDK_UPDATE events:
 config.features['reporting_v2'] = 'off'; // update reporting_v2
@@ -755,6 +831,7 @@ factory.settings.features = { 'reporting_v3': 'off' };
 // But don't do it on the passed configuration, as the SDK will not reference the new object:
 config.features = { 'reporting_v3': 'off' }; // Will not emit SDK_UPDATE
 ```
+
 </TabItem>
 </Tabs>
 
@@ -764,6 +841,7 @@ Use the Split manager to get a list of features available to the SDK factory cli
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 var factory = SplitFactory({ 
   core: {
@@ -778,8 +856,10 @@ manager.once(manager.Event.SDK_READY, function() {
   // Once it's ready, use the manager
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 const factory: SplitIO.IBrowserSDK = SplitFactory({ 
   core: {
@@ -794,6 +874,7 @@ manager.once(manager.Event.SDK_READY, function() {
   // Once it's ready, use the manager
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -801,6 +882,7 @@ The Manager then has the following methods available:
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 /**
  * Returns the feature flag registered within the SDK that matches this name.
@@ -823,8 +905,10 @@ var splitViewsList = manager.splits();
  */
 var splitNamesList = manager.names();
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 /**
  * Returns the feature flag registered within the SDK that matches this name.
@@ -847,6 +931,7 @@ const splitViewsList: SplitIO.SplitViews = manager.splits();
  */
 const splitNamesList: SplitIO.SplitNames = manager.names();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -888,6 +973,7 @@ The following is an example of how to implement a custom impression listener:
  
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 function logImpression(impressionData) {
   // do something with the impression data.
@@ -903,8 +989,10 @@ var factory = SplitFactory({
   }
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 class MyImprListener implements SplitIO.IImpressionListener {
   logImpression(impressionData: SplitIO.ImpressionData) {
@@ -922,6 +1010,7 @@ const factory: SplitIO.IBrowserSDK = SplitFactory({
   }
 });
 ```
+
 </TabItem>
 </Tabs>
 
@@ -937,14 +1026,16 @@ To enable SDK logging in the browser, open your DevTools console and type the fo
 // Acceptable values are 'DEBUG', 'INFO', 'WARN', 'ERROR' and 'NONE'
 // Other acceptable values are 'on', 'enable' and 'enabled', which are equivalent to 'DEBUG' log level
 localStorage.splitio_debug = 'on' <enter>
+
 ```
 
 Reload the browser to start seeing the logs.
 
 Beginning with v9.2.0 of the SDK, you can also enable the logging via SDK settings and programmatically by calling the Logger API.
 
-<Tabs>
-<TabItem value="Logger API (JavaScript)">
+<Tabs groupId="java-type-script">
+<TabItem value="JavaScript" label="Logger API (JavaScript)">
+
 ```javascript
 var SplitFactory = require('@splitsoftware/splitio').SplitFactory;
  
@@ -968,8 +1059,10 @@ sdk.Logger.disable();
 // 'NONE' is equivalent to `disable` method.
 sdk.Logger.setLogLevel('WARN');
 ```
+
 </TabItem>
-<TabItem value="Logger API (TypeScript)">
+<TabItem value="TypeScript" label="Logger API (TypeScript)">
+
 ```javascript
 import { SplitFactory } from '@splitsoftware/splitio';
  
@@ -993,12 +1086,13 @@ sdk.Logger.disable();
 // 'NONE' is equivalent to `disable` method.
 sdk.Logger.setLogLevel('WARN');
 ```
+
 </TabItem>
 </Tabs>
 
 Example output is shown below. 
 
-<p><img src="/hc/article_attachments/360016301591/7694b46-Captura_de_pantalla_2017-05-05_a_las_13.04.08.png" alt="7694b46-Captura_de_pantalla_2017-05-05_a_las_13.04.08.png" /></p>
+![](../static/javascript-sdk-log-example.png)
 
 :::info[Note]
 For more information on using the logging framework in SDK versions prior to 9.2, refer to [https://github.com/visionmedia/debug](https://github.com/visionmedia/debug).
@@ -1018,6 +1112,7 @@ If you need to roll out features by different traffic types, instantiate multipl
  
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 var factory = SplitFactory({
   core: {
@@ -1050,8 +1145,10 @@ user_client.track('user', 'PAGELOAD', 7.86);
 // or track events for account traffic type
 account_client.track('account', 'ACCOUNT_CREATED');
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 const sdk: SplitIO.IBrowserSDK = SplitFactory({
   core: {
@@ -1081,6 +1178,7 @@ const user_poll_treatment: SplitIO.Treatment =
 const account_permissioning_treatment: SplitIO.Treatment =
   account_client.getTreatment('account-permissioning');
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1101,6 +1199,7 @@ The syntax to listen for each event is shown below:
 
 <Tabs groupId="java-type-script">
 <TabItem value="JavaScript">
+
 ```javascript
 function whenReady() {
   var treatment = client.getTreatment('FEATURE_FLAG_NAME');
@@ -1136,8 +1235,10 @@ client.once(client.Event.SDK_READY_FROM_CACHE, function () {
   // Keep in mind that data might be stale, this is NOT a replacement of SDK_READY.
 });
 ```
+
 </TabItem>
 <TabItem value="TypeScript">
+
 ```javascript
 function whenReady() {
   const treatment: SplitIO.Treatment = client.getTreatment('FEATURE_FLAG_NAME');
@@ -1173,6 +1274,7 @@ client.once(client.Event.SDK_READY_FROM_CACHE, function () {
   // Keep in mind that data might be stale, this is NOT a replacement of SDK_READY.
 });
 ```
+
 </TabItem>
 </Tabs>
 

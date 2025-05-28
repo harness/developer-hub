@@ -31,7 +31,7 @@ You can import the SDK in your project by using Swift Package Manager. This can 
 You can also import the SDK into your Xcode project using CocoaPods, adding it in your **Podfile**.
 
 ```swift title="Podfile"
-pod 'Split', '~> 3.1.1'
+pod 'Split', '~> 3.2.0'
 ```
 
 #### Carthage
@@ -39,7 +39,7 @@ pod 'Split', '~> 3.1.1'
 This is another option to import the SDK. Just add it in your **Cartfile**.
 
 ```swift title="Cartfile"
-github "splitio/ios-client" 3.1.1
+github "splitio/ios-client" 3.2.0
 ```
 
 Once added, follow the steps provided in the [Carthage Readme](https://github.com/Carthage/Carthage/blob/master/README.md#if-youre-building-for-ios-tvos-or-watchos).
@@ -48,13 +48,13 @@ Once added, follow the steps provided in the [Carthage Readme](https://github.co
 
 The first time that the SDK is instantiated, it starts background tasks to update an in-memory cache and in-storage cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of the data.
 
-If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it is in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while it is in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 After the first initialization, the fetched data is stored. Further initializations fetch data from that cache and the configuration is available immediately.
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a client-side SDK API key. This is a special type of API token with limited privileges for use in browsers or mobile clients. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ```swift title="Swift"
 import Split
@@ -129,26 +129,30 @@ Starting from version 2.24.5, it is possible to configure the handler to run in 
 
 <Tabs>
 <TabItem value="Running in Background">
+
 ```swift
 client?.on(event: SplitEvent.sdkReadyFromCache, runInBackground: true) {
   // Handler code
 }
 ```
+
 </TabItem>
 <TabItem value="Custom Queue">
+
 ```swift
 let customQueue = DispatchQueue(label: "custom-queue")
 client?.on(event: SplitEvent.sdkReadyFromCache, queue: customQueue) {
   // Handler code
 }
 ```
+
 </TabItem>
 </Tabs>
 
 
 ### Attribute syntax
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `getTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the Rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -295,7 +299,7 @@ let treatmentsByFlagSets = client.getTreatmentsByFlagSets(flagSets, attributes: 
 
 ### Get treatments with configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), use the `getTreatmentWithConfig` methods. These methods returns an object containing the treatment and associated configuration.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), use the `getTreatmentWithConfig` methods. These methods returns an object containing the treatment and associated configuration.
 
 The config element is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
 
@@ -323,6 +327,27 @@ let treatmentsByFlagSets = client.getTreatmentsWithConfigByFlagSets(flagSets, at
 //   "FEATURE_FLAG_NAME_1": { "treatment": "on", "config": "{ \"color\":\"red\" }"},
 //   "FEATURE_FLAG_NAME_2": { "treatment": "visa", "config": "{ \"color\":\"red\" }"}
 // }
+```
+
+### Append properties to impressions
+
+[Impressions](/docs/feature-management-experimentation/feature-management/impressions) are generated by the SDK each time a `getTreatment` method is called. These impressions are periodically sent back to Split's servers for feature monitoring and experimentation.
+
+You can append properties to an impression by passing an object of key-value pairs to the `getTreatment` method. These properties are then included in the impression sent by the SDK and can provide useful context to the impression data.
+
+Three types of properties are supported: strings, numbers, and booleans.
+
+```swift title="Swift"
+
+let evaluationOptions: EvaluationOptions = EvaluationOptions(
+    properties: [
+        "package": "premium",
+        "admin": true,
+        "discount": 50
+    ]
+)
+
+let treatment = getTreatment("FEATURE_FLAG_NAME", attributes: nil, evaluationOptions: evaluationOptions)
 ```
 
 ### Shutdown
@@ -710,9 +735,7 @@ To enable SDK logging, the `logLevel` setting is available in `SplitClientConfig
 
 The following shows an example output:
 
-<p>
-  <img src="/hc/article_attachments/15254306501901" alt="ios_log_example.png" />
-</p>
+![](../static/ios-sdk-log-example.png)
 
 ## Advanced use cases
 

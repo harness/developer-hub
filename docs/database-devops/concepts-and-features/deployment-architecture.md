@@ -8,7 +8,7 @@ Welcome to the Harness Database DevOps Product Documentation. This guide will as
 
 ## Before you begin, review the following:
 
-- [All about Database DevOps](/docs/database-devops/get-started/overview.md)
+- [All about Database DevOps](/docs/database-devops/use-database-devops/get-started/overview.md)
 
 ## Harness DB DevOps Architecture
 
@@ -23,7 +23,7 @@ Before you can access Harness Database DevOps, you must have Harness enable the 
 
 
 
-[Harness Database DevOps](/docs/database-devops/get-started/overview.md) is crucial to the Harness Delegate because it integrates database change management into [Harness CI](../../continuous-integration/get-started/overview.md), enabling organizations to apply DevOps best practices to their database operations. Here are several key points that highlight its importance:
+[Harness Database DevOps](/docs/database-devops/use-database-devops/get-started/overview.md) is crucial to the Harness Delegate because it integrates database change management into [Harness CI](../../continuous-integration/get-started/overview.md), enabling organizations to apply DevOps best practices to their database operations. Here are several key points that highlight its importance:
 
  1. **Orchestration of Database Changes**: Harness Database DevOps allows for the orchestration of database changes in a manner similar to application code deployments. This means that database changes can be managed through pipelines, ensuring that they are executed in a controlled and automated way. This orchestration helps to eliminate the manual processes that often slow down deployments when database changes are involved.
 
@@ -39,20 +39,19 @@ Before you can access Harness Database DevOps, you must have Harness enable the 
 
 In summary, Database DevOps is vital to the Harness Delegate as it enhances the overall deployment process by integrating database management into CI/CD workflows, improving visibility, governance, and collaboration, while also enabling automation and risk mitigation. This integration ultimately leads to faster, more reliable, and safer database deployments.
 
-## Database DevOps Key Concepts
+## Communication Protocol between Services and Customer Infra
 
-### Database Schemas
 
-A database schema is the structure of a database, e.g. what tables and columns and indexes exist. In the context of Harness DB DevOps, there is an entity called a 'schema’ that is a collection of DDL or DML changes that can be applied to a database. Today this collection is in the form of a liquibase changelog checked into git or artifactory.
+   ![Harness DB DevOps architecture diagram](./static/detailed-architectural-diagram.png)
 
-### Database Instances 
 
-A database instance associates a database schema to a database connection. It represents the intersection of the database's structural definition (the schema) with the actual data environment where the schema is implemented.
+## Understanding How Secret's Info is Sent to Build Pods
 
-### Database Connection
-
-A database connection refers to the specific parameters and credentials used to establish a secure link between the Harness platform and an individual database server. This connection is done through a JDBC (Java Database Connectivity) URL, which specifies the location of the database server, and is authenticated using a username and password. The connection is made via a Harness Delegate, which allows secure access to the database, even when the database instance is not internet-accessible. This setup enables Harness to execute SQL scripts, orchestrate database changes, and manage schema versions as part of the CI/CD pipeline, all while adhering to security best practices. 
+1. All secret requests are first sent as expressions from Harness to Delegates, where they are decrypted inside the Pod init request.
+2. Decrypted secrets are added as Kubernetes Secrets in the same namespace where build pods are deployed.
+3. Those secrets are referenced inside the Pod definition using imagePullSecrets.
 
 :::info
-Head over to the [Key Concepts documentation on Harness Database DevOps](../get-started/key-concepts.md) to learn more.
+Container registry credentials are stored as .dockercfg type secret in Kubernetes secret, allowing the Pod to pull images from the specified registry in the stepGroup.
 :::
+

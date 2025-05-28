@@ -5,8 +5,12 @@ description: ""
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360040838752-Google-Analytics <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360040838752-Google-Analytics </button>
 </p>
+
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
 
 You can send JavaScript impressions and events to Google Analytics and send Google analytics events to Split. With this integration you can use the event data you already collect via Google Analytics to power analytics and experimentation within Split.
 
@@ -107,6 +111,7 @@ There might be instances where you are already tracking events in GA4 and want t
 There are two approaches to this; either use BigQuery as the data source, or wrap the `track` call.
 
 #### Using BigQuery to send GA4 Events to Split
+
 You can link Google Analytics data to BigQuery tables which can be used as a source to send data to Split. 
 
 To get started, follow [Google’s instructions on how to get GA4 events into BigQuery](https://support.google.com/analytics/answer/9823238?hl=en#zippy=%2Cin-this-article). Once GA4 data is in BigQuery, it [can be queried](https://cloud.google.com/bigquery/docs/quickstarts/quickstart-client-libraries) and exported as events to Split using Split’s [events API](https://docs.split.io/reference/create-event). For example, this can be a job that runs on a schedule to ingest data into Split to allow for experimentation and further analysis with Split’s metrics and metric dashboard. 

@@ -5,7 +5,7 @@ sidebar_position: 6
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360026249172-Using-SDK-with-Synchronizer-docker-getTreatment-is-always-returning-control </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360026249172-Using-SDK-with-Synchronizer-docker-getTreatment-is-always-returning-control </button>
 </p>
 
 ## Issue

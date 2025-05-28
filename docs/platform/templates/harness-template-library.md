@@ -12,7 +12,7 @@ The Harness Template Library enables you to standardize and distribute reusable 
 
 To demonstrate how to create, configure, and use HTTP step templates, this topic adds an HTTP template to a [CD pipeline](/docs/category/cd-and-gitops-tutorials), but you can add HTTP step templates to other pipelines that support this step type.
 
-This topic assumes you're familiar with [Harness' key concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md).
+This topic assumes you're familiar with [Harness' key concepts](/docs/platform/get-started/key-concepts).
 
 ### Objectives
 

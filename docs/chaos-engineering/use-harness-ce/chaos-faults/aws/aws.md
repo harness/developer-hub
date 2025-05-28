@@ -59,6 +59,38 @@ CLB AZ down takes down the AZ (Availability Zones) on a target CLB for a specifi
 
 <FaultDetailsCard category="aws">
 
+### AZ blackhole
+
+The AZ blackhole causes network blackhole by isolating traffic in specific availability zones across an entire region. Users can control the blast radius by providing targeted VPC IDs for the AZ failure.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Checks how the applications and services handle the loss of network connectivity in specific zones.
+- Determine the effects of network isolation on critical business processes by simulating major network disruptions, helping teams to identify weak links and improve overall system robustness.
+- Test and refine disaster recovery plans by simulating AZ-level blackholes, ensuring that your infrastructure can efficiently reroute traffic and maintain operational continuity during large-scale outages.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### VPC route misconfiguration
+
+The vpc route misconfiguration chaos causes network issues due to the misconfiguration of the route table associated with the targeted VPC.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Misconfigured changes to VPC route tables
+- Accidental deletion of external or internal routes
+- Loss of connectivity to critical components such as Transit Gateway (TGW), NAT Gateway (NATGW), or VPC Peering connections
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### DynamoDB replication pause
 
 DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.
@@ -862,6 +894,24 @@ Hitting a timeout is a frequent scenario with Lambda functions. This can break t
 
 <FaultDetailsCard category="aws">
 
+### Lambda inject status code
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Assess how downstream services react when receiving non-standard or error HTTP status codes, ensuring that error-handling logic and fallback mechanisms are effective.
+- Test the robustness of client applications and APIs when they encounter unexpected status codes, allowing for early detection of integration issues.
+- Evaluate and fine-tune retry policies and error logging strategies by simulating intermittent faulty responses in a controlled manner.
+=======
+- Checks integrated services handle delayed responses, ensuring that timeouts and fallback mechanisms are appropriately configured.
+- Inject latency when interacting with external APIs or databases to determine if your system can maintain functionality under slower-than-expected response times.
+- Evaluate the impact of delays typically experienced during cold starts or resource contention, and refine scaling strategies accordingly.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### Lambda update role permission
 
 Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function. Sometimes, Lambda functions depend on services like RDS, DynamoDB, and S3. In such cases, certain permissions are required to access these services. This fault helps understand how your application would behave when a Lambda function does not have enough permissions to access the services.
@@ -872,6 +922,21 @@ Lambda update role permission is an AWS fault that modifies the role policies as
 - Verifies the handling mechanism for function failures.
 - Updates the role attached to a Lambda function.
 - Determines the performance of the running Lambda application when it does not have enough permissions.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### Lambda modify response body
+
+Lambda modify response body modifies the response body of a Lambda function at runtime, simulating unexpected output alterations. This interrupt the flow of the given function.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Debug runtime errors caused by unexpected function response.
+- Diagnose and mitigate response inconsistencies in real-time, reducing service disruptions and enhancing overall system reliability
 
 </Accordion>
 </FaultDetailsCard>

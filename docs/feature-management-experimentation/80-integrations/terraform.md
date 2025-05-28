@@ -8,6 +8,10 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/6191463919885-Terraform-provider </button>
 </p>
 
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
+
 Use Terraform to create Split projects, environments, users, groups, traffic types, segments, feature flags, and feature flag definitions. The following is a list of available functionality:
 
 * Resources

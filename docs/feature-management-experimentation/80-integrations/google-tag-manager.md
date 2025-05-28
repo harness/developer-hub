@@ -5,8 +5,12 @@ description: ""
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/7936008367245-Google-Tag-Manager <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/7936008367245-Google-Tag-Manager </button>
 </p>
+
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
 
 [Google Tag Manager (GTM)](https://marketingplatform.google.com/about/tag-manager/) manages tags that are used for tracking and analytics on websites. GTM can be leveraged as a way to integrate the Split Browser SDK in a site and reference it from other custom tags.
 
@@ -14,7 +18,7 @@ description: ""
 
 When you use Google Tag Manager for tracking and analytics, which is powered by [Google Universal Analytics (GA) library](https://developers.google.com/analytics/devguides/collection/analyticsjs), you can configure the Split SDK's Google Analytics (GA) integration to automatically track these events (or a desired subset) into Split to feed our stats engine.
 
-To integrate Split's [Google Analytics to Split integration](https://help.split.io/hc/en-us/articles/360040838752-Google-Analytics#google-analytics-to-split), configure the integration when you instantiate the SDK and a GA plugin, which is required for your selected trackers. This allows you to pick up events that are generated and processed by GA (with multiple customization options) and send the events to Split.
+To integrate Split's [Google Analytics to Split integration](/docs/feature-management-experimentation/integrations/google-analytics#google-analytics-to-split), configure the integration when you instantiate the SDK and a GA plugin, which is required for your selected trackers. This allows you to pick up events that are generated and processed by GA (with multiple customization options) and send the events to Split.
 
 When you use [Google Tag Manager](https://support.google.com/tagmanager/answer/6107124) or [Global Site Tag (gtag.js)](https://developers.google.com/analytics/devguides/collection/gtagjs) to set up your Universal Analytics configuration, trackers are created with dynamic names. 
 
@@ -61,7 +65,7 @@ To do this, you need to require the `splitTracker` plugin for the desired tracke
 
 ## Injecting the Split SDKs through a GTM tag
 
-You can leverage GTM as a way to integrate the Split Browser SDK in a site and reference it from other custom tags. By using the Split [JavaScript SDK](https://help.split.io/hc/en-us/articles/360020448791-JavaScript-SDK) (the one used on this example) or the [Browser SDK](https://help.split.io/hc/en-us/articles/360058730852-Browser-SDK), Split can be integrated with Google Tag Manager with minimal effort. This methodology works with both UA and GA4.
+You can leverage GTM as a way to integrate the Split Browser SDK in a site and reference it from other custom tags. By using the Split [JavaScript SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk) (the one used on this example) or the [Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk), Split can be integrated with Google Tag Manager with minimal effort. This methodology works with both UA and GA4.
 
 ### Sending Split to Google Tag Manager's data layer
 
@@ -85,9 +89,7 @@ The best approach to obtaining a reference to the Split client within Google Tag
 
 After you utilize the data layer, we define a new variable within Google Tag Manager called Split client set to the data layer variable `split_client`. This enables us to reference the Split client within our tags in Google Tag Manager.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/7941674934413/define-variable.png" alt="define-variable.png" />
-</p>
+![](./static/google-tag-manager-define-variable.png)
 
 ### Referencing the Split client in tags within Google Tag Manager
 
@@ -104,9 +106,7 @@ Once you define the new variable, we create a new custom HTML tag which includes
 
 As we add other tags to Google Tag Manager, we always want to repeat this pattern of first setting the local variable `client` to the Google Tag Manager variable `{{Split Client}}`.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/7941688506637/set-local-variable.png" alt="set-local-variable.png" />
-</p>
+![](./static/google-tag-manager-set-local-variable.png)
 
 ### Advanced topics
 

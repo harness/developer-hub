@@ -5,7 +5,7 @@ sidebar_position: 6
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360016299232-Configure-Split-Synchronizer-to-handle-high-impression-rate </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360016299232-Configure-Split-Synchronizer-to-handle-high-impression-rate </button>
 </p>
 
 ## Question
@@ -98,4 +98,4 @@ Please make sure to update the JSON with the relevant API Key, Redis host, port 
 
 ##See also
 
-For more information on setup and configuration, see [Split Synchronizer runbook](https://help.split.io/hc/en-us/articles/360018343391-Split-Synchronizer-Runbook).
+For more information on setup and configuration, see [Split Synchronizer runbook](/docs/feature-management-experimentation/sdks-and-infrastructure/best-practices/split-sync-runbook).

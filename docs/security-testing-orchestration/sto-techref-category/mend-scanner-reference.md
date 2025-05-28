@@ -36,7 +36,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ### For more information
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 <StoMoreInfo />
 
@@ -54,12 +54,12 @@ The recommended workflow is to add a Mend step to a Security or Build stage and 
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanMode from './shared/step-palette/scan/type.md';
 
-import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeOrch  from './shared/step-palette/scan/mode/orchestration.md';
 
-import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeData from './shared/step-palette/scan/mode/extraction.md';
+import StoSettingScanModeIngest from './shared/step-palette/scan/mode/ingestion.md';
 
 
 
@@ -71,7 +71,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from './shared/step-palette/scan/config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -82,8 +82,8 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
-import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
+import StoSettingScanTypeRepo     from './shared/step-palette/target/type/repo.md';
+import StoSettingScanTypeCont from './shared/step-palette/target/type/image.md';
 
 <!-- StoSettingScanType / -->
 <StoSettingScanTypeRepo />
@@ -92,9 +92,9 @@ import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md'
 
 #### Target and variant detection 
 
-import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from './shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectContainer from './shared/step-palette/target/auto-detect/container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectContainer/>
@@ -103,14 +103,14 @@ import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from './shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
 #### Variant
 
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
 
 
 
@@ -119,7 +119,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 #### Workspace (_repository_)
 
 
-import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from './shared/step-palette/target/workspace.md';
 
 
 
@@ -130,7 +130,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 ### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 
 
@@ -151,7 +151,7 @@ The fully-qualified URL to the scanner. The default is `https://saas.whitesource
 #### Enforce SSL
 
 
-import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
+import StoSettingProductSSL from './shared/step-palette/auth/ssl.md';
 
 
 
@@ -164,7 +164,7 @@ import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
 #### API Version
 
 
-import StoSettingApiVersion from './shared/step_palette/auth/_api-version.md';
+import StoSettingApiVersion from './shared/step-palette/auth/api-version.md';
 
 
 
@@ -178,7 +178,7 @@ import StoSettingApiVersion from './shared/step_palette/auth/_api-version.md';
 #### Type
 
 
-import StoSettingAuthType from './shared/step_palette/auth/_type.md';
+import StoSettingAuthType from './shared/step-palette/auth/type.md';
 
 
 
@@ -249,7 +249,7 @@ Excluding...I don't see this field in the step palette
 #### Project Version
 
 
-import StoSettingToolProjectVersion from './shared/step_palette/tool/project/_version.md';
+import StoSettingToolProjectVersion from './shared/step-palette/tool/project/version.md';
 
 
 
@@ -261,7 +261,7 @@ import StoSettingToolProjectVersion from './shared/step_palette/tool/project/_ve
 ### Log Level
 
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 
 
@@ -277,7 +277,7 @@ For example, you can save logs for STO-initiated scans in a separate folder on t
 
 TBD This sounds like a reasonable use case, based on what I saw in the Mend docs, but I haven't tried it. Might be worth testing before adding to this topic. -->
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />
 
@@ -287,14 +287,14 @@ import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 
 <StoSettingFailOnSeverity />
 
 ### Settings
 
-import StoSettingSettings from './shared/step_palette/all/_settings.md';
+import StoSettingSettings from './shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
@@ -302,14 +302,14 @@ import StoSettingSettings from './shared/step_palette/all/_settings.md';
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from './shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

@@ -65,7 +65,7 @@ export const featureList: CardItem[] = [
     module: MODULES.ccm,
     icon: "img/icon_ccm.svg",
     description: <>Achieve cost transparency and cut costs.</>,
-    link: "docs/category/get-started-with-ccm",
+    link: "docs/cloud-cost-management",
   },
   {
     title: "Orchestrate Security Tests",
@@ -121,7 +121,14 @@ export const featureList: CardItem[] = [
     module: MODULES.sei,
     icon: "img/icon_sei.svg",
     description: <>Use data-led insights to remove SDLC bottlenecks.</>,
-    link: "docs/category/get-started-with-sei",
+    link: 'docs/category/get-started-with-sei',
+  },
+  {
+    title: 'Manage AI Test Automation',
+    module: MODULES.ata,
+    icon: 'img/logo-ata.svg',
+    description: <>End to End testing powered by Generative AI</>,
+    link: 'docs/ai-test-automation/get-started/quickstart',
   },
   {
     title: "Administer Harness Platform",

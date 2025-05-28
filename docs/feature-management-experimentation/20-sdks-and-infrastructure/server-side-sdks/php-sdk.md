@@ -28,7 +28,7 @@ The SDK factory client is embedded within your PHP app. It decides which treatme
 
 #### Split Synchronizer
 
-The Split Synchronizer service fetches data from the Harness servers so it can evaluate what treatment to show to a customer. This is a background service that can run on one machine on a schedule via your scheduling system. Refer to the [Split Synchronizer documentation](https://help.split.io/hc/en-us/articles/360019686092) for more information.
+The Split Synchronizer service fetches data from the Harness servers so it can evaluate what treatment to show to a customer. This is a background service that can run on one machine on a schedule via your scheduling system. Refer to the [Split Synchronizer documentation](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) for more information.
 
 #### Cache 
 
@@ -50,7 +50,7 @@ Since version 2.0.0 of the split-synchronizer, we use a more efficient scheme to
 
 ### 2. Set up the synchronizer service
 
-When the composer is done, follow the steps in our [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) documents to get everything set to sync data to your Redis cache. After you do that, come back to set up the SDK in consumer mode!
+When the composer is done, follow the steps in our [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) documents to get everything set to sync data to your Redis cache. After you do that, come back to set up the SDK in consumer mode!
 
 ### 3. Instantiate the SDK and create a new SDK factory client
 
@@ -58,7 +58,7 @@ We recommend instantiating the SDK factory once as a singleton and reusing it th
 
 Use the code snippet below to instantiate the client in your code base. You need to provide your Redis details and your SDK API key.
 
-Configure the SDK with the SDK API key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK API key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 Do all of this as a part of the startup sequence of your application. 
  
@@ -90,7 +90,7 @@ $splitClient = $splitFactory->client();
 
 After you instantiate the SDK factory client, use the `getTreatment` method of the SDK factory client to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you want to serve the feature flag to.
 
-From there, you need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+From there, you need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 ```php title="PHP"
 <?php
@@ -108,7 +108,7 @@ if ($treatment === 'on') {
 
 ### Attribute syntax 
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `getTreatment` method needs to pass an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `getTreatment` method needs to pass an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `getTreatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -149,25 +149,31 @@ In some instances, you may want to evaluate treatments for multiple feature flag
  
 <Tabs>
 <TabItem value="getTreatments">
+
 ```php
 $treatments = $splitClient->getTreatments('key', ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2']);
  
 echo json_encode($treatments);
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsByFlagSet">
+
 ```php
 $treatments = $splitClient->getTreatmentsByFlagSet('key', 'backend');
  
 echo json_encode($treatments);
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsByFlagSets">
+
 ```php
 $treatments = $splitClient->getTreatmentsByFlagSets('key', ['backend', 'server_side']);
  
 echo json_encode($treatments);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -175,7 +181,7 @@ You can also use the [Split Manager](#manager) to get all of your treatments at 
 
 ### Get Treatments with Configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `getTreatmentWithConfig` method. This method returns an object containing the treatment and associated configuration.
 
 The config element is a stringified version of the configuration JSON defined in Harness FME. If there is no configuration defined for a treatment, the SDK returns `null` for the config parameter.
 
@@ -191,6 +197,7 @@ If you need to get multiple evaluations at once, you can also use the `getTreatm
 
 <Tabs>
 <TabItem value="getTreatmentsWithConfig">
+
 ```php
 $TreatmentResults = $splitClient->getTreatmentsWithConfig('KEY', array('FEATURE_FLAG_NAME_1' 'FEATURE_FLAG_NAME_2'), attributes);
 // TreatmentResults will have the following form: 
@@ -201,8 +208,10 @@ $TreatmentResults = $splitClient->getTreatmentsWithConfig('KEY', array('FEATURE_
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsWithConfigByFlagSet">
+
 ```php
 $treatments = $splitClient->getTreatmentsWithConfigByFlagSet('KEY', 'backend')
 // $treatments will have the following form: 
@@ -213,8 +222,10 @@ $treatments = $splitClient->getTreatmentsWithConfigByFlagSet('KEY', 'backend')
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 <TabItem value="getTreatmentsWithConfigByFlagSets">
+
 ```php
 $treatments = $splitClient->getTreatmentsWithConfigByFlagSets('KEY', ['backend', 'server_side'])
 // $treatments will have the following form: 
@@ -225,6 +236,7 @@ $treatments = $splitClient->getTreatmentsWithConfigByFlagSets('KEY', ['backend',
 //                  config: "{ 'copy' : 'better copy'}}",
 // }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -464,7 +476,7 @@ $splitClient = $splitFactory->client();
 
 In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given feature flag, the treatment specified in the file is returned for every customer. 
 
-`getTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `featureFlags` map returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK is asked to evaluate them.
+`getTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `featureFlags` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
 
 The format of this file is two columns separated by a whitespace. The left column is the feature flag name, and the right column is the treatment name. Here is a sample `.split` file.
 

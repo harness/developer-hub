@@ -96,7 +96,27 @@ To copy your template to a pipeline, do the following:
 
 6. Select **Run** to deploy the template.
 
-### See also
+## Advanced Options
+
+When you create or edit a pipeline in Pipeline Studio by selecting a template, the **Advanced** tab now clearly separates template-level settings (read-only) from pipeline-specific metadata (editable):
+
+1. **Template-level settings (read-only)**  
+   These first four fields reflect what was defined under `advanced:` in your template and cannot be modified here:
+   - **Pipeline timeout settings**  
+   - **Stage execution settings**  
+   - **Re-run settings**  
+   - **Delegate selector**  
+
+2. **Pipeline metadata (editable)**  
+   Below the read-only block you’ll find the only settings you can change for this pipeline instance:
+   - [**Public access**](/docs/platform/pipelines/executions-and-logs/allow-public-access-to-executions/)
+   - [**Dynamic execution settings**](/docs/platform/pipelines/dynamic-execution-pipeline/) 
+
+:::tip 
+Don’t overlook **Public access** and **Dynamic execution settings** – they’re the only editable controls in the Advanced tab when using a template.
+:::
+
+## See also
 
 * [Create a step template](run-step-template-quickstart.md)
 * [Create an HTTP step template](harness-template-library.md)

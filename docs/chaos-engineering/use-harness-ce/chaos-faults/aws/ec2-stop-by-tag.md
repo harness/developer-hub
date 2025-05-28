@@ -80,7 +80,7 @@ Below is an example AWS policy to execute the fault.
       <tr>
         <td> EC2_INSTANCE_TAG </td>
         <td> Instance Tag to filter the target EC2 instance.</td>
-        <td> Provided as <code>key:value</code> ex: <code>team:devops</code>. For more information, go to <a href="#target-single-instance"> instance tag.</a></td>
+        <td> Provided as <code>key=value</code> ex: <code>team=devops</code>. For more information, go to <a href="#target-single-instance"> instance tag.</a></td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -161,7 +161,7 @@ spec:
         env:
         # tag of the EC2 instance
         - name: EC2_INSTANCE_TAG
-          value: 'key:value'
+          value: 'key=value'
         # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'
@@ -193,7 +193,7 @@ spec:
           value: '100'
         # tag of the EC2 instance
         - name: EC2_INSTANCE_TAG
-          value: 'key:value'
+          value: 'key=value'
         # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'

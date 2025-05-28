@@ -81,7 +81,7 @@ Yes. For more information, go to [locust loadgen](https://developer.harness.io/d
 Yes, you can use [SSH chaos](/docs/chaos-engineering/use-harness-ce/chaos-faults/ssh/ssh-chaos) to inject chaos on switches, load balancers, and so on.
 
 #### Does the tool provide recommendations to fix weaknesses identified by Chaos Experimentation?
-No, HCE helps identify the failures in your application by injecting failures intentionally. This way, you can identify the failures and use other methods to address the issues identified using HCE.
+No, Harness CE helps identify the failures in your application by injecting failures intentionally. This way, you can identify the failures and use other methods to address the issues identified using Harness CE.
 
 #### What kind of Reporting is provided by the tool?
 Once you execute your chaos experiments, you can download the reports that describe the experiment details such as runs, infrastructure, resilience score, and so on. For more information, go to [resilience probes](/docs/chaos-engineering/use-harness-ce/probes/), [alerts](/docs/chaos-engineering/use-harness-ce/experiments/alert-integration) and [chaos dashboard](/docs/chaos-engineering/use-harness-ce/dashboards/).
@@ -105,10 +105,10 @@ The FAQs below are based on Harness CE entities using [Harness Delegate](/docs/c
 :::
 
 #### Do you support On-Premise Harness Control Plane?
-Yes, HCE supports the self-managed enterprise edition (SME, also known as self-managed platform or SMP). Depending on the version of HCE (SaaS or Self-Managed Platform), the control plane is hosted by Harness (for SaaS) or within your domain (for example, harness.your-domain.io). Go to [SMP](/docs/chaos-engineering/getting-started/smp/) for more information.
+Yes, Harness CE supports the self-managed enterprise edition (SME, also known as self-managed platform or SMP). Depending on the version of Harness CE (SaaS or Self-Managed Platform), the control plane is hosted by Harness (for SaaS) or within your domain (for example, harness.your-domain.io). Go to [SMP](/docs/chaos-engineering/getting-started/smp/) for more information.
 
 #### Does chaos use the Harness Delegate or does it need a separate agent?
-HCE uses the Harness Delegate to execute chaos experiments, which you can leverage to:
+Harness CE uses the Harness Delegate to execute chaos experiments, which you can leverage to:
 - Auto-create chaos experiments.
 - Improve execution speed of chaos experiments (up to 5 times).
 - Better control over chaos experiments by facilitating advanced tunables.
@@ -129,12 +129,12 @@ Permissions required to execute chaos faults are different for different platfor
 
 #### What user data is sent to and stored on the Harness platform, and for how long?
 
-HCE doesn't store any user data with respect to the chaos experiments. The details associated with the user's cluster such as the target application details (kind, labels and namespace) are limited to be used within the chaos experiment you selected/created/executed.
+Harness CE doesn't store any user data with respect to the chaos experiments. The details associated with the user's cluster such as the target application details (kind, labels and namespace) are limited to be used within the chaos experiment you selected/created/executed.
 
 #### Can the chaos pods be mapped to/assume a specific IAM role on the cloud account for fault injection?
 Yes, with cloud-based faults, chaos pods can be mapped to specific IAM roles. You have to create the IAM role on the cloud account and map it to the appropriate policy. The user's credentials should be embedded in a K8s secret before executing the faults.
 You can also create [a superset AWS policy](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to allow executing all fault types.
-For more information, go to [AWS switch profile](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile) and [workload identity setup for GCP](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/gcp-iam-integration).
+For more information, go to [AWS switch profile](https://developer.harness.io/docs/chaos-engineering/use-harness-ce/chaos-faults/aws/security-configurations/aws-switch-profile) and [workload identity setup for GCP](/docs/chaos-engineering/use-harness-ce/chaos-faults/gcp/security-configurations/gcp-iam-integration).
 
 ## Deployment model
 
@@ -142,7 +142,7 @@ For more information, go to [AWS switch profile](https://developer.harness.io/do
 Yes. With Harness Delegate, we support executing chaos across clusters from a single agent. You need to deploy your delegate in one cluster and then you can create connectors by provide master URL and access token of the other cluster and assign the same delegate to inject chaos.
 
 #### Do you have dedicated agents across target types (Linux, Windows, Kubernetes, Cloud)?
-Yes, HCE has dedicated agents for different target types such as Linux, Windows, Kubernetes, and Cloud platforms (AWS, Azure, GCP, Cloud Foundry).
+Yes, Harness CE has dedicated agents for different target types such as Linux, Windows, Kubernetes, and Cloud platforms (AWS, Azure, GCP, Cloud Foundry).
 The agents are:
 - Deployed centrally on Kubernetes to inject faults on K8s microservices;
 - Native agents for VMware using system service inside target machine;
@@ -154,12 +154,12 @@ The agents are:
 
 Go to [prerequisites](/docs/chaos-engineering/getting-started/saas/) to fulfill the requirements before onboarding. Once all the prerequisites are fulfilled, you can explore[sandbox](/docs/chaos-engineering/training/sandbox) or execute [your first chaos experiment](/docs/chaos-engineering/getting-started/saas/).
 **OR**
-If you want a head start to your journey with HCE, you can onboard HCE in two ways:
+If you want a head start to your journey with Harness CE, you can onboard Harness CE in two ways:
 - [Automated onboarding](/docs/chaos-engineering/getting-started/onboarding/automated-onboarding); and
 - [Guided onboarding](/docs/chaos-engineering/getting-started/onboarding/guided-onboarding).
 
 #### Can all the Chaos Operations be managed via APIs (agent, experiment life cycles etc.,)
-Yes, all chaos operations can be managed using APIs. For more information, go to [HCE API documentation](https://apidocs.harness.io/chaos.html).
+Yes, all chaos operations can be managed using APIs. For more information, go to [Harness CE API documentation](https://apidocs.harness.io/chaos.html).
 
 #### Are there any tutorials to get started with Chaos?
 Yes, you can start executing chaos engineering experiments in the following ways:
@@ -167,7 +167,7 @@ Yes, you can start executing chaos engineering experiments in the following ways
 - [Execute experiments using API](/docs/chaos-engineering/getting-started/saas/experiment-using-api)
 
 #### Do you provide a Sandbox environment for us to play with the tool?
-Yes, you can execute experiments in a sandbox environment. Go to [sandbox environment](/docs/chaos-engineering/training/sandbox) to play around with HCE.
+Yes, you can execute experiments in a sandbox environment. Go to [sandbox environment](/docs/chaos-engineering/training/sandbox) to play around with Harness CE.
 
 #### Can I schedule the execution of a Chaos Experiment?
 Yes, you can [schedule](/docs/chaos-engineering/use-harness-ce/experiments/create-experiments#run-or-schedule-the-experiment) chaos experiments.
@@ -186,11 +186,11 @@ Yes, you can execute all the existing chaos experiments even if no changes are m
 
 #### Will the existing Kubernetes chaos infrastructure (< 1.38.0) have to be mandatorily upgraded?
 
-No, the existing infrastructures will continue to function as usual, but HCE recommends you upgrade to version 1.38.0 or the latest version for optimized performance.
+No, the existing infrastructures will continue to function as usual, but Harness CE recommends you upgrade to version 1.38.0 or the latest version for optimized performance.
 
 #### I can't see older infrastructures (< 1.38.0) while constructing a new experiment?
 
-- Due to the recent optimization changes, HCE has removed the experiment CR and its installation from the experiment manifest. Now, all the environment variables, experiment image, imagePullPolicy, arguments, and commands will be passed directly into the chaos engine.
+- Due to the recent optimization changes, Harness CE has removed the experiment CR and its installation from the experiment manifest. Now, all the environment variables, experiment image, imagePullPolicy, arguments, and commands will be passed directly into the chaos engine.
 - However, older infrastructures that use older components (operator, chaos-runner) rely on the experiment CR to execute experiments successfully. As a result, new experiments will not be able to run on the older infrastructures.
 
 #### Can a new Kubernetes experiment run on old Kubernetes infrastructure?
@@ -209,7 +209,7 @@ No, the existing infrastructures will continue to function as usual, but HCE rec
 - If the experiment format is old, you may see `litmus-checker` and `chaos-k8s` images in the YAML. Since version 1.37.0 is the last supported version of these components, the `litmus-checker` and `chaos-k8s` are displayed with version 1.37.0. For the new experiment format, you will only see a `go-runner` image.
 
 #### Why can't I create a new experiment from the UI?
-- To create a new experiment, you need to have at least one infrastructure in version 1.38.x or higher. Hence, you can either [connect a new infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable) or [upgrade an existing one](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra).
+- To create a new experiment, you need to have at least one infrastructure in version 1.38.x or higher. Hence, you can either [connect a new infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types) or [upgrade an existing one](/docs/chaos-engineering/use-harness-ce/infrastructures/upgrade-infra).
 
 #### Is there a way to upgrade the older experiment to the new format?
 - Yes, you can manually edit the experiment manifest or create a new experiment from the UI. Older experiments will continue to work because of backward compatibility.
@@ -228,7 +228,7 @@ To learn more, go to [authentication overview](/docs/platform/authentication/aut
 
 #### How does the chaos infrastructure connect to the Harness SaaS control plane? Which ports should be opened in the users' environments?
 
-The chaos infrastructure connects to the Harness control plane through outbound connectivity over HTTP(s) using port 443. To learn more, go to [chaos infrastructures](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable).
+The chaos infrastructure connects to the Harness control plane through outbound connectivity over HTTP(s) using port 443. To learn more, go to [chaos infrastructures](/docs/chaos-engineering/use-harness-ce/chaos-faults/cloud-foundry/permissions/).
 
 #### What are the permissions and privileges required to deploy and run the chaos infrastructure?
 
@@ -316,15 +316,15 @@ When you edit an experiment that has multiple repositories, a pop up asks if you
 #### How is the chaos Agent authenticated by the Harness control plane?
 A unique Id, named cluster ID and a dedicated key (named access-key) are generated when you install the chaos agent. These two identifiers are used to authenticate the Harness control plane. Every API request made to the control plane includes these identifiers for authentication. Go to [security](/docs/chaos-engineering/security/) and [FAQ](https://developer.harness.io/kb/chaos-engineering/chaos-engineering-faq) for more details.
 
-This is applicable on HCE entities that use a dedicated infrastructure rather than the Harness Delegate, because in the case of Harness Delegate, the Delegate itself is the agent.
+This is applicable on Harness CE entities that use a dedicated infrastructure rather than the Harness Delegate, because in the case of Harness Delegate, the Delegate itself is the agent.
 
 ## Integration
 
 #### Can Harness Chaos Agents be installed via Helm Charts?
-Yes, [chaos dedicated infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable#use-helm-template-to-install-chaos-infrastructure) as well as [Harness Delegate](https://www.harness.io/blog/delegate-installation-via-helm) can be installed using Helm charts.
+Yes, [chaos dedicated infrastructure](/docs/chaos-engineering/use-harness-ce/infrastructures/types/legacy-infra/) as well as [Harness Delegate](https://www.harness.io/blog/delegate-installation-via-helm) can be installed using Helm charts.
 
 #### Can chaos experiments be triggered from [X] pipeline (Harness, Jenkins, Gitlab, Azure DevOps)?
-Yes, HCE provides integration with many tools, such as [Gitlab pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-gitlab-pipeline), [Jenkins pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-jenkins-pipeline), with [Harness CD](https://developer.harness.io/docs/category/integrate-hce-with-harness-cd), [Harness Feature Flags](https://developer.harness.io/docs/chaos-engineering/integrations/chaos-ff), and [SRM](https://developer.harness.io/docs/chaos-engineering/integrations/use-chaos-with-srm).
+Yes, Harness CE provides integration with many tools, such as [Gitlab pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-gitlab-pipeline), [Jenkins pipelines](https://developer.harness.io/docs/chaos-engineering/integrations/experiment-as-jenkins-pipeline), with [Harness CD](https://developer.harness.io/docs/category/integrate-hce-with-harness-cd), [Harness Feature Flags](https://developer.harness.io/docs/chaos-engineering/integrations/chaos-ff), and [SRM](https://developer.harness.io/docs/chaos-engineering/integrations/use-chaos-with-srm).
 
 #### Does Harness Chaos provide Resilience Probes for [X] APM (Prometheus, Dynatrace, Datadog, NewRelic, Splunk)?
 Yes, you can use resilience probes with [Prometheus](/docs/chaos-engineering/use-harness-ce/probes/prom-probe), [Dynatrace](/docs/chaos-engineering/use-harness-ce/probes/dynatrace-probe), [DataDog](/docs/chaos-engineering/use-harness-ce/probes/datadog-probe), and [NewRelic](/docs/chaos-engineering/use-harness-ce/probes/command-probe/cmd-probe-newrelic).

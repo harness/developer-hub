@@ -50,6 +50,10 @@ PRs should follow these guidelines in order to be merged successfully:
 
 - Please **Assign** a PR to yourself if you are its creator. 
 
+## Style Guide
+
+If you are contributing to HDH, make sure you are compliant with our [Style Guide](./docs/hdh/style-guide).
+
 ## Local development guide
 
 The Harness Developer Hub is powered by [Docusaurus](https://docusaurus.io/). Larger changes should be vetted locally before submitting a PR.

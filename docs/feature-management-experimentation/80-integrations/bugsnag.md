@@ -5,21 +5,25 @@ description: ""
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/5709939011085-Bugsnag <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/5709939011085-Bugsnag </button>
 </p>
+
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
 
 Split + Bugsnag is a community-supported integration. We do our best to ensure that we share only high-quality community integrations and solutions but we do not work on these projects directly, nor can we guarantee that they’re consistently maintained.
 
-**Note:** The Bugsnag integration is built and managed by Bugsnag. For questions about the integration or for technical support, contact support@bugsnag.com.
+:::info[Note]
+The Bugsnag integration is built and managed by Bugsnag. For questions about the integration or for technical support, contact support@bugsnag.com.
+:::
 
 The Bugsnag community integration with Split lets you identify which feature flags or experiment treatments are impacting the user experience within an application in real-time. With this integration, you can:
 
 **Correlate user impact with feature releases.** Once you configure Split with Bugsnag, you can set up alerts in Bugsnag to monitor how your feature flags and experiments are influencing user behavior in your application, allowing you to decide whether to roll out or roll back features in Split. 
 **Gain actionable insights.** Use Bugsnag’s Feature Dashboard to determine if unusual error activity in the application is connected to a feature flag. You can isolate errors that occur when a feature flag is enabled, so you can see what’s happening and troubleshoot your errors. Log into Split to adjust the feature flag definition.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/5709949405965/bugsnag-error.png" alt="bugsnag-error.png" />
-</p>
+![BugSnag Error](./static/bugsnag-error.png)
 
 ## Supported SDKs
 
@@ -46,18 +50,18 @@ The BugSnag errors have rich property information, and not all of it is sent to 
 
 The Split service is expected to be an AWS node.js lambda. The lambda can also be provisioned as a serverless function in another cloud, but the instructions are not provided. The installer is expected to be a Git user, have access to AWS, and understand how to provision new lambdas. It is also assumed you have both Split and BugSnag accounts.
 
-**Installing the integration at the command line**
+#### Installing the integration at the command line
 
 The following explains the command line steps for installing the integration.
 
 **Note: The repository is at [bugsnag2split](https://github.com/splitio/bugsnag2split).**
 
 Create a new directory and clone the integration code into it:
-
+```
 git clone https://github.com/splitio/bugsnag2split.git
+```
 
 Change into the new bugsnag2split directory. Create a new SPLIT_API_KEY file:
-
 ```
 touch SPLIT_API_KEY
 ```

@@ -107,4 +107,12 @@ export const university: CardItem[] = [
     SPT_available: true,
     ILT_available: true,
   },
+    {
+    title: "Supply Chain Security",
+    module: MODULES.ssca,
+    description:
+      "Secure your SDLC and align them with industry-standard risk frameworks.",
+    link: "/university/scs",
+    SPT_available: true,
+  },
 ];

@@ -473,6 +473,70 @@ Max concurrency changes based on the following:
 * If you select **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of environments or infrastructures.
 * If you select **Deploy services in parallel** and **Deploy to Environments or Infrastructures in parallel**, Max concurrency is equal to the number of services multiplied by the number of environments.
 
+## Custom Max Concurrency
+
+You can specify a custom **Max Concurrency** for multi-service deployment stages. This allows you to control the maximum number of services that can be deployed simultaneously.
+
+:::note
+
+Currently, this feature is behind the feature flag `CDS_CUSTOM_MAX_CONCURRENCY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+**How custom max concurrency works**
+
+- **Default Behavior**: By default, Harness calculates the **max concurrency** based on the number of services or environments involved in the deployment. However, you can override this default with a custom value.
+
+- **Final Max Concurrency**: The final **max concurrency** will be determined by the **minimum value** between:
+  - The custom **max concurrency** value you provide in the configuration.
+  - The value automatically calculated by Harness based on the number of services or environments.
+
+**Navigating to the custom max concurrency setting**
+
+1. In your **Pipeline Studio**, select the stage where you want to use the **max concurrency** setting.
+2. Navigate to the **Advanced** tab.
+3. In the **MultiDeployment Failure Strategy** section, configure your custom value in the **Max Concurrency (optional)** field.
+
+This will allow you to control how many services can be deployed concurrently during the multi-service deployment.
+
+<div align="center">
+  <DocImage path={require('./static/custom-max-concurrency.png')} width="70%" height="70%" title="Click to view full size image" />
+</div>
+
+**Example Use Case**
+
+Let’s say your team is deploying 5 microservices to an **Amazon ECS cluster** using a multi-service deployment stage in Harness. Running all 5 deployments in parallel might overload the ECS cluster or the Harness delegate, potentially causing deployment instability.
+
+To mitigate this, you can set `Max Concurrency` to 2, which limits the number of services deployed in parallel to just two at a time.
+
+<details>
+<summary>Sample YAML for Custom Max Concurrency</summary>
+```yaml
+          services:
+            values:
+              - serviceRef: K8s_ecs_service_1
+                serviceInputs:
+                  . . .
+              - serviceRef: K8s_ecs_service_2
+                serviceInputs:
+                  . . .
+              - serviceRef: K8s_ecs_service_3
+                serviceInputs:
+                  . . .
+              - serviceRef: K8s_ecs_service_4
+                serviceInputs:
+                  . . .
+              - serviceRef: K8s_ecs_service_5
+                serviceInputs:
+                  . . .
+            metadata:
+              parallel: false
+          multiDeploymentConfig:
+            maxConcurrency: 2
+        tags: {}
+```
+</details>
+
 ## Naming Stages Using Matrix Labels
 
 Harness supports naming stages using Matrix Labels, which can improve readability and organization in deployments involving multiple services or environments. This feature allows you to use the names of matrix indices as labels instead of default indices.

@@ -8,6 +8,10 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360035207311-Heap </button>
 </p>
 
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
+
 ## Split + Heap
 
 Split impressions describe the treatment that each user receives when a feature flag is evaluated. Attach flag names and treatments as Heap events properties for a user's session.
@@ -16,8 +20,8 @@ Split impressions describe the treatment that each user receives when a feature 
 
 To connect Heap to Split, you need the following, 
 
-* Split’s Javascript SDK evaluating feature flag treatments' client side
-* Heap’s Web Javascript snippet
+* Split’s JavaScript SDK evaluating feature flag treatments' client side
+* Heap’s Web JavaScript snippet
 
 ## How to use
 
@@ -41,17 +45,13 @@ A prefix of "split." is added to each feature flag name in the below example to 
 
 Click a pageview event and view event properties.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360060466152/split_heap_1.png" alt="split_heap_1.png" />
-</p>
+<div style={{maxWidth:500}}> ![](./static/heap-event-properties.png) </div>
 
 ### Analyze Heap data by Split treatments 
 
 Create a graph of the count of page views filtering by Split feature flag names and treatments. Group by the flag name to see the count by treatment.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/360060628531/split_heap_2.png" alt="split_heap_2.png" />
-</p>
+![](./static/heap-graph.png)
 
 ## Code
 

@@ -46,7 +46,7 @@ pip install 'splitio_client[cpphash]==10.2.0'
 Starting in version `8.0.0`, readiness has been migrated to a two part implementation. See below for syntax changes you must make if upgrading your SDK to the newest version.
 :::
 
-When the SDK is instantiated in `in-memory` mode, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK doesn't fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the SDK is instantiated in `in-memory` mode, it kicks off background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK doesn't fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready.
 Since version `8.0.0` This is done by calling the `.block_until_ready()` method in the factory object.
@@ -54,7 +54,7 @@ This method also accepts a maximum time (in seconds or fractions of it) to wait 
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Configure the SDK with the SDK key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ```python title="Python"
 from splitio import get_factory
@@ -145,19 +145,25 @@ Use `pip install` to install the SDK. Note that the package is different for sta
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```bash
 pip install 'splitio_client[redis,cpphash]==10.2.0'
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```bash
 pip install 'splitio_client[redis,cpphash,asyncio]==10.2.0'
 ```
+
 </TabItem>
 <TabItem value="Django">
+
 ```bash
 pip install django_splitio[redis]==2.4.0
 ```
+
 </TabItem>
 </Tabs>
 
@@ -167,7 +173,7 @@ Since version `2.0.0` of the split-synchronizer, we use a more efficient scheme 
 
 #### 2. Set up the Split Synchronizer
 
-Set up the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) to sync data to a Redis cache. Follow the steps in the [set up article](https://help.split.io/hc/en-us/articles/360019686092), then come back to this doc and go to step 3 to instantiate the client, below.
+Set up the [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) to sync data to a Redis cache. Follow the steps in the [set up article](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer), then come back to this doc and go to step 3 to instantiate the client, below.
 
 #### 3. Instantiate the SDK factory client with Redis enabled
 
@@ -177,6 +183,7 @@ To instantiate the SDK factory client, copy and paste the code snippet below int
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```python
 from splitio import get_factory
 
@@ -194,8 +201,10 @@ config = {
 factory = get_factory('YOUR_SDK_KEY', config=config)
 split = factory.client()
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```python
 from splitio import get_factory_async
 
@@ -217,8 +226,10 @@ async def main():
 loop = asyncio.new_event_loop()
 loop.run_until_complete(main())
 ```
+
 </TabItem>
 <TabItem value="Django">
+
 ```python
 ## In your django config:
 INSTALLED_APPS = (
@@ -248,6 +259,7 @@ from django_splitio import get_factory
 factory = get_factory()
 client = factory.client()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -266,6 +278,7 @@ Use the following configuration for Redis in Sentinel mode.
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```python
 from splitio import get_factory
 
@@ -280,8 +293,10 @@ config = {
 factory = get_factory('SDK_KEY', config=config)
 split = factory.client()
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```python
 from splitio import get_factory_async
 
@@ -300,8 +315,10 @@ async def main():
 loop = asyncio.new_event_loop()
 loop.run_until_complete(main())
 ```
+
 </TabItem>
 <TabItem value="Django">
+
 ```python
 ## In your django config:
 INSTALLED_APPS = (
@@ -330,6 +347,7 @@ from django_splitio import get_factory
 factory = get_factory()
 client = factory.client()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -369,6 +387,7 @@ uwsgi --http :8080 --chdir /var/app --wsgi-file ${WSGI_PATH} ${UWSGI_MODULE} --m
 
 <Tabs groupId="python-mode">
 <TabItem value="Standard Python">
+
 ```python
 import logging
 import uwsgi
@@ -394,8 +413,10 @@ def post_fork_execution():
 
 ## more code ...
 ```
+
 </TabItem>
 <TabItem value="Django">
+
 ```python
 ## In your django config:
 INSTALLED_APPS = (
@@ -441,6 +462,7 @@ def post_fork():
 ## more code ...
 
 ```
+
 </TabItem>
 </Tabs>
 
@@ -452,10 +474,11 @@ For further reading about uwsgi decorators and postfork you can take a look at t
 
 After you instantiate the SDK factory client, you can start using the `get_treatment` method of the SDK factory client to decide what version of your feature flags your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you want to serve the feature to.
 
-From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+From there, you simply need to use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```python
 ## The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
 treatment = split.get_treatment('key', 'FEATURE_FLAG_NAME')
@@ -467,8 +490,10 @@ elif treatment == "off":
 else:
     ## insert your control treatment code here
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```python
 ## The key here represents the ID of the user/account/etc you're trying to evaluate a treatment for
 treatment = await split.get_treatment('key', 'FEATURE_FLAG_NAME')
@@ -480,6 +505,7 @@ elif treatment == "off":
 else:
     ## insert your control treatment code here
 ```
+
 </TabItem>
 </Tabs>
 
@@ -489,7 +515,7 @@ If the `key` attribute is something other than `string`, Python SDK returns `CON
 
 ### Attribute syntax
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `get_treatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `get_treatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `get_treatment` call. These attributes are compared and evaluated against the attributes used in the rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -503,6 +529,7 @@ The `get_treatment` method supports five types of attributes: strings, numbers, 
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```python
 import arrow
 from splitio import get_factory
@@ -525,8 +552,10 @@ elif treatment == "off":
 else:
     ## insert control code here
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```python
 import arrow
 from splitio import get_factory_async
@@ -553,6 +582,7 @@ async def main():
 loop = asyncio.new_event_loop()
 loop.run_until_complete(main())
 ```
+
 </TabItem>
 </Tabs>
 
@@ -567,25 +597,31 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="get_treatments">
+
 ```python
 treatments = split.get_treatments('key', ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'])
 
 print(treatments)
 ```
+
 </TabItem>
 <TabItem value="get_treatments_by_flag_set">
+
 ```python
 treatments = split.get_treatments_by_flag_set('key', 'backend')
 
 print(treatments)
 ```
+
 </TabItem>
 <TabItem value="get_treatments_by_flag_sets">
+
 ```python
 treatments = split.get_treatments_by_flag_sets('key', ['backend', 'server_side'])
 
 print(treatments)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -593,31 +629,37 @@ print(treatments)
 
 <Tabs>
 <TabItem value="get_treatments">
+
 ```python
 treatments = await split.get_treatments('key', ['FEATURE_FLAG_NAME_1', 'FEATURE_FLAG_NAME_2'])
 
 print(treatments)
 ```
+
 </TabItem>
 <TabItem value="get_treatments_by_flag_set">
+
 ```python
 treatments = await split.get_treatments_by_flag_set('key', 'backend')
 
 print(treatments)
 ```
+
 </TabItem>
 <TabItem value="get_treatments_by_flag_sets">
+
 ```python
 treatments = await split.get_treatments_by_flag_sets('key', ['backend', 'server_side'])
 
 print(treatments)
 ```
+
 </TabItem>
 </Tabs>
 
 ### Get Treatments with Configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `get_treatment_with_config` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `get_treatment_with_config` method.
 
 This method will return an object containing the treatment and associated configuration.
 
@@ -627,6 +669,7 @@ This method takes the exact same set of arguments as the standard `get_treatment
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```python
 
 treatment, raw_config = client.get_treatment_with_config('key', 'FEATURE_FLAG_NAME', attributes)
@@ -639,8 +682,10 @@ else if treatment == 'off':
 else:
     ## insert control code here
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```python
 
 treatment, raw_config = await client.get_treatment_with_config('key', 'FEATURE_FLAG_NAME', attributes)
@@ -653,6 +698,7 @@ else if treatment == 'off':
 else:
     ## insert control code here
 ```
+
 </TabItem>
 </Tabs>
 
@@ -663,6 +709,7 @@ These methods take the exact same arguments as the [get_treatments](#multiple-ev
 
 <Tabs>
 <TabItem value="get_treatments_with_config">
+
 ```python
 feature_flag_names = ['FEATURE_FLAG_1', 'FEATURE_FLAG_2']
 split_results = client.get_treatments_with_config('key', feature_flag_names)
@@ -673,8 +720,10 @@ split_results = client.get_treatments_with_config('key', feature_flag_names)
  ##   'FEATURE_FLAG_2': ('v2', '{"copy": "better copy"}')
  ## }
 ```
+
 </TabItem>
 <TabItem value="get_treatments_with_config_by_flag_set">
+
 ```python
 attributes = {}
 result = split.get_treatments_with_config_by_flag_set('key', 'backend', attributes)
@@ -683,8 +732,10 @@ for feature_flag, treatment_with_config in result.items():
   configs = treatment_with_config[1]
   print("Feature: %s, Treatment: %s, Config: %s" % (feature_flag, treatment, configs))
 ```
+
 </TabItem>
 <TabItem value="get_treatments_with_config_by_flag_sets">
+
 ```python
 attributes = {}
 result = split.get_treatments_with_config_by_flag_sets('key', 'backend', attributes)
@@ -693,6 +744,7 @@ for feature_flag, treatment_with_config in result.items():
   configs = treatment_with_config[1]
   print("Feature: %s, Treatment: %s, Config: %s" % (feature_flag, treatment, configs))
 ```
+
 </TabItem>
 </Tabs>
 
@@ -700,6 +752,7 @@ for feature_flag, treatment_with_config in result.items():
 
 <Tabs>
 <TabItem value="get_treatments_with_config">
+
 ```python
 feature_flag_names = ['FEATURE_FLAG_1', 'FEATURE_FLAG_2']
 split_results = await client.get_treatments_with_config('key', feature_flag_names)
@@ -710,8 +763,10 @@ split_results = await client.get_treatments_with_config('key', feature_flag_name
  ##   'FEATURE_FLAG_2': ('v2', '{"copy": "better copy"}')
  ## }
 ```
+
 </TabItem>
 <TabItem value="get_treatments_with_config_by_flag_set">
+
 ```python
 attributes = {}
 result = await split.get_treatments_with_config_by_flag_set('key', 'backend', attributes)
@@ -720,8 +775,10 @@ for feature_flag, treatment_with_config in result.items():
   configs = treatment_with_config[1]
   print("Feature: %s, Treatment: %s, Config: %s" % (feature_flag, treatment, configs))
 ```
+
 </TabItem>
 <TabItem value="get_treatments_with_config_by_flag_sets">
+
 ```python
 attributes = {}
 result = await split.get_treatments_with_config_by_flag_sets('key', ['backend'], attributes)
@@ -730,6 +787,7 @@ for feature_flag, treatment_with_config in result.items():
   configs = treatment_with_config[1]
   print("Feature: %s, Treatment: %s, Config: %s" % (feature_flag, treatment, configs))
 ```
+
 </TabItem>
 </Tabs>
 
@@ -746,18 +804,22 @@ The user can for example choose to block the application until destroy() has fin
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```python
 stop_event = threading.Event()
 factory.destroy(stop_event)
 stop_event.wait()
 sys.exit(0)
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```python
 await factory.destroy()
 sys.exit(0)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -791,6 +853,7 @@ In the case that a bad input has been provided, you can read more about our SDK'
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```python
 # If you would like to send an event without a value
 trackEvent = client.track("key", "TRAFFIC_TYPE", "EVENT_TYPE")
@@ -815,8 +878,10 @@ properties = {
 }
 trackEvent = client.track("key", "TRAFFIC_TYPE", "EVENT_TYPE", 83.334, properties)
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```python
 # If you would like to send an event without a value
 trackEvent = await client.track("key", "TRAFFIC_TYPE", "EVENT_TYPE")
@@ -841,6 +906,7 @@ properties = {
 }
 trackEvent = await client.track("key", "TRAFFIC_TYPE", "EVENT_TYPE", 83.334, properties)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -895,6 +961,7 @@ Note that if you are using Standard Python, you pass the configuration parameter
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```python
 from splitio import get_factory
 
@@ -910,8 +977,10 @@ configuration = {
 factory = get_factory('YOUR_SDK_KEY', config=configuration)
 split = factory.client()
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```python
 from splitio import get_factory_async
 
@@ -931,8 +1000,10 @@ async def main():
 loop = asyncio.new_event_loop()
 loop.run_until_complete(main())
 ```
+
 </TabItem>
 <TabItem value="Django">
+
 ```python
 SPLITIO = {
     'apiKey': 'YOUR_SDK_KEY',
@@ -949,6 +1020,7 @@ SPLITIO = {
     'impressionsRefreshRate' : 60,
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -978,6 +1050,7 @@ The following splitFile is a JSON that represents a SplitChange:
 
 <Tabs>
 <TabItem value="SplitChange Schema">
+
 ```python
 class SplitChange(object):
     """SplitChange class"""
@@ -997,8 +1070,10 @@ class SplitChange(object):
     """return till epoch time"""
         return self._till
 ```
+
 </TabItem>
 <TabItem value="Split Schema">
+
 ```python
 class Split(object):
     """Split model object."""
@@ -1058,8 +1133,10 @@ class Split(object):
         """Return the traffic allocation seed of the feature flag."""
         return self._traffic_allocation_seed
 ```
+
 </TabItem>
 <TabItem value="JSON example">
+
 ```json
 {
   "splits": [
@@ -1153,6 +1230,7 @@ class Split(object):
   "till": 1660326991072
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1162,6 +1240,7 @@ The provided segment directory must have the JSON files of the corresponding seg
 
 <Tabs>
 <TabItem value="SegmentChange Schema">
+
 ```python
 class SegmentChange(object):
     """SegmentChange object class."""
@@ -1191,8 +1270,10 @@ class SegmentChange(object):
     """return till epoch time"""
         return self._till
 ```
+
 </TabItem>
 <TabItem value="JSON example">
+
 ```json
 {
   "name": "segment_1",
@@ -1205,12 +1286,14 @@ class SegmentChange(object):
   "till": 1585948850110
 }
 ```
+
 </TabItem>
 </Tabs>
 
 **Init example**
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```python
 config = {
             'splitFile': 'parentRoot/splits.json',
@@ -1225,8 +1308,10 @@ except TimeoutException:
     print("SDK TIMED OUT")
 
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```python
 from splitio import get_factory_async
 
@@ -1247,6 +1332,7 @@ loop = asyncio.new_event_loop()
 loop.run_until_complete(main())
 
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1279,14 +1365,17 @@ In the example above, we have 3 entries:
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```python
 from splitio import get_factory
 
 factory = get_factory('localhost')
 split = factory.client()
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```python
 from splitio import get_factory_async
 
@@ -1297,6 +1386,7 @@ async def main():
 loop = asyncio.new_event_loop()
 loop.run_until_complete(main())
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1329,6 +1419,7 @@ The Manager then has the following methods available.
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```python
 class SplitManager(object):
     def split_names(self):
@@ -1352,8 +1443,10 @@ class SplitManager(object):
         """
         raise NotImplementedError()
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```python
 class SplitManagerAsync(object):
     async def split_names(self):
@@ -1377,6 +1470,7 @@ class SplitManagerAsync(object):
         """
         raise NotImplementedError()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1403,6 +1497,7 @@ Here is an example of how implement a custom impression listener.
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```python
 # Import ImpressionListener interface
 from splitio.impressions import ImpressionListener
@@ -1414,8 +1509,10 @@ class CustomImpressionListener(ImpressionListener)
     ## Custom behavior
 }
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```python
 # Import ImpressionListener interface
 from splitio.impressions import ImpressionListener
@@ -1427,6 +1524,7 @@ class CustomImpressionListener(ImpressionListener)
     # Custom behavior
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -1436,6 +1534,7 @@ Here is an example of how to implement a custom impression listener.
 
 <Tabs groupId="python-mode">
 <TabItem value="Multi-threaded">
+
 ```python
 from splitio import get_factory
 
@@ -1449,8 +1548,10 @@ factory = get_factory(
 )
 split = factory.client()
 ```
+
 </TabItem>
 <TabItem value="asyncio">
+
 ```python
 from splitio import get_factory_async
 
@@ -1468,6 +1569,7 @@ async def main():
 loop = asyncio.new_event_loop()
 loop.run_until_complete(main())
 ```
+
 </TabItem>
 </Tabs>
 

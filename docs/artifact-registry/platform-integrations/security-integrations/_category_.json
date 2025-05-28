@@ -1,0 +1,8 @@
+{
+    "label": "Security Integrations",
+    "collapsible": "true",
+    "collapsed": "true",
+    "link": { "type": "generated-index", "title": "Security Integrations" },
+    "customProps": {},
+    "position": 50
+  }

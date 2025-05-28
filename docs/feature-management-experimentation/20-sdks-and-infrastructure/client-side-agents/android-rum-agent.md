@@ -28,14 +28,18 @@ Import the Agent into your project with the following line:
 
 <Tabs>
 <TabItem value="Gradle Groovy">
+
 ```groovy
 implementation 'io.split.client:android-rum-agent:0.4.0'
 ```
+
 </TabItem>
 <TabItem value="Gradle Kotlin DSL">
+
 ```kotlin
 implementation("io.split.client:android-rum-agent:0.4.0")
 ```
+
 </TabItem>
 </Tabs>
 
@@ -61,14 +65,18 @@ Alternatively, you can call the `setup` method on the `SplitRumAgent` object. Th
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitRumAgent.setup("YOUR_SDK_KEY");
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 SplitRumAgent.setup("YOUR_SDK_KEY")
 ```
+
 </TabItem>
 </Tabs>
 
@@ -82,6 +90,7 @@ The RUM Agent provides methods to manage Identities, as shown below:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 // add one Identity
 SplitRumAgent.addIdentity(new Identity("my_user", "user"));
@@ -98,8 +107,10 @@ SplitRumAgent.removeIdentity(new Identity("my_user", "user"));
 // remove all Identities
 SplitRumAgent.removeIdentities();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // add one Identity
 SplitRumAgent.addIdentity(Identity("my_user", "user"))
@@ -116,6 +127,7 @@ SplitRumAgent.removeIdentity(Identity("my_user", "user"))
 // remove all Identities
 SplitRumAgent.removeIdentities()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -157,6 +169,7 @@ Configuration specified programatically:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitRumConfiguration config = new SplitRumConfiguration.Builder()
   .setPrefix("pre")
@@ -165,8 +178,10 @@ SplitRumConfiguration config = new SplitRumConfiguration.Builder()
 
 SplitRumAgent.setup("YOUR_SDK_KEY", config);
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 val config = SplitRumConfiguration.Builder()
   .setPrefix("pre")
@@ -175,6 +190,7 @@ val config = SplitRumConfiguration.Builder()
 
   SplitRumAgent.setup("YOUR_SDK_KEY", config)
 ```
+
 </TabItem>
 </Tabs>
 
@@ -219,6 +235,7 @@ Custom properties can be also added to a tracked event, as shown below:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 // add a single property
 SplitRumAgent.setProperty("property_name", "property_value");
@@ -238,8 +255,10 @@ SplitRumAgent.removeProperty("property_name_2");
 // remove all properties
 SplitRumAgent.removeProperties();
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // add a single property
 SplitRumAgent.setProperty("property_name", "property_value")
@@ -261,6 +280,7 @@ SplitRumAgent.removeProperty("property_name_2")
 // remove all properties
 SplitRumAgent.removeProperties()
 ```
+
 </TabItem>
 </Tabs>
 
@@ -276,6 +296,7 @@ Using the `track` methods:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 Map<String, Object> properties = new HashMap<>();
 properties.put("property_name", "property_value");
@@ -292,8 +313,10 @@ SplitRumAgent.track("event_type_id", properties);
 // Track event with value and properties
 SplitRumAgent.track("event_type_id", 100L, properties);
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 // Track event
 SplitRumAgent.track("event_type_id")
@@ -307,6 +330,7 @@ SplitRumAgent.track("event_type_id", mapOf("property_name" to "property_value"))
 // Track event with value and properties
 SplitRumAgent.track("event_type_id", 100, mapOf("property_name" to "property_value"))
 ```
+
 </TabItem>
 </Tabs>
 
@@ -314,14 +338,18 @@ Using the `trackError` method:
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitRumAgent.trackError(new Throwable("my_error"));
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 SplitRumAgent.trackError(Throwable("my_error"))
 ```
+
 </TabItem>
 </Tabs>
 
@@ -329,14 +357,18 @@ Using the `trackTimeFromStart` method. This method generates an event which valu
 
 <Tabs groupId="java-kotlin-choice">
 <TabItem value="java" label="Java">
+
 ```java
 SplitRumAgent.trackTimeFromStart("content_loaded");
 ```
+
 </TabItem>
 <TabItem value="kotlin" label="Kotlin">
+
 ```kotlin
 SplitRumAgent.trackTimeFromStart("content_loaded")
 ```
+
 </TabItem>
 </Tabs>
 

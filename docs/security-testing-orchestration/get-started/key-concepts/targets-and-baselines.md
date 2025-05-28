@@ -18,7 +18,7 @@ This topic discusses the following STO topics:
 ### Targets
 
 
-import StoConceptTargets from '../shared/_targets.md';
+import StoConceptTargets from '../shared/targets.md';
 
 
 <StoConceptTargets />
@@ -33,7 +33,7 @@ import StoConceptTargets from '../shared/_targets.md';
 ### Variants
 
 
-import StoConceptVariants from '/docs/security-testing-orchestration/get-started/shared/_variants.md';
+import StoConceptVariants from '/docs/security-testing-orchestration/get-started/shared/variants.md';
 
 
 <StoConceptVariants />
@@ -41,14 +41,14 @@ import StoConceptVariants from '/docs/security-testing-orchestration/get-started
 ### Baselines
 
 
-import StoConceptBaselines from '/docs/security-testing-orchestration/get-started/shared/_baselines.md';
+import StoConceptBaselines from '/docs/security-testing-orchestration/get-started/shared/baselines.md';
 
 
 <StoConceptBaselines />
 
 ### Is an issue unique to the variant or common to the baseline? 
 
-Every STO pipeline execution has a [Security Tests tab](/docs/security-testing-orchestration/dashboards/view-scan-results) with separate lists of issues that make it easy to determine
+Every STO pipeline execution has a [Security Tests tab](/docs/security-testing-orchestration/view-security-test-results/view-scan-results) with separate lists of issues that make it easy to determine
 
 - Issues only in the variant.
 - Issues common to the variant and the baseline.
@@ -68,7 +68,7 @@ If you scanned the baseline, or the baseline isn't defined, you'll see
 
 ### Every target needs a baseline
 
-import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/_why-define-baselines.md';
+import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/why-define-baselines.md';
 
 <StoWhyDefineBaselines />
 

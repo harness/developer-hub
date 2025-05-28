@@ -6,7 +6,7 @@ sidebar_position: 17
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/22256278916621-Using-flag-sets-to-boost-SDK-performance <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/22256278916621-Using-flag-sets-to-boost-SDK-performance </button>
 </p>
 
 Flag sets allow you to group FME feature flag definitions that logically belong together. You can configure FME SDK to download a flag set (the subset of your feature flag definitions that you need to evaluate on your client) rather than all of your flags defined in a Harness FME Environment. Flag sets allow you to minimize bandwidth and memory usage, boost app responsiveness, and effectively reduce latency and CPU demands.
@@ -23,9 +23,7 @@ To use flag sets you need to:
 
    For example, given three flags named `experiment_1`, `experiment_2` and `experiment_3`, the flag definition scoped to the Production environment for `experiment_1` can be associated with the flag set `backend`, while the definitions scoped to the Production environment for `experiment_2` and `experiment_3` can be associated with the flag set `frontend`.
 
-   <p class="wysiwyg-indent4">
-      <img src="https://help.split.io/hc/article_attachments/30744719369229" alt="using_flag_sets_to_boost_sdk_performance.png" width="646" />
-   </p>
+    ![](./static/using-flagsets-to-boost-sdk-performance.png)
 
 3. Configure your SDK to filter by flag set
 
@@ -33,17 +31,17 @@ To use flag sets you need to:
 
    All SDKs and the Split Evaluator support flag sets. To find out how to use flag sets in your code, look through the documentation for the language of your project:
 
-    * Android [docs](https://help.split.io/hc/en-us/articles/360020343291-Android-SDK#flag-sets) 
-    * Go [docs](https://help.split.io/hc/en-us/articles/360020093652#flag-sets) 
-    * iOS [docs](https://help.split.io/hc/en-us/articles/360020401491#flag-sets)
-    * Java [docs](https://help.split.io/hc/en-us/articles/360020405151#flag-sets)
-    * JavaScript [docs](https://help.split.io/hc/en-us/articles/360020448791#flag-sets)
-    * .NET [docs](https://help.split.io/hc/en-us/articles/360020240172#flag-sets)
-    * Node.js [docs](https://help.split.io/hc/en-us/articles/360020564931#flag-sets)
-    * PHP [docs](https://help.split.io/hc/en-us/articles/360020350372#flag-sets)
-    * Python [docs](https://help.split.io/hc/en-us/articles/360020359652#flag-sets)
-    * Ruby [docs](https://help.split.io/hc/en-us/articles/360020673251#flag-sets) 
-    * Split Evaluator [docs](https://help.split.io/hc/en-us/articles/360020037072#flag-sets)
+    * Android [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk) 
+    * Go [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk) 
+    * iOS [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk)
+    * Java [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk)
+    * JavaScript [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk)
+    * .NET [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk)
+    * Node.js [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk)
+    * PHP [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-sdk)
+    * Python [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk)
+    * Ruby [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk) 
+    * Split Evaluator [docs](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator)
 
 4. Stay within the limits of your tier
 
@@ -55,5 +53,5 @@ To use flag sets you need to:
    | per feature flag definition * | Service | 3 | 3 | 5 | 5 | 5 |
    | filtered by a single SDK instance | Service | 10 | 10 | 10 | 10 | 10 |
 
-* An FME feature flag can have a definition for each Environment in your Project. For more information see [Create a feature flag](https://help.split.io/hc/en-us/articles/9058495582349-Create-a-feature-flag).
+* An FME feature flag can have a definition for each Environment in your Project. For more information see [Create a feature flag](/docs/feature-management-experimentation/feature-management/create-a-feature-flag).
 

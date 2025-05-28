@@ -26,7 +26,7 @@ This tutorial shows you how to use the Harness Security Testing Orchestration (S
 In addition to a Harness account, this tutorial requires the following:
 
 - A Harness account and STO module license.
-- You need to have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#add-security-testing-roles) assigned to your user profile.
+- You need to have a [Security Testing Developer or AppSec role](/docs/security-testing-orchestration/get-started/onboarding-guide/#add-security-testing-roles) assigned to your user profile.
 - You also need a GitHub account and a [connector](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-a-codebase-connector) to your GitHub account.
   This tutorial uses an [example codebase on GitHub](https://github.com/williamwissemann/dvpwa) that contains known vulnerabilities.
 
@@ -46,7 +46,7 @@ You'll learn how to:
 <details open>
 <summary> Review: what's supported in Harness STO</summary>
 
-Go to [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported) for information about all supported STO features, infrastructures, and third-party scanners.
+Go to [What's supported in Harness STO](/docs/security-testing-orchestration/whats-supported/sto-deployments) for information about all supported STO features, infrastructures, and third-party scanners.
 
 </details>
 
@@ -321,11 +321,11 @@ The pipeline now fails because the Bandit step is now configured to fail on any 
 Exited with message: fail_on_severity is set to critical and that threshold was reached.
 ```
 
-## Developer/Secops workflow: exemptions for specific issues
+## Developer/AppSec workflow: exemptions for specific issues
 
 import account_user_settings from './static/your-first-pipeline/go-to-account-user-settings.png'
 import return_to_project from './static/your-first-pipeline/switch-from-account-to-project.png'
-import confirm_secops_role from './static/your-first-pipeline/confirm-secops-role.png'
+import confirm_appsec_role from './static/your-first-pipeline/confirm-appsec-role.png'
 import request_exemption from './static/your-first-pipeline/request-exemption.png'
 import request_exemption_details from './static/your-first-pipeline/request-exemption-details.png'
 import approve_exemption_requests from './static/your-first-pipeline/approve-exemption-requests.png'
@@ -337,17 +337,17 @@ import cancel_exemption_requests from './static/your-first-pipeline/cancel-exemp
 
 You can exempt known issues from `fail_on_severity` so that they don't stop the pipeline even when a scan detects them. The following steps outline the workflow:
 
-1. A developer requests an exemption for a specific issue and forwards the request to a SecOps user.
+1. A developer requests an exemption for a specific issue and forwards the request to a AppSec user.
 
-2. The SecOps user approves the request or rejects it. Developer users can request exemptions, but only SecOps users can approve them.
+2. The AppSec user approves the request or rejects it. Developer users can request exemptions, but only AppSec users can approve them.
 
 3. If the exemption is approved, and a future scan detects the exempted issue, the pipeline execution will not fail even if the issue meets the `fail_on_severity` threshold.
 
 </details>
 
-In this section, you'll create an exemption as a developer and then approve it as a SecOps user. (In many real-world scenarios, two separate people will be performing the workflow.)
+In this section, you'll create an exemption as a developer and then approve it as a AppSec user. (In many real-world scenarios, two separate people will be performing the workflow.)
 
-1. Make sure that you have the SecOps role assigned to yourself:
+1. Make sure that you have the AppSec role assigned to yourself:
 
    1. Select the account link (left-most breadcrumb at the top). Then go to **Account Settings** (left menu) and select **Access Control**.
 
@@ -356,9 +356,9 @@ In this section, you'll create an exemption as a developer and then approve it a
 
    2. In the **Users** table, select your user profile.
    3. Under Role Bindings, select **+Manage Role**.
-   4. Make sure that you have the **Security Testing SecOps** role assigned to yourself.
+   4. Make sure that you have the **Security Testing AppSec** role assigned to yourself.
 
-     <img src={confirm_secops_role} alt="Return to project" height="50%" width="50%" />
+     <img src={confirm_appsec_role} alt="Return to project" height="50%" width="50%" />
 
 
 2. Go back to your project: Select your STO account in the left menu, then select **Project**, and then select the project with your STO pipeline.
@@ -420,7 +420,7 @@ In this tutorial, you've learned how to:
 3. Analyze scan results
 4. Use the data collected by STO to pinpoint and fix vulnerabilities _before_ you merge your code updates.
 5. Configure `fail_on_severity` to fail a pipeline execution if a scan detects a vulnerability with the specified severity or higher.
-6. Request a exemption for a specific vulnerability (if you're a developer) and approve an exemption (if you're a SecOps person).
+6. Request a exemption for a specific vulnerability (if you're a developer) and approve an exemption (if you're a AppSec person).
 
 ## Next steps
 
@@ -438,7 +438,7 @@ For some examples of integrated workflows, go to:
 
 ### Add more scanner steps
 
-STO supports an extensive set of external scanners for repos, images, and artifacts. Go to [What's supported](/docs/security-testing-orchestration/whats-supported).
+STO supports an extensive set of external scanners for repos, images, and artifacts. Go to [What's supported](/docs/security-testing-orchestration/whats-supported/sto-deployments).
 
 ### Add governance policies
 

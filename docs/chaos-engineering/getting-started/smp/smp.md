@@ -22,7 +22,6 @@ The table below outlines the roadmap for the Harness Self-Managed Enterprise Edi
 To install SMP in an air-gapped environment, go to [SMP in air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 :::
 
-
 For more information, go to [What's supported](/docs/chaos-engineering/whats-supported.md).
 
 For information on feature releases, go to [SMP Release Notes](/release-notes/self-managed-enterprise-edition).

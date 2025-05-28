@@ -5,7 +5,7 @@ sidebar_position: 14
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360023097211-Ruby-SDK-Error-uninitialized-constant-error-caused-by-Process-RLIMIT-NOFILE-in-lib-net-http-persistent-rb </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360023097211-Ruby-SDK-Error-uninitialized-constant-error-caused-by-Process-RLIMIT-NOFILE-in-lib-net-http-persistent-rb </button>
 </p>
 
 ## Problem

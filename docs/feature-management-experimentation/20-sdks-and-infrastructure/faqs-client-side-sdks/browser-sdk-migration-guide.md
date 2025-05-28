@@ -5,7 +5,7 @@ sidebar_position: 6
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020863412-General-SDK-Always-getting-control-treatments </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020863412-General-SDK-Always-getting-control-treatments </button>
 </p>
 
 Refer to this document to check API differences and migration details for moving from **JavaScript SDK v10.15.x** using [NPM](https://www.npmjs.com/package/@splitsoftware/splitio) or [Github](https://github.com/splitio/javascript-client) to **Browser SDK v0.1.x** using [NPM](https://www.npmjs.com/package/@splitsoftware/splitio-browserjs) or [Github](https://github.com/splitio/javascript-browser-client). 

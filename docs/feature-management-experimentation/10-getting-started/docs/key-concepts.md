@@ -33,7 +33,7 @@ Once your code is deployed, you can instantly turn on or off features for any in
 FME provides visibility into your controlled releases by comparing data about feature flag evaluations with data about what happened after those evaluations. The data points that feed those comparisons are impressions and events. The results of those comparisons are called metrics.
 
 ### Impressions
-An impression is a record of a targeting decision made. It is created automatically each time a feature flag is evaluated and contains details about the user or unique key for which the evaluation was performed, the targeting decision, the targeting rule that drove that decision, and a time stamp. Refer to the [Impressions](https://help.split.io/hc/en-us/articles/360020585192-Impressions) guide for more information.
+An impression is a record of a targeting decision made. It is created automatically each time a feature flag is evaluated and contains details about the user or unique key for which the evaluation was performed, the targeting decision, the targeting rule that drove that decision, and a time stamp. Refer to the [Impressions](/docs/feature-management-experimentation/feature-management/impressions) guide for more information.
 
 ### Events
 An event is a record of user or system behavior. Events can be as simple as a page visited, a button clicked, or response time observed, and as complex as a transaction record with a detailed list of properties. An event doesn’t refer to a feature flag. The association between flag evaluations and events is computed for you. An event, associated with a user (or other unique keys), arriving after a flag decision for that same unique key, is attributed to that evaluation by FME’s attribution engine.
@@ -58,10 +58,10 @@ Targeting decisions are made locally, in memory, from within your own applicatio
 ### FME SDKs
 To use Harness FME, include and initialize one of FME SDKs in your application. Once the SDK is initialized, targeting rules are retrieved from a nearby content delivery network (CDN) node, cached inside your code, and updated in real-time in milliseconds using a streaming architecture. 
 
-As needed, your application makes a just-in-time call to the FME SDK in local memory, passing the feature flag name, the userId or unique key, and optionally, a map of user or session attributes. The response is returned instantly, with no need for a network call. After the evaluation is performed, the SDK asynchronously returns an impression record to Harness. Refer to our [SDK overview](https://help.split.io/hc/en-us/articles/360033557092-SDK-overview) for more information.
+As needed, your application makes a just-in-time call to the FME SDK in local memory, passing the feature flag name, the userId or unique key, and optionally, a map of user or session attributes. The response is returned instantly, with no need for a network call. After the evaluation is performed, the SDK asynchronously returns an impression record to Harness. Refer to our [SDK overview](/docs/feature-management-experimentation/sdks-and-infrastructure/sdk-overview/) for more information.
 
 ### Split Evaluator
-As an alternative to using FME SDKs, you can make REST API calls to a Split Evaluator hosted inside your own infrastructure. Like the SDK, this method never requires you to send private user data to the Harness network. The evaluator makes it possible to operate from within languages that do not yet have a published FME SDK and should only be used in that case. Refer to the [Split Evaluator](https://help.split.io/hc/en-us/articles/360020037072-Split-Evaluator) guide for more information.
+As an alternative to using FME SDKs, you can make REST API calls to a Split Evaluator hosted inside your own infrastructure. Like the SDK, this method never requires you to send private user data to the Harness network. The evaluator makes it possible to operate from within languages that do not yet have a published FME SDK and should only be used in that case. Refer to the [Split Evaluator](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator) guide for more information.
 
 ## FME's structure
 Harness FME is architected to support teams and organizations of any size, from a single developer to multiple value-stream enterprises. Take a moment to familiarize yourself with the concepts of your Harness account, project, environment, and objects, e.g., users, user groups, tags, traffic types, feature flags, segments, and metrics.
@@ -100,7 +100,7 @@ Targeting rules for each feature flag are created at the environment level. For 
 <!--  Refer to the [Creating a rollout plan](https://help.split.io/hc/en-us/articles/9805284145549-Creating-a-rollout-plan) guide for more information. -->
 
 ### Segment
-A segment is a list of users or unique keys for targeting purposes. Segments are created at the environment level. Refer to the [Segments](https://help.split.io/hc/en-us/articles/360020407512-Create-a-segment) guide for more information.
+A segment is a list of users or unique keys for targeting purposes. Segments are created at the environment level. Refer to the [Segments](/docs/feature-management-experimentation/feature-management/segments) guide for more information.
 
 ### Traffic type
 Targeting decisions are made on a per-user or per unique key basis, but what are the available types of unique keys you intend to target? These are your traffic types, and you can define up to ten unique key types at the project level.

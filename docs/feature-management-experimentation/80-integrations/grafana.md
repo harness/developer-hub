@@ -5,14 +5,16 @@ description: ""
 ---
 
 <p>
-  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/12397463150861-Grafana <br /> ✘ images still hosted on help.split.io </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/12397463150861-Grafana </button>
 </p>
+
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
 
 You can send audit log notifications to Grafana as chart annotations. This Split audit log webhook abridges notifications into chart annotations for Grafana. The annotations are tagged as 'split' so that a Grafana user can put an annotation query on any dashboard to see Split notifications. You can read about [Grafana Chart Annotations](https://grafana.com/docs/grafana/latest/developers/http_api/annotations/). A single node.js lambda does the work for the integration, using only the filesystem (for API keys) and the Axios HTTP client. The integration receives audit log notifications, abridges them into new annotations, and calls the Grafana annotation API to create new annotations.
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/12398239153677" alt="annotations.png" />
-</p>
+![](./static/grafana-chart.png)
 
 ## Prerequisites
 
@@ -24,23 +26,32 @@ The Split audit log webhook is a node.js lambda, which is designed to be deploye
 
 1. Clone the [Split Grafana repository](https://github.com/splitio/split2grafana) in an empty directory.
 2. In the directory, carefully copy your Grafana API key into a file called GRAFANA_API_KEY (I used admin role key).
-3. Copy the host and port of your Grafana server into a file called GRAFANA_URL. 
+3. Copy the host and port of your Grafana server into a file called GRAFANA_URL.
 
-Copy the host and port of your Grafana server into a file called GRAFANA_URL. For example: 
-http://your.grafana.host.or.ip:3000
+   For example: http://your.grafana.host.or.ip:3000
 
-3000 is the default port. Change this to the proper host and port of your Grafana server. The host must be accessible from AWS. Local installs won’t be visible to the integration lambda.
+   The default port is `3000`. Change this to the proper host and port of your Grafana server. The host must be accessible from AWS. Local installs won’t be visible to the integration lambda.
 
-**Note: Be sure you don’t copy or add a trailing slash. If you add an extra space or trailing slash at the end of the line, or empty lines after, the key won’t be recognized and the integration fails to run correctly. In addition, the file names must precisely be the names as shown above, including being all caps.**
+    :::info[Note]
+    Be sure you don’t copy or add a trailing slash. If you add an extra space or trailing slash at the end of the line, or empty lines after, the key won’t be recognized and the integration fails to run correctly. In addition, the file names must precisely be the names as shown above, including being all caps.
+    :::
 
 4. From this directory, use a terminal to do the following.  If npm is not installed, you must install it:
 
+<ul>
+
+```
   > npm install 
   > zip -r grafana.zip *
+```
 
 The grafana.zip now includes the index.js, the Grafana key and url files, and a full node_modules directory.
 
-**Note: You can also "brew install npm" on OSX. Follow the instructions to install npm for other operating systems.**
+:::info[Note]
+You can also "brew install npm" on OSX. Follow the instructions to install npm for other operating systems.
+:::
+
+</ul>
 
 ## Creating an annotation query for tag split
 
@@ -48,9 +59,7 @@ You must create an annotation query for tag 'split' on the dashboards for where 
 
 The following shows you an example of what you see when you click the Preview in dashboard button:
 
-<p>
-  <img src="https://help.split.io/hc/article_attachments/12398239153677" alt="annotations.png" />
-</p>
+![](./static/grafana-annotations.png)
 
 ## Installing in AWS 
 

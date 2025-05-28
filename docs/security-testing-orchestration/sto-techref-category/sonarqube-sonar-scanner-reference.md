@@ -39,7 +39,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 ### For more information
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 
 
 <StoMoreInfo />
@@ -67,12 +67,12 @@ A Docker-in-Docker background step is not required for this workflow.
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanMode from './shared/step-palette/scan/type.md';
 
-import StoSettingScanModeOrch  from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeOrch  from './shared/step-palette/scan/mode/orchestration.md';
 
-import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeData from './shared/step-palette/scan/mode/extraction.md';
+import StoSettingScanModeIngest from './shared/step-palette/scan/mode/ingestion.md';
 
 
 
@@ -97,15 +97,15 @@ The predefined configuration to use for the scan.
 
 #### Type
 
-import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
+import StoSettingScanTypeRepo     from './shared/step-palette/target/type/repo.md';
 
 <StoSettingScanTypeRepo />
 
 
 #### Target and Variant Detection 
 
-import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+import StoSettingScanTypeAutodetectRepo from './shared/step-palette/target/auto-detect/code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step-palette/target/auto-detect/note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectNote/>
@@ -113,7 +113,7 @@ import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from './shared/step-palette/target/name.md';
 
 <StoSettingTargetName />
 
@@ -122,7 +122,7 @@ If you're running an Extraction scan, this field should match the code repositor
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from './shared/step-palette/target/variant.md';
 
 <StoSettingTargetVariant  />
 
@@ -131,7 +131,7 @@ If you're running an Extraction scan, this field should match the branch or PR d
 #### Workspace
 
 
-import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from './shared/step-palette/target/workspace.md';
 
 
 
@@ -141,7 +141,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 ### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from './shared/step-palette/ingest/file.md';
 
 
 
@@ -158,7 +158,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 The URL of the SonarQube server. This is required for Orchestration and Extraction scans. This value corresponds to the [`sonar.host.url`](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/analysis-parameters/#mandatory-parameters) setting in SonarQube.
 
 
-import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
+import StoSettingAuthDomain from './shared/step-palette/auth/domain.md';
 
 
 
@@ -170,7 +170,7 @@ import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
 #### Enforce SSL
 
 
-import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
+import StoSettingProductSSL from './shared/step-palette/auth/ssl.md';
 
 
 
@@ -181,7 +181,7 @@ import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
 
 
 
-import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
+import StoSettingAuthAccessToken from './shared/step-palette/auth/access-token.md';
 
 
 
@@ -214,7 +214,7 @@ A comma-separated list of paths to files with third-party libraries used by your
 
 <!-- 
 
-import StoSettingTooJavaLibraries from './shared/step_palette/tool/java/_libraries.md';
+import StoSettingTooJavaLibraries from './shared/step-palette/tool/java/libraries.md';
 
 
 
@@ -229,7 +229,7 @@ A comma-separated list of paths to the folders with the bytecode files you want 
 
 <!--
 
-import StoSettingToolJavaBinaries from './shared/step_palette/tool/java/_binaries.md';
+import StoSettingToolJavaBinaries from './shared/step-palette/tool/java/binaries.md';
 
 
 <StoSettingToolJavaBinaries  />
@@ -237,7 +237,7 @@ import StoSettingToolJavaBinaries from './shared/step_palette/tool/java/_binarie
 
 ### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from './shared/step-palette/all/log-level.md';
 
 
 <StoSettingLogLevel />
@@ -270,14 +270,14 @@ You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.o
                         cli: "-Dsonar.projectVersion=1.2.3"
 ```
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step-palette/all/cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />
 
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity.md';
 
 
 <StoSettingFailOnSeverity />
@@ -296,14 +296,14 @@ You can add a `tool_args` setting to run the [sonar-scanner binary](https://docs
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from './shared/additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from './shared/advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

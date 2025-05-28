@@ -23,7 +23,7 @@ Perform the following steps to create an AutoStopping proxy for your resources i
 2. Under **Setup**, click **Load Balancers**.
 3. Click **Create New Load Balancer**.
 4. Select **GCP**.
-5. Choose an existing connector or [create a new one](../1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md).
+5. Choose an existing connector or [create a new one](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp).
 6. Click **Create AutoStopping Proxy**.
 7. In the **Create a new AutoStopping Proxy** window, enter the following information:
     1. Provide a name for the AutoStopping Proxy.

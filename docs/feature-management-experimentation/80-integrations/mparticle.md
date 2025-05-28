@@ -8,6 +8,10 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360038306272-mParticle </button>
 </p>
 
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
+
 mParticle is a customer data platform that allows you to centralize, manage, and activate your customer and engagement data across any channel.
 
 Use this integration to: 
@@ -22,7 +26,7 @@ This guide explains how you can set up and test different configurations within 
 
 Before you begin, within your mParticle account, set up Split using the Integration Directory to receive your API key and secret. Copy and save these 2 strings. Refer to [mParticle documentation](https://docs.mparticle.com/integrations/split/feed/) for more information. 
 
-<img src="https://help.split.io/hc/article_attachments/360046876712/Screen_Shot_2020-01-10_at_2.13.41_PM.png" alt="Screen_Shot_2020-01-10_at_2.13.41_PM.png" />
+![](./static/mparticle.png)
 
 ### In Split 
 

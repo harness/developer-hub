@@ -15,7 +15,7 @@ You can ingest scan results for your container images from [JFrog Xray](https://
 
 ## Workflow descriptions
 
-import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+import CustomScanWorkflowIngest from './shared/custom-scan/workflow-ingest-only.md';
 
 <CustomScanWorkflowIngest />
 
@@ -108,19 +108,19 @@ default
 
 ### Target and variant
 
-import CustomScanTargetVariant from './shared/custom-scan/_target-variant.md';
+import CustomScanTargetVariant from './shared/custom-scan/target-variant.md';
 
 <CustomScanTargetVariant />
 
 ### Ingestion file
 
-import CustomScanIngest from './shared/custom-scan/_ingestion-file.md';
+import CustomScanIngest from './shared/custom-scan/ingestion-file.md';
 
 <CustomScanIngest />
 
 ### Fail on severity
 
-import CustomScanFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
+import CustomScanFailOnSeverity from './shared/custom-scan/fail-on-severity.md';
 
 <CustomScanFailOnSeverity />
 

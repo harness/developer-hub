@@ -5,7 +5,7 @@ sidebar_position: 9
 ---
 
 <p>
-  <button style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360032253871-Is-there-a-JAR-file-for-Split-Java-SDK </button>
+  <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360032253871-Is-there-a-JAR-file-for-Split-Java-SDK </button>
 </p>
 
 ## Question

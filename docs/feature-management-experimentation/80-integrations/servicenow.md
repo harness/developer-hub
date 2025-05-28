@@ -8,7 +8,9 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/5524203735181-ServiceNow </button>
 </p>
 
-**Note: The ServiceNow integration is in beta.**
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
 
 The ServiceNow integration enables enterprise organizations to improve operational efficiencies by streamlining and automating change management processes. Specifically, it allows you to manage projects, teams and customer interactions by customizing approvals, which helps reduce errors and ensure compliance without slowing your release process. With this integration:
 
@@ -20,9 +22,9 @@ The ServiceNow integration enables enterprise organizations to improve operation
 
 The following is the supported ServiceNow version:
 
-Service Now ITSM Pro product/plan
-Platform version: Rome / SanDiego / Tokyo versions
-DevOps plugin: 1.35.1
+Product/plan: Service Now ITSM Pro
+Platform version: Rome and later versions
+DevOps plugin: 1.35.1 and later versions
 
 ## Setting up in Split
 
@@ -63,7 +65,7 @@ After setting up the Split application, you can set up the integration in Servic
 2. In the ServiceNow application, at the top left of the page, select **All** to access the navigation.
 3. Search for tools and select **Create New**. The Create DevOps tool page appears.
 4. In the tool page, enter the following:
-    * In the Tool name field, enter a human recognizable name (e.g., splitdemotool).
+    * In the Tool name field, enter a human recognizable name (e.g. splitdemotool).
     * In the Tool integration field, enter **Split IO** and select the provided option. 
     * In the Tool URL field, enter **https://api.split.io **.
     * In the Tool username field, optionally enter any username you want.

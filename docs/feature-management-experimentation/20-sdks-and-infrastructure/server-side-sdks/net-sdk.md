@@ -40,13 +40,13 @@ Starting version 5.0.0, .Ready is deprecated and migrated to the following imple
 Call `SplitClient.BlockUntilReady(int milliseconds)` or `SplitManager.BlockUntilReady(int milliseconds)`.
 :::
 
-When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+When the SDK is instantiated, it starts background tasks to update an in-memory cache with small amounts of data fetched from Harness servers. This process can take up to a few hundred milliseconds depending on the size of data. If the SDK is asked to evaluate which treatment to show to a customer for a specific feature flag while its in this intermediate state, it may not have the data necessary to run the evaluation. In this case, the SDK does not fail, rather, it returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 To make sure the SDK is properly loaded before asking it for a treatment, block until the SDK is ready. This is done by using `.BlockUntilReady(int milliseconds)` method as part of the instantiation process of the SDK factory client as shown below. Do this all as a part of the startup sequence of your application. If SDK is not ready after the specified time, the SDK fails to initialize and throws a `TimeoutException` error.
 
 We recommend instantiating the SDK factory once as a singleton and reusing it throughout your application.
 
-Use the code snippet below with your own API key. Configure the SDK with the SDK key for the FME environment that you would like to access. The SDK key is available in Harness FME Admin settings. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
+Use the code snippet below with your own API key. Configure the SDK with the SDK key for the FME environment that you would like to access. In legacy Split (app.split.io) the SDK key is found on your Admin settings page, in the API keys section. Select a server-side SDK API key. See [API keys](https://help.split.io/hc/en-us/articles/360019916211) to learn more.
 
 ```csharp title="C#"
 using Splitio.Services.Client.Classes;
@@ -74,10 +74,11 @@ Now you can start asking the SDK to evaluate treatments for your customers.
 
 After you instantiate the SDK factory client, you can use the `GetTreatment` method of the SDK factory client to decide what version of your features your customers are served. The method requires the `FEATURE_FLAG_NAME` attribute that you want to ask for a treatment and a unique `key` attribute that corresponds to the end user that you are serving the feature to.
 
-Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment).
+Then use an if-else-if block as shown below and insert the code for the different treatments that you defined in Harness FME. Remember the final else branch in your code to handle the client returning the [control treatment](/docs/feature-management-experimentation/feature-management/control-treatment).
 
 <Tabs>
 <TabItem value="GetTreatment">
+
 ```csharp
 // The KEY here represents the ID of the user/account/etc you're trying to evaluate a treatment for
 var treatment = sdk.GetTreatment("KEY","FEATURE_FLAG_NAME");
@@ -95,8 +96,10 @@ else
     // insert your control treatment code here
 }
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentAsync">
+
 ```csharp
 // The KEY here represents the ID of the user/account/etc you're trying to evaluate a treatment for
 var treatment = await sdk.GetTreatmentAsync("KEY","FEATURE_FLAG_NAME");
@@ -114,12 +117,13 @@ else
     // insert your control treatment code here
 }
 ```
+
 </TabItem>
 </Tabs>
 
 ### Attribute syntax
 
-To [target based on custom attributes](https://help.split.io/hc/en-us/articles/360020793231-Target-with-custom-attributes), the SDK's `GetTreatment` method needs to be passed an attribute map at runtime.
+To [target based on custom attributes](/docs/feature-management-experimentation/feature-management/target-with-custom-attributes), the SDK's `GetTreatment` method needs to be passed an attribute map at runtime.
 
 In the example below, we are rolling out a feature flag to users. The provided attributes `plan_type`, `registered_date`, `permissions`, `paying_customer`, and `deal_size` are passed to the `GetTreatment` call. These attributes are compared and evaluated against the attributes used in the Rollout plan as defined in Harness FME to decide whether to show the `on` or `off` treatment to this account.
 
@@ -133,6 +137,7 @@ The `GetTreatment` method supports five types of attributes: strings, numbers, d
 
 <Tabs>
 <TabItem value="GetTreatment">
+
 ```csharp
 using Splitio.Services.Client.Classes;
 
@@ -174,8 +179,10 @@ else
     // insert your control treatment code here
 }
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentAsync">
+
 ```csharp
 using Splitio.Services.Client.Classes;
 
@@ -217,6 +224,7 @@ else
     // insert your control treatment code here
 }
 ```
+
 </TabItem>
 </Tabs>
 
@@ -229,38 +237,50 @@ In some instances, you may want to evaluate treatments for multiple feature flag
 
 <Tabs>
 <TabItem value="GetTreatments">
+
 ```csharp
 var featureFlagNames = new List<string> { "FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2" };
 var result = client.GetTreatments("KEY", featureFlagNames);
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsByFlagSet">
+
 ```csharp
 var result = client.GetTreatmentsByFlagSet("KEY", "backend");
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsByFlagSets">
+
 ```csharp
 var flagSets = new List<string> { "backend", "server_side" };
 var result = client.GetTreatmentsByFlagSets("KEY", flagSets);
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsAsync">
+
 ```csharp
 var featureFlagNames = new List<string> { "FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2" };
 var result = await client.GetTreatmentsAsync("KEY", featureFlagNames);
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsByFlagSetAsync">
+
 ```csharp
 var result = await client.GetTreatmentsByFlagSetAsync("KEY", "backend");
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsByFlagSetsAsync">
+
 ```csharp
 var flagSets = new List<string> { "backend", "server_side" };
 var result = await client.GetTreatmentsByFlagSetsAsync("KEY", flagSets);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -268,7 +288,7 @@ You can also use the [Split Manager](#manager) to get all of your treatments at 
 
 ### Get Treatments with Configurations
 
-To [leverage dynamic configurations with your treatments](https://help.split.io/hc/en-us/articles/360026943552), you should use the `GetTreatmentWithConfig` method.
+To [leverage dynamic configurations with your treatments](/docs/feature-management-experimentation/feature-management/dynamic-configurations), you should use the `GetTreatmentWithConfig` method.
 
 This method returns an object containing the treatment and associated configuration.
 
@@ -278,18 +298,22 @@ This method takes the exact same set of arguments as the standard `GetTreatment`
 
 <Tabs>
 <TabItem value="GetTreatmentWithConfig">
+
 ```csharp
 var featureFlagResult = splitClient.GetTreatmentWithConfig("KEY", "FEATURE_FLAG_NAME");
 var config = JsonConvert.DeserializeObject(featureFlagResult.Config);
 var treatment = featureFlagResult.Treatment;
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentWithConfigAsync">
+
 ```csharp
 var featureFlagResult = await splitClient.GetTreatmentWithConfigAsync("KEY", "FEATURE_FLAG_NAME");
 var config = JsonConvert.DeserializeObject(featureFlagResult.Config);
 var treatment = featureFlagResult.Treatment;
 ```
+
 </TabItem>
 </Tabs>
 
@@ -297,38 +321,50 @@ If you need to get multiple evaluations at once, you can also use the `GetTreatm
 
 <Tabs>
 <TabItem value="GetTreatmentsWithConfig">
+
 ```csharp
 var featureFlagNames = new List<string> { "FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2" };
 var featureFlagResults = splitClient.GetTreatmentsWithConfig("KEY", featureFlagNames);
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsWithConfigByFlagSet">
+
 ```csharp
 var featureFlagResults = splitClient.GetTreatmentsWithConfigByFlagSet("KEY", "backend");
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsWithConfigByFlagSets">
+
 ```csharp
 var flagSets = new List<string> { "backend", "server_side" };
 var featureFlagResults = splitClient.GetTreatmentsWithConfigByFlagSets("KEY", flagSets);
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsWithConfigAsync">
+
 ```csharp
 var featureFlagNames = new List<string> { "FEATURE_FLAG_NAME_1", "FEATURE_FLAG_NAME_2" };
 var featureFlagResults = await splitClient.GetTreatmentsWithConfigAsync("KEY", featureFlagNames);
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsWithConfigByFlagSetAsync">
+
 ```csharp
 var featureFlagResults = await splitClient.GetTreatmentsWithConfigByFlagSetAsync("KEY", "backend");
 ```
+
 </TabItem>
 <TabItem value="GetTreatmentsWithConfigByFlagSetsAsync">
+
 ```csharp
 var flagSets = new List<string> { "backend", "server_side" };
 var featureFlagResults = await splitClient.GetTreatmentsWithConfigByFlagSetsAsync("KEY", flagSets);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -340,14 +376,18 @@ If a manual shutdown is required, call the `client.Destroy()` method.
 
 <Tabs>
 <TabItem value="Destroy">
+
 ```csharp
 client.Destroy();
 ```
+
 </TabItem>
 <TabItem value="DestroyAsync">
+
 ```csharp
 await client.DestroyAsync();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -379,6 +419,7 @@ In case a bad input is provided, refer to the [Events](https://help.split.io/hc/
 
 <Tabs>
 <TabItem value="Track">
+
 ```csharp
 // If you would like to send an event without a value
 bool success = client.Track("KEY", "TRAFFIC_TYPE", "EVENT_TYPE");
@@ -414,8 +455,10 @@ var properties = new Dictionary<string, object>
 
 bool trackEvent = client.Track("john@doe.com", "user", "page_load_time", properties: properties);
 ```
+
 </TabItem>
 <TabItem value="TrackAsync">
+
 ```csharp
 // If you would like to send an event without a value
 bool success = await client.TrackAsync("KEY", "TRAFFIC_TYPE", "EVENT_TYPE");
@@ -451,6 +494,7 @@ var properties = new Dictionary<string, object>
 
 bool trackEvent = await client.TrackAsync("john@doe.com", "user", "page_load_time", properties: properties);
 ```
+
 </TabItem>
 </Tabs>
 
@@ -516,7 +560,7 @@ To use the .Net SDK with Redis, you need to set up the Split Synchronizer and in
 
 ### Producer
 
-Refer to our [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092) documents and follow the steps there to get everything set to sync data to your Redis cache. After you do that, come back to set up the Consumer.
+Refer to our [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) documents and follow the steps there to get everything set to sync data to your Redis cache. After you do that, come back to set up the Consumer.
 
 ### Consumer
 
@@ -662,7 +706,7 @@ catch (Exception ex)
 
 :::warning[The KeyHashTag Parameter]
 The KeyHashTag is a required parameter. If left empty, the SDK will by default use "\{SPLITIO\}" as the KeyHashTag value. The KeyHashTag value is added to the user prefix to improve SDK performance in Redis Cluster.
-You should use the same KeyHashTag value in the [Split Synchronizer](https://help.split.io/hc/en-us/articles/360019686092-Split-Synchronizer) app synching to the same Redis cluster.
+You should use the same KeyHashTag value in the [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer) app synching to the same Redis cluster.
 :::
 
 ## Localhost mode
@@ -746,7 +790,7 @@ catch (Exception ex)
 
 In this mode, the SDK loads a mapping of feature flag name to treatment from a file at `$HOME/.split`. For a given feature flag, the treatment specified in the file is returned for every customer.
 
-`GetTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `features` map returns [the control treatment](https://help.split.io/hc/en-us/articles/360020528072-Control-treatment) if the SDK is asked to evaluate them.
+`GetTreatment` calls for a feature flag only return the one treatment that you defined in the file. You can then change the treatment as necessary for your testing in the file. Any feature flag that is not provided in the `features` map returns [the control treatment](/docs/feature-management-experimentation/feature-management/control-treatment) if the SDK is asked to evaluate them.
 
 The format of this file is two columns separated by a whitespace. The left column is the feature flag name, and the right column is the treatment name. Here is a sample `.split` file.
 
@@ -773,6 +817,7 @@ The Manager has the following methods available.
 
 <Tabs>
 <TabItem value="Manager interface">
+
 ```csharp
 /**
 * Retrieves the feature flags that are currently registered with the
@@ -796,8 +841,10 @@ SplitView Split(string splitName);
 */
 List<String> SplitNames();
 ```
+
 </TabItem>
 <TabItem value="Manager interface async">
+
 ```csharp
 /**
 * Retrieves the feature flags that are currently registered with the
@@ -821,6 +868,7 @@ Task<SplitView> SplitAsync(string splitName);
 */
 Task<List<String>> SplitNamesAsync();
 ```
+
 </TabItem>
 </Tabs>
 
