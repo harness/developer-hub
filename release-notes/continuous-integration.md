@@ -69,7 +69,7 @@ This update is currently being rolled out to customers, and we expect the rollou
 
 - Previously, CI stage timeouts for Kubernetes infrastructure were limited to a maximum of 24 hours. Some stages, however, require longer timeouts. Harness CI now supports stage timeouts of up to 35 days for Kubernetes-based CI stages. To enable this functionality, set the desired timeout value (greater than 24 hours) in the **Overview** section of the CI stage. (CI-15102, ZD-72737)
 
-  This feature is behind the feature flag `CI_ENABLE_MAX_TIMEOUT_K8`. 
+  This feature is behind the feature flag `CI_ENABLE_LONG_TIMEOUTS`. 
 
 #### Fixed issues
 
