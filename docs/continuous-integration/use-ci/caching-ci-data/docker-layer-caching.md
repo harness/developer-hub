@@ -95,6 +95,10 @@ Here is a YAML example of a  **Build and Push an image to Docker Registry** step
 ## Remote cache image
 
 Remote cache image is an alternative to Harness CI Intelligence Docker layer caching. 
+:::info
+
+Note: Remote cache image support is currently available only for Kubernetes infrastructure.
+:::
 
 Remote caching leverages your existing Docker registry to pull previously built layers. Each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple Build and Push steps, enabling them to share the same remote cache.
 
