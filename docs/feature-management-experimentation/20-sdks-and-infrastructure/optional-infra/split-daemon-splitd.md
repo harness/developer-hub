@@ -33,7 +33,7 @@ The service performs three actions:
 
 ### Architecture
 
-![](./static/splitd-arch.drawio.svg)
+![](./static/splitd-arch-drawio.svg)
 
 
 ## Setup
@@ -44,7 +44,7 @@ Splitd can be set up locally to the consumer application or be deployed as a sid
 
 The following diagram illustrates a local setup where splitd is on the same server instance as the consumer application. It shows how splitd communicates with the application via IPC/Unix socket connections.
 
-![](./static/splitd-shared-instance.drawio.svg)
+![](./static/splitd-shared-instance-drawio.svg)
 
 Since the service relies on interprocess communication (IPC) with thin clients, which happens on the operating system's kernel, the two processes need to be on the same host. The most straightforward way to achieve this is by having both the daemon and the application that bundles the FME Thin SDK in the same server/instance/container.
 
@@ -151,7 +151,7 @@ Since communication happens at a kernel level, containers running on the same ho
 
 The following image illustrates architecture when splitd is running in a sidecar container.
 
-![](./static/splitd-sidecar.drawio.svg)
+![](./static/splitd-sidecar-drawio.svg)
 
 #### 1. Pull the image
 
