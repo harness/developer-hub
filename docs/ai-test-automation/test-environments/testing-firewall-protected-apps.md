@@ -3,7 +3,7 @@ title: Testing apps behind a firewall
 description: Testing apps behind a firewall
 sidebar_position: 20
 ---
-:::hint{type="info"}
+:::info
 This feature is available in the Enterprise Tier Plan
 :::
 
