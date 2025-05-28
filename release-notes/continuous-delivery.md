@@ -55,13 +55,13 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## May 2025
 
-### Version 1.91.0
+### Version 1.91.3
 
 #### New Features and Enhancements
 
-- Harness now supports automatic EKS token refresh during deployments, addressing issues caused by AWS’s 15-minute token TTL. Currently, this feature is behind the feature flag `CDS_K8S_EKS_REFRESH_EXEC_AUTH_TOKEN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.For more information, refer to [EKS Execution Authentication Token Refresh](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure/#aws-elastic-kubernetes-service-eks). (**CDS-100948, ZD-78817**)
+- Harness now supports automatic EKS token refresh during deployments, addressing issues caused by AWS’s 15-minute token TTL. Currently, this feature is behind the feature flag `CDS_K8S_EKS_REFRESH_EXEC_AUTH_TOKEN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [EKS Execution Authentication Token Refresh](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure/#aws-elastic-kubernetes-service-eks). (**CDS-100948, ZD-78817**)
 
-- Harness now supports filtering services by deployment strategy in custom dashboards. (CDS-105276)
+- Harness now supports an **Execution Strategy Type** filter in the **Deployments and Service v2** dashboards, enabling filtering by execution strategy. For more information, refer to [CD Stage Executions](/docs/continuous-delivery/monitor-deployments/using-cd-custom-dashboards#cd-stage-executions). (**CDS-105276**)
 
 #### Fixed Issues
 
