@@ -8,6 +8,10 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/24994768544269-GitHub-Actions </button>
 </p>
 
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
+
 ## Feature Flags Evaluator GitHub Action
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a continuous integration and continous delivery (CI/CD) platform. GitHub Actions allows you to trigger workflows that execute a series of commands on your GitHub repository files. 

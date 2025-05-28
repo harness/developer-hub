@@ -8,6 +8,10 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360020950431-Librato </button>
 </p>
 
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
+
 Librato allows your team to collect, store, and visualize any metric across all levels of your application stack. Integrate Split data into Librato to monitor and measure the performance impact of Split changes.
 
 If you have trouble completing the integration, contact us at [support@split.io](mailto:support@split.io).

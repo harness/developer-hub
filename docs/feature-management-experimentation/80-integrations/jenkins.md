@@ -8,6 +8,10 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/360044691592-Jenkins </button>
 </p>
 
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
+
 ## Split Jenkins Plugin
 Jenkins plugin uses Split Admin REST API to create, update, and delete feature flags as part of test automation and build workflow. Reference to Split Admin API can be found [here](https://docs.split.io/reference).
 

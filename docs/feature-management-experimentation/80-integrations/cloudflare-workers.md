@@ -8,6 +8,10 @@ description: ""
   <button hidden style={{borderRadius:'8px', border:'1px', fontFamily:'Courier New', fontWeight:'800', textAlign:'left'}}> help.split.io link: https://help.split.io/hc/en-us/articles/4505572184589-Cloudflare-Workers </button>
 </p>
 
+import UpdateBanner from "./shared/_update-banner.mdx";
+
+ <UpdateBanner integration={frontMatter.title} />
+
 Running applications or business logic in a serverless environment has become prevalent. In these environments, the context in which logic runs is volatile, stateless, and can be reused multiple times by different applications. 
 
 ## Split’s Cloudflare Workers
