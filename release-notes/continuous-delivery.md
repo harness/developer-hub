@@ -55,6 +55,25 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## May 2025
 
+### Version 1.91.3
+
+#### New Features and Enhancements
+
+- Harness now supports automatic EKS token refresh during deployments, addressing issues caused by AWS’s 15-minute token TTL. Currently, this feature is behind the feature flag `CDS_K8S_EKS_REFRESH_EXEC_AUTH_TOKEN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, refer to [EKS Execution Authentication Token Refresh](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure/#aws-elastic-kubernetes-service-eks). (**CDS-100948, ZD-78817**)
+
+- Harness now supports an **Execution Strategy Type** filter in the **Deployments and Service v2** dashboards, enabling filtering by execution strategy. For more information, refer to [CD Stage Executions](/docs/continuous-delivery/monitor-deployments/using-cd-custom-dashboards#cd-stage-executions). (**CDS-105276**)
+
+#### Fixed Issues
+
+- Previously, the `<+step.uuid>` expression resolved to the `setupId` instead of the actual `uuid`, making it difficult to retrieve the correct node ID via the Execution Graph API. A new expression has been introduced to accurately return the `uuid`. The issue is resolved. (**PIPE-27454, ZD-84916**)
+- Previously, steps in parallel executions randomly timed out due to a race condition where the task response wasn’t properly registered. The issue is resolved. (**PIPE-25867, ZD-80002**)
+- Previously, accessing pipelines from the project Overview page resulted in a 404 error, even though the pipelines were accessible via the module navigation. The issue is resolved. (**CDS-110658, ZD-85192,85259,85356**)
+- Previously, making changes to a pipeline stage caused the CI codebase section to be unintentionally removed from the pipeline YAML, especially when switching between visual and YAML views. The issue is resolved. (**PIPE-27517, ZD-84658**)
+- Previously, if a service override contained invalid YAML, clicking on the override would crash the UI with no option to delete or recover from the error. The issue is resolved. (**CDS-110177, ZD-84146**)
+- Previously, when the repository name in the Clone Codebase step was set using an expression, the Git branch name field in the run pipeline form would load indefinitely, preventing user input. The issue is resolved. (**CDS-109785, ZD-83118**)
+- Previously, in the Get Started flow, selecting CD GitOps and clicking on the Environments section caused a UI error due to incorrect module resolution. The issue is resolved. (**CDS-110201**)
+- Previously, with the feature flag `CDS_TAS_LOGIN_OPTIMIZATION` enabled, TAS rolling deployments failed for newly created apps with the error: “No API endpoint set. Use `cf login` or `cf api` to target an endpoint.” The issue is resolved. This fix is available with delegate version `859xx` or later. (**CDS-110482**)
+
 ### Version 1.90.0
 
 #### New Features and Enhancements
